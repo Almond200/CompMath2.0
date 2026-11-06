@@ -1,5 +1,7 @@
 # Importance proposal (2026-10-10)
 
+> **Historical record.** This file preserves its dated migration, review or proposal. Counts, pending language and “now” describe that snapshot, not the current app. Use [PLAN.md](../PLAN.md) for current status and [QUESTIONS.md](../QUESTIONS.md) for outstanding decisions. Current card metadata lives in `js/data/`; these tables are not an import specification.
+
 Importance is High / Medium / Low / Lower **within each card's own subsection** (formulas: the topic; methods and patterns: the subject), independent of the contest tier. **Lower** marks a card that is pretty much never used (old importance Lower or Lowest, and at most one tagged problem). For the rest, score = half the percentile of its problem-db tag count in the subsection plus half the percentile of its old importance; the top quarter of a subsection is High, the bottom quarter Low, the middle Medium. Tell me any card to move.
 
 | Card | Subsection | Tier | Old | Problems | New |

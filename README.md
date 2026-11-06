@@ -3,12 +3,12 @@
 A searchable reference for AMC 10/12, AIME and olympiad training. 765 cards
 covering formulas, methods, and patterns (548 formulas, 169 methods, 48 patterns), plus a database
 of 4,675 past contest problems (4,665 with their full statements), every one with a written
-strategy and 4,229 cross-linked to the cards their solutions run through (2026-10-30).
+strategy and 4,229 cross-linked to the cards their solutions run through (counts checked 2026-11-06).
 
-Fully static and fully offline: no build step, no server, and nothing fetched at runtime. KaTeX
-0.16.11 is vendored under `vendor/katex/` (its CSS, its JS, and the twenty woff2 faces the CSS
-asks for), so the app renders the same on a plane or behind a network that blocks CDNs. It used to
-load KaTeX from jsdelivr, where a block meant every formula in the library showed as raw LaTeX.
+Static, with no application backend or required build step. KaTeX 0.16.11 and its fonts are
+vendored under `vendor/katex/`; statement scripts and semantic vectors load on demand from
+the same site. A complete local copy can be served offline. A hosted page is not guaranteed
+to work offline merely because it was visited once; external AoPS links require a connection.
 
 ## Practice a topic
 
@@ -16,9 +16,11 @@ Search for a subject or technique, choose a question count and difficulty, then 
 untimed practice set. AMC problems use A–E choices; AIME problems accept integers from 000 to
 999. Answers save automatically on this device. Double-click a selected choice to clear it.
 Save and exit and Back to Practice both preserve progress. **Practice sets**, below Contests,
-separates **Resume a set** from **Review a completed set**.
+separates **Resume a set** from **Review a completed set**. Each group shows at most two rows,
+with its own full-width **Show all / Show less** control.
 
-Finish and review grades against imported answer keys. Review keeps your submitted selection,
+Finish and review grades against imported answer keys and opens a results overview with your
+score and correct, incorrect and unanswered totals. Each result links to its detailed review. Review keeps your submitted selection,
 shows Correct, Incorrect or Unanswered, and separates the problem statement from the result
 and explanation. How this problem works uses the same strategy, Pattern/Method/Formulas chain
 and textbook links as the problem page. Answer keys come from LIVE by Po-Shen Loh and are
@@ -28,12 +30,13 @@ Older saved problems without a matching key are explicitly labeled Answer unavai
 Practice sets have no timer or timer setting. Export progress and Import progress include
 saved sets, keeping the newest version of each. Clearing browser data removes the local copy.
 
-## Four kinds, four spaces
+## Four content kinds, five spaces
 
 > Formulas tell you what is true; Methods tell you what you can do; Patterns tell you what you
 > are looking at; Problems teach you to connect the three.
 
-Every card is one of four kinds, and each kind has its own space, switched from the top bar:
+Cards are formulas, methods or patterns; problems are separate database entries. Learn organizes
+the material into textbooks and lists. The top bar switches between five spaces:
 
 | Space | Kind | Question | Colour |
 |---|---|---|---|
@@ -51,9 +54,9 @@ CONVENTIONS §0 has the full model.
 **Pages.**
 
 - **Front page** (no hash): the top bar, a one-line title, a strip of the five spaces, then a main
-  column (Continue, the Problem of the day with its statement, Newest cards, Practice at a glance
+  column (Recently opened, the Problem of the day with its statement, Newest cards, Practice at a glance
   with See all) and a rail (Textbooks with See all, the Card of the day, Did you know?, your
-  library), divided by hairlines. On a phone it is one column in its own order: Continue, Did you
+  library), divided by hairlines. On a phone it is one column in its own order: Recently opened, Did you
   know?, your library, the Problem of the day, the Card of the day, Newest cards, the contests,
   Textbooks.
 - **No main page for Formulas, Methods or Patterns.** `#/formulas`, `#/methods` and `#/patterns`
@@ -76,9 +79,13 @@ CONVENTIONS §0 has the full model.
   With eight or more cards, choose **Group** to organize the list. Later additions appear under
   **New cards** until you choose **Regroup**. A list with named sections has an **On this list**
   sidebar. Its page tools follow the same setting as card pages. A book's contents (`#/learn/<book>`) open with Contents and
-  Introduction and How to Use This Book (`.../how-to-use`). A lesson (`.../c5/2`) shows its cards,
+  Introduction and How to Use This Book (`.../how-to-use`), where the Core, Core II and Extension
+  tags are explained with visible badges. **Search this book...**, below the book subtitle and
+  in the right half of desktop chapter navigation (a separate field on mobile), finds chapters
+  from chapter titles, lesson headings, related concepts and lesson text. It supports prefixes,
+  synonyms and small typos, with keyboard-selectable suggestions scoped to the current book. A lesson (`.../c5/2`) shows its cards,
   one flowing explanation, related cards, its own problems with worked solutions, contest
-  problems, and a drawer for the cards it links; chapters in the approved structure (C5) open on
+  problems, and a drawer for the cards it links; all 103 chapters open on
   an Introduction and close with a Summary, Review Problems and Challenge Problems (CONVENTIONS §14).
 - **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, untimed topic sets with a reader-selected question count, and every
   year of every contest. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
@@ -94,7 +101,8 @@ the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) licenc
 by email (Oct 2026). The statements and their figures are read from [LIVE by Po-Shen Loh](https://live.poshenloh.com/past-contests),
 which publishes every AMC and AIME problem with the MAA's permission; Settings → Credits and attribution holds the shared credit and source links. This app is non-commercial. `tools/fetch-live-statements.py` fetches them (statements and
 answer choices only, never solutions or hints) into `js/data/problems/statements/<year>.js` and `js/data/problems/figures/`.
-(AoPS blocks scripts with a Cloudflare check, so it is not used.)
+Some manually imported statements retain their recorded PDF or AoPS provenance; see
+`tools/manual_statements.py`. AoPS remains a linked source for additional solutions.
 
 Addresses are real, so Back, Forward and bookmarks work; a revisited history entry returns to
 where it was left, a fresh click opens at the top. The first redesign's addresses
@@ -142,12 +150,12 @@ by a point or two; compare warm runs to warm runs.
 - **Problems**, reached from Practice by contest and year (AMC 8, AMC 10, AMC 12, then AIME), each
   linked to the cards its solution uses, with a pattern, method and formula chain and a strategy,
   closed until Show is pressed by default, or open at once (Settings, Practice).
-- **Study lists**, under Learn, hold 41 built-in sets alongside your own. The twelve study
+- **Study lists**, under Learn, hold 37 built-in sets alongside your own. The twelve study
   routes (AMC, AIME and Olympiad, each by subject) are *complete by construction*: every card
   of that tier and subject is in its route, which `tools/check-lists.py` enforces; the other 25
   are study lists on one theme (the four By Contest lists were removed on 2026-10-31). A list
-  you build yourself is grouped into sections automatically, by matching its cards against
-  the hand-written section headings already used across the built-in lists.
+  you build yourself can be grouped once it has eight cards by choosing **Group**; matching
+  uses the hand-written sections in built-in lists. Later additions wait for **Regroup**.
 - **Diagrams** are computed from exact geometry rather than sketched, so every point is a
   true intersection, foot or tangency. Settings can show figures on the card faces too (off or on), and long write-ups place further figures inside the text, next to the
   paragraph each one illustrates (210 on 182 cards). Problems printed without a figure get one
@@ -177,9 +185,10 @@ by a point or two; compare warm runs to warm runs.
   - Learn: what a card's name does in a lesson (opens in the lesson, or opens its page).
   - Practice: the strategy on a problem page (Click to show, the default, or Shown).
   - Commands, and **Your progress**: Export writes everything the app keeps in this browser
-    (lists, stars, settings, theme, recent pages, flashcard and quiz progress) to one versioned
+    (lists, stars, settings, theme, recent pages, flashcard and quiz progress, Learn notes
+    and progress, and saved practice sets) to one versioned
     JSON file (`competition-math-reference/progress`, version 1); Import merges its lists into
-    yours and replaces the rest.
+    yours, keeps the newest version of each practice set, and replaces other imported keys.
 
   Every setting lists its default first. A search box under the title finds a setting by its
   name or everyday words ("dark mode", "font size", "export data") and underlines it once
@@ -213,13 +222,14 @@ by a point or two; compare warm runs to warm runs.
 python3 -m http.server 8688
 ```
 
-then open `http://localhost:8688`. Opening `index.html` directly also works, except that
-the semantic search index cannot be fetched from a `file://` page, so search falls back to
-lexical-only. KaTeX is vendored, so math renders offline either way.
+then open `http://localhost:8688`. A local HTTP server is the recommended way to test the app.
+Opening `index.html` directly uses a script fallback for semantic vectors (`search-vectors.js`)
+instead of `fetch`. If neither vector source loads, search degrades to lexical-only.
+Keep the complete asset tree when copying the site for offline use.
 
 ## Structure
 
-Start with `CLAUDE.md` and `PLAN.md` (`LEARN-OUTLINE.md` holds the planned Learn books). `PLAN.md` opens with "Current state": what is finished, what is in progress, and the next action. It is updated after every major change, so a new chat can pick up from it.
+Start with `CLAUDE.md` and `PLAN.md` (`LEARN-OUTLINE.md` holds the current Learn shelf and historical curriculum rationale). `PLAN.md` opens with "Current state": what is finished, what is in progress, and the next action. It is updated after every major change, so a new chat can pick up from it.
 
 ```
 index.html                     page shell and script order

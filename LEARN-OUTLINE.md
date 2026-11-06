@@ -4,9 +4,9 @@ This file says what each Learn book holds: its chapters, its lessons, and the ca
 
 The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curriculum" (2026-10-31), which grew the first draft into chapters with lesson-level syllabi; this file added real card ids for every lesson.
 
-**Status (2026-10-31, end of the seventeenth chat):**
-- Every book in a "Book:" section below is written in the app: the four AIME books (the AIME track) and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and AIME Geometry (G1 to G9) are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+**Status (checked 2026-11-06):**
+- All 13 books are written: four AMC, four AIME and five Olympiad books, totaling 103 chapters and 593 lessons.
+- Every chapter uses X.1 Introduction, lessons, Summary, Review Problems and Challenge Problems (CONVENTIONS §14). No old chapter-review array remains.
 - "The AMC books, second plan" is built (2026-11-01): it replaced the first AMC books and the Bridge, which is removed.
 
 ## How to read this file
@@ -16,19 +16,19 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 - **Core II:** in the AIME books, the later AIME problems; in the AMC books, the hard problems. A high score needs both.
 - **Extension:** optional reference or challenge material. Nothing in Core depends on it.
 
-Olympiad-tier cards that fit no chapter stay in the reference only. Olympiad books wait (LQ4).
+Olympiad-tier cards that fit no chapter stay in the reference only. All five Olympiad books are now written; LQ4 records an earlier scope decision.
 
 **Cards.** An id in backticks is a real card (`#/f/<id>` opens it).
-- A lesson's cards are the ones it teaches. A card may appear again later as a link, but each card is taught in one lesson.
+- A lesson's cards are the ones it teaches. A card may appear again later as a link, but primary teaching placements are scoped to a track; cross-track reuse is allowed.
 - *(pattern)* marks a pattern card. "Prereq" names cards taught in an earlier chapter or book.
 - A lesson with no card teaches a habit no card holds (R10.2, the comparison lessons). That is allowed, since lessons connect cards and never copy them.
 
 **Problems.** Each problem's status follows the proposal's sequence: **candidate** (found by its tags), then **read** (its strategy read, and it fits), then **verified** (numbers rechecked and its place agreed), then **published**.
-- Each problem has one **primary placement** (one lesson's problems or one chapter review). Other lessons may link to it, but only one lists it as an exercise. AMC 10/12 twins count as one problem.
+- Each problem has one **primary placement per track** (one lesson's problems or one chapter-end problem set). Other lessons may link to it, but only one lists it as an exercise. AMC 10/12 twins count as one problem.
 - A problem whose route needs a later chapter is moved later, or marked as a challenge with the needed card linked.
-- Fields kept for each problem once chosen: `primaryPlacement`, `relatedCards` (its tags), `requiredPrereqs`, `difficulty` (direct, intermediate or challenging; an editorial call, not an official ranking), `teachingPurpose`, `verificationStatus`.
+- The original proposal suggested editorial planning fields (these are not required fields on runtime problem records): `primaryPlacement`, `relatedCards` (its tags), `requiredPrereqs`, `difficulty` (direct, intermediate or challenging; an editorial call, not an official ranking), `teachingPurpose`, `verificationStatus`.
 
-**Numbers.** Every number in a worked example or a problem has been computed (Python), unless it is marked otherwise.
+**Numbers.** Authoring requirement: check numerical claims in worked examples and problems by computation. A structural gate passing is not proof that every mathematical claim has been independently reverified.
 
 ## The lesson standard
 
@@ -39,7 +39,7 @@ The full rules are in CONVENTIONS §14; in short:
 4. **The lesson's own problems,** with full worked solutions further down the page.
 5. **Exercises:** contest problems, about 3 to 5, rising in difficulty, in the AoPS-style list where Show Solution works only once something is written (LQ6).
 
-A chapter follows the approved chapter structure: X.1 Introduction (a short overview of the chapter's ideas, with comprehension problems), the lessons, a Summary with Problem Solving Strategies, then Review Problems (mostly comprehension, our own first) and Challenge Problems (harder, contest problems first). Every list of problems runs from easiest to hardest. A chapter not yet reworked ends with a chapter review of about 8 to 12 mixed problems.
+A chapter follows the approved chapter structure: X.1 Introduction (a short overview of the chapter's ideas, with comprehension problems), the lessons, a Summary with Problem Solving Strategies, then Review Problems (mostly comprehension, our own first) and Challenge Problems (harder, contest problems first). Every list of problems runs from easiest to hardest. All current chapters have been converted to this structure.
 
 ## The shelf and its prerequisite spine
 
@@ -60,7 +60,7 @@ A chapter follows the approved chapter structure: X.1 Introduction (a short over
 | **Olympiad Geometry** | directed angles, inversion, olympiad lemmas, triangle centers, circles and projective geometry | O1 to O7 |
 
 A student need not finish the books in order. Any chapter can be entered once its prerequisites are known. Chapter order follows dependencies:
-- **Book entry points:** B1 and B2 lead to A1 to A4; B5 leads to G1 to G4; B3 leads to N1 to N3; B4 leads to C1 to C3.
+- **Book entry points:** the AMC subject books prepare for the corresponding AIME books. L14, M7, R10 and S12 provide transition practice; the old B1–B6 Bridge is no longer a book.
 - **Number theory:** N2 (CRT) leads to N3 (cycles and order), which leads to N6.5 (repeating decimals). N1 and N2 lead to N4 (valuations).
 - **Counting:** C1 and C2 lead to C3 and C4, then to C5 and C6, then to C7. A3's recurrences link to C5.
 - **Across books:** A6 (the complex plane) links to G6 (transformations), and G3 (trig geometry) links to A7 (trig algebra).
@@ -72,13 +72,13 @@ A student need not finish the books in order. Any chapter can be entered once it
 | symmetry and invariants | A8, C5, C8, G7 |
 | extremal arguments and bounds | A5, N5, C8 |
 | choosing a representation (variables, coordinates, residues, complements) | A1, A2, G4, G6, N2 |
-| restrictions and exact answers | B6 and every chapter review |
+| restrictions and exact answers | L14, M7, R10, S12 and chapter-end problems |
 | complete and non-overlapping cases | C1, C3, N5, A1 |
 | transfer without labels | every chapter review, and a review at the end of each book |
 
-## The AMC books, second plan (to replace the four AMC books and the Bridge)
+## The AMC books, second plan (implemented; historical rationale)
 
-**Status (2026-11-01):** built; the Bridge is removed. The rest of this section records the plan as it was made. Every chapter is to be written in the approved chapter structure (CONVENTIONS §14): X.1 Introduction, the lessons, a Summary with Problem Solving Strategies, then Review Problems and Challenge Problems; so each chapter below gains an Introduction before its first lesson and a Summary after its last, and its lesson numbers shift by one when it is built. It replaces the sections "Book: AMC Algebra" to "Book: AMC → AIME Bridge" below, which describe what is in the app now. The owner asked for the Bridge to be merged into the four AMC books, and for each book to run from the foundations to higher-level applications, so that a student who understands little can start on page one. The books are planned fresh, not to keep the lessons already written: nearly every AMC and Bridge lesson will be rewritten.
+**Status (2026-11-01):** built; the Bridge is removed. The rest of this section records the plan as it was made. Every chapter is to be written in the approved chapter structure (CONVENTIONS §14): X.1 Introduction, the lessons, a Summary with Problem Solving Strategies, then Review Problems and Challenge Problems; so each chapter below gains an Introduction before its first lesson and a Summary after its last, and its lesson numbers shift by one when it is built. The current "Book:" sections below already reflect the implementation, including shifted lesson numbers. The prospective language in this rationale records the original plan, not unfinished work. The owner asked for the Bridge to be merged into the four AMC books, and for each book to run from the foundations to higher-level applications, so that a student who understands little can start on page one. The books are planned fresh, not to keep the lessons already written: nearly every AMC and Bridge lesson will be rewritten.
 
 ### How the books are built
 
@@ -1638,7 +1638,7 @@ The configurations, lemmas and transformations of olympiad geometry. It assumes 
 
 The database's tags make the first half computable, since every problem already lists its cards. `node tools/learn-coverage.js` does three things:
 - checks that every id in this file is a real card;
-- checks that no card is taught in two lessons;
+- reports cards mentioned as taught in more than one lesson (this older report is not track-aware, so allowed cross-track reuse produces warnings);
 - counts the problems whose cited cards are all placed somewhere on the shelf.
 
 **First run (2026-10-31), after placing the cards it found missing:**
@@ -1649,10 +1649,10 @@ The database's tags make the first half computable, since every problem already 
 | AMC 12 | 1,195 | 1,209 |
 | AMC 10 | 1,187 | 1,202 |
 
-552 of the 765 cards are placed.
+That first-run snapshot placed 552 of 765 cards. The 2026-11-06 report places 721 of 765, with 715 taught in a lesson; all cited cards are placed for 1,055/1,064 AIME, 1,209/1,209 AMC 12 and 1,202/1,202 AMC 10 problems. Use `build-learn-shelf.py --check` for the current track-aware placement gate.
 
-That first run found AMC word-problem cards (proportions, averages, percents, ages) and some basic geometry facts that the proposal's titles had missed, and they are now placed (B1.5, B5.1 and others). The cards still unplaced are cited by one or two problems each, or are olympiad tools (`contrapositive`, `minkowski-inequality`). Each will be placed when its problem is given a lesson or a review, or left in the reference. The tags only show that a lesson exists for each card. Whether the lesson teaches the problem's step is checked by reading, in the audit.
+That first run found AMC word-problem cards (proportions, averages, percents, ages) and some basic geometry facts that the proposal's titles had missed, and they were placed in the original Bridge (B1.5, B5.1 and others), since merged into AMC books. At that time the cards still unplaced are cited by one or two problems each, or are olympiad tools (`contrapositive`, `minkowski-inequality`). Each will be placed when its problem is given a lesson or a review, or left in the reference. The tags only show that a lesson exists for each card. Whether the lesson teaches the problem's step is checked by reading, in the audit.
 
-**Possible gaps found while mapping.** These are not yet in `QUESTIONS.md`. They go there as P-candidates only if the audit shows contest problems need them.
+**Historical gap candidates from the first map.** These are not current approvals. Consult `QUESTIONS.md` for current decisions and verify a contest need before proposing a new card; Bridge lesson numbers below are historical.
 - A7.4: the full solution set of a trig equation such as $\sin\theta = \sin\alpha$ (already recorded as an open candidate in CONTRIBUTING's gap register).
 - B6.4: the AIME answer habits (exact arithmetic, 000 to 999). This is lesson prose, not a card.

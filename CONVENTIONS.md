@@ -1,7 +1,7 @@
 # CONVENTIONS
 
 Every rule here was measured against the cards of its day, and the count that proves it is quoted
-(most against 557 cards in September 2026, some against 700 in October; there are 759 now (2026-10-30), and
+(most against 557 cards in September 2026, some against 700 in October; there are 765 now (checked 2026-11-06), and
 `tools/scan-conventions.py` prints the current counts). If a rule has no number, it is not a rule. `CONTRIBUTING.md` holds the reasoning, the gap register and
 the per-year retag notes; this file is the checklist you follow while actually adding a card.
 
@@ -87,7 +87,7 @@ Exactly two field orders exist, and nothing else. Copy one of these.
 
 - `type` and `subject` appear on **213/213** `patterns.js` cards and on **0/546** subject-file cards (2026-10-30).
   Putting either in a subject file, or omitting either from `patterns.js`, is always wrong.
-- `latex` uses `String.raw` on **759/759** cards. Use it even when there is no backslash.
+- `latex` uses `String.raw` (the recorded 2026-10-30 census was **759/759** cards). Use it even when there is no backslash.
 - **never write a raw `<` followed by a letter inside `$...$`** — write `\lt`. Every one of these
   strings reaches the page through `innerHTML`, so the HTML parser sees `<j` as the start of a tag
   and eats everything up to the next `>` before KaTeX is ever called. This shipped once as
@@ -97,10 +97,9 @@ Exactly two field orders exist, and nothing else. Copy one of these.
   only *inside* math spans, because matching across the gap between two formulas just flags the
   intentional `<br>` in examples.
 - One card deviates: `periodic-sequences` in `patterns.js` orders its fields
-  `id, type, subject, name, ...`. That card was corrected, so the corpus now has **no** exception:
-  all 759 cards use one of the four canonical orders, the extra two being the same pair with an
+  `id, type, subject, name, ...`. That card was corrected. The 2026-10-30 census recorded all 759 cards using one of the four canonical orders, the extra two being the same pair with an
   optional `latexPlain` after `latex` (85 cards carry one on 2026-10-30; see "Expanded notation" below).
-  `tools/scan-conventions.py` names any card that is not in one of the two orders.
+  `tools/scan-conventions.py` reports deviations. On 2026-11-06 it still reports two legacy field-order exceptions: `closing-polygon-vectors` and `trig-series-complex` omit `level`. Do not copy those omissions into new cards.
 - Every card has a `latex` and a `description`. **0** cards omit either.
 
 ### Tiers
@@ -597,7 +596,7 @@ python3 tools/build-cross-links.py --seed && python3 tools/build-cross-links.py 
 ~/Downloads/competition-math-buildenv/bin/python tools/build-search-index.py   # on the Mac; in the cloud, the venv in §13
 ```
 
-The search index is rebuilt once at the end of a step that changed cards, not after each card (owner, 2026-10-25). Latest run: 157/187 top-1, MRR 0.906, over 765 cards (2026-10-30, cloud index; 160/187 and 0.910 for the 759-card build that day).
+The search index is rebuilt once at the end of a step that changed cards, not after each card (owner, 2026-10-25). Last recorded benchmark run: 157/187 top-1, MRR 0.906, over 765 cards (2026-10-30, cloud index; 160/187 and 0.910 for the 759-card build that day).
 
 - Bump `?v=` in `index.html` for **every** file you touched, including ones a build step regenerated
   (`search-glossary.js`). The exception is `search-vectors.{json,bin}`, which revalidate themselves.
@@ -609,7 +608,7 @@ The search index is rebuilt once at the end of a step that changed cards, not af
   A cold first run and a warm re-run differ by a point or two because the semantic index loads
   lazily; warm runs are reproducible to the query. Measured 2026-09-20 over 539 cards, the
   original 171 queries give **154 warm**, against a previously recorded warm **155**. The query
-  set is now **185**, and the renovation's clearer intros have lifted it to **170/185 warm, MRR
+  set at that historical checkpoint was **185** (the current suite contains 187), and the renovation's clearer intros have lifted it to **170/185 warm, MRR
   0.950** (2026-09-27, 556 cards; 172/187 with the two queries added for the 557th card and the
   linear-change-of-variables paraphrase). Two probe sets, `probe-queries.json` (64/78) and
   `probe2-queries.json` (48/77), are run alongside it after every batch to catch regressions
@@ -617,7 +616,7 @@ The search index is rebuilt once at the end of a step that changed cards, not af
   being accepted, and one was not accepted -- see CONTRIBUTING for the card that had to have its
   keywords narrowed because it out-ranked the general card it specialises.
   Adding a card jostles neighbouring queries by a rank or two; what must not move is the top-1 count.
-- On the rendered page: correct breadcrumb, all three write-up headings, the example block, 0
+- On the rendered page: correct breadcrumb, the write-up headings required for its kind, the example block, 0
   `.katex-error`, 0 `.card-link-broken`, and no literal `**`.
 
 ---
@@ -809,7 +808,7 @@ A long explanation is never one block of prose with inline math. Put the key equ
 - **Every AMC and AIME problem has its text**, imported from LIVE by `tools/fetch-live-statements.py` (run with `--all` to find new sittings), even when it has no strategy or tags yet. A problem with no card is an entry `{ ref, formulas: [] }` and its page says "Not classified yet"; tagging it is a later, separate step and only ever uses existing cards.
 - **The number beside a contest reads "N problems written"** and counts only problems that have a strategy in the app (since 2026-10-24; a problem with cards but no strategy is not counted), not those that have only their text. A contest still to come is listed in `js/data/problems/contests-planned.js`, is hidden until the reader presses Show unwritten contests, and carries no number. Proof-based competitions are not listed for now.
 - **Answer choices are blocks.** Each `(A)` to `(E)` line renders as its own block with vertical padding so a fraction can never touch its neighbor; a choice that is a picture is marked `@@ci:file|height@@` and shown small beside its letter.
-- **A statement LIVE lacks** is added by hand in `MANUAL_STATEMENTS` in the importer and credited to the source it came from, never to LIVE: Fall 2021 AMC 10B #11 (the AoPS Wiki), and the Fall 2021 AMC 10A and 10B papers typed from the owner's PDFs (`tools/manual_statements.py`, credited to the MAA). The Fall 2021 AMC 12A and 12B come from LIVE, filed there as its 2021 C and D papers.
+- **A statement unavailable during an import** can be added by hand in `MANUAL_STATEMENTS` in the importer and credited to the source it came from, never to LIVE: Fall 2021 AMC 10B #11 (the AoPS Wiki), and the Fall 2021 AMC 10A and 10B papers typed from the owner's PDFs (`tools/manual_statements.py`, credited to the MAA). The Fall 2021 AMC 12A and 12B come from LIVE, filed there as its 2021 C and D papers.
 
 ## List kinds (2026-10-11)
 
@@ -934,7 +933,7 @@ See `MIGRATION-NOTES.md` for the full answers.
 - The session header says Practice set · Topic, with numbered problem navigation, answer count and Save and exit / Finish and review actions. Back to Practice intentionally duplicates Save and exit. Neither exiting nor submitting asks for confirmation. No timer or timer setting is offered.
 - Store stable problem slugs, submitted answers, selected position and review flags in `mq-practice-sets`, managed by `js/practice-sessions.js`. Batch rapid input saves briefly, then flush on navigation, finish, pagehide or tab hiding. Saving failures must be visible. Practice sets below Contests groups unfinished and completed sets separately. Progress export/import merges sets by ID, keeping the latest update.
 - Use structured answer keys imported by `tools/fetch-answer-keys.py`, validated against local statements. Keep the per-paper source URLs. Never infer a grade from strategy prose or old self-check marks. New sets draw only problems with keys; a legacy item without a key says Answer unavailable. AIME grading compares integers, so leading zeros do not change the answer. Tests are in `tests/practice-sessions.cjs` and `tests/answer-keys.cjs`.
-- Each practice history group shows at most two rows at the current viewport width, with its own existing-style Show more / Show less bar when needed.
+- Each practice history group shows at most two rows at the current viewport width, with its own existing-style Show all / Show less bar when needed.
 - Completed sets open a results overview with score, outcome counts and per-problem review links; detailed review links back to the overview.
 - Review separates the statement from the result/explanation panel. Keep A–E choices visible with the submitted selection. Say Incorrect, not Revisit. How this problem works reuses the problem page's strategy and Pattern/Method/Formulas chain, with matching blue Open in app and Open in AoPS buttons side by side after the chain, and Study a concept more only when the problem page offers it. No self-grading controls remain.
 - Answered navigation buttons use a small checkmark, flagged problems use a corner dot, and the current problem uses a single blue border. Results tint Correct green and Incorrect red. Marking or answering updates controls in place without scrolling or re-rendering the statement.
@@ -972,7 +971,7 @@ window.MATH_LEARN["N3"] = {
 };
 ```
 
-A chapter in the approved chapter structure (C5) has no `review`. Its first lesson is the Introduction and its last the Summary, which adds `strategies: [String.raw`...`, ...]` (the Problem Solving Strategies). The closing pages are `reviewProblems: { exercises: [...], problems: [...] }` and `challenge: { exercises: [...], problems: [...] }`. The gate (`tools/check-learn.js`) checks this shape.
+All current chapters use the approved structure and have no `review`. The snippet above is a legacy schema illustration, not a template for new chapters; copy a current chapter file such as `js/data/learn/aime-counting/c1.js` when authoring. Its first lesson is the Introduction and its last the Summary, which adds `strategies: [String.raw`...`, ...]` (the Problem Solving Strategies). The closing pages are `reviewProblems: { exercises: [...], problems: [...] }` and `challenge: { exercises: [...], problems: [...] }`. The gate (`tools/check-learn.js`) checks this shape.
 
 The code and title of each lesson come from the shelf, never from this file. A chapter with no file shows its lessons as "Not written yet".
 
@@ -983,7 +982,7 @@ The code and title of each lesson come from the shelf, never from this file. A c
 
 **A lesson's explanation is one flowing section of paragraphs, with no subheadings** (owner, 2026-10-31: headings cut the reasoning into disjointed pieces). The first paragraph summarizes the lesson: the kind of problem the idea answers (two or three concrete instances), the idea in a sentence, and what it buys. The paragraphs after it explain every nuance in order, each following from the one before, as accurately as is reasonable, and the last says when to reach for the idea and where the chapter goes next. Lesson text is set larger than a card's write-up (15.5px, in the main text colour), since a lesson is read straight through.
 
-**Related cards** (owner, 2026-10-31). The explanation names a card only where the card is the very thing being explained (N3.1 says its listing routine is what [[cycle-hunting|finding the period]] means), and then as part of the sentence. Every other connection goes into the lesson's `related` list, `[{ card, note }]`, shown after the explanation under "Related cards" as one bullet each: the card, then how the lesson's content connects to it. The lesson's "Teaches you about" and "Assumes you know" rows are plain card links. A setting, Browsing → Card links in lessons, chooses whether a card link opens the card in the drawer beside the lesson (the default) or goes to the card's page.
+**Related cards** (owner, 2026-10-31). The explanation names a card only where the card is the very thing being explained (N3.1 says its listing routine is what [[cycle-hunting|finding the period]] means), and then as part of the sentence. Every other connection goes into the lesson's `related` list, `[{ card, note }]`, shown after the explanation under "Related cards" as one bullet each: the card, then how the lesson's content connects to it. The lesson's "Teaches you about" and "Assumes you know" rows are plain card links. A setting, Learn → Card links in lessons, chooses whether a card link opens the card in the drawer beside the lesson (the default) or goes to the card's page.
 
 A lesson never restates a card's content: it says why the idea is needed and how it connects, and links the card (one fact, one home). Every number is checked by computation before it is written.
 
@@ -1003,7 +1002,7 @@ The math keyboard and its grammar (`js/learn-answer.js`, described below as firs
 
 The button is disabled until the box holds some non-blank text. Pressing it shows the strategy, any "Alternatively, ...", and the card chain. These are always hidden before that, whatever the Strategy setting says (the setting governs problem pages in Practice only). There is no Hint link. A link opens the problem's own page.
 
-**Placement.** Each contest problem is listed in exactly one place on the shelf: one lesson's problems or one review. AMC 10/12 twins count as one problem. Other lessons may link to it in their prose. The gate checks this rule, and that every ref is a problem in the database.
+**Placement.** Each contest problem is listed in exactly one primary place per track: one lesson's problems or one chapter-end problem set. Cross-track reuse is allowed. AMC 10/12 twins count as one problem. Other lessons may link to it in their prose. The gate checks this rule, and that every ref is a problem in the database.
 
 **Addresses.**
 
@@ -1017,13 +1016,15 @@ The button is disabled until the box holds some non-blank text. Pressing it show
 | a chapter review, or Review Problems | `#/learn/<book-id>/<code>/review` |
 | Challenge Problems | `#/learn/<book-id>/<code>/challenge` |
 
+**Book search** (owner, 2026-11-06). Search this book... appears below the contents-page subtitle and in the right half of desktop chapter navigation; mobile has the same field above the lesson. Results stay within the book and link to chapters. An exact normalized chapter title ranks first; explicit chapter codes must belong to the current book. Rank titles and lesson headings above related-card metadata and lesson text, supporting partial words, synonyms and small typos. Match Settings suggestions, including keyboard selection, Escape dismissal, math rendering and a highlighted first result. Keep the level explanation in How to Use This Book, with actual Core/Core II/Extension badges in the prose rather than repeating it on the contents page.
+
 **The book view** (owner, 2026-10-31). The Learn page shows every book as a cover (folded past two rows behind "Show all textbooks") (a coloured rectangle with the series, the title, a drawn motif and the size; `BOOK_MOTIFS` in `js/app.js`). Pressing one opens the book's own page, which has no rail and no header: the cover with the book's line, its size and a Start or Continue button, then the table of contents, each chapter a heading (code, title, level, lessons written) over its lessons and review as links, chapters divided by hairlines (no boxes). The book's other pages follow an online textbook's structure, drawn in the app's own design language (rounded bordered cards, soft tints of the book's colour, pill buttons, hairlines; never solid colour bars and never a box inside a box):
 - a rounded rail of tabs on the left: C for the contents, then each chapter's number, all one height with no markers; the current one tinted. Each tab is a scrubber: a chapter tab's height is split evenly into the chapter's pages (the C tab gives Contents its top three quarters and How to Use This Book its bottom quarter), its card is centered on the tab and drawn in front of everything, the top bar included, pointing or pressing at a height names that page in a small card, and a click or a release opens it;
-- a header card attached to the top of the page (it scrolls away with the page; no sticky headers): the cover, then two rows, the chapter's ("Chapter 3") and the lesson's ("Lesson"), each with a small label and two arrow buttons;
+- a header card attached to the top of the page (it scrolls away with the page; no sticky headers): the cover and two navigation rows on the left (chapter and lesson, each with a small label and two arrows), and Search this book... on the right;
 - each problem in its first look: a rounded card with its number and contest reference, the statement as plain text (no box inside the card), then the work box with Show Solution to its right (under it on a phone), which becomes Hide Solution once shown; the box starts two lines tall, grows with its text, and cannot be dragged to resize;
 - at the bottom, three small plain links (no cards, no background until hovered): ‹ the previous page, Back to top, the next page ›.
 
-On a phone (760 px and narrower) there is no rail and no title bars: a line names the book and the place in it, and a row pinned under the top bar holds the previous page, a menu of every chapter and page, and the next page. The card drawer is a sheet at the bottom that closes when swiped down.
+On a phone (760 px and narrower) there is no rail and no title bars: a line names the book and the place in it, and a row pinned under the top bar holds the previous page, a menu of every chapter and page, and the next page. Search this book... sits below that navigation and above the lesson. The card drawer is a sheet at the bottom that closes when swiped down.
 
 The pages run in one order through the book (each chapter's overview, its lessons, its review; in the approved structure, its Introduction, lessons, Summary, Review Problems and Challenge Problems), which the arrows and the bottom cards follow. A lesson's problems and a review are shown easiest first, by `difficultyScore` (the contest's level plus the place in its paper), whatever order the file lists them in.
 
@@ -1054,7 +1055,7 @@ The old list addresses are kept (§9).
 - no `{{check}}` marker or `checks` field remains;
 - each written lesson is on the shelf.
 
-**Two tracks.** The four AMC books (AMC Algebra, Number Theory, Counting & Probability, Geometry; each covers the AMC 10 and AMC 12, its chapters marked Core, Core II or Extension, never AMC 10 or AMC 12) and the AIME books are separate tracks (the Bridge, once part of the AIME track, was removed 2026-11-01, its lessons merged into the AMC books) (owner's goal, 2026-10-31): a student uses one or the other, so the rules "a card is taught in one lesson" and "a problem is placed once" hold within each track. An AMC lesson may teach a card, or use a problem, that an AIME lesson also teaches or uses. Within a track, an AMC 10/12 twin pair still counts as one problem.
+**Placement across tracks.** The current shelf has AMC, AIME and Olympiad tracks. The four AMC books (AMC Algebra, Number Theory, Counting & Probability, Geometry; each covers the AMC 10 and AMC 12, its chapters marked Core, Core II or Extension, never AMC 10 or AMC 12) and the AIME books are separate tracks (the Bridge, once part of the AIME track, was removed 2026-11-01, its lessons merged into the AMC books) (owner's goal, 2026-10-31): a student uses one or the other, so the rules "a card is taught in one lesson" and "a problem is placed once" hold within each track. An AMC lesson may teach a card, or use a problem, that an AIME lesson also teaches or uses. Within a track, an AMC 10/12 twin pair still counts as one problem.
 
 **Chapter structure (approved by the owner after the C5 pilot, 2026-10-31; every new or reworked chapter follows it).** A chapter opens with X.1 Introduction and closes with a Summary lesson, then two pages:
 - **Level (owner, 2026-10-31).** The books are high level and not too easy. Basic is not easy: a basic problem uses only simple techniques but can be hard to solve.

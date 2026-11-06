@@ -3838,7 +3838,7 @@ html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top:
   /* Nothing that floats over the page, or only works on screen, prints (owner, 2026-10-31): a
      toast such as "Link copied", the menus and dropdowns, the drawer and its backdrop, the
      phone's book navigation, and the card buttons. */
-  .toast, #mq-toast, .space-ref-menu, .set-find-list, .nav-backdrop, .bk-mnav, .pv-nav, .lp-drawer,
+  .toast, #mq-toast, .space-ref-menu, .book-search, .set-find-list, .nav-backdrop, .bk-mnav, .pv-nav, .lp-drawer,
   .star-btn, .addlist-btn, .copy-btn, .more-hint, .chain-toggle, .pl-new-btn, .toc-tool { display: none !important; }
   .layout, .detail-with-tools { display: block; }
   .content { max-width: none; margin: 0; }
@@ -4202,7 +4202,7 @@ html[data-text="larger"] .lp-body p { font-size: 19px; }
 .practice-session .practice-reviewed.cn-here[data-result="Correct"] { background: rgba(42, 163, 88, .16); }
 .practice-session .practice-reviewed.cn-here[data-result="Incorrect"] { background: rgba(220, 67, 67, .16); }
 .practice-session-actions { font-size: 14px; color: var(--text-dim); }
-.practice-session .cn-nums:has(+ .practice-review-actions) { margin-bottom: 4px; padding-bottom: 4px; }
+.practice-session .cn-nums:has(+ .practice-review-actions) { margin-bottom: 10px; padding-bottom: 6px; }
 .practice-review-actions { display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
 .practice-session-actions > div { display: flex; gap: 10px; flex-wrap: wrap; }
 .practice-session .hp-btn { font-family: inherit; cursor: pointer; margin-top: 0; }
@@ -4273,3 +4273,23 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 .practice-history-list > [hidden], .practice-history-more[hidden] { display: none; }
 
 .practice-history-more { display: block; width: 100%; }
+
+/* Search stays within the current textbook and shares Settings suggestion styling. */
+.bk-bars { grid-template-columns: 40px minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
+.bk-bars-navigation { min-width: 0; }
+.bk-bars-cover { grid-row: auto; }
+.book-search { min-width: 0; }
+.bk-bars > .book-search { max-width: none; margin: 0; padding-left: 14px; border-left: 1px solid var(--border); }
+.book-search-option > span:first-child { min-width: 0; }
+.bk-hero-text > .book-search { max-width: 420px; margin: 12px 0; }
+.book-search-mobile { display: none; }
+.bk-howto .lb-level { vertical-align: baseline; }
+@media (max-width: 1000px) and (min-width: 761px) {
+  .bk-bars { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .bk-bars-cover { display: none; }
+  .bk-bars .bk-bar-k { display: none; }
+}
+@media (max-width: 760px) {
+  .book-search-mobile { display: block; }
+  .book-search-mobile .book-search { max-width: none; margin: 10px 0; }
+}

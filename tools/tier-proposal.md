@@ -1,5 +1,7 @@
 # Proposed contest tiers (v2)
 
+> **Historical record.** This file preserves its dated migration, review or proposal. Counts, pending language and “now” describe that snapshot, not the current app. Use [PLAN.md](../PLAN.md) for current status and [QUESTIONS.md](../QUESTIONS.md) for outstanding decisions. Current card metadata lives in `js/data/`; these tables are not an import specification.
+
 Each card gets the first stage where it is needed: **AMC** (AMC 10/12, problems 1-25), **AIME Early** (first needed at AIME 1-10), **AIME Late** (first needed at AIME 11-15), or **Olympiad** (not needed on AMC or AIME). Evidence columns: tagged practice problems on the AMC (A), AIME 1-10 (E), and AIME 11-15 (L).
 
 Totals: AMC 338 (53%), AIME Early 65 (10%), AIME Late 126 (20%), Olympiad 114 (18%).

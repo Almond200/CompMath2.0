@@ -12,18 +12,23 @@
 
 ## Running the checks in a cloud session
 
-`./tools/gates.sh` runs all of these but `check-labels.py` in order and stops at the first failure.
+`./tools/gates.sh` runs the convention, topic, list, shelf, practice-gap, diagram, statement, lab and database checks, stopping at the first failure. It does not run `check-labels.py` or the three regression suites below. It writes logs to `/tmp`; if that path is unavailable, run the constituent commands with logs in a writable directory.
 
 ```bash
-export JSC=$PWD/tools/jsc-node CHROME=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome
+export JSC=$PWD/tools/jsc-node
+# Set CHROME to an installed Chromium executable before browser-dependent checks.
 python3 tools/scan-conventions.py && python3 tools/check-topics.py && python3 tools/check-lists.py
 python3 tools/check-diagrams.py && python3 tools/check-statements.py && ./tools/check-lab.sh
-python3 tools/check-labels.py          # 7 known "far-move" findings caused by fonts are the baseline (2026-10-24)
+python3 tools/check-labels.py          # historical 2026-10-24 baseline: 7 font-related far-move findings
+python3 tools/build-learn-shelf.py --check
+node tests/practice-sessions.cjs
+node tests/answer-keys.cjs
+node tests/book-search.cjs
 node tools/practice-gaps.js --check     # every card has two practice problems
 $JSC tools/validate-problem-db.js
 ```
 
-- **Serving and checking pages:** `python3 -m http.server 8765` serves the app. Check pages in headless Chromium (Playwright is preinstalled; `executablePath` is the `CHROME` above): 0 KaTeX errors, no overflow at 375 px, light and dark.
+- **Serving and checking pages:** `python3 -m http.server 8765` serves the app. Check pages in headless Chromium (check that Playwright and Chromium are installed; use `CHROME` as `executablePath`): 0 KaTeX errors, no overflow at 375 px, light and dark.
 - **Versions:** `python3 tools/bump-versions.py --changed` bumps `?v=` in `index.html` for every changed file and syncs the lab pages. By hand: bump `?v=` for every touched file, then run `python3 tools/sync-lab-versions.py` so the lab pages load the same versions; `check-lab.sh` fails if they drift. Bump `STATEMENTS_V` in `js/app.js` when statement files change.
 
 ## Standing preferences
@@ -31,7 +36,7 @@ $JSC tools/validate-problem-db.js
 - Filter candidates with common sense before they go into `QUESTIONS.md`: propose what AMC, AIME or olympiad problems actually use. An olympiad-only result belongs when it is shown to be significant there (cite the kind of problem it solves); results never used in contests, such as Dirac's theorem or the Prime Number Theorem estimate, stay out (owner, 2026-10-30).
 - Every missing formula or card found while tagging goes into `QUESTIONS.md` ("Candidate new cards from the practice pass", next P-number, at the top of the table) for approval; the problem cites the nearest card meanwhile.
 - Never put the owner's name in the app's files.
-- Never re-add problem search, the in-app find, hints, a label setting, or a level filter.
+- Never re-add problem search, the in-app find, hints, a label setting, or a level filter. The book-scoped chapter search is explicitly requested (2026-11-06); keep it separate from the main reference search.
 - Before editing any card, reread CONVENTIONS §1 and §2: a Key forms bullet is the maths, then ` — `, then a short lowercase gloss, never a paragraph; every Key form is proved in Why it works (owner, 2026-11-01).
 - One fact, one home.
 - Every number is checked by computation.
@@ -40,7 +45,7 @@ $JSC tools/validate-problem-db.js
 - Rebuild the search index once at the end of a step, not after each small card edit (owner, 2026-10-25).
 - Tag a card only where the problem's route really uses it (never to give a new card a problem); a tag on a shared AMC 10/12 problem goes on both twins.
 - No sticky headers: a page's header scrolls away with the page (a side rail may stay beside it) (owner, 2026-10-31). On a phone the top bar and the book view's navigation row stay pinned, at the owner's word.
-- Prefer app-styled searchable suggestions and dialogs to native browser dropdowns, prompts and confirmation popups. Practice sets save on exit without a confirmation; Finish and review submits directly. Keep both Back to Practice and Save and exit. Practice sets have no timer or timer setting (owner, 2026-11-05).
+- Prefer app-styled searchable suggestions and dialogs to native browser dropdowns, prompts and confirmation popups. Practice sets save on exit without a confirmation; Finish and review submits directly. Keep the top-left Back to Practice link and Save and exit during practice; do not duplicate the back link as a review button. Practice sets have no timer or timer setting (owner, 2026-11-05).
 - No boxes inside boxes: a subsection inside a panel is a heading over its content, not a second bordered box (owner, 2026-10-31).
 - Our own design language: rounded bordered cards, soft tints, pill buttons, hairlines. Take another site's structure when it is easier to use, never its look (owner, 2026-10-31).
 - Links are always the app's blue, never purple after a visit (owner, 2026-11-01).
