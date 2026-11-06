@@ -1,6 +1,6 @@
 # Topic tree (draft)
 
-**Status: draft v3 (2026-11-06): the owner's answers to TQ1 to TQ5 are in, every topic has subtopics, and the tree has been tested on the 2025 AMC 10A, the 2025 AIME I and the 2026 AMC 10A. Nothing in the app uses it yet.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
+**Status: draft v3 (2026-11-06): the owner's answers to TQ1 to TQ5 are in, every topic has subtopics, and the tree has been tested on the 2025 AMC 10A, the 2025 AIME I, the 2026 AMC 10A and the 2026 AMC 12A. Nothing in the app uses it yet.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
 
 ## Why
 
@@ -625,6 +625,27 @@ Filed when the paper was added to the app. All 25 found a home; two needed a nod
 25. Evening out twenty rooms of nuts: `cp.logic.pigeon.bounds`, `cp.logic.invariant.ops`.
 
 Spread by first node: 8 Algebra, 8 Geometry, 5 Counting & Probability, 4 Number Theory; 15 problems take a second node. Problem 23 used a node added by the leaf audit (counting multiples in a range).
+
+## Test: the 2026 AMC 12A (2026-11-06)
+
+Filed when the paper was added. Eleven problems are shared with the 2026 AMC 10A and take the same nodes as their 10A twins: 12A #1 to #6, #10, #11, #16, #17 and #20 are 10A #2, #3, #4, #5, #7, #10, #15, #16, #21, #22 and #24. The other 14 all found a home, and none needed a new node.
+
+7. $(1+i)^{20}+(1-i)^{20}$: `alg.cx.polar.demoivre`.
+8. A school averages two attendance percentages: `alg.word.stats.weighted`, `alg.word.ratio.percent`.
+9. A system with $|x^2-y^2|=4$: `alg.eq.system.sub`, `alg.eq.abs.eq`.
+12. Numbers meeting at least one of five congruences: `nt.mod.crt.system`, `cp.basic.case.complement`.
+13. Four die rolls placed at random in increasing order: `cp.prob.dice.dice`, `cp.basic.perm.distinct`.
+14. Two open boxes that hold a third: `geo.solid.prism.box`.
+15. $\log_2\big(\sin(a+b)\sin(a-b)\big)$: `alg.trig.identity.sum`, `alg.exp.log.rules`.
+18. A sphere cut by three perpendicular planes: `geo.solid.round.sphere`, `geo.solid.coord.dist`.
+19. $\sin x+\sin2x+\sin3x=1+\cos x+\cos2x$: `alg.trig.eq.solve`, `alg.trig.identity.product`.
+21. A random cut point in a hexagonal cookie: `cp.prob.geom.region`, `geo.poly.regular.hex`.
+22. Formations of eight birds: `cp.graph.basic.trees`, `cp.tech.rec.count`.
+23. An infinite product when $x^3+x^2=1$: `alg.seq.sum.telescope`, `alg.poly.higher.cubic`.
+24. Two tangent circles in a right trapezoid: `geo.circ.tangent.inscribed`, `geo.coord.line.point`.
+25. At least $50$ solutions of $x^2\equiv1\pmod m$: `nt.mod.crt.split`.
+
+Spread of the 14 by first node: 6 Algebra, 3 Counting & Probability, 3 Geometry, 2 Number Theory; 11 take a second node. That no node was missing on a fourth paper suggests the tree is close to complete at the AMC level.
 
 ## Decisions (owner, 2026-11-06)
 

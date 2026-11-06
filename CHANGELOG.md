@@ -2,6 +2,8 @@
 
 **2026-11-06**
 
+- Topic tree tested on a fourth paper, the 2026 AMC 12A: its 11 problems shared with the 10A take their twins' nodes, and the other 14 all found a home with no new node needed. Recorded in `TOPIC-TREE.md`. Settings → Credits now names its sources in general, with no paper singled out (owner): LIVE for most text, figures and keys; MAA PDF copies, the Random Math wiki and the Art of Problem Solving Wiki for some papers; Think Academy's published keys for checking some answer keys.
+
 - Added the 2026 AMC 12A, with only an AMC 12A header under AMC 12 2026: 25 statements, six figures and the answer key, from Random Math's wiki (LIVE has not published it). The 11 problems it shares with the 10A (12A #1-6, 10, 11, 16, 17, 20) carry the 10A's strategy and tags word for word, so practice sets count them once; the other 14 have new strategies, and all 14 answers were checked by independent computation. Both 2026 keys were then checked against a second source, Think Academy's published answer-key images, and agree letter for letter (the owner's copy of the 10A key agrees too); Settings → Credits names both sources. Counts: 4,725 problems, 4,715 statements and answer keys.
 
 - Home page, Problem of the day: its tag chips are now links to their tag pages, like the chips on a problem's page; the rest of the panel still opens the problem. Book search (both fields) shows nothing until something is typed, as in Settings (owner); only the Practice topic picker keeps default suggestions.
