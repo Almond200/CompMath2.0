@@ -5370,10 +5370,9 @@
     $content.innerHTML = `<div class="space-home practice-session">
       <a class="back-link" href="#/practice">&larr; Back to Practice</a>
       <section class="sh-section">
-        <div class="practice-session-top"><div><h2>Practice set · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problems · ${escapeAttr(set.difficulty)} difficulty${finished ? ' · Review' : ''}</p></div></div>
+        <div class="practice-session-top"><div><h2>Practice set · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problems · ${escapeAttr(set.difficulty)} difficulty${finished ? ' · Review' : ''}</p></div>${finished ? `<div class="practice-review-actions"><a class="hp-btn hp-btn-soft" href="#/practice/set/${encodeURIComponent(set.id)}">Results overview</a><a class="hp-btn hp-btn-soft" href="#/practice">Back to Practice</a></div>` : ''}</div>
         <nav class="cn-nums" aria-label="Practice problems">${nav}</nav>
-        <div class="practice-session-actions"><span>${finished ? `${set.slugs.filter(id => practiceSessions.result(set,id) === 'Correct').length} correct · ${set.slugs.filter(id => practiceSessions.result(set,id) === 'Incorrect').length} incorrect${set.slugs.some(id => practiceSessions.result(set,id) === 'Answer unavailable') ? ' · ' + set.slugs.filter(id => practiceSessions.result(set,id) === 'Answer unavailable').length + ' without answer keys' : ''} · ${set.slugs.length - answered} unanswered` : `${answered} of ${set.slugs.length} answered`}</span>
-          <div>${finished ? `<a class="hp-btn hp-btn-soft" href="#/practice/set/${encodeURIComponent(set.id)}">Results overview</a>` : ''}<a class="hp-btn hp-btn-soft" href="#/practice">${finished ? 'Back to Practice' : 'Save and exit'}</a>${finished ? '' : '<button type="button" class="hp-btn" id="finish-practice">Finish and review</button>'}</div></div>
+        ${finished ? '' : `<div class="practice-session-actions"><span>${answered} of ${set.slugs.length} answered</span><div><a class="hp-btn hp-btn-soft" href="#/practice">Save and exit</a><button type="button" class="hp-btn" id="finish-practice">Finish and review</button></div></div>`}
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
       <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</h3>
