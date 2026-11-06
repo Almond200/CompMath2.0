@@ -16,6 +16,11 @@ Take $P$ to be the centroid of a scalene triangle. The cevian feet are the three
     },
     "O4.2": {
       prereq: ["inscribed-angle-theorem"], cards: ["pedal-triangle", "excentral-triangle", "orthocentric-system"],
+      related: [
+        { card: "orthocenter-properties", note: String.raw`the orthic triangle, the pedal triangle of $H$ (G5.3).` },
+        { card: "simson-line", note: String.raw`the pedal triangle of a point on the circumcircle, collapsed to a line (G5.6).` },
+        { card: "incenter-excenter-lemma", note: String.raw`the circle through $B$, $C$, $I$, $I_A$ inside the excentral picture (G5.2).` }
+      ],
       body: String.raw`Drop perpendiculars from an interior point $P$ to $BC,CA,AB$, with feet $D,E,F$. What determines the length $EF$? Both $E$ and $F$ see $AP$ at a right angle, so they lie on the circle with diameter $AP$. For feet on the side segments, chord $EF$ subtends angle $A$ at the vertex. Thus $EF=AP\sin A$ by the extended sine rule in that circle. The lengths of the [[pedal-triangle|pedal triangle]] tell us distances to the original vertices.
 
 Now reverse the question. Can the original triangle itself be obtained from perpendiculars in a larger triangle? Take the excenters $I_A,I_B,I_C$, where $I_A$ lies on the internal bisector at $A$. Both $I_B$ and $I_C$ lie on the external bisector at $A$, perpendicular to the internal one. So in the [[excentral-triangle|excentral triangle]], the altitude from $I_A$ passes through $A$ and the incenter $I$. The other two altitudes pass through $B,I$ and $C,I$. Consequently $ABC$ is the pedal triangle of $I$ relative to the excentral triangle.
@@ -30,6 +35,12 @@ Read the same perpendicularities with different vertices. In any acute triangle 
     },
     "O4.3": {
       prereq: ["steiner-ratio-theorem", "cevas-theorem"], cards: ["isogonal-conjugate", "isotomic-conjugate", "cevian-nest"],
+      related: [
+        { card: "isogonal-line-lemma", note: String.raw`the reflection in the bisector that defines each conjugate cevian (O3.2).` },
+        { card: "symmedian-lemoine", note: String.raw`the Lemoine point, the isogonal conjugate of the centroid (G5.6).` },
+        { card: "gergonne-nagel-points", note: String.raw`the Gergonne and Nagel points, a pair of isotomic conjugates.` },
+        { card: "cevas-theorem", note: String.raw`the concurrence test behind both conjugations (G5.5).` }
+      ],
       body: String.raw`Three lines $AD,BE,CF$ meet at an interior point $P$. Reflect each line in the bisector at its own vertex. Why should all three images pass through one point? Write $r=\frac{BD}{DC}$, $s=\frac{CE}{EA}$, $t=\frac{AF}{FB}$, so $rst=1$. At $A$, Steiner's ratio theorem gives the new ratio $\frac{1}{r}\left(\frac{AB}{AC}\right)^2$. Cycling the vertices multiplies the three old reciprocals by $(\frac{AB}{AC})^2(\frac{BC}{BA})^2(\frac{CA}{CB})^2=1$. Ceva now proves concurrence. The new point is the [[isogonal-conjugate|isogonal conjugate]] of $P$.
 
 Instead reflect $D,E,F$ in the midpoints of their respective sides. Each ratio just turns upside down. Again the product is $1$, and the new point is the [[isotomic-conjugate|isotomic conjugate]]. These operations have different fixed points: vertex bisectors fix the incenter in the first construction, while side midpoints fix the centroid in the second.
@@ -43,8 +54,12 @@ For an example with two triangles inside each other, use the cevian triangle $DE
       ]
     },
     "O4.4": {
-      prereq: [], cards: [],
-      body: String.raw`Two perpendicular feet beside a vertex determine a circle whose diameter joins that vertex to the original point. With excenters, the perpendiculars come from the internal and external bisectors at the same vertex. For cevians, keep a different record: write the three ratios in cyclic order. Reflecting three feet or three rays then gives three new ratios whose product explains concurrence.`,
+      prereq: ["pedal-triangle", "excentral-triangle", "orthocentric-system", "isogonal-conjugate", "isotomic-conjugate", "cevian-nest"], cards: [],
+      body: String.raw`[[pedal-triangle|The pedal triangle]] of $P$ has area $\frac{|R^2-OP^2|}{4R^2}[ABC]$ and collapses to a line exactly when $P$ is on the circumcircle. [[excentral-triangle|The excentral triangle]] has $I$ as orthocenter and circumradius $2R$, and an [[orthocentric-system|orthocentric system]] is four points each the orthocenter of the other three.
+
+[[isogonal-conjugate|Isogonal conjugation]] reflects three concurrent cevians in the bisectors, $(x:y:z)\mapsto\left(\frac{a^2}{x}:\frac{b^2}{y}:\frac{c^2}{z}\right)$; [[isotomic-conjugate|isotomic conjugation]] reflects the feet over the midpoints, $(x:y:z)\mapsto\left(\frac1x:\frac1y:\frac1z\right)$. [[cevian-nest|The cevian nest theorem]] passes concurrence from a cevian triangle to a triangle inscribed in it.
+
+Two perpendicular feet beside a vertex determine a circle whose diameter joins that vertex to the original point. With excenters, the perpendiculars come from the internal and external bisectors at the same vertex. For cevians, keep a different record: write the three ratios in cyclic order. Reflecting three feet or three rays then gives three new ratios whose product explains concurrence.`,
       strategies: ["When two feet appear next to a vertex, draw the diameter joining that vertex to the point being projected.", "At a vertex of the original triangle, label which excenters lie on the external bisector.", "Before applying Ceva, name the reference triangle and check that each marked foot lies on its opposite side."]
     }
   },

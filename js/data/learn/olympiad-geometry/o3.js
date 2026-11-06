@@ -16,6 +16,11 @@ A ratio records what the eye misses. If $D$ is on $BC$, the triangles $ABD$ and 
     },
     "O3.2": {
       prereq: ["ratio-lemma"], cards: ["isogonal-line-lemma", "steiner-ratio-theorem", "iran-lemma"],
+      related: [
+        { card: "angle-bisector-theorem", note: String.raw`the bisector itself, the mirror of every isogonal pair (G1.4).` },
+        { card: "symmedian-lemoine", note: String.raw`the reflected median, whose foot divides $BC$ as $AB^2:AC^2$ (G5.6).` },
+        { card: "trig-ceva", note: String.raw`the sine form of Ceva, which an isogonal reflection leaves concurrent (G5.5).` }
+      ],
       body: String.raw`Let $AD$ and $AE$ be rays inside angle $A$, reflected in its bisector, with $D,E$ on $BC$. Write $u=\angle BAD$ and $v=\angle DAC$. The area computation gives $\frac{BD}{DC}=(\frac{AB}{AC})\frac{\sin u}{\sin v}$. For $E$ the sines exchange places. Multiplying gives [[steiner-ratio-theorem|Steiner's ratio theorem]]: the product of the two side ratios is $(\frac{AB}{AC})^2$. For instance, if $\frac{AB}{AC}=\frac{2}{3}$ and $\frac{BD}{DC}=2$, the reflected ray cuts the side in the ratio $\frac{2}{9}$.
 
 Sometimes the diagram gives two crossing pairs of lines instead of two marked feet. Choose points $X,Y$ on the reflected rays. Set $P=BX\cap CY$ and $Q=BY\cap CX$, assuming distinct, finite intersections. The [[isogonal-line-lemma|isogonal line lemma]] lets us apply the same product test to $AP,AQ$. The crossing is essential: at $B$ one uses $BX$ for the first intersection and $BY$ for the second, and at $C$ the choices switch.
@@ -30,6 +35,12 @@ A reflection also explains the [[iran-lemma|Iran lemma]]. Reflect $C$ across $BI
     },
     "O3.3": {
       prereq: ["power-of-a-point"], cards: ["humpty-queue-points", "dumpty-point", "shooting-lemma"],
+      related: [
+        { card: "orthocenter-properties", note: String.raw`the circle $BHC$, the circumcircle's mirror image, on which the Humpty point lies (G5.3).` },
+        { card: "symmedian-lemoine", note: String.raw`the symmedian whose chord the Dumpty point bisects (G5.6).` },
+        { card: "spiral-similarity", note: String.raw`the Dumpty point as the center taking $B$ to $A$ and $A$ to $C$ (G6.3).` },
+        { card: "homothety-monge", note: String.raw`the homothety at $T$ that aims the shooting lemma at the arc midpoint (G6.5).` }
+      ],
       body: String.raw`How can you locate a point on a median without finding the orthocenter first? Put the midpoint $M$ of $BC$ at the origin, take $B=(-s,0)$, $C=(s,0)$ and write $A=(u,v)$ with $v>0$. The altitude through $A$ is vertical. The altitude through $B$ has slope $\frac{s-u}{v}$, so their intersection is $H=(u,\frac{s^2-u^2}{v})$. The dot product of $MA$ and $MH$ as vectors is therefore $s^2$. Project $H$ onto $AM$ at $X$: the same product is $MA\cdot MX$. Thus the [[humpty-queue-points|Humpty point]] is the inverse of $A$ in the circle with diameter $BC$. For its companion, the Queue point, draw the line $MH$ instead: the antipode of $A$ is one intersection with the circumcircle, and the other sees $AH$ at a right angle when the points are distinct.
 
 The [[dumpty-point|Dumpty point]] uses the reflected median, or symmedian. Follow it from $A$ to its second intersection $K$ with the circumcircle and take the midpoint $D$ of $AK$. Now $OD$ is perpendicular to $AK$ because $O$ is the circumcenter. In a Dumpty configuration the similar triangles $DBA$ and $DAC$ give $\frac{DB}{DA}=\frac{DA}{DC}$. This makes $DA$ recoverable from distances to the two base vertices, even without the length of the symmedian chord.
@@ -43,8 +54,12 @@ A different midpoint appears when a small circle touches chord $BC$ at $F$ and i
       ]
     },
     "O3.4": {
-      prereq: [], cards: [],
-      body: String.raw`A reflected pair of rays gives a product of side ratios. A perpendicular dropped to a median gives a product of lengths. Both calculations eliminate an angle that would otherwise have to be found. In a tangency diagram, first use the common tangent or a dilation to identify the arc midpoint. Only then use similar triangles to compute the product.`,
+      prereq: ["isogonal-line-lemma", "steiner-ratio-theorem", "iran-lemma", "humpty-queue-points", "dumpty-point", "shooting-lemma"], cards: [],
+      body: String.raw`[[isogonal-line-lemma|The isogonal line lemma]] reflects a crossing pair of cevian lines in the bisector at $A$: if $\angle BAX=\angle YAC$, the points $BX\cap CY$ and $BY\cap CX$ give isogonal lines from $A$. [[steiner-ratio-theorem|Steiner's ratio theorem]] measures the same reflection on $BC$, with $\frac{BD}{DC}\cdot\frac{BE}{EC}=\frac{AB^2}{AC^2}$, and [[iran-lemma|the Iran lemma]] puts the foot of the perpendicular from $C$ to $BI$ on the line $EF$ of incircle contacts.
+
+[[humpty-queue-points|The Humpty point]] is the foot from $H$ to the median, on the circle $BHC$ with $MX\cdot MA=MB^2$; [[dumpty-point|the Dumpty point]] is its partner on the symmedian, on the circle $BOC$. [[shooting-lemma|The shooting lemma]] sends the line through two contact points to an arc midpoint $M$, with $MD\cdot MT=MB^2$.
+
+A reflected pair of rays gives a product of side ratios. A perpendicular dropped to a median gives a product of lengths. Both calculations eliminate an angle that would otherwise have to be found. In a tangency diagram, first use the common tangent or a dilation to identify the arc midpoint. Only then use similar triangles to compute the product.`,
       strategies: ["Compute one cevian ratio from areas, then reflect the angles and multiply.", "Mark which midpoint belongs to the construction: a side midpoint, a chord midpoint or an arc midpoint.", "For two tangent circles, dilate about their contact point and follow the image of a known tangent."]
     }
   },

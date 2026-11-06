@@ -16,6 +16,12 @@ The clue is what happens to the sum when $P$ moves, rather than what any one dis
     },
     "O5.2": {
       prereq: ["nine-point-circle"], cards: ["carnots-theorem", "feuerbach-theorem", "leibniz-formula", "spieker-point"],
+      related: [
+        { card: "nine-point-circle", note: String.raw`the circle that Feuerbach makes tangent to the incircle and the excircles (G5.3).` },
+        { card: "euler-distance-theorem", note: String.raw`$OI^2=R(R-2r)$, a companion to Carnot's $R+r$ (G5.3).` },
+        { card: "gergonne-nagel-points", note: String.raw`the Nagel line through $I$, the centroid and the Spieker point.` },
+        { card: "barycentric-coordinates", note: String.raw`the coordinates in which Leibniz's formula is a one-line expansion (G9.2).` }
+      ],
       body: String.raw`What if we move a station twice as far from the centroid $G$? Use $G$ as origin and denote the position vectors of the vertices by $u,v,w$. Their sum is zero. In expanding $|p-u|^2+|p-v|^2+|p-w|^2$, the three cross terms therefore cancel. The cost exceeds its value at $G$ by exactly $3|p|^2$. Doubling the distance multiplies this excess by four. This cancellation is the reason for the [[leibniz-formula|Leibniz formula]]. It also turns a prescribed total cost into a circle centered at $G$.
 
 For the rod problem, start with a different triangle. The midpoints of $BC,CA,AB$ form the medial triangle. Opposite these midpoints its sides have lengths $\frac{a}{2},\frac{b}{2},\frac{c}{2}$, respectively, where $a=BC$, $b=CA$, $c=AB$. The incenter of any triangle weights its vertices in proportion to the opposite side lengths: the three subtriangles have the same altitude, the inradius. Here those weights are exactly the three rod masses. Their balance point is the [[spieker-point|Spieker point]]. This also explains why the inradius of the medial triangle is $\frac{r}{2}$: it is a half-scale copy of $ABC$.
@@ -32,6 +38,11 @@ A distance between two centers may instead encode tangency. Let $N$ denote the n
     },
     "O5.3": {
       prereq: ["simson-line"], cards: ["steiner-line", "anti-steiner-point", "brocard-angle", "droz-farny", "lester-circle", "van-aubel"],
+      related: [
+        { card: "simson-line", note: String.raw`the Simson line, which a dilation of factor $2$ about the point turns into the Steiner line (G5.6).` },
+        { card: "orthocenter-properties", note: String.raw`the reflections of $H$ that put it on every Steiner line (G5.3).` },
+        { card: "euler-line-ratio", note: String.raw`the circumcenter and nine-point center, two of the Lester circle's points (G5.3).` }
+      ],
       body: String.raw`A problem gives three reflected points and asks for a straight line. Before chasing angles, halve the picture. If $P$ is on the circumcircle, the perpendicular feet from $P$ to the three sidelines lie on its Simson line. Each foot is halfway from $P$ to its reflection. Dilation about $P$ by a factor of two takes the feet to the three reflections, giving the [[steiner-line|Steiner line]], which passes through the orthocenter $H$. If the problem supplies a line through $H$ first, reverse the reflections. The reflected lines meet on the circumcircle at its [[anti-steiner-point|anti-Steiner point]]. This gives a construction from two of the lines and a prediction for the third.
 
 A second midpoint configuration starts with two perpendicular lines through $H$. Each sideline meets both, cutting off a pair of intercepts. The [[droz-farny|Droz-Farny theorem]] puts the midpoints of the three pairs on one line when the intersections are finite. Make the given perpendicular lines the coordinate axes. A side with intercepts $(m,0)$ and $(0,n)$ contributes $(\frac{m}{2},\frac{n}{2})$. The challenge uses this observation to prove the collinearity.
@@ -47,8 +58,12 @@ Look at which shapes a construction adds to the original figure. Equilateral tri
       ]
     },
     "O5.4": {
-      prereq: [], cards: [],
-      body: String.raw`The choice of center follows from the quantity the problem preserves. Squared distances to the vertices have a sum controlled by distance to the centroid. Weights on whole sides move the balance point to the incenter of the medial triangle. A difference or sum of circle radii gives a test for tangency once you know the distance between the centers.
+      prereq: ["carnots-theorem", "feuerbach-theorem", "leibniz-formula", "spieker-point", "steiner-line", "anti-steiner-point", "brocard-angle", "droz-farny", "lester-circle", "van-aubel"], cards: [],
+      body: String.raw`[[carnots-theorem|Carnot's theorem]] adds the signed distances from $O$ to the sides, $d_1+d_2+d_3=R+r$, and [[feuerbach-theorem|Feuerbach's theorem]] gives $NI=\frac R2-r$, so the nine-point circle touches the incircle. [[leibniz-formula|The Leibniz formula]] reads $PA^2+PB^2+PC^2=3PG^2+\frac{a^2+b^2+c^2}{3}$, and [[spieker-point|the Spieker point]] is the incenter of the medial triangle, on the line through $I$ and $G$.
+
+[[steiner-line|The Steiner line]] holds the reflections of a circumcircle point in the sides and passes through $H$; [[anti-steiner-point|the anti-Steiner point]] reverses it for a line through $H$. [[brocard-angle|The Brocard angle]] satisfies $\cot\omega=\cot A+\cot B+\cot C$. [[droz-farny|The Droz-Farny theorem]] cuts midpoints off two perpendicular lines through $H$, [[lester-circle|Lester's theorem]] puts the Fermat points, $O$ and $N$ on a circle, and [[van-aubel|Van Aubel's theorem]] makes the segments joining opposite square centers equal and perpendicular.
+
+The choice of center follows from the quantity the problem preserves. Squared distances to the vertices have a sum controlled by distance to the centroid. Weights on whole sides move the balance point to the incenter of the medial triangle. A difference or sum of circle radii gives a test for tangency once you know the distance between the centers.
 
 For collinearity, first identify what has been reflected or bisected. Three reflections of one circumcircle point lead back to its perpendicular feet. Three midpoints cut off by two perpendicular lines through the orthocenter lead instead to a common pair of coordinate axes.`,
       strategies: ["Choose the centroid as origin when the same squared-distance term occurs for every vertex.", "Mark the sign of each circumcenter distance before adding the distances.", "Write down the centers and both radii before choosing internal or external tangency.", "For a line defined by three midpoints, inspect the endpoints before calculating slopes."]

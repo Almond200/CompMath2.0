@@ -2,6 +2,8 @@
 
 **2026-11-06**
 
+- Olympiad Geometry O3 to O7: every teaching lesson has a Related list (two to four cards, each with a note and the lesson that teaches it), and each Summary opens with a card-linked recap of the chapter's results, in the O1 style; the Summaries list the chapter's cards as prerequisites. Review problems on the Practice results page is now the purple Practice button, matching Finish and review.
+
 - Review of the day's merged changes. Search suggestions in Settings, Practice topics and both book fields no longer close when their field scrolls out of view; scrolling back finds the results still open (the stacking fix already keeps them under the sticky navigation). Cover titles with a word of twelve or more letters ("Combinatorics") take a smaller size on every cover and width through a general `bk-name-long` class, replacing the large-cover override, which still overflowed on the book page and at phone widths (the shelf's phone cover overflowed too). Practice results: score tiles are soft tints and the results are rows between hairlines, with no box inside the panel; "1 problems" now reads "1 problem" in the subtitle, session header and history. Olympiad Geometry: O3.1 said the reflected cut can share a half with $AB$ much shorter than $AC$; by Steiner the ratio is $(AB/AC)^2/2$, so it needs $AB$ much longer. Reworded an O3.2 solution.
 
 - Lightened answered-button hover and selection borders to the shared border color used by unanswered buttons.
