@@ -2,6 +2,8 @@
 
 **2026-11-06**
 
+- Review of the day's merged changes. Search suggestions in Settings, Practice topics and both book fields no longer close when their field scrolls out of view; scrolling back finds the results still open (the stacking fix already keeps them under the sticky navigation). Cover titles with a word of twelve or more letters ("Combinatorics") take a smaller size on every cover and width through a general `bk-name-long` class, replacing the large-cover override, which still overflowed on the book page and at phone widths (the shelf's phone cover overflowed too). Practice results: score tiles are soft tints and the results are rows between hairlines, with no box inside the panel; "1 problems" now reads "1 problem" in the subtitle, session header and history. Olympiad Geometry: O3.1 said the reflected cut can share a half with $AB$ much shorter than $AC$; by Steiner the ratio is $(AB/AC)^2/2$, so it needs $AB$ much longer. Reworded an O3.2 solution.
+
 - Lightened answered-button hover and selection borders to the shared border color used by unanswered buttons.
 
 - Moved Mixed to the first position in the default topic suggestions.

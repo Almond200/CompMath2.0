@@ -2909,7 +2909,11 @@ body.is-landing .content { padding: 0 0 70px; }
 .bk-s .bk-motif { margin: 4px 0 0; stroke-width: 4; }
 .bk-l { max-width: 210px; padding: 18px 18px 16px 26px; }
 .bk-l .bk-name { font-size: 26px; }
-.bk-l.bk-olympiad-combinatorics .bk-name { font-size: 20px; }
+/* A title word of twelve or more letters ("Combinatorics") cannot wrap, so it takes a smaller
+   size on every cover (first set for Olympiad Combinatorics by the owner, 2026-11-06). */
+.bk-name-long { font-size: 18px; }
+.bk-s .bk-name-long { font-size: 11px; }
+.bk-l .bk-name-long { font-size: 18px; }
 
 .bk-hero { display: flex; gap: 26px; align-items: flex-start; margin: 4px 0 18px; }
 .bk-hero .bk-cover { flex: 0 0 180px; width: 180px; }
@@ -2932,6 +2936,9 @@ body.is-landing .content { padding: 0 0 70px; }
   .bk-shelf-m .bk-name { font-size: 17px; }
   .bk-hero .bk-cover { width: 150px; padding: 12px 12px 10px 18px; }
   .bk-l .bk-name { font-size: 19px; }
+  .bk-shelf-m .bk-name-long { font-size: 13px; }
+  .bk-shelf-s .bk-name-long { font-size: 10px; }
+  .bk-l .bk-name-long { font-size: 16px; }
 }
 
 /* Learn → Lists: room around your own lists */
@@ -4261,15 +4268,19 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 .practice-results-subtitle, .practice-results-meta { color: var(--text-dim); font-size: 14px; }
 .practice-results-subtitle { margin: 0; }
 .practice-results-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
-.practice-results-stats > div { padding: 16px; border: 1px solid var(--border); border-radius: 12px; }
+/* No boxes inside boxes (owner, 2026-10-31): the scores are soft tints and the results are rows between hairlines. */
+.practice-results-stats > div { padding: 16px; border-radius: 12px; background: var(--bg-panel); }
 .practice-results-stats strong { display: block; font-size: 28px; line-height: 1.2; }
 .practice-results-stats span { display: block; margin-top: 6px; color: var(--text-dim); font-size: 14px; }
-.practice-results-list { display: grid; gap: 8px; margin-top: 14px; }
-.practice-result-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px; border: 1px solid var(--border); border-radius: 10px; color: var(--text); text-decoration: none; }
-.practice-result-row:hover { background: var(--bg-panel); border-color: var(--accent); }
+.practice-results-list { display: grid; margin: 8px -10px 0; }
+.practice-result-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 10px; border-top: 1px solid var(--border); border-radius: 0; color: var(--text); text-decoration: none; }
+.practice-result-row:first-child { border-top: none; }
+.practice-result-row:hover { background: var(--bg-panel); border-radius: 8px; }
+.practice-result-row:hover, .practice-result-row:hover + .practice-result-row { border-top-color: transparent; }
 .practice-result-row strong { font-size: 14px; }
 .practice-result-row small { display: block; margin-top: 4px; color: var(--text-dim); font-size: 13px; }
 .practice-result-badge { flex-shrink: 0; border-radius: 8px; padding: 5px 9px; font-size: 13px; background: var(--bg-panel); }
+.practice-result-row:hover .practice-result-badge[data-result="Unanswered"] { background: var(--bg-card); }
 .practice-result-badge[data-result="Correct"] { background: rgba(42, 163, 88, .16); }
 .practice-result-badge[data-result="Incorrect"] { background: rgba(220, 67, 67, .16); }
 @media (max-width: 500px) {

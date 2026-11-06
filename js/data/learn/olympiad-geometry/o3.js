@@ -4,7 +4,7 @@ window.MATH_LEARN["O3"] = {
   lessons: {
     "O3.1": {
       prereq: ["ratio-lemma", "power-of-a-point"], cards: [],
-      body: String.raw`Suppose a ray from $A$ divides $BC$ in the ratio $2:1$. Where does its reflection in the angle bisector meet $BC$? A drawing suggests that the two cuts exchange places. Try that drawing again with $AB$ much shorter than $AC$: the two cuts can actually lie on the same half of the side.
+      body: String.raw`Suppose a ray from $A$ divides $BC$ in the ratio $2:1$. Where does its reflection in the angle bisector meet $BC$? A drawing suggests that the two cuts exchange places. Try that drawing again with $AB$ much longer than $AC$: the two cuts can actually lie on the same half of the side.
 
 A ratio records what the eye misses. If $D$ is on $BC$, the triangles $ABD$ and $ACD$ have a common altitude, so their areas are in the ratio $\frac{BD}{DC}$. Computing those same areas using $AD$ instead brings in the angles at $A$. In O3.2 we use the two expressions together. In O3.3 we keep a different quantity fixed, a product of distances, while the points in a circle diagram move.`,
       exercises: [
@@ -25,7 +25,7 @@ A reflection also explains the [[iran-lemma|Iran lemma]]. Reflect $C$ across $BI
         { q: String.raw`A median from $A$ is reflected across the bisector. If $AB=6$, $AC=9$ and $BC=13$, find the distance from $B$ to the reflected median's foot.`, answer: "4",
           solution: String.raw`The median has ratio $1$, so the reflected foot has ratio $\frac{36}{81}=\frac{4}{9}$. A side of length $13$ then divides into lengths $4$ and $9$.` },
         { q: String.raw`In the crossed-lines construction above, let $AP$ meet $BC$ at its midpoint. If $AB=AC$, prove $P$ and $Q$ lie on the same line through $A$.`,
-          solution: String.raw`In an isosceles triangle the median from the apex is the angle bisector. Its reflected line is itself. The isogonal line lemma gives precisely that reflected line for $AQ$.` }
+          solution: String.raw`In an isosceles triangle the median from the apex is the angle bisector, so its reflection in the bisector is itself. By the isogonal line lemma, $AQ$ is the reflection of $AP$. Hence $AQ$ is the line $AP$, and $A,P,Q$ are collinear.` }
       ]
     },
     "O3.3": {
