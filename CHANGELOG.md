@@ -2,6 +2,8 @@
 
 **2026-11-06**
 
+- Topic tree draft v2 (owner): every topic that splits cleanly now has subtopics, a fourth level (4 subjects, 32 areas, 122 topics, 324 subtopics; ids checked unique and consistent with their parents). New topics where an area was thin: `alg.poly.higher`, `cp.exp.var`, `cp.graph.sets`, `geo.poly.general`. The Topic tree page has an Outline / Tree switch: Tree draws the chosen subject as a diagram (subject, areas, topics, subtopics, joined by curves), with a subject switch, topics that open and close on a press, Expand all / Collapse all, KaTeX in the labels, and its own scrolling panel so the page never scrolls sideways; the view and subject are remembered in this browser.
+
 - Topic tree T1 done (owner's answers): TQ1 to TQ3 kept as drafted; the Olympiad-only nodes are folded into the main topics (`alg.ineq.olympiad` into `alg.ineq.means`, `geo.oly` into `geo.tri.centers` and a new `geo.circ.proj`, `nt.prime.lte` into `nt.prime.val`); the Practice picker will offer the tree only, with no card-name topics for now.
 
 - Step T, the topic tree, added to PLAN (owner): four subject trees that practice sets, problem labels and contest profiles will share. T1 started: `TOPIC-TREE.md` holds the draft tree with node ids, filing rules, a seeding plan, the open questions TQ1 to TQ5 and the sub-steps; Settings → Experimental → Topic tree (`lab/topic-tree.html`) renders it live, with collapsible nodes.

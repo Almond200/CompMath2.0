@@ -4,20 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Topic tree — experimental</title>
+<link rel="stylesheet" href="../vendor/katex/katex.min.css?v=1">
 <style>
   /* Values match css/styles.css. */
   :root {
     --bg: #f6f8fc; --panel: #ffffff; --panel2: #eaeef7; --line: #d7deed; --line2: #c2cbe1;
     --text: #1b2333; --text-dim: #55607a; --text-faint: #808aa3; --accent: #2f66e0;
+    --tint: rgba(47, 102, 224, .08);
   }
   :root[data-theme="dark"] {
     --bg: #0f1420; --panel: #161d2e; --panel2: #1a2338; --line: #2a3654; --line2: #354467;
     --text: #e8ecf6; --text-dim: #9aa7c7; --text-faint: #6b7794; --accent: #5b8cff;
+    --tint: rgba(91, 140, 255, .14);
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text); min-height: 100vh;
          font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
   .wrap { max-width: 820px; margin: 0 auto; padding: 26px 16px 70px; }
+  body.is-tree .wrap { max-width: 1240px; }
   header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .tag { font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-faint);
          border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; }
@@ -29,37 +33,89 @@
   code { font: 12.5px ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--panel2);
          border-radius: 5px; padding: 1px 5px; color: var(--text-dim); }
   ul, ol { padding-left: 22px; margin: 6px 0; }
+  .msg { color: var(--text-dim); }
+
+  /* Controls: pill buttons, solid colours only. */
+  .bar { display: flex; gap: 8px 14px; margin: 14px 0 0; flex-wrap: wrap; align-items: center; }
+  .seg { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 3px; border: 1px solid var(--line);
+         border-radius: 999px; background: var(--panel); }
+  .seg button, .pill { font: inherit; font-size: 13px; border: 0; background: none; color: var(--text-dim);
+         border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+  .seg button[aria-checked="true"] { background: var(--accent); color: #fff; }
+  .seg button:not([aria-checked="true"]):hover { color: var(--text); }
+  .pill { color: var(--accent); background: var(--panel); border: 1px solid var(--line); }
+  .pill:hover { border-color: var(--line2); }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* Outline view. */
   .tree { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px 12px 10px; }
   .tree ul { list-style: none; padding-left: 18px; border-left: 1px solid var(--line); margin: 2px 0 6px 6px; }
   .tree > ul { border-left: 0; padding-left: 4px; margin: 0; }
   .tree li { margin: 2px 0; }
   .tree > ul > li { margin: 8px 0; }
-  .tree li > code { margin-left: 4px; font-size: 11.5px; }
-  .tools { display: flex; gap: 8px; margin: 14px 0 0; flex-wrap: wrap; }
-  .tools button { font: inherit; font-size: 13px; color: var(--accent); background: var(--panel);
-                  border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
-  .tools button:hover { border-color: var(--line2); }
+  .tree li code { margin-left: 4px; font-size: 11.5px; }
   details.node > summary { cursor: pointer; list-style: none; }
   details.node > summary::-webkit-details-marker { display: none; }
   details.node > summary::before { content: "\25B8"; display: inline-block; width: 14px; color: var(--text-faint); transition: transform .12s; }
   details.node[open] > summary::before { transform: rotate(90deg); }
   .leaf::before { content: "\2022"; display: inline-block; width: 14px; color: var(--text-faint); }
-  .msg { color: var(--text-dim); }
+
+  /* Tree view: node boxes placed by script over an SVG of connectors. The view scrolls inside
+     its own panel, so the page itself never scrolls sideways. */
+  .tv { margin-top: 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+        overflow: auto; max-height: 78vh; -webkit-overflow-scrolling: touch; }
+  .tv-canvas { position: relative; margin: 18px; }
+  .tv-canvas svg { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+  .tv-canvas path { fill: none; stroke: var(--line2); stroke-width: 1.4; }
+  .tn { position: absolute; max-width: 210px; font: inherit; font-size: 13px; line-height: 1.35; text-align: left;
+        color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+        padding: 5px 10px; overflow-wrap: anywhere; }
+  button.tn { cursor: pointer; }
+  button.tn:hover { border-color: var(--line2); }
+  .tn.d0 { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; font-size: 15px; padding: 7px 14px; border-radius: 999px; }
+  .tn.d1 { background: var(--tint); border-color: transparent; font-weight: 650; }
+  .tn.d3 { border-color: transparent; background: none; color: var(--text-dim); padding: 3px 6px; }
+  .tn .more { display: inline-block; white-space: nowrap; margin-left: 6px; font-size: 11px; color: var(--accent); font-weight: 600; }
+  .tn.d0 .more { color: #fff; }
+  .tv-note { font-size: 13px; color: var(--text-faint); margin: 8px 2px 0; }
+  @media (max-width: 600px) { .tn { max-width: 150px; font-size: 12.5px; } }
+  [hidden] { display: none !important; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header><h1>Topic tree</h1><span class="tag">experimental</span></header>
   <p class="msg"><a href="../index.html#/settings">&larr; Back to Settings</a> &middot; The current draft of <code>TOPIC-TREE.md</code>, read live from the repository.</p>
-  <div class="tools"><button type="button" id="expand">Expand all</button><button type="button" id="collapse">Collapse all</button></div>
+  <div class="bar">
+    <div class="seg" role="radiogroup" aria-label="View" id="view">
+      <button type="button" role="radio" data-view="outline" aria-checked="true">Outline</button>
+      <button type="button" role="radio" data-view="tree" aria-checked="false">Tree</button>
+    </div>
+    <div class="seg" role="radiogroup" aria-label="Subject" id="subjects" hidden></div>
+    <button type="button" class="pill" id="expand">Expand all</button>
+    <button type="button" class="pill" id="collapse">Collapse all</button>
+  </div>
   <main id="doc"><p class="msg">Loading&hellip;</p></main>
+  <section id="treeview" hidden>
+    <div class="tv"><div class="tv-canvas"></div></div>
+    <p class="tv-note">Press a topic to open or close its subtopics. Hover a box to see its id.</p>
+  </section>
 </div>
+<script src="../vendor/katex/katex.min.js?v=1"></script>
+<script src="../vendor/katex/auto-render.min.js?v=1"></script>
 <script src="lab-common.js?v=3"></script>
 <script>
 (function () {
   "use strict";
   try { LabData.applyTheme(); } catch (e) {}
+  var store = {
+    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  };
   var esc = function (s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); };
+  function typeset(el) {
+    try { renderMathInElement(el, { delimiters: [{ left: "$", right: "$", display: false }], throwOnError: false }); } catch (e) {}
+  }
   function inline(s) {
     var parts = s.split("`"), out = "";
     for (var i = 0; i < parts.length; i++) {
@@ -91,23 +147,31 @@
       return '<li><details class="node" open><summary>' + inline(it.text) + "</summary>" + listHtml(it.kids, false, true) + "</details></li>";
     }).join("") + "</" + tagName + ">";
   }
+  // Renders the Markdown and collects each subject tree ("### Name `[id]`" plus its list).
+  var subjects = [];
   function render(md) {
-    var lines = md.replace(/\r/g, "").split("\n"), html = "", i = 0, inTrees = false;
+    var lines = md.replace(/\r/g, "").split("\n"), html = "", i = 0, inTrees = false, subject = null;
     while (i < lines.length) {
       var l = lines[i];
       if (!l.trim()) { i++; continue; }
       var h = /^(#{1,3})\s+(.*)$/.exec(l);
       if (h) {
         var lvl = h[1].length;
-        if (lvl <= 2) inTrees = /four trees/i.test(h[2]);
+        if (lvl <= 2) { inTrees = /four trees/i.test(h[2]); subject = null; }
+        if (lvl === 3 && inTrees) {
+          var sid = /`\[([a-z.]+)\]`/.exec(h[2]);
+          subject = { text: h[2], id: sid ? sid[1] : "", kids: [] };
+          subjects.push(subject);
+        }
         if (lvl > 1) html += "<h" + lvl + ">" + inline(h[2]) + "</h" + lvl + ">";
         i++; continue;
       }
       if (/^\s*(?:[-*]|\d+\.)\s/.test(l)) {
         var block = [], ordered = /^\s*\d+\./.test(l);
         while (i < lines.length && lines[i].trim() && !/^#/.test(lines[i])) block.push(lines[i++]);
-        var tree = inTrees && !ordered;
-        html += tree ? '<div class="tree">' + listHtml(parseList(block), false, true) + "</div>" : listHtml(parseList(block), ordered, false);
+        var tree = inTrees && !ordered, items = parseList(block);
+        if (tree && subject) subject.kids = subject.kids.concat(items);
+        html += tree ? '<div class="tree">' + listHtml(items, false, true) + "</div>" : listHtml(items, ordered, false);
         continue;
       }
       var para = [];
@@ -116,14 +180,125 @@
     }
     return html;
   }
-  var doc = document.getElementById("doc");
-  fetch("../TOPIC-TREE.md?t=" + Date.now(), { cache: "no-store" })
-    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
-    .then(function (md) { doc.innerHTML = render(md); })
-    .catch(function () { doc.innerHTML = '<p class="msg">The draft could not be loaded. Open the app from a web server (for example <code>python3 -m http.server</code>), not from a file.</p>'; });
-  function setAll(open) { doc.querySelectorAll("details.node").forEach(function (d) { d.open = open; }); }
+
+  // ---------- Tree view ----------
+  function prepare(node, depth) {
+    var m = /`\[([a-z.]+)\]`/.exec(node.text);
+    node.id = node.id || (m ? m[1] : "");
+    node.label = node.text.replace(/`\[[a-z.]+\]`/g, "").replace(/\*\*/g, "").trim();
+    node.depth = depth;
+    node.open = depth < 2;
+    node.kids.forEach(function (k) { prepare(k, depth + 1); });
+  }
+  function countAll(node) { return node.kids.reduce(function (n, k) { return n + 1 + countAll(k); }, 0); }
+  var canvas = document.querySelector(".tv-canvas"), current = 0;
+  var GAP_Y = 8, GAP_X = 46;
+  function drawTree() {
+    var root = subjects[current];
+    if (!root) return;
+    canvas.innerHTML = "";
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    canvas.appendChild(svg);
+    var visible = [];
+    (function add(node) {
+      var hasKids = node.kids.length > 0;
+      var el = document.createElement(hasKids ? "button" : "div");
+      el.className = "tn d" + Math.min(node.depth, 3);
+      if (hasKids) {
+        el.type = "button";
+        el.setAttribute("aria-expanded", String(node.open));
+        el.addEventListener("click", function () { node.open = !node.open; drawTree(); });
+      }
+      el.title = node.id;
+      el.innerHTML = esc(node.label) + (hasKids && !node.open ? '<span class="more">+' + countAll(node) + "</span>" : "");
+      canvas.appendChild(el);
+      node.el = el;
+      visible.push(node);
+      if (node.open) node.kids.forEach(add);
+    })(root);
+    typeset(canvas);
+    // Column widths: the widest box at each depth.
+    var colW = [];
+    visible.forEach(function (n) { n.w = n.el.offsetWidth; n.h = n.el.offsetHeight; colW[n.depth] = Math.max(colW[n.depth] || 0, n.w); });
+    var colX = [0];
+    for (var d = 1; d < colW.length; d++) colX[d] = colX[d - 1] + colW[d - 1] + GAP_X;
+    // Tidy vertical layout: leaves stack in order; a parent centres on its visible children,
+    // and its whole subtree moves down if the parent would rise into the previous one.
+    var cursor = 0;
+    function shift(n, dy) { n.y += dy; if (n.open) n.kids.forEach(function (k) { shift(k, dy); }); }
+    (function place(n) {
+      var start = cursor;
+      if (n.open && n.kids.length) {
+        n.kids.forEach(place);
+        var a = n.kids[0], b = n.kids[n.kids.length - 1];
+        n.y = (a.y + a.h / 2 + b.y + b.h / 2) / 2 - n.h / 2;
+        if (n.y < start) { var dy = start - n.y; shift(n, dy); cursor += dy; }
+      } else n.y = cursor;
+      cursor = Math.max(cursor, n.y + n.h + GAP_Y);
+      if (!n.open || !n.kids.length) cursor += n.depth <= 1 ? 6 : 0;
+    })(root);
+    root.y = 0; // the subject stays at the top, where the reader starts
+    var width = 0, paths = "";
+    visible.forEach(function (n) {
+      n.x = colX[n.depth];
+      n.el.style.left = n.x + "px"; n.el.style.top = n.y + "px";
+      width = Math.max(width, n.x + n.w);
+      if (n.open) n.kids.forEach(function (k) {
+        var x1 = n.x + n.w, y1 = n.y + n.h / 2, x2 = colX[k.depth], y2 = k.y + k.h / 2, mx = (x1 + x2) / 2;
+        paths += '<path d="M' + x1 + " " + y1 + " C" + mx + " " + y1 + " " + mx + " " + y2 + " " + x2 + " " + y2 + '"/>';
+      });
+    });
+    canvas.style.width = width + "px"; canvas.style.height = Math.max(cursor, root.h) + "px";
+    svg.setAttribute("width", width); svg.setAttribute("height", cursor);
+    svg.innerHTML = paths;
+  }
+  function setOpenAll(node, open) { if (node.depth > 0) node.open = open; node.kids.forEach(function (k) { setOpenAll(k, open); }); }
+
+  // ---------- Controls ----------
+  var doc = document.getElementById("doc"), treeview = document.getElementById("treeview");
+  var viewSeg = document.getElementById("view"), subjSeg = document.getElementById("subjects");
+  var view = store.get("mq-topic-tree-view") === "tree" ? "tree" : "outline";
+  function showView(v) {
+    view = v; store.set("mq-topic-tree-view", v);
+    viewSeg.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-checked", String(b.dataset.view === v)); });
+    doc.hidden = v === "tree"; treeview.hidden = v !== "tree"; subjSeg.hidden = v !== "tree" || !subjects.length;
+    document.body.classList.toggle("is-tree", v === "tree");
+    if (v === "tree") drawTree();
+  }
+  function showSubject(i) {
+    current = i; store.set("mq-topic-tree-subject", subjects[i].id);
+    subjSeg.querySelectorAll("button").forEach(function (b, j) { b.setAttribute("aria-checked", String(j === i)); });
+    document.querySelector(".tv").scrollTo(0, 0);
+    drawTree();
+  }
+  viewSeg.addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) showView(b.dataset.view); });
+  subjSeg.addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) showSubject(+b.dataset.i); });
+  function setAll(open) {
+    if (view === "tree") { if (subjects[current]) { setOpenAll(subjects[current], open); drawTree(); } return; }
+    doc.querySelectorAll("details.node").forEach(function (d) { d.open = open; });
+  }
   document.getElementById("expand").addEventListener("click", function () { setAll(true); });
   document.getElementById("collapse").addEventListener("click", function () { setAll(false); });
+  var resizeTimer = 0;
+  window.addEventListener("resize", function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(function () { if (view === "tree") drawTree(); }, 120); });
+
+  fetch("../TOPIC-TREE.md?t=" + Date.now(), { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (md) {
+      doc.innerHTML = render(md);
+      typeset(doc);
+      subjects.forEach(function (s) { prepare(s, 0); });
+      subjSeg.innerHTML = subjects.map(function (s, i) {
+        return '<button type="button" role="radio" data-i="' + i + '" aria-checked="false">' + esc(s.label) + "</button>";
+      }).join("");
+      var saved = store.get("mq-topic-tree-subject"), at = 0;
+      subjects.forEach(function (s, i) { if (s.id === saved) at = i; });
+      if (subjects.length) { current = at; subjSeg.children[at].setAttribute("aria-checked", "true"); }
+      showView(view);
+      // KaTeX's fonts change box widths once they load, so lay the tree out again then.
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (view === "tree") drawTree(); });
+    })
+    .catch(function () { doc.innerHTML = '<p class="msg">The draft could not be loaded. Open the app from a web server (for example <code>python3 -m http.server</code>), not from a file.</p>'; });
 })();
 </script>
 </body>
