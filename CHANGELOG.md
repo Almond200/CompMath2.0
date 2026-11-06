@@ -2,6 +2,8 @@
 
 **2026-11-05**
 
+- Tightened the vertical gap between review problem numbers and Results overview.
+
 - Added breathing room below Your results and removed the duplicate Back to Practice button from detailed review, retaining the top-left back link.
 
 - Removed the answered/marked caption from the completed overview and returned detailed-review navigation buttons below the problem numbers, without restoring the outcome-count caption.
