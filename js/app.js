@@ -6781,6 +6781,52 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return hits.sort((a, b) => score(b) - score(a) || b.year - a.year || a.cname.localeCompare(b.cname) || a.num - b.num);
   }
 
+  // Lessons in the main search (owner, 2026-11-06): only very strong matches, read off the
+  // titles of lessons and chapters, never their prose. Every word of the query must match its
+  // own word of the title: the word itself, the start of it, or (weighted lower) a synonym.
+  // A one-word query finds only a title that is about that thing: one that starts with the
+  // word ("Vieta: the sum and product of the roots", "Circles") or is only that word, never
+  // every title that mentions it. At most three show. A lesson code ("C5.3")
+  // finds that lesson. Introductions and Summaries are skipped.
+  let LESSON_INDEX = null;
+  const LESSON_STOP = new Set("a an the how to do i can find learn about chapter lesson book this with of in on for and or is are what does use using where me please want looking look understand explain help into from by its their".split(" ").map(normWord));
+  function lessonIndex() {
+    if (LESSON_INDEX) return LESSON_INDEX;
+    const toks = t => wordsOf(String(t).replace(/\$[^$]*\$/g, " ")).filter(w => !LESSON_STOP.has(w));
+    const entry = (b, c, l, title) => { const w = toks(title); return { b, c, l, title, words: [...new Set(w)], phrase: w.join(" ") }; };
+    LESSON_INDEX = [];
+    LEARN_SHELF.forEach(b => b.chapters.forEach(c => {
+      if (learnChapterData(c)) LESSON_INDEX.push(entry(b, c, null, c.title));
+      c.lessons.forEach(l => {
+        if (!/^(Introduction|Summary)$/.test(l.title) && learnLessonData(c, l)) LESSON_INDEX.push(entry(b, c, l, l.title));
+      });
+    }));
+    return LESSON_INDEX;
+  }
+  function lessonMatches(q) {
+    const idx = lessonIndex(), code = q.trim().match(/^[a-z]\d+\.\d+$/i);
+    if (code) return idx.filter(x => x.l && x.l.code.toLowerCase() === q.trim().toLowerCase()).slice(0, 1);
+    const qt = [...new Set(wordsOf(q).filter(w => !LESSON_STOP.has(w)))];
+    if (!qt.length || !qt.some(w => w.length >= 3)) return [];
+    const hits = [];
+    idx.forEach(x => {
+      const free = new Set(x.words);
+      let quality = 0;
+      // Each query word takes its own title word: exact first, then a prefix, then a synonym.
+      const take = (t, test, wgt) => { const w = [...free].find(test); if (w) { free.delete(w); quality += wgt; } return !!w; };
+      const all = qt.every(t => take(t, w => w === t, 1) || take(t, w => t.length >= 4 && w.startsWith(t), 0.8)
+        || (qt.length > 1 && take(t, w => expandToken(t).slice(1).includes(w), 0.5)));
+      if (!all) return;
+      const coverage = qt.length / x.words.length;
+      if (qt.length === 1 ? !(coverage === 1 || x.words[0] === qt[0] || (qt[0].length >= 4 && x.words[0].startsWith(qt[0]))) : coverage < 0.34) return;
+      hits.push({ x, score: quality / qt.length + coverage + (x.phrase === qt.join(" ") ? 1 : 0) + (x.l ? 0 : 0.05) });
+    });
+    hits.sort((a, z) => z.score - a.score || a.x.title.length - z.x.title.length);
+    return hits.slice(0, 3).map(h => h.x);
+  }
+  // The first paragraph of a lesson, for its result card (the card clamps it).
+  const lessonLead = x => String((learnLessonData(x.c, x.l || x.c.lessons[0]) || {}).body || "").split(/\n\s*\n/).find(t => t.trim() && !/^\{\{/.test(t.trim())) || "";
+
   function renderSearchResults() {
     const { results, partial } = searchFormulas(state.query);
     const sorted = sortEntries(results);
@@ -6813,10 +6859,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
       g.problems.push(p);
     });
     papers.sort((a, b) => a.cname.localeCompare(b.cname));
+    const lessonHits = named ? [] : lessonMatches(state.query);
     const items = [];
     papers.forEach(c => items.push({ contest: c }));
     if (named) named.forEach(p => items.push({ problem: p }));
     listHits.filter(h => h.strong).forEach(h => items.push({ list: h.list }));
+    lessonHits.forEach(x => items.push({ lesson: x }));
     if (refy && !named) probs.forEach(p => items.push({ problem: p }));
     sorted.forEach(e => items.push({ entry: e }));
     if (!refy) probs.forEach(p => items.push({ problem: p }));
@@ -6824,7 +6872,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const n = { formula: 0, method: 0, pattern: 0 };
     sorted.forEach(e => n[e.kind]++);
     const counts = [[n.formula, "formula", "formulas"], [n.method, "method", "methods"], [n.pattern, "pattern", "patterns"],
-      [papers.length, "contest", "contests"], [probs.length, "problem", "problems"], [listHits.length, "study list", "study lists"]]
+      [lessonHits.length, "lesson", "lessons"], [papers.length, "contest", "contests"], [probs.length, "problem", "problems"], [listHits.length, "study list", "study lists"]]
       .filter(c => c[0]).map(c => `${c[0]} ${c[0] === 1 ? c[1] : c[2]}`).join(" &middot; ");
     const total = items.length;
     const kindLabel = Object.fromEntries(LIST_KINDS);
@@ -6832,6 +6880,18 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const itemHtml = (it, i) => {
       const extra = i >= PAGE ? ` data-page="${Math.floor(i / PAGE)}" hidden` : "";
       if (it.entry) return cardHtml(it.entry, true, queryTokens).replace('<article class="card ', `<article${extra} class="card `);
+      if (it.lesson) {
+        const x = it.lesson;
+        // A chapter opens on its first page and lists its lessons; a lesson names its chapter.
+        const inner = x.l ? `<div class="rs-line"><span class="rs-k">Chapter</span><span class="rs-v">${escapeAttr(x.c.title)}</span></div>`
+          : x.c.lessons.filter(l => !/^(Introduction|Summary)$/.test(l.title)).slice(0, 3).map(l => `<div class="rs-line"><span class="rs-v">${escapeAttr(l.title)}</span></div>`).join("");
+        return `<a class="card card-result card-lesson-result" href="${x.l ? learnHash(x.b, x.c, lessonNum(x.l)) : learnHash(x.b, x.c)}"${extra}>
+            <div class="card-head"><h4 class="card-name">${escapeAttr(x.title)}</h4></div>
+            <div class="card-meta"><span class="badge badge-lesson">${x.l ? "LESSON" : "CHAPTER"}</span><span class="level-range">${escapeAttr(x.b.title)} &middot; ${x.l ? escapeAttr(x.l.code) : "Chapter " + escapeAttr(x.c.code.slice(1))}</span></div>
+            <div class="rs-box">${inner}</div>
+            <p class="card-desc">${escapeAttr(lessonLead(x))}</p>
+          </a>`;
+      }
       if (it.contest) {
         const c = it.contest, subj = {};
         c.problems.forEach(p => p.subjects.forEach(sid => { subj[sid] = (subj[sid] || 0) + 1; }));
@@ -6840,7 +6900,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <div class="card-head"><h4 class="card-name">${escapeAttr(/^\d{4}\b/.test(c.cname) ? c.cname : c.year + " " + c.cname)}</h4></div>
             <div class="card-meta"><span class="badge badge-contest">CONTEST</span><span class="level-range">${escapeAttr(c.fam)} &middot; ${c.problems.length} problem${c.problems.length === 1 ? "" : "s"}</span></div>
             ${rows.length ? `<div class="rs-box">${rows.map(([sid, k]) => `<div class="rs-line"><span class="rs-v">${escapeAttr(SUBJECT_LABELS[sid] || sid)}</span><span class="rs-n">${k}</span></div>`).join("")}</div>` : ""}
-            <p class="card-desc">Open the whole paper on its contest page.</p>
           </a>`;
       }
       if (it.problem) {
