@@ -5325,15 +5325,13 @@
     const total = set.slugs.length;
     const counts = { Correct: 0, Incorrect: 0, Unanswered: 0, 'Answer unavailable': 0 };
     set.slugs.forEach(slug => counts[practiceSessions.result(set, slug)]++);
-    const answered = total - counts.Unanswered;
-    const marked = set.slugs.filter(slug => set.marks[slug]).length;
     const reviewUrl = '#/practice/set/' + encodeURIComponent(set.id) + '/review';
     const stats = [[counts.Correct + '/' + total, 'Correct'], [Math.round(100 * counts.Correct / total) + '%', 'Score'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
     $content.innerHTML = `<div class="space-home practice-session practice-results">
       <a class="back-link" href="#/practice">← Back to Practice</a>
       <section class="sh-section"><h2>Practice complete</h2><p class="practice-results-subtitle">${escapeAttr(set.label)} · ${total} problems · ${escapeAttr(set.difficulty)} difficulty</p>
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
-        <p class="practice-results-meta">${answered} of ${total} answered · ${marked} marked for review${counts['Answer unavailable'] ? ' · ' + counts['Answer unavailable'] + ' awaiting an answer key' : ''}</p>
+        ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
         <a class="aops-btn" href="${reviewUrl}">Review problems</a>
       </section>
       <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
@@ -5370,8 +5368,9 @@
     $content.innerHTML = `<div class="space-home practice-session">
       <a class="back-link" href="#/practice">&larr; Back to Practice</a>
       <section class="sh-section">
-        <div class="practice-session-top"><div><h2>Practice set · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problems · ${escapeAttr(set.difficulty)} difficulty${finished ? ' · Review' : ''}</p></div>${finished ? `<div class="practice-review-actions"><a class="hp-btn hp-btn-soft" href="#/practice/set/${encodeURIComponent(set.id)}">Results overview</a><a class="hp-btn hp-btn-soft" href="#/practice">Back to Practice</a></div>` : ''}</div>
+        <div class="practice-session-top"><div><h2>Practice set · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problems · ${escapeAttr(set.difficulty)} difficulty${finished ? ' · Review' : ''}</p></div></div>
         <nav class="cn-nums" aria-label="Practice problems">${nav}</nav>
+        ${finished ? `<div class="practice-review-actions"><a class="hp-btn hp-btn-soft" href="#/practice/set/${encodeURIComponent(set.id)}">Results overview</a><a class="hp-btn hp-btn-soft" href="#/practice">Back to Practice</a></div>` : ''}
         ${finished ? '' : `<div class="practice-session-actions"><span>${answered} of ${set.slugs.length} answered</span><div><a class="hp-btn hp-btn-soft" href="#/practice">Save and exit</a><button type="button" class="hp-btn" id="finish-practice">Finish and review</button></div></div>`}
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
