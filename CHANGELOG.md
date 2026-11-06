@@ -2,6 +2,8 @@
 
 **2026-11-06**
 
+- Topic tree T1 done (owner's answers): TQ1 to TQ3 kept as drafted; the Olympiad-only nodes are folded into the main topics (`alg.ineq.olympiad` into `alg.ineq.means`, `geo.oly` into `geo.tri.centers` and a new `geo.circ.proj`, `nt.prime.lte` into `nt.prime.val`); the Practice picker will offer the tree only, with no card-name topics for now.
+
 - Step T, the topic tree, added to PLAN (owner): four subject trees that practice sets, problem labels and contest profiles will share. T1 started: `TOPIC-TREE.md` holds the draft tree with node ids, filing rules, a seeding plan, the open questions TQ1 to TQ5 and the sub-steps; Settings → Experimental → Topic tree (`lab/topic-tree.html`) renders it live, with collapsible nodes.
 
 - CONVENTIONS records the two new rules: page-local suggestion lists stay open on scroll, and long cover titles use `bk-name-long`, not per-book overrides.
