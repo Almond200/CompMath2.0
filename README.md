@@ -2,8 +2,8 @@
 
 A searchable reference for AMC 10/12, AIME and olympiad training. 765 cards
 covering formulas, methods, and patterns (548 formulas, 169 methods, 48 patterns), plus a database
-of 4,700 past contest problems (4,690 with their full statements), every one with a written
-strategy and 4,252 cross-linked to the cards their solutions run through (counts checked 2026-11-06).
+of 4,725 past contest problems (4,715 with their full statements), every one with a written
+strategy and 4,276 cross-linked to the cards their solutions run through (counts checked 2026-11-06).
 
 Static, with no application backend or required build step. KaTeX 0.16.11 and its fonts are
 vendored under `vendor/katex/`; statement scripts and semantic vectors load on demand from

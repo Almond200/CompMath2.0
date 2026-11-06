@@ -4472,7 +4472,7 @@
             <div class="set-name">Contest problem sources and license</div>
             <div class="set-desc">
               <p>AMC, AJHSME and AIME problems are &copy; Mathematical Association of America, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. This credit applies to their statements and figures throughout the app, including textbooks, previews and practice sets.</p>
-              <p>Most text, figures and answer keys come from <a href="https://live.poshenloh.com/past-contests" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>. The Fall 2021 AMC 10A and 10B papers also use MAA PDF copies; the 2026 AMC 10A, added before LIVE published it, comes from <a href="https://wiki.randommath.com/amc10/2026/part-a" target="_blank" rel="noopener noreferrer">Random Math</a>; and individual exceptions are credited to the <a href="https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>. Statements have been reformatted for display, including LaTeX and figure layout.</p>
+              <p>Most text, figures and answer keys come from <a href="https://live.poshenloh.com/past-contests" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>. The Fall 2021 AMC 10A and 10B papers also use MAA PDF copies; the 2026 AMC 10A and 12A, added before LIVE published them, come from <a href="https://wiki.randommath.com/amc10/2026/part-a" target="_blank" rel="noopener noreferrer">Random Math</a>, with the answer keys checked against <a href="https://www.thethinkacademy.com/blog/2026-amc-12a-problems-solutions/" target="_blank" rel="noopener noreferrer">Think Academy</a>'s; and individual exceptions are credited to the <a href="https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>. Statements have been reformatted for display, including LaTeX and figure layout.</p>
             </div>
           </div></div>
         </section>
@@ -7533,7 +7533,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const MAA_RE = /\b(AMC|AIME|AJHSME)\b/;
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 21;
+  const STATEMENTS_V = 22;
   const statementLoads = {};
   function loadStatements(year) {
     if (!statementLoads[year]) {
