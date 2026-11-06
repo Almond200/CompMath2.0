@@ -4269,3 +4269,7 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
   .practice-results-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .practice-result-row { align-items: flex-start; flex-direction: column; gap: 8px; }
 }
+
+.practice-history-list > [hidden], .practice-history-more[hidden] { display: none; }
+
+.practice-history-more { display: block; width: 100%; }
