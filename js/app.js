@@ -4489,6 +4489,10 @@
                 <span class="lab-name">Flashcards &rarr;</span>
                 <span class="lab-desc">Spaced-repetition review of any section or study list: see a name and recall its formula, or the reverse. Cards you know come back less and less often; misses come back the same session.</span>
               </a>
+              <a class="lab-card" href="lab/topic-tree.html" target="_blank" rel="noopener">
+                <span class="lab-name">Topic tree &rarr;</span>
+                <span class="lab-desc">The draft classification of contest mathematics into four trees, Algebra, Counting &amp; Probability, Geometry and Number Theory, that practice sets, problem labels and contest profiles will use. A plan, not yet a feature.</span>
+              </a>
             </div>
           </div>
         </details>

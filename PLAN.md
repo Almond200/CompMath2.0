@@ -4,7 +4,8 @@
 - how things are done: `CONVENTIONS.md` (§13 holds the rules that used to live here);
 - what changed and when: [the project changelog](CHANGELOG.md);
 - approvals waiting on the owner: `QUESTIONS.md`;
-- what each Learn book, chapter and lesson contains: `LEARN-OUTLINE.md`.
+- what each Learn book, chapter and lesson contains: `LEARN-OUTLINE.md`;
+- the topic tree draft and its plan: `TOPIC-TREE.md`.
 
 **The handoff rule.** After every major change, every finished step, and the start of every new step: update "Current state", add an entry to `CHANGELOG.md`, commit and push.
 
@@ -30,6 +31,7 @@
 - **Labels and order (owner, eighteenth chat):** every Learn problem has a unique label (contest problems numbered on from a page's own problems; old reviews use N3.R.1), and lessons run our problems, solutions, then Exercises, while Review and Challenge Problems run our problems, contest problems, then solutions (owner, 2026-11-01; CONVENTIONS §14). Write new chapters to fit.
 - **Lesson tags (owner, eighteenth chat):** every lesson of a converted chapter carries Core, Core II or Extension after its title in the outline (CONVENTIONS §14); preserve these tags when editing chapters.
 - **Review of the 2026-11-06 changes (done):** all gates and tests pass; Olympiad Geometry O1 to O7 numbers checked. Fixed O3.1 (the reflected cut shares a half only when $AB$ is much longer than $AC$) and an O3.2 solution; book covers fit any title word of twelve or more letters (`bk-name-long`, which replaces the one-book override); the Practice results use tinted scores and hairline rows, not boxes inside a box; "1 problem" is singular. O3 to O7 now have Related lists and card-linked Summary recaps; Review problems is the purple Practice button. Open: `check-labels.py` on Linux Chromium reports 10 far-move and 11 on-stroke findings in unchanged figures (font differences from the Mac baseline of 7).
+- **Topic tree (Step T, started 2026-11-06):** T1 in progress. The draft is `TOPIC-TREE.md` (four trees, Algebra, Counting & Probability, Geometry, Number Theory, with dotted node ids, filing rules and open questions TQ1 to TQ5), shown in Settings → Experimental → Topic tree (`lab/topic-tree.html`, which reads the Markdown live). Nothing in the app uses the tree yet. Next: the owner reviews the draft and answers TQ1 to TQ5; then T2, the data file.
 - **Next action:** continue mathematical and explanatory-diagram review of the books. The 2026-11-06 documentation audit reconciled all 14 Markdown files with the current source; it does not certify every mathematical derivation.
 - **For the owner to try now:** C5 as the model chapter (`#/learn/aime-counting/c5`), How to Use This Book from any book's contents, Settings with its preview and search, and the app on a phone.
 
@@ -54,6 +56,14 @@ The model (the owner's blueprint, "Learn + Practice for Competition Math Referen
 1. **Review the written content.** Review the mathematics and worked solutions in all 13 textbooks, and reconcile the outline, status notes and documentation with the app. Add diagrams where they explain a construction, reveal why a step works or make a relationship easier to see.
 2. **Polish the experience.** Review search, navigation, readability and mobile usability across Learn, Formulas, Methods, Patterns and Practice. Follow real study paths between spaces, including a reader returning to an open solution or following a card to its lesson.
 3. **Consider small study features.** Practice a topic now has locally saved sessions and a problem-by-problem review interface, with automatic grading and no timer. Remaining possibilities include reviewing study history and sharing lists. Practice sets should help readers choose and work through problems at their own pace. Competitive contests, rankings and account systems are outside this roadmap.
+
+4. **Step T, the topic tree (owner, 2026-11-06).** Replace Practice's topic list (every card name and keyword) with one classification of contest mathematics in four trees, one per subject, each Subject › Area › Topic with a fourth level where an area splits cleanly. Every problem files under at least one node (usually one or two, at most three). The tree then serves three places: Practice sets (pick any node; the set draws from its whole subtree), problem labels (topic breadcrumbs on a problem's page and in practice review) and contest profiles (where a card's problems fall in the tree, and a profile for each node). The draft, rules and sub-steps T1 to T6 are in `TOPIC-TREE.md`:
+   - T1, draft the tree for the owner's review (in progress);
+   - T2, `js/data/topic-tree.js`, with a home node for every card;
+   - T3, file every problem (seed from cards, read the rest) and add a gate;
+   - T4, the Practice topic picker uses the tree;
+   - T5, topic labels on problems;
+   - T6, the tree in contest profiles.
 
 The lab migration remains on hold. Global lesson search belongs to the search review in phase two; book-scoped chapter search is already implemented.
 
