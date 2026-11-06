@@ -2,6 +2,8 @@
 
 **2026-11-05**
 
+- Selected practice numbers now stay blue. Moved Open in app beside Open in AoPS below the explanation chain, both using the blue button style.
+
 - Practice sets now grade automatically using 4,665 structured answer keys from LIVE, matched against local statements. Added a reproducible importer, paper-source provenance and hash-locked reviews for 30 equivalent PDF transcriptions. Corrected two strategy discrepancies: 1993 AJHSME #5 is C, and 2021 Fall AMC 12A #24 includes the equal-sided case for E (84).
 - Rebuilt review into separate statement and result/explanation panels. Submitted AMC choices remain visible; How this problem works reuses the problem page's strategy, Pattern/Method/Formulas chain and available lesson links. Open problem follows the heading, and the blue Read more solutions button sits below the chain. Removed self-grading controls and uses Incorrect for wrong answers.
 - Removed the timer and its preference, including legacy timer state. Review flags and answer changes update in place, with brief save batching to keep rapid edits responsive and no scroll jump. Answered problems use checkmarks, flagged problems use dots, and the current problem has one blue border without an outer ring.
