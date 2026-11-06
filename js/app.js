@@ -6781,8 +6781,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return hits.sort((a, b) => score(b) - score(a) || b.year - a.year || a.cname.localeCompare(b.cname) || a.num - b.num);
   }
 
-  // Lessons in the main search (owner, 2026-11-06): only when the query says "lesson" or
-  // "chapter" (renderSearchResults checks), and then only very strong matches, read off the
+  // Lessons in the main search (owner, 2026-11-06): first when the query says "lesson" or
+  // "chapter", otherwise after the cards (renderSearchResults orders them); only very strong
+  // matches either way, read off the
   // titles of lessons and chapters, never their prose. Every word of the query must match its
   // own word of the title: the word itself, the start of it, or (weighted lower) a synonym.
   // A one-word query finds only a title that is about that thing: one that starts with the
@@ -6829,9 +6830,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const lessonLead = x => String((learnLessonData(x.c, x.l || x.c.lessons[0]) || {}).body || "").split(/\n\s*\n/).find(t => t.trim() && !/^\{\{/.test(t.trim())) || "";
 
   function renderSearchResults() {
-    const { results, partial } = searchFormulas(state.query);
+    // "lesson" and "chapter" only steer lessons to the front; the rest of the search runs
+    // without them, so "power of a point lesson" lists the same cards as "power of a point".
+    const askLesson = /\b(lessons?|chapters?)\b/i.test(state.query) || /^\s*[a-z]\d+\.\d+\s*$/i.test(state.query);
+    const query = askLesson ? (state.query.replace(/\b(lessons?|chapters?)\b/gi, " ").replace(/\s+/g, " ").trim() || state.query) : state.query;
+    const { results, partial } = searchFormulas(query);
     const sorted = sortEntries(results);
-    const queryTokens = wordsOf(spellOperators(state.query.toLowerCase()));
+    const queryTokens = wordsOf(spellOperators(query.toLowerCase()));
     const partialNote = partial
       ? ` <em>(no formula matched every keyword &mdash; showing closest matches)</em>`
       : "";
@@ -6844,15 +6849,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // else; the word matches then follow in their usual place without repeating them.
     // When it names problems that exist, the loose word matches are left out: "2024 aime 1
     // problem 3" would otherwise pull in every problem whose text says "problem".
-    let named = referencedProblems(state.query);
+    let named = referencedProblems(query);
     if (named && !named.length) named = null;
-    const probs = named || problemMatches(state.query);
-    const listHits = listMatches(state.query);
-    const refy = !!named || /\b(19|20)\d\d\b|\b(aime|amc|hmmt|putnam|mathcounts)\b/i.test(state.query);
+    const probs = named || problemMatches(query);
+    const listHits = listMatches(query);
+    const refy = !!named || /\b(19|20)\d\d\b|\b(aime|amc|hmmt|putnam|mathcounts)\b/i.test(query);
     // A reference that names a contest and a year but no problem number ("2025 AIME I",
     // "2023 amc10b") also gets the paper itself as a result, ahead of its problems, linking to
     // that paper on its contest page. "2025 AIME" names two papers and gets both.
-    const ref = named && parseProblemQuery(state.query);
+    const ref = named && parseProblemQuery(query);
     const papers = [];
     if (ref && ref.fam && ref.year && !ref.num) named.forEach(p => {
       let g = papers.find(x => x.cname === p.cname);
@@ -6860,17 +6865,18 @@ The book remembers the last lesson you opened, in this browser, and the contents
       g.problems.push(p);
     });
     papers.sort((a, b) => a.cname.localeCompare(b.cname));
-    // Lessons only when the query asks for one (owner, 2026-11-06): "power of a point lesson",
-    // "circles chapter", or a lesson code such as C5.3. Without that word the search is unchanged.
-    const askLesson = /\b(lessons?|chapters?)\b/i.test(state.query) || /^\s*[a-z]\d+\.\d+\s*$/i.test(state.query);
-    const lessonHits = named || !askLesson ? [] : lessonMatches(state.query);
+    // Lessons lead only when the query asks for one (owner, 2026-11-06): "power of a point
+    // lesson", "circles chapter", or a lesson code such as C5.3. Otherwise the same strong
+    // matches are a secondary result, after the cards.
+    const lessonHits = named ? [] : lessonMatches(query);
     const items = [];
     papers.forEach(c => items.push({ contest: c }));
     if (named) named.forEach(p => items.push({ problem: p }));
     listHits.filter(h => h.strong).forEach(h => items.push({ list: h.list }));
-    lessonHits.forEach(x => items.push({ lesson: x }));
+    if (askLesson) lessonHits.forEach(x => items.push({ lesson: x }));
     if (refy && !named) probs.forEach(p => items.push({ problem: p }));
     sorted.forEach(e => items.push({ entry: e }));
+    if (!askLesson) lessonHits.forEach(x => items.push({ lesson: x }));
     if (!refy) probs.forEach(p => items.push({ problem: p }));
     listHits.filter(h => !h.strong).forEach(h => items.push({ list: h.list }));
     const n = { formula: 0, method: 0, pattern: 0 };

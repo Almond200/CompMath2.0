@@ -2,7 +2,7 @@
 
 **2026-11-06**
 
-- Lessons in the main search now appear only when asked for (owner): the query must contain "lesson" or "chapter" ("power of a point lesson", "circles chapter") or be a lesson code (C5.3). A plain "power of a point" shows no lessons, as before.
+- Lessons in the main search are a secondary result (owner): after the formula, method and pattern cards, ahead of the problems. They lead only when the query asks for them with "lesson" or "chapter" ("power of a point lesson", "circles chapter") or is a lesson code (C5.3); that word is then dropped from the rest of the search, so the cards and problems are the same as without it.
 
 - Main search finds lessons and chapters (owner: only very strong matches). Titles only, never lesson prose: every word of the query must match its own word of the title (the word, its start, or a synonym at lower weight; this kept "quadrilateral" from also spending its synonym "cyclic"), a one-word query finds only titles that start with the word ("Circles", "Vieta: the sum and product of the roots"), at most three results show, and a lesson code such as C5.3 finds its lesson. LESSON and CHAPTER results follow strong study-list matches and lead the cards; a chapter result lists its first lessons and opens on its Introduction. Introductions and Summaries are not indexed. Contest results no longer carry the line "Open the whole paper on its contest page."
 
