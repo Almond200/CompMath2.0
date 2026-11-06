@@ -5469,6 +5469,7 @@
         if (!pool.has(identity)) pool.set(identity, p);
       }
     }
+    index("Mixed", PROBLEM_DB);
     for (const [id, label] of Object.entries(SUBJECT_LABELS)) {
       const pool = PROBLEM_DB.filter(p => p.subjects.includes(id));
       index(label, pool);
@@ -5485,7 +5486,7 @@
     function update() {
       const key = normalize(topic.value);
       const choices = key ? labels.filter(label => normalize(label).includes(key)).slice(0, 7)
-        : Object.values(SUBJECT_LABELS);
+        : [...Object.values(SUBJECT_LABELS), "Mixed"];
       suggestions.innerHTML = choices.map((label,i) => `<button type="button" class="set-find-opt practice-topic-option${i === 0 ? ' is-cur' : ''}" role="option" id="practice-topic-${i}" aria-selected="${i === 0}">${escapeAttr(label)}</button>`).join('');
       suggestions.querySelectorAll('button').forEach((b,i) => b.addEventListener('click', () => { topic.value = choices[i]; closeTopics(); update(); topic.focus(); closeTopics(); }));
       renderMath(suggestions);

@@ -2,6 +2,8 @@
 
 **2026-11-06**
 
+- Added Mixed to the empty topic-search suggestions, using all eligible problems across subjects with the existing difficulty filter and twin deduplication. Replaced the separate current-answer outline with a 2px gray border; other answered buttons have a 1px gray border on hover.
+
 - Added a thin blue outline with a 2px gap around the current answered problem, making it distinguishable from neighboring blue-filled buttons without changing their size or review-result styling.
 
 - Fixed search suggestions overlapping the sticky header: shared Settings/topic/book menus use a lower stacking layer and close when their input leaves the visible area, including mobile viewport changes. Long suggestion labels wrap within the field width. Also constrained the main search command menu to the phone viewport after the wider audit found it overflowing the right edge.
