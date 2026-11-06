@@ -13,8 +13,9 @@ Practice a topic currently offers every card name and every card keyword as a to
 ## Rules for the tree
 
 1. **Four trees, one per subject:** Algebra, Counting & Probability, Geometry, Number Theory. They match `SUBJECT_LABELS` and the four Reference subjects. Methods and Patterns are not trees: they are ways of solving, and they stay cards.
-2. **Four levels, sometimes five.** Subject › Area › Topic › Subtopic (owner, 2026-11-06: topics need subtopics, since a topic often holds several kinds of problem). Every topic has subtopics, and a subtopic that still lumps distinct kinds of problem splits once more. A subtopic that is one kind of problem stays a leaf. Selecting a node selects everything under it.
-3. **A node is a kind of problem, not a formula.** "Power of a point" is a node because contest problems are about it; "Shoelace formula" is not, because it is one tool for "Areas in coordinates". Cards attach to nodes; nodes do not mirror cards.
+2. **Four levels, sometimes five.** Subject › Area › Topic › Subtopic (owner, 2026-11-06: topics need subtopics, since a topic often holds several kinds of problem). A topic splits into subtopics when its problems fall into recurring kinds, and a subtopic splits once more only on the same condition. A topic whose problems do not split that way stays a leaf. Selecting a node selects everything under it.
+3. **A node is an archetype: a kind of problem that recurs** (owner, 2026-11-06). It is never made for one problem, and a node is added only when several problems across contests fit it; as a guide, about five or more in the database. A thin node merges into its nearest neighbour, and a one-off problem files under the broader node it belongs to.
+3a. **A node is a kind of problem, not a formula.** "Power of a point" is a node because contest problems are about it; "Shoelace formula" is not, because it is one tool for "Areas in coordinates". Cards attach to nodes; nodes do not mirror cards.
 4. **Every problem has at least one node, usually one or two, at most three.** A problem files under the most specific node that describes it. A problem genuinely about two things (a probability question whose work is geometry) takes a node in each tree.
 5. **Size.** A topic aims for about 25 to 300 problems out of the 4,700; a subtopic for at least about 5. A subtopic that stays smaller after filing merges into its topic, and a problem that fits no subtopic files under the topic itself. There are no separate Olympiad nodes: Olympiad problems file under the same topics as everyone else's (owner, TQ4).
 6. **Stable ids.** Every node has a dotted id (`geo.circle.power`), never reused once problems are filed under it. The display name can change; the id cannot.
@@ -37,9 +38,8 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
 - **Arithmetic and word problems** `[alg.word]`
   - Rates, distance and work `[alg.word.rates]`
     - Distance, speed and time `[alg.word.rates.motion]`
-      - Meeting, overtaking and head starts `[alg.word.rates.motion.meet]`
+      - Meeting, overtaking, passing and head starts `[alg.word.rates.motion.meet]`
       - Round trips, laps and circular tracks `[alg.word.rates.motion.laps]`
-      - Trains, lengths and passing objects `[alg.word.rates.motion.pass]`
     - Average speed over a whole trip `[alg.word.rates.avg]`
     - Combined work and filling rates `[alg.word.rates.work]`
     - Currents, wind and moving walkways `[alg.word.rates.current]`
@@ -93,6 +93,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Systems solved by adding, subtracting or multiplying `[alg.eq.system.combine]`
     - Symmetric and cyclic systems `[alg.eq.system.cyclic]`
     - Substitution and elimination in nonlinear systems `[alg.eq.system.sub]`
+  - Matrices and determinants `[alg.eq.matrix]`
 - **Polynomials** `[alg.poly]`
   - Quadratics `[alg.poly.quad]`
     - Roots and the quadratic formula `[alg.poly.quad.roots]`
@@ -193,10 +194,6 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Quadratic optimization `[alg.ineq.optimize.quad]`
     - Optimization with a constraint `[alg.ineq.optimize.constraint]`
     - Optimization over the integers `[alg.ineq.optimize.integer]`
-- **Linear algebra** `[alg.linear]`
-  - Matrices and determinants `[alg.linear.matrix]`
-    - Determinants and areas `[alg.linear.matrix.det]`
-    - Matrix powers and linear maps `[alg.linear.matrix.power]`
 
 ### Counting & Probability `[cp]`
 
@@ -229,15 +226,12 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Bijections `[cp.tech.bij.bij]`
     - Double counting `[cp.tech.bij.double]`
   - Recursion and states `[cp.tech.rec]`
-    - Recursive counting `[cp.tech.rec.count]`
+    - Recursive counting, Catalan and ballot problems included `[cp.tech.rec.count]`
     - States and transfer tables `[cp.tech.rec.states]`
-    - Catalan numbers and ballot problems `[cp.tech.rec.catalan]`
   - Counting with symmetry `[cp.tech.sym]`
     - Rotations and reflections; necklaces `[cp.tech.sym.necklace]`
     - Burnside's lemma `[cp.tech.sym.burnside]`
   - Generating functions `[cp.tech.gf]`
-    - Generating functions for counting `[cp.tech.gf.count]`
-    - Generating functions for sequences and recurrences `[cp.tech.gf.seq]`
 - **Arrangements with structure** `[cp.struct]`
   - Paths on grids and lattices `[cp.struct.paths]`
     - Lattice paths `[cp.struct.paths.lattice]`
@@ -288,8 +282,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Games between players `[cp.prob.process.game]`
 - **Expected value** `[cp.exp]`
   - Expected value by definition `[cp.exp.basic]`
-    - Expected value from a list of outcomes `[cp.exp.basic.list]`
-    - Expected maximum, minimum and order statistics `[cp.exp.basic.extreme]`
+    - Expected value from a list of outcomes, maxima and minima included `[cp.exp.basic.list]`
     - Fair games and expected payoffs `[cp.exp.basic.payoff]`
   - Linearity of expectation `[cp.exp.linear]`
     - Indicator variables `[cp.exp.linear.indicator]`
@@ -306,11 +299,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Paths, cycles and Euler circuits `[cp.graph.basic.paths]`
     - Trees and connectivity `[cp.graph.basic.trees]`
   - Tournaments and round-robins `[cp.graph.tour]`
-    - Win-loss records and scores `[cp.graph.tour.scores]`
-    - Schedules, pairings and matchings `[cp.graph.tour.schedule]`
-  - Sets and set systems `[cp.graph.sets]`
-    - Subsets with sum or difference conditions `[cp.graph.sets.sum]`
-    - Families of subsets and intersections `[cp.graph.sets.family]`
+  - Largest subsets avoiding a condition `[cp.graph.sets]`
 - **Logic, games and processes** `[cp.logic]`
   - Logic puzzles and truth-tellers `[cp.logic.puzzle]`
     - Knights, knaves and truth-tellers `[cp.logic.puzzle.truth]`
@@ -318,8 +307,6 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
       - Rankings and orderings `[cp.logic.puzzle.deduce.order]`
       - Matching people to facts `[cp.logic.puzzle.deduce.match]`
     - Grid and number puzzles `[cp.logic.puzzle.grid]`
-      - Magic squares and number grids `[cp.logic.puzzle.grid.magic]`
-      - Filling a grid under constraints `[cp.logic.puzzle.grid.fill]`
   - Games and strategies `[cp.logic.game]`
     - Winning and losing positions `[cp.logic.game.positions]`
     - Strategy stealing and pairing strategies `[cp.logic.game.pairing]`
@@ -358,9 +345,8 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Equilateral triangles `[geo.tri.special.equil]`
     - Isosceles triangles `[geo.tri.special.isos]`
   - Triangle inequality `[geo.tri.ineq]`
-    - Which lengths can form a triangle `[geo.tri.ineq.valid]`
+    - Which lengths form a triangle, and of which type `[geo.tri.ineq.valid]`
     - Counting integer-sided triangles `[geo.tri.ineq.count]`
-    - Acute, right or obtuse from the side lengths `[geo.tri.ineq.type]`
   - Cevians, angle bisectors and medians `[geo.tri.cevian]`
     - Angle bisector theorem `[geo.tri.cevian.bisector]`
     - Medians and the centroid `[geo.tri.cevian.median]`
@@ -381,11 +367,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Triangle centers, their lines and classical configurations `[geo.tri.centers]`
     - Orthocenter and altitudes `[geo.tri.centers.ortho]`
     - The Euler line and the nine-point circle `[geo.tri.centers.euler]`
-    - Classical lemmas `[geo.tri.centers.lemmas]`
-      - Incenter-excenter lemma and arc midpoints `[geo.tri.centers.lemmas.incenter]`
-      - Reflections of the orthocenter `[geo.tri.centers.lemmas.reflect]`
-      - Miquel points, Simson lines and spiral similarity `[geo.tri.centers.lemmas.miquel]`
-    - Isogonal conjugates and symmedians `[geo.tri.centers.isogonal]`
+    - Classical lemmas, isogonal conjugates and symmedians `[geo.tri.centers.lemmas]`
 - **Polygons** `[geo.poly]`
   - Quadrilaterals `[geo.poly.quad]`
     - Rectangles and squares `[geo.poly.quad.rect]`
@@ -423,10 +405,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Cyclic quadrilaterals and Ptolemy `[geo.circ.cyclic.ptolemy]`
     - Brahmagupta's formula `[geo.circ.cyclic.brahmagupta]`
     - Tangential quadrilaterals and Pitot `[geo.circ.cyclic.tangential]`
-  - Inversion, radical axes and projective tools `[geo.circ.proj]`
-    - Radical axes and radical centers `[geo.circ.proj.radical]`
-    - Inversion `[geo.circ.proj.inversion]`
-    - Cross-ratio, harmonic division and projective maps `[geo.circ.proj.cross]`
+  - Radical axes, inversion and projective tools `[geo.circ.proj]`
 - **Coordinate geometry** `[geo.coord]`
   - Lines, slopes and distances `[geo.coord.line]`
     - Slopes, intercepts and equations of lines `[geo.coord.line.slope]`
@@ -469,8 +448,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
 - **Geometric optimization and combinatorial geometry** `[geo.comb]`
   - Shortest paths, reflections and extremes `[geo.comb.extreme]`
     - Shortest paths and reflection `[geo.comb.extreme.path]`
-    - Largest and smallest areas and lengths `[geo.comb.extreme.maxmin]`
-    - Minimizing a sum of distances (Fermat point) `[geo.comb.extreme.fermat]`
+    - Largest and smallest lengths, areas and sums of distances `[geo.comb.extreme.maxmin]`
   - Counting figures, grids and dissections `[geo.comb.count]`
     - Counting triangles, rectangles and squares in a grid `[geo.comb.count.figures]`
     - Dissections and tilings of figures `[geo.comb.count.dissect]`
@@ -510,15 +488,12 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Last digit and last two digits `[nt.mod.cycle.last]`
     - Cycles of powers `[nt.mod.cycle.power]`
   - Fermat, Euler and the order of an element `[nt.mod.fermat]`
-    - Fermat's little theorem and Euler's theorem `[nt.mod.fermat.flt]`
+    - Fermat's, Euler's and Wilson's theorems `[nt.mod.fermat.flt]`
     - Order of an element and primitive roots `[nt.mod.fermat.order]`
-    - Wilson's theorem `[nt.mod.fermat.wilson]`
   - Chinese remainder theorem and linear congruences `[nt.mod.crt]`
     - Systems of congruences `[nt.mod.crt.system]`
     - Splitting a modulus into prime powers `[nt.mod.crt.split]`
-  - Quadratic residues `[nt.mod.qr]`
-    - Squares modulo small numbers `[nt.mod.qr.small]`
-    - Legendre symbols and reciprocity `[nt.mod.qr.legendre]`
+  - Quadratic residues and squares modulo small numbers `[nt.mod.qr]`
 - **Primes and factorials** `[nt.prime]`
   - Primes and primality `[nt.prime.basic]`
     - Recognizing and testing primes `[nt.prime.basic.test]`
@@ -533,13 +508,11 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Chicken McNugget and the Frobenius number `[nt.dio.linear.frob]`
   - Factoring and SFFT `[nt.dio.factor]`
     - Simon's favorite factoring trick `[nt.dio.factor.sfft]`
-    - Difference of squares in integers `[nt.dio.factor.squares]`
+    - Difference of squares and other factorable forms `[nt.dio.factor.squares]`
     - Reciprocal equations $1/x+1/y=1/n$ `[nt.dio.factor.recip]`
-    - Quadratic forms that factor into lines `[nt.dio.factor.forms]`
   - Pythagorean triples and sums of squares `[nt.dio.squares]`
     - Pythagorean triples `[nt.dio.squares.triples]`
-    - Sums of two squares `[nt.dio.squares.sums]`
-    - Pell equations `[nt.dio.squares.pell]`
+    - Sums of two squares and Pell equations `[nt.dio.squares.sums]`
   - Bounding and parity arguments `[nt.dio.bound]`
     - Bounding and size arguments `[nt.dio.bound.size]`
     - Modular obstructions `[nt.dio.bound.mod]`
@@ -563,9 +536,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Special numbers `[nt.seq.special]`
     - Fibonacci and Lucas numbers `[nt.seq.special.fib]`
     - Triangular, figurate and palindromic numbers `[nt.seq.special.figurate]`
-  - Representations and continued fractions `[nt.seq.repr]`
-    - Continued fractions `[nt.seq.repr.cf]`
-    - Representations as sums (consecutive integers, powers of two) `[nt.seq.repr.sums]`
+  - Representations as sums and continued fractions `[nt.seq.repr]`
 
 ## Test: the 2025 AMC 10A (2026-11-06)
 
@@ -586,12 +557,12 @@ Every problem of the 2025 AMC 10A was filed by hand from its statement and writt
 13. Infinitely many nested squares, alternately shaded: `alg.seq.ap.infinite`, `geo.poly.composite.add`.
 14. Students and teachers at a round table: `cp.prob.basic.count`, `cp.struct.seat.circle`.
 15. Similar triangles in a rectangle: `geo.basic.sim.similar`.
-16. Expected size of the fullest jar: `cp.exp.basic.extreme` (*new*: the draft had only linearity and states, not expected value computed from the outcomes).
+16. Expected size of the fullest jar: `cp.exp.basic.list` (*new*: the draft had only linearity and states, not expected value computed from the outcomes).
 17. Two remainders give $N$: `nt.mod.basic.arith`, `nt.div.gcd.euclid`.
 18. Harmonic mean of the roots of 2025 quadratics: `alg.poly.vieta.basic`.
 19. A Pascal-like array whose rows are $(-x^2+3x+1)(x+1)^n$: `alg.poly.construct.coeff`, `cp.binom.identity.hockey` (Pascal's rule).
 20. A sight line tangent to a silo: `geo.coord.line.point`, `geo.circ.power.tangent`.
-21. The largest sum-free subset of $\{1,\ldots,20\}$: `cp.graph.sets.sum`, `cp.logic.pigeon.bounds`.
+21. The largest sum-free subset of $\{1,\ldots,20\}$: `cp.graph.sets`, `cp.logic.pigeon.bounds`.
 22. Four mutually tangent circles: `geo.circ.tangent.mutual`.
 23. Bisector meets altitude: `geo.tri.trig.cosines`, `geo.tri.cevian.bisector`.
 24. Fair numbers (unimodal digit strings): `cp.struct.words.monotone`.
@@ -599,26 +570,26 @@ Every problem of the 2025 AMC 10A was filed by hand from its statement and writt
 
 Spread by first node: 10 problems in Algebra, 7 in Counting & Probability, 7 in Geometry and 1 in Number Theory; 11 problems also take a second node. No problem needed more than two nodes.
 
-The same pass also audited every leaf. Topics that had no subtopics now have them (operations, generating functions, variance, tournaments, set systems, matrices, polygons in general); five subtopics that lumped distinct kinds of problem got a fifth level (motion problems, deduction puzzles, grid puzzles, unit cubes, classical triangle lemmas); and four common kinds of contest problem got homes: folding and creases, counting multiples in a range, cryptarithms, and acute, right or obtuse from the side lengths.
+The same pass also audited every leaf. Topics that had no subtopics now have them (operations, generating functions, variance, tournaments, set systems, matrices, polygons in general); five subtopics that lumped distinct kinds of problem got a fifth level (motion problems, deduction puzzles, grid puzzles, unit cubes, classical triangle lemmas); and four common kinds of contest problem got homes: folding and creases, counting multiples in a range, cryptarithms, and acute, right or obtuse from the side lengths. (Later, under the archetype rule, the subtopics of generating functions, tournaments, set systems and matrices were merged back, and the fifth levels under passing trains, grid puzzles and triangle lemmas removed, because too few problems fit them.)
 
 ## Test: the 2025 AIME I (2026-11-06)
 
-All 15 problems found a home; five needed a node the draft lacked, all added (*new*).
+All 15 problems found a home; five needed a node the draft lacked (*new*). Two of the five were later merged into broader nodes under the archetype rule, because few other problems fit them.
 
 1. $17_b$ divides $97_b$: `nt.digit.base.arith`, `nt.div.rules.expr`.
 2. A heptagon built by reflecting points of a triangle: `geo.tri.ratio.area`, `geo.coord.transform.reflect`.
 3. Ice-cream assignments with $c\gt v\gt s$: `cp.basic.perm.repeat`, `cp.basic.case.cases`.
-4. Integer points on $12x^2-xy-6y^2=0$: `nt.dio.factor.forms` (*new*: a quadratic form that factors into two lines).
+4. Integer points on $12x^2-xy-6y^2=0$: `nt.dio.factor.squares` (a quadratic form that factors into two lines; first added as its own node, then merged because few problems fit it).
 5. Eight-digit numbers divisible by $22$: `nt.div.rules.tests`, `cp.basic.perm.restrict`.
 6. An isosceles trapezoid with an incircle: `geo.circ.cyclic.tangential`, `geo.poly.quad.trap`.
-7. The last of six alphabetized pairs contains $G$: `cp.prob.basic.count`, `cp.graph.tour.schedule` (pairings).
+7. The last of six alphabetized pairs contains $G$: `cp.prob.basic.count`, `cp.graph.tour` (pairings).
 8. A circle and a perpendicular bisector in the complex plane meet once: `alg.cx.polar.plane`, `geo.coord.line.point`.
 9. A parabola and its $60^\circ$ rotation: `geo.coord.transform.rotate`, `geo.coord.conic.parabola`.
 10. Fillings of a $3\times9$ Sudoku band: `cp.struct.tile.fill` (*new*: counting number fillings of a grid).
 11. A sawtooth function meets $x=34y^2$: `alg.fn.graph.periodic` (*new*), `alg.poly.vieta.basic`.
 12. A finite region of the plane $x+y+z=75$: `geo.solid.coord.planes`, `alg.ineq.solve.rational`.
 13. Expected regions cut by random chords: `cp.exp.linear.indicator`, `geo.comb.count.regions` (*new*).
-14. Minimizing $AX+BX+CX+DX+EX$ for a pentagon: `geo.comb.extreme.fermat` (*new*), `geo.tri.special.right`.
+14. Minimizing $AX+BX+CX+DX+EX$ for a pentagon: `geo.comb.extreme.maxmin` (minimizing a sum of distances; first added as its own node, then merged), `geo.tri.special.right`.
 15. Triples with $3^7 \mid a^3+b^3+c^3$: `nt.prime.val.lte`, `nt.mod.basic.arith`.
 
 Spread by first node: 5 Geometry, 4 Number Theory, 4 Counting & Probability, 2 Algebra; 13 problems take a second node. The AIME tested the upper end of the tree more than the AMC 10A did, and all five gaps were at that end.
