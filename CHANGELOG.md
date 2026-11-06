@@ -2,6 +2,8 @@
 
 **2026-11-06**
 
+- Step T, the topic tree, added to PLAN (owner): four subject trees that practice sets, problem labels and contest profiles will share. T1 started: `TOPIC-TREE.md` holds the draft tree with node ids, filing rules, a seeding plan, the open questions TQ1 to TQ5 and the sub-steps; Settings → Experimental → Topic tree (`lab/topic-tree.html`) renders it live, with collapsible nodes.
+
 - CONVENTIONS records the two new rules: page-local suggestion lists stay open on scroll, and long cover titles use `bk-name-long`, not per-book overrides.
 
 - Olympiad Geometry O3 to O7: every teaching lesson has a Related list (two to four cards, each with a note and the lesson that teaches it), and each Summary opens with a card-linked recap of the chapter's results, in the O1 style; the Summaries list the chapter's cards as prerequisites. Review problems on the Practice results page is now the purple Practice button, matching Finish and review.
