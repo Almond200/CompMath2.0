@@ -16,9 +16,11 @@ Search for a subject or technique, choose a question count and difficulty, then 
 untimed practice set. AMC problems use A–E choices; AIME problems accept integers from 000 to
 999. Answers save automatically on this device. Double-click a selected choice to clear it.
 Save and exit and Back to Practice both preserve progress. **Practice sets**, below Contests,
-separates **Resume a set** from **Review a completed set**.
+separates **Resume a set** from **Review a completed set**. Each group shows at most two rows,
+with its own full-width **Show all / Show less** control.
 
-Finish and review grades against imported answer keys. Review keeps your submitted selection,
+Finish and review grades against imported answer keys and opens a results overview with your
+score and correct, incorrect and unanswered totals. Each result links to its detailed review. Review keeps your submitted selection,
 shows Correct, Incorrect or Unanswered, and separates the problem statement from the result
 and explanation. How this problem works uses the same strategy, Pattern/Method/Formulas chain
 and textbook links as the problem page. Answer keys come from LIVE by Po-Shen Loh and are
@@ -76,7 +78,11 @@ CONVENTIONS §0 has the full model.
   With eight or more cards, choose **Group** to organize the list. Later additions appear under
   **New cards** until you choose **Regroup**. A list with named sections has an **On this list**
   sidebar. Its page tools follow the same setting as card pages. A book's contents (`#/learn/<book>`) open with Contents and
-  Introduction and How to Use This Book (`.../how-to-use`). A lesson (`.../c5/2`) shows its cards,
+  Introduction and How to Use This Book (`.../how-to-use`), where the Core, Core II and Extension
+  tags are explained with visible badges. **Search this book...**, below the book subtitle and
+  in the right half of desktop chapter navigation (a separate field on mobile), finds chapters
+  from chapter titles, lesson headings, related concepts and lesson text. It supports prefixes,
+  synonyms and small typos, with keyboard-selectable suggestions scoped to the current book. A lesson (`.../c5/2`) shows its cards,
   one flowing explanation, related cards, its own problems with worked solutions, contest
   problems, and a drawer for the cards it links; chapters in the approved structure (C5) open on
   an Introduction and close with a Summary, Review Problems and Challenge Problems (CONVENTIONS §14).

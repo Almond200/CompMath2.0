@@ -2,6 +2,8 @@
 
 **2026-11-06**
 
+- Audited chapter search against all 13 books, 103 chapter titles and 387 non-generic lesson titles. Fixed exact-title ranking (Circles), foreign chapter-code matching, normalized conversational stopwords and unique combobox IDs, and hid search controls when printing. Reconciled README, PLAN, CLAUDE and CONVENTIONS with the current search, results overview and history behavior.
+
 - Added Search this book... to the right half of textbook navigation, below the book subtitle on contents pages, and above lessons on mobile. Chapter suggestions rank chapter titles, lesson headings, related card names/keywords and lesson text, with partial, synonym and typo matching; keyboard navigation and highlighted suggestions match Settings.
 - Moved chapter/lesson level guidance off book homepages into How to Use This Book with visible Core, Core II and Extension tags.
 - Practice history buttons now say Show all, without counts. Restored a little space above Results overview.

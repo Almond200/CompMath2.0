@@ -5962,24 +5962,24 @@
     rail.addEventListener("pointercancel", () => { press = null; clear(); });
     rail.addEventListener("click", e => { if (e.pointerType && e.pointerType !== "mouse") e.preventDefault(); });
   }
-  // cur: "book", "chapter", "review", "challenge", or the lesson.
+  let bookSearchSerial = 0;
   function bookSearchHtml(place) {
-    const id = 'book-search-' + place;
+    const id = 'book-search-' + place + '-' + (++bookSearchSerial);
     return `<div class="book-search set-find"><input class="set-find-input" type="search" placeholder="Search this book..." aria-label="Search this book" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="${id}" autocomplete="off" spellcheck="false"><div class="set-find-list" id="${id}" role="listbox" hidden></div></div>`;
   }
   function bookSearchRanker(b) {
-    const stop = new Set('a an the how to do i can find learn about chapter lesson book this with of in on for and or is are what does use using'.split(' '));
+    const stop = new Set('a an the how to do i can find learn about chapter lesson book this with of in on for and or is are what does use using where me please want looking look understand explain help'.split(' ').map(normWord));
     const tokens = text => wordsOf(String(text).replace(/<[^>]*>/g, ' ')).filter(w => !stop.has(w));
     const entries = b.chapters.map(c => {
       const lessons = c.lessons.map(l => ({ l, d: learnLessonData(c, l) }));
       const cards = lessons.flatMap(({ d }) => (d?.cards || []).map(id => BY_ID[typeof id === 'string' ? id : id.id]?.formula).filter(Boolean));
-      return { c, title: new Set(tokens(c.code + ' ' + c.title)), headings: new Set(tokens(c.lessons.map(l => l.title).join(' '))),
+      return { c, phrase: tokens(c.title).join(' '), title: new Set(tokens(c.code + ' ' + c.title)), headings: new Set(tokens(c.lessons.map(l => l.title).join(' '))),
         related: new Set(tokens(cards.map(f => f.name + ' ' + (f.keywords || []).join(' ')).join(' '))),
         body: new Set(tokens(lessons.map(({ d }) => d?.body || '').join(' '))) };
     });
     const rank = query => {
-      const chapterNumber = query.trim().match(/^(?:chapter\s*|[a-z])?(\d+)$/i);
-      if (chapterNumber) return entries.filter(e => +e.c.code.slice(1) === +chapterNumber[1]);
+      const chapterNumber = query.trim().match(/^(?:chapter\s*|([a-z]))?(\d+)$/i);
+      if (chapterNumber) return entries.filter(e => +e.c.code.slice(1) === +chapterNumber[2] && (!chapterNumber[1] || e.c.code[0].toLowerCase() === chapterNumber[1].toLowerCase()));
       const q = [...new Set(tokens(query))];
       if (!q.length) return query.trim() ? [] : entries.slice(0, 7);
       return entries.map(entry => {
@@ -5997,7 +5997,7 @@
           if (best) matched++;
           score += best;
         });
-        return { ...entry, score: score * matched / q.length, matched };
+        return { ...entry, score: score * matched / q.length + (entry.phrase === q.join(' ') ? 100 : 0), matched };
       }).filter(e => e.matched >= Math.ceil(q.length * 0.6)).sort((a, z) => z.score - a.score).slice(0, 7);
     };
     return rank;
@@ -6032,6 +6032,7 @@
       box.addEventListener('focusout', () => setTimeout(() => { if (!box.contains(document.activeElement)) close(); }, 0));
     });
   }
+  // cur: "book", "chapter", "review", "challenge", or the lesson.
   function learnBookShell(b, c, cur, main) {
     $content.innerHTML = learnBookShellHtml(b, c, cur, main);
     wireLearnRail($content);
