@@ -1,6 +1,6 @@
 # Topic tree (draft)
 
-**Status (2026-11-07): the tree is approved and in use, 501 nodes (TQ6 added `cp.basic.perm.cycle`, TQ7 `cp.basic.comb.pairs`, TQ8 `alg.word.rates.motion.speeds`, TQ9 `cp.logic.puzzle.statements`). T1 and T2 are done (the data files and the gate, CONVENTIONS §15). T3, the tagging pass, is under way: 790 of the 4,725 problems carry `tree` fields (the 2026 AMC 10A and 12A, 2026 AIME I and II, 2025 AMC 10A, 12A, 10B and 12B, 2025 AIME I and II, 2024 AMC 10A, 12A, 10B and 12B and AIME I and II, 2023 AMC 10A, 12A, 10B and 12B, 2023 AIME I and II, 2022 AMC 10A, 12A, 10B and 12B, 2022 AIME I and II, 2021 Fall AMC 10A, 12A, 10B and 12B, 2021 AIME I and II, 2020 AIME I and II, and 2019 AIME I and II). The app does not read the filings yet (T4). no candidate is open and the next is TQ10 (`QUESTIONS.md`). The test filings below are the record of the tests of 2026-11-06; the problems' own `tree` fields are the filings now.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
+**Status (2026-11-07): the tree is approved and in use, 507 nodes (TQ6 added `cp.basic.perm.cycle`, TQ7 `cp.basic.comb.pairs`, TQ8 `alg.word.rates.motion.speeds`, TQ9 `cp.logic.puzzle.statements`, TQ10 to TQ15 six more, 2026-11-07). T1 and T2 are done (the data files and the gate, CONVENTIONS §15). T3, the tagging pass, is under way: 790 of the 4,725 problems carry `tree` fields (the 2026 AMC 10A and 12A, 2026 AIME I and II, 2025 AMC 10A, 12A, 10B and 12B, 2025 AIME I and II, 2024 AMC 10A, 12A, 10B and 12B and AIME I and II, 2023 AMC 10A, 12A, 10B and 12B, 2023 AIME I and II, 2022 AMC 10A, 12A, 10B and 12B, 2022 AIME I and II, 2021 Fall AMC 10A, 12A, 10B and 12B, 2021 AIME I and II, 2020 AIME I and II, and 2019 AIME I and II). The app does not read the filings yet (T4). no candidate is open and the next is TQ17 (`QUESTIONS.md`). The test filings below are the record of the tests of 2026-11-06; the problems' own `tree` fields are the filings now.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
 
 ## Why
 
@@ -131,6 +131,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Intersections of graphs `[alg.fn.graph.intersect]`
     - Domain, range and even and odd functions `[alg.fn.graph.domain]`
     - Periodic and piecewise functions `[alg.fn.graph.periodic]`
+    - Rational functions: $\tfrac{ax+b}{cx+d}$, asymptotes and holes `[alg.fn.graph.rational]`
   - Functional equations `[alg.fn.feq]`
     - Substituting special values `[alg.fn.feq.sub]`
     - Cauchy-type and additive equations `[alg.fn.feq.cauchy]`
@@ -213,6 +214,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Combinations and committees `[cp.basic.comb]`
     - Choosing subsets and committees `[cp.basic.comb.choose]`
     - Choosing with conditions `[cp.basic.comb.condition]`
+    - Choosing with gaps: no two chosen items adjacent, in a row or a circle `[cp.basic.comb.gaps]`
     - Counting subsets with a property `[cp.basic.comb.subsets]`
     - Splitting into pairs (random pairings and perfect matchings, $(2n-1)!!$ ways) `[cp.basic.comb.pairs]`
   - Casework and complementary counting `[cp.basic.case]`
@@ -245,6 +247,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Words, digits and strings `[cp.struct.words]`
     - Counting numbers with digit conditions `[cp.struct.words.digits]`
     - Strings with forbidden patterns `[cp.struct.words.forbidden]`
+    - Strings by their runs and switches `[cp.struct.words.runs]`
     - Increasing and monotone sequences `[cp.struct.words.monotone]`
   - Seating, circular arrangements and derangements `[cp.struct.seat]`
     - Circular arrangements `[cp.struct.seat.circle]`
@@ -285,6 +288,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Random walks and gambler's ruin `[cp.prob.process.walk]`
     - Repeated trials until a stopping event `[cp.prob.process.stop]`
     - Games between players `[cp.prob.process.game]`
+    - State probabilities after a fixed number of steps `[cp.prob.process.steps]`
 - **Expected value** `[cp.exp]`
   - Expected value by definition `[cp.exp.basic]`
     - Expected value from a list of outcomes, maxima and minima included `[cp.exp.basic.list]`
@@ -337,10 +341,11 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Altitude to the hypotenuse `[geo.basic.pyth.altitude]`
     - Right triangles hidden in figures `[geo.basic.pyth.hidden]`
     - Folding and creases `[geo.basic.pyth.fold]`
-  - Similar and congruent triangles `[geo.basic.sim]`
+  - Similarity and congruence `[geo.basic.sim]`
     - Congruence `[geo.basic.sim.congruent]`
     - Similar triangles and ratios `[geo.basic.sim.similar]`
     - Parallel lines and proportional segments `[geo.basic.sim.parallel]`
+    - Similar figures and solids: length, area and volume ratios `[geo.basic.sim.figures]`
 - **Triangles** `[geo.tri]`
   - Area of a triangle `[geo.tri.area]`
     - Base and height `[geo.tri.area.base]`
@@ -511,6 +516,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
 - **Diophantine equations** `[nt.dio]`
   - Linear Diophantine equations and the Frobenius problem `[nt.dio.linear]`
     - Solving $ax+by=c$ `[nt.dio.linear.solve]`
+    - Counting solutions with positivity or bounds `[nt.dio.linear.count]`
     - Chicken McNugget and the Frobenius number `[nt.dio.linear.frob]`
   - Factoring and SFFT `[nt.dio.factor]`
     - Simon's favorite factoring trick `[nt.dio.factor.sfft]`
