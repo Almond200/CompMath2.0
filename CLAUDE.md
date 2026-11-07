@@ -9,6 +9,7 @@
    Credits can run out at any time, and the next chat starts from that block.
 3. **Remind the owner to switch chats** after about 15 to 20 of their messages, once "Current state" is up to date and pushed.
 4. **How things are done** is in `CONVENTIONS.md`: card anatomy, figure rules, the gates in §7. Approvals waiting on the owner are in `QUESTIONS.md`.
+5. **Two agents work in this repository.** Claude keeps the shared Markdown (`PLAN.md`, `CHANGELOG.md`, `CONVENTIONS.md`, `README.md`, `LEARN-OUTLINE.md`, `TOPIC-TREE.md`, `QUESTIONS.md`, `TEXTBOOK-REVISION.md`) and works on cards, problems, the topic tree and `js/app.js`. Codex revises the textbooks (`js/data/learn/**`, `tools/build-book-notes.cjs`, `tools/build-learn-shelf.py`, `tests/book-search.cjs`) and does not edit the shared Markdown: it reports each batch, and Claude records it. Both bump asset versions in `index.html`; keep both sets of bumps when merging.
 
 ## Running the checks in a cloud session
 
@@ -21,6 +22,7 @@ python3 tools/scan-conventions.py && python3 tools/check-topics.py && python3 to
 python3 tools/check-diagrams.py && python3 tools/check-statements.py && ./tools/check-lab.sh
 python3 tools/check-labels.py          # historical 2026-10-24 baseline: 7 font-related far-move findings
 python3 tools/build-learn-shelf.py --check
+node tools/build-book-notes.cjs --check    # the generated End-of-book Notes match the chapter data
 python3 tools/build-topic-tree.py --check   # topic-tree.js matches TOPIC-TREE.md
 node tools/check-topic-tree.js              # tree, card homes, problem tree tags (CONVENTIONS §15)
 node tests/practice-sessions.cjs
@@ -54,6 +56,7 @@ $JSC tools/validate-problem-db.js
 - Links are always the app's blue, never purple after a visit (owner, 2026-11-01).
 - No gradients on buttons (or other controls): solid colours only. The book covers are the one exception (owner, 2026-10-31).
 - The textbooks stay at a high level and are not too easy. Basic is not easy: a basic problem uses relatively simple techniques but can be hard to solve. An Introduction's Exercises are basic, not easy (owner, 2026-10-31).
+- Reference sections (End-of-book Notes) carry no Core, Core II or Extension tag and are not counted as lessons.
 - No chapter or lesson title names the AMC 10 or AMC 12: an advanced chapter is "Advanced counting", not "Counting for the AMC 12" (owner, 2026-11-01).
 - Card order has two values, Curated and Most used; do not bring back "By contest tier". Ramsey $R(3,3)=6$ was removed on purpose (2026-10-23).
 - LIVE's concept tags (`tools/live-cache/`) are hints for finding problems and gaps, never a source of tags or text.

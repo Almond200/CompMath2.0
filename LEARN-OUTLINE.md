@@ -4,9 +4,10 @@ This file says what each Learn book holds: its chapters, its lessons, and the ca
 
 The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curriculum" (2026-10-31), which grew the first draft into chapters with lesson-level syllabi; this file added real card ids for every lesson.
 
-**Status (checked 2026-11-06):**
-- All 13 books are written: four AMC, four AIME and five Olympiad books, totaling 103 chapters and 593 lessons.
-- Every chapter uses X.1 Introduction, lessons, Summary, Review Problems and Challenge Problems (CONVENTIONS §14). No old chapter-review array remains.
+**Status (checked 2026-11-07):**
+- All 13 books are initially written: four AMC, four AIME and five Olympiad books, with 103 teaching chapters and 593 teaching pages (Introductions and Summaries included; Review Problems and Challenge Problems are separate problem sets and are not counted). Initial writing is a separate status from the content revision under way in `TEXTBOOK-REVISION.md` (AMC Algebra L1 to L14 revised so far).
+- Each book also ends with one reference chapter, End-of-book Notes: Overview, Index, Glossary, and References and Credits (13 chapters, 52 sections). Reference chapters carry no difficulty tag and are not teaching chapters; `tools/build-learn-shelf.py --check` reports 116 chapter files and 645 lesson records because it counts them too.
+- Every teaching chapter uses X.1 Introduction, lessons, Summary, Review Problems and Challenge Problems (CONVENTIONS §14). No old chapter-review array remains.
 - "The AMC books, second plan" is built (2026-11-01): it replaced the first AMC books and the Bridge, which is removed.
 
 ## How to read this file
@@ -34,7 +35,7 @@ Olympiad-tier cards that fit no chapter stay in the reference only. All five Oly
 
 The full rules are in CONVENTIONS §14; in short:
 1. **The cards first.** A lesson opens with the cards it teaches and the cards it assumes, each a link.
-2. **One flowing explanation,** with no subheadings: define the idea, state its conditions, show why it is useful, work an example that includes the clue that made the approach promising, then a variation or a condition that fails. Link the canonical card and never copy it.
+2. **One flowing explanation,** with no subheadings: define the idea before using it, state its conditions, derive or prove what it needs, work examples through the reasoning that motivates the method, and say where it stops working. Explanatory diagrams may sit inside it. It may state formulas and results that a card also holds; it links the canonical card, which stays the compact reference, and never copies the card's text.
 3. **Related cards,** each with one line on how it connects.
 4. **The lesson's own problems,** with full worked solutions further down the page.
 5. **Exercises:** contest problems, about 3 to 5, rising in difficulty, in the AoPS-style list where Show Solution works only once something is written (LQ6).
@@ -99,7 +100,7 @@ A student need not finish the books in order. Any chapter can be entered once it
 
 | Bridge | New home |
 |---|---|
-| B1 Algebra fluency and substitutions | L1, L2, L4.3, L5.1; `useful-factorizations` in L10.5 |
+| B1 Algebra fluency and substitutions | L1, L2, L4.3, L5.1; `useful-factorizations` in L10.6 |
 | B2 Polynomial and sequence fundamentals | L3, L6, L7, L10.1 |
 | B3 Integer arithmetic and congruence fundamentals | M1, M4.1, M4.2, M5.3 |
 | B4 Counting and probability fundamentals | R1, R2, R3 |
@@ -116,7 +117,7 @@ The "AMC problems" column below counts the AMC 10 and 12 problems tagged with a 
 
 **Tracks.** The four AMC books stay one track and the AIME books another (CONVENTIONS §14). The AIME books' cards assumed from the Bridge are now taught in the AMC books, so a student enters the AIME books after the AMC books. A later pass could make the AIME books stop re-teaching AMC cards and merge the two tracks into one path; it is not part of this plan.
 
-**Implementation, in order:**
+**Implementation, in order (completed history, 2026-11-01).** These steps record how the second plan was built; they are done. Do not delete or rebuild the existing books from them.
 1. **Tooling, one commit:**
    - `tools/build-learn-shelf.py` reads the part headings, a lesson's importance column, and chapter numbers of two digits (L10 to L14, R10, S10 to S12).
    - `shelf.js` gains the part on each chapter and the importance on each lesson.
@@ -173,7 +174,7 @@ What a variable stands for, how expressions are built and rewritten, and the exp
 | L1.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
 | L1.2 Variables, expressions and translating words into symbols | Core | no card (a habit lesson: order of operations, like terms, writing a sentence as an equation) | mixed |
 | L1.3 Exponents and radicals | Core | `exponent-laws`, `rationalizing` | 34 |
-| L1.4 Expanding and factoring | Core | `square-of-sum`, `difference-of-squares`, `completing-the-square` | 58 |
+| L1.4 Expanding and factoring | Core | `two-variable-identities`, `difference-of-squares`, `completing-the-square` | 58 |
 | L1.5 Ratios, proportions and percents | Core | `setting-up-proportions`, `proportion-properties`, `percent-change` | 44 |
 | L1.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L1.7 Review Problems and L1.8 Challenge Problems | |
 
@@ -227,7 +228,7 @@ Seeing a repeated block as one unknown, and working with sums and products inste
 |---|---|---|---|
 | L5.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
 | L5.2 Naming the whole expression | Core | `name-the-whole-expression`, `substitute-repeated-block`, *(pattern)* `repeated-block-equation`, *(pattern)* `infinite-nest` | 3 |
-| L5.3 Symmetric sums and factoring tricks | Extension | `sum-zero-identities`, `pairwise-sum-product`, `an-minus-bn`, `subtract-and-factor` | 2 |
+| L5.3 Symmetric sums and factoring tricks | Extension | `square-of-sum`, `sum-zero-identities`, `pairwise-sum-product`, `an-minus-bn`, `subtract-and-factor` | 2 |
 | L5.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L5.5 Review Problems and L5.6 Challenge Problems | |
 
 ### L6. Sequences and series (Core)

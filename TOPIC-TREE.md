@@ -1,10 +1,10 @@
 # Topic tree (draft)
 
-**Status (2026-11-07): approved draft, 498 nodes (TQ6 added `cp.basic.perm.cycle`). The owner's answers to TQ1 to TQ5 and the archetype rule are in; the tree has been tested on the 2025 AMC 10A, the 2025 AIME I, the 2026 AMC 10A and the 2026 AMC 12A. T2 is done (the data files and the gate, CONVENTIONS §15); the app does not read them yet (T4), and the tagging pass (T3) is next.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
+**Status (2026-11-07): the tree is approved and in use, 498 nodes (TQ6 added `cp.basic.perm.cycle`). T1 and T2 are done (the data files and the gate, CONVENTIONS §15). T3, the tagging pass, is under way: 210 of the 4,725 problems carry `tree` fields (the 2026 AMC 10A and 12A, 2026 AIME I and II, 2025 AMC 10A, 12A, 10B and 12B, and 2025 AIME I and II). The app does not read the filings yet (T4). Open candidate: TQ7 (random pairings); the next is TQ8 (`QUESTIONS.md`). The test filings below are the record of the tests of 2026-11-06; the problems' own `tree` fields are the filings now.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
 
 ## Why
 
-Practice a topic currently offers every card name and every card keyword as a topic. The list is long and uneven: "Shoelace formula" sits beside "area", a keyword can match five unrelated cards, and a problem is reachable only through the cards it happens to cite (446 problems cite none). The topic tree replaces that with one fixed classification of contest mathematics, written for problems rather than for cards:
+Practice a topic currently offers every card name and every card keyword as a topic. The list is long and uneven: "Shoelace formula" sits beside "area", a keyword can match five unrelated cards, and a problem is reachable only through the cards it happens to cite (446 problems cited none when this was written; 449 do on 2026-11-07). The topic tree replaces that with one fixed classification of contest mathematics, written for problems rather than for cards:
 
 - **Practice sets:** pick any node (a whole subject, an area, or a narrow topic); the set draws from every problem filed under that node or below it.
 - **Problem labels:** each problem shows its topics as a breadcrumb (Geometry › Circles › Power of a point), a better label than a list of card names.
@@ -27,7 +27,7 @@ Practice a topic currently offers every card name and every card keyword as a to
 The data exists (T2, 2026-11-07): `js/data/topic-tree.js` is generated from this file by `tools/build-topic-tree.py`, every card's home is in `js/data/topic-homes.js`, and `tools/check-topic-tree.js` is the gate (CONVENTIONS §15). The filing itself is the tagging pass, T3, whose procedure is in `PLAN.md`.
 
 - **Seed from cards.** Each card gets a home node (most cards map to one leaf). A problem's cards propose nodes; the most-cited proposal wins, capped at three.
-- **Fill the rest by reading.** The 446 problems with no card tag, and problems whose cards are all general methods (casework, complementary counting), are filed by reading the statement and strategy, a contest at a time, with `subjects` as the starting point.
+- **Fill the rest by reading.** The problems with no card tag (446 when this was written, 449 on 2026-11-07), and problems whose cards are all general methods (casework, complementary counting), are filed by reading the statement and strategy, a contest at a time, with `subjects` as the starting point.
 - **Check.** A new gate (planned: `tools/check-topic-tree.js`, run by `gates.sh`) fails when a problem has no node, a node id is unknown, a problem has more than three nodes, or a leaf has fewer than 5 problems without being marked small on purpose. Shared AMC 10/12 twins carry the same nodes.
 - LIVE's concept tags may suggest a node; they are never copied in as nodes (standing rule).
 
