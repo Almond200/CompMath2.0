@@ -15,7 +15,7 @@ A kind of problem the tree has no node for, seen in several problems (the archet
 
 ### Card candidates from the tagging pass
 
-New rows go in "Candidate new cards from the practice pass" below the resolved decisions, at the top of its table, as P54 onward. For this pass a somewhat fringe pattern or method is listed too, with every problem that needs it (owner, 2026-11-06).
+New rows go in "Candidate new cards from the practice pass" below the resolved decisions, at the top of its table, as P54 onward. Open now: P54 to P56; the next is P57. For this pass a somewhat fringe pattern or method is listed too, with every problem that needs it (owner, 2026-11-06).
 
 ## Resolved decisions and historical proposals
 
@@ -154,6 +154,9 @@ Each is a fact or move a re-solved problem needed and no card holds (checked aga
 
 | # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by |
 |---|---|---|---|---|
+| P56 (open) | Square Roots of 1 Modulo $m$: $x^2\equiv1\pmod{p^k}$ has $2$ solutions for an odd prime $p$, while modulo $2$, $4$ and $2^k$ ($k\ge3$) it has $1$, $2$ and $4$; by CRT the counts multiply, so the number of solutions modulo $m$ is a power of $2$. Could instead be an example on Counting Solutions via CRT | formula, number theory / modular arithmetic | AIME, lower | 2026 AMC 12A #25; it cites CRT and Counting Solutions via CRT meanwhile. One problem so far |
+| P55 (open) | Product of a Sum and a Difference of Angles: $\sin(a+b)\sin(a-b)=\sin^2a-\sin^2b$ and $\cos(a+b)\cos(a-b)=\cos^2a-\sin^2b$. Could instead be a Key form on Angle Addition | formula, algebra / trigonometry | AMC, lower | 2026 AMC 12A #15; it cites Angle Addition meanwhile. One problem so far |
+| P54 (open) | Range of a Rounded Value: a quantity shown as $n$ after rounding to the nearest integer lies in $[n-\tfrac12,\,n+\tfrac12)$, and a quantity built from rounded values takes its extremes at the ends of those ranges | method, algebra / word-problem setups | AMC, lower | 2026 AMC 10A #8 (a rounded distance and a rounded time); it cites Average Speed meanwhile. One problem so far |
 | P13 | Solving a Linear System by Elimination: name the unknowns, write one equation per condition, and combine equations to cancel all but one unknown (or substitute forward through a chain) | method, algebra / word-problem setups | AMC, medium | 2022 AMC 10A #3, 2023 AMC 10A #2 / 12A #2, 2023 AMC 10B #5, 2024 AMC 10A #2 / 12A #2, 2024 AMC 10B #25, 2007 AIME II #4, 2009 AIME II #1; each cites a nearby card or Addendo meanwhile |
 | P12 | Setting Up a Proportion (ratios, unit rates and unit conversion): equal ratios cross-multiply, a constant rate makes amount proportional to time, and chained conversion factors cancel units | method, algebra / word-problem setups | AMC, medium | 1990 AIME #6 (capture-recapture), 1992 AIME #3, 2008 AIME I #1, 2022 AMC 10A #2 and #4, 2023 AMC 10B #4 / 12B #4, 1987 AIME #8; they cite Addendo, Componendo & Dividendo meanwhile, which none really uses |
 | P11 | Volume from Edge Lengths and Angles (Gram determinant): with edge vectors $u$, $v$, $w$ from one vertex, $V^2=\det\begin{pmatrix}u\cdot u&u\cdot v&u\cdot w\\ u\cdot v&v\cdot v&v\cdot w\\ u\cdot w&v\cdot w&w\cdot w\end{pmatrix}$, so a parallelepiped's volume needs only its dot products | formula, geometry / solid geometry | AIME Late, lower | 2023 AIME I #13 (both rhombic parallelepipeds from $|u|^2=13$ and $u\cdot v=\pm\tfrac52$); it cites Dot Product and the volume card meanwhile |
