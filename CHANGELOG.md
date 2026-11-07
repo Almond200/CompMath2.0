@@ -2,6 +2,8 @@
 
 **2026-11-07**
 
+- T3: the 2024 AMC 10A and 12A filed in the topic tree (50 entries, 11 shared). Every answer re-checked by computation, with brute force or enumeration for 10A #3, #7, #10, #13, #18, #19, #20, #23 and #24 and 12A #21, #24 and #25. 10A #23 (and 12A #17) said that only $b=-12$ fits both factor lists, but it had dropped $b=0$ from the first ($b+1=1$); the strategy now lists both and rules out $b=0$ with the third equation ($ca+b=8700$). 12A #16 now shows its counts ($34650$ deals, $360$ favorable) instead of stating $\tfrac4{385}$. Twelve strategies now name their answer choice. `tools/tree-audit.js` prompted three additions on reading: 10A #11 and #15 (with 12A #9) also file under `nt.seq.power.expr` (an expression that must be a perfect square), and 12A #23 under `alg.cx.polar.demoivre` (De Moivre gives its polynomial). New card candidate P60, adjacent swaps and inversions (10A #6).
+
 - New `tools/tree-audit.js` (after the outside review): for one paper or all filed problems it lists filings on a broad parent node, nodes with one or two filed problems, and card homes that no filed node covers, as prompts to read. It is step 5 of the T3 procedure in PLAN. It cannot see a central idea with no cited card, so reading stays the main check. PLAN also records that Codex is paused.
 
 - Topic tree, one rename (owner, after the outside review): `geo.comb.extreme.path` is now "Reflected paths and unfolding (shortest paths, billiards, paths on a surface)", and its parent "Reflected paths, unfolding and extremes", since the node also holds billiard paths that ask where a path ends, not how short it is (2025 AMC 10B #25). The ids are unchanged, so no filing moves. The congruence-systems point waits for T4 (owner).
