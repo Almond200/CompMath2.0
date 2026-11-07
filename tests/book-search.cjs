@@ -55,6 +55,12 @@ for (const book of context.window.MATH_LEARN_SHELF) {
   assert.deepEqual(Array.from(notes[0].lessons, l => l.code), [1,2,3,4].map(n => notes[0].code + '.' + n));
   const entries = context.window.MATH_BOOK_INDEX[book.id];
   assert(entries.length > 0, book.id + ': nonempty index');
+  if (book.id === 'amc-number-theory') {
+    // A square root (primality testing up to sqrt n) is not a root of an equation (found by Codex, 2026-11-07).
+    const at = t => (entries.find(e => e.term === t) || {lessons: []}).lessons;
+    assert(at('Square root').includes('M1.2'), 'M1.2 is indexed under Square root');
+    assert(!at('Root').includes('M1.2'), 'M1.2 is not indexed under Root');
+  }
   const overview = context.learnLessonData(notes[0], notes[0].lessons[0]).body;
   for (const n of [2,3,4]) assert(overview.includes(`#/learn/${book.id}/${notes[0].code.toLowerCase()}/${n}`), 'overview links to numbered reference sections');
   const index = context.learnLessonData(notes[0], notes[0].lessons.find(l => l.title === 'Index')).body;

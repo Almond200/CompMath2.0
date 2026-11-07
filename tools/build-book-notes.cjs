@@ -20,7 +20,10 @@ const basics = [
  ['Exponent', 'The number in a power that records repeated multiplication for positive integer powers, extended consistently to zero, negative and fractional powers where defined.'],
  ['Coefficient', 'The factor multiplying a specified power of a variable in a polynomial.'],
  ['Domain', 'The set of inputs for which a function or expression is defined.'],
- ['Root', 'An input at which a polynomial or function has value zero.'],
+ // A root of an equation is a different idea from a square, cube or nth root of a number (found by
+ // Codex, owner 2026-11-07), so those phrases, and primitive roots modulo n, never count toward Root.
+ ['Root', 'An input at which a polynomial or function has value zero.', /\b(?:square|cube|fourth|fifth|sixth|nth|n-th|kth|k-th|principal|primitive)\s+roots?\b|\$[^$]*\$\s*-?(?:th|st|nd|rd)\s+roots?\b/gi],
+ ['Square root', 'For a nonnegative number $x$, the nonnegative number $\\sqrt x$ whose square is $x$. A positive number has two numbers whose square it is, $\\pm\\sqrt x$, and $\\sqrt x$ names the nonnegative one.'],
  ['Congruence', 'An equality of remainders modulo a positive integer; two integers are congruent when their difference is divisible by the modulus.'],
  ['Sample space', 'The set of possible outcomes of a random experiment. Probabilities by counting require equally likely elementary outcomes.'],
  ['Invariant', 'A quantity or property unchanged by every allowed operation.'],
@@ -50,7 +53,7 @@ for (const book of context.window.MATH_LEARN_SHELF) {
   const ids = new Set([...(d.cards || []), ...(d.prereq || []), ...(d.related || []).map(r => r.card), ...[...String(d.body).matchAll(/\[\[([\w-]+)/g)].map(m => m[1])]);
   for (const id of ids) { const f = cards.get(id); if (f) add(f.name, glossaryDefinitions[id] || f.description, l.code, f.keywords || []); }
   const prose = String(d.body).replace(/<[^>]*>/g, ' ');
-  for (const [term, definition] of basics) if (new RegExp('\\b' + term + '(?:s)?\\b', 'i').test(prose)) add(term, definition, l.code);
+  for (const [term, definition, exclude] of basics) if (new RegExp('\\b' + term + '(?:s)?\\b', 'i').test(exclude ? prose.replace(exclude, ' ') : prose)) add(term, definition, l.code);
  }
  const entries = [...terms.values()].sort((a,b) => a.term.localeCompare(b.term, 'en', {sensitivity: 'base'}));
  const link = lc => {const c = chapters.find(c => c.lessons.some(l => l.code === lc)); const l = c.lessons.find(l => l.code === lc); return `<a href="#/learn/${book.id}/${c.code.toLowerCase()}/${lc.split('.')[1]}">${esc(lc)} ${esc(l.title)}</a>`;};
