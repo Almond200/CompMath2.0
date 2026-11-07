@@ -12,7 +12,7 @@
 
 ## Running the checks in a cloud session
 
-`./tools/gates.sh` runs the convention, topic, list, shelf, practice-gap, diagram, statement, lab and database checks, stopping at the first failure. It does not run `check-labels.py` or the three regression suites below. It writes logs to `/tmp`; if that path is unavailable, run the constituent commands with logs in a writable directory.
+`./tools/gates.sh` runs the convention, topic, list, shelf, topic-tree, practice-gap, diagram, statement, lab and database checks, stopping at the first failure. It does not run `check-labels.py` or the three regression suites below. It writes logs to `/tmp`; if that path is unavailable, run the constituent commands with logs in a writable directory.
 
 ```bash
 export JSC=$PWD/tools/jsc-node
@@ -21,6 +21,8 @@ python3 tools/scan-conventions.py && python3 tools/check-topics.py && python3 to
 python3 tools/check-diagrams.py && python3 tools/check-statements.py && ./tools/check-lab.sh
 python3 tools/check-labels.py          # historical 2026-10-24 baseline: 7 font-related far-move findings
 python3 tools/build-learn-shelf.py --check
+python3 tools/build-topic-tree.py --check   # topic-tree.js matches TOPIC-TREE.md
+node tools/check-topic-tree.js              # tree, card homes, problem tree tags (CONVENTIONS §15)
 node tests/practice-sessions.cjs
 node tests/answer-keys.cjs
 node tests/book-search.cjs

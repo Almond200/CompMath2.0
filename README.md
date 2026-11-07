@@ -230,7 +230,7 @@ Keep the complete asset tree when copying the site for offline use.
 
 ## Structure
 
-Start with `CLAUDE.md` and `PLAN.md` (`LEARN-OUTLINE.md` holds the current Learn shelf and historical curriculum rationale). `PLAN.md` opens with "Current state": what is finished, what is in progress, and the next action. It is updated after every major change, so a new chat can pick up from it.
+Start with `CLAUDE.md` and `PLAN.md` (`LEARN-OUTLINE.md` holds the current Learn shelf and historical curriculum rationale; `TOPIC-TREE.md` holds the topic tree, its rules and its test filings). `PLAN.md` opens with "Current state": what is finished, what is in progress, and the next action. It is updated after every major change, so a new chat can pick up from it.
 
 ```
 index.html                     page shell and script order
@@ -244,7 +244,9 @@ js/data/patterns.js            the Methods and Patterns books, one section each
 js/data/details/*.js           long write-ups, keyed by card id
 js/data/examples-supplement.js worked examples, keyed by card id
 js/data/diagrams/*.js          computed SVG figures, keyed by card id
-js/data/problems/problem-db.js contest problem database: tags and strategies
+js/data/problems/problem-db.js contest problem database: tags, strategies and topic-tree nodes
+js/data/topic-tree.js          the topic tree, generated from TOPIC-TREE.md by tools/build-topic-tree.py
+js/data/topic-homes.js         every card's home node in the topic tree (hand-written)
 js/data/problems/*-problems.js per-card practice questions and contest references
 js/data/problems/statements/   problem statements by year, loaded on demand
 js/data/problems/figures/      the statements' SVG figures
@@ -255,7 +257,7 @@ js/geo-interactive.js          draggable geometry widgets
 js/search-semantic.js          semantic channel (loads js/data/search-vectors.*)
 js/data/built-in-lists.js      curated study lists: routes, configurations, curiosities
 js/data/connected.js           the Connected formulas rows on broad cards
-lab/                           experimental pages (formula web, quiz, flashcards) + their shared loader
+lab/                           experimental pages (formula web, quiz, flashcards, topic tree) + their shared loader
 tools/build-search-index.py    offline: rebuilds the embeddings and glossary
 tools/search-eval.html         search relevance harness
 tools/validate-problem-db.js   checks every problem's card and topic ids resolve
@@ -266,6 +268,8 @@ tools/label-audit.html         the page check-labels drives; #show draws every o
 tools/check-lists.py           list ids resolve, every route is complete, Connected formulas resolve
 tools/check-topics.py          every card carries a topic chip, and no subsection title awards a wrong one
 tools/check-lab.sh             parse-checks the inline script of each lab page
+tools/build-topic-tree.py      builds js/data/topic-tree.js from TOPIC-TREE.md (--check: in step)
+tools/check-topic-tree.js      the tree is well formed, every card has a home, problems' tree tags are valid
 tools/check-statements.py      every statement key and figure resolves, the credit header is present
 tools/find-duplicate-forms.py  lists formulas stated on two cards (a report for rule 17)
 tools/jsc-node                 stands in for macOS jsc under Node, for the JS checks

@@ -127,7 +127,7 @@ Each item here is something that has actually gone wrong, not a hypothetical.
 
 ## Tagging a problem in the database
 
-An entry is `{ ref, formulas, strategy }`, optionally carrying `trick` and `trickFormulas` too —
+An entry is `{ ref, formulas, strategy }`, optionally carrying `trick` and `trickFormulas` too, and `tree` (its one to three topic-tree nodes, CONVENTIONS §15) once the tagging pass has filed it —
 no problem statement (the statements of AMC and AIME problems come from `tools/fetch-live-statements.py` into `js/data/problems/statements/`, with the MAA credit line the problem page prints under each). The `formulas` list is a claim about **how the
 problem is best solved**, so it has to be earned.
 
@@ -215,6 +215,8 @@ split into Formulas, Methods and Patterns exists to prevent. `tools/add-cards.py
 new cards and registers them (CONVENTIONS, "New cards are registered").
 
 ### Recording missing coverage
+
+**During the tagging pass (Step T, owner, 2026-11-06)** a missing formula, method or pattern goes in `QUESTIONS.md` as a P-row (P54 onward) with every problem that needs it, even a somewhat fringe configuration or step, so the owner can judge it; a missing kind of problem goes there as a topic-tree candidate (TQ6 onward). The procedure is in `PLAN.md`, "The tagging pass (T3)". The first bar below still applies: a candidate must be statable without the problem that produced it.
 
 When a problem's best solution uses something the library has no card for, **record it here**
 before moving on, with the sighting that produced it. Two bars it has to clear first.

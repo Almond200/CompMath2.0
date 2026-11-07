@@ -1,5 +1,9 @@
 # Changelog
 
+**2026-11-07**
+
+- Topic tree T2 done. `tools/build-topic-tree.py` generates `js/data/topic-tree.js` (497 nodes, `[id, name, parent]`) from `TOPIC-TREE.md`, with `--check` in `gates.sh`. `js/data/topic-homes.js` gives every one of the 765 cards a home node: all 548 formulas and 48 patterns, 139 methods that belong to one area, and `null` for 30 general methods (casework, complementary counting, the proof methods, coordinate bashing). The new gate `tools/check-topic-tree.js` checks the tree, the homes, and every problem's future `tree` field (one to three real nodes, no node with its ancestor, twins equal). Developer docs updated: CONVENTIONS §15 (the topic tree: files, rules, gate) and §7 and §11; CLAUDE.md's check list; README's structure; CONTRIBUTING's tagging section, whose missing-coverage register now points to `QUESTIONS.md` for the tagging pass. CONVENTIONS §11 also records the one exception to "never add a statement by hand": a paper LIVE has not yet published (the 2026 AMC 10A and 12A).
+
 **2026-11-06**
 
 - PLAN: Step T, the topic tree and the problem-tagging pass, is now step 1 of the order of work, the immediate priority (owner). New section "The tagging pass (T3): the procedure": read the problem and fix its strategy if needed; file it under one to three tree nodes (proposed from its cards' home nodes, always read); check its card tags, adding existing cards the route uses; record a missing node (TQ6 onward) or a missing formula, method or pattern (P54 onward, fringe ones included, with every problem that needs it) in `QUESTIONS.md`; draw a missing figure for geometry and geometric probability; hand off every 25 problems. `QUESTIONS.md` has a section ready for topic-tree candidates. T2 started.
