@@ -486,14 +486,18 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "L15.1",
-      "title": "Index"
+      "title": "Overview"
      },
      {
       "code": "L15.2",
-      "title": "Glossary"
+      "title": "Index"
      },
      {
       "code": "L15.3",
+      "title": "Glossary"
+     },
+     {
+      "code": "L15.4",
       "title": "References and Credits"
      }
     ],
@@ -774,14 +778,18 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "M8.1",
-      "title": "Index"
+      "title": "Overview"
      },
      {
       "code": "M8.2",
-      "title": "Glossary"
+      "title": "Index"
      },
      {
       "code": "M8.3",
+      "title": "Glossary"
+     },
+     {
+      "code": "M8.4",
       "title": "References and Credits"
      }
     ],
@@ -1150,14 +1158,18 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "R11.1",
-      "title": "Index"
+      "title": "Overview"
      },
      {
       "code": "R11.2",
-      "title": "Glossary"
+      "title": "Index"
      },
      {
       "code": "R11.3",
+      "title": "Glossary"
+     },
+     {
+      "code": "R11.4",
       "title": "References and Credits"
      }
     ],
@@ -1613,14 +1625,18 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "S13.1",
-      "title": "Index"
+      "title": "Overview"
      },
      {
       "code": "S13.2",
-      "title": "Glossary"
+      "title": "Index"
      },
      {
       "code": "S13.3",
+      "title": "Glossary"
+     },
+     {
+      "code": "S13.4",
       "title": "References and Credits"
      }
     ],
@@ -1988,14 +2004,18 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A10.1",
-      "title": "Index"
+      "title": "Overview"
      },
      {
       "code": "A10.2",
-      "title": "Glossary"
+      "title": "Index"
      },
      {
       "code": "A10.3",
+      "title": "Glossary"
+     },
+     {
+      "code": "A10.4",
       "title": "References and Credits"
      }
     ],
@@ -2332,14 +2352,18 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "N9.1",
-      "title": "Index"
+      "title": "Overview"
      },
      {
       "code": "N9.2",
-      "title": "Glossary"
+      "title": "Index"
      },
      {
       "code": "N9.3",
+      "title": "Glossary"
+     },
+     {
+      "code": "N9.4",
       "title": "References and Credits"
      }
     ],
@@ -2717,14 +2741,18 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G10.1",
-      "title": "Index"
+      "title": "Overview"
      },
      {
       "code": "G10.2",
-      "title": "Glossary"
+      "title": "Index"
      },
      {
       "code": "G10.3",
+      "title": "Glossary"
+     },
+     {
+      "code": "G10.4",
       "title": "References and Credits"
      }
     ],
@@ -3092,14 +3120,18 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C10.1",
-      "title": "Index"
+      "title": "Overview"
      },
      {
       "code": "C10.2",
-      "title": "Glossary"
+      "title": "Index"
      },
      {
       "code": "C10.3",
+      "title": "Glossary"
+     },
+     {
+      "code": "C10.4",
       "title": "References and Credits"
      }
     ],
@@ -3218,14 +3250,18 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "P5.1",
-      "title": "Index"
+      "title": "Overview"
      },
      {
       "code": "P5.2",
-      "title": "Glossary"
+      "title": "Index"
      },
      {
       "code": "P5.3",
+      "title": "Glossary"
+     },
+     {
+      "code": "P5.4",
       "title": "References and Credits"
      }
     ],
@@ -3379,14 +3415,18 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "E6.1",
-      "title": "Index"
+      "title": "Overview"
      },
      {
       "code": "E6.2",
-      "title": "Glossary"
+      "title": "Index"
      },
      {
       "code": "E6.3",
+      "title": "Glossary"
+     },
+     {
+      "code": "E6.4",
       "title": "References and Credits"
      }
     ],
@@ -3510,14 +3550,18 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "D5.1",
-      "title": "Index"
+      "title": "Overview"
      },
      {
       "code": "D5.2",
-      "title": "Glossary"
+      "title": "Index"
      },
      {
       "code": "D5.3",
+      "title": "Glossary"
+     },
+     {
+      "code": "D5.4",
       "title": "References and Credits"
      }
     ],
@@ -3666,14 +3710,18 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "K6.1",
-      "title": "Index"
+      "title": "Overview"
      },
      {
       "code": "K6.2",
-      "title": "Glossary"
+      "title": "Index"
      },
      {
       "code": "K6.3",
+      "title": "Glossary"
+     },
+     {
+      "code": "K6.4",
       "title": "References and Credits"
      }
     ],
@@ -3882,14 +3930,18 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "O8.1",
-      "title": "Index"
+      "title": "Overview"
      },
      {
       "code": "O8.2",
-      "title": "Glossary"
+      "title": "Index"
      },
      {
       "code": "O8.3",
+      "title": "Glossary"
+     },
+     {
+      "code": "O8.4",
       "title": "References and Credits"
      }
     ],

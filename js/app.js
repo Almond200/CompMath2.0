@@ -5695,7 +5695,7 @@
   // Problem Solving Strategies), and two pages close the chapter: Review Problems (mostly
   // comprehension) and Challenge Problems (contest problems, or our own). A chapter whose first
   // lesson is not an Introduction keeps the old overview page and chapter review.
-  const learnHasIntro = c => !!(c && c.lessons[0] && c.lessons[0].title === "Introduction" && learnLessonData(c, c.lessons[0]));
+  const learnHasIntro = c => !!(c && c.lessons[0] && (c.lessons[0].title === "Introduction" || c.kind === "reference" && c.lessons[0].title === "Overview") && learnLessonData(c, c.lessons[0]));
   const LEARN_END = { review: "Review Problems", challenge: "Challenge Problems" };
   const learnEndSet = (c, kind) => {
     const d = learnChapterData(c), x = d && (kind === "review" ? d.reviewProblems : d.challenge);
