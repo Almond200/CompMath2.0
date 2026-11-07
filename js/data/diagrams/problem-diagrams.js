@@ -5315,4 +5315,47 @@
       cap(430, 290, "The board |x| + |y| ≤ 8 (a square standing on a corner) and the target (blue), the ring 18 ≤ x² + y² ≤ 32. The outer circle, of radius √32, just touches the four sides." + MM(ok))
     ]);
   })();
+
+  // 2026 AMC 10A #6: the 16-30-34 right triangle in its circle; its hypotenuse is a diameter.
+  PROB["2026-amc-10a-6"] = (() => {
+    const k = 8, O = [215, 145], Q = (x, y) => [O[0] + k * x, O[1] - k * y], R = 17 * k;
+    const P = Q(-17, 0), Qd = Q(17, 0), vx = -17 + 256 / 34, V = Q(vx, Math.sqrt(289 - vx * vx));
+    const arc = (a, b, sweep, fill) => `<path d="M ${a[0].toFixed(1)} ${a[1].toFixed(1)} A ${R} ${R} 0 0 ${sweep} ${b[0].toFixed(1)} ${b[1].toFixed(1)} Z" fill="${fill}" stroke="none"/>`;
+    const ok = Math.abs(dist(P, V) / k - 16) < 1e-9 && Math.abs(dist(V, Qd) / k - 30) < 1e-9 && Math.abs(dist(O, V) - R) < 1e-9;
+    return wrap(430, 290, [
+      arc(Qd, P, 1, ACCS), arc(P, V, 1, GLDS), arc(V, Qd, 1, GLDS), circ(O, R, DIM, 1.6), poly([P, V, Qd], DIM, 2), rightAngle(V, P, Qd, 9),
+      ...[P, V, Qd].map(q => dot(q, DIM, 3.2)), dot(O, FNT, 2.6),
+      txt(add(mid(P, V), [16, 8]), "16", DIM, 12.5), txt(add(mid(V, Qd), [0, 16]), "30", DIM, 12.5), txt(add(O, [0, 16]), "34", DIM, 12.5),
+      txt(add(onC(O, R - k, -152), [0, 4.5]), "A", GLD, 12.5), txt(add(onC(O, R - 26, -58), [0, 5]), "B", GLD, 14), txt(add(O, [0, 78]), "C", ACC, 14),
+      cap(430, 290, "The triangle with sides 16, 30 and 34 is right, so its hypotenuse is a diameter of the circle (radius 17). The regions A and B (gold) lie between the legs and the arcs; C (blue) is the half of the circle across the diameter." + MM(ok))
+    ]);
+  })();
+
+  // 2026 AMC 12A #21: P in the regular hexagon; every piece has a tenth of the area when P is in the inner hexagon.
+  PROB["2026-amc-12a-21"] = (() => {
+    const O = [215, 140], R = 118, H = [0, 1, 2, 3, 4, 5].map(i => onC(O, R, 90 + 60 * i)), In = H.map(q => lerp(O, q, 0.4));
+    const Pp = add(O, [22, -14]), names = ["A", "B", "C", "D", "E", "F"];
+    const apo = R * Math.sqrt(3) / 2, inside = [0, 1, 2, 3, 4, 5].every(i => dist(Pp, foot(Pp, H[i], H[(i + 1) % 6])) >= 0.6 * apo - 1e-9);
+    const ok = Math.abs(dist(O, foot(O, In[0], In[1])) - 0.4 * apo) < 1e-9 && inside;
+    return wrap(430, 285, [
+      poly(H, DIM, 2), poly(In, ACC, 1.6, ACCS), ...H.map(q => seg(Pp, q, GLD, 1.4)), ...H.map(q => dot(q, DIM, 3.2)), dot(Pp, GLD, 3.6),
+      ...H.map((q, i) => txt(add(onC(O, R + 16, 90 + 60 * i), [0, 5]), names[i])), txt(add(Pp, [4, 20]), "P", GLD, 13, "start"),
+      cap(430, 285, "The cuts from P to the six vertices (gold). Each piece has at least a tenth of the area exactly when P is at least 0.6 of the apothem from every side, the inner hexagon (blue), scaled by 0.4 about the center." + MM(ok))
+    ]);
+  })();
+
+  // 2026 AMC 12A #24: the right trapezoid (AB = 4, CD = 5) with its two corner circles tangent to each other.
+  PROB["2026-amc-12a-24"] = (() => {
+    const h = 39 - 12 * Math.sqrt(10), r1 = 2 * h / 3, r2 = 1 + h / 3, k = 56, Q = (x, y) => [100 + k * x, 262 - k * y];
+    const A = Q(0, 0), B = Q(4, 0), C = Q(4, h + 3), D = Q(0, h), O1 = Q(r1, r1), O2 = Q(4 - r2, r2);
+    const ok = Math.abs(dist(C, D) / k - 5) < 1e-9 && Math.abs(dist(O1, foot(O1, D, C)) / k - r1) < 1e-9 && Math.abs(dist(O2, foot(O2, D, C)) / k - r2) < 1e-9 && Math.abs(dist(O1, O2) / k - (r1 + r2)) < 1e-9;
+    return wrap(430, 290, [
+      poly([A, B, C, D], DIM, 2), circ(O1, r1 * k, ACC, 1.6), circ(O2, r2 * k, ACC, 1.6), seg(O1, O2, GLD, 1.6), rightAngle(A, B, D, 9), rightAngle(B, C, A, 9),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)), dot(O1, ACC, 3), dot(O2, ACC, 3),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [10, -4]), "C", DIM, 13, "start"), txt(add(D, [-10, -4]), "D", DIM, 13, "end"),
+      txt(add(mid(A, B), [0, 18]), "4", DIM, 12.5), txt(add(mid(C, D), [-8, -10]), "5", DIM, 12.5),
+      txt(add(O1, [-2, 22]), subT("ω", "1"), ACC, 13), txt(add(O2, [6, 30]), subT("ω", "2"), ACC, 13),
+      cap(430, 290, "The trapezoid with right angles at A and B, AB = 4 and CD = 5. ω₁ sits in the corner at A and ω₂ in the corner at B, each also tangent to DC, and they touch each other; the gold segment joins their centers." + MM(ok))
+    ]);
+  })();
 })();

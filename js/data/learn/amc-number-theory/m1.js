@@ -36,7 +36,7 @@ The chapter begins with prime factors, then develops place-value tests and commo
 
 The [[fundamental-theorem-arithmetic|fundamental theorem of arithmetic]] states that the resulting prime factors are unique apart from their order. For example, splitting $360$ as $36\cdot10$ or as $8\cdot45$ ends with the same collection $2,2,2,3,3,5$. Exponents record the multiplicities compactly. The integer one has no prime factors; calling it prime would destroy this uniqueness by permitting arbitrarily many extra factors of one.
 
-To test a positive integer $n\gt1$ for primality, suppose it has a factorization $n=ab$ with $1\lt a\le b$. Then $a^2\le n$, so $a\le\sqrt n$. At least one prime divisor of $a$ is also at most $\sqrt n$. Consequently it is enough to test primes up to and including $\sqrt n$. Including the endpoint catches prime squares such as $49=7^2$.
+To test a positive integer $n\gt1$ for primality, suppose it has a factorization $n=ab$ with $1\lt a\le b$. Then $a^2\le n$, so $a\le\sqrt n$. At least one prime divisor of $a$ is also at most the square root $\sqrt n$. Consequently it is enough to test primes up to and including $\sqrt n$. Including the endpoint catches prime squares such as $49=7^2$.
 
 For $391$, the relevant primes are $2,3,5,7,11,13,17,19$. Division finds $391=17\cdot23$. Both factors are prime, so the largest prime factor is $23$. When factoring by repeated division, the remaining cofactor shrinks. Once the next candidate prime has square greater than that remaining cofactor, any cofactor greater than one must be prime; a remaining cofactor of one contributes no further factor.
 
