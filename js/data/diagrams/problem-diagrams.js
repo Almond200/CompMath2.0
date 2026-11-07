@@ -5338,7 +5338,7 @@
     const apo = R * Math.sqrt(3) / 2, inside = [0, 1, 2, 3, 4, 5].every(i => dist(Pp, foot(Pp, H[i], H[(i + 1) % 6])) >= 0.6 * apo - 1e-9);
     const ok = Math.abs(dist(O, foot(O, In[0], In[1])) - 0.4 * apo) < 1e-9 && inside;
     return wrap(430, 285, [
-      poly(H, DIM, 2), poly(In, ACC, 1.6, ACCS), ...H.map(q => seg(Pp, q, GLD, 1.4)), ...H.map(q => dot(q, DIM, 3.2)), dot(Pp, GLD, 3.6), dot(O, FNT, 2.4),
+      poly(H, DIM, 2), poly(In, ACC, 1.6, ACCS), ...H.map(q => seg(Pp, q, GLD, 1.4)), ...H.map(q => dot(q, DIM, 3.2)), dot(Pp, GLD, 3.6),
       ...H.map((q, i) => txt(add(onC(O, R + 16, 90 + 60 * i), [0, 5]), names[i])), txt(add(Pp, [4, 20]), "P", GLD, 13, "start"),
       cap(430, 285, "The cuts from P to the six vertices (gold). Each piece has at least a tenth of the area exactly when P is at least 0.6 of the apothem from every side, the inner hexagon (blue), scaled by 0.4 about the center." + MM(ok))
     ]);
