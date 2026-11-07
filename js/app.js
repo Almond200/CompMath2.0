@@ -6087,7 +6087,7 @@
     const block = dfn.closest('p') || dfn;
     block.scrollIntoView({ block: 'center' });
     block.classList.add('bks-found');
-    setTimeout(() => block.classList.remove('bks-found'), 2400);
+    setTimeout(() => block.classList.remove('bks-found'), 4800);
   }
   function wireBookSearch(root, b) {
     const rank = bookSearchRanker(b);
@@ -6115,7 +6115,11 @@
           : r.kind === 'lesson' ? `<span class="bks-main"><span>${escapeAttr(r.l.title)}</span><small class="bks-snip">${escapeAttr(r.c.title)}</small></span><span class="set-find-group">Lesson ${escapeAttr(r.l.code)}</span>`
           : `<span>${escapeAttr(r.c.title)}</span><span class="set-find-group">Chapter ${escapeAttr(r.c.code.slice(1))}</span>`;
         list.innerHTML = results.length ? results.map((r, i) => `<button type="button" class="set-find-opt book-search-option" role="option" id="${list.id}-${i}" aria-selected="${i === 0}">${label(r)}</button>`).join('') : '<div class="set-find-none">No matching chapters, lessons or glossary terms. Try another topic.</div>';
-        list.querySelectorAll('button').forEach((button, i) => button.addEventListener('click', () => { go(results[i]); close(); }));
+        list.querySelectorAll('button').forEach((button, i) => {
+          button.addEventListener('click', () => { go(results[i]); close(); });
+          // The pointer moves the selection, so only one option is ever highlighted.
+          button.addEventListener('mousemove', () => { if (active !== i) { active = i; select(); } });
+        });
         list.hidden = false; input.setAttribute('aria-expanded', 'true'); select(); renderMath(list);
       };
       input.addEventListener('input', update);
