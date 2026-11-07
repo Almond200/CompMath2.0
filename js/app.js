@@ -5979,27 +5979,58 @@
     const id = 'book-search-' + place + '-' + (++bookSearchSerial);
     return `<div class="book-search set-find"><input class="set-find-input" type="search" placeholder="Search this book..." aria-label="Search this book" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="${id}" autocomplete="off" spellcheck="false"><div class="set-find-list" id="${id}" role="listbox" hidden></div></div>`;
   }
+  // Book search (owner, 2026-11-07): one ranked list of chapters, single lessons and glossary
+  // terms, each result carrying its chapter `c` (a lesson's own chapter; for a glossary term,
+  // the chapter where the index first locates it). An exact chapter title still ranks first.
   function bookSearchRanker(b) {
     const stop = new Set('a an the how to do i can find learn about chapter lesson book this with of in on for and or is are what does use using where me please want looking look understand explain help'.split(' ').map(normWord));
-    const tokens = text => wordsOf(String(text).replace(/<[^>]*>/g, ' ')).filter(w => !stop.has(w));
-    const entries = b.chapters.map(c => {
+    const tokens = text => wordsOf(String(text).replace(/<[^>]*>/g, ' ').replace(/&amp;/g, '&')).filter(w => !stop.has(w));
+    const cardText = d => (d?.cards || []).map(id => BY_ID[typeof id === 'string' ? id : id.id]?.formula).filter(Boolean)
+      .map(f => f.name + ' ' + (f.keywords || []).join(' ')).join(' ');
+    const index = (window.MATH_BOOK_INDEX || {})[b.id] || [];
+    const indexFor = test => tokens(index.filter(e => e.lessons.some(test)).map(e => e.term + ' ' + e.aliases.join(' ')).join(' '));
+    const entries = [];
+    b.chapters.forEach(c => {
       const lessons = c.lessons.map(l => ({ l, d: learnLessonData(c, l) }));
-      const cards = lessons.flatMap(({ d }) => (d?.cards || []).map(id => BY_ID[typeof id === 'string' ? id : id.id]?.formula).filter(Boolean));
-      return { c, phrase: tokens(c.title).join(' '), title: new Set(tokens(c.code + ' ' + c.title)), headings: new Set(tokens(c.lessons.map(l => l.title).join(' '))),
-        related: new Set(tokens(cards.map(f => f.name + ' ' + (f.keywords || []).join(' ')).join(' '))),
-        indexed: new Set(tokens(((window.MATH_BOOK_INDEX || {})[b.id] || []).filter(e => e.lessons.some(code => code.startsWith(c.code + '.'))).map(e => e.term + ' ' + e.aliases.join(' ')).join(' '))),
-        body: new Set(tokens(lessons.map(({ d }) => d?.body || '').join(' '))) };
+      const ref = c.kind === 'reference';
+      entries.push({ kind: 'chapter', c, phrase: tokens(c.title).join(' '), bonus: 100.5,
+        fields: [[new Set(tokens(c.code + ' ' + c.title)), 12], [new Set(tokens(c.lessons.map(l => l.title).join(' '))), 8],
+          [new Set(tokens(lessons.map(({ d }) => cardText(d)).join(' '))), 5], [new Set(indexFor(code => code.startsWith(c.code + '.'))), 0.8],
+          [new Set(ref ? [] : tokens(lessons.map(({ d }) => d?.body || '').join(' '))), 1]] });
+      lessons.forEach(({ l, d }) => {
+        if (/^(Introduction|Summary)$/.test(l.title)) return;
+        entries.push({ kind: 'lesson', c, l, phrase: tokens(l.title).join(' '), bonus: 95,
+          fields: [[new Set(tokens(l.code + ' ' + l.title)), 12], [new Set(tokens(cardText(d))), 5],
+            [new Set(indexFor(code => code === l.code)), 4], [new Set(ref ? [] : tokens(d?.body || '')), 1]] });
+      });
     });
+    // Glossary terms, read from the generated Glossary page: <dfn>Term</dfn>. Definition ...
+    const notes = b.chapters.find(c => c.kind === 'reference');
+    const glossaryLesson = notes && notes.lessons.find(l => l.title === 'Glossary');
+    const glossaryBody = glossaryLesson && learnLessonData(notes, glossaryLesson)?.body || '';
+    for (const m of glossaryBody.matchAll(/<dfn>([^<]+)<\/dfn>\.?\s*([^\n]*)/g)) {
+      const term = m[1].replace(/&amp;/g, '&'), entry = index.find(e => e.term === term);
+      const home = entry && b.chapters.find(c => c !== notes && entry.lessons.some(code => code.startsWith(c.code + '.')));
+      const aliases = entry ? entry.aliases : [];
+      const first = m[2].replace(/<[^>]*>/g, '').match(/^.*?[.!?](?=\s|$)/);
+      entries.push({ kind: 'glossary', c: home || notes, l: glossaryLesson, term, snippet: (first ? first[0] : m[2]).slice(0, 160),
+        phrase: tokens(term).join(' '), aliases, aliasPhrases: aliases.map(a => tokens(a).join(' ')), bonus: 90,
+        fields: [[new Set(tokens(term)), 11]] });
+    }
+    const KIND_ORDER = { chapter: 0, lesson: 1, glossary: 2 };
     const rank = query => {
       const chapterNumber = query.trim().match(/^(?:chapter\s*|([a-z]))?(\d+)$/i);
-      if (chapterNumber) return entries.filter(e => +e.c.code.slice(1) === +chapterNumber[2] && (!chapterNumber[1] || e.c.code[0].toLowerCase() === chapterNumber[1].toLowerCase()));
+      if (chapterNumber) return entries.filter(e => e.kind === 'chapter' && +e.c.code.slice(1) === +chapterNumber[2] && (!chapterNumber[1] || e.c.code[0].toLowerCase() === chapterNumber[1].toLowerCase()));
+      const lessonCode = query.trim().match(/^([a-z])(\d+)\.(\d+)$/i);
+      if (lessonCode) return entries.filter(e => e.kind === 'lesson' && e.l.code.toLowerCase() === query.trim().toLowerCase());
       const q = [...new Set(tokens(query))];
       if (!q.length) return [];
+      const joined = q.join(' ');
       return entries.map(entry => {
         let score = 0, matched = 0;
         q.forEach(token => {
           let best = 0;
-          for (const [field, weight] of [[entry.title, 12], [entry.headings, 8], [entry.related, 5], [entry.indexed, 0.8], [entry.body, 1]]) {
+          for (const [field, weight] of entry.fields) {
             for (const variant of expandToken(token)) {
               const factor = variant === token ? 1 : 0.7;
               if (field.has(variant)) best = Math.max(best, weight * factor);
@@ -6010,8 +6041,13 @@
           if (best) matched++;
           score += best;
         });
-        return { ...entry, score: score * matched / q.length + (entry.phrase === q.join(' ') ? 100 : 0), matched };
-      }).filter(e => e.matched >= Math.ceil(q.length * 0.6)).sort((a, z) => z.score - a.score).slice(0, 7);
+        // A glossary term shows only when every word is in the term, or the whole query is one of its aliases.
+        const alias = entry.kind === 'glossary' && entry.phrase !== joined ? entry.aliases[entry.aliasPhrases.indexOf(joined)] : null;
+        if (alias) { score = 11 * q.length; matched = q.length; }
+        const exact = entry.phrase === joined || !!alias;
+        return { ...entry, alias, score: score * matched / q.length + (exact ? entry.bonus : 0), matched };
+      }).filter(e => e.kind === 'glossary' ? e.matched === q.length : e.matched >= Math.ceil(q.length * 0.6))
+        .map((e, i) => ({ e, i })).sort((a, z) => z.e.score - a.e.score || KIND_ORDER[a.e.kind] - KIND_ORDER[z.e.kind] || a.i - z.i).map(x => x.e).slice(0, 8);
     };
     return rank;
   }
@@ -6042,11 +6078,28 @@
   window.visualViewport?.addEventListener('resize', scheduleSearchVisibility, { passive: true });
   window.visualViewport?.addEventListener('scroll', scheduleSearchVisibility, { passive: true });
 
+  let pendingGlossaryTerm = null;
+  function showPendingGlossaryTerm() {
+    if (!pendingGlossaryTerm) return;
+    const dfn = [...$content.querySelectorAll('dfn')].find(d => d.textContent.trim() === pendingGlossaryTerm);
+    if (!dfn) return;
+    pendingGlossaryTerm = null;
+    const block = dfn.closest('p') || dfn;
+    block.scrollIntoView({ block: 'center' });
+    block.classList.add('bks-found');
+    setTimeout(() => block.classList.remove('bks-found'), 2400);
+  }
   function wireBookSearch(root, b) {
     const rank = bookSearchRanker(b);
     root.querySelectorAll('.book-search').forEach(box => {
       const input = box.querySelector('input'), list = box.querySelector('[role="listbox"]');
       let results = [], active = 0;
+      // A lesson opens itself; a glossary term opens the Glossary and scrolls to its definition.
+      const go = r => {
+        if (r.kind === 'glossary') { pendingGlossaryTerm = r.term; location.hash = learnHash(b, b.chapters.find(c => c.kind === 'reference'), lessonNum(r.l)); }
+        else location.hash = r.kind === 'lesson' ? learnHash(b, r.c, lessonNum(r.l)) : learnHash(b, r.c);
+        if (pendingGlossaryTerm && r.kind === 'glossary') setTimeout(showPendingGlossaryTerm, 60);
+      };
       const close = () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); };
       const select = () => {
         [...list.querySelectorAll('[role="option"]')].forEach((el, i) => { el.classList.toggle('is-cur', i === active); el.setAttribute('aria-selected', String(i === active)); });
@@ -6058,8 +6111,11 @@
         // topic picker offers defaults.
         if (!input.value.trim()) { results = []; close(); return; }
         results = rank(input.value); active = 0;
-        list.innerHTML = results.length ? results.map(({ c }, i) => `<button type="button" class="set-find-opt book-search-option" role="option" id="${list.id}-${i}" aria-selected="${i === 0}"><span>${escapeAttr(c.title)}</span><span class="set-find-group">Chapter ${escapeAttr(c.code.slice(1))}</span></button>`).join('') : '<div class="set-find-none">No matching chapters. Try another topic.</div>';
-        list.querySelectorAll('button').forEach((button, i) => button.addEventListener('click', () => { location.hash = learnHash(b, results[i].c); close(); }));
+        const label = r => r.kind === 'glossary' ? `<span class="bks-main"><span>${escapeAttr(r.term)}</span><small class="bks-snip">${r.alias ? 'Matches &ldquo;' + escapeAttr(r.alias) + '&rdquo;. ' : ''}${escapeAttr(r.snippet)}</small></span><span class="set-find-group">Glossary</span>`
+          : r.kind === 'lesson' ? `<span class="bks-main"><span>${escapeAttr(r.l.title)}</span><small class="bks-snip">${escapeAttr(r.c.title)}</small></span><span class="set-find-group">Lesson ${escapeAttr(r.l.code)}</span>`
+          : `<span>${escapeAttr(r.c.title)}</span><span class="set-find-group">Chapter ${escapeAttr(r.c.code.slice(1))}</span>`;
+        list.innerHTML = results.length ? results.map((r, i) => `<button type="button" class="set-find-opt book-search-option" role="option" id="${list.id}-${i}" aria-selected="${i === 0}">${label(r)}</button>`).join('') : '<div class="set-find-none">No matching chapters, lessons or glossary terms. Try another topic.</div>';
+        list.querySelectorAll('button').forEach((button, i) => button.addEventListener('click', () => { go(results[i]); close(); }));
         list.hidden = false; input.setAttribute('aria-expanded', 'true'); select(); renderMath(list);
       };
       input.addEventListener('input', update);
@@ -6070,7 +6126,7 @@
           e.preventDefault(); if (list.hidden) update();
           else if (results.length) active = (active + (e.key === 'ArrowDown' ? 1 : -1) + results.length) % results.length;
           select();
-        } else if (e.key === 'Enter' && !list.hidden && results[active]) { e.preventDefault(); location.hash = learnHash(b, results[active].c); close(); }
+        } else if (e.key === 'Enter' && !list.hidden && results[active]) { e.preventDefault(); go(results[active]); close(); }
       });
       box.addEventListener('focusout', () => setTimeout(() => { if (!box.contains(document.activeElement)) close(); }, 0));
     });
@@ -6080,6 +6136,7 @@
     $content.innerHTML = learnBookShellHtml(b, c, cur, main);
     wireLearnRail($content);
     wireBookSearch($content, b);
+    if (pendingGlossaryTerm) requestAnimationFrame(() => requestAnimationFrame(showPendingGlossaryTerm));
     const msel = $content.querySelector(".bk-mnav-sel");
     if (msel) msel.addEventListener("change", () => { location.hash = msel.value; });
     renderMath($content);
