@@ -1,7 +1,7 @@
 # CONVENTIONS
 
 Every rule here was measured against the cards of its day, and the count that proves it is quoted
-(most against 557 cards in September 2026, some against 700 in October; there are 770 now (checked 2026-11-07), and
+(most against 557 cards in September 2026, some against 700 in October; there are 771 now (checked 2026-11-07), and
 `tools/scan-conventions.py` prints the current counts). If a rule has no number, it is not a rule. `CONTRIBUTING.md` holds the reasoning, the gap register and
 the per-year retag notes; this file is the checklist you follow while actually adding a card.
 

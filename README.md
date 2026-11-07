@@ -1,7 +1,7 @@
 # Competition Math Reference
 
-A searchable reference for AMC 10/12, AIME and olympiad training. 770 cards
-covering formulas, methods, and patterns (551 formulas, 170 methods, 49 patterns), plus a database
+A searchable reference for AMC 10/12, AIME and olympiad training. 771 cards
+covering formulas, methods, and patterns (552 formulas, 170 methods, 49 patterns), plus a database
 of 4,725 past contest problems (4,715 with their full statements), every one with a written
 strategy and 4,276 cross-linked to the cards their solutions run through (counts checked 2026-11-07).
 

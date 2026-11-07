@@ -1,6 +1,6 @@
 # Topic tree (draft)
 
-**Status (2026-11-07): the tree is approved and in use, 498 nodes (TQ6 added `cp.basic.perm.cycle`). T1 and T2 are done (the data files and the gate, CONVENTIONS §15). T3, the tagging pass, is under way: 260 of the 4,725 problems carry `tree` fields (the 2026 AMC 10A and 12A, 2026 AIME I and II, 2025 AMC 10A, 12A, 10B and 12B, 2025 AIME I and II, and 2024 AMC 10A and 12A). The app does not read the filings yet (T4). Open candidate: TQ7 (random pairings); the next is TQ8 (`QUESTIONS.md`). The test filings below are the record of the tests of 2026-11-06; the problems' own `tree` fields are the filings now.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
+**Status (2026-11-07): the tree is approved and in use, 499 nodes (TQ6 added `cp.basic.perm.cycle`, TQ7 `cp.basic.comb.pairs`). T1 and T2 are done (the data files and the gate, CONVENTIONS §15). T3, the tagging pass, is under way: 260 of the 4,725 problems carry `tree` fields (the 2026 AMC 10A and 12A, 2026 AIME I and II, 2025 AMC 10A, 12A, 10B and 12B, 2025 AIME I and II, and 2024 AMC 10A and 12A). The app does not read the filings yet (T4). No candidate is open; the next is TQ8 (`QUESTIONS.md`). The test filings below are the record of the tests of 2026-11-06; the problems' own `tree` fields are the filings now.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
 
 ## Why
 
@@ -213,6 +213,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Choosing subsets and committees `[cp.basic.comb.choose]`
     - Choosing with conditions `[cp.basic.comb.condition]`
     - Counting subsets with a property `[cp.basic.comb.subsets]`
+    - Splitting into pairs (random pairings and perfect matchings, $(2n-1)!!$ ways) `[cp.basic.comb.pairs]`
   - Casework and complementary counting `[cp.basic.case]`
     - Casework `[cp.basic.case.cases]`
     - Complementary counting `[cp.basic.case.complement]`
