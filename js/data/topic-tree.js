@@ -272,6 +272,7 @@ window.MATH_TOPIC_TREE = [
   ["cp.logic", "Logic, games and processes", "cp"],
   ["cp.logic.puzzle", "Logic puzzles and truth-tellers", "cp.logic"],
   ["cp.logic.puzzle.truth", "Knights, knaves and truth-tellers", "cp.logic.puzzle"],
+  ["cp.logic.puzzle.statements", "Statements and logical equivalence (implications, contrapositives and converses, \"all\" and \"some\", which statement must follow)", "cp.logic.puzzle"],
   ["cp.logic.puzzle.deduce", "Deduction and ordering puzzles", "cp.logic.puzzle"],
   ["cp.logic.puzzle.deduce.order", "Rankings and orderings", "cp.logic.puzzle.deduce"],
   ["cp.logic.puzzle.deduce.match", "Matching people to facts", "cp.logic.puzzle.deduce"],

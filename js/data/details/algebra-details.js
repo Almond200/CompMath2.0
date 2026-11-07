@@ -6313,3 +6313,30 @@ Let $D(x, y)$ be the first equation's left side minus the second's, with the oth
 An AMC 10 or 12 problem in the middle of the paper, with $x \ne y$ given so that only the cofactor case is asked for, and an AIME problem on a cyclic system of three equations whose cases each reduce to a quadratic or a cubic.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"averaging-principle": String.raw`
+## Key forms
+- $\min x_i \le \frac{x_1 + \cdots + x_k}{k} \le \max x_i$ — some member is at least the mean, some at most, with equality only when all are equal
+- in a sorted list $x_1 \le \cdots \le x_n$, $x_j \ge \frac{x_1 + \cdots + x_j}{j}$ and $x_j \le \frac{x_j + \cdots + x_n}{n - j + 1}$ — a term bounded by the mean of a block that ends or starts at it
+- a weighted average $\frac{w_1x_1 + \cdots + w_kx_k}{w_1 + \cdots + w_k}$ with positive weights lies between $\min x_i$ and $\max x_i$ — and strictly between unless all the $x_i$ with positive weight are equal
+
+## Conditions
+The numbers are real, and the weights of a weighted average are positive. For integers counted into boxes, the same idea is the [[pigeonhole|Pigeonhole Principle]], which also rounds the bound up or down to an integer.
+
+## Why it works
+Let $m = \min x_i$ and $M = \max x_i$. Every term satisfies $m \le x_i \le M$, so adding the $k$ inequalities gives $km \le x_1 + \cdots + x_k \le kM$, and dividing by $k$ gives $m \le \frac{x_1 + \cdots + x_k}{k} \le M$. If the mean equals $M$, then $\sum (M - x_i) = 0$ with every term nonnegative, so every $x_i = M$; the same holds at $m$. So equality forces all the numbers to be equal.
+
+For a sorted list, $x_1, \ldots, x_j$ all lie at or below $x_j$, so $x_j$ is their maximum and the first inequality gives $x_j \ge \frac{x_1 + \cdots + x_j}{j}$; likewise $x_j$ is the minimum of $x_j, \ldots, x_n$. For weights $w_i \gt 0$ with total $W$, multiplying $m \le x_i \le M$ by $w_i$ and adding gives $Wm \le \sum w_ix_i \le WM$, and the equality argument is the same.
+
+## Useful observations
+- To make one entry of a sorted list as large as possible, bound it by the mean of the block above it, then push that block's total as high as the constraints allow; the bound is reached when the block is all equal.
+- A total split between two groups, such as the negative and the positive entries of a list with sum $0$, gives each group a known total, and each group's mean then bounds its extreme entries.
+- An average of two groups' averages can never leave the interval between them, however the groups are weighted, which settles which claimed values of a combined average are impossible.
+
+## Applications
+Bounds on one entry of a sorted list with a fixed sum, extremal arrangements in which a block of entries is equal, and statements about combined averages.
+
+## Contest profile
+An AIME problem on a sorted list with fixed sums asks for the largest gap between two entries, and an AMC problem on combined averages asks which statement cannot be true.
+`
+});

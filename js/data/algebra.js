@@ -745,6 +745,16 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
         {
+          id: "averaging-principle",
+          name: "The Averaging Principle",
+          latex: String.raw`\min_i x_i \;\le\; \frac{x_1 + x_2 + \cdots + x_k}{k} \;\le\; \max_i x_i`,
+          description: String.raw`The averaging principle says that a list of real numbers always has a member at least as large as its mean and a member at most as large, with equality only when all the numbers are equal. Applied to a block of a sorted list, it bounds a single term by the mean of the terms on one side of it, which turns a condition on a total into a bound on one entry.`,
+          keywords: ["average", "mean", "largest is at least the average", "smallest is at most the average", "mean between min and max", "weighted average lies between", "bound a term by an average", "inequality"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
           id: "abs-triangle-inequality",
           name: "Absolute Value Triangle Inequality",
           latex: String.raw`|a + b| \le |a| + |b|, \qquad |a - b| \ge \big||a| - |b|\big|`,
