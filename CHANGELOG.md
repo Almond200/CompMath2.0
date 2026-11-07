@@ -2,7 +2,7 @@
 
 **2026-11-07**
 
-- Front page, dark mode (owner): the five space names and their coloured top strips, the kind badges (METHOD, FORMULA, PATTERN, PROBLEM) and the "See all" links are muted a step (less saturated, slightly darker). The book covers keep their colours. Dark only.
+- Front page, dark mode (owner): the five space names and their coloured top strips, the kind badges (METHOD, FORMULA, PATTERN, PROBLEM) and the "See all" links are a step less bright, kept at full saturation so they stay vivid (a first try that also desaturated them looked dull). The book covers keep their colours. Dark only.
 
 - Topic tree, six new nodes from a set of outside suggestions, each checked against the database (owner): Similar figures and solids (length, area and volume ratios) under Similarity and congruence, the renamed Similar and congruent triangles (id unchanged); Counting solutions with positivity or bounds beside Solving $ax+by=c$; Choosing with gaps (no two chosen items adjacent) under Combinations, where the suggestion had put it under Arrangements, since nearly all of its twelve problems are selections; Strings by their runs and switches under Words, digits and strings, again not under Arrangements; State probabilities after a fixed number of steps under Random processes; and Rational functions under Graphs of functions. Rational equations were not added: a statement search finds three problems, under the archetype rule. Eighteen filed problems are refiled, and Similar Figures Ratios and Bounded Diophantine Counting move to the new nodes as their homes. The tree has 507 nodes (QUESTIONS TQ10 to TQ16).
 
