@@ -1854,7 +1854,8 @@
     "two-variable-identities": "formula",
     "composing-rotations": "formula",
     "inversions-adjacent-swaps": "formula",
-    "subtract-swapped-equations": "method"
+    "subtract-swapped-equations": "method",
+    "averaging-principle": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -9068,6 +9069,12 @@
       [
         "(new card)",
         "written directly in the method template"
+      ]
+    ],
+    "averaging-principle": [
+      [
+        "(new card)",
+        "written directly in the formula template"
       ]
     ]
   }

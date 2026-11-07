@@ -1,6 +1,6 @@
 # Topic tree (draft)
 
-**Status (2026-11-07): the tree is approved and in use, 500 nodes (TQ6 added `cp.basic.perm.cycle`, TQ7 `cp.basic.comb.pairs`, TQ8 `alg.word.rates.motion.speeds`). T1 and T2 are done (the data files and the gate, CONVENTIONS §15). T3, the tagging pass, is under way: 700 of the 4,725 problems carry `tree` fields (the 2026 AMC 10A and 12A, 2026 AIME I and II, 2025 AMC 10A, 12A, 10B and 12B, 2025 AIME I and II, 2024 AMC 10A, 12A, 10B and 12B and AIME I and II, 2023 AMC 10A, 12A, 10B and 12B, 2023 AIME I and II, 2022 AMC 10A, 12A, 10B and 12B, 2022 AIME I and II, and 2021 Fall AMC 10A, 12A, 10B and 12B). The app does not read the filings yet (T4). TQ9 is open and the next is TQ10 (`QUESTIONS.md`). The test filings below are the record of the tests of 2026-11-06; the problems' own `tree` fields are the filings now.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
+**Status (2026-11-07): the tree is approved and in use, 501 nodes (TQ6 added `cp.basic.perm.cycle`, TQ7 `cp.basic.comb.pairs`, TQ8 `alg.word.rates.motion.speeds`, TQ9 `cp.logic.puzzle.statements`). T1 and T2 are done (the data files and the gate, CONVENTIONS §15). T3, the tagging pass, is under way: 730 of the 4,725 problems carry `tree` fields (the 2026 AMC 10A and 12A, 2026 AIME I and II, 2025 AMC 10A, 12A, 10B and 12B, 2025 AIME I and II, 2024 AMC 10A, 12A, 10B and 12B and AIME I and II, 2023 AMC 10A, 12A, 10B and 12B, 2023 AIME I and II, 2022 AMC 10A, 12A, 10B and 12B, 2022 AIME I and II, 2021 Fall AMC 10A, 12A, 10B and 12B, and 2021 AIME I and II). The app does not read the filings yet (T4). no candidate is open and the next is TQ10 (`QUESTIONS.md`). The test filings below are the record of the tests of 2026-11-06; the problems' own `tree` fields are the filings now.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
 
 ## Why
 
@@ -308,6 +308,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
 - **Logic, games and processes** `[cp.logic]`
   - Logic puzzles and truth-tellers `[cp.logic.puzzle]`
     - Knights, knaves and truth-tellers `[cp.logic.puzzle.truth]`
+    - Statements and logical equivalence (implications, contrapositives and converses, "all" and "some", which statement must follow) `[cp.logic.puzzle.statements]`
     - Deduction and ordering puzzles `[cp.logic.puzzle.deduce]`
       - Rankings and orderings `[cp.logic.puzzle.deduce.order]`
       - Matching people to facts `[cp.logic.puzzle.deduce.match]`
