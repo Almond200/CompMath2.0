@@ -6,15 +6,15 @@ window.MATH_LEARN["M3"] = {
     "M3.1": {
       prereq: ["fundamental-theorem-arithmetic"],
       cards: [],
-      body: String.raw`This chapter counts, sums and multiplies the divisors of a number, and counts the primes inside a factorial. Every method starts from the prime factorization.
+      body: String.raw`Prime factorization describes a number by the copies of each prime it contains. A positive divisor chooses how many of those copies to use. If $72=2^3\cdot3^2$, a divisor has form $2^a3^b$ with $0\le a\le3$ and $0\le b\le2$. These independent choices produce twelve divisors.
 
-A divisor of $n = p_1^{a_1}\cdots p_k^{a_k}$ is a choice of exponent for each prime, from $0$ up to $a_i$. So $72 = 2^3 \cdot 3^2$ has $(3 + 1)(2 + 1) = 12$ divisors. The sum of the divisors is a product of one sum per prime: for $12 = 2^2 \cdot 3$ it is $(1 + 2 + 4)(1 + 3) = 28$. Divisors with a condition, such as perfect squares, are counted by restricting the exponents.
+The same choices can be combined in several ways. Counting them gives the number of divisors. Adding their values amounts to expanding $(1+2+4+8)(1+3+9)$. Pairing a divisor $d$ with $72/d$ instead makes the product of each pair equal seventy-two. The prime exponents organize all three calculations.
 
-A factorial $n! = 1 \cdot 2 \cdots n$ contains many small primes, and the exponent of a prime in it is found by counting multiples. The zeros at the end of $50!$ are its factors of $10$, limited by the factors of $5$: $10$ multiples of $5$ and $2$ of $25$ give $12$ zeros.
+A restriction changes the permitted choices. A square divisor uses an even exponent at every prime; an odd divisor uses no factor of two. These conditions must hold for the divisor being chosen, even when the original number is neither square nor odd.
 
-Last, consecutive numbers share no common factor, a product of $k$ consecutive numbers is a multiple of $k!$, and a common factor of two expressions divides any combination of them.
+Factorials bring the same viewpoint to a product with many factors. In $50!=1\cdot2\cdots50$, each multiple of five contributes at least one factor five, and each multiple of twenty-five contributes a second. There are ten of the former and two of the latter, giving twelve factors of five. Since there are at least as many factors of two, exactly twelve factors ten can be assembled, producing twelve trailing decimal zeros.
 
-The lessons take these ideas in turn: counting divisors (M3.2), summing and multiplying divisors (M3.3), primes in a factorial and trailing zeros (M3.4), and consecutive numbers and gcd tricks (M3.5). The Summary (M3.6) collects the strategies.`,
+The chapter develops divisor counts, sums, and products, then counts prime exponents in factorials. It finishes with consecutive factors and common-divisor arguments. In each case, the prime copies used by a product or divisor must match the available exponents.`,
       exercises: [
         { q: String.raw`How many positive divisors does $72$ have?`, answer: "12",
           solution: String.raw`$72 = 2^3 \cdot 3^2$, so a divisor is $2^a3^b$ with $4$ choices for $a$ and $3$ for $b$: $12$ divisors.` },
@@ -32,13 +32,21 @@ The lessons take these ideas in turn: counting divisors (M3.2), summing and mult
     "M3.2": {
       prereq: ["fundamental-theorem-arithmetic"],
       cards: ["number-of-divisors", "perfect-square-divisors"],
-      body: String.raw`How many divisors does $720$ have, and how many of them are perfect squares? What is the smallest number with exactly $6$ divisors? Which numbers have an odd number of divisors? Listing divisors by hand is slow and error-prone; the prime factorization counts them at once.
+      body: String.raw`Let $n=p_1^{a_1}\cdots p_k^{a_k}$ be the prime factorization of a positive integer greater than one. A positive divisor has a unique representation $d=p_1^{b_1}\cdots p_k^{b_k}$ with $0\le b_i\le a_i$. Conversely, every permitted exponent choice gives a divisor. Uniqueness of prime factorization ensures that different choices give different divisors.
 
-[[number-of-divisors|The number of divisors]] of $n = p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$ is $(a_1 + 1)(a_2 + 1)\cdots(a_k + 1)$, because a divisor chooses an exponent for each prime independently, from $0$ to $a_i$. So $2^4 \cdot 3^2 \cdot 5$ has $5 \cdot 3 \cdot 2 = 30$ divisors. In reverse, a number with exactly $6 = 6 \cdot 1 = 3 \cdot 2$ divisors is $p^5$ or $p^2q$, and the smallest is $2^2 \cdot 3 = 12$. A number has an odd number of divisors exactly when every exponent is even, that is, when it is a perfect square, since otherwise its divisors pair up as $d$ and $\tfrac nd$.
+There are $a_i+1$ choices at the $i$th prime, and the choices are independent. Thus [[number-of-divisors|the divisor count]] is $\tau(n)=(a_1+1)\cdots(a_k+1)$. For $720=2^4\cdot3^2\cdot5$, it is $5\cdot3\cdot2=30$. For $n=1$, the only positive divisor is one; the empty product gives the same count.
 
-[[perfect-square-divisors|Divisors with a condition]] are counted by restricting the exponents. A perfect square divisor has even exponents: for $720 = 2^4 \cdot 3^2 \cdot 5$, the exponent of $2$ is $0$, $2$ or $4$, of $3$ is $0$ or $2$, and of $5$ is $0$, giving $3 \cdot 2 \cdot 1 = 6$. A cube divisor has exponents that are multiples of $3$; an odd divisor has exponent $0$ at $2$; a divisor that is a multiple of $6$ has exponent at least $1$ at $2$ and at $3$.
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 350" role="img" aria-labelledby="m32-exponents-title m32-exponents-desc" style="width:100%;max-width:520px;height:auto"><title id="m32-exponents-title">Divisors form a grid of independent prime exponents</title><desc id="m32-exponents-desc">Five columns choose the exponent of two from zero to four, and three rows choose the exponent of three from zero to two. The fifteen cells are the divisors of one hundred forty-four. Cells with both exponents even mark one, four, sixteen, nine, thirty-six and one hundred forty-four. A further choice of whether to multiply by five gives thirty divisors of seven hundred twenty.</desc><g fill="currentColor" text-anchor="middle" font-size="16"><text x="260" y="24">Divisors of 2⁴ × 3²</text><text x="285" y="53">Exponent of 2</text><text transform="translate(32 182) rotate(-90)">Exponent of 3</text><text x="135" y="85">0</text><text x="210" y="85">1</text><text x="285" y="85">2</text><text x="360" y="85">3</text><text x="435" y="85">4</text><text x="75" y="128">0</text><text x="75" y="188">1</text><text x="75" y="248">2</text></g><rect x="100" y="98" width="70" height="48" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.6"/><text x="135" y="129" fill="currentColor" text-anchor="middle" font-size="17">1</text><rect x="175" y="98" width="70" height="48" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="0.4"/><text x="210" y="129" fill="currentColor" text-anchor="middle" font-size="17">2</text><rect x="250" y="98" width="70" height="48" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.6"/><text x="285" y="129" fill="currentColor" text-anchor="middle" font-size="17">4</text><rect x="325" y="98" width="70" height="48" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="0.4"/><text x="360" y="129" fill="currentColor" text-anchor="middle" font-size="17">8</text><rect x="400" y="98" width="70" height="48" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.6"/><text x="435" y="129" fill="currentColor" text-anchor="middle" font-size="17">16</text><rect x="100" y="158" width="70" height="48" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="0.4"/><text x="135" y="189" fill="currentColor" text-anchor="middle" font-size="17">3</text><rect x="175" y="158" width="70" height="48" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="0.4"/><text x="210" y="189" fill="currentColor" text-anchor="middle" font-size="17">6</text><rect x="250" y="158" width="70" height="48" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="0.4"/><text x="285" y="189" fill="currentColor" text-anchor="middle" font-size="17">12</text><rect x="325" y="158" width="70" height="48" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="0.4"/><text x="360" y="189" fill="currentColor" text-anchor="middle" font-size="17">24</text><rect x="400" y="158" width="70" height="48" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="0.4"/><text x="435" y="189" fill="currentColor" text-anchor="middle" font-size="17">48</text><rect x="100" y="218" width="70" height="48" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.6"/><text x="135" y="249" fill="currentColor" text-anchor="middle" font-size="17">9</text><rect x="175" y="218" width="70" height="48" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="0.4"/><text x="210" y="249" fill="currentColor" text-anchor="middle" font-size="17">18</text><rect x="250" y="218" width="70" height="48" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.6"/><text x="285" y="249" fill="currentColor" text-anchor="middle" font-size="17">36</text><rect x="325" y="218" width="70" height="48" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-width="0.4"/><text x="360" y="249" fill="currentColor" text-anchor="middle" font-size="17">72</text><rect x="400" y="218" width="70" height="48" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="1.6"/><text x="435" y="249" fill="currentColor" text-anchor="middle" font-size="17">144</text><g fill="currentColor" text-anchor="middle" font-size="15"><text x="260" y="303">Even exponents select the six square divisors</text><text x="260" y="330">Multiplying each entry by 5 gives 720’s other 15 divisors</text></g></svg>
 
-Factor the number, write the condition as a rule on each exponent, count the allowed exponents, and multiply. The next lesson sums and multiplies divisors.`,
+The grid shows the fifteen choices for $2^a3^b$ with $0\le a\le4$ and $0\le b\le2$. Choosing exponent zero or one for the additional prime five doubles the count to thirty for $720$.
+
+For [[perfect-square-divisors|square divisors]], each exponent must be even. The choices at two are $0,2,4$, at three are $0,2$, and at five only zero. This gives six square divisors: $1,4,9,16,36,144$. In general the count is $\prod_i(\lfloor a_i/2\rfloor+1)$. A divisor that is a perfect $r$th power, for a positive integer $r$, instead uses exponents divisible by $r$.
+
+Other restrictions translate in the same way. An odd divisor of $720$ fixes the exponent at two to zero, leaving $3\cdot2=6$ choices. A divisor divisible by six must use at least one two and one three, giving $4\cdot2\cdot2=16$ choices. The bounds apply separately at the required primes.
+
+The formula also identifies when $\tau(n)$ is odd. A product of the integers $a_i+1$ is odd exactly when every $a_i$ is even, which says that $n$ is a square. Equivalently, the correspondence $d\leftrightarrow n/d$ pairs all divisors except a possible middle divisor $\sqrt n$. That unpaired divisor exists precisely for a square.
+
+To reverse a divisor count, factor the count into possible integers $a_i+1\ge2$. For $\tau(n)=6$, the possibilities are $n=p^5$ or $n=p^2q$ with distinct primes $p,q$. To minimize a product of prime powers, use small primes and put larger exponents on smaller primes: if $p\lt q$ and $u\gt v$, then $p^uq^v\lt p^vq^u$, as their ratio is $(p/q)^{u-v}\lt1$. The least possibilities are therefore $2^5=32$ and $2^2\cdot3=12$, so twelve is the smallest integer with six divisors.`,
       related: [
         { card: "multiplicative-functions", note: String.raw`the divisor count is multiplicative, the reason the formula is a product (M6.2).` },
         { card: "factor-pair-counting", note: String.raw`divisors pair up as $d$ and $\tfrac nd$, counting solutions of $xy = n$ (M5.4).` }
@@ -61,13 +69,29 @@ Factor the number, write the condition as a rule on each exponent, count the all
     "M3.3": {
       prereq: ["number-of-divisors", "geometric-series"],
       cards: ["sum-of-divisors", "product-of-divisors"],
-      body: String.raw`What is the sum of the divisors of $100$? The product of the divisors of $30$? The sum of the odd divisors of $360$? Like counting, summing and multiplying divisors are done from the prime factorization.
+      body: String.raw`The sum of positive divisors can be built by the same independent choices used to count them. For $100=2^2\cdot5^2$, expand $(1+2+4)(1+5+25)$. Every term selects a power of two and a power of five, producing each divisor exactly once. Therefore the sum is $7\cdot31=217$.
 
-[[sum-of-divisors|The sum of the divisors]] of $p_1^{a_1}\cdots p_k^{a_k}$ is $(1 + p_1 + \cdots + p_1^{a_1})\cdots(1 + p_k + \cdots + p_k^{a_k})$, because expanding the product gives every divisor exactly once. For $100 = 2^2 \cdot 5^2$ it is $(1 + 2 + 4)(1 + 5 + 25) = 7 \cdot 31 = 217$. Each factor is a geometric sum, $\tfrac{p^{a+1} - 1}{p - 1}$. Restrictions work as for counting: the odd divisors of $360 = 2^3 \cdot 3^2 \cdot 5$ add to $(1 + 3 + 9)(1 + 5) = 78$, leaving out the factor for $2$.
+For $n=p_1^{a_1}\cdots p_k^{a_k}$, this argument proves [[sum-of-divisors|the divisor-sum formula]]
 
-[[product-of-divisors|The product of the divisors]] of $n$ is $n^{d(n)/2}$, where $d(n)$ is the number of divisors, because the divisors pair up as $d$ and $\tfrac nd$, each pair multiplying to $n$. For $30$, with $8$ divisors, the product is $30^4 = 810000$. For a perfect square the middle divisor $\sqrt n$ pairs with itself, and the formula still holds.
+$$\sigma(n)=\prod_{i=1}^k(1+p_i+\cdots+p_i^{a_i})
+=\prod_{i=1}^k\frac{p_i^{a_i+1}-1}{p_i-1}.$$
 
-Use the product of geometric sums for a divisor sum, $n^{d(n)/2}$ for a divisor product, and drop or restrict factors for conditions. The next lesson counts primes in factorials.`,
+Each factor is a finite geometric sum. The formula includes one and $n$ among the divisors. If a problem asks for proper positive divisors, excluding $n$, subtract $n$ from the result. For example, twelve has divisor sum twenty-eight and proper-divisor sum sixteen.
+
+Restrictions change the sums of allowed powers. The odd divisors of $360=2^3\cdot3^2\cdot5$ use exponent zero at two, so their sum is $(1+3+9)(1+5)=78$. The omitted factor has value one. For square divisors, keep only even powers in every factor instead.
+
+To multiply all divisors, pairing is more useful than expansion. The map $d\mapsto n/d$ permutes the positive divisors, so if their product is $D$,
+
+$$D^2=\prod_{d\mid n}d\cdot\prod_{d\mid n}\frac nd
+=\prod_{d\mid n}n=n^{\tau(n)}.$$
+
+Taking the positive square root proves [[product-of-divisors|the divisor-product formula]] $D=n^{\tau(n)/2}$. Here $D$ is positive because every divisor is positive.
+
+For $30$, the eight divisors form four pairs, each of product thirty, so $D=30^4=810000$. A square needs care with its middle divisor:
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 330" role="img" aria-labelledby="m33-pairs-title m33-pairs-desc" style="width:100%;max-width:520px;height:auto"><title id="m33-pairs-title">Four complementary divisor pairs and a single middle divisor</title><desc id="m33-pairs-desc">The pairs one and thirty-six, two and eighteen, three and twelve, four and nine each multiply to thirty-six. Six occurs once as the middle divisor, so the product is thirty-six to the fourth times six.</desc><g fill="currentColor" font-size="18" text-anchor="middle"><text x="250" y="26">Complementary divisors of 36</text><text x="100" y="76">1</text><text x="160" y="76">×</text><text x="220" y="76">36</text><text x="300" y="76">=</text><text x="360" y="76">36</text><text x="100" y="118">2</text><text x="160" y="118">×</text><text x="220" y="118">18</text><text x="300" y="118">=</text><text x="360" y="118">36</text><text x="100" y="160">3</text><text x="160" y="160">×</text><text x="220" y="160">12</text><text x="300" y="160">=</text><text x="360" y="160">36</text><text x="100" y="202">4</text><text x="160" y="202">×</text><text x="220" y="202">9</text><text x="300" y="202">=</text><text x="360" y="202">36</text><text x="160" y="257">6</text><text x="325" y="257" font-size="16">one middle divisor</text><text x="250" y="311">Product = 36⁴ × 6</text></g><circle cx="160" cy="251" r="20" fill="none" stroke="currentColor"/></svg>
+
+For $36$, the four displayed pairs contribute $36^4$, while the single middle divisor contributes six. The product is $36^4\cdot6=36^{9/2}$. Counting the middle divisor twice as a fifth pair would incorrectly introduce a second copy of six. The identity for $D^2$ handles both even and odd divisor counts without that ambiguity.`,
       related: [
         { card: "sigma-parity", note: String.raw`when the divisor sum is odd.` },
         { card: "multiplicative-functions", note: String.raw`the divisor sum is multiplicative (M6.2).` }
@@ -90,13 +114,31 @@ Use the product of geometric sums for a divisor sum, $n^{d(n)/2}$ for a divisor 
     "M3.4": {
       prereq: ["floor-multiples", "number-of-divisors"],
       cards: ["legendres-formula", "trailing-zeros"],
-      body: String.raw`How many times does $3$ divide $30!$? How many zeros end $125!$? What is the largest power of $6$ dividing $20!$? A factorial is a product of many numbers, and the exponent of a prime in it is a sum of counts of multiples.
+      body: String.raw`In a product, the exponent of a prime is the sum of its exponents in the individual factors. For $n!$, we can collect those contributions by asking which integers from one through $n$ supply a first, second, or later copy of the prime.
 
-[[legendres-formula|Legendre's formula]] says the exponent of a prime $p$ in $n!$ is $\left\lfloor \tfrac np \right\rfloor + \left\lfloor \tfrac{n}{p^2} \right\rfloor + \left\lfloor \tfrac{n}{p^3} \right\rfloor + \cdots$: every multiple of $p$ up to $n$ gives one factor, every multiple of $p^2$ one more, and so on. So $30!$ contains $3$ to the power $10 + 3 + 1 = 14$. For a composite base, take each prime's share: $6 = 2 \cdot 3$, and $20!$ has $18$ factors of $2$ but only $6 + 2 = 8$ of $3$, so the largest power of $6$ dividing it is $6^8$.
+Every multiple of a prime $p$ supplies at least one copy. Every multiple of $p^2$ supplies an additional copy, and every multiple of $p^3$ another. An integer divisible by $p^j$ but not $p^{j+1}$ is counted once in each of the first $j$ groups, exactly matching its exponent.
 
-[[trailing-zeros|The zeros at the end of $n!$]] count its factors of $10 = 2 \cdot 5$, and since factors of $2$ are always more plentiful, they count the factors of $5$: $125!$ ends in $25 + 5 + 1 = 31$ zeros. The count jumps by more than one at multiples of $25$, which is why some numbers of zeros are skipped.
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 285" role="img" aria-labelledby="m34-layers-title m34-layers-desc" style="width:100%;max-width:520px;height:auto"><title id="m34-layers-title">Prime exponents in a factorial accumulate in layers</title><desc id="m34-layers-desc">The ten multiples of three up to thirty each contribute a first copy of three. Nine, eighteen and twenty-seven contribute a second, and twenty-seven contributes a third. The row counts ten, three and one add to fourteen.</desc><g fill="currentColor" font-size="16" text-anchor="middle"><text x="280" y="24">Copies of the prime 3 in 30!</text><text x="510" y="60">Count</text><text x="105" y="60">3</text><circle cx="105" cy="95" r="5.5"/><text x="144" y="60">6</text><circle cx="144" cy="95" r="5.5"/><text x="183" y="60">9</text><circle cx="183" cy="95" r="5.5"/><circle cx="183" cy="140" r="5.5"/><text x="222" y="60">12</text><circle cx="222" cy="95" r="5.5"/><text x="261" y="60">15</text><circle cx="261" cy="95" r="5.5"/><text x="300" y="60">18</text><circle cx="300" cy="95" r="5.5"/><circle cx="300" cy="140" r="5.5"/><text x="339" y="60">21</text><circle cx="339" cy="95" r="5.5"/><text x="378" y="60">24</text><circle cx="378" cy="95" r="5.5"/><text x="417" y="60">27</text><circle cx="417" cy="95" r="5.5"/><circle cx="417" cy="140" r="5.5"/><circle cx="417" cy="185" r="5.5"/><text x="456" y="60">30</text><circle cx="456" cy="95" r="5.5"/><text x="50" y="100">3</text><text x="510" y="100">10</text><text x="50" y="145">9</text><text x="510" y="145">3</text><text x="50" y="190">27</text><text x="510" y="190">1</text><text x="280" y="233">Rows: multiples of 3, 9, 27</text><text x="280" y="263">10 + 3 + 1 = 14 factors of 3</text></g></svg>
 
-Count multiples of each power of the prime and add; for a composite base, the scarcest prime decides. The next lesson uses consecutive numbers and gcd tricks.`,
+For the prime three in $30!$, the first group has ten integers, the second has three, and the third has one. In particular, twenty-seven contributes once in each group, for its three copies of three. The total exponent is fourteen.
+
+Counting each group by a floor gives [[legendres-formula|Legendre's formula]]:
+
+$$E_p(n!)=\left\lfloor\frac np\right\rfloor+
+\left\lfloor\frac n{p^2}\right\rfloor+
+\left\lfloor\frac n{p^3}\right\rfloor+\cdots.$$
+
+Here $E_p$ denotes the exponent of the prime $p$. Terms are zero once $p^j\gt n$, so only finitely many contribute. The primality assumption matters; composite factors require separate accounting for their primes.
+
+For a base $B=\prod_i p_i^{c_i}$, each copy of $B$ uses $c_i$ copies of $p_i$. Thus the largest exponent $K$ with $B^K\mid n!$ is
+
+$$K=\min_i\left\lfloor\frac{E_{p_i}(n!)}{c_i}\right\rfloor.$$
+
+For $20!$, the exponents at two and three are $10+5+2+1=18$ and $6+2=8$. Consequently the largest power of six is $6^8$. For $72=2^3\cdot3^2$, the possible counts are instead $\lfloor18/3\rfloor=6$ and $\lfloor8/2\rfloor=4$, so the largest power of seventy-two is $72^4$. Compare the number of complete groups available, not just the raw prime exponents.
+
+[[trailing-zeros|Trailing zeros]] in base ten count complete factors of $10=2\cdot5$. For a factorial the exponent at two is at least the exponent at five, since every floor for $2^j$ is at least the corresponding floor for $5^j$. Thus the count is $E_5(n!)$. For $125!$ it is $25+5+1=31$.
+
+The count need not increase one at a time. The factorial $24!$ has four trailing zeros, while multiplication by $25=5^2$ makes $25!$ have six. All later factorials have at least six, so no factorial has exactly five trailing zeros. This jump is explained by the two new copies of five in the single factor twenty-five.`,
       related: [
         { card: "p-adic-valuation", note: String.raw`the exponent of a prime in any number (M6.2).` },
         { card: "number-of-divisors", note: String.raw`the divisors of a factorial, counted from its prime exponents (M3.2).` }
@@ -119,15 +161,25 @@ Count multiples of each power of the prime and add; for a composite base, the sc
     "M3.5": {
       prereq: ["euclidean-algorithm"],
       cards: ["factor-out-factorial", "consecutive-product-factorial", "consecutive-coprime", "gcd-substitution"],
-      body: String.raw`Some problems are simplified by one structural fact. A sum of factorials shares a large common factor; a product of consecutive numbers is always a multiple of a factorial; consecutive numbers have no common factor; and a common factor of two expressions divides any combination of them. Each fact turns an apparently hard question into a short one.
+      body: String.raw`A factorial sum shares long initial products. In $8!+9!$, both terms contain $8!$, so factoring gives $8!(1+9)=10\cdot8!$. Division by $7!$ now leaves $8\cdot10=80$. More generally, $n!+(n+1)!=n!(n+2)$ for nonnegative integers $n$. [[factor-out-factorial|Removing the smallest factorial]] makes the remaining factors explicit before any large arithmetic.
 
-[[factor-out-factorial|Factor out the smallest factorial]]: $8! + 9! = 8!(1 + 9) = 10 \cdot 8!$, so $\tfrac{8! + 9!}{7!} = 8 \cdot 10 = 80$, and $(n + 1)! + (n + 2)! = n!\,(n + 1)(n + 3)$. Square factorials such as $99! \cdot 100! = (99!)^2 \cdot 100$ are perfect squares exactly when the extra factor is.
+Products can contain a repeated factorial too. The expression $99!\cdot100!$ equals $(99!)^2\cdot100=(10\cdot99!)^2$. In general $n!(n+1)!=(n!)^2(n+1)$ is a square exactly when $n+1$ is a square: the squared factorial already contributes even prime exponents.
 
-[[consecutive-product-factorial|A product of $k$ consecutive integers is a multiple of $k!$]], because the quotient is a binomial coefficient. So $n(n + 1)(n + 2)$ is always a multiple of $6$, and $6$ is the largest number that divides every such product, as $1 \cdot 2 \cdot 3$ shows.
+A [[consecutive-product-factorial|product of $k$ consecutive positive integers]] has another useful factor. For a block starting at $m\ge1$,
 
-[[consecutive-coprime|Consecutive integers are coprime]]: any common divisor of $n$ and $n + 1$ divides their difference, $1$. So if a product of two consecutive integers is a perfect square, or a fraction $\tfrac{k^2}{k^2 + 1}$ must be simplified, the two parts share no factor. [[gcd-substitution|The gcd of two expressions]] is found by subtracting multiples, as in the Euclidean algorithm: $\gcd(n^2 + 1, n + 1) = \gcd(2, n + 1)$, since $n^2 + 1 - (n - 1)(n + 1) = 2$; it is $2$ for odd $n$ and $1$ for even $n$, so for $n = 7$ it is $\gcd(50, 8) = 2$.
+$$m(m+1)\cdots(m+k-1)=k!\binom{m+k-1}{k}.$$
 
-Factor out the smallest factorial, use $k!$ for products of consecutive numbers, and reduce a gcd of expressions to a gcd with a constant. The Summary (M3.6) collects the chapter's strategies.`,
+The binomial coefficient is an integer because it counts $k$-element subsets of an $(m+k-1)$-element set. Therefore $k!$ divides the product. For three consecutive integers, the divisor is $3!=6$. It is the largest positive integer dividing every such product, since the starting block $1\cdot2\cdot3$ equals six itself. For a block of arbitrary integers, a zero factor makes divisibility immediate; an entirely negative block reduces, up to sign and reversed order, to a positive block.
+
+Adjacent integers have a more specific relationship: any common divisor of $n$ and $n+1$ divides their difference one. Hence [[consecutive-coprime|adjacent integers are coprime]]. This does not say that every pair in a longer consecutive block is coprime; two and four share a factor despite belonging to the block $2,3,4$.
+
+If coprime positive integers have a square product, the primes in one factor do not occur in the other. Each factor must therefore already have even prime exponents and be a square. A product $n(n+1)$ with $n\ge1$ cannot be square: it lies strictly between the consecutive squares $n^2$ and $(n+1)^2$. Also, $\gcd(k^2,k^2+1)=1$, so the fraction $k^2/(k^2+1)$ is already reduced.
+
+For a [[gcd-substitution|gcd involving expressions]], preserve common divisors by subtracting an integer multiple. The identity
+
+$$n^2+1-(n-1)(n+1)=2$$
+
+gives $\gcd(n^2+1,n+1)=\gcd(2,n+1)$. The latter gcd is two when $n$ is odd and one when $n$ is even. At $n=7$, it gives $\gcd(50,8)=2$. The simplified gcd supplies a bound and an exact answer because the transformation preserves the full set of common divisors, not merely one direction of divisibility.`,
       related: [
         { card: "permutations-combinations", note: String.raw`the binomial coefficient that shows $k!$ divides a product of $k$ consecutive numbers.` },
         { card: "euclidean-algorithm", note: String.raw`subtracting multiples to find a gcd (M1.4).` }
@@ -150,21 +202,21 @@ Factor out the smallest factorial, use $k!$ for products of consecutive numbers,
     "M3.6": {
       prereq: ["number-of-divisors", "perfect-square-divisors", "sum-of-divisors", "product-of-divisors", "legendres-formula", "trailing-zeros", "factor-out-factorial", "consecutive-product-factorial", "consecutive-coprime", "gcd-substitution"],
       cards: [],
-      body: String.raw`[[number-of-divisors|The number of divisors]] is the product of the exponents plus one, and [[perfect-square-divisors|divisors with a condition]] are counted by restricting each exponent; a number has an odd number of divisors exactly when it is a square.
+      body: String.raw`A divisor is a unique choice of prime exponents. [[number-of-divisors|Counting the choices]] gives $\tau(n)$, while [[perfect-square-divisors|restrictions such as being square]] keep only the permitted exponents. Reversing a count requires listing the possible exponent patterns and checking which assignments to primes make the number smallest.
 
-[[sum-of-divisors|The divisor sum]] is a product of geometric sums, and [[product-of-divisors|the divisor product]] is $n^{d(n)/2}$.
+[[sum-of-divisors|Expanding a product of power sums]] adds each divisor exactly once. [[product-of-divisors|Pairing complementary divisors]] instead controls their product, with a square's middle divisor counted only once. Both constructions include one and $n$ among the positive divisors.
 
-[[legendres-formula|Legendre's formula]] counts a prime in $n!$ by adding the floors of $\tfrac{n}{p^k}$, and [[trailing-zeros|trailing zeros]] count factors of $5$.
+[[legendres-formula|Counting multiples of successive prime powers]] gives exponents in a factorial. A composite base needs a specified number of copies of each prime, so divide each available exponent by that requirement and take the smallest whole-number result. [[trailing-zeros|Decimal trailing zeros of a factorial]] are the resulting count of factors ten, limited by the factors five.
 
-[[factor-out-factorial|Sums of factorials]] factor through the smallest one, [[consecutive-product-factorial|products of $k$ consecutive integers]] are multiples of $k!$, [[consecutive-coprime|consecutive integers]] are coprime, and [[gcd-substitution|a gcd of expressions]] reduces by subtracting multiples.`,
+[[factor-out-factorial|Common factorial factors]] simplify sums and products. [[consecutive-product-factorial|An integer binomial coefficient]] proves the universal $k!$ divisor for a block of $k$ consecutive integers. [[consecutive-coprime|Adjacent coprimality]] separates their prime factors, and [[gcd-substitution|subtracting multiples]] can reduce an expression gcd to one with a constant.`,
       strategies: [
         String.raw`Factor the number before counting, summing or multiplying its divisors.`,
         String.raw`Write a condition on a divisor as a rule on each exponent.`,
         String.raw`For a number with a given count of divisors, factor the count and match exponents.`,
         String.raw`For the exponent of a prime in $n!$, add the floors of $\tfrac{n}{p}$, $\tfrac{n}{p^2}$, and so on.`,
-        String.raw`For a composite base in a factorial, the scarcest prime decides.`,
+        String.raw`For a composite base, divide each available prime exponent by its exponent in the base, round down, and take the minimum.`,
         String.raw`Factor the smallest factorial out of a sum of factorials.`,
-        String.raw`Reduce $\gcd(f(n), g(n))$ by subtracting multiples until a constant is left.`
+        String.raw`Simplify a gcd of expressions by subtracting integer multiples; if a constant remains, test its possible common factors.`
       ]
     }
   },
