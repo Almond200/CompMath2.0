@@ -82,9 +82,8 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Proving and finding identities `[alg.eq.identity.prove]`
   - Factoring and clever factorizations `[alg.eq.factor]`
     - Difference of squares and cubes `[alg.eq.factor.squares]`
-    - Grouping and SFFT `[alg.eq.factor.sfft]`
+    - Grouping into products `[alg.eq.factor.sfft]`
     - Sophie Germain and other special factorizations `[alg.eq.factor.special]`
-    - Substitution to reveal a factorization `[alg.eq.factor.sub]`
   - Radicals and nested radicals `[alg.eq.radical]`
     - Simplifying and rationalizing radicals `[alg.eq.radical.simplify]`
     - Denesting $\sqrt{a+\sqrt b}$ `[alg.eq.radical.denest]`
@@ -231,11 +230,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Two and three sets; Venn diagrams `[cp.tech.pie.venn]`
     - General inclusion-exclusion `[cp.tech.pie.general]`
   - Bijections and counting in two ways `[cp.tech.bij]`
-    - Bijections `[cp.tech.bij.bij]`
-    - Double counting `[cp.tech.bij.double]`
-  - Recursion and states `[cp.tech.rec]`
-    - Recursive counting, Catalan and ballot problems included `[cp.tech.rec.count]`
-    - States and transfer tables `[cp.tech.rec.states]`
+    - Counting one total in two ways `[cp.tech.bij.double]`
   - Counting with symmetry `[cp.tech.sym]`
     - Rotations and reflections; necklaces `[cp.tech.sym.necklace]`
     - Burnside's lemma `[cp.tech.sym.burnside]`
@@ -253,6 +248,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Seating, circular arrangements and derangements `[cp.struct.seat]`
     - Circular arrangements `[cp.struct.seat.circle]`
     - Derangements and fixed points `[cp.struct.seat.derange]`
+  - Catalan numbers and ballot problems `[cp.struct.catalan]`
   - Partitions and compositions `[cp.struct.part]`
     - Compositions `[cp.struct.part.comp]`
     - Integer partitions `[cp.struct.part.partition]`
@@ -520,7 +516,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Counting solutions with positivity or bounds `[nt.dio.linear.count]`
     - Chicken McNugget and the Frobenius number `[nt.dio.linear.frob]`
   - Factoring and SFFT `[nt.dio.factor]`
-    - Simon's favorite factoring trick `[nt.dio.factor.sfft]`
+    - Equations $xy+ax+by=c$ `[nt.dio.factor.sfft]`
     - Difference of squares and other factorable forms `[nt.dio.factor.squares]`
     - Reciprocal equations $1/x+1/y=1/n$ `[nt.dio.factor.recip]`
   - Pythagorean triples and sums of squares `[nt.dio.squares]`
