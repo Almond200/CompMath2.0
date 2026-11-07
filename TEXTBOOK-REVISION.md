@@ -13,12 +13,15 @@ Teach a connected mathematical story. Define ideas before using them, explain wh
 - Glossaries include basic definitions and the descriptions of the book's named results and methods, taken from the existing reference cards. Credits identify the project's writing, contest-statement sources, license, KaTeX, and further reading; no unverified textbook bibliography was invented.
 - Book search includes indexed terms and aliases at a lower weight than chapter titles, lesson titles, taught-card metadata, and prose. Existing exact-title, typo and chapter-code behavior remains tested.
 - AMC Algebra L2 (equations and word problems) and L3 (quadratics) are revised and merged to main.
-- AMC Algebra L4 (functions, graphs, absolute values and floors, L4.1–L4.7) and L5 (substitutions and symmetric expressions, L5.1–L5.4) are revised in the branch's third commit, which changed every lesson of both chapters; confirm with the next commit before treating L5 as final.
+- AMC Algebra L4 (functions, graphs, absolute values and floors) and L5 (substitutions and symmetric expressions) are revised.
+- AMC Algebra L6 and L7 (sequences and polynomials) are revised with proofs and diagrams.
+- AMC Algebra L8 (inequalities, extrema and estimates) and L9 (logarithms) are revised in commit eb5d70b, merged through PR #217, with four new diagrams. The same batch removed editorial asides about formulas and memorization from L1–L9, pointed the two L1 links to `two-variable-identities` (the two-variable card split from `square-of-sum`), updated the related prerequisite metadata, and placed the three-variable `square-of-sum` teaching reference in L5.3.
+- So AMC Algebra L1–L9 now read as connected textbook explanations, with derivations, worked examples, domain restrictions, equality conditions and diagrams.
 - AMC Algebra L1.1–L1.5 are revised. The introduction develops the distinction between expressions and equations; the lessons develop modeling, exponent laws and domains, algebraic representations, and ratio/percentage reference quantities. L1.4 has a computed rectangular-area diagram; L1.5 has an eight-unit ratio diagram. Existing exercises, solutions and contest placements are preserved.
 
 ## Continue the content pass
 
-The remaining teaching chapters have not been revised in this branch. Continue with AMC Algebra L6, then continue chapter by chapter through the AMC, AIME and Olympiad books. Read each chapter's lesson bodies and worked solutions together before rewriting. Check mathematical claims by computation where applicable; preserve problem placements and avoid altering the Step T data. Retain the stronger O3–O7 explanations unless a specific improvement is warranted. Review glossary definitions as their lessons change, especially when a technical term needs a more precise definition than a card's introductory description.
+The remaining teaching chapters have not been revised in this branch. In progress: AMC Algebra L10 and L11. Then continue chapter by chapter through the AMC, AIME and Olympiad books. Read each chapter's lesson bodies and worked solutions together before rewriting. Check mathematical claims by computation where applicable; preserve problem placements and avoid altering the Step T data. Retain the stronger O3–O7 explanations unless a specific improvement is warranted. Review glossary definitions as their lessons change, especially when a technical term needs a more precise definition than a card's introductory description.
 
 After changing lesson references or prose, regenerate the back matter:
 
@@ -35,3 +38,5 @@ JSC=./tools/jsc-node sh tools/gates.sh
 ## Validation
 
 All repository gates and the regression suites passed. Tests cover all 13 notes chapters, index-target scope and resolution, key-term retrieval, and the existing chapter/lesson search audit. Chromium checked all 39 notes sections and L1.2–L1.5 at 1280 and 375 pixels (86 page checks): no JavaScript errors, KaTeX errors, missing index links, or horizontal overflow. These structural and browser checks do not certify the mathematical content of the unrevised books.
+
+The batch merged through PR #217 (L8, L9) passed every repository gate and all three regression suites; the generated notes were checked, and 71 browser page checks covered desktop and phone rendering, light and dark themes, the corrected links, and the affected notes.
