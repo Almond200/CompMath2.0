@@ -6,15 +6,15 @@ window.MATH_LEARN["L3"] = {
     "L3.1": {
       prereq: ["completing-the-square"],
       cards: [],
-      body: String.raw`This chapter studies quadratics, expressions of the form $ax^2 + bx + c$ with $a \ne 0$. They are the first expressions where whole families of questions, about the roots, their sum and product, and the largest or smallest value, are answered by formulas instead of by trial.
+      body: String.raw`A quadratic expression contains a nonzero multiple of the square of its variable. That extra power changes the kinds of questions algebra can answer. A linear expression has a constant rate of change; a quadratic can turn from decreasing to increasing, take the same value at two inputs, and have a largest or smallest value. These features connect its equations, its factors and its graph.
 
-A root of $ax^2 + bx + c$ is a value of $x$ that makes it $0$. Some quadratics factor: $x^2 - 5x + 6 = (x - 2)(x - 3)$ has roots $2$ and $3$. Every quadratic can be solved by completing the square, which gives the quadratic formula, and the number $b^2 - 4ac$ under its root, the discriminant, tells how many real roots there are: for $2x^2 + 3x + 5$ it is $9 - 40 = -31 \lt 0$, so there are none.
+Consider $x^2-6x+8$. Factoring gives $(x-2)(x-4)$, so the expression is zero at $2$ and $4$. Completing the square instead gives $(x-3)^2-1$, which shows that its smallest value is $-1$, attained at $x=3$. These are two descriptions of the same expression. The two zeroes lie one unit to either side of its minimum because the squared distances from $3$ are equal.
 
-The roots are often not needed one by one. Their sum is $-\tfrac ba$ and their product $\tfrac ca$ (Vieta's formulas), so for $x^2 - 5x + 6$ the roots add to $5$ and multiply to $6$, and any symmetric expression in them follows.
+This connection guides the chapter. If a problem asks for inputs where the expression is zero, a product can expose those inputs. If it asks for a minimum, a square can expose a lower bound and when it is attained. If it asks about the pair of roots together, the coefficients can supply their sum and product without finding either root individually.
 
-The graph of a quadratic is a parabola, symmetric about a vertical line through its vertex. Completing the square writes $x^2 - 6x + 11$ as $(x - 3)^2 + 2$, so the vertex is $(3, 2)$ and the smallest value is $2$. The vertex answers questions about largest and smallest values, and the position of the vertex with the sign of the discriminant tells where the roots lie.
+Not every quadratic has real zeroes. Adding $3$ to the example produces $(x-3)^2+2$, which is positive for every real $x$. Its graph still has a minimum and the same axis of symmetry, but it never meets the horizontal axis. The equation-solving method should explain this absence rather than merely fail to find factors.
 
-The lessons take these ideas in turn: solving quadratics (L3.2), Vieta's formulas (L3.3), and the vertex and where the roots lie (L3.4). The Summary (L3.5) collects the strategies.`,
+We begin by deriving a method that solves every quadratic equation and determines how many real roots it has. We then read information about the roots directly from the coefficients, and finally use completed squares to understand extrema, symmetry and root locations. The aim is to recognize what the question needs before choosing a form.`,
       exercises: [
         { q: String.raw`Find the sum of the roots of $x^2 - 5x + 6$.`, answer: "5",
           solution: String.raw`It factors as $(x - 2)(x - 3)$, so the roots are $2$ and $3$, with sum $5$, which is $-\tfrac ba = 5$.` },
@@ -32,15 +32,23 @@ The lessons take these ideas in turn: solving quadratics (L3.2), Vieta's formula
     "L3.2": {
       prereq: ["completing-the-square", "difference-of-squares"],
       cards: ["quadratic-formula", "quadratic-perfect-square"],
-      body: String.raw`Many problems end in a quadratic equation: a length found from a right triangle, a number that differs from its reciprocal by $1$, a line that just touches a parabola. Solving $x^2 - 4x - 1 = 0$, deciding when $x^2 + kx + 9 = 0$ has only one root, and deciding when $x^2 + x - n$ factors with integers are all answered by one formula and the expression inside it.
+      body: String.raw`Solving a quadratic equation asks where a product or a square can take a specified value. When $x^2-5x+6$ factors as $(x-2)(x-3)$, its zeroes are immediate: a product of real numbers is zero only if at least one factor is zero. An equation such as $x^2-4x-1=0$ does not factor with integer constants, but that does not mean it has no real solutions. It means that this form has not yet exposed them.
 
-First try to factor: if $x^2 + bx + c = (x - r)(x - s)$, the roots are $r$ and $s$, and $r + s = -b$, $rs = c$, so look for two numbers with that sum and product. When that fails, complete the square: $x^2 - 4x - 1 = (x - 2)^2 - 5$, so $x - 2 = \pm\sqrt5$ and $x = 2 \pm \sqrt5$. Doing the same with letters gives [[quadratic-formula|the quadratic formula]]: the roots of $ax^2 + bx + c = 0$ are $x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}$.
+Complete the square to obtain $(x-2)^2=5$. There are two real numbers with square $5$, one positive and one negative, so $x-2=\sqrt5$ or $x-2=-\sqrt5$. The roots are $2+\sqrt5$ and $2-\sqrt5$. They are equally far from $2$. Keeping both signs is essential; taking only the principal square root would lose one solution.
 
-The discriminant $D = b^2 - 4ac$ decides the kind of roots without solving. If $D \gt 0$ there are two real roots, if $D = 0$ one (a double root, where the parabola touches the $x$-axis), and if $D \lt 0$ none. So $x^2 + kx + 9$ has exactly one root when $k^2 - 36 = 0$, that is, $k = \pm 6$. A line is tangent to a parabola exactly when substituting one into the other gives a quadratic with $D = 0$.
+The same completion works with arbitrary coefficients. Starting from $ax^2+bx+c=0$, with $a\ne0$, multiply by $4a$ and rearrange:
 
-When the roots must be rational or integers, [[quadratic-perfect-square|the discriminant must be a perfect square]]. For $x^2 + x - n$ the discriminant is $1 + 4n$, a perfect square exactly when $n = m(m + 1)$; between $1$ and $20$ that is $n = 2, 6, 12, 20$, and then $x^2 + x - n = (x - m)(x + m + 1)$.
+$$4a^2x^2+4abx=-4ac,\qquad (2ax+b)^2=b^2-4ac.$$
 
-Factor when you can, complete the square or use the formula when you cannot, and read the discriminant when only the number or kind of roots is asked. The next lesson uses the roots' sum and product without finding them.`,
+The added $b^2$ completes the square on the left. If the right side is nonnegative, taking both square roots and solving the resulting linear equations gives [[quadratic-formula|the quadratic formula]]. We have derived it by reducing the problem to a square, so the expression under its radical has a clear meaning.
+
+Write $D=b^2-4ac$, the discriminant. A positive $D$ gives two possible values of $2ax+b$, hence two distinct real roots. When $D=0$, there is just one value, and the two roots coincide; it is called a double root. A negative $D$ cannot equal the square of a real number, so there are no real roots. These conclusions determine the number of roots before any radical is evaluated.
+
+For example, $x^2+kx+9=0$ has a double root exactly when $k^2-36=0$, so $k=6$ or $k=-6$. The corresponding polynomials are $(x+3)^2$ and $(x-3)^2$. In a graph, a double root is a contact with the horizontal axis rather than a crossing. More generally, substituting a nonvertical line into $y=ax^2+bx+c$ produces another quadratic in $x$; a double root then describes tangency of the line and parabola.
+
+Arithmetic restrictions require a separate check. For integer coefficients, [[quadratic-perfect-square|rational roots require a square discriminant]]: the square root of an integer is rational only when that integer is a perfect square. But a square discriminant does not by itself guarantee integer roots when $a\ne1$. For $2x^2+x-1$, $D=9$, yet the roots are $(-1+3)/4=1/2$ and $(-1-3)/4=-1$. Divisibility by $2a$ still matters.
+
+For the monic polynomial $x^2+x-n$, with positive integer $n$, a square discriminant $1+4n$ is odd. Write its square root as $2m+1$ with $m\ge0$. Then $n=m(m+1)$, and the factorization is $(x-m)(x+m+1)$. The positive $n$ up to $20$ are therefore $2,6,12,20$. Here the coefficient of $x^2$ is one and the parity matches, so the rational-root condition also gives integer roots. The next lesson uses the coefficients even when the roots themselves are unnecessary.`,
       related: [
         { card: "transforming-equations", note: String.raw`checking roots that squaring or clearing denominators may have added (L2.2).` },
         { card: "vietas-quadratic", note: String.raw`the sum and product of the roots, read from the coefficients (L3.3).` }
@@ -63,15 +71,23 @@ Factor when you can, complete the square or use the formula when you cannot, and
     "L3.3": {
       prereq: ["quadratic-formula", "square-of-sum"],
       cards: ["vietas-quadratic", "symmetric-polynomial-strategies"],
-      body: String.raw`Often a problem asks about the roots of a quadratic without asking for the roots themselves: the sum of their reciprocals, the sum of their squares, or the product of the roots each increased by $1$. Finding the roots with the formula works but brings square roots that cancel at the end; reading the sum and product straight from the coefficients is faster and exact.
+      body: String.raw`The coefficients of a quadratic contain information about its roots as a pair. This is useful when the requested answer treats the two roots alike, because separately solving for them may introduce radicals that disappear as soon as the results are combined. Begin by asking whether the two roots need to be distinguished at all.
 
-[[vietas-quadratic|Vieta's formulas]] say that the roots $r$ and $s$ of $ax^2 + bx + c$ satisfy $r + s = -\tfrac ba$ and $rs = \tfrac ca$. They come from expanding $a(x - r)(x - s) = ax^2 - a(r + s)x + ars$ and matching coefficients. For $2x^2 - 7x + 3$, the roots add to $\tfrac72$ and multiply to $\tfrac32$, so the sum of their reciprocals is $\tfrac{r + s}{rs} = \tfrac{7/2}{3/2} = \tfrac73$.
+Let $r,s$ be the roots, counted with multiplicity. The factored form $a(x-r)(x-s)$ expands to $ax^2-a(r+s)x+ars$. Comparing it with $ax^2+bx+c$ gives [[vietas-quadratic|Vieta's formulas]]:
 
-An expression in $r$ and $s$ that does not change when they are swapped is symmetric, and [[symmetric-polynomial-strategies|every symmetric expression]] can be written using only $r + s$ and $rs$. The ones to know: $r^2 + s^2 = (r + s)^2 - 2rs$, $(r - s)^2 = (r + s)^2 - 4rs$, and $r^3 + s^3 = (r + s)^3 - 3rs(r + s)$. For $x^2 - 3x - 5$, $r^2 + s^2 = 9 + 10 = 19$. The same idea solves symmetric systems: if $x + y = 6$ and $xy = 7$, then $x$ and $y$ are the roots of $t^2 - 6t + 7$, and $(x - y)^2 = 36 - 28 = 8$.
+$$r+s=-\frac ba,\qquad rs=\frac ca.$$
 
-Vieta also works in reverse: two numbers with a known sum $S$ and product $P$ are the roots of $t^2 - St + P$. And integer conditions combine with it: if the roots of $x^2 - 63x + k$ are primes, their sum $63$ is odd, so one of them is $2$.
+The minus sign in the sum comes from the negative signs in the factors. For $2x^2-7x+3$, the sum is $7/2$ and the product is $3/2$. Neither root is zero because their product is nonzero. Thus the sum of their reciprocals is $(r+s)/(rs)=7/3$. We used exactly the information the question requests, with no need to find the two roots.
 
-When a question is about the roots as a pair, write it in their sum and product before solving anything. The next lesson turns to the graph of a quadratic.`,
+An expression is symmetric when swapping $r$ and $s$ does not change it. A useful way to simplify such an expression is to name $S=r+s$ and $P=rs$, then expand or regroup until those quantities appear. For instance, squaring $S$ counts $r^2+s^2$ plus two copies of $P$, so $r^2+s^2=S^2-2P$. Subtracting four copies of $P$ from $S^2$ instead gives $(r-s)^2$. These identities follow from the expansion, rather than being separate rules that must be memorized without explanation.
+
+The same reasoning handles higher powers. Expanding $S^3$ produces $r^3+s^3+3rs(r+s)$, so $r^3+s^3=S^3-3PS$. For the roots of $x^2-3x-5$, $S=3$ and $P=-5$; therefore $r^2+s^2=9+10=19$. The negative product also tells us that the two real roots have opposite signs. A sign check can reveal a mistaken substitution before it propagates through a longer calculation.
+
+[[symmetric-polynomial-strategies|Rewriting in the sum and product]] extends to every symmetric polynomial in two variables. Rational expressions can often be handled in the same way, provided we keep any nonzero-denominator restrictions. Symmetry is a reason to look for this representation, not permission to ignore the domain or assume that every expression is a polynomial.
+
+The construction also works backward. If two numbers have sum $S$ and product $P$, then both satisfy $t^2-St+P=0$. Thus $x+y=6$ and $xy=7$ describe the roots of $t^2-6t+7$; in particular $(x-y)^2=36-28=8$. If real numbers are required, the discriminant $S^2-4P$ must be nonnegative. This shows, for example, that real numbers with sum $6$ cannot have product greater than $9$.
+
+Extra conditions on the roots can be combined with their sum and product. If the roots of $x^2-63x+k$ are positive primes, they add to the odd number $63$. Two odd primes would have even sum, so one root must be $2$ and the other $61$, giving $k=122$. The information about primes supplies what the coefficients alone leave open. The next lesson connects the same midpoint and separation of roots to the quadratic's graph.`,
       related: [
         { card: "vietas-general", note: String.raw`the same formulas for polynomials of any degree (L10.2).` },
         { card: "root-transformations", note: String.raw`writing a quadratic whose roots are changed, such as doubled or inverted (L10.3).` }
@@ -95,15 +111,25 @@ When a question is about the roots as a pair, write it in their sum and product 
     "L3.4": {
       prereq: ["completing-the-square", "quadratic-formula"],
       cards: ["vertex-form", "quadratic-forms", "quadratic-root-location"],
-      body: String.raw`The graph of $y = ax^2 + bx + c$ is a parabola, and its lowest or highest point, the vertex, answers a whole class of questions: the largest value of $-2x^2 + 8x + 1$, the greatest height of a ball thrown upward, the line on which the vertex of a family of parabolas lies. The parabola also shows where the roots are, which decides questions such as when a quadratic has two positive roots.
+      body: String.raw`Completing the square separates a quadratic into a constant and a squared distance from a particular input. For $-2x^2+8x+1$, factor the leading coefficient from the first two terms, then complete the square inside:
 
-Completing the square writes a quadratic in [[vertex-form|vertex form]], $a(x - h)^2 + k$. The vertex is $(h, k)$, with $h = -\tfrac{b}{2a}$, and the parabola is symmetric about the line $x = h$. If $a \gt 0$ it opens upward and $k$ is the smallest value; if $a \lt 0$ it opens downward and $k$ is the largest. For $-2x^2 + 8x + 1 = -2(x - 2)^2 + 9$ the largest value is $9$, at $x = 2$. Symmetry gives the axis quickly: if a parabola has the same height at $x = 2$ and $x = 4$, its axis is $x = 3$.
+$$-2x^2+8x+1=-2\big((x-2)^2-4\big)+1=-2(x-2)^2+9.$$
 
-The same idea handles [[quadratic-forms|quadratic expressions in two variables]], such as $x^2 + 4x + y^2 - 6y + 20 = (x + 2)^2 + (y - 3)^2 + 7$, whose smallest value is $7$. Completing the square in each variable shows the minimum, and expressions such as $x^2 + xy + y^2$ are handled by completing the square in one variable.
+Because $(x-2)^2\ge0$, multiplying it by $-2$ makes the contribution nonpositive. The largest possible value is therefore $9$, attained at $x=2$. This identifies both the bound and an input reaching it. If the input is restricted, that final input must be allowed before we can call the bound a maximum.
 
-[[quadratic-root-location|Where the roots lie]] is read from the discriminant, the sum and product of the roots, and the vertex. For $x^2 - mx + m + 3$ to have two different positive roots, the discriminant $m^2 - 4m - 12 = (m - 6)(m + 2)$ must be positive, and the sum $m$ and product $m + 3$ must be positive; together $m \gt 6$. For a root between two numbers, compare the signs of the quadratic at them: a sign change means a root in between.
+In general, [[vertex-form|vertex form]] is $a(x-h)^2+k$. The point $(h,k)$ is the vertex. Inputs $h-d$ and $h+d$ give the same value because their differences from $h$ have equal squares, which explains the vertical axis of symmetry $x=h$. For $a\gt0$, $k$ is a minimum; for $a\lt0$, it is a maximum. The coefficient $a$ also controls how rapidly the value moves away from $k$ as the distance from $h$ increases.
 
-Use vertex form for every largest or smallest value of a quadratic, and the discriminant with Vieta for the position of the roots. The Summary (L3.5) collects the chapter's strategies.`,
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 280" role="img" aria-labelledby="l34-parabola-title l34-parabola-desc" style="width:100%;max-width:480px;height:auto"><title id="l34-parabola-title">Vertex, roots and symmetry of a quadratic</title><desc id="l34-parabola-desc">The graph of y equals the square of x minus three, minus one. It has vertex three, minus one, roots two and four, and symmetry axis x equals three. It lies below the horizontal axis between its two roots.</desc><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M60 215H430M60 260V42"/><path d="M240 42V245" stroke-dasharray="5 5" opacity="0.5"/><path d="M93.000 64.925 L95.940 72.056 L98.880 79.043 L101.820 85.886 L104.760 92.585 L107.700 99.139 L110.640 105.550 L113.580 111.817 L116.520 117.939 L119.460 123.918 L122.400 129.752 L125.340 135.442 L128.280 140.989 L131.220 146.391 L134.160 151.649 L137.100 156.763 L140.040 161.733 L142.980 166.559 L145.920 171.241 L148.860 175.779 L151.800 180.173 L154.740 184.423 L157.680 188.528 L160.620 192.490 L163.560 196.308 L166.500 199.981 L169.440 203.511 L172.380 206.896 L175.320 210.137 L178.260 213.235 L181.200 216.188 L184.140 218.997 L187.080 221.662 L190.020 224.183 L192.960 226.560 L195.900 228.793 L198.840 230.882 L201.780 232.827 L204.720 234.628 L207.660 236.284 L210.600 237.797 L213.540 239.166 L216.480 240.390 L219.420 241.471 L222.360 242.407 L225.300 243.199 L228.240 243.848 L231.180 244.352 L234.120 244.712 L237.060 244.928 L240.000 245.000 L242.940 244.928 L245.880 244.712 L248.820 244.352 L251.760 243.848 L254.700 243.199 L257.640 242.407 L260.580 241.471 L263.520 240.390 L266.460 239.166 L269.400 237.797 L272.340 236.284 L275.280 234.628 L278.220 232.827 L281.160 230.882 L284.100 228.793 L287.040 226.560 L289.980 224.183 L292.920 221.662 L295.860 218.997 L298.800 216.188 L301.740 213.235 L304.680 210.137 L307.620 206.896 L310.560 203.511 L313.500 199.981 L316.440 196.308 L319.380 192.490 L322.320 188.528 L325.260 184.423 L328.200 180.173 L331.140 175.779 L334.080 171.241 L337.020 166.559 L339.960 161.733 L342.900 156.763 L345.840 151.649 L348.780 146.391 L351.720 140.989 L354.660 135.442 L357.600 129.752 L360.540 123.918 L363.480 117.939 L366.420 111.817 L369.360 105.550 L372.300 99.139 L375.240 92.585 L378.180 85.886 L381.120 79.043 L384.060 72.056 L387.000 64.925" stroke-width="2.5"/><path d="M180 211V219M300 211V219M56 185H64M56 245H64"/></g><g fill="currentColor"><circle cx="180" cy="215" r="4"/><circle cx="300" cy="215" r="4"/><circle cx="240" cy="245" r="4"/><g font-size="15" text-anchor="middle"><text x="245" y="23">y = (x − 3)² − 1</text><text x="180" y="237">2</text><text x="300" y="237">4</text><text x="290" y="268">(3, −1)</text><text x="42" y="190">1</text><text x="38" y="250">−1</text><text x="440" y="220">x</text><text x="60" y="31">y</text></g></g></svg>
+
+The graph shown is $y=(x-3)^2-1$. Its vertex is $(3,-1)$, and its zeroes at $2$ and $4$ are symmetric about $3$. Between the zeroes the squared distance from $3$ is less than $1$, so the value is negative; outside them the squared distance is greater than $1$, so the value is positive. The picture follows from the squared-distance calculation rather than replacing it.
+
+A restricted interval can change the extreme. For $-2(x-2)^2+9$ on $3\le x\le5$, the vertex input $2$ is unavailable. The smallest squared distance from $2$ occurs at $x=3$, so the maximum on this interval is $7$, not $9$. Likewise, if two distinct inputs give the same height on a parabola, their midpoint is the vertex input; equal values at $2$ and $4$ place the axis at $3$.
+
+Completing squares also helps with [[quadratic-forms|quadratic expressions in two variables]]. The expression $x^2+4x+y^2-6y+20$ becomes $(x+2)^2+(y-3)^2+7$, with minimum $7$ at $(-2,3)$. A mixed term needs more care: $x^2+xy+y^2=(x+y/2)^2+3y^2/4$, which is nonnegative and zero only at $(0,0)$. We must examine the signs of all terms left after completing a square; $x^2-y^2$, for instance, has no minimum over the whole real plane.
+
+For [[quadratic-root-location|root locations]], combine information rather than relying on a sketch. To make $x^2-mx+m+3=0$ have two distinct positive roots, first require a positive discriminant, $(m-6)(m+2)>0$. For real roots, a positive product $m+3$ then means the two roots have the same sign, and a positive sum $m$ selects the positive sign. The three requirements together give $m>6$. If $m$ is an integer, the smallest possibility is $7$, giving roots $2,5$.
+
+A sign change across an interval is another useful test. A polynomial varies continuously, so opposite signs at two endpoints guarantee a zero between them. Equal signs do not settle the question: there may be no zero, two crossings, or a double root that touches without crossing. For example, $(x-3)^2$ is positive at $2$ and $4$ but zero at $3$. Keep distinct roots separate from repeated ones, and use a completed square, the discriminant and the endpoint values together when a parameter changes the graph.`,
       related: [
         { card: "trivial-inequality", note: String.raw`a square is never negative, which is why the vertex is the extreme (L8.2).` },
         { card: "piecewise-graph-counting", note: String.raw`counting solutions by where graphs cross (L4.5).` }
@@ -126,15 +152,17 @@ Use vertex form for every largest or smallest value of a quadratic, and the disc
     "L3.5": {
       prereq: ["quadratic-formula", "quadratic-perfect-square", "vietas-quadratic", "symmetric-polynomial-strategies", "vertex-form", "quadratic-forms", "quadratic-root-location"],
       cards: [],
-      body: String.raw`A quadratic is solved by factoring, by completing the square, or by [[quadratic-formula|the quadratic formula]] $x = \tfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}$. The discriminant $b^2 - 4ac$ tells whether there are two, one or no real roots, and [[quadratic-perfect-square|it must be a perfect square]] for the roots to be rational.
+      body: String.raw`A quadratic has several useful representations. A factored form exposes zeroes, a completed square exposes symmetry and an extreme value, and the coefficient form exposes the roots' sum and product through [[vietas-quadratic|Vieta's formulas]]. These are different views of one expression. Choose the view according to what the problem asks you to determine.
 
-[[vietas-quadratic|Vieta's formulas]] give the sum $-\tfrac ba$ and product $\tfrac ca$ of the roots, and [[symmetric-polynomial-strategies|every symmetric expression]] in the roots is written in these two; two numbers with a known sum and product are the roots of $t^2 - St + P$.
+Completing the square derives [[quadratic-formula|the quadratic formula]] and explains the discriminant. A positive discriminant gives two distinct real roots, zero gives a double root, and a negative discriminant gives no real roots. With integer coefficients, [[quadratic-perfect-square|a square discriminant]] characterizes rational roots; integer roots additionally require the divisions in the formula to produce integers.
 
-[[vertex-form|Vertex form]] $a(x - h)^2 + k$ gives the largest or smallest value and the axis of symmetry; [[quadratic-forms|quadratic expressions in two variables]] are handled by completing the square in each. [[quadratic-root-location|The position of the roots]] follows from the discriminant, their sum and product, and the signs of the quadratic at chosen points.`,
+A question treating the roots as an unordered pair often calls for [[symmetric-polynomial-strategies|their sum and product]]. Rewriting first can avoid finding either root, and it keeps domain restrictions such as nonzero roots visible when reciprocals occur. The reverse construction, $t^2-St+P$, also turns a known sum and product into an equation for the numbers.
+
+In [[vertex-form|vertex form]], an extreme value is justified by the sign of a square and by an allowed input attaining equality. For [[quadratic-forms|two-variable quadratics]], inspect the remaining terms after completion before asserting a bound. To determine [[quadratic-root-location|where roots lie]], first establish their reality, then combine their sum and product with symmetry and signs. A double root need not change the sign of the polynomial. The review problems ask you to decide which information is needed before calculating it.`,
       strategies: [
         String.raw`Try to factor first: two numbers with the right sum and product.`,
         String.raw`If only the number or kind of roots is asked, compute the discriminant.`,
-        String.raw`For integer or rational roots, require the discriminant to be a perfect square.`,
+        String.raw`With integer coefficients, a square discriminant gives rational roots; check divisibility in the formula for integer roots.`,
         String.raw`For any symmetric expression in the roots, write it in their sum and product.`,
         String.raw`For a largest or smallest value, complete the square to find the vertex.`,
         String.raw`Use symmetry: equal heights at two points put the axis halfway between them.`,

@@ -483,7 +483,6 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "L15",
     "title": "End-of-book Notes",
-    "level": "Extension",
     "lessons": [
      {
       "code": "L15.1",
@@ -498,7 +497,7 @@ window.MATH_LEARN_SHELF = [
       "title": "References and Credits"
      }
     ],
-    "part": "Toward the AIME"
+    "kind": "reference"
    }
   ]
  },
@@ -772,7 +771,6 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "M8",
     "title": "End-of-book Notes",
-    "level": "Extension",
     "lessons": [
      {
       "code": "M8.1",
@@ -787,7 +785,7 @@ window.MATH_LEARN_SHELF = [
       "title": "References and Credits"
      }
     ],
-    "part": "Toward the AIME"
+    "kind": "reference"
    }
   ]
  },
@@ -1149,7 +1147,6 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "R11",
     "title": "End-of-book Notes",
-    "level": "Extension",
     "lessons": [
      {
       "code": "R11.1",
@@ -1164,7 +1161,7 @@ window.MATH_LEARN_SHELF = [
       "title": "References and Credits"
      }
     ],
-    "part": "Toward the AIME"
+    "kind": "reference"
    }
   ]
  },
@@ -1613,7 +1610,6 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "S13",
     "title": "End-of-book Notes",
-    "level": "Extension",
     "lessons": [
      {
       "code": "S13.1",
@@ -1628,7 +1624,7 @@ window.MATH_LEARN_SHELF = [
       "title": "References and Credits"
      }
     ],
-    "part": "Toward the AIME"
+    "kind": "reference"
    }
   ]
  },
@@ -1989,7 +1985,6 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "A10",
     "title": "End-of-book Notes",
-    "level": "Extension",
     "lessons": [
      {
       "code": "A10.1",
@@ -2004,7 +1999,7 @@ window.MATH_LEARN_SHELF = [
       "title": "References and Credits"
      }
     ],
-    "part": "Beyond the AIME"
+    "kind": "reference"
    }
   ]
  },
@@ -2334,7 +2329,6 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "N9",
     "title": "End-of-book Notes",
-    "level": "Extension",
     "lessons": [
      {
       "code": "N9.1",
@@ -2349,7 +2343,7 @@ window.MATH_LEARN_SHELF = [
       "title": "References and Credits"
      }
     ],
-    "part": "Beyond the AIME"
+    "kind": "reference"
    }
   ]
  },
@@ -2720,7 +2714,6 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "G10",
     "title": "End-of-book Notes",
-    "level": "Extension",
     "lessons": [
      {
       "code": "G10.1",
@@ -2735,7 +2728,7 @@ window.MATH_LEARN_SHELF = [
       "title": "References and Credits"
      }
     ],
-    "part": "Beyond the AIME"
+    "kind": "reference"
    }
   ]
  },
@@ -3096,7 +3089,6 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "C10",
     "title": "End-of-book Notes",
-    "level": "Extension",
     "lessons": [
      {
       "code": "C10.1",
@@ -3111,7 +3103,7 @@ window.MATH_LEARN_SHELF = [
       "title": "References and Credits"
      }
     ],
-    "part": "Beyond the AIME"
+    "kind": "reference"
    }
   ]
  },
@@ -3223,7 +3215,6 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "P5",
     "title": "End-of-book Notes",
-    "level": "Extension",
     "lessons": [
      {
       "code": "P5.1",
@@ -3237,7 +3228,8 @@ window.MATH_LEARN_SHELF = [
       "code": "P5.3",
       "title": "References and Credits"
      }
-    ]
+    ],
+    "kind": "reference"
    }
   ]
  },
@@ -3384,7 +3376,6 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "E6",
     "title": "End-of-book Notes",
-    "level": "Extension",
     "lessons": [
      {
       "code": "E6.1",
@@ -3398,7 +3389,8 @@ window.MATH_LEARN_SHELF = [
       "code": "E6.3",
       "title": "References and Credits"
      }
-    ]
+    ],
+    "kind": "reference"
    }
   ]
  },
@@ -3515,7 +3507,6 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "D5",
     "title": "End-of-book Notes",
-    "level": "Extension",
     "lessons": [
      {
       "code": "D5.1",
@@ -3529,7 +3520,8 @@ window.MATH_LEARN_SHELF = [
       "code": "D5.3",
       "title": "References and Credits"
      }
-    ]
+    ],
+    "kind": "reference"
    }
   ]
  },
@@ -3671,7 +3663,6 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "K6",
     "title": "End-of-book Notes",
-    "level": "Extension",
     "lessons": [
      {
       "code": "K6.1",
@@ -3685,7 +3676,8 @@ window.MATH_LEARN_SHELF = [
       "code": "K6.3",
       "title": "References and Credits"
      }
-    ]
+    ],
+    "kind": "reference"
    }
   ]
  },
@@ -3887,7 +3879,6 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "O8",
     "title": "End-of-book Notes",
-    "level": "Extension",
     "lessons": [
      {
       "code": "O8.1",
@@ -3901,7 +3892,8 @@ window.MATH_LEARN_SHELF = [
       "code": "O8.3",
       "title": "References and Credits"
      }
-    ]
+    ],
+    "kind": "reference"
    }
   ]
  }
