@@ -58,7 +58,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid", "rolling-without-slipping", "tethered-animal"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 137 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 139 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -77,13 +77,13 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["log-rules", "change-of-base", "log-swap-identity", "exponent-laws", "floor-basics", "ramanujan-nested-radical", "absolute-value-rules", "absolute-value-identities", "take-logs-linearize", "log-system", "name-the-floor", "group-equal-floors", "floor-sum-range", "floor-equation", "transforming-equations"] },
       { title: "Trigonometry",
         note: "Identities, and the triangle-specific relations that live between algebra and geometry.",
-        ids: ["pythagorean-identities", "common-angle-values", "reduction-identities", "angle-addition", "harmonic-addition", "double-angle", "half-angle", "special-trig-values", "even-power-sin-cos-sums", "trig-telescoping-product", "inverse-trig-identities"] },
+        ids: ["pythagorean-identities", "common-angle-values", "reduction-identities", "angle-addition", "harmonic-addition", "double-angle", "half-angle", "special-trig-values", "even-power-sin-cos-sums", "trig-telescoping-product", "inverse-trig-identities", "sum-difference-angle-product"] },
       { title: "Complex Numbers & Roots of Unity",
         note: "Algebra that becomes geometry, and the filter that extracts every nth term of a sum.",
         ids: ["complex-basics", "eulers-formula", "de-moivre", "roots-of-unity", "polar-form", "conjugate-both-sides", "complex-modulus-argument"] },
       { title: "Rates, Work & Mixtures",
         note: "Word-problem machinery, plus estimation when an exact answer is not required.",
-        ids: ["work-rates", "average-speed", "relative-motion", "weighted-average", "proportion-properties", "sqrt-approximation", "abs-value-graphing", "abs-value-relations", "time-per-leg", "averages-to-totals", "setting-up-proportions", "mean-median-mode", "percent-change", "several-rates", "age-problems", "estimating-answers", "round-up-whole-items"] },
+        ids: ["work-rates", "average-speed", "relative-motion", "weighted-average", "proportion-properties", "sqrt-approximation", "abs-value-graphing", "abs-value-relations", "time-per-leg", "averages-to-totals", "setting-up-proportions", "mean-median-mode", "percent-change", "several-rates", "age-problems", "estimating-answers", "round-up-whole-items", "rounding-ranges"] },
       { title: "Substitutions That Simplify",
         note: "Changing variables so the problem becomes one you have already solved.",
         ids: ["log-substitution", "functional-substitution", "cauchy-functional-equations", "substitute-repeated-block"] },
@@ -98,7 +98,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["infinite-nest", "name-the-whole-expression", "palindromic-polynomials", "periodic-sequences", "piecewise-graph-counting", "lagrange-interpolation-formula", "polynomial-crt", "repeated-block-equation", "averages-before-after", "defined-operation", "reading-graphs", "scoring-rules", "break-even-plans"] }
     ] },
   { id: "route-amc-number", name: "AMC 10/12 Number Theory", kind: "route", tier: "AMC", subject: "Number Theory",
-    blurb: "Everything the AMC 10 and 12 ask of number theory, in the order you would reach for it. 64 cards across 9 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of number theory, in the order you would reach for it. 65 cards across 9 sections.",
     sections: [
       { title: "Divisibility & GCD",
         note: "The foundation. Most number theory problems are a gcd statement wearing a disguise.",
@@ -117,7 +117,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["legendres-formula", "primes-6k", "prime-divides-binomial", "trailing-zeros", "consecutive-product-factorial", "factor-out-factorial", "only-even-prime"] },
       { title: "Diophantine Equations",
         note: "Finding integer solutions, and proving there are no others.",
-        ids: ["chicken-mcnugget", "pythagorean-triples", "difference-of-squares-rep", "squeeze-between-squares", "sum-of-two-squares", "bounding-diophantine", "factor-pair-counting", "coins-and-prices"] },
+        ids: ["chicken-mcnugget", "pythagorean-triples", "difference-of-squares-rep", "squeeze-between-squares", "sum-of-two-squares", "bounding-diophantine", "factor-pair-counting", "coins-and-prices", "bounded-diophantine-count"] },
       { title: "Bases, Digits & Decimals",
         note: "When the problem is about how a number is written rather than what it is.",
         ids: ["base-conversion", "repeating-decimals", "digit-sum-carries", "terminating-decimals", "digit-count", "numeral-as-polynomial", "unknown-base", "base10-curiosities"] },

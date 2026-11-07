@@ -62,5 +62,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Owner requests: binary quadratic forms, higher power sums, Zack's Lemma", date: "2026-10-30",
     ids: ["binary-quadratic-forms", "higher-power-sums", "zacks-lemma"] },
   { label: "Step I candidates (P45 to P50)", date: "2026-10-30",
-    ids: ["factor-out-factorial", "only-even-prime", "alternating-sum-grouping", "placing-digits-extremes", "scoring-rules", "break-even-plans"] }
+    ids: ["factor-out-factorial", "only-even-prime", "alternating-sum-grouping", "placing-digits-extremes", "scoring-rules", "break-even-plans"] },
+  { label: "Cards from the tagging pass, 2026 AMC 10A and 12A (P54, P55, P57)", date: "2026-11-07",
+    ids: ["rounding-ranges", "sum-difference-angle-product", "bounded-diophantine-count"] }
 ];

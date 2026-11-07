@@ -694,7 +694,7 @@ window.MATH_SECTIONS.push({
         { title: "Polynomials & Their Roots", blurb: "Working with the roots of a polynomial without finding them.", ids: ["symmetric-polynomial-strategies", "polynomial-division", "comparing-coefficients", "lagrange-interpolation", "quadratic-root-location", "root-transformations", "roots-of-unity-filter"] },
         { title: "Sums & Sequences", blurb: "Evaluating sums by collapsing, reordering, or differencing their terms.", ids: ["telescoping", "alternating-sum-grouping", "fx-pairing", "finite-differences", "double-summation", "largest-term-ratio"] },
         { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sign-chart", "sos-method", "smoothing-method", "tangent-line-trick", "derivative-extremum", "median-minimizes-abs", "slope-to-a-point", "placing-digits-extremes"] },
-        { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["transforming-equations", "add-all-equations", "linear-elimination", "setting-up-proportions", "time-per-leg", "round-up-whole-items", "assume-all-one-kind", "averages-to-totals"] },
+        { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["transforming-equations", "add-all-equations", "linear-elimination", "setting-up-proportions", "rounding-ranges", "time-per-leg", "round-up-whole-items", "assume-all-one-kind", "averages-to-totals"] },
         { title: "Graphs, Estimates & Rates", blurb: "Drawing the picture, or estimating, when an exact computation is the hard way.", ids: ["abs-value-graphing", "abs-value-relations", "piecewise-graph-counting", "estimating-answers", "sqrt-approximation"] },
         { title: "Working with Functions", blurb: "Reading a function's symmetries and periods off the equations that describe it, and proving it one-to-one or onto.", ids: ["function-symmetry-equation", "injectivity-surjectivity"] },
         { title: "Matrices & Determinants", blurb: "Evaluating a determinant without expanding every term, and raising a matrix to a high power.", ids: ["matrix-power-diagonalizing", "cofactor-expansion"] }
@@ -953,6 +953,21 @@ window.MATH_SECTIONS.push({
           description: String.raw`Naming a self-similar expression turns an infinite expression into an equation. Cutting off the first layer of an infinite nest leaves the same nest, so its value satisfies an equation built from a single layer, usually a quadratic, once the expression is known to converge.`,
           keywords: ["infinite nested radical", "continued fraction", "power tower", "self-similar", "call it x", "method"],
           importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "rounding-ranges",
+          name: "Range of a Rounded Value",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A number in the problem has been rounded, such as a distance on a sign, a percentage to the nearest whole number, or the nearest integer to a root, and the question asks what the true value allows or how many values share a rounded result.`,
+          move: String.raw`Replace each rounded number $n$ by the interval $n - \tfrac12 \le x \lt n + \tfrac12$ of values that round to it, then push the quantity asked for to the ends of those intervals.`,
+          uses: ["floor-basics"],
+          latex: String.raw`x \text{ rounds to } n \iff n - \tfrac12 \le x \lt n + \tfrac12`,
+          description: String.raw`The range of a rounded value is the set of true values that round to a given number: a value shown as $n$ after rounding to the nearest integer lies in $n - \tfrac12 \le x \lt n + \tfrac12$. Reach for it when a problem states rounded data and asks what is possible, or counts the inputs that round to each value. A quantity built from rounded inputs, such as a speed from a rounded distance and a rounded time, takes its extremes at the ends of those intervals, each end chosen in the direction that pushes the quantity. Rounding to a tenth or to the nearest $10$ uses the same interval, scaled by the unit.`,
+          keywords: ["rounded", "rounding", "nearest integer", "nearest whole number", "rounded to the nearest", "true value range", "possible values after rounding", "method"],
+          importance: "low",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
         },
@@ -3132,7 +3147,7 @@ window.MATH_SECTIONS.push({
       groups: [
         { title: "Digit Puzzles", blurb: "Problems about the digits of a number rather than its size.", ids: ["cryptarithms", "palindromes", "digit-manipulation", "unknown-base"] },
         { title: "Divisibility & Remainders", blurb: "Divisibility conditions with an unknown on one side, where reducing by the right quantity leaves a short list of cases.", ids: ["poly-divisible-linear"] },
-        { title: "Whole-Number Totals", blurb: "A total made from items of fixed values, coins, stamps, or prices, where every count must be a whole number.", ids: ["coins-and-prices"] },
+        { title: "Whole-Number Totals", blurb: "Unknowns that must be whole numbers in a range: totals made from coins, stamps, or prices, and equations whose integer solutions are counted within bounds.", ids: ["bounded-diophantine-count", "coins-and-prices"] },
         { title: "Perfect-Square Conditions", blurb: "An expression in an integer that must come out a perfect square, where completing the square leaves a difference of two squares with only a few factorizations.", ids: ["quadratic-perfect-square"] }
       ],
       formulas: [
@@ -3180,6 +3195,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12"]
+        },
+        {
+          id: "bounded-diophantine-count",
+          name: "Counting Integer Solutions Within Bounds",
+          type: "pattern",
+          subject: "number-theory",
+          recognize: [String.raw`the question asks how many integer tuples satisfy one or more equations, with each unknown positive, a digit, or between two given numbers`, String.raw`the equations alone have infinitely many integer solutions, so only the bounds make the count finite`, String.raw`after eliminating, some unknowns are fixed and the rest are written through one or two free parameters, or do not appear at all`],
+          suggests: ["linear-elimination", "casework-method", "bounding-diophantine"],
+          tryFirst: ["linear-elimination", "casework-method", "stars-and-bars"],
+          latex: String.raw`x = x_0 + pt,\ \ y = y_0 - qt, \quad \text{bounds on } x, y \Rightarrow L \le t \le U, \quad \#\text{solutions} = U - L + 1`,
+          description: String.raw`This is the problem where the integer solutions of an equation, or of a system, are counted while every unknown must stay in a range. Solving the equations writes the unknowns through a few free parameters; each bound on an unknown becomes a bound on a parameter, and the count is the number of parameter values that meet all the bounds at once. An unknown that the equations leave unconstrained multiplies the count by the size of its whole range. When two parameters remain, count one value of the first at a time.`,
+          keywords: ["number of integer solutions", "ordered triples of positive integers", "solutions in a range", "integer coefficients between", "digits satisfying an equation", "count lattice solutions", "bounded variables", "pattern"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
         },
         {
           id: "coins-and-prices",

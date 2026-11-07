@@ -3250,10 +3250,11 @@
         <h4>Practice problems</h4>
         <p class="practice-placeholder">No practice problems for this pattern yet.</p>
       </div>` : "";
-    // Within each contest, easiest first (owner, 2026-10-31): by place in the paper, then newest.
+    // Within each contest, newest year first, then earlier problems in the paper first (owner,
+    // 2026-11-07; this replaces the 2026-10-31 order by place in the paper).
     const groups = {};
     probs.forEach(p => (groups[p.fam] = groups[p.fam] || []).push(p));
-    Object.values(groups).forEach(g => g.sort((a, b) => paperPos(a) - paperPos(b) || b.year - a.year));
+    Object.values(groups).forEach(g => g.sort((a, b) => b.year - a.year || a.num - b.num || a.ref.localeCompare(b.ref)));
     const fams = Object.keys(groups).sort((a, b) => {
       const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
       return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
@@ -5695,7 +5696,7 @@
   // Problem Solving Strategies), and two pages close the chapter: Review Problems (mostly
   // comprehension) and Challenge Problems (contest problems, or our own). A chapter whose first
   // lesson is not an Introduction keeps the old overview page and chapter review.
-  const learnHasIntro = c => !!(c && c.lessons[0] && c.lessons[0].title === "Introduction" && learnLessonData(c, c.lessons[0]));
+  const learnHasIntro = c => !!(c && c.lessons[0] && (c.lessons[0].title === "Introduction" || c.kind === "reference" && c.lessons[0].title === "Overview") && learnLessonData(c, c.lessons[0]));
   const LEARN_END = { review: "Review Problems", challenge: "Challenge Problems" };
   const learnEndSet = (c, kind) => {
     const d = learnChapterData(c), x = d && (kind === "review" ? d.reviewProblems : d.challenge);
@@ -6905,6 +6906,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <div class="card-meta"><span class="badge badge-lesson">${x.l ? "LESSON" : "CHAPTER"}</span><span class="level-range">${escapeAttr(x.b.title)} &middot; ${x.l ? escapeAttr(x.l.code) : "Chapter " + escapeAttr(x.c.code.slice(1))}</span></div>
             <div class="rs-box">${inner}</div>
             <p class="card-desc">${escapeAttr(lessonLead(x))}</p>
+            <div class="more-hint">Open &rsaquo;</div>
           </a>`;
       }
       if (it.contest) {
@@ -6915,6 +6917,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <div class="card-head"><h4 class="card-name">${escapeAttr(/^\d{4}\b/.test(c.cname) ? c.cname : c.year + " " + c.cname)}</h4></div>
             <div class="card-meta"><span class="badge badge-contest">CONTEST</span><span class="level-range">${escapeAttr(c.fam)} &middot; ${c.problems.length} problem${c.problems.length === 1 ? "" : "s"}</span></div>
             ${rows.length ? `<div class="rs-box">${rows.map(([sid, k]) => `<div class="rs-line"><span class="rs-v">${escapeAttr(SUBJECT_LABELS[sid] || sid)}</span><span class="rs-n">${k}</span></div>`).join("")}</div>` : ""}
+            <div class="more-hint">Open &rsaquo;</div>
           </a>`;
       }
       if (it.problem) {
@@ -6927,6 +6930,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
               return ids.length ? `<div class="rs-line"><span class="rs-k">${label}</span><span class="rs-v">${ids.map(id => BY_ID[id].formula.name).join(", ")}</span></div>` : "";
             }).join("")}</div>
             ${p.strategy ? `<p class="card-desc">${p.strategy}</p>` : ""}
+            <div class="more-hint">Open &rsaquo;</div>
           </a>`;
       }
       const l = it.list;
@@ -6937,6 +6941,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
             : `<div class="rs-box">${liveIds(l).slice(0, 4).map(id => `<div class="rs-line"><span class="rs-v">${BY_ID[id].formula.name}</span></div>`).join("")}</div>`}
           ${l.blurb ? (l.builtinSet ? `<p class="card-desc">${escapeAttr(l.blurb)}</p>`
             : `<div class="card-desc" data-description-formatted>${listDescriptionHtml(l.blurb)}</div>`) : ""}
+          <div class="more-hint">Open &rsaquo;</div>
         </a>`;
     };
     const parts = [];

@@ -51,11 +51,14 @@ for (const book of context.window.MATH_LEARN_SHELF) {
   assert.equal(notes[0].kind, 'reference', book.id + ': notes are reference sections');
   assert.equal(notes[0].level, undefined, book.id + ': notes have no difficulty badge');
   assert(notes[0].lessons.every(l => !l.level), book.id + ': reference sections have no difficulty badges');
-  assert.deepEqual(Array.from(notes[0].lessons, l => l.title), ['Index', 'Glossary', 'References and Credits']);
+  assert.deepEqual(Array.from(notes[0].lessons, l => l.title), ['Overview', 'Index', 'Glossary', 'References and Credits']);
+  assert.deepEqual(Array.from(notes[0].lessons, l => l.code), [1,2,3,4].map(n => notes[0].code + '.' + n));
   const entries = context.window.MATH_BOOK_INDEX[book.id];
   assert(entries.length > 0, book.id + ': nonempty index');
-  const index = context.learnLessonData(notes[0], notes[0].lessons[0]).body;
-  const glossary = context.learnLessonData(notes[0], notes[0].lessons[1]).body;
+  const overview = context.learnLessonData(notes[0], notes[0].lessons[0]).body;
+  for (const n of [2,3,4]) assert(overview.includes(`#/learn/${book.id}/${notes[0].code.toLowerCase()}/${n}`), 'overview links to numbered reference sections');
+  const index = context.learnLessonData(notes[0], notes[0].lessons.find(l => l.title === 'Index')).body;
+  const glossary = context.learnLessonData(notes[0], notes[0].lessons.find(l => l.title === 'Glossary')).body;
   for (const entry of entries) {
     assert(entry.lessons.length, entry.term + ': has a location');
     for (const code of entry.lessons) {

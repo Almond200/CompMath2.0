@@ -795,6 +795,7 @@ Step two, reindexing. An even $e \lt \frac p2$ is already some $u \le \frac{p-1}
 ## Key forms
 - $\#\{x \bmod mn : f(x) \equiv 0\} = \#\{x \bmod m\} \cdot \#\{x \bmod n\}$, for $\gcd(m, n) = 1$
 - $x^2 \equiv 1 \pmod n$, $n$ odd with $k$ distinct primes: $2^k$ solutions
+- $x^2 \equiv 1 \pmod n$, $n = 2^e m$ with $m$ odd and $k$ distinct primes in $m$: $2^k$, $2^{k+1}$, or $2^{k+2}$ solutions for $e \le 1$, $e = 2$, or $e \ge 3$ — the power of $2$ contributes $1$, $2$, or $4$
 - $x^2 \equiv x \pmod n$: $2^k$ solutions, where $k$ is the number of distinct primes of $n$
 
 ## Conditions
@@ -805,7 +806,7 @@ For coprime $m$ and $n$, the map $x \mapsto (x \bmod m, x \bmod n)$ is a bijecti
 
 So each prime power is counted alone. Modulo an odd $p^e$, $x^2 \equiv 1$ means $p^e \mid (x - 1)(x + 1)$; the two factors differ by $2$, so $p$ divides at most one of them, and $x \equiv \pm1$: two solutions. Modulo $p^e$, $x^2 \equiv x$ means $p^e \mid x(x - 1)$ with coprime factors, so $x \equiv 0$ or $1$: two solutions, which for $10^k$ makes $4$.
 
-Modulo $2^k$ with $k \ge 3$, $x$ is odd, and one of $x - 1$, $x + 1$ is $2 \bmod 4$, so the other carries $2^{k-1}$. That gives $x \equiv \pm1 \pmod{2^{k-1}}$, the four residues $\pm1$ and $2^{k-1} \pm 1$ modulo $2^k$.
+Modulo $2^k$ with $k \ge 3$, $x$ is odd, and one of $x - 1$, $x + 1$ is $2 \bmod 4$, so the other carries $2^{k-1}$. That gives $x \equiv \pm1 \pmod{2^{k-1}}$, the four residues $\pm1$ and $2^{k-1} \pm 1$ modulo $2^k$. Modulo $2$ the only solution is $1$, and modulo $4$ both odd residues $1$ and $3$ work, so the power of $2$ in $n$ contributes $1$, $2$, or $4$ solutions, and multiplying by the $2$ from each odd prime power gives the count for any $n$.
 
 ## Useful observations
 - Each odd prime contributes its own pair $\pm1$, so modulo a product of $k$ distinct odd primes $x^2 \equiv 1$ has $2^k$ solutions: modulo $105$ there are $2 \cdot 2 \cdot 2 = 8$.
@@ -3200,5 +3201,37 @@ Primes with a given odd sum or difference, expressions in primes that must be pr
 
 ## Contest profile
 An AMC 8 and AJHSME favourite, often the whole problem; on the AMC 10 and 12 it is the first step that fixes one prime as $2$.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"bounded-diophantine-count": String.raw`
+## Distinguishing clues
+- The question asks how many ordered pairs or triples of integers satisfy one or more equations, and each unknown is positive, a digit, or between two given numbers.
+- The equations alone have infinitely many integer solutions, so the bounds, not the equations, decide the answer.
+- The equation is in disguise: a polynomial whose integer coefficients lie in a range and which meets a value condition, a numeral whose digits are capped by its base, or coins whose counts are limited.
+- After eliminating, an unknown is free or appears in no equation, so its whole range counts.
+- Not this pattern: an equation with only finitely many solutions even without bounds, such as $xy = x + y + 3$ or a sum of unit fractions, which is [[bounding-diophantine|bounding and a finite check]].
+
+## Methods and Formulas to Try
+The solutions of a linear equation in integers come in a family with one free parameter. For $ax + by = c$ with $g = \gcd(a, b)$ dividing $c$, they are $x = x_0 + \frac bg t$ and $y = y_0 - \frac ag t$ for integers $t$. Each bound on $x$ or $y$ cuts $t$ to an interval, and the number of integers $t$ with $L \le t \le U$ is $\lfloor U \rfloor - \lceil L \rceil + 1$ when that is positive.
+
+### Methods to try
+- [[linear-elimination]]: combine the equations until each unknown is fixed or written through the free ones, as when two equations in three unknowns fix one and leave a sum.
+- [[casework-method]]: with two parameters left, fix one, count the values of the other, and add over the first.
+- [[bounding-diophantine]]: when one unknown is trapped by a size argument first, as a digit times a large weight is, list its few values and count the rest within their ranges.
+
+### Formulas to try
+- [[stars-and-bars]]: the number of positive or nonnegative solutions of $x_1 + \cdots + x_k = n$.
+- [[stars-bars-upper-bound]]: the same count with an upper bound on each unknown, by inclusion-exclusion.
+- [[floor-multiples]]: the number of multiples of $d$ in a range, which is the count when the parameter runs in steps.
+
+## Common traps
+- Missing a bound that is implied rather than stated: positive integers start at $1$, and a leading digit is not $0$.
+- Counting the integers from $L$ to $U$ as $U - L$ instead of $U - L + 1$.
+- Forgetting an unknown that no equation mentions, which multiplies the count by its whole range.
+- Writing the general solution with steps $b$ and $a$ instead of $\frac bg$ and $\frac ag$, which skips solutions when $\gcd(a, b) \gt 1$.
+
+## Contest profile
+A common AMC 10 and 12 counting step after a short elimination or a value condition on a polynomial, and an AIME step inside digit, base, and coin problems.
 `
 });

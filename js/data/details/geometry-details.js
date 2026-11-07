@@ -505,6 +505,7 @@ A MATHCOUNTS staple, usually with one more step of arithmetic than a direct subs
 "triangle-area-standard": String.raw`
 ## Key forms
 - $A = \frac12 bh$ — half the base times the height, where the height is the perpendicular distance from the opposite vertex to the line of the base
+- $A = \frac12 ab$ for a right triangle with legs $a$ and $b$ — either leg is the height to the other
 - $h = \frac{2A}{b}$ — each side has its own height, and the three heights are inversely proportional to the sides they meet
 - triangles with equal bases and equal heights have equal areas, however different they look
 - two triangles with the same apex and bases on one line have areas in the ratio of the bases
@@ -518,6 +519,8 @@ A triangle is half of a parallelogram with the same base and height, and a paral
 Take a second copy of the triangle, turn it half a turn, and fit it against the first along one of the other two sides. The two copies form a parallelogram with base $b$ and height $h$. Cutting a right triangle off one end of the parallelogram and moving it to the other end gives a $b \times h$ rectangle, so the parallelogram's area is $bh$, and each triangle has half of it.
 
 {{figure:doubling}}
+
+In a right triangle the two legs meet at a right angle, so each is perpendicular to the line of the other. Take one leg $a$ as the base: the other leg $b$ runs from the third vertex straight to that line, so it is the height, and the area is $\frac12 ab$.
 
 Only the base and the perpendicular height enter the formula. Sliding the top vertex along a line parallel to the base changes the triangle's shape but not its height, so it does not change the area. This is the shearing argument.
 

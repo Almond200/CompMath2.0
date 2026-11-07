@@ -1847,7 +1847,10 @@
     "alternating-sum-grouping": "method",
     "placing-digits-extremes": "method",
     "scoring-rules": "pattern",
-    "break-even-plans": "pattern"
+    "break-even-plans": "pattern",
+    "rounding-ranges": "method",
+    "sum-difference-angle-product": "formula",
+    "bounded-diophantine-count": "pattern"
   },
   "placeholders": {},
   "ledger": {
@@ -9016,6 +9019,24 @@
       ]
     ],
     "break-even-plans": [
+      [
+        "(new card)",
+        "written directly in the pattern template"
+      ]
+    ],
+    "rounding-ranges": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "sum-difference-angle-product": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "bounded-diophantine-count": [
       [
         "(new card)",
         "written directly in the pattern template"

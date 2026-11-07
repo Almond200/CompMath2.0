@@ -8,15 +8,17 @@ Teach a connected mathematical story. Define ideas before using them, explain wh
 
 ## Completed in this branch
 
-- All 13 books have an End-of-book Notes chapter, with Index, Glossary, and References and Credits sections. These are reference sections without exercise sets.
+- All 13 books have an End-of-book Notes chapter, reference material with no Core, Core II or Extension level and no exercise sets, numbered Overview (.1), Index (.2), Glossary (.3), and References and Credits (.4). Teaching chapter and lesson codes are unchanged, and the notes are excluded from the teaching totals (103 teaching chapters, 593 teaching pages; 13 reference chapters, 52 sections, counted from `js/data/learn/shelf.js` on 2026-11-07).
 - Index entries link to specific lessons within their book. Entries cover the cards a lesson teaches, assumes or explicitly connects, plus basic vocabulary found in its explanation. This is a substantive-reference index, not a concordance of every word. Ordinary lesson words gain no links to the index.
 - Glossaries include basic definitions and the descriptions of the book's named results and methods, taken from the existing reference cards. Credits identify the project's writing, contest-statement sources, license, KaTeX, and further reading; no unverified textbook bibliography was invented.
 - Book search includes indexed terms and aliases at a lower weight than chapter titles, lesson titles, taught-card metadata, and prose. Existing exact-title, typo and chapter-code behavior remains tested.
+- AMC Algebra L2 (equations and word problems) and L3 (quadratics) are revised and merged to main.
+- AMC Algebra L4 (functions, graphs, absolute values and floors, L4.1–L4.7) and L5 (substitutions and symmetric expressions, L5.1–L5.4) are revised in the branch's third commit, which changed every lesson of both chapters; confirm with the next commit before treating L5 as final.
 - AMC Algebra L1.1–L1.5 are revised. The introduction develops the distinction between expressions and equations; the lessons develop modeling, exponent laws and domains, algebraic representations, and ratio/percentage reference quantities. L1.4 has a computed rectangular-area diagram; L1.5 has an eight-unit ratio diagram. Existing exercises, solutions and contest placements are preserved.
 
 ## Continue the content pass
 
-The remaining teaching chapters have not been revised in this branch. Start with AMC Algebra L2, then continue chapter by chapter through the AMC, AIME and Olympiad books. Read each chapter's lesson bodies and worked solutions together before rewriting. Check mathematical claims by computation where applicable; preserve problem placements and avoid altering the Step T data. Retain the stronger O3–O7 explanations unless a specific improvement is warranted. Review glossary definitions as their lessons change, especially when a technical term needs a more precise definition than a card's introductory description.
+The remaining teaching chapters have not been revised in this branch. Continue with AMC Algebra L6, then continue chapter by chapter through the AMC, AIME and Olympiad books. Read each chapter's lesson bodies and worked solutions together before rewriting. Check mathematical claims by computation where applicable; preserve problem placements and avoid altering the Step T data. Retain the stronger O3–O7 explanations unless a specific improvement is warranted. Review glossary definitions as their lessons change, especially when a technical term needs a more precise definition than a card's introductory description.
 
 After changing lesson references or prose, regenerate the back matter:
 
