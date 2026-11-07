@@ -6922,6 +6922,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // A textbook named in full ("AMC Algebra", "aime geometry book") is a result of its own
   // (owner, 2026-11-07): every word of the title must be in the query.
   function bookMatches(q) {
+    // "AMC 10", "AMC10", "amc 12" and "AMC 10/12" all mean the AMC books (owner, 2026-11-07).
+    q = String(q).replace(/\bamc\s*-?\s*(10|12)(\s*\/\s*(10|12))?\b/gi, "amc");
     const qt = new Set(wordsOf(q).filter(w => !LESSON_STOP.has(w) && w !== normWord("textbook")));
     if (!qt.size) return [];
     return LEARN_SHELF.filter(b => {
@@ -6969,6 +6971,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // problem 3" would otherwise pull in every problem whose text says "problem".
     let named = referencedProblems(query);
     if (named && !named.length) named = null;
+    // "AMC 10/12 number theory" names a book, not problem 12 of the AMC 10.
+    const bookHits = bookMatches(query);
+    if (bookHits.length) named = null;
     const probs = named || problemMatches(query);
     const listHits = listMatches(query);
     const refy = !!named || /\b(19|20)\d\d\b|\b(aime|amc|hmmt|putnam|mathcounts)\b/i.test(query);
@@ -6987,7 +6992,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // lesson", "circles chapter", or a lesson code such as C5.3. Otherwise the same strong
     // matches are a secondary result, after the cards.
     const lessonHits = named ? [] : lessonMatches(query);
-    const bookHits = named ? [] : bookMatches(query);
     const items = [];
     papers.forEach(c => items.push({ contest: c }));
     if (named) named.forEach(p => items.push({ problem: p }));

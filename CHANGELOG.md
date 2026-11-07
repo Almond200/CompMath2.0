@@ -2,6 +2,8 @@
 
 **2026-11-07**
 
+- Search, book results (owner): "AMC 10", "AMC10", "AMC 12" and "AMC 10/12" now count as "AMC" when matching a textbook, so "AMC10 Algebra" finds AMC Algebra; and a query that names a book in full is no longer read as a problem reference, so "AMC 10/12 number theory" gives the AMC 10/12 Number Theory list and the AMC Number Theory book instead of every AMC 10 problem 12. Real references ("2024 AMC 10A", "amc 10 problem 12") are unchanged.
+
 - Counting Walks Step by Step gains three figures (owner), each computed from its graph with a self-check: the card's figure, a square with the diagonal $AC$ shown four times (start at $A$, then after one, two and three steps, with every vertex's count: $4$ walks back to $A$ and $5$ to each other vertex after three steps); the worked example's lily pads, drawn by kind (corners, edge pads, center), with the solution's figure showing the first round ($2$, $4$, $6$); and the exercise's figure, the square $ABCD$ with its inner $3\times3$ array and center $O$, attached to that supplementary exercise.
 
 - Search results, one layout for every kind (owner): the kind badge (LIST, PROBLEM, CONTEST, BOOK, CHAPTER, LESSON, like FORMULA and the rest) sits on the title's line and moves under it only when the title is too long, and the subtitle (a list's kind and size, a problem's contest and year, a breadcrumb) always has its own line below. Lists, contests and problems had put the badge on the subtitle's line. A card's title row reserves $60$ px for the star and add buttons instead of $70$.
