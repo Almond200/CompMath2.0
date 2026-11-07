@@ -93,7 +93,10 @@ CONVENTIONS §0 has the full model.
   back; on a phone its years are a menu between arrows, with a toggle between the year's papers.
 - **Search** results are one list in order of relevance (formulas, methods, patterns, problems
   and study lists, each labelled), shown full width with no space highlighted. So are tag pages
-  and special pages.
+  and special pages. A query naming a paper without a problem number ("2025 AIME I") leads with
+  a CONTEST result that opens that paper (`#/problems/aime/2025/aime-i`); lessons and chapters
+  appear for strong title matches, after the cards, or first when the query says "lesson" or
+  "chapter" (or is a lesson code such as C5.3).
 
 ## Credits
 
@@ -103,7 +106,9 @@ by email (Oct 2026). The statements and their figures are read from [LIVE by Po-
 which publishes every AMC and AIME problem with the MAA's permission; Settings → Credits and attribution holds the shared credit and source links. This app is non-commercial. `tools/fetch-live-statements.py` fetches them (statements and
 answer choices only, never solutions or hints) into `js/data/problems/statements/<year>.js` and `js/data/problems/figures/`.
 Some manually imported statements retain their recorded PDF or AoPS provenance; see
-`tools/manual_statements.py`. AoPS remains a linked source for additional solutions.
+`tools/manual_statements.py`. The 2026 AMC 10A and 12A, added before LIVE published them, come
+from the [Random Math wiki](https://wiki.randommath.com/), with their answer keys checked against
+[Think Academy](https://www.thethinkacademy.com/)'s published keys (CONVENTIONS §11). AoPS remains a linked source for additional solutions.
 
 Addresses are real, so Back, Forward and bookmarks work; a revisited history entry returns to
 where it was left, a fresh click opens at the top. The first redesign's addresses
@@ -213,7 +218,7 @@ by a point or two; compare warm runs to warm runs.
   node and traces the shortest chain of authored links between any two, a **Quiz** that
   shows a statement and figure and asks you to name it, and **Flashcards**, a spaced-repetition
   review (a small SM-2: Again, Hard, Good, Easy) over any section or list, name to statement,
-  statement to name, or both, scheduled separately per direction and kept in this browser.
+  statement to name, or both, scheduled separately per direction and kept in this browser, and the **Topic tree**, the draft classification of contest mathematics (`TOPIC-TREE.md`, read live), as an outline or a drawn tree per subject.
 - Light and dark themes; KaTeX throughout. Card faces carry the star and add-to-list buttons;
   Copy LaTeX and Copy Asymptote are on each card's own page.
 
