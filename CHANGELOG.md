@@ -2,6 +2,8 @@
 
 **2026-11-07**
 
+- New `tools/tree-audit.js` (after the outside review): for one paper or all filed problems it lists filings on a broad parent node, nodes with one or two filed problems, and card homes that no filed node covers, as prompts to read. It is step 5 of the T3 procedure in PLAN. It cannot see a central idea with no cited card, so reading stays the main check. PLAN also records that Codex is paused.
+
 - Topic tree, one rename (owner, after the outside review): `geo.comb.extreme.path` is now "Reflected paths and unfolding (shortest paths, billiards, paths on a surface)", and its parent "Reflected paths, unfolding and extremes", since the node also holds billiard paths that ask where a path ends, not how short it is (2025 AMC 10B #25). The ids are unchanged, so no filing moves. The congruence-systems point waits for T4 (owner).
 
 - Two filings fixed after an outside review of the topic tree (owner): 2025 AMC 10B #21 and its twin 12B #17 also file under `cp.tech.sym.necklace` (rotations and reflections), since the problem counts colorings up to symmetry; 2026 AIME II #13 moves from `nt.divisor.count.factor` (counting factorizations, which it does not do) to `nt.div.prime.factor` (it uses the prime factorization of $4040$ to build the best set).
