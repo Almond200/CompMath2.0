@@ -6,15 +6,15 @@ window.MATH_LEARN["L13"] = {
     "L13.1": {
       prereq: ["quadratic-formula"],
       cards: [],
-      body: String.raw`This chapter introduces complex numbers, which extend the real numbers by a number $i$ with $i^2 = -1$. Its tools are complex arithmetic with the conjugate and the modulus, the polar form with De Moivre's theorem, and the roots of unity.
+      body: String.raw`The equation $x^2+1=0$ has no real solution because a real square cannot be negative. Complex numbers extend the real numbers by introducing $i$ with $i^2=-1$. Every complex number has a unique form $a+bi$, where $a,b$ are real. The imaginary part is the real coefficient $b$.
 
-A complex number is $a + bi$ with real $a$ and $b$, its real and imaginary parts. It is added and multiplied like a polynomial in $i$, replacing $i^2$ by $-1$: $(2 + i)(3 - i) = 6 + i + 1 = 7 + i$. The powers of $i$ cycle with period $4$, $i, -1, -i, 1$, so $i^{2026} = i^2 = -1$.
+Addition and multiplication use the distributive law together with $i^2=-1$. For example, $(2+i)(3-i)=6-2i+3i-i^2=7+i$. The powers $1,i,-1,-i$ repeat every four steps, since $i^4=1$, so a large integer exponent can be reduced modulo four.
 
-Each complex number is a point $(a, b)$ of the plane. Its distance from $0$ is the modulus $|a + bi| = \sqrt{a^2 + b^2}$, so $|3 + 4i| = 5$, and its angle from the positive real axis is its argument. In this polar form, multiplying multiplies the moduli and adds the arguments, which makes powers easy.
+The pair $(a,b)$ locates $a+bi$ in a plane with horizontal real axis and vertical imaginary axis. Its modulus is its distance from zero, $\sqrt{a^2+b^2}$. Thus $3+4i$ has modulus five. Conjugation sends $a+bi$ to $a-bi$, reflecting its point across the real axis. Multiplying a number by its conjugate gives the real quantity $a^2+b^2$, which will make division possible.
 
-The solutions of $z^n = 1$, the $n$th roots of unity, are the vertices of a regular $n$-gon on the unit circle, and every polynomial of degree $n$ has exactly $n$ complex roots. These facts solve problems about polygons, about sums of binomial coefficients, and about polynomials.
+A nonzero point can also be specified by its distance and direction. The trigonometric coordinates from the preceding chapter give $z=r(\cos\theta+i\sin\theta)$. In this form multiplication combines lengths and angles, so powers and roots acquire a direct geometric interpretation.
 
-The lessons take these ideas in turn: complex arithmetic and the modulus (L13.2), polar form and De Moivre (L13.3), and roots of unity (L13.4). The Summary (L13.5) collects the strategies.`,
+The chapter develops arithmetic and distance first, then polar multiplication and powers. It ends with roots of unity and their use in polynomial equations and coefficient sums. These two representations of a complex number supply different information: coordinates are convenient for addition and conjugation, while length and angle are convenient for multiplication.`,
       exercises: [
         { q: String.raw`Find $i^{2026}$.`, answer: "-1",
           solution: String.raw`The powers of $i$ repeat every $4$, and $2026 = 4 \cdot 506 + 2$, so $i^{2026} = i^2 = -1$.` },
@@ -32,15 +32,29 @@ The lessons take these ideas in turn: complex arithmetic and the modulus (L13.2)
     "L13.2": {
       prereq: ["quadratic-formula", "linear-elimination"],
       cards: ["complex-basics", "conjugate-both-sides", "complex-modulus-argument"],
-      body: String.raw`Complex numbers appear in AMC problems as numbers to compute with and as points to locate. What is the real part of $\tfrac{1 + 2i}{1 - i}$? Which $z$ satisfies $z + 2\bar z = 3 - i$? Where are the numbers with $|z| = 5$ and real part $3$? The rules are those of algebra, plus the conjugate and the modulus.
+      body: String.raw`Write a complex number as $z=a+bi$, with real $a,b$. Equality of two complex numbers means equality of their real parts and of their imaginary parts. Thus a complex equation can encode two real equations, and its real and imaginary parts should be compared separately.
 
-[[complex-basics|Complex arithmetic]]: add and multiply $a + bi$ as polynomials in $i$ with $i^2 = -1$. Two complex numbers are equal exactly when their real parts are equal and their imaginary parts are equal, which turns one complex equation into two real ones. The conjugate of $z = a + bi$ is $\bar z = a - bi$, and $z\bar z = a^2 + b^2$ is real, so division is done by multiplying the top and bottom by the conjugate of the bottom: $\tfrac{1 + 2i}{1 - i} = \tfrac{(1 + 2i)(1 + i)}{2} = \tfrac{-1 + 3i}{2}$, with real part $-\tfrac12$.
+The basic [[complex-basics|arithmetic rules]] follow by distributing products and replacing $i^2$ by $-1$. In particular,
 
-[[conjugate-both-sides|Taking conjugates]] gives a second equation from one. For $z + 2\bar z = 3 - i$, write $z = a + bi$: the left side is $3a - bi$, so $a = 1$ and $b = 1$, and $|z| = \sqrt2$. Equivalently, the conjugate equation $\bar z + 2z = 3 + i$ and the original form a linear system in $z$ and $\bar z$. Conjugation respects sums and products, $\overline{zw} = \bar z\bar w$.
+$$(a+bi)(c+di)=(ac-bd)+(ad+bc)i.$$
 
-[[complex-modulus-argument|The modulus and the argument]] are the length and the angle of the point $z$. The modulus is multiplicative, $|zw| = |z||w|$, and $|z|^2 = z\bar z$. The set $|z| = 5$ is a circle of radius $5$, and $|z - w|$ is the distance between the points $z$ and $w$; with $|z| = 5$ and $z + \bar z = 6$, the real part is $3$ and the imaginary part is $\pm 4$.
+The conjugate $\bar z=a-bi$ satisfies $z\bar z=a^2+b^2$. For $z\ne0$ this is positive, so $1/z=\bar z/|z|^2$. Dividing by a complex number therefore amounts to multiplying numerator and denominator by its conjugate. For example,
 
-Write $z = a + bi$ and compare parts, divide by multiplying by the conjugate, and read $|z - w|$ as a distance. The next lesson uses the polar form.`,
+$$\frac{1+2i}{1-i}=\frac{(1+2i)(1+i)}{2}=\frac{-1+3i}{2}.$$
+
+The real part is $-1/2$, and the imaginary part is $3/2$. The denominator check is essential: zero has no reciprocal.
+
+Conjugation preserves sums and products. This follows directly from the coordinate formulas; changing the sign of every imaginary coordinate gives $\overline{z+w}=\bar z+\bar w$ and $\overline{zw}=\bar z\bar w$. Consequently [[conjugate-both-sides|taking conjugates of an equation]] supplies another valid relation.
+
+For $z+2\bar z=3-i$, conjugation gives $\bar z+2z=3+i$. Twice the second equation minus the first yields $3z=3+3i$, hence $z=1+i$. Alternatively, substituting $z=a+bi$ into the original equation gives $3a-bi=3-i$, so $a=b=1$. Both routes use the same pair of real constraints, and substituting $1+i$ checks the result.
+
+The [[complex-modulus-argument|modulus]] $|z|=\sqrt{a^2+b^2}$ measures distance from the origin. Since $|zw|^2=zw\,\overline{zw}=(z\bar z)(w\bar w)$, nonnegative square roots give $|zw|=|z||w|$. Also, $|z-w|$ is the distance between the two corresponding points, so an equation $|z-w|=R$ describes a circle centered at $w$ when $R\gt0$.
+
+The conditions $|z|=5$ and $z+\bar z=6$ illustrate how algebra locates points. The second condition is $2a=6$, so $a=3$. The first is $a^2+b^2=25$, giving $b=\pm4$ and $z=3\pm4i$.
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 365" role="img" aria-labelledby="l132-locus-title l132-locus-desc" style="width:100%;max-width:520px;height:auto"><title id="l132-locus-title">A modulus and a real-part condition locate two complex numbers</title><desc id="l132-locus-desc">The circle of radius five centered at zero meets the vertical line with real part three at three plus four i and three minus four i. The radius to the upper intersection has length five.</desc><g fill="none" stroke="currentColor"><circle cx="230" cy="180" r="130" opacity="0.6"/><path d="M75 180H400M230 35V330" opacity="0.4"/><path d="M308 45V318" stroke-width="2"/><path d="M230 180L308 76" stroke-width="1.5"/></g><g fill="currentColor"><circle cx="308" cy="76" r="4"/><circle cx="308" cy="284" r="4"/><g font-size="16"><text x="250" y="23" text-anchor="middle">|z| = 5 and Re(z) = 3</text><text x="322" y="68">3 + 4i</text><text x="322" y="306">3 − 4i</text><text x="259" y="120">5</text><text x="419" y="186">Re</text><text x="211" y="35">Im</text><text x="214" y="203">0</text><text x="308" y="203" text-anchor="middle">3</text><text x="360" y="203" text-anchor="middle">5</text><text x="214" y="55">5</text></g></g></svg>
+
+The vertical line in the diagram records the real-part condition, and its two intersections with the circle account for the two signs. For a nonzero complex number, an argument is a directed angle from the positive real axis to its point. Arguments differ by integer multiples of $2\pi$; zero has no direction and hence no argument. Determining the quadrant is part of specifying an argument, even when a tangent ratio is known.`,
       related: [
         { card: "conjugate-root-theorems", note: String.raw`non-real roots of real polynomials come in conjugate pairs (L10.3).` },
         { card: "distance-midpoint", note: String.raw`$|z - w|$ is the distance between two points of the plane.` }
@@ -64,13 +78,27 @@ Write $z = a + bi$ and compare parts, divide by multiplying by the conjugate, an
     "L13.3": {
       prereq: ["complex-basics", "special-trig-values"],
       cards: ["eulers-formula", "polar-form", "de-moivre"],
-      body: String.raw`Computing $(1 + i)^{10}$ or $(\sqrt3 + i)^6$ by expanding is long, but in polar form it is one line. Polar form also turns questions about equilateral triangles, rotations and spirals of points into questions about angles.
+      body: String.raw`For a nonzero complex number $z=a+bi$, let $r=|z|\gt0$ and choose an argument $\theta$. The unit-circle coordinates give $a=r\cos\theta$ and $b=r\sin\theta$, so
 
-[[polar-form|The polar form]] writes $z = r(\cos\theta + i\sin\theta)$, where $r = |z|$ and $\theta$ is the argument. [[eulers-formula|Euler's formula]] $e^{i\theta} = \cos\theta + i\sin\theta$ shortens this to $z = re^{i\theta}$. Multiplying two numbers multiplies their moduli and adds their arguments, since $e^{i\alpha}e^{i\beta} = e^{i(\alpha + \beta)}$: so $|(1 + i)(\sqrt3 + i)| = \sqrt2 \cdot 2 = 2\sqrt2$, with argument $45^\circ + 30^\circ = 75^\circ$. Multiplying by $e^{i\theta}$ rotates a point about $0$ by $\theta$.
+$$z=r(\cos\theta+i\sin\theta).$$
 
-[[de-moivre|De Moivre's theorem]] follows: $\left(re^{i\theta}\right)^n = r^ne^{in\theta}$. So $(1 + i)^{10} = \left(\sqrt2e^{i\pi/4}\right)^{10} = 32e^{i5\pi/2} = 32i$, and $(\sqrt3 + i)^6 = \left(2e^{i\pi/6}\right)^6 = 64e^{i\pi} = -64$. Expanding $(\cos\theta + i\sin\theta)^n$ with the binomial theorem and comparing parts gives the multiple angle formulas, such as $\cos 3\theta = 4\cos^3\theta - 3\cos\theta$.
+This is [[polar-form|polar form]]. Adding $2\pi$ to the angle changes neither coordinate, so the representation permits all arguments differing by full turns. For example, $-1+i$ has argument $3\pi/4$; the value $\arctan(-1)=-\pi/4$ would point into the wrong quadrant.
 
-Convert to polar form before raising to a power, read products as rotations and scalings, and take moduli of both sides of an equation to fix the size of $z$. The next lesson studies the roots of unity.`,
+Multiply two unit-modulus factors and collect parts. The real part is $\cos\alpha\cos\beta-\sin\alpha\sin\beta$, and the imaginary part is $\sin\alpha\cos\beta+\cos\alpha\sin\beta$. The addition formulas identify these as $\cos(\alpha+\beta)$ and $\sin(\alpha+\beta)$. Therefore multiplication multiplies the moduli and adds the arguments.
+
+[[eulers-formula|Euler's formula]] writes $\cos\theta+i\sin\theta=e^{i\theta}$ for angles in radians, giving the compact notation $z=re^{i\theta}$. The multiplication rule just proved becomes $re^{i\alpha}\,se^{i\beta}=rs\,e^{i(\alpha+\beta)}$. Multiplication by a unit-modulus number rotates about zero; a positive modulus also scales every distance from zero by that modulus.
+
+Take $z=1+i$ and $w=\sqrt3+i$. Their moduli are $\sqrt2$ and $2$, and arguments are $\pi/4$ and $\pi/6$. Thus $wz$ has modulus $2\sqrt2$ and argument $5\pi/12$. Expansion gives $(\sqrt3-1)+(\sqrt3+1)i$, consistent with a first-quadrant point at $75^\circ$.
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 340" role="img" aria-labelledby="l133-rotation-title l133-rotation-desc" style="width:100%;max-width:520px;height:auto"><title id="l133-rotation-title">Multiplication doubles a length and adds thirty degrees</title><desc id="l133-rotation-desc">The point z equals one plus i. Multiplication by square root of three plus i first scales its length by two to the point two z, then rotates thirty degrees counterclockwise to the point square root of three minus one plus i times square root of three plus one.</desc><g fill="none" stroke="currentColor"><path d="M65 265H380M160 300V40" opacity="0.45"/><path d="M160 265L290 135" stroke-dasharray="5 4" opacity="0.55"/><path d="M160 265L225 200M160 265L207.583 87.417" stroke-width="2"/><path d="M290 135A183.848 183.848 0 0 0 207.583 87.417" stroke-width="1.5"/></g><g fill="currentColor"><circle cx="225" cy="200" r="4"/><circle cx="290" cy="135" r="4"/><circle cx="207.583" cy="87.417" r="4"/><g font-size="16"><text x="250" y="24" text-anchor="middle">Multiply by √3 + i: double length, add 30°</text><text x="242" y="211">z = 1 + i</text><text x="301" y="142">2z</text><text x="215" y="74">wz</text><text x="276" y="101">30°</text><text x="399" y="271">Re</text><text x="143" y="36">Im</text><text x="143" y="286">0</text><text x="250" y="324" text-anchor="middle">|wz| = 2√2; arg(wz) = 75°</text></g></g></svg>
+
+The diagram separates multiplication by $w$ into doubling the length and rotating through $30^\circ$. This interpretation applies to every input point using the same multiplier.
+
+Repeated multiplication proves [[de-moivre|De Moivre's theorem]] for positive integer powers: $(re^{i\theta})^n=r^ne^{in\theta}$. For nonzero $z$, reciprocals give the negative integer cases, and the zeroth power is one. For example, $1+i=\sqrt2e^{i\pi/4}$ gives $(1+i)^{10}=32e^{i5\pi/2}=32i$. Likewise $(\sqrt3+i)^6=64e^{i\pi}=-64$.
+
+De Moivre also reconnects algebra to the trigonometric identities. The real part of $(\cos\theta+i\sin\theta)^3$ is $\cos^3\theta-3\cos\theta\sin^2\theta$. Replacing $\sin^2\theta$ by $1-\cos^2\theta$ gives $\cos3\theta=4\cos^3\theta-3\cos\theta$.
+
+When solving a power equation, all possible arguments must be retained before division by the exponent. If $z^n=Re^{i\phi}$ with $R\gt0$ and positive integer $n$, then $|z|=R^{1/n}$ and $n\arg z=\phi+2k\pi$. The distinct roots are therefore $R^{1/n}e^{i(\phi+2k\pi)/n}$ for $k=0,\ldots,n-1$. A single choice of $\phi/n$ would find only one of them.`,
       related: [
         { card: "rotation-90", note: String.raw`multiplying by $i$ rotates by $90^\circ$.` },
         { card: "triple-angle", note: String.raw`the multiple angle formulas, which De Moivre explains (L12.2).` }
@@ -94,15 +122,39 @@ Convert to polar form before raising to a power, read products as rotations and 
     "L13.4": {
       prereq: ["de-moivre", "vietas-general"],
       cards: ["roots-of-unity", "fundamental-theorem-algebra", "roots-of-unity-filter"],
-      body: String.raw`The solutions of $z^n = 1$, or of $z^n = c$, are evenly spaced around a circle, and that picture answers many problems: the area of the polygon formed by the solutions of $z^6 = 64$, the number of solutions in a quadrant, sums such as $\binom60 + \binom63 + \binom66$, and the factorization of polynomials.
+      body: String.raw`Let $n$ be a positive integer. Solving $z^n=1$ first gives $|z|=1$, then requires $n\arg z$ to be an integer multiple of $2\pi$. The distinct solutions are
 
-[[roots-of-unity|The $n$th roots of unity]] are $e^{2\pi ik/n}$ for $k = 0, 1, \ldots, n - 1$, the vertices of a regular $n$-gon inscribed in the unit circle with one vertex at $1$. They are the roots of $z^n - 1$, so by Vieta they add to $0$ (for $n \ge 2$) and multiply to $(-1)^{n+1}$; for $n = 5$ the product is $1$. The solutions of $z^n = c$ are a regular $n$-gon of radius $|c|^{1/n}$: those of $z^6 = 64$ form a regular hexagon of side $2$, with area $6\sqrt3$. Powers of a root of unity cycle, so exponents are reduced modulo $n$.
+$$1,\omega,\omega^2,\ldots,\omega^{n-1},\qquad \omega=e^{2\pi i/n}.$$
 
-[[fundamental-theorem-algebra|The fundamental theorem of algebra]] says every polynomial of degree $n$ has exactly $n$ complex roots, counted with multiplicity, so it factors completely into linear factors over the complex numbers. Factoring $z^4 + 4$ or $z^2 + 4$ over the complex numbers, as $(z + 2i)(z - 2i)$, then grouping conjugate factors, factors real expressions.
+These are [[roots-of-unity|the $n$th roots of unity]]. The angle between consecutive points is $2\pi/n$. For $n\ge3$ they form a regular polygon on the unit circle; for $n=2$ they are the two opposite points $1,-1$. Powers repeat after $n$ steps, and this chosen $\omega$ has no smaller positive period.
 
-[[roots-of-unity-filter|The roots of unity filter]] picks out every $n$th coefficient. With $\omega = e^{2\pi i/3}$, the sum $1 + \omega^k + \omega^{2k}$ is $3$ when $3 \mid k$ and $0$ otherwise, so averaging $(1 + x)^6$ over $x = 1, \omega, \omega^2$ gives $\binom60 + \binom63 + \binom66 = \tfrac{64 + (1 + \omega)^6 + (1 + \omega^2)^6}{3} = \tfrac{64 + 1 + 1}{3} = 22$.
+Because the roots are those of $z^n-1$, Vieta gives their product as $(-1)^{n+1}$. For $n\ge2$, their sum is zero, since the coefficient of $z^{n-1}$ is zero. The case $n=1$ has the single root one and sum one. The zero sum for larger $n$ also follows from the rotational symmetry of the equally spaced points.
 
-Draw the roots as a regular polygon, use Vieta on $z^n - 1$, and average over roots of unity to filter coefficients. The Summary (L13.5) collects the chapter's strategies.`,
+More generally, for $z^n=c$ with $c\ne0$, the roots have radius $|c|^{1/n}$ and arguments separated by $2\pi/n$, with their initial direction determined by the argument of $c$. If $c=0$, the only root is zero, with multiplicity $n$; there is no circle of distinct roots.
+
+For $z^6=64$, the radius is two and the angles are multiples of $\pi/3$. Adjacent roots are distance two apart, so the six triangles from the center are equilateral with area $\sqrt3$ each. The hexagon's area is $6\sqrt3$.
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 345" role="img" aria-labelledby="l134-hexagon-title l134-hexagon-desc" style="width:100%;max-width:520px;height:auto"><title id="l134-hexagon-title">The sixth roots of sixty-four form a hexagon of radius two</title><desc id="l134-hexagon-desc">Six points at sixty-degree intervals have radius two. Joining them to the center divides the regular hexagon into six equilateral triangles of side two, each with area square root of three.</desc><polygon points="360.000,174.000 305.000,78.737 195.000,78.737 140.000,174.000 195.000,269.263 305.000,269.263" fill="currentColor" fill-opacity="0.06" stroke="currentColor" stroke-width="2"/><g fill="none" stroke="currentColor" opacity="0.4"><path d="M100 174H400M250 40V310"/><path d="M250 174L360.000 174.000"/><path d="M250 174L305.000 78.737"/><path d="M250 174L195.000 78.737"/><path d="M250 174L140.000 174.000"/><path d="M250 174L195.000 269.263"/><path d="M250 174L305.000 269.263"/></g><g fill="currentColor"><circle cx="360.000" cy="174.000" r="4"/><circle cx="305.000" cy="78.737" r="4"/><circle cx="195.000" cy="78.737" r="4"/><circle cx="140.000" cy="174.000" r="4"/><circle cx="195.000" cy="269.263" r="4"/><circle cx="305.000" cy="269.263" r="4"/><g font-size="16"><text x="250" y="23" text-anchor="middle">z⁶ = 64: six roots of modulus 2</text><text x="381" y="180">2</text><text x="326" y="73">1 + i√3</text><text x="353" y="120">2</text><text x="200" y="222">2</text><text x="236" y="195">0</text><text x="418" y="180">Re</text><text x="233" y="39">Im</text><text x="250" y="330" text-anchor="middle">6 triangles × √3 = 6√3</text></g></g></svg>
+
+The six radii in the diagram exhibit these triangles. Moduli determine their lengths, while the angular spacing determines their shapes.
+
+The [[fundamental-theorem-algebra|fundamental theorem of algebra]] extends the existence of complex roots to every nonconstant polynomial with complex coefficients. A degree-$n$ polynomial has exactly $n$ roots counted with multiplicity and factors into its leading coefficient times the corresponding linear factors. This does not guarantee $n$ distinct roots: $(z-1)^n$ has only one distinct root.
+
+For example, $z^2+4=(z-2i)(z+2i)$. The quartic $z^4+4$ has the four roots $1+i,1-i,-1+i,-1-i$. Grouping conjugate linear factors gives the real factorization $(z^2-2z+2)(z^2+2z+2)$. Over the complex numbers it splits further into four linear factors.
+
+The angular spacing of roots also gives a coefficient-selection identity. For the chosen $\omega=e^{2\pi i/n}$,
+
+$$\sum_{j=0}^{n-1}\omega^{jk}=
+\begin{cases}
+n,&n\mid k,\\
+0,&n\nmid k.
+\end{cases}$$
+
+If $n\mid k$, every term is one. Otherwise the ratio $\omega^k$ differs from one, and the finite geometric sum is $((\omega^k)^n-1)/(\omega^k-1)=0$. The exact order of $\omega$ matters here.
+
+For a polynomial $F(x)=\sum_k a_kx^k$, averaging $F(1),F(\omega),\ldots,F(\omega^{n-1})$ applies this identity to each coefficient. Terms whose index is divisible by $n$ survive, and all other terms cancel. This is [[roots-of-unity-filter|the roots-of-unity filter]].
+
+With $n=3$ and $F(x)=(1+x)^6$, the surviving coefficients are $\binom60+\binom63+\binom66$. Since $1+\omega=-\omega^2$ and $1+\omega^2=-\omega$, their sixth powers both equal one. The average is $(64+1+1)/3=22$, agreeing with $1+20+1$.`,
       related: [
         { card: "binomial-theorem", note: String.raw`the coefficients the filter sums.` },
         { card: "regular-polygon-area", note: String.raw`the area of the polygon formed by the roots.` }
@@ -124,20 +176,22 @@ Draw the roots as a regular polygon, use Vieta on $z^n - 1$, and average over ro
       ]
     },
     "L13.5": {
-      prereq: ["complex-basics", "conjugate-both-sides", "complex-modulus-argument", "polar-form", "de-moivre", "roots-of-unity", "fundamental-theorem-algebra", "roots-of-unity-filter"],
+      prereq: ["complex-basics", "conjugate-both-sides", "complex-modulus-argument", "eulers-formula", "polar-form", "de-moivre", "roots-of-unity", "fundamental-theorem-algebra", "roots-of-unity-filter"],
       cards: [],
-      body: String.raw`[[complex-basics|Complex numbers]] are computed with as polynomials in $i$, with $i^2 = -1$; two are equal when their real and imaginary parts are, and division is done with the conjugate. [[conjugate-both-sides|Taking conjugates]] gives a second equation, and [[complex-modulus-argument|the modulus and argument]] are the length and angle of the point.
+      body: String.raw`[[complex-basics|Complex arithmetic]] extends distributive algebra using $i^2=-1$. Comparing real and imaginary parts turns a complex equality into two real constraints. Conjugation changes the sign of the imaginary coordinate and makes $z\bar z=|z|^2$ real; for a nonzero denominator, this supplies the reciprocal used in division. [[conjugate-both-sides|Conjugating an equation]] preserves its sum and product relationships.
 
-[[polar-form|In polar form]] products multiply lengths and add angles, so [[de-moivre|De Moivre's theorem]] computes powers, and multiplying by $e^{i\theta}$ is a rotation.
+[[complex-modulus-argument|A modulus]] measures distance, while an argument specifies direction modulo full turns for a nonzero point. [[polar-form|Polar form]] uses those quantities, and Euler's exponential notation takes its angles in radians. Multiplication scales lengths and adds angles. [[de-moivre|Integer powers]] repeat this operation; solving a power equation requires all possible full turns before dividing the angle.
 
-[[roots-of-unity|The roots of unity]] are a regular polygon on the unit circle, adding to $0$; [[fundamental-theorem-algebra|every polynomial]] of degree $n$ has $n$ complex roots, and [[roots-of-unity-filter|the filter]] picks out every $n$th coefficient.`,
+[[roots-of-unity|Roots of unity]] are equally spaced on the unit circle. Their sum is zero for $n\ge2$, and their product follows from Vieta. Equations $z^n=c$ give a scaled, rotated set when $c\ne0$; at $c=0$, there is one root of multiplicity $n$.
+
+[[fundamental-theorem-algebra|A degree-$n$ polynomial]] splits into $n$ complex linear factors with repeated roots counted according to multiplicity. Finally, [[roots-of-unity-filter|averaging over all $n$th roots of unity]] uses a finite geometric sum to select polynomial coefficients at indices divisible by $n$.`,
       strategies: [
         String.raw`For an equation in $z$ and $\bar z$, write $z = a + bi$ and compare real and imaginary parts.`,
         String.raw`To divide, multiply the top and bottom by the conjugate of the bottom.`,
         String.raw`Read $|z - w|$ as a distance and $|z| = r$ as a circle.`,
         String.raw`For a power of a complex number, convert to polar form.`,
         String.raw`Take the modulus of both sides of an equation to find $|z|$ first.`,
-        String.raw`Draw the solutions of $z^n = c$ as a regular polygon.`,
+        String.raw`For $z^n=c$ with $c\ne0$, locate all equally spaced arguments on the circle of radius $|c|^{1/n}$; handle $c=0$ separately.`,
         String.raw`To add every third or fourth coefficient, average the polynomial over the roots of unity.`
       ]
     }
