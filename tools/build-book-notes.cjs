@@ -7,6 +7,10 @@ const run = f => vm.runInContext(fs.readFileSync(path.join(root, f), 'utf8'), co
 for (const f of ['geometry', 'algebra', 'number-theory', 'counting', 'patterns']) run(`js/data/${f}.js`);
 run('js/data/learn/shelf.js');
 const cards = new Map(context.window.MATH_SECTIONS.flatMap(s => s.subsections.flatMap(s => s.formulas || [])).map(f => [f.id, f]));
+// Precise glossary statements where a card's introductory description omits a domain detail.
+const glossaryDefinitions = {
+ 'inverse-trig-identities': String.raw`Inverse trigonometric functions select one angle from a specified interval. For inputs in $[-1,1]$, $\arcsin$ returns an angle in $[-\pi/2,\pi/2]$ and $\arccos$ returns one in $[0,\pi]$. For every real input, $\arctan$ returns an angle in the open interval $(-\pi/2,\pi/2)$. Thus $\arcsin u+\arccos u=\pi/2$ for $u\in[-1,1]$. An inverse-tangent sum must be placed in its actual angle range after applying the tangent addition formula; if its denominator vanishes, determine the angle directly instead of dividing by zero.`
+};
 const esc = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const plainLinks = s => String(s).replace(/\[\[([\w-]+)(?:\|([^\]]+))?\]\]/g, (_, id, label) => label || cards.get(id)?.name || id);
 const basics = [
@@ -44,7 +48,7 @@ for (const book of context.window.MATH_LEARN_SHELF) {
   if (['Introduction', 'Summary'].includes(l.title)) continue;
   const d = context.window.MATH_LEARN[c.code].lessons[l.code];
   const ids = new Set([...(d.cards || []), ...(d.prereq || []), ...(d.related || []).map(r => r.card), ...[...String(d.body).matchAll(/\[\[([\w-]+)/g)].map(m => m[1])]);
-  for (const id of ids) { const f = cards.get(id); if (f) add(f.name, f.description, l.code, f.keywords || []); }
+  for (const id of ids) { const f = cards.get(id); if (f) add(f.name, glossaryDefinitions[id] || f.description, l.code, f.keywords || []); }
   const prose = String(d.body).replace(/<[^>]*>/g, ' ');
   for (const [term, definition] of basics) if (new RegExp('\\b' + term + '(?:s)?\\b', 'i').test(prose)) add(term, definition, l.code);
  }
