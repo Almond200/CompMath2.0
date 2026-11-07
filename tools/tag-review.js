@@ -21,7 +21,8 @@ window.MATH_PROBLEM_DB.filter(p => p.ref.startsWith(paper + ", Problem ")).forEa
   console.log(`\n=== ${p.ref}`);
   console.log("STATEMENT:", st ? st : "(none)");
   console.log("STRATEGY:", p.strategy);
-  const cards = [...(p.formulas || []), ...(p.trickFormulas || [])];
-  console.log("CARDS:", cards.map(c => `${c} -> ${HOMES[c] === undefined ? "?" : HOMES[c]}`).join("; "));
+  const show = ids => ids.map(c => `${c} -> ${HOMES[c] === undefined ? "?" : HOMES[c]}`).join("; ");
+  console.log("CARDS:", show(p.formulas || []));
+  if (p.trick) { console.log("TRICK:", p.trick); console.log("TRICK CARDS:", show(p.trickFormulas || [])); }
   if (p.tree) console.log("TREE:", p.tree.map(t => `${t} (${NAME[t] || "MISSING"})`).join("; "));
 });

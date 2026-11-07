@@ -8,10 +8,11 @@ A candidate card lists, under "Needed by", the problems whose routes would cite 
 
 ### Topic-tree candidates from the tagging pass (T3; started 2026-11-06)
 
-A kind of problem the tree has no node for, seen in several problems (the archetype rule, `TOPIC-TREE.md`). The problems are filed under the nearest broader node meanwhile. Answer per row: add, merge into another node, or no. Newest rows first; the next is TQ7.
+A kind of problem the tree has no node for, seen in several problems (the archetype rule, `TOPIC-TREE.md`). The problems are filed under the nearest broader node meanwhile. Answer per row: add, merge into another node, or no. Newest rows first; the next is TQ8.
 
 | # | Proposed node | Where in the tree | Problems | Answer |
 |---|---|---|---|---|
+| TQ7 | Random pairings (splitting $2n$ objects into $n$ pairs, $(2n-1)!!$ ways, and probabilities about the pairs) | Counting & Probability › Basic counting, beside Permutations | 2025 AIME I #7, 2025 AIME II #11 (matchings by equal chords of a $24$-gon), 2014 AIME II #13: three so far, under the rule's five; filed under `cp.prob.basic.count` meanwhile. The 2025 AIME I test filing had used `cp.graph.tour`, which is about tournaments | |
 | TQ6 | Permutations by cycle structure (a power of the permutation is the identity, cycles of given lengths, pairings that close into cycles) | Counting & Probability › Basic counting › Permutations, beside its subtopics | 2026 AIME I #7, 2012 AIME II #14, 2014 AIME II #13: three so far, under the rule's five; filed under `cp.basic.perm` meanwhile | **Approved** (owner, 2026-11-07): added as `cp.basic.perm.cycle` |
 
 ### Card candidates from the tagging pass
