@@ -6897,7 +6897,17 @@ The book remembers the last lesson you opened, in this browser, and the contents
     }));
     return LESSON_INDEX;
   }
+  // Abbreviations read the way the card search reads them ("POP" is Power of a Point), so a
+  // lesson or chapter is found by the same short names as its card (owner, 2026-11-07); the
+  // query as typed is tried too, and the two lists are merged.
   function lessonMatches(q) {
+    const words = String(q).split(/\s+/), expanded = words.map(w => ABBREV[w.toLowerCase()] || w).join(" ");
+    if (expanded === String(q) || /^\s*[a-z]\d+\.\d+\s*$/i.test(q)) return lessonMatchesRaw(q);
+    const seen = new Set(), out = [];
+    [...lessonMatchesRaw(expanded), ...lessonMatchesRaw(q)].forEach(x => { if (!seen.has(x)) { seen.add(x); out.push(x); } });
+    return out.slice(0, 4);
+  }
+  function lessonMatchesRaw(q) {
     const idx = lessonIndex(), code = q.trim().match(/^[a-z]\d+\.\d+$/i);
     if (code) return idx.filter(x => x.l && x.l.code.toLowerCase() === q.trim().toLowerCase()).slice(0, 1);
     const qt = [...new Set(wordsOf(q).filter(w => !LESSON_STOP.has(w)))];
@@ -6937,10 +6947,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
   function strongCardCount(sorted, query) {
     const qt = wordsOf(query).filter(w => !LESSON_STOP.has(w));
     if (!qt.length) return 1;
+    const xt = wordsOf(String(query).split(/\s+/).map(w => ABBREV[w.toLowerCase()] || w).join(" ")).filter(w => !LESSON_STOP.has(w));
     let n = 0;
     sorted.slice(0, 8).forEach((e, i) => {
       const nw = new Set(wordsOf(String(e.formula.name).replace(/\$[^$]*\$/g, " ")));
-      if (qt.every(t => nw.has(t) || [...nw].some(w => t.length >= 4 && w.startsWith(t)))) n = i + 1;
+      const covers = toks => toks.every(t => nw.has(t) || [...nw].some(w => t.length >= 4 && w.startsWith(t)));
+      if (covers(qt) || (xt.length && covers(xt))) n = i + 1;
     });
     return Math.max(1, n);
   }

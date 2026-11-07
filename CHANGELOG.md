@@ -2,6 +2,8 @@
 
 **2026-11-07**
 
+- Search, lessons and chapters (owner): the abbreviations the card search knows (POP, CRT, LTE, FTA, SFFT and the rest) now find lessons and chapters too, so "POP lesson" opens with the Power of a point lesson and "CRT chapter" with the two Chinese Remainder Theorem lessons; the query as typed is tried as well. Placing lessons after the cards named for the query also reads the expansion, so "LTE" lists both Lifting the Exponent cards before the lessons. Lessons, chapters, books and problems match by their words (with synonyms); only the cards also use the semantic search.
+
 - Search, book results (owner): "AMC 10", "AMC10", "AMC 12" and "AMC 10/12" now count as "AMC" when matching a textbook, so "AMC10 Algebra" finds AMC Algebra; and a query that names a book in full is no longer read as a problem reference, so "AMC 10/12 number theory" gives the AMC 10/12 Number Theory list and the AMC Number Theory book instead of every AMC 10 problem 12. Real references ("2024 AMC 10A", "amc 10 problem 12") are unchanged.
 
 - Counting Walks Step by Step gains three figures (owner), each computed from its graph with a self-check: the card's figure, a square with the diagonal $AC$ shown four times (start at $A$, then after one, two and three steps, with every vertex's count: $4$ walks back to $A$ and $5$ to each other vertex after three steps); the worked example's lily pads, drawn by kind (corners, edge pads, center), with the solution's figure showing the first round ($2$, $4$, $6$); and the exercise's figure, the square $ABCD$ with its inner $3\times3$ array and center $O$, attached to that supplementary exercise.
