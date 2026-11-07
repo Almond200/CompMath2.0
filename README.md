@@ -1,9 +1,9 @@
 # Competition Math Reference
 
-A searchable reference for AMC 10/12, AIME and olympiad training. 765 cards
-covering formulas, methods, and patterns (548 formulas, 169 methods, 48 patterns), plus a database
+A searchable reference for AMC 10/12, AIME and olympiad training. 770 cards
+covering formulas, methods, and patterns (551 formulas, 170 methods, 49 patterns), plus a database
 of 4,725 past contest problems (4,715 with their full statements), every one with a written
-strategy and 4,276 cross-linked to the cards their solutions run through (counts checked 2026-11-06).
+strategy and 4,276 cross-linked to the cards their solutions run through (counts checked 2026-11-07).
 
 Static, with no application backend or required build step. KaTeX 0.16.11 and its fonts are
 vendored under `vendor/katex/`; statement scripts and semantic vectors load on demand from
@@ -26,7 +26,10 @@ shows Correct, Incorrect or Unanswered, and separates the problem statement from
 and explanation. How this problem works uses the same strategy, Pattern/Method/Formulas chain
 and textbook links as the problem page. Answer keys come from LIVE by Po-Shen Loh and are
 matched to the local problem statements before import. New sets only draw problems with a key.
-Older saved problems without a matching key are explicitly labeled Answer unavailable.
+Older saved problems without a matching key are explicitly labeled Answer unavailable: the key is
+missing, so the answer is not guessed. A problem the MAA voided (now 2025 AMC 12A #25) is a
+different case: its official letter is kept in the keys' `voided` list, new sets never draw it,
+and a saved set shows it as Voided, not graded.
 
 Practice sets have no timer or timer setting. Export progress and Import progress include
 saved sets, keeping the newest version of each. Clearing browser data removes the local copy.
@@ -82,15 +85,19 @@ CONVENTIONS §0 has the full model.
   sidebar. Its page tools follow the same setting as card pages. A book's contents (`#/learn/<book>`) open with Contents and
   Introduction and How to Use This Book (`.../how-to-use`), where the Core, Core II and Extension
   tags are explained with visible badges. **Search this book...**, below the book subtitle and
-  in the right half of desktop chapter navigation (a separate field on mobile), finds chapters
-  from chapter titles, lesson headings, related concepts and lesson text. It supports prefixes,
-  synonyms and small typos, with keyboard-selectable suggestions scoped to the current book. A lesson (`.../c5/2`) shows its cards,
+  in the right half of desktop chapter navigation (a separate field on mobile), lists chapters,
+  single lessons and glossary terms in one ranked list, from titles, lesson headings, related
+  concepts, indexed terms and lesson text; a glossary result opens the Glossary at its definition,
+  and a lesson code such as R3.4 opens that lesson. It supports prefixes, synonyms and small typos,
+  with keyboard-selectable suggestions scoped to the current book. A lesson (`.../c5/2`) shows its cards,
   one flowing explanation, related cards, its own problems with worked solutions, contest
-  problems, and a drawer for the cards it links; all 103 chapters open on
-  an Introduction and close with a Summary, Review Problems and Challenge Problems (CONVENTIONS §14).
+  problems, and a drawer for the cards it links. The 13 books have 103 teaching chapters, which open on
+  an Introduction and close with a Summary, Review Problems and Challenge Problems (CONVENTIONS §14);
+  the 593 teaching pages count the Introductions and Summaries, not the Review and Challenge sets.
   Each book ends with End-of-book Notes, reference sections rather than a teaching chapter:
   Overview, an Index whose entries link to lessons, a Glossary, and References and Credits. They
-  are not counted with the 593 teaching pages, and book search also finds indexed terms.
+  are 13 reference chapters with 52 sections, not counted with the teaching pages (the shelf gate's
+  116 chapters and 645 lesson records include them), and they carry no difficulty tags.
 - **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, untimed topic sets with a reader-selected question count, and every
   year of every contest. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
   back; on a phone its years are a menu between arrows, with a toggle between the year's papers.
