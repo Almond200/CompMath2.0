@@ -3323,4 +3323,113 @@
       cap(430, 330, "Two uniform numbers are a uniform point of the unit square, and xy ≤ 1/4 is the shaded region: the strip of width 1/4 on the left, plus the area under the hyperbola y = 1/(4x) from 1/4 to 1, which is (ln 4)/4. The total, 1/4 + (ln 4)/4 ≈ 0.597, is P(XY ≤ 1/4)." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+
+  // ---------- Counting Walks Step by Step (walk-counting-dp) ----------
+  // Shared pieces: run the rounds on a graph, and draw a vertex as a disc holding a number.
+  const walkRounds = (nodes, edges, start, n) => {
+    const nb = {};
+    nodes.forEach(v => { nb[v] = []; });
+    edges.forEach(([a, b]) => { nb[a].push(b); nb[b].push(a); });
+    const rounds = [Object.fromEntries(nodes.map(v => [v, start.includes(v) ? 1 : 0]))];
+    for (let k = 0; k < n; k++) {
+      const w = rounds[k];
+      rounds.push(Object.fromEntries(nodes.map(v => [v, nb[v].reduce((s, u) => s + w[u], 0)])));
+    }
+    return rounds;
+  };
+  const walkNode = (at, label, c = DIM, size = 13) =>
+    circ(at, 12, c, 1.6, "var(--bg-card)") + (label === "" ? "" : txt(add(at, [0, 4.5]), String(label), c, size));
+
+  // The card's figure: a square with one diagonal, walks starting at A, four rounds side by side.
+  // Each number is the sum of the numbers at its neighbours in the panel before it.
+  DIAGRAMS["walk-counting-dp"] = [(() => {
+    const nodes = ["A", "B", "C", "D"], edges = [["A", "B"], ["B", "C"], ["C", "D"], ["D", "A"], ["A", "C"]];
+    const R = walkRounds(nodes, edges, ["A"], 3);
+    // Hand-checked values: round 2 is A 3, B 1, C 2, D 1; round 3 is A 4, B 5, C 5, D 5.
+    const ok = R[2].A === 3 && R[2].B === 1 && R[2].C === 2 && R[2].D === 1 && R[3].A === 4 && R[3].B === 5 && R[3].C === 5 && R[3].D === 5;
+    const W = 600, H = 210, side = 78, parts = [];
+    for (let k = 0; k <= 3; k++) {
+      const x0 = 40 + k * 145, y0 = 52;
+      const P = { A: [x0, y0 + side], B: [x0 + side, y0 + side], C: [x0 + side, y0], D: [x0, y0] };
+      edges.forEach(([a, b]) => parts.push(seg(P[a], P[b], FNT, 1.6)));
+      nodes.forEach(v => parts.push(walkNode(P[v], R[k][v], k === 3 ? ACC : DIM)));
+      const name = { A: [-16, 18], B: [16, 18], C: [16, -12], D: [-16, -12] };
+      nodes.forEach(v => parts.push(txt(add(P[v], name[v]), v, DIM, 12.5)));
+      parts.push(txt([x0 + side / 2, y0 + side + 44], k === 0 ? "start" : "after " + k + (k === 1 ? " step" : " steps"), k === 3 ? ACC : FNT, 12));
+    }
+    parts.push(cap(W, H, "Walks that start at A on a square with the diagonal AC. Each round, every vertex takes the sum of its neighbours' numbers from the round before; after three steps there are 4 walks back to A and 5 to each other vertex, 19 in all." + (ok ? "" : " MISMATCH")));
+    return wrap(W, H, parts);
+  })()];
+
+  // The worked example: ten lily pads on a triangular grid of side 3. The question panel shows
+  // the pads by kind (3 corners, 6 edge pads, the center); the solution panel shows round 1,
+  // where every pad holds its number of neighbours.
+  const lilyPads = (() => {
+    const pts = [], key = (r, c) => r + "," + c;
+    for (let r = 0; r < 4; r++) for (let c = 0; c <= r; c++) pts.push([r, c]);
+    const steps = [[0, 1], [1, 0], [1, 1]];
+    const edges = [];
+    pts.forEach(([r, c]) => steps.forEach(([dr, dc]) => {
+      const q = [r + dr, c + dc];
+      if (q[0] < 4 && q[1] <= q[0] && q[1] >= 0) edges.push([key(r, c), key(q[0], q[1])]);
+    }));
+    const s = 72, top = [215, 40];
+    const at = {};
+    pts.forEach(([r, c]) => { at[key(r, c)] = [top[0] + (c - r / 2) * s, top[1] + r * s * Math.sqrt(3) / 2]; });
+    const kind = k => {
+      const [r, c] = k.split(",").map(Number);
+      if ((r === 0) || (r === 3 && (c === 0 || c === 3))) return "corner";
+      if (r === 2 && c === 1) return "center";
+      return "edge";
+    };
+    return { nodes: pts.map(([r, c]) => key(r, c)), edges, at, kind };
+  })();
+  EXAMPLE["walk-counting-dp"] = {
+    q: (() => {
+      const { nodes, edges, at, kind } = lilyPads;
+      const R = walkRounds(nodes, edges, nodes, 5);
+      const total = nodes.reduce((t, v) => t + R[5][v], 0);
+      const ok = edges.length === 18 && total === 9216;
+      const col = { corner: GLD, edge: ACC, center: GRN };
+      const parts = edges.map(([a, b]) => seg(at[a], at[b], FNT, 1.6));
+      nodes.forEach(v => parts.push(circ(at[v], 10, col[kind(v)], 2, "var(--bg-card)")));
+      parts.push(txt([60, 70], "corner", GLD, 12.5, "start"), txt([60, 90], "edge pad", ACC, 12.5, "start"), txt([60, 110], "center", GRN, 12.5, "start"));
+      parts.push(cap(430, 300, "The ten lily pads: a jump goes along one grid segment to a neighbouring pad. The 3 corner pads (gold), the 6 edge pads (blue) and the center pad (green) are the three kinds that symmetry keeps equal." + (ok ? "" : " MISMATCH")));
+      return wrap(430, 300, parts);
+    })(),
+    s: (() => {
+      const { nodes, edges, at, kind } = lilyPads;
+      const R = walkRounds(nodes, edges, nodes, 1);
+      const ok = nodes.every(v => R[1][v] === { corner: 2, edge: 4, center: 6 }[kind(v)]);
+      const col = { corner: GLD, edge: ACC, center: GRN };
+      const parts = edges.map(([a, b]) => seg(at[a], at[b], FNT, 1.6));
+      nodes.forEach(v => parts.push(walkNode(at[v], R[1][v], col[kind(v)])));
+      parts.push(cap(430, 300, "After one jump, starting anywhere: each pad holds the sum of its neighbours' 1s, its number of neighbours, 2 at a corner, 4 at an edge pad and 6 at the center. Every later round multiplies these by 4." + (ok ? "" : " MISMATCH")));
+      return wrap(430, 300, parts);
+    })()
+  };
+
+  // The supplementary exercise: the square ABCD with an inner 3 by 3 array of points and center O.
+  // MATH_PROBLEMS loads first (extra-problems.js), so the figure is attached to that exercise here.
+  (() => {
+    const outer = { A: [80, 40], B: [350, 40], C: [350, 300], D: [80, 300] };
+    const g = (i, j) => [145 + j * 70, 105 + i * 65];
+    const nodes = ["A", "B", "C", "D"], at = Object.assign({}, outer), edges = [["A", "B"], ["B", "C"], ["C", "D"], ["D", "A"]];
+    for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) { nodes.push(i + "," + j); at[i + "," + j] = g(i, j); }
+    edges.push(["A", "0,0"], ["B", "0,2"], ["C", "2,2"], ["D", "2,0"]);
+    for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) {
+      if (i < 2) edges.push([i + "," + j, (i + 1) + "," + j]);
+      if (j < 2) edges.push([i + "," + j, i + "," + (j + 1)]);
+    }
+    const R = walkRounds(nodes, edges, ["A", "B", "C", "D"], 5);
+    const ok = R[5]["1,1"] === 104;
+    const parts = edges.map(([a, b]) => seg(at[a], at[b], DIM, 1.8));
+    nodes.forEach(v => parts.push(dot(at[v], v === "1,1" ? ACC : DIM, 4.2)));
+    parts.push(txt(add(outer.A, [-12, -6]), "A", DIM, 14, "end"), txt(add(outer.B, [12, -6]), "B", DIM, 14, "start"),
+      txt(add(outer.C, [12, 16]), "C", DIM, 14, "start"), txt(add(outer.D, [-12, 16]), "D", DIM, 14, "end"),
+      txt(add(at["1,1"], [14, -10]), "O", ACC, 14, "start"));
+    parts.push(cap(430, 340, "The figure for the exercise: the outer square ABCD, each corner joined to the nearest corner of the inner square, and the inner square's 3 by 3 array of points joined along its rows and columns, with center O." + (ok ? "" : " MISMATCH")));
+    const svg = wrap(430, 340, parts);
+    (((window.MATH_PROBLEMS || {})["walk-counting-dp"]) || []).forEach(p => { if (/smaller square inside it/.test(p.q)) p.figQ = svg; });
+  })();
 })();
