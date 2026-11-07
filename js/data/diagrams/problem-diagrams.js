@@ -5288,4 +5288,31 @@
       cap(430, 330, "Triangle ABC with AB = 11, BC = 24, CA = 20; the bisector of ∠A meets BC at D and the circumcircle at E, and the circle through B, E, D meets line AB again at F." + MM(ok))
     ]);
   })();
+
+  // 2024 AMC 10B #10: parallelogram ABCD, E the midpoint of AD, F where EB meets AC.
+  PROB["2024-amc-10b-10"] = (() => {
+    const k = 34, Q = (x, y) => [70 + k * x, 250 - k * y];
+    const A = Q(0, 0), B = Q(6, 0), D = Q(2, 6), C = add(B, sub(D, A)), E = mid(A, D), F = lineInt(E, B, A, C);
+    const ok = Math.abs(dist(A, F) / dist(A, C) - 1 / 3) < 1e-9 && Math.abs(dist(A, E) - dist(E, D)) < 1e-9;
+    return wrap(430, 280, [
+      poly([C, D, E, F], ACC, 0, ACCS), poly([C, F, B], GLD, 0, GLDS), poly([A, B, C, D], DIM, 2), seg(E, B, DIM, 1.6), seg(A, C, DIM, 1.6),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3.4)), dot(F, ACC, 3.4), ticksOn(A, E, 1), ticksOn(E, D, 1),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [10, -6]), "C"), txt(add(D, [-10, -6]), "D"),
+      txt(add(E, [-12, 4]), "E", DIM, 13, "end"), txt(add(F, [4, 20]), "F", ACC, 13),
+      cap(430, 280, "Parallelogram ABCD with E the midpoint of AD; F is where EB crosses the diagonal AC, one third of the way from A. Quadrilateral CDEF is blue and triangle CFB gold." + MM(ok))
+    ]);
+  })();
+
+  // 2024 AMC 10B #14 and 12B #9: the board |x| + |y| ≤ 8 and the target 18 ≤ x² + y² ≤ 32.
+  PROB["2024-amc-10b-14"] = PROB["2024-amc-12b-9"] = (() => {
+    const k = 14, O = [215, 142], Q = (x, y) => [O[0] + k * x, O[1] - k * y];
+    const ro = Math.sqrt(32) * k, ri = Math.sqrt(18) * k, V = [Q(8, 0), Q(0, 8), Q(-8, 0), Q(0, -8)];
+    const ok = Math.abs(dist(O, foot(O, V[0], V[1])) - ro) < 1e-9 && Math.abs((25 - 7) * k * k - ri * ri) < 1e-6;
+    const ring = `<path d="M ${O[0] + ro} ${O[1]} a ${ro} ${ro} 0 1 0 ${-2 * ro} 0 a ${ro} ${ro} 0 1 0 ${2 * ro} 0 Z M ${O[0] + ri} ${O[1]} a ${ri} ${ri} 0 1 1 ${-2 * ri} 0 a ${ri} ${ri} 0 1 1 ${2 * ri} 0 Z" fill="${ACCS}" fill-rule="evenodd" stroke="none"/>`;
+    return wrap(430, 290, [
+      seg(Q(-9.5, 0), Q(9.5, 0), FNT, 1), seg(Q(0, -9.5), Q(0, 9.5), FNT, 1), ring, circ(O, ro, ACC, 1.6), circ(O, ri, ACC, 1.6), poly(V, DIM, 2),
+      txt(add(V[0], [6, 16]), "8", DIM, 12, "start"), txt(add(V[1], [8, 4]), "8", DIM, 12, "start"),
+      cap(430, 290, "The board |x| + |y| ≤ 8 (a square standing on a corner) and the target (blue), the ring 18 ≤ x² + y² ≤ 32. The outer circle, of radius √32, just touches the four sides." + MM(ok))
+    ]);
+  })();
 })();
