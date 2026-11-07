@@ -22,7 +22,9 @@ Practice a topic currently offers every card name and every card keyword as a to
 7. **Names are plain and short**, in the app's style ("Counting & Probability", "Mass points"), and never name a contest.
 8. **One fact, one home.** The tree lives in one data file (planned: `js/data/topic-tree.js`); this Markdown file is the readable draft until the tree is approved, then it is generated from the data.
 
-## How problems get their nodes (planned)
+## How problems get their nodes
+
+The data exists (T2, 2026-11-07): `js/data/topic-tree.js` is generated from this file by `tools/build-topic-tree.py`, every card's home is in `js/data/topic-homes.js`, and `tools/check-topic-tree.js` is the gate (CONVENTIONS §15). The filing itself is the tagging pass, T3, whose procedure is in `PLAN.md`.
 
 - **Seed from cards.** Each card gets a home node (most cards map to one leaf). A problem's cards propose nodes; the most-cited proposal wins, capped at three.
 - **Fill the rest by reading.** The 446 problems with no card tag, and problems whose cards are all general methods (casework, complementary counting), are filed by reading the statement and strategy, a contest at a time, with `subjects` as the starting point.

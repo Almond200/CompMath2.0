@@ -590,6 +590,8 @@ python3 tools/scan-conventions.py        # the census above; fails on any rule m
 python3 tools/check-lists.py             # list ids resolve, and every route is complete
 python3 tools/check-topics.py            # every card carries a topic chip, and no title awards a wrong one
 ./tools/check-lab.sh                     # the inline script of each lab/ page still parses
+python3 tools/build-topic-tree.py --check # js/data/topic-tree.js matches TOPIC-TREE.md (§15)
+node tools/check-topic-tree.js           # the tree, every card's home, every problem's tree tags (§15)
 python3 tools/check-statements.py        # every statement and figure resolves, no stray markup
 python3 tools/find-duplicate-forms.py    # lists formulas stated twice (rule 17); a report, not a gate
 python3 tools/build-cross-links.py --seed && python3 tools/build-cross-links.py --report
@@ -711,7 +713,7 @@ are untouched.
 
 ## 11. Tagging a problem
 
-`{ ref, formulas, strategy }`, optionally `trick` and `trickFormulas`. The entry holds no statement. An AMC or AIME statement is fetched from LIVE by Po-Shen Loh into `js/data/problems/statements/<year>.js` by `tools/fetch-live-statements.py` (statements and answer choices only, never solutions or hints), keyed by the problem's slug, with its figures as SVG files under `js/data/problems/figures/`; Settings → Credits and attribution carries the shared MAA copyright, CC BY-NC-SA 4.0 license, LIVE/AoPS/PDF attribution and source links. Do not repeat credit paragraphs under statements or in previews. Preserve source metadata and credit headers in data files. Never add a statement by hand and never import a solution. Imported displays are unwrapped: LIVE cuts long equations by hand for a phone, and the importer joins a cut that only continues the line above (`unwrap_display` in `tools/fetch-live-statements.py`), keeping real systems, cases, and matrices. `tools/check-statements.py` is the gate: every key a known problem, every figure an SVG that exists, the credit header present.
+`{ ref, formulas, strategy }`, optionally `trick` and `trickFormulas`, and `tree` once the tagging pass has filed it (§15). The entry holds no statement. An AMC or AIME statement is fetched from LIVE by Po-Shen Loh into `js/data/problems/statements/<year>.js` by `tools/fetch-live-statements.py` (statements and answer choices only, never solutions or hints), keyed by the problem's slug, with its figures as SVG files under `js/data/problems/figures/`; Settings → Credits and attribution carries the shared MAA copyright, CC BY-NC-SA 4.0 license, LIVE/AoPS/PDF attribution and source links. Do not repeat credit paragraphs under statements or in previews. Preserve source metadata and credit headers in data files. Never import a solution. A statement is never added by hand, with one exception (owner, 2026-11-06): a paper so new that LIVE has not published it may be entered from another credited copy (the 2026 AMC 10A and 12A, from the Random Math wiki), with its answer key checked against a second published key and by computation, its source allowed for that paper alone in `check-statements.py` and `tests/answer-keys.cjs`, and LIVE's copy swapped in once it exists. Imported displays are unwrapped: LIVE cuts long equations by hand for a phone, and the importer joins a cut that only continues the line above (`unwrap_display` in `tools/fetch-live-statements.py`), keeping real systems, cases, and matrices. `tools/check-statements.py` is the gate: every key a known problem, every figure an SVG that exists, the credit header present.
 
 - `formulas` = the basic tools for the **appropriate** route, not the theoretical minimum. Everything
   reduces to similar triangles and Pythagoras; tagging that way tells a reader nothing.
@@ -1077,3 +1079,24 @@ A chapter not yet moved to this structure keeps its overview page and its chapte
 **How to Use This Book (owner, 2026-10-31).** Every book's contents open with "Contents and Introduction": Contents (the page itself) and How to Use This Book (`#/learn/<book>/how-to-use`). Its text is one per track, AMC or AIME; only the meaning of Core and Core II differs (AMC: early to middle problems, hard problems; AIME: early AIME problems, later AIME problems). A change to how the books work is written there too.
 
 **Counts on the shelf.** Books and chapters show how many lessons they have, never "X of Y written".
+
+## 15. The topic tree (Step T, owner, 2026-11-06)
+
+One classification of contest mathematics, used by Practice sets, problem labels and contest profiles. The plan and the tagging procedure are in `PLAN.md` (the order of work, step 1, and "The tagging pass (T3)"); the tree, its rules and the test filings are in `TOPIC-TREE.md`; open candidates are in `QUESTIONS.md`.
+
+**The files.**
+- `TOPIC-TREE.md` is the source of the tree: four subjects, Subject › Area › Topic › Subtopic, with a fifth level only where a subtopic still splits. Each node is a list item ending in its dotted id in brackets.
+- `js/data/topic-tree.js` is generated from it by `tools/build-topic-tree.py` and never edited by hand: `[id, name, parent]` rows in reading order.
+- `js/data/topic-homes.js` is hand-written: every card's home node. A formula or pattern always has one; a method has one when it belongs to one area, and `null` when it is general-purpose (casework, induction, coordinate bashing).
+- A problem's nodes are the `tree` field of its entry in `problem-db.js`: one to three node ids.
+- Settings → Experimental → Topic tree (`lab/topic-tree.html`) reads `TOPIC-TREE.md` live, as an outline or as a drawn tree per subject.
+
+**The rules.**
+- A node is an archetype: a kind of problem that recurs, about five or more problems, never a node made for one problem. A thin node merges into its nearest neighbour.
+- A node is a kind of problem, not a formula: cards attach to nodes, nodes do not mirror cards.
+- Ids are stable once problems are filed under them; names may change. A node's id extends its parent's by one segment.
+- A problem lists the most specific nodes that describe it, never a node together with one of its ancestors. AMC 10 and 12 twins carry the same nodes.
+- A card's home only proposes nodes for its problems; the problem's nodes are chosen by reading it.
+- No node names a contest. Methods and Patterns are not trees.
+
+**The gate.** `python3 tools/build-topic-tree.py --check` and `node tools/check-topic-tree.js`, both in `tools/gates.sh`: the tree is well formed, every card is in `topic-homes.js` with a real home (or `null` for a method), and every `tree` field lists one to three real nodes, none an ancestor of another, equal on twins.
