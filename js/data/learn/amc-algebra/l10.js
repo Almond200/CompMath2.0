@@ -119,7 +119,7 @@ For a remainder, write it with unknown coefficients and match values at the root
       ]
     },
     "L10.5": {
-      prereq: ["square-of-sum", "difference-of-squares"],
+      prereq: ["two-variable-identities", "difference-of-squares"],
       cards: ["denesting-radicals", "palindromic-polynomials", "reciprocal-power-sums", "forced-difference-of-squares"],
       body: String.raw`Some expressions simplify only with a specific trick. $\sqrt{9 + 4\sqrt5}$ is $2 + \sqrt5$; from $x + \tfrac1x = 4$ the value of $x^4 + \tfrac1{x^4}$ follows; a quartic whose coefficients read the same both ways reduces to a quadratic; and $n^4 - 20n^2 + 4$ factors although it does not look like it. Each trick turns the expression into something familiar.
 

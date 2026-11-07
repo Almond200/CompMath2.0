@@ -6,15 +6,15 @@ window.MATH_LEARN["L9"] = {
     "L9.1": {
       prereq: ["exponent-laws"],
       cards: [],
-      body: String.raw`This chapter is about logarithms, which answer the question "to what power?". Its tools are the logarithm laws and the change of base formula, and the methods for equations in which the unknown sits in an exponent or inside a logarithm.
+      body: String.raw`A logarithm names an exponent. If multiplying by the same factor repeatedly describes how a quantity grows, its logarithm records how many such multiplicative steps are needed to reach a specified value. This reverses the exponential rule studied earlier and converts some multiplicative relationships into additive ones.
 
-The logarithm $\log_b x$ is the exponent to which $b$ must be raised to give $x$: $\log_2 32 = 5$ because $2^5 = 32$. It is defined for $b \gt 0$, $b \ne 1$ and $x \gt 0$. Because exponents add when powers multiply, logarithms turn products into sums: $\log 4 + \log 25 = \log 100 = 2$, where $\log$ without a base means base $10$. Quotients become differences and powers become multiples, so $\log_3 81 - \log_3 9 = \log_3 9 = 2$.
+Since $2^5=32$, we write $\log_2 32=5$. The input of the logarithm is the number reached, while its output is the exponent. Negative and fractional exponents fit the same definition: $\log_2(1/4)=-2$ and $\log_4 8=3/2$. A logarithm need not be a positive integer simply because its input is positive.
 
-Logarithms in different bases are compared by changing them to one base. They also measure size: the number of digits of a positive integer $N$ is $\lfloor \log N \rfloor + 1$.
+For real logarithms, the base must be positive and different from one, and the input must be positive. With such a base, the exponential function is one-to-one and takes every positive output exactly once, so its inverse is well defined. Base one would give only the output one, preventing this reversal. These domain conditions belong to every logarithmic calculation in the chapter.
 
-An equation with the unknown in an exponent, such as $4^x - 6 \cdot 2^x + 8 = 0$, often becomes a polynomial after a substitution, here $t = 2^x$; an equation with logarithms becomes one without them after the laws combine the terms. In both cases the domain decides which solutions are real.
+Products of powers add exponents, which explains why logarithms turn products into sums. The laws are therefore consequences of the definition, not a separate set of symbolic instructions. A change of base describes the same exponent relationship using a different exponential unit.
 
-The lessons take these ideas in turn: the logarithm laws and change of base (L9.2), and logarithmic and exponential equations (L9.3). The Summary (L9.4) collects the strategies.`,
+The first lesson derives these laws and explains their conditions. The next uses them to solve equations by taking logarithms or naming a repeated logarithm or exponential term. The central habit is the same as in substitution: retain the domain and translate the result back into the original quantity before deciding which answers are valid.`,
       exercises: [
         { q: String.raw`Find $\log_2 32$.`, answer: "5",
           solution: String.raw`$2^5 = 32$, so $\log_2 32 = 5$.` },
@@ -32,13 +32,25 @@ The lessons take these ideas in turn: the logarithm laws and change of base (L9.
     "L9.2": {
       prereq: ["exponent-laws"],
       cards: ["log-rules", "change-of-base"],
-      body: String.raw`Products of logarithms in different bases, sums of logarithms of many numbers, and logarithms of awkward numbers all simplify with a handful of laws. What is $\log_2 3 \cdot \log_3 8$? What is $\log_4 8$? What is $\log_5\left(125\sqrt5\right)$? Each is one line once every logarithm is read as an exponent.
+      body: String.raw`Read $\log_b x=u$ as the equation $b^u=x$. The base assumptions $b\gt 0$, $b\ne1$ make the exponent unique for every positive $x$. For $b\gt 1$, larger exponents give larger outputs, so the logarithm is increasing. For $0\lt b\lt 1$, the order is reversed and the logarithm is decreasing. This distinction will matter whenever a comparison is transformed by a logarithm.
 
-[[log-rules|The logarithm laws]] come from the exponent laws. Since $b^m b^n = b^{m+n}$, the logarithm of a product is the sum of the logarithms, $\log_b(xy) = \log_b x + \log_b y$; similarly $\log_b \tfrac xy = \log_b x - \log_b y$ and $\log_b x^k = k\log_b x$. So $\log_5\left(125\sqrt5\right) = 3 + \tfrac12 = \tfrac72$. Two facts check every computation: $\log_b 1 = 0$ and $\log_b b = 1$. A logarithm is defined only for positive inputs, and the laws hold only where every logarithm in them is defined. A common error is $\log(x + y) = \log x + \log y$, which is false.
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 180" role="img" aria-labelledby="l92-scale-title l92-scale-desc" style="width:100%;max-width:500px;height:auto"><title id="l92-scale-title">Equal exponent steps give multiplicative spacing of inputs</title><desc id="l92-scale-desc">The inputs one quarter, one half, one, two, four and eight are evenly placed on a logarithmic scale. Their base-two logarithms are minus two, minus one, zero, one, two and three. Each step doubles the input and adds one to the logarithm.</desc><path d="M50 83H450" stroke="currentColor" fill="none"/><path d="M50 76V90" stroke="currentColor"/><text x="50" y="62" fill="currentColor" text-anchor="middle" font-size="17">1/4</text><text x="50" y="119" fill="currentColor" text-anchor="middle" font-size="17">-2</text><path d="M130 76V90" stroke="currentColor"/><text x="130" y="62" fill="currentColor" text-anchor="middle" font-size="17">1/2</text><text x="130" y="119" fill="currentColor" text-anchor="middle" font-size="17">-1</text><path d="M210 76V90" stroke="currentColor"/><text x="210" y="62" fill="currentColor" text-anchor="middle" font-size="17">1</text><text x="210" y="119" fill="currentColor" text-anchor="middle" font-size="17">0</text><path d="M290 76V90" stroke="currentColor"/><text x="290" y="62" fill="currentColor" text-anchor="middle" font-size="17">2</text><text x="290" y="119" fill="currentColor" text-anchor="middle" font-size="17">1</text><path d="M370 76V90" stroke="currentColor"/><text x="370" y="62" fill="currentColor" text-anchor="middle" font-size="17">4</text><text x="370" y="119" fill="currentColor" text-anchor="middle" font-size="17">2</text><path d="M450 76V90" stroke="currentColor"/><text x="450" y="62" fill="currentColor" text-anchor="middle" font-size="17">8</text><text x="450" y="119" fill="currentColor" text-anchor="middle" font-size="17">3</text><g fill="currentColor" text-anchor="middle" font-size="16"><text x="250" y="25">Input x doubles at each step</text><text x="250" y="158">log₂ x: equal steps of +1</text></g></svg>
 
-[[change-of-base|The change of base formula]] $\log_b x = \tfrac{\log_c x}{\log_c b}$ rewrites a logarithm in any base $c$; in particular $\log_b a = \tfrac{1}{\log_a b}$. It is the key to products of logarithms, which telescope: $\log_2 3 \cdot \log_3 8 = \tfrac{\log 3}{\log 2} \cdot \tfrac{\log 8}{\log 3} = \tfrac{\log 8}{\log 2} = 3$. When bases are powers of one number, rewrite them: $\log_4 8 = \tfrac{\log_2 8}{\log_2 4} = \tfrac32$.
+The scale shows what this means for base two. Equal steps in the exponent correspond to multiplying the input by two, even when the input is below one. Multiplication is the natural measure of spacing on a logarithmic scale; the positive input cannot pass through zero to a negative value.
 
-Rewrite every logarithm in one base, read it as an exponent, and combine with the laws; watch the domain. The next lesson solves equations with logarithms and exponents.`,
+To derive [[log-rules|the product law]], let $x=b^u$ and $y=b^v$. Then $xy=b^{u+v}$, so $\log_b(xy)=u+v=\log_b x+\log_b y$. Dividing the powers instead subtracts their exponents, and raising $b^u$ to a real power $k$ multiplies the exponent by $k$. These give the quotient and power laws when $x,y\gt 0$. The checks $\log_b1=0$ and $\log_bb=1$ follow immediately from the defining exponential equations.
+
+The laws do not apply to sums of inputs. For base ten, $\log 4+\log25=\log100=2$, whereas $\log(4+25)=\log29$ is a different quantity. A power identity also retains its domain: $\log_b(x^2)=2\log_b x$ requires $x\gt 0$ on the right. The left side alone is defined for every nonzero real $x$; on that larger domain the correct identity is $\log_b(x^2)=2\log_b|x|$. A rewrite can otherwise introduce an undefined logarithm or conceal a restriction.
+
+For [[change-of-base|change of base]], begin again with $b^u=x$ and take logarithms to another valid base $c$. The power law gives $u\log_cb=\log_cx$, hence
+
+$$\log_bx=\frac{\log_cx}{\log_cb}.$$
+
+The denominator is nonzero because $b\ne1$. It also shows that the auxiliary base $c$ can be chosen for convenience, provided it is positive and not one.
+
+For $\log_2 3\cdot\log_3 8$, change both logarithms to the same valid base. The two factors containing $\log 3$ cancel, leaving $\log_2 8=3$. The reciprocal identity $\log_ba=1/\log_ab$ is a special case, but it additionally needs $a\ne1$ because $a$ is now being used as a base. A zero logarithm cannot be inverted. For bases that are related powers, use their common underlying base: $\log_4 8=(\log_2 8)/(\log_2 4)=3/2$.
+
+Logarithms can also locate the size of a positive integer. An integer $N$ has $d$ decimal digits exactly when $10^{d-1}\le N\lt 10^d$. Taking base-ten logarithms gives $d-1\le\log N\lt d$, so the digit count is $\lfloor\log N\rfloor+1$. Near an integer boundary, an approximate logarithm needs enough accuracy to determine the correct floor; a rough decimal value alone should not decide a boundary case.`,
       related: [
         { card: "telescoping", note: String.raw`a product of logarithms collapses like a telescoping product (L6.5).` },
         { card: "digit-count", note: String.raw`the number of digits of $N$ is $\lfloor \log_{10} N \rfloor + 1$.` }
@@ -62,15 +74,21 @@ Rewrite every logarithm in one base, read it as an exponent, and combine with th
     "L9.3": {
       prereq: ["log-rules", "change-of-base", "quadratic-formula"],
       cards: ["take-logs-linearize", "log-substitution", "log-system"],
-      body: String.raw`Equations with the unknown in an exponent or inside a logarithm look unfamiliar, but they usually turn into polynomial equations. Solve $4^x - 6 \cdot 2^x + 8 = 0$; solve $\log_2 x + \log_2(x - 2) = 3$; find $x + y$ if $\log x + \log y = 3$ and $\log x - \log y = 1$. Each becomes a quadratic or a linear system after one move.
+      body: String.raw`Equations involving exponents and logarithms become manageable when the exponential relationship is kept explicit. Sometimes both sides can be written as powers of the same base; sometimes a repeated power should be named as one variable; and sometimes taking a logarithm brings an unknown exponent into an algebraic equation.
 
-[[take-logs-linearize|Taking logarithms]] of both sides brings an exponent down: $a^x = b$ gives $x = \log_a b$, and an equation such as $x^{\log x} = 100x$ becomes $(\log x)^2 = 2 + \log x$, a quadratic in $\log x$. Conversely, an equation with one logarithm is solved by exponentiating: $\log_b y = c$ means $y = b^c$.
+For $a^x=b$ with fixed $a\gt 0$, $a\ne1$ and $b\gt 0$, [[take-logs-linearize|taking logarithms]] gives $x=\log_ab$. If $b\le0$, there is no real solution to this exponential equation. More generally, taking a logarithm of both sides preserves an equality only on a domain where both sides are positive. Exponentiating an equation with one logarithm is the inverse operation: $\log_bu=v$ means $u=b^v$, subject to the original base and input conditions.
 
-[[log-substitution|Substituting for a logarithm or a power]] turns the equation into a polynomial. In $4^x - 6 \cdot 2^x + 8 = 0$, $4^x = (2^x)^2$, so with $t = 2^x$ it reads $t^2 - 6t + 8 = 0$: $t = 2$ or $4$, so $x = 1$ or $2$. With logarithms, combine first: $\log_2 x + \log_2(x - 2) = \log_2\left(x(x - 2)\right) = 3$ gives $x(x - 2) = 8$, so $x = 4$ or $x = -2$; but $\log_2(-2)$ is undefined, so only $x = 4$ works. The domain check is essential, because combining logarithms can add solutions.
+Related powers can expose a repeated block. In $4^x-6\cdot2^x+8=0$, use $4^x=(2^x)^2$ and set $t=2^x$. The outer equation is $t^2-6t+8=0$, giving $t=2,4$. Both are in the range $t\gt 0$ of the original exponential, and they give $x=1,2$. This is [[log-substitution|substituting a power]]. If the outer polynomial instead had a negative root for $t$, that candidate would have no real exponential preimage and must be discarded.
 
-[[log-system|A system of logarithmic equations]] is a linear system in the logarithms: with $a = \log x$ and $b = \log y$, $a + b = 3$ and $a - b = 1$ give $a = 2$, $b = 1$, so $x = 100$, $y = 10$ and $x + y = 110$. Vieta's formulas often finish: the product of the solutions of a quadratic in $\log x$ is $10$ raised to the sum of its roots.
+A logarithm can also be the repeated block. For $x^{\log x}=100x$, with base-ten logarithms, the domain is $x\gt 0$, so both sides are positive. Taking logarithms gives $(\log x)^2=2+\log x$. Letting $u=\log x$ yields $(u-2)(u+1)=0$. Thus $u=2$ or $u=-1$, corresponding to $x=100$ or $x=1/10$. A negative value of a logarithm is allowed; it corresponds to a positive input less than one. Checking the original equation confirms both values.
 
-Bring the exponents down or name the logarithm, solve the polynomial, and check every solution against the domain. The Summary (L9.4) collects the chapter's strategies.`,
+For $\log_2x+\log_2(x-2)=3$, record the domain first: both inputs must be positive, so $x\gt 2$. Within this domain the product law gives $\log_2(x(x-2))=3$, hence $x(x-2)=8$. The algebraic roots are $4$ and $-2$, but only $4$ belongs to the original domain.
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" role="img" aria-labelledby="l93-domain-title l93-domain-desc" style="width:100%;max-width:500px;height:auto"><title id="l93-domain-title">Combining logarithms can conceal the separate input restrictions</title><desc id="l93-domain-desc">The original pair of logarithms requires x greater than two, admitting the root four but rejecting minus two. The combined logarithm only requires x times x minus two positive, which also admits x less than zero. Hollow endpoints exclude zero and two.</desc><g stroke="currentColor" fill="none"><path d="M50 65H450M50 185H450" opacity="0.3"/><path d="M300 65H450M50 185H200M300 185H450" stroke-width="3"/><path d="M441 60L450 65L441 70M59 180L50 185L59 190M441 180L450 185L441 190" stroke-width="1.5"/><path d="M95 60L105 70M95 70L105 60" stroke-width="1.5"/></g><g fill="var(--bg)" stroke="currentColor" stroke-width="1.5"><circle cx="300" cy="65" r="5"/><circle cx="200" cy="185" r="5"/><circle cx="300" cy="185" r="5"/></g><g fill="currentColor"><circle cx="400" cy="65" r="4"/><circle cx="100" cy="185" r="4"/><circle cx="400" cy="185" r="4"/><g font-size="15" text-anchor="middle"><text x="250" y="28">Separate inputs positive: x &gt; 2</text><text x="200" y="88">0</text><text x="300" y="88">2</text><text x="100" y="111">−2 excluded</text><text x="400" y="111">4 allowed</text><text x="250" y="148">Product positive: x &lt; 0 or x &gt; 2</text><text x="200" y="208">0</text><text x="300" y="208">2</text><text x="100" y="233">−2 allowed here</text><text x="400" y="233">4 allowed</text></g></g></svg>
+
+The diagram explains why the restriction cannot be recovered from the combined input alone. The product $x(x-2)$ is positive for $x\lt 0$ as well as for $x\gt 2$, so the single combined logarithm has a larger domain than the original pair. The logarithm law has not failed: it was used outside its hypotheses if the newly available negative inputs are treated as original solutions. Carry the original restrictions alongside the transformed equation.
+
+A [[log-system|system in logarithms]] is often linear after naming the logarithms. For $u=\log x$ and $v=\log y$, the conditions $u+v=3$ and $u-v=1$ give $u=2,v=1$, hence $x=100,y=10$ and $x+y=110$. The sum $u+v$ corresponds to the product $xy$, not to the sum $x+y$. Similarly, if two admissible roots $u_1,u_2$ of an equation in $u=\log x$ have known sum, the product of the corresponding positive solutions is $10^{u_1+u_2}$.`,
       related: [
         { card: "substitute-repeated-block", note: String.raw`the same substitution idea for a repeated algebraic block (L5.2).` },
         { card: "vietas-quadratic", note: String.raw`the sum or product of the solutions, without solving (L3.3).` }
@@ -92,15 +110,19 @@ Bring the exponents down or name the logarithm, solve the polynomial, and check 
     "L9.4": {
       prereq: ["log-rules", "change-of-base", "take-logs-linearize", "log-substitution", "log-system"],
       cards: [],
-      body: String.raw`[[log-rules|The logarithm laws]] turn products into sums, quotients into differences and powers into multiples, for positive inputs only. [[change-of-base|Change of base]] puts every logarithm in one base, which makes products of logarithms telescope and bases that are powers of one number easy.
+      body: String.raw`A logarithm reverses an exponential assignment on a specified positive domain. [[log-rules|The logarithm laws]] follow by adding, subtracting or multiplying exponents; their input and base conditions remain part of each identity. In particular, a positive logarithm input does not imply a positive logarithm value, and a base between zero and one reverses order in comparisons.
 
-[[take-logs-linearize|Taking logarithms]] brings an unknown exponent down, and [[log-substitution|naming a logarithm or a power]] turns an equation into a polynomial. [[log-system|A system in logarithms]] is a linear system in the logarithms. Every solution is checked against the domain, since combining logarithms can add solutions.`,
+[[change-of-base|Changing base]] expresses the same relationship using another valid exponential unit. It can expose cancellations in products of logarithms, but any canceled or inverted denominator must be nonzero. Special evaluations and digit estimates are useful only with enough accuracy to establish the intended bounds or integer floor.
+
+[[take-logs-linearize|Taking logarithms]] can expose an unknown exponent when both sides are positive. [[log-substitution|Naming a power or logarithm]] then simplifies the outer algebra while retaining the range of the substitute variable. A power such as $2^x$ is always positive; a logarithm such as $\log x$ can take any real value while its input stays positive.
+
+A [[log-system|system]] can be solved in the logarithms and translated back, keeping sums of logarithms distinct from sums of inputs. Combining separate logarithms may enlarge the apparent domain of a transformed expression, so record the original restrictions first and test every candidate against them.`,
       strategies: [
         String.raw`Read every logarithm as an exponent: $\log_b x = y$ means $b^y = x$.`,
         String.raw`Put every logarithm in one base before combining.`,
         String.raw`For a product of logarithms, change base and cancel.`,
         String.raw`For an equation with $b^{2x}$ and $b^x$, substitute $t = b^x$.`,
-        String.raw`Combine logarithms into one, exponentiate, and check each solution against the domain.`,
+        String.raw`Record the separate logarithms' domains, combine within those restrictions, exponentiate, and check each candidate in the original equation.`,
         String.raw`In a system of logarithmic equations, treat the logarithms as the unknowns.`
       ]
     }

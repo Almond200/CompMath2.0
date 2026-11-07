@@ -14,7 +14,7 @@ If the perimeter is $30$ meters, we gain an equation, $4x+6=30$, and hence $x=6$
 
 Throughout this chapter, rewriting means preserving a value while changing its form. Powers compress repeated multiplication. Expanding reveals the terms in a product; factoring gathers them back together. Ratios express a relationship that stays the same when both quantities are scaled. Each form makes a different feature easier to see.
 
-The next lesson develops the language of expressions and equations. We then study powers and roots, use area to understand expansion and factoring, and finish by comparing quantities through ratios and percentages. The aim is to choose and justify a representation, rather than memorize a different formula for each story.`,
+The next lesson develops the language of expressions and equations. We then study powers and roots, use area to understand expansion and factoring, and finish by comparing quantities through ratios and percentages.`,
       exercises: [
         { q: String.raw`Find the value of $3x^2 - 2x + 1$ when $x = -2$.`, answer: "17",
           solution: String.raw`Replace $x$ by $-2$, keeping the brackets: $3(-2)^2 - 2(-2) + 1 = 3 \cdot 4 + 4 + 1 = 17$. The square of $-2$ is $4$, not $-4$.` },
@@ -34,7 +34,7 @@ The next lesson develops the language of expressions and equations. We then stud
       cards: [],
       body: String.raw`An algebraic model begins with a choice: which quantity should have a name? A useful choice makes the other quantities easy to express and keeps the relationship in the problem visible. Naming every number separately often creates unnecessary equations. Naming only the requested answer can also be awkward when several other quantities depend on something simpler.
 
-Consider three consecutive integers with sum $72$. We could call the first $n$ and write $n+(n+1)+(n+2)=72$. Calling the middle integer $m$ instead gives $(m-1)+m+(m+1)=72$. The extra $1$ and the missing $1$ cancel, leaving $3m=72$. Thus the numbers are $23,24,25$. Both choices work, but the middle one exposes the symmetry. Choosing a variable is part of solving the problem, not merely a label attached before the real work.
+Consider three consecutive integers with sum $72$. We could call the first $n$ and write $n+(n+1)+(n+2)=72$. Calling the middle integer $m$ instead gives $(m-1)+m+(m+1)=72$. The extra $1$ and the missing $1$ cancel, leaving $3m=72$. Thus the numbers are $23,24,25$. Both choices work, but the middle one exposes the symmetry.
 
 An expression such as $2b+4$ describes a quantity. It does not by itself give a value for $b$. If Bo is $b$ years old and Ann is four years older than twice Bo's age, Ann's age is $2b+4$. Their combined age is therefore $(2b+4)+b$. Only when we are told that their ages total $34$ can we write
 
@@ -42,7 +42,7 @@ $$ (2b+4)+b=34. $$
 
 The two occurrences of $b$ refer to the same age, so $2b+b=3b$. Subtracting $4$ from both sides gives $3b=30$, and dividing both sides by $3$ gives $b=10$. Ann is $24$. The check uses the original information: twice $10$ plus $4$ is $24$, and the two ages add to $34$. A check made only in a mistranslated equation could miss the translation error.
 
-The order of operations determines what an expression says. In $2b+4$, multiplication happens before addition; in $2(b+4)$, the parentheses make addition happen first. The first expression doubles the age and adds four years; the second adds four years before doubling. At $b=10$ they give $24$ and $28$, so they cannot describe the same relationship. Parentheses record meaning, not just a preferred way to arrange symbols.
+The order of operations determines what an expression says. In $2b+4$, multiplication happens before addition; in $2(b+4)$, the parentheses make addition happen first. The first expression doubles the age and adds four years; the second adds four years before doubling. At $b=10$ they give $24$ and $28$, so they cannot describe the same relationship.
 
 Rewriting an expression must preserve that meaning. In $3(2x-1)-2(x-4)$, multiplication distributes to every term in each parenthesis. The second multiplier is $-2$, so its contribution is $-2x+8$. Combining the terms gives $4x+5$. We may combine $6x$ and $-2x$ because both count copies of the same $x$; we may not combine $4x$ and $5$ into $9x$. Substitution at $x=2$ gives $13$ in both the original and simplified forms, a useful check on the signs.
 
@@ -66,7 +66,7 @@ Before solving a word problem, say what the variable measures, write the other q
     "L1.3": {
       prereq: [],
       cards: ["exponent-laws", "rationalizing"],
-      body: String.raw`A power is a way to keep track of repeated factors. Reading $2^5$ as five factors of $2$, rather than as an unfamiliar large number, makes its behavior predictable. The important question is often which factors can be combined or canceled, not what the power equals in decimal notation.
+      body: String.raw`A power records repeated factors: $2^5$ contains five factors of $2$. Combining or canceling those factors explains how products and quotients of powers behave.
 
 For example, $2^3\cdot2^4$ contains three factors of $2$ followed by four more, so it contains seven altogether. In $2^7/2^5$, five factors cancel, leaving two. Likewise $(2^3)^4$ consists of four groups of three factors. This counting explains the addition, subtraction and multiplication of exponents in [[exponent-laws|the exponent laws]]. The operations on the exponents differ because the arrangements of factors differ.
 
@@ -104,7 +104,7 @@ A denominator involving roots is another opportunity to expose factors. Multiply
     },
     "L1.4": {
       prereq: ["exponent-laws"],
-      cards: ["square-of-sum", "difference-of-squares", "completing-the-square"],
+      cards: ["two-variable-identities", "difference-of-squares", "completing-the-square"],
       body: String.raw`An expression can be correct in several forms while revealing different information. A product shows factors, a sum shows contributions, and a square plus a constant can show a minimum. Learning to move between these forms lets us decide what to calculate instead of expanding everything automatically.
 
 Begin with a rectangle of sides $x+2$ and $x+5$, where $x>0$ so that the pieces can be interpreted as lengths. Cut one side into $x$ and $2$, and the other into $x$ and $5$. The four smaller rectangles have areas $x^2$, $5x$, $2x$ and $10$. They exactly fill the original rectangle:
@@ -115,7 +115,7 @@ $$(x+2)(x+5)=x^2+5x+2x+10=x^2+7x+10.$$
 
 The picture explains why every term of one parenthesis multiplies every term of the other. After the distributive law has established the identity, the algebraic statement also holds for zero and negative $x$, even though the picture's positive-length interpretation no longer applies. A geometric explanation can suggest an identity without restricting the final identity to the pictured case.
 
-When the two side lengths are both $a+b$, the two rectangular cross pieces have the same area $ab$. This is why [[square-of-sum|squaring a sum]] produces a middle contribution $2ab$. Omitting it leaves two pieces of the square uncounted. Reading the identity in reverse also lets us find information about two numbers without finding the numbers separately. If $a+b=7$ and $ab=12$, then
+When the two side lengths are both $a+b$, the two rectangular cross pieces have the same area $ab$. This is why [[two-variable-identities|squaring a sum]] produces a middle contribution $2ab$. Omitting it leaves two pieces of the square uncounted. Reading the identity in reverse also lets us find information about two numbers without finding the numbers separately. If $a+b=7$ and $ab=12$, then
 
 $$a^2+b^2=(a+b)^2-2ab=49-24=25.$$
 
@@ -190,13 +190,13 @@ When quantities are compared, state what the denominator measures. When they sca
       ]
     },
     "L1.6": {
-      prereq: ["exponent-laws", "rationalizing", "square-of-sum", "difference-of-squares", "completing-the-square", "setting-up-proportions", "percent-change"],
+      prereq: ["exponent-laws", "rationalizing", "two-variable-identities", "difference-of-squares", "completing-the-square", "setting-up-proportions", "percent-change"],
       cards: [],
       body: String.raw`An expression is rewritten without changing its value by following the order of operations, combining like terms and expanding brackets with their signs; a word problem starts by naming the unknown well and translating the sentences in order.
 
 [[exponent-laws|The exponent laws]] work on a common base: multiplying adds exponents, dividing subtracts, and a power of a power multiplies; $a^0 = 1$, $a^{-n} = \tfrac{1}{a^n}$, and $a^{1/n}$ is a root. Powers with different bases are compared with a common exponent. A root is simplified by pulling out square factors, and [[rationalizing|a root in a denominator]] is cleared with the conjugate.
 
-[[square-of-sum|The square of a sum]], [[difference-of-squares|the difference of squares]] and [[completing-the-square|completing the square]] turn long computations into short ones, give $a^2 + b^2$ from $a + b$ and $ab$, and find the smallest value of a quadratic.
+[[two-variable-identities|The square of a sum]], [[difference-of-squares|the difference of squares]] and [[completing-the-square|completing the square]] turn long computations into short ones, give $a^2 + b^2$ from $a + b$ and $ab$, and find the smallest value of a quadratic.
 
 [[setting-up-proportions|A proportion]] scales one quantity to another, a ratio $a : b$ is written as $ak$ and $bk$, and [[percent-change|a percent change]] is a multiplication: successive changes multiply, and a change is undone by dividing by its factor.`,
       strategies: [

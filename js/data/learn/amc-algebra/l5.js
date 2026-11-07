@@ -4,7 +4,7 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["L5"] = {
   lessons: {
     "L5.1": {
-      prereq: ["vietas-quadratic", "square-of-sum"],
+      prereq: ["vietas-quadratic", "two-variable-identities"],
       cards: [],
       body: String.raw`A long expression can have a simple internal structure. The useful unit of algebra is not always a single variable: it may be a repeated combination, a sum of unknown quantities, or a whole expression that appears inside itself. Naming that unit lets us work at the level where the condition is simplest, then return to the original variables only if the question requires them.
 
@@ -14,7 +14,7 @@ The distinction between a block value and an original input matters. A block suc
 
 Symmetry offers another kind of simplification. A question that treats several variables alike may depend only on their sum and products, rather than their individual values. Vieta's formulas provided this viewpoint for two roots; here we use it to recognize repeated structure in larger expressions and in systems of equations.
 
-The first lesson develops substitutions, hidden repeated blocks and the extra care needed with infinite expressions. The second follows symmetry through expansion, factoring and subtraction. In both, the aim is to preserve the relationships that determine the answer while avoiding calculations that the question never needs.`,
+Substitution keeps track of which original inputs produce a given block value. Symmetric identities instead combine variables in ways that preserve a requested sum or product. For an infinite expression, a proposed block value must also be the limit of the finite expressions that define it.`,
       exercises: [
         { q: String.raw`How many real solutions does $(x^2 + x)^2 - 8(x^2 + x) + 12 = 0$ have?`, answer: "4",
           solution: String.raw`With $t = x^2 + x$: $t^2 - 8t + 12 = (t - 2)(t - 6) = 0$. Then $x^2 + x = 2$ gives $x = 1, -2$, and $x^2 + x = 6$ gives $x = 2, -3$. Four real solutions.` },
@@ -46,7 +46,7 @@ A continued fraction shows why monotonicity must be checked rather than assumed.
 
 $$|u_{n+1}-\phi|=\frac{|u_n-\phi|}{u_n\phi}\le\frac{|u_n-\phi|}{\phi}.$$
 
-Because $\phi>1$, repeated steps shrink the error to zero. This proves convergence to the positive candidate, rather than choosing a root and hoping the truncations approach it. For finite substitutions, verify the preimages; for infinite ones, verify the limiting process as well.`,
+Because $\phi>1$, repeated steps shrink the error to zero. The finite truncations therefore converge to $\phi$. For finite substitutions, verify the preimages; for infinite ones, verify the limiting process as well.`,
       related: [
         { card: "palindromic-polynomials", note: String.raw`the substitution $t = x + \tfrac1x$ for polynomials that read the same both ways (L10.5).` },
         { card: "log-substitution", note: String.raw`naming $\log x$ or $2^x$ to turn an equation into a polynomial (L9.3).` }
@@ -71,10 +71,10 @@ Because $\phi>1$, repeated steps shrink the error to zero. This proves convergen
     },
     "L5.3": {
       prereq: ["symmetric-polynomial-strategies", "difference-of-squares"],
-      cards: ["sum-zero-identities", "pairwise-sum-product", "an-minus-bn", "subtract-and-factor"],
+      cards: ["square-of-sum", "sum-zero-identities", "pairwise-sum-product", "an-minus-bn", "subtract-and-factor"],
       body: String.raw`Symmetry suggests combining variables before trying to find them separately. With three variables, the elementary combinations $S=a+b+c$, $Q=ab+bc+ca$ and $P=abc$ record the total, the pairwise products and the full product. A target that treats the variables equally can often be reconstructed from these quantities. The useful identities come from counting which terms an expansion includes.
 
-Squaring $S$ gives $a^2+b^2+c^2$ plus two copies of each pairwise product. If $S=0$, it follows that $Q=-(a^2+b^2+c^2)/2$. The condition on the sum causes part of an expansion to disappear. For cubes, expand
+[[square-of-sum|Squaring the three-term sum $S$]] gives $a^2+b^2+c^2$ plus two copies of each pairwise product. If $S=0$, it follows that $Q=-(a^2+b^2+c^2)/2$. The condition on the sum causes part of an expansion to disappear. For cubes, expand
 
 $$S(a^2+b^2+c^2-Q).$$
 
