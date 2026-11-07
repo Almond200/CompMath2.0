@@ -66,5 +66,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Cards from the tagging pass, 2026 AMC 10A and 12A (P54, P55, P57)", date: "2026-11-07",
     ids: ["rounding-ranges", "sum-difference-angle-product", "bounded-diophantine-count"] },
   { label: "Split from Expansions of (a+b+c)^2 (owner)", date: "2026-11-07",
-    ids: ["two-variable-identities"] }
+    ids: ["two-variable-identities"] },
+  { label: "Card from the tagging pass, 2026 AIME I (P59)", date: "2026-11-07",
+    ids: ["composing-rotations"] }
 ];

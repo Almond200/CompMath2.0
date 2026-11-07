@@ -2860,6 +2860,23 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
+  // A turn about P and the same turn back about Q: the segment ends up parallel and equal.
+  DIAGRAMS["composing-rotations"] = [(() => {
+    const P = [80, 285], Q = [250, 285], A = [150, 250], B = [225, 262], al = rad(-50);
+    const rot = (X, C, a) => add(C, rotv(sub(X, C), a));
+    const A1 = rot(A, P, al), B1 = rot(B, P, al), A2 = rot(A1, Q, -al), B2 = rot(B1, Q, -al);
+    const ok = dist(sub(A2, A), sub(B2, B)) < 1e-9 && Math.abs(dist(A2, B2) - dist(A, B)) < 1e-9;
+    return wrap(470, 330, [
+      seg(A, A2, FNT, 1.3, "5 4"), seg(B, B2, FNT, 1.3, "5 4"),
+      seg(A1, B1, FNT, 2, "4 3"), seg(A, B, ACC, 2.6), seg(A2, B2, GLD, 2.6),
+      dot(P, DIM, 4), dot(Q, DIM, 4), txt(add(P, [0, 20]), "P", DIM, 13), txt(add(Q, [0, 20]), "Q", DIM, 13),
+      dot(A, ACC, 4), dot(B, ACC, 4), txt(add(A, [-4, 20]), "A", ACC), txt(add(B, [10, 18]), "B", ACC),
+      dot(A1, FNT, 3.5), dot(B1, FNT, 3.5), txt(add(A1, [-16, 4]), "A′", FNT), txt(add(B1, [-16, -6]), "B′", FNT),
+      dot(A2, GLD, 4), dot(B2, GLD, 4), txt(add(A2, [-6, -12]), "A″", GLD), txt(add(B2, [14, -8]), "B″", GLD),
+      cap(470, 330, "turn AB by 50° about P, then back by 50° about Q: A″B″ is AB slid, parallel and equal, so ABB″A″ is a parallelogram" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
   DIAGRAMS["reflection-composition"] = [(() => {
     const O = [215, 235], r = 105;
     const m = (p, a, b) => sub(mul(foot(p, a, b), 2), p);   // mirror p in line ab

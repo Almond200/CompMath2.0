@@ -1851,7 +1851,8 @@
     "rounding-ranges": "method",
     "sum-difference-angle-product": "formula",
     "bounded-diophantine-count": "pattern",
-    "two-variable-identities": "formula"
+    "two-variable-identities": "formula",
+    "composing-rotations": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -9047,6 +9048,12 @@
       [
         "(new card)",
         "split from square-of-sum, written directly in the formula template"
+      ]
+    ],
+    "composing-rotations": [
+      [
+        "(new card)",
+        "written directly in the formula template"
       ]
     ]
   }

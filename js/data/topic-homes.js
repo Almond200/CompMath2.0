@@ -168,7 +168,7 @@ window.MATH_TOPIC_HOMES = {
   "pentagonal-number-theorem": "cp.struct.part.partition",
   "hook-length-formula": "cp.tech.bij.bij",
   "stirling-bell": "cp.struct.part.set",
-  "permutation-cycle-structure": "cp.struct.seat.derange",
+  "permutation-cycle-structure": "cp.basic.perm.cycle",
   "burnsides-lemma": "cp.tech.sym.burnside",
   "polya-enumeration": "cp.tech.sym.burnside",
   "stirling-first-kind": "cp.struct.part.set",
@@ -783,5 +783,6 @@ window.MATH_TOPIC_HOMES = {
   // Cards from the tagging pass (2026-11-07)
   "rounding-ranges": "alg.word.compute.round",
   "sum-difference-angle-product": "alg.trig.identity.sum",
-  "bounded-diophantine-count": "nt.dio.linear.solve"
+  "bounded-diophantine-count": "nt.dio.linear.solve",
+  "composing-rotations": "geo.coord.transform.rotate"
 };
