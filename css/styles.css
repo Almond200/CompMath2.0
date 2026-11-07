@@ -4342,23 +4342,18 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 
 /* ---------- Dark mode, fourth pass (2026-11-07) ----------
    The book's ink (the CHAPTER and LESSON labels, lesson codes, chapter numbers) was the cover's
-   strong colour, which reads dim and saturated on the navy page; it is now that colour mixed
-   with the body white. Lesson prose drops one step from white, like a card's page. The contest
-   profile's pie, bars and line are softened toward the card background. Dark only. */
+   strong colour, which reads dim on the navy page; it is now that colour lightened with a
+   little of the body white, staying saturated. Lesson prose drops one step from white, like a card's page. The contest
+   profile's pie, bars and line are dimmed slightly, keeping their saturation. Dark only. */
 :root[data-theme="dark"] :is(.bk-view, .bk-contents) {
-  --bk-ink: color-mix(in srgb, var(--bk-a) 58%, #e8ecf6);
+  --bk-ink: color-mix(in srgb, var(--bk-a) 68%, #e8ecf6);
 }
 :root[data-theme="dark"] .bk-view .lp-main :is(p, li, .katex) { color: #c9d1e4; }
 :root[data-theme="dark"] .bk-view .lp-main :is(.lp-cards-label, .lp-cards-sep) { color: var(--text-dim); }
 :root[data-theme="dark"] .bk-view .lp-main :is(a, a .katex) { color: var(--accent); }
-:root[data-theme="dark"] .pf-c0 { fill: color-mix(in srgb, var(--c-practice) 72%, var(--bg-card)); background: color-mix(in srgb, var(--c-practice) 72%, var(--bg-card)); }
-:root[data-theme="dark"] .pf-c1 { fill: color-mix(in srgb, var(--c-formulas) 72%, var(--bg-card)); background: color-mix(in srgb, var(--c-formulas) 72%, var(--bg-card)); }
-:root[data-theme="dark"] .pf-c2 { fill: color-mix(in srgb, var(--c-methods) 62%, var(--bg-card)); background: color-mix(in srgb, var(--c-methods) 62%, var(--bg-card)); }
-:root[data-theme="dark"] .pf-c3 { fill: color-mix(in srgb, var(--c-patterns) 68%, var(--bg-card)); background: color-mix(in srgb, var(--c-patterns) 68%, var(--bg-card)); }
-:root[data-theme="dark"] .pf-c4 { fill: #59647f; background: #59647f; }
-:root[data-theme="dark"] .pf-path { stroke: color-mix(in srgb, var(--space) 72%, var(--bg-card)); }
-:root[data-theme="dark"] .pf-pt { stroke: color-mix(in srgb, var(--space) 72%, var(--bg-card)); }
 :root[data-theme="dark"] .pf-band { color: var(--text-head); }
+/* The charts dim without losing saturation (owner: mixing toward the card background made colours dull). */
+:root[data-theme="dark"] :is(.pf-pie, .pf-bar, .pf-sw, .pf-line .pf-path, .pf-line .pf-pt) { filter: saturate(1.05) brightness(0.86); }
 /* Small grey text added with the newer search results and book pages read under 4:1 on a card in
    --text-faint; in dark they use --text-dim. */
 :root[data-theme="dark"] :is(.card-crumb, .rs-k, .rs-n, .rs-more-line, .more-forms, .bk-stats, .lb-n, .card-study-list, .book-search .set-find-group) { color: var(--text-dim); }
