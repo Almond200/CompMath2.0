@@ -420,10 +420,20 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "square-of-sum",
-          name: "Expansions of $(a+b+c)^2$",
-          latex: String.raw`(a+b+c)^2 = a^2+b^2+c^2 + 2(ab+bc+ca), \qquad (a+b)^2 + (a-b)^2 = 2(a^2+b^2), \qquad (a+b)^2 - (a-b)^2 = 4ab`,
-          description: String.raw`Squaring a sum of three terms $a$, $b$, $c$ gives each square once and each product of two different terms twice. That makes it a converter between the sum $a + b + c$, the sum of the squares, and the sum of the pairwise products $ab + bc + ca$: any two determine the third. Two relatives do the same job for two variables, comparing the squares of $a + b$ and $a - b$, and one more climbs the powers of $x + \frac1x$: $x^2 + \frac{1}{x^2} = \left(x + \frac1x\right)^2 - 2$.`,
-          keywords: ["symmetric sums", "expand", "x plus 1 over x", "(a+b)^2 expansion", "perfect square of a sum", "recover a^2+b^2"],
+          name: "Expansion of $(a+b+c)^2$",
+          latex: String.raw`(a+b+c)^2 = a^2+b^2+c^2 + 2(ab+bc+ca)`,
+          description: String.raw`Squaring a sum of three terms $a$, $b$, $c$ gives each square once and each product of two different terms twice: $(a+b+c)^2 = a^2+b^2+c^2+2(ab+bc+ca)$. That makes it a converter between the sum $a+b+c$, the sum of the squares, and the sum of the pairwise products $ab+bc+ca$: any two determine the third, without finding $a$, $b$, and $c$. The same count works for any number of terms, while the two-term case has its own set of conversions, in [[two-variable-identities|the sum, product, and squares of two numbers]].`,
+          keywords: ["symmetric sums", "expand (a+b+c)^2", "square of a trinomial", "sum of pairwise products", "ab+bc+ca", "sum of squares from the sum", "perfect square of a sum"],
+          importance: "high",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "two-variable-identities",
+          name: "Sum, Product, and Squares of Two Numbers",
+          latex: String.raw`a^2+b^2 = (a+b)^2 - 2ab, \qquad (a-b)^2 = (a+b)^2 - 4ab, \qquad a^3+b^3 = (a+b)^3 - 3ab(a+b)`,
+          description: String.raw`For two numbers $a$ and $b$, the sum $a+b$ and the product $ab$ determine every symmetric expression in them, starting with $a^2+b^2 = (a+b)^2 - 2ab$. So any two of $a+b$, $ab$, and $a^2+b^2$ give the third, and the difference follows from $(a-b)^2 = (a+b)^2 - 4ab$, up to its sign. The same move climbs to cubes, $a^3+b^3 = (a+b)^3 - 3ab(a+b)$, and with $b = \frac1x$, where the product is $1$, it climbs the powers of $x + \frac1x$.`,
+          keywords: ["(a+b)^2 expansion", "recover a^2+b^2", "a^2+b^2 from a+b and ab", "x plus 1 over x", "sum and product of two numbers", "(a-b)^2 from sum and product", "a^3+b^3 from sum and product"],
           importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]

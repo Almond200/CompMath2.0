@@ -564,8 +564,8 @@
     ]);
   })()];
 
-  // (a+b)²: the four-region square.
-  DIAGRAMS["square-of-sum"] = [(() => {
+  // (a+b)²: the four-region square, on the two-variable card.
+  DIAGRAMS["two-variable-identities"] = [(() => {
     const x = 90, y = 45, a = 150, b = 80;
     return wrap(440, 340, [
       rect(x, y, a, a, ACC, 1.8, ACCS), txt([x + a / 2, y + a / 2 + 5], "a²", ACC, 15),
