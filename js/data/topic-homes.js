@@ -73,6 +73,7 @@ window.MATH_TOPIC_HOMES = {
   "rearrangement": "alg.ineq.means.rearrange",
   "nesbitt-inequality": "alg.ineq.means",
   "trivial-inequality": "alg.ineq.means",
+  "averaging-principle": "alg.ineq.optimize.constraint",
   "abs-triangle-inequality": "alg.eq.abs.eq",
   "bernoulli-inequality": "alg.ineq.means",
   "jensens-inequality": "alg.ineq.means.convex",
