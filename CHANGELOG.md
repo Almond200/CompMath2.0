@@ -2,6 +2,8 @@
 
 **2026-11-07**
 
+- Counting Walks Step by Step figures (owner): the example's lily-pad figure and the exercise's square figure lose their captions (a figure under a question is understood to be its figure), and the card's four-panel figure is drawn larger: bigger discs, numbers and vertex letters, and, as a $600$-wide strip, it now shows at up to $600$ px instead of being held to the $430$ px cap of ordinary card figures. A strip at least $560$ wide gets this; every other figure keeps the cap.
+
 - Search, lessons and chapters (owner): the abbreviations the card search knows (POP, CRT, LTE, FTA, SFFT and the rest) now find lessons and chapters too, so "POP lesson" opens with the Power of a point lesson and "CRT chapter" with the two Chinese Remainder Theorem lessons; the query as typed is tried as well. Placing lessons after the cards named for the query also reads the expansion, so "LTE" lists both Lifting the Exponent cards before the lessons. Lessons, chapters, books and problems match by their words (with synonyms); only the cards also use the semantic search.
 
 - Search, book results (owner): "AMC 10", "AMC10", "AMC 12" and "AMC 10/12" now count as "AMC" when matching a textbook, so "AMC10 Algebra" finds AMC Algebra; and a query that names a book in full is no longer read as a problem reference, so "AMC 10/12 number theory" gives the AMC 10/12 Number Theory list and the AMC Number Theory book instead of every AMC 10 problem 12. Real references ("2024 AMC 10A", "amc 10 problem 12") are unchanged.
