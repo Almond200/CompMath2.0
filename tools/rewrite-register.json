@@ -1852,7 +1852,8 @@
     "sum-difference-angle-product": "formula",
     "bounded-diophantine-count": "pattern",
     "two-variable-identities": "formula",
-    "composing-rotations": "formula"
+    "composing-rotations": "formula",
+    "inversions-adjacent-swaps": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -9051,6 +9052,12 @@
       ]
     ],
     "composing-rotations": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "inversions-adjacent-swaps": [
       [
         "(new card)",
         "written directly in the formula template"

@@ -92,6 +92,16 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10"]
         },
         {
+          id: "inversions-adjacent-swaps",
+          name: "Inversions and Adjacent Swaps",
+          latex: String.raw`\min \#\text{adjacent swaps to sort } \sigma = \operatorname{inv}(\sigma) = \#\{(i, j) : i \lt j,\ \sigma_i \gt \sigma_j\}, \qquad \operatorname{inv}(n, n-1, \ldots, 1) = \binom n2`,
+          description: String.raw`An inversion of an arrangement is a pair of items that stand in the wrong relative order, and the number of inversions measures how far the arrangement is from sorted. It answers how many swaps of neighboring items an arrangement needs: one adjacent swap changes the number of inversions by exactly $1$, so the fewest adjacent swaps that sort an arrangement equals its number of inversions. Reversing $n$ items puts every one of the $\binom n2$ pairs out of order, the most possible. Because each adjacent swap flips the parity of the count, the parity of the inversions is also an invariant of the arrangement.`,
+          keywords: ["inversions", "adjacent swaps", "swapping neighbors", "minimum number of swaps", "bubble sort", "reverse a string", "parity of a permutation"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "Olympiad"]
+        },
+        {
           id: "counting-functions",
           name: "Counting Functions & Injections",
           latex: String.raw`\#\text{functions } [n] \to [k] = k^n, \qquad \#\text{injections} = k(k-1)\cdots(k-n+1)`,

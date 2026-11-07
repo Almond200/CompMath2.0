@@ -177,6 +177,7 @@ window.MATH_TOPIC_TREE = [
   ["cp.basic.comb.choose", "Choosing subsets and committees", "cp.basic.comb"],
   ["cp.basic.comb.condition", "Choosing with conditions", "cp.basic.comb"],
   ["cp.basic.comb.subsets", "Counting subsets with a property", "cp.basic.comb"],
+  ["cp.basic.comb.pairs", "Splitting into pairs (random pairings and perfect matchings, $(2n-1)!!$ ways)", "cp.basic.comb"],
   ["cp.basic.case", "Casework and complementary counting", "cp.basic"],
   ["cp.basic.case.cases", "Casework", "cp.basic.case"],
   ["cp.basic.case.complement", "Complementary counting", "cp.basic.case"],

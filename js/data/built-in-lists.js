@@ -129,11 +129,11 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cycle-hunting", "cryptarithms", "digit-manipulation", "calendar-problems", "quadratic-perfect-square", "palindromes"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
-    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 82 cards across 11 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 83 cards across 11 sections.",
     sections: [
       { title: "Counting Basics",
         note: "Arrangements, selections and distributions. Almost every harder count reduces to one of these.",
-        ids: ["permutations-combinations", "multiset-permutations", "circular-permutations", "grid-paths", "rectangles-in-grid", "handshakes-diagonals", "counting-functions", "subset-sum-facts", "stars-and-bars", "stars-bars-upper-bound", "balls-boxes-table", "organized-listing", "fencepost-counting", "counting-shapes"] },
+        ids: ["permutations-combinations", "multiset-permutations", "circular-permutations", "grid-paths", "rectangles-in-grid", "handshakes-diagonals", "counting-functions", "subset-sum-facts", "stars-and-bars", "stars-bars-upper-bound", "balls-boxes-table", "organized-listing", "fencepost-counting", "counting-shapes", "inversions-adjacent-swaps"] },
       { title: "Binomial Coefficients",
         note: "The identities worth knowing cold, since they turn a sum into a single coefficient.",
         ids: ["pascals-identity", "binomial-row-sums", "hockey-stick", "vandermonde", "committee-chair", "multinomial-theorem", "pascal-parity", "nested-subset-pairs", "squared-binomial-sum"] },

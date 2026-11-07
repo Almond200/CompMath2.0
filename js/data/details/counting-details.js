@@ -3745,3 +3745,33 @@ No particular formula is needed; the count is the total change divided by the ch
 An AMC 8 and AMC 10 counting question, often a tournament, where the one-line argument replaces a bracket.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"inversions-adjacent-swaps": String.raw`
+## Key forms
+- $\operatorname{inv}(\sigma) = \#\{(i, j) : i \lt j,\ \sigma_i \gt \sigma_j\}$ — the pairs in the wrong relative order
+- $\min \#\text{adjacent swaps} = \operatorname{inv}(\sigma)$ — the fewest swaps of neighbors that sort $\sigma$
+- $\operatorname{inv}(n, n-1, \ldots, 1) = \binom n2$ — reversal is the worst case, with every pair inverted
+- $\operatorname{inv}$ changes by $\pm1$ under an adjacent swap — so its parity flips with every swap
+
+## Conditions
+The swaps are of neighboring positions. A swap of two items further apart can change the count by more than $1$, though always by an odd number.
+
+## Why it works
+An adjacent swap exchanges two neighbors $x$ and $y$ and moves nothing past anything else. Every pair other than $\{x, y\}$ keeps its relative order, and the pair $\{x, y\}$ reverses, so the number of inversions goes up or down by exactly $1$.
+
+A sorted arrangement has no inversions, so an arrangement with $\operatorname{inv}(\sigma)$ inversions needs at least that many swaps. That many also suffice: while the arrangement is not sorted, some two neighbors are out of order (if every neighboring pair were in order, the whole arrangement would be sorted), and swapping them removes exactly one inversion. Reversing $n$ items in order makes every one of the $\binom n2$ pairs an inversion.
+
+A swap of the items in positions $i \lt j$ can be done by adjacent swaps: move the first item right past the $j - i - 1$ items between and the second, then move the second left past those $j - i - 1$ items, $2(j - i) - 1$ adjacent swaps in all. That number is odd, so any swap changes the count by an odd number and flips its parity.
+
+## Useful observations
+- The count can be read item by item: for each item, count the larger items standing before it, and add.
+- The parity of the inversion count is unchanged by any even number of swaps, an [[invariants-coloring|invariant]] that rules out reaching some arrangements from others.
+- In a random arrangement each of the $\binom n2$ pairs is inverted with probability $\tfrac12$, so by [[indicator-variables|indicator variables]] the expected number of inversions is $\tfrac12\binom n2$.
+
+## Applications
+The fewest swaps of neighbors to sort or reverse an arrangement, the parity of a permutation, and expected inversions of a random arrangement.
+
+## Contest profile
+An occasional AMC counting question about swapping neighbors, and a parity invariant inside olympiad process problems.
+`
+});

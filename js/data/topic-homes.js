@@ -784,5 +784,6 @@ window.MATH_TOPIC_HOMES = {
   "rounding-ranges": "alg.word.compute.round",
   "sum-difference-angle-product": "alg.trig.identity.sum",
   "bounded-diophantine-count": "nt.dio.linear.solve",
-  "composing-rotations": "geo.coord.transform.rotate"
+  "composing-rotations": "geo.coord.transform.rotate",
+  "inversions-adjacent-swaps": "cp.basic.perm"
 };

@@ -2294,4 +2294,9 @@
     { q: String.raw`Let $P = (0, 0)$ and $Q = (4, 0)$. A figure is rotated $60^\circ$ counterclockwise about $P$ and then $60^\circ$ clockwise about $Q$. Show that the result is a translation and find how far it moves every point.`,
       s: String.raw`The angles add to $0$, so the composite is a translation, and tracking $P$ finds it. The first turn fixes $P$. The second turns $\overrightarrow{QP} = (-4, 0)$ clockwise by $60^\circ$ to $(-2, 2\sqrt3)$, so $P$ lands at $(2, 2\sqrt3)$. Every point moves by $(2, 2\sqrt3)$, a distance of $4 = 2 \cdot 4\sin 30^\circ$.` }
   );
+  // ---------- Inversions and adjacent swaps (tagging pass, 2026-11-07) ----------
+  add("inversions-adjacent-swaps",
+    { q: String.raw`Six cards numbered $1$ to $6$ are shuffled into a random order. What is the expected least number of swaps of adjacent cards needed to put them in increasing order?`,
+      s: String.raw`The least number of adjacent swaps equals the number of inversions. Each of the $\binom62 = 15$ pairs of cards is out of order with probability $\tfrac12$, by symmetry, so by linearity of expectation the expected number of inversions, and of swaps, is $\tfrac{15}2$.` }
+  );
 })();
