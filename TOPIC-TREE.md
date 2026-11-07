@@ -1,6 +1,6 @@
 # Topic tree (draft)
 
-**Status: draft v3 (2026-11-06): the owner's answers to TQ1 to TQ5 are in, every topic has subtopics, and the tree has been tested on the 2025 AMC 10A, the 2025 AIME I, the 2026 AMC 10A and the 2026 AMC 12A. Nothing in the app uses it yet.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
+**Status (2026-11-07): approved draft, 497 nodes. The owner's answers to TQ1 to TQ5 and the archetype rule are in; the tree has been tested on the 2025 AMC 10A, the 2025 AIME I, the 2026 AMC 10A and the 2026 AMC 12A. T2 is done (the data files and the gate, CONVENTIONS §15); the app does not read them yet (T4), and the tagging pass (T3) is next.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
 
 ## Why
 
