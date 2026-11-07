@@ -28,6 +28,17 @@ git push
 
 Do not include another task's staged changes accidentally. Deployment depends on the host's configured branch and build workflow; pushing a feature branch does not guarantee an immediate production update. The recorded hosts are GitHub Pages and Vercel (see PLAN.md). The previously recorded `~/Documents/CompMath-backup/` path is not an automated backup guaranteed by this repository; verify any local backup before relying on it.
 
+## Two agents: shared files and merges
+
+Claude and Codex work on separate branches; the division of files is in `CLAUDE.md` (item 5). When their work meets:
+
+- **Keep both sides' source changes.** Never resolve a conflict by taking one side of a whole file.
+- **`index.html` asset versions:** keep both agents' bumps, then run `python3 tools/bump-versions.py --changed` on the result and `python3 tools/sync-lab-versions.py`, so every changed asset has a new `?v=` and the lab pages agree (`tools/check-lab.sh` fails if they drift).
+- **Generated End-of-book Notes:** never pick a side. Combine the chapter content from both sides, take the current `tools/build-book-notes.cjs`, and regenerate with `node tools/build-book-notes.cjs`; then `node tools/build-book-notes.cjs --check`.
+- **Rerun the checks** after the merge: `./tools/gates.sh`, the three regression suites (`tests/practice-sessions.cjs`, `tests/answer-keys.cjs`, `tests/book-search.cjs`), and `python3 tools/build-learn-shelf.py --check`.
+- **Additive commits only:** a merge commit or a new commit, never an amend, rebase or force-push over commits the other agent has already shared.
+- A batch that touches a shared file, a card id or the chapter structure gets a short handoff note to the other agent.
+
 ## Write-up style
 
 **The headings depend on the card's kind** (CONVENTIONS §2 is the rule, and `scan-conventions.py`

@@ -6282,3 +6282,34 @@ Sums of squares and cubes from a sum and a product, the legs of a right triangle
 A permanent AMC fixture: two of the sum, the product, and the sum of squares are given, often through a right triangle or a pair of roots, and the third is wanted. It usually serves another setup rather than standing alone.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"subtract-swapped-equations": String.raw`
+## When to use
+The equations come in pairs that turn into each other when two variables trade places, as $x^2 + y = 7$ and $y^2 + x = 7$ do, or a cyclic system rotates the variables, as $xy + 4z = 60$, $yz + 4x = 60$, $zx + 4y = 60$ does. The question often adds a condition that rules out the equal case, $x \ne y$, or asks for every possible value of one variable. When the equations are linear and treat the variables alike, adding them is quicker ([[add-all-equations|Adding Groups of Equations]]); when the system is in the sums and products $x + y$ and $xy$, rewrite it in those instead ([[symmetric-polynomial-strategies|Rewriting in Symmetric Sums and Products]]).
+
+## How
+1. Pick two equations that differ by a swap of two variables, say $x$ and $y$.
+2. Subtract them and collect the terms. Every term the swap leaves alone cancels.
+3. Factor out $x - y$; it always divides the difference (see below). Squares give it at once by the difference of squares, $x^2 - y^2 = (x - y)(x + y)$, and a product $xz - yz$ gives $(x - y)z$.
+4. If the right sides are equal, the difference is $0$, so $x = y$ or the cofactor $Q$ is $0$. If they differ by a constant $c$, then $(x - y)Q = c$, and integer unknowns make $x - y$ and $Q$ a factor pair of $c$.
+5. Substitute each case back into one original equation and solve; check the solutions against every equation and every side condition.
+
+For $x^2 + y = 7$ and $y^2 + x = 7$, subtracting gives $x^2 - y^2 - (x - y) = (x - y)(x + y - 1) = 0$. The case $x = y$ leaves $x^2 + x - 7 = 0$, two solutions; the case $x + y = 1$ leaves $x^2 - x - 6 = 0$, so $(3, -2)$ and $(-2, 3)$.
+
+## Why it works
+Let $D(x, y)$ be the first equation's left side minus the second's, with the other variables held fixed. Swapping $x$ and $y$ turns each equation into the other, so it turns $D$ into $-D$: $D(y, x) = -D(x, y)$. Setting $x = y$ gives $D(x, x) = -D(x, x)$, so $D(x, x) = 0$. Read $D$ as a polynomial in $x$ whose coefficients involve $y$ and the other variables: it vanishes at $x = y$, so by the Factor Theorem $x - y$ divides it, $D = (x - y)Q$. A product is zero exactly when a factor is, so the solutions of the system are those with $x = y$ together with those with $Q = 0$, and both kinds still satisfy the other equations, which is why each case is substituted back. When the right sides differ by $c$, the equation is $(x - y)Q = c$, and for integer values of $x - y$ and $Q$ the two must be a pair of divisors of $c$ with product $c$.
+
+## Formulas it uses
+- [[factor-remainder-theorem|Remainder & Factor Theorems]], for why $x - y$ divides the difference.
+- [[difference-of-squares|Difference of Squares & Cubes]], for the commonest factorization, $x^2 - y^2 = (x - y)(x + y)$.
+
+## Common traps
+- Dividing by $x - y$ without first setting aside the case $x = y$, which loses those solutions (unless the problem itself says $x \ne y$).
+- Stopping at one case; each case must be finished, and a cyclic system can need two subtractions.
+- Forgetting to check the case solutions in the equation that was not used: subtracting keeps only the difference of two equations.
+- Using integer factor pairs when the unknowns are real.
+
+## Contest profile
+An AMC 10 or 12 problem in the middle of the paper, with $x \ne y$ given so that only the cofactor case is asked for, and an AIME problem on a cyclic system of three equations whose cases each reduce to a quadratic or a cubic.
+`
+});
