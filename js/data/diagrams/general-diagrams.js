@@ -66,7 +66,8 @@
     });
     // aria-hidden: see the note on the same line in geometry-diagrams.js -- the
     // caption after the figure is what a screen reader should read.
-    return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">${body.join("")}</svg>` +
+    // A wide strip (560 or more) shows at its own width, still shrinking to fit the page.
+    return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"${w >= 560 ? ` style="max-width:${w}px"` : ""}>${body.join("")}</svg>` +
            (caption ? `<div class="diagram-cap">${caption}</div>` : "");
   };
 
@@ -3337,8 +3338,8 @@
     }
     return rounds;
   };
-  const walkNode = (at, label, c = DIM, size = 13) =>
-    circ(at, 12, c, 1.6, "var(--bg-card)") + (label === "" ? "" : txt(add(at, [0, 4.5]), String(label), c, size));
+  const walkNode = (at, label, c = DIM, size = 13, r = 12) =>
+    circ(at, r, c, 1.6, "var(--bg-card)") + (label === "" ? "" : txt(add(at, [0, size * 0.36]), String(label), c, size));
 
   // The card's figure: a square with one diagonal, walks starting at A, four rounds side by side.
   // Each number is the sum of the numbers at its neighbours in the panel before it.
@@ -3347,15 +3348,15 @@
     const R = walkRounds(nodes, edges, ["A"], 3);
     // Hand-checked values: round 2 is A 3, B 1, C 2, D 1; round 3 is A 4, B 5, C 5, D 5.
     const ok = R[2].A === 3 && R[2].B === 1 && R[2].C === 2 && R[2].D === 1 && R[3].A === 4 && R[3].B === 5 && R[3].C === 5 && R[3].D === 5;
-    const W = 600, H = 210, side = 78, parts = [];
+    const W = 600, H = 222, side = 92, parts = [];
     for (let k = 0; k <= 3; k++) {
-      const x0 = 40 + k * 145, y0 = 52;
+      const x0 = 40 + k * 146, y0 = 36;
       const P = { A: [x0, y0 + side], B: [x0 + side, y0 + side], C: [x0 + side, y0], D: [x0, y0] };
-      edges.forEach(([a, b]) => parts.push(seg(P[a], P[b], FNT, 1.6)));
-      nodes.forEach(v => parts.push(walkNode(P[v], R[k][v], k === 3 ? ACC : DIM)));
-      const name = { A: [-16, 18], B: [16, 18], C: [16, -12], D: [-16, -12] };
-      nodes.forEach(v => parts.push(txt(add(P[v], name[v]), v, DIM, 12.5)));
-      parts.push(txt([x0 + side / 2, y0 + side + 44], k === 0 ? "start" : "after " + k + (k === 1 ? " step" : " steps"), k === 3 ? ACC : FNT, 12));
+      edges.forEach(([a, b]) => parts.push(seg(P[a], P[b], FNT, 1.8)));
+      nodes.forEach(v => parts.push(walkNode(P[v], R[k][v], k === 3 ? ACC : DIM, 16, 15)));
+      const name = { A: [-17, 22], B: [17, 22], C: [17, -14], D: [-17, -14] };
+      nodes.forEach(v => parts.push(txt(add(P[v], name[v]), v, DIM, 14)));
+      parts.push(txt([x0 + side / 2, y0 + side + 50], k === 0 ? "start" : "after " + k + (k === 1 ? " step" : " steps"), k === 3 ? ACC : FNT, 14));
     }
     parts.push(cap(W, H, "Walks that start at A on a square with the diagonal AC. Each round, every vertex takes the sum of its neighbours' numbers from the round before; after three steps there are 4 walks back to A and 5 to each other vertex, 19 in all." + (ok ? "" : " MISMATCH")));
     return wrap(W, H, parts);
@@ -3394,7 +3395,7 @@
       const parts = edges.map(([a, b]) => seg(at[a], at[b], FNT, 1.6));
       nodes.forEach(v => parts.push(circ(at[v], 10, col[kind(v)], 2, "var(--bg-card)")));
       parts.push(txt([60, 70], "corner", GLD, 12.5, "start"), txt([60, 90], "edge pad", ACC, 12.5, "start"), txt([60, 110], "center", GRN, 12.5, "start"));
-      parts.push(cap(430, 300, "The ten lily pads: a jump goes along one grid segment to a neighbouring pad. The 3 corner pads (gold), the 6 edge pads (blue) and the center pad (green) are the three kinds that symmetry keeps equal." + (ok ? "" : " MISMATCH")));
+      if (!ok) parts.push(cap(430, 300, "MISMATCH"));
       return wrap(430, 300, parts);
     })(),
     s: (() => {
@@ -3428,7 +3429,7 @@
     parts.push(txt(add(outer.A, [-12, -6]), "A", DIM, 14, "end"), txt(add(outer.B, [12, -6]), "B", DIM, 14, "start"),
       txt(add(outer.C, [12, 16]), "C", DIM, 14, "start"), txt(add(outer.D, [-12, 16]), "D", DIM, 14, "end"),
       txt(add(at["1,1"], [14, -10]), "O", ACC, 14, "start"));
-    parts.push(cap(430, 340, "The figure for the exercise: the outer square ABCD, each corner joined to the nearest corner of the inner square, and the inner square's 3 by 3 array of points joined along its rows and columns, with center O." + (ok ? "" : " MISMATCH")));
+    if (!ok) parts.push(cap(430, 340, "MISMATCH"));
     const svg = wrap(430, 340, parts);
     (((window.MATH_PROBLEMS || {})["walk-counting-dp"]) || []).forEach(p => { if (/smaller square inside it/.test(p.q)) p.figQ = svg; });
   })();
