@@ -9867,3 +9867,32 @@ Olympiad collinearity and concurrency problems in which one point varies along a
 Olympiad only; on the AMC and AIME its useful remnant is that a point moving linearly traces a line, which two positions determine.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"composing-rotations": String.raw`
+## Key forms
+- $R_{Q,\beta} \circ R_{P,\alpha}$ turns every segment by $\alpha + \beta$ — whatever the two centers are
+- $\alpha + \beta \not\equiv 0 \pmod{360^\circ}$: a rotation by $\alpha + \beta$ about a point $C$ — the triangle $PCQ$ has angles $\tfrac\alpha2$ at $P$ and $\tfrac\beta2$ at $Q$
+- $\alpha + \beta \equiv 0 \pmod{360^\circ}$: a translation, so $\overrightarrow{A''B''} = \overrightarrow{AB}$ for every segment — a turn by $\theta$ and a turn back by $\theta$ about another point only slide the figure
+
+## Conditions
+Angles are directed, counterclockwise positive, and $R_{P,\alpha}$ is applied first. Swapping the order keeps the angle $\alpha + \beta$ but changes the center $C$. When $P = Q$ the composite is the rotation by $\alpha + \beta$ about $P$ itself.
+
+## Why it works
+A rotation turns every direction by its angle, wherever its center is, so two rotations in a row turn every direction by $\alpha + \beta$. That gives the first form, and it already says that the composite is a translation exactly when $\alpha + \beta$ is a whole number of turns and there is no fixed point to turn about.
+
+To find the center, write each rotation as two reflections, as in composing two reflections, and choose the mirrors so that one is shared. Let $\ell$ be the line $PQ$. The rotation about $P$ is reflection in a line $m_1$ through $P$ followed by reflection in $\ell$, where $m_1$ makes the directed angle $\tfrac\alpha2$ with $\ell$ measured from $m_1$; the rotation about $Q$ is reflection in $\ell$ followed by reflection in a line $m_2$ through $Q$ at the directed angle $\tfrac\beta2$ from $\ell$. In the composite the two reflections in $\ell$ come next to each other and cancel, which leaves reflection in $m_1$ followed by reflection in $m_2$.
+
+The directed angle from $m_1$ to $m_2$ is $\tfrac\alpha2 + \tfrac\beta2$. If the lines meet, at $C$, the two reflections make a rotation about $C$ by twice that angle, $\alpha + \beta$, and $C$, $P$ and $Q$ form the triangle with angles $\tfrac\alpha2$ at $P$ and $\tfrac\beta2$ at $Q$. If $\tfrac\alpha2 + \tfrac\beta2$ is a multiple of $180^\circ$, the lines are parallel and the two reflections make a translation.
+
+## Useful observations
+- In the translation case $ABB''A''$ is a parallelogram for every segment $AB$, so a length or an angle in the final figure can be read off the first one.
+- Tracking one point is enough to pin down the translation: the center $P$ of the first turn stays put, so the composite moves every point by $\overrightarrow{PP''}$, where $P''$ is $P$ turned about $Q$.
+- With $PQ = d$ and the turns $\theta$ and $-\theta$, that slide has length $2d\sin\tfrac\theta2$.
+
+## Applications
+Chains of rotations about different points, a segment carried by a turn and a turn back, and the center of a composite rotation.
+
+## Contest profile
+A rare AIME step. Two turns about different points cancel, the figure only slides, and a rotation problem becomes a parallelogram or a triangle with a known side.
+`
+});

@@ -172,6 +172,7 @@ window.MATH_TOPIC_TREE = [
   ["cp.basic.perm.distinct", "Arranging distinct objects", "cp.basic.perm"],
   ["cp.basic.perm.repeat", "Arrangements with repeated objects", "cp.basic.perm"],
   ["cp.basic.perm.restrict", "Arrangements with restrictions (adjacent, apart, in order)", "cp.basic.perm"],
+  ["cp.basic.perm.cycle", "Permutations by cycle structure (powers equal to the identity, cycles of given lengths, pairings that close into cycles)", "cp.basic.perm"],
   ["cp.basic.comb", "Combinations and committees", "cp.basic"],
   ["cp.basic.comb.choose", "Choosing subsets and committees", "cp.basic.comb"],
   ["cp.basic.comb.condition", "Choosing with conditions", "cp.basic.comb"],

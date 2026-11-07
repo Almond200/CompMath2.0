@@ -2098,6 +2098,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC12", "AIME"]
         },
         {
+          id: "composing-rotations",
+          name: "Composing Rotations About Different Centers",
+          latex: String.raw`R_{Q,\beta} \circ R_{P,\alpha} = \begin{cases} \text{a rotation by } \alpha + \beta & \alpha + \beta \not\equiv 0 \\ \text{a translation} & \alpha + \beta \equiv 0 \end{cases} \pmod{360^\circ}`,
+          description: String.raw`A rotation by $\alpha$ about one point followed by a rotation by $\beta$ about another is a single rotation by $\alpha + \beta$, about a new center, unless $\alpha + \beta$ is a whole number of turns, when it is a translation. It applies when a figure is turned about two different points in a row: every segment ends up turned by exactly $\alpha + \beta$ wherever the centers are, and in the translation case every segment keeps its direction and its length. The center of the combined rotation is found by splitting each rotation into two reflections and [[reflection-composition|composing two reflections]].`,
+          keywords: ["composition of rotations", "two rotations", "rotate then rotate", "rotations about different centers", "rotation followed by rotation", "rotation angles add", "translation from two rotations"],
+          importance: "lower",
+          tier: "AIME Early",
+          level: ["AIME", "Olympiad"]
+        },
+        {
           id: "reflection-composition",
           name: "Composing Two Reflections",
           latex: String.raw`\text{reflect in } \ell_1, \text{ then } \ell_2: \quad \text{rotation by } 2\theta \text{ about } \ell_1 \cap \ell_2, \qquad \ell_1 \parallel \ell_2 : \ \text{translation by } 2d`,

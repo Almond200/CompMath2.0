@@ -2289,4 +2289,9 @@
     { q: String.raw`Find $\sin 75^\circ \sin 15^\circ$ without a calculator.`,
       s: String.raw`Write $75^\circ = 45^\circ + 30^\circ$ and $15^\circ = 45^\circ - 30^\circ$. The product is then $\sin^2 45^\circ - \sin^2 30^\circ = \tfrac12 - \tfrac14 = \tfrac14$.` }
   );
+  // ---------- Composing rotations about different centers (tagging pass, 2026-11-07) ----------
+  add("composing-rotations",
+    { q: String.raw`Let $P = (0, 0)$ and $Q = (4, 0)$. A figure is rotated $60^\circ$ counterclockwise about $P$ and then $60^\circ$ clockwise about $Q$. Show that the result is a translation and find how far it moves every point.`,
+      s: String.raw`The angles add to $0$, so the composite is a translation, and tracking $P$ finds it. The first turn fixes $P$. The second turns $\overrightarrow{QP} = (-4, 0)$ clockwise by $60^\circ$ to $(-2, 2\sqrt3)$, so $P$ lands at $(2, 2\sqrt3)$. Every point moves by $(2, 2\sqrt3)$, a distance of $4 = 2 \cdot 4\sin 30^\circ$.` }
+  );
 })();
