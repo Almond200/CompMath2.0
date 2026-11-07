@@ -1855,7 +1855,8 @@
     "composing-rotations": "formula",
     "inversions-adjacent-swaps": "formula",
     "subtract-swapped-equations": "method",
-    "averaging-principle": "formula"
+    "averaging-principle": "formula",
+    "walk-counting-dp": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -9075,6 +9076,12 @@
       [
         "(new card)",
         "written directly in the formula template"
+      ]
+    ],
+    "walk-counting-dp": [
+      [
+        "(new card)",
+        "written directly in the method template"
       ]
     ]
   }

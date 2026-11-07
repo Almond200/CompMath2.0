@@ -104,9 +104,12 @@ CONVENTIONS §0 has the full model.
 - **Search** results are one list in order of relevance (formulas, methods, patterns, problems
   and study lists, each labelled), shown full width with no space highlighted. So are tag pages
   and special pages. A query naming a paper without a problem number ("2025 AIME I") leads with
-  a CONTEST result that opens that paper (`#/problems/aime/2025/aime-i`); lessons and chapters
-  appear for strong title matches, after the cards, or first when the query says "lesson" or
-  "chapter" (or is a lesson code such as C5.3).
+  a CONTEST result that opens that paper (`#/problems/aime/2025/aime-i`). A textbook named in
+  full ("AMC Algebra") is a BOOK result listing its first four chapters. Lessons and chapters
+  matching the query's title words are a second tier: after the cards named for the query,
+  ahead of loosely related cards, or first when the query says "lesson" or "chapter" (or is a
+  lesson code such as C5.3). Book, chapter and lesson results show their place as a breadcrumb
+  ("Textbooks › AMC Algebra", "AMC Geometry › Chapter 5 › S5.5"), as cards do.
 
 ## Credits
 

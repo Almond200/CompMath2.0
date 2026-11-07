@@ -713,6 +713,7 @@ window.MATH_TOPIC_HOMES = {
   "extremal-principle": "cp.logic.pigeon.extremal",
   "dimension-arguments": null,
   "probabilistic-method": null,
+  "walk-counting-dp": "cp.struct.paths.walks",
   "transfer-matrix-method": "cp.tech.rec.states",
   // Methods: proof methods (general)
   "direct-proof": null,

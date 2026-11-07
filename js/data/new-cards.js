@@ -74,5 +74,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Card from the tagging pass, 2023 AIME II (P61)", date: "2026-11-07",
     ids: ["subtract-swapped-equations"] },
   { label: "Card from the tagging pass, 2022 AIME II (P62)", date: "2026-11-07",
-    ids: ["averaging-principle"] }
+    ids: ["averaging-principle"] },
+  { label: "Owner request: counting walks step by step", date: "2026-11-07",
+    ids: ["walk-counting-dp"] }
 ];
