@@ -2,6 +2,8 @@
 
 **2026-11-07**
 
+- Topic tree, one rename (owner, after the outside review): `geo.comb.extreme.path` is now "Reflected paths and unfolding (shortest paths, billiards, paths on a surface)", and its parent "Reflected paths, unfolding and extremes", since the node also holds billiard paths that ask where a path ends, not how short it is (2025 AMC 10B #25). The ids are unchanged, so no filing moves. The congruence-systems point waits for T4 (owner).
+
 - Two filings fixed after an outside review of the topic tree (owner): 2025 AMC 10B #21 and its twin 12B #17 also file under `cp.tech.sym.necklace` (rotations and reflections), since the problem counts colorings up to symmetry; 2026 AIME II #13 moves from `nt.divisor.count.factor` (counting factorizations, which it does not do) to `nt.div.prime.factor` (it uses the prime factorization of $4040$ to build the best set).
 
 - One highlighted suggestion at a time in the Settings search and the Practice topic picker too (owner), as in book search: moving the pointer over an option selects it, the arrow keys move the same selection, and Enter takes the highlighted option. The shared `.set-find-opt:hover` style is gone, since the pointer now moves `.is-cur` in all three lists.

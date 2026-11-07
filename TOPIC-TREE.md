@@ -449,8 +449,8 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Distances and angles in space `[geo.solid.coord.dist]`
     - Planes, normals and volumes by vectors `[geo.solid.coord.planes]`
 - **Geometric optimization and combinatorial geometry** `[geo.comb]`
-  - Shortest paths, reflections and extremes `[geo.comb.extreme]`
-    - Shortest paths and reflection `[geo.comb.extreme.path]`
+  - Reflected paths, unfolding and extremes `[geo.comb.extreme]`
+    - Reflected paths and unfolding (shortest paths, billiards, paths on a surface) `[geo.comb.extreme.path]`
     - Largest and smallest lengths, areas and sums of distances `[geo.comb.extreme.maxmin]`
   - Counting figures, grids and dissections `[geo.comb.count]`
     - Counting triangles, rectangles and squares in a grid `[geo.comb.count.figures]`
