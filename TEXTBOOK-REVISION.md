@@ -9,10 +9,10 @@ The writing rules are in CONVENTIONS §14 and are kept only there, so they do no
 ## Status (2026-11-07)
 
 - **Initial writing:** complete in all 13 books: 103 teaching chapters with 593 counted teaching pages, plus 13 reference chapters (End-of-book Notes, 52 sections) and the separate Review and Challenge problem sets. Difficulty labels (Core, Core II, Extension) apply where assigned; reference sections never carry one.
-- **Content revision completed:** AMC Algebra L1–L14; AMC Number Theory M1–M2 (commit b62c7e4, PR #234, merged into `main` as 9b61c9d).
-- **In progress (Codex, active):** AMC Number Theory M3–M4, not yet finished; M5 is next after their validated batch. A chapter is not marked revised until its batch is committed.
+- **Content revision completed:** AMC Algebra L1–L14; AMC Number Theory M1–M2 (commit b62c7e4, PR #234, merged into `main` as 9b61c9d) and M3–M4 (commit 96f00a6, PR #240, merged as 5b75f03).
+- **Next (Codex, active):** AMC Number Theory M5. A chapter is not marked revised until its batch is committed.
 - **Still to do:** the rest of AMC Number Theory, then the other AMC, AIME and Olympiad books. No book other than AMC Algebra and the chapters above is revised or mathematically re-verified.
-- **Next handoff:** after the M3–M4 commit, record here and in PLAN's Current state the branch, commit, PR status, completed chapters, next chapter, validation results and any open issue.
+- **Handoff state:** branch `codex/textbook-revision`; latest batch M3–M4, commit 96f00a6, PR #240, merged as 5b75f03; next chapter M5. The M3–M4 validation figures are to be recorded from Codex's report (not yet received); no open issue is known.
 
 ## Completed
 
@@ -28,12 +28,13 @@ The writing rules are in CONVENTIONS §14 and are kept only there, so they do no
 - **AMC Algebra L10 and L11** (advanced polynomials; functional equations, recurrences, sums and inequalities), commit 82cfe36, PR #221, with derivations, connected examples and explicit mathematical assumptions. Four new diagrams: interpolation without a degree bound, reciprocal-root branches, reversing a triangular double sum, and the nearest point on a line. The batch also corrected the exponent restriction in the $n^4+4^k$ compositeness claim, clarified the reciprocal-root and conjugate-root assumptions, added a degree assumption to a sequence exercise, and strengthened worked solutions. Only `index.html` and `js/data/learn/amc-algebra/{l10,l11,l15}.js` changed; the notes were regenerated and asset versions bumped; no chapter codes, lesson titles or problem placements changed, so `LEARN-OUTLINE.md` and the shelf need no update.
 - **AMC Algebra L12–L14** (trigonometry, complex numbers, mixed problems), commit 819bb92, PR #224, with seven new diagrams. The batch corrected domain and branch assumptions, strengthened worked solutions, and made clear where an intermediate quantity differs from the answer the AIME asks for.
 - **AMC Number Theory M1–M2** (foundations: divisibility, digits and fractions), commit b62c7e4, PR #234 (merged as 9b61c9d; merge-resolution commit 6fe2953 kept the revised chapters and Claude's square-root indexing fix and regenerated the notes; M3–M4 were outside that fix). Connected rewrites with five diagrams; clearer conditions for calendar offsets, digit arguments, decimals and Farey fractions; stronger worked solutions; the M8 notes regenerated.
+- **AMC Number Theory M3–M4** (divisors, factorials and remainders), commit 96f00a6, PR #240, merged as 5b75f03, with proofs and diagrams; the M8 notes regenerated. Details and validation to be recorded from Codex's report.
 - **Root and square root in the notes index:** the builder's basic term Root no longer counts square, cube, $n$th, principal or primitive roots, and Square root is its own term (Claude, 2026-11-07, at Codex's report); integrated, not outstanding.
 - **The arctangent range** is corrected in the lessons and the generated glossary (Codex) and on the source card Inverse Trig Identities & Ranges (Claude, PR #225); nothing is outstanding.
 
 ## Continue the content pass
 
-Continue with AMC Number Theory from M3 (in progress), then chapter by chapter through the AMC, AIME and Olympiad books. Read each chapter's lesson bodies and worked solutions together before rewriting. Check mathematical claims by computation where applicable; preserve problem placements and avoid altering the Step T data. Retain the stronger O3–O7 explanations unless a specific improvement is warranted. Review glossary definitions as their lessons change, especially when a technical term needs a more precise definition than a card's introductory description.
+Continue with AMC Number Theory from M5, then chapter by chapter through the AMC, AIME and Olympiad books. Read each chapter's lesson bodies and worked solutions together before rewriting. Check mathematical claims by computation where applicable; preserve problem placements and avoid altering the Step T data. Retain the stronger O3–O7 explanations unless a specific improvement is warranted. Review glossary definitions as their lessons change, especially when a technical term needs a more precise definition than a card's introductory description.
 
 After changing lesson references or prose, regenerate the back matter and check it:
 
