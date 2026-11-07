@@ -5384,4 +5384,18 @@
       cap(430, 300, "The original pentagon (dashed) and the crease pentagon (blue). Folding a vertex onto the center O creases along the perpendicular bisector of the dotted segment from O to that vertex; the five creases bound the new pentagon." + MM(ok))
     ]);
   })();
+
+  // 2022 AMC 12A #13: the points within 1 of the segment from 3 to 4i, a rectangle with two half-disc ends.
+  PROB["2022-amc-12a-13"] = (() => {
+    const k = 40, Q = (x, y) => [150 + k * x, 230 - k * y], A = Q(3, 0), B = Q(0, 4), u = norm(sub(B, A)), n = perp(u);
+    const P1 = add(A, mul(n, k)), P2 = add(B, mul(n, k)), P3 = add(B, mul(n, -k)), P4 = add(A, mul(n, -k));
+    const region = `<path d="M ${P1[0].toFixed(1)} ${P1[1].toFixed(1)} L ${P2[0].toFixed(1)} ${P2[1].toFixed(1)} A ${k} ${k} 0 0 ${0} ${P3[0].toFixed(1)} ${P3[1].toFixed(1)} L ${P4[0].toFixed(1)} ${P4[1].toFixed(1)} A ${k} ${k} 0 0 0 ${P1[0].toFixed(1)} ${P1[1].toFixed(1)} Z" fill="${ACCS}" stroke="${ACC}" stroke-width="1.6"/>`;
+    const ok = Math.abs(dist(A, B) / k - 5) < 1e-9 && Math.abs(dist(P1, P4) / k - 2) < 1e-9;
+    return wrap(430, 290, [
+      seg(Q(-1.8, 0), Q(5, 0), FNT, 1), seg(Q(0, -1.5), Q(0, 5.6), FNT, 1), region, seg(A, B, GLD, 2.2), dot(A, DIM, 3.2), dot(B, DIM, 3.2),
+      circ(add(mid(A, B), mul(n, 0)), k, FNT, 1, "none", "3 3"), dot(mid(A, B), DIM, 2.6),
+      txt(add(A, [8, 16]), "3", DIM, 12.5, "start"), txt(add(B, [-10, -6]), "4i", DIM, 12.5, "end"),
+      cap(430, 290, "The segment from 3 to 4i (gold, length 5) and the region R (blue): every point within 1 of it, as the dashed unit disc slides along the segment. R is a 5-by-2 rectangle with a half disc on each end." + MM(ok))
+    ]);
+  })();
 })();
