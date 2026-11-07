@@ -61,7 +61,9 @@
   );
   add("smoothing-method",
     { q: String.raw`For nonnegative reals with $a+b+c=10$, find the maximum and minimum of $ab+bc+ca$.`,
-      s: String.raw`Since $ab+bc+ca=\frac{(a+b+c)^2-(a^2+b^2+c^2)}{2}$, it is largest when $a^2+b^2+c^2$ is smallest — smoothing to $a=b=c=\tfrac{10}{3}$ gives $\frac{100-100/3}{2}=\frac{100}{3}$. Pushing to the boundary $a=10,\,b=c=0$ gives the minimum $\mathbf{0}$.` }
+      s: String.raw`Since $ab+bc+ca=\frac{(a+b+c)^2-(a^2+b^2+c^2)}{2}$, it is largest when $a^2+b^2+c^2$ is smallest — smoothing to $a=b=c=\tfrac{10}{3}$ gives $\frac{100-100/3}{2}=\frac{100}{3}$. Pushing to the boundary $a=10,\,b=c=0$ gives the minimum $\mathbf{0}$.` },
+    { q: String.raw`Four positive integers add to $10$. What is the least possible value of the sum of their squares?`,
+      s: String.raw`Smooth any two parts that differ by at least $2$: replacing $x$ and $y$, with $x\ge y+2$, by $x-1$ and $y+1$ keeps the total and changes $x^2+y^2$ by $-2x+2y+2=-2(x-y-1)\lt0$. So at the minimum no two parts differ by more than $1$, which for four parts adding to $10$ forces $3,3,2,2$, and the least sum of squares is $9+9+4+4=\mathbf{26}$.` }
   );
   add("transfer-matrix-method",
     { q: String.raw`Count length-$n$ strings over $\{A,B,C\}$ with no two adjacent letters equal.`,
