@@ -2,6 +2,10 @@
 
 **2026-11-07**
 
+- Textbook revision (Codex, recorded at the owner's request from PR #248): AMC Counting & Probability R1–R2 complete (2fb1b7e): six diagrams, all 43 exercise solutions expanded, 12 question statements clarified, every answer and all 57 contest placements kept; 1,224 mathematical checks, 76 page checks, and every gate and suite passing. R3 is in progress on `codex/counting-r3-revision`. `TEXTBOOK-REVISION.md` now describes the batch-branch workflow instead of the deleted `codex/textbook-revision` branch, and drops the stale "rest of AMC Number Theory" item (M1–M7 are done).
+
+- 2000 AMC 8 #7 (reported by Codex): the strategy called $-280$ the largest product with one negative factor; it is the smallest. The answer, $-280$, choice (B), is unchanged and re-checked by brute force over all $35$ triples.
+
 - Topic tree, technique nodes (owner): written down as rule 3b in `TOPIC-TREE.md` and in CONVENTIONS §15. The tree says what a problem is about and the Methods cards say how it is solved; Casework, Complementary counting and Overcounting are filed only when the technique is the whole problem, never as a second label, and technique-based practice draws from the problems citing the Methods card. PLAN adds T3a (review the existing technique filings and the other borderline nodes; 2024 AMC 12A #25, the rule's example, already loses its Casework node) and notes that T4's technique targets come from the Methods cards.
 
 - Front page, dark mode (owner): the five space names and their coloured top strips, the kind badges (METHOD, FORMULA, PATTERN, PROBLEM) and the "See all" links are a step less bright, kept at full saturation so they stay vivid (a first try that also desaturated them looked dull). The book covers keep their colours. Dark only.
