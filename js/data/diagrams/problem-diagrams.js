@@ -5358,4 +5358,30 @@
       cap(430, 290, "The trapezoid with right angles at A and B, AB = 4 and CD = 5. ω₁ sits in the corner at A and ω₂ in the corner at B, each also tangent to DC, and they touch each other; the gold segment joins their centers." + MM(ok))
     ]);
   })();
+
+  // 2023 AMC 12B #20: the first hop OF, the circle of second landings about F, and the arc within 1 of O.
+  PROB["2023-amc-12b-20"] = (() => {
+    const k = 58, O = [100, 145], F = add(O, [2 * k, 0]), R = 2 * k, th = 2 * Math.asin(1 / 4) * 180 / Math.PI;
+    const E1 = onC(F, R, 180 - th), E2 = onC(F, R, 180 + th);
+    const ok = Math.abs(dist(O, E1) / k - 1) < 1e-9 && Math.abs(dist(O, E2) / k - 1) < 1e-9 && Math.abs(dist(O, F) / k - 2) < 1e-9;
+    const arc = `<path d="M ${E1[0].toFixed(1)} ${E1[1].toFixed(1)} A ${R} ${R} 0 0 ${E1[1] < E2[1] ? 0 : 1} ${E2[0].toFixed(1)} ${E2[1].toFixed(1)}" fill="none" stroke="${ACC}" stroke-width="3.2"/>`;
+    return wrap(430, 290, [
+      circ(F, R, DIM, 1.6), circ(O, k, FNT, 1.3, "none", "4 3"), arc, seg(O, F, GLD, 2), seg(F, E1, FNT, 1.2), seg(F, E2, FNT, 1.2),
+      dot(O, DIM, 3.4), dot(F, DIM, 3.4), dot(E1, ACC, 3), dot(E2, ACC, 3),
+      txt(add(O, [-12, 5]), "O", DIM, 13, "end"), txt(add(F, [10, 16]), "F", DIM, 13, "start"), txt(add(mid(O, F), [0, -8]), "2", GLD, 12.5),
+      cap(430, 290, "From the start O the first hop reaches F; the second landing is uniform on the circle of radius 2 about F, which passes through O. The blue arc, within 1 of O (inside the dashed circle), subtends 2·2arcsin(1/4) at F." + MM(ok))
+    ]);
+  })();
+
+  // 2023 AMC 10B #25 and 12B #25: the regular pentagon with its five vertices folded to the center.
+  PROB["2023-amc-10b-25"] = PROB["2023-amc-12b-25"] = (() => {
+    const O = [215, 150], R = 128, V = [0, 1, 2, 3, 4].map(i => onC(O, R, -90 + 72 * i)), r = R / 2 / Math.cos(Math.PI / 5);
+    const W = [0, 1, 2, 3, 4].map(i => onC(O, r, -90 + 36 + 72 * i)), area = P => Math.abs(P.reduce((t, p, i) => t + p[0] * P[(i + 1) % 5][1] - P[(i + 1) % 5][0] * p[1], 0)) / 2;
+    const phi = (1 + Math.sqrt(5)) / 2, ok = Math.abs(area(W) / area(V) - 1 / (phi * phi)) < 1e-9 && W.every((w, i) => Math.abs(dist(w, V[i]) - dist(w, O)) < 1e-9);
+    return wrap(430, 300, [
+      poly(V, DIM, 1.6, "none", "5 4"), poly(W, ACC, 2, ACCS), ...V.map((v, i) => seg(W[(i + 4) % 5], W[i], ACC, 2)), ...V.map(v => seg(O, v, FNT, 1, "3 3")),
+      ...V.map(v => dot(v, DIM, 3)), dot(O, DIM, 3.2), txt(add(O, [10, 16]), "O", DIM, 13, "start"),
+      cap(430, 300, "The original pentagon (dashed) and the crease pentagon (blue). Folding a vertex onto the center O creases along the perpendicular bisector of the dotted segment from O to that vertex; the five creases bound the new pentagon." + MM(ok))
+    ]);
+  })();
 })();
