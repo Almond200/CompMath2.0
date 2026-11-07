@@ -4324,4 +4324,13 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 /* Book search: lesson and glossary results carry a second line (owner, 2026-11-07). */
 .book-search-option .bks-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .book-search-option .bks-snip { color: var(--text-dim); font-size: 0.82em; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-.bks-found { background: var(--accent-soft, rgba(91,140,255,0.13)); border-radius: 8px; transition: background 0.6s; }
+/* The found definition: a soft band reaching past the text on every side (a shadow, so nothing
+   moves), held for a moment and then faded out slowly (owner, 2026-11-07). */
+.bks-found { border-radius: 10px; animation: bks-glow 4.6s ease-in forwards; }
+@keyframes bks-glow {
+  0%, 55% { background-color: rgba(91, 140, 255, 0.16); box-shadow: 0 0 0 12px rgba(91, 140, 255, 0.16); }
+  100% { background-color: rgba(91, 140, 255, 0); box-shadow: 0 0 0 12px rgba(91, 140, 255, 0); }
+}
+/* One highlighted option at a time: the pointer moves the selection instead of adding a second
+   highlight (owner, 2026-11-07). */
+.book-search .set-find-opt:hover:not(.is-cur) { background: none; }
