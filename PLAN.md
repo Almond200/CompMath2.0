@@ -69,6 +69,8 @@ The model (the owner's blueprint, "Learn + Practice for Competition Math Referen
 
 ### The tagging pass (T3): the procedure (owner, 2026-11-06)
 
+**Be critical, not passive (owner, 2026-11-07).** Look for errors in every problem's strategy, tags and filing. When nothing really fits, say so (a `QUESTIONS.md` row) rather than settle for the best-fitting tag or node; a near miss is recorded, never hidden.
+
 One problem at a time, a paper at a time, newest papers first (they are the most practised), the AMC 10 and 12 twins of a year together, then the AIME, then the AMC 8. For each problem:
 
 1. **Read** the statement and the written strategy. If the strategy is wrong or a number in it is off, fix it (every number checked by computation).

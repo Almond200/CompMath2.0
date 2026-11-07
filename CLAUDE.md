@@ -45,6 +45,7 @@ $JSC tools/validate-problem-db.js
 - Every card, new ones included, has at least two practice problems (linked contest problems, else exercises in `extra-problems.js`); `gates.sh` fails otherwise. A new card follows the checklist in CONVENTIONS ("New cards are registered").
 - A "tag" on a problem is a formula, method or pattern card it cites (`formulas`, `trickFormulas`).
 - Rebuild the search index once at the end of a step, not after each small card edit (owner, 2026-10-25).
+- Be critical, not passive (owner, 2026-11-07): when tagging or filing a problem, look for errors and say so. If no card or tree node really fits, or a strategy, tag, card or node is wrong, record it (fix it, or add a `QUESTIONS.md` row) instead of settling for the best-fitting tag.
 - Tag a card only where the problem's route really uses it (never to give a new card a problem); a tag on a shared AMC 10/12 problem goes on both twins.
 - No sticky headers: a page's header scrolls away with the page (a side rail may stay beside it) (owner, 2026-10-31). On a phone the top bar and the book view's navigation row stay pinned, at the owner's word.
 - Prefer app-styled searchable suggestions and dialogs to native browser dropdowns, prompts and confirmation popups. Practice sets save on exit without a confirmation; Finish and review submits directly. Keep the top-left Back to Practice link and Save and exit during practice; do not duplicate the back link as a review button. Practice sets have no timer or timer setting (owner, 2026-11-05).
