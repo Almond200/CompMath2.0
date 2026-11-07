@@ -3240,7 +3240,7 @@ a.hw-row:hover .hw-go { color: var(--accent); }
    Copying LaTeX and Asymptote is on the card's own page. */
 /* The name never squeezes: if the tags do not fit beside it they drop to the next line, and the
    star and add buttons stay pinned top right. */
-.card-head { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding-right: 70px; }
+.card-head { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding-right: 60px; }
 .card-head .card-name { flex: 0 0 auto; max-width: 100%; min-width: 0; }
 /* The kind and tier tags sit on the name's own line; the actions stay at the far right. */
 .card-head .card-tags { display: inline-flex; align-items: center; gap: 8px; flex: none; }

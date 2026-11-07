@@ -7057,8 +7057,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
         c.problems.forEach(p => p.subjects.forEach(sid => { subj[sid] = (subj[sid] || 0) + 1; }));
         const rows = Object.entries(subj).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 4);
         return `<a class="card card-result card-contest-result" href="#/problems/${famSlug(c.fam)}/${c.year}/${paperSlug(c.cname)}"${extra}>
-            <div class="card-head"><h4 class="card-name">${escapeAttr(/^\d{4}\b/.test(c.cname) ? c.cname : c.year + " " + c.cname)}</h4></div>
-            <div class="card-meta"><span class="badge badge-contest">CONTEST</span><span class="level-range">${escapeAttr(c.fam)} &middot; ${c.problems.length} problem${c.problems.length === 1 ? "" : "s"}</span></div>
+            <div class="card-head"><h4 class="card-name">${escapeAttr(/^\d{4}\b/.test(c.cname) ? c.cname : c.year + " " + c.cname)}</h4><span class="card-tags"><span class="badge badge-contest">CONTEST</span></span></div>
+            <div class="card-meta"><span class="level-range">${escapeAttr(c.fam)} &middot; ${c.problems.length} problem${c.problems.length === 1 ? "" : "s"}</span></div>
             ${rows.length ? `<div class="rs-box">${rows.map(([sid, k]) => `<div class="rs-line"><span class="rs-v">${escapeAttr(SUBJECT_LABELS[sid] || sid)}</span><span class="rs-n">${k}</span></div>`).join("")}</div>` : ""}
             <div class="more-hint">Open &rsaquo;</div>
           </a>`;
@@ -7066,8 +7066,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (it.problem) {
         const p = it.problem;
         return `<a class="card card-result card-problem-result" href="#/problem/${p.slug}"${extra}>
-            <div class="card-head"><h4 class="card-name">${refShort(p.ref)}</h4></div>
-            <div class="card-meta"><span class="badge badge-problem">PROBLEM</span><span class="level-range">${escapeAttr(p.fam)} &middot; ${p.year}</span></div>
+            <div class="card-head"><h4 class="card-name">${refShort(p.ref)}</h4><span class="card-tags"><span class="badge badge-problem">PROBLEM</span></span></div>
+            <div class="card-meta"><span class="level-range">${escapeAttr(p.fam)} &middot; ${p.year}</span></div>
             <div class="rs-box">${[["pattern", "Pattern"], ["method", "Method"], ["formula", "Formulas"]].map(([k, label]) => {
               const ids = p.formulas.filter(id => BY_ID[id] && BY_ID[id].kind === k).slice(0, 3);
               return ids.length ? `<div class="rs-line"><span class="rs-k">${label}</span><span class="rs-v">${ids.map(id => BY_ID[id].formula.name).join(", ")}</span></div>` : "";
@@ -7078,8 +7078,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       }
       const l = it.list;
       return `<a class="card card-result card-list-result" href="#/list/${l.id}"${extra}>
-          <div class="card-head"><h4 class="card-name">${escapeAttr(l.name)}</h4></div>
-          <div class="card-meta"><span class="badge badge-list">LIST</span><span class="level-range">${l.builtinSet ? (kindLabel[l.kind] || "Study list") : "Your list"} &middot; ${liveCount(l)} cards</span></div>
+          <div class="card-head"><h4 class="card-name">${escapeAttr(l.name)}</h4><span class="card-tags"><span class="badge badge-list">LIST</span></span></div>
+          <div class="card-meta"><span class="level-range">${l.builtinSet ? (kindLabel[l.kind] || "Study list") : "Your list"} &middot; ${liveCount(l)} cards</span></div>
           ${(l.sections || []).length ? `<div class="rs-box">${l.sections.slice(0, 4).map(x => `<div class="rs-line"><span class="rs-v">${escapeAttr(x.title || l.name)}</span><span class="rs-n">${x.ids.length}</span></div>`).join("")}${l.sections.length > 4 ? `<div class="rs-line rs-more-line">+ ${l.sections.length - 4} more section${l.sections.length > 5 ? "s" : ""}</div>` : ""}</div>`
             : `<div class="rs-box">${liveIds(l).slice(0, 4).map(id => `<div class="rs-line"><span class="rs-v">${BY_ID[id].formula.name}</span></div>`).join("")}</div>`}
           ${l.blurb ? (l.builtinSet ? `<p class="card-desc">${escapeAttr(l.blurb)}</p>`
