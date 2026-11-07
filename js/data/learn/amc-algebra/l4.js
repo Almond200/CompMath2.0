@@ -12,7 +12,7 @@ For $f(x)=2x+1$, the input $3$ produces $7$. If we use that output as a new inpu
 
 A function may use more than one formula while still giving exactly one output for every allowed input. Absolute value returns a distance, so it keeps nonnegative inputs and reverses the sign of negative ones. The floor returns the greatest integer not exceeding its input, so it is constant across an interval and jumps at the next integer. Their graphs look different because they retain different information about the input.
 
-These examples also explain why solving a function equation is a question about inputs. The equation $f(x)=c$ asks which inputs give one specified output. An inverse, when it exists, reverses that assignment. A graph shows the same question through the intersections with the horizontal line of height $c$.
+Solving the equation $f(x)=c$ asks which inputs give one specified output. An inverse, when it exists, reverses that assignment. A graph shows the same question through the intersections with the horizontal line of height $c$.
 
 The chapter develops these connections in order. We begin with rules, composition, inverses and symmetry; learn to interpret axes and slopes; then use distance to understand absolute values. Solution counting brings the algebra and graphs together. Finally, floors and ceilings introduce rules whose endpoint conventions are essential to finding the correct intervals.`,
       exercises: [
@@ -68,7 +68,7 @@ If $f$ is odd and $g(x)=f(x)+3$, then $g(x)+g(-x)=6$: the opposite values of $f$
     "L4.3": {
       prereq: [],
       cards: ["reading-graphs", "slope-to-a-point"],
-      body: String.raw`A graph is a statement about quantities, not just a shape. Its horizontal and vertical coordinates must be read with their units and scales. The same rising segment could describe a traveler moving away, a price increasing with quantity, or a running total of points. Interpreting the axes comes before interpreting the slope.
+      body: String.raw`A graph records how quantities vary together. Its horizontal and vertical coordinates must be read with their units and scales. The same rising segment could describe a traveler moving away, a price increasing with quantity, or a running total of points. Interpreting the axes comes before interpreting the slope.
 
 Start by locating the scale marks and the starting value. An axis need not begin at zero, and one grid square need not represent one unit. Then decide whether each plotted height is an amount or a change. If daily changes are $3,-1,4$ and the initial score is $10$, the successive scores are $13,12,16$. Averaging the three changes would describe a different quantity from averaging those scores. [[reading-graphs|Reading a graph]] includes reconstructing the quantity requested when the picture records something else.
 
@@ -148,7 +148,7 @@ In two dimensions, [[abs-value-relations|an absolute-value relation]] can be bui
 
 For $|x|=x^2-2$, the graph suggests two symmetric intersections. To establish the count, let $t=|x|\ge0$. Since $x^2=t^2$, the equation becomes $t^2-t-2=0$, or $(t-2)(t+1)=0$. The condition $t\ge0$ rejects $-1$, leaving $t=2$ and hence $x=\pm2$. The symmetry reduced the problem, and the algebra proves that there are no other solutions.
 
-The distance sum from the preceding lesson illustrates why endpoints and flat pieces matter. For $|x-1|+|x+1|=c$, the left side has minimum $2$, attained throughout $[-1,1]$. Therefore $c\lt2$ gives no solution, $c=2$ gives an entire interval, and $c\gt2$ gives one solution on each outer branch. Here [[piecewise-graph-counting|counting solutions from a graph]] becomes a branch calculation with exact ranges, rather than a visual guess.
+The distance sum from the preceding lesson illustrates why endpoints and flat pieces matter. For $|x-1|+|x+1|=c$, the left side has minimum $2$, attained throughout $[-1,1]$. Therefore $c\lt2$ gives no solution, $c=2$ gives an entire interval, and $c\gt2$ gives one solution on each outer branch. The branch ranges establish these three cases of [[piecewise-graph-counting|solution counting]].
 
 A harder example is $x^2=2^x$. For negative $x$, the left side strictly decreases as $x$ moves toward zero, while the right side strictly increases. At $x=-1$ the left side is greater, and at zero it is smaller. Continuity gives one intersection between these inputs, and the opposite monotonicity prevents another negative intersection. Zero itself is not a solution.
 

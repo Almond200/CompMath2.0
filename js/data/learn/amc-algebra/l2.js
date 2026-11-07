@@ -73,7 +73,7 @@ We can also make the $y$ terms cancel. Multiplying the second equation by $3$ gi
 
 A linear equation has variables appearing as constant multiples added together, such as $2x+3y=12$. Terms such as $xy$ or $x^2$ make an equation nonlinear. For two unknowns, two genuinely different linear conditions can determine a unique pair, but simply counting equations is insufficient. The equations $x+y=5$ and $2x+2y=10$ express the same condition and allow infinitely many pairs. Changing the second right side to $11$ makes the conditions contradictory. Elimination distinguishes these cases by producing an identity or a contradiction.
 
-Sometimes the desired combination is visible before any elimination. From $a+b=8$, $b+c=10$ and $a+c=12$, [[add-all-equations|adding the equations]] counts each unknown twice. Thus $2(a+b+c)=30$ and the total is $15$. Subtracting the equation that omits $b$ gives $b=15-12=3$; similarly $a=5$ and $c=7$. The useful feature is the repeated count of each unknown, rather than symmetry as a reason to add equations without examining them.
+Sometimes the desired combination is visible before any elimination. From $a+b=8$, $b+c=10$ and $a+c=12$, [[add-all-equations|adding the equations]] counts each unknown twice. Thus $2(a+b+c)=30$ and the total is $15$. Subtracting the equation that omits $b$ gives $b=15-12=3$; similarly $a=5$ and $c=7$. Each unknown occurs twice in the combined total, which lets us recover the missing value by subtraction.
 
 An everyday counting argument can perform the same elimination. If $20$ animals are chickens or cows and have $56$ legs, let $c$ be the number of cows. There are $20-c$ chickens, so the leg count is $4c+2(20-c)=56$. Expanding gives $40+2c=56$. In words, [[assume-all-one-kind|assume all animals are chickens]]: that accounts for $40$ legs, and each replacement by a cow supplies two of the missing $16$ legs. The resulting eight cows are the same answer found by the equation.
 
@@ -190,7 +190,7 @@ A price comparison asks for a relation between two expressions. With plans costi
 
 Capacity questions are inequalities. If each car can carry at most six of the $100$ people, the number of cars $n$ must satisfy $6n\ge100$, with $n$ a nonnegative integer. Sixteen cars hold only $96$ people, while seventeen hold $102$. Thus [[round-up-whole-items|rounding up to whole items]] gives the smallest feasible count, $17$. By contrast, asking how many full six-person groups can be made from $100$ people calls for rounding down: sixteen full groups with four people left over.
 
-These examples share a method rather than a collection of formulas. Name a quantity with its unit and time, express the condition as an equation or inequality, solve it, and check its meaning. Distinguish a forbidden fractional count from a minimum whole-item capacity, and distinguish equality of two plans from the inequality that makes one preferable.`,
+An equation records equal quantities; an inequality records an allowed range. The meaning of the unknown then determines which algebraic answers are admissible. A fractional count of correct answers violates the test conditions, while a fractional capacity quotient tells us that another whole car is needed.`,
       related: [
         { card: "coins-and-prices", note: String.raw`whole-number solutions to price and coin equations.` },
         { card: "transforming-equations", note: String.raw`solving the equations these stories produce (L2.2).` }

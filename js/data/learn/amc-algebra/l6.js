@@ -4,7 +4,7 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["L6"] = {
   lessons: {
     "L6.1": {
-      prereq: ["square-of-sum"],
+      prereq: ["two-variable-identities"],
       cards: [],
       body: String.raw`A sequence records values in an order, so a term has both a value and a position. A series adds terms of a sequence. Questions about a far term and questions about a sum may use the same rule in different ways: one tracks the accumulated change up to a position, while the other combines all the values along the way.
 
@@ -83,7 +83,7 @@ An infinite series means the limit of its partial sums, not the result of formal
 
 Powers of the index, such as $1^2+2^2+\cdots+n^2$, form a different kind of sum. To derive [[power-sums|the square sum]], expand $(k+1)^3-k^3=3k^2+3k+1$ and add for $k=1$ through $n$. The left side cancels to $(n+1)^3-1$. The right side contains three times the desired square sum, three times the known arithmetic sum, and $n$ ones. Isolating the square sum and simplifying gives $n(n+1)(2n+1)/6$, which is $385$ for $n=10$.
 
-The cube sum connects to the preceding lesson's triangular numbers. Since $T_k-T_{k-1}=k$ and $T_k+T_{k-1}=k^2$, the difference $T_k^2-T_{k-1}^2$ equals $k^3$. Adding these differences gives $1^3+\cdots+n^3=T_n^2$. We have obtained both power sums from cancellation rather than from unrelated formulas. For a sum restricted to even indices, first factor out the power of two: $2^3+4^3+\cdots+18^3=8(1^3+\cdots+9^3)$. The number of terms is now nine, not eighteen.`,
+The cube sum connects to the preceding lesson's triangular numbers. Since $T_k-T_{k-1}=k$ and $T_k+T_{k-1}=k^2$, the difference $T_k^2-T_{k-1}^2$ equals $k^3$. Adding these differences gives $1^3+\cdots+n^3=T_n^2$. For a sum restricted to even indices, first factor out the power of two: $2^3+4^3+\cdots+18^3=8(1^3+\cdots+9^3)$. The number of terms is now nine, not eighteen.`,
       related: [
         { card: "repeating-decimals", note: String.raw`a repeating decimal is an infinite geometric sum.` },
         { card: "arithmetico-geometric", note: String.raw`sums of a linear times a geometric term, by the same multiply-and-subtract (L11.4).` }
@@ -166,7 +166,7 @@ Products have a parallel structure. Since $1+1/k=(k+1)/k$, multiplying these fac
 
 An [[alternating-sum-grouping|alternating sum]] often uses pairs instead of telescoping. In $1-2+3-4+\cdots-98+99$, the first $98$ terms form $49$ pairs, each equal to $-1$, and the unmatched $99$ gives total $50$. Pairing the final term differently without changing the count can introduce a sign error. For alternating squares, a pair such as $100^2-99^2$ becomes $100+99$ by the difference of squares, turning the whole sum into an arithmetic sum.
 
-Grouping is legitimate for these finite sums because it only rearranges finitely many additions. It should not be transferred uncritically to a divergent infinite series. Even when a sum has a visible pattern, identify the finite partial sum and its boundary terms first. Cancellation then explains the answer rather than hiding an unjustified limiting operation.`,
+For a finite sum, the rewrites above preserve its exact value. For an infinite series, first establish the formula for a finite partial sum, including its boundary terms, then determine whether those partial sums converge.`,
       related: [
         { card: "change-of-base", note: String.raw`products of logarithms telescope after a change of base (L9.2).` },
         { card: "trig-telescoping-product", note: String.raw`trigonometric products that telescope (L12.3).` }
@@ -193,7 +193,7 @@ Grouping is legitimate for these finite sums because it only rearranges finitely
       cards: [],
       body: String.raw`A sequence's rule determines which information accumulates with its index. Equal differences give an arithmetic sequence, whose term count is a step count plus one. [[arithmetic-series|Pairing equal-step terms]] explains the endpoint-average formula, and [[triangular-numbers|triangular numbers]] organize both growing rows and counts of pairs.
 
-Equal multipliers give a geometric sequence. [[geometric-series|Multiplying a finite sum by its ratio and subtracting]] leaves only the first term and a final boundary term. Taking a limit is justified when the nonzero series has $|r|\lt1$, and the case $r=1$ must be treated separately in the finite formula. [[power-sums|Sums of squares and cubes]] can likewise be derived from differences that cancel, rather than memorized without their underlying relationship.
+Equal multipliers give a geometric sequence. [[geometric-series|Multiplying a finite sum by its ratio and subtracting]] leaves only the first term and a final boundary term. Taking a limit is justified when the nonzero series has $|r|\lt1$, and the case $r=1$ must be treated separately in the finite formula. For [[power-sums|power sums]], differences of successive cubes or squared triangular numbers produce cancellation too.
 
 A [[first-order-recurrence|recurrence]] may simplify after shifting by a fixed value or after accumulating its successive changes. A claim of [[periodic-sequences|periodicity]] requires a repeated complete state under the same rule. An eventual cycle can have a transient prefix; account for it before reducing a far index or adding whole periods.
 
