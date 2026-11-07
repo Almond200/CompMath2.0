@@ -9,10 +9,10 @@ The writing rules are in CONVENTIONS §14 and are kept only there, so they do no
 ## Status (2026-11-07)
 
 - **Initial writing:** complete in all 13 books: 103 teaching chapters with 593 counted teaching pages, plus 13 reference chapters (End-of-book Notes, 52 sections) and the separate Review and Challenge problem sets. Difficulty labels (Core, Core II, Extension) apply where assigned; reference sections never carry one.
-- **Content revision completed:** AMC Algebra L1–L14; AMC Number Theory M1–M2 (commit b62c7e4, PR #234, merged into `main` as 9b61c9d) and M3–M4 (commit 96f00a6, PR #240, merged as 5b75f03).
-- **Next (Codex, active):** AMC Number Theory M5. A chapter is not marked revised until its batch is committed.
+- **Content revision completed:** AMC Algebra L1–L14; AMC Number Theory M1–M2 (commit b62c7e4, PR #234, merged into `main` as 9b61c9d) M3–M4 (commit 96f00a6, PR #240, merged as 5b75f03), M5 (8177c9b, integration 6e5489c, PR #246) and M6–M7 (f615533, PR #247), completing AMC Number Theory M1–M7; AMC Counting & Probability R1–R2 (2fb1b7e, PR #248).
+- **Next (Codex, active):** AMC Counting & Probability R3. A chapter is not marked revised until its batch is committed.
 - **Still to do:** the rest of AMC Number Theory, then the other AMC, AIME and Olympiad books. No book other than AMC Algebra and the chapters above is revised or mathematically re-verified.
-- **Handoff state:** branch `codex/textbook-revision`; latest batch M3–M4, commit 96f00a6, PR #240, merged as 5b75f03; next chapter M5. M3–M4 validation is recorded below; no open issue is known.
+- **Handoff state:** latest batch AMC Counting & Probability R1–R2, commit 2fb1b7e, PR #248 (branch `codex/counting-r1-r2-revision`), merged; next chapter R3. Open issues Codex reported are fixed: the strategies of 2006 AMC 12A #14 (with its twin 10A #22) and 1990 AIME #5 (Claude, 2026-11-07).
 
 ## Completed
 
@@ -29,12 +29,15 @@ The writing rules are in CONVENTIONS §14 and are kept only there, so they do no
 - **AMC Algebra L12–L14** (trigonometry, complex numbers, mixed problems), commit 819bb92, PR #224, with seven new diagrams. The batch corrected domain and branch assumptions, strengthened worked solutions, and made clear where an intermediate quantity differs from the answer the AIME asks for.
 - **AMC Number Theory M1–M2** (foundations: divisibility, digits and fractions), commit b62c7e4, PR #234 (merged as 9b61c9d; merge-resolution commit 6fe2953 kept the revised chapters and Claude's square-root indexing fix and regenerated the notes; M3–M4 were outside that fix). Connected rewrites with five diagrams; clearer conditions for calendar offsets, digit arguments, decimals and Farey fractions; stronger worked solutions; the M8 notes regenerated.
 - **AMC Number Theory M3–M4** (divisors, factorials and remainders), commit 96f00a6, PR #240, merged as 5b75f03, with proofs and diagrams; the M8 notes regenerated. Chapter numbering and problem placements are unchanged, so `LEARN-OUTLINE.md` needs no update.
+- **AMC Number Theory M5** (integer equations), commit 8177c9b, integration 6e5489c, PR #246: Bézout and the full linear solution family, CRT compatibility, least coin totals by residue, reversible factorizations, primitive triples, triangle counts and finite bounds; three diagrams; expanded solutions for all 23 exercises; all 27 contest placements kept.
+- **AMC Number Theory M6–M7** (advanced and mixed number theory), commit f615533, PR #247: valuations and multiplicativity, modular cancellation, Euler and Wilson, exact orders and decimal periods, Pell generation, reversible factorizations and finite bounds; five diagrams; expanded solutions for all 37 exercises; M7.1's swapped negative-factor values in $xy=2x+3y$ corrected (answer still four). This completes AMC Number Theory M1–M7.
+- **AMC Counting & Probability R1–R2**, commit 2fb1b7e, PR #248: counting models and probability derivations.
 - **Root and square root in the notes index:** the builder's basic term Root no longer counts square, cube, $n$th, principal or primitive roots, and Square root is its own term (Claude, 2026-11-07, at Codex's report); integrated, not outstanding.
 - **The arctangent range** is corrected in the lessons and the generated glossary (Codex) and on the source card Inverse Trig Identities & Ranges (Claude, PR #225); nothing is outstanding.
 
 ## Continue the content pass
 
-Continue with AMC Number Theory from M5, then chapter by chapter through the AMC, AIME and Olympiad books. Read each chapter's lesson bodies and worked solutions together before rewriting. Check mathematical claims by computation where applicable; preserve problem placements and avoid altering the Step T data. Retain the stronger O3–O7 explanations unless a specific improvement is warranted. Review glossary definitions as their lessons change, especially when a technical term needs a more precise definition than a card's introductory description.
+Continue with AMC Counting & Probability from R3, then chapter by chapter through the AMC, AIME and Olympiad books. Read each chapter's lesson bodies and worked solutions together before rewriting. Check mathematical claims by computation where applicable; preserve problem placements and avoid altering the Step T data. Retain the stronger O3–O7 explanations unless a specific improvement is warranted. Review glossary definitions as their lessons change, especially when a technical term needs a more precise definition than a card's introductory description.
 
 After changing lesson references or prose, regenerate the back matter and check it:
 
@@ -53,6 +56,8 @@ JSC=./tools/jsc-node sh tools/gates.sh
 - **End-of-book Notes and L1:** all repository gates and the regression suites passed. Tests cover all 13 notes chapters, index-target scope and resolution, key-term retrieval, and the chapter and lesson search audit. Chromium checked all 39 notes sections and L1.2–L1.5 at 1280 and 375 pixels (86 page checks): no JavaScript errors, KaTeX errors, missing index links, or horizontal overflow.
 - **L8 and L9 (PR #217):** every gate and all three regression suites; the generated notes checked; 71 browser page checks of desktop and phone rendering, light and dark themes, the corrected links, and the affected notes.
 - **L10 and L11 (PR #221):** every gate and all three regression suites, 234 exact mathematical checks and 84 browser page checks.
+- **M6–M7 (PR #247):** every gate, the three regression suites, notes and shelf checks, 208,522 exact or finite computational checks (all 37 exercises and 37 contest problems), 76 page checks at 1280 and 375 px in light and dark, four lesson-code and glossary-navigation checks, and the unchanged label-audit baseline (10 far-move, 11 on-stroke).
+- **M5 (PR #246):** every gate, the three regression suites, notes and shelf checks, 14,986 exact or finite checks (all 23 exercises and 27 contest problems), 52 page checks, and the same label-audit baseline.
 - **M3–M4 (PR #240):** every gate and the three regression suites, 24,552 mathematical checks, 84 browser checks and 20 final targeted checks.
 - **M1–M2 (PR #234):** every gate and the regression suites, 29,124 finite computational checks, 84 page checks and four search-integration checks. The merge fix (6fe2953) then passed all suites and gates, the generated-notes check, and four index and glossary browser checks.
 - **L12–L14 (PR #224):** every gate and all three regression suites, 194 exact mathematical checks, 441 numerical checks and 104 browser page checks.
