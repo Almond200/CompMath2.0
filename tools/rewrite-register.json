@@ -1853,7 +1853,8 @@
     "bounded-diophantine-count": "pattern",
     "two-variable-identities": "formula",
     "composing-rotations": "formula",
-    "inversions-adjacent-swaps": "formula"
+    "inversions-adjacent-swaps": "formula",
+    "subtract-swapped-equations": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -9061,6 +9062,12 @@
       [
         "(new card)",
         "written directly in the formula template"
+      ]
+    ],
+    "subtract-swapped-equations": [
+      [
+        "(new card)",
+        "written directly in the method template"
       ]
     ]
   }

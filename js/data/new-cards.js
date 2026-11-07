@@ -70,5 +70,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Card from the tagging pass, 2026 AIME I (P59)", date: "2026-11-07",
     ids: ["composing-rotations"] },
   { label: "Card from the tagging pass, 2024 AMC 10A (P60)", date: "2026-11-07",
-    ids: ["inversions-adjacent-swaps"] }
+    ids: ["inversions-adjacent-swaps"] },
+  { label: "Card from the tagging pass, 2023 AIME II (P61)", date: "2026-11-07",
+    ids: ["subtract-swapped-equations"] }
 ];

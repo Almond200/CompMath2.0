@@ -694,7 +694,7 @@ window.MATH_SECTIONS.push({
         { title: "Polynomials & Their Roots", blurb: "Working with the roots of a polynomial without finding them.", ids: ["symmetric-polynomial-strategies", "polynomial-division", "comparing-coefficients", "lagrange-interpolation", "quadratic-root-location", "root-transformations", "roots-of-unity-filter"] },
         { title: "Sums & Sequences", blurb: "Evaluating sums by collapsing, reordering, or differencing their terms.", ids: ["telescoping", "alternating-sum-grouping", "fx-pairing", "finite-differences", "double-summation", "largest-term-ratio"] },
         { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sign-chart", "sos-method", "smoothing-method", "tangent-line-trick", "derivative-extremum", "median-minimizes-abs", "slope-to-a-point", "placing-digits-extremes"] },
-        { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["transforming-equations", "add-all-equations", "linear-elimination", "setting-up-proportions", "rounding-ranges", "time-per-leg", "round-up-whole-items", "assume-all-one-kind", "averages-to-totals"] },
+        { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["transforming-equations", "add-all-equations", "subtract-swapped-equations", "linear-elimination", "setting-up-proportions", "rounding-ranges", "time-per-leg", "round-up-whole-items", "assume-all-one-kind", "averages-to-totals"] },
         { title: "Graphs, Estimates & Rates", blurb: "Drawing the picture, or estimating, when an exact computation is the hard way.", ids: ["abs-value-graphing", "abs-value-relations", "piecewise-graph-counting", "estimating-answers", "sqrt-approximation"] },
         { title: "Working with Functions", blurb: "Reading a function's symmetries and periods off the equations that describe it, and proving it one-to-one or onto.", ids: ["function-symmetry-equation", "injectivity-surjectivity"] },
         { title: "Matrices & Determinants", blurb: "Evaluating a determinant without expanding every term, and raising a matrix to a high power.", ids: ["matrix-power-diagonalizing", "cofactor-expansion"] }
@@ -850,6 +850,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "subtract-swapped-equations",
+          name: "Subtracting Equations of a Symmetric System",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A system whose equations turn into one another when two variables are swapped, or when the variables are cycled, such as $y + 4 = (x - 2)^2$ and $x + 4 = (y - 2)^2$, or $xy + 4z = 60$, $yz + 4x = 60$, $zx + 4y = 60$; often with a side condition such as $x \ne y$, or with integer unknowns.`,
+          move: String.raw`Subtract two equations that differ by swapping two variables. The difference vanishes whenever those two variables are equal, so it factors with their difference, $(x - z)\,Q = 0$ (or $(x - z)\,Q = c$ when the right sides differ). Split into the case $x = z$ and the case $Q = 0$ (for integers, the factor pairs of $c$), and solve each smaller system.`,
+          uses: ["factor-remainder-theorem", "difference-of-squares"],
+          latex: String.raw`E(x, y, z) - E(z, y, x) = (x - z)\,Q(x, y, z)`,
+          description: String.raw`Subtracting two equations of a symmetric or cyclic system splits it into cases. When one equation becomes the other on swapping $x$ and $z$, their difference changes sign under that swap, so it is zero whenever $x = z$ and factors as $(x - z)$ times a cofactor $Q$. Then either the two variables are equal, which collapses the system to fewer unknowns, or $Q$ vanishes (or, for integers, $x - z$ and $Q$ are a factor pair of the constant), which is a simpler equation.`,
+          keywords: ["subtract the equations", "subtract two equations", "symmetric system", "cyclic system", "swap the variables", "x minus y factor", "x equals y or", "difference of the equations", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
         },
         {
           id: "linear-elimination",

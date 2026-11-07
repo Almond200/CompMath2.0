@@ -58,7 +58,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid", "rolling-without-slipping", "tethered-animal"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 140 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 141 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -89,7 +89,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["log-substitution", "functional-substitution", "cauchy-functional-equations", "substitute-repeated-block"] },
       { title: "Systems & Determinants",
         note: "Two or three equations that look alike are rarely solved by elimination. Add them all first, and keep the determinant handy for the area and collinearity readings it hides inside.",
-        ids: ["add-all-equations", "linear-elimination", "determinant-geometric", "assume-all-one-kind"] },
+        ids: ["add-all-equations", "linear-elimination", "determinant-geometric", "assume-all-one-kind", "subtract-swapped-equations"] },
       { title: "Functions & Symmetry",
         note: "What a function does under a reflection or an undoing: parity, and the inverse with its mirror-image graph.",
         ids: ["odd-even-functions", "inverse-function-properties"] },
