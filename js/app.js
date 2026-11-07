@@ -4680,6 +4680,11 @@
       });
       list.addEventListener("mousedown", e => e.preventDefault());
       list.addEventListener("click", e => { const b = e.target.closest("[data-find]"); if (b) { go(+b.dataset.find); box.blur(); } });
+      // The pointer moves the selection, so only one option is ever highlighted (owner, 2026-11-07).
+      list.addEventListener("mousemove", e => {
+        const b = e.target.closest(".set-find-opt"), opts = [...list.querySelectorAll(".set-find-opt")], k = opts.indexOf(b);
+        if (k >= 0 && k !== cur) { cur = k; opts.forEach((o, j) => o.classList.toggle("is-cur", j === cur)); }
+      });
       box.addEventListener("blur", () => setTimeout(() => { list.hidden = true; }, 120));
     })();
     // Pointing at a setting dims the preview screens it does not change.
@@ -5499,7 +5504,16 @@
       const choices = key ? labels.filter(label => normalize(label).includes(key)).slice(0, 7)
         : ["Mixed", ...Object.values(SUBJECT_LABELS)];
       suggestions.innerHTML = choices.map((label,i) => `<button type="button" class="set-find-opt practice-topic-option${i === 0 ? ' is-cur' : ''}" role="option" id="practice-topic-${i}" aria-selected="${i === 0}">${escapeAttr(label)}</button>`).join('');
-      suggestions.querySelectorAll('button').forEach((b,i) => b.addEventListener('click', () => { topic.value = choices[i]; closeTopics(); update(); topic.focus(); closeTopics(); }));
+      suggestions.querySelectorAll('button').forEach((b,i) => {
+        b.addEventListener('click', () => { topic.value = choices[i]; closeTopics(); update(); topic.focus(); closeTopics(); });
+        // The pointer moves the selection, so only one option is ever highlighted (owner, 2026-11-07).
+        b.addEventListener('mousemove', () => {
+          if (activeTopic === i) return;
+          activeTopic = i;
+          suggestions.querySelectorAll('button').forEach((o,j) => { o.classList.toggle('is-cur', j === i); o.setAttribute('aria-selected', String(j === i)); });
+          topic.setAttribute('aria-activedescendant', b.id);
+        });
+      });
       renderMath(suggestions);
       const pool = matchingProblems();
       count.max = Math.max(1, Math.min(30, pool.length));

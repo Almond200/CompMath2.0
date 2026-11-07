@@ -3070,7 +3070,7 @@ details[open] > summary.set-panel-title::after { transform: rotate(90deg); }
 .set-find-list { position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 20; padding: 4px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16); }
 .set-find-list[hidden] { display: none; }
 .set-find-opt { display: flex; width: 100%; align-items: baseline; justify-content: space-between; gap: 10px; padding: 7px 10px; border: none; border-radius: 7px; background: none; color: var(--text); font: inherit; font-size: 14px; text-align: left; cursor: pointer; }
-.set-find-opt:hover, .set-find-opt.is-cur { background: var(--bg-panel); }
+.set-find-opt.is-cur { background: var(--bg-panel); }  /* the pointer moves .is-cur, so hover needs no style of its own */
 .set-find-opt > span:first-child { min-width: 0; overflow-wrap: anywhere; }
 .set-find-group { font-size: 12px; color: var(--text-faint); white-space: nowrap; }
 .set-find-none { padding: 8px 10px; font-size: 13.5px; color: var(--text-faint); }
@@ -4331,6 +4331,3 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
   0%, 55% { background-color: rgba(91, 140, 255, 0.16); box-shadow: 0 0 0 12px rgba(91, 140, 255, 0.16); }
   100% { background-color: rgba(91, 140, 255, 0); box-shadow: 0 0 0 12px rgba(91, 140, 255, 0); }
 }
-/* One highlighted option at a time: the pointer moves the selection instead of adding a second
-   highlight (owner, 2026-11-07). */
-.book-search .set-find-opt:hover:not(.is-cur) { background: none; }
