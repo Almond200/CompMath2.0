@@ -1827,7 +1827,7 @@ Usually the decisive reformulation: once the objects are recoded, a standard for
 
 "grid-path-fill": String.raw`
 ## When to use
-Counting lattice paths on a grid with blocked squares, extra steps such as diagonals, or a missing region, so that one binomial coefficient no longer gives the answer. An open grid with only right and up steps is one binomial coefficient, $\binom{m + n}{n}$, and needs no filling. It also handles any board-walking count small enough to write out.
+Counting lattice paths on a grid with blocked squares, extra steps such as diagonals, or a missing region, so that one binomial coefficient no longer gives the answer. An open grid with only right and up steps is one binomial coefficient, $\binom{m + n}{n}$, and needs no filling. When the moves can go back and forth and the number of steps is fixed, every place must be updated once per step instead: that is [[walk-counting-dp|Counting Walks Step by Step]].
 
 ## How
 1. Write $1$ at the starting cell.
@@ -2473,7 +2473,7 @@ Object.assign(window.MATH_DETAILS, {
 
 "transfer-matrix-method": String.raw`
 ## When to use
-Counting sequences, colorings of a strip or tilings of a $k \times n$ board where each next choice depends only on the last few, especially when $n$ is large or a general formula is wanted. When a recursion would need several sequences that feed into each other, the matrix keeps them organized. For strings with a rule about neighbors, see [[restricted-sequences|Counting Restricted Sequences (State Machines)]].
+Counting sequences, colorings of a strip or tilings of a $k \times n$ board where each next choice depends only on the last few, especially when $n$ is large or a general formula is wanted. When a recursion would need several sequences that feed into each other, the matrix keeps them organized. For strings with a rule about neighbors, see [[restricted-sequences|Counting Restricted Sequences (State Machines)]]; for walks on a small figure, the same rounds done by hand are [[walk-counting-dp|Counting Walks Step by Step]].
 
 ## How
 1. Choose states that record just enough of the recent past to decide which next choices are allowed.
@@ -3773,5 +3773,36 @@ The fewest swaps of neighbors to sort or reverse an arrangement, the parity of a
 
 ## Contest profile
 An occasional AMC counting question about swapping neighbors, and a parity invariant inside olympiad process problems.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"walk-counting-dp": String.raw`
+## When to use
+A token moves along the edges of a figure, a polyhedron's vertices, a ring of lily pads, the points of a grid, exactly $n$ times, it may go back and forth, and the count of the walks (or a probability, the count over the total) is asked. The method shines when the figure is small and $n$ is moderate, when there are several allowed starting or finishing places, and when the walk must avoid some places or stop on reaching one. If every move goes one way only, as right and up on a grid, the count does not depend on the number of steps and [[grid-path-fill|filling the grid]] is the same idea with one pass. For long walks, [[transfer-matrix-method|the transfer matrix]] packages the same rounds as powers of a matrix.
+
+## How
+1. Draw the figure and decide which places are neighbors (joined by one step).
+2. Write $1$ at each allowed starting place and $0$ at every other place: the walks of length $0$.
+3. For each step, make a new table in which every place gets the sum of its neighbors' numbers from the previous table. Places the walk may not enter get $0$; a place where the walk stops passes nothing on.
+4. After $n$ rounds, add the numbers at the allowed finishing places.
+5. Save work with symmetry: places that the figure's symmetries exchange always carry equal numbers, so track one number per class.
+6. If the totals grow by a constant factor from round to round, use the pattern only after checking why it continues.
+
+On the ten points of a triangular grid of side $3$, with every point allowed as a start, the first round gives each point its number of neighbors, $2$ at a corner, $4$ at an edge point and $6$ at the center. After five rounds the total is $9216$ walks.
+
+## Why it works
+Let $w_k(v)$ be the number of walks of exactly $k$ steps that start at an allowed place and end at $v$. A walk of $k + 1$ steps ending at $v$ is determined by its first $k$ steps, a walk ending at some neighbor $u$ of $v$, together with the last step from $u$ to $v$. Different neighbors give different walks, and every walk of $k + 1$ steps arises from exactly one walk of $k$ steps, so $w_{k+1}(v) = \sum_{u \sim v} w_k(u)$. At $k = 0$ the only walks are the empty ones, one at each allowed start, which is the starting table. By induction on $k$ the table after $n$ rounds counts the walks of length $n$ ending at each place, and the walks that end at an allowed finish are counted by adding those entries. A forbidden place, given $0$ in every table, never passes a walk on; a stopping place that is never updated from collects the walks that first reach it.
+
+## Formulas it uses
+No formula is needed: each round is a sum over neighbors. Written with the adjacency matrix $A$ of the figure, the table after $n$ rounds is $A^n$ applied to the starting table, which is the Transfer Matrix Method.
+
+## Common traps
+- Updating the table in place, so that some places use the new numbers of their neighbors instead of the old ones; always build the next table from the previous one.
+- Forgetting that the walk may go back the way it came: a step to a neighbor and back counts.
+- Counting the starting place in its own update: a place is not its own neighbor unless the walk may stand still.
+- Adding the starting numbers instead of the final ones, or adding over every place when only some finishes are allowed.
+
+## Contest profile
+A medium AMC problem asks for the walks of a bug on a cube or a frog on a few lily pads after $4$ to $6$ steps, and an AIME problem adds a vertex where the walk stops, asking for every walk that ends there within $12$ steps; probabilities divide the count by the number of all walks.
 `
 });

@@ -59,6 +59,10 @@
     { q: String.raw`Prove $2(a^3+b^3+c^3)\ge a^2b+ab^2+b^2c+bc^2+c^2a+ca^2$ for nonnegative reals.`,
       s: String.raw`The difference is $\sum_{\text{cyc}}\big(a^3+b^3-a^2b-ab^2\big)=\sum_{\text{cyc}}(a-b)^2(a+b)\ge 0$, since each $(a-b)^2(a+b)\ge 0$. Equality iff $a=b=c$.` }
   );
+  add("walk-counting-dp",
+    { q: String.raw`A square $ABCD$ has a smaller square inside it, and on the smaller square sit nine points: its four corners, the midpoints of its four sides, and its center $O$. Each outer corner is joined to the nearest inner corner, the outer square's sides are drawn, and the nine inner points are joined along the rows and columns of their $3\times3$ array. A token starts at one of $A$, $B$, $C$, $D$ and moves along drawn segments, one segment per step. In how many ways can it reach $O$ in exactly $5$ steps?`,
+      s: String.raw`By symmetry track one number for each kind of point: an outer corner $a$, an inner corner $b$, an inner side midpoint $c$ and the center $d$. An outer corner touches two outer corners and one inner corner, an inner corner touches one outer corner and two midpoints, a midpoint touches two inner corners and the center, and the center touches the four midpoints, so each step sends $(a,b,c,d)$ to $(2a+b,\ a+2c,\ 2b+d,\ 4c)$. Starting from $(1,0,0,0)$ the rounds give $(2,1,0,0)$, $(5,2,2,0)$, $(12,9,4,8)$, $(33,20,26,16)$ and then $d=4\cdot26=\mathbf{104}$ walks.` }
+  );
   add("smoothing-method",
     { q: String.raw`For nonnegative reals with $a+b+c=10$, find the maximum and minimum of $ab+bc+ca$.`,
       s: String.raw`Since $ab+bc+ca=\frac{(a+b+c)^2-(a^2+b^2+c^2)}{2}$, it is largest when $a^2+b^2+c^2$ is smallest — smoothing to $a=b=c=\tfrac{10}{3}$ gives $\frac{100-100/3}{2}=\frac{100}{3}$. Pushing to the boundary $a=10,\,b=c=0$ gives the minimum $\mathbf{0}$.` },

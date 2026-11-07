@@ -4035,7 +4035,7 @@
     "Examples": "Worked examples that use this card.",
     "Contest profile": "What the tagged contest problems say about this card. (Statistically generated)",
     "Practice problems": "Real contest problems that use this card, by contest.",
-    "Study this more": "Written lessons that teach or discuss this card.",
+    "Study this more": "Written lessons that teach this card.",
     "Related formulas": "Hand-picked cards that are part of the same idea.",
     "Related methods": "Hand-picked cards that are part of the same idea.",
     "Related patterns": "Hand-picked cards that are part of the same idea.",
@@ -6022,12 +6022,14 @@
     const notes = b.chapters.find(c => c.kind === 'reference');
     const glossaryLesson = notes && notes.lessons.find(l => l.title === 'Glossary');
     const glossaryBody = glossaryLesson && learnLessonData(notes, glossaryLesson)?.body || '';
+    let dfnIndex = 0;
     for (const m of glossaryBody.matchAll(/<dfn>([^<]+)<\/dfn>\.?\s*([^\n]*)/g)) {
+      const dfnAt = dfnIndex++;
       const term = m[1].replace(/&amp;/g, '&'), entry = index.find(e => e.term === term);
       const home = entry && b.chapters.find(c => c !== notes && entry.lessons.some(code => code.startsWith(c.code + '.')));
       const aliases = entry ? entry.aliases : [];
       const first = m[2].replace(/<[^>]*>/g, '').match(/^.*?[.!?](?=\s|$)/);
-      entries.push({ kind: 'glossary', c: home || notes, l: glossaryLesson, term, snippet: (first ? first[0] : m[2]).slice(0, 160),
+      entries.push({ kind: 'glossary', c: home || notes, l: glossaryLesson, term, dfnAt, snippet: (first ? first[0] : m[2]).slice(0, 160),
         phrase: tokens(term).join(' '), aliases, aliasPhrases: aliases.map(a => tokens(a).join(' ')), bonus: 90,
         fields: [[new Set(tokens(term)), 11]] });
     }
@@ -6093,15 +6095,23 @@
   window.visualViewport?.addEventListener('scroll', scheduleSearchVisibility, { passive: true });
 
   let pendingGlossaryTerm = null;
+  // The definition is found by its place on the Glossary page, since a term with math in it
+  // ("$p$-adic Valuation") reads differently once KaTeX has rendered it. Works whether the
+  // Glossary had to open first or was already the page in view (owner, 2026-11-07).
   function showPendingGlossaryTerm() {
-    if (!pendingGlossaryTerm) return;
-    const dfn = [...$content.querySelectorAll('dfn')].find(d => d.textContent.trim() === pendingGlossaryTerm);
+    const pending = pendingGlossaryTerm;
+    if (!pending) return;
+    const dfns = [...$content.querySelectorAll('dfn')];
+    const dfn = dfns.find(d => d.textContent.trim() === pending.term) || (dfns.length > pending.dfnAt ? dfns[pending.dfnAt] : null);
     if (!dfn) return;
     pendingGlossaryTerm = null;
     const block = dfn.closest('p') || dfn;
     block.scrollIntoView({ block: 'center' });
+    block.classList.remove('bks-found');
+    void block.offsetWidth;
     block.classList.add('bks-found');
-    setTimeout(() => block.classList.remove('bks-found'), 4800);
+    clearTimeout(block._bksTimer);
+    block._bksTimer = setTimeout(() => block.classList.remove('bks-found'), 4800);
   }
   function wireBookSearch(root, b) {
     const rank = bookSearchRanker(b);
@@ -6110,7 +6120,7 @@
       let results = [], active = 0;
       // A lesson opens itself; a glossary term opens the Glossary and scrolls to its definition.
       const go = r => {
-        if (r.kind === 'glossary') { pendingGlossaryTerm = r.term; location.hash = learnHash(b, b.chapters.find(c => c.kind === 'reference'), lessonNum(r.l)); }
+        if (r.kind === 'glossary') { pendingGlossaryTerm = { term: r.term, dfnAt: r.dfnAt }; location.hash = learnHash(b, b.chapters.find(c => c.kind === 'reference'), lessonNum(r.l)); }
         else location.hash = r.kind === 'lesson' ? learnHash(b, r.c, lessonNum(r.l)) : learnHash(b, r.c);
         if (pendingGlossaryTerm && r.kind === 'glossary') setTimeout(showPendingGlossaryTerm, 60);
       };
@@ -6902,12 +6912,38 @@ The book remembers the last lesson you opened, in this browser, and the contents
         || (qt.length > 1 && take(t, w => expandToken(t).slice(1).includes(w), 0.5)));
       if (!all) return;
       const coverage = qt.length / x.words.length;
-      if (qt.length === 1 ? !(coverage === 1 || x.words[0] === qt[0] || (qt[0].length >= 4 && x.words[0].startsWith(qt[0]))) : coverage < 0.34) return;
+      // One word finds a title that starts with it, is only it, or contains it whole (5+ letters).
+      if (qt.length === 1 ? !(coverage === 1 || x.words[0] === qt[0] || (qt[0].length >= 4 && x.words[0].startsWith(qt[0])) || (qt[0].length >= 5 && x.words.includes(qt[0]))) : coverage < 0.34) return;
       hits.push({ x, score: quality / qt.length + coverage + (x.phrase === qt.join(" ") ? 1 : 0) + (x.l ? 0 : 0.05) });
     });
     hits.sort((a, z) => z.score - a.score || a.x.title.length - z.x.title.length);
-    return hits.slice(0, 3).map(h => h.x);
+    return hits.slice(0, 4).map(h => h.x);
   }
+  // A textbook named in full ("AMC Algebra", "aime geometry book") is a result of its own
+  // (owner, 2026-11-07): every word of the title must be in the query.
+  function bookMatches(q) {
+    const qt = new Set(wordsOf(q).filter(w => !LESSON_STOP.has(w) && w !== normWord("textbook")));
+    if (!qt.size) return [];
+    return LEARN_SHELF.filter(b => {
+      const bt = wordsOf(b.title).filter(w => !LESSON_STOP.has(w));
+      return bt.length && bt.every(w => qt.has(w)) && [...qt].every(w => bt.includes(w));
+    });
+  }
+  // Where the last of the first eight cards that match the query in their name sits: lessons
+  // and chapters follow it, so a lesson neither outranks the cards named for the query nor sinks below loosely
+  // related ones (owner, 2026-11-07).
+  function strongCardCount(sorted, query) {
+    const qt = wordsOf(query).filter(w => !LESSON_STOP.has(w));
+    if (!qt.length) return 1;
+    let n = 0;
+    sorted.slice(0, 8).forEach((e, i) => {
+      const nw = new Set(wordsOf(String(e.formula.name).replace(/\$[^$]*\$/g, " ")));
+      if (qt.every(t => nw.has(t) || [...nw].some(w => t.length >= 4 && w.startsWith(t)))) n = i + 1;
+    });
+    return Math.max(1, n);
+  }
+  const learnCrumb = parts => `<span class="card-crumb">${parts.map(escapeAttr).join(" &rsaquo; ")}</span>`;
+  const capFirst = t => String(t || "").replace(/^./, ch => ch.toUpperCase());
   // The first paragraph of a lesson, for its result card (the card clamps it).
   const lessonLead = x => String((learnLessonData(x.c, x.l || x.c.lessons[0]) || {}).body || "").split(/\n\s*\n/).find(t => t.trim() && !/^\{\{/.test(t.trim())) || "";
 
@@ -6951,20 +6987,28 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // lesson", "circles chapter", or a lesson code such as C5.3. Otherwise the same strong
     // matches are a secondary result, after the cards.
     const lessonHits = named ? [] : lessonMatches(query);
+    const bookHits = named ? [] : bookMatches(query);
     const items = [];
     papers.forEach(c => items.push({ contest: c }));
     if (named) named.forEach(p => items.push({ problem: p }));
     listHits.filter(h => h.strong).forEach(h => items.push({ list: h.list }));
+    bookHits.forEach(b => items.push({ book: b }));
     if (askLesson) lessonHits.forEach(x => items.push({ lesson: x }));
     if (refy && !named) probs.forEach(p => items.push({ problem: p }));
-    sorted.forEach(e => items.push({ entry: e }));
-    if (!askLesson) lessonHits.forEach(x => items.push({ lesson: x }));
+    // Lessons and chapters are a second tier: after the cards named for the query, ahead of
+    // the rest of the cards (owner, 2026-11-07), unless the query asks for a lesson.
+    const lessonAt = askLesson ? 0 : strongCardCount(sorted, query);
+    sorted.forEach((e, i) => {
+      if (i === lessonAt && !askLesson) lessonHits.forEach(x => items.push({ lesson: x }));
+      items.push({ entry: e });
+    });
+    if (!askLesson && sorted.length <= lessonAt) lessonHits.forEach(x => items.push({ lesson: x }));
     if (!refy) probs.forEach(p => items.push({ problem: p }));
     listHits.filter(h => !h.strong).forEach(h => items.push({ list: h.list }));
     const n = { formula: 0, method: 0, pattern: 0 };
     sorted.forEach(e => n[e.kind]++);
     const counts = [[n.formula, "formula", "formulas"], [n.method, "method", "methods"], [n.pattern, "pattern", "patterns"],
-      [lessonHits.length, "lesson", "lessons"], [papers.length, "contest", "contests"], [probs.length, "problem", "problems"], [listHits.length, "study list", "study lists"]]
+      [bookHits.length, "book", "books"], [lessonHits.length, "lesson", "lessons"], [papers.length, "contest", "contests"], [probs.length, "problem", "problems"], [listHits.length, "study list", "study lists"]]
       .filter(c => c[0]).map(c => `${c[0]} ${c[0] === 1 ? c[1] : c[2]}`).join(" &middot; ");
     const total = items.length;
     const kindLabel = Object.fromEntries(LIST_KINDS);
@@ -6972,14 +7016,37 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const itemHtml = (it, i) => {
       const extra = i >= PAGE ? ` data-page="${Math.floor(i / PAGE)}" hidden` : "";
       if (it.entry) return cardHtml(it.entry, true, queryTokens).replace('<article class="card ', `<article${extra} class="card `);
+      if (it.book) {
+        // A book lists its first four teaching chapters, then how many more, then its line.
+        const b = it.book, chs = b.chapters.filter(c => c.kind !== "reference");
+        const rows = chs.slice(0, 4).map(c => `<div class="rs-line"><span class="rs-v">${escapeAttr(c.title)}</span><span class="rs-n">${escapeAttr(c.code)}</span></div>`).join("")
+          + (chs.length > 4 ? `<div class="rs-line rs-more-line">+ ${chs.length - 4} more chapter${chs.length > 5 ? "s" : ""}</div>` : "");
+        return `<a class="card card-result card-lesson-result" href="#/learn/${b.id}"${extra}>
+            <div class="card-head"><h4 class="card-name">${escapeAttr(b.title)}</h4><span class="card-tags"><span class="badge badge-lesson">BOOK</span></span></div>
+            <div class="card-meta">${learnCrumb(["Textbooks", b.title])}</div>
+            <div class="rs-box">${rows}</div>
+            <p class="card-desc">${escapeAttr(capFirst(b.role))}.</p>
+            <div class="more-hint">Open &rsaquo;</div>
+          </a>`;
+      }
       if (it.lesson) {
         const x = it.lesson;
-        // A chapter opens on its first page and lists its lessons; a lesson names its chapter.
-        const inner = x.l ? `<div class="rs-line"><span class="rs-k">Chapter</span><span class="rs-v">${escapeAttr(x.c.title)}</span></div>`
-          : x.c.lessons.filter(l => !/^(Introduction|Summary)$/.test(l.title)).slice(0, 3).map(l => `<div class="rs-line"><span class="rs-v">${escapeAttr(l.title)}</span></div>`).join("");
+        // A chapter lists up to four lessons and how many more; a lesson names its chapter and
+        // counts its own problems and its contest exercises.
+        let inner;
+        if (x.l) {
+          const d = learnLessonData(x.c, x.l) || {}, np = (d.problems || []).length, ne = (d.exercises || []).length;
+          inner = `<div class="rs-line"><span class="rs-k">Chapter</span><span class="rs-v">${escapeAttr(x.c.title)}</span></div>`
+            + `<div class="rs-line"><span class="rs-k">Problems</span><span class="rs-v">${np}</span></div>`
+            + `<div class="rs-line"><span class="rs-k">Exercises</span><span class="rs-v">${ne}</span></div>`;
+        } else {
+          const ls = x.c.lessons.filter(l => !/^(Introduction|Summary)$/.test(l.title));
+          inner = ls.slice(0, 4).map(l => `<div class="rs-line"><span class="rs-v">${escapeAttr(l.title)}</span></div>`).join("")
+            + (ls.length > 4 ? `<div class="rs-line rs-more-line">+ ${ls.length - 4} more lesson${ls.length > 5 ? "s" : ""}</div>` : "");
+        }
         return `<a class="card card-result card-lesson-result" href="${x.l ? learnHash(x.b, x.c, lessonNum(x.l)) : learnHash(x.b, x.c)}"${extra}>
-            <div class="card-head"><h4 class="card-name">${escapeAttr(x.title)}</h4></div>
-            <div class="card-meta"><span class="badge badge-lesson">${x.l ? "LESSON" : "CHAPTER"}</span><span class="level-range">${escapeAttr(x.b.title)} &middot; ${x.l ? escapeAttr(x.l.code) : "Chapter " + escapeAttr(x.c.code.slice(1))}</span></div>
+            <div class="card-head"><h4 class="card-name">${escapeAttr(x.title)}</h4><span class="card-tags"><span class="badge badge-lesson">${x.l ? "LESSON" : "CHAPTER"}</span></span></div>
+            <div class="card-meta">${learnCrumb(x.l ? [x.b.title, "Chapter " + x.c.code.slice(1), x.l.code] : [x.b.title, "Chapter " + x.c.code.slice(1)])}</div>
             <div class="rs-box">${inner}</div>
             <p class="card-desc">${escapeAttr(lessonLead(x))}</p>
             <div class="more-hint">Open &rsaquo;</div>
@@ -6990,8 +7057,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
         c.problems.forEach(p => p.subjects.forEach(sid => { subj[sid] = (subj[sid] || 0) + 1; }));
         const rows = Object.entries(subj).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 4);
         return `<a class="card card-result card-contest-result" href="#/problems/${famSlug(c.fam)}/${c.year}/${paperSlug(c.cname)}"${extra}>
-            <div class="card-head"><h4 class="card-name">${escapeAttr(/^\d{4}\b/.test(c.cname) ? c.cname : c.year + " " + c.cname)}</h4></div>
-            <div class="card-meta"><span class="badge badge-contest">CONTEST</span><span class="level-range">${escapeAttr(c.fam)} &middot; ${c.problems.length} problem${c.problems.length === 1 ? "" : "s"}</span></div>
+            <div class="card-head"><h4 class="card-name">${escapeAttr(/^\d{4}\b/.test(c.cname) ? c.cname : c.year + " " + c.cname)}</h4><span class="card-tags"><span class="badge badge-contest">CONTEST</span></span></div>
+            <div class="card-meta"><span class="level-range">${escapeAttr(c.fam)} &middot; ${c.problems.length} problem${c.problems.length === 1 ? "" : "s"}</span></div>
             ${rows.length ? `<div class="rs-box">${rows.map(([sid, k]) => `<div class="rs-line"><span class="rs-v">${escapeAttr(SUBJECT_LABELS[sid] || sid)}</span><span class="rs-n">${k}</span></div>`).join("")}</div>` : ""}
             <div class="more-hint">Open &rsaquo;</div>
           </a>`;
@@ -6999,8 +7066,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (it.problem) {
         const p = it.problem;
         return `<a class="card card-result card-problem-result" href="#/problem/${p.slug}"${extra}>
-            <div class="card-head"><h4 class="card-name">${refShort(p.ref)}</h4></div>
-            <div class="card-meta"><span class="badge badge-problem">PROBLEM</span><span class="level-range">${escapeAttr(p.fam)} &middot; ${p.year}</span></div>
+            <div class="card-head"><h4 class="card-name">${refShort(p.ref)}</h4><span class="card-tags"><span class="badge badge-problem">PROBLEM</span></span></div>
+            <div class="card-meta"><span class="level-range">${escapeAttr(p.fam)} &middot; ${p.year}</span></div>
             <div class="rs-box">${[["pattern", "Pattern"], ["method", "Method"], ["formula", "Formulas"]].map(([k, label]) => {
               const ids = p.formulas.filter(id => BY_ID[id] && BY_ID[id].kind === k).slice(0, 3);
               return ids.length ? `<div class="rs-line"><span class="rs-k">${label}</span><span class="rs-v">${ids.map(id => BY_ID[id].formula.name).join(", ")}</span></div>` : "";
@@ -7011,8 +7078,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       }
       const l = it.list;
       return `<a class="card card-result card-list-result" href="#/list/${l.id}"${extra}>
-          <div class="card-head"><h4 class="card-name">${escapeAttr(l.name)}</h4></div>
-          <div class="card-meta"><span class="badge badge-list">LIST</span><span class="level-range">${l.builtinSet ? (kindLabel[l.kind] || "Study list") : "Your list"} &middot; ${liveCount(l)} cards</span></div>
+          <div class="card-head"><h4 class="card-name">${escapeAttr(l.name)}</h4><span class="card-tags"><span class="badge badge-list">LIST</span></span></div>
+          <div class="card-meta"><span class="level-range">${l.builtinSet ? (kindLabel[l.kind] || "Study list") : "Your list"} &middot; ${liveCount(l)} cards</span></div>
           ${(l.sections || []).length ? `<div class="rs-box">${l.sections.slice(0, 4).map(x => `<div class="rs-line"><span class="rs-v">${escapeAttr(x.title || l.name)}</span><span class="rs-n">${x.ids.length}</span></div>`).join("")}${l.sections.length > 4 ? `<div class="rs-line rs-more-line">+ ${l.sections.length - 4} more section${l.sections.length > 5 ? "s" : ""}</div>` : ""}</div>`
             : `<div class="rs-box">${liveIds(l).slice(0, 4).map(id => `<div class="rs-line"><span class="rs-v">${BY_ID[id].formula.name}</span></div>`).join("")}</div>`}
           ${l.blurb ? (l.builtinSet ? `<p class="card-desc">${escapeAttr(l.blurb)}</p>`
@@ -7761,11 +7828,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
   function studyLessonLink({ b, c, l }) {
     return `<a class="chain-study-link" href="${learnHash(b, c, lessonNum(l))}">${escapeAttr(b.title)} · ${escapeAttr(l.title)} <span class="chain-study-l">${l.code}</span></a>`;
   }
+  // Study this more on a card page (owner, 2026-11-07): only the lessons whose "Teaches you
+  // about" row lists the card, not every lesson that links or relates to it, one per bullet.
   function cardLessonsHtml(fid) {
-    const lessons = lessonsForCard(fid).filter(({ l }) => l.title !== "Summary");
+    const lessons = lessonsForCard(fid).filter(({ l, taught }) => taught && l.title !== "Summary");
     if (!lessons.length) return "";
-    const links = [...lessons].sort((a, b) => b.taught - a.taught).map(studyLessonLink);
-    return `<div class="related"><h4>Study this more</h4><div class="chain-study-links">${links.join("")}</div></div>`;
+    const items = lessons.map(x => `<li>${studyLessonLink(x)}</li>`);
+    return `<div class="related"><h4>Study this more</h4><ul class="card-study-list">${items.join("")}</ul></div>`;
   }
   function studyMoreHtml(p, chain) {
     const aime = /AIME/.test(p.ref || p.cname || "");

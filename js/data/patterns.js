@@ -1876,7 +1876,7 @@ window.MATH_SECTIONS.push({
         { title: "Reframing the Count", blurb: "Counting something easier with the same answer: the complement, a bijection, a reflected path, a region's area, or the same set counted twice.", ids: ["complementary-counting", "bijection-method", "double-counting", "symmetry-probability", "reflection-principle", "elimination-counting", "geometric-probability"] },
         { title: "Building & Splitting", blurb: "Building each object step by step, gluing items that must stay together or slotting items into gaps, or splitting the count into cases.", ids: ["constructive-counting", "casework-method", "counting-blocks", "gap-method", "uniform-overcount", "pie"] },
         { title: "Working It Out by Hand", blurb: "Listing the cases in an order that cannot skip or repeat one, or running a short process step by step until it ends or repeats.", ids: ["organized-listing", "simulate-the-process"] },
-        { title: "Recursion & States", blurb: "Writing a count or probability in terms of smaller cases, filling a grid of counts, or solving the recursion.", ids: ["recursive-counting", "grid-path-fill", "states-recursion-prob", "transfer-matrix-method", "backward-induction"] },
+        { title: "Recursion & States", blurb: "Writing a count or probability in terms of smaller cases, filling a grid of counts, or solving the recursion.", ids: ["recursive-counting", "grid-path-fill", "walk-counting-dp", "states-recursion-prob", "transfer-matrix-method", "backward-induction"] },
         { title: "Algebraic Machinery", blurb: "Encoding a count as algebra, with generating functions or indicator variables.", ids: ["generating-function-method", "indicator-variables"] },
         { title: "Existence Arguments", blurb: "Proving that something exists, or cannot, with invariants, monovariants, extremes, or probability.", ids: ["invariants-coloring", "monovariant", "extremal-principle", "dimension-arguments", "probabilistic-method", "odd-part-chains", "coloring-arguments", "pairing-to-bound", "strategy-stealing"] }
       ],
@@ -2030,6 +2030,22 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12"]
+        },
+        {
+          id: "walk-counting-dp",
+          name: "Counting Walks Step by Step",
+          type: "method",
+          subject: "counting",
+          when: String.raw`Something moves between connected places (vertices of a figure, lily pads, cells) for exactly $n$ steps, may return to places it has visited, and may start or finish at several places; the question asks how many such walks there are, or the probability of one.`,
+          move: String.raw`Write $1$ at every allowed starting place and $0$ elsewhere. Then, once per step, replace every place's number by the sum of its neighbors' numbers from the round before. After $n$ rounds, add the numbers at the allowed finishing places.`,
+          uses: [],
+          latex: String.raw`w_{k+1}(v) = \sum_{u \sim v} w_k(u), \qquad \#\text{walks} = \sum_{v \text{ final}} w_n(v)`,
+          latexPlain: String.raw`w_{k+1}(v) = w_k(u_1) + w_k(u_2) + \cdots \text{ over the neighbors } u_i \text{ of } v, \qquad \#\text{walks} = \text{the sum of } w_n \text{ over the allowed finishes}`,
+          description: String.raw`Counting walks step by step labels every place with the number of walks of the current length that end there. A walk of $k + 1$ steps ending at $v$ is a walk of $k$ steps ending at a neighbor of $v$ followed by one step, so each round replaces every label by the sum of its neighbors' labels, and walks may revisit places freely. Unlike filling a grid of paths, every place is updated each round, because the count depends on the number of steps, not only on where the walk is.`,
+          keywords: ["graph walk counting", "walks of length n", "dynamic programming", "step by step table", "sum of neighbors", "frog jumps", "bug on a figure", "number of ways to move n times", "label the vertices", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
         },
         {
           id: "states-recursion-prob",
