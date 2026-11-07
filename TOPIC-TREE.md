@@ -654,6 +654,8 @@ Spread of the 14 by first node: 6 Algebra, 3 Counting & Probability, 3 Geometry,
 
 The test filings above are a record of the test. The problems' own `tree` fields, written in the tagging pass, are the filings now, and on re-reading four of them changed. 2026 AMC 10A #5 is `alg.word.stats.mean` with `alg.seq.rec` (each term is the mean of all earlier ones, which is not a nonlinear recurrence). #6 is `geo.circ.arc.sector` with `geo.circ.inscribed.thm` (Thales' theorem is the step, not the triple $8,15,17$). #13 is `cp.graph.basic.degree` with `alg.poly.vieta.basic` (two sizes from their sum and product). #22, and its twin 12A #17, is `geo.coord.conic.ellipse` with `geo.coord.transform` (a stretch turns the ellipses into touching circles; no circle is inscribed in a polygon).
 
+Later papers, read again rather than copied from their tests: 2025 AMC 10A #17 is `nt.div.gcd.basic` with `nt.mod.basic.arith` (it works with numbers, not the expressions of `nt.div.gcd.euclid`). In the 2025 AIME I, #7 is `cp.prob.basic.count` with `cp.basic.case.cases` (random pairings are not tournaments; see TQ7), #12 is `geo.solid.coord.planes` with `geo.coord.area.region` (the region is cut out by inequalities, which nothing solves), and #14 is `geo.comb.extreme.maxmin` with `geo.circ.cyclic.ptolemy` (Ptolemy's inequality is the bound).
+
 ## Decisions (owner, 2026-11-06)
 
 - **TQ1, word problems:** "Arithmetic and word problems" stays under Algebra.

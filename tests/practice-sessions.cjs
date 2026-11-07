@@ -15,6 +15,11 @@ P.answer(s, 'amc', 'D', false);
 assert.equal(P.result(s, 'amc'), 'Incorrect');
 P.answer(s, 'amc', '', false);
 assert.equal(P.result(s, 'amc'), 'Unanswered');
+// A voided problem is never graded, answered or not.
+global.MATH_ANSWER_KEYS.voided = { aime: 'voided' };
+assert.equal(P.result(s, 'aime'), 'Voided');
+delete global.MATH_ANSWER_KEYS.voided;
+assert.equal(P.result(s, 'aime'), 'Correct');
 for(let i=0;i<200;i++){ assert(P.answer(s,'amc','C',false)); assert(P.answer(s,'amc','',false)); }
 P.answer(s,'amc','C',false);
 s.current = 1; s.marks.aime = true;

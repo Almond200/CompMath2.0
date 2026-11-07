@@ -5359,7 +5359,7 @@
   }
   function renderPracticeResults(set) {
     const total = set.slugs.length;
-    const counts = { Correct: 0, Incorrect: 0, Unanswered: 0, 'Answer unavailable': 0 };
+    const counts = { Correct: 0, Incorrect: 0, Unanswered: 0, 'Answer unavailable': 0, Voided: 0 };
     set.slugs.forEach(slug => counts[practiceSessions.result(set, slug)]++);
     const reviewUrl = '#/practice/set/' + encodeURIComponent(set.id) + '/review';
     const stats = [[counts.Correct + '/' + total, 'Correct'], [Math.round(100 * counts.Correct / total) + '%', 'Score'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
@@ -5368,6 +5368,7 @@
       <section class="sh-section"><h2>Practice complete</h2><p class="practice-results-subtitle">${escapeAttr(set.label)} · ${total} problem${total === 1 ? '' : 's'} · ${escapeAttr(set.difficulty)} difficulty</p>
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
+        ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided by the MAA, not graded</p>` : ''}
         <a class="hp-btn" href="${reviewUrl}">Review problems</a>
       </section>
       <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
@@ -5474,7 +5475,7 @@
       const pool = topics.get(key).problems;
       for (const p of problems) {
         // Shared AMC 10/12 problems have the same written strategy on both papers.
-        if (!MAA_RE.test(p.ref) || window.MATH_ANSWER_KEYS?.answers?.[p.slug] == null) continue;
+        if (!MAA_RE.test(p.ref) || window.MATH_ANSWER_KEYS?.answers?.[p.slug] == null || window.MATH_ANSWER_KEYS?.voided?.[p.slug]) continue;
         const identity = /^AMC (?:10|12)/.test(p.fam) && p.strategy ? p.year + "|" + p.strategy : p.slug;
         if (!pool.has(identity)) pool.set(identity, p);
       }

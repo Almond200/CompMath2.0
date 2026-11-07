@@ -42,6 +42,8 @@
     return true;
   }
   function result(set, slug) {
+    // A problem the MAA voided is never graded (MATH_ANSWER_KEYS.voided), answered or not.
+    if (root.MATH_ANSWER_KEYS?.voided?.[slug]) return 'Voided';
     if (!set.answers[slug]) return 'Unanswered';
     const key = root.MATH_ANSWER_KEYS?.answers?.[slug];
     if (key == null) return 'Answer unavailable';
