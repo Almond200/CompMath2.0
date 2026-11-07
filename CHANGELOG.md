@@ -2,6 +2,8 @@
 
 **2026-11-07**
 
+- PLAN: a tentative step T4b (owner): tree nodes give problems their topic chips automatically ("Similar triangles" gives "similar triangles"), and a problem's tree filings become visible in the app, details to be decided.
+
 - T3: the 2025 AMC 10B and 12B filed in the topic tree (50 entries; the 12 shared problems found by comparing statements, whose differences are only formatting). Every answer re-checked by computation, with enumerations for 10B #9, #11, #14, #16, #21 and #22, an exact simulation of the 10B #25 billiard path, and a numerical check of the 12B #25 maximum ($s^2=7$); the 10B #12 configuration was checked against the figure's own coordinates. Tag fixes: 10B #1 and 12B #1 cite Rounding Up to Whole Items, the card for how many fit, instead of Floor Basics; 12B #21 cites the sine area formula $\tfrac12ab\sin\theta$, which its route uses, instead of Standard Triangle Area. No new card or node candidates.
 
 - Textbook revision (Codex, recorded at the owner's request): AMC Algebra L1 to L9 now read as connected textbook explanations, with derivations, worked examples, domain restrictions, equality conditions and diagrams. The latest batch (commit eb5d70b, PR #217) rewrote L8 (inequalities, extrema and estimates) and L9 (logarithms) with four new diagrams, removed editorial asides about formulas and memorization from L1 to L9, pointed the two L1 links at `two-variable-identities`, updated the related prerequisite metadata, and placed the three-variable `square-of-sum` reference in L5.3. All gates, the three regression suites and 71 browser page checks passed. Next for Codex: L10 and L11.
