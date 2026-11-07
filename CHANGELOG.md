@@ -2,6 +2,8 @@
 
 **2026-11-07**
 
+- T3, the tagging pass, started: the 2026 AMC 10A and 12A are filed in the topic tree (`tree` on all 50 entries; the 11 shared problems agree with their twins). Every answer and every number in the 39 strategies re-checked by computation, including brute force for 10A #16, #20, #21, #23 and #24 and 12A #12, #19 and #25. Errors found and fixed: 10A #25's construction was ambiguous and, read as written, failed (the same room in both skip slots of one day); it now gives the first $95$ skips to the first slot and the rest to the second, checked by simulation. 12A #12 no longer cites `crt` (moduli $2,3,4,6,12$ are not coprime; the route only splits residues), and 12A #25 now also cites `crt-solution-counting`, which is its route. Four test filings changed on re-reading (`TOPIC-TREE.md`). New card candidates P54 (range of a rounded value), P55 ($\sin(a+b)\sin(a-b)=\sin^2a-\sin^2b$) and P56 (square roots of 1 modulo $m$) in `QUESTIONS.md`. New helper `tools/tag-review.js` prints a paper for the pass.
+
 - Standing preference (owner): be critical, not passive. During tagging, look for errors and record a misfit (fix, or a `QUESTIONS.md` row) instead of settling for the best-fitting tag. Added to `CLAUDE.md` and the T3 procedure in `PLAN.md`.
 
 - Documentation sweep: `TOPIC-TREE.md`'s status line is current (497 nodes, T2 done, T3 next; it no longer says every topic has subtopics). README lists the Topic tree lab page, the contest and lesson results in search, and the hand-added 2026 papers' sources. CONVENTIONS' answer-key rule records the hand-entered 2026 keys.

@@ -649,6 +649,10 @@ Filed when the paper was added. Eleven problems are shared with the 2026 AMC 10A
 
 Spread of the 14 by first node: 6 Algebra, 3 Counting & Probability, 3 Geometry, 2 Number Theory; 11 take a second node. That no node was missing on a fourth paper suggests the tree is close to complete at the AMC level.
 
+## The tagging pass (T3) revised these filings (2026-11-07)
+
+The test filings above are a record of the test. The problems' own `tree` fields, written in the tagging pass, are the filings now, and on re-reading four of them changed. 2026 AMC 10A #5 is `alg.word.stats.mean` with `alg.seq.rec` (each term is the mean of all earlier ones, which is not a nonlinear recurrence). #6 is `geo.circ.arc.sector` with `geo.circ.inscribed.thm` (Thales' theorem is the step, not the triple $8,15,17$). #13 is `cp.graph.basic.degree` with `alg.poly.vieta.basic` (two sizes from their sum and product). #22, and its twin 12A #17, is `geo.coord.conic.ellipse` with `geo.coord.transform` (a stretch turns the ellipses into touching circles; no circle is inscribed in a polygon).
+
 ## Decisions (owner, 2026-11-06)
 
 - **TQ1, word problems:** "Arithmetic and word problems" stays under Algebra.
