@@ -6959,7 +6959,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const learnCrumb = parts => `<span class="card-crumb">${parts.map(escapeAttr).join(" &rsaquo; ")}</span>`;
   const capFirst = t => String(t || "").replace(/^./, ch => ch.toUpperCase());
   // The first paragraph of a lesson, for its result card (the card clamps it).
-  const lessonLead = x => String((learnLessonData(x.c, x.l || x.c.lessons[0]) || {}).body || "").split(/\n\s*\n/).find(t => t.trim() && !/^\{\{/.test(t.trim())) || "";
+  const lessonLead = x => (String((learnLessonData(x.c, x.l || x.c.lessons[0]) || {}).body || "").split(/\n\s*\n/).find(t => t.trim() && !/^\{\{/.test(t.trim())) || "")
+    .replace(/\[\[[^\]|]*\|([^\]]*)\]\]/g, "$1").replace(/\[\[([^\]]*)\]\]/g, "$1");   // [[slug|text]] reads as its text
 
   function renderSearchResults() {
     // "lesson" and "chapter" only steer lessons to the front; the rest of the search runs
@@ -7051,7 +7052,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         // counts its own problems and its contest exercises.
         let inner;
         if (x.l) {
-          const d = learnLessonData(x.c, x.l) || {}, np = (d.problems || []).length, ne = (d.exercises || []).length;
+          const d = learnLessonData(x.c, x.l) || {}, np = (d.exercises || []).length, ne = (d.problems || []).length;   // the data's exercises are our own problems; its problems are the contest Exercises
           inner = `<div class="rs-line"><span class="rs-k">Chapter</span><span class="rs-v">${escapeAttr(x.c.title)}</span></div>`
             + `<div class="rs-line"><span class="rs-k">Problems</span><span class="rs-v">${np}</span></div>`
             + `<div class="rs-line"><span class="rs-k">Exercises</span><span class="rs-v">${ne}</span></div>`;

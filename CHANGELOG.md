@@ -2,6 +2,12 @@
 
 **2026-11-07**
 
+- Dark mode, fourth pass (owner): the book's ink (the CHAPTER and LESSON labels of the book bar, lesson codes such as R1.5, chapter numbers, contents codes) was the cover's strong colour, dim and saturated on the navy page; it is now that colour mixed with the body white. Lesson and End-of-book Notes prose drops one step from white (#c9d1e4), like a card's page. The contest profile's pie, bars, swatches and line are softened toward the card background, and the difficulty pills' text uses the heading shade. A contrast scan of the newer pieces found small grey text under 4:1 (the search results' breadcrumbs, Chapter/Problems/Exercises keys, counts, "+ N more" lines, the book search's group tags, a book's lesson counts); in dark it now uses the dim grey. All dark only.
+
+- Lesson search results: the Problems and Exercises counts were swapped (the data's `exercises` are a lesson's own problems and its `problems` the contest Exercises); fixed. A lesson result's opening text shows a card link "[[slug|text]]" as its text.
+
+- Book search highlight (owner): the band keeps its 12 px sides but reaches 6 px above and below the paragraph instead of 12, so it no longer nearly touches the next line.
+
 - Counting Walks Step by Step figures (owner): the example's lily-pad figure and the exercise's square figure lose their captions (a figure under a question is understood to be its figure), and the card's four-panel figure is drawn larger: bigger discs, numbers and vertex letters, and, as a $600$-wide strip, it now shows at up to $600$ px instead of being held to the $430$ px cap of ordinary card figures. A strip at least $560$ wide gets this; every other figure keeps the cap.
 
 - Search, lessons and chapters (owner): the abbreviations the card search knows (POP, CRT, LTE, FTA, SFFT and the rest) now find lessons and chapters too, so "POP lesson" opens with the Power of a point lesson and "CRT chapter" with the two Chinese Remainder Theorem lessons; the query as typed is tried as well. Placing lessons after the cards named for the query also reads the expansion, so "LTE" lists both Lifting the Exponent cards before the lessons. Lessons, chapters, books and problems match by their words (with synonyms); only the cards also use the semantic search.
