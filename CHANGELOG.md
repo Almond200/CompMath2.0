@@ -2,6 +2,8 @@
 
 **2026-11-07**
 
+- Standing preference (owner): be critical, not passive. During tagging, look for errors and record a misfit (fix, or a `QUESTIONS.md` row) instead of settling for the best-fitting tag. Added to `CLAUDE.md` and the T3 procedure in `PLAN.md`.
+
 - Documentation sweep: `TOPIC-TREE.md`'s status line is current (497 nodes, T2 done, T3 next; it no longer says every topic has subtopics). README lists the Topic tree lab page, the contest and lesson results in search, and the hand-added 2026 papers' sources. CONVENTIONS' answer-key rule records the hand-entered 2026 keys.
 
 - Topic tree T2 done. `tools/build-topic-tree.py` generates `js/data/topic-tree.js` (497 nodes, `[id, name, parent]`) from `TOPIC-TREE.md`, with `--check` in `gates.sh`. `js/data/topic-homes.js` gives every one of the 765 cards a home node: all 548 formulas and 48 patterns, 139 methods that belong to one area, and `null` for 30 general methods (casework, complementary counting, the proof methods, coordinate bashing). The new gate `tools/check-topic-tree.js` checks the tree, the homes, and every problem's future `tree` field (one to three real nodes, no node with its ancestor, twins equal). Developer docs updated: CONVENTIONS §15 (the topic tree: files, rules, gate) and §7 and §11; CLAUDE.md's check list; README's structure; CONTRIBUTING's tagging section, whose missing-coverage register now points to `QUESTIONS.md` for the tagging pass. CONVENTIONS §11 also records the one exception to "never add a statement by hand": a paper LIVE has not yet published (the 2026 AMC 10A and 12A).
