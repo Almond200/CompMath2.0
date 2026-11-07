@@ -88,6 +88,9 @@ CONVENTIONS §0 has the full model.
   one flowing explanation, related cards, its own problems with worked solutions, contest
   problems, and a drawer for the cards it links; all 103 chapters open on
   an Introduction and close with a Summary, Review Problems and Challenge Problems (CONVENTIONS §14).
+  Each book ends with End-of-book Notes, reference sections rather than a teaching chapter:
+  Overview, an Index whose entries link to lessons, a Glossary, and References and Credits. They
+  are not counted with the 593 teaching pages, and book search also finds indexed terms.
 - **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, untimed topic sets with a reader-selected question count, and every
   year of every contest. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
   back; on a phone its years are a menu between arrows, with a toggle between the year's papers.

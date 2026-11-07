@@ -346,15 +346,16 @@ No new cards: the Bridge's habits, applied to harder mixed problems whose techni
 | L14.4 Mixed problems across the book | Core | no card (a review lesson with late-AMC 12 and early-AIME problems) | mixed |
 | L14.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L14.6 Review Problems and L14.7 Challenge Problems | |
 
-### L15. End-of-book Notes (Extension)
+### L15. End-of-book Notes (Reference)
 
-Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+Reference material, not a teaching chapter: it has no Core, Core II or Extension level, no exercises, and does not count toward the book's lessons. An overview, a lesson-linked index, definitions of key terms, and References and Credits. Teaching chapter and lesson codes are unchanged.
 
-| Lesson | Importance | Cards | Problems |
+| Section | Importance | Cards | Problems |
 |---|---|---|---|
-| L15.1 Index | | no card | |
-| L15.2 Glossary | | no card | |
-| L15.3 References and Credits | | no card | |
+| L15.1 Overview | | no card | |
+| L15.2 Index | | no card | |
+| L15.3 Glossary | | no card | |
+| L15.4 References and Credits | | no card | |
 
 ## Book: AMC Number Theory
 
@@ -461,15 +462,16 @@ No new cards: residues, cycles and integer equations together, in harder mixed p
 | M7.4 Mixed problems across the book | Core | no card (a review lesson) | mixed |
 | M7.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then M7.6 Review Problems and M7.7 Challenge Problems | |
 
-### M8. End-of-book Notes (Extension)
+### M8. End-of-book Notes (Reference)
 
-Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+Reference material, not a teaching chapter: it has no Core, Core II or Extension level, no exercises, and does not count toward the book's lessons. An overview, a lesson-linked index, definitions of key terms, and References and Credits. Teaching chapter and lesson codes are unchanged.
 
-| Lesson | Importance | Cards | Problems |
+| Section | Importance | Cards | Problems |
 |---|---|---|---|
-| M8.1 Index | | no card | |
-| M8.2 Glossary | | no card | |
-| M8.3 References and Credits | | no card | |
+| M8.1 Overview | | no card | |
+| M8.2 Index | | no card | |
+| M8.3 Glossary | | no card | |
+| M8.4 References and Credits | | no card | |
 
 ## Book: AMC Counting & Probability
 
@@ -611,15 +613,16 @@ No new cards: checking cases and overcounts, small cases as a test, and harder m
 | R10.4 Mixed problems across the book | Core | no card (a review lesson) | mixed |
 | R10.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R10.6 Review Problems and R10.7 Challenge Problems | |
 
-### R11. End-of-book Notes (Extension)
+### R11. End-of-book Notes (Reference)
 
-Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+Reference material, not a teaching chapter: it has no Core, Core II or Extension level, no exercises, and does not count toward the book's lessons. An overview, a lesson-linked index, definitions of key terms, and References and Credits. Teaching chapter and lesson codes are unchanged.
 
-| Lesson | Importance | Cards | Problems |
+| Section | Importance | Cards | Problems |
 |---|---|---|---|
-| R11.1 Index | | no card | |
-| R11.2 Glossary | | no card | |
-| R11.3 References and Credits | | no card | |
+| R11.1 Overview | | no card | |
+| R11.2 Index | | no card | |
+| R11.3 Glossary | | no card | |
+| R11.4 References and Credits | | no card | |
 
 ## Book: AMC Geometry
 
@@ -790,15 +793,16 @@ Signed lengths, degenerate figures, choosing between coordinates and a synthetic
 | S12.4 Mixed problems across the book | Core | no card (a review lesson) | mixed |
 | S12.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S12.6 Review Problems and S12.7 Challenge Problems | |
 
-### S13. End-of-book Notes (Extension)
+### S13. End-of-book Notes (Reference)
 
-Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+Reference material, not a teaching chapter: it has no Core, Core II or Extension level, no exercises, and does not count toward the book's lessons. An overview, a lesson-linked index, definitions of key terms, and References and Credits. Teaching chapter and lesson codes are unchanged.
 
-| Lesson | Importance | Cards | Problems |
+| Section | Importance | Cards | Problems |
 |---|---|---|---|
-| S13.1 Index | | no card | |
-| S13.2 Glossary | | no card | |
-| S13.3 References and Credits | | no card | |
+| S13.1 Overview | | no card | |
+| S13.2 Index | | no card | |
+| S13.3 Glossary | | no card | |
+| S13.4 References and Credits | | no card | |
 
 ## Book: AIME Algebra
 
@@ -918,15 +922,16 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 
 ---
 
-### A10. End-of-book Notes (Extension)
+### A10. End-of-book Notes (Reference)
 
-Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+Reference material, not a teaching chapter: it has no Core, Core II or Extension level, no exercises, and does not count toward the book's lessons. An overview, a lesson-linked index, definitions of key terms, and References and Credits. Teaching chapter and lesson codes are unchanged.
 
-| Lesson | Importance | Cards | Problems |
+| Section | Importance | Cards | Problems |
 |---|---|---|---|
-| A10.1 Index | | no card | |
-| A10.2 Glossary | | no card | |
-| A10.3 References and Credits | | no card | |
+| A10.1 Overview | | no card | |
+| A10.2 Index | | no card | |
+| A10.3 Glossary | | no card | |
+| A10.4 References and Credits | | no card | |
 
 ## Book: AIME Number Theory
 
@@ -1174,15 +1179,16 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 
 ---
 
-### N9. End-of-book Notes (Extension)
+### N9. End-of-book Notes (Reference)
 
-Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+Reference material, not a teaching chapter: it has no Core, Core II or Extension level, no exercises, and does not count toward the book's lessons. An overview, a lesson-linked index, definitions of key terms, and References and Credits. Teaching chapter and lesson codes are unchanged.
 
-| Lesson | Importance | Cards | Problems |
+| Section | Importance | Cards | Problems |
 |---|---|---|---|
-| N9.1 Index | | no card | |
-| N9.2 Glossary | | no card | |
-| N9.3 References and Credits | | no card | |
+| N9.1 Overview | | no card | |
+| N9.2 Index | | no card | |
+| N9.3 Glossary | | no card | |
+| N9.4 References and Credits | | no card | |
 
 ## Book: AIME Geometry
 
@@ -1304,15 +1310,16 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 ---
 
-### G10. End-of-book Notes (Extension)
+### G10. End-of-book Notes (Reference)
 
-Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+Reference material, not a teaching chapter: it has no Core, Core II or Extension level, no exercises, and does not count toward the book's lessons. An overview, a lesson-linked index, definitions of key terms, and References and Credits. Teaching chapter and lesson codes are unchanged.
 
-| Lesson | Importance | Cards | Problems |
+| Section | Importance | Cards | Problems |
 |---|---|---|---|
-| G10.1 Index | | no card | |
-| G10.2 Glossary | | no card | |
-| G10.3 References and Credits | | no card | |
+| G10.1 Overview | | no card | |
+| G10.2 Index | | no card | |
+| G10.3 Glossary | | no card | |
+| G10.4 References and Credits | | no card | |
 
 ## Book: AIME Counting & Probability
 
@@ -1432,15 +1439,16 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 
 ---
 
-### C10. End-of-book Notes (Extension)
+### C10. End-of-book Notes (Reference)
 
-Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+Reference material, not a teaching chapter: it has no Core, Core II or Extension level, no exercises, and does not count toward the book's lessons. An overview, a lesson-linked index, definitions of key terms, and References and Credits. Teaching chapter and lesson codes are unchanged.
 
-| Lesson | Importance | Cards | Problems |
+| Section | Importance | Cards | Problems |
 |---|---|---|---|
-| C10.1 Index | | no card | |
-| C10.2 Glossary | | no card | |
-| C10.3 References and Credits | | no card | |
+| C10.1 Overview | | no card | |
+| C10.2 Index | | no card | |
+| C10.3 Glossary | | no card | |
+| C10.4 References and Credits | | no card | |
 
 ## Book: Olympiad Proofs
 
@@ -1484,15 +1492,16 @@ How to write a proof, for a student moving from answer contests (AMC, AIME) to p
 
 ---
 
-### P5. End-of-book Notes (Extension)
+### P5. End-of-book Notes (Reference)
 
-Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+Reference material, not a teaching chapter: it has no Core, Core II or Extension level, no exercises, and does not count toward the book's lessons. An overview, a lesson-linked index, definitions of key terms, and References and Credits. Teaching chapter and lesson codes are unchanged.
 
-| Lesson | Importance | Cards | Problems |
+| Section | Importance | Cards | Problems |
 |---|---|---|---|
-| P5.1 Index | | no card | |
-| P5.2 Glossary | | no card | |
-| P5.3 References and Credits | | no card | |
+| P5.1 Overview | | no card | |
+| P5.2 Index | | no card | |
+| P5.3 Glossary | | no card | |
+| P5.4 References and Credits | | no card | |
 
 ## Book: Olympiad Algebra
 
@@ -1547,15 +1556,16 @@ Inequalities, polynomials and functional equations at olympiad level. It assumes
 
 ---
 
-### E6. End-of-book Notes (Extension)
+### E6. End-of-book Notes (Reference)
 
-Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+Reference material, not a teaching chapter: it has no Core, Core II or Extension level, no exercises, and does not count toward the book's lessons. An overview, a lesson-linked index, definitions of key terms, and References and Credits. Teaching chapter and lesson codes are unchanged.
 
-| Lesson | Importance | Cards | Problems |
+| Section | Importance | Cards | Problems |
 |---|---|---|---|
-| E6.1 Index | | no card | |
-| E6.2 Glossary | | no card | |
-| E6.3 References and Credits | | no card | |
+| E6.1 Overview | | no card | |
+| E6.2 Index | | no card | |
+| E6.3 Glossary | | no card | |
+| E6.4 References and Credits | | no card | |
 
 ## Book: Olympiad Number Theory
 
@@ -1600,15 +1610,16 @@ Quadratic residues, valuations and special primes, additive results and arithmet
 
 ---
 
-### D5. End-of-book Notes (Extension)
+### D5. End-of-book Notes (Reference)
 
-Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+Reference material, not a teaching chapter: it has no Core, Core II or Extension level, no exercises, and does not count toward the book's lessons. An overview, a lesson-linked index, definitions of key terms, and References and Credits. Teaching chapter and lesson codes are unchanged.
 
-| Lesson | Importance | Cards | Problems |
+| Section | Importance | Cards | Problems |
 |---|---|---|---|
-| D5.1 Index | | no card | |
-| D5.2 Glossary | | no card | |
-| D5.3 References and Credits | | no card | |
+| D5.1 Overview | | no card | |
+| D5.2 Index | | no card | |
+| D5.3 Glossary | | no card | |
+| D5.4 References and Credits | | no card | |
 
 ## Book: Olympiad Combinatorics
 
@@ -1662,15 +1673,16 @@ Enumeration, extremal set theory, graphs, algebraic and probabilistic methods, a
 
 ---
 
-### K6. End-of-book Notes (Extension)
+### K6. End-of-book Notes (Reference)
 
-Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+Reference material, not a teaching chapter: it has no Core, Core II or Extension level, no exercises, and does not count toward the book's lessons. An overview, a lesson-linked index, definitions of key terms, and References and Credits. Teaching chapter and lesson codes are unchanged.
 
-| Lesson | Importance | Cards | Problems |
+| Section | Importance | Cards | Problems |
 |---|---|---|---|
-| K6.1 Index | | no card | |
-| K6.2 Glossary | | no card | |
-| K6.3 References and Credits | | no card | |
+| K6.1 Overview | | no card | |
+| K6.2 Index | | no card | |
+| K6.3 Glossary | | no card | |
+| K6.4 References and Credits | | no card | |
 
 ## Book: Olympiad Geometry
 
@@ -1744,15 +1756,16 @@ The configurations, lemmas and transformations of olympiad geometry. It assumes 
 
 ---
 
-### O8. End-of-book Notes (Extension)
+### O8. End-of-book Notes (Reference)
 
-Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+Reference material, not a teaching chapter: it has no Core, Core II or Extension level, no exercises, and does not count toward the book's lessons. An overview, a lesson-linked index, definitions of key terms, and References and Credits. Teaching chapter and lesson codes are unchanged.
 
-| Lesson | Importance | Cards | Problems |
+| Section | Importance | Cards | Problems |
 |---|---|---|---|
-| O8.1 Index | | no card | |
-| O8.2 Glossary | | no card | |
-| O8.3 References and Credits | | no card | |
+| O8.1 Overview | | no card | |
+| O8.2 Index | | no card | |
+| O8.3 Glossary | | no card | |
+| O8.4 References and Credits | | no card | |
 
 ## Coverage
 
