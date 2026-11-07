@@ -479,6 +479,26 @@ window.MATH_LEARN_SHELF = [
      }
     ],
     "part": "Toward the AIME"
+   },
+   {
+    "code": "L15",
+    "title": "End-of-book Notes",
+    "level": "Extension",
+    "lessons": [
+     {
+      "code": "L15.1",
+      "title": "Index"
+     },
+     {
+      "code": "L15.2",
+      "title": "Glossary"
+     },
+     {
+      "code": "L15.3",
+      "title": "References and Credits"
+     }
+    ],
+    "part": "Toward the AIME"
    }
   ]
  },
@@ -745,6 +765,26 @@ window.MATH_LEARN_SHELF = [
      {
       "code": "M7.5",
       "title": "Summary"
+     }
+    ],
+    "part": "Toward the AIME"
+   },
+   {
+    "code": "M8",
+    "title": "End-of-book Notes",
+    "level": "Extension",
+    "lessons": [
+     {
+      "code": "M8.1",
+      "title": "Index"
+     },
+     {
+      "code": "M8.2",
+      "title": "Glossary"
+     },
+     {
+      "code": "M8.3",
+      "title": "References and Credits"
      }
     ],
     "part": "Toward the AIME"
@@ -1102,6 +1142,26 @@ window.MATH_LEARN_SHELF = [
      {
       "code": "R10.5",
       "title": "Summary"
+     }
+    ],
+    "part": "Toward the AIME"
+   },
+   {
+    "code": "R11",
+    "title": "End-of-book Notes",
+    "level": "Extension",
+    "lessons": [
+     {
+      "code": "R11.1",
+      "title": "Index"
+     },
+     {
+      "code": "R11.2",
+      "title": "Glossary"
+     },
+     {
+      "code": "R11.3",
+      "title": "References and Credits"
      }
     ],
     "part": "Toward the AIME"
@@ -1549,6 +1609,26 @@ window.MATH_LEARN_SHELF = [
      }
     ],
     "part": "Toward the AIME"
+   },
+   {
+    "code": "S13",
+    "title": "End-of-book Notes",
+    "level": "Extension",
+    "lessons": [
+     {
+      "code": "S13.1",
+      "title": "Index"
+     },
+     {
+      "code": "S13.2",
+      "title": "Glossary"
+     },
+     {
+      "code": "S13.3",
+      "title": "References and Credits"
+     }
+    ],
+    "part": "Toward the AIME"
    }
   ]
  },
@@ -1905,6 +1985,26 @@ window.MATH_LEARN_SHELF = [
      }
     ],
     "part": "Beyond the AIME"
+   },
+   {
+    "code": "A10",
+    "title": "End-of-book Notes",
+    "level": "Extension",
+    "lessons": [
+     {
+      "code": "A10.1",
+      "title": "Index"
+     },
+     {
+      "code": "A10.2",
+      "title": "Glossary"
+     },
+     {
+      "code": "A10.3",
+      "title": "References and Credits"
+     }
+    ],
+    "part": "Beyond the AIME"
    }
   ]
  },
@@ -2227,6 +2327,26 @@ window.MATH_LEARN_SHELF = [
      {
       "code": "N8.6",
       "title": "Summary"
+     }
+    ],
+    "part": "Beyond the AIME"
+   },
+   {
+    "code": "N9",
+    "title": "End-of-book Notes",
+    "level": "Extension",
+    "lessons": [
+     {
+      "code": "N9.1",
+      "title": "Index"
+     },
+     {
+      "code": "N9.2",
+      "title": "Glossary"
+     },
+     {
+      "code": "N9.3",
+      "title": "References and Credits"
      }
     ],
     "part": "Beyond the AIME"
@@ -2596,6 +2716,26 @@ window.MATH_LEARN_SHELF = [
      }
     ],
     "part": "Beyond the AIME"
+   },
+   {
+    "code": "G10",
+    "title": "End-of-book Notes",
+    "level": "Extension",
+    "lessons": [
+     {
+      "code": "G10.1",
+      "title": "Index"
+     },
+     {
+      "code": "G10.2",
+      "title": "Glossary"
+     },
+     {
+      "code": "G10.3",
+      "title": "References and Credits"
+     }
+    ],
+    "part": "Beyond the AIME"
    }
   ]
  },
@@ -2952,6 +3092,26 @@ window.MATH_LEARN_SHELF = [
      }
     ],
     "part": "Beyond the AIME"
+   },
+   {
+    "code": "C10",
+    "title": "End-of-book Notes",
+    "level": "Extension",
+    "lessons": [
+     {
+      "code": "C10.1",
+      "title": "Index"
+     },
+     {
+      "code": "C10.2",
+      "title": "Glossary"
+     },
+     {
+      "code": "C10.3",
+      "title": "References and Credits"
+     }
+    ],
+    "part": "Beyond the AIME"
    }
   ]
  },
@@ -3057,6 +3217,25 @@ window.MATH_LEARN_SHELF = [
      {
       "code": "P4.4",
       "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "P5",
+    "title": "End-of-book Notes",
+    "level": "Extension",
+    "lessons": [
+     {
+      "code": "P5.1",
+      "title": "Index"
+     },
+     {
+      "code": "P5.2",
+      "title": "Glossary"
+     },
+     {
+      "code": "P5.3",
+      "title": "References and Credits"
      }
     ]
    }
@@ -3201,6 +3380,25 @@ window.MATH_LEARN_SHELF = [
       "title": "Summary"
      }
     ]
+   },
+   {
+    "code": "E6",
+    "title": "End-of-book Notes",
+    "level": "Extension",
+    "lessons": [
+     {
+      "code": "E6.1",
+      "title": "Index"
+     },
+     {
+      "code": "E6.2",
+      "title": "Glossary"
+     },
+     {
+      "code": "E6.3",
+      "title": "References and Credits"
+     }
+    ]
    }
   ]
  },
@@ -3311,6 +3509,25 @@ window.MATH_LEARN_SHELF = [
      {
       "code": "D4.5",
       "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "D5",
+    "title": "End-of-book Notes",
+    "level": "Extension",
+    "lessons": [
+     {
+      "code": "D5.1",
+      "title": "Index"
+     },
+     {
+      "code": "D5.2",
+      "title": "Glossary"
+     },
+     {
+      "code": "D5.3",
+      "title": "References and Credits"
      }
     ]
    }
@@ -3448,6 +3665,25 @@ window.MATH_LEARN_SHELF = [
      {
       "code": "K5.4",
       "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "K6",
+    "title": "End-of-book Notes",
+    "level": "Extension",
+    "lessons": [
+     {
+      "code": "K6.1",
+      "title": "Index"
+     },
+     {
+      "code": "K6.2",
+      "title": "Glossary"
+     },
+     {
+      "code": "K6.3",
+      "title": "References and Credits"
      }
     ]
    }
@@ -3645,6 +3881,25 @@ window.MATH_LEARN_SHELF = [
      {
       "code": "O7.5",
       "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "O8",
+    "title": "End-of-book Notes",
+    "level": "Extension",
+    "lessons": [
+     {
+      "code": "O8.1",
+      "title": "Index"
+     },
+     {
+      "code": "O8.2",
+      "title": "Glossary"
+     },
+     {
+      "code": "O8.3",
+      "title": "References and Credits"
      }
     ]
    }

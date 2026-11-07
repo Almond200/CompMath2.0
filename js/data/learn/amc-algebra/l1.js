@@ -6,17 +6,15 @@ window.MATH_LEARN["L1"] = {
     "L1.1": {
       prereq: [],
       cards: [],
-      body: String.raw`This chapter is about the language of algebra: letters that stand for numbers, the expressions built from them, and the rules for rewriting an expression without changing its value. Everything later in the book is written in this language.
+      body: String.raw`Algebra lets us reason about a quantity before we know its value. Instead of repeating a calculation for each possible number, we give that number a name and describe how the calculation works. An expression records a calculation; an equation records a condition that the unknown number must satisfy. Keeping those roles separate is the first habit this book develops.
 
-A variable is a letter, such as $x$, that stands for a number we do not know yet or that can change. An expression combines numbers and variables with operations, such as $3x^2 - 2x + 1$; when $x = -2$ its value is $3 \cdot 4 + 4 + 1 = 17$. An equation says that two expressions have the same value, and translating a sentence into an equation is the first step of most word problems.
+Suppose a rectangular garden is $3$ meters longer than it is wide. Calling the width $x$ makes the length $x+3$. We have not found either length, but we have already expressed the relationship between them. The perimeter is then $2x+2(x+3)$. Expanding and collecting terms gives $4x+6$. These are two forms of the same expression: one follows the four sides of the garden, while the other shows how the perimeter changes when the width increases.
 
-Exponents are repeated multiplication: $2^3 = 2 \cdot 2 \cdot 2$. Multiplying powers of the same base adds the exponents, so $2^3 \cdot 2^4 = 2^7$, and dividing subtracts them, so $\tfrac{2^7}{2^5} = 2^2 = 4$. A square root undoes squaring only up to sign: $\sqrt{x^2} = |x|$, so $\sqrt{(-2)^2} = \sqrt{4} = 2$, not $-2$. Roots follow the same rules once they are written as fractional exponents.
+If the perimeter is $30$ meters, we gain an equation, $4x+6=30$, and hence $x=6$. The garden is $6$ by $9$ meters. Checking $6+9+6+9=30$ returns the algebra to the situation it describes. Without the perimeter condition, there would be no single width to find.
 
-Expanding writes a product as a sum, and factoring writes a sum as a product. A few patterns appear constantly: $(a + b)^2 = a^2 + 2ab + b^2$ and $(a - b)(a + b) = a^2 - b^2$. They let us compute $101^2 - 99^2$ as $(101 - 99)(101 + 99) = 400$ without squaring anything.
+Throughout this chapter, rewriting means preserving a value while changing its form. Powers compress repeated multiplication. Expanding reveals the terms in a product; factoring gathers them back together. Ratios express a relationship that stays the same when both quantities are scaled. Each form makes a different feature easier to see.
 
-Last, ratios compare two quantities, a proportion says that two ratios are equal, and a percent is a ratio out of $100$. A change by a percent is a multiplication: raising a price by $20\%$ multiplies it by $1.2$.
-
-The lessons take these ideas in turn: variables, expressions and translating words (L1.2), exponents and radicals (L1.3), expanding and factoring (L1.4), and ratios, proportions and percents (L1.5). The Summary (L1.6) collects the strategies.`,
+The next lesson develops the language of expressions and equations. We then study powers and roots, use area to understand expansion and factoring, and finish by comparing quantities through ratios and percentages. The aim is to choose and justify a representation, rather than memorize a different formula for each story.`,
       exercises: [
         { q: String.raw`Find the value of $3x^2 - 2x + 1$ when $x = -2$.`, answer: "17",
           solution: String.raw`Replace $x$ by $-2$, keeping the brackets: $3(-2)^2 - 2(-2) + 1 = 3 \cdot 4 + 4 + 1 = 17$. The square of $-2$ is $4$, not $-4$.` },
@@ -34,15 +32,21 @@ The lessons take these ideas in turn: variables, expressions and translating wor
     "L1.2": {
       prereq: [],
       cards: [],
-      body: String.raw`A word problem describes numbers in sentences, and solving it starts with writing those sentences as expressions and equations. The sum of three consecutive integers is $72$; what is the largest? Ann is $4$ years older than twice Bo's age, and their ages add to $34$; how old is Ann? Each becomes one short equation once the unknown numbers have names, and the work after that is routine.
+      body: String.raw`An algebraic model begins with a choice: which quantity should have a name? A useful choice makes the other quantities easy to express and keeps the relationship in the problem visible. Naming every number separately often creates unnecessary equations. Naming only the requested answer can also be awkward when several other quantities depend on something simpler.
 
-A variable is a letter that stands for a number. Choose it for the quantity the problem asks about, or for the one that makes the others easy to write: for three consecutive integers, calling the middle one $n$ makes them $n - 1$, $n$ and $n + 1$, and their sum is $3n$. An expression is any combination of numbers and variables with operations, such as $2n + 3$, read "two times $n$, plus $3$".
+Consider three consecutive integers with sum $72$. We could call the first $n$ and write $n+(n+1)+(n+2)=72$. Calling the middle integer $m$ instead gives $(m-1)+m+(m+1)=72$. The extra $1$ and the missing $1$ cancel, leaving $3m=72$. Thus the numbers are $23,24,25$. Both choices work, but the middle one exposes the symmetry. Choosing a variable is part of solving the problem, not merely a label attached before the real work.
 
-Operations are done in a fixed order: brackets first, then powers, then multiplication and division from left to right, then addition and subtraction from left to right. So $2 + 3 \times 4 - 6 \div 2 = 2 + 12 - 3 = 11$, not $(5 \times 4 - 6) \div 2$. Terms with the same variable part, such as $6x$ and $-2x$, are like terms and can be combined; a bracket multiplied by a number is expanded term by term, so $3(2x - 1) - 2(x - 4) = 6x - 3 - 2x + 8 = 4x + 5$. Note the sign: $-2 \cdot (-4) = +8$.
+An expression such as $2b+4$ describes a quantity. It does not by itself give a value for $b$. If Bo is $b$ years old and Ann is four years older than twice Bo's age, Ann's age is $2b+4$. Their combined age is therefore $(2b+4)+b$. Only when we are told that their ages total $34$ can we write
 
-Translating follows the words in order. "Three more than twice a number" is $2n + 3$; "the number is $17$" is $= 17$. "Is" becomes an equals sign, "of" usually means times, "more than" adds and "less than" subtracts from the quantity named after it, so "$5$ less than $x$" is $x - 5$. For Ann and Bo, $a = 2b + 4$ and $a + b = 34$; substituting, $3b + 4 = 34$, so $b = 10$ and $a = 24$.
+$$ (2b+4)+b=34. $$
 
-Always check the answer in the original words, not in your equation: if Bo is $10$, twice his age plus $4$ is $24$, and $24 + 10 = 34$. The next lesson turns to exponents and radicals.`,
+The two occurrences of $b$ refer to the same age, so $2b+b=3b$. Subtracting $4$ from both sides gives $3b=30$, and dividing both sides by $3$ gives $b=10$. Ann is $24$. The check uses the original information: twice $10$ plus $4$ is $24$, and the two ages add to $34$. A check made only in a mistranslated equation could miss the translation error.
+
+The order of operations determines what an expression says. In $2b+4$, multiplication happens before addition; in $2(b+4)$, the parentheses make addition happen first. The first expression doubles the age and adds four years; the second adds four years before doubling. At $b=10$ they give $24$ and $28$, so they cannot describe the same relationship. Parentheses record meaning, not just a preferred way to arrange symbols.
+
+Rewriting an expression must preserve that meaning. In $3(2x-1)-2(x-4)$, multiplication distributes to every term in each parenthesis. The second multiplier is $-2$, so its contribution is $-2x+8$. Combining the terms gives $4x+5$. We may combine $6x$ and $-2x$ because both count copies of the same $x$; we may not combine $4x$ and $5$ into $9x$. Substitution at $x=2$ gives $13$ in both the original and simplified forms, a useful check on the signs.
+
+Before solving a word problem, say what the variable measures, write the other quantities in terms of it, and explain why the equation expresses the condition in the words. After solving, check both the original condition and any restrictions, such as an age being positive or a count being an integer. The next lesson extends this same attention to meaning to powers and roots.`,
       related: [
         { card: "transforming-equations", note: String.raw`solving the equations a translation produces, and checking the answer (L2.2).` },
         { card: "linear-elimination", note: String.raw`two unknowns from two sentences, solved by elimination (L2.3).` }
@@ -62,15 +66,23 @@ Always check the answer in the original words, not in your equation: if Bo is $1
     "L1.3": {
       prereq: [],
       cards: ["exponent-laws", "rationalizing"],
-      body: String.raw`Very large and very small numbers, repeated factors, and roots all become manageable once they are written with exponents. Which is largest, $10^8$, $5^{12}$ or $2^{24}$? How many digits does $4^5 \cdot 5^{10}$ have? What is $\tfrac{2}{\sqrt5 - \sqrt3}$ without a root in the bottom? Each question is answered by a few rules for exponents and roots, applied in the right order.
+      body: String.raw`A power is a way to keep track of repeated factors. Reading $2^5$ as five factors of $2$, rather than as an unfamiliar large number, makes its behavior predictable. The important question is often which factors can be combined or canceled, not what the power equals in decimal notation.
 
-An exponent counts repeated multiplication: $a^n$ is $a$ multiplied by itself $n$ times, so $2^3 = 8$. From that definition come [[exponent-laws|the exponent laws]]. Multiplying powers of one base adds the exponents, $2^3 \cdot 2^4 = 2^7$, because $3$ factors and $4$ factors make $7$; dividing subtracts them; and a power of a power multiplies them, $(2^3)^4 = 2^{12}$. To keep these rules true, $a^0 = 1$, $a^{-n} = \tfrac{1}{a^n}$, and $a^{1/n}$ is the $n$th root of $a$, so $8^{2/3} = \left(\sqrt[3]{8}\right)^2 = 4$. The laws need a common base, so the first step is usually to rewrite every number as a power of the same small base: $4^5 \cdot 5^{10} = 2^{10} \cdot 5^{10} = 10^{10}$, which has $11$ digits.
+For example, $2^3\cdot2^4$ contains three factors of $2$ followed by four more, so it contains seven altogether. In $2^7/2^5$, five factors cancel, leaving two. Likewise $(2^3)^4$ consists of four groups of three factors. This counting explains the addition, subtraction and multiplication of exponents in [[exponent-laws|the exponent laws]]. The operations on the exponents differ because the arrangements of factors differ.
 
-To compare powers with different bases, give them a common exponent instead: $10^8 = 100^4$, $5^{12} = 125^4$ and $2^{24} = 64^4$, so $2^{24} \lt 10^8 \lt 5^{12}$.
+The counting interpretation initially applies to positive integer exponents. Extending the division rule consistently tells us what zero and negative exponents must mean. For $a\ne0$, dividing $a^3$ by itself gives $1$, so $a^0=1$. Dividing $a^2$ by $a^5$ leaves $1/a^3$, so $a^{-3}=1/a^3$. A negative exponent moves a factor across the fraction bar; it does not make the value negative. The nonzero condition matters because division by zero is undefined.
 
-Square roots follow the same rules as the exponent $\tfrac12$: $\sqrt{ab} = \sqrt a\sqrt b$, so $\sqrt{72} = \sqrt{36}\sqrt2 = 6\sqrt2$, by pulling out the largest square factor. But $\sqrt{a + b}$ is not $\sqrt a + \sqrt b$: $\sqrt{9 + 16} = 5$, not $7$. A fraction with a root in its denominator is usually rewritten without one, which is called [[rationalizing|rationalizing the denominator]]: multiply the top and bottom by the root, or, for a sum or difference of roots, by its conjugate, so that a difference of squares clears the roots. For example $\tfrac{2}{\sqrt5 - \sqrt3} \cdot \tfrac{\sqrt5 + \sqrt3}{\sqrt5 + \sqrt3} = \tfrac{2(\sqrt5 + \sqrt3)}{5 - 3} = \sqrt5 + \sqrt3$.
+Often the bases must be rewritten before a rule becomes useful. In $4^5\cdot5^{10}$, the bases initially differ. But $4^5=(2^2)^5=2^{10}$, so we have ten factors of $2$ paired with ten factors of $5$. Each pair makes $10$:
 
-Reach for these rules whenever a problem has powers with related bases, a comparison of large numbers, a count of digits, or a root in a denominator. The next lesson expands and factors expressions.`,
+$$4^5\cdot5^{10}=2^{10}\cdot5^{10}=10^{10}.$$
+
+This is $1$ followed by ten zeros, hence eleven digits. Expanding either original power would hide the pairing. To compare powers, a common exponent can serve the same purpose: $10^8=100^4$, $5^{12}=125^4$ and $2^{24}=64^4$. Since taking the fourth power preserves order among positive numbers, their order follows from $64\lt100\lt125$.
+
+Roots reverse powers, but the choice of root must be stated. The symbol $\sqrt a$ means the nonnegative square root of $a$, for real $a\ge0$. Consequently $\sqrt{x^2}=|x|$: squaring loses the sign, and the square-root symbol does not restore it. For nonnegative $a,b$, the number $\sqrt a\sqrt b$ is nonnegative and has square $ab$, which proves $\sqrt{ab}=\sqrt a\sqrt b$. This justifies extracting square factors, as in $\sqrt{72}=6\sqrt2$. There is no corresponding rule for sums: squaring $\sqrt9+\sqrt{16}=7$ produces a cross term, whereas $9+16=25$ has square root $5$.
+
+For a positive base, fractional powers extend the same rules: $8^{1/3}$ is the cube root of $8$, and $8^{2/3}=(\sqrt[3]8)^2=4$. When negative bases enter, do not apply fractional-power rules without checking which real roots exist. An even root of a negative number has no real value.
+
+A denominator involving roots is another opportunity to expose factors. Multiplying a fraction by a form of $1$ preserves its value. To rewrite $2/(\sqrt5-\sqrt3)$, choose $(\sqrt5+\sqrt3)/(\sqrt5+\sqrt3)$: the opposite signs make the middle terms cancel, leaving denominator $5-3=2$. The result is $\sqrt5+\sqrt3$. This is [[rationalizing|rationalizing the denominator]], and the reason for the choice is more useful than the instruction to multiply by a conjugate alone. The next lesson develops the product identities behind that cancellation.`,
       related: [
         { card: "difference-of-squares", note: String.raw`the identity that makes the conjugate clear the roots (L1.4).` },
         { card: "log-rules", note: String.raw`the same laws read backwards, for solving for an exponent (L9.2).` }
@@ -93,15 +105,33 @@ Reach for these rules whenever a problem has powers with related bases, a compar
     "L1.4": {
       prereq: ["exponent-laws"],
       cards: ["square-of-sum", "difference-of-squares", "completing-the-square"],
-      body: String.raw`Many computations that look long are short once an expression is rewritten in a better form. What is $101^2 - 99^2$? If $a + b = 7$ and $ab = 12$, what is $a^2 + b^2$? What is the smallest value of $x^2 - 8x + 20$? Each is one line with the right identity: expanding turns a product into a sum, factoring turns a sum into a product, and completing the square turns a quadratic into a square plus a number.
+      body: String.raw`An expression can be correct in several forms while revealing different information. A product shows factors, a sum shows contributions, and a square plus a constant can show a minimum. Learning to move between these forms lets us decide what to calculate instead of expanding everything automatically.
 
-To expand a product of sums, multiply every term of one by every term of the other and add: $(x + 2)(x + 5) = x^2 + 5x + 2x + 10 = x^2 + 7x + 10$. Two products occur so often that they are worth knowing by heart. [[square-of-sum|The square of a sum]] is $(a + b)^2 = a^2 + 2ab + b^2$; it computes $99^2 = (100 - 1)^2 = 10000 - 200 + 1 = 9801$, and read the other way it gives $a^2 + b^2 = (a + b)^2 - 2ab$, so $a + b = 7$ and $ab = 12$ give $a^2 + b^2 = 49 - 24 = 25$. [[difference-of-squares|The difference of squares]] is $a^2 - b^2 = (a - b)(a + b)$; it computes $51 \cdot 49 = 50^2 - 1 = 2499$ and $101^2 - 99^2 = 2 \cdot 200 = 400$.
+Begin with a rectangle of sides $x+2$ and $x+5$, where $x>0$ so that the pieces can be interpreted as lengths. Cut one side into $x$ and $2$, and the other into $x$ and $5$. The four smaller rectangles have areas $x^2$, $5x$, $2x$ and $10$. They exactly fill the original rectangle:
 
-Factoring is the reverse of expanding: it writes an expression as a product, which is what is needed to solve an equation or to cancel a fraction. Look first for a common factor, as in $3^{4012} - 3^{4008} = 3^{4008}(3^4 - 1)$, then for a difference of squares, then for a quadratic that splits: $x^2 + 7x + 10 = (x + 2)(x + 5)$, found by two numbers with sum $7$ and product $10$.
+$$(x+2)(x+5)=x^2+5x+2x+10=x^2+7x+10.$$
 
-[[completing-the-square|Completing the square]] rewrites $x^2 + bx + c$ as $\left(x + \tfrac b2\right)^2 + c - \tfrac{b^2}{4}$. For $x^2 - 8x + 20$ it gives $(x - 4)^2 + 4$; a square is never negative, so the smallest value is $4$, at $x = 4$. The same move solves quadratic equations and finds the center of a circle from its equation.
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 255" role="img" aria-labelledby="l14-area-title l14-area-desc" style="width:100%;max-width:430px;height:auto"><title id="l14-area-title">Expansion as four rectangular areas</title><desc id="l14-area-desc">A rectangle of width x plus 5 and height x plus 2 splits into pieces with areas x squared, 5x, 2x and 10. The drawing uses x equal to 4 for its proportions.</desc><g fill="currentColor" fill-opacity="0.07" stroke="currentColor" stroke-width="1.5"><rect x="45" y="40" width="120" height="120"/><rect x="165" y="40" width="150" height="120" fill-opacity="0.14"/><rect x="45" y="160" width="120" height="60" fill-opacity="0.14"/><rect x="165" y="160" width="150" height="60" fill-opacity="0.22"/></g><g fill="currentColor" font-size="17" text-anchor="middle"><text x="105" y="26">x</text><text x="240" y="26">5</text><text x="25" y="105">x</text><text x="25" y="195">2</text><text x="105" y="105">x²</text><text x="240" y="105">5x</text><text x="105" y="195">2x</text><text x="240" y="195">10</text></g></svg>
 
-Before computing a product or a difference of large numbers, ask whether it is a square of a sum or a difference of squares, and before solving, factor. The next lesson turns to ratios and percents.`,
+The picture explains why every term of one parenthesis multiplies every term of the other. After the distributive law has established the identity, the algebraic statement also holds for zero and negative $x$, even though the picture's positive-length interpretation no longer applies. A geometric explanation can suggest an identity without restricting the final identity to the pictured case.
+
+When the two side lengths are both $a+b$, the two rectangular cross pieces have the same area $ab$. This is why [[square-of-sum|squaring a sum]] produces a middle contribution $2ab$. Omitting it leaves two pieces of the square uncounted. Reading the identity in reverse also lets us find information about two numbers without finding the numbers separately. If $a+b=7$ and $ab=12$, then
+
+$$a^2+b^2=(a+b)^2-2ab=49-24=25.$$
+
+The sum and product already determine the requested expression. Solving for $a$ and $b$ first would add work without giving information we need.
+
+Changing one sign causes cancellation instead of reinforcement. Expanding $(a-b)(a+b)$ gives $a^2+ab-ab-b^2$, so the cross terms disappear. This is the [[difference-of-squares|difference of squares]] identity. The expression $101^2-99^2$ advertises two nearby squares. Factoring makes their closeness useful: $(101-99)(101+99)=2\cdot200=400$. Conversely, $51\cdot49=(50+1)(50-1)=2500-1=2499$. The choice of direction comes from the shape of the given expression and the goal.
+
+Factoring more generally asks us to reconstruct the multiplication that produced a sum. In $x^2+7x+10$, we seek two numbers whose sum supplies $7x$ and whose product supplies $10$. The pair $2,5$ gives the rectangle above. Before trying such pairs, look for a common factor: $3^{4012}-3^{4008}=3^{4008}(3^4-1)$. Removing it first simplifies everything left to recognize. A factor may cancel from a fraction only when it multiplies the entire numerator and denominator and is nonzero; a term in a sum cannot simply be canceled.
+
+A quadratic need not split into convenient integer factors. To understand $x^2-8x+20$, instead ask which square has the same quadratic and linear terms. Expanding $(x-4)^2$ gives $x^2-8x+16$. Our expression has four more units, so
+
+$$x^2-8x+20=(x-4)^2+4.$$
+
+Now its smallest value is visible. A real square is nonnegative, and this square can equal zero at $x=4$, so the minimum is exactly $4$. Both parts matter: a lower bound alone is not a minimum until some allowed input attains it. This reasoning is [[completing-the-square|completing the square]]. Later it will locate a parabola's vertex and help solve quadratic equations.
+
+Before rewriting, identify what you want the new form to reveal: a numerical cancellation, a product that can vanish, or a nonnegative square. Then verify the rewrite by expanding back. The next lesson uses a different representation, equal-sized ratio units, to organize comparisons.`,
       related: [
         { card: "quadratic-formula", note: String.raw`completing the square in general gives the formula for the roots (L3.2).` },
         { card: "sfft", note: String.raw`factoring $xy + ax + by$ by adding a constant, the same idea for two variables.` },
@@ -125,15 +155,21 @@ Before computing a product or a difference of large numbers, ask whether it is a
     "L1.5": {
       prereq: [],
       cards: ["setting-up-proportions", "proportion-properties", "percent-change"],
-      body: String.raw`Ratios, proportions and percents describe how quantities compare and how they change. If boys and girls are in the ratio $3 : 5$ in a class of $40$, how many girls are there? A price rises $20\%$ and then falls $20\%$; is it back where it started? After a $25\%$ discount a shirt costs $\$60$; what did it cost before? Each question is one multiplication or one equation, once the comparison is written as a fraction.
+      body: String.raw`A ratio fixes a comparison without fixing a size. If a class has boys and girls in the ratio $3:5$, we know that every three boy-units accompany five girl-units. We do not yet know how large a unit is. The same ratio could describe $3$ and $5$, $6$ and $10$, or $15$ and $25$.
 
-A ratio $a : b$ compares two quantities by division, $\tfrac ab$. A ratio $3 : 5$ means the quantities are $3k$ and $5k$ for some number $k$, so a class of $40$ in the ratio $3 : 5$ has $3k + 5k = 8k = 40$, $k = 5$, and $25$ girls. Writing the parts as multiples of one unknown is the most reliable way to use a ratio.
+Calling the size of a unit $k$ makes the quantities $3k$ and $5k$. If the class has $40$ students, its eight units total $40$, so each unit is $5$ students. The girls occupy five units, hence number $25$. The denominator for their share of the class is $3+5=8$, not $3$: the ratio of girls to boys is $5/3$, while the fraction of the class who are girls is $5/8$.
 
-A proportion says two ratios are equal, $\tfrac ab = \tfrac cd$, and [[setting-up-proportions|setting one up]] is the way to scale a quantity: if $500$ sheets make a stack $5$ cm tall, a stack $7.5$ cm tall has $500 \cdot \tfrac{7.5}{5} = 750$ sheets. Keep the units in the same places on both sides, and convert units by multiplying by fractions equal to $1$, such as $\tfrac{100 \text{ cm}}{1 \text{ m}}$, so that the units cancel. [[proportion-properties|A proportion can be rearranged]]: $\tfrac ab = \tfrac cd$ gives $ad = bc$ and $\tfrac{a + b}{b} = \tfrac{c + d}{d}$.
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 110" role="img" aria-labelledby="l15-ratio-title l15-ratio-desc" style="width:100%;max-width:430px;height:auto"><title id="l15-ratio-title">Three to five means eight equal units altogether</title><desc id="l15-ratio-desc">Eight equal cells represent forty students. Three cells represent fifteen boys and five cells represent twenty-five girls. Each cell is five students.</desc><g stroke="currentColor" stroke-width="1.5" fill="currentColor"><rect x="10" y="15" width="40" height="35" fill-opacity="0.08"/><rect x="50" y="15" width="40" height="35" fill-opacity="0.08"/><rect x="90" y="15" width="40" height="35" fill-opacity="0.08"/><rect x="130" y="15" width="40" height="35" fill-opacity="0.22"/><rect x="170" y="15" width="40" height="35" fill-opacity="0.22"/><rect x="210" y="15" width="40" height="35" fill-opacity="0.22"/><rect x="250" y="15" width="40" height="35" fill-opacity="0.22"/><rect x="290" y="15" width="40" height="35" fill-opacity="0.22"/></g><g fill="currentColor" font-size="15" text-anchor="middle"><text x="70" y="75">3 units: boys</text><text x="230" y="75">5 units: girls</text><text x="170" y="101">8 units = 40 students</text></g></svg>
 
-A percent is a ratio out of $100$, and a [[percent-change|percent change]] is a multiplication. Raising by $p\%$ multiplies by $1 + \tfrac{p}{100}$, lowering by $p\%$ multiplies by $1 - \tfrac{p}{100}$, and successive changes multiply: up $20\%$ then down $20\%$ is $1.2 \cdot 0.8 = 0.96$, a net loss of $4\%$, not a return to the start. To undo a change, divide by its factor: a price after $25\%$ off is $0.75$ of the original, so a sale price of $\$60$ means an original of $\tfrac{60}{0.75} = \$80$. A percent of a percent is a product as well, and a percent is always of something, so ask "percent of what" before computing.
+A proportion records the same scaling idea as an equality of ratios. Suppose $500$ identical sheets form a stack $5$ cm high, with no gaps or compression changes. A $7.5$ cm stack is $7.5/5=1.5$ times as tall, so it contains $1.5\cdot500=750$ sheets. [[setting-up-proportions|Setting up a proportion]] formalizes the assumption that both quantities scale by the same factor. That assumption must come from the situation: the area of a square does not scale in direct proportion to its side length.
 
-Use these tools whenever a problem compares quantities, scales a recipe or a map, converts units, or changes a price or a population by percents. The Summary (L1.6) collects the chapter's strategies, and the next chapter solves equations.`,
+Units help check a proportion. Sheets divided by centimeters must equal sheets divided by centimeters; one side cannot instead be centimeters per sheet. Once the corresponding quantities are correctly placed, [[proportion-properties|rearranging a proportion]] is just multiplication of equal quantities by the same nonzero denominators. Thus $a/b=c/d$ gives $ad=bc$ when $b,d\ne0$. Cross multiplication is a consequence of a model already set up, not a way to decide which quantities belong together.
+
+Percentages are ratios whose reference quantity is treated as $100$. A $20\%$ increase in a price of $P$ adds $0.2P$, leaving $1.2P$. A later $20\%$ decrease is measured from that new price, so it leaves $0.8(1.2P)=0.96P$. The final price is $4\%$ below the original. The changes do not cancel because their reference quantities differ. This multiplicative interpretation of [[percent-change|percent change]] keeps the reference amount visible.
+
+Reversing a percentage change means undoing multiplication. After a $25\%$ discount, the sale price is $0.75P$. If it is $60$ dollars, then $P=60/0.75=80$ dollars. Adding $25\%$ of $60$ would give $75$, but that computes a quarter of the sale price, whereas the discount was a quarter of the original. Checking $0.75\cdot80=60$ verifies both the arithmetic and the choice of reference.
+
+When quantities are compared, state what the denominator measures. When they scale, say why the same factor applies to both. When a percentage changes, identify the amount it is a percentage of before computing. These habits connect the chapter: a good expression preserves the relationship in the words, and a useful rewrite makes that relationship easier to reason about.`,
       related: [
         { card: "weighted-average", note: String.raw`averages of groups in a given ratio (L2.5).` },
         { card: "similar-figures-ratios", note: String.raw`ratios of lengths, areas and volumes of similar figures.` }
