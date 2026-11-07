@@ -659,32 +659,29 @@ Cube sums of $x - y$, $y - z$, $z - x$, and systems giving $a + b + c$, $ab + bc
 "square-of-sum": String.raw`
 ## Key forms
 - $(a + b + c)^2 = a^2 + b^2 + c^2 + 2(ab + bc + ca)$ — each square once, each pairwise product twice
-- $(a + b)^2 + (a - b)^2 = 2(a^2 + b^2)$ and $(a + b)^2 - (a - b)^2 = 4ab$ — the two-variable relatives
-- $\left(x + \dfrac1x\right)^2 = x^2 + 2 + \dfrac{1}{x^2}$ — the first step up the powers of $x + \frac1x$
-- $a^2 + b^2 + c^2 - ab - bc - ca = \tfrac12\left[(a - b)^2 + (b - c)^2 + (c - a)^2\right]$
+- $ab + bc + ca = \tfrac12\left[(a + b + c)^2 - (a^2 + b^2 + c^2)\right]$ — any two of the sum, the sum of squares, and the pairwise products give the third
+- $\alt{\left(\sum a_i\right)^2 = \sum a_i^2 + 2\sum_{i \lt j} a_ia_j}{(a_1 + \cdots + a_n)^2 = a_1^2 + \cdots + a_n^2 + 2(a_1a_2 + a_1a_3 + \cdots + a_{n-1}a_n)}$ — any number of terms
 
 ## Conditions
-Valid for all numbers or expressions. The last identity is nonnegative for real $a$, $b$, $c$ and zero only when $a = b = c$.
+Valid for all numbers or expressions.
 
 ## Why it works
 Multiplying a sum by itself pairs every term with every term, so each square appears once and each product of two different terms appears twice, once in each order.
 
-Write $(a + b + c)^2 = (a + b + c)(a + b + c)$ and multiply every term of the first bracket by every term of the second, which gives nine products. Three of them pair a term with itself: $a^2$, $b^2$, and $c^2$. The other six pair two different terms, and each pair shows up twice, as $ab$ and $ba$, as $bc$ and $cb$, and as $ca$ and $ac$. The figure at the top is the two-term version: a square of side $a + b$ splits into the squares $a^2$ and $b^2$ and two $ab$ rectangles.
+Write $(a + b + c)^2 = (a + b + c)(a + b + c)$ and multiply every term of the first bracket by every term of the second, which gives nine products. Three of them pair a term with itself: $a^2$, $b^2$, and $c^2$. The other six pair two different terms, and each pair shows up twice, as $ab$ and $ba$, as $bc$ and $cb$, and as $ca$ and $ac$. Solving the identity for $ab + bc + ca$ gives the second form, so any two of the three quantities fix the third.
 
-The two-variable relatives come from adding and subtracting $(a + b)^2 = a^2 + 2ab + b^2$ and $(a - b)^2 = a^2 - 2ab + b^2$: the cross terms cancel in the sum, and the squares cancel in the difference. The cross term of $\left(x + \frac1x\right)^2$ is $2 \cdot x \cdot \frac1x = 2$, which gives the third form.
-
-The last identity is worth keeping separately. The right side is visibly never negative and is zero only when $a = b = c$, so it turns a symmetric expression into an inequality with a known equality case.
+With $n$ terms the same multiplication gives $n^2$ products: $n$ squares, and $n^2 - n$ products of two different terms, in which each of the $\binom n2$ pairs appears twice. That is the third form.
 
 ## Useful observations
-- The three-variable identity converts among $a + b + c$, $ab + bc + ca$, and $a^2 + b^2 + c^2$: any two determine the third, without finding $a$, $b$, and $c$.
-- For $x + \frac1x$, squaring and cubing climb the powers. If $y = x + \frac1x$, then $x^2 + \frac{1}{x^2} = y^2 - 2$ and $x^3 + \frac{1}{x^3} = y^3 - 3y$, and higher powers follow by multiplying neighbors, since $\left(x^n + \frac{1}{x^n}\right)\left(x + \frac1x\right) = \left(x^{n+1} + \frac{1}{x^{n+1}}\right) + \left(x^{n-1} + \frac{1}{x^{n-1}}\right)$.
-- A box whose [[space-diagonal|space diagonal]] and edge sum are given is the standard geometric use: $(a + b + c)^2$ links the two.
+- A box whose [[space-diagonal|space diagonal]] and edge sum are given is the standard geometric use: the edge sum gives $a + b + c$, the surface area gives $2(ab + bc + ca)$, and the identity gives $a^2 + b^2 + c^2$, the square of the diagonal.
+- For the roots of a cubic, [[vietas-general|Vieta's Formulas]] give the sum and the pairwise products, so the identity gives the sum of the squares of the roots without finding them.
+- The expression $a^2 + b^2 + c^2 - ab - bc - ca$ that appears beside it is half the sum of the squared differences, by [[sos-identity|the SOS Identity]]; so for real numbers $a^2 + b^2 + c^2 \ge ab + bc + ca$, and $(a + b + c)^2 \ge 3(ab + bc + ca)$.
 
 ## Applications
-Sums of squares from sums and pairwise products, the powers of $x + \frac1x$, boxes with given diagonal and edge sum, and symmetric inequalities.
+Sums of squares from sums and pairwise products, sums of squares of the roots of a polynomial, boxes with a given diagonal and edge sum, and sums of products over many terms.
 
 ## Contest profile
-A permanent AMC fixture in two shapes: given the sum and the sum of squares, find the sum of pairwise products; and climbing the powers of a number plus its reciprocal one step at a time. It usually serves another setup rather than standing alone.
+A permanent AMC fixture: given the sum and the sum of squares, find the sum of pairwise products, or the reverse, most often for the edges of a box or the roots of a cubic. It usually serves another setup rather than standing alone.
 `,
 
 "binomial-theorem": String.raw`
@@ -2011,7 +2008,7 @@ The figure shows the identity as a square of side $\sqrt x + \sqrt y$ cut into p
 Radicals that do not denest this way can sometimes be written with cosines: $\sqrt{2 + \sqrt3} = 2\cos 15^\circ$, which also equals $\frac{\sqrt6 + \sqrt2}{2}$.
 
 ## Formulas it uses
-- [[square-of-sum]]: $(\sqrt x + \sqrt y)^2 = x + y + 2\sqrt{xy}$, the identity run backward.
+- [[two-variable-identities]]: $(\sqrt x + \sqrt y)^2 = x + y + 2\sqrt{xy}$, the identity run backward.
 - [[vietas-quadratic]]: $x$ and $y$ are the roots of $t^2 - at + c = 0$, found from their sum and product.
 - [[half-angle]]: $\cos\frac\theta2 = \sqrt{\frac{1 + \cos\theta}{2}}$, which produces nested radicals such as $\sqrt{2 + \sqrt3} = 2\cos 15^\circ$ that the method then simplifies.
 
@@ -3910,7 +3907,7 @@ Power sums have their own ladder. Each root satisfies the polynomial, so $r^3 = 
 - [[vietas-general]]: identifies each $e_k$ with a coefficient, $e_k = (-1)^k \frac{a_{n-k}}{a_n}$.
 - [[newtons-sums]]: converts the $e_k$ into the power sums $p_k = \sum r_i^k$ one step at a time.
 - [[vietas-quadratic]]: two unknowns are the roots of $t^2 - st + p = 0$, which recovers them at the end.
-- [[square-of-sum]]: $(x + y)^2 = x^2 + 2xy + y^2$ gives the first conversion, $x^2 + y^2 = s^2 - 2p$.
+- [[two-variable-identities]]: $(x + y)^2 = x^2 + 2xy + y^2$ gives the first conversion, $x^2 + y^2 = s^2 - 2p$.
 - [[reciprocal-power-sums]]: the case $y = \frac1x$, where $x^n + x^{-n}$ is a polynomial in $s = x + \frac1x$.
 
 ## Common traps
@@ -4033,7 +4030,7 @@ A quartic with no odd-degree terms is close to a perfect square: its outer terms
 ## Formulas it uses
 - [[difference-of-squares]]: $A^2 - C^2 = (A - C)(A + C)$, the factorization the method forces.
 - [[sophie-germain]]: $a^4 + 4b^4 = (a^2 - 2ab + 2b^2)(a^2 + 2ab + 2b^2)$, the best-known instance.
-- [[square-of-sum]]: expands the target square, so the missing middle term can be read off.
+- [[two-variable-identities]]: expands the target square, so the missing middle term can be read off.
 
 ## Common traps
 - Forcing the difference when the leftover is not a perfect square, as for $x^4 + 3x^2 + 1$ with target $(x^2 + 1)^2$, where the method does not factor over the integers.
@@ -6249,5 +6246,39 @@ Products of the sines or cosines of a sum and a difference, expressions in the a
 
 ## Contest profile
 A rare AMC 12 and AIME shortcut. The identity is quick to rederive from angle addition, so knowing it mostly saves the expansion and the chance of a sign slip.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"two-variable-identities": String.raw`
+## Key forms
+- $(a + b)^2 = a^2 + 2ab + b^2$ — the two $ab$ rectangles are the cross term
+- $a^2 + b^2 = (a + b)^2 - 2ab$ — any two of $a + b$, $ab$, and $a^2 + b^2$ give the third
+- $(a - b)^2 = (a + b)^2 - 4ab$ — the difference from the sum and the product, up to its sign
+- $(a + b)^2 + (a - b)^2 = 2(a^2 + b^2)$ and $(a + b)^2 - (a - b)^2 = 4ab$ — comparing the two squares
+- $a^3 + b^3 = (a + b)^3 - 3ab(a + b)$ — the cubes from the sum and the product
+- $x^2 + \dfrac{1}{x^2} = \left(x + \dfrac1x\right)^2 - 2$ — the case $ab = 1$
+
+## Conditions
+Valid for all numbers or expressions. Recovering $a + b$ or $a - b$ from its square leaves the sign open, so it is settled from the problem, for example by $a$ and $b$ being lengths.
+
+## Why it works
+Each identity is an expansion read in the direction that is useful.
+
+Multiplying $(a + b)(a + b)$ term by term gives $a^2 + ab + ba + b^2 = a^2 + 2ab + b^2$. Drawn as a square of side $a + b$, it splits into the squares $a^2$ and $b^2$ and two $ab$ rectangles. Moving $2ab$ to the other side gives $a^2 + b^2 = (a + b)^2 - 2ab$, and solving instead for $ab$ gives $ab = \frac12\left[(a + b)^2 - (a^2 + b^2)\right]$, so each of the three quantities is fixed by the other two, the sum up to its sign.
+
+In the same way $(a - b)^2 = a^2 - 2ab + b^2$. Adding it to $(a + b)^2$ cancels the cross terms and leaves $2(a^2 + b^2)$; subtracting it leaves $4ab$, which rearranges to $(a - b)^2 = (a + b)^2 - 4ab$.
+
+Cubing, $(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 = a^3 + b^3 + 3ab(a + b)$, so $a^3 + b^3 = (a + b)^3 - 3ab(a + b)$. With $a = x$ and $b = \frac1x$ the product is $1$, the cross term of the square is $2$, and the last form follows.
+
+## Useful observations
+- With $s = a + b$ and $p = ab$, the numbers $a$ and $b$ are the roots of $t^2 - st + p = 0$, by [[vietas-quadratic|Vieta's Formulas]]; they are real exactly when $s^2 \ge 4p$, which is $(a - b)^2 \ge 0$.
+- For $y = x + \frac1x$, $x^3 + \frac1{x^3} = y^3 - 3y$, and higher powers follow by multiplying neighbors, since $\left(x^n + \frac{1}{x^n}\right)\left(x + \frac1x\right) = \left(x^{n+1} + \frac{1}{x^{n+1}}\right) + \left(x^{n-1} + \frac{1}{x^{n-1}}\right)$.
+- With three or more numbers the same conversion is the square of a three-term sum, and every symmetric polynomial is a polynomial in the elementary symmetric sums, by [[fundamental-theorem-symmetric|the Fundamental Theorem of Symmetric Polynomials]].
+
+## Applications
+Sums of squares and cubes from a sum and a product, the legs of a right triangle from its area and hypotenuse, the powers of $x + \frac1x$, and symmetric systems in two unknowns.
+
+## Contest profile
+A permanent AMC fixture: two of the sum, the product, and the sum of squares are given, often through a right triangle or a pair of roots, and the third is wanted. It usually serves another setup rather than standing alone.
 `
 });

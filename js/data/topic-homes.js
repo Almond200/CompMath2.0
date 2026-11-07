@@ -44,6 +44,7 @@ window.MATH_TOPIC_HOMES = {
   "sophie-germain": "alg.eq.factor.special",
   "cubes-minus-3abc": "alg.eq.factor.special",
   "square-of-sum": "alg.eq.identity.symmetric",
+  "two-variable-identities": "alg.eq.identity.symmetric",
   "binomial-theorem": "cp.binom.thm.coeff",
   "brahmagupta-fibonacci": "alg.eq.factor.special",
   "lagranges-identity": "alg.eq.identity.prove",
