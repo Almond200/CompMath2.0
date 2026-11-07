@@ -2,6 +2,8 @@
 
 **2026-11-07**
 
+- Documentation corrections (owner): PR #259 is merged (final integration 2852599, merge f5a1947), its conflicts resolved; the revision pass continues from R4; `LEARN-OUTLINE.md` lists every revised book so far (AMC Algebra L1–L14, AMC Number Theory M1–M7, AMC Counting & Probability R1–R3); PLAN's count of figures drawn for the app is $350$ (`check-statements.py`), not $349$.
+
 - Textbook revision (Codex, recorded at the owner's request from PR #259): AMC Counting & Probability R3 complete (content 1894d79, integration ae0ba5c). Three diagrams, all 22 exercise solutions expanded, six questions clarified, an incorrect claim about placing a restricted group first replaced by a valid construction, and proofs for the non-adjacent-selection bijection, the derangement recurrence and inclusion-exclusion; every answer and all 29 contest placements kept; 6,161 mathematical checks and 48 page checks. R4 is next. Textbook work now continues on the one branch `codex/counting-r3-revision` (owner), replacing the one-branch-per-batch note.
 
 - Choosing Non-Adjacent Objects (from the same handoff): the card's description, which the End-of-book glossary uses, now says where the formulas hold. In a row a choice exists exactly for $0\le k\le\lceil n/2\rceil$ and the formula gives $0$ beyond; around a circle of $n\ge3$ positions exactly for $0\le k\le\lfloor n/2\rfloor$, the formula giving $0$ up to $k=n-1$ while $k=n$ (a zero denominator) counts $0$; both give $1$ for the empty choice, and circles of one or two positions are counted directly. Both formulas were checked by brute force for every $n\le12$. The notes are regenerated.
