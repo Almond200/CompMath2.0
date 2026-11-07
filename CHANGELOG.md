@@ -2,6 +2,8 @@
 
 **2026-11-07**
 
+- Two filings fixed after an outside review of the topic tree (owner): 2025 AMC 10B #21 and its twin 12B #17 also file under `cp.tech.sym.necklace` (rotations and reflections), since the problem counts colorings up to symmetry; 2026 AIME II #13 moves from `nt.divisor.count.factor` (counting factorizations, which it does not do) to `nt.div.prime.factor` (it uses the prime factorization of $4040$ to build the best set).
+
 - One highlighted suggestion at a time in the Settings search and the Practice topic picker too (owner), as in book search: moving the pointer over an option selects it, the arrow keys move the same selection, and Enter takes the highlighted option. The shared `.set-find-opt:hover` style is gone, since the pointer now moves `.is-cur` in all three lists.
 
 - Book search, two refinements (owner): the definition a glossary result scrolls to is highlighted by a band that reaches about 12px past the text on every side (drawn as a shadow, so nothing moves), held for about 2.5 seconds and then faded out over about 2 seconds instead of vanishing; and only one suggestion is highlighted at a time, since moving the pointer over an option now selects it, as the arrow keys do, so Enter opens the highlighted one.
