@@ -1032,6 +1032,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC12", "AIME"]
         },
         {
+          id: "sum-difference-angle-product",
+          name: "Product of a Sum and a Difference of Angles",
+          latex: String.raw`\sin(a+b)\sin(a-b) = \sin^2 a - \sin^2 b, \qquad \cos(a+b)\cos(a-b) = \cos^2 a - \sin^2 b`,
+          description: String.raw`The sine of a sum of two angles times the sine of their difference is a difference of two squares of sines, $\sin(a+b)\sin(a-b) = \sin^2 a - \sin^2 b$, and in the same way $\cos(a+b)\cos(a-b) = \cos^2 a - \sin^2 b$. It applies whenever a sum and a difference of the same two angles are multiplied, and it turns the product into values of $a$ and $b$ alone, often numbers the problem gives. It is the trigonometric twin of $(x+y)(x-y) = x^2 - y^2$, and both forms come from the [[angle-addition|angle-addition formulas]]. Since $\sin^2 a - \sin^2 b = \cos^2 b - \cos^2 a$, each form can also be written in the other function.`,
+          keywords: ["sin(a+b)sin(a-b)", "sine of a sum times sine of a difference", "sin squared minus sin squared", "cos(a+b)cos(a-b)", "product of sum and difference angles", "difference of squares of sines"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["AMC12", "AIME"]
+        },
+        {
           id: "harmonic-addition",
           name: "Harmonic Addition (Linear Combination)",
           latex: String.raw`a\sin\theta + b\cos\theta = R\sin(\theta + \varphi), \qquad R = \sqrt{a^2 + b^2}, \qquad \tan\varphi = \frac{b}{a}`,

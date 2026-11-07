@@ -6190,3 +6190,64 @@ Write each plan as $F + rx$ in the same unknown $x$, and find where each pair of
 An AMC 10 and AMC 12 early problem, usually three coupons; at MATHCOUNTS level it is two phone or membership plans.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"rounding-ranges": String.raw`
+## When to use
+A problem gives a number that has been rounded: a reading on a sign, a percentage to the nearest whole number, the nearest integer to $\sqrt n$. It asks what the true value can be, which answer choices are possible, or how many inputs share each rounded value. When rounding is only an instruction for the final answer, this is the wrong move: compute exactly and round once at the end.
+
+## How
+1. Write each rounded number $n$ as the interval $n - \tfrac12 \le x \lt n + \tfrac12$, or $n - \tfrac u2 \le x \lt n + \tfrac u2$ when the rounding unit is $u$.
+2. Write the quantity asked for in terms of the true values.
+3. Decide which end of each interval pushes that quantity up and which pushes it down.
+4. Read the largest and smallest values off those ends, keeping track of which ends are included.
+5. For a count, turn the interval into a range of integers and count them.
+
+A rectangle measured as $12$ cm by $5$ cm, each to the nearest centimeter, has a true area from $11.5 \cdot 4.5 = 51.75$ up to just under $12.5 \cdot 5.5 = 68.75$ square centimeters.
+
+## Why it works
+Rounding sends $x$ to the integer nearest to it. The number $x$ is at least as close to $n$ as to $n - 1$ exactly when $x \ge n - \tfrac12$, with a half rounded up by the usual convention, and closer to $n$ than to $n + 1$ exactly when $x \lt n + \tfrac12$. So the values that round to $n$ form the half-open interval of length $1$ centered at $n$, and the intervals for different $n$ fill the line without overlapping. In the language of floors, the nearest integer is $\left\lfloor x + \tfrac12 \right\rfloor$, and $\lfloor y \rfloor = n$ means $n \le y \lt n + 1$, which is the same interval shifted by a half.
+
+A quantity that increases or decreases in each input separately, like a product or a quotient of positive numbers, is largest and smallest at the ends of the intervals, so only the ends need checking. The move changes when the problem rounds another way: truncation sends every $x$ with $n \le x \lt n + 1$ to $n$, and the interval moves with the rule.
+
+## Formulas it uses
+- [[floor-basics]]: the nearest integer to $x$ is $\left\lfloor x + \tfrac12 \right\rfloor$, so its range is the floor's range shifted by a half.
+
+## Common traps
+- Treating the rounded numbers as exact, which gives one answer where the problem asks what is possible.
+- Pushing every input the same way: to make a quotient small, the numerator goes to its low end and the denominator to its high end.
+- Forgetting that the upper end is excluded, so a bound such as "just under $5.5$ minutes" is strict.
+- Counting the integers in an interval such as $\left(k - \tfrac12\right)^2 \le n \lt \left(k + \tfrac12\right)^2$ with an endpoint off by one.
+
+## Contest profile
+An occasional AMC 10 and 12 word problem about signs, readings, or percentages, and an AIME counting step when a sum runs over the nearest integer to a root.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"sum-difference-angle-product": String.raw`
+## Key forms
+- $\sin(a+b)\sin(a-b) = \sin^2 a - \sin^2 b$ — a difference of two squares of sines
+- $\sin(a+b)\sin(a-b) = \cos^2 b - \cos^2 a$ — the same product written in cosines
+- $\cos(a+b)\cos(a-b) = \cos^2 a - \sin^2 b$ — the cosine product, which also equals $\cos^2 b - \sin^2 a$
+
+## Conditions
+Both identities hold for all real angles $a$ and $b$.
+
+## Why it works
+The product is a sum times a difference, so it expands to a difference of squares, and $\sin^2 + \cos^2 = 1$ finishes the job.
+
+By angle addition, $\sin(a+b) = \sin a\cos b + \cos a\sin b$ and $\sin(a-b) = \sin a\cos b - \cos a\sin b$. Their product is $\sin^2 a\cos^2 b - \cos^2 a\sin^2 b$. Replace $\cos^2 b$ by $1 - \sin^2 b$ and $\cos^2 a$ by $1 - \sin^2 a$: the expression becomes $\sin^2 a - \sin^2 a\sin^2 b - \sin^2 b + \sin^2 a\sin^2 b$, and the two mixed terms cancel, leaving $\sin^2 a - \sin^2 b$. Writing each $\sin^2$ as $1 - \cos^2$ turns this into $\cos^2 b - \cos^2 a$.
+
+For the cosines, $\cos(a+b) = \cos a\cos b - \sin a\sin b$ and $\cos(a-b) = \cos a\cos b + \sin a\sin b$, so the product is $\cos^2 a\cos^2 b - \sin^2 a\sin^2 b$. Replace $\cos^2 b$ by $1 - \sin^2 b$ and $\sin^2 a$ by $1 - \cos^2 a$: the result is $\cos^2 a - \cos^2 a\sin^2 b - \sin^2 b + \cos^2 a\sin^2 b = \cos^2 a - \sin^2 b$. Writing $\cos^2 a = 1 - \sin^2 a$ and $\sin^2 b = 1 - \cos^2 b$ gives the other version, $\cos^2 b - \sin^2 a$.
+
+## Useful observations
+- With $b = a$ the cosine form reads $\cos 2a = \cos^2 a - \sin^2 a$, the double-angle formula.
+- In a triangle $\sin(A+B) = \sin C$, so the sine form becomes $\sin C\sin(A-B) = \sin^2 A - \sin^2 B$, which the [[law-of-sines|Law of Sines]] turns into $\frac{a^2 - b^2}{4R^2}$.
+- The [[product-sum|product-to-sum formulas]] reach the same place another way: $\sin(a+b)\sin(a-b) = \tfrac12(\cos 2b - \cos 2a)$.
+
+## Applications
+Products of the sines or cosines of a sum and a difference, expressions in the angles of a triangle, and equations where a sum and a difference of the same two angles appear together.
+
+## Contest profile
+A rare AMC 12 and AIME shortcut. The identity is quick to rederive from angle addition, so knowing it mostly saves the expansion and the chance of a sign slip.
+`
+});

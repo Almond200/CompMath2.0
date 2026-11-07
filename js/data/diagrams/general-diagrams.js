@@ -839,6 +839,42 @@
     ]);
   })()];
 
+  // The graph and the sign chart of x(x - 2)(x + 3), on one number line: each factor's row
+  // changes sign only at its own root, and the product's row is the graph's side of the axis.
+  DIAGRAMS["sign-chart"] = [(() => {
+    const roots = [-3, 0, 2], facs = [["x + 3", X => X + 3], ["x", X => X], ["x − 2", X => X - 2]];
+    const f = X => X * (X - 2) * (X + 3);
+    const m = frame(-4.2, 3.4, -13, 10, 70, 22, 350, 140);
+    const parts = [axes(m)];
+    // where the product is >= 0: thick accent on the axis, from the computed signs
+    const cuts = [-4.2, ...roots, 3.4];
+    for (let k = 0; k + 1 < cuts.length; k++) {
+      const mx = (cuts[k] + cuts[k + 1]) / 2;
+      if (f(mx) > 0) parts.push(seg(m.pt(cuts[k], 0), m.pt(cuts[k + 1], 0), GRN, 5));
+    }
+    parts.push(plot(f, m, -3.62, 2.66, 220, ACC, 2.4));
+    const top = 22, rowH = 24, chartTop = 186, rows = [...facs, ["product", f]];
+    roots.forEach(r => {
+      parts.push(seg([m.sx(r), top], [m.sx(r), chartTop + rows.length * rowH], FNT, 1.1, "3 3"));
+      parts.push(dot(m.pt(r, 0), DIM, 4));
+      parts.push(txt([m.sx(r) + 10, m.sy(0) + 17], String(r), DIM, 12));
+    });
+    rows.forEach(([lab, g], i) => {
+      const y = chartTop + i * rowH + 16, last = i === rows.length - 1;
+      if (last) parts.push(seg([20, chartTop + i * rowH + 2], [430, chartTop + i * rowH + 2], FNT, 1));
+      parts.push(txt([58, y], lab, last ? ACC : DIM, 12, "end"));
+      for (let k = 0; k + 1 < cuts.length; k++) {
+        const mx = (cuts[k] + cuts[k + 1]) / 2, v = g(mx);
+        parts.push(txt([m.sx(mx), y], v > 0 ? "+" : "−", last ? (v > 0 ? GRN : ACC) : DIM, last ? 15 : 13));
+      }
+    });
+    const ok = roots.every(r => Math.abs(f(r)) < 1e-9) &&
+      [-3.5, -1, 1, 3].map(X => Math.sign(f(X))).join() === "-1,1,-1,1";
+    if (!ok && typeof console !== "undefined") console.warn("sign-chart diagram: signs do not match the roots");
+    parts.push(cap(440, 290, "x(x − 2)(x + 3) ≥ 0: each factor flips only at its own root, so the product's sign row is −, +, −, + and the graph is above the axis on −3 ≤ x ≤ 0 and x ≥ 2"));
+    return wrap(440, 290, parts);
+  })()];
+
   // Count solutions by sliding a horizontal line, not by solving.
   DIAGRAMS["piecewise-graph-counting"] = [(() => {
     const g = X => Math.abs(Math.abs(X) - 3);

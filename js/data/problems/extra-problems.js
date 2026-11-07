@@ -2284,4 +2284,9 @@
     { q: String.raw`Phone plan A costs $\$15$ a month plus $10$ cents a minute, plan B costs $25$ cents a minute, and plan C costs a flat $\$45$. For how many whole numbers of minutes from $1$ to $400$ is plan A strictly the cheapest?`,
       s: String.raw`With $m$ minutes, A costs $15 + 0.10m$, B costs $0.25m$ and C costs $45$ dollars. A beats B when $15 + 0.10m \lt 0.25m$, that is $m \gt 100$, and beats C when $15 + 0.10m \lt 45$, that is $m \lt 300$. So A is strictly cheapest for $m = 101, \ldots, 299$, which is $199$ numbers of minutes; below $100$ minutes B is cheapest, and above $300$ C is.` }
   );
+  // ---------- Product of a sum and a difference of angles (tagging pass, 2026-11-07) ----------
+  add("sum-difference-angle-product",
+    { q: String.raw`Find $\sin 75^\circ \sin 15^\circ$ without a calculator.`,
+      s: String.raw`Write $75^\circ = 45^\circ + 30^\circ$ and $15^\circ = 45^\circ - 30^\circ$. The product is then $\sin^2 45^\circ - \sin^2 30^\circ = \tfrac12 - \tfrac14 = \tfrac14$.` }
+  );
 })();

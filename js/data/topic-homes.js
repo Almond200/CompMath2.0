@@ -778,5 +778,9 @@ window.MATH_TOPIC_HOMES = {
   "drawing-without-replacement": "cp.prob.dice.draw",
   "round-robin-tournaments": "cp.graph.tour",
   "magic-squares": "cp.logic.puzzle.grid",
-  "subset-avoiding-relation": "cp.graph.sets"
+  "subset-avoiding-relation": "cp.graph.sets",
+  // Cards from the tagging pass (2026-11-07)
+  "rounding-ranges": "alg.word.compute.round",
+  "sum-difference-angle-product": "alg.trig.identity.sum",
+  "bounded-diophantine-count": "nt.dio.linear.solve"
 };
