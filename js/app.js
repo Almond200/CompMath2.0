@@ -5985,6 +5985,7 @@
       const cards = lessons.flatMap(({ d }) => (d?.cards || []).map(id => BY_ID[typeof id === 'string' ? id : id.id]?.formula).filter(Boolean));
       return { c, phrase: tokens(c.title).join(' '), title: new Set(tokens(c.code + ' ' + c.title)), headings: new Set(tokens(c.lessons.map(l => l.title).join(' '))),
         related: new Set(tokens(cards.map(f => f.name + ' ' + (f.keywords || []).join(' ')).join(' '))),
+        indexed: new Set(tokens(((window.MATH_BOOK_INDEX || {})[b.id] || []).filter(e => e.lessons.some(code => code.startsWith(c.code + '.'))).map(e => e.term + ' ' + e.aliases.join(' ')).join(' '))),
         body: new Set(tokens(lessons.map(({ d }) => d?.body || '').join(' '))) };
     });
     const rank = query => {
@@ -5996,7 +5997,7 @@
         let score = 0, matched = 0;
         q.forEach(token => {
           let best = 0;
-          for (const [field, weight] of [[entry.title, 12], [entry.headings, 8], [entry.related, 5], [entry.body, 1]]) {
+          for (const [field, weight] of [[entry.title, 12], [entry.headings, 8], [entry.related, 5], [entry.indexed, 0.8], [entry.body, 1]]) {
             for (const variant of expandToken(token)) {
               const factor = variant === token ? 1 : 0.7;
               if (field.has(variant)) best = Math.max(best, weight * factor);
