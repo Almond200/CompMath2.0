@@ -226,7 +226,7 @@ window.MATH_TOPIC_HOMES = {
   "parallel-by-angle-sum": "geo.basic.angle.parallel",
   "integer-triangles-perimeter": "geo.tri.ineq.count",
   "perpendicular-bisector-locus": "geo.coord.line",
-  "similar-figures-ratios": "geo.basic.sim.similar",
+  "similar-figures-ratios": "geo.basic.sim.figures",
   "midsegment-theorem": "geo.basic.sim.parallel",
   "intercept-theorem": "geo.basic.sim.parallel",
   "centroid-division": "geo.tri.cevian.median",
@@ -786,7 +786,7 @@ window.MATH_TOPIC_HOMES = {
   // Cards from the tagging pass (2026-11-07)
   "rounding-ranges": "alg.word.compute.round",
   "sum-difference-angle-product": "alg.trig.identity.sum",
-  "bounded-diophantine-count": "nt.dio.linear.solve",
+  "bounded-diophantine-count": "nt.dio.linear.count",
   "composing-rotations": "geo.coord.transform.rotate",
   "inversions-adjacent-swaps": "cp.basic.perm"
 };

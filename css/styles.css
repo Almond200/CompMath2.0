@@ -4362,3 +4362,7 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 /* Small grey text added with the newer search results and book pages read under 4:1 on a card in
    --text-faint; in dark they use --text-dim. */
 :root[data-theme="dark"] :is(.card-crumb, .rs-k, .rs-n, .rs-more-line, .more-forms, .bk-stats, .lb-n, .card-study-list, .book-search .set-find-group) { color: var(--text-dim); }
+/* Front page, dark mode (owner, 2026-11-07): the space names and their top strips, the kind
+   badges and the "See all" link are a step less bright, at full saturation so they stay vivid. The book covers keep their colours. */
+:root[data-theme="dark"] .home :is(.hm-space-name, .badge, .hm-more) { filter: saturate(1.05) brightness(0.86); }
+:root[data-theme="dark"] .home .hm-space::before { filter: saturate(1.05) brightness(0.84); }
