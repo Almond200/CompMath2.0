@@ -6,7 +6,16 @@ A candidate card lists, under "Needed by", the problems whose routes would cite 
 
 ## Open now
 
-None recorded as of 2026-11-06; the next card candidate is P54.
+### Topic-tree candidates from the tagging pass (T3; started 2026-11-06)
+
+A kind of problem the tree has no node for, seen in several problems (the archetype rule, `TOPIC-TREE.md`). The problems are filed under the nearest broader node meanwhile. Answer per row: add, merge into another node, or no. Newest rows first; the next is TQ6.
+
+| # | Proposed node | Where in the tree | Problems |
+|---|---|---|---|
+
+### Card candidates from the tagging pass
+
+New rows go in "Candidate new cards from the practice pass" below the resolved decisions, at the top of its table, as P54 onward. For this pass a somewhat fringe pattern or method is listed too, with every problem that needs it (owner, 2026-11-06).
 
 ## Resolved decisions and historical proposals
 
