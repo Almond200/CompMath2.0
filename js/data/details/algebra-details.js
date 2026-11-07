@@ -3426,10 +3426,10 @@ An olympiad and advanced-AIME tool that turns an intractable sum of products int
 - $\arcsin x + \arccos x = \dfrac\pi2$ — the complement identity
 - $\arctan x + \arctan\dfrac1x = \dfrac\pi2\operatorname{sgn}(x)$ — $+\frac\pi2$ for $x \gt 0$ and $-\frac\pi2$ for $x \lt 0$
 - $\arctan x + \arctan y = \arctan\dfrac{x + y}{1 - xy}$, with $\pm\pi$ added when $xy \gt 1$ — the addition formula and its correction
-- the ranges: $\arcsin$ and $\arctan$ return values in $\left[-\frac\pi2, \frac\pi2\right]$, and $\arccos$ in $[0, \pi]$
+- $\arcsin x \in \left[-\frac\pi2, \frac\pi2\right]$, $\arctan x \in \left(-\frac\pi2, \frac\pi2\right)$, $\arccos x \in [0, \pi]$ — the principal ranges, with both ends of the arctan range excluded
 
 ## Conditions
-Each identity holds on the principal ranges. $\arcsin(\sin x) = x$ only for $x \in \left[-\frac\pi2, \frac\pi2\right]$, and $\arccos(\cos x) = x$ only for $x \in [0, \pi]$; elsewhere the answer is the reflection or shift that lands in the range.
+The principal ranges are the intervals on which each function is one-to-one and takes all its values: $\sin$ on $\left[-\frac\pi2, \frac\pi2\right]$ takes every value in $[-1, 1]$ once, $\cos$ on $[0, \pi]$ does the same, and $\tan$ on $\left(-\frac\pi2, \frac\pi2\right)$ takes every real value once but is undefined at $\pm\frac\pi2$, so $\arctan x$ never equals $\pm\frac\pi2$. Each identity holds on the principal ranges. $\arcsin(\sin x) = x$ only for $x \in \left[-\frac\pi2, \frac\pi2\right]$, and $\arccos(\cos x) = x$ only for $x \in [0, \pi]$; elsewhere the answer is the reflection or shift that lands in the range.
 
 ## Why it works
 Step 1, the complement. Let $\theta = \arcsin x$, in $\left[-\frac\pi2, \frac\pi2\right]$. Then $\frac\pi2 - \theta$ is in $[0, \pi]$, the range of $\arccos$, and $\cos\left(\frac\pi2 - \theta\right) = \sin\theta = x$, so $\arccos x = \frac\pi2 - \theta$.
@@ -3439,7 +3439,7 @@ Step 2, reciprocals. For $x \gt 0$, $\theta = \arctan x$ is in $\left(0, \frac\p
 Step 3, addition. With $A = \arctan x$ and $B = \arctan y$, tangent addition gives $\tan(A + B) = \frac{x + y}{1 - xy}$. The sum $A + B$ lies in $(-\pi, \pi)$, and inside the principal range exactly when $\cos(A + B) = \cos A\cos B(1 - xy) \gt 0$, that is $xy \lt 1$. When $xy \gt 1$ it is outside, and the arctangent of $\frac{x + y}{1 - xy}$ differs from it by $\pi$, added when $x \gt 0$ and subtracted when $x \lt 0$.
 
 ## Useful observations
-- The ranges are pinned first: $\arcsin, \arctan \in \left[-\frac\pi2, \frac\pi2\right]$ and $\arccos \in [0, \pi]$.
+- The ranges are pinned first: $\arcsin \in \left[-\frac\pi2, \frac\pi2\right]$, $\arctan \in \left(-\frac\pi2, \frac\pi2\right)$ and $\arccos \in [0, \pi]$.
 - For telescoping arctan sums, adjacent terms are combined with the addition formula, watching for the $\pm\pi$ correction.
 - For "evaluate $\arctan a + \arctan b + \arctan c$," the tangent is computed first and the ranges choose the right multiple of $\pi$.
 

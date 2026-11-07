@@ -1210,7 +1210,7 @@ window.MATH_SECTIONS.push({
           id: "inverse-trig-identities",
           name: "Inverse Trig Identities & Ranges",
           latex: String.raw`\arcsin x + \arccos x = \tfrac{\pi}{2}, \qquad \arctan x + \arctan \tfrac1x = \tfrac{\pi}{2}\,\operatorname{sgn}(x), \qquad \arctan x + \arctan y = \arctan\tfrac{x+y}{1-xy} \; (\pm\pi\text{ if } xy>1)`,
-          description: String.raw`The reflection/complement identities plus the ranges that trip people up: $\arcsin, \arctan$ return values in $[-\tfrac\pi2, \tfrac\pi2]$ and $\arccos$ in $[0, \pi]$. So $\arctan x + \arctan\frac1x$ is $+\tfrac\pi2$ for $x>0$ but $-\tfrac\pi2$ for $x\lt 0$, and the arctan addition formula needs a $\pm\pi$ correction once $xy > 1$ pushes the true sum outside the principal range. Getting the branch right is the whole game.`,
+          description: String.raw`The reflection/complement identities plus the ranges that trip people up: $\arcsin$ returns values in $[-\tfrac\pi2, \tfrac\pi2]$, $\arctan$ in the open interval $(-\tfrac\pi2, \tfrac\pi2)$, which excludes both endpoints, and $\arccos$ in $[0, \pi]$. So $\arctan x + \arctan\frac1x$ is $+\tfrac\pi2$ for $x>0$ but $-\tfrac\pi2$ for $x\lt 0$, and the arctan addition formula needs a $\pm\pi$ correction once $xy > 1$ pushes the true sum outside the principal range. Getting the branch right is the whole game.`,
           keywords: ["inverse trig", "arcsin arccos", "arctan identity", "principal value range", "arctan addition branch", "complementary angles"],
           importance: "medium",
           tier: "AIME Early",
