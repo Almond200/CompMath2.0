@@ -38,10 +38,14 @@ def build():
             books.append(book)
             chapter = None
             continue
-        m = re.match(r"^### ([BANGCLMRSPEDKO]\d{1,2})\. (.+?) \((Core II|Core|Extension|AMC 10|AMC 12)\b[^)]*\)(?::.*)?$", line)
+        m = re.match(r"^### ([BANGCLMRSPEDKO]\d{1,2})\. (.+?) \((Core II|Core|Extension|Reference|AMC 10|AMC 12)\b[^)]*\)(?::.*)?$", line)
         if m and book:
             chapter = {"code": m[1], "title": m[2].strip(), "level": m[3], "lessons": []}
-            if part:
+            # Back matter is reference material even in outlines predating this distinction.
+            if m[3] == "Reference" or m[2].strip() == "End-of-book Notes":
+                chapter.pop("level")
+                chapter["kind"] = "reference"
+            if part and chapter.get("kind") != "reference":
                 chapter["part"] = part
             book["chapters"].append(chapter)
             continue

@@ -43,3 +43,40 @@ for (const book of context.window.MATH_LEARN_SHELF) {
 console.log('All-book audit:', context.window.MATH_LEARN_SHELF.length, 'books,', chapters, 'chapter titles,', lessons, 'lesson titles; ranking failures:', JSON.stringify(failures));
 
 assert.equal(failures.length,0,'every chapter title ranks first and every lesson title returns its chapter');
+
+let indexTargets = 0;
+for (const book of context.window.MATH_LEARN_SHELF) {
+  const notes = book.chapters.filter(c => c.title === 'End-of-book Notes');
+  assert.equal(notes.length, 1, book.id + ': exactly one notes chapter');
+  assert.equal(notes[0].kind, 'reference', book.id + ': notes are reference sections');
+  assert.equal(notes[0].level, undefined, book.id + ': notes have no difficulty badge');
+  assert(notes[0].lessons.every(l => !l.level), book.id + ': reference sections have no difficulty badges');
+  assert.deepEqual(Array.from(notes[0].lessons, l => l.title), ['Index', 'Glossary', 'References and Credits']);
+  const entries = context.window.MATH_BOOK_INDEX[book.id];
+  assert(entries.length > 0, book.id + ': nonempty index');
+  const index = context.learnLessonData(notes[0], notes[0].lessons[0]).body;
+  const glossary = context.learnLessonData(notes[0], notes[0].lessons[1]).body;
+  for (const entry of entries) {
+    assert(entry.lessons.length, entry.term + ': has a location');
+    for (const code of entry.lessons) {
+      assert(book.chapters.some(c => c !== notes[0] && c.lessons.some(l => l.code === code)), book.id + ': local target ' + code);
+      indexTargets++;
+    }
+  }
+  for (const match of index.matchAll(/href="#\/learn\/([^/]+)\/([a-z]\d+)\/(\d+)"/g)) {
+    assert.equal(match[1], book.id, 'index stays inside its book');
+    assert(book.chapters.some(c => c.code.toLowerCase() === match[2] && c.lessons.some(l => l.code === c.code + '.' + match[3])), 'index URL resolves');
+  }
+  assert(glossary.includes('<dfn>'), 'glossary marks its definitions');
+  // A typed vocabulary term finds the chapter with its explanation, not only the back matter.
+  for (const term of ['Variable', 'Sample space', 'Cevian', 'Counterexample']) {
+    const entry = entries.find(e => e.term === term);
+    if (entry) assert(context.bookSearchRanker(book)(term).some(e => entry.lessons.some(code => code.startsWith(e.c.code + '.'))), book.id + ': searchable ' + term);
+  }
+}
+console.log('Book notes:', indexTargets, 'lesson locations checked across all 13 books.');
+
+const countStart = source.indexOf('  const learnLessonsIn =');
+vm.runInContext(source.slice(countStart, source.indexOf('\n', countStart)), context);
+assert.equal(vm.runInContext('window.MATH_LEARN_SHELF.reduce((n,b) => n + learnLessonsIn(b), 0)', context), 593,
+  'reference sections must not inflate the teaching-lesson total');

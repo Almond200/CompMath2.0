@@ -346,6 +346,16 @@ No new cards: the Bridge's habits, applied to harder mixed problems whose techni
 | L14.4 Mixed problems across the book | Core | no card (a review lesson with late-AMC 12 and early-AIME problems) | mixed |
 | L14.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L14.6 Review Problems and L14.7 Challenge Problems | |
 
+### L15. End-of-book Notes (Extension)
+
+Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| L15.1 Index | | no card | |
+| L15.2 Glossary | | no card | |
+| L15.3 References and Credits | | no card | |
+
 ## Book: AMC Number Theory
 
 From primes and divisibility to remainders, integer equations and the advanced topics of exponents and orders, ending with mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
@@ -450,6 +460,16 @@ No new cards: residues, cycles and integer equations together, in harder mixed p
 | M7.3 Integer equations by factoring and bounds | Core | no card (prereq sfft, bounding-diophantine) | mixed |
 | M7.4 Mixed problems across the book | Core | no card (a review lesson) | mixed |
 | M7.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then M7.6 Review Problems and M7.7 Challenge Problems | |
+
+### M8. End-of-book Notes (Extension)
+
+Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| M8.1 Index | | no card | |
+| M8.2 Glossary | | no card | |
+| M8.3 References and Credits | | no card | |
 
 ## Book: AMC Counting & Probability
 
@@ -590,6 +610,16 @@ No new cards: checking cases and overcounts, small cases as a test, and harder m
 | R10.3 Small cases as a test | Core | no card (prereq recursive-counting) | mixed |
 | R10.4 Mixed problems across the book | Core | no card (a review lesson) | mixed |
 | R10.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R10.6 Review Problems and R10.7 Challenge Problems | |
+
+### R11. End-of-book Notes (Extension)
+
+Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| R11.1 Index | | no card | |
+| R11.2 Glossary | | no card | |
+| R11.3 References and Credits | | no card | |
 
 ## Book: AMC Geometry
 
@@ -760,6 +790,16 @@ Signed lengths, degenerate figures, choosing between coordinates and a synthetic
 | S12.4 Mixed problems across the book | Core | no card (a review lesson) | mixed |
 | S12.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S12.6 Review Problems and S12.7 Challenge Problems | |
 
+### S13. End-of-book Notes (Extension)
+
+Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| S13.1 Index | | no card | |
+| S13.2 Glossary | | no card | |
+| S13.3 References and Credits | | no card | |
+
 ## Book: AIME Algebra
 
 Nine chapters. The first draft named symmetric expressions, recurrences, root transformations, complex numbers and inequalities. The proposal adds equation solving, functions, logs, trig algebra, and a capstone for combining tools.
@@ -877,6 +917,16 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 | A9.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A9.7 Review Problems and A9.8 Challenge Problems |
 
 ---
+
+### A10. End-of-book Notes (Extension)
+
+Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| A10.1 Index | | no card | |
+| A10.2 Glossary | | no card | |
+| A10.3 References and Credits | | no card | |
 
 ## Book: AIME Number Theory
 
@@ -1124,6 +1174,16 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 
 ---
 
+### N9. End-of-book Notes (Extension)
+
+Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| N9.1 Index | | no card | |
+| N9.2 Glossary | | no card | |
+| N9.3 References and Credits | | no card | |
+
 ## Book: AIME Geometry
 
 Nine chapters. The proposal separates the main AIME toolkits, so a student learns them in a reliable order rather than as a grab bag of theorems.
@@ -1244,6 +1304,16 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 ---
 
+### G10. End-of-book Notes (Extension)
+
+Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| G10.1 Index | | no card | |
+| G10.2 Glossary | | no card | |
+| G10.3 References and Credits | | no card | |
+
 ## Book: AIME Counting & Probability
 
 Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identities, conditioning, expected value, graphs, and geometric counting explicitly.
@@ -1362,6 +1432,16 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 
 ---
 
+### C10. End-of-book Notes (Extension)
+
+Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| C10.1 Index | | no card | |
+| C10.2 Glossary | | no card | |
+| C10.3 References and Credits | | no card | |
+
 ## Book: Olympiad Proofs
 
 How to write a proof, for a student moving from answer contests (AMC, AIME) to proof contests (USAJMO, USAMO and beyond). The olympiad books are a third track: they teach their own cards and set their own problems, since the problem database holds answer contests (owner's goal, 2026-10-31).
@@ -1403,6 +1483,16 @@ How to write a proof, for a student moving from answer contests (AMC, AIME) to p
 | P4.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then P4.5 Review Problems and P4.6 Challenge Problems | |
 
 ---
+
+### P5. End-of-book Notes (Extension)
+
+Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| P5.1 Index | | no card | |
+| P5.2 Glossary | | no card | |
+| P5.3 References and Credits | | no card | |
 
 ## Book: Olympiad Algebra
 
@@ -1457,6 +1547,16 @@ Inequalities, polynomials and functional equations at olympiad level. It assumes
 
 ---
 
+### E6. End-of-book Notes (Extension)
+
+Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| E6.1 Index | | no card | |
+| E6.2 Glossary | | no card | |
+| E6.3 References and Credits | | no card | |
+
 ## Book: Olympiad Number Theory
 
 Quadratic residues, valuations and special primes, additive results and arithmetic functions. It assumes the AIME Number Theory book.
@@ -1499,6 +1599,16 @@ Quadratic residues, valuations and special primes, additive results and arithmet
 | D4.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then D4.6 Review Problems and D4.7 Challenge Problems | |
 
 ---
+
+### D5. End-of-book Notes (Extension)
+
+Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| D5.1 Index | | no card | |
+| D5.2 Glossary | | no card | |
+| D5.3 References and Credits | | no card | |
 
 ## Book: Olympiad Combinatorics
 
@@ -1551,6 +1661,16 @@ Enumeration, extremal set theory, graphs, algebraic and probabilistic methods, a
 | K5.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then K5.5 Review Problems and K5.6 Challenge Problems | |
 
 ---
+
+### K6. End-of-book Notes (Extension)
+
+Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| K6.1 Index | | no card | |
+| K6.2 Glossary | | no card | |
+| K6.3 References and Credits | | no card | |
 
 ## Book: Olympiad Geometry
 
@@ -1623,6 +1743,16 @@ The configurations, lemmas and transformations of olympiad geometry. It assumes 
 | O7.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then O7.6 Review Problems and O7.7 Challenge Problems | |
 
 ---
+
+### O8. End-of-book Notes (Extension)
+
+Reference back matter: a lesson-linked index, definitions of key terms, and References and Credits. These pages have no exercises.
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| O8.1 Index | | no card | |
+| O8.2 Glossary | | no card | |
+| O8.3 References and Credits | | no card | |
 
 ## Coverage
 

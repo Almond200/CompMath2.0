@@ -5753,7 +5753,7 @@
   }
 
   const learnLevelSlug = lv => lv.toLowerCase().replace(/\s+/g, "");
-  const learnLevelHtml = c => `<span class="lb-level lb-${learnLevelSlug(c.level)}">${c.level}</span>`;
+  const learnLevelHtml = c => c.level ? `<span class="lb-level lb-${learnLevelSlug(c.level)}">${c.level}</span>` : "";
 
   // One line per lesson: its code and title, a link once it is written, and a tick once read.
   function learnLessonRow(b, c, l, current) {
@@ -5814,8 +5814,8 @@
     if (o) return { series: "Olympiad", name: o[1] };
     return { series: "Foundations", name: b.title };
   }
-  const learnWrittenIn = b => b.chapters.reduce((n, c) => n + c.lessons.filter(l => learnLessonData(c, l)).length, 0);
-  const learnLessonsIn = b => b.chapters.reduce((n, c) => n + c.lessons.length, 0);
+  const learnWrittenIn = b => b.chapters.reduce((n, c) => n + (c.kind === "reference" ? 0 : c.lessons.filter(l => learnLessonData(c, l)).length), 0);
+  const learnLessonsIn = b => b.chapters.reduce((n, c) => n + (c.kind === "reference" ? 0 : c.lessons.length), 0);
   function bookCoverHtml(b, size) {
     const { series, name } = bookParts(b);
     return `<span class="bk-cover bk-${b.id} bk-${size}" aria-hidden="true">
@@ -5874,12 +5874,12 @@
   function learnContinue() {
     const prog = learnProgress();
     const all = [];
-    LEARN_SHELF.forEach(b => b.chapters.forEach(c => c.lessons.forEach(l => { if (learnLessonData(c, l)) all.push({ b, c, l }); })));
+    LEARN_SHELF.forEach(b => b.chapters.filter(c => c.kind !== "reference").forEach(c => c.lessons.forEach(l => { if (learnLessonData(c, l)) all.push({ b, c, l }); })));
     if (!all.length) return null;
     // The lesson opened last, else the first written one (lessons are not marked read; owner,
     // 2026-10-31).
     const last = prog.last && learnLessonByCode(prog.last);
-    if (last && learnLessonData(last.c, last.l)) return Object.assign({ again: true }, last);
+    if (last && last.c.kind !== "reference" && learnLessonData(last.c, last.l)) return Object.assign({ again: true }, last);
     return all[0];
   }
 
@@ -5903,7 +5903,7 @@
     });
     return out;
   }
-  const learnPageLabel = x => x.label ? x.label : x.l ? `${x.l.code} ${escapeAttr(x.l.title)}` : x.end ? `${learnEndCode(x.c, x.end)} ${LEARN_END[x.end]}` : x.review ? `${x.c.code} chapter review` : `${x.c.code} overview`;
+  const learnPageLabel = x => x.label ? x.label : x.l ? `${x.l.code} ${escapeAttr(x.l.title)}` : x.end ? `${learnEndCode(x.c, x.end)} ${LEARN_END[x.end]}` : x.review ? `${x.c.code} Chapter Review` : `${x.c.code} Overview`;
   function learnArrow(href, dir, label) {
     const icon = dir < 0 ? "&#8249;" : "&#8250;";
     return href ? `<a class="bk-arrow" href="${href}" aria-label="${dir < 0 ? "Previous" : "Next"}: ${escapeAttr(label.replace(/<[^>]*>/g, ""))}" title="${escapeAttr(label.replace(/<[^>]*>/g, "").replace(/\$/g, ""))}">${icon}</a>`
@@ -5986,6 +5986,7 @@
       const cards = lessons.flatMap(({ d }) => (d?.cards || []).map(id => BY_ID[typeof id === 'string' ? id : id.id]?.formula).filter(Boolean));
       return { c, phrase: tokens(c.title).join(' '), title: new Set(tokens(c.code + ' ' + c.title)), headings: new Set(tokens(c.lessons.map(l => l.title).join(' '))),
         related: new Set(tokens(cards.map(f => f.name + ' ' + (f.keywords || []).join(' ')).join(' '))),
+        indexed: new Set(tokens(((window.MATH_BOOK_INDEX || {})[b.id] || []).filter(e => e.lessons.some(code => code.startsWith(c.code + '.'))).map(e => e.term + ' ' + e.aliases.join(' ')).join(' '))),
         body: new Set(tokens(lessons.map(({ d }) => d?.body || '').join(' '))) };
     });
     const rank = query => {
@@ -5997,7 +5998,7 @@
         let score = 0, matched = 0;
         q.forEach(token => {
           let best = 0;
-          for (const [field, weight] of [[entry.title, 12], [entry.headings, 8], [entry.related, 5], [entry.body, 1]]) {
+          for (const [field, weight] of [[entry.title, 12], [entry.headings, 8], [entry.related, 5], [entry.indexed, 0.8], [entry.body, 1]]) {
             for (const variant of expandToken(token)) {
               const factor = variant === token ? 1 : 0.7;
               if (field.has(variant)) best = Math.max(best, weight * factor);
@@ -6101,7 +6102,7 @@
           learnArrow(pc ? learnHash(b, pc) : "", -1, pc ? pc.code + " " + pc.title : ""), learnArrow(nc ? learnHash(b, nc) : "", 1, nc ? nc.code + " " + nc.title : ""))
       : bar("bk-bar1", "Book", `<span class="bk-bar-t">${escapeAttr(b.title)}</span>`, "", "");
     const bar2 = c
-      ? bar("bk-bar2", "Lesson", `<span class="bk-bar-t">${learnPageLabel(pages[at])}</span>`,
+      ? bar("bk-bar2", c.kind === "reference" ? "Section" : "Lesson", `<span class="bk-bar-t">${learnPageLabel(pages[at])}</span>`,
           learnArrow(hashOf(prev), -1, prev ? learnPageLabel(prev) : ""), learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : ""))
       : bar("bk-bar2", "Introduction", `<span class="bk-bar-t">${howto ? HOW.label : TOC.label}</span>`, learnArrow(hashOf(prev), -1, prev ? learnPageLabel(prev) : ""), learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : ""));
     // The bottom: three small plain links, the previous page, Back to top, and the next page
@@ -6117,7 +6118,7 @@
     // the top bar while reading.
     const plain = t => String(t).replace(/<[^>]*>/g, "").replace(/\$/g, "").replace(/\\[a-z]+/gi, "").replace(/[{}]/g, "");
     const here = at >= 0 ? pages[at] : null;
-    const where = !c ? (howto ? HOW.label : TOC.label) : here && here.l ? `Lesson ${c.lessons.indexOf(here.l) + 1} of ${c.lessons.length}`
+    const where = !c ? (howto ? HOW.label : TOC.label) : here && here.l ? `${c.kind === "reference" ? "Section" : "Lesson"} ${c.lessons.indexOf(here.l) + 1} of ${c.lessons.length}`
       : here && here.end ? LEARN_END[here.end] : here && here.review ? "Chapter review" : "Overview";
     const mnav = `<nav class="bk-mnav" aria-label="Chapters and lessons">
         <div class="bk-mnav-k"><span class="bk-mnav-book">${escapeAttr(b.title)}</span>${c ? ` &middot; Chapter ${c.code.slice(1)}` : ""} &middot; ${where}</div>
@@ -6181,7 +6182,7 @@
           </li>${b.chapters.map((c, i) => `${c.part && c.part !== (b.chapters[i - 1] || {}).part ? `
           <li class="bk-toc-part"><h4>${escapeAttr(c.part)}</h4></li>` : ""}
           <li class="bk-toc-ch">
-            <a class="bk-toc-chh" href="${learnHash(b, c)}"><span class="lb-code">${c.code}</span><span class="bk-toc-t">${escapeAttr(c.title)}</span><span class="bk-toc-meta">${learnLevelHtml(c)}<span class="lb-n">${c.lessons.length} lessons</span></span></a>
+            <a class="bk-toc-chh" href="${learnHash(b, c)}"><span class="lb-code">${c.code}</span><span class="bk-toc-t">${escapeAttr(c.title)}</span><span class="bk-toc-meta">${learnLevelHtml(c)}<span class="lb-n">${c.lessons.length} ${c.kind === "reference" ? "sections" : "lessons"}</span></span></a>
             <ol class="lb-lessons">${c.lessons.map(l => learnLessonRow(b, c, l, false)).join("")}${learnReviewRow(b, c, false)}</ol>
           </li>`).join("")}
         </ol>
@@ -6549,7 +6550,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       main = learnLessonMainHtml(b, c, l, d);
     }
     learnBookShell(b, c, isReview ? (end || "review") : l, main);
-    if (l && d) { noteRecent("l:" + l.code); const prog = learnProgress(); if (prog.last !== l.code) { prog.last = l.code; saveLearn(); } }
+    if (l && d && c.kind !== "reference") { noteRecent("l:" + l.code); const prog = learnProgress(); if (prog.last !== l.code) { prog.last = l.code; saveLearn(); } }
     $content.querySelectorAll(".lp-prob").forEach(li => {
       const p = PROBLEM_BY_SLUG[li.dataset.slug];
       const box = li.querySelector(".lp-notes");
