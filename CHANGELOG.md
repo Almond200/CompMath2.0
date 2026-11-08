@@ -2,6 +2,7 @@
 
 **2026-11-08**
 
+- T3: the 2010 AMC 8 filed in the topic tree (25 problems; 4090 filed in all). Every answer re-checked by computation and against the key: brute force for #7 (every coin collection small enough to matter, the fewest that pays every amount below a dollar is $10$); exact arithmetic for the rest. No strategy or tag changes.
 - T3: the 2011 AMC 8 filed in the topic tree (25 problems; 4065 filed in all). Every answer re-checked by computation and against the key: brute force for #22 and #23 (every four-digit number, $84$); exact arithmetic for the rest. No strategy or tag changes.
 - T3: the 2012 AMC 8 filed in the topic tree (25 problems; 4040 filed in all). Every answer re-checked by computation and against the key: brute force for #18 and #22 (every choice of three new integers, $7$ medians); exact arithmetic for the rest. No strategy or tag changes.
 - T3: the 2013 AMC 8 filed in the topic tree (25 problems; 4015 filed in all). Every answer re-checked by computation and against the key: exact arithmetic throughout. One tag fix: #10 cited GCD × LCM, but its route reads the gcd and the lcm off the prime factorizations (least and greatest exponents) and never uses $\gcd\cdot\operatorname{lcm}=ab$; it now cites the Fundamental Theorem of Arithmetic.
