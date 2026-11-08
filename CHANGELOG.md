@@ -2,6 +2,7 @@
 
 **2026-11-08**
 
+- T3: the 2019 AMC 8 filed in the topic tree (25 problems; 3865 filed in all). Every answer re-checked by computation and against the key: brute force for #13 (every sum of three different two-digit palindromes) and #25; exact arithmetic for the rest, with the mass points of #24 checked against the areas. No strategy or tag changes.
 - T3: the 2020 AMC 8 filed in the topic tree (25 problems; 3840 filed in all; there was no 2021 AMC 8). Every answer re-checked by computation and against the key: brute force for #17, #19 (every five-digit flippy number) and #22 (every start below $1000$ run six times); exact arithmetic for the rest. No strategy or tag changes.
 - T3: the 2022 AMC 8 filed in the topic tree (25 problems; 3815 filed in all). Every answer re-checked by computation and against the key: brute force for #3 and #23 (all $2^9$ grids, $84$); the recursion of #25 run to four hops; exact arithmetic for the rest. No strategy or tag changes.
 - T3: the 2023 AMC 8 filed in the topic tree (25 problems; 3790 filed in all). Every answer re-checked by computation and against the key: brute force for #16 (the $20\times20$ table, $133$, $134$, $133$), #18 and #21 (every split of $1$ to $9$ into three groups of sum $15$); exact arithmetic for the rest. No strategy or tag changes.
