@@ -4213,8 +4213,16 @@
     const want = sectionHash(sec.id, bySub ? { sub: state.activeSub, cluster: cur } : { topic: cur });
     if (location.hash !== want) history.replaceState(history.state, "", want);
   }
+  // The editor's sticky sidebar shrinks (and scrolls inside) rather than being pushed up past the top bar at the end of the page.
+  function fitGeSide() {
+    const side = document.querySelector(".ge-side"), main = document.querySelector(".ge-main");
+    if (!side || !main || getComputedStyle(side).position !== "sticky") { if (side) side.style.maxHeight = ""; return; }
+    const room = Math.min(window.innerHeight - 92, main.getBoundingClientRect().bottom - Math.max(76, side.getBoundingClientRect().top));
+    side.style.maxHeight = Math.max(240, Math.floor(room)) + "px";
+  }
   let tocTick = 0;
-  window.addEventListener("scroll", () => { if (!tocTick) tocTick = requestAnimationFrame(() => { tocTick = 0; markToc(); markNavGroup(); }); }, { passive: true });
+  window.addEventListener("scroll", () => { if (!tocTick) tocTick = requestAnimationFrame(() => { tocTick = 0; markToc(); markNavGroup(); fitGeSide(); }); }, { passive: true });
+  window.addEventListener("resize", () => fitGeSide(), { passive: true });
 
   // Replace the browser's default (light) number-input spinner with themed ▲▼ arrows
   // that sit inside the field, so they match the dark UI instead of standing out.
@@ -7533,8 +7541,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
         ${custom ? `<button class="list-tool on" data-group-edit="${l.id}" title="Change the sections you made">Edit groups</button>
           <button class="list-tool" data-group-off="${l.id}" title="Show the cards without sections; Custom group brings your sections back">Ungroup</button>`
           : canCustom ? `<button class="list-tool" data-group-edit="${l.id}" title="Make your own sections and drag cards into them">Custom group</button>` : ""}
-        ${l.builtin ? "" : `<button class="list-tool" data-list-rename="${l.id}">Rename</button>
-          <button class="list-tool" data-edit-description>Change description</button>`}
+        ${l.builtin ? "" : `<button class="list-tool" data-list-rename="${l.id}">Rename</button>`}
+        <button class="list-tool" data-edit-description>Change description</button>
+        <button class="list-tool" data-list-export="${l.id}" title="Save this list as a file">Export</button>
         ${l.builtin && entries.length ? `<button class="list-tool danger" data-list-clear="${l.id}">Clear</button>` : ""}
         ${l.builtin ? "" : `<button class="list-tool danger" data-list-delete="${l.id}">Delete list</button>`}
       </div>`;
@@ -7554,7 +7563,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <h2${isBuiltin || l.builtin ? "" : ` data-list-title="${l.id}" title="Click to rename"`}>${escapeAttr(l.name)}</h2>
             ${headTools}
           </div>
-          ${!isBuiltin && !l.builtin
+          ${!isBuiltin
             ? `<button type="button" class="topic-blurb list-description" data-description-formatted data-description="${escapeAttr(l.id)}" title="Change description">${listDescriptionHtml(l.blurb || "Click to add description")}</button>`
             : l.blurb ? `<p class="topic-blurb">${escapeAttr(l.blurb)}</p>` : ""}
         </div>
@@ -7820,7 +7829,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <div class="ge-main">
           ${moveBar}
           <div class="ge-find">
-            <input type="search" class="ge-find-input" placeholder="Find a card in this list, or add one&hellip;" value="${escapeAttr(groupEdit.find || "")}" aria-label="Find a card in this list, or add one" autocomplete="off" spellcheck="false">
+            <input type="search" class="ge-find-input" placeholder="Find a card in this list, or add more cards&hellip;" value="${escapeAttr(groupEdit.find || "")}" aria-label="Find a card in this list, or add more cards" autocomplete="off" spellcheck="false">
             <div class="ge-find-status" role="status"></div>
             <div class="ge-add-results" hidden></div>
           </div>
@@ -7855,6 +7864,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (findHad && !focusSel) { const fi = box.querySelector(".ge-find-input"); fi.focus({ preventScroll: true }); fi.setSelectionRange(fi.value.length, fi.value.length); }
     renderMath(box.parentElement);   // the renderer looks inside its container, so pass the editor's parent
     window.scrollTo({ top: y });
+    fitGeSide();
     const f = focusSel && box.querySelector(focusSel);
     if (f) {
       f.focus();
@@ -8053,6 +8063,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (t.dataset.geRename != null) geCommitRename(t, t.dataset.cancel === "1");
     else if (t.dataset.geNote != null) geCommitNote(t, t.dataset.cancel === "1");
   });
+  // A sideways swipe over the Move to bar scrolls its sections and never reaches the browser,
+  // which would otherwise take it as Back on a Mac trackpad (owner, 2026-11-08).
+  document.addEventListener("wheel", e => {
+    const bar = e.target.closest && e.target.closest(".ge-movebar");
+    if (!bar || Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    const pills = bar.querySelector(".ge-move-pills");
+    if (pills) pills.scrollLeft += e.deltaX;
+  }, { passive: false });
   // ---- Pointer interactions: dragging cards, reordering sections, selecting with a box ----
   const geDrag = { on: false, suppressClick: false, lastPointer: "mouse" };
   document.addEventListener("pointerdown", e => { geDrag.lastPointer = e.pointerType; geDrag.buttons = e.buttons; }, true);
@@ -8082,9 +8101,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
   function geScroller() {
     const st = { y: 0, raf: 0 };
     const loop = () => {
-      const edge = 70, y = st.y;
-      const v = y < edge ? -(edge - y) / 4 : y > innerHeight - edge ? (y - innerHeight + edge) / 4 : 0;
-      if (v) window.scrollBy(0, v);
+      // Near an edge the page scrolls, faster the closer the pointer is (owner, 2026-11-08: up to
+      // about 2,000 px a second, so dragging a card down a long list does not crawl).
+      const edge = 90, y = st.y;
+      const pull = y < edge ? -(edge - y) / edge : y > innerHeight - edge ? (y - innerHeight + edge) / edge : 0;
+      const v = pull ? Math.sign(pull) * (6 + 30 * Math.min(1, Math.abs(pull))) : 0;
+      if (v) window.scrollBy({ top: v, behavior: "instant" });   // instant: the page's smooth scrolling would restart each frame and crawl
       st.raf = requestAnimationFrame(loop);
     };
     st.start = () => { st.raf = requestAnimationFrame(loop); };
@@ -8328,8 +8350,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const shift = e.shiftKey, mod = e.ctrlKey || e.metaKey;
     // Wait for the button to come up: a box opened while it is still down would take the
     // release as a drag and select only part of its text (owner, 2026-11-08).
+    let landed = false;
+    const mark = ev => { if (ev.isTrusted && t.contains(ev.target)) landed = true; };
+    document.addEventListener("click", mark, true);
     const replay = () => {
-      if (t.isConnected) return;   // nothing was redrawn, so the click lands by itself
+      document.removeEventListener("click", mark, true);
+      if (landed || t.isConnected) return;   // the click reached the control by itself
       const again = document.querySelector(sel);
       if (again) again.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, shiftKey: shift, ctrlKey: mod, detail: 1 }));
     };
@@ -8513,8 +8539,17 @@ The book remembers the last lesson you opened, in this browser, and the contents
       setBoxText(t, left + head + v.slice(t.selectionEnd > cut ? t.selectionEnd : cut).replace(/^ +/, ""), left.length + head.length);
     } else if (e.key === "Tab" && L.kind === "bullet") {
       done();
+      // As in Docs, a bullet goes at most one level deeper than the bullet above it, so the
+      // indents typed are the levels the saved list shows.
+      let above = -1;
+      for (let at2 = L.start - 1; at2 > 0; ) {
+        const P = lineAt(v, at2);
+        if (P.kind === "bullet") { above = P.level; break; }
+        if (P.kind !== "cont") break;
+        at2 = P.start - 1;
+      }
       const level = e.shiftKey ? L.level - 1 : L.level + 1;
-      if (level >= 0 && level <= 2) relevel(t, L, level);
+      if (level >= 0 && level <= 2 && level <= above + 1) relevel(t, L, level);
     } else if (e.key === "Backspace" && at === t.selectionEnd && at === L.textAt) {
       if (L.kind === "bullet") {
         done();
@@ -10403,6 +10438,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       return;
     }
     if (e.target.closest("[data-edit-description], button[data-description]")) { editListDescription(); return; }
+    const exp = e.target.closest("[data-list-export]");
+    if (exp) { const l = getList(exp.dataset.listExport); if (l) openListExport(l); return; }
     const rn = e.target.closest("[data-list-rename]") || e.target.closest("h2[data-list-title]:not([contenteditable='true'])");
     if (rn) { startListRename(rn.dataset.listRename || rn.dataset.listTitle); return; }
     const del = e.target.closest("[data-list-delete]");
@@ -10459,13 +10496,120 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (!nb) return;
     e.preventDefault();
     e.stopPropagation();
+    openNewListDialog();
+  }, true);
+  function makeBlankList() {
     const taken = new Set(lists.items.map(l => l.name));
     let name = "Untitled list", k = 2;
     while (taken.has(name)) name = "Untitled list " + k++;
     const id = createList(name);
     pendingRename = id;
     location.hash = "#/list/" + id;
-  }, true);
+  }
+
+  // ---------- Lists as files (owner, 2026-11-08) ----------
+  // Export saves one list as a small JSON file holding everything about it: name, description,
+  // cards in order, its sections and their descriptions, sections set aside by Ungroup, and its
+  // automatic grouping. Import, from the + beside Your lists, makes a new list from such a file,
+  // exactly as it was; an exported Starred comes in as an ordinary list named Starred, beside the
+  // one you have. (Sharing lists by link would need a server; see PLAN.)
+  const LIST_FILE_FORMAT = "compmath-list";
+  function listFileData(l) {
+    const out = { name: l.name, ids: l.ids.slice() };
+    if (l.blurb) out.blurb = l.blurb;
+    for (const key of ["customSections", "customOff"]) if (Array.isArray(l[key])) out[key] = JSON.parse(JSON.stringify(l[key]));
+    if (l.builtin) { if (state.autoGroup) out.groupedIds = l.ids.slice(); }
+    else if (Array.isArray(l.groupedIds)) out.groupedIds = l.groupedIds.slice();
+    return { format: LIST_FILE_FORMAT, version: 1, exported: new Date().toISOString(), list: out };
+  }
+  function downloadListFile(l) {
+    const blob = new Blob([JSON.stringify(listFileData(l), null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = (l.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "list") + ".list.json";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+  // Read a list file; returns the new list's id, or throws with a message for the reader.
+  function importListFile(text) {
+    let d;
+    try { d = JSON.parse(text); } catch (e) { throw new Error("That file is not a list file."); }
+    const src = d && d.format === LIST_FILE_FORMAT && d.list ? d.list : null;
+    if (!src || !Array.isArray(src.ids)) throw new Error("That file is not a list file. Export a list from its page to make one.");
+    const ids = [...new Set(src.ids.filter(x => typeof x === "string"))];
+    const sections = v => Array.isArray(v) ? v.filter(sec => sec && Array.isArray(sec.ids)).map(sec => ({
+      title: String(sec.title || "").slice(0, 80), note: String(sec.note || "").slice(0, 2000),
+      ids: sec.ids.filter(id => typeof id === "string" && ids.includes(id)) })) : null;
+    const item = { id: "l_" + Math.random().toString(36).slice(2, 8), name: String(src.name || "Imported list").slice(0, 60).trim() || "Imported list", ids };
+    if (typeof src.blurb === "string" && src.blurb.trim()) item.blurb = src.blurb.slice(0, 4000);
+    for (const key of ["customSections", "customOff"]) { const v = sections(src[key]); if (v && v.length) item[key] = v; }
+    if (Array.isArray(src.groupedIds) && !item.customSections) item.groupedIds = src.groupedIds.filter(id => ids.includes(id));
+    lists.items.push(item);
+    saveLists();
+    return item.id;
+  }
+  // A small app dialog with free content (the confirmation's look), resolved by its buttons.
+  function appDialog(html, wire) {
+    const d = document.createElement("dialog");
+    d.className = "app-confirm app-dialog";
+    d.innerHTML = html;
+    document.body.appendChild(d);
+    d.addEventListener("close", () => d.remove(), { once: true });
+    d.addEventListener("click", e => { if (e.target === d) d.close(); });
+    wire(d);
+    d.showModal();
+    return d;
+  }
+  function openListExport(l) {
+    appDialog(`<h3>Export &ldquo;${escapeAttr(l.name)}&rdquo;</h3>
+      <p>Save this list as a file. Importing it, from the + beside Your lists on any device, brings back the list exactly: its cards, description, sections and their descriptions, including sections set aside by Ungroup.</p>
+      <div class="app-confirm-actions"><button type="button" class="hp-btn hp-btn-soft" data-dlg="cancel">Cancel</button><button type="button" class="hp-btn" data-dlg="file">Download file</button></div>`, d => {
+      d.addEventListener("click", e => {
+        const b = e.target.closest("[data-dlg]"); if (!b) return;
+        if (b.dataset.dlg === "file") { downloadListFile(l); toast("List saved as a file"); }
+        d.close();
+      });
+      setTimeout(() => d.querySelector('[data-dlg="file"]').focus(), 0);
+    });
+  }
+  function openNewListDialog() {
+    appDialog(`<h3>New list</h3>
+      <div class="nl-choices">
+        <button type="button" class="nl-choice" data-dlg="blank"><strong>Start a new list</strong><span>An empty list to add cards to.</span></button>
+        <button type="button" class="nl-choice" data-dlg="import"><strong>Import a list</strong><span>From a list file someone exported.</span></button>
+      </div>
+      <div class="nl-import" hidden>
+        <label class="nl-drop" tabindex="0"><input type="file" accept="application/json,.json" hidden>
+          <strong>Drop a list file here</strong><span>or click to choose one</span></label>
+        <p class="nl-error" role="alert" hidden></p>
+      </div>
+      <div class="app-confirm-actions"><button type="button" class="hp-btn hp-btn-soft" data-dlg="cancel">Cancel</button></div>`, d => {
+      const imp = d.querySelector(".nl-import"), drop = d.querySelector(".nl-drop"), input = drop.querySelector("input"), err = d.querySelector(".nl-error");
+      const take = file => {
+        if (!file) return;
+        file.text().then(text => {
+          try {
+            const id = importListFile(text);
+            d.close();
+            location.hash = "#/list/" + id;
+            toast("List imported");
+          } catch (e2) { err.hidden = false; err.textContent = e2.message; }
+        });
+      };
+      d.addEventListener("click", e => {
+        const b = e.target.closest("[data-dlg]"); if (!b) return;
+        if (b.dataset.dlg === "blank") { d.close(); makeBlankList(); }
+        else if (b.dataset.dlg === "import") { d.querySelector(".nl-choices").hidden = true; imp.hidden = false; d.querySelector("h3").textContent = "Import a list"; drop.focus(); }
+        else d.close();
+      });
+      drop.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); input.click(); } });
+      input.addEventListener("change", () => take(input.files && input.files[0]));
+      drop.addEventListener("dragover", e => { e.preventDefault(); drop.classList.add("is-over"); });
+      drop.addEventListener("dragleave", () => drop.classList.remove("is-over"));
+      drop.addEventListener("drop", e => { e.preventDefault(); drop.classList.remove("is-over"); take(e.dataTransfer.files && e.dataTransfer.files[0]); });
+      setTimeout(() => d.querySelector('[data-dlg="blank"]').focus(), 0);
+    });
+  }
   // Renaming happens in place: the list's title becomes editable with its text selected; Enter or
   // a click elsewhere keeps the new name, Escape keeps the old one.
   function startListRename(id) {
