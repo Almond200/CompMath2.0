@@ -2,6 +2,8 @@
 
 **2026-11-08**
 
+- Bottom notes, one style (owner): the app's toast ("Opened strategies reset", "Link copied" and the rest) keeps its look with a lighter shadow (4 px drop, 14 px blur, 10% black; a little more in dark), and is the one style for a note at the foot of the screen: the Flashcards and Quiz lab pages' storage notice now matches it (it had its own position, padding, size and heavier shadow), and the group editor's floating Move to bar takes the same shadow. Recorded as a standing preference in CLAUDE.md.
+
 - Lists, less clutter (owner): a custom section's description is added and changed only in the group editor; the list page shows it as plain text when there is one and no longer offers a "Click to add a description" box under each section. The group editor no longer shows an "Undone" or "Redone" note at the foot of the screen.
 
 - Group editor, dragging a card (owner): the floating label sat beside the pointer and did not look like the card, so the gap it opened did not line up with what was being moved. The dragged card is now a copy of the card itself, at its own size, held by the point where it was grabbed, so the pointer stays on it and the gap opens under it; several cards show a count badge.
