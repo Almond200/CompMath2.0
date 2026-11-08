@@ -7478,7 +7478,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <div class="list-section" id="ls-${l.id}-${j}">
           <h3 class="list-section-title">${sec.title}</h3>
           ${sec.ci != null
-            ? `<button type="button" class="list-section-note list-description section-desc${sec.rawNote ? "" : " is-empty"}" data-section-desc="${sec.ci}" data-list-of="${escapeAttr(l.id)}" title="Change this section's description">${listDescriptionHtml(sec.rawNote || "Click to add a description")}</button>`
+            ? (sec.rawNote ? `<p class="list-section-note">${listDescriptionHtml(sec.rawNote)}</p>` : "")
             : sec.looseOf ? `<p class="list-section-note">Cards not in any of your sections yet, new ones included. <button type="button" class="ge-inline" data-group-edit="${escapeAttr(sec.looseOf)}">Edit groups</button> to place them.</p>`
             : sec.note ? `<p class="list-section-note">${sec.note}</p>` : ""}
           ${cards}
@@ -7582,15 +7582,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
   let groupEdit = null;   // { listId, undo: [snapshots], redo: [snapshots], selected: Set, renaming: index }
   // The reorder grip: six dots.
   const GE_GRIP = `<svg width="10" height="16" viewBox="0 0 10 16" aria-hidden="true">${[3, 8, 13].map(y => `<circle cx="2.5" cy="${y}" r="1.4"/><circle cx="7.5" cy="${y}" r="1.4"/>`).join("")}</svg>`;
-  // A brief note at the foot of the screen, so an undo by keyboard is seen.
-  function geToast(text) {
-    let t = document.getElementById("ge-toast");
-    if (!t) { t = document.createElement("div"); t.id = "ge-toast"; t.setAttribute("role", "status"); document.body.appendChild(t); }
-    t.textContent = text;
-    t.classList.add("on");
-    clearTimeout(geToast.timer);
-    geToast.timer = setTimeout(() => t.classList.remove("on"), 1200);
-  }
   function customSectionView(l, shown) {
     const inList = new Set(shown), used = new Set();
     const out = (l.customSections || []).map((sec, i) => {
@@ -7785,7 +7776,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
         l.customSections = JSON.parse(snap);
         saveLists();
         groupEdit.renaming = groupEdit.noting = null;
-        geToast(act === "undo" ? "Undone" : "Redone");
         geRefresh(); return;
       }
       case "select-all": geIds(l).forEach(id => sel.add(id)); geRefresh(); return;
@@ -8168,7 +8158,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // Moving from one text box straight to another control takes one click (owner, 2026-11-08):
   // leaving a box saves it and redraws the page, which used to swallow the click, so the
   // control pressed is found again in the new page and pressed for the reader.
-  const REPLAYABLE = "[data-ge-act], [data-ge-chip], [data-section-desc], button[data-description], [data-edit-description], h2[data-list-title], [data-list-rename], [data-group-edit], [data-group-off], [data-list-group], [data-list-delete], [data-list-clear]";
+  const REPLAYABLE = "[data-ge-act], [data-ge-chip], button[data-description], [data-edit-description], h2[data-list-title], [data-list-rename], [data-group-edit], [data-group-off], [data-list-group], [data-list-delete], [data-list-clear]";
   document.addEventListener("pointerdown", e => {
     const a = document.activeElement;
     if (!a || !a.matches || !a.matches("[data-ge-rename], [data-ge-note], .list-description-editor, h2[contenteditable='true']")) return;
@@ -8252,43 +8242,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
       } else input.replaceWith(button);
     }, { once: true });
 
-  }
-  // A custom section's description, edited in place like the list's own (owner, 2026-11-08):
-  // the same small format (bold, italics, math, bullets) in the section notes' smaller type.
-  function editSectionDescription(button) {
-    const list = getList(button.dataset.listOf), i = +button.dataset.sectionDesc;
-    const sec = list && Array.isArray(list.customSections) && list.customSections[i];
-    if (!sec) return;
-    const input = document.createElement("textarea");
-    input.className = "list-section-note list-description-editor section-desc-editor";
-    input.rows = 1;
-    input.setAttribute("aria-label", "Section description");
-    input.placeholder = "Describe this section. Shift+Enter adds a line.";
-    input.value = sec.note || "";
-    button.replaceWith(input);
-    const fit = () => { input.style.height = "auto"; input.style.height = input.scrollHeight + "px"; };
-    fit();
-    input.addEventListener("input", fit);
-    input.focus();
-    let cancelled = false;
-    input.addEventListener("keydown", e => {
-      if (e.isComposing || (e.key === "Enter" && e.shiftKey) || (e.key !== "Enter" && e.key !== "Escape")) return;
-      e.preventDefault();
-      cancelled = e.key === "Escape";
-      input.blur();
-    });
-    input.addEventListener("blur", () => {
-      const value = input.value.trim();
-      if (!cancelled && value !== (sec.note || "")) {
-        sec.note = value;
-        saveLists();
-        button.classList.toggle("is-empty", !value);
-        button.innerHTML = listDescriptionHtml(value || "Click to add a description");
-      }
-      input.replaceWith(button);
-      renderMath(button);
-      button.focus();
-    }, { once: true });
   }
   function renderListDetail(listId) { renderListSurface({ type: "list", listId }); }
 
@@ -10132,8 +10085,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
       return;
     }
     if (e.target.closest("[data-edit-description], button[data-description]")) { editListDescription(); return; }
-    const secDesc = e.target.closest("button[data-section-desc]");
-    if (secDesc) { editSectionDescription(secDesc); return; }
     const rn = e.target.closest("[data-list-rename]") || e.target.closest("h2[data-list-title]:not([contenteditable='true'])");
     if (rn) { startListRename(rn.dataset.listRename || rn.dataset.listTitle); return; }
     const del = e.target.closest("[data-list-delete]");
