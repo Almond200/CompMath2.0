@@ -2109,7 +2109,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".book-search-option, .practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies").forEach(el => {
+      container.querySelectorAll(".book-search-option, .practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .lp-sol, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies").forEach(el => {
         if (skip(el) || el.hasAttribute("data-description-formatted")) return;
         renderMathInElement(el, {
           delimiters: [
@@ -5356,8 +5356,12 @@
   function practiceExplanationHtml(p) {
     if (!p) return '';
     const { chain, altIds, chainCol } = chainParts(p);
-    const more = `<div class="practice-solution-links"><a class="aops-btn" href="#/problem/${p.slug}">Open in app</a><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open in AoPS ↗</a></div>`;
-    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, chainCol, chain, altIds, more)}</div>`;
+    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, chainCol, chain, altIds, solutionLinksHtml(p))}</div>`;
+  }
+  // Open in app and Open in AoPS under a solution's three columns (practice review, textbooks).
+  function solutionLinksHtml(p) {
+    const ext = p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.urlLabel === "archive" ? "Open in the archive" : "Open in AoPS"} ↗</a>` : "";
+    return `<div class="practice-solution-links"><a class="aops-btn" href="#/problem/${p.slug}">Open in app</a>${ext}</div>`;
   }
   function practiceAnswerChoices(set, slug, finished) {
     return `<div class="rand-btns" role="radiogroup" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${['A','B','C','D','E'].map(a => `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="radio" aria-checked="${set.answers[slug] === a}">${a}</button>`).join('')}</div>`;
@@ -5416,9 +5420,9 @@
         ${finished ? '' : `<div class="practice-session-actions"><span>${answered} of ${set.slugs.length} answered</span><div><a class="hp-btn hp-btn-soft" href="#/practice">Save and exit</a><button type="button" class="hp-btn" id="finish-practice">Finish and review</button></div></div>`}
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
-      <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</h3>
+      <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
         ${p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
-        ${finished ? `</section><section class="sh-section practice-review detail"><h4>Your answer</h4>
+        ${finished ? `</section><section class="sh-section practice-review detail"><h3>Your answer</h3>
           ${aime ? (set.answers[slug] ? `<p class="practice-submitted">${escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${outcome}${set.answers[slug] && window.MATH_ANSWER_KEYS?.answers?.[slug] != null && outcome === 'Incorrect' ? ' · Correct answer: ' + escapeAttr(window.MATH_ANSWER_KEYS.answers[slug]) : ''}</p>
           ${practiceExplanationHtml(p)}`
@@ -6430,18 +6434,22 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <textarea class="lp-notes" rows="2" placeholder="Type your solution, notes and/or work here." aria-label="Your solution and notes for ${escapeAttr(refShort(p.ref))}">${escapeAttr(saved.notes || "")}</textarea>
             <button type="button" class="hp-btn lp-show"${(saved.notes || "").trim() ? "" : " disabled"}>Show Solution</button>
           </div>
-          <div class="prob-chain lp-sol" hidden></div>
+          <div class="lp-sol" hidden></div>
         </li>`;
     }).join("")}</ol>`;
   }
-  function learnSolutionHtml(p) {
+  // A textbook problem's solution opens inside the problem's own box, like a practice set's
+  // review (owner, 2026-11-08): a hairline, "Solution for Problem R5.5.4:" in italics, the
+  // strategy and its three columns, Open in app and Open in AoPS, then Study a concept more.
+  function learnSolutionHtml(p, label) {
     const { chain, altIds, chainCol } = chainParts(p);
-    return `<h4>How this problem works</h4>${chainInnerHtml(p, chainCol, chain, altIds)}`;
+    return `<p class="lp-sol-title">Solution for ${escapeAttr(label)}:</p>${chainInnerHtml(p, chainCol, chain, altIds, solutionLinksHtml(p))}`;
   }
   function showLearnSolution(li) {
     const p = PROBLEM_BY_SLUG[li.dataset.slug], sol = li.querySelector(".lp-sol");
     if (!p || !sol) return;
-    sol.innerHTML = learnSolutionHtml(p);
+    const n = (li.querySelector(".lp-prob-n")?.textContent || "").trim().replace(/\.$/, "");
+    sol.innerHTML = learnSolutionHtml(p, /^\d+$/.test(n) ? "Problem " + n : n || refShort(p.ref));
     sol.hidden = false;
     const btn = li.querySelector(".lp-show");
     if (btn) { btn.textContent = "Hide Solution"; btn.classList.add("is-open"); }
@@ -7858,7 +7866,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const ids = [...new Set([...chain.pattern, ...chain.method, ...chain.formula])];
     const lessons = ids.map(fid => lessonForCard(fid, aime)).filter(Boolean);
     const links = [...new Set(lessons.map(studyLessonLink))];
-    return links.length ? `<div class="chain-study"><div class="chain-study-h">Study a concept more</div><div class="chain-study-links">${links.join("")}</div></div>` : "";
+    return links.length ? `<div class="chain-study"><h4 class="chain-study-h">Study a concept more</h4><div class="chain-study-links">${links.join("")}</div></div>` : "";
   }
   // How this problem works: its tags split by kind into the chain Pattern -> Method ->
   // Formulas. A link nobody has classified yet is shown as missing, never invented.

@@ -1,3 +1,9 @@
+/* Text size (Settings → Appearance): headings and reading text in Practice, the textbooks and the
+   space front pages scale by --tx, so a view's hierarchy holds at every size (owner, 2026-11-08).
+   Card and problem pages keep their own per-size rules; chrome (chips, buttons, labels) stays fixed. */
+:root { --tx: 1; }
+html[data-text="large"] { --tx: 1.14; }
+html[data-text="larger"] { --tx: 1.3; }
 :root {
   --bg: #0f1420;
   --bg-panel: #161d2e;
@@ -2365,7 +2371,7 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
 .chain-arrow { color: var(--text-faint); margin: 3px 0 3px 30px; font-size: 13px; }
 .chain-empty { color: var(--text-faint); font-style: italic; font-size: 13px; }
 /* "How this problem works": the strategy, then Pattern | Method | Formulas side by side. */
-.chain-strategy { margin: 0 0 12px; font-size: 15px; line-height: 1.6; color: var(--text); }
+.chain-strategy { margin: 0 0 12px; font-size: calc(15px * var(--tx)); line-height: 1.6; color: var(--text); }
 .chain-alt-note { margin: 8px 0 0; font-size: 12.5px; color: var(--text-faint); }
 .chain-cards .chain-alt-card { border-style: dashed; }
 .prob-own-figure { margin: 14px 0; }
@@ -2377,7 +2383,9 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
 @media (max-width: 700px) { .chain-grid { grid-template-columns: 1fr; } }
 /* Study a concept more: under the three columns, a hairline, then links to the lessons. */
 .chain-study { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
-.chain-study-h { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+/* Its heading matches the heading above it in the same box (owner, 2026-11-08): the problem page's
+   How this problem works (the .prob-chain h4 rules) or the practice review's and textbook's (below). */
+.chain-study-h { font-size: calc(14px * var(--tx)); font-weight: 600; color: var(--text); margin: 0 0 8px; }
 .chain-study-links { display: flex; flex-wrap: wrap; gap: 6px 14px; }
 .chain-study-link { font-size: 14px; color: var(--accent); text-decoration: none; }
 .chain-study-link:hover { text-decoration: underline; }
@@ -2723,9 +2731,9 @@ body.is-landing .content { padding: 0 0 70px; }
 /* ---------- Space pages: how the space fits, then a way into everything in it ---------- */
 .space-home { max-width: 1180px; }
 .space-home-head { margin: 4px 0 14px; }
-.space-home-head h2 { margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em; color: var(--space); }
-.sh-ask { margin: 2px 0 0; font-size: 15px; font-weight: 650; color: var(--text); }
-.sh-intro { margin: 6px 0 0; max-width: 780px; font-size: 14.5px; line-height: 1.55; color: var(--text-dim); }
+.space-home-head h2 { margin: 0; font-size: calc(30px * var(--tx)); font-weight: 800; letter-spacing: -0.02em; color: var(--space); }
+.sh-ask { margin: 2px 0 0; font-size: calc(15px * var(--tx)); font-weight: 650; color: var(--text); }
+.sh-intro { margin: 6px 0 0; max-width: 780px; font-size: calc(14.5px * var(--tx)); line-height: 1.55; color: var(--text-dim); }
 .sh-intro a { color: var(--text); font-weight: 650; text-decoration: underline; text-decoration-color: var(--border-light); text-underline-offset: 2px; }
 .sh-intro a:hover { color: var(--space); }
 .sh-recent { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0 0 14px; }
@@ -2770,8 +2778,8 @@ body.is-landing .content { padding: 0 0 70px; }
 .pr-moved a { color: var(--c-learn); font-weight: 600; }
 
 /* ---------- Learn: the textbook shelf (PLAN step L4) ---------- */
-.learn-note { margin: 0 0 14px; color: var(--text-dim); font-size: 14px; line-height: 1.6; }
-.learn-sub { margin: 22px 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); }
+.learn-note { margin: 0 0 14px; color: var(--text-dim); font-size: calc(14px * var(--tx)); line-height: 1.6; }
+.learn-sub { margin: 22px 0 10px; font-size: calc(13px * var(--tx)); text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); }
 .lb-shelf { display: flex; flex-direction: column; gap: 10px; }
 .lb-book { border: 1px solid var(--border); border-radius: 12px; background: var(--bg-panel); }
 .lb-book > summary {
@@ -2812,7 +2820,7 @@ body.is-landing .content { padding: 0 0 70px; }
 
 /* ---------- Learn: book, chapter, lesson and review pages (PLAN step L5) ---------- */
 .learn-page { max-width: 1180px; }
-.learn-h { margin: 4px 0 12px; font-size: 24px; line-height: 1.3; }
+.learn-h { margin: 4px 0 12px; font-size: calc(24px * var(--tx)); line-height: 1.3; }
 .learn-h .lb-code { font-size: inherit; min-width: 0; margin-right: 4px; }
 .learn-h .lb-level { vertical-align: middle; font-size: 12px; }
 .lb-book-page, .lb-chapter-page { padding: 0; margin: 10px 0; }
@@ -2829,7 +2837,7 @@ body.is-landing .content { padding: 0 0 70px; }
 .lp-cards-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); min-width: 13em; margin-right: 10px; }
 @media (max-width: 600px) { .lp-cards-label { min-width: 0; flex-basis: 100%; } }
 .lp-body p { line-height: 1.7; }
-.lp-h3 { margin: 30px 0 10px; font-size: 18px; }
+.lp-h3 { margin: 30px 0 10px; font-size: calc(18px * var(--tx)); }
 
 /* A check, answered with the math keyboard */
 .lc-check { margin: 18px 0; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border); border-left: 3px solid var(--c-learn); background: var(--bg-card); }
@@ -2874,7 +2882,9 @@ body.is-landing .content { padding: 0 0 70px; }
 .lp-notes { display: block; width: 100%; box-sizing: border-box; margin: 10px 0 8px; font: inherit; font-size: 14.5px; line-height: 1.5;
   padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); resize: vertical; }
 .lp-notes:focus { outline: none; border-color: var(--c-learn); }
-.lp-sol { margin-bottom: 0; }
+/* The solution opens inside the problem's box: a hairline, an italic label, then the strategy. */
+.lp-sol { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
+.lp-sol-title { margin: 0 0 8px; font-style: italic; font-size: calc(15px * var(--tx)); color: var(--text-dim); }
 
 /* ---------- Learn: book covers and the book view (owner, 2026-10-31) ---------- */
 .bk-shelf { display: grid; gap: 18px; }
@@ -3005,10 +3015,10 @@ h2[data-list-title][contenteditable="true"], .list-description-editor { outline:
   .lp-drawer::before { content: ""; position: absolute; top: 9px; left: 50%; width: 40px; height: 4px; margin-left: -20px; border-radius: 2px; background: var(--border-light); }
   .lp-drawer.is-dragging { transition: none; }
   .lp-drawer.is-settling { transition: transform 0.2s ease; }
-  .learn-h { font-size: 21px; }
+  .learn-h { font-size: calc(21px * var(--tx)); }
 }
 .sh-section { margin-top: 16px; padding: 16px 18px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); }
-.sh-section h3, .rand-picker h3 { margin: 0; font-size: 17px; font-weight: 780; }
+.sh-section h3, .rand-picker h3 { margin: 0; font-size: calc(17px * var(--tx)); font-weight: 780; }
 .sh-note { margin: 3px 0 12px; font-size: 13px; color: var(--text-dim); }
 .grid-scroll { overflow-x: auto; }
 .cy-grid { border-collapse: collapse; width: 100%; font-size: 13.5px; }
@@ -3207,7 +3217,7 @@ a.card-result { color: var(--text); text-decoration: none; }
 .section-header + .grp { margin-top: 18px; }
 .grp-title { display: flex; align-items: baseline; gap: 10px; margin: 0; font-size: 20px; font-weight: 780; color: var(--text); }
 .grp-n { font-size: 12px; font-weight: 650; color: var(--space); background: var(--space-soft); padding: 1px 9px; border-radius: 999px; }
-.grp-blurb { margin: 4px 0 12px; max-width: 760px; font-size: 14px; line-height: 1.5; color: var(--text-dim); }
+.grp-blurb { margin: 4px 0 12px; max-width: 760px; font-size: calc(14px * var(--tx)); line-height: 1.5; color: var(--text-dim); }
 .ct-years-page { margin: 4px 0 8px; }
 /* The phone's year bar: earlier, a year menu, later; and a toggle between the year's papers. */
 .ct-yearbar, .ct-papers { display: none; }
@@ -4048,7 +4058,7 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 /* Problems keep their first look (owner, 2026-10-31): a rounded card, the number and reference,
    the statement, the box, and Show Solution under it. */
 .lp-prob { margin: 0 0 18px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
-.lp-prob-head { font-weight: 700; margin-bottom: 8px; }
+.lp-prob-head { font-weight: 700; margin-bottom: 8px; font-size: calc(16px * var(--tx)); }
 .lp-prob-n { color: var(--bk-ink, var(--c-learn)); margin-right: 4px; }
 .lp-prob-sep { color: var(--text-faint); margin-right: 4px; }
 .lp-prob-head a { color: var(--text); text-decoration: none; }
@@ -4108,13 +4118,13 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
    (owner, 2026-10-31; the covers are the one exception). */
 .learn-page.bk-contents a.bk-start, :root[data-theme] .learn-page.bk-contents a.bk-start,
 :root[data-theme] .lesson-page.bk-view .lp-main .lp-show { background: color-mix(in srgb, var(--bk-a) 72%, var(--bk-b)); color: #fff; }
-.bk-toc-h { margin: 30px 0 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+.bk-toc-h { margin: 30px 0 4px; font-size: calc(13px * var(--tx)); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
 .bk-toc { list-style: none; margin: 0; padding: 0; }
 .bk-toc-ch { padding: 14px 0 6px; border-top: 1px solid var(--border); }
 .bk-toc-ch:first-child { border-top: none; }
 .bk-toc-chh { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; text-decoration: none; color: var(--text); }
 .bk-toc-chh .lb-code { font-size: 17px; min-width: 2.2em; }
-.bk-toc-t { font-size: 18px; font-weight: 750; }
+.bk-toc-t { font-size: calc(18px * var(--tx)); font-weight: 750; }
 .bk-toc-chh:hover .bk-toc-t { color: var(--bk-ink); text-decoration: underline; text-underline-offset: 3px; }
 /* The first entry of the contents: a heading over Contents and How to Use This Book. */
 .bk-toc-intro .bk-toc-chh:hover .bk-toc-t { color: inherit; text-decoration: none; }
@@ -4133,12 +4143,10 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 
 /* A lesson is read, not skimmed: larger text in the main colour, and clear subheadings
    (owner, 2026-10-31: the write-up's 14px read as tiny). */
-.lp-body p, .lp-body .detail-list li { font-size: 15.5px; line-height: 1.75; color: var(--text); }
-.lp-body .body-sub { margin: 22px 0 8px; font-size: 19px; font-weight: 750; letter-spacing: -0.01em; color: var(--text); text-transform: none; }
+.lp-body p, .lp-body .detail-list li { font-size: calc(15.5px * var(--tx)); line-height: 1.75; color: var(--text); }
+.lp-body .body-sub { margin: 22px 0 8px; font-size: calc(19px * var(--tx)); font-weight: 750; letter-spacing: -0.01em; color: var(--text); text-transform: none; }
 .lp-body > .body-sub:first-child, .lp-body > :first-child .body-sub:first-child { margin-top: 4px; }
-html[data-text="large"] .lp-body p { font-size: 17px; }
-html[data-text="larger"] .lp-body p { font-size: 19px; }
-@media (max-width: 600px) { .lp-body p, .lp-body .detail-list li { font-size: 15.5px; } }
+@media (max-width: 600px) { .lp-body p, .lp-body .detail-list li { font-size: calc(15.5px * var(--tx)); } }
 .lesson-page .lc-q { font-size: 15.5px; }
 
 /* A lesson's own problems, each in its own card like the contest problems, with "Jump to
@@ -4152,9 +4160,9 @@ html[data-text="larger"] .lp-body p { font-size: 19px; }
 /* A solution: the problem's card again, then "Solution for Problem ...:" and the worked solution. */
 .lx-sol { margin: 0 0 26px; }
 .lx-sol .lx-again { margin-bottom: 10px; }
-.lx-sol-h { margin: 0 0 4px; font-size: 15px; font-style: italic; color: var(--text-dim); }
+.lx-sol-h { margin: 0 0 4px; font-size: calc(15px * var(--tx)); font-style: italic; color: var(--text-dim); }
 .lx-sol > .lx-s { padding: 0 2px; }
-.lx-q, .lx-s { font-size: 15.5px; line-height: 1.75; color: var(--text); }
+.lx-q, .lx-s { font-size: calc(15.5px * var(--tx)); line-height: 1.75; color: var(--text); }
 .lx-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 4px; }
 .lx-n { font-size: 13px; font-weight: 800; letter-spacing: 0.04em; color: var(--bk-ink, var(--c-learn)); }
 .lx-jump { flex: 0 0 auto; padding: 2px 8px; border: none; border-radius: 6px; background: none; font: inherit; font-size: 12.5px; font-weight: 650; color: var(--text-dim); cursor: pointer; }
@@ -4164,7 +4172,7 @@ html[data-text="larger"] .lp-body p { font-size: 19px; }
 .lp-cards-row .card-link { font-size: 14.5px; }
 .lp-cards-sep { margin: 0 2px; color: var(--text-faint); }
 .lp-related { margin: 0; padding-left: 20px; }
-.lp-related li { margin: 0 0 8px; font-size: 15.5px; line-height: 1.7; color: var(--text); }
+.lp-related li { margin: 0 0 8px; font-size: calc(15.5px * var(--tx)); line-height: 1.7; color: var(--text); }
 
 /* ---------- The book view on a phone (owner, 2026-10-31) ----------
    No rail and no title bars: a line naming the book and the place in it, then a row with the
@@ -4209,11 +4217,11 @@ html[data-text="larger"] .lp-body p { font-size: 19px; }
 /* A book's parts (Foundations, Core topics, Advanced topics, Toward the AIME): a plain heading in
    the contents, no box (owner, 2026-10-31: no boxes inside boxes). */
 .bk-toc-part { list-style: none; margin: 22px 0 2px; }
-.bk-toc-part h4 { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bk-ink, var(--text-dim)); }
+.bk-toc-part h4 { margin: 0; font-size: calc(12px * var(--tx)); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bk-ink, var(--text-dim)); }
 
 /* Practice sessions use two panels, with unboxed statements and review content. */
 .practice-session-top, .practice-session-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-.practice-session-top h2 { margin: 0; font: inherit; font-size: 18px; font-weight: 700; }
+.practice-session-top h2 { margin: 0; font: inherit; font-size: calc(18px * var(--tx)); font-weight: 700; }
 .practice-session-top p { color: var(--text-dim); margin: 4px 0 10px; font-size: 14px; }
 .practice-session .cn-nums { justify-content: flex-start; gap: 6px; margin: 0 0 14px; padding: 12px 0 8px; flex-wrap: wrap; }
 .practice-session .cn-num { position: relative; display: grid; place-items: center; box-sizing: border-box; width: 36px; height: 36px; min-width: 36px; padding: 0; border-radius: 8px; font: inherit; line-height: 1; cursor: pointer; }
@@ -4250,34 +4258,41 @@ html[data-text="larger"] .lp-body p { font-size: 19px; }
 .set-find-opt.practice-topic-option { display: block; }
 #topic-name { max-width: none; width: 100%; }
 @media (max-width: 500px) {
-  .practice-session-top h2 { font-size: 18px; }
+  .practice-session-top h2 { font-size: calc(18px * var(--tx)); }
   .practice-session-actions > div { width: 100%; }
   .practice-session .hp-btn { font-size: 13px; padding: 9px 12px; }
   #past-practice-sets .pl-item { flex-wrap: wrap; }
 }
 
 /* Match Practice typography to the reference panels and Settings search. */
-body[data-space="practice"] .sh-section > h3 { font-family: inherit; font-size: 16px; font-weight: 700; }
+body[data-space="practice"] .sh-section > h3 { font-family: inherit; font-size: calc(16px * var(--tx)); font-weight: 700; }
 .rand-picker > h3 + p, #pr-topic > h3 + p, #past-practice-sets > h3 + p { font-size: 14px; color: var(--text-dim); }
 
 .practice-session > .back-link { margin-bottom: 4px; }
 .practice-session > .back-link + .sh-section { margin-top: 6px; }
 .practice-session .rand-btns button { user-select: none; touch-action: manipulation; }
-.practice-review > h4, .practice-explanation > h4 { margin: 0 0 10px; font-size: 15px; font-weight: 700; }
-.practice-result { font-size: 14px; margin: 10px 0 20px; }
+/* Your answer heads its own box, so it is a box title like "Problem 3 · ..." (owner, 2026-11-08);
+   the headings inside the box (How this problem works, Study a concept more) share one size. */
+.practice-review > h3 { margin: 0 0 10px; }
+/* In review, the problem's name in the heading opens its page (owner, 2026-11-08); not while
+   working, where it would lead to the solution. */
+.practice-prob-link { color: inherit; text-decoration: none; }
+.practice-prob-link:hover { color: var(--accent); text-decoration: underline; }
+.practice-explanation h4, .lp-sol h4 { margin: 0 0 10px; font-size: calc(15px * var(--tx)); font-weight: 700; }
+.practice-result { font-size: calc(14px * var(--tx)); margin: 10px 0 20px; }
 .practice-solution-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
 .practice-explanation .chain-strategy { margin-top: 0; }
 .practice-review .rand-btns [aria-disabled="true"] { cursor: default; }
 .practice-review .rand-btns [aria-disabled="true"]:hover { border-color: var(--border); color: var(--text); }
 .practice-review .rand-btns [aria-disabled="true"][aria-checked="true"]:hover { border-color: var(--space); color: #fff; }
-#past-practice-sets > h4 { font-size: 14px; margin: 16px 0 10px; }
+#past-practice-sets > h4 { font-size: calc(14px * var(--tx)); margin: 16px 0 10px; }
 body[data-space="practice"] .sh-recent { display: block; }
 body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 10px; }
 #topic-name { padding: 6px 10px; }
 
 /* Completed practice overview. */
-.practice-results h2 { margin: 0 0 6px; font-size: 20px; }
-.practice-results-subtitle, .practice-results-meta { color: var(--text-dim); font-size: 14px; }
+.practice-results h2 { margin: 0 0 6px; font-size: calc(20px * var(--tx)); }
+.practice-results-subtitle, .practice-results-meta { color: var(--text-dim); font-size: calc(14px * var(--tx)); }
 .practice-results-subtitle { margin: 0; }
 .practice-results-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
 /* No boxes inside boxes (owner, 2026-10-31): the scores are soft tints and the results are rows between hairlines. */
