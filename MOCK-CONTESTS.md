@@ -4,9 +4,11 @@ Owner-requested feature, 2026-11-08. This is a separate panel immediately below 
 
 ## Past papers and generated mocks
 
-Past contest offers AMC 8 (including AJHSME), AMC 10, AMC 12 and AIME. The catalog contains 217 complete papers with verified answer keys. A selected paper keeps its original problem order, including any officially voided question. The header names its year and paper; question headings say only Problem N.
+The year/paper field starts empty, including after a contest-family change. Suggestions stay closed on focus or arrow keys until the reader types a non-whitespace character, and clearing the field closes them. No default paper or “Choose a paper from the suggestions” prompt is shown.
 
-Generate a mock offers the same four target formats. It may draw from any source contest, retaining the source problem's answer format. AMC questions use A–E choices, AIME questions use 000–999 integer entry, and the ten HMMT Geometry questions use an exact-value expression field. Original sources are shown in review, after submission.
+Past contest offers AMC 8 (including AJHSME), AMC 10, AMC 12 and AIME. The catalog contains 217 complete papers with verified answer keys. A selected paper keeps its original problem order, including any officially voided question. The header names its year and paper; question headings say only Problem N while taking the mock. During review, the source appears beside Problem N using the usual linked heading.
+
+Generate a mock offers the same four target formats. It may draw from any source contest, retaining the source problem's answer format. AMC questions use A–E choices, AIME questions use 000–999 integer entry, and the ten HMMT Geometry questions use an exact-value expression field. Original sources are shown in review, after submission. Generated titles use “Mock set · Generated AIME” (or the selected family), including older saved sets.
 
 `js/mock-contests.js` builds a difficulty curve for each target format:
 
@@ -30,7 +32,7 @@ The AIME duration models the historical papers in this app, through 2026. Target
 
 The top-right countdown counts active time only. Save and exit, Back to Practice, another route, pagehide and hiding the tab freeze the remaining time. Returning resumes it. Reloaded or imported records discard the old deadline and resume from the saved remainder. When active time reaches zero, the set automatically finishes and grades; later answer changes are rejected. Finish and review can submit early.
 
-`js/practice-sessions.js` stores mock metadata, remaining time, answers and review flags in the existing `mq-practice-sets` records. Topic sets retain their existing behavior. Progress export/import carries both kinds, merging by ID and newest update. Resume a set contains unfinished sets; Completed sets contains finished practice and mock sets. Review shows submitted answers, source references, correct answers for missed/unanswered mock questions, elapsed time and score.
+`js/practice-sessions.js` stores mock metadata, remaining time, answers and review flags in the existing `mq-practice-sets` records. Topic sets retain their existing behavior. Progress export/import carries both kinds, merging by ID and newest update. Resume a set contains unfinished sets; Completed sets contains finished practice and mock sets. Both history headings have 12px of space above their first row of cards. Review shows submitted answers, source references, correct answers for missed/unanswered mock questions, elapsed time and score on the results overview. The individual problem-review screen omits the extra score/time summary.
 
 ## HMMT source material
 

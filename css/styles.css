@@ -4333,6 +4333,7 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
   .practice-result-row { align-items: flex-start; flex-direction: column; gap: 8px; }
 }
 
+.practice-history-list { margin-top: 12px; }
 .practice-history-list > [hidden], .practice-history-more[hidden] { display: none; }
 
 .practice-history-more { display: block; width: 100%; }
@@ -4600,5 +4601,4 @@ dialog.app-confirm { inset-block: 0 12vh; }
 .mock-clock > span { display: block; font-size: 12px; color: var(--text-dim); }
 .mock-clock-value { font-size: 24px; }
 .mock-clock.is-low { color: var(--level-oly); }
-.mock-review-summary, .mock-source { font-size: 13px; color: var(--text-dim); }
 @media (max-width: 500px) { #resume-practice-sets .pl-item { flex-wrap: wrap; } .mock-clock-value { font-size: 21px; } }
