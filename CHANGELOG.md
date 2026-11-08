@@ -2,6 +2,8 @@
 
 **2026-11-08**
 
+- Group editor, editing in place (owner): section names (above the cards and in the sidebar) and section descriptions edit like the list's title: a grey band on hover instead of the green text, and in place a grey box with the green underline at the text's own size, which grows as you type.
+
 - Bottom notes, one style (owner): the app's toast ("Opened strategies reset", "Link copied" and the rest) keeps its look with a lighter shadow (4 px drop, 14 px blur, 10% black; a little more in dark), and is the one style for a note at the foot of the screen: the Flashcards and Quiz lab pages' storage notice now matches it (it had its own position, padding, size and heavier shadow), and the group editor's floating Move to bar takes the same shadow. Recorded as a standing preference in CLAUDE.md.
 
 - Lists, less clutter (owner): a custom section's description is added and changed only in the group editor; the list page shows it as plain text when there is one and no longer offers a "Click to add a description" box under each section. The group editor no longer shows an "Undone" or "Redone" note at the foot of the screen.

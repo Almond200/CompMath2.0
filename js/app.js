@@ -7712,11 +7712,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
           </section>
           ${secs.map((sec, i) => `<section class="ge-sec" id="ge-sec-${i}">
             <h3 class="ge-sec-h">${renameHere(i, "main")
-              ? `<input class="ge-rename ge-rename-main" data-ge-rename="${i}" value="${escapeAttr(sec.title || "")}" aria-label="Section name" placeholder="Section name" maxlength="80">`
+              ? `<input class="ge-rename ge-rename-main" data-ge-rename="${i}" value="${escapeAttr(sec.title || "")}" aria-label="Section name" placeholder="Section name" maxlength="80" size="${Math.max(8, (sec.title || "").length + 1)}">`
               : `<button type="button" class="ge-sec-name" data-ge-act="rename" data-where="main" data-i="${i}" title="Click to rename">${escapeAttr(sec.title || "Untitled section")}</button>`} <span class="ge-sec-n">${ids(sec).length}</span></h3>
             ${(sec.note || "").trim() || groupEdit.noting === i
               ? (groupEdit.noting === i
-                ? `<textarea class="ge-note-input" data-ge-note="${i}" rows="2" maxlength="300" placeholder="Describe this section. Shift+Enter adds a line.">${escapeAttr(sec.note || "")}</textarea>`
+                ? `<textarea class="ge-note-input" data-ge-note="${i}" rows="1" maxlength="300" placeholder="Describe this section. Shift+Enter adds a line.">${escapeAttr(sec.note || "")}</textarea>`
                 : `<button type="button" class="ge-note" data-ge-act="note" data-i="${i}" title="Change the description">${listDescriptionHtml(sec.note)}</button>`)
               : `<button type="button" class="ge-link ge-add-note" data-ge-act="note" data-i="${i}">+ Add a description</button>`}
             ${geZoneHtml(ids(sec), String(i), sel)}
@@ -7894,6 +7894,16 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (!r) return;
     if (e.key === "Escape") { e.preventDefault(); r.dataset.cancel = "1"; r.blur(); }
     else if (e.key === "Enter" && !(r.dataset.geNote != null && e.shiftKey)) { e.preventDefault(); r.blur(); }
+  });
+  document.addEventListener("focusin", e => {
+    const t = e.target;
+    if (t.matches && t.matches(".ge-note-input")) { t.style.height = "auto"; t.style.height = t.scrollHeight + "px"; }
+  });
+  // The in-place boxes grow with what is typed, like the list title.
+  document.addEventListener("input", e => {
+    const t = e.target;
+    if (t.matches && t.matches(".ge-rename-main")) t.size = Math.max(8, t.value.length + 1);
+    if (t.matches && t.matches(".ge-note-input")) { t.style.height = "auto"; t.style.height = t.scrollHeight + "px"; }
   });
   document.addEventListener("focusout", e => {
     const t = e.target;
