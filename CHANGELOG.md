@@ -2,6 +2,8 @@
 
 **2026-11-08**
 
+- Group editor (owner): the sidebar's paragraph of instructions and its Keyboard list are removed, for a cleaner editor; the shortcuts all still work, and Undo and Redo still show theirs.
+
 - Group editor, math (owner): card names with math ($\sqrt{bc}$ Inversion) showed their raw LaTeX in the editor's chips; the editor and the list page's section titles are now typeset, after every change too, as are a section's name and the dragged card's label. A section may be named with math ("Means of $a$ and $b$"), typeset on the list page and in its sidebar.
 
 - Ungroup (owner): ungrouping an automatically grouped list asks nothing again, since Auto group brings the groups straight back; only ungrouping custom sections asks first.

@@ -7706,16 +7706,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <button type="button" class="ge-tool" data-ge-act="sort" ${secs.length ? "" : "disabled"}>Sort each section A&ndash;Z</button>
           <button type="button" class="ge-tool" data-ge-act="drop-empty" ${secs.some(sec => !ids(sec).length) ? "" : "disabled"}>Remove empty sections</button>
           <button type="button" class="ge-tool ge-danger" data-ge-act="clear" ${secs.length ? "" : "disabled"}>Remove every section</button>
-          <p class="ge-hint">Drag a section by its dots to reorder it. Drag a card onto a section, or onto its name here. Click a section's name, here or above its cards, to rename it. On a phone, tap cards to select them, then pick a section under Move to. Every change is kept as you go; Save closes the editor.</p>
-          <div class="ge-side-h ge-tools-h">Keyboard</div>
-          <dl class="ge-keys">
-            <dt><kbd>${GE_MOD}Z</kbd></dt><dd>Undo</dd>
-            <dt><kbd>${GE_MOD}&#8679;Z</kbd></dt><dd>Redo${GE_MAC ? "" : " (also <kbd>Ctrl Y</kbd>)"}</dd>
-            <dt><kbd>${GE_MOD}A</kbd></dt><dd>Select every card</dd>
-            <dt><kbd>Delete</kbd></dt><dd>Take the selected cards out of their sections</dd>
-            <dt><kbd>Esc</kbd></dt><dd>Clear the selection, then save and close</dd>
-            <dt><kbd>&uarr;</kbd> <kbd>&darr;</kbd></dt><dd>On a section's dots: move it up or down</dd>
-          </dl>
         </aside>
         <div class="ge-main">
           ${moveBar}

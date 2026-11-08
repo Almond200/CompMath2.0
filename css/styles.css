@@ -4418,7 +4418,6 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 .ge-tool:hover:not([disabled]) { background: var(--bg-panel); }
 .ge-tool[disabled] { color: var(--text-faint); cursor: default; }
 .ge-danger:hover:not([disabled]) { color: var(--level-oly); }
-.ge-hint { margin: 12px 0 0; font-size: 12px; line-height: 1.5; color: var(--text-faint); }
 .ge-movebar { position: fixed; z-index: 50; left: 50%; bottom: 16px; transform: translateX(-50%); width: min(760px, calc(100vw - 32px));
   box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; padding: 10px 12px;
   border: 1px solid var(--space, var(--accent)); border-radius: 14px; background: var(--bg-card); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
@@ -4470,17 +4469,12 @@ body.ge-dragging, body.ge-dragging * { cursor: grabbing !important; user-select:
 .ge-note { font-size: 13px; line-height: 1.55; }
 /* Undo and Redo side by side, and the editor's keyboard shortcuts (owner, 2026-11-08). */
 .ge-undo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
-.ge-tool kbd, .ge-keys kbd { font: inherit; font-size: 11px; color: var(--text-faint); background: var(--bg-panel);
+.ge-tool kbd { font: inherit; font-size: 11px; color: var(--text-faint); background: var(--bg-panel);
   border: 1px solid var(--border); border-radius: 5px; padding: 0 5px; margin-left: 4px; white-space: nowrap; }
-.ge-keys { display: grid; grid-template-columns: auto 1fr; gap: 5px 10px; margin: 0; font-size: 12px; color: var(--text-dim); align-items: baseline; }
-.ge-keys dt { margin: 0; text-align: right; }
-.ge-keys dt kbd { margin: 0; }
-.ge-keys dd { margin: 0; }
 #ge-toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 12px); z-index: 60; opacity: 0; pointer-events: none;
   font-size: 13px; font-weight: 600; color: var(--bg-card); background: var(--text); border-radius: 999px; padding: 6px 14px;
   transition: opacity .15s, transform .15s; }
 #ge-toast.on { opacity: 1; transform: translate(-50%, 0); }
-@media (hover: none) { .ge-keys, .ge-side-h.ge-tools-h:has(+ .ge-keys) { display: none; } }
 body:has(.ge-movebar) #ge-toast { bottom: 120px; }
 /* App-styled confirmation (in place of the browser's confirm popup). */
 .app-confirm { width: min(420px, calc(100vw - 32px)); box-sizing: border-box; padding: 20px 20px 16px; border: 1px solid var(--border);
