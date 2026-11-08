@@ -2836,10 +2836,12 @@ body.is-landing .content { padding: 0 0 70px; }
 .lb-chapter-page li { padding: 8px 0; border-top: 1px solid var(--border); font-size: 15px; }
 .lp-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
 .lp-grid.has-drawer { grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); }
-/* The lesson column's reading width. A stray half-rule above this (its selector lost before the
-   repository's history began) made the browser drop it, so lessons ran the full column; the
-   stray line is removed and the width applies (owner, 2026-11-08). */
-.lp-main { min-width: 0; max-width: 760px; }
+/* Reading width (owner, 2026-11-08): the explanation and other running prose keep to 760px for
+   comfortable lines, while the problems, solutions, exercises and the page's buttons use the
+   full column. (A stray half-rule above once made the browser drop a 760px limit on the whole
+   column; it is removed.) */
+.lp-main { min-width: 0; }
+.lp-main > :is(.lp-body, .lp-related, .learn-note) { max-width: 760px; }
 .lp-cards { margin: 0 0 14px; display: flex; flex-direction: column; gap: 6px; }
 .lp-cards-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
 .lp-cards-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); min-width: 13em; margin-right: 10px; }
@@ -4507,3 +4509,22 @@ body.ge-selecting, body.ge-selecting * { user-select: none; -webkit-user-select:
   box-shadow: inset 0 -2px 0 var(--c-learn); padding: 0 6px; }
 .ge-rename-main { width: auto; min-width: 8ch; max-width: 100%; margin-left: -6px; font: inherit; font-weight: 700; color: var(--text); }
 .ge-note-input { display: block; max-width: 760px; margin-left: -6px; font-size: 13px; line-height: 1.55; resize: none; overflow: hidden; }
+/* The Move to bar stays compact however many sections there are (owner, 2026-11-08): the
+   sections on one line that scrolls sideways, long names cut short, the actions below. */
+.ge-movebar { flex-direction: column; align-items: stretch; flex-wrap: nowrap; gap: 8px; }
+.ge-move-top { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.ge-move-n, .ge-move-k { flex: none; }
+.ge-move-pills { display: flex; gap: 6px; overflow-x: auto; min-width: 0; padding: 2px 0; scrollbar-width: thin; }
+.ge-move-pills .ge-pill { flex: none; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ge-move-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+@media (max-width: 520px) { .ge-move-top { flex-wrap: wrap; } .ge-move-pills { flex: 1 1 100%; } }
+/* Solid Learn buttons in dark mode take the dark ink the textbook's buttons use on the light green,
+   instead of white, which reads poorly there. */
+:root[data-theme="dark"] body[data-space="learn"] .hp-btn:not(.hp-btn-soft) { color: #0d1a07; }
+/* Dark mode, less white in the group editor (owner, 2026-11-08): card labels, sidebar names
+   and tools take the softer prose shade the lessons use; section headings stay bright. */
+:root[data-theme="dark"] :is(.ge-chip, .ge-row-name, .ge-tool:not([disabled]), .ge-move-n) { color: #c9d1e4; }
+:root[data-theme="dark"] .ge-row-name { font-weight: 550; }
+:root[data-theme="dark"] .ge-tool[disabled] { color: #5f6a85; }
+:root[data-theme="dark"] .ge-chip { border-color: #2a3654; }
+:root[data-theme="dark"] .ge-chip:hover, :root[data-theme="dark"] .ge-chip.is-sel { border-color: var(--space, var(--accent)); }

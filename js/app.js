@@ -7604,11 +7604,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
   function geChange(fn) {
     const l = geList(); if (!l) return;
     groupEdit.renaming = groupEdit.noting = null;
-    groupEdit.undo.push(geSnapshot(l));
-    groupEdit.redo = [];
-    if (groupEdit.undo.length > 60) groupEdit.undo.shift();
+    const before = geSnapshot(l);
     fn(l);
-    saveLists();
+    // A change that changes nothing (a card dropped where it was) leaves no Undo step.
+    if (geSnapshot(l) !== before) {
+      groupEdit.undo.push(before);
+      groupEdit.redo = [];
+      if (groupEdit.undo.length > 60) groupEdit.undo.shift();
+      saveLists();
+    }
     geRefresh();
   }
   function openGroupEditor(listId) {
@@ -7675,11 +7679,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
           </span>
         </div>`).join("");
     const moveBar = sel.size ? `<div class="ge-movebar" role="region" aria-label="Move selected cards">
-        <span class="ge-move-n">${sel.size} selected</span><span class="ge-move-k">Move to</span>
-        ${secs.map((sec, i) => `<button type="button" class="ge-pill" data-ge-act="moveto" data-i="${i}"${off([...sel].every(id => sec.ids.includes(id)))}>${escapeAttr(sec.title || "Untitled section")}</button>`).join("")}
-        <button type="button" class="ge-pill ge-pill-new" data-ge-act="moveto-new" data-where="main">+ New section</button>
-        <button type="button" class="ge-pill ge-pill-soft" data-ge-act="moveto-loose"${off(!selIn.size)}>Out of sections</button>
-        <button type="button" class="ge-link" data-ge-act="deselect">Clear selection</button>
+        <div class="ge-move-top"><span class="ge-move-n">${sel.size} selected</span><span class="ge-move-k">Move to</span>
+          <div class="ge-move-pills">${secs.map((sec, i) => `<button type="button" class="ge-pill" data-ge-act="moveto" data-i="${i}" title="${escapeAttr(sec.title || "Untitled section")}"${off([...sel].every(id => sec.ids.includes(id)))}>${escapeAttr(sec.title || "Untitled section")}</button>`).join("")}</div></div>
+        <div class="ge-move-actions">
+          <button type="button" class="ge-pill ge-pill-new" data-ge-act="moveto-new" data-where="main">+ New section</button>
+          <button type="button" class="ge-pill ge-pill-soft" data-ge-act="moveto-loose"${off(!selIn.size)}>Out of sections</button>
+          <button type="button" class="ge-link" data-ge-act="deselect">Clear selection</button>
+        </div>
       </div>` : "";
     return `<div class="ge" data-ge-list="${escapeAttr(l.id)}">
       <div class="back-row ge-back-row"><a class="back-link" href="#/list/${escapeAttr(l.id)}" data-ge-act="done">&larr; Back to list</a>
@@ -7735,7 +7741,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
     renderMath(box.parentElement);   // the renderer looks inside its container, so pass the editor's parent
     window.scrollTo({ top: y });
     const f = focusSel && box.querySelector(focusSel);
-    if (f) { f.focus(); if (f.select) f.select(); }
+    if (f) {
+      f.focus();
+      if (f.select) {
+        f.select();
+        // Opened while a button is held: the release would select only part of the text, so
+        // select it all again once the button comes up (owner, 2026-11-08).
+        if (geDrag.buttons) document.addEventListener("pointerup", () => setTimeout(() => { if (document.activeElement === f) f.select(); }, 0), { capture: true, once: true });
+      }
+    }
   }
   // Move cards (in the order they show, when several) into a section before a given card (at
   // the end when none), or out of every section.
@@ -7913,7 +7927,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   });
   // ---- Pointer interactions: dragging cards, reordering sections, selecting with a box ----
   const geDrag = { on: false, suppressClick: false, lastPointer: "mouse" };
-  document.addEventListener("pointerdown", e => { geDrag.lastPointer = e.pointerType; }, true);
+  document.addEventListener("pointerdown", e => { geDrag.lastPointer = e.pointerType; geDrag.buttons = e.buttons; }, true);
+  document.addEventListener("pointerup", e => { geDrag.buttons = e.buttons; }, true);
   // FLIP: note where every chip and row is, make a change, then slide each from its old place
   // to its new one, so the page is seen to make room rather than jump.
   function geFlip(change) {
@@ -8181,11 +8196,16 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const sel = t.tagName.toLowerCase() + [...t.attributes].filter(x => x.name.startsWith("data-"))
       .map(x => `[${x.name}="${CSS.escape(x.value)}"]`).join("");
     const shift = e.shiftKey, mod = e.ctrlKey || e.metaKey;
-    setTimeout(() => {
+    // Wait for the button to come up: a box opened while it is still down would take the
+    // release as a drag and select only part of its text (owner, 2026-11-08).
+    const replay = () => {
       if (t.isConnected) return;   // nothing was redrawn, so the click lands by itself
       const again = document.querySelector(sel);
       if (again) again.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, shiftKey: shift, ctrlKey: mod, detail: 1 }));
-    }, 0);
+    };
+    const onUp = () => { document.removeEventListener("pointercancel", onUp, true); setTimeout(replay, 0); };
+    document.addEventListener("pointerup", onUp, { capture: true, once: true });
+    document.addEventListener("pointercancel", onUp, { capture: true, once: true });
   }, true);
 
   // Parse only the small description format. Keep math opaque to emphasis and list parsing.
@@ -8258,6 +8278,40 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
   }
   function renderListDetail(listId) { renderListSurface({ type: "list", listId }); }
+
+  // Bullets as you type in the description boxes (owner, 2026-11-08): "* " or "- " at the start
+  // of a line becomes "• " at once (the saved text renders "•" lines as a list), Shift+Enter on a
+  // bullet starts the next one, Shift+Enter on an empty bullet ends the list, and Backspace just
+  // after a bullet takes it away. Math still waits until the box is closed.
+  const BULLET_BOXES = ".list-description-editor, .ge-note-input";
+  const lineStartOf = (v, at) => v.lastIndexOf("\n", at - 1) + 1;
+  function setBoxText(t, value, caret) {
+    t.value = value;
+    t.setSelectionRange(caret, caret);
+    t.dispatchEvent(new Event("input", { bubbles: true }));   // the box re-fits its height
+  }
+  document.addEventListener("input", e => {
+    const t = e.target;
+    if (!t.matches || !t.matches(BULLET_BOXES) || e.inputType !== "insertText" || e.data !== " ") return;
+    const at = t.selectionStart, start = lineStartOf(t.value, at);
+    if (at - start === 2 && /^[*-] $/.test(t.value.slice(start, at))) setBoxText(t, t.value.slice(0, start) + "• " + t.value.slice(at), start + 2);
+  });
+  document.addEventListener("keydown", e => {
+    const t = e.target;
+    if (!t.matches || !t.matches(BULLET_BOXES) || e.isComposing) return;
+    const at = t.selectionStart;
+    if (at !== t.selectionEnd) return;
+    const start = lineStartOf(t.value, at), line = t.value.slice(start, at);
+    if (e.key === "Enter" && e.shiftKey && line.startsWith("• ")) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      if (line.trim() === "•") setBoxText(t, t.value.slice(0, start) + t.value.slice(at), start);          // empty bullet: end the list
+      else setBoxText(t, t.value.slice(0, at) + "\n• " + t.value.slice(at), at + 3);
+    } else if (e.key === "Backspace" && line === "• ") {
+      e.preventDefault();
+      setBoxText(t, t.value.slice(0, start) + t.value.slice(at), start);
+    }
+  }, true);
 
   // ---------- Problem Database: competition/year navigator + per-problem detail ----------
   function problemRowHtml(p, compact) {
