@@ -2,6 +2,7 @@
 
 **2026-11-08**
 
+- T3: the 2022 AMC 8 filed in the topic tree (25 problems; 3815 filed in all). Every answer re-checked by computation and against the key: brute force for #3 and #23 (all $2^9$ grids, $84$); the recursion of #25 run to four hops; exact arithmetic for the rest. No strategy or tag changes.
 - T3: the 2023 AMC 8 filed in the topic tree (25 problems; 3790 filed in all). Every answer re-checked by computation and against the key: brute force for #16 (the $20\times20$ table, $133$, $134$, $133$), #18 and #21 (every split of $1$ to $9$ into three groups of sum $15$); exact arithmetic for the rest. No strategy or tag changes.
 - T3: the 2024 AMC 8 filed in the topic tree (25 problems; 3765 filed in all). Every answer re-checked by computation and against the key: brute force for #7 (every tiling of the $3\times7$ board, at least $5$ unit tiles), #15, #17 and #23; the generating-function coefficient of #25 expanded ($195$); exact arithmetic for the rest. No strategy or tag changes.
 - T3: the 2025 AMC 8 filed in the topic tree (25 problems; 3740 filed in all), the first AMC 8 paper. Every answer re-checked by computation and against the key: brute force for #14 (every $N$ on a fine grid), #22, #23, #24 and #25 (all $252$ paths, total area $3150$); exact arithmetic for the rest. One gap: #14 solved only the case $N\ge7$; it now rules out $N\le6$ and $6\lt N\lt7$ as well. No tag changes.
