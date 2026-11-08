@@ -2836,11 +2836,10 @@ body.is-landing .content { padding: 0 0 70px; }
 .lb-chapter-page li { padding: 8px 0; border-top: 1px solid var(--border); font-size: 15px; }
 .lp-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
 .lp-grid.has-drawer { grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); }
-/* A stray half-rule here (its selector lost before the repository's history began) made the
-   browser drop the .lp-main rule after it, so lessons have always run the full column width.
-   It is removed; the 760px reading width that rule named is kept off until the owner decides
-   (2026-11-08), so lessons look exactly as before. */
-.lp-main { min-width: 0; }
+/* The lesson column's reading width. A stray half-rule above this (its selector lost before the
+   repository's history began) made the browser drop it, so lessons ran the full column; the
+   stray line is removed and the width applies (owner, 2026-11-08). */
+.lp-main { min-width: 0; max-width: 760px; }
 .lp-cards { margin: 0 0 14px; display: flex; flex-direction: column; gap: 6px; }
 .lp-cards-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
 .lp-cards-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); min-width: 13em; margin-right: 10px; }
