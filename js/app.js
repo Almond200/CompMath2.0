@@ -4800,8 +4800,10 @@
     file.addEventListener("change", () => {
       const f = file.files && file.files[0];
       if (!f) return;
-      if (!confirm("Import this file? Your lists keep their cards and gain the file's; your settings, theme, and flashcard progress are replaced.")) { file.value = ""; return; }
-      f.text().then(t => {
+      appConfirm({ title: "Import this file?", text: "Your lists keep their cards and gain the file's; your settings, theme, and flashcard progress are replaced.", ok: "Import" })
+        .then(yes => { if (yes) return f.text(); file.value = ""; return null; })
+        .then(t => {
+        if (t == null) return;
         try { say(importProgress(t)); setTimeout(() => location.reload(), 800); }
         catch (e) { say(e instanceof SyntaxError ? "That file is not valid JSON." : e.message); }
         file.value = "";
@@ -7555,6 +7557,28 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // dragging (mouse or pen) onto a section or a section's row in the sidebar, or by selecting
   // them (a click or a tap) and pressing a section under "Move to". Every change is saved at
   // once and can be undone; Done closes the editor.
+  // An app-styled confirmation in place of the browser's (owner's standing preference): a modal
+  // card with a title, a line, Cancel and the action. Escape, Cancel or a click outside
+  // declines; Cancel has the focus, so a stray Enter does nothing harmful. Resolves true or false.
+  function appConfirm({ title, text, ok = "OK", danger = false }) {
+    return new Promise(resolve => {
+      const d = document.createElement("dialog");
+      d.className = "app-confirm";
+      d.setAttribute("aria-labelledby", "app-confirm-t");
+      d.innerHTML = `<form method="dialog">
+          <h3 id="app-confirm-t">${escapeAttr(title)}</h3>
+          ${text ? `<p>${escapeAttr(text)}</p>` : ""}
+          <div class="app-confirm-actions">
+            <button type="submit" value="cancel" class="hp-btn hp-btn-soft">Cancel</button>
+            <button type="submit" value="ok" class="hp-btn${danger ? " app-confirm-danger" : ""}">${escapeAttr(ok)}</button>
+          </div></form>`;
+      document.body.appendChild(d);
+      d.addEventListener("close", () => { resolve(d.returnValue === "ok"); d.remove(); }, { once: true });
+      d.addEventListener("click", e => { if (e.target === d) d.close("cancel"); });
+      d.showModal();
+      d.querySelector('button[value="cancel"]').focus();
+    });
+  }
   let groupEdit = null;   // { listId, undo: [snapshots], redo: [snapshots], selected: Set, renaming: index }
   const GE_MAC = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
   const GE_MOD = GE_MAC ? "&#8984;" : "Ctrl ";
@@ -7814,7 +7838,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const off = e.target.closest("[data-group-off]");
       if (off) {
         const l = getList(off.dataset.groupOff);
-        if (l && Array.isArray(l.customSections)) { l.customOff = l.customSections; delete l.customSections; saveLists(); render(); }
+        if (l && Array.isArray(l.customSections)) {
+          appConfirm({ title: "Ungroup this list?", text: "The cards will show in one run. Your sections are kept: Custom group brings them back.", ok: "Ungroup" })
+            .then(yes => { if (yes && Array.isArray(l.customSections)) { l.customOff = l.customSections; delete l.customSections; saveLists(); render(); } });
+        }
       }
       return;
     }
@@ -9873,15 +9900,21 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (grp) {
       const list = getList(grp.dataset.listGroup);
       if (!list) return;
-      if (list.builtin) {
-        state.autoGroup = !state.autoGroup;
-        saveSettings();
-      } else {
-        if (Array.isArray(list.groupedIds) && !grp.hasAttribute("data-regroup")) delete list.groupedIds;
-        else list.groupedIds = shownIds.slice();
-        saveLists();
-      }
-      render();
+      const ungrouping = list.builtin ? state.autoGroup : Array.isArray(list.groupedIds) && !grp.hasAttribute("data-regroup");
+      const apply = () => {
+        if (list.builtin) {
+          state.autoGroup = !state.autoGroup;
+          saveSettings();
+        } else {
+          if (Array.isArray(list.groupedIds) && !grp.hasAttribute("data-regroup")) delete list.groupedIds;
+          else list.groupedIds = shownIds.slice();
+          saveLists();
+        }
+        render();
+      };
+      // Ungrouping asks first, so a misclick does not undo the grouping (owner, 2026-11-08).
+      if (ungrouping) appConfirm({ title: "Ungroup this list?", text: "The cards will show in one run. Auto group groups them again.", ok: "Ungroup" }).then(yes => { if (yes) apply(); });
+      else apply();
       return;
     }
     if (e.target.closest("[data-edit-description], button[data-description]")) { editListDescription(); return; }
@@ -9892,17 +9925,20 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const del = e.target.closest("[data-list-delete]");
     if (del) {
       const l = getList(del.dataset.listDelete);
-      if (l && confirm(`Delete the list “${l.name}”? The formulas themselves are not affected.`)) { deleteList(l.id); location.hash = "#/learn"; }
+      if (l) appConfirm({ title: `Delete the list “${l.name}”?`, text: "The formulas themselves are not affected.", ok: "Delete list", danger: true })
+        .then(yes => { if (yes) { deleteList(l.id); location.hash = "#/learn"; } });
       return;
     }
     const clr = e.target.closest("[data-list-clear]");
     if (clr) {
       const l = getList(clr.dataset.listClear);
-      if (l && confirm(`Remove all ${liveCount(l)} formulas from “${l.name}”?`)) {
-        l.ids = [];
-        for (const key of ["customSections", "customOff"]) if (Array.isArray(l[key])) l[key].forEach(sec => { sec.ids = []; });
-        saveLists(); render();
-      }
+      if (l) appConfirm({ title: `Remove all ${liveCount(l)} formulas from “${l.name}”?`, text: "The formulas themselves are not affected.", ok: "Remove all", danger: true })
+        .then(yes => {
+          if (!yes) return;
+          l.ids = [];
+          for (const key of ["customSections", "customOff"]) if (Array.isArray(l[key])) l[key].forEach(sec => { sec.ids = []; });
+          saveLists(); render();
+        });
       return;
     }
     // Both back links go to "#", which renders search results whenever a query is live. So
