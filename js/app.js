@@ -8046,7 +8046,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
       $content.querySelectorAll(".ge-over").forEach(x => x.classList.remove("ge-over"));
       if (t && t.row) t.row.classList.add("ge-over");
       if (t && t.zone) t.zone.classList.add("ge-over");
-      const want = t && t.zone && t.key !== "loose" ? t : null;
+      // A gap only where the order matters: not in "Not in a section", nor in a section with no
+      // other cards, where the highlight alone says where the cards will go (owner, 2026-11-08).
+      const want = t && t.zone && t.key !== "loose"
+        && [...t.zone.querySelectorAll("[data-ge-chip]")].some(c => !moving.includes(c.dataset.geChip)) ? t : null;
       if (!want && !holder.isConnected) return;
       if (want && holder.parentElement === want.zone && holder.nextElementSibling === want.before) return;
       geFlip(() => {
