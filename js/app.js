@@ -239,6 +239,8 @@
   const TOOLS_MODES = ["off", "on"];
   // A card link in a lesson: open the card in the drawer beside the lesson, or go to its page.
   const LESSON_LINK_MODES = ["drawer", "card"];
+  // How wide a lesson's explanation runs (owner, 2026-11-08): a 760px reading width, or the full column.
+  const LESSON_WIDTHS = ["reading", "full"];
   const SECTION_IDS = SECTIONS.map(s => s.id);
 
   // Every write to localStorage can fail -- Safari private browsing refuses outright, and
@@ -296,6 +298,7 @@
       captions: pick(P.captions, CAPTION_MODES),
       tools: pick(P.tools, TOOLS_MODES),
       lessonLinks: pick(P.lessonLinks, LESSON_LINK_MODES),
+      lessonWidth: pick(P.lessonWidth, LESSON_WIDTHS),
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
       start: P.start === "last" ? "formulas" : pick(P.start, START_MODES),  // "Where I left off" was removed (2026-10-23)
@@ -312,7 +315,7 @@
           density: state.density, notation: state.notation,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks
+          tools: state.tools, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonWidth: state.lessonWidth
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -343,6 +346,7 @@
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
     tools: _loaded.tools,        // "off" | "on" — the page tools column on card pages
     lessonLinks: _loaded.lessonLinks, // "drawer" | "card" — a lesson's card links open beside it or go to the card
+    lessonWidth: _loaded.lessonWidth, // "reading" | "full" — a lesson's explanation at 760px or across the column
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     strategyChosen: _loaded.strategyChosen,
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
@@ -4387,7 +4391,7 @@
   const SETTING_DEFAULTS = {
     theme: "light", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
     notation: NOTATIONS[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
-    order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0]
+    order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], lessonWidth: LESSON_WIDTHS[0], strategy: STRATEGY_MODES[0]
   };
   function settingRow(name, desc, key, current, options, pv) {
     const def = SETTING_DEFAULTS[key];
@@ -4440,6 +4444,7 @@
         <section class="set-panel">
           <h3 class="set-panel-title">Learn</h3>
           ${settingRow("Card links in lessons", "What pressing a card's name in a lesson does.", "lessonLinks", state.lessonLinks, [["drawer", "Opens in the lesson"], ["card", "Opens its page"]], "lesson")}
+          ${settingRow("Lesson text width", "How wide a lesson's explanation runs. Reading width keeps its lines to a comfortable length; Full width uses the whole column. Problems, solutions and exercises always use the whole column.", "lessonWidth", state.lessonWidth, [["reading", "Reading width"], ["full", "Full width"]], "lesson")}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Practice</h3>
@@ -4582,6 +4587,7 @@
         order: "sort, sorting, ordering, order, popular, most used, curated, arrange, rank",
         start: "startup, start page, home page, homepage, landing page, open on, launch, default page, front page, first page, when it opens",
         lessonLinks: "lesson links, drawer, open cards beside, side panel, card links, links, preview, popup",
+        lessonWidth: "lesson width, text width, line length, wide text, narrow text, full width, reading width, column, paragraphs, lesson text",
         strategy: "spoilers, spoiler, solution, solutions, reveal, answers, answer, hide the strategy, show the strategy, how this problem works, hints",
         "Export progress": "export data, export, save data, my data, data, backup, back up, save my progress, save, download, file, json, transfer, move to another browser, keep my lists, history, stars",
         "Import progress": "import data, import, load data, data, restore, upload, load a backup, file, json, transfer, from another browser, reset",
@@ -7828,7 +7834,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   function geCommitNote(input, cancel) {
     const l = geList(), i = +input.dataset.geNote;
     if (!groupEdit || groupEdit.noting !== i) return;
-    const v = input.value.trim();
+    const v = cleanDescription(input.value);
     groupEdit.noting = null;
     if (!cancel && l && l.customSections[i] && v !== (l.customSections[i].note || "")) geChange(l2 => { l2.customSections[i].note = v; });
     else geRefresh();
@@ -8229,6 +8235,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     }
     let html = "", inList = false;
     for (const line of lines) {
+      // A bullet with nothing after it (a list ended by leaving an empty bullet) shows nothing.
+      if (/^\s*•\s*$/.test(line) || /^\s*[-*]\s+$/.test(line)) continue;
       const bullet = line.match(/^\s*[-*•]\s+([\s\S]+)$/);
       if (inList && !bullet) html += "</span>";
       if (bullet && !inList) html += '<span class="description-bullets" role="list">';
@@ -8266,7 +8274,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       button.focus();
     });
     input.addEventListener("blur", () => {
-      const value = input.value.trim();
+      const value = cleanDescription(input.value);
       if (!cancelled && value !== (list.blurb || "")) {
         list.blurb = value;
         saveLists();
@@ -8284,6 +8292,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // bullet starts the next one, Shift+Enter on an empty bullet ends the list, and Backspace just
   // after a bullet takes it away. Math still waits until the box is closed.
   const BULLET_BOXES = ".list-description-editor, .ge-note-input";
+  // On saving, drop bullets left empty, so the stored text holds only what shows.
+  function cleanDescription(v) {
+    return v.split(/\r?\n/).filter(line => !/^\s*•\s*$/.test(line)).join("\n").trim();
+  }
   const lineStartOf = (v, at) => v.lastIndexOf("\n", at - 1) + 1;
   function setBoxText(t, value, caret) {
     t.value = value;
@@ -9497,6 +9509,40 @@ The book remembers the last lesson you opened, in this browser, and the contents
     render();
     window.scrollTo({ top: 0, behavior: "instant" });
   }
+  // Focusing the search box must not move the page (owner, 2026-11-08). The box sits in the
+  // sticky top bar, and Chrome, scrolling a newly focused box "into view", measures from the
+  // bar's place in the page, so the page used to glide part of the way up on every click into
+  // the box. A mouse click now focuses it without scrolling (the caret goes to the end, where
+  // a query is edited); focus reached any other way (Tab, a tap) puts the page back at once.
+  $search.addEventListener("mousedown", e => {
+    if (e.button !== 0 || document.activeElement === $search || e.sourceCapabilities?.firesTouchEvents) return;
+    e.preventDefault();
+    $search.focus({ preventScroll: true });
+    const n = $search.value.length;
+    try { $search.setSelectionRange(n, n); } catch (err) {}
+  });
+  // The page's place before the box had focus: the glide starts before the focus event fires.
+  let searchRestY = window.scrollY;
+  window.addEventListener("scroll", () => { if (document.activeElement !== $search) searchRestY = window.scrollY; }, { passive: true });
+  // A tap: focus on the finger's release, without the browser's scroll (allowed there, as the
+  // tap is still the user's gesture).
+  $search.addEventListener("touchend", e => {
+    if (document.activeElement === $search || e.touches.length) return;
+    e.preventDefault();
+    $search.focus({ preventScroll: true });
+    const n = $search.value.length;
+    try { $search.setSelectionRange(n, n); } catch (err) {}
+  }, { passive: false });
+  // Any other way in (Tab): hold the page where it was for as long as the browser's glide lasts.
+  $search.addEventListener("focus", () => {
+    const y = searchRestY, until = performance.now() + 450;
+    const hold = () => {
+      if (document.activeElement !== $search || state.query.trim()) return;
+      if (Math.abs(window.scrollY - y) > 1) window.scrollTo({ top: y, behavior: "instant" });
+      if (performance.now() < until) requestAnimationFrame(hold);
+    };
+    hold();
+  });
   $search.addEventListener("input", () => {
     clearTimeout(searchTimer);
     if (/^\s*special:/i.test($search.value)) { showSuggest(commandSuggestions($search.value)); return; }
@@ -9735,6 +9781,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     r.setAttribute("data-tags", state.tags ? "on" : "off");
     r.setAttribute("data-captions", state.captions);
     r.setAttribute("data-cols", state.cols);
+    r.setAttribute("data-lesson-width", state.lessonWidth);
   }
 
   // The latex a card shows. A card may carry latexPlain, the same statement written out
