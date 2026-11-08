@@ -2706,21 +2706,21 @@ Four problems here, three AMC and one AIME, none solved by it alone; three reach
 
 "inscribed-square": String.raw`
 ## Key forms
-- $x = \dfrac{ah}{a + h}$ — the side of the square sitting on the base $a$ of a triangle with height $h$ to that base
+- $x = \dfrac{ah}{a + h}$ — the square on the base $a$, height $h$, when the altitude's foot lies on that base
 - $x = \dfrac{ab}{a + b}$ — the square in the right angle of a right triangle with legs $a$ and $b$
 - $x = \dfrac{abc}{ab + c^2}$ — the square with a side on the hypotenuse $c$ of a right triangle with legs $a$ and $b$
 
 ## Conditions
-The square has one side on a side of the triangle and its two other corners on the other two sides. The formula $x = \frac{ah}{a + h}$ holds for any side of any triangle, with $a$ that side and $h$ its altitude.
+The square has one side on the base and its two upper corners on the other two sides. The formula $x = \frac{ah}{a + h}$ needs the foot of the altitude to that base to lie on the base, that is, neither base angle obtuse; this holds for the longest side of every triangle. When a base angle is obtuse, the square resting on that side is held by the obtuse vertex instead and is smaller: for the triangle with vertices $(0, 0)$, $(12, 0)$, $(18, 6)$ and base from $(0,0)$ to $(12,0)$, the formula gives $4$ but the largest square on that base has side $3$.
 
 ## Why it works
-The triangle above the square is similar to the original, since its base is parallel to the original base, with height $h - x$ and base scaled by the same factor: $\frac{x}{a} = \frac{h - x}{h}$. Solving for $x$ gives $x = \frac{ah}{a + h}$, which is symmetric in $a$ and $h$.
+The triangle above the square is similar to the original, since its base is parallel to the original base, with height $h - x$ and base scaled by the same factor: $\frac{x}{a} = \frac{h - x}{h}$. The square's top edge is that cut, so its upper corners lie on the two sides; its lower corners lie on the base itself because the foot of the altitude does, so the cross-sections of the triangle shrink inward from both ends as they rise. Solving for $x$ gives $x = \frac{ah}{a + h}$, which is symmetric in $a$ and $h$.
 
 The right-triangle forms are this formula with the right base and height. In the right angle, the base is the leg $a$ and the height is the other leg $b$, so $x = \frac{ab}{a + b}$. On the hypotenuse, the base is $c$ and the height is $\frac{ab}c$, so
 $$x = \frac{c \cdot \frac{ab}c}{c + \frac{ab}c} = \frac{abc}{c^2 + ab}.$$
 
 ## Useful observations
-- The square's base can sit on any side: that side's length and its altitude are used. The side follows from [[similar-figures-ratios|similar figure ratios]], since the cut-off top triangle is similar to the whole.
+- The square's base can sit on any side whose altitude foot lies on it, the longest side always among them: that side's length and its altitude are used. The side follows from [[similar-figures-ratios|similar figure ratios]], since the cut-off top triangle is similar to the whole.
 - For a right triangle with the square in the right angle, the same similarity gives $x = \frac{ab}{a + b}$, and the altitude to the hypotenuse is $h = \frac{ab}{c}$, which recovers the hypotenuse formula from the general one.
 - The symmetry in $a$ and $h$ is a useful check on an answer.
 
@@ -5955,21 +5955,21 @@ Object.assign(window.MATH_DETAILS, {
 
 "max-rectangle-in-triangle": String.raw`
 ## Key forms
-- $A^{\max}_{\text{rectangle}} = \frac12[\triangle]$ — the largest rectangle inscribed in a triangle with one side on a chosen base has half the triangle's area
+- $A^{\max}_{\text{rectangle}} = \frac12[\triangle]$ — on a base whose altitude foot lies on it, the largest rectangle has half the area
 - width $\frac b2$ and height $\frac h2$ — its top edge lies on the midline, and it spans the midsegment
 - $A(t) = bh\,t(1 - t)$ — the area of the rectangle whose top edge is a fraction $t$ of the way up to the apex
 
 ## Conditions
-One side of the rectangle lies on a side of the triangle chosen as the base, and the other two corners lie on the other two sides. The ratio one half is the same for every choice of base.
+One side of the rectangle lies on a side of the triangle chosen as the base, and the other two corners lie on the other two sides. The ratio one half needs the foot of the altitude to that base to lie on it, that is, neither base angle obtuse; the longest side always qualifies, and every qualifying side gives one half. Next to an obtuse angle the best rectangle is smaller: for the triangle with vertices $(0, 0)$, $(12, 0)$, $(18, 6)$ on the base from $(0,0)$ to $(12,0)$, the rectangle of height $y$ is at most $12 - 3y$ wide, so its area $12y - 3y^2 = 12 - 3(y - 2)^2$ is at most $12$, while half the triangle is $18$.
 
 ## Why it works
-Slide a rectangle up from the base: at a fraction $t$ of the way to the apex the triangle's width has shrunk to $(1 - t)b$, so the rectangle's area is $(th)\,(1 - t)b = bh\,t(1 - t)$. That is largest at $t = \frac12$, giving $\frac{bh}{4} = \frac12[\triangle]$, because $t(1 - t) = \frac14 - \left(t - \frac12\right)^2$. At $t = \frac12$ the width is $\frac b2$ and the top edge is the midline.
+Slide a rectangle up from the base: at a fraction $t$ of the way to the apex the triangle's width has shrunk to $(1 - t)b$, and because the altitude's foot lies on the base the narrower cross-sections sit inside the wider ones below, so the whole rectangle fits and the rectangle's area is $(th)\,(1 - t)b = bh\,t(1 - t)$. That is largest at $t = \frac12$, giving $\frac{bh}{4} = \frac12[\triangle]$, because $t(1 - t) = \frac14 - \left(t - \frac12\right)^2$. At $t = \frac12$ the width is $\frac b2$ and the top edge is the midline.
 
 In the right-angle version, the free corner $(x, y)$ lies on the hypotenuse $\frac xa + \frac yb = 1$, and AM-GM gives $\frac{xy}{ab} = \frac xa \cdot \frac yb \le \frac14$, so $xy \le \frac{ab}4$, half of $\frac{ab}2$.
 
 ## Useful observations
 - The same $t(1 - t)$ maximization handles a rectangle inscribed under any straight slanted boundary.
-- When a corner of the triangle is a right angle and the rectangle shares it, the same count applies: the rectangle's two free corners lie on the hypotenuse, and its area is again at most half the triangle's.
+- When a corner of the triangle is a right angle and the rectangle shares it, two of its sides lie along the legs and only the corner opposite the right angle lies on the hypotenuse; its area is again at most half the triangle's.
 - For the dimensions, the top edge sits on the midline, the segment joining the midpoints of the two slanted sides.
 
 ## Applications
