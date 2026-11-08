@@ -616,7 +616,7 @@ Identical balls into distinct boxes is [[stars-and-bars|stars and bars]]: every 
 
 Unlabeled boxes mean partitioning the balls into groups with no order among the groups: for distinct balls, the Stirling number $S(n, k)$. Gluing labels onto the boxes in $k!$ ways gives the surjection count $k!\,S(n, k)$.
 
-With nothing labeled, a distribution is a way to write $n$ as a sum of positive parts, an integer partition, which has no closed form.
+With nothing labeled, a distribution is a way to write $n$ as a sum of positive parts, an integer partition, which has no elementary product formula like stars and bars; partitions are counted by a recurrence, a generating function or a short table instead.
 
 ## Useful observations
 - Two yes-or-no questions are answered before a single number is written: are the balls distinguishable, and are the boxes? A third picks the column: no restriction, at most one ball per box, or every box nonempty? Confusing identical with distinct is the most common counting mistake there is.
@@ -862,7 +862,7 @@ The parts are positive integers. Partitions ignore order and compositions do not
 ## Why it works
 Compositions are easy because order makes every choice independent. Write $n$ as $n$ ones in a row; a composition is a choice, at each of the $n - 1$ gaps, of whether to break there, so there are $2^{n-1}$. Exactly $k$ parts means exactly $k - 1$ breaks, chosen in $\binom{n - 1}{k - 1}$ ways.
 
-Partitions ignore order, which destroys that independence, so there is no formula. What they have instead is a picture, the Ferrers diagram, with one row of dots for each part, longest first. Reflecting it across its diagonal swaps rows and columns, so it matches the partitions with at most $k$ parts with the partitions whose parts are at most $k$.
+Partitions ignore order, which destroys that independence, so there is no elementary stars-and-bars count; exact values come from recurrences and generating functions. What they have instead is a picture, the Ferrers diagram, with one row of dots for each part, longest first. Reflecting it across its diagonal swaps rows and columns, so it matches the partitions with at most $k$ parts with the partitions whose parts are at most $k$.
 
 {{figure:conjugate}}
 
@@ -1259,11 +1259,11 @@ Usually the whole solution once the region is drawn: a ratio of polygon areas, s
 
 "states-recursion-prob": String.raw`
 ## When to use
-A random process moves among finitely many situations until it stops: a random walk until it reaches an end, a game until someone wins, a bug on a cube until it reaches a corner, coin flips until a pattern appears. The question asks for the chance of ending a certain way or the expected number of steps. A process whose next step depends on its whole history has no finite list of states, and this method does not apply.
+A random process moves among finitely many situations until it stops: a random walk until it reaches an end, a game until someone wins, a bug on a cube until it reaches a corner, coin flips until a pattern appears. The question asks for the chance of ending a certain way or the expected number of steps. It needs a finite record of everything the next step depends on, with a fixed rule for the next state; a history often reduces to one (in a race between coin patterns, the last few flips).
 
 ## How
 1. Decide which kind of question it is: the chance of ending a certain way, the expected number of steps, or the position after a fixed number of steps.
-2. Choose states that capture everything the future depends on, merging states alike by symmetry.
+2. Choose states that capture everything the future depends on, merging states alike by a symmetry that keeps the transition probabilities and the goal.
 3. Give each state an unknown and fix the end states.
 4. Write one equation for every other state by conditioning on its first step.
 5. Solve the linear system.
