@@ -2836,10 +2836,12 @@ body.is-landing .content { padding: 0 0 70px; }
 .lb-chapter-page li { padding: 8px 0; border-top: 1px solid var(--border); font-size: 15px; }
 .lp-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
 .lp-grid.has-drawer { grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); }
-/* The lesson column's reading width. A stray half-rule above this (its selector lost before the
-   repository's history began) made the browser drop it, so lessons ran the full column; the
-   stray line is removed and the width applies (owner, 2026-11-08). */
-.lp-main { min-width: 0; max-width: 760px; }
+/* Reading width (owner, 2026-11-08): the explanation and other running prose keep to 760px for
+   comfortable lines, while the problems, solutions, exercises and the page's buttons use the
+   full column. (A stray half-rule above once made the browser drop a 760px limit on the whole
+   column; it is removed.) */
+.lp-main { min-width: 0; }
+.lp-main > :is(.lp-body, .lp-related, .learn-note) { max-width: 760px; }
 .lp-cards { margin: 0 0 14px; display: flex; flex-direction: column; gap: 6px; }
 .lp-cards-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
 .lp-cards-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); min-width: 13em; margin-right: 10px; }
