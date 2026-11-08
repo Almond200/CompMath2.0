@@ -4490,6 +4490,7 @@
             <div class="set-desc">
               <p>AMC, AJHSME and AIME problems are &copy; Mathematical Association of America, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. This credit applies to their statements and figures throughout the app, including textbooks, previews and practice sets.</p>
               <p>Most text, figures and answer keys come from <a href="https://live.poshenloh.com/past-contests" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>. Some papers also use MAA PDF copies, the <a href="https://wiki.randommath.com/" target="_blank" rel="noopener noreferrer">Random Math wiki</a> and the <a href="https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>, and some answer keys were checked against those published by <a href="https://www.thethinkacademy.com/" target="_blank" rel="noopener noreferrer">Think Academy</a>. Statements have been reformatted for display, including LaTeX and figure layout.</p>
+              <p>Mock contests also use author-restated prompts from the <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf" target="_blank" rel="noopener noreferrer">2019 HMMT February Geometry paper</a>, with answer values checked against its <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/solutions.pdf" target="_blank" rel="noopener noreferrer">official solutions</a>. HMMT material is attributed separately; the MAA license above does not apply to it.</p>
             </div>
           </div></div>
         </section>
@@ -5327,6 +5328,104 @@
     update();
   }
   const practiceSessions = window.PracticeSessions;
+  const mockContests = window.MockContests;
+  let mockClockInterval = 0, mockPaperCatalog = null;
+  const isMock = set => set.kind === 'mock';
+  const hasMockAnswer = p => window.MATH_ANSWER_KEYS?.answers?.[p.slug] != null || !!window.MATH_MOCK_EXTRAS?.[p.slug];
+  const isVoidedProblem = p => !!window.MATH_ANSWER_KEYS?.voided?.[p.slug];
+  function mockPapers() { return mockPaperCatalog ||= mockContests.papers(PROBLEM_DB, hasMockAnswer); }
+  function mockTime(ms) { const s=Math.ceil(Math.max(0,ms)/1000); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+  function mockScore(set) { return mockContests.score(set, slug=>practiceSessions.result(set,slug)); }
+  function mockTimeSummary(set) {
+    const used=set.clock.limitMs-practiceSessions.timeLeft(set);
+    return `${set.timedOut ? 'Time limit reached · ' : ''}${mockTime(used)} used of ${mockTime(set.clock.limitMs)}`;
+  }
+  function startMockClock(set) {
+    clearInterval(mockClockInterval); mockClockInterval=0;
+    if(!isMock(set)||set.status==='finished')return;
+    const tick=()=>{
+      if(document.hidden||set.status==='paused')return;
+      if(topicPracticeSet!==set||!location.hash.startsWith('#/practice/set/'+set.id)){clearInterval(mockClockInterval);return;}
+      practiceSessions.checkpoint(set);
+      if(set.status==='finished'){clearInterval(mockClockInterval);savePractice();toast('Time is up. Your mock has been graded.');renderTopicPracticeSet();return;}
+      const el=$content.querySelector('.mock-clock-value'), box=$content.querySelector('.mock-clock');
+      const left=practiceSessions.timeLeft(set);
+      if(el)el.textContent=mockTime(left);
+      if(box)box.classList.toggle('is-low',left<=5*60000);
+    };
+    tick();if(set.status!=='finished')mockClockInterval=setInterval(tick,1000);
+  }
+  function exactAnswerHtml(text) {
+    if(!text)return '';
+    try{return '$'+window.LearnAnswer.toTex(text)+'$';}catch(e){return escapeAttr(text);}
+  }
+  function mockPracticePanelHtml() {
+    return `<section class="sh-section" id="pr-mock">
+      <h3>Practice a contest</h3>
+      <p>Take a past paper or build a mock from problems matched to recent contest difficulty. The timer pauses when you leave.</p>
+      <form id="mock-contest-form"><fieldset aria-label="Mock contest options">
+        <div class="rand-btns mock-modes" role="radiogroup" aria-label="Mock type">
+          <button type="button" role="radio" aria-checked="true" data-mock-mode="paper">Past contest</button>
+          <button type="button" role="radio" aria-checked="false" data-mock-mode="generated">Generate a mock</button>
+        </div>
+        <label class="mock-field-label">Contest</label>
+        <div class="rand-btns" role="radiogroup" aria-label="Mock contest">${Object.keys(mockContests.formats).map((f,i)=>`<button type="button" role="radio" aria-checked="${i===0}" data-mock-family="${f}">${f}</button>`).join('')}</div>
+        <div class="mock-paper-field">
+          <label for="mock-paper-name">Year and paper</label>
+          <div class="mock-paper-search"><input id="mock-paper-name" class="set-find-input" type="search" placeholder="Search a year or paper..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="mock-paper-options">
+          <div id="mock-paper-options" class="set-find-list" role="listbox" aria-label="Past contests" hidden></div></div>
+        </div>
+        <p class="mock-generation-info" hidden>Uses older AMC and AIME problems, with HMMT also eligible. Each problem keeps its original answer format.</p>
+        <p id="mock-contest-info" class="prob-note"></p><p id="mock-contest-status" role="status"></p>
+        <button type="submit" class="hp-btn">Start mock</button>
+      </fieldset></form>
+    </section>`;
+  }
+  function wireMockPractice(root) {
+    const form=root.querySelector('#mock-contest-form');if(!form)return;
+    const input=form.querySelector('#mock-paper-name'), options=form.querySelector('#mock-paper-options');
+    const status=form.querySelector('#mock-contest-status'), submit=form.querySelector('[type="submit"]'), info=form.querySelector('#mock-contest-info');
+    const catalog=mockPapers();let family='AMC 8',mode='paper',active=-1,busy=false,choices=[];
+    const currentPapers=()=>catalog.filter(g=>g.family===family);
+    function close(){options.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');active=-1;}
+    function highlight(){[...options.children].forEach((b,i)=>{b.classList.toggle('is-cur',i===active);b.setAttribute('aria-selected',String(i===active));});if(choices[active])input.setAttribute('aria-activedescendant','mock-paper-'+active);}
+    function suggest(){
+      const q=input.value.trim().toLowerCase();choices=currentPapers().filter(g=>!q||g.label.toLowerCase().includes(q)).slice(0,8);
+      options.innerHTML=choices.map((g,i)=>`<button type="button" class="set-find-opt" id="mock-paper-${i}" role="option" aria-selected="false">${escapeAttr(g.label)}</button>`).join('');
+      active=choices.length?0:-1;options.hidden=!choices.length;input.setAttribute('aria-expanded',String(!options.hidden));highlight();
+      [...options.children].forEach((b,i)=>{b.addEventListener('mousemove',()=>{active=i;highlight();});b.addEventListener('click',()=>{input.value=choices[i].label;update();input.focus();close();});});
+    }
+    function update(){
+      const f=mockContests.formats[family],paper=currentPapers().find(g=>g.label.toLowerCase()===input.value.trim().toLowerCase());
+      const model=mode==='generated'?mockContests.curve(catalog,family,isVoidedProblem):null;
+      form.querySelector('.mock-paper-field').hidden=mode!=='paper';form.querySelector('.mock-generation-info').hidden=mode!=='generated';
+      info.textContent=`${f.count} problems · ${f.minutes} minutes${model?' · Modeled on '+model.startYear+'–'+model.endYear:''}`;
+      submit.textContent=mode==='paper'?'Start mock':'Generate mock';submit.disabled=busy||(mode==='paper'&&!paper);
+      if(!busy)status.textContent=mode==='paper'&&!paper?'Choose a paper from the suggestions.':'';
+    }
+    function setFamily(f){family=f;form.querySelectorAll('[data-mock-family]').forEach(b=>b.setAttribute('aria-checked',String(b.dataset.mockFamily===f)));input.value=currentPapers()[0]?.label||'';close();update();}
+    form.querySelectorAll('[data-mock-family]').forEach(b=>b.addEventListener('click',()=>setFamily(b.dataset.mockFamily)));
+    form.querySelectorAll('[data-mock-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mockMode;form.querySelectorAll('[data-mock-mode]').forEach(x=>x.setAttribute('aria-checked',String(x===b)));close();update();}));
+    input.addEventListener('focus',suggest);input.addEventListener('input',()=>{update();suggest();});
+    input.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();close();}else if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(options.hidden)suggest();else if(choices.length)active=(active+(e.key==='ArrowDown'?1:-1)+choices.length)%choices.length;highlight();}else if(e.key==='Enter'&&!options.hidden&&active>=0){e.preventDefault();options.children[active]?.click();}});
+    form.addEventListener('focusout',e=>{if(!e.relatedTarget?.closest('.mock-paper-search'))close();});
+    form.addEventListener('submit',async e=>{
+      e.preventDefault();if(busy)return;
+      const paper=currentPapers().find(g=>g.label.toLowerCase()===input.value.trim().toLowerCase());if(mode==='paper'&&!paper)return;
+      busy=true;form.querySelector('fieldset').disabled=true;status.textContent='Loading mock problems...';
+      try{
+        const plan=mode==='paper'?{problems:paper.problems}:mockContests.generate(PROBLEM_DB,catalog,family,hasMockAnswer,isVoidedProblem);
+        await Promise.all([...new Set(plan.problems.filter(p=>!window.MATH_MOCK_EXTRAS?.[p.slug]).map(p=>p.year))].map(loadStatements));
+        if(!form.isConnected)return;
+        if(plan.problems.some(p=>!window.MATH_STATEMENTS?.[p.slug]&&!window.MATH_MOCK_EXTRAS?.[p.slug]))throw Error('Some statements could not be loaded. Try again.');
+        const label=mode==='paper'?paper.label:family+' · Generated';
+        const mock={mode,family,durationMs:mockContests.formats[family].minutes*60000};
+        if(plan.model){mock.modelStartYear=plan.model.startYear;mock.modelEndYear=plan.model.endYear;mock.targets=plan.model.targets;mock.hmmtException=true;}
+        topicPracticeSet=practiceSessions.createMock(label,plan.problems.map(p=>p.slug),mock);savePractice();location.hash='#/practice/set/'+topicPracticeSet.id;
+      }catch(err){status.textContent=err.message;}finally{busy=false;form.querySelector('fieldset').disabled=false;submit.disabled=false;}
+    });
+    setFamily(family);
+  }
   let topicPracticeSet = null, practiceSaveTimer = 0, practiceSaveFailed = false;
   function schedulePracticeSave() { clearTimeout(practiceSaveTimer); practiceSaveTimer = setTimeout(savePractice, 120); }
   function savePractice() {
@@ -5348,18 +5447,19 @@
     if (!topicPracticeSet || !location.hash.startsWith('#/practice/set/')) return;
     if (document.hidden) pausePractice();
     else if (topicPracticeSet.status !== 'finished') {
-      topicPracticeSet.status = 'active';
+      practiceSessions.resume(topicPracticeSet);
+      savePractice();startMockClock(topicPracticeSet);
     }
   });
   function pastPracticeHtml() {
     let sets;
     try { sets = practiceSessions.read(localStorage).sort((a,b) => b.updated - a.updated); }
-    catch (err) { return '<section class="sh-section"><h3>Practice sets</h3><p>Saved practice sets could not be read in this browser.</p></section>'; }
+    catch (err) { return '<section class="sh-section"><h3>Completed sets</h3><p>Saved sets could not be read in this browser.</p></section>'; }
     const group = (finished, title) => {
       const items = sets.filter(s => (s.status === 'finished') === finished);
-      return `<h4>${title}</h4>${items.length ? `<div class="pl-list practice-history-list" id="practice-history-${finished ? 'completed' : 'unfinished'}">${items.map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(s.label)}<small class="practice-history-meta">${s.slugs.length} problem${s.slugs.length === 1 ? '' : 's'} · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${finished ? s.slugs.filter(id => practiceSessions.result(s,id) === 'Correct').length + '/' + s.slugs.length + ' correct' : s.slugs.filter(id => s.answers[id]).length + '/' + s.slugs.length + ' answered'}</span></a>`).join('')}</div><button type="button" class="ct-toggle practice-history-more" aria-controls="practice-history-${finished ? 'completed' : 'unfinished'}" aria-expanded="false" hidden>Show all</button>` : `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`}`;
+      return `${items.length ? `<div class="pl-list practice-history-list" id="practice-history-${finished ? 'completed' : 'unfinished'}">${items.map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(s.label)}<small class="practice-history-meta">${isMock(s) ? 'Mock · ' : 'Practice · '}${s.slugs.length} problem${s.slugs.length === 1 ? '' : 's'} · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${finished ? (isMock(s) ? mockScore(s).points+'/'+mockScore(s).max+' points' : s.slugs.filter(id => practiceSessions.result(s,id) === 'Correct').length + '/' + s.slugs.length + ' correct') : s.slugs.filter(id => s.answers[id]).length + '/' + s.slugs.length + ' answered'}</span></a>`).join('')}</div><button type="button" class="ct-toggle practice-history-more" aria-controls="practice-history-${finished ? 'completed' : 'unfinished'}" aria-expanded="false" hidden>Show all</button>` : `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`}`;
     };
-    return `<section class="sh-section" id="past-practice-sets"><h3>Practice sets</h3>${group(false, 'Resume a set')}${group(true, 'Review a completed set')}</section>`;
+    return `<section class="sh-section" id="resume-practice-sets"><h3>Resume a set</h3>${group(false)}</section><section class="sh-section" id="past-practice-sets"><h3>Completed sets</h3>${group(true)}</section>`;
   }
   let practiceHistoryObserver;
   function wirePracticeHistory(root) {
@@ -5405,22 +5505,25 @@
     const counts = { Correct: 0, Incorrect: 0, Unanswered: 0, 'Answer unavailable': 0, Voided: 0 };
     set.slugs.forEach(slug => counts[practiceSessions.result(set, slug)]++);
     const reviewUrl = '#/practice/set/' + encodeURIComponent(set.id) + '/review';
-    const stats = [[counts.Correct + '/' + total, 'Correct'], [Math.round(100 * counts.Correct / total) + '%', 'Score'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
+    const mock = isMock(set), score = mock ? mockScore(set) : null;
+    const stats = mock ? [[score.points+'/'+score.max,'Mock score'],[counts.Correct+'/'+total,'Correct'],[counts.Incorrect,'Incorrect'],[counts.Unanswered,'Unanswered']] : [[counts.Correct + '/' + total, 'Correct'], [Math.round(100 * counts.Correct / total) + '%', 'Score'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
     $content.innerHTML = `<div class="space-home practice-session practice-results">
       <a class="back-link" href="#/practice">← Back to Practice</a>
-      <section class="sh-section"><h2>Practice complete</h2><p class="practice-results-subtitle">${escapeAttr(set.label)} · ${total} problem${total === 1 ? '' : 's'} · ${escapeAttr(set.difficulty)} difficulty</p>
+      <section class="sh-section"><h2>${mock ? 'Mock complete' : 'Practice complete'}</h2><p class="practice-results-subtitle">${escapeAttr(set.label)} · ${total} problem${total === 1 ? '' : 's'}${mock ? ' · '+(set.mock.mode==='paper'?'Past contest':'Generated mock') : ' · '+escapeAttr(set.difficulty)+' difficulty'}</p>
+        ${mock ? `<p class="practice-results-meta">${mockTimeSummary(set)}</p>` : ''}
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
-        ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided by the MAA, not graded</p>` : ''}
+        ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided by the MAA${mock ? ', full credit awarded' : ', not graded'}</p>` : ''}
         <a class="hp-btn" href="${reviewUrl}">Review problems</a>
       </section>
       <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
         const p = PROBLEM_BY_SLUG[slug], result = practiceSessions.result(set, slug);
-        return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${i + 1}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong><small>${set.answers[slug] ? 'Your answer: ' + escapeAttr(set.answers[slug]) : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small></span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
+        return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${i + 1}${p && !mock ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong><small>${set.answers[slug] ? 'Your answer: ' + escapeAttr(set.answers[slug]) : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small></span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
       }).join('')}</div></section></div>`;
     $content.querySelectorAll('[data-result-index]').forEach(link => link.addEventListener('click', () => { set.current = +link.dataset.resultIndex; savePractice(); }));
   }
   function renderTopicPracticeSet() {
+    clearInterval(mockClockInterval);mockClockInterval=0;
     const id = location.hash.split('/')[3] || '';
     if (!topicPracticeSet || topicPracticeSet.id !== id) {
       try { topicPracticeSet = practiceSessions.read(localStorage).find(s => s.id === id); } catch (err) { topicPracticeSet = null; }
@@ -5430,15 +5533,15 @@
       $content.innerHTML = '<div class="space-home"><a class="back-link" href="#/practice">← Back to Practice</a><p>This practice set is not available on this device.</p></div>';
       return;
     }
+    if (!document.hidden) practiceSessions.resume(set);
+    const mock = isMock(set);
     const finished = set.status === 'finished';
     if (finished && location.hash.split('/')[4] !== 'review') { renderPracticeResults(set); return; }
-    if (!finished && !document.hidden) {
-      set.status = 'active';
-    }
     const slug = set.slugs[set.current], p = PROBLEM_BY_SLUG[slug];
     const answered = set.slugs.filter(id => set.answers[id]).length;
     const outcome = practiceSessions.result(set, slug);
-    const aime = p && /AIME/.test(p.fam);
+    const aime = p && /AIME/.test(p.fam), exact = !!window.MATH_MOCK_EXTRAS?.[slug];
+    const correct = exact ? window.MATH_MOCK_EXTRAS[slug].answers.map(exactAnswerHtml).join(' or ') : escapeAttr(window.MATH_ANSWER_KEYS?.answers?.[slug] || '');
     const nav = set.slugs.map((id, i) => {
       const result = practiceSessions.result(set, id);
       const suffix = finished ? result : set.answers[id] ? 'Answered' : 'Unanswered';
@@ -5449,19 +5552,22 @@
       ${finished ? `<a class="back-link practice-back-results" href="#/practice/set/${encodeURIComponent(set.id)}">&larr; Back to Results overview</a>` : ''}
       <a class="back-link" href="#/practice">&larr; Back to Practice</a>
       <section class="sh-section">
-        <div class="practice-session-top"><div><h2>Practice set · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problem${set.slugs.length === 1 ? '' : 's'} · ${escapeAttr(set.difficulty)} difficulty${finished ? ' · Review' : ''}</p></div></div>
+        <div class="practice-session-top"><div><h2>${mock ? 'Mock set' : 'Practice set'} · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problem${set.slugs.length === 1 ? '' : 's'}${mock ? ' · '+set.clock.limitMs/60000+' minutes' : ' · '+escapeAttr(set.difficulty)+' difficulty'}${finished ? ' · Review' : ''}</p></div>
+          ${mock && !finished ? `<div class="mock-clock" role="timer" aria-label="Time remaining"><span>Time remaining</span><strong class="mock-clock-value">${mockTime(practiceSessions.timeLeft(set))}</strong></div>` : ''}</div>
+        ${mock && finished ? `<p class="mock-review-summary">Score: ${mockScore(set).points}/${mockScore(set).max} · ${mockTimeSummary(set)}</p>` : ''}
         <nav class="cn-nums" aria-label="Practice problems">${nav}</nav>
         ${finished ? `<div class="practice-review-actions"><a class="hp-btn hp-btn-soft" href="#/practice/set/${encodeURIComponent(set.id)}">Results overview</a></div>` : ''}
         ${finished ? '' : `<div class="practice-session-actions"><span>${answered} of ${set.slugs.length} answered</span><div><a class="hp-btn hp-btn-soft" href="#/practice">Save and exit</a><button type="button" class="hp-btn" id="finish-practice">Finish and review</button></div></div>`}
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
-      <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
+      <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p && !mock ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
+        ${mock && finished && p ? `<p class="mock-source">Source: <a href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></p>` : ''}
         ${p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>Your answer</h3>
-          ${aime ? (set.answers[slug] ? `<p class="practice-submitted">${escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
-          <p class="practice-result">${outcome}${set.answers[slug] && window.MATH_ANSWER_KEYS?.answers?.[slug] != null && outcome === 'Incorrect' ? ' · Correct answer: ' + escapeAttr(window.MATH_ANSWER_KEYS.answers[slug]) : ''}</p>
+          ${aime || exact ? (set.answers[slug] ? `<p class="practice-submitted">${exact ? exactAnswerHtml(set.answers[slug]) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
+          <p class="practice-result">${outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
           ${practiceExplanationHtml(p)}`
-          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime ? `<label for="practice-answer">Integer from 000 to 999</label><input id="practice-answer" type="text" inputmode="numeric" maxlength="3" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : practiceAnswerChoices(set, slug, false)}<label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
+          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact ? `<label for="practice-answer">${exact ? 'Exact value (fractions, sqrt, pi)' : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact ? 'text' : 'numeric'}" maxlength="${exact ? '120' : '3'}" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : practiceAnswerChoices(set, slug, false)}<label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
       </section></div>`;
     const redraw = () => {
@@ -5474,7 +5580,7 @@
     $content.querySelector('#finish-practice')?.addEventListener('click', () => { practiceSessions.finish(set); savePractice(); redraw(); });
     const answerChoices = $content.querySelectorAll('[data-practice-answer]');
     const updateChoice = value => {
-      practiceSessions.answer(set, slug, value, false);
+      if (!practiceSessions.answer(set, slug, value, false)) { if(set.status==='finished'){savePractice();renderTopicPracticeSet();} return; }
       schedulePracticeSave();
       // Keep the buttons mounted so the browser can recognize a double-click.
       answerChoices.forEach(b => b.setAttribute('aria-checked', String(b.dataset.practiceAnswer === value)));
@@ -5492,15 +5598,17 @@
       });
     });
     $content.querySelector('#practice-answer')?.addEventListener('input', e => {
-      const valid = practiceSessions.answer(set, slug, e.target.value, true);
+      const valid = practiceSessions.answer(set, slug, e.target.value, aime);
+      if(set.status==='finished'){savePractice();renderTopicPracticeSet();return;}
       e.target.setAttribute('aria-invalid', String(!valid));
-      $content.querySelector('#practice-answer-error').textContent = valid ? '' : 'Use an integer from 000 to 999. This value has not been saved.';
+      $content.querySelector('#practice-answer-error').textContent = valid ? '' : (exact ? 'Use a number or an expression with fractions, sqrt and pi. This value has not been saved.' : 'Use an integer from 000 to 999. This value has not been saved.');
       if (valid) { schedulePracticeSave(); const n = set.slugs.filter(id => set.answers[id]).length; $content.querySelector('.practice-session-actions > span').textContent = `${n} of ${set.slugs.length} answered`; const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-answered', !!set.answers[slug]); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${set.marks[slug] ? ', marked for review' : ''}`); }
     });
     $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; schedulePracticeSave(); const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-marked', e.target.checked); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${e.target.checked ? ', marked for review' : ''}`); });
     savePractice();
     if (p) showStatement(p, '.practice-set-st');
     renderMath($content);
+    startMockClock(set);
   }
   function wireTopicPractice(root) {
     const form = root.querySelector("#topic-practice-form");
@@ -5699,6 +5807,7 @@
             <button type="submit" class="hp-btn">Generate set</button>
           </fieldset></form>
         </section>
+        ${mockPracticePanelHtml()}
         <section class="sh-section" id="pr-contests">
           <h3>Contests</h3>
           <div class="ct-list">${fams.map(f => `
@@ -5724,6 +5833,7 @@
     $content.innerHTML = `<div class="space-home">${body}</div>`;
     wireRandomPicker($content);
     wireTopicPractice($content);
+    wireMockPractice($content);
     wirePracticeHistory($content);
     wireShelfMore($content);
     const unrel = $content.querySelector("#ct-unwritten");
@@ -8574,7 +8684,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       <a class="prob-card" href="#/problem/${p.slug}">
         <div class="prob-card-top">
           <span class="prob-ref">${label}</span>
-          <span class="prob-formula-count">${p.formulas.length} formula${p.formulas.length === 1 ? "" : "s"}</span>
+          <span class="prob-formula-count">${p.formulas.length} card${p.formulas.length === 1 ? "" : "s"}</span>
         </div>
         ${typeChips || p.subjects.length ? `<div class="ptype-row">${subjectChips(p)}${typeChips}</div>` : ""}
         ${p.strategy ? `<div class="prob-strategy">${p.strategy}</div>` : ""}
@@ -8691,8 +8801,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   // `box` picks the section to fill: the problem page's own, or the home page's problem of the day.
   function showStatement(p, box = "#prob-st") {
-    loadStatements(p.year).then(() => {
-      const st = window.MATH_STATEMENTS && window.MATH_STATEMENTS[p.slug];
+    const extra=window.MATH_MOCK_EXTRAS?.[p.slug];
+    (extra ? Promise.resolve(true) : loadStatements(p.year)).then(() => {
+      const st = extra ? {s:extra.statement} : window.MATH_STATEMENTS && window.MATH_STATEMENTS[p.slug];
       const wrap = $content.querySelector(`${box}[data-slug="${p.slug}"]`);
       if (!st || !wrap) return;
       const body = wrap.querySelector(".prob-statement");
@@ -8832,7 +8943,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
   function studyMoreHtml(p, chain) {
     const aime = /AIME/.test(p.ref || p.cname || "");
     const ids = [...new Set([...chain.pattern, ...chain.method, ...chain.formula])];
-    const lessons = ids.map(fid => lessonForCard(fid, aime)).filter(Boolean);
+    const route = getRoute();
+    const current = route.type === "learn" && route.lesson
+      ? learnHash(route.book, route.chapter, lessonNum(route.lesson)) : null;
+    const lessons = ids.map(fid => lessonForCard(fid, aime)).filter(Boolean)
+      .filter(({ b, c, l }) => learnHash(b, c, lessonNum(l)) !== current);
     const links = [...new Set(lessons.map(studyLessonLink))];
     return links.length ? `<div class="chain-study"><h4 class="chain-study-h">Study a concept more</h4><div class="chain-study-links">${links.join("")}</div></div>` : "";
   }
@@ -9457,6 +9572,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   });
 
   function render() {
+    clearInterval(mockClockInterval);mockClockInterval=0;
     const route = getRoute();
     // Leaving a list closes its group editor, tidying the sections as Done would.
     if (groupEdit && !(route.type === "list" && route.listId === groupEdit.listId)) {
