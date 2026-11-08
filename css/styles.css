@@ -1672,7 +1672,6 @@ html[data-text="larger"] .prob-statement { font-size: 21px; }
   transition: color 0.12s, border-color 0.12s;
 }
 .list-tool:hover { color: var(--text); border-color: var(--border-light); }
-.list-tool.danger:hover { color: var(--level-oly); border-color: var(--level-oly); }
 
 /* List glyphs (plain text, not emoji) */
 .list-star { color: var(--gold); }
@@ -2652,10 +2651,11 @@ a.daily-type:hover { color: var(--accent); }
    2026-11-08). :where keeps this at one class's weight, so .hp-btn-soft's border still wins. */
 .hp-btn:where(button) { border: 1px solid transparent; font-family: inherit; line-height: inherit; cursor: pointer; }
 .hp-btn-soft { background: var(--bg-panel); color: var(--text); border: 1px solid var(--border); }
-.hp-btn-soft:hover { border-color: var(--accent); color: var(--accent); filter: none; }
+/* Secondary actions use blue hover in every space; list toolbar tools stay neutral. */
+body .hp-btn.hp-btn-soft:not(:disabled):hover,
+:root[data-theme="dark"] .hp-btn.hp-btn-soft:not(:disabled):hover { border-color: var(--accent); color: var(--accent); filter: none; }
 body[data-space="practice"] .hp-btn:not(.hp-btn-soft),
 body[data-space="learn"] .hp-btn:not(.hp-btn-soft) { background: var(--space); }
-body[data-space="practice"] .hp-btn-soft:hover { border-color: var(--space); color: var(--space); }
 .hp-link { display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 700; color: var(--accent); text-decoration: none; }
 .hp-mine-foot { margin-top: 10px; display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; }
 .hp-mine-foot a { color: var(--text-dim); text-decoration: none; font-weight: 600; }
