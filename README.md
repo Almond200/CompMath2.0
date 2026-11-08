@@ -20,8 +20,8 @@ recorded manual estimates for problems it has not rated; [rating data and refres
 Choose **Mixed** to draw from all topics; it appears first, followed by the four
 default subjects when the topic search is empty. AMC problems use A–E choices; AIME problems accept integers from 000 to
 999. Answers save automatically on this device. Double-click a selected choice to clear it.
-Save and exit and Back to Practice both preserve progress. **Practice sets**, below Contests,
-separates **Resume a set** from **Review a completed set**. Each group shows at most two rows,
+Save and exit and Back to Practice both preserve progress. **Resume a set** and **Completed sets**, below Contests,
+contain unfinished and finished practice and mock sets respectively. Each group shows at most two rows,
 with its own full-width **Show all / Show less** control.
 
 Finish and review grades against imported answer keys and opens a results overview with your
@@ -36,8 +36,21 @@ missing, so the answer is not guessed. A problem the MAA voided (now 2025 AMC 12
 different case: its official letter is kept in the keys' `voided` list, new sets never draw it,
 and a saved set shows it as Voided, not graded.
 
-Practice sets have no timer or timer setting. Export progress and Import progress include
-saved sets, keeping the newest version of each. Clearing browser data removes the local copy.
+Topic practice sets have no timer or timer setting. Export progress and Import progress include
+saved practice and mock sets, keeping the newest version of each. Clearing browser data removes the local copy.
+
+## Practice a contest
+
+A separate panel below Practice a topic lets you take a **past contest** or **generate a mock**
+for AMC 8, AMC 10, AMC 12 or AIME. Past papers retain their original question order. Generated
+mocks match the average recent difficulty curve using older problems from any contest, with
+the 2019 HMMT Geometry round explicitly allowed too, and run from lowest to highest Elo. Each
+question retains its original answer format; sources appear during review.
+
+Mock sets have a countdown (40 minutes for AMC 8, 75 for AMC 10/12, 180 for historical AIME),
+which pauses when you leave or hide the page and resumes when you return. At zero, the mock
+automatically finishes and grades. Results show the target contest's scoring, time used and
+per-problem review. [Mock generation, scoring and source details](MOCK-CONTESTS.md).
 
 ## Four content kinds, five spaces
 

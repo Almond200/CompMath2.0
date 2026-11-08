@@ -13,7 +13,7 @@
 
 ## Running the checks in a cloud session
 
-`./tools/gates.sh` runs the convention, topic, list, shelf, topic-tree, practice-gap, diagram, statement, lab and database checks, stopping at the first failure. It does not run `check-labels.py` or the four regression suites below. It writes logs to `/tmp`; if that path is unavailable, run the constituent commands with logs in a writable directory.
+`./tools/gates.sh` runs the convention, topic, list, shelf, topic-tree, practice-gap, diagram, statement, lab and database checks, stopping at the first failure. It does not run `check-labels.py` or the five regression suites below. It writes logs to `/tmp`; if that path is unavailable, run the constituent commands with logs in a writable directory.
 
 ```bash
 export JSC=$PWD/tools/jsc-node
@@ -29,6 +29,7 @@ node tests/practice-sessions.cjs
 node tests/answer-keys.cjs
 node tests/book-search.cjs
 node tests/problem-difficulty.cjs
+node tests/mock-contests.cjs
 node tools/practice-gaps.js --check     # every card has two practice problems
 $JSC tools/validate-problem-db.js
 ```
@@ -54,7 +55,7 @@ $JSC tools/validate-problem-db.js
 - Every modal dialog is centred across and sits slightly above the middle of the screen (6vh up), never pinned near the top; popups tied to something (dropdowns, previews, menus, drawers) stay by it. A destructive confirmation button (Clear, Delete) is solid red (owner, 2026-11-08; CONVENTIONS, "Dialogs sit just above the middle of the screen").
 - Hover and focus colours follow where a control lives: inside a space (Learn, Practice, a reference space) a tile or choice lights up in the space's colour (`--space`, `--space-soft`); app-wide controls (top bar, tags, links) use the blue `--accent` (owner, 2026-11-08; CONVENTIONS, "Hover and focus colours follow where a control lives").
 - A brief note at the foot of the screen uses the app's toast (`toast()` in `js/app.js`, the look of "Opened strategies reset" in Settings), with a light shadow; no other bottom popup style, and no note for actions as frequent as Undo and Redo (owner, 2026-11-08).
-- Prefer app-styled searchable suggestions and dialogs to native browser dropdowns, prompts and confirmation popups. Practice sets save on exit without a confirmation; Finish and review submits directly. Keep the top-left Back to Practice link and Save and exit during practice; do not duplicate the back link as a review button. Practice sets have no timer or timer setting (owner, 2026-11-05).
+- Prefer app-styled searchable suggestions and dialogs to native browser dropdowns, prompts and confirmation popups. Practice sets save on exit without a confirmation; Finish and review submits directly. Keep the top-left Back to Practice link and Save and exit during practice; do not duplicate the back link as a review button. Topic practice sets have no timer or timer setting (owner, 2026-11-05). The explicitly requested mock contests are timed, pause on exit/tab hiding, and auto-submit at zero (owner, 2026-11-08; MOCK-CONTESTS.md).
 - No boxes inside boxes: a subsection inside a panel is a heading over its content, not a second bordered box (owner, 2026-10-31).
 - Our own design language: rounded bordered cards, soft tints, pill buttons, hairlines. Take another site's structure when it is easier to use, never its look (owner, 2026-10-31).
 - Links are always the app's blue, never purple after a visit (owner, 2026-11-01).

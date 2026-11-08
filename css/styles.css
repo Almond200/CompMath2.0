@@ -4585,3 +4585,20 @@ body dialog.app-confirm button.hp-btn.app-confirm-danger:hover { filter: brightn
    below is 12vh larger than above, so the dialog sits 6vh higher. A tall dialog still starts at its top. */
 .modal-overlay { padding-bottom: calc(16px + 12vh); }
 dialog.app-confirm { inset-block: 0 12vh; }
+/* Contest mocks share the Practice panels and controls; only mocks have a countdown. */
+#pr-mock > h3 + p { margin: 6px 0 12px; color: var(--text-dim); font-size: 14px; }
+#mock-contest-form fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.mock-modes { margin-bottom: 16px; }
+.mock-field-label, .mock-paper-field > label { display: block; font-size: 13px; font-weight: 650; margin: 12px 0 5px; }
+.mock-paper-search { position: relative; max-width: 420px; }
+#mock-paper-name { width: 100%; box-sizing: border-box; }
+.mock-paper-field[hidden], .mock-generation-info[hidden] { display: none; }
+.mock-generation-info { font-size: 13px; color: var(--text-dim); line-height: 1.5; margin-bottom: 0; }
+#mock-contest-status { color: var(--text-dim); font-size: 13px; }
+#mock-contest-form button:disabled { opacity: .45; cursor: default; }
+.mock-clock { margin-left: auto; text-align: right; font-variant-numeric: tabular-nums; color: var(--space); flex: none; }
+.mock-clock > span { display: block; font-size: 12px; color: var(--text-dim); }
+.mock-clock-value { font-size: 24px; }
+.mock-clock.is-low { color: var(--level-oly); }
+.mock-review-summary, .mock-source { font-size: 13px; color: var(--text-dim); }
+@media (max-width: 500px) { #resume-practice-sets .pl-item { flex-wrap: wrap; } .mock-clock-value { font-size: 21px; } }
