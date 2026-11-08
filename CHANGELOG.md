@@ -2,6 +2,7 @@
 
 **2026-11-08**
 
+- T3: the 2012 AMC 8 filed in the topic tree (25 problems; 4040 filed in all). Every answer re-checked by computation and against the key: brute force for #18 and #22 (every choice of three new integers, $7$ medians); exact arithmetic for the rest. No strategy or tag changes.
 - T3: the 2013 AMC 8 filed in the topic tree (25 problems; 4015 filed in all). Every answer re-checked by computation and against the key: exact arithmetic throughout. One tag fix: #10 cited GCD × LCM, but its route reads the gcd and the lcm off the prime factorizations (least and greatest exponents) and never uses $\gcd\cdot\operatorname{lcm}=ab$; it now cites the Fundamental Theorem of Arithmetic.
 - T3: the 2014 AMC 8 filed in the topic tree (25 problems; 3990 filed in all). Every answer re-checked by computation and against the key: exact arithmetic throughout, with the cases of #23 (three two-digit primes with pairwise sums at most $31$) and #24 (a median of $4$ needs $253$ cans) checked directly. No strategy or tag changes.
 - T3: the 2015 AMC 8 filed in the topic tree (25 problems; 3965 filed in all). Every answer re-checked by computation and against the key: brute force for #13, #22 and #24; exact arithmetic for the rest. No strategy or tag changes.
