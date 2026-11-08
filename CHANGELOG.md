@@ -2,6 +2,8 @@
 
 **2026-11-08**
 
+- Group editor, dragging a card (owner): the floating label sat beside the pointer and did not look like the card, so the gap it opened did not line up with what was being moved. The dragged card is now a copy of the card itself, at its own size, held by the point where it was grabbed, so the pointer stays on it and the gap opens under it; several cards show a count badge.
+
 - Group editor (owner): a section dragged by its grip now follows the pointer continuously, and each row it passes slides aside at once to show the slot it would take (before, the row jumped from slot to slot); on release it settles into place. The list title's hover band hugs the name, as on the list page.
 
 - Group editor (owner): clicking the list's title renames it in place, as on the list page. A button that would change nothing is greyed out: Sort each section A–Z once they are sorted, Start from the automatic groups once the sections are those groups, Select the cards not in a section once they are all selected, and in the Move to bar a section that already holds every selected card and Out of sections when none of them is in one (Undo, Redo and the remove tools already were).

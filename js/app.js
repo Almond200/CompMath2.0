@@ -8019,6 +8019,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const id = chip.dataset.geChip;
     const moving = groupEdit.selected.has(id) ? [...groupEdit.selected] : [id];
     const sx = e.clientX, sy = e.clientY, scroll = geScroller();
+    // Where on the card it was grabbed: the floating copy keeps that point under the pointer.
+    const grab = chip.getBoundingClientRect(), ox = sx - grab.left, oy = sy - grab.top;
     let ghost = null, holder = null, target = null;
     const movingEls = () => [...$content.querySelectorAll(".ge [data-ge-chip]")].filter(c => moving.includes(c.dataset.geChip));
     const findTarget = (x, y) => {
@@ -8061,10 +8063,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
         if (Math.hypot(ev.clientX - sx, ev.clientY - sy) < 6) return;
         geDrag.on = true;
         document.body.classList.add("ge-dragging");
-        ghost = document.createElement("div");
-        ghost.className = "ge-ghost";
-        if (moving.length > 1) ghost.textContent = `${moving.length} cards`;
-        else ghost.innerHTML = chip.querySelector(".ge-chip-name").innerHTML;
+        // The floating copy is the card itself, at its own size, held where it was grabbed.
+        ghost = chip.cloneNode(true);
+        ghost.className = "ge-chip ge-ghost-chip";
+        ghost.removeAttribute("data-ge-chip");
+        ghost.style.width = grab.width + "px";
+        if (moving.length > 1) ghost.insertAdjacentHTML("beforeend", `<span class="ge-ghost-n">${moving.length}</span>`);
         document.body.appendChild(ghost);
         holder = document.createElement("span");
         holder.className = "ge-placeholder";
@@ -8076,7 +8080,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         });
         scroll.start();
       }
-      ghost.style.transform = `translate(${ev.clientX + 12}px, ${ev.clientY + 10}px)`;
+      ghost.style.transform = `translate(${ev.clientX - ox}px, ${ev.clientY - oy}px)`;
       target = findTarget(ev.clientX, ev.clientY);
       place(target);
     };
