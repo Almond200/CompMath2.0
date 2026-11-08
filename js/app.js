@@ -7712,11 +7712,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
           </section>
           ${secs.map((sec, i) => `<section class="ge-sec" id="ge-sec-${i}">
             <h3 class="ge-sec-h">${renameHere(i, "main")
-              ? `<input class="ge-rename ge-rename-main" data-ge-rename="${i}" value="${escapeAttr(sec.title || "")}" aria-label="Section name" placeholder="Section name" maxlength="80">`
+              ? `<input class="ge-rename ge-rename-main" data-ge-rename="${i}" value="${escapeAttr(sec.title || "")}" aria-label="Section name" placeholder="Section name" maxlength="80" size="${Math.max(8, (sec.title || "").length + 1)}">`
               : `<button type="button" class="ge-sec-name" data-ge-act="rename" data-where="main" data-i="${i}" title="Click to rename">${escapeAttr(sec.title || "Untitled section")}</button>`} <span class="ge-sec-n">${ids(sec).length}</span></h3>
             ${(sec.note || "").trim() || groupEdit.noting === i
               ? (groupEdit.noting === i
-                ? `<textarea class="ge-note-input" data-ge-note="${i}" rows="2" maxlength="300" placeholder="Describe this section. Shift+Enter adds a line.">${escapeAttr(sec.note || "")}</textarea>`
+                ? `<textarea class="ge-note-input" data-ge-note="${i}" rows="1" maxlength="300" placeholder="Describe this section. Shift+Enter adds a line.">${escapeAttr(sec.note || "")}</textarea>`
                 : `<button type="button" class="ge-note" data-ge-act="note" data-i="${i}" title="Change the description">${listDescriptionHtml(sec.note)}</button>`)
               : `<button type="button" class="ge-link ge-add-note" data-ge-act="note" data-i="${i}">+ Add a description</button>`}
             ${geZoneHtml(ids(sec), String(i), sel)}
@@ -7895,6 +7895,16 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (e.key === "Escape") { e.preventDefault(); r.dataset.cancel = "1"; r.blur(); }
     else if (e.key === "Enter" && !(r.dataset.geNote != null && e.shiftKey)) { e.preventDefault(); r.blur(); }
   });
+  document.addEventListener("focusin", e => {
+    const t = e.target;
+    if (t.matches && t.matches(".ge-note-input")) { t.style.height = "auto"; t.style.height = t.scrollHeight + "px"; }
+  });
+  // The in-place boxes grow with what is typed, like the list title.
+  document.addEventListener("input", e => {
+    const t = e.target;
+    if (t.matches && t.matches(".ge-rename-main")) t.size = Math.max(8, t.value.length + 1);
+    if (t.matches && t.matches(".ge-note-input")) { t.style.height = "auto"; t.style.height = t.scrollHeight + "px"; }
+  });
   document.addEventListener("focusout", e => {
     const t = e.target;
     if (!t || !t.dataset) return;
@@ -7966,16 +7976,17 @@ The book remembers the last lesson you opened, in this browser, and the contents
         document.body.classList.add("ge-dragging");
         rows.forEach(r => { if (r !== row) r.style.transition = "transform 150ms cubic-bezier(.2,.8,.2,1)"; });
       }
-      // Keep the row within the list, and move it with the pointer.
-      const lo = -from * step, hi = (rows.length - 1 - from) * step;
+      // Move the row with the pointer, letting it run half a row past either end of the list.
+      const lo = -(from + 0.5) * step, hi = (rows.length - 1 - from + 0.5) * step;
       const y = Math.max(lo, Math.min(hi, dy));
       row.style.transform = `translateY(${y}px)`;
       const c = centers[from] + y;
       to = from;
       rows.forEach((r, k) => {
         let shift = 0;
-        if (k > from && centers[k] < c) { shift = -step; to++; }
-        else if (k < from && centers[k] > c) { shift = step; to--; }
+        // A row gives way once the dragged row is halfway onto it.
+        if (k > from && c > centers[k] - step / 2) { shift = -step; to++; }
+        else if (k < from && c < centers[k] + step / 2) { shift = step; to--; }
         if (r !== row) r.style.transform = shift ? `translateY(${shift}px)` : "";
       });
     };
@@ -8035,7 +8046,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
       $content.querySelectorAll(".ge-over").forEach(x => x.classList.remove("ge-over"));
       if (t && t.row) t.row.classList.add("ge-over");
       if (t && t.zone) t.zone.classList.add("ge-over");
-      const want = t && t.zone && t.key !== "loose" ? t : null;
+      // A gap only where the order matters: not in "Not in a section", nor in a section with no
+      // other cards, where the highlight alone says where the cards will go (owner, 2026-11-08).
+      const want = t && t.zone && t.key !== "loose"
+        && [...t.zone.querySelectorAll("[data-ge-chip]")].some(c => !moving.includes(c.dataset.geChip)) ? t : null;
       if (!want && !holder.isConnected) return;
       if (want && holder.parentElement === want.zone && holder.nextElementSibling === want.before) return;
       geFlip(() => {
