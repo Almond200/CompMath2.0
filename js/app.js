@@ -2112,7 +2112,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".book-search-option, .practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .lp-sol, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies").forEach(el => {
+      container.querySelectorAll(".book-search-option, .practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .lp-sol, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies, .ge, .list-section-title").forEach(el => {
         if (skip(el) || el.hasAttribute("data-description-formatted")) return;
         renderMathInElement(el, {
           delimiters: [
@@ -7745,7 +7745,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const y = window.scrollY;
     old.outerHTML = groupEditorHtml(l);
     const box = $content.querySelector(".ge");
-    renderMath(box);
+    renderMath(box.parentElement);   // the renderer looks inside its container, so pass the editor's parent
     window.scrollTo({ top: y });
     const f = focusSel && box.querySelector(focusSel);
     if (f) { f.focus(); if (f.select) f.select(); }
@@ -7993,7 +7993,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
         document.body.classList.add("ge-dragging");
         ghost = document.createElement("div");
         ghost.className = "ge-ghost";
-        ghost.textContent = moving.length > 1 ? `${moving.length} cards` : (chip.querySelector(".ge-chip-name").textContent || "");
+        if (moving.length > 1) ghost.textContent = `${moving.length} cards`;
+        else ghost.innerHTML = chip.querySelector(".ge-chip-name").innerHTML;
         document.body.appendChild(ghost);
         $content.querySelectorAll("[data-ge-chip]").forEach(c => { if (moving.includes(c.dataset.geChip)) c.classList.add("is-moving"); });
         raf = requestAnimationFrame(scrollLoop);
