@@ -1576,7 +1576,9 @@ html[data-text="larger"] .prob-statement { font-size: 21px; }
   color: var(--text);
   border: 1px solid var(--border-light);
   border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  /* A light shadow (owner, 2026-11-08: the old 30px, 40% one was too heavy); dark keeps a
+     little more so the note still lifts off the navy page. */
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   padding: 10px 18px;
   font-size: 13.5px;
   opacity: 0;
@@ -1584,6 +1586,7 @@ html[data-text="larger"] .prob-statement { font-size: 21px; }
   transition: opacity 0.18s, transform 0.18s;
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+:root[data-theme="dark"] .toast { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.32); }
 
 /* ---------- Study lists overview ---------- */
 .lists-toolbar { margin: 4px 0 18px; }
@@ -4420,7 +4423,7 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 .ge-danger:hover:not([disabled]) { color: var(--level-oly); }
 .ge-movebar { position: fixed; z-index: 50; left: 50%; bottom: 16px; transform: translateX(-50%); width: min(760px, calc(100vw - 32px));
   box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; padding: 10px 12px;
-  border: 1px solid var(--space, var(--accent)); border-radius: 14px; background: var(--bg-card); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+  border: 1px solid var(--space, var(--accent)); border-radius: 14px; background: var(--bg-card); box-shadow: 0 4px 14px rgba(0,0,0,.1); }
 /* Room under the last section so the floating bar never covers a card. */
 .ge-main:has(.ge-movebar) { padding-bottom: 120px; }
 .ge-move-n { font-size: 13px; font-weight: 700; color: var(--text); }
@@ -4449,9 +4452,6 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 .ge-chip.is-moving { opacity: 0.4; }
 .ge-chip-name { overflow-wrap: anywhere; }
 .ge-chip-kind { flex: none; font-size: 9.5px; font-weight: 750; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); }
-.ge-ghost { position: fixed; left: 0; top: 0; z-index: 1000; pointer-events: none; max-width: 280px; font-size: 13px; font-weight: 600;
-  color: var(--bg-card); background: var(--space, var(--accent)); border-radius: 999px; padding: 6px 12px; box-shadow: 0 6px 18px rgba(0,0,0,.18);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 body.ge-dragging, body.ge-dragging * { cursor: grabbing !important; user-select: none; -webkit-user-select: none; }
 .ge-add-main { margin-top: 0; }
 .ge-foot { display: flex; justify-content: flex-end; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); }
@@ -4459,20 +4459,11 @@ body.ge-dragging, body.ge-dragging * { cursor: grabbing !important; user-select:
   .ge-body { grid-template-columns: 1fr; }
   .ge-side { position: static; max-height: none; order: 2; }
 }
-/* A custom section's description on the list page: the built-in notes' smaller type, editable
    in place like the list's description. */
-.section-desc { width: fit-content; max-width: min(100%, 760px); margin: 0 0 14px; }
-.section-desc.is-empty { color: var(--text-faint); }
-.section-desc-editor { max-width: 760px; margin: 0 0 14px; }
 .ge-inline { font: inherit; color: var(--space, var(--accent)); background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline; }
 .ge-note { font-size: 13px; line-height: 1.55; }
 /* Undo and Redo side by side, and the editor's keyboard shortcuts (owner, 2026-11-08). */
 .ge-undo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
-#ge-toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 12px); z-index: 60; opacity: 0; pointer-events: none;
-  font-size: 13px; font-weight: 600; color: var(--bg-card); background: var(--text); border-radius: 999px; padding: 6px 14px;
-  transition: opacity .15s, transform .15s; }
-#ge-toast.on { opacity: 1; transform: translate(-50%, 0); }
-body:has(.ge-movebar) #ge-toast { bottom: 120px; }
 /* App-styled confirmation (in place of the browser's confirm popup). */
 .app-confirm { width: min(420px, calc(100vw - 32px)); box-sizing: border-box; padding: 20px 20px 16px; border: 1px solid var(--border);
   border-radius: 14px; background: var(--bg-card); color: var(--text); box-shadow: 0 18px 48px rgba(0,0,0,.25); }
@@ -4500,3 +4491,10 @@ body:has(.ge-movebar) #ge-toast { bottom: 120px; }
 body.ge-selecting, body.ge-selecting * { user-select: none; -webkit-user-select: none; }
 .ge-pill[disabled] { opacity: 0.4; cursor: default; filter: none; }
 .ge h2[data-list-title] { cursor: text; }
+.ge-head h2 { width: fit-content; max-width: 100%; }
+/* The dragged card: a copy of the chip held under the pointer where it was grabbed. */
+.ge-ghost-chip { position: fixed; left: 0; top: 0; z-index: 1000; pointer-events: none; box-sizing: border-box;
+  border-color: var(--space, var(--accent)); box-shadow: 0 8px 20px rgba(0,0,0,.18); cursor: grabbing; }
+.ge-ghost-n { position: absolute; top: -8px; right: -8px; min-width: 20px; height: 20px; padding: 0 5px; box-sizing: border-box;
+  border-radius: 999px; background: var(--space, var(--accent)); color: var(--bg-card); font-size: 11px; font-weight: 750;
+  display: flex; align-items: center; justify-content: center; }

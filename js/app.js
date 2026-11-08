@@ -7478,7 +7478,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <div class="list-section" id="ls-${l.id}-${j}">
           <h3 class="list-section-title">${sec.title}</h3>
           ${sec.ci != null
-            ? `<button type="button" class="list-section-note list-description section-desc${sec.rawNote ? "" : " is-empty"}" data-section-desc="${sec.ci}" data-list-of="${escapeAttr(l.id)}" title="Change this section's description">${listDescriptionHtml(sec.rawNote || "Click to add a description")}</button>`
+            ? (sec.rawNote ? `<p class="list-section-note">${listDescriptionHtml(sec.rawNote)}</p>` : "")
             : sec.looseOf ? `<p class="list-section-note">Cards not in any of your sections yet, new ones included. <button type="button" class="ge-inline" data-group-edit="${escapeAttr(sec.looseOf)}">Edit groups</button> to place them.</p>`
             : sec.note ? `<p class="list-section-note">${sec.note}</p>` : ""}
           ${cards}
@@ -7582,15 +7582,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
   let groupEdit = null;   // { listId, undo: [snapshots], redo: [snapshots], selected: Set, renaming: index }
   // The reorder grip: six dots.
   const GE_GRIP = `<svg width="10" height="16" viewBox="0 0 10 16" aria-hidden="true">${[3, 8, 13].map(y => `<circle cx="2.5" cy="${y}" r="1.4"/><circle cx="7.5" cy="${y}" r="1.4"/>`).join("")}</svg>`;
-  // A brief note at the foot of the screen, so an undo by keyboard is seen.
-  function geToast(text) {
-    let t = document.getElementById("ge-toast");
-    if (!t) { t = document.createElement("div"); t.id = "ge-toast"; t.setAttribute("role", "status"); document.body.appendChild(t); }
-    t.textContent = text;
-    t.classList.add("on");
-    clearTimeout(geToast.timer);
-    geToast.timer = setTimeout(() => t.classList.remove("on"), 1200);
-  }
   function customSectionView(l, shown) {
     const inList = new Set(shown), used = new Set();
     const out = (l.customSections || []).map((sec, i) => {
@@ -7785,7 +7776,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
         l.customSections = JSON.parse(snap);
         saveLists();
         groupEdit.renaming = groupEdit.noting = null;
-        geToast(act === "undo" ? "Undone" : "Redone");
         geRefresh(); return;
       }
       case "select-all": geIds(l).forEach(id => sel.add(id)); geRefresh(); return;
@@ -7953,41 +7943,56 @@ The book remembers the last lesson you opened, in this browser, and the contents
     setTimeout(() => { geDrag.suppressClick = false; }, 0);
   }
 
-  // Reordering sections by their grip, with mouse, pen or touch: the row lifts and the others
-  // slide past it as it moves; the arrow keys on a focused grip do the same.
+  // Reordering sections by their grip, with mouse, pen or touch (owner, 2026-11-08): the row
+  // follows the pointer the whole way, and each row it passes slides aside at once to show the
+  // slot it would take. The arrow keys on a focused grip move it a place at a time.
   document.addEventListener("pointerdown", e => {
     if (!groupEdit || (e.pointerType === "mouse" && e.button !== 0)) return;
     const grip = e.target.closest("[data-ge-handle]");
     if (!grip || !grip.closest(".ge")) return;
     e.preventDefault();
-    const box = $content.querySelector(".ge-rows");
-    const from = +grip.dataset.geHandle, row = grip.closest("[data-ge-row]");
+    const rows = [...$content.querySelectorAll(".ge-rows [data-ge-row]")];
+    const from = +grip.dataset.geHandle, row = rows[from];
+    const step = rows.length > 1 ? rows[1].offsetTop - rows[0].offsetTop : row.offsetHeight;
+    const centers = rows.map(r => r.offsetTop + r.offsetHeight / 2);
     const startY = e.clientY;
-    let moved = false;
-    const others = () => [...box.querySelectorAll("[data-ge-row]")].filter(r => r !== row);
+    let moved = false, to = from;
     const move = ev => {
-      if (!moved && Math.abs(ev.clientY - startY) < 3) return;
-      if (!moved) { moved = true; row.classList.add("is-lifted"); document.body.classList.add("ge-dragging"); }
-      const rest = others();
-      let before = null;
-      for (const r of rest) {
-        const rr = geLayoutRect(r);
-        if (ev.clientY < rr.top + rr.height / 2) { before = r; break; }
+      const dy = ev.clientY - startY;
+      if (!moved && Math.abs(dy) < 3) return;
+      if (!moved) {
+        moved = true;
+        row.classList.add("is-lifted");
+        document.body.classList.add("ge-dragging");
+        rows.forEach(r => { if (r !== row) r.style.transition = "transform 150ms cubic-bezier(.2,.8,.2,1)"; });
       }
-      if (row.nextElementSibling === before) return;
-      geFlip(() => box.insertBefore(row, before));
+      // Keep the row within the list, and move it with the pointer.
+      const lo = -from * step, hi = (rows.length - 1 - from) * step;
+      const y = Math.max(lo, Math.min(hi, dy));
+      row.style.transform = `translateY(${y}px)`;
+      const c = centers[from] + y;
+      to = from;
+      rows.forEach((r, k) => {
+        let shift = 0;
+        if (k > from && centers[k] < c) { shift = -step; to++; }
+        else if (k < from && centers[k] > c) { shift = step; to--; }
+        if (r !== row) r.style.transform = shift ? `translateY(${shift}px)` : "";
+      });
     };
     const up = () => {
       document.removeEventListener("pointermove", move);
       document.removeEventListener("pointerup", up);
       document.removeEventListener("pointercancel", up);
       document.body.classList.remove("ge-dragging");
-      row.classList.remove("is-lifted");
       geEndGesture();
       if (!moved) { grip.focus(); return; }
-      const to = [...box.querySelectorAll("[data-ge-row]")].indexOf(row);
-      if (to !== from) geChange(l => { const [sec] = l.customSections.splice(from, 1); l.customSections.splice(to, 0, sec); });
-      else geRefresh();
+      // Settle into the slot, then save the new order.
+      row.style.transition = "transform 120ms ease";
+      row.style.transform = `translateY(${(to - from) * step}px)`;
+      setTimeout(() => {
+        if (to !== from) geChange(l => { const [sec] = l.customSections.splice(from, 1); l.customSections.splice(to, 0, sec); });
+        else geRefresh();
+      }, 125);
     };
     document.addEventListener("pointermove", move);
     document.addEventListener("pointerup", up);
@@ -8004,6 +8009,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const id = chip.dataset.geChip;
     const moving = groupEdit.selected.has(id) ? [...groupEdit.selected] : [id];
     const sx = e.clientX, sy = e.clientY, scroll = geScroller();
+    // Where on the card it was grabbed: the floating copy keeps that point under the pointer.
+    const grab = chip.getBoundingClientRect(), ox = sx - grab.left, oy = sy - grab.top;
     let ghost = null, holder = null, target = null;
     const movingEls = () => [...$content.querySelectorAll(".ge [data-ge-chip]")].filter(c => moving.includes(c.dataset.geChip));
     const findTarget = (x, y) => {
@@ -8046,10 +8053,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
         if (Math.hypot(ev.clientX - sx, ev.clientY - sy) < 6) return;
         geDrag.on = true;
         document.body.classList.add("ge-dragging");
-        ghost = document.createElement("div");
-        ghost.className = "ge-ghost";
-        if (moving.length > 1) ghost.textContent = `${moving.length} cards`;
-        else ghost.innerHTML = chip.querySelector(".ge-chip-name").innerHTML;
+        // The floating copy is the card itself, at its own size, held where it was grabbed.
+        ghost = chip.cloneNode(true);
+        ghost.className = "ge-chip ge-ghost-chip";
+        ghost.removeAttribute("data-ge-chip");
+        ghost.style.width = grab.width + "px";
+        if (moving.length > 1) ghost.insertAdjacentHTML("beforeend", `<span class="ge-ghost-n">${moving.length}</span>`);
         document.body.appendChild(ghost);
         holder = document.createElement("span");
         holder.className = "ge-placeholder";
@@ -8061,7 +8070,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         });
         scroll.start();
       }
-      ghost.style.transform = `translate(${ev.clientX + 12}px, ${ev.clientY + 10}px)`;
+      ghost.style.transform = `translate(${ev.clientX - ox}px, ${ev.clientY - oy}px)`;
       target = findTarget(ev.clientX, ev.clientY);
       place(target);
     };
@@ -8149,7 +8158,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // Moving from one text box straight to another control takes one click (owner, 2026-11-08):
   // leaving a box saves it and redraws the page, which used to swallow the click, so the
   // control pressed is found again in the new page and pressed for the reader.
-  const REPLAYABLE = "[data-ge-act], [data-ge-chip], [data-section-desc], button[data-description], [data-edit-description], h2[data-list-title], [data-list-rename], [data-group-edit], [data-group-off], [data-list-group], [data-list-delete], [data-list-clear]";
+  const REPLAYABLE = "[data-ge-act], [data-ge-chip], button[data-description], [data-edit-description], h2[data-list-title], [data-list-rename], [data-group-edit], [data-group-off], [data-list-group], [data-list-delete], [data-list-clear]";
   document.addEventListener("pointerdown", e => {
     const a = document.activeElement;
     if (!a || !a.matches || !a.matches("[data-ge-rename], [data-ge-note], .list-description-editor, h2[contenteditable='true']")) return;
@@ -8233,43 +8242,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
       } else input.replaceWith(button);
     }, { once: true });
 
-  }
-  // A custom section's description, edited in place like the list's own (owner, 2026-11-08):
-  // the same small format (bold, italics, math, bullets) in the section notes' smaller type.
-  function editSectionDescription(button) {
-    const list = getList(button.dataset.listOf), i = +button.dataset.sectionDesc;
-    const sec = list && Array.isArray(list.customSections) && list.customSections[i];
-    if (!sec) return;
-    const input = document.createElement("textarea");
-    input.className = "list-section-note list-description-editor section-desc-editor";
-    input.rows = 1;
-    input.setAttribute("aria-label", "Section description");
-    input.placeholder = "Describe this section. Shift+Enter adds a line.";
-    input.value = sec.note || "";
-    button.replaceWith(input);
-    const fit = () => { input.style.height = "auto"; input.style.height = input.scrollHeight + "px"; };
-    fit();
-    input.addEventListener("input", fit);
-    input.focus();
-    let cancelled = false;
-    input.addEventListener("keydown", e => {
-      if (e.isComposing || (e.key === "Enter" && e.shiftKey) || (e.key !== "Enter" && e.key !== "Escape")) return;
-      e.preventDefault();
-      cancelled = e.key === "Escape";
-      input.blur();
-    });
-    input.addEventListener("blur", () => {
-      const value = input.value.trim();
-      if (!cancelled && value !== (sec.note || "")) {
-        sec.note = value;
-        saveLists();
-        button.classList.toggle("is-empty", !value);
-        button.innerHTML = listDescriptionHtml(value || "Click to add a description");
-      }
-      input.replaceWith(button);
-      renderMath(button);
-      button.focus();
-    }, { once: true });
   }
   function renderListDetail(listId) { renderListSurface({ type: "list", listId }); }
 
@@ -10113,8 +10085,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
       return;
     }
     if (e.target.closest("[data-edit-description], button[data-description]")) { editListDescription(); return; }
-    const secDesc = e.target.closest("button[data-section-desc]");
-    if (secDesc) { editSectionDescription(secDesc); return; }
     const rn = e.target.closest("[data-list-rename]") || e.target.closest("h2[data-list-title]:not([contenteditable='true'])");
     if (rn) { startListRename(rn.dataset.listRename || rn.dataset.listTitle); return; }
     const del = e.target.closest("[data-list-delete]");
