@@ -239,6 +239,8 @@
   const TOOLS_MODES = ["off", "on"];
   // A card link in a lesson: open the card in the drawer beside the lesson, or go to its page.
   const LESSON_LINK_MODES = ["drawer", "card"];
+  // How wide a lesson's explanation runs (owner, 2026-11-08): a 760px reading width, or the full column.
+  const LESSON_WIDTHS = ["reading", "full"];
   const SECTION_IDS = SECTIONS.map(s => s.id);
 
   // Every write to localStorage can fail -- Safari private browsing refuses outright, and
@@ -296,6 +298,7 @@
       captions: pick(P.captions, CAPTION_MODES),
       tools: pick(P.tools, TOOLS_MODES),
       lessonLinks: pick(P.lessonLinks, LESSON_LINK_MODES),
+      lessonWidth: pick(P.lessonWidth, LESSON_WIDTHS),
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
       start: P.start === "last" ? "formulas" : pick(P.start, START_MODES),  // "Where I left off" was removed (2026-10-23)
@@ -312,7 +315,7 @@
           density: state.density, notation: state.notation,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks
+          tools: state.tools, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonWidth: state.lessonWidth
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -343,6 +346,7 @@
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
     tools: _loaded.tools,        // "off" | "on" — the page tools column on card pages
     lessonLinks: _loaded.lessonLinks, // "drawer" | "card" — a lesson's card links open beside it or go to the card
+    lessonWidth: _loaded.lessonWidth, // "reading" | "full" — a lesson's explanation at 760px or across the column
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     strategyChosen: _loaded.strategyChosen,
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
@@ -1463,6 +1467,9 @@
     else {
       l.ids.splice(i, 1);
       if (Array.isArray(l.groupedIds)) l.groupedIds = l.groupedIds.filter(id => id !== fid);
+      for (const key of ["customSections", "customOff"]) {
+        if (Array.isArray(l[key])) l[key].forEach(sec => { sec.ids = sec.ids.filter(id => id !== fid); });
+      }
     }
     saveLists();
   }
@@ -2109,7 +2116,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".book-search-option, .practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies").forEach(el => {
+      container.querySelectorAll(".book-search-option, .practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .lp-sol, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies, .ge, .list-section-title").forEach(el => {
         if (skip(el) || el.hasAttribute("data-description-formatted")) return;
         renderMathInElement(el, {
           delimiters: [
@@ -4384,7 +4391,7 @@
   const SETTING_DEFAULTS = {
     theme: "light", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
     notation: NOTATIONS[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
-    order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0]
+    order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], lessonWidth: LESSON_WIDTHS[0], strategy: STRATEGY_MODES[0]
   };
   function settingRow(name, desc, key, current, options, pv) {
     const def = SETTING_DEFAULTS[key];
@@ -4437,6 +4444,7 @@
         <section class="set-panel">
           <h3 class="set-panel-title">Learn</h3>
           ${settingRow("Card links in lessons", "What pressing a card's name in a lesson does.", "lessonLinks", state.lessonLinks, [["drawer", "Opens in the lesson"], ["card", "Opens its page"]], "lesson")}
+          ${settingRow("Lesson text width", "How wide a lesson's explanation runs. Reading width keeps its lines to a comfortable length; Full width uses the whole column. Problems, solutions and exercises always use the whole column.", "lessonWidth", state.lessonWidth, [["reading", "Reading width"], ["full", "Full width"]], "lesson")}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Practice</h3>
@@ -4579,6 +4587,7 @@
         order: "sort, sorting, ordering, order, popular, most used, curated, arrange, rank",
         start: "startup, start page, home page, homepage, landing page, open on, launch, default page, front page, first page, when it opens",
         lessonLinks: "lesson links, drawer, open cards beside, side panel, card links, links, preview, popup",
+        lessonWidth: "lesson width, text width, line length, wide text, narrow text, full width, reading width, column, paragraphs, lesson text",
         strategy: "spoilers, spoiler, solution, solutions, reveal, answers, answer, hide the strategy, show the strategy, how this problem works, hints",
         "Export progress": "export data, export, save data, my data, data, backup, back up, save my progress, save, download, file, json, transfer, move to another browser, keep my lists, history, stars",
         "Import progress": "import data, import, load data, data, restore, upload, load a backup, file, json, transfer, from another browser, reset",
@@ -4750,6 +4759,11 @@
           const item = { id: l.id, name: String(l.name || "Imported list"), ids };
           if (typeof l.blurb === "string") item.blurb = l.blurb;
           if (Array.isArray(l.groupedIds)) item.groupedIds = ids.filter(id => l.groupedIds.includes(id));
+          for (const key of ["customSections", "customOff"]) {
+            if (Array.isArray(l[key])) item[key] = l[key].filter(sec => sec && Array.isArray(sec.ids)).map(sec => ({
+              title: String(sec.title || "").slice(0, 80), note: String(sec.note || "").slice(0, 300),
+              ids: sec.ids.filter(id => ids.includes(id)) }));
+          }
           merged.items.push(item);
         }
       });
@@ -4792,8 +4806,10 @@
     file.addEventListener("change", () => {
       const f = file.files && file.files[0];
       if (!f) return;
-      if (!confirm("Import this file? Your lists keep their cards and gain the file's; your settings, theme, and flashcard progress are replaced.")) { file.value = ""; return; }
-      f.text().then(t => {
+      appConfirm({ title: "Import this file?", text: "Your lists keep their cards and gain the file's; your settings, theme, and flashcard progress are replaced.", ok: "Import" })
+        .then(yes => { if (yes) return f.text(); file.value = ""; return null; })
+        .then(t => {
+        if (t == null) return;
         try { say(importProgress(t)); setTimeout(() => location.reload(), 800); }
         catch (e) { say(e instanceof SyntaxError ? "That file is not valid JSON." : e.message); }
         file.value = "";
@@ -5356,8 +5372,12 @@
   function practiceExplanationHtml(p) {
     if (!p) return '';
     const { chain, altIds, chainCol } = chainParts(p);
-    const more = `<div class="practice-solution-links"><a class="aops-btn" href="#/problem/${p.slug}">Open in app</a><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open in AoPS ↗</a></div>`;
-    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, chainCol, chain, altIds, more)}</div>`;
+    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, chainCol, chain, altIds, solutionLinksHtml(p))}</div>`;
+  }
+  // Open in app and Open in AoPS under a solution's three columns (practice review, textbooks).
+  function solutionLinksHtml(p) {
+    const ext = p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.urlLabel === "archive" ? "Open in the archive" : "Open in AoPS"} ↗</a>` : "";
+    return `<div class="practice-solution-links"><a class="aops-btn" href="#/problem/${p.slug}">Open in app</a>${ext}</div>`;
   }
   function practiceAnswerChoices(set, slug, finished) {
     return `<div class="rand-btns" role="radiogroup" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${['A','B','C','D','E'].map(a => `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="radio" aria-checked="${set.answers[slug] === a}">${a}</button>`).join('')}</div>`;
@@ -5416,9 +5436,9 @@
         ${finished ? '' : `<div class="practice-session-actions"><span>${answered} of ${set.slugs.length} answered</span><div><a class="hp-btn hp-btn-soft" href="#/practice">Save and exit</a><button type="button" class="hp-btn" id="finish-practice">Finish and review</button></div></div>`}
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
-      <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</h3>
+      <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
         ${p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
-        ${finished ? `</section><section class="sh-section practice-review detail"><h4>Your answer</h4>
+        ${finished ? `</section><section class="sh-section practice-review detail"><h3>Your answer</h3>
           ${aime ? (set.answers[slug] ? `<p class="practice-submitted">${escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${outcome}${set.answers[slug] && window.MATH_ANSWER_KEYS?.answers?.[slug] != null && outcome === 'Incorrect' ? ' · Correct answer: ' + escapeAttr(window.MATH_ANSWER_KEYS.answers[slug]) : ''}</p>
           ${practiceExplanationHtml(p)}`
@@ -6430,18 +6450,22 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <textarea class="lp-notes" rows="2" placeholder="Type your solution, notes and/or work here." aria-label="Your solution and notes for ${escapeAttr(refShort(p.ref))}">${escapeAttr(saved.notes || "")}</textarea>
             <button type="button" class="hp-btn lp-show"${(saved.notes || "").trim() ? "" : " disabled"}>Show Solution</button>
           </div>
-          <div class="prob-chain lp-sol" hidden></div>
+          <div class="lp-sol" hidden></div>
         </li>`;
     }).join("")}</ol>`;
   }
-  function learnSolutionHtml(p) {
+  // A textbook problem's solution opens inside the problem's own box, like a practice set's
+  // review (owner, 2026-11-08): a hairline, "Solution for Problem R5.5.4:" in italics, the
+  // strategy and its three columns, Open in app and Open in AoPS, then Study a concept more.
+  function learnSolutionHtml(p, label) {
     const { chain, altIds, chainCol } = chainParts(p);
-    return `<h4>How this problem works</h4>${chainInnerHtml(p, chainCol, chain, altIds)}`;
+    return `<p class="lp-sol-title">Solution for ${escapeAttr(label)}:</p>${chainInnerHtml(p, chainCol, chain, altIds, solutionLinksHtml(p))}`;
   }
   function showLearnSolution(li) {
     const p = PROBLEM_BY_SLUG[li.dataset.slug], sol = li.querySelector(".lp-sol");
     if (!p || !sol) return;
-    sol.innerHTML = learnSolutionHtml(p);
+    const n = (li.querySelector(".lp-prob-n")?.textContent || "").trim().replace(/\.$/, "");
+    sol.innerHTML = learnSolutionHtml(p, /^\d+$/.test(n) ? "Problem " + n : n || refShort(p.ref));
     sol.hidden = false;
     const btn = li.querySelector(".lp-show");
     if (btn) { btn.textContent = "Hide Solution"; btn.classList.add("is-open"); }
@@ -7345,6 +7369,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (route.type !== "list") { history.replaceState(null, "", "#/learn"); render(); return; }
     $content.innerHTML = `<div class="list-main">${listDetailHtml(route.listId)}</div>`;
     renderMath($content, true);
+    if (groupEdit) geApplyFind();
   }
 
   // Adding a card to a list used to be possible only from the card's own "+" button, which
@@ -7459,7 +7484,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
       return `
         <div class="list-section" id="ls-${l.id}-${j}">
           <h3 class="list-section-title">${sec.title}</h3>
-          ${sec.note ? `<p class="list-section-note">${sec.note}</p>` : ""}
+          ${sec.ci != null
+            ? (sec.rawNote ? `<p class="list-section-note">${listDescriptionHtml(sec.rawNote)}</p>` : "")
+            : sec.looseOf ? `<p class="list-section-note">Cards not in any of your sections yet, new ones included. <button type="button" class="ge-inline" data-group-edit="${escapeAttr(sec.looseOf)}">Edit groups</button> to place them.</p>`
+            : sec.note ? `<p class="list-section-note">${sec.note}</p>` : ""}
           ${cards}
         </div>`;
     }).join("");
@@ -7472,20 +7500,30 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const isBuiltin = !userL;
     const entries = l.ids.map(id => BY_ID[id]).filter(Boolean);
     shownIds = entries.map(e => e.formula.id);
+    if (!isBuiltin && groupEdit && groupEdit.listId === l.id) return groupEditorHtml(l);
     const AUTO_MIN = 8;
-    const canGroup = !isBuiltin && entries.length >= AUTO_MIN;
+    // Custom groups (owner, 2026-11-08): sections the reader makes by hand in the group editor.
+    // They take precedence over the automatic grouping; Ungroup tucks them away in customOff,
+    // so Custom group brings them back.
+    const custom = !isBuiltin && Array.isArray(l.customSections) && l.customSections.some(sec => sec.ids.some(id => BY_ID[id] && l.ids.includes(id)));
+    const canGroup = !isBuiltin && !custom && entries.length >= AUTO_MIN;
+    const canCustom = !isBuiltin && entries.length >= 2;
     const grouped = canGroup && (l.builtin ? state.autoGroup : Array.isArray(l.groupedIds));
     let sections = l.sections, pending = [];
-    if (grouped) {
+    if (custom) sections = customSectionView(l, shownIds);
+    else if (grouped) {
       const snapshot = new Set(l.builtin ? shownIds : l.groupedIds);
       sections = autoSections(shownIds.filter(id => snapshot.has(id)));
       pending = shownIds.filter(id => !snapshot.has(id));
       if (pending.length) sections.push({ title: "New cards", ids: pending });
     }
-    const groupAction = pending.length ? "Regroup" : grouped ? (l.builtin ? "Grouped" : "Ungroup") : "Group";
+    const groupAction = pending.length ? "Regroup" : grouped ? (l.builtin ? "Auto grouped" : "Ungroup") : "Auto group";
     const headTools = isBuiltin ? "" : `
       <div class="list-head-tools">
-        ${canGroup ? `<button class="list-tool${grouped && !pending.length ? " on" : ""}" data-list-group="${l.id}" ${pending.length ? 'data-regroup title="Group newly added cards"' : `aria-pressed="${grouped}"`}>${groupAction}</button>` : ""}
+        ${canGroup ? `<button class="list-tool${grouped && !pending.length ? " on" : ""}" data-list-group="${l.id}" ${pending.length ? 'data-regroup title="Group newly added cards"' : `aria-pressed="${grouped}" title="Group the cards into sections automatically"`}>${groupAction}</button>` : ""}
+        ${custom ? `<button class="list-tool on" data-group-edit="${l.id}" title="Change the sections you made">Edit groups</button>
+          <button class="list-tool" data-group-off="${l.id}" title="Show the cards without sections; Custom group brings your sections back">Ungroup</button>`
+          : canCustom ? `<button class="list-tool" data-group-edit="${l.id}" title="Make your own sections and drag cards into them">Custom group</button>` : ""}
         ${l.builtin ? "" : `<button class="list-tool" data-list-rename="${l.id}">Rename</button>
           <button class="list-tool" data-edit-description>Change description</button>`}
         ${l.builtin && entries.length ? `<button class="list-tool danger" data-list-clear="${l.id}">Clear</button>` : ""}
@@ -7513,12 +7551,784 @@ The book remembers the last lesson you opened, in this browser, and the contents
         </div>
         ${tools}
         ${entries.length
-          ? (isBuiltin || grouped
+          ? (isBuiltin || grouped || custom
               ? listSectionsHtml({ id: l.id, sections })
               : `<div class="cards">${entries.map(e => cardHtml(e, true, null)).join("")}</div>`)
           : `<div class="empty-state"><div class="big">${glyph}</div>This list is empty. Press the &ldquo;+&rdquo; on any card to add it here, or the star to save it for later.</div>`}
       </div>`;
   }
+
+  // ---------- Custom groups: the group editor (owner, 2026-11-08) ----------
+  // A list's own sections, made by hand: a sidebar of sections (add, rename, reorder, delete,
+  // and the tools), beside the sections themselves with the cards as chips. Cards move by
+  // dragging (mouse or pen) onto a section or a section's row in the sidebar, or by selecting
+  // them (a click or a tap) and pressing a section under "Move to". Every change is saved at
+  // once and can be undone; Done closes the editor.
+  // An app-styled confirmation in place of the browser's (owner's standing preference): a modal
+  // card with a title, a line, Cancel and the action. Escape, Cancel or a click outside
+  // declines; Cancel has the focus, so a stray Enter does nothing harmful. Resolves true or false.
+  function appConfirm({ title, text, ok = "OK", danger = false }) {
+    return new Promise(resolve => {
+      const d = document.createElement("dialog");
+      d.className = "app-confirm";
+      d.setAttribute("aria-labelledby", "app-confirm-t");
+      d.innerHTML = `<form method="dialog">
+          <h3 id="app-confirm-t">${escapeAttr(title)}</h3>
+          ${text ? `<p>${escapeAttr(text)}</p>` : ""}
+          <div class="app-confirm-actions">
+            <button type="submit" value="cancel" class="hp-btn hp-btn-soft">Cancel</button>
+            <button type="submit" value="ok" class="hp-btn${danger ? " app-confirm-danger" : ""}">${escapeAttr(ok)}</button>
+          </div></form>`;
+      document.body.appendChild(d);
+      d.addEventListener("close", () => { resolve(d.returnValue === "ok"); d.remove(); }, { once: true });
+      d.addEventListener("click", e => { if (e.target === d) d.close("cancel"); });
+      d.showModal();
+      d.querySelector('button[value="cancel"]').focus();
+    });
+  }
+  let groupEdit = null;   // { listId, undo: [snapshots], redo: [snapshots], selected: Set, renaming: index }
+  // The reorder grip: six dots.
+  const GE_GRIP = `<svg width="10" height="16" viewBox="0 0 10 16" aria-hidden="true">${[3, 8, 13].map(y => `<circle cx="2.5" cy="${y}" r="1.4"/><circle cx="7.5" cy="${y}" r="1.4"/>`).join("")}</svg>`;
+  function customSectionView(l, shown) {
+    const inList = new Set(shown), used = new Set();
+    const out = (l.customSections || []).map((sec, i) => {
+      const ids = sec.ids.filter(id => inList.has(id) && !used.has(id));
+      ids.forEach(id => used.add(id));
+      return { title: escapeAttr(sec.title || "Untitled section"), rawNote: sec.note || "", ci: i, ids };
+    });
+    const loose = shown.filter(id => !used.has(id));
+    // Cards not placed yet, among them any added after the sections were made, wait here.
+    if (loose.length) out.push({ title: "Not in a section", ids: loose, looseOf: l.id });
+    return out;
+  }
+  function geList() { return groupEdit && getList(groupEdit.listId); }
+  function geIds(l) { return l.ids.filter(id => BY_ID[id]); }
+  function geLoose(l) {
+    const used = new Set(l.customSections.flatMap(sec => sec.ids));
+    return geIds(l).filter(id => !used.has(id));
+  }
+  // Undo and Redo keep the list's cards as well as its sections, since cards can be added and removed here.
+  function geSnapshot(l) { return JSON.stringify({ ids: l.ids, sections: l.customSections }); }
+  function geRestore(l, snap) { const o = JSON.parse(snap); l.ids = o.ids; l.customSections = o.sections; }
+  function geChange(fn) {
+    const l = geList(); if (!l) return;
+    groupEdit.renaming = groupEdit.noting = null;
+    const before = geSnapshot(l);
+    fn(l);
+    // A change that changes nothing (a card dropped where it was) leaves no Undo step.
+    if (geSnapshot(l) !== before) {
+      groupEdit.undo.push(before);
+      groupEdit.redo = [];
+      if (groupEdit.undo.length > 60) groupEdit.undo.shift();
+      saveLists();
+    }
+    geRefresh();
+  }
+  function openGroupEditor(listId) {
+    const l = getList(listId); if (!l) return;
+    if (!Array.isArray(l.customSections) || !l.customSections.length) {
+      const ids = geIds(l);
+      let seed = Array.isArray(l.customOff) && l.customOff.length ? l.customOff : null;
+      // Starting while the list is auto-grouped keeps those sections as the first draft.
+      const auto = l.builtin ? state.autoGroup && ids.length >= 8 : Array.isArray(l.groupedIds);
+      if (!seed && auto) seed = autoSections(ids).filter(sec => sec.title && sec.title !== "Also in this list")
+        .map(sec => ({ title: sec.title, note: "", ids: sec.ids.slice() }));
+      l.customSections = seed ? JSON.parse(JSON.stringify(seed)) : [];
+      delete l.customOff;
+      saveLists();
+    }
+    groupEdit = { listId, undo: [], redo: [], selected: new Set(), renaming: null, find: "", findAt: -1 };
+    render();
+    window.scrollTo({ top: 0 });
+  }
+  // Closing drops empty untitled sections; a list left with no card in any section is ungrouped.
+  function geTidy(l) {
+    if (!l || !Array.isArray(l.customSections)) return;
+    l.customSections = l.customSections.filter(sec => sec.ids.length || (sec.title || "").trim());
+    if (!l.customSections.some(sec => sec.ids.some(x => l.ids.includes(x)))) delete l.customSections;
+    else if (!l.builtin) delete l.groupedIds;
+    saveLists();
+  }
+  function closeGroupEditor() {
+    const l = geList();
+    groupEdit = null;
+    geTidy(l);
+    render();
+  }
+  function geChipHtml(id, sel) {
+    const e = BY_ID[id]; if (!e) return "";
+    const kind = kindOf(e.formula);
+    return `<button type="button" class="ge-chip${sel.has(id) ? " is-sel" : ""}" data-ge-chip="${escapeAttr(id)}" aria-pressed="${sel.has(id)}">
+        <span class="ge-chip-name">${e.formula.name}</span><span class="ge-chip-kind ge-k-${kind}">${kind}</span></button>`;
+  }
+  // Finding and adding cards (owner, 2026-11-08). One box: the list's cards that match are
+  // outlined and the rest fade, Enter steps through them, and cards that are not in the list yet
+  // are offered below it; adding one puts it under "Not in a section", selected, ready to move.
+  function geFindWords() { return (groupEdit.find || "").toLowerCase().split(/\s+/).filter(Boolean); }
+  function geFindMatches(l) {
+    const words = geFindWords();
+    if (!words.length) return [];
+    return [...geLoose(l), ...l.customSections.flatMap(sec => sec.ids)].filter(id => {
+      const e = BY_ID[id];
+      if (!e || !l.ids.includes(id)) return false;
+      // The name as shown (math marks dropped), so what is outlined is what you can see; a keyword
+      // counts only when it is the whole query ("crt" finds the Chinese Remainder Theorem).
+      const name = e.nameLower + " " + e.nameLower.replace(/[$\\{}^_]/g, "");
+      const q = words.join(" ");
+      return words.every(w => name.includes(w)) || (e.formula.keywords || []).some(k => k.toLowerCase() === q);
+    });
+  }
+  function geApplyFind() {
+    const l = geList(), box = $content.querySelector(".ge-find");
+    if (!l || !box) return;
+    const q = (groupEdit.find || "").trim(), matches = geFindMatches(l), set = new Set(matches);
+    $content.querySelectorAll(".ge [data-ge-chip]").forEach(c => {
+      const hit = set.has(c.dataset.geChip);
+      c.classList.toggle("is-match", !!q && hit);
+      c.classList.toggle("is-dim", !!q && !hit);
+      c.classList.toggle("is-current", !!q && matches[groupEdit.findAt] === c.dataset.geChip);
+    });
+    const status = box.querySelector(".ge-find-status");
+    status.innerHTML = !q ? "" : matches.length
+      ? `<span>${matches.length} in this list${matches.length > 1 ? " &middot; Enter steps through them" : ""}</span><button type="button" class="ge-link" data-ge-act="select-matches">Select ${matches.length > 1 ? "these" : "it"}</button><button type="button" class="ge-link" data-ge-act="find-clear">Clear</button>`
+      : `<span>None in this list</span><button type="button" class="ge-link" data-ge-act="find-clear">Clear</button>`;
+    const res = box.querySelector(".ge-add-results");
+    const inList = new Set(l.ids);
+    const hits = q ? (searchFormulas(q).results || []).filter(e => !inList.has(e.formula.id)).slice(0, 4) : [];
+    res.hidden = !hits.length;
+    res.innerHTML = hits.length ? `<div class="ge-add-h">Add to this list</div>` + hits.map(e => `<button type="button" class="list-add-row" data-ge-add="${escapeAttr(e.formula.id)}">
+        <span class="lar-plus">+</span><span class="lar-name">${e.formula.name}</span><span class="lar-crumb">${escapeAttr(e.section.title)}</span></button>`).join("") : "";
+    if (hits.length) renderMath(box);
+  }
+  function geAddCard(id) {
+    if (!BY_ID[id]) return;
+    groupEdit.selected.clear();
+    groupEdit.selected.add(id);
+    geChange(l => { if (!l.ids.includes(id)) l.ids.push(id); });
+    const chip = $content.querySelector(`[data-ge-chip="${CSS.escape(id)}"]`);
+    if (chip) chip.classList.add("is-new");
+    const fi = $content.querySelector(".ge-find-input");
+    if (fi) { fi.focus({ preventScroll: true }); fi.setSelectionRange(fi.value.length, fi.value.length); }
+  }
+  document.addEventListener("input", e => {
+    if (!groupEdit || !e.target.classList || !e.target.classList.contains("ge-find-input")) return;
+    groupEdit.find = e.target.value;
+    groupEdit.findAt = -1;
+    geApplyFind();
+  });
+  document.addEventListener("keydown", e => {
+    const t = e.target;
+    if (!groupEdit || !t.classList || !t.classList.contains("ge-find-input")) return;
+    const l = geList(); if (!l) return;
+    if (e.key === "Escape") {
+      e.preventDefault(); e.stopPropagation();
+      if (t.value) { groupEdit.find = ""; groupEdit.findAt = -1; t.value = ""; geApplyFind(); } else t.blur();
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      const matches = geFindMatches(l);
+      if (matches.length) {
+        groupEdit.findAt = (groupEdit.findAt + 1) % matches.length;
+        geApplyFind();
+        const c = $content.querySelector(`[data-ge-chip="${CSS.escape(matches[groupEdit.findAt])}"]`);
+        if (c) c.scrollIntoView({ block: "center", behavior: "smooth" });
+      } else {
+        // Nothing in the list matches: Enter adds the first card offered.
+        const first = $content.querySelector(".ge-add-results [data-ge-add]");
+        if (first) geAddCard(first.dataset.geAdd);
+      }
+    } else if (e.key === "ArrowDown") {
+      const first = $content.querySelector(".ge-add-results [data-ge-add]");
+      if (first) { e.preventDefault(); first.focus(); }
+    }
+  });
+  document.addEventListener("keydown", e => {
+    const row = e.target.closest && e.target.closest(".ge-add-results [data-ge-add]");
+    if (!row || (e.key !== "ArrowDown" && e.key !== "ArrowUp")) return;
+    e.preventDefault();
+    const sib = e.key === "ArrowDown" ? row.nextElementSibling : row.previousElementSibling;
+    if (sib && sib.matches("[data-ge-add]")) sib.focus();
+    else if (e.key === "ArrowUp") $content.querySelector(".ge-find-input").focus();
+  });
+  function geZoneHtml(ids, key, sel) {
+    return `<div class="ge-zone" data-ge-zone="${key}">${ids.length ? ids.map(id => geChipHtml(id, sel)).join("")
+      : `<p class="ge-empty">${key === "loose" ? "Every card is in a section." : "Drag cards here, or select cards and press this section under Move to."}</p>`}</div>`;
+  }
+  function groupEditorHtml(l) {
+    const sel = groupEdit.selected, secs = l.customSections, loose = geLoose(l);
+    const inList = new Set(geIds(l));
+    const ids = sec => sec.ids.filter(id => inList.has(id));
+    // A button that would change nothing is shown disabled (owner, 2026-11-08).
+    const nameOf = id => BY_ID[id] ? BY_ID[id].nameLower : id;
+    const sorted = secs.every(sec => ids(sec).every((id, k, a) => !k || nameOf(a[k - 1]).localeCompare(nameOf(id)) <= 0));
+    const autoNow = JSON.stringify(autoSections(geIds(l)).filter(sec => sec.title && sec.title !== "Also in this list").map(sec => [sec.title, sec.ids]));
+    const autoSame = autoNow === JSON.stringify(secs.map(sec => [sec.title, ids(sec)]));
+    const selIn = new Set([...sel].filter(id => secs.some(sec => sec.ids.includes(id))));
+    const off = cond => cond ? " disabled" : "";
+    const renameHere = (i, where) => groupEdit.renaming === i && (groupEdit.renameWhere || "side") === where;
+    const rows = secs.map((sec, i) => renameHere(i, "side")
+      ? `<div class="ge-row is-renaming"><input class="ge-rename" data-ge-rename="${i}" value="${escapeAttr(sec.title || "")}" aria-label="Section name" placeholder="Section name" maxlength="80"></div>`
+      : `<div class="ge-row" data-ge-row="${i}">
+          <button type="button" class="ge-row-name" data-ge-act="rename" data-i="${i}" title="Rename">${escapeAttr(sec.title || "Untitled section")}</button>
+          <span class="ge-row-n">${ids(sec).length}</span>
+          <span class="ge-row-tools">
+            <button type="button" class="ge-ico ge-del" data-ge-act="delete" data-i="${i}" aria-label="Delete section" title="Delete section">&times;</button>
+            ${secs.length > 1 ? `<button type="button" class="ge-ico ge-handle" data-ge-handle="${i}" aria-label="Reorder ${escapeAttr(sec.title || "Untitled section")}: drag, or press the up and down arrows" title="Drag to reorder">${GE_GRIP}</button>` : ""}
+          </span>
+        </div>`).join("");
+    const moveBar = sel.size ? `<div class="ge-movebar" role="region" aria-label="Move selected cards">
+        <div class="ge-move-top"><span class="ge-move-n">${sel.size} selected</span><span class="ge-move-k">Move to</span>
+          <div class="ge-move-pills">${secs.map((sec, i) => `<button type="button" class="ge-pill" data-ge-act="moveto" data-i="${i}" title="${escapeAttr(sec.title || "Untitled section")}"${off([...sel].every(id => sec.ids.includes(id)))}>${escapeAttr(sec.title || "Untitled section")}</button>`).join("")}</div></div>
+        <div class="ge-move-actions">
+          <button type="button" class="ge-pill ge-pill-new" data-ge-act="moveto-new" data-where="main">+ New section</button>
+          <button type="button" class="ge-pill ge-pill-soft" data-ge-act="moveto-loose"${off(!selIn.size)}>Out of sections</button>
+          <button type="button" class="ge-pill ge-pill-danger" data-ge-act="remove" title="Take the selected cards off this list (Undo brings them back)">Remove from list</button>
+          <button type="button" class="ge-link" data-ge-act="deselect">Clear selection</button>
+        </div>
+      </div>` : "";
+    return `<div class="ge" data-ge-list="${escapeAttr(l.id)}">
+      <div class="back-row ge-back-row"><a class="back-link" href="#/list/${escapeAttr(l.id)}" data-ge-act="done">&larr; Back to list</a>
+        <a class="back-link" href="#/learn" data-goto="pr-study">&larr; Learn</a></div>
+      <div class="ge-head">
+        <div><div class="book-eyebrow">Learn &middot; Lists &middot; Custom groups</div><h2${l.builtin ? "" : ` data-list-title="${escapeAttr(l.id)}" title="Click to rename"`}>${escapeAttr(l.name)}</h2></div>
+        <button type="button" class="hp-btn ge-done" data-ge-act="done" title="Save your sections and close the editor">Save</button>
+      </div>
+      <div class="ge-body">
+        <aside class="ge-side" aria-label="Sections">
+          <div class="ge-side-h">Sections <span>${secs.length}</span></div>
+          <div class="ge-rows">${rows || `<p class="ge-side-empty">No sections yet.</p>`}</div>
+          <button type="button" class="ge-add" data-ge-act="new">+ New section</button>
+          <div class="ge-side-h ge-tools-h">Tools</div>
+          <div class="ge-undo-row">
+            <button type="button" class="ge-tool" data-ge-act="undo" ${groupEdit.undo.length ? "" : "disabled"}>Undo</button>
+            <button type="button" class="ge-tool" data-ge-act="redo" ${groupEdit.redo.length ? "" : "disabled"}>Redo</button>
+          </div>
+          <button type="button" class="ge-tool" data-ge-act="select-loose"${off(!loose.length || loose.every(id => sel.has(id)))}>Select the cards not in a section</button>
+          <button type="button" class="ge-tool" data-ge-act="auto"${off(geIds(l).length < 2 || autoSame)}>Start from the automatic groups</button>
+          <button type="button" class="ge-tool" data-ge-act="sort"${off(!secs.length || sorted)}>Sort each section A&ndash;Z</button>
+          <button type="button" class="ge-tool" data-ge-act="drop-empty" ${secs.some(sec => !ids(sec).length) ? "" : "disabled"}>Remove empty sections</button>
+          <button type="button" class="ge-tool ge-danger" data-ge-act="clear" ${secs.length ? "" : "disabled"}>Remove every section</button>
+        </aside>
+        <div class="ge-main">
+          ${moveBar}
+          <div class="ge-find">
+            <input type="search" class="ge-find-input" placeholder="Find a card in this list, or add one&hellip;" value="${escapeAttr(groupEdit.find || "")}" aria-label="Find a card in this list, or add one" autocomplete="off" spellcheck="false">
+            <div class="ge-find-status" role="status"></div>
+            <div class="ge-add-results" hidden></div>
+          </div>
+          <section class="ge-sec ge-loose">
+            <h3 class="ge-sec-h">Not in a section <span class="ge-sec-n">${loose.length}</span></h3>
+            ${geZoneHtml(loose, "loose", sel)}
+          </section>
+          ${secs.map((sec, i) => `<section class="ge-sec" id="ge-sec-${i}">
+            <h3 class="ge-sec-h">${renameHere(i, "main")
+              ? `<input class="ge-rename ge-rename-main" data-ge-rename="${i}" value="${escapeAttr(sec.title || "")}" aria-label="Section name" placeholder="Section name" maxlength="80" size="${Math.max(8, (sec.title || "").length + 1)}">`
+              : `<button type="button" class="ge-sec-name" data-ge-act="rename" data-where="main" data-i="${i}" title="Click to rename">${escapeAttr(sec.title || "Untitled section")}</button>`} <span class="ge-sec-n">${ids(sec).length}</span></h3>
+            ${(sec.note || "").trim() || groupEdit.noting === i
+              ? (groupEdit.noting === i
+                ? `<textarea class="ge-note-input" data-ge-note="${i}" rows="1" maxlength="300" placeholder="Describe this section. Shift+Enter adds a line.">${escapeAttr(sec.note || "")}</textarea>`
+                : `<button type="button" class="ge-note" data-ge-act="note" data-i="${i}" title="Change the description">${listDescriptionHtml(sec.note)}</button>`)
+              : `<button type="button" class="ge-link ge-add-note" data-ge-act="note" data-i="${i}">+ Add a description</button>`}
+            ${geZoneHtml(ids(sec), String(i), sel)}
+          </section>`).join("")}
+          <button type="button" class="ge-add ge-add-main" data-ge-act="new" data-where="main">+ New section</button>
+        </div>
+      </div>
+    </div>`;
+  }
+  function geRefresh(focusSel) {
+    const old = $content.querySelector(".ge"), l = geList();
+    if (!old || !l) { render(); return; }
+    const y = window.scrollY;
+    const findHad = document.activeElement && document.activeElement.classList.contains("ge-find-input");
+    old.outerHTML = groupEditorHtml(l);
+    const box = $content.querySelector(".ge");
+    geApplyFind();
+    if (findHad && !focusSel) { const fi = box.querySelector(".ge-find-input"); fi.focus({ preventScroll: true }); fi.setSelectionRange(fi.value.length, fi.value.length); }
+    renderMath(box.parentElement);   // the renderer looks inside its container, so pass the editor's parent
+    window.scrollTo({ top: y });
+    const f = focusSel && box.querySelector(focusSel);
+    if (f) {
+      f.focus();
+      if (f.select) {
+        f.select();
+        // Opened while a button is held: the release would select only part of the text, so
+        // select it all again once the button comes up (owner, 2026-11-08).
+        if (geDrag.buttons) document.addEventListener("pointerup", () => setTimeout(() => { if (document.activeElement === f) f.select(); }, 0), { capture: true, once: true });
+      }
+    }
+  }
+  // Move cards (in the order they show, when several) into a section before a given card (at
+  // the end when none), or out of every section.
+  function geMove(l, moving, target, beforeId) {
+    const shown = [...geLoose(l), ...l.customSections.flatMap(sec => sec.ids)];
+    moving = moving.slice().sort((a, b) => shown.indexOf(a) - shown.indexOf(b));
+    const set = new Set(moving);
+    l.customSections.forEach(sec => { sec.ids = sec.ids.filter(id => !set.has(id)); });
+    if (target === "loose") return;
+    const ids = l.customSections[target].ids;
+    const at = beforeId != null && !set.has(beforeId) ? ids.indexOf(beforeId) : -1;
+    ids.splice(at < 0 ? ids.length : at, 0, ...moving);
+  }
+  function geNewSection(l, ids) {
+    const used = new Set(l.customSections.map(sec => sec.title));
+    let n = l.customSections.length + 1, title = "Section " + n;
+    while (used.has(title)) title = "Section " + (++n);
+    l.customSections.push({ title, note: "", ids: [] });
+    const i = l.customSections.length - 1;
+    if (ids && ids.length) geMove(l, ids, i);
+    groupEdit.renaming = i;
+    return i;
+  }
+  function geAction(act, i) {
+    const l = geList(); if (!l) return;
+    const sel = groupEdit.selected;
+    switch (act) {
+      case "done": closeGroupEditor(); return;
+      case "rename": groupEdit.renaming = i; geRefresh(`[data-ge-rename="${i}"]`); return;
+      case "note": groupEdit.noting = i; geRefresh(`[data-ge-note="${i}"]`); return;
+      case "deselect": sel.clear(); geRefresh(); return;
+      case "select-loose": geLoose(l).forEach(id => sel.add(id)); geRefresh(); return;
+      case "undo": case "redo": {
+        const [from, to] = act === "undo" ? [groupEdit.undo, groupEdit.redo] : [groupEdit.redo, groupEdit.undo];
+        const snap = from.pop();
+        if (snap == null) return;
+        to.push(geSnapshot(l));
+        geRestore(l, snap);
+        saveLists();
+        groupEdit.renaming = groupEdit.noting = null;
+        geRefresh(); return;
+      }
+      case "select-all": geIds(l).forEach(id => sel.add(id)); geRefresh(); return;
+      case "select-matches": sel.clear(); geFindMatches(l).forEach(id => sel.add(id)); geRefresh(); return;
+      case "find-clear": groupEdit.find = ""; groupEdit.findAt = -1; geRefresh(".ge-find-input"); return;
+      case "remove": {
+        const gone = new Set(sel);
+        sel.clear();
+        geChange(l2 => {
+          l2.ids = l2.ids.filter(id => !gone.has(id));
+          l2.customSections.forEach(sec => { sec.ids = sec.ids.filter(id => !gone.has(id)); });
+        });
+        return;
+      }
+      case "new": geChange(l2 => geNewSection(l2)); geRefresh(`[data-ge-rename="${l.customSections.length - 1}"]`); return;
+      case "moveto-new": geChange(l2 => geNewSection(l2, [...sel])); sel.clear(); geRefresh(`[data-ge-rename="${l.customSections.length - 1}"]`); return;
+      case "moveto": geChange(l2 => geMove(l2, [...sel], i)); sel.clear(); geRefresh(); return;
+      case "moveto-loose": geChange(l2 => geMove(l2, [...sel], "loose")); sel.clear(); geRefresh(); return;
+      case "up": case "down": {
+        const j = act === "up" ? i - 1 : i + 1;
+        if (j < 0 || j >= l.customSections.length) return;
+        geChange(l2 => { const s = l2.customSections; [s[i], s[j]] = [s[j], s[i]]; });
+        geRefresh(`[data-ge-handle="${j}"]`); return;
+      }
+      case "delete": geChange(l2 => l2.customSections.splice(i, 1)); return;
+      case "sort": geChange(l2 => l2.customSections.forEach(sec => sec.ids.sort((a, b) =>
+        (BY_ID[a] ? BY_ID[a].nameLower : a).localeCompare(BY_ID[b] ? BY_ID[b].nameLower : b)))); return;
+      case "drop-empty": {
+        const live = new Set(geIds(l));
+        geChange(l2 => { l2.customSections = l2.customSections.filter(sec => sec.ids.some(id => live.has(id))); }); return;
+      }
+      case "clear": geChange(l2 => { l2.customSections = []; }); return;
+      case "auto": geChange(l2 => {
+        l2.customSections = autoSections(geIds(l2)).filter(sec => sec.title && sec.title !== "Also in this list")
+          .map(sec => ({ title: sec.title, note: "", ids: sec.ids.slice() }));
+      }); return;
+    }
+  }
+  function geCommitRename(input, cancel) {
+    const l = geList(), i = +input.dataset.geRename;
+    if (!groupEdit || groupEdit.renaming !== i) return;
+    const v = input.value.trim();
+    groupEdit.renaming = null;
+    if (!cancel && l && l.customSections[i] && v && v !== l.customSections[i].title) geChange(l2 => { l2.customSections[i].title = v; });
+    else geRefresh();
+  }
+  function geCommitNote(input, cancel) {
+    const l = geList(), i = +input.dataset.geNote;
+    if (!groupEdit || groupEdit.noting !== i) return;
+    const v = cleanDescription(input.value);
+    groupEdit.noting = null;
+    if (!cancel && l && l.customSections[i] && v !== (l.customSections[i].note || "")) geChange(l2 => { l2.customSections[i].note = v; });
+    else geRefresh();
+  }
+  document.addEventListener("click", e => {
+    if (!groupEdit) {
+      const open = e.target.closest("[data-group-edit]");
+      if (open) { openGroupEditor(open.dataset.groupEdit); return; }
+      const off = e.target.closest("[data-group-off]");
+      if (off) {
+        const l = getList(off.dataset.groupOff);
+        if (l && Array.isArray(l.customSections)) {
+          appConfirm({ title: "Ungroup this list?", text: "The cards will be shown without sections. Your sections are saved, so pressing Custom group again brings them back.", ok: "Ungroup" })
+            .then(yes => { if (yes && Array.isArray(l.customSections)) { l.customOff = l.customSections; delete l.customSections; saveLists(); render(); } });
+        }
+      }
+      return;
+    }
+    if (!e.target.closest(".ge")) return;
+    if (geDrag.suppressClick) { geDrag.suppressClick = false; e.preventDefault(); return; }
+    const add = e.target.closest("[data-ge-add]");
+    if (add) { e.preventDefault(); geAddCard(add.dataset.geAdd); return; }
+    const b = e.target.closest("[data-ge-act]");
+    if (b) {
+      e.preventDefault();
+      if (/^(rename|new|moveto-new)$/.test(b.dataset.geAct)) groupEdit.renameWhere = b.dataset.where || "side";
+      geAction(b.dataset.geAct, b.dataset.i == null ? null : +b.dataset.i);
+      return;
+    }
+    const chip = e.target.closest("[data-ge-chip]");
+    if (chip) {
+      // The usual selection rules: a click selects the card alone, Ctrl or Cmd adds or removes it,
+      // Shift selects the run from the last card clicked. A tap, or Enter or Space on a focused
+      // card, adds or removes it, since a phone and a keyboard have no modifier to hold.
+      const id = chip.dataset.geChip, sel = groupEdit.selected;
+      const order = [...$content.querySelectorAll(".ge [data-ge-chip]")].map(c => c.dataset.geChip);
+      if (e.shiftKey && groupEdit.anchor && order.includes(groupEdit.anchor)) {
+        const [a, z] = [order.indexOf(groupEdit.anchor), order.indexOf(id)].sort((x, y) => x - y);
+        if (!(e.ctrlKey || e.metaKey)) sel.clear();
+        order.slice(a, z + 1).forEach(x => sel.add(x));
+      } else {
+        if (e.ctrlKey || e.metaKey || e.detail === 0 || geDrag.lastPointer === "touch") { if (sel.has(id)) sel.delete(id); else sel.add(id); }
+        else if (sel.size === 1 && sel.has(id)) sel.clear();
+        else { sel.clear(); sel.add(id); }
+        groupEdit.anchor = id;
+      }
+      geRefresh(`[data-ge-chip="${CSS.escape(id)}"]`);
+      return;
+    }
+    // A click on empty space clears the selection.
+    if (groupEdit.selected.size && !e.target.closest("button, a, input, textarea, .ge-movebar, [data-list-title]")) {
+      groupEdit.selected.clear();
+      geRefresh();
+    }
+  });
+  document.addEventListener("keydown", e => {
+    const r = e.target.closest && e.target.closest("[data-ge-rename], [data-ge-note]");
+    const inEditor = groupEdit && $content.querySelector(".ge") && !(e.target.closest && e.target.closest("input, textarea, [contenteditable='true']"));
+    // Escape anywhere else in the editor closes it, like Done.
+    if (!r && e.key === "Escape" && inEditor) {
+      if (groupEdit.selected.size) { groupEdit.selected.clear(); geRefresh(); } else closeGroupEditor();
+      return;
+    }
+    // The grip reorders by keyboard too: up and down arrows move the section.
+    const grip = e.target.closest && e.target.closest("[data-ge-handle]");
+    if (grip && inEditor && (e.key === "ArrowUp" || e.key === "ArrowDown") && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      e.preventDefault(); geAction(e.key === "ArrowUp" ? "up" : "down", +grip.dataset.geHandle); return;
+    }
+    // Keyboard shortcuts (owner, 2026-11-08). Text boxes keep the browser's own undo.
+    if (!r && inEditor && !e.altKey) {
+      const mod = e.ctrlKey || e.metaKey, k = e.key.toLowerCase();
+      let act = null;
+      if (mod && k === "z") act = e.shiftKey ? "redo" : "undo";
+      else if (mod && !e.shiftKey && k === "y") act = "redo";
+      else if (mod && !e.shiftKey && k === "a") act = "select-all";
+      else if (!mod && (e.key === "Delete" || e.key === "Backspace") && groupEdit.selected.size) act = "moveto-loose";
+      if (act) { e.preventDefault(); geAction(act, null); return; }
+    }
+    if (!r) return;
+    if (e.key === "Escape") { e.preventDefault(); r.dataset.cancel = "1"; r.blur(); }
+    else if (e.key === "Enter" && !(r.dataset.geNote != null && e.shiftKey)) { e.preventDefault(); r.blur(); }
+  });
+  document.addEventListener("focusin", e => {
+    const t = e.target;
+    if (t.matches && t.matches(".ge-note-input")) { t.style.height = "auto"; t.style.height = t.scrollHeight + "px"; }
+  });
+  // The in-place boxes grow with what is typed, like the list title.
+  document.addEventListener("input", e => {
+    const t = e.target;
+    if (t.matches && t.matches(".ge-rename-main")) t.size = Math.max(8, t.value.length + 1);
+    if (t.matches && t.matches(".ge-note-input")) { t.style.height = "auto"; t.style.height = t.scrollHeight + "px"; }
+  });
+  document.addEventListener("focusout", e => {
+    const t = e.target;
+    if (!t || !t.dataset) return;
+    if (t.dataset.geRename != null) geCommitRename(t, t.dataset.cancel === "1");
+    else if (t.dataset.geNote != null) geCommitNote(t, t.dataset.cancel === "1");
+  });
+  // ---- Pointer interactions: dragging cards, reordering sections, selecting with a box ----
+  const geDrag = { on: false, suppressClick: false, lastPointer: "mouse" };
+  document.addEventListener("pointerdown", e => { geDrag.lastPointer = e.pointerType; geDrag.buttons = e.buttons; }, true);
+  document.addEventListener("pointerup", e => { geDrag.buttons = e.buttons; }, true);
+  // FLIP: note where every chip and row is, make a change, then slide each from its old place
+  // to its new one, so the page is seen to make room rather than jump.
+  function geFlip(change) {
+    const els = [...$content.querySelectorAll(".ge [data-ge-chip], .ge-placeholder, .ge-rows [data-ge-row]")];
+    const first = new Map(els.map(el => [el, el.getBoundingClientRect()]));
+    change();
+    for (const [el, a] of first) {
+      if (!el.isConnected || el.offsetParent === null) continue;
+      const b = el.getBoundingClientRect(), dx = a.left - b.left, dy = a.top - b.top;
+      if (!dx && !dy) continue;
+      el.style.transition = "none";
+      el.style.transform = `translate(${dx}px, ${dy}px)`;
+      el.getBoundingClientRect();
+      el.style.transition = "transform 170ms cubic-bezier(.2,.8,.2,1)";
+      el.style.transform = "";
+    }
+  }
+  // Where a chip sits in the layout, ignoring any slide still under way.
+  function geLayoutRect(el) {
+    const z = el.offsetParent.getBoundingClientRect();
+    return { left: z.left + el.offsetLeft, top: z.top + el.offsetTop, width: el.offsetWidth, height: el.offsetHeight };
+  }
+  function geScroller() {
+    const st = { y: 0, raf: 0 };
+    const loop = () => {
+      const edge = 70, y = st.y;
+      const v = y < edge ? -(edge - y) / 4 : y > innerHeight - edge ? (y - innerHeight + edge) / 4 : 0;
+      if (v) window.scrollBy(0, v);
+      st.raf = requestAnimationFrame(loop);
+    };
+    st.start = () => { st.raf = requestAnimationFrame(loop); };
+    st.stop = () => cancelAnimationFrame(st.raf);
+    return st;
+  }
+  function geEndGesture() {
+    geDrag.suppressClick = true;
+    setTimeout(() => { geDrag.suppressClick = false; }, 0);
+  }
+
+  // Reordering sections by their grip, with mouse, pen or touch (owner, 2026-11-08): the row
+  // follows the pointer the whole way, and each row it passes slides aside at once to show the
+  // slot it would take. The arrow keys on a focused grip move it a place at a time.
+  document.addEventListener("pointerdown", e => {
+    if (!groupEdit || (e.pointerType === "mouse" && e.button !== 0)) return;
+    const grip = e.target.closest("[data-ge-handle]");
+    if (!grip || !grip.closest(".ge")) return;
+    e.preventDefault();
+    const rows = [...$content.querySelectorAll(".ge-rows [data-ge-row]")];
+    const from = +grip.dataset.geHandle, row = rows[from];
+    const step = rows.length > 1 ? rows[1].offsetTop - rows[0].offsetTop : row.offsetHeight;
+    const centers = rows.map(r => r.offsetTop + r.offsetHeight / 2);
+    const startY = e.clientY;
+    let moved = false, to = from;
+    const move = ev => {
+      const dy = ev.clientY - startY;
+      if (!moved && Math.abs(dy) < 3) return;
+      if (!moved) {
+        moved = true;
+        row.classList.add("is-lifted");
+        document.body.classList.add("ge-dragging");
+        rows.forEach(r => { if (r !== row) r.style.transition = "transform 150ms cubic-bezier(.2,.8,.2,1)"; });
+      }
+      // Move the row with the pointer, letting it run half a row past either end of the list.
+      const lo = -(from + 0.5) * step, hi = (rows.length - 1 - from + 0.5) * step;
+      const y = Math.max(lo, Math.min(hi, dy));
+      row.style.transform = `translateY(${y}px)`;
+      const c = centers[from] + y;
+      to = from;
+      rows.forEach((r, k) => {
+        let shift = 0;
+        // A row gives way once the dragged row is halfway onto it.
+        if (k > from && c > centers[k] - step / 2) { shift = -step; to++; }
+        else if (k < from && c < centers[k] + step / 2) { shift = step; to--; }
+        if (r !== row) r.style.transform = shift ? `translateY(${shift}px)` : "";
+      });
+    };
+    const up = () => {
+      document.removeEventListener("pointermove", move);
+      document.removeEventListener("pointerup", up);
+      document.removeEventListener("pointercancel", up);
+      document.body.classList.remove("ge-dragging");
+      geEndGesture();
+      if (!moved) { grip.focus(); return; }
+      // Settle into the slot, then save the new order.
+      row.style.transition = "transform 120ms ease";
+      row.style.transform = `translateY(${(to - from) * step}px)`;
+      setTimeout(() => {
+        if (to !== from) geChange(l => { const [sec] = l.customSections.splice(from, 1); l.customSections.splice(to, 0, sec); });
+        else geRefresh();
+      }, 125);
+    };
+    document.addEventListener("pointermove", move);
+    document.addEventListener("pointerup", up);
+    document.addEventListener("pointercancel", up);
+  });
+
+  // Dragging cards (mouse and pen; on touch a press scrolls the page and a tap selects). The
+  // dragged cards leave their places, a gap of their size opens where they would land and the
+  // other cards slide to make room; the card itself follows the pointer.
+  document.addEventListener("pointerdown", e => {
+    if (!groupEdit || e.button !== 0 || e.pointerType === "touch") return;
+    const chip = e.target.closest("[data-ge-chip]");
+    if (!chip || !chip.closest(".ge")) return;
+    const id = chip.dataset.geChip;
+    const moving = groupEdit.selected.has(id) ? [...groupEdit.selected] : [id];
+    const sx = e.clientX, sy = e.clientY, scroll = geScroller();
+    // Where on the card it was grabbed: the floating copy keeps that point under the pointer.
+    const grab = chip.getBoundingClientRect(), ox = sx - grab.left, oy = sy - grab.top;
+    let ghost = null, holder = null, target = null;
+    const movingEls = () => [...$content.querySelectorAll(".ge [data-ge-chip]")].filter(c => moving.includes(c.dataset.geChip));
+    const findTarget = (x, y) => {
+      const el = document.elementFromPoint(x, y);
+      if (!el) return null;
+      const row = el.closest("[data-ge-row]");
+      if (row) return { key: +row.dataset.geRow, row };
+      const sec = el.closest(".ge-sec");
+      const zone = sec ? sec.querySelector("[data-ge-zone]") : el.closest("[data-ge-zone]");
+      if (!zone) return null;
+      const key = zone.dataset.geZone === "loose" ? "loose" : +zone.dataset.geZone;
+      if (key === "loose") return { key, zone, before: null };
+      const chips = [...zone.querySelectorAll("[data-ge-chip]")].filter(c => !moving.includes(c.dataset.geChip));
+      let before = null;
+      for (const c of chips) {
+        const r = geLayoutRect(c);
+        if (y < r.top || (y <= r.top + r.height && x < r.left + r.width / 2)) { before = c; break; }
+      }
+      return { key, zone, before };
+    };
+    const place = t => {
+      $content.querySelectorAll(".ge-over").forEach(x => x.classList.remove("ge-over"));
+      if (t && t.row) t.row.classList.add("ge-over");
+      if (t && t.zone) t.zone.classList.add("ge-over");
+      // A gap only where the order matters: not in "Not in a section", nor in a section with no
+      // other cards, where the highlight alone says where the cards will go (owner, 2026-11-08).
+      const want = t && t.zone && t.key !== "loose"
+        && [...t.zone.querySelectorAll("[data-ge-chip]")].some(c => !moving.includes(c.dataset.geChip)) ? t : null;
+      if (!want && !holder.isConnected) return;
+      if (want && holder.parentElement === want.zone && holder.nextElementSibling === want.before) return;
+      geFlip(() => {
+        if (!want) holder.remove();
+        else want.zone.insertBefore(holder, want.before);
+        $content.querySelectorAll(".ge-zone").forEach(z => {
+          const empty = z.querySelector(".ge-empty");
+          if (empty) empty.hidden = !!z.querySelector(".ge-placeholder");
+        });
+      });
+    };
+    const move = ev => {
+      scroll.y = ev.clientY;
+      if (!geDrag.on) {
+        if (Math.hypot(ev.clientX - sx, ev.clientY - sy) < 6) return;
+        geDrag.on = true;
+        document.body.classList.add("ge-dragging");
+        // The floating copy is the card itself, at its own size, held where it was grabbed.
+        ghost = chip.cloneNode(true);
+        ghost.className = "ge-chip ge-ghost-chip";
+        ghost.removeAttribute("data-ge-chip");
+        ghost.style.width = grab.width + "px";
+        if (moving.length > 1) ghost.insertAdjacentHTML("beforeend", `<span class="ge-ghost-n">${moving.length}</span>`);
+        document.body.appendChild(ghost);
+        holder = document.createElement("span");
+        holder.className = "ge-placeholder";
+        holder.style.width = (moving.length > 1 ? 150 : chip.offsetWidth) + "px";
+        holder.style.height = chip.offsetHeight + "px";
+        geFlip(() => {
+          movingEls().forEach(c => { c.hidden = true; });
+          chip.parentElement.insertBefore(holder, chip.nextElementSibling);
+        });
+        scroll.start();
+      }
+      ghost.style.transform = `translate(${ev.clientX - ox}px, ${ev.clientY - oy}px)`;
+      target = findTarget(ev.clientX, ev.clientY);
+      place(target);
+    };
+    const up = () => {
+      document.removeEventListener("pointermove", move);
+      document.removeEventListener("pointerup", up);
+      document.removeEventListener("pointercancel", up);
+      if (!geDrag.on) return;
+      geDrag.on = false;
+      geEndGesture();
+      scroll.stop();
+      document.body.classList.remove("ge-dragging");
+      if (ghost) ghost.remove();
+      if (target) {
+        const before = target.zone && holder.isConnected ? holder.nextElementSibling : null;
+        const beforeId = before && before.dataset ? before.dataset.geChip : null;
+        holder.remove();
+        groupEdit.selected.clear();
+        geChange(l => geMove(l, moving, target.key, beforeId));
+      } else {
+        geFlip(() => { holder.remove(); movingEls().forEach(c => { c.hidden = false; }); });
+        $content.querySelectorAll(".ge-over").forEach(x => x.classList.remove("ge-over"));
+      }
+    };
+    document.addEventListener("pointermove", move);
+    document.addEventListener("pointerup", up);
+    document.addEventListener("pointercancel", up);
+  });
+
+  // Selecting with a box: press on empty space and drag (mouse or pen). Cards the box touches
+  // are selected; with Shift, Ctrl or Cmd held they are added to the selection.
+  document.addEventListener("pointerdown", e => {
+    if (!groupEdit || e.button !== 0 || e.pointerType === "touch") return;
+    const ge = e.target.closest(".ge");
+    // Not from the search area above "Not in a section": its text can be highlighted as usual
+    // there (owner, 2026-11-08). From that heading down, a drag on empty space draws the box.
+    if (!ge || !e.target.closest(".ge-main") || e.target.closest("button, a, input, textarea, [data-ge-chip], .ge-movebar, .ge-find")) return;
+    const add = e.shiftKey || e.ctrlKey || e.metaKey;
+    const keep = add ? new Set(groupEdit.selected) : new Set();
+    const sx = e.clientX, sy = e.clientY + window.scrollY, scroll = geScroller();
+    let band = null, x = e.clientX, y = e.clientY;
+    const chips = [...$content.querySelectorAll(".ge [data-ge-chip]")];
+    const update = () => {
+      const top = Math.min(sy, y + window.scrollY), bottom = Math.max(sy, y + window.scrollY);
+      const left = Math.min(sx, x), right = Math.max(sx, x);
+      band.style.left = left + "px"; band.style.top = (top - window.scrollY) + "px";
+      band.style.width = (right - left) + "px"; band.style.height = (bottom - top) + "px";
+      for (const c of chips) {
+        const r = c.getBoundingClientRect(), ct = r.top + window.scrollY, cb = r.bottom + window.scrollY;
+        const hit = r.right > left && r.left < right && cb > top && ct < bottom;
+        const on = hit || keep.has(c.dataset.geChip);
+        c.classList.toggle("is-sel", on);
+      }
+    };
+    const onScroll = () => { if (band) update(); };
+    const move = ev => {
+      x = ev.clientX; y = ev.clientY; scroll.y = y;
+      if (!band) {
+        if (Math.hypot(x - sx, y + window.scrollY - sy) < 5) return;
+        band = document.createElement("div");
+        band.className = "ge-band";
+        document.body.appendChild(band);
+        document.body.classList.add("ge-selecting");
+        window.addEventListener("scroll", onScroll);
+        scroll.start();
+      }
+      update();
+    };
+    const up = () => {
+      document.removeEventListener("pointermove", move);
+      document.removeEventListener("pointerup", up);
+      document.removeEventListener("pointercancel", up);
+      if (!band) return;
+      scroll.stop();
+      window.removeEventListener("scroll", onScroll);
+      band.remove();
+      document.body.classList.remove("ge-selecting");
+      geEndGesture();
+      groupEdit.selected = new Set(chips.filter(c => c.classList.contains("is-sel")).map(c => c.dataset.geChip));
+      geRefresh();
+    };
+    document.addEventListener("pointermove", move);
+    document.addEventListener("pointerup", up);
+    document.addEventListener("pointercancel", up);
+  });
+
+  // Moving from one text box straight to another control takes one click (owner, 2026-11-08):
+  // leaving a box saves it and redraws the page, which used to swallow the click, so the
+  // control pressed is found again in the new page and pressed for the reader.
+  const REPLAYABLE = "[data-ge-act], [data-ge-chip], button[data-description], [data-edit-description], h2[data-list-title], [data-list-rename], [data-group-edit], [data-group-off], [data-list-group], [data-list-delete], [data-list-clear]";
+  document.addEventListener("pointerdown", e => {
+    const a = document.activeElement;
+    if (!a || !a.matches || !a.matches("[data-ge-rename], [data-ge-note], .list-description-editor, h2[contenteditable='true']")) return;
+    const t = e.target.closest && e.target.closest(REPLAYABLE);
+    if (!t || t === a || a.contains(t)) return;
+    const sel = t.tagName.toLowerCase() + [...t.attributes].filter(x => x.name.startsWith("data-"))
+      .map(x => `[${x.name}="${CSS.escape(x.value)}"]`).join("");
+    const shift = e.shiftKey, mod = e.ctrlKey || e.metaKey;
+    // Wait for the button to come up: a box opened while it is still down would take the
+    // release as a drag and select only part of its text (owner, 2026-11-08).
+    const replay = () => {
+      if (t.isConnected) return;   // nothing was redrawn, so the click lands by itself
+      const again = document.querySelector(sel);
+      if (again) again.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, shiftKey: shift, ctrlKey: mod, detail: 1 }));
+    };
+    const onUp = () => { document.removeEventListener("pointercancel", onUp, true); setTimeout(replay, 0); };
+    document.addEventListener("pointerup", onUp, { capture: true, once: true });
+    document.addEventListener("pointercancel", onUp, { capture: true, once: true });
+  }, true);
+
   // Parse only the small description format. Keep math opaque to emphasis and list parsing.
   function listDescriptionHtml(source) {
     const lines = [""];
@@ -7538,16 +8348,37 @@ The book remembers the last lesson you opened, in this browser, and the contents
         });
       }
     }
-    let html = "", inList = false;
+    // Lists as Google Docs makes them (owner, 2026-11-08): a line "• text" is a bullet, two spaces
+    // of indent per level nest it (at most one level deeper than the bullet before), a bullet may
+    // be empty, and an indented line with no bullet continues the bullet above it on a new line.
+    let html = "";
+    const stack = [];   // the open lists, deepest last; each notes whether its last item is open
+    const closeItem = () => { const top = stack[stack.length - 1]; if (top && top.open) { html += "</span>"; top.open = false; } };
+    const closeList = () => { closeItem(); html += "</span>"; stack.pop(); };
     for (const line of lines) {
-      const bullet = line.match(/^\s*[-*•]\s+([\s\S]+)$/);
-      if (inList && !bullet) html += "</span>";
-      if (bullet && !inList) html += '<span class="description-bullets" role="list">';
-      html += bullet ? '<span role="listitem">' + bullet[1] + "</span>"
-        : '<span class="description-line">' + (line || "<br>") + "</span>";
-      inList = !!bullet;
+      const bullet = line.match(/^( *)[-*•◦▪](?: ([\s\S]*))?$/);
+      if (bullet) {
+        const level = Math.min(Math.floor(bullet[1].length / 2), stack.length, 2);
+        if (level === stack.length) {
+          html += `<span class="description-bullets" role="list" data-level="${level}">`;
+          stack.push({ open: false });
+        } else {
+          while (stack.length - 1 > level) closeList();
+          closeItem();
+        }
+        html += '<span role="listitem">' + ((bullet[2] || "").trim() ? bullet[2] : "&#8203;");
+        stack[stack.length - 1].open = true;
+        continue;
+      }
+      if (stack.length && stack[stack.length - 1].open && /^ {2,}\S/.test(line)) {
+        html += "<br>" + line.trimStart();
+        continue;
+      }
+      while (stack.length) closeList();
+      html += '<span class="description-line">' + (line || "<br>") + "</span>";
     }
-    return html + (inList ? "</span>" : "");
+    while (stack.length) closeList();
+    return html;
   }
   function editListDescription() {
     const button = $content.querySelector("button[data-description]");
@@ -7577,7 +8408,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       button.focus();
     });
     input.addEventListener("blur", () => {
-      const value = input.value.trim();
+      const value = cleanDescription(input.value);
       if (!cancelled && value !== (list.blurb || "")) {
         list.blurb = value;
         saveLists();
@@ -7589,6 +8420,104 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
   }
   function renderListDetail(listId) { renderListSurface({ type: "list", listId }); }
+
+  // Bullets as you type in the description boxes, as in Google Docs (owner, 2026-11-08):
+  //   "* " or "- " at the start of a line starts a bullet;
+  //   Enter on a bullet starts the next one (taking any text after the caret); on an empty bullet it
+  //     moves the bullet out a level, or at the top level ends the list; outside a list it saves;
+  //   Shift+Enter or Ctrl/Cmd+Enter breaks the line inside the same bullet, with no new bullet;
+  //   Tab and Shift+Tab indent and outdent a bullet (three levels: • ◦ ▪);
+  //   Backspace at the start of a bullet's text moves it out a level, or at the top level removes
+  //     the bullet and keeps the text; at the start of a continued line it joins the line above.
+  // Bullets may be empty. Math still waits until the box is closed.
+  const BULLET_BOXES = ".list-description-editor, .ge-note-input";
+  const BULLET_MARKS = ["•", "◦", "▪"];
+  const bulletLine = (level, text = "") => " ".repeat(level * 2) + BULLET_MARKS[level] + " " + text;
+  function cleanDescription(v) { return v.replace(/^\n+/, "").replace(/\s+$/, ""); }
+  // The line holding the caret: where it starts and ends, and whether it is a bullet (its level and
+  // where its text begins) or the continuation of one.
+  function lineAt(v, at) {
+    const start = v.lastIndexOf("\n", at - 1) + 1;
+    let end = v.indexOf("\n", at); if (end < 0) end = v.length;
+    const line = v.slice(start, end);
+    const m = line.match(/^( *)([•◦▪])( ?)(.*)$/);
+    if (m) {
+      const level = Math.min(2, Math.floor(m[1].length / 2));
+      return { start, end, line, kind: "bullet", level, textAt: start + m[1].length + 1 + m[3].length, text: m[4] };
+    }
+    const c = line.match(/^( {2,})(.*)$/);
+    if (c && start > 0) {
+      // A continued line belongs to the nearest bullet above it.
+      for (let s2 = v.lastIndexOf("\n", start - 2) + 1, guard = 0; guard < 200; guard++) {
+        const above = v.slice(s2, v.indexOf("\n", s2) < 0 ? v.length : v.indexOf("\n", s2));
+        const bm = above.match(/^( *)[•◦▪]/);
+        if (bm) return { start, end, line, kind: "cont", level: Math.min(2, Math.floor(bm[1].length / 2)), textAt: start + c[1].length, text: c[2] };
+        if (!/^ {2,}/.test(above) || s2 === 0) break;
+        s2 = v.lastIndexOf("\n", s2 - 2) + 1;
+      }
+    }
+    return { start, end, line, kind: "plain", level: 0, textAt: start, text: line };
+  }
+  function setBoxText(t, value, caret) {
+    t.value = value;
+    t.setSelectionRange(caret, caret);
+    t.dispatchEvent(new Event("input", { bubbles: true }));   // the box re-fits its height
+  }
+  // Rewrite one bullet line at a new level, keeping the caret on the same text.
+  function relevel(t, L, level) {
+    const v = t.value, at = t.selectionStart, head = bulletLine(level);
+    setBoxText(t, v.slice(0, L.start) + head + L.text + v.slice(L.end), L.start + head.length + Math.max(0, at - L.textAt));
+  }
+  document.addEventListener("input", e => {
+    const t = e.target;
+    if (!t.matches || !t.matches(BULLET_BOXES) || e.inputType !== "insertText" || e.data !== " ") return;
+    const at = t.selectionStart, start = t.value.lastIndexOf("\n", at - 1) + 1;
+    const m = t.value.slice(start, at).match(/^( *)[*-] $/);
+    if (!m) return;
+    const level = Math.min(2, Math.floor(m[1].length / 2));
+    const head = bulletLine(level);
+    setBoxText(t, t.value.slice(0, start) + head + t.value.slice(at), start + head.length);
+  });
+  document.addEventListener("keydown", e => {
+    const t = e.target;
+    if (!t.matches || !t.matches(BULLET_BOXES) || e.isComposing || e.altKey) return;
+    const v = t.value, at = t.selectionStart;
+    const L = lineAt(v, at);
+    const inList = L.kind !== "plain";
+    const done = () => { e.preventDefault(); e.stopImmediatePropagation(); };
+    if (e.key === "Enter" && (e.shiftKey || e.ctrlKey || e.metaKey)) {
+      if (!inList) { if (e.ctrlKey || e.metaKey) { done(); setBoxText(t, v.slice(0, at) + "\n" + v.slice(t.selectionEnd), at + 1); } return; }
+      done();
+      const pad = "\n" + " ".repeat(L.level * 2 + 2);
+      setBoxText(t, v.slice(0, at) + pad + v.slice(t.selectionEnd), at + pad.length);
+    } else if (e.key === "Enter") {
+      if (!inList) return;   // outside a list Enter saves, as before
+      done();
+      if (L.kind === "bullet" && !L.text.trim()) {
+        if (L.level > 0) relevel(t, L, L.level - 1);
+        else setBoxText(t, v.slice(0, L.start) + v.slice(L.end), L.start);       // end the list
+        return;
+      }
+      const head = "\n" + bulletLine(L.level);
+      const cut = Math.max(at, L.textAt);
+      const left = cut > L.textAt ? v.slice(0, cut).replace(/ +$/, "") : v.slice(0, cut);
+      setBoxText(t, left + head + v.slice(t.selectionEnd > cut ? t.selectionEnd : cut).replace(/^ +/, ""), left.length + head.length);
+    } else if (e.key === "Tab" && L.kind === "bullet") {
+      done();
+      const level = e.shiftKey ? L.level - 1 : L.level + 1;
+      if (level >= 0 && level <= 2) relevel(t, L, level);
+    } else if (e.key === "Backspace" && at === t.selectionEnd && at === L.textAt) {
+      if (L.kind === "bullet") {
+        done();
+        if (L.level > 0) relevel(t, L, L.level - 1);
+        else setBoxText(t, v.slice(0, L.start) + L.text + v.slice(L.end), L.start);    // remove the bullet, keep the text
+      } else if (L.kind === "cont") {
+        done();
+        const gap = v[L.start - 2] === " " || !L.text || L.start < 2 ? "" : " ";
+        setBoxText(t, v.slice(0, L.start - 1) + gap + v.slice(L.textAt), L.start - 1 + gap.length);
+      }
+    }
+  }, true);
 
   // ---------- Problem Database: competition/year navigator + per-problem detail ----------
   function problemRowHtml(p, compact) {
@@ -7858,7 +8787,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const ids = [...new Set([...chain.pattern, ...chain.method, ...chain.formula])];
     const lessons = ids.map(fid => lessonForCard(fid, aime)).filter(Boolean);
     const links = [...new Set(lessons.map(studyLessonLink))];
-    return links.length ? `<div class="chain-study"><div class="chain-study-h">Study a concept more</div><div class="chain-study-links">${links.join("")}</div></div>` : "";
+    return links.length ? `<div class="chain-study"><h4 class="chain-study-h">Study a concept more</h4><div class="chain-study-links">${links.join("")}</div></div>` : "";
   }
   // How this problem works: its tags split by kind into the chain Pattern -> Method ->
   // Formulas. A link nobody has classified yet is shown as missing, never invented.
@@ -8479,6 +9408,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
   function render() {
     const route = getRoute();
+    // Leaving a list closes its group editor, tidying the sections as Done would.
+    if (groupEdit && !(route.type === "list" && route.listId === groupEdit.listId)) {
+      const l = geList();
+      groupEdit = null;
+      geTidy(l);
+    }
     if (route.type === "home") {
       state.landing = !route.section;
       if (route.section) {
@@ -8768,6 +9703,40 @@ The book remembers the last lesson you opened, in this browser, and the contents
     render();
     window.scrollTo({ top: 0, behavior: "instant" });
   }
+  // Focusing the search box must not move the page (owner, 2026-11-08). The box sits in the
+  // sticky top bar, and Chrome, scrolling a newly focused box "into view", measures from the
+  // bar's place in the page, so the page used to glide part of the way up on every click into
+  // the box. A mouse click now focuses it without scrolling (the caret goes to the end, where
+  // a query is edited); focus reached any other way (Tab, a tap) puts the page back at once.
+  $search.addEventListener("mousedown", e => {
+    if (e.button !== 0 || document.activeElement === $search || e.sourceCapabilities?.firesTouchEvents) return;
+    e.preventDefault();
+    $search.focus({ preventScroll: true });
+    const n = $search.value.length;
+    try { $search.setSelectionRange(n, n); } catch (err) {}
+  });
+  // The page's place before the box had focus: the glide starts before the focus event fires.
+  let searchRestY = window.scrollY;
+  window.addEventListener("scroll", () => { if (document.activeElement !== $search) searchRestY = window.scrollY; }, { passive: true });
+  // A tap: focus on the finger's release, without the browser's scroll (allowed there, as the
+  // tap is still the user's gesture).
+  $search.addEventListener("touchend", e => {
+    if (document.activeElement === $search || e.touches.length) return;
+    e.preventDefault();
+    $search.focus({ preventScroll: true });
+    const n = $search.value.length;
+    try { $search.setSelectionRange(n, n); } catch (err) {}
+  }, { passive: false });
+  // Any other way in (Tab): hold the page where it was for as long as the browser's glide lasts.
+  $search.addEventListener("focus", () => {
+    const y = searchRestY, until = performance.now() + 450;
+    const hold = () => {
+      if (document.activeElement !== $search || state.query.trim()) return;
+      if (Math.abs(window.scrollY - y) > 1) window.scrollTo({ top: y, behavior: "instant" });
+      if (performance.now() < until) requestAnimationFrame(hold);
+    };
+    hold();
+  });
   $search.addEventListener("input", () => {
     clearTimeout(searchTimer);
     if (/^\s*special:/i.test($search.value)) { showSuggest(commandSuggestions($search.value)); return; }
@@ -9006,6 +9975,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     r.setAttribute("data-tags", state.tags ? "on" : "off");
     r.setAttribute("data-captions", state.captions);
     r.setAttribute("data-cols", state.cols);
+    r.setAttribute("data-lesson-width", state.lessonWidth);
   }
 
   // The latex a card shows. A card may carry latexPlain, the same statement written out
@@ -9407,15 +10377,20 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (grp) {
       const list = getList(grp.dataset.listGroup);
       if (!list) return;
-      if (list.builtin) {
-        state.autoGroup = !state.autoGroup;
-        saveSettings();
-      } else {
-        if (Array.isArray(list.groupedIds) && !grp.hasAttribute("data-regroup")) delete list.groupedIds;
-        else list.groupedIds = shownIds.slice();
-        saveLists();
-      }
-      render();
+      const apply = () => {
+        if (list.builtin) {
+          state.autoGroup = !state.autoGroup;
+          saveSettings();
+        } else {
+          if (Array.isArray(list.groupedIds) && !grp.hasAttribute("data-regroup")) delete list.groupedIds;
+          else list.groupedIds = shownIds.slice();
+          saveLists();
+        }
+        render();
+      };
+      // Automatic groups come back with one click, so ungrouping them asks nothing (owner,
+      // 2026-11-08); only custom sections ask first.
+      apply();
       return;
     }
     if (e.target.closest("[data-edit-description], button[data-description]")) { editListDescription(); return; }
@@ -9424,13 +10399,20 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const del = e.target.closest("[data-list-delete]");
     if (del) {
       const l = getList(del.dataset.listDelete);
-      if (l && confirm(`Delete the list “${l.name}”? The formulas themselves are not affected.`)) { deleteList(l.id); location.hash = "#/learn"; }
+      if (l) appConfirm({ title: `Delete the list “${l.name}”?`, text: "The formulas themselves are not affected.", ok: "Delete list", danger: true })
+        .then(yes => { if (yes) { deleteList(l.id); location.hash = "#/learn"; } });
       return;
     }
     const clr = e.target.closest("[data-list-clear]");
     if (clr) {
       const l = getList(clr.dataset.listClear);
-      if (l && confirm(`Remove all ${liveCount(l)} formulas from “${l.name}”?`)) { l.ids = []; saveLists(); render(); }
+      if (l) appConfirm({ title: `Remove all ${liveCount(l)} formulas from “${l.name}”?`, text: "The formulas themselves are not affected.", ok: "Remove all", danger: true })
+        .then(yes => {
+          if (!yes) return;
+          l.ids = [];
+          for (const key of ["customSections", "customOff"]) if (Array.isArray(l[key])) l[key].forEach(sec => { sec.ids = []; });
+          saveLists(); render();
+        });
       return;
     }
     // Both back links go to "#", which renders search results whenever a query is live. So
