@@ -4751,19 +4751,28 @@
         if (!l || typeof l.id !== "string" || !Array.isArray(l.ids)) return;
         const ids = l.ids.filter(x => typeof x === "string");
         const mine = merged.items.find(m => m.id === l.id);
+        // A list's grouping comes along: its custom sections (shown or set aside) and its
+        // automatic grouping. A list already here keeps its own; one with none takes the file's
+        // (owner, 2026-11-08), so restoring a backup onto a device with the list loses nothing.
+        const sections = key => Array.isArray(l[key]) ? l[key].filter(sec => sec && Array.isArray(sec.ids)).map(sec => ({
+          title: String(sec.title || "").slice(0, 80), note: String(sec.note || "").slice(0, 300),
+          ids: sec.ids.filter(id => typeof id === "string" && ids.includes(id)) })) : null;
+        const takeGrouping = item => {
+          const has = key => Array.isArray(item[key]) && item[key].length;
+          if (!has("customSections") && !has("customOff")) {
+            for (const key of ["customSections", "customOff"]) { const v = sections(key); if (v) item[key] = v; }
+          }
+          if (!Array.isArray(item.groupedIds) && !has("customSections") && Array.isArray(l.groupedIds)) item.groupedIds = ids.filter(id => l.groupedIds.includes(id));
+        };
         if (mine) {
           ids.forEach(id => { if (mine.ids.indexOf(id) === -1) mine.ids.push(id); });
-          if (!mine.builtin && !mine.blurb && typeof l.blurb === "string") mine.blurb = l.blurb;
+          if (!mine.blurb && typeof l.blurb === "string" && !mine.builtin) mine.blurb = l.blurb;
+          takeGrouping(mine);
         }
         else {
           const item = { id: l.id, name: String(l.name || "Imported list"), ids };
           if (typeof l.blurb === "string") item.blurb = l.blurb;
-          if (Array.isArray(l.groupedIds)) item.groupedIds = ids.filter(id => l.groupedIds.includes(id));
-          for (const key of ["customSections", "customOff"]) {
-            if (Array.isArray(l[key])) item[key] = l[key].filter(sec => sec && Array.isArray(sec.ids)).map(sec => ({
-              title: String(sec.title || "").slice(0, 80), note: String(sec.note || "").slice(0, 300),
-              ids: sec.ids.filter(id => ids.includes(id)) }));
-          }
+          takeGrouping(item);
           merged.items.push(item);
         }
       });
