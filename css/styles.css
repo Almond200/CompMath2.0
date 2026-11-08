@@ -4579,6 +4579,8 @@ body.ge-selecting, body.ge-selecting * { user-select: none; -webkit-user-select:
 /* A destructive confirmation's button is solid red (owner, 2026-11-08). */
 body dialog.app-confirm button.hp-btn.app-confirm-danger { background: var(--level-oly); border-color: var(--level-oly); color: #fff; }
 body dialog.app-confirm button.hp-btn.app-confirm-danger:hover { filter: brightness(1.08); }
+/* Light mode: a darker shade of the same rose for the solid Clear and Delete buttons only (owner, 2026-11-08). */
+:root[data-theme="light"] body dialog.app-confirm button.hp-btn.app-confirm-danger { background: #b52a57; border-color: #b52a57; }
 /* Dialogs sit a little above the true centre, where the eye rests (owner, 2026-11-08): the space
    below is 12vh larger than above, so the dialog sits 6vh higher. A tall dialog still starts at its top. */
 .modal-overlay { padding-bottom: calc(16px + 12vh); }
