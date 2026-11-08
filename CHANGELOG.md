@@ -2,6 +2,7 @@
 
 **2026-11-08**
 
+- T3: the 2017 AMC 8 filed in the topic tree (25 problems; 3915 filed in all). Every answer re-checked by computation and against the key: brute force for #19 (the factor $5$ counted in the full sum), #20 and #24 (every day of the year); exact arithmetic for the rest. No strategy or tag changes.
 - T3: the 2018 AMC 8 filed in the topic tree (25 problems; 3890 filed in all). Every answer re-checked by computation and against the key: brute force for #3 (the counting game played out), #21, #23 (all $56$ triangles) and #25; exact arithmetic for the rest. No strategy or tag changes.
 - T3: the 2019 AMC 8 filed in the topic tree (25 problems; 3865 filed in all). Every answer re-checked by computation and against the key: brute force for #13 (every sum of three different two-digit palindromes) and #25; exact arithmetic for the rest, with the mass points of #24 checked against the areas. No strategy or tag changes.
 - T3: the 2020 AMC 8 filed in the topic tree (25 problems; 3840 filed in all; there was no 2021 AMC 8). Every answer re-checked by computation and against the key: brute force for #17, #19 (every five-digit flippy number) and #22 (every start below $1000$ run six times); exact arithmetic for the rest. No strategy or tag changes.
