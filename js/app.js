@@ -7580,8 +7580,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
     });
   }
   let groupEdit = null;   // { listId, undo: [snapshots], redo: [snapshots], selected: Set, renaming: index }
-  const GE_MAC = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
-  const GE_MOD = GE_MAC ? "&#8984;" : "Ctrl ";
   // The reorder grip: six dots.
   const GE_GRIP = `<svg width="10" height="16" viewBox="0 0 10 16" aria-hidden="true">${[3, 8, 13].map(y => `<circle cx="2.5" cy="${y}" r="1.4"/><circle cx="7.5" cy="${y}" r="1.4"/>`).join("")}</svg>`;
   // A brief note at the foot of the screen, so an undo by keyboard is seen.
@@ -7686,7 +7684,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <button type="button" class="ge-link" data-ge-act="deselect">Clear selection</button>
       </div>` : "";
     return `<div class="ge" data-ge-list="${escapeAttr(l.id)}">
-      <div class="back-row"><a class="back-link" href="#/learn" data-goto="pr-study">&larr; Learn</a></div>
+      <div class="back-row ge-back-row"><a class="back-link" href="#/list/${escapeAttr(l.id)}" data-ge-act="done">&larr; Back to list</a>
+        <a class="back-link" href="#/learn" data-goto="pr-study">&larr; Learn</a></div>
       <div class="ge-head">
         <div><div class="book-eyebrow">Learn &middot; Lists &middot; Custom groups</div><h2>${escapeAttr(l.name)}</h2></div>
         <button type="button" class="hp-btn ge-done" data-ge-act="done" title="Save your sections and close the editor">Save</button>
@@ -7698,8 +7697,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <button type="button" class="ge-add" data-ge-act="new">+ New section</button>
           <div class="ge-side-h ge-tools-h">Tools</div>
           <div class="ge-undo-row">
-            <button type="button" class="ge-tool" data-ge-act="undo" ${groupEdit.undo.length ? "" : "disabled"} title="${GE_MOD}+Z">Undo <kbd>${GE_MOD}Z</kbd></button>
-            <button type="button" class="ge-tool" data-ge-act="redo" ${groupEdit.redo.length ? "" : "disabled"} title="${GE_MOD}+Shift+Z">Redo <kbd>${GE_MOD}&#8679;Z</kbd></button>
+            <button type="button" class="ge-tool" data-ge-act="undo" ${groupEdit.undo.length ? "" : "disabled"}>Undo</button>
+            <button type="button" class="ge-tool" data-ge-act="redo" ${groupEdit.redo.length ? "" : "disabled"}>Redo</button>
           </div>
           <button type="button" class="ge-tool" data-ge-act="select-loose" ${loose.length ? "" : "disabled"}>Select the cards not in a section</button>
           <button type="button" class="ge-tool" data-ge-act="auto" ${geIds(l).length >= 2 ? "" : "disabled"}>Start from the automatic groups</button>
@@ -7740,20 +7739,17 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const f = focusSel && box.querySelector(focusSel);
     if (f) { f.focus(); if (f.select) f.select(); }
   }
-  // Move cards (in their list order when several) into a section at an index, or out of every section.
-  function geMove(l, moving, target, index) {
-    const order = geIds(l);
-    moving = moving.slice().sort((a, b) => order.indexOf(a) - order.indexOf(b));
+  // Move cards (in the order they show, when several) into a section before a given card (at
+  // the end when none), or out of every section.
+  function geMove(l, moving, target, beforeId) {
+    const shown = [...geLoose(l), ...l.customSections.flatMap(sec => sec.ids)];
+    moving = moving.slice().sort((a, b) => shown.indexOf(a) - shown.indexOf(b));
     const set = new Set(moving);
-    let at = index;
-    if (target !== "loose" && at != null) {
-      const before = l.customSections[target].ids.slice(0, at);
-      at -= before.filter(id => set.has(id)).length;
-    }
     l.customSections.forEach(sec => { sec.ids = sec.ids.filter(id => !set.has(id)); });
     if (target === "loose") return;
     const ids = l.customSections[target].ids;
-    ids.splice(at == null ? ids.length : Math.max(0, Math.min(at, ids.length)), 0, ...moving);
+    const at = beforeId != null && !set.has(beforeId) ? ids.indexOf(beforeId) : -1;
+    ids.splice(at < 0 ? ids.length : at, 0, ...moving);
   }
   function geNewSection(l, ids) {
     const used = new Set(l.customSections.map(sec => sec.title));
@@ -7851,9 +7847,28 @@ The book remembers the last lesson you opened, in this browser, and the contents
     }
     const chip = e.target.closest("[data-ge-chip]");
     if (chip) {
+      // The usual selection rules: a click selects the card alone, Ctrl or Cmd adds or removes it,
+      // Shift selects the run from the last card clicked. A tap, or Enter or Space on a focused
+      // card, adds or removes it, since a phone and a keyboard have no modifier to hold.
       const id = chip.dataset.geChip, sel = groupEdit.selected;
-      if (sel.has(id)) sel.delete(id); else sel.add(id);
+      const order = [...$content.querySelectorAll(".ge [data-ge-chip]")].map(c => c.dataset.geChip);
+      if (e.shiftKey && groupEdit.anchor && order.includes(groupEdit.anchor)) {
+        const [a, z] = [order.indexOf(groupEdit.anchor), order.indexOf(id)].sort((x, y) => x - y);
+        if (!(e.ctrlKey || e.metaKey)) sel.clear();
+        order.slice(a, z + 1).forEach(x => sel.add(x));
+      } else {
+        if (e.ctrlKey || e.metaKey || e.detail === 0 || geDrag.lastPointer === "touch") { if (sel.has(id)) sel.delete(id); else sel.add(id); }
+        else if (sel.size === 1 && sel.has(id)) sel.clear();
+        else { sel.clear(); sel.add(id); }
+        groupEdit.anchor = id;
+      }
       geRefresh(`[data-ge-chip="${CSS.escape(id)}"]`);
+      return;
+    }
+    // A click on empty space clears the selection.
+    if (groupEdit.selected.size && !e.target.closest("button, a, input, textarea, .ge-movebar")) {
+      groupEdit.selected.clear();
+      geRefresh();
     }
   });
   document.addEventListener("keydown", e => {
@@ -7889,94 +7904,137 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (t.dataset.geRename != null) geCommitRename(t, t.dataset.cancel === "1");
     else if (t.dataset.geNote != null) geCommitNote(t, t.dataset.cancel === "1");
   });
-  // Reordering sections by their grip (owner, 2026-11-08), with mouse, pen or touch: the row
-  // dims, a line shows where it will land, and it moves there on release.
+  // ---- Pointer interactions: dragging cards, reordering sections, selecting with a box ----
+  const geDrag = { on: false, suppressClick: false, lastPointer: "mouse" };
+  document.addEventListener("pointerdown", e => { geDrag.lastPointer = e.pointerType; }, true);
+  // FLIP: note where every chip and row is, make a change, then slide each from its old place
+  // to its new one, so the page is seen to make room rather than jump.
+  function geFlip(change) {
+    const els = [...$content.querySelectorAll(".ge [data-ge-chip], .ge-placeholder, .ge-rows [data-ge-row]")];
+    const first = new Map(els.map(el => [el, el.getBoundingClientRect()]));
+    change();
+    for (const [el, a] of first) {
+      if (!el.isConnected || el.offsetParent === null) continue;
+      const b = el.getBoundingClientRect(), dx = a.left - b.left, dy = a.top - b.top;
+      if (!dx && !dy) continue;
+      el.style.transition = "none";
+      el.style.transform = `translate(${dx}px, ${dy}px)`;
+      el.getBoundingClientRect();
+      el.style.transition = "transform 170ms cubic-bezier(.2,.8,.2,1)";
+      el.style.transform = "";
+    }
+  }
+  // Where a chip sits in the layout, ignoring any slide still under way.
+  function geLayoutRect(el) {
+    const z = el.offsetParent.getBoundingClientRect();
+    return { left: z.left + el.offsetLeft, top: z.top + el.offsetTop, width: el.offsetWidth, height: el.offsetHeight };
+  }
+  function geScroller() {
+    const st = { y: 0, raf: 0 };
+    const loop = () => {
+      const edge = 70, y = st.y;
+      const v = y < edge ? -(edge - y) / 4 : y > innerHeight - edge ? (y - innerHeight + edge) / 4 : 0;
+      if (v) window.scrollBy(0, v);
+      st.raf = requestAnimationFrame(loop);
+    };
+    st.start = () => { st.raf = requestAnimationFrame(loop); };
+    st.stop = () => cancelAnimationFrame(st.raf);
+    return st;
+  }
+  function geEndGesture() {
+    geDrag.suppressClick = true;
+    setTimeout(() => { geDrag.suppressClick = false; }, 0);
+  }
+
+  // Reordering sections by their grip, with mouse, pen or touch: the row lifts and the others
+  // slide past it as it moves; the arrow keys on a focused grip do the same.
   document.addEventListener("pointerdown", e => {
     if (!groupEdit || (e.pointerType === "mouse" && e.button !== 0)) return;
     const grip = e.target.closest("[data-ge-handle]");
     if (!grip || !grip.closest(".ge")) return;
     e.preventDefault();
-    const from = +grip.dataset.geHandle;
-    const rows = [...$content.querySelectorAll(".ge-rows [data-ge-row]")];
-    const row = rows[from];
-    let to = from, moved = false;
-    row.classList.add("is-lifted");
-    const mark = () => rows.forEach((r, k) => {
-      r.classList.toggle("ge-drop-before", moved && k === to && to < from);
-      r.classList.toggle("ge-drop-after", moved && k === to && to > from);
-    });
+    const box = $content.querySelector(".ge-rows");
+    const from = +grip.dataset.geHandle, row = grip.closest("[data-ge-row]");
+    const startY = e.clientY;
+    let moved = false;
+    const others = () => [...box.querySelectorAll("[data-ge-row]")].filter(r => r !== row);
     const move = ev => {
-      moved = true;
-      to = rows.length - 1;
-      for (let k = 0; k < rows.length; k++) {
-        const r = rows[k].getBoundingClientRect();
-        if (ev.clientY < r.top + r.height / 2) { to = k > from ? k - 1 : k; break; }
+      if (!moved && Math.abs(ev.clientY - startY) < 3) return;
+      if (!moved) { moved = true; row.classList.add("is-lifted"); document.body.classList.add("ge-dragging"); }
+      const rest = others();
+      let before = null;
+      for (const r of rest) {
+        const rr = geLayoutRect(r);
+        if (ev.clientY < rr.top + rr.height / 2) { before = r; break; }
       }
-      mark();
+      if (row.nextElementSibling === before) return;
+      geFlip(() => box.insertBefore(row, before));
     };
     const up = () => {
       document.removeEventListener("pointermove", move);
       document.removeEventListener("pointerup", up);
       document.removeEventListener("pointercancel", up);
+      document.body.classList.remove("ge-dragging");
       row.classList.remove("is-lifted");
-      rows.forEach(r => r.classList.remove("ge-drop-before", "ge-drop-after"));
-      geDrag.suppressClick = true;
-      setTimeout(() => { geDrag.suppressClick = false; }, 0);
-      if (moved && to !== from) geChange(l => { const [sec] = l.customSections.splice(from, 1); l.customSections.splice(to, 0, sec); });
+      geEndGesture();
+      if (!moved) { grip.focus(); return; }
+      const to = [...box.querySelectorAll("[data-ge-row]")].indexOf(row);
+      if (to !== from) geChange(l => { const [sec] = l.customSections.splice(from, 1); l.customSections.splice(to, 0, sec); });
+      else geRefresh();
     };
     document.addEventListener("pointermove", move);
     document.addEventListener("pointerup", up);
     document.addEventListener("pointercancel", up);
   });
-  // Dragging (mouse and pen; on touch a press scrolls the page and a tap selects). The card
-  // follows the pointer, a marker shows where it lands, and the page scrolls near its edges.
-  const geDrag = { on: false, suppressClick: false };
+
+  // Dragging cards (mouse and pen; on touch a press scrolls the page and a tap selects). The
+  // dragged cards leave their places, a gap of their size opens where they would land and the
+  // other cards slide to make room; the card itself follows the pointer.
   document.addEventListener("pointerdown", e => {
     if (!groupEdit || e.button !== 0 || e.pointerType === "touch") return;
     const chip = e.target.closest("[data-ge-chip]");
     if (!chip || !chip.closest(".ge")) return;
     const id = chip.dataset.geChip;
     const moving = groupEdit.selected.has(id) ? [...groupEdit.selected] : [id];
-    const sx = e.clientX, sy = e.clientY;
-    let ghost = null, marker = null, target = null, raf = 0, lastY = sy;
+    const sx = e.clientX, sy = e.clientY, scroll = geScroller();
+    let ghost = null, holder = null, target = null;
+    const movingEls = () => [...$content.querySelectorAll(".ge [data-ge-chip]")].filter(c => moving.includes(c.dataset.geChip));
     const findTarget = (x, y) => {
-      if (ghost) ghost.style.display = "none";
       const el = document.elementFromPoint(x, y);
-      if (ghost) ghost.style.display = "";
       if (!el) return null;
       const row = el.closest("[data-ge-row]");
-      if (row) return { key: +row.dataset.geRow, index: null, row };
+      if (row) return { key: +row.dataset.geRow, row };
       const sec = el.closest(".ge-sec");
       const zone = sec ? sec.querySelector("[data-ge-zone]") : el.closest("[data-ge-zone]");
       if (!zone) return null;
       const key = zone.dataset.geZone === "loose" ? "loose" : +zone.dataset.geZone;
+      if (key === "loose") return { key, zone, before: null };
       const chips = [...zone.querySelectorAll("[data-ge-chip]")].filter(c => !moving.includes(c.dataset.geChip));
       let before = null;
       for (const c of chips) {
-        const r = c.getBoundingClientRect();
-        if (y < r.top || (y <= r.bottom && x < r.left + r.width / 2)) { before = c; break; }
+        const r = geLayoutRect(c);
+        if (y < r.top || (y <= r.top + r.height && x < r.left + r.width / 2)) { before = c; break; }
       }
-      const all = [...zone.querySelectorAll("[data-ge-chip]")];
-      return { key, zone, before, index: before ? all.indexOf(before) : all.length };
+      return { key, zone, before };
     };
-    const showMarker = t => {
+    const place = t => {
       $content.querySelectorAll(".ge-over").forEach(x => x.classList.remove("ge-over"));
-      if (marker) marker.remove(), marker = null;
-      if (!t) return;
-      if (t.row) { t.row.classList.add("ge-over"); return; }
-      t.zone.classList.add("ge-over");
-      if (t.key === "loose") return;
-      marker = document.createElement("span");
-      marker.className = "ge-marker";
-      if (t.before) t.zone.insertBefore(marker, t.before); else t.zone.appendChild(marker);
-    };
-    const scrollLoop = () => {
-      const edge = 70, v = lastY < edge ? -(edge - lastY) / 4 : lastY > innerHeight - edge ? (lastY - innerHeight + edge) / 4 : 0;
-      if (v) window.scrollBy(0, v);
-      raf = requestAnimationFrame(scrollLoop);
+      if (t && t.row) t.row.classList.add("ge-over");
+      if (t && t.zone) t.zone.classList.add("ge-over");
+      const want = t && t.zone && t.key !== "loose" ? t : null;
+      if (!want && !holder.isConnected) return;
+      if (want && holder.parentElement === want.zone && holder.nextElementSibling === want.before) return;
+      geFlip(() => {
+        if (!want) holder.remove();
+        else want.zone.insertBefore(holder, want.before);
+        $content.querySelectorAll(".ge-zone").forEach(z => {
+          const empty = z.querySelector(".ge-empty");
+          if (empty) empty.hidden = !!z.querySelector(".ge-placeholder");
+        });
+      });
     };
     const move = ev => {
-      lastY = ev.clientY;
+      scroll.y = ev.clientY;
       if (!geDrag.on) {
         if (Math.hypot(ev.clientX - sx, ev.clientY - sy) < 6) return;
         geDrag.on = true;
@@ -7986,12 +8044,19 @@ The book remembers the last lesson you opened, in this browser, and the contents
         if (moving.length > 1) ghost.textContent = `${moving.length} cards`;
         else ghost.innerHTML = chip.querySelector(".ge-chip-name").innerHTML;
         document.body.appendChild(ghost);
-        $content.querySelectorAll("[data-ge-chip]").forEach(c => { if (moving.includes(c.dataset.geChip)) c.classList.add("is-moving"); });
-        raf = requestAnimationFrame(scrollLoop);
+        holder = document.createElement("span");
+        holder.className = "ge-placeholder";
+        holder.style.width = (moving.length > 1 ? 150 : chip.offsetWidth) + "px";
+        holder.style.height = chip.offsetHeight + "px";
+        geFlip(() => {
+          movingEls().forEach(c => { c.hidden = true; });
+          chip.parentElement.insertBefore(holder, chip.nextElementSibling);
+        });
+        scroll.start();
       }
       ghost.style.transform = `translate(${ev.clientX + 12}px, ${ev.clientY + 10}px)`;
       target = findTarget(ev.clientX, ev.clientY);
-      showMarker(target);
+      place(target);
     };
     const up = () => {
       document.removeEventListener("pointermove", move);
@@ -7999,21 +8064,100 @@ The book remembers the last lesson you opened, in this browser, and the contents
       document.removeEventListener("pointercancel", up);
       if (!geDrag.on) return;
       geDrag.on = false;
-      geDrag.suppressClick = true;
-      setTimeout(() => { geDrag.suppressClick = false; }, 0);
-      cancelAnimationFrame(raf);
+      geEndGesture();
+      scroll.stop();
       document.body.classList.remove("ge-dragging");
       if (ghost) ghost.remove();
-      if (marker) marker.remove();
       if (target) {
+        const before = target.zone && holder.isConnected ? holder.nextElementSibling : null;
+        const beforeId = before && before.dataset ? before.dataset.geChip : null;
+        holder.remove();
         groupEdit.selected.clear();
-        geChange(l => geMove(l, moving, target.key, target.index));
-      } else geRefresh();
+        geChange(l => geMove(l, moving, target.key, beforeId));
+      } else {
+        geFlip(() => { holder.remove(); movingEls().forEach(c => { c.hidden = false; }); });
+        $content.querySelectorAll(".ge-over").forEach(x => x.classList.remove("ge-over"));
+      }
     };
     document.addEventListener("pointermove", move);
     document.addEventListener("pointerup", up);
     document.addEventListener("pointercancel", up);
   });
+
+  // Selecting with a box: press on empty space and drag (mouse or pen). Cards the box touches
+  // are selected; with Shift, Ctrl or Cmd held they are added to the selection.
+  document.addEventListener("pointerdown", e => {
+    if (!groupEdit || e.button !== 0 || e.pointerType === "touch") return;
+    const ge = e.target.closest(".ge");
+    if (!ge || !e.target.closest(".ge-main") || e.target.closest("button, a, input, textarea, [data-ge-chip], .ge-movebar")) return;
+    const add = e.shiftKey || e.ctrlKey || e.metaKey;
+    const keep = add ? new Set(groupEdit.selected) : new Set();
+    const sx = e.clientX, sy = e.clientY + window.scrollY, scroll = geScroller();
+    let band = null, x = e.clientX, y = e.clientY;
+    const chips = [...$content.querySelectorAll(".ge [data-ge-chip]")];
+    const update = () => {
+      const top = Math.min(sy, y + window.scrollY), bottom = Math.max(sy, y + window.scrollY);
+      const left = Math.min(sx, x), right = Math.max(sx, x);
+      band.style.left = left + "px"; band.style.top = (top - window.scrollY) + "px";
+      band.style.width = (right - left) + "px"; band.style.height = (bottom - top) + "px";
+      for (const c of chips) {
+        const r = c.getBoundingClientRect(), ct = r.top + window.scrollY, cb = r.bottom + window.scrollY;
+        const hit = r.right > left && r.left < right && cb > top && ct < bottom;
+        const on = hit || keep.has(c.dataset.geChip);
+        c.classList.toggle("is-sel", on);
+      }
+    };
+    const onScroll = () => { if (band) update(); };
+    const move = ev => {
+      x = ev.clientX; y = ev.clientY; scroll.y = y;
+      if (!band) {
+        if (Math.hypot(x - sx, y + window.scrollY - sy) < 5) return;
+        band = document.createElement("div");
+        band.className = "ge-band";
+        document.body.appendChild(band);
+        document.body.classList.add("ge-selecting");
+        window.addEventListener("scroll", onScroll);
+        scroll.start();
+      }
+      update();
+    };
+    const up = () => {
+      document.removeEventListener("pointermove", move);
+      document.removeEventListener("pointerup", up);
+      document.removeEventListener("pointercancel", up);
+      if (!band) return;
+      scroll.stop();
+      window.removeEventListener("scroll", onScroll);
+      band.remove();
+      document.body.classList.remove("ge-selecting");
+      geEndGesture();
+      groupEdit.selected = new Set(chips.filter(c => c.classList.contains("is-sel")).map(c => c.dataset.geChip));
+      geRefresh();
+    };
+    document.addEventListener("pointermove", move);
+    document.addEventListener("pointerup", up);
+    document.addEventListener("pointercancel", up);
+  });
+
+  // Moving from one text box straight to another control takes one click (owner, 2026-11-08):
+  // leaving a box saves it and redraws the page, which used to swallow the click, so the
+  // control pressed is found again in the new page and pressed for the reader.
+  const REPLAYABLE = "[data-ge-act], [data-ge-chip], [data-section-desc], button[data-description], [data-edit-description], h2[data-list-title], [data-list-rename], [data-group-edit], [data-group-off], [data-list-group], [data-list-delete], [data-list-clear]";
+  document.addEventListener("pointerdown", e => {
+    const a = document.activeElement;
+    if (!a || !a.matches || !a.matches("[data-ge-rename], [data-ge-note], .list-description-editor, h2[contenteditable='true']")) return;
+    const t = e.target.closest && e.target.closest(REPLAYABLE);
+    if (!t || t === a || a.contains(t)) return;
+    const sel = t.tagName.toLowerCase() + [...t.attributes].filter(x => x.name.startsWith("data-"))
+      .map(x => `[${x.name}="${CSS.escape(x.value)}"]`).join("");
+    const shift = e.shiftKey, mod = e.ctrlKey || e.metaKey;
+    setTimeout(() => {
+      if (t.isConnected) return;   // nothing was redrawn, so the click lands by itself
+      const again = document.querySelector(sel);
+      if (again) again.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, shiftKey: shift, ctrlKey: mod, detail: 1 }));
+    }, 0);
+  }, true);
+
   // Parse only the small description format. Keep math opaque to emphasis and list parsing.
   function listDescriptionHtml(source) {
     const lines = [""];

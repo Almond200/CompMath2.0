@@ -2,6 +2,8 @@
 
 **2026-11-08**
 
+- Group editor, a full pass (owner). Selecting works as elsewhere: a click selects one card, Ctrl or Cmd adds or removes one, Shift selects the run from the last card clicked, dragging on empty space draws a selection box (with a modifier it adds), and a click on empty space clears the selection; a tap, or Enter on a focused card, still adds or removes. Dragging is live: the dragged cards leave their places, a gap of their size opens where they will land and the other cards slide to make room (a drop outside slides everything back); a section dragged by its grip lifts and the other rows slide past it. Leaving a name or description box and pressing another control (another section's name, "Add a description", a card) now takes one click instead of two, here and on the list page (from the list's title to a section's description, for instance): the control pressed is found again after the page redraws. "← Back to list" sits above "← Learn" and saves and closes like Save. Undo and Redo lose their shortcut tags. Checked by a scripted run of every interaction (32 checks, desktop and a touch phone), no page errors.
+
 - Group editor (owner): the sidebar's paragraph of instructions and its Keyboard list are removed, for a cleaner editor; the shortcuts all still work, and Undo and Redo still show theirs.
 
 - Group editor, math (owner): card names with math ($\sqrt{bc}$ Inversion) showed their raw LaTeX in the editor's chips; the editor and the list page's section titles are now typeset, after every change too, as are a section's name and the dragged card's label. A section may be named with math ("Means of $a$ and $b$"), typeset on the list page and in its sidebar.

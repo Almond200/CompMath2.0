@@ -4449,7 +4449,6 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 .ge-chip.is-moving { opacity: 0.4; }
 .ge-chip-name { overflow-wrap: anywhere; }
 .ge-chip-kind { flex: none; font-size: 9.5px; font-weight: 750; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); }
-.ge-marker { align-self: stretch; width: 3px; min-height: 30px; border-radius: 2px; background: var(--space, var(--accent)); }
 .ge-ghost { position: fixed; left: 0; top: 0; z-index: 1000; pointer-events: none; max-width: 280px; font-size: 13px; font-weight: 600;
   color: var(--bg-card); background: var(--space, var(--accent)); border-radius: 999px; padding: 6px 12px; box-shadow: 0 6px 18px rgba(0,0,0,.18);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -4469,8 +4468,6 @@ body.ge-dragging, body.ge-dragging * { cursor: grabbing !important; user-select:
 .ge-note { font-size: 13px; line-height: 1.55; }
 /* Undo and Redo side by side, and the editor's keyboard shortcuts (owner, 2026-11-08). */
 .ge-undo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
-.ge-tool kbd { font: inherit; font-size: 11px; color: var(--text-faint); background: var(--bg-panel);
-  border: 1px solid var(--border); border-radius: 5px; padding: 0 5px; margin-left: 4px; white-space: nowrap; }
 #ge-toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 12px); z-index: 60; opacity: 0; pointer-events: none;
   font-size: 13px; font-weight: 600; color: var(--bg-card); background: var(--text); border-radius: 999px; padding: 6px 14px;
   transition: opacity .15s, transform .15s; }
@@ -4487,8 +4484,17 @@ body:has(.ge-movebar) #ge-toast { bottom: 120px; }
 .ge-handle { display: inline-flex; align-items: center; justify-content: center; cursor: grab; touch-action: none; color: var(--text-faint); }
 .ge-handle svg { fill: currentColor; }
 .ge-handle:active { cursor: grabbing; }
-.ge-row.is-lifted { opacity: 0.5; }
-.ge-row.ge-drop-before { box-shadow: 0 -2px 0 var(--space, var(--accent)); }
-.ge-row.ge-drop-after { box-shadow: 0 2px 0 var(--space, var(--accent)); }
 .ge-rename-main { max-width: 420px; font-size: inherit; font-weight: 700; padding: 3px 8px; }
 .ge-sec-name:hover { color: var(--space, var(--accent)); }
+/* Live dragging (owner, 2026-11-08): the dragged cards leave their places, a gap of their size
+   shows where they will land, and the rest slide (the slide itself is set from the script). */
+.ge-zone, .ge-rows { position: relative; }
+.ge-chip[hidden] { display: none; }
+.ge-placeholder { display: inline-block; flex: none; box-sizing: border-box; border: 2px dashed var(--space, var(--accent));
+  border-radius: 999px; background: var(--space-soft, var(--accent-soft)); }
+.ge-row.is-lifted { position: relative; z-index: 2; background: var(--bg-card); border-color: var(--space, var(--accent));
+  box-shadow: 0 6px 16px rgba(0,0,0,.14); }
+/* The selection box drawn by dragging on empty space. */
+.ge-band { position: fixed; z-index: 40; pointer-events: none; border: 1px solid var(--space, var(--accent));
+  background: color-mix(in srgb, var(--space, var(--accent)) 14%, transparent); border-radius: 4px; }
+body.ge-selecting, body.ge-selecting * { user-select: none; -webkit-user-select: none; }
