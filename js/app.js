@@ -8253,7 +8253,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
   document.addEventListener("pointerdown", e => {
     if (!groupEdit || e.button !== 0 || e.pointerType === "touch") return;
     const ge = e.target.closest(".ge");
-    if (!ge || !e.target.closest(".ge-main") || e.target.closest("button, a, input, textarea, [data-ge-chip], .ge-movebar")) return;
+    // Not from the search area above "Not in a section": its text can be highlighted as usual
+    // there (owner, 2026-11-08). From that heading down, a drag on empty space draws the box.
+    if (!ge || !e.target.closest(".ge-main") || e.target.closest("button, a, input, textarea, [data-ge-chip], .ge-movebar, .ge-find")) return;
     const add = e.shiftKey || e.ctrlKey || e.metaKey;
     const keep = add ? new Set(groupEdit.selected) : new Set();
     const sx = e.clientX, sy = e.clientY + window.scrollY, scroll = geScroller();
