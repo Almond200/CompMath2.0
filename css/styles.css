@@ -2639,6 +2639,9 @@ a.daily-type:hover { color: var(--accent); }
   background: var(--accent); color: #fff;
 }
 .hp-btn:hover { filter: brightness(1.08); }
+/* A <button> styled as .hp-btn otherwise keeps the browser's two-tone bevel border (owner,
+   2026-11-08). :where keeps this at one class's weight, so .hp-btn-soft's border still wins. */
+.hp-btn:where(button) { border: 1px solid transparent; font-family: inherit; line-height: inherit; cursor: pointer; }
 .hp-btn-soft { background: var(--bg-panel); color: var(--text); border: 1px solid var(--border); }
 .hp-btn-soft:hover { border-color: var(--accent); color: var(--accent); filter: none; }
 body[data-space="practice"] .hp-btn:not(.hp-btn-soft),

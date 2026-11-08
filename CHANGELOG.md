@@ -2,6 +2,8 @@
 
 **2026-11-08**
 
+- Buttons (owner): the group editor's Done showed the browser's two-tone bevel, because a <button> with the app's solid button style kept its default border (Practice and the textbooks had each patched this locally). One rule now gives every such button a transparent border, the app's font and a pointer, so Done is flat like the app's other buttons; the soft buttons keep their own border.
+
 - Ungroup asks first (owner): both Ungroup buttons (custom sections and automatic groups, Starred's included) open a confirmation, so a misclick changes nothing; grouping needs none. It is a new app-styled dialog (a rounded card with Cancel and the action; Escape, Cancel or a click outside declines, and Cancel has the focus so a stray Enter is harmless), which now also replaces the browser's popups for Delete list, Clear and Import, the destructive ones with a red button.
 
 - Group editor, keyboard (owner): Redo joins Undo (side by side in Tools, each with its shortcut), and the editor takes Ctrl/⌘+Z to undo, Ctrl/⌘+Shift+Z or Ctrl+Y to redo, Ctrl/⌘+A to select every card, Delete or Backspace to take the selected cards out of their sections, and Escape to clear the selection, then close. A short "Undone" or "Redone" note shows at the foot of the screen. In a rename or description box the keys keep the browser's own text editing. The sidebar lists the shortcuts, hidden on touch screens. A section description's hover band now hugs its text, like the list's description, instead of spanning the page.
