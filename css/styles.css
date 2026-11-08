@@ -4457,7 +4457,7 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 .ge-zone.ge-over { border-color: var(--space, var(--accent)); background: var(--space-soft, var(--accent-soft)); }
 .ge-empty { margin: auto 0; font-size: 13px; color: var(--text-faint); }
 .ge-chip { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; font: inherit; font-size: 13.5px; color: var(--text);
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; cursor: grab;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; cursor: grab;
   user-select: none; -webkit-user-select: none; text-align: left; }
 .ge-chip:hover { border-color: var(--space, var(--accent)); }
 .ge-chip.is-sel { border-color: var(--space, var(--accent)); background: var(--space-soft, var(--accent-soft)); box-shadow: inset 0 0 0 1px var(--space, var(--accent)); }
@@ -4492,7 +4492,7 @@ body.ge-dragging, body.ge-dragging * { cursor: grabbing !important; user-select:
 .ge-zone, .ge-rows { position: relative; }
 .ge-chip[hidden] { display: none; }
 .ge-placeholder { display: inline-block; flex: none; box-sizing: border-box; border: 2px dashed var(--space, var(--accent));
-  border-radius: 999px; background: var(--space-soft, var(--accent-soft)); }
+  border-radius: 8px; background: var(--space-soft, var(--accent-soft)); }
 .ge-row.is-lifted { position: relative; z-index: 2; background: var(--bg-card); border-color: var(--space, var(--accent));
   box-shadow: 0 6px 16px rgba(0,0,0,.14); }
 /* The selection box drawn by dragging on empty space. */
@@ -4555,3 +4555,31 @@ body.ge-selecting, body.ge-selecting * { user-select: none; -webkit-user-select:
 @keyframes ge-new { from { box-shadow: 0 0 0 6px var(--space-soft, var(--accent-soft)); } to { box-shadow: none; } }
 .ge-pill.ge-pill-danger { color: var(--level-oly); background: transparent; border: 1px solid var(--border); }
 .ge-pill.ge-pill-danger:hover { border-color: var(--level-oly); }
+/* Card chips are the problem page's card chips: 8px corners (owner, 2026-11-08); the drop gap and
+   the dragged copy follow, set above. The Move to bar keeps its swipe to itself. */
+.ge-move-pills { overscroll-behavior-x: contain; }
+/* While dragging, the sidebar row under the pointer is one green block: its name's hover band and
+   the section names' hover bands stay off. */
+.ge-row.ge-over .ge-row-name, body.ge-dragging .ge-row-name:hover, body.ge-dragging .ge-sec-name:hover { background: transparent; }
+/* New list and Export dialogs. */
+.app-dialog { width: min(460px, calc(100vw - 32px)); }
+.nl-choices { display: grid; gap: 8px; margin-top: 12px; }
+.nl-choices[hidden], .nl-import[hidden], .nl-error[hidden] { display: none; }
+.nl-choice { display: flex; flex-direction: column; gap: 2px; text-align: left; font: inherit; padding: 12px 14px; cursor: pointer;
+  color: var(--text); background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; }
+.nl-choice strong { font-size: 14.5px; }
+.nl-choice span { font-size: 13px; color: var(--text-dim); }
+.nl-choice:hover, .nl-choice:focus-visible { border-color: var(--space); outline: none; background: var(--space-soft); }
+.nl-drop { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-top: 12px; padding: 26px 14px; cursor: pointer;
+  border: 1.5px dashed var(--border); border-radius: 10px; background: var(--bg-panel); color: var(--text); text-align: center; }
+.nl-drop span { font-size: 13px; color: var(--text-dim); }
+.nl-drop:hover, .nl-drop:focus-visible, .nl-drop.is-over { border-color: var(--space); background: var(--space-soft); outline: none; }
+.nl-error { margin: 10px 0 0; font-size: 13px; color: var(--level-oly); }
+.app-confirm:focus, .app-confirm:focus-visible { outline: none; }
+/* A destructive confirmation's button is solid red (owner, 2026-11-08). */
+body dialog.app-confirm button.hp-btn.app-confirm-danger { background: var(--level-oly); border-color: var(--level-oly); color: #fff; }
+body dialog.app-confirm button.hp-btn.app-confirm-danger:hover { filter: brightness(1.08); }
+/* Dialogs sit a little above the true centre, where the eye rests (owner, 2026-11-08): the space
+   below is 12vh larger than above, so the dialog sits 6vh higher. A tall dialog still starts at its top. */
+.modal-overlay { padding-bottom: calc(16px + 12vh); }
+dialog.app-confirm { inset-block: 0 12vh; }
