@@ -4500,3 +4500,4 @@ body:has(.ge-movebar) #ge-toast { bottom: 120px; }
 body.ge-selecting, body.ge-selecting * { user-select: none; -webkit-user-select: none; }
 .ge-pill[disabled] { opacity: 0.4; cursor: default; filter: none; }
 .ge h2[data-list-title] { cursor: text; }
+.ge-head h2 { width: fit-content; max-width: 100%; }

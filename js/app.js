@@ -7953,41 +7953,56 @@ The book remembers the last lesson you opened, in this browser, and the contents
     setTimeout(() => { geDrag.suppressClick = false; }, 0);
   }
 
-  // Reordering sections by their grip, with mouse, pen or touch: the row lifts and the others
-  // slide past it as it moves; the arrow keys on a focused grip do the same.
+  // Reordering sections by their grip, with mouse, pen or touch (owner, 2026-11-08): the row
+  // follows the pointer the whole way, and each row it passes slides aside at once to show the
+  // slot it would take. The arrow keys on a focused grip move it a place at a time.
   document.addEventListener("pointerdown", e => {
     if (!groupEdit || (e.pointerType === "mouse" && e.button !== 0)) return;
     const grip = e.target.closest("[data-ge-handle]");
     if (!grip || !grip.closest(".ge")) return;
     e.preventDefault();
-    const box = $content.querySelector(".ge-rows");
-    const from = +grip.dataset.geHandle, row = grip.closest("[data-ge-row]");
+    const rows = [...$content.querySelectorAll(".ge-rows [data-ge-row]")];
+    const from = +grip.dataset.geHandle, row = rows[from];
+    const step = rows.length > 1 ? rows[1].offsetTop - rows[0].offsetTop : row.offsetHeight;
+    const centers = rows.map(r => r.offsetTop + r.offsetHeight / 2);
     const startY = e.clientY;
-    let moved = false;
-    const others = () => [...box.querySelectorAll("[data-ge-row]")].filter(r => r !== row);
+    let moved = false, to = from;
     const move = ev => {
-      if (!moved && Math.abs(ev.clientY - startY) < 3) return;
-      if (!moved) { moved = true; row.classList.add("is-lifted"); document.body.classList.add("ge-dragging"); }
-      const rest = others();
-      let before = null;
-      for (const r of rest) {
-        const rr = geLayoutRect(r);
-        if (ev.clientY < rr.top + rr.height / 2) { before = r; break; }
+      const dy = ev.clientY - startY;
+      if (!moved && Math.abs(dy) < 3) return;
+      if (!moved) {
+        moved = true;
+        row.classList.add("is-lifted");
+        document.body.classList.add("ge-dragging");
+        rows.forEach(r => { if (r !== row) r.style.transition = "transform 150ms cubic-bezier(.2,.8,.2,1)"; });
       }
-      if (row.nextElementSibling === before) return;
-      geFlip(() => box.insertBefore(row, before));
+      // Keep the row within the list, and move it with the pointer.
+      const lo = -from * step, hi = (rows.length - 1 - from) * step;
+      const y = Math.max(lo, Math.min(hi, dy));
+      row.style.transform = `translateY(${y}px)`;
+      const c = centers[from] + y;
+      to = from;
+      rows.forEach((r, k) => {
+        let shift = 0;
+        if (k > from && centers[k] < c) { shift = -step; to++; }
+        else if (k < from && centers[k] > c) { shift = step; to--; }
+        if (r !== row) r.style.transform = shift ? `translateY(${shift}px)` : "";
+      });
     };
     const up = () => {
       document.removeEventListener("pointermove", move);
       document.removeEventListener("pointerup", up);
       document.removeEventListener("pointercancel", up);
       document.body.classList.remove("ge-dragging");
-      row.classList.remove("is-lifted");
       geEndGesture();
       if (!moved) { grip.focus(); return; }
-      const to = [...box.querySelectorAll("[data-ge-row]")].indexOf(row);
-      if (to !== from) geChange(l => { const [sec] = l.customSections.splice(from, 1); l.customSections.splice(to, 0, sec); });
-      else geRefresh();
+      // Settle into the slot, then save the new order.
+      row.style.transition = "transform 120ms ease";
+      row.style.transform = `translateY(${(to - from) * step}px)`;
+      setTimeout(() => {
+        if (to !== from) geChange(l => { const [sec] = l.customSections.splice(from, 1); l.customSections.splice(to, 0, sec); });
+        else geRefresh();
+      }, 125);
     };
     document.addEventListener("pointermove", move);
     document.addEventListener("pointerup", up);
