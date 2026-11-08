@@ -2,6 +2,8 @@
 
 **2026-11-08**
 
+- Group editor, math (owner): card names with math ($\sqrt{bc}$ Inversion) showed their raw LaTeX in the editor's chips; the editor and the list page's section titles are now typeset, after every change too, as are a section's name and the dragged card's label. A section may be named with math ("Means of $a$ and $b$"), typeset on the list page and in its sidebar.
+
 - Ungroup (owner): ungrouping an automatically grouped list asks nothing again, since Auto group brings the groups straight back; only ungrouping custom sections asks first.
 
 - Group editor (owner): one button, **Save**, at the top (the second Done at the foot is gone); it keeps the sections and closes the editor. A section is renamed where it is clicked: its name above its cards becomes a box in place, as does its name in the sidebar, and a section made from the main area or the Move to bar is named there too.
