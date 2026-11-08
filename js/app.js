@@ -8279,6 +8279,40 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   function renderListDetail(listId) { renderListSurface({ type: "list", listId }); }
 
+  // Bullets as you type in the description boxes (owner, 2026-11-08): "* " or "- " at the start
+  // of a line becomes "• " at once (the saved text renders "•" lines as a list), Shift+Enter on a
+  // bullet starts the next one, Shift+Enter on an empty bullet ends the list, and Backspace just
+  // after a bullet takes it away. Math still waits until the box is closed.
+  const BULLET_BOXES = ".list-description-editor, .ge-note-input";
+  const lineStartOf = (v, at) => v.lastIndexOf("\n", at - 1) + 1;
+  function setBoxText(t, value, caret) {
+    t.value = value;
+    t.setSelectionRange(caret, caret);
+    t.dispatchEvent(new Event("input", { bubbles: true }));   // the box re-fits its height
+  }
+  document.addEventListener("input", e => {
+    const t = e.target;
+    if (!t.matches || !t.matches(BULLET_BOXES) || e.inputType !== "insertText" || e.data !== " ") return;
+    const at = t.selectionStart, start = lineStartOf(t.value, at);
+    if (at - start === 2 && /^[*-] $/.test(t.value.slice(start, at))) setBoxText(t, t.value.slice(0, start) + "• " + t.value.slice(at), start + 2);
+  });
+  document.addEventListener("keydown", e => {
+    const t = e.target;
+    if (!t.matches || !t.matches(BULLET_BOXES) || e.isComposing) return;
+    const at = t.selectionStart;
+    if (at !== t.selectionEnd) return;
+    const start = lineStartOf(t.value, at), line = t.value.slice(start, at);
+    if (e.key === "Enter" && e.shiftKey && line.startsWith("• ")) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      if (line.trim() === "•") setBoxText(t, t.value.slice(0, start) + t.value.slice(at), start);          // empty bullet: end the list
+      else setBoxText(t, t.value.slice(0, at) + "\n• " + t.value.slice(at), at + 3);
+    } else if (e.key === "Backspace" && line === "• ") {
+      e.preventDefault();
+      setBoxText(t, t.value.slice(0, start) + t.value.slice(at), start);
+    }
+  }, true);
+
   // ---------- Problem Database: competition/year navigator + per-problem detail ----------
   function problemRowHtml(p, compact) {
     const typeChips = p.types.slice(0, 4).map(t => `<span class="ptype-chip">${escapeAttr(t.label)}</span>`).join("");
