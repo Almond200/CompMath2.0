@@ -4376,3 +4376,92 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
    badges and the "See all" link are a step less bright, at full saturation so they stay vivid. The book covers keep their colours. */
 :root[data-theme="dark"] .home :is(.hm-space-name, .badge, .hm-more) { filter: saturate(1.05) brightness(0.86); }
 :root[data-theme="dark"] .home .hm-space::before { filter: saturate(1.05) brightness(0.84); }
+
+/* ---------- Custom groups: the group editor (owner, 2026-11-08) ----------
+   A sections sidebar beside the sections, cards as chips that drag between them. The
+   sidebar is a side rail and may stay beside the page on a wide screen; on a phone it
+   comes first and scrolls away. */
+.ge-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin: 4px 0 16px; }
+.ge-head h2 { margin: 2px 0 0; font-size: calc(24px * var(--tx)); }
+.ge-done { flex: none; }
+.ge-body { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 22px; align-items: start; }
+.ge-side { position: sticky; top: 76px; max-height: calc(100vh - 92px); overflow-y: auto;
+  padding: 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
+.ge-side-h { display: flex; justify-content: space-between; font-size: 11px; font-weight: 750; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-faint); margin: 0 0 8px; }
+.ge-tools-h { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); }
+.ge-rows { display: flex; flex-direction: column; }
+.ge-row { display: flex; align-items: center; gap: 6px; padding: 4px 4px 4px 8px; border-radius: 8px; border: 1px solid transparent; }
+.ge-row:hover { background: var(--bg-panel); }
+.ge-row.ge-over { border-color: var(--space, var(--accent)); background: var(--space-soft, var(--accent-soft)); }
+.ge-row-name { flex: 1 1 auto; min-width: 0; text-align: left; font: inherit; font-size: 14px; font-weight: 600; color: var(--text);
+  background: none; border: none; padding: 4px 0; cursor: text; overflow-wrap: anywhere; }
+.ge-row-n { font-size: 12px; color: var(--text-faint); font-variant-numeric: tabular-nums; }
+.ge-row-tools { display: flex; gap: 2px; }
+.ge-ico { width: 24px; height: 24px; border: none; border-radius: 6px; background: transparent; color: var(--text-faint);
+  font: inherit; font-size: 14px; line-height: 1; cursor: pointer; }
+.ge-ico:hover:not([disabled]) { background: var(--bg-panel); color: var(--text); }
+.ge-ico[disabled] { opacity: 0.35; cursor: default; }
+.ge-del:hover:not([disabled]) { color: var(--level-oly); }
+.ge-rename, .ge-note-input { width: 100%; box-sizing: border-box; font: inherit; font-size: 14px; color: var(--text);
+  background: var(--bg-panel); border: 1px solid var(--space, var(--accent)); border-radius: 7px; padding: 5px 8px; outline: none; }
+.ge-note-input { resize: vertical; margin: 0 0 8px; }
+.ge-side-empty { margin: 0 0 6px; font-size: 13px; color: var(--text-faint); }
+.ge-add { display: block; margin-top: 8px; font: inherit; font-size: 13px; font-weight: 650; color: var(--space, var(--accent));
+  background: var(--space-soft, var(--accent-soft)); border: none; border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+.ge-add:hover { filter: brightness(1.08); }
+.ge-tool { display: block; width: 100%; text-align: left; font: inherit; font-size: 13px; color: var(--text);
+  background: none; border: none; border-radius: 7px; padding: 6px 8px; cursor: pointer; }
+.ge-tool:hover:not([disabled]) { background: var(--bg-panel); }
+.ge-tool[disabled] { color: var(--text-faint); cursor: default; }
+.ge-danger:hover:not([disabled]) { color: var(--level-oly); }
+.ge-hint { margin: 12px 0 0; font-size: 12px; line-height: 1.5; color: var(--text-faint); }
+.ge-movebar { position: fixed; z-index: 50; left: 50%; bottom: 16px; transform: translateX(-50%); width: min(760px, calc(100vw - 32px));
+  box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; padding: 10px 12px;
+  border: 1px solid var(--space, var(--accent)); border-radius: 14px; background: var(--bg-card); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+/* Room under the last section so the floating bar never covers a card. */
+.ge-main:has(.ge-movebar) { padding-bottom: 120px; }
+.ge-move-n { font-size: 13px; font-weight: 700; color: var(--text); }
+.ge-move-k { font-size: 12px; color: var(--text-dim); margin-right: 2px; }
+.ge-pill { font: inherit; font-size: 12.5px; font-weight: 650; color: var(--bg-card); background: var(--space, var(--accent));
+  border: none; border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.ge-pill-new, .ge-pill-soft { color: var(--space, var(--accent)); background: var(--space-soft, var(--accent-soft)); }
+.ge-link { font: inherit; font-size: 12.5px; color: var(--text-dim); background: none; border: none; padding: 4px; cursor: pointer; text-decoration: underline; }
+.ge-sec { margin: 0 0 22px; }
+.ge-sec-h { display: flex; align-items: baseline; gap: 8px; margin: 0 0 6px; padding-bottom: 6px; border-bottom: 1px solid var(--border);
+  font-size: calc(17px * var(--tx)); }
+.ge-sec-name { font: inherit; font-weight: 700; color: var(--text); background: none; border: none; padding: 0; cursor: text; text-align: left; }
+.ge-sec-n { font-size: 12.5px; font-weight: 500; color: var(--text-faint); }
+.ge-loose .ge-sec-h { color: var(--text-dim); }
+.ge-note { display: block; font: inherit; font-size: 13.5px; color: var(--text-dim); background: none; border: none; padding: 0; margin: 0 0 8px; text-align: left; cursor: text; }
+.ge-add-note { display: block; margin: 0 0 6px; padding: 0; text-decoration: none; }
+.ge-zone { display: flex; flex-wrap: wrap; gap: 8px; min-height: 46px; padding: 8px; border: 1px dashed var(--border);
+  border-radius: 10px; transition: background 0.12s, border-color 0.12s; }
+.ge-zone.ge-over { border-color: var(--space, var(--accent)); background: var(--space-soft, var(--accent-soft)); }
+.ge-empty { margin: auto 0; font-size: 13px; color: var(--text-faint); }
+.ge-chip { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; font: inherit; font-size: 13.5px; color: var(--text);
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; cursor: grab;
+  user-select: none; -webkit-user-select: none; text-align: left; }
+.ge-chip:hover { border-color: var(--space, var(--accent)); }
+.ge-chip.is-sel { border-color: var(--space, var(--accent)); background: var(--space-soft, var(--accent-soft)); box-shadow: inset 0 0 0 1px var(--space, var(--accent)); }
+.ge-chip.is-moving { opacity: 0.4; }
+.ge-chip-name { overflow-wrap: anywhere; }
+.ge-chip-kind { flex: none; font-size: 9.5px; font-weight: 750; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); }
+.ge-marker { align-self: stretch; width: 3px; min-height: 30px; border-radius: 2px; background: var(--space, var(--accent)); }
+.ge-ghost { position: fixed; left: 0; top: 0; z-index: 1000; pointer-events: none; max-width: 280px; font-size: 13px; font-weight: 600;
+  color: var(--bg-card); background: var(--space, var(--accent)); border-radius: 999px; padding: 6px 12px; box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.ge-dragging, body.ge-dragging * { cursor: grabbing !important; user-select: none; -webkit-user-select: none; }
+.ge-add-main { margin-top: 0; }
+.ge-foot { display: flex; justify-content: flex-end; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); }
+@media (max-width: 760px) {
+  .ge-body { grid-template-columns: 1fr; }
+  .ge-side { position: static; max-height: none; order: 2; }
+}
+/* A custom section's description on the list page: the built-in notes' smaller type, editable
+   in place like the list's description. */
+.section-desc { width: 100%; max-width: 760px; margin: 0 0 14px; }
+.section-desc.is-empty { color: var(--text-faint); }
+.section-desc-editor { max-width: 760px; margin: 0 0 14px; }
+.ge-inline { font: inherit; color: var(--space, var(--accent)); background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline; }
+.ge-note { font-size: 13px; line-height: 1.55; }
