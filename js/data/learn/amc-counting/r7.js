@@ -1,16 +1,18 @@
 // Learn, AMC Counting & Probability, chapter R7: sets, graphs and logic (CONVENTIONS §14). Part: Core topics.
-// The second plan's book, written fresh (twentieth chat). Every number here was checked by computation.
+// Extremal constructions, graph conditions, invariants and complete logical arguments.
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["R7"] = {
   lessons: {
     "R7.1": {
       prereq: ["casework-method", "permutations-combinations"],
       cards: [],
-      body: String.raw`Not every counting problem asks "how many". Some ask for the largest set with a property, some for what must happen however things are arranged, and some for who is telling the truth. This chapter collects the ideas that answer them: subsets that avoid a relation, graphs, the pigeonhole principle and extreme cases, colorings and invariants, logical deduction, and the contrapositive.
+      body: String.raw`A counting problem may ask for a largest possible set, a guaranteed repetition, or whether a configuration exists at all. Such questions require different kinds of proof. A maximum needs both an upper bound and an example attaining it. A guarantee needs a reason every allowed choice works and, when the threshold is claimed to be smallest, an example showing that one fewer can fail.
 
-A drawer holds socks of $3$ colors. To be sure of a matching pair, $4$ socks are enough, since $3$ socks can all differ but a fourth must repeat one of the $3$ colors; and $3$ are not enough. That is the pigeonhole principle: more objects than boxes force a box with two. In a tournament where each of $5$ teams plays each other team once, there are $\binom52 = 10$ games, one for each pair of teams, and that total is known before any game is played. And if $A$ says "$B$ is a liar" while $B$ says "we are both liars", then $B$ cannot be telling the truth, since a truth-teller would be calling himself a liar; so $B$ lies, $A$ is not a liar, and $A$'s statement checks out.
+For socks of three colors, three draws can give one of each color. Four draws must repeat a color, because three color classes cannot each contain at most one of four socks. The conclusion is a guarantee, independent of random probabilities. For five teams playing each other once, the games instead correspond to the ten unordered pairs of teams, so there are $\binom52=10$ games whatever their results.
 
-The lessons take these ideas in turn: subsets (R7.2), graphs (R7.3), pigeonhole and extremes (R7.4), colorings and invariants (R7.5), logic puzzles and cases (R7.6), and proof by contrapositive (R7.7). The Summary (R7.8) collects the strategies.`,
+Logical puzzles have their own consistency requirement. Suppose each person is either always truthful or always lying, $A$ says that $B$ is a liar, and $B$ says that both are liars. A truthful $B$ would make a true claim that $B$ is a liar, a contradiction. Hence $B$ lies. The claim that both lie is false, forcing $A$ to be truthful; $A$'s statement then checks. A candidate assignment must satisfy every speaker's rule, not just one convenient statement.
+
+This chapter develops sets avoiding relations, graph models, pigeonhole bounds, extremal choices, colorings, invariants and logical implications. Each method organizes possibilities so that a proof can account for all of them. The distinction between ruling a possibility out and constructing it will matter throughout.`,
       exercises: [
         { q: String.raw`A drawer holds red, white and blue socks, many of each. How many socks must be drawn, without looking, to be sure of two of the same color?`, answer: "4",
           solution: String.raw`Three socks can be one of each color, so $3$ are not enough. Among $4$ socks and $3$ colors, two must share a color. So $4$.` },
@@ -28,15 +30,23 @@ The lessons take these ideas in turn: subsets (R7.2), graphs (R7.3), pigeonhole 
     "R7.2": {
       prereq: ["constructive-counting", "binomial-row-sums"],
       cards: ["subset-avoiding-relation", "subset-sum-facts", "odd-part-chains"],
-      body: String.raw`What is the largest subset of $\{1, \ldots, 20\}$ with no two elements adding to $21$? With no two differing by $3$? With no element dividing another? And what is the total of the sums of all the subsets of $\{1, \ldots, 5\}$? These questions are about the subsets themselves, not just how many there are.
+      body: String.raw`A relation on a finite set tells us which selections may coexist. For a [[subset-avoiding-relation|subset avoiding a relation]], first describe the conflicts precisely. “No two distinct elements sum to twenty-one” forbids a different condition from “the sum of any two, possibly equal, is outside the set.” The first can be organized into fixed complementary pairs; the second also depends on which sums are selected.
 
-[[subset-avoiding-relation|A subset that avoids a relation]] is organized by the relation. A forbidden sum $s$ splits the set into pairs $\{a, s - a\}$, and a good subset takes at most one from each pair: from $\{1, \ldots, 20\}$ with sum $21$ the pairs are $\{1, 20\}, \ldots, \{10, 11\}$, so at most $10$ elements, and $\{1, \ldots, 10\}$ achieves it. The same pairs count the good subsets: each pair contributes none, one or the other, so $\{1, \ldots, 8\}$ with sum $9$ has $3^4 = 81$ good subsets. A forbidden difference $d$ splits the set into chains $a, a + d, a + 2d, \ldots$, and a good subset never takes two neighbors in a chain, so a chain of length $\ell$ gives at most $\lceil \ell / 2 \rceil$. From $\{1, \ldots, 10\}$ with difference $3$ the chains are $1, 4, 7, 10$ and $2, 5, 8$ and $3, 6, 9$, so at most $2 + 2 + 2 = 6$.
+In $\{1,\ldots,20\}$, the pairs $\{1,20\},\{2,19\},\ldots,\{10,11\}$ partition the ground set. A subset with no pair summing to twenty-one takes at most one from each pair, so has at most ten elements. The subset $\{1,\ldots,10\}$ attains ten, since even its largest two distinct elements sum to nineteen. For $\{1,\ldots,8\}$ with forbidden sum nine, the four pairs each offer three choices: neither element, the smaller, or the larger. Every valid subset corresponds to one such independent choice per pair, giving $3^4=81$.
 
-[[odd-part-chains|Odd-part chains]] do this for divisibility. Writing each number as $2^a m$ with $m$ odd puts the numbers up to $n$ into one chain per odd number $m$, namely $m, 2m, 4m, \ldots$, and along a chain each number divides the next. A set with no element dividing another takes at most one from each chain, so a subset of $\{1, \ldots, 12\}$ has at most $6$ such elements, one per odd number $1, 3, 5, 7, 9, 11$; the numbers $7, 8, 9, 10, 11, 12$ show that $6$ is reached. When the answer is a largest set, both halves are needed: the groups give the bound, and an example meets it.
+Complementary pairs form a partition only after we check the ground set. An element whose partner lies outside it is unrestricted by that pairing. If the forbidden sum is even, its half is not forbidden by itself when two distinct elements are required. These leftover elements must be handled separately.
 
-[[subset-sum-facts|The subset-sum facts]] count by elements instead of by subsets. Each element of an $n$-element set lies in exactly half of the $2^n$ subsets, so the subset sums add to $2^{n-1}$ times the total: for $\{1, \ldots, 5\}$, $2^4 \cdot 15 = 240$. And when the set has an odd element, adding or removing it changes the parity of the sum, so exactly half the subsets have an even sum: $2^9 = 512$ of the subsets of $\{1, \ldots, 10\}$.
+A forbidden positive difference $d$ instead splits integers into chains with that step size. Adjacent entries in a chain differ by $d$, while entries in different chains cannot. Pair successive positions in a chain of length $\ell$, leaving one singleton if needed. At most one position from each pair may be selected, so the maximum is $\lceil\ell/2\rceil$. Alternating positions attain it. For difference three on $\{1,\ldots,10\}$, the chain lengths are four, three and three, giving maximum $2+2+2=6$. The set $\{1,2,3,7,8,9\}$ works.
 
-Find the groups the relation makes (pairs, chains or odd-part chains), bound the set group by group, and then build a set that meets the bound. The next lesson draws the relation as a graph.`,
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" role="img" aria-label="chains" style="width:100%;max-width:520px;height:auto"><g stroke="currentColor" fill="none" opacity=".5"><path d="M100 70H400M100 135H300M100 200H300"/></g><g fill="currentColor" font-size="20" text-anchor="middle"><circle cx="100" cy="70" r="21" fill="var(--bg, Canvas)"/><text x="100" y="77">1</text><circle cx="200" cy="70" r="21" fill="var(--bg, Canvas)"/><text x="200" y="77">4</text><circle cx="300" cy="70" r="21" fill="var(--bg, Canvas)"/><text x="300" y="77">7</text><circle cx="400" cy="70" r="21" fill="var(--bg, Canvas)"/><text x="400" y="77">10</text><circle cx="100" cy="135" r="21" fill="var(--bg, Canvas)"/><text x="100" y="142">2</text><circle cx="200" cy="135" r="21" fill="var(--bg, Canvas)"/><text x="200" y="142">5</text><circle cx="300" cy="135" r="21" fill="var(--bg, Canvas)"/><text x="300" y="142">8</text><circle cx="100" cy="200" r="21" fill="var(--bg, Canvas)"/><text x="100" y="207">3</text><circle cx="200" cy="200" r="21" fill="var(--bg, Canvas)"/><text x="200" y="207">6</text><circle cx="300" cy="200" r="21" fill="var(--bg, Canvas)"/><text x="300" y="207">9</text></g><g fill="currentColor" font-size="16" text-anchor="middle"><text x="260" y="26">Difference three links neighboring chain entries.</text><text x="260" y="252">Take alternating positions: at most 2 + 2 + 2 = 6.</text></g></svg>
+
+For divisibility, [[odd-part-chains|odd-part chains]] group each positive integer uniquely as $2^a m$ with $m$ odd. In a fixed chain $m,2m,4m,\ldots$, any smaller member divides every larger member, so a divisibility-free subset takes at most one. There are $\lceil n/2\rceil$ odd parts up to $n$. The upper interval $\{\lfloor n/2\rfloor+1,\ldots,n\}$ has that many elements and no divisibility pair: a multiple at least twice a selected element exceeds $n$. Thus this upper bound is attained.
+
+For $n=12$ the six chains are $\{1,2,4,8\}$, $\{3,6,12\}$, $\{5,10\}$, $\{7\}$, $\{9\}$ and $\{11\}$, and $\{7,8,9,10,11,12\}$ attains six. Taking arbitrary representatives of different chains does not necessarily work: three divides nine although they have different odd parts. The chains prove the bound; the separate construction proves attainability.
+
+[[subset-sum-facts|Subset-sum identities]] count contributions rather than conflicts. For a set of $n\ge1$ numbers, each element occurs in $2^{n-1}$ subsets because every other element is freely included or excluded. Consequently all subset sums together total $2^{n-1}$ times the sum of the elements. For $\{1,\ldots,5\}$ this is $16\cdot15=240$. The empty subset contributes zero.
+
+If an integer set contains an odd element, toggling that element reversibly pairs even-sum subsets with odd-sum subsets. It changes the sum parity and is its own inverse, so exactly half of the $2^n$ subsets have each parity. For $\{1,\ldots,10\}$ there are $2^9=512$ even-sum subsets. Without an odd element every subset sum is even, so that assumption cannot be dropped.`,
       related: [
         { card: "pairing-to-bound", note: String.raw`the same groups used as boxes for the pigeonhole principle (R7.4).` },
         { card: "non-adjacent-selection", note: String.raw`counting the subsets of a chain with no two neighbors (R3.3).` },
@@ -48,7 +58,7 @@ Find the groups the relation makes (pairs, chains or odd-part chains), bound the
         { q: String.raw`How many subsets of $\{1, 2, \ldots, 8\}$, including the empty set, have no two elements adding to $9$?`, answer: "81",
           solution: String.raw`The pairs adding to $9$ are $\{1, 8\}, \{2, 7\}, \{3, 6\}, \{4, 5\}$, and they cover the set. A good subset takes from each pair nothing, its smaller element or its larger element, independently: $3^4 = 81$.` },
         { q: String.raw`What is the largest number of elements in a subset of $\{1, 2, \ldots, 10\}$ in which no two elements differ by $3$?`, answer: "6",
-          solution: String.raw`Difference $3$ links the chains $1, 4, 7, 10$ and $2, 5, 8$ and $3, 6, 9$, and a good subset takes no two neighbors in a chain: at most $2$, $2$ and $2$. So at most $6$, and $\{1, 2, 3, 7, 8, 9\}$, has no difference $3$.` },
+          solution: String.raw`Difference $3$ links the chains $1, 4, 7, 10$ and $2, 5, 8$ and $3, 6, 9$, and a good subset takes no two neighbors in a chain: at most $2$, $2$ and $2$. So at most $6$, and $\{1, 2, 3, 7, 8, 9\}$ has no difference $3$.` },
         { q: String.raw`What is the largest number of elements in a subset of $\{1, 2, \ldots, 12\}$ in which no element divides another?`, answer: "6",
           solution: String.raw`Write each number as $2^a m$ with $m$ odd. The chains $\{1, 2, 4, 8\}$, $\{3, 6, 12\}$, $\{5, 10\}$, $\{7\}$, $\{9\}$, $\{11\}$ cover the set, and in each chain every number divides the next ones, so a good subset takes at most one from each: at most $6$. The set $\{7, 8, 9, 10, 11, 12\}$ works, since the smallest multiple of any of them, other than itself, is at least $14$.` },
         { q: String.raw`What is the sum of the sums of all $32$ subsets of $\{1, 2, 3, 4, 5\}$ (the empty set has sum $0$)?`, answer: "240",
@@ -61,30 +71,44 @@ Find the groups the relation makes (pairs, chains or odd-part chains), bound the
     "R7.3": {
       prereq: ["permutations-combinations", "double-counting"],
       cards: ["handshake-lemma", "eulerian-paths", "round-robin-tournaments", "disconnected-graph-edges"],
-      body: String.raw`Can $9$ people each shake hands with exactly $3$ others? Can a figure be drawn without lifting the pencil or retracing a line? How many games are won in all in a tournament? A graph, a set of points (vertices) and of lines joining pairs of them (edges), describes each of these, and a few facts about it settle them.
+      body: String.raw`A graph records objects as vertices and relations as edges. Here graphs are finite and undirected; unless stated otherwise they are simple, meaning no loops and at most one edge per unordered pair of vertices. A handshake joins two different people, so a handshake graph fits this model. A road network can have parallel roads, but they must then be treated as separate edges.
 
-[[handshake-lemma|The handshake lemma]] says that the degrees, the number of edges at each vertex, add to twice the number of edges, since each edge has two ends. So a graph with $10$ vertices of degree $3$ has $\tfrac{30}{2} = 15$ edges, and the number of vertices of odd degree is always even. Nine people shaking $3$ hands each would give degrees adding to $27$, an odd number, so it cannot happen.
+The degree of a vertex counts incident edge ends. Summing degrees counts each edge twice, proving [[handshake-lemma|the handshake lemma]]:
 
-[[eulerian-paths|An Eulerian path]] traces every edge exactly once. In a connected graph, a closed tour exists exactly when every degree is even, and an open one exactly when two vertices have odd degree, and then it runs from one of them to the other: every pass through a vertex uses two of its edges, so only the ends can be odd. A figure with $2k$ odd vertices needs at least $k$ strokes, so one with $6$ odd vertices needs $3$.
+$$\sum_v\deg(v)=2E.$$
 
-[[round-robin-tournaments|A round-robin tournament]], in which each of $n$ teams plays every other team once, has $\binom n2$ games, and each game gives out one win, or one tie. So with no ties the wins add to $\binom n2$, and the average team wins $\tfrac{n-1}{2}$ games: with $8$ teams, $28$ wins in all and an average of $3.5$. Questions about records are settled by adding them up two ways, or by looking at the team with the most or the fewest wins.
+Thus ten vertices of degree three give fifteen edges. Also the number of odd-degree vertices is even, because a sum of integers is even only when it has an even number of odd summands. Nine people each shaking three hands would give total degree twenty-seven, so such a handshake pattern is impossible. An even degree sum is necessary for a proposed simple-graph degree list, but is not by itself sufficient to realize it.
 
-[[disconnected-graph-edges|The most edges in a disconnected graph]] are $\binom{n-1}{2}$: a disconnected graph misses every edge across some split of its vertices, and the fewest edges across a split, $n - 1$, come from cutting off one vertex. So any graph on $8$ vertices with $\binom72 + 1 = 22$ edges is connected, and $21$ edges are not enough, as $7$ vertices joined in every way and one vertex alone show.
+An [[eulerian-paths|Euler trail]] uses every edge exactly once; vertices may repeat. Ignore isolated vertices and require all vertices incident to an edge to lie in one connected component. In a closed trail, every arrival is paired with a departure, so all degrees are even. In a trail with different endpoints, only those two endpoints have odd degree.
 
-Draw the graph, add the degrees for the edge count and the parity, count the odd vertices for a tracing, and add a tournament's records two ways. The next lesson proves that something must exist.`,
+These conditions are sufficient as well. In a connected graph with all degrees even and at least one edge, start at any vertex and follow unused edges until no continuation is available. You cannot stop away from the start: at such a vertex arrivals and departures have used an odd number of its incident ends, so an even total degree would leave an unused departure. The resulting trail therefore closes. If edges remain, connectivity provides a vertex of the existing trail incident to unused edges. Build another closed trail there and insert it into the first. Repeating consumes all edges.
+
+With exactly two odd vertices, temporarily add an edge between them. The augmented graph has even degrees and hence a closed Euler tour. Cutting out the added edge gives an open Euler trail between the two odd vertices. The temporary edge may be parallel to an existing edge; the construction treats them as distinct. This proves existence, not just a necessary parity test.
+
+A connected figure with $2k\gt0$ odd vertices requires at least $k$ strokes with no retraced edge, since each odd vertex must be an endpoint of some stroke. Pair the odd vertices and add $k$ temporary edges, producing an even-degree graph. Cut a closed Euler tour at those temporary edges to obtain at most $k$ strokes. The lower bound makes the minimum exactly $k$. With no odd vertices and at least one edge, one closed stroke suffices, rather than zero. Disconnected edge-containing components must be handled separately.
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" role="img" aria-label="strokes" style="width:100%;max-width:520px;height:auto"><g stroke="currentColor" stroke-width="2" fill="none"><path d="M100 65L260 140L420 215"/><path d="M100 140H420" stroke-dasharray="6 4"/><path d="M100 215L260 140L420 65" stroke-dasharray="2 4"/></g><g fill="currentColor"><circle cx="100" cy="65" r="4"/><circle cx="100" cy="140" r="4"/><circle cx="100" cy="215" r="4"/><circle cx="420" cy="65" r="4"/><circle cx="420" cy="140" r="4"/><circle cx="420" cy="215" r="4"/><circle cx="260" cy="140" r="4"/></g><g fill="currentColor" font-size="16" text-anchor="middle"><text x="260" y="26">Six odd leaves, three strokes through one even center.</text><text x="260" y="252">Each stroke pairs two odd endpoints; no edge repeats.</text></g></svg>
+
+In a [[round-robin-tournaments|round robin]] with $n$ teams and no ties, each pair plays once. There are $\binom n2$ games, each contributing one win and one loss across the records. Hence total wins are $\binom n2$ and mean wins are $(n-1)/2$. For eight teams these are twenty-eight and $3.5$. If ties are allowed, one game can contribute two drawn results instead of a win and a loss; a scoring rule must then be accounted for explicitly.
+
+For a simple graph on $n\ge2$ vertices, a disconnected graph has a nonempty split with no crossing edges. If the split sizes are $k,n-k$, at least $k(n-k)$ of the $\binom n2$ possible edges are absent. Since
+
+$$k(n-k)-(n-1)=(k-1)(n-k-1)\ge0,$$
+
+the [[disconnected-graph-edges|maximum disconnected edge count]] is $\binom n2-(n-1)=\binom{n-1}2$. A complete graph on $n-1$ vertices plus an isolated vertex attains it. For eight vertices, twenty-two edges force connectivity, while twenty-one need not. This threshold does not apply unchanged to multigraphs, where parallel edges can accumulate inside a small component.`,
       related: [
         { card: "handshakes-diagonals", note: String.raw`the $\binom n2$ handshakes or segments among $n$ points.` },
         { card: "graph-coloring", note: String.raw`coloring the vertices so that neighbors differ (R8.4).` },
         { card: "eulers-polyhedron-formula", note: String.raw`vertices, edges and faces of a solid, where the handshake count gives the edges.` }
       ],
       exercises: [
-        { q: String.raw`A graph has $10$ vertices, each of degree $3$. How many edges does it have?`, answer: "15",
+        { q: String.raw`A finite undirected graph has $10$ vertices, each of degree $3$. How many edges does it have?`, answer: "15",
           solution: String.raw`The degrees add to $10 \cdot 3 = 30$, and each edge is counted at both its ends, so there are $\tfrac{30}{2} = 15$ edges.` },
         { q: String.raw`A connected figure has exactly $6$ points where an odd number of lines meet. What is the least number of strokes, none retracing a line, that draws it?`, answer: "3",
-          solution: String.raw`Along one stroke every point other than its two ends is entered and left equally often, so each odd point is an end of some stroke. With $6$ odd points and $2$ ends per stroke, at least $3$ strokes are needed. And $3$ are enough: add $2$ extra lines, each joining two of the odd points, so that only $2$ odd points remain; the new figure has one tour through every line, and removing the $2$ extra lines cuts it into $3$ strokes.` },
+          solution: String.raw`Along one stroke every point other than its two ends is entered and left equally often, so each odd point is an end of some stroke. With $6$ odd points and $2$ ends per stroke, at least $3$ strokes are needed. Three are also sufficient. Pair the six odd points and add three temporary edges joining the pairs. All degrees are now even, and the connected graph has a closed Euler tour. Removing the temporary edges cuts the tour into at most three strokes using only original edges. The lower bound of three makes the minimum exactly three.` },
         { q: String.raw`In a round-robin tournament of $8$ teams with no ties, how many games are won in all?`, answer: "28",
           solution: String.raw`Each pair of teams plays once, so there are $\binom82 = 28$ games, and each gives exactly one win: $28$.` },
-        { q: String.raw`What is the least number $e$ such that every graph with $8$ vertices and $e$ edges, no two joining the same pair, is connected?`, answer: "22",
+        { q: String.raw`What is the least number $e$ such that every simple undirected graph with $8$ vertices and $e$ edges, is connected?`, answer: "22",
           solution: String.raw`A disconnected graph has its vertices split into two groups with no edge between them. With groups of sizes $k$ and $8 - k$ it has at most $\binom k2 + \binom{8-k}{2}$ edges, largest for $k = 1$ or $7$: $\binom72 = 21$. So $22$ edges force a connected graph, and the complete graph on $7$ vertices with one vertex left alone shows that $21$ do not.` }
       ],
       problems: [
@@ -101,15 +125,19 @@ Draw the graph, add the degrees for the edge count and the parity, count the odd
     "R7.4": {
       prereq: ["casework-method", "modular-basics"],
       cards: ["pigeonhole", "pairing-to-bound", "extremal-principle"],
-      body: String.raw`How many integers must be chosen from $1$ to $100$ to be sure that two of them differ by a multiple of $7$? In a room of $100$ people, how many at least were born in the same month? How large can a subset of $\{1, \ldots, 30\}$ be with no two elements adding to $30$? Each question asks what is forced, however the choices are made.
+      body: String.raw`A guarantee must hold for every allowed arrangement. The [[pigeonhole|pigeonhole principle]] states that $n$ objects assigned to $k\ge1$ boxes put at least $\lceil n/k\rceil$ objects in some box. Otherwise each box would contain at most $\lceil n/k\rceil-1$, and the total would be smaller than $n$. The argument proves existence without locating the crowded box.
 
-[[pigeonhole|The pigeonhole principle]] says that $n$ objects in $k$ boxes put at least $\lceil \tfrac nk \rceil$ objects in some box. It proves that something exists without finding it, and the whole skill is choosing the boxes. For differences divisible by $7$, the boxes are the $7$ remainders mod $7$: two numbers in one box differ by a multiple of $7$, so $8$ numbers are enough, and $1, 2, \ldots, 7$ show that $7$ are not. For birthdays, $100$ people in $12$ months put at least $\lceil \tfrac{100}{12} \rceil = 9$ in some month, and $9$ is the best guarantee, since the months can hold $8$ or $9$ each. A "how many to be sure" answer always comes with a worst case one short of it.
+Choose boxes that encode the desired relation. Two integers have difference divisible by seven exactly when they have the same remainder modulo seven. There are seven remainder classes, so eight chosen integers force a pair. Seven do not, as the distinct numbers one through seven demonstrate. In a room of one hundred people, twelve birth-month classes force a class of at least nine. That guarantee is sharp: four months may have nine people and the other eight months eight, totaling one hundred with none above nine.
 
-[[pairing-to-bound|Pairing elements]] is the pigeonhole principle used for a bound. If the elements fall into groups, each of which a good subset meets at most once, then the subset is no larger than the number of groups. With no two elements adding to $30$ in $\{1, \ldots, 30\}$, the groups are the pairs $\{1, 29\}, \ldots, \{14, 16\}$ and the singletons $\{15\}$ and $\{30\}$, $16$ groups in all ($15 + 15 = 30$ is not two different elements), and $\{1, \ldots, 15\} \cup \{30\}$ meets the bound. The bound and the example together are the answer.
+Finite capacities can refine the worst case. If color $i$ occurs only $c_i$ times, the most draws avoiding $r$ of one color is $\sum_i\min(c_i,r-1)$. If some color has at least $r$ objects, one more draw forces the threshold. If no color has that many, no number of draws can produce it. This capacity check prevents treating a small color class as an unlimited box.
 
-[[extremal-principle|The extremal principle]] starts from the most extreme object: the largest, the smallest, the first, the team with the most wins. Being extreme is a property no other object has, and a short argument about it often settles the whole problem. In a tournament with no ties, the team $T$ with the most wins beats every other team directly or through one other team: if some team $X$ beat $T$ and also beat every team that $T$ beat, then $X$ would have more wins than $T$, so $X$ lost to a team that $T$ beat.
+[[pairing-to-bound|Pairing to bound]] constructs boxes for an extremal subset. For the ground set $\{1,\ldots,30\}$ with no two distinct elements summing to thirty, there are fourteen conflicting pairs $\{1,29\},\ldots,\{14,16\}$. Fifteen is unpaired because it would require a second copy of itself, and thirty would need zero, outside the ground set. Thus a valid subset has at most $14+2=16$ elements. The set $\{1,\ldots,15,30\}$ attains this bound. The conditions on distinctness and the ground set explain both singletons.
 
-Choose the boxes, and give the worst case one short of the answer; pair the elements to bound a set and build a set that meets the bound; and when stuck, look at the most extreme object. The next lesson attaches a color or a quantity to a process.`,
+The [[extremal-principle|extremal principle]] selects an object maximizing or minimizing a useful quantity in a finite nonempty collection. Such an object need not be unique; choose any maximizer. Its useful property is the inequality comparing it with every competitor, not uniqueness.
+
+For a no-tie round robin, choose a team $T$ with the most wins. We claim every other team is beaten by $T$ either directly or through one intermediate team. Let $X$ be a team that beats $T$. If no team beaten by $T$ beats $X$, then $X$ beats every team that $T$ beats, as well as $T$ itself. That gives $X$ at least one more win than $T$, contradicting maximality. Therefore some $Y$ satisfies $T\to Y\to X$. This proves the claim even if several teams tie for maximum wins.
+
+A finite extremal argument may be paired with a construction, a parity condition or another pigeonhole step. The important step is to state exactly what the chosen maximum or minimum forbids, rather than assuming an object is special merely because it was selected.`,
       related: [
         { card: "subset-avoiding-relation", note: String.raw`the pairs and chains that a forbidden sum or difference makes (R7.2).` },
         { card: "modular-basics", note: String.raw`remainders as the boxes for differences and sums.` },
@@ -138,13 +166,23 @@ Choose the boxes, and give the worst case one short of the answer; pair the elem
     "R7.5": {
       prereq: ["casework-method"],
       cards: ["coloring-arguments", "invariants-coloring"],
-      body: String.raw`Can a chessboard with two opposite corners removed be covered by dominoes? The numbers $1$ to $10$ are on a board, and two at a time are replaced by their difference until one is left: can it be $0$? A point moves one unit up, down, left or right at each step: can it be back at the start after $7$ steps? Each answer is "no", and the proof is a quantity the moves cannot change.
+      body: String.raw`A coloring can reveal a restriction obeyed by every tile or move. On a checkerboard, a domino covers one square of each color. Any tiled region must therefore contain equal color totals. Removing two opposite corners of an ordinary $8\times8$ board removes two squares of the same color, leaving thirty of that color and thirty-two of the other. Hence no domino tiling exists.
 
-[[coloring-arguments|A coloring argument]] gives every cell of a board a color so that each tile covers a fixed mix of colors. A domino always covers one black and one white square of a chessboard, so any region it tiles has equally many of each. Removing two opposite corners removes two squares of one color, leaving $30$ of one and $32$ of the other, so no tiling exists. Colorings also count: a $7 \times 7$ board with black corners and alternating colors has $25$ black squares, the cells $(i, j)$ with $i + j$ even, and a set of marked cells that every tile must touch gives a lower bound on the number of tiles. The coloring is chosen to fit the tile: stripes for $1 \times 4$ tiles, a checkerboard for dominoes.
+[[coloring-arguments|Coloring arguments]] prove necessary conditions, which may not be sufficient. Equal black and white totals alone do not guarantee a tiling of an arbitrary region; for example, disconnected isolated squares of opposite colors cannot be covered by a domino. A coloring should be checked against every permitted tile orientation before it is used.
 
-[[invariants-coloring|An invariant]] is a quantity that no move changes. Every reachable state shares its starting value, so a state with any other value is out of reach. Replacing $a$ and $b$ by $|a - b|$ changes the total by $a + b - |a - b|$, twice the smaller number, an even amount, so the parity of the total never changes. The total of $1$ to $10$ is $55$, which is odd, so the last number is odd and cannot be $0$. For the moving point, each step changes $x + y$ by $1$, so after $7$ steps $x + y$ is odd and the point cannot be at the origin; after $3$ steps it can be at exactly the $16$ points with $|x| + |y|$ equal to $1$ or $3$. Parity, a remainder, a sum or a coloring are the usual invariants; the one to use is found by asking what each move does to a few candidates.
+The colors can also be counted directly. In a $7\times7$ board with black corners, rows one, three, five and seven each have four black cells, while rows two, four and six have three. The total is $4\cdot4+3\cdot3=25$. More generally, marking a set of cells that each tile can cover at most $c$ times gives a lower bound of $\lceil M/c\rceil$ tiles to cover $M$ marked cells, when $c\gt0$. To attain a claimed minimum one still needs an actual tiling.
 
-Color the board to fit the tiles, and find a quantity each move preserves; compare its value at the start with its value at the target. The next lesson reasons from statements instead of numbers.`,
+An [[invariants-coloring|invariant]] is a quantity unchanged by every legal move. Compare it at the initial state and the target. If their values differ, the target is unreachable. If their values agree, further obstructions may remain; agreement alone is not an existence proof.
+
+For nonnegative integers on a board, replace two numbers $a,b$ by $|a-b|$. The sum decreases by
+
+$$a+b-|a-b|=2\min(a,b),$$
+
+an even amount. The sum itself changes, but its parity is invariant. Starting from $1,2,\ldots,10$ gives total fifty-five, so after nine replacements the last number is odd and cannot be zero. The process has a changing number of entries, yet the same parity applies at every stage.
+
+A unit grid walk instead flips the parity of $x+y$ on every step; that parity is not invariant by itself. If $t$ is the number of steps, $x+y-t$ is invariant modulo two. Starting at the origin therefore requires $x+y\equiv t\pmod2$, and the distance bound gives $|x|+|y|\le t$.
+
+These two necessary conditions are also sufficient for this particular walk: take a shortest route of length $d=|x|+|y|$, then use the remaining $t-d$ steps in pairs going along an edge and back. The parity condition makes $t-d$ even. After three steps the possible distances are one and three. The corresponding diamond boundaries have four and twelve lattice points, totaling sixteen. After seven steps a return to the origin is impossible because the parity is wrong.`,
       related: [
         { card: "tiling-a-board", note: String.raw`tilings that can be counted, by a recursion on the end (R5.2).` },
         { card: "modular-basics", note: String.raw`remainders, the usual invariants of a number process.` },
@@ -172,15 +210,19 @@ Color the board to fit the tiles, and find a quantity each move preserves; compa
     "R7.6": {
       prereq: ["casework-method"],
       cards: ["truth-tellers-logic", "magic-squares", "proof-by-cases", "wlog-symmetry"],
-      body: String.raw`Three people each always tell the truth or always lie, and each makes a statement about the others: who is truthful? The numbers $1$ to $16$ fill a $4 \times 4$ grid with equal row and column sums: what is the sum? Is $n^2 + 1$ ever a multiple of $3$? These are settled by reasoning in cases, cut down by what the problem forces.
+      body: String.raw`In a truth-teller puzzle, assigning types determines the required truth values of statements. A truthful speaker must make a true statement; a liar must make a false one. [[truth-tellers-logic|Logical deduction]] checks these constraints together. There may be no consistent assignment, one, or several; a conclusion is forced only if every consistent assignment supports it.
 
-[[truth-tellers-logic|Logical deduction]] tests each guess against every statement. A truth-teller's statement is true and a liar's is false, so a guess about who is truthful either agrees with all the statements or contradicts one. Suppose $A$ says "$B$ is a liar", $B$ says "$A$ and $C$ are the same kind", and $C$ says "$A$ is a liar". If $A$ is truthful, then $B$ lies, so $A$ and $C$ differ, so $C$ lies, and $C$'s statement is indeed false: consistent. If $A$ lies, then $B$ is truthful, so $C$ is a liar like $A$, but then $C$'s statement "$A$ is a liar" would be true: a contradiction. So only $A$ is truthful. Start from the statement that refers to the most people, or from a guess that is quickly refuted.
+Suppose $A$ says that $B$ is a liar, $B$ says that $A$ and $C$ are the same kind, and $C$ says that $A$ is a liar. If $A$ lies, the first statement forces $B$ truthful; then the second forces $C$ to be a liar like $A$. But $C$ would then be making the true statement that $A$ lies, a contradiction. Thus $A$ is truthful and $B$ lies. The false second statement makes $A,C$ different kinds, so $C$ lies, and the third statement is indeed false. This assignment satisfies all three constraints.
 
-[[magic-squares|A magic square]] has equal sums along every row and column (and both diagonals). The rows hold every entry once, so the magic sum is the total divided by the number of rows: for $1$ to $16$ in a $4 \times 4$ grid, $\tfrac{136}{4} = 34$. In a $3 \times 3$ square the four lines through the center add to $4$ times the magic sum, which is the total plus $3$ times the center, so the center is a third of the magic sum: $5$ for the numbers $1$ to $9$.
+[[magic-squares|Magic-square constraints]] can be added in different ways to expose an unknown. If an $n\times n$ grid has common row sum $M$, summing all rows gives total $nM$, so $M$ is the total divided by $n$. For entries one through sixteen the total is $136$, giving row sum thirty-four. This argument does not need diagonal conditions.
 
-[[proof-by-cases|A proof by cases]] splits the possibilities into a few groups and settles each. A number $n$ is $0$, $1$ or $2$ mod $3$, so $n^2$ is $0$, $1$ or $1$, and $n^2 + 1$ is $1$, $2$ or $2$: never a multiple of $3$. The skill is the split; a good one makes each case a line. [[wlog-symmetry|Without loss of generality]] removes cases that a relabeling turns into one another. The six numbers formed from $1$, $2$, $3$ treat the digits alike, so each digit appears twice in each place, and their sum is $2 \cdot 6 \cdot 111 = 1332$ without listing them. Check that the symmetry is really there before using it.
+A $3\times3$ magic square with both diagonals also summing to $M$ has an additional relation. Add its middle row, middle column and two diagonals. Every noncentral cell is counted once and the center $c$ four times, so the sum is the total plus $3c$. Since the total is $3M$, this gives $4M=3M+3c$, hence $c=M/3$. The remaining cells occur in opposite pairs totaling $M-c=2c$. For entries one through nine, $M=15$ and $c=5$. Without the diagonal conditions the four-line argument is unavailable.
 
-Test each guess against every statement, total a magic square by its rows, split by remainders or by the size of the objects, and let a symmetry choose one case. The next lesson proves a statement by proving its contrapositive.`,
+[[proof-by-cases|Proof by cases]] needs an exhaustive split. For any integer $n$, its remainder modulo three is zero, one or two. Its square has remainder zero, one or one, so $n^2+1$ has remainder one or two and is never divisible by three. Unlike disjoint cases used for counting, logical cases may overlap provided together they exhaust the possibilities and each establishes the conclusion.
+
+[[wlog-symmetry|Without loss of generality]] removes cases only through a transformation preserving the hypotheses and the conclusion being proved. For a symmetric statement about three real numbers one may order them $a\le b\le c$, since relabeling preserves such a statement. One cannot make that assumption if the variables have different roles in the condition. If cases are being counted rather than proving a common property, the sizes of their symmetry classes must still be accounted for.
+
+Symmetry also aggregates a sum. Among the six permutations of the distinct digits one, two and three, fixing any digit in one position leaves two orders for the others. Each digit therefore occurs twice in each place, and the sum is $2(1+2+3)(100+10+1)=1332$. This is a count of equal contributions, not permission to discard five of the six numbers.`,
       related: [
         { card: "contrapositive", note: String.raw`proving "if $P$ then $Q$" as "if not $Q$ then not $P$" (R7.7).` },
         { card: "casework-method", note: String.raw`counting by cases that do not overlap (R1.5).` },
@@ -211,23 +253,29 @@ Test each guess against every statement, total a magic square by its rows, split
     "R7.7": {
       prereq: ["truth-tellers-logic"],
       cards: ["contrapositive"],
-      body: String.raw`"Anyone who gets every question right gets an A." Does it follow that someone who got a B missed a question? That someone who got an A got every question right? A statement "if $P$ then $Q$" has three relatives, and only one of them means the same thing.
+      body: String.raw`An implication “if $P$ then $Q$” rules out the case where $P$ is true and $Q$ false. Its [[contrapositive|contrapositive]], “if not $Q$ then not $P$,” rules out that same case. They are logically equivalent. This concerns implication between statements; it does not require a causal connection.
 
-[[contrapositive|The contrapositive]] of "if $P$ then $Q$" is "if not $Q$ then not $P$", and the two are equivalent: each says that $P$ never happens without $Q$. So "everyone with all answers right gets an A" means the same as "anyone without an A missed a question". The converse, "if $Q$ then $P$", and the inverse, "if not $P$ then not $Q$", are a different statement from the original (they are each other's contrapositive), so neither follows from it: an A may come with a missed question.
+The converse “if $Q$ then $P$” and inverse “if not $P$ then not $Q$” are contrapositives of one another. Neither follows from the original implication in general. A counterexample is a student who receives an A despite missing a question: it is consistent with the promise that all-correct work receives an A, but refutes the converse and inverse. What does follow is that a student without an A cannot have answered every question correctly.
 
-The contrapositive is also a way of proving things. To prove "if $n^2$ is even then $n$ is even", prove instead "if $n$ is odd then $n^2$ is odd": an odd $n$ is $2k + 1$, and $n^2 = 4k^2 + 4k + 1$ is odd. The switch helps whenever "not $Q$" gives something to build with. To show that $a + b \ge 100$ forces $a \ge 50$ or $b \ge 50$, assume both are less than $50$, and then $a + b \lt 100$. In the same way, the negation of "all" is "some not", and of "some" is "none": the negation of "every school sold more than $100$ shirts" is "some school sold at most $100$".
+To prove an implication by contrapositive, assume the negation of its conclusion and prove the negation of its hypothesis. For an integer $n$, the claim “if $n^2$ is even then $n$ is even” becomes “if $n$ is odd then $n^2$ is odd.” Write $n=2k+1$ with integer $k$. Then
 
-To test whether a statement follows, rewrite the given one as its contrapositive and compare; to prove one, try assuming the conclusion fails. The Summary follows.`,
+$$n^2=4k^2+4k+1=2(2k^2+2k)+1,$$
+
+which is odd. The integer domain supplies the dichotomy even or odd; it must not be omitted from the theorem.
+
+Negation must apply to the whole statement. The negation of “$a\ge50$ or $b\ge50$” is “$a\lt50$ and $b\lt50$.” Those inequalities imply $a+b\lt100$. Thus, by contrapositive, $a+b\ge100$ forces at least one of $a,b$ to be at least fifty. This is also the two-number instance of an averaging bound.
+
+Likewise, the negation of “every school sold more than one hundred shirts” is “some school sold at most one hundred shirts.” The negation of “some school sold more than one hundred” is “no school sold more than one hundred.” Keep the same domain and negate the inequality as well as the quantifier. To refute a proposed consequence, exhibit an assignment satisfying the original statement and violating that consequence; a single such counterexample suffices.`,
       related: [
         { card: "truth-tellers-logic", note: String.raw`deduction from statements that must all hold (R7.6).` },
         { card: "proof-by-contradiction", note: String.raw`assuming the whole statement false, not only the conclusion.` }
       ],
       exercises: [
-        { q: String.raw`Which of these follows from "if it rains, the game is canceled"? (a) If the game is canceled, it rained. (b) If it does not rain, the game is played. (c) If the game is played, it did not rain.`,
+        { q: String.raw`Which of these follows from "if it rains, the game is canceled"? (a) If the game is canceled, it rained. (b) If it does not rain, the game is not canceled. (c) If the game is not canceled, it did not rain.`,
           solution: String.raw`Statement (c) is the contrapositive, "if not canceled then not raining", and is equivalent to the original. Statement (a) is the converse and (b) the inverse; the game might be canceled for another reason, so neither follows. Only (c) follows.` },
         { q: String.raw`Prove that if $a + b \ge 100$ for real numbers $a$ and $b$, then $a \ge 50$ or $b \ge 50$.`,
           solution: String.raw`Prove the contrapositive: if $a \lt 50$ and $b \lt 50$, then $a + b \lt 50 + 50 = 100$, so $a + b \ge 100$ fails. Since the contrapositive is equivalent to the statement, the statement holds.` },
-        { q: String.raw`Prove that if $n^2$ is even, then $n$ is even.`,
+        { q: String.raw`Prove that for an integer $n$, if $n^2$ is even, then $n$ is even.`,
           solution: String.raw`Prove the contrapositive: if $n$ is odd, then $n^2$ is odd. Write $n = 2k + 1$; then $n^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$, which is odd.` }
       ],
       problems: [
@@ -239,13 +287,13 @@ To test whether a statement follows, rewrite the given one as its contrapositive
     "R7.8": {
       prereq: ["subset-avoiding-relation", "subset-sum-facts", "odd-part-chains", "handshake-lemma", "eulerian-paths", "round-robin-tournaments", "disconnected-graph-edges", "pigeonhole", "pairing-to-bound", "extremal-principle", "coloring-arguments", "invariants-coloring", "truth-tellers-logic", "magic-squares", "proof-by-cases", "wlog-symmetry", "contrapositive"],
       cards: [],
-      body: String.raw`[[subset-avoiding-relation|A subset avoiding a relation]] is bounded group by group, by pairs or chains, and [[odd-part-chains|odd-part chains]] do this for divisibility. [[subset-sum-facts|The subset-sum facts]] count each element in half the subsets.
+      body: String.raw`[[subset-avoiding-relation|Forbidden relations]] organize a subset into pairs or chains. These give upper bounds; an attaining example is a separate requirement. [[odd-part-chains|Odd-part chains]] bound divisibility-free sets, but elements in different chains can still divide one another. [[subset-sum-facts|Subset contributions]] and parity-toggle bijections count across all subsets with their stated assumptions.
 
-[[handshake-lemma|The handshake lemma]] makes the degrees add to twice the edges; [[eulerian-paths|an Eulerian path]] needs zero or two odd vertices; [[round-robin-tournaments|a round robin]] has $\binom n2$ games; and [[disconnected-graph-edges|more than $\binom{n-1}{2}$ edges]] connect a graph.
+[[handshake-lemma|Degree sums]] count every edge twice. [[eulerian-paths|Euler trails]] require connectivity of the edge-containing part and zero or two odd vertices; joining closed trails proves sufficiency. The [[round-robin-tournaments|round-robin count]] totals wins only after the tie and scoring rules are fixed. The [[disconnected-graph-edges|connectivity threshold]] $\binom{n-1}{2}+1$ applies to simple undirected graphs on $n\ge2$ vertices.
 
-[[pigeonhole|The pigeonhole principle]], [[pairing-to-bound|pairing]] and [[extremal-principle|the extremal principle]] prove that something must exist. [[coloring-arguments|Colorings]] and [[invariants-coloring|invariants]] prove that something cannot happen.
+[[pigeonhole|Pigeonhole]], [[pairing-to-bound|pairing]] and the [[extremal-principle|extremal principle]] turn a chosen grouping or maximum into a bound. Extremal objects need not be unique. [[coloring-arguments|Colorings]] and [[invariants-coloring|invariants]] can rule out targets; matching a necessary condition is not by itself a construction. For grid walks, tracking step parity as well as position makes the alternating coloring useful.
 
-[[truth-tellers-logic|Logical deduction]] tests guesses against statements, [[magic-squares|a magic square]] is totaled by its rows, [[proof-by-cases|cases]] and [[wlog-symmetry|symmetry]] organize an argument, and [[contrapositive|the contrapositive]] is the one equivalent form of an implication.`,
+[[truth-tellers-logic|Statement consistency]], [[magic-squares|line-sum identities]] and [[proof-by-cases|exhaustive cases]] support complete deductions. [[wlog-symmetry|Symmetry]] must preserve the entire claim, and counting still needs the correct multiplicities. An implication and its [[contrapositive|contrapositive]] have identical truth conditions; converse and inverse do not generally follow. Precise domains, negations and boundary conditions are part of each proof.`,
       strategies: [
         String.raw`For a largest set, bound it by groups and then build a set that meets the bound.`,
         String.raw`For "how many to be sure", choose the boxes and show the worst case one short.`,
@@ -261,7 +309,7 @@ To test whether a statement follows, rewrite the given one as its contrapositive
     exercises: [
       { q: String.raw`How many integers must be chosen from $1, 2, \ldots, 20$ to be sure that two of them add to $21$?`, answer: "11",
         solution: String.raw`The pairs $\{1, 20\}, \ldots, \{10, 11\}$ are $10$ boxes, so $11$ numbers put two in one pair, and those add to $21$. The numbers $1, \ldots, 10$ have no such pair, so $10$ are not enough.` },
-      { q: String.raw`A graph has $6$ vertices with degrees $1, 2, 2, 3, 3, 3$. How many edges does it have?`, answer: "7",
+      { q: String.raw`A finite undirected graph has $6$ vertices with degrees $1, 2, 2, 3, 3, 3$. How many edges does it have?`, answer: "7",
         solution: String.raw`The degrees add to $14$, twice the number of edges, so there are $7$ edges.` },
       { q: String.raw`Ten people stand in a circle, each a knight, who always tells the truth, or a knave, who always lies. Each says, "The person on my left is a knave." How many are knights?`, answer: "5",
         solution: String.raw`A knight's left neighbor is a knave. A knave's statement is false, so a knave's left neighbor is a knight. So the kinds alternate around the circle, which works since $10$ is even, and there are $5$ knights.` },
