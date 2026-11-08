@@ -5445,6 +5445,7 @@
     }).join('');
     shownIds = [];
     $content.innerHTML = `<div class="space-home practice-session">
+      ${finished ? `<a class="back-link practice-back-results" href="#/practice/set/${encodeURIComponent(set.id)}">&larr; Back to Results overview</a>` : ''}
       <a class="back-link" href="#/practice">&larr; Back to Practice</a>
       <section class="sh-section">
         <div class="practice-session-top"><div><h2>Practice set · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problem${set.slugs.length === 1 ? '' : 's'} · ${escapeAttr(set.difficulty)} difficulty${finished ? ' · Review' : ''}</p></div></div>

@@ -23,7 +23,8 @@ with its own full-width **Show all / Show less** control.
 Finish and review grades against imported answer keys and opens a results overview with your
 score and correct, incorrect and unanswered totals. Each result links to its detailed review. Review keeps your submitted selection,
 shows Correct, Incorrect or Unanswered, and separates the problem statement from the result
-and explanation. How this problem works uses the same strategy, Pattern/Method/Formulas chain
+and explanation. On review pages, **Back to Results overview** above **Back to Practice**,
+and the **Results overview** button in the header, return to that set's results. How this problem works uses the same strategy, Pattern/Method/Formulas chain
 and textbook links as the problem page. Answer keys come from LIVE by Po-Shen Loh and are
 matched to the local problem statements before import. New sets only draw problems with a key.
 Older saved problems without a matching key are explicitly labeled Answer unavailable: the key is
