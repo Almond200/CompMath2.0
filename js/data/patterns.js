@@ -2928,7 +2928,7 @@ window.MATH_SECTIONS.push({
           suggests: ["linear-change-of-variables", "coordinate-bash"],
           tryFirst: ["linear-change-of-variables", "cross-product-area", "distance-midpoint"],
           latex: String.raw`\text{perimeter} = 2\left(|\vec v_1| + \cdots + |\vec v_n|\right)`,
-          description: String.raw`This is the region swept out by several independent motions. When each parameter contributes its own segment of displacement, a multiple of a vector $\vec v_i$ from $0$ to $\vec v_i$, the reachable set is the Minkowski sum of those segments, a convex polygon with sides in opposite parallel pairs, one pair for each motion.`,
+          description: String.raw`This is the region swept out by several independent motions. When each parameter contributes its own segment of displacement, a multiple of a vector $\vec v_i$ from $0$ to $\vec v_i$, the reachable set is the Minkowski sum of those segments. When at least two of the nonzero vectors are not parallel it is a convex polygon with sides in opposite parallel pairs, one pair for each direction (parallel vectors merge into one longer pair); when all are parallel it is only a segment.`,
           keywords: ["zonogon", "minkowski sum of segments", "region swept by parameters", "convex polygon with opposite parallel sides", "perimeter is twice the generator length", "independent parameters sweep a region", "sum of segments", "method", "pattern"],
           importance: "low",
           tier: "AMC",
