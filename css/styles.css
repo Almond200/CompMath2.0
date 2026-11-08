@@ -4490,3 +4490,9 @@ body:has(.ge-movebar) #ge-toast { bottom: 120px; }
 .app-confirm p { margin: 0; font-size: calc(14px * var(--tx)); line-height: 1.55; color: var(--text-dim); }
 .app-confirm-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 18px; }
 .app-confirm .hp-btn.app-confirm-danger { background: var(--level-oly); border-color: var(--level-oly); color: #fff; }
+.ge-handle { display: inline-flex; align-items: center; justify-content: center; cursor: grab; touch-action: none; color: var(--text-faint); }
+.ge-handle svg { fill: currentColor; }
+.ge-handle:active { cursor: grabbing; }
+.ge-row.is-lifted { opacity: 0.5; }
+.ge-row.ge-drop-before { box-shadow: 0 -2px 0 var(--space, var(--accent)); }
+.ge-row.ge-drop-after { box-shadow: 0 2px 0 var(--space, var(--accent)); }

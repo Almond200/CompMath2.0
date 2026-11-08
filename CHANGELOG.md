@@ -2,6 +2,8 @@
 
 **2026-11-08**
 
+- Group editor, sections (owner): the up and down buttons are gone; each section row ends in a six-dot grip, with its delete × just to the left. Dragging the grip (mouse, pen or touch) reorders the section, the row dimming and a line showing where it lands; with the grip focused, the up and down arrows move it. The hint and the keyboard list say so.
+
 - Buttons (owner): the group editor's Done showed the browser's two-tone bevel, because a <button> with the app's solid button style kept its default border (Practice and the textbooks had each patched this locally). One rule now gives every such button a transparent border, the app's font and a pointer, so Done is flat like the app's other buttons; the soft buttons keep their own border.
 
 - Ungroup asks first (owner): both Ungroup buttons (custom sections and automatic groups, Starred's included) open a confirmation, so a misclick changes nothing; grouping needs none. It is a new app-styled dialog (a rounded card with Cancel and the action; Escape, Cancel or a click outside declines, and Cancel has the focus so a stray Enter is harmless), which now also replaces the browser's popups for Delete list, Clear and Import, the destructive ones with a red button.

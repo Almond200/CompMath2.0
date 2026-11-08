@@ -7582,6 +7582,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   let groupEdit = null;   // { listId, undo: [snapshots], redo: [snapshots], selected: Set, renaming: index }
   const GE_MAC = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
   const GE_MOD = GE_MAC ? "&#8984;" : "Ctrl ";
+  // The reorder grip: six dots.
+  const GE_GRIP = `<svg width="10" height="16" viewBox="0 0 10 16" aria-hidden="true">${[3, 8, 13].map(y => `<circle cx="2.5" cy="${y}" r="1.4"/><circle cx="7.5" cy="${y}" r="1.4"/>`).join("")}</svg>`;
   // A brief note at the foot of the screen, so an undo by keyboard is seen.
   function geToast(text) {
     let t = document.getElementById("ge-toast");
@@ -7671,9 +7673,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <button type="button" class="ge-row-name" data-ge-act="rename" data-i="${i}" title="Rename">${escapeAttr(sec.title || "Untitled section")}</button>
           <span class="ge-row-n">${ids(sec).length}</span>
           <span class="ge-row-tools">
-            <button type="button" class="ge-ico" data-ge-act="up" data-i="${i}" aria-label="Move section up" ${i ? "" : "disabled"}>&uarr;</button>
-            <button type="button" class="ge-ico" data-ge-act="down" data-i="${i}" aria-label="Move section down" ${i < secs.length - 1 ? "" : "disabled"}>&darr;</button>
-            <button type="button" class="ge-ico ge-del" data-ge-act="delete" data-i="${i}" aria-label="Delete section">&times;</button>
+            <button type="button" class="ge-ico ge-del" data-ge-act="delete" data-i="${i}" aria-label="Delete section" title="Delete section">&times;</button>
+            ${secs.length > 1 ? `<button type="button" class="ge-ico ge-handle" data-ge-handle="${i}" aria-label="Reorder ${escapeAttr(sec.title || "Untitled section")}: drag, or press the up and down arrows" title="Drag to reorder">${GE_GRIP}</button>` : ""}
           </span>
         </div>`).join("");
     const moveBar = sel.size ? `<div class="ge-movebar" role="region" aria-label="Move selected cards">
@@ -7704,7 +7705,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <button type="button" class="ge-tool" data-ge-act="sort" ${secs.length ? "" : "disabled"}>Sort each section A&ndash;Z</button>
           <button type="button" class="ge-tool" data-ge-act="drop-empty" ${secs.some(sec => !ids(sec).length) ? "" : "disabled"}>Remove empty sections</button>
           <button type="button" class="ge-tool ge-danger" data-ge-act="clear" ${secs.length ? "" : "disabled"}>Remove every section</button>
-          <p class="ge-hint">Drag a card onto a section, or onto its name here. On a phone, tap cards to select them, then pick a section under Move to. Changes save as you go.</p>
+          <p class="ge-hint">Drag a section by its dots to reorder it. Drag a card onto a section, or onto its name here. On a phone, tap cards to select them, then pick a section under Move to. Changes save as you go.</p>
           <div class="ge-side-h ge-tools-h">Keyboard</div>
           <dl class="ge-keys">
             <dt><kbd>${GE_MOD}Z</kbd></dt><dd>Undo</dd>
@@ -7712,6 +7713,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <dt><kbd>${GE_MOD}A</kbd></dt><dd>Select every card</dd>
             <dt><kbd>Delete</kbd></dt><dd>Take the selected cards out of their sections</dd>
             <dt><kbd>Esc</kbd></dt><dd>Clear the selection, then close</dd>
+            <dt><kbd>&uarr;</kbd> <kbd>&darr;</kbd></dt><dd>On a section's dots: move it up or down</dd>
           </dl>
         </aside>
         <div class="ge-main">
@@ -7798,8 +7800,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
       case "moveto-loose": geChange(l2 => geMove(l2, [...sel], "loose")); sel.clear(); geRefresh(); return;
       case "up": case "down": {
         const j = act === "up" ? i - 1 : i + 1;
+        if (j < 0 || j >= l.customSections.length) return;
         geChange(l2 => { const s = l2.customSections; [s[i], s[j]] = [s[j], s[i]]; });
-        geRefresh(`[data-ge-row="${j}"] [data-ge-act="${act}"]:not([disabled])`); return;
+        geRefresh(`[data-ge-handle="${j}"]`); return;
       }
       case "delete": geChange(l2 => l2.customSections.splice(i, 1)); return;
       case "sort": geChange(l2 => l2.customSections.forEach(sec => sec.ids.sort((a, b) =>
@@ -7864,6 +7867,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (groupEdit.selected.size) { groupEdit.selected.clear(); geRefresh(); } else closeGroupEditor();
       return;
     }
+    // The grip reorders by keyboard too: up and down arrows move the section.
+    const grip = e.target.closest && e.target.closest("[data-ge-handle]");
+    if (grip && inEditor && (e.key === "ArrowUp" || e.key === "ArrowDown") && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      e.preventDefault(); geAction(e.key === "ArrowUp" ? "up" : "down", +grip.dataset.geHandle); return;
+    }
     // Keyboard shortcuts (owner, 2026-11-08). Text boxes keep the browser's own undo.
     if (!r && inEditor && !e.altKey) {
       const mod = e.ctrlKey || e.metaKey, k = e.key.toLowerCase();
@@ -7883,6 +7891,45 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (!t || !t.dataset) return;
     if (t.dataset.geRename != null) geCommitRename(t, t.dataset.cancel === "1");
     else if (t.dataset.geNote != null) geCommitNote(t, t.dataset.cancel === "1");
+  });
+  // Reordering sections by their grip (owner, 2026-11-08), with mouse, pen or touch: the row
+  // dims, a line shows where it will land, and it moves there on release.
+  document.addEventListener("pointerdown", e => {
+    if (!groupEdit || (e.pointerType === "mouse" && e.button !== 0)) return;
+    const grip = e.target.closest("[data-ge-handle]");
+    if (!grip || !grip.closest(".ge")) return;
+    e.preventDefault();
+    const from = +grip.dataset.geHandle;
+    const rows = [...$content.querySelectorAll(".ge-rows [data-ge-row]")];
+    const row = rows[from];
+    let to = from, moved = false;
+    row.classList.add("is-lifted");
+    const mark = () => rows.forEach((r, k) => {
+      r.classList.toggle("ge-drop-before", moved && k === to && to < from);
+      r.classList.toggle("ge-drop-after", moved && k === to && to > from);
+    });
+    const move = ev => {
+      moved = true;
+      to = rows.length - 1;
+      for (let k = 0; k < rows.length; k++) {
+        const r = rows[k].getBoundingClientRect();
+        if (ev.clientY < r.top + r.height / 2) { to = k > from ? k - 1 : k; break; }
+      }
+      mark();
+    };
+    const up = () => {
+      document.removeEventListener("pointermove", move);
+      document.removeEventListener("pointerup", up);
+      document.removeEventListener("pointercancel", up);
+      row.classList.remove("is-lifted");
+      rows.forEach(r => r.classList.remove("ge-drop-before", "ge-drop-after"));
+      geDrag.suppressClick = true;
+      setTimeout(() => { geDrag.suppressClick = false; }, 0);
+      if (moved && to !== from) geChange(l => { const [sec] = l.customSections.splice(from, 1); l.customSections.splice(to, 0, sec); });
+    };
+    document.addEventListener("pointermove", move);
+    document.addEventListener("pointerup", up);
+    document.addEventListener("pointercancel", up);
   });
   // Dragging (mouse and pen; on touch a press scrolls the page and a tap selects). The card
   // follows the pointer, a marker shows where it lands, and the page scrolls near its edges.
