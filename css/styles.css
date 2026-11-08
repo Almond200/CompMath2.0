@@ -4460,8 +4460,22 @@ body.ge-dragging, body.ge-dragging * { cursor: grabbing !important; user-select:
 }
 /* A custom section's description on the list page: the built-in notes' smaller type, editable
    in place like the list's description. */
-.section-desc { width: 100%; max-width: 760px; margin: 0 0 14px; }
+.section-desc { width: fit-content; max-width: min(100%, 760px); margin: 0 0 14px; }
 .section-desc.is-empty { color: var(--text-faint); }
 .section-desc-editor { max-width: 760px; margin: 0 0 14px; }
 .ge-inline { font: inherit; color: var(--space, var(--accent)); background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline; }
 .ge-note { font-size: 13px; line-height: 1.55; }
+/* Undo and Redo side by side, and the editor's keyboard shortcuts (owner, 2026-11-08). */
+.ge-undo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.ge-tool kbd, .ge-keys kbd { font: inherit; font-size: 11px; color: var(--text-faint); background: var(--bg-panel);
+  border: 1px solid var(--border); border-radius: 5px; padding: 0 5px; margin-left: 4px; white-space: nowrap; }
+.ge-keys { display: grid; grid-template-columns: auto 1fr; gap: 5px 10px; margin: 0; font-size: 12px; color: var(--text-dim); align-items: baseline; }
+.ge-keys dt { margin: 0; text-align: right; }
+.ge-keys dt kbd { margin: 0; }
+.ge-keys dd { margin: 0; }
+#ge-toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 12px); z-index: 60; opacity: 0; pointer-events: none;
+  font-size: 13px; font-weight: 600; color: var(--bg-card); background: var(--text); border-radius: 999px; padding: 6px 14px;
+  transition: opacity .15s, transform .15s; }
+#ge-toast.on { opacity: 1; transform: translate(-50%, 0); }
+@media (hover: none) { .ge-keys, .ge-side-h.ge-tools-h:has(+ .ge-keys) { display: none; } }
+body:has(.ge-movebar) #ge-toast { bottom: 120px; }

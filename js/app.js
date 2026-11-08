@@ -7555,7 +7555,18 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // dragging (mouse or pen) onto a section or a section's row in the sidebar, or by selecting
   // them (a click or a tap) and pressing a section under "Move to". Every change is saved at
   // once and can be undone; Done closes the editor.
-  let groupEdit = null;   // { listId, undo: [snapshots], selected: Set, renaming: index }
+  let groupEdit = null;   // { listId, undo: [snapshots], redo: [snapshots], selected: Set, renaming: index }
+  const GE_MAC = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+  const GE_MOD = GE_MAC ? "&#8984;" : "Ctrl ";
+  // A brief note at the foot of the screen, so an undo by keyboard is seen.
+  function geToast(text) {
+    let t = document.getElementById("ge-toast");
+    if (!t) { t = document.createElement("div"); t.id = "ge-toast"; t.setAttribute("role", "status"); document.body.appendChild(t); }
+    t.textContent = text;
+    t.classList.add("on");
+    clearTimeout(geToast.timer);
+    geToast.timer = setTimeout(() => t.classList.remove("on"), 1200);
+  }
   function customSectionView(l, shown) {
     const inList = new Set(shown), used = new Set();
     const out = (l.customSections || []).map((sec, i) => {
@@ -7579,6 +7590,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const l = geList(); if (!l) return;
     groupEdit.renaming = groupEdit.noting = null;
     groupEdit.undo.push(geSnapshot(l));
+    groupEdit.redo = [];
     if (groupEdit.undo.length > 60) groupEdit.undo.shift();
     fn(l);
     saveLists();
@@ -7597,7 +7609,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       delete l.customOff;
       saveLists();
     }
-    groupEdit = { listId, undo: [], selected: new Set(), renaming: null };
+    groupEdit = { listId, undo: [], redo: [], selected: new Set(), renaming: null };
     render();
     window.scrollTo({ top: 0 });
   }
@@ -7659,13 +7671,24 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <div class="ge-rows">${rows || `<p class="ge-side-empty">No sections yet.</p>`}</div>
           <button type="button" class="ge-add" data-ge-act="new">+ New section</button>
           <div class="ge-side-h ge-tools-h">Tools</div>
-          <button type="button" class="ge-tool" data-ge-act="undo" ${groupEdit.undo.length ? "" : "disabled"}>Undo</button>
+          <div class="ge-undo-row">
+            <button type="button" class="ge-tool" data-ge-act="undo" ${groupEdit.undo.length ? "" : "disabled"} title="${GE_MOD}+Z">Undo <kbd>${GE_MOD}Z</kbd></button>
+            <button type="button" class="ge-tool" data-ge-act="redo" ${groupEdit.redo.length ? "" : "disabled"} title="${GE_MOD}+Shift+Z">Redo <kbd>${GE_MOD}&#8679;Z</kbd></button>
+          </div>
           <button type="button" class="ge-tool" data-ge-act="select-loose" ${loose.length ? "" : "disabled"}>Select the cards not in a section</button>
           <button type="button" class="ge-tool" data-ge-act="auto" ${geIds(l).length >= 2 ? "" : "disabled"}>Start from the automatic groups</button>
           <button type="button" class="ge-tool" data-ge-act="sort" ${secs.length ? "" : "disabled"}>Sort each section A&ndash;Z</button>
           <button type="button" class="ge-tool" data-ge-act="drop-empty" ${secs.some(sec => !ids(sec).length) ? "" : "disabled"}>Remove empty sections</button>
           <button type="button" class="ge-tool ge-danger" data-ge-act="clear" ${secs.length ? "" : "disabled"}>Remove every section</button>
-          <p class="ge-hint">Drag a card onto a section, or onto its name here. On a phone, tap cards to select them, then pick a section under Move to. Changes save as you go; Undo takes one back.</p>
+          <p class="ge-hint">Drag a card onto a section, or onto its name here. On a phone, tap cards to select them, then pick a section under Move to. Changes save as you go.</p>
+          <div class="ge-side-h ge-tools-h">Keyboard</div>
+          <dl class="ge-keys">
+            <dt><kbd>${GE_MOD}Z</kbd></dt><dd>Undo</dd>
+            <dt><kbd>${GE_MOD}&#8679;Z</kbd></dt><dd>Redo${GE_MAC ? "" : " (also <kbd>Ctrl Y</kbd>)"}</dd>
+            <dt><kbd>${GE_MOD}A</kbd></dt><dd>Select every card</dd>
+            <dt><kbd>Delete</kbd></dt><dd>Take the selected cards out of their sections</dd>
+            <dt><kbd>Esc</kbd></dt><dd>Clear the selection, then close</dd>
+          </dl>
         </aside>
         <div class="ge-main">
           ${moveBar}
@@ -7733,11 +7756,18 @@ The book remembers the last lesson you opened, in this browser, and the contents
       case "note": groupEdit.noting = i; geRefresh(`[data-ge-note="${i}"]`); return;
       case "deselect": sel.clear(); geRefresh(); return;
       case "select-loose": geLoose(l).forEach(id => sel.add(id)); geRefresh(); return;
-      case "undo": {
-        const prev = groupEdit.undo.pop();
-        if (prev != null) { l.customSections = JSON.parse(prev); saveLists(); }
-        groupEdit.renaming = null; geRefresh(); return;
+      case "undo": case "redo": {
+        const [from, to] = act === "undo" ? [groupEdit.undo, groupEdit.redo] : [groupEdit.redo, groupEdit.undo];
+        const snap = from.pop();
+        if (snap == null) return;
+        to.push(geSnapshot(l));
+        l.customSections = JSON.parse(snap);
+        saveLists();
+        groupEdit.renaming = groupEdit.noting = null;
+        geToast(act === "undo" ? "Undone" : "Redone");
+        geRefresh(); return;
       }
+      case "select-all": geIds(l).forEach(id => sel.add(id)); geRefresh(); return;
       case "new": geChange(l2 => geNewSection(l2)); geRefresh(`[data-ge-rename="${l.customSections.length - 1}"]`); return;
       case "moveto-new": geChange(l2 => geNewSection(l2, [...sel])); sel.clear(); geRefresh(`[data-ge-rename="${l.customSections.length - 1}"]`); return;
       case "moveto": geChange(l2 => geMove(l2, [...sel], i)); sel.clear(); geRefresh(); return;
@@ -7801,10 +7831,21 @@ The book remembers the last lesson you opened, in this browser, and the contents
   });
   document.addEventListener("keydown", e => {
     const r = e.target.closest && e.target.closest("[data-ge-rename], [data-ge-note]");
+    const inEditor = groupEdit && $content.querySelector(".ge") && !(e.target.closest && e.target.closest("input, textarea, [contenteditable='true']"));
     // Escape anywhere else in the editor closes it, like Done.
-    if (!r && e.key === "Escape" && groupEdit && $content.querySelector(".ge") && !e.target.closest("input, textarea")) {
+    if (!r && e.key === "Escape" && inEditor) {
       if (groupEdit.selected.size) { groupEdit.selected.clear(); geRefresh(); } else closeGroupEditor();
       return;
+    }
+    // Keyboard shortcuts (owner, 2026-11-08). Text boxes keep the browser's own undo.
+    if (!r && inEditor && !e.altKey) {
+      const mod = e.ctrlKey || e.metaKey, k = e.key.toLowerCase();
+      let act = null;
+      if (mod && k === "z") act = e.shiftKey ? "redo" : "undo";
+      else if (mod && !e.shiftKey && k === "y") act = "redo";
+      else if (mod && !e.shiftKey && k === "a") act = "select-all";
+      else if (!mod && (e.key === "Delete" || e.key === "Backspace") && groupEdit.selected.size) act = "moveto-loose";
+      if (act) { e.preventDefault(); geAction(act, null); return; }
     }
     if (!r) return;
     if (e.key === "Escape") { e.preventDefault(); r.dataset.cancel = "1"; r.blur(); }
