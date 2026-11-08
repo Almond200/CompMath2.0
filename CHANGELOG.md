@@ -2,6 +2,8 @@
 
 **2026-11-08**
 
+- Group editor, a review pass (owner). Checked with a 100-card list (the editor opens in under 0.1 s, a selection redraws in 14 ms, dragging stays smooth) and at phone width, light and dark, with no overflow or errors. Fixed: the Move to bar no longer grows with the number of sections (with 12 it covered a third of the screen): the sections sit on one line that scrolls sideways, long names cut short with the full name on hover, and the actions on a short row below; a change that changes nothing (a card dropped where it was) no longer adds an Undo step; in dark mode solid Learn buttons such as Save use the dark ink the textbook buttons use on the light green instead of white, and the editor's card labels, sidebar names and tools take the softer prose shade, so the page is less glaring while section headings stay bright.
+
 - Group editor, renaming (owner): a section's name box sometimes opened with only part of the name highlighted. Pressing another control while a box was open redraws the page and opens the new box at once, while the mouse button is still down, so its release counted as a text drag inside the new box. The redrawn control is now pressed only when the button comes up, and any name box that opens while a button is held selects its whole text again on release.
 
 - Lessons, reading width refined (owner): only the running prose keeps to 760 px (the explanation, the Related cards notes and a review page's opening note); the problems, worked solutions, exercises and the page's buttons use the full column again. Measured at 1400, 1024 and 375 px.

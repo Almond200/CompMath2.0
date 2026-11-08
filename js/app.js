@@ -7604,11 +7604,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
   function geChange(fn) {
     const l = geList(); if (!l) return;
     groupEdit.renaming = groupEdit.noting = null;
-    groupEdit.undo.push(geSnapshot(l));
-    groupEdit.redo = [];
-    if (groupEdit.undo.length > 60) groupEdit.undo.shift();
+    const before = geSnapshot(l);
     fn(l);
-    saveLists();
+    // A change that changes nothing (a card dropped where it was) leaves no Undo step.
+    if (geSnapshot(l) !== before) {
+      groupEdit.undo.push(before);
+      groupEdit.redo = [];
+      if (groupEdit.undo.length > 60) groupEdit.undo.shift();
+      saveLists();
+    }
     geRefresh();
   }
   function openGroupEditor(listId) {
@@ -7675,11 +7679,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
           </span>
         </div>`).join("");
     const moveBar = sel.size ? `<div class="ge-movebar" role="region" aria-label="Move selected cards">
-        <span class="ge-move-n">${sel.size} selected</span><span class="ge-move-k">Move to</span>
-        ${secs.map((sec, i) => `<button type="button" class="ge-pill" data-ge-act="moveto" data-i="${i}"${off([...sel].every(id => sec.ids.includes(id)))}>${escapeAttr(sec.title || "Untitled section")}</button>`).join("")}
-        <button type="button" class="ge-pill ge-pill-new" data-ge-act="moveto-new" data-where="main">+ New section</button>
-        <button type="button" class="ge-pill ge-pill-soft" data-ge-act="moveto-loose"${off(!selIn.size)}>Out of sections</button>
-        <button type="button" class="ge-link" data-ge-act="deselect">Clear selection</button>
+        <div class="ge-move-top"><span class="ge-move-n">${sel.size} selected</span><span class="ge-move-k">Move to</span>
+          <div class="ge-move-pills">${secs.map((sec, i) => `<button type="button" class="ge-pill" data-ge-act="moveto" data-i="${i}" title="${escapeAttr(sec.title || "Untitled section")}"${off([...sel].every(id => sec.ids.includes(id)))}>${escapeAttr(sec.title || "Untitled section")}</button>`).join("")}</div></div>
+        <div class="ge-move-actions">
+          <button type="button" class="ge-pill ge-pill-new" data-ge-act="moveto-new" data-where="main">+ New section</button>
+          <button type="button" class="ge-pill ge-pill-soft" data-ge-act="moveto-loose"${off(!selIn.size)}>Out of sections</button>
+          <button type="button" class="ge-link" data-ge-act="deselect">Clear selection</button>
+        </div>
       </div>` : "";
     return `<div class="ge" data-ge-list="${escapeAttr(l.id)}">
       <div class="back-row ge-back-row"><a class="back-link" href="#/list/${escapeAttr(l.id)}" data-ge-act="done">&larr; Back to list</a>
