@@ -2,6 +2,8 @@
 
 **2026-11-08**
 
+- Group editor (owner): one button, **Save**, at the top (the second Done at the foot is gone); it keeps the sections and closes the editor. A section is renamed where it is clicked: its name above its cards becomes a box in place, as does its name in the sidebar, and a section made from the main area or the Move to bar is named there too.
+
 - Group editor, sections (owner): the up and down buttons are gone; each section row ends in a six-dot grip, with its delete × just to the left. Dragging the grip (mouse, pen or touch) reorders the section, the row dimming and a line showing where it lands; with the grip focused, the up and down arrows move it. The hint and the keyboard list say so.
 
 - Buttons (owner): the group editor's Done showed the browser's two-tone bevel, because a <button> with the app's solid button style kept its default border (Practice and the textbooks had each patched this locally). One rule now gives every such button a transparent border, the app's font and a pointer, so Done is flat like the app's other buttons; the soft buttons keep their own border.

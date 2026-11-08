@@ -4496,3 +4496,5 @@ body:has(.ge-movebar) #ge-toast { bottom: 120px; }
 .ge-row.is-lifted { opacity: 0.5; }
 .ge-row.ge-drop-before { box-shadow: 0 -2px 0 var(--space, var(--accent)); }
 .ge-row.ge-drop-after { box-shadow: 0 2px 0 var(--space, var(--accent)); }
+.ge-rename-main { max-width: 420px; font-size: inherit; font-weight: 700; padding: 3px 8px; }
+.ge-sec-name:hover { color: var(--space, var(--accent)); }

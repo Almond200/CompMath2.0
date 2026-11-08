@@ -7667,7 +7667,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const sel = groupEdit.selected, secs = l.customSections, loose = geLoose(l);
     const inList = new Set(geIds(l));
     const ids = sec => sec.ids.filter(id => inList.has(id));
-    const rows = secs.map((sec, i) => groupEdit.renaming === i
+    const renameHere = (i, where) => groupEdit.renaming === i && (groupEdit.renameWhere || "side") === where;
+    const rows = secs.map((sec, i) => renameHere(i, "side")
       ? `<div class="ge-row is-renaming"><input class="ge-rename" data-ge-rename="${i}" value="${escapeAttr(sec.title || "")}" aria-label="Section name" placeholder="Section name" maxlength="80"></div>`
       : `<div class="ge-row" data-ge-row="${i}">
           <button type="button" class="ge-row-name" data-ge-act="rename" data-i="${i}" title="Rename">${escapeAttr(sec.title || "Untitled section")}</button>
@@ -7680,7 +7681,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const moveBar = sel.size ? `<div class="ge-movebar" role="region" aria-label="Move selected cards">
         <span class="ge-move-n">${sel.size} selected</span><span class="ge-move-k">Move to</span>
         ${secs.map((sec, i) => `<button type="button" class="ge-pill" data-ge-act="moveto" data-i="${i}">${escapeAttr(sec.title || "Untitled section")}</button>`).join("")}
-        <button type="button" class="ge-pill ge-pill-new" data-ge-act="moveto-new">+ New section</button>
+        <button type="button" class="ge-pill ge-pill-new" data-ge-act="moveto-new" data-where="main">+ New section</button>
         <button type="button" class="ge-pill ge-pill-soft" data-ge-act="moveto-loose">Out of sections</button>
         <button type="button" class="ge-link" data-ge-act="deselect">Clear selection</button>
       </div>` : "";
@@ -7688,7 +7689,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       <div class="back-row"><a class="back-link" href="#/learn" data-goto="pr-study">&larr; Learn</a></div>
       <div class="ge-head">
         <div><div class="book-eyebrow">Learn &middot; Lists &middot; Custom groups</div><h2>${escapeAttr(l.name)}</h2></div>
-        <button type="button" class="hp-btn ge-done" data-ge-act="done">Done</button>
+        <button type="button" class="hp-btn ge-done" data-ge-act="done" title="Save your sections and close the editor">Save</button>
       </div>
       <div class="ge-body">
         <aside class="ge-side" aria-label="Sections">
@@ -7705,14 +7706,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <button type="button" class="ge-tool" data-ge-act="sort" ${secs.length ? "" : "disabled"}>Sort each section A&ndash;Z</button>
           <button type="button" class="ge-tool" data-ge-act="drop-empty" ${secs.some(sec => !ids(sec).length) ? "" : "disabled"}>Remove empty sections</button>
           <button type="button" class="ge-tool ge-danger" data-ge-act="clear" ${secs.length ? "" : "disabled"}>Remove every section</button>
-          <p class="ge-hint">Drag a section by its dots to reorder it. Drag a card onto a section, or onto its name here. On a phone, tap cards to select them, then pick a section under Move to. Changes save as you go.</p>
+          <p class="ge-hint">Drag a section by its dots to reorder it. Drag a card onto a section, or onto its name here. Click a section's name, here or above its cards, to rename it. On a phone, tap cards to select them, then pick a section under Move to. Every change is kept as you go; Save closes the editor.</p>
           <div class="ge-side-h ge-tools-h">Keyboard</div>
           <dl class="ge-keys">
             <dt><kbd>${GE_MOD}Z</kbd></dt><dd>Undo</dd>
             <dt><kbd>${GE_MOD}&#8679;Z</kbd></dt><dd>Redo${GE_MAC ? "" : " (also <kbd>Ctrl Y</kbd>)"}</dd>
             <dt><kbd>${GE_MOD}A</kbd></dt><dd>Select every card</dd>
             <dt><kbd>Delete</kbd></dt><dd>Take the selected cards out of their sections</dd>
-            <dt><kbd>Esc</kbd></dt><dd>Clear the selection, then close</dd>
+            <dt><kbd>Esc</kbd></dt><dd>Clear the selection, then save and close</dd>
             <dt><kbd>&uarr;</kbd> <kbd>&darr;</kbd></dt><dd>On a section's dots: move it up or down</dd>
           </dl>
         </aside>
@@ -7723,7 +7724,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
             ${geZoneHtml(loose, "loose", sel)}
           </section>
           ${secs.map((sec, i) => `<section class="ge-sec" id="ge-sec-${i}">
-            <h3 class="ge-sec-h"><button type="button" class="ge-sec-name" data-ge-act="rename" data-i="${i}" title="Rename">${escapeAttr(sec.title || "Untitled section")}</button> <span class="ge-sec-n">${ids(sec).length}</span></h3>
+            <h3 class="ge-sec-h">${renameHere(i, "main")
+              ? `<input class="ge-rename ge-rename-main" data-ge-rename="${i}" value="${escapeAttr(sec.title || "")}" aria-label="Section name" placeholder="Section name" maxlength="80">`
+              : `<button type="button" class="ge-sec-name" data-ge-act="rename" data-where="main" data-i="${i}" title="Click to rename">${escapeAttr(sec.title || "Untitled section")}</button>`} <span class="ge-sec-n">${ids(sec).length}</span></h3>
             ${(sec.note || "").trim() || groupEdit.noting === i
               ? (groupEdit.noting === i
                 ? `<textarea class="ge-note-input" data-ge-note="${i}" rows="2" maxlength="300" placeholder="Describe this section. Shift+Enter adds a line.">${escapeAttr(sec.note || "")}</textarea>`
@@ -7731,8 +7734,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
               : `<button type="button" class="ge-link ge-add-note" data-ge-act="note" data-i="${i}">+ Add a description</button>`}
             ${geZoneHtml(ids(sec), String(i), sel)}
           </section>`).join("")}
-          <button type="button" class="ge-add ge-add-main" data-ge-act="new">+ New section</button>
-          <div class="ge-foot"><button type="button" class="hp-btn" data-ge-act="done">Done</button></div>
+          <button type="button" class="ge-add ge-add-main" data-ge-act="new" data-where="main">+ New section</button>
         </div>
       </div>
     </div>`;
@@ -7851,7 +7853,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (!e.target.closest(".ge")) return;
     if (geDrag.suppressClick) { geDrag.suppressClick = false; e.preventDefault(); return; }
     const b = e.target.closest("[data-ge-act]");
-    if (b) { e.preventDefault(); geAction(b.dataset.geAct, b.dataset.i == null ? null : +b.dataset.i); return; }
+    if (b) {
+      e.preventDefault();
+      if (/^(rename|new|moveto-new)$/.test(b.dataset.geAct)) groupEdit.renameWhere = b.dataset.where || "side";
+      geAction(b.dataset.geAct, b.dataset.i == null ? null : +b.dataset.i);
+      return;
+    }
     const chip = e.target.closest("[data-ge-chip]");
     if (chip) {
       const id = chip.dataset.geChip, sel = groupEdit.selected;
