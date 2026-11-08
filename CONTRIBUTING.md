@@ -35,7 +35,7 @@ Claude and Codex work on separate branches; the division of files is in `CLAUDE.
 - **Keep both sides' source changes.** Never resolve a conflict by taking one side of a whole file.
 - **`index.html` asset versions:** keep both agents' bumps, then run `python3 tools/bump-versions.py --changed` on the result and `python3 tools/sync-lab-versions.py`, so every changed asset has a new `?v=` and the lab pages agree (`tools/check-lab.sh` fails if they drift).
 - **Generated End-of-book Notes:** never pick a side. Combine the chapter content from both sides, take the current `tools/build-book-notes.cjs`, and regenerate with `node tools/build-book-notes.cjs`; then `node tools/build-book-notes.cjs --check`.
-- **Rerun the checks** after the merge: `./tools/gates.sh`, the three regression suites (`tests/practice-sessions.cjs`, `tests/answer-keys.cjs`, `tests/book-search.cjs`), and `python3 tools/build-learn-shelf.py --check`.
+- **Rerun the checks** after the merge: `./tools/gates.sh`, the four regression suites (`tests/practice-sessions.cjs`, `tests/answer-keys.cjs`, `tests/book-search.cjs`, `tests/problem-difficulty.cjs`), and `python3 tools/build-learn-shelf.py --check`.
 - **Additive commits only:** a merge commit or a new commit, never an amend, rebase or force-push over commits the other agent has already shared.
 - A batch that touches a shared file, a card id or the chapter structure gets a short handoff note to the other agent.
 
@@ -1053,7 +1053,7 @@ review and are worth keeping:
   shares one size and colour (the summary's), lists are plain bullets, and the name, kind, level
   range and importance sit on one line.
 - **Contest profile is labelled rows:** Problems, Difficulty (easy / medium / hard by where a
-  problem sits in its paper, `difficultyBand`, the same rule the random-problem picker uses),
+  problem sits in its paper, `paperPositionBand`; the random-problem picker separately uses contextual Elo rank),
   Contests (the count on each contest, with a pie chart), a line of where the problems sit in their papers from early to late, Role (the authored sentence plus how often the card is the recorded main idea), and the common
   partners: a formula lists Common methods; a method lists Common patterns and "Often used with"
   (formulas that appear beside it in problems, kept distinct from "Formulas it uses"); a pattern
