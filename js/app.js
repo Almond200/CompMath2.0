@@ -7735,7 +7735,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
     renderMath(box.parentElement);   // the renderer looks inside its container, so pass the editor's parent
     window.scrollTo({ top: y });
     const f = focusSel && box.querySelector(focusSel);
-    if (f) { f.focus(); if (f.select) f.select(); }
+    if (f) {
+      f.focus();
+      if (f.select) {
+        f.select();
+        // Opened while a button is held: the release would select only part of the text, so
+        // select it all again once the button comes up (owner, 2026-11-08).
+        if (geDrag.buttons) document.addEventListener("pointerup", () => setTimeout(() => { if (document.activeElement === f) f.select(); }, 0), { capture: true, once: true });
+      }
+    }
   }
   // Move cards (in the order they show, when several) into a section before a given card (at
   // the end when none), or out of every section.
@@ -7913,7 +7921,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   });
   // ---- Pointer interactions: dragging cards, reordering sections, selecting with a box ----
   const geDrag = { on: false, suppressClick: false, lastPointer: "mouse" };
-  document.addEventListener("pointerdown", e => { geDrag.lastPointer = e.pointerType; }, true);
+  document.addEventListener("pointerdown", e => { geDrag.lastPointer = e.pointerType; geDrag.buttons = e.buttons; }, true);
+  document.addEventListener("pointerup", e => { geDrag.buttons = e.buttons; }, true);
   // FLIP: note where every chip and row is, make a change, then slide each from its old place
   // to its new one, so the page is seen to make room rather than jump.
   function geFlip(change) {
@@ -8181,11 +8190,16 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const sel = t.tagName.toLowerCase() + [...t.attributes].filter(x => x.name.startsWith("data-"))
       .map(x => `[${x.name}="${CSS.escape(x.value)}"]`).join("");
     const shift = e.shiftKey, mod = e.ctrlKey || e.metaKey;
-    setTimeout(() => {
+    // Wait for the button to come up: a box opened while it is still down would take the
+    // release as a drag and select only part of its text (owner, 2026-11-08).
+    const replay = () => {
       if (t.isConnected) return;   // nothing was redrawn, so the click lands by itself
       const again = document.querySelector(sel);
       if (again) again.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, shiftKey: shift, ctrlKey: mod, detail: 1 }));
-    }, 0);
+    };
+    const onUp = () => { document.removeEventListener("pointercancel", onUp, true); setTimeout(replay, 0); };
+    document.addEventListener("pointerup", onUp, { capture: true, once: true });
+    document.addEventListener("pointercancel", onUp, { capture: true, once: true });
   }, true);
 
   // Parse only the small description format. Keep math opaque to emphasis and list parsing.

@@ -2,6 +2,8 @@
 
 **2026-11-08**
 
+- Group editor, renaming (owner): a section's name box sometimes opened with only part of the name highlighted. Pressing another control while a box was open redraws the page and opens the new box at once, while the mouse button is still down, so its release counted as a text drag inside the new box. The redrawn control is now pressed only when the button comes up, and any name box that opens while a button is held selects its whole text again on release.
+
 - Lessons, reading width refined (owner): only the running prose keeps to 760 px (the explanation, the Related cards notes and a review page's opening note); the problems, worked solutions, exercises and the page's buttons use the full column again. Measured at 1400, 1024 and 375 px.
 
 - Lessons, reading width (owner): the 760 px reading width that the lesson column's rule always named, but which the browser had dropped because of the stray half-rule before it, now applies: on desktop and tablet a lesson's text, problems and solutions run 760 px wide (they had run the whole column, about 1,160 px on a wide screen); phones are unchanged. Checked on four lessons at 1400, 1024 and 375 px, light and dark: no overflow and no math errors.
