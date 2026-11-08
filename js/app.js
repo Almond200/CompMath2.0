@@ -7665,6 +7665,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const sel = groupEdit.selected, secs = l.customSections, loose = geLoose(l);
     const inList = new Set(geIds(l));
     const ids = sec => sec.ids.filter(id => inList.has(id));
+    // A button that would change nothing is shown disabled (owner, 2026-11-08).
+    const nameOf = id => BY_ID[id] ? BY_ID[id].nameLower : id;
+    const sorted = secs.every(sec => ids(sec).every((id, k, a) => !k || nameOf(a[k - 1]).localeCompare(nameOf(id)) <= 0));
+    const autoNow = JSON.stringify(autoSections(geIds(l)).filter(sec => sec.title && sec.title !== "Also in this list").map(sec => [sec.title, sec.ids]));
+    const autoSame = autoNow === JSON.stringify(secs.map(sec => [sec.title, ids(sec)]));
+    const selIn = new Set([...sel].filter(id => secs.some(sec => sec.ids.includes(id))));
+    const off = cond => cond ? " disabled" : "";
     const renameHere = (i, where) => groupEdit.renaming === i && (groupEdit.renameWhere || "side") === where;
     const rows = secs.map((sec, i) => renameHere(i, "side")
       ? `<div class="ge-row is-renaming"><input class="ge-rename" data-ge-rename="${i}" value="${escapeAttr(sec.title || "")}" aria-label="Section name" placeholder="Section name" maxlength="80"></div>`
@@ -7678,16 +7685,16 @@ The book remembers the last lesson you opened, in this browser, and the contents
         </div>`).join("");
     const moveBar = sel.size ? `<div class="ge-movebar" role="region" aria-label="Move selected cards">
         <span class="ge-move-n">${sel.size} selected</span><span class="ge-move-k">Move to</span>
-        ${secs.map((sec, i) => `<button type="button" class="ge-pill" data-ge-act="moveto" data-i="${i}">${escapeAttr(sec.title || "Untitled section")}</button>`).join("")}
+        ${secs.map((sec, i) => `<button type="button" class="ge-pill" data-ge-act="moveto" data-i="${i}"${off([...sel].every(id => sec.ids.includes(id)))}>${escapeAttr(sec.title || "Untitled section")}</button>`).join("")}
         <button type="button" class="ge-pill ge-pill-new" data-ge-act="moveto-new" data-where="main">+ New section</button>
-        <button type="button" class="ge-pill ge-pill-soft" data-ge-act="moveto-loose">Out of sections</button>
+        <button type="button" class="ge-pill ge-pill-soft" data-ge-act="moveto-loose"${off(!selIn.size)}>Out of sections</button>
         <button type="button" class="ge-link" data-ge-act="deselect">Clear selection</button>
       </div>` : "";
     return `<div class="ge" data-ge-list="${escapeAttr(l.id)}">
       <div class="back-row ge-back-row"><a class="back-link" href="#/list/${escapeAttr(l.id)}" data-ge-act="done">&larr; Back to list</a>
         <a class="back-link" href="#/learn" data-goto="pr-study">&larr; Learn</a></div>
       <div class="ge-head">
-        <div><div class="book-eyebrow">Learn &middot; Lists &middot; Custom groups</div><h2>${escapeAttr(l.name)}</h2></div>
+        <div><div class="book-eyebrow">Learn &middot; Lists &middot; Custom groups</div><h2${l.builtin ? "" : ` data-list-title="${escapeAttr(l.id)}" title="Click to rename"`}>${escapeAttr(l.name)}</h2></div>
         <button type="button" class="hp-btn ge-done" data-ge-act="done" title="Save your sections and close the editor">Save</button>
       </div>
       <div class="ge-body">
@@ -7700,9 +7707,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <button type="button" class="ge-tool" data-ge-act="undo" ${groupEdit.undo.length ? "" : "disabled"}>Undo</button>
             <button type="button" class="ge-tool" data-ge-act="redo" ${groupEdit.redo.length ? "" : "disabled"}>Redo</button>
           </div>
-          <button type="button" class="ge-tool" data-ge-act="select-loose" ${loose.length ? "" : "disabled"}>Select the cards not in a section</button>
-          <button type="button" class="ge-tool" data-ge-act="auto" ${geIds(l).length >= 2 ? "" : "disabled"}>Start from the automatic groups</button>
-          <button type="button" class="ge-tool" data-ge-act="sort" ${secs.length ? "" : "disabled"}>Sort each section A&ndash;Z</button>
+          <button type="button" class="ge-tool" data-ge-act="select-loose"${off(!loose.length || loose.every(id => sel.has(id)))}>Select the cards not in a section</button>
+          <button type="button" class="ge-tool" data-ge-act="auto"${off(geIds(l).length < 2 || autoSame)}>Start from the automatic groups</button>
+          <button type="button" class="ge-tool" data-ge-act="sort"${off(!secs.length || sorted)}>Sort each section A&ndash;Z</button>
           <button type="button" class="ge-tool" data-ge-act="drop-empty" ${secs.some(sec => !ids(sec).length) ? "" : "disabled"}>Remove empty sections</button>
           <button type="button" class="ge-tool ge-danger" data-ge-act="clear" ${secs.length ? "" : "disabled"}>Remove every section</button>
         </aside>
@@ -7866,7 +7873,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       return;
     }
     // A click on empty space clears the selection.
-    if (groupEdit.selected.size && !e.target.closest("button, a, input, textarea, .ge-movebar")) {
+    if (groupEdit.selected.size && !e.target.closest("button, a, input, textarea, .ge-movebar, [data-list-title]")) {
       groupEdit.selected.clear();
       geRefresh();
     }

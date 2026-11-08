@@ -4498,3 +4498,5 @@ body:has(.ge-movebar) #ge-toast { bottom: 120px; }
 .ge-band { position: fixed; z-index: 40; pointer-events: none; border: 1px solid var(--space, var(--accent));
   background: color-mix(in srgb, var(--space, var(--accent)) 14%, transparent); border-radius: 4px; }
 body.ge-selecting, body.ge-selecting * { user-select: none; -webkit-user-select: none; }
+.ge-pill[disabled] { opacity: 0.4; cursor: default; filter: none; }
+.ge h2[data-list-title] { cursor: text; }
