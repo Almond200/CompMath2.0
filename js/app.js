@@ -9954,7 +9954,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (grp) {
       const list = getList(grp.dataset.listGroup);
       if (!list) return;
-      const ungrouping = list.builtin ? state.autoGroup : Array.isArray(list.groupedIds) && !grp.hasAttribute("data-regroup");
       const apply = () => {
         if (list.builtin) {
           state.autoGroup = !state.autoGroup;
@@ -9966,9 +9965,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
         }
         render();
       };
-      // Ungrouping asks first, so a misclick does not undo the grouping (owner, 2026-11-08).
-      if (ungrouping) appConfirm({ title: "Ungroup this list?", text: "The cards will show in one run. Auto group groups them again.", ok: "Ungroup" }).then(yes => { if (yes) apply(); });
-      else apply();
+      // Automatic groups come back with one click, so ungrouping them asks nothing (owner,
+      // 2026-11-08); only custom sections ask first.
+      apply();
       return;
     }
     if (e.target.closest("[data-edit-description], button[data-description]")) { editListDescription(); return; }
