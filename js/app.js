@@ -1463,6 +1463,9 @@
     else {
       l.ids.splice(i, 1);
       if (Array.isArray(l.groupedIds)) l.groupedIds = l.groupedIds.filter(id => id !== fid);
+      for (const key of ["customSections", "customOff"]) {
+        if (Array.isArray(l[key])) l[key].forEach(sec => { sec.ids = sec.ids.filter(id => id !== fid); });
+      }
     }
     saveLists();
   }
@@ -4750,6 +4753,11 @@
           const item = { id: l.id, name: String(l.name || "Imported list"), ids };
           if (typeof l.blurb === "string") item.blurb = l.blurb;
           if (Array.isArray(l.groupedIds)) item.groupedIds = ids.filter(id => l.groupedIds.includes(id));
+          for (const key of ["customSections", "customOff"]) {
+            if (Array.isArray(l[key])) item[key] = l[key].filter(sec => sec && Array.isArray(sec.ids)).map(sec => ({
+              title: String(sec.title || "").slice(0, 80), note: String(sec.note || "").slice(0, 300),
+              ids: sec.ids.filter(id => ids.includes(id)) }));
+          }
           merged.items.push(item);
         }
       });
@@ -7467,7 +7475,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
       return `
         <div class="list-section" id="ls-${l.id}-${j}">
           <h3 class="list-section-title">${sec.title}</h3>
-          ${sec.note ? `<p class="list-section-note">${sec.note}</p>` : ""}
+          ${sec.ci != null
+            ? `<button type="button" class="list-section-note list-description section-desc${sec.rawNote ? "" : " is-empty"}" data-section-desc="${sec.ci}" data-list-of="${escapeAttr(l.id)}" title="Change this section's description">${listDescriptionHtml(sec.rawNote || "Click to add a description")}</button>`
+            : sec.looseOf ? `<p class="list-section-note">Cards not in any of your sections yet, new ones included. <button type="button" class="ge-inline" data-group-edit="${escapeAttr(sec.looseOf)}">Edit groups</button> to place them.</p>`
+            : sec.note ? `<p class="list-section-note">${sec.note}</p>` : ""}
           ${cards}
         </div>`;
     }).join("");
@@ -7480,20 +7491,30 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const isBuiltin = !userL;
     const entries = l.ids.map(id => BY_ID[id]).filter(Boolean);
     shownIds = entries.map(e => e.formula.id);
+    if (!isBuiltin && groupEdit && groupEdit.listId === l.id) return groupEditorHtml(l);
     const AUTO_MIN = 8;
-    const canGroup = !isBuiltin && entries.length >= AUTO_MIN;
+    // Custom groups (owner, 2026-11-08): sections the reader makes by hand in the group editor.
+    // They take precedence over the automatic grouping; Ungroup tucks them away in customOff,
+    // so Custom group brings them back.
+    const custom = !isBuiltin && Array.isArray(l.customSections) && l.customSections.some(sec => sec.ids.some(id => BY_ID[id] && l.ids.includes(id)));
+    const canGroup = !isBuiltin && !custom && entries.length >= AUTO_MIN;
+    const canCustom = !isBuiltin && entries.length >= 2;
     const grouped = canGroup && (l.builtin ? state.autoGroup : Array.isArray(l.groupedIds));
     let sections = l.sections, pending = [];
-    if (grouped) {
+    if (custom) sections = customSectionView(l, shownIds);
+    else if (grouped) {
       const snapshot = new Set(l.builtin ? shownIds : l.groupedIds);
       sections = autoSections(shownIds.filter(id => snapshot.has(id)));
       pending = shownIds.filter(id => !snapshot.has(id));
       if (pending.length) sections.push({ title: "New cards", ids: pending });
     }
-    const groupAction = pending.length ? "Regroup" : grouped ? (l.builtin ? "Grouped" : "Ungroup") : "Group";
+    const groupAction = pending.length ? "Regroup" : grouped ? (l.builtin ? "Auto grouped" : "Ungroup") : "Auto group";
     const headTools = isBuiltin ? "" : `
       <div class="list-head-tools">
-        ${canGroup ? `<button class="list-tool${grouped && !pending.length ? " on" : ""}" data-list-group="${l.id}" ${pending.length ? 'data-regroup title="Group newly added cards"' : `aria-pressed="${grouped}"`}>${groupAction}</button>` : ""}
+        ${canGroup ? `<button class="list-tool${grouped && !pending.length ? " on" : ""}" data-list-group="${l.id}" ${pending.length ? 'data-regroup title="Group newly added cards"' : `aria-pressed="${grouped}" title="Group the cards into sections automatically"`}>${groupAction}</button>` : ""}
+        ${custom ? `<button class="list-tool on" data-group-edit="${l.id}" title="Change the sections you made">Edit groups</button>
+          <button class="list-tool" data-group-off="${l.id}" title="Show the cards without sections; Custom group brings your sections back">Ungroup</button>`
+          : canCustom ? `<button class="list-tool" data-group-edit="${l.id}" title="Make your own sections and drag cards into them">Custom group</button>` : ""}
         ${l.builtin ? "" : `<button class="list-tool" data-list-rename="${l.id}">Rename</button>
           <button class="list-tool" data-edit-description>Change description</button>`}
         ${l.builtin && entries.length ? `<button class="list-tool danger" data-list-clear="${l.id}">Clear</button>` : ""}
@@ -7521,12 +7542,365 @@ The book remembers the last lesson you opened, in this browser, and the contents
         </div>
         ${tools}
         ${entries.length
-          ? (isBuiltin || grouped
+          ? (isBuiltin || grouped || custom
               ? listSectionsHtml({ id: l.id, sections })
               : `<div class="cards">${entries.map(e => cardHtml(e, true, null)).join("")}</div>`)
           : `<div class="empty-state"><div class="big">${glyph}</div>This list is empty. Press the &ldquo;+&rdquo; on any card to add it here, or the star to save it for later.</div>`}
       </div>`;
   }
+
+  // ---------- Custom groups: the group editor (owner, 2026-11-08) ----------
+  // A list's own sections, made by hand: a sidebar of sections (add, rename, reorder, delete,
+  // and the tools), beside the sections themselves with the cards as chips. Cards move by
+  // dragging (mouse or pen) onto a section or a section's row in the sidebar, or by selecting
+  // them (a click or a tap) and pressing a section under "Move to". Every change is saved at
+  // once and can be undone; Done closes the editor.
+  let groupEdit = null;   // { listId, undo: [snapshots], selected: Set, renaming: index }
+  function customSectionView(l, shown) {
+    const inList = new Set(shown), used = new Set();
+    const out = (l.customSections || []).map((sec, i) => {
+      const ids = sec.ids.filter(id => inList.has(id) && !used.has(id));
+      ids.forEach(id => used.add(id));
+      return { title: escapeAttr(sec.title || "Untitled section"), rawNote: sec.note || "", ci: i, ids };
+    });
+    const loose = shown.filter(id => !used.has(id));
+    // Cards not placed yet, among them any added after the sections were made, wait here.
+    if (loose.length) out.push({ title: "Not in a section", ids: loose, looseOf: l.id });
+    return out;
+  }
+  function geList() { return groupEdit && getList(groupEdit.listId); }
+  function geIds(l) { return l.ids.filter(id => BY_ID[id]); }
+  function geLoose(l) {
+    const used = new Set(l.customSections.flatMap(sec => sec.ids));
+    return geIds(l).filter(id => !used.has(id));
+  }
+  function geSnapshot(l) { return JSON.stringify(l.customSections); }
+  function geChange(fn) {
+    const l = geList(); if (!l) return;
+    groupEdit.renaming = groupEdit.noting = null;
+    groupEdit.undo.push(geSnapshot(l));
+    if (groupEdit.undo.length > 60) groupEdit.undo.shift();
+    fn(l);
+    saveLists();
+    geRefresh();
+  }
+  function openGroupEditor(listId) {
+    const l = getList(listId); if (!l) return;
+    if (!Array.isArray(l.customSections) || !l.customSections.length) {
+      const ids = geIds(l);
+      let seed = Array.isArray(l.customOff) && l.customOff.length ? l.customOff : null;
+      // Starting while the list is auto-grouped keeps those sections as the first draft.
+      const auto = l.builtin ? state.autoGroup && ids.length >= 8 : Array.isArray(l.groupedIds);
+      if (!seed && auto) seed = autoSections(ids).filter(sec => sec.title && sec.title !== "Also in this list")
+        .map(sec => ({ title: sec.title, note: "", ids: sec.ids.slice() }));
+      l.customSections = seed ? JSON.parse(JSON.stringify(seed)) : [];
+      delete l.customOff;
+      saveLists();
+    }
+    groupEdit = { listId, undo: [], selected: new Set(), renaming: null };
+    render();
+    window.scrollTo({ top: 0 });
+  }
+  // Closing drops empty untitled sections; a list left with no card in any section is ungrouped.
+  function geTidy(l) {
+    if (!l || !Array.isArray(l.customSections)) return;
+    l.customSections = l.customSections.filter(sec => sec.ids.length || (sec.title || "").trim());
+    if (!l.customSections.some(sec => sec.ids.some(x => l.ids.includes(x)))) delete l.customSections;
+    else if (!l.builtin) delete l.groupedIds;
+    saveLists();
+  }
+  function closeGroupEditor() {
+    const l = geList();
+    groupEdit = null;
+    geTidy(l);
+    render();
+  }
+  function geChipHtml(id, sel) {
+    const e = BY_ID[id]; if (!e) return "";
+    const kind = kindOf(e.formula);
+    return `<button type="button" class="ge-chip${sel.has(id) ? " is-sel" : ""}" data-ge-chip="${escapeAttr(id)}" aria-pressed="${sel.has(id)}">
+        <span class="ge-chip-name">${e.formula.name}</span><span class="ge-chip-kind ge-k-${kind}">${kind}</span></button>`;
+  }
+  function geZoneHtml(ids, key, sel) {
+    return `<div class="ge-zone" data-ge-zone="${key}">${ids.length ? ids.map(id => geChipHtml(id, sel)).join("")
+      : `<p class="ge-empty">${key === "loose" ? "Every card is in a section." : "Drag cards here, or select cards and press this section under Move to."}</p>`}</div>`;
+  }
+  function groupEditorHtml(l) {
+    const sel = groupEdit.selected, secs = l.customSections, loose = geLoose(l);
+    const inList = new Set(geIds(l));
+    const ids = sec => sec.ids.filter(id => inList.has(id));
+    const rows = secs.map((sec, i) => groupEdit.renaming === i
+      ? `<div class="ge-row is-renaming"><input class="ge-rename" data-ge-rename="${i}" value="${escapeAttr(sec.title || "")}" aria-label="Section name" placeholder="Section name" maxlength="80"></div>`
+      : `<div class="ge-row" data-ge-row="${i}">
+          <button type="button" class="ge-row-name" data-ge-act="rename" data-i="${i}" title="Rename">${escapeAttr(sec.title || "Untitled section")}</button>
+          <span class="ge-row-n">${ids(sec).length}</span>
+          <span class="ge-row-tools">
+            <button type="button" class="ge-ico" data-ge-act="up" data-i="${i}" aria-label="Move section up" ${i ? "" : "disabled"}>&uarr;</button>
+            <button type="button" class="ge-ico" data-ge-act="down" data-i="${i}" aria-label="Move section down" ${i < secs.length - 1 ? "" : "disabled"}>&darr;</button>
+            <button type="button" class="ge-ico ge-del" data-ge-act="delete" data-i="${i}" aria-label="Delete section">&times;</button>
+          </span>
+        </div>`).join("");
+    const moveBar = sel.size ? `<div class="ge-movebar" role="region" aria-label="Move selected cards">
+        <span class="ge-move-n">${sel.size} selected</span><span class="ge-move-k">Move to</span>
+        ${secs.map((sec, i) => `<button type="button" class="ge-pill" data-ge-act="moveto" data-i="${i}">${escapeAttr(sec.title || "Untitled section")}</button>`).join("")}
+        <button type="button" class="ge-pill ge-pill-new" data-ge-act="moveto-new">+ New section</button>
+        <button type="button" class="ge-pill ge-pill-soft" data-ge-act="moveto-loose">Out of sections</button>
+        <button type="button" class="ge-link" data-ge-act="deselect">Clear selection</button>
+      </div>` : "";
+    return `<div class="ge" data-ge-list="${escapeAttr(l.id)}">
+      <div class="back-row"><a class="back-link" href="#/learn" data-goto="pr-study">&larr; Learn</a></div>
+      <div class="ge-head">
+        <div><div class="book-eyebrow">Learn &middot; Lists &middot; Custom groups</div><h2>${escapeAttr(l.name)}</h2></div>
+        <button type="button" class="hp-btn ge-done" data-ge-act="done">Done</button>
+      </div>
+      <div class="ge-body">
+        <aside class="ge-side" aria-label="Sections">
+          <div class="ge-side-h">Sections <span>${secs.length}</span></div>
+          <div class="ge-rows">${rows || `<p class="ge-side-empty">No sections yet.</p>`}</div>
+          <button type="button" class="ge-add" data-ge-act="new">+ New section</button>
+          <div class="ge-side-h ge-tools-h">Tools</div>
+          <button type="button" class="ge-tool" data-ge-act="undo" ${groupEdit.undo.length ? "" : "disabled"}>Undo</button>
+          <button type="button" class="ge-tool" data-ge-act="select-loose" ${loose.length ? "" : "disabled"}>Select the cards not in a section</button>
+          <button type="button" class="ge-tool" data-ge-act="auto" ${geIds(l).length >= 2 ? "" : "disabled"}>Start from the automatic groups</button>
+          <button type="button" class="ge-tool" data-ge-act="sort" ${secs.length ? "" : "disabled"}>Sort each section A&ndash;Z</button>
+          <button type="button" class="ge-tool" data-ge-act="drop-empty" ${secs.some(sec => !ids(sec).length) ? "" : "disabled"}>Remove empty sections</button>
+          <button type="button" class="ge-tool ge-danger" data-ge-act="clear" ${secs.length ? "" : "disabled"}>Remove every section</button>
+          <p class="ge-hint">Drag a card onto a section, or onto its name here. On a phone, tap cards to select them, then pick a section under Move to. Changes save as you go; Undo takes one back.</p>
+        </aside>
+        <div class="ge-main">
+          ${moveBar}
+          <section class="ge-sec ge-loose">
+            <h3 class="ge-sec-h">Not in a section <span class="ge-sec-n">${loose.length}</span></h3>
+            ${geZoneHtml(loose, "loose", sel)}
+          </section>
+          ${secs.map((sec, i) => `<section class="ge-sec" id="ge-sec-${i}">
+            <h3 class="ge-sec-h"><button type="button" class="ge-sec-name" data-ge-act="rename" data-i="${i}" title="Rename">${escapeAttr(sec.title || "Untitled section")}</button> <span class="ge-sec-n">${ids(sec).length}</span></h3>
+            ${(sec.note || "").trim() || groupEdit.noting === i
+              ? (groupEdit.noting === i
+                ? `<textarea class="ge-note-input" data-ge-note="${i}" rows="2" maxlength="300" placeholder="Describe this section. Shift+Enter adds a line.">${escapeAttr(sec.note || "")}</textarea>`
+                : `<button type="button" class="ge-note" data-ge-act="note" data-i="${i}" title="Change the description">${listDescriptionHtml(sec.note)}</button>`)
+              : `<button type="button" class="ge-link ge-add-note" data-ge-act="note" data-i="${i}">+ Add a description</button>`}
+            ${geZoneHtml(ids(sec), String(i), sel)}
+          </section>`).join("")}
+          <button type="button" class="ge-add ge-add-main" data-ge-act="new">+ New section</button>
+          <div class="ge-foot"><button type="button" class="hp-btn" data-ge-act="done">Done</button></div>
+        </div>
+      </div>
+    </div>`;
+  }
+  function geRefresh(focusSel) {
+    const old = $content.querySelector(".ge"), l = geList();
+    if (!old || !l) { render(); return; }
+    const y = window.scrollY;
+    old.outerHTML = groupEditorHtml(l);
+    const box = $content.querySelector(".ge");
+    renderMath(box);
+    window.scrollTo({ top: y });
+    const f = focusSel && box.querySelector(focusSel);
+    if (f) { f.focus(); if (f.select) f.select(); }
+  }
+  // Move cards (in their list order when several) into a section at an index, or out of every section.
+  function geMove(l, moving, target, index) {
+    const order = geIds(l);
+    moving = moving.slice().sort((a, b) => order.indexOf(a) - order.indexOf(b));
+    const set = new Set(moving);
+    let at = index;
+    if (target !== "loose" && at != null) {
+      const before = l.customSections[target].ids.slice(0, at);
+      at -= before.filter(id => set.has(id)).length;
+    }
+    l.customSections.forEach(sec => { sec.ids = sec.ids.filter(id => !set.has(id)); });
+    if (target === "loose") return;
+    const ids = l.customSections[target].ids;
+    ids.splice(at == null ? ids.length : Math.max(0, Math.min(at, ids.length)), 0, ...moving);
+  }
+  function geNewSection(l, ids) {
+    const used = new Set(l.customSections.map(sec => sec.title));
+    let n = l.customSections.length + 1, title = "Section " + n;
+    while (used.has(title)) title = "Section " + (++n);
+    l.customSections.push({ title, note: "", ids: [] });
+    const i = l.customSections.length - 1;
+    if (ids && ids.length) geMove(l, ids, i);
+    groupEdit.renaming = i;
+    return i;
+  }
+  function geAction(act, i) {
+    const l = geList(); if (!l) return;
+    const sel = groupEdit.selected;
+    switch (act) {
+      case "done": closeGroupEditor(); return;
+      case "rename": groupEdit.renaming = i; geRefresh(`[data-ge-rename="${i}"]`); return;
+      case "note": groupEdit.noting = i; geRefresh(`[data-ge-note="${i}"]`); return;
+      case "deselect": sel.clear(); geRefresh(); return;
+      case "select-loose": geLoose(l).forEach(id => sel.add(id)); geRefresh(); return;
+      case "undo": {
+        const prev = groupEdit.undo.pop();
+        if (prev != null) { l.customSections = JSON.parse(prev); saveLists(); }
+        groupEdit.renaming = null; geRefresh(); return;
+      }
+      case "new": geChange(l2 => geNewSection(l2)); geRefresh(`[data-ge-rename="${l.customSections.length - 1}"]`); return;
+      case "moveto-new": geChange(l2 => geNewSection(l2, [...sel])); sel.clear(); geRefresh(`[data-ge-rename="${l.customSections.length - 1}"]`); return;
+      case "moveto": geChange(l2 => geMove(l2, [...sel], i)); sel.clear(); geRefresh(); return;
+      case "moveto-loose": geChange(l2 => geMove(l2, [...sel], "loose")); sel.clear(); geRefresh(); return;
+      case "up": case "down": {
+        const j = act === "up" ? i - 1 : i + 1;
+        geChange(l2 => { const s = l2.customSections; [s[i], s[j]] = [s[j], s[i]]; });
+        geRefresh(`[data-ge-row="${j}"] [data-ge-act="${act}"]:not([disabled])`); return;
+      }
+      case "delete": geChange(l2 => l2.customSections.splice(i, 1)); return;
+      case "sort": geChange(l2 => l2.customSections.forEach(sec => sec.ids.sort((a, b) =>
+        (BY_ID[a] ? BY_ID[a].nameLower : a).localeCompare(BY_ID[b] ? BY_ID[b].nameLower : b)))); return;
+      case "drop-empty": {
+        const live = new Set(geIds(l));
+        geChange(l2 => { l2.customSections = l2.customSections.filter(sec => sec.ids.some(id => live.has(id))); }); return;
+      }
+      case "clear": geChange(l2 => { l2.customSections = []; }); return;
+      case "auto": geChange(l2 => {
+        l2.customSections = autoSections(geIds(l2)).filter(sec => sec.title && sec.title !== "Also in this list")
+          .map(sec => ({ title: sec.title, note: "", ids: sec.ids.slice() }));
+      }); return;
+    }
+  }
+  function geCommitRename(input, cancel) {
+    const l = geList(), i = +input.dataset.geRename;
+    if (!groupEdit || groupEdit.renaming !== i) return;
+    const v = input.value.trim();
+    groupEdit.renaming = null;
+    if (!cancel && l && l.customSections[i] && v && v !== l.customSections[i].title) geChange(l2 => { l2.customSections[i].title = v; });
+    else geRefresh();
+  }
+  function geCommitNote(input, cancel) {
+    const l = geList(), i = +input.dataset.geNote;
+    if (!groupEdit || groupEdit.noting !== i) return;
+    const v = input.value.trim();
+    groupEdit.noting = null;
+    if (!cancel && l && l.customSections[i] && v !== (l.customSections[i].note || "")) geChange(l2 => { l2.customSections[i].note = v; });
+    else geRefresh();
+  }
+  document.addEventListener("click", e => {
+    if (!groupEdit) {
+      const open = e.target.closest("[data-group-edit]");
+      if (open) { openGroupEditor(open.dataset.groupEdit); return; }
+      const off = e.target.closest("[data-group-off]");
+      if (off) {
+        const l = getList(off.dataset.groupOff);
+        if (l && Array.isArray(l.customSections)) { l.customOff = l.customSections; delete l.customSections; saveLists(); render(); }
+      }
+      return;
+    }
+    if (!e.target.closest(".ge")) return;
+    if (geDrag.suppressClick) { geDrag.suppressClick = false; e.preventDefault(); return; }
+    const b = e.target.closest("[data-ge-act]");
+    if (b) { e.preventDefault(); geAction(b.dataset.geAct, b.dataset.i == null ? null : +b.dataset.i); return; }
+    const chip = e.target.closest("[data-ge-chip]");
+    if (chip) {
+      const id = chip.dataset.geChip, sel = groupEdit.selected;
+      if (sel.has(id)) sel.delete(id); else sel.add(id);
+      geRefresh(`[data-ge-chip="${CSS.escape(id)}"]`);
+    }
+  });
+  document.addEventListener("keydown", e => {
+    const r = e.target.closest && e.target.closest("[data-ge-rename], [data-ge-note]");
+    // Escape anywhere else in the editor closes it, like Done.
+    if (!r && e.key === "Escape" && groupEdit && $content.querySelector(".ge") && !e.target.closest("input, textarea")) {
+      if (groupEdit.selected.size) { groupEdit.selected.clear(); geRefresh(); } else closeGroupEditor();
+      return;
+    }
+    if (!r) return;
+    if (e.key === "Escape") { e.preventDefault(); r.dataset.cancel = "1"; r.blur(); }
+    else if (e.key === "Enter" && !(r.dataset.geNote != null && e.shiftKey)) { e.preventDefault(); r.blur(); }
+  });
+  document.addEventListener("focusout", e => {
+    const t = e.target;
+    if (!t || !t.dataset) return;
+    if (t.dataset.geRename != null) geCommitRename(t, t.dataset.cancel === "1");
+    else if (t.dataset.geNote != null) geCommitNote(t, t.dataset.cancel === "1");
+  });
+  // Dragging (mouse and pen; on touch a press scrolls the page and a tap selects). The card
+  // follows the pointer, a marker shows where it lands, and the page scrolls near its edges.
+  const geDrag = { on: false, suppressClick: false };
+  document.addEventListener("pointerdown", e => {
+    if (!groupEdit || e.button !== 0 || e.pointerType === "touch") return;
+    const chip = e.target.closest("[data-ge-chip]");
+    if (!chip || !chip.closest(".ge")) return;
+    const id = chip.dataset.geChip;
+    const moving = groupEdit.selected.has(id) ? [...groupEdit.selected] : [id];
+    const sx = e.clientX, sy = e.clientY;
+    let ghost = null, marker = null, target = null, raf = 0, lastY = sy;
+    const findTarget = (x, y) => {
+      if (ghost) ghost.style.display = "none";
+      const el = document.elementFromPoint(x, y);
+      if (ghost) ghost.style.display = "";
+      if (!el) return null;
+      const row = el.closest("[data-ge-row]");
+      if (row) return { key: +row.dataset.geRow, index: null, row };
+      const sec = el.closest(".ge-sec");
+      const zone = sec ? sec.querySelector("[data-ge-zone]") : el.closest("[data-ge-zone]");
+      if (!zone) return null;
+      const key = zone.dataset.geZone === "loose" ? "loose" : +zone.dataset.geZone;
+      const chips = [...zone.querySelectorAll("[data-ge-chip]")].filter(c => !moving.includes(c.dataset.geChip));
+      let before = null;
+      for (const c of chips) {
+        const r = c.getBoundingClientRect();
+        if (y < r.top || (y <= r.bottom && x < r.left + r.width / 2)) { before = c; break; }
+      }
+      const all = [...zone.querySelectorAll("[data-ge-chip]")];
+      return { key, zone, before, index: before ? all.indexOf(before) : all.length };
+    };
+    const showMarker = t => {
+      $content.querySelectorAll(".ge-over").forEach(x => x.classList.remove("ge-over"));
+      if (marker) marker.remove(), marker = null;
+      if (!t) return;
+      if (t.row) { t.row.classList.add("ge-over"); return; }
+      t.zone.classList.add("ge-over");
+      if (t.key === "loose") return;
+      marker = document.createElement("span");
+      marker.className = "ge-marker";
+      if (t.before) t.zone.insertBefore(marker, t.before); else t.zone.appendChild(marker);
+    };
+    const scrollLoop = () => {
+      const edge = 70, v = lastY < edge ? -(edge - lastY) / 4 : lastY > innerHeight - edge ? (lastY - innerHeight + edge) / 4 : 0;
+      if (v) window.scrollBy(0, v);
+      raf = requestAnimationFrame(scrollLoop);
+    };
+    const move = ev => {
+      lastY = ev.clientY;
+      if (!geDrag.on) {
+        if (Math.hypot(ev.clientX - sx, ev.clientY - sy) < 6) return;
+        geDrag.on = true;
+        document.body.classList.add("ge-dragging");
+        ghost = document.createElement("div");
+        ghost.className = "ge-ghost";
+        ghost.textContent = moving.length > 1 ? `${moving.length} cards` : (chip.querySelector(".ge-chip-name").textContent || "");
+        document.body.appendChild(ghost);
+        $content.querySelectorAll("[data-ge-chip]").forEach(c => { if (moving.includes(c.dataset.geChip)) c.classList.add("is-moving"); });
+        raf = requestAnimationFrame(scrollLoop);
+      }
+      ghost.style.transform = `translate(${ev.clientX + 12}px, ${ev.clientY + 10}px)`;
+      target = findTarget(ev.clientX, ev.clientY);
+      showMarker(target);
+    };
+    const up = () => {
+      document.removeEventListener("pointermove", move);
+      document.removeEventListener("pointerup", up);
+      document.removeEventListener("pointercancel", up);
+      if (!geDrag.on) return;
+      geDrag.on = false;
+      geDrag.suppressClick = true;
+      setTimeout(() => { geDrag.suppressClick = false; }, 0);
+      cancelAnimationFrame(raf);
+      document.body.classList.remove("ge-dragging");
+      if (ghost) ghost.remove();
+      if (marker) marker.remove();
+      if (target) {
+        groupEdit.selected.clear();
+        geChange(l => geMove(l, moving, target.key, target.index));
+      } else geRefresh();
+    };
+    document.addEventListener("pointermove", move);
+    document.addEventListener("pointerup", up);
+    document.addEventListener("pointercancel", up);
+  });
   // Parse only the small description format. Keep math opaque to emphasis and list parsing.
   function listDescriptionHtml(source) {
     const lines = [""];
@@ -7595,6 +7969,43 @@ The book remembers the last lesson you opened, in this browser, and the contents
       } else input.replaceWith(button);
     }, { once: true });
 
+  }
+  // A custom section's description, edited in place like the list's own (owner, 2026-11-08):
+  // the same small format (bold, italics, math, bullets) in the section notes' smaller type.
+  function editSectionDescription(button) {
+    const list = getList(button.dataset.listOf), i = +button.dataset.sectionDesc;
+    const sec = list && Array.isArray(list.customSections) && list.customSections[i];
+    if (!sec) return;
+    const input = document.createElement("textarea");
+    input.className = "list-section-note list-description-editor section-desc-editor";
+    input.rows = 1;
+    input.setAttribute("aria-label", "Section description");
+    input.placeholder = "Describe this section. Shift+Enter adds a line.";
+    input.value = sec.note || "";
+    button.replaceWith(input);
+    const fit = () => { input.style.height = "auto"; input.style.height = input.scrollHeight + "px"; };
+    fit();
+    input.addEventListener("input", fit);
+    input.focus();
+    let cancelled = false;
+    input.addEventListener("keydown", e => {
+      if (e.isComposing || (e.key === "Enter" && e.shiftKey) || (e.key !== "Enter" && e.key !== "Escape")) return;
+      e.preventDefault();
+      cancelled = e.key === "Escape";
+      input.blur();
+    });
+    input.addEventListener("blur", () => {
+      const value = input.value.trim();
+      if (!cancelled && value !== (sec.note || "")) {
+        sec.note = value;
+        saveLists();
+        button.classList.toggle("is-empty", !value);
+        button.innerHTML = listDescriptionHtml(value || "Click to add a description");
+      }
+      input.replaceWith(button);
+      renderMath(button);
+      button.focus();
+    }, { once: true });
   }
   function renderListDetail(listId) { renderListSurface({ type: "list", listId }); }
 
@@ -8487,6 +8898,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
   function render() {
     const route = getRoute();
+    // Leaving a list closes its group editor, tidying the sections as Done would.
+    if (groupEdit && !(route.type === "list" && route.listId === groupEdit.listId)) {
+      const l = geList();
+      groupEdit = null;
+      geTidy(l);
+    }
     if (route.type === "home") {
       state.landing = !route.section;
       if (route.section) {
@@ -9427,6 +9844,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       return;
     }
     if (e.target.closest("[data-edit-description], button[data-description]")) { editListDescription(); return; }
+    const secDesc = e.target.closest("button[data-section-desc]");
+    if (secDesc) { editSectionDescription(secDesc); return; }
     const rn = e.target.closest("[data-list-rename]") || e.target.closest("h2[data-list-title]:not([contenteditable='true'])");
     if (rn) { startListRename(rn.dataset.listRename || rn.dataset.listTitle); return; }
     const del = e.target.closest("[data-list-delete]");
@@ -9438,7 +9857,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const clr = e.target.closest("[data-list-clear]");
     if (clr) {
       const l = getList(clr.dataset.listClear);
-      if (l && confirm(`Remove all ${liveCount(l)} formulas from “${l.name}”?`)) { l.ids = []; saveLists(); render(); }
+      if (l && confirm(`Remove all ${liveCount(l)} formulas from “${l.name}”?`)) {
+        l.ids = [];
+        for (const key of ["customSections", "customOff"]) if (Array.isArray(l[key])) l[key].forEach(sec => { sec.ids = []; });
+        saveLists(); render();
+      }
       return;
     }
     // Both back links go to "#", which renders search results whenever a query is live. So
