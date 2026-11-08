@@ -2891,16 +2891,15 @@
   // Contest profile: what the problem corpus says about this card, kind by kind. One authored
   // sentence (the "## Contest profile" section; it never names a problem) over computed
   // counts. Only converted cards carry one; the others keep their "On contests" prose.
-  // How hard a problem is, read from where it sits in its paper: the first third of the
-  // numbers is easy, the middle third medium, the last third hard. Shared by the random-problem
-  // picker and the contest profile.
+  // Historical paper-position thirds, kept for the existing card-profile/statistics charts.
+  // Picker difficulty uses Elo rank within the selected pool, independently of these charts.
   let FAM_MAXNUM = null;
   // Where the problem sits in its paper, from near 0 (the first problem) to 1 (the last).
   function paperPos(p) {
     if (!FAM_MAXNUM) { FAM_MAXNUM = {}; PROBLEM_DB.forEach(q => { FAM_MAXNUM[q.fam] = Math.max(FAM_MAXNUM[q.fam] || 0, q.num); }); }
     return p.num / (FAM_LENGTH[p.fam] || FAM_MAXNUM[p.fam] || 25);
   }
-  function difficultyBand(p) {
+  function paperPositionBand(p) {
     const r = paperPos(p);
     return r <= 1 / 3 ? "easy" : r <= 2 / 3 ? "medium" : "hard";
   }
@@ -2945,7 +2944,7 @@
   // Where a card's problems sit in their papers, in five steps from the first problems to the
   // last: a line rising to the right means the card turns up in the harder problems.
   function positionLineSvg(probs) {
-    if (!FAM_MAXNUM) difficultyBand(probs[0]);
+    if (!FAM_MAXNUM) paperPositionBand(probs[0]);
     const bins = [0, 0, 0, 0, 0];
     probs.forEach(p => {
       const len = FAM_LENGTH[p.fam] || FAM_MAXNUM[p.fam] || 25;
@@ -2979,7 +2978,7 @@
     if (probs.length) {
       rows.push(row("Problems", `${probs.length} tagged`));
       const bands = { easy: 0, medium: 0, hard: 0 };
-      probs.forEach(p => { bands[difficultyBand(p)]++; });
+      probs.forEach(p => { bands[paperPositionBand(p)]++; });
       const famCounts = FAMILIES.map(x => [x, probs.filter(p => p.fam === x).length]).filter(x => x[1]);
       const famMax = Math.max(...famCounts.map(x => x[1]));
       rows.push(row("Contests", `<div class="pf-chart">${pieSvg(famCounts)}<div class="pf-bars">${famCounts.map(([x, n], i) =>
@@ -3162,12 +3161,13 @@
     return out.sort((a, b) => (n[b] || 0) - (n[a] || 0) || SUBJECT_ORDER.indexOf(a) - SUBJECT_ORDER.indexOf(b));
   }
   const subjectChips = p => p.subjects.map(s => `<span class="ptype-chip subject-chip">${SUBJECT_LABELS[s]}</span>`).join("");
+  const problemDifficulty = window.ProblemDifficulty;
   const PROBLEM_DB = (window.MATH_PROBLEM_DB || []).map(e => {
     const formulas = (e.formulas || []).filter(fid => BY_ID[fid]);
     const trickFormulas = (e.trickFormulas || []).filter(fid => BY_ID[fid]);
-    const pr = parseRef(e.ref);
+    const pr = parseRef(e.ref), slug = problemSlug(e.ref), rating = problemDifficulty.ratingFor(slug);
     return {
-      ref: e.ref, slug: problemSlug(e.ref),
+      ref: e.ref, slug, elo: rating ? rating.elo : null, eloSource: rating ? rating.source : null,
       url: e.url || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
       formulas, trickFormulas, types: problemTypes(e), subjects: problemSubjects(e, formulas, pr.cname), strategy: e.strategy || "",
       trick: e.trick || "",
@@ -5305,9 +5305,8 @@
       </header>
       ${recent ? `<div class="sh-recent"><span class="hp-label">Recently opened</span><div class="rc-chips">${recent}</div></div>` : ""}`;
   }
-  // The random-problem picker: choose a contest (or any), and optionally how hard, by where a
-  // problem sits in its paper (the first third is easy, the last third hard).
-  const DIFFS = ["", "easy", "medium", "hard"];
+  // Shared five-level Elo rank selection, recalibrated after the contest/topic filter.
+  const DIFFS = problemDifficulty.levels.map(level => level.id);
   function wireRandomPicker(root) {
     const box = root.querySelector(".rand-picker");
     if (!box) return;
@@ -5315,7 +5314,8 @@
     let fam = "";
     const update = () => {
       const d = DIFFS[+range.value];
-      box.querySelector(".rand-diff-val").textContent = d ? d.charAt(0).toUpperCase() + d.slice(1) : "Any";
+      box.querySelector(".rand-diff-val").textContent = problemDifficulty.levels[+range.value].label;
+      range.setAttribute("aria-valuetext", problemDifficulty.levels[+range.value].label);
       go.href = "#/special/randomproblem" + (fam ? "/" + encodeURIComponent(fam) : "") + (d ? "/" + d : "");
     };
     box.querySelectorAll("[data-rand-fam]").forEach(b => b.addEventListener("click", () => {
@@ -5324,6 +5324,7 @@
       update();
     }));
     range.addEventListener("input", update);
+    update();
   }
   const practiceSessions = window.PracticeSessions;
   let topicPracticeSet = null, practiceSaveTimer = 0, practiceSaveFailed = false;
@@ -5558,16 +5559,17 @@
       if (count.valueAsNumber > Number(count.max)) count.value = count.max;
       form.querySelector("#topic-count-value").textContent = count.value;
       form.querySelector("#topic-band-value").textContent = difficultyLabel();
+      difficulty.setAttribute("aria-valuetext", difficultyLabel());
       status.textContent = pool.length ? pool.length + " matching problems available."
         : key ? "No matches. Try another topic or difficulty." : "";
       form.querySelector("button[type=submit]").disabled = generating || !pool.length;
     }
     function difficultyLabel() {
-      return ["Any", "Easy", "Medium", "Hard"][difficulty.valueAsNumber];
+      return problemDifficulty.levels[difficulty.valueAsNumber].label;
     }
     function matchingProblems() {
       const match = findTopic(normalize(topic.value)), band = DIFFS[difficulty.valueAsNumber];
-      return match ? [...match.problems.values()].filter(p => !band || difficultyBand(p) === band) : [];
+      return match ? problemDifficulty.filter([...match.problems.values()], band) : [];
     }
     let activeTopic = -1;
     function closeTopics() { suggestions.hidden = true; topic.setAttribute('aria-expanded','false'); topic.removeAttribute('aria-activedescendant'); activeTopic = -1; }
@@ -5619,7 +5621,7 @@
       generating = false;
       form.querySelector("fieldset").disabled = false;
       if (!problems.length) { status.textContent = "No statements could be loaded. Try again or choose another topic."; return; }
-      topicPracticeSet = practiceSessions.create(label, level, problems.map(p => p.slug));
+      topicPracticeSet = practiceSessions.create(label, level, problemDifficulty.order(problems).map(p => p.slug));
       savePractice();
       location.hash = '#/practice/set/' + topicPracticeSet.id;
     });
@@ -5677,7 +5679,7 @@
             </div>
             <div class="rand-diff">
               <label for="rand-diff-range">Difficulty</label>
-              <input type="range" id="rand-diff-range" min="0" max="3" step="1" value="0">
+              <input type="range" id="rand-diff-range" min="0" max="5" step="1" value="0">
               <span class="rand-diff-val">Any</span>
             </div>
             <a class="hp-btn rand-go" href="#/special/randomproblem">Open a random problem</a>
@@ -5692,7 +5694,7 @@
             <div class="rand-diff"><label for="topic-count">Questions</label>
               <input id="topic-count" type="range" name="count" min="1" max="30" value="5"><output id="topic-count-value" for="topic-count">5</output></div>
             <div class="rand-diff"><label for="topic-band">Difficulty</label>
-              <input id="topic-band" type="range" name="difficulty" min="0" max="3" value="0"><output id="topic-band-value" for="topic-band">Any</output></div>
+              <input id="topic-band" type="range" name="difficulty" min="0" max="5" value="0"><output id="topic-band-value" for="topic-band">Any</output></div>
             <p id="topic-practice-status" role="status"></p>
             <button type="submit" class="hp-btn">Generate set</button>
           </fieldset></form>
@@ -9070,12 +9072,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const filterHelp = `<p class="special-note">Combine any of these, in any order, separated by slashes: a kind (Formula, Method, Pattern), a subject (Geometry, Algebra, Number Theory, Counting, Proof), a contest tier (AMC, AIME Early, AIME Late, Olympiad), or an importance within its subsection (High, Medium, Low, Lower, Lowest). For example, Special:Browse/Method/Geometry or Special:Browse/Pattern/AIME Late.</p>`;
   const problemLinks = probs => `<ul class="wiki-list">${probs.slice().sort((a, b) => b.year - a.year || a.ref.localeCompare(b.ref, undefined, { numeric: true }))
     .map(p => `<li><a href="#/problem/${p.slug}">${refShort(p.ref)}</a></li>`).join("")}</ul>`;
-  // A random practice problem, optionally from one contest and difficulty (AIME, AIME/hard, hard).
+  // Filter the contest first, then rank its own Elo values. Any remains an unfiltered uniform draw.
   function randomProblemTo(arg) {
-    const m = String(arg || "").match(/^(?:(.*?)\/)?(easy|medium|hard)$/i);
-    const a = resolveContest(m ? (m[1] || "") : arg), band = m ? m[2].toLowerCase() : "";
-    const pool = PROBLEM_DB.filter(p => (!a || normKey(p.ref).includes(a)) && (!band || difficultyBand(p) === band));
-    return pool.length ? "#/problem/" + pickOne(pool).slug : null;
+    const m = String(arg || "").match(/^(?:(.*?)\/)?(very[- ]easy|easy|medium|hard|very[- ]hard)$/i);
+    const a = resolveContest(m ? (m[1] || "") : arg), band = m ? m[2].toLowerCase().replace(/ /g, "-") : "";
+    const family = FAMILIES.find(f => normKey(f) === a);
+    // Exact family matching also includes AJHSME in AMC 8; paper/year command arguments still work.
+    const pool = PROBLEM_DB.filter(p => !a || (family ? p.fam === family : normKey(p.ref).includes(a)));
+    const chosen = problemDifficulty.pick(pool, band);
+    return chosen ? "#/problem/" + chosen.slug : null;
   }
   function randomStarredTo() {
     const l = lists.items.find(x => x.id === "starred");
@@ -9182,7 +9187,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           row("Methods and patterns in the new template", `${conv} of ${ms.length + ps.length}` + pct(conv, ms.length + ps.length));
         // Problems: by contest and difficulty, and how fully each is classified.
         const bands = { easy: 0, medium: 0, hard: 0 };
-        PROBLEM_DB.forEach(p => { bands[difficultyBand(p)]++; });
+        PROBLEM_DB.forEach(p => { bands[paperPositionBand(p)]++; });
         const chainOf = p => { const k = new Set(p.formulas.map(id => BY_ID[id].kind)); return k; };
         const full = PROBLEM_DB.filter(p => { const k = chainOf(p); return k.has("pattern") && k.has("method") && k.has("formula"); }).length;
         const withMethod = PROBLEM_DB.filter(p => chainOf(p).has("method")).length;

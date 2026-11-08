@@ -1,0 +1,251 @@
+{
+  "reviewed": "2026-11-08",
+  "description": "Author estimates on LIVE's Elo-like scale, based on the statements and solution requirements, not a paper-position formula. LIVE values take precedence when later published. Shared 2026 AMC 10/12 problems receive identical estimates.",
+  "papers": {
+    "2026 AMC 10A": "https://wiki.randommath.com/amc10/2026/part-a/problem-1",
+    "2026 AMC 12A": "https://wiki.randommath.com/amc12/2026/part-a/problem-1",
+    "2019 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf"
+  },
+  "ratings": {
+    "2026 AMC 10A, Problem 1": [
+      650,
+      "One unit conversion and subtraction."
+    ],
+    "2026 AMC 10A, Problem 2": [
+      950,
+      "Recognize that the tax share uses the total as denominator."
+    ],
+    "2026 AMC 10A, Problem 3": [
+      1200,
+      "Similarity locates the diagonal intersection; shared-height areas finish."
+    ],
+    "2026 AMC 10A, Problem 4": [
+      1050,
+      "Average interior or signed exterior angles, including reflex angles."
+    ],
+    "2026 AMC 10A, Problem 5": [
+      900,
+      "Recognize that appending the current mean leaves it fixed."
+    ],
+    "2026 AMC 10A, Problem 6": [
+      1350,
+      "Recognize a right triangle and diameter, then subtract area from a semicircle."
+    ],
+    "2026 AMC 10A, Problem 7": [
+      850,
+      "Subtract linear equations and count positive splits."
+    ],
+    "2026 AMC 10A, Problem 8": [
+      1350,
+      "Use the favorable rounding endpoints and convert minutes to hours."
+    ],
+    "2026 AMC 10A, Problem 9": [
+      1550,
+      "Match unequal corresponding sides of similar triangles without assuming the labels match."
+    ],
+    "2026 AMC 10A, Problem 10": [
+      1450,
+      "Combine the sum of squares with the median and solve the resulting ratio."
+    ],
+    "2026 AMC 10A, Problem 11": [
+      1500,
+      "Separate the cases where the LCM is the fixed number or the unknown."
+    ],
+    "2026 AMC 10A, Problem 12": [
+      1800,
+      "Reverse the stopping event into constraints on the final three socks."
+    ],
+    "2026 AMC 10A, Problem 13": [
+      1400,
+      "Total handshakes determine the sum; cross-club handshakes determine the product."
+    ],
+    "2026 AMC 10A, Problem 14": [
+      1650,
+      "Intersect all three quadratic triangle inequalities and enforce positivity."
+    ],
+    "2026 AMC 10A, Problem 15": [
+      1750,
+      "Find the inverse tree rule and run a subtractive Euclidean process."
+    ],
+    "2026 AMC 10A, Problem 16": [
+      1900,
+      "First minimize the capped score, then count all extremal sampling patterns."
+    ],
+    "2026 AMC 10A, Problem 17": [
+      1850,
+      "Recognize the intersection as a smaller regular hexagon through inward distances."
+    ],
+    "2026 AMC 10A, Problem 18": [
+      1600,
+      "Shift an affine recurrence to its fixed point and impose divisibility."
+    ],
+    "2026 AMC 10A, Problem 19": [
+      2100,
+      "Project a hemisphere-covering problem and balance extreme corner distances."
+    ],
+    "2026 AMC 10A, Problem 20": [
+      2150,
+      "Squarefree factorization, onto assignments and a justified division by permutations."
+    ],
+    "2026 AMC 10A, Problem 21": [
+      2050,
+      "Exhaustive connected-triomino casework and a majority condition."
+    ],
+    "2026 AMC 10A, Problem 22": [
+      2100,
+      "An affine stretch turns ellipse tangency into circle-center geometry."
+    ],
+    "2026 AMC 10A, Problem 23": [
+      2400,
+      "Classify attainable count pairs by residues and handle the bounded endpoint cases."
+    ],
+    "2026 AMC 10A, Problem 24": [
+      1950,
+      "Divide a conjugate-value difference and count bounded integer coefficients."
+    ],
+    "2026 AMC 10A, Problem 25": [
+      2450,
+      "Combine a sharp total/per-room bound with a feasible skip schedule."
+    ],
+    "2026 AMC 12A, Problem 1": [
+      950,
+      "Shared with 2026 AMC 10A #2."
+    ],
+    "2026 AMC 12A, Problem 2": [
+      1200,
+      "Shared with 2026 AMC 10A #3."
+    ],
+    "2026 AMC 12A, Problem 3": [
+      1050,
+      "Shared with 2026 AMC 10A #4."
+    ],
+    "2026 AMC 12A, Problem 4": [
+      900,
+      "Shared with 2026 AMC 10A #5."
+    ],
+    "2026 AMC 12A, Problem 5": [
+      850,
+      "Shared with 2026 AMC 10A #7."
+    ],
+    "2026 AMC 12A, Problem 6": [
+      1450,
+      "Shared with 2026 AMC 10A #10."
+    ],
+    "2026 AMC 12A, Problem 7": [
+      1200,
+      "Square the conjugate complex bases and use the cycle of powers of i."
+    ],
+    "2026 AMC 12A, Problem 8": [
+      1300,
+      "Convert unequal group percentages into a linear minimization with bounds."
+    ],
+    "2026 AMC 12A, Problem 9": [
+      1400,
+      "Keep the zero-factor branch and the denominator restriction while counting roots."
+    ],
+    "2026 AMC 12A, Problem 10": [
+      1750,
+      "Shared with 2026 AMC 10A #15."
+    ],
+    "2026 AMC 12A, Problem 11": [
+      1900,
+      "Shared with 2026 AMC 10A #16."
+    ],
+    "2026 AMC 12A, Problem 12": [
+      1600,
+      "Recognize a covering of all residue classes through the complement."
+    ],
+    "2026 AMC 12A, Problem 13": [
+      1650,
+      "Uniform random placements and distinct rolls reduce to one increasing order."
+    ],
+    "2026 AMC 12A, Problem 14": [
+      1800,
+      "Match a rotated box's ordered dimensions with the interior dimensions."
+    ],
+    "2026 AMC 12A, Problem 15": [
+      1850,
+      "Use a trigonometric product identity, then bound a logarithm's floor."
+    ],
+    "2026 AMC 12A, Problem 16": [
+      2050,
+      "Shared with 2026 AMC 10A #21."
+    ],
+    "2026 AMC 12A, Problem 17": [
+      2100,
+      "Shared with 2026 AMC 10A #22."
+    ],
+    "2026 AMC 12A, Problem 18": [
+      1850,
+      "Translate three section radii into squared distances to perpendicular planes."
+    ],
+    "2026 AMC 12A, Problem 19": [
+      2050,
+      "Factor a trigonometric sum and count all distinct branches."
+    ],
+    "2026 AMC 12A, Problem 20": [
+      1950,
+      "Shared with 2026 AMC 10A #24."
+    ],
+    "2026 AMC 12A, Problem 21": [
+      2200,
+      "Translate six area lower bounds into a homothetic hexagon and an area ratio."
+    ],
+    "2026 AMC 12A, Problem 22": [
+      2450,
+      "Build and evaluate an ordered unary/binary-tree convolution recurrence."
+    ],
+    "2026 AMC 12A, Problem 23": [
+      2350,
+      "Telescope an infinite product and invert an algebraic number modulo its cubic."
+    ],
+    "2026 AMC 12A, Problem 24": [
+      2500,
+      "Model two corner-circle radii and external tangency, then select the feasible root."
+    ],
+    "2026 AMC 12A, Problem 25": [
+      2700,
+      "Combine prime-power root counts, CRT and a minimal-product comparison."
+    ],
+    "2019 HMMT February Geometry, Problem 1": [
+      1550,
+      "A sharp quadrilateral angle bound requires both a counting argument and a limiting example."
+    ],
+    "2019 HMMT February Geometry, Problem 2": [
+      1950,
+      "Equal-area pieces reveal a ratio; perpendicular lines then force special-triangle similarity."
+    ],
+    "2019 HMMT February Geometry, Problem 3": [
+      2250,
+      "Identify the envelope of a family of circles and decompose its tangent-bounded region."
+    ],
+    "2019 HMMT February Geometry, Problem 4": [
+      2300,
+      "Exploit two parallelogram symmetries, similar triangles and two admissible area-ratio roots."
+    ],
+    "2019 HMMT February Geometry, Problem 5": [
+      2100,
+      "A reflection reveals a tangent; chord geometry then requires recognizing the two positions."
+    ],
+    "2019 HMMT February Geometry, Problem 6": [
+      2700,
+      "Find and bound both extremal enclosing-circle configurations for a closed chain of disks."
+    ],
+    "2019 HMMT February Geometry, Problem 7": [
+      2650,
+      "Recognize equal reflected circumcircles and an anticomplementary-triangle homothety."
+    ],
+    "2019 HMMT February Geometry, Problem 8": [
+      2500,
+      "Combine orthocenter/circumcenter coordinates with the perimeter's ellipse."
+    ],
+    "2019 HMMT February Geometry, Problem 9": [
+      2800,
+      "Constrain an oblique plane by equal edges, solve its section and recover area from projection."
+    ],
+    "2019 HMMT February Geometry, Problem 10": [
+      3000,
+      "Track repeated external-square constructions and multiple polygon-area contributions."
+    ]
+  }
+}

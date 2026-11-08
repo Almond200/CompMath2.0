@@ -13,7 +13,11 @@ to work offline merely because it was visited once; external AoPS links require 
 ## Practice a topic
 
 Search for a subject or technique, choose a question count and difficulty, then generate an
-untimed practice set. Choose **Mixed** to draw from all topics; it appears first, followed by the four
+untimed practice set. Difficulty offers **Any**, **Very easy**, **Easy**, **Medium**, **Hard** and
+**Very hard**, using Elo ratings to select roughly a fifth of the chosen contest or topic
+at each level. Any applies no difficulty restriction. Generated sets run from lowest to highest Elo. Ratings come from LIVE, with clearly
+recorded manual estimates for problems it has not rated; [rating data and refresh details](DIFFICULTY-RATINGS.md).
+Choose **Mixed** to draw from all topics; it appears first, followed by the four
 default subjects when the topic search is empty. AMC problems use A–E choices; AIME problems accept integers from 000 to
 999. Answers save automatically on this device. Double-click a selected choice to clear it.
 Save and exit and Back to Practice both preserve progress. **Practice sets**, below Contests,

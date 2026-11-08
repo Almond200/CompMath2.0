@@ -13,7 +13,7 @@
 
 ## Running the checks in a cloud session
 
-`./tools/gates.sh` runs the convention, topic, list, shelf, topic-tree, practice-gap, diagram, statement, lab and database checks, stopping at the first failure. It does not run `check-labels.py` or the three regression suites below. It writes logs to `/tmp`; if that path is unavailable, run the constituent commands with logs in a writable directory.
+`./tools/gates.sh` runs the convention, topic, list, shelf, topic-tree, practice-gap, diagram, statement, lab and database checks, stopping at the first failure. It does not run `check-labels.py` or the four regression suites below. It writes logs to `/tmp`; if that path is unavailable, run the constituent commands with logs in a writable directory.
 
 ```bash
 export JSC=$PWD/tools/jsc-node
@@ -28,6 +28,7 @@ node tools/check-topic-tree.js              # tree, card homes, problem tree tag
 node tests/practice-sessions.cjs
 node tests/answer-keys.cjs
 node tests/book-search.cjs
+node tests/problem-difficulty.cjs
 node tools/practice-gaps.js --check     # every card has two practice problems
 $JSC tools/validate-problem-db.js
 ```
