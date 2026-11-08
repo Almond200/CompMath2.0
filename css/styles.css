@@ -24,7 +24,6 @@ html[data-text="larger"] { --tx: 1.3; }
   --level-12: #9d7bff;
   --level-aime: #f08c4e;
   --level-oly: #ef5f8b;
-  --danger: #ef5f8b;  /* destructive actions; dark keeps the rose, light uses a true red */
   --radius: 12px;
   --topbar-h: 66px;
 }
@@ -55,7 +54,6 @@ html[data-text="larger"] { --tx: 1.3; }
   --level-12: #7a4fe0;
   --level-aime: #cf6a1e;
   --level-oly: #d63f6e;
-  --danger: #d92d2d;
 }
 
 /* A few elements hardcode a dark translucent fill; re-tint them for light mode. */
@@ -1674,7 +1672,7 @@ html[data-text="larger"] .prob-statement { font-size: 21px; }
   transition: color 0.12s, border-color 0.12s;
 }
 .list-tool:hover { color: var(--text); border-color: var(--border-light); }
-.list-tool.danger:hover { color: var(--danger); border-color: var(--danger); }
+.list-tool.danger:hover { color: var(--level-oly); border-color: var(--level-oly); }
 
 /* List glyphs (plain text, not emoji) */
 .list-star { color: var(--gold); }
@@ -4434,7 +4432,7 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
   background: none; border: none; border-radius: 7px; padding: 6px 8px; cursor: pointer; }
 .ge-tool:hover:not([disabled]) { background: var(--bg-panel); }
 .ge-tool[disabled] { color: var(--text-faint); cursor: default; }
-.ge-danger:hover:not([disabled]) { color: var(--danger); }
+.ge-danger:hover:not([disabled]) { color: var(--level-oly); }
 .ge-movebar { position: fixed; z-index: 50; left: 50%; bottom: 16px; transform: translateX(-50%); width: min(760px, calc(100vw - 32px));
   box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; padding: 10px 12px;
   border: 1px solid var(--space, var(--accent)); border-radius: 14px; background: var(--bg-card); box-shadow: 0 4px 14px rgba(0,0,0,.1); }
@@ -4485,7 +4483,7 @@ body.ge-dragging, body.ge-dragging * { cursor: grabbing !important; user-select:
 .app-confirm h3 { margin: 0 0 6px; font-size: calc(17px * var(--tx)); }
 .app-confirm p { margin: 0; font-size: calc(14px * var(--tx)); line-height: 1.55; color: var(--text-dim); }
 .app-confirm-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 18px; }
-.app-confirm .hp-btn.app-confirm-danger { background: var(--danger); border-color: var(--danger); color: #fff; }
+.app-confirm .hp-btn.app-confirm-danger { background: var(--level-oly); border-color: var(--level-oly); color: #fff; }
 .ge-handle { display: inline-flex; align-items: center; justify-content: center; cursor: grab; touch-action: none; color: var(--text-faint); }
 .ge-handle svg { fill: currentColor; }
 .ge-handle:active { cursor: grabbing; }
@@ -4555,8 +4553,8 @@ body.ge-selecting, body.ge-selecting * { user-select: none; -webkit-user-select:
 .ge-chip.is-current { box-shadow: 0 0 0 3px var(--space-soft, var(--accent-soft)), 0 0 0 1px var(--space, var(--accent)); }
 .ge-chip.is-new { animation: ge-new 1.2s ease-out; }
 @keyframes ge-new { from { box-shadow: 0 0 0 6px var(--space-soft, var(--accent-soft)); } to { box-shadow: none; } }
-.ge-pill.ge-pill-danger { color: var(--danger); background: transparent; border: 1px solid var(--border); }
-.ge-pill.ge-pill-danger:hover { border-color: var(--danger); }
+.ge-pill.ge-pill-danger { color: var(--level-oly); background: transparent; border: 1px solid var(--border); }
+.ge-pill.ge-pill-danger:hover { border-color: var(--level-oly); }
 /* Card chips are the problem page's card chips: 8px corners (owner, 2026-11-08); the drop gap and
    the dragged copy follow, set above. The Move to bar keeps its swipe to itself. */
 .ge-move-pills { overscroll-behavior-x: contain; }
@@ -4579,7 +4577,7 @@ body.ge-selecting, body.ge-selecting * { user-select: none; -webkit-user-select:
 .nl-error { margin: 10px 0 0; font-size: 13px; color: var(--level-oly); }
 .app-confirm:focus, .app-confirm:focus-visible { outline: none; }
 /* A destructive confirmation's button is solid red (owner, 2026-11-08). */
-body dialog.app-confirm button.hp-btn.app-confirm-danger { background: var(--danger); border-color: var(--danger); color: #fff; }
+body dialog.app-confirm button.hp-btn.app-confirm-danger { background: var(--level-oly); border-color: var(--level-oly); color: #fff; }
 body dialog.app-confirm button.hp-btn.app-confirm-danger:hover { filter: brightness(1.08); }
 /* Dialogs sit a little above the true centre, where the eye rests (owner, 2026-11-08): the space
    below is 12vh larger than above, so the dialog sits 6vh higher. A tall dialog still starts at its top. */
