@@ -5331,6 +5331,7 @@
   const mockContests = window.MockContests;
   let mockClockInterval = 0, mockPaperCatalog = null;
   const isMock = set => set.kind === 'mock';
+  const practiceSetLabel = set => isMock(set) && set.mock.mode === 'generated' ? 'Generated ' + set.mock.family : set.label;
   const hasMockAnswer = p => window.MATH_ANSWER_KEYS?.answers?.[p.slug] != null || !!window.MATH_MOCK_EXTRAS?.[p.slug];
   const isVoidedProblem = p => !!window.MATH_ANSWER_KEYS?.voided?.[p.slug];
   function mockPapers() { return mockPaperCatalog ||= mockContests.papers(PROBLEM_DB, hasMockAnswer); }
@@ -5390,7 +5391,9 @@
     function close(){options.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');active=-1;}
     function highlight(){[...options.children].forEach((b,i)=>{b.classList.toggle('is-cur',i===active);b.setAttribute('aria-selected',String(i===active));});if(choices[active])input.setAttribute('aria-activedescendant','mock-paper-'+active);}
     function suggest(){
-      const q=input.value.trim().toLowerCase();choices=currentPapers().filter(g=>!q||g.label.toLowerCase().includes(q)).slice(0,8);
+      const q=input.value.trim().toLowerCase();
+      if(!q){choices=[];options.innerHTML='';close();return;}
+      choices=currentPapers().filter(g=>g.label.toLowerCase().includes(q)).slice(0,8);
       options.innerHTML=choices.map((g,i)=>`<button type="button" class="set-find-opt" id="mock-paper-${i}" role="option" aria-selected="false">${escapeAttr(g.label)}</button>`).join('');
       active=choices.length?0:-1;options.hidden=!choices.length;input.setAttribute('aria-expanded',String(!options.hidden));highlight();
       [...options.children].forEach((b,i)=>{b.addEventListener('mousemove',()=>{active=i;highlight();});b.addEventListener('click',()=>{input.value=choices[i].label;update();input.focus();close();});});
@@ -5401,9 +5404,9 @@
       form.querySelector('.mock-paper-field').hidden=mode!=='paper';form.querySelector('.mock-generation-info').hidden=mode!=='generated';
       info.textContent=`${f.count} problems · ${f.minutes} minutes${model?' · Modeled on '+model.startYear+'–'+model.endYear:''}`;
       submit.textContent=mode==='paper'?'Start mock':'Generate mock';submit.disabled=busy||(mode==='paper'&&!paper);
-      if(!busy)status.textContent=mode==='paper'&&!paper?'Choose a paper from the suggestions.':'';
+      if(!busy)status.textContent='';
     }
-    function setFamily(f){family=f;form.querySelectorAll('[data-mock-family]').forEach(b=>b.setAttribute('aria-checked',String(b.dataset.mockFamily===f)));input.value=currentPapers()[0]?.label||'';close();update();}
+    function setFamily(f){family=f;form.querySelectorAll('[data-mock-family]').forEach(b=>b.setAttribute('aria-checked',String(b.dataset.mockFamily===f)));input.value='';choices=[];options.innerHTML='';close();update();}
     form.querySelectorAll('[data-mock-family]').forEach(b=>b.addEventListener('click',()=>setFamily(b.dataset.mockFamily)));
     form.querySelectorAll('[data-mock-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mockMode;form.querySelectorAll('[data-mock-mode]').forEach(x=>x.setAttribute('aria-checked',String(x===b)));close();update();}));
     input.addEventListener('focus',suggest);input.addEventListener('input',()=>{update();suggest();});
@@ -5418,7 +5421,7 @@
         await Promise.all([...new Set(plan.problems.filter(p=>!window.MATH_MOCK_EXTRAS?.[p.slug]).map(p=>p.year))].map(loadStatements));
         if(!form.isConnected)return;
         if(plan.problems.some(p=>!window.MATH_STATEMENTS?.[p.slug]&&!window.MATH_MOCK_EXTRAS?.[p.slug]))throw Error('Some statements could not be loaded. Try again.');
-        const label=mode==='paper'?paper.label:family+' · Generated';
+        const label=mode==='paper'?paper.label:'Generated '+family;
         const mock={mode,family,durationMs:mockContests.formats[family].minutes*60000};
         if(plan.model){mock.modelStartYear=plan.model.startYear;mock.modelEndYear=plan.model.endYear;mock.targets=plan.model.targets;mock.hmmtException=true;}
         topicPracticeSet=practiceSessions.createMock(label,plan.problems.map(p=>p.slug),mock);savePractice();location.hash='#/practice/set/'+topicPracticeSet.id;
@@ -5457,7 +5460,7 @@
     catch (err) { return '<section class="sh-section"><h3>Completed sets</h3><p>Saved sets could not be read in this browser.</p></section>'; }
     const group = (finished, title) => {
       const items = sets.filter(s => (s.status === 'finished') === finished);
-      return `${items.length ? `<div class="pl-list practice-history-list" id="practice-history-${finished ? 'completed' : 'unfinished'}">${items.map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(s.label)}<small class="practice-history-meta">${isMock(s) ? 'Mock · ' : 'Practice · '}${s.slugs.length} problem${s.slugs.length === 1 ? '' : 's'} · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${finished ? (isMock(s) ? mockScore(s).points+'/'+mockScore(s).max+' points' : s.slugs.filter(id => practiceSessions.result(s,id) === 'Correct').length + '/' + s.slugs.length + ' correct') : s.slugs.filter(id => s.answers[id]).length + '/' + s.slugs.length + ' answered'}</span></a>`).join('')}</div><button type="button" class="ct-toggle practice-history-more" aria-controls="practice-history-${finished ? 'completed' : 'unfinished'}" aria-expanded="false" hidden>Show all</button>` : `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`}`;
+      return `${items.length ? `<div class="pl-list practice-history-list" id="practice-history-${finished ? 'completed' : 'unfinished'}">${items.map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(practiceSetLabel(s))}<small class="practice-history-meta">${isMock(s) ? 'Mock · ' : 'Practice · '}${s.slugs.length} problem${s.slugs.length === 1 ? '' : 's'} · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${finished ? (isMock(s) ? mockScore(s).points+'/'+mockScore(s).max+' points' : s.slugs.filter(id => practiceSessions.result(s,id) === 'Correct').length + '/' + s.slugs.length + ' correct') : s.slugs.filter(id => s.answers[id]).length + '/' + s.slugs.length + ' answered'}</span></a>`).join('')}</div><button type="button" class="ct-toggle practice-history-more" aria-controls="practice-history-${finished ? 'completed' : 'unfinished'}" aria-expanded="false" hidden>Show all</button>` : `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`}`;
     };
     return `<section class="sh-section" id="resume-practice-sets"><h3>Resume a set</h3>${group(false)}</section><section class="sh-section" id="past-practice-sets"><h3>Completed sets</h3>${group(true)}</section>`;
   }
@@ -5509,7 +5512,7 @@
     const stats = mock ? [[score.points+'/'+score.max,'Mock score'],[counts.Correct+'/'+total,'Correct'],[counts.Incorrect,'Incorrect'],[counts.Unanswered,'Unanswered']] : [[counts.Correct + '/' + total, 'Correct'], [Math.round(100 * counts.Correct / total) + '%', 'Score'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
     $content.innerHTML = `<div class="space-home practice-session practice-results">
       <a class="back-link" href="#/practice">← Back to Practice</a>
-      <section class="sh-section"><h2>${mock ? 'Mock complete' : 'Practice complete'}</h2><p class="practice-results-subtitle">${escapeAttr(set.label)} · ${total} problem${total === 1 ? '' : 's'}${mock ? ' · '+(set.mock.mode==='paper'?'Past contest':'Generated mock') : ' · '+escapeAttr(set.difficulty)+' difficulty'}</p>
+      <section class="sh-section"><h2>${mock ? 'Mock complete' : 'Practice complete'}</h2><p class="practice-results-subtitle">${escapeAttr(practiceSetLabel(set))} · ${total} problem${total === 1 ? '' : 's'}${mock ? ' · '+(set.mock.mode==='paper'?'Past contest':'Generated mock') : ' · '+escapeAttr(set.difficulty)+' difficulty'}</p>
         ${mock ? `<p class="practice-results-meta">${mockTimeSummary(set)}</p>` : ''}
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
@@ -5518,7 +5521,7 @@
       </section>
       <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
         const p = PROBLEM_BY_SLUG[slug], result = practiceSessions.result(set, slug);
-        return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${i + 1}${p && !mock ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong><small>${set.answers[slug] ? 'Your answer: ' + escapeAttr(set.answers[slug]) : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small></span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
+        return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${i + 1}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong><small>${set.answers[slug] ? 'Your answer: ' + escapeAttr(set.answers[slug]) : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small></span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
       }).join('')}</div></section></div>`;
     $content.querySelectorAll('[data-result-index]').forEach(link => link.addEventListener('click', () => { set.current = +link.dataset.resultIndex; savePractice(); }));
   }
@@ -5552,16 +5555,14 @@
       ${finished ? `<a class="back-link practice-back-results" href="#/practice/set/${encodeURIComponent(set.id)}">&larr; Back to Results overview</a>` : ''}
       <a class="back-link" href="#/practice">&larr; Back to Practice</a>
       <section class="sh-section">
-        <div class="practice-session-top"><div><h2>${mock ? 'Mock set' : 'Practice set'} · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problem${set.slugs.length === 1 ? '' : 's'}${mock ? ' · '+set.clock.limitMs/60000+' minutes' : ' · '+escapeAttr(set.difficulty)+' difficulty'}${finished ? ' · Review' : ''}</p></div>
+        <div class="practice-session-top"><div><h2>${mock ? 'Mock set' : 'Practice set'} · ${escapeAttr(practiceSetLabel(set))}</h2><p>${set.slugs.length} problem${set.slugs.length === 1 ? '' : 's'}${mock ? ' · '+set.clock.limitMs/60000+' minutes' : ' · '+escapeAttr(set.difficulty)+' difficulty'}${finished ? ' · Review' : ''}</p></div>
           ${mock && !finished ? `<div class="mock-clock" role="timer" aria-label="Time remaining"><span>Time remaining</span><strong class="mock-clock-value">${mockTime(practiceSessions.timeLeft(set))}</strong></div>` : ''}</div>
-        ${mock && finished ? `<p class="mock-review-summary">Score: ${mockScore(set).points}/${mockScore(set).max} · ${mockTimeSummary(set)}</p>` : ''}
         <nav class="cn-nums" aria-label="Practice problems">${nav}</nav>
         ${finished ? `<div class="practice-review-actions"><a class="hp-btn hp-btn-soft" href="#/practice/set/${encodeURIComponent(set.id)}">Results overview</a></div>` : ''}
         ${finished ? '' : `<div class="practice-session-actions"><span>${answered} of ${set.slugs.length} answered</span><div><a class="hp-btn hp-btn-soft" href="#/practice">Save and exit</a><button type="button" class="hp-btn" id="finish-practice">Finish and review</button></div></div>`}
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
-      <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p && !mock ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
-        ${mock && finished && p ? `<p class="mock-source">Source: <a href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></p>` : ''}
+      <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p && (!mock || finished) ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
         ${p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>Your answer</h3>
           ${aime || exact ? (set.answers[slug] ? `<p class="practice-submitted">${exact ? exactAnswerHtml(set.answers[slug]) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
