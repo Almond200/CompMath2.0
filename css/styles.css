@@ -2842,6 +2842,8 @@ body.is-landing .content { padding: 0 0 70px; }
    column; it is removed.) */
 .lp-main { min-width: 0; }
 .lp-main > :is(.lp-body, .lp-related, .learn-note) { max-width: 760px; }
+/* Settings → Learn → Lesson text width: Full width lifts it. */
+html[data-lesson-width="full"] .lp-main > :is(.lp-body, .lp-related, .learn-note) { max-width: none; }
 .lp-cards { margin: 0 0 14px; display: flex; flex-direction: column; gap: 6px; }
 .lp-cards-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
 .lp-cards-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); min-width: 13em; margin-right: 10px; }
