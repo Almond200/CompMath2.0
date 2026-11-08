@@ -465,6 +465,9 @@ input[type="search"]::-webkit-search-cancel-button {
 .description-line, .description-bullets { display: block; }
 .description-bullets { padding-inline-start: 1.4em; }
 .description-bullets > [role="listitem"] { display: list-item; list-style-type: disc; }
+/* Nested bullets, as Google Docs draws them: a disc, then a circle, then a square. */
+.description-bullets[data-level="1"] > [role="listitem"] { list-style-type: circle; }
+.description-bullets[data-level="2"] > [role="listitem"] { list-style-type: square; }
 .list-description-editor { display: block; width: 100%; min-height: 3.1em; overflow-y: hidden; box-sizing: border-box; border: 0; resize: none; font: inherit; }
 .topic-header .list-description-editor { max-width: min(100%, 760px); }
 .list-add-input:focus { outline: none; border-color: var(--accent); }

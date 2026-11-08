@@ -8346,18 +8346,37 @@ The book remembers the last lesson you opened, in this browser, and the contents
         });
       }
     }
-    let html = "", inList = false;
+    // Lists as Google Docs makes them (owner, 2026-11-08): a line "• text" is a bullet, two spaces
+    // of indent per level nest it (at most one level deeper than the bullet before), a bullet may
+    // be empty, and an indented line with no bullet continues the bullet above it on a new line.
+    let html = "";
+    const stack = [];   // the open lists, deepest last; each notes whether its last item is open
+    const closeItem = () => { const top = stack[stack.length - 1]; if (top && top.open) { html += "</span>"; top.open = false; } };
+    const closeList = () => { closeItem(); html += "</span>"; stack.pop(); };
     for (const line of lines) {
-      // A bullet with nothing after it (a list ended by leaving an empty bullet) shows nothing.
-      if (/^\s*•\s*$/.test(line) || /^\s*[-*]\s+$/.test(line)) continue;
-      const bullet = line.match(/^\s*[-*•]\s+([\s\S]+)$/);
-      if (inList && !bullet) html += "</span>";
-      if (bullet && !inList) html += '<span class="description-bullets" role="list">';
-      html += bullet ? '<span role="listitem">' + bullet[1] + "</span>"
-        : '<span class="description-line">' + (line || "<br>") + "</span>";
-      inList = !!bullet;
+      const bullet = line.match(/^( *)[-*•◦▪](?: ([\s\S]*))?$/);
+      if (bullet) {
+        const level = Math.min(Math.floor(bullet[1].length / 2), stack.length, 2);
+        if (level === stack.length) {
+          html += `<span class="description-bullets" role="list" data-level="${level}">`;
+          stack.push({ open: false });
+        } else {
+          while (stack.length - 1 > level) closeList();
+          closeItem();
+        }
+        html += '<span role="listitem">' + ((bullet[2] || "").trim() ? bullet[2] : "&#8203;");
+        stack[stack.length - 1].open = true;
+        continue;
+      }
+      if (stack.length && stack[stack.length - 1].open && /^ {2,}\S/.test(line)) {
+        html += "<br>" + line.trimStart();
+        continue;
+      }
+      while (stack.length) closeList();
+      html += '<span class="description-line">' + (line || "<br>") + "</span>";
     }
-    return html + (inList ? "</span>" : "");
+    while (stack.length) closeList();
+    return html;
   }
   function editListDescription() {
     const button = $content.querySelector("button[data-description]");
@@ -8400,41 +8419,101 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   function renderListDetail(listId) { renderListSurface({ type: "list", listId }); }
 
-  // Bullets as you type in the description boxes (owner, 2026-11-08): "* " or "- " at the start
-  // of a line becomes "• " at once (the saved text renders "•" lines as a list), Shift+Enter on a
-  // bullet starts the next one, Shift+Enter on an empty bullet ends the list, and Backspace just
-  // after a bullet takes it away. Math still waits until the box is closed.
+  // Bullets as you type in the description boxes, as in Google Docs (owner, 2026-11-08):
+  //   "* " or "- " at the start of a line starts a bullet;
+  //   Enter on a bullet starts the next one (taking any text after the caret); on an empty bullet it
+  //     moves the bullet out a level, or at the top level ends the list; outside a list it saves;
+  //   Shift+Enter or Ctrl/Cmd+Enter breaks the line inside the same bullet, with no new bullet;
+  //   Tab and Shift+Tab indent and outdent a bullet (three levels: • ◦ ▪);
+  //   Backspace at the start of a bullet's text moves it out a level, or at the top level removes
+  //     the bullet and keeps the text; at the start of a continued line it joins the line above.
+  // Bullets may be empty. Math still waits until the box is closed.
   const BULLET_BOXES = ".list-description-editor, .ge-note-input";
-  // On saving, drop bullets left empty, so the stored text holds only what shows.
-  function cleanDescription(v) {
-    return v.split(/\r?\n/).filter(line => !/^\s*•\s*$/.test(line)).join("\n").trim();
+  const BULLET_MARKS = ["•", "◦", "▪"];
+  const bulletLine = (level, text = "") => " ".repeat(level * 2) + BULLET_MARKS[level] + " " + text;
+  function cleanDescription(v) { return v.replace(/^\n+/, "").replace(/\s+$/, ""); }
+  // The line holding the caret: where it starts and ends, and whether it is a bullet (its level and
+  // where its text begins) or the continuation of one.
+  function lineAt(v, at) {
+    const start = v.lastIndexOf("\n", at - 1) + 1;
+    let end = v.indexOf("\n", at); if (end < 0) end = v.length;
+    const line = v.slice(start, end);
+    const m = line.match(/^( *)([•◦▪])( ?)(.*)$/);
+    if (m) {
+      const level = Math.min(2, Math.floor(m[1].length / 2));
+      return { start, end, line, kind: "bullet", level, textAt: start + m[1].length + 1 + m[3].length, text: m[4] };
+    }
+    const c = line.match(/^( {2,})(.*)$/);
+    if (c && start > 0) {
+      // A continued line belongs to the nearest bullet above it.
+      for (let s2 = v.lastIndexOf("\n", start - 2) + 1, guard = 0; guard < 200; guard++) {
+        const above = v.slice(s2, v.indexOf("\n", s2) < 0 ? v.length : v.indexOf("\n", s2));
+        const bm = above.match(/^( *)[•◦▪]/);
+        if (bm) return { start, end, line, kind: "cont", level: Math.min(2, Math.floor(bm[1].length / 2)), textAt: start + c[1].length, text: c[2] };
+        if (!/^ {2,}/.test(above) || s2 === 0) break;
+        s2 = v.lastIndexOf("\n", s2 - 2) + 1;
+      }
+    }
+    return { start, end, line, kind: "plain", level: 0, textAt: start, text: line };
   }
-  const lineStartOf = (v, at) => v.lastIndexOf("\n", at - 1) + 1;
   function setBoxText(t, value, caret) {
     t.value = value;
     t.setSelectionRange(caret, caret);
     t.dispatchEvent(new Event("input", { bubbles: true }));   // the box re-fits its height
   }
+  // Rewrite one bullet line at a new level, keeping the caret on the same text.
+  function relevel(t, L, level) {
+    const v = t.value, at = t.selectionStart, head = bulletLine(level);
+    setBoxText(t, v.slice(0, L.start) + head + L.text + v.slice(L.end), L.start + head.length + Math.max(0, at - L.textAt));
+  }
   document.addEventListener("input", e => {
     const t = e.target;
     if (!t.matches || !t.matches(BULLET_BOXES) || e.inputType !== "insertText" || e.data !== " ") return;
-    const at = t.selectionStart, start = lineStartOf(t.value, at);
-    if (at - start === 2 && /^[*-] $/.test(t.value.slice(start, at))) setBoxText(t, t.value.slice(0, start) + "• " + t.value.slice(at), start + 2);
+    const at = t.selectionStart, start = t.value.lastIndexOf("\n", at - 1) + 1;
+    const m = t.value.slice(start, at).match(/^( *)[*-] $/);
+    if (!m) return;
+    const level = Math.min(2, Math.floor(m[1].length / 2));
+    const head = bulletLine(level);
+    setBoxText(t, t.value.slice(0, start) + head + t.value.slice(at), start + head.length);
   });
   document.addEventListener("keydown", e => {
     const t = e.target;
-    if (!t.matches || !t.matches(BULLET_BOXES) || e.isComposing) return;
-    const at = t.selectionStart;
-    if (at !== t.selectionEnd) return;
-    const start = lineStartOf(t.value, at), line = t.value.slice(start, at);
-    if (e.key === "Enter" && e.shiftKey && line.startsWith("• ")) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      if (line.trim() === "•") setBoxText(t, t.value.slice(0, start) + t.value.slice(at), start);          // empty bullet: end the list
-      else setBoxText(t, t.value.slice(0, at) + "\n• " + t.value.slice(at), at + 3);
-    } else if (e.key === "Backspace" && line === "• ") {
-      e.preventDefault();
-      setBoxText(t, t.value.slice(0, start) + t.value.slice(at), start);
+    if (!t.matches || !t.matches(BULLET_BOXES) || e.isComposing || e.altKey) return;
+    const v = t.value, at = t.selectionStart;
+    const L = lineAt(v, at);
+    const inList = L.kind !== "plain";
+    const done = () => { e.preventDefault(); e.stopImmediatePropagation(); };
+    if (e.key === "Enter" && (e.shiftKey || e.ctrlKey || e.metaKey)) {
+      if (!inList) { if (e.ctrlKey || e.metaKey) { done(); setBoxText(t, v.slice(0, at) + "\n" + v.slice(t.selectionEnd), at + 1); } return; }
+      done();
+      const pad = "\n" + " ".repeat(L.level * 2 + 2);
+      setBoxText(t, v.slice(0, at) + pad + v.slice(t.selectionEnd), at + pad.length);
+    } else if (e.key === "Enter") {
+      if (!inList) return;   // outside a list Enter saves, as before
+      done();
+      if (L.kind === "bullet" && !L.text.trim()) {
+        if (L.level > 0) relevel(t, L, L.level - 1);
+        else setBoxText(t, v.slice(0, L.start) + v.slice(L.end), L.start);       // end the list
+        return;
+      }
+      const head = "\n" + bulletLine(L.level);
+      const cut = Math.max(at, L.textAt);
+      const left = cut > L.textAt ? v.slice(0, cut).replace(/ +$/, "") : v.slice(0, cut);
+      setBoxText(t, left + head + v.slice(t.selectionEnd > cut ? t.selectionEnd : cut).replace(/^ +/, ""), left.length + head.length);
+    } else if (e.key === "Tab" && L.kind === "bullet") {
+      done();
+      const level = e.shiftKey ? L.level - 1 : L.level + 1;
+      if (level >= 0 && level <= 2) relevel(t, L, level);
+    } else if (e.key === "Backspace" && at === t.selectionEnd && at === L.textAt) {
+      if (L.kind === "bullet") {
+        done();
+        if (L.level > 0) relevel(t, L, L.level - 1);
+        else setBoxText(t, v.slice(0, L.start) + L.text + v.slice(L.end), L.start);    // remove the bullet, keep the text
+      } else if (L.kind === "cont") {
+        done();
+        const gap = v[L.start - 2] === " " || !L.text || L.start < 2 ? "" : " ";
+        setBoxText(t, v.slice(0, L.start - 1) + gap + v.slice(L.textAt), L.start - 1 + gap.length);
+      }
     }
   }, true);
 
