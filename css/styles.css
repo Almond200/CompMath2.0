@@ -1714,9 +1714,12 @@ html[data-text="larger"] .prob-statement { font-size: 21px; }
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 8vh 16px 16px;
+  padding: 16px;
   overflow-y: auto;
 }
+/* Every dialog sits in the middle of the screen (owner, 2026-11-08). Auto margins centre it and,
+   unlike centring the overlay's items, still let a dialog taller than the screen scroll from its top. */
+.modal-overlay > .modal { margin-block: auto; }
 .modal {
   width: 100%;
   max-width: 460px;

@@ -7958,7 +7958,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (off) {
         const l = getList(off.dataset.groupOff);
         if (l && Array.isArray(l.customSections)) {
-          appConfirm({ title: "Ungroup this list?", text: "The cards will show in one run. Your sections are kept: Custom group brings them back.", ok: "Ungroup" })
+          appConfirm({ title: "Ungroup this list?", text: "The cards will be shown without sections. Your sections are saved, so pressing Custom group again brings them back.", ok: "Ungroup" })
             .then(yes => { if (yes && Array.isArray(l.customSections)) { l.customOff = l.customSections; delete l.customSections; saveLists(); render(); } });
         }
       }
