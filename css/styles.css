@@ -2836,8 +2836,11 @@ body.is-landing .content { padding: 0 0 70px; }
 .lb-chapter-page li { padding: 8px 0; border-top: 1px solid var(--border); font-size: 15px; }
 .lp-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
 .lp-grid.has-drawer { grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); }
-  border: 1px solid var(--border); border-radius: 12px; background: var(--bg-panel); padding: 10px 12px; font-size: 13.5px; }
-.lp-main { min-width: 0; max-width: 760px; }
+/* A stray half-rule here (its selector lost before the repository's history began) made the
+   browser drop the .lp-main rule after it, so lessons have always run the full column width.
+   It is removed; the 760px reading width that rule named is kept off until the owner decides
+   (2026-11-08), so lessons look exactly as before. */
+.lp-main { min-width: 0; }
 .lp-cards { margin: 0 0 14px; display: flex; flex-direction: column; gap: 6px; }
 .lp-cards-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
 .lp-cards-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); min-width: 13em; margin-right: 10px; }
@@ -4459,8 +4462,8 @@ body.ge-dragging, body.ge-dragging * { cursor: grabbing !important; user-select:
   .ge-body { grid-template-columns: 1fr; }
   .ge-side { position: static; max-height: none; order: 2; }
 }
-   in place like the list's description. */
-.ge-inline { font: inherit; color: var(--space, var(--accent)); background: none; border: none; padding: 0; cursor: pointer; text-decoration: underline; }
+.ge-inline { font: inherit; color: var(--accent); background: none; border: none; padding: 0; cursor: pointer; text-decoration: none; }
+.ge-inline:hover { text-decoration: underline; }
 .ge-note { font-size: 13px; line-height: 1.55; }
 /* Undo and Redo side by side, and the editor's keyboard shortcuts (owner, 2026-11-08). */
 .ge-undo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }

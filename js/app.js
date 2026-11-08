@@ -7976,16 +7976,17 @@ The book remembers the last lesson you opened, in this browser, and the contents
         document.body.classList.add("ge-dragging");
         rows.forEach(r => { if (r !== row) r.style.transition = "transform 150ms cubic-bezier(.2,.8,.2,1)"; });
       }
-      // Keep the row within the list, and move it with the pointer.
-      const lo = -from * step, hi = (rows.length - 1 - from) * step;
+      // Move the row with the pointer, letting it run half a row past either end of the list.
+      const lo = -(from + 0.5) * step, hi = (rows.length - 1 - from + 0.5) * step;
       const y = Math.max(lo, Math.min(hi, dy));
       row.style.transform = `translateY(${y}px)`;
       const c = centers[from] + y;
       to = from;
       rows.forEach((r, k) => {
         let shift = 0;
-        if (k > from && centers[k] < c) { shift = -step; to++; }
-        else if (k < from && centers[k] > c) { shift = step; to--; }
+        // A row gives way once the dragged row is halfway onto it.
+        if (k > from && c > centers[k] - step / 2) { shift = -step; to++; }
+        else if (k < from && c < centers[k] + step / 2) { shift = step; to--; }
         if (r !== row) r.style.transform = shift ? `translateY(${shift}px)` : "";
       });
     };
