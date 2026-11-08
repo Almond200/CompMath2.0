@@ -2,6 +2,7 @@
 
 **2026-11-08**
 
+- T3: the 2015 AMC 8 filed in the topic tree (25 problems; 3965 filed in all). Every answer re-checked by computation and against the key: brute force for #13, #22 and #24; exact arithmetic for the rest. No strategy or tag changes.
 - T3: the 2016 AMC 8 filed in the topic tree (25 problems; 3940 filed in all). Every answer re-checked by computation and against the key: brute force for #15, #20 (every $a,b,c$ below $100$) and #24 (all $120$ arrangements, only $12453$); exact arithmetic for the rest. One tag fix: #20 cited the GCD and LCM product formula, which its route never uses (it compares prime exponents: $b\mid3$, so $4\mid a$ and $5\mid c$); it now cites the Fundamental Theorem of Arithmetic.
 - T3: the 2017 AMC 8 filed in the topic tree (25 problems; 3915 filed in all). Every answer re-checked by computation and against the key: brute force for #19 (the factor $5$ counted in the full sum), #20 and #24 (every day of the year); exact arithmetic for the rest. No strategy or tag changes.
 - T3: the 2018 AMC 8 filed in the topic tree (25 problems; 3890 filed in all). Every answer re-checked by computation and against the key: brute force for #3 (the counting game played out), #21, #23 (all $56$ triangles) and #25; exact arithmetic for the rest. No strategy or tag changes.
