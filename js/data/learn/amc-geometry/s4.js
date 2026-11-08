@@ -341,7 +341,6 @@ Heron's formula follows by eliminating a signed altitude projection and factorin
   },
   challenge: {
     problems: [
-      "2019 AMC 12B, Problem 20",
       "2021 Fall AMC 12A, Problem 14",
       "2025 AMC 12B, Problem 21",
       "2018 AIME I, Problem 4",
