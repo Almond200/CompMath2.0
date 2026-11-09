@@ -2,7 +2,7 @@
 
 **Status (T3 complete, 2026-11-09):** **4,725/4,725 problems filed**, including all 650 AMC 8, 350 AJHSME and ten 2019 HMMT February Geometry problems. Introductory pruning leaves 486 nodes, 740 of 774 cards with homes and 34 general methods without. The full census reports 57 terminal leaves below five recognized distinct problems, including two unused leaves; this is a review list, not an instruction to erase coherent topics. P64–P68/TQ20 decisions remain in QUESTIONS.md. The app does not yet use filings (T4); the Settings experimental viewer is diagnostic. Historical test filings below remain historical.
 
-**Execution handoff (owner, 2026-11-09):** T3 is complete. The owner explicitly says to stop after validation and not continue textbooks. Do not start T4 or textbook revision without a new instruction. PLAN.md holds the checkpoint and ownership; candidate approvals and validation rules remain in force. A further long-tail review precedes T4.
+**Execution handoff (owner, 2026-11-09):** T3 is complete. The latest request resumes tree work with a larger structural synthesis: [TREE-REVIEW.md](TREE-REVIEW.md) records the chosen area regroupings, targeted semantic reviews and stable-id ancestry prerequisite. Its census helper is `tools/tree-structure-report.cjs`. The four trees below remain the current 486-node taxonomy; the proposed migrations have not been applied. T4 and textbooks remain paused. PLAN.md holds the checkpoint and ownership; candidate and validation rules remain in force.
 
 ## Why
 
