@@ -38,7 +38,7 @@ const groups = [
   ['Arithmetic and proportional reasoning', ['alg.word.compute', 'alg.word.ratio', 'alg.word.units.convert']],
   ['Rates, time and everyday quantities', ['alg.word.rates', 'alg.word.everyday', 'alg.word.units.calendar']],
   ['Data and averages', ['alg.word.stats']],
-  ['Choices, arrangements and distributions', ['cp.basic', 'cp.tech.stars', 'cp.tech.sym', 'cp.tech.bij', 'cp.struct.words', 'cp.struct.seat', 'cp.struct.part']],
+  ['Choices, arrangements and distributions', ['cp.basic', 'cp.tech.stars', 'cp.tech.sym', 'cp.tech.bij.double', 'cp.struct.words', 'cp.struct.seat', 'cp.struct.part']],
   ['Paths, graphs and boards', ['cp.graph.basic', 'cp.graph.tour', 'cp.struct.paths', 'cp.struct.tile', 'cp.struct.catalan']],
   ['Sets and coefficient counts', ['cp.binom', 'cp.tech.pie', 'cp.tech.gf']],
   ['Probability and expectation', ['cp.prob', 'cp.exp']],

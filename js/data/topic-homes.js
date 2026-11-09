@@ -677,7 +677,7 @@ window.MATH_TOPIC_HOMES = {
   "hensel-lifting": "nt.mod.crt.split",
   "lte": "nt.prime.val.lte",
   "gcd-substitution": "nt.div.gcd.euclid",
-  "choose-modulus": "nt.mod.basic.rule",
+  "choose-modulus": "nt.mod",
   "exponent-tracking": "nt.prime.val",
   "bounding-diophantine": "nt.dio.bound.size",
   "factor-pair-counting": "nt.divisor.count.pairs",

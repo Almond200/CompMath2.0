@@ -2,6 +2,8 @@
 
 **2026-11-09**
 
+- **Tree repair: counting/modular boundaries:** reviewed all 21 distinct cases, corrected eleven raw entries, retired the Bijections wrapper and modulus-exclusion leaf, retained a coherent incidence-total pool, and broadened the Choose a Modulus card home. Repaired the 1984 AIME #14 and 1995 AIME #10 proofs with independently checked residue/prime arguments; answers unchanged. Tree now has 472 nodes. Gates, answer-key checks and tree regressions passed; TREE-REPAIRS.md lists dispositions.
+
 - **Tree repair: polynomial kinds:** reviewed 28 distinct entries across root/equation and prescribed-value pools; changed 24 raw entries, merged five method/duplicate leaves and rehomed six cards. Intermediate root-solving tools no longer classify unrelated sequence, geometry, rational-function or divisibility problems. Corrected the convergence justification in 2002 AIME II #11 without changing its answer. Tree now has 474 nodes; coverage is unchanged. Gates, answer-key checks, tree regressions and fresh risk census passed. Details in TREE-REPAIRS.md.
 
 - **Tree repair: systems/functions:** read all 41 distinct problems in the affected sibling families; corrected 30 raw filings, removed one unused quadratic-formula card tag and rehomed six cards. Linear systems leave the nonlinear branch, the single rational equation leaves systems, and incidental box/identity/grouping labels are removed. Retired three technique leaves while preserving genuine symmetric/cyclic, recursive and Cauchy-type kinds: 479 nodes, all 4,725 problems filed, all 774 cards retained. TREE-REPAIRS.md records every change. Gates, answer-key and tree-audit/risk regressions passed; textbooks/T4 remain paused.

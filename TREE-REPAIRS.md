@@ -91,3 +91,27 @@ Every affected card survives:
 | `cardano-cubic` | `alg.poly.higher.cubic` | `alg.poly.higher` |
 | `palindromic-polynomials` | `alg.poly.higher.palin` | `alg.poly.higher` |
 | `subtract-and-factor` | `alg.poly.remainder.values` | `alg.poly.construct.interp` |
+
+## Incidence totals and modular exclusions
+
+Read the entire 18-distinct counting family and all three modulus-rule cases. Retired the misleading Bijections wrapper, promoting its stable child as Repeated counts and incidence totals. Keep classroom-seat, participation-time, cube-face/vertex, layer-colour and team/subset-incidence questions together; remove the secondary counting-method label from subsets, tournament scoring, extremal pairs and the grid puzzle. Elimination tournaments and restricted permutations move to existing kinds. Retired the modulus-exclusion method leaf; its three questions are about primes/composites, with Choose a Modulus homed broadly under modular arithmetic. Replaced the incorrect every-residue claim in 1984 AIME #14 and the overgeneralized zero-remainder step in 1995 AIME #10 with explicit coverage proofs. Exhaustive finite checks and the residue argument verify answers 38 and 215; the four-prime minimum remains 132. No source statement or answer changed.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1983 AIME, Problem 13 | `cp.basic.comb.subsets`, `cp.tech.bij.double` | `cp.basic.comb.subsets` |
+| 1984 AIME, Problem 14 | `nt.prime.basic.test`, `nt.mod.basic.rule` | `nt.prime.basic.test` (proof corrected) |
+| 1985 AIME, Problem 14 | `cp.graph.tour`, `cp.tech.bij.double` | `cp.graph.tour` |
+| 1995 AIME, Problem 10 | `nt.mod.basic.rule`, `nt.prime.basic.test` | `nt.prime.basic.test` (proof corrected) |
+| 2009 AIME II, Problem 12 | `cp.logic.pigeon.bounds`, `cp.tech.bij.double` | `cp.logic.pigeon.bounds` |
+| 2016 AIME I, Problem 12 | `nt.prime.basic.expr`, `nt.mod.basic.rule` | `nt.prime.basic.expr` |
+| 1999 AMC 8, Problem 11 | `cp.logic.puzzle.grid`, `cp.tech.bij.double` | `cp.logic.puzzle.grid` |
+| 2016 AMC 8, Problem 18 | `cp.tech.bij` | `cp.graph.tour` |
+| 2003 AMC 10B, Problem 15 | `cp.tech.bij` | `cp.graph.tour` |
+| 2012 AMC 10B, Problem 22 | `cp.tech.bij` | `cp.basic.perm.restrict` |
+| 2012 AMC 12B, Problem 18 | `cp.tech.bij` | `cp.basic.perm.restrict` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `choose-modulus` | `nt.mod.basic.rule` | `nt.mod` |
