@@ -168,6 +168,7 @@ def question_with_context(qs, c, y, n):
     contexts = {
         ("amc8", "2006"): (14, (15, 16), "The students in Mrs. Reed", "\n\nIf Bob and Chandra"),
         ("amc8", "2003"): (8, (9, 10), "Four friends, Art, Roger, Paul and Trisha", "\n\nWho gets the fewest"),
+        ("amc8", "2002"): (8, (9, 10), "Juan organizes the stamps", "\n\nHow many of his European stamps"),
     }
     context = contexts.get((c, y))
     if context and n in context[1]:
