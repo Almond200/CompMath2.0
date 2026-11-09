@@ -2,6 +2,8 @@
 
 **Status (checked 2026-11-08):** T1 and T2 are complete: 503 approved nodes, 742 of 774 cards with a home, and 32 general methods with no subject home. T3 has filed 4,090 of 4,725 problems: all 1,325 AMC 10, 1,325 AMC 12 and 1,065 AIME problems, plus the 375 AMC 8 problems from 2010 onward. The remaining 635 are the 625 AMC 8/AJHSME problems from 1985–2009 and ten 2019 HMMT Geometry problems. AMC 8 2009 is next. The app does not yet use these filings (T4); Settings → Experimental → Topic tree is the diagnostic viewer. TQ17–TQ19 are approved and applied; the next candidate is TQ20. PLAN.md owns the current work order, and QUESTIONS.md records decisions. The test filings below preserve the 2026-11-06 experiment; the problem entries' `tree` fields are the current filings.
 
+**Execution handoff (owner, 2026-11-09):** Codex is explicitly assigned to finish T3 before returning to textbook revision. Claude is idle during this scoped pass. Start with 2009 AMC 8 and complete the remaining 635 filings in the order and with the per-problem audit/checkpoint rules in PLAN.md. The Elo ratings are already complete; this remaining task is topic-tree filing plus strategy/card-tag/diagram review, not another difficulty-label pass. Existing candidate approvals and validation rules stay in force.
+
 ## Why
 
 Practice a topic currently offers every card name and every card keyword as a topic. The list is long and uneven: "Shoelace formula" sits beside "area", a keyword can match five unrelated cards, and a problem is reachable only through the cards it happens to cite (446 problems cited none when this was written; 449 do on 2026-11-07). The topic tree replaces that with one fixed classification of contest mathematics, written for problems rather than for cards:
