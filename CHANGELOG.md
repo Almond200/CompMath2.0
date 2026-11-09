@@ -2,6 +2,8 @@
 
 **2026-11-09**
 
+- **Tree repair: probability complete:** applied the remaining decisions and recorded dispositions for all 89 distinct fallback entries. Specific draws/dice/coins/processes and conditional probability now use existing destinations; meaningful arrangement/symmetry/tiling subjects are retained, and finite numerical/point samples stay general. Strengthened the 2011 AMC 12B #25 proof with a centered-residue bound, verified over all 50 odd moduli. No new probability node or answer change. Gates, answer keys and tree regressions passed.
+
 - **Tree repair: probability, first batch:** completed reading all 89 distinct fallback cases and applied the first group of existing-destination corrections. Sampling, dice, random walks and explicit independence replace generic labels where appropriate; genuine finite-space questions remain. Removed incidental technique topics, corrected the three-book-box wording in 2013 AIME I #6, and preserved answers/twins. Tree remains 473 nodes. Gates, answer keys, tree checks and independent probability enumerations passed.
 
 - **Tree repair: travel:** resolved TQ20 under the owner’s fix request; added Multi-stage journeys and stops for nine independent examples, with recognized twins aligned. Reviewed all 22 raw / 20 distinct motion-parent entries, moved two speed comparisons to the existing leaf and removed an incidental Vieta topic. TREE-REPAIRS.md explains each remaining parent case. Tree now has 473 nodes; all coverage is retained. Gates, answer-key and tree regressions passed.
