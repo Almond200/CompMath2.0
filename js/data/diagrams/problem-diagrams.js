@@ -5398,6 +5398,20 @@
       cap(430, 290, "The segment from 3 to 4i (gold, length 5) and the region R (blue): every point within 1 of it, as the dashed unit disc slides along the segment. R is a 5-by-2 rectangle with a half disc on each end." + MM(ok))
     ]);
   })();
+  // 1996 AJHSME #25: normalize R to 1 and illustrate a point r = R/3 from the center.
+  PROB["1996-ajhsme-25"] = (() => {
+    const O = [210, 135], R = 98, r = R / 3, P = add(O, [r, 0]), B = add(O, [R, 0]);
+    const ok = Math.abs(dist(O, P) - r) < 1e-9 && Math.abs(dist(P, B) - (R - r)) < 1e-9 && (R / 2) ** 2 / R ** 2 === 0.25;
+    return wrap(430, 280, [
+      circ(O, R, DIM, 2), circ(O, R / 2, ACC, 1.6, ACCS),
+      seg(O, P, GLD, 2), seg(P, B, DIM, 1.6), dot(O, DIM, 3), dot(P, GLD, 3), dot(B, DIM, 3),
+      txt(add(O, [-10, 16]), "O", DIM, 12), txt(add(P, [0, 16]), "P", GLD, 12), txt(add(B, [12, 4]), "B", DIM, 12),
+      txt(add(mid(O, P), [0, -8]), "r", GLD, 12), txt(add(mid(P, B), [0, -8]), "R − r", DIM, 12),
+      txt(add(O, [0, -R / 2 - 10]), "R/2", ACC, 12),
+      cap(430, 280, "B is the nearest point on the boundary to P. The blue disk contains the points closer to the center O than to the outer boundary." + MM(ok))
+    ]);
+  })();
+
   // 2001 AMC 8 #11: plot the given coordinates to show the two parallel vertical sides.
   PROB["2001-amc-8-11"] = (() => {
     const vertices = [[3, 2], [3, -2], [-3, -2], [-3, 0]], k = 32;
