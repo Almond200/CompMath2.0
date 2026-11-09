@@ -10,6 +10,7 @@ load("js/data/topic-tree.js"); load("js/data/topic-homes.js"); load("js/data/pro
 const year = (process.argv[2] || "").split(" ")[0];
 const sf = `js/data/problems/statements/${year}.js`;
 if (fs.existsSync(path.join(ROOT, sf))) load(sf);
+load("js/data/problems/mock-extras.js");
 const TREE = window.MATH_TOPIC_TREE || [], HOMES = window.MATH_TOPIC_HOMES || {};
 const NAME = {}; TREE.forEach(([id, n]) => NAME[id] = n);
 const ST = window.MATH_STATEMENTS || {};
@@ -17,7 +18,7 @@ const paper = process.argv[2], lo = +(process.argv[3] || 1), hi = +(process.argv
 const slug = ref => ref.replace(/, Problem /, " ").toLowerCase().replace(/ /g, "-");
 window.MATH_PROBLEM_DB.filter(p => p.ref.startsWith(paper + ", Problem ")).forEach(p => {
   const n = +p.ref.split("Problem ")[1]; if (n < lo || n > hi) return;
-  const e = ST[slug(p.ref)], st = e && (e.s || e);
+  const e = ST[slug(p.ref)], st = (e && (e.s || e)) || window.MATH_MOCK_EXTRAS?.[slug(p.ref)]?.statement;
   console.log(`\n=== ${p.ref}`);
   console.log("STATEMENT:", st ? st : "(none)");
   console.log("STRATEGY:", p.strategy);

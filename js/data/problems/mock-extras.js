@@ -2,6 +2,8 @@
 // Original paper: https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf
 // Answer values checked against the official solutions (no solution text imported):
 // https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/solutions.pdf
+// Problem 7 specifies the enclosing circle intended by the official solution;
+// tangency alone also permits other circles (see CHANGELOG.md).
 // HMMT material is separately attributed; the MAA statement license does not apply to these restatements.
 window.MATH_MOCK_EXTRAS = {
   '2019-hmmt-february-geometry-1': {
@@ -17,7 +19,7 @@ window.MATH_MOCK_EXTRAS = {
   '2019-hmmt-february-geometry-6': {
     statement:String.raw`Six unit disks have pairwise disjoint interiors, and their cyclic neighbors are tangent: $C_1$ touches $C_2$, through $C_6$ touching $C_1$. For each such configuration, take the radius of its smallest enclosing circle. If the least and greatest possible radii are $r$ and $R$, determine $R-r$.`, answers:['sqrt(3)-1'] },
   '2019-hmmt-february-geometry-7': {
-    statement:String.raw`Let $AB=13$, $BC=14$, $CA=15$ and let $H$ be the orthocenter of $ABC$. Find the nonzero radius of the circle tangent to the three circumcircles of $AHB$, $BHC$ and $CHA$.`, answers:['65/4'] },
+    statement:String.raw`Let $AB=13$, $BC=14$, $CA=15$ and let $H$ be the orthocenter of $ABC$. Find the radius of the circle that encloses the three circumcircles of $AHB$, $BHC$ and $CHA$ and is internally tangent to each.`, answers:['65/4'] },
   '2019-hmmt-february-geometry-8': {
     statement:String.raw`In triangle $ABC$, $AB\lt AC$, $BC=1$ and the perimeter is $6$. The midpoint of the segment joining the orthocenter $H$ to the circumcenter $O$ lies on $BC$. Find the triangle's area.`, answers:['6/7'] },
   '2019-hmmt-february-geometry-9': {

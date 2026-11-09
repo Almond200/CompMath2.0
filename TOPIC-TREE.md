@@ -1,8 +1,8 @@
 # Topic tree
 
-**Status (T3 checkpoint):** 486 nodes after introductory pruning; 740 of 774 cards with homes, 34 general methods without. **4,715/4,725 problems filed**, through **1985 AJHSME** in the newest-first AMC 8/AJHSME pass. **10 remain** (0 AMC 8/AJHSME and ten HMMT). Next: **2019 HMMT February Geometry**. All AMC 10/12 and AIME papers are already filed. PLAN.md owns work order; QUESTIONS.md owns candidate decisions. The app does not yet use filings (T4); the Settings experimental viewer is diagnostic. Historical test filings below remain historical.
+**Status (T3 complete, 2026-11-09):** **4,725/4,725 problems filed**, including all 650 AMC 8, 350 AJHSME and ten 2019 HMMT February Geometry problems. Introductory pruning leaves 486 nodes, 740 of 774 cards with homes and 34 general methods without. The full census reports 57 terminal leaves below five recognized distinct problems, including two unused leaves; this is a review list, not an instruction to erase coherent topics. P64–P68/TQ20 decisions remain in QUESTIONS.md. The app does not yet use filings (T4); the Settings experimental viewer is diagnostic. Historical test filings below remain historical.
 
-**Execution handoff (owner, 2026-11-09):** Codex is explicitly assigned to finish T3 before returning to textbook revision. Claude is idle during this scoped pass. Continue from the current checkpoint above and complete the remaining filings in the order and with the per-problem audit/checkpoint rules in PLAN.md. The Elo ratings are already complete; this remaining task is topic-tree filing plus strategy/card-tag/diagram review, not another difficulty-label pass. Existing candidate approvals and validation rules stay in force.
+**Execution handoff (owner, 2026-11-09):** T3 is complete. The owner explicitly says to stop after validation and not continue textbooks. Do not start T4 or textbook revision without a new instruction. PLAN.md holds the checkpoint and ownership; candidate approvals and validation rules remain in force. A further long-tail review precedes T4.
 
 ## Why
 
