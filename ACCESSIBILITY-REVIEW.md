@@ -56,3 +56,7 @@ The practice follow-up adds a visible Clear answer button with a disabled blank 
 The compact-focus follow-up uses focused borders/inset underlines for text entry, including the new-list popup; ordinary keyboard outlines now keep their two-pixel width with a one-pixel gap. Dense-row inward rings are retained. The owner approved the Practice answer input’s existing three-pixel-gap ring, which is preserved. Add-to-list + buttons are square at the existing regular/coarse target sizes. Popup Create reuses Cancel’s soft-button treatment. Focused field checks and the 36-scenario accessibility check passed; keyboard indicators remain visible.
 
 Updated owner preference after #308: the Practice answer input now also uses the compact single focused border, replacing the previously retained outer ring. A visible blue focus border remains; typing, validation and clearing are unchanged. Blank/whitespace list creation now produces a numbered default instead of leaving Create with no visible result.
+
+Answer-focus correction after #309: the compact answer field was incorrectly gray on focus because its base ID border outranked the generic focus rule. An explicit answer-focus rule restores the blue border with inset reinforcement and no oversized outer ring. The practice-action check now verifies the actual accent colour on both the border and inset highlight.
+
+The correction passed all four light/dark × 1280/375px practice-action runs and all repository gates.

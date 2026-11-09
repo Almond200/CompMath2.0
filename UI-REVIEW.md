@@ -94,3 +94,9 @@ Submitting the add-to-list popup with an empty or whitespace-only name now creat
 The owner subsequently requested the smaller highlight on the Practice answer input too, overriding the earlier preference to keep its outer ring. It now uses the same single blue focused border as other text-entry fields. Keyboard interaction and answer storage are unchanged.
 
 Validation passed in light/dark at 1280/375px for blank/whitespace creation, numbered-name collisions/gaps, explicit-name trimming, current-card membership, reload persistence, Learn’s shared numbering and compact answer focus. Extended popup/icon checks and all repository gates passed.
+
+## Answer focus colour correction (2026-11-09, after #309)
+
+The owner correctly reported that the answer highlight had disappeared. Its base ID-selector border declaration overrode the generic low-specificity compact focus colour, while the outer ring had been removed. The explicit `#practice-answer:focus` rule now supplies the actual blue border and a one-pixel inset reinforcement. This forms a compact two-pixel blue contour inside the existing field bounds, with no outer gap or size change. The browser check now verifies rendered blue border/shadow colours rather than only absence of an outline.
+
+The correction passed all four light/dark × 1280/375px practice-action runs and all repository gates.
