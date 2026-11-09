@@ -289,3 +289,52 @@ All 89 recognized distinct fallback entries were read. “Retain” includes gen
 | 2021 Spring AMC 12A, Problem 6 | Retain general finite model |
 | 2000 AMC 12, Problem 23 | Specific existing probability destination |
 | 2021 Fall AMC 10A, Problem 21 | Retain finite model; refine its subject |
+
+## Geometry: hidden-right-triangle boundary
+
+Read all 30 distinct entries in Right triangles hidden in figures. Retired that method-based leaf. Genuine right-triangle length questions move to the existing right-triangle-length pool; square/rectangle, chord, circular-region, current, perimeter and inscribed-shape problems move to their actual subjects. Pythagorean and other earned cards remain available across those subjects. Kept the two reworded 2005 AMC 10A/12A twins aligned manually. The Shared-leg Pythagoras pattern homes with right-triangle lengths. Also removed the incidental isosceles label from the 2001 AIME II #13 similar-triangle question already read in the companion review. No statement, strategy or answer changed.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1985 AIME, Problem 4 | `geo.poly.quad.rect`, `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 1994 AIME, Problem 2 | `geo.poly.quad.rect`, `geo.basic.pyth.hidden` | `geo.poly.quad.rect`, `geo.circ.tangent.mutual` |
+| 2001 AIME II, Problem 13 | `geo.basic.sim.similar`, `geo.basic.angle.isosceles` | `geo.basic.sim.similar` |
+| 2006 AIME I, Problem 1 | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+| 2011 AIME I, Problem 2 | `geo.poly.quad.rect`, `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 2011 AIME II, Problem 2 | `geo.poly.quad.rect`, `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 2022 AIME I, Problem 5 | `alg.word.rates.current`, `geo.basic.pyth.hidden` | `alg.word.rates.current` |
+| 2023 AMC 10A, Problem 11 | `geo.basic.pyth.hidden`, `alg.eq.identity.symmetric` | `geo.basic.pyth.triples` |
+| 2023 AMC 12A, Problem 9 | `geo.basic.pyth.hidden`, `alg.eq.identity.symmetric` | `geo.basic.pyth.triples` |
+| 2025 AMC 10A, Problem 15 | `geo.basic.sim.similar`, `geo.basic.pyth.hidden` | `geo.basic.sim.similar` |
+| 2010 AMC 8, Problem 19 | `geo.basic.pyth.hidden` | `geo.circ.power.chord`, `geo.poly.composite.arcs` |
+| 2012 AMC 8, Problem 25 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 2013 AMC 8, Problem 20 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect`, `geo.circ.power.chord` |
+| 2015 AMC 8, Problem 25 | `geo.basic.pyth.hidden` | `geo.comb.extreme.maxmin`, `geo.poly.quad.rect` |
+| 2020 AMC 8, Problem 18 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect`, `geo.circ.power.chord` |
+| 2024 AMC 8, Problem 6 | `geo.basic.pyth.hidden` | `geo.poly.general.perim` |
+| 2025 AMC 8, Problem 12 | `geo.basic.pyth.hidden` | `geo.comb.extreme.maxmin`, `geo.circ.tangent.inscribed` |
+| 2002 AMC 10B, Problem 22 | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+| 2002 AMC 12B, Problem 20 | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+| 2004 AMC 10B, Problem 8 | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+| 2004 AMC 12B, Problem 6 | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+| 2005 AMC 10A, Problem 8 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 2005 AMC 12A, Problem 7 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 2006 AMC 10B, Problem 8 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect`, `geo.circ.power.chord` |
+| 2008 AMC 10A, Problem 25 | `geo.poly.regular.hex`, `geo.basic.pyth.hidden` | `geo.poly.regular.hex`, `geo.circ.power.chord` |
+| 2008 AMC 12A, Problem 22 | `geo.poly.regular.hex`, `geo.basic.pyth.hidden` | `geo.poly.regular.hex`, `geo.circ.power.chord` |
+| 2008 AMC 10B, Problem 10 | `geo.basic.pyth.hidden` | `geo.circ.power.chord` |
+| 2008 AMC 12B, Problem 9 | `geo.basic.pyth.hidden` | `geo.circ.power.chord` |
+| 2009 AMC 10B, Problem 10 | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+| 2010 AMC 10B, Problem 19 | `geo.tri.special.equil`, `geo.basic.pyth.hidden` | `geo.tri.special.equil`, `geo.circ.power.chord` |
+| 2011 AMC 10A, Problem 11 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 2016 AMC 12B, Problem 13 | `geo.tri.special.right`, `geo.basic.pyth.hidden` | `geo.tri.special.right` |
+| 2018 AMC 12B, Problem 4 | `geo.basic.pyth.hidden` | `geo.circ.power.chord` |
+| 2019 AMC 10B, Problem 16 | `geo.basic.angle.isosceles`, `geo.basic.pyth.hidden` | `geo.basic.angle.isosceles`, `geo.basic.pyth.triples` |
+| 2019 AMC 12B, Problem 12 | `alg.trig.identity.sum`, `geo.basic.pyth.hidden` | `geo.tri.trig.other`, `geo.basic.pyth.triples` |
+| 2025 AMC 10B, Problem 7 | `geo.basic.pyth.hidden`, `alg.eq.radical.eq` | `geo.basic.pyth.triples` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `shared-leg-pythagoras` | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |

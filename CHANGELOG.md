@@ -2,6 +2,8 @@
 
 **2026-11-09**
 
+- **Tree repair: hidden right triangles:** read all 30 distinct entries; retired the technique leaf and refiled its cases by actual shape/problem kind. Right-triangle length questions remain together; boxes/squares, chords, circular regions, current and perimeter problems no longer acquire a triangle subject solely from using Pythagoras. Rehomed Shared-leg Pythagoras; preserved earned cards and reworded twins. Tree now has 472 nodes. Gates, answer keys and tree regressions passed; details in TREE-REPAIRS.md.
+
 - **Tree repair: probability complete:** applied the remaining decisions and recorded dispositions for all 89 distinct fallback entries. Specific draws/dice/coins/processes and conditional probability now use existing destinations; meaningful arrangement/symmetry/tiling subjects are retained, and finite numerical/point samples stay general. Strengthened the 2011 AMC 12B #25 proof with a centered-residue bound, verified over all 50 odd moduli. No new probability node or answer change. Gates, answer keys and tree regressions passed.
 
 - **Tree repair: probability, first batch:** completed reading all 89 distinct fallback cases and applied the first group of existing-destination corrections. Sampling, dice, random walks and explicit independence replace generic labels where appropriate; genuine finite-space questions remain. Removed incidental technique topics, corrected the three-book-box wording in 2013 AIME I #6, and preserved answers/twins. Tree remains 473 nodes. Gates, answer keys, tree checks and independent probability enumerations passed.

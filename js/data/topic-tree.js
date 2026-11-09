@@ -273,7 +273,6 @@ window.MATH_TOPIC_TREE = [
   ["geo.basic.pyth", "Pythagorean theorem and right triangles", "geo.basic"],
   ["geo.basic.pyth.triples", "Pythagorean theorem and triples", "geo.basic.pyth"],
   ["geo.basic.pyth.altitude", "Altitude to the hypotenuse", "geo.basic.pyth"],
-  ["geo.basic.pyth.hidden", "Right triangles hidden in figures", "geo.basic.pyth"],
   ["geo.basic.pyth.fold", "Folding and creases", "geo.basic.pyth"],
   ["geo.basic.sim", "Similarity and congruence", "geo.basic"],
   ["geo.basic.sim.congruent", "Congruence", "geo.basic.sim"],

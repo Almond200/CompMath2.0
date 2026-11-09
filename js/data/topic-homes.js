@@ -567,7 +567,7 @@ window.MATH_TOPIC_HOMES = {
   "box-tetrahedron": "geo.solid.round.pyramid",
   "scale-one-level": "geo.basic.sim.similar",
   "bisector-closer-region": "cp.prob.geom.region",
-  "shared-leg-pythagoras": "geo.basic.pyth.hidden",
+  "shared-leg-pythagoras": "geo.basic.pyth.triples",
   "triangle-of-centers": "geo.circ.tangent.mutual",
   "tangency-equation": "geo.coord.conic",
   "unfold-the-surface": "geo.comb.extreme.path",
