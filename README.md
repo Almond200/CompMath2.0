@@ -275,6 +275,7 @@ Start with `CLAUDE.md` and `PLAN.md` (`LEARN-OUTLINE.md` holds the current Learn
 index.html                     page shell and script order
 css/styles.css                 theme, layout, card and diagram styling
 js/app.js                      routing, rendering, and the search engine
+js/accessibility.js            shared radio/tab keyboard behavior, skip navigation and motion helpers
 js/data/geometry.js            formula cards, one file per subject
 js/data/algebra.js
 js/data/number-theory.js
@@ -308,6 +309,7 @@ tools/validate-problem-db.js   checks every problem's card and topic ids resolve
 tools/scan-conventions.py      the census behind CONVENTIONS.md; fails on a broken rule
 tools/check-diagrams.py        every figure fits its canvas and no two labels collide
 tools/check-labels.py          as rendered in Chrome: no label sits on a dot, a line or another label
+tools/check-accessibility.cjs  browser checks for keyboard access, contrast, motion and target sizes
 tools/label-audit.html         the page check-labels drives; #show draws every offending figure
 tools/check-lists.py           list ids resolve, every route is complete, Connected formulas resolve
 tools/check-topics.py          every card carries a topic chip, and no subsection title awards a wrong one
