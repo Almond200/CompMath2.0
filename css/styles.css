@@ -3251,6 +3251,8 @@ a.card-result { color: var(--text); text-decoration: none; }
   .ct-papers button[aria-selected="true"] { background: var(--bg-card); color: var(--space); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); }
   .ct-papers ~ .db-group:not(.is-shown) { display: none; }
 }
+/* Centre the drawn chevron itself, independent of the font's baseline and side bearings. */
+.step-chevron { display: block; flex: none; }
 .ct-years a[aria-current="page"] { background: var(--space); color: #fff; }
 .pl-new { display: flex; gap: 8px; margin-top: 10px; }
 .pl-new input { flex: 1; min-width: 0; font: inherit; font-size: 13.5px; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-panel); color: var(--text); }
@@ -3292,7 +3294,7 @@ html[data-cols="spacious"] .content .cards.search-results { grid-template-column
 .rand-diff { display: flex; align-items: center; gap: 12px; margin-top: 14px; font-size: 13px; font-weight: 650; color: var(--text-dim); }
 .rand-picker .rand-go, #topic-practice-form .hp-btn { white-space: nowrap; }
 .rand-picker .rand-btns { margin-top: 10px; }
-.rand-picker > h3 + p, #pr-topic > h3 + p, #past-practice-sets > h3 + p { margin: 6px 0 10px; }
+#past-practice-sets > h3 + p { margin: 6px 0 10px; }
 #topic-practice-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 #topic-practice-form label { font-size: 13px; font-weight: 650; }
 #topic-name { display: block; max-width: 320px; margin-top: 4px; }
@@ -4285,7 +4287,8 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 
 /* Match Practice typography to the reference panels and Settings search. */
 body[data-space="practice"] .sh-section > h3 { font-family: inherit; font-size: calc(16px * var(--tx)); font-weight: 700; }
-.rand-picker > h3 + p, #pr-topic > h3 + p, #past-practice-sets > h3 + p { font-size: 14px; color: var(--text-dim); }
+body[data-space="practice"] .practice-panel-intro { margin: 6px 0 12px; font-size: 14px; color: var(--text-dim); }
+#past-practice-sets > h3 + p { font-size: 14px; color: var(--text-dim); }
 
 .practice-session > .back-link { margin-bottom: 4px; }
 .practice-session > .practice-back-results { display: block; width: fit-content; }
@@ -4587,7 +4590,6 @@ body dialog.app-confirm button.hp-btn.app-confirm-danger:hover { filter: brightn
 .modal-overlay { padding-bottom: calc(16px + 12vh); }
 dialog.app-confirm { inset-block: 0 12vh; }
 /* Contest mocks share the Practice panels and controls; only mocks have a countdown. */
-#pr-mock > h3 + p { margin: 6px 0 12px; color: var(--text-dim); font-size: 14px; }
 #mock-contest-form fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .mock-modes { margin-bottom: 16px; }
 .mock-field-label, .mock-paper-field > label { display: block; font-size: 13px; font-weight: 650; margin: 12px 0 5px; }

@@ -28,3 +28,15 @@ Eighty-eight targeted Chromium checks passed at 1280/375 pixels in light/dark: v
 ## Handoff
 
 All four findings are addressed after the owner explicitly authorized the fixes. CSS and the small completed-review navigation addition are the only UI source edits in this batch. The final verification results are recorded with the batch in CHANGELOG.md and its pull request. The textbook revision resumes at S7 after the review. `TEXTBOOK-REVISION.md` records completed content batches and their validation, and `CONVENTIONS.md` records the button-colour rule implemented in PR #296.
+
+## Practice formatting follow-up (2026-11-08)
+
+Results overview retains its existing blue highlight in completed topic/mock review, following the owner's final preference. The secondary-button convention remains unchanged.
+
+A computed-style comparison against main through PR #300 found that all four entry panels already used identical heading typography (16px at Normal text size, weight 700) and padding. Subtitle bottom margins differed (10px on random/topic, 12px on mocks), and Contests had no subtitle. All four now use `.practice-panel-intro` with matching typography, colour and 6px/12px margins; Contests gains “Browse past papers by contest and year.” No heading size was increased or reduced.
+
+Learn → Lists also gains the requested subtitle, “Browse study lists by level and topic, or make your own collection of cards,” using the same `learn-note` class as Textbooks.
+
+The contest-year buttons already shared the year field's height and vertical alignment. Their font chevrons could appear off-center because of the glyph baseline and side bearings. Contest-year and matching mobile textbook previous/next controls now use symmetric SVG chevrons whose drawn bounds sit at the center of each button. Links, accessible labels and inactive endpoints are preserved; the select's existing down-chevron is already centered in its image.
+
+All repository gates, five regression suites, generated-notes/shelf, lab-version and diff checks passed. Browser checks covered 12 four-panel formatting comparisons, 12 Learn subtitle comparisons and eight review-button blue-hover/focus/navigation scenarios across light/dark, desktop/mobile and three text sizes, plus 72 geometric chevron-centering checks with active/disabled endpoints and working year/book navigation. Screenshots inspected; no page errors, KaTeX errors or horizontal overflow observed.
