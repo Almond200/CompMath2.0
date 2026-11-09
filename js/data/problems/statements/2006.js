@@ -425,10 +425,14 @@ The students in Mrs. Reed’s English class are reading the same $760$-page nove
 If Bob and Chandra both read the whole book, Bob will spend how many more seconds reading than Chandra?
 
 (A) $7{,}600$  (B) $11{,}400$  (C) $12{,}500$  (D) $15{,}200$  (E) $22{,}800$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
-"2006-amc-8-15": { s: String.raw`Chandra and Bob, who each have a copy of the book, decide that they can save time by “team reading” the novel. In this scheme, Chandra will read from page $1$ to a certain page and Bob will read from the next page through page $760,$ finishing the book. When they are through they will tell each other about the part they read. What is the last page that Chandra should read so that she and Bob spend the same amount of time reading the novel?
+"2006-amc-8-15": { s: String.raw`The students in Mrs. Reed’s English class are reading the same $760$-page novel. Three friends, Alice, Bob and Chandra, are in the class. Alice reads a page in $20$ seconds, Bob reads a page in $45$ seconds and Chandra reads a page in $30$ seconds.
+
+Chandra and Bob, who each have a copy of the book, decide that they can save time by “team reading” the novel. In this scheme, Chandra will read from page $1$ to a certain page and Bob will read from the next page through page $760,$ finishing the book. When they are through they will tell each other about the part they read. What is the last page that Chandra should read so that she and Bob spend the same amount of time reading the novel?
 
 (A) $425$  (B) $444$  (C) $456$  (D) $484$  (E) $506$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
-"2006-amc-8-16": { s: String.raw`Before Chandra and Bob start reading, Alice says she would like to team read with them. If they divide the book into three sections so that each reads for the same length of time, how many seconds will each have to read?
+"2006-amc-8-16": { s: String.raw`The students in Mrs. Reed’s English class are reading the same $760$-page novel. Three friends, Alice, Bob and Chandra, are in the class. Alice reads a page in $20$ seconds, Bob reads a page in $45$ seconds and Chandra reads a page in $30$ seconds.
+
+Before Chandra and Bob start reading, Alice says she would like to team read with them. If they divide the book into three sections so that each reads for the same length of time, how many seconds will each have to read?
 
 (A) $6400$  (B) $6600$  (C) $6800$  (D) $7000$  (E) $7200$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
 "2006-amc-8-17": { s: String.raw`Jeff rotates spinners $P,$ $Q$ and $R$ and adds the resulting numbers. What is the probability that his sum is an odd number?

@@ -158,6 +158,22 @@ MANUAL_STATEMENTS.update({k: {"s": v[1], "u": v[0]} for k, v in FALL_2021_PDF.it
 # A figure Stanley replaced by hand: the statement points at the file kept in figures/ instead of LIVE's.
 FIGURE_FILE_OVERRIDE = {"amc10/2024B/25.svg": "amc10/2024B/25.png"}
 
+def question_with_context(qs, c, y, n):
+    """Carry a paper's shared premise onto independently displayed follow-up questions.
+
+    Copy the premise from the source question, never from solution text. Explicit
+    boundaries fail closed if LIVE changes the source instead of guessing a prefix.
+    """
+    q = qs[n - 1]
+    if (c, y) == ("amc8", "2006") and n in (15, 16):
+        source = qs[13]["question"]
+        start = source.index("The students in Mrs. Reed")
+        end = source.index("\n\nIf Bob and Chandra", start)
+        premise = source[start:end].strip()
+        if not q["question"].startswith(premise):
+            q = dict(q, question=premise + "\n\n" + q["question"])
+    return q
+
 def statement(q, c, y, n, figs):
     t = q["question"] or ""
     def img(m):
@@ -260,7 +276,7 @@ def main():
         for n, slug, ref in todo[(c, y)]:
             if n > len(qs): missing.append(ref); continue
             figs = []
-            s = statement(qs[n - 1], c, y, n, figs)
+            s = statement(question_with_context(qs, c, y, n), c, y, n, figs)
             if not s or "`" in s or "${" in s: bad.append(ref); continue
             for src in figs:
                 rel = re.sub(r"^/(?:images/past-contests/)?", "", src)
