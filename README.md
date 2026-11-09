@@ -1,9 +1,10 @@
 # Competition Math Reference
 
-A searchable reference for AMC 10/12, AIME and olympiad training. 771 cards
-covering formulas, methods, and patterns (552 formulas, 170 methods, 49 patterns), plus a database
+A searchable reference for AMC 10/12, AIME and olympiad training. 774 cards
+covering formulas, methods, and patterns (553 formulas, 172 methods, 49 patterns), plus a database
 of 4,725 past contest problems (4,715 with their full statements), every one with a written
-strategy and 4,276 cross-linked to the cards their solutions run through (counts checked 2026-11-07).
+strategy and 4,276 cross-linked to the cards their solutions run through (counts checked 2026-11-08).
+Mock contests also have ten separately attributed author-restated HMMT prompts and verified answer values.
 
 Static, with no application backend or required build step. KaTeX 0.16.11 and its fonts are
 vendored under `vendor/katex/`; statement scripts and semantic vectors load on demand from
@@ -98,8 +99,11 @@ CONVENTIONS §0 has the full model.
   The shelf comes from `js/data/learn/shelf.js`, generated from `LEARN-OUTLINE.md`. Below it,
   Lists holds your own lists and the built-in study lists. Use the green + to create a list.
   On its page (`#/list/<id>`), you can add a description under the title and search for cards.
-  With eight or more cards, choose **Group** to organize the list. Later additions appear under
-  **New cards** until you choose **Regroup**. A list with named sections has an **On this list**
+  With eight or more cards, **Auto group** organizes the list automatically; later additions wait under
+  **New cards** until **Regroup**. **Custom group** opens the section editor, with drag/move, search,
+  selection and Undo/Redo. **Edit groups** reopens it; **Ungroup** sets its sections aside for reuse.
+  **Export** saves a list, including its sections; the green + also imports exported lists.
+  A list with named sections has an **On this list**
   sidebar. Its page tools follow the same setting as card pages. A book's contents (`#/learn/<book>`) open with Contents and
   Introduction and How to Use This Book (`.../how-to-use`), where the Core, Core II and Extension
   tags are explained with visible badges. **Search this book...**, below the book subtitle and
@@ -116,8 +120,7 @@ CONVENTIONS §0 has the full model.
   Overview, an Index whose entries link to lessons, a Glossary, and References and Credits. They
   are 13 reference chapters with 52 sections, not counted with the teaching pages (the shelf gate's
   116 chapters and 645 lesson records include them), and they carry no difficulty tags.
-- **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, untimed topic sets with a reader-selected question count, and every
-  year of every contest. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
+- **Practice** (`#/practice`): four matching panels for a random problem, untimed topic sets, timed past-paper/generated mocks, and browsing contest years, followed by Resume a set and Completed sets. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
   back; on a phone its years are a menu between arrows, with a toggle between the year's papers.
 - **Search** results are one list in order of relevance (formulas, methods, patterns, problems
   and study lists, each labelled), shown full width with no space highlighted. So are tag pages
@@ -171,10 +174,9 @@ Press `/` to focus the box, `Esc` to clear. A query that starts with `Special:` 
 instead of a search (see Special pages below).
 
 `tools/search-eval.html` runs 187 labelled queries against the live app and diffs every one
-against `tools/eval-baseline.json`. Last run (2026-10-30, fifteenth chat, after a full index rebuild for 765 cards): 157/187 top-1,
-MRR 0.906 (the rebuild for 759 cards earlier that day gave 160/187, 0.910). The index is now rebuilt in the cloud as well as on the Mac (CONVENTIONS §13 has the
-commands); the best recorded warm run, on the Mac with an older query set, gave 170/185, MRR
-0.950, with the two probe sets at 64/78 and 48/77.
+against `tools/eval-baseline.json`. Latest warm run (2026-11-08, full 774-card rebuild): **160/187 top-1, 181/187 top-3, MRR 0.910**. The preceding stale 765-card index also scored 160/187 against the current app; rebuilding restores coverage of nine newer cards while preserving that top-1 result. The baseline records the refreshed index. `tests/book-search.cjs` now checks exact corpus coverage and agreement between the JSON, binary and script fallback.
+
+The index can be rebuilt in the cloud or on the Mac (CONVENTIONS §13). Historical runs used different app/corpus snapshots: 157/187, MRR 0.906 for 765 cards on 2026-10-30, and a best recorded Mac run of 170/185, MRR 0.950 on an older query set. Those are historical comparisons, not the latest result.
 **Wait for the semantic vectors to load before reading results**, or the run under-reports
 by a point or two; compare warm runs to warm runs.
 
@@ -191,12 +193,13 @@ by a point or two; compare warm runs to warm runs.
   routes (AMC, AIME and Olympiad, each by subject) are *complete by construction*: every card
   of that tier and subject is in its route, which `tools/check-lists.py` enforces; the other 25
   are study lists on one theme (the four By Contest lists were removed on 2026-10-31). A list
-  you build yourself can be grouped once it has eight cards by choosing **Group**; matching
-  uses the hand-written sections in built-in lists. Later additions wait for **Regroup**.
+  you build yourself offers **Auto group** at eight cards and **Custom group** for your own named sections.
+  Automatic matching uses the hand-written sections in built-in lists; later additions wait for **Regroup**.
+  The custom editor supports descriptions, drag/move, add/remove, Undo/Redo and list import/export.
 - **Diagrams** are computed from exact geometry rather than sketched, so every point is a
   true intersection, foot or tangency. Settings can show figures on the card faces too (off or on), and long write-ups place further figures inside the text, next to the
   paragraph each one illustrates (210 on 182 cards). Problems printed without a figure get one
-  drawn for the app (340 so far), shown only inside How this problem works, since a contestant
+  drawn for the app (350 so far), shown only inside How this problem works, since a contestant
   would not have it.
 - **Connected formulas.** A few broad cards (auxiliary lines, p-adic valuation, the mean chain,
   modular basics and fourteen more; 18 hubs, 96 links) end with a hand-picked row of the cards that are part of the
@@ -281,6 +284,11 @@ js/data/details/*.js           long write-ups, keyed by card id
 js/data/examples-supplement.js worked examples, keyed by card id
 js/data/diagrams/*.js          computed SVG figures, keyed by card id
 js/data/problems/problem-db.js contest problem database: tags, strategies and topic-tree nodes
+js/data/problems/difficulty-ratings.js  all 4,725 Elo values, with LIVE/manual provenance
+js/problem-difficulty.js       contextual rank quintiles and uniform random selection
+js/mock-contests.js            full-paper catalog, recent Elo curves, generation and scoring
+js/practice-sessions.js        saved topic/mock sets, answer grading and active-time clocks
+js/data/problems/mock-extras.js  ten separately attributed HMMT prompts/answer values
 js/data/topic-tree.js          the topic tree, generated from TOPIC-TREE.md by tools/build-topic-tree.py
 js/data/topic-homes.js         every card's home node in the topic tree (hand-written)
 js/data/problems/*-problems.js per-card practice questions and contest references

@@ -1,8 +1,8 @@
 # LIVE import coverage and historical gaps
 
-## Current repository coverage (checked 2026-11-06)
+## Current repository coverage (checked 2026-11-08)
 
-The app has 4,665 imported statements and matching answer keys. The 2021 Fall AMC 10A, 10B, 12A and 12B statements are present. The statement importer maps AMC 12 C/D sittings to Fall A/B and retains manual Fall AMC 10 statements. The answer-key importer also maps AMC 10 C/D to Fall A/B; the earlier claim that these sittings are unavailable is obsolete. Manual PDF/AoPS provenance is retained where applicable in `tools/manual_statements.py`. The answer-key import compares source and local statements before accepting a key.
+The app has 4,715 MAA statements and matching answer keys: the original 4,665 plus fifty 2026 AMC 10A/12A statements from the credited Random Math copies, with keys independently checked. Ten separately attributed author-restated HMMT Geometry prompts/answer values support mixed-source mocks (`MOCK-CONTESTS.md`); they are outside the MAA statement import. Elo ratings cover all 4,725 problems: 4,665 LIVE values and 60 manual estimates (`DIFFICULTY-RATINGS.md`). The 2021 Fall AMC 10A, 10B, 12A and 12B statements are present. The statement importer maps AMC 12 C/D sittings to Fall A/B and retains manual Fall AMC 10 statements. The answer-key importer also maps AMC 10 C/D to Fall A/B; the earlier claim that these sittings are unavailable is obsolete. Manual PDF/AoPS provenance is retained where applicable in `tools/manual_statements.py`. The answer-key import compares source and local statements before accepting a key.
 
 The local corpus has no 2021 AMC 8 entry. This is a repository observation, not a current availability survey of the external site. The 2000 and 2001 AMC 10/12 single-sitting mapping is handled by the importer. See the source scripts and stored provenance for exact coverage rather than treating the old gap list as current.
 

@@ -1,11 +1,11 @@
 # Authoring conventions
 
-> **Audit scope (2026-11-06).** The dated passes and gap register below are historical evidence, not a current backlog or current corpus census. Current status and pending decisions are in PLAN.md and QUESTIONS.md; current authoring rules are in CONVENTIONS.md. The source currently has 765 cards, 37 built-in lists and 13 written books. Book-scoped chapter search is an approved exception to the earlier no-find preference. Historical benchmarks and local machine paths are not guarantees for another environment.
+> **Audit scope (current census checked 2026-11-08).** The dated passes and gap register below are historical evidence, not a current backlog or current corpus census. Current status and pending decisions are in PLAN.md and QUESTIONS.md; current authoring rules are in CONVENTIONS.md. The source currently has 774 cards, 37 built-in lists and 13 written books. Book-scoped chapter search is an approved exception to the earlier no-find preference. Historical benchmarks and local machine paths are not guarantees for another environment.
 
 > **Adding a card? Read [CONVENTIONS.md](CONVENTIONS.md) instead.** It is the short checklist:
 > the two legal field orders, the write-up headings for each kind, the mandatory example, the
 > diagram rule for geometry, and the duplicate check — each with the measurement that proves it
-> (first taken across 557 cards; 771 now, 2026-11-07), regenerable with `python3 tools/scan-conventions.py`. This file holds the
+> (first taken across 557 cards; 774 now, 2026-11-08), regenerable with `python3 tools/scan-conventions.py`. This file holds the
 > reasoning, the coverage-gap register and the per-year retag notes, which is why it is long.
 
 

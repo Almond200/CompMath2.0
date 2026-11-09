@@ -1,22 +1,12 @@
 {
- "when": "2026-09-06",
- "mode": "hybrid: BM25F + phrase/bigram (incl. spoken-LaTeX) + spelling correction + 121-term glossary (lexical + semantic) + embeddings via confidence-gated RRF",
- "history": {
-  "legacy(n=148)": 129,
-  "bm25f(n=148)": 134,
-  "hybrid pre-glossary(n=168)": 139,
-  "+lexical glossary(n=171)": 144,
-  "+phrase matching(n=171)": 152,
-  "+name coverage & spoken latex(n=171)": 153
- },
- "companion_sets": {
-  "tools/probe-queries.json": "53/78",
-  "tools/probe2-queries.json": "44/77"
- },
- "n": 171,
- "top1": 153,
- "top3": 166,
- "mrr": 0.9318,
+ "when": "2026-11-09T02:05:07.671Z",
+ "top1": 160,
+ "top3": 181,
+ "n": 187,
+ "mrr": 0.91,
+ "cards": 774,
+ "backend": "model2vec",
+ "vectorsPerCard": 4,
  "rows": [
   {
    "q": "law of cosines",
@@ -126,7 +116,7 @@
   {
    "q": "expected value",
    "want": "expected-value",
-   "rank": 1
+   "rank": 2
   },
   {
    "q": "euler's totient function",
@@ -146,7 +136,7 @@
   {
    "q": "lucas theorem",
    "want": "lucas-theorem",
-   "rank": 1
+   "rank": 2
   },
   {
    "q": "chinese remainder theorem",
@@ -200,7 +190,7 @@
   },
   {
    "q": "fermat's two square theorem",
-   "want": "fermat-two-squares",
+   "want": "sum-of-two-squares",
    "rank": 1
   },
   {
@@ -216,7 +206,7 @@
   {
    "q": "periodicity in recursive sequences",
    "want": "periodic-sequences",
-   "rank": 1
+   "rank": 3
   },
   {
    "q": "sfft",
@@ -245,12 +235,12 @@
   },
   {
    "q": "pie",
-   "want": "pie",
+   "want": "pie | inclusion-exclusion",
    "rank": 1
   },
   {
    "q": "inclusion exclusion",
-   "want": "pie",
+   "want": "pie | inclusion-exclusion",
    "rank": 1
   },
   {
@@ -301,7 +291,7 @@
   {
    "q": "gambler's ruin",
    "want": "states-recursion-prob",
-   "rank": 1
+   "rank": 2
   },
   {
    "q": "coupon collector",
@@ -321,7 +311,7 @@
   {
    "q": "area of a triangle using sine",
    "want": "trig-area",
-   "rank": 3
+   "rank": 1
   },
   {
    "q": "area of triangle formed by connecting midpoints of the sides",
@@ -336,7 +326,7 @@
   {
    "q": "triangle whose vertices are the midpoints of another triangle",
    "want": "medial-triangle",
-   "rank": 6
+   "rank": 5
   },
   {
    "q": "circle through the midpoints and feet of altitudes",
@@ -346,7 +336,7 @@
   {
    "q": "ratio between circumradius and inradius",
    "want": "euler-distance-theorem | center-distance-formulas",
-   "rank": 9
+   "rank": 1
   },
   {
    "q": "how many ways to split n identical objects into groups",
@@ -361,7 +351,7 @@
   {
    "q": "most edges without a triangle",
    "want": "turans-theorem",
-   "rank": 2
+   "rank": 3
   },
   {
    "q": "draw without lifting your pencil",
@@ -381,7 +371,7 @@
   {
    "q": "prove no integer solutions exist",
    "want": "choose-modulus",
-   "rank": 1
+   "rank": 7
   },
   {
    "q": "trap a number between consecutive squares",
@@ -430,12 +420,12 @@
   },
   {
    "q": "exponent of a prime in a factorial",
-   "want": "legendres-formula | vp-factorial",
+   "want": "legendres-formula",
    "rank": 1
   },
   {
    "q": "find the last digits of a huge power",
-   "want": "periodic-sequences",
+   "want": "periodic-sequences | eulers-theorem",
    "rank": 1
   },
   {
@@ -465,7 +455,7 @@
   },
   {
    "q": "right triangle with a prime hypotenuse",
-   "want": "fermat-two-squares",
+   "want": "sum-of-two-squares",
    "rank": 1
   },
   {
@@ -475,7 +465,7 @@
   },
   {
    "q": "turn a product over the roots into one evaluation",
-   "want": "symmetric-polynomial-strategies",
+   "want": "products-over-roots",
    "rank": 1
   },
   {
@@ -541,7 +531,7 @@
   {
    "q": "how many divisors does a number have",
    "want": "number-of-divisors",
-   "rank": 7
+   "rank": 3
   },
   {
    "q": "sum of all divisors of n",
@@ -550,8 +540,8 @@
   },
   {
    "q": "last two digits of a power",
-   "want": "periodic-sequences | last-digit-patterns",
-   "rank": 1
+   "want": "periodic-sequences | last-digit-patterns | eulers-theorem",
+   "rank": 2
   },
   {
    "q": "when is a number a sum of two squares",
@@ -561,7 +551,7 @@
   {
    "q": "factor x^4 + 4",
    "want": "forced-difference-of-squares | useful-factorizations",
-   "rank": 1
+   "rank": 3
   },
   {
    "q": "equation with the same value at two points",
@@ -571,7 +561,7 @@
   {
    "q": "remainder when a polynomial is divided by x minus a",
    "want": "factor-remainder-theorem",
-   "rank": 1
+   "rank": 2
   },
   {
    "q": "counting lattice paths on a grid",
@@ -586,7 +576,7 @@
   {
    "q": "regions formed by chords of a circle",
    "want": "moser-circle",
-   "rank": 1
+   "rank": 2
   },
   {
    "q": "maximum regions from n lines",
@@ -606,7 +596,7 @@
   {
    "q": "two points chosen at random on a segment",
    "want": "geometric-probability | order-statistics",
-   "rank": 3
+   "rank": 2
   },
   {
    "q": "circumradius formula",
@@ -636,7 +626,7 @@
   {
    "q": "complex numbers on the unit circle",
    "want": "eulers-formula | roots-of-unity",
-   "rank": 1
+   "rank": 6
   },
   {
    "q": "roots of unity",
@@ -691,7 +681,7 @@
   {
    "q": "order of an element mod n",
    "want": "multiplicative-order | primitive-roots",
-   "rank": 2
+   "rank": 1
   },
   {
    "q": "quadratic residue",
@@ -701,7 +691,7 @@
   {
    "q": "variance of a random variable",
    "want": "variance-independence",
-   "rank": 2
+   "rank": 3
   },
   {
    "q": "conditional probability",
@@ -721,7 +711,7 @@
   {
    "q": "recurrance relation",
    "want": "linear-recurrence",
-   "rank": 1
+   "rank": 3
   },
   {
    "q": "pythagorean theorm",
@@ -731,7 +721,7 @@
   {
    "q": "how do i find the area of a triangle if i know all three sides",
    "want": "herons-formula",
-   "rank": 1
+   "rank": 2
   },
   {
    "q": "what is the fastest way to count arrangements with repeated letters",
@@ -761,7 +751,7 @@
   {
    "q": "length of segment in triangle from one vertex to opposite side",
    "want": "stewarts-theorem",
-   "rank": 1
+   "rank": 2
   },
   {
    "q": "cevian length",
@@ -771,12 +761,12 @@
   {
    "q": "segment from a vertex to the midpoint of the opposite side",
    "want": "apollonius-theorem | stewarts-theorem",
-   "rank": 4
+   "rank": 5
   },
   {
    "q": "perpendicular from a vertex to the opposite side",
    "want": "orthocenter-properties | altitude-bisector-angle",
-   "rank": 2
+   "rank": 8
   },
   {
    "q": "radius of the circle passing through all three vertices",
@@ -786,7 +776,7 @@
   {
    "q": "radius of the circle touching all three sides",
    "want": "inradius-area",
-   "rank": 3
+   "rank": 2
   },
   {
    "q": "permutation where nothing stays in its original place",
@@ -796,7 +786,7 @@
   {
    "q": "quadrilateral whose vertices lie on a circle",
    "want": "cyclic-opposite-angles | ptolemys-theorem",
-   "rank": 0
+   "rank": 1
   },
   {
    "q": "area of triangle made from bases of altitudes connected",
@@ -811,7 +801,7 @@
   {
    "q": "triangle made by where the incircle touches the sides",
    "want": "contact-triangle",
-   "rank": 1
+   "rank": 2
   },
   {
    "q": "circle through the midpoints of the sides and the feet of the altitudes",
@@ -846,7 +836,7 @@
   {
    "q": "set of edges with no shared endpoints",
    "want": "halls-marriage | konigs-theorem",
-   "rank": 3
+   "rank": 1
   },
   {
    "q": "route that uses every edge exactly once",
@@ -856,7 +846,7 @@
   {
    "q": "writing a number as a sum where the order does not matter",
    "want": "partitions",
-   "rank": 2
+   "rank": 1
   },
   {
    "q": "radius of circle tangent to the three sides of a triangle",
@@ -871,6 +861,86 @@
   {
    "q": "circle tangent to one side and the extensions of the other two",
    "want": "exradii",
+   "rank": 1
+  },
+  {
+   "q": "eccentricity",
+   "want": "eccentricity",
+   "rank": 1
+  },
+  {
+   "q": "determinant of a 2x2 matrix",
+   "want": "determinant-basics",
+   "rank": 1
+  },
+  {
+   "q": "cramer's rule",
+   "want": "cramers-rule",
+   "rank": 1
+  },
+  {
+   "q": "matrix multiplication",
+   "want": "matrix-multiplication",
+   "rank": 1
+  },
+  {
+   "q": "asymptotes of a hyperbola",
+   "want": "hyperbola-properties",
+   "rank": 1
+  },
+  {
+   "q": "focus and directrix of a parabola",
+   "want": "parabola-focus-directrix",
+   "rank": 1
+  },
+  {
+   "q": "sum of distances to two foci is constant",
+   "want": "ellipse-properties",
+   "rank": 1
+  },
+  {
+   "q": "add all the equations together",
+   "want": "add-all-equations",
+   "rank": 1
+  },
+  {
+   "q": "area of a slanted cross section from its shadow",
+   "want": "projected-area-cosine",
+   "rank": 1
+  },
+  {
+   "q": "project one vector onto another",
+   "want": "vector-projection",
+   "rank": 1
+  },
+  {
+   "q": "is this equation an ellipse or a hyperbola",
+   "want": "conic-classification",
+   "rank": 0
+  },
+  {
+   "q": "ray from one focus bounces to the other",
+   "want": "conic-reflective-property",
+   "rank": 1
+  },
+  {
+   "q": "pick",
+   "want": "picks-theorem",
+   "rank": 1
+  },
+  {
+   "q": "how many ways to pick 3 people from 10",
+   "want": "permutations-combinations | committee-chair",
+   "rank": 1
+  },
+  {
+   "q": "mapping one plane to another",
+   "want": "linear-change-of-variables",
+   "rank": 1
+  },
+  {
+   "q": "which numbers have an odd number of divisors",
+   "want": "number-of-divisors",
    "rank": 1
   }
  ]

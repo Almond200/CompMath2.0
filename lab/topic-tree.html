@@ -85,7 +85,7 @@
 <body>
 <div class="wrap">
   <header><h1>Topic tree</h1><span class="tag">experimental</span></header>
-  <p class="msg"><a href="../index.html#/settings">&larr; Back to Settings</a> &middot; The current draft of <code>TOPIC-TREE.md</code>, read live from the repository.</p>
+  <p class="msg"><a href="../index.html#/settings">&larr; Back to Settings</a> &middot; The topic tree from <code>TOPIC-TREE.md</code>, read live from the repository.</p>
   <div class="bar">
     <div class="seg" role="radiogroup" aria-label="View" id="view">
       <button type="button" role="radio" data-view="outline" aria-checked="true">Outline</button>
@@ -298,7 +298,7 @@
       // KaTeX's fonts change box widths once they load, so lay the tree out again then.
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (view === "tree") drawTree(); });
     })
-    .catch(function () { doc.innerHTML = '<p class="msg">The draft could not be loaded. Open the app from a web server (for example <code>python3 -m http.server</code>), not from a file.</p>'; });
+    .catch(function () { doc.innerHTML = '<p class="msg">The topic tree could not be loaded. Open the app from a web server (for example <code>python3 -m http.server</code>), not from a file.</p>'; });
 })();
 </script>
 </body>

@@ -9,7 +9,7 @@
    Credits can run out at any time, and the next chat starts from that block.
 3. **Remind the owner to switch chats** after about 15 to 20 of their messages, once "Current state" is up to date and pushed.
 4. **How things are done** is in `CONVENTIONS.md`: card anatomy, figure rules, the gates in §7. Approvals waiting on the owner are in `QUESTIONS.md`.
-5. **Two agents work in this repository.** Claude keeps the shared Markdown (`PLAN.md`, `CHANGELOG.md`, `CONVENTIONS.md`, `CONTRIBUTING.md`, `README.md`, `LEARN-OUTLINE.md`, `TOPIC-TREE.md`, `QUESTIONS.md`, `TEXTBOOK-REVISION.md`) and works on cards, problems, the topic tree, `js/app.js`, and search: the book-search implementation, `tests/book-search.cjs`, and the matching and indexing logic of `tools/build-book-notes.cjs`. Codex owns the chapter content in `js/data/learn/**` (with `tools/build-learn-shelf.py`), regenerates the End-of-book Notes with the builder after each batch, and does not edit the shared Markdown: it reports each batch, and Claude records it. Neither changes this division without coordinating first. Both bump asset versions in `index.html`; keep both sets of bumps when merging. Shared-file merges follow CONTRIBUTING, "Two agents: shared files and merges".
+5. **Two agents work in this repository.** Claude keeps the shared Markdown (`PLAN.md`, `CHANGELOG.md`, `CONVENTIONS.md`, `CONTRIBUTING.md`, `README.md`, `LEARN-OUTLINE.md`, `TOPIC-TREE.md`, `QUESTIONS.md`, `TEXTBOOK-REVISION.md`) and works on cards, problems, the topic tree, `js/app.js`, and search: the book-search implementation, `tests/book-search.cjs`, and the matching and indexing logic of `tools/build-book-notes.cjs`. Codex owns the chapter content in `js/data/learn/**` (with `tools/build-learn-shelf.py`), regenerates the End-of-book Notes with the builder after each batch, and normally reports chapter batches for Claude to record in the shared Markdown. Explicit owner requests may authorize a scoped app or documentation batch, as with the recent Practice/UI work and this maintenance pass, without changing continuing ownership. Neither changes this division without coordinating first. Both bump asset versions in `index.html`; keep both sets of bumps when merging. Shared-file merges follow CONTRIBUTING, "Two agents: shared files and merges".
 
 ## Running the checks in a cloud session
 
@@ -27,7 +27,7 @@ python3 tools/build-topic-tree.py --check   # topic-tree.js matches TOPIC-TREE.m
 node tools/check-topic-tree.js              # tree, card homes, problem tree tags (CONVENTIONS §15)
 node tests/practice-sessions.cjs
 node tests/answer-keys.cjs
-node tests/book-search.cjs
+node tests/book-search.cjs          # includes semantic-index corpus coverage and artifact consistency
 node tests/problem-difficulty.cjs
 node tests/mock-contests.cjs
 node tools/practice-gaps.js --check     # every card has two practice problems
@@ -53,6 +53,7 @@ $JSC tools/validate-problem-db.js
 - Tag a card only where the problem's route really uses it (never to give a new card a problem); a tag on a shared AMC 10/12 problem goes on both twins.
 - No sticky headers: a page's header scrolls away with the page (a side rail may stay beside it) (owner, 2026-10-31). On a phone the top bar and the book view's navigation row stay pinned, at the owner's word.
 - Every modal dialog is centred across and sits slightly above the middle of the screen (6vh up), never pinned near the top; popups tied to something (dropdowns, previews, menus, drawers) stay by it. A destructive confirmation button (Clear, Delete) is solid red (owner, 2026-11-08; CONVENTIONS, "Dialogs sit just above the middle of the screen").
+- Secondary soft actions, including Results overview, Cancel and Practice navigation, keep blue hover; inactive list toolbar buttons keep neutral hover. See CONVENTIONS for the explicit secondary-button rule.
 - Hover and focus colours follow where a control lives: inside a space (Learn, Practice, a reference space) a tile or choice lights up in the space's colour (`--space`, `--space-soft`); app-wide controls (top bar, tags, links) use the blue `--accent` (owner, 2026-11-08; CONVENTIONS, "Hover and focus colours follow where a control lives").
 - A brief note at the foot of the screen uses the app's toast (`toast()` in `js/app.js`, the look of "Opened strategies reset" in Settings), with a light shadow; no other bottom popup style, and no note for actions as frequent as Undo and Redo (owner, 2026-11-08).
 - Prefer app-styled searchable suggestions and dialogs to native browser dropdowns, prompts and confirmation popups. Practice sets save on exit without a confirmation; Finish and review submits directly. Keep the top-left Back to Practice link and Save and exit during practice; do not duplicate the back link as a review button. Topic practice sets have no timer or timer setting (owner, 2026-11-05). The explicitly requested mock contests are timed, pause on exit/tab hiding, and auto-submit at zero (owner, 2026-11-08; MOCK-CONTESTS.md).

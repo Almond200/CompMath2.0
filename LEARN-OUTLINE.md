@@ -40,7 +40,7 @@ The full rules are in CONVENTIONS §14; in short:
 4. **The lesson's own problems,** with full worked solutions further down the page.
 5. **Exercises:** contest problems, about 3 to 5, rising in difficulty, in the AoPS-style list where Show Solution works only once something is written (LQ6).
 
-A chapter follows the approved chapter structure: X.1 Introduction (a short overview of the chapter's ideas, with comprehension problems), the lessons, a Summary with Problem Solving Strategies, then Review Problems (mostly comprehension, our own first) and Challenge Problems (harder, contest problems first). Every list of problems runs from easiest to hardest. All current chapters have been converted to this structure.
+A chapter follows the approved chapter structure: X.1 Introduction (a short overview of the chapter's ideas, with comprehension problems), the lessons, a Summary with Problem Solving Strategies, then Review Problems (mostly comprehension, our own first) and Challenge Problems (harder, our own problems first, then contest problems). Every list of problems runs from easiest to hardest. All current chapters have been converted to this structure.
 
 ## The shelf and its prerequisite spine
 
@@ -1793,7 +1793,7 @@ The database's tags make the first half computable, since every problem already 
 | AMC 12 | 1,195 | 1,209 |
 | AMC 10 | 1,187 | 1,202 |
 
-That first-run snapshot placed 552 of 765 cards. The 2026-11-06 report places 721 of 765, with 715 taught in a lesson; all cited cards are placed for 1,055/1,064 AIME, 1,209/1,209 AMC 12 and 1,202/1,202 AMC 10 problems. Use `build-learn-shelf.py --check` for the current track-aware placement gate.
+That first-run snapshot placed 552 of 765 cards. The 2026-11-06 report places 721 of 765, with 715 taught in a lesson; all cited cards are placed for 1,055/1,064 AIME, 1,209/1,209 AMC 12 and 1,202/1,202 AMC 10 problems. The 2026-11-08 diagnostic reports 722 of 774 cards placed, with 716 taught; all cited cards are placed for 1,048/1,064 AIME, 1,227/1,233 AMC 12 and 1,221/1,227 AMC 10 problems. This legacy diagnostic combines tracks and prints cross-track repeats; it is a coverage report, not the placement gate or a claim that every card is taught. Use `build-learn-shelf.py --check` for the current track-aware placement gate.
 
 That first run found AMC word-problem cards (proportions, averages, percents, ages) and some basic geometry facts that the proposal's titles had missed, and they were placed in the original Bridge (B1.5, B5.1 and others), since merged into AMC books. At that time the cards still unplaced are cited by one or two problems each, or are olympiad tools (`contrapositive`, `minkowski-inequality`). Each will be placed when its problem is given a lesson or a review, or left in the reference. The tags only show that a lesson exists for each card. Whether the lesson teaches the problem's step is checked by reading, in the audit.
 

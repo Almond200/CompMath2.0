@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Build the static semantic-search index for the competition-math reference.
 
-Emits two files consumed by js/search-semantic.js:
+Emits the semantic artifacts and the glossary consumed by the app:
 
   js/data/search-vectors.bin    int8 vectors, word table then card table
   js/data/search-vectors.json   header: vocab, dims, scales, SIF principal component
+  js/data/search-vectors.js     standalone-script fallback for direct-file copies
+  js/data/search-glossary.js    domain definitions for lexical search
 
 Why static vectors at all: the search needs to bridge "connecting the midpoints"
 to a card that says "joining the side midpoints". No lexical ranker can do that.
@@ -423,8 +425,8 @@ def main():
     cards = load_cards()
     print("  %d cards" % len(cards))
 
-    # Three texts per card. Kept separate because a card is heterogeneous: its
-    # name is a label, its body is an essay. One averaged vector over all of it
+    # Four texts per card, including the glossary vector below. A card's name is a
+    # label and its body is an essay, so keep their vectors separate. One averaged vector over all of it
     # washes out the name; three vectors with max-cosine at query time does not.
     parts = {}
     corpus_counts = Counter()
@@ -592,7 +594,7 @@ def main():
     print("wrote %s (%.2f MB)" % (binp, os.path.getsize(binp) / 1e6))
     print("wrote %s (%.2f MB)" % (jsonp, os.path.getsize(jsonp) / 1e6))
     print("wrote %s (%.2f MB)" % (jsp, os.path.getsize(jsp) / 1e6))
-    print("  %d word vectors, %d card vectors (%d cards x 3)" % (len(W), len(M), len(ids)))
+    print("  %d word vectors, %d card vectors (%d cards x %d)" % (len(W), len(M), len(ids), header["vectorsPerCard"]))
 
 
 if __name__ == "__main__":
