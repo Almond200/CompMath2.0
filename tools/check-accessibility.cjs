@@ -233,6 +233,18 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
       }
       if (artifactDir) await page.screenshot({ path:path.join(artifactDir, `home-focus-${theme}.png`) });
     }
+    await navigate('#/', '.hm-book');
+    await page.keyboard.press('Tab');
+    const books=page.locator('.hm-book');
+    for(const row of await books.all()) {
+      await row.focus();
+      assert.ok(await row.evaluate(el=>{
+        const r=el.getBoundingClientRect(),s=getComputedStyle(el),cover=el.querySelector('.bk-cover').getBoundingClientRect();
+        const title=el.querySelector('.hm-book-t').getBoundingClientRect(),count=el.querySelector('.hm-book-n').getBoundingClientRect();
+        return s.outlineOffset==='-3px' && Math.abs((cover.top+cover.height/2)-(title.top+title.height/2))<1
+          && Math.abs((cover.top+cover.height/2)-(count.top+count.height/2))<1 && r.height<=51;
+      }), 'home textbook rows stay compact and vertically centered with contained focus');
+    }
     scenarios++;
     await navigate('#/list/a11y-check', '[data-group-edit]');
     await page.locator('[data-group-edit]').first().click(); await page.locator('.ge').waitFor();

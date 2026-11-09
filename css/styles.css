@@ -3966,7 +3966,7 @@ body.is-landing .content { padding: 0 0 50px; }
 .home .hp-click:hover { background: none; }
 .home .hp-click:hover .rc-name { color: var(--accent); }
 .hm-books { display: flex; flex-direction: column; }
-.hm-book { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 5px 0; text-decoration: none; color: var(--text); }
+.hm-book { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 5px 4px; margin: 0 -4px; border-radius: 4px; text-decoration: none; color: var(--text); }
 .hm-book .bk-cover { width: 30px; padding: 3px; border-radius: 2px 5px 5px 2px; box-shadow: inset 3px 0 0 rgba(0, 0, 0, 0.22), 0 2px 5px rgba(0, 0, 0, 0.25); }
 .hm-book .bk-series, .hm-book .bk-name { display: none; }
 .hm-book .bk-motif { width: 100%; margin: 0; stroke-width: 5; }
@@ -4613,8 +4613,10 @@ dialog.app-confirm { inset-block: 0 12vh; }
   outline: 2px solid var(--accent) !important;
   outline-offset: 3px !important;
 }
-/* Edge-to-edge controls need their ring inside the clipped panel or scrolling row. */
-:root :is(.rc-chips .rc-row, .hm-space, .set-find-opt, .list-add-row, .nav-sub-link, .nav-section-btn, .nav-group-btn, .nav-practice-link, .toc-link):focus-visible {
+/* Full-row controls keep their ring inside their own bounds, so dense rows neither overlap
+   their neighbours nor clip at a panel edge. Ordinary buttons and inline links retain breathing room. */
+:root :is([role="button"], .rc-chips .rc-row, .rc-list .rc-row, .hm-book, .hm-space, .pg-row, .pl-item,
+  .bk-tab, .set-find-opt, .list-add-row, .nav-section-btn, .nav-group-btn, .nav-sub-link, .nav-cluster-link, .nav-practice-link, .toc-link):focus-visible {
   outline-offset: -3px !important;
 }
 /* Search keeps its usual single focus border, without a second accessibility ring (owner). */
