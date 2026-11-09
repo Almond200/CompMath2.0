@@ -302,10 +302,18 @@ To promote her school’s annual Kite Olympics, Genevieve makes a small kite and
 What is the number of square inches in the area of the small kite?
 
 (A) $21$  (B) $22$  (C) $23$  (D) $24$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
-"2001-amc-8-8": { s: String.raw`Genevieve puts bracing on her large kite in the form of a cross connecting opposite corners of the kite. How many inches of bracing material does she need?
+"2001-amc-8-8": { s: String.raw`To promote her school’s annual Kite Olympics, Genevieve makes a small kite and a large kite for a bulletin board display. The kites look like the one in the diagram. For her small kite Genevieve draws the kite on a one-inch grid. For the large kite she triples both the height and width of the entire grid.
+
+@@fig:amc8/2001/bg.svg@@
+
+Genevieve puts bracing on her large kite in the form of a cross connecting opposite corners of the kite. How many inches of bracing material does she need?
 
 (A) $30$  (B) $32$  (C) $35$  (D) $38$  (E) $39$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
-"2001-amc-8-9": { s: String.raw`The large kite is covered with gold foil. The foil is cut from a rectangular piece that just covers the entire grid. How many square inches of waste material are cut off from the four corners?
+"2001-amc-8-9": { s: String.raw`To promote her school’s annual Kite Olympics, Genevieve makes a small kite and a large kite for a bulletin board display. The kites look like the one in the diagram. For her small kite Genevieve draws the kite on a one-inch grid. For the large kite she triples both the height and width of the entire grid.
+
+@@fig:amc8/2001/bg.svg@@
+
+The large kite is covered with gold foil. The foil is cut from a rectangular piece that just covers the entire grid. How many square inches of waste material are cut off from the four corners?
 
 (A) $63$  (B) $72$  (C) $180$  (D) $189$  (E) $264$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
 });

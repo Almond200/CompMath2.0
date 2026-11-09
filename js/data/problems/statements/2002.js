@@ -388,7 +388,13 @@ If $n = 202,$ then the area of the garden enclosed by the path, not including th
 "2002-amc-8-1": { s: String.raw`A circle and two distinct lines are drawn on a sheet of paper. What is the largest possible number of points of intersection of these figures?
 
 (A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
-"2002-amc-8-10": { s: String.raw`The average price of his ‘$70$s stamps is closest to
+"2002-amc-8-10": { s: String.raw`Juan organizes the stamps in his collection by country and by the decade in which they were issued. The prices he paid for them at a stamp shop were: Brazil and France, $6$¢ each, Peru $4$¢ each, and Spain $5$¢ each. (Brazil and Peru are South American countries and France and Spain are in Europe.)
+
+Number of Stamps by Decade
+
+@@fig:amc8/2002/bg.svg@@
+
+The average price of his ‘$70$s stamps is closest to
 
 (A) $3.5$¢  (B) $4$¢  (C) $4.5$¢  (D) $5$¢  (E) $5.5$¢`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
 "2002-amc-8-11": { s: String.raw`A sequence of squares is made of identical square tiles. The edge of each square is one tile length longer than the edge of the previous square. The first three squares are shown. How many more tiles does the seventh square require than the sixth?
@@ -481,7 +487,13 @@ Number of Stamps by Decade
 How many of his European stamps were issued in the ‘$80$s?
 
 (A) $9$  (B) $15$  (C) $18$  (D) $24$  (E) $42$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
-"2002-amc-8-9": { s: String.raw`His South American stamps issued before the ‘$70$s cost him
+"2002-amc-8-9": { s: String.raw`Juan organizes the stamps in his collection by country and by the decade in which they were issued. The prices he paid for them at a stamp shop were: Brazil and France, $6$¢ each, Peru $4$¢ each, and Spain $5$¢ each. (Brazil and Peru are South American countries and France and Spain are in Europe.)
+
+Number of Stamps by Decade
+
+@@fig:amc8/2002/bg.svg@@
+
+His South American stamps issued before the ‘$70$s cost him
 
 (A) $\$0.40$  (B) $\$1.06$  (C) $\$1.80$  (D) $\$2.38$  (E) $\$2.64$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
 });

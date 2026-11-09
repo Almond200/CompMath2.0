@@ -5398,4 +5398,22 @@
       cap(430, 290, "The segment from 3 to 4i (gold, length 5) and the region R (blue): every point within 1 of it, as the dashed unit disc slides along the segment. R is a 5-by-2 rectangle with a half disc on each end." + MM(ok))
     ]);
   })();
+  // 2001 AMC 8 #11: plot the given coordinates to show the two parallel vertical sides.
+  PROB["2001-amc-8-11"] = (() => {
+    const vertices = [[3, 2], [3, -2], [-3, -2], [-3, 0]], k = 32;
+    const Q = ([x, y]) => [210 + k * x, 140 - k * y], P = vertices.map(Q);
+    const area = Math.abs(vertices.reduce((s, p, i) => s + p[0] * vertices[(i + 1) % 4][1] - p[1] * vertices[(i + 1) % 4][0], 0)) / 2;
+    const ok = area === 18 && dist(P[0], P[1]) / k === 4 && dist(P[2], P[3]) / k === 2;
+    return wrap(430, 280, [
+      seg(Q([-4.5, 0]), Q([4.8, 0]), FNT, 1), seg(Q([0, -3]), Q([0, 3]), FNT, 1),
+      poly(P, DIM, 2, ACCS), seg(P[0], P[1], ACC, 2.5), seg(P[2], P[3], ACC, 2.5),
+      ...P.map(p => dot(p, DIM, 3)),
+      txt(add(P[0], [10, -8]), "A (3, 2)", DIM, 12, "start"),
+      txt(add(P[1], [10, 16]), "B (3, −2)", DIM, 12, "start"),
+      txt(add(P[2], [-10, 16]), "C (−3, −2)", DIM, 12, "end"),
+      txt(add(P[3], [-10, -8]), "D (−3, 0)", DIM, 12, "end"),
+      txt(Q([5.1, -0.2]), "x", FNT, 12), txt(Q([0.25, 3.25]), "y", FNT, 12),
+      cap(430, 280, "Quadrilateral ABCD at the given coordinates; the two vertical sides are blue." + MM(ok))
+    ]);
+  })();
 })();

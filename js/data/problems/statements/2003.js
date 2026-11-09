@@ -394,7 +394,27 @@ Object.assign(window.MATH_STATEMENTS, {
 "2003-amc-8-1": { s: String.raw`Jamie counted the number of edges of a cube, Jimmy counted the number of corners, and Judy counted the number of faces. They then added the three numbers. What was the resulting sum?
 
 (A) $12$  (B) $16$  (C) $20$  (D) $22$  (E) $26$`, u: "https://live.poshenloh.com/past-contests/amc8/2003" },
-"2003-amc-8-10": { s: String.raw`How many cookies will be in one batch of Trisha’s cookies?
+"2003-amc-8-10": { s: String.raw`Four friends, Art, Roger, Paul and Trisha, bake cookies, and all cookies have the same thickness. The shapes of the cookies differ, as shown.
+
+• Art’s cookies are trapezoids:
+
+@@fig:amc8/2003/bs_1.svg@@
+
+• Roger’s cookies are rectangles:
+
+@@fig:amc8/2003/bs_2.svg@@
+
+• Paul’s cookies are parallelograms:
+
+@@fig:amc8/2003/bs_3.svg@@
+
+• Trisha’s cookies are triangles:
+
+@@fig:amc8/2003/bs_4.svg@@
+
+Each friend uses the same amount of dough, and Art makes exactly $12$ cookies.
+
+How many cookies will be in one batch of Trisha’s cookies?
 
 (A) $10$  (B) $12$  (C) $16$  (D) $18$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/2003" },
 "2003-amc-8-11": { s: String.raw`Business is a little slow at Lou’s Fine Shoes, so Lou decides to have a sale. On Friday, Lou increases all of Thursday’s prices by $10 \%.$ Over the weekend, Lou advertises the sale: “Ten percent off the listed price. Sale starts Monday.” How much does a pair of shoes cost on Monday that cost $\$40$ on Thursday?
@@ -505,7 +525,27 @@ Each friend uses the same amount of dough, and Art makes exactly $12$ cookies.
 Who gets the fewest cookies from one batch of cookie dough?
 
 (A) Art  (B) Paul  (C) Roger  (D) Trisha  (E) There is a tie for fewest.`, u: "https://live.poshenloh.com/past-contests/amc8/2003" },
-"2003-amc-8-9": { s: String.raw`Art’s cookies sell for $60$¢ each. To earn the same amount from a single batch, how much should one of Roger’s cookies cost?
+"2003-amc-8-9": { s: String.raw`Four friends, Art, Roger, Paul and Trisha, bake cookies, and all cookies have the same thickness. The shapes of the cookies differ, as shown.
+
+• Art’s cookies are trapezoids:
+
+@@fig:amc8/2003/bs_1.svg@@
+
+• Roger’s cookies are rectangles:
+
+@@fig:amc8/2003/bs_2.svg@@
+
+• Paul’s cookies are parallelograms:
+
+@@fig:amc8/2003/bs_3.svg@@
+
+• Trisha’s cookies are triangles:
+
+@@fig:amc8/2003/bs_4.svg@@
+
+Each friend uses the same amount of dough, and Art makes exactly $12$ cookies.
+
+Art’s cookies sell for $60$¢ each. To earn the same amount from a single batch, how much should one of Roger’s cookies cost?
 
 (A) $18$¢  (B) $25$¢  (C) $40$¢  (D) $75$¢  (E) $90$¢`, u: "https://live.poshenloh.com/past-contests/amc8/2003" },
 });

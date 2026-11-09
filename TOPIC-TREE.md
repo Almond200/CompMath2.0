@@ -1,8 +1,8 @@
 # Topic tree
 
-**Status (checked 2026-11-08):** T1 and T2 are complete: 503 approved nodes, 742 of 774 cards with a home, and 32 general methods with no subject home. T3 has filed 4,090 of 4,725 problems: all 1,325 AMC 10, 1,325 AMC 12 and 1,065 AIME problems, plus the 375 AMC 8 problems from 2010 onward. The remaining 635 are the 625 AMC 8/AJHSME problems from 1985–2009 and ten 2019 HMMT Geometry problems. AMC 8 2009 is next. The app does not yet use these filings (T4); Settings → Experimental → Topic tree is the diagnostic viewer. TQ17–TQ19 are approved and applied; the next candidate is TQ20. PLAN.md owns the current work order, and QUESTIONS.md records decisions. The test filings below preserve the 2026-11-06 experiment; the problem entries' `tree` fields are the current filings.
+**Status (T3 checkpoint):** 486 nodes after introductory pruning; 740 of 774 cards with homes, 34 general methods without. **4,315/4,725 problems filed**, through **2001 AMC 8** in the newest-first AMC 8/AJHSME pass. **410 remain** (400 AMC 8/AJHSME and ten HMMT). Next: **2000 AMC 8**. All AMC 10/12 and AIME papers are already filed. PLAN.md owns work order; QUESTIONS.md owns candidate decisions. The app does not yet use filings (T4); the Settings experimental viewer is diagnostic. Historical test filings below remain historical.
 
-**Execution handoff (owner, 2026-11-09):** Codex is explicitly assigned to finish T3 before returning to textbook revision. Claude is idle during this scoped pass. Start with 2009 AMC 8 and complete the remaining 635 filings in the order and with the per-problem audit/checkpoint rules in PLAN.md. The Elo ratings are already complete; this remaining task is topic-tree filing plus strategy/card-tag/diagram review, not another difficulty-label pass. Existing candidate approvals and validation rules stay in force.
+**Execution handoff (owner, 2026-11-09):** Codex is explicitly assigned to finish T3 before returning to textbook revision. Claude is idle during this scoped pass. Continue from the current checkpoint above and complete the remaining filings in the order and with the per-problem audit/checkpoint rules in PLAN.md. The Elo ratings are already complete; this remaining task is topic-tree filing plus strategy/card-tag/diagram review, not another difficulty-label pass. Existing candidate approvals and validation rules stay in force.
 
 ## Why
 
@@ -16,11 +16,11 @@ Practice a topic currently offers every card name and every card keyword as a to
 
 1. **Four trees, one per subject:** Algebra, Counting & Probability, Geometry, Number Theory. They match `SUBJECT_LABELS` and the four Reference subjects. Methods and Patterns are not trees: they are ways of solving, and they stay cards.
 2. **Four levels, sometimes five.** Subject › Area › Topic › Subtopic (owner, 2026-11-06: topics need subtopics, since a topic often holds several kinds of problem). A topic splits into subtopics when its problems fall into recurring kinds, and a subtopic splits once more only on the same condition. A topic whose problems do not split that way stays a leaf. Selecting a node selects everything under it.
-3. **A node is an archetype: a kind of problem that recurs** (owner, 2026-11-06). It is never made for one problem, and a node is added only when several problems across contests fit it; as a guide, about five or more in the database. A thin node merges into its nearest neighbour, and a one-off problem files under the broader node it belongs to.
+3. **A node is an archetype: a kind of problem that recurs** (owner, 2026-11-06). It is never made for one problem, and a node is added only when several problems across contests fit it; as a guide, about five or more in the database. A thin node is reviewed for a meaningful merge into its nearest neighbour, and a one-off problem files under the broader node it belongs to. Counts are a review trigger, not an automatic reason to merge unrelated kinds; AMC 10/12 twins count once when judging support.
 3a. **A node is a kind of problem, not a formula.** "Power of a point" is a node because contest problems are about it; "Shoelace formula" is not, because it is one tool for "Areas in coordinates". Cards attach to nodes; nodes do not mirror cards.
-3b. **The tree says what a problem is about; the Methods cards say how it is solved** (owner, 2026-11-07). The two are separate axes. A technique node (Casework, Complementary counting, Overcounting) is used only when the technique is the problem: an elementary counting question with no other subject, whose whole structure is the case split or the complement ("how many three-digit numbers contain a 7"). It is never a second label on a problem about something else because one step splits into cases; there the Methods card carries the technique (2024 AMC 12A #25, about functions equal to their own inverse, is filed under Inverse functions, not Casework). Technique-based practice ("practise complementary counting") draws from the problems that cite the Methods card, which finds the technique in every subject; it is not a branch of the tree. Some nodes carry a technique's name but hold a kind of problem, and are read that way: Stars and bars (distribution problems), Inclusion-exclusion (counting what avoids several conditions; Venn problems), Counting with symmetry (counting up to rotation or reflection), Generating functions (a coefficient of a given product). A problem files there only when it is that kind, not because its solution uses the technique. The technique-named nodes that held no kind of problem were retired or renamed (TQ17 to TQ19): Recursion and states, Bijections and Substitution to reveal a factorization are gone, Double counting is "Counting one total in two ways", and the SFFT nodes are "Grouping into products" and "Equations $xy+ax+by=c$".
+3b. **The tree says what a problem is about; the Methods cards say how it is solved** (owner, 2026-11-07). The two are separate axes. A technique node (Casework or Complementary counting) is used only when the technique is the problem: an elementary counting question with no other subject, whose whole structure is the case split or the complement ("how many three-digit numbers contain a 7"). It is never a second label on a problem about something else because one step splits into cases; there the Methods card carries the technique (2024 AMC 12A #25, about functions equal to their own inverse, is filed under Inverse functions, not Casework). Technique-based practice ("practise complementary counting") draws from the problems that cite the Methods card, which finds the technique in every subject; it is not a branch of the tree. Some nodes carry a technique's name but hold a kind of problem, and are read that way: Stars and bars (distribution problems), Inclusion-exclusion (counting what avoids several conditions; Venn problems), Counting with symmetry (counting up to rotation or reflection), Generating functions (a coefficient of a given product). A problem files there only when it is that kind, not because its solution uses the technique. The technique-named nodes that held no kind of problem were retired or renamed (TQ17 to TQ19): Recursion and states, Bijections and Substitution to reveal a factorization are gone, Double counting is "Counting one total in two ways", and the SFFT nodes are "Grouping into products" and "Equations $xy+ax+by=c$".
 4. **Every problem has at least one node, usually one or two, at most three.** A problem files under the most specific node that describes it. A problem genuinely about two things (a probability question whose work is geometry) takes a node in each tree.
-5. **Size.** A topic aims for about 25 to 300 problems out of the 4,725; a subtopic for at least about 5. A subtopic that stays smaller after filing merges into its topic, and a problem that fits no subtopic files under the topic itself. There are no separate Olympiad nodes: Olympiad problems file under the same topics as everyone else's (owner, TQ4).
+5. **Size.** A topic aims for about 25 to 300 problems out of the 4,725; a subtopic for at least about 5. A subtopic that stays smaller after filing is reviewed for merging into its topic, and a problem that fits no subtopic files under the topic itself. There are no separate Olympiad nodes: Olympiad problems file under the same topics as everyone else's (owner, TQ4).
 6. **Stable ids.** Every node has a dotted id (`geo.circle.power`), never reused once problems are filed under it. The display name can change; the id cannot.
 7. **Names are plain and short**, in the app's style ("Counting & Probability", "Mass points"), and never name a contest.
 8. **One fact, one home.** This Markdown file is the readable source. `tools/build-topic-tree.py` generates `js/data/topic-tree.js` from its four trees; `--check` verifies the result. Card homes live in `js/data/topic-homes.js`, and problem filings live on the problem entries.
@@ -33,6 +33,35 @@ The data exists (T2, 2026-11-07): `js/data/topic-tree.js` is generated from this
 - **Fill the rest by reading.** The problems with no card tag (446 when this was written, 449 on 2026-11-07), and problems whose cards are all general methods (casework, complementary counting), are filed by reading the statement and strategy, a contest at a time, with `subjects` as the starting point.
 - **Check.** `tools/check-topic-tree.js`, run by `gates.sh`, validates tree ids/parents, every card’s home entry, known home nodes, and each present filing’s one-to-three distinct nodes, ancestor redundancy and recognized AMC twin consistency. It reports the filing count but currently allows unfiled problems while T3 is incomplete; minimum leaf populations are reviewed by the tagging pass, not enforced by this gate. Shared AMC 10/12 twins carry the same nodes.
 - LIVE's concept tags may suggest a node; they are never copied in as nodes (standing rule).
+
+## Introductory pruning review (owner-requested)
+
+The attached *Topic Tree Audit & Refinement Plan* was assessed as recommendations. Its 4,090/4,725 snapshot matched the fetched data. The owner authorized pruning before continuing T3. This pass retires 17 nodes, keeping the four subjects and every card:
+
+| Retired ids | Surviving home / disposition |
+|---|---|
+| `cp.exp.basic.list`, `cp.exp.basic.payoff` | `cp.exp.basic`: outcomes and payoffs both compute an expectation from outcomes |
+| `cp.exp.linear.indicator`, `cp.exp.linear.count` | `cp.exp.linear`: one pool for expected counts and sums |
+| `cp.exp.states.trials`, `cp.exp.states.recursion` | `cp.exp.states`: waiting times and expected values of processes |
+| `cp.exp.var.var`, `cp.exp.var.dist` | `cp.exp.var`: retain distributions and variance together, distinct from waiting-time questions |
+| `cp.logic.game.positions`, `cp.logic.game.pairing` | `cp.logic.game`: game problems share a pool; the strategy remains on its card |
+| `cp.basic.case.overcount` | No filings; Uniform Overcount is a general method and now has no subject home |
+| `cp.logic.invariant.mono` | No filings; Monovariants is a general method and now has no subject home |
+| `nt.dio.bound.mod` | No filings or card homes; existing `nt.mod.basic.rule` already covers ruling out cases by a modulus |
+| `nt.dio.factor.recip` | No filings or card homes; reciprocal equations transform into the existing `nt.dio.factor.sfft` archetype |
+| `alg.eq.identity.prove` | No filings; its identity cards home at `alg.eq.identity` |
+| `alg.ineq.means.convex` | No filings; inequality formulas and their subject-specific methods home at `alg.ineq.means` |
+| `geo.tri.ratio.routh` | No filings; Routh's Theorem homes at `geo.tri.ratio.area` |
+
+All affected filings and card homes were remapped; retired ids are never reused. Surviving ids retain their meanings. Expected-value/game mergers combine related practice pools, rather than forcing unrelated small leaves together. Reference cards, textbook links and problem slugs are unchanged.
+
+Specific corrections: laps (2017 AMC 10B #2), pair partitions (2018 AMC 10B #3), cryptarithms (2001 AMC 10 #13 / 12 #6), exponent arithmetic (2009 AMC 10A #13 / 12A #6), distinct people/animals into rooms/stores (2014 AMC 12A #13; 2013 AMC 12A #15), sampling without replacement (2016 AMC 10A #12), and fixed-step probabilities (2017 AMC 12B #22). The complete Casework review also moves the absolute-value expression, tree-height puzzle, dice sums, ordered-difference puzzle, complex powers and digit-sequence count to their actual subjects. Only 2019 AIME I #4 keeps Casework. Cards still carry case splits used in a route.
+
+Retain for now: unit-cube views/stacking/surface branches (the unread older papers contain these configurations), direct/inverse variation, infinite radicals, parallel-line angle problems and quadratic residues. Their small or zero populations alone do not establish redundancy. Similar triangles, arithmetic sequences and root sums stay intact. Classical inequalities remain separate when their problem structures differ. A final long-tail review follows the complete T3 corpus, before T4.
+
+Travel: the proposed multi-stage/stop-time archetype now has five read examples and is recorded as TQ20 for the existing candidate decision process; these remain under Distance, speed and time meanwhile. No new branch is silently added. Counting favorable outcomes remains a fallback to review against more specific existing nodes, rather than a reason to invent method-based subtypes.
+
+`node tools/tree-audit.js --census` now reports unused and 1–4-distinct terminal leaves with affected card homes and up to five representative problems/card links, direct assignments on internal nodes, and frequent leaves ranked by sole-label proportion. Distinct counts conservatively collapse one same-year/season/letter AMC 10/12 pair with identical strategies; reworded twins can remain separate. Minimum populations are review prompts, never gate failures. `tests/tree-audit.cjs` covers count and twin-grouping edge cases.
 
 ## The four trees
 
@@ -81,7 +110,6 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Simplifying and evaluating expressions `[alg.eq.identity.simplify]`
     - Symmetric expressions: $x+y$, $xy$ and $x^n+y^n$ `[alg.eq.identity.symmetric]`
     - Reciprocal expressions: $x+1/x$ `[alg.eq.identity.recip]`
-    - Proving and finding identities `[alg.eq.identity.prove]`
   - Factoring and clever factorizations `[alg.eq.factor]`
     - Difference of squares and cubes `[alg.eq.factor.squares]`
     - Grouping into products `[alg.eq.factor.sfft]`
@@ -195,7 +223,6 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - AM-GM and the power mean chain `[alg.ineq.means.amgm]`
     - Cauchy-Schwarz and Titu's lemma `[alg.ineq.means.cs]`
     - Rearrangement, Chebyshev and Schur `[alg.ineq.means.rearrange]`
-    - Convexity, Jensen and smoothing `[alg.ineq.means.convex]`
   - Maximizing and minimizing `[alg.ineq.optimize]`
     - Quadratic optimization `[alg.ineq.optimize.quad]`
     - Optimization with a constraint `[alg.ineq.optimize.constraint]`
@@ -222,7 +249,6 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Casework and complementary counting `[cp.basic.case]`
     - Casework `[cp.basic.case.cases]`
     - Complementary counting `[cp.basic.case.complement]`
-    - Overcounting and dividing out `[cp.basic.case.overcount]`
 - **Counting techniques** `[cp.tech]`
   - Stars and bars and distributions `[cp.tech.stars]`
     - Identical objects into distinct boxes `[cp.tech.stars.identical]`
@@ -290,17 +316,9 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - State probabilities after a fixed number of steps `[cp.prob.process.steps]`
 - **Expected value** `[cp.exp]`
   - Expected value by definition `[cp.exp.basic]`
-    - Expected value from a list of outcomes, maxima and minima included `[cp.exp.basic.list]`
-    - Fair games and expected payoffs `[cp.exp.basic.payoff]`
   - Linearity of expectation `[cp.exp.linear]`
-    - Indicator variables `[cp.exp.linear.indicator]`
-    - Expected counts in arrangements `[cp.exp.linear.count]`
   - Expected waiting times and states `[cp.exp.states]`
-    - Expected number of trials `[cp.exp.states.trials]`
-    - Expected values by states and recursion `[cp.exp.states.recursion]`
   - Variance and distributions `[cp.exp.var]`
-    - Variance and standard deviation `[cp.exp.var.var]`
-    - Binomial and geometric distributions `[cp.exp.var.dist]`
 - **Graphs and combinatorial structures** `[cp.graph]`
   - Graphs, trees and networks `[cp.graph.basic]`
     - Degrees and handshakes `[cp.graph.basic.degree]`
@@ -317,11 +335,8 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
       - Matching people to facts `[cp.logic.puzzle.deduce.match]`
     - Grid and number puzzles `[cp.logic.puzzle.grid]`
   - Games and strategies `[cp.logic.game]`
-    - Winning and losing positions `[cp.logic.game.positions]`
-    - Strategy stealing and pairing strategies `[cp.logic.game.pairing]`
   - Invariants and monovariants in processes `[cp.logic.invariant]`
     - Parity and coloring invariants `[cp.logic.invariant.parity]`
-    - Monovariants and termination `[cp.logic.invariant.mono]`
     - Operations on boards and lists `[cp.logic.invariant.ops]`
   - Pigeonhole and extremal arguments `[cp.logic.pigeon]`
     - Pigeonhole principle `[cp.logic.pigeon.pigeon]`
@@ -365,7 +380,6 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Area ratios and mass points `[geo.tri.ratio]`
     - Area ratios from shared heights or bases `[geo.tri.ratio.area]`
     - Mass points `[geo.tri.ratio.mass]`
-    - Routh's theorem and dividing a triangle `[geo.tri.ratio.routh]`
   - Law of sines and law of cosines `[geo.tri.trig]`
     - Law of sines `[geo.tri.trig.sines]`
     - Law of cosines `[geo.tri.trig.cosines]`
@@ -520,13 +534,11 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Factoring and SFFT `[nt.dio.factor]`
     - Equations $xy+ax+by=c$ `[nt.dio.factor.sfft]`
     - Difference of squares and other factorable forms `[nt.dio.factor.squares]`
-    - Reciprocal equations $1/x+1/y=1/n$ `[nt.dio.factor.recip]`
   - Pythagorean triples and sums of squares `[nt.dio.squares]`
     - Pythagorean triples `[nt.dio.squares.triples]`
     - Sums of two squares and Pell equations `[nt.dio.squares.sums]`
   - Bounding and parity arguments `[nt.dio.bound]`
     - Bounding and size arguments `[nt.dio.bound.size]`
-    - Modular obstructions `[nt.dio.bound.mod]`
     - Exponential Diophantine equations `[nt.dio.bound.exp]`
 - **Digits and bases** `[nt.digit]`
   - Digits and digit sums `[nt.digit.sum]`
