@@ -2,6 +2,8 @@
 
 2026-11-09; baseline `ef983da`. The owner requested another data audit and a plan for the next tree changes. **This pass changes no taxonomy, problem filing, card home or textbook.** It supersedes the ordering of the remaining work in TREE-REVIEW.md, while preserving that document's completed migration record.
 
+Implementation is now authorized by the owner’s request to fix these issues. See [TREE-REPAIRS.md](TREE-REPAIRS.md) for completed batches and migrations; the measurements below preserve the audit baseline.
+
 ## Main finding
 
 Keep the new major areas for now. The strongest remaining problems are inconsistent meanings below them: some labels describe a solution step, some overlap with another label for the same problem kind, and a few specific kinds still fall into broad pools. Another wholesale area reshuffle would not address those issues.

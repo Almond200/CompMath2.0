@@ -71,6 +71,10 @@ Retired empty wrappers: `alg.word` (children distributed among `alg.arithmetic`,
 
 This changes 486 nodes to 482 and 31 areas to 28, preserving all 337 leaves. The builder, gate and audit now follow explicit parents rather than inferring ancestry from id prefixes; regression checks enforce valid moves, roots, cycles, subjects, depth and nonredundant filings. The experimental viewer already derives its hierarchy from indentation. Geometry and semantic leaf pruning follow after statement review.
 
+## Semantic repairs (owner-authorized)
+
+[TREE-REPAIRS.md](TREE-REPAIRS.md) records the per-problem decisions and every affected card home. The first batch leaves 479 nodes. Retired ids: `alg.eq.system.combine` and `alg.eq.system.sub` → `alg.eq.system`; `alg.fn.feq.sub` → `alg.fn.feq`. Literal wrong-kind filings move separately to their actual subjects. Retired ids are never reused. Historical test filings below are not current assignments.
+
 ## The four trees
 
 Node ids are stable identifiers, not paths. Indentation gives the current Subject › Area › Topic › Subtopic hierarchy, with a fifth level where needed. Older id prefixes can name retired or former parents.
@@ -112,7 +116,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
 - **Equations and expressions** `[alg.eq]`
   - Linear equations and systems `[alg.eq.linear]`
     - One linear equation; setting up equations from words `[alg.eq.linear.one]`
-    - Two and three linear equations `[alg.eq.linear.system]`
+    - Linear systems `[alg.eq.linear.system]`
     - Systems with a parameter: no or infinitely many solutions `[alg.eq.linear.param]`
   - Manipulating expressions and identities `[alg.eq.identity]`
     - Simplifying and evaluating expressions `[alg.eq.identity.simplify]`
@@ -130,10 +134,8 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
   - Absolute value and piecewise equations `[alg.eq.abs]`
     - Equations and inequalities with absolute values `[alg.eq.abs.eq]`
     - Graphs and regions bounded by absolute values `[alg.eq.abs.graph]`
-  - Nonlinear systems and symmetric systems `[alg.eq.system]`
-    - Systems solved by adding, subtracting or multiplying `[alg.eq.system.combine]`
+  - Nonlinear systems `[alg.eq.system]`
     - Symmetric and cyclic systems `[alg.eq.system.cyclic]`
-    - Substitution and elimination in nonlinear systems `[alg.eq.system.sub]`
   - Matrices and determinants `[alg.eq.matrix]`
 - **Polynomials** `[alg.poly]`
   - Quadratics `[alg.poly.quad]`
@@ -171,8 +173,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Periodic and piecewise functions `[alg.fn.graph.periodic]`
     - Rational functions: $\tfrac{ax+b}{cx+d}$, asymptotes and holes `[alg.fn.graph.rational]`
   - Functional equations `[alg.fn.feq]`
-    - Substituting special values `[alg.fn.feq.sub]`
-    - Cauchy-type and additive equations `[alg.fn.feq.cauchy]`
+    - Cauchy-type functional equations `[alg.fn.feq.cauchy]`
     - Functions on the integers and recursive definitions `[alg.fn.feq.integer]`
   - Floor, ceiling and fractional part `[alg.fn.floor]`
     - Equations with floors `[alg.fn.floor.eq]`
