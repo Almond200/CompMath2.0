@@ -165,10 +165,15 @@ def question_with_context(qs, c, y, n):
     boundaries fail closed if LIVE changes the source instead of guessing a prefix.
     """
     q = qs[n - 1]
-    if (c, y) == ("amc8", "2006") and n in (15, 16):
-        source = qs[13]["question"]
-        start = source.index("The students in Mrs. Reed")
-        end = source.index("\n\nIf Bob and Chandra", start)
+    contexts = {
+        ("amc8", "2006"): (14, (15, 16), "The students in Mrs. Reed", "\n\nIf Bob and Chandra"),
+        ("amc8", "2003"): (8, (9, 10), "Four friends, Art, Roger, Paul and Trisha", "\n\nWho gets the fewest"),
+    }
+    context = contexts.get((c, y))
+    if context and n in context[1]:
+        source = qs[context[0] - 1]["question"]
+        start = source.index(context[2])
+        end = source.index(context[3], start)
         premise = source[start:end].strip()
         if not q["question"].startswith(premise):
             q = dict(q, question=premise + "\n\n" + q["question"])
