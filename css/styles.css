@@ -4610,12 +4610,11 @@ dialog.app-confirm { inset-block: 0 12vh; }
 
 /* Keyboard focus stays visible even on controls with custom border-only focus styles. */
 :root :is(a[href], button, input, select, textarea, [role="button"], [tabindex]:not([tabindex="-1"])):focus-visible:where(:not(
-  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="hidden"], [type="color"], [type="button"], [type="submit"], [type="reset"], [type="image"]):not(#practice-answer), textarea
+  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="hidden"], [type="color"], [type="button"], [type="submit"], [type="reset"], [type="image"]), textarea
 )) {
   outline: 2px solid var(--accent) !important;
   outline-offset: 1px !important;
 }
-:root #practice-answer:focus-visible { outline-offset: 3px !important; }
 /* Full-row controls keep their ring inside their own bounds, so dense rows neither overlap
    their neighbours nor clip at a panel edge. Ordinary buttons and inline links retain breathing room. */
 :root :is([role="button"], .rc-chips .rc-row, .rc-list .rc-row, .hm-book, .hm-space, .pg-row, .pl-item,
@@ -4624,7 +4623,7 @@ dialog.app-confirm { inset-block: 0 12vh; }
 }
 /* Text entry uses its border (or the editor's inset underline), rather than a second ring. */
 :where(
-  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="hidden"], [type="color"], [type="button"], [type="submit"], [type="reset"], [type="image"]):not(#practice-answer), textarea
+  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="hidden"], [type="color"], [type="button"], [type="submit"], [type="reset"], [type="image"]), textarea
 ):focus {
   outline: none !important; border-color: var(--accent);
 }

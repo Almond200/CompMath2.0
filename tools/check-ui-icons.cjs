@@ -43,7 +43,13 @@ if(artifacts)fs.mkdirSync(artifacts,{recursive:true});
 
   const member=p.locator('.listmenu [data-lm-toggle="starred"]');assert.equal(await member.isChecked(),true);
   await member.uncheck();assert.equal(await star.getAttribute('aria-pressed'),'false');assert.equal(await star.locator('.ui-icon-star-outline').count(),1);
-  await p.keyboard.press('Escape');await star.click();await p.reload();await p.locator(`.star-btn[data-star="${id}"]`).waitFor();
+  await p.keyboard.press('Escape');
+  for(const [name,expected] of [['','Untitled list'],['   ','Untitled list 2']]){
+   await add.click();await newName.fill(name);await create.click();await p.locator('.listmenu').waitFor({state:'detached'});
+   const made=await p.evaluate(name=>JSON.parse(localStorage.getItem('mq-lists')).items.find(l=>l.name===name),expected);
+   assert.ok(made,'blank names get the next numbered default');assert.deepEqual(made.ids,[id],'the current card is added');
+  }
+  await star.click();await p.reload();await p.locator(`.star-btn[data-star="${id}"]`).waitFor();
   assert.equal(await p.locator(`.star-btn[data-star="${id}"] .ui-icon-star`).count(),1);
   await p.locator('[data-space-go="learn"]:visible').click();await p.locator('#pr-lists').waitFor();
   const starred=p.locator('#pr-lists a[href="#/list/starred"]');assert.equal(await starred.locator('.ui-icon-star').count(),1);await starred.click();await p.locator(`.star-btn[data-star="${id}"]`).waitFor();
