@@ -30,7 +30,17 @@ if(artifacts)fs.mkdirSync(artifacts,{recursive:true});
   }
   const star=p.locator('.star-btn').first();await centered(star);const id=await star.getAttribute('data-star');
   assert.equal(await star.locator('.ui-icon-star-outline').count(),1);await star.click();assert.equal(await star.getAttribute('aria-pressed'),'true');assert.equal(await star.locator('.ui-icon-star').count(),1);
-  const add=p.locator('.addlist-btn').first();await centered(add);await add.click();
+  const add=p.locator('.addlist-btn').first();await centered(add);
+  assert.ok(await add.evaluate(el=>Math.abs(el.getBoundingClientRect().width-el.getBoundingClientRect().height)<.1),'add-to-list button is square');
+  await add.click();
+  const newName=p.getByRole('textbox',{name:'New list name',exact:true});await newName.focus();
+  assert.equal(await newName.evaluate(el=>getComputedStyle(el).outlineStyle),'none','compact popup field has no outer ring');
+  const create=p.locator('.lm-new button');
+  const normal=await create.evaluate(el=>{const c=getComputedStyle(el);return {bg:c.backgroundColor,color:c.color};});
+  await create.hover();await p.waitForTimeout(180);
+  assert.ok(await create.evaluate((el,normal)=>{const c=getComputedStyle(el),probe=document.createElement('span');probe.style.color='var(--accent)';document.body.append(probe);const accent=getComputedStyle(probe).color;probe.remove();return c.backgroundColor===normal.bg && c.color===accent && c.borderColor===accent && c.color!==normal.color;},normal),'Create keeps the soft background and gains blue hover feedback');
+  if(artifacts)await p.locator('.listmenu').screenshot({path:path.join(artifacts,`list-popup-${theme}-${width}.png`)});
+
   const member=p.locator('.listmenu [data-lm-toggle="starred"]');assert.equal(await member.isChecked(),true);
   await member.uncheck();assert.equal(await star.getAttribute('aria-pressed'),'false');assert.equal(await star.locator('.ui-icon-star-outline').count(),1);
   await p.keyboard.press('Escape');await star.click();await p.reload();await p.locator(`.star-btn[data-star="${id}"]`).waitFor();

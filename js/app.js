@@ -1563,7 +1563,7 @@
     menuEl.innerHTML = `
       <div class="lm-title">Add to study list</div>
       <ul class="lm-list">${rows}</ul>
-      <form class="lm-new"><input type="text" placeholder="New list name&hellip;" maxlength="40" autocomplete="off"><button type="submit">Create</button></form>`;
+      <form class="lm-new"><input type="text" placeholder="New list name&hellip;" aria-label="New list name" maxlength="40" autocomplete="off"><button type="submit" class="hp-btn hp-btn-soft">Create</button></form>`;
     document.body.appendChild(menuEl);
     positionMenu(menuEl, anchor);
     menuEl.addEventListener("change", onMenuChange);
