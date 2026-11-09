@@ -60,3 +60,7 @@ Updated owner preference after #308: the Practice answer input now also uses the
 Answer-focus correction after #309: the compact answer field was incorrectly gray on focus because its base ID border outranked the generic focus rule. An explicit answer-focus rule restores the blue border with inset reinforcement and no oversized outer ring. The practice-action check now verifies the actual accent colour on both the border and inset highlight.
 
 The correction passed all four light/dark × 1280/375px practice-action runs and all repository gates.
+
+The subsequent answer-field correction removed the inset reinforcement too: the current field has exactly one 1px blue border, and tapping blank space around it no longer focuses it. The four Practice action runs check this final behavior.
+
+The owner’s shadow follow-up retains contrast colours and visible keyboard indicators. Floating surfaces now share the light Opened strategies reset toast shadow in each theme; small raised controls share its shadow opacity. Removed the leftover landing-search halo and reduced decorative list-editor halos. The 36 accessibility scenarios and four Practice action runs passed again. No further known everyday-use accessibility regression remains in the reviewed flows; this is not a claim to have tested every state or assistive technology.

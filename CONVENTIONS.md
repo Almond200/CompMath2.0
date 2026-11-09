@@ -929,6 +929,8 @@ See `MIGRATION-NOTES.md` for the full answers.
 - **Import is all or nothing.** `importProgress` stages every value (lists merged on a copy) and keeps the old ones. If any write fails, everything is put back, and the message says whether the rollback worked. A new stored key joins `PROGRESS_KEYS` and follows the same path.
 - **The lab pages** (`lab/`): a page-wide key shortcut never takes Enter or Space from a focused link or button. A failed save shows a one-time notice instead of failing silently.
 
+- **Shared light shadows** (owner, 2026-11-09): floating menus, dialogs, drawers and tooltips use `--ui-shadow`, matching the Opened strategies reset toast in each theme. Small raised controls use the same `--ui-shadow-color`. Keep focus borders compact and keyboard indicators visible; do not add broad decorative focus halos. Existing contrast colours stay.
+
 ### Keyboard access and motion (owner-requested, 2026-11-08)
 
 - Navigation links have real addresses; modified clicks retain native browser behavior. Collapsed navigation and the closed mobile drawer are inert. Buttons that expand navigation expose `aria-expanded` and `aria-controls`.
