@@ -48,3 +48,15 @@ The Methods sidebar follow-up also passed 84 checks: the subject button and all 
 The later general alignment pass contains focus within dense full-row links (including the home book list), with horizontal clearance around covers and no increase in row height. Ordinary buttons and inline links keep surrounding focus space. The browser check now measures all six home textbook rows for compact height and shared vertical centers. See [UI-REVIEW.md](UI-REVIEW.md) for the 132-state layout review and actual everyday UI workflows.
 
 The final follow-up passed the 36-scenario accessibility check with home-row alignment assertions, the 132-state layout review and four complete everyday-workflow runs. No additional functional defect was found in the latter; see the UI review for the exercised steps and validation scope.
+
+The owner’s SVG-icon follow-up preserves icon-only control names and hit areas while removing font/emoji rendering differences. Decorative SVGs are hidden from screen readers and never become separate focus stops. Star pressed state and filled/outline SVG stay synchronized through menu changes and reload; tag removal has an explicit accessible label. See UI-REVIEW.md and tools/check-ui-icons.cjs for appearance, geometry and interaction validation.
+
+The practice follow-up adds a visible Clear answer button with a disabled blank state and focus returning to the answer control. Incomplete manual submission uses the existing named dialog with Cancel initially focused; Cancel/Escape preserve editability. Fully answered sets remain one click, and review remains read-only. Pending manual prompts are dismissed on route changes or automatic mock expiry. The final 36-scenario accessibility pass and four theme/width practice-action runs passed.
+
+The compact-focus follow-up uses focused borders/inset underlines for text entry, including the new-list popup; ordinary keyboard outlines now keep their two-pixel width with a one-pixel gap. Dense-row inward rings are retained. The owner approved the Practice answer input’s existing three-pixel-gap ring, which is preserved. Add-to-list + buttons are square at the existing regular/coarse target sizes. Popup Create reuses Cancel’s soft-button treatment. Focused field checks and the 36-scenario accessibility check passed; keyboard indicators remain visible.
+
+Updated owner preference after #308: the Practice answer input now also uses the compact single focused border, replacing the previously retained outer ring. A visible blue focus border remains; typing, validation and clearing are unchanged. Blank/whitespace list creation now produces a numbered default instead of leaving Create with no visible result.
+
+Answer-focus correction after #309: the compact answer field was incorrectly gray on focus because its base ID border outranked the generic focus rule. An explicit answer-focus rule restores the blue border with inset reinforcement and no oversized outer ring. The practice-action check now verifies the actual accent colour on both the border and inset highlight.
+
+The correction passed all four light/dark × 1280/375px practice-action runs and all repository gates.

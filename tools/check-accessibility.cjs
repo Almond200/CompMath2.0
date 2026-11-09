@@ -18,7 +18,7 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     await context.addInitScript(t => {
       localStorage.setItem('theme', t);
       localStorage.setItem('mq-recent', JSON.stringify(['l:S5.1','b:amc-geometry','l:S6.1','l:S4.1','l:S4.5','l:R5.4',
-        'p:2025-amc-8-2','p:2020-amc-8-22','p:2025-amc-10a-12','p:2019-hmmt-feb-geo-10','p:2019-hmmt-feb-geo-9','p:2005-aime-ii-2']));
+        'p:2025-amc-8-2','p:2020-amc-8-22','p:2025-amc-10a-12','p:2019-hmmt-february-geometry-10','p:2019-hmmt-february-geometry-9','p:2005-aime-ii-2']));
       if (!localStorage.getItem('mq-lists')) localStorage.setItem('mq-lists', JSON.stringify({ items:[
         { id:'starred', builtin:true, name:'Starred', ids:[] },
         { id:'a11y-check', name:'Accessibility check', ids:['permutations-combinations','casework-method','recursive-counting'], customSections:[

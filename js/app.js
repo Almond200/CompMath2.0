@@ -1,6 +1,7 @@
 // Competition Math Reference — navigation, rendering, tag-based search, filters, sorting.
 (function () {
   const SECTIONS = window.MATH_SECTIONS || [];
+  const uiIcon = window.AppIcons.svg;
   const LEVELS = ["MATHCOUNTS", "AMC10", "AMC12", "AIME", "Olympiad"];
   const LEVEL_LABELS = {
     MATHCOUNTS: "MATHCOUNTS",
@@ -1482,7 +1483,14 @@
   }
   function createList(name) {
     const id = "l_" + Math.random().toString(36).slice(2, 8);
-    lists.items.push({ id, name: (name || "").trim() || "Untitled list", ids: [] });
+    let title = (name || "").trim();
+    if (!title) {
+      const taken = new Set(lists.items.map(l => l.name));
+      title = "Untitled list";
+      let next = 2;
+      while (taken.has(title)) title = "Untitled list " + next++;
+    }
+    lists.items.push({ id, name: title, ids: [] });
     saveLists();
     return id;
   }
@@ -1520,11 +1528,11 @@
 
   function starBtnHtml(id) {
     const on = inList("starred", id);
-    return `<button class="star-btn${on ? " starred" : ""}" data-star="${id}" aria-label="Star for later" aria-pressed="${on}" title="${on ? "Starred" : "Star for later"}">${on ? "★" : "☆"}</button>`;
+    return `<button class="star-btn${on ? " starred" : ""}" data-star="${id}" aria-label="Star for later" aria-pressed="${on}" title="${on ? "Starred" : "Star for later"}">${uiIcon(on ? "star" : "star-outline")}</button>`;
   }
   // Add-to-list opener: a plain "+".
   function addListBtnHtml(id) {
-    return `<button class="addlist-btn" data-addlist="${id}" title="Add to a study list" aria-label="Add to a study list">+</button>`;
+    return `<button class="addlist-btn" data-addlist="${id}" title="Add to a study list" aria-label="Add to a study list">${uiIcon("plus")}</button>`;
   }
   function refreshAddListButtons() { /* the button is a static "+"; nothing to refresh */ }
 
@@ -1542,10 +1550,10 @@
   }
   function onMenuKey(e) { if (e.key === "Escape") closeListMenu(); }
 
-  // Plain text glyphs, never emoji: gold star for the built-in Starred list, a
+  // SVG glyphs: gold star for the built-in Starred list, a
   // small accent diamond for every other list.
   function listGlyph(l) {
-    return l.id === "starred" ? `<span class="list-star">&#9733;</span>` : `<span class="list-ico">&#9670;</span>`;
+    return l.id === "starred" ? `<span class="list-star">${uiIcon("star")}</span>` : `<span class="list-ico">${uiIcon("diamond")}</span>`;
   }
   // Add-to-list popover for one formula: membership checkboxes + create-new.
   // (Bulk selections create their own new list instead of piling into an existing one.)
@@ -1562,7 +1570,7 @@
     menuEl.innerHTML = `
       <div class="lm-title">Add to study list</div>
       <ul class="lm-list">${rows}</ul>
-      <form class="lm-new"><input type="text" placeholder="New list name&hellip;" maxlength="40" autocomplete="off"><button type="submit">Create</button></form>`;
+      <form class="lm-new"><input type="text" placeholder="New list name&hellip;" aria-label="New list name" maxlength="40" autocomplete="off"><button type="submit" class="hp-btn hp-btn-soft">Create</button></form>`;
     document.body.appendChild(menuEl);
     positionMenu(menuEl, anchor);
     menuEl.addEventListener("change", onMenuChange);
@@ -1611,7 +1619,7 @@
   function syncStarButtons(fid) {
     const on = inList("starred", fid);
     document.querySelectorAll(`.star-btn[data-star="${fid}"]`).forEach(b => {
-      b.classList.toggle("starred", on); b.textContent = on ? "★" : "☆";
+      b.classList.toggle("starred", on); b.innerHTML = uiIcon(on ? "star" : "star-outline");
       b.title = on ? "Starred" : "Star for later";
       b.setAttribute("aria-pressed", String(on));
     });
@@ -1629,7 +1637,6 @@
     if (!menuEl) return;
     const inp = menuEl.querySelector(".lm-new input");
     const name = inp ? inp.value.trim() : "";
-    if (!name) { if (inp) inp.focus(); return; }
     const fid = menuEl._fid;
     const id = createList(name);
     const l = getList(id);
@@ -2586,7 +2593,7 @@
   function cardHtml(entry, showCrumb, queryTokens) {
     const f = entry.formula;
     const crumb = showCrumb
-      ? `<span class="card-crumb">${entry.section.title} &rsaquo; ${entry.subsection.title}</span>`
+      ? `<span class="card-crumb">${entry.section.title} ${uiIcon("chevron-right")} ${entry.subsection.title}</span>`
       : "";
     return `
       <article class="card card-${kindOf(f)}" data-id="${f.id}" id="f-${f.id}">
@@ -2602,7 +2609,7 @@
         ${f.placeholder ? `<p class="card-planned">Planned card</p>` : isConverted(f) && !f.latex ? cardLeadHtml(f) : cardFormulaHtml(f)}
         <p class="card-desc">${firstSentences(f.description, GRID_SENTENCES)}</p>
         ${extraHtml(f)}
-        <div class="more-hint">Open &rsaquo;</div>
+        <div class="more-hint">Open ${uiIcon("chevron-right")}</div>
       </article>`;
   }
 
@@ -3275,7 +3282,7 @@
       const rows = groups[fam].map((p, i) => {
         return `<li class="prob-row${i >= PROB_GROUP_PREVIEW ? " prob-extra" : ""}">
          <a class="prob-open" href="#/problem/${p.slug}">${refShort(p.ref)}</a>
-         ${p.url ? `<a class="ref-ext-link" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer" title="Open the source">${p.urlLabel} <span aria-hidden="true">&#8599;</span></a>` : ""}
+         ${p.url ? `<a class="ref-ext-link" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer" title="Open the source">${p.urlLabel} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
        </li>`;
       }).join("");
       return `<div class="prob-group" data-fam="${escapeAttr(fam)}">
@@ -3636,7 +3643,7 @@
         ? `<div class="cp-thumb">${String(panels[0]).replace(/<div class="diagram-cap">[\s\S]*?<\/div>/, "")}</div>`
         : "";
       content = `<div class="cp-head">${f.name}${kind}</div><div class="cp-desc">${desc}</div>
-        <div class="cp-crumb">${escapeAttr(e.section.title)} &rsaquo; ${escapeAttr(e.subsection.title)}</div>`;
+        <div class="cp-crumb">${escapeAttr(e.section.title)} ${uiIcon("chevron-right")} ${escapeAttr(e.subsection.title)}</div>`;
     }
     clearTimeout(cpHide);
     cpEl = document.createElement("div");
@@ -3966,20 +3973,20 @@
       <div class="detail">
         <div class="back-row">
           ${backFromSearch
-            ? `<a class="back-link" href="#" data-back-search>&larr; Back to ${backFromSearch.adv
+            ? `<a class="back-link" href="#" data-back-search>${uiIcon("arrow-left")} Back to ${backFromSearch.adv
                 ? "tag results"
                 : `results for &ldquo;${escapeAttr(backFromSearch.query.trim())}&rdquo;`}</a>`
             : ""}
           ${backToLearnHtml("formula:" + f.id)}
           ${backFromCardProblem && backFromCardProblem.fid === f.id && PROBLEM_BY_SLUG[backFromCardProblem.slug]
-            ? `<a class="back-link" href="#/problem/${backFromCardProblem.slug}">&larr; Back to ${escapeAttr(refShort(PROBLEM_BY_SLUG[backFromCardProblem.slug].ref))}</a>`
+            ? `<a class="back-link" href="#/problem/${backFromCardProblem.slug}">${uiIcon("arrow-left")} Back to ${escapeAttr(refShort(PROBLEM_BY_SLUG[backFromCardProblem.slug].ref))}</a>`
             : ""}
           ${backFromFormula && backFromFormula.fid === f.id && anyList(backFromFormula.listId)
-            ? `<a class="back-link" href="#/list/${backFromFormula.listId}">&larr; Back to ${escapeAttr(anyList(backFromFormula.listId).name)}</a>`
+            ? `<a class="back-link" href="#/list/${backFromFormula.listId}">${uiIcon("arrow-left")} Back to ${escapeAttr(anyList(backFromFormula.listId).name)}</a>`
             : ""}
-          <a class="back-link" href="${sectionHash(entry.section.id, bySubject(entry.section) ? { sub: state.activeSub, cluster: state.activeCluster } : { topic: state.activeTopic })}" data-back-section>&larr; Back to ${bySubject(entry.section) ? (state.activeCluster != null ? entry.subsection.groups[state.activeCluster].title : pageTitle(entry.section, state.activeSub)) : entry.subsection.title}</a>
+          <a class="back-link" href="${sectionHash(entry.section.id, bySubject(entry.section) ? { sub: state.activeSub, cluster: state.activeCluster } : { topic: state.activeTopic })}" data-back-section>${uiIcon("arrow-left")} Back to ${bySubject(entry.section) ? (state.activeCluster != null ? entry.subsection.groups[state.activeCluster].title : pageTitle(entry.section, state.activeSub)) : entry.subsection.title}</a>
         </div>
-        <p class="detail-crumb">${entry.section.title} &rsaquo; ${entry.subsection.title}</p>
+        <p class="detail-crumb">${entry.section.title} ${uiIcon("chevron-right")} ${entry.subsection.title}</p>
         <div class="detail-head">
           <h2 class="card-name">${f.name}</h2>
           <div class="card-meta detail-meta">${kindBadgeHtml(f)}${impBadgeHtml(f)}</div>
@@ -4242,7 +4249,7 @@
         wrap.appendChild(inp);
         var btns = document.createElement("span");
         btns.className = "num-btns";
-        btns.innerHTML = '<button type="button" tabindex="-1" aria-label="increase">▲</button><button type="button" tabindex="-1" aria-label="decrease">▼</button>';
+        btns.innerHTML = `<button type="button" tabindex="-1" aria-label="increase">${uiIcon('triangle-up')}</button><button type="button" tabindex="-1" aria-label="decrease">${uiIcon('triangle-down')}</button>`;
         wrap.appendChild(btns);
         function step(dir) {
           var st = parseFloat(inp.step) || 1, v = parseFloat(inp.value);
@@ -4335,7 +4342,7 @@
           <div class="cards">${g.entries.map(e => cardHtml(e, false, null)).join("")}</div>
         </section>`);
     });
-    if (!shownIds.length) parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No ${pageTitle(section, subIdx)} cards match the current filters.</div>`);
+    if (!shownIds.length) parts.push(`<div class="empty-state"><div class="big">${uiIcon("empty")}</div>No ${pageTitle(section, subIdx)} cards match the current filters.</div>`);
     $content.innerHTML = parts.join("");
     renderMath($content, true);
   }
@@ -4504,19 +4511,19 @@
             <p class="settings-hint">Toys built on the same data, living outside the app in their own tab so they cannot disturb it. Nothing here is a real feature.</p>
             <div class="lab-row">
               <a class="lab-card" href="lab/formula-web.html" target="_blank" rel="noopener">
-                <span class="lab-name">Formula Web &rarr;</span>
+                <span class="lab-name">Formula Web ${uiIcon("arrow-right")}</span>
                 <span class="lab-desc">Every card as a dot, clustered by subsection, with the hand-written cross-links drawn between them. Hover to isolate one card and its neighbours; click to open it.</span>
               </a>
               <a class="lab-card" href="lab/quiz.html" target="_blank" rel="noopener">
-                <span class="lab-name">Quiz &rarr;</span>
+                <span class="lab-name">Quiz ${uiIcon("arrow-right")}</span>
                 <span class="lab-desc">Pick a list and name the formula from its statement and figure, four choices at a time. Wrong answers come from the same subsection, so they are not giveaways.</span>
               </a>
               <a class="lab-card" href="lab/flashcards.html" target="_blank" rel="noopener">
-                <span class="lab-name">Flashcards &rarr;</span>
+                <span class="lab-name">Flashcards ${uiIcon("arrow-right")}</span>
                 <span class="lab-desc">Spaced-repetition review of any section or study list: see a name and recall its formula, or the reverse. Cards you know come back less and less often; misses come back the same session.</span>
               </a>
               <a class="lab-card" href="lab/topic-tree.html" target="_blank" rel="noopener">
-                <span class="lab-name">Topic tree &rarr;</span>
+                <span class="lab-name">Topic tree ${uiIcon("arrow-right")}</span>
                 <span class="lab-desc">Explore contest mathematics in four subject trees: Algebra, Counting &amp; Probability, Geometry and Number Theory, as an outline or a diagram.</span>
               </a>
             </div>
@@ -4868,7 +4875,7 @@
     const f = entry.formula, split = splitKeyForms(notate((window.MATH_DETAILS || {})[f.id]));
     const rest = pullSection(split.rest, "Contest profile").rest;
     const page = `<div class="detail">
-        <p class="detail-crumb">${entry.section.title} &rsaquo; ${entry.subsection.title}</p>
+        <p class="detail-crumb">${entry.section.title} ${uiIcon("chevron-right")} ${entry.subsection.title}</p>
         <div class="detail-head"><h2 class="card-name">${f.name}</h2><div class="card-meta detail-meta">${kindBadgeHtml(f)}${impBadgeHtml(f)}</div></div>
         ${f.latex ? `<div class="formula-display detail-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
         <p class="card-desc detail-summary">${f.description}</p>
@@ -4934,7 +4941,7 @@
     // Three screens at a time, large enough to read, with an arrow on each side to step through
     // them (owner, 2026-10-31); pointing at a setting brings the screen it changes into view.
     aside.innerHTML = `<div class="pv-title">Preview</div>
-      <button type="button" class="pv-nav pv-prev" aria-label="Earlier previews">&#8249;</button>
+      <button type="button" class="pv-nav pv-prev" aria-label="Earlier previews">${uiIcon("chevron-left")}</button>
       <div class="pv-track" inert>` +
       pvScreen("browse", "Cards while browsing", pvBrowseHtml()) +
       pvScreen("page", "A card&rsquo;s page", pvPageHtml()) +
@@ -4942,7 +4949,7 @@
       pvScreen("problem", "A problem page", pvProblemHtml()) +
       pvScreen("lesson", "A lesson", pvLessonHtml(), PV_W + 260) +
       `</div>
-      <button type="button" class="pv-nav pv-next" aria-label="More previews">&#8250;</button>`;
+      <button type="button" class="pv-nav pv-next" aria-label="More previews">${uiIcon("chevron-right")}</button>`;
     const SHOW = 3, screens = [...aside.querySelectorAll(".pv-screen")];
     let start = pvStart;
     const showFrom = k => {
@@ -5041,7 +5048,7 @@
     });
     const parts = [sectionHeaderHtml(section, only)];
     if (!shownIds.length) {
-      parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No ${pageTitle(section, only)} cards match the current filters.</div>`);
+      parts.push(`<div class="empty-state"><div class="big">${uiIcon("empty")}</div>No ${pageTitle(section, only)} cards match the current filters.</div>`);
       $content.innerHTML = parts.join("");
       renderMath($content);
       return;
@@ -5152,7 +5159,7 @@
     return `<section class="hp-panel dyk">
         <div class="hp-label">Did you know?</div>
         <p class="dyk-fact">${linkifyCards(didYouKnowFact(key))}</p>
-        <div class="dyk-foot"><a href="#/f/${id}">From ${f.name} &rarr;</a></div>
+        <div class="dyk-foot"><a href="#/f/${id}">From ${f.name} ${uiIcon("arrow-right")}</a></div>
       </section>`;
   }
   // Newest cards: the latest batch recorded for Special:NewCards.
@@ -5168,7 +5175,7 @@
     return `<section class="hp-panel hm-newest">
         <div class="hp-label">Newest cards</div>
         <div class="rc-list">${rows}</div>
-        <a class="hp-link" href="${specialHref("NewCards", "All")}">Every new card, newest first &rarr;</a>
+        <a class="hp-link" href="${specialHref("NewCards", "All")}">Every new card, newest first ${uiIcon("arrow-right")}</a>
       </section>`;
   }
   // Practice at a glance: the main contests, how many problems each has and how many are
@@ -5183,7 +5190,7 @@
       return `<a class="pg-row" href="#/problems/${famSlug(f)}/${latest}"><span class="pg-fam">${f}</span><span class="pg-n">${all.toLocaleString()} problems, ${years[0]}&ndash;${latest}</span><span class="pg-done">${done.toLocaleString()} written up</span></a>`;
     }).join("");
     return `<section class="hp-panel hm-glance">
-        <div class="hm-h-row"><div class="hp-label">Practice at a glance</div><a class="hm-more hm-more-practice" href="#/practice">See all &rarr;</a></div>
+        <div class="hm-h-row"><div class="hp-label">Practice at a glance</div><a class="hm-more hm-more-practice" href="#/practice">See all ${uiIcon("arrow-right")}</a></div>
         <div class="pg-list">${rows}</div>
       </section>`;
   }
@@ -5242,7 +5249,7 @@
           </div>
           <aside class="hm-rail">
             <section class="hm-sec hm-textbooks">
-              <div class="hm-h-row"><h2 class="hm-h">Textbooks</h2><a class="hm-more" href="#/learn">See all &rarr;</a></div>
+              <div class="hm-h-row"><h2 class="hm-h">Textbooks</h2><a class="hm-more" href="#/learn">See all ${uiIcon("arrow-right")}</a></div>
               <div class="hm-books">${bookRows}</div>
             </section>
             ${card ? `<section class="hm-sec hm-cotd hp-click" data-open="#/f/${card.formula.id}" role="link" tabindex="0" aria-label="Open ${escapeAttr(card.formula.name.replace(/\$/g, ""))}">
@@ -5254,9 +5261,9 @@
             <section class="hm-sec hm-library">
               <h2 class="hm-h">Your library</h2>
               ${starIds.length
-                ? `<div class="rc-list">${starIds.slice(0, 4).map(id => `<a class="rc-row" href="#/f/${id}"><span class="rc-star">&#9733;</span><span class="rc-name">${BY_ID[id].formula.name}</span></a>`).join("")}</div>
-                   <a class="hp-link" href="#/list/starred">All ${starIds.length} starred &rarr;</a>`
-                : `<p class="hp-empty">Star any card with &#9734; to keep it here.</p>`}
+                ? `<div class="rc-list">${starIds.slice(0, 4).map(id => `<a class="rc-row" href="#/f/${id}"><span class="rc-star">${uiIcon("star")}</span><span class="rc-name">${BY_ID[id].formula.name}</span></a>`).join("")}</div>
+                   <a class="hp-link" href="#/list/starred">All ${starIds.length} starred ${uiIcon("arrow-right")}</a>`
+                : `<p class="hp-empty">Use the star button ${uiIcon("star-outline")} on a card to keep it here.</p>`}
               <div class="hp-mine-foot">
                 <a href="#/learn" data-list-new>Make a list</a>
                 <a href="#/learn" data-goto="pr-study">Open a list</a>
@@ -5334,6 +5341,11 @@
   const practiceSessions = window.PracticeSessions;
   const mockContests = window.MockContests;
   let mockClockInterval = 0, mockPaperCatalog = null;
+  let practiceFinishConfirm = null;
+  function cancelPracticeFinishConfirm() {
+    practiceFinishConfirm?.abort();
+    practiceFinishConfirm = null;
+  }
   const isMock = set => set.kind === 'mock';
   const practiceSetLabel = set => isMock(set) && set.mock.mode === 'generated' ? 'Generated ' + set.mock.family : set.label;
   const hasMockAnswer = p => window.MATH_ANSWER_KEYS?.answers?.[p.slug] != null || !!window.MATH_MOCK_EXTRAS?.[p.slug];
@@ -5501,7 +5513,7 @@
   }
   // Open in app and Open in AoPS under a solution's three columns (practice review, textbooks).
   function solutionLinksHtml(p) {
-    const ext = p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.urlLabel === "archive" ? "Open in the archive" : "Open in AoPS"} ↗</a>` : "";
+    const ext = p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.urlLabel === "archive" ? "Open in the archive" : "Open in AoPS"} ${uiIcon("arrow-up-right")}</a>` : "";
     return `<div class="practice-solution-links"><a class="aops-btn" href="#/problem/${p.slug}">Open in app</a>${ext}</div>`;
   }
   function practiceAnswerChoices(set, slug, finished) {
@@ -5515,7 +5527,7 @@
     const mock = isMock(set), score = mock ? mockScore(set) : null;
     const stats = mock ? [[score.points+'/'+score.max,'Mock score'],[counts.Correct+'/'+total,'Correct'],[counts.Incorrect,'Incorrect'],[counts.Unanswered,'Unanswered']] : [[counts.Correct + '/' + total, 'Correct'], [Math.round(100 * counts.Correct / total) + '%', 'Score'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
     $content.innerHTML = `<div class="space-home practice-session practice-results">
-      <a class="back-link" href="#/practice">← Back to Practice</a>
+      <a class="back-link" href="#/practice">${uiIcon("arrow-left")} Back to Practice</a>
       <section class="sh-section"><h2>${mock ? 'Mock complete' : 'Practice complete'}</h2><p class="practice-results-subtitle">${escapeAttr(practiceSetLabel(set))} · ${total} problem${total === 1 ? '' : 's'}${mock ? ' · '+(set.mock.mode==='paper'?'Past contest':'Generated mock') : ' · '+escapeAttr(set.difficulty)+' difficulty'}</p>
         ${mock ? `<p class="practice-results-meta">${mockTimeSummary(set)}</p>` : ''}
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
@@ -5530,6 +5542,7 @@
     $content.querySelectorAll('[data-result-index]').forEach(link => link.addEventListener('click', () => { set.current = +link.dataset.resultIndex; savePractice(); }));
   }
   function renderTopicPracticeSet() {
+    cancelPracticeFinishConfirm();
     clearInterval(mockClockInterval);mockClockInterval=0;
     const id = location.hash.split('/')[3] || '';
     if (!topicPracticeSet || topicPracticeSet.id !== id) {
@@ -5537,7 +5550,7 @@
     }
     const set = topicPracticeSet;
     if (!set) {
-      $content.innerHTML = '<div class="space-home"><a class="back-link" href="#/practice">← Back to Practice</a><p>This practice set is not available on this device.</p></div>';
+      $content.innerHTML = `<div class="space-home"><a class="back-link" href="#/practice">${uiIcon('arrow-left')} Back to Practice</a><p>This practice set is not available on this device.</p></div>`;
       return;
     }
     if (!document.hidden) practiceSessions.resume(set);
@@ -5556,8 +5569,8 @@
     }).join('');
     shownIds = [];
     $content.innerHTML = `<div class="space-home practice-session">
-      ${finished ? `<a class="back-link practice-back-results" href="#/practice/set/${encodeURIComponent(set.id)}">&larr; Back to Results overview</a>` : ''}
-      <a class="back-link" href="#/practice">&larr; Back to Practice</a>
+      ${finished ? `<a class="back-link practice-back-results" href="#/practice/set/${encodeURIComponent(set.id)}">${uiIcon("arrow-left")} Back to Results overview</a>` : ''}
+      <a class="back-link" href="#/practice">${uiIcon("arrow-left")} Back to Practice</a>
       <section class="sh-section">
         <div class="practice-session-top"><div><h2>${mock ? 'Mock set' : 'Practice set'} · ${escapeAttr(practiceSetLabel(set))}</h2><p>${set.slugs.length} problem${set.slugs.length === 1 ? '' : 's'}${mock ? ' · '+set.clock.limitMs/60000+' minutes' : ' · '+escapeAttr(set.difficulty)+' difficulty'}${finished ? ' · Review' : ''}</p></div>
           ${mock && !finished ? `<div class="mock-clock" role="timer" aria-label="Time remaining"><span>Time remaining</span><strong class="mock-clock-value">${mockTime(practiceSessions.timeLeft(set))}</strong></div>` : ''}</div>
@@ -5572,7 +5585,7 @@
           ${aime || exact ? (set.answers[slug] ? `<p class="practice-submitted">${exact ? exactAnswerHtml(set.answers[slug]) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
           ${practiceExplanationHtml(p)}`
-          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact ? `<label for="practice-answer">${exact ? 'Exact value (fractions, sqrt, pi)' : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact ? 'text' : 'numeric'}" maxlength="${exact ? '120' : '3'}" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : practiceAnswerChoices(set, slug, false)}<label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
+          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact ? `<label for="practice-answer">${exact ? 'Exact value (fractions, sqrt, pi)' : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact ? 'text' : 'numeric'}" maxlength="${exact ? '120' : '3'}" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
       </section></div>`;
     const redraw = () => {
@@ -5582,18 +5595,42 @@
       if (selector) $content.querySelector(selector)?.focus({preventScroll:true});
     };
     $content.querySelectorAll('[data-practice-index]').forEach(b => b.addEventListener('click', () => { set.current = +b.dataset.practiceIndex; savePractice(); redraw(); $content.querySelector('.practice-question h3').setAttribute('tabindex','-1'); $content.querySelector('.practice-question h3').focus({preventScroll:true}); }));
-    $content.querySelector('#finish-practice')?.addEventListener('click', () => { practiceSessions.finish(set); savePractice(); redraw(); });
+    $content.querySelector('#finish-practice')?.addEventListener('click', async () => {
+      if (set.status === 'finished' || practiceFinishConfirm) return;
+      const remaining = set.slugs.filter(id => !set.answers[id] && practiceSessions.result(set, id) !== 'Voided').length;
+      if (remaining) {
+        const controller = new AbortController();
+        practiceFinishConfirm = controller;
+        const confirmed = await appConfirm({
+          title: `Finish with ${remaining} unanswered question${remaining === 1 ? '' : 's'}?`,
+          text: 'Finishing submits this set and makes your answers read-only.',
+          ok: 'Finish and review', signal: controller.signal
+        });
+        if (practiceFinishConfirm === controller) practiceFinishConfirm = null;
+        if (!confirmed) return;
+      }
+      if (topicPracticeSet !== set || set.status === 'finished' || location.hash !== '#/practice/set/' + encodeURIComponent(set.id)) return;
+      practiceSessions.finish(set); savePractice(); redraw();
+      updatePageTitle(getRoute()); window.AppAccessibility.focusMain();
+    });
     const answerChoices = $content.querySelectorAll('[data-practice-answer]');
-    const updateChoice = value => {
-      if (!practiceSessions.answer(set, slug, value, false)) { if(set.status==='finished'){savePractice();renderTopicPracticeSet();} return; }
-      schedulePracticeSave();
-      // Keep the buttons mounted so the browser can recognize a double-click.
+    const clearAnswer = $content.querySelector('#clear-practice-answer');
+    const answerInput = $content.querySelector('#practice-answer');
+    const syncAnswerUI = () => {
+      const value = set.answers[slug] || '';
       answerChoices.forEach(b => b.setAttribute('aria-checked', String(b.dataset.practiceAnswer === value)));
+      if (clearAnswer) clearAnswer.disabled = !value && !answerInput?.value;
       const n = set.slugs.filter(id => set.answers[id]).length;
       $content.querySelector('.practice-session-actions > span').textContent = `${n} of ${set.slugs.length} answered`;
       const current = $content.querySelector('[aria-current="step"]');
       current.classList.toggle('practice-answered', !!value);
       current.setAttribute('aria-label', `Problem ${set.current + 1}, ${value ? 'Answered' : 'Unanswered'}${set.marks[slug] ? ', marked for review' : ''}`);
+    };
+    const updateChoice = value => {
+      if (!practiceSessions.answer(set, slug, value, false)) { if(set.status==='finished'){savePractice();renderTopicPracticeSet();} return; }
+      schedulePracticeSave();
+      // Keep the controls mounted so double-click and keyboard clearing remain available.
+      syncAnswerUI();
     };
     answerChoices.forEach(b => {
       b.addEventListener('click', () => { if (set.answers[slug] !== b.dataset.practiceAnswer) updateChoice(b.dataset.practiceAnswer); });
@@ -5607,7 +5644,17 @@
       if(set.status==='finished'){savePractice();renderTopicPracticeSet();return;}
       e.target.setAttribute('aria-invalid', String(!valid));
       $content.querySelector('#practice-answer-error').textContent = valid ? '' : (exact ? 'Use a number or an expression with fractions, sqrt and pi. This value has not been saved.' : 'Use an integer from 000 to 999. This value has not been saved.');
-      if (valid) { schedulePracticeSave(); const n = set.slugs.filter(id => set.answers[id]).length; $content.querySelector('.practice-session-actions > span').textContent = `${n} of ${set.slugs.length} answered`; const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-answered', !!set.answers[slug]); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${set.marks[slug] ? ', marked for review' : ''}`); }
+      if (valid) { schedulePracticeSave(); syncAnswerUI(); }
+      else if (clearAnswer) clearAnswer.disabled = !e.target.value && !set.answers[slug];
+    });
+    clearAnswer?.addEventListener('click', () => {
+      if (!practiceSessions.answer(set, slug, '', aime)) { if(set.status==='finished'){savePractice();renderTopicPracticeSet();} return; }
+      if (answerInput) {
+        answerInput.value = ''; answerInput.setAttribute('aria-invalid', 'false');
+        $content.querySelector('#practice-answer-error').textContent = '';
+      }
+      schedulePracticeSave(); syncAnswerUI();
+      (answerInput || answerChoices[0])?.focus({preventScroll:true});
     });
     $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; schedulePracticeSave(); const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-marked', e.target.checked); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${e.target.checked ? ', marked for review' : ''}`); });
     savePractice();
@@ -5759,9 +5806,9 @@
           <h3>Lists</h3>
           <p class="learn-note">Browse study lists by level and topic, or make your own collection of cards.</p>
           <div id="pr-lists">
-            <h4 class="learn-sub pl-mine-h">Your lists <button type="button" class="pl-new-btn" id="lists-new" data-list-new aria-label="New list" title="New list">+</button></h4>
+            <h4 class="learn-sub pl-mine-h">Your lists <button type="button" class="pl-new-btn" id="lists-new" data-list-new aria-label="New list" title="New list">${uiIcon("plus")}</button></h4>
             <div class="pl-list pl-mine">
-              <a class="pl-item" href="#/list/starred"><span>&#9733; Starred</span><span class="pl-n">${liveCount(starred)}</span></a>
+              <a class="pl-item" href="#/list/starred"><span>${uiIcon("star")} Starred</span><span class="pl-n">${liveCount(starred)}</span></a>
               ${mine.map(listLink).join("")}
             </div>
           </div>
@@ -6077,7 +6124,7 @@
   }
   const learnPageLabel = x => x.label ? x.label : x.l ? `${x.l.code} ${escapeAttr(x.l.title)}` : x.end ? `${learnEndCode(x.c, x.end)} ${LEARN_END[x.end]}` : x.review ? `${x.c.code} Chapter Review` : `${x.c.code} Overview`;
   function learnArrow(href, dir, label) {
-    const icon = dir < 0 ? "&#8249;" : "&#8250;";
+    const icon = uiIcon(dir < 0 ? "chevron-left" : "chevron-right");
     return href ? `<a class="bk-arrow" href="${href}" aria-label="${dir < 0 ? "Previous" : "Next"}: ${escapeAttr(label.replace(/<[^>]*>/g, ""))}" title="${escapeAttr(label.replace(/<[^>]*>/g, "").replace(/\$/g, ""))}">${icon}</a>`
       : `<span class="bk-arrow is-off" aria-hidden="true">${icon}</span>`;
   }
@@ -6366,7 +6413,7 @@
       : bar("bk-bar2", "Introduction", `<span class="bk-bar-t">${howto ? HOW.label : TOC.label}</span>`, learnArrow(hashOf(prev), -1, prev ? learnPageLabel(prev) : ""), learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : ""));
     // The bottom: three small plain links, the previous page, Back to top, and the next page
     // (owner, 2026-10-31: discreet, no cards).
-    const footCard = (x, dir) => x ? `<a class="bk-foot-link bk-foot-${dir < 0 ? "prev" : "next"}" href="${hashOf(x)}" aria-label="${dir < 0 ? "Previous" : "Next"}: ${escapeAttr(learnPageLabel(x).replace(/<[^>]*>/g, ""))}">${dir < 0 ? `<span class="bk-foot-a">&#8249;</span>` : ""}<span class="bk-foot-t">${learnPageLabel(x)}</span>${dir > 0 ? `<span class="bk-foot-a">&#8250;</span>` : ""}</a>` : `<span></span>`;
+    const footCard = (x, dir) => x ? `<a class="bk-foot-link bk-foot-${dir < 0 ? "prev" : "next"}" href="${hashOf(x)}" aria-label="${dir < 0 ? "Previous" : "Next"}: ${escapeAttr(learnPageLabel(x).replace(/<[^>]*>/g, ""))}">${dir < 0 ? `<span class="bk-foot-a">${uiIcon("chevron-left")}</span>` : ""}<span class="bk-foot-t">${learnPageLabel(x)}</span>${dir > 0 ? `<span class="bk-foot-a">${uiIcon("chevron-right")}</span>` : ""}</a>` : `<span></span>`;
     const foot = `<nav class="bk-foot">
         ${footCard(prev, -1)}
         <a class="bk-foot-top" href="#" data-bk-top>Back to top</a>
@@ -6419,7 +6466,7 @@
     // The book's own page has no rail and no header (owner, 2026-10-31): the cover and a few
     // lines about the book, then its table of contents, each chapter a heading over its lessons.
     $content.innerHTML = `<div class="learn-page bk-contents bk-${b.id}">
-        <div class="back-row"><a class="back-link" href="#/learn">&larr; Learn</a></div>
+        <div class="back-row"><a class="back-link" href="#/learn">${uiIcon("arrow-left")} Learn</a></div>
         <div class="bk-hero">
           ${bookCoverHtml(b, "l")}
           <div class="bk-hero-text">
@@ -6427,7 +6474,7 @@
             <p class="learn-note">${escapeAttr(b.role.charAt(0).toUpperCase() + b.role.slice(1))}.</p>
             ${bookSearchHtml("contents")}
             <p class="bk-stats">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons</p>
-            ${start ? `<a class="hp-btn bk-start" href="${learnHash(b, start.c, lessonNum(start.l))}">${start.again ? "Continue" : "Start"} with ${start.l.code} &rarr;</a>` : `<p class="learn-note">No lesson in this book is written yet.</p>`}
+            ${start ? `<a class="hp-btn bk-start" href="${learnHash(b, start.c, lessonNum(start.l))}">${start.again ? "Continue" : "Start"} with ${start.l.code} ${uiIcon("arrow-right")}</a>` : `<p class="learn-note">No lesson in this book is written yet.</p>`}
           </div>
         </div>
         <h3 class="bk-toc-h">Contents</h3>
@@ -6515,7 +6562,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         </div>
         <div class="mk-pop">
           <div class="mk-top"><div class="mk-preview" aria-live="polite"></div><button type="button" class="mk-key mk-clear" data-mk="clear">Clear</button></div>
-          <div class="mk-keys">${MK_KEYS.map(([label, ins, name]) => `<button type="button" class="mk-key${/^\d$/.test(label) ? " mk-digit" : ""}${/^(back|left|right)$/.test(ins) ? " mk-edit" : ""}" data-mk="${escapeAttr(ins)}"${name ? ` aria-label="${name}" title="${name}"` : ""}>${label}</button>`).join("")}</div>
+          <div class="mk-keys">${MK_KEYS.map(([label, ins, name]) => `<button type="button" class="mk-key${/^\d$/.test(label) ? " mk-digit" : ""}${/^(back|left|right)$/.test(ins) ? " mk-edit" : ""}" data-mk="${escapeAttr(ins)}"${name ? ` aria-label="${name}" title="${name}"` : ""}>${ins === "left" ? uiIcon("arrow-left") : ins === "right" ? uiIcon("arrow-right") : ins === "back" ? uiIcon("backspace") : label}</button>`).join("")}</div>
           <p class="mk-hint">You can also type: sqrt(2), pi, 2^10, 3/4, and a comma between answers.</p>
         </div>
       </div>`;
@@ -6598,7 +6645,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       return `<li class="lp-prob" id="lp-${p.slug}" data-slug="${p.slug}">
           <div class="lp-prob-head"><span class="lp-prob-n">${name(i)}</span>${/\.$/.test(name(i)) ? "" : ` <span class="lp-prob-sep">&middot;</span>`} <a href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></div>
           ${MAA_RE.test(p.ref) ? `<section class="prob-st lp-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div></section>`
-            : p.url ? `<p class="prob-note"><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the problem on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} &#8599;</a></p>` : ""}
+            : p.url ? `<p class="prob-note"><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the problem on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} ${uiIcon("arrow-up-right")}</a></p>` : ""}
           <div class="lp-work">
             <textarea class="lp-notes" rows="2" placeholder="Type your solution, notes and/or work here." aria-label="Your solution and notes for ${escapeAttr(refShort(p.ref))}">${escapeAttr(saved.notes || "")}</textarea>
             <button type="button" class="hp-btn lp-show"${(saved.notes || "").trim() ? "" : " disabled"}>Show Solution</button>
@@ -6691,7 +6738,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const fig = ((window.MATH_DIAGRAMS || {})[id] || [])[0];
     return `<div class="lp-drawer-head">
           <div class="card-meta">${kindBadgeHtml(f)}${impBadgeHtml(f)}</div>
-          <button type="button" class="lp-drawer-close" aria-label="Close the card">&times;</button>
+          <button type="button" class="lp-drawer-close" aria-label="Close the card">${uiIcon("close")}</button>
         </div>
         <div class="detail lp-preview">
           <div class="lp-preview-title"><h3 class="card-name"><a class="lp-preview-name" href="#/f/${id}" title="Open the full card">${f.name}</a></h3><span class="detail-actions">${starBtnHtml(id)}${addListBtnHtml(id)}</span></div>
@@ -7133,7 +7180,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     });
     return Math.max(1, n);
   }
-  const learnCrumb = parts => `<span class="card-crumb">${parts.map(escapeAttr).join(" &rsaquo; ")}</span>`;
+  const learnCrumb = parts => `<span class="card-crumb">${parts.map(escapeAttr).join(" " + uiIcon("chevron-right") + " ")}</span>`;
   const capFirst = t => String(t || "").replace(/^./, ch => ch.toUpperCase());
   // The first paragraph of a lesson, for its result card (the card clamps it).
   const lessonLead = x => (String((learnLessonData(x.c, x.l || x.c.lessons[0]) || {}).body || "").split(/\n\s*\n/).find(t => t.trim() && !/^\{\{/.test(t.trim())) || "")
@@ -7220,7 +7267,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <div class="card-meta">${learnCrumb(["Textbooks", b.title])}</div>
             <div class="rs-box">${rows}</div>
             <p class="card-desc">${escapeAttr(capFirst(b.role))}.</p>
-            <div class="more-hint">Open &rsaquo;</div>
+            <div class="more-hint">Open ${uiIcon("chevron-right")}</div>
           </a>`;
       }
       if (it.lesson) {
@@ -7243,7 +7290,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <div class="card-meta">${learnCrumb(x.l ? [x.b.title, "Chapter " + x.c.code.slice(1), x.l.code] : [x.b.title, "Chapter " + x.c.code.slice(1)])}</div>
             <div class="rs-box">${inner}</div>
             <p class="card-desc">${escapeAttr(lessonLead(x))}</p>
-            <div class="more-hint">Open &rsaquo;</div>
+            <div class="more-hint">Open ${uiIcon("chevron-right")}</div>
           </a>`;
       }
       if (it.contest) {
@@ -7254,7 +7301,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <div class="card-head"><h4 class="card-name">${escapeAttr(/^\d{4}\b/.test(c.cname) ? c.cname : c.year + " " + c.cname)}</h4><span class="card-tags"><span class="badge badge-contest">CONTEST</span></span></div>
             <div class="card-meta"><span class="level-range">${escapeAttr(c.fam)} &middot; ${c.problems.length} problem${c.problems.length === 1 ? "" : "s"}</span></div>
             ${rows.length ? `<div class="rs-box">${rows.map(([sid, k]) => `<div class="rs-line"><span class="rs-v">${escapeAttr(SUBJECT_LABELS[sid] || sid)}</span><span class="rs-n">${k}</span></div>`).join("")}</div>` : ""}
-            <div class="more-hint">Open &rsaquo;</div>
+            <div class="more-hint">Open ${uiIcon("chevron-right")}</div>
           </a>`;
       }
       if (it.problem) {
@@ -7267,7 +7314,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
               return ids.length ? `<div class="rs-line"><span class="rs-k">${label}</span><span class="rs-v">${ids.map(id => BY_ID[id].formula.name).join(", ")}</span></div>` : "";
             }).join("")}</div>
             ${p.strategy ? `<p class="card-desc">${p.strategy}</p>` : ""}
-            <div class="more-hint">Open &rsaquo;</div>
+            <div class="more-hint">Open ${uiIcon("chevron-right")}</div>
           </a>`;
       }
       const l = it.list;
@@ -7278,13 +7325,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
             : `<div class="rs-box">${liveIds(l).slice(0, 4).map(id => `<div class="rs-line"><span class="rs-v">${BY_ID[id].formula.name}</span></div>`).join("")}</div>`}
           ${l.blurb ? (l.builtinSet ? `<p class="card-desc">${escapeAttr(l.blurb)}</p>`
             : `<div class="card-desc" data-description-formatted>${listDescriptionHtml(l.blurb)}</div>`) : ""}
-          <div class="more-hint">Open &rsaquo;</div>
+          <div class="more-hint">Open ${uiIcon("chevron-right")}</div>
         </a>`;
     };
     const parts = [];
     parts.push(`<p class="results-meta"><strong>${total}</strong> result${total === 1 ? "" : "s"} for &ldquo;<strong>${escapeAttr(state.query.trim())}</strong>&rdquo;${counts ? ` <span class="rm-kinds">${counts}</span>` : ""}${partialNote}</p>`);
     if (!total) {
-      parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No matches. Try broader keywords, such as &ldquo;area&rdquo;, &ldquo;mod&rdquo;, &ldquo;roots&rdquo;, or a contest like &ldquo;2024 AIME&rdquo;.</div>`);
+      parts.push(`<div class="empty-state"><div class="big">${uiIcon("empty")}</div>No matches. Try broader keywords, such as &ldquo;area&rdquo;, &ldquo;mod&rdquo;, &ldquo;roots&rdquo;, or a contest like &ldquo;2024 AIME&rdquo;.</div>`);
     } else {
       parts.push(`<div class="cards search-results">${items.map(itemHtml).join("")}</div>`);
       if (total > PAGE) parts.push(`<button type="button" class="show-more-btn rs-more">Show more results</button>`);
@@ -7373,7 +7420,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return cand.slice(0, limit || 12);
   }
   const advTagChipHtml = t => `<button class="adv-tag-chip${t.kind === "topic" ? " adv-tag-topic" : t.kind === "group" ? " adv-tag-group" : ""}" data-adv-tag="${escapeAttr(t.label)}">${escapeAttr(t.label)}</button>`;
-  const advTagSelHtml = l => `<button class="filter-chip active adv-tag-sel" data-adv-tag-remove="${escapeAttr(l)}">${escapeAttr(l)} <span class="adv-tag-x">&times;</span></button>`;
+  const advTagSelHtml = l => `<button class="filter-chip active adv-tag-sel" data-adv-tag-remove="${escapeAttr(l)}" aria-label="Remove tag ${escapeAttr(l)}">${escapeAttr(l)} <span class="adv-tag-x">${uiIcon("close")}</span></button>`;
   // How many cards carry at least one of the currently-drafted tags.
   function advTagCount() {
     const tags = [...advDraft.tags];
@@ -7431,7 +7478,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       <div class="modal adv-modal adv-tagmodal" role="dialog" aria-label="Browse formulas by tag">
         <div class="modal-head">
           <h3 tabindex="-1">Browse by Tag</h3>
-          <button class="modal-close" aria-label="Close">&times;</button>
+          <button class="modal-close" aria-label="Close">${uiIcon("close")}</button>
         </div>
         <div class="adv-tagpick">
           <input class="adv-tag-search" id="adv-tag-search" type="search" placeholder="Search tags&hellip; (e.g. &ldquo;circle&rdquo;, &ldquo;modular&rdquo;, &ldquo;recursion&rdquo;)" aria-label="Search tags" autocomplete="off">
@@ -7500,14 +7547,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const cap = l => l.charAt(0).toUpperCase() + l.slice(1);
     const many = labels.length > 1;
     const parts = [`
-      <div class="back-row"><a class="back-link" href="#" data-history-back>&larr; Back</a></div>
+      <div class="back-row"><a class="back-link" href="#" data-history-back>${uiIcon("arrow-left")} Back</a></div>
       <div class="section-header topic-header">
         <div class="book-eyebrow">${many ? "Tags" : "Tag"}</div>
         <h2>${escapeAttr(cap(labels.join(", ")))}</h2>
         <p class="topic-blurb">Every card tagged ${escapeAttr(labels.join(" or "))}, across formulas, methods, and patterns${many ? "; the cards matching the most of these tags come first" : ""}. <button class="adv-link" id="tag-edit">Edit tags</button></p>
       </div>`];
     if (!entries.length) {
-      parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No cards carry ${many ? "these tags" : "this tag"} at the current filters.</div>`);
+      parts.push(`<div class="empty-state"><div class="big">${uiIcon("empty")}</div>No cards carry ${many ? "these tags" : "this tag"} at the current filters.</div>`);
     } else {
       parts.push(`<p class="results-hint"><strong>${entries.length}</strong> card${entries.length === 1 ? "" : "s"}.</p>`);
       parts.push(`<div class="cards">${entries.map(e => cardHtml(e, true, null)).join("")}</div>`);
@@ -7541,7 +7588,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     results.hidden = false;
     results.innerHTML = hits.length
       ? hits.map(e => `<button class="list-add-row" data-list-add-id="${escapeAttr(e.formula.id)}">
-            <span class="lar-plus">+</span>
+            <span class="lar-plus">${uiIcon("plus")}</span>
             <span class="lar-name">${e.formula.name}</span>
             <span class="lar-crumb">${escapeAttr(e.section.title)}</span>
           </button>`).join("")
@@ -7688,11 +7735,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <input type="search" class="list-add-input" placeholder="Search cards to add&hellip;" autocomplete="off" aria-label="Search cards to add to this list">
         <div class="list-add-results" hidden></div>
       </div>`;
-    const glyph = isBuiltin ? `<span class="list-ico">&#9670;</span>` : `<span class="list-emoji">${listGlyph(l)}</span>`;
+    const glyph = isBuiltin ? `<span class="list-ico">${uiIcon("diamond")}</span>` : `<span class="list-emoji">${listGlyph(l)}</span>`;
     const kindName = isBuiltin ? ((LIST_KINDS.find(([k]) => k === l.kind) || [null, "Study list"])[1]) : "Your list";
     return `
       <div class="detail">
-        <div class="back-row"><a class="back-link" href="#/learn" data-goto="pr-study">&larr; Learn</a></div>
+        <div class="back-row"><a class="back-link" href="#/learn" data-goto="pr-study">${uiIcon("arrow-left")} Learn</a></div>
         <div class="section-header topic-header">
           <div class="book-eyebrow">Learn &middot; Lists</div>
           <div class="list-detail-head">
@@ -7721,8 +7768,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // An app-styled confirmation in place of the browser's (owner's standing preference): a modal
   // card with a title, a line, Cancel and the action. Escape, Cancel or a click outside
   // declines; Cancel has the focus, so a stray Enter does nothing harmful. Resolves true or false.
-  function appConfirm({ title, text, ok = "OK", danger = false }) {
+  function appConfirm({ title, text, ok = "OK", danger = false, signal }) {
     return new Promise(resolve => {
+      if (signal?.aborted) { resolve(false); return; }
       const d = document.createElement("dialog");
       d.className = "app-confirm";
       d.setAttribute("aria-labelledby", "app-confirm-t");
@@ -7734,7 +7782,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <button type="submit" value="ok" class="hp-btn${danger ? " app-confirm-danger" : ""}">${escapeAttr(ok)}</button>
           </div></form>`;
       document.body.appendChild(d);
-      d.addEventListener("close", () => { resolve(d.returnValue === "ok"); d.remove(); }, { once: true });
+      const abort = () => { if (d.open) d.close("cancel"); };
+      signal?.addEventListener("abort", abort, { once:true });
+      d.addEventListener("close", () => { signal?.removeEventListener("abort", abort); resolve(d.returnValue === "ok" && !signal?.aborted); d.remove(); }, { once: true });
       d.addEventListener("click", e => { if (e.target === d) d.close("cancel"); });
       d.showModal();
       d.querySelector('button[value="cancel"]').focus();
@@ -7851,7 +7901,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const hits = q ? (searchFormulas(q).results || []).filter(e => !inList.has(e.formula.id)).slice(0, 4) : [];
     res.hidden = !hits.length;
     res.innerHTML = hits.length ? `<div class="ge-add-h">Add to this list</div>` + hits.map(e => `<button type="button" class="list-add-row" data-ge-add="${escapeAttr(e.formula.id)}">
-        <span class="lar-plus">+</span><span class="lar-name">${e.formula.name}</span><span class="lar-crumb">${escapeAttr(e.section.title)}</span></button>`).join("") : "";
+        <span class="lar-plus">${uiIcon("plus")}</span><span class="lar-name">${e.formula.name}</span><span class="lar-crumb">${escapeAttr(e.section.title)}</span></button>`).join("") : "";
     if (hits.length) renderMath(box);
   }
   function geAddCard(id) {
@@ -7925,7 +7975,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <button type="button" class="ge-row-name" data-ge-act="rename" data-i="${i}" title="Rename">${escapeAttr(sec.title || "Untitled section")}</button>
           <span class="ge-row-n">${ids(sec).length}</span>
           <span class="ge-row-tools">
-            <button type="button" class="ge-ico ge-del" data-ge-act="delete" data-i="${i}" aria-label="Delete section" title="Delete section">&times;</button>
+            <button type="button" class="ge-ico ge-del" data-ge-act="delete" data-i="${i}" aria-label="Delete section" title="Delete section">${uiIcon("close")}</button>
             ${secs.length > 1 ? `<button type="button" class="ge-ico ge-handle" data-ge-handle="${i}" aria-label="Reorder ${escapeAttr(sec.title || "Untitled section")}: drag, or press the up and down arrows" title="Drag to reorder">${GE_GRIP}</button>` : ""}
           </span>
         </div>`).join("");
@@ -7940,8 +7990,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
         </div>
       </div>` : "";
     return `<div class="ge" data-ge-list="${escapeAttr(l.id)}">
-      <div class="back-row ge-back-row"><a class="back-link" href="#/list/${escapeAttr(l.id)}" data-ge-act="done">&larr; Back to list</a>
-        <a class="back-link" href="#/learn" data-goto="pr-study">&larr; Learn</a></div>
+      <div class="back-row ge-back-row"><a class="back-link" href="#/list/${escapeAttr(l.id)}" data-ge-act="done">${uiIcon("arrow-left")} Back to list</a>
+        <a class="back-link" href="#/learn" data-goto="pr-study">${uiIcon("arrow-left")} Learn</a></div>
       <div class="ge-head">
         <div><div class="book-eyebrow">Learn &middot; Lists &middot; Custom groups</div><h2${l.builtin ? "" : ` data-list-title="${escapeAttr(l.id)}" title="Click to rename"`}>${escapeAttr(l.name)}</h2></div>
         <button type="button" class="hp-btn ge-done" data-ge-act="done" title="Save your sections and close the editor">Save</button>
@@ -8738,7 +8788,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const newer = years[i - 1], older = years[i + 1];
     const yhref = y => `#/problems/${famSlug(fam)}/${y}`;
     $content.innerHTML = `
-      <div class="back-row"><a class="back-link" href="#/practice">&larr; Practice</a></div>
+      <div class="back-row"><a class="back-link" href="#/practice">${uiIcon("arrow-left")} Practice</a></div>
       <div class="section-header topic-header">
         <div class="book-eyebrow">Practice</div>
         <h2>${escapeAttr(fam)} <span class="db-main-year">${year}</span></h2>
@@ -8752,8 +8802,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), ""))}</button>`).join("")}</div>` : ""}
       ${body}
       <nav class="topic-nav" aria-label="Neighbouring years">
-        ${older ? `<a class="topic-step" href="${yhref(older)}"><span class="ts-dir">&larr; Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
-        ${newer ? `<a class="topic-step topic-step-next" href="${yhref(newer)}"><span class="ts-dir">Later &rarr;</span><span class="ts-name">${escapeAttr(fam)} ${newer}</span></a>` : ""}
+        ${older ? `<a class="topic-step" href="${yhref(older)}"><span class="ts-dir">${uiIcon("arrow-left")} Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
+        ${newer ? `<a class="topic-step topic-step-next" href="${yhref(newer)}"><span class="ts-dir">Later ${uiIcon("arrow-right")}</span><span class="ts-name">${escapeAttr(fam)} ${newer}</span></a>` : ""}
       </nav>`;
     renderMath($content);
     if (route.paper && shownG > 0) setTimeout(() => $content.querySelector(`.db-group[data-g="${shownG}"]`)?.scrollIntoView({ block: "start", behavior: "instant" }), 0);
@@ -8997,13 +9047,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const key = "problem-" + p.slug;
     const open = (!preview ? savedStrategy(key) : undefined) ?? (state.strategy !== "click");
     const hide = can && !open;
-    return `<div class="prob-chain"><div class="chain-head"><h4>How this problem works</h4>${can ? `<button type="button" class="chain-toggle" ${preview ? "" : `data-solution-key="${key}"`} aria-expanded="${!hide}">${hide ? "+ Show" : "&minus; Hide"}</button>` : ""}</div>
+    return `<div class="prob-chain"><div class="chain-head"><h4>How this problem works</h4>${can ? `<button type="button" class="chain-toggle" ${preview ? "" : `data-solution-key="${key}"`} aria-expanded="${!hide}">${uiIcon(hide ? "plus" : "minus")} ${hide ? "Show" : "Hide"}</button>` : ""}</div>
         <div class="chain-body"${hide ? " hidden" : ""}>${inner}</div>
       </div>`;
   }
 
   const backToLearnHtml = key => backFromLearn && backFromLearn.to === key
-    ? `<a class="back-link" href="${backFromLearn.hash}" data-history-back>&larr; Back to ${escapeAttr(backFromLearn.label)}</a>` : "";
+    ? `<a class="back-link" href="${backFromLearn.hash}" data-history-back>${uiIcon("arrow-left")} Back to ${escapeAttr(backFromLearn.label)}</a>` : "";
   // A problem page's markup, shared by the page itself and the Settings preview (pv), so the
   // preview shows exactly what the page does (owner, 2026-10-31). The preview has no journey to
   // go back along, and its statement and solution boxes carry classes instead of the page's ids.
@@ -9021,9 +9071,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <div class="back-row">
           ${pv ? "" : backToLearnHtml("problem:" + p.slug)}
           ${!pv && backFromProblem && backFromProblem.slug === p.slug && BY_ID[backFromProblem.fid]
-            ? `<a class="back-link" href="#/f/${backFromProblem.fid}">&larr; Back to ${escapeAttr(BY_ID[backFromProblem.fid].formula.name)}</a>`
+            ? `<a class="back-link" href="#/f/${backFromProblem.fid}">${uiIcon("arrow-left")} Back to ${escapeAttr(BY_ID[backFromProblem.fid].formula.name)}</a>`
             : ""}
-          <a class="back-link" href="#/problems/${famSlug(p.fam)}/${p.year}">&larr; ${escapeAttr(p.fam)} ${p.year}</a>
+          <a class="back-link" href="#/problems/${famSlug(p.fam)}/${p.year}">${uiIcon("arrow-left")} ${escapeAttr(p.fam)} ${p.year}</a>
         </div>
         <div class="book-eyebrow prob-eyebrow">Practice</div>
         <div class="detail-head">
@@ -9035,7 +9085,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
         </section>` : ""}
         <p class="prob-note">${p.urlLabel === "archive" ? "The full statement and the official solutions live on the contest's own archive, as a PDF for the whole round." : "Solutions live on the Art of Problem Solving wiki."}</p>
-        ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} <span aria-hidden="true">&#8599;</span></a>` : ""}
+        ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
         ${chainHtml}
         ${SOLUTION_YEARS.has(String(p.year)) ? `<section class="prob-chain prob-solution${pv ? " pv-sol" : ""}"${pv ? "" : ` id="prob-sol"`} data-slug="${p.slug}" hidden>
           <h4>Solution</h4>
@@ -9402,7 +9452,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       // replace, not push: Back should return to where the command was typed, not re-roll it
       if (to) { location.replace(to); return; }
       $content.innerHTML = specialShell("Nothing to open", `<p class="special-note">${
-        (cmd.name === "RandomStarred" || /^starred$/i.test(route.arg || "")) ? "Your Starred list is empty. Star a card with &#9734; first." : "Nothing matches that."}</p>`);
+        (cmd.name === "RandomStarred" || /^starred$/i.test(route.arg || "")) ? `Your Starred list is empty. Use a card's star button ${uiIcon("star-outline")} first.` : "Nothing matches that."}</p>`);
       return;
     }
     if (cmd && cmd.page) {
@@ -9596,6 +9646,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   });
 
   function render() {
+    cancelPracticeFinishConfirm();
     clearInterval(mockClockInterval);mockClockInterval=0;
     const route = getRoute();
     // Leaving a list closes its group editor, tidying the sections as Done would.
@@ -9760,7 +9811,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <div class="nav-space-head">
           ${group === "practice" || group === "learn"
             ? `<a class="nsh-label" href="#/${group}" title="${group === "learn" ? "Textbooks, study lists, and your lists" : "Contests and random problems"}">${SPACES[group].label}</a>`
-            : `<span class="nsh-label">${SPACES[group].label}</span><button type="button" class="nsh-info" data-info="${group}" aria-label="About ${SPACES[group].label}" aria-expanded="false">i</button>`}
+            : `<span class="nsh-label">${SPACES[group].label}</span><button type="button" class="nsh-info" data-info="${group}" aria-label="About ${SPACES[group].label}" aria-expanded="false">${uiIcon("info")}</button>`}
           <span class="nsh-ask">${SPACES[group].ask}</span>
         </div>
         <div class="nav-group-body"><div class="nav-group-inner">
@@ -10063,7 +10114,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       <div class="modal info-modal" role="dialog" aria-label="About ${SPACES[name].label}" data-tint="${name}">
         <div class="modal-head">
           <h3>${SPACES[name].label}</h3>
-          <button class="modal-close" aria-label="Close">&times;</button>
+          <button class="modal-close" aria-label="Close">${uiIcon("close")}</button>
         </div>
         <div class="info-body">
           <p class="info-ask">${SPACES[name].ask}</p>
@@ -10405,7 +10456,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       <div class="modal settings-modal" role="dialog" aria-label="Filters">
         <div class="modal-head">
           <h3>Filters</h3>
-          <button class="modal-close" aria-label="Close">&times;</button>
+          <button class="modal-close" aria-label="Close">${uiIcon("close")}</button>
         </div>
         <div class="settings-body">
           <div class="settings-group">
@@ -10703,10 +10754,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     openNewListDialog();
   }, true);
   function makeBlankList() {
-    const taken = new Set(lists.items.map(l => l.name));
-    let name = "Untitled list", k = 2;
-    while (taken.has(name)) name = "Untitled list " + k++;
-    const id = createList(name);
+    const id = createList();
     pendingRename = id;
     location.hash = "#/list/" + id;
   }

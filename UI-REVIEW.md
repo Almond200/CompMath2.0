@@ -60,3 +60,43 @@ The general browser review covered 132 states: Home, Learn shelf, book contents/
 The usual-workflow pass uses actual UI actions in fresh browser storage: scroll to and open a card; click main search without moving the page; search/apply a circle tag; create and name a list; search/add three cards; create/name a section; move cards; Undo/Redo; save and reload; generate a two-problem topic set; answer and mark; save/exit and resume; finish; open problem review and return to Results overview; reload Completed sets. List contents/sections and practice answers/marks/completion are checked after reload. These checks exercise the affected everyday flows, not every possible app state.
 
 All four usual-workflow runs passed (light/dark × desktop/mobile), including saved lists and completed practice sets after reload. No additional functional defect was found in these runs. The final batch also passed all repository gates, five Node suites, generated notes/shelf/tree and asset-version checks.
+
+## SVG symbols and Mac appearance (2026-11-09, after #306)
+
+The owner requested replacing the remaining font-dependent UI symbols while keeping their Mac appearance. Filled/outlined stars, hamburger bars, dropdown/disclosure triangles, close controls, list diamonds, arrows/chevrons, empty-state symbols and action icons now use SVG. The shared JavaScript helper is `js/ui-icons.js`; the header embeds the same shapes directly, and CSS-generated disclosure symbols use SVG masks with Safari-compatible prefixes. Corresponding flashcard, quiz and topic-tree symbols are updated too. Mathematical notation, prose/list bullets and descriptive native-select text retain their normal typography.
+
+The hamburger's horizontal padding could squeeze its content; it now has zero padding and a fixed SVG box. Both the SVG box and drawn shape are centered. Star shapes retain the filled/outline distinction, rounded points, existing sizes, gold selected state and hover behavior. Other symbols inherit their existing colours. SVGs are decorative to screen readers; controls retain their accessible names, and tag removal gets an explicit Remove tag label. Star changes from the add-to-list menu and reload keep SVG rather than restoring a text character. Settings search retains its temporary underline when a disclosure marker is highlighted.
+
+The optional browser check is `tools/check-ui-icons.cjs` (serve the checkout and set CHROME/COMPMATH_URL; UI_ARTIFACT_DIR captures screenshots). It measures both drawn and box centering under alternate font families and exercises star persistence/menu synchronization, mobile menu/dropdown behavior, tag removal, modal closing, book navigation, source links and experimental-page symbols.
+
+## Unanswered submission and answer clearing (2026-11-09)
+
+At the owner’s request, manual Finish and review now confirms only when non-voided questions remain unanswered. The prompt states the unanswered count and that finishing locks answers, uses the existing centered app dialog and initially focuses Cancel. Fully answered sets still submit in one click. Cancel/Escape leaves the set editable; leaving the route cancels the pending confirmation. Mock time continues while a manual prompt is open, and expiry submits automatically and dismisses that prompt.
+
+A small Clear answer button appears under each active answer, including multiple-choice, AIME integers and mock exact values. It is disabled when blank, clears saved state and validation errors, updates answered counts/navigation, and returns focus to the answer controls. Existing double-click and Delete/Backspace clearing remain. Submitted review has no clearing control. The optional browser check is `tools/check-practice-actions.cjs`.
+
+Final validation for this batch: all repository gates, five Node suites, generated notes/shelf/tree, lab versions and diff checks passed. SVG checks passed in both themes at 1280/375px, including actual flashcard/quiz/topic-tree symbols; the general layout review passed 132 page/text-size states. All four usual-workflow runs passed. The 36-scenario accessibility check also passed with the new controls, and all four practice-action runs passed: clear/persistence/invalid input in multiple-choice/AIME/exact forms, Cancel/Escape, conditional submission, locked review, voided-question handling, mock expiry with a prompt open and route cleanup. Screenshots inspected.
+
+## Compact focus and square add buttons (2026-11-09, after #307)
+
+The owner’s add-to-list screenshot showed the new-name field acquiring a second oversized outer ring. Text-entry controls now use a focused border or their inset editor underline. This includes the popup, Settings command field, numeric widgets, lesson notes and section name/note editors. Checkboxes/radios/sliders and other controls keep visible keyboard indicators; ordinary outlines retain their two-pixel width with a smaller one-pixel gap, and dense-row rings stay inside their boundaries. The owner approved the existing Practice answer highlight, so that field keeps its previous three-pixel-gap ring.
+
+The card’s + button is square rather than widened by horizontal padding: 24px on regular pointers, with the existing 40px coarse-pointer target. The centered SVG retains its size. Popup Create now uses the exact shared soft-button classes used by Cancel: gray at rest, blue text/border on hover, without solid blue fill. Its compact popup dimensions are retained. The new-name field also has an explicit accessible label.
+
+Focused browser checks passed in both themes at 1280/375px for popup creation, command/numeric fields, lesson notes, section name/note editing, preserved Practice answer highlight and checkbox focus. The 36-scenario accessibility check passed. `tools/check-ui-icons.cjs` now also verifies square add-button bounds, compact popup focus and the Create action’s soft background/blue hover.
+
+The final popup/icon checks passed in all four theme/width combinations, including soft gray Create hover without a solid fill, square + bounds and preserved star/menu behavior. Screenshots inspected; all repository gates and diff checks passed.
+
+## Untitled defaults and answer focus update (2026-11-09, after #308)
+
+Submitting the add-to-list popup with an empty or whitespace-only name now creates the next available Untitled list name and adds the current card, then closes with the normal toast. The shared `createList` fallback provides `Untitled list`, `Untitled list 2`, etc.; Learn’s blank-list entry point uses the same rule. Explicit names still trim whitespace. Existing names and stored list contents are preserved.
+
+The owner subsequently requested the smaller highlight on the Practice answer input too, overriding the earlier preference to keep its outer ring. It now uses the same single blue focused border as other text-entry fields. Keyboard interaction and answer storage are unchanged.
+
+Validation passed in light/dark at 1280/375px for blank/whitespace creation, numbered-name collisions/gaps, explicit-name trimming, current-card membership, reload persistence, Learn’s shared numbering and compact answer focus. Extended popup/icon checks and all repository gates passed.
+
+## Answer focus colour correction (2026-11-09, after #309)
+
+The owner correctly reported that the answer highlight had disappeared. Its base ID-selector border declaration overrode the generic low-specificity compact focus colour, while the outer ring had been removed. The explicit `#practice-answer:focus` rule now supplies the actual blue border and a one-pixel inset reinforcement. This forms a compact two-pixel blue contour inside the existing field bounds, with no outer gap or size change. The browser check now verifies rendered blue border/shadow colours rather than only absence of an outline.
+
+The correction passed all four light/dark × 1280/375px practice-action runs and all repository gates.

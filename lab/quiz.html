@@ -109,6 +109,7 @@
               margin-bottom: 7px; text-decoration: none; color: var(--text); font-size: 14px; }
   .missed a span { color: var(--text-faint); font-size: 12px; display: block; }
   .note { font-size: 12.5px; color: var(--text-faint); margin-top: 18px; }
+  .ui-icon { width: 1em; height: 1em; vertical-align: -0.125em; }
 </style>
 </head>
 <body>
@@ -134,6 +135,7 @@
 <script src="../js/data/built-in-lists.js?v=131"></script>
 <script src="../js/data/diagrams/geometry-diagrams.js?v=316"></script>
 <script src="../js/data/diagrams/general-diagrams.js?v=188"></script>
+<script src="../js/ui-icons.js?v=2"></script>
 <script src="lab-common.js?v=3"></script>
 <script>
 (function () {
@@ -378,7 +380,7 @@
     var last = Q.i === Q.qs.length - 1;
     document.getElementById("after").innerHTML =
       '<div class="after"><b>' + esc(q.card.name) + "</b> — " + esc(q.card.sectionTitle) +
-      " &rsaquo; " + esc(q.card.subsection) +
+      " " + window.AppIcons.svg("chevron-right") + " " + esc(q.card.subsection) +
       ' &middot; <a href="../index.html#/f/' + q.card.id + '" target="_blank">open the card</a></div>' +
       '<div class="row"><button class="primary" id="next">' + (last ? "See score" : "Next") + "</button></div>";
     renderMathIn(document.getElementById("after"));
