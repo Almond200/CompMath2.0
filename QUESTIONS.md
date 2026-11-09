@@ -6,7 +6,7 @@ A candidate card lists, under "Needed by", the problems whose routes would cite 
 
 ## Current decision status (checked 2026-11-08)
 
-P54–P63 and TQ6–TQ19 are settled. P64–P67 and TQ20 (multi-stage journeys and stops) are pending; the next available ids are P68 and TQ21. Approved/rejected rows and older proposals below are retained as the decision record; technical follow-ups are tracked in PLAN.md and TEXTBOOK-REVISION.md.
+P54–P63 and TQ6–TQ19 are settled. P64–P68 and TQ20 (multi-stage journeys and stops) are pending; the next available ids are P69 and TQ21. Approved/rejected rows and older proposals below are retained as the decision record; technical follow-ups are tracked in PLAN.md and TEXTBOOK-REVISION.md.
 
 ### Topic-tree candidates from the tagging pass (T3; started 2026-11-06)
 
@@ -32,10 +32,11 @@ A kind of problem the tree has no node for, seen in several problems (the archet
 
 ### Card candidates from the tagging pass
 
-New rows go at the top of this table, as the next P-number; the next is P68. For this pass a somewhat fringe pattern or method is listed too, with every problem that needs it (owner, 2026-11-06). Answer per row: yes, no, or a different rating.
+New rows go at the top of this table, as the next P-number; the next is P69. For this pass a somewhat fringe pattern or method is listed too, with every problem that needs it (owner, 2026-11-06). Answer per row: yes, no, or a different rating.
 
 | # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by | Answer |
 |---|---|---|---|---|---|
+| P68 | Counting paths in a directed acyclic network by setting the destination count to one and summing successor counts at each earlier vertex (or summing predecessor counts forward) | method, counting / graphs; an explicit extension of Counting Paths by Filling the Grid to directed networks | AMC, lower | 1986 AJHSME #9 (six directed routes through a triangular network). It cites Recursive Counting meanwhile; the grid card currently specifies lattice cells and a grid sweep | Pending; one problem so far. |
 | P67 | Counting occurrences of a specified digit in consecutive integer labels: count each decimal position separately and add, so a label can contribute more than once; full blocks repeat regularly and a partial final block is counted separately | method, number theory / digits, or an explicit extension of Constructive Counting | AMC, lower | 1993 AJHSME #22 (twenty-two available digit 2s, page labels through 119). It cites Constructive Counting meanwhile; Digit Count is the logarithmic count of all digits in one number, not occurrences of a specified digit | Pending; one problem so far. |
 | P66 | Exploring graph neighbors in layers: vertices reachable in at most $k$ edges are obtained by repeatedly adding neighbors of the preceding layer, without counting a vertex twice | method, counting / graphs and paths | AMC, lower | 2003 AMC 8 #18 (friends and friends of friends, exactly the vertices at distance at most two from Sarah). No tree-only card is tagged on this graph with a cycle | Pending; one problem so far. |
 | P65 | Propagating finite constraints in a grid or arrangement: eliminate values forbidden by a row, column, or adjacent edge; fill a forced value and repeat | method, counting / logic, or broaden the existing Logical Deduction and Truth-Tellers pattern | AMC, lower | 2007 AMC 8 #9 (Latin-grid forced cells), #11 (matching tile edges), 2004 AMC 8 #11 (ordered-number constraints), 2003 AMC 8 #17 (partitioning families by traits), 2001 AMC 8 #20 (deduction from knowledge of test scores), 1999 AMC 8 #6 (ordering money amounts), 1993 AJHSME #14 (Latin grid) and #23 (runner order). Both had cited Truth-Tellers, but their routes never reason about truthful/false statements. 2008 AMC 8 #14 also completes each Latin grid by forced cells, while its counting route still cites Constructive Counting | Pending; no replacement tag forced on #9/#11 meanwhile. |
