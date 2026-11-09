@@ -47,7 +47,7 @@ const groups = [
   ['Right triangles', ['geo.basic.pyth', 'geo.tri.special.right'], ['geo.basic.pyth.fold']],
   ['Isosceles triangles', ['geo.basic.angle.isosceles', 'geo.tri.special.isos']],
   ['Counting with rotations and reflections', ['cp.tech.sym']],
-  ['Polynomial values and interpolation', ['alg.poly.remainder.values', 'alg.poly.construct.interp']]
+  ['Polynomial values and interpolation', ['alg.poly.construct.interp']]
 ].map(([name, include, exclude]) => ({ name, ...pool(include, exclude) }));
 const leaves = rows.filter(n => !n.children);
 function coverage(roots, destinations) {
