@@ -5398,6 +5398,24 @@
       cap(430, 290, "The segment from 3 to 4i (gold, length 5) and the region R (blue): every point within 1 of it, as the dashed unit disc slides along the segment. R is a 5-by-2 rectangle with a half disc on each end." + MM(ok))
     ]);
   })();
+  // 1993 AJHSME #25: the 1.5-inch square, rotated 45 degrees about a grid corner.
+  PROB["1993-ajhsme-25"] = (() => {
+    const k = 56, O = [215, 145], a = 1.5 / Math.sqrt(2), Q = (x, y) => add(O, [k * x, -k * y]);
+    const cells = [];
+    for (let x = -2; x < 2; x++) for (let y = -2; y < 2; y++) {
+      const dx = x < 0 ? -x - 1 : x, dy = y < 0 ? -y - 1 : y;
+      if (dx + dy < a) cells.push([x, y]);
+    }
+    const V = [Q(a, 0), Q(0, a), Q(-a, 0), Q(0, -a)];
+    const ok = cells.length === 12 && a > 1 && Math.abs(dist(V[0], V[1]) / k - 1.5) < 1e-9;
+    return wrap(430, 300, [
+      ...cells.map(([x, y]) => poly([Q(x, y), Q(x + 1, y), Q(x + 1, y + 1), Q(x, y + 1)], "none", 0, GLDS)),
+      ...[-2, -1, 0, 1, 2].flatMap(t => [seg(Q(t, -2), Q(t, 2), FNT, 1), seg(Q(-2, t), Q(2, t), FNT, 1)]),
+      poly(V, ACC, 2, ACCS), dot(O, DIM, 3), txt([215, 280], "Card side length: 1.5 inches", DIM, 12),
+      cap(430, 300, "The card is centered at the marked grid corner and turned 45°. Each gold cell meets the card in positive area." + MM(ok))
+    ]);
+  })();
+
   // 1996 AJHSME #25: normalize R to 1 and illustrate a point r = R/3 from the center.
   PROB["1996-ajhsme-25"] = (() => {
     const O = [210, 135], R = 98, r = R / 3, P = add(O, [r, 0]), B = add(O, [R, 0]);
