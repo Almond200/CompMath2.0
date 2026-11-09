@@ -3120,6 +3120,9 @@
     else fam = core.replace(/\s*[AB]$|\s*I{1,3}$/, "").trim() || core;
     return { year, cname, fam, num };
   }
+  function stepChevron(dir) {
+    return `<svg class="step-chevron" width="12" height="18" viewBox="0 0 12 18" aria-hidden="true" focusable="false"><path d="${dir < 0 ? 'M9 3L3 9L9 15' : 'M3 3L9 9L3 15'}" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  }
   function famSlug(f) { return f.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); }
   // A paper within a year's page: "2025 AIME I" -> "aime-i", "2021 Fall AMC 10A" -> "fall-amc-10a".
   function paperSlug(cname) { return famSlug(String(cname).replace(/^\d{4}\s*/, "")); }
@@ -5363,7 +5366,7 @@
   function mockPracticePanelHtml() {
     return `<section class="sh-section" id="pr-mock">
       <h3>Practice a contest</h3>
-      <p>Take a past paper or build a mock from problems matched to recent contest difficulty. The timer pauses when you leave.</p>
+      <p class="practice-panel-intro">Take a past paper or build a mock from problems matched to recent contest difficulty. The timer pauses when you leave.</p>
       <form id="mock-contest-form"><fieldset aria-label="Mock contest options">
         <div class="rand-btns mock-modes" role="radiogroup" aria-label="Mock type">
           <button type="button" role="radio" aria-checked="true" data-mock-mode="paper">Past contest</button>
@@ -5753,6 +5756,7 @@
         ${learnShelfHtml()}
         <section class="sh-section" id="pr-study">
           <h3>Lists</h3>
+          <p class="learn-note">Browse study lists by level and topic, or make your own collection of cards.</p>
           <div id="pr-lists">
             <h4 class="learn-sub pl-mine-h">Your lists <button type="button" class="pl-new-btn" id="lists-new" data-list-new aria-label="New list" title="New list">+</button></h4>
             <div class="pl-list pl-mine">
@@ -5781,7 +5785,7 @@
       else body += `
         <section class="sh-section rand-picker">
             <h3>Open a random problem</h3>
-            <p>Try a past contest problem, with your choice of contest and difficulty.</p>
+            <p class="practice-panel-intro">Try a past contest problem, with your choice of contest and difficulty.</p>
             <div class="rand-btns" role="radiogroup" aria-label="Contest">
               <button type="button" role="radio" aria-checked="true" data-rand-fam="">Any contest</button>
               ${fams.map(f => `<button type="button" role="radio" aria-checked="false" data-rand-fam="${escapeAttr(f)}">${escapeAttr(f)}</button>`).join("")}
@@ -5795,7 +5799,7 @@
         </section>
         <section class="sh-section" id="pr-topic">
           <h3>Practice a topic</h3>
-          <p>Choose a subject or technique to build an untimed set from past contest problems.</p>
+          <p class="practice-panel-intro">Choose a subject or technique to build an untimed set from past contest problems.</p>
           <form id="topic-practice-form" novalidate><fieldset aria-label="Practice set options">
             <label for="topic-name">Topic</label>
             <div class="practice-topic-search"><input id="topic-name" class="set-find-input" type="search" name="topic" placeholder="Search a topic..." required autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="practice-topic-options">
@@ -5811,6 +5815,7 @@
         ${mockPracticePanelHtml()}
         <section class="sh-section" id="pr-contests">
           <h3>Contests</h3>
+          <p class="practice-panel-intro">Browse past papers by contest and year.</p>
           <div class="ct-list">${fams.map(f => `
             <div class="ct-row">
               <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famWritten(f).toLocaleString()} problem${famWritten(f) === 1 ? "" : "s"} written</span></a>
@@ -6360,14 +6365,14 @@
     const mnav = `<nav class="bk-mnav" aria-label="Chapters and lessons">
         <div class="bk-mnav-k"><span class="bk-mnav-book">${escapeAttr(b.title)}</span>${c ? ` &middot; Chapter ${c.code.slice(1)}` : ""} &middot; ${where}</div>
         <div class="bk-mnav-row">
-          ${prev || c ? `<a class="bk-mnav-step" href="${prev ? hashOf(prev) : learnHash(b)}" aria-label="Previous page">&#8249;</a>` : `<span class="bk-mnav-step is-off" aria-hidden="true">&#8249;</span>`}
+          ${prev || c ? `<a class="bk-mnav-step" href="${prev ? hashOf(prev) : learnHash(b)}" aria-label="Previous page">${stepChevron(-1)}</a>` : `<span class="bk-mnav-step is-off" aria-hidden="true">${stepChevron(-1)}</span>`}
           <select class="bk-mnav-sel" aria-label="Go to a chapter or page">
             <option value="${learnHash(b)}"${!c && !howto ? " selected" : ""}>Contents</option>
             <option value="${HOW.hash}"${howto ? " selected" : ""}>How to Use This Book</option>
             ${b.chapters.map(ch => `<optgroup label="Chapter ${ch.code.slice(1)}: ${escapeAttr(plain(ch.title))}">${pages.filter(x => x.c === ch).map(x =>
               `<option value="${hashOf(x)}"${x === here ? " selected" : ""}>${escapeAttr(plain(learnPageLabel(x)))}</option>`).join("")}</optgroup>`).join("")}
           </select>
-          ${next ? `<a class="bk-mnav-step" href="${hashOf(next)}" aria-label="Next page">&#8250;</a>` : `<span class="bk-mnav-step is-off" aria-hidden="true">&#8250;</span>`}
+          ${next ? `<a class="bk-mnav-step" href="${hashOf(next)}" aria-label="Next page">${stepChevron(1)}</a>` : `<span class="bk-mnav-step is-off" aria-hidden="true">${stepChevron(1)}</span>`}
         </div>
       </nav>`;
     return `<div class="learn-page lesson-page bk-view bk-${b.id}">
@@ -8723,9 +8728,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
       </div>
       <div class="ct-years ct-years-page">${years.map(y => `<a href="${yhref(y)}"${y === year ? ' aria-current="page"' : ""}>${y}</a>`).join("")}</div>
       <div class="ct-yearbar" aria-label="Year">
-        ${older ? `<a class="ct-yb-step" href="${yhref(older)}" aria-label="${older}">&#8249;</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">&#8249;</span>`}
+        ${older ? `<a class="ct-yb-step" href="${yhref(older)}" aria-label="${older}">${stepChevron(-1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(-1)}</span>`}
         <select class="ct-yb-select" aria-label="Year">${years.map(y => `<option value="${y}"${y === year ? " selected" : ""}>${y}</option>`).join("")}</select>
-        ${newer ? `<a class="ct-yb-step" href="${yhref(newer)}" aria-label="${newer}">&#8250;</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">&#8250;</span>`}
+        ${newer ? `<a class="ct-yb-step" href="${yhref(newer)}" aria-label="${newer}">${stepChevron(1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(1)}</span>`}
       </div>
       ${gnames.length > 1 ? `<div class="ct-papers" role="tablist">${gnames.map((gn, k) => `<button type="button" role="tab" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), ""))}</button>`).join("")}</div>` : ""}
       ${body}
