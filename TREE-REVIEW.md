@@ -1,6 +1,6 @@
 # Topic-tree restructuring review
 
-2026-11-09. Baseline: `57c5fb5`, after all 4,725 problems were filed. The owner requested a synthesis and decisions for larger pruning. This document records the chosen direction and migration order. After the owner asked to continue, **the first area regrouping was implemented: 482 nodes and 28 areas, preserving all problem filings and card homes**. Semantic leaf pruning and geometry moves remain pending. Textbooks remain paused.
+2026-11-09. Baseline: `57c5fb5`, after all 4,725 problems were filed. The owner requested a synthesis and decisions for larger pruning. This document records the chosen direction and migration order. After the owner asked to continue, **the first area regrouping was implemented: 482 nodes and 28 areas, preserving all problem filings and card homes**. Semantic leaf pruning and geometry moves remain pending; the subsequent [TREE-AUDIT.md](TREE-AUDIT.md) supplies the latest evidence and implementation order. Textbooks remain paused.
 
 ## Decision
 
