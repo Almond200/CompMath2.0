@@ -108,9 +108,11 @@ CONVENTIONS §0 has the full model.
   Introduction and How to Use This Book (`.../how-to-use`), where the Core, Core II and Extension
   tags are explained with visible badges. **Search this book...**, below the book subtitle and
   in the right half of desktop chapter navigation (a separate field on mobile), lists chapters,
-  single lessons and glossary terms in one ranked list, from titles, lesson headings, related
-  concepts, indexed terms and lesson text; a glossary result opens the Glossary at its definition,
-  and a lesson code such as R3.4 opens that lesson. It supports prefixes, synonyms and small typos,
+  single lessons, glossary terms and actual Index entries in one ranked list, from titles, lesson
+  headings, related concepts, indexed terms and lesson text. One Index result per matching term
+  opens its complete list of lesson locations in that book, below the first two other relevant
+  results when available. Index and Glossary results scroll to, focus and briefly highlight the
+  exact entry; reduced-motion readers get a static highlight. A lesson code such as R3.4 opens that lesson. It supports prefixes, synonyms and small typos,
   with keyboard-selectable suggestions scoped to the current book. A lesson (`.../c5/2`) shows its cards,
   one flowing explanation, related cards, its own problems with worked solutions, contest
   problems, and a drawer for the cards it links. The 13 books have 103 teaching chapters, which open on
@@ -310,6 +312,7 @@ tools/scan-conventions.py      the census behind CONVENTIONS.md; fails on a brok
 tools/check-diagrams.py        every figure fits its canvas and no two labels collide
 tools/check-labels.py          as rendered in Chrome: no label sits on a dot, a line or another label
 tools/check-accessibility.cjs  browser checks for keyboard access, contrast, motion and target sizes
+tools/check-book-search.cjs    browser checks for Index/Glossary jumps, focus and highlights
 tools/label-audit.html         the page check-labels drives; #show draws every offending figure
 tools/check-lists.py           list ids resolve, every route is complete, Connected formulas resolve
 tools/check-topics.py          every card carries a topic chip, and no subsection title awards a wrong one

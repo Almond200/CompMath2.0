@@ -34,6 +34,7 @@ node tools/practice-gaps.js --check     # every card has two practice problems
 $JSC tools/validate-problem-db.js
 ```
 
+- **Book reference search:** `CHROME=/path/to/chromium COMPMATH_URL=http://localhost:8765 node tools/check-book-search.cjs` checks Index/Glossary result order, jumps, keyboard focus, Back/repeat, math terms, fade and reduced motion. `tests/book-search.cjs` checks all canonical Index terms and generated targets across the 13 books.
 - **Accessibility:** `CHROME=/path/to/chromium COMPMATH_URL=http://localhost:8765 node tools/check-accessibility.cjs` checks the verified keyboard/contrast fixes; see ACCESSIBILITY-REVIEW.md.
 - **Serving and checking pages:** `python3 -m http.server 8765` serves the app. Check pages in headless Chromium (check that Playwright and Chromium are installed; use `CHROME` as `executablePath`): 0 KaTeX errors, no overflow at 375 px, light and dark.
 - **Versions:** `python3 tools/bump-versions.py --changed` bumps `?v=` in `index.html` for every changed file and syncs the lab pages. By hand: bump `?v=` for every touched file, then run `python3 tools/sync-lab-versions.py` so the lab pages load the same versions; `check-lab.sh` fails if they drift. Bump `STATEMENTS_V` in `js/app.js` when statement files change.
@@ -54,6 +55,7 @@ $JSC tools/validate-problem-db.js
 - Tag a card only where the problem's route really uses it (never to give a new card a problem); a tag on a shared AMC 10/12 problem goes on both twins.
 - No sticky headers: a page's header scrolls away with the page (a side rail may stay beside it) (owner, 2026-10-31). On a phone the top bar and the book view's navigation row stay pinned, at the owner's word.
 - Every modal dialog is centred across and sits slightly above the middle of the screen (6vh up), never pinned near the top; popups tied to something (dropdowns, previews, menus, drawers) stay by it. A destructive confirmation button (Clear, Delete) is solid red (owner, 2026-11-08; CONVENTIONS, "Dialogs sit just above the middle of the screen").
+- Search fields use a single focus border, without the extra outer accessibility ring (owner, 2026-11-08). Browse by Tag focuses its heading on opening rather than auto-focusing search; explicit search shortcuts still work.
 - Secondary soft actions, including Results overview, Cancel and Practice navigation, keep blue hover; inactive list toolbar buttons keep neutral hover. See CONVENTIONS for the explicit secondary-button rule.
 - Hover and focus colours follow where a control lives: inside a space (Learn, Practice, a reference space) a tile or choice lights up in the space's colour (`--space`, `--space-soft`); app-wide controls (top bar, tags, links) use the blue `--accent` (owner, 2026-11-08; CONVENTIONS, "Hover and focus colours follow where a control lives").
 - A brief note at the foot of the screen uses the app's toast (`toast()` in `js/app.js`, the look of "Opened strategies reset" in Settings), with a light shadow; no other bottom popup style, and no note for actions as frequent as Undo and Redo (owner, 2026-11-08).
