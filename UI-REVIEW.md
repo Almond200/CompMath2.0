@@ -86,3 +86,11 @@ The card’s + button is square rather than widened by horizontal padding: 24px 
 Focused browser checks passed in both themes at 1280/375px for popup creation, command/numeric fields, lesson notes, section name/note editing, preserved Practice answer highlight and checkbox focus. The 36-scenario accessibility check passed. `tools/check-ui-icons.cjs` now also verifies square add-button bounds, compact popup focus and the Create action’s soft background/blue hover.
 
 The final popup/icon checks passed in all four theme/width combinations, including soft gray Create hover without a solid fill, square + bounds and preserved star/menu behavior. Screenshots inspected; all repository gates and diff checks passed.
+
+## Untitled defaults and answer focus update (2026-11-09, after #308)
+
+Submitting the add-to-list popup with an empty or whitespace-only name now creates the next available Untitled list name and adds the current card, then closes with the normal toast. The shared `createList` fallback provides `Untitled list`, `Untitled list 2`, etc.; Learn’s blank-list entry point uses the same rule. Explicit names still trim whitespace. Existing names and stored list contents are preserved.
+
+The owner subsequently requested the smaller highlight on the Practice answer input too, overriding the earlier preference to keep its outer ring. It now uses the same single blue focused border as other text-entry fields. Keyboard interaction and answer storage are unchanged.
+
+Validation passed in light/dark at 1280/375px for blank/whitespace creation, numbered-name collisions/gaps, explicit-name trimming, current-card membership, reload persistence, Learn’s shared numbering and compact answer focus. Extended popup/icon checks and all repository gates passed.

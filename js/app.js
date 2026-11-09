@@ -1483,7 +1483,14 @@
   }
   function createList(name) {
     const id = "l_" + Math.random().toString(36).slice(2, 8);
-    lists.items.push({ id, name: (name || "").trim() || "Untitled list", ids: [] });
+    let title = (name || "").trim();
+    if (!title) {
+      const taken = new Set(lists.items.map(l => l.name));
+      title = "Untitled list";
+      let next = 2;
+      while (taken.has(title)) title = "Untitled list " + next++;
+    }
+    lists.items.push({ id, name: title, ids: [] });
     saveLists();
     return id;
   }
@@ -1630,7 +1637,6 @@
     if (!menuEl) return;
     const inp = menuEl.querySelector(".lm-new input");
     const name = inp ? inp.value.trim() : "";
-    if (!name) { if (inp) inp.focus(); return; }
     const fid = menuEl._fid;
     const id = createList(name);
     const l = getList(id);
@@ -10748,10 +10754,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     openNewListDialog();
   }, true);
   function makeBlankList() {
-    const taken = new Set(lists.items.map(l => l.name));
-    let name = "Untitled list", k = 2;
-    while (taken.has(name)) name = "Untitled list " + k++;
-    const id = createList(name);
+    const id = createList();
     pendingRename = id;
     location.hash = "#/list/" + id;
   }
