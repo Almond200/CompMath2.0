@@ -7,6 +7,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 **Status (checked 2026-11-08):**
 - All 13 books are initially written: four AMC, four AIME and five Olympiad books, with 103 teaching chapters and 593 teaching pages (Introductions and Summaries included; Review Problems and Challenge Problems are separate problem sets and are not counted). Initial writing is a separate status from the content revision under way in `TEXTBOOK-REVISION.md` (revised so far: AMC Algebra L1 to L14, AMC Number Theory M1 to M7, AMC Counting & Probability R1 to R10, and AMC Geometry S1 to S6, merged through PR #293).
 - Each book also ends with one reference chapter, End-of-book Notes: Overview, Index, Glossary, and References and Credits (13 chapters, 52 sections). Reference chapters carry no difficulty tag and are not teaching chapters; `tools/build-learn-shelf.py --check` reports 116 chapter files and 645 lesson records because it counts them too.
+- Book search offers one Index result per matching term, leading to that book's complete list of lesson references. Index and Glossary results jump to and briefly highlight the exact entry; these navigation changes do not alter teaching content or counts.
 - Every teaching chapter uses X.1 Introduction, lessons, Summary, Review Problems and Challenge Problems (CONVENTIONS §14). No old chapter-review array remains.
 - "The AMC books, second plan" is built (2026-11-01): it replaced the first AMC books and the Bridge, which is removed.
 

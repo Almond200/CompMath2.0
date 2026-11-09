@@ -6150,7 +6150,7 @@
     const id = 'book-search-' + place + '-' + (++bookSearchSerial);
     return `<div class="book-search set-find"><input class="set-find-input" type="search" placeholder="Search this book..." aria-label="Search this book" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="${id}" autocomplete="off" spellcheck="false"><div class="set-find-list" id="${id}" role="listbox" hidden></div></div>`;
   }
-  // Book search (owner, 2026-11-07): one ranked list of chapters, single lessons and glossary
+  // Book search: one ranked list of chapters, single lessons, Index entries and glossary
   // terms, each result carrying its chapter `c` (a lesson's own chapter; for a glossary term,
   // the chapter where the index first locates it). An exact chapter title still ranks first.
   function bookSearchRanker(b) {
@@ -6187,10 +6187,18 @@
       const aliases = entry ? entry.aliases : [];
       const first = m[2].replace(/<[^>]*>/g, '').match(/^.*?[.!?](?=\s|$)/);
       entries.push({ kind: 'glossary', c: home || notes, l: glossaryLesson, term, dfnAt, snippet: (first ? first[0] : m[2]).slice(0, 160),
-        phrase: tokens(term).join(' '), aliases, aliasPhrases: aliases.map(a => tokens(a).join(' ')), bonus: 90,
+        phrase: tokens(term).join(' '), aliases, aliasPhrases: aliases.map(a => [...new Set(tokens(a))].join(' ')), bonus: 90,
         fields: [[new Set(tokens(term)), 11]] });
     }
-    const KIND_ORDER = { chapter: 0, lesson: 1, glossary: 2 };
+    const indexLesson = notes && notes.lessons.find(l => l.title === 'Index');
+    if (indexLesson) index.forEach((entry, indexAt) => {
+      const aliases = entry.aliases || [];
+      entries.push({ kind:'index', c:notes, l:indexLesson, term:entry.term, indexAt,
+        snippet:`${entry.lessons.length} lesson reference${entry.lessons.length === 1 ? '' : 's'} in this book.`,
+        phrase:tokens(entry.term).join(' '), aliases, aliasPhrases:aliases.map(a => [...new Set(tokens(a))].join(' ')), bonus:85,
+        fields:[[new Set(tokens(entry.term)), 11]] });
+    });
+    const KIND_ORDER = { chapter: 0, lesson: 1, glossary: 2, index: 3 };
     const rank = query => {
       const chapterNumber = query.trim().match(/^(?:chapter\s*|([a-z]))?(\d+)$/i);
       if (chapterNumber) return entries.filter(e => e.kind === 'chapter' && +e.c.code.slice(1) === +chapterNumber[2] && (!chapterNumber[1] || e.c.code[0].toLowerCase() === chapterNumber[1].toLowerCase()));
@@ -6199,7 +6207,7 @@
       const q = [...new Set(tokens(query))];
       if (!q.length) return [];
       const joined = q.join(' ');
-      return entries.map(entry => {
+      const ranked = entries.map(entry => {
         let score = 0, matched = 0;
         q.forEach(token => {
           let best = 0;
@@ -6214,13 +6222,16 @@
           if (best) matched++;
           score += best;
         });
-        // A glossary term shows only when every word is in the term, or the whole query is one of its aliases.
-        const alias = entry.kind === 'glossary' && entry.phrase !== joined ? entry.aliases[entry.aliasPhrases.indexOf(joined)] : null;
+        // Reference terms require every query word, or a complete alias match.
+        const alias = (entry.kind === 'glossary' || entry.kind === 'index') && entry.phrase !== joined ? entry.aliases[entry.aliasPhrases.indexOf(joined)] : null;
         if (alias) { score = 11 * q.length; matched = q.length; }
         const exact = entry.phrase === joined || !!alias;
         return { ...entry, alias, score: score * matched / q.length + (exact ? entry.bonus : 0), matched };
-      }).filter(e => e.kind === 'glossary' ? e.matched === q.length : e.matched >= Math.ceil(q.length * 0.6))
-        .map((e, i) => ({ e, i })).sort((a, z) => z.e.score - a.e.score || KIND_ORDER[a.e.kind] - KIND_ORDER[z.e.kind] || a.i - z.i).map(x => x.e).slice(0, 8);
+      }).filter(e => e.kind === 'glossary' || e.kind === 'index' ? e.matched === q.length : e.matched >= Math.ceil(q.length * 0.6))
+        .map((e, i) => ({ e, i })).sort((a, z) => z.e.score - a.e.score || KIND_ORDER[a.e.kind] - KIND_ORDER[z.e.kind] || a.i - z.i).map(x => x.e);
+      // An Index entry is a route to the book's list of locations, below the first two direct results when available.
+      const direct = ranked.filter(entry => entry.kind !== 'index').slice(0, 2);
+      return [...direct, ...ranked.filter(entry => !direct.includes(entry))].slice(0, 8);
     };
     return rank;
   }
@@ -6251,19 +6262,21 @@
   window.visualViewport?.addEventListener('resize', scheduleSearchVisibility, { passive: true });
   window.visualViewport?.addEventListener('scroll', scheduleSearchVisibility, { passive: true });
 
-  let pendingGlossaryTerm = null;
-  // The definition is found by its place on the Glossary page, since a term with math in it
-  // ("$p$-adic Valuation") reads differently once KaTeX has rendered it. Works whether the
-  // Glossary had to open first or was already the page in view (owner, 2026-11-07).
-  function showPendingGlossaryTerm() {
-    const pending = pendingGlossaryTerm;
+  let pendingBookReference = null;
+  // Target positions are generated alongside the reference pages, so mathematical terms work after KaTeX rendering.
+  function showPendingBookReference() {
+    const pending = pendingBookReference;
     if (!pending) return;
-    const dfns = [...$content.querySelectorAll('dfn')];
-    const dfn = dfns.find(d => d.textContent.trim() === pending.term) || (dfns.length > pending.dfnAt ? dfns[pending.dfnAt] : null);
-    if (!dfn) return;
-    pendingGlossaryTerm = null;
-    const block = dfn.closest('p') || dfn;
-    block.scrollIntoView({ block: 'center' });
+    if (location.hash !== pending.hash) { pendingBookReference = null; return; }
+    const target = pending.kind === 'index' ? $content.querySelector('#book-index-' + pending.indexAt)
+      : [...$content.querySelectorAll('dfn')][pending.dfnAt];
+    if (!target) return;
+    pendingBookReference = null;
+    const block = target.closest('p') || target;
+    block.tabIndex = -1;
+    block.classList.add('bks-target');
+    block.focus({ preventScroll:true });
+    block.scrollIntoView({ block:'center', behavior:window.AppAccessibility.scrollBehavior() });
     block.classList.remove('bks-found');
     void block.offsetWidth;
     block.classList.add('bks-found');
@@ -6275,11 +6288,14 @@
     root.querySelectorAll('.book-search').forEach(box => {
       const input = box.querySelector('input'), list = box.querySelector('[role="listbox"]');
       let results = [], active = 0;
-      // A lesson opens itself; a glossary term opens the Glossary and scrolls to its definition.
+      // A reference result opens its own entry; the Index contains all of that term's lesson locations.
       const go = r => {
-        if (r.kind === 'glossary') { pendingGlossaryTerm = { term: r.term, dfnAt: r.dfnAt }; location.hash = learnHash(b, b.chapters.find(c => c.kind === 'reference'), lessonNum(r.l)); }
-        else location.hash = r.kind === 'lesson' ? learnHash(b, r.c, lessonNum(r.l)) : learnHash(b, r.c);
-        if (pendingGlossaryTerm && r.kind === 'glossary') setTimeout(showPendingGlossaryTerm, 60);
+        if (r.kind === 'glossary' || r.kind === 'index') {
+          const hash = learnHash(b, b.chapters.find(c => c.kind === 'reference'), lessonNum(r.l));
+          pendingBookReference = { kind:r.kind, term:r.term, dfnAt:r.dfnAt, indexAt:r.indexAt, hash };
+          location.hash = hash;
+          setTimeout(showPendingBookReference, 60);
+        } else location.hash = r.kind === 'lesson' ? learnHash(b, r.c, lessonNum(r.l)) : learnHash(b, r.c);
       };
       const close = () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); };
       const select = () => {
@@ -6292,10 +6308,10 @@
         // topic picker offers defaults.
         if (!input.value.trim()) { results = []; close(); return; }
         results = rank(input.value); active = 0;
-        const label = r => r.kind === 'glossary' ? `<span class="bks-main"><span>${escapeAttr(r.term)}</span><small class="bks-snip">${r.alias ? 'Matches &ldquo;' + escapeAttr(r.alias) + '&rdquo;. ' : ''}${escapeAttr(r.snippet)}</small></span><span class="set-find-group">Glossary</span>`
+        const label = r => r.kind === 'glossary' || r.kind === 'index' ? `<span class="bks-main"><span>${escapeAttr(r.term)}</span><small class="bks-snip">${r.alias ? 'Matches &ldquo;' + escapeAttr(r.alias) + '&rdquo;. ' : ''}${escapeAttr(r.snippet)}</small></span><span class="set-find-group">${r.kind === 'index' ? 'Index' : 'Glossary'}</span>`
           : r.kind === 'lesson' ? `<span class="bks-main"><span>${escapeAttr(r.l.title)}</span><small class="bks-snip">${escapeAttr(r.c.title)}</small></span><span class="set-find-group">Lesson ${escapeAttr(r.l.code)}</span>`
           : `<span>${escapeAttr(r.c.title)}</span><span class="set-find-group">Chapter ${escapeAttr(r.c.code.slice(1))}</span>`;
-        list.innerHTML = results.length ? results.map((r, i) => `<button type="button" class="set-find-opt book-search-option" role="option" id="${list.id}-${i}" aria-selected="${i === 0}">${label(r)}</button>`).join('') : '<div class="set-find-none">No matching chapters, lessons or glossary terms. Try another topic.</div>';
+        list.innerHTML = results.length ? results.map((r, i) => `<button type="button" class="set-find-opt book-search-option" role="option" id="${list.id}-${i}" aria-selected="${i === 0}">${label(r)}</button>`).join('') : '<div class="set-find-none">No matching chapters, lessons, index entries or glossary terms. Try another topic.</div>';
         list.querySelectorAll('button').forEach((button, i) => {
           button.addEventListener('click', () => { go(results[i]); close(); });
           // The pointer moves the selection, so only one option is ever highlighted.
@@ -6321,7 +6337,7 @@
     $content.innerHTML = learnBookShellHtml(b, c, cur, main);
     wireLearnRail($content);
     wireBookSearch($content, b);
-    if (pendingGlossaryTerm) requestAnimationFrame(() => requestAnimationFrame(showPendingGlossaryTerm));
+    if (pendingBookReference) requestAnimationFrame(() => requestAnimationFrame(showPendingBookReference));
     const msel = $content.querySelector(".bk-mnav-sel");
     if (msel) msel.addEventListener("change", () => { location.hash = msel.value; });
     renderMath($content);
@@ -7414,7 +7430,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     advEl.innerHTML = `
       <div class="modal adv-modal adv-tagmodal" role="dialog" aria-label="Browse formulas by tag">
         <div class="modal-head">
-          <h3>Browse by Tag</h3>
+          <h3 tabindex="-1">Browse by Tag</h3>
           <button class="modal-close" aria-label="Close">&times;</button>
         </div>
         <div class="adv-tagpick">
@@ -7444,7 +7460,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       });
     }
     refreshAdvTags();
-    trapModal(advEl, "#adv-tag-search");
+    trapModal(advEl, ".modal-head h3");
     setTimeout(() => document.addEventListener("keydown", onAdvKey, true), 0);
   }
   function onAdvClick(e) {

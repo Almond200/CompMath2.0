@@ -53,6 +53,23 @@ console.log('All-book audit:', context.window.MATH_LEARN_SHELF.length, 'books,',
 
 assert.equal(failures.length,0,'every chapter title ranks first and every lesson title returns its chapter');
 
+const geometry = context.window.MATH_LEARN_SHELF.find(b => b.id === 'amc-geometry');
+const geometryRank = context.bookSearchRanker(geometry);
+for (const query of ['Power of a Point', 'power of a poin', 'power of a pont']) {
+  const hits = geometryRank(query), locations = hits.filter(e => e.kind === 'index' && e.term === 'Power of a Point');
+  assert.equal(locations.length, 1, query + ': one Index entry, not one per lesson reference');
+  assert(hits.indexOf(locations[0]) >= 2, query + ': Index follows two direct results');
+  assert.equal(locations[0].c.kind, 'reference');
+  assert.equal(locations[0].l.title, 'Index');
+}
+assert.equal(geometryRank('power of a point unrelatedzz').filter(e => e.kind === 'index').length, 0, 'reference entries require the complete query');
+for (const alias of ['OP squared minus r squared', 'independent of the line']) {
+  const hit = geometryRank(alias).find(e => e.kind === 'index' && e.term === 'Power of a Point');
+  assert(hit, 'complete alias finds the canonical Index entry');
+  assert.equal(hit.alias, alias, 'suggestion identifies the matched alias');
+}
+console.log('Index search: canonical term, prefix, typo, direct-result priority and no unrelated reference hits passed.');
+
 let indexTargets = 0;
 for (const book of context.window.MATH_LEARN_SHELF) {
   const notes = book.chapters.filter(c => c.title === 'End-of-book Notes');
@@ -74,13 +91,26 @@ for (const book of context.window.MATH_LEARN_SHELF) {
   for (const n of [2,3,4]) assert(overview.includes(`#/learn/${book.id}/${notes[0].code.toLowerCase()}/${n}`), 'overview links to numbered reference sections');
   const index = context.learnLessonData(notes[0], notes[0].lessons.find(l => l.title === 'Index')).body;
   const glossary = context.learnLessonData(notes[0], notes[0].lessons.find(l => l.title === 'Glossary')).body;
-  for (const entry of entries) {
+  assert.equal(new Set(entries.map(e => e.term)).size, entries.length, 'canonical terms are unique within each book');
+  assert.equal([...index.matchAll(/id="book-index-\d+"/g)].length, entries.length, 'one jump target per entry');
+  const localRank = context.bookSearchRanker(book);
+  let searchable = 0;
+  for (const [at, entry] of entries.entries()) {
+    assert(index.includes(`id="book-index-${at}"`), entry.term + ': stable generated jump target');
+    const hit = localRank(entry.term).find(e => e.kind === 'index' && e.term === entry.term);
+    assert(hit, book.id + ': exact Index term is searchable: ' + entry.term);
+    if (hit) {
+      searchable++;
+      assert.equal(hit.indexAt, at, 'search points at the canonical target');
+      assert.equal(hit.c, notes[0], 'reference search stays in this book');
+    }
     assert(entry.lessons.length, entry.term + ': has a location');
     for (const code of entry.lessons) {
       assert(book.chapters.some(c => c !== notes[0] && c.lessons.some(l => l.code === code)), book.id + ': local target ' + code);
       indexTargets++;
     }
   }
+  assert(searchable > 0, book.id + ': Index entries searchable');
   for (const match of index.matchAll(/href="#\/learn\/([^/]+)\/([a-z]\d+)\/(\d+)"/g)) {
     assert.equal(match[1], book.id, 'index stays inside its book');
     assert(book.chapters.some(c => c.code.toLowerCase() === match[2] && c.lessons.some(l => l.code === c.code + '.' + match[3])), 'index URL resolves');

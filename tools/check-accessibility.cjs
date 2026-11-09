@@ -17,6 +17,8 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     const context = await browser.newContext({ viewport:{ width, height:950 }, hasTouch:width === 375, isMobile:width === 375 });
     await context.addInitScript(t => {
       localStorage.setItem('theme', t);
+      localStorage.setItem('mq-recent', JSON.stringify(['l:S5.1','b:amc-geometry','l:S6.1','l:S4.1','l:S4.5','l:R5.4',
+        'p:2025-amc-8-2','p:2020-amc-8-22','p:2025-amc-10a-12','p:2019-hmmt-feb-geo-10','p:2019-hmmt-feb-geo-9','p:2005-aime-ii-2']));
       if (!localStorage.getItem('mq-lists')) localStorage.setItem('mq-lists', JSON.stringify({ items:[
         { id:'starred', builtin:true, name:'Starred', ids:[] },
         { id:'a11y-check', name:'Accessibility check', ids:['permutations-combinations','casework-method','recursive-counting'], customSections:[
@@ -40,6 +42,16 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
       assert.equal(await group.locator('[tabindex="0"]').count(), 1);
       assert.equal(await group.locator('[tabindex="0"]').getAttribute('aria-checked'), 'true');
     }
+    async function searchBorder(input) {
+      await input.focus();
+      await page.waitForTimeout(180); // The normal border-color transition lasts 150ms.
+      assert.ok(await input.evaluate(el => {
+        const probe=document.createElement('span'); probe.style.color='var(--accent)'; document.body.append(probe);
+        const accent=getComputedStyle(probe).color; probe.remove();
+        const style=getComputedStyle(el);
+        return style.outlineStyle==='none' && style.borderColor===accent && style.boxShadow==='none';
+      }), 'search uses one visible focus border without a second ring');
+    }
     await page.goto(base + '/#/practice');
     await page.locator('#pr-mock').waitFor();
     assert.equal(await page.locator('#search-input').getAttribute('aria-label'), 'Search the reference');
@@ -49,6 +61,8 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     await page.keyboard.press('Enter');
     assert.equal(await page.evaluate(() => document.activeElement.id), 'content');
     assert.equal(new URL(page.url()).hash, '#/practice');
+    await searchBorder(page.locator('#topic-name'));
+    await searchBorder(page.locator('#mock-paper-name'));
     const colors = await page.evaluate(() => {
       const result = {};
       for (const name of ['--text-faint', '--bg', '--bg-panel', '--bg-card', '--bg-card-hover']) {
@@ -84,6 +98,7 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     await navigate('#/settings', '.settings-page');
     assert.match(await page.title(), /^Settings — /);
     assert.equal(await page.evaluate(() => document.activeElement.tagName), 'H2');
+    await searchBorder(page.locator('.settings-head input[type="search"]'));
     await radio(page.locator('[role="radiogroup"][aria-label="Theme"]'), 'ArrowRight');
     assert.equal(await page.evaluate(() => document.activeElement.getAttribute('data-set')), 'theme');
     await page.locator('[data-set="tools"][data-val="on"]').click();
@@ -95,13 +110,28 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     }
     assert.equal(await page.locator('[role="radiogroup"]:not([aria-label]):not([aria-labelledby])').count(), 0);
     await page.locator('#search-input').focus(); await page.keyboard.press('Tab'); await page.locator('#search-input').focus();
-    const focus = await page.locator('#search-input').evaluate(el => ({ visible:el.matches(':focus-visible'), width:getComputedStyle(el).outlineWidth, style:getComputedStyle(el).outlineStyle }));
-    assert.ok(focus.visible && focus.width === '2px' && focus.style === 'solid');
+    await searchBorder(page.locator('#search-input'));
     await page.locator('#search-input').fill('power');
     await page.waitForFunction(() => document.title.startsWith('Search: power'));
     assert.equal(await page.evaluate(() => document.activeElement.id), 'search-input');
     await page.locator('#search-input').fill('');
     await page.waitForFunction(() => document.title.startsWith('Pythagorean Theorem'));
+    scenarios++;
+    await page.locator('#adv-btn').click();
+    assert.equal(await page.evaluate(() => document.activeElement.matches('.adv-tagmodal .modal-head h3')), true);
+    assert.equal(await page.locator('#adv-tag-search').evaluate(el => el===document.activeElement), false);
+    await page.keyboard.press('Tab');
+    assert.equal(await page.evaluate(() => document.activeElement.matches('.adv-tagmodal .modal-close')), true);
+    await page.keyboard.press('Tab');
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'adv-tag-search');
+    await searchBorder(page.locator('#adv-tag-search'));
+    if (artifactDir) await page.screenshot({ path:path.join(artifactDir, `tag-search-${theme}-${width}.png`) });
+    await page.keyboard.press('Escape');
+    assert.equal(await page.locator('.adv-tagmodal').count(), 0);
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'adv-btn');
+    await page.keyboard.press('/');
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'search-input');
+    await searchBorder(page.locator('#search-input'));
     scenarios++;
 
     await navigate('#/formulas/geometry', '.nav-section.open');
@@ -116,6 +146,23 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     assert.ok(inertStates.every(Boolean));
     const link = page.locator('#formula-nav .nav-section.open .nav-sub-link:not([aria-disabled="true"])').first();
     const target = await link.getAttribute('href');
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(350); // Let the expanding sidebar settle before checking clipping.
+    for (const control of [page.locator('#formula-nav .nav-section.open .nav-section-btn').first(), link,
+      page.locator('#formula-nav .nav-section.open .nav-sub-link:not([aria-disabled="true"])').last()]) {
+      await control.focus();
+      assert.ok(await control.evaluate(el => {
+        const r=el.getBoundingClientRect(), s=getComputedStyle(el);
+        if(s.outlineStyle!=='solid' || s.outlineOffset!=='-3px')return false;
+        for(let a=el.parentElement;a && a!==document.body;a=a.parentElement){
+          const q=a.getBoundingClientRect(), c=getComputedStyle(a);
+          if(c.overflowX!=='visible' && (r.left<q.left-1 || r.right>q.right+1))return false;
+          if(c.overflowY!=='visible' && (r.top<q.top-1 || r.bottom>q.bottom+1))return false;
+        }
+        return true;
+      }), 'sidebar subject and first/last topic rings remain inside every clipping boundary');
+      if (artifactDir) await page.screenshot({ path:path.join(artifactDir, `sidebar-${control===link?'topic':'edge'}-${theme}-${width}.png`) });
+    }
     if (width === 1280) {
       const opened = context.waitForEvent('page'); await link.click({ modifiers:['Control'] });
       const popup = await opened; await popup.waitForLoadState(); assert.equal(new URL(popup.url()).hash, target); await popup.close();
@@ -165,8 +212,31 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     assert.equal(await page.locator('.katex-error').count(), 0);
     if (artifactDir) await page.screenshot({ path:path.join(artifactDir, `cards-${theme}-${width}.png`) });
     scenarios++;
+    // Recent rows stay one line without hiding keyboard stops; clipped tiles keep an inward ring.
+    for (const hash of ['#/learn', '#/practice']) {
+      await navigate(hash, '.rc-chips');
+      const last = page.locator('.rc-chips .rc-row').last();
+      await last.focus(); await last.press('Tab'); await page.keyboard.press('Shift+Tab');
+      assert.ok(await last.evaluate(el => {
+        const box=el.getBoundingClientRect(), parent=el.parentElement.getBoundingClientRect(), style=getComputedStyle(el);
+        return el===document.activeElement && style.outlineStyle==='solid' && style.outlineOffset==='-3px'
+          && box.top>=parent.top-1 && box.bottom<=parent.bottom+1 && box.left>=parent.left-1 && box.right<=parent.right+1;
+      }), hash + ': last recent link is fully visible with an unclipped ring');
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+      if (artifactDir) await page.screenshot({ path:path.join(artifactDir, `recent-${hash.slice(2)}-${theme}-${width}.png`) });
+    }
+    if (width === 1280) {
+      await navigate('#/', '.hm-space');
+      for (const tile of await page.locator('.hm-space').all()) {
+        await tile.focus();
+        assert.equal(await tile.evaluate(el => getComputedStyle(el).outlineOffset), '-3px');
+      }
+      if (artifactDir) await page.screenshot({ path:path.join(artifactDir, `home-focus-${theme}.png`) });
+    }
+    scenarios++;
     await navigate('#/list/a11y-check', '[data-group-edit]');
     await page.locator('[data-group-edit]').first().click(); await page.locator('.ge').waitFor();
+    await searchBorder(page.locator('.ge-find-input'));
     if (width === 375) assert.ok(await page.locator('.ge-ico').first().evaluate(el => el.getBoundingClientRect().width >= 40 && el.getBoundingClientRect().height >= 40));
     await page.locator('[data-ge-chip="casework-method"]').click();
     await page.locator('[data-ge-act="moveto"][data-i="1"]').click();

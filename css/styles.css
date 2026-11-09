@@ -3222,9 +3222,11 @@ a.card-result { color: var(--text); text-decoration: none; }
 .hp-panel .pl-item:last-child { border-bottom: none; }
 .hp-panel .pl-item:hover { border-color: var(--border); background: var(--space-soft); color: var(--space); }
 .rc-row:hover { background: var(--space-soft); }
-/* Recently opened: one line; whatever does not fit is left off. */
-.rc-chips { flex-wrap: wrap; max-height: 30px; overflow: hidden; }
+/* Recently opened: one scrolling line; every link remains reachable. */
+.rc-chips { flex-wrap: nowrap; min-width: 0; overflow-x: auto; scrollbar-width: thin; }
 .rc-chips .rc-row { border-radius: 999px; height: 30px; box-sizing: border-box; }
+.rc-chips .rc-row { flex-shrink: 0; max-width: 100%; }
+.rc-chips .rc-name { flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* Sidebar hover takes the space's colour, like the active link. */
 .nav-sub-link:hover, .nav-cluster-link:hover { border-left-color: var(--space); color: var(--space); }
@@ -4361,13 +4363,14 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
   .book-search-mobile .book-search { max-width: none; margin: 10px 0; }
 }
 
-/* Book search: lesson and glossary results carry a second line (owner, 2026-11-07). */
+/* Book search: lesson and reference results carry a second line. */
 .book-search-option .bks-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .book-search-option .bks-snip { color: var(--text-dim); font-size: 0.82em; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-/* The found definition: a soft band reaching about 12px past the text on every side (a layer
+/* The found reference entry: a soft band reaching about 12px past the text on every side (a layer
    behind the paragraph, so nothing moves), held for a moment and then faded out slowly (owner,
    2026-11-07). Its corners are 8px: a shadow spread from a rounded box rounded them to 22px. */
 .bks-found { position: relative; isolation: isolate; }
+.bks-target:focus { outline: none; } /* The temporary band marks the reference jump; this paragraph is not a control. */
 .bks-found::before {
   content: ""; position: absolute; inset: -6px -12px; z-index: -1; border-radius: 8px; pointer-events: none;
   animation: bks-glow 4.6s ease-in forwards;
@@ -4606,10 +4609,19 @@ dialog.app-confirm { inset-block: 0 12vh; }
 @media (max-width: 500px) { #resume-practice-sets .pl-item { flex-wrap: wrap; } .mock-clock-value { font-size: 21px; } }
 
 /* Keyboard focus stays visible even on controls with custom border-only focus styles. */
-:root :is(a[href], button, input, select, textarea, [role="button"], [tabindex]:not([tabindex="-1"])):focus-visible {
+:root :is(a[href], button, input, select, textarea, [role="button"], [tabindex]:not([tabindex="-1"])):focus-visible:where(:not(input[type="search"])) {
   outline: 2px solid var(--accent) !important;
   outline-offset: 3px !important;
 }
+/* Edge-to-edge controls need their ring inside the clipped panel or scrolling row. */
+:root :is(.rc-chips .rc-row, .hm-space, .set-find-opt, .list-add-row, .nav-sub-link, .nav-section-btn, .nav-group-btn, .nav-practice-link, .toc-link):focus-visible {
+  outline-offset: -3px !important;
+}
+/* Search keeps its usual single focus border, without a second accessibility ring (owner). */
+:root input[type="search"]:focus-visible {
+  outline: none !important; border-color: var(--accent); box-shadow: none;
+}
+.modal-head h3:focus { outline: none; }
 .skip-link { position: fixed; z-index: 10000; top: 8px; left: 12px; transform: translateY(-160%);
   padding: 9px 14px; border-radius: 6px; background: var(--bg-card); color: var(--accent); font-weight: 700; }
 .skip-link:focus { transform: none; }
@@ -4624,6 +4636,7 @@ dialog.app-confirm { inset-block: 0 12vh; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important; transition-delay: 0ms !important; scroll-behavior: auto !important; }
+  .bks-found::before { animation: none !important; background-color: rgba(91, 140, 255, 0.16); }
 }
 
 /* Browsing cards keep their appearance while their names become ordinary keyboard links. */
