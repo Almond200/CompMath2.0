@@ -21,6 +21,7 @@ window.MATH_TOPIC_TREE = [
   ["alg.word.rates.motion.meet", "Meeting, overtaking, passing and head starts", "alg.word.rates.motion"],
   ["alg.word.rates.motion.laps", "Round trips, laps and circular tracks", "alg.word.rates.motion"],
   ["alg.word.rates.motion.speeds", "One trip at two speeds (a change of speed changes the time; arriving early or late)", "alg.word.rates.motion"],
+  ["alg.word.rates.motion.stages", "Multi-stage journeys and stops", "alg.word.rates.motion"],
   ["alg.word.rates.avg", "Average speed over a whole trip", "alg.word.rates"],
   ["alg.word.rates.work", "Combined work and filling rates", "alg.word.rates"],
   ["alg.word.rates.current", "Currents, wind and moving walkways", "alg.word.rates"],

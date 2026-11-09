@@ -115,3 +115,24 @@ Every affected card survives:
 | Card | Previous home | Current home |
 |---|---|---|
 | `choose-modulus` | `nt.mod.basic.rule` | `nt.mod` |
+
+## Travel: multi-stage journeys and stops
+
+The owner’s request to fix the audited issues resolves TQ20; added `alg.word.rates.motion.stages` after rereading all 20 distinct direct-parent entries (22 raw). Nine independent examples involve prescribed sequential legs/routes or stops; their recognized twins move too. Two same-distance speed/pace comparisons fit the existing two-speed leaf. Removed the incidental Vieta topic from the moving-storm question while retaining its earned card. The remaining parent cases are rounded travel estimates (2026 AMC 10A #8), moving sightlines/circles (1993 AIME #13 and 1997 AIME #7), reachable regions (2000 AIME I #13), traffic flow (2008 AIME I #12), graph reading (1990 AJHSME #23 and 2009 AMC 8 #3), sound-distance/unit conversion (2001 AMC 8 #5), and four separate integer-pace trips (2017 AMC 8 #23). None is forced into a prescribed-stage journey. The two graph questions retain their data label; the geometric and optimization subjects remain where genuine. Checked leg-time sums and the common-arrival equations; no answer or strategy changed.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1997 AIME, Problem 7 | `alg.word.rates.motion`, `alg.poly.vieta.basic` | `alg.word.rates.motion` |
+| 2008 AIME II, Problem 2 | `alg.word.rates.motion` | `alg.word.rates.motion.stages` |
+| 2012 AIME II, Problem 4 | `alg.word.rates.motion`, `geo.basic.pyth.triples` | `alg.word.rates.motion.stages`, `geo.basic.pyth.triples` |
+| 2013 AIME I, Problem 1 | `alg.word.rates.motion` | `alg.word.rates.motion.stages` |
+| 1985 AJHSME, Problem 13 | `alg.word.rates.motion` | `alg.word.rates.motion.stages` |
+| 2005 AMC 8, Problem 10 | `alg.word.rates.motion` | `alg.word.rates.motion.stages` |
+| 2015 AMC 8, Problem 3 | `alg.word.rates.motion` | `alg.word.rates.motion.speeds` |
+| 2016 AMC 8, Problem 4 | `alg.word.rates.motion` | `alg.word.rates.motion.speeds` |
+| 2007 AMC 10A, Problem 13 | `alg.word.rates.motion` | `alg.word.rates.motion.stages` |
+| 2007 AMC 12A, Problem 9 | `alg.word.rates.motion` | `alg.word.rates.motion.stages` |
+| 2009 AMC 10A, Problem 4 | `alg.word.rates.motion` | `alg.word.rates.motion.stages` |
+| 2017 AMC 10A, Problem 9 | `alg.word.rates.motion` | `alg.word.rates.motion.stages` |
+| 2017 AMC 10B, Problem 7 | `alg.word.rates.motion` | `alg.word.rates.motion.stages` |
+| 2017 AMC 12B, Problem 4 | `alg.word.rates.motion` | `alg.word.rates.motion.stages` |

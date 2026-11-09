@@ -2,6 +2,8 @@
 
 **2026-11-09**
 
+- **Tree repair: travel:** resolved TQ20 under the owner’s fix request; added Multi-stage journeys and stops for nine independent examples, with recognized twins aligned. Reviewed all 22 raw / 20 distinct motion-parent entries, moved two speed comparisons to the existing leaf and removed an incidental Vieta topic. TREE-REPAIRS.md explains each remaining parent case. Tree now has 473 nodes; all coverage is retained. Gates, answer-key and tree regressions passed.
+
 - **Tree repair: counting/modular boundaries:** reviewed all 21 distinct cases, corrected eleven raw entries, retired the Bijections wrapper and modulus-exclusion leaf, retained a coherent incidence-total pool, and broadened the Choose a Modulus card home. Repaired the 1984 AIME #14 and 1995 AIME #10 proofs with independently checked residue/prime arguments; answers unchanged. Tree now has 472 nodes. Gates, answer-key checks and tree regressions passed; TREE-REPAIRS.md lists dispositions.
 
 - **Tree repair: polynomial kinds:** reviewed 28 distinct entries across root/equation and prescribed-value pools; changed 24 raw entries, merged five method/duplicate leaves and rehomed six cards. Intermediate root-solving tools no longer classify unrelated sequence, geometry, rational-function or divisibility problems. Corrected the convergence justification in 2002 AIME II #11 without changing its answer. Tree now has 474 nodes; coverage is unchanged. Gates, answer-key checks, tree regressions and fresh risk census passed. Details in TREE-REPAIRS.md.
