@@ -61,10 +61,14 @@ At Central Middle School the $108$ students who take the AMC $8$ meet in the eve
 Walter can buy eggs by the half-dozen. How many half-dozens should he buy to make enough cookies? (Some eggs and some cookies may be left over.)
 
 (A) $1$  (B) $2$  (C) $5$  (D) $7$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
-"1999-amc-8-18": { s: String.raw`They learn that a big concert is scheduled for the same night and attendance will be down $25\%.$ How many recipes of cookies should they make for their smaller party?
+"1999-amc-8-18": { s: String.raw`At Central Middle School the $108$ students who take the AMC $8$ meet in the evening to talk about problems and eat an average of two cookies apiece. Walter and Gretel are baking Bonnie’s Best Bar Cookies this year. Their recipe, which makes a pan of $15$ cookies, lists these items: $1\dfrac{1}{2}$ cups of flour, $2$ eggs, $3$ tablespoons butter, $\dfrac{3}{4}$ cups sugar, and $1$ package of chocolate drops. They will make only full recipes, not partial recipes.
+
+They learn that a big concert is scheduled for the same night and attendance will be down $25\%.$ How many recipes of cookies should they make for their smaller party?
 
 (A) $6$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
-"1999-amc-8-19": { s: String.raw`The drummer gets sick. The concert is cancelled. Walter and Gretel must make enough pans of cookies to supply $216$ cookies. There are $8$ tablespoons in a stick of butter. How many sticks of butter will be needed? (Some butter may be left over, of course.)
+"1999-amc-8-19": { s: String.raw`At Central Middle School the $108$ students who take the AMC $8$ meet in the evening to talk about problems and eat an average of two cookies apiece. Walter and Gretel are baking Bonnie’s Best Bar Cookies this year. Their recipe, which makes a pan of $15$ cookies, lists these items: $1\dfrac{1}{2}$ cups of flour, $2$ eggs, $3$ tablespoons butter, $\dfrac{3}{4}$ cups sugar, and $1$ package of chocolate drops. They will make only full recipes, not partial recipes.
+
+The drummer gets sick. The concert is cancelled. Walter and Gretel must make enough pans of cookies to supply $216$ cookies. There are $8$ tablespoons in a stick of butter. How many sticks of butter will be needed? (Some butter may be left over, of course.)
 
 (A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
 "1999-amc-8-2": { s: String.raw`What is the degree measure of the smaller angle formed by the hands of a clock at $10$ o’clock?
