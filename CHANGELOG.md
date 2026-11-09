@@ -2,6 +2,8 @@
 
 **2026-11-09**
 
+- Owner-requested Settings icon consistency: replaced the Unicode gear with a font-independent inline SVG, using `currentColor` and centered independently of text metrics. Removed obsolete gear font-size overrides; existing button size, label, theme/hover/focus behaviour and Settings route remain. Other Unicode UI symbols were identified for the owner without changing them. Chromium checks passed in both themes at 1280/375px for icon/button centering, font independence, inherited colours, keyboard focus and Settings navigation; screenshots inspected and all repository gates passed. T3 remains Codex’s next priority.
+
 - Owner changed Codex’s next priority from AMC Geometry S7 to finishing T3 problem tagging. Updated PLAN, CLAUDE, TOPIC-TREE and TEXTBOOK-REVISION with the explicit scoped reassignment while Claude is idle, the 4,090/4,725 checkpoint (635 remaining), exact next paper/order and the existing per-problem audit, candidate-approval, validation and commit rules. Textbook revision stays at 37/103; S7 resumes after T3. Integrated latest main through merged #305 (4bf6af0). This is a handoff-only update; no problem is newly tagged or claimed reviewed. Topic-tree consistency, generated-tree freshness, changed-Markdown relative links and diff checks passed; app/data files are unchanged.
 
 **2026-11-08**
