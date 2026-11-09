@@ -2,6 +2,8 @@
 
 **2026-11-09**
 
+- **Tree repair: probability, first batch:** completed reading all 89 distinct fallback cases and applied the first group of existing-destination corrections. Sampling, dice, random walks and explicit independence replace generic labels where appropriate; genuine finite-space questions remain. Removed incidental technique topics, corrected the three-book-box wording in 2013 AIME I #6, and preserved answers/twins. Tree remains 473 nodes. Gates, answer keys, tree checks and independent probability enumerations passed.
+
 - **Tree repair: travel:** resolved TQ20 under the owner’s fix request; added Multi-stage journeys and stops for nine independent examples, with recognized twins aligned. Reviewed all 22 raw / 20 distinct motion-parent entries, moved two speed comparisons to the existing leaf and removed an incidental Vieta topic. TREE-REPAIRS.md explains each remaining parent case. Tree now has 473 nodes; all coverage is retained. Gates, answer-key and tree regressions passed.
 
 - **Tree repair: counting/modular boundaries:** reviewed all 21 distinct cases, corrected eleven raw entries, retired the Bijections wrapper and modulus-exclusion leaf, retained a coherent incidence-total pool, and broadened the Choose a Modulus card home. Repaired the 1984 AIME #14 and 1995 AIME #10 proofs with independently checked residue/prime arguments; answers unchanged. Tree now has 472 nodes. Gates, answer-key checks and tree regressions passed; TREE-REPAIRS.md lists dispositions.

@@ -136,3 +136,27 @@ The owner’s request to fix the audited issues resolves TQ20; added `alg.word.r
 | 2017 AMC 10A, Problem 9 | `alg.word.rates.motion` | `alg.word.rates.motion.stages` |
 | 2017 AMC 10B, Problem 7 | `alg.word.rates.motion` | `alg.word.rates.motion.stages` |
 | 2017 AMC 12B, Problem 4 | `alg.word.rates.motion` | `alg.word.rates.motion.stages` |
+
+## Probability review, first batch
+
+Read all 89 distinct entries before changing the fallback. This first batch covers the earlier half of the review list. Finite draws/deals move to the existing sampling leaf, the cube-edge event to Random walks (a whole-path event, not just a terminal state), and the independence question keeps only its specific probability kind. Remove root-filter/stars-and-bars/multinomial labels where they merely name tools, retaining actual distribution/divisor/root subjects. General finite probability models remains the fallback for finite numerical, arrangement, lattice and geometric point samples; these are not continuous geometric probabilities. Corrected the 2013 AIME I #6 description of the three-book box, without changing its count. Exact checks cover cube walks, octahedron moves, independence tallies, box deals and lottery sets. No new probability node is needed.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1993 AIME, Problem 7 | `cp.struct.catalan`, `cp.prob.basic.count` | `cp.struct.catalan`, `cp.prob.dice.draw` |
+| 1998 AIME, Problem 4 | `cp.prob.basic.count`, `nt.div.rules.parity` | `cp.prob.dice.draw`, `nt.div.rules.parity` |
+| 2010 AIME I, Problem 1 | `nt.divisor.count.tau`, `cp.prob.basic.count` | `nt.divisor.count.tau`, `cp.prob.dice.draw` |
+| 2013 AIME I, Problem 6 | `cp.prob.basic.count` | `cp.prob.dice.draw` (proof corrected) |
+| 2015 AIME I, Problem 2 | `cp.prob.basic.count` | `cp.prob.dice.draw` |
+| 2018 AIME I, Problem 3 | `cp.prob.basic.count`, `cp.struct.words.runs` | `cp.prob.dice.draw`, `cp.struct.words.runs` |
+| 2020 AIME I, Problem 9 | `nt.divisor.count.tau`, `cp.tech.stars.identical`, `cp.prob.basic.count` | `nt.divisor.count.tau`, `cp.prob.basic.count` |
+| 2023 AMC 10B, Problem 21 | `cp.prob.basic.count`, `alg.cx.unity.filter` | `cp.prob.basic.count`, `cp.tech.stars.distinct` |
+| 2023 AMC 12B, Problem 19 | `cp.prob.basic.count`, `alg.cx.unity.filter` | `cp.prob.basic.count`, `cp.tech.stars.distinct` |
+| 2024 AMC 10A, Problem 24 | `cp.struct.paths.walks`, `cp.prob.basic.count` | `cp.prob.process.walk` |
+| 2024 AMC 12A, Problem 16 | `cp.prob.basic.count`, `cp.binom.thm.multinomial` | `cp.prob.dice.draw` |
+| 2024 AMC 12B, Problem 17 | `alg.poly.vieta.basic`, `cp.prob.basic.count` | `alg.poly.introot`, `cp.prob.basic.count` |
+| 2024 AMC 12B, Problem 25 | `cp.prob.cond.indep`, `cp.prob.basic.count` | `cp.prob.cond.indep` |
+| 2025 AMC 12A, Problem 13 | `cp.prob.basic.count`, `cp.logic.pigeon.bounds` | `cp.prob.basic.count`, `cp.graph.sets` |
+| 2008 AMC 8, Problem 24 | `cp.prob.basic.count` | `cp.prob.dice.dice` |
+| 2011 AMC 8, Problem 12 | `cp.prob.basic.count` | `cp.prob.basic.count`, `cp.struct.seat.circle` |
+| 2013 AMC 8, Problem 14 | `cp.prob.basic.count` | `cp.prob.dice.draw` |

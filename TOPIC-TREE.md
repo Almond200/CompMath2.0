@@ -304,7 +304,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Sums of binomial coefficients `[cp.binom.thm.sums]`
 - **Probability and expectation** `[cp.prob]`
   - Equally likely outcomes `[cp.prob.basic]`
-    - Counting favorable outcomes `[cp.prob.basic.count]`
+    - General finite probability models `[cp.prob.basic.count]`
     - Complementary probability `[cp.prob.basic.complement]`
   - Dice, coins and cards `[cp.prob.dice]`
     - Dice `[cp.prob.dice.dice]`

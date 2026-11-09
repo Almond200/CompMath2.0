@@ -224,7 +224,7 @@ window.MATH_TOPIC_TREE = [
   ["cp.binom.thm.sums", "Sums of binomial coefficients", "cp.binom.thm"],
   ["cp.prob", "Probability and expectation", "cp"],
   ["cp.prob.basic", "Equally likely outcomes", "cp.prob"],
-  ["cp.prob.basic.count", "Counting favorable outcomes", "cp.prob.basic"],
+  ["cp.prob.basic.count", "General finite probability models", "cp.prob.basic"],
   ["cp.prob.basic.complement", "Complementary probability", "cp.prob.basic"],
   ["cp.prob.dice", "Dice, coins and cards", "cp.prob"],
   ["cp.prob.dice.dice", "Dice", "cp.prob.dice"],
