@@ -929,6 +929,14 @@ See `MIGRATION-NOTES.md` for the full answers.
 - **Import is all or nothing.** `importProgress` stages every value (lists merged on a copy) and keeps the old ones. If any write fails, everything is put back, and the message says whether the rollback worked. A new stored key joins `PROGRESS_KEYS` and follows the same path.
 - **The lab pages** (`lab/`): a page-wide key shortcut never takes Enter or Space from a focused link or button. A failed save shows a one-time notice instead of failing silently.
 
+### Keyboard access and motion (owner-requested, 2026-11-08)
+
+- Navigation links have real addresses; modified clicks retain native browser behavior. Collapsed navigation and the closed mobile drawer are inert. Buttons that expand navigation expose `aria-expanded` and `aria-controls`.
+- Custom radio groups and paper tabs have accessible group names and one active Tab stop. Use the shared `js/accessibility.js` arrow/Home/End handling; disabled/read-only choices do not become interactive stops. Tab panels have matching labels/controls.
+- Keep a visible blue `:focus-visible` ring on interactive controls. The first keyboard link skips to main without changing the route. After router navigation, focus the new content heading without disrupting saved scroll; do not autofocus on initial load or steal focus on ordinary input updates. Page titles identify the current content.
+- Faint text must meet 4.5:1 on the shared text backgrounds in both themes. Keep dense icon actions at least 24px and provide additional coarse-pointer room where needed, without enlarging their glyphs or treating 44px as a universal conformance requirement.
+- Honor reduced motion throughout CSS and explicit JavaScript scrolling. Use `AppAccessibility.scrollBehavior()` for new smooth-scroll actions. The shared browser check and measured findings are in ACCESSIBILITY-REVIEW.md.
+
 ### Practice sessions and UI preferences (2026-11-04)
 
 - Practice topic search uses the Settings suggestion style with a highlighted first result and at most seven visible matches, without an internal scrollbar. Avoid triangle disclosure controls for attribution; the shared credits suffice (owner, 2026-11-04).

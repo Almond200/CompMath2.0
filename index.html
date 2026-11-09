@@ -10,13 +10,14 @@
        as cards near the screen, and text in a font still loading is drawn invisible. -->
   <link rel="preload" href="vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=465">
+  <link rel="stylesheet" href="css/styles.css?v=466">
   <script>document.documentElement.setAttribute("data-theme","light");try{if(localStorage.getItem("theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}var st="landing";try{st=((JSON.parse(localStorage.getItem("mq-settings")||"null")||{}).prefs||{}).start||"landing";}catch(e){}if((!location.hash||location.hash==="#")&&st==="landing")document.documentElement.classList.add("pre-landing");</script>
 </head>
 <body>
+  <a class="skip-link" href="#content">Skip to main content</a>
   <header class="topbar">
     <div class="topbar-inner">
-      <button class="nav-toggle" id="nav-toggle" aria-label="Open section menu" title="Browse sections">&#9776;</button>
+      <button class="nav-toggle" id="nav-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Open section menu" title="Browse sections">&#9776;</button>
       <button class="brand" id="brand-home" title="Back to the start">
         <span class="brand-sigma">&Sigma;</span>
         <div class="brand-text">
@@ -40,7 +41,7 @@
         <button type="button" data-space-go="practice">Practice</button>
       </nav>
       <div class="search-wrap">
-        <input id="search-input" type="search" placeholder="Search the reference&hellip; (try &quot;cyclic&quot;, &quot;LTE&quot;, &quot;reflection&quot;)" autocomplete="off">
+        <input id="search-input" type="search" aria-label="Search the reference" placeholder="Search the reference&hellip; (try &quot;cyclic&quot;, &quot;LTE&quot;, &quot;reflection&quot;)" autocomplete="off">
         <kbd class="search-kbd">/</kbd>
       </div>
       <div class="topbar-tools">
@@ -55,8 +56,8 @@
 
   <div class="nav-backdrop" id="nav-backdrop" hidden></div>
   <div class="layout">
-    <nav class="sidebar" id="sidebar"></nav>
-    <main class="content" id="content"></main>
+    <nav class="sidebar" id="sidebar" aria-label="Section navigation"></nav>
+    <main class="content" id="content" tabindex="-1"></main>
   </div>
 
   <script src="vendor/katex/katex.min.js?v=1"></script>
@@ -214,6 +215,7 @@
   <script src="js/data/problems/mock-extras.js?v=1"></script>
   <script src="js/mock-contests.js?v=1"></script>
   <script src="js/practice-sessions.js?v=5"></script>
-  <script src="js/app.js?v=651"></script>
+  <script src="js/accessibility.js?v=2"></script>
+  <script src="js/app.js?v=652"></script>
 </body>
 </html>

@@ -1334,7 +1334,7 @@
   }
   // Go to an address; when it is already the address, re-render instead (no hashchange fires).
   function goHash(h) {
-    if (location.hash === h || (!h && !location.hash)) { render(); scrollForRoute(getRoute(), null); }
+    if (location.hash === h || (!h && !location.hash)) { render(); scrollForRoute(getRoute(), null); window.AppAccessibility.focusMain(); }
     else location.hash = h;
   }
 
@@ -1520,7 +1520,7 @@
 
   function starBtnHtml(id) {
     const on = inList("starred", id);
-    return `<button class="star-btn${on ? " starred" : ""}" data-star="${id}" title="${on ? "Starred" : "Star for later"}">${on ? "★" : "☆"}</button>`;
+    return `<button class="star-btn${on ? " starred" : ""}" data-star="${id}" aria-label="Star for later" aria-pressed="${on}" title="${on ? "Starred" : "Star for later"}">${on ? "★" : "☆"}</button>`;
   }
   // Add-to-list opener: a plain "+".
   function addListBtnHtml(id) {
@@ -1613,6 +1613,7 @@
     document.querySelectorAll(`.star-btn[data-star="${fid}"]`).forEach(b => {
       b.classList.toggle("starred", on); b.textContent = on ? "★" : "☆";
       b.title = on ? "Starred" : "Star for later";
+      b.setAttribute("aria-pressed", String(on));
     });
   }
   function onMenuChange(e) {
@@ -2590,7 +2591,7 @@
     return `
       <article class="card card-${kindOf(f)}" data-id="${f.id}" id="f-${f.id}">
         <div class="card-head">
-          <h4 class="card-name">${f.name}</h4>
+          <h4 class="card-name"><a href="#/f/${f.id}">${f.name}</a></h4>
           <span class="card-tags">${kindBadgeHtml(f)}${impBadgeHtml(f)}</span>
           <span class="card-actions">
             ${starBtnHtml(f.id)}
@@ -3842,7 +3843,7 @@
     const batch = (window.NEW_CARD_BATCHES || []).find(b => b.ids.indexOf(id) !== -1);
     const tl = TIER_LABELS[tierKey(f)], il = IMPORTANCE_LABELS[f.importance];
     const kindName = { formula: "Formula", method: "Method", pattern: "Pattern" }[kindOf(f)];
-    const seg = (key, cur, opts) => `<div class="pt-seg" role="radiogroup">${opts.map(([v, l]) => `<button type="button" role="radio" aria-checked="${v === cur ? "true" : "false"}" data-pt-set="${key}" data-val="${v}">${l}</button>`).join("")}</div>`;
+    const seg = (key, cur, opts) => `<div class="pt-seg" role="radiogroup" aria-label="${key === 'text' ? 'Text size' : 'Theme'}">${opts.map(([v, l]) => `<button type="button" role="radio" aria-checked="${v === cur ? "true" : "false"}" data-pt-set="${key}" data-val="${v}">${l}</button>`).join("")}</div>`;
     const row = (k, v) => `<div class="pt-info"><span>${k}</span><b>${v}</b></div>`;
     return `<aside class="page-tools" aria-label="Page tools"><div class="pt-inner">
         <section class="pt-block"><div class="pt-head">Tools</div>
@@ -3886,7 +3887,7 @@
       }
       const act = e.target.closest("[data-pt]");
       if (!act) return;
-      if (act.dataset.pt === "top") window.scrollTo({ top: 0, behavior: "smooth" });
+      if (act.dataset.pt === "top") window.scrollTo({ top: 0, behavior: window.AppAccessibility.scrollBehavior() });
       else if (act.dataset.pt === "print") window.print();
       else if (act.dataset.pt === "hide") { state.tools = "off"; saveSettings(); renderDetail(entry); }
       else if (act.dataset.pt === "permalink") {
@@ -4100,7 +4101,7 @@
       saveSettings();
       buildListToc();
       document.querySelector("#page-toc .toc-link")?.focus();
-    } else if (what === "top") window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (what === "top") window.scrollTo({ top: 0, behavior: window.AppAccessibility.scrollBehavior() });
     else if (what === "print") { prepareMathForPrint(); window.print(); }
     else if (what === "link") {
       const url = location.href;
@@ -4677,7 +4678,7 @@
           setTimeout(() => row.classList.remove("set-found"), 2600);
         };
         const target = Math.max(0, Math.min(top, document.documentElement.scrollHeight - window.innerHeight));
-        window.scrollTo({ top: target, behavior: "smooth" });
+        window.scrollTo({ top: target, behavior: window.AppAccessibility.scrollBehavior() });
         let last = -1, still = 0, n = 0;
         const wait = () => {
           const y = window.scrollY;
@@ -4900,7 +4901,7 @@
     const rows = SECTIONS.filter(sc => bookOf(sc) === "formulas").map(sc => `
       <div class="nav-section${sc.id === active ? " open" : ""}">
         <button class="nav-section-btn${sc.id === active ? " active" : ""}"><span>${sc.title}</span><span class="nav-count">${sectionCount(sc)}</span></button>
-        <div class="nav-subs"><div class="nav-subs-inner">${sc.subsections.map((sub, i) => `<a class="nav-sub-link${sc.id === active && i === 0 ? " active" : ""}">${sub.title}</a>`).join("")}</div></div>
+        <div class="nav-subs"><div class="nav-subs-inner">${sc.subsections.map((sub, i) => `<span class="nav-sub-link${sc.id === active && i === 0 ? " active" : ""}">${sub.title}</span>`).join("")}</div></div>
       </div>`).join("");
     return `<div class="sidebar pv-side"><div class="nav-group open" data-group="formulas">
         <div class="nav-space-head"><span class="nsh-label">${SPACES.formulas.label}</span><span class="nsh-info">i</span><span class="nsh-ask">${SPACES.formulas.ask}</span></div>
@@ -6841,7 +6842,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       return;
     }
     if (e.target.closest(".lp-drawer-close")) { closeLearnDrawer(); return; }
-    if (e.target.closest("[data-bk-top]")) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+    if (e.target.closest("[data-bk-top]")) { e.preventDefault(); window.scrollTo({ top: 0, behavior: window.AppAccessibility.scrollBehavior() }); return; }
     // A lesson problem's "Jump to solution", and the solution's "Back to problem". The address is a
     // route, so these scroll instead of using #fragments.
     const jump = e.target.closest("[data-lx-jump]");
@@ -6849,7 +6850,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const to = document.getElementById(jump.dataset.lxJump), bar = document.querySelector(".topbar");
       // The top bar covers the page only where it stays put (it scrolls away on a phone).
       const cover = bar && !window.matchMedia("(max-width: 900px)").matches ? bar.offsetHeight : 0;
-      if (to) window.scrollTo({ top: to.getBoundingClientRect().top + window.scrollY - cover - 16, behavior: "smooth" });
+      if (to) window.scrollTo({ top: to.getBoundingClientRect().top + window.scrollY - cover - 16, behavior: window.AppAccessibility.scrollBehavior() });
       return;
     }
     // A card link in the lesson opens in the drawer instead of leaving the page.
@@ -7867,7 +7868,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         groupEdit.findAt = (groupEdit.findAt + 1) % matches.length;
         geApplyFind();
         const c = $content.querySelector(`[data-ge-chip="${CSS.escape(matches[groupEdit.findAt])}"]`);
-        if (c) c.scrollIntoView({ block: "center", behavior: "smooth" });
+        if (c) c.scrollIntoView({ block: "center", behavior: window.AppAccessibility.scrollBehavior() });
       } else {
         // Nothing in the list matches: Enter adds the first card offered.
         const first = $content.querySelector(".ge-add-results [data-ge-add]");
@@ -8715,7 +8716,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const shownG = Math.max(0, gnames.findIndex(gn => paperSlug(gn) === route.paper));
     const body = gnames.map((gn, k) => {
       const ps = groups[gn].sort((a, b) => a.num - b.num);
-      return `<div class="db-group${k === shownG ? " is-shown" : ""}" data-g="${k}"><h3 class="db-group-title">${escapeAttr(gn)}</h3><div class="prob-grid">${ps.map(p => problemRowHtml(p, true)).join("")}</div></div>`;
+      return `<div class="db-group${k === shownG ? " is-shown" : ""}" data-g="${k}"${gnames.length > 1 ? ` id="ct-paper-panel-${k}" role="tabpanel" aria-labelledby="ct-paper-tab-${k}"` : ""}><h3 class="db-group-title">${escapeAttr(gn)}</h3><div class="prob-grid">${ps.map(p => problemRowHtml(p, true)).join("")}</div></div>`;
     }).join("");
     const i = years.indexOf(year);
     const newer = years[i - 1], older = years[i + 1];
@@ -8732,7 +8733,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <select class="ct-yb-select" aria-label="Year">${years.map(y => `<option value="${y}"${y === year ? " selected" : ""}>${y}</option>`).join("")}</select>
         ${newer ? `<a class="ct-yb-step" href="${yhref(newer)}" aria-label="${newer}">${stepChevron(1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(1)}</span>`}
       </div>
-      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist">${gnames.map((gn, k) => `<button type="button" role="tab" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), ""))}</button>`).join("")}</div>` : ""}
+      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), ""))}</button>`).join("")}</div>` : ""}
       ${body}
       <nav class="topic-nav" aria-label="Neighbouring years">
         ${older ? `<a class="topic-step" href="${yhref(older)}"><span class="ts-dir">&larr; Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
@@ -8750,6 +8751,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (!b) return;
       tabs.querySelectorAll("[data-g]").forEach(t => t.setAttribute("aria-selected", String(t === b)));
       $content.querySelectorAll(".db-group").forEach(g => g.classList.toggle("is-shown", g.dataset.g === b.dataset.g));
+      updatePageTitle(getRoute(), gnames[+b.dataset.g]);
     });
   }
   // The AoPS "See also" box, rebuilt against our own data: the sitting, previous and next,
@@ -9566,7 +9568,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const j = e.target.closest("[data-jump]");
     if (!j) return;
     const t = document.getElementById(j.dataset.jump);
-    if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (t) t.scrollIntoView({ behavior: window.AppAccessibility.scrollBehavior(), block: "start" });
   });
   // Any command chip, anywhere, runs its example.
   document.addEventListener("click", e => {
@@ -9663,12 +9665,31 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // and owns the delegated click listener, so rebuilding it per route would attach a
     // duplicate listener every time.
     updateNavActive();
+    syncSidebarAvailability();
     updateGearActive();
     if (route.type === "list") buildListToc();
     else if (route.type !== "formula") clearPageToc();
     if (route.type === "list" && pendingRename === route.listId) { pendingRename = null; startListRename(route.listId); }
     // Showing or hiding the sidebar changes the card width, so the formulas are fitted again.
     fitCardFormulas($content);
+    updatePageTitle(route);
+  }
+
+  function updatePageTitle(route, paper) {
+    const brand = "Competition Math Reference";
+    let label;
+    if (route.type === "home" && state.query.trim()) label = "Search: " + state.query.trim();
+    else if (route.type === "home" && state.landing) label = "";
+    else if (route.type === "formula") label = route.entry.formula.name;
+    else if (route.type === "problem") label = refShort(PROBLEM_BY_SLUG[route.slug].ref);
+    else if (route.type === "problems") {
+      const selected = $content.querySelector('.ct-papers [aria-selected="true"]');
+      label = paper ? (/^\d{4}/.test(paper) ? paper : route.year + " " + paper) : (selected && (route.paper || selected.getClientRects().length) ? route.year + " " + selected.textContent : route.year + " " + (FAM_BY_SLUG[route.fam] || route.fam));
+    } else if (route.type === "learn") label = [route.howto ? "How to Use This Book" : route.review ? "Review Problems" : route.challenge ? "Challenge Problems" : route.lesson ? route.lesson.code + " " + route.lesson.title : route.chapter?.title, route.book.title].filter(Boolean).join(" · ");
+    else if (route.practiceSet && topicPracticeSet) label = [topicPracticeSet.status === 'finished' ? location.hash.endsWith('/review') ? 'Review' : 'Results' : null, isMock(topicPracticeSet) ? 'Mock set' : 'Practice set', practiceSetLabel(topicPracticeSet)].filter(Boolean).join(' · ');
+    else label = $content.querySelector("h2")?.textContent || SPACES[state.space]?.label;
+    label = String(label || "").replace(/<[^>]*>/g, "").replace(/\$/g, "").replace(/\\([a-z]+)/gi, "$1").replace(/[{}]/g, "").replace(/\s+/g, " ").trim();
+    document.title = label && label !== brand ? label + " — " + brand : brand;
   }
 
   // ---------- Sidebar ----------
@@ -9704,7 +9725,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         </button>
         <div class="nav-subs"><div class="nav-subs-inner">
           ${(sub.groups || []).map((g, j) =>
-            `<a class="nav-sub-link" data-section="${section.id}" data-sub="${i}" data-cluster="${j}">${g.title}</a>`).join("")}
+            `<a class="nav-sub-link" href="${escapeAttr(sectionHash(section.id, { sub:i, cluster:j }))}" data-section="${section.id}" data-sub="${i}" data-cluster="${j}">${g.title}</a>`).join("")}
         </div></div>
       </div>`).join("");
     const formulaRows = section => `
@@ -9715,7 +9736,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         </button>
         <div class="nav-subs"><div class="nav-subs-inner">
           ${section.subsections.map((sub, i) =>
-            `<a class="nav-sub-link" data-section="${section.id}" data-sub="${i}">${sub.title}</a>`).join("")}
+            `<a class="nav-sub-link" href="${escapeAttr(sectionHash(section.id, { topic:i }))}" data-section="${section.id}" data-sub="${i}">${sub.title}</a>`).join("")}
         </div></div>
       </div>`;
     $sidebar.innerHTML = `<div id="formula-nav">` + order.map(group => `
@@ -9744,6 +9765,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       }
       const btn = e.target.closest(".nav-section-btn");
       const link = e.target.closest(".nav-sub-link") || e.target.closest(".nav-cluster-link");
+      if (link && (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey)) return;
       // In the mobile drawer, the first tap on a section opens it (revealing its
       // sub-subjects) and keeps the drawer up; tapping that same (already-open)
       // section again takes you to its main page and closes the drawer. A
@@ -9771,6 +9793,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         state.openGroup = null;
         goHash(sectionHash(secId, { sub: subj }));
       } else if (link) {
+        e.preventDefault();
         clearSearch();
         const linkSec = SECTIONS.find(x => x.id === link.dataset.section);
         const cl = link.dataset.cluster === undefined ? null : +link.dataset.cluster;
@@ -9806,9 +9829,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
       a.classList.toggle("nav-empty", empty);
       if (empty) {
         a.setAttribute("aria-disabled", "true");
+        a.tabIndex = -1;
         a.title = "No cards here match the current filters";
       } else {
         a.removeAttribute("aria-disabled");
+        a.removeAttribute("tabindex");
         a.removeAttribute("title");
       }
     });
@@ -9823,9 +9848,18 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const isActive = onHome && !state.query.trim() && !state.adv && !state.landing
                        && el.dataset.section === state.activeSectionId
                        && (el.dataset.subject === undefined || +el.dataset.subject === state.activeSub);
-      el.classList.toggle("open", isActive && state.navCollapsed !== el.dataset.section + ":" + (el.dataset.subject === undefined ? null : +el.dataset.subject));
-      const btn = el.querySelector(".nav-section-btn");
-      if (btn) btn.classList.toggle("active", isActive);
+      const expanded = isActive && state.navCollapsed !== el.dataset.section + ":" + (el.dataset.subject === undefined ? null : +el.dataset.subject);
+      el.classList.toggle("open", expanded);
+      const subs = el.querySelector(".nav-subs"), btn = el.querySelector(".nav-section-btn");
+      if (subs) {
+        subs.id = "nav-subs-" + el.dataset.section + "-" + (el.dataset.subject ?? "all");
+        subs.inert = !expanded;
+      }
+      if (btn) {
+        btn.classList.toggle("active", isActive);
+        btn.setAttribute("aria-expanded", String(expanded));
+        if (subs) btn.setAttribute("aria-controls", subs.id);
+      }
     });
     // The counts beside subjects follow the filter: with none set they are the totals.
     tree.querySelectorAll(".nav-section-btn").forEach(btn => {
@@ -9970,7 +10004,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const el = scrollerFor(e.target, dy);
     e.preventDefault();
     const clampTo = y => Math.max(0, Math.min(scrollMax(el), y));
-    if (e.deltaMode === 0 && Math.abs(e.deltaY) < 40) {
+    if (window.AppAccessibility.reducedMotion() || (e.deltaMode === 0 && Math.abs(e.deltaY) < 40)) {
       if (wheelAnim) { cancelAnimationFrame(wheelAnim.raf); wheelAnim = null; }
       scrollSet(el, clampTo(scrollPos(el) + dy));
       return;
@@ -9983,6 +10017,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const a = wheelAnim;
       if (!a) return;
       const cur = scrollPos(a.el), diff = a.to - cur;
+      if (window.AppAccessibility.reducedMotion()) { scrollSet(a.el, a.to); wheelAnim = null; return; }
       if (Math.abs(diff) < 2) { scrollSet(a.el, a.to); wheelAnim = null; return; }
       scrollSet(a.el, cur + diff * 0.28);
       // Stop if something else holds the page still (its end, or the reader dragging the bar).
@@ -10092,20 +10127,45 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // Mobile section drawer: the hamburger slides the sidebar in over a backdrop.
   const $navToggle = document.getElementById("nav-toggle");
   const $navBackdrop = document.getElementById("nav-backdrop");
+  const drawerMedia = window.matchMedia('(max-width: 760px)');
+  function syncSidebarAvailability() {
+    const open = document.body.classList.contains('nav-open');
+    $sidebar.inert = drawerMedia.matches && !open;
+    $navToggle?.setAttribute('aria-expanded', String(open));
+    $navToggle?.setAttribute('aria-label', open ? 'Close section menu' : 'Open section menu');
+  }
+  function drawerItems() {
+    return [...$sidebar.querySelectorAll('a[href], button:not([disabled])')].filter(el => !el.closest('[inert]') && el.getClientRects().length);
+  }
   function openDrawer() {
     document.body.classList.add("nav-open");
     if ($navBackdrop) $navBackdrop.hidden = false;
+    syncSidebarAvailability();
+    drawerItems()[0]?.focus({ preventScroll:true });
   }
-  function closeDrawer() {
+  function closeDrawer(restore = false) {
     if (!document.body.classList.contains("nav-open")) return;
     document.body.classList.remove("nav-open");
     if ($navBackdrop) $navBackdrop.hidden = true;
+    syncSidebarAvailability();
+    if (restore) $navToggle?.focus({ preventScroll:true });
   }
+  drawerMedia.addEventListener('change', () => { if (!drawerMedia.matches) closeDrawer(); syncSidebarAvailability(); });
   if ($navToggle) $navToggle.addEventListener("click", () => {
-    if (document.body.classList.contains("nav-open")) closeDrawer(); else openDrawer();
+    if (document.body.classList.contains("nav-open")) closeDrawer(true); else openDrawer();
   });
-  if ($navBackdrop) $navBackdrop.addEventListener("click", closeDrawer);
-  document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+  if ($navBackdrop) $navBackdrop.addEventListener("click", () => closeDrawer(true));
+  document.addEventListener("keydown", e => {
+    if (!document.body.classList.contains('nav-open') || openModals.length) return;
+    if (e.key === "Escape") { e.preventDefault(); closeDrawer(true); }
+    else if (e.key === 'Tab') {
+      const items = drawerItems(), at = items.indexOf(document.activeElement);
+      if (!items.length) return;
+      if ((e.shiftKey && at <= 0) || (!e.shiftKey && (at < 0 || at === items.length - 1))) {
+        e.preventDefault(); items[e.shiftKey ? items.length - 1 : 0].focus();
+      }
+    }
+  });
 
   // Lists → the Lists part of the Learn page.
   const $listsBtn = document.getElementById("lists-btn");
@@ -10211,7 +10271,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           const bar = document.querySelector(".topbar"), barH = bar ? bar.offsetHeight : 0;
           const r = el.getBoundingClientRect(), room = window.innerHeight - barH;
           const top = r.top + window.scrollY - barH - Math.max(14, (room - r.height) / 2);
-          window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+          window.scrollTo({ top: Math.max(0, top), behavior: window.AppAccessibility.scrollBehavior() });
         } else if (el.tagName === "INPUT") {
           (el.closest(".hp-panel") || el).scrollIntoView({ block: "center" });
           el.focus({ preventScroll: true });
@@ -10770,6 +10830,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     legacyRedirect();
     const route = getRoute();
     render();
+    window.AppAccessibility.focusMain();
     // A revisited entry (Back or Forward) returns to where the reader was on it; a fresh click
     // opens at the top. #/settings/commands scrolls to its own anchor (renderSettingsPage).
     if (!(route.type === "settings" && route.anchor)) scrollForRoute(route, history.state && typeof history.state.y === "number" ? history.state.y : null, history.state);
@@ -10789,6 +10850,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   try { localStorage.removeItem("mq-last"); } catch (e) {}
   buildSidebar();
   render();
+  window.AppAccessibility.init();
   scrollForRoute(getRoute(), null);
 
   // ---------- Debug / evaluation hook ----------
