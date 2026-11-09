@@ -122,7 +122,7 @@ CONVENTIONS §0 has the full model.
   Overview, an Index whose entries link to lessons, a Glossary, and References and Credits. They
   are 13 reference chapters with 52 sections, not counted with the teaching pages (the shelf gate's
   116 chapters and 645 lesson records include them), and they carry no difficulty tags.
-- **Practice** (`#/practice`): four matching panels for a random problem, untimed topic sets, timed past-paper/generated mocks, and browsing contest years, followed by Resume a set and Completed sets. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
+- **Practice** (`#/practice`): four matching panels for a random problem, untimed topic sets, timed past-paper/generated mocks, and browsing contest years, followed by Resume a set and Completed sets. Finish and review confirms only when non-voided questions remain unanswered; fully answered sets submit directly. Active answers have a small Clear answer button. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
   back; on a phone its years are a menu between arrows, with a toggle between the year's papers.
 - **Search** results are one list in order of relevance (formulas, methods, patterns, problems
   and study lists, each labelled), shown full width with no space highlighted. So are tag pages
@@ -277,6 +277,7 @@ Start with `CLAUDE.md` and `PLAN.md` (`LEARN-OUTLINE.md` holds the current Learn
 index.html                     page shell and script order
 css/styles.css                 theme, layout, card and diagram styling
 js/app.js                      routing, rendering, and the search engine
+js/ui-icons.js                 shared font-independent SVG UI symbols
 js/accessibility.js            shared radio/tab keyboard behavior, skip navigation and motion helpers
 js/data/geometry.js            formula cards, one file per subject
 js/data/algebra.js
@@ -313,6 +314,8 @@ tools/check-diagrams.py        every figure fits its canvas and no two labels co
 tools/check-labels.py          as rendered in Chrome: no label sits on a dot, a line or another label
 tools/check-accessibility.cjs  browser checks for keyboard access, contrast, motion and target sizes
 tools/check-book-search.cjs    browser checks for Index/Glossary jumps, focus and highlights
+tools/check-ui-icons.cjs       browser checks for SVG centering and icon interactions
+tools/check-practice-actions.cjs browser checks for finish confirmation and answer clearing
 tools/label-audit.html         the page check-labels drives; #show draws every offending figure
 tools/check-lists.py           list ids resolve, every route is complete, Connected formulas resolve
 tools/check-topics.py          every card carries a topic chip, and no subsection title awards a wrong one
