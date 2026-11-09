@@ -5616,6 +5616,13 @@
     const answerChoices = $content.querySelectorAll('[data-practice-answer]');
     const clearAnswer = $content.querySelector('#clear-practice-answer');
     const answerInput = $content.querySelector('#practice-answer');
+    // Mobile browsers can retarget a tap just outside a text field onto it.
+    // Keep focus within its visible border, using the original pointer coordinates.
+    answerInput?.addEventListener('pointerdown', e => {
+      if (e.pointerType !== 'touch') return;
+      const r = answerInput.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.preventDefault();
+    });
     const syncAnswerUI = () => {
       const value = set.answers[slug] || '';
       answerChoices.forEach(b => b.setAttribute('aria-checked', String(b.dataset.practiceAnswer === value)));
@@ -8859,7 +8866,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const MAA_RE = /\b(AMC|AIME|AJHSME)\b/;
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 26;
+  const STATEMENTS_V = 28;
   const statementLoads = {};
   function loadStatements(year) {
     if (!statementLoads[year]) {

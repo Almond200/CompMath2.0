@@ -2,6 +2,7 @@
 // node tools/tree-audit.js ["2009 AMC 8"] [--thin] [--census]
 // Thin/census counts cover all filed papers, even with a paper prefix.
 const path = require("node:path");
+const { ancestorIds } = require('./topic-tree-structure.cjs');
 
 function census(tree, problems, homes) {
   const nodes = new Map(tree.map(([id, name, parent]) => [id, {
@@ -39,7 +40,7 @@ function report(tree, problems, homes, args) {
   const prefix = args.find(a => !a.startsWith("--")) || "";
   const filed = problems.filter(p => p.tree && p.ref.startsWith(prefix));
   const { nodes, instance } = census(tree, problems, homes);
-  const related = (a, b) => a === b || a.startsWith(b + ".") || b.startsWith(a + ".");
+  const related = (a, b) => a === b || ancestorIds(nodes, a).includes(b) || ancestorIds(nodes, b).includes(a);
   const summary = n => `${n.id} (${n.name}): ${n.problems.length} raw, ${n.distinct} distinct; ${n.sole.length} sole-label (${n.soleDistinct} distinct)`;
   const samples = ps => {
     const seen = new Set();

@@ -1,7 +1,7 @@
 // Gate for the topic tree (Step T): the tree data, the card homes, and the problems' `tree` fields.
 //   node tools/check-topic-tree.js
-// The tree (js/data/topic-tree.js) must be a tree: unique ids, each extending its parent's, every
-// parent present. Every card must be in topic-homes.js, with a home that is a real node; formulas and
+// The tree (js/data/topic-tree.js) must have stable unique ids and explicit acyclic parent links,
+// within four subjects and five levels. Every card must have a home entry; formulas and
 // patterns must have one, a method may be null (general-purpose). A problem's `tree` (filled in by the
 // tagging pass) must list one to three real nodes, none of them an ancestor of another, and the AMC 10
 // and 12 twins of a problem (same year, same strategy) must agree. A problem without `tree` is not yet
@@ -12,15 +12,9 @@ for (const f of ["algebra", "counting", "geometry", "number-theory", "patterns",
 require(path.join(ROOT, "js/data/topic-tree.js"));
 require(path.join(ROOT, "js/data/topic-homes.js"));
 require(path.join(ROOT, "js/data/problems/problem-db.js"));
-const bad = [];
-const NODE = {};
-for (const [id, name, parent] of window.MATH_TOPIC_TREE) {
-  if (NODE[id]) bad.push(`node ${id}: listed twice`);
-  if (!name) bad.push(`node ${id}: no name`);
-  if (parent === null ? id.includes(".") : !(NODE[parent] && id.slice(0, id.lastIndexOf(".")) === parent)) bad.push(`node ${id}: parent ${parent} is missing or not its prefix`);
-  NODE[id] = { name, parent };
-}
-const ancestors = id => { const out = []; for (let p = NODE[id] && NODE[id].parent; p; p = NODE[p].parent) out.push(p); return out; };
+const { inspectTree } = require('./topic-tree-structure.cjs');
+const { nodes, bad, ancestors } = inspectTree(window.MATH_TOPIC_TREE);
+const NODE = Object.fromEntries(nodes);
 const KIND = {};
 for (const s of window.MATH_SECTIONS) for (const ss of s.subsections || []) for (const f of ss.formulas || [])
   KIND[f.id] = s.id === "tools-methods" ? "method" : s.id === "tools-patterns" ? "pattern" : "formula";

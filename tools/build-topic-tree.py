@@ -5,9 +5,9 @@
     python3 tools/build-topic-tree.py --check   # exit 1 if the data file is out of step with TOPIC-TREE.md
 
 TOPIC-TREE.md stays the readable source: each subject is a "### Name `[id]`" heading, and each node a
-list item "- Name `[dotted.id]`", indented two spaces per level. Every id must extend its parent's id
-by one segment and appear once. The output lists the nodes in reading order, so a subject's subtree is
-contiguous. Card home nodes are a separate hand-written file (js/data/topic-homes.js), since they are
+list item "- Name `[dotted.id]`", indented two spaces per level. Every id stays within its subject
+and appears once; indentation, not the id prefix, defines parentage. Nodes are in reading order,
+so a subject's subtree is contiguous. Card homes are a separate file (js/data/topic-homes.js), since they are
 facts about cards, not about the tree; tools/check-topic-tree.js checks both.
 """
 import io, json, os, re, sys
@@ -17,8 +17,7 @@ SRC = os.path.join(ROOT, "TOPIC-TREE.md")
 OUT = os.path.join(ROOT, "js", "data", "topic-tree.js")
 
 
-def parse():
-    text = io.open(SRC, encoding="utf-8").read()
+def parse_text(text):
     start, end = text.index("## The four trees"), text.index("\n## ", text.index("## The four trees") + 5)
     nodes, stack, bad = [], {}, []
     for line in text[start:end].split("\n"):
@@ -34,7 +33,11 @@ def parse():
         d = len(m.group(1)) // 2
         nid, name = m.group(3), m.group(2).replace("**", "").strip()
         parent = stack.get(d - 1)
-        if parent is None or nid.rsplit(".", 1)[0] != parent: bad.append("%s: its id does not extend its parent %s" % (nid, parent))
+        if len(m.group(1)) % 2: bad.append("%s: indentation must use pairs of spaces" % nid)
+        if parent is None: bad.append("%s: missing parent at indentation level %s" % (nid, d))
+        if not re.fullmatch(r"[a-z]+(?:\.[a-z]+)*", nid): bad.append("%s: invalid id" % nid)
+        if nid.split(".")[0] != stack.get(-1): bad.append("%s: outside its subject" % nid)
+        if d > 3: bad.append("%s: exceeds five levels" % nid)
         stack = {k: v for k, v in stack.items() if k < d}
         stack[d] = nid
         nodes.append({"id": nid, "name": name, "parent": parent, "depth": d + 1})
@@ -42,7 +45,13 @@ def parse():
     for n in nodes:
         if n["id"] in seen: bad.append("%s: id used twice" % n["id"])
         seen.add(n["id"])
+    if {n["id"] for n in nodes if n["parent"] is None} != {"alg", "cp", "geo", "nt"}:
+        bad.append("the four subject roots must be alg, cp, geo and nt")
     return nodes, bad
+
+
+def parse():
+    return parse_text(io.open(SRC, encoding="utf-8").read())
 
 
 def render(nodes):

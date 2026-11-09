@@ -45,10 +45,14 @@ In the very center of the Irenic Sea lie the beautiful Nisos Isles. In $1998$ th
 Estimate the population of Nisos in the year $2050.$
 
 (A) $600$  (B) $800$  (C) $1000$  (D) $2000$  (E) $3000$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
-"1998-ajhsme-16": { s: String.raw`Estimate the year in which the population of Nisos will be approximately $6000.$
+"1998-ajhsme-16": { s: String.raw`In the very center of the Irenic Sea lie the beautiful Nisos Isles. In $1998$ the number of people on these islands is only $200,$ but the population triples every $25$ years. Queen Irene has decreed that there must be at least $1.5$ square miles for every person living in the Isles. The total area of the Nisos Isles is $24{,}900$ square miles.
+
+Estimate the year in which the population of Nisos will be approximately $6000.$
 
 (A) $2050$  (B) $2075$  (C) $2100$  (D) $2125$  (E) $2150$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
-"1998-ajhsme-17": { s: String.raw`In how many years, approximately, from $1998$ will the population of Nisos be as much as Queen Irene has proclaimed that the islands can support?
+"1998-ajhsme-17": { s: String.raw`In the very center of the Irenic Sea lie the beautiful Nisos Isles. In $1998$ the number of people on these islands is only $200,$ but the population triples every $25$ years. Queen Irene has decreed that there must be at least $1.5$ square miles for every person living in the Isles. The total area of the Nisos Isles is $24{,}900$ square miles.
+
+In how many years, approximately, from $1998$ will the population of Nisos be as much as Queen Irene has proclaimed that the islands can support?
 
 (A) $50$ years  (B) $75$ years  (C) $100$ years  (D) $125$ years  (E) $150$ years`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
 "1998-ajhsme-18": { s: String.raw`As indicated by the diagram below, a rectangular piece of paper is folded bottom to top, then left to right, and finally, a hole is punched at $X.$ What does the paper look like when unfolded?

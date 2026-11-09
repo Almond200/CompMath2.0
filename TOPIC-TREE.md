@@ -1,8 +1,8 @@
 # Topic tree
 
-**Status (T3 checkpoint):** 486 nodes after introductory pruning; 740 of 774 cards with homes, 34 general methods without. **4,315/4,725 problems filed**, through **2001 AMC 8** in the newest-first AMC 8/AJHSME pass. **410 remain** (400 AMC 8/AJHSME and ten HMMT). Next: **2000 AMC 8**. All AMC 10/12 and AIME papers are already filed. PLAN.md owns work order; QUESTIONS.md owns candidate decisions. The app does not yet use filings (T4); the Settings experimental viewer is diagnostic. Historical test filings below remain historical.
+**Status (T3 complete, 2026-11-09):** **4,725/4,725 problems filed**, including all 650 AMC 8, 350 AJHSME and ten 2019 HMMT February Geometry problems. Introductory pruning left 486 nodes; the subsequent area regrouping leaves 482 nodes, 740 of 774 cards with homes and 34 general methods without. The full census reports 57 terminal leaves below five recognized distinct problems, including two unused leaves; this is a review list, not an instruction to erase coherent topics. P64–P68/TQ20 decisions remain in QUESTIONS.md. The app does not yet use filings (T4); the Settings experimental viewer is diagnostic. Historical test filings below remain historical.
 
-**Execution handoff (owner, 2026-11-09):** Codex is explicitly assigned to finish T3 before returning to textbook revision. Claude is idle during this scoped pass. Continue from the current checkpoint above and complete the remaining filings in the order and with the per-problem audit/checkpoint rules in PLAN.md. The Elo ratings are already complete; this remaining task is topic-tree filing plus strategy/card-tag/diagram review, not another difficulty-label pass. Existing candidate approvals and validation rules stay in force.
+**Execution handoff (owner, 2026-11-09):** T3 is complete. The latest request resumes tree work with a larger structural synthesis: [TREE-REVIEW.md](TREE-REVIEW.md) records the chosen area regroupings, targeted semantic reviews and stable-id ancestry prerequisite. Its census helper is `tools/tree-structure-report.cjs`. Stable-id ancestry support and the arithmetic/counting/number-theory area regroupings are applied below: 482 nodes, 28 areas and 337 leaves. All problem filings and card homes are preserved. The subsequent [TREE-AUDIT.md](TREE-AUDIT.md) ranks the remaining semantic pruning: category meanings, travel, probability, triangle families, overlapping labels and the sparse tail. The audit itself changes no filings. T4 and textbooks remain paused. PLAN.md holds the checkpoint and ownership; candidate and validation rules remain in force.
 
 ## Why
 
@@ -21,7 +21,7 @@ Practice a topic currently offers every card name and every card keyword as a to
 3b. **The tree says what a problem is about; the Methods cards say how it is solved** (owner, 2026-11-07). The two are separate axes. A technique node (Casework or Complementary counting) is used only when the technique is the problem: an elementary counting question with no other subject, whose whole structure is the case split or the complement ("how many three-digit numbers contain a 7"). It is never a second label on a problem about something else because one step splits into cases; there the Methods card carries the technique (2024 AMC 12A #25, about functions equal to their own inverse, is filed under Inverse functions, not Casework). Technique-based practice ("practise complementary counting") draws from the problems that cite the Methods card, which finds the technique in every subject; it is not a branch of the tree. Some nodes carry a technique's name but hold a kind of problem, and are read that way: Stars and bars (distribution problems), Inclusion-exclusion (counting what avoids several conditions; Venn problems), Counting with symmetry (counting up to rotation or reflection), Generating functions (a coefficient of a given product). A problem files there only when it is that kind, not because its solution uses the technique. The technique-named nodes that held no kind of problem were retired or renamed (TQ17 to TQ19): Recursion and states, Bijections and Substitution to reveal a factorization are gone, Double counting is "Counting one total in two ways", and the SFFT nodes are "Grouping into products" and "Equations $xy+ax+by=c$".
 4. **Every problem has at least one node, usually one or two, at most three.** A problem files under the most specific node that describes it. A problem genuinely about two things (a probability question whose work is geometry) takes a node in each tree.
 5. **Size.** A topic aims for about 25 to 300 problems out of the 4,725; a subtopic for at least about 5. A subtopic that stays smaller after filing is reviewed for merging into its topic, and a problem that fits no subtopic files under the topic itself. There are no separate Olympiad nodes: Olympiad problems file under the same topics as everyone else's (owner, TQ4).
-6. **Stable ids.** Every node has a dotted id (`geo.circle.power`), never reused once problems are filed under it. The display name can change; the id cannot.
+6. **Stable ids.** Every node has a dotted id (`geo.circle.power`), never reused once problems are filed under it. The display name and parent can change within its subject; the id cannot. Markdown indentation defines parentage and the generated parent field defines ancestry. Old id prefixes may reflect former locations; never infer ancestry from them. Parents precede children, with no cycles and at most five levels.
 7. **Names are plain and short**, in the app's style ("Counting & Probability", "Mass points"), and never name a contest.
 8. **One fact, one home.** This Markdown file is the readable source. `tools/build-topic-tree.py` generates `js/data/topic-tree.js` from its four trees; `--check` verifies the result. Card homes live in `js/data/topic-homes.js`, and problem filings live on the problem entries.
 
@@ -63,13 +63,33 @@ Travel: the proposed multi-stage/stop-time archetype now has five read examples 
 
 `node tools/tree-audit.js --census` now reports unused and 1–4-distinct terminal leaves with affected card homes and up to five representative problems/card links, direct assignments on internal nodes, and frequent leaves ranked by sole-label proportion. Distinct counts conservatively collapse one same-year/season/letter AMC 10/12 pair with identical strategies; reworded twins can remain separate. Minimum populations are review prompts, never gate failures. `tests/tree-audit.cjs` covers count and twin-grouping edge cases.
 
+## Larger area regrouping (owner-requested)
+
+After the full-corpus synthesis in TREE-REVIEW.md, the owner asked to continue. Arithmetic and word problems now has three areas; Counting & Probability has five; Divisibility, Divisors and Primes share one area. All nine destination pools match their planned unions exactly, including card homes; all four subject pools are unchanged. The problem database and card-home file were not edited.
+
+Retired empty wrappers: `alg.word` (children distributed among `alg.arithmetic`, `alg.applied` and promoted `alg.word.stats`), `alg.word.units` (conversion under arithmetic, calendars under applied quantities), `cp.tech` and `cp.struct` (children distributed among the five counting areas), `nt.divisor` and `nt.prime` (children moved under `nt.div`). Only `alg.arithmetic` and `alg.applied` are new ids. Existing area ids are retained and renamed where their scope expands; `cp.exp` becomes a topic under Probability and expectation. No retired id had a direct filing or card home; none may be reused.
+
+This changes 486 nodes to 482 and 31 areas to 28, preserving all 337 leaves. The builder, gate and audit now follow explicit parents rather than inferring ancestry from id prefixes; regression checks enforce valid moves, roots, cycles, subjects, depth and nonredundant filings. The experimental viewer already derives its hierarchy from indentation. Geometry and semantic leaf pruning follow after statement review.
+
 ## The four trees
 
-Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic, with a fifth level where a subtopic still splits. Counts are not filled in yet; they come from the seeding pass.
+Node ids are stable identifiers, not paths. Indentation gives the current Subject › Area › Topic › Subtopic hierarchy, with a fifth level where needed. Older id prefixes can name retired or former parents.
 
 ### Algebra `[alg]`
 
-- **Arithmetic and word problems** `[alg.word]`
+- **Arithmetic and proportional reasoning** `[alg.arithmetic]`
+  - Arithmetic computation and estimation `[alg.word.compute]`
+    - Order of operations and fraction arithmetic `[alg.word.compute.fraction]`
+    - Clever computation and grouping `[alg.word.compute.clever]`
+    - Estimation and comparing sizes `[alg.word.compute.estimate]`
+    - Rounding and the range of a rounded value `[alg.word.compute.round]`
+  - Ratios, percents and mixtures `[alg.word.ratio]`
+    - Ratios and proportions `[alg.word.ratio.prop]`
+    - Percent change, discounts and interest `[alg.word.ratio.percent]`
+    - Mixtures and concentrations `[alg.word.ratio.mix]`
+    - Direct and inverse variation `[alg.word.ratio.vary]`
+  - Unit conversion and dimensional analysis `[alg.word.units.convert]`
+- **Rates, time and everyday quantities** `[alg.applied]`
   - Rates, distance and work `[alg.word.rates]`
     - Distance, speed and time `[alg.word.rates.motion]`
       - Meeting, overtaking, passing and head starts `[alg.word.rates.motion.meet]`
@@ -79,28 +99,16 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Combined work and filling rates `[alg.word.rates.work]`
     - Currents, wind and moving walkways `[alg.word.rates.current]`
     - Clocks and the hands of a clock `[alg.word.rates.clock]`
-  - Ratios, percents and mixtures `[alg.word.ratio]`
-    - Ratios and proportions `[alg.word.ratio.prop]`
-    - Percent change, discounts and interest `[alg.word.ratio.percent]`
-    - Mixtures and concentrations `[alg.word.ratio.mix]`
-    - Direct and inverse variation `[alg.word.ratio.vary]`
-  - Averages and statistics `[alg.word.stats]`
-    - Mean and changing a mean `[alg.word.stats.mean]`
-    - Median, mode and range `[alg.word.stats.median]`
-    - Weighted averages `[alg.word.stats.weighted]`
-    - Reading graphs, tables and charts `[alg.word.stats.data]`
   - Money, ages and everyday problems `[alg.word.everyday]`
     - Ages `[alg.word.everyday.age]`
     - Money, prices and coins `[alg.word.everyday.money]`
     - Sharing, splitting and fair division `[alg.word.everyday.share]`
-  - Units, time and calendars `[alg.word.units]`
-    - Unit conversion and dimensional analysis `[alg.word.units.convert]`
-    - Days of the week, calendars and time zones `[alg.word.units.calendar]`
-  - Arithmetic computation and estimation `[alg.word.compute]`
-    - Order of operations and fraction arithmetic `[alg.word.compute.fraction]`
-    - Clever computation and grouping `[alg.word.compute.clever]`
-    - Estimation and comparing sizes `[alg.word.compute.estimate]`
-    - Rounding and the range of a rounded value `[alg.word.compute.round]`
+  - Days of the week, calendars and time zones `[alg.word.units.calendar]`
+- **Data and averages** `[alg.word.stats]`
+  - Mean and changing a mean `[alg.word.stats.mean]`
+  - Median, mode and range `[alg.word.stats.median]`
+  - Weighted averages `[alg.word.stats.weighted]`
+  - Reading graphs, tables and charts `[alg.word.stats.data]`
 - **Equations and expressions** `[alg.eq]`
   - Linear equations and systems `[alg.eq.linear]`
     - One linear equation; setting up equations from words `[alg.eq.linear.one]`
@@ -230,7 +238,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
 
 ### Counting & Probability `[cp]`
 
-- **Basic counting** `[cp.basic]`
+- **Choices, arrangements and distributions** `[cp.basic]`
   - Lists and the multiplication and addition principles `[cp.basic.principle]`
     - Counting numbers in a list `[cp.basic.principle.list]`
     - Multiplication principle and independent choices `[cp.basic.principle.mult]`
@@ -249,25 +257,15 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Casework and complementary counting `[cp.basic.case]`
     - Casework `[cp.basic.case.cases]`
     - Complementary counting `[cp.basic.case.complement]`
-- **Counting techniques** `[cp.tech]`
   - Stars and bars and distributions `[cp.tech.stars]`
     - Identical objects into distinct boxes `[cp.tech.stars.identical]`
     - Distributions with upper or lower bounds `[cp.tech.stars.bounds]`
     - Distinct objects into boxes; surjections `[cp.tech.stars.distinct]`
-  - Inclusion-exclusion `[cp.tech.pie]`
-    - Two and three sets; Venn diagrams `[cp.tech.pie.venn]`
-    - General inclusion-exclusion `[cp.tech.pie.general]`
   - Bijections and counting in two ways `[cp.tech.bij]`
     - Counting one total in two ways `[cp.tech.bij.double]`
   - Counting with symmetry `[cp.tech.sym]`
     - Rotations and reflections; necklaces `[cp.tech.sym.necklace]`
     - Burnside's lemma `[cp.tech.sym.burnside]`
-  - Generating functions `[cp.tech.gf]`
-- **Arrangements with structure** `[cp.struct]`
-  - Paths on grids and lattices `[cp.struct.paths]`
-    - Lattice paths `[cp.struct.paths.lattice]`
-    - Paths with obstacles or required points `[cp.struct.paths.obstacle]`
-    - Walks on graphs, cubes and polygons `[cp.struct.paths.walks]`
   - Words, digits and strings `[cp.struct.words]`
     - Counting numbers with digit conditions `[cp.struct.words.digits]`
     - Strings with forbidden patterns `[cp.struct.words.forbidden]`
@@ -276,16 +274,30 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Seating, circular arrangements and derangements `[cp.struct.seat]`
     - Circular arrangements `[cp.struct.seat.circle]`
     - Derangements and fixed points `[cp.struct.seat.derange]`
-  - Catalan numbers and ballot problems `[cp.struct.catalan]`
   - Partitions and compositions `[cp.struct.part]`
     - Compositions `[cp.struct.part.comp]`
     - Integer partitions `[cp.struct.part.partition]`
     - Set partitions `[cp.struct.part.set]`
+- **Paths, graphs and boards** `[cp.graph]`
+  - Paths on grids and lattices `[cp.struct.paths]`
+    - Lattice paths `[cp.struct.paths.lattice]`
+    - Paths with obstacles or required points `[cp.struct.paths.obstacle]`
+    - Walks on graphs, cubes and polygons `[cp.struct.paths.walks]`
+  - Catalan numbers and ballot problems `[cp.struct.catalan]`
   - Tilings and colorings `[cp.struct.tile]`
     - Tilings of strips and boards `[cp.struct.tile.tiling]`
     - Colorings of grids, graphs and solids `[cp.struct.tile.color]`
     - Number fillings of grids (Latin squares, Sudoku bands) `[cp.struct.tile.fill]`
-- **Binomial coefficients** `[cp.binom]`
+  - Graphs, trees and networks `[cp.graph.basic]`
+    - Degrees and handshakes `[cp.graph.basic.degree]`
+    - Paths, cycles and Euler circuits `[cp.graph.basic.paths]`
+    - Trees and connectivity `[cp.graph.basic.trees]`
+  - Tournaments and round-robins `[cp.graph.tour]`
+- **Sets and coefficient counts** `[cp.binom]`
+  - Inclusion-exclusion `[cp.tech.pie]`
+    - Two and three sets; Venn diagrams `[cp.tech.pie.venn]`
+    - General inclusion-exclusion `[cp.tech.pie.general]`
+  - Generating functions `[cp.tech.gf]`
   - Pascal's triangle and identities `[cp.binom.identity]`
     - Pascal's rule and the hockey stick `[cp.binom.identity.hockey]`
     - Vandermonde and sums of products `[cp.binom.identity.vandermonde]`
@@ -294,7 +306,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Coefficients in an expansion `[cp.binom.thm.coeff]`
     - Multinomial expansions `[cp.binom.thm.multinomial]`
     - Sums of binomial coefficients `[cp.binom.thm.sums]`
-- **Probability** `[cp.prob]`
+- **Probability and expectation** `[cp.prob]`
   - Equally likely outcomes `[cp.prob.basic]`
     - Counting favorable outcomes `[cp.prob.basic.count]`
     - Complementary probability `[cp.prob.basic.complement]`
@@ -314,19 +326,13 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Repeated trials until a stopping event `[cp.prob.process.stop]`
     - Games between players `[cp.prob.process.game]`
     - State probabilities after a fixed number of steps `[cp.prob.process.steps]`
-- **Expected value** `[cp.exp]`
-  - Expected value by definition `[cp.exp.basic]`
-  - Linearity of expectation `[cp.exp.linear]`
-  - Expected waiting times and states `[cp.exp.states]`
-  - Variance and distributions `[cp.exp.var]`
-- **Graphs and combinatorial structures** `[cp.graph]`
-  - Graphs, trees and networks `[cp.graph.basic]`
-    - Degrees and handshakes `[cp.graph.basic.degree]`
-    - Paths, cycles and Euler circuits `[cp.graph.basic.paths]`
-    - Trees and connectivity `[cp.graph.basic.trees]`
-  - Tournaments and round-robins `[cp.graph.tour]`
+  - Expected value `[cp.exp]`
+    - Expected value by definition `[cp.exp.basic]`
+    - Linearity of expectation `[cp.exp.linear]`
+    - Expected waiting times and states `[cp.exp.states]`
+    - Variance and distributions `[cp.exp.var]`
+- **Logic, games and bounds** `[cp.logic]`
   - Largest subsets avoiding a condition `[cp.graph.sets]`
-- **Logic, games and processes** `[cp.logic]`
   - Logic puzzles and truth-tellers `[cp.logic.puzzle]`
     - Knights, knaves and truth-tellers `[cp.logic.puzzle.truth]`
     - Statements and logical equivalence (implications, contrapositives and converses, "all" and "some", which statement must follow) `[cp.logic.puzzle.statements]`
@@ -481,7 +487,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
 
 ### Number Theory `[nt]`
 
-- **Divisibility** `[nt.div]`
+- **Divisibility, primes and divisors** `[nt.div]`
   - Divisibility rules and divisibility arguments `[nt.div.rules]`
     - Divisibility rules for 2 to 11 `[nt.div.rules.tests]`
     - Counting multiples in a range `[nt.div.rules.count]`
@@ -494,7 +500,6 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Prime factorization `[nt.div.prime]`
     - Factoring and using prime factorizations `[nt.div.prime.factor]`
     - Perfect squares and powers from factorizations `[nt.div.prime.powers]`
-- **Divisors** `[nt.divisor]`
   - Counting and summing divisors `[nt.divisor.count]`
     - The number of divisors `[nt.divisor.count.tau]`
     - Sums and products of divisors `[nt.divisor.count.sigma]`
@@ -503,6 +508,13 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Euler's totient and multiplicative functions `[nt.divisor.phi]`
     - Euler's totient `[nt.divisor.phi.phi]`
     - Multiplicative functions and Möbius `[nt.divisor.phi.mult]`
+  - Primes and primality `[nt.prime.basic]`
+    - Recognizing and testing primes `[nt.prime.basic.test]`
+    - Primes in expressions and prime factors of $n^k \pm 1$ `[nt.prime.basic.expr]`
+  - Factorials, valuations, Legendre's formula and lifting the exponent `[nt.prime.val]`
+    - Trailing zeros and Legendre's formula `[nt.prime.val.legendre]`
+    - Factorials and divisibility `[nt.prime.val.factorial]`
+    - Lifting the exponent `[nt.prime.val.lte]`
 - **Modular arithmetic** `[nt.mod]`
   - Remainders and congruence arithmetic `[nt.mod.basic]`
     - Remainders of sums and products `[nt.mod.basic.arith]`
@@ -518,14 +530,6 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Systems of congruences `[nt.mod.crt.system]`
     - Splitting a modulus into prime powers `[nt.mod.crt.split]`
   - Quadratic residues and squares modulo small numbers `[nt.mod.qr]`
-- **Primes and factorials** `[nt.prime]`
-  - Primes and primality `[nt.prime.basic]`
-    - Recognizing and testing primes `[nt.prime.basic.test]`
-    - Primes in expressions and prime factors of $n^k \pm 1$ `[nt.prime.basic.expr]`
-  - Factorials, valuations, Legendre's formula and lifting the exponent `[nt.prime.val]`
-    - Trailing zeros and Legendre's formula `[nt.prime.val.legendre]`
-    - Factorials and divisibility `[nt.prime.val.factorial]`
-    - Lifting the exponent `[nt.prime.val.lte]`
 - **Diophantine equations** `[nt.dio]`
   - Linear Diophantine equations and the Frobenius problem `[nt.dio.linear]`
     - Solving $ax+by=c$ `[nt.dio.linear.solve]`

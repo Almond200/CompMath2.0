@@ -53,8 +53,17 @@ for f in glob.glob(os.path.join(ROOT, "js/data/problems/statements/*.js")):
     for m in re.finditer(r'^"([a-z0-9-]+)": \{ s: String\.raw`(.*?)`', open(f, encoding="utf-8").read(), re.S | re.M):
         if "@@fig:" in m.group(2): withfig.add(m.group(1))
 own = re.findall(r'PROB\["([^"]+)"\] =', open(os.path.join(ROOT, "js/data/diagrams/problem-diagrams.js"), encoding="utf-8").read())
+# The title catalog covers MAA papers only. App-drawn figures may also illustrate
+# separately attributed mock prompts, but must still belong to the actual database.
+db_slugs = set()
+for ref in re.findall(r'\bref: "([^"]+)"', open(os.path.join(ROOT, "js/data/problems/problem-db.js"), encoding="utf-8").read()):
+    m = re.fullmatch(r"(\d{4})\s+(.*?),\s*Problem\s+(\d+)", ref)
+    if m:
+        db_slugs.add("%s-%s-%s" % (m.group(1), re.sub(r"[^a-z0-9]+", "-", m.group(2).lower()).strip("-"), m.group(3)))
+for m in re.finditer(r"'([a-z0-9-]+)':\s*\{\s*statement:String\.raw`(.*?)`", open(os.path.join(ROOT, "js/data/problems/mock-extras.js"), encoding="utf-8").read(), re.S):
+    if "@@fig:" in m.group(2): withfig.add(m.group(1))
 for slug in own:
-    if slug not in slugs: bad.append("problem diagram %s: not a problem in the database" % slug)
+    if slug not in db_slugs: bad.append("problem diagram %s: not a problem in the database" % slug)
     if slug in withfig: bad.append("problem diagram %s: the statement already has a figure" % slug)
 if len(own) != len(set(own)): bad.append("a problem diagram is registered twice")
 print("statements: %d | of %d problems | figures: %d | drawn for the app: %d" % (n, len(slugs), figs, len(own)))

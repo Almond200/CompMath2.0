@@ -8,6 +8,7 @@ python3 tools/check-lists.py > /tmp/gate-lists.txt || { tail /tmp/gate-lists.txt
 python3 tools/build-learn-shelf.py --check || exit 1   # the Learn shelf matches LEARN-OUTLINE.md
 python3 tools/build-topic-tree.py --check || exit 1   # js/data/topic-tree.js matches TOPIC-TREE.md
 node tools/check-topic-tree.js > /tmp/gate-tree.txt || { cat /tmp/gate-tree.txt; exit 1; }   # tree, card homes, problem tree tags
+node tests/topic-tree-structure.cjs || exit 1   # moved stable ids, ancestry and malformed trees
 node tools/practice-gaps.js --check > /tmp/gate-practice.txt || { cat /tmp/gate-practice.txt; exit 1; }   # every card has two practice problems
 python3 tools/check-diagrams.py > /tmp/gate-diag.txt || { tail -20 /tmp/gate-diag.txt; exit 1; }
 python3 tools/check-statements.py > /tmp/gate-stmt.txt || { tail -20 /tmp/gate-stmt.txt; exit 1; }   # not piped: a pipe would hide its exit code

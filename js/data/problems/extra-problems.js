@@ -712,6 +712,11 @@
     { q: String.raw`For how many integers $n$, negative ones included, is $n - 3$ a divisor of $n^2 + 5$?`,
       s: String.raw`Modulo $n - 3$, $n \equiv 3$, so $n^2 + 5 \equiv 14$ and $n - 3$ must divide $14$: $n - 3 \in \{\pm1, \pm2, \pm7, \pm14\}$. That gives $8$ integers, $n = -11, -4, 1, 2, 4, 5, 10, 17$.` }
   );
+  // Replaces the directed-network near match removed during T3.
+  add("grid-path-fill",
+    { q: String.raw`Travel from $(0,0)$ to $(3,2)$ using north or east unit steps. There is also an optional one-way bridge from $(0,1)$ straight to $(2,1)$. How many routes are available?`,
+      s: String.raw`Enter the number of ways to reach each point. The bottom row is $1,1,1,1$. The next row is $1,2,4,5$: the $4$ at $(2,1)$ includes an extra arrival from $(0,1)$ over the bridge. The top row is $1,3,7,12$, giving $12$ routes. Independently, the $10$ routes without the bridge plus the $2$ that use it also give $12$.` }
+  );
   add("grid-path-fill",
     { q: String.raw`A walker heading from the origin to $(4, 4)$ by unit moves east or north must avoid the flooded corner $(2, 2)$. Count the routes.`,
       s: String.raw`Fill the grid with the blocked point set to $0$. Row by row from the bottom: $1,1,1,1,1$; $1,2,3,4,5$; $1,3,0,4,9$; $1,4,4,8,17$; $1,5,9,17,34$. So $34$ paths avoid it, which matches $\binom84 - \binom42^2 = 70 - 36$.` }

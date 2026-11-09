@@ -5398,6 +5398,38 @@
       cap(430, 290, "The segment from 3 to 4i (gold, length 5) and the region R (blue): every point within 1 of it, as the dashed unit disc slides along the segment. R is a 5-by-2 rectangle with a half disc on each end." + MM(ok))
     ]);
   })();
+  // 1993 AJHSME #25: the 1.5-inch square, rotated 45 degrees about a grid corner.
+  PROB["1993-ajhsme-25"] = (() => {
+    const k = 56, O = [215, 145], a = 1.5 / Math.sqrt(2), Q = (x, y) => add(O, [k * x, -k * y]);
+    const cells = [];
+    for (let x = -2; x < 2; x++) for (let y = -2; y < 2; y++) {
+      const dx = x < 0 ? -x - 1 : x, dy = y < 0 ? -y - 1 : y;
+      if (dx + dy < a) cells.push([x, y]);
+    }
+    const V = [Q(a, 0), Q(0, a), Q(-a, 0), Q(0, -a)];
+    const ok = cells.length === 12 && a > 1 && Math.abs(dist(V[0], V[1]) / k - 1.5) < 1e-9;
+    return wrap(430, 300, [
+      ...cells.map(([x, y]) => poly([Q(x, y), Q(x + 1, y), Q(x + 1, y + 1), Q(x, y + 1)], "none", 0, GLDS)),
+      ...[-2, -1, 0, 1, 2].flatMap(t => [seg(Q(t, -2), Q(t, 2), FNT, 1), seg(Q(-2, t), Q(2, t), FNT, 1)]),
+      poly(V, ACC, 2, ACCS), dot(O, DIM, 3), txt([215, 280], "Card side length: 1.5 inches", DIM, 12),
+      cap(430, 300, "The card is centered at the marked grid corner and turned 45°. Each gold cell meets the card in positive area." + MM(ok))
+    ]);
+  })();
+
+  // 1996 AJHSME #25: normalize R to 1 and illustrate a point r = R/3 from the center.
+  PROB["1996-ajhsme-25"] = (() => {
+    const O = [210, 135], R = 98, r = R / 3, P = add(O, [r, 0]), B = add(O, [R, 0]);
+    const ok = Math.abs(dist(O, P) - r) < 1e-9 && Math.abs(dist(P, B) - (R - r)) < 1e-9 && (R / 2) ** 2 / R ** 2 === 0.25;
+    return wrap(430, 280, [
+      circ(O, R, DIM, 2), circ(O, R / 2, ACC, 1.6, ACCS),
+      seg(O, P, GLD, 2), seg(P, B, DIM, 1.6), dot(O, DIM, 3), dot(P, GLD, 3), dot(B, DIM, 3),
+      txt(add(O, [-10, 16]), "O", DIM, 12), txt(add(P, [0, 16]), "P", GLD, 12), txt(add(B, [12, 4]), "B", DIM, 12),
+      txt(add(mid(O, P), [0, -8]), "r", GLD, 12), txt(add(mid(P, B), [0, -8]), "R − r", DIM, 12),
+      txt(add(O, [0, -R / 2 - 10]), "R/2", ACC, 12),
+      cap(430, 280, "B is the nearest point on the boundary to P. The blue disk contains the points closer to the center O than to the outer boundary." + MM(ok))
+    ]);
+  })();
+
   // 2001 AMC 8 #11: plot the given coordinates to show the two parallel vertical sides.
   PROB["2001-amc-8-11"] = (() => {
     const vertices = [[3, 2], [3, -2], [-3, -2], [-3, 0]], k = 32;
@@ -5414,6 +5446,155 @@
       txt(add(P[3], [-10, -8]), "D (−3, 0)", DIM, 12, "end"),
       txt(Q([5.1, -0.2]), "x", FNT, 12), txt(Q([0.25, 3.25]), "y", FNT, 12),
       cap(430, 280, "Quadrilateral ABCD at the given coordinates; the two vertical sides are blue." + MM(ok))
+    ]);
+  })();
+
+  // HMMT February 2019: the official problem sheet supplies no diagrams.
+  PROB["2019-hmmt-february-geometry-2"] = (() => {
+    const t = 0.5, h = Math.sqrt(3) * t, k = 160, Q = (x, y) => [95 + k * x, 220 - k * y];
+    const A = Q(0, 0), B = Q(3 * t, 0), C = Q(3 * t, h), D = Q(0, h), E = Q(2 * t, 0), F = Q(t, h);
+    const I = lineInt(A, F, B, D), J = lineInt(C, E, B, D);
+    const ok = Math.abs(dist(E, F) / k - 1) < 1e-9 && Math.abs(dist(B, D) / k - Math.sqrt(3)) < 1e-9
+      && Math.abs(sub(F, A)[0] * sub(D, B)[0] + sub(F, A)[1] * sub(D, B)[1]) < 1e-8;
+    return wrap(430, 280, [
+      poly([E, B, F, D], "none", 0, ACCS), poly([A, B, C, D], DIM, 2),
+      seg(B, F, ACC, 1.7), seg(D, E, ACC, 1.7), seg(A, F, GLD, 1.3), seg(C, E, GLD, 1.3),
+      seg(B, D, FNT, 1.3, "4 3"), seg(E, F, DIM, 1.5, "3 3"),
+      rightAngle(I, A, B, 7), rightAngle(J, C, B, 7),
+      ...[A, B, C, D, E, F].map(p => dot(p, DIM, 2.7)),
+      ...[[A, "A", -10, 17], [B, "B", 10, 17], [C, "C", 10, -9], [D, "D", -10, -9], [E, "E", 0, 18], [F, "F", 0, -10]].map(([p, n, x, y]) => txt(add(p, [x, y]), n, DIM, 12)),
+      txt(add(mid(E, F), [12, 4]), "1", DIM, 12),
+      cap(430, 280, "The blue cuts BF and DE give three equal areas. The gold segments AF and CE are perpendicular to diagonal BD; EF = 1." + MM(ok))
+    ]);
+  })();
+
+  PROB["2019-hmmt-february-geometry-3"] = (() => {
+    const k = 90, Q = (x, y) => [80 + k * x, 145 - k * y], A = Q(0, 0), B = Q(2, 0);
+    const T = Q(1.5, Math.sqrt(3) / 2), U = Q(1.5, -Math.sqrt(3) / 2);
+    const arc = Array.from({length: 81}, (_, i) => { const a = (120 - 3 * i) * Math.PI / 180; return Q(2 + Math.cos(a), Math.sin(a)); });
+    const ok = Math.abs(dist(B, T) / k - 1) < 1e-9 && Math.abs(sub(T, A)[0] * sub(T, B)[0] + sub(T, A)[1] * sub(T, B)[1]) < 1e-8;
+    return wrap(430, 290, [
+      poly([A, ...arc], ACC, 1.7, ACCS),
+      ...[0.5, 1, 1.5].map(x => circ(Q(x, 0), k * x / 2, FNT, 1, "none", "3 3")),
+      circ(B, k, DIM, 1.5), seg(A, B, DIM, 1.2), seg(A, T, GLD, 1.8), seg(A, U, GLD, 1.8),
+      seg(B, T, FNT, 1.1), seg(B, U, FNT, 1.1), rightAngle(T, A, B, 7),
+      ...[A, B, T, U].map(p => dot(p, DIM, 2.8)),
+      txt(add(A, [-12, 4]), "A", DIM, 12), txt(add(B, [0, 18]), "B", DIM, 12),
+      txt(add(T, [-8, -12]), "T", DIM, 12), txt(add(U, [-8, 20]), "U", DIM, 12),
+      txt(add(mid(A, B), [0, 18]), "2", DIM, 12),
+      cap(430, 290, "The swept region is blue. Sample circles have centers X on AB and radius AX/2. Its straight boundary consists of the two tangents from A to the final unit circle." + MM(ok))
+    ]);
+  })();
+
+  PROB["2019-hmmt-february-geometry-4"] = (() => {
+    const k = 14, Q = (x, y) => [65 + k * x, 145 - k * y];
+    const A = Q(0, 0), B = Q(0, 8), C = Q(3.5, 8), D = Q(21, 0), E = Q(21, -8), F = Q(17.5, -8), G = lineInt(A, C, B, D);
+    const ar = pts => Math.abs(pts.reduce((s, p, i) => s + p[0] * pts[(i + 1) % pts.length][1] - p[1] * pts[(i + 1) % pts.length][0], 0)) / (2 * k * k);
+    const ok = Math.abs(ar([A, C, D, F]) - 168) < 1e-9 && Math.abs(ar([A, G, B]) - ar([C, G, B]) - 10) < 1e-9 && Math.abs(ar([A, B, C, D, E, F]) - 196) < 1e-9;
+    return wrap(430, 300, [
+      poly([A, G, B], "none", 0, ACCS), poly([C, G, B], "none", 0, GLDS),
+      poly([A, B, C, D, E, F], DIM, 2), seg(A, D, FNT, 1.2, "4 3"),
+      seg(A, C, ACC, 1.5), seg(B, D, ACC, 1.5), seg(A, E, FNT, 1.1, "3 3"), seg(D, F, FNT, 1.1, "3 3"),
+      ...[A, B, C, D, E, F, G].map(p => dot(p, DIM, 2.5)),
+      ...[[A, "A", -12, 3], [B, "B", -11, -8], [C, "C", 8, -8], [D, "D", 13, 3], [E, "E", 9, 18], [F, "F", -9, 18], [G, "G", 12, 2]].map(([p, n, x, y]) => txt(add(p, [x, y]), n, DIM, 12)),
+      cap(430, 300, "The smaller-area configuration. The two parallelograms share diagonal AD, BC is parallel to AD, and the blue and gold triangles differ in area by 10." + MM(ok))
+    ]);
+  })();
+
+  PROB["2019-hmmt-february-geometry-5"] = (() => {
+    let ok = true;
+    const panel = (cx, sign) => {
+      const k = 48, Q = (x, y) => [cx + k * x, 130 - k * y], O = Q(0, 0), A = Q(0, 1);
+      const h = sign * Math.SQRT1_2, B = Q(-Math.SQRT1_2, h), C = Q(Math.SQRT1_2, h), D = sub(mul(foot(C, A, B), 2), C);
+      ok = ok && Math.abs(dist(O, D) / k - Math.sqrt(3)) < 1e-9 && Math.abs(dist(B, C) / k - Math.sqrt(2)) < 1e-9;
+      return [
+        circ(O, k, FNT, 1.4), poly([A, B, C], ACC, 1.7, ACCS), seg(B, D, GLD, 1.4), seg(O, D, FNT, 1, "3 3"),
+        ...[A, B, C, D, O].map(p => dot(p, DIM, 2.4)),
+        ...[[A, "A", 0, -10], [B, "B", -9, 15 * sign], [C, "C", 10, 15 * sign], [D, "D", -10, 3], [O, "O", 7, 14]].map(([p, n, x, y]) => txt(add(p, [x, y]), n, DIM, 12)),
+        txt([cx, 235], sign < 0 ? "(√2 + 1)/2" : "(√2 − 1)/2", ACC, 12)
+      ];
+    };
+    const parts = [...panel(115, -1), ...panel(325, 1)];
+    return wrap(440, 270, [...parts, cap(440, 270, "Both configurations satisfy the stated data. BD is tangent at B and has the same length as BC; the official answer accepts both areas." + MM(ok))]);
+  })();
+
+  PROB["2019-hmmt-february-geometry-6"] = (() => {
+    const reg = Array.from({length: 6}, (_, i) => [2 * Math.cos(i * Math.PI / 3), 2 * Math.sin(i * Math.PI / 3)]);
+    const capPts = [[-1, 1], [0, 1 + Math.sqrt(3)], [1, 1], [1, -1], [0, -1 - Math.sqrt(3)], [-1, -1]];
+    let ok = true;
+    const panel = (cx, points, R, name) => {
+      const k = 24, O = [cx, 125], P = p => add(O, [k * p[0], -k * p[1]]);
+      ok = ok && points.every((p, i) => Math.abs(dist(p, points[(i + 1) % 6]) - 2) < 1e-9)
+        && points.every((p, i) => points.every((q, j) => i === j || dist(p, q) >= 2 - 1e-9))
+        && Math.abs(Math.max(...points.map(p => Math.hypot(...p))) + 1 - R) < 1e-9;
+      return [circ(O, R * k, DIM, 1.5), ...points.map(p => circ(P(p), k, ACC, 1.3, ACCS)),
+        poly(points.map(P), GLD, 1.2, "none", "3 3"), dot(O, DIM, 2.4), txt([cx, 240], name, DIM, 12)];
+    };
+    const parts = [...panel(110, reg, 3, "r = 3"), ...panel(330, capPts, 2 + Math.sqrt(3), "R = 2 + √3")];
+    return wrap(440, 275, [...parts, cap(440, 275, "Extremal unit-disk chains: a regular hexagon of centers, and a square with two opposite equilateral caps. Dashed gold edges join consecutive centers." + MM(ok))]);
+  })();
+
+  PROB["2019-hmmt-february-geometry-7"] = (() => {
+    const k = 6, Q = (x, y) => [215 + k * (x - 5), 150 - k * (y - 3.75)];
+    const A = Q(5, 12), B = Q(0, 0), C = Q(14, 0), H = Q(5, 3.75), R = 65 / 8;
+    const centers = [[7, -33 / 8], [12, 63 / 8], [-2, 63 / 8]].map(p => Q(...p)), anti = [[9, -12], [19, 12], [-9, 12]].map(p => Q(...p));
+    const ok = centers.every(o => Math.abs(dist(o, H) / k - R) < 1e-9) && anti.every(p => Math.abs(dist(p, H) / k - 2 * R) < 1e-9);
+    return wrap(430, 295, [
+      circ(H, 2 * R * k, DIM, 1.7), ...centers.map((o, i) => circ(o, R * k, [ACC, GLD, FNT][i], 1.2)),
+      poly(anti, FNT, 1, "none", "4 3"), poly([A, B, C], DIM, 1.6), dot(H, GLD, 3.3),
+      ...[[A, "A", -9, -8], [B, "B", -11, 13], [C, "C", 11, 13], [H, "H", 11, 5], [anti[0], "A′", 0, 19], [anti[1], "B′", 11, -8], [anti[2], "C′", -11, -8]].map(([p, n, x, y]) => txt(add(p, [x, y]), n, DIM, 12)),
+      cap(430, 295, "ABC is the medial triangle of A′B′C′. The three circles through H have radius 65/8; the enclosing circle has center H and radius 65/4 and touches them at A′, B′, C′." + MM(ok))
+    ]);
+  })();
+
+  PROB["2019-hmmt-february-geometry-8"] = (() => {
+    const p = -25 / 14, q = 12 / 7, k = 60, Q = (x, y) => [260 + k * x, 145 - k * y];
+    const A = Q(p, q), B = Q(-0.5, 0), C = Q(0.5, 0), O = Q(0, q), H = Q(p, -q), N = mid(O, H);
+    const ok = Math.abs((dist(A, B) + dist(A, C) + dist(B, C)) / k - 6) < 1e-9 && Math.abs(N[1] - 145) < 1e-9 && dist(A, B) < dist(A, C);
+    return wrap(430, 295, [
+      seg(Q(-2.4, 0), Q(1.2, 0), FNT, 1), poly([A, B, C], ACC, 1.6, ACCS),
+      seg(O, H, GLD, 1.4), seg(A, H, FNT, 1, "4 3"), seg(A, O, FNT, 1, "4 3"),
+      ...[A, B, C, O, H, N].map(p => dot(p, DIM, 2.7)),
+      ...[[A, "A", -9, -10], [B, "B", 0, -10], [C, "C", 8, 16], [O, "O", 10, 3], [H, "H", -10, 13], [N, "N", -3, 18]].map(([p, n, x, y]) => txt(add(p, [x, y]), n, DIM, 12)),
+      txt(add(mid(B, C), [0, 18]), "1", ACC, 12),
+      cap(430, 295, "A = (−25/14, 12/7), B = (−1/2, 0), C = (1/2, 0). The circumcenter O and orthocenter H have opposite heights, so their midpoint N lies on BC." + MM(ok))
+    ]);
+  })();
+
+  PROB["2019-hmmt-february-geometry-9"] = (() => {
+    const V = {A: [0, 0, 0], B: [6, 0, 0], C: [6, 6, 0], D: [0, 6, 0], E: [0, 0, 49], F: [6, 0, 49], G: [6, 6, 49], H: [0, 6, 49]};
+    const faces = [["A", "B", "C", "D"], ["E", "F", "G", "H"], ["A", "B", "F", "E"], ["B", "C", "G", "F"], ["C", "D", "H", "G"], ["D", "A", "E", "H"]];
+    const {Pj, view} = projector([215, 245], 4, [3.25, 1], [-3.25, 1]);
+    const S = {A: V.A, P: [6, 0, 42], Q: [6, 1, 49], R: [1, 6, 49], S: [0, 6, 42]};
+    const ok = Object.values(S).every(p => p[2] === 7 * (p[0] + p[1]))
+      && Math.abs(Math.hypot(...v3.sub(S.P, S.Q)) - 5 * Math.sqrt(2)) < 1e-9;
+    return wrap(430, 335, [
+      ...solidEdges(V, faces, view, Pj, FNT, 1.2), poly(Object.values(S).map(Pj), ACC, 2, ACCS),
+      ...Object.values(S).map(p => dot(Pj(p), ACC, 2.7)),
+      ...[["A", -12, 2], ["B", 12, 10], ["C", 0, 18], ["D", -12, 10], ["E", 0, -12], ["F", 14, -8], ["G", 0, -10], ["H", -14, -8]].map(([n, x, y]) => txt(add(Pj(V[n]), [x, y]), n, DIM, 12)),
+      ...[["P", 13, 9], ["Q", 12, -9], ["R", -12, -9], ["S", -13, 9]].map(([n, x, y]) => txt(add(Pj(S[n]), [x, y]), n, ACC, 12)),
+      txt([340, 180], "49", DIM, 12), txt([260, 292], "6", DIM, 12), txt([170, 292], "6", DIM, 12),
+      cap(430, 335, "The slice is z = 7(x + y), with P and S at height 42 and Q and R at height 49. Its shadow is the base square minus a corner triangle with legs 5." + MM(ok))
+    ]);
+  })();
+
+  PROB["2019-hmmt-february-geometry-10"] = (() => {
+    const A = [5, 12], B = [0, 0], C = [14, 0], turn = v => [v[1], -v[0]];
+    const square = (p, q) => { const d = turn(sub(q, p)); return [add(q, d), add(p, d)]; };
+    const [B1, A2] = square(A, B), [C1, B2] = square(B, C), [A1, C2] = square(C, A);
+    const [A3, A4] = square(A1, A2), [B3, B4] = square(B1, B2), [C3, C4] = square(C1, C2);
+    const [B5, A6] = square(A3, B4), [C5, B6] = square(B3, C4), [A5, C6] = square(C3, A4);
+    const final = [A5, A6, B5, B6, C5, C6], k = 1.6, Q = p => [200 + k * p[0], 155 - k * p[1]];
+    const ar = ps => Math.abs(ps.reduce((s, p, i) => s + p[0] * ps[(i + 1) % ps.length][1] - p[1] * ps[(i + 1) % ps.length][0], 0)) / 2;
+    const ok = ar(final) === 19444 && ar([A4, A3, B4, B3, C4, C3]) === 3956 && dist(A, B) === 13 && dist(A, C) === 15;
+    return wrap(430, 340, [
+      ...[[A3, B4, B5, A6], [B3, C4, C5, B6], [C3, A4, A5, C6]].map(ps => poly(ps.map(Q), GLD, 1.2, GLDS)),
+      ...[[A1, A2, A3, A4], [B1, B2, B3, B4], [C1, C2, C3, C4]].map(ps => poly(ps.map(Q), ACC, 1.2, ACCS)),
+      ...[[A, B, B1, A2], [B, C, C1, B2], [C, A, A1, C2]].map(ps => poly(ps.map(Q), FNT, 1.1)),
+      poly([A, B, C].map(Q), DIM, 1.5), poly(final.map(Q), DIM, 2),
+      ...final.map((p, i) => { const pos = Q(p), offset = mul(norm(sub(pos, [215, 155])), 16); return txt(add(pos, offset), subT(["A", "A", "B", "B", "C", "C"][i], [5, 6, 5, 6, 5, 6][i]), DIM, 12); }),
+      txt(add(Q(A), [0, -8]), "A", DIM, 11), txt(add(Q(B), [-10, 14]), "B", DIM, 11), txt(add(Q(C), [12, 14]), "C", DIM, 11),
+      cap(430, 340, "The three square stages: gray, blue, then gold. The outer boundary is A₅A₆B₅B₆C₅C₆; all vertices are constructed by quarter-turns from the 13–14–15 triangle." + MM(ok))
     ]);
   })();
 })();
