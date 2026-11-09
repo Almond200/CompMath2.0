@@ -171,6 +171,7 @@ def question_with_context(qs, c, y, n):
         ("amc8", "2002"): (8, (9, 10), "Juan organizes the stamps", "\n\nHow many of his European stamps"),
         ("amc8", "2001"): (7, (8, 9), "To promote her school", "\n\nWhat is the number of square inches"),
         ("amc8", "1999"): (17, (18, 19), "At Central Middle School", "\n\nWalter can buy eggs"),
+        ("amc8", "1998"): (15, (16, 17), "In the very center of the Irenic Sea", "\n\nEstimate the population"),
     }
     context = contexts.get((c, y))
     if context and n in context[1]:
