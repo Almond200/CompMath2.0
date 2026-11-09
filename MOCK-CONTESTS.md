@@ -40,6 +40,8 @@ The top-right countdown counts active time only. Save and exit, Back to Practice
 
 ## Validation and handoff
 
+Implementation merged in PR #299 (2fee86f); picker/title/review polish merged in PR #300 (8d640f1). The subsequent formatting and centered-chevron work merged in PR #301 (0331709). Results overview keeps the owner’s final blue-hover preference.
+
 `tests/mock-contests.cjs` checks the complete-paper catalog, 160 seeded generated mocks across all formats, difficulty matching, monotone curves, source cutoffs, twin removal, HMMT keys, scoring and clock persistence/freeze/expiry. Chromium checks cover all formats and modes at 1280/375 pixels in light/dark, plus mixed answer formats, invalid-input preservation, reload, hiding/resuming, automatic expiry, locked review, untimed topic sets and voided credit. Screenshots were inspected. Repository gates, all five regression suites and generated-notes/shelf checks must pass before committing.
 
 This app/backend/shared-documentation batch is explicitly requested by the owner. The standing textbook/source ownership split remains in place. Codex's next textbook chapter is AMC Geometry S7.

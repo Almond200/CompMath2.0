@@ -11,6 +11,15 @@ const context = vm.createContext({ window: {}, BY_ID: {}, learnLessonData: (c,l)
 const dataFiles = [...fs.readFileSync('index.html','utf8').matchAll(/src="(js\/data\/(?:learn\/[^"]+|geometry.js|algebra.js|number-theory.js|counting.js|patterns.js))\?v=/g)].map(m=>m[1]);
 for (const path of dataFiles) vm.runInContext(fs.readFileSync(path, 'utf8'),context);
 for (const section of context.window.MATH_SECTIONS || []) for (const subsection of section.subsections || []) for (const formula of subsection.formulas || []) context.BY_ID[formula.id] = {formula};
+// New cards must ship with all three semantic-index artifacts, rather than silently falling back to lexical search.
+const vectorHeader=JSON.parse(fs.readFileSync('js/data/search-vectors.json','utf8'));
+assert.deepEqual(vectorHeader.ids.slice().sort(),Object.keys(context.BY_ID).sort(),'semantic index must cover the current card corpus');
+const vectorBytes=fs.readFileSync('js/data/search-vectors.bin');
+assert.equal(vectorBytes.length,(vectorHeader.words.length+vectorHeader.ids.length*vectorHeader.vectorsPerCard)*vectorHeader.dims,'vector binary/header sizes agree');
+const fallback={window:{}};vm.runInNewContext(fs.readFileSync('js/data/search-vectors.js','utf8'),fallback);
+assert.deepEqual(JSON.parse(JSON.stringify(fallback.window.MATH_SEARCH_VECTORS.header)),vectorHeader,'script fallback/header agree');
+assert.ok(Buffer.from(fallback.window.MATH_SEARCH_VECTORS.bin,'base64').equals(vectorBytes),'script fallback/binary agree');
+console.log(`Search artifacts: ${vectorHeader.ids.length} current cards; JSON, binary and script fallback agree.`);
 vm.runInContext(synonyms + ['deDouble','normWord','wordsOf','levBounded','fuzzy','expandToken','bookSearchRanker'].map(extract).join('\n'),context);
 const book = context.window.MATH_LEARN_SHELF.find(b=>b.id==='amc-counting');
 const rank = context.bookSearchRanker(book);

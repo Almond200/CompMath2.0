@@ -4516,7 +4516,7 @@
               </a>
               <a class="lab-card" href="lab/topic-tree.html" target="_blank" rel="noopener">
                 <span class="lab-name">Topic tree &rarr;</span>
-                <span class="lab-desc">The draft classification of contest mathematics into four trees, Algebra, Counting &amp; Probability, Geometry and Number Theory, that practice sets, problem labels and contest profiles will use. A plan, not yet a feature.</span>
+                <span class="lab-desc">Explore contest mathematics in four subject trees: Algebra, Counting &amp; Probability, Geometry and Number Theory, as an outline or a diagram.</span>
               </a>
             </div>
           </div>
@@ -6032,7 +6032,7 @@
   function learnShelfHtml() {
     return `<section class="sh-section" id="learn-books">
         <h3>Textbooks</h3>
-        <p class="learn-note">Books from the AMC 10 to the AIME and on to olympiads. Open one to see its chapters and lessons; each lesson teaches from the cards and ends with contest problems.</p>
+        <p class="learn-note">Books from the AMC to the AIME and on to olympiads. Open one to see its chapters and lessons; each lesson teaches from the cards and ends with contest problems.</p>
         ${learnCoversHtml("m")}
         <button type="button" class="ct-toggle bk-more" id="bk-more" hidden></button>
       </section>`;
@@ -10799,8 +10799,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // so expose one — gated on ?debug=1 so nothing is added to the normal page.
   if (/[?&]debug=1\b/.test(location.search)) {
     // A search index built before the last few cards were added still loads, still answers,
-    // and is quietly wrong -- CONVENTIONS makes checking it a manual step, which is exactly
-    // the kind of step that gets skipped. Poll until the lazy index reports in, then say so.
+    // and is quietly wrong. The book-search regression suite checks repository artifacts;
+    // this debug check also catches an older hosted/cache copy. Poll until the lazy index reports in.
     (function watchIndexFreshness(tries) {
       const SEMI = window.MathSemantic;
       const info = SEMI && SEMI.info ? SEMI.info() : null;

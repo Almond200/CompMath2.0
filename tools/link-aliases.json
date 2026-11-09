@@ -1,5 +1,5 @@
 {
- "_comment": "Vocabulary for tools/build-cross-links.py. BUILD-TIME ONLY -- never shipped. 'aliases' is regenerated from the card data by --seed; 'deny', 'protect' and any hand edits to 'aliases' are preserved across seeds. 'ambiguous' is derived, not edited.",
+ "_comment": "Vocabulary for tools/build-cross-links.py. BUILD-TIME ONLY -- never shipped. 'aliases' is regenerated wholesale from card data by --seed; hand-written surface forms belong in 'aliasesExtra'. 'deny', 'protect' and 'aliasesExtra' are preserved. 'ambiguous' is derived, not edited.",
  "aliases": {
   "15-75-90-triangle": [
    "15-75-90 Triangle Ratio"
@@ -133,6 +133,9 @@
   ],
   "averages-to-totals": [
    "Turning Averages into Totals"
+  ],
+  "averaging-principle": [
+   "The Averaging Principle"
   ],
   "axis-stretch-area": [
    "Stretching One Axis Scales Area"
@@ -481,6 +484,9 @@
   ],
   "complex-modulus-argument": [
    "A Complex Number with a Known Modulus or Argument"
+  ],
+  "composing-rotations": [
+   "Composing Rotations About Different Centers"
   ],
   "composing-transformations": [
    "Composing Transformations as Matrix Products"
@@ -1274,6 +1280,10 @@
   ],
   "inversion-properties": [
    "Circle Inversion"
+  ],
+  "inversions-adjacent-swaps": [
+   "Adjacent Swaps",
+   "Inversions and Adjacent Swaps"
   ],
   "iran-lemma": [
    "Iran Lemma"
@@ -2412,6 +2422,9 @@
   "subtract-equal-remainders": [
    "Subtracting Equal Remainders"
   ],
+  "subtract-swapped-equations": [
+   "Subtracting Equations of a Symmetric System"
+  ],
   "sum-difference-angle-product": [
    "Product of a Sum",
    "Product of a Sum and a Difference of Angles"
@@ -2616,6 +2629,11 @@
   "two-tangents-angle": [
    "Angle Between Two Tangents"
   ],
+  "two-variable-identities": [
+   "Squares of Two Numbers",
+   "Sum, Product,",
+   "Sum, Product, and Squares of Two Numbers"
+  ],
   "unfold-the-surface": [
    "Unfolding a Surface"
   ],
@@ -2698,6 +2716,9 @@
   ],
   "vornicu-schur": [
    "Vornicu–Schur Inequality"
+  ],
+  "walk-counting-dp": [
+   "Counting Walks Step by Step"
   ],
   "weierstrass-substitution": [
    "Weierstrass Substitution"
