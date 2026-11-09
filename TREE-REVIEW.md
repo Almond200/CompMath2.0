@@ -1,6 +1,6 @@
 # Topic-tree restructuring review
 
-2026-11-09. Baseline: `57c5fb5`, after all 4,725 problems were filed. The owner requested a synthesis and decisions for larger pruning. This document records the chosen direction and migration order; **the live taxonomy and problem filings have not been changed by this review**. Textbooks remain paused.
+2026-11-09. Baseline: `57c5fb5`, after all 4,725 problems were filed. The owner requested a synthesis and decisions for larger pruning. This document records the chosen direction and migration order. After the owner asked to continue, **the first area regrouping was implemented: 482 nodes and 28 areas, preserving all problem filings and card homes**. Semantic leaf pruning and geometry moves remain pending. Textbooks remain paused.
 
 ## Decision
 
@@ -10,7 +10,7 @@ Do not set an arbitrary target such as 300 nodes. The goal is that a student can
 
 ## Evidence and limits
 
-`node tools/tree-structure-report.cjs` reproduces the structural census and proposed pool counts from the current data. It follows actual parent links and counts the union of descendant filings. `node tools/tree-audit.js --census` supplies the existing direct-filing, card-home and thin-leaf diagnostics.
+`node tools/tree-structure-report.cjs` reproduces the structural census and destination pool counts from the current data. The tables below are the pre-migration baseline; the initial census implementation is preserved in commit `caec141`. It follows actual parent links and counts the union of descendant filings. `node tools/tree-audit.js --census` supplies the existing direct-filing, card-home and thin-leaf diagnostics.
 
 | Measure | Baseline |
 |---|---:|
@@ -65,7 +65,7 @@ An abbreviated id such as `.sym` shares the preceding prefix (`cp.tech.sym`). Th
 
 Keep selections, permutations, distributions, strings, circular arrangements and partitions as recognizable topics within the first area. The second distinguishes counting routes, properties of a graph, and board configurations. Keep Catalan/ballot configurations together initially rather than splitting the existing pool by technique; reread it before choosing its final display name. The third collects set membership/avoidance counts and coefficient/identity questions. Expected values belong within probability while waiting-time, fixed-step and variance questions retain their different meanings. Deterministic games and bounds stay separate from random-process questions.
 
-Retire the empty intermediate wrappers `cp.tech`, `cp.struct` and `cp.graph` after moving their children; these wrappers currently have no direct problem assignments or card homes. Absorb `cp.exp` as a topic within Probability and expectation, preserving its recently consolidated children. Do not undo that introductory pruning.
+Retire the empty intermediate wrappers `cp.tech` and `cp.struct` after moving their children. Reuse `cp.graph` for Paths, graphs and boards, moving its largest-subset topic into Logic, games and bounds. These area wrappers have no direct problem assignments or card homes. Absorb `cp.exp` as a topic within Probability and expectation, preserving its recently consolidated children. Do not undo that introductory pruning.
 
 Review `cp.basic.case` and `cp.tech.bij` in the first destination: their placement above ensures coverage, but it is not an endorsement of a technique label on unrelated problems. Their narrow standing definitions still apply. Rename Stars and bars to Distributions, Inclusion-exclusion to Overlapping sets and excluded conditions, and Generating functions to Coefficients of products when the affected pools have been checked against those meanings. The named methods remain discoverable through their cards.
 
@@ -108,13 +108,22 @@ The census's 57 thin leaves are a review queue, not 57 deletion decisions. In pa
 
 ## Migration order and safeguards
 
-1. **Make parentage independent of stable ids.** The current builder and gate require each id to extend its parent's id, while `tree-audit.js` infers relatedness by string prefixes. That conflicts with moving an established node without renaming it. Preserve existing ids and meanings; use the explicit parent field for ancestry, depth, cycle checks and subject checks. Amend the prefix requirement in CONVENTIONS §15 and the tooling together, retaining Markdown indentation as the source of parentage. Add regression coverage for a moved subtree, cycles, ancestor redundancy and cross-subject errors. New nodes can still receive readable dotted ids. Do not relax validation without replacements.
+1. **Make parentage independent of stable ids.** Before this migration, the builder and gate required each id to extend its parent's id, while `tree-audit.js` inferred relatedness by string prefixes. That conflicts with moving an established node without renaming it. Preserve existing ids and meanings; use the explicit parent field for ancestry, depth, cycle checks and subject checks. Amend the prefix requirement in CONVENTIONS §15 and the tooling together, retaining Markdown indentation as the source of parentage. Add regression coverage for a moved subtree, cycles, ancestor redundancy and cross-subject errors. New nodes can still receive readable dotted ids. Do not relax validation without replacements.
 2. **Move the category containers.** Apply the three arithmetic destinations, five counting destinations and combined number-theory area. Keep all existing problem/card ids. Check complete before/after descendant unions; an intended aggregate changes, but no problem or card disappears. Record retired empty wrapper ids. Parentage/depth changes are expected; inspect the experimental tree at desktop/mobile sizes.
 3. **Perform the semantic pruning.** Read every problem in each affected symmetry, triangle, polynomial, modulus and probability pool. Correct the statement/strategy/cards if needed, check numbers, synchronize recognized twins, and keep one to three most-specific nonredundant filings. For merged leaves, write an explicit old-id → survivor map and remap card homes. A method card can move to a suitable broad home or remain a general method under existing rules; no card is deleted to make counts prettier.
 4. **Re-census and validate.** Rebuild the generated tree and required asset versions. Run repository gates, tree-audit regressions and the new parentage regression checks; check all 4,725 filings and 774 card-home entries, twin equality, no dangling retired ids, and preserved problem/card slugs. Confirm the new pool contents by reading, not just by matching totals. Update PLAN and CHANGELOG and commit/push at each coherent batch. T4 and textbook revision remain separate work.
 
-The first implementation batch should therefore be the ancestry prerequisite and the three area regroupings. The semantic filing reviews follow in bounded batches. This synthesis does not claim that those migrations, the full probability review, or a second complete mathematical audit have already happened.
+The ancestry prerequisite and three area regroupings are now implemented. Six empty wrappers were retired (`alg.word`, `alg.word.units`, `cp.tech`, `cp.struct`, `nt.divisor`, `nt.prime`); two area ids were added (`alg.arithmetic`, `alg.applied`). All other ids survive. This reduces 486 nodes to 482 and 31 areas to 28, while retaining 337 leaves and all card homes. The exact problem-reference and card-home sets of all nine destinations were compared with their pre-migration unions, as were all four subjects; every comparison passed. The problem database and card-home data are unchanged.
 
-## Validation of this review
+Next are the bounded semantic filing reviews. The triangle moves, symmetry consolidation, full probability review and remaining polynomial/modular cleanup have not been applied. No second complete mathematical audit is claimed.
 
-The read-only census reproduced the totals and destination populations above. Its destination-coverage report found no uncovered problem entries or card homes in either the arithmetic or counting maps. Repository gates, `tests/tree-audit.cjs`, generated-tree consistency, the tree/card-home/filing gate and `git diff --check` passed. The current taxonomy remains at 486 nodes with all 4,725 entries filed. Browser checks and the five app regression suites were not rerun for this documentation/read-only-tool batch; there is no app, asset or content-data change.
+## Validation of the initial synthesis
+
+The read-only census reproduced the totals and destination populations above. Its destination-coverage report found no uncovered problem entries or card homes in either the arithmetic or counting maps. Repository gates, `tests/tree-audit.cjs`, generated-tree consistency, the tree/card-home/filing gate and `git diff --check` passed. At that initial synthesis checkpoint the taxonomy remained at 486 nodes with all 4,725 entries filed. Browser checks and the five app regression suites were not rerun for this documentation/read-only-tool batch; there is no app, asset or content-data change.
+
+
+## Validation of the area regrouping
+
+All repository gates, the five app regression suites, tree-audit tests and the new structural regression suite passed. The new suite exercises stable-id moves, missing parents, duplicate ids, cycles, subject boundaries, depth, Markdown indentation, audit coverage, and actual filing-gate ancestor redundancy after a move. Exact pre/post comparisons verified the nine destination problem/card-home unions and four subject unions, with byte-equivalent problem and card-home objects. Generated-tree and diff checks passed.
+
+The experimental viewer passed 16 subject/theme/viewport states (four subjects, light/dark, 1280/375px): all node and area counts, expand/collapse, no page or KaTeX errors, and no page-level horizontal overflow. Desktop and phone screenshots were inspected; the tree uses its existing internally scrolling canvas. No textbook or production Practice-picker work was started.

@@ -43,18 +43,18 @@ const groups = [
   ['Sets and coefficient counts', ['cp.binom', 'cp.tech.pie', 'cp.tech.gf']],
   ['Probability and expectation', ['cp.prob', 'cp.exp']],
   ['Logic, games and bounds', ['cp.logic', 'cp.graph.sets']],
-  ['Divisibility, primes and divisors', ['nt.div', 'nt.divisor', 'nt.prime']],
+  ['Divisibility, primes and divisors', ['nt.div']],
   ['Right triangles', ['geo.basic.pyth', 'geo.tri.special.right'], ['geo.basic.pyth.fold']],
   ['Isosceles triangles', ['geo.basic.angle.isosceles', 'geo.tri.special.isos']],
   ['Counting with rotations and reflections', ['cp.tech.sym']],
   ['Polynomial values and interpolation', ['alg.poly.remainder.values', 'alg.poly.construct.interp']]
 ].map(([name, include, exclude]) => ({ name, ...pool(include, exclude) }));
 const leaves = rows.filter(n => !n.children);
-function coverage(root, destinations) {
-  const source = descendants([root]);
+function coverage(roots, destinations) {
+  const source = descendants(roots);
   const covered = descendants(destinations.flatMap(p => p.include));
   return {
-    root,
+    roots,
     uncoveredProblems: problems.filter(p => p.tree.some(id => source.has(id)) &&
       !p.tree.some(id => covered.has(id))).map(p => p.ref),
     uncoveredCardHomes: Object.entries(window.MATH_TOPIC_HOMES)
@@ -72,5 +72,5 @@ console.log(JSON.stringify({
   largestLeaves: leaves.slice().sort((a, b) => b.distinct - a.distinct || a.id.localeCompare(b.id)).slice(0, 20),
   thinLeaves: leaves.filter(n => n.distinct < 5).sort((a, b) => a.distinct - b.distinct || a.id.localeCompare(b.id)),
   proposedPools: groups,
-  destinationCoverage: [coverage('alg.word', groups.slice(0, 3)), coverage('cp', groups.slice(3, 8))]
+  destinationCoverage: [coverage(['alg.arithmetic', 'alg.applied', 'alg.word.stats'], groups.slice(0, 3)), coverage(['cp'], groups.slice(3, 8))]
 }, null, 2));
