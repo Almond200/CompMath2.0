@@ -17,7 +17,17 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('[data-result-index="0"]').click();await p.locator('.practice-review').waitFor();assert.equal(await clear.count(),0,'review cannot clear an answer');
  const partial=await set(['2018-amc-10a-1','2018-amc-10a-2']);await p.locator('[data-practice-answer="A"]').click();await p.locator('#finish-practice').click();await dialog.locator('[value="ok"]').click();await p.locator('.practice-results').waitFor();assert.equal((await stored(partial)).status,'finished');assert.equal(await p.locator('[data-result-index]').count(),2);
  for(const slug of ['2018-aime-i-1','2019-hmmt-february-geometry-1']){
-  const numeric=await set([slug],slug.includes('hmmt'));const input=p.locator('#practice-answer');await input.fill('12');assert.ok(await input.evaluate(el=>{const c=getComputedStyle(el),probe=document.createElement('span');probe.style.color='var(--accent)';document.body.append(probe);const blue=getComputedStyle(probe).color;probe.remove();return c.outlineStyle==='none' && c.borderColor===blue && c.boxShadow.includes('inset') && c.boxShadow.includes(blue);}), 'answer input has a visible blue border/inset highlight without an outer ring');assert.equal(await clear.isEnabled(),true);await clear.click();assert.equal(await input.inputValue(),'');assert.equal(await input.getAttribute('aria-invalid'),'false');await p.clock.fastForward(1000);assert.equal((await stored(numeric)).answers[slug],'');
+  const numeric=await set([slug],slug.includes('hmmt'));const input=p.locator('#practice-answer');
+  await input.scrollIntoViewIfNeeded();
+  const r=await input.boundingBox();
+  for(const [x,y] of [[r.x-4,r.y+r.height/2],[r.x+r.width+4,r.y+r.height/2],[r.x+r.width/2,r.y-4],[r.x+r.width/2,r.y+r.height+4],[r.x+r.width-5,r.y-15]]){
+   await input.evaluate(el=>el.blur());
+   if(width===375)await p.touchscreen.tap(x,y);else await p.mouse.click(x,y);
+   assert.equal(await input.evaluate(el=>el===document.activeElement),false,'space outside the answer border/label must not focus the input');
+  }
+  if(width===375)await p.touchscreen.tap(r.x+r.width/2,r.y+r.height/2);else await input.click();
+  assert.equal(await input.evaluate(el=>el===document.activeElement),true,'inside the answer border still focuses normally');
+  await input.fill('12');assert.ok(await input.evaluate(el=>{const c=getComputedStyle(el),probe=document.createElement('span');probe.style.color='var(--accent)';document.body.append(probe);const blue=getComputedStyle(probe).color;probe.remove();return c.outlineStyle==='none' && c.borderWidth==='1px' && c.borderColor===blue && c.boxShadow==='none';}), 'answer input uses one blue border, like search, without an inset or outer ring');assert.equal(await clear.isEnabled(),true);await clear.click();assert.equal(await input.inputValue(),'');assert.equal(await input.getAttribute('aria-invalid'),'false');await p.clock.fastForward(1000);assert.equal((await stored(numeric)).answers[slug],'');
   await input.fill('bad');assert.equal(await input.getAttribute('aria-invalid'),'true');assert.equal(await clear.isEnabled(),true);await clear.click();assert.equal(await input.inputValue(),'');assert.equal(await p.locator('#practice-answer-error').innerText(),'');
   if(dir)await p.screenshot({path:path.join(dir,`clear-${slug.includes('hmmt')?'exact':'aime'}-${theme}-${width}.png`)});
  }

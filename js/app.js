@@ -5616,6 +5616,13 @@
     const answerChoices = $content.querySelectorAll('[data-practice-answer]');
     const clearAnswer = $content.querySelector('#clear-practice-answer');
     const answerInput = $content.querySelector('#practice-answer');
+    // Mobile browsers can retarget a tap just outside a text field onto it.
+    // Keep focus within its visible border, using the original pointer coordinates.
+    answerInput?.addEventListener('pointerdown', e => {
+      if (e.pointerType !== 'touch') return;
+      const r = answerInput.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.preventDefault();
+    });
     const syncAnswerUI = () => {
       const value = set.answers[slug] || '';
       answerChoices.forEach(b => b.setAttribute('aria-checked', String(b.dataset.practiceAnswer === value)));

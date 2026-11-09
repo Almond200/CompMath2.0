@@ -100,3 +100,9 @@ Validation passed in light/dark at 1280/375px for blank/whitespace creation, num
 The owner correctly reported that the answer highlight had disappeared. Its base ID-selector border declaration overrode the generic low-specificity compact focus colour, while the outer ring had been removed. The explicit `#practice-answer:focus` rule now supplies the actual blue border and a one-pixel inset reinforcement. This forms a compact two-pixel blue contour inside the existing field bounds, with no outer gap or size change. The browser check now verifies rendered blue border/shadow colours rather than only absence of an outline.
 
 The correction passed all four light/dark × 1280/375px practice-action runs and all repository gates.
+
+## Practice answer contour and tap bounds (2026-11-09)
+
+The owner requested a thinner contour matching search fields and no focus from nearby empty space. Reproduced both causes: the 1px border plus 1px inset made a two-pixel contour, and mobile Chrome retargeted taps 4px outside each input edge onto the field. Desktop clicks on blank space within the full-width label also activated it.
+
+Removed the inset reinforcement, limited the answer label to its text width, and rejected touch pointer-down focus when the original coordinates are outside the visible input bounds. Interior taps and normal label/keyboard activation are preserved. The existing practice-action check now exercises all four outside edges, label whitespace, a positive inside tap, the actual one-pixel blue border, AIME/exact-value entry, Clear, invalid input and saved answers. All four theme/viewport runs passed, along with the existing confirmation/timeout/read-only review flows; screenshots inspected. This scoped UI request leaves the ongoing T3 goal intact.
