@@ -12,7 +12,7 @@ Generate a mock offers the same four target formats. It may draw from any source
 
 `js/mock-contests.js` builds a difficulty curve for each target format:
 
-1. Use the ten calendar years ending at that family's latest complete paper. The current windows are 2016–2025 for AMC 8 and 2017–2026 for AMC 10, AMC 12 and AIME. A missing contest year is omitted.
+1. Use the five calendar years ending at the latest complete paper year in the catalog (owner, 2026-11-09). The current shared window is 2022–2026. A missing family/year is omitted: AMC 8 currently contributes its available 2022–2025 papers; AMC 10, AMC 12 and AIME contribute 2022–2026. Older 2017–2021 difficulty curves no longer affect the target. The generated-problem pool remains earlier than the model window, with the existing HMMT exception.
 2. For each problem position, average Elo across that year's papers, then across the available years. This keeps years with additional sittings from receiving extra weight. Exclude voided questions and missing ratings.
 3. Fit a nondecreasing curve with pooled adjacent violators (least-squares isotonic regression), so small historical reversals do not reverse the intended progression.
 4. Draw keyed, rated, nonvoided problems from before the curve's first year. The owner explicitly allows our 2019 HMMT February Geometry round as an exception to this cutoff. Remove repeated identities, including AMC 10/12 twins recognized by their shared year and strategy.

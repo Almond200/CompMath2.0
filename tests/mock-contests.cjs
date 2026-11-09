@@ -10,11 +10,14 @@ for(const paper of catalog){assert.equal(paper.problems.length,M.formats[paper.f
 assert.deepEqual(M.monotone([1,4,2,5]),[1,3,3,5]);
 // Additional sittings must not make one year outweigh another, and voids must not distort a slot.
 const samplePaper=(year,elo,voidFirst=false)=>({family:'AMC 8',year,problems:Array.from({length:25},(_,i)=>({year,elo,voided:voidFirst&&i===0}))});
-const model=M.curve([samplePaper(2026,1000),samplePaper(2025,2000),samplePaper(2025,2000),samplePaper(2025,4000,true),samplePaper(2016,9000)],'AMC 8',p=>p.voided);
-assert.equal(model.startYear,2017);assert.equal(model.means[0],1500);assert.equal(model.means[1],(1000+8000/3)/2);
+const model=M.curve([samplePaper(2026,1000),samplePaper(2025,2000),samplePaper(2025,2000),samplePaper(2025,4000,true),samplePaper(2021,9000)],'AMC 8',p=>p.voided);
+assert.equal(model.startYear,2022);assert.equal(model.means[0],1500);assert.equal(model.means[1],(1000+8000/3)/2);
+// A missing latest paper in one family does not pull old years into its model.
+const partial=M.curve([samplePaper(2025,1000),samplePaper(2022,2000),samplePaper(2021,9000),{...samplePaper(2026,3000),family:'AMC 10'}],'AMC 8');
+assert.deepEqual(partial.years,[2022,2025]);assert.equal(partial.startYear,2022);assert.equal(partial.endYear,2026);assert.equal(partial.means[0],1500);
 let n=0,cross=0,hmmt=0;let state=729;const rng=()=>{state=(state*1664525+1013904223)>>>0;return state/4294967296;};
 for(const family of Object.keys(M.formats))for(let k=0;k<40;k++){
- const g=M.generate(problems,catalog,family,has,voided,rng);assert.equal(g.problems.length,M.formats[family].count);assert.equal(g.model.endYear-g.model.startYear,9);
+ const g=M.generate(problems,catalog,family,has,voided,rng);assert.equal(g.problems.length,M.formats[family].count);assert.equal(g.model.endYear-g.model.startYear,4);
  assert.equal(new Set(g.problems.map(M.identity)).size,g.problems.length);
  g.problems.forEach((p,i)=>{assert.ok(p.year<g.model.startYear||p.fam==='HMMT February');assert.ok(has(p)&&!voided(p));if(i)assert.ok(p.elo>=g.problems[i-1].elo);if(p.fam!==family)cross++;if(p.fam==='HMMT February')hmmt++;});
  for(let i=1;i<g.model.targets.length;i++)assert.ok(g.model.targets[i]>=g.model.targets[i-1]);

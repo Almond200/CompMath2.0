@@ -1,6 +1,6 @@
 # Topic tree
 
-**Status (T3 complete, 2026-11-09):** **4,725/4,725 problems filed**, including all 650 AMC 8, 350 AJHSME and ten 2019 HMMT February Geometry problems. Introductory pruning left 486 nodes; the subsequent area regrouping leaves 482 nodes, 740 of 774 cards with homes and 34 general methods without. The full census reports 57 terminal leaves below five recognized distinct problems, including two unused leaves; this is a review list, not an instruction to erase coherent topics. P64–P68/TQ20 decisions remain in QUESTIONS.md. The app does not yet use filings (T4); the Settings experimental viewer is diagnostic. Historical test filings below remain historical.
+**Status (2026-11-09):** T3 complete, all 4,725 problems filed. Owner-authorized semantic repairs now leave 473 nodes. All 774 cards survive; 740 have homes and 34 general methods do not. [TREE-REPAIRS.md](TREE-REPAIRS.md) is the current migration log. Counts in earlier review sections and test filings below are historical. T4 and textbooks remain paused.
 
 **Execution handoff (owner, 2026-11-09):** T3 is complete. The latest request resumes tree work with a larger structural synthesis: [TREE-REVIEW.md](TREE-REVIEW.md) records the chosen area regroupings, targeted semantic reviews and stable-id ancestry prerequisite. Its census helper is `tools/tree-structure-report.cjs`. Stable-id ancestry support and the arithmetic/counting/number-theory area regroupings are applied below: 482 nodes, 28 areas and 337 leaves. All problem filings and card homes are preserved. The subsequent [TREE-AUDIT.md](TREE-AUDIT.md) ranks the remaining semantic pruning: category meanings, travel, probability, triangle families, overlapping labels and the sparse tail. The audit itself changes no filings. T4 and textbooks remain paused. PLAN.md holds the checkpoint and ownership; candidate and validation rules remain in force.
 
@@ -71,6 +71,10 @@ Retired empty wrappers: `alg.word` (children distributed among `alg.arithmetic`,
 
 This changes 486 nodes to 482 and 31 areas to 28, preserving all 337 leaves. The builder, gate and audit now follow explicit parents rather than inferring ancestry from id prefixes; regression checks enforce valid moves, roots, cycles, subjects, depth and nonredundant filings. The experimental viewer already derives its hierarchy from indentation. Geometry and semantic leaf pruning follow after statement review.
 
+## Semantic repairs (owner-authorized)
+
+[TREE-REPAIRS.md](TREE-REPAIRS.md) records the per-problem decisions and every affected card home. The first batch leaves 479 nodes. Retired ids: `alg.eq.system.combine` and `alg.eq.system.sub` → `alg.eq.system`; `alg.fn.feq.sub` → `alg.fn.feq`. Literal wrong-kind filings move separately to their actual subjects. Retired ids are never reused. Historical test filings below are not current assignments.
+
 ## The four trees
 
 Node ids are stable identifiers, not paths. Indentation gives the current Subject › Area › Topic › Subtopic hierarchy, with a fifth level where needed. Older id prefixes can name retired or former parents.
@@ -95,6 +99,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
       - Meeting, overtaking, passing and head starts `[alg.word.rates.motion.meet]`
       - Round trips, laps and circular tracks `[alg.word.rates.motion.laps]`
       - One trip at two speeds (a change of speed changes the time; arriving early or late) `[alg.word.rates.motion.speeds]`
+      - Multi-stage journeys and stops `[alg.word.rates.motion.stages]`
     - Average speed over a whole trip `[alg.word.rates.avg]`
     - Combined work and filling rates `[alg.word.rates.work]`
     - Currents, wind and moving walkways `[alg.word.rates.current]`
@@ -112,7 +117,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
 - **Equations and expressions** `[alg.eq]`
   - Linear equations and systems `[alg.eq.linear]`
     - One linear equation; setting up equations from words `[alg.eq.linear.one]`
-    - Two and three linear equations `[alg.eq.linear.system]`
+    - Linear systems `[alg.eq.linear.system]`
     - Systems with a parameter: no or infinitely many solutions `[alg.eq.linear.param]`
   - Manipulating expressions and identities `[alg.eq.identity]`
     - Simplifying and evaluating expressions `[alg.eq.identity.simplify]`
@@ -130,10 +135,8 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
   - Absolute value and piecewise equations `[alg.eq.abs]`
     - Equations and inequalities with absolute values `[alg.eq.abs.eq]`
     - Graphs and regions bounded by absolute values `[alg.eq.abs.graph]`
-  - Nonlinear systems and symmetric systems `[alg.eq.system]`
-    - Systems solved by adding, subtracting or multiplying `[alg.eq.system.combine]`
+  - Nonlinear systems `[alg.eq.system]`
     - Symmetric and cyclic systems `[alg.eq.system.cyclic]`
-    - Substitution and elimination in nonlinear systems `[alg.eq.system.sub]`
   - Matrices and determinants `[alg.eq.matrix]`
 - **Polynomials** `[alg.poly]`
   - Quadratics `[alg.poly.quad]`
@@ -147,17 +150,12 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
   - Remainders, factors and the factor theorem `[alg.poly.remainder]`
     - Remainder theorem and division `[alg.poly.remainder.thm]`
     - Factor theorem and repeated roots `[alg.poly.remainder.factor]`
-    - Values of a polynomial at many points `[alg.poly.remainder.values]`
   - Integer and rational roots `[alg.poly.introot]`
-    - Rational root theorem `[alg.poly.introot.rational]`
-    - Integer coefficients: $a-b \mid P(a)-P(b)$ `[alg.poly.introot.divides]`
   - Polynomial construction and interpolation `[alg.poly.construct]`
-    - Finite differences and interpolation `[alg.poly.construct.interp]`
+    - Polynomial values, interpolation and finite differences `[alg.poly.construct.interp]`
     - Polynomials with given properties `[alg.poly.construct.given]`
     - Coefficients and sums of coefficients `[alg.poly.construct.coeff]`
-  - Higher-degree equations `[alg.poly.higher]`
-    - Cubics and quartics `[alg.poly.higher.cubic]`
-    - Symmetric and palindromic polynomials `[alg.poly.higher.palin]`
+  - Higher-degree polynomial equations `[alg.poly.higher]`
 - **Functions** `[alg.fn]`
   - Evaluating, composing and inverting functions `[alg.fn.basic]`
     - Evaluating and composing `[alg.fn.basic.compose]`
@@ -171,8 +169,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Periodic and piecewise functions `[alg.fn.graph.periodic]`
     - Rational functions: $\tfrac{ax+b}{cx+d}$, asymptotes and holes `[alg.fn.graph.rational]`
   - Functional equations `[alg.fn.feq]`
-    - Substituting special values `[alg.fn.feq.sub]`
-    - Cauchy-type and additive equations `[alg.fn.feq.cauchy]`
+    - Cauchy-type functional equations `[alg.fn.feq.cauchy]`
     - Functions on the integers and recursive definitions `[alg.fn.feq.integer]`
   - Floor, ceiling and fractional part `[alg.fn.floor]`
     - Equations with floors `[alg.fn.floor.eq]`
@@ -261,8 +258,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Identical objects into distinct boxes `[cp.tech.stars.identical]`
     - Distributions with upper or lower bounds `[cp.tech.stars.bounds]`
     - Distinct objects into boxes; surjections `[cp.tech.stars.distinct]`
-  - Bijections and counting in two ways `[cp.tech.bij]`
-    - Counting one total in two ways `[cp.tech.bij.double]`
+  - Repeated counts and incidence totals `[cp.tech.bij.double]`
   - Counting with symmetry `[cp.tech.sym]`
     - Rotations and reflections; necklaces `[cp.tech.sym.necklace]`
     - Burnside's lemma `[cp.tech.sym.burnside]`
@@ -292,7 +288,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Degrees and handshakes `[cp.graph.basic.degree]`
     - Paths, cycles and Euler circuits `[cp.graph.basic.paths]`
     - Trees and connectivity `[cp.graph.basic.trees]`
-  - Tournaments and round-robins `[cp.graph.tour]`
+  - Elimination tournaments and round-robins `[cp.graph.tour]`
 - **Sets and coefficient counts** `[cp.binom]`
   - Inclusion-exclusion `[cp.tech.pie]`
     - Two and three sets; Venn diagrams `[cp.tech.pie.venn]`
@@ -308,7 +304,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Sums of binomial coefficients `[cp.binom.thm.sums]`
 - **Probability and expectation** `[cp.prob]`
   - Equally likely outcomes `[cp.prob.basic]`
-    - Counting favorable outcomes `[cp.prob.basic.count]`
+    - General finite probability models `[cp.prob.basic.count]`
     - Complementary probability `[cp.prob.basic.complement]`
   - Dice, coins and cards `[cp.prob.dice]`
     - Dice `[cp.prob.dice.dice]`
@@ -519,7 +515,6 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
   - Remainders and congruence arithmetic `[nt.mod.basic]`
     - Remainders of sums and products `[nt.mod.basic.arith]`
     - Modular inverses and solving $ax \equiv b$ `[nt.mod.basic.inverse]`
-    - Using a modulus to rule out cases `[nt.mod.basic.rule]`
   - Last digits and cycles of powers `[nt.mod.cycle]`
     - Last digit and last two digits `[nt.mod.cycle.last]`
     - Cycles of powers `[nt.mod.cycle.power]`

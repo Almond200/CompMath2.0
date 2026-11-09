@@ -32,7 +32,8 @@
   function curve(catalog, family, isVoided=()=>false) {
     const available=catalog.filter(g=>g.family===family), format=formats[family];
     if(!format||!available.length)throw Error('No complete papers are available for this contest.');
-    const endYear=Math.max(...available.map(g=>g.year)), startYear=endYear-9;
+    // A common five-calendar-year window; omit missing papers within it.
+    const endYear=Math.max(...catalog.map(g=>g.year)), startYear=endYear-4;
     const recent=available.filter(g=>g.year>=startYear), means=[];
     for(let slot=1;slot<=format.count;slot++){
       const byYear=new Map();
