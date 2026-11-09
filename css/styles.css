@@ -1706,7 +1706,8 @@ html[data-text="larger"] .prob-statement { font-size: 21px; }
 .show-more-btn:hover { border-color: var(--accent); background: var(--accent-soft); }
 .builtin-note { color: var(--text-dim); font-size: 13px; margin: 2px 0 14px; }
 .b-lvl-chip.active { color: #fff; background: var(--accent); border-color: var(--accent); }
-#settings-btn { font-size: 17px; line-height: 1; }
+#settings-btn { line-height: 1; }
+#settings-btn svg { display: block; width: 20px; height: 20px; flex: none; }
 
 .modal-overlay {
   position: fixed;
@@ -2549,7 +2550,7 @@ body[data-space="learn"] [data-space-go="learn"] { background: var(--space-soft)
   padding: 0 14px; border-radius: 10px; font-size: 13px;
 }
 .topbar-tools .tool-btn .tb-icon { display: inline-flex; }
-.topbar-tools #settings-btn { width: 40px; padding: 0; font-size: 17px; }
+.topbar-tools #settings-btn { width: 40px; padding: 0; }
 @media (max-width: 1400px) { .topbar-tools .tool-btn { width: 40px; padding: 0; } }
 @media (max-width: 760px) {
   .topbar-inner { flex-wrap: wrap; }
@@ -3184,7 +3185,6 @@ a.card-result { color: var(--text); text-decoration: none; }
 .topbar-tools .tool-btn { font-size: 14.5px; gap: 7px; }
 .topbar-tools .tool-btn .tb-icon { margin-right: 0; }
 .topbar-tools .tool-btn .tb-icon svg { width: 18px; height: 18px; vertical-align: middle; }
-.topbar-tools #settings-btn { font-size: 21px; }
 #search-input { font-size: 15px; }
 @media (max-width: 760px) { .space-switch > button { font-size: 13px; padding: 0 4px; } }
 
