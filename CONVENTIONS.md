@@ -1113,9 +1113,9 @@ One classification of contest mathematics, used by Practice sets, problem labels
 - Settings → Experimental → Topic tree (`lab/topic-tree.html`) reads `TOPIC-TREE.md` live, as an outline or as a drawn tree per subject.
 
 **The rules.**
-- A node is an archetype: a kind of problem that recurs, about five or more problems, never a node made for one problem. A thin node merges into its nearest neighbour.
+- A node is an archetype: a kind of problem that recurs, about five or more problems, never a node made for one problem. Thin nodes are reviewed for a meaningful merge into their nearest neighbour; fewer than five distinct examples is a review trigger, not a gate failure.
 - A node is a kind of problem, not a formula: cards attach to nodes, nodes do not mirror cards.
-- The tree says what a problem is about; the Methods cards say how it is solved (owner, 2026-11-07). A technique node (Casework, Complementary counting, Overcounting) is filed only when the technique is the whole problem, never as a second label on a problem whose subject lies elsewhere; there the card carries it. Technique practice draws from the problems citing the Methods card (`TOPIC-TREE.md`, rule 3b).
+- The tree says what a problem is about; the Methods cards say how it is solved (owner, 2026-11-07). A technique node (Casework or Complementary counting) is filed only when the technique is the whole problem, never as a second label on a problem whose subject lies elsewhere; there the card carries it. Technique practice draws from the problems citing the Methods card (`TOPIC-TREE.md`, rule 3b).
 - Ids are stable once problems are filed under them; names may change. A node's id extends its parent's by one segment.
 - A problem lists the most specific nodes that describe it, never a node together with one of its ancestors. AMC 10 and 12 twins carry the same nodes.
 - A card's home only proposes nodes for its problems; the problem's nodes are chosen by reading it.

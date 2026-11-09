@@ -1,44 +1,104 @@
-// Topic-tree audit for the tagging pass (PLAN.md, "The tagging pass (T3)"; an outside review, 2026-11-07).
-//   node tools/tree-audit.js            all filed problems
-//   node tools/tree-audit.js "2024 AMC 10A"   one paper (any ref prefix); add --thin to list section 2
-// Prints review prompts, never errors:
-//   1. problems filed on a node that has subtopics (a broad parent): a missing subtype, or a fine filing;
-//   2. nodes with few filed problems (under the archetype rule's five), once enough problems are filed;
-//   3. problems whose cards have a home node that no filed node covers (neither the node nor an ancestor
-//      or descendant of it): a topic the route relies on that the filing may have left out.
-// Each prompt is read against the problem's statement and strategy before anything changes.
-const path = require("path"), fs = require("fs");
-const ROOT = path.join(__dirname, "..");
-global.window = global;
-const load = f => { eval(fs.readFileSync(path.join(ROOT, f), "utf8")); };
-load("js/data/topic-tree.js"); load("js/data/topic-homes.js"); load("js/data/problems/problem-db.js");
-const TREE = window.MATH_TOPIC_TREE, HOMES = window.MATH_TOPIC_HOMES;
-const NAME = {}, KIDS = {};
-TREE.forEach(([id, name, parent]) => { NAME[id] = name; if (parent) (KIDS[parent] = KIDS[parent] || []).push(id); });
-const args = process.argv.slice(2), showThin = args.includes("--thin"), prefix = args.find(a => a !== "--thin") || "";
-const filed = window.MATH_PROBLEM_DB.filter(p => p.tree && p.ref.startsWith(prefix));
-const related = (a, b) => a === b || a.startsWith(b + ".") || b.startsWith(a + ".");
+// T3 review prompts, never taxonomy failures. Read statements before changing filings.
+// node tools/tree-audit.js ["2009 AMC 8"] [--thin] [--census]
+// Thin/census counts cover all filed papers, even with a paper prefix.
+const path = require("node:path");
 
-console.log(`Filed problems${prefix ? ` in "${prefix}"` : ""}: ${filed.length}\n`);
+function census(tree, problems, homes) {
+  const nodes = new Map(tree.map(([id, name, parent]) => [id, {
+    id, name, parent, children: [], problems: [], sole: [], homes: []
+  }]));
+  for (const node of nodes.values()) if (node.parent) nodes.get(node.parent).children.push(node.id);
+  for (const [card, home] of Object.entries(homes)) if (home && nodes.has(home)) nodes.get(home).homes.push(card);
+  // Conservative estimate: only one AMC 10 and one AMC 12, same year,
+  // season, paper letter and exact strategy. Reworded twins remain separate.
+  const groups = new Map(), instance = new Map(problems.map(p => [p.ref, p.ref]));
+  for (const p of problems) {
+    const m = p.ref.match(/^(\d{4}(?: Fall| Spring)?) AMC (10|12)([AB]?),/);
+    if (!m || !p.strategy) continue;
+    const key = `${m[1]}|${m[3]}|${p.strategy}`;
+    if (!groups.has(key)) groups.set(key, { ten: [], twelve: [] });
+    groups.get(key)[m[2] === "10" ? "ten" : "twelve"].push(p);
+  }
+  for (const { ten, twelve } of groups.values()) if (ten.length === 1 && twelve.length === 1)
+    instance.set(twelve[0].ref, ten[0].ref);
+  for (const p of problems) for (const id of p.tree || []) {
+    const node = nodes.get(id);
+    if (!node) throw new Error(`${p.ref}: unknown tree node ${id}`);
+    node.problems.push(p);
+    if (p.tree.length === 1) node.sole.push(p);
+  }
+  for (const node of nodes.values()) {
+    node.distinct = new Set(node.problems.map(p => instance.get(p.ref))).size;
+    node.soleDistinct = new Set(node.sole.map(p => instance.get(p.ref))).size;
+  }
+  return { nodes, instance };
+}
 
-console.log("1. Filed on a broad parent (a node with subtopics):");
-let n1 = 0;
-filed.forEach(p => p.tree.filter(t => KIDS[t]).forEach(t => { n1++; console.log(`   ${p.ref}: ${t} (${NAME[t]})`); }));
-if (!n1) console.log("   none");
+function report(tree, problems, homes, args) {
+  const full = args.includes("--census"), showThin = full || args.includes("--thin");
+  const prefix = args.find(a => !a.startsWith("--")) || "";
+  const filed = problems.filter(p => p.tree && p.ref.startsWith(prefix));
+  const { nodes, instance } = census(tree, problems, homes);
+  const related = (a, b) => a === b || a.startsWith(b + ".") || b.startsWith(a + ".");
+  const summary = n => `${n.id} (${n.name}): ${n.problems.length} raw, ${n.distinct} distinct; ${n.sole.length} sole-label (${n.soleDistinct} distinct)`;
+  const samples = ps => {
+    const seen = new Set();
+    for (const p of ps) {
+      const key = instance.get(p.ref);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      const cards = [...new Set([...(p.formulas || []), ...(p.trickFormulas || [])])];
+      console.log(`      ${p.ref}; cards: ${cards.map(c => `${c} (#/f/${c})`).join(", ") || "none"}`);
+      if (seen.size === 5) break;
+    }
+  };
+  console.log(`Filed problems${prefix ? ` in "${prefix}"` : ""}: ${filed.length}\n`);
+  console.log("1. Filed on a broad parent (a node with subtopics):");
+  let broad = 0;
+  for (const p of filed) for (const t of p.tree.filter(t => nodes.get(t).children.length)) {
+    broad++; console.log(`   ${p.ref}: ${t} (${nodes.get(t).name})`);
+  }
+  if (!broad) console.log("   none");
+  console.log("\n2. Terminal leaves below five distinct problems (all filed papers, including unused leaves):");
+  const thin = [...nodes.values()].filter(n => !n.children.length && n.distinct < 5)
+    .sort((a, b) => a.distinct - b.distinct || a.id.localeCompare(b.id));
+  console.log(`   ${thin.length} leaves; ${thin.filter(n => !n.problems.length).length} unused. Counts are review prompts, not failures.`);
+  if (showThin) for (const n of thin) {
+    console.log(`   ${summary(n)}; card homes: ${n.homes.join(", ") || "none"}`);
+    samples(n.problems);
+  }
+  else console.log("   List with --thin; --census also ranks parents and frequent leaves.");
+  console.log("\n3. Main-route card homes not covered by the filing:");
+  let uncovered = 0;
+  for (const p of filed) {
+    const missing = [...new Set((p.formulas || []).map(c => homes[c]).filter(Boolean))]
+      .filter(h => !p.tree.some(t => related(t, h)));
+    if (missing.length) {
+      uncovered++;
+      console.log(`   ${p.ref}: ${missing.map(h => `${h} (${nodes.get(h).name})`).join("; ")}`);
+    }
+  }
+  if (!uncovered) console.log("   none");
+  if (full) {
+    console.log("\n4. Internal nodes ranked by direct assignments (all papers; first 20):");
+    for (const n of [...nodes.values()].filter(n => n.children.length && n.problems.length)
+      .sort((a, b) => b.problems.length - a.problems.length || a.id.localeCompare(b.id)).slice(0, 20)) {
+      console.log(`   ${summary(n)}`); samples(n.problems);
+    }
+    console.log("\n5. Frequent leaves (at least 25 raw), ranked by sole-label proportion (first 20):");
+    for (const n of [...nodes.values()].filter(n => !n.children.length && n.problems.length >= 25)
+      .sort((a, b) => b.sole.length / b.problems.length - a.sole.length / a.problems.length || a.id.localeCompare(b.id)).slice(0, 20)) {
+      console.log(`   ${summary(n)}; ${(100 * n.sole.length / n.problems.length).toFixed(1)}% sole-label`);
+      samples(n.sole.length ? n.sole : n.problems);
+    }
+  }
+  console.log("\nDistinct counts collapse recognized same-paper AMC 10/12 twins by exact strategy; reworded twins may remain separate.");
+  console.log("These are prompts to read, not errors. A card home can be a tool used in passing; reading also catches central ideas with no cited card.");
+}
 
-const count = {};
-window.MATH_PROBLEM_DB.filter(p => p.tree).forEach(p => p.tree.forEach(t => { count[t] = (count[t] || 0) + 1; }));
-console.log("\n2. Nodes with one or two filed problems (all papers; meaningful once many papers are filed):");
-const thin = Object.entries(count).filter(([, k]) => k <= 2).sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0]));
-console.log(!thin.length ? "   none" : showThin ? "   " + thin.map(([t, k]) => `${t} ${k}`).join(", ") : `   ${thin.length} nodes (list them with --thin)`);
-
-console.log("\n3. Card homes not covered by the filing (a topic the route may rely on):");
-let n3 = 0;
-filed.forEach(p => {
-  const homes = [...new Set([...(p.formulas || [])].map(c => HOMES[c]).filter(Boolean))];
-  const missing = homes.filter(h => !p.tree.some(t => related(t, h)));
-  if (missing.length) { n3++; console.log(`   ${p.ref}: ${missing.map(h => `${h} (${NAME[h]})`).join("; ")}`); }
-});
-if (!n3) console.log("   none");
-console.log("\nThese are prompts to read, not errors: most uncovered homes are tools the route uses in passing.");
-console.log("Section 3 only sees topics that a cited card points to: a central idea with no card (symmetry in a count done by casework) is caught by reading.");
+if (require.main === module) {
+  global.window = global;
+  for (const f of ["topic-tree", "topic-homes", "problems/problem-db"]) require(path.join(__dirname, "../js/data", f + ".js"));
+  report(window.MATH_TOPIC_TREE, window.MATH_PROBLEM_DB, window.MATH_TOPIC_HOMES, process.argv.slice(2));
+}
+module.exports = { census, report };
