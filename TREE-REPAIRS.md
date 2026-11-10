@@ -697,3 +697,33 @@ Read all 54 distinct arithmetic-sequence cofilings before changing them. Retain 
 | 2015 AIME I, Problem 1 | `alg.word.compute.clever`, `alg.seq.ap.arith` | `alg.word.compute.clever` |
 | 2020 AIME II, Problem 8 | `alg.eq.abs.eq`, `alg.seq.ap.arith`, `alg.fn.basic.iterate` | `alg.eq.abs.eq`, `alg.fn.basic.iterate` |
 | 2021 AIME I, Problem 5 | `alg.seq.ap.arith`, `nt.div.rules.expr` | `alg.seq.ap.arith` |
+
+## High-value audit: remaining AP cofilings, polyhedra/nets and mixed transformations
+
+Complete the 54-distinct AP cofiling dispositions; retain all actual progression constraints, including the nine AP/GP questions, and remove method-only AP labels from averages, a magic square, floor equations, a block-pattern index and sign-flip optimization. Read all 18 distinct nets/polyhedron questions: nets mostly hold genuine folding; drop incidental box, planar-fold and combination companions, and refile the metric coordinate solid under spatial distances. Rename the stable polyhedron node to state its actual regular-solid/face-edge-vertex scope rather than naming Euler alone; all card homes remain. The octahedron/cube volume ratio concerns different shapes, so remove the similar-solids label and supply the explicit face-centroid computation. All five mixed reflection/rotation questions were read: four explicitly impose both transformations and stay; the two-reflection problem keeps Reflection, with composition-to-rotation carried by its card. No node, home or card is deleted; no answer changes.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1985 AIME, Problem 15 | `geo.solid.poly.nets`, `geo.solid.prism.box` | `geo.solid.poly.nets` |
+| 2002 AIME I, Problem 15 | `geo.solid.coord.dist`, `geo.solid.poly.euler` | `geo.solid.coord.dist` |
+| 2004 AIME I, Problem 3 | `geo.solid.poly.euler`, `cp.basic.comb.choose` | `geo.solid.poly.euler` |
+| 2005 AIME II, Problem 10 | `geo.solid.poly.euler`, `geo.basic.sim.figures` | `geo.solid.poly.euler` (proof corrected) |
+| 2008 AIME I, Problem 15 | `geo.solid.poly.nets`, `geo.basic.pyth.fold` | `geo.solid.poly.nets` |
+| 2023 AMC 10B, Problem 23 | `alg.seq.ap.arith`, `nt.divisor.count.pairs` | `alg.seq.ap.arith` |
+| 2024 AMC 10A, Problem 21 | `alg.seq.ap.arith`, `alg.eq.linear.system` | `alg.seq.ap.arith`, `cp.struct.tile.fill` |
+| 2024 AMC 10B, Problem 5 | `alg.seq.ap.arith`, `alg.ineq.optimize.integer` | `alg.ineq.optimize.integer` |
+| 2024 AMC 12A, Problem 14 | `alg.seq.ap.arith`, `alg.eq.linear.system` | `alg.seq.ap.arith`, `cp.struct.tile.fill` |
+| 2024 AMC 12B, Problem 5 | `alg.seq.ap.arith`, `alg.ineq.optimize.integer` | `alg.ineq.optimize.integer` |
+| 2025 AMC 10A, Problem 5 | `alg.seq.period.nth`, `alg.seq.ap.arith` | `alg.seq.period.nth` |
+| 1986 AJHSME, Problem 25 | `alg.seq.ap.arith`, `alg.word.stats.mean` | `alg.word.stats.mean` |
+| 2006 AMC 10A, Problem 9 | `alg.seq.ap.arith`, `nt.divisor.count.pairs` | `alg.seq.ap.arith` |
+| 2006 AMC 12A, Problem 8 | `alg.seq.ap.arith`, `nt.divisor.count.pairs` | `alg.seq.ap.arith` |
+| 2010 AMC 12A, Problem 20 | `alg.seq.ap.arith`, `nt.div.gcd.basic` | `alg.seq.ap.arith` |
+| 2020 AMC 10A, Problem 7 | `cp.struct.tile.fill`, `alg.seq.ap.arith` | `cp.struct.tile.fill` |
+| 2020 AMC 12A, Problem 5 | `cp.struct.tile.fill`, `alg.seq.ap.arith` | `cp.struct.tile.fill` |
+| 2020 AMC 12A, Problem 25 | `alg.fn.floor.eq`, `alg.seq.ap.arith` | `alg.fn.floor.eq` |
+| 2021 Spring AMC 10A, Problem 22 | `alg.word.stats.mean`, `alg.seq.ap.arith` | `alg.word.stats.mean` |
+| 2022 AMC 10B, Problem 4 | `alg.seq.ap.arith`, `alg.word.units.convert` | `alg.seq.ap.arith` |
+| 2025 AMC 10B, Problem 17 | `alg.word.stats.mean`, `alg.seq.ap.arith` | `alg.word.stats.mean` |
+| 2025 AMC 12B, Problem 14 | `alg.word.stats.mean`, `alg.seq.ap.arith` | `alg.word.stats.mean` |
+| 2021 Fall AMC 10B, Problem 17 | `geo.coord.transform.reflect`, `geo.coord.transform.rotate` | `geo.coord.transform.reflect` |

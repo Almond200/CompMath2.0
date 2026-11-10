@@ -71,7 +71,7 @@ Retired empty wrappers: `alg.word` (children distributed among `alg.arithmetic`,
 
 This changes 486 nodes to 482 and 31 areas to 28, preserving all 337 leaves. The builder, gate and audit now follow explicit parents rather than inferring ancestry from id prefixes; regression checks enforce valid moves, roots, cycles, subjects, depth and nonredundant filings. The experimental viewer already derives its hierarchy from indentation. The later geometry and semantic leaf pruning are complete in TREE-REPAIRS.md.
 
-Further targeted reviews: [TREE-ACCURACY.md](TREE-ACCURACY.md) records the four common-label pools; [TREE-ACCURACY-2.md](TREE-ACCURACY-2.md) records area/spatial/right-triangle and progression controls. Heron is retired as a problem kind; its cards survive at Triangle area.
+Further targeted reviews: [TREE-ACCURACY.md](TREE-ACCURACY.md) records the four common-label pools; [TREE-ACCURACY-2.md](TREE-ACCURACY-2.md) records area/spatial/right-triangle and progression controls. [TREE-ACCURACY-3.md](TREE-ACCURACY-3.md) adds AP cofilings, nets/polyhedra and mixed-transformation controls. Heron is retired as a problem kind; its cards survive at Triangle area.
 
 ## Semantic repairs (owner-authorized)
 
@@ -453,7 +453,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Cones and frustums `[geo.solid.round.cone]`
     - Spheres and inscribed spheres `[geo.solid.round.sphere]`
   - Polyhedra, nets and cross-sections `[geo.solid.poly]`
-    - Polyhedra and Euler's formula `[geo.solid.poly.euler]`
+    - Regular solids, faces, edges and vertices `[geo.solid.poly.euler]`
     - Nets and unfolding `[geo.solid.poly.nets]`
     - Cross-sections and slices `[geo.solid.poly.section]`
   - Coordinates and vectors in space `[geo.solid.coord]`

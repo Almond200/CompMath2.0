@@ -1,6 +1,6 @@
 # Tree finalization after the full tagging pass
 
-2026-11-10. The subsequent owner-requested concentration check is complete in [TREE-ACCURACY.md](TREE-ACCURACY.md): 242 distinct problems read, 56 corrected. A further 77-problem targeted review is recorded in [TREE-ACCURACY-2.md](TREE-ACCURACY-2.md), including retirement of the Heron-method leaf and four proof repairs. Counts below include both follow-ups. The requested audit implementation is complete for the present corpus. [TREE-REPAIRS.md](TREE-REPAIRS.md) records every changed problem, retired id and affected card home. [TREE-AUDIT.md](TREE-AUDIT.md) retains the pre-repair evidence; [TREE-REVIEW.md](TREE-REVIEW.md) retains the larger area decisions. T4 and textbook revision remain paused.
+2026-11-10. The subsequent owner-requested concentration check is complete in [TREE-ACCURACY.md](TREE-ACCURACY.md): 242 distinct problems read, 56 corrected. A further 77-problem targeted review is recorded in [TREE-ACCURACY-2.md](TREE-ACCURACY-2.md), including retirement of the Heron-method leaf and four proof repairs. [TREE-ACCURACY-3.md](TREE-ACCURACY-3.md) adds the 77-problem high-value-node review (34 corrections). Counts below include all three follow-ups. The requested audit implementation is complete for the present corpus. [TREE-REPAIRS.md](TREE-REPAIRS.md) records every changed problem, retired id and affected card home. [TREE-AUDIT.md](TREE-AUDIT.md) retains the pre-repair evidence; [TREE-REVIEW.md](TREE-REVIEW.md) retains the larger area decisions. T4 and textbook revision remain paused.
 
 ## Final census and decisions
 
@@ -18,7 +18,7 @@
 | Cards with homes / general methods without | 740 / 34 | 739 / 35 |
 | Distinct problems filed directly on a parent | 56 | 104 |
 
-The original pre-pruning draft had 503 nodes; the full sequence removes 45 net nodes. All 774 cards survive. All 650 AMC 8, 350 AJHSME and ten HMMT problems remain filed and reviewed. The final label distribution is 3,365 problems with one label, 1,331 with two, and 29 with three. Twin equality and the absence of ancestor/descendant duplicate labels are enforced by the gate.
+The original pre-pruning draft had 503 nodes; the full sequence removes 45 net nodes. All 774 cards survive. All 650 AMC 8, 350 AJHSME and ten HMMT problems remain filed and reviewed. The final label distribution is 3,399 problems with one label, 1,298 with two, and 28 with three. Twin equality and the absence of ancestor/descendant duplicate labels are enforced by the gate.
 
 Keep the four subjects and 28 areas. Arithmetic is separated from applied quantities and statistics; counting separates arrangements, structures, coefficient/set counts, probability and discrete reasoning; divisibility, primes and divisors share an area. Right and similar triangles now sit with triangles; folding sits with transformations. Integer square/power conditions now sit in Diophantine equations, with shifted differences of squares beneath them. Extremal sets sit under constructions and bounds. Rotations/reflections form one pool regardless of whether a solution uses Burnside or direct orbit reasoning.
 

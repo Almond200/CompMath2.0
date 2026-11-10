@@ -369,7 +369,7 @@ window.MATH_TOPIC_TREE = [
   ["geo.solid.round.cone", "Cones and frustums", "geo.solid.round"],
   ["geo.solid.round.sphere", "Spheres and inscribed spheres", "geo.solid.round"],
   ["geo.solid.poly", "Polyhedra, nets and cross-sections", "geo.solid"],
-  ["geo.solid.poly.euler", "Polyhedra and Euler's formula", "geo.solid.poly"],
+  ["geo.solid.poly.euler", "Regular solids, faces, edges and vertices", "geo.solid.poly"],
   ["geo.solid.poly.nets", "Nets and unfolding", "geo.solid.poly"],
   ["geo.solid.poly.section", "Cross-sections and slices", "geo.solid.poly"],
   ["geo.solid.coord", "Coordinates and vectors in space", "geo.solid"],
