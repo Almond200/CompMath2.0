@@ -727,3 +727,33 @@ Complete the 54-distinct AP cofiling dispositions; retain all actual progression
 | 2025 AMC 10B, Problem 17 | `alg.word.stats.mean`, `alg.seq.ap.arith` | `alg.word.stats.mean` |
 | 2025 AMC 12B, Problem 14 | `alg.word.stats.mean`, `alg.seq.ap.arith` | `alg.word.stats.mean` |
 | 2021 Fall AMC 10B, Problem 17 | `geo.coord.transform.reflect`, `geo.coord.transform.rotate` | `geo.coord.transform.reflect` |
+
+## High-value audit 4: all 54 integer-optimization filings
+
+Read the complete pool. Most are genuine finite/integer extrema. Correct the mode/range subject, recover rectangle and radical-equation subjects, remove intermediate SFFT/vertex/telescoping labels, and move the unique percentage-inference and continuous salary-budget questions to their actual kinds. Replace the reversed mode-minus-mean proof with a global attained bound; prove the prime-power minimum globally below the attained candidate; give the complete denominator/partition check for the digit fraction and exclude all smaller positive sums in the signed-factor question. All keyed answers remain unchanged. Exact finite computations verify the displayed cases. Remaining trig/power pools follow.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1989 AIME, Problem 11 | `alg.word.stats.data`, `alg.ineq.optimize.integer` | `alg.word.stats.median`, `alg.ineq.optimize.integer` (proof corrected) |
+| 1994 AIME, Problem 12 | `nt.div.gcd.basic`, `alg.ineq.optimize.integer` | `geo.poly.quad.rect`, `alg.ineq.optimize.integer` |
+| 2006 AIME I, Problem 15 | `alg.seq.sum.telescope`, `alg.ineq.optimize.integer` | `alg.eq.abs.eq`, `alg.ineq.optimize.integer` |
+| 2007 AIME II, Problem 8 | `alg.ineq.optimize.integer`, `alg.poly.quad.vertex` | `alg.ineq.optimize.integer` |
+| 2015 AIME II, Problem 8 | `alg.eq.factor.sfft`, `alg.ineq.optimize.integer` | `alg.ineq.optimize.integer` |
+| 2020 AIME I, Problem 10 | `nt.div.prime.factor`, `alg.ineq.optimize.integer` | `nt.div.prime.powers`, `alg.ineq.optimize.integer` (proof corrected) |
+| 2022 AIME I, Problem 7 | `alg.ineq.optimize.integer` | `alg.ineq.optimize.integer` (proof corrected) |
+| 2024 AMC 10A, Problem 7 | `alg.ineq.optimize.integer`, `nt.divisor.count.pairs` | `alg.ineq.optimize.integer` (proof corrected) |
+| 2024 AMC 10B, Problem 6 | `nt.divisor.count.pairs`, `alg.ineq.optimize.integer` | `geo.poly.quad.rect`, `alg.ineq.optimize.integer` |
+| 2024 AMC 10B, Problem 13 | `alg.eq.radical.simplify`, `alg.ineq.optimize.integer` | `alg.eq.radical.eq`, `alg.ineq.optimize.integer` |
+| 2024 AMC 12A, Problem 6 | `alg.ineq.optimize.integer`, `nt.divisor.count.pairs` | `alg.ineq.optimize.integer` (proof corrected) |
+| 2022 AMC 8, Problem 21 | `alg.ineq.optimize.integer` | `alg.word.ratio.percent` |
+| 2008 AMC 10B, Problem 4 | `alg.ineq.optimize.integer` | `alg.word.everyday.money` |
+| 2008 AMC 12B, Problem 3 | `alg.ineq.optimize.integer` | `alg.word.everyday.money` |
+
+## Optimization proof completion and missing coverage proposal
+
+Complete the global prime-exponent maximum using decreasing consecutive-factor ratios. Give an exact postage-count formula, prove its interval-coverage criterion and fixed-count dominance, and record the finite search bounds and witnesses. Exact evaluation over 2 <= b < c <= 89 gives only c=11,88,89 with f=97 and maximum 96 for c=12..87. Record the missing interval-extension method as P69 in QUESTIONS.md, retaining Constructive Counting meanwhile; no new card is created without the standing decision process.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2021 Spring AMC 12A, Problem 25 | `nt.divisor.count.tau`, `alg.ineq.optimize.integer` | `nt.divisor.count.tau`, `alg.ineq.optimize.integer` (proof corrected) |
+| 2022 AIME II, Problem 14 | `alg.ineq.optimize.integer` | `alg.ineq.optimize.integer` (proof corrected) |

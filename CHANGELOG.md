@@ -2,6 +2,8 @@
 
 **2026-11-10**
 
+- **Focused audit 4, optimization batch:** read all 54 distinct integer-optimization entries. Corrected actual subject/tool labels and six proof arguments, including the reversed mode-minus-mean construction. Added an exact postage formula with finite bounds and recorded interval-coverage method P69 for the standing card decision process. Answers remain unchanged. Full validation precedes committing this batch; trig and power-of-a-point dispositions follow.
+
 - **High-value-node review complete:** read 77 distinct problems / 88 entries: all 54 AP cofilings, all 18 nets/polyhedron filings and five reflection/rotation overlaps. Corrected 34 distinct / 39 raw entries across two batches; the final batch changes 23 raw entries. AP falls 103→89, polyhedron/regular solids 7→6, nets stays 11; all nine AP/GP combinations remain valid. Renamed the stable polyhedron leaf to describe regular solids and face/edge/vertex structure. Corrected a source-figure-checked grid convention and completed prime-exception, no-gap-subset-sum and face-centroid arguments; all answers unchanged. Exact computations, full gates, answer keys and tree/audit regressions pass. All 458 nodes, 774 cards and 4,725 filings survive. TREE-ACCURACY-3.md records every reviewed entry. Textbooks and T4 remain paused.
 
 - **High-value audit, AP cofilings batch 1:** read all 54 distinct cofilings; first corrections remove incidental progression/tool labels while retaining actual progression constraints. Corrected the grid coordinate convention against the source figure, closed the prime-3 exception and supplied a constructive no-gap subset-sum argument. Answers unchanged; final validation follows before the remaining reviewed batch.
