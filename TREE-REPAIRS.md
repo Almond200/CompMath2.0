@@ -879,3 +879,34 @@ Read all 50 distinct GCD/LCM statements and strategies before migrating. Keep ex
 | 2021 Fall AMC 10B, Problem 3 | `alg.eq.factor.squares`, `nt.div.gcd.basic` | `alg.word.compute.fraction` |
 | 2021 Fall AMC 12A, Problem 8 | `nt.div.gcd.basic`, `nt.div.prime.factor` | `nt.div.gcd.basic` |
 | 2021 Fall AMC 12B, Problem 25 | `nt.mod.basic.arith`, `nt.div.gcd.basic` | `nt.mod.basic.arith` |
+
+## High-value audit 5: complete divisor-count pool and proof controls
+
+Read all 43 distinct divisor-count statements and strategies. Retain literal divisor-count conditions and samples; remove divisor counts used only to solve a series, harmonic-mean equation, exponential equation, base-digit count or floor sum. Move the requested logarithmic divisor product to divisor products/log equations; keep factorization tuples at Counting factorizations and bounded linear triples with their stated divisibility constraints. Preserve genuine factorial inputs under Factorials and divisibility rather than the Legendre-method leaf, including the GCD-pool factorial comparison. Recover missing probability, power-divisor, age, product-of-divisors and congruence cards where earned. Prove the infinite-series tail cannot carry into its integer part, and bound the search for the six least consecutive-divisor solutions. The age strategy now explicitly records the implicit ordinary-human-age assumption and an unrestricted-age counterexample; the credited statement and intended key stay intact. No node, card home or answer changes.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2026 AIME II, Problem 9 | `alg.seq.sum.other`, `nt.divisor.count.tau` | `alg.seq.sum.other` (proof corrected) |
+| 2026 AIME I, Problem 8 | `nt.divisor.count.tau`, `nt.mod.crt.split` | `nt.divisor.count.tau`, `nt.mod.basic.arith` |
+| 1996 AIME, Problem 8 | `nt.dio.factor.sfft`, `nt.divisor.count.tau` | `nt.dio.factor.sfft` |
+| 2004 AIME II, Problem 8 | `nt.divisor.count.factor`, `nt.divisor.count.tau` | `nt.divisor.count.tau` |
+| 2005 AIME I, Problem 12 | `nt.divisor.count.tau`, `nt.seq.power.squares` | `nt.divisor.count.tau` |
+| 2007 AIME II, Problem 2 | `nt.divisor.count.tau`, `cp.tech.stars.identical` | `nt.dio.linear.count`, `nt.div.rules` |
+| 2010 AIME I, Problem 1 | `nt.divisor.count.tau`, `cp.prob.dice.draw` | `nt.divisor.count.tau`, `cp.prob.dice.draw` |
+| 2011 AIME I, Problem 7 | `alg.poly.remainder.thm`, `nt.divisor.count.tau` | `nt.dio.bound.exp` |
+| 2019 AIME I, Problem 9 | `nt.divisor.count.tau` | `nt.divisor.count.tau` (proof corrected) |
+| 2019 AIME II, Problem 3 | `nt.divisor.count.tau`, `nt.prime.basic.test` | `nt.divisor.count.factor` |
+| 2023 AIME I, Problem 14 | `cp.struct.paths.walks` | `cp.struct.paths.walks` |
+| 2023 AIME II, Problem 10 | `cp.struct.tile.color`, `nt.divisor.count.tau` | `cp.struct.tile.color`, `nt.divisor.count.tau` |
+| 2003 AMC 10A, Problem 8 | `nt.divisor.count.tau` | `nt.divisor.count.tau`, `cp.prob.basic.count` |
+| 2003 AMC 12A, Problem 8 | `nt.divisor.count.tau` | `nt.divisor.count.tau`, `cp.prob.basic.count` |
+| 2005 AMC 10A, Problem 15 | `nt.divisor.count.tau` | `nt.divisor.count.tau`, `nt.prime.val.factorial` |
+| 2008 AMC 12B, Problem 23 | `nt.divisor.count.tau`, `alg.exp.log.rules` | `nt.divisor.count.sigma`, `alg.exp.log.eq` |
+| 2013 AMC 10A, Problem 19 | `nt.digit.base.convert`, `nt.divisor.count.tau` | `nt.digit.base.arith` |
+| 2017 AMC 10B, Problem 20 | `nt.divisor.count.tau`, `nt.prime.val.legendre` | `nt.divisor.count.tau`, `nt.prime.val.factorial`, `cp.prob.basic.count` |
+| 2017 AMC 12B, Problem 16 | `nt.divisor.count.tau`, `nt.prime.val.legendre` | `nt.divisor.count.tau`, `nt.prime.val.factorial`, `cp.prob.basic.count` |
+| 2018 AMC 10B, Problem 19 | `nt.divisor.count.tau`, `alg.word.everyday.age` | `nt.divisor.count.tau`, `alg.word.everyday.age` (proof corrected) |
+| 2018 AMC 12B, Problem 14 | `nt.divisor.count.tau`, `alg.word.everyday.age` | `nt.divisor.count.tau`, `alg.word.everyday.age` (proof corrected) |
+| 2020 AMC 10A, Problem 15 | `nt.divisor.count.tau`, `cp.prob.basic.count` | `nt.divisor.count.tau`, `cp.prob.basic.count`, `nt.prime.val.factorial` |
+| 2020 AMC 10A, Problem 22 | `alg.fn.floor.eq`, `nt.divisor.count.tau` | `alg.fn.floor.eq` |
+| 2020 AMC 12A, Problem 21 | `nt.div.gcd.basic` | `nt.div.gcd.basic`, `nt.prime.val.factorial` |

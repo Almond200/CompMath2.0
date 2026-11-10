@@ -2,6 +2,23 @@
 // node tools/tree-risk-audit.cjs > /tmp/tree-risk-audit.json
 const { census } = require('./tree-audit.js');
 
+const contestFamily = p => /AJHSME|AMC 8,/.test(p.ref) ? 'AMC 8/AJHSME' : /AMC 1[02]/.test(p.ref) ? 'AMC 10/12' :
+  /AIME/.test(p.ref) ? 'AIME' : /HMMT/.test(p.ref) ? 'HMMT' : 'Other';
+
+function poolSizes(rows, key = 'distinct') {
+  const sizes = rows.map(n => n[key]).sort((a, b) => a - b);
+  const middle = Math.floor(sizes.length / 2);
+  return { choices: sizes.length, min: sizes[0] ?? null,
+    median: sizes.length ? (sizes[middle] + sizes[Math.floor((sizes.length - 1) / 2)]) / 2 : null,
+    max: sizes.at(-1) ?? null,
+    empty: sizes.filter(v => v === 0).length,
+    oneToFour: sizes.filter(v => v >= 1 && v < 5).length,
+    fiveToNine: sizes.filter(v => v >= 5 && v < 10).length,
+    tenToNineteen: sizes.filter(v => v >= 10 && v < 20).length,
+    twentyToFortyNine: sizes.filter(v => v >= 20 && v < 50).length,
+    fiftyPlus: sizes.filter(v => v >= 50).length };
+}
+
 function riskAudit(tree, problems, homes) {
   const { nodes, instance } = census(tree, problems, homes);
   const unique = entries => new Set(entries.map(p => instance.get(p.ref))).size;
@@ -14,9 +31,13 @@ function riskAudit(tree, problems, homes) {
     const ids = descendants(n.id);
     const entries = problems.filter(p => (p.tree || []).some(id => ids.has(id)));
     const leaves = [...ids].map(id => nodes.get(id)).filter(n => !n.children.length);
+    let depth = 1, parent = n.parent;
+    while (parent) { depth++; parent = nodes.get(parent).parent; }
     return {
-      id: n.id, name: n.name, parent: n.parent, children: n.children.length,
+      id: n.id, name: n.name, parent: n.parent, depth, children: n.children.length,
       raw: entries.length, distinct: unique(entries),
+      familyDistinct: Object.fromEntries(['AMC 8/AJHSME', 'AMC 10/12', 'AIME', 'HMMT']
+        .map(family => [family, unique(entries.filter(p => contestFamily(p) === family))])),
       directRaw: n.problems.length, directDistinct: n.distinct,
       soleDistinct: n.soleDistinct,
       leaves: leaves.length, thinLeaves: leaves.filter(n => n.distinct < 5).length,
@@ -45,8 +66,7 @@ function riskAudit(tree, problems, homes) {
   }).filter(p => p.shared >= 3).sort((a, b) => b.smallerPoolShare - a.smallerPoolShare || b.shared - a.shared || a.a.localeCompare(b.a));
   const rawContestFamilies = {}, labelCounts = {};
   for (const p of problems) {
-    const family = /AJHSME|AMC 8,/.test(p.ref) ? 'AMC 8/AJHSME' : /AMC 1[02]/.test(p.ref) ? 'AMC 10/12' :
-      /AIME/.test(p.ref) ? 'AIME' : /HMMT/.test(p.ref) ? 'HMMT' : 'Other';
+    const family = contestFamily(p);
     rawContestFamilies[family] = (rawContestFamilies[family] || 0) + 1;
     const count = (p.tree || []).length;
     labelCounts[count] = (labelCounts[count] || 0) + 1;
@@ -60,6 +80,18 @@ function riskAudit(tree, problems, homes) {
       parentProblemRaw: parentEntries.length, parentProblemDistinct: unique(parentEntries),
       parentAssignments: rows.filter(n => n.children).reduce((sum, n) => sum + n.directRaw, 0) },
     rawContestFamilies, labelCounts,
+    capacity: {
+      leaves: poolSizes(leaves),
+      internalTopics: poolSizes(rows.filter(n => n.depth >= 3 && n.children)),
+      topicsAndSubtopics: poolSizes(rows.filter(n => n.depth >= 3)),
+      areas: poolSizes(rows.filter(n => n.depth === 2)),
+      leafDepths: Object.fromEntries([...new Set(leaves.map(n => n.depth))].sort((a, b) => a - b)
+        .map(depth => [depth, leaves.filter(n => n.depth === depth).length])),
+      bySubject: Object.fromEntries(rows.filter(n => !n.parent)
+        .map(n => [n.id, poolSizes(leaves.filter(leaf => descendants(n.id).has(leaf.id)))])),
+      byContestFamily: Object.fromEntries(['AMC 8/AJHSME', 'AMC 10/12', 'AIME', 'HMMT'].map(family =>
+        [family, poolSizes(leaves.map(n => ({ distinct: n.familyDistinct[family] })))]))
+    },
     subjects: rows.filter(n => !n.parent),
     areas: rows.filter(n => n.parent && nodes.get(n.parent).parent === null),
     parentFilings: rows.filter(n => n.children && n.directRaw).sort((a, b) => b.directDistinct - a.directDistinct || a.id.localeCompare(b.id)),
