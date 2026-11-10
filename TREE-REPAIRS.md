@@ -382,3 +382,35 @@ Read all 37 distinct isosceles cases, all 19 parallel-segment cases and the comp
 | 2022 AMC 12B, Problem 2 | `geo.poly.quad.para`, `geo.basic.pyth.triples` | `geo.poly.quad.para` |
 | 2021 Fall AMC 10A, Problem 7 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
 | 2021 Fall AMC 12A, Problem 6 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+
+## Integer square and power conditions
+
+Read all 27 distinct problems in the power-expression/factorable-equation union. Move the stable power-expression node from number-theory sequences to Diophantine equations, with Differences of squares and shifted square equations beneath it. This makes the actual broad/narrow relationship explicit and removes redundant parent labels. Keep genuine prime, digit and integer-length subjects; factorization alone no longer adds a second subject to divisor-pair questions. General factorable equations stay under Factoring and SFFT; Quadratic Diophantine equations houses binary quadratic forms, rather than miscalling them differences of squares. The two corrected strategies supply equality attainment for the 1991 minimum and distinguish root distances from roots in the 2014 parabola question. All answers are unchanged and the numerical claims were checked. No nodes or cards were deleted.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1991 AIME, Problem 15 | `alg.ineq.means.cs`, `nt.dio.factor.squares` | `alg.ineq.means.cs`, `nt.dio.factor.squares` (proof corrected) |
+| 1999 AIME, Problem 3 | `nt.seq.power.expr`, `nt.dio.factor.squares` | `nt.dio.factor.squares` |
+| 2000 AIME II, Problem 2 | `nt.dio.factor.squares`, `nt.divisor.count.tau` | `nt.dio.factor.squares` |
+| 2003 AIME I, Problem 7 | `geo.tri.cevian.stewart`, `nt.dio.factor.squares` | `geo.tri.special.isos`, `nt.dio.factor.squares` |
+| 2003 AIME II, Problem 10 | `nt.dio.factor.squares`, `nt.seq.power.expr` | `nt.dio.factor.squares` |
+| 2005 AIME I, Problem 4 | `nt.seq.power.expr`, `nt.dio.bound.size` | `nt.seq.power.expr` |
+| 2008 AIME II, Problem 15 | `nt.dio.squares.sums`, `nt.dio.factor.squares` | `nt.seq.power.expr` |
+| 2014 AIME I, Problem 6 | `alg.poly.quad.vertex`, `nt.dio.factor.squares` | `alg.poly.quad.vertex`, `alg.poly.introot` (proof corrected) |
+| 2015 AIME I, Problem 3 | `nt.prime.basic.expr`, `nt.dio.factor.squares` | `nt.prime.basic.expr`, `nt.seq.power.expr` |
+| 2017 AIME II, Problem 6 | `nt.seq.power.expr`, `nt.dio.factor.squares` | `nt.dio.factor.squares` |
+| 2022 AIME I, Problem 14 | `geo.tri.centers.lemmas`, `geo.tri.trig.cosines`, `nt.dio.factor.squares` | `geo.tri.centers.lemmas`, `geo.tri.trig.cosines`, `nt.dio.squares` |
+| 2023 AMC 10A, Problem 23 | `nt.dio.factor.squares`, `nt.divisor.count.pairs` | `nt.divisor.count.pairs` |
+| 2023 AMC 10B, Problem 14 | `nt.seq.power.expr`, `nt.dio.bound.size` | `nt.seq.power.expr` |
+| 2024 AMC 10A, Problem 11 | `nt.dio.factor.squares`, `nt.seq.power.expr` | `nt.dio.factor.squares` |
+| 2024 AMC 10A, Problem 15 | `nt.dio.factor.squares`, `nt.seq.power.expr` | `nt.dio.factor.squares` |
+| 2024 AMC 12A, Problem 9 | `nt.dio.factor.squares`, `nt.seq.power.expr` | `nt.dio.factor.squares` |
+| 2025 AIME I, Problem 4 | `nt.dio.factor.squares`, `nt.div.rules.count` | `nt.dio.factor` |
+| 2011 AMC 12B, Problem 21 | `nt.dio.factor.squares` | `nt.digit.sum.reverse`, `nt.dio.factor.squares` |
+| 2016 AMC 12B, Problem 10 | `geo.coord.line.dist`, `nt.dio.factor.squares` | `geo.poly.quad.rect`, `nt.dio.factor.squares` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `binary-quadratic-forms` | `nt.dio.factor.squares` | `nt.dio.squares` |

@@ -530,7 +530,7 @@ window.MATH_TOPIC_HOMES = {
   "pythagorean-triples": "nt.dio.squares.triples",
   "pell-equation": "nt.dio.squares.sums",
   "sum-of-two-squares": "nt.dio.squares.sums",
-  "binary-quadratic-forms": "nt.dio.factor.squares",
+  "binary-quadratic-forms": "nt.dio.squares",
   "thues-lemma": "nt.dio.squares.sums",
   "difference-of-squares-rep": "nt.dio.factor.squares",
   "sum-of-three-squares": "nt.dio.squares.sums",

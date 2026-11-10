@@ -2,6 +2,8 @@
 
 **2026-11-09**
 
+- Reviewed all 27 distinct power-expression/factorable-equation problems, nested shifted difference-of-squares equations under integer power conditions in Diophantine equations, repaired 19 raw filings/proofs and moved the binary-quadratic-forms home. Added the missing equality case for 1991 AIME #15 and corrected the root-distance notation in 2014 AIME I #6. Tree remains 471 nodes; all gates and answer-key checks pass.
+
 - **Settings preview fidelity and inline math:** each preview now inherits its real space colours, so the problem’s Show/Hide button matches Practice and lesson controls match Learn. The shared rich-text renderer protects comparisons inside LaTeX before HTML parsing, fixing the truncated tangent-circle paragraph without changing textbook content. Unit regression and browser comparisons in both themes pass; full gates pass. Tree work continues; textbooks and T4 remain paused.
 
 - **Tree repair: triangle families:** unified isosceles questions and moved right triangles/similar triangles under Triangles; parallel cuts are now a child of triangle similarity. Folding joins Transformations, moved out of coordinate-only geometry. Read complete isosceles, parallel-segment and current right-length pools; fixed incidental labels separately. Exact structural problem/home union comparisons passed for right triangles, similarity, transformations and Geometry. Tree now has 471 nodes. Gates, answer keys and tree regressions passed; textbooks/T4 remain paused.

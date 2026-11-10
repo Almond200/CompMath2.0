@@ -524,14 +524,15 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Splitting a modulus into prime powers `[nt.mod.crt.split]`
   - Quadratic residues and squares modulo small numbers `[nt.mod.qr]`
 - **Diophantine equations** `[nt.dio]`
+  - Integer square and power conditions `[nt.seq.power.expr]`
+    - Differences of squares and shifted square equations `[nt.dio.factor.squares]`
   - Linear Diophantine equations and the Frobenius problem `[nt.dio.linear]`
     - Solving $ax+by=c$ `[nt.dio.linear.solve]`
     - Counting solutions with positivity or bounds `[nt.dio.linear.count]`
     - Chicken McNugget and the Frobenius number `[nt.dio.linear.frob]`
   - Factoring and SFFT `[nt.dio.factor]`
     - Equations $xy+ax+by=c$ `[nt.dio.factor.sfft]`
-    - Difference of squares and other factorable forms `[nt.dio.factor.squares]`
-  - Pythagorean triples and sums of squares `[nt.dio.squares]`
+  - Quadratic Diophantine equations `[nt.dio.squares]`
     - Pythagorean triples `[nt.dio.squares.triples]`
     - Sums of two squares and Pell equations `[nt.dio.squares.sums]`
   - Bounding and parity arguments `[nt.dio.bound]`
@@ -552,7 +553,6 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
 - **Integer sequences and special numbers** `[nt.seq]`
   - Perfect squares, cubes and powers `[nt.seq.power]`
     - Perfect squares and squares between bounds `[nt.seq.power.squares]`
-    - Perfect powers and when an expression is a square `[nt.seq.power.expr]`
   - Special numbers `[nt.seq.special]`
     - Fibonacci and Lucas numbers `[nt.seq.special.fib]`
     - Triangular, figurate and palindromic numbers `[nt.seq.special.figurate]`
