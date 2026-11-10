@@ -568,3 +568,30 @@ Owner-requested follow-up after the concentration census. Read every statement a
 | 2022 AMC 12B, Problem 4 | `alg.poly.vieta.basic`, `nt.divisor.count.pairs` | `alg.poly.introot` |
 | 2000 AMC 10, Problem 24 | `alg.fn.basic.compose`, `alg.poly.vieta.basic` | `alg.fn.basic.compose` |
 | 2000 AMC 12, Problem 15 | `alg.fn.basic.compose`, `alg.poly.vieta.basic` | `alg.fn.basic.compose` |
+
+## Accuracy follow-up: all 62 similarity filings
+
+Read all 62 distinct statements and strategies, including the existing parallel-lines child. Most similarity labels describe a central configuration and survive. Fourteen direct-parent cases fit the existing parallel-line/midsegment child; the inscribed-rectangle area question also belongs there, with its rectangle subject rather than a Heron-method label. Remove the triangle label from the spatial cube shadow, the incidental Heron label from the bisector configuration, and the generic polygon-angle label from the equal-angle triangle. Similarity cards stay where earned. General right-angle AA configurations remain in the parent: sharing another shape label is not by itself an error.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2026 AMC 10A, Problem 3 | `geo.basic.sim.similar`, `geo.tri.ratio.area` | `geo.basic.sim.parallel`, `geo.tri.ratio.area` |
+| 2026 AMC 12A, Problem 2 | `geo.basic.sim.similar`, `geo.tri.ratio.area` | `geo.basic.sim.parallel`, `geo.tri.ratio.area` |
+| 1996 AIME, Problem 4 | `geo.solid.prism.box`, `geo.basic.sim.similar` | `geo.solid.prism.box` |
+| 1998 AIME, Problem 6 | `geo.basic.sim.similar`, `geo.poly.quad.para` | `geo.basic.sim.parallel`, `geo.poly.quad.para` |
+| 2008 AIME I, Problem 2 | `geo.poly.composite.overlap`, `geo.basic.sim.similar` | `geo.poly.composite.overlap`, `geo.basic.sim.parallel` |
+| 2008 AIME II, Problem 5 | `geo.poly.quad.trap`, `geo.basic.sim.similar` | `geo.poly.quad.trap`, `geo.basic.sim.parallel` |
+| 2015 AIME II, Problem 7 | `geo.basic.sim.similar`, `geo.tri.area.heron` | `geo.basic.sim.parallel`, `geo.poly.quad.rect` |
+| 2018 AIME II, Problem 7 | `geo.basic.sim.similar` | `geo.basic.sim.parallel` |
+| 2019 AIME II, Problem 1 | `geo.basic.sim.similar`, `geo.poly.composite.overlap` | `geo.basic.sim.parallel`, `geo.poly.composite.overlap` |
+| 2022 AIME II, Problem 11 | `geo.tri.cevian.bisector`, `geo.basic.sim.similar`, `geo.tri.area.heron` | `geo.tri.cevian.bisector`, `geo.basic.sim.similar` |
+| 2022 AMC 10A, Problem 13 | `geo.tri.cevian.bisector`, `geo.basic.sim.similar` | `geo.tri.cevian.bisector`, `geo.basic.sim.parallel` |
+| 2023 AIME II, Problem 3 | `geo.basic.sim.similar`, `geo.basic.angle.polygon` | `geo.basic.sim.similar` |
+| 2024 AIME II, Problem 5 | `geo.poly.general.irregular`, `geo.basic.sim.similar` | `geo.poly.general.irregular`, `geo.basic.sim.parallel` |
+| 2024 AMC 10B, Problem 10 | `geo.poly.quad.para`, `geo.tri.ratio.area`, `geo.basic.sim.similar` | `geo.poly.quad.para`, `geo.tri.ratio.area`, `geo.basic.sim.parallel` |
+| 2002 AMC 8, Problem 20 | `geo.basic.sim.similar`, `geo.tri.ratio.area` | `geo.basic.sim.parallel`, `geo.tri.ratio.area` |
+| 2007 AMC 10B, Problem 21 | `geo.basic.sim.similar` | `geo.basic.sim.parallel` |
+| 2021 Spring AMC 12B, Problem 11 | `geo.poly.quad.trap`, `geo.basic.sim.similar` | `geo.poly.quad.trap`, `geo.basic.sim.parallel` |
+| 2000 AMC 10, Problem 19 | `geo.basic.sim.similar` | `geo.basic.sim.parallel` |
+| 2000 AMC 12, Problem 21 | `geo.basic.sim.similar` | `geo.basic.sim.parallel` |
+| 2021 Fall AMC 10B, Problem 13 | `geo.basic.sim.similar`, `geo.tri.special.isos` | `geo.basic.sim.parallel`, `geo.tri.special.isos` |

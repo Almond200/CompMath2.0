@@ -2,6 +2,8 @@
 
 **2026-11-10**
 
+- **Concentration accuracy follow-up, similarity:** read all 62 distinct statements/strategies and corrected 20 raw filings. Most were missing the existing parallel-lines child; removed incidental cube-shadow, Heron and generic-angle labels. Cards remain earned and intact; node/card totals are unchanged. Gates and tree/answer-key checks pass.
+
 - **Concentration accuracy follow-up, root sums:** read all 60 distinct statements/strategies. Corrected 25 raw entries, removing intermediate-polynomial labels, using existing integer/transformed-root kinds and correcting the individual-root signs in 2020 AIME I #14 (answer unchanged). All cards and 459 nodes remain. Full gates and tree/answer-key regressions pass; the other three flagged pools are next.
 
 - **Tree finalization and final validation:** all six ranked audit batches are complete. TREE-FINALIZATION.md closes all 57 baseline sparse-leaf decisions: the final tree has 459 nodes, 28 areas, 316 leaves and no unused leaves; all 4,725 problems and 774 cards survive. The complete pre-pruning draft had 503 nodes. P64–P68 remain pending; TQ20 is implemented. Reconciled current handoffs while preserving historical audit counts. Full repository gates, the five app Node suites, card-text and all tree/audit regressions pass. Browser checks pass: 36 accessibility scenarios, four desktop/mobile theme combinations for Practice actions, icons/list menus and book search, plus both-theme Settings control comparisons. Six corrected strategies and the reported lesson render without JS/KaTeX errors or page overflow at 1280/375px; the experimental outline renders all 459 nodes. Screenshots of the corrected math and mobile answer border were inspected. Textbooks and T4 remain paused.
