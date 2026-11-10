@@ -78,3 +78,5 @@ $JSC tools/validate-problem-db.js
 - No chapter or lesson title names the AMC 10 or AMC 12: an advanced chapter is "Advanced counting", not "Counting for the AMC 12" (owner, 2026-11-01).
 - Card order has two values, Curated and Most used; do not bring back "By contest tier". Ramsey $R(3,3)=6$ was removed on purpose (2026-10-23).
 - LIVE's concept tags (`tools/live-cache/`) are hints for finding problems and gaps, never a source of tags or text.
+
+**Further accuracy review (2026-11-10):** the 43-distinct area/spatial pool is reviewed; 21 raw entries are repaired, the Heron tool leaf retired with both cards rehomed, and two incomplete proofs completed. Tree now 458 nodes. Right-triangle and progression controls follow; no textbooks or T4.

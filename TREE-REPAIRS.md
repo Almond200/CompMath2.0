@@ -622,3 +622,38 @@ Read both complete pools (one shared problem). Uniform numerical, point, subset,
 | 2022 AMC 12A, Problem 14 | `alg.exp.log.rules`, `alg.eq.identity.symmetric` | `alg.exp.log.rules` |
 | 2021 Fall AMC 10A, Problem 21 | `cp.prob.basic.count`, `cp.tech.stars.distinct` | `cp.prob.cond.indep`, `cp.tech.stars.distinct` |
 | 2021 Fall AMC 12A, Problem 18 | `cp.prob.basic.count`, `cp.tech.stars.distinct` | `cp.prob.cond.indep`, `cp.tech.stars.distinct` |
+
+## Further audit: area-formula and spatial-distance labels
+
+Read all 43 distinct problems in Heron, coordinate-area and spatial-distance pools. Retire the Heron formula leaf: all seven filings concern incircles, systems, isosceles triangles, quadrilaterals, trapezoids, a tetrahedron or shared-altitude area ratios. The Heron and 13-14-15 cards survive at Area of a triangle. Retain coordinate-area labels for stated coordinates, grids and coordinate-defined loci; remove them when coordinates were only the solver’s choice. Recover centroid/homothety and net-folding subjects. Retain most spatial-distance cofilings because distance between points, planes or centers is itself asked for; drop two where distances only compute a box/pyramid area. Prove the global acute-integer-triangle minimum in 2024 AMC 12A #24 rather than listing a few small triangles. Complete the uniqueness argument in 2021 Spring AMC 12B #14 using the factor pairs of 16, retaining its unchanged answer and adding the earned factorization card.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2026 AIME I, Problem 10 | `geo.coord.transform.rotate`, `geo.coord.area.shoelace` | `geo.coord.transform.rotate` |
+| 1999 AIME, Problem 12 | `geo.tri.radii.in`, `geo.tri.area.heron` | `geo.tri.radii.in` |
+| 2006 AIME II, Problem 15 | `geo.tri.area.heron`, `alg.eq.system.cyclic` | `alg.eq.system.cyclic` |
+| 2010 AIME II, Problem 12 | `geo.tri.special.isos`, `geo.tri.area.heron` | `geo.tri.special.isos` |
+| 2013 AIME I, Problem 7 | `geo.solid.prism.box`, `geo.solid.coord.dist` | `geo.solid.prism.box` |
+| 2017 AIME II, Problem 10 | `geo.coord.area.shoelace`, `geo.poly.quad.rect` | `geo.poly.quad.rect` |
+| 2018 AIME II, Problem 4 | `geo.poly.general.irregular`, `geo.coord.area.shoelace` | `geo.poly.general.irregular` |
+| 2018 AIME II, Problem 9 | `geo.coord.area.shoelace`, `geo.basic.sim.figures` | `geo.basic.sim.figures`, `geo.tri.cevian.median` |
+| 2018 AIME II, Problem 12 | `geo.poly.quad.general`, `geo.tri.area.heron` | `geo.poly.quad.general` |
+| 2021 AIME I, Problem 9 | `geo.poly.quad.trap`, `geo.tri.area.heron` | `geo.poly.quad.trap` |
+| 2024 AMC 12A, Problem 24 | `geo.solid.round.pyramid`, `geo.tri.area.heron` | `geo.solid.round.pyramid` (proof corrected) |
+| 2025 AIME II, Problem 1 | `geo.tri.area.heron`, `geo.tri.ratio.area` | `geo.tri.ratio.area` |
+| 2016 AMC 8, Problem 22 | `geo.coord.area.shoelace` | `geo.poly.composite.add` |
+| 2007 AMC 10A, Problem 18 | `geo.coord.area.shoelace` | `geo.poly.general.irregular` |
+| 2012 AMC 10B, Problem 19 | `geo.coord.area.shoelace` | `geo.poly.quad.rect` |
+| 2016 AMC 10A, Problem 21 | `geo.circ.tangent.common`, `geo.coord.area.shoelace` | `geo.circ.tangent.common` |
+| 2016 AMC 12A, Problem 15 | `geo.circ.tangent.common`, `geo.coord.area.shoelace` | `geo.circ.tangent.common` |
+| 2017 AMC 12B, Problem 24 | `geo.basic.sim.similar`, `geo.coord.area.shoelace` | `geo.basic.sim.similar` |
+| 2019 AMC 12B, Problem 18 | `geo.solid.coord.dist`, `geo.solid.round.pyramid` | `geo.solid.round.pyramid` |
+| 2021 Spring AMC 12B, Problem 14 | `geo.solid.round.pyramid`, `geo.solid.coord.dist` | `geo.solid.round.pyramid`, `geo.solid.coord.dist` (proof corrected) |
+| 2022 AMC 10A, Problem 21 | `geo.solid.coord.dist`, `geo.poly.regular.hex` | `geo.solid.poly.nets`, `geo.poly.regular.hex` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `herons-formula` | `geo.tri.area.heron` | `geo.tri.area` |
+| `triangle-13-14-15` | `geo.tri.area.heron` | `geo.tri.area` |

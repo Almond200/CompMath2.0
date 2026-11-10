@@ -271,7 +271,6 @@ window.MATH_TOPIC_TREE = [
   ["geo.tri", "Triangles", "geo"],
   ["geo.tri.area", "Area of a triangle", "geo.tri"],
   ["geo.tri.area.base", "Base and height", "geo.tri.area"],
-  ["geo.tri.area.heron", "Heron's formula", "geo.tri.area"],
   ["geo.tri.area.sine", "$\\tfrac12 ab\\sin C$", "geo.tri.area"],
   ["geo.tri.special", "Special triangles", "geo.tri"],
   ["geo.tri.special.equil", "Equilateral triangles", "geo.tri.special"],

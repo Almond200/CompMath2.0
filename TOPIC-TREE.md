@@ -353,7 +353,6 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
 - **Triangles** `[geo.tri]`
   - Area of a triangle `[geo.tri.area]`
     - Base and height `[geo.tri.area.base]`
-    - Heron's formula `[geo.tri.area.heron]`
     - $\tfrac12 ab\sin C$ `[geo.tri.area.sine]`
   - Special triangles `[geo.tri.special]`
     - Equilateral triangles `[geo.tri.special.equil]`

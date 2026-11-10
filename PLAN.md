@@ -114,3 +114,5 @@ The lab migration remains on hold. Lessons, chapters and books are in the main s
 - Helpers: `tools/learn-coverage.js` (the outline's coverage), `tools/add-cards.py`, `tools/add-to-list.py`, `tools/add-tag.js`, `tools/bump-versions.py --changed`, `tools/check-pages.js`, `tools/practice-scan.js`, `tools/show.js` (README, Structure).
 - LIVE's concept tags are in `tools/live-cache/`. Use them as hints only.
 - Plain writing goes ahead without asking. The owner is asked only about new cards, judgment calls in `QUESTIONS.md`, and real choices.
+
+**Further accuracy review (2026-11-10):** the 43-distinct area/spatial pool is reviewed; 21 raw entries are repaired, the Heron tool leaf retired with both cards rehomed, and two incomplete proofs completed. Tree now 458 nodes. Right-triangle and progression controls follow; no textbooks or T4.
