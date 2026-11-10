@@ -1,6 +1,6 @@
 # Topic tree
 
-**Status (2026-11-09):** T3 complete, all 4,725 problems filed. Owner-authorized semantic repairs now leave 472 nodes. All 774 cards survive; 740 have homes and 34 general methods do not. [TREE-REPAIRS.md](TREE-REPAIRS.md) is the current migration log. Counts in earlier review sections and test filings below are historical. T4 and textbooks remain paused.
+**Status (2026-11-09):** T3 complete, all 4,725 problems filed. Owner-authorized semantic repairs now leave 471 nodes. All 774 cards survive; 740 have homes and 34 general methods do not. [TREE-REPAIRS.md](TREE-REPAIRS.md) is the current migration log. Counts in earlier review sections and test filings below are historical. T4 and textbooks remain paused.
 
 **Execution handoff (owner, 2026-11-09):** T3 is complete. The latest request resumes tree work with a larger structural synthesis: [TREE-REVIEW.md](TREE-REVIEW.md) records the chosen area regroupings, targeted semantic reviews and stable-id ancestry prerequisite. Its census helper is `tools/tree-structure-report.cjs`. Stable-id ancestry support and the arithmetic/counting/number-theory area regroupings are applied below: 482 nodes, 28 areas and 337 leaves. All problem filings and card homes are preserved. The subsequent [TREE-AUDIT.md](TREE-AUDIT.md) ranks the remaining semantic pruning: category meanings, travel, probability, triangle families, overlapping labels and the sparse tail. The audit itself changes no filings. T4 and textbooks remain paused. PLAN.md holds the checkpoint and ownership; candidate and validation rules remain in force.
 
@@ -347,27 +347,24 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
 
 ### Geometry `[geo]`
 
-- **Lengths and angles** `[geo.basic]`
+- **Angles, similarity and transformations** `[geo.basic]`
   - Angle chasing `[geo.basic.angle]`
     - Parallel lines and transversals `[geo.basic.angle.parallel]`
     - Angles in triangles and polygons `[geo.basic.angle.polygon]`
-    - Isosceles triangles in angle chases `[geo.basic.angle.isosceles]`
-  - Pythagorean theorem and right triangles `[geo.basic.pyth]`
-    - Pythagorean theorem and triples `[geo.basic.pyth.triples]`
-    - Altitude to the hypotenuse `[geo.basic.pyth.altitude]`
-    - Folding and creases `[geo.basic.pyth.fold]`
   - Similarity and congruence `[geo.basic.sim]`
     - Congruence `[geo.basic.sim.congruent]`
-    - Similar triangles and ratios `[geo.basic.sim.similar]`
-    - Parallel lines and proportional segments `[geo.basic.sim.parallel]`
     - Similar figures and solids: length, area and volume ratios `[geo.basic.sim.figures]`
+  - Transformations `[geo.coord.transform]`
+    - Reflections `[geo.coord.transform.reflect]`
+    - Rotations `[geo.coord.transform.rotate]`
+    - Dilations and homothety `[geo.coord.transform.dilate]`
+    - Folding and creases `[geo.basic.pyth.fold]`
 - **Triangles** `[geo.tri]`
   - Area of a triangle `[geo.tri.area]`
     - Base and height `[geo.tri.area.base]`
     - Heron's formula `[geo.tri.area.heron]`
     - $\tfrac12 ab\sin C$ `[geo.tri.area.sine]`
   - Special triangles `[geo.tri.special]`
-    - 30-60-90 and 45-45-90 triangles `[geo.tri.special.right]`
     - Equilateral triangles `[geo.tri.special.equil]`
     - Isosceles triangles `[geo.tri.special.isos]`
   - Triangle inequality `[geo.tri.ineq]`
@@ -393,6 +390,12 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Orthocenter and altitudes `[geo.tri.centers.ortho]`
     - The Euler line and the nine-point circle `[geo.tri.centers.euler]`
     - Classical lemmas, isogonal conjugates and symmedians `[geo.tri.centers.lemmas]`
+  - Right triangles `[geo.basic.pyth]`
+    - Right-triangle lengths and integer triples `[geo.basic.pyth.triples]`
+    - Altitude to the hypotenuse `[geo.basic.pyth.altitude]`
+    - 30-60-90 and 45-45-90 triangles `[geo.tri.special.right]`
+  - Similar triangles and ratios `[geo.basic.sim.similar]`
+    - Triangles cut by parallel lines and midsegments `[geo.basic.sim.parallel]`
 - **Polygons** `[geo.poly]`
   - Quadrilaterals `[geo.poly.quad]`
     - Rectangles and squares `[geo.poly.quad.rect]`
@@ -444,10 +447,6 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Circles in the coordinate plane `[geo.coord.conic.circle]`
     - Parabolas `[geo.coord.conic.parabola]`
     - Ellipses and hyperbolas `[geo.coord.conic.ellipse]`
-  - Transformations `[geo.coord.transform]`
-    - Reflections `[geo.coord.transform.reflect]`
-    - Rotations `[geo.coord.transform.rotate]`
-    - Dilations and homothety `[geo.coord.transform.dilate]`
   - Complex numbers and vectors in geometry `[geo.coord.vector]`
     - Vectors and dot products `[geo.coord.vector.dot]`
     - Complex numbers as points `[geo.coord.vector.complex]`

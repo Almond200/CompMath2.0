@@ -2,6 +2,8 @@
 
 **2026-11-09**
 
+- **Tree repair: triangle families:** unified isosceles questions and moved right triangles/similar triangles under Triangles; parallel cuts are now a child of triangle similarity. Folding joins Transformations, moved out of coordinate-only geometry. Read complete isosceles, parallel-segment and current right-length pools; fixed incidental labels separately. Exact structural problem/home union comparisons passed for right triangles, similarity, transformations and Geometry. Tree now has 471 nodes. Gates, answer keys and tree regressions passed; textbooks/T4 remain paused.
+
 - **Tree repair: hidden right triangles:** read all 30 distinct entries; retired the technique leaf and refiled its cases by actual shape/problem kind. Right-triangle length questions remain together; boxes/squares, chords, circular regions, current and perimeter problems no longer acquire a triangle subject solely from using Pythagoras. Rehomed Shared-leg Pythagoras; preserved earned cards and reworded twins. Tree now has 472 nodes. Gates, answer keys and tree regressions passed; details in TREE-REPAIRS.md.
 
 - **Tree repair: probability complete:** applied the remaining decisions and recorded dispositions for all 89 distinct fallback entries. Specific draws/dice/coins/processes and conditional probability now use existing destinations; meaningful arrangement/symmetry/tiling subjects are retained, and finite numerical/point samples stay general. Strengthened the 2011 AMC 12B #25 proof with a centered-residue bound, verified over all 50 odd moduli. No new probability node or answer change. Gates, answer keys and tree regressions passed.

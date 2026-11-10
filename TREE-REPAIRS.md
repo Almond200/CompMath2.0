@@ -338,3 +338,47 @@ Every affected card survives:
 | Card | Previous home | Current home |
 |---|---|---|
 | `shared-leg-pythagoras` | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+
+## Geometry: unified triangle families
+
+Read all 37 distinct isosceles cases, all 19 parallel-segment cases and the complete current 30-entry right-triangle-length pool, in addition to the hidden-right review. Retired the duplicate isosceles-angle leaf into Isosceles triangles, removing incidental equal-radius/constructed-triangle labels from circle, trapezoid and rotation problems. Right triangles and Similar triangles now live under Triangles; parallel cuts/midsegments are a meaningful child of triangle similarity. Folding moves under Transformations, and Transformations moves out of coordinate-only geometry to Angles, similarity and transformations. General similarity of figures/solids remains separate. Rectangle/route questions and a folded-table question receive their actual subjects. The pure structural step exactly preserves the before/after problem and card-home unions for all three destination pools and the entire geometry subject; the separately listed semantic corrections intentionally change memberships. Stable ids survive moves; only the redundant isosceles-angle id is retired here.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1984 AIME, Problem 3 | `geo.basic.sim.parallel`, `geo.basic.sim.figures` | `geo.basic.sim.parallel` |
+| 1986 AIME, Problem 9 | `geo.basic.sim.parallel`, `geo.basic.sim.figures` | `geo.basic.sim.parallel` |
+| 1995 AIME, Problem 9 | `alg.trig.identity.sum`, `geo.tri.special.isos` | `geo.tri.special.isos` |
+| 2000 AIME I, Problem 14 | `geo.basic.angle.isosceles`, `geo.tri.trig.sines` | `geo.tri.special.isos`, `geo.tri.trig.sines` |
+| 2003 AIME I, Problem 10 | `geo.basic.angle.isosceles`, `geo.basic.sim.congruent` | `geo.tri.special.isos`, `geo.basic.sim.congruent` |
+| 2011 AIME I, Problem 4 | `geo.tri.cevian.bisector`, `geo.basic.sim.parallel` | `geo.tri.cevian.bisector` |
+| 2011 AIME I, Problem 8 | `geo.comb.extreme.maxmin`, `geo.basic.sim.parallel` | `geo.comb.extreme.maxmin`, `geo.basic.pyth.fold` |
+| 2012 AIME II, Problem 4 | `alg.word.rates.motion.stages`, `geo.basic.pyth.triples` | `alg.word.rates.motion.stages`, `geo.poly.quad.rect` |
+| 2014 AIME I, Problem 1 | `geo.basic.pyth.triples` | `geo.poly.general.perim` |
+| 2014 AIME II, Problem 3 | `geo.poly.composite.add`, `geo.tri.special.isos` | `geo.poly.composite.add` |
+| 2014 AIME II, Problem 11 | `geo.tri.special.right`, `geo.basic.sim.parallel` | `geo.tri.special.right` |
+| 2015 AIME I, Problem 6 | `geo.circ.inscribed.thm`, `geo.basic.angle.isosceles` | `geo.circ.inscribed.thm` |
+| 2015 AIME I, Problem 11 | `geo.tri.trig.other`, `geo.tri.special.isos` | `geo.tri.special.isos`, `geo.tri.radii.in` |
+| 2019 AIME II, Problem 1 | `geo.basic.sim.similar`, `geo.basic.pyth.triples` | `geo.basic.sim.similar`, `geo.poly.composite.overlap` |
+| 2020 AIME I, Problem 1 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2022 AIME I, Problem 3 | `geo.poly.quad.trap`, `geo.basic.angle.isosceles` | `geo.poly.quad.trap` |
+| 2023 AMC 10B, Problem 7 | `geo.basic.angle.isosceles`, `geo.coord.transform.rotate` | `geo.coord.transform.rotate` |
+| 2000 AMC 8, Problem 13 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2000 AMC 8, Problem 24 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2007 AMC 8, Problem 14 | `geo.tri.special.isos`, `geo.basic.pyth.triples` | `geo.tri.special.isos` |
+| 2009 AMC 8, Problem 19 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2014 AMC 8, Problem 9 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2003 AMC 10B, Problem 6 | `geo.basic.pyth.triples` | `geo.poly.quad.rect` |
+| 2003 AMC 12B, Problem 5 | `geo.basic.pyth.triples` | `geo.poly.quad.rect` |
+| 2007 AMC 10A, Problem 8 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2007 AMC 12A, Problem 6 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2008 AMC 10A, Problem 14 | `geo.basic.pyth.triples` | `geo.poly.quad.rect` |
+| 2008 AMC 12A, Problem 9 | `geo.basic.pyth.triples` | `geo.poly.quad.rect` |
+| 2008 AMC 10B, Problem 24 | `geo.basic.angle.isosceles`, `geo.tri.special.equil` | `geo.tri.special.isos` |
+| 2009 AMC 10B, Problem 9 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2015 AMC 10A, Problem 11 | `geo.basic.pyth.triples` | `geo.poly.quad.rect` |
+| 2015 AMC 12A, Problem 8 | `geo.basic.pyth.triples` | `geo.poly.quad.rect` |
+| 2019 AMC 10B, Problem 16 | `geo.basic.angle.isosceles`, `geo.basic.pyth.triples` | `geo.tri.special.isos`, `geo.basic.pyth.triples` |
+| 2022 AMC 10B, Problem 2 | `geo.poly.quad.para`, `geo.basic.pyth.triples` | `geo.poly.quad.para` |
+| 2022 AMC 12B, Problem 2 | `geo.poly.quad.para`, `geo.basic.pyth.triples` | `geo.poly.quad.para` |
+| 2021 Fall AMC 10A, Problem 7 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2021 Fall AMC 12A, Problem 6 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
