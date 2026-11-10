@@ -831,3 +831,51 @@ Every affected card survives:
 | Card | Previous home | Current home |
 |---|---|---|
 | `sfft` | `alg.eq.factor.sfft` | `alg.eq.factor` |
+
+## High-value audit 5: GCD/LCM and incidental common-divisor labels
+
+Read all 50 distinct GCD/LCM statements and strategies before migrating. Keep explicit gcd/lcm constraints and common-multiple archetypes; remove prime-factorization, PIE, CRT and valuation labels used only as solution tools. Refile fraction arithmetic, money, ratios, cycles, running laps, grid walks, modular reconstruction and shifted common remainders by their actual subjects. The coprime rational-factorization count keeps its coprimality condition and gains the factorization-count kind; use its earned exponent-tracking method. Recover the missing probability kind/card on the random LCM subset. Correct internal-plane versus endpoint counting in the solid diagonal proof and bound the finite exponent search for the LCM quadruple minimum. Answers and card homes remain unchanged. The separate divisor-count dispositions and full capacity report follow.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1987 AIME, Problem 7 | `nt.div.gcd.basic`, `nt.div.prime.factor` | `nt.div.gcd.basic` |
+| 1990 AIME, Problem 10 | `alg.cx.unity.sums`, `nt.div.gcd.basic` | `alg.cx.unity.sums` |
+| 1991 AIME, Problem 5 | `nt.div.prime.factor`, `nt.div.gcd.basic` | `nt.divisor.count.factor`, `nt.div.gcd.basic` |
+| 1995 AIME, Problem 8 | `nt.div.rules.count`, `nt.div.gcd.basic` | `nt.div.rules` |
+| 1996 AIME, Problem 14 | `geo.solid.prism.unit`, `nt.div.gcd.basic` | `geo.solid.prism.unit` (proof corrected) |
+| 2007 AIME I, Problem 4 | `alg.word.rates.motion.laps`, `nt.div.gcd.basic` | `alg.word.rates.motion.laps` |
+| 2015 AIME II, Problem 1 | `alg.word.ratio.percent`, `nt.div.gcd.basic` | `alg.word.ratio.percent` |
+| 2017 AIME I, Problem 2 | `nt.mod.basic.arith`, `nt.div.gcd.basic` | `nt.mod.basic.arith` |
+| 2020 AMC 10A, Problem 24 | `nt.mod.crt.system`, `nt.div.gcd.basic` | `nt.div.gcd.basic` |
+| 2022 AMC 10A, Problem 7 | `nt.div.gcd.basic`, `nt.div.prime.factor` | `nt.div.gcd.basic` |
+| 2023 AIME I, Problem 14 | `cp.struct.paths.walks`, `nt.div.gcd.basic` | `cp.struct.paths.walks` |
+| 2023 AMC 10B, Problem 18 | `nt.div.gcd.basic`, `nt.mod.basic.arith` | `nt.div.gcd.basic` |
+| 2023 AMC 12B, Problem 15 | `nt.div.gcd.basic`, `nt.mod.basic.arith` | `nt.div.gcd.basic` |
+| 2023 AMC 12B, Problem 24 | `nt.div.gcd.basic`, `nt.div.prime.factor` | `nt.div.gcd.basic` |
+| 2025 AIME II, Problem 7 | `cp.basic.comb.subsets`, `nt.div.gcd.basic` | `nt.div.gcd.basic`, `cp.prob.basic.count` |
+| 2025 AMC 10A, Problem 17 | `nt.div.gcd.basic`, `nt.mod.basic.arith` | `nt.mod.basic.arith` |
+| 1989 AJHSME, Problem 22 | `nt.div.gcd.basic`, `alg.seq.period.cycle` | `alg.seq.period.cycle` |
+| 1993 AJHSME, Problem 2 | `nt.div.gcd.basic` | `alg.word.compute.fraction` |
+| 2003 AMC 8, Problem 19 | `nt.div.rules.count`, `nt.div.gcd.basic` | `nt.div.rules.count` |
+| 2004 AMC 8, Problem 19 | `nt.div.gcd.basic` | `nt.mod.crt.system` |
+| 2009 AMC 8, Problem 11 | `nt.div.gcd.basic`, `alg.word.everyday.money` | `alg.word.everyday.money` |
+| 2012 AMC 8, Problem 13 | `nt.div.gcd.basic` | `alg.word.everyday.money` |
+| 2012 AMC 8, Problem 15 | `nt.div.gcd.basic` | `nt.mod.crt.system` |
+| 2017 AMC 8, Problem 12 | `nt.div.gcd.basic` | `nt.mod.crt.system` |
+| 2019 AMC 8, Problem 23 | `nt.div.gcd.basic` | `alg.word.ratio.prop` |
+| 2005 AMC 10A, Problem 22 | `nt.div.gcd.basic` | `nt.div.rules.count` |
+| 2010 AMC 10B, Problem 8 | `nt.div.gcd.basic` | `alg.word.everyday.money` |
+| 2010 AMC 12B, Problem 3 | `nt.div.gcd.basic` | `alg.word.everyday.money` |
+| 2012 AMC 10A, Problem 17 | `alg.eq.factor.special`, `nt.div.gcd.basic` | `nt.dio.factor` |
+| 2016 AMC 12B, Problem 24 | `nt.div.gcd.basic`, `cp.tech.pie.general` | `nt.div.gcd.basic` (proof corrected) |
+| 2017 AMC 10A, Problem 16 | `nt.div.gcd.basic` | `alg.word.rates.motion.laps` |
+| 2017 AMC 12A, Problem 12 | `nt.div.gcd.basic` | `alg.word.rates.motion.laps` |
+| 2019 AMC 10B, Problem 7 | `nt.div.gcd.basic` | `alg.word.everyday.money` |
+| 2019 AMC 12B, Problem 5 | `nt.div.gcd.basic` | `alg.word.everyday.money` |
+| 2020 AMC 10A, Problem 9 | `alg.word.ratio.prop`, `nt.div.gcd.basic` | `alg.word.ratio.prop` |
+| 2020 AMC 12A, Problem 21 | `nt.div.gcd.basic`, `nt.prime.val.legendre` | `nt.div.gcd.basic` |
+| 2022 AMC 12A, Problem 4 | `nt.div.gcd.basic`, `nt.div.prime.factor` | `nt.div.gcd.basic` |
+| 2022 AMC 12A, Problem 23 | `nt.div.gcd.basic`, `nt.prime.val` | `nt.div.gcd.basic`, `alg.seq.sum.other` |
+| 2021 Fall AMC 10B, Problem 3 | `alg.eq.factor.squares`, `nt.div.gcd.basic` | `alg.word.compute.fraction` |
+| 2021 Fall AMC 12A, Problem 8 | `nt.div.gcd.basic`, `nt.div.prime.factor` | `nt.div.gcd.basic` |
+| 2021 Fall AMC 12B, Problem 25 | `nt.mod.basic.arith`, `nt.div.gcd.basic` | `nt.mod.basic.arith` |

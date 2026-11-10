@@ -78,3 +78,5 @@ $JSC tools/validate-problem-db.js
 - No chapter or lesson title names the AMC 10 or AMC 12: an advanced chapter is "Advanced counting", not "Counting for the AMC 12" (owner, 2026-11-01).
 - Card order has two values, Curated and Most used; do not bring back "By contest tier". Ramsey $R(3,3)=6$ was removed on purpose (2026-10-23).
 - LIVE's concept tags (`tools/live-cache/`) are hints for finding problems and gaps, never a source of tags or text.
+
+**Focused audit 5 (2026-11-10), in progress:** read all 93 distinct problems / 104 entries across GCD/LCM and divisor counts. The first batch corrects 41 raw GCD/LCM entries, including two explanations; full gates pass. Divisor-count dispositions, a source age-assumption caveat, final capacity statistics and validation follow. Before these changes, leaves had median 12 problems (42/314 below five); internal topics had median 37 (109/111 at least ten). Textbooks and T4 remain paused.

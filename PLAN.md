@@ -114,3 +114,5 @@ The lab migration remains on hold. Lessons, chapters and books are in the main s
 - Helpers: `tools/learn-coverage.js` (the outline's coverage), `tools/add-cards.py`, `tools/add-to-list.py`, `tools/add-tag.js`, `tools/bump-versions.py --changed`, `tools/check-pages.js`, `tools/practice-scan.js`, `tools/show.js` (README, Structure).
 - LIVE's concept tags are in `tools/live-cache/`. Use them as hints only.
 - Plain writing goes ahead without asking. The owner is asked only about new cards, judgment calls in `QUESTIONS.md`, and real choices.
+
+**Focused audit 5 (2026-11-10), in progress:** read all 93 distinct problems / 104 entries across GCD/LCM and divisor counts. The first batch corrects 41 raw GCD/LCM entries, including two explanations; full gates pass. Divisor-count dispositions, a source age-assumption caveat, final capacity statistics and validation follow. Before these changes, leaves had median 12 problems (42/314 below five); internal topics had median 37 (109/111 at least ten). Textbooks and T4 remain paused.
