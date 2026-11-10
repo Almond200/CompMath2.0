@@ -1,6 +1,6 @@
 # Tree finalization after the full tagging pass
 
-2026-11-10. The subsequent owner-requested concentration check is complete in [TREE-ACCURACY.md](TREE-ACCURACY.md): 242 distinct problems read, 56 corrected. A further 77-problem targeted review is recorded in [TREE-ACCURACY-2.md](TREE-ACCURACY-2.md), including retirement of the Heron-method leaf and four proof repairs. [TREE-ACCURACY-3.md](TREE-ACCURACY-3.md) adds the 77-problem high-value-node review (34 corrections). Counts below include all three follow-ups. The requested audit implementation is complete for the present corpus. [TREE-REPAIRS.md](TREE-REPAIRS.md) records every changed problem, retired id and affected card home. [TREE-AUDIT.md](TREE-AUDIT.md) retains the pre-repair evidence; [TREE-REVIEW.md](TREE-REVIEW.md) retains the larger area decisions. T4 and textbook revision remain paused.
+2026-11-10. The subsequent owner-requested concentration check is complete in [TREE-ACCURACY.md](TREE-ACCURACY.md): 242 distinct problems read, 56 corrected. A further 77-problem targeted review is recorded in [TREE-ACCURACY-2.md](TREE-ACCURACY-2.md), including retirement of the Heron-method leaf and four proof repairs. [TREE-ACCURACY-3.md](TREE-ACCURACY-3.md) adds the 77-problem high-value-node review (34 corrections). [TREE-ACCURACY-4.md](TREE-ACCURACY-4.md) adds 115 distinct problems read and 53 corrected, with eight proof repairs and retirement of the Grouping into products technique leaf. Counts below include all four follow-ups. The requested audit implementation is complete for the present corpus. [TREE-REPAIRS.md](TREE-REPAIRS.md) records every changed problem, retired id and affected card home. [TREE-AUDIT.md](TREE-AUDIT.md) retains the pre-repair evidence; [TREE-REVIEW.md](TREE-REVIEW.md) retains the larger area decisions. T4 and textbook revision remain paused.
 
 ## Final census and decisions
 
@@ -8,23 +8,23 @@
 |---|---:|---:|
 | Filed problems | 4,725 | 4,725 |
 | Recognized distinct problems | 4,117 | 4,117 |
-| Nodes | 482 | 458 |
+| Nodes | 482 | 457 |
 | Areas | 28 | 28 |
-| Terminal leaves | 337 | 315 |
+| Terminal leaves | 337 | 314 |
 | Leaves with fewer than five distinct problems | 57 | 42 |
 | Unused leaves | 2 | 0 |
-| Distinct problems touching thin leaves | 145 | 111 |
-| Card homes on thin leaves | 140 | 115 |
+| Distinct problems touching thin leaves | 145 | 110 |
+| Card homes on thin leaves | 140 | 114 |
 | Cards with homes / general methods without | 740 / 34 | 739 / 35 |
-| Distinct problems filed directly on a parent | 56 | 104 |
+| Distinct problems filed directly on a parent | 56 | 106 |
 
-The original pre-pruning draft had 503 nodes; the full sequence removes 45 net nodes. All 774 cards survive. All 650 AMC 8, 350 AJHSME and ten HMMT problems remain filed and reviewed. The final label distribution is 3,399 problems with one label, 1,298 with two, and 28 with three. Twin equality and the absence of ancestor/descendant duplicate labels are enforced by the gate.
+The original pre-pruning draft had 503 nodes; the full sequence removes 46 net nodes. All 774 cards survive. All 650 AMC 8, 350 AJHSME and ten HMMT problems remain filed and reviewed. The final label distribution is 3,429 problems with one label, 1,274 with two, and 22 with three. Twin equality and the absence of ancestor/descendant duplicate labels are enforced by the gate.
 
 Keep the four subjects and 28 areas. Arithmetic is separated from applied quantities and statistics; counting separates arrangements, structures, coefficient/set counts, probability and discrete reasoning; divisibility, primes and divisors share an area. Right and similar triangles now sit with triangles; folding sits with transformations. Integer square/power conditions now sit in Diophantine equations, with shifted differences of squares beneath them. Extremal sets sit under constructions and bounds. Rotations/reflections form one pool regardless of whether a solution uses Burnside or direct orbit reasoning.
 
 The larger number of parent filings is intentional: removing a technique split puts genuine general equations, functions or polynomial questions at their subject parent. It is not a reason to restore method-only leaves. The final single-child branches all have direct problems or card homes; the empty power wrapper was removed.
 
-TQ20 is resolved and implemented as multi-stage journeys/stops after nine distinct reviewed examples. No other new archetype is warranted by this pass. P64–P68 remain pending card proposals, not blockers to these existing-node decisions. No new cards were silently created.
+TQ20 is resolved and implemented as multi-stage journeys/stops after nine distinct reviewed examples. No other new archetype is warranted by this pass. P64–P69 remain pending card proposals, not blockers to these existing-node decisions. No new cards were silently created.
 
 ## Every baseline sparse leaf
 
@@ -53,7 +53,7 @@ This table closes all 57 baseline review prompts, rather than treating low frequ
 | `cp.graph.basic.trees` | 2 | 2 | Retain: connectivity and disconnected-network bounds are graph properties, not a generic extremal technique. |
 | `geo.basic.sim.congruent` | 2 | 2 | Retain: congruence fixes scale and shape; similarity is a different condition. |
 | `geo.comb.count.dissect` | 2 | 2 | Retain: decomposing geometric figures is distinct from counting regions formed by intersecting lines. |
-| `geo.tri.centers.euler` | 2 | 2 | Retain: Euler-line/nine-point configurations remain distinct from incircle, centroid and circumcircle problems. |
+| `geo.tri.centers.euler` | 2 | 1 | Retain: Euler-line/nine-point configurations remain distinct from incircle, centroid and circumcircle problems. |
 | `alg.cx.unity.filter` | 3 | retired | Retire: both entries use the filter as a tool in probability; retain its card at Roots of unity. |
 | `alg.eq.radical.denest` | 3 | 3 | Retain: a nested quadratic radical has a precise form and domain constraints, unlike generic radical simplification. |
 | `alg.fn.basic.inverse` | 3 | 3 | Retain: inverse functions and involutions are distinct from composition or graph reading. |
@@ -74,7 +74,7 @@ This table closes all 57 baseline review prompts, rather than treating low frequ
 | `nt.seq.special.fib` | 3 | 3 | Retain: Fibonacci/Lucas divisibility and identities are a named integer-sequence family, not an arbitrary recurrence. |
 | `alg.fn.graph.rational` | 4 | 5 | Retain: now above the thin threshold after actual graph questions were recovered; asymptotes/holes are a coherent kind. |
 | `alg.fn.op.props` | 4 | 4 | Retain: testing algebraic laws for a defined operation differs from evaluating that operation. |
-| `alg.poly.construct.interp` | 4 | 8 | Retain: the prescribed-value/interpolation merger now supplies a larger coherent pool; value differences are not a competing leaf. |
+| `alg.poly.construct.interp` | 4 | 7 | Retain: the prescribed-value/interpolation merger now supplies a larger coherent pool; value differences are not a competing leaf. |
 | `alg.poly.remainder.values` | 4 | retired | Retire → Polynomial values, interpolation and finite differences; every card retained. |
 | `cp.binom.identity.hockey` | 4 | 4 | Retain: sums with changing binomial upper indices differ from a single fixed-row expansion. |
 | `cp.binom.identity.mod` | 4 | 4 | Retain: divisibility and residues of binomial coefficients are distinct from evaluating ordinary binomial sums. |
@@ -85,7 +85,7 @@ This table closes all 57 baseline review prompts, rather than treating low frequ
 | `geo.circ.cyclic.tangential` | 4 | 4 | Retain: an incircle tangent to four sides is a coherent configuration, including the reviewed maximum-radius problem. |
 | `geo.solid.prism.unit.views` | 4 | 4 | Retain: reconstructing/counting cubes from views is distinct from total surface area or volume. |
 | `geo.tri.cevian.ceva` | 4 | 4 | Retain: concurrency/collinearity constraints are distinct from computing an arbitrary cevian length. |
-| `geo.tri.trig.other` | 4 | 5 | Retain: triangle tangent/half-angle relations differ from sine-law and cosine-law subfamilies. |
+| `geo.tri.trig.other` | 4 | 6 | Retain: triangle tangent/half-angle relations differ from sine-law and cosine-law subfamilies. |
 | `nt.dio.linear.frob` | 4 | 4 | Retain: nonnegative representability and the largest unattainable amount differ from solving one linear equation. |
 | `nt.mod.cycle.power` | 4 | 4 | Retain: the periodicity of a fixed power sequence differs from general congruence calculations. |
 | `nt.seq.repr` | 4 | 4 | Retain: representation constraints and continued fractions are not ordinary recurrence evaluation. |

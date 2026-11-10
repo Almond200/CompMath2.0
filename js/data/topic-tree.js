@@ -45,7 +45,6 @@ window.MATH_TOPIC_TREE = [
   ["alg.eq.identity.recip", "Reciprocal expressions: $x+1/x$", "alg.eq.identity"],
   ["alg.eq.factor", "Factoring and clever factorizations", "alg.eq"],
   ["alg.eq.factor.squares", "Difference of squares and cubes", "alg.eq.factor"],
-  ["alg.eq.factor.sfft", "Grouping into products", "alg.eq.factor"],
   ["alg.eq.factor.special", "Sophie Germain and other special factorizations", "alg.eq.factor"],
   ["alg.eq.radical", "Radicals and nested expressions", "alg.eq"],
   ["alg.eq.radical.simplify", "Simplifying and rationalizing radicals", "alg.eq.radical"],

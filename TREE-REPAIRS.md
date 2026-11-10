@@ -794,3 +794,40 @@ Read the complete pool. Keep actual trig-expression identities and requested mul
 | 2022 AMC 12A, Problem 17 | `alg.trig.eq.solve`, `alg.trig.identity.sum` | `alg.trig.eq.solve` |
 | 2022 AMC 12B, Problem 14 | `alg.trig.identity.sum`, `alg.poly.quad.roots` | `geo.coord.line.slope` |
 | 2025 AMC 12B, Problem 16 | `alg.word.rates.clock`, `alg.trig.identity.sum` | `alg.word.rates.clock` |
+
+## High-value audit 4: all 19 power-of-a-point filings and Euler control
+
+Read all 19 circle filings. Most hold genuine chord/secant/tangent configurations and retain the power subject. Remove intermediate cosine-law labels and the parallelogram introduced only by median doubling. The incenter/circumcenter problem instead belongs under Inradius, circumradius and exradii: its Euler distance formula is not the Euler line. Rehome the Euler Distance card accordingly, preserving its content and every card. Read the remaining Euler-line leaf entry as a control: the nine-point-circle problem is genuine and stays. The auxiliary chord and excenter constructions in the radius problem remain on its method/card route rather than as extra subjects. No answer or strategy text changes in this batch.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2019 AIME I, Problem 13 | `geo.circ.proj`, `geo.circ.power.pop`, `geo.tri.trig.cosines` | `geo.circ.proj`, `geo.circ.power.pop` |
+| 2022 AIME I, Problem 11 | `geo.circ.power.pop`, `geo.poly.quad.para`, `geo.tri.trig.cosines` | `geo.circ.power.pop`, `geo.poly.quad.para` |
+| 2023 AIME II, Problem 12 | `geo.tri.cevian.median`, `geo.circ.power.pop`, `geo.poly.quad.para` | `geo.tri.cevian.median`, `geo.circ.power.pop` |
+| 2024 AIME I, Problem 10 | `geo.circ.power.pop`, `geo.circ.inscribed.chords`, `geo.tri.trig.cosines` | `geo.circ.power.pop`, `geo.circ.inscribed.chords` |
+| 2024 AIME II, Problem 10 | `geo.tri.centers.euler`, `geo.tri.centers.lemmas`, `geo.circ.power.pop` | `geo.tri.radii` |
+| 2021 Fall AMC 12B, Problem 24 | `geo.circ.power.pop`, `geo.basic.sim.similar`, `geo.tri.trig.cosines` | `geo.circ.power.pop`, `geo.basic.sim.similar` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `euler-distance-theorem` | `geo.tri.centers.euler` | `geo.tri.radii` |
+
+## Triggered sparse-leaf follow-through: Grouping into products
+
+Removing an incidental optimization label made Grouping into products newly thin. Read its remaining four distinct problems (five entries): expansion term count, logarithmic system, universal coefficient identity and real-valued minimum. In every case grouping is a solution tool, so file those actual subjects and retire the now-empty leaf. Preserve the SFFT method card at Factoring and clever factorizations; the separate integer xy+ax+by=c archetype remains. This is a bounded follow-through on a new audit signal, not a blanket retirement of factorization topics. All cards, solutions and answers survive.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1996 AIME, Problem 3 | `cp.binom.thm.coeff`, `alg.eq.factor.sfft` | `cp.binom.thm.coeff` |
+| 2000 AIME I, Problem 9 | `alg.exp.log.eq`, `alg.eq.factor.sfft` | `alg.exp.log.eq` |
+| 2002 AMC 10B, Problem 13 | `alg.eq.factor.sfft` | `alg.poly.construct.coeff` |
+| 2021 Spring AMC 10A, Problem 9 | `alg.eq.factor.sfft` | `alg.ineq.optimize` |
+| 2021 Spring AMC 12A, Problem 7 | `alg.eq.factor.sfft` | `alg.ineq.optimize` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `sfft` | `alg.eq.factor.sfft` | `alg.eq.factor` |

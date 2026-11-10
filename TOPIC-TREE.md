@@ -1,8 +1,8 @@
 # Topic tree
 
-**Status (2026-11-10):** T3 and requested tree finalization complete: 458 nodes, 28 areas, 315 leaves; all 4,725 problems filed and all 774 cards retained (739 homes, 35 general methods without). [TREE-FINALIZATION.md](TREE-FINALIZATION.md) records the final decisions; [TREE-REPAIRS.md](TREE-REPAIRS.md) records migrations. Earlier counts and test filings below are historical. T4 and textbooks remain paused.
+**Status (2026-11-10):** T3 and requested tree finalization complete: 457 nodes, 28 areas, 314 leaves; all 4,725 problems filed and all 774 cards retained (739 homes, 35 general methods without). [TREE-FINALIZATION.md](TREE-FINALIZATION.md) records the final decisions; [TREE-REPAIRS.md](TREE-REPAIRS.md) records migrations. [TREE-ACCURACY-4.md](TREE-ACCURACY-4.md) records the latest targeted review. Earlier counts and test filings below are historical. T4 and textbooks remain paused.
 
-**Execution handoff (owner, 2026-11-10):** all six TREE-AUDIT.md batches are implemented, including geometry, symmetry, probability and individual sparse-leaf decisions. There are no unused leaves or unresolved pruning decisions in the reviewed corpus. TQ20 is implemented; P64–P68 remain pending card proposals. Preserve stable ids and the recorded migration log. Await owner review; do not resume textbooks or T4.
+**Execution handoff (owner, 2026-11-10):** all six TREE-AUDIT.md batches are implemented, including geometry, symmetry, probability and individual sparse-leaf decisions. There are no unused leaves or unresolved pruning decisions in the reviewed corpus. TQ20 is implemented; P64–P69 remain pending card proposals. Preserve stable ids and the recorded migration log. Await owner review; do not resume textbooks or T4.
 
 ## Why
 
@@ -125,7 +125,6 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Reciprocal expressions: $x+1/x$ `[alg.eq.identity.recip]`
   - Factoring and clever factorizations `[alg.eq.factor]`
     - Difference of squares and cubes `[alg.eq.factor.squares]`
-    - Grouping into products `[alg.eq.factor.sfft]`
     - Sophie Germain and other special factorizations `[alg.eq.factor.special]`
   - Radicals and nested expressions `[alg.eq.radical]`
     - Simplifying and rationalizing radicals `[alg.eq.radical.simplify]`
