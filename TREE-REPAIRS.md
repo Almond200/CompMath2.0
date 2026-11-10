@@ -536,3 +536,35 @@ Every affected card survives:
 Final structural cleanup: retire the now-empty single-child wrapper `nt.seq.power` and promote `nt.seq.power.squares` to the Integer sequences area. The wrapper had no direct problems or card homes, so every problem and card set is unchanged. Other single-child branches have direct filings or homes and are retained.
 
 The quadrilateral proof also handles a potentially concave quadrilateral via its triangular convex hull: perimeter at most 42, inradius at most 21/√27 by Heron and AM–GM, below the attained 2√6. The two cards are cited for that explicit bound.
+
+## Accuracy follow-up: all 60 root-sum filings
+
+Owner-requested follow-up after the concentration census. Read every statement and strategy in the 60-distinct root-sum pool. Remove polynomial-root labels where a quadratic is an intermediate tool in a handshake, geometry, logarithm, exponential, absolute-value, composition or periodic-graph problem. Keep the Vieta cards when earned. Integer-root constraints and transformed roots move to the existing more specific leaves; the binary quadratic form belongs under Quadratic Diophantine equations rather than Sums of two squares. All other filings remain, including genuine polynomial-root expressions with complex or arithmetic restrictions. Correct the signs of the two individual companion roots in 2020 AIME I #14: they are 1/2 minus 3 and 1/2 minus 4, whose sum is -6. Its final answer 85 is unchanged.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2026 AMC 10A, Problem 13 | `cp.graph.basic.degree`, `alg.poly.vieta.basic` | `cp.graph.basic.degree` |
+| 2026 AIME I, Problem 6 | `alg.exp.log.eq`, `alg.poly.vieta.basic`, `nt.divisor.count.tau` | `alg.exp.log.eq`, `nt.divisor.count.tau` |
+| 1983 AIME, Problem 3 | `alg.eq.radical.eq`, `alg.poly.vieta.basic` | `alg.eq.radical.eq` |
+| 1991 AIME, Problem 7 | `alg.fn.basic.iterate`, `alg.poly.vieta.basic` | `alg.fn.basic.iterate` |
+| 1991 AIME, Problem 8 | `alg.poly.vieta.basic`, `alg.eq.factor.sfft` | `alg.poly.introot` |
+| 1995 AIME, Problem 2 | `alg.exp.log.eq`, `alg.poly.vieta.basic` | `alg.exp.log.eq` |
+| 2002 AIME II, Problem 15 | `geo.circ.tangent.inscribed`, `alg.poly.vieta.basic` | `geo.circ.tangent.inscribed` |
+| 2005 AIME I, Problem 8 | `alg.exp.rules.eq`, `alg.poly.vieta.basic` | `alg.exp.rules.eq` |
+| 2011 AIME I, Problem 15 | `alg.poly.vieta.basic`, `nt.dio.squares.sums` | `alg.poly.introot`, `nt.dio.squares` |
+| 2020 AIME I, Problem 14 | `alg.poly.vieta.basic`, `alg.fn.basic.compose` | `alg.poly.vieta.basic`, `alg.fn.basic.compose` (proof corrected) |
+| 2022 AMC 10A, Problem 16 | `alg.poly.vieta.basic`, `alg.poly.vieta.transform` | `alg.poly.vieta.transform` |
+| 2023 AMC 12A, Problem 19 | `alg.exp.log.eq`, `alg.poly.vieta.basic` | `alg.exp.log.eq` |
+| 2025 AIME I, Problem 11 | `alg.fn.graph.periodic`, `alg.poly.vieta.basic` | `alg.fn.graph.periodic` |
+| 2003 AMC 10A, Problem 5 | `alg.poly.vieta.basic` | `alg.poly.vieta.transform` |
+| 2006 AMC 10B, Problem 14 | `alg.poly.vieta.basic` | `alg.poly.vieta.transform` |
+| 2009 AMC 12A, Problem 14 | `geo.tri.ratio.area`, `alg.poly.vieta.basic` | `geo.tri.ratio.area` |
+| 2015 AMC 10A, Problem 23 | `alg.poly.vieta.basic`, `nt.dio.factor.sfft` | `alg.poly.introot` |
+| 2015 AMC 12A, Problem 18 | `alg.poly.vieta.basic`, `nt.dio.factor.sfft` | `alg.poly.introot` |
+| 2020 AMC 10A, Problem 5 | `alg.eq.abs.eq`, `alg.poly.vieta.basic` | `alg.eq.abs.eq` |
+| 2022 AMC 12A, Problem 15 | `alg.poly.vieta.basic`, `alg.poly.vieta.transform` | `alg.poly.vieta.transform` |
+| 2022 AMC 12A, Problem 22 | `alg.cx.polar.plane`, `alg.poly.vieta.basic`, `geo.poly.quad.trap` | `alg.cx.polar.plane`, `geo.poly.quad.trap` |
+| 2022 AMC 10B, Problem 7 | `alg.poly.vieta.basic`, `nt.divisor.count.pairs` | `alg.poly.introot` |
+| 2022 AMC 12B, Problem 4 | `alg.poly.vieta.basic`, `nt.divisor.count.pairs` | `alg.poly.introot` |
+| 2000 AMC 10, Problem 24 | `alg.fn.basic.compose`, `alg.poly.vieta.basic` | `alg.fn.basic.compose` |
+| 2000 AMC 12, Problem 15 | `alg.fn.basic.compose`, `alg.poly.vieta.basic` | `alg.fn.basic.compose` |
