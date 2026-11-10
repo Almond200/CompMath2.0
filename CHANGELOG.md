@@ -2,6 +2,8 @@
 
 **2026-11-09**
 
+- **Settings preview fidelity and inline math:** each preview now inherits its real space colours, so the problem’s Show/Hide button matches Practice and lesson controls match Learn. The shared rich-text renderer protects comparisons inside LaTeX before HTML parsing, fixing the truncated tangent-circle paragraph without changing textbook content. Unit regression and browser comparisons in both themes pass; full gates pass. Tree work continues; textbooks and T4 remain paused.
+
 - **Tree repair: triangle families:** unified isosceles questions and moved right triangles/similar triangles under Triangles; parallel cuts are now a child of triangle similarity. Folding joins Transformations, moved out of coordinate-only geometry. Read complete isosceles, parallel-segment and current right-length pools; fixed incidental labels separately. Exact structural problem/home union comparisons passed for right triangles, similarity, transformations and Geometry. Tree now has 471 nodes. Gates, answer keys and tree regressions passed; textbooks/T4 remain paused.
 
 - **Tree repair: hidden right triangles:** read all 30 distinct entries; retired the technique leaf and refiled its cases by actual shape/problem kind. Right-triangle length questions remain together; boxes/squares, chords, circular regions, current and perimeter problems no longer acquire a triangle subject solely from using Pythagoras. Rehomed Shared-leg Pythagoras; preserved earned cards and reworded twins. Tree now has 472 nodes. Gates, answer keys and tree regressions passed; details in TREE-REPAIRS.md.
