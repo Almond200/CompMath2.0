@@ -454,3 +454,34 @@ Every affected card survives:
 |---|---|---|
 | `dilworths-theorem` | `cp.logic.pigeon.extremal` | `cp.graph.sets` |
 | `extremal-principle` | `cp.logic.pigeon.extremal` | `None` |
+
+## One symmetry pool, distinguished by problem rather than solution tool
+
+Read the entire current pool: 15 distinct problems (the original 13 plus two moved during the probability review). Merge the necklace/rotation and Burnside leaves into the stable parent, renamed Rotations, reflections and symmetry conditions. It covers equivalence classes and prescribed invariance; the cards still distinguish Burnside, orbit reasoning and direct enumeration. Every old descendant filing survives at that parent and all three affected reference cards retain a home. The cube-labeling solution now prints the three valid neighbor triples and the face equations behind its finite check; exhaustive enumeration of all 35 triples verifies them. No answer changed.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1996 AIME, Problem 7 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2006 AIME II, Problem 8 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2013 AIME I, Problem 4 | `cp.tech.sym.necklace`, `cp.prob.basic.count` | `cp.tech.sym`, `cp.prob.basic.count` |
+| 2017 AMC 10B, Problem 18 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2024 AIME I, Problem 11 | `cp.prob.basic.count`, `cp.tech.sym.necklace` | `cp.prob.basic.count`, `cp.tech.sym` |
+| 2003 AMC 12B, Problem 10 | `cp.tech.sym.necklace` | `cp.tech.sym` |
+| 2007 AMC 12B, Problem 16 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2010 AMC 12A, Problem 25 | `cp.tech.sym.burnside`, `cp.tech.stars.bounds` | `cp.tech.sym`, `cp.tech.stars.bounds` |
+| 2016 AMC 10A, Problem 18 | `cp.tech.sym.necklace` | `cp.tech.sym` (proof corrected) |
+| 2016 AMC 12A, Problem 14 | `cp.tech.sym.necklace` | `cp.tech.sym` (proof corrected) |
+| 2017 AMC 12B, Problem 13 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2018 AMC 10A, Problem 20 | `cp.tech.sym.necklace` | `cp.tech.sym` |
+| 2018 AMC 12A, Problem 15 | `cp.tech.sym.necklace` | `cp.tech.sym` |
+| 2000 AMC 12, Problem 25 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2021 Fall AMC 10B, Problem 24 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2021 Fall AMC 12B, Problem 20 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `necklace-formula` | `cp.tech.sym.necklace` | `cp.tech.sym` |
+| `burnsides-lemma` | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| `polya-enumeration` | `cp.tech.sym.burnside` | `cp.tech.sym` |
