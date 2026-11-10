@@ -595,3 +595,30 @@ Read all 62 distinct statements and strategies, including the existing parallel-
 | 2000 AMC 10, Problem 19 | `geo.basic.sim.similar` | `geo.basic.sim.parallel` |
 | 2000 AMC 12, Problem 21 | `geo.basic.sim.similar` | `geo.basic.sim.parallel` |
 | 2021 Fall AMC 10B, Problem 13 | `geo.basic.sim.similar`, `geo.tri.special.isos` | `geo.basic.sim.parallel`, `geo.tri.special.isos` |
+
+## Accuracy follow-up: all 71 finite-probability and 50 log-rule filings
+
+Read both complete pools (one shared problem). Uniform numerical, point, subset, seating and arrangement samples legitimately retain General finite probability models. Six repeated independent-trial models move to Independent events; three explicit bag/sock/card draws move to the sampling kind. The license-plate event also gains its actual digit-string subject. Most logarithm cofilings are genuine: logarithmic lengths, domains, progression conditions and requested logarithmic expressions are part of the statements. Two floor questions lose incidental log labels; two explicit logarithmic equation/system questions move to that existing specific kind. The log expression loses a solution-only symmetric-identity label, and the real-expression question gets its domain subject rather than the transformed rational-inequality tool. The zigzag length problem belongs to rectangle geometry and triangle trigonometry (projection by cosine), rather than a similarity configuration. All earned card tags remain. No nodes, card homes, answers or source statements change.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1996 AIME, Problem 2 | `alg.fn.floor.eq`, `alg.exp.log.rules` | `alg.fn.floor.eq` |
+| 2005 AIME I, Problem 9 | `cp.prob.basic.count`, `geo.solid.prism.unit.paint` | `cp.prob.cond.indep`, `geo.solid.prism.unit.paint` |
+| 2007 AIME I, Problem 7 | `alg.exp.log.rules`, `alg.fn.floor.sum` | `alg.fn.floor.sum` |
+| 2008 AIME I, Problem 9 | `cp.prob.basic.count`, `cp.basic.perm.repeat` | `cp.prob.cond.indep`, `cp.basic.perm.repeat` |
+| 2010 AIME II, Problem 5 | `alg.eq.identity.symmetric`, `alg.exp.log.rules` | `alg.exp.log.eq` |
+| 2023 AMC 10B, Problem 21 | `cp.prob.basic.count`, `cp.tech.stars.distinct` | `cp.prob.cond.indep`, `cp.tech.stars.distinct` |
+| 2023 AMC 12A, Problem 15 | `geo.basic.sim.similar`, `geo.poly.quad.rect` | `geo.poly.quad.rect`, `geo.tri.trig.other` |
+| 2023 AMC 12B, Problem 7 | `alg.exp.log.rules`, `alg.ineq.solve.rational` | `alg.exp.log.rules`, `alg.fn.graph.domain` |
+| 2023 AMC 12B, Problem 19 | `cp.prob.basic.count`, `cp.tech.stars.distinct` | `cp.prob.cond.indep`, `cp.tech.stars.distinct` |
+| 1990 AJHSME, Problem 14 | `cp.prob.basic.count` | `cp.prob.dice.draw` |
+| 2015 AMC 8, Problem 11 | `cp.prob.basic.count` | `cp.prob.basic.count`, `cp.struct.words.digits` |
+| 2020 AMC 8, Problem 13 | `cp.prob.basic.count` | `cp.prob.dice.draw` |
+| 2023 AMC 8, Problem 23 | `cp.prob.basic.count`, `cp.struct.tile.tiling` | `cp.prob.cond.indep`, `cp.struct.tile.tiling` |
+| 2009 AMC 10B, Problem 25 | `cp.prob.basic.count` | `cp.prob.cond.indep` |
+| 2009 AMC 12B, Problem 17 | `cp.prob.basic.count` | `cp.prob.cond.indep` |
+| 2019 AMC 12A, Problem 12 | `alg.exp.log.rules` | `alg.exp.log.eq` |
+| 2021 Spring AMC 12A, Problem 6 | `cp.prob.basic.count` | `cp.prob.dice.draw` |
+| 2022 AMC 12A, Problem 14 | `alg.exp.log.rules`, `alg.eq.identity.symmetric` | `alg.exp.log.rules` |
+| 2021 Fall AMC 10A, Problem 21 | `cp.prob.basic.count`, `cp.tech.stars.distinct` | `cp.prob.cond.indep`, `cp.tech.stars.distinct` |
+| 2021 Fall AMC 12A, Problem 18 | `cp.prob.basic.count`, `cp.tech.stars.distinct` | `cp.prob.cond.indep`, `cp.tech.stars.distinct` |

@@ -2,6 +2,8 @@
 
 **2026-11-10**
 
+- **Common-label accuracy review complete:** read all 242 distinct problems (269 entries) across similarity, general finite probability, root sums and log rules, plus the lone Casework control. Corrected 56 distinct / 65 raw entries across three batches. Counts: similarity 62→60 (direct parent 46→29; parallel child 16→31), finite probability 71→62, root sums 60→40, log rules 50→46. The final combined batch corrects 20 raw entries. TREE-ACCURACY.md records every retained/changed entry. No nodes, card homes, statements or answers change. Exactly verified the companion roots in the sole strategy-text correction. Full gates, answer keys and tree/audit regressions pass; all 4,725 filings and 774 cards survive. Current thin leaves: 42, none unused. Textbooks and T4 remain paused.
+
 - **Concentration accuracy follow-up, similarity:** read all 62 distinct statements/strategies and corrected 20 raw filings. Most were missing the existing parallel-lines child; removed incidental cube-shadow, Heron and generic-angle labels. Cards remain earned and intact; node/card totals are unchanged. Gates and tree/answer-key checks pass.
 
 - **Concentration accuracy follow-up, root sums:** read all 60 distinct statements/strategies. Corrected 25 raw entries, removing intermediate-polynomial labels, using existing integer/transformed-root kinds and correcting the individual-root signs in 2020 AIME I #14 (answer unchanged). All cards and 459 nodes remain. Full gates and tree/answer-key regressions pass; the other three flagged pools are next.
