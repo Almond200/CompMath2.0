@@ -657,3 +657,20 @@ Every affected card survives:
 |---|---|---|
 | `herons-formula` | `geo.tri.area.heron` | `geo.tri.area` |
 | `triangle-13-14-15` | `geo.tri.area.heron` | `geo.tri.area` |
+
+## Further audit controls: right triangles, mixed progressions and radical products
+
+Read all 22 right-triangle-length filings, all nine AP/GP overlaps and the three factor/radical overlaps. The right-triangle pool largely holds genuine configurations; remove the trig-angle question and incidental area/SFFT companions. All nine AP/GP cofilings are legitimate because both progression conditions occur in their statements. Correct two incomplete strategies that assumed integer common ratios: 2022 AMC 10A #20 now uses the square condition (c-b)^2=28b and positive arithmetic terms; 2010 AMC 10B #24 now enumerates all four reduced rational ratios permitted by the score cap. Exhaustive exact rational checks verify both unchanged answers (206 and 34). The basketball route earns the existing AP/GP cards. Three radical products lose the factorization-tool label while retaining their factorization cards. The scanner-required LaTeX comparison spelling in the rewritten disphenoid proof is corrected; final gates are rerun.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1986 AIME, Problem 2 | `alg.eq.factor.squares`, `alg.eq.radical.simplify` | `alg.eq.radical.simplify` |
+| 2005 AIME II, Problem 7 | `alg.eq.radical.simplify`, `alg.eq.factor.squares` | `alg.eq.radical.simplify` |
+| 2024 AMC 12A, Problem 10 | `alg.trig.identity.sum`, `geo.basic.pyth.triples` | `alg.trig.identity.sum` |
+| 2024 AMC 12A, Problem 24 | `geo.solid.round.pyramid` | `geo.solid.round.pyramid` (proof corrected) |
+| 1999 AMC 8, Problem 23 | `geo.tri.area.base`, `geo.basic.pyth.triples` | `geo.basic.pyth.triples` |
+| 2007 AMC 12B, Problem 23 | `nt.dio.factor.sfft`, `geo.basic.pyth.triples` | `geo.basic.pyth.triples` |
+| 2010 AMC 10B, Problem 24 | `alg.seq.ap.geom`, `alg.seq.ap.arith` | `alg.seq.ap.geom`, `alg.seq.ap.arith` (proof corrected) |
+| 2010 AMC 12B, Problem 19 | `alg.seq.ap.geom`, `alg.seq.ap.arith` | `alg.seq.ap.geom`, `alg.seq.ap.arith` (proof corrected) |
+| 2022 AMC 10A, Problem 20 | `alg.seq.ap.geom`, `alg.seq.ap.arith` | `alg.seq.ap.geom`, `alg.seq.ap.arith` (proof corrected) |
+| 2022 AMC 10B, Problem 5 | `alg.eq.factor.squares`, `alg.eq.radical.simplify` | `alg.eq.radical.simplify` |

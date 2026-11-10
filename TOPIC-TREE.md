@@ -1,6 +1,6 @@
 # Topic tree
 
-**Status (2026-11-10):** T3 and requested tree finalization complete: 459 nodes, 28 areas, 316 leaves; all 4,725 problems filed and all 774 cards retained (739 homes, 35 general methods without). [TREE-FINALIZATION.md](TREE-FINALIZATION.md) records the final decisions; [TREE-REPAIRS.md](TREE-REPAIRS.md) records migrations. Earlier counts and test filings below are historical. T4 and textbooks remain paused.
+**Status (2026-11-10):** T3 and requested tree finalization complete: 458 nodes, 28 areas, 315 leaves; all 4,725 problems filed and all 774 cards retained (739 homes, 35 general methods without). [TREE-FINALIZATION.md](TREE-FINALIZATION.md) records the final decisions; [TREE-REPAIRS.md](TREE-REPAIRS.md) records migrations. Earlier counts and test filings below are historical. T4 and textbooks remain paused.
 
 **Execution handoff (owner, 2026-11-10):** all six TREE-AUDIT.md batches are implemented, including geometry, symmetry, probability and individual sparse-leaf decisions. There are no unused leaves or unresolved pruning decisions in the reviewed corpus. TQ20 is implemented; P64–P68 remain pending card proposals. Preserve stable ids and the recorded migration log. Await owner review; do not resume textbooks or T4.
 
@@ -70,6 +70,8 @@ After the full-corpus synthesis in TREE-REVIEW.md, the owner asked to continue. 
 Retired empty wrappers: `alg.word` (children distributed among `alg.arithmetic`, `alg.applied` and promoted `alg.word.stats`), `alg.word.units` (conversion under arithmetic, calendars under applied quantities), `cp.tech` and `cp.struct` (children distributed among the five counting areas), `nt.divisor` and `nt.prime` (children moved under `nt.div`). Only `alg.arithmetic` and `alg.applied` are new ids. Existing area ids are retained and renamed where their scope expands; `cp.exp` becomes a topic under Probability and expectation. No retired id had a direct filing or card home; none may be reused.
 
 This changes 486 nodes to 482 and 31 areas to 28, preserving all 337 leaves. The builder, gate and audit now follow explicit parents rather than inferring ancestry from id prefixes; regression checks enforce valid moves, roots, cycles, subjects, depth and nonredundant filings. The experimental viewer already derives its hierarchy from indentation. The later geometry and semantic leaf pruning are complete in TREE-REPAIRS.md.
+
+Further targeted reviews: [TREE-ACCURACY.md](TREE-ACCURACY.md) records the four common-label pools; [TREE-ACCURACY-2.md](TREE-ACCURACY-2.md) records area/spatial/right-triangle and progression controls. Heron is retired as a problem kind; its cards survive at Triangle area.
 
 ## Semantic repairs (owner-authorized)
 
