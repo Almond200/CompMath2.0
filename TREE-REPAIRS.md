@@ -160,3 +160,181 @@ Read all 89 distinct entries before changing the fallback. This first batch cove
 | 2008 AMC 8, Problem 24 | `cp.prob.basic.count` | `cp.prob.dice.dice` |
 | 2011 AMC 8, Problem 12 | `cp.prob.basic.count` | `cp.prob.basic.count`, `cp.struct.seat.circle` |
 | 2013 AMC 8, Problem 14 | `cp.prob.basic.count` | `cp.prob.dice.draw` |
+
+## Probability review, remaining cases
+
+Applied the remaining existing-category decisions after reading the full pool. Explicit dice, coins, draws and path/state processes now use their specific probability kinds. Added missing arrangement, symmetry, tiling and prime subjects only where the statement itself imposes those conditions. The lottery question is conditional on the winning ticket satisfying the stated log constraint. Replaced an unsupported smaller-moduli check in 2011 AMC 12B #25 with the centered-residue formula and a uniform bound; exhaustive enumeration of all 50 odd moduli confirms the same minimum 34/67. Kept arbitrary numerical pairs, spinners, grid-point samples and inverse bag-composition questions in the general finite pool; no continuous-probability label was inferred from a drawing. No recurring missing kind required a new node.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2017 AMC 8, Problem 10 | `cp.prob.basic.count` | `cp.prob.dice.draw` |
+| 2018 AMC 8, Problem 11 | `cp.prob.basic.count` | `cp.prob.basic.count`, `cp.basic.perm.restrict` |
+| 2019 AMC 8, Problem 6 | `cp.prob.basic.count` | `cp.prob.basic.count`, `geo.coord.transform.reflect` |
+| 2023 AMC 8, Problem 23 | `cp.prob.basic.count` | `cp.prob.basic.count`, `cp.struct.tile.tiling` |
+| 2003 AMC 12B, Problem 19 | `cp.prob.basic.count` | `cp.prob.basic.count`, `cp.basic.perm.restrict` |
+| 2005 AMC 10A, Problem 9 | `cp.prob.basic.count` | `cp.prob.basic.count`, `cp.basic.perm.repeat` |
+| 2005 AMC 12A, Problem 14 | `cp.prob.basic.count` | `cp.prob.dice.dice` |
+| 2005 AMC 10B, Problem 21 | `cp.prob.basic.count` | `cp.prob.dice.draw` |
+| 2005 AMC 12B, Problem 25 | `cp.prob.basic.count` | `cp.prob.process.steps` |
+| 2006 AMC 10A, Problem 25 | `cp.graph.basic.paths`, `cp.prob.basic.count` | `cp.prob.process.walk` |
+| 2006 AMC 12A, Problem 20 | `cp.graph.basic.paths`, `cp.prob.basic.count` | `cp.prob.process.walk` |
+| 2010 AMC 10A, Problem 18 | `cp.prob.basic.count` | `cp.prob.dice.draw` |
+| 2010 AMC 12A, Problem 16 | `cp.prob.basic.count` | `cp.prob.dice.draw` |
+| 2011 AMC 12B, Problem 25 | `alg.fn.floor.eq`, `cp.prob.basic.count` | `alg.fn.floor.eq`, `cp.prob.basic.count` (proof corrected) |
+| 2012 AMC 10A, Problem 20 | `cp.prob.basic.count` | `cp.prob.basic.count`, `cp.tech.sym` |
+| 2012 AMC 12A, Problem 15 | `cp.prob.basic.count` | `cp.prob.basic.count`, `cp.tech.sym` |
+| 2013 AMC 10B, Problem 12 | `cp.prob.basic.count` | `cp.prob.dice.draw` |
+| 2015 AMC 10A, Problem 22 | `cp.struct.words.forbidden`, `cp.prob.basic.count` | `cp.struct.words.forbidden`, `cp.prob.dice.coins` |
+| 2015 AMC 12A, Problem 17 | `cp.struct.words.forbidden`, `cp.prob.basic.count` | `cp.struct.words.forbidden`, `cp.prob.dice.coins` |
+| 2015 AMC 10B, Problem 11 | `cp.prob.basic.count` | `cp.prob.basic.count`, `nt.prime.basic.test` |
+| 2016 AMC 10A, Problem 17 | `cp.prob.basic.count` | `cp.prob.basic.count`, `cp.basic.perm.repeat` |
+| 2016 AMC 12A, Problem 13 | `cp.prob.basic.count` | `cp.prob.basic.count`, `cp.basic.perm.repeat` |
+| 2020 AMC 12B, Problem 20 | `cp.struct.tile.color`, `cp.prob.basic.count` | `cp.prob.basic.count`, `cp.tech.sym` |
+| 2000 AMC 12, Problem 23 | `cp.prob.basic.count`, `alg.exp.log.rules` | `cp.prob.cond.bayes`, `alg.exp.log.rules` |
+| 2021 Fall AMC 10A, Problem 21 | `cp.prob.basic.count`, `cp.basic.perm.repeat` | `cp.prob.basic.count`, `cp.tech.stars.distinct` |
+| 2021 Fall AMC 12A, Problem 18 | `cp.prob.basic.count`, `cp.basic.perm.repeat` | `cp.prob.basic.count`, `cp.tech.stars.distinct` |
+
+### Complete finite-probability disposition register
+
+All 89 recognized distinct fallback entries were read. “Retain” includes genuinely cross-filed finite-space models; a repeated random arrangement is already described by its counting subject and does not require a second probability taxonomy. Sampling/dealing categories use the existing draw leaf, while finite numerical/point-location sample spaces can remain general. No missing kind is being silently deferred.
+
+| Read problem | Disposition |
+|---|---|
+| 2026 AMC 10A, Problem 21 | Retain general finite model |
+| 1984 AIME, Problem 11 | Retain general finite model |
+| 1987 AIME, Problem 13 | Retain general finite model |
+| 1988 AIME, Problem 5 | Retain general finite model |
+| 1993 AIME, Problem 7 | Specific existing probability destination |
+| 1997 AIME, Problem 14 | Retain general finite model |
+| 1998 AIME, Problem 4 | Specific existing probability destination |
+| 1999 AIME, Problem 10 | Retain general finite model |
+| 2001 AIME I, Problem 10 | Retain general finite model |
+| 2001 AIME I, Problem 15 | Retain general finite model |
+| 2002 AIME I, Problem 1 | Retain general finite model |
+| 2004 AIME II, Problem 10 | Retain general finite model |
+| 2005 AIME I, Problem 9 | Retain general finite model |
+| 2007 AIME II, Problem 10 | Retain general finite model |
+| 2008 AIME I, Problem 9 | Retain general finite model |
+| 2010 AIME I, Problem 1 | Specific existing probability destination |
+| 2010 AIME II, Problem 4 | Retain general finite model |
+| 2011 AIME I, Problem 10 | Retain general finite model |
+| 2013 AIME I, Problem 4 | Retain general finite model |
+| 2013 AIME I, Problem 6 | Specific existing probability destination / proof clarified |
+| 2014 AIME I, Problem 12 | Retain general finite model |
+| 2015 AIME I, Problem 2 | Specific existing probability destination |
+| 2015 AIME II, Problem 5 | Retain general finite model |
+| 2018 AIME I, Problem 3 | Specific existing probability destination |
+| 2019 AIME I, Problem 2 | Retain general finite model |
+| 2020 AIME I, Problem 9 | Retain finite model; refine its subject |
+| 2021 Spring AMC 10B, Problem 22 | Retain general finite model |
+| 2022 AIME I, Problem 9 | Retain general finite model |
+| 2023 AIME I, Problem 1 | Retain general finite model |
+| 2023 AMC 10A, Problem 25 | Retain general finite model |
+| 2023 AMC 10B, Problem 21 | Retain finite model; refine its subject |
+| 2024 AIME I, Problem 11 | Retain general finite model |
+| 2024 AMC 10A, Problem 24 | Specific existing probability destination |
+| 2024 AMC 12A, Problem 16 | Specific existing probability destination |
+| 2024 AMC 12B, Problem 17 | Retain finite model; refine its subject |
+| 2024 AMC 12B, Problem 25 | Specific existing probability destination |
+| 2025 AIME I, Problem 7 | Retain general finite model |
+| 2025 AMC 10A, Problem 14 | Retain general finite model |
+| 2025 AMC 12A, Problem 13 | Retain finite model; refine its subject |
+| 1985 AJHSME, Problem 22 | Retain general finite model |
+| 1990 AJHSME, Problem 14 | Retain general finite model |
+| 1997 AJHSME, Problem 9 | Retain general finite model |
+| 2006 AMC 8, Problem 17 | Retain general finite model |
+| 2008 AMC 8, Problem 19 | Retain general finite model |
+| 2008 AMC 8, Problem 24 | Specific existing probability destination |
+| 2009 AMC 8, Problem 10 | Retain general finite model |
+| 2009 AMC 8, Problem 12 | Retain general finite model |
+| 2009 AMC 8, Problem 13 | Retain general finite model |
+| 2011 AMC 8, Problem 12 | Retain finite model; refine its subject |
+| 2013 AMC 8, Problem 14 | Specific existing probability destination |
+| 2015 AMC 8, Problem 11 | Retain general finite model |
+| 2016 AMC 8, Problem 13 | Retain general finite model |
+| 2017 AMC 8, Problem 10 | Specific existing probability destination |
+| 2018 AMC 8, Problem 11 | Retain finite model; refine its subject |
+| 2019 AMC 8, Problem 6 | Retain finite model; refine its subject |
+| 2020 AMC 8, Problem 13 | Retain general finite model |
+| 2022 AMC 8, Problem 12 | Retain general finite model |
+| 2023 AMC 8, Problem 23 | Retain finite model; refine its subject |
+| 2002 AMC 10A, Problem 24 | Retain general finite model |
+| 2003 AMC 12B, Problem 19 | Retain finite model; refine its subject |
+| 2004 AMC 10A, Problem 5 | Retain general finite model |
+| 2005 AMC 10A, Problem 9 | Retain finite model; refine its subject |
+| 2005 AMC 12A, Problem 14 | Specific existing probability destination |
+| 2005 AMC 12A, Problem 23 | Retain general finite model |
+| 2005 AMC 10B, Problem 21 | Specific existing probability destination |
+| 2005 AMC 12B, Problem 25 | Specific existing probability destination |
+| 2006 AMC 10A, Problem 25 | Specific existing probability destination |
+| 2007 AMC 10B, Problem 19 | Retain general finite model |
+| 2008 AMC 10B, Problem 22 | Retain general finite model |
+| 2009 AMC 10B, Problem 25 | Retain general finite model |
+| 2010 AMC 10A, Problem 18 | Specific existing probability destination |
+| 2010 AMC 10B, Problem 18 | Retain general finite model |
+| 2011 AMC 12A, Problem 14 | Retain general finite model |
+| 2011 AMC 12B, Problem 25 | Retain general finite model / proof clarified |
+| 2012 AMC 10A, Problem 20 | Retain finite model; refine its subject |
+| 2013 AMC 10B, Problem 12 | Specific existing probability destination |
+| 2015 AMC 10A, Problem 22 | Specific existing probability destination |
+| 2015 AMC 12A, Problem 24 | Retain general finite model |
+| 2015 AMC 10B, Problem 11 | Retain finite model; refine its subject |
+| 2015 AMC 10B, Problem 16 | Retain general finite model |
+| 2015 AMC 12B, Problem 6 | Retain general finite model |
+| 2016 AMC 10A, Problem 17 | Retain finite model; refine its subject |
+| 2018 AMC 10A, Problem 19 | Retain general finite model |
+| 2019 AMC 10A, Problem 20 | Retain general finite model |
+| 2020 AMC 10A, Problem 15 | Retain general finite model |
+| 2020 AMC 12B, Problem 20 | Retain finite model; refine its subject |
+| 2021 Spring AMC 12A, Problem 6 | Retain general finite model |
+| 2000 AMC 12, Problem 23 | Specific existing probability destination |
+| 2021 Fall AMC 10A, Problem 21 | Retain finite model; refine its subject |
+
+## Geometry: hidden-right-triangle boundary
+
+Read all 30 distinct entries in Right triangles hidden in figures. Retired that method-based leaf. Genuine right-triangle length questions move to the existing right-triangle-length pool; square/rectangle, chord, circular-region, current, perimeter and inscribed-shape problems move to their actual subjects. Pythagorean and other earned cards remain available across those subjects. Kept the two reworded 2005 AMC 10A/12A twins aligned manually. The Shared-leg Pythagoras pattern homes with right-triangle lengths. Also removed the incidental isosceles label from the 2001 AIME II #13 similar-triangle question already read in the companion review. No statement, strategy or answer changed.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1985 AIME, Problem 4 | `geo.poly.quad.rect`, `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 1994 AIME, Problem 2 | `geo.poly.quad.rect`, `geo.basic.pyth.hidden` | `geo.poly.quad.rect`, `geo.circ.tangent.mutual` |
+| 2001 AIME II, Problem 13 | `geo.basic.sim.similar`, `geo.basic.angle.isosceles` | `geo.basic.sim.similar` |
+| 2006 AIME I, Problem 1 | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+| 2011 AIME I, Problem 2 | `geo.poly.quad.rect`, `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 2011 AIME II, Problem 2 | `geo.poly.quad.rect`, `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 2022 AIME I, Problem 5 | `alg.word.rates.current`, `geo.basic.pyth.hidden` | `alg.word.rates.current` |
+| 2023 AMC 10A, Problem 11 | `geo.basic.pyth.hidden`, `alg.eq.identity.symmetric` | `geo.basic.pyth.triples` |
+| 2023 AMC 12A, Problem 9 | `geo.basic.pyth.hidden`, `alg.eq.identity.symmetric` | `geo.basic.pyth.triples` |
+| 2025 AMC 10A, Problem 15 | `geo.basic.sim.similar`, `geo.basic.pyth.hidden` | `geo.basic.sim.similar` |
+| 2010 AMC 8, Problem 19 | `geo.basic.pyth.hidden` | `geo.circ.power.chord`, `geo.poly.composite.arcs` |
+| 2012 AMC 8, Problem 25 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 2013 AMC 8, Problem 20 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect`, `geo.circ.power.chord` |
+| 2015 AMC 8, Problem 25 | `geo.basic.pyth.hidden` | `geo.comb.extreme.maxmin`, `geo.poly.quad.rect` |
+| 2020 AMC 8, Problem 18 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect`, `geo.circ.power.chord` |
+| 2024 AMC 8, Problem 6 | `geo.basic.pyth.hidden` | `geo.poly.general.perim` |
+| 2025 AMC 8, Problem 12 | `geo.basic.pyth.hidden` | `geo.comb.extreme.maxmin`, `geo.circ.tangent.inscribed` |
+| 2002 AMC 10B, Problem 22 | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+| 2002 AMC 12B, Problem 20 | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+| 2004 AMC 10B, Problem 8 | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+| 2004 AMC 12B, Problem 6 | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+| 2005 AMC 10A, Problem 8 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 2005 AMC 12A, Problem 7 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 2006 AMC 10B, Problem 8 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect`, `geo.circ.power.chord` |
+| 2008 AMC 10A, Problem 25 | `geo.poly.regular.hex`, `geo.basic.pyth.hidden` | `geo.poly.regular.hex`, `geo.circ.power.chord` |
+| 2008 AMC 12A, Problem 22 | `geo.poly.regular.hex`, `geo.basic.pyth.hidden` | `geo.poly.regular.hex`, `geo.circ.power.chord` |
+| 2008 AMC 10B, Problem 10 | `geo.basic.pyth.hidden` | `geo.circ.power.chord` |
+| 2008 AMC 12B, Problem 9 | `geo.basic.pyth.hidden` | `geo.circ.power.chord` |
+| 2009 AMC 10B, Problem 10 | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+| 2010 AMC 10B, Problem 19 | `geo.tri.special.equil`, `geo.basic.pyth.hidden` | `geo.tri.special.equil`, `geo.circ.power.chord` |
+| 2011 AMC 10A, Problem 11 | `geo.basic.pyth.hidden` | `geo.poly.quad.rect` |
+| 2016 AMC 12B, Problem 13 | `geo.tri.special.right`, `geo.basic.pyth.hidden` | `geo.tri.special.right` |
+| 2018 AMC 12B, Problem 4 | `geo.basic.pyth.hidden` | `geo.circ.power.chord` |
+| 2019 AMC 10B, Problem 16 | `geo.basic.angle.isosceles`, `geo.basic.pyth.hidden` | `geo.basic.angle.isosceles`, `geo.basic.pyth.triples` |
+| 2019 AMC 12B, Problem 12 | `alg.trig.identity.sum`, `geo.basic.pyth.hidden` | `geo.tri.trig.other`, `geo.basic.pyth.triples` |
+| 2025 AMC 10B, Problem 7 | `geo.basic.pyth.hidden`, `alg.eq.radical.eq` | `geo.basic.pyth.triples` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `shared-leg-pythagoras` | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
