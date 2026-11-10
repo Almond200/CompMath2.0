@@ -414,3 +414,43 @@ Every affected card survives:
 | Card | Previous home | Current home |
 |---|---|---|
 | `binary-quadratic-forms` | `nt.dio.factor.squares` | `nt.dio.squares` |
+
+## Extremal subsets, constructions and actual subjects
+
+Read all 28 distinct problems in the subset/bounds/extremal union. Move the stable set-family node under Constructions and bounds, explicitly covering maximal and intersecting set families as well as forbidden pairs. Remove redundant broad labels and incidental optimization labels from operations, statistics, graph connectivity, absolute values and Venn-overlap questions. Retire the technique-only Extremal principle node: its three problems receive their actual kinds, Dilworth moves to extremal sets, and the general extremal method remains available without a subject home. All 774 cards survive (739 homes; 35 general methods without). The 1989 AIME subset proof now supplies the missing first-twenty bound and treats periodic residues as a construction, not a characterization. The 2026 AIME grid proof now proves a global bound by threshold cuts and an interior matching, replacing the explicitly incomplete checkerboard/annealing claim; both attainments and all numerical values were checked exactly. The grid cites the double-counting and coloring routes it actually uses, not a generic extremal-principle tag.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2026 AMC 10A, Problem 25 | `cp.logic.pigeon.bounds`, `cp.logic.invariant.ops` | `cp.logic.invariant.ops` |
+| 2026 AIME II, Problem 13 | `cp.logic.pigeon.bounds`, `nt.div.prime.factor` | `cp.logic.pigeon.bounds` |
+| 2026 AIME I, Problem 11 | `cp.logic.pigeon.bounds` | `cp.logic.pigeon.bounds` (proof corrected) |
+| 1988 AIME, Problem 4 | `alg.eq.abs.eq`, `cp.logic.pigeon.bounds` | `alg.eq.abs.eq` |
+| 1989 AIME, Problem 13 | `cp.graph.sets` | `cp.graph.sets` (proof corrected) |
+| 2022 AMC 10B, Problem 14 | `cp.graph.sets`, `cp.logic.pigeon.bounds` | `cp.graph.sets` |
+| 2023 AIME II, Problem 11 | `cp.graph.sets`, `cp.basic.comb.subsets` | `cp.graph.sets` |
+| 2023 AMC 10B, Problem 10 | `cp.logic.pigeon.bounds`, `cp.logic.invariant.parity` | `cp.logic.pigeon.bounds` |
+| 2023 AMC 12B, Problem 5 | `cp.logic.pigeon.bounds`, `cp.logic.invariant.parity` | `cp.logic.pigeon.bounds` |
+| 2024 AMC 10A, Problem 4 | `cp.logic.pigeon.bounds` | `alg.ineq.optimize.integer` |
+| 2024 AMC 10A, Problem 6 | `cp.logic.invariant.ops`, `cp.logic.pigeon.bounds` | `cp.logic.invariant.ops` |
+| 2024 AMC 10A, Problem 20 | `cp.graph.sets`, `cp.logic.pigeon.bounds` | `cp.graph.sets` |
+| 2024 AMC 10B, Problem 12 | `cp.basic.comb.subsets`, `cp.logic.pigeon.bounds` | `cp.graph.sets` |
+| 2024 AMC 10B, Problem 16 | `cp.logic.invariant.parity`, `cp.logic.invariant.ops`, `cp.logic.pigeon.bounds` | `cp.logic.invariant.parity` |
+| 2024 AMC 12A, Problem 3 | `cp.logic.pigeon.bounds` | `alg.ineq.optimize.integer` |
+| 2025 AMC 10A, Problem 21 | `cp.graph.sets`, `cp.logic.pigeon.bounds` | `cp.graph.sets` |
+| 2025 AMC 12A, Problem 15 | `cp.graph.sets`, `cp.logic.pigeon.bounds` | `cp.graph.sets` |
+| 1988 AJHSME, Problem 16 | `cp.logic.pigeon.bounds` | `cp.graph.sets` |
+| 2025 AMC 8, Problem 15 | `cp.logic.pigeon.extremal` | `cp.logic.pigeon.bounds` |
+| 2005 AMC 10B, Problem 25 | `cp.logic.pigeon.extremal` | `cp.graph.sets` |
+| 2010 AMC 10B, Problem 12 | `cp.logic.pigeon.bounds` | `cp.tech.pie.venn` |
+| 2010 AMC 12B, Problem 6 | `cp.logic.pigeon.bounds` | `cp.tech.pie.venn` |
+| 2012 AMC 12A, Problem 17 | `nt.mod.basic.arith`, `cp.logic.pigeon.extremal` | `nt.mod.basic.arith`, `cp.graph.sets` |
+| 2018 AMC 10B, Problem 14 | `cp.logic.pigeon.bounds` | `alg.word.stats.median` |
+| 2018 AMC 12B, Problem 10 | `cp.logic.pigeon.bounds` | `alg.word.stats.median` |
+| 2021 Fall AMC 12A, Problem 16 | `cp.graph.basic.trees`, `cp.logic.pigeon.bounds` | `cp.graph.basic.trees` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `dilworths-theorem` | `cp.logic.pigeon.extremal` | `cp.graph.sets` |
+| `extremal-principle` | `cp.logic.pigeon.extremal` | `None` |

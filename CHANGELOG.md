@@ -2,6 +2,8 @@
 
 **2026-11-09**
 
+- Resolved the full 28-distinct subset/bounds/extremal review: set families now sit under Constructions and bounds; retired Extremal principle as a problem kind while retaining its general method card. Corrected the 1989 AIME subset proof and supplied a global, attained upper bound for 2026 AIME I #11. All 774 cards survive (739 homes, 35 general methods without); tree has 470 nodes. Gates, exact proof computations and tree/answer-key regressions pass.
+
 - Reviewed all 27 distinct power-expression/factorable-equation problems, nested shifted difference-of-squares equations under integer power conditions in Diophantine equations, repaired 19 raw filings/proofs and moved the binary-quadratic-forms home. Added the missing equality case for 1991 AIME #15 and corrected the root-distance notation in 2014 AIME I #6. Tree remains 471 nodes; all gates and answer-key checks pass.
 
 - **Settings preview fidelity and inline math:** each preview now inherits its real space colours, so the problem’s Show/Hide button matches Practice and lesson controls match Learn. The shared rich-text renderer protects comparisons inside LaTeX before HTML parsing, fixing the truncated tangent-circle paragraph without changing textbook content. Unit regression and browser comparisons in both themes pass; full gates pass. Tree work continues; textbooks and T4 remain paused.
