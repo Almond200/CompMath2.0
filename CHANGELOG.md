@@ -1,5 +1,13 @@
 # Changelog
 
+**2026-11-10**
+
+- **Tree finalization and final validation:** all six ranked audit batches are complete. TREE-FINALIZATION.md closes all 57 baseline sparse-leaf decisions: the final tree has 459 nodes, 28 areas, 316 leaves and no unused leaves; all 4,725 problems and 774 cards survive. The complete pre-pruning draft had 503 nodes. P64–P68 remain pending; TQ20 is implemented. Reconciled current handoffs while preserving historical audit counts. Full repository gates, the five app Node suites, card-text and all tree/audit regressions pass. Browser checks pass: 36 accessibility scenarios, four desktop/mobile theme combinations for Practice actions, icons/list menus and book search, plus both-theme Settings control comparisons. Six corrected strategies and the reported lesson render without JS/KaTeX errors or page overflow at 1280/375px; the experimental outline renders all 459 nodes. Screenshots of the corrected math and mobile answer border were inspected. Textbooks and T4 remain paused.
+
+- Removed the final empty single-child perfect-power wrapper after its expression subtree moved to Diophantine equations. The surviving square-sequence id and its whole problem/card pool are unchanged. Current tree: 459 nodes, 28 areas and 316 leaves, with no unused leaves.
+
+- Completed sparse-leaf decisions: retired eight unsupported, duplicate or technique-only leaves with nine explicit card-home dispositions; corrected 14 raw filings/proofs/tags. The final tree has 460 nodes, no unused leaves and all 4,725 problems filed; all 774 cards survive. Added a universal bound and explicit attainment to the 2011 quadrilateral-circle solution. Final census and cross-app validation follow; textbooks and T4 remain paused.
+
 **2026-11-09**
 
 - Unified the 15-distinct rotations/reflections pool instead of splitting it by Burnside versus direct symmetry reasoning. Preserved every filing and all three card homes; made the 2016 cube-labeling finite case check explicit. Tree has 468 nodes; all gates and tree/answer-key regressions pass.

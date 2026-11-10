@@ -11,7 +11,7 @@
 4. **How things are done** is in `CONVENTIONS.md`: card anatomy, figure rules, the gates in §7. Approvals waiting on the owner are in `QUESTIONS.md`.
 5. **Two agents work in this repository.** Claude keeps the shared Markdown (`PLAN.md`, `CHANGELOG.md`, `CONVENTIONS.md`, `CONTRIBUTING.md`, `README.md`, `LEARN-OUTLINE.md`, `TOPIC-TREE.md`, `QUESTIONS.md`, `TEXTBOOK-REVISION.md`) and works on cards, problems, the topic tree, `js/app.js`, and search: the book-search implementation, `tests/book-search.cjs`, and the matching and indexing logic of `tools/build-book-notes.cjs`. Codex owns the chapter content in `js/data/learn/**` (with `tools/build-learn-shelf.py`), regenerates the End-of-book Notes with the builder after each batch, and normally reports chapter batches for Claude to record in the shared Markdown. Explicit owner requests may authorize a scoped app or documentation batch, as with the recent Practice/UI work and this maintenance pass, without changing continuing ownership. Neither changes this division without coordinating first. Both bump asset versions in `index.html`; keep both sets of bumps when merging. Shared-file merges follow CONTRIBUTING, "Two agents: shared files and merges".
 
-**Owner checkpoint (2026-11-09): T3 is complete; owner-authorized tree repairs are in progress.** All 4,725 problems remain filed and all 774 cards survive (739 homes, 35 general methods without). The tree currently has 468 nodes. The semantic overlap and symmetry reviews are complete. TREE-REPAIRS.md records per-problem changes, retired ids and card-home dispositions; TREE-AUDIT.md preserves the audit baseline. Next: individual sparse-leaf decisions and the final census/validation. The shadow/mock follow-up is complete and pushed. T4 and textbooks remain paused; textbook revision is 37/103, with AMC Geometry S7 next only if the owner resumes it. Continuing ownership is unchanged.
+**Owner checkpoint (2026-11-10): T3 and the requested tree finalization are complete.** All 4,725 problems are filed, including all 650 AMC 8, 350 AJHSME and ten HMMT entries. The tree has 459 nodes, 28 areas and 316 leaves, with no unused leaves. All 774 cards survive (739 homes, 35 general methods without). TREE-FINALIZATION.md closes all 57 baseline sparse-leaf decisions and records the final census; TREE-REPAIRS.md records semantic changes and card-home dispositions. Shared shadows, the 2022–2026 mock model, accurate Settings preview styling and the reported LaTeX truncation are fixed. T4 and textbooks remain paused; textbook revision is 37/103, with AMC Geometry S7 next only if the owner resumes it. Continuing ownership is unchanged. Next: owner review; no further pruning is proposed for this corpus.
 
 ## Running the checks in a cloud session
 
@@ -32,11 +32,13 @@ node tests/answer-keys.cjs
 node tests/book-search.cjs          # includes semantic-index corpus coverage and artifact consistency
 node tests/problem-difficulty.cjs
 node tests/mock-contests.cjs
+node tests/card-text.cjs             # raw LaTeX comparisons and linked prose survive HTML insertion
 node tools/practice-gaps.js --check     # every card has two practice problems
 $JSC tools/validate-problem-db.js
 ```
 
 - **Book reference search:** `CHROME=/path/to/chromium COMPMATH_URL=http://localhost:8765 node tools/check-book-search.cjs` checks Index/Glossary result order, jumps, keyboard focus, Back/repeat, math terms, fade and reduced motion. `tests/book-search.cjs` checks all canonical Index terms and generated targets across the 13 books.
+- **Settings previews / math rendering:** `CHROME=/path/to/chromium COMPMATH_URL=http://localhost:8765 node tools/check-settings-preview.cjs` compares the problem preview with Practice and checks the complete tangent-circle paragraph in both themes.
 - **Practice actions:** `CHROME=/path/to/chromium COMPMATH_URL=http://localhost:8765 node tools/check-practice-actions.cjs` checks unanswered-submit confirmation, Cancel/Escape, one-click completed submission, visible clearing/persistence, locked review, numeric/exact inputs and mock timeout/route cleanup.
 - **SVG UI icons:** `CHROME=/path/to/chromium COMPMATH_URL=http://localhost:8765 node tools/check-ui-icons.cjs` checks drawn/box centering, font independence, star/list-menu synchronization and persistence, menus, tags, book/source links and experimental-page symbols.
 - **Accessibility:** `CHROME=/path/to/chromium COMPMATH_URL=http://localhost:8765 node tools/check-accessibility.cjs` checks the verified keyboard/contrast fixes; see ACCESSIBILITY-REVIEW.md.

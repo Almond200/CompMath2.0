@@ -485,3 +485,54 @@ Every affected card survives:
 | `necklace-formula` | `cp.tech.sym.necklace` | `cp.tech.sym` |
 | `burnsides-lemma` | `cp.tech.sym.burnside` | `cp.tech.sym` |
 | `polya-enumeration` | `cp.tech.sym.burnside` | `cp.tech.sym` |
+
+## Sparse leaves: actual kinds, broader homes and proof review
+
+Read the complete parameter-system, variation, organized-listing, generating-function and Stewart/Brahmagupta filing pools before changing them. The sole parameter-system entry is a single rational equation; the two listing questions are operations or coin trials; Stewart is only an intermediate length tool in the remaining geometry entries. Retire those three technique/misleading leaves and the unsupported variation subdivision into their existing subject parents. Retire the two unused leaves (infinite radicals and parallel-line angles), explicitly rehoming all five cards; trapezoid angles belong with trapezoids. Cyclic quadrilateral area/radius cards move to the cyclic parent; the incircle optimization belongs to tangential quadrilaterals. Its proof now bounds every inscribed circle and constructs equality, rather than assuming the optimum is tangential. Exact side, area and angle computations confirm it. Three incidental generating-function labels are removed while the actual coefficient-of-a-product question retains that kind. All eight affected cards survive. No textbook content changes.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1994 AIME, Problem 5 | `nt.digit.sum.condition`, `cp.tech.gf` | `nt.digit.sum.condition` |
+| 2010 AIME I, Problem 4 | `cp.prob.dice.coins`, `cp.tech.gf` | `cp.prob.dice.coins` |
+| 2010 AIME I, Problem 15 | `geo.tri.radii.in`, `geo.tri.cevian.stewart` | `geo.tri.radii.in` |
+| 2006 AMC 8, Problem 10 | `alg.word.ratio.vary`, `alg.word.stats.data` | `alg.word.ratio`, `alg.word.stats.data` |
+| 2024 AMC 8, Problem 8 | `cp.basic.principle.tree` | `cp.logic.invariant.ops` |
+| 2024 AMC 8, Problem 25 | `cp.tech.gf`, `cp.prob.basic.complement` | `cp.prob.basic.count`, `cp.basic.comb.gaps` |
+| 2002 AMC 10B, Problem 12 | `alg.eq.linear.param` | `alg.eq` |
+| 2008 AMC 10A, Problem 22 | `cp.prob.dice.coins`, `cp.basic.principle.tree` | `cp.prob.dice.coins` |
+| 2011 AMC 12A, Problem 24 | `geo.circ.cyclic.brahmagupta`, `geo.circ.cyclic.tangential` | `geo.circ.cyclic.tangential` (proof corrected) |
+| 2021 Spring AMC 12B, Problem 11 | `geo.tri.cevian.stewart`, `geo.basic.sim.similar` | `geo.poly.quad.trap`, `geo.basic.sim.similar` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `ramanujan-nested-radical` | `alg.eq.radical.infinite` | `alg.eq.radical` |
+| `parallel-exterior-angles` | `geo.basic.angle.parallel` | `geo.basic.angle` |
+| `trapezoid-consecutive-angles` | `geo.basic.angle.parallel` | `geo.poly.quad.trap` |
+| `parallel-by-angle-sum` | `geo.basic.angle.parallel` | `geo.basic.angle` |
+| `stewarts-theorem` | `geo.tri.cevian.stewart` | `geo.tri.cevian` |
+| `brahmaguptas-formula` | `geo.circ.cyclic.brahmagupta` | `geo.circ.cyclic` |
+| `cyclic-quad-radius` | `geo.circ.cyclic.brahmagupta` | `geo.circ.cyclic` |
+| `infinite-nest` | `alg.eq.radical.infinite` | `alg.eq.radical` |
+
+## Final sparse-pool controls: roots filters and multinomial trials
+
+Read the remaining two root-filter questions and all four multinomial-expansion entries. The root filter is a tool in a complex product probability and a subset-sum probability; both now carry those actual kinds, while the filter card moves to Roots of unity. The two genuine polynomial expansions retain their kind. Soccer/game winner probabilities move to independent trials, with the missing earned multinomial tag added to the soccer strategy. These controls leave no root-filter problem kind or lost card. Four raw entries changed.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2001 AIME II, Problem 11 | `cp.prob.basic.complement`, `cp.binom.thm.multinomial` | `cp.prob.cond.indep` |
+| 2017 AMC 12A, Problem 25 | `alg.cx.polar.arith`, `alg.cx.unity.filter` | `alg.cx.polar.arith`, `cp.prob.cond.indep` |
+| 2018 AIME I, Problem 12 | `cp.basic.comb.subsets`, `alg.cx.unity.filter` | `cp.basic.comb.subsets`, `cp.prob.basic.count` |
+| 2012 AMC 12A, Problem 11 | `cp.binom.thm.multinomial`, `cp.prob.cond.indep` | `cp.prob.cond.indep` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `roots-of-unity-filter` | `alg.cx.unity.filter` | `alg.cx.unity` |
+
+Final structural cleanup: retire the now-empty single-child wrapper `nt.seq.power` and promote `nt.seq.power.squares` to the Integer sequences area. The wrapper had no direct problems or card homes, so every problem and card set is unchanged. Other single-child branches have direct filings or homes and are retained.
+
+The quadrilateral proof also handles a potentially concave quadrilateral via its triangular convex hull: perimeter at most 42, inradius at most 21/√27 by Heron and AM–GM, below the attained 2√6. The two cards are cited for that explicit bound.

@@ -1,6 +1,8 @@
 # Topic-tree restructuring review
 
-2026-11-09. Baseline: `57c5fb5`, after all 4,725 problems were filed. The owner requested a synthesis and decisions for larger pruning. This document records the chosen direction and migration order. After the owner asked to continue, **the first area regrouping was implemented: 482 nodes and 28 areas, preserving all problem filings and card homes**. Semantic leaf pruning and geometry moves remain pending; the subsequent [TREE-AUDIT.md](TREE-AUDIT.md) supplies the latest evidence and implementation order. Textbooks remain paused.
+**Finalization follow-through (2026-11-10):** every ranked implementation batch and sparse-leaf decision is complete. The live tree has 459 nodes, 28 areas and 316 leaves, with no unused leaves. See [TREE-FINALIZATION.md](TREE-FINALIZATION.md) for the final census and decisions, and [TREE-REPAIRS.md](TREE-REPAIRS.md) for exact migrations. This document below preserves the historical audit/synthesis and its then-pending recommendations. T4 and textbooks remain paused.
+
+2026-11-09. Baseline: `57c5fb5`, after all 4,725 problems were filed. The owner requested a synthesis and decisions for larger pruning. This document records the chosen direction and migration order. After the owner asked to continue, **the first area regrouping was implemented: 482 nodes and 28 areas, preserving all problem filings and card homes**. At that checkpoint semantic leaf pruning and geometry moves remained pending; the subsequent [TREE-AUDIT.md](TREE-AUDIT.md) supplies the latest evidence and implementation order. Textbooks remain paused.
 
 ## Decision
 
@@ -115,7 +117,7 @@ The census's 57 thin leaves are a review queue, not 57 deletion decisions. In pa
 
 The ancestry prerequisite and three area regroupings are now implemented. Six empty wrappers were retired (`alg.word`, `alg.word.units`, `cp.tech`, `cp.struct`, `nt.divisor`, `nt.prime`); two area ids were added (`alg.arithmetic`, `alg.applied`). All other ids survive. This reduces 486 nodes to 482 and 31 areas to 28, while retaining 337 leaves and all card homes. The exact problem-reference and card-home sets of all nine destinations were compared with their pre-migration unions, as were all four subjects; every comparison passed. The problem database and card-home data are unchanged.
 
-Next are the bounded semantic filing reviews. The triangle moves, symmetry consolidation, full probability review and remaining polynomial/modular cleanup have not been applied. No second complete mathematical audit is claimed.
+The next step at that checkpoint was bounded semantic filing review. Those reviews, triangle moves, symmetry consolidation, full probability review and polynomial/modular cleanup are now applied; see the finalization link above. No second complete mathematical audit is claimed.
 
 ## Validation of the initial synthesis
 

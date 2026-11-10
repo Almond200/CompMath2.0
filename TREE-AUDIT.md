@@ -1,5 +1,7 @@
 # Tree audit after area regrouping
 
+**Finalization follow-through (2026-11-10):** every ranked implementation batch and sparse-leaf decision is complete. The live tree has 459 nodes, 28 areas and 316 leaves, with no unused leaves. See [TREE-FINALIZATION.md](TREE-FINALIZATION.md) for the final census and decisions, and [TREE-REPAIRS.md](TREE-REPAIRS.md) for exact migrations. This document below preserves the historical audit/synthesis and its then-pending recommendations. T4 and textbooks remain paused.
+
 2026-11-09; baseline `ef983da`. The owner requested another data audit and a plan for the next tree changes. **This pass changes no taxonomy, problem filing, card home or textbook.** It supersedes the ordering of the remaining work in TREE-REVIEW.md, while preserving that document's completed migration record.
 
 Implementation is now authorized by the owner’s request to fix these issues. See [TREE-REPAIRS.md](TREE-REPAIRS.md) for completed batches and migrations; the measurements below preserve the audit baseline.
