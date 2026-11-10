@@ -4,7 +4,7 @@
 
 ## What is counted
 
-The corpus has 4,725 entries and 4,117 recognized distinct problems. The exact-strategy AMC 10/12 twin detector counts recognized same-year/season/letter pairs once; reworded twins can still count separately. A leaf pool is its direct filing. A branch pool is the union of all direct and descendant filings, so cofilings within that branch never double-count one problem. Depth follows explicit parents, not dotted id spelling. These are available tree-data counts, not measured user-choice probabilities. The main Practice picker does not yet consume these tree filings: T4 remains paused.
+The corpus has 4,725 entries and 4,117 recognized distinct problems. The exact-strategy AMC 10/12 twin detector counts recognized same-year/season/letter pairs once; reworded twins can still count separately. A leaf pool is its direct filing. A branch pool is the union of all direct and descendant filings, so cofilings within that branch never double-count one problem. Depth follows explicit parents, not dotted id spelling. These are available tree-data counts, not measured user-choice probabilities. The subsequent tree-only T4 implementation now consumes these filings, displaying eligible counts after excluding voided/unkeyed entries and applying difficulty. The census above includes every filed entry, so an actual Practice count can be smaller. See TREE-PRACTICE.md.
 
 Reproduce the summary with `node tools/tree-risk-audit.cjs` and inspect `capacity`. Tests cover moved ids, true depths, recognized twins, descendant unions, direct parent filings and per-family empty pools.
 
@@ -62,4 +62,4 @@ Combined all-stage counts therefore cannot promise a full set for a student targ
 4. Review broad high-use pools for coherent recurring subtypes only after reading them. The largest remaining pools include percentages (96), arithmetic sequences (89), rectangles/squares (85) and ratios (72). Counts alone do not justify new splits.
 5. Keep correctness ahead of pool size. This pass reduced GCD/LCM 50→25 and divisor counts 43→35 while recovering appropriate money, ratio, factorial, probability and equation practice. Restoring incidental labels would make capacity look healthier while reducing relevance.
 
-No T4 or textbook work was started. The fifth accuracy report and [TREE-FINALIZATION.md](TREE-FINALIZATION.md) preserve the current handoff.
+The later owner request implements only tree-backed topic practice, including counts and automatic set-size caps; TREE-PRACTICE.md records it. Method-based targets, labels/profiles and textbook work remain deferred. The fifth accuracy report and [TREE-FINALIZATION.md](TREE-FINALIZATION.md) preserve the audit handoff.

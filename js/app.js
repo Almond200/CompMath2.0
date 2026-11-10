@@ -3178,7 +3178,7 @@
     const trickFormulas = (e.trickFormulas || []).filter(fid => BY_ID[fid]);
     const pr = parseRef(e.ref), slug = problemSlug(e.ref), rating = problemDifficulty.ratingFor(slug);
     return {
-      ref: e.ref, slug, elo: rating ? rating.elo : null, eloSource: rating ? rating.source : null,
+      ref: e.ref, slug, tree: e.tree || [], elo: rating ? rating.elo : null, eloSource: rating ? rating.source : null,
       url: e.url || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
       formulas, trickFormulas, types: problemTypes(e), subjects: problemSubjects(e, formulas, pr.cname), strategy: e.strategy || "",
       trick: e.trick || "",
@@ -5674,6 +5674,7 @@
     renderMath($content);
     startMockClock(set);
   }
+  let practiceTopicIndex;
   function wireTopicPractice(root) {
     const form = root.querySelector("#topic-practice-form");
     if (!form) return;
@@ -5681,42 +5682,23 @@
     const suggestions = form.querySelector("#practice-topic-options");
     const status = root.querySelector("#topic-practice-status");
     const difficulty = form.elements.difficulty;
-    let generating = false;
-    const normalize = text => text.trim().toLowerCase();
-    const topics = new Map();
-    function index(label, problems) {
-      const key = normalize(label);
-      if (!key || !problems.length) return;
-      if (!topics.has(key)) topics.set(key, { label, problems: new Map() });
-      const pool = topics.get(key).problems;
-      for (const p of problems) {
-        // Shared AMC 10/12 problems have the same written strategy on both papers.
-        if (!MAA_RE.test(p.ref) || window.MATH_ANSWER_KEYS?.answers?.[p.slug] == null || window.MATH_ANSWER_KEYS?.voided?.[p.slug]) continue;
-        const identity = /^AMC (?:10|12)/.test(p.fam) && p.strategy ? p.year + "|" + p.strategy : p.slug;
-        if (!pool.has(identity)) pool.set(identity, p);
-      }
-    }
-    index("Mixed", PROBLEM_DB);
-    for (const [id, label] of Object.entries(SUBJECT_LABELS)) {
-      const pool = PROBLEM_DB.filter(p => p.subjects.includes(id));
-      index(label, pool);
-      if (id === "counting") index("Counting & Probability", pool);
-    }
-    for (const entry of ALL) {
-      const card = entry.formula, pool = PROBLEMS_BY_CARD[card.id];
-      if (!pool) continue;
-      index(card.name, pool);
-      for (const label of card.keywords || []) index(label, pool);
-    }
-    const findTopic = key => topics.get(key) || topics.get(key.replace(/s$/, ""));
-    const labels = [...topics.values()].map(t => t.label).sort((a, b) => a.localeCompare(b));
+    let generating = false, selectedTopicId = null, activeTopic = -1;
+    let desiredCount = count.valueAsNumber;
+    const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB,
+      p => hasMockAnswer(p) && !window.MATH_ANSWER_KEYS?.voided?.[p.slug]);
+    const findTopic = () => {
+      const selected = topics.nodes.get(selectedTopicId);
+      return selected && topic.value === selected.label ? selected : topics.resolve(topic.value);
+    };
     function update() {
-      const key = normalize(topic.value);
-      const choices = key ? labels.filter(label => normalize(label).includes(key)).slice(0, 7)
-        : ["Mixed", ...Object.values(SUBJECT_LABELS)];
-      suggestions.innerHTML = choices.map((label,i) => `<button type="button" class="set-find-opt practice-topic-option${i === 0 ? ' is-cur' : ''}" role="option" id="practice-topic-${i}" aria-selected="${i === 0}">${escapeAttr(label)}</button>`).join('');
+      const choices = topics.search(topic.value);
+      suggestions.innerHTML = choices.map((node,i) => {
+        const size = problemDifficulty.filter(node.problems, DIFFS[difficulty.valueAsNumber]).length;
+        const context = node.path.slice(0, -1).join(' › ');
+        return `<button type="button" class="set-find-opt practice-topic-option${i === 0 ? ' is-cur' : ''}" role="option" id="practice-topic-${i}" data-topic-id="${node.id}" aria-selected="${i === 0}"><span class="practice-topic-name">${escapeAttr(node.label)}</span><span class="practice-topic-context">${escapeAttr(context)}${context ? ' · ' : ''}${size} problem${size === 1 ? '' : 's'}</span></button>`;
+      }).join('');
       suggestions.querySelectorAll('button').forEach((b,i) => {
-        b.addEventListener('click', () => { topic.value = choices[i]; closeTopics(); update(); topic.focus(); closeTopics(); });
+        b.addEventListener('click', () => { selectedTopicId = choices[i].id; topic.value = choices[i].label; topic.focus({preventScroll:true}); update(); closeTopics(); });
         // The pointer moves the selection, so only one option is ever highlighted (owner, 2026-11-07).
         b.addEventListener('mousemove', () => {
           if (activeTopic === i) return;
@@ -5726,24 +5708,23 @@
         });
       });
       renderMath(suggestions);
-      const pool = matchingProblems();
-      count.max = Math.max(1, Math.min(30, pool.length));
-      if (count.valueAsNumber > Number(count.max)) count.value = count.max;
+      const match = findTopic(), pool = matchingProblems();
+      count.max = match ? Math.max(1, Math.min(30, pool.length)) : 30;
+      count.value = Math.min(desiredCount, Number(count.max));
       form.querySelector("#topic-count-value").textContent = count.value;
       form.querySelector("#topic-band-value").textContent = difficultyLabel();
       difficulty.setAttribute("aria-valuetext", difficultyLabel());
-      status.textContent = pool.length ? pool.length + " matching problems available."
-        : key ? "No matches. Try another topic or difficulty." : "";
+      status.textContent = match ? pool.length + " matching problem" + (pool.length === 1 ? "" : "s") + " available" + (match.children.length ? ", including subtopics." : ".")
+        : topic.value.trim() ? "Choose a topic from the suggestions." : "";
       form.querySelector("button[type=submit]").disabled = generating || !pool.length;
     }
     function difficultyLabel() {
       return problemDifficulty.levels[difficulty.valueAsNumber].label;
     }
     function matchingProblems() {
-      const match = findTopic(normalize(topic.value)), band = DIFFS[difficulty.valueAsNumber];
-      return match ? problemDifficulty.filter([...match.problems.values()], band) : [];
+      const match = findTopic(), band = DIFFS[difficulty.valueAsNumber];
+      return match ? problemDifficulty.filter(match.problems, band) : [];
     }
-    let activeTopic = -1;
     function closeTopics() { suggestions.hidden = true; topic.setAttribute('aria-expanded','false'); topic.removeAttribute('aria-activedescendant'); activeTopic = -1; }
     function openTopics() {
       suggestions.hidden = !suggestions.children.length;
@@ -5766,14 +5747,20 @@
       if (e.key === 'Enter' && !suggestions.hidden && activeTopic >= 0) { e.preventDefault(); options[activeTopic]?.click(); }
     });
     form.addEventListener('focusout', e => { if (!e.relatedTarget?.closest('.practice-topic-search')) closeTopics(); });
-    form.addEventListener('input', e => { update(); if (e.target === topic) { activeTopic = -1; topic.removeAttribute('aria-activedescendant'); openTopics(); } });
+    form.addEventListener('input', e => {
+      if (e.target === topic) { selectedTopicId = null; activeTopic = -1; }
+      if (e.target === count) desiredCount = count.valueAsNumber;
+      update();
+      if (e.target === topic) openTopics();
+      else if (!suggestions.hidden) openTopics();
+    });
     // Close on blur, including clicks outside the form; defer so a suggestion click can finish.
     topic.addEventListener('blur', () => setTimeout(() => { if (!form.querySelector('.practice-topic-search').contains(document.activeElement)) closeTopics(); }, 0));
     form.addEventListener("submit", async e => {
       e.preventDefault();
       const pool = matchingProblems(), requested = count.valueAsNumber;
       if (generating || !pool.length || !Number.isSafeInteger(requested) || requested < 1) return;
-      const label = findTopic(normalize(topic.value)).label, level = difficultyLabel();
+      const match = findTopic(), label = match.label, level = difficultyLabel();
       const problems = [];
       generating = true;
       form.querySelector("fieldset").disabled = true;
@@ -5786,14 +5773,15 @@
           pool[i] = pool[pool.length - 1];
           pool.pop();
         }
-        await Promise.all([...new Set(batch.map(p => p.year))].map(loadStatements));
+        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug]).map(p => p.year))].map(loadStatements));
         if (!form.isConnected) return;
-        problems.push(...batch.filter(p => window.MATH_STATEMENTS?.[p.slug]));
+        problems.push(...batch.filter(p => window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
       }
       generating = false;
       form.querySelector("fieldset").disabled = false;
       if (!problems.length) { status.textContent = "No statements could be loaded. Try again or choose another topic."; return; }
       topicPracticeSet = practiceSessions.create(label, level, problemDifficulty.order(problems).map(p => p.slug));
+      topicPracticeSet.topicId = match.id;
       savePractice();
       location.hash = '#/practice/set/' + topicPracticeSet.id;
     });
@@ -5859,10 +5847,10 @@
         </section>
         <section class="sh-section" id="pr-topic">
           <h3>Practice a topic</h3>
-          <p class="practice-panel-intro">Choose a subject or technique to build an untimed set from past contest problems.</p>
+          <p class="practice-panel-intro">Choose a topic to build an untimed set. Broader topics include all their subtopics.</p>
           <form id="topic-practice-form" novalidate><fieldset aria-label="Practice set options">
             <label for="topic-name">Topic</label>
-            <div class="practice-topic-search"><input id="topic-name" class="set-find-input" type="search" name="topic" placeholder="Search a topic..." required autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="practice-topic-options">
+            <div class="practice-topic-search"><input id="topic-name" class="set-find-input" type="search" name="topic" placeholder="Search a topic..." required autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="practice-topic-options" aria-describedby="topic-practice-status">
             <div id="practice-topic-options" class="set-find-list" role="listbox" aria-label="Topics" hidden></div></div>
             <div class="rand-diff"><label for="topic-count">Questions</label>
               <input id="topic-count" type="range" name="count" min="1" max="30" value="5"><output id="topic-count-value" for="topic-count">5</output></div>

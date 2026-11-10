@@ -1115,6 +1115,7 @@ One classification of contest mathematics, used by Practice sets, problem labels
 - `js/data/topic-tree.js` is generated from it by `tools/build-topic-tree.py` and never edited by hand: `[id, name, parent]` rows in reading order.
 - `js/data/topic-homes.js` is hand-written: every card's home node. A formula or pattern always has one; a method has one when it belongs to one area, and `null` when it is general-purpose (casework, induction, coordinate bashing).
 - A problem's nodes are the `tree` field of its entry in `problem-db.js`: one to three node ids.
+- `js/practice-topics.js` indexes those filings by explicit ancestors for tree-only topic practice (owner, 2026-11-10). `index.html` loads it and the generated tree before `app.js`; `tests/practice-topics.cjs`, in the gates, checks every real pool. Picker options are tree nodes, not card names/keywords; available counts and set-size caps reflect answer eligibility and contextual difficulty. Stable `topicId` is saved on new sets; old sets still use their saved slugs. Separate Methods-card targets remain deferred.
 - Settings → Experimental → Topic tree (`lab/topic-tree.html`) reads `TOPIC-TREE.md` live, as an outline or as a drawn tree per subject.
 
 **The rules.**

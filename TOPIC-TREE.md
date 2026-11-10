@@ -1,12 +1,12 @@
 # Topic tree
 
-**Status (2026-11-10):** T3 and requested tree finalization complete: 457 nodes, 28 areas, 314 leaves; all 4,725 problems filed and all 774 cards retained (739 homes, 35 general methods without). [TREE-FINALIZATION.md](TREE-FINALIZATION.md) records the final decisions; [TREE-REPAIRS.md](TREE-REPAIRS.md) records migrations. [TREE-ACCURACY-5.md](TREE-ACCURACY-5.md) records the latest targeted review; [TREE-CAPACITY.md](TREE-CAPACITY.md) measures depth and practice supply. Earlier counts and test filings below are historical. T4 and textbooks remain paused.
+**Status (2026-11-10):** T3 and requested tree finalization complete: 457 nodes, 28 areas, 314 leaves; all 4,725 problems filed and all 774 cards retained (739 homes, 35 general methods without). [TREE-FINALIZATION.md](TREE-FINALIZATION.md) records the final decisions; [TREE-REPAIRS.md](TREE-REPAIRS.md) records migrations. [TREE-ACCURACY-5.md](TREE-ACCURACY-5.md) records the latest targeted review; [TREE-CAPACITY.md](TREE-CAPACITY.md) measures depth and practice supply. Earlier counts and test filings below are historical. Tree-only T4 is implemented in [TREE-PRACTICE.md](TREE-PRACTICE.md); techniques, T4b/T5/T6 and textbooks remain deferred.
 
-**Execution handoff (owner, 2026-11-10):** all six TREE-AUDIT.md batches are implemented, including geometry, symmetry, probability and individual sparse-leaf decisions. There are no unused leaves or unresolved pruning decisions in the reviewed corpus. TQ20 is implemented; P64–P69 remain pending card proposals. Preserve stable ids and the recorded migration log. Await owner review; do not resume textbooks or T4.
+**Execution handoff (owner, 2026-11-10):** all six TREE-AUDIT.md batches are implemented, including geometry, symmetry, probability and individual sparse-leaf decisions. There are no unused leaves or unresolved pruning decisions in the reviewed corpus. TQ20 is implemented; P64–P69 remain pending card proposals. Preserve stable ids and the recorded migration log. The owner’s later request implements only the tree-backed Practice picker; do not resume other feature steps or textbooks.
 
 ## Why
 
-Practice a topic currently offers every card name and every card keyword as a topic. The list is long and uneven: "Shoelace formula" sits beside "area", a keyword can match five unrelated cards, and a problem is reachable only through the cards it happens to cite (446 problems cited none when this was written; 449 do on 2026-11-07). The topic tree replaces that with one fixed classification of contest mathematics, written for problems rather than for cards:
+Before T4, Practice a topic offered every card name and keyword as a topic. That list was long and uneven: "Shoelace formula" sits beside "area", a keyword can match five unrelated cards, and a problem is reachable only through the cards it happens to cite (446 problems cited none when this was written; 449 do on 2026-11-07). The topic tree replaces that with one fixed classification of contest mathematics, written for problems rather than for cards:
 
 - **Practice sets:** pick any node (a whole subject, an area, or a narrow topic); the set draws from every problem filed under that node or below it.
 - **Problem labels:** each problem shows its topics as a breadcrumb (Geometry › Circles › Power of a point), a better label than a list of card names.
@@ -674,6 +674,6 @@ Later papers, read again rather than copied from their tests: 2025 AMC 10A #17 i
 1. **T1, draft the tree** (this file). Done: the owner's answers to TQ1 to TQ5 are recorded above.
 2. **T2, the data file:** `js/data/topic-tree.js` with ids, names, parents and a home node for every card; generate this page from it.
 3. **T3, file the problems:** seed from cards, read the rest, and add the gate.
-4. **T4, Practice:** the topic picker uses the tree only (no card-name topics, TQ5); a node draws from its whole subtree.
+4. **T4, Practice:** tree-only searchable topic options are implemented (owner, 2026-11-10); a node draws from its whole subtree. Method targets and expandable browsing are deferred; TREE-PRACTICE.md records this first scoped implementation.
 5. **T5, labels:** a problem's page and the practice review show its topic breadcrumbs.
 6. **T6, contest profiles:** card profiles show where their problems fall in the tree; each topic node gets a profile of its own.
