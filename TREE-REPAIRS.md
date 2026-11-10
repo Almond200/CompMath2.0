@@ -757,3 +757,40 @@ Complete the global prime-exponent maximum using decreasing consecutive-factor r
 |---|---|---|
 | 2021 Spring AMC 12A, Problem 25 | `nt.divisor.count.tau`, `alg.ineq.optimize.integer` | `nt.divisor.count.tau`, `alg.ineq.optimize.integer` (proof corrected) |
 | 2022 AIME II, Problem 14 | `alg.ineq.optimize.integer` | `alg.ineq.optimize.integer` (proof corrected) |
+
+## High-value audit 4: all 37 trig-addition filings
+
+Read the complete pool. Keep actual trig-expression identities and requested multiple-angle relations. Geometry, coordinate lines, clocks, nonlinear recurrences and radical systems do not gain a trig-addition subject just because the route uses an identity. Recover chord, rotation, equilateral/isosceles, centroid, inverse-trig and trig-equation kinds where appropriate. Remove De Moivre as a method-only complex subject from the tangent-expansion question, while retaining the genuinely fixed-modulus complex optimization. Retain all earned cards. Supply uniqueness for the chord-radius solution by monotonicity and check all eight inverse-sine branches in the radical system; answers remain unchanged.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1984 AIME, Problem 13 | `alg.trig.eq.inverse`, `alg.trig.identity.sum` | `alg.trig.eq.inverse` |
+| 1985 AIME, Problem 9 | `geo.circ.power.chord`, `alg.trig.identity.sum` | `geo.circ.power.chord` (proof corrected) |
+| 1988 AIME, Problem 7 | `alg.trig.identity.sum`, `geo.tri.area.base` | `geo.tri.trig.other` |
+| 1990 AIME, Problem 12 | `geo.poly.regular.diag`, `alg.trig.identity.sum` | `geo.poly.regular.diag` |
+| 2000 AIME II, Problem 10 | `geo.circ.cyclic.tangential`, `alg.trig.identity.sum` | `geo.circ.cyclic.tangential` |
+| 2005 AIME II, Problem 12 | `geo.poly.quad.rect`, `alg.trig.identity.sum` | `geo.poly.quad.rect` |
+| 2006 AIME I, Problem 8 | `geo.poly.quad.para`, `alg.trig.identity.sum` | `geo.poly.quad.para` |
+| 2008 AIME I, Problem 8 | `alg.trig.eq.inverse`, `alg.trig.identity.sum` | `alg.trig.eq.inverse` |
+| 2009 AIME II, Problem 14 | `alg.seq.rec.nonlinear`, `alg.trig.identity.sum` | `alg.seq.rec.nonlinear` |
+| 2011 AIME I, Problem 14 | `geo.poly.regular.other`, `alg.trig.identity.sum` | `geo.poly.regular.other` |
+| 2013 AIME II, Problem 15 | `geo.tri.trig.cosines`, `alg.trig.identity.sum` | `alg.trig.identity.sum` |
+| 2022 AIME I, Problem 15 | `alg.trig.identity.sum`, `alg.eq.system.cyclic` | `alg.eq.system.cyclic` (proof corrected) |
+| 2023 AMC 12A, Problem 11 | `geo.coord.line.slope`, `alg.trig.identity.sum` | `geo.coord.line.slope` |
+| 2023 AMC 12A, Problem 25 | `alg.cx.polar.demoivre`, `alg.trig.identity.sum` | `alg.trig.identity.sum` |
+| 2024 AIME I, Problem 7 | `alg.cx.polar.demoivre`, `alg.trig.identity.sum` | `alg.cx.polar.demoivre` |
+| 2024 AMC 12A, Problem 18 | `geo.coord.transform.rotate`, `alg.trig.identity.sum` | `geo.coord.transform.rotate` |
+| 2024 AMC 12B, Problem 19 | `geo.tri.area.sine`, `alg.trig.identity.sum` | `geo.coord.transform.rotate`, `geo.tri.special.equil` |
+| 2024 AMC 12B, Problem 21 | `alg.trig.identity.sum`, `nt.dio.squares.triples` | `nt.dio.squares.triples` |
+| 2025 AIME II, Problem 14 | `geo.tri.special.equil`, `alg.trig.identity.sum` | `geo.tri.special.equil` |
+| 2004 AMC 12B, Problem 24 | `alg.trig.identity.sum` | `geo.tri.special.isos`, `alg.trig.eq.solve` |
+| 2005 AMC 12B, Problem 24 | `geo.coord.conic.parabola`, `alg.trig.identity.sum` | `geo.coord.conic.parabola` |
+| 2009 AMC 12A, Problem 25 | `alg.trig.identity.sum`, `alg.seq.period.nth` | `alg.seq.period.nth` |
+| 2014 AMC 12A, Problem 12 | `alg.trig.identity.sum` | `geo.circ.power.chord` |
+| 2016 AMC 10A, Problem 24 | `alg.trig.identity.sum` | `geo.circ.power.chord` |
+| 2016 AMC 12A, Problem 21 | `alg.trig.identity.sum` | `geo.circ.power.chord` |
+| 2019 AMC 12B, Problem 25 | `geo.poly.quad.general`, `alg.trig.identity.sum` | `geo.poly.quad.general`, `geo.tri.cevian.median` |
+| 2020 AMC 12B, Problem 7 | `geo.coord.line.slope`, `alg.trig.identity.sum` | `geo.coord.line.slope` |
+| 2022 AMC 12A, Problem 17 | `alg.trig.eq.solve`, `alg.trig.identity.sum` | `alg.trig.eq.solve` |
+| 2022 AMC 12B, Problem 14 | `alg.trig.identity.sum`, `alg.poly.quad.roots` | `geo.coord.line.slope` |
+| 2025 AMC 12B, Problem 16 | `alg.word.rates.clock`, `alg.trig.identity.sum` | `alg.word.rates.clock` |

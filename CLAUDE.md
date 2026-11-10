@@ -79,4 +79,4 @@ $JSC tools/validate-problem-db.js
 - Card order has two values, Curated and Most used; do not bring back "By contest tier". Ramsey $R(3,3)=6$ was removed on purpose (2026-10-23).
 - LIVE's concept tags (`tools/live-cache/`) are hints for finding problems and gaps, never a source of tags or text.
 
-**Focused audit 4 (2026-11-10), in progress:** all 110 problems in integer optimization, trig addition and power-of-a-point pools are read, plus the second Euler-line leaf entry as a control. Optimization corrections and global proof repairs are applied; trig/circle dispositions follow. P69 records subset-sum interval coverage; next P-number is P70. Textbooks and T4 remain paused.
+**Focused audit 4 (2026-11-10), in progress:** all 110 problems in integer optimization, trig addition and power-of-a-point pools are read, plus the second Euler-line leaf entry as a control. Optimization and trig corrections and proof repairs are applied; circle dispositions and final validation follow. P69 records subset-sum interval coverage; next P-number is P70. Textbooks and T4 remain paused.

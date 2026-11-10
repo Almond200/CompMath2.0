@@ -115,4 +115,4 @@ The lab migration remains on hold. Lessons, chapters and books are in the main s
 - LIVE's concept tags are in `tools/live-cache/`. Use them as hints only.
 - Plain writing goes ahead without asking. The owner is asked only about new cards, judgment calls in `QUESTIONS.md`, and real choices.
 
-**Focused audit 4 (2026-11-10), in progress:** all 110 problems in integer optimization, trig addition and power-of-a-point pools are read, plus the second Euler-line leaf entry as a control. Optimization corrections and global proof repairs are applied; trig/circle dispositions follow. P69 records subset-sum interval coverage; next P-number is P70. Textbooks and T4 remain paused.
+**Focused audit 4 (2026-11-10), in progress:** all 110 problems in integer optimization, trig addition and power-of-a-point pools are read, plus the second Euler-line leaf entry as a control. Optimization and trig corrections and proof repairs are applied; circle dispositions and final validation follow. P69 records subset-sum interval coverage; next P-number is P70. Textbooks and T4 remain paused.
