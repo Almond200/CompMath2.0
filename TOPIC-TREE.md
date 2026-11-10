@@ -1,8 +1,8 @@
 # Topic tree
 
-**Status (2026-11-09):** T3 complete, all 4,725 problems filed. Owner-authorized semantic repairs now leave 472 nodes. All 774 cards survive; 740 have homes and 34 general methods do not. [TREE-REPAIRS.md](TREE-REPAIRS.md) is the current migration log. Counts in earlier review sections and test filings below are historical. T4 and textbooks remain paused.
+**Status (2026-11-10):** T3 and requested tree finalization complete: 457 nodes, 28 areas, 314 leaves; all 4,725 problems filed and all 774 cards retained (739 homes, 35 general methods without). [TREE-FINALIZATION.md](TREE-FINALIZATION.md) records the final decisions; [TREE-REPAIRS.md](TREE-REPAIRS.md) records migrations. [TREE-ACCURACY-5.md](TREE-ACCURACY-5.md) records the latest targeted review; [TREE-CAPACITY.md](TREE-CAPACITY.md) measures depth and practice supply. Earlier counts and test filings below are historical. T4 and textbooks remain paused.
 
-**Execution handoff (owner, 2026-11-09):** T3 is complete. The latest request resumes tree work with a larger structural synthesis: [TREE-REVIEW.md](TREE-REVIEW.md) records the chosen area regroupings, targeted semantic reviews and stable-id ancestry prerequisite. Its census helper is `tools/tree-structure-report.cjs`. Stable-id ancestry support and the arithmetic/counting/number-theory area regroupings are applied below: 482 nodes, 28 areas and 337 leaves. All problem filings and card homes are preserved. The subsequent [TREE-AUDIT.md](TREE-AUDIT.md) ranks the remaining semantic pruning: category meanings, travel, probability, triangle families, overlapping labels and the sparse tail. The audit itself changes no filings. T4 and textbooks remain paused. PLAN.md holds the checkpoint and ownership; candidate and validation rules remain in force.
+**Execution handoff (owner, 2026-11-10):** all six TREE-AUDIT.md batches are implemented, including geometry, symmetry, probability and individual sparse-leaf decisions. There are no unused leaves or unresolved pruning decisions in the reviewed corpus. TQ20 is implemented; P64–P69 remain pending card proposals. Preserve stable ids and the recorded migration log. Await owner review; do not resume textbooks or T4.
 
 ## Why
 
@@ -18,7 +18,7 @@ Practice a topic currently offers every card name and every card keyword as a to
 2. **Four levels, sometimes five.** Subject › Area › Topic › Subtopic (owner, 2026-11-06: topics need subtopics, since a topic often holds several kinds of problem). A topic splits into subtopics when its problems fall into recurring kinds, and a subtopic splits once more only on the same condition. A topic whose problems do not split that way stays a leaf. Selecting a node selects everything under it.
 3. **A node is an archetype: a kind of problem that recurs** (owner, 2026-11-06). It is never made for one problem, and a node is added only when several problems across contests fit it; as a guide, about five or more in the database. A thin node is reviewed for a meaningful merge into its nearest neighbour, and a one-off problem files under the broader node it belongs to. Counts are a review trigger, not an automatic reason to merge unrelated kinds; AMC 10/12 twins count once when judging support.
 3a. **A node is a kind of problem, not a formula.** "Power of a point" is a node because contest problems are about it; "Shoelace formula" is not, because it is one tool for "Areas in coordinates". Cards attach to nodes; nodes do not mirror cards.
-3b. **The tree says what a problem is about; the Methods cards say how it is solved** (owner, 2026-11-07). The two are separate axes. A technique node (Casework or Complementary counting) is used only when the technique is the problem: an elementary counting question with no other subject, whose whole structure is the case split or the complement ("how many three-digit numbers contain a 7"). It is never a second label on a problem about something else because one step splits into cases; there the Methods card carries the technique (2024 AMC 12A #25, about functions equal to their own inverse, is filed under Inverse functions, not Casework). Technique-based practice ("practise complementary counting") draws from the problems that cite the Methods card, which finds the technique in every subject; it is not a branch of the tree. Some nodes carry a technique's name but hold a kind of problem, and are read that way: Stars and bars (distribution problems), Inclusion-exclusion (counting what avoids several conditions; Venn problems), Counting with symmetry (counting up to rotation or reflection), Generating functions (a coefficient of a given product). A problem files there only when it is that kind, not because its solution uses the technique. The technique-named nodes that held no kind of problem were retired or renamed (TQ17 to TQ19): Recursion and states, Bijections and Substitution to reveal a factorization are gone, Double counting is "Counting one total in two ways", and the SFFT nodes are "Grouping into products" and "Equations $xy+ax+by=c$".
+3b. **The tree says what a problem is about; the Methods cards say how it is solved** (owner, 2026-11-07). The two are separate axes. A technique node (Casework or Complementary counting) is used only when the technique is the problem: an elementary counting question with no other subject, whose whole structure is the case split or the complement ("how many three-digit numbers contain a 7"). It is never a second label on a problem about something else because one step splits into cases; there the Methods card carries the technique (2024 AMC 12A #25, about functions equal to their own inverse, is filed under Inverse functions, not Casework). Technique-based practice ("practise complementary counting") draws from the problems that cite the Methods card, which finds the technique in every subject; it is not a branch of the tree. Some nodes carry a technique's name but hold a kind of problem, and are read that way: Stars and bars (distribution problems), Inclusion-exclusion (counting what avoids several conditions; Venn problems), Counting with symmetry (counting up to rotation or reflection), Generating functions (a coefficient of a given product). A problem files there only when it is that kind, not because its solution uses the technique. The initial technique-named nodes that held no kind of problem were retired or renamed (TQ17 to TQ19): Recursion and states, Bijections and Substitution to reveal a factorization are gone, Double counting is "Counting one total in two ways", and the SFFT nodes are "Grouping into products" and "Equations $xy+ax+by=c$".
 4. **Every problem has at least one node, usually one or two, at most three.** A problem files under the most specific node that describes it. A problem genuinely about two things (a probability question whose work is geometry) takes a node in each tree.
 5. **Size.** A topic aims for about 25 to 300 problems out of the 4,725; a subtopic for at least about 5. A subtopic that stays smaller after filing is reviewed for merging into its topic, and a problem that fits no subtopic files under the topic itself. There are no separate Olympiad nodes: Olympiad problems file under the same topics as everyone else's (owner, TQ4).
 6. **Stable ids.** Every node has a dotted id (`geo.circle.power`), never reused once problems are filed under it. The display name and parent can change within its subject; the id cannot. Markdown indentation defines parentage and the generated parent field defines ancestry. Old id prefixes may reflect former locations; never infer ancestry from them. Parents precede children, with no cycles and at most five levels.
@@ -57,9 +57,9 @@ All affected filings and card homes were remapped; retired ids are never reused.
 
 Specific corrections: laps (2017 AMC 10B #2), pair partitions (2018 AMC 10B #3), cryptarithms (2001 AMC 10 #13 / 12 #6), exponent arithmetic (2009 AMC 10A #13 / 12A #6), distinct people/animals into rooms/stores (2014 AMC 12A #13; 2013 AMC 12A #15), sampling without replacement (2016 AMC 10A #12), and fixed-step probabilities (2017 AMC 12B #22). The complete Casework review also moves the absolute-value expression, tree-height puzzle, dice sums, ordered-difference puzzle, complex powers and digit-sequence count to their actual subjects. Only 2019 AIME I #4 keeps Casework. Cards still carry case splits used in a route.
 
-Retain for now: unit-cube views/stacking/surface branches (the unread older papers contain these configurations), direct/inverse variation, infinite radicals, parallel-line angle problems and quadratic residues. Their small or zero populations alone do not establish redundancy. Similar triangles, arithmetic sequences and root sums stay intact. Classical inequalities remain separate when their problem structures differ. A final long-tail review follows the complete T3 corpus, before T4.
+At that introductory checkpoint, retained for later review: unit-cube views/stacking/surface branches (the unread older papers contain these configurations), direct/inverse variation, infinite radicals, parallel-line angle problems and quadratic residues. Their small or zero populations alone do not establish redundancy. Similar triangles, arithmetic sequences and root sums stay intact. Classical inequalities remain separate when their problem structures differ. That final long-tail review is now complete in TREE-FINALIZATION.md.
 
-Travel: the proposed multi-stage/stop-time archetype now has five read examples and is recorded as TQ20 for the existing candidate decision process; these remain under Distance, speed and time meanwhile. No new branch is silently added. Counting favorable outcomes remains a fallback to review against more specific existing nodes, rather than a reason to invent method-based subtypes.
+Travel follow-through: TQ20 was reviewed with nine distinct examples and is now implemented as Multi-stage journeys and stops. The full 89-problem finite-probability fallback was also reviewed, with the complete disposition register in TREE-REPAIRS.md.
 
 `node tools/tree-audit.js --census` now reports unused and 1–4-distinct terminal leaves with affected card homes and up to five representative problems/card links, direct assignments on internal nodes, and frequent leaves ranked by sole-label proportion. Distinct counts conservatively collapse one same-year/season/letter AMC 10/12 pair with identical strategies; reworded twins can remain separate. Minimum populations are review prompts, never gate failures. `tests/tree-audit.cjs` covers count and twin-grouping edge cases.
 
@@ -69,7 +69,9 @@ After the full-corpus synthesis in TREE-REVIEW.md, the owner asked to continue. 
 
 Retired empty wrappers: `alg.word` (children distributed among `alg.arithmetic`, `alg.applied` and promoted `alg.word.stats`), `alg.word.units` (conversion under arithmetic, calendars under applied quantities), `cp.tech` and `cp.struct` (children distributed among the five counting areas), `nt.divisor` and `nt.prime` (children moved under `nt.div`). Only `alg.arithmetic` and `alg.applied` are new ids. Existing area ids are retained and renamed where their scope expands; `cp.exp` becomes a topic under Probability and expectation. No retired id had a direct filing or card home; none may be reused.
 
-This changes 486 nodes to 482 and 31 areas to 28, preserving all 337 leaves. The builder, gate and audit now follow explicit parents rather than inferring ancestry from id prefixes; regression checks enforce valid moves, roots, cycles, subjects, depth and nonredundant filings. The experimental viewer already derives its hierarchy from indentation. Geometry and semantic leaf pruning follow after statement review.
+This changes 486 nodes to 482 and 31 areas to 28, preserving all 337 leaves. The builder, gate and audit now follow explicit parents rather than inferring ancestry from id prefixes; regression checks enforce valid moves, roots, cycles, subjects, depth and nonredundant filings. The experimental viewer already derives its hierarchy from indentation. The later geometry and semantic leaf pruning are complete in TREE-REPAIRS.md.
+
+Further targeted reviews: [TREE-ACCURACY.md](TREE-ACCURACY.md) records the four common-label pools; [TREE-ACCURACY-2.md](TREE-ACCURACY-2.md) records area/spatial/right-triangle and progression controls. [TREE-ACCURACY-3.md](TREE-ACCURACY-3.md) adds AP cofilings, nets/polyhedra and mixed-transformation controls. Heron is retired as a problem kind; its cards survive at Triangle area.
 
 ## Semantic repairs (owner-authorized)
 
@@ -91,7 +93,6 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Ratios and proportions `[alg.word.ratio.prop]`
     - Percent change, discounts and interest `[alg.word.ratio.percent]`
     - Mixtures and concentrations `[alg.word.ratio.mix]`
-    - Direct and inverse variation `[alg.word.ratio.vary]`
   - Unit conversion and dimensional analysis `[alg.word.units.convert]`
 - **Rates, time and everyday quantities** `[alg.applied]`
   - Rates, distance and work `[alg.word.rates]`
@@ -118,20 +119,17 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
   - Linear equations and systems `[alg.eq.linear]`
     - One linear equation; setting up equations from words `[alg.eq.linear.one]`
     - Linear systems `[alg.eq.linear.system]`
-    - Systems with a parameter: no or infinitely many solutions `[alg.eq.linear.param]`
   - Manipulating expressions and identities `[alg.eq.identity]`
     - Simplifying and evaluating expressions `[alg.eq.identity.simplify]`
     - Symmetric expressions: $x+y$, $xy$ and $x^n+y^n$ `[alg.eq.identity.symmetric]`
     - Reciprocal expressions: $x+1/x$ `[alg.eq.identity.recip]`
   - Factoring and clever factorizations `[alg.eq.factor]`
     - Difference of squares and cubes `[alg.eq.factor.squares]`
-    - Grouping into products `[alg.eq.factor.sfft]`
     - Sophie Germain and other special factorizations `[alg.eq.factor.special]`
-  - Radicals and nested radicals `[alg.eq.radical]`
+  - Radicals and nested expressions `[alg.eq.radical]`
     - Simplifying and rationalizing radicals `[alg.eq.radical.simplify]`
     - Denesting $\sqrt{a+\sqrt b}$ `[alg.eq.radical.denest]`
     - Equations with radicals `[alg.eq.radical.eq]`
-    - Infinite radicals and continued expressions `[alg.eq.radical.infinite]`
   - Absolute value and piecewise equations `[alg.eq.abs]`
     - Equations and inequalities with absolute values `[alg.eq.abs.eq]`
     - Graphs and regions bounded by absolute values `[alg.eq.abs.graph]`
@@ -218,7 +216,6 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Complex numbers in the plane `[alg.cx.polar.plane]`
   - Roots of unity `[alg.cx.unity]`
     - Roots of unity and their sums `[alg.cx.unity.sums]`
-    - Roots-of-unity filters `[alg.cx.unity.filter]`
     - Polynomial roots on the unit circle `[alg.cx.unity.poly]`
 - **Inequalities and optimization** `[alg.ineq]`
   - Solving inequalities `[alg.ineq.solve]`
@@ -239,7 +236,6 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
   - Lists and the multiplication and addition principles `[cp.basic.principle]`
     - Counting numbers in a list `[cp.basic.principle.list]`
     - Multiplication principle and independent choices `[cp.basic.principle.mult]`
-    - Organized lists and trees `[cp.basic.principle.tree]`
   - Permutations and arrangements `[cp.basic.perm]`
     - Arranging distinct objects `[cp.basic.perm.distinct]`
     - Arrangements with repeated objects `[cp.basic.perm.repeat]`
@@ -259,9 +255,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Distributions with upper or lower bounds `[cp.tech.stars.bounds]`
     - Distinct objects into boxes; surjections `[cp.tech.stars.distinct]`
   - Repeated counts and incidence totals `[cp.tech.bij.double]`
-  - Counting with symmetry `[cp.tech.sym]`
-    - Rotations and reflections; necklaces `[cp.tech.sym.necklace]`
-    - Burnside's lemma `[cp.tech.sym.burnside]`
+  - Rotations, reflections and symmetry conditions `[cp.tech.sym]`
   - Words, digits and strings `[cp.struct.words]`
     - Counting numbers with digit conditions `[cp.struct.words.digits]`
     - Strings with forbidden patterns `[cp.struct.words.forbidden]`
@@ -293,7 +287,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
   - Inclusion-exclusion `[cp.tech.pie]`
     - Two and three sets; Venn diagrams `[cp.tech.pie.venn]`
     - General inclusion-exclusion `[cp.tech.pie.general]`
-  - Generating functions `[cp.tech.gf]`
+  - Generating functions and coefficient counts `[cp.tech.gf]`
   - Pascal's triangle and identities `[cp.binom.identity]`
     - Pascal's rule and the hockey stick `[cp.binom.identity.hockey]`
     - Vandermonde and sums of products `[cp.binom.identity.vandermonde]`
@@ -328,7 +322,6 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Expected waiting times and states `[cp.exp.states]`
     - Variance and distributions `[cp.exp.var]`
 - **Logic, games and bounds** `[cp.logic]`
-  - Largest subsets avoiding a condition `[cp.graph.sets]`
   - Logic puzzles and truth-tellers `[cp.logic.puzzle]`
     - Knights, knaves and truth-tellers `[cp.logic.puzzle.truth]`
     - Statements and logical equivalence (implications, contrapositives and converses, "all" and "some", which statement must follow) `[cp.logic.puzzle.statements]`
@@ -340,34 +333,29 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
   - Invariants and monovariants in processes `[cp.logic.invariant]`
     - Parity and coloring invariants `[cp.logic.invariant.parity]`
     - Operations on boards and lists `[cp.logic.invariant.ops]`
-  - Pigeonhole and extremal arguments `[cp.logic.pigeon]`
+  - Pigeonhole, constructions and extremal configurations `[cp.logic.pigeon]`
     - Pigeonhole principle `[cp.logic.pigeon.pigeon]`
-    - Extremal principle `[cp.logic.pigeon.extremal]`
     - Constructions and bounds (the most or the fewest possible) `[cp.logic.pigeon.bounds]`
+      - Extremal subsets and set families `[cp.graph.sets]`
 
 ### Geometry `[geo]`
 
-- **Lengths and angles** `[geo.basic]`
+- **Angles, similarity and transformations** `[geo.basic]`
   - Angle chasing `[geo.basic.angle]`
-    - Parallel lines and transversals `[geo.basic.angle.parallel]`
     - Angles in triangles and polygons `[geo.basic.angle.polygon]`
-    - Isosceles triangles in angle chases `[geo.basic.angle.isosceles]`
-  - Pythagorean theorem and right triangles `[geo.basic.pyth]`
-    - Pythagorean theorem and triples `[geo.basic.pyth.triples]`
-    - Altitude to the hypotenuse `[geo.basic.pyth.altitude]`
-    - Folding and creases `[geo.basic.pyth.fold]`
   - Similarity and congruence `[geo.basic.sim]`
     - Congruence `[geo.basic.sim.congruent]`
-    - Similar triangles and ratios `[geo.basic.sim.similar]`
-    - Parallel lines and proportional segments `[geo.basic.sim.parallel]`
     - Similar figures and solids: length, area and volume ratios `[geo.basic.sim.figures]`
+  - Transformations `[geo.coord.transform]`
+    - Reflections `[geo.coord.transform.reflect]`
+    - Rotations `[geo.coord.transform.rotate]`
+    - Dilations and homothety `[geo.coord.transform.dilate]`
+    - Folding and creases `[geo.basic.pyth.fold]`
 - **Triangles** `[geo.tri]`
   - Area of a triangle `[geo.tri.area]`
     - Base and height `[geo.tri.area.base]`
-    - Heron's formula `[geo.tri.area.heron]`
     - $\tfrac12 ab\sin C$ `[geo.tri.area.sine]`
   - Special triangles `[geo.tri.special]`
-    - 30-60-90 and 45-45-90 triangles `[geo.tri.special.right]`
     - Equilateral triangles `[geo.tri.special.equil]`
     - Isosceles triangles `[geo.tri.special.isos]`
   - Triangle inequality `[geo.tri.ineq]`
@@ -376,7 +364,6 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
   - Cevians, angle bisectors and medians `[geo.tri.cevian]`
     - Angle bisector theorem `[geo.tri.cevian.bisector]`
     - Medians and the centroid `[geo.tri.cevian.median]`
-    - Stewart's theorem `[geo.tri.cevian.stewart]`
     - Ceva and Menelaus `[geo.tri.cevian.ceva]`
   - Area ratios and mass points `[geo.tri.ratio]`
     - Area ratios from shared heights or bases `[geo.tri.ratio.area]`
@@ -393,6 +380,12 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Orthocenter and altitudes `[geo.tri.centers.ortho]`
     - The Euler line and the nine-point circle `[geo.tri.centers.euler]`
     - Classical lemmas, isogonal conjugates and symmedians `[geo.tri.centers.lemmas]`
+  - Right triangles `[geo.basic.pyth]`
+    - Right-triangle lengths and integer triples `[geo.basic.pyth.triples]`
+    - Altitude to the hypotenuse `[geo.basic.pyth.altitude]`
+    - 30-60-90 and 45-45-90 triangles `[geo.tri.special.right]`
+  - Similar triangles and ratios `[geo.basic.sim.similar]`
+    - Triangles cut by parallel lines and midsegments `[geo.basic.sim.parallel]`
 - **Polygons** `[geo.poly]`
   - Quadrilaterals `[geo.poly.quad]`
     - Rectangles and squares `[geo.poly.quad.rect]`
@@ -428,7 +421,6 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Common tangents of two circles `[geo.circ.tangent.common]`
   - Cyclic and tangential quadrilaterals `[geo.circ.cyclic]`
     - Cyclic quadrilaterals and Ptolemy `[geo.circ.cyclic.ptolemy]`
-    - Brahmagupta's formula `[geo.circ.cyclic.brahmagupta]`
     - Tangential quadrilaterals and Pitot `[geo.circ.cyclic.tangential]`
   - Radical axes, inversion and projective tools `[geo.circ.proj]`
 - **Coordinate geometry** `[geo.coord]`
@@ -444,10 +436,6 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Circles in the coordinate plane `[geo.coord.conic.circle]`
     - Parabolas `[geo.coord.conic.parabola]`
     - Ellipses and hyperbolas `[geo.coord.conic.ellipse]`
-  - Transformations `[geo.coord.transform]`
-    - Reflections `[geo.coord.transform.reflect]`
-    - Rotations `[geo.coord.transform.rotate]`
-    - Dilations and homothety `[geo.coord.transform.dilate]`
   - Complex numbers and vectors in geometry `[geo.coord.vector]`
     - Vectors and dot products `[geo.coord.vector.dot]`
     - Complex numbers as points `[geo.coord.vector.complex]`
@@ -464,7 +452,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Cones and frustums `[geo.solid.round.cone]`
     - Spheres and inscribed spheres `[geo.solid.round.sphere]`
   - Polyhedra, nets and cross-sections `[geo.solid.poly]`
-    - Polyhedra and Euler's formula `[geo.solid.poly.euler]`
+    - Regular solids, faces, edges and vertices `[geo.solid.poly.euler]`
     - Nets and unfolding `[geo.solid.poly.nets]`
     - Cross-sections and slices `[geo.solid.poly.section]`
   - Coordinates and vectors in space `[geo.solid.coord]`
@@ -525,14 +513,15 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Splitting a modulus into prime powers `[nt.mod.crt.split]`
   - Quadratic residues and squares modulo small numbers `[nt.mod.qr]`
 - **Diophantine equations** `[nt.dio]`
+  - Integer square and power conditions `[nt.seq.power.expr]`
+    - Differences of squares and shifted square equations `[nt.dio.factor.squares]`
   - Linear Diophantine equations and the Frobenius problem `[nt.dio.linear]`
     - Solving $ax+by=c$ `[nt.dio.linear.solve]`
     - Counting solutions with positivity or bounds `[nt.dio.linear.count]`
     - Chicken McNugget and the Frobenius number `[nt.dio.linear.frob]`
   - Factoring and SFFT `[nt.dio.factor]`
     - Equations $xy+ax+by=c$ `[nt.dio.factor.sfft]`
-    - Difference of squares and other factorable forms `[nt.dio.factor.squares]`
-  - Pythagorean triples and sums of squares `[nt.dio.squares]`
+  - Quadratic Diophantine equations `[nt.dio.squares]`
     - Pythagorean triples `[nt.dio.squares.triples]`
     - Sums of two squares and Pell equations `[nt.dio.squares.sums]`
   - Bounding and parity arguments `[nt.dio.bound]`
@@ -551,9 +540,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Repeating decimals and their periods `[nt.digit.decimal.repeat]`
     - Terminating decimals and simplest fractions `[nt.digit.decimal.terminate]`
 - **Integer sequences and special numbers** `[nt.seq]`
-  - Perfect squares, cubes and powers `[nt.seq.power]`
-    - Perfect squares and squares between bounds `[nt.seq.power.squares]`
-    - Perfect powers and when an expression is a square `[nt.seq.power.expr]`
+  - Perfect squares and squares between bounds `[nt.seq.power.squares]`
   - Special numbers `[nt.seq.special]`
     - Fibonacci and Lucas numbers `[nt.seq.special.fib]`
     - Triangular, figurate and palindromic numbers `[nt.seq.special.figurate]`

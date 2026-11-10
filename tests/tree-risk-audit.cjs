@@ -27,4 +27,22 @@ const empty = riskAudit([...tree, ['cp.empty', 'Empty', 'cp.area']], [], { a: 'c
 assert.equal(empty.totals.unusedLeaves, 4);
 assert.equal(empty.totals.thinHomes, 1);
 assert.deepEqual(empty.cofilings, []);
-console.log('OK - risk census uses parent links, twin-aware unions, direct cofilings and distinct card homes');
+assert.equal(empty.capacity.leaves.median, 0);
+assert.equal(empty.capacity.internalTopics.median, null);
+// Practice capacity is the union below a chosen node, with twins counted once.
+// The leaf's old id spelling must neither add a level nor change its subject.
+const nested = [['nt', 'Number theory', null], ['nt.area', 'Area', 'nt'],
+  ['nt.topic', 'Topic', 'nt.area'], ['nt.old.deep.name', 'A', 'nt.topic'], ['nt.b', 'B', 'nt.topic']];
+const capacity = riskAudit(nested, [
+  { ref: '2024 AMC 10A, Problem 1', strategy: 'same', tree: ['nt.old.deep.name', 'nt.b'] },
+  { ref: '2024 AMC 12A, Problem 1', strategy: 'same', tree: ['nt.old.deep.name', 'nt.b'] },
+  { ref: '2024 AMC 8, Problem 1', tree: ['nt.old.deep.name'] },
+  { ref: '2024 AIME I, Problem 1', tree: ['nt.topic'] }
+], {}).capacity;
+assert.deepEqual(capacity.leafDepths, { 4: 2 });
+assert.equal(capacity.leaves.median, 1.5);
+assert.equal(capacity.internalTopics.min, 3); // not 4 raw entries or 4 assignments
+assert.equal(capacity.byContestFamily['AMC 8/AJHSME'].empty, 1);
+assert.equal(capacity.byContestFamily['AMC 10/12'].max, 1);
+assert.equal(capacity.bySubject.nt.oneToFour, 2);
+console.log('OK - risk/capacity census uses parent links, twin-aware unions, family pools and distinct card homes');

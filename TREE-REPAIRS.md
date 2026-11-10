@@ -338,3 +338,575 @@ Every affected card survives:
 | Card | Previous home | Current home |
 |---|---|---|
 | `shared-leg-pythagoras` | `geo.basic.pyth.hidden` | `geo.basic.pyth.triples` |
+
+## Geometry: unified triangle families
+
+Read all 37 distinct isosceles cases, all 19 parallel-segment cases and the complete current 30-entry right-triangle-length pool, in addition to the hidden-right review. Retired the duplicate isosceles-angle leaf into Isosceles triangles, removing incidental equal-radius/constructed-triangle labels from circle, trapezoid and rotation problems. Right triangles and Similar triangles now live under Triangles; parallel cuts/midsegments are a meaningful child of triangle similarity. Folding moves under Transformations, and Transformations moves out of coordinate-only geometry to Angles, similarity and transformations. General similarity of figures/solids remains separate. Rectangle/route questions and a folded-table question receive their actual subjects. The pure structural step exactly preserves the before/after problem and card-home unions for all three destination pools and the entire geometry subject; the separately listed semantic corrections intentionally change memberships. Stable ids survive moves; only the redundant isosceles-angle id is retired here.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1984 AIME, Problem 3 | `geo.basic.sim.parallel`, `geo.basic.sim.figures` | `geo.basic.sim.parallel` |
+| 1986 AIME, Problem 9 | `geo.basic.sim.parallel`, `geo.basic.sim.figures` | `geo.basic.sim.parallel` |
+| 1995 AIME, Problem 9 | `alg.trig.identity.sum`, `geo.tri.special.isos` | `geo.tri.special.isos` |
+| 2000 AIME I, Problem 14 | `geo.basic.angle.isosceles`, `geo.tri.trig.sines` | `geo.tri.special.isos`, `geo.tri.trig.sines` |
+| 2003 AIME I, Problem 10 | `geo.basic.angle.isosceles`, `geo.basic.sim.congruent` | `geo.tri.special.isos`, `geo.basic.sim.congruent` |
+| 2011 AIME I, Problem 4 | `geo.tri.cevian.bisector`, `geo.basic.sim.parallel` | `geo.tri.cevian.bisector` |
+| 2011 AIME I, Problem 8 | `geo.comb.extreme.maxmin`, `geo.basic.sim.parallel` | `geo.comb.extreme.maxmin`, `geo.basic.pyth.fold` |
+| 2012 AIME II, Problem 4 | `alg.word.rates.motion.stages`, `geo.basic.pyth.triples` | `alg.word.rates.motion.stages`, `geo.poly.quad.rect` |
+| 2014 AIME I, Problem 1 | `geo.basic.pyth.triples` | `geo.poly.general.perim` |
+| 2014 AIME II, Problem 3 | `geo.poly.composite.add`, `geo.tri.special.isos` | `geo.poly.composite.add` |
+| 2014 AIME II, Problem 11 | `geo.tri.special.right`, `geo.basic.sim.parallel` | `geo.tri.special.right` |
+| 2015 AIME I, Problem 6 | `geo.circ.inscribed.thm`, `geo.basic.angle.isosceles` | `geo.circ.inscribed.thm` |
+| 2015 AIME I, Problem 11 | `geo.tri.trig.other`, `geo.tri.special.isos` | `geo.tri.special.isos`, `geo.tri.radii.in` |
+| 2019 AIME II, Problem 1 | `geo.basic.sim.similar`, `geo.basic.pyth.triples` | `geo.basic.sim.similar`, `geo.poly.composite.overlap` |
+| 2020 AIME I, Problem 1 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2022 AIME I, Problem 3 | `geo.poly.quad.trap`, `geo.basic.angle.isosceles` | `geo.poly.quad.trap` |
+| 2023 AMC 10B, Problem 7 | `geo.basic.angle.isosceles`, `geo.coord.transform.rotate` | `geo.coord.transform.rotate` |
+| 2000 AMC 8, Problem 13 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2000 AMC 8, Problem 24 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2007 AMC 8, Problem 14 | `geo.tri.special.isos`, `geo.basic.pyth.triples` | `geo.tri.special.isos` |
+| 2009 AMC 8, Problem 19 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2014 AMC 8, Problem 9 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2003 AMC 10B, Problem 6 | `geo.basic.pyth.triples` | `geo.poly.quad.rect` |
+| 2003 AMC 12B, Problem 5 | `geo.basic.pyth.triples` | `geo.poly.quad.rect` |
+| 2007 AMC 10A, Problem 8 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2007 AMC 12A, Problem 6 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2008 AMC 10A, Problem 14 | `geo.basic.pyth.triples` | `geo.poly.quad.rect` |
+| 2008 AMC 12A, Problem 9 | `geo.basic.pyth.triples` | `geo.poly.quad.rect` |
+| 2008 AMC 10B, Problem 24 | `geo.basic.angle.isosceles`, `geo.tri.special.equil` | `geo.tri.special.isos` |
+| 2009 AMC 10B, Problem 9 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2015 AMC 10A, Problem 11 | `geo.basic.pyth.triples` | `geo.poly.quad.rect` |
+| 2015 AMC 12A, Problem 8 | `geo.basic.pyth.triples` | `geo.poly.quad.rect` |
+| 2019 AMC 10B, Problem 16 | `geo.basic.angle.isosceles`, `geo.basic.pyth.triples` | `geo.tri.special.isos`, `geo.basic.pyth.triples` |
+| 2022 AMC 10B, Problem 2 | `geo.poly.quad.para`, `geo.basic.pyth.triples` | `geo.poly.quad.para` |
+| 2022 AMC 12B, Problem 2 | `geo.poly.quad.para`, `geo.basic.pyth.triples` | `geo.poly.quad.para` |
+| 2021 Fall AMC 10A, Problem 7 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+| 2021 Fall AMC 12A, Problem 6 | `geo.basic.angle.isosceles` | `geo.tri.special.isos` |
+
+## Integer square and power conditions
+
+Read all 27 distinct problems in the power-expression/factorable-equation union. Move the stable power-expression node from number-theory sequences to Diophantine equations, with Differences of squares and shifted square equations beneath it. This makes the actual broad/narrow relationship explicit and removes redundant parent labels. Keep genuine prime, digit and integer-length subjects; factorization alone no longer adds a second subject to divisor-pair questions. General factorable equations stay under Factoring and SFFT; Quadratic Diophantine equations houses binary quadratic forms, rather than miscalling them differences of squares. The two corrected strategies supply equality attainment for the 1991 minimum and distinguish root distances from roots in the 2014 parabola question. All answers are unchanged and the numerical claims were checked. No nodes or cards were deleted.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1991 AIME, Problem 15 | `alg.ineq.means.cs`, `nt.dio.factor.squares` | `alg.ineq.means.cs`, `nt.dio.factor.squares` (proof corrected) |
+| 1999 AIME, Problem 3 | `nt.seq.power.expr`, `nt.dio.factor.squares` | `nt.dio.factor.squares` |
+| 2000 AIME II, Problem 2 | `nt.dio.factor.squares`, `nt.divisor.count.tau` | `nt.dio.factor.squares` |
+| 2003 AIME I, Problem 7 | `geo.tri.cevian.stewart`, `nt.dio.factor.squares` | `geo.tri.special.isos`, `nt.dio.factor.squares` |
+| 2003 AIME II, Problem 10 | `nt.dio.factor.squares`, `nt.seq.power.expr` | `nt.dio.factor.squares` |
+| 2005 AIME I, Problem 4 | `nt.seq.power.expr`, `nt.dio.bound.size` | `nt.seq.power.expr` |
+| 2008 AIME II, Problem 15 | `nt.dio.squares.sums`, `nt.dio.factor.squares` | `nt.seq.power.expr` |
+| 2014 AIME I, Problem 6 | `alg.poly.quad.vertex`, `nt.dio.factor.squares` | `alg.poly.quad.vertex`, `alg.poly.introot` (proof corrected) |
+| 2015 AIME I, Problem 3 | `nt.prime.basic.expr`, `nt.dio.factor.squares` | `nt.prime.basic.expr`, `nt.seq.power.expr` |
+| 2017 AIME II, Problem 6 | `nt.seq.power.expr`, `nt.dio.factor.squares` | `nt.dio.factor.squares` |
+| 2022 AIME I, Problem 14 | `geo.tri.centers.lemmas`, `geo.tri.trig.cosines`, `nt.dio.factor.squares` | `geo.tri.centers.lemmas`, `geo.tri.trig.cosines`, `nt.dio.squares` |
+| 2023 AMC 10A, Problem 23 | `nt.dio.factor.squares`, `nt.divisor.count.pairs` | `nt.divisor.count.pairs` |
+| 2023 AMC 10B, Problem 14 | `nt.seq.power.expr`, `nt.dio.bound.size` | `nt.seq.power.expr` |
+| 2024 AMC 10A, Problem 11 | `nt.dio.factor.squares`, `nt.seq.power.expr` | `nt.dio.factor.squares` |
+| 2024 AMC 10A, Problem 15 | `nt.dio.factor.squares`, `nt.seq.power.expr` | `nt.dio.factor.squares` |
+| 2024 AMC 12A, Problem 9 | `nt.dio.factor.squares`, `nt.seq.power.expr` | `nt.dio.factor.squares` |
+| 2025 AIME I, Problem 4 | `nt.dio.factor.squares`, `nt.div.rules.count` | `nt.dio.factor` |
+| 2011 AMC 12B, Problem 21 | `nt.dio.factor.squares` | `nt.digit.sum.reverse`, `nt.dio.factor.squares` |
+| 2016 AMC 12B, Problem 10 | `geo.coord.line.dist`, `nt.dio.factor.squares` | `geo.poly.quad.rect`, `nt.dio.factor.squares` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `binary-quadratic-forms` | `nt.dio.factor.squares` | `nt.dio.squares` |
+
+## Extremal subsets, constructions and actual subjects
+
+Read all 28 distinct problems in the subset/bounds/extremal union. Move the stable set-family node under Constructions and bounds, explicitly covering maximal and intersecting set families as well as forbidden pairs. Remove redundant broad labels and incidental optimization labels from operations, statistics, graph connectivity, absolute values and Venn-overlap questions. Retire the technique-only Extremal principle node: its three problems receive their actual kinds, Dilworth moves to extremal sets, and the general extremal method remains available without a subject home. All 774 cards survive (739 homes; 35 general methods without). The 1989 AIME subset proof now supplies the missing first-twenty bound and treats periodic residues as a construction, not a characterization. The 2026 AIME grid proof now proves a global bound by threshold cuts and an interior matching, replacing the explicitly incomplete checkerboard/annealing claim; both attainments and all numerical values were checked exactly. The grid cites the double-counting and coloring routes it actually uses, not a generic extremal-principle tag.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2026 AMC 10A, Problem 25 | `cp.logic.pigeon.bounds`, `cp.logic.invariant.ops` | `cp.logic.invariant.ops` |
+| 2026 AIME II, Problem 13 | `cp.logic.pigeon.bounds`, `nt.div.prime.factor` | `cp.logic.pigeon.bounds` |
+| 2026 AIME I, Problem 11 | `cp.logic.pigeon.bounds` | `cp.logic.pigeon.bounds` (proof corrected) |
+| 1988 AIME, Problem 4 | `alg.eq.abs.eq`, `cp.logic.pigeon.bounds` | `alg.eq.abs.eq` |
+| 1989 AIME, Problem 13 | `cp.graph.sets` | `cp.graph.sets` (proof corrected) |
+| 2022 AMC 10B, Problem 14 | `cp.graph.sets`, `cp.logic.pigeon.bounds` | `cp.graph.sets` |
+| 2023 AIME II, Problem 11 | `cp.graph.sets`, `cp.basic.comb.subsets` | `cp.graph.sets` |
+| 2023 AMC 10B, Problem 10 | `cp.logic.pigeon.bounds`, `cp.logic.invariant.parity` | `cp.logic.pigeon.bounds` |
+| 2023 AMC 12B, Problem 5 | `cp.logic.pigeon.bounds`, `cp.logic.invariant.parity` | `cp.logic.pigeon.bounds` |
+| 2024 AMC 10A, Problem 4 | `cp.logic.pigeon.bounds` | `alg.ineq.optimize.integer` |
+| 2024 AMC 10A, Problem 6 | `cp.logic.invariant.ops`, `cp.logic.pigeon.bounds` | `cp.logic.invariant.ops` |
+| 2024 AMC 10A, Problem 20 | `cp.graph.sets`, `cp.logic.pigeon.bounds` | `cp.graph.sets` |
+| 2024 AMC 10B, Problem 12 | `cp.basic.comb.subsets`, `cp.logic.pigeon.bounds` | `cp.graph.sets` |
+| 2024 AMC 10B, Problem 16 | `cp.logic.invariant.parity`, `cp.logic.invariant.ops`, `cp.logic.pigeon.bounds` | `cp.logic.invariant.parity` |
+| 2024 AMC 12A, Problem 3 | `cp.logic.pigeon.bounds` | `alg.ineq.optimize.integer` |
+| 2025 AMC 10A, Problem 21 | `cp.graph.sets`, `cp.logic.pigeon.bounds` | `cp.graph.sets` |
+| 2025 AMC 12A, Problem 15 | `cp.graph.sets`, `cp.logic.pigeon.bounds` | `cp.graph.sets` |
+| 1988 AJHSME, Problem 16 | `cp.logic.pigeon.bounds` | `cp.graph.sets` |
+| 2025 AMC 8, Problem 15 | `cp.logic.pigeon.extremal` | `cp.logic.pigeon.bounds` |
+| 2005 AMC 10B, Problem 25 | `cp.logic.pigeon.extremal` | `cp.graph.sets` |
+| 2010 AMC 10B, Problem 12 | `cp.logic.pigeon.bounds` | `cp.tech.pie.venn` |
+| 2010 AMC 12B, Problem 6 | `cp.logic.pigeon.bounds` | `cp.tech.pie.venn` |
+| 2012 AMC 12A, Problem 17 | `nt.mod.basic.arith`, `cp.logic.pigeon.extremal` | `nt.mod.basic.arith`, `cp.graph.sets` |
+| 2018 AMC 10B, Problem 14 | `cp.logic.pigeon.bounds` | `alg.word.stats.median` |
+| 2018 AMC 12B, Problem 10 | `cp.logic.pigeon.bounds` | `alg.word.stats.median` |
+| 2021 Fall AMC 12A, Problem 16 | `cp.graph.basic.trees`, `cp.logic.pigeon.bounds` | `cp.graph.basic.trees` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `dilworths-theorem` | `cp.logic.pigeon.extremal` | `cp.graph.sets` |
+| `extremal-principle` | `cp.logic.pigeon.extremal` | `None` |
+
+## One symmetry pool, distinguished by problem rather than solution tool
+
+Read the entire current pool: 15 distinct problems (the original 13 plus two moved during the probability review). Merge the necklace/rotation and Burnside leaves into the stable parent, renamed Rotations, reflections and symmetry conditions. It covers equivalence classes and prescribed invariance; the cards still distinguish Burnside, orbit reasoning and direct enumeration. Every old descendant filing survives at that parent and all three affected reference cards retain a home. The cube-labeling solution now prints the three valid neighbor triples and the face equations behind its finite check; exhaustive enumeration of all 35 triples verifies them. No answer changed.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1996 AIME, Problem 7 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2006 AIME II, Problem 8 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2013 AIME I, Problem 4 | `cp.tech.sym.necklace`, `cp.prob.basic.count` | `cp.tech.sym`, `cp.prob.basic.count` |
+| 2017 AMC 10B, Problem 18 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2024 AIME I, Problem 11 | `cp.prob.basic.count`, `cp.tech.sym.necklace` | `cp.prob.basic.count`, `cp.tech.sym` |
+| 2003 AMC 12B, Problem 10 | `cp.tech.sym.necklace` | `cp.tech.sym` |
+| 2007 AMC 12B, Problem 16 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2010 AMC 12A, Problem 25 | `cp.tech.sym.burnside`, `cp.tech.stars.bounds` | `cp.tech.sym`, `cp.tech.stars.bounds` |
+| 2016 AMC 10A, Problem 18 | `cp.tech.sym.necklace` | `cp.tech.sym` (proof corrected) |
+| 2016 AMC 12A, Problem 14 | `cp.tech.sym.necklace` | `cp.tech.sym` (proof corrected) |
+| 2017 AMC 12B, Problem 13 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2018 AMC 10A, Problem 20 | `cp.tech.sym.necklace` | `cp.tech.sym` |
+| 2018 AMC 12A, Problem 15 | `cp.tech.sym.necklace` | `cp.tech.sym` |
+| 2000 AMC 12, Problem 25 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2021 Fall AMC 10B, Problem 24 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| 2021 Fall AMC 12B, Problem 20 | `cp.tech.sym.burnside` | `cp.tech.sym` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `necklace-formula` | `cp.tech.sym.necklace` | `cp.tech.sym` |
+| `burnsides-lemma` | `cp.tech.sym.burnside` | `cp.tech.sym` |
+| `polya-enumeration` | `cp.tech.sym.burnside` | `cp.tech.sym` |
+
+## Sparse leaves: actual kinds, broader homes and proof review
+
+Read the complete parameter-system, variation, organized-listing, generating-function and Stewart/Brahmagupta filing pools before changing them. The sole parameter-system entry is a single rational equation; the two listing questions are operations or coin trials; Stewart is only an intermediate length tool in the remaining geometry entries. Retire those three technique/misleading leaves and the unsupported variation subdivision into their existing subject parents. Retire the two unused leaves (infinite radicals and parallel-line angles), explicitly rehoming all five cards; trapezoid angles belong with trapezoids. Cyclic quadrilateral area/radius cards move to the cyclic parent; the incircle optimization belongs to tangential quadrilaterals. Its proof now bounds every inscribed circle and constructs equality, rather than assuming the optimum is tangential. Exact side, area and angle computations confirm it. Three incidental generating-function labels are removed while the actual coefficient-of-a-product question retains that kind. All eight affected cards survive. No textbook content changes.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1994 AIME, Problem 5 | `nt.digit.sum.condition`, `cp.tech.gf` | `nt.digit.sum.condition` |
+| 2010 AIME I, Problem 4 | `cp.prob.dice.coins`, `cp.tech.gf` | `cp.prob.dice.coins` |
+| 2010 AIME I, Problem 15 | `geo.tri.radii.in`, `geo.tri.cevian.stewart` | `geo.tri.radii.in` |
+| 2006 AMC 8, Problem 10 | `alg.word.ratio.vary`, `alg.word.stats.data` | `alg.word.ratio`, `alg.word.stats.data` |
+| 2024 AMC 8, Problem 8 | `cp.basic.principle.tree` | `cp.logic.invariant.ops` |
+| 2024 AMC 8, Problem 25 | `cp.tech.gf`, `cp.prob.basic.complement` | `cp.prob.basic.count`, `cp.basic.comb.gaps` |
+| 2002 AMC 10B, Problem 12 | `alg.eq.linear.param` | `alg.eq` |
+| 2008 AMC 10A, Problem 22 | `cp.prob.dice.coins`, `cp.basic.principle.tree` | `cp.prob.dice.coins` |
+| 2011 AMC 12A, Problem 24 | `geo.circ.cyclic.brahmagupta`, `geo.circ.cyclic.tangential` | `geo.circ.cyclic.tangential` (proof corrected) |
+| 2021 Spring AMC 12B, Problem 11 | `geo.tri.cevian.stewart`, `geo.basic.sim.similar` | `geo.poly.quad.trap`, `geo.basic.sim.similar` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `ramanujan-nested-radical` | `alg.eq.radical.infinite` | `alg.eq.radical` |
+| `parallel-exterior-angles` | `geo.basic.angle.parallel` | `geo.basic.angle` |
+| `trapezoid-consecutive-angles` | `geo.basic.angle.parallel` | `geo.poly.quad.trap` |
+| `parallel-by-angle-sum` | `geo.basic.angle.parallel` | `geo.basic.angle` |
+| `stewarts-theorem` | `geo.tri.cevian.stewart` | `geo.tri.cevian` |
+| `brahmaguptas-formula` | `geo.circ.cyclic.brahmagupta` | `geo.circ.cyclic` |
+| `cyclic-quad-radius` | `geo.circ.cyclic.brahmagupta` | `geo.circ.cyclic` |
+| `infinite-nest` | `alg.eq.radical.infinite` | `alg.eq.radical` |
+
+## Final sparse-pool controls: roots filters and multinomial trials
+
+Read the remaining two root-filter questions and all four multinomial-expansion entries. The root filter is a tool in a complex product probability and a subset-sum probability; both now carry those actual kinds, while the filter card moves to Roots of unity. The two genuine polynomial expansions retain their kind. Soccer/game winner probabilities move to independent trials, with the missing earned multinomial tag added to the soccer strategy. These controls leave no root-filter problem kind or lost card. Four raw entries changed.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2001 AIME II, Problem 11 | `cp.prob.basic.complement`, `cp.binom.thm.multinomial` | `cp.prob.cond.indep` |
+| 2017 AMC 12A, Problem 25 | `alg.cx.polar.arith`, `alg.cx.unity.filter` | `alg.cx.polar.arith`, `cp.prob.cond.indep` |
+| 2018 AIME I, Problem 12 | `cp.basic.comb.subsets`, `alg.cx.unity.filter` | `cp.basic.comb.subsets`, `cp.prob.basic.count` |
+| 2012 AMC 12A, Problem 11 | `cp.binom.thm.multinomial`, `cp.prob.cond.indep` | `cp.prob.cond.indep` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `roots-of-unity-filter` | `alg.cx.unity.filter` | `alg.cx.unity` |
+
+Final structural cleanup: retire the now-empty single-child wrapper `nt.seq.power` and promote `nt.seq.power.squares` to the Integer sequences area. The wrapper had no direct problems or card homes, so every problem and card set is unchanged. Other single-child branches have direct filings or homes and are retained.
+
+The quadrilateral proof also handles a potentially concave quadrilateral via its triangular convex hull: perimeter at most 42, inradius at most 21/√27 by Heron and AM–GM, below the attained 2√6. The two cards are cited for that explicit bound.
+
+## Accuracy follow-up: all 60 root-sum filings
+
+Owner-requested follow-up after the concentration census. Read every statement and strategy in the 60-distinct root-sum pool. Remove polynomial-root labels where a quadratic is an intermediate tool in a handshake, geometry, logarithm, exponential, absolute-value, composition or periodic-graph problem. Keep the Vieta cards when earned. Integer-root constraints and transformed roots move to the existing more specific leaves; the binary quadratic form belongs under Quadratic Diophantine equations rather than Sums of two squares. All other filings remain, including genuine polynomial-root expressions with complex or arithmetic restrictions. Correct the signs of the two individual companion roots in 2020 AIME I #14: they are 1/2 minus 3 and 1/2 minus 4, whose sum is -6. Its final answer 85 is unchanged.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2026 AMC 10A, Problem 13 | `cp.graph.basic.degree`, `alg.poly.vieta.basic` | `cp.graph.basic.degree` |
+| 2026 AIME I, Problem 6 | `alg.exp.log.eq`, `alg.poly.vieta.basic`, `nt.divisor.count.tau` | `alg.exp.log.eq`, `nt.divisor.count.tau` |
+| 1983 AIME, Problem 3 | `alg.eq.radical.eq`, `alg.poly.vieta.basic` | `alg.eq.radical.eq` |
+| 1991 AIME, Problem 7 | `alg.fn.basic.iterate`, `alg.poly.vieta.basic` | `alg.fn.basic.iterate` |
+| 1991 AIME, Problem 8 | `alg.poly.vieta.basic`, `alg.eq.factor.sfft` | `alg.poly.introot` |
+| 1995 AIME, Problem 2 | `alg.exp.log.eq`, `alg.poly.vieta.basic` | `alg.exp.log.eq` |
+| 2002 AIME II, Problem 15 | `geo.circ.tangent.inscribed`, `alg.poly.vieta.basic` | `geo.circ.tangent.inscribed` |
+| 2005 AIME I, Problem 8 | `alg.exp.rules.eq`, `alg.poly.vieta.basic` | `alg.exp.rules.eq` |
+| 2011 AIME I, Problem 15 | `alg.poly.vieta.basic`, `nt.dio.squares.sums` | `alg.poly.introot`, `nt.dio.squares` |
+| 2020 AIME I, Problem 14 | `alg.poly.vieta.basic`, `alg.fn.basic.compose` | `alg.poly.vieta.basic`, `alg.fn.basic.compose` (proof corrected) |
+| 2022 AMC 10A, Problem 16 | `alg.poly.vieta.basic`, `alg.poly.vieta.transform` | `alg.poly.vieta.transform` |
+| 2023 AMC 12A, Problem 19 | `alg.exp.log.eq`, `alg.poly.vieta.basic` | `alg.exp.log.eq` |
+| 2025 AIME I, Problem 11 | `alg.fn.graph.periodic`, `alg.poly.vieta.basic` | `alg.fn.graph.periodic` |
+| 2003 AMC 10A, Problem 5 | `alg.poly.vieta.basic` | `alg.poly.vieta.transform` |
+| 2006 AMC 10B, Problem 14 | `alg.poly.vieta.basic` | `alg.poly.vieta.transform` |
+| 2009 AMC 12A, Problem 14 | `geo.tri.ratio.area`, `alg.poly.vieta.basic` | `geo.tri.ratio.area` |
+| 2015 AMC 10A, Problem 23 | `alg.poly.vieta.basic`, `nt.dio.factor.sfft` | `alg.poly.introot` |
+| 2015 AMC 12A, Problem 18 | `alg.poly.vieta.basic`, `nt.dio.factor.sfft` | `alg.poly.introot` |
+| 2020 AMC 10A, Problem 5 | `alg.eq.abs.eq`, `alg.poly.vieta.basic` | `alg.eq.abs.eq` |
+| 2022 AMC 12A, Problem 15 | `alg.poly.vieta.basic`, `alg.poly.vieta.transform` | `alg.poly.vieta.transform` |
+| 2022 AMC 12A, Problem 22 | `alg.cx.polar.plane`, `alg.poly.vieta.basic`, `geo.poly.quad.trap` | `alg.cx.polar.plane`, `geo.poly.quad.trap` |
+| 2022 AMC 10B, Problem 7 | `alg.poly.vieta.basic`, `nt.divisor.count.pairs` | `alg.poly.introot` |
+| 2022 AMC 12B, Problem 4 | `alg.poly.vieta.basic`, `nt.divisor.count.pairs` | `alg.poly.introot` |
+| 2000 AMC 10, Problem 24 | `alg.fn.basic.compose`, `alg.poly.vieta.basic` | `alg.fn.basic.compose` |
+| 2000 AMC 12, Problem 15 | `alg.fn.basic.compose`, `alg.poly.vieta.basic` | `alg.fn.basic.compose` |
+
+## Accuracy follow-up: all 62 similarity filings
+
+Read all 62 distinct statements and strategies, including the existing parallel-lines child. Most similarity labels describe a central configuration and survive. Fourteen direct-parent cases fit the existing parallel-line/midsegment child; the inscribed-rectangle area question also belongs there, with its rectangle subject rather than a Heron-method label. Remove the triangle label from the spatial cube shadow, the incidental Heron label from the bisector configuration, and the generic polygon-angle label from the equal-angle triangle. Similarity cards stay where earned. General right-angle AA configurations remain in the parent: sharing another shape label is not by itself an error.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2026 AMC 10A, Problem 3 | `geo.basic.sim.similar`, `geo.tri.ratio.area` | `geo.basic.sim.parallel`, `geo.tri.ratio.area` |
+| 2026 AMC 12A, Problem 2 | `geo.basic.sim.similar`, `geo.tri.ratio.area` | `geo.basic.sim.parallel`, `geo.tri.ratio.area` |
+| 1996 AIME, Problem 4 | `geo.solid.prism.box`, `geo.basic.sim.similar` | `geo.solid.prism.box` |
+| 1998 AIME, Problem 6 | `geo.basic.sim.similar`, `geo.poly.quad.para` | `geo.basic.sim.parallel`, `geo.poly.quad.para` |
+| 2008 AIME I, Problem 2 | `geo.poly.composite.overlap`, `geo.basic.sim.similar` | `geo.poly.composite.overlap`, `geo.basic.sim.parallel` |
+| 2008 AIME II, Problem 5 | `geo.poly.quad.trap`, `geo.basic.sim.similar` | `geo.poly.quad.trap`, `geo.basic.sim.parallel` |
+| 2015 AIME II, Problem 7 | `geo.basic.sim.similar`, `geo.tri.area.heron` | `geo.basic.sim.parallel`, `geo.poly.quad.rect` |
+| 2018 AIME II, Problem 7 | `geo.basic.sim.similar` | `geo.basic.sim.parallel` |
+| 2019 AIME II, Problem 1 | `geo.basic.sim.similar`, `geo.poly.composite.overlap` | `geo.basic.sim.parallel`, `geo.poly.composite.overlap` |
+| 2022 AIME II, Problem 11 | `geo.tri.cevian.bisector`, `geo.basic.sim.similar`, `geo.tri.area.heron` | `geo.tri.cevian.bisector`, `geo.basic.sim.similar` |
+| 2022 AMC 10A, Problem 13 | `geo.tri.cevian.bisector`, `geo.basic.sim.similar` | `geo.tri.cevian.bisector`, `geo.basic.sim.parallel` |
+| 2023 AIME II, Problem 3 | `geo.basic.sim.similar`, `geo.basic.angle.polygon` | `geo.basic.sim.similar` |
+| 2024 AIME II, Problem 5 | `geo.poly.general.irregular`, `geo.basic.sim.similar` | `geo.poly.general.irregular`, `geo.basic.sim.parallel` |
+| 2024 AMC 10B, Problem 10 | `geo.poly.quad.para`, `geo.tri.ratio.area`, `geo.basic.sim.similar` | `geo.poly.quad.para`, `geo.tri.ratio.area`, `geo.basic.sim.parallel` |
+| 2002 AMC 8, Problem 20 | `geo.basic.sim.similar`, `geo.tri.ratio.area` | `geo.basic.sim.parallel`, `geo.tri.ratio.area` |
+| 2007 AMC 10B, Problem 21 | `geo.basic.sim.similar` | `geo.basic.sim.parallel` |
+| 2021 Spring AMC 12B, Problem 11 | `geo.poly.quad.trap`, `geo.basic.sim.similar` | `geo.poly.quad.trap`, `geo.basic.sim.parallel` |
+| 2000 AMC 10, Problem 19 | `geo.basic.sim.similar` | `geo.basic.sim.parallel` |
+| 2000 AMC 12, Problem 21 | `geo.basic.sim.similar` | `geo.basic.sim.parallel` |
+| 2021 Fall AMC 10B, Problem 13 | `geo.basic.sim.similar`, `geo.tri.special.isos` | `geo.basic.sim.parallel`, `geo.tri.special.isos` |
+
+## Accuracy follow-up: all 71 finite-probability and 50 log-rule filings
+
+Read both complete pools (one shared problem). Uniform numerical, point, subset, seating and arrangement samples legitimately retain General finite probability models. Six repeated independent-trial models move to Independent events; three explicit bag/sock/card draws move to the sampling kind. The license-plate event also gains its actual digit-string subject. Most logarithm cofilings are genuine: logarithmic lengths, domains, progression conditions and requested logarithmic expressions are part of the statements. Two floor questions lose incidental log labels; two explicit logarithmic equation/system questions move to that existing specific kind. The log expression loses a solution-only symmetric-identity label, and the real-expression question gets its domain subject rather than the transformed rational-inequality tool. The zigzag length problem belongs to rectangle geometry and triangle trigonometry (projection by cosine), rather than a similarity configuration. All earned card tags remain. No nodes, card homes, answers or source statements change.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1996 AIME, Problem 2 | `alg.fn.floor.eq`, `alg.exp.log.rules` | `alg.fn.floor.eq` |
+| 2005 AIME I, Problem 9 | `cp.prob.basic.count`, `geo.solid.prism.unit.paint` | `cp.prob.cond.indep`, `geo.solid.prism.unit.paint` |
+| 2007 AIME I, Problem 7 | `alg.exp.log.rules`, `alg.fn.floor.sum` | `alg.fn.floor.sum` |
+| 2008 AIME I, Problem 9 | `cp.prob.basic.count`, `cp.basic.perm.repeat` | `cp.prob.cond.indep`, `cp.basic.perm.repeat` |
+| 2010 AIME II, Problem 5 | `alg.eq.identity.symmetric`, `alg.exp.log.rules` | `alg.exp.log.eq` |
+| 2023 AMC 10B, Problem 21 | `cp.prob.basic.count`, `cp.tech.stars.distinct` | `cp.prob.cond.indep`, `cp.tech.stars.distinct` |
+| 2023 AMC 12A, Problem 15 | `geo.basic.sim.similar`, `geo.poly.quad.rect` | `geo.poly.quad.rect`, `geo.tri.trig.other` |
+| 2023 AMC 12B, Problem 7 | `alg.exp.log.rules`, `alg.ineq.solve.rational` | `alg.exp.log.rules`, `alg.fn.graph.domain` |
+| 2023 AMC 12B, Problem 19 | `cp.prob.basic.count`, `cp.tech.stars.distinct` | `cp.prob.cond.indep`, `cp.tech.stars.distinct` |
+| 1990 AJHSME, Problem 14 | `cp.prob.basic.count` | `cp.prob.dice.draw` |
+| 2015 AMC 8, Problem 11 | `cp.prob.basic.count` | `cp.prob.basic.count`, `cp.struct.words.digits` |
+| 2020 AMC 8, Problem 13 | `cp.prob.basic.count` | `cp.prob.dice.draw` |
+| 2023 AMC 8, Problem 23 | `cp.prob.basic.count`, `cp.struct.tile.tiling` | `cp.prob.cond.indep`, `cp.struct.tile.tiling` |
+| 2009 AMC 10B, Problem 25 | `cp.prob.basic.count` | `cp.prob.cond.indep` |
+| 2009 AMC 12B, Problem 17 | `cp.prob.basic.count` | `cp.prob.cond.indep` |
+| 2019 AMC 12A, Problem 12 | `alg.exp.log.rules` | `alg.exp.log.eq` |
+| 2021 Spring AMC 12A, Problem 6 | `cp.prob.basic.count` | `cp.prob.dice.draw` |
+| 2022 AMC 12A, Problem 14 | `alg.exp.log.rules`, `alg.eq.identity.symmetric` | `alg.exp.log.rules` |
+| 2021 Fall AMC 10A, Problem 21 | `cp.prob.basic.count`, `cp.tech.stars.distinct` | `cp.prob.cond.indep`, `cp.tech.stars.distinct` |
+| 2021 Fall AMC 12A, Problem 18 | `cp.prob.basic.count`, `cp.tech.stars.distinct` | `cp.prob.cond.indep`, `cp.tech.stars.distinct` |
+
+## Further audit: area-formula and spatial-distance labels
+
+Read all 43 distinct problems in Heron, coordinate-area and spatial-distance pools. Retire the Heron formula leaf: all seven filings concern incircles, systems, isosceles triangles, quadrilaterals, trapezoids, a tetrahedron or shared-altitude area ratios. The Heron and 13-14-15 cards survive at Area of a triangle. Retain coordinate-area labels for stated coordinates, grids and coordinate-defined loci; remove them when coordinates were only the solver’s choice. Recover centroid/homothety and net-folding subjects. Retain most spatial-distance cofilings because distance between points, planes or centers is itself asked for; drop two where distances only compute a box/pyramid area. Prove the global acute-integer-triangle minimum in 2024 AMC 12A #24 rather than listing a few small triangles. Complete the uniqueness argument in 2021 Spring AMC 12B #14 using the factor pairs of 16, retaining its unchanged answer and adding the earned factorization card.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2026 AIME I, Problem 10 | `geo.coord.transform.rotate`, `geo.coord.area.shoelace` | `geo.coord.transform.rotate` |
+| 1999 AIME, Problem 12 | `geo.tri.radii.in`, `geo.tri.area.heron` | `geo.tri.radii.in` |
+| 2006 AIME II, Problem 15 | `geo.tri.area.heron`, `alg.eq.system.cyclic` | `alg.eq.system.cyclic` |
+| 2010 AIME II, Problem 12 | `geo.tri.special.isos`, `geo.tri.area.heron` | `geo.tri.special.isos` |
+| 2013 AIME I, Problem 7 | `geo.solid.prism.box`, `geo.solid.coord.dist` | `geo.solid.prism.box` |
+| 2017 AIME II, Problem 10 | `geo.coord.area.shoelace`, `geo.poly.quad.rect` | `geo.poly.quad.rect` |
+| 2018 AIME II, Problem 4 | `geo.poly.general.irregular`, `geo.coord.area.shoelace` | `geo.poly.general.irregular` |
+| 2018 AIME II, Problem 9 | `geo.coord.area.shoelace`, `geo.basic.sim.figures` | `geo.basic.sim.figures`, `geo.tri.cevian.median` |
+| 2018 AIME II, Problem 12 | `geo.poly.quad.general`, `geo.tri.area.heron` | `geo.poly.quad.general` |
+| 2021 AIME I, Problem 9 | `geo.poly.quad.trap`, `geo.tri.area.heron` | `geo.poly.quad.trap` |
+| 2024 AMC 12A, Problem 24 | `geo.solid.round.pyramid`, `geo.tri.area.heron` | `geo.solid.round.pyramid` (proof corrected) |
+| 2025 AIME II, Problem 1 | `geo.tri.area.heron`, `geo.tri.ratio.area` | `geo.tri.ratio.area` |
+| 2016 AMC 8, Problem 22 | `geo.coord.area.shoelace` | `geo.poly.composite.add` |
+| 2007 AMC 10A, Problem 18 | `geo.coord.area.shoelace` | `geo.poly.general.irregular` |
+| 2012 AMC 10B, Problem 19 | `geo.coord.area.shoelace` | `geo.poly.quad.rect` |
+| 2016 AMC 10A, Problem 21 | `geo.circ.tangent.common`, `geo.coord.area.shoelace` | `geo.circ.tangent.common` |
+| 2016 AMC 12A, Problem 15 | `geo.circ.tangent.common`, `geo.coord.area.shoelace` | `geo.circ.tangent.common` |
+| 2017 AMC 12B, Problem 24 | `geo.basic.sim.similar`, `geo.coord.area.shoelace` | `geo.basic.sim.similar` |
+| 2019 AMC 12B, Problem 18 | `geo.solid.coord.dist`, `geo.solid.round.pyramid` | `geo.solid.round.pyramid` |
+| 2021 Spring AMC 12B, Problem 14 | `geo.solid.round.pyramid`, `geo.solid.coord.dist` | `geo.solid.round.pyramid`, `geo.solid.coord.dist` (proof corrected) |
+| 2022 AMC 10A, Problem 21 | `geo.solid.coord.dist`, `geo.poly.regular.hex` | `geo.solid.poly.nets`, `geo.poly.regular.hex` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `herons-formula` | `geo.tri.area.heron` | `geo.tri.area` |
+| `triangle-13-14-15` | `geo.tri.area.heron` | `geo.tri.area` |
+
+## Further audit controls: right triangles, mixed progressions and radical products
+
+Read all 22 right-triangle-length filings, all nine AP/GP overlaps and the three factor/radical overlaps. The right-triangle pool largely holds genuine configurations; remove the trig-angle question and incidental area/SFFT companions. All nine AP/GP cofilings are legitimate because both progression conditions occur in their statements. Correct two incomplete strategies that assumed integer common ratios: 2022 AMC 10A #20 now uses the square condition (c-b)^2=28b and positive arithmetic terms; 2010 AMC 10B #24 now enumerates all four reduced rational ratios permitted by the score cap. Exhaustive exact rational checks verify both unchanged answers (206 and 34). The basketball route earns the existing AP/GP cards. Three radical products lose the factorization-tool label while retaining their factorization cards. The scanner-required LaTeX comparison spelling in the rewritten disphenoid proof is corrected; final gates are rerun.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1986 AIME, Problem 2 | `alg.eq.factor.squares`, `alg.eq.radical.simplify` | `alg.eq.radical.simplify` |
+| 2005 AIME II, Problem 7 | `alg.eq.radical.simplify`, `alg.eq.factor.squares` | `alg.eq.radical.simplify` |
+| 2024 AMC 12A, Problem 10 | `alg.trig.identity.sum`, `geo.basic.pyth.triples` | `alg.trig.identity.sum` |
+| 2024 AMC 12A, Problem 24 | `geo.solid.round.pyramid` | `geo.solid.round.pyramid` (proof corrected) |
+| 1999 AMC 8, Problem 23 | `geo.tri.area.base`, `geo.basic.pyth.triples` | `geo.basic.pyth.triples` |
+| 2007 AMC 12B, Problem 23 | `nt.dio.factor.sfft`, `geo.basic.pyth.triples` | `geo.basic.pyth.triples` |
+| 2010 AMC 10B, Problem 24 | `alg.seq.ap.geom`, `alg.seq.ap.arith` | `alg.seq.ap.geom`, `alg.seq.ap.arith` (proof corrected) |
+| 2010 AMC 12B, Problem 19 | `alg.seq.ap.geom`, `alg.seq.ap.arith` | `alg.seq.ap.geom`, `alg.seq.ap.arith` (proof corrected) |
+| 2022 AMC 10A, Problem 20 | `alg.seq.ap.geom`, `alg.seq.ap.arith` | `alg.seq.ap.geom`, `alg.seq.ap.arith` (proof corrected) |
+| 2022 AMC 10B, Problem 5 | `alg.eq.factor.squares`, `alg.eq.radical.simplify` | `alg.eq.radical.simplify` |
+
+## High-value audit: arithmetic-sequence cofilings, first batch
+
+Read all 54 distinct arithmetic-sequence cofilings before changing them. Retain actual progression constraints; remove progression labels introduced only by sums in geometry, subset bounds, custom expressions or an iterated-function solution. Remove incidental gcd/divisor/system/interpolation labels from actual progression questions. Confirm the 1988 AIME grid against its source figure and correct the row/column convention, without altering its equations or answer. Close the prime-3 exception in the five-prime progression proof and give a concrete unit-step construction for every attainable 90-subset sum. Answers are unchanged. The remaining cofilings, solid pools and transformation controls follow in the next batch.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2026 AIME II, Problem 1 | `alg.seq.ap.arith`, `nt.div.gcd.basic` | `alg.seq.ap.arith` |
+| 1987 AIME, Problem 11 | `alg.seq.ap.arith`, `nt.divisor.count.pairs` | `alg.seq.ap.arith` |
+| 1988 AIME, Problem 6 | `alg.seq.ap.arith`, `cp.struct.tile.fill` | `alg.seq.ap.arith`, `cp.struct.tile.fill` (proof corrected) |
+| 1991 AIME, Problem 2 | `geo.basic.sim.parallel`, `alg.seq.ap.arith` | `geo.basic.sim.parallel` |
+| 1993 AIME, Problem 2 | `alg.eq.factor.squares`, `alg.seq.ap.arith` | `geo.basic.pyth.triples` |
+| 1999 AIME, Problem 1 | `nt.prime.basic.test`, `alg.seq.ap.arith` | `nt.prime.basic.test`, `alg.seq.ap.arith` (proof corrected) |
+| 2000 AIME I, Problem 10 | `alg.eq.linear.system`, `alg.seq.ap.arith` | `alg.seq.ap.arith` |
+| 2002 AIME II, Problem 4 | `geo.poly.regular.hex`, `alg.seq.ap.arith` | `geo.poly.regular.hex` |
+| 2003 AIME I, Problem 2 | `geo.poly.composite.arcs`, `alg.seq.ap.arith` | `geo.poly.composite.arcs` |
+| 2003 AIME II, Problem 8 | `alg.poly.construct.interp`, `alg.seq.ap.arith` | `alg.seq.ap.arith` |
+| 2005 AIME I, Problem 2 | `alg.seq.ap.arith`, `nt.divisor.count.tau` | `alg.seq.ap.arith` |
+| 2006 AIME I, Problem 2 | `cp.basic.comb.subsets`, `alg.seq.ap.arith` | `cp.basic.comb.subsets` (proof corrected) |
+| 2009 AIME II, Problem 4 | `alg.seq.ap.arith`, `nt.divisor.count.pairs` | `alg.seq.ap.arith` |
+| 2015 AIME I, Problem 1 | `alg.word.compute.clever`, `alg.seq.ap.arith` | `alg.word.compute.clever` |
+| 2020 AIME II, Problem 8 | `alg.eq.abs.eq`, `alg.seq.ap.arith`, `alg.fn.basic.iterate` | `alg.eq.abs.eq`, `alg.fn.basic.iterate` |
+| 2021 AIME I, Problem 5 | `alg.seq.ap.arith`, `nt.div.rules.expr` | `alg.seq.ap.arith` |
+
+## High-value audit: remaining AP cofilings, polyhedra/nets and mixed transformations
+
+Complete the 54-distinct AP cofiling dispositions; retain all actual progression constraints, including the nine AP/GP questions, and remove method-only AP labels from averages, a magic square, floor equations, a block-pattern index and sign-flip optimization. Read all 18 distinct nets/polyhedron questions: nets mostly hold genuine folding; drop incidental box, planar-fold and combination companions, and refile the metric coordinate solid under spatial distances. Rename the stable polyhedron node to state its actual regular-solid/face-edge-vertex scope rather than naming Euler alone; all card homes remain. The octahedron/cube volume ratio concerns different shapes, so remove the similar-solids label and supply the explicit face-centroid computation. All five mixed reflection/rotation questions were read: four explicitly impose both transformations and stay; the two-reflection problem keeps Reflection, with composition-to-rotation carried by its card. No node, home or card is deleted; no answer changes.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1985 AIME, Problem 15 | `geo.solid.poly.nets`, `geo.solid.prism.box` | `geo.solid.poly.nets` |
+| 2002 AIME I, Problem 15 | `geo.solid.coord.dist`, `geo.solid.poly.euler` | `geo.solid.coord.dist` |
+| 2004 AIME I, Problem 3 | `geo.solid.poly.euler`, `cp.basic.comb.choose` | `geo.solid.poly.euler` |
+| 2005 AIME II, Problem 10 | `geo.solid.poly.euler`, `geo.basic.sim.figures` | `geo.solid.poly.euler` (proof corrected) |
+| 2008 AIME I, Problem 15 | `geo.solid.poly.nets`, `geo.basic.pyth.fold` | `geo.solid.poly.nets` |
+| 2023 AMC 10B, Problem 23 | `alg.seq.ap.arith`, `nt.divisor.count.pairs` | `alg.seq.ap.arith` |
+| 2024 AMC 10A, Problem 21 | `alg.seq.ap.arith`, `alg.eq.linear.system` | `alg.seq.ap.arith`, `cp.struct.tile.fill` |
+| 2024 AMC 10B, Problem 5 | `alg.seq.ap.arith`, `alg.ineq.optimize.integer` | `alg.ineq.optimize.integer` |
+| 2024 AMC 12A, Problem 14 | `alg.seq.ap.arith`, `alg.eq.linear.system` | `alg.seq.ap.arith`, `cp.struct.tile.fill` |
+| 2024 AMC 12B, Problem 5 | `alg.seq.ap.arith`, `alg.ineq.optimize.integer` | `alg.ineq.optimize.integer` |
+| 2025 AMC 10A, Problem 5 | `alg.seq.period.nth`, `alg.seq.ap.arith` | `alg.seq.period.nth` |
+| 1986 AJHSME, Problem 25 | `alg.seq.ap.arith`, `alg.word.stats.mean` | `alg.word.stats.mean` |
+| 2006 AMC 10A, Problem 9 | `alg.seq.ap.arith`, `nt.divisor.count.pairs` | `alg.seq.ap.arith` |
+| 2006 AMC 12A, Problem 8 | `alg.seq.ap.arith`, `nt.divisor.count.pairs` | `alg.seq.ap.arith` |
+| 2010 AMC 12A, Problem 20 | `alg.seq.ap.arith`, `nt.div.gcd.basic` | `alg.seq.ap.arith` |
+| 2020 AMC 10A, Problem 7 | `cp.struct.tile.fill`, `alg.seq.ap.arith` | `cp.struct.tile.fill` |
+| 2020 AMC 12A, Problem 5 | `cp.struct.tile.fill`, `alg.seq.ap.arith` | `cp.struct.tile.fill` |
+| 2020 AMC 12A, Problem 25 | `alg.fn.floor.eq`, `alg.seq.ap.arith` | `alg.fn.floor.eq` |
+| 2021 Spring AMC 10A, Problem 22 | `alg.word.stats.mean`, `alg.seq.ap.arith` | `alg.word.stats.mean` |
+| 2022 AMC 10B, Problem 4 | `alg.seq.ap.arith`, `alg.word.units.convert` | `alg.seq.ap.arith` |
+| 2025 AMC 10B, Problem 17 | `alg.word.stats.mean`, `alg.seq.ap.arith` | `alg.word.stats.mean` |
+| 2025 AMC 12B, Problem 14 | `alg.word.stats.mean`, `alg.seq.ap.arith` | `alg.word.stats.mean` |
+| 2021 Fall AMC 10B, Problem 17 | `geo.coord.transform.reflect`, `geo.coord.transform.rotate` | `geo.coord.transform.reflect` |
+
+## High-value audit 4: all 54 integer-optimization filings
+
+Read the complete pool. Most are genuine finite/integer extrema. Correct the mode/range subject, recover rectangle and radical-equation subjects, remove intermediate SFFT/vertex/telescoping labels, and move the unique percentage-inference and continuous salary-budget questions to their actual kinds. Replace the reversed mode-minus-mean proof with a global attained bound; prove the prime-power minimum globally below the attained candidate; give the complete denominator/partition check for the digit fraction and exclude all smaller positive sums in the signed-factor question. All keyed answers remain unchanged. Exact finite computations verify the displayed cases. Remaining trig/power pools follow.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1989 AIME, Problem 11 | `alg.word.stats.data`, `alg.ineq.optimize.integer` | `alg.word.stats.median`, `alg.ineq.optimize.integer` (proof corrected) |
+| 1994 AIME, Problem 12 | `nt.div.gcd.basic`, `alg.ineq.optimize.integer` | `geo.poly.quad.rect`, `alg.ineq.optimize.integer` |
+| 2006 AIME I, Problem 15 | `alg.seq.sum.telescope`, `alg.ineq.optimize.integer` | `alg.eq.abs.eq`, `alg.ineq.optimize.integer` |
+| 2007 AIME II, Problem 8 | `alg.ineq.optimize.integer`, `alg.poly.quad.vertex` | `alg.ineq.optimize.integer` |
+| 2015 AIME II, Problem 8 | `alg.eq.factor.sfft`, `alg.ineq.optimize.integer` | `alg.ineq.optimize.integer` |
+| 2020 AIME I, Problem 10 | `nt.div.prime.factor`, `alg.ineq.optimize.integer` | `nt.div.prime.powers`, `alg.ineq.optimize.integer` (proof corrected) |
+| 2022 AIME I, Problem 7 | `alg.ineq.optimize.integer` | `alg.ineq.optimize.integer` (proof corrected) |
+| 2024 AMC 10A, Problem 7 | `alg.ineq.optimize.integer`, `nt.divisor.count.pairs` | `alg.ineq.optimize.integer` (proof corrected) |
+| 2024 AMC 10B, Problem 6 | `nt.divisor.count.pairs`, `alg.ineq.optimize.integer` | `geo.poly.quad.rect`, `alg.ineq.optimize.integer` |
+| 2024 AMC 10B, Problem 13 | `alg.eq.radical.simplify`, `alg.ineq.optimize.integer` | `alg.eq.radical.eq`, `alg.ineq.optimize.integer` |
+| 2024 AMC 12A, Problem 6 | `alg.ineq.optimize.integer`, `nt.divisor.count.pairs` | `alg.ineq.optimize.integer` (proof corrected) |
+| 2022 AMC 8, Problem 21 | `alg.ineq.optimize.integer` | `alg.word.ratio.percent` |
+| 2008 AMC 10B, Problem 4 | `alg.ineq.optimize.integer` | `alg.word.everyday.money` |
+| 2008 AMC 12B, Problem 3 | `alg.ineq.optimize.integer` | `alg.word.everyday.money` |
+
+## Optimization proof completion and missing coverage proposal
+
+Complete the global prime-exponent maximum using decreasing consecutive-factor ratios. Give an exact postage-count formula, prove its interval-coverage criterion and fixed-count dominance, and record the finite search bounds and witnesses. Exact evaluation over 2 <= b < c <= 89 gives only c=11,88,89 with f=97 and maximum 96 for c=12..87. Record the missing interval-extension method as P69 in QUESTIONS.md, retaining Constructive Counting meanwhile; no new card is created without the standing decision process.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2021 Spring AMC 12A, Problem 25 | `nt.divisor.count.tau`, `alg.ineq.optimize.integer` | `nt.divisor.count.tau`, `alg.ineq.optimize.integer` (proof corrected) |
+| 2022 AIME II, Problem 14 | `alg.ineq.optimize.integer` | `alg.ineq.optimize.integer` (proof corrected) |
+
+## High-value audit 4: all 37 trig-addition filings
+
+Read the complete pool. Keep actual trig-expression identities and requested multiple-angle relations. Geometry, coordinate lines, clocks, nonlinear recurrences and radical systems do not gain a trig-addition subject just because the route uses an identity. Recover chord, rotation, equilateral/isosceles, centroid, inverse-trig and trig-equation kinds where appropriate. Remove De Moivre as a method-only complex subject from the tangent-expansion question, while retaining the genuinely fixed-modulus complex optimization. Retain all earned cards. Supply uniqueness for the chord-radius solution by monotonicity and check all eight inverse-sine branches in the radical system; answers remain unchanged.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1984 AIME, Problem 13 | `alg.trig.eq.inverse`, `alg.trig.identity.sum` | `alg.trig.eq.inverse` |
+| 1985 AIME, Problem 9 | `geo.circ.power.chord`, `alg.trig.identity.sum` | `geo.circ.power.chord` (proof corrected) |
+| 1988 AIME, Problem 7 | `alg.trig.identity.sum`, `geo.tri.area.base` | `geo.tri.trig.other` |
+| 1990 AIME, Problem 12 | `geo.poly.regular.diag`, `alg.trig.identity.sum` | `geo.poly.regular.diag` |
+| 2000 AIME II, Problem 10 | `geo.circ.cyclic.tangential`, `alg.trig.identity.sum` | `geo.circ.cyclic.tangential` |
+| 2005 AIME II, Problem 12 | `geo.poly.quad.rect`, `alg.trig.identity.sum` | `geo.poly.quad.rect` |
+| 2006 AIME I, Problem 8 | `geo.poly.quad.para`, `alg.trig.identity.sum` | `geo.poly.quad.para` |
+| 2008 AIME I, Problem 8 | `alg.trig.eq.inverse`, `alg.trig.identity.sum` | `alg.trig.eq.inverse` |
+| 2009 AIME II, Problem 14 | `alg.seq.rec.nonlinear`, `alg.trig.identity.sum` | `alg.seq.rec.nonlinear` |
+| 2011 AIME I, Problem 14 | `geo.poly.regular.other`, `alg.trig.identity.sum` | `geo.poly.regular.other` |
+| 2013 AIME II, Problem 15 | `geo.tri.trig.cosines`, `alg.trig.identity.sum` | `alg.trig.identity.sum` |
+| 2022 AIME I, Problem 15 | `alg.trig.identity.sum`, `alg.eq.system.cyclic` | `alg.eq.system.cyclic` (proof corrected) |
+| 2023 AMC 12A, Problem 11 | `geo.coord.line.slope`, `alg.trig.identity.sum` | `geo.coord.line.slope` |
+| 2023 AMC 12A, Problem 25 | `alg.cx.polar.demoivre`, `alg.trig.identity.sum` | `alg.trig.identity.sum` |
+| 2024 AIME I, Problem 7 | `alg.cx.polar.demoivre`, `alg.trig.identity.sum` | `alg.cx.polar.demoivre` |
+| 2024 AMC 12A, Problem 18 | `geo.coord.transform.rotate`, `alg.trig.identity.sum` | `geo.coord.transform.rotate` |
+| 2024 AMC 12B, Problem 19 | `geo.tri.area.sine`, `alg.trig.identity.sum` | `geo.coord.transform.rotate`, `geo.tri.special.equil` |
+| 2024 AMC 12B, Problem 21 | `alg.trig.identity.sum`, `nt.dio.squares.triples` | `nt.dio.squares.triples` |
+| 2025 AIME II, Problem 14 | `geo.tri.special.equil`, `alg.trig.identity.sum` | `geo.tri.special.equil` |
+| 2004 AMC 12B, Problem 24 | `alg.trig.identity.sum` | `geo.tri.special.isos`, `alg.trig.eq.solve` |
+| 2005 AMC 12B, Problem 24 | `geo.coord.conic.parabola`, `alg.trig.identity.sum` | `geo.coord.conic.parabola` |
+| 2009 AMC 12A, Problem 25 | `alg.trig.identity.sum`, `alg.seq.period.nth` | `alg.seq.period.nth` |
+| 2014 AMC 12A, Problem 12 | `alg.trig.identity.sum` | `geo.circ.power.chord` |
+| 2016 AMC 10A, Problem 24 | `alg.trig.identity.sum` | `geo.circ.power.chord` |
+| 2016 AMC 12A, Problem 21 | `alg.trig.identity.sum` | `geo.circ.power.chord` |
+| 2019 AMC 12B, Problem 25 | `geo.poly.quad.general`, `alg.trig.identity.sum` | `geo.poly.quad.general`, `geo.tri.cevian.median` |
+| 2020 AMC 12B, Problem 7 | `geo.coord.line.slope`, `alg.trig.identity.sum` | `geo.coord.line.slope` |
+| 2022 AMC 12A, Problem 17 | `alg.trig.eq.solve`, `alg.trig.identity.sum` | `alg.trig.eq.solve` |
+| 2022 AMC 12B, Problem 14 | `alg.trig.identity.sum`, `alg.poly.quad.roots` | `geo.coord.line.slope` |
+| 2025 AMC 12B, Problem 16 | `alg.word.rates.clock`, `alg.trig.identity.sum` | `alg.word.rates.clock` |
+
+## High-value audit 4: all 19 power-of-a-point filings and Euler control
+
+Read all 19 circle filings. Most hold genuine chord/secant/tangent configurations and retain the power subject. Remove intermediate cosine-law labels and the parallelogram introduced only by median doubling. The incenter/circumcenter problem instead belongs under Inradius, circumradius and exradii: its Euler distance formula is not the Euler line. Rehome the Euler Distance card accordingly, preserving its content and every card. Read the remaining Euler-line leaf entry as a control: the nine-point-circle problem is genuine and stays. The auxiliary chord and excenter constructions in the radius problem remain on its method/card route rather than as extra subjects. No answer or strategy text changes in this batch.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2019 AIME I, Problem 13 | `geo.circ.proj`, `geo.circ.power.pop`, `geo.tri.trig.cosines` | `geo.circ.proj`, `geo.circ.power.pop` |
+| 2022 AIME I, Problem 11 | `geo.circ.power.pop`, `geo.poly.quad.para`, `geo.tri.trig.cosines` | `geo.circ.power.pop`, `geo.poly.quad.para` |
+| 2023 AIME II, Problem 12 | `geo.tri.cevian.median`, `geo.circ.power.pop`, `geo.poly.quad.para` | `geo.tri.cevian.median`, `geo.circ.power.pop` |
+| 2024 AIME I, Problem 10 | `geo.circ.power.pop`, `geo.circ.inscribed.chords`, `geo.tri.trig.cosines` | `geo.circ.power.pop`, `geo.circ.inscribed.chords` |
+| 2024 AIME II, Problem 10 | `geo.tri.centers.euler`, `geo.tri.centers.lemmas`, `geo.circ.power.pop` | `geo.tri.radii` |
+| 2021 Fall AMC 12B, Problem 24 | `geo.circ.power.pop`, `geo.basic.sim.similar`, `geo.tri.trig.cosines` | `geo.circ.power.pop`, `geo.basic.sim.similar` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `euler-distance-theorem` | `geo.tri.centers.euler` | `geo.tri.radii` |
+
+## Triggered sparse-leaf follow-through: Grouping into products
+
+Removing an incidental optimization label made Grouping into products newly thin. Read its remaining four distinct problems (five entries): expansion term count, logarithmic system, universal coefficient identity and real-valued minimum. In every case grouping is a solution tool, so file those actual subjects and retire the now-empty leaf. Preserve the SFFT method card at Factoring and clever factorizations; the separate integer xy+ax+by=c archetype remains. This is a bounded follow-through on a new audit signal, not a blanket retirement of factorization topics. All cards, solutions and answers survive.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1996 AIME, Problem 3 | `cp.binom.thm.coeff`, `alg.eq.factor.sfft` | `cp.binom.thm.coeff` |
+| 2000 AIME I, Problem 9 | `alg.exp.log.eq`, `alg.eq.factor.sfft` | `alg.exp.log.eq` |
+| 2002 AMC 10B, Problem 13 | `alg.eq.factor.sfft` | `alg.poly.construct.coeff` |
+| 2021 Spring AMC 10A, Problem 9 | `alg.eq.factor.sfft` | `alg.ineq.optimize` |
+| 2021 Spring AMC 12A, Problem 7 | `alg.eq.factor.sfft` | `alg.ineq.optimize` |
+
+Every affected card survives:
+
+| Card | Previous home | Current home |
+|---|---|---|
+| `sfft` | `alg.eq.factor.sfft` | `alg.eq.factor` |
+
+## High-value audit 5: GCD/LCM and incidental common-divisor labels
+
+Read all 50 distinct GCD/LCM statements and strategies before migrating. Keep explicit gcd/lcm constraints and common-multiple archetypes; remove prime-factorization, PIE, CRT and valuation labels used only as solution tools. Refile fraction arithmetic, money, ratios, cycles, running laps, grid walks, modular reconstruction and shifted common remainders by their actual subjects. The coprime rational-factorization count keeps its coprimality condition and gains the factorization-count kind; use its earned exponent-tracking method. Recover the missing probability kind/card on the random LCM subset. Correct internal-plane versus endpoint counting in the solid diagonal proof and bound the finite exponent search for the LCM quadruple minimum. Answers and card homes remain unchanged. The separate divisor-count dispositions and full capacity report follow.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 1987 AIME, Problem 7 | `nt.div.gcd.basic`, `nt.div.prime.factor` | `nt.div.gcd.basic` |
+| 1990 AIME, Problem 10 | `alg.cx.unity.sums`, `nt.div.gcd.basic` | `alg.cx.unity.sums` |
+| 1991 AIME, Problem 5 | `nt.div.prime.factor`, `nt.div.gcd.basic` | `nt.divisor.count.factor`, `nt.div.gcd.basic` |
+| 1995 AIME, Problem 8 | `nt.div.rules.count`, `nt.div.gcd.basic` | `nt.div.rules` |
+| 1996 AIME, Problem 14 | `geo.solid.prism.unit`, `nt.div.gcd.basic` | `geo.solid.prism.unit` (proof corrected) |
+| 2007 AIME I, Problem 4 | `alg.word.rates.motion.laps`, `nt.div.gcd.basic` | `alg.word.rates.motion.laps` |
+| 2015 AIME II, Problem 1 | `alg.word.ratio.percent`, `nt.div.gcd.basic` | `alg.word.ratio.percent` |
+| 2017 AIME I, Problem 2 | `nt.mod.basic.arith`, `nt.div.gcd.basic` | `nt.mod.basic.arith` |
+| 2020 AMC 10A, Problem 24 | `nt.mod.crt.system`, `nt.div.gcd.basic` | `nt.div.gcd.basic` |
+| 2022 AMC 10A, Problem 7 | `nt.div.gcd.basic`, `nt.div.prime.factor` | `nt.div.gcd.basic` |
+| 2023 AIME I, Problem 14 | `cp.struct.paths.walks`, `nt.div.gcd.basic` | `cp.struct.paths.walks` |
+| 2023 AMC 10B, Problem 18 | `nt.div.gcd.basic`, `nt.mod.basic.arith` | `nt.div.gcd.basic` |
+| 2023 AMC 12B, Problem 15 | `nt.div.gcd.basic`, `nt.mod.basic.arith` | `nt.div.gcd.basic` |
+| 2023 AMC 12B, Problem 24 | `nt.div.gcd.basic`, `nt.div.prime.factor` | `nt.div.gcd.basic` |
+| 2025 AIME II, Problem 7 | `cp.basic.comb.subsets`, `nt.div.gcd.basic` | `nt.div.gcd.basic`, `cp.prob.basic.count` |
+| 2025 AMC 10A, Problem 17 | `nt.div.gcd.basic`, `nt.mod.basic.arith` | `nt.mod.basic.arith` |
+| 1989 AJHSME, Problem 22 | `nt.div.gcd.basic`, `alg.seq.period.cycle` | `alg.seq.period.cycle` |
+| 1993 AJHSME, Problem 2 | `nt.div.gcd.basic` | `alg.word.compute.fraction` |
+| 2003 AMC 8, Problem 19 | `nt.div.rules.count`, `nt.div.gcd.basic` | `nt.div.rules.count` |
+| 2004 AMC 8, Problem 19 | `nt.div.gcd.basic` | `nt.mod.crt.system` |
+| 2009 AMC 8, Problem 11 | `nt.div.gcd.basic`, `alg.word.everyday.money` | `alg.word.everyday.money` |
+| 2012 AMC 8, Problem 13 | `nt.div.gcd.basic` | `alg.word.everyday.money` |
+| 2012 AMC 8, Problem 15 | `nt.div.gcd.basic` | `nt.mod.crt.system` |
+| 2017 AMC 8, Problem 12 | `nt.div.gcd.basic` | `nt.mod.crt.system` |
+| 2019 AMC 8, Problem 23 | `nt.div.gcd.basic` | `alg.word.ratio.prop` |
+| 2005 AMC 10A, Problem 22 | `nt.div.gcd.basic` | `nt.div.rules.count` |
+| 2010 AMC 10B, Problem 8 | `nt.div.gcd.basic` | `alg.word.everyday.money` |
+| 2010 AMC 12B, Problem 3 | `nt.div.gcd.basic` | `alg.word.everyday.money` |
+| 2012 AMC 10A, Problem 17 | `alg.eq.factor.special`, `nt.div.gcd.basic` | `nt.dio.factor` |
+| 2016 AMC 12B, Problem 24 | `nt.div.gcd.basic`, `cp.tech.pie.general` | `nt.div.gcd.basic` (proof corrected) |
+| 2017 AMC 10A, Problem 16 | `nt.div.gcd.basic` | `alg.word.rates.motion.laps` |
+| 2017 AMC 12A, Problem 12 | `nt.div.gcd.basic` | `alg.word.rates.motion.laps` |
+| 2019 AMC 10B, Problem 7 | `nt.div.gcd.basic` | `alg.word.everyday.money` |
+| 2019 AMC 12B, Problem 5 | `nt.div.gcd.basic` | `alg.word.everyday.money` |
+| 2020 AMC 10A, Problem 9 | `alg.word.ratio.prop`, `nt.div.gcd.basic` | `alg.word.ratio.prop` |
+| 2020 AMC 12A, Problem 21 | `nt.div.gcd.basic`, `nt.prime.val.legendre` | `nt.div.gcd.basic` |
+| 2022 AMC 12A, Problem 4 | `nt.div.gcd.basic`, `nt.div.prime.factor` | `nt.div.gcd.basic` |
+| 2022 AMC 12A, Problem 23 | `nt.div.gcd.basic`, `nt.prime.val` | `nt.div.gcd.basic`, `alg.seq.sum.other` |
+| 2021 Fall AMC 10B, Problem 3 | `alg.eq.factor.squares`, `nt.div.gcd.basic` | `alg.word.compute.fraction` |
+| 2021 Fall AMC 12A, Problem 8 | `nt.div.gcd.basic`, `nt.div.prime.factor` | `nt.div.gcd.basic` |
+| 2021 Fall AMC 12B, Problem 25 | `nt.mod.basic.arith`, `nt.div.gcd.basic` | `nt.mod.basic.arith` |
+
+## High-value audit 5: complete divisor-count pool and proof controls
+
+Read all 43 distinct divisor-count statements and strategies. Retain literal divisor-count conditions and samples; remove divisor counts used only to solve a series, harmonic-mean equation, exponential equation, base-digit count or floor sum. Move the requested logarithmic divisor product to divisor products/log equations; keep factorization tuples at Counting factorizations and bounded linear triples with their stated divisibility constraints. Preserve genuine factorial inputs under Factorials and divisibility rather than the Legendre-method leaf, including the GCD-pool factorial comparison. Recover missing probability, power-divisor, age, product-of-divisors and congruence cards where earned. Prove the infinite-series tail cannot carry into its integer part, and bound the search for the six least consecutive-divisor solutions. The age strategy now explicitly records the implicit ordinary-human-age assumption and an unrestricted-age counterexample; the credited statement and intended key stay intact. No node, card home or answer changes.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2026 AIME II, Problem 9 | `alg.seq.sum.other`, `nt.divisor.count.tau` | `alg.seq.sum.other` (proof corrected) |
+| 2026 AIME I, Problem 8 | `nt.divisor.count.tau`, `nt.mod.crt.split` | `nt.divisor.count.tau`, `nt.mod.basic.arith` |
+| 1996 AIME, Problem 8 | `nt.dio.factor.sfft`, `nt.divisor.count.tau` | `nt.dio.factor.sfft` |
+| 2004 AIME II, Problem 8 | `nt.divisor.count.factor`, `nt.divisor.count.tau` | `nt.divisor.count.tau` |
+| 2005 AIME I, Problem 12 | `nt.divisor.count.tau`, `nt.seq.power.squares` | `nt.divisor.count.tau` |
+| 2007 AIME II, Problem 2 | `nt.divisor.count.tau`, `cp.tech.stars.identical` | `nt.dio.linear.count`, `nt.div.rules` |
+| 2010 AIME I, Problem 1 | `nt.divisor.count.tau`, `cp.prob.dice.draw` | `nt.divisor.count.tau`, `cp.prob.dice.draw` |
+| 2011 AIME I, Problem 7 | `alg.poly.remainder.thm`, `nt.divisor.count.tau` | `nt.dio.bound.exp` |
+| 2019 AIME I, Problem 9 | `nt.divisor.count.tau` | `nt.divisor.count.tau` (proof corrected) |
+| 2019 AIME II, Problem 3 | `nt.divisor.count.tau`, `nt.prime.basic.test` | `nt.divisor.count.factor` |
+| 2023 AIME I, Problem 14 | `cp.struct.paths.walks` | `cp.struct.paths.walks` |
+| 2023 AIME II, Problem 10 | `cp.struct.tile.color`, `nt.divisor.count.tau` | `cp.struct.tile.color`, `nt.divisor.count.tau` |
+| 2003 AMC 10A, Problem 8 | `nt.divisor.count.tau` | `nt.divisor.count.tau`, `cp.prob.basic.count` |
+| 2003 AMC 12A, Problem 8 | `nt.divisor.count.tau` | `nt.divisor.count.tau`, `cp.prob.basic.count` |
+| 2005 AMC 10A, Problem 15 | `nt.divisor.count.tau` | `nt.divisor.count.tau`, `nt.prime.val.factorial` |
+| 2008 AMC 12B, Problem 23 | `nt.divisor.count.tau`, `alg.exp.log.rules` | `nt.divisor.count.sigma`, `alg.exp.log.eq` |
+| 2013 AMC 10A, Problem 19 | `nt.digit.base.convert`, `nt.divisor.count.tau` | `nt.digit.base.arith` |
+| 2017 AMC 10B, Problem 20 | `nt.divisor.count.tau`, `nt.prime.val.legendre` | `nt.divisor.count.tau`, `nt.prime.val.factorial`, `cp.prob.basic.count` |
+| 2017 AMC 12B, Problem 16 | `nt.divisor.count.tau`, `nt.prime.val.legendre` | `nt.divisor.count.tau`, `nt.prime.val.factorial`, `cp.prob.basic.count` |
+| 2018 AMC 10B, Problem 19 | `nt.divisor.count.tau`, `alg.word.everyday.age` | `nt.divisor.count.tau`, `alg.word.everyday.age` (proof corrected) |
+| 2018 AMC 12B, Problem 14 | `nt.divisor.count.tau`, `alg.word.everyday.age` | `nt.divisor.count.tau`, `alg.word.everyday.age` (proof corrected) |
+| 2020 AMC 10A, Problem 15 | `nt.divisor.count.tau`, `cp.prob.basic.count` | `nt.divisor.count.tau`, `cp.prob.basic.count`, `nt.prime.val.factorial` |
+| 2020 AMC 10A, Problem 22 | `alg.fn.floor.eq`, `nt.divisor.count.tau` | `alg.fn.floor.eq` |
+| 2020 AMC 12A, Problem 21 | `nt.div.gcd.basic` | `nt.div.gcd.basic`, `nt.prime.val.factorial` |

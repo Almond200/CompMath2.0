@@ -3546,7 +3546,11 @@
   // never touched, and an unresolvable id renders visibly broken so it is caught in review
   // rather than silently dropping the text.
   function linkifyCards(text) {
-    if (!text || text.indexOf("[[") === -1) return text;
+    // Math is typeset after HTML insertion. A literal comparison such as $r<R$
+    // must remain text, or the browser can consume the rest of the paragraph as a tag.
+    text = String(text || "").replace(/\$\$[\s\S]*?\$\$|\$(?:\\.|[^$\\])*\$/g,
+      math => math.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+    if (text.indexOf("[[") === -1) return text;
     const link = (m, id, label) => {
       const e = BY_ID[id];
       if (!e) return redLink(id, label);
@@ -4863,7 +4867,8 @@
   // A screen may be laid out wider than the others (the subject page carries the sidebar too),
   // keeping the same proportions, so all three frames are the same size.
   function pvScreen(key, label, inner, w) {
-    return `<figure class="pv-screen" data-pv="${key}"><div class="pv-frame"><div class="pv-inner"${w ? ` data-w="${w}"` : ""}>${inner}</div></div><figcaption class="pv-label">${label}</figcaption></figure>`;
+    const space = key === "problem" ? "practice" : key === "lesson" ? "learn" : "formulas";
+    return `<figure class="pv-screen" data-pv="${key}"><div class="pv-frame"><div class="pv-inner" data-space="${space}" style="--space:var(--c-${space});--space-soft:var(--cs-${space})"${w ? ` data-w="${w}"` : ""}>${inner}</div></div><figcaption class="pv-label">${label}</figcaption></figure>`;
   }
   function pvBrowseHtml() {
     const cards = PV_CARDS.map(id => BY_ID[id]).filter(Boolean);

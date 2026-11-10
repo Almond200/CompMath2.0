@@ -44,8 +44,8 @@ const groups = [
   ['Probability and expectation', ['cp.prob', 'cp.exp']],
   ['Logic, games and bounds', ['cp.logic', 'cp.graph.sets']],
   ['Divisibility, primes and divisors', ['nt.div']],
-  ['Right triangles', ['geo.basic.pyth', 'geo.tri.special.right'], ['geo.basic.pyth.fold']],
-  ['Isosceles triangles', ['geo.basic.angle.isosceles', 'geo.tri.special.isos']],
+  ['Right triangles', ['geo.basic.pyth']],
+  ['Isosceles triangles', ['geo.tri.special.isos']],
   ['Counting with rotations and reflections', ['cp.tech.sym']],
   ['Polynomial values and interpolation', ['alg.poly.construct.interp']]
 ].map(([name, include, exclude]) => ({ name, ...pool(include, exclude) }));
