@@ -674,3 +674,26 @@ Read all 22 right-triangle-length filings, all nine AP/GP overlaps and the three
 | 2010 AMC 12B, Problem 19 | `alg.seq.ap.geom`, `alg.seq.ap.arith` | `alg.seq.ap.geom`, `alg.seq.ap.arith` (proof corrected) |
 | 2022 AMC 10A, Problem 20 | `alg.seq.ap.geom`, `alg.seq.ap.arith` | `alg.seq.ap.geom`, `alg.seq.ap.arith` (proof corrected) |
 | 2022 AMC 10B, Problem 5 | `alg.eq.factor.squares`, `alg.eq.radical.simplify` | `alg.eq.radical.simplify` |
+
+## High-value audit: arithmetic-sequence cofilings, first batch
+
+Read all 54 distinct arithmetic-sequence cofilings before changing them. Retain actual progression constraints; remove progression labels introduced only by sums in geometry, subset bounds, custom expressions or an iterated-function solution. Remove incidental gcd/divisor/system/interpolation labels from actual progression questions. Confirm the 1988 AIME grid against its source figure and correct the row/column convention, without altering its equations or answer. Close the prime-3 exception in the five-prime progression proof and give a concrete unit-step construction for every attainable 90-subset sum. Answers are unchanged. The remaining cofilings, solid pools and transformation controls follow in the next batch.
+
+| Problem | Previous filing | Current filing |
+|---|---|---|
+| 2026 AIME II, Problem 1 | `alg.seq.ap.arith`, `nt.div.gcd.basic` | `alg.seq.ap.arith` |
+| 1987 AIME, Problem 11 | `alg.seq.ap.arith`, `nt.divisor.count.pairs` | `alg.seq.ap.arith` |
+| 1988 AIME, Problem 6 | `alg.seq.ap.arith`, `cp.struct.tile.fill` | `alg.seq.ap.arith`, `cp.struct.tile.fill` (proof corrected) |
+| 1991 AIME, Problem 2 | `geo.basic.sim.parallel`, `alg.seq.ap.arith` | `geo.basic.sim.parallel` |
+| 1993 AIME, Problem 2 | `alg.eq.factor.squares`, `alg.seq.ap.arith` | `geo.basic.pyth.triples` |
+| 1999 AIME, Problem 1 | `nt.prime.basic.test`, `alg.seq.ap.arith` | `nt.prime.basic.test`, `alg.seq.ap.arith` (proof corrected) |
+| 2000 AIME I, Problem 10 | `alg.eq.linear.system`, `alg.seq.ap.arith` | `alg.seq.ap.arith` |
+| 2002 AIME II, Problem 4 | `geo.poly.regular.hex`, `alg.seq.ap.arith` | `geo.poly.regular.hex` |
+| 2003 AIME I, Problem 2 | `geo.poly.composite.arcs`, `alg.seq.ap.arith` | `geo.poly.composite.arcs` |
+| 2003 AIME II, Problem 8 | `alg.poly.construct.interp`, `alg.seq.ap.arith` | `alg.seq.ap.arith` |
+| 2005 AIME I, Problem 2 | `alg.seq.ap.arith`, `nt.divisor.count.tau` | `alg.seq.ap.arith` |
+| 2006 AIME I, Problem 2 | `cp.basic.comb.subsets`, `alg.seq.ap.arith` | `cp.basic.comb.subsets` (proof corrected) |
+| 2009 AIME II, Problem 4 | `alg.seq.ap.arith`, `nt.divisor.count.pairs` | `alg.seq.ap.arith` |
+| 2015 AIME I, Problem 1 | `alg.word.compute.clever`, `alg.seq.ap.arith` | `alg.word.compute.clever` |
+| 2020 AIME II, Problem 8 | `alg.eq.abs.eq`, `alg.seq.ap.arith`, `alg.fn.basic.iterate` | `alg.eq.abs.eq`, `alg.fn.basic.iterate` |
+| 2021 AIME I, Problem 5 | `alg.seq.ap.arith`, `nt.div.rules.expr` | `alg.seq.ap.arith` |
