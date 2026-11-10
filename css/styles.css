@@ -4284,6 +4284,8 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .practice-history-meta { display: block; color: var(--text-dim); font-size: 12px; font-weight: normal; }
 .practice-topic-search { position: relative; max-width: 420px; }
 .set-find-opt.practice-topic-option { display: block; }
+.practice-topic-name, .practice-topic-context { display: block; overflow-wrap: anywhere; }
+.practice-topic-context { margin-top: 2px; color: var(--text-dim); font-size: 12px; line-height: 1.45; }
 #topic-name { max-width: none; width: 100%; }
 @media (max-width: 500px) {
   .practice-session-top h2 { font-size: calc(18px * var(--tx)); }
