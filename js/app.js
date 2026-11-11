@@ -5889,6 +5889,120 @@
     });
     update();
   }
+  // Practice a card (owner, 2026-11-11): an untimed set from the contest problems that cite one
+  // formula, method or pattern. It draws from the same eligible, twin-free pool as Practice a
+  // topic (the Mixed pool) and builds the same kind of saved set; only the choice differs.
+  function cardPracticePanelHtml() {
+    return `<section class="sh-section" id="pr-card">
+      <h3>Practice a card</h3>
+      <p class="practice-panel-intro">Choose a formula, a method or a pattern to build an untimed set from the contest problems that use it.</p>
+      <form id="card-practice-form" novalidate><fieldset aria-label="Card practice options">
+        <div class="rand-btns" role="radiogroup" aria-label="Kind of card">${["formula", "method", "pattern"].map((k, i) =>
+          `<button type="button" role="radio" aria-checked="${i === 0}" data-card-kind="${k}">${k.charAt(0).toUpperCase() + k.slice(1)}</button>`).join("")}</div>
+        <label class="mock-field-label" for="card-practice-name">Card</label>
+        <div class="practice-topic-search"><input id="card-practice-name" class="set-find-input" type="search" placeholder="Search a formula..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="card-practice-options" aria-describedby="card-practice-status">
+        <div id="card-practice-options" class="set-find-list" role="listbox" aria-label="Cards" hidden></div></div>
+        <div class="rand-diff"><label for="card-count">Questions</label>
+          <input id="card-count" type="range" min="1" max="30" value="5"><output id="card-count-value" for="card-count">5</output></div>
+        <div class="rand-diff"><label for="card-band">Difficulty</label>
+          <input id="card-band" type="range" min="0" max="5" value="0"><output id="card-band-value" for="card-band">Any</output></div>
+        <p class="rand-diff-note" id="card-band-note" aria-live="polite"></p>
+        <p id="card-practice-status" role="status"></p>
+        <button type="submit" class="hp-btn">Generate set</button>
+      </fieldset></form>
+    </section>`;
+  }
+  let cardPracticePools = null;
+  function wireCardPractice(root) {
+    const form = root.querySelector("#card-practice-form");
+    if (!form) return;
+    const input = form.querySelector("#card-practice-name"), options = form.querySelector("#card-practice-options");
+    const count = form.querySelector("#card-count"), band = form.querySelector("#card-band"), status = form.querySelector("#card-practice-status"), submit = form.querySelector("[type=submit]");
+    const plain = name => window.PracticeTopics.label(name);
+    // Every card's eligible problems, each shared AMC 10/12 problem once.
+    const pools = cardPracticePools ||= (() => {
+      const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB,
+        p => hasMockAnswer(p) && !window.MATH_ANSWER_KEYS?.voided?.[p.slug]);
+      const eligible = new Set(topics.nodes.get("mixed").problems), by = {};
+      Object.keys(PROBLEMS_BY_CARD).forEach(id => { const ps = PROBLEMS_BY_CARD[id].filter(p => eligible.has(p)); if (ps.length && BY_ID[id]) by[id] = ps; });
+      return by;
+    })();
+    const cardsOf = k => Object.keys(pools).filter(id => kindOf(BY_ID[id].formula) === k).sort((a, b) => pools[b].length - pools[a].length || plain(BY_ID[a].formula.name).localeCompare(plain(BY_ID[b].formula.name)));
+    let kind = "formula", chosen = null, active = -1, choices = [], desired = count.valueAsNumber, generating = false;
+    const level = () => problemDifficulty.levels[band.valueAsNumber].label;
+    const pool = () => chosen ? problemDifficulty.filter(pools[chosen], DIFFS[band.valueAsNumber]) : [];
+    function close() { options.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; }
+    function highlight() {
+      [...options.children].forEach((b, i) => { b.classList.toggle("is-cur", i === active); b.setAttribute("aria-selected", String(i === active)); });
+      if (choices[active]) input.setAttribute("aria-activedescendant", "card-practice-" + active); else input.removeAttribute("aria-activedescendant");
+    }
+    // With nothing typed the most used cards of the kind are offered; typing matches the name.
+    function suggest() {
+      const q = input.value.trim().toLowerCase(), all = cardsOf(kind);
+      choices = (q && !(chosen && plain(BY_ID[chosen].formula.name).toLowerCase() === q) ? all.filter(id => plain(BY_ID[id].formula.name).toLowerCase().includes(q)) : all).slice(0, 8);
+      options.innerHTML = choices.map((id, i) => { const n = problemDifficulty.filter(pools[id], DIFFS[band.valueAsNumber]).length;
+        return `<button type="button" class="set-find-opt practice-topic-option" id="card-practice-${i}" role="option" aria-selected="false"><span class="practice-topic-name">${BY_ID[id].formula.name}</span><span class="practice-topic-context">${n} problem${n === 1 ? "" : "s"}</span></button>`; }).join("");
+      [...options.children].forEach((b, i) => {
+        b.addEventListener("mousemove", () => { if (active !== i) { active = i; highlight(); } });
+        b.addEventListener("click", () => { chosen = choices[i]; input.value = plain(BY_ID[chosen].formula.name); update(); input.focus({ preventScroll: true }); close(); });
+      });
+      renderMath(options);
+      active = choices.length ? 0 : -1; options.hidden = !choices.length; input.setAttribute("aria-expanded", String(!options.hidden)); highlight();
+    }
+    function update() {
+      const ps = pool();
+      count.max = chosen ? Math.max(1, Math.min(30, ps.length)) : 30;
+      count.value = Math.min(desired, Number(count.max));
+      form.querySelector("#card-count-value").textContent = count.value;
+      form.querySelector("#card-band-value").textContent = level();
+      band.setAttribute("aria-valuetext", level());
+      const rated = band.valueAsNumber && chosen ? ps.map(p => p.elo).filter(Number.isFinite) : [];
+      form.querySelector("#card-band-note").textContent = rated.length
+        ? `${level()} for this card is an Elo rating of ${Math.min(...rated)} to ${Math.max(...rated)}: one fifth of its problems, where a higher rating means a harder problem.`
+        : band.valueAsNumber ? `${level()} is one fifth of the chosen card's problems by Elo rating, where a higher rating means a harder problem. Choose a card to see the ratings it covers.`
+        : "Difficulty is measured inside the card you choose: each level is a fifth of the problems that use it, by Elo rating.";
+      status.textContent = chosen ? `${ps.length} matching problem${ps.length === 1 ? "" : "s"} available.` : input.value.trim() ? "Choose a card from the suggestions." : "";
+      submit.disabled = generating || !ps.length;
+    }
+    form.querySelectorAll("[data-card-kind]").forEach(b => b.addEventListener("click", () => {
+      kind = b.dataset.cardKind; chosen = null; input.value = ""; input.placeholder = `Search a ${kind}...`;
+      form.querySelectorAll("[data-card-kind]").forEach(x => x.setAttribute("aria-checked", String(x === b)));
+      close(); update();
+    }));
+    input.addEventListener("focus", suggest);
+    input.addEventListener("input", () => { chosen = null; update(); suggest(); });
+    input.addEventListener("keydown", e => {
+      if (e.key === "Escape") { e.preventDefault(); close(); }
+      else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        if (options.hidden) suggest(); else if (choices.length) { active = (active + (e.key === "ArrowDown" ? 1 : -1) + choices.length) % choices.length; highlight(); options.children[active]?.scrollIntoView({ block: "nearest" }); }
+      } else if (e.key === "Enter" && !options.hidden && active >= 0) { e.preventDefault(); options.children[active]?.click(); }
+    });
+    form.addEventListener("focusout", e => { if (!e.relatedTarget?.closest?.("#card-practice-form .practice-topic-search")) close(); });
+    count.addEventListener("input", () => { desired = count.valueAsNumber; update(); });
+    band.addEventListener("input", update);
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      const ps = pool(), requested = count.valueAsNumber;
+      if (generating || !chosen || !ps.length || !Number.isSafeInteger(requested) || requested < 1) return;
+      const id = chosen, label = plain(BY_ID[id].formula.name), lv = level(), problems = [];
+      generating = true; form.querySelector("fieldset").disabled = true; status.textContent = "Loading problem statements…";
+      while (ps.length && problems.length < requested) {
+        const batch = [];
+        while (ps.length && batch.length < requested - problems.length) { const i = Math.floor(Math.random() * ps.length); batch.push(ps[i]); ps[i] = ps[ps.length - 1]; ps.pop(); }
+        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug]).map(p => p.year))].map(loadStatements));
+        if (!form.isConnected) return;
+        problems.push(...batch.filter(p => window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
+      }
+      generating = false; form.querySelector("fieldset").disabled = false;
+      if (!problems.length) { status.textContent = "No statements could be loaded. Try again or choose another card."; return; }
+      topicPracticeSet = practiceSessions.create(label, lv, problemDifficulty.order(problems).map(p => p.slug));
+      topicPracticeSet.cardId = id;
+      savePractice();
+      location.hash = "#/practice/set/" + topicPracticeSet.id;
+    });
+    update();
+  }
   function renderSpaceHome(name) {
     shownIds = [];
     let body = spaceHeadHtml(name);
@@ -5965,6 +6079,7 @@
           </fieldset></form>
         </section>
         ${mockPracticePanelHtml()}
+        ${cardPracticePanelHtml()}
         <section class="sh-section" id="pr-contests">
           <h3>Contests</h3>
           <p class="practice-panel-intro">Browse past papers by contest and year.</p>
@@ -5993,6 +6108,7 @@
     wireRandomPicker($content);
     wireTopicPractice($content);
     wireMockPractice($content);
+    wireCardPractice($content);
     wirePracticeHistory($content);
     wireShelfMore($content);
     const unrel = $content.querySelector("#ct-unwritten");
