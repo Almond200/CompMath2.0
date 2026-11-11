@@ -16,7 +16,7 @@ function expected(id){
  const last=Math.max(...db.map(p=>p.year));
  return {n:ps.length,oneIn:Math.round(db.length/ps.length),med,q1:q(elos,.25),q3:q(elos,.75),min:Math.min(...elos),max:Math.max(...elos),
   harder:Math.round(db.filter(p=>p.elo<med).length/db.length*100),years:[Math.min(...ps.map(p=>p.year)),Math.max(...ps.map(p=>p.year))],
-  aime:ps.filter(aime).length,aimeShare:pct(ps.filter(aime).length/db.filter(aime).length),aimeAt:q(ps.filter(aime).map(p=>p.num),.5),
+  aime:ps.filter(aime).length,aimeOdds:Math.round(db.filter(aime).length/ps.filter(aime).length),aimeShare:pct(ps.filter(aime).length/db.filter(aime).length),aimeAt:q(ps.filter(aime).map(p=>p.num),.5),
   top:Math.max(...Object.values(nodes)),recent:ps.filter(p=>p.year>last-5).length,last:last-4};
 }
 (async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME||undefined,args:['--no-sandbox']});try{
@@ -29,10 +29,13 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  // A much-used formula: every part of the profile.
  for(const id of ['pythagorean-theorem','casework-method']){
   const pf=await open(id),e=expected(id);
-  const stats=await pf.locator('.pf-stat').evaluateAll(xs=>xs.map(x=>[x.querySelector('b').textContent,x.querySelector('span').textContent]));
-  assert.equal(stats.length,5);assert.deepEqual(stats[0],[String(e.n),'problems']);assert.deepEqual(stats[1],['1 in '+e.oneIn,'of all problems']);
-  assert.match(stats[2][0],/^\d+(st|nd|rd|th)$/);assert.match(stats[2][1],/^most used of \d+ (formula|method|pattern)s$/);
-  assert.deepEqual(stats[3],[String(e.med),'median rating']);assert.deepEqual(stats[4],[e.years.join('–'),'years seen']);
+  const stats=await pf.locator('.pf-stat:not(.pf-odds)').evaluateAll(xs=>xs.map(x=>[x.querySelector('b').textContent,x.querySelector('span').textContent]));
+  assert.equal(stats.length,4);assert.deepEqual(stats[0],[String(e.n),'problems']);
+  assert.match(stats[1][0],/^\d+(st|nd|rd|th)$/);assert.match(stats[1][1],/^most used of \d+ (formula|method|pattern)s$/);
+  assert.deepEqual(stats[2],[String(e.med),'median rating']);assert.deepEqual(stats[3],[e.years.join('–'),'years seen']);
+  // The odds are given per contest, not as one figure across contests of different sizes.
+  const odds=await pf.locator('.pf-odds .pf-odd').allInnerTexts();assert(odds.length>=3);assert(odds.includes('1 in '+e.aimeOdds+'AIME')||odds.includes('1 in '+e.aimeOdds+' AIME')||odds.map(t=>t.replace(/\s+/g,' ')).includes('1 in '+e.aimeOdds+' AIME'),JSON.stringify(odds));
+  assert.equal(await pf.locator('.pf-stat').nth(1).evaluate(el=>el.classList.contains('pf-odds')),true);assert.doesNotMatch(await pf.locator('.pf-stats').innerText(),/of all problems/);
   assert.deepEqual(await pf.locator('.pf-k').allInnerTexts().then(x=>x.slice(0,4)),['Contests:','Difficulty:','Topics:','Over time:']);
   const contests=rowOf(pf,'Contests'),aime=contests.locator('tbody tr').filter({hasText:'AIME'}).locator('td');
   assert.equal(await aime.nth(1).innerText(),String(e.aime));assert.equal(await aime.nth(2).innerText(),e.aimeShare);assert.equal(await aime.nth(3).innerText(),'#'+e.aimeAt);
@@ -64,8 +67,10 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   const ps=db.filter(p=>(p.tree||[]).some(t=>kids.has(t))),elos=ps.map(p=>p.elo),med=q(elos,.5),cited={};
   ps.forEach(p=>new Set([...(p.formulas||[]),...(p.trickFormulas||[])]).forEach(c=>cited[c]=(cited[c]||0)+1));
   await page.goto(base+'/#/browse/topics/'+id);const tp=page.locator('.tp');await tp.waitFor();
-  const stats=await tp.locator('.pf-stat').evaluateAll(xs=>xs.map(x=>[x.querySelector('b').textContent,x.querySelector('span').textContent]));
-  assert.deepEqual(stats,[[ps.length.toLocaleString('en-US'),'problems'],['1 in '+Math.round(db.length/ps.length),'of all problems'],[String(med),'median rating'],[Math.min(...ps.map(p=>p.year))+'–'+Math.max(...ps.map(p=>p.year)),'years seen']]);
+  const stats=await tp.locator('.pf-stat:not(.pf-odds)').evaluateAll(xs=>xs.map(x=>[x.querySelector('b').textContent,x.querySelector('span').textContent]));
+  assert.deepEqual(stats,[[ps.length.toLocaleString('en-US'),'problems'],[String(med),'median rating'],[Math.min(...ps.map(p=>p.year))+'–'+Math.max(...ps.map(p=>p.year)),'years seen']]);
+  const aimeAll=db.filter(p=>/ AIME\b/.test(p.ref)).length,aimeHere=ps.filter(p=>/ AIME\b/.test(p.ref)).length;
+  assert((await tp.locator('.pf-odds .pf-odd').allInnerTexts()).map(t=>t.replace(/\s+/g,' ')).includes('1 in '+Math.round(aimeAll/aimeHere)+' AIME'));
   assert.deepEqual(await tp.locator('.pf-k').allInnerTexts(),['Contests:','Difficulty:','Over time:','Cards:']);
   assert.equal(await rowOf(tp,'Difficulty').locator('.pf-words').innerText(),`Median rating ${med}. Half of its problems are rated ${q(elos,.25)} to ${q(elos,.75)}; the full range is ${Math.min(...elos)} to ${Math.max(...elos)}. The median is harder than ${Math.round(db.filter(p=>p.elo<med).length/db.length*100)}% of all problems.`);
   const aimeN=ps.filter(p=>/ AIME\b/.test(p.ref)).length;assert.equal(await rowOf(tp,'Contests').locator('tbody tr').filter({hasText:'AIME'}).locator('td').nth(1).innerText(),String(aimeN));

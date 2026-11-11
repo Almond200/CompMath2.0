@@ -2963,7 +2963,11 @@
     const few = out.few;
     out.tiles = {
       count: stat(N.toLocaleString("en-US"), N === 1 ? "problem" : "problems"),
-      share: stat(`1 in ${Math.max(1, Math.round(all.total / N)).toLocaleString("en-US")}`, "of all problems"),
+      // One line per contest it appears in (owner, 2026-11-11): "1 in 22 AIME" says more than
+      // one figure across contests of very different sizes. A contest with only a few papers
+      // in the collection gets its plain count.
+      share: `<div class="pf-stat pf-odds">${FAMILIES.map(x => [x, probs.filter(p => p.fam === x).length]).filter(x => x[1]).map(([x, n]) =>
+        `<span class="pf-odd"><b>${all.fam[x] >= 100 ? `1 in ${Math.max(1, Math.round(all.fam[x] / n)).toLocaleString("en-US")}` : `${n} of ${all.fam[x]}`}</b>${escapeAttr(x)}</span>`).join("")}</div>`,
       med: med != null ? stat(med, elos.length === 1 ? "rating" : "median rating") : "",
       years: stat(y0 === y1 ? y0 : `${y0}&ndash;${y1}`, y0 === y1 ? "year seen" : "years seen")
     };
@@ -5936,10 +5940,12 @@
       [...options.children].forEach((b, i) => { b.classList.toggle("is-cur", i === active); b.setAttribute("aria-selected", String(i === active)); });
       if (choices[active]) input.setAttribute("aria-activedescendant", "card-practice-" + active); else input.removeAttribute("aria-activedescendant");
     }
-    // With nothing typed the most used cards of the kind are offered; typing matches the name.
+    // Nothing is offered until something is typed (owner, 2026-11-11); then the cards of the
+    // kind whose names match, most used first.
     function suggest() {
-      const q = input.value.trim().toLowerCase(), all = cardsOf(kind);
-      choices = (q && !(chosen && plain(BY_ID[chosen].formula.name).toLowerCase() === q) ? all.filter(id => plain(BY_ID[id].formula.name).toLowerCase().includes(q)) : all).slice(0, 8);
+      const q = input.value.trim().toLowerCase();
+      if (!q || (chosen && plain(BY_ID[chosen].formula.name).toLowerCase() === q)) { choices = []; options.innerHTML = ""; close(); return; }
+      choices = cardsOf(kind).filter(id => plain(BY_ID[id].formula.name).toLowerCase().includes(q)).slice(0, 8);
       options.innerHTML = choices.map((id, i) => { const n = problemDifficulty.filter(pools[id], DIFFS[band.valueAsNumber]).length;
         return `<button type="button" class="set-find-opt practice-topic-option" id="card-practice-${i}" role="option" aria-selected="false"><span class="practice-topic-name">${BY_ID[id].formula.name}</span><span class="practice-topic-context">${n} problem${n === 1 ? "" : "s"}</span></button>`; }).join("");
       [...options.children].forEach((b, i) => {
@@ -9093,10 +9099,21 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const bySub = {};
     rated.forEach(p => { const k = primarySubject(p); if (k) (bySub[k] = bySub[k] || []).push(p.elo); });
     const subs = TOPIC_ROOTS.filter(r => bySub[r.id] || (cmp && cmp.subjects[r.id])), subMax = Math.max(...subs.map(r => (bySub[r.id] || []).length));
-    const subjects = sec("Subjects", `<table class="pf-table pp-table"><thead><tr><th scope="col" aria-label="Subject"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th>${cmp ? `<th scope="col">${base.id === "all" ? "Usual" : base.label}</th>` : ""}<th scope="col"><span class="pf-long">Median rating</span><span class="pf-short" aria-hidden="true">Median</span></th></tr></thead><tbody>${subs.map(r => {
+    // A pie of the split beside the table (owner, 2026-11-11); each subject keeps one colour in
+    // the pie, its dot and its bar, so the rows are the pie's legend.
+    const total = subs.reduce((n, r) => n + (bySub[r.id] || []).length, 0);
+    let turn = -Math.PI / 2;
+    const slices = subs.filter(r => (bySub[r.id] || []).length).map(r => {
+      const n = bySub[r.id].length, end = turn + 2 * Math.PI * n / total, at = t => `${(50 + 48 * Math.cos(t)).toFixed(2)},${(50 + 48 * Math.sin(t)).toFixed(2)}`;
+      const shape = n === total ? `<circle cx="50" cy="50" r="48"` : `<path d="M50,50 L${at(turn)} A48,48 0 ${end - turn > Math.PI ? 1 : 0} 1 ${at(end)} Z"`;
+      turn = end;
+      return `${shape} style="fill:var(--subj-${r.id})"><title>${topicLabel(r)}: ${n} of ${total} (${Math.round(n / total * 100)}%)</title>${n === total ? "</circle>" : "</path>"}`;
+    }).join("");
+    const pie = `<svg class="pp-pie" viewBox="0 0 100 100" role="img" aria-label="Subjects: ${subs.map(r => `${topicLabel(r)} ${(bySub[r.id] || []).length}`).join(", ")}">${slices}</svg>`;
+    const subjects = sec("Subjects", `<div class="pp-subjects">${pie}<table class="pf-table pp-table"><thead><tr><th scope="col" aria-label="Subject"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th>${cmp ? `<th scope="col">${base.id === "all" ? "Usual" : base.label}</th>` : ""}<th scope="col"><span class="pf-long">Median rating</span><span class="pf-short" aria-hidden="true">Median</span></th></tr></thead><tbody>${subs.map(r => {
       const xs = (bySub[r.id] || []).sort((x, y) => x - y), u = cmp ? cmp.subjects[r.id] || 0 : 0;
-      return `<tr><th scope="row"><a href="${topicHash(r.id)}">${topicLabel(r)}</a></th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${xs.length ? Math.max(2, xs.length / subMax * 100).toFixed(1) : 0}%"></i></span></td><td>${xs.length}</td>${cmp ? `<td>${Number.isInteger(u) ? u : u.toFixed(1)}</td>` : ""}<td>${xs.length ? quantile(xs, 0.5) : "&ndash;"}</td></tr>`;
-    }).join("")}</tbody></table>`);
+      return `<tr><th scope="row"><i class="fam-dot" style="background:var(--subj-${r.id})"></i><a href="${topicHash(r.id)}">${topicLabel(r)}</a></th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${xs.length ? Math.max(2, xs.length / subMax * 100).toFixed(1) : 0}%;background:var(--subj-${r.id})"></i></span></td><td>${xs.length}</td>${cmp ? `<td>${Number.isInteger(u) ? u : u.toFixed(1)}</td>` : ""}<td>${xs.length ? quantile(xs, 0.5) : "&ndash;"}</td></tr>`;
+    }).join("")}</tbody></table></div>`);
 
     // Over the years: the contest's median paper rating, sitting by sitting, with this paper's
     // sitting picked out. Each bar opens its year.
