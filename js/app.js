@@ -5257,7 +5257,8 @@
     const tile = (sp, n) => `<a class="hs-tile" data-tint="${sp}" href="#/${sp}"><b>${SPACES[sp].label}</b><span class="hs-ask">${SPACES[sp].ask}</span><span class="hs-what">${SPACE_WHAT[sp]}</span><span class="hs-n">${n}</span></a>`;
     // The front page (owner, 2026-10-31, second version): the app's own top bar holds the
     // spaces and the search, so the page itself is dense, like a reference site's front page:
-    // one strip of the five spaces, then a main column and a rail of short sections divided by
+    // one strip of the spaces (Reference, holding Formulas, Methods and Patterns as the top bar
+    // does since 2026-11-11, then Learn and Practice), then a main column and a rail of short sections divided by
     // hairlines rather than boxed.
     // Continue: the cards and problems opened lately. Lessons and books are left to Learn's own
     // "Recently opened" (owner, 2026-10-31: too many lessons crowded the home page).
@@ -5269,11 +5270,18 @@
           <h1 class="hm-name">Competition Math Reference</h1>
           <p class="hm-sub">Formulas, methods, patterns, textbooks, and real contest problems for AMC 10/12, AIME, and olympiad, all linked to each other.</p>
         </div>
-        <nav class="hm-spaces" aria-label="Spaces">${["formulas", "methods", "patterns", "learn", "practice"].map(sp => `
+        <nav class="hm-spaces" aria-label="Spaces">
+          <div class="hm-refcell">
+            <span class="hm-ref-bar" aria-hidden="true">${["formulas", "methods", "patterns"].map(sp => `<i data-tint="${sp}"></i>`).join("")}</span>
+            <span class="hm-ref-name">Reference</span>
+            <span class="hm-space-ask">What can I look up?</span>
+            <span class="hm-ref-links">${[["formulas", count("formula")], ["methods", count("method")], ["patterns", count("pattern")]].map(([sp, n]) =>
+              `<a class="hm-ref-link" data-tint="${sp}" href="#/${sp}" title="${escapeAttr(SPACES[sp].ask)}"><b>${SPACES[sp].label}</b>${n}</a>`).join("")}</span>
+          </div>${["learn", "practice"].map(sp => `
           <a class="hm-space" data-tint="${sp}" href="#/${sp}">
             <span class="hm-space-name">${SPACES[sp].label}</span>
             <span class="hm-space-ask">${SPACES[sp].ask}</span>
-            <span class="hm-space-n">${{ formulas: `${count("formula")} formulas`, methods: `${count("method")} methods`, patterns: `${count("pattern")} patterns`, learn: `${LEARN_SHELF.length} books`, practice: `${nProblems} problems` }[sp]}</span>
+            <span class="hm-space-n">${{ learn: `${LEARN_SHELF.length} books`, practice: `${nProblems} problems` }[sp]}</span>
           </a>`).join("")}
         </nav>
         <div class="hm-cols">
@@ -8785,22 +8793,163 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }, true);
 
   // ---------- Problem Database: competition/year navigator + per-problem detail ----------
-  function problemRowHtml(p, compact) {
-    const typeChips = p.types.slice(0, 4).map(t => `<span class="ptype-chip">${escapeAttr(t.label)}</span>`).join("");
-    const label = compact ? ("Problem " + p.num) : refShort(p.ref);
-    return `
-      <a class="prob-card" href="#/problem/${p.slug}">
-        <div class="prob-card-top">
-          <span class="prob-ref">${label}</span>
-          <span class="prob-formula-count">${p.formulas.length} card${p.formulas.length === 1 ? "" : "s"}</span>
-        </div>
-        ${typeChips || p.subjects.length ? `<div class="ptype-row">${subjectChips(p)}${typeChips}</div>` : ""}
-        ${p.strategy ? `<div class="prob-strategy">${p.strategy}</div>` : ""}
-      </a>`;
+  // A contest's papers in the order they were sat. A sitting is a year, except in 2021, when the
+  // AMC 10 and 12 were held twice (spring, the contest moved from fall 2020, and fall): those
+  // are two sittings, so "the contest before" a 2022 paper is fall 2021 and before fall 2021
+  // it is spring 2021.
+  const FAM_PAPERS = {};
+  const sitOf = p => p.year * 10 + (/^Fall\b/i.test(p.cname) ? 2 : /^Spring\b/i.test(p.cname) ? 1 : 0);
+  const sitLabel = s => { const y = Math.floor(s / 10), k = s % 10; return k === 2 ? `Fall ${y}` : k === 1 ? `Spring ${y}` : String(y); };
+  const sitSpan = sits => sits.length === 1 ? sitLabel(sits[0]) : `${sitLabel(sits[0])}&ndash;${sitLabel(sits[sits.length - 1])}`;
+  const paperKey = p => p.year + " " + p.cname;
+  const primarySubject = p => { const id = p.tree.find(t => TOPIC_NODES.has(t)); return id ? topicPath(id)[0].id : null; };
+  function famPapers(fam) {
+    if (FAM_PAPERS[fam]) return FAM_PAPERS[fam];
+    const by = {};
+    PROBLEM_DB.forEach(p => {
+      if (p.fam !== fam || !Number.isFinite(p.elo)) return;
+      (by[paperKey(p)] = by[paperKey(p)] || { key: paperKey(p), sit: sitOf(p), year: p.year, cname: p.cname, ps: [] }).ps.push(p);
+    });
+    const papers = Object.values(by).sort((x, y) => x.sit - y.sit || x.cname.localeCompare(y.cname));
+    papers.forEach(x => { x.med = quantile(x.ps.map(p => p.elo).sort((u, v) => u - v), 0.5); });
+    return FAM_PAPERS[fam] = papers;
   }
+  // What a set of papers says a paper usually looks like: the median rating at each question
+  // number, the average number of problems filed first under each subject, and the median of
+  // the papers' median ratings.
+  function paperBaseline(papers) {
+    const byNum = {}, subjects = {}, usual = {};
+    papers.forEach(x => x.ps.forEach(p => {
+      (byNum[p.num] = byNum[p.num] || []).push(p.elo);
+      const sub = primarySubject(p);
+      if (sub) subjects[sub] = (subjects[sub] || 0) + 1;
+    }));
+    Object.keys(byNum).forEach(n => { usual[n] = quantile(byNum[n].sort((x, y) => x - y), 0.5); });
+    Object.keys(subjects).forEach(k => { subjects[k] /= papers.length; });
+    return { count: papers.length, usual, subjects, med: quantile(papers.map(x => x.med).sort((x, y) => x - y), 0.5) };
+  }
+  // What the paper is compared with (owner, 2026-11-11: papers have grown harder, so the whole
+  // record is not the fairest yardstick): every year, the five contests before it, the one
+  // before it, or the other paper of its own sitting. The choice is kept while browsing.
+  let paperBase = "recent";
+  function paperBases(fam, ps) {
+    const papers = famPapers(fam), me = paperKey(ps[0]), sit = sitOf(ps[0]);
+    const sits = [...new Set(papers.map(x => x.sit))], at = sits.indexOf(sit);
+    const of = ss => papers.filter(x => ss.includes(x.sit));
+    // The choices are named plainly ("Past 10 AMCs"; owner, 2026-11-11) and the exact years
+    // are given in the line under the chart. "Past 10" is whole sittings, newest first, until
+    // there are ten papers (five years of A and B papers, ten years of the AMC 8).
+    const noun = /^AMC/.test(fam) ? "AMC" : /^AIME/.test(fam) ? "AIME" : "paper";
+    const past = n => n === 1 ? `Last ${noun}` : `Past ${n} ${noun}s`, onPast = n => n === 1 ? `on the last ${noun}` : `on the past ${n} ${noun}s`;
+    let recent = [];
+    for (let i = at - 1; i >= 0 && of(recent).length < 10; i--) recent = [sits[i], ...recent];
+    const prev = at > 0 ? [sits[at - 1]] : [], twins = papers.filter(x => x.sit === sit && x.key !== me);
+    const nR = of(recent).length, nP = of(prev).length;
+    return [
+      papers.length >= 3 ? { id: "all", label: "All years", papers, than: "usual", key: `the usual rating at that question, over all ${papers.length} ${escapeAttr(fam)} papers (${sitSpan([sits[0], sits[sits.length - 1]])})` } : null,
+      nR > nP ? { id: "recent", label: past(nR), papers: of(recent), than: onPast(nR), key: `the usual rating at that question ${onPast(nR)} (${sitSpan(recent)})` } : null,
+      nP ? { id: "prev", label: past(nP), papers: of(prev), than: onPast(nP), key: `the ${nP > 1 ? "usual " : ""}rating at that question ${onPast(nP)} (${sitLabel(prev[0])})` } : null,
+      twins.length === 1 ? { id: "twin", label: escapeAttr(twins[0].cname.replace(/^(Spring|Fall) /, "")), papers: twins, than: `on the ${escapeAttr(twins[0].cname.replace(/^(Spring|Fall) /, ""))}`, key: `the rating at that question on the ${sitLabel(sit)} ${escapeAttr(twins[0].cname.replace(/^(Spring|Fall) /, ""))}` } : null
+    ].filter(Boolean);
+  }
+  // One paper's page (owner, 2026-11-11): headline figures, the problems as plain tiles (a number
+  // and a rating; the chips and solution text they used to carry are gone), then what the ratings
+  // and tree filings say about the paper: its difficulty question by question and its subjects
+  // against a chosen yardstick, the contest's median rating sitting by sitting, and its topics.
+  function paperInfoHtml(fam, ps) {
+    const rated = ps.filter(p => Number.isFinite(p.elo));
+    const sec = (title, body) => `<section class="pp-sec"><h3 class="pp-h">${title}</h3>${body}</section>`;
+    const tiles = `<div class="br-list pp-tiles">${ps.map(p => `<a class="br-row" href="#/problem/${p.slug}"><span class="br-ref">Problem ${p.num}</span>${Number.isFinite(p.elo) ? `<span class="br-elo">${p.elo}</span>` : ""}</a>`).join("")}</div>`;
+    if (!rated.length) return sec("Problems", tiles);
+    const papers = famPapers(fam), bases = paperBases(fam, ps);
+    const base = bases.find(x => x.id === paperBase) || bases.find(x => x.id === "recent") || bases[0] || null, cmp = base ? paperBaseline(base.papers) : null;
+    const elos = rated.map(p => p.elo).sort((x, y) => x - y), med = quantile(elos, 0.5);
+    const hardest = rated.reduce((x, y) => y.elo > x.elo ? y : x);
+    // The two ends of the paper: the opening questions everyone is meant to get and the closing
+    // five that separate the top scores (the first ten and last five of a 25-question paper,
+    // the first and last five of a shorter one).
+    const last = Math.max(...ps.map(p => p.num)), ends = last >= 10 ? [[1, last >= 20 ? 10 : 5], [last - 4, last]] : [];
+    const signed = d => `${d > 0 ? "+" : d < 0 ? "&minus;" : ""}${Math.abs(d)}`;
+    const stat = (big, small) => `<div class="pf-stat"><b>${big}</b><span>${small}</span></div>`;
+    const recent = bases.find(x => x.id === "recent");
+    const stats = `<div class="pf-stats pp-stats">${[
+      stat(ps.length, "problems"),
+      stat(med, "median rating"),
+      ...ends.map(([lo, hi]) => { const xs = rated.filter(p => p.num >= lo && p.num <= hi).map(p => p.elo).sort((x, y) => x - y); return xs.length ? stat(quantile(xs, 0.5), `median of questions ${lo}&ndash;${hi}`) : ""; }),
+      recent ? stat(signed(med - paperBaseline(recent.papers).med), `against the ${recent.label.toLowerCase().replace(/amc/, "AMC").replace(/aime/, "AIME")}`) : "",
+      papers.length >= 3 ? stat(ordinal(1 + papers.filter(x => x.med > med).length), `hardest of all ${papers.length} ${escapeAttr(fam)} papers`) : ""
+    ].join("")}</div>`;
+    const chips = bases.length > 1 ? `<div class="pp-base"><span class="br-kids-l">Compare with</span><div class="fam-chips" role="group" aria-label="Compare with">${bases.map(x =>
+      `<button type="button" class="fam-chip" data-pp-base="${x.id}" aria-pressed="${x === base}">${x.label}</button>`).join("")}</div></div>` : "";
+
+    // Difficulty by question: a bar per problem (it opens the problem), with a tick at the
+    // yardstick's rating for that question number.
+    const top = Math.ceil(Math.max(hardest.elo, ...(cmp ? rated.map(p => cmp.usual[p.num] || 0) : [0])) / 500) * 500;
+    const lines = []; for (let y = 1000; y < top; y += 1000) lines.push(y);
+    const bars = ps.map(p => {
+      const u = cmp ? cmp.usual[p.num] : null;
+      if (!Number.isFinite(p.elo)) return `<span class="pq-bar"><span class="pq-n">${p.num}</span></span>`;
+      return `<a class="pq-bar" href="#/problem/${p.slug}" title="Problem ${p.num}: rated ${p.elo}${u ? `; ${base.label}: ${u}` : ""}" aria-label="Problem ${p.num}, rated ${p.elo}${u ? `, against ${u}` : ""}"><span class="pq-col"><i style="height:${(p.elo / top * 100).toFixed(1)}%"></i>${u ? `<b style="bottom:${(u / top * 100).toFixed(1)}%"></b>` : ""}</span><span class="pq-n">${p.num}</span></a>`;
+    }).join("");
+    const off = cmp ? rated.filter(p => cmp.usual[p.num]).map(p => ({ p, d: p.elo - cmp.usual[p.num] })).filter(x => Math.abs(x.d) >= 300).sort((x, y) => Math.abs(y.d) - Math.abs(x.d)) : [];
+    const listed = xs => { const t = xs.slice(0, 4).map(x => `<a href="#/problem/${x.p.slug}">#${x.p.num}</a> (${signed(x.d)})`); return t.length < 3 ? t.join(" and ") : `${t.slice(0, -1).join(", ")} and ${t[t.length - 1]}`; };
+    const harder = off.filter(x => x.d > 0), easier = off.filter(x => x.d < 0);
+    const versus = !cmp ? "" : !off.length ? `Every question is within 300 points of its rating ${base.than === "usual" ? "in the usual paper" : base.than}.`
+      : [harder.length ? `Harder than ${base.than}: ${listed(harder)}.` : "", easier.length ? `Easier than ${base.than}: ${listed(easier)}.` : ""].filter(Boolean).join(" ");
+    const curve = sec("Difficulty by question", `${chips}<div class="pq" style="--pq:${famColor(fam)}"><div class="pq-plot"><div class="pq-grid" aria-hidden="true">${lines.map(y => `<span class="pq-line" style="bottom:${(y / top * 100).toFixed(1)}%"><em>${y}</em></span>`).join("")}</div><div class="pq-bars${ps.length > 15 ? " pq-many" : ""}">${bars}</div></div></div>
+      ${cmp ? `<p class="pp-note" style="--pq:${famColor(fam)}"><span class="pq-key"><i></i>this paper</span><span class="pq-key"><b></b>${base.key}</span></p><p class="pp-words">${versus}</p>` : ""}`);
+
+    // Subjects: where the paper's problems are filed first, against the same yardstick.
+    const bySub = {};
+    rated.forEach(p => { const k = primarySubject(p); if (k) (bySub[k] = bySub[k] || []).push(p.elo); });
+    const subs = TOPIC_ROOTS.filter(r => bySub[r.id] || (cmp && cmp.subjects[r.id])), subMax = Math.max(...subs.map(r => (bySub[r.id] || []).length));
+    const subjects = sec("Subjects", `<table class="pf-table pp-table"><thead><tr><th scope="col" aria-label="Subject"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th>${cmp ? `<th scope="col">${base.id === "all" ? "Usual" : base.label}</th>` : ""}<th scope="col"><span class="pf-long">Median rating</span><span class="pf-short" aria-hidden="true">Median</span></th></tr></thead><tbody>${subs.map(r => {
+      const xs = (bySub[r.id] || []).sort((x, y) => x - y), u = cmp ? cmp.subjects[r.id] || 0 : 0;
+      return `<tr><th scope="row"><a href="${topicHash(r.id)}">${topicLabel(r)}</a></th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${xs.length ? Math.max(2, xs.length / subMax * 100).toFixed(1) : 0}%"></i></span></td><td>${xs.length}</td>${cmp ? `<td>${Number.isInteger(u) ? u : u.toFixed(1)}</td>` : ""}<td>${xs.length ? quantile(xs, 0.5) : "&ndash;"}</td></tr>`;
+    }).join("")}</tbody></table>`);
+
+    // Over the years: the contest's median paper rating, sitting by sitting, with this paper's
+    // sitting picked out. Each bar opens its year.
+    const sits = [...new Set(papers.map(x => x.sit))], sit = sitOf(ps[0]);
+    let years = "";
+    if (sits.length >= 3) {
+      const per = sits.map(s => { const xs = papers.filter(x => x.sit === s); return { s, year: xs[0].year, n: xs.length, med: Math.round(xs.reduce((n, x) => n + x.med, 0) / xs.length) }; });
+      // A sitting with two papers is one bar, both papers together; the page says so (owner,
+      // 2026-11-11), since the page itself is about one of the two.
+      const pair = papers.some(x => /[AB]$/.test(x.cname)) ? "A and B papers" : papers.some(x => /\bII$/.test(x.cname)) ? "I and II papers" : "", cur = per.find(x => x.s === sit);
+      const both = n => n === 2 ? "both papers" : `its ${n} papers`;
+      // The bars start from a labelled floor, not zero: a rise of a few hundred points is the
+      // whole story here and would vanish on a scale from zero.
+      const yTop = Math.ceil(Math.max(...per.map(x => x.med)) / 100) * 100, yLow = Math.max(0, Math.floor(Math.min(...per.map(x => x.med)) / 100) * 100 - 200);
+      const mean = xs => Math.round(xs.reduce((n, x) => n + x.med, 0) / xs.length);
+      const first = per.slice(0, Math.min(5, per.length >> 1)), last = per.slice(-first.length);
+      const drift = mean(last) - mean(first);
+      years = sec("Over the years", `<div class="py-plot"><span class="py-axis" aria-hidden="true"><em>${yTop}</em><em>${yLow}</em></span><div class="py" style="--pq:${famColor(fam)}">${per.map(x =>
+        `<a class="py-bar${x.s === sit ? " is-cur" : ""}" href="#/problems/${famSlug(fam)}/${x.year}" title="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}: median paper rating ${x.med}" aria-label="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}, median paper rating ${x.med}"${x.s === sit ? ' aria-current="true"' : ""}><span class="py-col"><i style="height:${((x.med - yLow) / (yTop - yLow) * 100).toFixed(1)}%"></i></span><span class="py-n">${String(x.year).slice(2)}${x.s % 10 === 2 ? "F" : x.s % 10 === 1 ? "S" : ""}</span></a>`).join("")}</div></div>
+        <p class="pp-words">${pair ? `Each bar is one sitting of the contest, with its ${pair} taken together. ` : ""}The median ${escapeAttr(fam)} paper was rated ${mean(first)} in ${sitSpan(first.map(x => x.s))} and ${mean(last)} in ${sitSpan(last.map(x => x.s))}: ${drift === 0 ? "no change" : `${Math.abs(drift)} points ${drift > 0 ? "harder" : "easier"}`}. ${cur.n > 1 ? `${sitLabel(sit)} averages ${cur.med} over ${both(cur.n)}; this paper is rated ${med}.` : `This paper is rated ${med}.`}</p>`);
+    }
+
+    // Topics: the areas (one level under a subject) the paper's problems fall in, most first.
+    const areas = {};
+    ps.forEach(p => new Set(p.tree.filter(t => TOPIC_NODES.has(t)).map(t => { const path = topicPath(t); return path[Math.min(1, path.length - 1)].id; })).forEach(id => { areas[id] = (areas[id] || 0) + 1; }));
+    const areaIds = Object.keys(areas).sort((x, y) => areas[y] - areas[x] || TOPIC_NODES.get(x).order - TOPIC_NODES.get(y).order);
+    const topics = areaIds.length ? sec("Topics", `<div class="br-kids pp-areas">${areaIds.map(id => `<a class="br-kid" href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}<span class="br-count">${areas[id]}</span></a>`).join("")}</div>`) : "";
+    return stats + sec("Problems", tiles) + curve + subjects + years + topics;
+  }
+  // Choosing what to compare with redraws the page in place.
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-pp-base]");
+    if (!b) return;
+    paperBase = b.dataset.ppBase;
+    const y = window.scrollY;
+    renderProblems(getRoute());
+    window.scrollTo(0, y);
+    $content.querySelector(`.db-group.is-shown [data-pp-base="${paperBase}"]`)?.focus({ preventScroll: true });
+  });
   // One sitting of one contest, opened from the Practice page: every year of that contest
-  // one click away at the top, the problems grouped by paper, and the neighbouring years at
-  // the foot. Problems are searched from the main search box.
+  // one click away at the top, a toggle between the year's papers (at every width since
+  // 2026-11-11; it began as the phone's), the chosen paper's page, and the neighbouring years
+  // at the foot. Problems are searched from the main search box.
   function renderProblems(route) {
     shownIds = [];
     const fam = route && route.fam && FAM_BY_SLUG[route.fam] ? FAM_BY_SLUG[route.fam] : null;
@@ -8812,12 +8961,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // Spring before Fall within a year (2021 had both), then A before B.
     const seasonRank = gn => /^Spring\b/i.test(gn) ? 0 : /^Fall\b/i.test(gn) ? 1 : 0;
     const gnames = Object.keys(groups).sort((a, b) => seasonRank(a) - seasonRank(b) || a.localeCompare(b));
-    // #/problems/aime/2025/aime-i names one paper (a contest result in the search links there):
-    // the phone's paper toggle opens on it and the wide page scrolls to it.
+    // #/problems/aime/2025/aime-i names one paper (a contest result in the search links there,
+    // and the toggle writes it): the page opens on it.
     const shownG = Math.max(0, gnames.findIndex(gn => paperSlug(gn) === route.paper));
+    const twoSittings = gnames.some(gn => /^Spring\b/i.test(gn)) && gnames.some(gn => /^Fall\b/i.test(gn));
     const body = gnames.map((gn, k) => {
       const ps = groups[gn].sort((a, b) => a.num - b.num);
-      return `<div class="db-group${k === shownG ? " is-shown" : ""}" data-g="${k}"${gnames.length > 1 ? ` id="ct-paper-panel-${k}" role="tabpanel" aria-labelledby="ct-paper-tab-${k}"` : ""}><h3 class="db-group-title">${escapeAttr(gn)}</h3><div class="prob-grid">${ps.map(p => problemRowHtml(p, true)).join("")}</div></div>`;
+      return `<div class="db-group${k === shownG ? " is-shown" : ""}" data-g="${k}"${gnames.length > 1 ? ` id="ct-paper-panel-${k}" role="tabpanel" aria-labelledby="ct-paper-tab-${k}"` : ""}>${paperInfoHtml(fam, ps)}</div>`;
     }).join("");
     const i = years.indexOf(year);
     const newer = years[i - 1], older = years[i + 1];
@@ -8834,16 +8984,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <select class="ct-yb-select" aria-label="Year">${years.map(y => `<option value="${y}"${y === year ? " selected" : ""}>${y}</option>`).join("")}</select>
         ${newer ? `<a class="ct-yb-step" href="${yhref(newer)}" aria-label="${newer}">${stepChevron(1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(1)}</span>`}
       </div>
-      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), ""))}</button>`).join("")}</div>` : ""}
+      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 "))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
       ${body}
       <nav class="topic-nav" aria-label="Neighbouring years">
         ${older ? `<a class="topic-step" href="${yhref(older)}"><span class="ts-dir">${uiIcon("arrow-left")} Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
         ${newer ? `<a class="topic-step topic-step-next" href="${yhref(newer)}"><span class="ts-dir">Later ${uiIcon("arrow-right")}</span><span class="ts-name">${escapeAttr(fam)} ${newer}</span></a>` : ""}
       </nav>`;
     renderMath($content);
-    if (route.paper && shownG > 0) setTimeout(() => $content.querySelector(`.db-group[data-g="${shownG}"]`)?.scrollIntoView({ block: "start", behavior: "instant" }), 0);
-    // The phone's year bar and paper toggle (owner, 2026-10-31); the wide page shows the year
-    // chips and every paper of the year at once.
+    // The phone's year bar is a menu; the paper toggle shows one paper at a time and writes
+    // the paper into the address, so a reload or a shared link opens the same one.
     const sel = $content.querySelector(".ct-yb-select");
     if (sel) sel.addEventListener("change", () => { location.hash = yhref(+sel.value); });
     const tabs = $content.querySelector(".ct-papers");
@@ -8852,6 +9001,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (!b) return;
       tabs.querySelectorAll("[data-g]").forEach(t => t.setAttribute("aria-selected", String(t === b)));
       $content.querySelectorAll(".db-group").forEach(g => g.classList.toggle("is-shown", g.dataset.g === b.dataset.g));
+      history.replaceState(history.state, "", `${yhref(year)}/${paperSlug(gnames[+b.dataset.g])}`);
       updatePageTitle(getRoute(), gnames[+b.dataset.g]);
     });
   }
@@ -9048,7 +9198,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return `<div class="elo-chart${compact ? " is-compact" : ""}${cur != null ? " has-cur" : ""}"><div class="elo-bars">${bars}${line}</div><div class="elo-ticks" aria-hidden="true">${ticks}</div></div>`;
   }
   // On a problem page: the rating, where it sits among its own contest's problems, and that
-  // contest's chart with a line at the rating. The chips compare it with another contest instead.
+  // contest's chart with a line at the rating. The chips compare it with another contest instead:
+  // every contest that has rated problems, HMMT February included (owner, 2026-11-11), so a
+  // contest added later gets its chip without a change here.
   const ratedIn = fam => PROBLEM_DB.filter(p => Number.isFinite(p.elo) && (!fam || p.fam === fam));
   function eloNote(elo, fam, manual) {
     const pool = ratedIn(fam), below = pool.filter(q => q.elo < elo).length;
@@ -9060,11 +9212,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return `<div class="elo-box" data-elo="${p.elo}"${manual ? " data-manual" : ""}>
       <p class="elo-head"><span class="elo-num">${p.elo}</span><span class="elo-note">${eloNote(p.elo, fam, manual)}</span></p>
       <div class="elo-plot">${eloChartHtml({ shown: fam ? [fam] : RATED_FAMS, mark: p.elo, compact: true })}</div>
-      <div class="fam-chips" role="group" aria-label="Compare with">${[...DIFF_FAMS, null].map(f =>
+      <div class="fam-chips" role="group" aria-label="Compare with">${[...RATED_FAMS, null].map(f =>
         `<button type="button" class="fam-chip" data-elo-fam="${f ? famSlug(f) : "all"}" aria-pressed="${f === fam}">${f ? famDot(f) : ""}${f || "All contests"}</button>`).join("")}</div>
     </div>`;
   }
-  const DIFF_FAMS = ["AMC 8", "AMC 10", "AMC 12", "AIME"];
   document.addEventListener("click", e => {
     const b = e.target.closest("[data-elo-fam]");
     if (!b) return;
@@ -9185,7 +9336,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const shownN = inBin.filter(p => active.includes(p.fam)).length;
       $content.innerHTML = `<div class="detail browse-page">${browseBackHtml()}<div class="book-eyebrow prob-eyebrow">Practice</div>
         <div class="detail-head"><h2 class="card-name">Problems by difficulty</h2></div>
-        <p class="practice-panel-intro">Every problem has an Elo rating. The chart shows how the ratings spread; choose a bar to list the problems in that range.</p>
+        <p class="practice-panel-intro">Every problem has an Elo rating: the higher the rating, the harder the problem. The chart shows how the ratings spread; choose a bar to list the problems in that range.</p>
         <section class="elo-panel">${famChipsHtml(rated)}${eloChartHtml({ active, selected: bin })}</section>
         <div class="br-band">${step(prev, "left", "Easier range")}<h3 class="br-band-h">Rated ${bin} to ${bin + ELO_BIN - 1}</h3>${step(next, "right", "Harder range")}<span class="br-count">${shownN.toLocaleString()} problem${shownN === 1 ? "" : "s"}</span></div>
         ${browseGroupsHtml("d:" + bin, inBin, byNewest)}</div>`;
@@ -10422,8 +10573,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // Space switcher in the top bar: Learn and Practice open their own pages; the other spaces
   // open the subject last visited in them.
   const $spaceSwitch = document.getElementById("space-switch");
-  // On a narrow phone, Formulas, Methods and Patterns sit behind one Reference menu (owner,
-  // 2026-10-31); a wider screen never shows it.
+  // Formulas, Methods and Patterns sit behind one Reference menu at every width (owner,
+  // 2026-11-11; on a narrow phone since 2026-10-31).
   const $refBtn = document.getElementById("space-ref-btn"), $refMenu = document.getElementById("space-ref-menu");
   const closeRefMenu = () => { if ($refMenu && !$refMenu.hidden) { $refMenu.hidden = true; $refBtn.setAttribute("aria-expanded", "false"); } };
   if ($refBtn && $refMenu) {

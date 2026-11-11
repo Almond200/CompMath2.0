@@ -25,9 +25,16 @@ if(artifacts)fs.mkdirSync(artifacts,{recursive:true});
    await centered(p.locator('#nav-toggle'));
    await p.locator('#nav-toggle').click();assert.equal(await p.locator('#nav-toggle').getAttribute('aria-expanded'),'true');
    await p.keyboard.press('Escape');assert.equal(await p.locator('#nav-toggle').getAttribute('aria-expanded'),'false');
-   await p.locator('#space-ref-btn').click();assert.equal(await p.locator('#space-ref-btn').getAttribute('aria-expanded'),'true');
-   await p.locator('#space-ref-menu [data-space-go="formulas"]').click();
   }
+  // Formulas, Methods and Patterns sit behind the one Reference menu at every width.
+  assert.deepEqual(await p.locator('#space-switch > button, #space-switch > .space-ref > button').evaluateAll(xs=>xs.map(x=>x.textContent.trim())),['Reference','Learn','Practice']);
+  await p.locator('#space-ref-btn').click();assert.equal(await p.locator('#space-ref-btn').getAttribute('aria-expanded'),'true');
+  assert.deepEqual(await p.locator('#space-ref-menu button:visible').allInnerTexts(),['Formulas','Methods','Patterns']);
+  await p.keyboard.press('Escape');assert.equal(await p.locator('#space-ref-menu').isVisible(),false);
+  await p.locator('#space-ref-btn').click();await p.locator('#space-ref-menu [data-space-go="methods"]').click();
+  await p.waitForFunction(()=>document.body.dataset.space==='methods');assert.equal(await p.locator('#space-ref-menu').isVisible(),false);
+  assert.equal(await p.evaluate(()=>{const b=document.getElementById('space-ref-btn'),l=document.querySelector('[data-space-go="learn"]');return getComputedStyle(b).backgroundColor!==getComputedStyle(l).backgroundColor;}),true,'Reference is lit in a reference space');
+  await p.locator('#space-ref-btn').click();await p.locator('#space-ref-menu [data-space-go="formulas"]').click();await p.waitForFunction(()=>document.body.dataset.space==='formulas');
   const star=p.locator('.star-btn').first();await centered(star);const id=await star.getAttribute('data-star');
   assert.equal(await star.locator('.ui-icon-star-outline').count(),1);await star.click();assert.equal(await star.getAttribute('aria-pressed'),'true');assert.equal(await star.locator('.ui-icon-star').count(),1);
   const add=p.locator('.addlist-btn').first();await centered(add);

@@ -178,7 +178,8 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     scenarios++;
 
     await navigate('#/problems/amc-10/2018', '.ct-yearbar');
-    if (width === 375) {
+    {
+      // The paper toggle is on every width (2026-11-11): one paper shows at a time.
       const tabs = page.locator('[role="tablist"][aria-label="Contest papers"]');
       await tabs.locator('[tabindex="0"]').focus(); await tabs.locator('[tabindex="0"]').press('ArrowRight');
       assert.equal(await tabs.locator('[aria-selected="true"]').innerText(), 'AMC 10B');
@@ -186,7 +187,8 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
       assert.equal(await page.locator('#ct-paper-panel-1').isVisible(), true); assert.equal(await page.locator('#ct-paper-panel-0').isVisible(), false);
       await tabs.locator('[tabindex="0"]').press('Home'); assert.equal(await tabs.locator('[aria-selected="true"]').innerText(), 'AMC 10A');
       await tabs.locator('[tabindex="0"]').press('End'); assert.equal(await tabs.locator('[aria-selected="true"]').innerText(), 'AMC 10B');
-    } else assert.equal(await page.locator('.db-group:visible').count(), 2);
+      assert.equal(await page.locator('.db-group:visible').count(), 1);
+    }
     scenarios++;
 
     await navigate('#/settings', '.settings-page'); await page.locator('[data-set="scroll"][data-val="fast"]').click();
@@ -227,6 +229,9 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     }
     if (width === 1280) {
       await navigate('#/', '.hm-space');
+      // Reference groups its three spaces as links; Learn and Practice are whole-tile links.
+      assert.deepEqual(await page.locator('.hm-refcell .hm-ref-link b').allInnerTexts(), ['Formulas', 'Methods', 'Patterns']);
+      assert.equal(await page.locator('.hm-space').count(), 2);
       for (const tile of await page.locator('.hm-space').all()) {
         await tile.focus();
         assert.equal(await tile.evaluate(el => getComputedStyle(el).outlineOffset), '-3px');
