@@ -95,8 +95,9 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  // Mock this paper opens Practice a contest with the contest and the paper already chosen.
  await page.goBack();await page.locator('.ct-papers').waitFor();assert.equal(await page.locator('.ct-papers [aria-selected="true"]').innerText(),'AMC 10B');
  assert.equal(await shown().locator('.pp-mock').innerText(),'Mock this paper');
- if(width===1280){await shown().locator('.pp-mock').hover();const purple=await page.evaluate(()=>{const d=document.createElement('i');d.style.color='var(--space)';document.body.append(d);const c=getComputedStyle(d).color;d.remove();return c;});
-  assert.deepEqual(await shown().locator('.pp-mock').evaluate(el=>[getComputedStyle(el).color,getComputedStyle(el).borderTopColor]),[purple,purple],'the mock button lights up in the space colour');}await shown().locator('.pp-mock').click();await page.locator('#mock-contest-form').waitFor();
+ if(width===1280){await shown().locator('.pp-mock').hover();const blue=await page.evaluate(()=>{const d=document.createElement('i');d.style.color='var(--accent)';document.body.append(d);const c=getComputedStyle(d).color;d.remove();return c;});
+  assert.deepEqual(await shown().locator('.pp-mock').evaluate(el=>[getComputedStyle(el).color,getComputedStyle(el).borderTopColor]),[blue,blue],'the mock button hovers blue, like the other secondary buttons');}
+ await shown().locator('.pp-mock').click();await page.locator('#mock-contest-form').waitFor();
  assert.match(page.url(),/#\/practice$/);assert.equal(await page.locator('#mock-paper-name').inputValue(),'2025 AMC 10B');
  assert.equal(await page.locator('[data-mock-family][aria-checked="true"]').innerText(),'AMC 10');assert.equal(await page.locator('[data-mock-mode][aria-checked="true"]').innerText(),'Past contest');
  assert.equal(await page.locator('#mock-contest-form [type="submit"]').isEnabled(),true);assert.equal(await page.locator('#mock-contest-info').innerText(),'25 problems · 75 minutes');

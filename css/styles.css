@@ -4842,9 +4842,6 @@ button.tt-tw:hover { background: var(--border); color: var(--text); }
 .pp-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 12px; padding-bottom: 7px; border-bottom: 1px solid var(--border); }
 .pp-head .pp-h { margin: 0; padding: 0; border: 0; }
 .pp-mock { flex: none; display: inline-flex; align-items: center; height: 30px; padding: 0 14px; font-size: 13px; }
-/* This one soft button lights up in the space's colour, at the owner's word (2026-11-11); the
-   other secondary soft actions keep their blue hover. */
-:root .hp-btn.hp-btn-soft.pp-mock:not(:disabled):hover, :root .hp-btn.hp-btn-soft.pp-mock:focus-visible { border-color: var(--space); color: var(--space); }
 .pp-tiles { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 .pp-table { max-width: 640px; font-size: 14px; }
 .pp-table tbody th a { color: var(--text); text-decoration: none; }
