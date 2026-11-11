@@ -2565,18 +2565,24 @@ body[data-space="learn"] [data-space-go="learn"] { background: var(--space-soft)
   .space-switch { order: 5; width: 100%; }
   .space-switch > button { flex: 1; padding: 0 6px; }
 }
-/* The Reference menu (Formulas, Methods, Patterns) exists only on a narrow phone. */
-.space-ref { display: none; position: relative; }
-@media (max-width: 600px) {
-  .space-switch > [data-space-go="formulas"], .space-switch > [data-space-go="methods"], .space-switch > [data-space-go="patterns"] { display: none; }
-  .space-ref { display: flex; flex: 1; }
-  .space-ref-btn { flex: 1; font: inherit; font-size: 13px; font-weight: 650; padding: 0 6px; border-radius: 7px; border: none; background: transparent; color: var(--text-dim); cursor: pointer; }
-  .space-ref-caret { font-size: 10px; margin-left: 2px; }
-  body[data-space="formulas"] .space-ref-btn, body[data-space="methods"] .space-ref-btn, body[data-space="patterns"] .space-ref-btn { background: var(--space-soft); color: var(--space); }
-  .space-ref-menu { position: absolute; left: -3px; top: calc(100% + 6px); z-index: 70; min-width: 168px; display: flex; flex-direction: column; gap: 2px; padding: 6px;
-    border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); box-shadow: var(--ui-shadow); }
-  .space-ref-menu[hidden] { display: none; }
-  .space-switch .space-ref-menu button { text-align: left; padding: 0 14px; height: 44px; font-size: 13px; border-radius: 8px; }
+/* Formulas, Methods and Patterns sit behind one Reference menu at every width (owner,
+   2026-11-11; it began as the narrow-phone layout, 2026-10-31). The button takes the look of
+   its neighbours from `.space-switch button`; the menu marks the space you are in. */
+.space-ref { display: flex; position: relative; }
+.space-ref-btn { display: inline-flex; align-items: center; justify-content: center; gap: 5px; }
+.space-ref-caret { font-size: 10px; }
+body[data-space="formulas"] .space-ref-btn, body[data-space="methods"] .space-ref-btn, body[data-space="patterns"] .space-ref-btn { background: var(--space-soft); color: var(--space); }
+.space-ref-menu { position: absolute; left: -4px; top: calc(100% + 8px); z-index: 70; min-width: 168px; display: flex; flex-direction: column; gap: 2px; padding: 6px;
+  border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); box-shadow: var(--ui-shadow); }
+.space-ref-menu[hidden] { display: none; }
+.space-switch .space-ref-menu button { text-align: left; padding: 0 12px; height: 36px; border-radius: 8px; }
+.space-switch .space-ref-menu button:hover { background: var(--bg-panel); }
+body[data-space="formulas"] .space-ref-menu [data-space-go="formulas"], body[data-space="methods"] .space-ref-menu [data-space-go="methods"],
+body[data-space="patterns"] .space-ref-menu [data-space-go="patterns"] { background: var(--space-soft); color: var(--space); }
+@media (max-width: 760px) {
+  .space-ref { flex: 1; }
+  .space-switch .space-ref-btn { flex: 1; padding: 0 6px; font-size: 13px; }
+  .space-switch .space-ref-menu button { height: 44px; padding: 0 14px; font-size: 13px; }
 }
 
 /* ---------- Group tiles (a subject's topics, method groups or pattern families) ---------- */
@@ -4752,7 +4758,9 @@ dialog.app-confirm { inset-block: 0 12vh; }
 .browse-page .practice-panel-intro { max-width: 760px; }
 /* Problems by topic: the tree in a rail that stays beside the page, the chosen topic beside it. */
 .browse-topics { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 10px; }
-.tt { position: sticky; top: calc(var(--topbar-h) + 12px); max-height: calc(100vh - var(--topbar-h) - 24px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+/* No `scrollbar-width` here: setting it swaps the app's own thin scrollbar (the ::-webkit-scrollbar
+   rules) for the browser's grey one (owner, 2026-11-11). */
+.tt { position: sticky; top: calc(var(--topbar-h) + 12px); max-height: calc(100vh - var(--topbar-h) - 24px); overflow-y: auto; overscroll-behavior: contain;
   padding: 12px 8px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
 .tt-h { padding: 0 8px 8px; font-size: 10.5px; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); }
 .tt-list, .tt-list ul { list-style: none; margin: 0; padding: 0; }

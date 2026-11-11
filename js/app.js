@@ -10422,8 +10422,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // Space switcher in the top bar: Learn and Practice open their own pages; the other spaces
   // open the subject last visited in them.
   const $spaceSwitch = document.getElementById("space-switch");
-  // On a narrow phone, Formulas, Methods and Patterns sit behind one Reference menu (owner,
-  // 2026-10-31); a wider screen never shows it.
+  // Formulas, Methods and Patterns sit behind one Reference menu at every width (owner,
+  // 2026-11-11; on a narrow phone since 2026-10-31).
   const $refBtn = document.getElementById("space-ref-btn"), $refMenu = document.getElementById("space-ref-menu");
   const closeRefMenu = () => { if ($refMenu && !$refMenu.hidden) { $refMenu.hidden = true; $refBtn.setAttribute("aria-expanded", "false"); } };
   if ($refBtn && $refMenu) {

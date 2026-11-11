@@ -42,6 +42,8 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  // Problems by topic: its own page, the tree rail, groups by contest.
  await btns.first().click();await page.locator('.browse-topics').waitFor();assert.equal(await page.locator('h2').innerText(),'Problems by topic');
  assert.equal(await page.locator('.br-switch').count(),0,'no toggle between the two pages');
+ // The rail scrolls with the app's own scrollbar, not the browser's (no scrollbar-width override).
+ assert.equal(await page.locator('.tt').evaluate(el=>getComputedStyle(el).scrollbarWidth),'auto');
  const rows=page.locator('.tt-row');assert.equal(await page.locator('.tt-list > li > .tt-row [aria-expanded="true"]').count(),4,'subjects open to their areas');
  const before=await rows.count();assert(before>=4+28);await page.locator('[data-tt="geo.tri"]').click();assert.equal(await page.locator('[data-tt="geo.tri"]').getAttribute('aria-expanded'),'true');assert(await rows.count()>before);
  assert.match(page.url(),/#\/browse\/topics$/,'opening a branch does not leave the page');
