@@ -2944,36 +2944,29 @@
     return PF_CORPUS = { fam, era, elos, use, total: PROBLEM_DB.length };
   }
   const pfPct = x => !x ? "0%" : x >= 0.0995 ? Math.round(x * 100) + "%" : (x * 100 < 0.05 ? "<0.1" : (x * 100).toFixed(1)) + "%";
-  function contestProfileHtml(f, authored) {
-    if (authored == null) return "";
-    const probs = PROBLEMS_BY_CARD[f.id] || [];
-    const k = kindOf(f), N = probs.length, all = pfCorpus();
-    const co = kind => {
-      const c = {};
-      probs.forEach(p => p.formulas.forEach(id => {
-        if (id !== f.id && id !== TWIN_OF[f.id] && BY_ID[id] && kindOf(BY_ID[id].formula) === kind) c[id] = (c[id] || 0) + 1;
-      }));
-      return Object.keys(c).sort((a, b) => c[b] - c[a] || a.localeCompare(b)).slice(0, 4).map(id => [id, c[id]]);
-    };
-    const names = pairs => pairs.map(([id, n]) => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a> <span class="pf-sub">${n}</span>`).join(` <span class="pf-dot">&middot;</span> `);
+  // The parts of a profile that any set of problems has (a card's tagged problems, or a topic's):
+  // the headline figures and the Contests, Difficulty and Over time rows. Each caller adds what
+  // is its own (a card: its rank, its topics, its Role and neighbours; a topic: the cards its
+  // problems use) and puts the rows in order.
+  function profileParts(probs) {
+    const N = probs.length, all = pfCorpus();
     const row = (label, value, block) => `<div class="pf-row${block ? " pf-block" : ""}"><span class="pf-k">${label}:</span><div class="pf-v">${value}</div></div>`;
     // A column heading with a shorter wording for a phone.
     const duo = (long, short) => `<span class="pf-long">${long}</span><span class="pf-short" aria-hidden="true">${short}</span>`;
-    const rows = [];
-    let stats = "";
-    if (N) {
-      const elos = probs.map(p => p.elo).filter(Number.isFinite).sort((x, y) => x - y);
-      const med = elos.length ? quantile(elos, 0.5) : null;
-      const years = probs.map(p => p.year), y0 = Math.min(...years), y1 = Math.max(...years);
-      const rank = 1 + all.use[k].filter(n => n > N).length;
-      const stat = (big, small) => `<div class="pf-stat"><b>${big}</b><span>${small}</span></div>`;
-      stats = `<div class="pf-stats">${[
-        stat(N, N === 1 ? "problem" : "problems"),
-        stat(`1 in ${Math.max(1, Math.round(all.total / N)).toLocaleString("en-US")}`, "of all problems"),
-        stat(ordinal(rank), `most used of ${all.use[k].length} ${k}s`),
-        med != null ? stat(med, elos.length === 1 ? "rating" : "median rating") : "",
-        stat(y0 === y1 ? y0 : `${y0}&ndash;${y1}`, y0 === y1 ? "year seen" : "years seen")
-      ].join("")}</div>`;
+    const stat = (big, small) => `<div class="pf-stat"><b>${big}</b><span>${small}</span></div>`;
+    const dots = xs => xs.join(` <span class="pf-dot">&middot;</span> `);
+    const out = { N, all, row, duo, stat, dots, few: N < 5, tiles: {}, rows: {} };
+    if (!N) return out;
+    const elos = probs.map(p => p.elo).filter(Number.isFinite).sort((x, y) => x - y);
+    const med = elos.length ? quantile(elos, 0.5) : null;
+    const years = probs.map(p => p.year), y0 = Math.min(...years), y1 = Math.max(...years);
+    const few = out.few;
+    out.tiles = {
+      count: stat(N.toLocaleString("en-US"), N === 1 ? "problem" : "problems"),
+      share: stat(`1 in ${Math.max(1, Math.round(all.total / N)).toLocaleString("en-US")}`, "of all problems"),
+      med: med != null ? stat(med, elos.length === 1 ? "rating" : "median rating") : "",
+      years: stat(y0 === y1 ? y0 : `${y0}&ndash;${y1}`, y0 === y1 ? "year seen" : "years seen")
+    };
 
       // Contests: how many problems, what share of that contest's problems (the bar, since the
       // contests differ in size), and the question number it usually sits at.
@@ -2983,10 +2976,9 @@
       const sized = x => all.fam[x.fam] >= 100;
       const shareMax = Math.max(0, ...fams.filter(sized).map(x => x.share));
       // A few problems are named in a line; shares and bars of one or two problems say nothing.
-      const few = N < 5, dots = xs => xs.join(` <span class="pf-dot">&middot;</span> `);
-      if (few) rows.push(row("Contests", dots(fams.map(x => `${famDot(x.fam)}${escapeAttr(x.fam)} <span class="pf-sub">${x.ps.map(p => "#" + p.num).join(", ")}</span>`))));
-      else rows.push(row("Contests", `<table class="pf-table"><thead><tr><th scope="col" aria-label="Contest"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of the contest", "Share")}</th><th scope="col">${duo("Typical question", "Typical #")}</th></tr></thead><tbody>${fams.map(x =>
-        `<tr><th scope="row">${famDot(x.fam)}${escapeAttr(x.fam)}</th><td class="pf-meter-cell">${sized(x) ? `<span class="pf-meter"><i style="width:${Math.max(2, x.share / shareMax * 100).toFixed(1)}%;background:${famColor(x.fam)}"></i></span>` : ""}</td><td>${x.ps.length}</td><td>${sized(x) ? pfPct(x.share) : `${x.ps.length} of ${all.fam[x.fam]}`}</td><td>#${x.at}</td></tr>`).join("")}</tbody></table>`, true));
+      if (few) out.rows.contests = row("Contests", dots(fams.map(x => `${famDot(x.fam)}${escapeAttr(x.fam)} <span class="pf-sub">${x.ps.map(p => "#" + p.num).join(", ")}</span>`)));
+      else out.rows.contests = row("Contests", `<table class="pf-table"><thead><tr><th scope="col" aria-label="Contest"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of the contest", "Share")}</th><th scope="col">${duo("Typical question", "Typical #")}</th></tr></thead><tbody>${fams.map(x =>
+        `<tr><th scope="row">${famDot(x.fam)}${escapeAttr(x.fam)}</th><td class="pf-meter-cell">${sized(x) ? `<span class="pf-meter"><i style="width:${Math.max(2, x.share / shareMax * 100).toFixed(1)}%;background:${famColor(x.fam)}"></i></span>` : ""}</td><td>${x.ps.length}</td><td>${sized(x) ? pfPct(x.share) : `${x.ps.length} of ${all.fam[x.fam]}`}</td><td>#${x.at}</td></tr>`).join("")}</tbody></table>`, true);
 
       // Difficulty: the ratings in words, then their spread, stacked by contest in the colours
       // of the rows above. A handful of ratings is listed, not charted.
@@ -2997,9 +2989,43 @@
         const words = elos.length >= 8
           ? `Median rating <b>${med}</b>. Half of its problems are rated ${quantile(elos, 0.25)} to ${quantile(elos, 0.75)}; the full range is ${elos[0]} to ${elos[elos.length - 1]}. ${versus}`
           : `Rated ${list(elos)}. ${versus}`;
-        rows.push(row("Difficulty", `<p class="pf-words">${words}</p>${elos.length >= 8
-          ? `<div class="pf-plot">${eloChartHtml({ pool: probs, shown: fams.map(x => x.fam), mark: med, compact: true, links: false })}</div>` : ""}`, elos.length >= 8));
+        out.rows.difficulty = row("Difficulty", `<p class="pf-words">${words}</p>${elos.length >= 8
+          ? `<div class="pf-plot">${eloChartHtml({ pool: probs, shown: fams.map(x => x.fam), mark: med, compact: true, links: false })}</div>` : ""}`, elos.length >= 8);
       }
+
+      // Over time: its share of each five-year period's problems (a share, because the periods
+      // hold different numbers of problems). Too few problems make the bars noise.
+      const eras = Object.keys(all.era).map(Number).sort((a, b) => a - b);
+      if (N >= 30 && eras.length > 1) {
+        const per = eras.map(e => { const n = probs.filter(p => eraOf(p.year) === e).length; return { e, n, share: n / all.era[e] }; });
+        const eraMax = Math.max(...per.map(x => x.share));
+        const span = e => `${String(e).slice(2)}&ndash;${String(e + PF_ERA - 1).slice(2)}`, last = eras[eras.length - 1];
+        const recent = probs.filter(p => p.year >= last).length;
+        out.rows.time = row("Over time", `<p class="pf-words">${per.some(x => !x.n) ? "Up to" : `Between ${pfPct(Math.min(...per.map(x => x.share)))} and`} ${pfPct(eraMax)} of ${per.some(x => !x.n) ? "a" : "each"} five-year period's problems. ${recent} of the ${N} are from ${last} on.</p>
+          <div class="pf-eras" role="img" aria-label="Share of each five-year period's problems: ${per.map(x => `${x.e} to ${x.e + PF_ERA - 1}, ${pfPct(x.share)}`).join("; ")}">${per.map(x =>
+          `<span class="pf-era" data-tip="${x.e}–${x.e + PF_ERA - 1}: ${x.n} problem${x.n === 1 ? "" : "s"}, ${pfPct(x.share)} of the period's"><span class="pf-era-bar"><i style="height:${x.n ? Math.max(4, x.share / eraMax * 100).toFixed(1) : 0}%"></i></span><span class="pf-era-l">${span(x.e)}</span></span>`).join("")}</div>`, true);
+      }
+    return out;
+  }
+  function contestProfileHtml(f, authored) {
+    if (authored == null) return "";
+    const probs = PROBLEMS_BY_CARD[f.id] || [];
+    const k = kindOf(f), P = profileParts(probs), { N, all, row, duo, stat, dots, few } = P;
+    const co = kind => {
+      const c = {};
+      probs.forEach(p => p.formulas.forEach(id => {
+        if (id !== f.id && id !== TWIN_OF[f.id] && BY_ID[id] && kindOf(BY_ID[id].formula) === kind) c[id] = (c[id] || 0) + 1;
+      }));
+      return Object.keys(c).sort((a, b) => c[b] - c[a] || a.localeCompare(b)).slice(0, 4).map(id => [id, c[id]]);
+    };
+    const names = pairs => pairs.map(([id, n]) => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a> <span class="pf-sub">${n}</span>`).join(` <span class="pf-dot">&middot;</span> `);
+    const rows = [];
+    let stats = "";
+    if (N) {
+      const rank = 1 + all.use[k].filter(n => n > N).length;
+      stats = `<div class="pf-stats">${[P.tiles.count, P.tiles.share, stat(ordinal(rank), `most used of ${all.use[k].length} ${k}s`), P.tiles.med, P.tiles.years].join("")}</div>`;
+      if (P.rows.contests) rows.push(P.rows.contests);
+      if (P.rows.difficulty) rows.push(P.rows.difficulty);
 
       // Topics: the tree nodes its problems are filed under most often, each with its area.
       const nodes = {};
@@ -3014,18 +3040,7 @@
         }).join("")}</tbody></table>`, true));
       }
 
-      // Over time: its share of each five-year period's problems (a share, because the periods
-      // hold different numbers of problems). Too few problems make the bars noise.
-      const eras = Object.keys(all.era).map(Number).sort((a, b) => a - b);
-      if (N >= 30 && eras.length > 1) {
-        const per = eras.map(e => { const n = probs.filter(p => eraOf(p.year) === e).length; return { e, n, share: n / all.era[e] }; });
-        const eraMax = Math.max(...per.map(x => x.share));
-        const span = e => `${String(e).slice(2)}&ndash;${String(e + PF_ERA - 1).slice(2)}`, last = eras[eras.length - 1];
-        const recent = probs.filter(p => p.year >= last).length;
-        rows.push(row("Over time", `<p class="pf-words">${per.some(x => !x.n) ? "Up to" : `Between ${pfPct(Math.min(...per.map(x => x.share)))} and`} ${pfPct(eraMax)} of ${per.some(x => !x.n) ? "a" : "each"} five-year period's problems. ${recent} of the ${N} are from ${last} on.</p>
-          <div class="pf-eras" role="img" aria-label="Share of each five-year period's problems: ${per.map(x => `${x.e} to ${x.e + PF_ERA - 1}, ${pfPct(x.share)}`).join("; ")}">${per.map(x =>
-          `<span class="pf-era" title="${x.e}–${x.e + PF_ERA - 1}: ${x.n} problem${x.n === 1 ? "" : "s"}, ${pfPct(x.share)} of the period's"><span class="pf-era-bar"><i style="height:${x.n ? Math.max(4, x.share / eraMax * 100).toFixed(1) : 0}%"></i></span><span class="pf-era-l">${span(x.e)}</span></span>`).join("")}</div>`, true));
-      }
+      if (P.rows.time) rows.push(P.rows.time);
     }
     // Role: the authored sentence, plus how often the card is the problem's recorded main idea.
     // A formula is never said to solve a problem, only to be its central idea.
@@ -3045,6 +3060,25 @@
     partners.forEach(([label, pairs]) => { if (pairs.length) rows.push(row(label, names(pairs))); });
     if (!rows.length) return "";
     return `<div class="related contest-profile"><h4>Contest profile</h4>${stats}<div class="profile-rows">${rows.join("")}</div></div>`;
+  }
+  // A topic's profile (T6, 2026-11-11), on its Problems by topic page: the same figures and rows
+  // for the problems filed under the topic and its subtopics, and in place of a card's Topics
+  // row, the cards those problems cite most. It folds away, and stays folded while browsing.
+  let topicProfileOpen = true;
+  function topicProfileHtml(node, probs) {
+    const P = profileParts(probs), { N, row, duo, dots, few } = P;
+    if (!N) return "";
+    const stats = `<div class="pf-stats tp-stats">${[P.tiles.count, P.tiles.share, P.tiles.med, P.tiles.years].join("")}</div>`;
+    const rows = [P.rows.contests, P.rows.difficulty, P.rows.time].filter(Boolean);
+    const cited = {};
+    probs.forEach(p => new Set([...p.formulas, ...p.trickFormulas]).forEach(id => { if (BY_ID[id]) cited[id] = (cited[id] || 0) + 1; }));
+    const top = Object.keys(cited).sort((x, y) => cited[y] - cited[x] || x.localeCompare(y)).slice(0, 6);
+    const link = id => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`, kind = id => { const k = kindOf(BY_ID[id].formula); return k.charAt(0).toUpperCase() + k.slice(1); };
+    if (top.length && few) rows.push(row("Cards", dots(top.map(id => `${link(id)} <span class="pf-sub">${cited[id]}</span>`))));
+    else if (top.length) rows.push(row("Cards", `<table class="pf-table pf-topics tp-cards"><thead><tr><th scope="col" aria-label="Card"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of its problems", "Share")}</th></tr></thead><tbody>${top.map(id =>
+      `<tr><th scope="row">${link(id)}<span class="pf-sub">${kind(id)}</span></th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${Math.max(2, cited[id] / cited[top[0]] * 100).toFixed(1)}%"></i></span></td><td>${cited[id]}</td><td>${pfPct(cited[id] / N)}</td></tr>`).join("")}</tbody></table>`, true));
+    return `<section class="tp">${stats}<div class="pp-head"><h3 class="pp-h">Topic profile</h3><button type="button" class="hp-btn hp-btn-soft tp-toggle" data-tp-toggle aria-expanded="${topicProfileOpen}" aria-controls="tp-body">${topicProfileOpen ? "Hide" : "Show"}</button></div>
+      <div class="contest-profile tp-body" id="tp-body"${topicProfileOpen ? "" : " hidden"}><div class="profile-rows">${rows.join("")}</div></div></section>`;
   }
 
   // Connected formulas (js/data/connected.js): on a few broad cards, the cards that are part of
@@ -8839,8 +8873,16 @@ The book remembers the last lesson you opened, in this browser, and the contents
       (by[paperKey(p)] = by[paperKey(p)] || { key: paperKey(p), sit: sitOf(p), year: p.year, cname: p.cname, ps: [] }).ps.push(p);
     });
     const papers = Object.values(by).sort((x, y) => x.sit - y.sit || x.cname.localeCompare(y.cname));
-    papers.forEach(x => { x.med = quantile(x.ps.map(p => p.elo).sort((u, v) => u - v), 0.5); });
+    papers.forEach(x => { x.desc = x.ps.map(p => p.elo).sort((u, v) => v - u); x.med = quantile(x.desc.slice().reverse(), 0.5); });
     return FAM_PAPERS[fam] = papers;
+  }
+  // Which of two papers is harder: the higher median rating; on a tie (medians tie often), the
+  // paper whose hardest problem is rated higher, then its second hardest, and so on down (owner,
+  // 2026-11-11), so two papers share a rank only if every rating matches.
+  function paperHarder(a, b) {
+    if (a.med !== b.med) return a.med > b.med;
+    for (let i = 0; i < Math.min(a.desc.length, b.desc.length); i++) if (a.desc[i] !== b.desc[i]) return a.desc[i] > b.desc[i];
+    return false;
   }
   // What a set of papers says a paper usually looks like: the median rating at each question
   // number, the average number of problems filed first under each subject, and the median of
@@ -8902,14 +8944,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // the first and last five of a shorter one).
     const last = Math.max(...ps.map(p => p.num)), ends = last >= 10 ? [[1, last >= 20 ? 10 : 5], [last - 4, last]] : [];
     const signed = d => `${d > 0 ? "+" : d < 0 ? "&minus;" : ""}${Math.abs(d)}`;
-    const stat = (big, small) => `<div class="pf-stat"><b>${big}</b><span>${small}</span></div>`;
-    const recent = bases.find(x => x.id === "recent");
+    const stat = (big, small, title = "") => `<div class="pf-stat"${title ? ` title="${title}"` : ""}><b>${big}</b><span>${small}</span></div>`;
+    const recent = bases.find(x => x.id === "recent"), me = papers.find(x => x.key === paperKey(ps[0]));
     const stats = `<div class="pf-stats pp-stats">${[
       stat(ps.length, "problems"),
       stat(med, "median rating"),
       ...ends.map(([lo, hi]) => { const xs = rated.filter(p => p.num >= lo && p.num <= hi).map(p => p.elo).sort((x, y) => x - y); return xs.length ? stat(quantile(xs, 0.5), `median of questions ${lo}&ndash;${hi}`) : ""; }),
-      recent ? stat(signed(med - paperBaseline(recent.papers).med), `against the ${recent.label.toLowerCase().replace(/amc/, "AMC").replace(/aime/, "AIME")}`) : "",
-      papers.length >= 3 ? stat(ordinal(1 + papers.filter(x => x.med > med).length), `hardest of all ${papers.length} ${escapeAttr(fam)} papers`) : ""
+      recent ? stat(signed(med - paperBaseline(recent.papers).med), `median rating against the ${recent.label.toLowerCase().replace(/amc/, "AMC").replace(/aime/, "AIME")}`) : "",
+      papers.length >= 3 && me ? stat(ordinal(1 + papers.filter(x => paperHarder(x, me)).length), `hardest of all ${papers.length} ${escapeAttr(fam)} papers`, "By median rating. A tie goes to the paper with the harder hardest problem, then the harder second hardest, and so on.") : ""
     ].join("")}</div>`;
     const chips = bases.length > 1 ? `<div class="pp-base"><span class="br-kids-l">Compare with</span><div class="fam-chips" role="group" aria-label="Compare with">${bases.map(x =>
       `<button type="button" class="fam-chip" data-pp-base="${x.id}" aria-pressed="${x === base}">${x.label}</button>`).join("")}</div></div>` : "";
@@ -9225,10 +9267,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
       // The whole column answers the pointer, not only the drawn bar, so hovering it tints the
       // column and shows its range and count at once (`data-tip`, drawn by CSS; the browser's
       // own tooltip came late and lingered over the wrong column). A column with no problems
-      // is not a link and shows nothing: there is nothing there to open (owner, 2026-11-11).
-      const tip = `${b}–${b + ELO_BIN - 1}: ${label}`, here = `${cur === b ? " is-cur" : ""}"${selected === b ? ' aria-current="true"' : ""}`;
-      if (!on) return `<span class="elo-bar is-empty${here}>${col}</span>`;
-      if (!links) return `<span class="elo-bar" data-tip="${tip}">${col}</span>`;
+      // behaves the same, "0 problems" and all, and still opens its range (owner, 2026-11-11:
+      // an empty stretch of the chart should not feel dead).
+      const tip = `${b}–${b + ELO_BIN - 1}: ${label}`, here = `${on ? "" : " is-empty"}${cur === b ? " is-cur" : ""}"${selected === b ? ' aria-current="true"' : ""}`;
+      if (!links) return `<span class="elo-bar${on ? "" : " is-empty"}" data-tip="${tip}">${col}</span>`;
       return `<a class="elo-bar${here} href="#/browse/difficulty/${b}" aria-label="${label} rated ${b} to ${b + ELO_BIN - 1}" data-tip="${tip}">${col}</a>`;
     }).join("");
     const line = mark != null ? `<span class="elo-mark" style="left:${((Math.min(ELO_HI, Math.max(ELO_LO, mark)) - ELO_LO) / span * 100).toFixed(2)}%"></span>` : "";
@@ -9303,6 +9345,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return `<ul class="tt-list">${TOPIC_ROOTS.map(r => row(r, 0)).join("")}</ul>`;
   }
   document.addEventListener("click", e => {
+    const fold = e.target.closest("[data-tp-toggle]");
+    if (fold) {
+      topicProfileOpen = !topicProfileOpen;
+      const y = window.scrollY;
+      renderBrowse(getRoute());
+      window.scrollTo(0, y);
+      $content.querySelector("[data-tp-toggle]")?.focus({ preventScroll: true });
+      return;
+    }
     const tw = e.target.closest("[data-tt]");
     if (tw) {
       const rail = tw.closest(".tt"), top = rail.scrollTop, id = tw.dataset.tt;
@@ -9345,6 +9396,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <div class="detail-head"><h2 class="card-name">${node.name}</h2></div>
           <p class="practice-panel-intro">${all.length.toLocaleString()} problem${all.length === 1 ? "" : "s"}${kids.length ? ", including its subtopics" : ""}. Each contest's problems run from easiest to hardest.</p>
           ${kids.length ? `<div class="br-kids"><span class="br-kids-l">Subtopics</span>${kids.map(c => `<a class="br-kid" href="${topicHash(c.id)}">${topicLabel(c)}<span class="br-count">${topicProblems(c.id).length}</span></a>`).join("")}</div>` : ""}
+          ${topicProfileHtml(node, all)}
+          <h3 class="pp-h tp-problems-h">Problems</h3>
           ${famChipsHtml(all)}
           ${browseGroupsHtml("t:" + node.id, all, byEasiest)}`;
       }

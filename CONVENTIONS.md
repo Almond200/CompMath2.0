@@ -802,6 +802,13 @@ charted, under 30 there is no Over time row, and a contest with under 100 proble
 collection shows a count, not a share. Contest colours are the level tokens, as in the difficulty
 charts. Because the counts are computed, the Role sentence should not state one.
 
+**A topic has a profile too (T6, 2026-11-11).** On its Problems by topic page, under the subtopics:
+four figures (problems, one in how many, median rating, years seen), then a Topic profile with the
+same Contests, Difficulty and Over time rows computed from the problems filed under the topic and
+its subtopics, and a Cards row in place of Topics: the six cards those problems cite most. The same
+small-number rules apply. The profile folds away with its Hide button and stays folded while
+browsing; the figures stay. `profileParts` in `js/app.js` builds the shared parts for both.
+
 
 ## Every claim is proved, or points to the card that proves it (2026-10-10)
 

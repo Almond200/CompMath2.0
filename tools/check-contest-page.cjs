@@ -16,6 +16,9 @@ const sitOf=paper=>+paper.slice(0,4)*10+(/ Fall /.test(paper)?2:/ Spring /.test(
 function expected(paper,family){
  const ps=db.filter(p=>p.paper===paper),fam=db.filter(p=>family.test(p.paper)),papers=[...new Set(fam.map(p=>p.paper))];
  const m=med(ps.map(p=>p.elo)),meds=papers.map(k=>med(fam.filter(p=>p.paper===k).map(p=>p.elo)));
+ // Rank: by median; a tie goes to the harder hardest problem, then the next hardest, and so on.
+ const down=k=>fam.filter(p=>p.paper===k).map(p=>p.elo).sort((a,b)=>b-a),mine=down(paper);
+ const harder=k=>{const mk=med(down(k));if(mk!==m)return mk>m;const d=down(k);for(let i=0;i<d.length;i++)if(d[i]!==mine[i])return d[i]>mine[i];return false;};
  const lo=ps.reduce((a,b)=>b.elo<a.elo?b:a),hi=ps.reduce((a,b)=>b.elo>a.elo?b:a);
  // The yardsticks: every paper; whole earlier sittings, newest first, up to ten papers; the sitting before.
  const sits=[...new Set(papers.map(sitOf))].sort((a,b)=>a-b),at=sits.indexOf(sitOf(paper));
@@ -25,7 +28,7 @@ function expected(paper,family){
   const u=pool.filter(p=>p.subject==='alg').length/keys.length;
   return {count:keys.length,med:med(keys.map(k=>med(fam.filter(p=>p.paper===k).map(p=>p.elo)))),off:ps.filter(p=>Math.abs(p.elo-usual(p.num))>=300).map(p=>p.num).sort((a,b)=>a-b),algUsual:Number.isInteger(u)?String(u):u.toFixed(1)};};
  const perSit=sits.map(s=>{const ks=papers.filter(k=>sitOf(k)===s);return Math.round(ks.reduce((n,k)=>n+med(fam.filter(p=>p.paper===k).map(p=>p.elo)),0)/ks.length);});
- return {n:ps.length,med:m,rank:1+meds.filter(x=>x>m).length,papers:papers.length,lo,hi,elos:ps.sort((a,b)=>a.num-b.num).map(p=>p.elo),
+ return {n:ps.length,med:m,rank:1+papers.filter(harder).length,tied:meds.filter(x=>x===m).length-1,papers:papers.length,lo,hi,elos:ps.sort((a,b)=>a.num-b.num).map(p=>p.elo),
   alg:ps.filter(p=>p.subject==='alg').length,sits:sits.length,sitMed:perSit[at],twin:papers.filter(k=>sitOf(k)===sitOf(paper)).length===2,
   all:against(sets.all),recent:sets.recent.length?against(sets.recent):null,prev:sets.prev.length?against(sets.prev):null};
 }
@@ -43,7 +46,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   // The three medians sit together: the paper's, its opening questions', its closing five's.
   const open=e.n>=20?10:5,mid=(a,b)=>String(med(e.elos.slice(a-1,b)));
   assert.deepEqual(stats[2],[mid(1,open),`median of questions 1–${open}`]);assert.deepEqual(stats[3],[mid(e.n-4,e.n),`median of questions ${e.n-4}–${e.n}`]);
-  const d=e.med-e.recent.med;assert.equal(stats[4][0],(d>0?'+':d<0?'−':'')+Math.abs(d));assert.match(stats[4][1],new RegExp('^against the past '+e.recent.count+' (AMC|AIME)s$'));
+  const d=e.med-e.recent.med;assert.equal(stats[4][0],(d>0?'+':d<0?'−':'')+Math.abs(d));assert.match(stats[4][1],new RegExp('^median rating against the past '+e.recent.count+' (AMC|AIME)s$'));
   assert.equal(stats[5][0],ord(e.rank));assert.match(stats[5][1],new RegExp('^hardest of all '+e.papers+' '));
   // Tiles: a number and a rating, nothing else.
   assert.deepEqual(await g.locator('.pp-tiles .br-row').allInnerTexts().then(x=>x.map(t=>t.replace(/\s+/g,' '))),e.elos.map((r,i)=>`Problem ${i+1} ${r}`));
@@ -91,7 +94,9 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await shown().locator('.pp-areas .br-kid').first().click();await page.locator('.browse-topics').waitFor();
  // Mock this paper opens Practice a contest with the contest and the paper already chosen.
  await page.goBack();await page.locator('.ct-papers').waitFor();assert.equal(await page.locator('.ct-papers [aria-selected="true"]').innerText(),'AMC 10B');
- assert.equal(await shown().locator('.pp-mock').innerText(),'Mock this paper');await shown().locator('.pp-mock').click();await page.locator('#mock-contest-form').waitFor();
+ assert.equal(await shown().locator('.pp-mock').innerText(),'Mock this paper');
+ if(width===1280){await shown().locator('.pp-mock').hover();const purple=await page.evaluate(()=>{const d=document.createElement('i');d.style.color='var(--space)';document.body.append(d);const c=getComputedStyle(d).color;d.remove();return c;});
+  assert.deepEqual(await shown().locator('.pp-mock').evaluate(el=>[getComputedStyle(el).color,getComputedStyle(el).borderTopColor]),[purple,purple],'the mock button lights up in the space colour');}await shown().locator('.pp-mock').click();await page.locator('#mock-contest-form').waitFor();
  assert.match(page.url(),/#\/practice$/);assert.equal(await page.locator('#mock-paper-name').inputValue(),'2025 AMC 10B');
  assert.equal(await page.locator('[data-mock-family][aria-checked="true"]').innerText(),'AMC 10');assert.equal(await page.locator('[data-mock-mode][aria-checked="true"]').innerText(),'Past contest');
  assert.equal(await page.locator('#mock-contest-form [type="submit"]').isEnabled(),true);assert.equal(await page.locator('#mock-contest-info').innerText(),'25 problems · 75 minutes');
@@ -124,6 +129,9 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.match(await shown().locator('.pp-note').innerText(),/\(Fall 2021\)/);await shown().locator('[data-pp-base="recent"]').click();
  await page.goto(base+'/#/problems/amc-8/2024');await page.locator('.pp-tiles').waitFor();assert.equal(await page.locator('.ct-papers').count(),0);
  await paperIs(expected('2024 AMC 8',/ (AMC 8|AJHSME)$/));await fits();
+ // Ranks are not shared: across every AMC 10 paper the tie-break leaves no two papers level.
+ {const fam=db.filter(p=>/ AMC 10[AB]?$/.test(p.paper)),keys=[...new Set(fam.map(p=>p.paper))],ranks=keys.map(k=>expected(k,/ AMC 10[AB]?$/));
+  assert(ranks.some(r=>r.tied>0),'medians do tie');assert.equal(new Set(ranks.map(r=>r.rank)).size,keys.length,'every paper has its own rank');}
  // A choice that does not apply is not offered: the AMC 8 has no second paper, and a contest's
  // first year has nothing before it (one yardstick left, so no choices at all).
  assert.deepEqual(await shown().locator('[data-pp-base]').evaluateAll(xs=>xs.map(x=>x.dataset.ppBase)),['all','recent','prev']);
