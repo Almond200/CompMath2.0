@@ -791,6 +791,17 @@ phrase that contains a digit, a dollar sign, or starts with a task verb, and any
 contains an equals sign with a digit; 62 profiles were rewritten into plain description when it
 was added.
 
+**What is computed around it (2026-11-11).** The authored sentence is the Role row. Everything else
+in the profile is computed from the card's tagged problems: five headline figures (problems, one
+in how many of all problems, rank among the cards of its kind, median rating, years seen), then
+the rows Contests (problems, share of that contest's problems, typical question number),
+Difficulty (median, middle half, range, and the ratings stacked by contest), Topics (the five tree
+nodes its problems are filed under most) and Over time (its share of each five-year period). Small
+numbers get less: under 5 problems a row is one line, under 8 the ratings are listed and not
+charted, under 30 there is no Over time row, and a contest with under 100 problems in the
+collection shows a count, not a share. Contest colours are the level tokens, as in the difficulty
+charts. Because the counts are computed, the Role sentence should not state one.
+
 
 ## Every claim is proved, or points to the card that proves it (2026-10-10)
 

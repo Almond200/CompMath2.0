@@ -2901,7 +2901,7 @@
   // Contest profile: what the problem corpus says about this card, kind by kind. One authored
   // sentence (the "## Contest profile" section; it never names a problem) over computed
   // counts. Only converted cards carry one; the others keep their "On contests" prose.
-  // Historical paper-position thirds, kept for the existing card-profile/statistics charts.
+  // Historical paper-position thirds, kept for the statistics page's chart.
   // Picker difficulty uses Elo rank within the selected pool, independently of these charts.
   let FAM_MAXNUM = null;
   // Where the problem sits in its paper, from near 0 (the first problem) to 1 (the last).
@@ -2919,82 +2919,113 @@
   // late AMC 12 one); they order a list, they are not a rating.
   const FAM_LEVEL = { "AMC 8": 0, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
   function difficultyScore(p) { return (FAM_LEVEL[p.fam] != null ? FAM_LEVEL[p.fam] : 2) + paperPos(p); }
-  // A small pie of how a card's problems split across contests.
-  function pieSvg(parts) {
-    const total = parts.reduce((t, x) => t + x[1], 0);
-    if (!total) return "";
-    const R = 48, C = 50;
-    const tip = ([name, n]) => `data-pct="${escapeAttr(name)}: ${Math.round(100 * n / total)}% (${n} of ${total})"`;
-    let body;
-    if (parts.length === 1) body = `<circle class="pf-c0" cx="${C}" cy="${C}" r="${R}" ${tip(parts[0])}/>`;
-    else {
-      let a = -Math.PI / 2;
-      body = parts.map((part, i) => {
-        const b = a + 2 * Math.PI * part[1] / total;
-        const x1 = C + R * Math.cos(a), y1 = C + R * Math.sin(a), x2 = C + R * Math.cos(b), y2 = C + R * Math.sin(b);
-        const d = `M${C},${C} L${x1.toFixed(2)},${y1.toFixed(2)} A${R},${R} 0 ${b - a > Math.PI ? 1 : 0} 1 ${x2.toFixed(2)},${y2.toFixed(2)} Z`;
-        a = b;
-        return `<path class="pf-c${i % 5}" d="${d}" ${tip(part)}/>`;
-      }).join("");
-    }
-    return `<span class="pf-pie-wrap"><svg class="pf-pie" viewBox="0 0 100 100" aria-hidden="true">${body}</svg><span class="pf-tip" hidden></span></span>`;
-  }
-  // Hovering a slice shows its contest and share next to the cursor.
-  document.addEventListener("mousemove", e => {
-    const slice = e.target.closest && e.target.closest(".pf-pie [data-pct]");
-    document.querySelectorAll(".pf-tip").forEach(t => { if (!slice || !t.parentElement.contains(slice)) t.hidden = true; });
-    if (!slice) return;
-    const wrap = slice.closest(".pf-pie-wrap"), tip = wrap.querySelector(".pf-tip"), box = wrap.getBoundingClientRect();
-    tip.textContent = slice.dataset.pct;
-    tip.hidden = false;
-    tip.style.left = (e.clientX - box.left + 14) + "px";
-    tip.style.top = (e.clientY - box.top - 10) + "px";
-  });
-
-  // Where a card's problems sit in their papers, in five steps from the first problems to the
-  // last: a line rising to the right means the card turns up in the harder problems.
-  function positionLineSvg(probs) {
-    if (!FAM_MAXNUM) paperPositionBand(probs[0]);
-    const bins = [0, 0, 0, 0, 0];
-    probs.forEach(p => {
-      const len = FAM_LENGTH[p.fam] || FAM_MAXNUM[p.fam] || 25;
-      bins[Math.min(4, Math.floor((p.num - 1) / len * 5))]++;
+  // Contest profile (rebuilt 2026-11-11, now that every problem has a rating and a place in the
+  // topic tree): a strip of headline figures, then label-and-value rows. Everything is computed
+  // from the card's tagged problems except the authored Role sentence.
+  const ordinal = n => { const t = n % 100, u = n % 10; return n + (t >= 11 && t <= 13 ? "th" : u === 1 ? "st" : u === 2 ? "nd" : u === 3 ? "rd" : "th"); };
+  const quantile = (sorted, q) => { const i = (sorted.length - 1) * q, lo = Math.floor(i), hi = Math.min(sorted.length - 1, lo + 1); return Math.round(sorted[lo] + (sorted[hi] - sorted[lo]) * (i - lo)); };
+  // Five-year periods counted back from the latest paper, so the newest period is a full one.
+  const PF_ERA = 5;
+  let PF_LAST = 0;
+  const eraOf = y => { PF_LAST = PF_LAST || Math.max(...PROBLEM_DB.map(p => p.year)); return PF_LAST - PF_ERA * Math.floor((PF_LAST - y) / PF_ERA) - PF_ERA + 1; };
+  // What a card is measured against: every problem, by contest and by five-year period, every
+  // rating in order, and how many problems each card of a kind has.
+  let PF_CORPUS = null;
+  function pfCorpus() {
+    if (PF_CORPUS) return PF_CORPUS;
+    const fam = {}, era = {}, elos = [], use = { formula: [], method: [], pattern: [] };
+    PROBLEM_DB.forEach(p => {
+      fam[p.fam] = (fam[p.fam] || 0) + 1;
+      era[eraOf(p.year)] = (era[eraOf(p.year)] || 0) + 1;
+      if (Number.isFinite(p.elo)) elos.push(p.elo);
     });
-    const W = 260, H = 80, L = 8, T = 8, B = 22, max = Math.max(1, ...bins);
-    const pts = bins.map((n, i) => [L + i * (W - 2 * L) / 4, T + (H - T - B) * (1 - n / max)]);
-    const line = pts.map(p => p.map(v => v.toFixed(1)).join(",")).join(" ");
-    return `<svg class="pf-line" viewBox="0 0 ${W} ${H}" role="img" aria-label="Problems by position in the paper, early to late: ${bins.join(", ")}">
-        <line class="pf-axis" x1="${L}" y1="${H - B}" x2="${W - L}" y2="${H - B}"/>
-        <polyline class="pf-path" points="${line}"/>
-        ${pts.map((p, i) => `<circle class="pf-pt" cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="3"><title>${bins[i]}</title></circle>`).join("")}
-        <text class="pf-ax-label" x="${L}" y="${H - 4}">Early problems</text>
-        <text class="pf-ax-label" x="${W - L}" y="${H - 4}" text-anchor="end">Late problems</text>
-      </svg>`;
+    elos.sort((x, y) => x - y);
+    Object.keys(BY_ID).forEach(id => use[kindOf(BY_ID[id].formula)].push(problemCount(id)));
+    return PF_CORPUS = { fam, era, elos, use, total: PROBLEM_DB.length };
   }
+  const pfPct = x => !x ? "0%" : x >= 0.0995 ? Math.round(x * 100) + "%" : (x * 100 < 0.05 ? "<0.1" : (x * 100).toFixed(1)) + "%";
   function contestProfileHtml(f, authored) {
     if (authored == null) return "";
     const probs = PROBLEMS_BY_CARD[f.id] || [];
-    const k = kindOf(f);
+    const k = kindOf(f), N = probs.length, all = pfCorpus();
     const co = kind => {
       const c = {};
       probs.forEach(p => p.formulas.forEach(id => {
         if (id !== f.id && id !== TWIN_OF[f.id] && BY_ID[id] && kindOf(BY_ID[id].formula) === kind) c[id] = (c[id] || 0) + 1;
       }));
-      return Object.keys(c).sort((a, b) => c[b] - c[a] || a.localeCompare(b)).slice(0, 4);
+      return Object.keys(c).sort((a, b) => c[b] - c[a] || a.localeCompare(b)).slice(0, 4).map(id => [id, c[id]]);
     };
-    const names = ids => ids.map(id => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`).join(` <span class="pf-dot">&middot;</span> `);
-    const row = (label, value) => `<div class="pf-row"><span class="pf-k">${label}:</span><span class="pf-v">${value}</span></div>`;
+    const names = pairs => pairs.map(([id, n]) => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a> <span class="pf-sub">${n}</span>`).join(` <span class="pf-dot">&middot;</span> `);
+    const row = (label, value, block) => `<div class="pf-row${block ? " pf-block" : ""}"><span class="pf-k">${label}:</span><div class="pf-v">${value}</div></div>`;
+    // A column heading with a shorter wording for a phone.
+    const duo = (long, short) => `<span class="pf-long">${long}</span><span class="pf-short" aria-hidden="true">${short}</span>`;
     const rows = [];
-    if (probs.length) {
-      rows.push(row("Problems", `${probs.length} tagged`));
-      const bands = { easy: 0, medium: 0, hard: 0 };
-      probs.forEach(p => { bands[paperPositionBand(p)]++; });
-      const famCounts = FAMILIES.map(x => [x, probs.filter(p => p.fam === x).length]).filter(x => x[1]);
-      const famMax = Math.max(...famCounts.map(x => x[1]));
-      rows.push(row("Contests", `<div class="pf-chart">${pieSvg(famCounts)}<div class="pf-bars">${famCounts.map(([x, n], i) =>
-        `<div class="pf-bar-row"><span class="pf-bar-name"><i class="pf-sw pf-c${i % 5}"></i>${escapeAttr(x)}</span><span class="pf-bar-track"><span class="pf-bar pf-c${i % 5}" style="width:${Math.max(2, Math.round(100 * n / famMax))}%"></span></span><span class="pf-bar-n">${n}</span></div>`).join("")}</div></div>`));
-      rows.push(row("Difficulty", `<div class="pf-chart"><div>${["easy", "medium", "hard"].map(b =>
-        `<span class="pf-band pf-${b}${bands[b] ? "" : " pf-zero"}">${b.charAt(0).toUpperCase() + b.slice(1)}: ${bands[b]}</span>`).join("")}</div>${positionLineSvg(probs)}</div>`));
+    let stats = "";
+    if (N) {
+      const elos = probs.map(p => p.elo).filter(Number.isFinite).sort((x, y) => x - y);
+      const med = elos.length ? quantile(elos, 0.5) : null;
+      const years = probs.map(p => p.year), y0 = Math.min(...years), y1 = Math.max(...years);
+      const rank = 1 + all.use[k].filter(n => n > N).length;
+      const stat = (big, small) => `<div class="pf-stat"><b>${big}</b><span>${small}</span></div>`;
+      stats = `<div class="pf-stats">${[
+        stat(N, N === 1 ? "problem" : "problems"),
+        stat(`1 in ${Math.max(1, Math.round(all.total / N)).toLocaleString("en-US")}`, "of all problems"),
+        stat(ordinal(rank), `most used of ${all.use[k].length} ${k}s`),
+        med != null ? stat(med, elos.length === 1 ? "rating" : "median rating") : "",
+        stat(y0 === y1 ? y0 : `${y0}&ndash;${y1}`, y0 === y1 ? "year seen" : "years seen")
+      ].join("")}</div>`;
+
+      // Contests: how many problems, what share of that contest's problems (the bar, since the
+      // contests differ in size), and the question number it usually sits at.
+      const fams = FAMILIES.map(x => ({ fam: x, ps: probs.filter(p => p.fam === x) })).filter(x => x.ps.length)
+        .map(x => ({ ...x, share: x.ps.length / all.fam[x.fam], at: quantile(x.ps.map(p => p.num).sort((a, b) => a - b), 0.5) }));
+      // A contest with only a few papers in the collection gets its count, not a share.
+      const sized = x => all.fam[x.fam] >= 100;
+      const shareMax = Math.max(0, ...fams.filter(sized).map(x => x.share));
+      // A few problems are named in a line; shares and bars of one or two problems say nothing.
+      const few = N < 5, dots = xs => xs.join(` <span class="pf-dot">&middot;</span> `);
+      if (few) rows.push(row("Contests", dots(fams.map(x => `${famDot(x.fam)}${escapeAttr(x.fam)} <span class="pf-sub">${x.ps.map(p => "#" + p.num).join(", ")}</span>`))));
+      else rows.push(row("Contests", `<table class="pf-table"><thead><tr><th scope="col" aria-label="Contest"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of the contest", "Share")}</th><th scope="col">${duo("Typical question", "Typical #")}</th></tr></thead><tbody>${fams.map(x =>
+        `<tr><th scope="row">${famDot(x.fam)}${escapeAttr(x.fam)}</th><td class="pf-meter-cell">${sized(x) ? `<span class="pf-meter"><i style="width:${Math.max(2, x.share / shareMax * 100).toFixed(1)}%;background:${famColor(x.fam)}"></i></span>` : ""}</td><td>${x.ps.length}</td><td>${sized(x) ? pfPct(x.share) : `${x.ps.length} of ${all.fam[x.fam]}`}</td><td>#${x.at}</td></tr>`).join("")}</tbody></table>`, true));
+
+      // Difficulty: the ratings in words, then their spread, stacked by contest in the colours
+      // of the rows above. A handful of ratings is listed, not charted.
+      if (elos.length) {
+        const below = all.elos.filter(e => e < med).length, harder = Math.round(below / all.elos.length * 100);
+        const versus = `${elos.length === 1 ? "That is" : "The median is"} harder than ${harder}% of all problems.`;
+        const list = xs => xs.length < 3 ? xs.join(" and ") : `${xs.slice(0, -1).join(", ")} and ${xs[xs.length - 1]}`;
+        const words = elos.length >= 8
+          ? `Median rating <b>${med}</b>. Half of its problems are rated ${quantile(elos, 0.25)} to ${quantile(elos, 0.75)}; the full range is ${elos[0]} to ${elos[elos.length - 1]}. ${versus}`
+          : `Rated ${list(elos)}. ${versus}`;
+        rows.push(row("Difficulty", `<p class="pf-words">${words}</p>${elos.length >= 8
+          ? `<div class="pf-plot">${eloChartHtml({ pool: probs, shown: fams.map(x => x.fam), mark: med, compact: true, links: false })}</div>` : ""}`, elos.length >= 8));
+      }
+
+      // Topics: the tree nodes its problems are filed under most often, each with its area.
+      const nodes = {};
+      probs.forEach(p => new Set(p.tree).forEach(id => { if (TOPIC_NODES.has(id)) nodes[id] = (nodes[id] || 0) + 1; }));
+      const top = Object.keys(nodes).sort((a, b) => nodes[b] - nodes[a] || TOPIC_NODES.get(a).order - TOPIC_NODES.get(b).order).slice(0, 5);
+      if (top.length && few) rows.push(row("Topics", dots(top.map(id => `<a href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}</a>${N > 1 ? ` <span class="pf-sub">${nodes[id]}</span>` : ""}`))));
+      else if (top.length) {
+        const topMax = nodes[top[0]];
+        rows.push(row("Topics", `<table class="pf-table pf-topics"><thead><tr><th scope="col" aria-label="Topic"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of its problems", "Share")}</th></tr></thead><tbody>${top.map(id => {
+          const n = TOPIC_NODES.get(id), path = topicPath(id), area = path.length > 1 ? path[Math.min(1, path.length - 2)] : null;
+          return `<tr><th scope="row"><a href="${topicHash(id)}" title="${escapeAttr(path.map(x => window.PracticeTopics.label(x.name)).join(" › "))}">${topicLabel(n)}</a>${area ? `<span class="pf-sub">${topicLabel(area)}</span>` : ""}</th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${Math.max(2, nodes[id] / topMax * 100).toFixed(1)}%"></i></span></td><td>${nodes[id]}</td><td>${pfPct(nodes[id] / N)}</td></tr>`;
+        }).join("")}</tbody></table>`, true));
+      }
+
+      // Over time: its share of each five-year period's problems (a share, because the periods
+      // hold different numbers of problems). Too few problems make the bars noise.
+      const eras = Object.keys(all.era).map(Number).sort((a, b) => a - b);
+      if (N >= 30 && eras.length > 1) {
+        const per = eras.map(e => { const n = probs.filter(p => eraOf(p.year) === e).length; return { e, n, share: n / all.era[e] }; });
+        const eraMax = Math.max(...per.map(x => x.share));
+        const span = e => `${String(e).slice(2)}&ndash;${String(e + PF_ERA - 1).slice(2)}`, last = eras[eras.length - 1];
+        const recent = probs.filter(p => p.year >= last).length;
+        rows.push(row("Over time", `<p class="pf-words">${per.some(x => !x.n) ? "Up to" : `Between ${pfPct(Math.min(...per.map(x => x.share)))} and`} ${pfPct(eraMax)} of ${per.some(x => !x.n) ? "a" : "each"} five-year period's problems. ${recent} of the ${N} are from ${last} on.</p>
+          <div class="pf-eras" role="img" aria-label="Share of each five-year period's problems: ${per.map(x => `${x.e} to ${x.e + PF_ERA - 1}, ${pfPct(x.share)}`).join("; ")}">${per.map(x =>
+          `<span class="pf-era" title="${x.e}–${x.e + PF_ERA - 1}: ${x.n} problem${x.n === 1 ? "" : "s"}, ${pfPct(x.share)} of the period's"><span class="pf-era-bar"><i style="height:${x.n ? Math.max(4, x.share / eraMax * 100).toFixed(1) : 0}%"></i></span><span class="pf-era-l">${span(x.e)}</span></span>`).join("")}</div>`, true));
+      }
     }
     // Role: the authored sentence, plus how often the card is the problem's recorded main idea.
     // A formula is never said to solve a problem, only to be its central idea.
@@ -3007,12 +3038,13 @@
     // repeat them.
     // Statistical neighbours from the tagged problems (the section note says so): a method's
     // "Related Methods" and a pattern's "Related Patterns" are the cards of the same kind that
-    // most often appear beside it. The hand-picked "Related ..." sections are separate.
+    // most often appear beside it, each with the number of problems they share. The hand-picked
+    // "Related ..." sections are separate.
     const partners = k === "method" ? [["Common patterns", co("pattern")], ["Related Methods", co("method")]]
       : k === "formula" ? [["Common methods", co("method")]] : [["Related Patterns", co("pattern")]];
-    partners.forEach(([label, ids]) => { if (ids.length) rows.push(row(label, names(ids))); });
+    partners.forEach(([label, pairs]) => { if (pairs.length) rows.push(row(label, names(pairs))); });
     if (!rows.length) return "";
-    return `<div class="related contest-profile"><h4>Contest profile</h4><div class="profile-rows">${rows.join("")}</div></div>`;
+    return `<div class="related contest-profile"><h4>Contest profile</h4>${stats}<div class="profile-rows">${rows.join("")}</div></div>`;
   }
 
   // Connected formulas (js/data/connected.js): on a few broad cards, the cards that are part of
@@ -8959,9 +8991,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   const topicHash = id => "#/browse/topics/" + id;
   // A problem's topics as small trees, one per subject: each path runs from the subject down to
-  // the node it is filed under, and paths that share a beginning share it on the page. The elbow
-  // is one drawn SVG (corner and arrowhead together) under a stem, so the two always line up.
-  const PTREE_ELBOW = `<svg class="ptree-elbow" viewBox="0 0 20 12" width="20" height="12" aria-hidden="true"><path d="M.75 0v2a4 4 0 0 0 4 4H18.5M14.5 2l4 4-4 4"/></svg>`;
+  // the node it is filed under, and paths that share a beginning share it on the page. The whole
+  // connector is drawn in SVG at one stroke width: a stem down the list's left edge and an elbow
+  // (corner and arrowhead together) that starts on it, so the two meet at the same thickness at
+  // any zoom. (A CSS-drawn stem snaps to whole pixels and an SVG elbow does not.)
+  const PTREE_ELBOW = `<svg class="ptree-stem" aria-hidden="true"><line x1=".75" y1="0" x2=".75" y2="100%"/></svg><svg class="ptree-elbow" viewBox="0 0 20 12" width="20" height="12" aria-hidden="true"><path d="M.75 0v2a4 4 0 0 0 4 4H18.5M14.5 2l4 4-4 4"/></svg>`;
   function topicTreeHtml(p) {
     const paths = p.tree.filter(id => TOPIC_NODES.has(id)).map(topicPath);
     if (!paths.length) return `<p class="chain-empty">Not filed yet.</p>`;
@@ -8992,18 +9026,22 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // The chart: one bar per bin, stacked by contest, its height the bin's share of the tallest bin.
   // `shown` are the contests drawn, `active` those in colour (the rest stay as a grey backdrop);
   // `mark` is a rating drawn as a line, `selected` the bin whose problems are listed below. Every
-  // bar links to its range on the difficulty page.
-  function eloChartHtml({ shown = RATED_FAMS, active = shown, mark = null, selected = null, compact = false } = {}) {
+  // bar links to its range on the difficulty page, unless `pool` is some other set of problems.
+  function eloChartHtml({ pool = PROBLEM_DB, shown = RATED_FAMS, active = shown, mark = null, selected = null, compact = false, links = true } = {}) {
     const bins = eloBins(), counts = new Map(bins.map(b => [b, {}]));
-    for (const p of PROBLEM_DB) if (Number.isFinite(p.elo) && shown.includes(p.fam)) { const c = counts.get(binOf(p.elo)); c[p.fam] = (c[p.fam] || 0) + 1; }
+    for (const p of pool) if (Number.isFinite(p.elo) && shown.includes(p.fam)) { const c = counts.get(binOf(p.elo)); c[p.fam] = (c[p.fam] || 0) + 1; }
     const total = (b, fams) => fams.reduce((n, f) => n + (counts.get(b)[f] || 0), 0);
     const max = Math.max(1, ...bins.map(b => total(b, shown))), span = ELO_HI - ELO_LO;
     const order = [...shown.filter(f => active.includes(f)), ...shown.filter(f => !active.includes(f))];
-    const cur = mark != null ? binOf(mark) : selected;
+    const cur = !links ? null : mark != null ? binOf(mark) : selected;
     const bars = bins.map(b => {
       const n = total(b, shown), on = total(b, active);
       const segs = order.filter(f => counts.get(b)[f]).map(f => `<i style="flex:${counts.get(b)[f]};background:${active.includes(f) ? famColor(f) : "var(--border)"}"></i>`).join("");
-      return `<a class="elo-bar${cur === b ? " is-cur" : ""}" href="#/browse/difficulty/${b}" aria-label="${on} problem${on === 1 ? "" : "s"} rated ${b} to ${b + ELO_BIN - 1}" title="${b}–${b + ELO_BIN - 1}: ${on} problem${on === 1 ? "" : "s"}"${selected === b ? ' aria-current="true"' : ""}><span style="height:${n ? Math.max(1.5, n / max * 100).toFixed(1) : 0}%">${segs}</span></a>`;
+      const label = `${on} problem${on === 1 ? "" : "s"}`, col = `<span style="height:${n ? Math.max(1.5, n / max * 100).toFixed(1) : 0}%">${segs}</span>`;
+      // A chart of some other pool (a card's problems) is a picture: its bars do not open the
+      // range's page, which lists every problem in the range.
+      if (!links) return `<span class="elo-bar" title="${b}–${b + ELO_BIN - 1}: ${label}">${col}</span>`;
+      return `<a class="elo-bar${cur === b ? " is-cur" : ""}" href="#/browse/difficulty/${b}" aria-label="${label} rated ${b} to ${b + ELO_BIN - 1}" title="${b}–${b + ELO_BIN - 1}: ${label}"${selected === b ? ' aria-current="true"' : ""}><span style="height:${n ? Math.max(1.5, n / max * 100).toFixed(1) : 0}%">${segs}</span></a>`;
     }).join("");
     const line = mark != null ? `<span class="elo-mark" style="left:${((Math.min(ELO_HI, Math.max(ELO_LO, mark)) - ELO_LO) / span * 100).toFixed(2)}%"></span>` : "";
     const ticks = [200, 1000, 1800, 2600, 3400].map(t => `<span style="left:${((t - ELO_LO) / span * 100).toFixed(2)}%">${t}</span>`).join("");
@@ -9014,7 +9052,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const ratedIn = fam => PROBLEM_DB.filter(p => Number.isFinite(p.elo) && (!fam || p.fam === fam));
   function eloNote(elo, fam, manual) {
     const pool = ratedIn(fam), below = pool.filter(q => q.elo < elo).length;
-    return `Harder than ${Math.round(below / Math.max(1, pool.length) * 100)}% of ${fam || "all"} problems${manual ? " (our estimate)" : ""}`;
+    return `Harder than ${Math.round(below / Math.max(1, pool.length) * 100)}% of ${fam || "all"} problems${manual ? " (estimated)" : ""}`;
   }
   function difficultyHtml(p) {
     if (!Number.isFinite(p.elo)) return `<p class="chain-empty">Not rated yet.</p>`;
@@ -9147,7 +9185,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const shownN = inBin.filter(p => active.includes(p.fam)).length;
       $content.innerHTML = `<div class="detail browse-page">${browseBackHtml()}<div class="book-eyebrow prob-eyebrow">Practice</div>
         <div class="detail-head"><h2 class="card-name">Problems by difficulty</h2></div>
-        <p class="practice-panel-intro">Every problem has an Elo rating: LIVE's ratings, with our own estimates for a few newer problems. The chart shows how the ratings spread; choose a bar to list the problems in that range.</p>
+        <p class="practice-panel-intro">Every problem has an Elo rating. The chart shows how the ratings spread; choose a bar to list the problems in that range.</p>
         <section class="elo-panel">${famChipsHtml(rated)}${eloChartHtml({ active, selected: bin })}</section>
         <div class="br-band">${step(prev, "left", "Easier range")}<h3 class="br-band-h">Rated ${bin} to ${bin + ELO_BIN - 1}</h3>${step(next, "right", "Harder range")}<span class="br-count">${shownN.toLocaleString()} problem${shownN === 1 ? "" : "s"}</span></div>
         ${browseGroupsHtml("d:" + bin, inBin, byNewest)}</div>`;

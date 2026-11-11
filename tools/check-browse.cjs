@@ -14,11 +14,21 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.equal(await page.locator('.detail > .ptype-row').count(),0);
  assert.deepEqual(await page.locator('.prob-chain .chain-study-h').allInnerTexts(),['Topic','Difficulty','Brief solution','Study a concept more']);
  assert.equal(await page.locator('.ptree-node.is-filed').count(),2);assert.equal(await page.locator('.ptree-group').count(),1,'shared beginning drawn once');
- // Each elbow's arrow tip is level with the first line of its box.
- for(const li of await page.locator('.ptree-list li').all()){const a=await li.locator(':scope > .ptree-elbow').boundingBox(),n=await li.locator(':scope > .ptree-node').boundingBox();
-  const line=await li.locator(':scope > .ptree-node').evaluate(el=>{const cs=getComputedStyle(el);return parseFloat(cs.borderTopWidth)+parseFloat(cs.paddingTop)+parseFloat(cs.lineHeight)/2;});
-  assert(Math.abs((a.y+a.height/2)-(n.y+line))<0.75,'arrow level with its box');assert(a.x+a.width<=n.x+0.5,'arrow ends before its box');}
- assert.equal(await page.locator('.elo-box .elo-num').innerText(),'2350');assert.match(await page.locator('.elo-note').innerText(),/of AIME problems/);
+ // Each elbow's arrow tip is level with the middle of its box's first line (the box's padding
+ // is a pixel heavier on top, so the middle is taken across both paddings). The stem is an SVG
+ // stroke from the same left edge and of the same width as the elbow, starts at the row's top
+ // and runs into the elbow (last row) or past the row's foot (the rows before it).
+ const lis=await page.locator('.ptree-list li').all();
+ for(const li of lis){const a=await li.locator(':scope > .ptree-elbow').boundingBox(),n=await li.locator(':scope > .ptree-node').boundingBox(),st=await li.locator(':scope > .ptree-stem').boundingBox(),row=await li.boundingBox();
+  const line=await li.locator(':scope > .ptree-node').evaluate(el=>{const cs=getComputedStyle(el);return parseFloat(cs.borderTopWidth)+(parseFloat(cs.paddingTop)+parseFloat(cs.paddingBottom))/2+parseFloat(cs.lineHeight)/2;});
+  assert(Math.abs((a.y+a.height/2)-(n.y+line))<0.75,'arrow level with its box');assert(a.x+a.width<=n.x+0.5,'arrow ends before its box');
+  assert(Math.abs(st.x-a.x)<0.01&&Math.abs(st.y-row.y)<0.01,'stem starts at the row top, on the elbow\'s edge');
+  const last=await li.evaluate(el=>!el.nextElementSibling);
+  if(last)assert(st.y+st.height>a.y&&st.y+st.height<=a.y+2.01,'last stem ends inside the elbow');else assert(st.y+st.height>=row.y+row.height,'stem runs through to the next row');
+  assert.deepEqual(await li.evaluate(el=>['.ptree-stem','.ptree-elbow'].map(q=>{const cs=getComputedStyle(el.querySelector(':scope > '+q));return cs.strokeWidth+' '+cs.stroke;})).then(x=>x[0]===x[1]),true,'one stroke for stem and elbow');
+  assert.equal(await li.evaluate(el=>getComputedStyle(el,'::before').content),'none','no CSS-drawn stem');}
+ assert(lis.length>=3);
+ assert.equal(await page.locator('.elo-box .elo-num').innerText(),'2350');assert.match(await page.locator('.elo-note').innerText(),/of AIME problems/);assert.doesNotMatch(await page.locator('.prob-chain').innerText(),/LIVE/);
  assert.equal(await page.locator('.elo-box .elo-bar.is-cur').count(),1);
  await page.locator('[data-elo-fam="all"]').click();assert.match(await page.locator('.elo-note').innerText(),/of all problems/);assert.equal(await page.locator('[data-elo-fam][aria-pressed="true"]').count(),1);
  await fits();
@@ -44,7 +54,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  if(width===375){assert.equal(await page.locator('.tt').isVisible(),false);await page.locator('.tt-mobile-btn').click();assert.equal(await page.locator('.tt').isVisible(),true);}
  await fits();
  // Problems by difficulty: the contest switched off stays off, one stacked chart, groups by contest.
- await go('#/browse/difficulty');await page.locator('.elo-panel').waitFor();assert.equal(await page.locator('h2').innerText(),'Problems by difficulty');
+ await go('#/browse/difficulty');await page.locator('.elo-panel').waitFor();assert.equal(await page.locator('h2').innerText(),'Problems by difficulty');assert.doesNotMatch(await page.locator('.browse-page').innerText(),/LIVE/,'the ratings carry no source name');
  assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'),'false');await page.locator('[data-br-fam="AMC 8"]').click();
  assert.equal(await page.locator('.elo-panel .elo-bar').count(),18);assert.equal(await page.locator('.elo-bar[aria-current]').count(),1);
  await page.locator('.elo-bar[href$="/2600"]').click();await page.waitForFunction(()=>/2600/.test(document.querySelector('.br-band-h')?.textContent));assert.match(await page.locator('.br-band-h').innerText(),/^Rated 2600 to 2799$/);
