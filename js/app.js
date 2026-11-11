@@ -8839,8 +8839,16 @@ The book remembers the last lesson you opened, in this browser, and the contents
       (by[paperKey(p)] = by[paperKey(p)] || { key: paperKey(p), sit: sitOf(p), year: p.year, cname: p.cname, ps: [] }).ps.push(p);
     });
     const papers = Object.values(by).sort((x, y) => x.sit - y.sit || x.cname.localeCompare(y.cname));
-    papers.forEach(x => { x.med = quantile(x.ps.map(p => p.elo).sort((u, v) => u - v), 0.5); });
+    papers.forEach(x => { x.desc = x.ps.map(p => p.elo).sort((u, v) => v - u); x.med = quantile(x.desc.slice().reverse(), 0.5); });
     return FAM_PAPERS[fam] = papers;
+  }
+  // Which of two papers is harder: the higher median rating; on a tie (medians tie often), the
+  // paper whose hardest problem is rated higher, then its second hardest, and so on down (owner,
+  // 2026-11-11), so two papers share a rank only if every rating matches.
+  function paperHarder(a, b) {
+    if (a.med !== b.med) return a.med > b.med;
+    for (let i = 0; i < Math.min(a.desc.length, b.desc.length); i++) if (a.desc[i] !== b.desc[i]) return a.desc[i] > b.desc[i];
+    return false;
   }
   // What a set of papers says a paper usually looks like: the median rating at each question
   // number, the average number of problems filed first under each subject, and the median of
@@ -8902,14 +8910,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // the first and last five of a shorter one).
     const last = Math.max(...ps.map(p => p.num)), ends = last >= 10 ? [[1, last >= 20 ? 10 : 5], [last - 4, last]] : [];
     const signed = d => `${d > 0 ? "+" : d < 0 ? "&minus;" : ""}${Math.abs(d)}`;
-    const stat = (big, small) => `<div class="pf-stat"><b>${big}</b><span>${small}</span></div>`;
-    const recent = bases.find(x => x.id === "recent");
+    const stat = (big, small, title = "") => `<div class="pf-stat"${title ? ` title="${title}"` : ""}><b>${big}</b><span>${small}</span></div>`;
+    const recent = bases.find(x => x.id === "recent"), me = papers.find(x => x.key === paperKey(ps[0]));
     const stats = `<div class="pf-stats pp-stats">${[
       stat(ps.length, "problems"),
       stat(med, "median rating"),
       ...ends.map(([lo, hi]) => { const xs = rated.filter(p => p.num >= lo && p.num <= hi).map(p => p.elo).sort((x, y) => x - y); return xs.length ? stat(quantile(xs, 0.5), `median of questions ${lo}&ndash;${hi}`) : ""; }),
-      recent ? stat(signed(med - paperBaseline(recent.papers).med), `against the ${recent.label.toLowerCase().replace(/amc/, "AMC").replace(/aime/, "AIME")}`) : "",
-      papers.length >= 3 ? stat(ordinal(1 + papers.filter(x => x.med > med).length), `hardest of all ${papers.length} ${escapeAttr(fam)} papers`) : ""
+      recent ? stat(signed(med - paperBaseline(recent.papers).med), `median rating against the ${recent.label.toLowerCase().replace(/amc/, "AMC").replace(/aime/, "AIME")}`) : "",
+      papers.length >= 3 && me ? stat(ordinal(1 + papers.filter(x => paperHarder(x, me)).length), `hardest of all ${papers.length} ${escapeAttr(fam)} papers`, "By median rating. A tie goes to the paper with the harder hardest problem, then the harder second hardest, and so on.") : ""
     ].join("")}</div>`;
     const chips = bases.length > 1 ? `<div class="pp-base"><span class="br-kids-l">Compare with</span><div class="fam-chips" role="group" aria-label="Compare with">${bases.map(x =>
       `<button type="button" class="fam-chip" data-pp-base="${x.id}" aria-pressed="${x === base}">${x.label}</button>`).join("")}</div></div>` : "";
