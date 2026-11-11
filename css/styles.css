@@ -3310,6 +3310,7 @@ html[data-cols="spacious"] .content .cards.search-results { grid-template-column
 .rand-diff[hidden] { display: none; }
 .rand-diff input { flex: 1; max-width: 260px; accent-color: var(--space); }
 .rand-diff-val { min-width: 60px; color: var(--space); }
+.rand-diff-note { margin: 8px 0 0; max-width: 620px; min-height: 2.9em; font-size: calc(12.5px * var(--tx)); line-height: 1.45; color: var(--text-dim); }
 .rand-go { margin-top: 14px; }
 .hub { max-width: 1320px; }
 .space-home { max-width: none; }
@@ -4837,6 +4838,10 @@ button.tt-tw:hover { background: var(--border); color: var(--text); }
 .pp-stats { margin: 18px 0 4px; }
 .pp-sec { margin-top: 26px; }
 .pp-h { margin: 0 0 12px; padding-bottom: 7px; border-bottom: 1px solid var(--border); font-size: 15px; font-weight: 750; color: var(--text); }
+/* A section heading with an action beside it: the hairline runs under both. */
+.pp-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 12px; padding-bottom: 7px; border-bottom: 1px solid var(--border); }
+.pp-head .pp-h { margin: 0; padding: 0; border: 0; }
+.pp-mock { flex: none; display: inline-flex; align-items: center; height: 30px; padding: 0 14px; font-size: 13px; }
 .pp-tiles { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 .pp-table { max-width: 640px; font-size: 14px; }
 .pp-table tbody th a { color: var(--text); text-decoration: none; }
