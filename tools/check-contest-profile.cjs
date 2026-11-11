@@ -57,7 +57,27 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  // Between the two: tables and a chart, but too few problems for periods to mean anything.
  const mid=await open('ptolemys-theorem'),me=expected('ptolemys-theorem');assert(me.n>=8&&me.n<30);
  assert.equal(await mid.locator('table').count(),2);assert.equal(await mid.locator('.elo-chart').count(),1);assert.equal(await mid.locator('.pf-eras').count(),0);
+ // A topic's profile on its Problems by topic page (T6): the same figures and rows for the
+ // problems filed under the topic and its subtopics, and the cards they cite most.
+ for(const id of ['geo.tri.special','alg']){
+  const kids=new Set([id]);for(let grew=true;grew;){grew=false;for(const [k,,par] of window.MATH_TOPIC_TREE)if(par&&kids.has(par)&&!kids.has(k)){kids.add(k);grew=true;}}
+  const ps=db.filter(p=>(p.tree||[]).some(t=>kids.has(t))),elos=ps.map(p=>p.elo),med=q(elos,.5),cited={};
+  ps.forEach(p=>new Set([...(p.formulas||[]),...(p.trickFormulas||[])]).forEach(c=>cited[c]=(cited[c]||0)+1));
+  await page.goto(base+'/#/browse/topics/'+id);const tp=page.locator('.tp');await tp.waitFor();
+  const stats=await tp.locator('.pf-stat').evaluateAll(xs=>xs.map(x=>[x.querySelector('b').textContent,x.querySelector('span').textContent]));
+  assert.deepEqual(stats,[[ps.length.toLocaleString('en-US'),'problems'],['1 in '+Math.round(db.length/ps.length),'of all problems'],[String(med),'median rating'],[Math.min(...ps.map(p=>p.year))+'–'+Math.max(...ps.map(p=>p.year)),'years seen']]);
+  assert.deepEqual(await tp.locator('.pf-k').allInnerTexts(),['Contests:','Difficulty:','Over time:','Cards:']);
+  assert.equal(await rowOf(tp,'Difficulty').locator('.pf-words').innerText(),`Median rating ${med}. Half of its problems are rated ${q(elos,.25)} to ${q(elos,.75)}; the full range is ${Math.min(...elos)} to ${Math.max(...elos)}. The median is harder than ${Math.round(db.filter(p=>p.elo<med).length/db.length*100)}% of all problems.`);
+  const aimeN=ps.filter(p=>/ AIME\b/.test(p.ref)).length;assert.equal(await rowOf(tp,'Contests').locator('tbody tr').filter({hasText:'AIME'}).locator('td').nth(1).innerText(),String(aimeN));
+  const cards=rowOf(tp,'Cards').locator('tbody tr');assert.equal(await cards.count(),6);assert.equal(await cards.first().locator('td').nth(1).innerText(),String(Math.max(...Object.values(cited))));
+  assert.match(await cards.first().locator('a').getAttribute('href'),/^#\/f\/[\w-]+$/);assert.equal(await rowOf(tp,'Difficulty').locator('.elo-chart a').count(),0);
+  // It folds away and stays folded on the next topic; the problems keep their own heading below it.
+  assert.deepEqual(await page.locator('.browse-main .pp-h').allInnerTexts(),['Topic profile','Problems']);
+  const fold=page.locator('[data-tp-toggle]');assert.equal(await fold.innerText(),'Hide');await fold.click();assert.equal(await page.locator('.tp-body').isVisible(),false);assert.equal(await fold.innerText(),'Show');assert.equal(await fold.getAttribute('aria-expanded'),'false');
+  assert.equal(await tp.locator('.pf-stat').count(),4,'the figures stay');await fold.click();assert.equal(await page.locator('.tp-body').isVisible(),true);
+  assert(await page.locator('.br-group').count()>0);await fits();
+ }
  await fits();assert.equal(await page.locator('.katex-error').count(),0);assert.deepEqual(errors,[]);
- console.log(theme,width,'contest profile figures, contests, ratings, topics and periods: passed');await page.close();
+ console.log(theme,width,'card and topic profiles: figures, contests, ratings, topics, periods and cards: passed');await page.close();
 }
 }finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1});
