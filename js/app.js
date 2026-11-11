@@ -9225,10 +9225,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
       // The whole column answers the pointer, not only the drawn bar, so hovering it tints the
       // column and shows its range and count at once (`data-tip`, drawn by CSS; the browser's
       // own tooltip came late and lingered over the wrong column). A column with no problems
-      // is not a link and shows nothing: there is nothing there to open (owner, 2026-11-11).
-      const tip = `${b}–${b + ELO_BIN - 1}: ${label}`, here = `${cur === b ? " is-cur" : ""}"${selected === b ? ' aria-current="true"' : ""}`;
-      if (!on) return `<span class="elo-bar is-empty${here}>${col}</span>`;
-      if (!links) return `<span class="elo-bar" data-tip="${tip}">${col}</span>`;
+      // behaves the same, "0 problems" and all, and still opens its range (owner, 2026-11-11:
+      // an empty stretch of the chart should not feel dead).
+      const tip = `${b}–${b + ELO_BIN - 1}: ${label}`, here = `${on ? "" : " is-empty"}${cur === b ? " is-cur" : ""}"${selected === b ? ' aria-current="true"' : ""}`;
+      if (!links) return `<span class="elo-bar${on ? "" : " is-empty"}" data-tip="${tip}">${col}</span>`;
       return `<a class="elo-bar${here} href="#/browse/difficulty/${b}" aria-label="${label} rated ${b} to ${b + ELO_BIN - 1}" data-tip="${tip}">${col}</a>`;
     }).join("");
     const line = mark != null ? `<span class="elo-mark" style="left:${((Math.min(ELO_HI, Math.max(ELO_LO, mark)) - ELO_LO) / span * 100).toFixed(2)}%"></span>` : "";

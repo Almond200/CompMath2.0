@@ -4900,8 +4900,8 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 /* ---------- Chart columns answer the pointer over their whole height (owner, 2026-11-11) ----------
    A column is clickable from the axis to the top of the plot, so hovering anywhere in it tints
    the column and shows its label at once, above it. The label is `data-tip`, drawn here; a
-   column with nothing in it carries none and is not a link. Columns near either end keep the
-   label inside the chart. */
+   column with nothing in it answers the same way. Columns near either end keep the label
+   inside the chart. */
 .elo-bar[data-tip], .pq-bar[data-tip], .py-bar[data-tip] { position: relative; }
 .elo-bar[data-tip]:hover, a.elo-bar:focus-visible, a.pq-bar:hover .pq-col, a.pq-bar:focus-visible .pq-col, a.py-bar:hover .py-col, a.py-bar:focus-visible .py-col {
   background: color-mix(in srgb, var(--text) 8%, transparent); border-radius: 4px 4px 0 0; }
@@ -4910,4 +4910,3 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
   padding: 4px 9px; border-radius: 7px; background: var(--text); color: var(--bg); font-size: 12px; font-weight: 650; line-height: 1.3; white-space: nowrap; box-shadow: var(--ui-shadow); }
 :is(.elo-bar, .pq-bar, .py-bar)[data-tip]:nth-child(-n+7):is(:hover, :focus-visible)::before { left: 0; transform: none; }
 :is(.elo-bar, .pq-bar, .py-bar)[data-tip]:nth-last-child(-n+8):is(:hover, :focus-visible)::before { left: auto; right: 0; transform: none; }
-.elo-bar.is-empty { cursor: default; }
