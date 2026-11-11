@@ -9,7 +9,9 @@
 
 **The handoff rule.** After every major change, every finished step, and the start of every new step: update "Current state", add an entry to `CHANGELOG.md`, commit and push.
 
-## Current state (updated 2026-11-10)
+## Current state (updated 2026-11-11)
+
+**Owner request (2026-11-11), done:** Mixed is back as the first Practice a topic choice. Problem pages drop the header chips and split How this problem works into Topic (tree paths), Difficulty (Elo and chart), Brief solution and Study a concept more. Contests has two buttons to two separate pages, Problems by topic (`#/browse/topics[/<node>]`: tree rail, problems grouped by contest) and Problems by difficulty (`#/browse/difficulty[/<bin>]`: one stacked chart, contest chips, ranges grouped by contest); both were redesigned the same day after owner feedback, and `tools/check-browse.cjs` covers them. CHANGELOG has the detail. Nothing else was started.
 
 Who edits what: Claude keeps the shared Markdown (`PLAN.md`, `CHANGELOG.md`, `CONVENTIONS.md`, `CONTRIBUTING.md`, `README.md`, `LEARN-OUTLINE.md`, `TOPIC-TREE.md`, `QUESTIONS.md`, `TEXTBOOK-REVISION.md`) and works on cards, problems, the topic tree, `js/app.js`, and search: the book-search implementation, `tests/book-search.cjs`, and the matching and indexing logic of `tools/build-book-notes.cjs`. Codex owns the chapter content in `js/data/learn/**` (with `tools/build-learn-shelf.py`), regenerates the End-of-book Notes with the builder after each batch, and normally reports chapter batches for Claude to record in the shared Markdown. Explicit owner requests may authorize a scoped app or documentation batch, as with the recent Practice/UI work and this maintenance pass, without changing continuing ownership. Neither changes this division without coordinating first. Both bump asset versions in `index.html`; keep both sets of bumps when merging. Merges of shared files: CONTRIBUTING, "Two agents: shared files and merges".
 
