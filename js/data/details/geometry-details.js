@@ -1499,7 +1499,7 @@ Conversely, if $\angle ACB = 90^\circ$, complete the right triangle to a rectang
 Hidden cyclic quadrilaterals, the circumcircle of a right triangle, loci of right angles, and the feet of altitudes.
 
 ## Contest profile
-Nine problems here, six of them AIME, and none by it alone: the right angle it produces is usually the start of [[similar-figures-ratios|similar triangles]] or a [[pythagorean-theorem|Pythagorean]] computation. The common miss is a $90^\circ$ angle on a segment with no circle drawn through it.
+Split between the AMC and the AIME and rarely the whole solution: the right angle it produces is usually the start of [[similar-figures-ratios|similar triangles]] or a [[pythagorean-theorem|Pythagorean]] computation. The common miss is a $90^\circ$ angle on a segment with no circle drawn through it.
 `,
 
 "angle-chord-secant": String.raw`
@@ -1661,7 +1661,7 @@ The figures at the top show both triangles, and the third shows the touching cas
 Circles resting on a line or in a corner, chains of tangent circles, belts around pulleys, and the length of a segment between two points of contact.
 
 ## Contest profile
-Three problems here, all AIME, none solved by it alone. The recurring shape is circles in a corner or resting on a line, where the gap between their points of contact is twice the geometric mean of the radii, and harder versions pair the tangent lengths with a [[homothety-monge|homothety]] or similar triangles at the point where the tangents meet.
+Mostly AMC 12, and often the whole solution. The recurring shape is circles in a corner or resting on a line, where the gap between their points of contact is twice the geometric mean of the radii, and harder versions pair the tangent lengths with a [[homothety-monge|homothety]] or similar triangles at the point where the tangents meet.
 `,
 
 "descartes-circle-theorem": String.raw`
@@ -1691,7 +1691,7 @@ The large circle touches the others from outside them, so it bends the other way
 The radius of a fourth circle tangent to three given circles, chains of circles in a gap, and circles between lines or inside a larger circle.
 
 ## Contest profile
-One problem here, from the AMC 10, solved by it alone: four mutually tangent circles, where the center-distance equations would be brutal. It is the standard shortcut whenever four tangent circles appear, and it extends to spheres in every dimension as the [[descartes-sphere-theorem|Soddy–Gosset Theorem]].
+Rare, on the AMC 10 and the AIME: four mutually tangent circles, where the center-distance equations would be brutal. It is the standard shortcut whenever four tangent circles appear, and it extends to spheres in every dimension as the [[descartes-sphere-theorem|Soddy–Gosset Theorem]].
 `,
 
 "caseys-theorem": String.raw`
@@ -2216,7 +2216,7 @@ Expanding gives $x^2 + y^2 - 2hx - 2ky + (h^2 + k^2 - r^2) = 0$, the general for
 Finding the center and radius from an equation, the circle through three points, intersections with lines and circles, and recognizing circles hidden in a condition on complex numbers.
 
 ## Contest profile
-Three problems here, all AIME, none solved by it alone. The usual moves are to write two circle equations and subtract them, to complete the square to find two circles' centers before a [[tangent-circles|tangency]] argument, or to recognize circles hidden in a condition on complex numbers. Subtracting two circles' equations cancels the squares and leaves the [[radical-axis|radical axis]], the line through their intersection points, which turns a common-chord question into arithmetic.
+Mostly AMC 12, with some AIME. The usual moves are to write two circle equations and subtract them, to complete the square to find two circles' centers before a [[tangent-circles|tangency]] argument, or to recognize circles hidden in a condition on complex numbers. Subtracting two circles' equations cancels the squares and leaves the [[radical-axis|radical axis]], the line through their intersection points, which turns a common-chord question into arithmetic.
 `,
 
 "british-flag-theorem": String.raw`
@@ -2279,7 +2279,7 @@ At $\theta = 90^\circ$, $\cos\theta = 0$ and $\sin\theta = 1$, so $(x, y)$ goes 
 The other vertices of a square or an equilateral triangle placed in coordinates, the image of a point under a turn about a center, and the [[rotation-center|center of a rotation]] found from a point and its image.
 
 ## Contest profile
-Seven problems here, five of them AIME, none by it alone; two do the rotation in complex numbers instead, and one finds the center of a rotation from a point and its image. The usual setting is a square or an equilateral triangle placed in coordinates, where one side and a rotation give every other vertex.
+Spread across the AMC and the AIME and rarely the whole solution; some do the rotation in complex numbers instead, and some find the center of a rotation from a point and its image. The usual setting is a square or an equilateral triangle placed in coordinates, where one side and a rotation give every other vertex.
 `,
 
 "eulers-polyhedron-formula": String.raw`
@@ -2701,7 +2701,7 @@ The similarity gives $\frac ds = \frac{s}{d - s}$. Writing $x = \frac ds$, this 
 Diagonals and pentagram lengths in a regular pentagon, exact values of $\cos 36^\circ$ and $\cos 72^\circ$, golden triangles and their dissections, and powers of $\varphi$.
 
 ## Contest profile
-Four problems here, three AMC and one AIME, none solved by it alone; three reach it through [[similar-figures-ratios|similar triangles]] in a pentagon or pentagram. Its role is to supply the diagonal-to-side ratio once the regular pentagon is in the figure.
+An AMC 10 and 12 topic, usually reached through [[similar-figures-ratios|similar triangles]] in a pentagon or pentagram. Its role is to supply the diagonal-to-side ratio once the regular pentagon is in the figure.
 `,
 
 "inscribed-square": String.raw`
@@ -2918,7 +2918,7 @@ Each pyramid has one face of the polyhedron as its base and the center as its ap
 Inradius of a pyramid, tetrahedron, or cube, a sphere tangent to every face, and the center of a polyhedron equidistant from its faces.
 
 ## Contest profile
-Three problems here, all AIME, none solved by it alone. The archetype is a point equidistant from the faces of an isosceles tetrahedron, where the box gives $V$ and Heron's Formula gives $S$; others locate the center with coordinates and point-to-plane distances instead.
+An AIME tool, never the whole solution. The archetype is a point equidistant from the faces of an isosceles tetrahedron, where the box gives $V$ and Heron's Formula gives $S$; others locate the center with coordinates and point-to-plane distances instead.
 `,
 
 "tangency-condition": String.raw`
@@ -3208,7 +3208,7 @@ For three circles, a point with equal power to circles $1$ and $2$, and to circl
 Common chords from circle equations, equal tangent lengths, concurrency proofs, and locating a point with equal power to several circles.
 
 ## Contest profile
-Five problems here, four of them AIME, one solved by it alone and three combined with power of a point. Almost every appearance has one of two shapes: two circles meet and the question is really about their common chord, or a point has equal power to two circles and the axis locates it. Olympiad problems add a third use, concurrency through a radical center.
+Split between the AIME and the AMC 12, and usually combined with power of a point. Almost every appearance has one of two shapes: two circles meet and the question is really about their common chord, or a point has equal power to two circles and the axis locates it. Olympiad problems add a third use, concurrency through a radical center.
 `,
 
 "miquels-theorem": String.raw`
@@ -3377,7 +3377,7 @@ Unlike a [[linear-change-of-variables|linear change of variables]], polar coordi
 Circles about or through the origin, rotations, curves such as $r = 4\sin\theta$ and roses, and complex numbers written by modulus and argument.
 
 ## Contest profile
-No problems here are tagged with it yet. On the AMC 12 it appears as a curve given in polar form, a circle or a rose, to be identified or measured, and on the AIME it sits inside complex numbers written by modulus and argument.
+On the AMC 12 it appears as a curve given in polar form, a circle or a rose, to be identified or measured, and on the AIME it sits inside complex numbers written by modulus and argument.
 `,
 
 "shared-angle-area-ratio": String.raw`
@@ -3545,7 +3545,7 @@ The distances follow. $O$ is the midpoint of $AA'$ and $M$ is the midpoint of $H
 Triangles given with their circumradius and an orthocenter distance, circles through the orthocenter and two vertices, and the lengths of the altitude segments $AH$ and $HD$.
 
 ## Contest profile
-Three problems here, two AIME and one HMMT, none solved by it alone, and two finish with [[power-of-a-point|power of a point]]. The distances $2R\cos A$ also give the sides of the orthic triangle, and the products $AH \cdot HD$ along the three altitudes are all equal, which is the power of the point $H$ with respect to the circumcircle.
+Rare and never the whole solution; it often finishes with [[power-of-a-point|power of a point]]. The distances $2R\cos A$ also give the sides of the orthic triangle, and the products $AH \cdot HD$ along the three altitudes are all equal, which is the power of the point $H$ with respect to the circumcircle.
 `,
 
 "fermat-point": String.raw`
@@ -4150,7 +4150,7 @@ The rest of the box is four corner pyramids, each with three mutually perpendicu
 Volume, inradius, and circumradius of a tetrahedron given by three matched pairs of edges, and the point minimizing the sum of distances to the four vertices.
 
 ## Contest profile
-Three problems here, two AIME and one AMC 12, none solved by it alone. The recurring shape gives three pairs of equal opposite edges that are square roots, which fit a box with whole-number sides, and asks for the volume or the insphere radius; a tetrahedron given by three matched pairs of edges is always signaling the box.
+Mostly AIME. The recurring shape gives three pairs of equal opposite edges that are square roots, which fit a box with whole-number sides, and asks for the volume or the insphere radius; a tetrahedron given by three matched pairs of edges is always signaling the box.
 `,
 
 "tetrahedron-centroid": String.raw`## Conditions
@@ -4173,7 +4173,7 @@ For a bimedian, the midpoints of $AB$ and $CD$ are $\frac{A+B}{2}$ and $\frac{C+
 The center of mass of a tetrahedron, the tetrahedron of face centroids, symmetric coordinate setups centered at $G$, and sums of squared distances to the vertices.
 
 ## Contest profile
-One problem here, an AIME, solved by the tetrahedron of face centroids. Its role is a one-line computation once the vertices are in coordinates or the face centroids are in the figure.
+Rare, on the AIME, as the tetrahedron of face centroids. Its role is a one-line computation once the vertices are in coordinates or the face centroids are in the figure.
 `
 
 });
@@ -6095,7 +6095,7 @@ Multiplying by $abc$ gives the standard form, whose coefficients are the normal 
 Cutting planes, corner slices, distances from the origin to a plane, and planes through three given axis points.
 
 ## Contest profile
-Three problems here, all AIME, none solved by it alone, and all three set up [[coordinate-bash|coordinates]] first. The usual shape asks for the plane through three given points on the edges of a cube or a pyramid and then the cross-section it cuts. For the area of a corner's cut face, [[de-guas-theorem|De Gua's Theorem]] pairs with it.
+An AIME tool, never the whole solution, and it always follows setting up [[coordinate-bash|coordinates]]. The usual shape asks for the plane through three given points on the edges of a cube or a pyramid and then the cross-section it cuts. For the area of a corner's cut face, [[de-guas-theorem|De Gua's Theorem]] pairs with it.
 `,
 
 "harmonic-quadrilateral": String.raw`
@@ -8845,7 +8845,7 @@ The common chord is perpendicular to $O_1O_2$ and bisected by it, so half of it 
 Recognizing the circles an inversion leaves in place, building a circle orthogonal to given circles at their radical center, and turning a right angle between two circles into a condition on lengths.
 
 ## Contest profile
-No problems here are tagged with it yet. It appears on olympiads inside inversion solutions, where the circles orthogonal to the circle of inversion are the ones that stay put, and in harmonic configurations.
+It appears on olympiads inside inversion solutions, where the circles orthogonal to the circle of inversion are the ones that stay put, and in harmonic configurations.
 `,
 "weitzenbock-inequality": String.raw`
 ## Key forms
@@ -8874,7 +8874,7 @@ Equality needs $p = q = r$, so $x = y = z$, the equilateral triangle. Dropping t
 The largest area of a triangle with a given sum of squared sides, the smallest sum of squares for a given area, and lower bounds for symmetric expressions in the sides.
 
 ## Contest profile
-No problems here are tagged with it yet. It is an olympiad inequality comparing the area with the sides; AMC and AIME questions about the largest area are usually settled by [[am-gm|AM-GM]] or the sine area formula instead.
+It is an olympiad inequality comparing the area with the sides; AMC and AIME questions about the largest area are usually settled by [[am-gm|AM-GM]] or the sine area formula instead.
 `,
 "steiner-lehmus": String.raw`
 ## Key forms
@@ -8900,7 +8900,7 @@ The classical synthetic proofs argue by contradiction, building a parallelogram 
 Proving a triangle isosceles from two equal bisectors, and comparing bisector lengths from the side lengths.
 
 ## Contest profile
-No problems here are tagged with it yet. A classical olympiad result, quoted to conclude that a triangle is isosceles; contests more often ask for a bisector's length, which the formula gives directly.
+A classical olympiad result, quoted to conclude that a triangle is isosceles; contests more often ask for a bisector's length, which the formula gives directly.
 `,
 "cevian-nest": String.raw`
 ## Key forms
@@ -8927,7 +8927,7 @@ The argument runs the same way backward, which gives the converse.
 Proving three lines concurrent when the points lie on a cevian triangle (the medial, orthic, or contact triangle) rather than on the sides, and passing a concurrence between the outer and inner triangles of a nest.
 
 ## Contest profile
-No problems here are tagged with it yet. An olympiad lemma, used to carry a concurrence from a cevian triangle back to the original triangle in one step.
+An olympiad lemma, used to carry a concurrence from a cevian triangle back to the original triangle in one step.
 `,
 "dodecahedron-icosahedron": String.raw`
 ## Key forms
@@ -8959,7 +8959,7 @@ Dodecahedron volume: with the inscribed cube $(\pm1, \pm1, \pm1)$, the edge is $
 Counting vertices, edges, faces, and diagonals; paths along edges and random walks on the vertices; distances between vertices from the golden rectangles.
 
 ## Contest profile
-No problems here are tagged with it yet, though five AMC and AIME statements name one of the two solids. The usual question counts paths along the edges or the distances between random vertices, where the layers from one vertex do the counting.
+AMC and AIME statements name one of the two solids now and then. The usual question counts paths along the edges or the distances between random vertices, where the layers from one vertex do the counting.
 `,
 "plane-cross-section": String.raw`
 ## When to use
@@ -9085,7 +9085,7 @@ For two lines at angles $\theta_1$ and $\theta_2$, the bisectors are at $\varphi
 Centers of circles tangent to two given lines, incenters and excenters in coordinates, reflecting one line in another, and the slope of a line that makes equal angles with two given lines.
 
 ## Contest profile
-No problems here are tagged with it yet. It appears on the AMC 12 and the AIME when a circle is tangent to two lines through a common point, or a triangle's incenter is wanted in coordinates, where a Pythagorean slope makes the bisector come out rational.
+It appears on the AMC 12 and the AIME when a circle is tangent to two lines through a common point, or a triangle's incenter is wanted in coordinates, where a Pythagorean slope makes the bisector come out rational.
 `,
 "diagonal-angle-from-sides": String.raw`
 ## Key forms

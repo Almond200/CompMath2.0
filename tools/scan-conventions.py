@@ -334,6 +334,20 @@ print("  worked examples or formulas in a Contest profile: %d  (must stay 0)" % 
 for _x in cp_examples[:12]:
     print("    %s: %s" % _x)
 
+# The Role sentence does not state how many problems cite the card, how many it solves alone or
+# how many share a partner (owner, 2026-11-11): the computed profile rows carry every count, and
+# a written one goes stale as soon as a problem is tagged (30 of 40 had).
+cp_counts = []
+_CP_COUNT = re.compile(r"\b(?:[Oo]ne|[Tt]wo|[Tt]hree|[Ff]our|[Ff]ive|[Ss]ix|[Ss]even|[Ee]ight|[Nn]ine|[Tt]en|[Ee]leven|[Tt]welve|\d+) (?:of the \d+ )?(?:tagged )?problems? (?:tagged )?here\b"
+                       r"|\bproblems? (?:are )?tagged here\b|\bNo problems here\b|\(\d+ (?:problems?|each)\)")
+for _k, _v in DETAILS.items():
+    _m = re.search(r"## Contest profile\n(.*?)(?=\n## |\Z)", _v, re.S)
+    if _m and _CP_COUNT.search(_m.group(1)):
+        cp_counts.append((_k, _CP_COUNT.search(_m.group(1)).group(0)))
+print("  problem counts written into a Contest profile: %d  (must stay 0)" % len(cp_counts))
+for _x in cp_counts[:12]:
+    print("    %s: %s" % _x)
+
 print("\n-- examples --")
 print("  one per card: %s" % pct(sum(1 for c in CARDS if c["id"] in EXAMPLES), len(CARDS)))
 missing_ex = [c["id"] for c in CARDS if c["id"] not in EXAMPLES and c["id"] not in PLANNED]
@@ -970,7 +984,7 @@ print("  repeated keywords inside one card: %d  (must stay 0)" % len(_dupkw))
 for _x in _dupkw[:8]:
     print("    %s: %r" % _x)
 
-bad = bool(_bad_tier or _selfptr or _repeats or _esc_q or missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples or cp_examples
+bad = bool(_bad_tier or _selfptr or _repeats or _esc_q or missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples or cp_examples or cp_counts
            or _lt or fig_bad or _odd_heads or _kind_err or _unknown or _long_paras or _probref_hits
            or _no_plain or _twin or _kf_sigma or _bad_alt or _no_ledger or _proc_hits or _calc or _shared or _ctrl or _esc or _dupkw or _brace)
 print("\n%s" % ("FAILURES ABOVE" if bad else "no convention violations found"))

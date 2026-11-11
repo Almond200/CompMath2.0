@@ -10,6 +10,8 @@ The 2026-11-08 snapshot contains **4,725 app problems: 4,665 LIVE values and 60 
 
 The ten 2019 HMMT February Geometry problems and fifty 2026 AMC 10A/12A problems have no LIVE difficulty values in that snapshot. At the owner's explicit request, their statements and solution requirements were reviewed and assigned estimates on the same numerical scale. `tools/manual-difficulty-ratings.json` records each estimate, a short rationale and the paper sources (the local 2026 statements retain their per-problem Random Math source URLs). Shared 2026 AMC 10/12 questions have identical estimates. Ratings do not simply increase with question number: for example, AMC 10A #24 is below #23, and HMMT #5 is below #4. These are author judgments, not empirical LIVE measurements. Both kinds of rating live in the same app file, and a later LIVE value automatically takes precedence on refresh.
 
+**2026 AMC 10A review (2026-11-11).** After the owner sat the paper, all 25 estimates were checked against a worked solution of each problem. Six changed: #25 from 2450 to 1900 (far easier than a usual last question), #8 up to 1500, #18 up to 1700, and #16, #20 and #21 down to 1800, 2000 and 1950, with the 12A twins of #16 and #21. LIVE's archive, fetched again that day, still had no values for the paper.
+
 ## Selection
 
 `js/problem-difficulty.js` supplies the shared rating lookup, five-level selection and uniform draw.
