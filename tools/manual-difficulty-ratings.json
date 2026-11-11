@@ -1,6 +1,6 @@
 {
-  "reviewed": "2026-11-08",
-  "description": "Author estimates on LIVE's Elo-like scale, based on the statements and solution requirements, not a paper-position formula. LIVE values take precedence when later published. Shared 2026 AMC 10/12 problems receive identical estimates.",
+  "reviewed": "2026-11-11",
+  "description": "Author estimates on LIVE's Elo-like scale, based on the statements and solution requirements, not a paper-position formula. LIVE values take precedence when later published. Shared 2026 AMC 10/12 problems receive identical estimates. The 2026 AMC 10A estimates were reviewed problem by problem on 2026-11-11 after the owner sat the paper: #25 came down sharply and #8, #16, #18, #20 and #21 moved.",
   "papers": {
     "2026 AMC 10A": "https://wiki.randommath.com/amc10/2026/part-a/problem-1",
     "2026 AMC 12A": "https://wiki.randommath.com/amc12/2026/part-a/problem-1",
@@ -36,8 +36,8 @@
       "Subtract linear equations and count positive splits."
     ],
     "2026 AMC 10A, Problem 8": [
-      1350,
-      "Use the favorable rounding endpoints and convert minutes to hours."
+      1500,
+      "Take the favourable rounding endpoint of both the distance and the time, read 'possibly allow' correctly, and convert minutes to hours; the wording costs more solvers than the arithmetic."
     ],
     "2026 AMC 10A, Problem 9": [
       1550,
@@ -68,28 +68,28 @@
       "Find the inverse tree rule and run a subtractive Euclidean process."
     ],
     "2026 AMC 10A, Problem 16": [
-      1900,
-      "First minimize the capped score, then count all extremal sampling patterns."
+      1800,
+      "First minimize the capped score, then count the four extremal colour patterns; short once the minimum of 4 is found."
     ],
     "2026 AMC 10A, Problem 17": [
       1850,
       "Recognize the intersection as a smaller regular hexagon through inward distances."
     ],
     "2026 AMC 10A, Problem 18": [
-      1600,
-      "Shift an affine recurrence to its fixed point and impose divisibility."
+      1700,
+      "Shift an affine recurrence to its fixed point, then use integrality and strict decrease across ten halvings."
     ],
     "2026 AMC 10A, Problem 19": [
       2100,
       "Project a hemisphere-covering problem and balance extreme corner distances."
     ],
     "2026 AMC 10A, Problem 20": [
-      2150,
-      "Squarefree factorization, onto assignments and a justified division by permutations."
+      2000,
+      "Squarefree factorization into three factors: onto assignments of seven primes by inclusion-exclusion, divided by six because the sides are distinct."
     ],
     "2026 AMC 10A, Problem 21": [
-      2050,
-      "Exhaustive connected-triomino casework and a majority condition."
+      1950,
+      "Only ten connected-triomino partitions exist, and a win forces the four X's to split two and two."
     ],
     "2026 AMC 10A, Problem 22": [
       2100,
@@ -104,8 +104,8 @@
       "Divide a conjugate-value difference and count bounded integer coefficients."
     ],
     "2026 AMC 10A, Problem 25": [
-      2450,
-      "Combine a sharp total/per-room bound with a feasible skip schedule."
+      1900,
+      "A total-count equation and the bound from the room that starts with one nut give 95 at once; the feasibility schedule is not needed to choose the answer. Rated well below a usual last question after the owner sat the paper (2026-11-11)."
     ],
     "2026 AMC 12A, Problem 1": [
       950,
@@ -148,7 +148,7 @@
       "Shared with 2026 AMC 10A #15."
     ],
     "2026 AMC 12A, Problem 11": [
-      1900,
+      1800,
       "Shared with 2026 AMC 10A #16."
     ],
     "2026 AMC 12A, Problem 12": [
@@ -168,7 +168,7 @@
       "Use a trigonometric product identity, then bound a logarithm's floor."
     ],
     "2026 AMC 12A, Problem 16": [
-      2050,
+      1950,
       "Shared with 2026 AMC 10A #21."
     ],
     "2026 AMC 12A, Problem 17": [

@@ -237,7 +237,7 @@ Every term except the last contains a factor of $p$, so $p$ divides $a_0q^n$. Si
 Factoring a cubic or quartic with integer coefficients, finding all rational roots, and proving that a number is irrational.
 
 ## Contest profile
-Three problems here, all AIME, none solved by it alone: it usually factors a cubic that another method has produced, such as the equation a [[symmetric-polynomial-strategies|symmetric substitution]] reduces a system to, or the equation for the ratio of a geometric series. The candidates with small denominators are tried first, since contest cubics are built to have a rational root.
+Mostly an AIME tool and rarely the whole solution: it usually factors a cubic that another method has produced, such as the equation a [[symmetric-polynomial-strategies|symmetric substitution]] reduces a system to, or the equation for the ratio of a geometric series. The candidates with small denominators are tried first, since contest cubics are built to have a rational root.
 `,
 
 "coefficient-extraction": String.raw`
@@ -268,7 +268,7 @@ At $x = 0$ every weight but the first vanishes, leaving $a_0$. If the coefficien
 Coefficient sums of products and powers too large to expand, even-power and odd-power sums, alternating sums, and sums of absolute values.
 
 ## Contest profile
-Two problems here, one AIME and one AMC 10, one solved by it alone. The AMC version combines it with the [[binomial-theorem|Binomial Theorem]], and the AIME version asks for the sum of the absolute values of the coefficients, which one evaluation at negative one produces once the sign of every coefficient is known.
+Mostly an AMC 12 problem, and often the whole solution. The AMC version combines it with the [[binomial-theorem|Binomial Theorem]], and the AIME version asks for the sum of the absolute values of the coefficients, which one evaluation at negative one produces once the sign of every coefficient is known.
 `,
 
 
@@ -299,7 +299,7 @@ For example $p_2 = e_1p_1 - 2e_2 = e_1^2 - 2e_2$, which is squaring the sum of t
 Power sums of the roots of a polynomial without finding the roots, sums of powers of three or more numbers given the first few, and the polynomial whose roots are given by their power sums.
 
 ## Contest profile
-Three problems here, all AIME, none solved by it alone, and two pair it with Vieta's Formulas. The classic form gives $x + y + z$, $x^2 + y^2 + z^2$, and $x^3 + y^3 + z^3$ and asks for $x^4 + y^4 + z^4$. Harder versions reduce one polynomial modulo another so that only low power sums of the roots are needed.
+Mostly AIME, and often paired with Vieta's Formulas. The classic form gives $x + y + z$, $x^2 + y^2 + z^2$, and $x^3 + y^3 + z^3$ and asks for $x^4 + y^4 + z^4$. Harder versions reduce one polynomial modulo another so that only low power sums of the roots are needed.
 `,
 
 "conjugate-root-theorems": String.raw`
@@ -332,7 +332,7 @@ The radical version works the same way with the map $\sqrt d \mapsto -\sqrt d$ o
 Finding the missing roots of a polynomial from one given root, building a polynomial with a prescribed irrational root, and showing that a root must be real.
 
 ## Contest profile
-Five problems here, all AIME, and every one of them finishes with Vieta's Formulas: the conjugate supplies the missing root, and Vieta turns the roots into the coefficients the problem asks about.
+An AMC 12 and AIME tool that usually finishes with Vieta's Formulas: the conjugate supplies the missing root, and Vieta turns the roots into the coefficients the problem asks about.
 `,
 
 "palindromic-polynomials": String.raw`
@@ -396,7 +396,7 @@ The square is never negative and is zero only at $x = -\frac{b}{2a}$. So when $a
 Maximum-area and maximum-revenue questions, minimum values of quadratics, parabolas through given points, and axis-of-symmetry arguments.
 
 ## Contest profile
-Two problems here, both AIME, one solved by it alone; the other adds [[casework-method|casework]] on where the vertex falls relative to the allowed range. On the AMC 10 it drives maximum-area and maximum-revenue questions, which are quadratics in disguise.
+Mostly AMC 12, and usually the whole solution; AIME versions add [[casework-method|casework]] on where the vertex falls relative to the allowed range. On the AMC 10 it drives maximum-area and maximum-revenue questions, which are quadratics in disguise.
 `,
 
 "lagrange-interpolation": String.raw`
@@ -839,7 +839,7 @@ The cube formula also has a picture. A square of side $1 + 2 + \cdots + n$ split
 Closed forms for polynomial sums, counts of rectangles and squares in a grid, divisibility conditions on triangular numbers, and the sum of an arithmetic progression.
 
 ## Contest profile
-Eight problems here, six AIME and two AMC 12, none by it alone and each with a different partner, since a closed-form sum is usually one step inside a larger count: [[rectangles-in-grid|rectangles in a grid]], or a divisibility condition on a triangular number settled with [[crt|the Chinese Remainder Theorem]]. The fact that the sum of the cubes is the square of the sum is sometimes tested directly.
+Spread across the AMC and the AIME and almost never the whole solution, since a closed-form sum is usually one step inside a larger count: [[rectangles-in-grid|rectangles in a grid]], or a divisibility condition on a triangular number settled with [[crt|the Chinese Remainder Theorem]]. The fact that the sum of the cubes is the square of the sum is sometimes tested directly.
 `,
 
 "telescoping": String.raw`
@@ -945,7 +945,7 @@ The rest comes from the matrix $M = \begin{pmatrix}1&1\\1&0\end{pmatrix}$, for w
 Far-out Fibonacci terms and their sizes, sums of Fibonacci numbers and of their squares, divisibility and gcd problems, and recurrences solved by the characteristic equation.
 
 ## Contest profile
-Four problems here, split between AMC and AIME, none by it alone; two continue into linear recurrences in general. Fibonacci sums and gcds appear on AIME with the identities as the intended shortcuts.
+Split between the AMC and the AIME and never the whole solution; it often continues into linear recurrences in general. Fibonacci sums and gcds appear on AIME with the identities as the intended shortcuts.
 `,
 
 "linear-recurrence": String.raw`
@@ -982,7 +982,7 @@ Closed forms for sequences defined by recursion, counting recursions such as til
 ## Contest profile
 Recognizing the branch within seconds is what the time pressure rewards: a $+d$ on a first-order rule means shifting to the fixed point, a two-term rule with no extra term means the characteristic equation, and an ugly rational rule means periodicity or a reciprocal substitution.
 
-Of the 13 problems tagged here only 1 needs nothing else, with [[telescoping|telescoping]] and [[binets-formula|Binet's Formula]] the usual partners (2 each). AIME more often asks for a term modulo $m$, and then the closed form is skipped: the recurrence is iterated modulo $m$ until the cycle appears.
+It rarely stands alone, with [[periodic-sequences|periodicity]] and [[binets-formula|Binet's Formula]] the usual partners. AIME more often asks for a term modulo $m$, and then the closed form is skipped: the recurrence is iterated modulo $m$ until the cycle appears.
 `,
 
 "am-gm": String.raw`
@@ -1267,7 +1267,7 @@ The last two forms are one line each. Over a common base, $\log_{a^m}(b^n) = \fr
 Telescoping products of logarithms, systems and inequalities in $\log_a b$ and $\log_b a$, logarithms with awkward bases, and evaluating a logarithm on a calculator that has only $\log_{10}$ or $\ln$.
 
 ## Contest profile
-Almost always paired with [[log-rules|the log rules]], in 11 of the 15 problems tagged here and alone in none, because changing base is the step that makes the other rules usable. Telescoping log products are an AMC classic, and AIME layers the reciprocal rule into systems, where substituting for one logarithm and its reciprocal reduces them to rational equations.
+Almost always paired with [[log-rules|the log rules]] and almost never alone, because changing base is the step that makes the other rules usable. Telescoping log products are an AMC classic, and AIME layers the reciprocal rule into systems, where substituting for one logarithm and its reciprocal reduces them to rational equations.
 `,
 
 "log-swap-identity": String.raw`
@@ -1319,7 +1319,7 @@ Zero, negative, and fractional exponents are then defined so that the addition l
 Exponential equations, comparisons of large powers, simplifying expressions with radicals and negative exponents, and reading towers.
 
 ## Contest profile
-Four problems here, split between AMC and AIME, one solved by it alone; two continue into logarithms, which are the exponent laws read in reverse. Base matching solves most AMC exponential equations, and taking a common root settles size comparisons.
+An AMC staple at every level, usually the whole solution of an early problem; some continue into logarithms, which are the exponent laws read in reverse. Base matching solves most AMC exponential equations, and taking a common root settles size comparisons.
 `,
 
 "complex-basics": String.raw`
@@ -1417,7 +1417,7 @@ With [[eulers-formula|Euler's Formula]] $e^{i\theta} = \cos\theta + i\sin\theta$
 Large powers of complex numbers, multiple-angle formulas, the $n$th roots of a complex number, and trigonometric identities that come from comparing real and imaginary parts.
 
 ## Contest profile
-Never the whole problem, none of the 17 tagged here, and most often paired with roots of unity (6 problems), since the $n$th roots of unity are exactly the numbers whose angles De Moivre multiplies back to a full turn. AIME trigonometric identities that seem to come from nowhere are usually De Moivre expansions.
+Almost never the whole problem, and most often paired with roots of unity, since the $n$th roots of unity are exactly the numbers whose angles De Moivre multiplies back to a full turn. AIME trigonometric identities that seem to come from nowhere are usually De Moivre expansions.
 `,
 
 "roots-of-unity": String.raw`
@@ -1449,7 +1449,7 @@ The power sum is a geometric series. If $n \mid j$, every term is $1$ and the su
 Evaluating a polynomial at every root and multiplying the values, symmetric sums over the vertices of a regular polygon, periodicity arguments, and the factorization of $x^n - 1$.
 
 ## Contest profile
-An AIME staple, with 17 problems tagged here and only 1 solved by the roots alone; the usual partner is De Moivre's Theorem (6 problems), which locates the roots in the first place.
+An AMC 12 and AIME staple that is rarely solved by the roots alone; the usual partner is De Moivre's Theorem, which locates the roots in the first place.
 `,
 
 "roots-of-unity-filter": String.raw`
@@ -1518,7 +1518,7 @@ Multiplying the $n - 1$ chords gives $2^{n-1}$ times the product of the sines, a
 Products of chord lengths in a regular polygon, products of sines at equally spaced angles, and values of $\prod(x - \omega^k)$.
 
 ## Contest profile
-Three problems here, all AIME, none solved by it alone. The factors $1 - \omega^k$ come from a polynomial whose roots are roots of unity, or appear as chord lengths in a regular polygon, and the product is finished with [[de-moivre|De Moivre's Theorem]] or a [[double-angle|double-angle]] identity that simplifies what it leaves.
+An AIME tool, never the whole solution. The factors $1 - \omega^k$ come from a polynomial whose roots are roots of unity, or appear as chord lengths in a regular polygon, and the product is finished with [[de-moivre|De Moivre's Theorem]] or a [[double-angle|double-angle]] identity that simplifies what it leaves.
 `,
 
 "pythagorean-identities": String.raw`
@@ -1579,7 +1579,7 @@ The other quadrants are reflections of the first. The points at $180^\circ - \th
 Exact values in trigonometric computations, points on the unit circle, and solving $\sin\alpha = \sin\beta$ by reflecting across the vertical axis.
 
 ## Contest profile
-Two problems here, both AIME, one solved by it alone; the other works on the unit circle with [[de-moivre|De Moivre's Theorem]]. The AIME uses them to locate points on the unit circle, and on the AMC they sit inside nearly every trigonometric computation.
+The AIME uses them to locate points on the unit circle, sometimes with [[de-moivre|De Moivre's Theorem]], and on the AMC they sit inside nearly every trigonometric computation.
 `,
 
 "reduction-identities": String.raw`
@@ -1767,7 +1767,7 @@ Setting $x = a + b$ and $y = a - b$, so that $a = \frac{x + y}{2}$ and $b = \fra
 [[telescoping|Telescoping sums]] of sines and cosines, equations that mix different multiples of an angle, exact values at angles such as $15^\circ$ and $75^\circ$, and sums of equally spaced cosines.
 
 ## Contest profile
-Six problems here, all AIME, none by it alone: two feed a telescoping sum such as $\sum \sin k^\circ$, and two simplify a [[law-of-cosines|Law of Cosines]] computation involving several angles. An equation that mixes sines or cosines of different multiples of $\theta$ is the standard place for sum-to-product.
+Mostly AIME and rarely the whole solution: it feeds a telescoping sum such as $\sum \sin k^\circ$, or simplifies a [[law-of-cosines|Law of Cosines]] computation involving several angles. An equation that mixes sines or cosines of different multiples of $\theta$ is the standard place for sum-to-product.
 `,
 
 "special-trig-values": String.raw`
@@ -2439,7 +2439,7 @@ For two workers, $\frac1a + \frac1b = \frac{a + b}{ab}$, so together they take $
 Pipes and drains, painters and machines, joint jobs done in stages, and any problem where independent contributions per unit time add.
 
 ## Contest profile
-Five problems here, four of them AIME, and four solved by it alone: once every worker is a rate, the problem is a small linear system. MATHCOUNTS and early AMC use the simple versions with pipes and painters.
+Mostly AMC 10 and 12, and usually the whole solution: once every worker is a rate, the problem is a small linear system. MATHCOUNTS and early AMC use the simple versions with pipes and painters.
 `,
 
 "average-speed": String.raw`
@@ -2465,7 +2465,7 @@ That weights each speed by the time spent at it. Over equal distances $d$ at spe
 Round trips, trips with several legs, "late at one speed and early at another" problems, and any rate that is a ratio of totals.
 
 ## Contest profile
-Three problems here, two AMC 12 and one AIME, two solved by it alone. On the AMC it is an answer-choice trap, with the plain mean among the options whenever the true answer is the harmonic mean. A common version misses a target time by the same margin at two speeds, late at one and early at the other, which makes the right speed their harmonic mean. For trips with several legs, see [[time-per-leg|multi-leg rates]].
+Almost entirely an AMC problem, and often the whole solution. On the AMC it is an answer-choice trap, with the plain mean among the options whenever the true answer is the harmonic mean. A common version misses a target time by the same margin at two speeds, late at one and early at the other, which makes the right speed their harmonic mean. For trips with several legs, see [[time-per-leg|multi-leg rates]].
 `,
 
 "relative-motion": String.raw`
@@ -2678,7 +2678,7 @@ where $p_k = a^k + b^k + c^k$. Starting from $p_0 = 3$, $p_1 = 0$, and $p_2 = -2
 Cubic equations with no $x^2$ term, sums of cubes and higher powers of three quantities, factoring differences, and ratios of power sums.
 
 ## Contest profile
-Three problems here, all AIME, none solved by it alone. The usual trigger is a cubic with no $x^2$ term, whose roots sum to $0$, so sums like $(r + s)^3 + (s + t)^3 + (t + r)^3$ collapse to $-3rst$. Others create the zero sum by shifting all three variables by their average, or force it from a symmetry of the problem.
+An AIME tool, never the whole solution. The usual trigger is a cubic with no $x^2$ term, whose roots sum to $0$, so sums like $(r + s)^3 + (s + t)^3 + (t + r)^3$ collapse to $-3rst$. Others create the zero sum by shifting all three variables by their average, or force it from a symmetry of the problem.
 `,
 
 "reciprocal-power-sums": String.raw`
@@ -3033,7 +3033,7 @@ with equality exactly when $xy \ge 0$. For the sum of distances, a point between
 Inequalities with absolute values, distances on a number line, piecewise equations, and the simplification of $\sqrt{x^2}$.
 
 ## Contest profile
-Five problems here, mostly AMC, two solved by it alone; two others move on to regions in the plane. Distance readings, sums of distances, and piecewise equations are the common forms on MATHCOUNTS and early AMC.
+Mostly AMC 10 and 12, and usually the whole solution; some move on to regions in the plane. Distance readings, sums of distances, and piecewise equations are the common forms on MATHCOUNTS and early AMC.
 `,
 
 "median-minimizes-abs": String.raw`
@@ -3699,7 +3699,7 @@ The excluded case is $r = 1$, where $x \mapsto x + d$ has no fixed point at all 
 Mixing and dilution, interest with deposits, population questions, and any process described as repeating forever and asked to settle.
 
 ## Contest profile
-Two problems here, one AIME and one AMC 12, neither solved by it alone: one pairs it with a [[states-recursion-prob|recursion on states]] for a probability, the other with [[periodic-sequences|periodicity]] modulo $m$. At MATHCOUNTS and on the AMC it appears in disguise as a mixture, interest, or population question, and the fixed point is usually the number being asked for.
+Mostly AMC 10 and 12, and often the whole solution; harder versions pair it with a [[states-recursion-prob|recursion on states]] for a probability, or with [[periodic-sequences|periodicity]] modulo $m$. At MATHCOUNTS and on the AMC it appears in disguise as a mixture, interest, or population question, and the fixed point is usually the number being asked for.
 `
 
 });
@@ -4229,7 +4229,7 @@ So a triangular number always gives an odd square, and an odd square $(2n + 1)^2
 Counts of pairs, handshakes, and dots in triangular arrays; sequences with constant second difference; and tests for whether a number is triangular.
 
 ## Contest profile
-Four problems here, split between AMC and AIME, one solved by it alone; two combine it with [[modular-basics|modular arithmetic]]. Sums of the first $n$ integers turn up constantly inside larger arguments; the general sum is on [[arithmetic-series|the arithmetic series card]], and [[power-sums|the power sums]] carry squares and cubes.
+Split between the AMC and the AIME; it often combines with [[modular-basics|modular arithmetic]]. Sums of the first $n$ integers turn up constantly inside larger arguments; the general sum is on [[arithmetic-series|the arithmetic series card]], and [[power-sums|the power sums]] carry squares and cubes.
 `,
 
 
@@ -4445,7 +4445,7 @@ For the repeated factor, differentiate $P(x) = (x-a)^2 Q(x) + R(x)$: every term 
 The remainder of a polynomial divided by a quadratic or by a product of linear factors, a polynomial given by its remainders modulo several factors, and remainders of huge powers such as $x^{100}$ modulo $x^2 - 1$ or $x^2 + 1$.
 
 ## Contest profile
-No problems here are tagged with it yet. On the AMC 12 and the AIME it appears as a polynomial known only by its remainders modulo two linear factors, asking for the remainder modulo their product.
+On the AMC 12 and the AIME it appears as a polynomial known only by its remainders modulo two linear factors, asking for the remainder modulo their product.
 `,
 
 "add-all-equations": String.raw`
@@ -5367,7 +5367,7 @@ If $P(0), \ldots, P(n)$ are whole numbers, every difference built from them is a
 Showing that a polynomial's values are integers, or divisible by a given number, from a few of its values; writing the polynomial through given values at consecutive integers in a form that can be evaluated anywhere.
 
 ## Contest profile
-No problems here are tagged with it yet. An olympiad tool for polynomials that must take integer values; AIME problems that give values at consecutive integers use the same differences to extend a sequence.
+An olympiad tool for polynomials that must take integer values; AIME problems that give values at consecutive integers use the same differences to extend a sequence.
 `,
 "partial-fractions": String.raw`
 ## When to use

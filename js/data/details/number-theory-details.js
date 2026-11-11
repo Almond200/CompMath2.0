@@ -1851,7 +1851,7 @@ so every such six-digit number is divisible by $7$, $11$, and $13$. And $2^{10} 
 Quick factorizations, divisibility of repeated-digit numbers, last digits of powers, digit counts, and estimates of roots and logarithms.
 
 ## Contest profile
-Four problems here, all solved by it alone, and really two, each shared between the AMC 10 and AMC 12. They reward recognizing familiar products, such as the repeated-digit factorizations, instead of multiplying out. AIME answers often need a quick factorization of a fake prime, and AMC estimates lean on powers of two as powers of ten.
+Problems shared between the AMC 10 and AMC 12, solved by it alone. They reward recognizing familiar products, such as the repeated-digit factorizations, instead of multiplying out. AIME answers often need a quick factorization of a fake prime, and AMC estimates lean on powers of two as powers of ten.
 `,
 
 "digit-manipulation": String.raw`
@@ -2706,7 +2706,7 @@ For a power of $2$ the recurrence telescopes: $$S(2^k) = 4^{k-1} + 4^{k-2} + \cd
 Sums over $1, 2, \ldots, n$ of a quantity that depends only on the odd part of each number, such as the largest odd divisor or the highest power of $2$.
 
 ## Contest profile
-No problems here are tagged with it yet. On the AIME and in olympiad number theory it appears as a sum of largest odd divisors, or of the powers of $2$ dividing each number, up to a large bound, where the halving recurrence replaces a term-by-term count.
+On the AIME and in olympiad number theory it appears as a sum of largest odd divisors, or of the powers of $2$ dividing each number, up to a large bound, where the halving recurrence replaces a term-by-term count.
 `,
 
 "cycle-hunting": String.raw`
@@ -2991,7 +2991,7 @@ For $1 \bmod n$ the argument is the same with $N = n\,p_1\cdots p_k$ and the num
 Choosing a large prime in a given residue class to test a divisibility or a functional equation, and proving that the primes of a given form are infinite.
 
 ## Contest profile
-No problems here are tagged with it yet. An olympiad citation, quoted in one line; the special cases for $1$ and $3$ modulo $4$ are classical olympiad exercises in their own right.
+An olympiad citation, quoted in one line; the special cases for $1$ and $3$ modulo $4$ are classical olympiad exercises in their own right.
 `,
 "calendar-problems": String.raw`
 ## Distinguishing clues

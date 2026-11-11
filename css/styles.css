@@ -3296,16 +3296,16 @@ html[data-cols="spacious"] .content .cards.search-results { grid-template-column
 .rand-btns button:where(:not(:disabled):not([aria-disabled="true"])):hover { border-color: var(--space); color: var(--space); }
 .rand-btns button[aria-checked="true"] { background: var(--space); border-color: var(--space); color: #fff; }
 .rand-diff { display: flex; align-items: center; gap: 12px; margin-top: 14px; font-size: 13px; font-weight: 650; color: var(--text-dim); }
-.rand-picker .rand-go, #topic-practice-form .hp-btn { white-space: nowrap; }
+.rand-picker .rand-go, #topic-practice-form .hp-btn, #card-practice-form .hp-btn { white-space: nowrap; }
 .rand-picker .rand-btns { margin-top: 10px; }
 #past-practice-sets > h3 + p { margin: 6px 0 10px; }
-#topic-practice-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
-#topic-practice-form label { font-size: 13px; font-weight: 650; }
+#topic-practice-form fieldset, #card-practice-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+#topic-practice-form label, #card-practice-form label { font-size: 13px; font-weight: 650; }
 #topic-name { display: block; max-width: 320px; margin-top: 4px; }
-#topic-practice-form .rand-diff label { min-width: 65px; }
-#topic-practice-form output { color: var(--space); }
-#topic-practice-form button { border: 0; font-family: inherit; line-height: inherit; cursor: pointer; }
-#topic-practice-form button:disabled { opacity: .55; cursor: default; }
+#topic-practice-form .rand-diff label, #card-practice-form .rand-diff label { min-width: 65px; }
+#topic-practice-form output, #card-practice-form output { color: var(--space); }
+#topic-practice-form button, #card-practice-form button { border: 0; font-family: inherit; line-height: inherit; cursor: pointer; }
+#topic-practice-form button:disabled, #card-practice-form button:disabled { opacity: .55; cursor: default; }
 #topic-practice-status { color: var(--text-dim); font-size: 13px; }
 .rand-diff[hidden] { display: none; }
 .rand-diff input { flex: 1; max-width: 260px; accent-color: var(--space); }
@@ -4842,9 +4842,6 @@ button.tt-tw:hover { background: var(--border); color: var(--text); }
 .pp-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 12px; padding-bottom: 7px; border-bottom: 1px solid var(--border); }
 .pp-head .pp-h { margin: 0; padding: 0; border: 0; }
 .pp-mock { flex: none; display: inline-flex; align-items: center; height: 30px; padding: 0 14px; font-size: 13px; }
-/* This one soft button lights up in the space's colour, at the owner's word (2026-11-11); the
-   other secondary soft actions keep their blue hover. */
-:root .hp-btn.hp-btn-soft.pp-mock:not(:disabled):hover, :root .hp-btn.hp-btn-soft.pp-mock:focus-visible { border-color: var(--space); color: var(--space); }
 .pp-tiles { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 .pp-table { max-width: 640px; font-size: 14px; }
 .pp-table tbody th a { color: var(--text); text-decoration: none; }
@@ -4922,3 +4919,7 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 .tp-cards tbody th .card-link { font-weight: 400; }
 .tp-problems-h { margin-top: 4px; }
 .tp .pf-table, .tp .pf-plot, .tp .pf-eras { max-width: 600px; }
+
+/* Practice a card: the kind chooser sits above the card search, as in Practice a contest. */
+#card-practice-form .rand-btns { margin-bottom: 2px; }
+#card-practice-form .practice-topic-context { margin-top: 1px; }

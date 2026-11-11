@@ -121,7 +121,7 @@ Equivalently, seat one person anywhere; since rotations do not matter, that seat
 Round tables, necklaces and bracelets, rotating arrangements of distinct objects, and seatings with people who must or must not be adjacent.
 
 ## Contest profile
-Four problems here, all AIME, none by it alone; two use [[complementary-counting|complementary counting]] for "no two of these sit together" conditions. Round tables with adjacency conditions are an AMC fixture as well, and bead necklaces bring in the extra division by $2$.
+Mostly AIME and never the whole solution; [[complementary-counting|complementary counting]] handles the "no two of these sit together" conditions. Round tables with adjacency conditions are an AMC fixture as well, and bead necklaces bring in the extra division by $2$.
 `,
 
 "complementary-counting": String.raw`
@@ -206,7 +206,7 @@ The same count also builds up point by point. The last step into any point comes
 Shortest routes on a street grid, routes through or around required points, staircase and diagonal-barrier paths, and ballot-style counts.
 
 ## Contest profile
-Four problems here, all AIME, one solved by it alone; the others pair it with a [[bijection-method|bijection]], a [[recursive-counting|recursion]] or [[stars-and-bars|stars and bars]]. AMC uses the plain count, and AIME adds barriers, diagonal steps, or a third dimension. Most errors are miscounted steps, so the two totals $m$ and $n$ are written down explicitly.
+Spread from the AMC 8 to the AIME and rarely the whole solution; the usual partners are a [[recursive-counting|recursion]], a [[bijection-method|bijection]] or [[stars-and-bars|stars and bars]]. AMC uses the plain count, and AIME adds barriers, diagonal steps, or a third dimension. Most errors are miscounted steps, so the two totals $m$ and $n$ are written down explicitly.
 `,
 
 "rectangles-in-grid": String.raw`
@@ -268,7 +268,7 @@ The crossing count is a pairing. Any four vertices of a convex polygon form a qu
 Handshakes and round-robin schedules, diagonals of polygons, triangles formed by points or by lines, and crossings of chords.
 
 ## Contest profile
-Six problems here, spread across AMC 10, AMC 12, and AIME, three solved by it alone; two others use it as the total in [[complementary-counting|complementary counting]], counting all triples of points and removing the collinear ones. The crossing count and the collinearity corrections are the AIME-level versions.
+Spread evenly across the AMC and the AIME, and sometimes the whole solution; elsewhere it is the total in [[complementary-counting|complementary counting]], counting all triples of points and removing the collinear ones. The crossing count and the collinearity corrections are the AIME-level versions.
 `,
 
 "counting-functions": String.raw`
@@ -437,7 +437,7 @@ Generating functions say the same thing. The coefficient of $x^r$ in $$(1 + x)^m
 Sums of products of binomial coefficients, sums of squared binomial coefficients, and committee counts split by group.
 
 ## Contest profile
-Two problems here, both AIME, neither solved by it alone. Typical uses count how often each element appears across pairs of subsets, which produces a sum of squared binomial coefficients, or read a double sum as a single committee count.
+Split between the AIME and the AMC 12. Typical uses count how often each element appears across pairs of subsets, which produces a sum of squared binomial coefficients, or read a double sum as a single committee count.
 `,
 
 "committee-chair": String.raw`
@@ -496,7 +496,7 @@ The number of terms is the number of ways to write $n$ as an ordered sum $k_1 + 
 Coefficients of a given monomial in a trinomial or larger expansion, ordered splits of a set into groups of prescribed sizes, and arrangements of words with repeated letters.
 
 ## Contest profile
-Four problems here, mostly AMC, none by it alone, and each with a different partner. Coefficient extraction in a trinomial is the standard form, and the same coefficient counts ordered splits of a set into groups of prescribed sizes.
+Mostly AMC 12 and never the whole solution. Coefficient extraction in a trinomial is the standard form, and the same coefficient counts ordered splits of a set into groups of prescribed sizes.
 `,
 
 "pascal-parity": String.raw`
@@ -566,7 +566,7 @@ When every $x_i$ must be at least $1$, no two bars may touch and none may sit at
 Dice or digits with a fixed total, identical coins or candies handed out to people, monomials of a fixed degree, and multisets of a given size.
 
 ## Contest profile
-A counting workhorse that rarely stands alone: 3 of the 23 problems tagged here need nothing else, and [[casework-method|casework]] joins it in 6, usually to split a problem into pieces that are each a clean distribution. The recurring disguises are digit sums, identical items given to people, and monomials of a fixed degree in several variables.
+A counting workhorse, mostly on the AIME: [[casework-method|casework]] is its most common partner, usually to split a problem into pieces that are each a clean distribution. The recurring disguises are digit sums, identical items given to people, and monomials of a fixed degree in several variables.
 `,
 
 "stars-bars-upper-bound": String.raw`
@@ -783,7 +783,7 @@ A coloring is fixed by $g$ exactly when $g$ never moves a position to one of a d
 Necklaces and bracelets, colorings of cubes and other solids, boards and tilings counted up to rotation, and structures counted up to relabeling.
 
 ## Contest profile
-Five problems here, four of them AIME, one solved by it alone; two combine it with [[constructive-counting|constructive counting]] of the fixed colorings. AIME usually needs only rotations, while flippable physical objects need the reflections too. The cube's $24$ rotations and their cycle structures are worth working out once in advance.
+Split between the AMC 12 and the AIME; it often combines with [[constructive-counting|constructive counting]] of the fixed colorings. AIME usually needs only rotations, while flippable physical objects need the reflections too. The cube's $24$ rotations and their cycle structures are worth working out once in advance.
 `,
 
 "stirling-bell": String.raw`
@@ -879,7 +879,7 @@ In the generating function, the factor $\frac1{1 - x^k} = 1 + x^k + x^{2k} + \cd
 Counting sums with or without order, partitions under a parity or size restriction, and compositions in disguise.
 
 ## Contest profile
-Three problems here, two AIME and one AMC 12, none solved by it alone. Typical uses count compositions in disguise and partitions under a parity or size restriction, alongside [[stars-and-bars|stars and bars]] and [[casework-method|casework]].
+Rare, on the AIME and the AMC 12, and never the whole solution. Typical uses count compositions in disguise and partitions under a parity or size restriction, alongside [[stars-and-bars|stars and bars]] and [[casework-method|casework]].
 `,
 
 "surjections": String.raw`
@@ -948,7 +948,7 @@ The counting formula comes from writing permutations down. List the $n$ elements
 Repeated application of a function or a shuffle, the order of a permutation, which arrangements a set of allowed swaps can reach, handshake rings and other arrangements that are cycle structures in disguise, and stepping around a ring of points.
 
 ## Contest profile
-Four problems here, all AIME, none solved by it alone, and three of them finish with [[casework-method|casework]] over cycle types. The standard shape counts the functions whose repeated application returns every element to itself, where the allowed cycle lengths are the divisors of the number of applications.
+An AIME topic, never the whole solution, and it usually finishes with [[casework-method|casework]] over cycle types. The standard shape counts the functions whose repeated application returns every element to itself, where the allowed cycle lengths are the divisors of the number of applications.
 
 Variations forbid every cycle shorter than some length or ask about stepping around a ring. At olympiad level the sign is the standard invariant for questions about which arrangements a set of swaps or moves can reach. [[derangements|Derangements]] ask about fixed points instead, [[burnsides-lemma|Burnside's Lemma]] averages over cycle structure, and counting by the number of cycles rather than their lengths is [[stirling-first-kind|Stirling numbers of the first kind]].
 `,
@@ -1101,7 +1101,7 @@ The count of successes is a sum of $n$ indicators, one per trial, each with mean
 Repeated coin flips, dice rolls, and any fixed number of identical independent attempts; exact counts, at-least counts, and the expected number of successes.
 
 ## Contest profile
-Five problems here, all AIME, two solved by it alone; the others add [[symmetry-probability|symmetry]], a [[generating-function-method|generating function]], or a [[bijection-method|bijection]]. AMC uses the plain formula on coins and dice, and AIME variants weight the coin, compare two binomial probabilities, or condition on the outcome.
+Spread across the AMC and the AIME, the whole solution about as often as not; harder versions add [[symmetry-probability|symmetry]], a [[generating-function-method|generating function]], or a [[bijection-method|bijection]]. AMC uses the plain formula on coins and dice, and AIME variants weight the coin, compare two binomial probabilities, or condition on the outcome.
 `,
 
 "expected-value": String.raw`
@@ -2014,7 +2014,7 @@ The denominator is the law of total probability. If the causes $A_i$ are disjoin
 Medical tests and other evidence, a coin or die that might be fair or biased, and populations split into groups with different rates.
 
 ## Contest profile
-Three problems here, all AIME, none solved by it alone, and each pairs it with conditional probability. The shapes are a coin or die that might be fair or biased, judged after a few outcomes; a population split into groups with different rates, where it helps to count $100$ people; and a lottery, the chance of the top prize given some prize.
+Mostly AIME, and always alongside conditional probability. The shapes are a coin or die that might be fair or biased, judged after a few outcomes; a population split into groups with different rates, where it helps to count $100$ people; and a lottery, the chance of the top prize given some prize.
 `,
 
 "generating-function-method": String.raw`
@@ -3342,7 +3342,7 @@ But each replacement turns a monomial into monomials of strictly lower total deg
 Lower bounds on sumsets modulo a prime, covering the points of a grid or a cube by hyperplanes, zero-sum results such as the Erdős–Ginzburg–Ziv Theorem, and choosing values from lists so that no forbidden sum or difference appears.
 
 ## Contest profile
-No problems here are tagged with it yet. An olympiad tool behind some of the hardest combinatorics and additive number theory problems, where a clever polynomial and one binomial coefficient replace a long case analysis.
+An olympiad tool behind some of the hardest combinatorics and additive number theory problems, where a clever polynomial and one binomial coefficient replace a long case analysis.
 `,
 "schurs-theorem": String.raw`
 ## Key forms
@@ -3366,7 +3366,7 @@ So it is enough that $N + 1$ vertices force a one-color triangle in $k$ colors, 
 Colorings of the integers with a condition on sums, sum-free sets, and showing a congruence like $x^n + y^n \equiv z^n \pmod p$ always has nonzero solutions for large primes.
 
 ## Contest profile
-No problems here are tagged with it yet. It appears in olympiad problems that color the integers and ask for a one-color sum, where the difference graph turns them into Ramsey problems.
+It appears in olympiad problems that color the integers and ask for a one-color sum, where the difference graph turns them into Ramsey problems.
 `,
 "pentagonal-number-theorem": String.raw`
 ## Key forms
@@ -3394,7 +3394,7 @@ Multiplying by the partition generating function $\frac{1}{(1 - x)(1 - x^2)\cdot
 Computing partition numbers, and identities between partitions into distinct parts with an even and an odd number of parts.
 
 ## Contest profile
-No problems here are tagged with it yet. An olympiad-level identity, quoted for the recurrence or proved by Franklin's bijection; on the AIME, partition counts small enough to need it are counted directly.
+An olympiad-level identity, quoted for the recurrence or proved by Franklin's bijection; on the AIME, partition counts small enough to need it are counted directly.
 `,
 "hook-length-formula": String.raw`
 ## Key forms
@@ -3418,7 +3418,7 @@ The proof checks that the hook formula satisfies this recurrence, which amounts 
 Counting standard Young tableaux, two-row and rectangular arrays filled increasingly along rows and columns, and ballot-type sequences.
 
 ## Contest profile
-No problems here are tagged with it yet. AIME problems that fill a small array increasingly along rows and columns can be counted by hand; the formula is the shortcut, and it is quoted on olympiads.
+AIME problems that fill a small array increasingly along rows and columns can be counted by hand; the formula is the shortcut, and it is quoted on olympiads.
 `,
 "round-robin-tournaments": String.raw`
 ## Distinguishing clues
