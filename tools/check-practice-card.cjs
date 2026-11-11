@@ -15,13 +15,15 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const heads=await page.locator('.sh-section > h3').allInnerTexts();assert.equal(heads[heads.indexOf('Practice a contest')+1],'Practice a card','it follows Practice a contest');
  assert.deepEqual(await form.locator('[data-card-kind]').allInnerTexts(),['Formula','Method','Pattern']);assert.equal(await form.locator('[type="submit"]').isDisabled(),true);
  assert.match(await page.locator('#card-band-note').innerText(),/^Difficulty is measured inside the card you choose/);
- // With nothing typed the most used formulas are offered, most problems first.
+ // Nothing is offered until something is typed; then the matching cards, most problems first.
  const input=page.locator('#card-practice-name'),opts=page.locator('#card-practice-options button');
- await input.click();assert.equal(await opts.count(),8);
- const counts=(await opts.locator('.practice-topic-context').allInnerTexts()).map(t=>parseInt(t));assert.deepEqual(counts,[...counts].sort((a,b)=>b-a));
- assert.equal(await opts.first().locator('.practice-topic-name').innerText(),'Pythagorean Theorem');
+ await input.click();assert.equal(await page.locator('#card-practice-options').isVisible(),false);assert.equal(await opts.count(),0);
+ await input.fill('e');assert.equal(await opts.count(),8);
+ const order=(await opts.locator('.practice-topic-context').allInnerTexts()).map(t=>parseInt(t));assert.deepEqual(order,[...order].sort((a,b)=>b-a));
+ await input.fill('');assert.equal(await page.locator('#card-practice-options').isVisible(),false);
  // Typing narrows by name; the keyboard chooses.
- await input.fill('pyth');assert((await opts.allInnerTexts()).every(t=>/pyth/i.test(t)));await input.press('ArrowDown');await input.press('ArrowUp');await input.press('Enter');
+ await input.fill('pyth');assert((await opts.allInnerTexts()).every(t=>/pyth/i.test(t)));assert.equal(await opts.first().locator('.practice-topic-name').innerText(),'Pythagorean Theorem');
+ const counts=(await opts.locator('.practice-topic-context').allInnerTexts()).map(t=>parseInt(t));await input.press('ArrowDown');await input.press('ArrowUp');await input.press('Enter');
  assert.equal(await input.inputValue(),'Pythagorean Theorem');assert.equal(await page.locator('#card-practice-options').isVisible(),false);
  const avail=parseInt(await page.locator('#card-practice-status').innerText());assert.equal(avail,counts[0]);assert.equal(await form.locator('[type="submit"]').isEnabled(),true);
  await page.locator('#card-band').fill('5');const note=await page.locator('#card-band-note').innerText();assert.match(note,/^Very hard for this card is an Elo rating of \d+ to \d+: one fifth of its problems/);
@@ -37,8 +39,8 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await fits();
  // Methods and patterns have their own lists; a card with few problems caps the count.
  await page.goto(base+'/#/practice');await form.waitFor();await page.locator('[data-card-kind="method"]').click();assert.equal(await input.getAttribute('placeholder'),'Search a method...');
- await input.click();assert.equal(await opts.first().locator('.practice-topic-name').innerText(),'Casework');
- await page.locator('[data-card-kind="pattern"]').click();await input.click();assert(await opts.count()>0);const pat=await opts.first().locator('.practice-topic-name').innerText();await opts.first().click();
+ await input.fill('case');assert.equal(await opts.first().locator('.practice-topic-name').innerText(),'Casework');
+ await page.locator('[data-card-kind="pattern"]').click();assert.equal(await input.inputValue(),'');await input.fill('a');assert(await opts.count()>0);const pat=await opts.first().locator('.practice-topic-name').innerText();await opts.first().click();
  assert.equal(await input.inputValue(),pat);assert.match(await page.locator('#card-practice-status').innerText(),/^\d+ matching problems? available\.$/);
  await page.locator('[data-card-kind="formula"]').click();await input.fill('hook');await opts.first().click();const n=parseInt(await page.locator('#card-practice-status').innerText());
  assert(n>=1&&n<30);assert.equal(await page.locator('#card-count').getAttribute('max'),String(n));

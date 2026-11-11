@@ -71,6 +71,11 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
    assert.equal(await alg.nth(1).innerText(),String(e.alg));assert.equal(await alg.nth(2).innerText(),b.algUsual);
   }
   const total=(await g.locator('.pp-table tbody td:nth-child(3)').allInnerTexts()).reduce((a,b)=>a+ +b,0);assert.equal(total,e.n,'subjects add up to the paper');
+  // The pie: a slice per subject on the paper, in the colour of that subject's row.
+  const present=(await g.locator('.pp-table tbody td:nth-child(3)').allInnerTexts()).filter(x=>+x>0).length;
+  assert.equal(await g.locator('.pp-pie path, .pp-pie circle').count(),present);assert.match(await g.locator('.pp-pie').getAttribute('aria-label'),/^Subjects: Algebra \d+/);
+  assert.equal(await g.evaluate(el=>{const row=[...el.querySelectorAll('.pp-table tbody tr')].find(r=>+r.children[2].textContent>0),dot=getComputedStyle(row.querySelector('.fam-dot')).backgroundColor,name=row.querySelector('a').textContent;
+   const slice=[...el.querySelectorAll('.pp-pie path, .pp-pie circle')].find(p=>p.querySelector('title').textContent.startsWith(name));return getComputedStyle(slice).fill===dot;}),true,'a slice and its row share a colour');
   // Over the years: a bar per sitting, this one picked out, with the drift in words.
   assert.equal(await g.locator('.py-bar').count(),e.sits);assert.equal(await g.locator('.py-bar.is-cur').count(),1);
   assert.match(await g.locator('.py-bar.is-cur').getAttribute('data-tip'),new RegExp('median paper rating '+e.sitMed+'$'));

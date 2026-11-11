@@ -3452,6 +3452,10 @@ div.hw-row { cursor: default; }
 .pf-stat:first-child { padding-left: 0; border-left: 0; }
 .pf-stat b { font-size: calc(22px * var(--tx)); font-weight: 800; line-height: 1.2; color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .pf-stat span { font-size: calc(12.5px * var(--tx)); color: var(--text-dim); }
+/* The odds tile: one line per contest, the odds in bold and the contest beside them. */
+.pf-odds { gap: 3px; justify-content: center; }
+.pf-stat.pf-odds .pf-odd { display: flex; align-items: baseline; gap: 7px; font-size: calc(12.5px * var(--tx)); color: var(--text-dim); white-space: nowrap; }
+.pf-stat.pf-odds .pf-odd b { font-size: calc(14.5px * var(--tx)); font-weight: 750; line-height: 1.25; }
 .pf-table { width: 100%; max-width: 640px; border-collapse: collapse; font-size: 0.93em; line-height: 1.35; font-variant-numeric: tabular-nums; }
 .pf-table th, .pf-table td { padding: 4px 0 4px 18px; text-align: right; white-space: nowrap; font-weight: 400; vertical-align: middle; color: var(--text); }
 .pf-table thead th { padding-top: 0; font-size: calc(12px * var(--tx)); font-weight: 600; color: var(--text-faint); }
@@ -4923,3 +4927,16 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 /* Practice a card: the kind chooser sits above the card search, as in Practice a contest. */
 #card-practice-form .rand-btns { margin-bottom: 2px; }
 #card-practice-form .practice-topic-context { margin-top: 1px; }
+
+/* The four subjects, one colour each wherever a chart splits by subject (the paper page's pie,
+   dots and bars). They borrow the app's own hues; the dark theme's values follow the tokens. */
+:root { --subj-alg: var(--c-formulas); --subj-cp: var(--c-patterns); --subj-geo: var(--c-methods); --subj-nt: var(--c-practice); }
+.pp-subjects { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.pp-subjects .pp-table { flex: 1 1 380px; min-width: 0; }
+.pp-pie { flex: none; width: 112px; height: 112px; }
+/* The dot hangs in the margin, so a subject name that wraps stays aligned under itself. */
+.pf-table.pp-table tbody th { position: relative; padding-left: 18px; }
+.pf-table.pp-table tbody th .fam-dot { position: absolute; left: 0; top: calc(4px + 0.675em - 4.5px); margin: 0; }
+.pp-pie path, .pp-pie circle { stroke: var(--bg); stroke-width: 1.5; }
+:root[data-theme="dark"] :is(.pp-pie, .pp-table .pf-meter i, .pp-table .fam-dot) { filter: saturate(1.05) brightness(0.86); }
+@media (max-width: 640px) { .pp-subjects { gap: 14px; } .pp-pie { width: 96px; height: 96px; } }
