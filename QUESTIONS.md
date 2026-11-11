@@ -8,6 +8,12 @@ A candidate card lists, under "Needed by", the problems whose routes would cite 
 
 P54–P63 and TQ6–TQ19 are settled. P64–P69 are pending; TQ20 is implemented following the owner’s request to fix the audited tree issues; the next available ids are P70 and TQ21. Approved/rejected rows and older proposals below are retained as the decision record; technical follow-ups are tracked in PLAN.md and TEXTBOOK-REVISION.md.
 
+### Role sentences that state a count (found 2026-11-11)
+
+The rebuilt Contest profile shows each card's real problem count beside its authored Role sentence, and 30 of the 40 sentences that open with a count ("Five problems here, four of them AIME...") no longer match the tags: Work Rates says 5 and has 30, Exponent Laws says 4 and has 53, Average Speed says 3 and has 35, Thales says 9 and has 31. The full list: `rational-root-theorem`, `coefficient-extraction`, `newtons-sums`, `conjugate-root-theorems`, `vertex-form`, `power-sums`, `exponent-laws`, `common-angle-values`, `product-sum`, `work-rates`, `average-speed`, `sum-zero-identities`, `absolute-value-rules`, `first-order-recurrence`, `triangular-numbers`, `circular-permutations`, `grid-paths`, `handshakes-diagonals`, `vandermonde`, `multinomial-theorem`, `burnsides-lemma`, `partitions`, `binomial-probability`, `thales-theorem`, `common-tangent-lengths`, `descartes-circle-theorem`, `circle-equation`, `rotation-90`, `radical-axis`, `isosceles-tetrahedron`.
+
+**Proposed:** rewrite the 40 sentences without numbers (the computed rows now carry every count), and add a gate to `tools/scan-conventions.py` so a Role sentence cannot state one. Answer: yes, or leave them.
+
 ### Topic-tree candidates from the tagging pass (T3; started 2026-11-06)
 
 A kind of problem the tree has no node for, seen in several problems (the archetype rule, `TOPIC-TREE.md`). The problems are filed under the nearest broader node meanwhile. Answer per row: add, merge into another node, or no. Newest rows first; the next is TQ21.
