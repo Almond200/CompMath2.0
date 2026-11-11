@@ -51,6 +51,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   // The chart: a bar per problem, opening it, with the usual rating marked.
   assert.equal(await g.locator('a.pq-bar').count(),e.n);assert.equal(await g.locator('.pq-col b').count(),e.n);
   assert.match(await g.locator('a.pq-bar').nth(2).getAttribute('href'),/^#\/problem\/[\w-]+-3$/);
+  assert.match(await g.locator('a.pq-bar').nth(2).getAttribute('data-tip'),new RegExp('^Problem 3: rated '+e.elos[2]+'; '));assert.equal(await g.locator('.pq-bar[title], .py-bar[title]').count(),0);
   // Compare with: the past ten papers by default (papers have grown harder), every year, or the
   // sitting before; the marks, the sentence and the Subjects column follow the choice.
   const chips=g.locator('[data-pp-base]');assert.equal(await g.locator('[data-pp-base][aria-pressed="true"]').getAttribute('data-pp-base'),'recent');
@@ -69,7 +70,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   const total=(await g.locator('.pp-table tbody td:nth-child(3)').allInnerTexts()).reduce((a,b)=>a+ +b,0);assert.equal(total,e.n,'subjects add up to the paper');
   // Over the years: a bar per sitting, this one picked out, with the drift in words.
   assert.equal(await g.locator('.py-bar').count(),e.sits);assert.equal(await g.locator('.py-bar.is-cur').count(),1);
-  assert.match(await g.locator('.py-bar.is-cur').getAttribute('title'),new RegExp('median paper rating '+e.sitMed+'$'));
+  assert.match(await g.locator('.py-bar.is-cur').getAttribute('data-tip'),new RegExp('median paper rating '+e.sitMed+'$'));
   const yw=await g.locator('.pp-sec').filter({has:page.locator('.py')}).locator('.pp-words').innerText();
   assert.match(yw,/points (harder|easier)\./);assert.match(yw,new RegExp('his paper is rated '+e.med+'\\.$'));
   if(e.twin)assert.match(yw,new RegExp('^Each bar is one sitting of the contest, with its (A and B|I and II) papers taken together\\..* averages '+e.sitMed+' over both papers; this paper is rated '));
@@ -88,6 +89,27 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  // A tile and a bar open the problem; a topic opens its page.
  await shown().locator('.pp-tiles .br-row').nth(4).click();await page.locator('.prob-chain').waitFor();assert.match(page.url(),/2025-amc-10b-5$/);await page.goBack();await page.locator('.ct-papers').waitFor();
  await shown().locator('.pp-areas .br-kid').first().click();await page.locator('.browse-topics').waitFor();
+ // Mock this paper opens Practice a contest with the contest and the paper already chosen.
+ await page.goBack();await page.locator('.ct-papers').waitFor();assert.equal(await page.locator('.ct-papers [aria-selected="true"]').innerText(),'AMC 10B');
+ assert.equal(await shown().locator('.pp-mock').innerText(),'Mock this paper');await shown().locator('.pp-mock').click();await page.locator('#mock-contest-form').waitFor();
+ assert.match(page.url(),/#\/practice$/);assert.equal(await page.locator('#mock-paper-name').inputValue(),'2025 AMC 10B');
+ assert.equal(await page.locator('[data-mock-family][aria-checked="true"]').innerText(),'AMC 10');assert.equal(await page.locator('[data-mock-mode][aria-checked="true"]').innerText(),'Past contest');
+ assert.equal(await page.locator('#mock-contest-form [type="submit"]').isEnabled(),true);assert.equal(await page.locator('#mock-contest-info').innerText(),'25 problems · 75 minutes');
+ await page.waitForFunction(()=>document.activeElement?.textContent==='Start mock');await page.waitForFunction(()=>{const r=document.getElementById('pr-mock').getBoundingClientRect();return r.top<innerHeight&&r.bottom>0;});
+ // Opened the ordinary way, the panel starts empty again.
+ await page.goto(base+'/#/problems/amc-8/2024');await page.locator('.pp-tiles').waitFor();await page.goto(base+'/#/practice');await page.locator('#mock-contest-form').waitFor();assert.equal(await page.locator('#mock-paper-name').inputValue(),'');
+ // The random picker says what a level means in Elo terms, for the contest chosen.
+ const fifth=(fam,k)=>{const xs=db.filter(p=>fam.test(p.paper)).map(p=>p.elo).sort((a,b)=>a-b);return [xs[Math.floor(k*xs.length/5)],xs[Math.max(Math.floor(k*xs.length/5),Math.floor((k+1)*xs.length/5)-1)]];};
+ assert.match(await page.locator('.rand-picker .rand-diff-note').innerText(),/^Difficulty goes by Elo rating: a higher rating means a harder problem\. Each level is a fifth of all the problems/);
+ await page.locator('[data-rand-fam="AMC 10"]').click();await page.locator('#rand-diff-range').fill('4');const [lo,hi]=fifth(/ AMC 10[AB]?$/,3);
+ assert.equal(await page.locator('.rand-picker .rand-diff-note').innerText(),`Hard is an Elo rating of ${lo} to ${hi}: one fifth of the AMC 10 problems, where a higher rating means a harder problem.`);
+ // Practice a topic measures a level inside the chosen topic, and says so.
+ assert.match(await page.locator('#topic-band-note').innerText(),/^Difficulty is measured inside the topic you choose/);
+ await page.locator('#topic-band').fill('4');assert.match(await page.locator('#topic-band-note').innerText(),/^Hard is one fifth of the chosen topic's problems by Elo rating.*Choose a topic/);
+ await page.locator('#practice-topic-name, [name="topic"]').first().fill('Geometry');await page.locator('.practice-topic-option').first().click();
+ const tn=await page.locator('#topic-band-note').innerText();assert.match(tn,/^Hard in this topic is an Elo rating of \d+ to \d+: one fifth of its problems/);
+ const [tlo,thi]=tn.match(/\d+/g).map(Number);assert(tlo<thi&&tlo>300&&thi<3800);
+ await fits();
  // A linked paper opens on that paper; a year with one paper has no toggle.
  await page.goto(base+'/#/problems/aime/2019/aime-ii');await page.locator('.ct-papers').waitFor();assert.equal(await page.locator('.ct-papers [aria-selected="true"]').innerText(),'AIME II');
  await paperIs(expected('2019 AIME II',/ AIME( I| II)?$/));await fits();
@@ -107,7 +129,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.deepEqual(await shown().locator('[data-pp-base]').evaluateAll(xs=>xs.map(x=>x.dataset.ppBase)),['all','recent','prev']);
  await page.goto(base+'/#/problems/amc-10/2000');await page.locator('.pp-tiles').waitFor();assert.equal(await page.locator('[data-pp-base]').count(),0);assert.equal(await page.locator('.pq-col b').count(),25,'still marked against all years');
  await page.goto(base+'/#/problems/amc-10/2001');await page.locator('.pp-tiles').waitFor();assert.deepEqual(await shown().locator('[data-pp-base]').evaluateAll(xs=>xs.map(x=>x.dataset.ppBase)),['all','prev']);
- await page.goto(base+'/#/problems/hmmt-february/2019');await page.locator('.pp-tiles').waitFor();assert.equal(await page.locator('[data-pp-base], .py, .pq-col b').count(),0);await fits();
+ await page.goto(base+'/#/problems/hmmt-february/2019');await page.locator('.pp-tiles').waitFor();assert.equal(await page.locator('[data-pp-base], .py, .pq-col b, .pp-mock').count(),0,'no yardsticks and no mock format for HMMT');await fits();
  assert.equal(await page.locator('.katex-error').count(),0);assert.deepEqual(errors,[]);
  console.log(theme,width,'paper toggle, plain tiles, figures, compare-with choices, difficulty by question, subjects, years and 2021: passed');await page.close();
 }

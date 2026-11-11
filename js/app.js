@@ -5373,8 +5373,16 @@
     let fam = "";
     const update = () => {
       const d = DIFFS[+range.value];
-      box.querySelector(".rand-diff-val").textContent = problemDifficulty.levels[+range.value].label;
-      range.setAttribute("aria-valuetext", problemDifficulty.levels[+range.value].label);
+      const level = problemDifficulty.levels[+range.value].label;
+      box.querySelector(".rand-diff-val").textContent = level;
+      range.setAttribute("aria-valuetext", level);
+      // What a level means in Elo terms (owner, 2026-11-11): the ratings it covers for the
+      // chosen contest, drawn from the same pool and the same fifths the draw itself uses.
+      const scope = fam ? `the ${fam} problems` : "all the problems";
+      const elos = d ? problemDifficulty.filter(PROBLEM_DB.filter(p => !fam || p.fam === fam), d).map(p => p.elo) : [];
+      box.querySelector(".rand-diff-note").textContent = elos.length
+        ? `${level} is an Elo rating of ${Math.min(...elos)} to ${Math.max(...elos)}: one fifth of ${scope}, where a higher rating means a harder problem.`
+        : `Difficulty goes by Elo rating: a higher rating means a harder problem. Each level is a fifth of ${scope}, from the lowest rated to the highest.`;
       go.href = "#/special/randomproblem" + (fam ? "/" + encodeURIComponent(fam) : "") + (d ? "/" + d : "");
     };
     box.querySelectorAll("[data-rand-fam]").forEach(b => b.addEventListener("click", () => {
@@ -5490,8 +5498,19 @@
         topicPracticeSet=practiceSessions.createMock(label,plan.problems.map(p=>p.slug),mock);savePractice();location.hash='#/practice/set/'+topicPracticeSet.id;
       }catch(err){status.textContent=err.message;}finally{busy=false;form.querySelector('fieldset').disabled=false;submit.disabled=false;}
     });
-    setFamily(family);
+    // Arriving from a paper's "Mock this paper" button: its contest and paper are already
+    // chosen, so Start mock is one press away.
+    if (mockPreset && mockContests.formats[mockPreset.family] && catalog.some(g => g.label === mockPreset.label)) {
+      setFamily(mockPreset.family); input.value = mockPreset.label; update();
+      setTimeout(() => { if (submit.isConnected) submit.focus({ preventScroll: true }); }, 0);
+    } else setFamily(family);
+    mockPreset = null;
   }
+  let mockPreset = null;
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a[data-mock-preset]");
+    if (a) mockPreset = { family: a.dataset.mockPresetFamily, label: a.dataset.mockPreset };
+  }, true);
   let topicPracticeSet = null, practiceSaveTimer = 0, practiceSaveFailed = false;
   function schedulePracticeSave() { clearTimeout(practiceSaveTimer); practiceSaveTimer = setTimeout(savePractice, 120); }
   function savePractice() {
@@ -5756,6 +5775,13 @@
       form.querySelector("#topic-count-value").textContent = count.value;
       form.querySelector("#topic-band-value").textContent = difficultyLabel();
       difficulty.setAttribute("aria-valuetext", difficultyLabel());
+      // Here a level is measured inside the chosen topic, not across a contest (owner,
+      // 2026-11-11: say so, since it works differently from the random picker).
+      const level = difficulty.valueAsNumber ? difficultyLabel() : "", rated = level && match ? pool.map(p => p.elo).filter(Number.isFinite) : [];
+      form.querySelector("#topic-band-note").textContent = rated.length
+        ? `${level} in this topic is an Elo rating of ${Math.min(...rated)} to ${Math.max(...rated)}: one fifth of its problems, where a higher rating means a harder problem.`
+        : level ? `${level} is one fifth of the chosen topic's problems by Elo rating, where a higher rating means a harder problem. Choose a topic to see the ratings it covers.`
+        : "Difficulty is measured inside the topic you choose: each level is a fifth of that topic's problems by Elo rating, so Hard in an easy topic is rated lower than Hard in a difficult one.";
       status.textContent = match ? pool.length + " matching problem" + (pool.length === 1 ? "" : "s") + " available" + (match.children.length ? ", including subtopics." : ".")
         : topic.value.trim() ? "Choose a topic from the suggestions." : "";
       form.querySelector("button[type=submit]").disabled = generating || !pool.length;
@@ -5885,6 +5911,7 @@
               <input type="range" id="rand-diff-range" min="0" max="5" step="1" value="0">
               <span class="rand-diff-val">Any</span>
             </div>
+            <p class="rand-diff-note" aria-live="polite"></p>
             <a class="hp-btn rand-go" href="#/special/randomproblem">Open a random problem</a>
         </section>
         <section class="sh-section" id="pr-topic">
@@ -5898,6 +5925,7 @@
               <input id="topic-count" type="range" name="count" min="1" max="30" value="5"><output id="topic-count-value" for="topic-count">5</output></div>
             <div class="rand-diff"><label for="topic-band">Difficulty</label>
               <input id="topic-band" type="range" name="difficulty" min="0" max="5" value="0"><output id="topic-band-value" for="topic-band">Any</output></div>
+            <p class="rand-diff-note" id="topic-band-note" aria-live="polite"></p>
             <p id="topic-practice-status" role="status"></p>
             <button type="submit" class="hp-btn">Generate set</button>
           </fieldset></form>
@@ -8858,9 +8886,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // against a chosen yardstick, the contest's median rating sitting by sitting, and its topics.
   function paperInfoHtml(fam, ps) {
     const rated = ps.filter(p => Number.isFinite(p.elo));
-    const sec = (title, body) => `<section class="pp-sec"><h3 class="pp-h">${title}</h3>${body}</section>`;
+    const sec = (title, body, action = "") => `<section class="pp-sec">${action ? `<div class="pp-head"><h3 class="pp-h">${title}</h3>${action}</div>` : `<h3 class="pp-h">${title}</h3>`}${body}</section>`;
+    // A complete paper with an answer key can be sat as a timed mock: the button opens
+    // Practice a contest with this paper already chosen (owner, 2026-11-11).
+    const mockable = mockPapers().find(g => g.label === paperKey(ps[0])), fmt = mockable && mockContests.formats[fam];
+    const mock = fmt ? `<a class="hp-btn hp-btn-soft pp-mock" href="#/practice" data-goto="pr-mock" data-mock-preset="${escapeAttr(mockable.label)}" data-mock-preset-family="${escapeAttr(fam)}" title="${fmt.count} problems, ${fmt.minutes} minutes">Mock this paper</a>` : "";
     const tiles = `<div class="br-list pp-tiles">${ps.map(p => `<a class="br-row" href="#/problem/${p.slug}"><span class="br-ref">Problem ${p.num}</span>${Number.isFinite(p.elo) ? `<span class="br-elo">${p.elo}</span>` : ""}</a>`).join("")}</div>`;
-    if (!rated.length) return sec("Problems", tiles);
+    if (!rated.length) return sec("Problems", tiles, mock);
     const papers = famPapers(fam), bases = paperBases(fam, ps);
     const base = bases.find(x => x.id === paperBase) || bases.find(x => x.id === "recent") || bases[0] || null, cmp = base ? paperBaseline(base.papers) : null;
     const elos = rated.map(p => p.elo).sort((x, y) => x - y), med = quantile(elos, 0.5);
@@ -8889,7 +8921,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const bars = ps.map(p => {
       const u = cmp ? cmp.usual[p.num] : null;
       if (!Number.isFinite(p.elo)) return `<span class="pq-bar"><span class="pq-n">${p.num}</span></span>`;
-      return `<a class="pq-bar" href="#/problem/${p.slug}" title="Problem ${p.num}: rated ${p.elo}${u ? `; ${base.label}: ${u}` : ""}" aria-label="Problem ${p.num}, rated ${p.elo}${u ? `, against ${u}` : ""}"><span class="pq-col"><i style="height:${(p.elo / top * 100).toFixed(1)}%"></i>${u ? `<b style="bottom:${(u / top * 100).toFixed(1)}%"></b>` : ""}</span><span class="pq-n">${p.num}</span></a>`;
+      return `<a class="pq-bar" href="#/problem/${p.slug}" data-tip="Problem ${p.num}: rated ${p.elo}${u ? `; ${base.label}: ${u}` : ""}" aria-label="Problem ${p.num}, rated ${p.elo}${u ? `, against ${u}` : ""}"><span class="pq-col"><i style="height:${(p.elo / top * 100).toFixed(1)}%"></i>${u ? `<b style="bottom:${(u / top * 100).toFixed(1)}%"></b>` : ""}</span><span class="pq-n">${p.num}</span></a>`;
     }).join("");
     const off = cmp ? rated.filter(p => cmp.usual[p.num]).map(p => ({ p, d: p.elo - cmp.usual[p.num] })).filter(x => Math.abs(x.d) >= 300).sort((x, y) => Math.abs(y.d) - Math.abs(x.d)) : [];
     const listed = xs => { const t = xs.slice(0, 4).map(x => `<a href="#/problem/${x.p.slug}">#${x.p.num}</a> (${signed(x.d)})`); return t.length < 3 ? t.join(" and ") : `${t.slice(0, -1).join(", ")} and ${t[t.length - 1]}`; };
@@ -8925,7 +8957,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const first = per.slice(0, Math.min(5, per.length >> 1)), last = per.slice(-first.length);
       const drift = mean(last) - mean(first);
       years = sec("Over the years", `<div class="py-plot"><span class="py-axis" aria-hidden="true"><em>${yTop}</em><em>${yLow}</em></span><div class="py" style="--pq:${famColor(fam)}">${per.map(x =>
-        `<a class="py-bar${x.s === sit ? " is-cur" : ""}" href="#/problems/${famSlug(fam)}/${x.year}" title="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}: median paper rating ${x.med}" aria-label="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}, median paper rating ${x.med}"${x.s === sit ? ' aria-current="true"' : ""}><span class="py-col"><i style="height:${((x.med - yLow) / (yTop - yLow) * 100).toFixed(1)}%"></i></span><span class="py-n">${String(x.year).slice(2)}${x.s % 10 === 2 ? "F" : x.s % 10 === 1 ? "S" : ""}</span></a>`).join("")}</div></div>
+        `<a class="py-bar${x.s === sit ? " is-cur" : ""}" href="#/problems/${famSlug(fam)}/${x.year}" data-tip="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}: median paper rating ${x.med}" aria-label="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}, median paper rating ${x.med}"${x.s === sit ? ' aria-current="true"' : ""}><span class="py-col"><i style="height:${((x.med - yLow) / (yTop - yLow) * 100).toFixed(1)}%"></i></span><span class="py-n">${String(x.year).slice(2)}${x.s % 10 === 2 ? "F" : x.s % 10 === 1 ? "S" : ""}</span></a>`).join("")}</div></div>
         <p class="pp-words">${pair ? `Each bar is one sitting of the contest, with its ${pair} taken together. ` : ""}The median ${escapeAttr(fam)} paper was rated ${mean(first)} in ${sitSpan(first.map(x => x.s))} and ${mean(last)} in ${sitSpan(last.map(x => x.s))}: ${drift === 0 ? "no change" : `${Math.abs(drift)} points ${drift > 0 ? "harder" : "easier"}`}. ${cur.n > 1 ? `${sitLabel(sit)} averages ${cur.med} over ${both(cur.n)}; this paper is rated ${med}.` : `This paper is rated ${med}.`}</p>`);
     }
 
@@ -8934,7 +8966,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     ps.forEach(p => new Set(p.tree.filter(t => TOPIC_NODES.has(t)).map(t => { const path = topicPath(t); return path[Math.min(1, path.length - 1)].id; })).forEach(id => { areas[id] = (areas[id] || 0) + 1; }));
     const areaIds = Object.keys(areas).sort((x, y) => areas[y] - areas[x] || TOPIC_NODES.get(x).order - TOPIC_NODES.get(y).order);
     const topics = areaIds.length ? sec("Topics", `<div class="br-kids pp-areas">${areaIds.map(id => `<a class="br-kid" href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}<span class="br-count">${areas[id]}</span></a>`).join("")}</div>`) : "";
-    return stats + sec("Problems", tiles) + curve + subjects + years + topics;
+    return stats + sec("Problems", tiles, mock) + curve + subjects + years + topics;
   }
   // Choosing what to compare with redraws the page in place.
   document.addEventListener("click", e => {
@@ -9190,8 +9222,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const label = `${on} problem${on === 1 ? "" : "s"}`, col = `<span style="height:${n ? Math.max(1.5, n / max * 100).toFixed(1) : 0}%">${segs}</span>`;
       // A chart of some other pool (a card's problems) is a picture: its bars do not open the
       // range's page, which lists every problem in the range.
-      if (!links) return `<span class="elo-bar" title="${b}–${b + ELO_BIN - 1}: ${label}">${col}</span>`;
-      return `<a class="elo-bar${cur === b ? " is-cur" : ""}" href="#/browse/difficulty/${b}" aria-label="${label} rated ${b} to ${b + ELO_BIN - 1}" title="${b}–${b + ELO_BIN - 1}: ${label}"${selected === b ? ' aria-current="true"' : ""}><span style="height:${n ? Math.max(1.5, n / max * 100).toFixed(1) : 0}%">${segs}</span></a>`;
+      // The whole column answers the pointer, not only the drawn bar, so hovering it tints the
+      // column and shows its range and count at once (`data-tip`, drawn by CSS; the browser's
+      // own tooltip came late and lingered over the wrong column). A column with no problems
+      // is not a link and shows nothing: there is nothing there to open (owner, 2026-11-11).
+      const tip = `${b}–${b + ELO_BIN - 1}: ${label}`, here = `${cur === b ? " is-cur" : ""}"${selected === b ? ' aria-current="true"' : ""}`;
+      if (!on) return `<span class="elo-bar is-empty${here}>${col}</span>`;
+      if (!links) return `<span class="elo-bar" data-tip="${tip}">${col}</span>`;
+      return `<a class="elo-bar${here} href="#/browse/difficulty/${b}" aria-label="${label} rated ${b} to ${b + ELO_BIN - 1}" data-tip="${tip}">${col}</a>`;
     }).join("");
     const line = mark != null ? `<span class="elo-mark" style="left:${((Math.min(ELO_HI, Math.max(ELO_LO, mark)) - ELO_LO) / span * 100).toFixed(2)}%"></span>` : "";
     const ticks = [200, 1000, 1800, 2600, 3400].map(t => `<span style="left:${((t - ELO_LO) / span * 100).toFixed(2)}%">${t}</span>`).join("");
