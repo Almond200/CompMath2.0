@@ -4680,86 +4680,137 @@ dialog.app-confirm { inset-block: 0 12vh; }
 
 /* ---------- How this problem works in sections (owner, 2026-11-11) ---------- */
 /* Topic, Difficulty, Brief solution and Study a concept more, each under a hairline and a heading
-   styled like Study a concept more. The first sits straight under the box's own heading. */
-.chain-body > .chain-sec:first-child, .practice-explanation > .chain-sec:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+   styled like Study a concept more. Topic and Difficulty share the first row on a wide page. */
 .chain-sec { margin-top: 14px; padding-top: 12px; }
-.chain-sec .chain-strategy:last-child, .chain-sec > :last-child { margin-bottom: 0; }
-/* Topic: the problem's place in the tree, drawn as small elbow arrows from each subject down to
-   the topic it is filed under. A second subject gets a second tree below the first. */
-.ptree { display: flex; flex-direction: column; gap: 12px; }
-.ptree-list { list-style: none; margin: 0; padding: 0 0 0 22px; }
-.ptree-list li { position: relative; padding: 8px 0 0 26px; }
-.ptree-list li::before { content: ""; position: absolute; left: 0; top: 0; width: 18px; height: 23px;
-  border-left: 1.5px solid var(--text-faint); border-bottom: 1.5px solid var(--text-faint); border-bottom-left-radius: 4px; }
-.ptree-list li::after { content: ""; position: absolute; left: 13px; top: 18.5px; width: 6px; height: 6px;
-  border-top: 1.5px solid var(--text-faint); border-right: 1.5px solid var(--text-faint); transform: rotate(45deg); }
-/* Siblings share one stem: every item but the last continues the line down past its elbow. */
-.ptree-list li:not(:last-child)::before { height: 100%; border-bottom-left-radius: 0; }
-.ptree-list li:not(:last-child) > .ptree-node::before { content: ""; position: absolute; left: 0; top: 23px; width: 18px; border-top: 1.5px solid var(--text-faint); }
-.ptree-node { display: inline-block; padding: 5px 11px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card);
-  color: var(--text); font-size: calc(13.5px * var(--tx)); font-weight: 550; text-decoration: none; line-height: 1.35; }
+.chain-sec > :last-child { margin-bottom: 0; }
+.chain-duo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 28px; }
+.chain-duo > .chain-sec { margin-top: 0; padding-top: 0; border-top: 0; }
+.chain-duo > .chain-sec + .chain-sec { padding-left: 28px; border-left: 1px solid var(--border); }
+@media (max-width: 900px) {
+  .chain-duo { grid-template-columns: 1fr; }
+  .chain-duo > .chain-sec + .chain-sec { margin-top: 14px; padding: 12px 0 0; border-left: 0; border-top: 1px solid var(--border); }
+}
+/* Topic: the problem's place in the tree. Each step down hangs from a stem under its parent and
+   ends in one drawn elbow (corner and arrowhead in a single SVG), level with the first line of
+   its box. A second subject gets a second tree below the first. */
+.ptree { display: flex; flex-direction: column; gap: 10px; font-size: calc(13px * var(--tx)); }
+.ptree-list { list-style: none; margin: 0; padding: 0 0 0 14px; }
+.ptree-list li { position: relative; padding: 6px 0 0 24px; }
+.ptree-list li::before { content: ""; position: absolute; left: 0; top: 0; width: 1.5px; height: calc(1px + 0.975em); background: var(--text-faint); }
+.ptree-list li:not(:last-child)::before { height: 100%; }
+.ptree-elbow { position: absolute; left: 0; top: calc(1px + 0.975em); fill: none; stroke: var(--text-faint); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.ptree-node { display: inline-block; padding: 0.3em 0.75em; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card);
+  color: var(--text); font-weight: 550; text-decoration: none; line-height: 1.35; }
 .ptree-node:hover { border-color: var(--space, var(--accent)); color: var(--space, var(--accent)); }
-.ptree-root { font-weight: 750; }
+.ptree-root { font-weight: 700; }
 .ptree-node.is-filed { border-color: var(--space, var(--accent)); background: var(--space-soft, var(--bg-panel)); color: var(--space, var(--accent)); font-weight: 700; }
-/* Difficulty: the rating, a line saying where it sits, and the chart of its contest's ratings. */
+/* Difficulty: the rating, a line saying where it sits, and the chart. */
 .elo-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 0 0 8px; }
 .elo-num { font-size: calc(22px * var(--tx)); font-weight: 800; color: var(--text); font-variant-numeric: tabular-nums; }
 .elo-note { font-size: 13px; color: var(--text-dim); }
-.elo-chart { position: relative; margin: 4px 0 2px; }
-.elo-bars { position: relative; display: flex; align-items: flex-end; gap: 3px; height: 120px; padding: 0 0 1px; border-bottom: 1px solid var(--border); }
-.elo-chart.is-compact .elo-bars { height: 84px; }
-.elo-bar { flex: 1; height: 100%; display: flex; align-items: flex-end; border-radius: 4px 4px 0 0; }
-.elo-bar span { display: block; width: 100%; height: var(--h); min-height: 2px; border-radius: 4px 4px 0 0;
-  background: color-mix(in srgb, var(--space, var(--accent)) 30%, transparent); }
-.elo-bar:hover span { background: color-mix(in srgb, var(--space, var(--accent)) 55%, transparent); }
-.elo-bar.is-cur span { background: var(--space, var(--accent)); }
-.elo-mark { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--text); border-radius: 1px; pointer-events: none; }
-.elo-ticks { position: relative; height: 18px; font-size: 11px; color: var(--text-faint); font-variant-numeric: tabular-nums; }
-.elo-ticks span { position: absolute; top: 3px; transform: translateX(-50%); }
-.elo-ticks span:first-child { transform: none; }
-.elo-fams { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
-.elo-fam { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px; border: 1px solid var(--border); border-radius: 999px;
-  background: var(--bg-card); color: var(--text-dim); font: inherit; font-size: 13px; font-weight: 650; cursor: pointer; text-decoration: none; }
-.elo-fam:hover { border-color: var(--space, var(--accent)); color: var(--space, var(--accent)); }
-.elo-fam[aria-pressed="true"] { background: var(--space-soft, var(--bg-panel)); border-color: var(--space, var(--accent)); color: var(--space, var(--accent)); }
+.elo-chart { position: relative; }
+.elo-bars { position: relative; display: flex; align-items: flex-end; gap: 3px; height: 190px; border-bottom: 1px solid var(--border); }
+.elo-chart.is-compact .elo-bars { height: 76px; gap: 2px; }
+.elo-bar { position: relative; flex: 1; height: 100%; display: flex; align-items: flex-end; }
+.elo-bar > span { display: flex; flex-direction: column-reverse; width: 100%; border-radius: 4px 4px 0 0; overflow: hidden; }
+.elo-bar i { display: block; min-height: 0; }
+/* The chosen range (or the problem's own) stays in full colour; the rest step back. */
+.elo-chart.has-cur .elo-bar:not(.is-cur) > span { opacity: 0.5; }
+.elo-chart.has-cur .elo-bar:not(.is-cur):hover > span { opacity: 0.8; }
+.elo-bar[aria-current]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 3px; border-radius: 2px; background: var(--text); }
+.elo-mark { position: absolute; top: -4px; bottom: 0; width: 2px; margin-left: -1px; background: var(--text); border-radius: 1px; pointer-events: none; }
+.elo-ticks { position: relative; height: 22px; font-size: 11px; color: var(--text-faint); font-variant-numeric: tabular-nums; }
+.elo-ticks span { position: absolute; top: 8px; }
+.elo-chart.is-compact .elo-ticks { height: 18px; }
+.elo-chart.is-compact .elo-ticks span { top: 4px; }
+.elo-box .elo-plot { max-width: 520px; }
+/* Contest chips: a coloured dot and the contest's name. On the browse pages a chip switches its
+   contest on and off; under a problem's chart it chooses the contest to compare with. */
+.fam-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.fam-chip { display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 11px; border: 1px solid var(--border); border-radius: 999px;
+  background: var(--bg-card); color: var(--text); font: inherit; font-size: 12.5px; font-weight: 650; cursor: pointer; }
+.fam-chip:hover { border-color: var(--text-faint); }
+.fam-chip[aria-pressed="false"] { color: var(--text-faint); background: transparent; }
+.fam-chip[aria-pressed="false"] .fam-dot { background: var(--border) !important; }
+.fam-dot { width: 9px; height: 9px; border-radius: 3px; flex: none; }
+.elo-box .fam-chips { margin-top: 8px; }
+.elo-box .fam-chip { height: 26px; padding: 0 10px; font-size: 12px; }
+.elo-box .fam-chip[aria-pressed="true"] { border-color: var(--space, var(--accent)); background: var(--space-soft, var(--bg-panel)); color: var(--space, var(--accent)); }
 
-/* Contests: Browse by topic and Browse by difficulty, above the first contest's years. */
-.ct-browse { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
-.ct-browse-btn { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 16px; border-radius: 999px;
-  background: var(--space-soft, var(--bg-panel)); color: var(--space, var(--accent)); font-size: 14px; font-weight: 700; text-decoration: none; }
-.ct-browse-btn:hover { filter: brightness(1.08); }
-.ct-browse-btn svg { width: 15px; height: 15px; }
+/* Contests: Browse by topic and Browse by difficulty, two quiet outlined pills over the papers. */
+.ct-browse { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+.ct-browse-btn { display: inline-flex; align-items: center; height: 30px; padding: 0 13px; border: 1px solid var(--border); border-radius: 999px;
+  background: var(--bg-card); color: var(--text); font-size: 13px; font-weight: 650; text-decoration: none; }
+.ct-browse-btn:hover { border-color: var(--space, var(--accent)); color: var(--space, var(--accent)); background: var(--space-soft, var(--bg-panel)); }
+
 /* The browse pages. */
-.br-switch { display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 6px; }
-.br-switch-btn { padding: 6px 13px; border-radius: 999px; font-size: 13px; font-weight: 700; color: var(--text-dim); text-decoration: none; border: 1px solid var(--border); background: var(--bg-card); }
-.br-switch-btn:hover { color: var(--space, var(--accent)); border-color: var(--space, var(--accent)); }
-.br-switch-btn.is-cur { background: var(--space-soft, var(--bg-panel)); color: var(--space, var(--accent)); border-color: var(--space, var(--accent)); }
-.browse-page .card-name { margin-top: 10px; }
-.br-count { color: var(--text-faint); font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
-.br-subjects { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
-.br-subject { border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); padding: 0 16px; }
-.br-subject > summary { display: flex; align-items: baseline; gap: 10px; padding: 13px 0; cursor: pointer; list-style: none; }
-.br-subject > summary::-webkit-details-marker { display: none; }
-.br-subject > summary::before { content: "▸"; color: var(--text-faint); transition: transform .15s; }
-.br-subject[open] > summary::before { transform: rotate(90deg); }
-.br-subject-name { font-size: 16px; font-weight: 750; color: var(--text); }
-.br-outline, .br-outline ul { list-style: none; margin: 0; padding-left: 18px; border-left: 1px solid var(--border); }
-.br-outline { margin: 0 0 10px 4px; }
-.br-outline li { padding: 3px 0; font-size: calc(14px * var(--tx)); }
-.br-outline a { color: var(--text); text-decoration: none; }
-.br-outline a:hover { color: var(--space, var(--accent)); text-decoration: underline; }
-.br-open { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 14px; font-size: 13.5px; font-weight: 700; color: var(--space, var(--accent)); text-decoration: none; }
-.br-open svg { width: 14px; height: 14px; }
-.br-crumbs { margin: 8px 0 0; font-size: 13px; color: var(--text-faint); }
+.br-count { margin-left: 6px; color: var(--text-faint); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.browse-page .detail-head { margin-bottom: 6px; }
+.browse-page .practice-panel-intro { max-width: 760px; }
+/* Problems by topic: the tree in a rail that stays beside the page, the chosen topic beside it. */
+.browse-topics { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 10px; }
+.tt { position: sticky; top: calc(var(--topbar-h) + 12px); max-height: calc(100vh - var(--topbar-h) - 24px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+  padding: 12px 8px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
+.tt-h { padding: 0 8px 8px; font-size: 10.5px; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); }
+.tt-list, .tt-list ul { list-style: none; margin: 0; padding: 0; }
+.tt-row { display: flex; align-items: center; min-height: 30px; padding: 0 8px 0 calc(2px + var(--d) * 14px); border-radius: 8px; }
+.tt-row:hover { background: var(--bg-panel); }
+.tt-row.is-cur { background: var(--space-soft); }
+.tt-row.is-cur .tt-name { color: var(--space); font-weight: 700; }
+.tt-tw { width: 22px; height: 22px; flex: none; display: inline-flex; align-items: center; justify-content: center; padding: 0; border: 0; border-radius: 6px; background: none; color: var(--text-faint); cursor: pointer; }
+button.tt-tw:hover { background: var(--border); color: var(--text); }
+.tt-tw svg { width: 12px; height: 12px; transition: transform 0.12s; }
+.tt-tw[aria-expanded="true"] svg { transform: rotate(90deg); }
+.tt-name { flex: 1; min-width: 0; padding: 5px 4px; font-size: 13.5px; line-height: 1.3; color: var(--text); text-decoration: none; }
+.tt-list > li > .tt-row .tt-name { font-weight: 750; }
+.tt-mobile-btn { display: none; }
+.br-crumbs { margin: 0 0 8px; font-size: 13px; color: var(--text-faint); }
 .br-crumbs a { color: var(--accent); text-decoration: none; }
 .br-crumbs a:hover { text-decoration: underline; }
-.br-kids { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 6px; }
-.br-kid { display: inline-flex; align-items: baseline; gap: 6px; padding: 5px 11px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); color: var(--text); font-size: 13.5px; font-weight: 600; text-decoration: none; }
+.br-subjects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: start; margin-top: 16px; }
+@media (max-width: 1100px) { .br-subjects { grid-template-columns: 1fr; } }
+.br-subject { padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
+.br-subject h3 { margin: 0 0 8px; font-size: 16px; font-weight: 750; display: flex; align-items: baseline; }
+.br-subject h3 a { color: var(--text); text-decoration: none; }
+.br-subject ul { list-style: none; margin: 0; padding: 0; }
+.br-subject li { display: flex; align-items: baseline; padding: 4px 0; border-top: 1px solid var(--border); font-size: 14px; }
+.br-subject li a { color: var(--text); text-decoration: none; }
+.br-subject a:hover { color: var(--space, var(--accent)); text-decoration: underline; }
+.br-subject .br-count { margin-left: auto; padding-left: 10px; white-space: nowrap; }
+.br-kids { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 12px 0 14px; }
+.br-kids-l { margin-right: 4px; font-size: 10.5px; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); }
+.br-kid { display: inline-flex; align-items: baseline; padding: 4px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); color: var(--text); font-size: 13px; font-weight: 600; text-decoration: none; }
 .br-kid:hover { border-color: var(--space, var(--accent)); color: var(--space, var(--accent)); }
-.br-range { margin: 18px 0 8px; font-size: 15px; display: flex; align-items: baseline; gap: 10px; }
-.br-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 6px; margin: 10px 0 12px; }
-.br-row { display: flex; align-items: baseline; gap: 8px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); color: var(--text); text-decoration: none; min-width: 0; }
-.br-row:hover { border-color: var(--space, var(--accent)); }
-.br-ref { font-weight: 650; font-size: 14px; white-space: nowrap; }
-.br-topic { flex: 1; min-width: 0; font-size: 12.5px; color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.br-elo { margin-left: auto; font-size: 12.5px; font-weight: 700; color: var(--text-faint); font-variant-numeric: tabular-nums; }
+/* Problems, grouped by contest. */
+.br-group { margin-top: 20px; }
+.br-group-h { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; padding-bottom: 7px; border-bottom: 1px solid var(--border); font-size: 15px; font-weight: 750; }
+.br-group-h .fam-dot { width: 10px; height: 10px; }
+.br-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(205px, 1fr)); gap: 6px; }
+.br-row { display: flex; align-items: baseline; gap: 8px; padding: 7px 11px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); color: var(--text); text-decoration: none; min-width: 0; }
+.br-row:hover { border-color: var(--space, var(--accent)); color: var(--space, var(--accent)); }
+.br-ref { font-weight: 650; font-size: 13.5px; white-space: nowrap; }
+.br-elo { margin-left: auto; font-size: 12px; font-weight: 650; color: var(--text-faint); font-variant-numeric: tabular-nums; }
+.br-group .ct-toggle { margin-top: 8px; }
+/* Problems by difficulty: the chart in its own panel, then the chosen range with steps either way. */
+.elo-panel { margin-top: 14px; padding: 14px 18px 8px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
+.elo-panel .fam-chips { margin-bottom: 18px; }
+.br-band { display: flex; align-items: center; gap: 6px; margin: 22px 0 0; }
+.br-band-h { margin: 0 4px; font-size: 17px; font-weight: 780; font-variant-numeric: tabular-nums; }
+.br-step { width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); color: var(--text); }
+.br-step:hover { border-color: var(--space, var(--accent)); color: var(--space, var(--accent)); }
+.br-step.is-off { opacity: 0.35; }
+.br-step svg { width: 13px; height: 13px; }
+@media (max-width: 860px) {
+  /* On a narrow page the tree is the index page itself; once a topic is chosen it folds away
+     behind "All topics", which opens it above the topic. */
+  .browse-topics { display: flex; flex-direction: column; gap: 12px; }
+  .tt { position: static; max-height: none; display: none; }
+  .browse-topics.rail-open .tt, .browse-topics.is-index .tt { display: block; }
+  .browse-topics.is-index .browse-main { order: -1; }
+  .browse-topics.is-index .br-subjects { display: none; }
+  .browse-topics:not(.is-index) .tt-mobile-btn { display: inline-block; align-self: flex-start; margin: 0; }
+  .tt-row { min-height: 38px; }
+  .br-band { flex-wrap: wrap; }
+  .br-band-h { font-size: 16px; white-space: nowrap; }
+  .br-band .br-count { flex-basis: 100%; margin: 2px 0 0; }
+}
