@@ -26,8 +26,9 @@ assert.equal(index.resolve('Similar triangles'), null, 'ambiguous names require 
 assert.equal(index.resolve('Geometry › Triangles › Similar triangles').id, 'geo.old.sim');
 assert.equal(index.search('similar triangles')[0].label, 'Similar triangles');
 assert.equal(index.search('geometry parallel')[0].id, 'geo.old.parallel');
-assert.deepEqual(index.search('').map(n => n.id), ['geo']);
-assert.equal(index.resolve('Mixed'), null);
+assert.deepEqual(index.search('').map(n => n.id), ['mixed', 'geo']);
+assert.equal(index.resolve('Mixed').id, 'mixed');
+assert.equal(index.nodes.get('mixed').problems.length, 7, 'Mixed draws every eligible problem once');
 assert.equal(index.resolve('Heron formula'), null, 'card labels are not topic options');
 assert.equal(label(String.raw`Denesting $\sqrt{a+\sqrt b}$`), 'Denesting √(a+√b)');
 const ambiguous = build(tree, [
