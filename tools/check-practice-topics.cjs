@@ -15,7 +15,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  async function select(query,id,keyboard=false){await field.fill(query);const option=page.locator(`[data-topic-id="${id}"]`);await option.waitFor();if(keyboard){assert.equal(await options.locator('button').first().getAttribute('data-topic-id'),id);await field.press('Enter');}else await option.click();assert.equal(await field.getAttribute('aria-expanded'),'false');}
  async function home(){await page.evaluate(()=>location.hash='#/practice');await field.waitFor();}
  const stored=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('mq-practice-sets'))[0]);
- await field.focus();assert.deepEqual(await options.locator('button').evaluateAll(bs=>bs.map(b=>b.dataset.topicId)),['alg','cp','geo','nt']);assert.equal(await count.inputValue(),'5');
+ await field.focus();assert.deepEqual(await options.locator('button').evaluateAll(bs=>bs.map(b=>b.dataset.topicId)),['mixed','alg','cp','geo','nt']);assert.equal(await count.inputValue(),'5');
  await field.fill('Heron formula');assert.equal(await options.locator('button').count(),0);assert.equal(await submit.isDisabled(),true,'no card-keyword fallback');
  await select('casework','cp.basic.case.cases',true);assert.match(await page.locator('#topic-practice-status').innerText(),/^1 matching problem available/);assert.equal(await count.getAttribute('max'),'1');
  await submit.click();await page.locator('.practice-set-st').waitFor();let set=await stored();assert.deepEqual(set.slugs,['2019-aime-i-4']);assert.equal(set.topicId,'cp.basic.case.cases');assert(!set.clock);

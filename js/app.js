@@ -380,7 +380,7 @@
   function spaceFor(route) {
     if (route.type === "space") return route.name;
     if (route.type === "formula") return bookOf(route.entry.section);
-    if (["problems", "problem"].indexOf(route.type) !== -1) return "practice";
+    if (["problems", "problem", "browse"].indexOf(route.type) !== -1) return "practice";
     if (["lists", "list", "learn"].indexOf(route.type) !== -1) return "learn";
     if (route.type === "home" && !state.landing && !state.query.trim() && !state.adv) {
       return bookOf(SECTIONS.find(x => x.id === state.activeSectionId));
@@ -1351,6 +1351,8 @@
     if (/^#\/lists$/.test(location.hash)) return { type: "lists" };
     m = location.hash.match(/^#\/problems(?:\/([a-z0-9-]+)\/(\d{4})(?:\/([a-z0-9-]+))?)?$/);
     if (m) return { type: "problems", fam: m[1] || null, year: m[2] ? +m[2] : null, paper: m[3] || null };
+    m = location.hash.match(/^#\/browse\/(topics|difficulty)(?:\/([\w.-]+)(?:\/(\d+))?)?$/);
+    if (m) return m[1] === "topics" ? { type: "browse", kind: "topics", node: m[2] || null } : { type: "browse", kind: "difficulty", fam: m[2] && m[2] !== "all" ? m[2] : null, bin: m[3] ? +m[3] : null };
     m = location.hash.match(/^#\/problem\/([\w-]+)$/);
     if (m && PROBLEM_BY_SLUG[m[1]]) return { type: "problem", slug: m[1] };
     // One tag page for every way in: a topic chip, a problem's type chip, the "Browse by Tag"
@@ -5864,6 +5866,7 @@
         <section class="sh-section" id="pr-contests">
           <h3>Contests</h3>
           <p class="practice-panel-intro">Browse past papers by contest and year.</p>
+          <div class="ct-browse"><a class="ct-browse-btn" href="#/browse/topics">${uiIcon("arrow-right")} Browse by topic</a><a class="ct-browse-btn" href="#/browse/difficulty">${uiIcon("arrow-right")} Browse by difficulty</a></div>
           <div class="ct-list">${fams.map(f => `
             <div class="ct-row">
               <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famWritten(f).toLocaleString()} problem${famWritten(f) === 1 ? "" : "s"} written</span></a>
@@ -8926,6 +8929,165 @@ The book remembers the last lesson you opened, in this browser, and the contents
       renderMath(wrap);
     });
   }
+  // ---------- Topics and difficulty (owner, 2026-11-11) ----------
+  // The topic tree (js/data/topic-tree.js) and the Elo ratings feed three places: the Topic and
+  // Difficulty sections of How this problem works, and the Browse by topic / Browse by difficulty
+  // pages opened from Practice's Contests panel. A problem files under one to three tree nodes;
+  // a branch holds everything filed under it or below it.
+  const TOPIC_NODES = new Map((window.MATH_TOPIC_TREE || []).map(([id, name, parent], order) =>
+    [id, { id, name, parent, order, children: [] }]));
+  TOPIC_NODES.forEach(n => { if (n.parent && TOPIC_NODES.has(n.parent)) TOPIC_NODES.get(n.parent).children.push(n.id); });
+  const TOPIC_ROOTS = [...TOPIC_NODES.values()].filter(n => !n.parent);
+  const topicPath = id => { const out = []; let n = TOPIC_NODES.get(id); while (n) { out.unshift(n); n = TOPIC_NODES.get(n.parent); } return out; };
+  let TOPIC_PROBLEMS = null;
+  function topicProblems(id) {
+    if (!TOPIC_PROBLEMS) {
+      TOPIC_PROBLEMS = new Map();
+      for (const p of PROBLEM_DB) {
+        const seen = new Set();
+        for (const t of p.tree) for (const n of topicPath(t)) {
+          if (seen.has(n.id)) continue;
+          seen.add(n.id);
+          if (!TOPIC_PROBLEMS.has(n.id)) TOPIC_PROBLEMS.set(n.id, []);
+          TOPIC_PROBLEMS.get(n.id).push(p);
+        }
+      }
+    }
+    return TOPIC_PROBLEMS.get(id) || [];
+  }
+  const topicHash = id => "#/browse/topics/" + id;
+  // A problem's topics as small trees, one per subject: each path runs from the subject down to
+  // the node it is filed under, and paths that share a beginning share it on the page.
+  function topicTreeHtml(p) {
+    const paths = p.tree.filter(id => TOPIC_NODES.has(id)).map(topicPath);
+    if (!paths.length) return `<p class="chain-empty">Not filed yet.</p>`;
+    const filed = new Set(p.tree);
+    const trie = new Map();
+    for (const path of paths) {
+      let level = trie;
+      for (const n of path) {
+        if (!level.has(n.id)) level.set(n.id, { n, kids: new Map() });
+        level = level.get(n.id).kids;
+      }
+    }
+    const branch = level => `<ul class="ptree-list">${[...level.values()].sort((a, b) => a.n.order - b.n.order).map(({ n, kids }) =>
+      `<li><a class="ptree-node${filed.has(n.id) ? " is-filed" : ""}" href="${topicHash(n.id)}">${n.name}</a>${kids.size ? branch(kids) : ""}</li>`).join("")}</ul>`;
+    return `<div class="ptree">${[...trie.values()].sort((a, b) => a.n.order - b.n.order).map(root =>
+      `<div class="ptree-group"><a class="ptree-node ptree-root${filed.has(root.n.id) ? " is-filed" : ""}" href="${topicHash(root.n.id)}">${root.n.name}</a>${root.kids.size ? branch(root.kids) : ""}</div>`).join("")}</div>`;
+  }
+  // Difficulty: the Elo rating and where it sits among the ratings of one contest family, in bins
+  // of 200 (owner, 2026-11-11; the idea is LIVE's chart, the drawing is ours).
+  const DIFF_FAMS = ["AMC 8", "AMC 10", "AMC 12", "AIME"];
+  const ELO_BIN = 200, ELO_LO = 200, ELO_HI = 3800;
+  const eloBins = () => Array.from({ length: (ELO_HI - ELO_LO) / ELO_BIN }, (_, i) => ELO_LO + i * ELO_BIN);
+  const ratedIn = fam => PROBLEM_DB.filter(p => Number.isFinite(p.elo) && (!fam || p.fam === fam));
+  const binOf = elo => Math.min(ELO_HI - ELO_BIN, Math.max(ELO_LO, Math.floor(elo / ELO_BIN) * ELO_BIN));
+  // The chart: one bar per bin, its height the bin's share of the family's largest bin. Every bar
+  // is a link to the problems in that range. `mark` is a rating to show as a line and its bin.
+  function eloChartHtml(fam, { mark = null, selected = null, compact = false } = {}) {
+    const pool = ratedIn(fam), counts = new Map(eloBins().map(b => [b, 0]));
+    pool.forEach(p => counts.set(binOf(p.elo), counts.get(binOf(p.elo)) + 1));
+    const max = Math.max(1, ...counts.values()), famPart = fam ? famSlug(fam) : "all";
+    const span = ELO_HI - ELO_LO;
+    const bars = eloBins().map(b => {
+      const n = counts.get(b), cur = (mark != null && binOf(mark) === b) || selected === b;
+      return `<a class="elo-bar${cur ? " is-cur" : ""}" href="#/browse/difficulty/${famPart}/${b}" style="--h:${(n / max * 100).toFixed(1)}%" aria-label="${n} problem${n === 1 ? "" : "s"} rated ${b} to ${b + ELO_BIN - 1}" title="${b}–${b + ELO_BIN - 1}: ${n}"><span></span></a>`;
+    }).join("");
+    const line = mark != null ? `<span class="elo-mark" style="left:${((Math.min(ELO_HI, Math.max(ELO_LO, mark)) - ELO_LO) / span * 100).toFixed(2)}%"></span>` : "";
+    const ticks = [ELO_LO, 1000, 1800, 2600, ELO_HI - ELO_BIN].map(t => `<span style="left:${((t - ELO_LO) / span * 100).toFixed(2)}%">${t}</span>`).join("");
+    return `<div class="elo-chart${compact ? " is-compact" : ""}"><div class="elo-bars">${bars}${line}</div><div class="elo-ticks" aria-hidden="true">${ticks}</div></div>`;
+  }
+  const famToggleHtml = (cur, attr) => `<div class="elo-fams" role="group" aria-label="Contest">${[...DIFF_FAMS, null].map(f =>
+    `<button type="button" class="elo-fam" ${attr}="${f ? famSlug(f) : "all"}" aria-pressed="${f === cur}">${f || "All"}</button>`).join("")}</div>`;
+  function difficultyHtml(p) {
+    if (!Number.isFinite(p.elo)) return `<p class="chain-empty">Not rated yet.</p>`;
+    const fam = DIFF_FAMS.includes(p.fam) ? p.fam : null;
+    return `<div class="elo-box" data-elo="${p.elo}">
+      <p class="elo-head"><span class="elo-num">${p.elo}</span><span class="elo-note">${eloNote(p, fam)}</span></p>
+      <div class="elo-plot">${eloChartHtml(fam, { mark: p.elo, compact: true })}</div>
+      ${famToggleHtml(fam, "data-elo-fam")}
+    </div>`;
+  }
+  function eloNote(p, fam) {
+    const pool = ratedIn(fam), below = pool.filter(q => q.elo < p.elo).length;
+    const pct = Math.round(below / Math.max(1, pool.length) * 100);
+    return `Harder than ${pct}% of ${fam ? fam : "all"} problems${p.eloSource === "manual" ? " (our estimate)" : ""}`;
+  }
+  // The family buttons under a problem's chart redraw it for that contest in place.
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-elo-fam]");
+    if (!b) return;
+    const box = b.closest(".elo-box"), elo = +box.dataset.elo;
+    const fam = FAM_BY_SLUG[b.dataset.eloFam] || null;
+    box.querySelector(".elo-plot").innerHTML = eloChartHtml(fam, { mark: elo, compact: true });
+    box.querySelector(".elo-note").textContent = eloNote({ elo, eloSource: box.querySelector(".elo-note").textContent.includes("estimate") ? "manual" : "" }, fam);
+    box.querySelectorAll("[data-elo-fam]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  });
+
+  // Browse by topic / Browse by difficulty: a problem list shared by both pages.
+  const BROWSE_PAGE = 60;
+  let browseLimit = { key: "", n: BROWSE_PAGE };
+  function browseListHtml(key, problems, { showTopic = false } = {}) {
+    if (browseLimit.key !== key) browseLimit = { key, n: BROWSE_PAGE };
+    const shown = problems.slice(0, browseLimit.n);
+    const rows = shown.map(p => {
+      const top = showTopic && p.tree[0] && TOPIC_NODES.has(p.tree[0]) ? topicPath(p.tree[0]).slice(-1)[0].name : "";
+      return `<a class="br-row" href="#/problem/${p.slug}"><span class="br-ref">${refShort(p.ref)}</span>${top ? `<span class="br-topic">${top}</span>` : ""}<span class="br-elo">${Number.isFinite(p.elo) ? p.elo : "–"}</span></a>`;
+    }).join("");
+    return `<div class="br-list">${rows || `<p class="chain-empty">No problems here.</p>`}</div>
+      ${problems.length > shown.length ? `<button type="button" class="ct-toggle" id="br-more">Show more (${problems.length - shown.length} left)</button>` : ""}`;
+  }
+  const byElo = list => list.slice().sort((a, b) => (Number.isFinite(a.elo) ? a.elo : 1e9) - (Number.isFinite(b.elo) ? b.elo : 1e9) || a.ref.localeCompare(b.ref));
+  const browseBackHtml = () => `<div class="back-row"><a class="back-link" href="#/practice" data-goto="pr-contests">${uiIcon("arrow-left")} Contests</a></div>`;
+  const browseSwitchHtml = cur => `<div class="br-switch">${[["topics", "Browse by topic"], ["difficulty", "Browse by difficulty"]].map(([k, l]) =>
+    `<a class="br-switch-btn${k === cur ? " is-cur" : ""}" href="#/browse/${k}"${k === cur ? ' aria-current="page"' : ""}>${l}</a>`).join("")}</div>`;
+  let browseFam = null;  // the contest filter on Browse by topic, kept while moving between topics
+  function renderBrowse(route) {
+    shownIds = [];
+    let html;
+    if (route.kind === "topics") {
+      const node = route.node && TOPIC_NODES.get(route.node);
+      if (!node) {
+        const outline = n => `<li><a href="${topicHash(n.id)}">${n.name}</a> <span class="br-count">${topicProblems(n.id).length}</span>${n.children.length ? `<ul>${n.children.map(c => outline(TOPIC_NODES.get(c))).join("")}</ul>` : ""}</li>`;
+        html = `${browseSwitchHtml("topics")}<h2 class="card-name">Browse by topic</h2>
+          <p class="practice-panel-intro">Every problem is filed in one topic tree. Open a topic to see the problems in it and in its subtopics.</p>
+          <div class="br-subjects">${TOPIC_ROOTS.map(r => `<details class="br-subject"><summary><span class="br-subject-name">${r.name}</span><span class="br-count">${topicProblems(r.id).length} problems</span></summary>
+            <ul class="br-outline">${r.children.map(c => outline(TOPIC_NODES.get(c))).join("")}</ul>
+            <a class="br-open" href="${topicHash(r.id)}">All ${r.name} problems ${uiIcon("arrow-right")}</a></details>`).join("")}</div>`;
+      } else {
+        const all = byElo(topicProblems(node.id)), fams = [...DIFF_FAMS, "Other"];
+        const famOf = p => DIFF_FAMS.includes(p.fam) ? p.fam : "Other";
+        const list = browseFam ? all.filter(p => famOf(p) === browseFam) : all;
+        const crumbs = topicPath(node.id).slice(0, -1).map(n => `<a href="${topicHash(n.id)}">${n.name}</a>`).join(` <span aria-hidden="true">›</span> `);
+        html = `${browseSwitchHtml("topics")}<div class="br-crumbs"><a href="#/browse/topics">All topics</a>${crumbs ? ` <span aria-hidden="true">›</span> ${crumbs}` : ""}</div>
+          <h2 class="card-name">${node.name}</h2>
+          <p class="practice-panel-intro">${all.length} problem${all.length === 1 ? "" : "s"}${node.children.length ? ", including its subtopics" : ""}, easiest first.</p>
+          ${node.children.length ? `<div class="br-kids">${node.children.map(c => TOPIC_NODES.get(c)).map(c => `<a class="br-kid" href="${topicHash(c.id)}">${c.name} <span class="br-count">${topicProblems(c.id).length}</span></a>`).join("")}</div>` : ""}
+          <div class="elo-fams br-fams" role="group" aria-label="Contest">${[null, ...fams].map(f => {
+            const n = f ? all.filter(p => famOf(p) === f).length : all.length;
+            return n || !f ? `<button type="button" class="elo-fam" data-br-fam="${f || ""}" aria-pressed="${f === browseFam}">${f || "All"} <span class="br-count">${n}</span></button>` : "";
+          }).join("")}</div>
+          ${browseListHtml("t:" + node.id + ":" + browseFam, list)}`;
+      }
+    } else {
+      const fam = route.fam ? FAM_BY_SLUG[route.fam] || null : null;
+      const pool = ratedIn(fam);
+      const bin = route.bin != null ? binOf(route.bin) : (pool.length ? binOf(byElo(pool)[Math.floor(pool.length / 2)].elo) : ELO_LO);
+      const inBin = byElo(pool.filter(p => binOf(p.elo) === bin));
+      html = `${browseSwitchHtml("difficulty")}<h2 class="card-name">Browse by difficulty</h2>
+        <p class="practice-panel-intro">Each problem's Elo rating, from LIVE's ratings with our estimates for a few newer problems. Choose a contest, then a bar, to see the problems in that range.</p>
+        <div class="elo-fams" role="group" aria-label="Contest">${[...DIFF_FAMS, null].map(f =>
+          `<a class="elo-fam" href="#/browse/difficulty/${f ? famSlug(f) : "all"}/${bin}" aria-pressed="${f === fam}">${f || "All"}</a>`).join("")}</div>
+        ${eloChartHtml(fam, { selected: bin })}
+        <h3 class="br-range">Rated ${bin} to ${bin + ELO_BIN - 1} <span class="br-count">${inBin.length} problem${inBin.length === 1 ? "" : "s"}</span></h3>
+        ${browseListHtml("d:" + (fam || "all") + ":" + bin, inBin, { showTopic: true })}`;
+    }
+    $content.innerHTML = `<div class="detail browse-page">${browseBackHtml()}<div class="book-eyebrow prob-eyebrow">Practice</div>${html}</div>`;
+    renderMath($content);
+    $content.querySelectorAll("[data-br-fam]").forEach(b => b.addEventListener("click", () => { browseFam = b.dataset.brFam || null; renderBrowse(route); }));
+    $content.querySelector("#br-more")?.addEventListener("click", () => { browseLimit.n += BROWSE_PAGE; renderBrowse(route); });
+  }
+
   // ---------- Written solutions ----------
   // A complete solution, written for the app and checked by computation, sits below "How this
   // problem works". The solutions are stored one file per year under js/data/problems/solutions/
@@ -8967,8 +9129,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const fig = (window.MATH_PROBLEM_DIAGRAMS || {})[p.slug];
     return fig ? `<div class="diagram prob-own-figure">${fig}</div>` : "";
   }
+  // How this problem works in sections (owner, 2026-11-11), each headed like Study a concept
+  // more: Topic (where it sits in the topic tree), Difficulty (its Elo among its contest's),
+  // Brief solution (the strategy and its cards), then Study a concept more.
+  const chainSec = (title, body) => `<div class="chain-study chain-sec"><h4 class="chain-study-h">${title}</h4>${body}</div>`;
   function chainInnerHtml(p, chainCol, chain, altIds, afterChain = "") {
-    return `${ownFigureHtml(p)}${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>` : ""}
+    return `${chainSec("Topic", topicTreeHtml(p))}${chainSec("Difficulty", difficultyHtml(p))}
+        ${chainSec("Brief solution", `${ownFigureHtml(p)}${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>` : ""}
         ${p.trick ? `<p class="chain-strategy chain-alt">${p.trick}</p>` : ""}
         <div class="chain-grid">
           ${chainCol("Pattern", chain.pattern, "Not classified yet")}
@@ -8976,7 +9143,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           ${chainCol("Formulas", chain.formula, "&mdash;")}
         </div>
         ${altIds.size ? `<p class="chain-alt-note">Dashed cards belong to the second route only.</p>` : ""}
-        ${afterChain}${studyMoreHtml(p, chain)}`;
+        ${afterChain}`)}${studyMoreHtml(p, chain)}`;
   }
   // Study a concept more (owner, 2026-11-01): under the three columns, one link per card the
   // problem uses, to the lesson that teaches that card. An AIME problem prefers an AIME book's
@@ -9058,7 +9225,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // preview shows exactly what the page does (owner, 2026-10-31). The preview has no journey to
   // go back along, and its statement and solution boxes carry classes instead of the page's ids.
   function problemDetailHtml(p, pv) {
-    const types = p.types.map(t => `<a class="ptype-chip" href="${TOPICS_BY_ID[t.id] ? tagHash([TOPICS_BY_ID[t.id].label]) : "#/topic/" + t.id}">${escapeAttr(t.label)}</a>`).join("");
+    // The topic chips once under the heading are retired (owner, 2026-11-11): the Topic section
+    // of How this problem works shows the problem's place in the topic tree instead.
     // How this problem works sits near the bottom of the page: the problem itself, and thinking
     // about it, come first.
     const { chain, altIds, chainCol } = chainParts(p);
@@ -9079,7 +9247,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <div class="detail-head">
           <h2 class="card-name">${refShort(p.ref)}</h2>
         </div>
-        ${types || p.subjects.length ? `<div class="ptype-row">${subjectChips(p)}${types}</div>` : ""}
         ${MAA_RE.test(p.ref) ? `<section class="prob-st${pv ? " pv-st" : ""}"${pv ? "" : ` id="prob-st"`} data-slug="${p.slug}" hidden>
           <div class="prob-statement"></div>
 
@@ -9684,6 +9851,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       renderProblems(route);
     } else if (route.type === "problem") {
       renderProblemDetail(route.slug);
+    } else if (route.type === "browse") {
+      renderBrowse(route);
     } else if (route.type === "settings") {
       renderSettingsPage();
     } else if (route.type === "special") {
@@ -9721,7 +9890,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     document.body.dataset.space = onLanding ? "home" : route.type === "settings" || searching ? "none" : state.space;
     // A list page's sidebar holds only the list's sections, under "On this list", drawn in the
     // same panel as a card's "On this page", so the section being read is marked the same way.
-    const noSidebar = onLanding || searching || ["problems", "problem", "lists", "settings", "space", "learn"].indexOf(route.type) !== -1
+    const noSidebar = onLanding || searching || ["problems", "problem", "browse", "lists", "settings", "space", "learn"].indexOf(route.type) !== -1
       || (route.type === "list" && !$content.querySelector(".list-section[id]"));
     const $tree = document.getElementById("formula-nav");
     if ($tree) $tree.hidden = route.type === "list";

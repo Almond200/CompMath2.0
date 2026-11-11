@@ -31,13 +31,19 @@
     }
     for (const { ten, twelve } of groups.values()) if (ten.length === 1 && twelve.length === 1)
       identity.set(twelve[0].ref, ten[0].ref);
+    // Mixed (owner, 2026-11-11): not a tree node, but the first Practice choice, drawing from
+    // every eligible problem in every subject.
+    const mixed = { id: 'mixed', name: 'Mixed', label: 'Mixed', parent: null, children: [],
+      path: ['Mixed'], breadcrumb: 'Mixed', problems: new Map(), mixed: true };
     for (const p of problems) {
       if (!eligible(p)) continue;
+      if (!mixed.problems.has(identity.get(p.ref))) mixed.problems.set(identity.get(p.ref), p);
       for (const id of p.tree || []) {
         let n = nodes.get(id);
         while (n) { if (!n.problems.has(identity.get(p.ref))) n.problems.set(identity.get(p.ref), p); n = nodes.get(n.parent); }
       }
     }
+    nodes.set(mixed.id, mixed);
     const aliases = new Map();
     for (const n of nodes.values()) {
       n.problems = [...n.problems.values()];
@@ -51,7 +57,7 @@
       const ids = aliases.get(normalize(text));
       return ids?.size === 1 ? nodes.get([...ids][0]) : null;
     };
-    const roots = [...nodes.values()].filter(n => !n.parent);
+    const roots = [mixed, ...[...nodes.values()].filter(n => !n.parent && !n.mixed)];
     function search(query, limit = 7) {
       const key = normalize(query);
       if (!key) return roots.slice(0, limit);
