@@ -8921,7 +8921,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const bars = ps.map(p => {
       const u = cmp ? cmp.usual[p.num] : null;
       if (!Number.isFinite(p.elo)) return `<span class="pq-bar"><span class="pq-n">${p.num}</span></span>`;
-      return `<a class="pq-bar" href="#/problem/${p.slug}" title="Problem ${p.num}: rated ${p.elo}${u ? `; ${base.label}: ${u}` : ""}" aria-label="Problem ${p.num}, rated ${p.elo}${u ? `, against ${u}` : ""}"><span class="pq-col"><i style="height:${(p.elo / top * 100).toFixed(1)}%"></i>${u ? `<b style="bottom:${(u / top * 100).toFixed(1)}%"></b>` : ""}</span><span class="pq-n">${p.num}</span></a>`;
+      return `<a class="pq-bar" href="#/problem/${p.slug}" data-tip="Problem ${p.num}: rated ${p.elo}${u ? `; ${base.label}: ${u}` : ""}" aria-label="Problem ${p.num}, rated ${p.elo}${u ? `, against ${u}` : ""}"><span class="pq-col"><i style="height:${(p.elo / top * 100).toFixed(1)}%"></i>${u ? `<b style="bottom:${(u / top * 100).toFixed(1)}%"></b>` : ""}</span><span class="pq-n">${p.num}</span></a>`;
     }).join("");
     const off = cmp ? rated.filter(p => cmp.usual[p.num]).map(p => ({ p, d: p.elo - cmp.usual[p.num] })).filter(x => Math.abs(x.d) >= 300).sort((x, y) => Math.abs(y.d) - Math.abs(x.d)) : [];
     const listed = xs => { const t = xs.slice(0, 4).map(x => `<a href="#/problem/${x.p.slug}">#${x.p.num}</a> (${signed(x.d)})`); return t.length < 3 ? t.join(" and ") : `${t.slice(0, -1).join(", ")} and ${t[t.length - 1]}`; };
@@ -8957,7 +8957,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const first = per.slice(0, Math.min(5, per.length >> 1)), last = per.slice(-first.length);
       const drift = mean(last) - mean(first);
       years = sec("Over the years", `<div class="py-plot"><span class="py-axis" aria-hidden="true"><em>${yTop}</em><em>${yLow}</em></span><div class="py" style="--pq:${famColor(fam)}">${per.map(x =>
-        `<a class="py-bar${x.s === sit ? " is-cur" : ""}" href="#/problems/${famSlug(fam)}/${x.year}" title="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}: median paper rating ${x.med}" aria-label="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}, median paper rating ${x.med}"${x.s === sit ? ' aria-current="true"' : ""}><span class="py-col"><i style="height:${((x.med - yLow) / (yTop - yLow) * 100).toFixed(1)}%"></i></span><span class="py-n">${String(x.year).slice(2)}${x.s % 10 === 2 ? "F" : x.s % 10 === 1 ? "S" : ""}</span></a>`).join("")}</div></div>
+        `<a class="py-bar${x.s === sit ? " is-cur" : ""}" href="#/problems/${famSlug(fam)}/${x.year}" data-tip="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}: median paper rating ${x.med}" aria-label="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}, median paper rating ${x.med}"${x.s === sit ? ' aria-current="true"' : ""}><span class="py-col"><i style="height:${((x.med - yLow) / (yTop - yLow) * 100).toFixed(1)}%"></i></span><span class="py-n">${String(x.year).slice(2)}${x.s % 10 === 2 ? "F" : x.s % 10 === 1 ? "S" : ""}</span></a>`).join("")}</div></div>
         <p class="pp-words">${pair ? `Each bar is one sitting of the contest, with its ${pair} taken together. ` : ""}The median ${escapeAttr(fam)} paper was rated ${mean(first)} in ${sitSpan(first.map(x => x.s))} and ${mean(last)} in ${sitSpan(last.map(x => x.s))}: ${drift === 0 ? "no change" : `${Math.abs(drift)} points ${drift > 0 ? "harder" : "easier"}`}. ${cur.n > 1 ? `${sitLabel(sit)} averages ${cur.med} over ${both(cur.n)}; this paper is rated ${med}.` : `This paper is rated ${med}.`}</p>`);
     }
 
@@ -9222,8 +9222,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const label = `${on} problem${on === 1 ? "" : "s"}`, col = `<span style="height:${n ? Math.max(1.5, n / max * 100).toFixed(1) : 0}%">${segs}</span>`;
       // A chart of some other pool (a card's problems) is a picture: its bars do not open the
       // range's page, which lists every problem in the range.
-      if (!links) return `<span class="elo-bar" title="${b}–${b + ELO_BIN - 1}: ${label}">${col}</span>`;
-      return `<a class="elo-bar${cur === b ? " is-cur" : ""}" href="#/browse/difficulty/${b}" aria-label="${label} rated ${b} to ${b + ELO_BIN - 1}" title="${b}–${b + ELO_BIN - 1}: ${label}"${selected === b ? ' aria-current="true"' : ""}><span style="height:${n ? Math.max(1.5, n / max * 100).toFixed(1) : 0}%">${segs}</span></a>`;
+      // The whole column answers the pointer, not only the drawn bar, so hovering it tints the
+      // column and shows its range and count at once (`data-tip`, drawn by CSS; the browser's
+      // own tooltip came late and lingered over the wrong column). A column with no problems
+      // is not a link and shows nothing: there is nothing there to open (owner, 2026-11-11).
+      const tip = `${b}–${b + ELO_BIN - 1}: ${label}`, here = `${cur === b ? " is-cur" : ""}"${selected === b ? ' aria-current="true"' : ""}`;
+      if (!on) return `<span class="elo-bar is-empty${here}>${col}</span>`;
+      if (!links) return `<span class="elo-bar" data-tip="${tip}">${col}</span>`;
+      return `<a class="elo-bar${here} href="#/browse/difficulty/${b}" aria-label="${label} rated ${b} to ${b + ELO_BIN - 1}" data-tip="${tip}">${col}</a>`;
     }).join("");
     const line = mark != null ? `<span class="elo-mark" style="left:${((Math.min(ELO_HI, Math.max(ELO_LO, mark)) - ELO_LO) / span * 100).toFixed(2)}%"></span>` : "";
     const ticks = [200, 1000, 1800, 2600, 3400].map(t => `<span style="left:${((t - ELO_LO) / span * 100).toFixed(2)}%">${t}</span>`).join("");

@@ -31,9 +31,20 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.equal(await page.locator('.elo-box .elo-num').innerText(),'2350');assert.match(await page.locator('.elo-note').innerText(),/of AIME problems/);assert.doesNotMatch(await page.locator('.prob-chain').innerText(),/LIVE/);
  assert.equal(await page.locator('.elo-box .elo-bar.is-cur').count(),1);
  await page.locator('[data-elo-fam="all"]').click();assert.match(await page.locator('.elo-note').innerText(),/of all problems/);assert.equal(await page.locator('[data-elo-fam][aria-pressed="true"]').count(),1);
+ // A column answers the pointer over its whole height: hovering above a short bar tints the
+ // column and shows its range and count at once. A column with no problems is not a link.
+ if(width===1280){
+  const col=page.locator('.elo-box a.elo-bar').first(),box=await col.boundingBox();await col.scrollIntoViewIfNeeded();const b2=await col.boundingBox();
+  await page.mouse.move(b2.x+b2.width/2,b2.y+3);
+  const tip=await col.evaluate(el=>[getComputedStyle(el,'::before').content,getComputedStyle(el).backgroundColor,el.getAttribute('data-tip'),el.hasAttribute('title')]);
+  assert.match(tip[0],/^"\d+–\d+: \d+ problems?"$/);assert.notEqual(tip[1],'rgba(0, 0, 0, 0)','the hovered column is tinted');assert.equal(tip[0],JSON.stringify(tip[2]));assert.equal(tip[3],false,'no late browser tooltip');
+  await page.mouse.move(2,2);
+ }
+ assert.equal(await page.locator('.elo-box a.elo-bar').evaluateAll(xs=>xs.every(x=>!/: 0 problems/.test(x.dataset.tip))),true);
  // Every rated contest has a chip, HMMT February included, and choosing it redraws the chart.
  assert.deepEqual(await page.locator('.elo-box [data-elo-fam]').allInnerTexts(),['AMC 8','AMC 10','AMC 12','AIME','HMMT February','All contests']);
  await page.locator('[data-elo-fam="hmmt-february"]').click();assert.match(await page.locator('.elo-note').innerText(),/of HMMT February problems/);assert.equal(await page.locator('[data-elo-fam][aria-pressed="true"]').innerText(),'HMMT February');
+ assert.equal(await page.locator('.elo-box .elo-bar.is-empty').evaluateAll(xs=>xs.length>0&&xs.every(x=>x.tagName==='SPAN'&&!x.dataset.tip&&getComputedStyle(x,'::before').content==='none')),true,'empty columns are inert');
  await fits();
  // A problem's topic box opens that topic.
  await page.locator('.ptree-node.is-filed').first().click();await page.locator('.browse-topics').waitFor();

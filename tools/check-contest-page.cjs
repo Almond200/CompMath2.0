@@ -51,6 +51,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   // The chart: a bar per problem, opening it, with the usual rating marked.
   assert.equal(await g.locator('a.pq-bar').count(),e.n);assert.equal(await g.locator('.pq-col b').count(),e.n);
   assert.match(await g.locator('a.pq-bar').nth(2).getAttribute('href'),/^#\/problem\/[\w-]+-3$/);
+  assert.match(await g.locator('a.pq-bar').nth(2).getAttribute('data-tip'),new RegExp('^Problem 3: rated '+e.elos[2]+'; '));assert.equal(await g.locator('.pq-bar[title], .py-bar[title]').count(),0);
   // Compare with: the past ten papers by default (papers have grown harder), every year, or the
   // sitting before; the marks, the sentence and the Subjects column follow the choice.
   const chips=g.locator('[data-pp-base]');assert.equal(await g.locator('[data-pp-base][aria-pressed="true"]').getAttribute('data-pp-base'),'recent');
@@ -69,7 +70,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   const total=(await g.locator('.pp-table tbody td:nth-child(3)').allInnerTexts()).reduce((a,b)=>a+ +b,0);assert.equal(total,e.n,'subjects add up to the paper');
   // Over the years: a bar per sitting, this one picked out, with the drift in words.
   assert.equal(await g.locator('.py-bar').count(),e.sits);assert.equal(await g.locator('.py-bar.is-cur').count(),1);
-  assert.match(await g.locator('.py-bar.is-cur').getAttribute('title'),new RegExp('median paper rating '+e.sitMed+'$'));
+  assert.match(await g.locator('.py-bar.is-cur').getAttribute('data-tip'),new RegExp('median paper rating '+e.sitMed+'$'));
   const yw=await g.locator('.pp-sec').filter({has:page.locator('.py')}).locator('.pp-words').innerText();
   assert.match(yw,/points (harder|easier)\./);assert.match(yw,new RegExp('his paper is rated '+e.med+'\\.$'));
   if(e.twin)assert.match(yw,new RegExp('^Each bar is one sitting of the contest, with its (A and B|I and II) papers taken together\\..* averages '+e.sitMed+' over both papers; this paper is rated '));
