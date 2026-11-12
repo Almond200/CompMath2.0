@@ -1,10 +1,12 @@
 {
-  "reviewed": "2026-11-11",
+  "reviewed": "2026-11-12",
   "description": "Author estimates on LIVE's Elo-like scale, based on the statements and solution requirements, not a paper-position formula. LIVE values take precedence when later published. Shared 2026 AMC 10/12 problems receive identical estimates. The 2026 AMC 10A estimates were reviewed problem by problem on 2026-11-11 after the owner sat the paper: #25 came down sharply and #8, #16, #18, #20 and #21 moved.",
   "papers": {
     "2026 AMC 10A": "https://wiki.randommath.com/amc10/2026/part-a/problem-1",
     "2026 AMC 12A": "https://wiki.randommath.com/amc12/2026/part-a/problem-1",
-    "2019 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf"
+    "2019 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf",
+    "2019 HMMT February Algebra and Number Theory": "https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/algnt/problems.pdf",
+    "2019 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -246,6 +248,86 @@
     "2019 HMMT February Geometry, Problem 10": [
       3000,
       "Track repeated external-square constructions and multiple polygon-area contributions."
+    ],
+    "2019 HMMT February Algebra and Number Theory, Problem 1": [
+      1500,
+      "Check the small sums of two palindromes and rule out one two-digit value by cases."
+    ],
+    "2019 HMMT February Algebra and Number Theory, Problem 2": [
+      1650,
+      "A tower of powers of two; only exponent arithmetic, but three levels deep."
+    ],
+    "2019 HMMT February Algebra and Number Theory, Problem 3": [
+      1900,
+      "Notice the two shifted quantities are reciprocals, so sum equals product, then use the square and cube identities."
+    ],
+    "2019 HMMT February Algebra and Number Theory, Problem 4": [
+      2300,
+      "Guess the closed form from the binary expansion, prove it by induction, then sum the solutions under a bound."
+    ],
+    "2019 HMMT February Algebra and Number Theory, Problem 5": [
+      2400,
+      "Three products of an arithmetic and a geometric term force a quadratic for the ratio; two cases to compare."
+    ],
+    "2019 HMMT February Algebra and Number Theory, Problem 6": [
+      2600,
+      "Turn remainders by irrational moduli into a chain of inequalities between multiples of two square roots, then count."
+    ],
+    "2019 HMMT February Algebra and Number Theory, Problem 7": [
+      2800,
+      "Symmetrize a triple sum over the six orders of its variables so the fraction collapses to a product of geometric series."
+    ],
+    "2019 HMMT February Algebra and Number Theory, Problem 8": [
+      3150,
+      "A Dirichlet square root of the constant function: prime powers by a generating function, then multiplicativity."
+    ],
+    "2019 HMMT February Algebra and Number Theory, Problem 9": [
+      2950,
+      "The possible multipliers are the eigenvalues of the hypercube; found by summing the conditions over nested half-cubes, with a construction for each."
+    ],
+    "2019 HMMT February Algebra and Number Theory, Problem 10": [
+      3500,
+      "A radical recurrence hides a linear one; proving it needs a Vieta-style argument, and the sum then telescopes."
+    ],
+    "2019 HMMT February Combinatorics, Problem 1": [
+      1500,
+      "No palindromic block forces every letter to differ from the two before it, so the word is one pattern repeated."
+    ],
+    "2019 HMMT February Combinatorics, Problem 2": [
+      1750,
+      "Restate the condition on the three hidden dice, then a short conditional count."
+    ],
+    "2019 HMMT February Combinatorics, Problem 3": [
+      2100,
+      "A symmetry shows neither player can gain an edge, so the game is about minimizing ties."
+    ],
+    "2019 HMMT February Combinatorics, Problem 4": [
+      2000,
+      "The expected count is multiplied by a fixed factor each round, by conditioning on the current count."
+    ],
+    "2019 HMMT February Combinatorics, Problem 5": [
+      2700,
+      "Periodicity and reflections cut a walk on the plane to a few states, some settled by symmetry, the rest by linear equations."
+    ],
+    "2019 HMMT February Combinatorics, Problem 6": [
+      2500,
+      "Split the reflections by axis, pair them up, and count the sequences that return, case by case."
+    ],
+    "2019 HMMT February Combinatorics, Problem 7": [
+      2900,
+      "A reinforced vote: the distribution of one candidate's count stays linear in the count, proved by induction."
+    ],
+    "2019 HMMT February Combinatorics, Problem 8": [
+      2900,
+      "Cases on the shape of the factorization; the divisor lattice decides which divisors must take distinct colors."
+    ],
+    "2019 HMMT February Combinatorics, Problem 9": [
+      3000,
+      "Write the entries in binary: a filling is three independent placements of non-attacking ones."
+    ],
+    "2019 HMMT February Combinatorics, Problem 10": [
+      3200,
+      "A change of coordinates turns the moves into independent sign choices in four coordinates."
     ]
   }
 }

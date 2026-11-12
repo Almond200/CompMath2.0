@@ -143,7 +143,18 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.deepEqual(await shown().locator('[data-pp-base]').evaluateAll(xs=>xs.map(x=>x.dataset.ppBase)),['all','recent','prev']);
  await page.goto(base+'/#/problems/amc-10/2000');await page.locator('.pp-tiles').waitFor();assert.equal(await page.locator('[data-pp-base]').count(),0);assert.equal(await page.locator('.pq-col b').count(),25,'still marked against all years');
  await page.goto(base+'/#/problems/amc-10/2001');await page.locator('.pp-tiles').waitFor();assert.deepEqual(await shown().locator('[data-pp-base]').evaluateAll(xs=>xs.map(x=>x.dataset.ppBase)),['all','prev']);
- await page.goto(base+'/#/problems/hmmt-february/2019');await page.locator('.pp-tiles').waitFor();assert.equal(await page.locator('[data-pp-base], .py, .pq-col b, .pp-mock').count(),0,'no yardsticks and no mock format for HMMT');await fits();
+ // HMMT February: the three individual rounds as tabs, in the order they are sat; one sitting
+ // so far, so no comparison choices or years chart, and no mock format.
+ await page.goto(base+'/#/problems/hmmt-february/2019');await page.locator('.db-group.is-shown .pp-tiles').waitFor();
+ assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),['Algebra & Number Theory','Combinatorics','Geometry']);
+ assert.equal(await page.locator('[data-pp-base], .py, .pp-mock').count(),0,'no yardstick choices, years chart or mock button for HMMT yet');
+ assert.equal(await page.locator('.db-group.is-shown .pp-tiles .br-row').count(),10);await page.locator('.ct-papers [role="tab"]').nth(2).click();assert.match(page.url(),/hmmt-february\/2019\/hmmt-february-geometry$/);await fits();
+ // An HMMT problem's page: short name, the official paper for the statement, the official solution under Brief solution.
+ await page.goto(base+'/#/problem/2019-hmmt-february-combinatorics-4');await page.locator('.prob-chain').waitFor();assert.equal(await page.locator('h2.card-name').innerText(),'2019 HMMT Feb Combo #4');
+ const tg=page.locator('.prob-chain .chain-toggle');if(await tg.getAttribute('aria-expanded')==='false')await tg.click();
+ assert.deepEqual(await page.locator('.aops-btn').evaluateAll(xs=>xs.map(x=>[x.textContent.trim(),x.getAttribute('href')])),[['Open the official paper','https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/problems.pdf'],['Open the official solution','https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/solutions.pdf']]);
+ assert.match(await page.locator('.prob-note').first().innerText(),/as one PDF; this is problem 4\.$/);assert.match(await page.locator('.chain-official-note').innerText(),/as one PDF; this is problem 4\.$/);
+ assert.equal(await page.locator('.ptree-node.is-filed').count(),1);assert.equal(await page.locator('.elo-box .elo-num').innerText(),'2000');await fits();
  assert.equal(await page.locator('.katex-error').count(),0);assert.deepEqual(errors,[]);
  console.log(theme,width,'paper toggle, plain tiles, figures, compare-with choices, difficulty by question, subjects, years and 2021: passed');await page.close();
 }
