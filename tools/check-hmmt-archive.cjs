@@ -33,7 +33,7 @@ assert.equal(groups.size, 27);
       const errors = [];
       page.on('pageerror', e => errors.push(e.message));
       await page.addInitScript(theme => localStorage.setItem('theme', theme), theme);
-      const roundYears = [[2018, 'Algebra and Number Theory', 'algnt'], [2017, 'Algebra and Number Theory', 'algnt'], [2016, 'Algebra', 'alg'], [2015, 'Algebra', 'alg'], [2014, 'Algebra', 'alg'], [2013, 'Algebra', 'alg'], [2012, 'Algebra', 'alg'], [2010, 'Algebra', 'alg'], [2009, 'Algebra', 'alg'], [2008, 'Algebra', 'alg']];
+      const roundYears = [[2018, 'Algebra and Number Theory', 'algnt'], [2017, 'Algebra and Number Theory', 'algnt'], [2016, 'Algebra', 'alg'], [2015, 'Algebra', 'alg'], [2014, 'Algebra', 'alg'], [2013, 'Algebra', 'alg'], [2012, 'Algebra', 'alg'], [2010, 'Algebra', 'alg'], [2009, 'Algebra', 'alg'], [2008, 'Algebra', 'alg'], [2007, 'Algebra', 'alg'], [2006, 'Algebra', 'alg']];
       const mixedRounds = [['Algebra and Combinatorics', 'algcomb'], ['Algebra and Geometry', 'alggeo'], ['Combinatorics and Geometry', 'combgeo']];
       roundYears.push([2011]);
       for (const [year, algebra, algebraFolder] of roundYears) {

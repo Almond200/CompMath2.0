@@ -45,7 +45,10 @@
     "2008 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2008/feb/geo/problems.pdf",
     "2007 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2007/feb/alg/problems.pdf",
     "2007 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2007/feb/comb/problems.pdf",
-    "2007 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2007/feb/geo/problems.pdf"
+    "2007 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2007/feb/geo/problems.pdf",
+    "2006 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2006/feb/alg/problems.pdf",
+    "2006 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2006/feb/comb/problems.pdf",
+    "2006 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2006/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -2047,6 +2050,126 @@
     "2007 HMMT February Geometry, Problem 10": [
       2450,
       "Split a tangential quadrilateral into two right triangles and compare their area sum with inradius times semiperimeter."
+    ],
+    "2006 HMMT February Algebra, Problem 1": [
+      1200,
+      "Eliminate swimming speed from two current-assisted trips and reuse the current correction for rowing."
+    ],
+    "2006 HMMT February Algebra, Problem 2": [
+      1700,
+      "Subtract a symmetric system to split it into equal-variable and fixed-sum branches."
+    ],
+    "2006 HMMT February Algebra, Problem 3": [
+      2200,
+      "Measure a collision band in an unequal arrival-time rectangle, including its clipped corner."
+    ],
+    "2006 HMMT February Algebra, Problem 4": [
+      2200,
+      "Shift a convergent Fibonacci-weighted series twice and use its recurrence to cancel all later terms."
+    ],
+    "2006 HMMT February Algebra, Problem 5": [
+      2600,
+      "Compare two angular velocities modulo a full turn, allowing either orientation of the smaller angle."
+    ],
+    "2006 HMMT February Algebra, Problem 6": [
+      2550,
+      "Introduce sums of square roots and pairwise square roots, then eliminate them with the cubic symmetric sums."
+    ],
+    "2006 HMMT February Algebra, Problem 7": [
+      2750,
+      "Restrict Gaussian-integer root norms using a quartic constant term and recover their real parts from Vieta."
+    ],
+    "2006 HMMT February Algebra, Problem 8": [
+      2550,
+      "Recognize fixed points of a quadratic iterate as a factor of a quartic and solve the remaining quadratic."
+    ],
+    "2006 HMMT February Algebra, Problem 9": [
+      3000,
+      "Factor a quartic denominator and decompose the summand into a geometric term plus a shifted telescoping difference."
+    ],
+    "2006 HMMT February Algebra, Problem 10": [
+      2850,
+      "Substitute a positive reciprocal difference and use a sharp AM-GM bound on the transformed denominator."
+    ],
+    "2006 HMMT February Combinatorics, Problem 1": [
+      1450,
+      "Use three-set inclusion-exclusion with the unknown triple intersection also determining one team size."
+    ],
+    "2006 HMMT February Combinatorics, Problem 2": [
+      2050,
+      "Interpret nested sums as nondecreasing tuples and shift them into a strictly increasing selection."
+    ],
+    "2006 HMMT February Combinatorics, Problem 3": [
+      2200,
+      "Count parity-compatible cube walks and remove the paths that already reached the absorbing target earlier."
+    ],
+    "2006 HMMT February Combinatorics, Problem 4": [
+      1850,
+      "Choose triples of boundary dots and subtract the collinear triples on each triangle side."
+    ],
+    "2006 HMMT February Combinatorics, Problem 5": [
+      2600,
+      "Encode a circular handout placement by bounded gaps and correct the count for the distinguished recipient."
+    ],
+    "2006 HMMT February Combinatorics, Problem 6": [
+      2150,
+      "Count short digit triples by the required factor five and the remaining power-of-two divisibility."
+    ],
+    "2006 HMMT February Combinatorics, Problem 7": [
+      3100,
+      "Track survival and cyclic separation of two players as each randomly paired round halves the field."
+    ],
+    "2006 HMMT February Combinatorics, Problem 8": [
+      2800,
+      "Normalize the first Sudoku row, classify the second and pair equivalent cases before counting completions."
+    ],
+    "2006 HMMT February Combinatorics, Problem 9": [
+      2800,
+      "Decompose a simple degree-two handshake graph into undirected cycles and account for equal-size components."
+    ],
+    "2006 HMMT February Combinatorics, Problem 10": [
+      3300,
+      "The intended extremal incidence argument counts same-correctness pairs, but the printed negation includes mixed-correctness answers too."
+    ],
+    "2006 HMMT February Geometry, Problem 1": [
+      1900,
+      "Extend alternate equiangular octagon sides to a rectangle and recover the missing side lengths."
+    ],
+    "2006 HMMT February Geometry, Problem 2": [
+      1650,
+      "The bisector of a right angle fixes the leg ratio, and the known hypotenuse fixes the area."
+    ],
+    "2006 HMMT February Geometry, Problem 3": [
+      2150,
+      "Compare the powers of two interior chord points to relate their endpoint gaps and solve one quadratic."
+    ],
+    "2006 HMMT February Geometry, Problem 4": [
+      2250,
+      "Compute a triangle area from its sides, then split it along a semicircle center to recover the radius."
+    ],
+    "2006 HMMT February Geometry, Problem 5": [
+      2700,
+      "Use a forced collinear extension, cevian ratios and two triangle-area differences to recover a quadrilateral area."
+    ],
+    "2006 HMMT February Geometry, Problem 6": [
+      2600,
+      "Compare two circles in a forty-five-degree corner and simplify the supplied trigonometric inradius."
+    ],
+    "2006 HMMT February Geometry, Problem 7": [
+      2500,
+      "Use the equal radii and trapezoid symmetry to turn tangent lengths into a right-triangle altitude product."
+    ],
+    "2006 HMMT February Geometry, Problem 8": [
+      2650,
+      "Reflect a trisector across a perpendicular side so the new angle bisector gives a linear length relation."
+    ],
+    "2006 HMMT February Geometry, Problem 9": [
+      3100,
+      "Relate four tangent spheres by a tetrahedral dihedral cross-section and the shared edge decomposition."
+    ],
+    "2006 HMMT February Geometry, Problem 10": [
+      3050,
+      "Locate a right-triangle arc midpoint and compare a corner-circle center power in two ways."
     ]
   }
 }
