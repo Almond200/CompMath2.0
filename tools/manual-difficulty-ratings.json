@@ -18,7 +18,10 @@
     "2017 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2017/feb/geo/problems.pdf",
     "2016 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2016/feb/alg/problems.pdf",
     "2016 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2016/feb/comb/problems.pdf",
-    "2016 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2016/feb/geo/problems.pdf"
+    "2016 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2016/feb/geo/problems.pdf",
+    "2015 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2015/feb/alg/problems.pdf",
+    "2015 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2015/feb/comb/problems.pdf",
+    "2015 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2015/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -820,6 +823,126 @@
     "2016 HMMT February Geometry, Problem 10": [
       3950,
       "Identify two radical-axis points of mixtilinear circles and turn the perpendicularity condition into an orthocenter equation."
+    ],
+    "2015 HMMT February Algebra, Problem 1": [
+      1400,
+      "Use a coefficient bound and a base-five evaluation to recover a polynomial."
+    ],
+    "2015 HMMT February Algebra, Problem 2": [
+      1500,
+      "Clear a restricted partial fraction identity and isolate two residues."
+    ],
+    "2015 HMMT February Algebra, Problem 3": [
+      2550,
+      "Identify the leading-order behavior of a rational expression and the only power producing a nonzero finite limit."
+    ],
+    "2015 HMMT February Algebra, Problem 4": [
+      2800,
+      "Pass to three excluded residues and count reflection-symmetric triples modulo an odd number."
+    ],
+    "2015 HMMT February Algebra, Problem 5": [
+      2450,
+      "Order three variables and bound the least pairwise product through the largest variable."
+    ],
+    "2015 HMMT February Algebra, Problem 6": [
+      2800,
+      "Use value-preserving exchanges to force small coefficients, then recover the unique maximizing residue pattern."
+    ],
+    "2015 HMMT February Algebra, Problem 7": [
+      3350,
+      "Translate quadratic interpolation into a finite difference, then optimize a trigonometric recurrence constraint."
+    ],
+    "2015 HMMT February Algebra, Problem 8": [
+      3550,
+      "Count squares in two polynomial quotient rings, distinguishing irreducible and split cases."
+    ],
+    "2015 HMMT February Algebra, Problem 9": [
+      3500,
+      "Use the binomial basis to characterize a polynomial vanishing modulo a large composite modulus."
+    ],
+    "2015 HMMT February Algebra, Problem 10": [
+      3400,
+      "Eliminate variables in an integer quadratic system and reduce to a short divisor check."
+    ],
+    "2015 HMMT February Combinatorics, Problem 1": [
+      1400,
+      "Update a uniform interval after an observed delay and find the remaining mean wait."
+    ],
+    "2015 HMMT February Combinatorics, Problem 2": [
+      1600,
+      "Condition on the stopping pairs rather than count any number of failed draws."
+    ],
+    "2015 HMMT February Combinatorics, Problem 3": [
+      2300,
+      "Derive a hitting-probability recurrence and extract the difference of two distant terms."
+    ],
+    "2015 HMMT February Combinatorics, Problem 4": [
+      3050,
+      "Turn a decreasing random process into a probability product and compute two prime valuations."
+    ],
+    "2015 HMMT February Combinatorics, Problem 5": [
+      2350,
+      "Count binary run endpoints across all strings instead of evaluating each integer separately."
+    ],
+    "2015 HMMT February Combinatorics, Problem 6": [
+      2400,
+      "Split a periodic coloring into two independent cycles and count nonadjacent selected positions."
+    ],
+    "2015 HMMT February Combinatorics, Problem 7": [
+      2200,
+      "Replace one count by its complement to turn a difference of binomials into a single binomial total."
+    ],
+    "2015 HMMT February Combinatorics, Problem 8": [
+      2600,
+      "Count the union of three cyclic digit congruences and their intersections."
+    ],
+    "2015 HMMT February Combinatorics, Problem 9": [
+      3100,
+      "Find a conditional color-exchange symmetry and infer the expected remaining red count."
+    ],
+    "2015 HMMT February Combinatorics, Problem 10": [
+      3850,
+      "Convert differently scaled continuous samples into an ordered-volume problem and use cyclic parking symmetry."
+    ],
+    "2015 HMMT February Geometry, Problem 1": [
+      1300,
+      "Identify the two excluded triangular regions of a rectangle for a fixed-slope line."
+    ],
+    "2015 HMMT February Geometry, Problem 2": [
+      1900,
+      "Use the centroid and medial-triangle area ratios; the chosen common point does not affect the ratio."
+    ],
+    "2015 HMMT February Geometry, Problem 3": [
+      2300,
+      "Place a right trapezoid in coordinates and compute two circle-line intersections."
+    ],
+    "2015 HMMT February Geometry, Problem 4": [
+      2750,
+      "Extend the opposite sides of a cyclic quadrilateral and compare two projected trapezoid areas."
+    ],
+    "2015 HMMT February Geometry, Problem 5": [
+      3200,
+      "Sandwich an inequality-defined region between translated sectors and identify its sharp asymptotic area bound."
+    ],
+    "2015 HMMT February Geometry, Problem 6": [
+      2200,
+      "Introduce one midpoint to expose a unit midsegment and an isosceles triangle."
+    ],
+    "2015 HMMT February Geometry, Problem 7": [
+      2950,
+      "Project to a common face edge and compute the acute angle between two pyramid faces."
+    ],
+    "2015 HMMT February Geometry, Problem 8": [
+      3400,
+      "Eliminate a moving circle center on a parabola and recognize the exact union boundary."
+    ],
+    "2015 HMMT February Geometry, Problem 9": [
+      3150,
+      "Normalize tetrahedral barycentrics and impose two vanishing coordinates for line incidence."
+    ],
+    "2015 HMMT February Geometry, Problem 10": [
+      3650,
+      "Transform an implicit radical curve into a circle and transfer a unique tangency back."
     ]
   }
 }
