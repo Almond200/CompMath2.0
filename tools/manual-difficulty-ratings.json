@@ -39,7 +39,10 @@
     "2010 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2010/feb/geo/problems.pdf",
     "2009 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2009/feb/alg/problems.pdf",
     "2009 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2009/feb/comb/problems.pdf",
-    "2009 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2009/feb/geo/problems.pdf"
+    "2009 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2009/feb/geo/problems.pdf",
+    "2008 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2008/feb/alg/problems.pdf",
+    "2008 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2008/feb/comb/problems.pdf",
+    "2008 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2008/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -1801,6 +1804,126 @@
     "2009 HMMT February Geometry, Problem 10": [
       3250,
       "Compare tangent lengths in an auxiliary triangle with Menelaus, then use the external secant power."
+    ],
+    "2008 HMMT February Algebra, Problem 1": [
+      1250,
+      "Subtract two squared symmetric sums to obtain a positive product."
+    ],
+    "2008 HMMT February Algebra, Problem 2": [
+      1650,
+      "Translate a repeated square-root stopping rule into alternating intervals with power-of-two endpoints."
+    ],
+    "2008 HMMT February Algebra, Problem 3": [
+      2000,
+      "A quadratic meets an absolute-value strip once only when its vertex touches the upper boundary."
+    ],
+    "2008 HMMT February Algebra, Problem 4": [
+      1750,
+      "Choose two arguments so the unknown function terms cancel directly."
+    ],
+    "2008 HMMT February Algebra, Problem 5": [
+      2200,
+      "Express the polynomial of squared roots through evaluations at opposite arguments."
+    ],
+    "2008 HMMT February Algebra, Problem 6": [
+      2600,
+      "Bound an integral quadratic coefficient using a unit root and its conjugate, then check the resulting orders."
+    ],
+    "2008 HMMT February Algebra, Problem 7": [
+      2600,
+      "Reverse a triangular infinite sum and evaluate the geometric and weighted-geometric factors."
+    ],
+    "2008 HMMT February Algebra, Problem 8": [
+      2300,
+      "Convert complementary tangents into a cotangent double-angle cancellation."
+    ],
+    "2008 HMMT February Algebra, Problem 9": [
+      3000,
+      "Reduce a reciprocal quartic to a quadratic and impose the real reciprocal-sum range on its parameter region."
+    ],
+    "2008 HMMT February Algebra, Problem 10": [
+      3150,
+      "Recognize the central-binomial coefficient series as a convergent negative-half-power binomial expansion."
+    ],
+    "2008 HMMT February Combinatorics, Problem 1": [
+      1800,
+      "The intended cube count splits 45-degree center pairs among six vertical slices; the printed block description is inconsistent."
+    ],
+    "2008 HMMT February Combinatorics, Problem 2": [
+      1800,
+      "Pair every subset with its reflected subset so their medians sum to a constant."
+    ],
+    "2008 HMMT February Combinatorics, Problem 3": [
+      2000,
+      "Species counts force exactly one cow-pig pair before matching all horses bijectively."
+    ],
+    "2008 HMMT February Combinatorics, Problem 4": [
+      2200,
+      "Count reachable lattice endpoints after an even walk using the distance bound and parity invariant."
+    ],
+    "2008 HMMT February Combinatorics, Problem 5": [
+      2300,
+      "Identify the smallest ternary-closed set as strings of zeroes and ones and check the numeric cutoff."
+    ],
+    "2008 HMMT February Combinatorics, Problem 6": [
+      2900,
+      "Use Sudoku-preserving column and digit symmetries under two fixed entries to derive one conditional cell probability."
+    ],
+    "2008 HMMT February Combinatorics, Problem 7": [
+      2900,
+      "Separate an unmatched circular vertex from a chosen noncrossing chord to derive the partial-matching recurrence."
+    ],
+    "2008 HMMT February Combinatorics, Problem 8": [
+      2750,
+      "Count downward-closed membership choices in a divisibility poset independently for each ground-set element."
+    ],
+    "2008 HMMT February Combinatorics, Problem 9": [
+      3150,
+      "Collapse a random king walk to coordinate parities and filter its bivariate probability generating function."
+    ],
+    "2008 HMMT February Combinatorics, Problem 10": [
+      2800,
+      "Pair each bounded digit with its matching quotient to turn a weighted constrained count into an unconstrained composition."
+    ],
+    "2008 HMMT February Geometry, Problem 1": [
+      1650,
+      "Classify the three possible side-length triples of cube-vertex triangles and compare their angle values."
+    ],
+    "2008 HMMT February Geometry, Problem 2": [
+      1850,
+      "Compare similar equilateral triangles formed by two circles tangent to the same angle sides."
+    ],
+    "2008 HMMT February Geometry, Problem 3": [
+      2050,
+      "The opposite tangency radii force an isosceles right triangle and a circular-segment area."
+    ],
+    "2008 HMMT February Geometry, Problem 4": [
+      2200,
+      "Equal circumradii force equal base angles before a short altitude computation."
+    ],
+    "2008 HMMT February Geometry, Problem 5": [
+      2350,
+      "Unfold a two-fold cut into a kite and distinguish the two possible circle-center vertices."
+    ],
+    "2008 HMMT February Geometry, Problem 6": [
+      2150,
+      "Recover a circumradius from an angle and chord, then evaluate the interior point power."
+    ],
+    "2008 HMMT February Geometry, Problem 7": [
+      2850,
+      "Use a radical center to match three tangent lengths and combine two half-angle tangents."
+    ],
+    "2008 HMMT February Geometry, Problem 8": [
+      3200,
+      "Unfold three side visits into a straight path between equal-radius circles and verify the folded path hits the required segments."
+    ],
+    "2008 HMMT February Geometry, Problem 9": [
+      3250,
+      "Show two secants from an incircle contact align with the diameter circle, then reduce their ratio to two contact chords."
+    ],
+    "2008 HMMT February Geometry, Problem 10": [
+      3550,
+      "Identify a polar intersection as a harmonic conjugate on the excircle contact line and compute it from tangent lengths."
     ]
   }
 }
