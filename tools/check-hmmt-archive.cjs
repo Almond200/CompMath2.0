@@ -10,7 +10,7 @@ const base = process.env.COMPMATH_URL || 'http://localhost:8898';
       const errors = [];
       page.on('pageerror', e => errors.push(e.message));
       await page.addInitScript(theme => localStorage.setItem('theme', theme), theme);
-      const roundYears = [[2018, 'Algebra and Number Theory', 'algnt'], [2017, 'Algebra and Number Theory', 'algnt'], [2016, 'Algebra', 'alg'], [2015, 'Algebra', 'alg'], [2014, 'Algebra', 'alg'], [2013, 'Algebra', 'alg']];
+      const roundYears = [[2018, 'Algebra and Number Theory', 'algnt'], [2017, 'Algebra and Number Theory', 'algnt'], [2016, 'Algebra', 'alg'], [2015, 'Algebra', 'alg'], [2014, 'Algebra', 'alg'], [2013, 'Algebra', 'alg'], [2012, 'Algebra', 'alg']];
       for (const [year, algebra, algebraFolder] of roundYears) {
         await page.goto(`${base}/#/problems/hmmt-february/${year}`);
         await page.locator('.ct-papers [role="tab"]').first().waitFor();
