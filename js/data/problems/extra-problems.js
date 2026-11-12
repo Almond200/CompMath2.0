@@ -63,6 +63,18 @@
     { q: String.raw`A square $ABCD$ has a smaller square inside it, and on the smaller square sit nine points: its four corners, the midpoints of its four sides, and its center $O$. Each outer corner is joined to the nearest inner corner, the outer square's sides are drawn, and the nine inner points are joined along the rows and columns of their $3\times3$ array. A token starts at one of $A$, $B$, $C$, $D$ and moves along drawn segments, one segment per step. In how many ways can it reach $O$ in exactly $5$ steps?`,
       s: String.raw`By symmetry track one number for each kind of point: an outer corner $a$, an inner corner $b$, an inner side midpoint $c$ and the center $d$. An outer corner touches two outer corners and one inner corner, an inner corner touches one outer corner and two midpoints, a midpoint touches two inner corners and the center, and the center touches the four midpoints, so each step sends $(a,b,c,d)$ to $(2a+b,\ a+2c,\ 2b+d,\ 4c)$. Starting from $(1,0,0,0)$ the rounds give $(2,1,0,0)$, $(5,2,2,0)$, $(12,9,4,8)$, $(33,20,26,16)$ and then $d=4\cdot26=\mathbf{104}$ walks.` }
   );
+  add("layer-by-layer-search",
+    { q: String.raw`A chess knight stands on a corner square of a $5\times5$ board. What is the fewest moves in which it can reach the opposite corner, and how many squares other than its own can it reach in at most two moves?`,
+      s: String.raw`Mark the corner $0$. A knight in a corner has two moves, so two squares are marked $1$. From those two squares the knight reaches nine squares that are not yet marked, which get $2$; ten more squares get $3$, and the last three squares, the opposite corner and the center among them, get $4$. The marks account for all $1+2+9+10+3=25$ squares. So the opposite corner takes $\mathbf{4}$ moves, and $2+9=\mathbf{11}$ other squares lie within two moves.` }
+  );
+  add("digit-occurrences",
+    { q: String.raw`The whole numbers from $1$ to $200$ are written in a row. How many times is the digit $0$ written?`,
+      s: String.raw`Units place: the numbers ending in $0$ are $10,20,\dots,200$, which is $20$ zeros. Tens place: the numbers $100$ to $109$ have tens digit $0$, and so does $200$, which is $11$ zeros; the numbers below $100$ have no tens digit $0$, because a leading zero is not written. No number here has hundreds digit $0$. The total is $20+11=\mathbf{31}$.` }
+  );
+  add("complete-subset-sums",
+    { q: String.raw`A set of whole-gram weights is to be chosen so that every whole number of grams from $1$ to $100$ can be balanced by putting some of the weights together on one pan. What is the least number of weights, and what is one set that works?`,
+      s: String.raw`With $n$ weights the totals that can be made number at most $2^n-1$, and $2^6-1=63\lt100$, so at least $7$ weights are needed. Seven are enough: take $1,2,4,8,16,32$, whose sums are all of $0$ to $63$, and add a seventh weight of $37$. Since $37\le63+1$, the sums now cover every value from $0$ to $63+37=100$ with no gap. The least number is $\mathbf{7}$, for example $1,2,4,8,16,32,37$.` }
+  );
   add("smoothing-method",
     { q: String.raw`For nonnegative reals with $a+b+c=10$, find the maximum and minimum of $ab+bc+ca$.`,
       s: String.raw`Since $ab+bc+ca=\frac{(a+b+c)^2-(a^2+b^2+c^2)}{2}$, it is largest when $a^2+b^2+c^2$ is smallest — smoothing to $a=b=c=\tfrac{10}{3}$ gives $\frac{100-100/3}{2}=\frac{100}{3}$. Pushing to the boundary $a=10,\,b=c=0$ gives the minimum $\mathbf{0}$.` },

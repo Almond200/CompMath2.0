@@ -9896,3 +9896,36 @@ Chains of rotations about different points, a segment carried by a turn and a tu
 A rare AIME step. Two turns about different points cancel, the figure only slides, and a rotation problem becomes a parallelogram or a triangle with a known side.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"isosceles-triangle": String.raw`
+## Key forms
+- $AB = AC \iff \angle B = \angle C$ — equal sides face equal angles, in both directions
+- $\angle A = 180^\circ - 2\angle B$ and $\angle B = \frac{180^\circ - \angle A}{2}$ — one angle gives the other two
+- the altitude, the median and the angle bisector from $A$ are one line, the [[perpendicular-bisector-locus|perpendicular bisector]] of $BC$ — the triangle's axis of symmetry
+- $h = \sqrt{s^2 - \frac{b^2}{4}}$ for equal sides $s$ and base $b$ — the height from the apex, from a right triangle on half the base
+
+## Conditions
+The triangle has $AB = AC$; $A$ is the apex and $BC$ the base. An equilateral triangle is isosceles in three ways. The base angles are always acute, because two of them fit inside $180^\circ$.
+
+## Why it works
+The idea is that the triangle is its own mirror image in the line from the apex to the midpoint of the base.
+
+Let $M$ be the midpoint of $BC$. Triangles $ABM$ and $ACM$ have $AB = AC$, $BM = CM$ and the side $AM$ in common, so they are [[triangle-congruence|congruent]] by SSS. Matching parts are equal: $\angle B = \angle C$, $\angle BAM = \angle CAM$ and $\angle AMB = \angle AMC$. The last two angles add to a straight angle, so each is $90^\circ$. So $AM$ is the median, the angle bisector and the altitude at once, and it is the perpendicular bisector of $BC$.
+
+For the converse, suppose $\angle B = \angle C$ and let $D$ be the foot of the altitude from $A$. Triangles $ABD$ and $ACD$ have a right angle at $D$, equal angles at $B$ and $C$, and the side $AD$ in common, so they are congruent by AAS and $AB = AC$.
+
+The [[polygon-angle-sums|angles of a triangle]] add to $180^\circ$, so $\angle A + 2\angle B = 180^\circ$, which gives both angle formulas. In the right triangle $ABM$ the legs are $h$ and $\frac{b}{2}$ and the hypotenuse is $s$, so the [[pythagorean-theorem|Pythagorean Theorem]] gives $h^2 = s^2 - \frac{b^2}{4}$.
+
+## Useful observations
+- An angle given without a label may be the apex angle or a base angle, which makes two cases; an angle of $90^\circ$ or more can only be the apex.
+- Two radii of a circle and the chord joining their ends form an isosceles triangle, the source of most equal angles in circle problems.
+- A point on the perpendicular bisector of a segment makes an isosceles triangle with its two ends.
+- A triangle in which an altitude is also a median, or also an angle bisector, is isosceles, by the same two congruent halves.
+
+## Applications
+Angle chasing with equal sides or radii, heights and areas found on half the base, and casework on which angle is the apex.
+
+## Contest profile
+An AMC 8 and AMC 10 staple: one angle of an isosceles triangle is given and another is asked, often with two cases, or a height is found on half the base. On the AMC 12 and the AIME it is a step inside angle chases with radii and equal tangents.
+`
+});

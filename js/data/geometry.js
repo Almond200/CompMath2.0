@@ -84,6 +84,16 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10"]
         },
         {
+          id: "isosceles-triangle",
+          name: "Isosceles Triangle",
+          latex: String.raw`AB = AC \iff \angle B = \angle C, \qquad \angle A = 180^\circ - 2\angle B`,
+          description: String.raw`An isosceles triangle has two equal sides, and the angles opposite those sides, the base angles, are equal; conversely, a triangle with two equal angles has the opposite sides equal. Whenever a triangle has two equal sides or two equal angles, one angle gives all three, and the line from the apex to the midpoint of the base is the altitude, the median and the angle bisector at once. With apex angle $v$ and base angle $b$, $v = 180^\circ - 2b$ and $b = \frac{180^\circ - v}{2}$.`,
+          keywords: ["isosceles triangle", "base angles equal", "equal sides equal angles", "apex angle", "vertex angle", "altitude bisects the base", "axis of symmetry of a triangle", "two equal sides"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
+        },
+        {
           id: "triangle-similarity",
           name: "Triangle Similarity Criteria",
           latex: String.raw`\text{AA},\ \ \text{SAS},\ \ \text{SSS}, \qquad DE \parallel BC \Rightarrow \triangle ADE \sim \triangle ABC`,

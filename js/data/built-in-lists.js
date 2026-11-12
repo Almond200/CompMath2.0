@@ -15,11 +15,11 @@ window.MATH_BUILTIN_LISTS = [
 
   // ---- Study routes: contest tier x subject, complete ----
   { id: "route-amc-geometry", name: "AMC 10/12 Geometry", kind: "route", tier: "AMC", subject: "Geometry",
-    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 181 cards across 13 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 182 cards across 13 sections.",
     sections: [
       { title: "The Fundamentals",
         note: "The facts every other tool here is built on. When a geometry problem stalls, it is usually one of these you have not used yet.",
-        ids: ["pythagorean-theorem", "special-right-triangles", "altitude-hypotenuse", "median-to-hypotenuse", "triangle-inequality", "triangle-type-by-sides", "integer-triangles-perimeter", "similar-figures-ratios", "midsegment-theorem", "intercept-theorem", "centroid-division", "cevian-area-ratio", "equilateral-triangle-facts", "15-75-90-triangle", "golden-ratio-pentagon", "inscribed-square", "isoperimetric-facts", "perpendicular-bisector-locus", "triangle-congruence", "parallel-exterior-angles", "triangle-similarity", "parallel-by-angle-sum", "clock-angle"] },
+        ids: ["pythagorean-theorem", "special-right-triangles", "altitude-hypotenuse", "median-to-hypotenuse", "triangle-inequality", "triangle-type-by-sides", "integer-triangles-perimeter", "similar-figures-ratios", "midsegment-theorem", "intercept-theorem", "centroid-division", "cevian-area-ratio", "equilateral-triangle-facts", "15-75-90-triangle", "golden-ratio-pentagon", "inscribed-square", "isoperimetric-facts", "perpendicular-bisector-locus", "triangle-congruence", "parallel-exterior-angles", "triangle-similarity", "parallel-by-angle-sum", "clock-angle", "isosceles-triangle"] },
       { title: "Triangles: Sides, Areas & Radii",
         note: "The workhorses. Come here first when the figure hands you side lengths and wants another length or an area.",
         ids: ["triangle-area-standard", "trig-area", "max-rectangle-in-triangle", "herons-formula", "inradius-area", "incenter-area-split", "circumradius-area", "right-triangle-inradius", "incircle-tangent-lengths", "incircle-excircle-touch", "shared-angle-area-ratio", "same-base-area-ratio", "law-of-sines", "law-of-cosines", "law-cosines-60-120", "law-of-cosines-special-triangles", "angle-bisector-theorem", "angle-bisector-length", "angle-bisector-circumcircle", "altitude-bisector-angle", "stewarts-theorem", "cevas-theorem", "apollonius-theorem", "median-triangle-area", "vivianis-theorem", "projection-formula", "triangle-13-14-15", "conway-circle"] },
@@ -129,17 +129,17 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cycle-hunting", "cryptarithms", "digit-manipulation", "calendar-problems", "quadratic-perfect-square", "palindromes"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
-    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 84 cards across 11 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 88 cards across 11 sections.",
     sections: [
       { title: "Counting Basics",
         note: "Arrangements, selections and distributions. Almost every harder count reduces to one of these.",
-        ids: ["permutations-combinations", "multiset-permutations", "circular-permutations", "grid-paths", "rectangles-in-grid", "handshakes-diagonals", "counting-functions", "subset-sum-facts", "stars-and-bars", "stars-bars-upper-bound", "balls-boxes-table", "organized-listing", "fencepost-counting", "counting-shapes", "inversions-adjacent-swaps"] },
+        ids: ["permutations-combinations", "multiset-permutations", "circular-permutations", "grid-paths", "rectangles-in-grid", "handshakes-diagonals", "counting-functions", "subset-sum-facts", "stars-and-bars", "stars-bars-upper-bound", "balls-boxes-table", "organized-listing", "fencepost-counting", "counting-shapes", "inversions-adjacent-swaps", "complete-subset-sums"] },
       { title: "Binomial Coefficients",
         note: "The identities worth knowing cold, since they turn a sum into a single coefficient.",
         ids: ["pascals-identity", "binomial-row-sums", "hockey-stick", "vandermonde", "committee-chair", "multinomial-theorem", "pascal-parity", "nested-subset-pairs", "squared-binomial-sum"] },
       { title: "Ways to Reframe a Count",
         note: "Count something else instead: the complement, a bijection, or the same thing twice.",
-        ids: ["complementary-counting", "symmetry-probability", "bijection-method", "pie", "inclusion-exclusion", "casework-method", "constructive-counting", "uniform-overcount", "grid-path-fill", "elimination-counting"] },
+        ids: ["complementary-counting", "symmetry-probability", "bijection-method", "pie", "inclusion-exclusion", "casework-method", "constructive-counting", "uniform-overcount", "grid-path-fill", "elimination-counting", "digit-occurrences"] },
       { title: "Recursion & States",
         note: "When the count for n depends on the count for smaller n.",
         ids: ["states-recursion-prob", "recursive-counting", "derangements", "non-adjacent-selection", "catalan-numbers", "parking-functions", "moser-circle", "plane-regions", "restricted-sequences", "tiling-a-board", "simulate-the-process", "working-backwards", "walk-counting-dp"] },
@@ -160,7 +160,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["eulerian-paths", "graph-coloring", "disconnected-graph-edges"] },
       { title: "Games & Placement",
         note: "Two-player games with a forced outcome, and arrangements with a spacing constraint.",
-        ids: ["backward-induction", "strategy-stealing", "gap-method", "counting-blocks", "geometric-probability", "truth-tellers-logic", "round-robin-tournaments", "magic-squares"] },
+        ids: ["backward-induction", "strategy-stealing", "gap-method", "counting-blocks", "geometric-probability", "truth-tellers-logic", "round-robin-tournaments", "magic-squares", "forced-entries", "layer-by-layer-search"] },
       { title: "Generating Functions",
         note: "Encoding a counting problem as a polynomial and reading off a coefficient.",
         ids: ["indicator-variables", "generating-function-method"] }

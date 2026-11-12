@@ -202,8 +202,14 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     await page.emulateMedia({ reducedMotion:'no-preference' });
     assert.equal(await page.evaluate(() => window.AppAccessibility.scrollBehavior()), 'smooth');
     await navigate('#/formulas/geometry', '.card');
-    const targets = await page.locator('.card-actions button').first().evaluate(el => ({ w:el.getBoundingClientRect().width, h:el.getBoundingClientRect().height }));
-    assert.ok(targets.w >= (width === 375 ? 40 : 24) && targets.h >= (width === 375 ? 40 : 24));
+    // A touch target is at least 40px, but the drawn button keeps its 24px: the extra is an
+    // invisible margin, so a finger 17px off the centre still lands on the button.
+    const hitArea = el => { const r = el.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      const hits = (dx, dy) => { const t = document.elementFromPoint(cx + dx, cy + dy); return !!t && (t === el || el.contains(t)); };
+      return { w:r.width, h:r.height, reach:[[-17,0],[17,0],[0,-17],[0,17]].filter(([dx,dy]) => hits(dx, dy)).length }; };
+    const targets = await page.locator('.card-actions button').first().evaluate(hitArea);
+    assert.ok(targets.w >= 24 && targets.h >= 24 && targets.w <= 32 && targets.h <= 32, 'the drawn button stays small');
+    if (width === 375) assert.ok(targets.reach >= 3, 'the touch area reaches about 40px: ' + JSON.stringify(targets));
     assert.equal(await page.locator('.star-btn').first().getAttribute('aria-label'), 'Star for later');
     assert.ok((await page.locator('.card-name > a').first().getAttribute('href')).startsWith('#/f/'));
     const cardLink = page.locator('.card-name > a').first();
@@ -264,7 +270,7 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     await navigate('#/list/a11y-check', '[data-group-edit]');
     await page.locator('[data-group-edit]').first().click(); await page.locator('.ge').waitFor();
     await searchBorder(page.locator('.ge-find-input'));
-    if (width === 375) assert.ok(await page.locator('.ge-ico').first().evaluate(el => el.getBoundingClientRect().width >= 40 && el.getBoundingClientRect().height >= 40));
+    if (width === 375) assert.equal(await page.locator('.ge-ico').first().evaluate(el => { const a = getComputedStyle(el, '::after'); return parseFloat(a.width) >= 40 && parseFloat(a.height) >= 40 && el.getBoundingClientRect().width < 40; }), true, 'editor icons: small drawn size, 40px touch area');
     await page.locator('[data-ge-chip="casework-method"]').click();
     await page.locator('[data-ge-act="moveto"][data-i="1"]').click();
     assert.equal(await page.locator('[data-ge-zone="1"] [data-ge-chip="casework-method"]').count(), 1);

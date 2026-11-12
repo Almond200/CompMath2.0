@@ -788,5 +788,10 @@ window.MATH_TOPIC_HOMES = {
   "sum-difference-angle-product": "alg.trig.identity.sum",
   "bounded-diophantine-count": "nt.dio.linear.count",
   "composing-rotations": "geo.coord.transform.rotate",
-  "inversions-adjacent-swaps": "cp.basic.perm"
+  "inversions-adjacent-swaps": "cp.basic.perm",
+  "isosceles-triangle": "geo.tri.special.isos",
+  "forced-entries": "cp.logic.puzzle.grid",
+  "layer-by-layer-search": "cp.graph.basic.paths",
+  "digit-occurrences": "cp.struct.words.digits",
+  "complete-subset-sums": "cp.basic.comb.subsets"
 };

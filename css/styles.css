@@ -4662,9 +4662,13 @@ dialog.app-confirm { inset-block: 0 12vh; }
 .star-btn, .addlist-btn, .copy-btn { min-width: 24px; min-height: 24px; display: inline-flex; align-items: center; justify-content: center; }
 .addlist-btn, .copy-btn { opacity: 1; }
 .nsh-info { width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; }
+/* On a touch screen the drawn buttons keep their size (owner, 2026-11-12: grown to 40px boxes they
+   looked huge beside a card's name); an invisible margin around each brings the area that
+   answers a finger to at least 40px. */
 @media (pointer: coarse) {
-  .star-btn, .addlist-btn, .copy-btn, .ge-ico, #pr-lists .pl-new-btn, .nsh-info { min-width: 40px; min-height: 40px; }
-  .card-head { padding-right: 92px; }
+  .star-btn, .addlist-btn, .copy-btn, .ge-ico, #pr-lists .pl-new-btn, .nsh-info { position: relative; }
+  :is(.star-btn, .addlist-btn, .copy-btn, .ge-ico, #pr-lists .pl-new-btn, .nsh-info)::after {
+    content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, 40px); height: max(100%, 40px); transform: translate(-50%, -50%); }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
@@ -4827,7 +4831,9 @@ button.tt-tw:hover { background: var(--border); color: var(--text); }
   /* On a narrow page the tree is the index page itself; once a topic is chosen it folds away
      behind "All topics", which opens it above the topic. */
   .browse-topics { display: flex; flex-direction: column; gap: 12px; }
-  .tt { position: static; max-height: none; display: none; }
+  /* Not a scroll box on a phone: it is as tall as its list, and a box that could scroll but has
+     nothing to scroll swallowed the swipe (owner, 2026-11-12: dragging on the rail did nothing). */
+  .tt { position: static; max-height: none; display: none; overflow: visible; overscroll-behavior: auto; }
   .browse-topics.rail-open .tt, .browse-topics.is-index .tt { display: block; }
   .browse-topics.is-index .browse-main { order: -1; }
   .browse-topics.is-index .br-subjects { display: none; }
@@ -4946,3 +4952,11 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
    ring: the browser's own ring framed the whole page as soon as any key was pressed and stayed
    until a click elsewhere (owner, 2026-11-12). Tab still moves on to the first control. */
 #content:focus, #content:focus-visible, #content :is(h1, h2, h3)[tabindex="-1"]:focus, #content :is(h1, h2, h3)[tabindex="-1"]:focus-visible { outline: none; }
+
+/* Problems by topic: the page ends where the rail's column ends, so the rail, as tall as the
+   window allows, is still wholly in view at the very bottom of the page (owner, 2026-11-12: the
+   120px of blank space under the page pushed its top up behind the bar). */
+.content:has(> .browse-page > .browse-topics) { padding-bottom: 12px; }
+.browse-page:has(> .browse-topics) { padding-bottom: 0; margin-bottom: 0; }
+/* A row's reference never runs over the rating beside it. */
+.br-row .br-ref { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
