@@ -169,7 +169,8 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
       assert.equal(new URL(page.url()).hash, '#/formulas/geometry');
     }
     await link.focus(); await link.press('Enter'); await page.waitForURL(url => url.hash === target);
-    assert.ok(await page.evaluate(() => document.activeElement.closest('#content') !== null));
+    // Focus moves to the page once it has rendered; wait for that, not for the address alone.
+    await page.waitForFunction(() => document.activeElement.closest('#content') !== null);
     if (width === 375) {
       assert.equal(await page.locator('#sidebar').evaluate(el => el.inert), true);
       await page.locator('#nav-toggle').click(); await page.keyboard.press('Escape');
@@ -238,6 +239,15 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
       }
       if (artifactDir) await page.screenshot({ path:path.join(artifactDir, `home-focus-${theme}.png`) });
     }
+    // The main region and the page heading take script focus without drawing a ring, even once a
+    // key has been pressed; Tab then moves on to a real control, which does show one.
+    await navigate('#/f/pythagorean-theorem', '.contest-profile');
+    await page.evaluate(() => document.getElementById('content').focus()); await page.keyboard.press('Shift');
+    assert.equal(await page.evaluate(() => document.activeElement.id + ':' + getComputedStyle(document.activeElement).outlineStyle), 'content:none');
+    await page.evaluate(() => window.AppAccessibility.focusMain()); await page.keyboard.press('Shift');
+    assert.equal(await page.evaluate(() => document.activeElement.tagName + ':' + getComputedStyle(document.activeElement).outlineStyle), 'H2:none');
+    await page.keyboard.press('Tab');
+    assert.equal(await page.evaluate(() => document.activeElement.matches('button, a') && getComputedStyle(document.activeElement).outlineStyle), 'solid');
     await navigate('#/', '.hm-book');
     await page.keyboard.press('Tab');
     const books=page.locator('.hm-book');

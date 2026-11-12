@@ -85,7 +85,11 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  for(const f of ['AMC 8','AMC 10','AMC 12','HMMT February'])await page.locator(`[data-br-fam="${f}"]`).click();
  assert.deepEqual(await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent)),['AIME']);
  await page.locator('[data-br-fam="AIME"]').click();assert.equal(await page.locator('[data-br-fam][aria-pressed="true"]').count(),5,'switching the last contest off restores all');
- const more=page.locator('[data-br-more]').first();if(await more.count()){const g=more.locator('xpath=..');const n=parseInt(await g.locator('.br-count').innerText());await more.click();assert.equal(await page.locator('.br-group').filter({has:page.locator('.br-count',{hasText:new RegExp('^'+n+' ')})}).first().locator('.br-row').count(),n);}
+ const more=page.locator('[data-br-more]').first();if(await more.count()){const g=more.locator('xpath=..');const n=parseInt(await g.locator('.br-count').innerText());await more.click();const grp=page.locator('.br-group').filter({has:page.locator('.br-count',{hasText:new RegExp('^'+n+' ')})}).first();assert.equal(await grp.locator('.br-row').count(),n);
+  // A list opened in full offers Show less, which folds it back and keeps its heading on screen.
+  const less=grp.locator('[data-br-less]');assert.equal(await less.innerText(),'Show less');assert.equal(await grp.locator('[data-br-more]').count(),0);await less.scrollIntoViewIfNeeded();await less.click();
+  assert.equal(await grp.locator('.br-row').count(),30);assert.equal(await grp.locator('[data-br-more]').innerText(),'Show all '+n);assert.equal(await grp.locator('[data-br-less]').count(),0);
+  assert.equal(await grp.locator('.br-group-h').evaluate(el=>{const r=el.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight;}),true,'the group heading is in view after folding');}
  await page.locator('.br-step').first().click();await page.waitForFunction(()=>/2400/.test(document.querySelector('.br-band-h')?.textContent));assert.match(await page.locator('.br-band-h').innerText(),/^Rated 2400 to 2599$/);
  await page.locator('.br-row').first().click();await page.locator('.prob-chain').waitFor();await page.goBack();await page.locator('.br-band-h').waitFor();
  assert.match(await page.locator('.back-link').first().innerText(),/Contests/);

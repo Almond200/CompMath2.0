@@ -1,5 +1,5 @@
 // CHROME=/usr/bin/chromium COMPMATH_URL=http://localhost:8765 node tools/check-practice-card.cjs
-// Practice a card: the panel after Practice a contest, the kind chooser, the card search with
+// Practice a card: the panel after Practice a topic, the kind chooser, the card search with
 // counts, difficulty in Elo terms, and a generated set whose every problem cites the card.
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),path=require('node:path');
 const base=process.env.COMPMATH_URL||'http://localhost:8765',root=path.join(__dirname,'..');
@@ -12,7 +12,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await page.addInitScript(t=>localStorage.setItem('theme',t),theme);
  const fits=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no horizontal overflow at '+page.url());
  await page.goto(base+'/#/practice');const form=page.locator('#card-practice-form');await form.waitFor();
- const heads=await page.locator('.sh-section > h3').allInnerTexts();assert.equal(heads[heads.indexOf('Practice a contest')+1],'Practice a card','it follows Practice a contest');
+ const heads=await page.locator('.sh-section > h3').allInnerTexts();assert.deepEqual(heads.slice(heads.indexOf('Practice a topic'),heads.indexOf('Practice a topic')+3),['Practice a topic','Practice a card','Practice a contest'],'it sits with Practice a topic, before Practice a contest');
  assert.deepEqual(await form.locator('[data-card-kind]').allInnerTexts(),['Formula','Method','Pattern']);assert.equal(await form.locator('[type="submit"]').isDisabled(),true);
  assert.match(await page.locator('#card-band-note').innerText(),/^Difficulty is measured inside the card you choose/);
  // Nothing is offered until something is typed; then the matching cards, most problems first.
