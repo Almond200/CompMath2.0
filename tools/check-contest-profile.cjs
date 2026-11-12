@@ -42,7 +42,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   const counted=await contests.locator('tbody tr td:nth-child(3)').allInnerTexts();assert.equal(counted.reduce((a,b)=>a+ +b,0),e.n,'the contests add up to the problems');
   const words=await rowOf(pf,'Difficulty').locator('.pf-words').innerText();
   assert.equal(words,`Median rating ${e.med}. Half of its problems are rated ${e.q1} to ${e.q3}; the full range is ${e.min} to ${e.max}. The median is harder than ${e.harder}% of all problems.`);
-  const chart=rowOf(pf,'Difficulty').locator('.elo-chart');assert.equal(await chart.locator('.elo-bar').count(),18);assert.equal(await chart.locator('a').count(),0,'a card\'s chart does not link to the full ranges');assert.equal(await chart.locator('.elo-mark').count(),1);
+  const chart=rowOf(pf,'Difficulty').locator('.elo-chart');assert.equal(await chart.locator('.elo-bar').count(),18);assert.deepEqual(await chart.locator('a.elo-bar').evaluateAll(xs=>xs.map(x=>x.getAttribute('href'))),Array.from({length:18},(_,i)=>'#/browse/difficulty/'+(200+200*i)),'every bar opens its range');assert.equal(await chart.evaluate(el=>el.classList.contains('has-cur')),false,'no bar is singled out');assert.equal(await chart.locator('.elo-mark').count(),1);
   const topics=rowOf(pf,'Topics');assert.equal(await topics.locator('tbody tr').count(),5);assert.equal(await topics.locator('tbody tr').first().locator('td').nth(1).innerText(),String(e.top));
   const tn=(await topics.locator('tbody tr td:nth-child(3)').allInnerTexts()).map(Number);assert.deepEqual(tn,[...tn].sort((a,b)=>b-a),'most used topic first');
   const time=rowOf(pf,'Over time');assert.match(await time.locator('.pf-words').innerText(),new RegExp(`${e.recent} of the ${e.n} are from ${e.last} on\\.$`));
@@ -50,6 +50,8 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   if(width===1280)assert(await contests.locator('.pf-meter').first().isVisible());else assert.equal(await contests.locator('.pf-meter').first().isVisible(),false,'no bars on a phone');
   assert.doesNotMatch(await pf.innerText(),/LIVE/);await fits();
  }
+ // A bar of the card's chart opens that range's page.
+ await rowOf(page.locator('.contest-profile'),'Difficulty').locator('a.elo-bar[href$="/2000"]').click();await page.locator('.br-band-h').waitFor();assert.match(await page.locator('.br-band-h').innerText(),/^Rated 2000 to 2199$/);await page.goBack();await page.locator('.contest-profile').waitFor();
  // A topic opens its Problems by topic page.
  const href=await page.locator('.pf-topics tbody a').first().getAttribute('href');assert.match(href,/^#\/browse\/topics\/[\w.-]+$/);
  await page.locator('.pf-topics tbody a').first().click();await page.locator('.browse-topics').waitFor();await page.goBack();await page.locator('.contest-profile').waitFor();
@@ -75,7 +77,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   assert.equal(await rowOf(tp,'Difficulty').locator('.pf-words').innerText(),`Median rating ${med}. Half of its problems are rated ${q(elos,.25)} to ${q(elos,.75)}; the full range is ${Math.min(...elos)} to ${Math.max(...elos)}. The median is harder than ${Math.round(db.filter(p=>p.elo<med).length/db.length*100)}% of all problems.`);
   const aimeN=ps.filter(p=>/ AIME\b/.test(p.ref)).length;assert.equal(await rowOf(tp,'Contests').locator('tbody tr').filter({hasText:'AIME'}).locator('td').nth(1).innerText(),String(aimeN));
   const cards=rowOf(tp,'Cards').locator('tbody tr');assert.equal(await cards.count(),6);assert.equal(await cards.first().locator('td').nth(1).innerText(),String(Math.max(...Object.values(cited))));
-  assert.match(await cards.first().locator('a').getAttribute('href'),/^#\/f\/[\w-]+$/);assert.equal(await rowOf(tp,'Difficulty').locator('.elo-chart a').count(),0);
+  assert.match(await cards.first().locator('a').getAttribute('href'),/^#\/f\/[\w-]+$/);assert.equal(await rowOf(tp,'Difficulty').locator('.elo-chart a.elo-bar').count(),18);
   // It folds away and stays folded on the next topic; the problems keep their own heading below it.
   assert.deepEqual(await page.locator('.browse-main .pp-h').allInnerTexts(),['Topic profile','Problems']);
   const fold=page.locator('[data-tp-toggle]');assert.equal(await fold.innerText(),'Hide');await fold.click();assert.equal(await page.locator('.tp-body').isVisible(),false);assert.equal(await fold.innerText(),'Show');assert.equal(await fold.getAttribute('aria-expanded'),'false');

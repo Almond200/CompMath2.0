@@ -1,5 +1,9 @@
 # Changelog
 
+**2026-11-12**
+
+- **Four interface fixes (owner):** Practice a card moves up beside Practice a topic, before Practice a contest. The bars of a card's and a topic's rating chart are links now: each opens that range on Problems by difficulty (they showed their label on hover but did nothing on a click). **Focus frame:** the main region and the page heading take focus by script when a page opens and when blank space is clicked; once any key was pressed the browser drew its ring around the whole page and kept it until a click elsewhere. They are not controls and now draw no ring; Tab still moves to the first control, which does. **Show less:** a contest's list opened with Show all now ends with Show less, which folds it back to thirty and brings the contest's heading into view. The four checks cover each (`check-accessibility.cjs` also waits for the page's focus instead of racing it).
+
 **2026-11-11**
 
 - **Three small follow-ups (owner):** Practice a card's search offers nothing until something is typed (it had listed the most used cards on focus). The profiles' "1 in N of all problems" figure is replaced by one line per contest the card or topic appears in ("1 in 25 AMC 10", "1 in 17 AIME"; a contest with only a few papers shows its plain count), since one figure across contests of very different sizes said little. A paper's Subjects section gains a pie of the split; each subject now has one colour (algebra blue, counting orange, geometry teal, number theory purple, the tokens `--subj-*`) in the pie, its row's dot and its bar, so the table is the pie's legend. The three checks cover each.

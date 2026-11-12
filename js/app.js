@@ -2994,7 +2994,7 @@
           ? `Median rating <b>${med}</b>. Half of its problems are rated ${quantile(elos, 0.25)} to ${quantile(elos, 0.75)}; the full range is ${elos[0]} to ${elos[elos.length - 1]}. ${versus}`
           : `Rated ${list(elos)}. ${versus}`;
         out.rows.difficulty = row("Difficulty", `<p class="pf-words">${words}</p>${elos.length >= 8
-          ? `<div class="pf-plot">${eloChartHtml({ pool: probs, shown: fams.map(x => x.fam), mark: med, compact: true, links: false })}</div>` : ""}`, elos.length >= 8);
+          ? `<div class="pf-plot">${eloChartHtml({ pool: probs, shown: fams.map(x => x.fam), mark: med, compact: true, focus: false })}</div>` : ""}`, elos.length >= 8);
       }
 
       // Over time: its share of each five-year period's problems (a share, because the periods
@@ -5893,7 +5893,8 @@
     });
     update();
   }
-  // Practice a card (owner, 2026-11-11): an untimed set from the contest problems that cite one
+  // Practice a card (owner, 2026-11-11; it sits right after Practice a topic, its sibling, and
+  // before Practice a contest): an untimed set from the contest problems that cite one
   // formula, method or pattern. It draws from the same eligible, twin-free pool as Practice a
   // topic (the Mixed pool) and builds the same kind of saved set; only the choice differs.
   function cardPracticePanelHtml() {
@@ -6084,8 +6085,8 @@
             <button type="submit" class="hp-btn">Generate set</button>
           </fieldset></form>
         </section>
-        ${mockPracticePanelHtml()}
         ${cardPracticePanelHtml()}
+        ${mockPracticePanelHtml()}
         <section class="sh-section" id="pr-contests">
           <h3>Contests</h3>
           <p class="practice-panel-intro">Browse past papers by contest and year.</p>
@@ -9384,19 +9385,19 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // `shown` are the contests drawn, `active` those in colour (the rest stay as a grey backdrop);
   // `mark` is a rating drawn as a line, `selected` the bin whose problems are listed below. Every
   // bar links to its range on the difficulty page, unless `pool` is some other set of problems.
-  function eloChartHtml({ pool = PROBLEM_DB, shown = RATED_FAMS, active = shown, mark = null, selected = null, compact = false, links = true } = {}) {
+  function eloChartHtml({ pool = PROBLEM_DB, shown = RATED_FAMS, active = shown, mark = null, selected = null, compact = false, links = true, focus = true } = {}) {
     const bins = eloBins(), counts = new Map(bins.map(b => [b, {}]));
     for (const p of pool) if (Number.isFinite(p.elo) && shown.includes(p.fam)) { const c = counts.get(binOf(p.elo)); c[p.fam] = (c[p.fam] || 0) + 1; }
     const total = (b, fams) => fams.reduce((n, f) => n + (counts.get(b)[f] || 0), 0);
     const max = Math.max(1, ...bins.map(b => total(b, shown))), span = ELO_HI - ELO_LO;
     const order = [...shown.filter(f => active.includes(f)), ...shown.filter(f => !active.includes(f))];
-    const cur = !links ? null : mark != null ? binOf(mark) : selected;
+    // `focus: false` draws every bar at full strength: a card's or a topic's chart marks its
+    // median with the line, and no one bar is the subject.
+    const cur = !links || !focus ? null : mark != null ? binOf(mark) : selected;
     const bars = bins.map(b => {
       const n = total(b, shown), on = total(b, active);
       const segs = order.filter(f => counts.get(b)[f]).map(f => `<i style="flex:${counts.get(b)[f]};background:${active.includes(f) ? famColor(f) : "var(--border)"}"></i>`).join("");
       const label = `${on} problem${on === 1 ? "" : "s"}`, col = `<span style="height:${n ? Math.max(1.5, n / max * 100).toFixed(1) : 0}%">${segs}</span>`;
-      // A chart of some other pool (a card's problems) is a picture: its bars do not open the
-      // range's page, which lists every problem in the range.
       // The whole column answers the pointer, not only the drawn bar, so hovering it tints the
       // column and shows its range and count at once (`data-tip`, drawn by CSS; the browser's
       // own tooltip came late and lingered over the wrong column). A column with no problems
@@ -9458,7 +9459,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const shown = browseOpen.has(f) ? list : list.slice(0, BROWSE_PAGE);
       return `<section class="br-group"><h3 class="br-group-h">${famDot(f)}${f}<span class="br-count">${list.length} problem${list.length === 1 ? "" : "s"}</span></h3>
         <div class="br-list">${shown.map(p => `<a class="br-row" href="#/problem/${p.slug}"><span class="br-ref">${refShort(p.ref)}</span><span class="br-elo">${Number.isFinite(p.elo) ? p.elo : "–"}</span></a>`).join("")}</div>
-        ${list.length > shown.length ? `<button type="button" class="ct-toggle" data-br-more="${escapeAttr(f)}">Show all ${list.length}</button>` : ""}</section>`;
+        ${list.length > shown.length ? `<button type="button" class="ct-toggle" data-br-more="${escapeAttr(f)}">Show all ${list.length}</button>`
+          : list.length > BROWSE_PAGE ? `<button type="button" class="ct-toggle" data-br-less="${escapeAttr(f)}">Show less</button>` : ""}</section>`;
     }).join("");
     return groups || `<p class="chain-empty">No problems here.</p>`;
   }
@@ -9496,8 +9498,19 @@ The book remembers the last lesson you opened, in this browser, and the contents
       rail.querySelector(`[data-tt="${id}"]`)?.focus({ preventScroll: true });
       return;
     }
-    const fam = e.target.closest("[data-br-fam]"), more = e.target.closest("[data-br-more]"), mob = e.target.closest(".tt-mobile-btn");
+    const fam = e.target.closest("[data-br-fam]"), more = e.target.closest("[data-br-more]"), less = e.target.closest("[data-br-less]"), mob = e.target.closest(".tt-mobile-btn");
     if (mob) { const open = mob.closest(".browse-topics").classList.toggle("rail-open"); mob.setAttribute("aria-expanded", String(open)); return; }
+    // Show less folds a contest's list back to its first rows and brings its heading into view,
+    // since the button sat at the foot of a long list that has just gone.
+    if (less) {
+      const f = less.dataset.brLess;
+      browseOpen.delete(f);
+      renderBrowse(getRoute());
+      const again = $content.querySelector(`[data-br-more="${CSS.escape(f)}"]`), head = again?.closest(".br-group")?.querySelector(".br-group-h");
+      if (head) { const top = head.getBoundingClientRect().top; if (top < (document.querySelector(".topbar")?.offsetHeight || 0) + 8 || top > window.innerHeight) window.scrollTo({ top: window.scrollY + top - (document.querySelector(".topbar")?.offsetHeight || 0) - 14, behavior: "instant" }); }
+      again?.focus({ preventScroll: true });
+      return;
+    }
     if (!fam && !more) return;
     if (fam) {
       const f = fam.dataset.brFam;
@@ -9509,6 +9522,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     renderBrowse(getRoute());
     window.scrollTo(0, y);
     if (name) $content.querySelector(`[${name}="${CSS.escape(value)}"]`)?.focus({ preventScroll: true });
+    else if (more) $content.querySelector(`[data-br-less="${CSS.escape(more.dataset.brMore)}"]`)?.focus({ preventScroll: true });
   });
   function renderBrowse(route) {
     shownIds = [];

@@ -4940,3 +4940,9 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 .pp-pie path, .pp-pie circle { stroke: var(--bg); stroke-width: 1.5; }
 :root[data-theme="dark"] :is(.pp-pie, .pp-table .pf-meter i, .pp-table .fam-dot) { filter: saturate(1.05) brightness(0.86); }
 @media (max-width: 640px) { .pp-subjects { gap: 14px; } .pp-pie { width: 96px; height: 96px; } }
+
+/* The main region and the page heading take focus by script when a page opens (so a screen
+   reader starts there) and when blank space is clicked. They are not controls, so they draw no
+   ring: the browser's own ring framed the whole page as soon as any key was pressed and stayed
+   until a click elsewhere (owner, 2026-11-12). Tab still moves on to the first control. */
+#content:focus, #content:focus-visible, #content :is(h1, h2, h3)[tabindex="-1"]:focus, #content :is(h1, h2, h3)[tabindex="-1"]:focus-visible { outline: none; }
