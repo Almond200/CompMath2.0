@@ -3163,7 +3163,7 @@
   function linkLabel(fam) { return ARCHIVE_URL[fam] ? "archive" : "AoPS"; }
   // HMMT publishes each round as two PDFs, the paper and its solutions. A reference names the
   // year, the tournament and the round, which is the whole address.
-  const HMMT_CODE = { "Algebra and Number Theory": "algnt", "Combinatorics": "comb", "Geometry": "geo" };
+  const HMMT_CODE = { "Algebra": "alg", "Algebra and Number Theory": "algnt", "Combinatorics": "comb", "Geometry": "geo" };
   function hmmtPdf(ref, which) {
     const m = ref.match(/^(\d{4}) HMMT (February|November) (.+?),\s*Problem\s+\d+$/);
     return m && HMMT_CODE[m[3]] ? `https://hmmt-archive.s3.amazonaws.com/tournaments/${m[1]}/${m[2].slice(0, 3).toLowerCase()}/${HMMT_CODE[m[3]]}/${which}.pdf` : null;

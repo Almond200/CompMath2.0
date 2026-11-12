@@ -15,7 +15,10 @@
     "2018 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2018/feb/geo/problems.pdf",
     "2017 HMMT February Algebra and Number Theory": "https://hmmt-archive.s3.amazonaws.com/tournaments/2017/feb/algnt/problems.pdf",
     "2017 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2017/feb/comb/problems.pdf",
-    "2017 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2017/feb/geo/problems.pdf"
+    "2017 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2017/feb/geo/problems.pdf",
+    "2016 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2016/feb/alg/problems.pdf",
+    "2016 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2016/feb/comb/problems.pdf",
+    "2016 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2016/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -697,6 +700,126 @@
     "2017 HMMT February Geometry, Problem 10": [
       3550,
       "Invert a tangential quadrilateral so its vertices become contact-chord midpoints, then compare midpoint ratios."
+    ],
+    "2016 HMMT February Algebra, Problem 1": [
+      1200,
+      "Interpret two complex moduli as distances and recover the real projection."
+    ],
+    "2016 HMMT February Algebra, Problem 2": [
+      1750,
+      "Rule out odd exponent factors before checking the remaining small Fermat-number cases."
+    ],
+    "2016 HMMT February Algebra, Problem 3": [
+      1700,
+      "List the two possible digit patterns and collect their squared place-value contributions."
+    ],
+    "2016 HMMT February Algebra, Problem 4": [
+      2700,
+      "Remove floors with periodic remainders, sum a full unit cycle, and divide in the correct modulus."
+    ],
+    "2016 HMMT February Algebra, Problem 5": [
+      2100,
+      "Sum the recurrence so the middle terms cancel and use the equal terminal values."
+    ],
+    "2016 HMMT February Algebra, Problem 6": [
+      3050,
+      "Classify universal coprime-sum representations by parity and split powers of two to cover every length."
+    ],
+    "2016 HMMT February Algebra, Problem 7": [
+      3250,
+      "Express a concatenation as shifted powers and locate the least two-adic valuations, including the tie case."
+    ],
+    "2016 HMMT February Algebra, Problem 8": [
+      3150,
+      "Pair units with inverses, count self-inverse residues by prime powers, and classify the product."
+    ],
+    "2016 HMMT February Algebra, Problem 9": [
+      3950,
+      "Convert a signed weighted permutation sum to a circulant determinant and evaluate its root-of-unity eigenvalues."
+    ],
+    "2016 HMMT February Algebra, Problem 10": [
+      3750,
+      "Realize a nonlinear system as three Fermat-point distances and invert to evaluate the requested expression."
+    ],
+    "2016 HMMT February Combinatorics, Problem 1": [
+      1450,
+      "Classify small parallel-line patterns under the no-three-concurrent condition."
+    ],
+    "2016 HMMT February Combinatorics, Problem 2": [
+      1800,
+      "Set up a restart expectation for the first pair of consecutive matching letters."
+    ],
+    "2016 HMMT February Combinatorics, Problem 3": [
+      2000,
+      "Count allowable prime-exponent pairs, subtract from all divisor pairs, and include signs."
+    ],
+    "2016 HMMT February Combinatorics, Problem 4": [
+      2050,
+      "Separate the central edge and count connected subsets of a two-cell ladder, with the source convention for the empty subset."
+    ],
+    "2016 HMMT February Combinatorics, Problem 5": [
+      2600,
+      "Track independent parity choices through six weighted additions to show uniformity of the final residue."
+    ],
+    "2016 HMMT February Combinatorics, Problem 6": [
+      2850,
+      "Identify power-of-two blocks in a piecewise recurrence and count their attainable differences."
+    ],
+    "2016 HMMT February Combinatorics, Problem 7": [
+      3000,
+      "Factor the dice-sum generating polynomial and distribute its factors under the official positive-label interpretation."
+    ],
+    "2016 HMMT February Combinatorics, Problem 8": [
+      3400,
+      "Understand the extremal gap between function values, then count two overlapping allowed-value families."
+    ],
+    "2016 HMMT February Combinatorics, Problem 9": [
+      3500,
+      "Classify which permutation cycle types can preserve a tree, then count their conjugacy classes."
+    ],
+    "2016 HMMT February Combinatorics, Problem 10": [
+      3750,
+      "Derive and attain the stronger coverage condition for two disjoint subset sums with sequential allocation."
+    ],
+    "2016 HMMT February Geometry, Problem 1": [
+      2100,
+      "Classify the simple equal-edge orthogonal dodecagons and the indicated triangle areas."
+    ],
+    "2016 HMMT February Geometry, Problem 2": [
+      2100,
+      "Reflect the orthocenter and circumcenter and recognize a doubled midsegment."
+    ],
+    "2016 HMMT February Geometry, Problem 3": [
+      1300,
+      "Cancel the shared triangle-circle overlap before evaluating the two standard areas."
+    ],
+    "2016 HMMT February Geometry, Problem 4": [
+      2600,
+      "Recognize a constructed circle intersection as the original circumcenter, then compute its radius."
+    ],
+    "2016 HMMT February Geometry, Problem 5": [
+      2950,
+      "Count intersections of radical axes while correcting the forced triple concurrences."
+    ],
+    "2016 HMMT February Geometry, Problem 6": [
+      3150,
+      "Use incircle contacts, arc midpoints and several equilateral triangles to identify a base and height."
+    ],
+    "2016 HMMT February Geometry, Problem 7": [
+      2450,
+      "Recognize a right triangle in a modular distance model and compute its squared circumradius."
+    ],
+    "2016 HMMT February Geometry, Problem 8": [
+      3600,
+      "Characterize hull membership for six random radial points and evaluate a continuous two-variable probability."
+    ],
+    "2016 HMMT February Geometry, Problem 9": [
+      3650,
+      "Relate two incenters through equal radii, power, similarity and a Stewart identity."
+    ],
+    "2016 HMMT February Geometry, Problem 10": [
+      3950,
+      "Identify two radical-axis points of mixtilinear circles and turn the perpendicularity condition into an orthocenter equation."
     ]
   }
 }
