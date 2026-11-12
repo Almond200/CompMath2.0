@@ -1874,8 +1874,8 @@ window.MATH_SECTIONS.push({
       title: "Counting & Probability",
       groups: [
         { title: "Reframing the Count", blurb: "Counting something easier with the same answer: the complement, a bijection, a reflected path, a region's area, or the same set counted twice.", ids: ["complementary-counting", "bijection-method", "double-counting", "symmetry-probability", "reflection-principle", "elimination-counting", "geometric-probability"] },
-        { title: "Building & Splitting", blurb: "Building each object step by step, gluing items that must stay together or slotting items into gaps, or splitting the count into cases.", ids: ["constructive-counting", "casework-method", "counting-blocks", "gap-method", "uniform-overcount", "pie"] },
-        { title: "Working It Out by Hand", blurb: "Listing the cases in an order that cannot skip or repeat one, or running a short process step by step until it ends or repeats.", ids: ["organized-listing", "simulate-the-process"] },
+        { title: "Building & Splitting", blurb: "Building each object step by step, gluing items that must stay together or slotting items into gaps, or splitting the count into cases.", ids: ["constructive-counting", "casework-method", "digit-occurrences", "counting-blocks", "gap-method", "uniform-overcount", "pie"] },
+        { title: "Working It Out by Hand", blurb: "Listing the cases in an order that cannot skip or repeat one, or running a short process step by step until it ends or repeats.", ids: ["organized-listing", "forced-entries", "layer-by-layer-search", "simulate-the-process"] },
         { title: "Recursion & States", blurb: "Writing a count or probability in terms of smaller cases, filling a grid of counts, or solving the recursion.", ids: ["recursive-counting", "grid-path-fill", "walk-counting-dp", "states-recursion-prob", "transfer-matrix-method", "backward-induction"] },
         { title: "Algebraic Machinery", blurb: "Encoding a count as algebra, with generating functions or indicator variables.", ids: ["generating-function-method", "indicator-variables"] },
         { title: "Existence Arguments", blurb: "Proving that something exists, or cannot, with invariants, monovariants, extremes, or probability.", ids: ["invariants-coloring", "monovariant", "extremal-principle", "dimension-arguments", "probabilistic-method", "odd-part-chains", "coloring-arguments", "pairing-to-bound", "strategy-stealing"] }
@@ -2002,6 +2002,37 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
         {
+          id: "forced-entries",
+          name: "Filling In What Is Forced",
+          type: "method",
+          subject: "counting",
+          when: String.raw`A grid, a row of places or a matching has to be filled so that every row, column, neighbor or clue is satisfied, and the question asks for one entry or for the whole filling.`,
+          move: String.raw`Find a place where the rules leave only one possibility, fill it, and cross that value off for the places it touches; repeat until the asked entry is settled.`,
+          uses: [],
+          latex: String.raw`\text{only one value fits} \;\Longrightarrow\; \text{fill it, then look again}`,
+          description: String.raw`Filling in what is forced solves a puzzle with fixed rules without guessing: at each step it finds a place that the rules leave only one option for, and fills it. Each filled place removes options from its row, its column or its neighbors, which forces further places, so a short chain of certain steps reaches the answer. When no place is forced, it splits on the place with the fewest options and continues in each case.`,
+          keywords: ["latin square", "each row and column once", "logic grid", "forced cell", "process of elimination", "only one possibility", "fill in the table", "matching edges", "sudoku", "deduce the order", "method"],
+          importance: "low",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10"]
+        },
+        {
+          id: "layer-by-layer-search",
+          name: "Exploring a Network Layer by Layer",
+          type: "method",
+          subject: "counting",
+          when: String.raw`A network of people, towns or positions is given by its links, and the question asks which points lie within a set number of steps of a starting point, or how few steps a route between two points can take.`,
+          move: String.raw`Mark the start as layer $0$, then build each next layer from the unmarked neighbors of the layer before, until the asked distance is reached or nothing new appears.`,
+          uses: [],
+          latex: String.raw`L_{k+1} = \{\text{neighbors of } L_k\} \setminus (L_0 \cup L_1 \cup \cdots \cup L_k)`,
+          latexPlain: String.raw`\text{layer } k + 1 = \text{the neighbors of layer } k \text{ that are in no earlier layer}`,
+          description: String.raw`Exploring layer by layer sorts the points of a network by their distance from a starting point: layer $k$ holds exactly the points whose shortest route from the start has $k$ steps. Each layer is found from the one before by taking its neighbors that have not been reached yet, so nothing is counted twice and nothing in range is missed. It answers who is within $k$ steps, how far apart two points are, and which points cannot be reached at all.`,
+          keywords: ["friends of friends", "within two steps", "shortest route length", "distance in a graph", "breadth first search", "reachable points", "degrees of separation", "minimum number of moves", "layers", "method"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
           id: "simulate-the-process",
           name: "Simulating the Process",
           type: "method",
@@ -2106,6 +2137,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "digit-occurrences",
+          name: "Counting a Digit Place by Place",
+          type: "method",
+          subject: "counting",
+          when: String.raw`Numbers are written out one after another, as page numbers, house numbers or a list from $1$ to $N$, and the question asks how many times one digit is written, or how far a supply of that digit lasts.`,
+          move: String.raw`Count the digit's appearances in the units place, in the tens place and in each further place separately, then add the counts.`,
+          uses: [],
+          latex: String.raw`\#\{d \text{ written}\} = \#_{\text{units}} + \#_{\text{tens}} + \#_{\text{hundreds}} + \cdots`,
+          description: String.raw`Counting a digit place by place finds how often a digit is written across a run of numbers by taking one decimal place at a time. In each place the digits cycle regularly, so a full block of consecutive numbers contributes a fixed amount and only the partial block at the end of the range needs care. A number such as $22$ is counted once for each place where the digit stands, which is what a count of written digits requires.`,
+          keywords: ["how many times is the digit written", "page numbers", "house numbers", "digit appears", "count the sevens", "numbering pages", "units place and tens place", "occurrences of a digit", "method"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10"]
         },
         {
           id: "counting-blocks",
@@ -2232,12 +2278,12 @@ window.MATH_SECTIONS.push({
           name: "Counting Paths by Filling the Grid",
           type: "method",
           subject: "counting",
-          when: String.raw`Lattice paths have to be counted on a grid with blocked squares, extra allowed steps or an irregular shape, so that a single binomial coefficient no longer applies.`,
+          when: String.raw`Paths have to be counted on a grid with blocked squares, extra allowed steps or an irregular shape, or through a network of one-way links, so that a single binomial coefficient no longer applies.`,
           move: String.raw`Write $1$ at the start and $0$ on blocked cells, then fill every other cell with the sum of the numbers in the cells that step into it, sweeping so that each cell's predecessors come first.`,
           uses: ["grid-paths", "pascals-identity"],
           latex: String.raw`N = N_{\text{left}} + N_{\text{below}}`,
           description: String.raw`Filling the grid counts paths by writing, in every cell, how many paths reach it. Each path into a cell arrives through exactly one neighboring cell, so the numbers build up by addition, and obstacles and odd shapes cost nothing extra.`,
-          keywords: ["counting paths with obstacles", "blocked squares", "potholes", "pipe stepping", "label the grid", "fill in the grid", "grid path dynamic programming", "paths avoiding a point", "how many ways to get from a to b", "pascal grid", "delannoy", "diagonal steps", "walk on a grid"],
+          keywords: ["counting paths with obstacles", "blocked squares", "potholes", "pipe stepping", "label the grid", "fill in the grid", "grid path dynamic programming", "paths avoiding a point", "how many ways to get from a to b", "pascal grid", "delannoy", "diagonal steps", "walk on a grid", "paths along the arrows", "one-way network", "routes through a diagram"],
           importance: "medium",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]

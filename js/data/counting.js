@@ -112,6 +112,16 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
         {
+          id: "complete-subset-sums",
+          name: "Subset Sums with No Gaps",
+          latex: String.raw`a_1 = 1 \ \text{and}\ a_{k+1} \le 1 + (a_1 + \cdots + a_k) \text{ for all } k \iff \text{every integer from } 0 \text{ to } a_1 + \cdots + a_n \text{ is a subset sum}`,
+          description: String.raw`A list of positive integers $a_1 \le a_2 \le \cdots \le a_n$ has subset sums covering every integer from $0$ to its total exactly when $a_1 = 1$ and each later term is at most one more than the sum of the terms before it. It decides whether coins, stamps or weights can make every amount up to some bound, by turning "every amount can be made" into one inequality per term. It also shows that doubling, $1, 2, 4, 8, \ldots$, is the fastest a list with no gaps can grow.`,
+          keywords: ["subset sums", "every amount can be made", "stamps", "coins and weights", "consecutive sums", "no gaps", "postage", "powers of two weights", "complete sequence", "smallest amount that cannot be made"],
+          importance: "lower",
+          tier: "AIME Early",
+          level: ["AMC12", "AIME"]
+        },
+        {
           id: "subset-sum-facts",
           name: "Subset-Sum Facts",
           latex: String.raw`\sum_{S\subseteq A}\ \sum_{x\in S} x \;=\; 2^{\,n-1}\sum_{x\in A} x`,

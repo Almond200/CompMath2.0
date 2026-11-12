@@ -1829,6 +1829,8 @@ Usually the decisive reformulation: once the objects are recoded, a standard for
 ## When to use
 Counting lattice paths on a grid with blocked squares, extra steps such as diagonals, or a missing region, so that one binomial coefficient no longer gives the answer. An open grid with only right and up steps is one binomial coefficient, $\binom{m + n}{n}$, and needs no filling. When the moves can go back and forth and the number of steps is fixed, every place must be updated once per step instead: that is [[walk-counting-dp|Counting Walks Step by Step]].
 
+The same filling counts the routes through a network of one-way links, such as a diagram of points joined by arrows: the points take the place of the cells, and a point's number is the sum of the numbers at the points with an arrow into it. It may equally be run backwards from the finish, giving each point the sum of the numbers at the points its arrows lead to.
+
 ## How
 1. Write $1$ at the starting cell.
 2. Write $0$ on every blocked cell.
@@ -1839,7 +1841,7 @@ Counting lattice paths on a grid with blocked squares, extra steps such as diago
 Paths of right and up steps from $(0, 0)$ to $(4, 3)$ that avoid the points $(2, 1)$ and $(1, 2)$: filling the grid gives $5$ at the target, as the first figure shows. As a check, there are $\binom73 = 35$ paths in all, $\binom31\binom42 = 18$ pass through $(2, 1)$, $\binom31\binom41 = 12$ pass through $(1, 2)$, and no path passes through both, leaving $35 - 18 - 12 = 5$.
 
 ## Why it works
-Every path into a cell arrives by exactly one last step, from one of the cells that step into it, so the paths reaching the cell are split by that neighbor, and adding the neighbors' numbers counts each path once. A blocked cell has no paths through it, so its $0$ makes every later sum skip it. On an open grid of right and up steps the numbers are Pascal's triangle turned on its side, and the count at $(m, n)$ is $\binom{m + n}{n}$. Allowing a diagonal step adds a third neighbor to every sum, as the second figure shows.
+Every path into a cell arrives by exactly one last step, from one of the cells that step into it, so the paths reaching the cell are split by that neighbor, and adding the neighbors' numbers counts each path once. The argument uses only that every step leads onward, so that the cells can be filled in an order with each cell after the ones stepping into it; a network of one-way links with no way back to a point already left has the same property. A blocked cell has no paths through it, so its $0$ makes every later sum skip it. On an open grid of right and up steps the numbers are Pascal's triangle turned on its side, and the count at $(m, n)$ is $\binom{m + n}{n}$. Allowing a diagonal step adds a third neighbor to every sum, as the second figure shows.
 
 ## Formulas it uses
 - [[grid-paths]]: $\binom{m + n}{n}$ paths on an open grid, the count before any blocking and a check on the table.
@@ -1851,7 +1853,7 @@ Every path into a cell arrives by exactly one last step, from one of the cells t
 - Leaving a blocked cell empty and then copying a neighbor's value through it.
 
 ## Contest profile
-Usually the whole count when a path problem has an obstacle; for a single blocked point, the total minus the paths through it is a quick check.
+Usually the whole count when a path problem has an obstacle; for a single blocked point, the total minus the paths through it is a quick check. Early AMC 8 problems use the same count on a small diagram of one-way arrows.
 `,
 
 "recursive-counting": String.raw`
@@ -3804,5 +3806,142 @@ No formula is needed: each round is a sum over neighbors. Written with the adjac
 
 ## Contest profile
 A medium AMC problem asks for the walks of a bug on a cube or a frog on a few lily pads after $4$ to $6$ steps, and an AIME problem adds a vertex where the walk stops, asking for every walk that ends there within $12$ steps; probabilities divide the count by the number of all walks.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"forced-entries": String.raw`
+## When to use
+A small grid in which every row and column holds each symbol once, tiles whose touching edges must match, or a list of people, places or numbers with clues about who goes where, and one entry is asked for. The method fits when the rules are all-or-nothing, so that a place either can or cannot hold a value.
+
+If the question asks how many fillings exist, the same steps find the free choices and [[constructive-counting|constructive counting]] multiplies them. If the clues are statements that may be true or false, the puzzle is about [[truth-tellers-logic|truth-tellers]], and it needs cases on who is truthful first.
+
+## How
+1. Write the rules as what each place cannot hold: the values already in its row, in its column or on the edge it must match.
+2. Look for a place with exactly one value left, or a value with exactly one place left in some row, column or group.
+3. Fill it.
+4. Cross that value off for every place the new entry constrains.
+5. Repeat from step 2 until the asked entry is filled.
+6. If nothing is forced, take the place with the fewest options and follow each option as a separate case.
+
+In a $3 \times 3$ grid where each row and column holds $1$, $2$, $3$ once, with $1$ in the top-left corner and $2$ in the center, the top-middle cell cannot be $1$ (its row) or $2$ (its column), so it is $3$. The top row then ends in $2$, and every other cell is forced in the same way.
+
+## Why it works
+Every step is a certainty. A value is filled only when the rules allow no other value in that place, or no other place for that value, so every valid filling of the whole puzzle agrees with it. By induction on the number of steps, every valid filling contains all the entries filled so far, and an entry reached this way is the answer whatever the remaining places hold.
+
+The method shows that the entry is the only possible one; it does not show that a complete filling exists, which a contest puzzle states or implies. When it stops with no forced place, a place with $k$ options splits the fillings into $k$ separate families, and the same argument runs inside each.
+
+## Formulas it uses
+No formula is needed: each step compares the options left in a place with the rules.
+
+## Common traps
+- Filling a place because a value is possible there when another value is possible too; only a single remaining option is forced.
+- Missing the second way to be forced: a value that fits only one place in a row, although that place has other options by its own row and column.
+- Not crossing off after a fill, so a later place is checked against options that are already gone.
+- Guessing early and never checking the other branch.
+
+## Contest profile
+An early AMC 8 problem: a small grid with each symbol once in every row and column, tiles with matching edges, or an ordering with a few clues, asking for one entry. Later problems ask how many completions a partly filled grid has.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"layer-by-layer-search": String.raw`
+## When to use
+A diagram of dots joined by lines, such as friendships, roads or flights, with a question about everything within two or three links of one dot. The same method answers a puzzle that asks for the fewest moves from one position to another, where the positions are the dots and the legal moves are the links.
+
+If the question counts the routes with a given number of steps instead of asking how near things are, a route may return to a point it has visited, and [[walk-counting-dp|counting walks step by step]] is the right table.
+
+## How
+1. Mark the starting point with $0$.
+2. Mark every unmarked neighbor of the start with $1$.
+3. For $k = 1, 2, \ldots$ in turn, mark every unmarked neighbor of a point marked $k$ with $k + 1$.
+4. Stop when the asked distance is reached, or when a round marks nothing new.
+5. Read the answer from the marks: the points within $k$ steps are those marked $1$ to $k$, and an unmarked point cannot be reached.
+
+Six towns stand in a ring, each joined to its two neighbors. From one town the layers have sizes $1$, $2$, $2$, $1$, so the farthest town is three steps away and four towns lie within two steps.
+
+## Why it works
+The claim is that the mark on a point is the length of a shortest route to it from the start. It holds for the mark $0$, which only the start carries.
+
+Suppose it holds for all marks up to $k$. A point $v$ marked $k + 1$ is a neighbor of a point marked $k$, so it has a route of $k + 1$ steps. It has no shorter one: the point just before $v$ on a route of at most $k$ steps would lie within $k - 1$ steps of the start, so it would be marked at most $k - 1$, and $v$ would have been marked in an earlier round.
+
+Conversely, a point whose shortest route has $k + 1$ steps has a neighbor at distance $k$, the point before it on that route, so round $k + 1$ marks it. Marking only unmarked points keeps a point that can be reached in two ways from being counted twice.
+
+## Formulas it uses
+No formula is needed: each round lists the neighbors of the last layer and skips the points already marked.
+
+## Common traps
+- Counting a point once for each neighbor that leads to it; a point belongs to the first layer that reaches it and to no other.
+- Counting the starting point among the points within $k$ steps when the question asks about the others.
+- Taking the first route found between two points as the shortest; it is the shortest only when the layers were built in order.
+- Assuming every point can be reached: a separate cluster never gets a mark.
+
+## Contest profile
+A middle AMC 8 problem shows a friendship diagram and asks who is, or is not, within two links of one person. Move-counting puzzles on the AMC 10 and AMC 12 ask for the fewest moves between two positions.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"digit-occurrences": String.raw`
+## When to use
+Pages, lockers or houses are numbered in order and one digit is being counted: how many times it is written, how many stickers of it are needed, or how far a fixed supply of it reaches.
+
+If the question asks how many numbers contain the digit at least once, a number with the digit twice counts once, and counting the numbers without the digit by [[complementary-counting|complementary counting]] is cleaner. If it asks for every digit written, of all ten kinds together, the numbers are grouped by length instead, as on [[digit-count|the number of digits]].
+
+## How
+1. Fix the digit $d$ and the range of numbers.
+2. Units place: in every $10$ consecutive numbers, $d$ appears once.
+3. Tens place: in every $100$ consecutive numbers, $d$ appears $10$ times, in one run of ten numbers.
+4. Go on in the same way: in the $10^k$ place, $d$ appears $10^k$ times in every $10^{k+1}$ consecutive numbers.
+5. List the incomplete block at the top of the range and count it directly.
+6. Add the counts over the places.
+
+From $1$ to $99$ the digit $7$ is written $10$ times in the units place and $10$ times in the tens place, $20$ times in all, although only $19$ numbers contain a $7$.
+
+## Why it works
+The number of times $d$ is written is the sum, over the numbers, of how many places of that number hold $d$. Adding in the other order, it is the sum, over the places, of how many numbers hold $d$ in that place. So the places can be counted one at a time.
+
+In a fixed place the digit depends only on the number's remainder on division by $10^{k+1}$. As the numbers run through $10^{k+1}$ consecutive values, the digit in the $10^k$ place takes each value from $0$ to $9$ for exactly $10^k$ of them. So every full block contributes $10^k$, and the numbers left over are few enough to list. A leading zero is not written, so for the digit $0$ the highest places are counted directly.
+
+## Formulas it uses
+No formula is needed beyond the regular cycle of each decimal place.
+
+## Common traps
+- Counting the numbers that contain the digit instead of the digits written: $22$ uses two $2$s.
+- Treating the partial block at the end as a full one.
+- Counting leading zeros when the digit is $0$.
+- In a supply problem, stopping at the last number that uses the digit: after the supply runs out, the numbers without the digit can still be written, up to the next number that needs it.
+
+## Contest profile
+An AMC 8 problem about numbering pages, lockers or houses with a limited supply of one digit, or about how many times a digit is written in a list. AMC 10 versions ask for the total over a longer range.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"complete-subset-sums": String.raw`
+## Key forms
+- $a_1 = 1$ and $a_{k+1} \le 1 + (a_1 + \cdots + a_k)$ for every $k$ $\iff$ the subset sums are all of $0, 1, \ldots, S$ — sorted positive integers with total $S$
+- a list whose subset sums are all of $0, \ldots, T$, with a new term $a \le T + 1$ added, has subset sums all of $0, \ldots, T + a$ — the covered interval grows by the new term
+- $n$ terms cover at most $0, 1, \ldots, 2^n - 1$ — reached only by $1, 2, 4, \ldots, 2^{n-1}$
+
+## Conditions
+The terms are positive integers in nondecreasing order, repeats allowed, and each term is used at most once in a sum, so three equal stamps are three terms. If the test first fails at $a_{k+1}$, the smallest amount that cannot be made is $1 + a_1 + \cdots + a_k$. If each value may be used any number of times, the question is a different one, answered by [[chicken-mcnugget|the Chicken McNugget Theorem]].
+
+## Why it works
+The idea is that the sums made from the first few terms form an unbroken interval, and one more term adds a shifted copy of that interval above it.
+
+Write $T_k = a_1 + \cdots + a_k$. Suppose the sums of the first $k$ terms are exactly $0, 1, \ldots, T_k$, which holds for $k = 1$ because $a_1 = 1$. The sums that use $a_{k+1}$ are $a_{k+1}, a_{k+1} + 1, \ldots, a_{k+1} + T_k$. If $a_{k+1} \le T_k + 1$, this run starts no later than one past the old interval, so together they give every integer from $0$ to $T_{k+1}$. That is the second form, and by induction the condition in the first form is enough.
+
+The condition is also necessary. If $a_1 \ge 2$, the amount $1$ cannot be made. If $a_{k+1} \gt T_k + 1$ for some $k$, consider the amount $T_k + 1$, which is less than the total. A sum that uses $a_{k+1}$ or any later term is at least $a_{k+1}$, more than $T_k + 1$, and a sum of earlier terms is at most $T_k$. So $T_k + 1$ is missed.
+
+For the third form, $a_{k+1} \le T_k + 1$ gives $T_{k+1} \le 2T_k + 1$. Starting from $T_1 = 1$, this gives $T_n \le 2^n - 1$, with equality only when every term equals $T_k + 1$, which is the list $1, 2, 4, \ldots, 2^{n-1}$.
+
+## Useful observations
+- To cover $0$ to $N$ with the fewest terms, grow as fast as the condition allows: each new term one more than the total so far.
+- With several copies of a few denominations, sort all the copies into one list; the condition then says how many of each smaller denomination are needed before the next denomination may appear.
+- A list that passes the test covers everything up to its total, so "every amount up to $N$" needs only the test and a total of at least $N$.
+
+## Applications
+The fewest stamps, coins or weights that make every amount up to a bound, the smallest amount that cannot be made, and binary weights.
+
+## Contest profile
+A late AIME problem asks for the fewest stamps of a few denominations that make every postage up to a bound. AMC versions ask for the smallest amount that a given handful of coins cannot make.
 `
 });

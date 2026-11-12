@@ -1856,7 +1856,12 @@
     "inversions-adjacent-swaps": "formula",
     "subtract-swapped-equations": "method",
     "averaging-principle": "formula",
-    "walk-counting-dp": "method"
+    "walk-counting-dp": "method",
+    "isosceles-triangle": "formula",
+    "forced-entries": "method",
+    "layer-by-layer-search": "method",
+    "digit-occurrences": "method",
+    "complete-subset-sums": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -9082,6 +9087,36 @@
       [
         "(new card)",
         "written directly in the method template"
+      ]
+    ],
+    "isosceles-triangle": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "forced-entries": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "layer-by-layer-search": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "digit-occurrences": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "complete-subset-sums": [
+      [
+        "(new card)",
+        "written directly in the formula template"
       ]
     ]
   }

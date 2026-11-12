@@ -4901,6 +4901,25 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
+  DIAGRAMS["isosceles-triangle"] = [(() => {
+    // Equal sides 13, base 10, height 12 (two 5-12-13 halves) at 17 px per unit: the numbers the
+    // caption quotes, so the figure and the height formula agree.
+    const k = 17, M = [215, 268], B = [215 - 5 * k, 268], C = [215 + 5 * k, 268], A = [215, 268 - 12 * k];
+    const ok = Math.abs(dist(A, B) - 13 * k) < 1e-9 && Math.abs(dist(A, B) - dist(A, C)) < 1e-9
+      && Math.abs((A[0] - M[0]) * (C[0] - B[0]) + (A[1] - M[1]) * (C[1] - B[1])) < 1e-9 && Math.abs(dist(B, M) - dist(M, C)) < 1e-9;
+    return wrap(430, 340, [
+      poly([A, B, C], DIM, 2.2, ACCS),
+      seg(A, M, GLD, 2, "6 4"), rightAngle(M, C, A, 11, GLD),
+      ticksOn(A, B, 1, ACC), ticksOn(A, C, 1, ACC), ticksOn(B, M, 2, DIM), ticksOn(M, C, 2, DIM),
+      angleArc(B, C, A, 26, ORG), angleArc(C, A, B, 26, ORG),
+      dot(A, DIM, 4.5), dot(B, DIM, 4.5), dot(C, DIM, 4.5), dot(M, DIM, 4),
+      txt(add(A, [0, -12]), "A", DIM, 13), txt(add(B, [-14, 7]), "B", DIM, 13), txt(add(C, [14, 7]), "C", DIM, 13), txt(add(M, [0, 20]), "M", DIM, 12.5),
+      txt(add(mid(A, B), [-24, 2]), "13", ACC, 12.5), txt(add(mid(A, C), [24, 2]), "13", ACC, 12.5), txt(add(mid(A, M), [15, 14]), "12", GLD, 12.5),
+      txt(add(mid(B, M), [0, -10]), "5", DIM, 12), txt(add(mid(M, C), [0, -10]), "5", DIM, 12),
+      cap(430, 340, "equal sides AB = AC face equal angles at B and C, and the line from A to the midpoint M of BC is the altitude, the median and the angle bisector at once (here 5² + 12² = 13²)" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
   DIAGRAMS["cotangent-rule"] = [(() => {
     // a = 13, b = 14, c = 15 at k = 19 -- the triangle the worked example uses, so the figure and
     // the numbers below it agree. A sits 99/13 along BC and 12.923 up (sides 15 and 14 from B, C).

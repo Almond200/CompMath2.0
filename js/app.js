@@ -3177,7 +3177,18 @@
   function problemSlug(ref) {
     return ref.toLowerCase().replace(/,?\s*problem\s+/, "-").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
   }
-  function refShort(ref) { return ref.replace(/,\s*Problem\s+/, " #"); }
+  // The display form of a reference. HMMT names are long ("2019 HMMT February Algebra and Number
+  // Theory, Problem 3"), so the month and the round are shortened: "2019 HMMT Feb Alg & NT #3".
+  // `refInGroup` drops the contest's own name as well, for a row under that contest's heading.
+  const HMMT_ROUNDS = { "Algebra and Number Theory": "Alg & NT", "Combinatorics": "Combo", "Geometry": "Geometry" };
+  const shortRound = r => HMMT_ROUNDS[r] || r;
+  function refShort(ref) {
+    return ref.replace(/,\s*Problem\s+/, " #").replace(/\bHMMT (February|November) (.+?) #/, (_, m, r) => `HMMT ${m.slice(0, 3)} ${shortRound(r)} #`);
+  }
+  function refInGroup(ref) {
+    const m = ref.match(/^(\d{4}) HMMT (?:February|November) (.+?),\s*Problem\s+(\d+)$/);
+    return m ? `${m[1]} ${shortRound(m[2])} #${m[3]}` : refShort(ref);
+  }
   function yearOf(ref) { const m = ref.match(/^(\d{4})/); return m ? +m[1] : 0; }
   // Parse a ref into { year, cname (contest incl. A/B/I/II/season), fam (family), num }.
   function parseRef(ref) {
@@ -9377,7 +9388,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)" };
   const famColor = f => FAM_COLOR[f] || "var(--level-oly)";
   const RATED_FAMS = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && Number.isFinite(p.elo)));
-  const ELO_BIN = 200, ELO_LO = 200, ELO_HI = 3800;
+  // The scale ends at 3800 unless a problem is rated above that (owner, 2026-11-12: harder
+  // contests than the AIME may be added); then it grows to the bin that holds the hardest one.
+  const ELO_BIN = 200, ELO_LO = 200;
+  const ELO_HI = Math.max(3800, ...PROBLEM_DB.filter(p => Number.isFinite(p.elo)).map(p => (Math.floor(p.elo / ELO_BIN) + 1) * ELO_BIN));
   const eloBins = () => Array.from({ length: (ELO_HI - ELO_LO) / ELO_BIN }, (_, i) => ELO_LO + i * ELO_BIN);
   const binOf = elo => Math.min(ELO_HI - ELO_BIN, Math.max(ELO_LO, Math.floor(elo / ELO_BIN) * ELO_BIN));
   const famDot = f => `<i class="fam-dot" style="background:${famColor(f)}"></i>`;
@@ -9408,7 +9422,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       return `<a class="elo-bar${here} href="#/browse/difficulty/${b}" aria-label="${label} rated ${b} to ${b + ELO_BIN - 1}" data-tip="${tip}">${col}</a>`;
     }).join("");
     const line = mark != null ? `<span class="elo-mark" style="left:${((Math.min(ELO_HI, Math.max(ELO_LO, mark)) - ELO_LO) / span * 100).toFixed(2)}%"></span>` : "";
-    const ticks = [200, 1000, 1800, 2600, 3400].map(t => `<span style="left:${((t - ELO_LO) / span * 100).toFixed(2)}%">${t}</span>`).join("");
+    const ticks = Array.from({ length: Math.floor((ELO_HI - ELO_BIN - ELO_LO) / 800) + 1 }, (_, i) => ELO_LO + 800 * i).map(t => `<span style="left:${((t - ELO_LO) / span * 100).toFixed(2)}%">${t}</span>`).join("");
     return `<div class="elo-chart${compact ? " is-compact" : ""}${cur != null ? " has-cur" : ""}"><div class="elo-bars">${bars}${line}</div><div class="elo-ticks" aria-hidden="true">${ticks}</div></div>`;
   }
   // On a problem page: the rating, where it sits among its own contest's problems, and that
@@ -9458,7 +9472,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (!list.length) return "";
       const shown = browseOpen.has(f) ? list : list.slice(0, BROWSE_PAGE);
       return `<section class="br-group"><h3 class="br-group-h">${famDot(f)}${f}<span class="br-count">${list.length} problem${list.length === 1 ? "" : "s"}</span></h3>
-        <div class="br-list">${shown.map(p => `<a class="br-row" href="#/problem/${p.slug}"><span class="br-ref">${refShort(p.ref)}</span><span class="br-elo">${Number.isFinite(p.elo) ? p.elo : "–"}</span></a>`).join("")}</div>
+        <div class="br-list">${shown.map(p => `<a class="br-row" href="#/problem/${p.slug}" title="${escapeAttr(refShort(p.ref))}"><span class="br-ref">${refInGroup(p.ref)}</span><span class="br-elo">${Number.isFinite(p.elo) ? p.elo : "–"}</span></a>`).join("")}</div>
         ${list.length > shown.length ? `<button type="button" class="ct-toggle" data-br-more="${escapeAttr(f)}">Show all ${list.length}</button>`
           : list.length > BROWSE_PAGE ? `<button type="button" class="ct-toggle" data-br-less="${escapeAttr(f)}">Show less</button>` : ""}</section>`;
     }).join("");

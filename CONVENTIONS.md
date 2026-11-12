@@ -598,7 +598,7 @@ python3 tools/build-cross-links.py --seed && python3 tools/build-cross-links.py 
 ~/Downloads/competition-math-buildenv/bin/python tools/build-search-index.py   # on the Mac; in the cloud, the venv in §13
 ```
 
-The search index is rebuilt once at the end of a step that changed cards, not after each card (owner, 2026-10-25). Latest warm benchmark (2026-11-08): 160/187 top-1, 181/187 top-3, MRR 0.910, with all 774 cards indexed. The refreshed baseline is `tools/eval-baseline.json`; the earlier 765-card 157/187 run (2026-10-30) is historical.
+The search index is rebuilt once at the end of a step that changed cards, not after each card (owner, 2026-10-25). Latest warm benchmark (2026-11-12): 160/187 top-1, 181/187 top-3, MRR 0.910, with all 779 cards indexed (the 2026-11-08 run had the same figures on 774 cards). The refreshed baseline is `tools/eval-baseline.json`; the earlier 765-card 157/187 run (2026-10-30) is historical.
 
 - Bump `?v=` in `index.html` for **every** file you touched, including ones a build step regenerated
   (`search-glossary.js`). The exception is `search-vectors.{json,bin}`, which revalidate themselves.
