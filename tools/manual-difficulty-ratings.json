@@ -30,7 +30,10 @@
     "2013 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2013/feb/geo/problems.pdf",
     "2012 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2012/feb/alg/problems.pdf",
     "2012 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2012/feb/comb/problems.pdf",
-    "2012 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2012/feb/geo/problems.pdf"
+    "2012 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2012/feb/geo/problems.pdf",
+    "2011 HMMT February Algebra and Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2011/feb/algcomb/problems.pdf",
+    "2011 HMMT February Algebra and Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2011/feb/alggeo/problems.pdf",
+    "2011 HMMT February Combinatorics and Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2011/feb/combgeo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -1312,6 +1315,246 @@
     "2012 HMMT February Geometry, Problem 10": [
       3900,
       "Bound every second term of a moving-circumcenter sequence and construct every extremal endpoint."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 1": [
+      1700,
+      "Multiply three discriminant constraints to bound the total real roots, then check an attainable example."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 2": [
+      1350,
+      "A connected seating grid forces two checkerboard gender patterns before labeling the seats."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 3": [
+      1900,
+      "Equal-area cuts fix a side ratio; strict triangle inequalities leave the integral third sides."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 4": [
+      1650,
+      "Every upward walk crosses a middle square, leaving two choices between successive rows."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 5": [
+      1900,
+      "Prove associativity of a custom operation, then induct on its nested factorial evaluation."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 6": [
+      2200,
+      "Solve symmetric residue-state win probabilities while accounting for the first player having no immediate win."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 7": [
+      2400,
+      "Factor a quadratic prime power, restrict the common divisor, and check both signs of the linear factors."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 8": [
+      2150,
+      "Cancel overlapping regions in a regular hexagon and compare two equal-altitude triangle areas."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 9": [
+      2200,
+      "Raise a radical iterate to its odd power and recognize a period-three fractional transformation."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 10": [
+      2700,
+      "Classify winning board lengths by parity and construct strategies that preserve an adjacent-pair invariant."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 11": [
+      2750,
+      "Count preimages of the roots of a quadratic, separating a repeated outer root from a tangent inner preimage."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 12": [
+      3150,
+      "Bound the forbidden squares created by runs of marks, then construct a board attaining the winning threshold."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 13": [
+      2900,
+      "Use the falling-factorial basis to count integer-coefficient polynomials under six simultaneous value bounds."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 14": [
+      3350,
+      "Conjugate an adjacent-pair operation by product and ratio, then count feasible endpoint squaring depths."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 15": [
+      4150,
+      "Bound a quadratic parameter using fixed points and construct arbitrarily long oscillation before escape."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 16": [
+      3150,
+      "Locate the repeated value of a nearly surjective regressive function and propagate its missing value."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 17": [
+      3650,
+      "Remove the triangular coefficients by multiplying by a cubic factor and evaluate a product over nontrivial roots of unity."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 18": [
+      3000,
+      "Use the complementary fixed vote and rotational symmetry to avoid enumerating all tied election outcomes."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 19": [
+      3550,
+      "Prove a norm invariant, encode the coupled recurrence by complex multiplication, and track base-three digits."
+    ],
+    "2011 HMMT February Algebra and Combinatorics, Problem 20": [
+      3800,
+      "Construct increasing grids differing by legal boundary swaps and show each opponent grid obstructs at most one choice."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 1": [
+      1700,
+      "Multiply three discriminant constraints to bound the total real roots, then check an attainable example."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 2": [
+      1900,
+      "Equal-area cuts fix a side ratio; strict triangle inequalities leave the integral third sides."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 3": [
+      1650,
+      "Every upward walk crosses a middle square, leaving two choices between successive rows."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 4": [
+      3200,
+      "Control every displaced vertex by separating open unit disks, then verify the sharp convexity threshold."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 5": [
+      1900,
+      "Prove associativity of a custom operation, then induct on its nested factorial evaluation."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 6": [
+      2200,
+      "Solve symmetric residue-state win probabilities while accounting for the first player having no immediate win."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 7": [
+      2400,
+      "Factor a quadratic prime power, restrict the common divisor, and check both signs of the linear factors."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 8": [
+      2150,
+      "Cancel overlapping regions in a regular hexagon and compare two equal-altitude triangle areas."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 9": [
+      2200,
+      "Raise a radical iterate to its odd power and recognize a period-three fractional transformation."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 10": [
+      2250,
+      "Combine equal areas with three similar triangles cut from a square to recover an exterior length."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 11": [
+      2750,
+      "Count preimages of the roots of a quadratic, separating a repeated outer root from a tangent inner preimage."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 12": [
+      3000,
+      "Exploit two isosceles trapezoids in an equilateral hexagon and chase angles at an exterior orthocenter."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 13": [
+      2900,
+      "Use the falling-factorial basis to count integer-coefficient polynomials under six simultaneous value bounds."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 14": [
+      3100,
+      "Connect an arc midpoint to the incenter and bound a diagonal using the circumradius-inradius inequality."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 15": [
+      4150,
+      "Bound a quadratic parameter using fixed points and construct arbitrarily long oscillation before escape."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 16": [
+      3300,
+      "Unfold a three-segment path by two reflections, verify the equality path, and optimize a chord."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 17": [
+      3650,
+      "Remove the triangular coefficients by multiplying by a cubic factor and evaluate a product over nontrivial roots of unity."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 18": [
+      3350,
+      "Locate collinear points on three coordinate lines, compute a second circle intersection and an affine length ratio."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 19": [
+      3550,
+      "Prove a norm invariant, encode the coupled recurrence by complex multiplication, and track base-three digits."
+    ],
+    "2011 HMMT February Algebra and Geometry, Problem 20": [
+      3900,
+      "Build an auxiliary center from two half-angle conditions and prove equal radii by paired spiral similarities."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 1": [
+      1350,
+      "A connected seating grid forces two checkerboard gender patterns before labeling the seats."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 2": [
+      1900,
+      "Equal-area cuts fix a side ratio; strict triangle inequalities leave the integral third sides."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 3": [
+      1700,
+      "Multiply three discriminant constraints to bound the total real roots, then check an attainable example."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 4": [
+      1650,
+      "Every upward walk crosses a middle square, leaving two choices between successive rows."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 5": [
+      3200,
+      "Control every displaced vertex by separating open unit disks, then verify the sharp convexity threshold."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 6": [
+      2200,
+      "Solve symmetric residue-state win probabilities while accounting for the first player having no immediate win."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 7": [
+      2150,
+      "Cancel overlapping regions in a regular hexagon and compare two equal-altitude triangle areas."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 8": [
+      2700,
+      "Classify winning board lengths by parity and construct strategies that preserve an adjacent-pair invariant."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 9": [
+      2250,
+      "Combine equal areas with three similar triangles cut from a square to recover an exterior length."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 10": [
+      3150,
+      "Bound the forbidden squares created by runs of marks, then construct a board attaining the winning threshold."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 11": [
+      3000,
+      "Exploit two isosceles trapezoids in an equilateral hexagon and chase angles at an exterior orthocenter."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 12": [
+      3350,
+      "Conjugate an adjacent-pair operation by product and ratio, then count feasible endpoint squaring depths."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 13": [
+      3100,
+      "Connect an arc midpoint to the incenter and bound a diagonal using the circumradius-inradius inequality."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 14": [
+      3150,
+      "Locate the repeated value of a nearly surjective regressive function and propagate its missing value."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 15": [
+      4150,
+      "Bound a quadratic parameter using fixed points and construct arbitrarily long oscillation before escape."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 16": [
+      3300,
+      "Unfold a three-segment path by two reflections, verify the equality path, and optimize a chord."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 17": [
+      3000,
+      "Use the complementary fixed vote and rotational symmetry to avoid enumerating all tied election outcomes."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 18": [
+      3350,
+      "Locate collinear points on three coordinate lines, compute a second circle intersection and an affine length ratio."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 19": [
+      3800,
+      "Construct increasing grids differing by legal boundary swaps and show each opponent grid obstructs at most one choice."
+    ],
+    "2011 HMMT February Combinatorics and Geometry, Problem 20": [
+      3900,
+      "Build an auxiliary center from two half-angle conditions and prove equal radii by paired spiral similarities."
     ]
   }
 }

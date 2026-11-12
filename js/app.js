@@ -3163,7 +3163,7 @@
   function linkLabel(fam) { return ARCHIVE_URL[fam] ? "archive" : "AoPS"; }
   // HMMT publishes each round as two PDFs, the paper and its solutions. A reference names the
   // year, the tournament and the round, which is the whole address.
-  const HMMT_CODE = { "Algebra": "alg", "Algebra and Number Theory": "algnt", "Combinatorics": "comb", "Geometry": "geo" };
+  const HMMT_CODE = { "Algebra": "alg", "Algebra and Combinatorics": "algcomb", "Algebra and Geometry": "alggeo", "Combinatorics and Geometry": "combgeo", "Algebra and Number Theory": "algnt", "Combinatorics": "comb", "Geometry": "geo" };
   function hmmtPdf(ref, which) {
     const m = ref.match(/^(\d{4}) HMMT (February|November) (.+?),\s*Problem\s+\d+$/);
     return m && HMMT_CODE[m[3]] ? `https://hmmt-archive.s3.amazonaws.com/tournaments/${m[1]}/${m[2].slice(0, 3).toLowerCase()}/${HMMT_CODE[m[3]]}/${which}.pdf` : null;
@@ -3187,7 +3187,7 @@
   // The display form of a reference. HMMT names are long ("2019 HMMT February Algebra and Number
   // Theory, Problem 3"), so the month and the round are shortened: "2019 HMMT Feb Alg & NT #3".
   // `refInGroup` drops the contest's own name as well, for a row under that contest's heading.
-  const HMMT_ROUNDS = { "Algebra and Number Theory": "Alg & NT", "Combinatorics": "Combo", "Geometry": "Geometry" };
+  const HMMT_ROUNDS = { "Algebra and Combinatorics": "Alg & Combo", "Algebra and Geometry": "Alg & Geo", "Combinatorics and Geometry": "Combo & Geo", "Algebra and Number Theory": "Alg & NT", "Combinatorics": "Combo", "Geometry": "Geometry" };
   const shortRound = r => HMMT_ROUNDS[r] || r;
   function refShort(ref) {
     return ref.replace(/,\s*Problem\s+/, " #").replace(/\bHMMT (February|November) (.+?) #/, (_, m, r) => `HMMT ${m.slice(0, 3)} ${shortRound(r)} #`);
@@ -9212,7 +9212,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <select class="ct-yb-select" aria-label="Year">${years.map(y => `<option value="${y}"${y === year ? " selected" : ""}>${y}</option>`).join("")}</select>
         ${newer ? `<a class="ct-yb-step" href="${yhref(newer)}" aria-label="${newer}">${stepChevron(1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(1)}</span>`}
       </div>
-      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 ").replace(/^HMMT (?:February|November) /, "").replace("Algebra and Number Theory", "Algebra & Number Theory"))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
+      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 ").replace(/^HMMT (?:February|November) /, "").replace(/ and /g, " & "))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
       ${body}
       <nav class="topic-nav" aria-label="Neighbouring years">
         ${older ? `<a class="topic-step" href="${yhref(older)}"><span class="ts-dir">${uiIcon("arrow-left")} Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
