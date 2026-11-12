@@ -24,7 +24,10 @@
     "2015 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2015/feb/geo/problems.pdf",
     "2014 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/alg/problems.pdf",
     "2014 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/comb/problems.pdf",
-    "2014 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf"
+    "2014 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf",
+    "2013 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2013/feb/alg/problems.pdf",
+    "2013 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2013/feb/comb/problems.pdf",
+    "2013 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2013/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -1066,6 +1069,126 @@
     "2014 HMMT February Geometry, Problem 10": [
       3650,
       "Locate a similarity center with a cevian and the circumcenter axis, then apply Monge collinearity."
+    ],
+    "2013 HMMT February Algebra, Problem 1": [
+      1450,
+      "Replace two variables by their sum and product, then reject the nonreal root pair."
+    ],
+    "2013 HMMT February Algebra, Problem 2": [
+      2200,
+      "Recover an arithmetic-plus-geometric sequence from four initial values and exclude a degenerate ratio."
+    ],
+    "2013 HMMT February Algebra, Problem 3": [
+      2250,
+      "Rank integers with exactly three set bits by binomial counts of shorter binary strings."
+    ],
+    "2013 HMMT February Algebra, Problem 4": [
+      2350,
+      "Reduce a quartic modulo the quadratic satisfied by two distinct complex numbers."
+    ],
+    "2013 HMMT February Algebra, Problem 5": [
+      2600,
+      "Express the squared-root polynomial through symmetric sums and recognize a circle constraint on coefficients."
+    ],
+    "2013 HMMT February Algebra, Problem 6": [
+      2650,
+      "Use a fixed translation to shift a difference of floor and ceiling values by one."
+    ],
+    "2013 HMMT February Algebra, Problem 7": [
+      2600,
+      "Separate a symmetric multiple sum into one weighted and six ordinary geometric series."
+    ],
+    "2013 HMMT February Algebra, Problem 8": [
+      3250,
+      "Rewrite ratios of power sums with two symmetric reciprocal variables and track both complex solutions."
+    ],
+    "2013 HMMT February Algebra, Problem 9": [
+      3000,
+      "Turn a rational root-of-unity sum into a short geometric sum and count exponents modulo a prime."
+    ],
+    "2013 HMMT February Algebra, Problem 10": [
+      3550,
+      "Relate a required decimal substring to a Fibonacci generating fraction and prove its denominator minimal."
+    ],
+    "2013 HMMT February Combinatorics, Problem 1": [
+      1000,
+      "Count cards sharing exactly one of the first card's two attributes."
+    ],
+    "2013 HMMT February Combinatorics, Problem 2": [
+      1200,
+      "Use mutually exclusive days and one conditional probability to recover the marginal."
+    ],
+    "2013 HMMT February Combinatorics, Problem 3": [
+      1700,
+      "Find an online keep-or-pass strategy and identify the only impossible color sequences."
+    ],
+    "2013 HMMT February Combinatorics, Problem 4": [
+      2050,
+      "Choose the four numbers in positive positions and order both zero-sum groups."
+    ],
+    "2013 HMMT February Combinatorics, Problem 5": [
+      2400,
+      "Track color agreement as the parity of independent cuts in a middle interval."
+    ],
+    "2013 HMMT February Combinatorics, Problem 6": [
+      2200,
+      "Count occupied values through indicators for at least one appearance."
+    ],
+    "2013 HMMT February Combinatorics, Problem 7": [
+      3450,
+      "Bound which seeds can survive an elimination bracket and verify the boundary seed is attainable."
+    ],
+    "2013 HMMT February Combinatorics, Problem 8": [
+      2850,
+      "Count statement triples consistent with exactly one liar and a uniquely identifiable culprit."
+    ],
+    "2013 HMMT February Combinatorics, Problem 9": [
+      3400,
+      "Count a fourth power of fixed-point totals through ordered marked positions and set partitions."
+    ],
+    "2013 HMMT February Combinatorics, Problem 10": [
+      3750,
+      "Use tail probabilities and a first-hit reflection to evaluate a random walk's expected running maximum."
+    ],
+    "2013 HMMT February Geometry, Problem 1": [
+      1750,
+      "Recognize the least strip width of a right triangle as its shortest altitude."
+    ],
+    "2013 HMMT February Geometry, Problem 2": [
+      1900,
+      "Subtract two right-triangle identities in an isosceles trapezoid to remove the unknown height."
+    ],
+    "2013 HMMT February Geometry, Problem 3": [
+      2600,
+      "Match opposite corner triangles and reconstruct a whole side from square-root area ratios."
+    ],
+    "2013 HMMT February Geometry, Problem 4": [
+      2550,
+      "Separate the two center-line configurations of intersecting circles and solve the radius ratios."
+    ],
+    "2013 HMMT February Geometry, Problem 5": [
+      2450,
+      "Use a median chord ratio and a known inscribed angle to recover a central-angle cosine."
+    ],
+    "2013 HMMT February Geometry, Problem 6": [
+      2650,
+      "Recognize an antipodal cyclic quadrilateral and compare perpendicular projections onto a diagonal."
+    ],
+    "2013 HMMT February Geometry, Problem 7": [
+      2800,
+      "Convert a circumcenter distance condition into a chord length and chase the resulting isosceles angles."
+    ],
+    "2013 HMMT February Geometry, Problem 8": [
+      3200,
+      "Derive a reciprocal-side relation from an angle-bisected quadrilateral using sine addition."
+    ],
+    "2013 HMMT February Geometry, Problem 9": [
+      3500,
+      "Construct a pair of nested similar triangles from pentagon angle and product constraints."
+    ],
+    "2013 HMMT February Geometry, Problem 10": [
+      3450,
+      "Combine an angle-bisector chord, point reflections and an isosceles trapezoid to recover a length."
     ]
   }
 }
