@@ -373,6 +373,9 @@ _db = io.open("js/data/problems/problem-db.js", encoding="utf-8").read()
 _ent = re.findall(r'\{ ref: "([^"]+)", formulas: \[([^\]]*)\], strategy: "((?:[^"\\\\]|\\\\.)*)"', _db)
 _by = collections.defaultdict(list)
 for _r, _f, _s in _ent:
+    # A problem with no written strategy (its page links the official solution) shares nothing.
+    if not _s.strip():
+        continue
     _by[_s].append((_r, tuple(re.findall(r'"([a-z0-9-]+)"', _f))))
 _shared = {k: v for k, v in _by.items() if len(v) > 1}
 _bad = [v for v in _shared.values() if len({t for _, t in v}) > 1]

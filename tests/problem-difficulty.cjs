@@ -71,9 +71,11 @@ const amc8=problems.filter(p=>/AMC 8|AJHSME/.test(p.ref));
 const aime=problems.filter(p=>/AIME/.test(p.ref));
 const top8=D.filter(amc8,'very-hard'),topAime=D.filter(aime,'very-hard');
 assert.ok(Math.max(...top8.map(p=>p.elo)) < Math.min(...topAime.map(p=>p.elo)), 'contest-relative hard ranges differ');
+// HMMT February: whole rounds of ten, every problem rated; one round splits evenly into fifths.
 const hmmt=problems.filter(p=>/HMMT February/.test(p.ref));
-assert.equal(hmmt.length,10);
-for(const l of D.levels.slice(1)) assert.equal(D.filter(hmmt,l.id).length,2);
+assert.ok(hmmt.length>=30&&hmmt.length%10===0);assert.ok(hmmt.every(p=>Number.isFinite(p.elo)));
+const hmmtGeo=hmmt.filter(p=>/^2019 HMMT February Geometry,/.test(p.ref));assert.equal(hmmtGeo.length,10);
+for(const l of D.levels.slice(1)) assert.equal(D.filter(hmmtGeo,l.id).length,2);
 // Exercise the real importer on aliases and a later published replacement for a manual estimate.
 require('node:child_process').execFileSync('python3', ['-c', `
 import importlib.util

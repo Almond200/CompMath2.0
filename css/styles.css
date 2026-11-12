@@ -4960,3 +4960,9 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 .browse-page:has(> .browse-topics) { padding-bottom: 0; margin-bottom: 0; }
 /* A row's reference never runs over the rating beside it. */
 .br-row .br-ref { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
+/* A problem whose solution we link: the official-solution button with a line saying what it opens. */
+.chain-official { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.chain-official .aops-btn { margin: 0; }
+.chain-official-note { font-size: calc(13px * var(--tx)); color: var(--text-dim); }
+@media (max-width: 640px) { .ct-papers button { padding: 0 6px; } }

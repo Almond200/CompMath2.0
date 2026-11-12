@@ -12,6 +12,8 @@ The ten 2019 HMMT February Geometry problems and fifty 2026 AMC 10A/12A problems
 
 **2026 AMC 10A review (2026-11-11).** After the owner sat the paper, all 25 estimates were checked against a worked solution of each problem. Six changed: #25 from 2450 to 1900 (far easier than a usual last question), #8 up to 1500, #18 up to 1700, and #16, #20 and #21 down to 1800, 2000 and 1950, with the 12A twins of #16 and #21. LIVE's archive, fetched again that day, still had no values for the paper.
 
+**HMMT February rounds (Step H, from 2026-11-12).** Every HMMT February problem added in Step H gets an author estimate on the same scale, with its one-line reason, in `tools/manual-difficulty-ratings.json`; the 2019 Algebra and Number Theory and Combinatorics rounds brought the manual estimates to 80. A problem harder than any AIME one may be rated above 3800, and the charts' scale grows to the bin of the hardest problem.
+
 ## Selection
 
 `js/problem-difficulty.js` supplies the shared rating lookup, five-level selection and uniform draw.
