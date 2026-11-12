@@ -42,7 +42,10 @@
     "2009 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2009/feb/geo/problems.pdf",
     "2008 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2008/feb/alg/problems.pdf",
     "2008 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2008/feb/comb/problems.pdf",
-    "2008 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2008/feb/geo/problems.pdf"
+    "2008 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2008/feb/geo/problems.pdf",
+    "2007 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2007/feb/alg/problems.pdf",
+    "2007 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2007/feb/comb/problems.pdf",
+    "2007 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2007/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -1924,6 +1927,126 @@
     "2008 HMMT February Geometry, Problem 10": [
       3550,
       "Identify a polar intersection as a harmonic conjugate on the excircle contact line and compute it from tangent lengths."
+    ],
+    "2007 HMMT February Algebra, Problem 1": [
+      1500,
+      "Cancel factorials to place a rational expression just above an integer before taking its floor."
+    ],
+    "2007 HMMT February Algebra, Problem 2": [
+      1150,
+      "Expand a difference of cubes using the known difference to isolate a product."
+    ],
+    "2007 HMMT February Algebra, Problem 3": [
+      1650,
+      "Combine equal ratios to force a proportional pair, checking the otherwise undefined zero-over-zero case."
+    ],
+    "2007 HMMT February Algebra, Problem 4": [
+      1950,
+      "Factor differences and sums of cubes so consecutive rational factors cancel."
+    ],
+    "2007 HMMT February Algebra, Problem 5": [
+      2200,
+      "Recognize a rectangle from coordinate symmetries and express its area by a symmetric difference of squares."
+    ],
+    "2007 HMMT February Algebra, Problem 6": [
+      2750,
+      "Locate repeated-root levels of a cubic and distinguish when its remaining two preimages are nonreal."
+    ],
+    "2007 HMMT February Algebra, Problem 7": [
+      2300,
+      "Solve a second-order recurrence and use positivity at every index to eliminate its larger alternating mode."
+    ],
+    "2007 HMMT February Algebra, Problem 8": [
+      2600,
+      "Follow a fractional-linear argument through a three-cycle and solve three linked functional equations."
+    ],
+    "2007 HMMT February Algebra, Problem 9": [
+      3200,
+      "Form a cubic for the three pair-product sums and express its coefficients through quartic symmetric sums."
+    ],
+    "2007 HMMT February Algebra, Problem 10": [
+      3350,
+      "Transform high-degree polynomial roots by a reciprocal sum and evaluate the resulting product ratio at third roots of unity."
+    ],
+    "2007 HMMT February Combinatorics, Problem 1": [
+      1450,
+      "Split on a required pair and exclude committees containing a forbidden pair."
+    ],
+    "2007 HMMT February Combinatorics, Problem 2": [
+      1800,
+      "Fix the middle digit so the two sum constraints leave independent choices, then sum a quadratic."
+    ],
+    "2007 HMMT February Combinatorics, Problem 3": [
+      1750,
+      "Normalize the three first-round winning probabilities after an identical unsuccessful round restarts the game."
+    ],
+    "2007 HMMT February Combinatorics, Problem 4": [
+      2400,
+      "For the intended two-row grid, interleave its two forced row orders to count noncrossing Hamiltonian paths."
+    ],
+    "2007 HMMT February Combinatorics, Problem 5": [
+      2200,
+      "Choose the occupied rows and columns of a monotone rook placement and sum the squared binomial counts."
+    ],
+    "2007 HMMT February Combinatorics, Problem 6": [
+      2450,
+      "Anchor one blue marble and count circular red placements by inserting the mandatory separating gaps."
+    ],
+    "2007 HMMT February Combinatorics, Problem 7": [
+      2000,
+      "Use the exchangeable nonprime gaps around a fixed number of prime cards to evaluate the first-prime wait."
+    ],
+    "2007 HMMT February Combinatorics, Problem 8": [
+      2950,
+      "Enumerate octahedron Hamiltonian cycles up to reversal and rotation, then discard disconnected complements before pairing."
+    ],
+    "2007 HMMT February Combinatorics, Problem 9": [
+      2700,
+      "Interpret the product of three positive parts as choosing marked elements in three blocks of a larger row."
+    ],
+    "2007 HMMT February Combinatorics, Problem 10": [
+      3350,
+      "Translate additive closure of a supported set into a finite order ideal and a Dyck-path boundary."
+    ],
+    "2007 HMMT February Geometry, Problem 1": [
+      1100,
+      "Convert a cube surface-area and volume equality into a factored polynomial in its positive side length."
+    ],
+    "2007 HMMT February Geometry, Problem 2": [
+      1250,
+      "An intersecting-chord product determines a quadratic segment split, with the smaller root specified."
+    ],
+    "2007 HMMT February Geometry, Problem 3": [
+      1950,
+      "Recognize equal tangent-circle radii and compare a large triangle with its midline triangle."
+    ],
+    "2007 HMMT February Geometry, Problem 4": [
+      1850,
+      "Recover an external tangent length and subtract the third side to obtain two adjacent sides."
+    ],
+    "2007 HMMT February Geometry, Problem 5": [
+      2100,
+      "Take an axial funnel cross-section to show tangent-sphere radii are a geometric progression."
+    ],
+    "2007 HMMT February Geometry, Problem 6": [
+      2350,
+      "Recover a right triangle and its tangency point before using the tangent-secant product."
+    ],
+    "2007 HMMT February Geometry, Problem 7": [
+      2200,
+      "Use two cosine computations to establish cyclicity, then solve for a diagonal by Ptolemy."
+    ],
+    "2007 HMMT February Geometry, Problem 8": [
+      2600,
+      "Reflect across a bisector to prove cyclicity, then chase an isosceles triangle through an interior side point."
+    ],
+    "2007 HMMT February Geometry, Problem 9": [
+      2800,
+      "Relate a right-triangle altitude to an isosceles subtriangle and derive a cubic length relation."
+    ],
+    "2007 HMMT February Geometry, Problem 10": [
+      2450,
+      "Split a tangential quadrilateral into two right triangles and compare their area sum with inradius times semiperimeter."
     ]
   }
 }
