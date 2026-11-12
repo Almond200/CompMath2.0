@@ -21,7 +21,10 @@
     "2016 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2016/feb/geo/problems.pdf",
     "2015 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2015/feb/alg/problems.pdf",
     "2015 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2015/feb/comb/problems.pdf",
-    "2015 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2015/feb/geo/problems.pdf"
+    "2015 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2015/feb/geo/problems.pdf",
+    "2014 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/alg/problems.pdf",
+    "2014 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/comb/problems.pdf",
+    "2014 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -943,6 +946,126 @@
     "2015 HMMT February Geometry, Problem 10": [
       3650,
       "Transform an implicit radical curve into a circle and transfer a unique tangency back."
+    ],
+    "2014 HMMT February Algebra, Problem 1": [
+      1300,
+      "Substitute one reciprocal so a two-variable system reveals a sum and product."
+    ],
+    "2014 HMMT February Algebra, Problem 2": [
+      1850,
+      "Rationalize a difference of fourth roots and bound the error tightly enough to round."
+    ],
+    "2014 HMMT February Algebra, Problem 3": [
+      1750,
+      "Replace four logarithms by one variable plus shifts and cancel a cubic finite difference."
+    ],
+    "2014 HMMT February Algebra, Problem 4": [
+      2100,
+      "Recognize two distinct polynomial values as its roots and solve the coefficient constraints."
+    ],
+    "2014 HMMT February Algebra, Problem 5": [
+      2250,
+      "Reduce a quartic through a repeated quadratic block and determine which transformed root is attainable."
+    ],
+    "2014 HMMT February Algebra, Problem 6": [
+      2550,
+      "Rewrite a cubic power sum through two known complex sums and establish an attainable reverse-triangle bound."
+    ],
+    "2014 HMMT February Algebra, Problem 7": [
+      2900,
+      "Exploit the median ordering and zero sum to smooth two groups and identify a sharp homogeneous constant."
+    ],
+    "2014 HMMT February Algebra, Problem 8": [
+      3150,
+      "Force a quartic to have one repeated real root and a strictly nonreal residual quadratic."
+    ],
+    "2014 HMMT February Algebra, Problem 9": [
+      3450,
+      "Eliminate a complex cyclic quadratic system through symmetric sums rather than solve each variable."
+    ],
+    "2014 HMMT February Algebra, Problem 10": [
+      3900,
+      "Prove the minimal recurrence order from the uncancelled root-of-unity poles of a divisor-count generating function."
+    ],
+    "2014 HMMT February Combinatorics, Problem 1": [
+      1300,
+      "Condition on one student being admitted and count the remaining places in that section."
+    ],
+    "2014 HMMT February Combinatorics, Problem 2": [
+      1350,
+      "Choose the final committee first, then its nonempty proper leader subset."
+    ],
+    "2014 HMMT February Combinatorics, Problem 3": [
+      1600,
+      "Restrict a five-letter sample space by its number of a specified letter."
+    ],
+    "2014 HMMT February Combinatorics, Problem 4": [
+      2050,
+      "Parameterize a three-set Venn diagram by its triple intersection and count each region assignment."
+    ],
+    "2014 HMMT February Combinatorics, Problem 5": [
+      1900,
+      "Translate the share constraint into an upper bound and subtract the disjoint violations."
+    ],
+    "2014 HMMT February Combinatorics, Problem 6": [
+      2750,
+      "Interpret two calculator operations in binary, prove the reachable language, and count its forbidden-pattern strings."
+    ],
+    "2014 HMMT February Combinatorics, Problem 7": [
+      3050,
+      "Partition a tournament by score, force odd regular groups, and count every possible group pattern."
+    ],
+    "2014 HMMT February Combinatorics, Problem 8": [
+      3200,
+      "Use checkerboard parity to bound the first diagonal visit of a Hamiltonian labeling and verify an attaining board."
+    ],
+    "2014 HMMT February Combinatorics, Problem 9": [
+      3550,
+      "Recognize a coin machine as two alternating binary counters and sum its carry lengths."
+    ],
+    "2014 HMMT February Combinatorics, Problem 10": [
+      2800,
+      "Swap tails at the first intersection to count pairs of disjoint lattice paths."
+    ],
+    "2014 HMMT February Geometry, Problem 1": [
+      1150,
+      "Use the common center-to-chord distance in two concentric circles."
+    ],
+    "2014 HMMT February Geometry, Problem 2": [
+      1600,
+      "Join a circle center to a chord midpoint and use the tangent perpendicular to set a similarity ratio."
+    ],
+    "2014 HMMT February Geometry, Problem 3": [
+      2250,
+      "Turn an external-bisector parallel into a perpendicular-bisector length relation and recover the area."
+    ],
+    "2014 HMMT February Geometry, Problem 4": [
+      2550,
+      "Reflect a vertex to expose a cyclic isosceles trapezoid and finish an angle chase."
+    ],
+    "2014 HMMT February Geometry, Problem 5": [
+      2850,
+      "Reduce the largest sphere in an oblique cone to its symmetry-plane section and compute the inradius."
+    ],
+    "2014 HMMT February Geometry, Problem 6": [
+      2500,
+      "Recover the opposite angle from a diagonal and compare areas across that diagonal."
+    ],
+    "2014 HMMT February Geometry, Problem 7": [
+      2550,
+      "Use a diameter and a midpoint to expose similar triangles and a fixed fraction of the circumradius."
+    ],
+    "2014 HMMT February Geometry, Problem 8": [
+      2850,
+      "Use the centroid to turn a tangent-circle condition into a product of lengths and an area ratio."
+    ],
+    "2014 HMMT February Geometry, Problem 9": [
+      3550,
+      "Recognize an orthogonal circle as the incircle of a triangle of centers and solve its radius relation."
+    ],
+    "2014 HMMT February Geometry, Problem 10": [
+      3650,
+      "Locate a similarity center with a cevian and the circumcenter axis, then apply Monge collinearity."
     ]
   }
 }
