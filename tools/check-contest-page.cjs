@@ -143,11 +143,15 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.deepEqual(await shown().locator('[data-pp-base]').evaluateAll(xs=>xs.map(x=>x.dataset.ppBase)),['all','recent','prev']);
  await page.goto(base+'/#/problems/amc-10/2000');await page.locator('.pp-tiles').waitFor();assert.equal(await page.locator('[data-pp-base]').count(),0);assert.equal(await page.locator('.pq-col b').count(),25,'still marked against all years');
  await page.goto(base+'/#/problems/amc-10/2001');await page.locator('.pp-tiles').waitFor();assert.deepEqual(await shown().locator('[data-pp-base]').evaluateAll(xs=>xs.map(x=>x.dataset.ppBase)),['all','prev']);
- // HMMT February: the three individual rounds as tabs, in the order they are sat; one sitting
- // so far, so no comparison choices or years chart, and no mock format.
+ // HMMT February: the three individual rounds as tabs; history grows with Step H.
+ // No mock format is inferred from archival entries without answer keys.
  await page.goto(base+'/#/problems/hmmt-february/2019');await page.locator('.db-group.is-shown .pp-tiles').waitFor();
  assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),['Algebra & Number Theory','Combinatorics','Geometry']);
- assert.equal(await page.locator('[data-pp-base], .py, .pp-mock').count(),0,'no yardstick choices, years chart or mock button for HMMT yet');
+ const hmmtYears=[...new Set(db.filter(p=>/ HMMT February /.test(p.paper)).map(p=>+p.paper.slice(0,4)))],earlier=hmmtYears.filter(y=>y<2019).length;
+ assert.equal(await page.locator('.pp-mock').count(),0,'archival entries do not acquire a mock format');
+ const hmmtBases=['all',...(earlier>1?['recent']:[]),...(earlier?['prev']:[])];
+ assert.deepEqual(await shown().locator('[data-pp-base]').evaluateAll(xs=>xs.map(x=>x.dataset.ppBase)),hmmtBases.length>1?hmmtBases:[]);
+ assert.equal(await shown().locator('.py-bar').count(),hmmtYears.length>=3?hmmtYears.length:0,'history uses the available HMMT years');
  assert.equal(await page.locator('.db-group.is-shown .pp-tiles .br-row').count(),10);await page.locator('.ct-papers [role="tab"]').nth(2).click();assert.match(page.url(),/hmmt-february\/2019\/hmmt-february-geometry$/);await fits();
  // An HMMT problem's page: short name, the official paper for the statement, the official solution under Brief solution.
  await page.goto(base+'/#/problem/2019-hmmt-february-combinatorics-4');await page.locator('.prob-chain').waitFor();assert.equal(await page.locator('h2.card-name').innerText(),'2019 HMMT Feb Combo #4');
