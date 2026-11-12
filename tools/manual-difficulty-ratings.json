@@ -6,7 +6,10 @@
     "2026 AMC 12A": "https://wiki.randommath.com/amc12/2026/part-a/problem-1",
     "2019 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf",
     "2019 HMMT February Algebra and Number Theory": "https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/algnt/problems.pdf",
-    "2019 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/problems.pdf"
+    "2019 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/problems.pdf",
+    "2020 HMMT February Algebra and Number Theory": "https://hmmt-archive.s3.amazonaws.com/tournaments/2020/feb/algnt/problems.pdf",
+    "2020 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2020/feb/comb/problems.pdf",
+    "2020 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2020/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -328,6 +331,126 @@
     "2019 HMMT February Combinatorics, Problem 10": [
       3200,
       "A change of coordinates turns the moves into independent sign choices in four coordinates."
+    ],
+    "2020 HMMT February Algebra and Number Theory, Problem 1": [
+      1300,
+      "Substitute a root into the cubic; Vieta's formulas give the same in one line."
+    ],
+    "2020 HMMT February Algebra and Number Theory, Problem 2": [
+      1700,
+      "Clear denominators and factor, then match coprime factors of a fixed product."
+    ],
+    "2020 HMMT February Algebra and Number Theory, Problem 3": [
+      1800,
+      "Unwind three nested logarithms in two bases to a quadratic in the innermost one."
+    ],
+    "2020 HMMT February Algebra and Number Theory, Problem 4": [
+      2200,
+      "Count each prime's contribution to a double sum, which turns it into geometric series."
+    ],
+    "2020 HMMT February Algebra and Number Theory, Problem 5": [
+      2700,
+      "Track when the digit counts of ten powers jump; counting the jumps is counting reduced fractions."
+    ],
+    "2020 HMMT February Algebra and Number Theory, Problem 6": [
+      2600,
+      "Find the minimal polynomial of the root sum, then a size argument shows coefficients below 9 cannot cancel."
+    ],
+    "2020 HMMT February Algebra and Number Theory, Problem 7": [
+      2500,
+      "A prime divisor of the denominator below n is impossible; for a prime denominator Wilson's theorem reduces the factorial."
+    ],
+    "2020 HMMT February Algebra and Number Theory, Problem 8": [
+      2900,
+      "Build an auxiliary polynomial with known roots from the interpolation data and read off the value."
+    ],
+    "2020 HMMT February Algebra and Number Theory, Problem 9": [
+      3100,
+      "Write the polynomial of pairwise products of roots through the original polynomial and evaluate with Vieta."
+    ],
+    "2020 HMMT February Algebra and Number Theory, Problem 10": [
+      3600,
+      "Count the image of the map h to h^101 - h on polynomials modulo x^1001 - 1 over the field with 101 elements."
+    ],
+    "2020 HMMT February Combinatorics, Problem 1": [
+      1400,
+      "A majority condition forces a face of one color; a few cases."
+    ],
+    "2020 HMMT February Combinatorics, Problem 2": [
+      1600,
+      "By the Chinese Remainder Theorem a number up to 210 is its three remainders; choose them distinct."
+    ],
+    "2020 HMMT February Combinatorics, Problem 3": [
+      2100,
+      "Each 2-by-2 block holds at most two rainbow L-trominoes by pigeonhole, and a coloring reaches the bound."
+    ],
+    "2020 HMMT February Combinatorics, Problem 4": [
+      2200,
+      "Choose the squares as a matching of rows to columns, split by parity of rows and columns."
+    ],
+    "2020 HMMT February Combinatorics, Problem 5": [
+      2300,
+      "The expected count is the total length of all intervals over 1000; the lengths add level by level."
+    ],
+    "2020 HMMT February Combinatorics, Problem 6": [
+      2500,
+      "Each move flips all three letter counts' parities, which decides when one letter can remain."
+    ],
+    "2020 HMMT February Combinatorics, Problem 7": [
+      2700,
+      "A square product appears once the exponent vectors mod 2 become dependent; sum the probabilities of lasting k draws."
+    ],
+    "2020 HMMT February Combinatorics, Problem 8": [
+      2800,
+      "Replace each random point by a random equilateral triple, reducing to choosing among twelve points."
+    ],
+    "2020 HMMT February Combinatorics, Problem 9": [
+      3000,
+      "Recast as colorings of a ten-cycle in two interleaved five-cycles, then count up to rotation."
+    ],
+    "2020 HMMT February Combinatorics, Problem 10": [
+      3300,
+      "The difference grows only at zero, so sum the chances of being at zero, a central-binomial generating function."
+    ],
+    "2020 HMMT February Geometry, Problem 1": [
+      1600,
+      "Place the shared vertex in each possible way; the triangle is isosceles on a unit base."
+    ],
+    "2020 HMMT February Geometry, Problem 2": [
+      1700,
+      "A long diagonal of the hexagon is parallel to a side of the triangle, giving similar triangles."
+    ],
+    "2020 HMMT February Geometry, Problem 3": [
+      2000,
+      "Trace the partner endpoint as one endpoint moves, and maximize the length over the cases."
+    ],
+    "2020 HMMT February Geometry, Problem 4": [
+      2200,
+      "Equal tangent lengths from each vertex and a right triangle relate the two radii."
+    ],
+    "2020 HMMT February Geometry, Problem 5": [
+      2100,
+      "Six rotated copies of the region form a larger hexagon with a circular hole."
+    ],
+    "2020 HMMT February Geometry, Problem 6": [
+      2400,
+      "The incenter is equidistant from the three new points, by congruent right triangles on the tangent lengths."
+    ],
+    "2020 HMMT February Geometry, Problem 7": [
+      3000,
+      "Express the tangent lengths through the distance from the center to the chord, then solve the given ratio."
+    ],
+    "2020 HMMT February Geometry, Problem 8": [
+      2800,
+      "The bisector also bisects the angle between the altitude and the diameter; similar right triangles give a quadratic."
+    ],
+    "2020 HMMT February Geometry, Problem 9": [
+      3400,
+      "Invert about the incircle of the centers' triangle; Descartes' theorem gives the radius from the two tangent circles."
+    ],
+    "2020 HMMT February Geometry, Problem 10": [
+      3600,
+      "Invert so the two circles become concentric; a closed chain of 2020 tangent circles fixes the ratio of radii."
     ]
   }
 }

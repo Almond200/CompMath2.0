@@ -1443,7 +1443,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2019 HMMT February Algebra and Number Theory, Problem 6", formulas: ["floor-basics"], strategy: "", tree: ["alg.fn.floor.eq"] },
   { ref: "2019 HMMT February Algebra and Number Theory, Problem 7", formulas: ["geometric-series"], strategy: "", tree: ["alg.seq.sum.other"] },
   { ref: "2019 HMMT February Algebra and Number Theory, Problem 8", formulas: ["dirichlet-convolution", "multiplicative-functions", "generating-function-method"], strategy: "", tree: ["nt.divisor.phi.mult"] },
-  { ref: "2019 HMMT February Algebra and Number Theory, Problem 9", formulas: ["add-all-equations"], strategy: "", tree: ["alg.eq.matrix"] },
+  { ref: "2019 HMMT February Algebra and Number Theory, Problem 9", formulas: ["add-all-equations"], strategy: "", tree: ["alg.eq.linear.system"] },
   { ref: "2019 HMMT February Algebra and Number Theory, Problem 10", formulas: ["telescoping", "vieta-jumping"], strategy: "", tree: ["alg.seq.rec.nonlinear"] },
   // ---- 2019 HMMT February, Combinatorics. Topics and cards only (Step H, owner, 2026-11-12): no
   // strategy is written; the problem page opens the round's official solutions.
@@ -1457,6 +1457,42 @@ window.MATH_PROBLEM_DB = [
   { ref: "2019 HMMT February Combinatorics, Problem 8", formulas: ["casework-method"], strategy: "", tree: ["cp.struct.tile.color", "nt.div.prime.factor"] },
   { ref: "2019 HMMT February Combinatorics, Problem 9", formulas: ["bijection-method"], strategy: "", tree: ["cp.struct.tile.fill"] },
   { ref: "2019 HMMT February Combinatorics, Problem 10", formulas: ["bijection-method", "permutations-combinations"], strategy: "", tree: ["cp.struct.paths.lattice"] },
+  // ---- 2020 HMMT February, Algebra and Number Theory. Topics and cards only (Step H): the problem page opens
+  // the round's official paper and solutions.
+  { ref: "2020 HMMT February Algebra and Number Theory, Problem 1", formulas: ["vietas-general"], strategy: "", tree: ["alg.poly.vieta.basic"] },
+  { ref: "2020 HMMT February Algebra and Number Theory, Problem 2", formulas: ["sfft"], strategy: "", tree: ["nt.dio.factor.sfft"] },
+  { ref: "2020 HMMT February Algebra and Number Theory, Problem 3", formulas: ["log-rules", "change-of-base"], strategy: "", tree: ["alg.exp.log.eq"] },
+  { ref: "2020 HMMT February Algebra and Number Theory, Problem 4", formulas: ["double-counting", "geometric-series"], strategy: "", tree: ["alg.seq.sum.other"] },
+  { ref: "2020 HMMT February Algebra and Number Theory, Problem 5", formulas: ["digit-count", "eulers-totient"], strategy: "", tree: ["alg.exp.log.digits"] },
+  { ref: "2020 HMMT February Algebra and Number Theory, Problem 6", formulas: ["conjugate-root-theorems"], strategy: "", tree: ["alg.poly.construct.given"] },
+  { ref: "2020 HMMT February Algebra and Number Theory, Problem 7", formulas: ["wilsons-theorem"], strategy: "", tree: ["nt.mod.fermat.flt"] },
+  { ref: "2020 HMMT February Algebra and Number Theory, Problem 8", formulas: ["factor-remainder-theorem"], strategy: "", tree: ["alg.poly.construct.interp"] },
+  { ref: "2020 HMMT February Algebra and Number Theory, Problem 9", formulas: ["vietas-general"], strategy: "", tree: ["alg.poly.vieta.transform"] },
+  { ref: "2020 HMMT February Algebra and Number Theory, Problem 10", formulas: ["fermats-little-theorem"], strategy: "", tree: ["nt.mod.fermat.flt"] },
+  // ---- 2020 HMMT February, Combinatorics. Topics and cards only (Step H): the problem page opens
+  // the round's official paper and solutions.
+  { ref: "2020 HMMT February Combinatorics, Problem 1", formulas: ["casework-method"], strategy: "", tree: ["cp.struct.tile.color"] },
+  { ref: "2020 HMMT February Combinatorics, Problem 2", formulas: ["crt"], strategy: "", tree: ["nt.mod.crt.system"] },
+  { ref: "2020 HMMT February Combinatorics, Problem 3", formulas: ["pigeonhole"], strategy: "", tree: ["cp.logic.pigeon.bounds"] },
+  { ref: "2020 HMMT February Combinatorics, Problem 4", formulas: ["permutations-combinations", "casework-method"], strategy: "", tree: ["cp.basic.perm.restrict"] },
+  { ref: "2020 HMMT February Combinatorics, Problem 5", formulas: ["double-counting", "expected-value"], strategy: "", tree: ["cp.exp.linear"] },
+  { ref: "2020 HMMT February Combinatorics, Problem 6", formulas: ["invariants-coloring"], strategy: "", tree: ["cp.logic.invariant.parity"] },
+  { ref: "2020 HMMT February Combinatorics, Problem 7", formulas: ["tail-sum-expectation"], strategy: "", tree: ["cp.exp.states"] },
+  { ref: "2020 HMMT February Combinatorics, Problem 8", formulas: ["geometric-probability"], strategy: "", tree: ["cp.prob.geom.shape"] },
+  { ref: "2020 HMMT February Combinatorics, Problem 9", formulas: ["burnsides-lemma"], strategy: "", tree: ["cp.tech.sym"] },
+  { ref: "2020 HMMT February Combinatorics, Problem 10", formulas: ["generating-function-method", "expected-value"], strategy: "", tree: ["cp.exp.basic"] },
+  // ---- 2020 HMMT February, Geometry. Topics and cards only (Step H): the problem page opens
+  // the round's official paper and solutions.
+  { ref: "2020 HMMT February Geometry, Problem 1", formulas: ["equilateral-triangle-facts"], strategy: "", tree: ["geo.poly.regular.other"] },
+  { ref: "2020 HMMT February Geometry, Problem 2", formulas: ["triangle-similarity"], strategy: "", tree: ["geo.poly.regular.hex"] },
+  { ref: "2020 HMMT February Geometry, Problem 3", formulas: ["pythagorean-theorem"], strategy: "", tree: ["geo.comb.extreme.maxmin"] },
+  { ref: "2020 HMMT February Geometry, Problem 4", formulas: ["incircle-tangent-lengths", "pythagorean-theorem"], strategy: "", tree: ["geo.circ.cyclic.tangential"] },
+  { ref: "2020 HMMT February Geometry, Problem 5", formulas: ["regular-hexagon-area"], strategy: "", tree: ["geo.poly.composite.arcs"] },
+  { ref: "2020 HMMT February Geometry, Problem 6", formulas: ["incircle-tangent-lengths"], strategy: "", tree: ["geo.tri.radii.in"] },
+  { ref: "2020 HMMT February Geometry, Problem 7", formulas: ["tangent-circles", "chord-length"], strategy: "", tree: ["geo.circ.tangent.common"] },
+  { ref: "2020 HMMT February Geometry, Problem 8", formulas: ["angle-bisector-theorem", "triangle-similarity"], strategy: "", tree: ["geo.tri.cevian.bisector"] },
+  { ref: "2020 HMMT February Geometry, Problem 9", formulas: ["descartes-circle-theorem", "inversion-properties"], strategy: "", tree: ["geo.circ.tangent.mutual"] },
+  { ref: "2020 HMMT February Geometry, Problem 10", formulas: ["inversion-properties"], strategy: "", tree: ["geo.circ.proj"] },
   // ---- Text-only entries: every other AMC 8, AMC 10, and AMC 12 problem LIVE publishes. Statement now, tags later.
   { ref: "1985 AJHSME, Problem 1", formulas: [], strategy: "Every factor in the first fraction's numerator and denominator cancels against the second fraction: $3$, $5$, $7$, $9$, $11$ all appear once on top and once below. The product is $1$, choice (A).", tree: ["alg.word.compute.fraction"] },
   { ref: "1985 AJHSME, Problem 2", formulas: ["arithmetic-series"], strategy: "Ten terms averaging $\\tfrac{90+99}2=94.5$ add to $945$, choice (B).", tree: ["alg.seq.ap.arith"] },
