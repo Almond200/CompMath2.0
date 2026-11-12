@@ -12,7 +12,10 @@
     "2020 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2020/feb/geo/problems.pdf",
     "2018 HMMT February Algebra and Number Theory": "https://hmmt-archive.s3.amazonaws.com/tournaments/2018/feb/algnt/problems.pdf",
     "2018 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2018/feb/comb/problems.pdf",
-    "2018 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2018/feb/geo/problems.pdf"
+    "2018 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2018/feb/geo/problems.pdf",
+    "2017 HMMT February Algebra and Number Theory": "https://hmmt-archive.s3.amazonaws.com/tournaments/2017/feb/algnt/problems.pdf",
+    "2017 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2017/feb/comb/problems.pdf",
+    "2017 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2017/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -574,6 +577,126 @@
     "2018 HMMT February Geometry, Problem 10": [
       3650,
       "Transfer a constant ratio of powers through a circle pencil, then evaluate the second line intersection."
+    ],
+    "2017 HMMT February Algebra and Number Theory, Problem 1": [
+      1700,
+      "Separate rational and irrational coefficients, then decode two base-three expansions."
+    ],
+    "2017 HMMT February Algebra and Number Theory, Problem 2": [
+      1850,
+      "Change ordered exponents into positive gaps and separate a triple geometric series."
+    ],
+    "2017 HMMT February Algebra and Number Theory, Problem 3": [
+      1900,
+      "Specialize a multiplicative functional equation on the reals until its values are forced."
+    ],
+    "2017 HMMT February Algebra and Number Theory, Problem 4": [
+      2400,
+      "Repeated divisibility peels off a high power before a size bound leaves two cases."
+    ],
+    "2017 HMMT February Algebra and Number Theory, Problem 5": [
+      2400,
+      "Recognize a weighted divisor sum as a multiplicative convolution and evaluate on five primes."
+    ],
+    "2017 HMMT February Algebra and Number Theory, Problem 6": [
+      3200,
+      "Turn 2016 prescribed values into roots of an auxiliary polynomial, determine its residual linear factor, and bound a harmonic sum."
+    ],
+    "2017 HMMT February Algebra and Number Theory, Problem 7": [
+      3300,
+      "Build a sequence of sharp square completions and verify the extremal coefficient."
+    ],
+    "2017 HMMT February Algebra and Number Theory, Problem 8": [
+      3100,
+      "Reduce integral quadratic pairs by descent, then generate the two bounded chains."
+    ],
+    "2017 HMMT February Algebra and Number Theory, Problem 9": [
+      3450,
+      "Use Fibonacci roots in a quadratic finite field to bound the period and rule out a smaller power of two."
+    ],
+    "2017 HMMT February Algebra and Number Theory, Problem 10": [
+      3500,
+      "Reduce a periodic functional equation to residue classes and count compatible labels on the squaring graph."
+    ],
+    "2017 HMMT February Combinatorics, Problem 1": [
+      1100,
+      "Count the feasible ordered sums of three ten-sided dice."
+    ],
+    "2017 HMMT February Combinatorics, Problem 2": [
+      1600,
+      "Use last digits and divisibility by three to force a fixed number of summands."
+    ],
+    "2017 HMMT February Combinatorics, Problem 3": [
+      2600,
+      "Compare sums in residue classes of jars, prove an upper bound, and exhibit an attaining schedule."
+    ],
+    "2017 HMMT February Combinatorics, Problem 4": [
+      2100,
+      "Separate the possible walk lengths and count the choices of higher-labeled destinations."
+    ],
+    "2017 HMMT February Combinatorics, Problem 5": [
+      2300,
+      "Split on the unique allowed failure of decreasing order and remove the fully decreasing overlap."
+    ],
+    "2017 HMMT February Combinatorics, Problem 6": [
+      2700,
+      "Guess and prove the exact law of a reflected walk with a holding state at zero."
+    ],
+    "2017 HMMT February Combinatorics, Problem 7": [
+      3050,
+      "Strip forced partners until the bipartite graph consists of cycles, then count possible matching totals."
+    ],
+    "2017 HMMT February Combinatorics, Problem 8": [
+      3700,
+      "Filter every vertex degree modulo four in a random graph through a multivariate product."
+    ],
+    "2017 HMMT February Combinatorics, Problem 9": [
+      3750,
+      "Bound total pairwise symmetric differences and attain equality with binary linear functionals."
+    ],
+    "2017 HMMT February Combinatorics, Problem 10": [
+      3550,
+      "Move a local forbidden-switch window by a bijection, then count constrained ballot paths."
+    ],
+    "2017 HMMT February Geometry, Problem 1": [
+      1500,
+      "Use two cyclic-angle similarities to eliminate a shared diagonal segment."
+    ],
+    "2017 HMMT February Geometry, Problem 2": [
+      2300,
+      "Turn equal perimeters into a fixed side sum, maximize the product, and compare the three vertex choices."
+    ],
+    "2017 HMMT February Geometry, Problem 3": [
+      2850,
+      "Classify the boundary support of a smallest enclosing circle and establish both sharp diameter-radius bounds."
+    ],
+    "2017 HMMT February Geometry, Problem 4": [
+      2400,
+      "Apply the median-length identity repeatedly and cancel both diagonals."
+    ],
+    "2017 HMMT February Geometry, Problem 5": [
+      2450,
+      "Translate tangent-side sums into a relation among four circumradii through their common sine."
+    ],
+    "2017 HMMT February Geometry, Problem 6": [
+      3450,
+      "Use degenerate Pascal to locate the second circle intersection and recover the pentagon area."
+    ],
+    "2017 HMMT February Geometry, Problem 7": [
+      3200,
+      "Recognize an internally tangent-circle arc-midpoint configuration and combine homothety with tangent power."
+    ],
+    "2017 HMMT February Geometry, Problem 8": [
+      2900,
+      "Bound a half-angle with the incenter-circumcenter distance and check the isosceles equality case."
+    ],
+    "2017 HMMT February Geometry, Problem 9": [
+      3300,
+      "Prove the square-center distance identity and recover a triangle area from three lengths."
+    ],
+    "2017 HMMT February Geometry, Problem 10": [
+      3550,
+      "Invert a tangential quadrilateral so its vertices become contact-chord midpoints, then compare midpoint ratios."
     ]
   }
 }
