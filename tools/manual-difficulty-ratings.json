@@ -36,7 +36,10 @@
     "2011 HMMT February Combinatorics and Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2011/feb/combgeo/problems.pdf",
     "2010 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2010/feb/alg/problems.pdf",
     "2010 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2010/feb/comb/problems.pdf",
-    "2010 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2010/feb/geo/problems.pdf"
+    "2010 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2010/feb/geo/problems.pdf",
+    "2009 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2009/feb/alg/problems.pdf",
+    "2009 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2009/feb/comb/problems.pdf",
+    "2009 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2009/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -1678,6 +1681,126 @@
     "2010 HMMT February Geometry, Problem 10": [
       3550,
       "Locate a common-tangent midpoint on the radical axis and pair two spiral similarities to recover a chord ratio."
+    ],
+    "2009 HMMT February Algebra, Problem 1": [
+      1350,
+      "Factor a difference of powers and check all divisor pairs for a positive square."
+    ],
+    "2009 HMMT February Algebra, Problem 2": [
+      1750,
+      "Evaluate a complex-coefficient polynomial at one and take its real part before the logarithm."
+    ],
+    "2009 HMMT February Algebra, Problem 3": [
+      1500,
+      "Recover a tangent product from a reciprocal sum and apply the tangent addition formula."
+    ],
+    "2009 HMMT February Algebra, Problem 4": [
+      2050,
+      "Combine a common linear factor with the polynomial least common multiple to recover three linked coefficients."
+    ],
+    "2009 HMMT February Algebra, Problem 5": [
+      1900,
+      "Shift a cubic so the desired reciprocal sum is a ratio of its coefficients."
+    ],
+    "2009 HMMT February Algebra, Problem 6": [
+      2350,
+      "Rescale sine and cosine to eliminate two positive variables and reduce a fourth-power reciprocal sum."
+    ],
+    "2009 HMMT February Algebra, Problem 7": [
+      2800,
+      "Factor every term of a double product, cancel the interior grid and reindex its boundary factors."
+    ],
+    "2009 HMMT February Algebra, Problem 8": [
+      2850,
+      "Recover a two-term linear recurrence from four weighted power sums and extrapolate the next sum."
+    ],
+    "2009 HMMT February Algebra, Problem 9": [
+      3000,
+      "Scale a reciprocal quartic, establish four negative roots and compare the three product pairings."
+    ],
+    "2009 HMMT February Algebra, Problem 10": [
+      3550,
+      "Use cubic uniqueness to force a rectangle center and analyze equal radial distances on a cubic graph."
+    ],
+    "2009 HMMT February Combinatorics, Problem 1": [
+      1200,
+      "Order the absolute-value blocks and choose the sign order independently in each nonzero pair."
+    ],
+    "2009 HMMT February Combinatorics, Problem 2": [
+      1600,
+      "For each ordinary card compare its position with the two jokers and sum the between indicators."
+    ],
+    "2009 HMMT February Combinatorics, Problem 3": [
+      2150,
+      "Count multiset strings avoiding a four-letter block, correcting the double occurrence."
+    ],
+    "2009 HMMT February Combinatorics, Problem 4": [
+      2050,
+      "Choose all fixed points of an idempotent function and send every remaining argument to one of them."
+    ],
+    "2009 HMMT February Combinatorics, Problem 5": [
+      2400,
+      "Pair the two binary halves of a digit-parity weighted exponential sum repeatedly."
+    ],
+    "2009 HMMT February Combinatorics, Problem 6": [
+      2150,
+      "Classify short positive tuples by their number of ones, bounding the remaining product before counting orders."
+    ],
+    "2009 HMMT February Combinatorics, Problem 7": [
+      2450,
+      "Use indicators for unordered pairs sharing a row or column in two independent random grid fillings."
+    ],
+    "2009 HMMT February Combinatorics, Problem 8": [
+      2950,
+      "Recognize a degree-two bipartite incidence graph and count its possible even-cycle decompositions."
+    ],
+    "2009 HMMT February Combinatorics, Problem 9": [
+      3000,
+      "Split a divisibility grid into independent monotone prime-exponent fillings and count the center cases."
+    ],
+    "2009 HMMT February Combinatorics, Problem 10": [
+      3400,
+      "Build decreasing runs, then subtract the precise multiplicities of permutations with fewer ascents."
+    ],
+    "2009 HMMT February Geometry, Problem 1": [
+      1650,
+      "Use the touching folded corners to locate similar right triangles and recover a trapezoid base."
+    ],
+    "2009 HMMT February Geometry, Problem 2": [
+      1900,
+      "Subtract the removed tetrahedron altitude from a cube body diagonal."
+    ],
+    "2009 HMMT February Geometry, Problem 3": [
+      2550,
+      "Characterize centers of parallelograms inscribed in a right triangle and measure the resulting medial region."
+    ],
+    "2009 HMMT February Geometry, Problem 4": [
+      2650,
+      "Use the shared-vertex homothety of two tangential kites and a parallel segment to obtain a side ratio."
+    ],
+    "2009 HMMT February Geometry, Problem 5": [
+      2550,
+      "Interpret three tangents as a triangle incircle and circumcircle and locate its possible incenters."
+    ],
+    "2009 HMMT February Geometry, Problem 6": [
+      2600,
+      "Use integer lattice height to restrict the smallest inradius and optimize the surviving one-unit-height case."
+    ],
+    "2009 HMMT February Geometry, Problem 7": [
+      2850,
+      "Separate the internal and external altitude-foot cases, then combine a median length and a cyclic quadrilateral."
+    ],
+    "2009 HMMT February Geometry, Problem 8": [
+      2550,
+      "Recognize a large right triangle and complete a rectangle to locate the second triangle and its midpoint."
+    ],
+    "2009 HMMT February Geometry, Problem 9": [
+      3050,
+      "Extend an incenter line to an arc midpoint and combine similar-triangle and cyclic-quadrilateral relations."
+    ],
+    "2009 HMMT February Geometry, Problem 10": [
+      3250,
+      "Compare tangent lengths in an auxiliary triangle with Menelaus, then use the external secant power."
     ]
   }
 }
