@@ -33,7 +33,7 @@ assert.equal(groups.size, 27);
       const errors = [];
       page.on('pageerror', e => errors.push(e.message));
       await page.addInitScript(theme => localStorage.setItem('theme', theme), theme);
-      const roundYears = [[2018, 'Algebra and Number Theory', 'algnt'], [2017, 'Algebra and Number Theory', 'algnt'], [2016, 'Algebra', 'alg'], [2015, 'Algebra', 'alg'], [2014, 'Algebra', 'alg'], [2013, 'Algebra', 'alg'], [2012, 'Algebra', 'alg']];
+      const roundYears = [[2018, 'Algebra and Number Theory', 'algnt'], [2017, 'Algebra and Number Theory', 'algnt'], [2016, 'Algebra', 'alg'], [2015, 'Algebra', 'alg'], [2014, 'Algebra', 'alg'], [2013, 'Algebra', 'alg'], [2012, 'Algebra', 'alg'], [2010, 'Algebra', 'alg']];
       const mixedRounds = [['Algebra and Combinatorics', 'algcomb'], ['Algebra and Geometry', 'alggeo'], ['Combinatorics and Geometry', 'combgeo']];
       roundYears.push([2011]);
       for (const [year, algebra, algebraFolder] of roundYears) {
@@ -44,7 +44,8 @@ assert.equal(groups.size, 27);
         assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(), rounds.map(([round]) => round.replaceAll(' and ', ' & ')));
         assert.equal(await page.locator('.db-group.is-shown .pp-tiles .br-row').count(), count);
         for (const [round, folder] of rounds) {
-          for (const number of [1, count]) {
+          const numbers = year === 2010 && round === 'Algebra' ? [1, 2, count] : year === 2018 && round === 'Geometry' ? [1, 6, count] : [1, count];
+          for (const number of numbers) {
             const ref = `${year} HMMT February ${round}, Problem ${number}`;
             const slug = ref.replace(', Problem ', ' ').toLowerCase().replaceAll(' ', '-');
             await page.goto(`${base}/#/problem/${slug}`);

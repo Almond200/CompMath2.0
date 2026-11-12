@@ -9729,7 +9729,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const inner = chainInnerHtml(p, chainCol, chain, altIds);
     // A small "+ Show" / "- Hide" beside the heading opens and closes the strategy, like the
     // new-list + (owner, 2026-10-31). Click to show starts it closed; Shown starts it open.
-    const can = !!(p.strategy || p.formulas.length);
+    const can = !!(p.strategy || p.solUrl || p.formulas.length);
     const key = "problem-" + p.slug;
     const open = (!preview ? savedStrategy(key) : undefined) ?? (state.strategy !== "click");
     const hide = can && !open;
