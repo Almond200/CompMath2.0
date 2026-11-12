@@ -9,7 +9,10 @@
     "2019 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/problems.pdf",
     "2020 HMMT February Algebra and Number Theory": "https://hmmt-archive.s3.amazonaws.com/tournaments/2020/feb/algnt/problems.pdf",
     "2020 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2020/feb/comb/problems.pdf",
-    "2020 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2020/feb/geo/problems.pdf"
+    "2020 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2020/feb/geo/problems.pdf",
+    "2018 HMMT February Algebra and Number Theory": "https://hmmt-archive.s3.amazonaws.com/tournaments/2018/feb/algnt/problems.pdf",
+    "2018 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2018/feb/comb/problems.pdf",
+    "2018 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2018/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -451,6 +454,126 @@
     "2020 HMMT February Geometry, Problem 10": [
       3600,
       "Invert so the two circles become concentric; a closed chain of 2020 tangent circles fixes the ratio of radii."
+    ],
+    "2018 HMMT February Algebra and Number Theory, Problem 1": [
+      1200,
+      "Find the unique horizontal level of a three-piece absolute-value graph."
+    ],
+    "2018 HMMT February Algebra and Number Theory, Problem 2": [
+      1550,
+      "A substitution turns a nested exponential equation into t^t; check uniqueness."
+    ],
+    "2018 HMMT February Algebra and Number Theory, Problem 3": [
+      1900,
+      "Square residues remove the floor, then prime factor pairs leave four candidates."
+    ],
+    "2018 HMMT February Algebra and Number Theory, Problem 4": [
+      1800,
+      "Divide by the product of the distinct primes and use integrality to restrict each prime."
+    ],
+    "2018 HMMT February Algebra and Number Theory, Problem 5": [
+      3000,
+      "Optimize distinct powered roots through inverse permutations and a primitive-root parity obstruction."
+    ],
+    "2018 HMMT February Algebra and Number Theory, Problem 6": [
+      2600,
+      "Convert three trigonometric terms into unit vectors, locate an extremal boundary, then recover a coordinate."
+    ],
+    "2018 HMMT February Algebra and Number Theory, Problem 7": [
+      2850,
+      "Separate large and small states and count the significant histories by a Fibonacci recurrence."
+    ],
+    "2018 HMMT February Algebra and Number Theory, Problem 8": [
+      3150,
+      "Decompose sum-and-OR outputs bit by bit and identify the only collision at each bit."
+    ],
+    "2018 HMMT February Algebra and Number Theory, Problem 9": [
+      3200,
+      "Evaluate a quartic at negated roots, simplify the ratio, and check an attainable bound."
+    ],
+    "2018 HMMT February Algebra and Number Theory, Problem 10": [
+      3900,
+      "Bound possible low-degree integer factors, discard vanishing cases, and combine cyclotomic residue events in a limit."
+    ],
+    "2018 HMMT February Combinatorics, Problem 1": [
+      1100,
+      "Two grid entries determine the rest through row and column congruences."
+    ],
+    "2018 HMMT February Combinatorics, Problem 2": [
+      1400,
+      "Separate the three carry patterns between consecutive five-digit palindromes."
+    ],
+    "2018 HMMT February Combinatorics, Problem 3": [
+      1900,
+      "Corner constraints force the coloring into a few complete patterns."
+    ],
+    "2018 HMMT February Combinatorics, Problem 4": [
+      1600,
+      "Odd changes of direction are equivalent to opposite first and last steps."
+    ],
+    "2018 HMMT February Combinatorics, Problem 5": [
+      2300,
+      "Condition a stopped sequence on avoiding the unwanted color before recognizing the waiting-time law."
+    ],
+    "2018 HMMT February Combinatorics, Problem 6": [
+      3150,
+      "Analyze simultaneous optimal choices and induct on the rectangle dimensions."
+    ],
+    "2018 HMMT February Combinatorics, Problem 7": [
+      2900,
+      "Find and count the initial-position restrictions that make the incomplete sorting schedule succeed."
+    ],
+    "2018 HMMT February Combinatorics, Problem 8": [
+      2600,
+      "Recognize valid cut positions as indicators and sum their permutation probabilities."
+    ],
+    "2018 HMMT February Combinatorics, Problem 9": [
+      3250,
+      "Apply inclusion-exclusion to digit positions equal to the total residue, treating the full intersection separately."
+    ],
+    "2018 HMMT February Combinatorics, Problem 10": [
+      3650,
+      "Bound a boundary graph by degrees, rule out equality by parity, and construct a near-extremal coloring."
+    ],
+    "2018 HMMT February Geometry, Problem 1": [
+      1300,
+      "Recognize the right triangle and use the perpendicular-bisector similarity."
+    ],
+    "2018 HMMT February Geometry, Problem 2": [
+      1400,
+      "Intersect the two triangle-inequality intervals and check degenerate endpoint attainability."
+    ],
+    "2018 HMMT February Geometry, Problem 3": [
+      1750,
+      "Check all three possible placements of the given angle and eliminate invalid quadratic roots."
+    ],
+    "2018 HMMT February Geometry, Problem 4": [
+      2100,
+      "Use a hinged face as a tetrahedron base and maximize its perpendicular height."
+    ],
+    "2018 HMMT February Geometry, Problem 5": [
+      2450,
+      "Combine the diameter, bisected arc, equal areas and a center-to-chord similarity."
+    ],
+    "2018 HMMT February Geometry, Problem 6": [
+      2300,
+      "Infer two coefficients of a prescribed area formula from continuous endpoint configurations."
+    ],
+    "2018 HMMT February Geometry, Problem 7": [
+      2850,
+      "Optimize the average of a piecewise-linear section length over a variable interval."
+    ],
+    "2018 HMMT February Geometry, Problem 8": [
+      3500,
+      "Recognize a harmonic configuration and its polar, then compute a tangent power."
+    ],
+    "2018 HMMT February Geometry, Problem 9": [
+      2900,
+      "Use Euler counting for regions and indicators for crossings of nonadjacent random chords."
+    ],
+    "2018 HMMT February Geometry, Problem 10": [
+      3650,
+      "Transfer a constant ratio of powers through a circle pencil, then evaluate the second line intersection."
     ]
   }
 }
