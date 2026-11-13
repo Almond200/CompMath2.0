@@ -2414,3 +2414,15 @@ ARML's public pages (`www.arml.com/ARML/arml_2019/page/index.php?page_type=publi
 
 **Filing.** Each problem was read with its official solution (and alternate solutions) before filing. No new node or card was needed. Judgement calls: 2018 I-1 is factoring by grouping, which is the first identity on the SFFT card (`sfft`), so it cites that card; 2014 I-9 cites Lucas's Theorem, the official alternate route (the main route compares 7-adic valuations of a binomial ratio); 2017 I-10, a rhombus on the graph of $\lfloor x\rfloor - \{x\}$, cites only Floor Basics, since the rest is slope reasoning with no card. No source error was noticed.
 
+## SMT subject tests
+
+### Sources and coverage (recorded 2026-11-13)
+
+`stanfordmathtournament.com/past-tests/problems` lists SMT 2011 to 2014 and 2018 to 2025; the pages for 2015 to 2017 and 2026 exist but hold no files. Each test is a pair of PDFs, `/pdfs/smt<year>/<subject>-problems.pdf` and `-solutions.pdf`, which the app links. The fourth subject changed name: Advanced (2011 to 2014), Discrete (2018 on), and in 2021 two tests, Combinatorics and Number Theory, in its place. Calculus (110 problems) is not filed: the tree has no calculus area, and filing calculus under precalculus nodes would misfile it (TQ21).
+
+**Reading.** Every problem was read with its official solution. The 2024 solution PDFs lose their mathematics in text extraction (the formulas are in fonts without a character map), so 2024 was filed from the problem papers, which extract cleanly, and the solutions' prose. **Judgement calls:** five problems cite no card because none fits their route (2013 Advanced #9, a candle-timing puzzle; 2019 Algebra #9, an increasing function whose compositions are arithmetic; 2025 Algebra #10, distinct roots of compositions of three linear maps) or because the official route is a bespoke argument; where an official solution gives two routes, the cards are those of the first unless the second is the standard one. No new node or card was needed apart from TQ21, and no source error was noticed.
+
+## CMIMC (blocked)
+
+`cmimc.math.cmu.edu/math/past-problems` lists every individual test from 2016 to 2026, but on 2026-11-13 the site served none of its static files: each PDF, its stylesheet and its favicon returned 404, and the Wayback Machine was unreachable from a cloud chat (and had no snapshot of the PDF tried). With nothing official to read or link, CMIMC was not started; PLAN.md, Step H, says to retry the archive first.
+

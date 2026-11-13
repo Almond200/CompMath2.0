@@ -22,6 +22,8 @@ The ten 2019 HMMT February Geometry problems and fifty 2026 AMC 10A/12A problems
 
 **ARML Individual (2026-11-13).** ARML publishes no per-problem solve counts, so all 100 problems (2009 to 2014, 2016 to 2019) carry author estimates, each with a one-line reason. The anchor is ARML's own stated aim, that 80 to 90% of its students solve I-1 and fewer than 5% solve I-10, with five minutes a problem and no calculator. On the collection's scale that puts I-1 near an AMC 12 #5 to #10 (1250 to 1700) and I-10 near an AIME #10 to #13 (2700 to 3050). Problems come in pairs, an easier one with a harder one, so a late odd-numbered problem can be easy (2009 I-9 is rated 1750): each is placed by its own route, not by its number. ARML's papers are compared only with ARML's.
 
+**SMT subject tests (2026-11-13).** SMT publishes no solve counts either, so all 370 problems (Algebra, Geometry, and Advanced, Discrete or 2021's Combinatorics and Number Theory; 2011 to 2014 and 2018 to 2025) carry author estimates with a one-line reason. Each test is 10 problems in 50 minutes, written for strong students who chose the subject; on the collection's scale its first problem is near an AMC 10 middle one (900 to 1500) and its last near a late HMMT February one (2900 to 3300). Each problem is placed by its route, and the tests are compared only with the same subject (Advanced and Discrete are one series).
+
 ## Selection
 
 `js/problem-difficulty.js` supplies the shared rating lookup, five-level selection and uniform draw.
