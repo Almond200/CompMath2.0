@@ -54,7 +54,10 @@
     "2005 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2005/feb/geo/problems.pdf",
     "2004 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2004/feb/alg/problems.pdf",
     "2004 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2004/feb/comb/problems.pdf",
-    "2004 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2004/feb/geo/problems.pdf"
+    "2004 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2004/feb/geo/problems.pdf",
+    "2003 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2003/feb/alg/problems.pdf",
+    "2003 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2003/feb/comb/problems.pdf",
+    "2003 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2003/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -2416,6 +2419,126 @@
     "2004 HMMT February Geometry, Problem 10": [
       2700,
       "Expand a product of trisector lengths and recognize the three sine-area terms plus the whole right-triangle area."
+    ],
+    "2003 HMMT February Algebra, Problem 1": [
+      1550,
+      "Introduce a square-root variable and complete a square to obtain a uniform sharp bound."
+    ],
+    "2003 HMMT February Algebra, Problem 2": [
+      1350,
+      "Multiply a tangent-sine quotient by a cosine square and cancel identical powers."
+    ],
+    "2003 HMMT February Algebra, Problem 3": [
+      2050,
+      "Invert the factorial trailing-zero count and verify the first index reaching the target valuation."
+    ],
+    "2003 HMMT February Algebra, Problem 4": [
+      1850,
+      "Recognize a quadratic-surd square inside a nested radical before subtracting the original surd."
+    ],
+    "2003 HMMT February Algebra, Problem 5": [
+      1550,
+      "Rewrite a weighted multiplicity sum as the fixed total minus the number of parts; the source accepts two readings of several."
+    ],
+    "2003 HMMT February Algebra, Problem 6": [
+      2750,
+      "Prove the odd-index pattern in a floored reciprocal recurrence by tracking the intervening even terms."
+    ],
+    "2003 HMMT February Algebra, Problem 7": [
+      2250,
+      "Use the cubic coefficients to evaluate the third root power sum."
+    ],
+    "2003 HMMT February Algebra, Problem 8": [
+      2300,
+      "Factor a quadratic denominator into factors three indices apart and retain the uncancelled initial terms."
+    ],
+    "2003 HMMT February Algebra, Problem 9": [
+      3100,
+      "Express the two-adic valuation of a central binomial coefficient and characterize the unique-bit indices."
+    ],
+    "2003 HMMT February Algebra, Problem 10": [
+      3250,
+      "Compare leading degrees in a polynomial identity, propagate forced roots and use a normalization value."
+    ],
+    "2003 HMMT February Combinatorics, Problem 1": [
+      1650,
+      "On an odd switch cycle, equal neighboring states propagate to force a uniform initial binary configuration."
+    ],
+    "2003 HMMT February Combinatorics, Problem 2": [
+      1950,
+      "Condition on the only empty row and independently choose the two forced alternating blocks."
+    ],
+    "2003 HMMT February Combinatorics, Problem 3": [
+      2100,
+      "Group points into pairs so the lead-two game either ends or returns to its tied state."
+    ],
+    "2003 HMMT February Combinatorics, Problem 4": [
+      2100,
+      "Weight senator and aide incidences so each permitted committee type has the same contribution."
+    ],
+    "2003 HMMT February Combinatorics, Problem 5": [
+      2300,
+      "Separate odd and even labels into disjoint color palettes and correct the duplicated monochromatic cases."
+    ],
+    "2003 HMMT February Combinatorics, Problem 6": [
+      2150,
+      "A checkerboard imbalance prevents an adjacent-chair permutation even when the empty chair may move."
+    ],
+    "2003 HMMT February Combinatorics, Problem 7": [
+      2650,
+      "Sum the mutually exclusive collision events over a countably infinite geometric distribution of boxes."
+    ],
+    "2003 HMMT February Combinatorics, Problem 8": [
+      3000,
+      "Count subset anchors by their separation and subset size, then evaluate the resulting weighted binomial sum."
+    ],
+    "2003 HMMT February Combinatorics, Problem 9": [
+      3350,
+      "Pair membership subsets by symmetric difference with one fixed nonempty subset, then attain the sum-free bound."
+    ],
+    "2003 HMMT February Combinatorics, Problem 10": [
+      3200,
+      "Prove a target hitting probability in a decreasing uniform chain and multiply the nested conditional hits."
+    ],
+    "2003 HMMT February Geometry, Problem 1": [
+      1600,
+      "Relate two right triangles made by perpendicular lines and a shared complementary angle."
+    ],
+    "2003 HMMT February Geometry, Problem 2": [
+      1850,
+      "Multiply two side ratios to turn an equal-area split into a quadratic length equation."
+    ],
+    "2003 HMMT February Geometry, Problem 3": [
+      2150,
+      "The longest unobstructed annular chord fixes the difference of squared radii and hence the room area."
+    ],
+    "2003 HMMT February Geometry, Problem 4": [
+      2150,
+      "Use the all-directions reflection condition to identify ellipse foci and their constant total path length."
+    ],
+    "2003 HMMT February Geometry, Problem 5": [
+      2800,
+      "Count triangulation faces and bound nonobtuse triangles by where the circumcenter lies; sharpness requires a diameter diagonal."
+    ],
+    "2003 HMMT February Geometry, Problem 6": [
+      2650,
+      "Compare every perpendicular bead cross-section with that of a smaller sphere to infer equal volumes."
+    ],
+    "2003 HMMT February Geometry, Problem 7": [
+      2350,
+      "Chase a regular-pentagon angle through an internal equilateral triangle and a symmetric final triangle."
+    ],
+    "2003 HMMT February Geometry, Problem 8": [
+      3100,
+      "Rearrange congruent circular segments to turn an exact-two-disks region into six equilateral triangles."
+    ],
+    "2003 HMMT February Geometry, Problem 9": [
+      2950,
+      "Show two median tangencies coincide, equate secant powers from the vertex and recover an angle by similarity."
+    ],
+    "2003 HMMT February Geometry, Problem 10": [
+      3350,
+      "Apply Menelaus twice through a midpoint and use two cyclic-quadrilateral similarities to simplify the ratio."
     ]
   }
 }
