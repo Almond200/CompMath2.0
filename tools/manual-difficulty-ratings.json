@@ -12303,6 +12303,1230 @@
     "1997 UMD HSMC Part I, Problem 25": [
       1800,
       "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): E = 5e + 4h determines e and h uniquely only at the largest E."
+    ],
+    "2016 CMIMC Algebra, Problem 1": [
+      1100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): two equations in bicycles and tricycles."
+    ],
+    "2016 CMIMC Algebra, Problem 2": [
+      1700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): set k = log2 x; both sides in k."
+    ],
+    "2016 CMIMC Algebra, Problem 3": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): rewrite the given ratio in terms of l + 1/l."
+    ],
+    "2016 CMIMC Algebra, Problem 4": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a + b as a function of the slope; AM-GM."
+    ],
+    "2016 CMIMC Algebra, Problem 5": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): add the equations and complete squares."
+    ],
+    "2016 CMIMC Algebra, Problem 6": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): 1, lambda, omega form an equilateral triangle."
+    ],
+    "2016 CMIMC Algebra, Problem 7": [
+      2500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): pairwise products from the three equations."
+    ],
+    "2016 CMIMC Algebra, Problem 8": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): split 1/(r^2 + 1) at +-i and evaluate the polynomial there."
+    ],
+    "2016 CMIMC Algebra, Problem 9": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): Cauchy-Schwarz bound with equality conditions."
+    ],
+    "2016 CMIMC Algebra, Problem 10": [
+      3300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): express x^n through Fibonacci polynomials."
+    ],
+    "2016 CMIMC Combinatorics, Problem 1": [
+      1700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): pairs and singletons distributed."
+    ],
+    "2016 CMIMC Combinatorics, Problem 2": [
+      1400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): each person ends on heads with probability 3/4."
+    ],
+    "2016 CMIMC Combinatorics, Problem 3": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): condition on the number of orange markers."
+    ],
+    "2016 CMIMC Combinatorics, Problem 4": [
+      2100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): configurations that leave two completing squares."
+    ],
+    "2016 CMIMC Combinatorics, Problem 5": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): pairs of opposite vertices."
+    ],
+    "2016 CMIMC Combinatorics, Problem 6": [
+      2500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): winning and losing probabilities are equal by symmetry."
+    ],
+    "2016 CMIMC Combinatorics, Problem 7": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): expected number of successful mounts."
+    ],
+    "2016 CMIMC Combinatorics, Problem 8": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a volume in five dimensions."
+    ],
+    "2016 CMIMC Combinatorics, Problem 9": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): probability the minimum is i, summed with hockey stick."
+    ],
+    "2016 CMIMC Combinatorics, Problem 10": [
+      3300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): which (m, n) admit the required graphs."
+    ],
+    "2016 CMIMC Computer Science, Problem 1": [
+      1000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): case on a."
+    ],
+    "2016 CMIMC Computer Science, Problem 2": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): count interleavings that give each outcome."
+    ],
+    "2016 CMIMC Computer Science, Problem 3": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): pairs of vertices times bijections checked."
+    ],
+    "2016 CMIMC Computer Science, Problem 4": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): unroll the cost recursion."
+    ],
+    "2016 CMIMC Computer Science, Problem 5": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): three path types up to symmetry."
+    ],
+    "2016 CMIMC Computer Science, Problem 6": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): compare the two computed sequences."
+    ],
+    "2016 CMIMC Computer Science, Problem 7": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): each out-of-order pair forces a move."
+    ],
+    "2016 CMIMC Computer Science, Problem 8": [
+      2500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the sets are numbers with binary constraints."
+    ],
+    "2016 CMIMC Computer Science, Problem 9": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the egg-drop recursion with a rubber egg."
+    ],
+    "2016 CMIMC Computer Science, Problem 10": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): turn f and g into binary-string operations."
+    ],
+    "2016 CMIMC Geometry, Problem 1": [
+      1400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): drop the altitude to BC."
+    ],
+    "2016 CMIMC Geometry, Problem 2": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the circles touch at the trapezoid's centre."
+    ],
+    "2016 CMIMC Geometry, Problem 3": [
+      2100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): area ratios give side ratios."
+    ],
+    "2016 CMIMC Geometry, Problem 4": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): unfold the icosahedron's net."
+    ],
+    "2016 CMIMC Geometry, Problem 5": [
+      2100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the parallelogram law in three dimensions."
+    ],
+    "2016 CMIMC Geometry, Problem 6": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): P is the orthocentre."
+    ],
+    "2016 CMIMC Geometry, Problem 7": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): X and Y lie on the circle with diameter BC; radical axis."
+    ],
+    "2016 CMIMC Geometry, Problem 8": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): construct a congruent copy and chase angles."
+    ],
+    "2016 CMIMC Geometry, Problem 9": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): scale to 13-14-15; relate omega to the incircle."
+    ],
+    "2016 CMIMC Geometry, Problem 10": [
+      3300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a series of lemmas on the arc midpoint and tangency points."
+    ],
+    "2016 CMIMC Number Theory, Problem 1": [
+      1500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): compare the two readings of the expression."
+    ],
+    "2016 CMIMC Number Theory, Problem 2": [
+      1700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a_k is a multiple of k(k + 1)."
+    ],
+    "2016 CMIMC Number Theory, Problem 3": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): 2^b - 2^a divisible by 2016 needs a >= 5 and 6 | b - a."
+    ],
+    "2016 CMIMC Number Theory, Problem 4": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): count by complement over prime powers."
+    ],
+    "2016 CMIMC Number Theory, Problem 5": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): parity forces a 2; factor r^2 - q^2."
+    ],
+    "2016 CMIMC Number Theory, Problem 6": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): tasty residues multiply over prime powers."
+    ],
+    "2016 CMIMC Number Theory, Problem 7": [
+      2500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): p^2 - 25p + 1 = 0 mod 11 and mod 13."
+    ],
+    "2016 CMIMC Number Theory, Problem 8": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): power sums mod 71 vanish except at multiples of 70."
+    ],
+    "2016 CMIMC Number Theory, Problem 9": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a^2 + b^2 = n(a + b): divisibility forces a structure."
+    ],
+    "2016 CMIMC Number Theory, Problem 10": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): split the sum by gcd with 10."
+    ],
+    "2017 CMIMC Algebra, Problem 1": [
+      1200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the ratio before and after gives two equations."
+    ],
+    "2017 CMIMC Algebra, Problem 2": [
+      1700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the operation adds reciprocals, so it is associative."
+    ],
+    "2017 CMIMC Algebra, Problem 3": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): expand P(P(x)) and match coefficients."
+    ],
+    "2017 CMIMC Algebra, Problem 4": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): split by parity and rewrite in terms of e."
+    ],
+    "2017 CMIMC Algebra, Problem 5": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): case on floor x and collect the intervals."
+    ],
+    "2017 CMIMC Algebra, Problem 6": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): roots on the unit circle in conjugate pairs; -1 is a root."
+    ],
+    "2017 CMIMC Algebra, Problem 7": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): E_(r+1) = (a + b + c)E_r - (power sum)."
+    ],
+    "2017 CMIMC Algebra, Problem 8": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): rewrite the target with the two linear constraints."
+    ],
+    "2017 CMIMC Algebra, Problem 9": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the powers of 4 appear; count steps between them."
+    ],
+    "2017 CMIMC Algebra, Problem 10": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): roots map to roots; the largest c is 1/2."
+    ],
+    "2017 CMIMC Combinatorics, Problem 1": [
+      1200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): k green squares in distinct rows and columns."
+    ],
+    "2017 CMIMC Combinatorics, Problem 2": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): residues mod 7 avoiding sums 0 and multiples of 7."
+    ],
+    "2017 CMIMC Combinatorics, Problem 3": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): returns need L - R divisible by 6."
+    ],
+    "2017 CMIMC Combinatorics, Problem 4": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): pairs of subsets with a common topping."
+    ],
+    "2017 CMIMC Combinatorics, Problem 5": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): count colourings with a red triangle."
+    ],
+    "2017 CMIMC Combinatorics, Problem 6": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): optimal stopping value by state."
+    ],
+    "2017 CMIMC Combinatorics, Problem 7": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): planes needed to separate the points."
+    ],
+    "2017 CMIMC Combinatorics, Problem 8": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a random walk on a 2 x 6 grid."
+    ],
+    "2017 CMIMC Combinatorics, Problem 9": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): count permutations by cycle type."
+    ],
+    "2017 CMIMC Combinatorics, Problem 10": [
+      3100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): paths by the diagonal index x + y."
+    ],
+    "2017 CMIMC Computer Science, Problem 1": [
+      1300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): odd-degree vertices pair up as path ends."
+    ],
+    "2017 CMIMC Computer Science, Problem 2": [
+      1600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): trace what the function does to the list."
+    ],
+    "2017 CMIMC Computer Science, Problem 3": [
+      1600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): XOR: each bit's parity."
+    ],
+    "2017 CMIMC Computer Science, Problem 4": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a transitive tournament: there is always a sink."
+    ],
+    "2017 CMIMC Computer Science, Problem 5": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): insertion sort's work counts inversions."
+    ],
+    "2017 CMIMC Computer Science, Problem 6": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): S(2n + 1) = S(n)^2 and a similar rule for even sizes."
+    ],
+    "2017 CMIMC Computer Science, Problem 7": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): queries needed along the anti-diagonals."
+    ],
+    "2017 CMIMC Computer Science, Problem 8": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): compare the greedy and optimal number of moves."
+    ],
+    "2017 CMIMC Computer Science, Problem 9": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a lie-tolerant code needs enough questions."
+    ],
+    "2017 CMIMC Computer Science, Problem 10": [
+      3100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): spanning trees of K_(6,6)."
+    ],
+    "2017 CMIMC Geometry, Problem 1": [
+      1400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the similarity makes angle B twice angle C."
+    ],
+    "2017 CMIMC Geometry, Problem 2": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): two triangles similar to ABC on BC."
+    ],
+    "2017 CMIMC Geometry, Problem 3": [
+      2100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): bisector ratios and the altitude's foot."
+    ],
+    "2017 CMIMC Geometry, Problem 4": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): distances from the centre and origin to the plane."
+    ],
+    "2017 CMIMC Geometry, Problem 5": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): orthogonality: r1^2 + r2^2 = d^2."
+    ],
+    "2017 CMIMC Geometry, Problem 6": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): inscribed angles at P and Q."
+    ],
+    "2017 CMIMC Geometry, Problem 7": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): reduce to a triangle with known inradius and exradius."
+    ],
+    "2017 CMIMC Geometry, Problem 8": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): distances to the directrix equal distances to A."
+    ],
+    "2017 CMIMC Geometry, Problem 9": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): DE is antiparallel to BC; similar triangles."
+    ],
+    "2017 CMIMC Geometry, Problem 10": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): coordinates for the two Euler lines."
+    ],
+    "2017 CMIMC Number Theory, Problem 1": [
+      1300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): one divisor is odd and one even; powers of 2 and 5."
+    ],
+    "2017 CMIMC Number Theory, Problem 2": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): g divides 103, so g is 1 or 103."
+    ],
+    "2017 CMIMC Number Theory, Problem 3": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): parities of a, b, c and the factors."
+    ],
+    "2017 CMIMC Number Theory, Problem 4": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): parametrise the two geometric triples."
+    ],
+    "2017 CMIMC Number Theory, Problem 5": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): gcd of rationals by prime exponents."
+    ],
+    "2017 CMIMC Number Theory, Problem 6": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): swapping digits changes N by multiples of 10^i - 10^j."
+    ],
+    "2017 CMIMC Number Theory, Problem 7": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): D(N) = N needs every e_i = p_i."
+    ],
+    "2017 CMIMC Number Theory, Problem 8": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): count solutions of a^2 + b^2 + c^2 = 0 mod p."
+    ],
+    "2017 CMIMC Number Theory, Problem 9": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): p^3 = (b^2 - a)(b^2 + a)."
+    ],
+    "2017 CMIMC Number Theory, Problem 10": [
+      3100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): g(n) = (n+1)!/lcm(1, ..., n+1)."
+    ],
+    "2018 CMIMC Algebra, Problem 1": [
+      1300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): compare trades over three days."
+    ],
+    "2018 CMIMC Algebra, Problem 2": [
+      1500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): (x + 1/x)^2 - (x - 1/x)^2 = 4."
+    ],
+    "2018 CMIMC Algebra, Problem 3": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): P(x) equals each root of P; keep the real ones."
+    ],
+    "2018 CMIMC Algebra, Problem 4": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the slip condition defines a recurrence."
+    ],
+    "2018 CMIMC Algebra, Problem 5": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): each equation becomes abc + k = a(a + b + c)."
+    ],
+    "2018 CMIMC Algebra, Problem 6": [
+      2500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): minimal representations have no adjacent ones."
+    ],
+    "2018 CMIMC Algebra, Problem 7": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): write the term with r_k = 5 + e^(i pi k/1009)."
+    ],
+    "2018 CMIMC Algebra, Problem 8": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): P lies between Q and R; it touches both at shared roots."
+    ],
+    "2018 CMIMC Algebra, Problem 9": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): sum of squared coefficients as a constant term."
+    ],
+    "2018 CMIMC Algebra, Problem 10": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): T_n = F_n + 1 satisfies the Chebyshev recurrence."
+    ],
+    "2018 CMIMC Combinatorics, Problem 1": [
+      1700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): which positions let the truthful statement hold."
+    ],
+    "2018 CMIMC Combinatorics, Problem 2": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): three white cubes per layer forming permutations."
+    ],
+    "2018 CMIMC Combinatorics, Problem 3": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): cases on using the teleporter."
+    ],
+    "2018 CMIMC Combinatorics, Problem 4": [
+      2100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): region of arrival times where A is taken."
+    ],
+    "2018 CMIMC Combinatorics, Problem 5": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): order of the six special cards."
+    ],
+    "2018 CMIMC Combinatorics, Problem 6": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the race between primes and evens."
+    ],
+    "2018 CMIMC Combinatorics, Problem 7": [
+      2500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): line counts closed up into a circle."
+    ],
+    "2018 CMIMC Combinatorics, Problem 8": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): work mod 13: the multipliers pair as inverses."
+    ],
+    "2018 CMIMC Combinatorics, Problem 9": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a lemma on permutations with one excedance."
+    ],
+    "2018 CMIMC Combinatorics, Problem 10": [
+      3300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): sparse sets with sum condition by roots of unity."
+    ],
+    "2018 CMIMC Computer Science, Problem 1": [
+      1300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a linear system from the vertex sums."
+    ],
+    "2018 CMIMC Computer Science, Problem 2": [
+      1600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the call count satisfies a Fibonacci-like recurrence."
+    ],
+    "2018 CMIMC Computer Science, Problem 3": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): comparisons needed to find a monotone subsequence."
+    ],
+    "2018 CMIMC Computer Science, Problem 4": [
+      1700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): compare the best paths through the grid."
+    ],
+    "2018 CMIMC Computer Science, Problem 5": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): linearity over consecutive positions."
+    ],
+    "2018 CMIMC Computer Science, Problem 6": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the expected longest path by induction."
+    ],
+    "2018 CMIMC Computer Science, Problem 7": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): tail-sum formula for the estimator's expectation."
+    ],
+    "2018 CMIMC Computer Science, Problem 8": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): phrases reducible to A by the rules."
+    ],
+    "2018 CMIMC Computer Science, Problem 9": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): optimal split weights for the search."
+    ],
+    "2018 CMIMC Computer Science, Problem 10": [
+      3100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): graphs giving the observed DFS order."
+    ],
+    "2018 CMIMC Geometry, Problem 1": [
+      1300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): angle sums in the two triangles."
+    ],
+    "2018 CMIMC Geometry, Problem 2": [
+      2100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): AQ/QB = PA/PB; optimise over P."
+    ],
+    "2018 CMIMC Geometry, Problem 3": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the sines are the sides over 2R."
+    ],
+    "2018 CMIMC Geometry, Problem 4": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): compose the rotations as one map."
+    ],
+    "2018 CMIMC Geometry, Problem 5": [
+      2500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): X is a reflection of the midpoint."
+    ],
+    "2018 CMIMC Geometry, Problem 6": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): centre distances and the tangency radii."
+    ],
+    "2018 CMIMC Geometry, Problem 7": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): powers with respect to the circle centred at A."
+    ],
+    "2018 CMIMC Geometry, Problem 8": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): BD by the law of cosines, then the semicircles."
+    ],
+    "2018 CMIMC Geometry, Problem 9": [
+      3100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): reflections of the focus in the tangents."
+    ],
+    "2018 CMIMC Geometry, Problem 10": [
+      3300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): tangency of the reflected excircle gives a relation in R, r, r_a."
+    ],
+    "2018 CMIMC Number Theory, Problem 1": [
+      1300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): two linear relations with coprimality."
+    ],
+    "2018 CMIMC Number Theory, Problem 2": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): small cases, then factor the square condition."
+    ],
+    "2018 CMIMC Number Theory, Problem 3": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): n and n + 1 of the form 4^a(8b + 7)."
+    ],
+    "2018 CMIMC Number Theory, Problem 4": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the sequence must avoid falling to 2 and 3."
+    ],
+    "2018 CMIMC Number Theory, Problem 5": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): binomial representation of 2018 with jumps."
+    ],
+    "2018 CMIMC Number Theory, Problem 6": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): phi(n) | n iff n = 2^a 3^b."
+    ],
+    "2018 CMIMC Number Theory, Problem 7": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): period equals the order of 16 mod the denominator."
+    ],
+    "2018 CMIMC Number Theory, Problem 8": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): p^3 + q^3 + r^3 - 3pqr factors."
+    ],
+    "2018 CMIMC Number Theory, Problem 9": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): Lambert series: sum phi(d) = n."
+    ],
+    "2018 CMIMC Number Theory, Problem 10": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): products over primitive roots via cyclotomic polynomials."
+    ],
+    "2019 CMIMC Algebra and Number Theory, Problem 1": [
+      1300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the ratio of sums is a power of r."
+    ],
+    "2019 CMIMC Algebra and Number Theory, Problem 2": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): f(n) >= k iff lcm(1, ..., k-1) divides n."
+    ],
+    "2019 CMIMC Algebra and Number Theory, Problem 3": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): plug in x = 1, 2 to get a system."
+    ],
+    "2019 CMIMC Algebra and Number Theory, Problem 4": [
+      2100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): 3 | n and 3 | 2^n - 1 force n even."
+    ],
+    "2019 CMIMC Algebra and Number Theory, Problem 5": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): lift square roots of 2 from mod 7."
+    ],
+    "2019 CMIMC Algebra and Number Theory, Problem 6": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): b^2 + c^2 - a^2 in terms of a, then Vieta."
+    ],
+    "2019 CMIMC Algebra and Number Theory, Problem 7": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): f(n) is a sum of gcds over pairs."
+    ],
+    "2019 CMIMC Algebra and Number Theory, Problem 8": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): x_k and y_k from z_k and its conjugate."
+    ],
+    "2019 CMIMC Algebra and Number Theory, Problem 9": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the recurrence mod 29 and its period."
+    ],
+    "2019 CMIMC Algebra and Number Theory, Problem 10": [
+      3100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): n is prime or twice a prime, with exceptions."
+    ],
+    "2019 CMIMC Combinatorics and Computer Science, Problem 1": [
+      1300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): count outcomes of the four dice."
+    ],
+    "2019 CMIMC Combinatorics and Computer Science, Problem 2": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): proper 3-colourings of the cube graph."
+    ],
+    "2019 CMIMC Combinatorics and Computer Science, Problem 3": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): count factorisations a * b = c with a <= b."
+    ],
+    "2019 CMIMC Combinatorics and Computer Science, Problem 4": [
+      2100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): steps of the power search by position."
+    ],
+    "2019 CMIMC Combinatorics and Computer Science, Problem 5": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): case on the first moves."
+    ],
+    "2019 CMIMC Combinatorics and Computer Science, Problem 6": [
+      2500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): switch effects as vectors mod 2."
+    ],
+    "2019 CMIMC Combinatorics and Computer Science, Problem 7": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): primitive words by Mobius inversion."
+    ],
+    "2019 CMIMC Combinatorics and Computer Science, Problem 8": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): graphs on which the procedure returns true."
+    ],
+    "2019 CMIMC Combinatorics and Computer Science, Problem 9": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): monochromatic paths in a two-coloured complete graph."
+    ],
+    "2019 CMIMC Combinatorics and Computer Science, Problem 10": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a bijection between tree classes and simpler objects."
+    ],
+    "2019 CMIMC Geometry, Problem 1": [
+      1100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): angles of the overlapping quadrilateral."
+    ],
+    "2019 CMIMC Geometry, Problem 2": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): projections of the centres onto the line."
+    ],
+    "2019 CMIMC Geometry, Problem 3": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): feet of perpendiculars to BC."
+    ],
+    "2019 CMIMC Geometry, Problem 4": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the cube's far corner on the plane x/5 + y/12 + z/9 = 1."
+    ],
+    "2019 CMIMC Geometry, Problem 5": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): locate S by perpendiculars."
+    ],
+    "2019 CMIMC Geometry, Problem 6": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): NBC is equilateral; chase to equal lengths."
+    ],
+    "2019 CMIMC Geometry, Problem 7": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): BXYC is tangential."
+    ],
+    "2019 CMIMC Geometry, Problem 8": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): three reflections compose to a glide reflection."
+    ],
+    "2019 CMIMC Geometry, Problem 9": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): B lies on the circle through P1, P2, P3."
+    ],
+    "2019 CMIMC Geometry, Problem 10": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): isosceles right triangles as rotations by 90 degrees."
+    ],
+    "2020 CMIMC Algebra and Number Theory, Problem 1": [
+      1300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): reduce x^3 with x^2 = 10x + 7."
+    ],
+    "2020 CMIMC Algebra and Number Theory, Problem 2": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a double root: c from Vieta."
+    ],
+    "2020 CMIMC Algebra and Number Theory, Problem 3": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): bound the digits and search."
+    ],
+    "2020 CMIMC Algebra and Number Theory, Problem 4": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): 16x^3 - 21x relates to sin 3 theta; compare the two values."
+    ],
+    "2020 CMIMC Algebra and Number Theory, Problem 5": [
+      2500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): f(n) shares a factor with f(m) when m/n is odd."
+    ],
+    "2020 CMIMC Algebra and Number Theory, Problem 6": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): substitute z = 6^x - y and solve the quadratic."
+    ],
+    "2020 CMIMC Algebra and Number Theory, Problem 7": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): pair the factors to share x^2 - 9x."
+    ],
+    "2020 CMIMC Algebra and Number Theory, Problem 8": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): divisor sums of 1 force f on composites."
+    ],
+    "2020 CMIMC Algebra and Number Theory, Problem 9": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): x^3 + y^3 + 1 - 3xy factors; count solutions mod p."
+    ],
+    "2020 CMIMC Algebra and Number Theory, Problem 10": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): roots closed under squaring: roots of unity and 0."
+    ],
+    "2020 CMIMC Combinatorics and Computer Science, Problem 1": [
+      1300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the degree sum is even."
+    ],
+    "2020 CMIMC Combinatorics and Computer Science, Problem 2": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): choose the 5 trues; expected score of the best strategy."
+    ],
+    "2020 CMIMC Combinatorics and Computer Science, Problem 3": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): reachable arrangements of the array."
+    ],
+    "2020 CMIMC Combinatorics and Computer Science, Problem 4": [
+      2500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): walls in the triangular grid without touching."
+    ],
+    "2020 CMIMC Combinatorics and Computer Science, Problem 5": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): expected shuffles until the order is restored."
+    ],
+    "2020 CMIMC Combinatorics and Computer Science, Problem 6": [
+      2500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): minimal bridge sets are spanning trees."
+    ],
+    "2020 CMIMC Combinatorics and Computer Science, Problem 7": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): odd triangles force a complete bipartite cut."
+    ],
+    "2020 CMIMC Combinatorics and Computer Science, Problem 8": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): column states for a tiling recursion."
+    ],
+    "2020 CMIMC Combinatorics and Computer Science, Problem 9": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): unary automata are a tail and a cycle; count languages."
+    ],
+    "2020 CMIMC Combinatorics and Computer Science, Problem 10": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): count strings with two palindromic splits."
+    ],
+    "2020 CMIMC Geometry, Problem 1": [
+      1300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): 30-60-90 triangles locate A and B."
+    ],
+    "2020 CMIMC Geometry, Problem 2": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): parallel lines give equal ratios."
+    ],
+    "2020 CMIMC Geometry, Problem 3": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): similar triangles across the diagonal."
+    ],
+    "2020 CMIMC Geometry, Problem 4": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): equal distances from the bisectors."
+    ],
+    "2020 CMIMC Geometry, Problem 5": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): compose the homotheties; track the centre."
+    ],
+    "2020 CMIMC Geometry, Problem 6": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): A, B, P, Q concyclic gives a right angle at P."
+    ],
+    "2020 CMIMC Geometry, Problem 7": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): X is the Miquel point; it lies on a known circle."
+    ],
+    "2020 CMIMC Geometry, Problem 8": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): focal distances on both conics."
+    ],
+    "2020 CMIMC Geometry, Problem 9": [
+      3100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): P is the pole of BC; similar triangles at M and N."
+    ],
+    "2020 CMIMC Geometry, Problem 10": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a tetrahedron of four congruent faces fits in a box."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 1, Problem 1": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): which nine of the ten divide: case on the missing one."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 1, Problem 2": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): cost minimised for a fixed volume."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 1, Problem 3": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): each interval between consecutive squares must contain the required number."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 1, Problem 4": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): divide by z: everything is in z + 1/z."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 1, Problem 5": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): track which lockers end open."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 1, Problem 6": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): polynomials mod 2027 as functions; cycle lengths of the iteration."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 1, Problem 7": [
+      3100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): count binomials not divisible by 43 digit by digit."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 1, Problem 8": [
+      3300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a convolution inequality; equality case gives c."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 2, Problem 1": [
+      1300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): meeting point from the two speeds."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 2, Problem 2": [
+      1500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): digit triples with the given products."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 2, Problem 3": [
+      1800,
+      "Author estimate: the same problem as 2022 CMIMC Algebra and Number Theory Division 1, Problem 1; its rating is carried over."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 2, Problem 4": [
+      2000,
+      "Author estimate: the same problem as 2022 CMIMC Algebra and Number Theory Division 1, Problem 2; its rating is carried over."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 2, Problem 5": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): symmetric functions of the cubic's roots."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 2, Problem 6": [
+      2400,
+      "Author estimate: the same problem as 2022 CMIMC Algebra and Number Theory Division 1, Problem 3; its rating is carried over."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 2, Problem 7": [
+      2500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): products of coefficients under multiplication."
+    ],
+    "2022 CMIMC Algebra and Number Theory Division 2, Problem 8": [
+      2400,
+      "Author estimate: the same problem as 2022 CMIMC Algebra and Number Theory Division 1, Problem 4; its rating is carried over."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 1, Problem 1": [
+      1500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): count nested square choices layer by layer."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 1, Problem 2": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): differences halve each step; powers of 2 limit the length."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 1, Problem 3": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): nobody gets their own dish or a neighbour's."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 1, Problem 4": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): track the angle through the moves."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 1, Problem 5": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): each test splits the candidates; binary encoding."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 1, Problem 6": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): probabilities of hitting each running total."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 1, Problem 7": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): arrangements built by inserting the tallest student."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 1, Problem 8": [
+      3100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): expected cards drawn by symmetry among the special cards."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 2, Problem 1": [
+      1600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): moves to the eight diagonal neighbours."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 2, Problem 2": [
+      1300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): nested square choices without the interior condition."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 2, Problem 3": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): L-shaped triples in a grid."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 2, Problem 4": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): phone states lap by lap."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 2, Problem 5": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): first to 11 wins with the given strategy."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 2, Problem 6": [
+      2000,
+      "Author estimate: the same problem as 2022 CMIMC Combinatorics and Computer Science Division 1, Problem 2; its rating is carried over."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 2, Problem 7": [
+      2200,
+      "Author estimate: the same problem as 2022 CMIMC Combinatorics and Computer Science Division 1, Problem 3; its rating is carried over."
+    ],
+    "2022 CMIMC Combinatorics and Computer Science Division 2, Problem 8": [
+      2300,
+      "Author estimate: the same problem as 2022 CMIMC Combinatorics and Computer Science Division 1, Problem 4; its rating is carried over."
+    ],
+    "2022 CMIMC Geometry Division 1, Problem 1": [
+      1700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): Q on the perpendicular bisector of AP."
+    ],
+    "2022 CMIMC Geometry Division 1, Problem 2": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): 60-degree angles and the law of cosines."
+    ],
+    "2022 CMIMC Geometry Division 1, Problem 3": [
+      2100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the centres form a 3-4-5 triangle."
+    ],
+    "2022 CMIMC Geometry Division 1, Problem 4": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): power of C and the 60-degree angle."
+    ],
+    "2022 CMIMC Geometry Division 1, Problem 5": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): AH = AO forces angle A = 60; then OI and OH."
+    ],
+    "2022 CMIMC Geometry Division 1, Problem 6": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the common chord and powers along the ray."
+    ],
+    "2022 CMIMC Geometry Division 1, Problem 7": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): AI/ID fixes (b + c)/a; combine with the given sum."
+    ],
+    "2022 CMIMC Geometry Division 1, Problem 8": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): angle chase around the circumcentre, then sines."
+    ],
+    "2022 CMIMC Geometry Division 2, Problem 1": [
+      1200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a cross-shaped dodecagon made of squares."
+    ],
+    "2022 CMIMC Geometry Division 2, Problem 2": [
+      1700,
+      "Author estimate: the same problem as 2022 CMIMC Geometry Division 1, Problem 1; its rating is carried over."
+    ],
+    "2022 CMIMC Geometry Division 2, Problem 3": [
+      2000,
+      "Author estimate: the same problem as 2022 CMIMC Geometry Division 1, Problem 2; its rating is carried over."
+    ],
+    "2022 CMIMC Geometry Division 2, Problem 4": [
+      1700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): CD^2 = CA * CB."
+    ],
+    "2022 CMIMC Geometry Division 2, Problem 5": [
+      2000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): coordinates for D, M and N."
+    ],
+    "2022 CMIMC Geometry Division 2, Problem 6": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): solve the centroid conditions as a linear system."
+    ],
+    "2022 CMIMC Geometry Division 2, Problem 7": [
+      2100,
+      "Author estimate: the same problem as 2022 CMIMC Geometry Division 1, Problem 3; its rating is carried over."
+    ],
+    "2022 CMIMC Geometry Division 2, Problem 8": [
+      2400,
+      "Author estimate: the same problem as 2022 CMIMC Geometry Division 1, Problem 4; its rating is carried over."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 1, Problem 1": [
+      1800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): factor 12 as (e1+1)(e2+1)... with 12 | d | 12!."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 1, Problem 2": [
+      2100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): pigeon k goes to hole k^2 mod n; avoid collisions."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 1, Problem 3": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): expand in s = a + b and p = ab."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 1, Problem 4": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): reflect across the x-axis; the shortest path meets the curve."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 1, Problem 5": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): sums over residue classes pin the polynomial."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 1, Problem 6": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): expand around 150 and reduce mod 10^4."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 1, Problem 7": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): compare prime exponents of n and powers of 2021!."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 1, Problem 8": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): cos 3 theta and polynomials in cos theta."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 2, Problem 1": [
+      1400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the product of ABC, AB and A meets the condition."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 2, Problem 2": [
+      1500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a and b^2 satisfy the same quadratic."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 2, Problem 3": [
+      1800,
+      "Author estimate: the same problem as 2021 CMIMC Algebra and Number Theory Division 1, Problem 1; its rating is carried over."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 2, Problem 4": [
+      2100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): sums of three powers of 3 in base 3."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 2, Problem 5": [
+      2100,
+      "Author estimate: the same problem as 2021 CMIMC Algebra and Number Theory Division 1, Problem 2; its rating is carried over."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 2, Problem 6": [
+      2300,
+      "Author estimate: the same problem as 2021 CMIMC Algebra and Number Theory Division 1, Problem 3; its rating is carried over."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 2, Problem 7": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): sigma(3n) in terms of the power of 3 in n."
+    ],
+    "2021 CMIMC Algebra and Number Theory Division 2, Problem 8": [
+      2400,
+      "Author estimate: the same problem as 2021 CMIMC Algebra and Number Theory Division 1, Problem 4; its rating is carried over."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 1, Problem 1": [
+      1700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): distribution of an order statistic; hockey-stick sums."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 1, Problem 2": [
+      2100,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): linearity over squares."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 1, Problem 3": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): prefix sums mod 7 must be distinct."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 1, Problem 4": [
+      2500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): count colour sequences with a generating function."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 1, Problem 5": [
+      2700,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a recursion for tetromino tilings of 2 x n."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 1, Problem 6": [
+      2800,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): condition on Alice >= Bob; Vandermonde sums."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 1, Problem 7": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): non-decreasing tuples as multisets; split by parity."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 1, Problem 8": [
+      3200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): what augmentations can produce."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 1": [
+      1500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): move each king along its column."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 2": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): compositions of the type-changing functions."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 3": [
+      1700,
+      "Author estimate: the same problem as 2021 CMIMC Combinatorics and Computer Science Division 1, Problem 1; its rating is carried over."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 4": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): choose stones by size with the parity condition."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 5": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the game as a random walk with absorbing ends."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 6": [
+      2100,
+      "Author estimate: the same problem as 2021 CMIMC Combinatorics and Computer Science Division 1, Problem 2; its rating is carried over."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 7": [
+      2400,
+      "Author estimate: the same problem as 2021 CMIMC Combinatorics and Computer Science Division 1, Problem 3; its rating is carried over."
+    ],
+    "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 8": [
+      2500,
+      "Author estimate: the same problem as 2021 CMIMC Combinatorics and Computer Science Division 1, Problem 4; its rating is carried over."
+    ],
+    "2021 CMIMC Geometry Division 1, Problem 1": [
+      1500,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the swept region as sectors and a triangle."
+    ],
+    "2021 CMIMC Geometry Division 1, Problem 2": [
+      2200,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the angle condition places D on a circle."
+    ],
+    "2021 CMIMC Geometry Division 1, Problem 3": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): tangents from I meet at an arc midpoint."
+    ],
+    "2021 CMIMC Geometry Division 1, Problem 4": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): rotate the congruent triangles; law of cosines."
+    ],
+    "2021 CMIMC Geometry Division 1, Problem 5": [
+      2600,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): centre distances by Stewart's theorem."
+    ],
+    "2021 CMIMC Geometry Division 1, Problem 6": [
+      2900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the 105-degree angle between the radii at X."
+    ],
+    "2021 CMIMC Geometry Division 1, Problem 7": [
+      3000,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the length conditions make a cyclic configuration."
+    ],
+    "2021 CMIMC Geometry Division 1, Problem 8": [
+      3300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): invert at A to turn the tangency into lines."
+    ],
+    "2021 CMIMC Geometry Division 2, Problem 1": [
+      1400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): a 20-21-29 triangle and the circles' radii."
+    ],
+    "2021 CMIMC Geometry Division 2, Problem 2": [
+      1500,
+      "Author estimate: the same problem as 2021 CMIMC Geometry Division 1, Problem 1; its rating is carried over."
+    ],
+    "2021 CMIMC Geometry Division 2, Problem 3": [
+      1900,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the 15 and 75 degree angles make a right angle at the extended legs."
+    ],
+    "2021 CMIMC Geometry Division 2, Problem 4": [
+      2300,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): the swept solid is two cones."
+    ],
+    "2021 CMIMC Geometry Division 2, Problem 5": [
+      2400,
+      "Author estimate (CMIMC publishes no solve counts; placed on the collection’s scale by its route, a test running from an AMC 12 middle problem to a late HMMT February one): shortest path around a circle: tangent segments and an arc."
+    ],
+    "2021 CMIMC Geometry Division 2, Problem 6": [
+      2200,
+      "Author estimate: the same problem as 2021 CMIMC Geometry Division 1, Problem 2; its rating is carried over."
+    ],
+    "2021 CMIMC Geometry Division 2, Problem 7": [
+      2400,
+      "Author estimate: the same problem as 2021 CMIMC Geometry Division 1, Problem 3; its rating is carried over."
+    ],
+    "2021 CMIMC Geometry Division 2, Problem 8": [
+      2600,
+      "Author estimate: the same problem as 2021 CMIMC Geometry Division 1, Problem 4; its rating is carried over."
     ]
   }
 }

@@ -2,6 +2,8 @@
 
 **2026-11-13**
 
+- **CMIMC individual tests, 2016 to 2022 (owner: "the individual rounds on the other sets"):** 306 problems, read from the official papers and solutions as kept in the CMIMC website's source repository (the archive's PDFs load only in a browser), filed, tagged and rated by author estimate; Division 2 problems that repeat Division 1 copy their twin. CMIMC is its own family with its subject tests as tabs; each page links CMIMC's official archive. 2023 to 2026 still need the papers (PLAN.md, Step H).
+
 - **UMD HSMC Part I complete (owner: "the individual rounds on the other sets"):** the University of Maryland High School Mathematics Competition's Part I, a 25-question individual test, all 725 problems from 1997 to 2026 (no 2020), each read with its official solutions, filed, tagged and rated by author estimate. UMD HSMC is its own family; each page links the year's official paper and solutions.
 
 - **SMT General test (owner: "the individual rounds on the other sets"):** 297 problems, 2011 to 2014 and 2018 to 2025, SMT's General individual test as a fifth SMT paper with its official test and solutions linked. 63 are word for word subject-test problems and copy that problem's cards, nodes and rating; the other 234 were read with their official solutions, filed, tagged and rated by author estimate. Six cite no card (simple word problems or no fitting card). JHMT, CHMMC and RMT were looked for and could not be reached or have no official archive.
