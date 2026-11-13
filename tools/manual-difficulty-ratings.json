@@ -72,7 +72,10 @@
     "1998 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/1998/feb/geo/problems.pdf",
     "2000 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2000/feb/alg/problems.pdf",
     "2000 HMMT February Advanced Topics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2000/feb/adv/problems.pdf",
-    "2000 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2000/feb/geo/problems.pdf"
+    "2000 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2000/feb/geo/problems.pdf",
+    "2025 BMT Algebra": "https://berkeley.mt/archives/bmt-2025/algebra-problems.pdf",
+    "2025 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2025/discrete-problems.pdf",
+    "2025 BMT Geometry": "https://berkeley.mt/archives/bmt-2025/geometry-problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -3154,6 +3157,126 @@
     "2000 HMMT February Geometry, Problem 10": [
       2850,
       "Reduce a concentric-sphere light path to a planar annulus and count equal angular advances until its first return."
+    ],
+    "2025 BMT Algebra, Problem 1": [
+      1350,
+      "Extract a requested linear combination without determining three separate variables."
+    ],
+    "2025 BMT Algebra, Problem 2": [
+      1250,
+      "Solve for a changing count when identical high-valued slips are added to an average."
+    ],
+    "2025 BMT Algebra, Problem 3": [
+      1350,
+      "Recover an arithmetic progression from an early-term ratio and a two-term sum."
+    ],
+    "2025 BMT Algebra, Problem 4": [
+      1800,
+      "Factor two quadratics, remove a repeated root and track horizontal translation followed by a half-turn."
+    ],
+    "2025 BMT Algebra, Problem 5": [
+      2350,
+      "Convert three cubic equations into pair-sum cube roots and enumerate which branch sums are real."
+    ],
+    "2025 BMT Algebra, Problem 6": [
+      2550,
+      "Index sine zeros through a logarithm, retain both quadratic roots in the allowed domain and sum their absolutely convergent series."
+    ],
+    "2025 BMT Algebra, Problem 7": [
+      2700,
+      "Evaluate a fifth-root Vandermonde-square product through polynomial derivatives and its sign."
+    ],
+    "2025 BMT Algebra, Problem 8": [
+      2550,
+      "Untangle a rational expression of two logarithms and identify the least integer base by bounded verification."
+    ],
+    "2025 BMT Algebra, Problem 9": [
+      3100,
+      "Factor a fifth-power cyclic difference and classify shifted cube-root triples with integral real parts."
+    ],
+    "2025 BMT Algebra, Problem 10": [
+      2850,
+      "Recognize a common sparse degree-ten polynomial and recover its product from ninth power sums; the official argument needs a multiplicity justification."
+    ],
+    "2025 BMT Discrete Math, Problem 1": [
+      1000,
+      "Condition on the first sock and count the one matching choice among three remaining socks."
+    ],
+    "2025 BMT Discrete Math, Problem 2": [
+      1550,
+      "Subtract consecutive affine expressions to restrict two divisibility conditions to a short divisor list."
+    ],
+    "2025 BMT Discrete Math, Problem 3": [
+      1800,
+      "Subtract the sole all-distinct occupancy pattern from positive compositions into four labeled boxes."
+    ],
+    "2025 BMT Discrete Math, Problem 4": [
+      1900,
+      "Classify four-digit strings by alternating adjacent-digit residues, allowing zero substrings."
+    ],
+    "2025 BMT Discrete Math, Problem 5": [
+      2300,
+      "Translate a GCD-of-LCMs constraint into median prime valuations and minimize three positive integers."
+    ],
+    "2025 BMT Discrete Math, Problem 6": [
+      2200,
+      "Count increasing subsequences that alternate between two residue classes using endpoint states."
+    ],
+    "2025 BMT Discrete Math, Problem 7": [
+      2500,
+      "Separate adjacent swaps from the two full rotations and count the remaining path matchings by Fibonacci recurrence."
+    ],
+    "2025 BMT Discrete Math, Problem 8": [
+      2850,
+      "Reduce a selected-divisor sum to exponent parity classes and count divisors of a large factored number."
+    ],
+    "2025 BMT Discrete Math, Problem 9": [
+      3300,
+      "Complement a graph with unequal-degree adjacent vertices, bound degree classes and construct an attaining configuration."
+    ],
+    "2025 BMT Discrete Math, Problem 10": [
+      3900,
+      "Classify a three-exponent square equation by valuations, factor pairs and primitive prime divisors, including all small cases."
+    ],
+    "2025 BMT Geometry, Problem 1": [
+      1250,
+      "Identify the only positive integral right triangle with hypotenuse ten and add its external square sides."
+    ],
+    "2025 BMT Geometry, Problem 2": [
+      1550,
+      "Add a tether semicircle and the quarter disk reached after wrapping a building corner."
+    ],
+    "2025 BMT Geometry, Problem 3": [
+      1800,
+      "Use equal polygon edges and two small vertex angles to determine the angle between nested regular polygons."
+    ],
+    "2025 BMT Geometry, Problem 4": [
+      2250,
+      "Exploit parallel sections and perpendicular cevians in an equilateral triangle to recover a scale ratio."
+    ],
+    "2025 BMT Geometry, Problem 5": [
+      2100,
+      "Recover two altitudes from line distances, then decompose a quadrilateral into a trapezoid and right triangles."
+    ],
+    "2025 BMT Geometry, Problem 6": [
+      2450,
+      "Turn simultaneous internal and external circle tangency into a constant sum of focal distances."
+    ],
+    "2025 BMT Geometry, Problem 7": [
+      2550,
+      "Separate edge, face and interior lattice counts in an upright prism before applying Pick to its triangular base."
+    ],
+    "2025 BMT Geometry, Problem 8": [
+      3000,
+      "Convert a unique maximal viewing angle to circle tangency and recover altitude lengths through an orthocenter power identity."
+    ],
+    "2025 BMT Geometry, Problem 9": [
+      3000,
+      "Intersect the two midpoint-defined circumcircles in coordinates and compute the second-intersection distance."
+    ],
+    "2025 BMT Geometry, Problem 10": [
+      3300,
+      "Use bisected arcs and a common tangent to obtain a cevian ratio, then solve the metric constraints with Stewart."
     ]
   }
 }

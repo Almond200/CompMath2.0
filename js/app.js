@@ -2917,7 +2917,7 @@
   // (owner, 2026-10-31): the contest's level plus the place in its paper. The offsets say roughly
   // where each contest starts against the others (an early AIME problem is about as hard as a
   // late AMC 12 one); they order a list, they are not a rating.
-  const FAM_LEVEL = { "AMC 8": 0, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
+  const FAM_LEVEL = { "AMC 8": 0, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "HMMT February": 2.2, "HMMT": 2.2, "BMT": 2.2, "PUMaC Division A": 2.2, "PUMaC Division B": 1.9, "Putnam": 3 };
   function difficultyScore(p) { return (FAM_LEVEL[p.fam] != null ? FAM_LEVEL[p.fam] : 2) + paperPos(p); }
   // Contest profile (rebuilt 2026-11-11, now that every problem has a rating and a place in the
   // topic tree): a strip of headline figures, then label-and-value rows. Everything is computed
@@ -3156,7 +3156,10 @@
   const ARCHIVE_URL = {
     "HMMT February": "https://www.hmmt.org/www/archive/problems",
     "HMMT November": "https://www.hmmt.org/www/archive/problems",
-    "HMMT": "https://www.hmmt.org/www/archive/problems"
+    "HMMT": "https://www.hmmt.org/www/archive/problems",
+    "BMT": "https://berkeley.mt/archives/bmt/",
+    "PUMaC Division A": "https://pumac.princeton.edu/archives",
+    "PUMaC Division B": "https://pumac.princeton.edu/archives"
   };
   // The button has to say where it goes: an HMMT link lands on a round's archive, not on a
   // per-problem page, and calling that "AoPS" would be simply false.
@@ -3193,7 +3196,7 @@
     return ref.replace(/,\s*Problem\s+/, " #").replace(/\bHMMT (February|November) (.+?) #/, (_, m, r) => `HMMT ${m.slice(0, 3)} ${shortRound(r)} #`);
   }
   function refInGroup(ref) {
-    const m = ref.match(/^(\d{4}) HMMT (?:February|November) (.+?),\s*Problem\s+(\d+)$/);
+    const m = ref.match(/^(\d{4}) (?:HMMT (?:February|November)|BMT|PUMaC Division [AB]) (.+?),\s*Problem\s+(\d+)$/);
     return m ? `${m[1]} ${shortRound(m[2])} #${m[3]}` : refShort(ref);
   }
   function yearOf(ref) { const m = ref.match(/^(\d{4})/); return m ? +m[1] : 0; }
@@ -3215,6 +3218,8 @@
       const season = core.match(/\b(February|November)\b/i);
       fam = season ? "HMMT " + season[1][0].toUpperCase() + season[1].slice(1).toLowerCase() : "HMMT";
     }
+    else if (/^BMT\b/.test(core)) fam = "BMT";
+    else if (/^PUMaC Division [AB]\b/.test(core)) fam = core.match(/^PUMaC Division [AB]/)[0];
     else fam = core.replace(/\s*[AB]$|\s*I{1,3}$/, "").trim() || core;
     return { year, cname, fam, num };
   }
@@ -3267,11 +3272,12 @@
     const formulas = (e.formulas || []).filter(fid => BY_ID[fid]);
     const trickFormulas = (e.trickFormulas || []).filter(fid => BY_ID[fid]);
     const pr = parseRef(e.ref), slug = problemSlug(e.ref), rating = problemDifficulty.ratingFor(slug);
+    const paper = (window.MATH_CONTEST_PAPERS || {})[e.ref.replace(/,\s*Problem\s+\d+$/, "")];
     return {
       ref: e.ref, slug, tree: e.tree || [], elo: rating ? rating.elo : null, eloSource: rating ? rating.source : null,
-      url: e.url || hmmtPdf(e.ref, "problems") || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
+      url: e.url || paper?.url || hmmtPdf(e.ref, "problems") || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
       // Where the official solution is, for a problem whose solution we link instead of write.
-      solUrl: hmmtPdf(e.ref, "solutions"),
+      solUrl: paper?.solUrl || hmmtPdf(e.ref, "solutions"),
       formulas, trickFormulas, types: problemTypes(e), subjects: problemSubjects(e, formulas, pr.cname), strategy: e.strategy || "",
       trick: e.trick || "",
       // Hints we write (revealed one at a time before the strategy) and the card that is the
@@ -3331,7 +3337,7 @@
   // Competition → year → problems tree for the Database sidebar navigator.
   const DB_TREE = {};
   PROBLEM_DB.forEach(p => { (DB_TREE[p.fam] = DB_TREE[p.fam] || {}); (DB_TREE[p.fam][p.year] = DB_TREE[p.fam][p.year] || []).push(p); });
-  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "Putnam", "HMMT"];
+  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "BMT", "PUMaC Division A", "PUMaC Division B", "Putnam", "HMMT"];
   const FAMILIES = Object.keys(DB_TREE).sort((a, b) => {
     const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
@@ -4598,6 +4604,7 @@
               <p>AMC, AJHSME and AIME problems are &copy; Mathematical Association of America, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. This credit applies to their statements and figures throughout the app, including textbooks, previews and practice sets.</p>
               <p>Most text, figures and answer keys come from <a href="https://live.poshenloh.com/past-contests" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>. Some papers also use MAA PDF copies, the <a href="https://wiki.randommath.com/" target="_blank" rel="noopener noreferrer">Random Math wiki</a> and the <a href="https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>, and some answer keys were checked against those published by <a href="https://www.thethinkacademy.com/" target="_blank" rel="noopener noreferrer">Think Academy</a>. Statements have been reformatted for display, including LaTeX and figure layout.</p>
               <p>Problems from the individual rounds of <a href="https://www.hmmt.org/www/archive/problems" target="_blank" rel="noopener noreferrer">HMMT February</a> (Algebra and Number Theory, Combinatorics, Geometry) are listed by topic and difficulty. Their statements and solutions are not reproduced: each problem's page opens the round's official paper and its official solutions on the HMMT archive. Mock contests also use author-restated prompts from the <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf" target="_blank" rel="noopener noreferrer">2019 HMMT February Geometry paper</a>, with answer values checked against its <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/solutions.pdf" target="_blank" rel="noopener noreferrer">official solutions</a>. HMMT material is attributed separately; the MAA license above does not apply to it.</p>
+              <p><a href="https://berkeley.mt/archives/bmt/" target="_blank" rel="noopener noreferrer">BMT</a> and <a href="https://pumac.princeton.edu/archives" target="_blank" rel="noopener noreferrer">PUMaC</a> entries link to the official contest papers and solutions. Their statements and solutions are not reproduced here.</p>
             </div>
           </div></div>
         </section>
@@ -9012,7 +9019,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // round is compared only with the same round in other years (owner, 2026-11-13): its "usual",
   // its rank and its years chart. The round was called Algebra until 2018 and Algebra and Number
   // Theory from 2019; they are one series. Other contests have one series per family.
-  const roundOf = p => /^HMMT/.test(p.fam) ? p.cname.replace(/^HMMT \w+ /, "").replace(/^Algebra and Number Theory$/, "Algebra") : "";
+  const roundOf = p => /^HMMT/.test(p.fam) ? p.cname.replace(/^HMMT \w+ /, "").replace(/^Algebra and Number Theory$/, "Algebra")
+    : /^(BMT|PUMaC Division [AB])$/.test(p.fam) ? p.cname.slice(p.fam.length + 1) : "";
   const roundSlug = slug => String(slug || "").replace(/algebra-and-number-theory$/, "algebra");
   function famPapers(fam, round = "") {
     const id = fam + "|" + round;
@@ -9227,7 +9235,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <select class="ct-yb-select" aria-label="Year">${years.map(y => `<option value="${y}"${y === year ? " selected" : ""}>${y}</option>`).join("")}</select>
         ${newer ? `<a class="ct-yb-step" href="${ystep(newer)}" data-step-year="${newer}" aria-label="${newer}">${stepChevron(1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(1)}</span>`}
       </div>
-      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 ").replace(/^HMMT (?:February|November) /, "").replace(/ and /g, " & "))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
+      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 ").replace(/^(?:HMMT (?:February|November)|BMT|PUMaC Division [AB]) /, "").replace(/ and /g, " & "))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
       ${body}
       <nav class="topic-nav" aria-label="Neighbouring years">
         ${older ? `<a class="topic-step" href="${ystep(older)}" data-step-year="${older}"><span class="ts-dir">${uiIcon("arrow-left")} Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
