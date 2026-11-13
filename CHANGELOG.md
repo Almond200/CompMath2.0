@@ -2,6 +2,7 @@
 
 **2026-11-13**
 
+- **HMMT November, 2019 to 2022:** 80 more problems (240 so far). 2020 published no extended results, so its 20 problems have author estimates on the November scale, each with its reason.
 - **HMMT November, 2014 to 2018:** 100 more General and Theme problems, filed, tagged and rated from the official solve counts (160 November problems so far).
 - **HMMT November begins (owner): General and Theme rounds, 2011 to 2013:** 60 problems, read with their official solutions, filed and tagged. The app knows the two rounds (archive folders `gen` and `thm`; tabs General and Theme; short names "2012 HMMT Nov Gen #4"), and HMMT November has a colour of its own in the charts (`--level-hmmtn`, cyan), so it no longer shares the olympiad pink with HMMT February. **Ratings:** `tools/hmmt-results.py` now reads the November results too. The November room is weaker and more spread out, so the February rule would rate its problems far too hard; November has its own constants, $1330 + 230\ln\frac{n-s+1/2}{s+1/2}$, fitted once to 40 author estimates of the 2011 and 2012 problems (correlation 0.97; an intercept-only fit with February's slope was clearly worse). An unsolved November problem rates about 2950. November 2013 published totals only, so its 20 problems have author estimates, as will 2020 and 2026 until results appear.
 

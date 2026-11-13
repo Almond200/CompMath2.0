@@ -4022,6 +4022,326 @@
     "2018 HMMT November Theme, Problem 10": [
       2790,
       "Official results: 1 of the 840 students who sat the round solved it."
+    ],
+    "2020 HMMT November General, Problem 1": [
+      950,
+      "Author estimate (November 2020 published no extended results): one midpoint condition"
+    ],
+    "2020 HMMT November General, Problem 2": [
+      1550,
+      "Author estimate (November 2020 published no extended results): locating the regions and subtracting areas"
+    ],
+    "2020 HMMT November General, Problem 3": [
+      1500,
+      "Author estimate (November 2020 published no extended results): choosing the two triangles and dividing out symmetries"
+    ],
+    "2020 HMMT November General, Problem 4": [
+      1650,
+      "Author estimate (November 2020 published no extended results): the complement and a small inclusion-exclusion"
+    ],
+    "2020 HMMT November General, Problem 5": [
+      1700,
+      "Author estimate (November 2020 published no extended results): eliminating a variable mod 13 and mod 2"
+    ],
+    "2020 HMMT November General, Problem 6": [
+      1650,
+      "Author estimate (November 2020 published no extended results): equating distances and minimizing over integer centres"
+    ],
+    "2020 HMMT November General, Problem 7": [
+      1900,
+      "Author estimate (November 2020 published no extended results): the rhombus from the reflections and a law of cosines step"
+    ],
+    "2020 HMMT November General, Problem 8": [
+      2100,
+      "Author estimate (November 2020 published no extended results): counting allowed sets of broken edges"
+    ],
+    "2020 HMMT November General, Problem 9": [
+      2100,
+      "Author estimate (November 2020 published no extended results): unfolding the reflections and counting arcs"
+    ],
+    "2020 HMMT November General, Problem 10": [
+      2350,
+      "Author estimate (November 2020 published no extended results): tracking the floor recurrence, the round's last problem"
+    ],
+    "2020 HMMT November Theme, Problem 1": [
+      1300,
+      "Author estimate (November 2020 published no extended results): a weight bound and a matching construction"
+    ],
+    "2020 HMMT November Theme, Problem 2": [
+      1450,
+      "Author estimate (November 2020 published no extended results): similar triangles from the two ziplines"
+    ],
+    "2020 HMMT November Theme, Problem 3": [
+      1500,
+      "Author estimate (November 2020 published no extended results): lateral and top areas as triangular-number sums"
+    ],
+    "2020 HMMT November Theme, Problem 4": [
+      1750,
+      "Author estimate (November 2020 published no extended results): two cases for the equal sides and the Pythagorean Theorem"
+    ],
+    "2020 HMMT November Theme, Problem 5": [
+      1850,
+      "Author estimate (November 2020 published no extended results): writing the number around the deleted zero"
+    ],
+    "2020 HMMT November Theme, Problem 6": [
+      1900,
+      "Author estimate (November 2020 published no extended results): casework on which patterns look alike"
+    ],
+    "2020 HMMT November Theme, Problem 7": [
+      2000,
+      "Author estimate (November 2020 published no extended results): backward analysis of the game on the vertex value"
+    ],
+    "2020 HMMT November Theme, Problem 8": [
+      2100,
+      "Author estimate (November 2020 published no extended results): lattice points on circles crossed by a segment"
+    ],
+    "2020 HMMT November Theme, Problem 9": [
+      2300,
+      "Author estimate (November 2020 published no extended results): divisor counts along the sequence"
+    ],
+    "2020 HMMT November Theme, Problem 10": [
+      2500,
+      "Author estimate (November 2020 published no extended results): an expected value over digit erasures in base 3, the round's last problem"
+    ],
+    "2019 HMMT November General, Problem 1": [
+      1480,
+      "Official results: 209 of the 609 students who sat the round solved it."
+    ],
+    "2019 HMMT November General, Problem 2": [
+      1020,
+      "Official results: 485 of the 609 students who sat the round solved it."
+    ],
+    "2019 HMMT November General, Problem 3": [
+      1200,
+      "Official results: 386 of the 609 students who sat the round solved it."
+    ],
+    "2019 HMMT November General, Problem 4": [
+      1330,
+      "Official results: 305 of the 609 students who sat the round solved it."
+    ],
+    "2019 HMMT November General, Problem 5": [
+      1210,
+      "Official results: 381 of the 609 students who sat the round solved it."
+    ],
+    "2019 HMMT November General, Problem 6": [
+      1810,
+      "Official results: 67 of the 609 students who sat the round solved it."
+    ],
+    "2019 HMMT November General, Problem 7": [
+      1680,
+      "Official results: 108 of the 609 students who sat the round solved it."
+    ],
+    "2019 HMMT November General, Problem 8": [
+      1770,
+      "Official results: 79 of the 609 students who sat the round solved it."
+    ],
+    "2019 HMMT November General, Problem 9": [
+      1940,
+      "Official results: 39 of the 609 students who sat the round solved it."
+    ],
+    "2019 HMMT November General, Problem 10": [
+      1970,
+      "Official results: 35 of the 609 students who sat the round solved it."
+    ],
+    "2019 HMMT November Theme, Problem 1": [
+      810,
+      "Official results: 599 of the 662 students who sat the round solved it."
+    ],
+    "2019 HMMT November Theme, Problem 2": [
+      1180,
+      "Official results: 434 of the 662 students who sat the round solved it."
+    ],
+    "2019 HMMT November Theme, Problem 3": [
+      1350,
+      "Official results: 314 of the 662 students who sat the round solved it."
+    ],
+    "2019 HMMT November Theme, Problem 4": [
+      910,
+      "Official results: 569 of the 662 students who sat the round solved it."
+    ],
+    "2019 HMMT November Theme, Problem 5": [
+      1470,
+      "Official results: 236 of the 662 students who sat the round solved it."
+    ],
+    "2019 HMMT November Theme, Problem 6": [
+      1290,
+      "Official results: 359 of the 662 students who sat the round solved it."
+    ],
+    "2019 HMMT November Theme, Problem 7": [
+      1900,
+      "Official results: 50 of the 662 students who sat the round solved it."
+    ],
+    "2019 HMMT November Theme, Problem 8": [
+      1990,
+      "Official results: 35 of the 662 students who sat the round solved it."
+    ],
+    "2019 HMMT November Theme, Problem 9": [
+      1990,
+      "Official results: 35 of the 662 students who sat the round solved it."
+    ],
+    "2019 HMMT November Theme, Problem 10": [
+      2730,
+      "Official results: 1 of the 662 students who sat the round solved it."
+    ],
+    "2021 HMMT November General, Problem 1": [
+      880,
+      "Official results: 450 of the 512 students who sat the round solved it."
+    ],
+    "2021 HMMT November General, Problem 2": [
+      1090,
+      "Official results: 378 of the 512 students who sat the round solved it."
+    ],
+    "2021 HMMT November General, Problem 3": [
+      1230,
+      "Official results: 310 of the 512 students who sat the round solved it."
+    ],
+    "2021 HMMT November General, Problem 4": [
+      1170,
+      "Official results: 344 of the 512 students who sat the round solved it."
+    ],
+    "2021 HMMT November General, Problem 5": [
+      1640,
+      "Official results: 107 of the 512 students who sat the round solved it."
+    ],
+    "2021 HMMT November General, Problem 6": [
+      2140,
+      "Official results: 14 of the 512 students who sat the round solved it."
+    ],
+    "2021 HMMT November General, Problem 7": [
+      2300,
+      "Official results: 7 of the 512 students who sat the round solved it."
+    ],
+    "2021 HMMT November General, Problem 8": [
+      2040,
+      "Official results: 22 of the 512 students who sat the round solved it."
+    ],
+    "2021 HMMT November General, Problem 9": [
+      2300,
+      "Official results: 7 of the 512 students who sat the round solved it."
+    ],
+    "2021 HMMT November General, Problem 10": [
+      2330,
+      "Official results: 6 of the 512 students who sat the round solved it."
+    ],
+    "2021 HMMT November Theme, Problem 1": [
+      800,
+      "Official results: 440 of the 484 students who sat the round solved it."
+    ],
+    "2021 HMMT November Theme, Problem 2": [
+      1360,
+      "Official results: 228 of the 484 students who sat the round solved it."
+    ],
+    "2021 HMMT November Theme, Problem 3": [
+      1450,
+      "Official results: 180 of the 484 students who sat the round solved it."
+    ],
+    "2021 HMMT November Theme, Problem 4": [
+      1400,
+      "Official results: 206 of the 484 students who sat the round solved it."
+    ],
+    "2021 HMMT November Theme, Problem 5": [
+      1850,
+      "Official results: 45 of the 484 students who sat the round solved it."
+    ],
+    "2021 HMMT November Theme, Problem 6": [
+      1620,
+      "Official results: 108 of the 484 students who sat the round solved it."
+    ],
+    "2021 HMMT November Theme, Problem 7": [
+      1940,
+      "Official results: 32 of the 484 students who sat the round solved it."
+    ],
+    "2021 HMMT November Theme, Problem 8": [
+      1890,
+      "Official results: 39 of the 484 students who sat the round solved it."
+    ],
+    "2021 HMMT November Theme, Problem 9": [
+      2290,
+      "Official results: 7 of the 484 students who sat the round solved it."
+    ],
+    "2021 HMMT November Theme, Problem 10": [
+      2460,
+      "Official results: 3 of the 484 students who sat the round solved it."
+    ],
+    "2022 HMMT November General, Problem 1": [
+      1320,
+      "Official results: 191 of the 377 students who sat the round solved it."
+    ],
+    "2022 HMMT November General, Problem 2": [
+      1260,
+      "Official results: 219 of the 377 students who sat the round solved it."
+    ],
+    "2022 HMMT November General, Problem 3": [
+      1390,
+      "Official results: 166 of the 377 students who sat the round solved it."
+    ],
+    "2022 HMMT November General, Problem 4": [
+      1250,
+      "Official results: 222 of the 377 students who sat the round solved it."
+    ],
+    "2022 HMMT November General, Problem 5": [
+      1630,
+      "Official results: 80 of the 377 students who sat the round solved it."
+    ],
+    "2022 HMMT November General, Problem 6": [
+      1780,
+      "Official results: 47 of the 377 students who sat the round solved it."
+    ],
+    "2022 HMMT November General, Problem 7": [
+      1730,
+      "Official results: 57 of the 377 students who sat the round solved it."
+    ],
+    "2022 HMMT November General, Problem 8": [
+      1940,
+      "Official results: 24 of the 377 students who sat the round solved it."
+    ],
+    "2022 HMMT November General, Problem 9": [
+      2480,
+      "Official results: 2 of the 377 students who sat the round solved it."
+    ],
+    "2022 HMMT November General, Problem 10": [
+      2480,
+      "Official results: 2 of the 377 students who sat the round solved it."
+    ],
+    "2022 HMMT November Theme, Problem 1": [
+      970,
+      "Official results: 322 of the 389 students who sat the round solved it."
+    ],
+    "2022 HMMT November Theme, Problem 2": [
+      1170,
+      "Official results: 258 of the 389 students who sat the round solved it."
+    ],
+    "2022 HMMT November Theme, Problem 3": [
+      1570,
+      "Official results: 101 of the 389 students who sat the round solved it."
+    ],
+    "2022 HMMT November Theme, Problem 4": [
+      1660,
+      "Official results: 75 of the 389 students who sat the round solved it."
+    ],
+    "2022 HMMT November Theme, Problem 5": [
+      2020,
+      "Official results: 18 of the 389 students who sat the round solved it."
+    ],
+    "2022 HMMT November Theme, Problem 6": [
+      2010,
+      "Official results: 19 of the 389 students who sat the round solved it."
+    ],
+    "2022 HMMT November Theme, Problem 7": [
+      2030,
+      "Official results: 17 of the 389 students who sat the round solved it."
+    ],
+    "2022 HMMT November Theme, Problem 8": [
+      2060,
+      "Official results: 15 of the 389 students who sat the round solved it."
+    ],
+    "2022 HMMT November Theme, Problem 9": [
+      2860,
+      "Official results: 0 of the 389 students who sat the round solved it."
+    ],
+    "2022 HMMT November Theme, Problem 10": [
+      2860,
+      "Official results: 0 of the 389 students who sat the round solved it."
     ]
   }
 }
