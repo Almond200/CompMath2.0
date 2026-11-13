@@ -156,5 +156,21 @@ window.MATH_CONTEST_PAPERS = {
   "2021 BMT Geometry": {
     "url": "https://berkeley.mt/archives/bmt-2021/geometry-problems.pdf",
     "solUrl": "https://berkeley.mt/archives/bmt-2021/geometry-solutions.pdf"
+  },
+  "2021 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC_2021_Algebra_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC_2021_AlgA_Solutions.pdf"
+  },
+  "2021 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC_2021_Algebra_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC_2021_AlgB_Solutions.pdf"
+  },
+  "2021 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC_2021_Combo_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC_2021_ComboA_Solutions.pdf"
+  },
+  "2021 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC_2021_Combo_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC_2021_ComboB_Solutions.pdf"
   }
 };

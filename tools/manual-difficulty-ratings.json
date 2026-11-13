@@ -111,7 +111,11 @@
     "2022 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/Number_Theory_B_2022_.pdf",
     "2021 BMT Algebra": "https://berkeley.mt/archives/bmt-2021/algebra-problems.pdf",
     "2021 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2021/discrete-problems.pdf",
-    "2021 BMT Geometry": "https://berkeley.mt/archives/bmt-2021/geometry-problems.pdf"
+    "2021 BMT Geometry": "https://berkeley.mt/archives/bmt-2021/geometry-problems.pdf",
+    "2021 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC_2021_Algebra_A.pdf",
+    "2021 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC_2021_Algebra_B.pdf",
+    "2021 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC_2021_Combo_A.pdf",
+    "2021 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC_2021_Combo_B.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -6561,6 +6565,134 @@
     "2021 BMT Geometry, Problem 10": [
       4000,
       "Recognize equal focal-sum minima on four supporting lines through an incircle and isogonal configuration, independently checked by four reflected-point distances."
+    ],
+    "2021 PUMaC Division A Algebra, Problem 1": [
+      2250,
+      "Substitute a power of two in a rational exponential equation, factor its cubic and check the excluded denominator."
+    ],
+    "2021 PUMaC Division A Algebra, Problem 2": [
+      2300,
+      "Identify a superinverse as two inverse compositions and invert a shifted cube twice."
+    ],
+    "2021 PUMaC Division A Algebra, Problem 3": [
+      2750,
+      "Rewrite a weighted geometric polynomial at fifth roots and evaluate the product through the cyclotomic polynomial at one."
+    ],
+    "2021 PUMaC Division A Algebra, Problem 4": [
+      2850,
+      "Parametrize positive geometric-progression roots by their middle term and maximize their shifted product at the equal-root endpoint."
+    ],
+    "2021 PUMaC Division A Algebra, Problem 5": [
+      3050,
+      "Pair signs in an odd cyclic absolute-sine sum and evaluate the resulting geometric complex series as a cotangent."
+    ],
+    "2021 PUMaC Division A Algebra, Problem 6": [
+      3150,
+      "Translate a repeated-root condition into a vanished linear coefficient, factor the resulting quartic and add its real and complex root moduli."
+    ],
+    "2021 PUMaC Division A Algebra, Problem 7": [
+      3500,
+      "Collapse a nested logarithmic double sum by changing bases, evaluate its finite sine product and bound the outer absolute logarithm."
+    ],
+    "2021 PUMaC Division A Algebra, Problem 8": [
+      3650,
+      "Audit the coupled Fibonacci series: the printed shifted initial values produce a different bounded sum from the standard Fibonacci convention used by the official solution."
+    ],
+    "2021 PUMaC Division B Algebra, Problem 1": [
+      1800,
+      "Rationalize a sum of conjugate radical denominators and solve the resulting positive ratio equation."
+    ],
+    "2021 PUMaC Division B Algebra, Problem 2": [
+      2100,
+      "Compare an integer exponent with a logarithmic power, then bound all larger exponents beyond the last admissible value."
+    ],
+    "2021 PUMaC Division B Algebra, Problem 3": [
+      2250,
+      "Substitute a power of two in a rational exponential equation, factor its cubic and check the excluded denominator."
+    ],
+    "2021 PUMaC Division B Algebra, Problem 4": [
+      2300,
+      "Identify a superinverse as two inverse compositions and invert a shifted cube twice."
+    ],
+    "2021 PUMaC Division B Algebra, Problem 5": [
+      2750,
+      "Rewrite a weighted geometric polynomial at fifth roots and evaluate the product through the cyclotomic polynomial at one."
+    ],
+    "2021 PUMaC Division B Algebra, Problem 6": [
+      2850,
+      "Parametrize positive geometric-progression roots by their middle term and maximize their shifted product at the equal-root endpoint."
+    ],
+    "2021 PUMaC Division B Algebra, Problem 7": [
+      3050,
+      "Pair signs in an odd cyclic absolute-sine sum and evaluate the resulting geometric complex series as a cotangent."
+    ],
+    "2021 PUMaC Division B Algebra, Problem 8": [
+      3150,
+      "Translate a repeated-root condition into a vanished linear coefficient, factor the resulting quartic and add its real and complex root moduli."
+    ],
+    "2021 PUMaC Division A Combinatorics, Problem 1": [
+      2250,
+      "Count crossing diagonal pairs by four polygon vertices, or separate noncrossing and shared-endpoint pairs."
+    ],
+    "2021 PUMaC Division A Combinatorics, Problem 2": [
+      2400,
+      "Sum the different-color adjacency indicators in a uniformly shuffled multiset of mask colors."
+    ],
+    "2021 PUMaC Division A Combinatorics, Problem 3": [
+      2850,
+      "Encode bounce heights as a biased logarithmic walk and count its first passage on the thirteenth step."
+    ],
+    "2021 PUMaC Division A Combinatorics, Problem 4": [
+      3550,
+      "Analyze a biased reflecting birth-death chain, including its period-two behavior; exact finite prefixes and reversible contraction bounds verify the minimal state count for all times."
+    ],
+    "2021 PUMaC Division A Combinatorics, Problem 5": [
+      3200,
+      "Condition two geometric waiting times on an exact two-to-one relation and normalize the resulting geometric distribution."
+    ],
+    "2021 PUMaC Division A Combinatorics, Problem 6": [
+      3400,
+      "Track how many names have appeared zero, one or at least two times and solve the capped occupancy waiting system."
+    ],
+    "2021 PUMaC Division A Combinatorics, Problem 7": [
+      3600,
+      "Count every reachable bit state and derive the shortest Gray-code move distance; exhaustive breadth-first search verifies all four thousand ninety-six states."
+    ],
+    "2021 PUMaC Division A Combinatorics, Problem 8": [
+      3800,
+      "Count odd-edge induced four-sets in an iterated graph blow-up by occupancy cases; both literal enumeration and the source recurrence give 350976, disagreeing with its stated final number."
+    ],
+    "2021 PUMaC Division B Combinatorics, Problem 1": [
+      1650,
+      "Count all allowed alternating vowel-consonant words by their chosen letter-type counts and lengths."
+    ],
+    "2021 PUMaC Division B Combinatorics, Problem 2": [
+      2350,
+      "Compute the meeting strip in an offset arrival-time rectangle and solve for its first half-area width."
+    ],
+    "2021 PUMaC Division B Combinatorics, Problem 3": [
+      2250,
+      "Count crossing diagonal pairs by four polygon vertices, or separate noncrossing and shared-endpoint pairs."
+    ],
+    "2021 PUMaC Division B Combinatorics, Problem 4": [
+      2400,
+      "Sum the different-color adjacency indicators in a uniformly shuffled multiset of mask colors."
+    ],
+    "2021 PUMaC Division B Combinatorics, Problem 5": [
+      2850,
+      "Encode bounce heights as a biased logarithmic walk and count its first passage on the thirteenth step."
+    ],
+    "2021 PUMaC Division B Combinatorics, Problem 6": [
+      3550,
+      "Analyze a biased reflecting birth-death chain, including its period-two behavior; exact finite prefixes and reversible contraction bounds verify the minimal state count for all times."
+    ],
+    "2021 PUMaC Division B Combinatorics, Problem 7": [
+      3200,
+      "Condition two geometric waiting times on an exact two-to-one relation and normalize the resulting geometric distribution."
+    ],
+    "2021 PUMaC Division B Combinatorics, Problem 8": [
+      3400,
+      "Track how many names have appeared zero, one or at least two times and solve the capped occupancy waiting system."
     ]
   }
 }
