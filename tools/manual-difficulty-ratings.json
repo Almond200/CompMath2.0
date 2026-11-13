@@ -93,7 +93,11 @@
     "2023 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/Algebra_A_2023.pdf",
     "2023 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/Algebra_B_2023.pdf",
     "2023 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/Combinatorics_A_2023.pdf",
-    "2023 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/Combinatorics_B_2023.pdf"
+    "2023 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/Combinatorics_B_2023.pdf",
+    "2023 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/Geometry_A_2023.pdf",
+    "2023 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/Geometry_B_2023.pdf",
+    "2023 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/Number_Theory_A_2023.pdf",
+    "2023 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/Number_Theory_B_2023.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -5919,6 +5923,134 @@
     "2023 PUMaC Division B Combinatorics, Problem 8": [
       3350,
       "Express a run-square statistic through same-run pairs, sum their probabilities and solve the remaining divisibility condition."
+    ],
+    "2023 PUMaC Division A Geometry, Problem 1": [
+      1800,
+      "Convert diametric common chords to three center distances and recognize a right triangle."
+    ],
+    "2023 PUMaC Division A Geometry, Problem 2": [
+      2500,
+      "Exploit threefold symmetry in overlapping rotated triangles and compute one of three congruent kite regions."
+    ],
+    "2023 PUMaC Division A Geometry, Problem 3": [
+      2800,
+      "Recover a folded tetrahedron height from a perpendicular cross-section, preserving the out-of-plane component."
+    ],
+    "2023 PUMaC Division A Geometry, Problem 4": [
+      2850,
+      "Use the special doubled triangle angle and inversion along the bisector to identify equal target distances."
+    ],
+    "2023 PUMaC Division A Geometry, Problem 5": [
+      3150,
+      "Find the homothety ratio between two tangent circumcircles from a bisector length and an arc-midpoint chord."
+    ],
+    "2023 PUMaC Division A Geometry, Problem 6": [
+      3350,
+      "Identify circumcenters under a direct spiral similarity and evaluate their separation; the source assumes matching triangle orientation."
+    ],
+    "2023 PUMaC Division A Geometry, Problem 7": [
+      3600,
+      "Relate six auxiliary circle intersections through spiral similarities and sum three half-angle area expressions."
+    ],
+    "2023 PUMaC Division A Geometry, Problem 8": [
+      3750,
+      "Transform an excircle construction, recover an arc-midpoint secant distance and verify the first ray-circle intersection in the original coordinates."
+    ],
+    "2023 PUMaC Division B Geometry, Problem 1": [
+      1400,
+      "Place the two right-triangle incenters by their common inradius and compute the squared displacement."
+    ],
+    "2023 PUMaC Division B Geometry, Problem 2": [
+      2150,
+      "Find the optimal centered square orientation in a regular hexagon and use its side intersections to determine the area."
+    ],
+    "2023 PUMaC Division B Geometry, Problem 3": [
+      1800,
+      "Convert diametric common chords to three center distances and recognize a right triangle."
+    ],
+    "2023 PUMaC Division B Geometry, Problem 4": [
+      2500,
+      "Exploit threefold symmetry in overlapping rotated triangles and compute one of three congruent kite regions."
+    ],
+    "2023 PUMaC Division B Geometry, Problem 5": [
+      2800,
+      "Recover a folded tetrahedron height from a perpendicular cross-section, preserving the out-of-plane component."
+    ],
+    "2023 PUMaC Division B Geometry, Problem 6": [
+      2850,
+      "Use the special doubled triangle angle and inversion along the bisector to identify equal target distances."
+    ],
+    "2023 PUMaC Division B Geometry, Problem 7": [
+      3150,
+      "Find the homothety ratio between two tangent circumcircles from a bisector length and an arc-midpoint chord."
+    ],
+    "2023 PUMaC Division B Geometry, Problem 8": [
+      3350,
+      "Identify circumcenters under a direct spiral similarity and evaluate their separation; the source assumes matching triangle orientation."
+    ],
+    "2023 PUMaC Division A Number Theory, Problem 1": [
+      2200,
+      "Bound the integer cube root, determine residues modulo two small primes and verify the resulting identity exactly."
+    ],
+    "2023 PUMaC Division A Number Theory, Problem 2": [
+      2300,
+      "Complete sums of consecutive squares, factor a difference of squares and filter the divisor pairs by positivity and congruence."
+    ],
+    "2023 PUMaC Division A Number Theory, Problem 3": [
+      3350,
+      "Derive the least feasible maximum in a circular divisibility arrangement and locate its last prime-power jump."
+    ],
+    "2023 PUMaC Division A Number Theory, Problem 4": [
+      3350,
+      "Translate omitted-five prime sums into distinct nearby primes, bound the total and verify a minimal attaining six-tuple."
+    ],
+    "2023 PUMaC Division A Number Theory, Problem 5": [
+      3450,
+      "Analyze an adversary who forces decreasing prime-square supports and maximize the number of distinct small integers along a support chain."
+    ],
+    "2023 PUMaC Division A Number Theory, Problem 6": [
+      3500,
+      "Constrain distinct remainders successively, separating the single even assignment from the large-prime odd choices."
+    ],
+    "2023 PUMaC Division A Number Theory, Problem 7": [
+      3750,
+      "Express a divisor-exponent domination condition through valuations and count non-squarefree multiplicative matches, explicitly checking the source lemma prime-power exception."
+    ],
+    "2023 PUMaC Division A Number Theory, Problem 8": [
+      3450,
+      "Relate a Lucas-type recurrence modulo primes to the quadratic character of its discriminant and test the smallest eligible primes."
+    ],
+    "2023 PUMaC Division B Number Theory, Problem 1": [
+      1500,
+      "Compare prime exponents in two GCDs and enumerate the bounded exceptional multiples."
+    ],
+    "2023 PUMaC Division B Number Theory, Problem 2": [
+      1750,
+      "Reduce palindrome divisibility to a one-digit divisor condition, excluding the zero divisor."
+    ],
+    "2023 PUMaC Division B Number Theory, Problem 3": [
+      2200,
+      "Bound the integer cube root, determine residues modulo two small primes and verify the resulting identity exactly."
+    ],
+    "2023 PUMaC Division B Number Theory, Problem 4": [
+      2300,
+      "Complete sums of consecutive squares, factor a difference of squares and filter the divisor pairs by positivity and congruence."
+    ],
+    "2023 PUMaC Division B Number Theory, Problem 5": [
+      3350,
+      "Derive the least feasible maximum in a circular divisibility arrangement and locate its last prime-power jump."
+    ],
+    "2023 PUMaC Division B Number Theory, Problem 6": [
+      3350,
+      "Translate omitted-five prime sums into distinct nearby primes, bound the total and verify a minimal attaining six-tuple."
+    ],
+    "2023 PUMaC Division B Number Theory, Problem 7": [
+      3450,
+      "Analyze an adversary who forces decreasing prime-square supports and maximize the number of distinct small integers along a support chain."
+    ],
+    "2023 PUMaC Division B Number Theory, Problem 8": [
+      3500,
+      "Constrain distinct remainders successively, separating the single even assignment from the large-prime odd choices."
     ]
   }
 }
