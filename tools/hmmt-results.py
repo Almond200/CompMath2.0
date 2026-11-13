@@ -109,17 +109,19 @@ def main():
         json.dump({'description': 'Per-problem solve counts from the official HMMT February extended results; no names are kept. Written by tools/hmmt-results.py.',
                    'rounds': data}, open(COUNTS, 'w'), indent=1)
     manual = json.load(open(MANUAL))
+    # Every HMMT problem in the collection is rated, a newly added one included.
+    db = set(re.findall(r'ref: "([^"]*HMMT February[^"]*)"', open(os.path.join(ROOT, 'js', 'data', 'problems', 'problem-db.js')).read()))
     changed, wrong, matched = 0, [], 0
     for key, v in sorted(data.items()):
         year, rnd = key.split()
         for i, s in enumerate(v['solved']):
             for nm in NAMES[rnd]:
                 ref = '%s HMMT February %s, Problem %d' % (year, nm, i + 1)
-                if ref not in manual['ratings']:
+                if ref not in manual['ratings'] and ref not in db:
                     continue
                 matched += 1
                 want = [rating(s, v['n']), 'Official results: %d of the %d students who sat the round solved it.' % (s, v['n'])]
-                if manual['ratings'][ref] != want:
+                if manual['ratings'].get(ref) != want:
                     wrong.append(ref)
                     manual['ratings'][ref] = want
                     changed += 1
