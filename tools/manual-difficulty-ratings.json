@@ -5431,6 +5431,1006 @@
     "2019 ARML Individual, Problem 10": [
       2700,
       "Author estimate (ARML publishes no solve counts; placed on the AMC/AIME scale from ARML’s aim of 80–90% solving I-1 and under 5% I-10, five minutes a problem): sum-to-product and a sine product identity."
+    ],
+    "2011 SMT Algebra, Problem 1": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): sum and product of a and b from the two symmetric sums."
+    ],
+    "2011 SMT Algebra, Problem 2": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): use the circle to simplify the conic, then solve."
+    ],
+    "2011 SMT Algebra, Problem 3": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): reciprocal polynomial, then a sum of squares of roots."
+    ],
+    "2011 SMT Algebra, Problem 4": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): product-to-sum collapses the equation to sin 5y = 0."
+    ],
+    "2011 SMT Algebra, Problem 5": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): evaluate at the cube roots of unity."
+    ],
+    "2011 SMT Algebra, Problem 6": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): Cauchy-Schwarz on the other 2010 numbers."
+    ],
+    "2011 SMT Algebra, Problem 7": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): Q(x) = P(2x) - P(x) has many known values."
+    ],
+    "2011 SMT Algebra, Problem 8": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): weighted AM-GM with a tuned parameter."
+    ],
+    "2011 SMT Algebra, Problem 9": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): extend P_k(x) = P_k(x-1) + x^k to negative x."
+    ],
+    "2011 SMT Algebra, Problem 10": [
+      3200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): roots closed under squaring are 0 or roots of unity; count the cases."
+    ],
+    "2011 SMT Advanced, Problem 1": [
+      1400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): one fixed point times a derangement of four."
+    ],
+    "2011 SMT Advanced, Problem 2": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): partial fractions and an index shift."
+    ],
+    "2011 SMT Advanced, Problem 3": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): reduce mod 3 and rule out low degrees."
+    ],
+    "2011 SMT Advanced, Problem 4": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): T_n is a binomial coefficient; pair the alternating terms."
+    ],
+    "2011 SMT Advanced, Problem 5": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): count four-move walks that return, for both ants."
+    ],
+    "2011 SMT Advanced, Problem 6": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): (a+b)^n + (a-b)^n picks the even terms."
+    ],
+    "2011 SMT Advanced, Problem 7": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the count of solutions rises by one per 6, then sum the n."
+    ],
+    "2011 SMT Advanced, Problem 8": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): AM-GM bound and a construction."
+    ],
+    "2011 SMT Advanced, Problem 9": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): split the domain into fixed points and the two layers above them."
+    ],
+    "2011 SMT Advanced, Problem 10": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): coupled recursions for the 2 x 2 x n box."
+    ],
+    "2011 SMT Geometry, Problem 1": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): area as a weighted sum of the distances."
+    ],
+    "2011 SMT Geometry, Problem 2": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): equilateral ACD and congruent end triangles."
+    ],
+    "2011 SMT Geometry, Problem 3": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): angle chase to an isosceles triangle, then law of sines."
+    ],
+    "2011 SMT Geometry, Problem 4": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): Menelaus twice gives the cevian ratios."
+    ],
+    "2011 SMT Geometry, Problem 5": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): similar triangles at E and F, then the law of cosines."
+    ],
+    "2011 SMT Geometry, Problem 6": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): each angle is a difference of arctangents; the sum telescopes."
+    ],
+    "2011 SMT Geometry, Problem 7": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): rotate by 90 degrees to straighten the path."
+    ],
+    "2011 SMT Geometry, Problem 8": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): distance from the centre to the plane, then the circle's radius."
+    ],
+    "2011 SMT Geometry, Problem 9": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): tangent arcs pair up across the four small circles."
+    ],
+    "2011 SMT Geometry, Problem 10": [
+      3100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the vertices lie on 60-degree arcs; maximise over them."
+    ],
+    "2012 SMT Algebra, Problem 1": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a sum of squares is least at the mean."
+    ],
+    "2012 SMT Algebra, Problem 2": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a power is 1 when the base is 1 or the exponent 0."
+    ],
+    "2012 SMT Algebra, Problem 3": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): factor n^3 - 1 and n^3 + 1; two products telescope."
+    ],
+    "2012 SMT Algebra, Problem 4": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the left side factors as (x-2)(y-2)(z-2)."
+    ],
+    "2012 SMT Algebra, Problem 5": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): P - 3 has double roots at 2 and 3."
+    ],
+    "2012 SMT Algebra, Problem 6": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): Vieta on the shifted cubic gives abc for both triples."
+    ],
+    "2012 SMT Algebra, Problem 7": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): which integers a product of sines and cosines can miss: powers of 2."
+    ],
+    "2012 SMT Algebra, Problem 8": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the ratios x/y, y/z, z/x are roots of a cubic."
+    ],
+    "2012 SMT Algebra, Problem 9": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): write 4xy with a square that can vanish."
+    ],
+    "2012 SMT Algebra, Problem 10": [
+      3100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): probability each term is odd, then the parity of a sum."
+    ],
+    "2012 SMT Advanced, Problem 1": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): repdigits factor except for 11 and the one-digit primes."
+    ],
+    "2012 SMT Advanced, Problem 2": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a base-x numeral is its digit sum mod x - 1."
+    ],
+    "2012 SMT Advanced, Problem 3": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): leading digit from the fractional part of a logarithm."
+    ],
+    "2012 SMT Advanced, Problem 4": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): count attacked squares ring by ring."
+    ],
+    "2012 SMT Advanced, Problem 5": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the table is level when opposite legs have equal sums; count them."
+    ],
+    "2012 SMT Advanced, Problem 6": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): two states, opposite and adjacent, and their equations."
+    ],
+    "2012 SMT Advanced, Problem 7": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): n^13 = n mod p exactly when p - 1 divides 12."
+    ],
+    "2012 SMT Advanced, Problem 8": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the primes below 30 are needed and enough."
+    ],
+    "2012 SMT Advanced, Problem 9": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): repeated partial fractions down to sums of 1/n^2."
+    ],
+    "2012 SMT Advanced, Problem 10": [
+      3200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a polynomial mod 5 is its value table; count by inclusion-exclusion."
+    ],
+    "2012 SMT Geometry, Problem 1": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the median CO splits the triangle evenly; compare two segments."
+    ],
+    "2012 SMT Geometry, Problem 2": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): slide a leg to get the 13-14-15 triangle."
+    ],
+    "2012 SMT Geometry, Problem 3": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): name the pieces as triangles and sectors."
+    ],
+    "2012 SMT Geometry, Problem 4": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): congruent triangles fix E and F; ratios along the diagonal."
+    ],
+    "2012 SMT Geometry, Problem 5": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the insphere touches all eight faces."
+    ],
+    "2012 SMT Geometry, Problem 6": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): unfold the faces; the string sweeps a disc."
+    ],
+    "2012 SMT Geometry, Problem 7": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): each small triangle is similar with ratio from tangent lengths; the radii sum to r."
+    ],
+    "2012 SMT Geometry, Problem 8": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): three equal circles through a point: r is the circumradius."
+    ],
+    "2012 SMT Geometry, Problem 9": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): reflect triangle DBC to make similar triangles."
+    ],
+    "2012 SMT Geometry, Problem 10": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): shadows by similarity from the point source."
+    ],
+    "2013 SMT Algebra, Problem 1": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): time budget for four laps at the target average."
+    ],
+    "2013 SMT Algebra, Problem 2": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): what is eaten must be regrown overnight."
+    ],
+    "2013 SMT Algebra, Problem 3": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): sum of coefficients is the value at 1, over all allowed roots."
+    ],
+    "2013 SMT Algebra, Problem 4": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): substitute x and 8 - x and solve the pair."
+    ],
+    "2013 SMT Algebra, Problem 5": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a zero discriminant gives a quadratic in b."
+    ],
+    "2013 SMT Algebra, Problem 6": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): group the quartic into two quadratic factors."
+    ],
+    "2013 SMT Algebra, Problem 7": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): an increasing f with f(f(a)) = a forces f(a) = a."
+    ],
+    "2013 SMT Algebra, Problem 8": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): both sides are f/g and (f+h)/(g+h), so f = g or h = 0."
+    ],
+    "2013 SMT Algebra, Problem 9": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the antisymmetric numerator divided by the Vandermonde is a symmetric sum."
+    ],
+    "2013 SMT Algebra, Problem 10": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a quadratic Gauss sum: its square is found from the exponents."
+    ],
+    "2013 SMT Advanced, Problem 1": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): match digit strings to dates, avoiding double counts."
+    ],
+    "2013 SMT Advanced, Problem 2": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): bound the mean and test the primes."
+    ],
+    "2013 SMT Advanced, Problem 3": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a band in a square of times."
+    ],
+    "2013 SMT Advanced, Problem 4": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): count blocks of 6!, 5!, ... down to the 2013th."
+    ],
+    "2013 SMT Advanced, Problem 5": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): condition on the first flip; a geometric wait for the other side."
+    ],
+    "2013 SMT Advanced, Problem 6": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): reduce to a divisibility condition on b and count the b that fail."
+    ],
+    "2013 SMT Advanced, Problem 7": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a linear recurrence in the starting key."
+    ],
+    "2013 SMT Advanced, Problem 8": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a clique bound and a recolouring argument for the matching construction."
+    ],
+    "2013 SMT Advanced, Problem 9": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): timing with candles lit from both ends; no card fits."
+    ],
+    "2013 SMT Advanced, Problem 10": [
+      3100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): exponent conditions mod 17, 18 and b solved together."
+    ],
+    "2013 SMT Geometry, Problem 1": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): D is the circumcentre, so C is a right angle."
+    ],
+    "2013 SMT Geometry, Problem 2": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a diagonal of 8 and area 32 force a square."
+    ],
+    "2013 SMT Geometry, Problem 3": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a corner piece is a sector minus triangles."
+    ],
+    "2013 SMT Geometry, Problem 4": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the section is a square of midsegments."
+    ],
+    "2013 SMT Geometry, Problem 5": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the best E is where a circle through P and Q touches the side."
+    ],
+    "2013 SMT Geometry, Problem 6": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): OP is perpendicular to AT; right triangles with the centres."
+    ],
+    "2013 SMT Geometry, Problem 7": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): side from the chord length and from the distance between parallel lines."
+    ],
+    "2013 SMT Geometry, Problem 8": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): BP = AP + CP, then the law of cosines."
+    ],
+    "2013 SMT Geometry, Problem 9": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): symmetry puts the incentres on the two midpoint segments."
+    ],
+    "2013 SMT Geometry, Problem 10": [
+      3100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a lemma by vectors: the midpoints form a square."
+    ],
+    "2014 SMT Algebra, Problem 1": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): half the house in 10 hours together, the rest alone."
+    ],
+    "2014 SMT Algebra, Problem 2": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the row of binomial coefficients is (9+1)^6 - 1."
+    ],
+    "2014 SMT Algebra, Problem 3": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): regroup as two sums of roots."
+    ],
+    "2014 SMT Algebra, Problem 4": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): sign patterns of the coefficients that allow a positive root."
+    ],
+    "2014 SMT Algebra, Problem 5": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): b is 0 or pi, then match the integer points."
+    ],
+    "2014 SMT Algebra, Problem 6": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): split into five equal terms for AM-GM."
+    ],
+    "2014 SMT Algebra, Problem 7": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the boundary case has a double root; Vieta fixes it."
+    ],
+    "2014 SMT Algebra, Problem 8": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): match the top terms of P(P(x)) to cancel all but low degree."
+    ],
+    "2014 SMT Algebra, Problem 9": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): each radical telescopes through n + 2 = cube root of (-1 + a_n (n+3))."
+    ],
+    "2014 SMT Algebra, Problem 10": [
+      3300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): closed forms for the two recurrences and a telescoping identity."
+    ],
+    "2014 SMT Advanced, Problem 1": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): three tails then a head."
+    ],
+    "2014 SMT Advanced, Problem 2": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): p^2 - 1 = (p-1)(p+1) is divisible by 8 and 3."
+    ],
+    "2014 SMT Advanced, Problem 3": [
+      1400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): by common difference."
+    ],
+    "2014 SMT Advanced, Problem 4": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): list numbers built from the primes 2, 3, 5, 7 with product below 10."
+    ],
+    "2014 SMT Advanced, Problem 5": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): each coordinate is constant or runs -1, 0, 1."
+    ],
+    "2014 SMT Advanced, Problem 6": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): recursion on the number of islands."
+    ],
+    "2014 SMT Advanced, Problem 7": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): reorder the circle so moves are between neighbours, then count."
+    ],
+    "2014 SMT Advanced, Problem 8": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a_n is an lcm; track prime exponents."
+    ],
+    "2014 SMT Advanced, Problem 9": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): leading digit 9 needs the fractional part of n log 2 above log 9."
+    ],
+    "2014 SMT Advanced, Problem 10": [
+      3100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the permutation preserves divisor structure; count the swappable classes."
+    ],
+    "2014 SMT Geometry, Problem 1": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): twice the area of triangle ABC."
+    ],
+    "2014 SMT Geometry, Problem 2": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): BC = 5 too, then the circumradius of an isosceles triangle."
+    ],
+    "2014 SMT Geometry, Problem 3": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): cross-section: a circle tangent to two sides of a triangle."
+    ],
+    "2014 SMT Geometry, Problem 4": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): coordinates; minimise two quadratics, at the centroid."
+    ],
+    "2014 SMT Geometry, Problem 5": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): isosceles trapezoids give AX = DB, AY = DC; angle BDC is right."
+    ],
+    "2014 SMT Geometry, Problem 6": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): coordinates on the ellipse with a 60-degree slope."
+    ],
+    "2014 SMT Geometry, Problem 7": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): CX is a diameter, X the orthocentre."
+    ],
+    "2014 SMT Geometry, Problem 8": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): M and N trace circles; area of the swept region by pieces."
+    ],
+    "2014 SMT Geometry, Problem 9": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): Ptolemy with AB = AD shows the area is fixed."
+    ],
+    "2014 SMT Geometry, Problem 10": [
+      3100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the two bisectors are perpendicular; DE is a diameter."
+    ],
+    "2018 SMT Algebra, Problem 1": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): double the first purchase and subtract."
+    ],
+    "2018 SMT Algebra, Problem 2": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a quadratic in the ratio."
+    ],
+    "2018 SMT Algebra, Problem 3": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): sum of reciprocals is e2/e3."
+    ],
+    "2018 SMT Algebra, Problem 4": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): two powers of 2 that differ by 12."
+    ],
+    "2018 SMT Algebra, Problem 5": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the condition fixes a1 as a power of r."
+    ],
+    "2018 SMT Algebra, Problem 6": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the pair sum is (S^2 - 2018)/2 with S even."
+    ],
+    "2018 SMT Algebra, Problem 7": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): two squares, then AM-GM with the product fixed."
+    ],
+    "2018 SMT Algebra, Problem 8": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): x + x^2 must be an integer; count in range."
+    ],
+    "2018 SMT Algebra, Problem 9": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): read the system as a product of two polynomials."
+    ],
+    "2018 SMT Algebra, Problem 10": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): substitute b = 1/(1-a) and use Vieta on the new polynomial."
+    ],
+    "2018 SMT Discrete, Problem 1": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): count by the leading digit."
+    ],
+    "2018 SMT Discrete, Problem 2": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): trailing nines carry away."
+    ],
+    "2018 SMT Discrete, Problem 3": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): odd and even weights as two arithmetic sums."
+    ],
+    "2018 SMT Discrete, Problem 4": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): factor both numbers and fix one digit."
+    ],
+    "2018 SMT Discrete, Problem 5": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): each step deletes a binary digit or clears a 1."
+    ],
+    "2018 SMT Discrete, Problem 6": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a recursion on the count at each multiple, up to the lcm."
+    ],
+    "2018 SMT Discrete, Problem 7": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): count subsets by their minimum; the hockey stick sums them."
+    ],
+    "2018 SMT Discrete, Problem 8": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): same-parity factor pairs; at least 12 of them."
+    ],
+    "2018 SMT Discrete, Problem 9": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): power sums mod p vanish unless p - 1 divides k."
+    ],
+    "2018 SMT Discrete, Problem 10": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): expectation is linear in the starting amount; split by the last flip."
+    ],
+    "2018 SMT Geometry, Problem 1": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): centre at the base's midpoint; a radius to a top corner."
+    ],
+    "2018 SMT Geometry, Problem 2": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): reflect A across BC; the path is straight."
+    ],
+    "2018 SMT Geometry, Problem 3": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the two halves are congruent; area by sines."
+    ],
+    "2018 SMT Geometry, Problem 4": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the inner dodecagon is regular; ratio of sides."
+    ],
+    "2018 SMT Geometry, Problem 5": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): build a triangle similar to DEC on the extension."
+    ],
+    "2018 SMT Geometry, Problem 6": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): parallel lines make ABC isosceles."
+    ],
+    "2018 SMT Geometry, Problem 7": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the triangles are opposite faces of an octahedron-like solid."
+    ],
+    "2018 SMT Geometry, Problem 8": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): SAS congruence gives AP = AC."
+    ],
+    "2018 SMT Geometry, Problem 9": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): equal chords give equal angles and similar triangles; areas by ratios."
+    ],
+    "2018 SMT Geometry, Problem 10": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): tangent lengths and the inradius, then the small circle in the kite."
+    ],
+    "2019 SMT Algebra, Problem 1": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the fee is half the wheel count."
+    ],
+    "2019 SMT Algebra, Problem 2": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): middle term 100; outer terms the closest factor pair of 10,000."
+    ],
+    "2019 SMT Algebra, Problem 3": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): x^4 + y^4 in terms of x + y and xy, a quadratic in xy."
+    ],
+    "2019 SMT Algebra, Problem 4": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): cube the sum to get a cubic in S."
+    ],
+    "2019 SMT Algebra, Problem 5": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): each factor is s - r_i, so the product is f(s)/36."
+    ],
+    "2019 SMT Algebra, Problem 6": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): f(z) real on the unit circle; conjugate and compare."
+    ],
+    "2019 SMT Algebra, Problem 7": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): divide by y^2 and minimise in one variable."
+    ],
+    "2019 SMT Algebra, Problem 8": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): expand and sum power sums of the six roots."
+    ],
+    "2019 SMT Algebra, Problem 9": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): an increasing function whose compositions are arithmetic is itself arithmetic; no card fits."
+    ],
+    "2019 SMT Algebra, Problem 10": [
+      3200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): tangent substitution turns it into Cauchy's equation."
+    ],
+    "2019 SMT Discrete, Problem 1": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): test residues 0 to 6."
+    ],
+    "2019 SMT Discrete, Problem 2": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): each prime of 25! goes wholly to a or to b."
+    ],
+    "2019 SMT Discrete, Problem 3": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): place the other letters, then the I's in the gaps."
+    ],
+    "2019 SMT Discrete, Problem 4": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): expected draws from the one-red state, with the drawer growing."
+    ],
+    "2019 SMT Discrete, Problem 5": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): S(k+1) = S(k) + 1 - 9t for t trailing nines."
+    ],
+    "2019 SMT Discrete, Problem 6": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): reduce mod 3: the nonzero residues must alternate in one pattern."
+    ],
+    "2019 SMT Discrete, Problem 7": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): split S = 50 * 101 and use Wilson mod 101."
+    ],
+    "2019 SMT Discrete, Problem 8": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): S_n is a triangular number squared; bound with square roots."
+    ],
+    "2019 SMT Discrete, Problem 9": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a monochrome row and column share their colour; inclusion-exclusion on lines."
+    ],
+    "2019 SMT Discrete, Problem 10": [
+      3100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): orders mod 5, p and q must divide 5pq - 1."
+    ],
+    "2019 SMT Geometry, Problem 1": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): height 1 + 1/2 over base 1."
+    ],
+    "2019 SMT Geometry, Problem 2": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the gap along the path closes at the difference of speeds."
+    ],
+    "2019 SMT Geometry, Problem 3": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): AC = 20, then the area gives sin A."
+    ],
+    "2019 SMT Geometry, Problem 4": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): tangent-chord angles give similar triangles."
+    ],
+    "2019 SMT Geometry, Problem 5": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): equal water volumes in the two positions."
+    ],
+    "2019 SMT Geometry, Problem 6": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the reflection of the orthocentre lies on the circumcircle."
+    ],
+    "2019 SMT Geometry, Problem 7": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): ratios along the medians and the parallel."
+    ],
+    "2019 SMT Geometry, Problem 8": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): reflect A across the x-axis; slopes of perpendicular lines."
+    ],
+    "2019 SMT Geometry, Problem 9": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): extend CD to meet the circumcircle of ABC; a right angle at B."
+    ],
+    "2019 SMT Geometry, Problem 10": [
+      3100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): ADHE is cyclic with M on the tangents; power of a point."
+    ],
+    "2020 SMT Algebra, Problem 1": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): write 2223 = 2222 + 1 and recognise (2222 - 1)^2."
+    ],
+    "2020 SMT Algebra, Problem 2": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the two equations are mirror images; a + b is the constant."
+    ],
+    "2020 SMT Algebra, Problem 3": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): equal total times over the two halves."
+    ],
+    "2020 SMT Algebra, Problem 4": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the roots of x^2 - x + 1 are sixth roots of unity."
+    ],
+    "2020 SMT Algebra, Problem 5": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the four points straddle the vertex symmetrically; equal spacing fixes k."
+    ],
+    "2020 SMT Algebra, Problem 6": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): f is determined by f(1); the conditions leave few choices."
+    ],
+    "2020 SMT Algebra, Problem 7": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): terms are 2 cos of angles; the recurrence adds angles and cycles."
+    ],
+    "2020 SMT Algebra, Problem 8": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the sums are parts of (1 + i sqrt 3)^n."
+    ],
+    "2020 SMT Algebra, Problem 9": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): Sylvester-type recurrence; reciprocals telescope."
+    ],
+    "2020 SMT Algebra, Problem 10": [
+      3200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): f has the factor a - b; convergence forces the rest."
+    ],
+    "2020 SMT Discrete, Problem 1": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the reverse ends in 25, 50 or 75; test candidates."
+    ],
+    "2020 SMT Discrete, Problem 2": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): divisor count with and without the forced powers."
+    ],
+    "2020 SMT Discrete, Problem 3": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): ceiling minus floor is 1 except at divisors."
+    ],
+    "2020 SMT Discrete, Problem 4": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): divisible by 20 and by 101, with distinct digits."
+    ],
+    "2020 SMT Discrete, Problem 5": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): take logarithms base 2 repeatedly."
+    ],
+    "2020 SMT Discrete, Problem 6": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the order in which colours run out depends only on the last bars."
+    ],
+    "2020 SMT Discrete, Problem 7": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): symmetry reduces the squares to a few states."
+    ],
+    "2020 SMT Discrete, Problem 8": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): group by number of diagonal steps and simplify the sum."
+    ],
+    "2020 SMT Discrete, Problem 9": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): case on how often the teams alternate, then place the extras."
+    ],
+    "2020 SMT Discrete, Problem 10": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): each prime has -1 as a square, so it is 2 or 1 mod 4."
+    ],
+    "2020 SMT Geometry, Problem 1": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): area 4/sin of the angle; least for a square."
+    ],
+    "2020 SMT Geometry, Problem 2": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): two tangents from E, and a right angle at D."
+    ],
+    "2020 SMT Geometry, Problem 3": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): subtract a triangle found by similar right triangles."
+    ],
+    "2020 SMT Geometry, Problem 4": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the kite gives four right triangles; locate their incentres."
+    ],
+    "2020 SMT Geometry, Problem 5": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): count edges by faces and degrees; parity forces at least 19."
+    ],
+    "2020 SMT Geometry, Problem 6": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a 13-14-15 triangle; find B, then the weighted average."
+    ],
+    "2020 SMT Geometry, Problem 7": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): Ceva with the bisector ratio fixes E."
+    ],
+    "2020 SMT Geometry, Problem 8": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): each circle through H is a reflection of the circumcircle."
+    ],
+    "2020 SMT Geometry, Problem 9": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): sum of squared distances to G is a third of the sum of squared sides."
+    ],
+    "2020 SMT Geometry, Problem 10": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): Descartes' theorem for the inner circle."
+    ],
+    "2021 SMT Algebra, Problem 1": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): evaluate at the roots 1 and 2."
+    ],
+    "2021 SMT Algebra, Problem 2": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the quartic lies between consecutive squares for large x."
+    ],
+    "2021 SMT Algebra, Problem 3": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): complete the square and factor a difference of squares."
+    ],
+    "2021 SMT Algebra, Problem 4": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a cubic in x + y; take its largest real root."
+    ],
+    "2021 SMT Algebra, Problem 5": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): rotate the point instead of the curve."
+    ],
+    "2021 SMT Algebra, Problem 6": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): sum the geometric series, substitute y, expand."
+    ],
+    "2021 SMT Algebra, Problem 7": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the three logs multiply to 1; a cubic for them."
+    ],
+    "2021 SMT Algebra, Problem 8": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): shift and factor the quartic into quadratics."
+    ],
+    "2021 SMT Algebra, Problem 9": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): rewrite as constants minus squares."
+    ],
+    "2021 SMT Algebra, Problem 10": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): f(f(s)) = s or a fixed point; case on the root pair."
+    ],
+    "2021 SMT Combinatorics, Problem 1": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the mean of 4, 5, 6."
+    ],
+    "2021 SMT Combinatorics, Problem 2": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): inclusion-exclusion on the three windows."
+    ],
+    "2021 SMT Combinatorics, Problem 3": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): equal counts of 01 and 10 just means equal first and last bits."
+    ],
+    "2021 SMT Combinatorics, Problem 4": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): each corner cube has one place-orientation pairing up to the paint."
+    ],
+    "2021 SMT Combinatorics, Problem 5": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): win chance of the first roller, then a two-state chain over rounds."
+    ],
+    "2021 SMT Combinatorics, Problem 6": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): reflect the paths that cross the river."
+    ],
+    "2021 SMT Combinatorics, Problem 7": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): probabilities of the stopping sums by the last roll."
+    ],
+    "2021 SMT Combinatorics, Problem 8": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): small boards fail; a strategy works on 5 x 5."
+    ],
+    "2021 SMT Combinatorics, Problem 9": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): states from the last two days."
+    ],
+    "2021 SMT Combinatorics, Problem 10": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): count chords up to rotation of the 12 pitches."
+    ],
+    "2021 SMT Number Theory, Problem 1": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): write 2021 in base 5 with digits -1, 0, 1."
+    ],
+    "2021 SMT Number Theory, Problem 2": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): reduce mod 13 to n^3 = 1."
+    ],
+    "2021 SMT Number Theory, Problem 3": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): n = p^5 or p^2 q; place the divisors."
+    ],
+    "2021 SMT Number Theory, Problem 4": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): n = pq gives p + q and pq from sigma and phi."
+    ],
+    "2021 SMT Number Theory, Problem 5": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): multiply 1538 = 13^2 + 37^2 by 10 = 1^2 + 3^2 in two ways."
+    ],
+    "2021 SMT Number Theory, Problem 6": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): order a, b, c and bound the gcds."
+    ],
+    "2021 SMT Number Theory, Problem 7": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): only one term survives mod 17; Wilson for the factorial."
+    ],
+    "2021 SMT Number Theory, Problem 8": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): expand around multiples of 2020."
+    ],
+    "2021 SMT Number Theory, Problem 9": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a telescoping lower bound on the product limits k."
+    ],
+    "2021 SMT Number Theory, Problem 10": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a prime factor needs order 8 or 88 dividing p - 1."
+    ],
+    "2021 SMT Geometry, Problem 1": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the fold doubles an angle; law of cosines."
+    ],
+    "2021 SMT Geometry, Problem 2": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): lens of two equal circles from BD."
+    ],
+    "2021 SMT Geometry, Problem 3": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the map parametrises the unit circle."
+    ],
+    "2021 SMT Geometry, Problem 4": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): each step scales by r/R; a geometric series of areas."
+    ],
+    "2021 SMT Geometry, Problem 5": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): tangents of 20 and 25 degrees combine to tan 45."
+    ],
+    "2021 SMT Geometry, Problem 6": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): triangle DEF has fixed angles from the arcs."
+    ],
+    "2021 SMT Geometry, Problem 7": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): side of the 2n-gon in terms of n by trigonometry."
+    ],
+    "2021 SMT Geometry, Problem 8": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): E and F lie on the circle with diameter BC."
+    ],
+    "2021 SMT Geometry, Problem 9": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): WXYZ is tangential; Pitot gives its perimeter."
+    ],
+    "2021 SMT Geometry, Problem 10": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): corner triangles are similar to ABC with ratios cos A, cos B, cos C."
     ]
   }
 }
