@@ -63,7 +63,10 @@
     "2002 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2002/feb/geo/problems.pdf",
     "2001 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2001/feb/alg/problems.pdf",
     "2001 HMMT February Advanced Topics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2001/feb/adv/problems.pdf",
-    "2001 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2001/feb/geo/problems.pdf"
+    "2001 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2001/feb/geo/problems.pdf",
+    "1999 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/1999/feb/alg/problems.pdf",
+    "1999 HMMT February Advanced Topics": "https://hmmt-archive.s3.amazonaws.com/tournaments/1999/feb/adv/problems.pdf",
+    "1999 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/1999/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -2785,6 +2788,126 @@
     "2001 HMMT February Geometry, Problem 10": [
       3050,
       "Combine two cosine laws on a diameter extension and eliminate their common angle to recover a radical chord."
+    ],
+    "1999 HMMT February Algebra, Problem 1": [
+      1550,
+      "Solve the zero condition of a rationally defined operation while excluding its undefined cancellation point."
+    ],
+    "1999 HMMT February Algebra, Problem 2": [
+      1850,
+      "Isolate a missing thousands digit modulo ninety-one and use its short residue cycle."
+    ],
+    "1999 HMMT February Algebra, Problem 3": [
+      2400,
+      "Maximize the overlap time of two finite moving platforms before a fixed travel cutoff."
+    ],
+    "1999 HMMT February Algebra, Problem 4": [
+      1550,
+      "Divide a homogeneous quadratic by a specified nonzero square to solve for a ratio."
+    ],
+    "1999 HMMT February Algebra, Problem 5": [
+      2500,
+      "Translate button presses into two integer state equations, bound their total and realize the bound without resets."
+    ],
+    "1999 HMMT February Algebra, Problem 6": [
+      1950,
+      "Recover three work rates from pair rates and account for one worker leaving after the first day."
+    ],
+    "1999 HMMT February Algebra, Problem 7": [
+      2400,
+      "Use common remainders to determine a bounded paper count, then choose its only proper nontrivial divisor."
+    ],
+    "1999 HMMT February Algebra, Problem 8": [
+      2500,
+      "Add a quadratic to a monic quartic so its four prescribed values become known roots."
+    ],
+    "1999 HMMT February Algebra, Problem 9": [
+      2850,
+      "Decompose a three-row domino strip into its first complete block and derive a width recurrence."
+    ],
+    "1999 HMMT February Algebra, Problem 10": [
+      2350,
+      "Separate coordinates as in 2010 Combinatorics #6, with two small trinomial edge cases for the near-corner endpoint."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 1": [
+      1700,
+      "Use the cents total and the eight-and-nine divisibility tests to recover two missing receipt digits."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 2": [
+      2100,
+      "Reverse repeated doubling and fixed spending, then identify the finite affine recurrence."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 3": [
+      2100,
+      "Equate two binomial masses; the stated uniqueness needs a nondegenerate coin assumption."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 4": [
+      1900,
+      "Each adjacent exchange changes one inversion, giving the reversal sorting minimum and its attainment."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 5": [
+      2050,
+      "Count how often each element contributes to the sum over all subsets before dividing by a common total."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 6": [
+      2400,
+      "Use common remainders to determine a bounded paper count, then choose its only proper nontrivial divisor."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 7": [
+      2300,
+      "The two nonreal roots of a cubic force one real quadratic factor and its coefficients."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 8": [
+      2550,
+      "Compare the acute and obtuse wedges formed by two diameters and convert the sharper wedge to a radius bound."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 9": [
+      2550,
+      "Condition through a screening stage and a lab test; the source conflates aggregate scale accuracy with sensitivity."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 10": [
+      3200,
+      "Use a sum-product substitution and real-root discriminant to bound the largest of three coupled probabilities."
+    ],
+    "1999 HMMT February Geometry, Problem 1": [
+      1700,
+      "Recover a circumradius from rectangle diagonals and subtract the union with its square overlap."
+    ],
+    "1999 HMMT February Geometry, Problem 2": [
+      1800,
+      "The smaller semicircle diameter is a chord of the larger circle whose center distance equals the smaller radius."
+    ],
+    "1999 HMMT February Geometry, Problem 3": [
+      1600,
+      "Use half a cube face as a tetrahedron base and the perpendicular cube edge as its altitude."
+    ],
+    "1999 HMMT February Geometry, Problem 4": [
+      2300,
+      "Conserve volume flow between a trapezoidal river section and four circular openings."
+    ],
+    "1999 HMMT February Geometry, Problem 5": [
+      2550,
+      "Use altitude-foot distances and two similar right triangles to recover a base and its altitude."
+    ],
+    "1999 HMMT February Geometry, Problem 6": [
+      2500,
+      "Compare the radial contact tracks on concentric spheres by the square of their similarity ratio."
+    ],
+    "1999 HMMT February Geometry, Problem 7": [
+      2650,
+      "Intersect a nearest-center Voronoi region with a corner disk and measure a circular segment."
+    ],
+    "1999 HMMT February Geometry, Problem 8": [
+      2700,
+      "Decompose the triangle formed by three outer square edges into equilateral and square pieces."
+    ],
+    "1999 HMMT February Geometry, Problem 9": [
+      3250,
+      "Compare the separation of opposite regular-tetrahedron edges with the skew distance between cube diagonals."
+    ],
+    "1999 HMMT February Geometry, Problem 10": [
+      3550,
+      "Recover successive cevian lengths with Stewart before applying Menelaus twice to the final ratio."
     ]
   }
 }
