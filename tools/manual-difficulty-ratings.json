@@ -10803,6 +10803,406 @@
     "2012 UMD HSMC Part I, Problem 25": [
       1700,
       "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): ten games, ten points shared."
+    ],
+    "2011 UMD HSMC Part I, Problem 1": [
+      900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): 8a + 13b = 100."
+    ],
+    "2011 UMD HSMC Part I, Problem 2": [
+      1100,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): the intersection point as a function of b."
+    ],
+    "2011 UMD HSMC Part I, Problem 3": [
+      900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): count the wrong answers on each question."
+    ],
+    "2011 UMD HSMC Part I, Problem 4": [
+      900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): y^2 + 2y - 10 = 0."
+    ],
+    "2011 UMD HSMC Part I, Problem 5": [
+      1200,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): n - 1 = (9n - 1)/10."
+    ],
+    "2011 UMD HSMC Part I, Problem 6": [
+      1100,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): AM = BM = CM; the angle at A is right."
+    ],
+    "2011 UMD HSMC Part I, Problem 7": [
+      1300,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): f behaves like a logarithm: solve for f(2), f(5)."
+    ],
+    "2011 UMD HSMC Part I, Problem 8": [
+      700,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): log of a cube root of 10."
+    ],
+    "2011 UMD HSMC Part I, Problem 9": [
+      1000,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): sin x + cos x is largest at 45 degrees."
+    ],
+    "2011 UMD HSMC Part I, Problem 10": [
+      1200,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): (x + y)^2 = d^2 + 2a."
+    ],
+    "2011 UMD HSMC Part I, Problem 11": [
+      1300,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): multiples of 7 for apples and oranges."
+    ],
+    "2011 UMD HSMC Part I, Problem 12": [
+      1300,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): speeds with and against the current."
+    ],
+    "2011 UMD HSMC Part I, Problem 13": [
+      1300,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): the largest n with n(n+1)/2 at most 2011."
+    ],
+    "2011 UMD HSMC Part I, Problem 14": [
+      1400,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): suppose A lies and follow the statements."
+    ],
+    "2011 UMD HSMC Part I, Problem 15": [
+      1200,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): the sum of distances is constant between -12 and 5."
+    ],
+    "2011 UMD HSMC Part I, Problem 16": [
+      1700,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): the hexagon is the triangle, three squares and three 120-degree triangles."
+    ],
+    "2011 UMD HSMC Part I, Problem 17": [
+      1400,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): k applications give 2^k (n + 1) - 1."
+    ],
+    "2011 UMD HSMC Part I, Problem 18": [
+      1900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): a full board means X moved last and O never won."
+    ],
+    "2011 UMD HSMC Part I, Problem 19": [
+      1900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): mod 3 fixes p + q; then factor."
+    ],
+    "2011 UMD HSMC Part I, Problem 20": [
+      1700,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): y = (3/5)^x gives a quadratic."
+    ],
+    "2011 UMD HSMC Part I, Problem 21": [
+      1700,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): F is a product and a sum; test small values."
+    ],
+    "2011 UMD HSMC Part I, Problem 22": [
+      2000,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): positive solutions, minus equal pairs, divided by 6."
+    ],
+    "2011 UMD HSMC Part I, Problem 23": [
+      2100,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): sin^2 3x - sin^2 x = sin 2x factors."
+    ],
+    "2011 UMD HSMC Part I, Problem 24": [
+      2100,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): the cube root lies near 1900; last digits from ...77."
+    ],
+    "2011 UMD HSMC Part I, Problem 25": [
+      2000,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): z + 1 = (x + 1)(y + 1): products of 2 and 3."
+    ],
+    "2010 UMD HSMC Part I, Problem 1": [
+      700,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): compute G, H and their product."
+    ],
+    "2010 UMD HSMC Part I, Problem 2": [
+      800,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): compare total areas."
+    ],
+    "2010 UMD HSMC Part I, Problem 3": [
+      900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): intercepts 1/3 and 1/4; a 3-4-5 triangle."
+    ],
+    "2010 UMD HSMC Part I, Problem 4": [
+      800,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): each candy counted twice."
+    ],
+    "2010 UMD HSMC Part I, Problem 5": [
+      1100,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): no intersection: a negative discriminant."
+    ],
+    "2010 UMD HSMC Part I, Problem 6": [
+      1100,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): count rectangles by size."
+    ],
+    "2010 UMD HSMC Part I, Problem 7": [
+      900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): closing speed v1 + v2."
+    ],
+    "2010 UMD HSMC Part I, Problem 8": [
+      800,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): (x^2 - 1)^2 = 0."
+    ],
+    "2010 UMD HSMC Part I, Problem 9": [
+      900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): 50^2 over 50 * 51."
+    ],
+    "2010 UMD HSMC Part I, Problem 10": [
+      1300,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): the claims are mutually exclusive: exactly four lie."
+    ],
+    "2010 UMD HSMC Part I, Problem 11": [
+      1400,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): compare n^(1/n) for n = 20 to 60."
+    ],
+    "2010 UMD HSMC Part I, Problem 12": [
+      1300,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): cos^2 = sin gives a quadratic in sin."
+    ],
+    "2010 UMD HSMC Part I, Problem 13": [
+      1500,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): angles of elevation from two points."
+    ],
+    "2010 UMD HSMC Part I, Problem 14": [
+      1400,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): (x - y)(x + y) = 100 with even factors."
+    ],
+    "2010 UMD HSMC Part I, Problem 15": [
+      1200,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): count triples with a + b > c."
+    ],
+    "2010 UMD HSMC Part I, Problem 16": [
+      1800,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): the chain of inequalities forces f(x + 1) = f(x) + 1."
+    ],
+    "2010 UMD HSMC Part I, Problem 17": [
+      1500,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): take integer parts step by step."
+    ],
+    "2010 UMD HSMC Part I, Problem 18": [
+      1300,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): skip the one- and two-digit blocks, then count threes."
+    ],
+    "2010 UMD HSMC Part I, Problem 19": [
+      1900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): segment area times the tube's length."
+    ],
+    "2010 UMD HSMC Part I, Problem 20": [
+      1700,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): a = x^2, c = y^4, and x^2 - y^4 = 9."
+    ],
+    "2010 UMD HSMC Part I, Problem 21": [
+      1600,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): choose the four matches, derange the rest."
+    ],
+    "2010 UMD HSMC Part I, Problem 22": [
+      1900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): 10^2010 + 1 is divisible by 101; read the quotient's last digit."
+    ],
+    "2010 UMD HSMC Part I, Problem 23": [
+      1800,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): sum of 1/a^2 from Vieta."
+    ],
+    "2010 UMD HSMC Part I, Problem 24": [
+      2200,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): parallels through M cut similar triangles."
+    ],
+    "2010 UMD HSMC Part I, Problem 25": [
+      2200,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): factor 2^74 and complete a square."
+    ],
+    "2009 UMD HSMC Part I, Problem 1": [
+      800,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): 6c - 50 = -8."
+    ],
+    "2009 UMD HSMC Part I, Problem 2": [
+      1100,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): spend exactly 2 dollars with at least 5 pounds."
+    ],
+    "2009 UMD HSMC Part I, Problem 3": [
+      1000,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): rewrite as powers of 2 and 3."
+    ],
+    "2009 UMD HSMC Part I, Problem 4": [
+      700,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): the other leg is 8."
+    ],
+    "2009 UMD HSMC Part I, Problem 5": [
+      800,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): wheels and the 3-to-1 ratio."
+    ],
+    "2009 UMD HSMC Part I, Problem 6": [
+      1000,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): even squares between 1788 and 2008."
+    ],
+    "2009 UMD HSMC Part I, Problem 7": [
+      800,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): odd and a multiple of 5."
+    ],
+    "2009 UMD HSMC Part I, Problem 8": [
+      1100,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): the line meets the parabola at a double root."
+    ],
+    "2009 UMD HSMC Part I, Problem 9": [
+      900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): every log is a multiple of log 2."
+    ],
+    "2009 UMD HSMC Part I, Problem 10": [
+      1000,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): the inradius is a third of the height."
+    ],
+    "2009 UMD HSMC Part I, Problem 11": [
+      900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): half of 110 degrees at the incentre."
+    ],
+    "2009 UMD HSMC Part I, Problem 12": [
+      1400,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): sketch log x and sin x on (0, 10]."
+    ],
+    "2009 UMD HSMC Part I, Problem 13": [
+      1000,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): choose the driver, then the rest."
+    ],
+    "2009 UMD HSMC Part I, Problem 14": [
+      1100,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): odd squares not divisible by 3 are 1 mod 12."
+    ],
+    "2009 UMD HSMC Part I, Problem 15": [
+      1700,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): total points equal total games."
+    ],
+    "2009 UMD HSMC Part I, Problem 16": [
+      1300,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): digits other than 1, then the numbers from 1000 to 2009."
+    ],
+    "2009 UMD HSMC Part I, Problem 17": [
+      2000,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): only terms up to x^2 matter."
+    ],
+    "2009 UMD HSMC Part I, Problem 18": [
+      1500,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): equal leftover areas give s^2/r^2."
+    ],
+    "2009 UMD HSMC Part I, Problem 19": [
+      1500,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): C and D cannot both be truthful."
+    ],
+    "2009 UMD HSMC Part I, Problem 20": [
+      1300,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): substitute x and 1/x and solve."
+    ],
+    "2009 UMD HSMC Part I, Problem 21": [
+      1800,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): (x - 1)(y - 1) = 1 with x^2 + y^2 = 225."
+    ],
+    "2009 UMD HSMC Part I, Problem 22": [
+      1600,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): y^2 = 4 + 5/y with 2 < y < 3."
+    ],
+    "2009 UMD HSMC Part I, Problem 23": [
+      1700,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): digit multisets with equal sum and product."
+    ],
+    "2009 UMD HSMC Part I, Problem 24": [
+      2100,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): a + b = x and a - b = (x - 1)/x."
+    ],
+    "2009 UMD HSMC Part I, Problem 25": [
+      2200,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): the largest number sits near the end: s_k from s_(k-1), s_(k-2)."
+    ],
+    "2008 UMD HSMC Part I, Problem 1": [
+      800,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): two linear equations in the ages."
+    ],
+    "2008 UMD HSMC Part I, Problem 2": [
+      800,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): compute each score."
+    ],
+    "2008 UMD HSMC Part I, Problem 3": [
+      700,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): shadows in proportion."
+    ],
+    "2008 UMD HSMC Part I, Problem 4": [
+      1000,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): a negative discriminant, 4 + 4a < 0."
+    ],
+    "2008 UMD HSMC Part I, Problem 5": [
+      1300,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): the most coins that cannot make a dollar."
+    ],
+    "2008 UMD HSMC Part I, Problem 6": [
+      900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): b^(log_b a) = a twice."
+    ],
+    "2008 UMD HSMC Part I, Problem 7": [
+      1000,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): two right triangles on the diagonal."
+    ],
+    "2008 UMD HSMC Part I, Problem 8": [
+      1000,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): 1 + 2 + ... + 19 = 190."
+    ],
+    "2008 UMD HSMC Part I, Problem 9": [
+      1200,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): (x - 1)^2 + z^2 = 0."
+    ],
+    "2008 UMD HSMC Part I, Problem 10": [
+      900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): the harmonic mean of 40 and 60."
+    ],
+    "2008 UMD HSMC Part I, Problem 11": [
+      1300,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): use as many 3s as possible."
+    ],
+    "2008 UMD HSMC Part I, Problem 12": [
+      1000,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): 9a = 18."
+    ],
+    "2008 UMD HSMC Part I, Problem 13": [
+      1600,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): fall distances 16t^2 with a 3-second gap."
+    ],
+    "2008 UMD HSMC Part I, Problem 14": [
+      1200,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): 2^10 is just over 10^3."
+    ],
+    "2008 UMD HSMC Part I, Problem 15": [
+      1500,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): 11n = 260 - m."
+    ],
+    "2008 UMD HSMC Part I, Problem 16": [
+      1500,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): reflect the angles into the first quadrant."
+    ],
+    "2008 UMD HSMC Part I, Problem 17": [
+      1900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): ranges of n where the two step counts differ."
+    ],
+    "2008 UMD HSMC Part I, Problem 18": [
+      1500,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): a cool set has one element."
+    ],
+    "2008 UMD HSMC Part I, Problem 19": [
+      1700,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): P(X) - X - 2006 has the roots 0, 1, 2."
+    ],
+    "2008 UMD HSMC Part I, Problem 20": [
+      1700,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): each digit appears equally often in each place up to 999."
+    ],
+    "2008 UMD HSMC Part I, Problem 21": [
+      1100,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): exactly one fixed tag, then a derangement of four."
+    ],
+    "2008 UMD HSMC Part I, Problem 22": [
+      1700,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): square twice and check extraneous roots."
+    ],
+    "2008 UMD HSMC Part I, Problem 23": [
+      2100,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): cos(pi x/180) = -cos x."
+    ],
+    "2008 UMD HSMC Part I, Problem 24": [
+      1900,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): Hamiltonian paths on a cube from one corner."
+    ],
+    "2008 UMD HSMC Part I, Problem 25": [
+      1800,
+      "Author estimate (the UMD competition publishes no solve counts; placed on the collection’s scale by its route, Part I running from an easy AMC 10 problem to a late AMC 12 one): sum-to-product factors the sum into cosines."
     ]
   }
 }
