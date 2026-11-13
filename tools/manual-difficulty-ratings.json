@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-11-12",
+  "reviewed": "2026-11-13",
   "description": "Author estimates on LIVE's Elo-like scale, based on the statements and solution requirements, not a paper-position formula. LIVE values take precedence when later published. Shared 2026 AMC 10/12 problems receive identical estimates. The 2026 AMC 10A estimates were reviewed problem by problem on 2026-11-11 after the owner sat the paper: #25 came down sharply and #8, #16, #18, #20 and #21 moved.",
   "papers": {
     "2026 AMC 10A": "https://wiki.randommath.com/amc10/2026/part-a/problem-1",
@@ -51,7 +51,10 @@
     "2006 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2006/feb/geo/problems.pdf",
     "2005 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2005/feb/alg/problems.pdf",
     "2005 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2005/feb/comb/problems.pdf",
-    "2005 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2005/feb/geo/problems.pdf"
+    "2005 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2005/feb/geo/problems.pdf",
+    "2004 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2004/feb/alg/problems.pdf",
+    "2004 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2004/feb/comb/problems.pdf",
+    "2004 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2004/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -2293,6 +2296,126 @@
     "2005 HMMT February Geometry, Problem 10": [
       3550,
       "Use contact-point homotheties to align two diameter tangencies, then prove a cyclic relation and chase the required angle."
+    ],
+    "2004 HMMT February Algebra, Problem 1": [
+      1550,
+      "Complete squares to identify three strict disks and enumerate the integer points in their common interior."
+    ],
+    "2004 HMMT February Algebra, Problem 2": [
+      1650,
+      "Use monotonic factorial divisibility to peel off three nested factorial levels."
+    ],
+    "2004 HMMT February Algebra, Problem 3": [
+      1800,
+      "Center consecutive integers around a variable and expand a rational difference to bound its fractional remainder."
+    ],
+    "2004 HMMT February Algebra, Problem 4": [
+      1950,
+      "Group square-root floors on consecutive square intervals, leaving one endpoint term."
+    ],
+    "2004 HMMT February Algebra, Problem 5": [
+      1900,
+      "Draw the right triangle of an inverse tangent and reduce a trigonometric fixed-point equation to a quadratic in the square."
+    ],
+    "2004 HMMT February Algebra, Problem 6": [
+      2300,
+      "Use a fixed sum to solve for a product from fourth powers, rejecting the nonreal branch."
+    ],
+    "2004 HMMT February Algebra, Problem 7": [
+      2200,
+      "Bound two reciprocal symmetric sums together and verify their shared equality case."
+    ],
+    "2004 HMMT February Algebra, Problem 8": [
+      2350,
+      "Reduce a seventh power modulo a supplied cubic relation to cancel the remaining quadratic term."
+    ],
+    "2004 HMMT February Algebra, Problem 9": [
+      3000,
+      "Use recurrence resets modulo two gcd candidates to prove opposite divisibility directions."
+    ],
+    "2004 HMMT February Algebra, Problem 10": [
+      3100,
+      "Prove squared polynomial roots are distinct and evaluate a transformed root product at one and minus one."
+    ],
+    "2004 HMMT February Combinatorics, Problem 1": [
+      1900,
+      "Prove the two alternating room-occupancy patterns in a simultaneous nearest-neighbor transfer process."
+    ],
+    "2004 HMMT February Combinatorics, Problem 2": [
+      1850,
+      "Fill the restricted extreme rows first, then complete an unrestricted row-column permutation."
+    ],
+    "2004 HMMT February Combinatorics, Problem 3": [
+      1750,
+      "Count all solved student-question incidences and use the last score bound to force the only congruent value."
+    ],
+    "2004 HMMT February Combinatorics, Problem 4": [
+      1700,
+      "The first head after any tail would stop the process, so the competing head-head pattern must occur immediately."
+    ],
+    "2004 HMMT February Combinatorics, Problem 5": [
+      2250,
+      "Fix the winning last game and count the four earlier wins for either possible series winner."
+    ],
+    "2004 HMMT February Combinatorics, Problem 6": [
+      1450,
+      "Split on a required pair and exclude committees containing a forbidden pair."
+    ],
+    "2004 HMMT February Combinatorics, Problem 7": [
+      2800,
+      "Combine Euler-trail degree constraints with polyhedral incidence bounds and exhibit a sharp triangular bipyramid."
+    ],
+    "2004 HMMT February Combinatorics, Problem 8": [
+      2500,
+      "Enumerate the urn choices with the changed second-draw denominator and condition on a black second ball."
+    ],
+    "2004 HMMT February Combinatorics, Problem 9": [
+      2650,
+      "Characterize empty desks as a Cartesian product of nonfull row and column sets, treating the full classroom separately."
+    ],
+    "2004 HMMT February Combinatorics, Problem 10": [
+      2750,
+      "Track whether a marked card is central and solve the affine recurrence around its stationary probability."
+    ],
+    "2004 HMMT February Geometry, Problem 1": [
+      1650,
+      "Remove two isosceles right corner triangles from a trapezoid and recover the shorter base."
+    ],
+    "2004 HMMT February Geometry, Problem 2": [
+      1450,
+      "Allow each of three given vertices to be the opposite vertex and add the three coordinate completions."
+    ],
+    "2004 HMMT February Geometry, Problem 3": [
+      1950,
+      "Pair two copies of a linearly sloping circular pool to make a full cylinder."
+    ],
+    "2004 HMMT February Geometry, Problem 4": [
+      1900,
+      "Use the opposite-distance-squares identity for an interior rectangle point."
+    ],
+    "2004 HMMT February Geometry, Problem 5": [
+      2350,
+      "Split a three-term absolute-value region by signs and add the six triangular pieces."
+    ],
+    "2004 HMMT February Geometry, Problem 6": [
+      1950,
+      "Translate a trapezoid leg to create a right triangle with the base difference."
+    ],
+    "2004 HMMT February Geometry, Problem 7": [
+      2400,
+      "Convert opposite diagonal-triangle areas into a length ratio and recover the mixed triangle areas."
+    ],
+    "2004 HMMT February Geometry, Problem 8": [
+      2550,
+      "Locate three different centers of a right triangle in coordinates before measuring their small triangle."
+    ],
+    "2004 HMMT February Geometry, Problem 9": [
+      2900,
+      "Reflect tetrahedral face planes through the center and subtract four half-scale corner tetrahedra."
+    ],
+    "2004 HMMT February Geometry, Problem 10": [
+      2700,
+      "Expand a product of trisector lengths and recognize the three sine-area terms plus the whole right-triangle area."
     ]
   }
 }
