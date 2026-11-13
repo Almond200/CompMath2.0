@@ -62,7 +62,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.equal(await few.locator('.pf-stat b').first().innerText(),String(fe.n));assert.equal(await few.locator('table, .elo-chart, .pf-eras').count(),0);
  assert.match(await rowOf(few,'Difficulty').innerText(),/Rated \d+( and \d+)?\./);assert(await rowOf(few,'Topics').locator('a').count()>0);
  // Between the two: tables and a chart, but too few problems for periods to mean anything.
- const mid=await open('ptolemys-theorem'),me=expected('ptolemys-theorem');assert(me.n>=8&&me.n<30);
+ const mid=await open('stewarts-theorem'),me=expected('stewarts-theorem');assert(me.n>=8&&me.n<30);
  assert.equal(await mid.locator('table').count(),2);assert.equal(await mid.locator('.elo-chart').count(),1);assert.equal(await mid.locator('.pf-eras').count(),0);
  // A topic's profile on its Problems by topic page (T6): the same figures and rows for the
  // problems filed under the topic and its subtopics, and the cards they cite most.
