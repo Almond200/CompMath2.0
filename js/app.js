@@ -3163,7 +3163,7 @@
   function linkLabel(fam) { return ARCHIVE_URL[fam] ? "archive" : "AoPS"; }
   // HMMT publishes each round as two PDFs, the paper and its solutions. A reference names the
   // year, the tournament and the round, which is the whole address.
-  const HMMT_CODE = { "Algebra": "alg", "Algebra and Combinatorics": "algcomb", "Algebra and Geometry": "alggeo", "Combinatorics and Geometry": "combgeo", "Algebra and Number Theory": "algnt", "Combinatorics": "comb", "Geometry": "geo" };
+  const HMMT_CODE = { "Advanced Topics": "adv", "Algebra": "alg", "Algebra and Combinatorics": "algcomb", "Algebra and Geometry": "alggeo", "Combinatorics and Geometry": "combgeo", "Algebra and Number Theory": "algnt", "Combinatorics": "comb", "Geometry": "geo" };
   function hmmtPdf(ref, which) {
     const m = ref.match(/^(\d{4}) HMMT (February|November) (.+?),\s*Problem\s+\d+$/);
     return m && HMMT_CODE[m[3]] ? `https://hmmt-archive.s3.amazonaws.com/tournaments/${m[1]}/${m[2].slice(0, 3).toLowerCase()}/${HMMT_CODE[m[3]]}/${which}.pdf` : null;
@@ -3187,7 +3187,7 @@
   // The display form of a reference. HMMT names are long ("2019 HMMT February Algebra and Number
   // Theory, Problem 3"), so the month and the round are shortened: "2019 HMMT Feb Alg & NT #3".
   // `refInGroup` drops the contest's own name as well, for a row under that contest's heading.
-  const HMMT_ROUNDS = { "Algebra and Combinatorics": "Alg & Combo", "Algebra and Geometry": "Alg & Geo", "Combinatorics and Geometry": "Combo & Geo", "Algebra and Number Theory": "Alg & NT", "Combinatorics": "Combo", "Geometry": "Geometry" };
+  const HMMT_ROUNDS = { "Advanced Topics": "Adv Topics", "Algebra and Combinatorics": "Alg & Combo", "Algebra and Geometry": "Alg & Geo", "Combinatorics and Geometry": "Combo & Geo", "Algebra and Number Theory": "Alg & NT", "Combinatorics": "Combo", "Geometry": "Geometry" };
   const shortRound = r => HMMT_ROUNDS[r] || r;
   function refShort(ref) {
     return ref.replace(/,\s*Problem\s+/, " #").replace(/\bHMMT (February|November) (.+?) #/, (_, m, r) => `HMMT ${m.slice(0, 3)} ${shortRound(r)} #`);
@@ -9197,7 +9197,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     DB_TREE[fam][year].forEach(p => { (groups[p.cname] = groups[p.cname] || []).push(p); });
     // Spring before Fall within a year (2021 had both), then A before B.
     const seasonRank = gn => /^Spring\b/i.test(gn) ? 0 : /^Fall\b/i.test(gn) ? 1 : 0;
-    const gnames = Object.keys(groups).sort((a, b) => seasonRank(a) - seasonRank(b) || a.localeCompare(b));
+    // Advanced Topics occupies the counting slot in the historical subject-paper order.
+    // This affects the tabs only; its difficulty series remains separate from Combinatorics.
+    const gnames = Object.keys(groups).sort((a, b) => seasonRank(a) - seasonRank(b) || a.replace(/Advanced Topics$/, "Combinatorics").localeCompare(b.replace(/Advanced Topics$/, "Combinatorics")));
     // #/problems/aime/2025/aime-i names one paper (a contest result in the search links there,
     // and the toggle writes it): the page opens on it.
     let shownG = gnames.findIndex(gn => paperSlug(gn) === route.paper);
