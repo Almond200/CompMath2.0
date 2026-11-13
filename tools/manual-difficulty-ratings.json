@@ -18275,6 +18275,486 @@
     "2008 Lehigh Math Contest, Problem 40": [
       2650,
       "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): coordinates for E, F, G, H and the shoelace formula."
+    ],
+    "2007 Lehigh Math Contest, Problem 1": [
+      600,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 1/3 of 5/2 against 1/2 of 1/3."
+    ],
+    "2007 Lehigh Math Contest, Problem 2": [
+      800,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): (16 - 9)/25 of the area."
+    ],
+    "2007 Lehigh Math Contest, Problem 3": [
+      1000,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 1.5 times the customers at the new price gives the revenue change."
+    ],
+    "2007 Lehigh Math Contest, Problem 4": [
+      800,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): add the equations: 13(x + y) = 9009."
+    ],
+    "2007 Lehigh Math Contest, Problem 5": [
+      1000,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 10^55 - 55 is 53 nines followed by 45."
+    ],
+    "2007 Lehigh Math Contest, Problem 6": [
+      1000,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): expand the condition on n, n + 1, n + 2."
+    ],
+    "2007 Lehigh Math Contest, Problem 7": [
+      1200,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 9^9 = 3^18: cube divisors 3^(3k)."
+    ],
+    "2007 Lehigh Math Contest, Problem 8": [
+      1100,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 2/(1/a + 1/x) set equal and solved."
+    ],
+    "2007 Lehigh Math Contest, Problem 9": [
+      1100,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the sum is at least |2007 - 1| by the triangle inequality."
+    ],
+    "2007 Lehigh Math Contest, Problem 10": [
+      700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): log2 16 = 4, then 2, then 1."
+    ],
+    "2007 Lehigh Math Contest, Problem 11": [
+      900,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 21 of the 36 outcomes."
+    ],
+    "2007 Lehigh Math Contest, Problem 12": [
+      1200,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): a cube and a fourth power of different integers: 2^12."
+    ],
+    "2007 Lehigh Math Contest, Problem 13": [
+      1400,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): (a + b)^2 = c^2 + 28 with a + b = 14 - c."
+    ],
+    "2007 Lehigh Math Contest, Problem 14": [
+      1600,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): no triangle means each term at least the sum of the two before: Fibonacci growth."
+    ],
+    "2007 Lehigh Math Contest, Problem 15": [
+      1300,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): equal surface areas fix the ratio of radius to side."
+    ],
+    "2007 Lehigh Math Contest, Problem 16": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): unit vectors along the slopes scaled by 5; C = B + D."
+    ],
+    "2007 Lehigh Math Contest, Problem 17": [
+      1200,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): for p other than 3 the value is divisible by 3."
+    ],
+    "2007 Lehigh Math Contest, Problem 18": [
+      1400,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): track the paint moved between the containers."
+    ],
+    "2007 Lehigh Math Contest, Problem 19": [
+      1400,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the circle about (A, 0) must reach the lines y = +-x."
+    ],
+    "2007 Lehigh Math Contest, Problem 20": [
+      1600,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): odd k uses k digits each; locate the given position."
+    ],
+    "2007 Lehigh Math Contest, Problem 21": [
+      1100,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): r = (a + b - c)/2."
+    ],
+    "2007 Lehigh Math Contest, Problem 22": [
+      1200,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): expand in b and solve the polynomial equation."
+    ],
+    "2007 Lehigh Math Contest, Problem 23": [
+      2000,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the ant's fraction of the strip grows by a sum of reciprocals."
+    ],
+    "2007 Lehigh Math Contest, Problem 24": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 10/(1 - r) between 9 and 11 with |r| < 1."
+    ],
+    "2007 Lehigh Math Contest, Problem 25": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): b^2 = (sin + cos)^2 = 1 + 2c."
+    ],
+    "2007 Lehigh Math Contest, Problem 26": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): two unit discs centred at (+-2, 0)."
+    ],
+    "2007 Lehigh Math Contest, Problem 27": [
+      1300,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): divisible by 4 and 9: the last two digits and the digit sum."
+    ],
+    "2007 Lehigh Math Contest, Problem 28": [
+      1800,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): areas (n/2) sin(2 pi/n): ratio of sin 36 to 2 sin 18."
+    ],
+    "2007 Lehigh Math Contest, Problem 29": [
+      1600,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the square's corner on y = k/x gives the side and area."
+    ],
+    "2007 Lehigh Math Contest, Problem 30": [
+      1700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 999 divides n exactly when its 3-digit blocks sum to a multiple of 999."
+    ],
+    "2007 Lehigh Math Contest, Problem 31": [
+      1800,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): n = P(n) + S(n) forces two digits, with the units digit 9."
+    ],
+    "2007 Lehigh Math Contest, Problem 32": [
+      1400,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the sum of squared distances is least at the centroid."
+    ],
+    "2007 Lehigh Math Contest, Problem 33": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): evaluate at x = 1 and x = -1."
+    ],
+    "2007 Lehigh Math Contest, Problem 34": [
+      1600,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the middle root is 1; substitute to find k."
+    ],
+    "2007 Lehigh Math Contest, Problem 35": [
+      1700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): Stewart's theorem on the cevian AD."
+    ],
+    "2007 Lehigh Math Contest, Problem 36": [
+      1600,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 101^20 = sum C(20, k) 100^k; read the ninth digit."
+    ],
+    "2007 Lehigh Math Contest, Problem 37": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): two circles less the lens of two 120-degree segments."
+    ],
+    "2007 Lehigh Math Contest, Problem 38": [
+      1800,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): n(n + 1)/2 = m^2 is a Pell equation: 8 and 49."
+    ],
+    "2007 Lehigh Math Contest, Problem 39": [
+      2000,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): power of a point with respect to both circles along the chords."
+    ],
+    "2007 Lehigh Math Contest, Problem 40": [
+      2300,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): rotate by 60 degrees: 6, 8, 10 makes a right angle, then the law of cosines."
+    ],
+    "2005 Lehigh Math Contest, Problem 1": [
+      600,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): add three unit fractions."
+    ],
+    "2005 Lehigh Math Contest, Problem 2": [
+      700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 2y + y + (y + 5) = 17."
+    ],
+    "2005 Lehigh Math Contest, Problem 3": [
+      900,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the water stays 80 cc and must be 2/3 of the total."
+    ],
+    "2005 Lehigh Math Contest, Problem 4": [
+      700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the altitude to 12 is 8."
+    ],
+    "2005 Lehigh Math Contest, Problem 5": [
+      700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): slope -3/2 through (10, 2)."
+    ],
+    "2005 Lehigh Math Contest, Problem 6": [
+      900,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): ab/c = 60/13."
+    ],
+    "2005 Lehigh Math Contest, Problem 7": [
+      1200,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): write each as a power with a common exponent."
+    ],
+    "2005 Lehigh Math Contest, Problem 8": [
+      900,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the fly flies until the riders meet: 2/19 of an hour."
+    ],
+    "2005 Lehigh Math Contest, Problem 9": [
+      1100,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): run the recurrence backward from the known terms."
+    ],
+    "2005 Lehigh Math Contest, Problem 10": [
+      900,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): n(n - 3)/2 = 44 or 45."
+    ],
+    "2005 Lehigh Math Contest, Problem 11": [
+      900,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): (1 + 3)/10."
+    ],
+    "2005 Lehigh Math Contest, Problem 12": [
+      1100,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 2(x + 1) > 3x - 2 with all sides positive."
+    ],
+    "2005 Lehigh Math Contest, Problem 13": [
+      1300,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): follow the pieces until all fall below the threshold."
+    ],
+    "2005 Lehigh Math Contest, Problem 14": [
+      1300,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the enclosing circle's diameter runs along the centres' line."
+    ],
+    "2005 Lehigh Math Contest, Problem 15": [
+      1200,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 7!/(3! 2!) less those with a leading 0."
+    ],
+    "2005 Lehigh Math Contest, Problem 16": [
+      1000,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 4(b + 2) = b^2 + 3."
+    ],
+    "2005 Lehigh Math Contest, Problem 17": [
+      1300,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the octahedron is a sixth of the cube."
+    ],
+    "2005 Lehigh Math Contest, Problem 18": [
+      1200,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the lazy caterer: 1 + 9 + C(9, 2)."
+    ],
+    "2005 Lehigh Math Contest, Problem 19": [
+      1200,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the nth group sums to n^3."
+    ],
+    "2005 Lehigh Math Contest, Problem 20": [
+      1100,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): replace x by x/3."
+    ],
+    "2005 Lehigh Math Contest, Problem 21": [
+      1300,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): each miscopy keeps one of the sum and the product."
+    ],
+    "2005 Lehigh Math Contest, Problem 22": [
+      1300,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the small circle's centre is the square's centre: radius sqrt 2 - 1."
+    ],
+    "2005 Lehigh Math Contest, Problem 23": [
+      1600,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the difference of the sides is a lower-degree polynomial; solve it."
+    ],
+    "2005 Lehigh Math Contest, Problem 24": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): area = (1/4) c^2 sin 2A gives sin 2A = 1/2."
+    ],
+    "2005 Lehigh Math Contest, Problem 25": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 100! has 24 trailing zeros, far fewer than 100^100."
+    ],
+    "2005 Lehigh Math Contest, Problem 26": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): acute means n^2 < 676 and 576 < 100 + n^2."
+    ],
+    "2005 Lehigh Math Contest, Problem 27": [
+      1700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): S - S/5 - S/25 isolates the first terms."
+    ],
+    "2005 Lehigh Math Contest, Problem 28": [
+      1700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): B = A - A/16."
+    ],
+    "2005 Lehigh Math Contest, Problem 29": [
+      1600,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): place the rectangle on axes and locate M."
+    ],
+    "2005 Lehigh Math Contest, Problem 30": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): unroll the cylinder: a straight line on the rectangle."
+    ],
+    "2005 Lehigh Math Contest, Problem 31": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): Stewart's theorem with AD = 1 and DB = 3."
+    ],
+    "2005 Lehigh Math Contest, Problem 32": [
+      1800,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): n! = (m! - 1)^2 - 1 = m!(m! - 2); compare sizes."
+    ],
+    "2005 Lehigh Math Contest, Problem 33": [
+      1700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the bisector's direction is the sum of unit vectors along the lines."
+    ],
+    "2005 Lehigh Math Contest, Problem 34": [
+      1600,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 4000 = 2^5 5^3: distribute exponents with stars and bars."
+    ],
+    "2005 Lehigh Math Contest, Problem 35": [
+      1900,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the circles fill pi/(2 sqrt 3) of the triangle in the limit."
+    ],
+    "2005 Lehigh Math Contest, Problem 36": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 579000 + abc divisible by 315."
+    ],
+    "2005 Lehigh Math Contest, Problem 37": [
+      1900,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): equal areas fix the distance from the 30-degree geometry."
+    ],
+    "2005 Lehigh Math Contest, Problem 38": [
+      2000,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): power of D along the line DE extended to F."
+    ],
+    "2005 Lehigh Math Contest, Problem 39": [
+      1800,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): m + n and n - m reversed: case on their digits."
+    ],
+    "2005 Lehigh Math Contest, Problem 40": [
+      1700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the two chords fix the radius and centre; the midway chord follows."
+    ],
+    "2004 Lehigh Math Contest, Problem 1": [
+      500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 5 is a fifth of 25."
+    ],
+    "2004 Lehigh Math Contest, Problem 2": [
+      700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): pair the terms: fifty pairs of -1."
+    ],
+    "2004 Lehigh Math Contest, Problem 3": [
+      900,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): net one foot a day until the last climb of 3."
+    ],
+    "2004 Lehigh Math Contest, Problem 4": [
+      900,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): count n with 2004 < n^2 < 4002: 45 to 63."
+    ],
+    "2004 Lehigh Math Contest, Problem 5": [
+      700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): evaluate inside out."
+    ],
+    "2004 Lehigh Math Contest, Problem 6": [
+      1000,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): areas scale as squared radii of 1/6, 2/6 and 1."
+    ],
+    "2004 Lehigh Math Contest, Problem 7": [
+      1000,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): split the polygon into rectangles and triangles."
+    ],
+    "2004 Lehigh Math Contest, Problem 8": [
+      900,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): factor 2^2000 from top and bottom: 18/7."
+    ],
+    "2004 Lehigh Math Contest, Problem 9": [
+      1100,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): between two diamonds: 2 * 2^2 - 2 * 1^2."
+    ],
+    "2004 Lehigh Math Contest, Problem 10": [
+      900,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): fill the Latin square from the given entries."
+    ],
+    "2004 Lehigh Math Contest, Problem 11": [
+      1000,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 96 - 72 = 24 is the rise times the class size."
+    ],
+    "2004 Lehigh Math Contest, Problem 12": [
+      1300,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): BCDE is an isosceles trapezoid; ABE a right isosceles triangle."
+    ],
+    "2004 Lehigh Math Contest, Problem 13": [
+      1100,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): with u = sqrt(x + 10): u^2 + 4u = 12."
+    ],
+    "2004 Lehigh Math Contest, Problem 14": [
+      1300,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): f = a(x - 1)^2 with f(3) = 3."
+    ],
+    "2004 Lehigh Math Contest, Problem 15": [
+      1400,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the string forms two right triangles with half-length hypotenuses."
+    ],
+    "2004 Lehigh Math Contest, Problem 16": [
+      1400,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the map has period 4."
+    ],
+    "2004 Lehigh Math Contest, Problem 17": [
+      1400,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): expand a(1 - b)^2 = b(1 - a)^2 and factor out a - b."
+    ],
+    "2004 Lehigh Math Contest, Problem 18": [
+      1400,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): chase the angles through the isosceles triangle and the bisector."
+    ],
+    "2004 Lehigh Math Contest, Problem 19": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): N = 10^18 - 1, so N^2 = 10^36 - 2 * 10^18 + 1."
+    ],
+    "2004 Lehigh Math Contest, Problem 20": [
+      1300,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the sum of reciprocals of pair products is (a + b + c)/(abc)."
+    ],
+    "2004 Lehigh Math Contest, Problem 21": [
+      1600,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): factor n(n^3 - 6n^2 - n + 6) = n(n - 1)(n + 1)(n - 6)."
+    ],
+    "2004 Lehigh Math Contest, Problem 22": [
+      900,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): sqrt(8^2 - 2^2)."
+    ],
+    "2004 Lehigh Math Contest, Problem 23": [
+      1800,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): a^3 - b^3 - c^3 - 3abc factors with a - b - c; then a^2 = 2a."
+    ],
+    "2004 Lehigh Math Contest, Problem 24": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 6q = (y - x)(y + x) with both squares."
+    ],
+    "2004 Lehigh Math Contest, Problem 25": [
+      1700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): count angles: interior vertices contribute 360 each, boundary ones 180."
+    ],
+    "2004 Lehigh Math Contest, Problem 26": [
+      1100,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 9000 less those with distinct digits."
+    ],
+    "2004 Lehigh Math Contest, Problem 27": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): factor pairs of 1001 = 7 * 11 * 13."
+    ],
+    "2004 Lehigh Math Contest, Problem 28": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): x^2 - 10x + 19 = 0: the difference of the roots."
+    ],
+    "2004 Lehigh Math Contest, Problem 29": [
+      1400,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 10a + b - ab = 12 factors."
+    ],
+    "2004 Lehigh Math Contest, Problem 30": [
+      1700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the small circle is tangent to the arc and two sides."
+    ],
+    "2004 Lehigh Math Contest, Problem 31": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 2^8 + 2^11 = 48^2, so 2^n = (k - 48)(k + 48) for two powers of 2 differing by 96."
+    ],
+    "2004 Lehigh Math Contest, Problem 32": [
+      1700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): 2^8 + 2^11 + 2^n = (2^4 + 2^n/2...)^2 style: 2^8(1 + 8) leaves n = 12."
+    ],
+    "2004 Lehigh Math Contest, Problem 33": [
+      1600,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): alternate the relation to step from 19 up to 94."
+    ],
+    "2004 Lehigh Math Contest, Problem 34": [
+      1600,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): cos theta = (1/2) sqrt(2 + sqrt 2) is cos 22.5."
+    ],
+    "2004 Lehigh Math Contest, Problem 35": [
+      1800,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the triangle's legs bound y; measure the allowed interval."
+    ],
+    "2004 Lehigh Math Contest, Problem 36": [
+      1300,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): a product of two geometric series."
+    ],
+    "2004 Lehigh Math Contest, Problem 37": [
+      1500,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): (x - 12)(y - 12) = 144 over all integer factor pairs."
+    ],
+    "2004 Lehigh Math Contest, Problem 38": [
+      2000,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): the product is ((n - 1)!)^2 times n(n + 1)/2, so that triangular number must be a square."
+    ],
+    "2004 Lehigh Math Contest, Problem 39": [
+      2200,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): square the fundamental solution: (649 + 180 sqrt 13)^2."
+    ],
+    "2004 Lehigh Math Contest, Problem 40": [
+      1700,
+      "Author estimate (Lehigh posted no solve counts for this year; placed on the collection’s scale by its route, the test running from an early AMC 10 problem to an early AIME one): Routh's theorem with ratios 1:2 gives 1/7."
     ]
   }
 }
