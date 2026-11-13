@@ -27,7 +27,10 @@
     "2014 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf",
     "2013 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2013/feb/alg/problems.pdf",
     "2013 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2013/feb/comb/problems.pdf",
-    "2013 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2013/feb/geo/problems.pdf"
+    "2013 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2013/feb/geo/problems.pdf",
+    "2012 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2012/feb/alg/problems.pdf",
+    "2012 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2012/feb/comb/problems.pdf",
+    "2012 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2012/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -1189,6 +1192,126 @@
     "2013 HMMT February Geometry, Problem 10": [
       3450,
       "Combine an angle-bisector chord, point reflections and an isosceles trapezoid to recover a length."
+    ],
+    "2012 HMMT February Algebra, Problem 1": [
+      1600,
+      "Count the equal linear pieces created by iterating a tent map and add their lengths."
+    ],
+    "2012 HMMT February Algebra, Problem 2": [
+      1800,
+      "Compare the marginal scores of two card colors, then maximize an integer product."
+    ],
+    "2012 HMMT February Algebra, Problem 3": [
+      2100,
+      "Invert a custom oriented equilateral-triangle operation twice."
+    ],
+    "2012 HMMT February Algebra, Problem 4": [
+      2450,
+      "Compare two power-chain path lengths to force unit modulus and recover a real part."
+    ],
+    "2012 HMMT February Algebra, Problem 5": [
+      2650,
+      "Bound a product of floors between two consecutive integers and check the remaining floor triples."
+    ],
+    "2012 HMMT February Algebra, Problem 6": [
+      2500,
+      "Track the sum and product of coupled radical recurrences instead of the terms."
+    ],
+    "2012 HMMT February Algebra, Problem 7": [
+      3150,
+      "Use rational powers and continuity to classify a commutative operation distributive over multiplication."
+    ],
+    "2012 HMMT February Algebra, Problem 8": [
+      3400,
+      "Encode a coupled recurrence by complex multiplication and reduce a Fibonacci exponent in two moduli."
+    ],
+    "2012 HMMT February Algebra, Problem 9": [
+      3700,
+      "Classify a repeated quartic root through tangent identities and check that parameter values give distinct coefficient triples."
+    ],
+    "2012 HMMT February Algebra, Problem 10": [
+      4000,
+      "Characterize which bivariate monomial supports admit a lower bound using convex-hull vertices and weighted AM-GM."
+    ],
+    "2012 HMMT February Combinatorics, Problem 1": [
+      1750,
+      "Reduce a Minesweeper board to three feasible mine-count patterns and count placements."
+    ],
+    "2012 HMMT February Combinatorics, Problem 2": [
+      1850,
+      "Pair opposite dice outcomes so the only correction is the tie probability."
+    ],
+    "2012 HMMT February Combinatorics, Problem 3": [
+      1600,
+      "Count adjacent brick selections through a layered path recurrence."
+    ],
+    "2012 HMMT February Combinatorics, Problem 4": [
+      1900,
+      "Collapse forced pairs of lattice steps to remove the parity obstacles."
+    ],
+    "2012 HMMT February Combinatorics, Problem 5": [
+      3000,
+      "Recognize a self-avoiding one-way-turn path as a spiral and count its ordered supporting lines."
+    ],
+    "2012 HMMT February Combinatorics, Problem 6": [
+      3000,
+      "Relate unrestricted sorting swaps to cycle counts and sum over all marked cycles."
+    ],
+    "2012 HMMT February Combinatorics, Problem 7": [
+      3550,
+      "Account for every overlap of a long alternating target word when evaluating its first-occurrence wait."
+    ],
+    "2012 HMMT February Combinatorics, Problem 8": [
+      3350,
+      "Decompose a two-per-row-and-column board into cycle components and derive a size recurrence."
+    ],
+    "2012 HMMT February Combinatorics, Problem 9": [
+      3550,
+      "Identify the only initial parking choice that leaves an endpoint last and count the final tied gaps recursively."
+    ],
+    "2012 HMMT February Combinatorics, Problem 10": [
+      3650,
+      "Reduce random fractional transformations to a six-cycle walk, treating the exceptional shorter orbits."
+    ],
+    "2012 HMMT February Geometry, Problem 1": [
+      1550,
+      "Use an area ratio to locate a point in an isosceles right triangle before computing a length."
+    ],
+    "2012 HMMT February Geometry, Problem 2": [
+      1850,
+      "Compare two right-triangle similarities along an altitude line and subtract their lengths."
+    ],
+    "2012 HMMT February Geometry, Problem 3": [
+      2550,
+      "Combine the incenter bisectors with two equal-radius conditions and a perpendicular bisector."
+    ],
+    "2012 HMMT February Geometry, Problem 4": [
+      2450,
+      "Use a tangent-secant product and one circle-angle similarity."
+    ],
+    "2012 HMMT February Geometry, Problem 5": [
+      3500,
+      "Track the invariant center-to-chord distance in circular billiards and examine which annular region can be illuminated."
+    ],
+    "2012 HMMT February Geometry, Problem 6": [
+      3150,
+      "Sum the alternating perpendicular path as two projections and maximize a right-triangle leg sum."
+    ],
+    "2012 HMMT February Geometry, Problem 7": [
+      3900,
+      "Characterize nearest-vertex projections onto a high-dimensional cross-polytope and compare facet volumes."
+    ],
+    "2012 HMMT February Geometry, Problem 8": [
+      3350,
+      "Use tangential-hexagon concurrence and cyclic similarities to recover two missing sides."
+    ],
+    "2012 HMMT February Geometry, Problem 9": [
+      3600,
+      "Fix four spiral-similarity angles, bound the radial factors, and verify simultaneous attainment."
+    ],
+    "2012 HMMT February Geometry, Problem 10": [
+      3900,
+      "Bound every second term of a moving-circumcenter sequence and construct every extremal endpoint."
     ]
   }
 }
