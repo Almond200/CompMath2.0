@@ -20,6 +20,8 @@ The ten 2019 HMMT February Geometry problems and fifty 2026 AMC 10A/12A problems
 
 **HMMT November (2026-11-13).** The General and Theme rounds are rated by the same form with constants of their own, $1330 + 230\ln\frac{n-s+1/2}{s+1/2}$, fitted once to 40 author estimates of the 2011 and 2012 problems (correlation 0.97). With February's slope kept and only the intercept refitted the error was half as large again (148 against 99 rating points), so both constants are November's own: its room is weaker and more spread out, and a given share of solvers means an easier problem than in February. An unsolved November problem rates about 2950 against 4100 for February. November 2013 (total scores only), 2020 (no extended results) and the newest tournament before its results appear have author estimates.
 
+**ARML Individual (2026-11-13).** ARML publishes no per-problem solve counts, so all 100 problems (2009 to 2014, 2016 to 2019) carry author estimates, each with a one-line reason. The anchor is ARML's own stated aim, that 80 to 90% of its students solve I-1 and fewer than 5% solve I-10, with five minutes a problem and no calculator. On the collection's scale that puts I-1 near an AMC 12 #5 to #10 (1250 to 1700) and I-10 near an AIME #10 to #13 (2700 to 3050). Problems come in pairs, an easier one with a harder one, so a late odd-numbered problem can be easy (2009 I-9 is rated 1750): each is placed by its own route, not by its number. ARML's papers are compared only with ARML's.
+
 ## Selection
 
 `js/problem-difficulty.js` supplies the shared rating lookup, five-level selection and uniform draw.

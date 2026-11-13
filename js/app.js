@@ -2917,7 +2917,7 @@
   // (owner, 2026-10-31): the contest's level plus the place in its paper. The offsets say roughly
   // where each contest starts against the others (an early AIME problem is about as hard as a
   // late AMC 12 one); they order a list, they are not a rating.
-  const FAM_LEVEL = { "AMC 8": 0, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
+  const FAM_LEVEL = { "AMC 8": 0, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "ARML": 1.8, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
   function difficultyScore(p) { return (FAM_LEVEL[p.fam] != null ? FAM_LEVEL[p.fam] : 2) + paperPos(p); }
   // Contest profile (rebuilt 2026-11-11, now that every problem has a rating and a place in the
   // topic tree): a strip of headline figures, then label-and-value rows. Everything is computed
@@ -3156,7 +3156,8 @@
   const ARCHIVE_URL = {
     "HMMT February": "https://www.hmmt.org/www/archive/problems",
     "HMMT November": "https://www.hmmt.org/www/archive/problems",
-    "HMMT": "https://www.hmmt.org/www/archive/problems"
+    "HMMT": "https://www.hmmt.org/www/archive/problems",
+    "ARML": "https://www.arml.com/ARML/arml_2019/page/index.php?page_type=public&page=4"
   };
   // The button has to say where it goes: an HMMT link lands on a round's archive, not on a
   // per-problem page, and calling that "AoPS" would be simply false.
@@ -3168,6 +3169,23 @@
     const m = ref.match(/^(\d{4}) HMMT (February|November) (.+?),\s*Problem\s+\d+$/);
     return m && HMMT_CODE[m[3]] ? `https://hmmt-archive.s3.amazonaws.com/tournaments/${m[1]}/${m[2].slice(0, 3).toLowerCase()}/${HMMT_CODE[m[3]]}/${which}.pdf` : null;
   }
+  // ARML publishes whole contests, not rounds: the 2009 to 2014 contests as one book, and
+  // 2016 to 2019 as one booklet a year. A link opens the booklet at the Individual round's
+  // problems or solutions (the PDF page, checked against the files on 2026-11-13).
+  const ARML_FILES = "https://www.arml.com/ARML/arml_2019/public_contest_files/";
+  const ARML_BOOK = "2009_2014_book/ARML_2009_2014.pdf";
+  const ARML_PAGES = {
+    2009: [ARML_BOOK, 39, 41], 2010: [ARML_BOOK, 79, 81], 2011: [ARML_BOOK, 129, 131], 2012: [ARML_BOOK, 174, 176],
+    2013: [ARML_BOOK, 219, 221], 2014: [ARML_BOOK, 255, 258],
+    2016: ["2016_contest_file/2016_Contest_Final_Version.pdf", 18, 20], 2017: ["2017_contest_file/2017_Contest_Final_Version.pdf", 20, 22],
+    2018: ["2018_contest_file/2018_Contest_Final_Version.pdf", 20, 22], 2019: ["2019_contest_file/2019_Contest_Final_Version.pdf", 19, 21]
+  };
+  function armlPdf(ref, which) {
+    const m = ref.match(/^(\d{4}) ARML Individual,\s*Problem\s+\d+$/), f = m && ARML_PAGES[m[1]];
+    return f ? `${ARML_FILES}${f[0]}#page=${which === "solutions" ? f[2] : f[1]}` : null;
+  }
+  // The official paper or solutions as a PDF, for the contests that publish them.
+  const officialPdf = (ref, which) => hmmtPdf(ref, which) || armlPdf(ref, which);
   function aopsUrl(ref, fam) {
     if (fam && ARCHIVE_URL[fam]) return ARCHIVE_URL[fam];
     const m = ref.match(/^(.*),\s*Problem\s+(\d+)\s*$/);
@@ -3209,6 +3227,7 @@
     else if (/AHSME/i.test(core)) fam = "AMC 12";           // the AMC 12's name until 1999 (owner, 2026-11-13)
     else if ((fm = core.match(/AMC\s*(8|10|12)/i))) fam = "AMC " + fm[1];
     else if (/Putnam/i.test(core)) fam = "Putnam";
+    else if (/^ARML\b/i.test(core)) fam = "ARML";            // the Individual round only (owner, 2026-11-13)
     // HMMT runs two tournaments a year of quite different difficulty, so they are separate
     // families rather than one pile. The round (Algebra, Combinatorics, Guts, Team) stays in
     // `cname`, which dbMainHtml already uses as the heading within a year.
@@ -3270,11 +3289,11 @@
     const pr = parseRef(e.ref), slug = problemSlug(e.ref), rating = problemDifficulty.ratingFor(slug);
     return {
       ref: e.ref, slug, tree: e.tree || [], elo: rating ? rating.elo : null, eloSource: rating ? rating.source : null,
-      url: e.url || hmmtPdf(e.ref, "problems") || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
+      url: e.url || officialPdf(e.ref, "problems") || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
       // Where the official solution is, for a problem whose solution we link instead of write.
       // An AHSME problem has no solution of ours either (owner, 2026-11-13): its AoPS wiki page has them.
-      solUrl: hmmtPdf(e.ref, "solutions") || (!e.strategy ? aopsUrl(e.ref, pr.fam) : null),
-      solAops: !hmmtPdf(e.ref, "solutions") && !e.strategy && !!aopsUrl(e.ref, pr.fam),
+      solUrl: officialPdf(e.ref, "solutions") || (!e.strategy ? aopsUrl(e.ref, pr.fam) : null),
+      solAops: !officialPdf(e.ref, "solutions") && !e.strategy && !!aopsUrl(e.ref, pr.fam),
       formulas, trickFormulas, types: problemTypes(e), subjects: problemSubjects(e, formulas, pr.cname), strategy: e.strategy || "",
       trick: e.trick || "",
       // Hints we write (revealed one at a time before the strategy) and the card that is the
@@ -3334,7 +3353,7 @@
   // Competition → year → problems tree for the Database sidebar navigator.
   const DB_TREE = {};
   PROBLEM_DB.forEach(p => { (DB_TREE[p.fam] = DB_TREE[p.fam] || {}); (DB_TREE[p.fam][p.year] = DB_TREE[p.fam][p.year] || []).push(p); });
-  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "Putnam", "HMMT"];
+  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "ARML", "Putnam", "HMMT"];
   const FAMILIES = Object.keys(DB_TREE).sort((a, b) => {
     const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
@@ -4601,6 +4620,7 @@
               <p>AMC, AJHSME, AHSME and AIME problems are &copy; Mathematical Association of America, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. This credit applies to their statements and figures throughout the app, including textbooks, previews and practice sets.</p>
               <p>Most text, figures and answer keys come from <a href="https://live.poshenloh.com/past-contests" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>. Some papers also use MAA PDF copies, the <a href="https://wiki.randommath.com/" target="_blank" rel="noopener noreferrer">Random Math wiki</a> and the <a href="https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>, and some answer keys were checked against those published by <a href="https://www.thethinkacademy.com/" target="_blank" rel="noopener noreferrer">Think Academy</a>. Statements have been reformatted for display, including LaTeX and figure layout.</p>
               <p>Problems from the individual rounds of <a href="https://www.hmmt.org/www/archive/problems" target="_blank" rel="noopener noreferrer">HMMT February</a> (Algebra and Number Theory, Combinatorics, Geometry) and HMMT November (General, Theme) are listed by topic and difficulty. Their statements and solutions are not reproduced: each problem's page opens the round's official paper and its official solutions on the HMMT archive. Mock contests also use author-restated prompts from the <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf" target="_blank" rel="noopener noreferrer">2019 HMMT February Geometry paper</a>, with answer values checked against its <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/solutions.pdf" target="_blank" rel="noopener noreferrer">official solutions</a>. HMMT material is attributed separately; the MAA license above does not apply to it.</p>
+              <p>Problems from the Individual round of <a href="https://www.arml.com/ARML/arml_2019/page/index.php?page_type=public&amp;page=4" target="_blank" rel="noopener noreferrer">ARML</a> (2009 to 2014 and 2016 to 2019, the years ARML has published) are listed the same way: their statements and solutions are not reproduced, and each problem's page opens ARML's official contest booklet at the round. ARML problems are &copy; American Regions Mathematics League; the MAA license above does not apply to them.</p>
             </div>
           </div></div>
         </section>
@@ -9414,7 +9434,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   // Difficulty: Elo ratings in bins of 200. Each contest has its own colour (the level tokens),
   // so one chart can stack every contest and still show which is which.
-  const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)", "HMMT November": "var(--level-hmmtn)" };
+  const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)", "HMMT November": "var(--level-hmmtn)", "ARML": "var(--level-arml)" };
   const famColor = f => FAM_COLOR[f] || "var(--level-oly)";
   const RATED_FAMS = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && Number.isFinite(p.elo)));
   // The scale ends at 3800 unless a problem is rated above that (owner, 2026-11-12: harder
@@ -9674,7 +9694,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return `<div class="chain-duo">${chainSec("Topic", topicTreeHtml(p))}${chainSec("Difficulty", difficultyHtml(p))}</div>
         ${chainSec("Brief solution", `${ownFigureHtml(p)}${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>`
           // No solution of our own for these (owner, 2026-11-12): the contest's official one is a click away.
-          : p.solUrl ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">${p.solAops ? "Open the solutions on AoPS" : "Open the official solution"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">${p.solAops ? "The Art of Problem Solving wiki's page for this problem, with its solutions." : `The round's official solutions, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.`}</span></p>` : ""}
+          : p.solUrl ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">${p.solAops ? "Open the solutions on AoPS" : "Open the official solution"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">${p.solAops ? "The Art of Problem Solving wiki's page for this problem, with its solutions." : (p.fam === "ARML" ? `The contest's official booklet, open at the Individual round's solutions${p.num ? `; this is problem I-${p.num}` : ""}.` : `The round's official solutions, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.`)}</span></p>` : ""}
         ${p.trick ? `<p class="chain-strategy chain-alt">${p.trick}</p>` : ""}
         <div class="chain-grid">
           ${chainCol("Pattern", chain.pattern, "Not classified yet")}
@@ -9790,7 +9810,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <div class="prob-statement"></div>
 
         </section>` : ""}
-        <p class="prob-note">${p.urlLabel === "archive" ? `The statement is in the round's official paper, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.` : "Solutions live on the Art of Problem Solving wiki."}</p>
+        <p class="prob-note">${p.urlLabel === "archive" ? (p.fam === "ARML" ? `The statement is in the contest's official booklet, open at the Individual round${p.num ? `; this is problem I-${p.num}` : ""}.` : `The statement is in the round's official paper, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.`) : "Solutions live on the Art of Problem Solving wiki."}</p>
         ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.urlLabel === "archive" ? "Open the official paper" : "Open on AoPS"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
         ${chainHtml}
         ${SOLUTION_YEARS.has(String(p.year)) ? `<section class="prob-chain prob-solution${pv ? " pv-sol" : ""}"${pv ? "" : ` id="prob-sol"`} data-slug="${p.slug}" hidden>
@@ -10208,7 +10228,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const sitting = p.ref.replace(/,?\s*Problem.*$/, "").trim();
       const base = sitting.replace(/\b(19|20)\d\d\b/, "").replace(/\s+/g, " ").trim();
       bump(sitting); bump(base);
-      const m = base.match(/^(Fall )?(AMC 1[02]|AIME|HMMT February|HMMT November|HMMT)/);
+      const m = base.match(/^(Fall )?(AMC 1[02]|AIME|HMMT February|HMMT November|HMMT|ARML)/);
       if (m && m[2] !== base) bump(m[2]);
       if (/^HMMT (February|November)/.test(base) && base !== "HMMT") bump("HMMT");
     });

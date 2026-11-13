@@ -2405,3 +2405,12 @@ Codex added the 2018 to 2004 rounds and the 2011 two-subject papers (PRs #328 to
 **HMMT November (2011 to 2026), Claude's lane:** no source error was noticed while filing. The estimated years were checked against the rated ones (see CHANGELOG, 2026-11-13).
 
 **Counting.** The 2011 papers have 60 references for 27 distinct questions (each subject pair is a separate paper with permuted numbering), and the 2004 committee question repeats one from 2007, so paper references, not distinct questions, are the unit of progress. **Decided (owner, 2026-11-13):** the calculus questions in the 2011 two-subject papers stay, although the separate Calculus papers are not added.
+
+## ARML Individual
+
+### Sources and coverage (recorded 2026-11-13)
+
+ARML's public pages (`www.arml.com/ARML/arml_2019/page/index.php?page_type=public&page=4`) link two contest files: the 2009–2014 book (contests, Power and Local) and the 2019 booklet. The 2016, 2017 and 2018 booklets are on the same server under the same naming (`public_contest_files/<year>_contest_file/<year>_Contest_Final_Version.pdf`) though not linked; 2015 and 2020 on are not there under any name tried, and the site's book page mentions a 2015–2020 book that is not public. The earlier contests (1976 to 2008) are only in printed books. So the coverage is 2009 to 2014 and 2016 to 2019, 100 problems. ARML's notice on each page allows reproduction for non-commercial educational use and forbids posting entire contests; the app reproduces no statement or solution, only links the official file, opened at the round (`#page=`), the PDF pages checked by hand.
+
+**Filing.** Each problem was read with its official solution (and alternate solutions) before filing. No new node or card was needed. Judgement calls: 2018 I-1 is factoring by grouping, which is the first identity on the SFFT card (`sfft`), so it cites that card; 2014 I-9 cites Lucas's Theorem, the official alternate route (the main route compares 7-adic valuations of a binomial ratio); 2017 I-10, a rhombus on the graph of $\lfloor x\rfloor - \{x\}$, cites only Floor Basics, since the rest is slope reasoning with no card. No source error was noticed.
+
