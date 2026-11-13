@@ -2917,7 +2917,7 @@
   // (owner, 2026-10-31): the contest's level plus the place in its paper. The offsets say roughly
   // where each contest starts against the others (an early AIME problem is about as hard as a
   // late AMC 12 one); they order a list, they are not a rating.
-  const FAM_LEVEL = { "AMC 8": 0, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "ARML": 1.8, "ARML Local": 1.2, "SMT": 1.9, "Duke Math Meet": 1.5, "UMD HSMC": 1.0, "CMIMC": 2.0, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
+  const FAM_LEVEL = { "AMC 8": 0, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "ARML": 1.8, "ARML Local": 1.2, "SMT": 1.9, "Duke Math Meet": 1.5, "UMD HSMC": 1.0, "CMIMC": 2.0, "Math Prize for Girls": 1.4, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
   function difficultyScore(p) { return (FAM_LEVEL[p.fam] != null ? FAM_LEVEL[p.fam] : 2) + paperPos(p); }
   // Contest profile (rebuilt 2026-11-11, now that every problem has a rating and a place in the
   // topic tree): a strip of headline figures, then label-and-value rows. Everything is computed
@@ -3162,7 +3162,8 @@
     "SMT": "https://www.stanfordmathtournament.com/past-tests/problems",
     "Duke Math Meet": "https://math.duke.edu/duke-math-meet",
     "UMD HSMC": "https://mathcomp.math.umd.edu/past-contests/",
-    "CMIMC": "https://cmimc.math.cmu.edu/math/past-problems"
+    "CMIMC": "https://cmimc.math.cmu.edu/math/past-problems",
+    "Math Prize for Girls": "https://mathprize.atfoundation.org/resources"
   };
   // The button has to say where it goes: an HMMT link lands on a round's archive, not on a
   // per-problem page, and calling that "AoPS" would be simply false.
@@ -3272,8 +3273,17 @@
     else stem = y >= 2019 && m[2] === "Geometry" ? "GEO" : CMIMC_CODE[m[2]];
     return stem ? `https://cmimc.math.cmu.edu/archive/cmimc${y}/${y}_${stem}${which === "solutions" ? "_S" : ""}.pdf` : null;
   }
+  // Math Prize for Girls: the Advantage Testing Foundation posts each year's 20-question test and
+  // its solutions at mathprize.atfoundation.org/resources/past-tests/<year>/ (the 2009 files are
+  // capitalized; 2026's solutions are not posted yet). There was no contest in 2020.
+  function mathPrizePdf(ref, which) {
+    const m = ref.match(/^(\d{4}) Math Prize for Girls,\s*Problem\s+\d+$/);
+    if (!m || (which === "solutions" && m[1] === "2026")) return null;
+    const y = m[1], stem = y === "2009" ? "MathPrize" : "mathprize";
+    return `https://mathprize.atfoundation.org/resources/past-tests/${y}/${stem}${y}${which === "solutions" ? "solutions" : "problems"}.pdf`;
+  }
   // The official paper or solutions as a PDF, for the contests that publish them.
-  const officialPdf = (ref, which) => hmmtPdf(ref, which) || armlPdf(ref, which) || smtPdf(ref, which) || dmmPdf(ref, which) || umdPdf(ref, which) || cmimcPdf(ref, which);
+  const officialPdf = (ref, which) => hmmtPdf(ref, which) || armlPdf(ref, which) || smtPdf(ref, which) || dmmPdf(ref, which) || umdPdf(ref, which) || cmimcPdf(ref, which) || mathPrizePdf(ref, which);
   function aopsUrl(ref, fam) {
     if (fam && ARCHIVE_URL[fam]) return ARCHIVE_URL[fam];
     const m = ref.match(/^(.*),\s*Problem\s+(\d+)\s*$/);
@@ -3317,10 +3327,11 @@
     else if (/Putnam/i.test(core)) fam = "Putnam";
     else if (/^ARML Local\b/i.test(core)) fam = "ARML Local";  // ARML's local contest, Individual round (owner, 2026-11-13)
     else if (/^ARML\b/i.test(core)) fam = "ARML";            // the Individual round only (owner, 2026-11-13)
-    else if (/^SMT\b/i.test(core)) fam = "SMT";
-    else if (/^Duke Math Meet\b/i.test(core)) fam = "Duke Math Meet";
-    else if (/^UMD HSMC\b/i.test(core)) fam = "UMD HSMC";
-    else if (/^CMIMC\b/i.test(core)) fam = "CMIMC";                    // the individual subject tests (owner, 2026-11-13)              // Part I only (owner, 2026-11-13)  // the Individual round (owner, 2026-11-13)              // the subject tests (owner, 2026-11-13); the round stays in cname
+    else if (/^SMT\b/i.test(core)) fam = "SMT";                        // the subject tests (owner, 2026-11-13); the round stays in cname
+    else if (/^Duke Math Meet\b/i.test(core)) fam = "Duke Math Meet";  // the Individual round (owner, 2026-11-13)
+    else if (/^UMD HSMC\b/i.test(core)) fam = "UMD HSMC";              // Part I only (owner, 2026-11-13)
+    else if (/^CMIMC\b/i.test(core)) fam = "CMIMC";                    // the individual subject tests (owner, 2026-11-13)
+    else if (/^Math Prize for Girls\b/i.test(core)) fam = "Math Prize for Girls";  // the 20-question test (owner, 2026-11-13)
     // HMMT runs two tournaments a year of quite different difficulty, so they are separate
     // families rather than one pile. The round (Algebra, Combinatorics, Guts, Team) stays in
     // `cname`, which dbMainHtml already uses as the heading within a year.
@@ -3446,7 +3457,7 @@
   // Competition → year → problems tree for the Database sidebar navigator.
   const DB_TREE = {};
   PROBLEM_DB.forEach(p => { (DB_TREE[p.fam] = DB_TREE[p.fam] || {}); (DB_TREE[p.fam][p.year] = DB_TREE[p.fam][p.year] || []).push(p); });
-  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "ARML", "ARML Local", "SMT", "Duke Math Meet", "UMD HSMC", "CMIMC", "Putnam", "HMMT"];
+  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "ARML", "ARML Local", "SMT", "Duke Math Meet", "UMD HSMC", "CMIMC", "Math Prize for Girls", "Putnam", "HMMT"];
   const FAMILIES = Object.keys(DB_TREE).sort((a, b) => {
     const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
@@ -4717,6 +4728,7 @@
               <p>Problems from the subject tests of the <a href="https://www.stanfordmathtournament.com/past-tests/problems" target="_blank" rel="noopener noreferrer">Stanford Math Tournament</a> (SMT: Algebra, Geometry, and Advanced, Discrete or in 2021 Combinatorics and Number Theory) are listed the same way: each problem's page opens SMT's official test and its official solutions; nothing is reproduced. SMT material is attributed to SMT; the MAA license above does not apply to it.</p>
               <p>Problems from Part I (the multiple-choice individual test) of the <a href="https://mathcomp.math.umd.edu/past-contests/" target="_blank" rel="noopener noreferrer">University of Maryland High School Mathematics Competition</a> (UMD HSMC) are listed the same way: each problem's page opens the year's official paper and solutions; nothing is reproduced. That material is attributed to the competition; the MAA license above does not apply to it.</p>
               <p>Problems from the individual subject tests of the <a href="https://cmimc.math.cmu.edu/math/past-problems" target="_blank" rel="noopener noreferrer">Carnegie Mellon Informatics and Mathematics Competition</a> (CMIMC, 2016 to 2022) are listed the same way: each problem's page opens CMIMC's official test and solutions; nothing is reproduced. CMIMC material is attributed to CMIMC; the MAA license above does not apply to it.</p>
+              <p>Problems from the 20-question test of <a href="https://mathprize.atfoundation.org/resources" target="_blank" rel="noopener noreferrer">Math Prize for Girls</a> (2009 to 2026; there was no contest in 2020) are listed the same way: each problem's page opens the Advantage Testing Foundation's official test and, where posted, its solutions; nothing is reproduced. That material is attributed to the Advantage Testing Foundation; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual round of the <a href="https://math.duke.edu/duke-math-meet" target="_blank" rel="noopener noreferrer">Duke Math Meet</a> (2007 to 2022) are listed the same way: each problem's page opens the round as Duke's mathematics department posts it, and its solutions where they were posted; nothing is reproduced. Duke Math Meet material is attributed to the Duke Math Meet; the MAA license above does not apply to it.</p>
             </div>
           </div></div>
@@ -9536,7 +9548,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   // Difficulty: Elo ratings in bins of 200. Each contest has its own colour (the level tokens),
   // so one chart can stack every contest and still show which is which.
-  const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)", "HMMT November": "var(--level-hmmtn)", "ARML": "var(--level-arml)", "ARML Local": "var(--level-arml-local)", "SMT": "var(--level-smt)", "Duke Math Meet": "var(--level-dmm)", "UMD HSMC": "var(--level-umd)", "CMIMC": "var(--level-cmimc)" };
+  const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)", "HMMT November": "var(--level-hmmtn)", "ARML": "var(--level-arml)", "ARML Local": "var(--level-arml-local)", "SMT": "var(--level-smt)", "Duke Math Meet": "var(--level-dmm)", "UMD HSMC": "var(--level-umd)", "CMIMC": "var(--level-cmimc)", "Math Prize for Girls": "var(--level-mpfg)" };
   const famColor = f => FAM_COLOR[f] || "var(--level-oly)";
   const RATED_FAMS = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && Number.isFinite(p.elo)));
   // The scale ends at 3800 unless a problem is rated above that (owner, 2026-11-12: harder
@@ -10330,7 +10342,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const sitting = p.ref.replace(/,?\s*Problem.*$/, "").trim();
       const base = sitting.replace(/\b(19|20)\d\d\b/, "").replace(/\s+/g, " ").trim();
       bump(sitting); bump(base);
-      const m = base.match(/^(Fall )?(AMC 1[02]|AIME|HMMT February|HMMT November|HMMT|ARML Local|ARML|SMT|Duke Math Meet|UMD HSMC|CMIMC)/);
+      const m = base.match(/^(Fall )?(AMC 1[02]|AIME|HMMT February|HMMT November|HMMT|ARML Local|ARML|SMT|Duke Math Meet|UMD HSMC|CMIMC|Math Prize for Girls)/);
       if (m && m[2] !== base) bump(m[2]);
       if (/^HMMT (February|November)/.test(base) && base !== "HMMT") bump("HMMT");
     });

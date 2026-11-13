@@ -31,6 +31,7 @@ html[data-text="larger"] { --tx: 1.3; }
   --level-dmm: #5f8fd6;
   --level-umd: #d0a04a;
   --level-cmimc: #b06fd0;
+  --level-mpfg: #d07a9e;
   --radius: 12px;
   --ui-shadow: 0 4px 16px rgba(0, 0, 0, 0.32);
   --ui-shadow-color: rgba(0, 0, 0, 0.32);
@@ -72,6 +73,7 @@ html[data-text="larger"] { --tx: 1.3; }
   --level-dmm: #1f4f9a;
   --level-umd: #8a5e12;
   --level-cmimc: #7a2fa0;
+  --level-mpfg: #a3365f;
 }
 
 /* A few elements hardcode a dark translucent fill; re-tint them for light mode. */

@@ -13527,6 +13527,966 @@
     "2021 CMIMC Geometry Division 2, Problem 8": [
       2600,
       "Author estimate: the same problem as 2021 CMIMC Geometry Division 1, Problem 4; its rating is carried over."
+    ],
+    "2009 Math Prize for Girls, Problem 1": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): count divisor pairs of each product 1 to 35, then the four sign choices."
+    ],
+    "2009 Math Prize for Girls, Problem 2": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): a polynomial identity, so evaluate where x + 2 = 1."
+    ],
+    "2009 Math Prize for Girls, Problem 3": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): fit G_n = aG_(n-1) + bG_(n-2) to the first terms."
+    ],
+    "2009 Math Prize for Girls, Problem 4": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 25 divides c, then pick the solution nearest ratio 1."
+    ],
+    "2009 Math Prize for Girls, Problem 5": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the centres' segment through the tangency point gives a right triangle."
+    ],
+    "2009 Math Prize for Girls, Problem 6": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): any roll leaves the die uniform; only all tails keeps the 1."
+    ],
+    "2009 Math Prize for Girls, Problem 7": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): a fourth difference of a quartic in steps of 2 is constant."
+    ],
+    "2009 Math Prize for Girls, Problem 8": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the farthest point lies on the line through the centre."
+    ],
+    "2009 Math Prize for Girls, Problem 9": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): a radius-1 circle through two grid points, sorted by the pair's distance."
+    ],
+    "2009 Math Prize for Girls, Problem 10": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the conjugate binomial expansions leave only alternate terms, reduced mod 9."
+    ],
+    "2009 Math Prize for Girls, Problem 11": [
+      1800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): centre the sequence at its mean 50 and bound the common difference."
+    ],
+    "2009 Math Prize for Girls, Problem 12": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): linearity over each penny's chance of ending heads."
+    ],
+    "2009 Math Prize for Girls, Problem 13": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): rotate by 60 degrees about the midpoint D."
+    ],
+    "2009 Math Prize for Girls, Problem 14": [
+      2100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): each root gives 1/(1 - r); sum them from the reversed cubic."
+    ],
+    "2009 Math Prize for Girls, Problem 15": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): x log x = y log y, written so a second solution shows."
+    ],
+    "2009 Math Prize for Girls, Problem 16": [
+      2400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): each doubling keeps the angle in the nonpositive arcs."
+    ],
+    "2009 Math Prize for Girls, Problem 17": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): (a - 13)x equals the common sum ax + by + cz."
+    ],
+    "2009 Math Prize for Girls, Problem 18": [
+      1800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 21! is divisible by 7, 11, 13 and 9: alternating blocks and digit sums."
+    ],
+    "2009 Math Prize for Girls, Problem 19": [
+      2700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the farthest points confine S to the intersection of two discs."
+    ],
+    "2009 Math Prize for Girls, Problem 20": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): expectation is linear, so interpolate the mean values."
+    ],
+    "2010 Math Prize for Girls, Problem 1": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): collapse the nested fractions, then use |a| = 6|b|."
+    ],
+    "2010 Math Prize for Girls, Problem 2": [
+      1200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): chance of bag X given a red marble."
+    ],
+    "2010 Math Prize for Girls, Problem 3": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 34 is 25 + 9 + 0 or 16 + 9 + 9; count orders and signs."
+    ],
+    "2010 Math Prize for Girls, Problem 4": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the median depends on where x falls; three cases."
+    ],
+    "2010 Math Prize for Girls, Problem 5": [
+      1200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): test 10, 11, 12 in turn."
+    ],
+    "2010 Math Prize for Girls, Problem 6": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): drop two altitudes and solve for the common height."
+    ],
+    "2010 Math Prize for Girls, Problem 7": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): check y = -1, 0, 1 row by row."
+    ],
+    "2010 Math Prize for Girls, Problem 8": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): compare the five exponent patterns for 16 divisors."
+    ],
+    "2010 Math Prize for Girls, Problem 9": [
+      1800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): cover the ten tests by blocks of four, then build the extreme case."
+    ],
+    "2010 Math Prize for Girls, Problem 10": [
+      1200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): A = M_AB + M_AC - M_BC."
+    ],
+    "2010 Math Prize for Girls, Problem 11": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the largest circle is the inscribed one, radius from the 30-60-90 triangle."
+    ],
+    "2010 Math Prize for Girls, Problem 12": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): fix b; split on which gap equals 4."
+    ],
+    "2010 Math Prize for Girls, Problem 13": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): from k = 67 on, k!/2010 is an even integer; earlier terms pair off."
+    ],
+    "2010 Math Prize for Girls, Problem 14": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the centres form an equilateral triangle; R = r(1 + 2/sqrt 3)."
+    ],
+    "2010 Math Prize for Girls, Problem 15": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): complementary angles have reciprocal tangents, so the pair sums to 1."
+    ],
+    "2010 Math Prize for Girls, Problem 16": [
+      2100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): multiplying by (1 - x) takes differences; a quadratic dies after three."
+    ],
+    "2010 Math Prize for Girls, Problem 17": [
+      2100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): substitute y = e^(-W) and use W e^W = x."
+    ],
+    "2010 Math Prize for Girls, Problem 18": [
+      2100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 8 + 8 cos t = 16 cos^2(t/2), unwinding from the inside."
+    ],
+    "2010 Math Prize for Girls, Problem 19": [
+      2700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): square the shoelace expression and use independence term by term."
+    ],
+    "2010 Math Prize for Girls, Problem 20": [
+      2600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 1/(1 - z) = (1 + z + ... + z^6)/2, then take squared magnitudes."
+    ],
+    "2011 Math Prize for Girls, Problem 1": [
+      1100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): step along the solutions (m + 4, n - 3) from (0, 25)."
+    ],
+    "2011 Math Prize for Girls, Problem 2": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): square the target form and match rational and irrational parts."
+    ],
+    "2011 Math Prize for Girls, Problem 3": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the two small semicircles equal the big one, leaving the triangle."
+    ],
+    "2011 Math Prize for Girls, Problem 4": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): write both terms as 10 to the same product."
+    ],
+    "2011 Math Prize for Girls, Problem 5": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): inradius 1 and tangent lengths 1, 2, 3 give each distance."
+    ],
+    "2011 Math Prize for Girls, Problem 6": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): tangent circles placed along the diagonal."
+    ],
+    "2011 Math Prize for Girls, Problem 7": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): z + 1/z = 2 cos(pi/6), so z = cis(pi/6)."
+    ],
+    "2011 Math Prize for Girls, Problem 8": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): a radius-8 sector plus radius-2 sectors around the barrier's ends."
+    ],
+    "2011 Math Prize for Girls, Problem 9": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): weights through the chain of midpoints."
+    ],
+    "2011 Math Prize for Girls, Problem 10": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): take tangents of both sides; match a + b and ab."
+    ],
+    "2011 Math Prize for Girls, Problem 11": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the characteristic roots are 1 and two primitive sixth roots of unity, so the sequence is a constant plus a period-6 part."
+    ],
+    "2011 Math Prize for Girls, Problem 12": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): S moves the leading digit to the end."
+    ],
+    "2011 Math Prize for Girls, Problem 13": [
+      1900,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 101^4 + 4 * 2^4 factors as a Sophie Germain sum."
+    ],
+    "2011 Math Prize for Girls, Problem 14": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): F is linear in q, so G is the larger endpoint value; minimize where they cross."
+    ],
+    "2011 Math Prize for Girls, Problem 15": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the condition reduces to a factored equation in the four rolls."
+    ],
+    "2011 Math Prize for Girls, Problem 16": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the count is close to the ellipse's area."
+    ],
+    "2011 Math Prize for Girls, Problem 17": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): write the quotient through blocks of geometric sums."
+    ],
+    "2011 Math Prize for Girls, Problem 18": [
+      2400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): P(a) is congruent to P(b) mod n when a is; force P(0) and the coefficients."
+    ],
+    "2011 Math Prize for Girls, Problem 19": [
+      2100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): with v = (a - 1)/(a + 1), the operation multiplies the a's."
+    ],
+    "2011 Math Prize for Girls, Problem 20": [
+      2600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): x^2 + y^2 - xy bounded: the area of an ellipse cut by the unit square."
+    ],
+    "2012 Math Prize for Girls, Problem 1": [
+      900,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): total distance over total time with the distance cancelling."
+    ],
+    "2012 Math Prize for Girls, Problem 2": [
+      1100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the hexagon less six 120-degree sectors."
+    ],
+    "2012 Math Prize for Girls, Problem 3": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 503 is the binding prime: n! needs 2012 factors of it."
+    ],
+    "2012 Math Prize for Girls, Problem 4": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): with a, b, c = 11, 13, 17 the ratio is a + b + c."
+    ],
+    "2012 Math Prize for Girls, Problem 5": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): split the triangle at the centre: r(8 + 15)/2 = 60."
+    ],
+    "2012 Math Prize for Girls, Problem 6": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 1001^3 = 7^3 11^3 13^3; 7 exponent pairs per prime."
+    ],
+    "2012 Math Prize for Girls, Problem 7": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the first ten terms sum to 11 f_7."
+    ],
+    "2012 Math Prize for Girls, Problem 8": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 2(x^2 + y^2) >= (x + y)^2 gives a quadratic bound on z."
+    ],
+    "2012 Math Prize for Girls, Problem 9": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): P^2/A = 4(l/w + 2 + w/l), least when the primes are closest: 71 and 73."
+    ],
+    "2012 Math Prize for Girls, Problem 10": [
+      1800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): place B at the origin; the right angle forces a slope condition."
+    ],
+    "2012 Math Prize for Girls, Problem 11": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): tip distances are revolutions times circumference."
+    ],
+    "2012 Math Prize for Girls, Problem 12": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): multiply by sin(pi/n): the product becomes sin(32pi/n)/(32 sin(pi/n))."
+    ],
+    "2012 Math Prize for Girls, Problem 13": [
+      2100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): |1 + e^(it)| = 1 forces t = 2pi/3, then n must be an odd multiple of 3."
+    ],
+    "2012 Math Prize for Girls, Problem 14": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): compare consecutive binomial coefficients by their ratio."
+    ],
+    "2012 Math Prize for Girls, Problem 15": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): condition on how many marbles bag Y has left when X runs out."
+    ],
+    "2012 Math Prize for Girls, Problem 16": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): z = w - conj(w)/9 is an ellipse with semi-axes 8/3 and 10/3."
+    ],
+    "2012 Math Prize for Girls, Problem 17": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the equation factors as (a + b - c)(b + c - a)(c + a - b) = 0."
+    ],
+    "2012 Math Prize for Girls, Problem 18": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): expected steps from each state; the reflecting walk gives 9^2."
+    ],
+    "2012 Math Prize for Girls, Problem 19": [
+      2700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 1/L(x) - 1/x = 1/(2 - x), so 1/a_n grows by about 1/2 each step."
+    ],
+    "2012 Math Prize for Girls, Problem 20": [
+      2800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): tan(15x) as a ratio of polynomials in tan x; sum reciprocals of the roots in tan^2."
+    ],
+    "2013 Math Prize for Girls, Problem 1": [
+      1100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the six points are equilateral triangles of a third the side."
+    ],
+    "2013 Math Prize for Girls, Problem 2": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): count factors of 2 and 5 in 125!/(64! 61!)."
+    ],
+    "2013 Math Prize for Girls, Problem 3": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): bound the numbers forced to be at least M, then realise the rest."
+    ],
+    "2013 Math Prize for Girls, Problem 4": [
+      1200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): each sequence of nine game winners gives a different ranking."
+    ],
+    "2013 Math Prize for Girls, Problem 5": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): choose the digit set, then place them under the two conditions."
+    ],
+    "2013 Math Prize for Girls, Problem 6": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): which GP term is the AP's middle term."
+    ],
+    "2013 Math Prize for Girls, Problem 7": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): rotate the vector AC by 60 degrees to reach B on the axis."
+    ],
+    "2013 Math Prize for Girls, Problem 8": [
+      1800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): for non-integers the equation forces equal floors: unit squares on the diagonal."
+    ],
+    "2013 Math Prize for Girls, Problem 9": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): find consecutive integers each with eight divisors."
+    ],
+    "2013 Math Prize for Girls, Problem 10": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): track walks by whether they end in a north step."
+    ],
+    "2013 Math Prize for Girls, Problem 11": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): parallel means AD = BC; count equal products of two dice."
+    ],
+    "2013 Math Prize for Girls, Problem 12": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): each condition gives a linear relation among the products of dimensions."
+    ],
+    "2013 Math Prize for Girls, Problem 13": [
+      2700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the union of events A_S, dominated by the sets of size 2 and 3."
+    ],
+    "2013 Math Prize for Girls, Problem 14": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): write n = 101q - r and count the r allowed for each q."
+    ],
+    "2013 Math Prize for Girls, Problem 15": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): find angle C, then the law of sines in triangle BDC."
+    ],
+    "2013 Math Prize for Girls, Problem 16": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the root is irrational, so match the coefficients of x."
+    ],
+    "2013 Math Prize for Girls, Problem 17": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): count the preimages of each level through the graph of f."
+    ],
+    "2013 Math Prize for Girls, Problem 18": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): each added die takes a geometric waiting time."
+    ],
+    "2013 Math Prize for Girls, Problem 19": [
+      2400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): expand x^n/(1 - x^n) and regroup by m = kn."
+    ],
+    "2013 Math Prize for Girls, Problem 20": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): a_n = cos(2^n t); the product of cosines telescopes through sines."
+    ],
+    "2014 Math Prize for Girls, Problem 1": [
+      900,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the square of centres less four quarter circles."
+    ],
+    "2014 Math Prize for Girls, Problem 2": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): shift by the fixed point 1/3, leaving y_i = -2 y_(i+1)."
+    ],
+    "2014 Math Prize for Girls, Problem 3": [
+      1100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): an odd sum needs one or three odd numbers."
+    ],
+    "2014 Math Prize for Girls, Problem 4": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): -2013 to 2014 sums to 2014; nothing longer starts lower."
+    ],
+    "2014 Math Prize for Girls, Problem 5": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the residues 0 to n - 1 sum to n(n - 1)/2 mod n."
+    ],
+    "2014 Math Prize for Girls, Problem 6": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 2^N - 1 distinct positive integers sum to at least a triangular number."
+    ],
+    "2014 Math Prize for Girls, Problem 7": [
+      1900,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): write C(1/2, k) through odd products and compare with C(2k, k)."
+    ],
+    "2014 Math Prize for Girls, Problem 8": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): Heron's formula in the symmetric 16K^2 form for squared sides."
+    ],
+    "2014 Math Prize for Girls, Problem 9": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): two prime differences adding to a prime force 2 and 3 or 2 and 5."
+    ],
+    "2014 Math Prize for Girls, Problem 10": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): by symmetry only start, side and opposite states matter."
+    ],
+    "2014 Math Prize for Girls, Problem 11": [
+      2100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): x and y are both at least 0; only small floors survive."
+    ],
+    "2014 Math Prize for Girls, Problem 12": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): box, face slabs, edge quarter-cylinders and corner sphere eighths."
+    ],
+    "2014 Math Prize for Girls, Problem 13": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the last marbles drawn: count orders ending in exactly three of one colour."
+    ],
+    "2014 Math Prize for Girls, Problem 14": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): s(s - a)(s - b)(s - c) = 114^2 with integer s and parts."
+    ],
+    "2014 Math Prize for Girls, Problem 15": [
+      1900,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the student totals and paper totals relate through the number taking both."
+    ],
+    "2014 Math Prize for Girls, Problem 16": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): sum-to-product gives tan((x + y)/2), then sin(x + y) and cos x cos y."
+    ],
+    "2014 Math Prize for Girls, Problem 17": [
+      2400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the cevian intersections in barycentrics give each region's area in x."
+    ],
+    "2014 Math Prize for Girls, Problem 18": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): count k with no carry or one carry adding k and 2014 - k in base 2."
+    ],
+    "2014 Math Prize for Girls, Problem 19": [
+      2600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): count triples with largest part at most m; tail sum of the maximum."
+    ],
+    "2014 Math Prize for Girls, Problem 20": [
+      2800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): |e^z| and |(z - 1)/(z + 1)| sit on the same side of 1 only on the imaginary axis."
+    ],
+    "2015 Math Prize for Girls, Problem 1": [
+      900,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 27 divisors pair into 13 products plus the square root."
+    ],
+    "2015 Math Prize for Girls, Problem 2": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): rewrite in r = x/y and solve the compound inequality."
+    ],
+    "2015 Math Prize for Girls, Problem 3": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): two clipped linear graphs bound a parallelogram."
+    ],
+    "2015 Math Prize for Girls, Problem 4": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): count by bit length, choosing the first half freely."
+    ],
+    "2015 Math Prize for Girls, Problem 5": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the difference is 9(111(A - D) + 10(B - C)); count the pairs."
+    ],
+    "2015 Math Prize for Girls, Problem 6": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 0.3985 <= H/A < 0.3995 rearranged to 2A - 5H small."
+    ],
+    "2015 Math Prize for Girls, Problem 7": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): B_n has radius sqrt n - 1, compared with the box's half-width."
+    ],
+    "2015 Math Prize for Girls, Problem 8": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): count routes floor by floor."
+    ],
+    "2015 Math Prize for Girls, Problem 9": [
+      1800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): six-digit strings containing 2, 0, 1 and 5."
+    ],
+    "2015 Math Prize for Girls, Problem 10": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): sin sin is injective here, so the solution set is 20 line families of equal length."
+    ],
+    "2015 Math Prize for Girls, Problem 11": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): PA PB PC PD = |P^4 - 16|, largest when P^4 = -81."
+    ],
+    "2015 Math Prize for Girls, Problem 12": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): split into two cycles: 4-3, 5-2 and 6-1 cases."
+    ],
+    "2015 Math Prize for Girls, Problem 13": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the two unknown cards must show equal values; case on the known function."
+    ],
+    "2015 Math Prize for Girls, Problem 14": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the planes cut off corner pyramids and leave a central polyhedron."
+    ],
+    "2015 Math Prize for Girls, Problem 15": [
+      2100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the equation is (z + i)^4 = a constant, so the roots form a square."
+    ],
+    "2015 Math Prize for Girls, Problem 16": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): group vertices by distance from the start."
+    ],
+    "2015 Math Prize for Girls, Problem 17": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the quartic factors into quadratics, one per branch."
+    ],
+    "2015 Math Prize for Girls, Problem 18": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): n = q(10^(d-1)) + r leads to n as a block of a repeating decimal."
+    ],
+    "2015 Math Prize for Girls, Problem 19": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): four stages, each a geometric wait with its own chance."
+    ],
+    "2015 Math Prize for Girls, Problem 20": [
+      2400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): right angles in semicircles, then power of a point along the chord."
+    ],
+    "2016 Math Prize for Girls, Problem 1": [
+      1200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): split from P: 3x + 4y + 5z = 12 bounds x + y + z."
+    ],
+    "2016 Math Prize for Girls, Problem 2": [
+      1100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): extend to a full random order of the four buttons."
+    ],
+    "2016 Math Prize for Girls, Problem 3": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 100x + y - xy = 100 - (x - 1)(y - 100) after completing the product."
+    ],
+    "2016 Math Prize for Girls, Problem 4": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the factors of 7 run out first."
+    ],
+    "2016 Math Prize for Girls, Problem 5": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 1 is low and 4, 5 are high; case on the other low value."
+    ],
+    "2016 Math Prize for Girls, Problem 6": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): a_(k+1)/a_k = (31 - k)/(2(k + 1)) crosses 1 at k = 10."
+    ],
+    "2016 Math Prize for Girls, Problem 7": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 3 sin(x/3) - sin x = 4 sin^3(x/3)."
+    ],
+    "2016 Math Prize for Girls, Problem 8": [
+      1800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the area is h_A h_B / sin of the angle between the strips."
+    ],
+    "2016 Math Prize for Girls, Problem 9": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the two x-coordinates multiply to -2016."
+    ],
+    "2016 Math Prize for Girls, Problem 10": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): tan x - x increases through each multiple of pi once per branch."
+    ],
+    "2016 Math Prize for Girls, Problem 11": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): split |u|^2 |v|^2 = 100 and count Gaussian integers of each norm."
+    ],
+    "2016 Math Prize for Girls, Problem 12": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the factors pair the primitive 14th roots, so each c_k = 1."
+    ],
+    "2016 Math Prize for Girls, Problem 13": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): ten edges on ten pairs: a regular tournament on five players."
+    ],
+    "2016 Math Prize for Girls, Problem 14": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): rule out four elements, then check {0, 1, 2, 3, 6}."
+    ],
+    "2016 Math Prize for Girls, Problem 15": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): complete the two 108-degree angles to a regular pentagon."
+    ],
+    "2016 Math Prize for Girls, Problem 16": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): obtuse means C^2 > A^2 + B^2; build the chain from the smallest."
+    ],
+    "2016 Math Prize for Girls, Problem 17": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): tabulate weights and bound them by halving ranges."
+    ],
+    "2016 Math Prize for Girls, Problem 18": [
+      2100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): count subsets by sum mod 5, block by block of five."
+    ],
+    "2016 Math Prize for Girls, Problem 19": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the angles stay 45-45-90; maximize a side through the law of sines."
+    ],
+    "2016 Math Prize for Girls, Problem 20": [
+      2800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): five 24th roots summing to zero must be a pair plus a triangle."
+    ],
+    "2017 Math Prize for Girls, Problem 1": [
+      1200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): count two-of-a-colour draws directly, colour by colour."
+    ],
+    "2017 Math Prize for Girls, Problem 2": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): E is the foot of B's angle bisector."
+    ],
+    "2017 Math Prize for Girls, Problem 3": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): a double root at -1: the polynomial and its derivative vanish there."
+    ],
+    "2017 Math Prize for Girls, Problem 4": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): G = 1 and fix the carries from the right."
+    ],
+    "2017 Math Prize for Girls, Problem 5": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): subtract runs of three and doubled pairs, adding back their overlap."
+    ],
+    "2017 Math Prize for Girls, Problem 6": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): roots n, n + 1 give b and c; count those in range."
+    ],
+    "2017 Math Prize for Girls, Problem 7": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): write 2017 in the factorial number system."
+    ],
+    "2017 Math Prize for Girls, Problem 8": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): cA = A, c^2 B = B, c^3 C = C; case on which coefficients vanish."
+    ],
+    "2017 Math Prize for Girls, Problem 9": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): smooth means 2^k 5^j; the sum is a product of two geometric series."
+    ],
+    "2017 Math Prize for Girls, Problem 10": [
+      1900,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): case on how Q and R sit relative to P."
+    ],
+    "2017 Math Prize for Girls, Problem 11": [
+      1900,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): adding 1 clears the trailing block of 1s."
+    ],
+    "2017 Math Prize for Girls, Problem 12": [
+      1800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the hypotenuse is tan x or cos x; solve each case."
+    ],
+    "2017 Math Prize for Girls, Problem 13": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): a cubic with a triple root r: match M, P, G to both forms."
+    ],
+    "2017 Math Prize for Girls, Problem 14": [
+      2100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): case on how many points move: transpositions and 3-cycles."
+    ],
+    "2017 Math Prize for Girls, Problem 15": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the one backward move as a fourth letter, kept on the board."
+    ],
+    "2017 Math Prize for Girls, Problem 16": [
+      2100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): reduce mod 16 to 8W - 2E + T."
+    ],
+    "2017 Math Prize for Girls, Problem 17": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): horizontal distances between centres from right triangles."
+    ],
+    "2017 Math Prize for Girls, Problem 18": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): with all three above 1, the products outgrow the sums; case on 0 and 1."
+    ],
+    "2017 Math Prize for Girls, Problem 19": [
+      2700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): unit sides in directions 20k degrees must sum to zero."
+    ],
+    "2017 Math Prize for Girls, Problem 20": [
+      2800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 2 has order 11 mod 89, so the exponents run through a subgroup."
+    ],
+    "2018 Math Prize for Girls, Problem 1": [
+      1200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 116^2 - 4^2 factors as (11^2 - 1)(11^2 - 9)."
+    ],
+    "2018 Math Prize for Girls, Problem 2": [
+      1200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 41 - 2|y| choices of x for each y, summed."
+    ],
+    "2018 Math Prize for Girls, Problem 3": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): no square is 2 mod 3; a longer progression must step by 1 or 2."
+    ],
+    "2018 Math Prize for Girls, Problem 4": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): P sits a quarter of the way across; compare with the hexagon's triangles."
+    ],
+    "2018 Math Prize for Girls, Problem 5": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): sum all, then add the third, fifth and seventh."
+    ],
+    "2018 Math Prize for Girls, Problem 6": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): average the four equally likely shapes, each by linearity."
+    ],
+    "2018 Math Prize for Girls, Problem 7": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): n(n + 1) divisible by 2000 splits as 16 and 125 dividing n or n + 1."
+    ],
+    "2018 Math Prize for Girls, Problem 8": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the cosine parts are symmetric about their midlines, leaving a rectangle's area."
+    ],
+    "2018 Math Prize for Girls, Problem 9": [
+      1800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): ratio p/q with q^2 dividing 8000 and p > q."
+    ],
+    "2018 Math Prize for Girls, Problem 10": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): r/R for an isosceles triangle as a function of its base."
+    ],
+    "2018 Math Prize for Girls, Problem 11": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): P(X >= k) is the chance the first k - 1 rolls strictly decrease."
+    ],
+    "2018 Math Prize for Girls, Problem 12": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): cos(arctan x) = 1/sqrt(1 + x^2) iterated gives ratios of Fibonacci numbers."
+    ],
+    "2018 Math Prize for Girls, Problem 13": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): distances from the centre to the sides sum to the altitude."
+    ],
+    "2018 Math Prize for Girls, Problem 14": [
+      2500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): mod 101, odd and even factors pair into x^100 - 1."
+    ],
+    "2018 Math Prize for Girls, Problem 15": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): unfold the mirrors and aim at the reflected images."
+    ],
+    "2018 Math Prize for Girls, Problem 16": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): f shifts ternary digits left, complementing on 0 or 2."
+    ],
+    "2018 Math Prize for Girls, Problem 17": [
+      2400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): right angles on the semicircles give X and Y by 15-degree trig."
+    ],
+    "2018 Math Prize for Girls, Problem 18": [
+      2900,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): pair the quadratic-residue roots with the non-residues, as -1 is a non-residue."
+    ],
+    "2018 Math Prize for Girls, Problem 19": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): bound each term between differences of square roots."
+    ],
+    "2018 Math Prize for Girls, Problem 20": [
+      2800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): six exponent orderings; each sum is a product of geometric series."
+    ],
+    "2019 Math Prize for Girls, Problem 1": [
+      1300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): only even counts of 8.5 give integers: the Frobenius number of 17 and 11."
+    ],
+    "2019 Math Prize for Girls, Problem 2": [
+      1200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): at most four absolute values, two signs each."
+    ],
+    "2019 Math Prize for Girls, Problem 3": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): angles average 120; the largest must stay below 180."
+    ],
+    "2019 Math Prize for Girls, Problem 4": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the overlap is a triangle or a trapezoid; optimize the fold line."
+    ],
+    "2019 Math Prize for Girls, Problem 5": [
+      1800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): each chord of slope 1 or -1 moves the meeting point by Vieta."
+    ],
+    "2019 Math Prize for Girls, Problem 6": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): digit products of a block factor as a product of digit sums."
+    ],
+    "2019 Math Prize for Girls, Problem 7": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): c(x - a)(x - b) with integrality and the vertex on the board."
+    ],
+    "2019 Math Prize for Girls, Problem 8": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 48 of every 210 are coprime to 210, plus the partial block."
+    ],
+    "2019 Math Prize for Girls, Problem 9": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): each factor is at least 2 sqrt(20)|x| and 2 sqrt(19)|y|."
+    ],
+    "2019 Math Prize for Girls, Problem 10": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): tabulate paths to each cell jump by jump."
+    ],
+    "2019 Math Prize for Girls, Problem 11": [
+      1900,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the sum is the x^10 coefficient of (x + 1)^12 (x - 1)^10."
+    ],
+    "2019 Math Prize for Girls, Problem 12": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): search upward from the smallest ten-thousands digit."
+    ],
+    "2019 Math Prize for Girls, Problem 13": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the common region is an octagon of eight congruent triangles."
+    ],
+    "2019 Math Prize for Girls, Problem 14": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the surviving dots are those with no 2 in base 3."
+    ],
+    "2019 Math Prize for Girls, Problem 15": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): tan x tan y is fixed by the addition formula; count the solutions per period."
+    ],
+    "2019 Math Prize for Girls, Problem 16": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the Gauss sum over residues mod 7 has imaginary part sqrt 7/2."
+    ],
+    "2019 Math Prize for Girls, Problem 17": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the six vertices form an octahedron; stretch it to a regular one."
+    ],
+    "2019 Math Prize for Girls, Problem 18": [
+      2400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): concurrency forces a + b + c = 0 or a degenerate case."
+    ],
+    "2019 Math Prize for Girls, Problem 19": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 27 is -1 mod 4 and 2 mod 25: reduce the digits mod each."
+    ],
+    "2019 Math Prize for Girls, Problem 20": [
+      2600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 1 - 4 sin^2 t = sin 3t / sin t, so the product telescopes."
+    ],
+    "2021 Math Prize for Girls, Problem 1": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): four headers in a cycle, each getting 9/10 of the previous share."
+    ],
+    "2021 Math Prize for Girls, Problem 2": [
+      1100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): 3439 = 19 * 181 = (m - n)(m + n)(m^2 + n^2)."
+    ],
+    "2021 Math Prize for Girls, Problem 3": [
+      1600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the circle through the trisection points; segments outside the triangle."
+    ],
+    "2021 Math Prize for Girls, Problem 4": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): by symmetry the answer is (1 - P(equal))/2."
+    ],
+    "2021 Math Prize for Girls, Problem 5": [
+      1500,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the mediant 15/42 = 5/14, and no smaller denominator fits."
+    ],
+    "2021 Math Prize for Girls, Problem 6": [
+      1400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): just above 3000^6; the next binomial term fixes the units."
+    ],
+    "2021 Math Prize for Girls, Problem 7": [
+      1700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): group by the period 8, or take the real part of a complex geometric series."
+    ],
+    "2021 Math Prize for Girls, Problem 8": [
+      1800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): perimeter bisectors give AE = BD; Ceva gives the third ratio."
+    ],
+    "2021 Math Prize for Girls, Problem 9": [
+      1900,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): three kinds of vertex triples, each with its overlap area."
+    ],
+    "2021 Math Prize for Girls, Problem 10": [
+      2100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): sum the 101-adic valuations of C(2021, k) by carries."
+    ],
+    "2021 Math Prize for Girls, Problem 11": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): evens must be separated, and 3 and 6 kept apart."
+    ],
+    "2021 Math Prize for Girls, Problem 12": [
+      2000,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): each parabola is tangent to the lines at 60 degrees: a double root."
+    ],
+    "2021 Math Prize for Girls, Problem 13": [
+      1800,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): a bulb ends on with an odd number of odd divisors: squares and twice squares."
+    ],
+    "2021 Math Prize for Girls, Problem 14": [
+      2100,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): sum x^k (x + 1)^j (x - 1)^(n - k - j) and extract x^4."
+    ],
+    "2021 Math Prize for Girls, Problem 15": [
+      2300,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): count points on the tetrahedron's side of each plane: 300 - m <= 600 - 4m."
+    ],
+    "2021 Math Prize for Girls, Problem 16": [
+      2600,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): angles as differences of arctangents of lattice slopes; count distinct values."
+    ],
+    "2021 Math Prize for Girls, Problem 17": [
+      2200,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): sin A sin B = (ab/c^2) sin^2 C, rewritten through the fixed height."
+    ],
+    "2021 Math Prize for Girls, Problem 18": [
+      2400,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): square-free numbers as sets of primes; each pair must share one."
+    ],
+    "2021 Math Prize for Girls, Problem 19": [
+      2700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): the midpoint locus is a scaled solid; compute its volume ratio."
+    ],
+    "2021 Math Prize for Girls, Problem 20": [
+      2700,
+      "Author estimate (Math Prize for Girls publishes no solve counts; placed on the collection’s scale by its route, the test running from a mid AMC 10 problem to a mid-to-late AIME one): a few corner values fix the rest; count the free entries."
     ]
   }
 }

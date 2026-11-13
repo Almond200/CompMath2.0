@@ -24,6 +24,8 @@ The ten 2019 HMMT February Geometry problems and fifty 2026 AMC 10A/12A problems
 
 **SMT subject tests (2026-11-13).** SMT publishes no solve counts either, so all 480 problems (Algebra, Calculus, Geometry, and Advanced, Discrete or 2021's Combinatorics and Number Theory; 2011 to 2014 and 2018 to 2025) carry author estimates with a one-line reason. Each test is 10 problems in 50 minutes, written for strong students who chose the subject; on the collection's scale its first problem is near an AMC 10 middle one (900 to 1500) and its last near a late HMMT February one (2900 to 3300). Each problem is placed by its route, and the tests are compared only with the same subject (Advanced and Discrete are one series). **CMIMC** (2016 to 2022, 306 problems) the same way, from about 1000 to 3300, a Division 2 repeat carrying its Division 1 rating. **UMD HSMC Part I** (1997 to 2026, 725 problems), a broad 25-question test, is rated the same way from 700 to about 2400. The SMT General test (297 problems) is rated the same way, from 800 to 2700; a General problem that is a subject-test problem word for word carries that problem's rating.
 
+**Math Prize for Girls (2026-11-13).** The test publishes no solve counts, so each problem carries an author estimate with a one-line reason. It is 20 short-answer problems in 150 minutes for strong high-school students; on the collection's scale Problem 1 sits near a middle AMC 10 problem (about 900 to 1400) and Problem 20 near a mid-to-late AIME problem (about 2300 to 2900), each placed by its route rather than its number.
+
 ## Selection
 
 `js/problem-difficulty.js` supplies the shared rating lookup, five-level selection and uniform draw.

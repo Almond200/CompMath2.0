@@ -2,6 +2,8 @@
 
 **2026-11-13**
 
+- **Math Prize for Girls, 2009 to 2019 and 2021 (owner: "skip cmimc and go to the next ones"):** 240 problems of the 20-question test, each read from the Advantage Testing Foundation's official solutions, filed, tagged and rated by author estimate; a new family, Math Prize for Girls, whose pages open the official test and solutions. CMIMC 2023 to 2026 are recorded as skipped at the owner's word. The rest of Math Prize (2022 to 2026) follows.
+
 - **CMIMC individual tests, 2016 to 2022 (owner: "the individual rounds on the other sets"):** 306 problems, read from the official papers and solutions as kept in the CMIMC website's source repository (the archive's PDFs load only in a browser), filed, tagged and rated by author estimate; Division 2 problems that repeat Division 1 copy their twin. CMIMC is its own family with its subject tests as tabs; each page links CMIMC's official archive. 2023 to 2026 still need the papers (PLAN.md, Step H).
 
 - **UMD HSMC Part I complete (owner: "the individual rounds on the other sets"):** the University of Maryland High School Mathematics Competition's Part I, a 25-question individual test, all 725 problems from 1997 to 2026 (no 2020), each read with its official solutions, filed, tagged and rated by author estimate. UMD HSMC is its own family; each page links the year's official paper and solutions.
