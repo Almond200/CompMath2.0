@@ -89,7 +89,11 @@
     "2024 BMT Geometry": "https://berkeley.mt/archives/bmt-2024/geometry-problems.pdf",
     "2023 BMT Algebra": "https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf",
     "2023 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf",
-    "2023 BMT Geometry": "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf"
+    "2023 BMT Geometry": "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf",
+    "2023 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/Algebra_A_2023.pdf",
+    "2023 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/Algebra_B_2023.pdf",
+    "2023 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/Combinatorics_A_2023.pdf",
+    "2023 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/Combinatorics_B_2023.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -5787,6 +5791,134 @@
     "2023 BMT Geometry, Problem 10": [
       3600,
       "Relate perpendicular projections in an auxiliary circumcircle to an area identity, checking both possible original triangle configurations."
+    ],
+    "2023 PUMaC Division A Algebra, Problem 1": [
+      1850,
+      "Recognize a three-dimensional Lagrange identity and evaluate the gap between two given squared norms and a dot product."
+    ],
+    "2023 PUMaC Division A Algebra, Problem 2": [
+      2200,
+      "Factor out a positive sine, substitute the half-angle cosine and retain its unique admissible quadratic root."
+    ],
+    "2023 PUMaC Division A Algebra, Problem 3": [
+      2650,
+      "Propagate shifted complex roots through a polynomial identity, then prove the remaining periodic polynomial factor is constant."
+    ],
+    "2023 PUMaC Division A Algebra, Problem 4": [
+      2300,
+      "Factor a parameterized quartic into two quadratics and compare the signs of their discriminants, including the real double-root endpoint."
+    ],
+    "2023 PUMaC Division A Algebra, Problem 5": [
+      2900,
+      "Convert an even trigonometric power sum to a constant coefficient through the eleventh roots of unity."
+    ],
+    "2023 PUMaC Division A Algebra, Problem 6": [
+      3300,
+      "Sum a triangular coefficient profile, solve for its step size at a negative input and bound all remaining indices by parity."
+    ],
+    "2023 PUMaC Division A Algebra, Problem 7": [
+      3550,
+      "Interpolate all root-of-unity value choices and average fifth powers, excluding the single constant polynomial required by the exact-degree condition; the published mean includes it."
+    ],
+    "2023 PUMaC Division A Algebra, Problem 8": [
+      3550,
+      "Factor reciprocal quartics into unit-circle chord pairs, identify a common geometric median and sum squared distances by Vieta."
+    ],
+    "2023 PUMaC Division B Algebra, Problem 1": [
+      1400,
+      "Recover the common absolute sum and count the four real ordered solutions."
+    ],
+    "2023 PUMaC Division B Algebra, Problem 2": [
+      1750,
+      "Factor a quartic denominator into neighboring quadratics and telescope exactly before reducing the fraction."
+    ],
+    "2023 PUMaC Division B Algebra, Problem 3": [
+      1850,
+      "Recognize a three-dimensional Lagrange identity and evaluate the gap between two given squared norms and a dot product."
+    ],
+    "2023 PUMaC Division B Algebra, Problem 4": [
+      2200,
+      "Factor out a positive sine, substitute the half-angle cosine and retain its unique admissible quadratic root."
+    ],
+    "2023 PUMaC Division B Algebra, Problem 5": [
+      2650,
+      "Propagate shifted complex roots through a polynomial identity, then prove the remaining periodic polynomial factor is constant."
+    ],
+    "2023 PUMaC Division B Algebra, Problem 6": [
+      2300,
+      "Factor a parameterized quartic into two quadratics and compare the signs of their discriminants, including the real double-root endpoint."
+    ],
+    "2023 PUMaC Division B Algebra, Problem 7": [
+      2900,
+      "Convert an even trigonometric power sum to a constant coefficient through the eleventh roots of unity."
+    ],
+    "2023 PUMaC Division B Algebra, Problem 8": [
+      3300,
+      "Sum a triangular coefficient profile, solve for its step size at a negative input and bound all remaining indices by parity."
+    ],
+    "2023 PUMaC Division A Combinatorics, Problem 1": [
+      2250,
+      "Use parity to reduce short-lived forbidden returns to immediate reversals, accounting for a special fifth-step transition."
+    ],
+    "2023 PUMaC Division A Combinatorics, Problem 2": [
+      2050,
+      "Pair complementary six-bit inputs to collapse an XOR-defined sum."
+    ],
+    "2023 PUMaC Division A Combinatorics, Problem 3": [
+      2450,
+      "Condition on the row partners of the third-largest entry to average its sorted column position."
+    ],
+    "2023 PUMaC Division A Combinatorics, Problem 4": [
+      3050,
+      "Turn losses from the maximal Fibonacci sequence into a nonnegative weighted partition and count it by a short recurrence."
+    ],
+    "2023 PUMaC Division A Combinatorics, Problem 5": [
+      3350,
+      "Determine stable cyclic elimination populations by survival-aware backward reasoning and induction between consecutive powers of two."
+    ],
+    "2023 PUMaC Division A Combinatorics, Problem 6": [
+      3350,
+      "Express a run-square statistic through same-run pairs, sum their probabilities and solve the remaining divisibility condition."
+    ],
+    "2023 PUMaC Division A Combinatorics, Problem 7": [
+      3750,
+      "Count spanning trees of overlapping cliques by a five-connector tree and rooted two-component forests, independently checked by Kirchhoff."
+    ],
+    "2023 PUMaC Division A Combinatorics, Problem 8": [
+      3500,
+      "Express a triangular walk winding moment as a restricted binomial second moment and isolate the multiples of three."
+    ],
+    "2023 PUMaC Division B Combinatorics, Problem 1": [
+      1450,
+      "Count nonempty independent shade patterns on a two-row board by the number of selected cells."
+    ],
+    "2023 PUMaC Division B Combinatorics, Problem 2": [
+      1800,
+      "Enumerate four-step coin-driven floor/linear states and total the occurrences of a specified decimal digit."
+    ],
+    "2023 PUMaC Division B Combinatorics, Problem 3": [
+      2250,
+      "Use parity to reduce short-lived forbidden returns to immediate reversals, accounting for a special fifth-step transition."
+    ],
+    "2023 PUMaC Division B Combinatorics, Problem 4": [
+      2050,
+      "Pair complementary six-bit inputs to collapse an XOR-defined sum."
+    ],
+    "2023 PUMaC Division B Combinatorics, Problem 5": [
+      2450,
+      "Condition on the row partners of the third-largest entry to average its sorted column position."
+    ],
+    "2023 PUMaC Division B Combinatorics, Problem 6": [
+      3050,
+      "Turn losses from the maximal Fibonacci sequence into a nonnegative weighted partition and count it by a short recurrence."
+    ],
+    "2023 PUMaC Division B Combinatorics, Problem 7": [
+      3350,
+      "Determine stable cyclic elimination populations by survival-aware backward reasoning and induction between consecutive powers of two."
+    ],
+    "2023 PUMaC Division B Combinatorics, Problem 8": [
+      3350,
+      "Express a run-square statistic through same-run pairs, sum their probabilities and solve the remaining divisibility condition."
     ]
   }
 }

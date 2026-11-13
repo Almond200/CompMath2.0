@@ -68,5 +68,21 @@ window.MATH_CONTEST_PAPERS = {
   "2023 BMT Geometry": {
     "url": "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf",
     "solUrl": "https://berkeley.mt/archives/bmt-2023/geometry-solutions.pdf"
+  },
+  "2023 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/Algebra_A_2023.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Algebra_A_2023-2.pdf"
+  },
+  "2023 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/Algebra_B_2023.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Algebra_B_2023-2.pdf"
+  },
+  "2023 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/Combinatorics_A_2023.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Combinatorics_A_2023-2.pdf"
+  },
+  "2023 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/Combinatorics_B_2023.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Combinatorics_B_2023-2.pdf"
   }
 };
