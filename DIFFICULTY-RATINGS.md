@@ -26,6 +26,8 @@ The ten 2019 HMMT February Geometry problems and fifty 2026 AMC 10A/12A problems
 
 **Math Prize for Girls (2026-11-13).** The test publishes no solve counts, so each problem carries an author estimate with a one-line reason. It is 20 short-answer problems in 150 minutes for strong high-school students; on the collection's scale Problem 1 sits near a middle AMC 10 problem (about 900 to 1400) and Problem 20 near a mid-to-late AIME problem (about 2300 to 2900), each placed by its route rather than its number.
 
+**MMATHS Individual (2026-11-13).** No solve counts either; each of the 12 problems carries an author estimate with a reason. Problem 1 sits near an early AMC 10 problem (about 600 to 1300) and Problem 12 near an early-to-middle AIME problem (about 2200 to 2800).
+
 ## Selection
 
 `js/problem-difficulty.js` supplies the shared rating lookup, five-level selection and uniform draw.
