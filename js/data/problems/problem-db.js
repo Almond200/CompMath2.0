@@ -1981,7 +1981,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2005 HMMT February Geometry, Problem 4", formulas: ["equal-chords-arcs", "angle-chasing"], strategy: "", tree: ["geo.tri.radii.in"] },
   { ref: "2005 HMMT February Geometry, Problem 5", formulas: ["cube", "pythagorean-theorem"], strategy: "", tree: ["geo.solid.round.sphere", "geo.solid.prism.box"] },
   { ref: "2005 HMMT February Geometry, Problem 6", formulas: ["triangle-similarity", "completing-the-square"], strategy: "", tree: ["geo.basic.pyth.fold", "alg.ineq.optimize.quad"] },
-  { ref: "2005 HMMT February Geometry, Problem 7", formulas: ["plane-intercept-form", "point-plane-distance", "prism-pyramid-volumes"], strategy: "", tree: ["geo.solid.coord.planes", "geo.solid.round.pyramid"] },
+  { ref: "2005 HMMT February Geometry, Problem 7", formulas: ["de-guas-theorem", "plane-intercept-form", "point-plane-distance", "prism-pyramid-volumes"], strategy: "", tree: ["geo.solid.coord.planes", "geo.solid.round.pyramid"] },
   { ref: "2005 HMMT February Geometry, Problem 8", formulas: ["herons-formula", "inradius-area", "similar-figures-ratios"], strategy: "", tree: ["geo.tri.radii.in"] },
   { ref: "2005 HMMT February Geometry, Problem 9", formulas: ["thales-theorem", "triangle-similarity", "pythagorean-theorem"], strategy: "", tree: ["geo.circ.power.tangent"] },
   { ref: "2005 HMMT February Geometry, Problem 10", formulas: ["homothety-monge", "inscribed-angle-theorem", "angle-chasing"], strategy: "", tree: ["geo.circ.tangent"] },
