@@ -2,6 +2,8 @@
 
 **2026-11-13**
 
+- **Girls in Math at Yale, Individual round:** 96 problems, 2019 to 2026, from Yale Math Competitions' archive (solutions or answer keys), filed, tagged and rated by author estimate; a new family whose pages open the official round and its solutions or key.
+
 - **MMATHS Individual test (owner: "go to the next ones"):** 131 problems of Yale's Math Majors of America Tournament for High Schools, 2014 to 2016 and 2018 to 2025 (2017's files are lost; 2016 #4 was thrown out), each read from Yale Math Competitions' official solutions or answer key, filed, tagged and rated by author estimate; a new family, MMATHS, whose pages open the official test and solutions.
 
 - **Math Prize for Girls complete (owner: "skip cmimc and go to the next ones"):** all 340 problems, 2009 to 2019 and 2021 to 2026 of the 20-question test, each read from the Advantage Testing Foundation's official solutions, filed, tagged and rated by author estimate; a new family, Math Prize for Girls, whose pages open the official test and solutions. CMIMC 2023 to 2026 are recorded as skipped at the owner's word. 2026 has no posted solutions yet; ten of its filings are flagged for a recheck (AUDITS.md).

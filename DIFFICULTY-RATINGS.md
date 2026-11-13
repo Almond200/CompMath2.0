@@ -28,6 +28,8 @@ The ten 2019 HMMT February Geometry problems and fifty 2026 AMC 10A/12A problems
 
 **MMATHS Individual (2026-11-13).** No solve counts either; each of the 12 problems carries an author estimate with a reason. Problem 1 sits near an early AMC 10 problem (about 600 to 1300) and Problem 12 near an early-to-middle AIME problem (about 2200 to 2800).
 
+**Girls in Math at Yale (2026-11-13).** Rated the same way as MMATHS, a little easier at the top: Problem 1 near an early AMC 10 problem (about 600 to 1100), Problem 12 near a late AMC 12 or early AIME problem (about 2100 to 2600).
+
 ## Selection
 
 `js/problem-difficulty.js` supplies the shared rating lookup, five-level selection and uniform draw.

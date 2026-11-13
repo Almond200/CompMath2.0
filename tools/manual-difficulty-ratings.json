@@ -15411,6 +15411,390 @@
     "2025 MMATHS Individual, Problem 12": [
       2700,
       "Author estimate (MMATHS publishes no solve counts; placed on the collection’s scale by its route, the 12-question test running from an early AMC 10 problem to an early-to-middle AIME one): the common tangent at P meets BC where tangent lengths to both circles agree."
+    ],
+    "2019 Girls in Math at Yale Individual, Problem 1": [
+      700,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): nine weekly distances in arithmetic progression."
+    ],
+    "2019 Girls in Math at Yale Individual, Problem 2": [
+      1300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): in each row the path chooses where to step up; count row by row."
+    ],
+    "2019 Girls in Math at Yale Individual, Problem 3": [
+      600,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): x = 160, then 55% of it."
+    ],
+    "2019 Girls in Math at Yale Individual, Problem 4": [
+      1100,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): split the 6 x 6 square into six squares; the forced layout has one of side 4."
+    ],
+    "2019 Girls in Math at Yale Individual, Problem 5": [
+      1100,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): |A| = |B| means A = B or A = -B."
+    ],
+    "2019 Girls in Math at Yale Individual, Problem 6": [
+      1100,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): the layout gives a linear relation between the small rectangle's sides."
+    ],
+    "2019 Girls in Math at Yale Individual, Problem 7": [
+      1300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): subtract 1 from each fraction: every numerator becomes x - 112."
+    ],
+    "2019 Girls in Math at Yale Individual, Problem 8": [
+      1000,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): each circle's area is proportional to its square's area, so 18 + 24."
+    ],
+    "2019 Girls in Math at Yale Individual, Problem 9": [
+      1500,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): cover the week by blocks of three days to bound the other days."
+    ],
+    "2019 Girls in Math at Yale Individual, Problem 10": [
+      1800,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): each round sets aside the largest of three; track where 9 to 12 must fall."
+    ],
+    "2019 Girls in Math at Yale Individual, Problem 11": [
+      1500,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): the nested fraction is monotone in each variable, alternating direction."
+    ],
+    "2019 Girls in Math at Yale Individual, Problem 12": [
+      1900,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): track residues mod 3: x^2 + 2 opens new classes; find the last gap."
+    ],
+    "2020 Girls in Math at Yale Individual, Problem 1": [
+      600,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): b = 673, then a = 224."
+    ],
+    "2020 Girls in Math at Yale Individual, Problem 2": [
+      1100,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): the overlap is a triangle on (1, 0), (2, 0) and the crossing of two sides."
+    ],
+    "2020 Girls in Math at Yale Individual, Problem 3": [
+      1200,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): an even sum of three primes needs a 2; then split 48 into two primes."
+    ],
+    "2020 Girls in Math at Yale Individual, Problem 4": [
+      1300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): BC is a diameter, so BCD is a 30-60-90 triangle."
+    ],
+    "2020 Girls in Math at Yale Individual, Problem 5": [
+      1300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): square the difference: the cross term is sqrt(196 - 52)."
+    ],
+    "2020 Girls in Math at Yale Individual, Problem 6": [
+      1400,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): the terms are ratios of Fibonacci numbers, so the product telescopes."
+    ],
+    "2020 Girls in Math at Yale Individual, Problem 7": [
+      1300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): C(74, n - 1) is largest at the middle."
+    ],
+    "2020 Girls in Math at Yale Individual, Problem 8": [
+      1600,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): segments parallel to BD cut triangles similar to ABD."
+    ],
+    "2020 Girls in Math at Yale Individual, Problem 9": [
+      1500,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): write each term as a_1 k^(i - 1); the equation becomes one in k^2."
+    ],
+    "2020 Girls in Math at Yale Individual, Problem 10": [
+      1800,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): start from a coloured square; the conditions force a lattice pattern."
+    ],
+    "2020 Girls in Math at Yale Individual, Problem 11": [
+      1700,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): twice as many even divisors means N = 4k with k odd; then N^2 = 1 mod 15."
+    ],
+    "2020 Girls in Math at Yale Individual, Problem 12": [
+      2000,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): case on the size of the common intersection."
+    ],
+    "2021 Girls in Math at Yale Individual, Problem 1": [
+      700,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): 6x + 21y = 3(2x + 7y) = 9."
+    ],
+    "2021 Girls in Math at Yale Individual, Problem 2": [
+      800,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): $12 buys six boxes of strawberries or four of blueberries."
+    ],
+    "2021 Girls in Math at Yale Individual, Problem 3": [
+      1000,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): subtracting consecutive equations gives a_n = 2a_(n-1) from n = 4."
+    ],
+    "2021 Girls in Math at Yale Individual, Problem 4": [
+      1500,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): list two-digit products of three distinct primes and apply each statement."
+    ],
+    "2021 Girls in Math at Yale Individual, Problem 5": [
+      1400,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): split the pentagon at the right angles into right triangles."
+    ],
+    "2021 Girls in Math at Yale Individual, Problem 6": [
+      1600,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): case on how the three 6s split between the halves."
+    ],
+    "2021 Girls in Math at Yale Individual, Problem 7": [
+      1500,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): the internal tangent has length sqrt(25^2 - 7^2); two right triangles."
+    ],
+    "2021 Girls in Math at Yale Individual, Problem 8": [
+      1700,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): (10A + B)(10B + A) = -1 mod 101."
+    ],
+    "2021 Girls in Math at Yale Individual, Problem 9": [
+      1500,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): each cut lies between consecutive vowels; choices multiply across the gaps."
+    ],
+    "2021 Girls in Math at Yale Individual, Problem 10": [
+      2000,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): with ratio p/q in lowest terms, q^20 divides a_1; balance a_20(1 + r) = 20^21."
+    ],
+    "2021 Girls in Math at Yale Individual, Problem 11": [
+      1800,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): prime by prime, the exponents of a, b, c are forced up to one choice."
+    ],
+    "2021 Girls in Math at Yale Individual, Problem 12": [
+      2100,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): place the line as an axis; the big circle's centre is on it, tangent to both."
+    ],
+    "2022 Girls in Math at Yale Individual, Problem 1": [
+      900,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): the highlights fix which digits appear and where."
+    ],
+    "2022 Girls in Math at Yale Individual, Problem 2": [
+      1000,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): 1 and 4 cannot share an edge, so they sit diagonally."
+    ],
+    "2022 Girls in Math at Yale Individual, Problem 3": [
+      1300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): run the map from small n and spot the cycles that avoid 1."
+    ],
+    "2022 Girls in Math at Yale Individual, Problem 4": [
+      1300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): case on the first roll; the rest multiply to 8 divided by it."
+    ],
+    "2022 Girls in Math at Yale Individual, Problem 5": [
+      1600,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): list the numbers divisible by both digits; find four with a + b - c = d."
+    ],
+    "2022 Girls in Math at Yale Individual, Problem 6": [
+      1300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): walk t and run nt seconds: 2t + 2n^2 t = 260 with t(1 + n) = 30."
+    ],
+    "2022 Girls in Math at Yale Individual, Problem 7": [
+      1600,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): divisible by 9 and 11: digit sum and alternating sum."
+    ],
+    "2022 Girls in Math at Yale Individual, Problem 8": [
+      2000,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): a 30-60-90 triangle; the right angles make DEF's area a quadratic in one length."
+    ],
+    "2022 Girls in Math at Yale Individual, Problem 9": [
+      1900,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): xP(x) - c is a monic cubic with roots a, 20 and 22."
+    ],
+    "2022 Girls in Math at Yale Individual, Problem 10": [
+      1900,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): divisors of 156 = 2^2 * 3 * 13 as exponent triples; count four-element antichains."
+    ],
+    "2022 Girls in Math at Yale Individual, Problem 11": [
+      2400,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): half-sum subsets with exactly one adjacent pair: which pairs n, n + 1 cannot both occur."
+    ],
+    "2022 Girls in Math at Yale Individual, Problem 12": [
+      2600,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): bisectors at D divide AB and AC as DA:DB and DA:DC; G lies on the line EF."
+    ],
+    "2023 Girls in Math at Yale Individual, Problem 1": [
+      1000,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): the clue on 135 rules digits out; the others fix places."
+    ],
+    "2023 Girls in Math at Yale Individual, Problem 2": [
+      1100,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): A + C must be 7 or 16; sum the eligible numbers."
+    ],
+    "2023 Girls in Math at Yale Individual, Problem 3": [
+      1600,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): list the two-digit multiples of 13 and test each statement."
+    ],
+    "2023 Girls in Math at Yale Individual, Problem 4": [
+      1200,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): f(2^k) = (k + 1)/k, so the product telescopes to 12/2."
+    ],
+    "2023 Girls in Math at Yale Individual, Problem 5": [
+      1700,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): place the trapezoid on axes; the signed combination reduces to a few triangles."
+    ],
+    "2023 Girls in Math at Yale Individual, Problem 6": [
+      1600,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): list the two-digit sums of two cubes; four digit pairs form the rhombus."
+    ],
+    "2023 Girls in Math at Yale Individual, Problem 7": [
+      2100,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): mod 2, squaring is additive, so (x^3 + x + 1)^24 = f(x^8) f(x^16); count the odd terms."
+    ],
+    "2023 Girls in Math at Yale Individual, Problem 8": [
+      2100,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): 3^a starts with 9 exactly when 3^(a + 1) has the same number of digits; count through the 966 digits of 3^2023."
+    ],
+    "2023 Girls in Math at Yale Individual, Problem 9": [
+      2100,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): D and E are arc midpoints; Ptolemy gives their chords from the sides."
+    ],
+    "2023 Girls in Math at Yale Individual, Problem 10": [
+      2400,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): the map x to l - 1/x must have period dividing 28: l = 2 cos(pi k/m)."
+    ],
+    "2023 Girls in Math at Yale Individual, Problem 11": [
+      2400,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): adding a common difference changes binary digit counts; bound the length by carries."
+    ],
+    "2023 Girls in Math at Yale Individual, Problem 12": [
+      2400,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): in logs the condition is a quadratic form; Cauchy-Schwarz bounds the linear target."
+    ],
+    "2024 Girls in Math at Yale Individual, Problem 1": [
+      1100,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): follow the timetable leg by leg, waiting for the next departure."
+    ],
+    "2024 Girls in Math at Yale Individual, Problem 2": [
+      1300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): 3-Down is 169, 256 or 289; the other clues settle it."
+    ],
+    "2024 Girls in Math at Yale Individual, Problem 3": [
+      1600,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): count placements of the four 0s with a uniform line."
+    ],
+    "2024 Girls in Math at Yale Individual, Problem 4": [
+      1400,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): chords from A pair across the diameter AF into right triangles: each pair gives 4."
+    ],
+    "2024 Girls in Math at Yale Individual, Problem 5": [
+      1400,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): (k - 1)k(k + 1)(k + 2) + 1 = (k^2 + k - 1)^2."
+    ],
+    "2024 Girls in Math at Yale Individual, Problem 6": [
+      1900,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): C(11, 4) choices less those giving the same word through the repeated M, A, T."
+    ],
+    "2024 Girls in Math at Yale Individual, Problem 7": [
+      2100,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): the line through A parallel to BC makes similar triangles; the area condition fixes D."
+    ],
+    "2024 Girls in Math at Yale Individual, Problem 8": [
+      2000,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): case on the tuple's length; long tuples have products over 2024."
+    ],
+    "2024 Girls in Math at Yale Individual, Problem 9": [
+      2300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): the tangent at D and the equal angles give parallel lines and similar triangles."
+    ],
+    "2024 Girls in Math at Yale Individual, Problem 10": [
+      2400,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): 13231 = 101 * 131; mod 101 the product is +-1, so n + 1 < 101."
+    ],
+    "2024 Girls in Math at Yale Individual, Problem 11": [
+      2300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): 1/n terminates in base k when n uses only k's primes; sum as geometric series."
+    ],
+    "2024 Girls in Math at Yale Individual, Problem 12": [
+      2500,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): with x = a + b and y = ab the target is a slope from (0, -1/4) over a feasible region."
+    ],
+    "2025 Girls in Math at Yale Individual, Problem 1": [
+      900,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): each fold halves the area: four folds from the square."
+    ],
+    "2025 Girls in Math at Yale Individual, Problem 2": [
+      1100,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): the fifth priprimorial is 2^5 3^4 5^3 7^2 11."
+    ],
+    "2025 Girls in Math at Yale Individual, Problem 3": [
+      1500,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): person 7 knows everyone, so persons 1 and 2 know only 7; peel off degree by degree."
+    ],
+    "2025 Girls in Math at Yale Individual, Problem 4": [
+      1500,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): a 240-degree sector of radius 15 plus sectors around the next corners."
+    ],
+    "2025 Girls in Math at Yale Individual, Problem 5": [
+      1200,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): f adds the prime factors with multiplicity: 2025^2025 = 5^4050 3^8100."
+    ],
+    "2025 Girls in Math at Yale Individual, Problem 6": [
+      1800,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): each round ends on a given turn with a geometric chance; sum the series."
+    ],
+    "2025 Girls in Math at Yale Individual, Problem 7": [
+      1300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): 1 - 1/k^2 = (k - 1)(k + 1)/k^2, so the logs telescope."
+    ],
+    "2025 Girls in Math at Yale Individual, Problem 8": [
+      1900,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): each a_n divides a_(n+1) and a_n(n) = (n!!)^2; build the polynomials degree by degree."
+    ],
+    "2025 Girls in Math at Yale Individual, Problem 9": [
+      2200,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): compare the minimum of 12 uniforms with the second smallest of 13."
+    ],
+    "2025 Girls in Math at Yale Individual, Problem 10": [
+      1700,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): f(x) = x^2(x - 1)^2 - 8x + 128; the square part is 0 at three 1s and a 0."
+    ],
+    "2025 Girls in Math at Yale Individual, Problem 11": [
+      2300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): angle chasing makes D, P, E, G concyclic, so the medians BE and CD are perpendicular."
+    ],
+    "2025 Girls in Math at Yale Individual, Problem 12": [
+      2300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): states for how far along a path of the star she is."
+    ],
+    "2026 Girls in Math at Yale Individual, Problem 1": [
+      700,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): the cyclic sum of 2x - y collapses to x + y + z."
+    ],
+    "2026 Girls in Math at Yale Individual, Problem 2": [
+      1400,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): halve and quarter by midpoints: triangles with the same base and height."
+    ],
+    "2026 Girls in Math at Yale Individual, Problem 3": [
+      1500,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): minimize x + 2y + z with xyz fixed."
+    ],
+    "2026 Girls in Math at Yale Individual, Problem 4": [
+      1300,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): rewrite in base 9 and solve the rational equation, keeping x > 1."
+    ],
+    "2026 Girls in Math at Yale Individual, Problem 5": [
+      1900,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): an arithmetic progression gives the fewest differences, distinct differences the most."
+    ],
+    "2026 Girls in Math at Yale Individual, Problem 6": [
+      2000,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): each X_i lies on the circle with diameter EF, radius 25."
+    ],
+    "2026 Girls in Math at Yale Individual, Problem 7": [
+      1900,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): f(i) - i is constant mod 5: permute within each residue class."
+    ],
+    "2026 Girls in Math at Yale Individual, Problem 8": [
+      1600,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): n between 2^Omega and 2.2^Omega: n is 2^k times a small factor."
+    ],
+    "2026 Girls in Math at Yale Individual, Problem 9": [
+      2100,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): pq = pr mod 2026 forces q = r, so p meets one q per residue k."
+    ],
+    "2026 Girls in Math at Yale Individual, Problem 10": [
+      2200,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): each distance is sqrt(R^2 - side^2/4); the right-triangle condition links the sides."
+    ],
+    "2026 Girls in Math at Yale Individual, Problem 11": [
+      2400,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): after a move at i, no move can recur at nearby indices; bound the total."
+    ],
+    "2026 Girls in Math at Yale Individual, Problem 12": [
+      2000,
+      "Author estimate (Girls in Math at Yale publishes no solve counts; placed on the collection’s scale by its route, the 12-question round running from an early AMC 10 problem to a late AMC 12 one): by linearity, three times the mean |1 - w^k|^2 over the other points."
     ]
   }
 }
