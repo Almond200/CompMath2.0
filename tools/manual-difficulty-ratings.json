@@ -57,7 +57,10 @@
     "2004 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2004/feb/geo/problems.pdf",
     "2003 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2003/feb/alg/problems.pdf",
     "2003 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2003/feb/comb/problems.pdf",
-    "2003 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2003/feb/geo/problems.pdf"
+    "2003 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2003/feb/geo/problems.pdf",
+    "2002 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2002/feb/alg/problems.pdf",
+    "2002 HMMT February Advanced Topics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2002/feb/adv/problems.pdf",
+    "2002 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2002/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -2539,6 +2542,126 @@
     "2003 HMMT February Geometry, Problem 10": [
       3350,
       "Apply Menelaus twice through a midpoint and use two cyclic-quadrilateral similarities to simplify the ratio."
+    ],
+    "2002 HMMT February Algebra, Problem 1": [
+      1450,
+      "Use the five entries at least as large as the median to bound it and attain the bound with four zeroes."
+    ],
+    "2002 HMMT February Algebra, Problem 2": [
+      2050,
+      "Factor the difference of two squares and use their common parity to force both primes."
+    ],
+    "2002 HMMT February Algebra, Problem 3": [
+      1550,
+      "Multiply a sum by its reciprocal sum and remove the three diagonal terms."
+    ],
+    "2002 HMMT February Algebra, Problem 4": [
+      1950,
+      "The intended natural-density ratio is determined by a least common multiple; a uniform distribution on all positive multiples is undefined."
+    ],
+    "2002 HMMT February Algebra, Problem 5": [
+      2100,
+      "Bound an infinite common divisor using the first two terms, then verify divisibility for every power."
+    ],
+    "2002 HMMT February Algebra, Problem 6": [
+      1650,
+      "Match each even divisor with a divisor of half the number and sum the prime-power factors."
+    ],
+    "2002 HMMT February Algebra, Problem 7": [
+      2000,
+      "Weight four nearly symmetric equations to isolate the sum of all variables before recovering one coordinate."
+    ],
+    "2002 HMMT February Algebra, Problem 8": [
+      1900,
+      "Recognize each odd numerator as the difference between consecutive reciprocal squares."
+    ],
+    "2002 HMMT February Algebra, Problem 9": [
+      2550,
+      "Track the binary carries on adding one and count the residue class with no net digit-sum change."
+    ],
+    "2002 HMMT February Algebra, Problem 10": [
+      2150,
+      "Prove the closed form of a finite affine nest by increasing its outermost integer."
+    ],
+    "2002 HMMT February Advanced Topics, Problem 1": [
+      2400,
+      "Covering all squares with eight knights would force every knight to have maximum degree, contradicting corner coverage."
+    ],
+    "2002 HMMT February Advanced Topics, Problem 2": [
+      1700,
+      "Every meal has at least two ingredients, so count pairwise ingredient intersections and correct the triple overlap."
+    ],
+    "2002 HMMT February Advanced Topics, Problem 3": [
+      1650,
+      "Subtract the four-digit strings with all distinct digits, treating the first digit separately."
+    ],
+    "2002 HMMT February Advanced Topics, Problem 4": [
+      1750,
+      "A double-tail pair restarts the simultaneous-coin experiment; solve for a double-head stopping pair."
+    ],
+    "2002 HMMT February Advanced Topics, Problem 5": [
+      2150,
+      "The complement consists exactly of the empty subset and contiguous integer intervals."
+    ],
+    "2002 HMMT February Advanced Topics, Problem 6": [
+      2500,
+      "Neighbors of the smallest cyclic label force two interleaved chains and leave only the initial position and orientation free."
+    ],
+    "2002 HMMT February Advanced Topics, Problem 7": [
+      2550,
+      "Equate two majority-failure binomial tails and retain the roots in the probability interval."
+    ],
+    "2002 HMMT February Advanced Topics, Problem 8": [
+      2450,
+      "Count the rectangles containing each square by four boundary choices and classify the parity of that product."
+    ],
+    "2002 HMMT February Advanced Topics, Problem 9": [
+      2300,
+      "Use change of base to fix the product of three zero-sum logarithms and evaluate their cube sum."
+    ],
+    "2002 HMMT February Advanced Topics, Problem 10": [
+      2550,
+      "Condition successive random die counts and apply the expectation tower three times."
+    ],
+    "2002 HMMT February Geometry, Problem 1": [
+      1500,
+      "A moving circular shadow sweeps an annulus with radii given by a sum and difference."
+    ],
+    "2002 HMMT February Geometry, Problem 2": [
+      1600,
+      "Equal string halves convert a bead height change into the horizontal leg of a right triangle."
+    ],
+    "2002 HMMT February Geometry, Problem 3": [
+      1500,
+      "Use the shared side length to compare square area with six equilateral triangle areas."
+    ],
+    "2002 HMMT February Geometry, Problem 4": [
+      2700,
+      "Use the finite incidence axioms to force two disjoint committees and four different cross-pair committees."
+    ],
+    "2002 HMMT February Geometry, Problem 5": [
+      2350,
+      "The two symmetric midpoint-to-corner matchings give a central square whose side follows from a right-triangle area."
+    ],
+    "2002 HMMT February Geometry, Problem 6": [
+      2050,
+      "Parameterize a uniformly translated unit square by one corner and clip its containment rectangle."
+    ],
+    "2002 HMMT February Geometry, Problem 7": [
+      3000,
+      "Compute the enclosing equilateral triangle for three outward squares; the official minimum claim omits a global supporting-triangle proof."
+    ],
+    "2002 HMMT February Geometry, Problem 8": [
+      3000,
+      "Compute the enclosing equilateral triangle for three inward squares; its global minimality is asserted without proof."
+    ],
+    "2002 HMMT February Geometry, Problem 9": [
+      1800,
+      "Use the perpendicular through a chord midpoint to combine two consecutive right triangles."
+    ],
+    "2002 HMMT February Geometry, Problem 10": [
+      2850,
+      "Use a midsegment intersection to locate a sixty-degree rotation image and transfer the requested angle."
     ]
   }
 }

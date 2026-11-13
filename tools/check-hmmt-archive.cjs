@@ -33,11 +33,13 @@ assert.equal(groups.size, 27);
       const errors = [];
       page.on('pageerror', e => errors.push(e.message));
       await page.addInitScript(theme => localStorage.setItem('theme', theme), theme);
-      const roundYears = [[2018, 'Algebra and Number Theory', 'algnt'], [2017, 'Algebra and Number Theory', 'algnt'], [2016, 'Algebra', 'alg'], [2015, 'Algebra', 'alg'], [2014, 'Algebra', 'alg'], [2013, 'Algebra', 'alg'], [2012, 'Algebra', 'alg'], [2010, 'Algebra', 'alg'], [2009, 'Algebra', 'alg'], [2008, 'Algebra', 'alg'], [2007, 'Algebra', 'alg'], [2006, 'Algebra', 'alg']];
+      const roundYears = [[2018, 'Algebra and Number Theory', 'algnt'], [2017, 'Algebra and Number Theory', 'algnt'], [2016, 'Algebra', 'alg'], [2015, 'Algebra', 'alg'], [2014, 'Algebra', 'alg'], [2013, 'Algebra', 'alg'], [2012, 'Algebra', 'alg'], [2010, 'Algebra', 'alg'], [2009, 'Algebra', 'alg'], [2008, 'Algebra', 'alg'], [2007, 'Algebra', 'alg'], [2006, 'Algebra', 'alg'], [2005, 'Algebra', 'alg'], [2004, 'Algebra', 'alg'], [2003, 'Algebra', 'alg'], [2002, 'Algebra', 'alg']];
       const mixedRounds = [['Algebra and Combinatorics', 'algcomb'], ['Algebra and Geometry', 'alggeo'], ['Combinatorics and Geometry', 'combgeo']];
       roundYears.push([2011]);
       for (const [year, algebra, algebraFolder] of roundYears) {
-        const rounds = year === 2011 ? mixedRounds : [[algebra, algebraFolder], ['Combinatorics', 'comb'], ['Geometry', 'geo']];
+        if (process.env.HMMT_YEARS && !process.env.HMMT_YEARS.split(',').map(Number).includes(year)) continue;
+        const counting = year <= 2002 ? ['Advanced Topics', 'adv'] : ['Combinatorics', 'comb'];
+        const rounds = year === 2011 ? mixedRounds : [[algebra, algebraFolder], counting, ['Geometry', 'geo']];
         const count = year === 2011 ? 20 : 10;
         await page.goto(`${base}/#/problems/hmmt-february/${year}`);
         await page.locator('.ct-papers [role="tab"]').first().waitFor();
