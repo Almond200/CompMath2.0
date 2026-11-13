@@ -24,6 +24,21 @@ for (const [round, ids] of shared) for (const [i, id] of ids.entries()) {
   else groups.set(id, metadata);
 }
 assert.equal(groups.size, 27);
+const sharedPapers = [
+  ...[[1,1], [5,5], [9,8], [10,9]].map(([a,b]) => [`2001 HMMT February Algebra, Problem ${a}`, `2001 HMMT February Advanced Topics, Problem ${b}`]),
+  ['1999 HMMT February Algebra, Problem 7', '1999 HMMT February Advanced Topics, Problem 6'],
+  ['2000 HMMT February Algebra, Problem 9', '2000 HMMT February Advanced Topics, Problem 7'],
+  ['2004 HMMT February Combinatorics, Problem 6', '2007 HMMT February Combinatorics, Problem 1']
+];
+for (const refs of sharedPapers) {
+  const metadata = refs.map(ref => {
+    const p = context.window.MATH_PROBLEM_DB.find(p => p.ref === ref);
+    assert(p, ref);
+    const slug = ref.replace(', Problem ', ' ').toLowerCase().replaceAll(' ', '-');
+    return JSON.stringify([p.formulas, p.tree, context.window.MATH_PROBLEM_RATINGS.ratings[slug].elo]);
+  });
+  assert.equal(metadata[0], metadata[1], refs.join(' / '));
+}
 
 (async () => {
   const browser = await chromium.launch({ executablePath: process.env.CHROME || '/usr/bin/chromium', args: ['--no-sandbox'] });
@@ -36,6 +51,7 @@ assert.equal(groups.size, 27);
       const roundYears = [[2018, 'Algebra and Number Theory', 'algnt'], [2017, 'Algebra and Number Theory', 'algnt'], [2016, 'Algebra', 'alg'], [2015, 'Algebra', 'alg'], [2014, 'Algebra', 'alg'], [2013, 'Algebra', 'alg'], [2012, 'Algebra', 'alg'], [2010, 'Algebra', 'alg'], [2009, 'Algebra', 'alg'], [2008, 'Algebra', 'alg'], [2007, 'Algebra', 'alg'], [2006, 'Algebra', 'alg'], [2005, 'Algebra', 'alg'], [2004, 'Algebra', 'alg'], [2003, 'Algebra', 'alg'], [2002, 'Algebra', 'alg']];
       const mixedRounds = [['Algebra and Combinatorics', 'algcomb'], ['Algebra and Geometry', 'alggeo'], ['Combinatorics and Geometry', 'combgeo']];
       roundYears.push([2011]);
+      roundYears.push(...[2001, 2000, 1999, 1998].map(year => [year, 'Algebra', 'alg']));
       for (const [year, algebra, algebraFolder] of roundYears) {
         if (process.env.HMMT_YEARS && !process.env.HMMT_YEARS.split(',').map(Number).includes(year)) continue;
         const counting = year <= 2002 ? ['Advanced Topics', 'adv'] : ['Combinatorics', 'comb'];
@@ -46,7 +62,7 @@ assert.equal(groups.size, 27);
         assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(), rounds.map(([round]) => round.replaceAll(' and ', ' & ')));
         assert.equal(await page.locator('.db-group.is-shown .pp-tiles .br-row').count(), count);
         for (const [round, folder] of rounds) {
-          const numbers = year === 2010 && round === 'Algebra' ? [1, 2, count] : year === 2018 && round === 'Geometry' ? [1, 6, count] : [1, count];
+          const numbers = year === 2000 && round === 'Algebra' ? [1, 4, 5, 6, count] : year === 2010 && round === 'Algebra' ? [1, 2, count] : year === 2018 && round === 'Geometry' ? [1, 6, count] : [1, count];
           for (const number of numbers) {
             const ref = `${year} HMMT February ${round}, Problem ${number}`;
             const slug = ref.replace(', Problem ', ' ').toLowerCase().replaceAll(' ', '-');
@@ -61,7 +77,13 @@ assert.equal(groups.size, 27);
             assert.equal(await page.locator('.chain-strategy:not(.chain-official)').count(), 0);
             assert(await page.locator('.ptree-node.is-filed').count() >= 1);
             assert.match(await page.locator('.elo-box .elo-num').innerText(), /^\d+$/);
-            assert.match(await page.locator('.chain-official-note').innerText(), new RegExp(`problem ${number}\\.$`));
+            const note = await page.locator('.chain-official-note').innerText();
+            const solution = year === 2000 && round === 'Algebra' ? ({4:6, 5:4, 6:5}[number] || number) : number;
+            assert(note.includes(solution !== number ? `paper problem ${number} is solution ${solution}.` : `this is problem ${number}.`));
+            if (year === 2000) {
+              assert(note.includes('headed “Rice Mathematics Tournament 2000.”'));
+              assert.equal(await page.locator('.chain-official-note a').getAttribute('href'), 'https://www.hmmt.org/www/archive/32');
+            } else assert(!note.includes('Rice Mathematics Tournament'));
             assert.equal(await page.locator('.katex-error').count(), 0);
             assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
           }

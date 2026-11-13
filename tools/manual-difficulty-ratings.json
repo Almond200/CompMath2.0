@@ -69,7 +69,10 @@
     "1999 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/1999/feb/geo/problems.pdf",
     "1998 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/1998/feb/alg/problems.pdf",
     "1998 HMMT February Advanced Topics": "https://hmmt-archive.s3.amazonaws.com/tournaments/1998/feb/adv/problems.pdf",
-    "1998 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/1998/feb/geo/problems.pdf"
+    "1998 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/1998/feb/geo/problems.pdf",
+    "2000 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2000/feb/alg/problems.pdf",
+    "2000 HMMT February Advanced Topics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2000/feb/adv/problems.pdf",
+    "2000 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2000/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -3031,6 +3034,126 @@
     "1998 HMMT February Geometry, Problem 10": [
       3100,
       "Unfold an equilateral billiard table into a triangular lattice to count wall hits, the final pocket and total distance."
+    ],
+    "2000 HMMT February Algebra, Problem 1": [
+      1300,
+      "Intersect two strict absolute-value inequalities and count the remaining integers."
+    ],
+    "2000 HMMT February Algebra, Problem 2": [
+      1450,
+      "Group adjacent large powers to reveal a simple difference of squares."
+    ],
+    "2000 HMMT February Algebra, Problem 3": [
+      1800,
+      "Order five bounded scores and push the outer scores to endpoints to maximize the mean-median gap."
+    ],
+    "2000 HMMT February Algebra, Problem 4": [
+      3100,
+      "Find a short addition chain for exponent two thousand and justify minimal multiplication count; the source exhibits an upper bound only."
+    ],
+    "2000 HMMT February Algebra, Problem 5": [
+      1300,
+      "Multiply successive percentage factors independently of their order and round to cents."
+    ],
+    "2000 HMMT February Algebra, Problem 6": [
+      1950,
+      "Aggregate two full fair work cycles and bound the number of further single-worker days."
+    ],
+    "2000 HMMT February Algebra, Problem 7": [
+      2150,
+      "Translate a divisor-product condition into a four-divisor classification, retaining the exceptional unit."
+    ],
+    "2000 HMMT February Algebra, Problem 8": [
+      2200,
+      "Group age factor triples by equal sums and extract every oldest age still consistent with ambiguity."
+    ],
+    "2000 HMMT February Algebra, Problem 9": [
+      2350,
+      "Use two equal positive ratios to convert a difference of norms into a difference product; the algebra paper omits positivity."
+    ],
+    "2000 HMMT February Algebra, Problem 10": [
+      2850,
+      "Find a universal quartic factorization and rule out each smaller parameter with a prime witness."
+    ],
+    "2000 HMMT February Advanced Topics, Problem 1": [
+      1650,
+      "Fix one tetrahedron face and identify the two rotational orders of the remaining three colors."
+    ],
+    "2000 HMMT February Advanced Topics, Problem 2": [
+      1450,
+      "Recognize conjugate cube roots of unity and raise each to the sixth power."
+    ],
+    "2000 HMMT February Advanced Topics, Problem 3": [
+      1850,
+      "Split a quadratic reciprocal into two shifted terms and telescope an infinite series."
+    ],
+    "2000 HMMT February Advanced Topics, Problem 4": [
+      2150,
+      "Classify five-element subsets by their three residue-class occupancies and normalize the favorable count."
+    ],
+    "2000 HMMT February Advanced Topics, Problem 5": [
+      2100,
+      "Bound and enumerate the three-digit numbers equal to the sum of their digit cubes."
+    ],
+    "2000 HMMT February Advanced Topics, Problem 6": [
+      1900,
+      "Choose the sole fixed hat recipient and derange the remaining five."
+    ],
+    "2000 HMMT February Advanced Topics, Problem 7": [
+      2350,
+      "Use two equal positive ratios to convert a difference of norms into a difference product; the algebra paper omits positivity."
+    ],
+    "2000 HMMT February Advanced Topics, Problem 8": [
+      2600,
+      "Complement a six-regular graph to a disjoint union of cycles and classify its component sizes up to isomorphism."
+    ],
+    "2000 HMMT February Advanced Topics, Problem 9": [
+      2650,
+      "Count successes before the third out and add the conditional extra-inning probability at a tie."
+    ],
+    "2000 HMMT February Advanced Topics, Problem 10": [
+      2900,
+      "Iterate public knowledge of consecutive positive integers until a boundary value forces the first affirmative answer."
+    ],
+    "2000 HMMT February Geometry, Problem 1": [
+      1450,
+      "Choose two horizontal and two vertical grid lines to count all checkerboard rectangles."
+    ],
+    "2000 HMMT February Geometry, Problem 2": [
+      2200,
+      "Fix the sum of squared medians through the side-square identity, then attain the Cauchy bound in an equilateral triangle."
+    ],
+    "2000 HMMT February Geometry, Problem 3": [
+      1700,
+      "Apply the opposite-corner squared-distance identity in a square."
+    ],
+    "2000 HMMT February Geometry, Problem 4": [
+      1750,
+      "Recognize the fixed three-quarter remainder in each subdivided rectangular block."
+    ],
+    "2000 HMMT February Geometry, Problem 5": [
+      2150,
+      "Add and subtract equilateral and sixty-degree triangular regions of a diagrammed pentagon."
+    ],
+    "2000 HMMT February Geometry, Problem 6": [
+      1600,
+      "Recover an equilateral triangle side and inradius from its area, then measure the maximal disk."
+    ],
+    "2000 HMMT February Geometry, Problem 7": [
+      2450,
+      "Scale an ellipse to a circle; three unit vectors with zero sum force an equilateral image triangle."
+    ],
+    "2000 HMMT February Geometry, Problem 8": [
+      2750,
+      "Use the centered square-pyramid section to obtain the insphere radius and compare its inscribed cube volume."
+    ],
+    "2000 HMMT February Geometry, Problem 9": [
+      2450,
+      "Enumerate six-cycles in the diagrammed Petersen graph, allowing the stated nonconvex and crossing hexagons."
+    ],
+    "2000 HMMT February Geometry, Problem 10": [
+      2850,
+      "Reduce a concentric-sphere light path to a planar annulus and count equal angular advances until its first return."
     ]
   }
 }

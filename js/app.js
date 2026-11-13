@@ -9667,11 +9667,22 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // more: Topic (where it sits in the topic tree), Difficulty (its Elo among its contest's),
   // Brief solution (the strategy and its cards), then Study a concept more.
   const chainSec = (title, body) => `<div class="chain-study chain-sec"><h4 class="chain-study-h">${title}</h4>${body}</div>`;
+  function officialSolutionNote(p) {
+    const legacy = /^2000 HMMT February /.test(p.ref);
+    // The canonical archive's 2000 algebra solution PDF orders these three items differently.
+    const solution = legacy && /^2000 HMMT February Algebra,/.test(p.ref)
+      ? ({ 4: 6, 5: 4, 6: 5 }[p.num] || p.num) : p.num;
+    const number = solution !== p.num
+      ? `; paper problem ${p.num} is solution ${solution}`
+      : p.num ? `; this is problem ${p.num}` : "";
+    return `The round's official solutions, as one PDF${number}.${legacy
+      ? ` The <a href="https://www.hmmt.org/www/archive/32" target="_blank" rel="noopener noreferrer">HMMT February 2000 archive</a> links these PDFs, which are headed “Rice Mathematics Tournament 2000.”` : ""}`;
+  }
   function chainInnerHtml(p, chainCol, chain, altIds, afterChain = "") {
     return `<div class="chain-duo">${chainSec("Topic", topicTreeHtml(p))}${chainSec("Difficulty", difficultyHtml(p))}</div>
         ${chainSec("Brief solution", `${ownFigureHtml(p)}${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>`
           // No solution of our own for these (owner, 2026-11-12): the contest's official one is a click away.
-          : p.solUrl ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">The round's official solutions, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.</span></p>` : ""}
+          : p.solUrl ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">${officialSolutionNote(p)}</span></p>` : ""}
         ${p.trick ? `<p class="chain-strategy chain-alt">${p.trick}</p>` : ""}
         <div class="chain-grid">
           ${chainCol("Pattern", chain.pattern, "Not classified yet")}
