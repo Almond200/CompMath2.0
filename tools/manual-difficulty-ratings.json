@@ -117,7 +117,10 @@
     "2021 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC_2021_Combo_A.pdf",
     "2021 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC_2021_Combo_B.pdf",
     "2021 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_A_2021-1.pdf",
-    "2021 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2021-1.pdf"
+    "2021 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2021-1.pdf",
+    "2020 BMT Algebra": "https://berkeley.mt/archives/bmt-2020/algebra-problems.pdf",
+    "2020 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2020/discrete-problems.pdf",
+    "2020 BMT Geometry": "https://berkeley.mt/archives/bmt-2020/geometry-problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -6759,6 +6762,126 @@
     "2021 PUMaC Division B Number Theory, Problem 8": [
       3500,
       "Group a normalized GCD sum by divisor classes, factor its mean and solve the rational prime-power product using parity and lower bounds."
+    ],
+    "2020 BMT Algebra, Problem 1": [
+      900,
+      "Sum twelve equal-duration blocks of a steadily increasing juggling rate, including the final second."
+    ],
+    "2020 BMT Algebra, Problem 2": [
+      1300,
+      "Convert a reciprocal root-ratio sum to the squared root sum divided by the root product and recover its requested square root."
+    ],
+    "2020 BMT Algebra, Problem 3": [
+      1900,
+      "Force one repeated real root among a prescribed complete zero set and average its shifted polynomial values."
+    ],
+    "2020 BMT Algebra, Problem 4": [
+      1900,
+      "Expand powers of the golden ratio in its quadratic basis and sum the resulting Fibonacci coefficients."
+    ],
+    "2020 BMT Algebra, Problem 5": [
+      2550,
+      "Derive repeated-square function values from a multiplicative functional equation and track their eventual two-cycle modulo one hundred."
+    ],
+    "2020 BMT Algebra, Problem 6": [
+      2350,
+      "Use Pascal to rewrite a ratio of neighboring binomial coefficients as a telescoping reciprocal difference."
+    ],
+    "2020 BMT Algebra, Problem 7": [
+      2700,
+      "Turn a cyclic cubic sum into a product under its zero-sum substitution and use the fixed original product to evaluate it."
+    ],
+    "2020 BMT Algebra, Problem 8": [
+      3350,
+      "Build two Euclidean norm triangle inequalities to bound an unconstrained quartic-radical expression and verify the sharp equality point."
+    ],
+    "2020 BMT Algebra, Problem 9": [
+      3650,
+      "Recognize a cubic norm as a determinant preserved by inverse powers or as a roots-of-unity factorization, then verify the unique bounded integer triple."
+    ],
+    "2020 BMT Algebra, Problem 10": [
+      3650,
+      "Interpret inverse-cosine summands as adjacent right-triangle angles and telescope to a limiting right angle with the principal branches checked."
+    ],
+    "2020 BMT Discrete Math, Problem 1": [
+      850,
+      "Count distinct arrangements with one forbidden first entry."
+    ],
+    "2020 BMT Discrete Math, Problem 2": [
+      1550,
+      "Separate two distinct integer draws by their residues modulo four and account for sampling without replacement."
+    ],
+    "2020 BMT Discrete Math, Problem 3": [
+      1750,
+      "Recover a near-prime factorial residue by removing the final two factors in Wilson theorem."
+    ],
+    "2020 BMT Discrete Math, Problem 4": [
+      2300,
+      "Track odd toggle counts for two symmetric edge lights while the middle light changes deterministically."
+    ],
+    "2020 BMT Discrete Math, Problem 5": [
+      2550,
+      "Filter the even number of negative factors in an independent continuous product and identify the largest rational-power exponent."
+    ],
+    "2020 BMT Discrete Math, Problem 6": [
+      2650,
+      "Subtract the subsets bounded by a maximum cutoff and evaluate the resulting prime-adic power difference."
+    ],
+    "2020 BMT Discrete Math, Problem 7": [
+      2950,
+      "Shift a positive integer cubic equation to bound its least variable and finish by two small factor-pair cases."
+    ],
+    "2020 BMT Discrete Math, Problem 8": [
+      3300,
+      "Bound qualifying binary-tree branching nodes by their required descendant populations and verify an attaining recruitment tree."
+    ],
+    "2020 BMT Discrete Math, Problem 9": [
+      3450,
+      "Iterate an integer linear map on a fractional-part square and count its fixed points through a half-open lattice fundamental region."
+    ],
+    "2020 BMT Discrete Math, Problem 10": [
+      3700,
+      "Convert quadratic polynomial images to odd-prime-power square residues, separate their valuations and factor a double sum of residue counts."
+    ],
+    "2020 BMT Geometry, Problem 1": [
+      900,
+      "Count the two new circular faces introduced by each parallel cylinder cut."
+    ],
+    "2020 BMT Geometry, Problem 2": [
+      1450,
+      "Use the fixed sum of two tangent-circle radii to minimize their squared-area sum; the first source proof is valid while the second AM-GM argument is insufficient."
+    ],
+    "2020 BMT Geometry, Problem 3": [
+      1700,
+      "Recover a right triangular prism base and height from two sixty-degree angles and a side diagonal."
+    ],
+    "2020 BMT Geometry, Problem 4": [
+      2250,
+      "Decompose a pillar-occluded viewing region into annular sectors and tangent triangles, independently checking it by ray integration."
+    ],
+    "2020 BMT Geometry, Problem 5": [
+      2600,
+      "Find the area ratio of cyclically weighted squares and sum the infinite geometric area series in its reduced squarefree form."
+    ],
+    "2020 BMT Geometry, Problem 6": [
+      2750,
+      "Obtain a disphenoid height from a congruent-face cross-section and evaluate its squared volume."
+    ],
+    "2020 BMT Geometry, Problem 7": [
+      2850,
+      "Relate an auxiliary circumcenter radius to a chord of the original circle through paired isosceles angles."
+    ],
+    "2020 BMT Geometry, Problem 8": [
+      3250,
+      "Recognize three reflected medians as symmedians, derive squared-side cevian ratios and convert the concurrence point to area coordinates."
+    ],
+    "2020 BMT Geometry, Problem 9": [
+      3900,
+      "Flatten a convex polygon to an integer-perimeter triangle, construct equal Fibonacci side groups and check the minimal radical representation."
+    ],
+    "2020 BMT Geometry, Problem 10": [
+      4000,
+      "Use the Urquhart focal-sum configuration to transfer an ellipse intersection perimeter and independently verify the original ordered intersections."
     ]
   }
 }
