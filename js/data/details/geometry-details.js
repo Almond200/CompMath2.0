@@ -4067,6 +4067,7 @@ AIME three-dimensional problems: the distance between skew edges or face diagona
 - $A \le \dfrac{P^2}{4\pi}$ — among all shapes of perimeter $P$, the circle has the largest area
 - $A_{\text{rect}} \le \dfrac{P^2}{16}$ — among rectangles, the square
 - $A_\triangle \le \dfrac{P^2}{12\sqrt3}$ — among triangles, the equilateral one
+- $K \le \sqrt{(s - a)(s - b)(s - c)(s - d)}$ — among quadrilaterals with sides $a, b, c, d$ (semiperimeter $s$), the cyclic one has the largest area
 - the regular $n$-gon has the largest area among $n$-gons of a given perimeter, and for fixed side lengths the cyclic polygon has the largest area
 
 ## Conditions
@@ -4077,7 +4078,9 @@ Rectangle: with sides $x$ and $y$ and $x + y = \frac P2$, AM-GM gives $xy \le \l
 
 Triangle: Heron's Formula gives $A^2 = s(s - a)(s - b)(s - c)$, and the three factors after $s$ add to $3s - 2s = s$, so AM-GM gives $(s - a)(s - b)(s - c) \le \left(\frac s3\right)^3$. Then $A^2 \le \frac{s^4}{27}$, so $A \le \frac{s^2}{3\sqrt3} = \frac{P^2}{12\sqrt3}$, with equality for the equilateral triangle.
 
-For polygons the classical chain is: the cyclic arrangement maximizes area for given sides, because [[bretschneiders-formula|Bretschneider's]] cosine term vanishes; then the regular polygon among cyclic ones; then the circle. The circle bound $A \le \frac{P^2}{4\pi}$ for all closed curves, and the step to the regular polygon, are quoted, not proved here; a survey of the proofs is V. Blåsjö, "The Isoperimetric Problem", American Mathematical Monthly 112 (2005), 526–566.
+Quadrilateral with given sides: [[bretschneiders-formula|Bretschneider's Formula]] gives $K^2 = (s - a)(s - b)(s - c)(s - d) - abcd\cos^2\frac{A + C}{2}$, where $A$ and $C$ are opposite angles. The subtracted term is never negative, so $K^2 \le (s - a)(s - b)(s - c)(s - d)$, with equality exactly when $\cos\frac{A + C}{2} = 0$, that is $A + C = 180^\circ$, which is when the quadrilateral is [[cyclic-opposite-angles|cyclic]]. The bound is attained, since four lengths that can form a quadrilateral can always be hinged into a cyclic one, and the maximum is then [[brahmaguptas-formula|Brahmagupta's Formula]].
+
+For polygons in general the classical chain is: the cyclic arrangement maximizes area for given sides, as in the quadrilateral case; then the regular polygon among cyclic ones; then the circle. The circle bound $A \le \frac{P^2}{4\pi}$ for all closed curves, and the step to the regular polygon, are quoted, not proved here; a survey of the proofs is V. Blåsjö, "The Isoperimetric Problem", American Mathematical Monthly 112 (2005), 526–566.
 
 ## Useful observations
 - Optimization problems that ask for a maximum area with a perimeter budget, or a minimum perimeter for an area, end at the symmetric configuration: the fact is quoted, the symmetric case computed, and the equality condition confirmed.

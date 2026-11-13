@@ -2575,8 +2575,8 @@ window.MATH_SECTIONS.push({
           id: "isoperimetric-facts",
           name: "Isoperimetric Facts",
           latex: String.raw`A \le \frac{P^2}{4\pi} \text{ (circle)}, \qquad A_{\text{rect}} \le \frac{P^2}{16} \text{ (square)}, \qquad A_{\triangle} \le \frac{P^2}{12\sqrt{3}} \text{ (equilateral)}`,
-          description: String.raw`For a fixed perimeter $P$, the area $A$ is maximized by the most symmetric shape: the square among rectangles ($xy \le \left(\frac{x+y}{2}\right)^2$), the equilateral among triangles (by AM-GM on [[herons-formula|Heron]]), the regular $n$-gon among $n$-gons, and the circle overall. For fixed side lengths, the cyclic polygon maximizes area.`,
-          keywords: ["maximize area", "fixed perimeter", "isoperimetric", "square best rectangle", "regular maximizes", "maximization"],
+          description: String.raw`For a fixed perimeter $P$, the area $A$ is maximized by the most symmetric shape: the square among rectangles ($xy \le \left(\frac{x+y}{2}\right)^2$), the equilateral among triangles (by AM-GM on [[herons-formula|Heron]]), the regular $n$-gon among $n$-gons, and the circle overall. For fixed side lengths, the cyclic polygon maximizes area: a quadrilateral with given sides has the largest area when it is cyclic, and that area is Brahmagupta's $\sqrt{(s-a)(s-b)(s-c)(s-d)}$.`,
+          keywords: ["maximize area", "fixed perimeter", "isoperimetric", "square best rectangle", "regular maximizes", "maximization", "cyclic quadrilateral maximum area", "given side lengths largest area"],
           importance: "low",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
