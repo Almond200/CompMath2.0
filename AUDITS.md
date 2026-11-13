@@ -2426,6 +2426,12 @@ The 2009–2014 book also holds ARML Local, ARML's own local contest; its Indivi
 
 **Reading.** Every problem was read with its official solution. The 2024 solution PDFs lose their mathematics in text extraction (the formulas are in fonts without a character map), so 2024 was filed from the problem papers, which extract cleanly, and the solutions' prose. **Judgement calls:** three problems cite no card because none fits their route: 2013 Advanced #9 (a candle-timing puzzle), 2019 Algebra #9 (an increasing function whose compositions are arithmetic) and 2025 Algebra #10 (distinct roots of compositions of three linear maps). No new node or card was needed apart from TQ21, and no source error was noticed.
 
+## Duke Math Meet
+
+### Sources and coverage (recorded 2026-11-13)
+
+`math.duke.edu/duke-math-meet` lists the past rounds. The Individual round is posted for 2007 to 2022 (none for 2006, and none yet after 2022); 2007 and 2008 have 8 problems, later years 10. Solutions are posted for 2012, 2013 and 2019 to 2022 (2020 in one booklet with the problems); 2007 to 2009 have answer sheets only, which the app does not present as solutions; the other years have nothing. The older files moved from `services.math.duke.edu` to `sites.math.duke.edu`, so the app links the new address. The 2022 files have generic names (`Individual Round.pdf`, `Solution Booklet.pdf`); their contents were checked to be 2022's. The meet labelled 2013 was held in February 2014. Where no solution was posted, the filing follows the route the problem calls for, checked against the posted answer. Three problems cite no card: 2008 #3 (two ducks racing along curves), 2015 #9 (observers covering an interval) and 2022 #8 (a fire-blocking game). No new node or card was needed.
+
 ## CMIMC (blocked)
 
 `cmimc.math.cmu.edu/math/past-problems` lists every individual test from 2016 to 2026, but on 2026-11-13 the site served none of its static files: each PDF, its stylesheet and its favicon returned 404, and the Wayback Machine was unreachable from a cloud chat (and had no snapshot of the PDF tried). Opened inside a browser page, the same files return 200 with a PDF, so the archive is fine for readers and the site only refuses automated clients. A scripted bulk download through the browser was refused by the session's safety check (it would get around the site's bot protection), so CMIMC was not started; it needs the owner's permission or the PDFs supplied (PLAN.md, Step H).

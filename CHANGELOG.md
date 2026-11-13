@@ -2,6 +2,8 @@
 
 **2026-11-13**
 
+- **Duke Math Meet Individual round (owner: "the individual rounds on the other sets"):** 156 problems, 2007 to 2022, read from the files Duke's mathematics department posts (with its solutions or answers where posted), filed, tagged and rated by author estimate. Duke Math Meet is its own family; each page links the year's official file and, where there is one, its solutions. Three problems cite no card because none fits (2008 #3, 2015 #9, 2022 #8).
+
 - **ARML Local Individual round (owner: "the individual rounds on the other sets"):** 60 problems, 2009 to 2014, read with the official solutions in ARML's 2009–2014 book, filed, tagged and rated by author estimate (800 to 2300). ARML Local is its own family, after ARML; each page opens the book at the round's problems or solutions.
 
 - **CMIMC still waits (recorded):** its PDFs load in a browser, so the archive and any links to it work; only automated downloads get 404, and a scripted bulk download was refused as getting around the site's bot protection. It needs the owner's permission or the PDFs supplied (PLAN.md, Step H).

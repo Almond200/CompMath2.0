@@ -2917,7 +2917,7 @@
   // (owner, 2026-10-31): the contest's level plus the place in its paper. The offsets say roughly
   // where each contest starts against the others (an early AIME problem is about as hard as a
   // late AMC 12 one); they order a list, they are not a rating.
-  const FAM_LEVEL = { "AMC 8": 0, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "ARML": 1.8, "ARML Local": 1.2, "SMT": 1.9, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
+  const FAM_LEVEL = { "AMC 8": 0, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "ARML": 1.8, "ARML Local": 1.2, "SMT": 1.9, "Duke Math Meet": 1.5, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
   function difficultyScore(p) { return (FAM_LEVEL[p.fam] != null ? FAM_LEVEL[p.fam] : 2) + paperPos(p); }
   // Contest profile (rebuilt 2026-11-11, now that every problem has a rating and a place in the
   // topic tree): a strip of headline figures, then label-and-value rows. Everything is computed
@@ -3159,7 +3159,8 @@
     "HMMT": "https://www.hmmt.org/www/archive/problems",
     "ARML": "https://www.arml.com/ARML/arml_2019/page/index.php?page_type=public&page=4",
     "ARML Local": "https://www.arml.com/ARML/arml_2019/page/index.php?page_type=public&page=4",
-    "SMT": "https://www.stanfordmathtournament.com/past-tests/problems"
+    "SMT": "https://www.stanfordmathtournament.com/past-tests/problems",
+    "Duke Math Meet": "https://math.duke.edu/duke-math-meet"
   };
   // The button has to say where it goes: an HMMT link lands on a round's archive, not on a
   // per-problem page, and calling that "AoPS" would be simply false.
@@ -3198,8 +3199,26 @@
     const m = ref.match(/^(\d{4}) SMT (.+?),\s*Problem\s+\d+$/);
     return m && SMT_CODE[m[2]] ? `https://www.stanfordmathtournament.com/pdfs/smt${m[1]}/${SMT_CODE[m[2]]}-${which}.pdf` : null;
   }
+  // Duke Math Meet: each year's Individual round as Duke's math department posts it, with the
+  // solutions where it posted them (2007 to 2009 and 2011, 2014 to 2018 have answers or nothing).
+  const DMM_NEW = "https://math.duke.edu/sites/math.duke.edu/files/documents/", DMM_OLD = "https://sites.math.duke.edu/dumu/mathmeet/prob/";
+  const DMM_FILES = {
+    2022: [DMM_NEW + "Individual%20Round.pdf", DMM_NEW + "Solution%20Booklet.pdf"],
+    2021: [DMM_NEW + "DMM_2021_Individual_Round.pdf", DMM_NEW + "DMM_2021_Solutions_Updated.pdf"],
+    2020: [DMM_NEW + "DMM_2020_Problems_And_Solutions.pdf", DMM_NEW + "DMM_2020_Problems_And_Solutions.pdf"],
+    2019: [DMM_OLD + "DMM_2019_Individual_Round.pdf", DMM_OLD + "DMM_2019_Solutions.pdf"],
+    2018: [DMM_OLD + "2018_Individual.pdf"], 2017: [DMM_OLD + "2017_Indiv.pdf"], 2016: [DMM_OLD + "2016_indiv.pdf"],
+    2015: [DMM_OLD + "2015_Individual.pdf"], 2014: [DMM_OLD + "2014_Individual.pdf"],
+    2013: [DMM_OLD + "2013_Individual.pdf", DMM_OLD + "2013_Individual.pdf"], 2012: [DMM_OLD + "2012_Individual.pdf", DMM_OLD + "2012_Individual.pdf"],
+    2011: [DMM_OLD + "2011_Individual.pdf"], 2010: [DMM_OLD + "2010_Problems.pdf"],
+    2009: [DMM_OLD + "2009_individual.pdf"], 2008: [DMM_OLD + "2008_individual.pdf"], 2007: [DMM_OLD + "2007_individual.pdf"]
+  };
+  function dmmPdf(ref, which) {
+    const m = ref.match(/^(\d{4}) Duke Math Meet Individual,\s*Problem\s+\d+$/), f = m && DMM_FILES[m[1]];
+    return f ? (which === "solutions" ? f[1] || null : f[0]) : null;
+  }
   // The official paper or solutions as a PDF, for the contests that publish them.
-  const officialPdf = (ref, which) => hmmtPdf(ref, which) || armlPdf(ref, which) || smtPdf(ref, which);
+  const officialPdf = (ref, which) => hmmtPdf(ref, which) || armlPdf(ref, which) || smtPdf(ref, which) || dmmPdf(ref, which);
   function aopsUrl(ref, fam) {
     if (fam && ARCHIVE_URL[fam]) return ARCHIVE_URL[fam];
     const m = ref.match(/^(.*),\s*Problem\s+(\d+)\s*$/);
@@ -3243,7 +3262,8 @@
     else if (/Putnam/i.test(core)) fam = "Putnam";
     else if (/^ARML Local\b/i.test(core)) fam = "ARML Local";  // ARML's local contest, Individual round (owner, 2026-11-13)
     else if (/^ARML\b/i.test(core)) fam = "ARML";            // the Individual round only (owner, 2026-11-13)
-    else if (/^SMT\b/i.test(core)) fam = "SMT";              // the subject tests (owner, 2026-11-13); the round stays in cname
+    else if (/^SMT\b/i.test(core)) fam = "SMT";
+    else if (/^Duke Math Meet\b/i.test(core)) fam = "Duke Math Meet";  // the Individual round (owner, 2026-11-13)              // the subject tests (owner, 2026-11-13); the round stays in cname
     // HMMT runs two tournaments a year of quite different difficulty, so they are separate
     // families rather than one pile. The round (Algebra, Combinatorics, Guts, Team) stays in
     // `cname`, which dbMainHtml already uses as the heading within a year.
@@ -3369,7 +3389,7 @@
   // Competition → year → problems tree for the Database sidebar navigator.
   const DB_TREE = {};
   PROBLEM_DB.forEach(p => { (DB_TREE[p.fam] = DB_TREE[p.fam] || {}); (DB_TREE[p.fam][p.year] = DB_TREE[p.fam][p.year] || []).push(p); });
-  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "ARML", "ARML Local", "SMT", "Putnam", "HMMT"];
+  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "ARML", "ARML Local", "SMT", "Duke Math Meet", "Putnam", "HMMT"];
   const FAMILIES = Object.keys(DB_TREE).sort((a, b) => {
     const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
@@ -4638,6 +4658,7 @@
               <p>Problems from the individual rounds of <a href="https://www.hmmt.org/www/archive/problems" target="_blank" rel="noopener noreferrer">HMMT February</a> (Algebra and Number Theory, Combinatorics, Geometry) and HMMT November (General, Theme) are listed by topic and difficulty. Their statements and solutions are not reproduced: each problem's page opens the round's official paper and its official solutions on the HMMT archive. Mock contests also use author-restated prompts from the <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf" target="_blank" rel="noopener noreferrer">2019 HMMT February Geometry paper</a>, with answer values checked against its <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/solutions.pdf" target="_blank" rel="noopener noreferrer">official solutions</a>. HMMT material is attributed separately; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual round of <a href="https://www.arml.com/ARML/arml_2019/page/index.php?page_type=public&amp;page=4" target="_blank" rel="noopener noreferrer">ARML</a> (2009 to 2014 and 2016 to 2019, the years ARML has published) are listed the same way: their statements and solutions are not reproduced, and each problem's page opens ARML's official contest booklet at the round. The Individual round of ARML Local, ARML's own local contest, is listed the same way for 2009 to 2014, from the same book. ARML problems are &copy; American Regions Mathematics League; the MAA license above does not apply to them.</p>
               <p>Problems from the subject tests of the <a href="https://www.stanfordmathtournament.com/past-tests/problems" target="_blank" rel="noopener noreferrer">Stanford Math Tournament</a> (SMT: Algebra, Geometry, and Advanced, Discrete or in 2021 Combinatorics and Number Theory) are listed the same way: each problem's page opens SMT's official test and its official solutions; nothing is reproduced. SMT material is attributed to SMT; the MAA license above does not apply to it.</p>
+              <p>Problems from the Individual round of the <a href="https://math.duke.edu/duke-math-meet" target="_blank" rel="noopener noreferrer">Duke Math Meet</a> (2007 to 2022) are listed the same way: each problem's page opens the round as Duke's mathematics department posts it, and its solutions where they were posted; nothing is reproduced. Duke Math Meet material is attributed to the Duke Math Meet; the MAA license above does not apply to it.</p>
             </div>
           </div></div>
         </section>
@@ -9455,7 +9476,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   // Difficulty: Elo ratings in bins of 200. Each contest has its own colour (the level tokens),
   // so one chart can stack every contest and still show which is which.
-  const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)", "HMMT November": "var(--level-hmmtn)", "ARML": "var(--level-arml)", "ARML Local": "var(--level-arml-local)", "SMT": "var(--level-smt)" };
+  const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)", "HMMT November": "var(--level-hmmtn)", "ARML": "var(--level-arml)", "ARML Local": "var(--level-arml-local)", "SMT": "var(--level-smt)", "Duke Math Meet": "var(--level-dmm)" };
   const famColor = f => FAM_COLOR[f] || "var(--level-oly)";
   const RATED_FAMS = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && Number.isFinite(p.elo)));
   // The scale ends at 3800 unless a problem is rated above that (owner, 2026-11-12: harder
@@ -10249,7 +10270,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const sitting = p.ref.replace(/,?\s*Problem.*$/, "").trim();
       const base = sitting.replace(/\b(19|20)\d\d\b/, "").replace(/\s+/g, " ").trim();
       bump(sitting); bump(base);
-      const m = base.match(/^(Fall )?(AMC 1[02]|AIME|HMMT February|HMMT November|HMMT|ARML Local|ARML|SMT)/);
+      const m = base.match(/^(Fall )?(AMC 1[02]|AIME|HMMT February|HMMT November|HMMT|ARML Local|ARML|SMT|Duke Math Meet)/);
       if (m && m[2] !== base) bump(m[2]);
       if (/^HMMT (February|November)/.test(base) && base !== "HMMT") bump("HMMT");
     });

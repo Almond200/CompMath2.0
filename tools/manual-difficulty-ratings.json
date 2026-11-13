@@ -7591,6 +7591,630 @@
     "2014 ARML Local Individual, Problem 10": [
       2300,
       "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): the extreme positions of the triangles' apexes."
+    ],
+    "2007 Duke Math Meet Individual, Problem 1": [
+      1100,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): choose three of the 18 non-brown balls."
+    ],
+    "2007 Duke Math Meet Individual, Problem 2": [
+      1200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): areas scale with radius squared; square inscribed in circle A."
+    ],
+    "2007 Duke Math Meet Individual, Problem 3": [
+      1200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): x + y ranges over [-sqrt 2, sqrt 2]."
+    ],
+    "2007 Duke Math Meet Individual, Problem 4": [
+      1800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): deuce: win two in a row, else back to even."
+    ],
+    "2007 Duke Math Meet Individual, Problem 5": [
+      1600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the right column is every eighth term of a geometric series."
+    ],
+    "2007 Duke Math Meet Individual, Problem 6": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the three substitutions cycle; solve the linear system."
+    ],
+    "2007 Duke Math Meet Individual, Problem 7": [
+      1800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): set y = sqrt(x^2 + 7x + 6) and solve."
+    ],
+    "2007 Duke Math Meet Individual, Problem 8": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): right angles at D and E from the diameters; find E's position."
+    ],
+    "2008 Duke Math Meet Individual, Problem 1": [
+      1000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the product of the factors does not depend on the order."
+    ],
+    "2008 Duke Math Meet Individual, Problem 2": [
+      1100,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): exponents of 2 and 3 meeting both conditions."
+    ],
+    "2008 Duke Math Meet Individual, Problem 3": [
+      2000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): compare the curves' arc lengths at equal speeds; no card fits."
+    ],
+    "2008 Duke Math Meet Individual, Problem 4": [
+      1700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): area of the target region over the mat."
+    ],
+    "2008 Duke Math Meet Individual, Problem 5": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): each pairing must be a top-two choice on both sides."
+    ],
+    "2008 Duke Math Meet Individual, Problem 6": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): edge ratios from the given angles, then the triangle CEG."
+    ],
+    "2008 Duke Math Meet Individual, Problem 7": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): states by the distance between the pieces."
+    ],
+    "2008 Duke Math Meet Individual, Problem 8": [
+      2300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): sum k * C(n, k) = n 2^(n-1), then mod 100."
+    ],
+    "2009 Duke Math Meet Individual, Problem 1": [
+      1300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): add primes from 5 until the average is 12."
+    ],
+    "2009 Duke Math Meet Individual, Problem 2": [
+      1200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): glue the pair: 2(n-1)!/n!."
+    ],
+    "2009 Duke Math Meet Individual, Problem 3": [
+      1600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): 10a + b = a + b^2 gives 9a = b(b - 1)."
+    ],
+    "2009 Duke Math Meet Individual, Problem 4": [
+      1300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the remainder ax + b from the two values."
+    ],
+    "2009 Duke Math Meet Individual, Problem 5": [
+      1800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): reflect across the three rivers in turn."
+    ],
+    "2009 Duke Math Meet Individual, Problem 6": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): every zombie must reach a plate; place five plates around 13."
+    ],
+    "2009 Duke Math Meet Individual, Problem 7": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the alternating sum is the area of the central rectangle's reflection pieces."
+    ],
+    "2009 Duke Math Meet Individual, Problem 8": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): expand; the sum depends on a quadratically; minimise."
+    ],
+    "2009 Duke Math Meet Individual, Problem 9": [
+      2400,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): all elements are congruent mod n - 1, which divides 2008."
+    ],
+    "2009 Duke Math Meet Individual, Problem 10": [
+      2500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): a weighted sum is invariant; the entries converge to it."
+    ],
+    "2010 Duke Math Meet Individual, Problem 1": [
+      1500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): each person waits for those before them; linearity."
+    ],
+    "2010 Duke Math Meet Individual, Problem 2": [
+      1300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the three distances sum to the altitude."
+    ],
+    "2010 Duke Math Meet Individual, Problem 3": [
+      1500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): a round with no winner repeats; geometric series."
+    ],
+    "2010 Duke Math Meet Individual, Problem 4": [
+      1400,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): inside the semicircle on AB the angle is obtuse."
+    ],
+    "2010 Duke Math Meet Individual, Problem 5": [
+      1700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the midpoint quadrilateral is a square when the diagonals are equal and perpendicular."
+    ],
+    "2010 Duke Math Meet Individual, Problem 6": [
+      1700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): count exponent choices that are multiples of 3."
+    ],
+    "2010 Duke Math Meet Individual, Problem 7": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): x, y, z are roots of a cubic; evaluate it at -2."
+    ],
+    "2010 Duke Math Meet Individual, Problem 8": [
+      1800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): f(x) - x vanishes at the given points."
+    ],
+    "2010 Duke Math Meet Individual, Problem 9": [
+      2400,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): states of the puzzle form a cycle; expected hitting time."
+    ],
+    "2010 Duke Math Meet Individual, Problem 10": [
+      2600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): positive coefficients force negative roots; few small cases work."
+    ],
+    "2011 Duke Math Meet Individual, Problem 1": [
+      900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the lcm of 5, 8 and 12."
+    ],
+    "2011 Duke Math Meet Individual, Problem 2": [
+      1300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the ten numbers with fewest divisors: primes first."
+    ],
+    "2011 Duke Math Meet Individual, Problem 3": [
+      2300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): a colouring bound and a construction."
+    ],
+    "2011 Duke Math Meet Individual, Problem 4": [
+      1600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): sum of squares of the roots from Vieta."
+    ],
+    "2011 Duke Math Meet Individual, Problem 5": [
+      1700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): non-adjacent squares including diagonals; count by size."
+    ],
+    "2011 Duke Math Meet Individual, Problem 6": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): f(n) is the parity of the triangular number."
+    ],
+    "2011 Duke Math Meet Individual, Problem 7": [
+      2000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): (q+p)^n - (q-p)^n picks the odd counts; one game differs."
+    ],
+    "2011 Duke Math Meet Individual, Problem 8": [
+      2000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): divide to reduce to a divisor of a constant."
+    ],
+    "2011 Duke Math Meet Individual, Problem 9": [
+      2300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): a_n = sin of an angle; the recurrence adds a fixed angle."
+    ],
+    "2011 Duke Math Meet Individual, Problem 10": [
+      2800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the best packing places the circles along a diagonal."
+    ],
+    "2012 Duke Math Meet Individual, Problem 1": [
+      900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): two of the six orders are derangements."
+    ],
+    "2012 Duke Math Meet Individual, Problem 2": [
+      1500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): unfold the bounces into a straight line."
+    ],
+    "2012 Duke Math Meet Individual, Problem 3": [
+      1200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): factor out 106 and reduce gcd(2001, 1002)."
+    ],
+    "2012 Duke Math Meet Individual, Problem 4": [
+      1700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): maximise sum times its probability."
+    ],
+    "2012 Duke Math Meet Individual, Problem 5": [
+      1600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): sin x cos x = 1/5, then (sin x + cos x)^2."
+    ],
+    "2012 Duke Math Meet Individual, Problem 6": [
+      1800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the insphere radius is a quarter of the height."
+    ],
+    "2012 Duke Math Meet Individual, Problem 7": [
+      2100,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): track the distance from the start: three states."
+    ],
+    "2012 Duke Math Meet Individual, Problem 8": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): rule out small k mod 8 and find a match."
+    ],
+    "2012 Duke Math Meet Individual, Problem 9": [
+      2300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): |A + B| <= |A||B| and a matching construction."
+    ],
+    "2012 Duke Math Meet Individual, Problem 10": [
+      2800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): pair divisors d and n/d; equality only in special cases."
+    ],
+    "2013 Duke Math Meet Individual, Problem 1": [
+      1200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): parity forces p = 2, then q = 2."
+    ],
+    "2013 Duke Math Meet Individual, Problem 2": [
+      1100,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): 1 + 2 + ... + n at most 2014."
+    ],
+    "2013 Duke Math Meet Individual, Problem 3": [
+      1300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): sum the odd-minute and even-minute removals."
+    ],
+    "2013 Duke Math Meet Individual, Problem 4": [
+      1700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): update on the first failure, then the next phone."
+    ],
+    "2013 Duke Math Meet Individual, Problem 5": [
+      1800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): (ac + bd)^2 + (ad - bc)^2 = (a^2 + b^2)(c^2 + d^2)."
+    ],
+    "2013 Duke Math Meet Individual, Problem 6": [
+      1700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): a Reuleaux triangle: sectors minus the triangle."
+    ],
+    "2013 Duke Math Meet Individual, Problem 7": [
+      1500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): solvable exactly when the gcd divides 6."
+    ],
+    "2013 Duke Math Meet Individual, Problem 8": [
+      2000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): 2 has order 6 mod 9; pair the exponents."
+    ],
+    "2013 Duke Math Meet Individual, Problem 9": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): balanced ternary: powers of 3."
+    ],
+    "2013 Duke Math Meet Individual, Problem 10": [
+      2400,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): (100a + w)^2 and the middle term pin a, m, w."
+    ],
+    "2014 Duke Math Meet Individual, Problem 1": [
+      900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the common period of 1/6 and 1/10 hour."
+    ],
+    "2014 Duke Math Meet Individual, Problem 2": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): each match gives 2 or 3 points; bound the total."
+    ],
+    "2014 Duke Math Meet Individual, Problem 3": [
+      1700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): expand the two-digit numbers and solve in digits."
+    ],
+    "2014 Duke Math Meet Individual, Problem 4": [
+      1500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): s(n) = C(n-1, 3); find where it passes 2014."
+    ],
+    "2014 Duke Math Meet Individual, Problem 5": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): even areas of distinct sizes summing to 100."
+    ],
+    "2014 Duke Math Meet Individual, Problem 6": [
+      1300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): corner triangles of the square of choices."
+    ],
+    "2014 Duke Math Meet Individual, Problem 7": [
+      2100,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): a rational ratio p/q needs a multiple of q^(n-1)."
+    ],
+    "2014 Duke Math Meet Individual, Problem 8": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): drops k, k-1, ... must cover 100 floors."
+    ],
+    "2014 Duke Math Meet Individual, Problem 9": [
+      2300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): products are small; case on the size of A."
+    ],
+    "2014 Duke Math Meet Individual, Problem 10": [
+      2700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): count pairs of groups through shared students."
+    ],
+    "2015 Duke Math Meet Individual, Problem 1": [
+      1300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the quartic is (x^2 + x + 1)^2 + 1."
+    ],
+    "2015 Duke Math Meet Individual, Problem 2": [
+      1500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): (5^5 - 3^5)/2 from (4+1)^5 and (4-1)^5."
+    ],
+    "2015 Duke Math Meet Individual, Problem 3": [
+      1600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): update the supplier from the good ball."
+    ],
+    "2015 Duke Math Meet Individual, Problem 4": [
+      1800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the reverse is nine times the number; like 1089."
+    ],
+    "2015 Duke Math Meet Individual, Problem 5": [
+      1800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): divide by the orders the constraints fix."
+    ],
+    "2015 Duke Math Meet Individual, Problem 6": [
+      2000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the parity of the sum is invariant; every value of that parity is reachable."
+    ],
+    "2015 Duke Math Meet Individual, Problem 7": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): 34^2 is 1 mod 77, so digit pairs reduce simply."
+    ],
+    "2015 Duke Math Meet Individual, Problem 8": [
+      2000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): pair each subset with its reflection x to 10 - x."
+    ],
+    "2015 Duke Math Meet Individual, Problem 9": [
+      2400,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): interval coverage by observers each watching one minute; no card fits."
+    ],
+    "2015 Duke Math Meet Individual, Problem 10": [
+      2500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): (c - 3)(c + 3) = 2^a 3^b and split the factors."
+    ],
+    "2016 Duke Math Meet Individual, Problem 1": [
+      800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): total of 300 needed over five tests."
+    ],
+    "2016 Duke Math Meet Individual, Problem 2": [
+      1600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): (a + 16)(b + 20) = 2336; count factor pairs."
+    ],
+    "2016 Duke Math Meet Individual, Problem 3": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): increasing with f(2t) = f(t) + t forces f(n) = n + 2015."
+    ],
+    "2016 Duke Math Meet Individual, Problem 4": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): Descartes for the fourth circle."
+    ],
+    "2016 Duke Math Meet Individual, Problem 5": [
+      2400,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the region closer to one vertex is cut by perpendicular bisectors through the centre."
+    ],
+    "2016 Duke Math Meet Individual, Problem 6": [
+      2100,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): ab square and a - b prime force a, b near squares."
+    ],
+    "2016 Duke Math Meet Individual, Problem 7": [
+      2100,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): choose three lines, minus parallel and concurrent triples."
+    ],
+    "2016 Duke Math Meet Individual, Problem 8": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): 3x + 4y + 5z is twice the area; Cauchy-Schwarz."
+    ],
+    "2016 Duke Math Meet Individual, Problem 9": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): divide by x^2 and set y = x - 1/x."
+    ],
+    "2016 Duke Math Meet Individual, Problem 10": [
+      2000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): average |a - b| over pairs, times four."
+    ],
+    "2017 Duke Math Meet Individual, Problem 1": [
+      800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): half of the 16 subsets."
+    ],
+    "2017 Duke Math Meet Individual, Problem 2": [
+      1700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): count solutions of 2a + b + c = 12 with bounds."
+    ],
+    "2017 Duke Math Meet Individual, Problem 3": [
+      1500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): a non-decreasing digit string is a multiset of digits."
+    ],
+    "2017 Duke Math Meet Individual, Problem 4": [
+      2000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the shadow is a regular decagon."
+    ],
+    "2017 Duke Math Meet Individual, Problem 5": [
+      2000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): coloured squares come in pairs; bound and construct."
+    ],
+    "2017 Duke Math Meet Individual, Problem 6": [
+      1600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): centres form an equilateral triangle; big radius from its circumradius."
+    ],
+    "2017 Duke Math Meet Individual, Problem 7": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): pairings and paths, by how many pairs repeat."
+    ],
+    "2017 Duke Math Meet Individual, Problem 8": [
+      2400,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): cos 3x = cos x (2 cos 2x - 1); the recurrence is arithmetic in a_n."
+    ],
+    "2017 Duke Math Meet Individual, Problem 9": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): isolate the cube root, cube, then square away the square root."
+    ],
+    "2017 Duke Math Meet Individual, Problem 10": [
+      2600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): claims point along a binary tree; liars propagate by levels."
+    ],
+    "2018 Duke Math Meet Individual, Problem 1": [
+      1700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): divide out and require the remainder to vanish modulo the denominator."
+    ],
+    "2018 Duke Math Meet Individual, Problem 2": [
+      1300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): place the oaks in the gaps between yews."
+    ],
+    "2018 Duke Math Meet Individual, Problem 3": [
+      1800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): non-adjacent choices around a circle."
+    ],
+    "2018 Duke Math Meet Individual, Problem 4": [
+      2100,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): each step shifts the graph down and folds it."
+    ],
+    "2018 Duke Math Meet Individual, Problem 5": [
+      1500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): subtract draws missing red or missing blue."
+    ],
+    "2018 Duke Math Meet Individual, Problem 6": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): angle ACD as a difference of two angles at C."
+    ],
+    "2018 Duke Math Meet Individual, Problem 7": [
+      1600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the periodic continued fraction satisfies a quadratic."
+    ],
+    "2018 Duke Math Meet Individual, Problem 8": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): legs from integer right triangles of height 20."
+    ],
+    "2018 Duke Math Meet Individual, Problem 9": [
+      2100,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): k^(2019-k) is a cube when 3 divides the exponent or k is a cube."
+    ],
+    "2018 Duke Math Meet Individual, Problem 10": [
+      2900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the conditions force periodic structure; count the free entries."
+    ],
+    "2019 Duke Math Meet Individual, Problem 1": [
+      1000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the expression is (818 - 2 * 209)^3."
+    ],
+    "2019 Duke Math Meet Individual, Problem 2": [
+      1500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): multiples of 10 with a 7 and not divisible by 3."
+    ],
+    "2019 Duke Math Meet Individual, Problem 3": [
+      1300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): b^2 < a^2 <= (b+1)^2."
+    ],
+    "2019 Duke Math Meet Individual, Problem 4": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): a closed form for sum of fourth powers, reduced mod 53."
+    ],
+    "2019 Duke Math Meet Individual, Problem 5": [
+      1700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): a 30-60-90 triangle at B fixes the side."
+    ],
+    "2019 Duke Math Meet Individual, Problem 6": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): split the numerator; two telescoping sums."
+    ],
+    "2019 Duke Math Meet Individual, Problem 7": [
+      1600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): terms i and 2019 - i sum to 1."
+    ],
+    "2019 Duke Math Meet Individual, Problem 8": [
+      2400,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): line AB meets the x-axis at the midpoint of PQ; power of that point."
+    ],
+    "2019 Duke Math Meet Individual, Problem 9": [
+      2300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): weight each shot mix by its probability."
+    ],
+    "2019 Duke Math Meet Individual, Problem 10": [
+      2800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): f is non-decreasing with a fixed-point structure; count by its image."
+    ],
+    "2020 Duke Math Meet Individual, Problem 1": [
+      1800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): meeting times from the speed differences."
+    ],
+    "2020 Duke Math Meet Individual, Problem 2": [
+      1000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the inner triangle has half the side."
+    ],
+    "2020 Duke Math Meet Individual, Problem 3": [
+      1500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): solve the congruences with the even condition."
+    ],
+    "2020 Duke Math Meet Individual, Problem 4": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): f(n)/n is the sum of e_i/p_i."
+    ],
+    "2020 Duke Math Meet Individual, Problem 5": [
+      2300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): coprime a and b make (a - 2b)(a + 2b) divide 404."
+    ],
+    "2020 Duke Math Meet Individual, Problem 6": [
+      2400,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): alpha^2 = 6 alpha + 1 makes the product telescope."
+    ],
+    "2020 Duke Math Meet Individual, Problem 7": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): count four-step walks on the triangular lattice."
+    ],
+    "2020 Duke Math Meet Individual, Problem 8": [
+      2600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): ACED is an isosceles trapezoid; powers of F and G."
+    ],
+    "2020 Duke Math Meet Individual, Problem 9": [
+      2300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): split into three groups; case on the devils' groups."
+    ],
+    "2020 Duke Math Meet Individual, Problem 10": [
+      2700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): digit-count changes match leading digits; count those starting with 4."
+    ],
+    "2021 Duke Math Meet Individual, Problem 1": [
+      1700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): unfold the reflections into a straight line on a grid."
+    ],
+    "2021 Duke Math Meet Individual, Problem 2": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): faces touching the tray's walls by position."
+    ],
+    "2021 Duke Math Meet Individual, Problem 3": [
+      1600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): a fourth difference of x^4 is 4! times the step to the fourth."
+    ],
+    "2021 Duke Math Meet Individual, Problem 4": [
+      2000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the powers of 2 adjust any sum to the target residue."
+    ],
+    "2021 Duke Math Meet Individual, Problem 5": [
+      1500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): k(2m + k - 1) = 90 with negatives allowed."
+    ],
+    "2021 Duke Math Meet Individual, Problem 6": [
+      2300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): group the diagonals into parallel classes."
+    ],
+    "2021 Duke Math Meet Individual, Problem 7": [
+      1600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): subtract the four lens overlaps."
+    ],
+    "2021 Duke Math Meet Individual, Problem 8": [
+      2200,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): a - b divides P(a) - P(b) bounds the values."
+    ],
+    "2021 Duke Math Meet Individual, Problem 9": [
+      1700,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): match prime exponents of 10^a 12^b 90^c = 2025."
+    ],
+    "2021 Duke Math Meet Individual, Problem 10": [
+      2600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): row and column permutations of a circulant board."
+    ],
+    "2022 Duke Math Meet Individual, Problem 1": [
+      1500,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the body is a square minus four quarter-circle corners; add the tail."
+    ],
+    "2022 Duke Math Meet Individual, Problem 2": [
+      1400,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): glue the S's and count arrangements."
+    ],
+    "2022 Duke Math Meet Individual, Problem 3": [
+      1900,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): multiply by x - 1; the product telescopes."
+    ],
+    "2022 Duke Math Meet Individual, Problem 4": [
+      1800,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): each cube hides its red face with a probability set by its position."
+    ],
+    "2022 Duke Math Meet Individual, Problem 5": [
+      2600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): at most 5 in every block of 11, and a periodic construction."
+    ],
+    "2022 Duke Math Meet Individual, Problem 6": [
+      2100,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): the numbers are sums of powers of 2 in a fixed pattern."
+    ],
+    "2022 Duke Math Meet Individual, Problem 7": [
+      2000,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): a^4 + 4b^4 factors into two sums of squares."
+    ],
+    "2022 Duke Math Meet Individual, Problem 8": [
+      2400,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): a blocking strategy on a grid; no card fits."
+    ],
+    "2022 Duke Math Meet Individual, Problem 9": [
+      2300,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): divide by 2^(n+1); the fixed point gives the only increasing start."
+    ],
+    "2022 Duke Math Meet Individual, Problem 10": [
+      2600,
+      "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): expected steps until the coins are in order."
     ]
   }
 }
