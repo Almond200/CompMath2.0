@@ -97,7 +97,10 @@
     "2023 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/Geometry_A_2023.pdf",
     "2023 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/Geometry_B_2023.pdf",
     "2023 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/Number_Theory_A_2023.pdf",
-    "2023 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/Number_Theory_B_2023.pdf"
+    "2023 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/Number_Theory_B_2023.pdf",
+    "2022 BMT Algebra": "https://berkeley.mt/archives/bmt-2022/algebra-problems.pdf",
+    "2022 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2022/discrete-problems.pdf",
+    "2022 BMT Geometry": "https://berkeley.mt/archives/bmt-2022/geometry-problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -6051,6 +6054,126 @@
     "2023 PUMaC Division B Number Theory, Problem 8": [
       3500,
       "Constrain distinct remainders successively, separating the single even assignment from the large-prime odd choices."
+    ],
+    "2022 BMT Algebra, Problem 1": [
+      700,
+      "Recognize that a repeated custom operation fixes its initial value."
+    ],
+    "2022 BMT Algebra, Problem 2": [
+      1250,
+      "Substitute a power of two and solve the resulting quadratic before adding exponent values."
+    ],
+    "2022 BMT Algebra, Problem 3": [
+      1500,
+      "Express an arithmetic/geometric sequence quotient as a quadratic in its common ratio and complete the square."
+    ],
+    "2022 BMT Algebra, Problem 4": [
+      1750,
+      "Restrict the possible ceiling values on each side of zero and intersect the resulting half-open intervals."
+    ],
+    "2022 BMT Algebra, Problem 5": [
+      2000,
+      "Reduce a fixed-sum fixed-norm system to a quadratic feasibility interval and check its two equal-variable endpoints."
+    ],
+    "2022 BMT Algebra, Problem 6": [
+      2550,
+      "Use the five roots of a sixth-step polynomial difference and cancel its odd centered factor at two target inputs."
+    ],
+    "2022 BMT Algebra, Problem 7": [
+      2450,
+      "Split reciprocal squared-root expressions into shifted reciprocal sums and evaluate them by transformed Vieta coefficients."
+    ],
+    "2022 BMT Algebra, Problem 8": [
+      3150,
+      "Interpolate consecutive exponential values in the binomial basis and add the uniquely determined monic degree term."
+    ],
+    "2022 BMT Algebra, Problem 9": [
+      3050,
+      "Conjugate a rational third-order recurrence to Fibonacci addition of tangent angles and find its first singular denominator."
+    ],
+    "2022 BMT Algebra, Problem 10": [
+      3700,
+      "Exploit equal first two elementary symmetric sums to cancel a cyclic rational cubic expression through a shifted symmetric identity."
+    ],
+    "2022 BMT Discrete Math, Problem 1": [
+      800,
+      "Multiply the constrained independent choices of two named pairs."
+    ],
+    "2022 BMT Discrete Math, Problem 2": [
+      1250,
+      "List pure prime powers after excluding mixed factors with a trailing zero, correcting the duplicate unit."
+    ],
+    "2022 BMT Discrete Math, Problem 3": [
+      1500,
+      "Weight dice-sum tails by three possible two-coin products."
+    ],
+    "2022 BMT Discrete Math, Problem 4": [
+      1750,
+      "Encode streak changes by chosen gaps and subtract the first three possible run counts."
+    ],
+    "2022 BMT Discrete Math, Problem 5": [
+      2150,
+      "Bound the digit length, refine the four-digit case and test the remaining digit sums in one congruence class."
+    ],
+    "2022 BMT Discrete Math, Problem 6": [
+      2400,
+      "Optimize a quadratic discriminant over coefficient orderings and count the exceptional exponent triples."
+    ],
+    "2022 BMT Discrete Math, Problem 7": [
+      2650,
+      "Write the later first occurrence as a sum minus the earlier first occurrence and use symmetry of random-card gaps."
+    ],
+    "2022 BMT Discrete Math, Problem 8": [
+      2950,
+      "Represent a coupled recurrence by commuting linear operators and apply Frobenius to its prime-indexed power."
+    ],
+    "2022 BMT Discrete Math, Problem 9": [
+      3450,
+      "Filter even subset sizes in two labeled boxes, extract a convolution coefficient and compute its composite-modulus residue."
+    ],
+    "2022 BMT Discrete Math, Problem 10": [
+      3550,
+      "Count Gaussian integer norms dividing a factorial by ramified, split and inert prime exponents and all four units."
+    ],
+    "2022 BMT Geometry, Problem 1": [
+      1100,
+      "Track the outline after three paper folds and compare the resulting corner distances."
+    ],
+    "2022 BMT Geometry, Problem 2": [
+      1550,
+      "Find the support width of a square at a midpoint-determined slope or add four similar outer triangles."
+    ],
+    "2022 BMT Geometry, Problem 3": [
+      1900,
+      "Subtract homothetic curvilinear triangular regions using one circular sector and two small triangles."
+    ],
+    "2022 BMT Geometry, Problem 4": [
+      2300,
+      "Find the region swept by three synchronously moving vertices by subtracting three unswept corner regions."
+    ],
+    "2022 BMT Geometry, Problem 5": [
+      2600,
+      "Model unequal tilted wheels by two similar rolling cones, then convert the mean traced radius into front-wheel turns."
+    ],
+    "2022 BMT Geometry, Problem 6": [
+      2300,
+      "Use parallel-side angle bisectors to identify equal segments and determine an incenter-constrained homothety scale."
+    ],
+    "2022 BMT Geometry, Problem 7": [
+      2400,
+      "Recover the vertex angle from a bisector distance and combine the orthocenter length with the extended sine rule."
+    ],
+    "2022 BMT Geometry, Problem 8": [
+      2900,
+      "Express nested polygon circumradii as a secant product and telescope it to an elementary sine limit."
+    ],
+    "2022 BMT Geometry, Problem 9": [
+      3500,
+      "Count concurrent radical planes through sphere power equations; the published minimum overlooks a disjoint radical plane parallel to a three-sphere radical axis, with an exact counterexample below it."
+    ],
+    "2022 BMT Geometry, Problem 10": [
+      3600,
+      "Identify a point-circle radical axis, transfer an altitude-foot chord ratio and solve two right-triangle length relations; also check the unstated acute-angle restriction against an obtuse counterconfiguration."
     ]
   }
 }
