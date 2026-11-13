@@ -144,5 +144,17 @@ window.MATH_CONTEST_PAPERS = {
   "2022 PUMaC Division B Number Theory": {
     "url": "https://pumac.princeton.edu/s/Number_Theory_B_2022_.pdf",
     "solUrl": "https://pumac.princeton.edu/s/Number_Theory_B_2022_Sol.pdf"
+  },
+  "2021 BMT Algebra": {
+    "url": "https://berkeley.mt/archives/bmt-2021/algebra-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2021/algebra-solutions.pdf"
+  },
+  "2021 BMT Discrete Math": {
+    "url": "https://berkeley.mt/archives/bmt-2021/discrete-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2021/discrete-solutions.pdf"
+  },
+  "2021 BMT Geometry": {
+    "url": "https://berkeley.mt/archives/bmt-2021/geometry-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2021/geometry-solutions.pdf"
   }
 };

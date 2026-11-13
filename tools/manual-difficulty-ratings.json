@@ -108,7 +108,10 @@
     "2022 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/Geometry_A_2022_.pdf",
     "2022 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/Geometry_B_2022_.pdf",
     "2022 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/Number_Theory_A_2022_.pdf",
-    "2022 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/Number_Theory_B_2022_.pdf"
+    "2022 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/Number_Theory_B_2022_.pdf",
+    "2021 BMT Algebra": "https://berkeley.mt/archives/bmt-2021/algebra-problems.pdf",
+    "2021 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2021/discrete-problems.pdf",
+    "2021 BMT Geometry": "https://berkeley.mt/archives/bmt-2021/geometry-problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -6438,6 +6441,126 @@
     "2022 PUMaC Division B Number Theory, Problem 8": [
       3350,
       "Characterize the omitted integers in three rounded-root sequences and count their union with exact threshold inequalities."
+    ],
+    "2021 BMT Algebra, Problem 1": [
+      800,
+      "Subtract two quadratic equations to recover their common real input and its fourth power."
+    ],
+    "2021 BMT Algebra, Problem 2": [
+      1350,
+      "Expand two affine compositions and recognize their difference is constant."
+    ],
+    "2021 BMT Algebra, Problem 3": [
+      1800,
+      "Bound the nested-floor solutions and identify their nonattained upper endpoint, retaining the negative and boundary cases omitted in the source prose."
+    ],
+    "2021 BMT Algebra, Problem 4": [
+      2100,
+      "Reduce a trigonometric constraint to a sum-product relation, retain the admissible product and maximize its compatible sum."
+    ],
+    "2021 BMT Algebra, Problem 5": [
+      2200,
+      "Name the integer and fractional parts, factor their equation and use the fractional range to leave two possible integer parts."
+    ],
+    "2021 BMT Algebra, Problem 6": [
+      2600,
+      "Follow a three-cycle fractional-linear argument map and add the resulting function equations to isolate a prescribed value."
+    ],
+    "2021 BMT Algebra, Problem 7": [
+      2500,
+      "Permute nontrivial roots of unity by a coprime exponent and pair the reciprocal terms by conjugation."
+    ],
+    "2021 BMT Algebra, Problem 8": [
+      2750,
+      "Parametrize right-triangle roots through their leg sum and hypotenuse, force equality in the quadratic mean bound and use the fixed root product for scale."
+    ],
+    "2021 BMT Algebra, Problem 9": [
+      3700,
+      "Compare an integer trinomial with its reciprocal through coefficient-square constraints and characterize the cyclotomic reducibility cases."
+    ],
+    "2021 BMT Algebra, Problem 10": [
+      3850,
+      "Convert weighted squarefree counts into divisor convolutions, derive a multiplicative finite difference and test all exponent patterns within the bound."
+    ],
+    "2021 BMT Discrete Math, Problem 1": [
+      950,
+      "Count three-card subsets and exclude the two monochromatic choices."
+    ],
+    "2021 BMT Discrete Math, Problem 2": [
+      1250,
+      "Intersect two bounded arithmetic progressions through one residue class and count its terms."
+    ],
+    "2021 BMT Discrete Math, Problem 3": [
+      1500,
+      "Remove one mandatory copy of each value and count the full arithmetic range of attainable sums rather than the number of multisets."
+    ],
+    "2021 BMT Discrete Math, Problem 4": [
+      1700,
+      "Condition on whether two named players share a team, or count the uniformly distributed fixed-size captain set."
+    ],
+    "2021 BMT Discrete Math, Problem 5": [
+      2000,
+      "Classify three-digit reversal sums by carry structure and their three-digit versus four-digit palindrome outcome."
+    ],
+    "2021 BMT Discrete Math, Problem 6": [
+      2550,
+      "Factor a prescribed divisor count of a self-power and bound the compatible prime exponent patterns."
+    ],
+    "2021 BMT Discrete Math, Problem 7": [
+      2900,
+      "Prove an optimal integer-reduction rule and count the reverse-reachable integers through a parity-split Fibonacci recurrence."
+    ],
+    "2021 BMT Discrete Math, Problem 8": [
+      3000,
+      "Condition successive increasing random digits, solve their mean recurrence and sum the discounted decimal contribution."
+    ],
+    "2021 BMT Discrete Math, Problem 9": [
+      3150,
+      "Clear reciprocal binomial coefficients with a factorial and reduce the complement factorials to an alternating residue sum."
+    ],
+    "2021 BMT Discrete Math, Problem 10": [
+      3700,
+      "Exclude short odd cycles in a dense triangle-free graph, force a connected bipartition and count edge deletions from its only two feasible sizes."
+    ],
+    "2021 BMT Geometry, Problem 1": [
+      1000,
+      "Recognize that a straight cut adds twice its length and maximize it by the rectangle diagonal."
+    ],
+    "2021 BMT Geometry, Problem 2": [
+      2400,
+      "Evaluate the six-disk triangular packing; the official write-up asserts global optimality, independently checked using the convex packing bound on the inward parallel triangle."
+    ],
+    "2021 BMT Geometry, Problem 3": [
+      2150,
+      "Unfold an equal-angle broken path by reflecting a quadrilateral vertex and compute its direct distance."
+    ],
+    "2021 BMT Geometry, Problem 4": [
+      2400,
+      "Infer a sixteen-edge star from alternating interior angles and subtract eight equilateral notches from its outer octagon."
+    ],
+    "2021 BMT Geometry, Problem 5": [
+      2500,
+      "Locate the radical-axis intersection at a tangent-segment midpoint and use the nearer-tangent condition to select the correct secant branch."
+    ],
+    "2021 BMT Geometry, Problem 6": [
+      3000,
+      "Unfold a path through the perforated cube and verify its global length by an exact polyhedral geodesic on the full closed boundary mesh."
+    ],
+    "2021 BMT Geometry, Problem 7": [
+      3150,
+      "Exploit a line entering the hexagon vertex cone to recover its side scale from two signed vertex distances."
+    ],
+    "2021 BMT Geometry, Problem 8": [
+      3300,
+      "Relate two auxiliary circumcircle intersections to an altitude secant by similarity and recover the scale from the original triangle."
+    ],
+    "2021 BMT Geometry, Problem 9": [
+      3500,
+      "Transfer lengths through two equilateral rotations, identify a right triangle and compute the area formed by two side midpoints."
+    ],
+    "2021 BMT Geometry, Problem 10": [
+      4000,
+      "Recognize equal focal-sum minima on four supporting lines through an incircle and isogonal configuration, independently checked by four reflected-point distances."
     ]
   }
 }
