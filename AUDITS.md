@@ -2424,5 +2424,5 @@ ARML's public pages (`www.arml.com/ARML/arml_2019/page/index.php?page_type=publi
 
 ## CMIMC (blocked)
 
-`cmimc.math.cmu.edu/math/past-problems` lists every individual test from 2016 to 2026, but on 2026-11-13 the site served none of its static files: each PDF, its stylesheet and its favicon returned 404, and the Wayback Machine was unreachable from a cloud chat (and had no snapshot of the PDF tried). With nothing official to read or link, CMIMC was not started; PLAN.md, Step H, says to retry the archive first.
+`cmimc.math.cmu.edu/math/past-problems` lists every individual test from 2016 to 2026, but on 2026-11-13 the site served none of its static files: each PDF, its stylesheet and its favicon returned 404, and the Wayback Machine was unreachable from a cloud chat (and had no snapshot of the PDF tried). Opened inside a browser page, the same files return 200 with a PDF, so the archive is fine for readers and the site only refuses automated clients. A scripted bulk download through the browser was refused by the session's safety check (it would get around the site's bot protection), so CMIMC was not started; it needs the owner's permission or the PDFs supplied (PLAN.md, Step H).
 
