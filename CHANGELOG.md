@@ -2,6 +2,8 @@
 
 **2026-11-13**
 
+- **SMT General test (owner: "the individual rounds on the other sets"):** 297 problems, 2011 to 2014 and 2018 to 2025, SMT's General individual test as a fifth SMT paper with its official test and solutions linked. 63 are word for word subject-test problems and copy that problem's cards, nodes and rating; the other 234 were read with their official solutions, filed, tagged and rated by author estimate. Six cite no card (simple word problems or no fitting card). JHMT, CHMMC and RMT were looked for and could not be reached or have no official archive.
+
 - **Duke Math Meet Individual round (owner: "the individual rounds on the other sets"):** 156 problems, 2007 to 2022, read from the files Duke's mathematics department posts (with its solutions or answers where posted), filed, tagged and rated by author estimate. Duke Math Meet is its own family; each page links the year's official file and, where there is one, its solutions. Three problems cite no card because none fits (2008 #3, 2015 #9, 2022 #8).
 
 - **ARML Local Individual round (owner: "the individual rounds on the other sets"):** 60 problems, 2009 to 2014, read with the official solutions in ARML's 2009–2014 book, filed, tagged and rated by author estimate (800 to 2300). ARML Local is its own family, after ARML; each page opens the book at the round's problems or solutions.

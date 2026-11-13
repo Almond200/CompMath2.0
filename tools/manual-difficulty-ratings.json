@@ -8215,6 +8215,1194 @@
     "2022 Duke Math Meet Individual, Problem 10": [
       2600,
       "Author estimate (the Duke Math Meet publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to a mid AIME one): expected steps until the coins are in order."
+    ],
+    "2011 SMT General, Problem 1": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): substitute x, (x-1)/x and 1/(1-x); the three cycle."
+    ],
+    "2011 SMT General, Problem 2": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a_n + a_(n-1) doubles each step."
+    ],
+    "2011 SMT General, Problem 3": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): split into two geometric series."
+    ],
+    "2011 SMT General, Problem 4": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): case on the signs, then rational roots of each cubic."
+    ],
+    "2011 SMT General, Problem 5": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): count coprime pairs numerator by numerator."
+    ],
+    "2011 SMT General, Problem 6": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): factor c^2 - 3^b or c^2 - 2^a and use the given fact."
+    ],
+    "2011 SMT General, Problem 7": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): Fibonacci counts with one backward jump inserted."
+    ],
+    "2011 SMT General, Problem 8": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a recursion on binary strings with gaps of two zeros."
+    ],
+    "2011 SMT General, Problem 9": [
+      2300,
+      "Author estimate: the same problem as 2011 SMT Advanced, Problem 5; its rating is carried over."
+    ],
+    "2011 SMT General, Problem 10": [
+      1800,
+      "Author estimate: the same problem as 2011 SMT Advanced, Problem 6; its rating is carried over."
+    ],
+    "2011 SMT General, Problem 11": [
+      2200,
+      "Author estimate: the same problem as 2011 SMT Advanced, Problem 3; its rating is carried over."
+    ],
+    "2011 SMT General, Problem 12": [
+      1500,
+      "Author estimate: the same problem as 2011 SMT Algebra, Problem 1; its rating is carried over."
+    ],
+    "2011 SMT General, Problem 13": [
+      1900,
+      "Author estimate: the same problem as 2011 SMT Advanced, Problem 4; its rating is carried over."
+    ],
+    "2011 SMT General, Problem 14": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the best P is where a circle through M and N touches the x-axis."
+    ],
+    "2011 SMT General, Problem 15": [
+      1600,
+      "Author estimate: the same problem as 2011 SMT Algebra, Problem 2; its rating is carried over."
+    ],
+    "2011 SMT General, Problem 16": [
+      1900,
+      "Author estimate: the same problem as 2011 SMT Algebra, Problem 3; its rating is carried over."
+    ],
+    "2011 SMT General, Problem 17": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): rotations: 1 + vertex, face and edge axes."
+    ],
+    "2011 SMT General, Problem 18": [
+      2000,
+      "Author estimate: the same problem as 2011 SMT Geometry, Problem 2; its rating is carried over."
+    ],
+    "2011 SMT General, Problem 19": [
+      1400,
+      "Author estimate: the same problem as 2011 SMT Advanced, Problem 1; its rating is carried over."
+    ],
+    "2011 SMT General, Problem 20": [
+      2000,
+      "Author estimate: the same problem as 2011 SMT Algebra, Problem 4; its rating is carried over."
+    ],
+    "2011 SMT General, Problem 21": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the leash wraps around the corners; add the sectors."
+    ],
+    "2011 SMT General, Problem 22": [
+      2500,
+      "Author estimate: the same problem as 2011 SMT Advanced, Problem 7; its rating is carried over."
+    ],
+    "2011 SMT General, Problem 23": [
+      2000,
+      "Author estimate: the same problem as 2011 SMT Geometry, Problem 4; its rating is carried over."
+    ],
+    "2011 SMT General, Problem 24": [
+      2700,
+      "Author estimate: the same problem as 2011 SMT Algebra, Problem 7; its rating is carried over."
+    ],
+    "2011 SMT General, Problem 25": [
+      2800,
+      "Author estimate: the same problem as 2011 SMT Algebra, Problem 8; its rating is carried over."
+    ],
+    "2012 SMT General, Problem 1": [
+      800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): one linear equation in the second week's hours."
+    ],
+    "2012 SMT General, Problem 2": [
+      1400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): speeds and the time gap give two equations."
+    ],
+    "2012 SMT General, Problem 3": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): list the terms until one passes 100."
+    ],
+    "2012 SMT General, Problem 4": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): extremes of overtime within 40 hours."
+    ],
+    "2012 SMT General, Problem 5": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a two-set Venn count."
+    ],
+    "2012 SMT General, Problem 6": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): count crossings of each pair of hands in one hour."
+    ],
+    "2012 SMT General, Problem 7": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): sum of C(5,k)^2, minus the empty and full sets."
+    ],
+    "2012 SMT General, Problem 8": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): which totals team costs can reach."
+    ],
+    "2012 SMT General, Problem 9": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): case on the number of 3's and arrange."
+    ],
+    "2012 SMT General, Problem 10": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): count by number of digits, careful at 2012."
+    ],
+    "2012 SMT General, Problem 11": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): combined rate from the two rates."
+    ],
+    "2012 SMT General, Problem 12": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the top triangle is equilateral; solve for the side."
+    ],
+    "2012 SMT General, Problem 13": [
+      1200,
+      "Author estimate: the same problem as 2012 SMT Advanced, Problem 1; its rating is carried over."
+    ],
+    "2012 SMT General, Problem 14": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): f(k) mod k from the base-3 digits."
+    ],
+    "2012 SMT General, Problem 15": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): ab sin 120."
+    ],
+    "2012 SMT General, Problem 16": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): digit sums stay multiples of 9 and shrink fast."
+    ],
+    "2012 SMT General, Problem 17": [
+      1700,
+      "Author estimate: the same problem as 2012 SMT Geometry, Problem 1; its rating is carried over."
+    ],
+    "2012 SMT General, Problem 18": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): states by square type: corner, edge, centre."
+    ],
+    "2012 SMT General, Problem 19": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): f(-1) = -(1+a)(1+b)(1+c); bound by AM-GM."
+    ],
+    "2012 SMT General, Problem 20": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): choose the first block's set, minus overlaps."
+    ],
+    "2012 SMT General, Problem 21": [
+      1600,
+      "Author estimate: the same problem as 2012 SMT Geometry, Problem 2; its rating is carried over."
+    ],
+    "2012 SMT General, Problem 22": [
+      2000,
+      "Author estimate: the same problem as 2012 SMT Advanced, Problem 4; its rating is carried over."
+    ],
+    "2012 SMT General, Problem 23": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a right angle at D and similar right triangles."
+    ],
+    "2012 SMT General, Problem 24": [
+      1800,
+      "Author estimate: the same problem as 2012 SMT Algebra, Problem 5; its rating is carried over."
+    ],
+    "2012 SMT General, Problem 25": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): k = x^2 + 3/x; its range by AM-GM."
+    ],
+    "2013 SMT General, Problem 1": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the remaining fraction of the birds is 13 birds."
+    ],
+    "2013 SMT General, Problem 2": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the scarcest ingredient limits the pizzas."
+    ],
+    "2013 SMT General, Problem 3": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): choose 5 of the 8 queens and jacks."
+    ],
+    "2013 SMT General, Problem 4": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the first multiple of 210 above 9000."
+    ],
+    "2013 SMT General, Problem 5": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): half the product of the diagonals; the side from half-diagonals."
+    ],
+    "2013 SMT General, Problem 6": [
+      1100,
+      "Author estimate: the same problem as 2013 SMT Algebra, Problem 1; its rating is carried over."
+    ],
+    "2013 SMT General, Problem 7": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): space diagonal against the unfolded path."
+    ],
+    "2013 SMT General, Problem 8": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): doubling until the count passes the target."
+    ],
+    "2013 SMT General, Problem 9": [
+      1300,
+      "Author estimate: the same problem as 2013 SMT Algebra, Problem 2; its rating is carried over."
+    ],
+    "2013 SMT General, Problem 10": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the recurrence mod 7 is periodic."
+    ],
+    "2013 SMT General, Problem 11": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): lateral cone area plus a hemisphere."
+    ],
+    "2013 SMT General, Problem 12": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a nonnegative discriminant."
+    ],
+    "2013 SMT General, Problem 13": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the first player forces a line in few moves."
+    ],
+    "2013 SMT General, Problem 14": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): distances along the line at the two speeds."
+    ],
+    "2013 SMT General, Problem 15": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): PQR is equilateral; compare with the hexagon."
+    ],
+    "2013 SMT General, Problem 16": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): glue each pair and arrange."
+    ],
+    "2013 SMT General, Problem 17": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the two small segments cut by the legs."
+    ],
+    "2013 SMT General, Problem 18": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): split the ten trees to minimise the total area."
+    ],
+    "2013 SMT General, Problem 19": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the area gives the angle, then the law of cosines."
+    ],
+    "2013 SMT General, Problem 20": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): rings of equal score weighted by area."
+    ],
+    "2013 SMT General, Problem 21": [
+      1600,
+      "Author estimate: the same problem as 2013 SMT Advanced, Problem 1; its rating is carried over."
+    ],
+    "2013 SMT General, Problem 22": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): minimal sets contain their size and nothing smaller would do."
+    ],
+    "2013 SMT General, Problem 23": [
+      1400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): power sums from a + b and ab."
+    ],
+    "2013 SMT General, Problem 24": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): OI^2 = R(R - 2r)."
+    ],
+    "2013 SMT General, Problem 25": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): two Latin-style halves with column restrictions."
+    ],
+    "2014 SMT General, Problem 1": [
+      800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): solve n^2 = 5n + 6."
+    ],
+    "2014 SMT General, Problem 2": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): compare the two travel times; no card fits."
+    ],
+    "2014 SMT General, Problem 3": [
+      900,
+      "Author estimate: the same problem as 2014 SMT Advanced, Problem 1; its rating is carried over."
+    ],
+    "2014 SMT General, Problem 4": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): 30h - 5.5m degrees."
+    ],
+    "2014 SMT General, Problem 5": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): only digits 1, 3, 7, 9; test the permutations."
+    ],
+    "2014 SMT General, Problem 6": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): multiply by 4, then by 1/4."
+    ],
+    "2014 SMT General, Problem 7": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): height from the area, then the leg."
+    ],
+    "2014 SMT General, Problem 8": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): one of each colour over all triples."
+    ],
+    "2014 SMT General, Problem 9": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): forms p^5 or p^2 q."
+    ],
+    "2014 SMT General, Problem 10": [
+      1000,
+      "Author estimate: the same problem as 2014 SMT Geometry, Problem 1; its rating is carried over."
+    ],
+    "2014 SMT General, Problem 11": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): condition on no tie."
+    ],
+    "2014 SMT General, Problem 12": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a/(1 - r) = 9."
+    ],
+    "2014 SMT General, Problem 13": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): exactly three divisors means a prime squared."
+    ],
+    "2014 SMT General, Problem 14": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): choose digits for each strictly monotone run."
+    ],
+    "2014 SMT General, Problem 15": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): base angles are exterior angles of the polygon."
+    ],
+    "2014 SMT General, Problem 16": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): leap years in a 400-year cycle."
+    ],
+    "2014 SMT General, Problem 17": [
+      1400,
+      "Author estimate: the same problem as 2014 SMT Advanced, Problem 3; its rating is carried over."
+    ],
+    "2014 SMT General, Problem 18": [
+      2000,
+      "Author estimate: the same problem as 2014 SMT Geometry, Problem 3; its rating is carried over."
+    ],
+    "2014 SMT General, Problem 19": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): x + x' = 11(a + b) must be a square."
+    ],
+    "2014 SMT General, Problem 20": [
+      2100,
+      "Author estimate: the same problem as 2014 SMT Algebra, Problem 4; its rating is carried over."
+    ],
+    "2014 SMT General, Problem 21": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): count the face totals of the misprinted die."
+    ],
+    "2014 SMT General, Problem 22": [
+      1600,
+      "Author estimate: the same problem as 2014 SMT Advanced, Problem 4; its rating is carried over."
+    ],
+    "2014 SMT General, Problem 23": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): b = rs with r + s = -a; average over the factor pairs."
+    ],
+    "2014 SMT General, Problem 24": [
+      2200,
+      "Author estimate: the same problem as 2014 SMT Advanced, Problem 5; its rating is carried over."
+    ],
+    "2014 SMT General, Problem 25": [
+      1800,
+      "Author estimate: the same problem as 2014 SMT Geometry, Problem 4; its rating is carried over."
+    ],
+    "2018 SMT General, Problem 1": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a head start of 12 problems, closed at 4 an hour."
+    ],
+    "2018 SMT General, Problem 2": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a two-by-two table of feathers and heads."
+    ],
+    "2018 SMT General, Problem 3": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): equal volumes of a cylinder and a sphere."
+    ],
+    "2018 SMT General, Problem 4": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): two fractions give a linear equation."
+    ],
+    "2018 SMT General, Problem 5": [
+      800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): slope from the two points."
+    ],
+    "2018 SMT General, Problem 6": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): count pairs with Eric's roll at least Harrison's."
+    ],
+    "2018 SMT General, Problem 7": [
+      1100,
+      "Author estimate: the same problem as 2018 SMT Discrete, Problem 1; its rating is carried over."
+    ],
+    "2018 SMT General, Problem 8": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the inner hexagon has side the apothem."
+    ],
+    "2018 SMT General, Problem 9": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): powers of 2 and their successors, with overlaps."
+    ],
+    "2018 SMT General, Problem 10": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a digit-sum condition and an age equation."
+    ],
+    "2018 SMT General, Problem 11": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): n minus the number of squares up to n."
+    ],
+    "2018 SMT General, Problem 12": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): symmetry about the axis through A."
+    ],
+    "2018 SMT General, Problem 13": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): exponents of 3 follow a Fibonacci recurrence."
+    ],
+    "2018 SMT General, Problem 14": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): subtract the paths through the blocked points."
+    ],
+    "2018 SMT General, Problem 15": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): pair residues summing to 0 mod 5."
+    ],
+    "2018 SMT General, Problem 16": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): interior diagonal against the unfolded surface path."
+    ],
+    "2018 SMT General, Problem 17": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the convex hull of the two squares."
+    ],
+    "2018 SMT General, Problem 18": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): (a - 2018)(b - 2018) = 2018^2, signs included."
+    ],
+    "2018 SMT General, Problem 19": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the magic sum is three times the centre."
+    ],
+    "2018 SMT General, Problem 20": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): coordinates from the 45 and 30 degree angles."
+    ],
+    "2018 SMT General, Problem 21": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): cubes mod 37 hitting -64."
+    ],
+    "2018 SMT General, Problem 22": [
+      2000,
+      "Author estimate: the same problem as 2018 SMT Discrete, Problem 4; its rating is carried over."
+    ],
+    "2018 SMT General, Problem 23": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): six 120-degree sectors over the hexagon's area."
+    ],
+    "2018 SMT General, Problem 24": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): digit constraints in the alphametic."
+    ],
+    "2018 SMT General, Problem 25": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): roots a - d, a, a + d against the geometric coefficients."
+    ],
+    "2019 SMT General, Problem 1": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): subtract the twelfth graders from the winter count."
+    ],
+    "2019 SMT General, Problem 2": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): pair the terms."
+    ],
+    "2019 SMT General, Problem 3": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the worst case before both pairs appear."
+    ],
+    "2019 SMT General, Problem 4": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the gap closes at the sum of the speeds."
+    ],
+    "2019 SMT General, Problem 5": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the only decreasing split of 10 into four positive parts."
+    ],
+    "2019 SMT General, Problem 6": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the top cone is a scaled copy; subtract."
+    ],
+    "2019 SMT General, Problem 7": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): meetings every 500/15 seconds."
+    ],
+    "2019 SMT General, Problem 8": [
+      800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): glue the friends."
+    ],
+    "2019 SMT General, Problem 9": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): 2019 mod 7 and the exponent mod 6."
+    ],
+    "2019 SMT General, Problem 10": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): (a + b)^2 from the diagonal and area."
+    ],
+    "2019 SMT General, Problem 11": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): in terms of m = n^2 - n the value factors."
+    ],
+    "2019 SMT General, Problem 12": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): sum and product of ages at two times."
+    ],
+    "2019 SMT General, Problem 13": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): b^2 + 2b + 3 must be a cube."
+    ],
+    "2019 SMT General, Problem 14": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): equal arrival times at the catch point."
+    ],
+    "2019 SMT General, Problem 15": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): case on the digit sum."
+    ],
+    "2019 SMT General, Problem 16": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the circle's area equals the hexagon's."
+    ],
+    "2019 SMT General, Problem 17": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the side is 36; rotate to show a 45-degree angle."
+    ],
+    "2019 SMT General, Problem 18": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): count colour patterns among four draws."
+    ],
+    "2019 SMT General, Problem 19": [
+      1500,
+      "Author estimate: the same problem as 2019 SMT Discrete, Problem 2; its rating is carried over."
+    ],
+    "2019 SMT General, Problem 20": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a cubic through the three crossing points."
+    ],
+    "2019 SMT General, Problem 21": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): logarithms of the pools follow a linear recurrence."
+    ],
+    "2019 SMT General, Problem 22": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): subtract perfect powers, by inclusion-exclusion."
+    ],
+    "2019 SMT General, Problem 23": [
+      1500,
+      "Author estimate: the same problem as 2019 SMT Algebra, Problem 3; its rating is carried over."
+    ],
+    "2019 SMT General, Problem 24": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): strips along the sides plus sectors at the corners."
+    ],
+    "2019 SMT General, Problem 25": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a two-state chain; the probability decays to 1/2."
+    ],
+    "2020 SMT General, Problem 1": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the total from the average height."
+    ],
+    "2020 SMT General, Problem 2": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): arrange three of each step."
+    ],
+    "2020 SMT General, Problem 3": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): valid month-day-year strings from 2 and 0."
+    ],
+    "2020 SMT General, Problem 4": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the last digits repeat."
+    ],
+    "2020 SMT General, Problem 5": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the overlap of the base-12 and base-7 ranges, minus numbers with a 0."
+    ],
+    "2020 SMT General, Problem 6": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): remove paths through points the cat reaches first."
+    ],
+    "2020 SMT General, Problem 7": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the sum of ten consecutive integers is near 2020."
+    ],
+    "2020 SMT General, Problem 8": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): factor out a rational root."
+    ],
+    "2020 SMT General, Problem 9": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): two linear equations."
+    ],
+    "2020 SMT General, Problem 10": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): 5 * 11 - 5 - 11."
+    ],
+    "2020 SMT General, Problem 11": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): red beads up to rotation and reflection: by their gap."
+    ],
+    "2020 SMT General, Problem 12": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): weighted outcomes for both rolls."
+    ],
+    "2020 SMT General, Problem 13": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): big radius is r plus the triangle's circumradius."
+    ],
+    "2020 SMT General, Problem 14": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): divisors pair across the square root."
+    ],
+    "2020 SMT General, Problem 15": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): write the radicand as a square."
+    ],
+    "2020 SMT General, Problem 16": [
+      2400,
+      "Author estimate: the same problem as 2020 SMT Geometry, Problem 6; its rating is carried over."
+    ],
+    "2020 SMT General, Problem 17": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the sum is 2|z|^2 + 8; count lattice points in a disc."
+    ],
+    "2020 SMT General, Problem 18": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): solve for x and y, then a and b as roots of a quadratic."
+    ],
+    "2020 SMT General, Problem 19": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): coordinates of the eight apexes."
+    ],
+    "2020 SMT General, Problem 20": [
+      1900,
+      "Author estimate: the same problem as 2020 SMT Geometry, Problem 3; its rating is carried over."
+    ],
+    "2020 SMT General, Problem 21": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): reduce each power mod 13."
+    ],
+    "2020 SMT General, Problem 22": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): divisible by 20 and by 101."
+    ],
+    "2020 SMT General, Problem 23": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): subtract isosceles triangles, counted by apex."
+    ],
+    "2020 SMT General, Problem 24": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): ab - 2a - 2b = +-2020 factors after adding 4."
+    ],
+    "2020 SMT General, Problem 25": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a Fibonacci count of gap-separated subsets."
+    ],
+    "2021 SMT General, Problem 1": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): 30 as a base angle or as the apex."
+    ],
+    "2021 SMT General, Problem 2": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): all paths minus those through (3,3)."
+    ],
+    "2021 SMT General, Problem 3": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): (a + b)^2 from the diagonal and area."
+    ],
+    "2021 SMT General, Problem 4": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): compare the cube and cylinder volumes."
+    ],
+    "2021 SMT General, Problem 5": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): adding to 99 stacks is taking from one, relatively."
+    ],
+    "2021 SMT General, Problem 6": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): phi(43 * 47)."
+    ],
+    "2021 SMT General, Problem 7": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): similar right triangles give AE."
+    ],
+    "2021 SMT General, Problem 8": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the power of 7 in 2020!, plus one."
+    ],
+    "2021 SMT General, Problem 9": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): every row is the first row or its complement."
+    ],
+    "2021 SMT General, Problem 10": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): EF is a diameter, so angle A is right."
+    ],
+    "2021 SMT General, Problem 11": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): solve for x in terms of the argument."
+    ],
+    "2021 SMT General, Problem 12": [
+      1400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): two bisector ratios fix the sides."
+    ],
+    "2021 SMT General, Problem 13": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): two speeds, a 27-minute difference."
+    ],
+    "2021 SMT General, Problem 14": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): choose and split the volunteers for each game."
+    ],
+    "2021 SMT General, Problem 15": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): count the Friday the 13ths in 2021."
+    ],
+    "2021 SMT General, Problem 16": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): cases on the absolute value, then sign charts."
+    ],
+    "2021 SMT General, Problem 17": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): angles of 15, 45 and 60 degrees in the pieces."
+    ],
+    "2021 SMT General, Problem 18": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): subtract seatings with the fighting couples adjacent."
+    ],
+    "2021 SMT General, Problem 19": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): write f as a quadratic and match coefficients."
+    ],
+    "2021 SMT General, Problem 20": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): (x + y)^2 = 49xy."
+    ],
+    "2021 SMT General, Problem 21": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the top triangle's sides from radius differences."
+    ],
+    "2021 SMT General, Problem 22": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): solve the four congruences."
+    ],
+    "2022 SMT General, Problem 1": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the continued fraction satisfies a quadratic."
+    ],
+    "2022 SMT General, Problem 2": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): each car ahead on the same road adds a minute."
+    ],
+    "2022 SMT General, Problem 3": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): 1/((2k-1)(2k+1)) telescopes."
+    ],
+    "2022 SMT General, Problem 4": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): D, E, F are reflections of the orthocentre."
+    ],
+    "2022 SMT General, Problem 5": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): isosceles triangles with equal sides give similar triangles."
+    ],
+    "2022 SMT General, Problem 6": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): mod 4 and mod 25 separately."
+    ],
+    "2022 SMT General, Problem 7": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): ordered sums of 2, 3 and 4 to 13."
+    ],
+    "2022 SMT General, Problem 8": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a Josephus elimination; the survivor from the binary form."
+    ],
+    "2022 SMT General, Problem 9": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): x = cos t, y = sin t turns it into sin 4t."
+    ],
+    "2022 SMT General, Problem 10": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): compare expected times of the two search orders."
+    ],
+    "2022 SMT General, Problem 11": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): find xy from the power sums, then the recurrence."
+    ],
+    "2022 SMT General, Problem 12": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): (n(n+1)/2)^2 divisible by 8 and 125."
+    ],
+    "2022 SMT General, Problem 13": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the triangles' sizes as functions of the tangent point."
+    ],
+    "2022 SMT General, Problem 14": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): reach 6-6, then pairs of points decide it."
+    ],
+    "2022 SMT General, Problem 15": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the expression lies between consecutive cubes for large k."
+    ],
+    "2022 SMT General, Problem 16": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): tangency gives the circle; area of the cap between the curves."
+    ],
+    "2022 SMT General, Problem 17": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the heaviest town dominates; put the station there."
+    ],
+    "2022 SMT General, Problem 18": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): chains n, 2n, 4n, ...; take alternate elements."
+    ],
+    "2022 SMT General, Problem 19": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): each circle scales by a fixed ratio toward the corner."
+    ],
+    "2022 SMT General, Problem 20": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): per prime, exponents satisfy 2 min = max."
+    ],
+    "2022 SMT General, Problem 21": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): reflections of H and the cyclic condition fix BC."
+    ],
+    "2022 SMT General, Problem 22": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the sphere's touching points on the base form the incircle."
+    ],
+    "2022 SMT General, Problem 23": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): each term is a difference of consecutive products."
+    ],
+    "2022 SMT General, Problem 24": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): split 2022 = 2 * 3 * 337 and find the periods."
+    ],
+    "2022 SMT General, Problem 25": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): rewrite and apply AM-GM to the product."
+    ],
+    "2023 SMT General, Problem 1": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): annulus area minus a sector of it."
+    ],
+    "2023 SMT General, Problem 2": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a two-by-two table of filling and shape."
+    ],
+    "2023 SMT General, Problem 3": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): P = 8p^3; count its divisors."
+    ],
+    "2023 SMT General, Problem 4": [
+      1300,
+      "Author estimate: the same problem as 2023 SMT Algebra, Problem 1; its rating is carried over."
+    ],
+    "2023 SMT General, Problem 5": [
+      1600,
+      "Author estimate: the same problem as 2023 SMT Discrete, Problem 1; its rating is carried over."
+    ],
+    "2023 SMT General, Problem 6": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the number of ones must be a multiple of 3."
+    ],
+    "2023 SMT General, Problem 7": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): solve 43x + 47y = 2023 in positive integers."
+    ],
+    "2023 SMT General, Problem 8": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): count intersections inside the square."
+    ],
+    "2023 SMT General, Problem 9": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the candy count must be divisible by the right sizes."
+    ],
+    "2023 SMT General, Problem 10": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): incircles of the two right triangles."
+    ],
+    "2023 SMT General, Problem 11": [
+      2100,
+      "Author estimate: the same problem as 2023 SMT Algebra, Problem 3; its rating is carried over."
+    ],
+    "2023 SMT General, Problem 12": [
+      2000,
+      "Author estimate: the same problem as 2023 SMT Geometry, Problem 1; its rating is carried over."
+    ],
+    "2023 SMT General, Problem 13": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): track the gap between the frogs."
+    ],
+    "2023 SMT General, Problem 14": [
+      2000,
+      "Author estimate: the same problem as 2023 SMT Discrete, Problem 3; its rating is carried over."
+    ],
+    "2023 SMT General, Problem 15": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): areas of the pieces in the similarity ratio."
+    ],
+    "2023 SMT General, Problem 16": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the chance of a cancelled exam on each day."
+    ],
+    "2023 SMT General, Problem 17": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): triangle ADE scales by (h - r)/h."
+    ],
+    "2023 SMT General, Problem 18": [
+      2400,
+      "Author estimate: the same problem as 2023 SMT Discrete, Problem 5; its rating is carried over."
+    ],
+    "2023 SMT General, Problem 19": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): which IQ values 10a + 14b reaches."
+    ],
+    "2023 SMT General, Problem 20": [
+      2200,
+      "Author estimate: the same problem as 2023 SMT Algebra, Problem 4; its rating is carried over."
+    ],
+    "2023 SMT General, Problem 21": [
+      2400,
+      "Author estimate: the same problem as 2023 SMT Geometry, Problem 4; its rating is carried over."
+    ],
+    "2023 SMT General, Problem 22": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the ratio is extreme along tangent lines from the origin."
+    ],
+    "2023 SMT General, Problem 23": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): states by heading relative to east."
+    ],
+    "2023 SMT General, Problem 24": [
+      2500,
+      "Author estimate: the same problem as 2023 SMT Geometry, Problem 5; its rating is carried over."
+    ],
+    "2023 SMT General, Problem 25": [
+      2500,
+      "Author estimate: the same problem as 2023 SMT Algebra, Problem 7; its rating is carried over."
+    ],
+    "2024 SMT General, Problem 1": [
+      800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a third of base times height."
+    ],
+    "2024 SMT General, Problem 2": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): add the equations; each variable twice except as given."
+    ],
+    "2024 SMT General, Problem 3": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a decreasing number is a set of five digits."
+    ],
+    "2024 SMT General, Problem 4": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): case on the smallest prime."
+    ],
+    "2024 SMT General, Problem 5": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the triangle bounded by the three lines."
+    ],
+    "2024 SMT General, Problem 6": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the relation is the square max(|x|, |y|) = 8."
+    ],
+    "2024 SMT General, Problem 7": [
+      1400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): compositions of 9 into four parts at most 6."
+    ],
+    "2024 SMT General, Problem 8": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): one distinct root means r^2 = 4s; combine with rs = -2024."
+    ],
+    "2024 SMT General, Problem 9": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): count numbers with each exponent pattern."
+    ],
+    "2024 SMT General, Problem 10": [
+      1200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): roots summing to 40; c is their product."
+    ],
+    "2024 SMT General, Problem 11": [
+      1500,
+      "Author estimate: the same problem as 2024 SMT Geometry, Problem 2; its rating is carried over."
+    ],
+    "2024 SMT General, Problem 12": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): solve mod 8 and mod 125, then combine."
+    ],
+    "2024 SMT General, Problem 13": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): non-crossing arcs on five points: a recursion on the first point."
+    ],
+    "2024 SMT General, Problem 14": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): a repeating digit d in base b is d/(b - 1)."
+    ],
+    "2024 SMT General, Problem 15": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): inclusion-exclusion on the overlapping dodecagons."
+    ],
+    "2024 SMT General, Problem 16": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the sum is (x^(n+1) - 1)/(x - 1); a real root only at -1 for odd n."
+    ],
+    "2024 SMT General, Problem 17": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): expected scoops by height, with collapses."
+    ],
+    "2024 SMT General, Problem 18": [
+      2600,
+      "Author estimate: the same problem as 2024 SMT Geometry, Problem 7; its rating is carried over."
+    ],
+    "2024 SMT General, Problem 19": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): build the least terms greedily."
+    ],
+    "2024 SMT General, Problem 20": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): count arrangements with a monochrome line."
+    ],
+    "2024 SMT General, Problem 21": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): n divides 2024^2 - 1 but not 2024 - 1, with care for the start."
+    ],
+    "2024 SMT General, Problem 22": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): Q's roots are the reciprocals of P's."
+    ],
+    "2024 SMT General, Problem 23": [
+      2400,
+      "Author estimate: the same problem as 2024 SMT Geometry, Problem 6; its rating is carried over."
+    ],
+    "2024 SMT General, Problem 24": [
+      1800,
+      "Author estimate: the same problem as 2024 SMT Discrete, Problem 3; its rating is carried over."
+    ],
+    "2024 SMT General, Problem 25": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): split 2024 = 8 * 11 * 23 and find the cycles."
+    ],
+    "2025 SMT General, Problem 1": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): substitute and simplify."
+    ],
+    "2025 SMT General, Problem 2": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): factor 8! from every length; the height by Pythagoras."
+    ],
+    "2025 SMT General, Problem 3": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): the forced blocks, then sum by place values."
+    ],
+    "2025 SMT General, Problem 4": [
+      1300,
+      "Author estimate: the same problem as 2025 SMT Algebra, Problem 1; its rating is carried over."
+    ],
+    "2025 SMT General, Problem 5": [
+      1200,
+      "Author estimate: the same problem as 2025 SMT Discrete, Problem 1; its rating is carried over."
+    ],
+    "2025 SMT General, Problem 6": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): union of two triangles: sum minus the overlap."
+    ],
+    "2025 SMT General, Problem 7": [
+      1700,
+      "Author estimate: the same problem as 2025 SMT Algebra, Problem 2; its rating is carried over."
+    ],
+    "2025 SMT General, Problem 8": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): compare n and n^2 mod 24."
+    ],
+    "2025 SMT General, Problem 9": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): count the equations the students can build; no card fits."
+    ],
+    "2025 SMT General, Problem 10": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): case on the order the pieces go down."
+    ],
+    "2025 SMT General, Problem 11": [
+      2000,
+      "Author estimate: the same problem as 2025 SMT Geometry, Problem 2; its rating is carried over."
+    ],
+    "2025 SMT General, Problem 12": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): choose primes and non-primes with primes a majority."
+    ],
+    "2025 SMT General, Problem 13": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): signs of a, b, c, then count."
+    ],
+    "2025 SMT General, Problem 14": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): each digit's distance separately."
+    ],
+    "2025 SMT General, Problem 15": [
+      2200,
+      "Author estimate: the same problem as 2025 SMT Discrete, Problem 3; its rating is carried over."
+    ],
+    "2025 SMT General, Problem 16": [
+      2200,
+      "Author estimate: the same problem as 2025 SMT Geometry, Problem 3; its rating is carried over."
+    ],
+    "2025 SMT General, Problem 17": [
+      1800,
+      "Author estimate: the same problem as 2025 SMT Algebra, Problem 4; its rating is carried over."
+    ],
+    "2025 SMT General, Problem 18": [
+      2300,
+      "Author estimate: the same problem as 2025 SMT Geometry, Problem 4; its rating is carried over."
+    ],
+    "2025 SMT General, Problem 19": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): 10^a + 1 and 10^b + 1 share factors by the 2-adic parts of a and b."
+    ],
+    "2025 SMT General, Problem 20": [
+      2300,
+      "Author estimate: the same problem as 2025 SMT Algebra, Problem 5; its rating is carried over."
+    ],
+    "2025 SMT General, Problem 21": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the General test running from an easy AMC 10 problem to an AIME one): power of D with respect to the circle, then the median formula."
+    ],
+    "2025 SMT General, Problem 22": [
+      2400,
+      "Author estimate: the same problem as 2025 SMT Discrete, Problem 5; its rating is carried over."
+    ],
+    "2025 SMT General, Problem 23": [
+      2300,
+      "Author estimate: the same problem as 2025 SMT Algebra, Problem 6; its rating is carried over."
+    ],
+    "2025 SMT General, Problem 24": [
+      2800,
+      "Author estimate: the same problem as 2025 SMT Discrete, Problem 7; its rating is carried over."
+    ],
+    "2025 SMT General, Problem 25": [
+      2800,
+      "Author estimate: the same problem as 2025 SMT Geometry, Problem 9; its rating is carried over."
     ]
   }
 }

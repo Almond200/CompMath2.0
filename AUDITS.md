@@ -2426,6 +2426,10 @@ The 2009–2014 book also holds ARML Local, ARML's own local contest; its Indivi
 
 **Reading.** Every problem was read with its official solution. The 2024 solution PDFs lose their mathematics in text extraction (the formulas are in fonts without a character map), so 2024 was filed from the problem papers, which extract cleanly, and the solutions' prose. **Judgement calls:** three problems cite no card because none fits their route: 2013 Advanced #9 (a candle-timing puzzle), 2019 Algebra #9 (an increasing function whose compositions are arithmetic) and 2025 Algebra #10 (distinct roots of compositions of three linear maps). No new node or card was needed apart from TQ21, and no source error was noticed.
 
+### SMT General test (recorded 2026-11-13)
+
+The General test (25 problems in 110 minutes; 22 in 2021) is SMT's individual round for students who take no subject tests. It reuses subject-test problems: 63 of the 297 are word for word the same as a subject-test problem of that year, found by comparing statements (`difflib` ratio above 0.85 on the first 250 characters), plus 2023 #12 and the 2025 matches, done by hand because those PDFs extract poorly. A twin copies its subject-test problem's cards, nodes and rating, and its rating reason names the twin; like the 2011 HMMT two-subject papers, twins are counted once per paper in contest figures. 2025's General problems were read from the solutions PDF, whose text extracts cleanly where the problems PDF does not. Six General problems cite no card: 2012 #1, 2013 #1 and #2, 2014 #2 and 2025 #1 are one-step word or substitution problems, and 2025 #9 (counting the equations students build term by term) has no fitting card. No new node or card was needed.
+
 ## Duke Math Meet
 
 ### Sources and coverage (recorded 2026-11-13)

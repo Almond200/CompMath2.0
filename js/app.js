@@ -3194,7 +3194,7 @@
   // SMT publishes each subject test as two PDFs, like HMMT: /pdfs/smt<year>/<subject>-problems.pdf
   // and -solutions.pdf. The Discrete test was Advanced from 2011 to 2014, and in 2021 two tests,
   // Combinatorics and Number Theory, replaced it.
-  const SMT_CODE = { "Algebra": "algebra", "Advanced": "advanced", "Discrete": "discrete", "Combinatorics": "combo", "Number Theory": "nt", "Geometry": "geometry", "Calculus": "calculus" };
+  const SMT_CODE = { "General": "general", "Algebra": "algebra", "Advanced": "advanced", "Discrete": "discrete", "Combinatorics": "combo", "Number Theory": "nt", "Geometry": "geometry", "Calculus": "calculus" };
   function smtPdf(ref, which) {
     const m = ref.match(/^(\d{4}) SMT (.+?),\s*Problem\s+\d+$/);
     return m && SMT_CODE[m[2]] ? `https://www.stanfordmathtournament.com/pdfs/smt${m[1]}/${SMT_CODE[m[2]]}-${which}.pdf` : null;
