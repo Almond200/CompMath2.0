@@ -2,6 +2,8 @@
 
 **2026-11-13**
 
+- **ARML Local Individual round (owner: "the individual rounds on the other sets"):** 60 problems, 2009 to 2014, read with the official solutions in ARML's 2009–2014 book, filed, tagged and rated by author estimate (800 to 2300). ARML Local is its own family, after ARML; each page opens the book at the round's problems or solutions.
+
 - **CMIMC still waits (recorded):** its PDFs load in a browser, so the archive and any links to it work; only automated downloads get 404, and a scripted bulk download was refused as getting around the site's bot protection. It needs the owner's permission or the PDFs supplied (PLAN.md, Step H).
 
 - **SMT Calculus and a Calculus area (TQ21):** the owner asked for SMT's four subject tests, and one is Calculus, so the tree gains `alg.calc` (Limits; Derivatives, rates and extrema; Integrals and areas; Series and convergence; 462 nodes) and the 110 Calculus problems (2011 to 2014, 2018 to 2025) are filed there, rated by author estimate. All 480 SMT subject-test problems are in. TQ21 records that this was applied for the request and can be reversed.

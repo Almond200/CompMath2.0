@@ -7351,6 +7351,246 @@
     "2025 SMT Calculus, Problem 10": [
       3200,
       "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): spherical triangle area and arc length, then optimise."
+    ],
+    "2009 ARML Local Individual, Problem 1": [
+      800,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): evaluate the operation twice."
+    ],
+    "2009 ARML Local Individual, Problem 2": [
+      1200,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): three cases for where n sits."
+    ],
+    "2009 ARML Local Individual, Problem 3": [
+      1500,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): condition on the smallest element k."
+    ],
+    "2009 ARML Local Individual, Problem 4": [
+      2000,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): the long diagonal nearly a diameter; estimate the area."
+    ],
+    "2009 ARML Local Individual, Problem 5": [
+      1900,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): the fractional parts must sum to at most 1."
+    ],
+    "2009 ARML Local Individual, Problem 6": [
+      1500,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): each digit appears equally often in each place."
+    ],
+    "2009 ARML Local Individual, Problem 7": [
+      1800,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): 7 goes at a peak; fill the rest by symmetry."
+    ],
+    "2009 ARML Local Individual, Problem 8": [
+      2200,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): s_n = tan(2^n * 4 degrees); the period is an order of 2."
+    ],
+    "2009 ARML Local Individual, Problem 9": [
+      2000,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): iterate the divisor count until it cycles."
+    ],
+    "2009 ARML Local Individual, Problem 10": [
+      2300,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): double-angle identities reduce to a cubic in cos theta."
+    ],
+    "2010 ARML Local Individual, Problem 1": [
+      900,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): total distance over total time."
+    ],
+    "2010 ARML Local Individual, Problem 2": [
+      1000,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): angles of two right triangles meeting."
+    ],
+    "2010 ARML Local Individual, Problem 3": [
+      1000,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): 150 = 300/2."
+    ],
+    "2010 ARML Local Individual, Problem 4": [
+      1300,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): split each prime power evenly."
+    ],
+    "2010 ARML Local Individual, Problem 5": [
+      1500,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): alternating turns: a geometric series of misses."
+    ],
+    "2010 ARML Local Individual, Problem 6": [
+      1500,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): roots a - d, a, a + d."
+    ],
+    "2010 ARML Local Individual, Problem 7": [
+      1800,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): the iteration converges to its fixed point."
+    ],
+    "2010 ARML Local Individual, Problem 8": [
+      2000,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): tan and cot agree when the angles sum to pi/2."
+    ],
+    "2010 ARML Local Individual, Problem 9": [
+      1900,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): ABCD - DCBA = 999(A - D) - 90(C - B)."
+    ],
+    "2010 ARML Local Individual, Problem 10": [
+      2300,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): coordinates or the law of cosines for triangle DFH, then its circumradius."
+    ],
+    "2011 ARML Local Individual, Problem 1": [
+      1100,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): the median is 2, x or 11."
+    ],
+    "2011 ARML Local Individual, Problem 2": [
+      900,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): two linear equations for the fraction."
+    ],
+    "2011 ARML Local Individual, Problem 3": [
+      1500,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): N is a multiple of 9 and 3^A ends in 1."
+    ],
+    "2011 ARML Local Individual, Problem 4": [
+      1300,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): sum of the AP of angles equals 180(n - 2)."
+    ],
+    "2011 ARML Local Individual, Problem 5": [
+      1500,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): square to get sin 2x, then cos 2x."
+    ],
+    "2011 ARML Local Individual, Problem 6": [
+      1300,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): the term where the powers of x cancel."
+    ],
+    "2011 ARML Local Individual, Problem 7": [
+      1300,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): factorials from 10! end in 00."
+    ],
+    "2011 ARML Local Individual, Problem 8": [
+      1700,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): symmetry about the diagonal; a 15-degree right triangle."
+    ],
+    "2011 ARML Local Individual, Problem 9": [
+      1800,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): smallest numbers with 2, 3 and 7 binary ones."
+    ],
+    "2011 ARML Local Individual, Problem 10": [
+      2000,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): add the conjugate power to get an integer."
+    ],
+    "2012 ARML Local Individual, Problem 1": [
+      900,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): rewrite both bounds as squares."
+    ],
+    "2012 ARML Local Individual, Problem 2": [
+      1100,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): two right triangles; subtract the equations."
+    ],
+    "2012 ARML Local Individual, Problem 3": [
+      1200,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): choose four distinct values; one increasing order."
+    ],
+    "2012 ARML Local Individual, Problem 4": [
+      1800,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): sides at 60 degrees through the point."
+    ],
+    "2012 ARML Local Individual, Problem 5": [
+      1200,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): 1/(n(n+2)) telescopes in steps of two."
+    ],
+    "2012 ARML Local Individual, Problem 6": [
+      2100,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): areas of two isosceles triangles on base RL."
+    ],
+    "2012 ARML Local Individual, Problem 7": [
+      1900,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): slice by the integer value of x + y."
+    ],
+    "2012 ARML Local Individual, Problem 8": [
+      2000,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): factor the second equation as (xz + 1)(y + 1) = 355."
+    ],
+    "2012 ARML Local Individual, Problem 9": [
+      1600,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): three consecutive numbers covering 7 and 11."
+    ],
+    "2012 ARML Local Individual, Problem 10": [
+      2300,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): similar triangles at the diagonals' intersection fix AD; then the triangle inequality."
+    ],
+    "2013 ARML Local Individual, Problem 1": [
+      1000,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): one prime is 2."
+    ],
+    "2013 ARML Local Individual, Problem 2": [
+      1700,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): the minute hand catches the hour hand."
+    ],
+    "2013 ARML Local Individual, Problem 3": [
+      1100,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): iterate the divisor count down to 2."
+    ],
+    "2013 ARML Local Individual, Problem 4": [
+      1800,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): small distinct integer roots and nonzero coefficients."
+    ],
+    "2013 ARML Local Individual, Problem 5": [
+      1700,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): the month and day force digits; search forward."
+    ],
+    "2013 ARML Local Individual, Problem 6": [
+      2000,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): angle DAE is 180 - 2A or 2A - 180."
+    ],
+    "2013 ARML Local Individual, Problem 7": [
+      1700,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): ranges of n for each count, by towers of 2."
+    ],
+    "2013 ARML Local Individual, Problem 8": [
+      2100,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): common terms form an AP with the lcm of the differences."
+    ],
+    "2013 ARML Local Individual, Problem 9": [
+      1800,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): centre to the far corner minus the radius."
+    ],
+    "2013 ARML Local Individual, Problem 10": [
+      2300,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): case on floor x and check the ranges."
+    ],
+    "2014 ARML Local Individual, Problem 1": [
+      1300,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): split into four regions; a quadrilateral."
+    ],
+    "2014 ARML Local Individual, Problem 2": [
+      1300,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): divisible by 25 and 9."
+    ],
+    "2014 ARML Local Individual, Problem 3": [
+      1500,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): u = log2 x gives a quadratic."
+    ],
+    "2014 ARML Local Individual, Problem 4": [
+      1200,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): sin 2 theta = sin theta."
+    ],
+    "2014 ARML Local Individual, Problem 5": [
+      1800,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): digit sums 3, 12 or 21 with non-decreasing digits."
+    ],
+    "2014 ARML Local Individual, Problem 6": [
+      1400,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): 2 + i is a root too; Vieta gives the third."
+    ],
+    "2014 ARML Local Individual, Problem 7": [
+      1500,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): the last digit and the size fix N."
+    ],
+    "2014 ARML Local Individual, Problem 8": [
+      1700,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): a right angle at C, then the bisector ratio."
+    ],
+    "2014 ARML Local Individual, Problem 9": [
+      2200,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): best re-flip strategy by the number of heads."
+    ],
+    "2014 ARML Local Individual, Problem 10": [
+      2300,
+      "Author estimate (ARML Local publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 10 problem to an early AIME one): the extreme positions of the triangles' apexes."
     ]
   }
 }

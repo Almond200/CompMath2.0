@@ -2414,6 +2414,10 @@ ARML's public pages (`www.arml.com/ARML/arml_2019/page/index.php?page_type=publi
 
 **Filing.** Each problem was read with its official solution (and alternate solutions) before filing. No new node or card was needed. Judgement calls: 2018 I-1 is factoring by grouping, which is the first identity on the SFFT card (`sfft`), so it cites that card; 2014 I-9 cites Lucas's Theorem, the official alternate route (the main route compares 7-adic valuations of a binomial ratio); 2017 I-10, a rhombus on the graph of $\lfloor x\rfloor - \{x\}$, cites only Floor Basics, since the rest is slope reasoning with no card. No source error was noticed.
 
+### ARML Local (recorded 2026-11-13)
+
+The 2009–2014 book also holds ARML Local, ARML's own local contest; its Individual round (10 problems a year) is filed from the book's problems and solutions, 60 problems. No later ARML Local contest is public. No new node or card was needed, and no source error was noticed.
+
 ## SMT subject tests
 
 ### Sources and coverage (recorded 2026-11-13)
