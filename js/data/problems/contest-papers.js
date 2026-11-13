@@ -112,5 +112,21 @@ window.MATH_CONTEST_PAPERS = {
   "2022 BMT Geometry": {
     "url": "https://berkeley.mt/archives/bmt-2022/geometry-problems.pdf",
     "solUrl": "https://berkeley.mt/archives/bmt-2022/geometry-solutions.pdf"
+  },
+  "2022 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/Algebra_A_2022_.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Algebra_A_2022_Sol.pdf"
+  },
+  "2022 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/Algebra_B_2022_.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Algebra_B_2022_Sol.pdf"
+  },
+  "2022 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/Combinatorics_A_2022_.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Combinatorics_A_2022_Sol.pdf"
+  },
+  "2022 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/Combinatorics_B_2022_.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Combinatorics_B_2022_Sol.pdf"
   }
 };
