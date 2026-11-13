@@ -79,7 +79,11 @@
     "2025 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC_2025_Algebra_A.pdf",
     "2025 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC_2025_Algebra_B.pdf",
     "2025 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC_2025_Combinatorics_A.pdf",
-    "2025 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC_2025_Combinatorics_B.pdf"
+    "2025 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC_2025_Combinatorics_B.pdf",
+    "2025 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC_2025_Geometry_A.pdf",
+    "2025 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC_2025_Geometry_B.pdf",
+    "2025 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC_2025_Number_Theory_A.pdf",
+    "2025 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC_2025_Number_Theory_B.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -5409,6 +5413,134 @@
     "2025 PUMaC Division B Combinatorics, Problem 8": [
       3000,
       "Count lattice points above a rational diagonal with its GCD boundary correction and optimize the denominator split."
+    ],
+    "2025 PUMaC Division A Geometry, Problem 1": [
+      1900,
+      "Identify two circle diameters from a perpendicular common chord and recover the triangle altitude."
+    ],
+    "2025 PUMaC Division A Geometry, Problem 2": [
+      2100,
+      "Use parallel planes in a right triangular prism to transfer a base division to its top face."
+    ],
+    "2025 PUMaC Division A Geometry, Problem 3": [
+      2450,
+      "Turn an integral trapezoid midline secant into a shifted difference-of-squares divisor equation."
+    ],
+    "2025 PUMaC Division A Geometry, Problem 4": [
+      2400,
+      "Compute two reflected vertices, an orthocenter, the line intersection and the requested circumcenter distance; the official final answer is wrong."
+    ],
+    "2025 PUMaC Division A Geometry, Problem 5": [
+      2850,
+      "Use the two orthocenter tangent circles to establish an equilateral-line ratio and evaluate it with triangle cosines."
+    ],
+    "2025 PUMaC Division A Geometry, Problem 6": [
+      2650,
+      "Use the archive-corrected median ratio and intersect two circle equations with the specified parallel line; the published numerical solution uses the other ratio."
+    ],
+    "2025 PUMaC Division A Geometry, Problem 7": [
+      3250,
+      "Use exact incenter coordinates and the radical axis of two reflected-point circles to recover their second intersection."
+    ],
+    "2025 PUMaC Division A Geometry, Problem 8": [
+      3700,
+      "Optimize a cube corner through a circular aperture, identify the attainable oblate half-ellipsoid and compute its volume."
+    ],
+    "2025 PUMaC Division B Geometry, Problem 1": [
+      1400,
+      "Relate the inscribed square width to a triangle cross-section at the square height."
+    ],
+    "2025 PUMaC Division B Geometry, Problem 2": [
+      1750,
+      "Subtract three corner triangle area ratios and select the smaller quadratic root."
+    ],
+    "2025 PUMaC Division B Geometry, Problem 3": [
+      1900,
+      "Identify two circle diameters from a perpendicular common chord and recover the triangle altitude."
+    ],
+    "2025 PUMaC Division B Geometry, Problem 4": [
+      2100,
+      "Use parallel planes in a right triangular prism to transfer a base division to its top face."
+    ],
+    "2025 PUMaC Division B Geometry, Problem 5": [
+      2450,
+      "Turn an integral trapezoid midline secant into a shifted difference-of-squares divisor equation."
+    ],
+    "2025 PUMaC Division B Geometry, Problem 6": [
+      2400,
+      "Compute two reflected vertices, an orthocenter, the line intersection and the requested circumcenter distance; the official final answer is wrong."
+    ],
+    "2025 PUMaC Division B Geometry, Problem 7": [
+      2850,
+      "Use the two orthocenter tangent circles to establish an equilateral-line ratio and evaluate it with triangle cosines."
+    ],
+    "2025 PUMaC Division B Geometry, Problem 8": [
+      2650,
+      "Use the archive-corrected median ratio and intersect two circle equations with the specified parallel line; the published numerical solution uses the other ratio."
+    ],
+    "2025 PUMaC Division A Number Theory, Problem 1": [
+      1850,
+      "Reduce a polynomial GCD to a constant using an invertible multiplier, then sum one residue progression."
+    ],
+    "2025 PUMaC Division A Number Theory, Problem 2": [
+      2250,
+      "Classify odd composite numbers with only one factor of two in their totient and enumerate the prime powers."
+    ],
+    "2025 PUMaC Division A Number Theory, Problem 3": [
+      2200,
+      "Factor a homogeneous quadratic over a prime field exactly when two is a square, including characteristic two."
+    ],
+    "2025 PUMaC Division A Number Theory, Problem 4": [
+      2550,
+      "Count power-of-two torsion in units modulo prime powers, handling powers of two separately."
+    ],
+    "2025 PUMaC Division A Number Theory, Problem 5": [
+      2900,
+      "Use prime valuations to force an integer ratio in an exponential Diophantine equation and classify the resulting square powers."
+    ],
+    "2025 PUMaC Division A Number Theory, Problem 6": [
+      2700,
+      "Express a composite-index cyclotomic polynomial as a low-degree polynomial in a large power and sum its supported exponents."
+    ],
+    "2025 PUMaC Division A Number Theory, Problem 7": [
+      3600,
+      "Classify fixed points of a radical-divisor sum with multiplicative prime-power factors and a two-adic budget bound."
+    ],
+    "2025 PUMaC Division A Number Theory, Problem 8": [
+      2850,
+      "Shift a modular hyperelliptic equation to an odd polynomial and pair opposite inputs by quadratic character."
+    ],
+    "2025 PUMaC Division B Number Theory, Problem 1": [
+      1450,
+      "Sum all factor-pair rectangle perimeters while treating the square pair with the correct weight."
+    ],
+    "2025 PUMaC Division B Number Theory, Problem 2": [
+      1650,
+      "Factor two exponential differences and use Fermat to isolate the sole exceptional odd prime."
+    ],
+    "2025 PUMaC Division B Number Theory, Problem 3": [
+      1850,
+      "Reduce a polynomial GCD to a constant using an invertible multiplier, then sum one residue progression."
+    ],
+    "2025 PUMaC Division B Number Theory, Problem 4": [
+      2250,
+      "Classify odd composite numbers with only one factor of two in their totient and enumerate the prime powers."
+    ],
+    "2025 PUMaC Division B Number Theory, Problem 5": [
+      2200,
+      "Factor a homogeneous quadratic over a prime field exactly when two is a square, including characteristic two."
+    ],
+    "2025 PUMaC Division B Number Theory, Problem 6": [
+      2550,
+      "Count power-of-two torsion in units modulo prime powers, handling powers of two separately."
+    ],
+    "2025 PUMaC Division B Number Theory, Problem 7": [
+      2900,
+      "Use prime valuations to force an integer ratio in an exponential Diophantine equation and classify the resulting square powers."
+    ],
+    "2025 PUMaC Division B Number Theory, Problem 8": [
+      2700,
+      "Express a composite-index cyclotomic polynomial as a low-degree polynomial in a large power and sum its supported exponents."
     ]
   }
 }

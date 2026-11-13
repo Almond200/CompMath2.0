@@ -28,5 +28,21 @@ window.MATH_CONTEST_PAPERS = {
   "2025 PUMaC Division B Combinatorics": {
     "url": "https://pumac.princeton.edu/s/PUMaC_2025_Combinatorics_B.pdf",
     "solUrl": "https://pumac.princeton.edu/s/V2-Combinatorics-B-Solutions.pdf"
+  },
+  "2025 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC_2025_Geometry_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Geometry-A-Solutions-6t2d.pdf"
+  },
+  "2025 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC_2025_Geometry_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Geometry-B-Solutions-nmxh.pdf"
+  },
+  "2025 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC_2025_Number_Theory_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Number-Theory-A-Solutions-b7c9.pdf"
+  },
+  "2025 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC_2025_Number_Theory_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Number-Theory-B-Solutions-e3rc.pdf"
   }
 };

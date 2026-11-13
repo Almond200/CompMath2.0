@@ -9,7 +9,7 @@ const db=context.window.MATH_PROBLEM_DB, papers=context.window.MATH_CONTEST_PAPE
 const slug=ref=>ref.replace(', Problem ',' ').toLowerCase().replaceAll(' ','-');
 const families=new Map();
 // The first six A questions recur as B questions 3–8 in these papers.
-for(const subject of ['Algebra','Combinatorics']) for(let n=1;n<=6;n++){
+for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) for(let n=1;n<=6;n++){
   const refs=[`2025 PUMaC Division A ${subject}, Problem ${n}`,`2025 PUMaC Division B ${subject}, Problem ${n+2}`];
   if(!db.some(p=>p.ref===refs[0]))continue;
   const metadata=refs.map(ref=>{
