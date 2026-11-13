@@ -2917,7 +2917,7 @@
   // (owner, 2026-10-31): the contest's level plus the place in its paper. The offsets say roughly
   // where each contest starts against the others (an early AIME problem is about as hard as a
   // late AMC 12 one); they order a list, they are not a rating.
-  const FAM_LEVEL = { "AMC 8": 0, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "ARML": 1.8, "ARML Local": 1.2, "SMT": 1.9, "Duke Math Meet": 1.5, "UMD HSMC": 1.0, "CMIMC": 2.0, "Math Prize for Girls": 1.4, "MMATHS": 1.3, "Girls in Math at Yale": 1.0, "Lehigh": 0.9, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
+  const FAM_LEVEL = { "AMC 8": 0, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "ARML": 1.8, "ARML Local": 1.2, "SMT": 1.9, "Duke Math Meet": 1.5, "UMD HSMC": 1.0, "CMIMC": 2.0, "Math Prize for Girls": 1.4, "MMATHS": 1.3, "Girls in Math at Yale": 1.0, "Lehigh": 0.9, "Utah State Math Contest": 0.8, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
   function difficultyScore(p) { return (FAM_LEVEL[p.fam] != null ? FAM_LEVEL[p.fam] : 2) + paperPos(p); }
   // Contest profile (rebuilt 2026-11-11, now that every problem has a rating and a place in the
   // topic tree): a strip of headline figures, then label-and-value rows. Everything is computed
@@ -3166,7 +3166,8 @@
     "Math Prize for Girls": "https://mathprize.atfoundation.org/resources",
     "MMATHS": "https://www.mmaths.org/archive",
     "Girls in Math at Yale": "https://www.mmaths.org/archive",
-    "Lehigh": "https://www.lehigh.edu/~dmd1/oldcontests.html"
+    "Lehigh": "https://www.lehigh.edu/~dmd1/oldcontests.html",
+    "Utah State Math Contest": "https://weber.edu/statemathcontest/exams.html"
   };
   // The button has to say where it goes: an HMMT link lands on a round's archive, not on a
   // per-problem page, and calling that "AoPS" would be simply false.
@@ -3316,8 +3317,15 @@
     const m = ref.match(/^(\d{4}) Lehigh Math Contest,\s*Problem\s+\d+$/), f = m && LEHIGH_FILES[m[1]];
     return f ? "https://www.lehigh.edu/~dmd1/" + (Array.isArray(f) ? f[which === "solutions" ? 1 : 0] : f) : null;
   }
+  // The Utah State Math Contest (Weber State University): a Junior and a Senior exam each year,
+  // each with its solutions; [exam, solutions] by year and level, as the archive names them.
+  const UTAH_FILES = { 2006: { Junior: ["SMC2006_Junior_Exam.pdf", "SMC2006_Junior_Exam_Solutions.pdf"], Senior: ["SMC2006_Senior_Exam.pdf", "SMC2006_Senior_Exam_Solutions.pdf"] }, 2007: { Junior: ["SMC2007_Junior_Exam.pdf", "SMC2007_Junior_Exam_Solutions.pdf"], Senior: ["SMC2007_Senior_Exam.pdf", "SMC2007_Senior_Exam_Solutions.pdf"] }, 2008: { Junior: ["SMC2008_Junior_Exam.pdf", "SMC2008_Junior_Exam_Solutions.pdf"], Senior: ["SMC2008_Senior_Exam.pdf", "SMC2008_Senior_Exam_Solutions.pdf"] }, 2009: { Junior: ["SMC2009_Junior_Exam.pdf", "SMC2009_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2009_Senior_Exam.pdf", "SMC2009_Senior_Exam_and_Solutions.pdf"] }, 2010: { Junior: ["SMC2010_Junior_Exam.pdf", "SMC2010_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2010_Senior_Exam.pdf", "SMC2010_Senior_Exam_and_Solutions.pdf"] }, 2011: { Junior: ["SMC2011_Junior_Exam.pdf", "SMC2011_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2011_Senior_Exam.pdf", "SMC2011_Senior_Exam_and_Solutions.pdf"] }, 2012: { Junior: ["SMC_2012_Junior_Exam.pdf", "SMC_2012_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2012_Senior_Exam.pdf", "SMC2012_Senior_Exam_Solutions.pdf"] }, 2013: { Junior: ["SMC_2013_Junior_Exam.pdf", "SMC_2013_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2013_Senior_Exam.pdf", "SMC_2013_Senior_Exam_Solutions.pdf"] }, 2014: { Junior: ["SMC_2014_Junior_Exam.pdf", "SMC_2014_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC_2014_Senior_Exam.pdf", "SMC_2014_Senior_Exam_Solutions.pdf"] }, 2015: { Junior: ["SMC_2015_Junior_Exam.pdf", "SMC2015_Junior_Exam_Solutions.pdf"], Senior: ["SMC2015_Senior_Exam.pdf", "SMC2015_Senior_Exam_Solutions.pdf"] }, 2016: { Junior: ["SMC2016_Junior_Exam.pdf", "SMC2016_Junior_Exam_Solutions.pdf"], Senior: ["SMC2016_Senior_Exam.pdf", "SMC2016_Senior_Exam_Solutions.pdf"] }, 2017: { Junior: ["SMC2017_Junior_Exam.pdf", "SMC2017_Junior_Exam_Solutions.pdf"], Senior: ["SMC2017_Senior_Exam.pdf", "SMC2017_Senior_Exam_Solutions.pdf"] }, 2018: { Junior: ["SMC2018_Junior_Exam.pdf", "SMC2018_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2018_Senior_Exam.pdf", "SMC2018_Senior_Exam_and_Solutions.pdf"] }, 2019: { Junior: ["SMC2019_Junior_Exam.pdf", "SMC2019_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2019_Senior_Exam(1).pdf", "SMC2019_Senior_Exam_and_Solutions(1).pdf"] }, 2020: { Junior: ["SMC2020_Junior_Exam.pdf", "SMC2020_Junior_Exam_Solutions.pdf"], Senior: ["SMC2020_Senior_Exam.pdf", "SMC2020_Senior_Exam_Solutions.pdf"] } };
+  function utahPdf(ref, which) {
+    const m = ref.match(/^(\d{4}) Utah State Math Contest (Junior|Senior),\s*Problem\s+\d+$/), f = m && UTAH_FILES[m[1]] && UTAH_FILES[m[1]][m[2]];
+    return f ? "https://www.weber.edu/wsuimages/statemathcontest/Exams/" + f[which === "solutions" ? 1 : 0] : null;
+  }
   // The official paper or solutions as a PDF, for the contests that publish them.
-  const officialPdf = (ref, which) => hmmtPdf(ref, which) || armlPdf(ref, which) || smtPdf(ref, which) || dmmPdf(ref, which) || umdPdf(ref, which) || cmimcPdf(ref, which) || mathPrizePdf(ref, which) || mmathsPdf(ref, which) || gimPdf(ref, which) || lehighPdf(ref, which);
+  const officialPdf = (ref, which) => hmmtPdf(ref, which) || armlPdf(ref, which) || smtPdf(ref, which) || dmmPdf(ref, which) || umdPdf(ref, which) || cmimcPdf(ref, which) || mathPrizePdf(ref, which) || mmathsPdf(ref, which) || gimPdf(ref, which) || lehighPdf(ref, which) || utahPdf(ref, which);
   function aopsUrl(ref, fam) {
     if (fam && ARCHIVE_URL[fam]) return ARCHIVE_URL[fam];
     const m = ref.match(/^(.*),\s*Problem\s+(\d+)\s*$/);
@@ -3369,6 +3377,7 @@
     else if (/^MMATHS\b/i.test(core)) fam = "MMATHS";                  // the Individual test (owner, 2026-11-13)
     else if (/^Girls in Math at Yale\b/i.test(core)) fam = "Girls in Math at Yale";  // the Individual round (owner, 2026-11-13)
     else if (/^Lehigh\b/i.test(core)) fam = "Lehigh";                  // the High School Math Contest (owner, 2026-11-13)
+    else if (/^Utah State Math Contest\b/i.test(core)) fam = "Utah State Math Contest";  // Junior and Senior exams (owner, 2026-11-13)
     // HMMT runs two tournaments a year of quite different difficulty, so they are separate
     // families rather than one pile. The round (Algebra, Combinatorics, Guts, Team) stays in
     // `cname`, which dbMainHtml already uses as the heading within a year.
@@ -3494,7 +3503,7 @@
   // Competition → year → problems tree for the Database sidebar navigator.
   const DB_TREE = {};
   PROBLEM_DB.forEach(p => { (DB_TREE[p.fam] = DB_TREE[p.fam] || {}); (DB_TREE[p.fam][p.year] = DB_TREE[p.fam][p.year] || []).push(p); });
-  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "ARML", "ARML Local", "SMT", "Duke Math Meet", "UMD HSMC", "CMIMC", "Math Prize for Girls", "MMATHS", "Girls in Math at Yale", "Lehigh", "Putnam", "HMMT"];
+  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "ARML", "ARML Local", "SMT", "Duke Math Meet", "UMD HSMC", "CMIMC", "Math Prize for Girls", "MMATHS", "Girls in Math at Yale", "Lehigh", "Utah State Math Contest", "Putnam", "HMMT"];
   const FAMILIES = Object.keys(DB_TREE).sort((a, b) => {
     const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
@@ -4768,6 +4777,7 @@
               <p>Problems from the 20-question test of <a href="https://mathprize.atfoundation.org/resources" target="_blank" rel="noopener noreferrer">Math Prize for Girls</a> (2009 to 2026; there was no contest in 2020) are listed the same way: each problem's page opens the Advantage Testing Foundation's official test and, where posted, its solutions; nothing is reproduced. That material is attributed to the Advantage Testing Foundation; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual test of <a href="https://www.mmaths.org/archive" target="_blank" rel="noopener noreferrer">MMATHS</a>, the Math Majors of America Tournament for High Schools run by Yale Math Competitions (2014 to 2016 and 2018 to 2025; the 2017 files are lost), are listed the same way: each problem's page opens the official test and its solutions or answer key; nothing is reproduced. That material is attributed to Yale Math Competitions; the MAA license above does not apply to it. The Individual round of Girls in Math at Yale, from the same archive (2019 to 2026), is listed the same way.</p>
               <p>Problems from the <a href="https://www.lehigh.edu/~dmd1/oldcontests.html" target="_blank" rel="noopener noreferrer">Lehigh University High School Math Contest</a>, a two-hour individual test, are listed the same way: each problem's page opens the year's exam and solutions as Lehigh's mathematics department posts them; nothing is reproduced. That material is attributed to Lehigh University; the MAA license above does not apply to it.</p>
+              <p>Problems from the Junior and Senior exams of the <a href="https://weber.edu/statemathcontest/exams.html" target="_blank" rel="noopener noreferrer">Utah State Math Contest</a> (Weber State University, 2006 to 2020) are listed the same way: each problem's page opens the official exam and its solutions; nothing is reproduced. That material is attributed to Weber State University; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual round of the <a href="https://math.duke.edu/duke-math-meet" target="_blank" rel="noopener noreferrer">Duke Math Meet</a> (2007 to 2022) are listed the same way: each problem's page opens the round as Duke's mathematics department posts it, and its solutions where they were posted; nothing is reproduced. Duke Math Meet material is attributed to the Duke Math Meet; the MAA license above does not apply to it.</p>
             </div>
           </div></div>
@@ -9186,7 +9196,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const roundOf = p => /^HMMT/.test(p.fam) ? p.cname.replace(/^HMMT \w+ /, "").replace(/^Algebra and Number Theory$/, "Algebra")
     // SMT's third subject was Advanced, then Discrete (Combinatorics and Number Theory in 2021): one series.
     : p.fam === "SMT" ? p.cname.replace(/^SMT /, "").replace(/^Advanced$/, "Discrete")
-    : p.fam === "CMIMC" ? p.cname.replace(/^CMIMC /, "") : "";
+    : p.fam === "CMIMC" ? p.cname.replace(/^CMIMC /, "")
+    : p.fam === "Utah State Math Contest" ? p.cname.replace(/^Utah State Math Contest /, "") : "";
   const roundSlug = slug => String(slug || "").replace(/algebra-and-number-theory$/, "algebra").replace(/^smt-advanced$/, "smt-discrete");
   function famPapers(fam, round = "") {
     const id = fam + "|" + round;
@@ -9403,7 +9414,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <select class="ct-yb-select" aria-label="Year">${years.map(y => `<option value="${y}"${y === year ? " selected" : ""}>${y}</option>`).join("")}</select>
         ${newer ? `<a class="ct-yb-step" href="${ystep(newer)}" data-step-year="${newer}" aria-label="${newer}">${stepChevron(1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(1)}</span>`}
       </div>
-      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 ").replace(/^(?:HMMT (?:February|November)|SMT|CMIMC) /, "").replace(/ and /g, " & "))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
+      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 ").replace(/^(?:HMMT (?:February|November)|SMT|CMIMC|Utah State Math Contest) /, "").replace(/ and /g, " & "))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
       ${body}
       <nav class="topic-nav" aria-label="Neighbouring years">
         ${older ? `<a class="topic-step" href="${ystep(older)}" data-step-year="${older}"><span class="ts-dir">${uiIcon("arrow-left")} Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
@@ -9587,7 +9598,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   // Difficulty: Elo ratings in bins of 200. Each contest has its own colour (the level tokens),
   // so one chart can stack every contest and still show which is which.
-  const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)", "HMMT November": "var(--level-hmmtn)", "ARML": "var(--level-arml)", "ARML Local": "var(--level-arml-local)", "SMT": "var(--level-smt)", "Duke Math Meet": "var(--level-dmm)", "UMD HSMC": "var(--level-umd)", "CMIMC": "var(--level-cmimc)", "Math Prize for Girls": "var(--level-mpfg)", "MMATHS": "var(--level-mmaths)", "Girls in Math at Yale": "var(--level-gim)", "Lehigh": "var(--level-lehigh)" };
+  const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)", "HMMT November": "var(--level-hmmtn)", "ARML": "var(--level-arml)", "ARML Local": "var(--level-arml-local)", "SMT": "var(--level-smt)", "Duke Math Meet": "var(--level-dmm)", "UMD HSMC": "var(--level-umd)", "CMIMC": "var(--level-cmimc)", "Math Prize for Girls": "var(--level-mpfg)", "MMATHS": "var(--level-mmaths)", "Girls in Math at Yale": "var(--level-gim)", "Lehigh": "var(--level-lehigh)", "Utah State Math Contest": "var(--level-utah)" };
   const famColor = f => FAM_COLOR[f] || "var(--level-oly)";
   const RATED_FAMS = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && Number.isFinite(p.elo)));
   // The scale ends at 3800 unless a problem is rated above that (owner, 2026-11-12: harder
@@ -10381,7 +10392,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const sitting = p.ref.replace(/,?\s*Problem.*$/, "").trim();
       const base = sitting.replace(/\b(19|20)\d\d\b/, "").replace(/\s+/g, " ").trim();
       bump(sitting); bump(base);
-      const m = base.match(/^(Fall )?(AMC 1[02]|AIME|HMMT February|HMMT November|HMMT|ARML Local|ARML|SMT|Duke Math Meet|UMD HSMC|CMIMC|Math Prize for Girls|MMATHS|Girls in Math at Yale|Lehigh)/);
+      const m = base.match(/^(Fall )?(AMC 1[02]|AIME|HMMT February|HMMT November|HMMT|ARML Local|ARML|SMT|Duke Math Meet|UMD HSMC|CMIMC|Math Prize for Girls|MMATHS|Girls in Math at Yale|Lehigh|Utah State Math Contest)/);
       if (m && m[2] !== base) bump(m[2]);
       if (/^HMMT (February|November)/.test(base) && base !== "HMMT") bump("HMMT");
     });

@@ -2,6 +2,8 @@
 
 **2026-11-13**
 
+- **Utah State Math Contest (in progress; owner: "keep looking for contests", without calculus):** Junior and Senior exams from Weber State's archive, 2009 to 2011 so far (237 problems), with shared problems copied between the two papers and calculus questions left out. The 2011 HMMT calculus questions stay where they are, at the owner's word.
+
 - **Lehigh University High School Math Contest complete:** all 1,020 problems, 1999 to 2026 (no 2023), filed and tagged, the scanned years read from page images; ratings from Lehigh's posted solve counts by a fixed logistic rule (AUDITS.md). A new family, Lehigh, whose pages open the year's exam and solutions.
 
 - **Girls in Math at Yale, Individual round:** 96 problems, 2019 to 2026, from Yale Math Competitions' archive (solutions or answer keys), filed, tagged and rated by author estimate; a new family whose pages open the official round and its solutions or key.
