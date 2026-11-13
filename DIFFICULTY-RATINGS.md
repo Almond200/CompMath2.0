@@ -30,6 +30,8 @@ The ten 2019 HMMT February Geometry problems and fifty 2026 AMC 10A/12A problems
 
 **Girls in Math at Yale (2026-11-13).** Rated the same way as MMATHS, a little easier at the top: Problem 1 near an early AMC 10 problem (about 600 to 1100), Problem 12 near a late AMC 12 or early AIME problem (about 2100 to 2600).
 
+**Lehigh (2026-11-13).** Lehigh posts how many students solved each problem in most years, so these ratings come from the counts: 1500 + 300 ln((N - s + 1/2)/(s + 1/2)) for the whole field of N students with s solvers, with intercept 1700 when only the top students are counted; rounded to 10 and kept between 500 (600) and 2900. Years without counts get author estimates.
+
 ## Selection
 
 `js/problem-difficulty.js` supplies the shared rating lookup, five-level selection and uniform draw.

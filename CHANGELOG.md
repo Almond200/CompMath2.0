@@ -2,6 +2,8 @@
 
 **2026-11-13**
 
+- **Lehigh University High School Math Contest, 2020 to 2026 (in progress):** 195 problems filed and tagged; ratings from Lehigh's posted solve counts by a fixed logistic rule (AUDITS.md). A new family, Lehigh, whose pages open the year's exam and solutions.
+
 - **Girls in Math at Yale, Individual round:** 96 problems, 2019 to 2026, from Yale Math Competitions' archive (solutions or answer keys), filed, tagged and rated by author estimate; a new family whose pages open the official round and its solutions or key.
 
 - **MMATHS Individual test (owner: "go to the next ones"):** 131 problems of Yale's Math Majors of America Tournament for High Schools, 2014 to 2016 and 2018 to 2025 (2017's files are lost; 2016 #4 was thrown out), each read from Yale Math Competitions' official solutions or answer key, filed, tagged and rated by author estimate; a new family, MMATHS, whose pages open the official test and solutions.
