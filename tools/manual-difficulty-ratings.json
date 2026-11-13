@@ -115,7 +115,9 @@
     "2021 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC_2021_Algebra_A.pdf",
     "2021 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC_2021_Algebra_B.pdf",
     "2021 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC_2021_Combo_A.pdf",
-    "2021 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC_2021_Combo_B.pdf"
+    "2021 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC_2021_Combo_B.pdf",
+    "2021 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_A_2021-1.pdf",
+    "2021 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2021-1.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -6693,6 +6695,70 @@
     "2021 PUMaC Division B Combinatorics, Problem 8": [
       3400,
       "Track how many names have appeared zero, one or at least two times and solve the capped occupancy waiting system."
+    ],
+    "2021 PUMaC Division A Number Theory, Problem 1": [
+      2200,
+      "Reduce three nested-power terms modulo two, three and five, respecting the exponent nesting."
+    ],
+    "2021 PUMaC Division A Number Theory, Problem 2": [
+      2500,
+      "Extend prime digit strings while requiring every contiguous substring to remain prime and prove the extension process terminates."
+    ],
+    "2021 PUMaC Division A Number Theory, Problem 3": [
+      2800,
+      "Allocate the split Gaussian prime factors of a squarefree norm and count nonnegative ordered coordinate pairs."
+    ],
+    "2021 PUMaC Division A Number Theory, Problem 4": [
+      3200,
+      "Evaluate a reduced-residue cubic power sum by weighted divisibility inclusion-exclusion and factor the result."
+    ],
+    "2021 PUMaC Division A Number Theory, Problem 5": [
+      3500,
+      "Classify integer-lattice map orbits through an invariant difference and a coordinate multiplied by four, then count the distinct classes meeting a positive box."
+    ],
+    "2021 PUMaC Division A Number Theory, Problem 6": [
+      3500,
+      "Group a normalized GCD sum by divisor classes, factor its mean and solve the rational prime-power product using parity and lower bounds."
+    ],
+    "2021 PUMaC Division A Number Theory, Problem 7": [
+      3950,
+      "Classify small-degree congruence-preserving polynomials with all monomial coefficients in the unit interval, independently enumerating their bounded Newton coefficients."
+    ],
+    "2021 PUMaC Division A Number Theory, Problem 8": [
+      3850,
+      "Track valuations in an odd exponential recurrence after each prime first occurs, using the initial prime three to prove both first cube-divisibility indices."
+    ],
+    "2021 PUMaC Division B Number Theory, Problem 1": [
+      1250,
+      "Find the bounded intersection of a final-digit condition and divisibility by nine."
+    ],
+    "2021 PUMaC Division B Number Theory, Problem 2": [
+      2050,
+      "Classify the first three proper divisors as a prime pair or a prime and its square, then check realizability."
+    ],
+    "2021 PUMaC Division B Number Theory, Problem 3": [
+      2200,
+      "Reduce three nested-power terms modulo two, three and five, respecting the exponent nesting."
+    ],
+    "2021 PUMaC Division B Number Theory, Problem 4": [
+      2500,
+      "Extend prime digit strings while requiring every contiguous substring to remain prime and prove the extension process terminates."
+    ],
+    "2021 PUMaC Division B Number Theory, Problem 5": [
+      2800,
+      "Allocate the split Gaussian prime factors of a squarefree norm and count nonnegative ordered coordinate pairs."
+    ],
+    "2021 PUMaC Division B Number Theory, Problem 6": [
+      3200,
+      "Evaluate a reduced-residue cubic power sum by weighted divisibility inclusion-exclusion and factor the result."
+    ],
+    "2021 PUMaC Division B Number Theory, Problem 7": [
+      3500,
+      "Classify integer-lattice map orbits through an invariant difference and a coordinate multiplied by four, then count the distinct classes meeting a positive box."
+    ],
+    "2021 PUMaC Division B Number Theory, Problem 8": [
+      3500,
+      "Group a normalized GCD sum by divisor classes, factor its mean and solve the rational prime-power product using parity and lower bounds."
     ]
   }
 }

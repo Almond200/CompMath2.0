@@ -172,5 +172,13 @@ window.MATH_CONTEST_PAPERS = {
   "2021 PUMaC Division B Combinatorics": {
     "url": "https://pumac.princeton.edu/s/PUMaC_2021_Combo_B.pdf",
     "solUrl": "https://pumac.princeton.edu/s/PUMaC_2021_ComboB_Solutions.pdf"
+  },
+  "2021 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_A_2021-1.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_A_2021_Solutions.pdf"
+  },
+  "2021 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2021-1.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2021_Solutions.pdf"
   }
 };
