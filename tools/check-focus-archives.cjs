@@ -8,6 +8,16 @@ for (const file of ['problem-db.js','difficulty-ratings.js','contest-papers.js']
 const db=context.window.MATH_PROBLEM_DB, papers=context.window.MATH_CONTEST_PAPERS;
 const slug=ref=>ref.replace(', Problem ',' ').toLowerCase().replaceAll(' ','-');
 const families=new Map();
+// The first six A questions recur as B questions 3–8 in these papers.
+for(const subject of ['Algebra','Combinatorics']) for(let n=1;n<=6;n++){
+  const refs=[`2025 PUMaC Division A ${subject}, Problem ${n}`,`2025 PUMaC Division B ${subject}, Problem ${n+2}`];
+  if(!db.some(p=>p.ref===refs[0]))continue;
+  const metadata=refs.map(ref=>{
+    const p=db.find(p=>p.ref===ref);assert(p,ref);
+    return JSON.stringify([p.formulas,p.tree,context.window.MATH_PROBLEM_RATINGS.ratings[slug(ref)].elo]);
+  });
+  assert.equal(metadata[0],metadata[1],refs.join(' / '));
+}
 for(const [paper,source] of Object.entries(papers)) {
   const m=paper.match(/^(\d{4}) (BMT|PUMaC Division [AB]) (.+)$/);assert(m,paper);
   const ps=db.filter(p=>p.ref.startsWith(paper+', Problem '));assert(ps.length,paper);

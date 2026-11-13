@@ -75,7 +75,11 @@
     "2000 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2000/feb/geo/problems.pdf",
     "2025 BMT Algebra": "https://berkeley.mt/archives/bmt-2025/algebra-problems.pdf",
     "2025 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2025/discrete-problems.pdf",
-    "2025 BMT Geometry": "https://berkeley.mt/archives/bmt-2025/geometry-problems.pdf"
+    "2025 BMT Geometry": "https://berkeley.mt/archives/bmt-2025/geometry-problems.pdf",
+    "2025 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC_2025_Algebra_A.pdf",
+    "2025 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC_2025_Algebra_B.pdf",
+    "2025 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC_2025_Combinatorics_A.pdf",
+    "2025 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC_2025_Combinatorics_B.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -5277,6 +5281,134 @@
     "2025 BMT Geometry, Problem 10": [
       3300,
       "Use bisected arcs and a common tangent to obtain a cevian ratio, then solve the metric constraints with Stewart."
+    ],
+    "2025 PUMaC Division A Algebra, Problem 1": [
+      1900,
+      "Convert two convergent nested radicals to coupled fixed-point equations and discard extraneous branches."
+    ],
+    "2025 PUMaC Division A Algebra, Problem 2": [
+      2550,
+      "Use associativity and repeated powers to linearize an operation on rational square roots, then sum reciprocal squares of smooth numbers."
+    ],
+    "2025 PUMaC Division A Algebra, Problem 3": [
+      2050,
+      "Bound a linear-over-quadratic expression by a radial Cauchy inequality and attain its positive maximum."
+    ],
+    "2025 PUMaC Division A Algebra, Problem 4": [
+      3000,
+      "Evaluate a weighted cosine-binomial sum, control its floor and count binary carries in a central binomial coefficient."
+    ],
+    "2025 PUMaC Division A Algebra, Problem 5": [
+      3300,
+      "Describe all fixed points of iterated angle doubling and bound the tiny median of two interleaved cosine grids."
+    ],
+    "2025 PUMaC Division A Algebra, Problem 6": [
+      2900,
+      "Intersect a shifted complex parabola with the unit circle and real axis while respecting a single-valued branch selection."
+    ],
+    "2025 PUMaC Division A Algebra, Problem 7": [
+      3600,
+      "Conjugate a repeated complex operation into alternating products and evaluate the roots-of-unity products without undefined intermediate steps."
+    ],
+    "2025 PUMaC Division A Algebra, Problem 8": [
+      2850,
+      "Translate a positive integer triple system into a bounded two-square equation and check the remaining product condition."
+    ],
+    "2025 PUMaC Division B Algebra, Problem 1": [
+      1200,
+      "Complete a square to identify the vertical parameter of a quadratic relation."
+    ],
+    "2025 PUMaC Division B Algebra, Problem 2": [
+      1650,
+      "Build all valid integer preimages of a piecewise Collatz-type update through five steps."
+    ],
+    "2025 PUMaC Division B Algebra, Problem 3": [
+      1900,
+      "Convert two convergent nested radicals to coupled fixed-point equations and discard extraneous branches."
+    ],
+    "2025 PUMaC Division B Algebra, Problem 4": [
+      2550,
+      "Use associativity and repeated powers to linearize an operation on rational square roots, then sum reciprocal squares of smooth numbers."
+    ],
+    "2025 PUMaC Division B Algebra, Problem 5": [
+      2050,
+      "Bound a linear-over-quadratic expression by a radial Cauchy inequality and attain its positive maximum."
+    ],
+    "2025 PUMaC Division B Algebra, Problem 6": [
+      3000,
+      "Evaluate a weighted cosine-binomial sum, control its floor and count binary carries in a central binomial coefficient."
+    ],
+    "2025 PUMaC Division B Algebra, Problem 7": [
+      3300,
+      "Describe all fixed points of iterated angle doubling and bound the tiny median of two interleaved cosine grids."
+    ],
+    "2025 PUMaC Division B Algebra, Problem 8": [
+      2900,
+      "Intersect a shifted complex parabola with the unit circle and real axis while respecting a single-valued branch selection."
+    ],
+    "2025 PUMaC Division A Combinatorics, Problem 1": [
+      1900,
+      "Count ternary strings avoiding two adjacent patterns with specified first and last symbol restrictions."
+    ],
+    "2025 PUMaC Division A Combinatorics, Problem 2": [
+      2550,
+      "Track three simultaneous directed walks and exclude collisions before the safe terminal side."
+    ],
+    "2025 PUMaC Division A Combinatorics, Problem 3": [
+      2450,
+      "Use majority-color deletion matchings to give pairing strategies in a no-revisit grid game."
+    ],
+    "2025 PUMaC Division A Combinatorics, Problem 4": [
+      2650,
+      "Reduce even packs to four symmetric parity states and compute the first positive return time."
+    ],
+    "2025 PUMaC Division A Combinatorics, Problem 5": [
+      2700,
+      "Conjugate equal-bit flips into adjacent swaps and sum all reachable binary values by bit contributions."
+    ],
+    "2025 PUMaC Division A Combinatorics, Problem 6": [
+      3000,
+      "Count lattice points above a rational diagonal with its GCD boundary correction and optimize the denominator split."
+    ],
+    "2025 PUMaC Division A Combinatorics, Problem 7": [
+      3300,
+      "Track connectivity at a ladder frontier, derive two expected-component recurrences and round their closed form."
+    ],
+    "2025 PUMaC Division A Combinatorics, Problem 8": [
+      3550,
+      "Expand squared signed polygon area into pair-order correlations and sum determinant squares over all step permutations."
+    ],
+    "2025 PUMaC Division B Combinatorics, Problem 1": [
+      1550,
+      "Enforce an exact return period on shape passwords by including two rotation types and excluding a third."
+    ],
+    "2025 PUMaC Division B Combinatorics, Problem 2": [
+      2050,
+      "Condition two neighbors in a balanced circular seating and sum the remaining mixed-sex adjacency probabilities."
+    ],
+    "2025 PUMaC Division B Combinatorics, Problem 3": [
+      1900,
+      "Count ternary strings avoiding two adjacent patterns with specified first and last symbol restrictions."
+    ],
+    "2025 PUMaC Division B Combinatorics, Problem 4": [
+      2550,
+      "Track three simultaneous directed walks and exclude collisions before the safe terminal side."
+    ],
+    "2025 PUMaC Division B Combinatorics, Problem 5": [
+      2450,
+      "Use majority-color deletion matchings to give pairing strategies in a no-revisit grid game."
+    ],
+    "2025 PUMaC Division B Combinatorics, Problem 6": [
+      2650,
+      "Reduce even packs to four symmetric parity states and compute the first positive return time."
+    ],
+    "2025 PUMaC Division B Combinatorics, Problem 7": [
+      2700,
+      "Conjugate equal-bit flips into adjacent swaps and sum all reachable binary values by bit contributions."
+    ],
+    "2025 PUMaC Division B Combinatorics, Problem 8": [
+      3000,
+      "Count lattice points above a rational diagonal with its GCD boundary correction and optimize the denominator split."
     ]
   }
 }
