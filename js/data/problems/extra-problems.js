@@ -2322,4 +2322,8 @@
     { q: String.raw`Six cards numbered $1$ to $6$ are shuffled into a random order. What is the expected least number of swaps of adjacent cards needed to put them in increasing order?`,
       s: String.raw`The least number of adjacent swaps equals the number of inversions. Each of the $\binom62 = 15$ pairs of cards is out of order with probability $\tfrac12$, by symmetry, so by linearity of expectation the expected number of inversions, and of swaps, is $\tfrac{15}2$.` }
   );
+  add("symmetrizing-a-sum",
+    { q: String.raw`Let $T$ be the sum of $\frac{x^2}{x^2 + y^2 + z^2} \cdot 3^{-(x + y + z)}$ over all ordered triples $(x, y, z)$ of positive integers. Find $T$.`,
+      s: String.raw`The range, all ordered triples, is unchanged when the three variables are renamed, and every term is positive, so $T$ is also the sum with numerator $y^2$, and with numerator $z^2$. Adding the three copies term by term, the fraction becomes $\frac{x^2 + y^2 + z^2}{x^2 + y^2 + z^2} = 1$, so $3T = \sum 3^{-x} \, 3^{-y} \, 3^{-z} = \left(\tfrac13 + \tfrac19 + \cdots\right)^3 = \left(\tfrac12\right)^3 = \tfrac18$. So $T = \mathbf{\tfrac{1}{24}}$.` }
+  );
 })();

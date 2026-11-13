@@ -1861,7 +1861,10 @@
     "forced-entries": "method",
     "layer-by-layer-search": "method",
     "digit-occurrences": "method",
-    "complete-subset-sums": "formula"
+    "complete-subset-sums": "formula",
+    "symmetrizing-a-sum": "method",
+    "polya-urn": "formula",
+    "intermediate-value-theorem": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -9114,6 +9117,24 @@
       ]
     ],
     "complete-subset-sums": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "symmetrizing-a-sum": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "polya-urn": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "intermediate-value-theorem": [
       [
         "(new card)",
         "written directly in the formula template"

@@ -639,6 +639,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC12", "AIME"]
         },
         {
+          id: "polya-urn",
+          name: "Pólya's Urn",
+          latex: String.raw`P(\text{$k$ of $n$ draws red}) = \binom{n}{k} \frac{r^{(k)}\, b^{(n - k)}}{(r + b)^{(n)}}, \qquad x^{(m)} = x(x + 1)\cdots(x + m - 1)`,
+          description: String.raw`In Pólya's urn, a ball is drawn at random and returned with one more ball of its colour, so a colour that is drawn becomes more likely to be drawn again. Every order of the same draws has the same probability, which reduces the urn to counting orders. Starting from one red and one blue ball, after $n$ draws every number of red draws from $0$ to $n$ is equally likely, with probability $\frac{1}{n + 1}$. From $r$ red and $b$ blue the general count is the formula shown, built from rising products.`,
+          keywords: ["polya urn", "pólya's urn", "add a ball of the same color", "rich get richer", "reinforcement", "urn with replacement and addition", "every split equally likely", "beta binomial", "exchangeable draws"],
+          importance: "low",
+          tier: "AIME Early",
+          level: ["AMC12", "AIME", "Olympiad"]
+        },
+        {
           id: "gamblers-ruin",
           name: "Gambler's Ruin",
           latex: String.raw`P_k = \frac{k}{N}\ \ \left(p = \tfrac12\right), \qquad P_k = \frac{1 - (q/p)^k}{1 - (q/p)^N}\ \ \left(p \ne \tfrac12\right)`,

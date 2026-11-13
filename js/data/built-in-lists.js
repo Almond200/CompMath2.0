@@ -58,7 +58,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid", "rolling-without-slipping", "tethered-animal"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 142 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 144 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -68,7 +68,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["difference-of-squares", "an-minus-bn", "sophie-germain", "cubes-minus-3abc", "square-of-sum", "two-variable-identities", "binomial-theorem", "sos-identity", "useful-factorizations", "pairwise-sum-product", "antisymmetric-factorization", "sum-zero-identities", "reciprocal-power-sums", "denesting-radicals", "completing-the-square", "forced-difference-of-squares", "sfft", "rationalizing"] },
       { title: "Sequences & Series",
         note: "Closed forms, and the moves that produce one when the sum looks hopeless.",
-        ids: ["arithmetic-series", "triangular-numbers", "geometric-series", "power-sums", "arithmetico-geometric", "binets-formula", "linear-recurrence", "factorial-telescoping", "first-order-recurrence", "largest-term-ratio", "telescoping", "partial-fractions", "finite-differences", "double-summation", "fx-pairing", "alternating-sum-grouping"] },
+        ids: ["arithmetic-series", "triangular-numbers", "geometric-series", "power-sums", "arithmetico-geometric", "binets-formula", "linear-recurrence", "factorial-telescoping", "first-order-recurrence", "largest-term-ratio", "telescoping", "partial-fractions", "finite-differences", "double-summation", "fx-pairing", "alternating-sum-grouping", "symmetrizing-a-sum"] },
       { title: "Inequalities",
         note: "The named inequalities, then the machinery for deciding which one the problem wants.",
         ids: ["am-gm", "max-product-fixed-sum", "mean-chain", "cauchy-schwarz", "trivial-inequality", "abs-triangle-inequality", "bernoulli-inequality", "power-mean-inequality", "median-minimizes-abs", "slope-to-a-point", "sign-chart", "placing-digits-extremes", "averaging-principle"] },
@@ -92,7 +92,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["add-all-equations", "linear-elimination", "determinant-geometric", "assume-all-one-kind", "subtract-swapped-equations"] },
       { title: "Functions & Symmetry",
         note: "What a function does under a reflection or an undoing: parity, and the inverse with its mirror-image graph.",
-        ids: ["odd-even-functions", "inverse-function-properties"] },
+        ids: ["odd-even-functions", "inverse-function-properties", "intermediate-value-theorem"] },
       { title: "Shapes Worth Recognizing on Sight",
         note: "Whole problem formats with an intended route.",
         ids: ["infinite-nest", "name-the-whole-expression", "palindromic-polynomials", "periodic-sequences", "piecewise-graph-counting", "lagrange-interpolation-formula", "polynomial-crt", "repeated-block-equation", "averages-before-after", "defined-operation", "reading-graphs", "scoring-rules", "break-even-plans"] }
@@ -129,7 +129,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cycle-hunting", "cryptarithms", "digit-manipulation", "calendar-problems", "quadratic-perfect-square", "palindromes"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
-    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 88 cards across 11 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 89 cards across 11 sections.",
     sections: [
       { title: "Counting Basics",
         note: "Arrangements, selections and distributions. Almost every harder count reduces to one of these.",
@@ -148,7 +148,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["permutation-cycle-structure"] },
       { title: "Probability",
         note: "Turning a probability into a count, which is what nearly every contest probability question is.",
-        ids: ["basic-probability", "conditional-probability", "binomial-probability", "geometric-distribution", "turn-based-games", "hypergeometric", "bayes-theorem", "drawing-without-replacement", "product-of-uniforms", "independent-events"] },
+        ids: ["basic-probability", "conditional-probability", "binomial-probability", "geometric-distribution", "turn-based-games", "hypergeometric", "bayes-theorem", "drawing-without-replacement", "product-of-uniforms", "independent-events", "polya-urn"] },
       { title: "Expectation & Variance",
         note: "Averages of random quantities, where linearity does most of the work.",
         ids: ["expected-value", "tail-sum-expectation", "total-expectation", "expected-fixed-points", "variance-independence", "order-statistics"] },

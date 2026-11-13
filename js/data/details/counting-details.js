@@ -3945,3 +3945,35 @@ The fewest stamps, coins or weights that make every amount up to a bound, the sm
 A late AIME problem asks for the fewest stamps of a few denominations that make every postage up to a bound. AMC versions ask for the smallest amount that a given handful of coins cannot make.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"polya-urn": String.raw`
+## Key forms
+- every order of $k$ red and $n - k$ blue draws has probability $\frac{r^{(k)}\, b^{(n - k)}}{(r + b)^{(n)}}$ — the probability depends only on how many of each colour are drawn
+- $P(k \text{ red in } n \text{ draws}) = \frac{1}{n + 1}$ for $k = 0, 1, \ldots, n$, starting from one red and one blue — every split is equally likely
+- $P(k \text{ red in } n \text{ draws}) = \frac{2(k + 1)}{(n + 1)(n + 2)}$, starting from two red and one blue — linear in $k$
+- $P(\text{draw } m \text{ is red}) = \frac{r}{r + b}$ for every $m$ — each single draw has the starting odds
+
+## Conditions
+After each draw the ball goes back with exactly one more ball of the same colour, and each draw is uniform over the balls in the urn. The rising product is $x^{(m)} = x(x + 1)\cdots(x + m - 1)$, with $x^{(0)} = 1$. With more colours the same argument gives a product of rising products for each colour.
+
+## Why it works
+Take one order of draws with $k$ reds and $n - k$ blues. Before each draw the urn holds $r + b$ balls plus one for every earlier draw, so the denominators of the $n$ step probabilities are $r + b, r + b + 1, \ldots, r + b + n - 1$, whatever the order; their product is $(r + b)^{(n)}$.
+
+The numerators come from the colour drawn. The first red draw finds $r$ red balls, the second $r + 1$, and the $j$th finds $r + j - 1$, because exactly $j - 1$ reds have been added. So the red draws contribute $r(r + 1)\cdots(r + k - 1) = r^{(k)}$ wherever they fall, and the blue draws contribute $b^{(n - k)}$. The probability of the order is $\frac{r^{(k)} b^{(n - k)}}{(r + b)^{(n)}}$, the same for all $\binom{n}{k}$ orders, and adding them gives the formula.
+
+With $r = b = 1$, $1^{(k)} = k!$ and $2^{(n)} = (n + 1)!$, so the probability is $\binom{n}{k} \frac{k!\,(n - k)!}{(n + 1)!} = \frac{1}{n + 1}$. With $r = 2$, $b = 1$, $2^{(k)} = (k + 1)!$ and $3^{(n)} = \frac{(n + 2)!}{2}$, giving $\binom{n}{k} \frac{2 (k + 1)!\,(n - k)!}{(n + 2)!} = \frac{2(k + 1)}{(n + 1)(n + 2)}$.
+
+For a single draw, the order argument shows the draws are exchangeable: the probability of a sequence does not change when it is reordered, so draw $m$ has the same distribution as draw $1$, which is red with probability $\frac{r}{r + b}$.
+
+## Useful observations
+- Because only the counts matter, a question about the final contents of the urn is a question about how many draws were red, and [[permutations-combinations|binomial coefficients]] count the orders.
+- The fraction of red balls is the probability that the next draw is red, and on average it stays where it started.
+- A process described in other words, a candidate whose chance of the next vote is proportional to the votes so far, or a group that a newcomer joins in proportion to its size, is the same urn.
+
+## Applications
+The final contents of an urn after a fixed number of draws, the distribution of votes or group sizes in a reinforcing process, and the probability of a particular draw late in the sequence.
+
+## Contest profile
+Rare: an AMC 10/12 urn that adds a ball of the drawn colour, where noticing that every order is equally likely replaces a tree of cases, and HMMT versions in which the urn is disguised as votes or groups.
+`
+});

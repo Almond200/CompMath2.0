@@ -78,5 +78,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Owner request: counting walks step by step", date: "2026-11-07",
     ids: ["walk-counting-dp"] },
   { label: "Cards from the tagging pass, approved 2026-11-11 (P64 to P67, P69)", date: "2026-11-12",
-    ids: ["isosceles-triangle", "forced-entries", "layer-by-layer-search", "digit-occurrences", "complete-subset-sums"] }
+    ids: ["isosceles-triangle", "forced-entries", "layer-by-layer-search", "digit-occurrences", "complete-subset-sums"] },
+  { label: "Cards from Step H, approved 2026-11-13 (P70 to P72)", date: "2026-11-13",
+    ids: ["symmetrizing-a-sum", "polya-urn", "intermediate-value-theorem"] }
 ];
