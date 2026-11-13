@@ -18,6 +18,8 @@ The ten 2019 HMMT February Geometry problems and fifty 2026 AMC 10A/12A problems
 
 **2026 AMC 10A/12A rebuilt on an anchor (2026-11-13).** LIVE still has no 2026 values (checked with `--refresh` that day). Round-hundred guesses are replaced by an anchor and a judgement: each estimate starts from the median LIVE rating at the same question number over the last ten papers of that contest (2021 Fall to 2025, A and B) and moves by a stated amount for what the problem asks, both recorded in its reason ("Usual rating of AMC 10 question 25 over the last ten papers, 2560, −650: ..."). A problem shared by the two papers keeps its AMC 10A value. #25 of the 10A stays far below its anchor (1910), as the owner found when sitting it.
 
+**HMMT November (2026-11-13).** The General and Theme rounds are rated by the same form with constants of their own, $1330 + 230\ln\frac{n-s+1/2}{s+1/2}$, fitted once to 40 author estimates of the 2011 and 2012 problems (correlation 0.97). With February's slope kept and only the intercept refitted the error was half as large again (148 against 99 rating points), so both constants are November's own: its room is weaker and more spread out, and a given share of solvers means an easier problem than in February. An unsolved November problem rates about 2950 against 4100 for February. November 2013 (total scores only), 2020 (no extended results) and the newest tournament before its results appear have author estimates.
+
 ## Selection
 
 `js/problem-difficulty.js` supplies the shared rating lookup, five-level selection and uniform draw.

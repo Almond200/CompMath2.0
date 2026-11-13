@@ -314,10 +314,10 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "lagrange-roots-mod-p",
-          name: "Lagrange's Theorem on Polynomial Roots mod p",
+          name: "Polynomials mod p (Lagrange's Theorem)",
           latex: String.raw`\begin{gathered} \deg f = d,\ \ f \not\equiv 0 \pmod p \\ \Longrightarrow\; f(x) \equiv 0 \pmod p \text{ has at most } d \text{ solutions} \end{gathered}`,
-          description: String.raw`Lagrange's Theorem says that a polynomial of degree $d$ with integer coefficients, not all divisible by the prime $p$, has at most $d$ roots modulo $p$. It is the modular version of the fact that a polynomial cannot have more roots than its degree, and it holds because divisibility by a prime behaves like ordinary algebra; for a composite modulus it fails.`,
-          keywords: ["lagrange's theorem polynomial", "roots modulo a prime", "at most d roots mod p", "polynomial congruence", "number of solutions mod p", "wilson's theorem proof", "primitive roots"],
+          description: String.raw`Lagrange's Theorem says that a polynomial of degree $d$ with integer coefficients, not all divisible by the prime $p$, has at most $d$ roots modulo $p$. It is the modular version of the fact that a polynomial cannot have more roots than its degree, and it holds because divisibility by a prime behaves like ordinary algebra; for a composite modulus it fails. With Fermat's Little Theorem it gives the rest of polynomial algebra modulo $p$: $x^p - x$ is the product of $x - a$ over all residues $a$, every function on the residues is one polynomial of degree less than $p$, and the power sums over all residues are $0$ or $-1$.`,
+          keywords: ["lagrange's theorem polynomial", "roots modulo a prime", "at most d roots mod p", "polynomial congruence", "number of solutions mod p", "polynomials over the integers mod p", "x^p - x", "power sums mod p", "interpolation mod p", "wilson's theorem proof", "primitive roots"],
           importance: "low",
           tier: "Olympiad",
           level: ["Olympiad"]

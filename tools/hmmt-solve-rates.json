@@ -768,6 +768,422 @@
     2
    ],
    "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2026/feb/results/long.htm"
+  },
+  "2011 nov-gen": {
+   "n": 349,
+   "solved": [
+    277,
+    152,
+    240,
+    90,
+    67,
+    107,
+    40,
+    15,
+    14,
+    5
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2011/nov/results/long.txt"
+  },
+  "2011 nov-thm": {
+   "n": 306,
+   "solved": [
+    86,
+    247,
+    57,
+    20,
+    6,
+    93,
+    150,
+    111,
+    43,
+    6
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2011/nov/results/long.txt"
+  },
+  "2012 nov-gen": {
+   "n": 372,
+   "solved": [
+    221,
+    250,
+    287,
+    88,
+    102,
+    70,
+    8,
+    33,
+    9,
+    7
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2012/nov/results/long.txt"
+  },
+  "2012 nov-thm": {
+   "n": 370,
+   "solved": [
+    195,
+    113,
+    158,
+    42,
+    22,
+    253,
+    111,
+    58,
+    94,
+    3
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2012/nov/results/long.txt"
+  },
+  "2014 nov-gen": {
+   "n": 737,
+   "solved": [
+    674,
+    446,
+    277,
+    504,
+    101,
+    103,
+    31,
+    131,
+    73,
+    11
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/results/long.txt"
+  },
+  "2014 nov-thm": {
+   "n": 688,
+   "solved": [
+    610,
+    331,
+    226,
+    86,
+    108,
+    183,
+    341,
+    124,
+    52,
+    7
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/results/long.txt"
+  },
+  "2015 nov-gen": {
+   "n": 657,
+   "solved": [
+    501,
+    122,
+    476,
+    254,
+    213,
+    57,
+    65,
+    58,
+    54,
+    2
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2015/nov/results/long.txt"
+  },
+  "2015 nov-thm": {
+   "n": 600,
+   "solved": [
+    381,
+    209,
+    66,
+    360,
+    256,
+    63,
+    6,
+    17,
+    24,
+    1
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2015/nov/results/long.txt"
+  },
+  "2016 nov-gen": {
+   "n": 721,
+   "solved": [
+    480,
+    203,
+    352,
+    561,
+    197,
+    62,
+    145,
+    70,
+    49,
+    37
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2016/nov/results/long.htm"
+  },
+  "2016 nov-thm": {
+   "n": 793,
+   "solved": [
+    606,
+    774,
+    219,
+    341,
+    81,
+    100,
+    70,
+    71,
+    88,
+    58
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2016/nov/results/long.htm"
+  },
+  "2017 nov-gen": {
+   "n": 620,
+   "solved": [
+    362,
+    427,
+    57,
+    185,
+    116,
+    20,
+    248,
+    27,
+    4,
+    0
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2017/nov/results/long.htm"
+  },
+  "2017 nov-thm": {
+   "n": 615,
+   "solved": [
+    369,
+    450,
+    215,
+    225,
+    55,
+    25,
+    1,
+    6,
+    4,
+    2
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2017/nov/results/long.htm"
+  },
+  "2018 nov-gen": {
+   "n": 726,
+   "solved": [
+    497,
+    425,
+    146,
+    361,
+    166,
+    18,
+    179,
+    14,
+    53,
+    38
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2018/nov/results/long.htm"
+  },
+  "2018 nov-thm": {
+   "n": 840,
+   "solved": [
+    811,
+    417,
+    272,
+    345,
+    277,
+    120,
+    88,
+    16,
+    4,
+    1
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2018/nov/results/long.htm"
+  },
+  "2019 nov-gen": {
+   "n": 609,
+   "solved": [
+    209,
+    485,
+    386,
+    305,
+    381,
+    67,
+    108,
+    79,
+    39,
+    35
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2019/nov/results/long.htm"
+  },
+  "2019 nov-thm": {
+   "n": 662,
+   "solved": [
+    599,
+    434,
+    314,
+    569,
+    236,
+    359,
+    50,
+    35,
+    35,
+    1
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2019/nov/results/long.htm"
+  },
+  "2021 nov-gen": {
+   "n": 512,
+   "solved": [
+    450,
+    378,
+    310,
+    344,
+    107,
+    14,
+    7,
+    22,
+    7,
+    6
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2021/nov/results/long.htm"
+  },
+  "2021 nov-thm": {
+   "n": 484,
+   "solved": [
+    440,
+    228,
+    180,
+    206,
+    45,
+    108,
+    32,
+    39,
+    7,
+    3
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2021/nov/results/long.htm"
+  },
+  "2022 nov-gen": {
+   "n": 377,
+   "solved": [
+    191,
+    219,
+    166,
+    222,
+    80,
+    47,
+    57,
+    24,
+    2,
+    2
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2022/nov/results/long.htm"
+  },
+  "2022 nov-thm": {
+   "n": 389,
+   "solved": [
+    322,
+    258,
+    101,
+    75,
+    18,
+    19,
+    17,
+    15,
+    0,
+    0
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2022/nov/results/long.htm"
+  },
+  "2023 nov-gen": {
+   "n": 533,
+   "solved": [
+    382,
+    220,
+    208,
+    322,
+    277,
+    181,
+    190,
+    61,
+    17,
+    4
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2023/nov/results/long.htm"
+  },
+  "2023 nov-thm": {
+   "n": 597,
+   "solved": [
+    486,
+    250,
+    399,
+    289,
+    427,
+    46,
+    32,
+    13,
+    0,
+    0
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2023/nov/results/long.htm"
+  },
+  "2024 nov-gen": {
+   "n": 657,
+   "solved": [
+    641,
+    464,
+    372,
+    202,
+    316,
+    32,
+    102,
+    99,
+    21,
+    0
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2024/nov/results/long.htm"
+  },
+  "2024 nov-thm": {
+   "n": 601,
+   "solved": [
+    486,
+    341,
+    253,
+    283,
+    368,
+    33,
+    189,
+    27,
+    9,
+    1
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2024/nov/results/long.htm"
+  },
+  "2025 nov-gen": {
+   "n": 620,
+   "solved": [
+    435,
+    515,
+    230,
+    112,
+    296,
+    54,
+    13,
+    19,
+    9,
+    9
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2025/nov/results/long.htm"
+  },
+  "2025 nov-thm": {
+   "n": 676,
+   "solved": [
+    537,
+    637,
+    252,
+    524,
+    230,
+    45,
+    23,
+    14,
+    3,
+    1
+   ],
+   "source": "https://hmmt-archive.s3.amazonaws.com/tournaments/2025/nov/results/long.htm"
   }
  }
 }

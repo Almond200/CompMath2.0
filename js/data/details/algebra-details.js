@@ -2208,8 +2208,8 @@ Step 3. Factor $P = (x - r_1)\cdots(x - r_k)Q$ over its $k$ positive roots. The 
 
 ## Useful observations
 - Sign changes of $P(x)$ are counted for positive roots and sign changes of $P(-x)$ for negative roots, and the complex roots, which come in pairs, fill the gap to the degree.
-- Combined with the intermediate value theorem at a few points, the bound often pins down the exact count.
-- It never locates a root; it is a structural triage, to be paired with rational root candidates or the intermediate value theorem for locations.
+- Combined with the [[intermediate-value-theorem|Intermediate Value Theorem]] at a few points, the bound often pins down the exact count.
+- It never locates a root; it is a structural triage, to be paired with rational root candidates or the Intermediate Value Theorem for locations.
 
 ## Applications
 Counting real roots, eliminating cases in "how many real solutions" problems, and pruning a root search.
@@ -6338,5 +6338,72 @@ Bounds on one entry of a sorted list with a fixed sum, extremal arrangements in 
 
 ## Contest profile
 An AIME problem on a sorted list with fixed sums asks for the largest gap between two entries, and an AMC problem on combined averages asks which statement cannot be true.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"symmetrizing-a-sum": String.raw`
+## When to use
+A sum over pairs or triples of indices in which every index runs over the same set, or over a region that looks the same when the indices are swapped, while the summand singles one index out: a numerator $a$ over a denominator $a + b$, a factor $\frac{1}{a}$ in front of a symmetric expression, a weight that depends on which index is largest. The sign is a summand that would be easy if it were symmetric.
+
+A single-variable sum with terms paired by $x \mapsto 1 - x$ or $k \mapsto n - k$ is the one-variable case, [[fx-pairing|pairing symmetric terms]]. If the indices are nested, $a \lt b$, [[double-summation|swapping the order of summation]] may be what is needed instead.
+
+## How
+1. Check that the range is unchanged when the variables are permuted: every index runs over the same set, or the conditions on them are symmetric.
+2. Write the sum once for each order of the variables, renaming inside the summand: with two variables, $S = \sum f(a, b)$ and $S = \sum f(b, a)$.
+3. Add the copies: $k S = \sum \big(\text{the sum of the } k \text{ permuted summands}\big)$, where $k$ is the number of copies, $2$ for two variables and $6$ for three.
+4. Simplify the new summand, which is symmetric; often it no longer depends on which variable was singled out.
+5. Evaluate the resulting sum (frequently a product of [[geometric-series|geometric series]] or a plain count) and divide by $k$.
+
+For $\sum_{a = 1}^{n} \sum_{b = 1}^{n} \frac{a}{a + b}$ the two copies add to $\sum \frac{a + b}{a + b} = n^2$, so the sum is $\frac{n^2}{2}$.
+
+## Why it works
+A sum over a set of index tuples does not depend on the names of the indices: $\sum_{(a, b) \in R} f(a, b)$ and $\sum_{(b, a) \in R} f(b, a)$ list the same terms. When the range $R$ is symmetric, the map $(a, b) \mapsto (b, a)$ takes $R$ to itself and is one-to-one, so reindexing by it shows $\sum_{(a, b) \in R} f(a, b) = \sum_{(a, b) \in R} f(b, a)$. The two expressions are the same number $S$, and adding them term by term gives $2S = \sum_{R} \big(f(a, b) + f(b, a)\big)$.
+
+With three variables, each of the $6$ permutations of $(a, b, c)$ maps a symmetric range to itself, so each of the $6$ renamed sums equals $S$, and $6S$ is the sum of the symmetrized summand. Only some permutations may be needed: if the summand is already symmetric in $b$ and $c$, the three cyclic copies suffice, and $3S$ is their sum.
+
+For an infinite sum the terms must be rearrangeable: the step is safe when every term is nonnegative or the sum converges absolutely, which covers the usual sums of positive fractions and powers of $\frac12$.
+
+## Formulas it uses
+- [[geometric-series|Geometric Series]] — the symmetric total is often a product of independent geometric sums
+
+## Common traps
+- Symmetrizing over a range that is not symmetric: $\sum_{1 \le a \lt b \le n}$ changes under $a \leftrightarrow b$, so the copies are not equal.
+- Forgetting to divide by the number of copies at the end.
+- Renaming the variables in only part of the summand: every occurrence of $a$ becomes $b$ and every $b$ becomes $a$, weights and denominators included.
+- Rearranging an infinite sum with terms of both signs that does not converge absolutely.
+
+## Contest profile
+A late AIME and HMMT move: a double or triple sum of fractions or of a weight on one variable, whose permuted copies add to something that factors. On the AMC 12 it appears as a finite sum of fractions $\frac{a}{a + b}$.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"intermediate-value-theorem": String.raw`
+## Key forms
+- $f(a) \lt 0 \lt f(b) \Longrightarrow f(x_0) = 0$ for some $x_0$ between $a$ and $b$ — a sign change traps a root
+- $f$ continuous and strictly increasing on $[a, b]$ $\Longrightarrow$ $f(x) = c$ has exactly one solution for each $c$ from $f(a)$ to $f(b)$ — existence from the theorem, uniqueness from monotonicity
+- a polynomial of odd degree has a real root — its values have opposite signs for large positive and large negative $x$
+- $f = g$ on $(a, b)$ with both continuous on $[a, b]$ $\Longrightarrow$ $f(a) = g(a)$, $f(b) = g(b)$ — an identity on an open interval extends to its ends
+
+## Conditions
+The function must be continuous on the whole closed interval. Polynomials, exponentials, logarithms on their domains, roots, sine and cosine, and sums, products and compositions of these are continuous; a rational function is continuous away from the zeros of its denominator. A function with a jump, such as $\lfloor x \rfloor$, or a pole, such as $\frac{1}{x}$ on $[-1, 1]$, can skip values. The theorem gives existence, not the number of solutions.
+
+## Why it works
+The idea is that the real line has no gaps, so a continuous curve that starts below a level and ends above it must cross the level at a point where neither side can be pushed further.
+
+Let $f(a) \lt c \lt f(b)$ and let $s$ be the least upper bound of the set $S$ of points $x$ in $[a, b]$ with $f(x) \lt c$. The set contains $a$ and is bounded by $b$, so $s$ exists, by the completeness of the real numbers. If $f(s) \lt c$, continuity keeps $f$ below $c$ on a small interval around $s$; then $s \lt b$ because $f(b) \gt c$, and points just to the right of $s$ lie in $S$, contradicting that $s$ is an upper bound. If $f(s) \gt c$, continuity keeps $f$ above $c$ on a small interval around $s$, so no point of $S$ lies in that interval, and a number a little below $s$ is a smaller upper bound, a contradiction again. So $f(s) = c$, and $s$ is strictly between $a$ and $b$ because $f(a) \ne c \ne f(b)$.
+
+For monotonicity, a strictly increasing function takes each value at most once, so the solution found is the only one. For odd degree, the leading term $a_n x^n$ outgrows the others in size for large $|x|$, so $p(x)$ has the sign of $a_n$ for large positive $x$ and the opposite sign for large negative $x$, and the theorem gives a root. For the endpoints, $f(a)$ is the limit of $f(x)$ as $x$ approaches $a$ from inside the interval, where $f(x) = g(x)$, and that limit is $g(a)$.
+
+## Useful observations
+- The integer version, for a quantity that changes by at most $1$ at each step, is [[discrete-intermediate-value|Discrete Continuity]].
+- To count real solutions, split the line into intervals on which the function is monotonic: each interval with a sign change holds exactly one root, and an interval without one holds none.
+- To show $a^x + b^x = c^x$ with $a, b \lt c$ has one solution, divide by $c^x$: the left side becomes strictly decreasing and passes through $1$ once.
+- A formula known to hold for $0 \lt x \lt \frac12$ can be evaluated at $x = 0$ or $x = \frac12$, where the figure degenerates and the answer is easy, which can fix unknown constants in the formula.
+
+## Applications
+Showing that an equation has a real root, counting real roots together with monotonicity, bounding where a root lies by sign changes, and proving that a moving configuration passes through one with a required property.
+
+## Contest profile
+Rarely named on the AMC or the AIME, though it is behind every argument that a root exists between two values. HMMT uses it to show a solution exists, to count solutions with monotonicity, and to extend a formula to the degenerate ends of a range.
 `
 });

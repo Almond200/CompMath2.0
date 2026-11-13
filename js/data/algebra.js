@@ -274,6 +274,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12"]
         },
         {
+          id: "intermediate-value-theorem",
+          name: "Intermediate Value Theorem",
+          latex: String.raw`f \text{ continuous on } [a, b],\ \ f(a) \lt c \lt f(b) \;\Longrightarrow\; f(x_0) = c \text{ for some } a \lt x_0 \lt b`,
+          description: String.raw`The Intermediate Value Theorem says that a continuous function cannot jump: if it is below a value at one point and above it at another, it equals that value somewhere in between. Contest problems use it to show that an equation has a solution without solving it, as when a polynomial with $p(1) \lt 0 \lt p(2)$ must have a root between $1$ and $2$, and, together with monotonicity, that the solution is the only one. A quantity that changes continuously as a figure moves takes every value between its extremes, which is how a configuration with a given property is shown to exist.`,
+          keywords: ["intermediate value theorem", "ivt", "continuous function", "sign change", "root between", "takes every value in between", "continuity", "existence of a root", "number of real solutions", "bolzano"],
+          importance: "low",
+          tier: "Olympiad",
+          level: ["AMC12", "AIME", "Olympiad"]
+        },
+        {
           id: "inverse-function-properties",
           name: "Properties of Inverse Functions",
           latex: String.raw`f(f^{-1}(x)) = x, \quad f^{-1}(f(x)) = x \qquad f(a) = b \iff f^{-1}(b) = a`,
