@@ -66,7 +66,10 @@
     "2001 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2001/feb/geo/problems.pdf",
     "1999 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/1999/feb/alg/problems.pdf",
     "1999 HMMT February Advanced Topics": "https://hmmt-archive.s3.amazonaws.com/tournaments/1999/feb/adv/problems.pdf",
-    "1999 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/1999/feb/geo/problems.pdf"
+    "1999 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/1999/feb/geo/problems.pdf",
+    "1998 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/1998/feb/alg/problems.pdf",
+    "1998 HMMT February Advanced Topics": "https://hmmt-archive.s3.amazonaws.com/tournaments/1998/feb/adv/problems.pdf",
+    "1998 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/1998/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -2908,6 +2911,126 @@
     "1999 HMMT February Geometry, Problem 10": [
       3550,
       "Recover successive cevian lengths with Stewart before applying Menelaus twice to the final ratio."
+    ],
+    "1998 HMMT February Algebra, Problem 1": [
+      1500,
+      "Find the requested price combination directly from two underdetermined linear equations."
+    ],
+    "1998 HMMT February Algebra, Problem 2": [
+      1850,
+      "Compare remaining cross-river and downstream times; the official route assumes a fixed heading and confuses increase with final speed."
+    ],
+    "1998 HMMT February Algebra, Problem 3": [
+      1550,
+      "Subtract the progression of multiples of ten from the positive even progression."
+    ],
+    "1998 HMMT February Algebra, Problem 4": [
+      1750,
+      "Square a positive nested-radical quotient and simplify to recover its reduced rational value."
+    ],
+    "1998 HMMT February Algebra, Problem 5": [
+      2400,
+      "Recover three box dimensions from face areas and volume, then orient for maximum height and nest the bases."
+    ],
+    "1998 HMMT February Algebra, Problem 6": [
+      2050,
+      "Shift the two reciprocal denominators to turn the positive integer equation into a divisor-pair count."
+    ],
+    "1998 HMMT February Algebra, Problem 7": [
+      1800,
+      "Use the missing cubic coefficient to recover a fourth root, then evaluate the coefficient sum at one."
+    ],
+    "1998 HMMT February Algebra, Problem 8": [
+      2100,
+      "Solve a rational inequality with two poles and two quadratic roots, excluding all forbidden endpoints."
+    ],
+    "1998 HMMT February Algebra, Problem 9": [
+      2250,
+      "Substitute reciprocal arguments to get a two-equation linear system for the desired function value."
+    ],
+    "1998 HMMT February Algebra, Problem 10": [
+      2700,
+      "Find and justify the first repeated sum of three positive cubes using a finite bounded search."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 1": [
+      1650,
+      "Reduce large degree angles and use a complementary-angle double-angle product."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 2": [
+      1500,
+      "Reduce to sine zero and count integer multiples of pi in an open interval."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 3": [
+      2000,
+      "Sum an infinite arithmetico-geometric series with a small ratio."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 4": [
+      2250,
+      "Simplify a rational trigonometric expression and keep the excluded angles when determining its range."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 5": [
+      2100,
+      "Factor the coprimality modulus and count forbidden multiples in a truncated interval by inclusion-exclusion."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 6": [
+      2250,
+      "Fill a nonrectangular calendar lattice with right, down and diagonal predecessor counts."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 7": [
+      2400,
+      "Find least attainable scores in each residue class for three denominations, then the two greatest gaps."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 8": [
+      2550,
+      "Successive specializations force a positive binary operation to be the first-coordinate projection."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 9": [
+      2500,
+      "Build six-digit nonzero prefixes satisfying successive divisibility constraints."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 10": [
+      2950,
+      "Track five score-lead states across alternating home games and an extra stopping hazard."
+    ],
+    "1998 HMMT February Geometry, Problem 1": [
+      1450,
+      "Chase a cyclic quadrilateral exterior angle through an intersecting extended side."
+    ],
+    "1998 HMMT February Geometry, Problem 2": [
+      1700,
+      "Equate an outer arc with an inner arc plus two radial connectors at equal walking speed."
+    ],
+    "1998 HMMT February Geometry, Problem 3": [
+      1750,
+      "Maximize the height over a fixed chord and use its central angle; the chord is square root two in the PDF."
+    ],
+    "1998 HMMT February Geometry, Problem 4": [
+      1550,
+      "Conserve drained volume while comparing a square tank cross-section with a circular one."
+    ],
+    "1998 HMMT February Geometry, Problem 5": [
+      2150,
+      "Place a maximal circle in the opposite square corner and solve its external tangency to the removed quarter disk."
+    ],
+    "1998 HMMT February Geometry, Problem 6": [
+      2350,
+      "Use the one-third corner dilation to sum the areas in a branching incircle construction."
+    ],
+    "1998 HMMT February Geometry, Problem 7": [
+      2950,
+      "Pair opposite apex edges through a rectangular-base identity, then use integral side bounds to force the base."
+    ],
+    "1998 HMMT February Geometry, Problem 8": [
+      2450,
+      "Track a straightedge-and-compass construction in a unit circle and recover the exact approximate-pi segment."
+    ],
+    "1998 HMMT February Geometry, Problem 9": [
+      3000,
+      "Use negative homothety between two circles and a tangent power to compute a cross-circle secant product."
+    ],
+    "1998 HMMT February Geometry, Problem 10": [
+      3100,
+      "Unfold an equilateral billiard table into a triangular lattice to count wall hits, the final pocket and total distance."
     ]
   }
 }
