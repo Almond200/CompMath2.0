@@ -56,5 +56,17 @@ window.MATH_CONTEST_PAPERS = {
   "2024 BMT Geometry": {
     "url": "https://berkeley.mt/archives/bmt-2024/geometry-problems.pdf",
     "solUrl": "https://berkeley.mt/archives/bmt-2024/geometry-solutions.pdf"
+  },
+  "2023 BMT Algebra": {
+    "url": "https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2023/algebra-solutions.pdf"
+  },
+  "2023 BMT Discrete Math": {
+    "url": "https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2023/discrete-solutions.pdf"
+  },
+  "2023 BMT Geometry": {
+    "url": "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2023/geometry-solutions.pdf"
   }
 };

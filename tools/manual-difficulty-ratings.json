@@ -86,7 +86,10 @@
     "2025 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC_2025_Number_Theory_B.pdf",
     "2024 BMT Algebra": "https://berkeley.mt/archives/bmt-2024/algebra-problems.pdf",
     "2024 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2024/discrete-problems.pdf",
-    "2024 BMT Geometry": "https://berkeley.mt/archives/bmt-2024/geometry-problems.pdf"
+    "2024 BMT Geometry": "https://berkeley.mt/archives/bmt-2024/geometry-problems.pdf",
+    "2023 BMT Algebra": "https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf",
+    "2023 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf",
+    "2023 BMT Geometry": "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -5664,6 +5667,126 @@
     "2024 BMT Geometry, Problem 10": [
       3650,
       "Recognize dual chord-of-contact polars, identify an inverse point and recover a tangent-chord triangle area."
+    ],
+    "2023 BMT Algebra, Problem 1": [
+      1050,
+      "Recover two line slopes from their common specified intersection."
+    ],
+    "2023 BMT Algebra, Problem 2": [
+      1300,
+      "Solve for two absolute magnitudes and distinguish equal-sign from opposite-sign differences."
+    ],
+    "2023 BMT Algebra, Problem 3": [
+      1650,
+      "Cancel a nonzero common ratio power and use its cube to recover two sixth terms."
+    ],
+    "2023 BMT Algebra, Problem 4": [
+      2100,
+      "Interpolate the square values linearly on each unit interval and express the result as a polynomial in the input and its floor."
+    ],
+    "2023 BMT Algebra, Problem 5": [
+      2100,
+      "Replace cubic roots by their complementary pair sums and evaluate the transformed coefficient combination."
+    ],
+    "2023 BMT Algebra, Problem 6": [
+      2300,
+      "Use a convergent generating series to recover the parameter in a Fibonacci-type recurrence."
+    ],
+    "2023 BMT Algebra, Problem 7": [
+      3000,
+      "Count polynomial sum-of-squares factorizations by root allocation, separating real conjugate-compatible pairs from complex pairs."
+    ],
+    "2023 BMT Algebra, Problem 8": [
+      2750,
+      "Parametrize right-triangle roots and minimize a symmetric sum-product ratio at equal legs."
+    ],
+    "2023 BMT Algebra, Problem 9": [
+      2900,
+      "Conjugate a quadratic map to angle doubling and count distinct real preimages of zero."
+    ],
+    "2023 BMT Algebra, Problem 10": [
+      3400,
+      "Factor an ordered integer cubic system into three linear forms and check all signed divisor triples, including the omitted sign possibilities."
+    ],
+    "2023 BMT Discrete Math, Problem 1": [
+      1250,
+      "Combine a repeated outer digit with divisibility by nine and a final-digit residue."
+    ],
+    "2023 BMT Discrete Math, Problem 2": [
+      1550,
+      "Count chronological name lists with exactly two occurrences of each name."
+    ],
+    "2023 BMT Discrete Math, Problem 3": [
+      1850,
+      "Characterize exactly which trailing carry blocks introduce an additional occurrence of a specified digit."
+    ],
+    "2023 BMT Discrete Math, Problem 4": [
+      1750,
+      "Unwrap a nested remainder map to a short set of residues and count complete blocks plus a final partial block."
+    ],
+    "2023 BMT Discrete Math, Problem 5": [
+      2150,
+      "Condition on a first-success waiting time before summing the probability of a success in a matching-length second stage."
+    ],
+    "2023 BMT Discrete Math, Problem 6": [
+      2750,
+      "Reduce shifted GCDs, convert an LCM divisibility test into prime-power exclusions and count by CRT."
+    ],
+    "2023 BMT Discrete Math, Problem 7": [
+      2700,
+      "Average the larger-minus-smaller areas of random square cuts, conditioning on adjacent versus opposite sides."
+    ],
+    "2023 BMT Discrete Math, Problem 8": [
+      2850,
+      "Prove a nested divisor sum multiplicative and evaluate its prime factors as geometric series modulo a composite."
+    ],
+    "2023 BMT Discrete Math, Problem 9": [
+      2900,
+      "Count permutations admitting three alternating monotone sections by correcting the multiplicity of divider placements."
+    ],
+    "2023 BMT Discrete Math, Problem 10": [
+      3550,
+      "Convert the floor of a large quadratic-irrational power into an integer trace, then use Frobenius root exchange modulo a prime."
+    ],
+    "2023 BMT Geometry, Problem 1": [
+      1000,
+      "Recover a rectangle from an inscribed semicircle and compute its diagonal."
+    ],
+    "2023 BMT Geometry, Problem 2": [
+      1450,
+      "Recognize the six side-trisection points of an equilateral triangle as a regular hexagon with radius equal to its side."
+    ],
+    "2023 BMT Geometry, Problem 3": [
+      1600,
+      "Add a cylinder volume to a conical frustum using a similarity-derived missing cone height."
+    ],
+    "2023 BMT Geometry, Problem 4": [
+      1800,
+      "Use equal tangent segments to show a triangle cut off before the tangent points has a fixed perimeter."
+    ],
+    "2023 BMT Geometry, Problem 5": [
+      2350,
+      "Convert two unequal tangent-circle radii into center separation and a three-triangle area decomposition."
+    ],
+    "2023 BMT Geometry, Problem 6": [
+      2450,
+      "Use a median chord ratio and an inscribed angle to recover a central-angle sine."
+    ],
+    "2023 BMT Geometry, Problem 7": [
+      3000,
+      "Reduce an edge-tangent midsphere to an axial section and discard the root whose tangencies fall outside the edges."
+    ],
+    "2023 BMT Geometry, Problem 8": [
+      3150,
+      "Use three chord products to equate alternating side-distance sums and relate squared-side sums to a triangle-area difference."
+    ],
+    "2023 BMT Geometry, Problem 9": [
+      3450,
+      "Recognize a harmonic cyclic configuration, obtain a median-distance product and combine it with a cosine projection."
+    ],
+    "2023 BMT Geometry, Problem 10": [
+      3600,
+      "Relate perpendicular projections in an auxiliary circumcircle to an area identity, checking both possible original triangle configurations."
     ]
   }
 }
