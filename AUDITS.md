@@ -2484,5 +2484,5 @@ Lehigh's mathematics department posts the contest for 1999 to 2026 (no contest i
 
 ### Filing (2026-11-13, in progress)
 
-2016 to 2018 and 2020 to 2026 are filed: 300 problems. In 2016 to 2018 the counts cover only the top scorers (54, 55 and 56), so those years use the 1700 intercept. Problems were read from the exam and its solutions. Three cite no card: 2020 #1 (one fraction) and 2024 #12 (two linear inequalities), whose routes use no card, and 2024 #2 cites only the estimating card. The 2026 problems were read from the "[n pts]" tags, because the exam's header is itself numbered.
+2012 to 2018 and 2020 to 2026 are filed: 460 problems. In 2013 to 2018 the counts cover only the top scorers (72, 49, 49, 54, 55 and 56), so those years use the 1700 intercept; 2012 counts the whole field (the top 44 and the other 316). Problems were read from the exam and its solutions. Three cite no card: 2020 #1 (one fraction) and 2024 #12 (two linear inequalities), whose routes use no card, and 2024 #2 cites only the estimating card. The 2026 problems were read from the "[n pts]" tags, because the exam's header is itself numbered.
 
