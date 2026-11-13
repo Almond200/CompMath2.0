@@ -44,10 +44,12 @@ def slug(ref):
 
 
 def live_key(ref):
-    m = re.fullmatch(r'(\d{4})\s+(?:(Spring|Fall)\s+)?(AMC 8|AJHSME|AMC 10[AB]?|AMC 12[AB]?|AIME(?: I| II)?), Problem (\d+)', ref)
+    m = re.fullmatch(r'(\d{4})\s+(?:(Spring|Fall)\s+)?(AMC 8|AJHSME|AHSME|AMC 10[AB]?|AMC 12[AB]?|AIME(?: I| II)?), Problem (\d+)', ref)
     if not m:
         return None
     year, season, contest, number = m.groups()
+    if contest == 'AHSME':    # the AMC 12's name until 1999; LIVE files it as AMC 12
+        return ('amc12', year, int(number))
     if contest in ('AMC 8', 'AJHSME'):
         return ('amc8', year, int(number))
     if contest.startswith('AIME'):

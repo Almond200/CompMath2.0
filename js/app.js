@@ -3174,7 +3174,7 @@
     if (!m) return null;
     // Only the MAA families have per-problem wiki pages; building one for anything else
     // produces a URL that looks right and 404s.
-    if (!/\b(AMC|AIME|AJHSME)\b/i.test(m[1])) return null;
+    if (!/\b(AMC|AIME|AJHSME|AHSME)\b/i.test(m[1])) return null;
     // The wiki names the Spring 2021 papers "2021 AMC 10A", with no season; only the Fall ones carry one.
     const slug = m[1].trim().replace(/^(\d{4})\s+Spring\s+/i, "$1 ").replace(/\s+/g, "_") + "_Problems/Problem_" + m[2];
     return "https://artofproblemsolving.com/wiki/index.php/" + slug;
@@ -3206,6 +3206,7 @@
     let fam, fm;
     if (/AIME/i.test(core)) fam = "AIME";
     else if (/AJHSME/i.test(core)) fam = "AMC 8";           // the AMC 8's name until 1998
+    else if (/AHSME/i.test(core)) fam = "AMC 12";           // the AMC 12's name until 1999 (owner, 2026-11-13)
     else if ((fm = core.match(/AMC\s*(8|10|12)/i))) fam = "AMC " + fm[1];
     else if (/Putnam/i.test(core)) fam = "Putnam";
     // HMMT runs two tournaments a year of quite different difficulty, so they are separate
@@ -4595,7 +4596,7 @@
           <div class="set-row"><div class="set-text">
             <div class="set-name">Contest problem sources and license</div>
             <div class="set-desc">
-              <p>AMC, AJHSME and AIME problems are &copy; Mathematical Association of America, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. This credit applies to their statements and figures throughout the app, including textbooks, previews and practice sets.</p>
+              <p>AMC, AJHSME, AHSME and AIME problems are &copy; Mathematical Association of America, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. This credit applies to their statements and figures throughout the app, including textbooks, previews and practice sets.</p>
               <p>Most text, figures and answer keys come from <a href="https://live.poshenloh.com/past-contests" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>. Some papers also use MAA PDF copies, the <a href="https://wiki.randommath.com/" target="_blank" rel="noopener noreferrer">Random Math wiki</a> and the <a href="https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>, and some answer keys were checked against those published by <a href="https://www.thethinkacademy.com/" target="_blank" rel="noopener noreferrer">Think Academy</a>. Statements have been reformatted for display, including LaTeX and figure layout.</p>
               <p>Problems from the individual rounds of <a href="https://www.hmmt.org/www/archive/problems" target="_blank" rel="noopener noreferrer">HMMT February</a> (Algebra and Number Theory, Combinatorics, Geometry) and HMMT November (General, Theme) are listed by topic and difficulty. Their statements and solutions are not reproduced: each problem's page opens the round's official paper and its official solutions on the HMMT archive. Mock contests also use author-restated prompts from the <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf" target="_blank" rel="noopener noreferrer">2019 HMMT February Geometry paper</a>, with answer values checked against its <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/solutions.pdf" target="_blank" rel="noopener noreferrer">official solutions</a>. HMMT material is attributed separately; the MAA license above does not apply to it.</p>
             </div>
