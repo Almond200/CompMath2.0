@@ -1,7 +1,10 @@
 // CHROME=/usr/bin/chromium COMPMATH_URL=http://localhost:8765 node tools/check-browse.cjs
 // Problem-page Topic/Difficulty sections, the Contests buttons, Problems by topic and Problems by difficulty.
 const {chromium}=require('playwright'),assert=require('node:assert/strict');
-const base=process.env.COMPMATH_URL||'http://localhost:8765';
+const base=process.env.COMPMATH_URL||'http://localhost:8765',path=require('node:path');
+global.window={};require(path.join(__dirname,'../js/data/problems/difficulty-ratings.js'));
+// The charts' scale grows past 3800 to fit the hardest problem (owner, 2026-11-12).
+const NB=(Math.max(3800,...Object.values(window.MATH_PROBLEM_RATINGS.ratings).map(r=>(Math.floor(r.elo/200)+1)*200))-200)/200;
 (async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME||undefined,args:['--no-sandbox']});try{
 for(const theme of ['light','dark'])for(const width of [1280,375]){
  const page=await browser.newPage({viewport:{width,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(15000);
@@ -44,7 +47,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.deepEqual(await page.locator('.elo-box [data-elo-fam]').allInnerTexts(),['AMC 8','AMC 10','AMC 12','AIME','HMMT February','All contests']);
  await page.locator('[data-elo-fam="hmmt-february"]').click();assert.match(await page.locator('.elo-note').innerText(),/of HMMT February problems/);assert.equal(await page.locator('[data-elo-fam][aria-pressed="true"]').innerText(),'HMMT February');
  // A column with no problems answers the pointer like any other and opens its range.
- assert.equal(await page.locator('.elo-box .elo-bar').evaluateAll(xs=>xs.length===18&&xs.every(x=>x.tagName==='A'&&x.dataset.tip)),true);
+ assert.equal(await page.locator('.elo-box .elo-bar').evaluateAll((xs,nb)=>xs.length===nb&&xs.every(x=>x.tagName==='A'&&x.dataset.tip),NB),true);
  const empty=page.locator('.elo-box a.elo-bar.is-empty').first();assert.match(await empty.getAttribute('data-tip'),/^200–399: 0 problems$/);
  if(width===1280){const eb=await empty.boundingBox();await page.mouse.move(eb.x+eb.width/2,eb.y+eb.height/2);
   assert.deepEqual(await empty.evaluate(el=>[getComputedStyle(el,'::before').content,getComputedStyle(el).backgroundColor!=='rgba(0, 0, 0, 0)',getComputedStyle(el).cursor]),['"200–399: 0 problems"',true,'pointer']);await page.mouse.move(2,2);}
@@ -68,16 +71,16 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.match(page.url(),/#\/browse\/topics$/,'opening a branch does not leave the page');
  await page.locator('.tt-name[href="#/browse/topics/geo.tri.special"]').click();await page.locator('.br-group').first().waitFor();
  assert.equal(await page.locator('h2').innerText(),'Special triangles');
- const heads=await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent));assert.deepEqual(heads,['AMC 8','AMC 10','AMC 12','AIME']);
+ const heads=await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent));assert.deepEqual(heads.slice(0,4),['AMC 8','AMC 10','AMC 12','AIME']);assert(heads.slice(4).every(h=>h==='HMMT February'),'HMMT, when the topic has some, comes after the AIME');
  const total=(await page.locator('.br-group-h .br-count').allInnerTexts()).reduce((n,s)=>n+parseInt(s),0);assert.match(await page.locator('.practice-panel-intro').innerText(),new RegExp('^'+total+' problems'));
  const elos=(await page.locator('.br-group').first().locator('.br-elo').allInnerTexts()).map(Number);assert.deepEqual(elos,[...elos].sort((a,b)=>a-b),'easiest first within a contest');
- await page.locator('[data-br-fam="AMC 8"]').click();assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'),'false');assert.equal(await page.locator('.br-group').count(),3);
+ await page.locator('[data-br-fam="AMC 8"]').click();assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'),'false');assert.equal(await page.locator('.br-group').count(),heads.length-1);
  if(width===375){assert.equal(await page.locator('.tt').isVisible(),false);await page.locator('.tt-mobile-btn').click();assert.equal(await page.locator('.tt').isVisible(),true);}
  await fits();
  // Problems by difficulty: the contest switched off stays off, one stacked chart, groups by contest.
  await go('#/browse/difficulty');await page.locator('.elo-panel').waitFor();assert.equal(await page.locator('h2').innerText(),'Problems by difficulty');assert.doesNotMatch(await page.locator('.browse-page').innerText(),/LIVE/,'the ratings carry no source name');
  assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'),'false');await page.locator('[data-br-fam="AMC 8"]').click();
- assert.equal(await page.locator('.elo-panel .elo-bar').count(),18);assert.equal(await page.locator('.elo-bar[aria-current]').count(),1);
+ assert.equal(await page.locator('.elo-panel .elo-bar').count(),NB);assert.equal(await page.locator('.elo-bar[aria-current]').count(),1);
  await page.locator('.elo-bar[href$="/2600"]').click();await page.waitForFunction(()=>/2600/.test(document.querySelector('.br-band-h')?.textContent));assert.match(await page.locator('.br-band-h').innerText(),/^Rated 2600 to 2799$/);
  const shown=parseInt((await page.locator('.br-band .br-count').innerText()).replace(',',''));
  const expected=await page.evaluate(()=>Object.values(MATH_PROBLEM_RATINGS.ratings).filter(r=>r.elo>=2600&&r.elo<2800).length);assert.equal(shown,expected);

@@ -26,6 +26,7 @@ python3 tools/check-labels.py          # historical 2026-10-24 baseline: 7 font-
 python3 tools/build-learn-shelf.py --check
 node tools/build-book-notes.cjs --check    # the generated End-of-book Notes match the chapter data
 python3 tools/build-topic-tree.py --check   # topic-tree.js matches TOPIC-TREE.md
+python3 tools/hmmt-results.py --check    # HMMT ratings match the official solve counts (also in gates.sh)
 node tools/check-topic-tree.js              # tree, card homes, problem tree tags (CONVENTIONS §15)
 node tests/practice-sessions.cjs
 node tests/practice-topics.cjs        # tree-only pools, ancestry, eligibility and search (also in gates.sh)

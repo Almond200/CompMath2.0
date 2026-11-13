@@ -61,13 +61,13 @@ per-problem review. [Mock generation, scoring and source details](MOCK-CONTESTS.
 Cards are formulas, methods or patterns; problems are separate database entries. Learn organizes
 the material into textbooks and lists. The top bar switches between five spaces:
 
-| Space | Kind | Question | Colour |
+| Space | Kind | Subtitle | Colour |
 |---|---|---|---|
-| **Formulas** | one fact: a theorem, identity or standard result | What is true? | blue |
-| **Methods** | one reusable move, made once you are inside a problem | What can I do? | teal |
-| **Patterns** | one recurring problem shape, recognizable from the statement | What am I looking at? | amber |
-| **Learn** | textbooks (books, chapters, lessons) and the study lists | What should I learn next? | green |
-| **Practice** | real contest problems | Can I use it? | purple |
+| **Formulas** | one fact: a theorem, identity or standard result | Theorems and identities | blue |
+| **Methods** | one reusable move, made once you are inside a problem | Moves that make progress | teal |
+| **Patterns** | one recurring problem shape, recognizable from the statement | Problem shapes to recognize | amber |
+| **Learn** | textbooks (books, chapters, lessons) and the study lists | Textbooks, lesson by lesson | green |
+| **Practice** | real contest problems | Real contest problems | purple |
 
 A pattern *suggests* methods, a method *uses* formulas, and problems practise all three
 (derived from their tags). The test that separates the middle two: a pattern describes a whole

@@ -365,16 +365,16 @@
   const bookOf = section => !bySubject(section) ? "formulas" : section.id === "tools-methods" ? "methods" : "patterns";
   const groupOf = bookOf;
   const BOOKS = {
-    formulas: { label: "Formulas", ask: "What is true?", intro: "Facts, theorems, and identities to recall.", groupWord: "topics" },
-    methods: { label: "Methods", ask: "What can I do?", intro: "Moves you can make to progress on a problem.", groupWord: "method groups" },
-    patterns: { label: "Patterns", ask: "What am I looking at?", intro: "Problem shapes to learn to recognize.", groupWord: "pattern families" }
+    formulas: { label: "Formulas", ask: "Theorems and identities", intro: "Facts, theorems, and identities to recall.", groupWord: "topics" },
+    methods: { label: "Methods", ask: "Moves that make progress", intro: "Moves you can make to progress on a problem.", groupWord: "method groups" },
+    patterns: { label: "Patterns", ask: "Problem shapes to recognize", intro: "Problem shapes to learn to recognize.", groupWord: "pattern families" }
   };
   const SPACES = {
-    formulas: { label: "Formulas", ask: "What is true?" },
-    methods: { label: "Methods", ask: "What can I do?" },
-    patterns: { label: "Patterns", ask: "What am I looking at?" },
-    learn: { label: "Learn", ask: "What should I learn next?" },
-    practice: { label: "Practice", ask: "Can I use it?" }
+    formulas: { label: "Formulas", ask: "Theorems and identities" },
+    methods: { label: "Methods", ask: "Moves that make progress" },
+    patterns: { label: "Patterns", ask: "Problem shapes to recognize" },
+    learn: { label: "Learn", ask: "Textbooks, lesson by lesson" },
+    practice: { label: "Practice", ask: "Real contest problems" }
   };
   // The space a page belongs to; search, settings and topic pages keep the current one.
   function spaceFor(route) {
@@ -5301,7 +5301,7 @@
     const card = dailyCard();
     const starIds = liveIds(getList("starred"));
     const mine = lists.items.filter(l => l.id !== "starred");
-    const nProblems = PROBLEM_DB.filter(p => p.strategy).length.toLocaleString();   // problems with their write-up
+    const nProblems = PROBLEM_DB.length.toLocaleString();   // every contest problem, HMMT included
     // Each space says in one line what it holds; the sidebar already lists every subject, so the
     // front page does not repeat the four spaces a third time.
     const SPACE_WHAT = {
@@ -5332,7 +5332,7 @@
           <div class="hm-refcell">
             <span class="hm-ref-bar" aria-hidden="true">${["formulas", "methods", "patterns"].map(sp => `<i data-tint="${sp}"></i>`).join("")}</span>
             <span class="hm-ref-name">Reference</span>
-            <span class="hm-space-ask">What can I look up?</span>
+            <span class="hm-space-ask">Every formula, method and pattern</span>
             <span class="hm-ref-links">${[["formulas", count("formula")], ["methods", count("method")], ["patterns", count("pattern")]].map(([sp, n]) =>
               `<a class="hm-ref-link" data-tint="${sp}" href="#/${sp}" title="${escapeAttr(SPACES[sp].ask)}"><b>${SPACES[sp].label}</b>${n}</a>`).join("")}</span>
           </div>${["learn", "practice"].map(sp => `
@@ -9008,16 +9008,23 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const sitSpan = sits => sits.length === 1 ? sitLabel(sits[0]) : `${sitLabel(sits[0])}&ndash;${sitLabel(sits[sits.length - 1])}`;
   const paperKey = p => p.year + " " + p.cname;
   const primarySubject = p => { const id = p.tree.find(t => TOPIC_NODES.has(t)); return id ? topicPath(id)[0].id : null; };
-  function famPapers(fam) {
-    if (FAM_PAPERS[fam]) return FAM_PAPERS[fam];
+  // An HMMT February paper is one round of the tournament, and the rounds differ in kind, so a
+  // round is compared only with the same round in other years (owner, 2026-11-13): its "usual",
+  // its rank and its years chart. The round was called Algebra until 2018 and Algebra and Number
+  // Theory from 2019; they are one series. Other contests have one series per family.
+  const roundOf = p => /^HMMT/.test(p.fam) ? p.cname.replace(/^HMMT \w+ /, "").replace(/^Algebra and Number Theory$/, "Algebra") : "";
+  const roundSlug = slug => String(slug || "").replace(/algebra-and-number-theory$/, "algebra");
+  function famPapers(fam, round = "") {
+    const id = fam + "|" + round;
+    if (FAM_PAPERS[id]) return FAM_PAPERS[id];
     const by = {};
     PROBLEM_DB.forEach(p => {
-      if (p.fam !== fam || !Number.isFinite(p.elo)) return;
+      if (p.fam !== fam || !Number.isFinite(p.elo) || roundOf(p) !== round) return;
       (by[paperKey(p)] = by[paperKey(p)] || { key: paperKey(p), sit: sitOf(p), year: p.year, cname: p.cname, ps: [] }).ps.push(p);
     });
     const papers = Object.values(by).sort((x, y) => x.sit - y.sit || x.cname.localeCompare(y.cname));
     papers.forEach(x => { x.desc = x.ps.map(p => p.elo).sort((u, v) => v - u); x.med = quantile(x.desc.slice().reverse(), 0.5); });
-    return FAM_PAPERS[fam] = papers;
+    return FAM_PAPERS[id] = papers;
   }
   // Which of two papers is harder: the higher median rating; on a tie (medians tie often), the
   // paper whose hardest problem is rated higher, then its second hardest, and so on down (owner,
@@ -9046,7 +9053,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // before it, or the other paper of its own sitting. The choice is kept while browsing.
   let paperBase = "recent";
   function paperBases(fam, ps) {
-    const papers = famPapers(fam), me = paperKey(ps[0]), sit = sitOf(ps[0]);
+    const round = roundOf(ps[0]), series = round ? `${fam} ${round}` : fam;
+    const papers = famPapers(fam, round), me = paperKey(ps[0]), sit = sitOf(ps[0]);
     const sits = [...new Set(papers.map(x => x.sit))], at = sits.indexOf(sit);
     const of = ss => papers.filter(x => ss.includes(x.sit));
     // The choices are named plainly ("Past 10 AMCs"; owner, 2026-11-11) and the exact years
@@ -9059,7 +9067,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const prev = at > 0 ? [sits[at - 1]] : [], twins = papers.filter(x => x.sit === sit && x.key !== me);
     const nR = of(recent).length, nP = of(prev).length;
     return [
-      papers.length >= 3 ? { id: "all", label: "All years", papers, than: "usual", key: `the usual rating at that question, over all ${papers.length} ${escapeAttr(fam)} papers (${sitSpan([sits[0], sits[sits.length - 1]])})` } : null,
+      papers.length >= 3 ? { id: "all", label: "All years", papers, than: "usual", key: `the usual rating at that question, over all ${papers.length} ${escapeAttr(series)} papers (${sitSpan([sits[0], sits[sits.length - 1]])})` } : null,
       nR > nP ? { id: "recent", label: past(nR), papers: of(recent), than: onPast(nR), key: `the usual rating at that question ${onPast(nR)} (${sitSpan(recent)})` } : null,
       nP ? { id: "prev", label: past(nP), papers: of(prev), than: onPast(nP), key: `the ${nP > 1 ? "usual " : ""}rating at that question ${onPast(nP)} (${sitLabel(prev[0])})` } : null,
       twins.length === 1 ? { id: "twin", label: escapeAttr(twins[0].cname.replace(/^(Spring|Fall) /, "")), papers: twins, than: `on the ${escapeAttr(twins[0].cname.replace(/^(Spring|Fall) /, ""))}`, key: `the rating at that question on the ${sitLabel(sit)} ${escapeAttr(twins[0].cname.replace(/^(Spring|Fall) /, ""))}` } : null
@@ -9078,7 +9086,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const mock = fmt ? `<a class="hp-btn hp-btn-soft pp-mock" href="#/practice" data-goto="pr-mock" data-mock-preset="${escapeAttr(mockable.label)}" data-mock-preset-family="${escapeAttr(fam)}" title="${fmt.count} problems, ${fmt.minutes} minutes">Mock this paper</a>` : "";
     const tiles = `<div class="br-list pp-tiles">${ps.map(p => `<a class="br-row" href="#/problem/${p.slug}"><span class="br-ref">Problem ${p.num}</span>${Number.isFinite(p.elo) ? `<span class="br-elo">${p.elo}</span>` : ""}</a>`).join("")}</div>`;
     if (!rated.length) return sec("Problems", tiles, mock);
-    const papers = famPapers(fam), bases = paperBases(fam, ps);
+    const round = roundOf(ps[0]), series = round ? `${fam} ${round}` : fam;
+    const papers = famPapers(fam, round), bases = paperBases(fam, ps);
     const base = bases.find(x => x.id === paperBase) || bases.find(x => x.id === "recent") || bases[0] || null, cmp = base ? paperBaseline(base.papers) : null;
     const elos = rated.map(p => p.elo).sort((x, y) => x - y), med = quantile(elos, 0.5);
     const hardest = rated.reduce((x, y) => y.elo > x.elo ? y : x);
@@ -9094,7 +9103,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       stat(med, "median rating"),
       ...ends.map(([lo, hi]) => { const xs = rated.filter(p => p.num >= lo && p.num <= hi).map(p => p.elo).sort((x, y) => x - y); return xs.length ? stat(quantile(xs, 0.5), `median of questions ${lo}&ndash;${hi}`) : ""; }),
       recent ? stat(signed(med - paperBaseline(recent.papers).med), `median rating against the ${recent.label.toLowerCase().replace(/amc/, "AMC").replace(/aime/, "AIME")}`) : "",
-      papers.length >= 3 && me ? stat(ordinal(1 + papers.filter(x => paperHarder(x, me)).length), `hardest of all ${papers.length} ${escapeAttr(fam)} papers`, "By median rating. A tie goes to the paper with the harder hardest problem, then the harder second hardest, and so on.") : ""
+      papers.length >= 3 && me ? stat(ordinal(1 + papers.filter(x => paperHarder(x, me)).length), `hardest of all ${papers.length} ${escapeAttr(series)} papers`, "By median rating. A tie goes to the paper with the harder hardest problem, then the harder second hardest, and so on.") : ""
     ].join("")}</div>`;
     const chips = bases.length > 1 ? `<div class="pp-base"><span class="br-kids-l">Compare with</span><div class="fam-chips" role="group" aria-label="Compare with">${bases.map(x =>
       `<button type="button" class="fam-chip" data-pp-base="${x.id}" aria-pressed="${x === base}">${x.label}</button>`).join("")}</div></div>` : "";
@@ -9141,7 +9150,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const sits = [...new Set(papers.map(x => x.sit))], sit = sitOf(ps[0]);
     let years = "";
     if (sits.length >= 3) {
-      const per = sits.map(s => { const xs = papers.filter(x => x.sit === s); return { s, year: xs[0].year, n: xs.length, med: Math.round(xs.reduce((n, x) => n + x.med, 0) / xs.length) }; });
+      const per = sits.map(s => { const xs = papers.filter(x => x.sit === s); return { s, year: xs[0].year, paper: round ? "/" + paperSlug(xs[0].cname) : "", n: xs.length, med: Math.round(xs.reduce((n, x) => n + x.med, 0) / xs.length) }; });
       // A sitting with two papers is one bar, both papers together; the page says so (owner,
       // 2026-11-11), since the page itself is about one of the two.
       const pair = papers.some(x => /[AB]$/.test(x.cname)) ? "A and B papers" : papers.some(x => /\bII$/.test(x.cname)) ? "I and II papers" : "", cur = per.find(x => x.s === sit);
@@ -9153,8 +9162,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const first = per.slice(0, Math.min(5, per.length >> 1)), last = per.slice(-first.length);
       const drift = mean(last) - mean(first);
       years = sec("Over the years", `<div class="py-plot"><span class="py-axis" aria-hidden="true"><em>${yTop}</em><em>${yLow}</em></span><div class="py" style="--pq:${famColor(fam)}">${per.map(x =>
-        `<a class="py-bar${x.s === sit ? " is-cur" : ""}" href="#/problems/${famSlug(fam)}/${x.year}" data-tip="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}: median paper rating ${x.med}" aria-label="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}, median paper rating ${x.med}"${x.s === sit ? ' aria-current="true"' : ""}><span class="py-col"><i style="height:${((x.med - yLow) / (yTop - yLow) * 100).toFixed(1)}%"></i></span><span class="py-n">${String(x.year).slice(2)}${x.s % 10 === 2 ? "F" : x.s % 10 === 1 ? "S" : ""}</span></a>`).join("")}</div></div>
-        <p class="pp-words">${pair ? `Each bar is one sitting of the contest, with its ${pair} taken together. ` : ""}The median ${escapeAttr(fam)} paper was rated ${mean(first)} in ${sitSpan(first.map(x => x.s))} and ${mean(last)} in ${sitSpan(last.map(x => x.s))}: ${drift === 0 ? "no change" : `${Math.abs(drift)} points ${drift > 0 ? "harder" : "easier"}`}. ${cur.n > 1 ? `${sitLabel(sit)} averages ${cur.med} over ${both(cur.n)}; this paper is rated ${med}.` : `This paper is rated ${med}.`}</p>`);
+        `<a class="py-bar${x.s === sit ? " is-cur" : ""}" href="#/problems/${famSlug(fam)}/${x.year}${x.paper}" data-tip="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}: median paper rating ${x.med}" aria-label="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}, median paper rating ${x.med}"${x.s === sit ? ' aria-current="true"' : ""}><span class="py-col"><i style="height:${((x.med - yLow) / (yTop - yLow) * 100).toFixed(1)}%"></i></span><span class="py-n">${String(x.year).slice(2)}${x.s % 10 === 2 ? "F" : x.s % 10 === 1 ? "S" : ""}</span></a>`).join("")}</div></div>
+        <p class="pp-words">${pair ? `Each bar is one sitting of the contest, with its ${pair} taken together. ` : ""}The median ${escapeAttr(series)} paper was rated ${mean(first)} in ${sitSpan(first.map(x => x.s))} and ${mean(last)} in ${sitSpan(last.map(x => x.s))}: ${drift === 0 ? "no change" : `${Math.abs(drift)} points ${drift > 0 ? "harder" : "easier"}`}. ${cur.n > 1 ? `${sitLabel(sit)} averages ${cur.med} over ${both(cur.n)}; this paper is rated ${med}.` : `This paper is rated ${med}.`}</p>`);
     }
 
     // Topics: the areas (one level under a subject) the paper's problems fall in, most first.
@@ -9191,7 +9200,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const gnames = Object.keys(groups).sort((a, b) => seasonRank(a) - seasonRank(b) || a.localeCompare(b));
     // #/problems/aime/2025/aime-i names one paper (a contest result in the search links there,
     // and the toggle writes it): the page opens on it.
-    const shownG = Math.max(0, gnames.findIndex(gn => paperSlug(gn) === route.paper));
+    let shownG = gnames.findIndex(gn => paperSlug(gn) === route.paper);
+    if (shownG < 0) shownG = Math.max(0, gnames.findIndex(gn => roundSlug(paperSlug(gn)) === roundSlug(route.paper)));
     const twoSittings = gnames.some(gn => /^Spring\b/i.test(gn)) && gnames.some(gn => /^Fall\b/i.test(gn));
     const body = gnames.map((gn, k) => {
       const ps = groups[gn].sort((a, b) => a.num - b.num);
@@ -9199,7 +9209,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
     }).join("");
     const i = years.indexOf(year);
     const newer = years[i - 1], older = years[i + 1];
-    const yhref = y => `#/problems/${famSlug(fam)}/${y}`;
+    // A step to another year keeps the paper being looked at (the same round of HMMT, the same
+    // A or B paper), when that year has it; the year page falls back to its first paper.
+    let curPaper = gnames.length > 1 ? paperSlug(gnames[shownG]) : "";
+    const yhref = y => `#/problems/${famSlug(fam)}/${y}`, ystep = y => `${yhref(y)}${curPaper ? "/" + curPaper : ""}`;
     $content.innerHTML = `
       <div class="back-row"><a class="back-link" href="#/practice">${uiIcon("arrow-left")} Practice</a></div>
       <div class="section-header topic-header">
@@ -9208,28 +9221,30 @@ The book remembers the last lesson you opened, in this browser, and the contents
       </div>
       <div class="ct-years ct-years-page">${years.map(y => `<a href="${yhref(y)}"${y === year ? ' aria-current="page"' : ""}>${y}</a>`).join("")}</div>
       <div class="ct-yearbar" aria-label="Year">
-        ${older ? `<a class="ct-yb-step" href="${yhref(older)}" aria-label="${older}">${stepChevron(-1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(-1)}</span>`}
+        ${older ? `<a class="ct-yb-step" href="${ystep(older)}" data-step-year="${older}" aria-label="${older}">${stepChevron(-1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(-1)}</span>`}
         <select class="ct-yb-select" aria-label="Year">${years.map(y => `<option value="${y}"${y === year ? " selected" : ""}>${y}</option>`).join("")}</select>
-        ${newer ? `<a class="ct-yb-step" href="${yhref(newer)}" aria-label="${newer}">${stepChevron(1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(1)}</span>`}
+        ${newer ? `<a class="ct-yb-step" href="${ystep(newer)}" data-step-year="${newer}" aria-label="${newer}">${stepChevron(1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(1)}</span>`}
       </div>
       ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 ").replace(/^HMMT (?:February|November) /, "").replace(/ and /g, " & "))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
       ${body}
       <nav class="topic-nav" aria-label="Neighbouring years">
-        ${older ? `<a class="topic-step" href="${yhref(older)}"><span class="ts-dir">${uiIcon("arrow-left")} Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
-        ${newer ? `<a class="topic-step topic-step-next" href="${yhref(newer)}"><span class="ts-dir">Later ${uiIcon("arrow-right")}</span><span class="ts-name">${escapeAttr(fam)} ${newer}</span></a>` : ""}
+        ${older ? `<a class="topic-step" href="${ystep(older)}" data-step-year="${older}"><span class="ts-dir">${uiIcon("arrow-left")} Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
+        ${newer ? `<a class="topic-step topic-step-next" href="${ystep(newer)}" data-step-year="${newer}"><span class="ts-dir">Later ${uiIcon("arrow-right")}</span><span class="ts-name">${escapeAttr(fam)} ${newer}</span></a>` : ""}
       </nav>`;
     renderMath($content);
     // The phone's year bar is a menu; the paper toggle shows one paper at a time and writes
     // the paper into the address, so a reload or a shared link opens the same one.
     const sel = $content.querySelector(".ct-yb-select");
-    if (sel) sel.addEventListener("change", () => { location.hash = yhref(+sel.value); });
+    if (sel) sel.addEventListener("change", () => { location.hash = ystep(+sel.value); });
     const tabs = $content.querySelector(".ct-papers");
     if (tabs) tabs.addEventListener("click", e => {
       const b = e.target.closest("[data-g]");
       if (!b) return;
       tabs.querySelectorAll("[data-g]").forEach(t => t.setAttribute("aria-selected", String(t === b)));
       $content.querySelectorAll(".db-group").forEach(g => g.classList.toggle("is-shown", g.dataset.g === b.dataset.g));
-      history.replaceState(history.state, "", `${yhref(year)}/${paperSlug(gnames[+b.dataset.g])}`);
+      curPaper = paperSlug(gnames[+b.dataset.g]);
+      history.replaceState(history.state, "", `${yhref(year)}/${curPaper}`);
+      $content.querySelectorAll("[data-step-year]").forEach(a => { a.href = ystep(+a.dataset.stepYear); });
       updatePageTitle(getRoute(), gnames[+b.dataset.g]);
     });
   }
