@@ -104,7 +104,11 @@
     "2022 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/Algebra_A_2022_.pdf",
     "2022 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/Algebra_B_2022_.pdf",
     "2022 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/Combinatorics_A_2022_.pdf",
-    "2022 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/Combinatorics_B_2022_.pdf"
+    "2022 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/Combinatorics_B_2022_.pdf",
+    "2022 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/Geometry_A_2022_.pdf",
+    "2022 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/Geometry_B_2022_.pdf",
+    "2022 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/Number_Theory_A_2022_.pdf",
+    "2022 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/Number_Theory_B_2022_.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -6306,6 +6310,134 @@
     "2022 PUMaC Division B Combinatorics, Problem 8": [
       2900,
       "Count nonnegative return walks with optional holding steps by inserting stops into Dyck paths, using the uniform-path sample space."
+    ],
+    "2022 PUMaC Division A Geometry, Problem 1": [
+      2350,
+      "Solve for an orthogonal circle center on an axis and determine the minor arc angle from its right center triangle."
+    ],
+    "2022 PUMaC Division A Geometry, Problem 2": [
+      2800,
+      "Bound a circle through two ellipse foci by its minimum radius and check the eccentricity endpoint is attained on the ellipse."
+    ],
+    "2022 PUMaC Division A Geometry, Problem 3": [
+      2500,
+      "Convert a product of six vertex distances to one polynomial modulus and count the maximizing boundary points."
+    ],
+    "2022 PUMaC Division A Geometry, Problem 4": [
+      3050,
+      "Use the given similarity and area relation to force a right central triangle, then recover its dimensions from the corner angles."
+    ],
+    "2022 PUMaC Division A Geometry, Problem 5": [
+      3250,
+      "Express three distances to an excircle contact triangle through chord areas and half-angle lengths before summing their squares."
+    ],
+    "2022 PUMaC Division A Geometry, Problem 6": [
+      3450,
+      "Relate two angle-tangent circles by inversion and compute their common chord from the exact center separation."
+    ],
+    "2022 PUMaC Division A Geometry, Problem 7": [
+      3700,
+      "Invert the incircle configuration to locate a projection on the contact chord and recover a secant distance product; verify the original two-circle intersection independently."
+    ],
+    "2022 PUMaC Division A Geometry, Problem 8": [
+      3850,
+      "Apply Casey twice to three circles in the minor circumcircle segments and sum their external tangent lengths; check the correct outward centers directly."
+    ],
+    "2022 PUMaC Division B Geometry, Problem 1": [
+      1300,
+      "Chase the two possible directions of a line parallel to an internal triangle cevian and select the smaller angle."
+    ],
+    "2022 PUMaC Division B Geometry, Problem 2": [
+      1800,
+      "Project mutually tangent sphere centers onto their common tangent plane and bound the sum of three radical side lengths."
+    ],
+    "2022 PUMaC Division B Geometry, Problem 3": [
+      2350,
+      "Solve for an orthogonal circle center on an axis and determine the minor arc angle from its right center triangle."
+    ],
+    "2022 PUMaC Division B Geometry, Problem 4": [
+      2800,
+      "Bound a circle through two ellipse foci by its minimum radius and check the eccentricity endpoint is attained on the ellipse."
+    ],
+    "2022 PUMaC Division B Geometry, Problem 5": [
+      2500,
+      "Convert a product of six vertex distances to one polynomial modulus and count the maximizing boundary points."
+    ],
+    "2022 PUMaC Division B Geometry, Problem 6": [
+      3050,
+      "Use the given similarity and area relation to force a right central triangle, then recover its dimensions from the corner angles."
+    ],
+    "2022 PUMaC Division B Geometry, Problem 7": [
+      3250,
+      "Express three distances to an excircle contact triangle through chord areas and half-angle lengths before summing their squares."
+    ],
+    "2022 PUMaC Division B Geometry, Problem 8": [
+      3450,
+      "Relate two angle-tangent circles by inversion and compute their common chord from the exact center separation."
+    ],
+    "2022 PUMaC Division A Number Theory, Problem 1": [
+      2350,
+      "Reduce prime-dependent exponents modulo p minus one and factor the resulting fixed fourth-power expression."
+    ],
+    "2022 PUMaC Division A Number Theory, Problem 2": [
+      2450,
+      "Reverse a small divisor-sum factorization and exclude repeated-prime allocations."
+    ],
+    "2022 PUMaC Division A Number Theory, Problem 3": [
+      2750,
+      "Count ordered factorizations of a large squarefree primorial, remove equal-pair boundaries and evaluate the resulting power expression modulo one thousand."
+    ],
+    "2022 PUMaC Division A Number Theory, Problem 4": [
+      3000,
+      "Count a cubic-square congruence over a prime and a prime square, separating units and zero divisibility before recombining."
+    ],
+    "2022 PUMaC Division A Number Theory, Problem 5": [
+      3500,
+      "Characterize leading-digit deletion multipliers by their nondecimal prime-power core and sum a convergent reciprocal series with four exclusions."
+    ],
+    "2022 PUMaC Division A Number Theory, Problem 6": [
+      3350,
+      "Characterize the omitted integers in three rounded-root sequences and count their union with exact threshold inequalities."
+    ],
+    "2022 PUMaC Division A Number Theory, Problem 7": [
+      3550,
+      "Count quadratic residues including zero at increasing odd prime powers, prove multiplicativity and take the product density limit."
+    ],
+    "2022 PUMaC Division A Number Theory, Problem 8": [
+      3350,
+      "Swap a weighted floor sum into a divisor convolution and retain only integers with no prime exponent equal to one."
+    ],
+    "2022 PUMaC Division B Number Theory, Problem 1": [
+      1400,
+      "Factor a fixed GCD out of an integer and list the first four values coprime to the reduced modulus."
+    ],
+    "2022 PUMaC Division B Number Theory, Problem 2": [
+      1700,
+      "Find a simultaneous residue class modulo 100 and 23, then sum its first twenty-three positive terms."
+    ],
+    "2022 PUMaC Division B Number Theory, Problem 3": [
+      2350,
+      "Reduce prime-dependent exponents modulo p minus one and factor the resulting fixed fourth-power expression."
+    ],
+    "2022 PUMaC Division B Number Theory, Problem 4": [
+      2450,
+      "Reverse a small divisor-sum factorization and exclude repeated-prime allocations."
+    ],
+    "2022 PUMaC Division B Number Theory, Problem 5": [
+      2750,
+      "Count ordered factorizations of a large squarefree primorial, remove equal-pair boundaries and evaluate the resulting power expression modulo one thousand."
+    ],
+    "2022 PUMaC Division B Number Theory, Problem 6": [
+      3000,
+      "Count a cubic-square congruence over a prime and a prime square, separating units and zero divisibility before recombining."
+    ],
+    "2022 PUMaC Division B Number Theory, Problem 7": [
+      3500,
+      "Characterize leading-digit deletion multipliers by their nondecimal prime-power core and sum a convergent reciprocal series with four exclusions."
+    ],
+    "2022 PUMaC Division B Number Theory, Problem 8": [
+      3350,
+      "Characterize the omitted integers in three rounded-root sequences and count their union with exact threshold inequalities."
     ]
   }
 }
