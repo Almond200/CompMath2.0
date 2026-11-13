@@ -3,11 +3,12 @@ const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs'), vm = require('node:vm');
 const context = {window:{}};
-for (const file of ['problem-db.js','difficulty-ratings.js','contest-papers.js'])
+for (const file of ['problem-db.js','difficulty-ratings.js','contest-papers.js','contests-planned.js'])
   vm.runInNewContext(fs.readFileSync(`js/data/problems/${file}`,'utf8'),context);
 const db=context.window.MATH_PROBLEM_DB, papers=context.window.MATH_CONTEST_PAPERS;
 const slug=ref=>ref.replace(', Problem ',' ').toLowerCase().replaceAll(' ','-');
 const families=new Map();
+assert(!context.window.MATH_PLANNED_CONTESTS.some(c=>/^(BMT|PUMaC)$/.test(c.name)),'live archives have no duplicate coming-soon entry');
 // The first six A questions recur as B questions 3–8 in these papers.
 for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) for(let n=1;n<=6;n++){
   const refs=[`2025 PUMaC Division A ${subject}, Problem ${n}`,`2025 PUMaC Division B ${subject}, Problem ${n+2}`];
@@ -38,8 +39,12 @@ for(const [paper,source] of Object.entries(papers)) {
    await page.addInitScript(t=>localStorage.setItem('theme',t),theme);
    const base=process.env.COMPMATH_URL||'http://localhost:8898';
    await page.goto(base+'/#/practice');await page.locator('.ct-row').first().waitFor();
-   for(const [key,rounds] of families){
-    const [fam,year]=key.split('|'),familySlug=fam.toLowerCase().replaceAll(' ','-');
+   const latest=new Map();
+   for(const key of families.keys()){
+    const [fam,year]=key.split('|');latest.set(fam,Math.max(+year,latest.get(fam)||0));
+   }
+   for(const [fam,year] of latest){
+    const familySlug=fam.toLowerCase().replaceAll(' ','-');
     assert.equal(await page.locator(`a.ct-name[href="#/problems/${familySlug}/${year}"]`).count(),1,fam+': own contest entry');
    }
    for(const [key,rounds] of families){
@@ -51,7 +56,8 @@ for(const [paper,source] of Object.entries(papers)) {
      await page.goto(`${base}/#/problems/${familySlug}/${year}/${paperSlug}`);
      await page.locator('.db-group.is-shown .pp-tiles').waitFor();
      assert.equal(await page.locator('.db-group.is-shown .pp-tiles .br-row').count(),ps.length);
-     assert(await page.locator('.db-group.is-shown .py-bar').count()<=1,'same-subject comparisons exclude other rounds');
+     const years=[...families].filter(([k,rs])=>k.startsWith(fam+'|')&&rs.some(r=>r.round===round)).length;
+     assert.equal(await page.locator('.db-group.is-shown .py-bar').count(),years>=3?years:0,'same-subject comparisons exclude other rounds and divisions');
      for(const p of [ps[0],ps.at(-1)]){
       await page.goto(`${base}/#/problem/${slug(p.ref)}`);
       const toggle=page.locator('.prob-chain .chain-toggle');await toggle.waitFor();

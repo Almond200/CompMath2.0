@@ -8,8 +8,6 @@ window.MATH_PLANNED_CONTESTS = [
   { name: "MATHCOUNTS",     host: "MATHCOUNTS Foundation", note: "School, chapter, state, and national rounds for middle school." },
   { name: "ARML",           host: "American Regions", note: "American Regions Math League: team, power, and relay rounds, plus the local contest." },
   { name: "AHSME",          host: "MAA", note: "The American High School Mathematics Examination, 1950 to 1999, the 30-question exam that became the AMC 12." },
-  { name: "BMT",            host: "UC Berkeley", note: "Berkeley Math Tournament: individual rounds by subject, and a team round." },
-  { name: "PUMaC",          host: "Princeton", note: "Princeton University Mathematics Competition: Algebra, Combinatorics, Geometry, and Number Theory." },
   { name: "CMIMC",          host: "Carnegie Mellon", note: "Carnegie Mellon Informatics and Mathematics Competition." },
   { name: "SMT",            host: "Stanford", note: "Stanford Math Tournament: subject rounds, a team round, and Discrete and Advanced tracks." },
   { name: "CHMMC",          host: "Caltech and Harvey Mudd", note: "Caltech Harvey Mudd Math Competition." },

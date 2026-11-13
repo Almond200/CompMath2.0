@@ -83,7 +83,10 @@
     "2025 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC_2025_Geometry_A.pdf",
     "2025 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC_2025_Geometry_B.pdf",
     "2025 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC_2025_Number_Theory_A.pdf",
-    "2025 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC_2025_Number_Theory_B.pdf"
+    "2025 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC_2025_Number_Theory_B.pdf",
+    "2024 BMT Algebra": "https://berkeley.mt/archives/bmt-2024/algebra-problems.pdf",
+    "2024 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2024/discrete-problems.pdf",
+    "2024 BMT Geometry": "https://berkeley.mt/archives/bmt-2024/geometry-problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -5541,6 +5544,126 @@
     "2025 PUMaC Division B Number Theory, Problem 8": [
       2700,
       "Express a composite-index cyclotomic polynomial as a low-degree polynomial in a large power and sum its supported exponents."
+    ],
+    "2024 BMT Algebra, Problem 1": [
+      1100,
+      "Recover two initial counts from a difference and a later ratio after transfers."
+    ],
+    "2024 BMT Algebra, Problem 2": [
+      1450,
+      "Intersect two quadratic solution sets obtained from equal rational expressions."
+    ],
+    "2024 BMT Algebra, Problem 3": [
+      1750,
+      "Couple an arithmetic progression and a geometric progression through early sums and a later equality."
+    ],
+    "2024 BMT Algebra, Problem 4": [
+      2100,
+      "Bound the possible integer interval using floor-ceiling errors and locate its greatest solution."
+    ],
+    "2024 BMT Algebra, Problem 5": [
+      2750,
+      "Classify a real cubic by conjugate roots on an off-center circle and count feasible parameter branches."
+    ],
+    "2024 BMT Algebra, Problem 6": [
+      2300,
+      "Replace pairwise sums by reciprocals, exclude the zero branch and solve a linearized nonlinear system."
+    ],
+    "2024 BMT Algebra, Problem 7": [
+      2550,
+      "Factor a symmetric cube condition into geometric-progression alternatives and count bounded ordered integer triples."
+    ],
+    "2024 BMT Algebra, Problem 8": [
+      2850,
+      "Force three variables equal in a symmetric product system, then minimize weighted positive expressions with domain checks."
+    ],
+    "2024 BMT Algebra, Problem 9": [
+      3100,
+      "Linearize two radical recurrences by trigonometric half angles and find the strict supremum of product differences."
+    ],
+    "2024 BMT Algebra, Problem 10": [
+      3700,
+      "Normalize a triple roots-of-unity product with secant coefficients and evaluate its integer residue."
+    ],
+    "2024 BMT Discrete Math, Problem 1": [
+      1150,
+      "Order three-digit palindromes whose digit sums are divisible by three."
+    ],
+    "2024 BMT Discrete Math, Problem 2": [
+      1550,
+      "Use a repeated color period to force five distinct colors, two of which are mandatory."
+    ],
+    "2024 BMT Discrete Math, Problem 3": [
+      1650,
+      "Rewrite a rational integrality condition as signed divisors of a fixed constant, retaining the positivity bound."
+    ],
+    "2024 BMT Discrete Math, Problem 4": [
+      2200,
+      "Count circular two-color assignments by alternating runs, each of length at least two."
+    ],
+    "2024 BMT Discrete Math, Problem 5": [
+      2550,
+      "Factor equal dice-sum distributions and use a specified large label to force a nonstandard pair of dice."
+    ],
+    "2024 BMT Discrete Math, Problem 6": [
+      2500,
+      "Combine base-six digit-sum divisibility with a short-block modulus to maximize a digit permutation."
+    ],
+    "2024 BMT Discrete Math, Problem 7": [
+      2500,
+      "Count a required overlapping binary-letter pattern by gap variables and inclusion-exclusion."
+    ],
+    "2024 BMT Discrete Math, Problem 8": [
+      2900,
+      "Count bounded prime-exponent distributions in five-factor products and optimize the resulting multiplicative ratio."
+    ],
+    "2024 BMT Discrete Math, Problem 9": [
+      3600,
+      "Expand a squared exponential sum, count quadratic residue fibers through CRT and evaluate the geometric sums."
+    ],
+    "2024 BMT Discrete Math, Problem 10": [
+      3350,
+      "Represent repeated grid-edge sums by domino matchings and correct the count when two modal sums coexist."
+    ],
+    "2024 BMT Geometry, Problem 1": [
+      1100,
+      "Add three semicircular boundary arcs around an equilateral central region."
+    ],
+    "2024 BMT Geometry, Problem 2": [
+      1450,
+      "Use symmetric side-trisection points of a square to recover the common circle radius."
+    ],
+    "2024 BMT Geometry, Problem 3": [
+      2100,
+      "Use the diagrammed circle placement to subtract tangent-blocked sectors from a square visibility region."
+    ],
+    "2024 BMT Geometry, Problem 4": [
+      2350,
+      "Normalize two internally tangent circles and turn a distance ratio into two similar diameter triangles."
+    ],
+    "2024 BMT Geometry, Problem 5": [
+      2450,
+      "Exploit the right triangles in a bicentric kite and its diagonal area to compare circumcircle and incircle areas."
+    ],
+    "2024 BMT Geometry, Problem 6": [
+      2900,
+      "Recover altitude-triangle scale factors from three small cyclic area regions and reconstruct the full area."
+    ],
+    "2024 BMT Geometry, Problem 7": [
+      2850,
+      "Place several perpendicular feet on a cyclic rectangle, then combine a secant power with a similarity ratio."
+    ],
+    "2024 BMT Geometry, Problem 8": [
+      2850,
+      "Use a shared interior chord product along three orthogonal sphere secants to recover a tetrahedron volume."
+    ],
+    "2024 BMT Geometry, Problem 9": [
+      3100,
+      "Relate a median secant of an incenter circle to side products and eliminate an invalid triangle branch."
+    ],
+    "2024 BMT Geometry, Problem 10": [
+      3650,
+      "Recognize dual chord-of-contact polars, identify an inverse point and recover a tangent-chord triangle area."
     ]
   }
 }

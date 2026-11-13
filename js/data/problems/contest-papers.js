@@ -44,5 +44,17 @@ window.MATH_CONTEST_PAPERS = {
   "2025 PUMaC Division B Number Theory": {
     "url": "https://pumac.princeton.edu/s/PUMaC_2025_Number_Theory_B.pdf",
     "solUrl": "https://pumac.princeton.edu/s/Number-Theory-B-Solutions-e3rc.pdf"
+  },
+  "2024 BMT Algebra": {
+    "url": "https://berkeley.mt/archives/bmt-2024/algebra-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2024/algebra-solutions.pdf"
+  },
+  "2024 BMT Discrete Math": {
+    "url": "https://berkeley.mt/archives/bmt-2024/discrete-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2024/discrete-solutions.pdf"
+  },
+  "2024 BMT Geometry": {
+    "url": "https://berkeley.mt/archives/bmt-2024/geometry-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2024/geometry-solutions.pdf"
   }
 };
