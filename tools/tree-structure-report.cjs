@@ -1,4 +1,4 @@
-// Read-only structural census for TREE-REVIEW.md. Counts use descendant unions,
+// Read-only structural census for AUDITS.md (Topic-tree restructuring review). Counts use descendant unions,
 // not sums of leaf populations. No filing is inferred or changed here.
 // node tools/tree-structure-report.cjs > /tmp/tree-structure.json
 const path = require('node:path');
