@@ -2916,6 +2916,9 @@ The bedrock of number theory at every level; it is rarely named in a solution, b
 - a polynomial of degree $d$, not identically $0$ modulo the prime $p$, has at most $d$ roots modulo $p$
 - $x^{p-1} - 1 \equiv (x - 1)(x - 2)\cdots(x - (p - 1)) \pmod p$ — both sides have the $p - 1$ roots $1, \ldots, p - 1$
 - $x^2 \equiv a \pmod p$ has at most $2$ solutions, and $x^k \equiv 1 \pmod p$ has at most $k$
+- $x^p - x \equiv x(x - 1)(x - 2)\cdots(x - (p - 1)) \pmod p$ — every residue is a root, so the product of $x - a$ over all residues
+- every function from the residues mod $p$ to themselves is $f(x) \equiv \alt{\sum_{a} f(a)\big(1 - (x - a)^{p - 1}\big)}{f(0)\big(1 - x^{p - 1}\big) + f(1)\big(1 - (x - 1)^{p - 1}\big) + \cdots + f(p - 1)\big(1 - (x - p + 1)^{p - 1}\big)}$, and no other polynomial of degree less than $p$ gives it — interpolation mod $p$
+- $\alt{\sum_{x = 0}^{p - 1} x^k}{0^k + 1^k + 2^k + \cdots + (p - 1)^k} \equiv -1 \pmod p$ if $k \gt 0$ and $p - 1 \mid k$, and $\equiv 0$ otherwise — power sums over all residues
 
 ## Conditions
 The modulus must be prime. For a composite modulus the bound fails: $x^2 \equiv 1 \pmod 8$ has the four solutions $1$, $3$, $5$, and $7$.
@@ -2925,16 +2928,23 @@ Modulo a prime, a product is $0$ only when a factor is $0$, by [[euclids-lemma|E
 
 For the factorization, both sides are monic of degree $p - 1$, and both vanish at $1, \ldots, p - 1$, the left by Fermat's Little Theorem. Their difference has degree less than $p - 1$ and $p - 1$ roots, so by the bound every coefficient is $0$ modulo $p$. The same argument shows that two polynomials of degree less than $p$ agreeing at more points than their degree are congruent coefficient by coefficient.
 
+Multiplying the factorization of $x^{p - 1} - 1$ by $x$ gives $x^p - x \equiv \prod_{a = 0}^{p - 1}(x - a)$.
+
+For interpolation, by Fermat's Little Theorem $(x - a)^{p - 1} \equiv 1$ at every residue $x \ne a$, and it is $0$ at $x = a$, so $1 - (x - a)^{p - 1}$ is $1$ at $a$ and $0$ at every other residue. The sum $\sum_a f(a)\big(1 - (x - a)^{p - 1}\big)$ therefore takes the value $f(a)$ at each $a$, and it has degree at most $p - 1$. Two polynomials of degree less than $p$ with the same values at all $p$ residues differ by a polynomial of degree less than $p$ with $p$ roots, which is $0$ by the bound, so the polynomial is unique. There are $p^p$ functions and $p^p$ polynomials of degree less than $p$, one for each.
+
+For power sums, if $p - 1 \mid k$ and $k \gt 0$, each of the $p - 1$ nonzero residues has $x^k \equiv 1$ and $0^k = 0$, so the sum is $p - 1 \equiv -1$. Otherwise let $r$ be the remainder of $k$ on division by $p - 1$, so $0 \lt r \lt p - 1$ and $x^k \equiv x^r$ for $x \not\equiv 0$. The congruence $x^r \equiv 1$ has at most $r \lt p - 1$ solutions, so some nonzero $a$ has $a^k \not\equiv 1$. Multiplying by $a$ permutes the nonzero residues and fixes $0$, so the sum $S$ equals $\sum (ax)^k = a^k S$, and $(a^k - 1) S \equiv 0$ forces $S \equiv 0$. (For $k = 0$ the sum is $p \equiv 0$.)
+
 ## Useful observations
 - Comparing constant terms in $x^{p-1} - 1 \equiv (x - 1)\cdots(x - (p - 1))$ gives $(p - 1)! \equiv -1 \pmod p$, which is [[wilsons-theorem|Wilson's Theorem]].
 - Two polynomials of degree less than $p$ that agree at more points than their degree are congruent modulo $p$ coefficient by coefficient.
+- The power sums give the sum of a polynomial over all residues: $\sum_x g(x) \equiv -(b_{p - 1} + b_{2(p - 1)} + \cdots)$ for $g = \sum b_k x^k$, which picks out coefficients of an interpolating polynomial.
 - The bound is what makes [[primitive-roots|primitive roots]] exist: it limits how many residues can have each order.
 
 ## Applications
-Counting solutions of polynomial congruences modulo a prime, and proofs of Wilson's Theorem and of the existence of primitive roots.
+Counting solutions of polynomial congruences modulo a prime, coefficients of the polynomial that takes given values at every residue, sums of a polynomial over all residues, and proofs of Wilson's Theorem and of the existence of primitive roots.
 
 ## Contest profile
-An olympiad tool, usually the step that bounds the number of solutions of a congruence or proves two polynomials are congruent.
+An olympiad tool, usually the step that bounds the number of solutions of a congruence or proves two polynomials are congruent. HMMT's Algebra and Number Theory round has ended with it in several recent years, as a polynomial over the integers mod a prime such as $2027$.
 `,
 
 "coins-and-prices": String.raw`

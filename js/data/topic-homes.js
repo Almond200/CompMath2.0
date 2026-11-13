@@ -30,6 +30,7 @@ window.MATH_TOPIC_HOMES = {
   "chebyshev-polynomials": "alg.trig.eq.many",
   "resultant-discriminant": "alg.poly.quad.disc",
   "odd-even-functions": "alg.fn.graph.domain",
+  "intermediate-value-theorem": "alg.fn.graph.intersect",
   "inverse-function-properties": "alg.fn.basic.inverse",
   "determinant-basics": "alg.eq.matrix",
   "determinant-geometric": "alg.eq.matrix",
@@ -186,6 +187,7 @@ window.MATH_TOPIC_HOMES = {
   "geometric-distribution": "cp.exp.var",
   "turn-based-games": "cp.prob.process.game",
   "gamblers-ruin": "cp.prob.process.walk",
+  "polya-urn": "cp.prob.process.steps",
   "hypergeometric": "cp.prob.dice.draw",
   "product-of-uniforms": "cp.prob.geom.region",
   "coprime-probability": "nt.div.gcd.basic",
@@ -665,6 +667,7 @@ window.MATH_TOPIC_HOMES = {
   "homogenization": "alg.ineq.means",
   "tangent-line-trick": "alg.ineq.means",
   "double-summation": "alg.seq.sum.other",
+  "symmetrizing-a-sum": "alg.seq.sum.other",
   "rationalizing": "alg.eq.radical.simplify",
   "partial-fractions": "alg.seq.sum.telescope",
   // Methods: number theory
