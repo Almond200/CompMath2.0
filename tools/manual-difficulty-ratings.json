@@ -60,7 +60,16 @@
     "2003 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2003/feb/geo/problems.pdf",
     "2002 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2002/feb/alg/problems.pdf",
     "2002 HMMT February Advanced Topics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2002/feb/adv/problems.pdf",
-    "2002 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2002/feb/geo/problems.pdf"
+    "2002 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2002/feb/geo/problems.pdf",
+    "2001 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2001/feb/alg/problems.pdf",
+    "2001 HMMT February Advanced Topics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2001/feb/adv/problems.pdf",
+    "2001 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2001/feb/geo/problems.pdf",
+    "1999 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/1999/feb/alg/problems.pdf",
+    "1999 HMMT February Advanced Topics": "https://hmmt-archive.s3.amazonaws.com/tournaments/1999/feb/adv/problems.pdf",
+    "1999 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/1999/feb/geo/problems.pdf",
+    "1998 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/1998/feb/alg/problems.pdf",
+    "1998 HMMT February Advanced Topics": "https://hmmt-archive.s3.amazonaws.com/tournaments/1998/feb/adv/problems.pdf",
+    "1998 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/1998/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -4662,6 +4671,366 @@
     "2025 HMMT November Theme, Problem 10": [
       2740,
       "Official results: 1 of the 676 students who sat the round solved it."
+    ],
+    "2001 HMMT February Algebra, Problem 1": [
+      1450,
+      "Intended difference-of-powers cancellation is short, but the three supplied equations are mutually inconsistent."
+    ],
+    "2001 HMMT February Algebra, Problem 2": [
+      2100,
+      "Expand a binary-power infinite product into a convergent geometric series, or cancel successive differences of squares."
+    ],
+    "2001 HMMT February Algebra, Problem 3": [
+      1900,
+      "Take the minimum of the two normalized prime valuations of a factorial to find its twenty-four-adic divisibility."
+    ],
+    "2001 HMMT February Algebra, Problem 4": [
+      1850,
+      "Factor a large difference of cubes and use the supplied bound on its prime-factor count."
+    ],
+    "2001 HMMT February Algebra, Problem 5": [
+      2400,
+      "Bound the middle of three consecutive even factors and use the required final digit to isolate it."
+    ],
+    "2001 HMMT February Algebra, Problem 6": [
+      2200,
+      "Group self-powers by last digit and balance the two possible residues across ten repetitions."
+    ],
+    "2001 HMMT February Algebra, Problem 7": [
+      2050,
+      "Normalize a polynomial from its four roots and evaluate its constant term through a root product."
+    ],
+    "2001 HMMT February Algebra, Problem 8": [
+      2100,
+      "Count integers coprime to a squarefree modulus by its prime-factor totient product."
+    ],
+    "2001 HMMT February Algebra, Problem 9": [
+      2450,
+      "Force equal exponents by reducing modulo the base, then enforce the strict upper bound; the source overcounts by one."
+    ],
+    "2001 HMMT February Algebra, Problem 10": [
+      2550,
+      "Pair four affine factors so their two quadratics share one repeated block, then reject a nonreal branch."
+    ],
+    "2001 HMMT February Advanced Topics, Problem 1": [
+      1450,
+      "Intended difference-of-powers cancellation is short, but the three supplied equations are mutually inconsistent."
+    ],
+    "2001 HMMT February Advanced Topics, Problem 2": [
+      1700,
+      "Change bases in a telescoping product of logarithms and track the negative signs."
+    ],
+    "2001 HMMT February Advanced Topics, Problem 3": [
+      1350,
+      "The intended coefficient-sum evaluation is immediate, but no polynomial can satisfy the supplied product identity."
+    ],
+    "2001 HMMT February Advanced Topics, Problem 4": [
+      2600,
+      "Count height-profile reflection orbits by pairing nonsymmetric boards and keeping fixed profiles once."
+    ],
+    "2001 HMMT February Advanced Topics, Problem 5": [
+      2400,
+      "Bound the middle of three consecutive even factors and use the required final digit to isolate it."
+    ],
+    "2001 HMMT February Advanced Topics, Problem 6": [
+      2150,
+      "Write the same-color probability for three fixed colors and one unknown color, then solve the population equation."
+    ],
+    "2001 HMMT February Advanced Topics, Problem 7": [
+      2300,
+      "Compare large integer powers through shared exponents and intermediate bounding bases."
+    ],
+    "2001 HMMT February Advanced Topics, Problem 8": [
+      2450,
+      "Force equal exponents by reducing modulo the base, then enforce the strict upper bound; the source overcounts by one."
+    ],
+    "2001 HMMT February Advanced Topics, Problem 9": [
+      2550,
+      "Pair four affine factors so their two quadratics share one repeated block, then reject a nonreal branch."
+    ],
+    "2001 HMMT February Advanced Topics, Problem 10": [
+      2700,
+      "Interpret a weighted unit-vector projection as a shifted cosine and respect the principal inverse-cosine branch."
+    ],
+    "2001 HMMT February Geometry, Problem 1": [
+      1450,
+      "Subtract the shared overlap from both figures; the official final display incorrectly squares pi."
+    ],
+    "2001 HMMT February Geometry, Problem 2": [
+      2400,
+      "Face-center planes bound a regular octahedron; the official half-cube dissection gives the wrong volume."
+    ],
+    "2001 HMMT February Geometry, Problem 3": [
+      2100,
+      "Track the halving square areas and their intervening right triangles in a nonoverlapping infinite construction."
+    ],
+    "2001 HMMT February Geometry, Problem 4": [
+      2200,
+      "Two equal parallel chords form a square, leaving two congruent segment pairs in the circle."
+    ],
+    "2001 HMMT February Geometry, Problem 5": [
+      2200,
+      "Recognize four coordinate points as coplanar before attempting a tetrahedron volume."
+    ],
+    "2001 HMMT February Geometry, Problem 6": [
+      2400,
+      "Use the two nearest side distances to obtain a radius quadratic and reject the infeasible smaller root."
+    ],
+    "2001 HMMT February Geometry, Problem 7": [
+      2900,
+      "Locate the side intersections of a square in an equilateral triangle and add two equal-area pieces."
+    ],
+    "2001 HMMT February Geometry, Problem 8": [
+      2650,
+      "Use an equal-angle condition to identify a cyclic quadrilateral on an equilateral base and cancel its equal sides."
+    ],
+    "2001 HMMT February Geometry, Problem 9": [
+      3150,
+      "Find the rhombus shared by reflected parallelograms and compare its diagonal area with its perimeter square."
+    ],
+    "2001 HMMT February Geometry, Problem 10": [
+      3050,
+      "Combine two cosine laws on a diameter extension and eliminate their common angle to recover a radical chord."
+    ],
+    "1999 HMMT February Algebra, Problem 1": [
+      1550,
+      "Solve the zero condition of a rationally defined operation while excluding its undefined cancellation point."
+    ],
+    "1999 HMMT February Algebra, Problem 2": [
+      1850,
+      "Isolate a missing thousands digit modulo ninety-one and use its short residue cycle."
+    ],
+    "1999 HMMT February Algebra, Problem 3": [
+      2400,
+      "Maximize the overlap time of two finite moving platforms before a fixed travel cutoff."
+    ],
+    "1999 HMMT February Algebra, Problem 4": [
+      1550,
+      "Divide a homogeneous quadratic by a specified nonzero square to solve for a ratio."
+    ],
+    "1999 HMMT February Algebra, Problem 5": [
+      2500,
+      "Translate button presses into two integer state equations, bound their total and realize the bound without resets."
+    ],
+    "1999 HMMT February Algebra, Problem 6": [
+      1950,
+      "Recover three work rates from pair rates and account for one worker leaving after the first day."
+    ],
+    "1999 HMMT February Algebra, Problem 7": [
+      2400,
+      "Use common remainders to determine a bounded paper count, then choose its only proper nontrivial divisor."
+    ],
+    "1999 HMMT February Algebra, Problem 8": [
+      2500,
+      "Add a quadratic to a monic quartic so its four prescribed values become known roots."
+    ],
+    "1999 HMMT February Algebra, Problem 9": [
+      2850,
+      "Decompose a three-row domino strip into its first complete block and derive a width recurrence."
+    ],
+    "1999 HMMT February Algebra, Problem 10": [
+      2350,
+      "Separate coordinates as in 2010 Combinatorics #6, with two small trinomial edge cases for the near-corner endpoint."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 1": [
+      1700,
+      "Use the cents total and the eight-and-nine divisibility tests to recover two missing receipt digits."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 2": [
+      2100,
+      "Reverse repeated doubling and fixed spending, then identify the finite affine recurrence."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 3": [
+      2100,
+      "Equate two binomial masses; the stated uniqueness needs a nondegenerate coin assumption."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 4": [
+      1900,
+      "Each adjacent exchange changes one inversion, giving the reversal sorting minimum and its attainment."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 5": [
+      2050,
+      "Count how often each element contributes to the sum over all subsets before dividing by a common total."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 6": [
+      2400,
+      "Use common remainders to determine a bounded paper count, then choose its only proper nontrivial divisor."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 7": [
+      2300,
+      "The two nonreal roots of a cubic force one real quadratic factor and its coefficients."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 8": [
+      2550,
+      "Compare the acute and obtuse wedges formed by two diameters and convert the sharper wedge to a radius bound."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 9": [
+      2550,
+      "Condition through a screening stage and a lab test; the source conflates aggregate scale accuracy with sensitivity."
+    ],
+    "1999 HMMT February Advanced Topics, Problem 10": [
+      3200,
+      "Use a sum-product substitution and real-root discriminant to bound the largest of three coupled probabilities."
+    ],
+    "1999 HMMT February Geometry, Problem 1": [
+      1700,
+      "Recover a circumradius from rectangle diagonals and subtract the union with its square overlap."
+    ],
+    "1999 HMMT February Geometry, Problem 2": [
+      1800,
+      "The smaller semicircle diameter is a chord of the larger circle whose center distance equals the smaller radius."
+    ],
+    "1999 HMMT February Geometry, Problem 3": [
+      1600,
+      "Use half a cube face as a tetrahedron base and the perpendicular cube edge as its altitude."
+    ],
+    "1999 HMMT February Geometry, Problem 4": [
+      2300,
+      "Conserve volume flow between a trapezoidal river section and four circular openings."
+    ],
+    "1999 HMMT February Geometry, Problem 5": [
+      2550,
+      "Use altitude-foot distances and two similar right triangles to recover a base and its altitude."
+    ],
+    "1999 HMMT February Geometry, Problem 6": [
+      2500,
+      "Compare the radial contact tracks on concentric spheres by the square of their similarity ratio."
+    ],
+    "1999 HMMT February Geometry, Problem 7": [
+      2650,
+      "Intersect a nearest-center Voronoi region with a corner disk and measure a circular segment."
+    ],
+    "1999 HMMT February Geometry, Problem 8": [
+      2700,
+      "Decompose the triangle formed by three outer square edges into equilateral and square pieces."
+    ],
+    "1999 HMMT February Geometry, Problem 9": [
+      3250,
+      "Compare the separation of opposite regular-tetrahedron edges with the skew distance between cube diagonals."
+    ],
+    "1999 HMMT February Geometry, Problem 10": [
+      3550,
+      "Recover successive cevian lengths with Stewart before applying Menelaus twice to the final ratio."
+    ],
+    "1998 HMMT February Algebra, Problem 1": [
+      1500,
+      "Find the requested price combination directly from two underdetermined linear equations."
+    ],
+    "1998 HMMT February Algebra, Problem 2": [
+      1850,
+      "Compare remaining cross-river and downstream times; the official route assumes a fixed heading and confuses increase with final speed."
+    ],
+    "1998 HMMT February Algebra, Problem 3": [
+      1550,
+      "Subtract the progression of multiples of ten from the positive even progression."
+    ],
+    "1998 HMMT February Algebra, Problem 4": [
+      1750,
+      "Square a positive nested-radical quotient and simplify to recover its reduced rational value."
+    ],
+    "1998 HMMT February Algebra, Problem 5": [
+      2400,
+      "Recover three box dimensions from face areas and volume, then orient for maximum height and nest the bases."
+    ],
+    "1998 HMMT February Algebra, Problem 6": [
+      2050,
+      "Shift the two reciprocal denominators to turn the positive integer equation into a divisor-pair count."
+    ],
+    "1998 HMMT February Algebra, Problem 7": [
+      1800,
+      "Use the missing cubic coefficient to recover a fourth root, then evaluate the coefficient sum at one."
+    ],
+    "1998 HMMT February Algebra, Problem 8": [
+      2100,
+      "Solve a rational inequality with two poles and two quadratic roots, excluding all forbidden endpoints."
+    ],
+    "1998 HMMT February Algebra, Problem 9": [
+      2250,
+      "Substitute reciprocal arguments to get a two-equation linear system for the desired function value."
+    ],
+    "1998 HMMT February Algebra, Problem 10": [
+      2700,
+      "Find and justify the first repeated sum of three positive cubes using a finite bounded search."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 1": [
+      1650,
+      "Reduce large degree angles and use a complementary-angle double-angle product."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 2": [
+      1500,
+      "Reduce to sine zero and count integer multiples of pi in an open interval."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 3": [
+      2000,
+      "Sum an infinite arithmetico-geometric series with a small ratio."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 4": [
+      2250,
+      "Simplify a rational trigonometric expression and keep the excluded angles when determining its range."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 5": [
+      2100,
+      "Factor the coprimality modulus and count forbidden multiples in a truncated interval by inclusion-exclusion."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 6": [
+      2250,
+      "Fill a nonrectangular calendar lattice with right, down and diagonal predecessor counts."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 7": [
+      2400,
+      "Find least attainable scores in each residue class for three denominations, then the two greatest gaps."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 8": [
+      2550,
+      "Successive specializations force a positive binary operation to be the first-coordinate projection."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 9": [
+      2500,
+      "Build six-digit nonzero prefixes satisfying successive divisibility constraints."
+    ],
+    "1998 HMMT February Advanced Topics, Problem 10": [
+      2950,
+      "Track five score-lead states across alternating home games and an extra stopping hazard."
+    ],
+    "1998 HMMT February Geometry, Problem 1": [
+      1450,
+      "Chase a cyclic quadrilateral exterior angle through an intersecting extended side."
+    ],
+    "1998 HMMT February Geometry, Problem 2": [
+      1700,
+      "Equate an outer arc with an inner arc plus two radial connectors at equal walking speed."
+    ],
+    "1998 HMMT February Geometry, Problem 3": [
+      1750,
+      "Maximize the height over a fixed chord and use its central angle; the chord is square root two in the PDF."
+    ],
+    "1998 HMMT February Geometry, Problem 4": [
+      1550,
+      "Conserve drained volume while comparing a square tank cross-section with a circular one."
+    ],
+    "1998 HMMT February Geometry, Problem 5": [
+      2150,
+      "Place a maximal circle in the opposite square corner and solve its external tangency to the removed quarter disk."
+    ],
+    "1998 HMMT February Geometry, Problem 6": [
+      2350,
+      "Use the one-third corner dilation to sum the areas in a branching incircle construction."
+    ],
+    "1998 HMMT February Geometry, Problem 7": [
+      2950,
+      "Pair opposite apex edges through a rectangular-base identity, then use integral side bounds to force the base."
+    ],
+    "1998 HMMT February Geometry, Problem 8": [
+      2450,
+      "Track a straightedge-and-compass construction in a unit circle and recover the exact approximate-pi segment."
+    ],
+    "1998 HMMT February Geometry, Problem 9": [
+      3000,
+      "Use negative homothety between two circles and a tangent power to compute a cross-circle secant product."
+    ],
+    "1998 HMMT February Geometry, Problem 10": [
+      3100,
+      "Unfold an equilateral billiard table into a triangular lattice to count wall hits, the final pocket and total distance."
     ]
   }
 }
