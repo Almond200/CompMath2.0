@@ -6911,6 +6911,446 @@
     "2024 SMT Geometry, Problem 10": [
       3200,
       "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): CT is a symmedian, ACBD harmonic; the Simson line gives the ratio."
+    ],
+    "2011 SMT Calculus, Problem 1": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a root of multiplicity m is a root of the first m - 1 derivatives."
+    ],
+    "2011 SMT Calculus, Problem 2": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): area as a function of the height; set the derivative to zero."
+    ],
+    "2011 SMT Calculus, Problem 3": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): maximise the ratio in theta."
+    ],
+    "2011 SMT Calculus, Problem 4": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): read the coefficient from the product of two Taylor series."
+    ],
+    "2011 SMT Calculus, Problem 5": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the condition gives a linear differential equation; solve with the initial values."
+    ],
+    "2011 SMT Calculus, Problem 6": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): substitute -x and add: the radicals rationalise."
+    ],
+    "2011 SMT Calculus, Problem 7": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): implicit differentiation twice, then the order of vanishing near 0."
+    ],
+    "2011 SMT Calculus, Problem 8": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): x to 1/x pairs arctan x with arctan(1/x)."
+    ],
+    "2011 SMT Calculus, Problem 9": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): differentiate the integral equation to an ordinary one."
+    ],
+    "2011 SMT Calculus, Problem 10": [
+      3200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a Riemann sum becomes a product over roots of unity."
+    ],
+    "2012 SMT Calculus, Problem 1": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): odd parts vanish on a symmetric interval."
+    ],
+    "2012 SMT Calculus, Problem 2": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): take f = 5 sign(sin x)."
+    ],
+    "2012 SMT Calculus, Problem 3": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): u = x^(2/5) gives a rational integral."
+    ],
+    "2012 SMT Calculus, Problem 4": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): minimise the squared distance along the curve."
+    ],
+    "2012 SMT Calculus, Problem 5": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): differentiate g'(x) = 1/f'(g(x)) twice."
+    ],
+    "2012 SMT Calculus, Problem 6": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): take logarithms and apply L'Hopital."
+    ],
+    "2012 SMT Calculus, Problem 7": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): differentiate twice to a differential equation."
+    ],
+    "2012 SMT Calculus, Problem 8": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): x = 2 tan theta; the log tan integral vanishes by symmetry."
+    ],
+    "2012 SMT Calculus, Problem 9": [
+      3100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): logarithm of the superfactorial and its growth."
+    ],
+    "2012 SMT Calculus, Problem 10": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a pointwise inequality that is sharp for a two-valued f."
+    ],
+    "2013 SMT Calculus, Problem 1": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): cancel the common factor x - 3."
+    ],
+    "2013 SMT Calculus, Problem 2": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): evaluate both and solve."
+    ],
+    "2013 SMT Calculus, Problem 3": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): L'Hopital twice fixes b, then a."
+    ],
+    "2013 SMT Calculus, Problem 4": [
+      1800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): substitute w = sqrt x, then integrate by parts."
+    ],
+    "2013 SMT Calculus, Problem 5": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): each factor is a derivative at 0."
+    ],
+    "2013 SMT Calculus, Problem 6": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): sum the geometric series inside the integral."
+    ],
+    "2013 SMT Calculus, Problem 7": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the condition gives a recurrence for derivatives; solve for f."
+    ],
+    "2013 SMT Calculus, Problem 8": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): parametrise by the slope and integrate the area."
+    ],
+    "2013 SMT Calculus, Problem 9": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): divide by a power of cos and substitute tan x."
+    ],
+    "2013 SMT Calculus, Problem 10": [
+      3100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): cos^(2n) concentrates at multiples of pi; sum the spikes."
+    ],
+    "2014 SMT Calculus, Problem 1": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): power rule twice."
+    ],
+    "2014 SMT Calculus, Problem 2": [
+      1300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the tangent line at a passes through the origin."
+    ],
+    "2014 SMT Calculus, Problem 3": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): expected log-happiness as a function of k; maximise."
+    ],
+    "2014 SMT Calculus, Problem 4": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): four symmetric pieces under y = 1 - x^(2/5)."
+    ],
+    "2014 SMT Calculus, Problem 5": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): x to 4 - x swaps the two radicals."
+    ],
+    "2014 SMT Calculus, Problem 6": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): expand the logarithm in powers of 1/x."
+    ],
+    "2014 SMT Calculus, Problem 7": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a fixed point x^L = L must exist; maximise L^(1/L)."
+    ],
+    "2014 SMT Calculus, Problem 8": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): x to -x and add: the denominators cancel."
+    ],
+    "2014 SMT Calculus, Problem 9": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): substitute u = f(x) and integrate by parts."
+    ],
+    "2014 SMT Calculus, Problem 10": [
+      3200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the dilogarithm at 1/2 by its reflection formula."
+    ],
+    "2018 SMT Calculus, Problem 1": [
+      800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): two basic derivatives at 1."
+    ],
+    "2018 SMT Calculus, Problem 2": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): set f(4) = f'(4) and solve."
+    ],
+    "2018 SMT Calculus, Problem 3": [
+      1100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the integrand is 3(x-1)^2."
+    ],
+    "2018 SMT Calculus, Problem 4": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): split at the singular point x = 2."
+    ],
+    "2018 SMT Calculus, Problem 5": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): related rates in a right triangle."
+    ],
+    "2018 SMT Calculus, Problem 6": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): factor the denominator as x^2 sin^2 x."
+    ],
+    "2018 SMT Calculus, Problem 7": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): divide out, then the two pieces combine."
+    ],
+    "2018 SMT Calculus, Problem 8": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the integrand is about x near 0; compare with a simpler integral."
+    ],
+    "2018 SMT Calculus, Problem 9": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): x to pi - x removes the factor x."
+    ],
+    "2018 SMT Calculus, Problem 10": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): integration by parts gives a recurrence for p_n."
+    ],
+    "2019 SMT Calculus, Problem 1": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a power antiderivative."
+    ],
+    "2019 SMT Calculus, Problem 2": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): product rule."
+    ],
+    "2019 SMT Calculus, Problem 3": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): rewrite in terms of sin x and substitute."
+    ],
+    "2019 SMT Calculus, Problem 4": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): each function halves the last; a geometric sum."
+    ],
+    "2019 SMT Calculus, Problem 5": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the circle touches symmetrically about the axis; tangency conditions."
+    ],
+    "2019 SMT Calculus, Problem 6": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): compare orders of vanishing by Taylor series."
+    ],
+    "2019 SMT Calculus, Problem 7": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): in unrotated coordinates the fluid surface is x + y = const."
+    ],
+    "2019 SMT Calculus, Problem 8": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): y = 1/x and L'Hopital on (1+y)^(1/y)."
+    ],
+    "2019 SMT Calculus, Problem 9": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): lateral area as a function of height; related rates."
+    ],
+    "2019 SMT Calculus, Problem 10": [
+      3200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a substitution that maps the interval to itself and pairs the logs."
+    ],
+    "2020 SMT Calculus, Problem 1": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): chain rule."
+    ],
+    "2020 SMT Calculus, Problem 2": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): maximise x times the boundary curve."
+    ],
+    "2020 SMT Calculus, Problem 3": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): area in polar form, one half r^2 dtheta."
+    ],
+    "2020 SMT Calculus, Problem 4": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): odd Chebyshev polynomials are odd functions."
+    ],
+    "2020 SMT Calculus, Problem 5": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): build the sum from e^x by differentiating and multiplying by x."
+    ],
+    "2020 SMT Calculus, Problem 6": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): swap the order of summation over the tails."
+    ],
+    "2020 SMT Calculus, Problem 7": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the logarithmic derivatives telescope."
+    ],
+    "2020 SMT Calculus, Problem 8": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): x^4 - 6x^2 + 25 = (x^2+5)^2 - 16x^2."
+    ],
+    "2020 SMT Calculus, Problem 9": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a_n = 2 cos(pi / 2^(n+1)); expand the cosine."
+    ],
+    "2020 SMT Calculus, Problem 10": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): expand the sines as exponentials; nonzero when signs can sum to zero."
+    ],
+    "2022 SMT Calculus, Problem 1": [
+      900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): differentiate the polynomial and evaluate."
+    ],
+    "2022 SMT Calculus, Problem 2": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): two intersections means tangency: a double root."
+    ],
+    "2022 SMT Calculus, Problem 3": [
+      1700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): count the periods in [0, 1]."
+    ],
+    "2022 SMT Calculus, Problem 4": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): u = sqrt x, then integration by parts."
+    ],
+    "2022 SMT Calculus, Problem 5": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): volume in terms of the net's sides; maximise."
+    ],
+    "2022 SMT Calculus, Problem 6": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): shift to u = x - 1 and read the Taylor coefficient."
+    ],
+    "2022 SMT Calculus, Problem 7": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): six rotated parabolic caps; area by symmetry and integration."
+    ],
+    "2022 SMT Calculus, Problem 8": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the imaginary part of the series for -log(1 - e^i)."
+    ],
+    "2022 SMT Calculus, Problem 9": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the maximum over x is 1 + y^2; then integrate."
+    ],
+    "2022 SMT Calculus, Problem 10": [
+      3100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): f = f''' splits the Taylor series by index mod 3."
+    ],
+    "2023 SMT Calculus, Problem 1": [
+      1000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): implicit differentiation at the point."
+    ],
+    "2023 SMT Calculus, Problem 2": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): compare growth: x = 0 and one more crossing."
+    ],
+    "2023 SMT Calculus, Problem 3": [
+      2100,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): distance along the chord as the angle changes; related rates."
+    ],
+    "2023 SMT Calculus, Problem 4": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): stretch the level curves to circles and integrate by shells."
+    ],
+    "2023 SMT Calculus, Problem 5": [
+      2000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): substitute u = sin x, then integrate by parts."
+    ],
+    "2023 SMT Calculus, Problem 6": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): x to -x and add: the 3^x terms cancel."
+    ],
+    "2023 SMT Calculus, Problem 7": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): an integral equation for the expected bounces from height x."
+    ],
+    "2023 SMT Calculus, Problem 8": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): differentiate the root implicitly at the double-root parameter."
+    ],
+    "2023 SMT Calculus, Problem 9": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the region where the square fits, by integration."
+    ],
+    "2023 SMT Calculus, Problem 10": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): log of the product compared with a sum; Wallis-type limit."
+    ],
+    "2024 SMT Calculus, Problem 1": [
+      1500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): L'Hopital with the fundamental theorem."
+    ],
+    "2024 SMT Calculus, Problem 2": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a cylinder plus a solid of revolution."
+    ],
+    "2024 SMT Calculus, Problem 3": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): differentiate g, then L'Hopital on the remaining term."
+    ],
+    "2024 SMT Calculus, Problem 4": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): related rates with the two ladder constraints."
+    ],
+    "2024 SMT Calculus, Problem 5": [
+      2500,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): conditions on the discriminant and the real part as a region; integrate."
+    ],
+    "2024 SMT Calculus, Problem 6": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the iterates converge pointwise; exchange limit and integral."
+    ],
+    "2024 SMT Calculus, Problem 7": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a Bernoulli-type equation; substitute for the square root."
+    ],
+    "2024 SMT Calculus, Problem 8": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): substitute x = cos u and integrate by parts twice."
+    ],
+    "2024 SMT Calculus, Problem 9": [
+      2900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): integral of an inverse function by Laisant's formula and Fubini."
+    ],
+    "2024 SMT Calculus, Problem 10": [
+      3200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): write the summand as an integral and sum the binomial series."
+    ],
+    "2025 SMT Calculus, Problem 1": [
+      1600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): a convex rate rewards one long session; integrate the rate."
+    ],
+    "2025 SMT Calculus, Problem 2": [
+      1900,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the product of derivatives reduces to a sin 2x substitution."
+    ],
+    "2025 SMT Calculus, Problem 3": [
+      2200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): the critical-point equations form a cyclic system."
+    ],
+    "2025 SMT Calculus, Problem 4": [
+      2300,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): substitute x = u^7 + 6u^5 + 3u^3 + 1."
+    ],
+    "2025 SMT Calculus, Problem 5": [
+      2400,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): bound f(2025) by the fundamental theorem twice."
+    ],
+    "2025 SMT Calculus, Problem 6": [
+      2600,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): only the distance to the centre matters; integrate along the path."
+    ],
+    "2025 SMT Calculus, Problem 7": [
+      2700,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): logarithm of the product; the leading terms telescope."
+    ],
+    "2025 SMT Calculus, Problem 8": [
+      2800,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): arc length from |f'(theta)|."
+    ],
+    "2025 SMT Calculus, Problem 9": [
+      3000,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): partial fractions and the Taylor series of the logarithm."
+    ],
+    "2025 SMT Calculus, Problem 10": [
+      3200,
+      "Author estimate (SMT publishes no solve counts; placed on the collection’s scale by its route, the subject tests running from about an AMC 10 middle problem to a late HMMT February one): spherical triangle area and arc length, then optimise."
     ]
   }
 }
