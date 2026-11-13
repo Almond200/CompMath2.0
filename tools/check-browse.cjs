@@ -44,7 +44,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   await page.mouse.move(2,2);
  }
  // Every rated contest has a chip, HMMT February included, and choosing it redraws the chart.
- assert.deepEqual(await page.locator('.elo-box [data-elo-fam]').allInnerTexts(),['AMC 8','AMC 10','AMC 12','AIME','HMMT February','All contests']);
+ assert.deepEqual(await page.locator('.elo-box [data-elo-fam]').allInnerTexts(),['AMC 8','AMC 10','AMC 12','AIME','HMMT February','HMMT November','All contests']);
  await page.locator('[data-elo-fam="hmmt-february"]').click();assert.match(await page.locator('.elo-note').innerText(),/of HMMT February problems/);assert.equal(await page.locator('[data-elo-fam][aria-pressed="true"]').innerText(),'HMMT February');
  // A column with no problems answers the pointer like any other and opens its range.
  assert.equal(await page.locator('.elo-box .elo-bar').evaluateAll((xs,nb)=>xs.length===nb&&xs.every(x=>x.tagName==='A'&&x.dataset.tip),NB),true);
@@ -71,7 +71,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.match(page.url(),/#\/browse\/topics$/,'opening a branch does not leave the page');
  await page.locator('.tt-name[href="#/browse/topics/geo.tri.special"]').click();await page.locator('.br-group').first().waitFor();
  assert.equal(await page.locator('h2').innerText(),'Special triangles');
- const heads=await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent));assert.deepEqual(heads.slice(0,4),['AMC 8','AMC 10','AMC 12','AIME']);assert(heads.slice(4).every(h=>h==='HMMT February'),'HMMT, when the topic has some, comes after the AIME');
+ const heads=await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent));assert.deepEqual(heads.slice(0,4),['AMC 8','AMC 10','AMC 12','AIME']);assert(heads.slice(4).every(h=>/^HMMT (February|November)$/.test(h)),'HMMT, when the topic has some, comes after the AIME');
  const total=(await page.locator('.br-group-h .br-count').allInnerTexts()).reduce((n,s)=>n+parseInt(s),0);assert.match(await page.locator('.practice-panel-intro').innerText(),new RegExp('^'+total+' problems'));
  const elos=(await page.locator('.br-group').first().locator('.br-elo').allInnerTexts()).map(Number);assert.deepEqual(elos,[...elos].sort((a,b)=>a-b),'easiest first within a contest');
  await page.locator('[data-br-fam="AMC 8"]').click();assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'),'false');assert.equal(await page.locator('.br-group').count(),heads.length-1);
@@ -85,9 +85,9 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const shown=parseInt((await page.locator('.br-band .br-count').innerText()).replace(',',''));
  const expected=await page.evaluate(()=>Object.values(MATH_PROBLEM_RATINGS.ratings).filter(r=>r.elo>=2600&&r.elo<2800).length);assert.equal(shown,expected);
  const years=(await page.locator('.br-group').last().locator('.br-ref').allInnerTexts()).map(s=>+s.slice(0,4));assert.deepEqual(years,[...years].sort((a,b)=>b-a),'newest first within a contest');
- for(const f of ['AMC 8','AMC 10','AMC 12','HMMT February'])await page.locator(`[data-br-fam="${f}"]`).click();
+ for(const f of ['AMC 8','AMC 10','AMC 12','HMMT February','HMMT November'])if(await page.locator(`[data-br-fam="${f}"]`).count())await page.locator(`[data-br-fam="${f}"]`).click();
  assert.deepEqual(await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent)),['AIME']);
- await page.locator('[data-br-fam="AIME"]').click();assert.equal(await page.locator('[data-br-fam][aria-pressed="true"]').count(),5,'switching the last contest off restores all');
+ await page.locator('[data-br-fam="AIME"]').click();assert.equal(await page.locator('[data-br-fam][aria-pressed="true"]').count(),await page.locator('[data-br-fam]').count(),'switching the last contest off restores all');
  const more=page.locator('[data-br-more]').first();if(await more.count()){const g=more.locator('xpath=..');const n=parseInt(await g.locator('.br-count').innerText());await more.click();const grp=page.locator('.br-group').filter({has:page.locator('.br-count',{hasText:new RegExp('^'+n+' ')})}).first();assert.equal(await grp.locator('.br-row').count(),n);
   // A list opened in full offers Show less, which folds it back and keeps its heading on screen.
   const less=grp.locator('[data-br-less]');assert.equal(await less.innerText(),'Show less');assert.equal(await grp.locator('[data-br-more]').count(),0);await less.scrollIntoViewIfNeeded();await less.click();
