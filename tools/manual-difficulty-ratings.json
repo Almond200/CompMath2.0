@@ -48,7 +48,10 @@
     "2007 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2007/feb/geo/problems.pdf",
     "2006 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2006/feb/alg/problems.pdf",
     "2006 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2006/feb/comb/problems.pdf",
-    "2006 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2006/feb/geo/problems.pdf"
+    "2006 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2006/feb/geo/problems.pdf",
+    "2005 HMMT February Algebra": "https://hmmt-archive.s3.amazonaws.com/tournaments/2005/feb/alg/problems.pdf",
+    "2005 HMMT February Combinatorics": "https://hmmt-archive.s3.amazonaws.com/tournaments/2005/feb/comb/problems.pdf",
+    "2005 HMMT February Geometry": "https://hmmt-archive.s3.amazonaws.com/tournaments/2005/feb/geo/problems.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -2170,6 +2173,126 @@
     "2006 HMMT February Geometry, Problem 10": [
       3050,
       "Locate a right-triangle arc midpoint and compare a corner-circle center power in two ways."
+    ],
+    "2005 HMMT February Algebra, Problem 1": [
+      1300,
+      "Split an absolute-value equation at its three breakpoints and deduplicate boundary solutions."
+    ],
+    "2005 HMMT February Algebra, Problem 2": [
+      1950,
+      "Normalize an exponential equation to a strictly decreasing positive function and check existence by its limits."
+    ],
+    "2005 HMMT February Algebra, Problem 3": [
+      1500,
+      "The zero-sum constraint fixes a symmetric quadratic ratio, so its apparent optimization is constant."
+    ],
+    "2005 HMMT February Algebra, Problem 4": [
+      2400,
+      "Combine strict floor lower bounds with reciprocal AM-GM pairs, then check an attainable integer minimum."
+    ],
+    "2005 HMMT February Algebra, Problem 5": [
+      2950,
+      "Start at the largest cyclic label, restrict it by neighboring gcds and check which forced periods fit the circle."
+    ],
+    "2005 HMMT February Algebra, Problem 6": [
+      2550,
+      "Eliminate one coordinate, factor the resulting quartic and count each distinct real intersection only once."
+    ],
+    "2005 HMMT February Algebra, Problem 7": [
+      2850,
+      "Rationalize a radical quotient and minimize two reciprocal expressions with a common equality case."
+    ],
+    "2005 HMMT February Algebra, Problem 8": [
+      2600,
+      "Split a quartic-denominator series into consecutive reciprocal-quadratic differences."
+    ],
+    "2005 HMMT February Algebra, Problem 9": [
+      2650,
+      "Factor a sum of cubes through a sixth-power substitution and finish the small prime factorization."
+    ],
+    "2005 HMMT February Algebra, Problem 10": [
+      2950,
+      "Factor a quartic into radical quadratics and determine the signs before summing absolute root values."
+    ],
+    "2005 HMMT February Combinatorics, Problem 1": [
+      2100,
+      "Find the most damaging balanced response to a binary key and classify the keys that retain a guaranteed score."
+    ],
+    "2005 HMMT February Combinatorics, Problem 2": [
+      1850,
+      "Fix the minimum of a subset so its maximum is forced, then sum the independent interior choices."
+    ],
+    "2005 HMMT February Combinatorics, Problem 3": [
+      2300,
+      "Extend a stopped series to a fixed length and reverse complementary win probabilities to pair opposite winners."
+    ],
+    "2005 HMMT February Combinatorics, Problem 4": [
+      2400,
+      "Fix one permutation of colored balls and use the two incident choices to force the disjoint permutation."
+    ],
+    "2005 HMMT February Combinatorics, Problem 5": [
+      2250,
+      "Restart two geometric scoring runs after simultaneous successes and solve for a strict winner probability."
+    ],
+    "2005 HMMT February Combinatorics, Problem 6": [
+      2250,
+      "Count disjoint failures of the triangle inequality among three ordered die rolls."
+    ],
+    "2005 HMMT February Combinatorics, Problem 7": [
+      2750,
+      "Bound bishop placements by same-color diagonal capacities and exhibit a filling attaining both color bounds."
+    ],
+    "2005 HMMT February Combinatorics, Problem 8": [
+      2800,
+      "Condition a stopped digit process on its current symbol and solve the reduced transition equations."
+    ],
+    "2005 HMMT February Combinatorics, Problem 9": [
+      3100,
+      "Determine the four parity patterns of edge flips that give alternating coins, then count the extra repeated moves."
+    ],
+    "2005 HMMT February Combinatorics, Problem 10": [
+      3550,
+      "Bound a final rank through alternating min-max ternary eliminations and inductively realize every rank between the extremes."
+    ],
+    "2005 HMMT February Geometry, Problem 1": [
+      1250,
+      "Translate a cube volume-edge-area identity into a repeated quadratic factor and recover its body diagonal."
+    ],
+    "2005 HMMT February Geometry, Problem 2": [
+      2050,
+      "A midplane between opposite tetrahedron edges cuts a square, adding one cross-section to half the original surface."
+    ],
+    "2005 HMMT February Geometry, Problem 3": [
+      2100,
+      "Use centroid distances to locate a constant base and height inside a rectangle."
+    ],
+    "2005 HMMT February Geometry, Problem 4": [
+      2350,
+      "Equal chords on the three side segments force equal center-to-side distances and identify an incenter angle."
+    ],
+    "2005 HMMT February Geometry, Problem 5": [
+      2450,
+      "Relate an axis-aligned smaller cube to the circumsphere through the center of its far face."
+    ],
+    "2005 HMMT February Geometry, Problem 6": [
+      2850,
+      "Express the folded overlap in two height ranges and optimize the resulting quadratic area."
+    ],
+    "2005 HMMT February Geometry, Problem 7": [
+      3100,
+      "Compute an orthogonal tetrahedron altitude from a plane equation and compare two volume expressions."
+    ],
+    "2005 HMMT February Geometry, Problem 8": [
+      2650,
+      "An inward parallel offset reduces the inradius by a fixed amount; compare the similar triangle areas."
+    ],
+    "2005 HMMT February Geometry, Problem 9": [
+      3100,
+      "Build an auxiliary tangent intersection through a midpoint, then compute its height by similar triangles."
+    ],
+    "2005 HMMT February Geometry, Problem 10": [
+      3550,
+      "Use contact-point homotheties to align two diameter tangencies, then prove a cyclic relation and chase the required angle."
     ]
   }
 }
