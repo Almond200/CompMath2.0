@@ -2430,6 +2430,12 @@ The 2009–2014 book also holds ARML Local, ARML's own local contest; its Indivi
 
 The General test (25 problems in 110 minutes; 22 in 2021) is SMT's individual round for students who take no subject tests. It reuses subject-test problems: 63 of the 297 are word for word the same as a subject-test problem of that year, found by comparing statements (`difflib` ratio above 0.85 on the first 250 characters), plus 2023 #12 and the 2025 matches, done by hand because those PDFs extract poorly. A twin copies its subject-test problem's cards, nodes and rating, and its rating reason names the twin; like the 2011 HMMT two-subject papers, twins are counted once per paper in contest figures. 2025's General problems were read from the solutions PDF, whose text extracts cleanly where the problems PDF does not. Six General problems cite no card: 2012 #1, 2013 #1 and #2, 2014 #2 and 2025 #1 are one-step word or substitution problems, and 2025 #9 (counting the equations students build term by term) has no fitting card. No new node or card was needed.
 
+## UMD HSMC Part I
+
+### Sources and coverage (recorded 2026-11-13)
+
+`mathcomp.math.umd.edu/past-contests/` posts Part I (25 multiple-choice questions, 75 minutes) and its solutions for 1997 to 2026, except 2020 (no contest) and 1997 (no solutions); 2003's paper is `2003p1.pdf`. The files sit in different upload folders, so `UMD_FILES` in `js/app.js` lists each year's exact path; the competition's addresses redirect to the university's file host and load. Part II is proof-based and is not added. The 1997 and 1998 papers extract as garbled text (fonts without a character map), so they were read from page images; 2002, 2001 and 2000 have solution files whose text does not split by problem, so those years were filed from the statements and the answers. Part I is a broad test written for every high-school level: ratings run from 700 (an easy AMC 10 question) to about 2400. 22 problems cite no card (one-step arithmetic or logic questions). No new node or card was needed, and no source error was noticed.
+
 ## Duke Math Meet
 
 ### Sources and coverage (recorded 2026-11-13)
