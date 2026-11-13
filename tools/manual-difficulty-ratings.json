@@ -17635,6 +17635,646 @@
     "2012 Lehigh Math Contest, Problem 40": [
       2620,
       "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): regions inside the circle: 1 + C(8, 2) + C(8, 4)."
+    ],
+    "2011 Lehigh Math Contest, Problem 1": [
+      600,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 1/3 + 1/4 = 7/12."
+    ],
+    "2011 Lehigh Math Contest, Problem 2": [
+      600,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 24 split into three cubes of volume 8."
+    ],
+    "2011 Lehigh Math Contest, Problem 3": [
+      680,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the altitude to 10 is 12."
+    ],
+    "2011 Lehigh Math Contest, Problem 4": [
+      680,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): two perimeters in the two side lengths."
+    ],
+    "2011 Lehigh Math Contest, Problem 5": [
+      840,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the shadow triangles are similar: 20/5 = (x + 8)/8."
+    ],
+    "2011 Lehigh Math Contest, Problem 6": [
+      1330,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the total profit factors as people times share."
+    ],
+    "2011 Lehigh Math Contest, Problem 7": [
+      680,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): half the chord from the right triangle with the radius."
+    ],
+    "2011 Lehigh Math Contest, Problem 8": [
+      1460,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): cover every amount below a dollar with the fewest coins."
+    ],
+    "2011 Lehigh Math Contest, Problem 9": [
+      840,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): x(x + 2)(x - 1) >= 0."
+    ],
+    "2011 Lehigh Math Contest, Problem 10": [
+      1090,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): equal angles of incidence and reflection at each line."
+    ],
+    "2011 Lehigh Math Contest, Problem 11": [
+      1150,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 2^n mod 4 settles; mod 25 the order of 2 is 20."
+    ],
+    "2011 Lehigh Math Contest, Problem 12": [
+      1460,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the remainder ax + b has values 2 at 1 and 1 at 2."
+    ],
+    "2011 Lehigh Math Contest, Problem 13": [
+      1780,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 1/(sqrt 9000001 + 3000) is just below 1/6000."
+    ],
+    "2011 Lehigh Math Contest, Problem 14": [
+      940,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 80 = 2^4 * 5: the factors of 5 limit n to 4."
+    ],
+    "2011 Lehigh Math Contest, Problem 15": [
+      680,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 2b^2 + 6b + 5 = 81 + 9b + 1."
+    ],
+    "2011 Lehigh Math Contest, Problem 16": [
+      1150,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): area grows linearly, so the diameter squared does."
+    ],
+    "2011 Lehigh Math Contest, Problem 17": [
+      1430,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): each inscribed angle is half its arc; the four arcs total 360 less the quadrilateral's."
+    ],
+    "2011 Lehigh Math Contest, Problem 18": [
+      1460,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): count the digits used across 1 to 5000."
+    ],
+    "2011 Lehigh Math Contest, Problem 19": [
+      1150,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): f(f(x)) = x is a quadratic after clearing."
+    ],
+    "2011 Lehigh Math Contest, Problem 20": [
+      1090,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): choose the term with x^6."
+    ],
+    "2011 Lehigh Math Contest, Problem 21": [
+      1750,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): (x - 1)(x - 2) divisible by 7 and 13: count residues."
+    ],
+    "2011 Lehigh Math Contest, Problem 22": [
+      1150,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): r + (-r) + s = -alpha/3 and the other relations."
+    ],
+    "2011 Lehigh Math Contest, Problem 23": [
+      1650,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): for small t, sin t is just below t; compare the powers and compositions."
+    ],
+    "2011 Lehigh Math Contest, Problem 24": [
+      1090,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the sum of the perpendiculars is the altitude."
+    ],
+    "2011 Lehigh Math Contest, Problem 25": [
+      840,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): exponents of 2 and 3 must be multiples of the root orders."
+    ],
+    "2011 Lehigh Math Contest, Problem 26": [
+      1430,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): people split evenly: a binomial distribution of paths per level."
+    ],
+    "2011 Lehigh Math Contest, Problem 27": [
+      1730,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 6! colourings in orbits of 24 rotations."
+    ],
+    "2011 Lehigh Math Contest, Problem 28": [
+      1200,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): count paths with the allowed steps."
+    ],
+    "2011 Lehigh Math Contest, Problem 29": [
+      1460,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): tan of the difference of two angles of elevation."
+    ],
+    "2011 Lehigh Math Contest, Problem 30": [
+      1750,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): ab = 5c and a + b + c = 30 with a^2 + b^2 = c^2."
+    ],
+    "2011 Lehigh Math Contest, Problem 31": [
+      1460,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): exterior angles of 30 except one, summing to 360."
+    ],
+    "2011 Lehigh Math Contest, Problem 32": [
+      1830,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the car shuttles; everyone arrives together."
+    ],
+    "2011 Lehigh Math Contest, Problem 33": [
+      1750,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the cubic factors; one factor must be +-1."
+    ],
+    "2011 Lehigh Math Contest, Problem 34": [
+      1650,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): a_n = F a_1 + F a_2; maximize the steps before 81."
+    ],
+    "2011 Lehigh Math Contest, Problem 35": [
+      1730,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the values are symmetric about 2: p is a quadratic in (x - 2)^2."
+    ],
+    "2011 Lehigh Math Contest, Problem 36": [
+      2070,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the centres form a tetrahedron of edge 2; add 1 to its circumradius."
+    ],
+    "2011 Lehigh Math Contest, Problem 37": [
+      2250,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): pair n with 1000 - n so each pair's floors sum to a fixed number less a correction."
+    ],
+    "2011 Lehigh Math Contest, Problem 38": [
+      2040,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): D is the arc midpoint; Ptolemy with AD = DC."
+    ],
+    "2011 Lehigh Math Contest, Problem 39": [
+      2460,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): subtract distributions breaking the upper limits."
+    ],
+    "2011 Lehigh Math Contest, Problem 40": [
+      2460,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): (alpha - beta)^2 = 8p + 4; express the ratio in p and solve."
+    ],
+    "2010 Lehigh Math Contest, Problem 1": [
+      630,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): add three unit fractions."
+    ],
+    "2010 Lehigh Math Contest, Problem 2": [
+      600,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): a 5-12-13 triangle scaled by 3."
+    ],
+    "2010 Lehigh Math Contest, Problem 3": [
+      630,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the numerator's roots, away from x = -1."
+    ],
+    "2010 Lehigh Math Contest, Problem 4": [
+      890,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 1.2 * 0.8 = 0.96."
+    ],
+    "2010 Lehigh Math Contest, Problem 5": [
+      1270,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): digit sums 6 and 12 and 18 among two-digit numbers."
+    ],
+    "2010 Lehigh Math Contest, Problem 6": [
+      630,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the crossing point splits the height 1:2."
+    ],
+    "2010 Lehigh Math Contest, Problem 7": [
+      790,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): substitute 2x - 1 into x^2 + 3."
+    ],
+    "2010 Lehigh Math Contest, Problem 8": [
+      1230,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): each m with m^3 < 10^9 + 8 gives one n."
+    ],
+    "2010 Lehigh Math Contest, Problem 9": [
+      890,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the best meeting point is a median in each coordinate."
+    ],
+    "2010 Lehigh Math Contest, Problem 10": [
+      1300,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 315 = 3^2 5 7 has 12 divisors, 6 pairs."
+    ],
+    "2010 Lehigh Math Contest, Problem 11": [
+      890,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): halving keeps the ratio when it is sqrt 2."
+    ],
+    "2010 Lehigh Math Contest, Problem 12": [
+      1500,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): common tangents to circles of radii 2 and 3 with centres 6 apart."
+    ],
+    "2010 Lehigh Math Contest, Problem 13": [
+      1630,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): evaluate at 0, 1, -1 to fix the quadratic remainder."
+    ],
+    "2010 Lehigh Math Contest, Problem 14": [
+      1300,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 1 - (3/4)^4."
+    ],
+    "2010 Lehigh Math Contest, Problem 15": [
+      1300,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): abc = 7(a + b + c): 7 divides one variable; bound the rest."
+    ],
+    "2010 Lehigh Math Contest, Problem 16": [
+      1230,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): exterior angles 3:5:6 of 360 give the interior angles."
+    ],
+    "2010 Lehigh Math Contest, Problem 17": [
+      1540,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): write the index in binary and read the digits in base 3."
+    ],
+    "2010 Lehigh Math Contest, Problem 18": [
+      1300,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): AD^2 - DC^2 = AB^2 - BC^2."
+    ],
+    "2010 Lehigh Math Contest, Problem 19": [
+      1860,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): square, isolate, and square again; check each candidate."
+    ],
+    "2010 Lehigh Math Contest, Problem 20": [
+      1230,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the overlap is a rhombus; its side from a right triangle."
+    ],
+    "2010 Lehigh Math Contest, Problem 21": [
+      1360,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): set up the rates from the pairwise conditions."
+    ],
+    "2010 Lehigh Math Contest, Problem 22": [
+      1390,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): each set of distinct digits gives one ascending number."
+    ],
+    "2010 Lehigh Math Contest, Problem 23": [
+      1450,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the minimal polynomial with both conjugate pairs has degree 4."
+    ],
+    "2010 Lehigh Math Contest, Problem 24": [
+      1570,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): tan of the difference of the two sides' slopes."
+    ],
+    "2010 Lehigh Math Contest, Problem 25": [
+      1330,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 19999 = -1 mod 10000, so n = -2010 mod 10000."
+    ],
+    "2010 Lehigh Math Contest, Problem 26": [
+      1790,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): half-diagonals 5 and 6 with the area fixing the angle."
+    ],
+    "2010 Lehigh Math Contest, Problem 27": [
+      1930,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the median of row sums equals the median of column sums in a symmetric count."
+    ],
+    "2010 Lehigh Math Contest, Problem 28": [
+      1390,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): stop or continue: compare the expected gain of opening another door."
+    ],
+    "2010 Lehigh Math Contest, Problem 29": [
+      1680,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 4(x^2 - 5x - 1) = (2x - 5)^2 - 29: factor 29."
+    ],
+    "2010 Lehigh Math Contest, Problem 30": [
+      1390,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): .9d5 repeating equals 9d5/999, so n divides 999 * 8/10."
+    ],
+    "2010 Lehigh Math Contest, Problem 31": [
+      1590,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): sum the digit products by base-5 blocks."
+    ],
+    "2010 Lehigh Math Contest, Problem 32": [
+      1390,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the six pair sums add to three times the total."
+    ],
+    "2010 Lehigh Math Contest, Problem 33": [
+      2170,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): consecutive values differ by at most 1 up to n = 1005, then every value is new."
+    ],
+    "2010 Lehigh Math Contest, Problem 34": [
+      1450,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 2^29 mod 9 gives the digit sum mod 9; the missing digit follows."
+    ],
+    "2010 Lehigh Math Contest, Problem 35": [
+      1810,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): x^3 = 18 - 3x, whose real root is 3."
+    ],
+    "2010 Lehigh Math Contest, Problem 36": [
+      1770,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the runner's trip there and back against the army's motion."
+    ],
+    "2010 Lehigh Math Contest, Problem 37": [
+      2360,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): rotate about C by 90 degrees: CP and CP' make a right isosceles triangle."
+    ],
+    "2010 Lehigh Math Contest, Problem 38": [
+      2040,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): test the neighbours of 3/7 with denominators up to 99."
+    ],
+    "2010 Lehigh Math Contest, Problem 39": [
+      2250,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): bound the products by the sums; few cases remain."
+    ],
+    "2010 Lehigh Math Contest, Problem 40": [
+      2250,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): reflect in the diameter to use the bisector at A."
+    ],
+    "2009 Lehigh Math Contest, Problem 1": [
+      590,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): (6 + 4 + 3)/12."
+    ],
+    "2009 Lehigh Math Contest, Problem 2": [
+      1110,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): one quart of alcohol in four."
+    ],
+    "2009 Lehigh Math Contest, Problem 3": [
+      1550,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): total distance over total time, not the average of speeds."
+    ],
+    "2009 Lehigh Math Contest, Problem 4": [
+      1310,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the hypotenuse is a diameter."
+    ],
+    "2009 Lehigh Math Contest, Problem 5": [
+      1630,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): area grows with the square of the diameter."
+    ],
+    "2009 Lehigh Math Contest, Problem 6": [
+      1280,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): test 91 to 99 for small factors."
+    ],
+    "2009 Lehigh Math Contest, Problem 7": [
+      1150,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): substitute and simplify the fraction."
+    ],
+    "2009 Lehigh Math Contest, Problem 8": [
+      1390,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): each circle has half the previous radius; areas scale by 1/4."
+    ],
+    "2009 Lehigh Math Contest, Problem 9": [
+      1570,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 99 - 33 - 14 + 4."
+    ],
+    "2009 Lehigh Math Contest, Problem 10": [
+      1740,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): digit sums and alternating sums for the remainder."
+    ],
+    "2009 Lehigh Math Contest, Problem 11": [
+      1810,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): PB = BC makes triangle PBC isosceles with apex 135 - 60."
+    ],
+    "2009 Lehigh Math Contest, Problem 12": [
+      1300,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 156 = 4 * 3 * 13: check b, the digit sum and 13."
+    ],
+    "2009 Lehigh Math Contest, Problem 13": [
+      1420,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 480/n - 480/(n + 2) = 1."
+    ],
+    "2009 Lehigh Math Contest, Problem 14": [
+      1820,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): n = 1000m + r with m^3 = n."
+    ],
+    "2009 Lehigh Math Contest, Problem 15": [
+      2060,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 16!/(2^8 8!)."
+    ],
+    "2009 Lehigh Math Contest, Problem 16": [
+      2450,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): complement each subset: sums above and below 85.5 pair up."
+    ],
+    "2009 Lehigh Math Contest, Problem 17": [
+      1930,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): reduce mod 3 and mod 7 separately."
+    ],
+    "2009 Lehigh Math Contest, Problem 18": [
+      2090,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the new roots' sum is d^2 - 2e."
+    ],
+    "2009 Lehigh Math Contest, Problem 19": [
+      1950,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the incircle's radius is half the height."
+    ],
+    "2009 Lehigh Math Contest, Problem 20": [
+      1910,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the divisor divides the differences 42 and 63."
+    ],
+    "2009 Lehigh Math Contest, Problem 21": [
+      2010,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): compare the chances from the two modified decks."
+    ],
+    "2009 Lehigh Math Contest, Problem 22": [
+      2040,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): Fibonacci-like counts with step 8 forbidden."
+    ],
+    "2009 Lehigh Math Contest, Problem 23": [
+      1970,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): crossings correspond to choices of two upper and two lower points."
+    ],
+    "2009 Lehigh Math Contest, Problem 24": [
+      1920,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the law of cosines at A with the two linear conditions."
+    ],
+    "2009 Lehigh Math Contest, Problem 25": [
+      1930,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the six two-digit numbers sum to 22(a + b + c)."
+    ],
+    "2009 Lehigh Math Contest, Problem 26": [
+      1700,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): x^3 = 5x - 2 factors with root 2; check the others' domain."
+    ],
+    "2009 Lehigh Math Contest, Problem 27": [
+      1960,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): remove the three tunnels, adding back their shared centre."
+    ],
+    "2009 Lehigh Math Contest, Problem 28": [
+      2200,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): find AB, then the median formula."
+    ],
+    "2009 Lehigh Math Contest, Problem 29": [
+      2080,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): in s = x + y and p = xy the equations become linear."
+    ],
+    "2009 Lehigh Math Contest, Problem 30": [
+      2490,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 1/(n(n+1)(n+2)) as half a difference."
+    ],
+    "2009 Lehigh Math Contest, Problem 31": [
+      2180,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): two lattice points on the circle would make the irrational centre rational."
+    ],
+    "2009 Lehigh Math Contest, Problem 32": [
+      2000,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the angle constraints fix the hexagon's shape."
+    ],
+    "2009 Lehigh Math Contest, Problem 33": [
+      2450,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): AE from the triangle formed with the fixed angles."
+    ],
+    "2009 Lehigh Math Contest, Problem 34": [
+      2010,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 525 = 21 * 25: sqrt x and sqrt y are multiples of sqrt 21."
+    ],
+    "2009 Lehigh Math Contest, Problem 35": [
+      2720,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): square: sin^2(theta/2) relates to cos theta."
+    ],
+    "2009 Lehigh Math Contest, Problem 36": [
+      2580,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): reflect Q across the axis; the difference is at most PQ'."
+    ],
+    "2009 Lehigh Math Contest, Problem 37": [
+      2830,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): masses at A, B, C from the two ratios."
+    ],
+    "2009 Lehigh Math Contest, Problem 38": [
+      2450,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): pair 2000 * 2017 and 2008 * 2009: the product plus 1296 is a square."
+    ],
+    "2009 Lehigh Math Contest, Problem 39": [
+      2580,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): ABCD is cyclic with diameter BD = 25; integer legs from triples, AC by Ptolemy."
+    ],
+    "2009 Lehigh Math Contest, Problem 40": [
+      2900,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): divide by x^3 and set y = x + 1/x."
+    ],
+    "2008 Lehigh Math Contest, Problem 1": [
+      810,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 1/(1/3 - 1/4) = 12."
+    ],
+    "2008 Lehigh Math Contest, Problem 2": [
+      1140,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 1.1^2 = 1.21."
+    ],
+    "2008 Lehigh Math Contest, Problem 3": [
+      1140,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the altitude to 6 is 4."
+    ],
+    "2008 Lehigh Math Contest, Problem 4": [
+      1360,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the total of five scores must land in the C range."
+    ],
+    "2008 Lehigh Math Contest, Problem 5": [
+      1900,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the cube's diagonal is the sphere's diameter: s = 2/sqrt 3."
+    ],
+    "2008 Lehigh Math Contest, Problem 6": [
+      1610,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 9 consecutive pairs out of C(10, 2)."
+    ],
+    "2008 Lehigh Math Contest, Problem 7": [
+      1430,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 1/sin 20 is largest since sin 20 is smallest of the six."
+    ],
+    "2008 Lehigh Math Contest, Problem 8": [
+      1580,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the even function crosses 5 once on each side."
+    ],
+    "2008 Lehigh Math Contest, Problem 9": [
+      2020,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 104060401 = 101^4."
+    ],
+    "2008 Lehigh Math Contest, Problem 10": [
+      2080,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): square the difference: 38 - 2 sqrt(361 - 297)."
+    ],
+    "2008 Lehigh Math Contest, Problem 11": [
+      1540,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): S_n alternates between (n + 1)/2 and -n/2; pair consecutive terms."
+    ],
+    "2008 Lehigh Math Contest, Problem 12": [
+      1940,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): opposite subrectangles have equal products of areas."
+    ],
+    "2008 Lehigh Math Contest, Problem 13": [
+      2140,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): x^2 = 3y and 2y = x + 9."
+    ],
+    "2008 Lehigh Math Contest, Problem 14": [
+      1830,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the range is the open interval (0, 6)."
+    ],
+    "2008 Lehigh Math Contest, Problem 15": [
+      1410,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): ACE covers half the hexagon."
+    ],
+    "2008 Lehigh Math Contest, Problem 16": [
+      1750,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): BC = x with the 45-degree and 30-degree triangles: x sqrt 3 - x = 2."
+    ],
+    "2008 Lehigh Math Contest, Problem 17": [
+      1610,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): count products of two digits by their units digit."
+    ],
+    "2008 Lehigh Math Contest, Problem 18": [
+      1490,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): x + y <= xy means 1/x + 1/y <= 1, so x + y >= 4."
+    ],
+    "2008 Lehigh Math Contest, Problem 19": [
+      2090,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): k/(k + 1)! = 1/k! - 1/(k + 1)!."
+    ],
+    "2008 Lehigh Math Contest, Problem 20": [
+      1330,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the overlap is always a quarter of the square, by rotation."
+    ],
+    "2008 Lehigh Math Contest, Problem 21": [
+      2190,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): AC/BC = sin B/sin A from the two tangents."
+    ],
+    "2008 Lehigh Math Contest, Problem 22": [
+      1690,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): n + r(n) = 11(a + b)."
+    ],
+    "2008 Lehigh Math Contest, Problem 23": [
+      2050,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): (x^2 - y)(x^2 + y) = 71."
+    ],
+    "2008 Lehigh Math Contest, Problem 24": [
+      1610,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 19 * 16/2."
+    ],
+    "2008 Lehigh Math Contest, Problem 25": [
+      1810,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): n! + 3 mod small numbers rules out large n."
+    ],
+    "2008 Lehigh Math Contest, Problem 26": [
+      1730,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the triangle of centres less three 60-degree sectors."
+    ],
+    "2008 Lehigh Math Contest, Problem 27": [
+      2100,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): add the ant's velocity to the train's."
+    ],
+    "2008 Lehigh Math Contest, Problem 28": [
+      1960,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): n(n + 1)/2 = d * 11...1: search the equidigit candidates."
+    ],
+    "2008 Lehigh Math Contest, Problem 29": [
+      2230,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): exactly the numbers that are 2 mod 4."
+    ],
+    "2008 Lehigh Math Contest, Problem 30": [
+      2160,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): case on where the two points fall."
+    ],
+    "2008 Lehigh Math Contest, Problem 31": [
+      2250,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): p - 1 vanishes at 2, -2, -3; use p(1) = p(-1) to fit the rest."
+    ],
+    "2008 Lehigh Math Contest, Problem 32": [
+      2140,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): each side of XYZ is a hypotenuse in a face; the triangle is equilateral or nearly so."
+    ],
+    "2008 Lehigh Math Contest, Problem 33": [
+      2270,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): run the recurrence backwards from the given terms."
+    ],
+    "2008 Lehigh Math Contest, Problem 34": [
+      2330,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): each smaller circle is scaled by 1/3 toward the vertex."
+    ],
+    "2008 Lehigh Math Contest, Problem 35": [
+      2050,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): gcd(a_m, a_n) = a_gcd(m, n)."
+    ],
+    "2008 Lehigh Math Contest, Problem 36": [
+      2450,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): complete squares: the sum of squares must be less than 1."
+    ],
+    "2008 Lehigh Math Contest, Problem 37": [
+      2200,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): the condition makes n a block of a repeating decimal."
+    ],
+    "2008 Lehigh Math Contest, Problem 38": [
+      2180,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): 234 = 2 * 3^2 * 13 and 220 = 2^2 5 11: factor and match."
+    ],
+    "2008 Lehigh Math Contest, Problem 39": [
+      2370,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): f(n) + 1 = (a + 1)(b + 1)(c + 1)."
+    ],
+    "2008 Lehigh Math Contest, Problem 40": [
+      2650,
+      "Author estimate (Lehigh posts how many students solved each problem; placed on the collection’s scale from that share and the route, the test running from an early AMC 10 problem to an early AIME one): coordinates for E, F, G, H and the shoelace formula."
     ]
   }
 }
