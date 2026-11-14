@@ -12,7 +12,7 @@
     .toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');
   function build(tree, problems, eligible = () => true) {
     const nodes = new Map(tree.map(([id, name, parent]) => [id,
-      { id, name, label: label(name), parent, children: [], path: [], problems: new Map() }]));
+      { id, name, label: label(name), parent, children: [], path: [], problems: new Map(), candidates: [] }]));
     for (const n of nodes.values()) if (n.parent) nodes.get(n.parent).children.push(n.id);
     for (const n of nodes.values()) {
       let p = n;
@@ -34,13 +34,14 @@
     // Mixed (owner, 2026-11-11): not a tree node, but the first Practice choice, drawing from
     // every eligible problem in every subject.
     const mixed = { id: 'mixed', name: 'Mixed', label: 'Mixed', parent: null, children: [],
-      path: ['Mixed'], breadcrumb: 'Mixed', problems: new Map(), mixed: true };
+      path: ['Mixed'], breadcrumb: 'Mixed', problems: new Map(), candidates: [], mixed: true };
     for (const p of problems) {
       if (!eligible(p)) continue;
+      mixed.candidates.push(p);
       if (!mixed.problems.has(identity.get(p.ref))) mixed.problems.set(identity.get(p.ref), p);
       for (const id of p.tree || []) {
         let n = nodes.get(id);
-        while (n) { if (!n.problems.has(identity.get(p.ref))) n.problems.set(identity.get(p.ref), p); n = nodes.get(n.parent); }
+        while (n) { n.candidates.push(p); if (!n.problems.has(identity.get(p.ref))) n.problems.set(identity.get(p.ref), p); n = nodes.get(n.parent); }
       }
     }
     nodes.set(mixed.id, mixed);
@@ -71,7 +72,15 @@
       }).filter(r => Number.isFinite(r.rank)).sort((a, b) => a.rank - b.rank || a.order - b.order)
         .slice(0, limit).map(r => r.n);
     }
-    return { nodes, roots, resolve, search };
+    // Filter contests before choosing the representative of a shared AMC 10/12 problem.
+    // Otherwise switching AMC 10 off can incorrectly lose its still-selected AMC 12 twin.
+    function unique(pool) {
+      const chosen = new Map();
+      for (const p of pool) if (!chosen.has(identity.get(p.ref))) chosen.set(identity.get(p.ref), p);
+      return [...chosen.values()];
+    }
+    const select = (id, predicate = () => true) => unique((nodes.get(id)?.candidates || []).filter(predicate));
+    return { nodes, roots, resolve, search, unique, select };
   }
   const api = { build, label };
   if (typeof module !== 'undefined') module.exports = api;
