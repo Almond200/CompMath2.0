@@ -39851,6 +39851,106 @@
     "2015 Cayley Contest, Problem 25": [
       1000,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with base a and height h, the three distances give a^2 h^2 expressed as -(a^2 - 104)^2/2 + 4600, at most 4600: area sqrt 4600 = 67.82."
+    ],
+    "2014 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2000 - 80 + 200 - 120 = 2000."
+    ],
+    "2014 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 24 = 6x: x = 4."
+    ],
+    "2014 Cayley Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the angle in the triangle opposite the 40 is 40, so 40 + 60 + x = 180: x = 80."
+    ],
+    "2014 Cayley Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): read the graph: 3 degrees again at 9 p.m."
+    ],
+    "2014 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2n = 11, so 2n - 3 = 8."
+    ],
+    "2014 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 5/2 = 2.5 < 3 < sqrt 10, which is about 3.16."
+    ],
+    "2014 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 100 times 1.2 times 1.5 = 180."
+    ],
+    "2014 Cayley Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): PR = sqrt(26^2 - 10^2) = 24: area 120."
+    ],
+    "2014 Cayley Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): Amy > Carla > Eric > Dan > Bob: Bob."
+    ],
+    "2014 Cayley Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): undo each step: 32 - 16 = 16, times 2 is 32, plus 8 is 40."
+    ],
+    "2014 Cayley Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a negative slope and a positive intercept: y = -2x + 3."
+    ],
+    "2014 Cayley Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (2y - y)(4y + y) = 5y^2."
+    ],
+    "2014 Cayley Contest, Problem 13": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): while Erika makes 9, Nick makes 6 and Sam 18: 33."
+    ],
+    "2014 Cayley Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 300 GB is 307200 MB: 7200 MB are left."
+    ],
+    "2014 Cayley Contest, Problem 15": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the second row gives the triangle 6, the first the heart 7, the fourth and third rows the other symbols: 5."
+    ],
+    "2014 Cayley Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (14 + 16 + 12 + 8)/40 = 50/40 = 1.25."
+    ],
+    "2014 Cayley Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the radius is 6, so each quarter arc is 3 pi; the boundary is three arcs and two radii: 9 pi + 12."
+    ],
+    "2014 Cayley Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with t 2-cent stamps, 10t 1-cent and f 5-cent: 12t + 5f = 100 gives t = 5, f = 8: 5 + 50 + 8 = 63."
+    ],
+    "2014 Cayley Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): of the 10 pairs, the 4 that include 0 give 0: 2/5."
+    ],
+    "2014 Cayley Contest, Problem 20": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the layer sum is 1000w + 200x + 30y + 4z = 2014: 1471, digit sum 13."
+    ],
+    "2014 Cayley Contest, Problem 21": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): drop from Q to R on the bottom: PQ^2 = PR^2 + RQ^2 with PR^2 = PS^2 + SR^2, counting cube edges along each leg: sqrt 26."
+    ],
+    "2014 Cayley Contest, Problem 22": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the thousands and tens digits are local peaks; place 9 and then the rest: 16 numbers."
+    ],
+    "2014 Cayley Contest, Problem 23": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): B ends on the circle of radius 10 about C, and BA < CA = 10 for B within 60 degrees of A on either side: 120/360 = 1/3."
+    ],
+    "2014 Cayley Contest, Problem 24": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): S(n + 4) = S(n) when none of n + 1, ..., n + 4 is a prime power; counting such n up to 100 gives 11."
+    ],
+    "2014 Cayley Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the centre is (4 - p/2, p/2), so r^2 = p^2/2 - 4p + 16, and p = 4 + sqrt(2r^2 - 16) or 4 - sqrt(2r^2 - 16); counting integer r with p in (0, 100): 66."
     ]
   }
 }
