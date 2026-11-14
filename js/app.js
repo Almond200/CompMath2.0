@@ -2917,7 +2917,7 @@
   // (owner, 2026-10-31): the contest's level plus the place in its paper. The offsets say roughly
   // where each contest starts against the others (an early AIME problem is about as hard as a
   // late AMC 12 one); they order a list, they are not a rating.
-  const FAM_LEVEL = { "AMC 8": 0, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "ARML": 1.8, "ARML Local": 1.2, "SMT": 1.9, "Duke Math Meet": 1.5, "UMD HSMC": 1.0, "CMIMC": 2.0, "Math Prize for Girls": 1.4, "MMATHS": 1.3, "Girls in Math at Yale": 1.0, "Lehigh": 0.9, "Utah State Math Contest": 0.8, "BMT": 2.2, "PUMaC Division A": 2.2, "PUMaC Division B": 1.9, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
+  const FAM_LEVEL = { "AMC 8": 0, "MATHCOUNTS Chapter": 0.25, "MATHCOUNTS State": 0.5, "MATHCOUNTS National": 0.8, "MBMT Lower": 0.2, "MBMT Upper": 0.55, "Calgary Junior Math Contest": 0.35, "Columbus State Tournament": 1.1, "Fermat Contest": 0.75, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "ARML": 1.8, "ARML Local": 1.2, "SMT": 1.9, "Duke Math Meet": 1.5, "UMD HSMC": 1.0, "CMIMC": 2.0, "Math Prize for Girls": 1.4, "MMATHS": 1.3, "Girls in Math at Yale": 1.0, "Lehigh": 0.9, "Utah State Math Contest": 0.8, "BMT": 2.2, "PUMaC Division A": 2.2, "PUMaC Division B": 1.9, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
   function difficultyScore(p) { return (FAM_LEVEL[p.fam] != null ? FAM_LEVEL[p.fam] : 2) + paperPos(p); }
   // Contest profile (rebuilt 2026-11-11, now that every problem has a rating and a place in the
   // topic tree): a strip of headline figures, then label-and-value rows. Everything is computed
@@ -3173,7 +3173,15 @@
     "Utah State Math Contest": "https://weber.edu/statemathcontest/exams.html",
     "BMT": "https://berkeley.mt/archives/bmt/",
     "PUMaC Division A": "https://pumac.princeton.edu/archives",
-    "PUMaC Division B": "https://pumac.princeton.edu/archives"
+    "PUMaC Division B": "https://pumac.princeton.edu/archives",
+    "MATHCOUNTS Chapter": "https://www.mathcounts.org/pastcompetition",
+    "MATHCOUNTS State": "https://www.mathcounts.org/pastcompetition",
+    "MATHCOUNTS National": "https://www.mathcounts.org/pastcompetition",
+    "MBMT Lower": "https://mbmt.mbhs.edu/archive",
+    "MBMT Upper": "https://mbmt.mbhs.edu/archive",
+    "Calgary Junior Math Contest": "https://science.ucalgary.ca/mathematics-statistics/engagement/educational-outreach/junior-math-contest/archive",
+    "Columbus State Tournament": "https://www.columbusstate.edu/math/tournament/previous-math-contest.php",
+    "Fermat Contest": "https://cemc.uwaterloo.ca/resources/past-contests"
   };
   // The button has to say where it goes: an HMMT link lands on a round's archive, not on a
   // per-problem page, and calling that "AoPS" would be simply false.
@@ -3330,8 +3338,52 @@
     const m = ref.match(/^(\d{4}) Utah State Math Contest (Junior|Senior),\s*Problem\s+\d+$/), f = m && UTAH_FILES[m[1]] && UTAH_FILES[m[1]][m[2]];
     return f ? "https://www.weber.edu/wsuimages/statemathcontest/Exams/" + f[which === "solutions" ? 1 : 0] : null;
   }
+  // MATHCOUNTS (owner, 2026-11-14): Chapter, State and National, each a Sprint and a Target round.
+  // The foundation posts only the latest year's Chapter and State papers free and replaces them each
+  // year, so these links last until the next year's papers go up; the archive page stays.
+  const MC_FILES = { 2026: {
+    Chapter: { Sprint: "2026%20COMPLETE%20Chapter%20Sprint%20-%20for%20website.pdf", Target: "2026%20COMPLETE%20Chapter%20Target%201-8%20-%20for%20website.pdf", solutions: "2026%20Chapter%20solutions%20FINAL%20HWL%20-%20for%20website.pdf" },
+    State: { Sprint: "2026%20COMPLETE%20State%20Sprint%20%20-%20for%20website.pdf", Target: "2026%20COMPLETE%20State%20Target%201-8%20%20-%20for%20website.pdf", solutions: "2026%20State%20Solutions%20FINAL%20HWL%20-%20for%20website.pdf" } } };
+  function mathcountsPdf(ref, which) {
+    const m = ref.match(/^(\d{4}) MATHCOUNTS (Chapter|State|National) (Sprint|Target),\s*Problem\s+\d+$/), f = m && MC_FILES[m[1]] && MC_FILES[m[1]][m[2]];
+    return f ? "https://www.mathcounts.org/sites/default/files/" + f[which === "solutions" ? "solutions" : m[3]] : null;
+  }
+  // MBMT (Montgomery Blair Math Tournament): two divisions a year under new names each time, the
+  // archive listing the harder one second, except 2015, whose Fermat round repeats Euler's easier
+  // problems; [Lower, Upper] by year. 2015 has no solutions posted.
+  const MBMT_DIVS = { 2015: ["fermat", "euler"], 2016: ["euclid", "lobachevsky"], 2017: ["ramanujan", "pascal"], 2018: ["cantor", "gauss"], 2019: ["descartes", "leibniz"], 2022: ["dedekind", "zermelo"], 2023: ["bernoulli", "germain"], 2024: ["brahmagupta", "godel"], 2025: ["erdos", "weierstrass"], 2026: ["abel", "jacobi"] };
+  const MBMT_SUBJ = { "Algebra": "algebra", "Geometry": "geometry", "Counting": "counting", "Number Theory": "nt" };
+  function mbmtPdf(ref, which) {
+    const m = ref.match(/^(\d{4}) MBMT (Lower|Upper) (Algebra|Geometry|Counting|Number Theory),\s*Problem\s+\d+$/), d = m && MBMT_DIVS[m[1]];
+    if (!d || (which === "solutions" && m[1] === "2015")) return null;
+    return `https://mbmt.mbhs.edu/archive/${m[1]}/${d[m[2] === "Upper" ? 1 : 0]}/${MBMT_SUBJ[m[3]]}/${which === "solutions" ? "solutions" : "problems"}.pdf`;
+  }
+  // The Calgary Junior Mathematics Contest (University of Calgary): Part A, the short-answer
+  // questions, only; [exam, solutions] by year as the archive names the English files.
+  const CALGARY_FILES = { 2004: ["exam04.pdf", "exam04solns.pdf"], 2005: ["exam05.pdf", "exam05-solns.pdf"], 2006: ["exam06.pdf", "exam06solns.pdf"], 2007: ["exam07.pdf", "exam07soln.pdf"], 2008: ["exam08.pdf", "exam08-solns.pdf"], 2009: ["exam09.pdf", "exam09-solns.pdf"], 2010: ["exam10.pdf", "exam10-solutions.pdf"], 2011: ["exam11.pdf", "exam11-sol.pdf"], 2012: ["examenglish-2012.pdf", "examenglish-2012solns.pdf"], 2013: ["jr-math-examenglish-2013.pdf", "jr-math-examenglish-2013_with_solutions.pdf"], 2014: ["jr_math_examenglish_2014.pdf", "jr_math_examenglish_2014_test_solutions.pdf"], 2015: ["jr-math-examenglish-2015-final.pdf", "jr-math-examenglish-2015-final_solutions.pdf"], 2016: ["english-exam-2016.pdf", "jr-math-examenglish-2016-april-15_solutions.pdf"], 2017: ["jr-math-2017-english.pdf", "jr-math-examenglish-2017-solutions.pdf"], 2018: ["jr-math-examenglish-2018.pdf", "Jr-Math-examenglish-2018-sol-v2.pdf"], 2019: ["Jr-Math-examenglish-2019-v2.pdf", "Jr-Math-examenglish-2019-sol-v2.pdf"], 2021: ["Jr-Math-examenglish-2021.pdf", "Jr-Math-examenglish-2021-sol-v4.pdf"], 2022: ["Jr-Math-examenglish-2022.pdf", "Jr-Math-examenglish-2022-sol.pdf"], 2023: ["Jr-Math-examenglish-2023-v4.pdf", "Jr-Math-examenglish-2023-sol-v5-points.pdf"], 2024: ["Jr-Math-examenglish-2024-v4.pdf", "Jr-Math-examenglish-2024-point_sol-v2.pdf"], 2025: ["Jr-Math-examenglish-2025.pdf", "Jr-Math-examenglish-2025-solutions.pdf"] };
+  function calgaryPdf(ref, which) {
+    const m = ref.match(/^(\d{4}) Calgary Junior Math Contest,\s*Problem\s+\d+$/), f = m && CALGARY_FILES[m[1]];
+    return f ? "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/" + f[which === "solutions" ? 1 : 0] : null;
+  }
+  // The Columbus State Invitational Mathematics Tournament: the 50-question Individual test only
+  // (the ciphering round is left out); [test, solutions] by year as the department names them. 2021 posts
+  // one file, the problems with their solutions, so it serves as both.
+  const COLUMBUS_FILES = { 1993: ["20170420162705023.pdf", null], 1994: ["written94.pdf", null], 1997: ["written97.pdf", null], 1998: ["written98.pdf", null], 1999: ["written1999.pdf", null], 2000: ["WrittenEx2000.pdf", null], 2001: ["WrittenExaM2001.PDF", null], 2002: ["02wexam.PDF", "solutionsPDF.pdf"], 2003: ["03WrittenFD.pdf", "03solutions.pdf"], 2004: ["04Writtenfd.pdf", "04solutions.pdf"], 2005: ["test-2005-final-version.pdf", "test-2005-final-version-solutions.pdf"], 2006: ["test-2006-final-version.pdf", "test-2006-final-version-solutions.pdf"], 2007: ["test_2007_final_version.pdf", "test_2007_final_version_with_answers_circled.pdf"], 2008: ["Test_2008.pdf", "Test_2008_Solutions.pdf"], 2009: ["2009individual.pdf", "Solutions2009individual.pdf"], 2010: ["Individual2010.pdf", "IndividualSolutions2010.pdf"], 2011: ["Math-Tournament-2011---Individual-Test.pdf", "Math-Tournament-2011---Individual-Test-Solutions.pdf"], 2012: ["MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf", "MATH-_TOURNAMENT_2012_INDIVIDUAL_TEST_SOLUTIONS.pdf"], 2013: ["Individual2013.pdf", "Solutions2013.pdf"], 2014: ["MathTournament2014IndividualTest.pdf", "MathTournament2014IndividualTestSolutions.pdf"], 2015: ["IndividualTest2015.pdf", "IndividualTest2015solutions.pdf"], 2016: ["Tournament_Test_without_solution.pdf", "Tournament_Test_with_solution.pdf"], 2017: ["Tournament_Fan2017withoutSolu.pdf", "Tournament_Fan2017withSolu.pdf"], 2018: ["MathTournament2018.pdf", "MathTournament2018Solutions.pdf"], 2019: ["2019-individual-exam.pdf", "2019-individual-solutions.pdf"], 2020: ["2020-individual-exam.pdf", "2020-individual-solutions.pdf"], 2021: ["2021-solution-march-2-indv.pdf", "2021-solution-march-2-indv.pdf"] };
+  function columbusPdf(ref, which) {
+    const m = ref.match(/^(\d{4}) Columbus State Tournament,\s*Problem\s+(\d+)$/), base = "https://www.columbusstate.edu/math/_docs/tournament/";
+    // 2022 is posted as three scanned test files of ten problems each, with no solutions.
+    if (m && m[1] === "2022") return which === "solutions" ? null : base + "2022-tournament-test-" + Math.ceil(+m[2] / 10) + ".pdf";
+    const f = m && COLUMBUS_FILES[m[1]], file = f && f[which === "solutions" ? 1 : 0];
+    return file ? base + file : null; // no solutions are posted before 2002
+  }
+  // The CEMC Fermat Contest (Grade 11, University of Waterloo): 25 questions, the paper and its solutions
+  // at the CEMC's standard addresses.
+  function fermatPdf(ref, which) {
+    const m = ref.match(/^(\d{4}) Fermat Contest,\s*Problem\s+\d+$/);
+    return m ? "https://cemc.uwaterloo.ca/sites/default/files/documents/" + m[1] + "/" + m[1] + (which === "solutions" ? "FermatSolution" : "FermatContest") + ".pdf" : null;
+  }
   // The official paper or solutions as a PDF, for the contests that publish them.
-  const officialPdf = (ref, which) => hmmtPdf(ref, which) || armlPdf(ref, which) || smtPdf(ref, which) || dmmPdf(ref, which) || umdPdf(ref, which) || cmimcPdf(ref, which) || mathPrizePdf(ref, which) || mmathsPdf(ref, which) || gimPdf(ref, which) || lehighPdf(ref, which) || utahPdf(ref, which);
+  const officialPdf = (ref, which) => hmmtPdf(ref, which) || armlPdf(ref, which) || smtPdf(ref, which) || dmmPdf(ref, which) || umdPdf(ref, which) || cmimcPdf(ref, which) || mathPrizePdf(ref, which) || mmathsPdf(ref, which) || gimPdf(ref, which) || lehighPdf(ref, which) || utahPdf(ref, which) || mathcountsPdf(ref, which) || mbmtPdf(ref, which) || calgaryPdf(ref, which) || columbusPdf(ref, which) || fermatPdf(ref, which);
   function aopsUrl(ref, fam) {
     if (fam && ARCHIVE_URL[fam]) return ARCHIVE_URL[fam];
     const m = ref.match(/^(.*),\s*Problem\s+(\d+)\s*$/);
@@ -3354,7 +3406,7 @@
   // `refInGroup` drops the contest's own name as well, for a row under that contest's heading.
   const ROUND_SHORT = { "Advanced Topics": "Adv Topics", "General": "Gen", "Algebra and Combinatorics": "Alg & Combo", "Algebra and Geometry": "Alg & Geo", "Combinatorics and Geometry": "Combo & Geo", "Algebra and Number Theory": "Alg & NT", "Combinatorics and Computer Science": "Combo & CS", "Combinatorics": "Combo", "Number Theory": "NT", "Computer Science": "CS", "Discrete Math": "Discrete" };
   const shortRound = r => { const d = r.match(/^(.*?) Division (\d)$/); return d ? `${shortRound(d[1])} Div ${d[2]}` : ROUND_SHORT[r] || r; };
-  const ROUNDED = "HMMT (?:February|November)|CMIMC|SMT|BMT|PUMaC Division [AB]|Utah State Math Contest";
+  const ROUNDED = "HMMT (?:February|November)|CMIMC|SMT|BMT|PUMaC Division [AB]|Utah State Math Contest|MATHCOUNTS (?:Chapter|State|National)|MBMT (?:Lower|Upper)";
   const shortFam = f => f.replace(/^HMMT (February|November)$/, (_, m) => "HMMT " + m.slice(0, 3)).replace(/^PUMaC Division /, "PUMaC ").replace(/^Utah State Math Contest$/, "Utah");
   function refShort(ref) {
     const m = ref.match(new RegExp(`^(\\d{4}) (${ROUNDED}) (.+?),\\s*Problem\\s+(\\d+)$`));
@@ -3389,6 +3441,11 @@
     else if (/^Girls in Math at Yale\b/i.test(core)) fam = "Girls in Math at Yale";  // the Individual round (owner, 2026-11-13)
     else if (/^Lehigh\b/i.test(core)) fam = "Lehigh";                  // the High School Math Contest (owner, 2026-11-13)
     else if (/^Utah State Math Contest\b/i.test(core)) fam = "Utah State Math Contest";  // Junior and Senior exams (owner, 2026-11-13)
+    else if (/^MATHCOUNTS (Chapter|State|National)\b/.test(core)) fam = core.match(/^MATHCOUNTS (Chapter|State|National)/)[0];  // Sprint and Target rounds (owner, 2026-11-14)
+    else if (/^Columbus State Tournament\b/.test(core)) fam = "Columbus State Tournament";  // the Individual test (2026-11-14)
+    else if (/^Fermat Contest\b/.test(core)) fam = "Fermat Contest";  // the Individual test (2026-11-14)
+    else if (/^Calgary Junior Math Contest\b/.test(core)) fam = "Calgary Junior Math Contest";  // Part A (2026-11-14)
+    else if (/^MBMT (Lower|Upper)\b/.test(core)) fam = core.match(/^MBMT (Lower|Upper)/)[0];  // the four individual rounds (2026-11-14)
     // HMMT runs two tournaments a year of quite different difficulty, so they are separate
     // families rather than one pile. The round (Algebra, Combinatorics, Guts, Team) stays in
     // `cname`, which dbMainHtml already uses as the heading within a year.
@@ -3456,8 +3513,11 @@
       url: e.url || paper?.url || officialPdf(e.ref, "problems") || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
       // Where the official solution is, for a problem whose solution we link instead of write.
       // An AHSME problem has no solution of ours either (owner, 2026-11-13): its AoPS wiki page has them.
-      solUrl: paper?.solUrl || officialPdf(e.ref, "solutions") || (!e.strategy ? aopsUrl(e.ref, pr.fam) : null),
-      solAops: !paper?.solUrl && !officialPdf(e.ref, "solutions") && !e.strategy && !!aopsUrl(e.ref, pr.fam),
+      // Only the MAA contests have a per-problem AoPS page to fall back on; an archive contest
+      // without posted solutions gets no solution link rather than its archive mislabelled as AoPS.
+      solUrl: paper?.solUrl || officialPdf(e.ref, "solutions") || (!e.strategy && !ARCHIVE_URL[pr.fam] ? aopsUrl(e.ref, pr.fam) : null),
+      solKind: paper?.solKind || null, sourceMirror: !!paper?.mirror,
+      solAops: !paper?.solUrl && !officialPdf(e.ref, "solutions") && !e.strategy && !ARCHIVE_URL[pr.fam] && !!aopsUrl(e.ref, pr.fam),
       formulas, trickFormulas, types: problemTypes(e), subjects: problemSubjects(e, formulas, pr.cname), strategy: e.strategy || "",
       trick: e.trick || "",
       // Hints we write (revealed one at a time before the strategy) and the card that is the
@@ -3517,7 +3577,7 @@
   // Competition → year → problems tree for the Database sidebar navigator.
   const DB_TREE = {};
   PROBLEM_DB.forEach(p => { (DB_TREE[p.fam] = DB_TREE[p.fam] || {}); (DB_TREE[p.fam][p.year] = DB_TREE[p.fam][p.year] || []).push(p); });
-  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "ARML", "ARML Local", "SMT", "Duke Math Meet", "UMD HSMC", "CMIMC", "Math Prize for Girls", "MMATHS", "Girls in Math at Yale", "Lehigh", "Utah State Math Contest", "BMT", "PUMaC Division A", "PUMaC Division B", "Putnam", "HMMT"];
+  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "MATHCOUNTS Chapter", "MATHCOUNTS State", "MATHCOUNTS National", "MBMT Lower", "MBMT Upper", "Calgary Junior Math Contest", "Columbus State Tournament", "Fermat Contest", "HMMT February", "HMMT November", "ARML", "ARML Local", "SMT", "Duke Math Meet", "UMD HSMC", "CMIMC", "Math Prize for Girls", "MMATHS", "Girls in Math at Yale", "Lehigh", "Utah State Math Contest", "BMT", "PUMaC Division A", "PUMaC Division B", "Putnam", "HMMT"];
   const FAMILIES = Object.keys(DB_TREE).sort((a, b) => {
     const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
@@ -3525,6 +3585,16 @@
   const FAM_BY_SLUG = {}; FAMILIES.forEach(f => { FAM_BY_SLUG[famSlug(f)] = f; });
   const famCount = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].length, 0);
   // "Written" means the problem has its write-up (a strategy) in the app. A problem with only its text, or only its cards, is not counted.
+  // The Contests list shows each contest's latest years; a long run of years opens on request
+  // (owner, 2026-11-14: the list grew long with every contest added).
+  const CT_YEARS = 12, ctYearsOpen = new Set();
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-ct-years]"); if (!b) return;
+    const f = b.dataset.ctYears, y = window.scrollY;
+    ctYearsOpen.has(f) ? ctYearsOpen.delete(f) : ctYearsOpen.add(f);
+    render(); window.scrollTo(0, y);
+    document.querySelector(`[data-ct-years="${CSS.escape(f)}"]`)?.focus({ preventScroll: true });
+  });
   const famWritten = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].filter(p => p.strategy).length, 0);
   // Whether the Practice page lists the contests still to come (hidden until asked for).
   let showUnwritten = false;
@@ -3555,7 +3625,10 @@
       const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
       return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
     });
-    const body = fams.map(fam => {
+    // The AMC and AIME first, the other contests on request, as in the other contest lists
+    // (owner, 2026-11-14); a card cited only outside them shows its contests at once.
+    const shownFams = fams.some(f => CORE_FAMS.has(f)) ? fams.filter(famShown) : fams;
+    const body = shownFams.map(fam => {
       const hidden = groups[fam].length - PROB_GROUP_PREVIEW;
       const rows = groups[fam].map((p, i) => {
         return `<li class="prob-row${i >= PROB_GROUP_PREVIEW ? " prob-extra" : ""}">
@@ -3573,6 +3646,7 @@
       <div class="practice contest-refs">
         <h4>Practice problems <span class="practice-note">${probs.length}</span></h4>
         ${body}
+        ${shownFams === fams ? "" : famMoreBtn(extraFams(fams))}
       </div>`;
   }
 
@@ -4800,6 +4874,11 @@
               <p>Problems from the Individual test of <a href="https://www.mmaths.org/archive" target="_blank" rel="noopener noreferrer">MMATHS</a>, the Math Majors of America Tournament for High Schools run by Yale Math Competitions (2014 to 2016 and 2018 to 2025; the 2017 files are lost), are listed the same way: each problem's page opens the official test and its solutions or answer key; nothing is reproduced. That material is attributed to Yale Math Competitions; the MAA license above does not apply to it. The Individual round of Girls in Math at Yale, from the same archive (2019 to 2026), is listed the same way.</p>
               <p>Problems from the <a href="https://www.lehigh.edu/~dmd1/oldcontests.html" target="_blank" rel="noopener noreferrer">Lehigh University High School Math Contest</a>, a two-hour individual test, are listed the same way: each problem's page opens the year's exam and solutions as Lehigh's mathematics department posts them; nothing is reproduced. That material is attributed to Lehigh University; the MAA license above does not apply to it.</p>
               <p>Problems from the Junior and Senior exams of the <a href="https://weber.edu/statemathcontest/exams.html" target="_blank" rel="noopener noreferrer">Utah State Math Contest</a> (Weber State University, 2006 to 2020) are listed the same way: each problem's page opens the official exam and its solutions; nothing is reproduced. That material is attributed to Weber State University; the MAA license above does not apply to it.</p>
+              <p>Problems from the Sprint and Target rounds of <a href="https://www.mathcounts.org/pastcompetition" target="_blank" rel="noopener noreferrer">MATHCOUNTS</a> Chapter and State competitions (2026, the papers the MATHCOUNTS Foundation posts free) are listed the same way: each problem's page opens the official round and its solutions; nothing is reproduced. That material is attributed to the MATHCOUNTS Foundation; the MAA license above does not apply to it.</p>
+              <p>Problems from the individual Algebra, Geometry, Counting and Number Theory rounds of the <a href="https://mbmt.mbhs.edu/archive" target="_blank" rel="noopener noreferrer">Montgomery Blair Math Tournament</a> (MBMT) are listed the same way: each problem's page opens the official round and its solutions; nothing is reproduced. That material is attributed to the MBMT organizers at Montgomery Blair High School; the MAA license above does not apply to it.</p>
+              <p>Problems from Part A of the <a href="https://science.ucalgary.ca/mathematics-statistics/engagement/educational-outreach/junior-math-contest/archive" target="_blank" rel="noopener noreferrer">Calgary Junior Mathematics Contest</a> (University of Calgary, 2004 to 2025) are listed the same way: each problem’s page opens the official paper and its solutions; nothing is reproduced. That material is attributed to the University of Calgary; the MAA license above does not apply to it.</p>
+              <p>Problems from the <a href="https://cemc.uwaterloo.ca/resources/past-contests" target="_blank" rel="noopener noreferrer">Fermat Contest</a> (Grade 11) of the Centre for Education in Mathematics and Computing, University of Waterloo, are listed the same way: each problem’s page opens the official contest and its solutions; nothing is reproduced. That material is © the University of Waterloo and attributed to the CEMC; the MAA license above does not apply to it.</p>
+              <p>Problems from the Individual test of the <a href="https://www.columbusstate.edu/math/tournament/previous-math-contest.php" target="_blank" rel="noopener noreferrer">Columbus State Invitational Mathematics Tournament</a> (Columbus State University) are listed the same way: each problem’s page opens the official test and its solutions; nothing is reproduced. That material is attributed to Columbus State University; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual round of the <a href="https://math.duke.edu/duke-math-meet" target="_blank" rel="noopener noreferrer">Duke Math Meet</a> (2007 to 2022) are listed the same way: each problem's page opens the round as Duke's mathematics department posts it, and its solutions where they were posted; nothing is reproduced. Duke Math Meet material is attributed to the Duke Math Meet; the MAA license above does not apply to it.</p>
               <p><a href="https://berkeley.mt/archives/bmt/" target="_blank" rel="noopener noreferrer">BMT</a> and <a href="https://pumac.princeton.edu/archives" target="_blank" rel="noopener noreferrer">PUMaC</a> entries link to the official contest papers and solutions. Their statements and solutions are not reproduced here.</p>
             </div>
@@ -5666,6 +5745,39 @@
   const isMock = set => set.kind === 'mock';
   const practiceSetLabel = set => isMock(set) && set.mock.mode === 'generated' ? 'Generated ' + set.mock.family : set.label;
   const hasMockAnswer = p => window.MATH_ANSWER_KEYS?.answers?.[p.slug] != null || !!window.MATH_MOCK_EXTRAS?.[p.slug];
+  // Practice draws from every contest (owner, 2026-11-14). A problem whose statement and answer
+  // the app does not keep is read where its page links (the official paper, or the AoPS wiki for
+  // the AHSME), and the solver checks their answer against the official solution at review.
+  // Calculus questions stay out of practice.
+  const paperProblem = p => !hasMockAnswer(p) && !!p.url && !(p.tree || []).some(t => t.startsWith("alg.calc"));
+  const practiceEligible = p => (hasMockAnswer(p) || paperProblem(p)) && !window.MATH_ANSWER_KEYS?.voided?.[p.slug];
+  // The contests a topic or card set may draw from, kept between visits.
+  let practiceOff = (() => { try { return new Set(JSON.parse(localStorage.getItem("mq-practice-off") || "[]")); } catch (e) { return new Set(); } })();
+  const practiceFamOn = p => !practiceOff.has(p.fam);
+  function practiceFamsHtml() {
+    const fams = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && practiceEligible(p)));
+    const on = fams.filter(f => !practiceOff.has(f)).length;
+    const sum = on === fams.length ? "All contests" : on ? `${on} of ${fams.length} contests` : "No contest";
+    return `<details class="pr-fams"><summary><span class="pr-fams-label">Contests</span><span class="pr-fams-sum">${sum}</span></summary>
+      <p class="pr-fams-note">Problems from the AMC and AIME appear in the app. Those from other contests open in the official paper (the AoPS wiki for the AHSME), and you check your answer against the official solution when you review.</p>
+      <div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-pr-all="on"${on === fams.length ? " disabled" : ""}>Select all</button><button type="button" class="fam-bulk-btn" data-pr-all="off"${on ? "" : " disabled"}>Deselect all</button></div>
+      <div class="fam-chips" role="group" aria-label="Contests to draw from">${fams.map(f => `<button type="button" class="fam-chip" data-pr-fam="${escapeAttr(f)}" aria-pressed="${!practiceOff.has(f)}">${famDot(f)}${f}</button>`).join("")}</div></details>`;
+  }
+  // A change in one panel's chooser updates both, keeping each open as it was.
+  document.addEventListener("click", e => {
+    const one = e.target.closest("[data-pr-fam]"), all = e.target.closest("[data-pr-all]");
+    if (!one && !all) return;
+    if (one) { const f = one.dataset.prFam; practiceOff.has(f) ? practiceOff.delete(f) : practiceOff.add(f); }
+    else practiceOff = all.dataset.prAll === "on" ? new Set() : new Set(FAMILIES);
+    try { localStorage.setItem("mq-practice-off", JSON.stringify([...practiceOff])); } catch (err) {}
+    const focus = one ? `[data-pr-fam="${CSS.escape(one.dataset.prFam)}"]` : `[data-pr-all="${all.dataset.prAll}"]`, inPanel = e.target.closest(".sh-section")?.id;
+    const wasOpen = new Set([...document.querySelectorAll(".pr-fams")].filter(d => d.open).map(d => d.closest(".sh-section")?.id));
+    document.querySelectorAll(".pr-fams").forEach(d => { d.outerHTML = practiceFamsHtml(); });
+    document.querySelectorAll(".pr-fams").forEach(d => { d.open = wasOpen.has(d.closest(".sh-section")?.id); });
+    const target = document.querySelector(`#${inPanel} ${focus}`);
+    (target && !target.disabled ? target : document.querySelector(`#${inPanel} [data-pr-all]:not([disabled])`))?.focus({ preventScroll: true });
+    document.dispatchEvent(new Event("practice-fams"));
+  });
   const isVoidedProblem = p => !!window.MATH_ANSWER_KEYS?.voided?.[p.slug];
   function mockPapers() { return mockPaperCatalog ||= mockContests.papers(PROBLEM_DB, hasMockAnswer); }
   function mockTime(ms) { const s=Math.ceil(Math.max(0,ms)/1000); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
@@ -5849,7 +5961,7 @@
   }
   function renderPracticeResults(set) {
     const total = set.slugs.length;
-    const counts = { Correct: 0, Incorrect: 0, Unanswered: 0, 'Answer unavailable': 0, Voided: 0 };
+    const counts = { Correct: 0, Incorrect: 0, Unanswered: 0, 'Answer unavailable': 0, Voided: 0, 'Check yourself': 0 };
     set.slugs.forEach(slug => counts[practiceSessions.result(set, slug)]++);
     const reviewUrl = '#/practice/set/' + encodeURIComponent(set.id) + '/review';
     const mock = isMock(set), score = mock ? mockScore(set) : null;
@@ -5860,6 +5972,7 @@
         ${mock ? `<p class="practice-results-meta">${mockTimeSummary(set)}</p>` : ''}
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
+        ${counts['Check yourself'] ? `<p class="practice-results-meta">${counts['Check yourself']} to check against the official solution: open ${counts['Check yourself'] === 1 ? 'it' : 'each'} in the review and mark your answer right or wrong.</p>` : ''}
         ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided by the MAA${mock ? ', full credit awarded' : ', not graded'}</p>` : ''}
         <a class="hp-btn" href="${reviewUrl}">Review problems</a>
       </section>
@@ -5888,7 +6001,8 @@
     const slug = set.slugs[set.current], p = PROBLEM_BY_SLUG[slug];
     const answered = set.slugs.filter(id => set.answers[id]).length;
     const outcome = practiceSessions.result(set, slug);
-    const aime = p && /AIME/.test(p.fam), exact = !!window.MATH_MOCK_EXTRAS?.[slug];
+    const aime = p && /AIME/.test(p.fam), exact = !!window.MATH_MOCK_EXTRAS?.[slug], paper = !!(p && set.selfCheck?.[slug]);
+    const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
     const correct = exact ? window.MATH_MOCK_EXTRAS[slug].answers.map(exactAnswerHtml).join(' or ') : escapeAttr(window.MATH_ANSWER_KEYS?.answers?.[slug] || '');
     const nav = set.slugs.map((id, i) => {
       const result = practiceSessions.result(set, id);
@@ -5908,12 +6022,14 @@
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
       <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p && (!mock || finished) ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
-        ${p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
+        ${paper ? `<div class="practice-paper"><p>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. Compare your answer with the official solution and mark it below.` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. When you review, you check it against the official solution.`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open the problem ${uiIcon("arrow-up-right")}</a></div>`
+          : p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>Your answer</h3>
-          ${aime || exact ? (set.answers[slug] ? `<p class="practice-submitted">${exact ? exactAnswerHtml(set.answers[slug]) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
+          ${aime || exact || paper ? (set.answers[slug] ? `<p class="practice-submitted">${exact ? exactAnswerHtml(set.answers[slug]) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
+          ${paper ? `<div class="practice-self">${p.solUrl ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
           ${practiceExplanationHtml(p)}`
-          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact ? `<label for="practice-answer">${exact ? 'Exact value (fractions, sqrt, pi)' : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact ? 'text' : 'numeric'}" maxlength="${exact ? '120' : '3'}" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
+          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact || paper ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? 'Exact value (fractions, sqrt, pi)' : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact || paper ? 'text' : 'numeric'}" maxlength="${paper ? '60' : exact ? '120' : '3'}" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
       </section></div>`;
     const redraw = () => {
@@ -5978,7 +6094,7 @@
       const valid = practiceSessions.answer(set, slug, e.target.value, aime);
       if(set.status==='finished'){savePractice();renderTopicPracticeSet();return;}
       e.target.setAttribute('aria-invalid', String(!valid));
-      $content.querySelector('#practice-answer-error').textContent = valid ? '' : (exact ? 'Use a number or an expression with fractions, sqrt and pi. This value has not been saved.' : 'Use an integer from 000 to 999. This value has not been saved.');
+      $content.querySelector('#practice-answer-error').textContent = valid ? '' : paper ? 'Use at most 60 characters. This value has not been saved.' : (exact ? 'Use a number or an expression with fractions, sqrt and pi. This value has not been saved.' : 'Use an integer from 000 to 999. This value has not been saved.');
       if (valid) { schedulePracticeSave(); syncAnswerUI(); }
       else if (clearAnswer) clearAnswer.disabled = !e.target.value && !set.answers[slug];
     });
@@ -5993,11 +6109,20 @@
     });
     $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; schedulePracticeSave(); const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-marked', e.target.checked); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${e.target.checked ? ', marked for review' : ''}`); });
     savePractice();
-    if (p) showStatement(p, '.practice-set-st');
+    if (p && !paper) showStatement(p, '.practice-set-st');
+    $content.querySelectorAll('[data-self]').forEach(b => b.addEventListener('click', () => {
+      const v = b.getAttribute('aria-pressed') === 'true' ? null : b.dataset.self;
+      if (!practiceSessions.selfMark(set, slug, v)) return;
+      savePractice(); redraw(); $content.querySelector(`[data-self="${b.dataset.self}"]`)?.focus({ preventScroll: true });
+    }));
     renderMath($content);
     startMockClock(set);
   }
   let practiceTopicIndex;
+  function markPaperProblems(set, problems) {
+    const paper = problems.filter(paperProblem);
+    if (paper.length) set.selfCheck = Object.fromEntries(paper.map(p => [p.slug, true]));
+  }
   function wireTopicPractice(root) {
     const form = root.querySelector("#topic-practice-form");
     if (!form) return;
@@ -6007,8 +6132,9 @@
     const difficulty = form.elements.difficulty;
     let generating = false, selectedTopicId = null, activeTopic = -1;
     let desiredCount = count.valueAsNumber;
-    const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB,
-      p => hasMockAnswer(p) && !window.MATH_ANSWER_KEYS?.voided?.[p.slug]);
+    const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible);
+    // The pool a topic draws from under the current contest choice, for the browser checks.
+    window.MATH_PRACTICE_POOL = id => (topics.nodes.get(id)?.problems || []).filter(practiceFamOn).map(p => p.slug);
     const findTopic = () => {
       const selected = topics.nodes.get(selectedTopicId);
       return selected && topic.value === selected.label ? selected : topics.resolve(topic.value);
@@ -6016,7 +6142,7 @@
     function update() {
       const choices = topics.search(topic.value);
       suggestions.innerHTML = choices.map((node,i) => {
-        const size = problemDifficulty.filter(node.problems, DIFFS[difficulty.valueAsNumber]).length;
+        const size = problemDifficulty.filter(node.problems.filter(practiceFamOn), DIFFS[difficulty.valueAsNumber]).length;
         const context = node.path.slice(0, -1).join(' › ');
         return `<button type="button" class="set-find-opt practice-topic-option${i === 0 ? ' is-cur' : ''}" role="option" id="practice-topic-${i}" data-topic-id="${node.id}" aria-selected="${i === 0}"><span class="practice-topic-name">${mathHtml(node.name)}</span><span class="practice-topic-context">${escapeAttr(context)}${context ? ' · ' : ''}${size} problem${size === 1 ? '' : 's'}</span></button>`;
       }).join('');
@@ -6051,9 +6177,11 @@
     function difficultyLabel() {
       return problemDifficulty.levels[difficulty.valueAsNumber].label;
     }
+    const onFams = () => form.isConnected ? update() : document.removeEventListener("practice-fams", onFams);
+    document.addEventListener("practice-fams", onFams);
     function matchingProblems() {
       const match = findTopic(), band = DIFFS[difficulty.valueAsNumber];
-      return match ? problemDifficulty.filter(match.problems, band) : [];
+      return match ? problemDifficulty.filter(match.problems.filter(practiceFamOn), band) : [];
     }
     function closeTopics() { suggestions.hidden = true; topic.setAttribute('aria-expanded','false'); topic.removeAttribute('aria-activedescendant'); activeTopic = -1; }
     function openTopics() {
@@ -6103,15 +6231,16 @@
           pool[i] = pool[pool.length - 1];
           pool.pop();
         }
-        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug]).map(p => p.year))].map(loadStatements));
+        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug] && !paperProblem(p)).map(p => p.year))].map(loadStatements));
         if (!form.isConnected) return;
-        problems.push(...batch.filter(p => window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
+        problems.push(...batch.filter(p => paperProblem(p) || window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
       }
       generating = false;
       form.querySelector("fieldset").disabled = false;
       if (!problems.length) { status.textContent = "No statements could be loaded. Try again or choose another topic."; return; }
       topicPracticeSet = practiceSessions.create(label, level, problemDifficulty.order(problems).map(p => p.slug));
       topicPracticeSet.topicId = match.id;
+      markPaperProblems(topicPracticeSet, problems);
       savePractice();
       location.hash = '#/practice/set/' + topicPracticeSet.id;
     });
@@ -6124,13 +6253,12 @@
   function cardPracticePanelHtml() {
     return `<section class="sh-section" id="pr-card">
       <h3>Practice a card</h3>
-      <p class="practice-panel-intro">Choose a formula, a method or a pattern to build an untimed set from the contest problems that use it.</p>
+      <p class="practice-panel-intro">Choose one of the reference's cards (a formula, method or pattern) to build an untimed set from the contest problems that use it.</p>
       <form id="card-practice-form" novalidate><fieldset aria-label="Card practice options">
-        <div class="rand-btns" role="radiogroup" aria-label="Kind of card">${["formula", "method", "pattern"].map((k, i) =>
-          `<button type="button" role="radio" aria-checked="${i === 0}" data-card-kind="${k}">${k.charAt(0).toUpperCase() + k.slice(1)}</button>`).join("")}</div>
-        <label class="mock-field-label" for="card-practice-name">Card</label>
-        <div class="practice-topic-search"><input id="card-practice-name" class="set-find-input" type="search" placeholder="Search a formula..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="card-practice-options" aria-describedby="card-practice-status">
+        <label class="mock-field-label" for="card-practice-name">Reference card</label>
+        <div class="practice-topic-search"><input id="card-practice-name" class="set-find-input" type="search" placeholder="Search the reference's cards..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="card-practice-options" aria-describedby="card-practice-status">
         <div id="card-practice-options" class="set-find-list" role="listbox" aria-label="Cards" hidden></div></div>
+        ${practiceFamsHtml()}
         <div class="rand-diff"><label for="card-count">Questions</label>
           <input id="card-count" type="range" min="1" max="30" value="5"><output id="card-count-value" for="card-count">5</output></div>
         <div class="rand-diff"><label for="card-band">Difficulty</label>
@@ -6150,29 +6278,30 @@
     const plain = name => window.PracticeTopics.label(name);
     // Every card's eligible problems, each shared AMC 10/12 problem once.
     const pools = cardPracticePools ||= (() => {
-      const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB,
-        p => hasMockAnswer(p) && !window.MATH_ANSWER_KEYS?.voided?.[p.slug]);
+      const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible);
       const eligible = new Set(topics.nodes.get("mixed").problems), by = {};
       Object.keys(PROBLEMS_BY_CARD).forEach(id => { const ps = PROBLEMS_BY_CARD[id].filter(p => eligible.has(p)); if (ps.length && BY_ID[id]) by[id] = ps; });
       return by;
     })();
-    const cardsOf = k => Object.keys(pools).filter(id => kindOf(BY_ID[id].formula) === k).sort((a, b) => pools[b].length - pools[a].length || plain(BY_ID[a].formula.name).localeCompare(plain(BY_ID[b].formula.name)));
-    let kind = "formula", chosen = null, active = -1, choices = [], desired = count.valueAsNumber, generating = false;
+    // One search over every kind of card (owner, 2026-11-14); each suggestion names its kind.
+    const KIND_NAME = { formula: "Formula", method: "Method", pattern: "Pattern" };
+    const allCards = () => Object.keys(pools).sort((a, b) => pools[b].length - pools[a].length || plain(BY_ID[a].formula.name).localeCompare(plain(BY_ID[b].formula.name)));
+    let chosen = null, active = -1, choices = [], desired = count.valueAsNumber, generating = false;
     const level = () => problemDifficulty.levels[band.valueAsNumber].label;
-    const pool = () => chosen ? problemDifficulty.filter(pools[chosen], DIFFS[band.valueAsNumber]) : [];
+    const pool = () => chosen ? problemDifficulty.filter(pools[chosen].filter(practiceFamOn), DIFFS[band.valueAsNumber]) : [];
     function close() { options.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; }
     function highlight() {
       [...options.children].forEach((b, i) => { b.classList.toggle("is-cur", i === active); b.setAttribute("aria-selected", String(i === active)); });
       if (choices[active]) input.setAttribute("aria-activedescendant", "card-practice-" + active); else input.removeAttribute("aria-activedescendant");
     }
-    // Nothing is offered until something is typed (owner, 2026-11-11); then the cards of the
-    // kind whose names match, most used first.
+    // Nothing is offered until something is typed (owner, 2026-11-11); then the cards whose
+    // names match, most used first.
     function suggest() {
       const q = input.value.trim().toLowerCase();
       if (!q || (chosen && plain(BY_ID[chosen].formula.name).toLowerCase() === q)) { choices = []; options.innerHTML = ""; close(); return; }
-      choices = cardsOf(kind).filter(id => plain(BY_ID[id].formula.name).toLowerCase().includes(q)).slice(0, 8);
-      options.innerHTML = choices.map((id, i) => { const n = problemDifficulty.filter(pools[id], DIFFS[band.valueAsNumber]).length;
-        return `<button type="button" class="set-find-opt practice-topic-option" id="card-practice-${i}" role="option" aria-selected="false"><span class="practice-topic-name">${BY_ID[id].formula.name}</span><span class="practice-topic-context">${n} problem${n === 1 ? "" : "s"}</span></button>`; }).join("");
+      choices = allCards().filter(id => plain(BY_ID[id].formula.name).toLowerCase().includes(q)).slice(0, 8);
+      options.innerHTML = choices.map((id, i) => { const n = problemDifficulty.filter(pools[id].filter(practiceFamOn), DIFFS[band.valueAsNumber]).length;
+        return `<button type="button" class="set-find-opt practice-topic-option" id="card-practice-${i}" role="option" aria-selected="false"><span class="practice-topic-name">${BY_ID[id].formula.name}</span><span class="practice-topic-context">${KIND_NAME[kindOf(BY_ID[id].formula)] || "Card"} · ${n} problem${n === 1 ? "" : "s"}</span></button>`; }).join("");
       [...options.children].forEach((b, i) => {
         b.addEventListener("mousemove", () => { if (active !== i) { active = i; highlight(); } });
         b.addEventListener("click", () => { chosen = choices[i]; input.value = plain(BY_ID[chosen].formula.name); update(); input.focus({ preventScroll: true }); close(); });
@@ -6195,11 +6324,6 @@
       status.textContent = chosen ? `${ps.length} matching problem${ps.length === 1 ? "" : "s"} available.` : input.value.trim() ? "Choose a card from the suggestions." : "";
       submit.disabled = generating || !ps.length;
     }
-    form.querySelectorAll("[data-card-kind]").forEach(b => b.addEventListener("click", () => {
-      kind = b.dataset.cardKind; chosen = null; input.value = ""; input.placeholder = `Search a ${kind}...`;
-      form.querySelectorAll("[data-card-kind]").forEach(x => x.setAttribute("aria-checked", String(x === b)));
-      close(); update();
-    }));
     input.addEventListener("focus", suggest);
     input.addEventListener("input", () => { chosen = null; update(); suggest(); });
     input.addEventListener("keydown", e => {
@@ -6212,6 +6336,8 @@
     form.addEventListener("focusout", e => { if (!e.relatedTarget?.closest?.("#card-practice-form .practice-topic-search")) close(); });
     count.addEventListener("input", () => { desired = count.valueAsNumber; update(); });
     band.addEventListener("input", update);
+    const onFams = () => form.isConnected ? update() : document.removeEventListener("practice-fams", onFams);
+    document.addEventListener("practice-fams", onFams);
     form.addEventListener("submit", async e => {
       e.preventDefault();
       const ps = pool(), requested = count.valueAsNumber;
@@ -6221,14 +6347,15 @@
       while (ps.length && problems.length < requested) {
         const batch = [];
         while (ps.length && batch.length < requested - problems.length) { const i = Math.floor(Math.random() * ps.length); batch.push(ps[i]); ps[i] = ps[ps.length - 1]; ps.pop(); }
-        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug]).map(p => p.year))].map(loadStatements));
+        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug] && !paperProblem(p)).map(p => p.year))].map(loadStatements));
         if (!form.isConnected) return;
-        problems.push(...batch.filter(p => window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
+        problems.push(...batch.filter(p => paperProblem(p) || window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
       }
       generating = false; form.querySelector("fieldset").disabled = false;
       if (!problems.length) { status.textContent = "No statements could be loaded. Try again or choose another card."; return; }
       topicPracticeSet = practiceSessions.create(label, lv, problemDifficulty.order(problems).map(p => p.slug));
       topicPracticeSet.cardId = id;
+      markPaperProblems(topicPracticeSet, problems);
       savePractice();
       location.hash = "#/practice/set/" + topicPracticeSet.id;
     });
@@ -6301,6 +6428,7 @@
             <label for="topic-name">Topic</label>
             <div class="practice-topic-search"><input id="topic-name" class="set-find-input" type="search" name="topic" placeholder="Search a topic..." required autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="practice-topic-options" aria-describedby="topic-practice-status">
             <div id="practice-topic-options" class="set-find-list" role="listbox" aria-label="Topics" hidden></div></div>
+            ${practiceFamsHtml()}
             <div class="rand-diff"><label for="topic-count">Questions</label>
               <input id="topic-count" type="range" name="count" min="1" max="30" value="5"><output id="topic-count-value" for="topic-count">5</output></div>
             <div class="rand-diff"><label for="topic-band">Difficulty</label>
@@ -6318,8 +6446,9 @@
           <div class="ct-browse"><a class="ct-browse-btn" href="#/browse/topics">Browse by topic</a><a class="ct-browse-btn" href="#/browse/difficulty">Browse by difficulty</a></div>
           <div class="ct-list">${fams.filter(famShown).map((f, i, a) => `
             <div class="ct-row${i && famSeries(a[i - 1]) === famSeries(f) ? " ct-same" : ""}">
-              <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famWritten(f).toLocaleString()} problem${famWritten(f) === 1 ? "" : "s"} written</span></a>
-              <div class="ct-years">${yearsOf(f).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}</div>
+              <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famCount(f).toLocaleString()} problem${famCount(f) === 1 ? "" : "s"}</span></a>
+              <div class="ct-years">${(ctYearsOpen.has(f) ? yearsOf(f) : yearsOf(f).slice(0, CT_YEARS)).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}${yearsOf(f).length > CT_YEARS
+                ? `<button type="button" class="ct-years-more" data-ct-years="${escapeAttr(f)}" aria-expanded="${ctYearsOpen.has(f)}">${ctYearsOpen.has(f) ? "Fewer years" : `All ${yearsOf(f).length} years`}</button>` : ""}</div>
             </div>`).join("")}
             ${famMoreBtn(extraFams(fams))}
             ${(() => {
@@ -9223,7 +9352,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     : p.fam === "SMT" ? p.cname.replace(/^SMT /, "").replace(/^Advanced$/, "Discrete")
     : p.fam === "CMIMC" ? p.cname.replace(/^CMIMC /, "")
     : p.fam === "Utah State Math Contest" ? p.cname.replace(/^Utah State Math Contest /, "")
-    : /^(BMT|PUMaC Division [AB])$/.test(p.fam) ? p.cname.slice(p.fam.length + 1) : "";
+    : /^(BMT|PUMaC Division [AB]|MATHCOUNTS (?:Chapter|State|National)|MBMT (?:Lower|Upper))$/.test(p.fam) ? p.cname.slice(p.fam.length + 1) : "";
   const roundSlug = slug => String(slug || "").replace(/algebra-and-number-theory$/, "algebra").replace(/^smt-advanced$/, "smt-discrete");
   function famPapers(fam, round = "") {
     const id = fam + "|" + round;
@@ -9627,7 +9756,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   // Difficulty: Elo ratings in bins of 200. Each contest has its own colour (the level tokens),
   // so one chart can stack every contest and still show which is which.
-  const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)", "HMMT November": "var(--level-hmmtn)", "ARML": "var(--level-arml)", "ARML Local": "var(--level-arml-local)", "SMT": "var(--level-smt)", "Duke Math Meet": "var(--level-dmm)", "UMD HSMC": "var(--level-umd)", "CMIMC": "var(--level-cmimc)", "Math Prize for Girls": "var(--level-mpfg)", "MMATHS": "var(--level-mmaths)", "Girls in Math at Yale": "var(--level-gim)", "Lehigh": "var(--level-lehigh)", "Utah State Math Contest": "var(--level-utah)" };
+  const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)", "HMMT November": "var(--level-hmmtn)", "ARML": "var(--level-arml)", "ARML Local": "var(--level-arml-local)", "SMT": "var(--level-smt)", "Duke Math Meet": "var(--level-dmm)", "UMD HSMC": "var(--level-umd)", "CMIMC": "var(--level-cmimc)", "Math Prize for Girls": "var(--level-mpfg)", "MMATHS": "var(--level-mmaths)", "Girls in Math at Yale": "var(--level-gim)", "Lehigh": "var(--level-lehigh)", "Utah State Math Contest": "var(--level-utah)", "MATHCOUNTS Chapter": "var(--level-mcc)", "MATHCOUNTS State": "var(--level-mcs)", "MATHCOUNTS National": "var(--level-mcn)", "MBMT Lower": "var(--level-mbl)", "MBMT Upper": "var(--level-mbu)", "Calgary Junior Math Contest": "var(--level-calg)", "Columbus State Tournament": "var(--level-cols)", "Fermat Contest": "var(--level-fermat)" };
   const famColor = f => FAM_COLOR[f] || "var(--level-oly)";
   const RATED_FAMS = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && Number.isFinite(p.elo)));
   // The scale ends at 3800 unless a problem is rated above that (owner, 2026-11-12: harder
@@ -9705,7 +9834,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const famMoreBtn = (n, cls = "ct-toggle") => n > 0 ? `<button type="button" class="${cls} fam-more-btn" aria-expanded="${famsOpen}">${famsOpen ? "Show fewer contests" : `Show ${n} more contest${n === 1 ? "" : "s"}`}</button>` : "";
   // Papers of one contest (the AMC 8, 10 and 12; HMMT February and November; ARML and ARML Local;
   // PUMaC's two divisions) sit together in the Contests list, without a rule between them (owner, 2026-11-14).
-  const famSeries = f => f.replace(/^AMC \d+$/, "AMC").replace(/ (February|November|Local|Division [AB])$/, "");
+  const famSeries = f => f.replace(/^AMC \d+$/, "AMC").replace(/^MATHCOUNTS (Chapter|State|National)$/, "MATHCOUNTS").replace(/ (February|November|Local|Division [AB]|Lower|Upper)$/, "");
   const extraFams = list => list.filter(f => !CORE_FAMS.has(f)).length;
   document.addEventListener("click", e => {
     const b = e.target.closest(".fam-more-btn");
@@ -9805,9 +9934,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (!fam && !more) return;
     if (fam) {
       const f = fam.dataset.brFam;
+      // Switching the last contest off leaves none chosen (owner, 2026-11-14), as Deselect all does.
       browseOff.has(f) ? browseOff.delete(f) : browseOff.add(f);
-      // Switching the last contest off would leave nothing: it brings them all back instead.
-      if ([...fam.parentNode.querySelectorAll("[data-br-fam]")].every(b => browseOff.has(b.dataset.brFam))) browseOff = new Set();
     } else browseOpen.add(more.dataset.brMore);
     const y = window.scrollY, name = fam ? "data-br-fam" : null, value = fam && fam.dataset.brFam;
     renderBrowse(getRoute());
@@ -9926,14 +10054,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const number = solution !== p.num
       ? `; paper problem ${p.num} is solution ${solution}`
       : p.num ? `; this is problem ${p.num}` : "";
-    return `The round's official solutions, as one PDF${number}.${legacy
+    return `The round's official ${p.solKind === "answer-key" ? "answer key" : "solutions"}, as one PDF${number}.${legacy
       ? ` The <a href="https://www.hmmt.org/www/archive/32" target="_blank" rel="noopener noreferrer">HMMT February 2000 archive</a> links these PDFs, which are headed “Rice Mathematics Tournament 2000.”` : ""}`;
   }
   function chainInnerHtml(p, chainCol, chain, altIds, afterChain = "") {
     return `<div class="chain-duo">${chainSec("Topic", topicTreeHtml(p))}${chainSec("Difficulty", difficultyHtml(p))}</div>
         ${chainSec("Brief solution", `${ownFigureHtml(p)}${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>`
           // No solution of our own for these (owner, 2026-11-12): the contest's official one is a click away.
-          : p.solUrl ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">${p.solAops ? "Open the solutions on AoPS" : "Open the official solution"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">${p.solAops ? "The Art of Problem Solving wiki's page for this problem, with its solutions." : (/^ARML/.test(p.fam) ? `The contest's official booklet, open at the Individual round's solutions${p.num ? `; this is problem I-${p.num}` : ""}.` : officialSolutionNote(p))}</span></p>` : ""}
+          : p.solUrl ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">${p.solAops ? "Open the solutions on AoPS" : p.solKind === "answer-key" ? "Open the official answer key" : "Open the official solution"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">${p.solAops ? "The Art of Problem Solving wiki's page for this problem, with its solutions." : (/^ARML/.test(p.fam) ? `The contest's official booklet, open at the Individual round's solutions${p.num ? `; this is problem I-${p.num}` : ""}.` : officialSolutionNote(p))}</span></p>` : ""}
         ${p.trick ? `<p class="chain-strategy chain-alt">${p.trick}</p>` : ""}
         <div class="chain-grid">
           ${chainCol("Pattern", chain.pattern, "Not classified yet")}
@@ -10049,8 +10177,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <div class="prob-statement"></div>
 
         </section>` : ""}
-        <p class="prob-note">${p.urlLabel === "archive" ? (/^ARML/.test(p.fam) ? `The statement is in the contest's official booklet, open at the Individual round${p.num ? `; this is problem I-${p.num}` : ""}.` : `The statement is in the round's official paper, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.`) : "Solutions live on the Art of Problem Solving wiki."}</p>
-        ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.urlLabel === "archive" ? "Open the official paper" : "Open on AoPS"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
+        <p class="prob-note">${p.sourceMirror ? `The round's original paper is hosted by an external archive${p.num ? `; this is problem ${p.num}` : ""}.` : p.urlLabel === "archive" ? (/^ARML/.test(p.fam) ? `The statement is in the contest's official booklet, open at the Individual round${p.num ? `; this is problem I-${p.num}` : ""}.` : `The statement is in the round's official paper, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.`) : "Solutions live on the Art of Problem Solving wiki."}</p>
+        ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.sourceMirror ? "Open the original paper (mirror)" : p.urlLabel === "archive" ? "Open the official paper" : "Open on AoPS"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
         ${chainHtml}
         ${SOLUTION_YEARS.has(String(p.year)) ? `<section class="prob-chain prob-solution${pv ? " pv-sol" : ""}"${pv ? "" : ` id="prob-sol"`} data-slug="${p.slug}" hidden>
           <h4>Solution</h4>
@@ -10467,7 +10595,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const sitting = p.ref.replace(/,?\s*Problem.*$/, "").trim();
       const base = sitting.replace(/\b(19|20)\d\d\b/, "").replace(/\s+/g, " ").trim();
       bump(sitting); bump(base);
-      const m = base.match(/^(Fall )?(AMC 1[02]|AIME|HMMT February|HMMT November|HMMT|ARML Local|ARML|SMT|Duke Math Meet|UMD HSMC|CMIMC|Math Prize for Girls|MMATHS|Girls in Math at Yale|Lehigh|Utah State Math Contest|BMT|PUMaC Division [AB])/);
+      const m = base.match(/^(Fall )?(AMC 1[02]|AIME|HMMT February|HMMT November|HMMT|ARML Local|ARML|SMT|Duke Math Meet|UMD HSMC|CMIMC|Math Prize for Girls|MMATHS|Girls in Math at Yale|Lehigh|Utah State Math Contest|BMT|PUMaC Division [AB]|MATHCOUNTS (?:Chapter|State|National)|MBMT (?:Lower|Upper)|Calgary Junior Math Contest|Columbus State Tournament|Fermat Contest)/);
       if (m && m[2] !== base) bump(m[2]);
       if (/^HMMT (February|November)/.test(base) && base !== "HMMT") bump("HMMT");
     });
