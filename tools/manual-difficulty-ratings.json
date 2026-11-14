@@ -47469,6 +47469,106 @@
     "2023 UKMT IMC, Problem 25": [
       700,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): with radii r1, r2 the big radius is r1 + r2, and (r1 + r2)^2 = (r1 - r2)^2 + 9 gives 4 r1 r2 = 9: shaded 2 pi r1 r2 = 9 pi/2."
+    ],
+    "2022 UKMT IMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 6/60 = 0.1 hours."
+    ],
+    "2022 UKMT IMC, Problem 2": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 200 g times 2.5 = 500 g = 0.5 kg."
+    ],
+    "2022 UKMT IMC, Problem 3": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 3 000 000 / 20 000 = 150."
+    ],
+    "2022 UKMT IMC, Problem 4": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 2000 m at 5 m a day is 400 days: just over a year."
+    ],
+    "2022 UKMT IMC, Problem 5": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 10006 - 8008 = 1998 = 10000 - 8002."
+    ],
+    "2022 UKMT IMC, Problem 6": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): a fifth of 15/4 is 3/4."
+    ],
+    "2022 UKMT IMC, Problem 7": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): undoing the machine, the input is 9n + 120 for output n: the least is 129."
+    ],
+    "2022 UKMT IMC, Problem 8": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 12 and 21 differ by 9."
+    ],
+    "2022 UKMT IMC, Problem 9": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): for x > 2022 the fractions below 1 are 2022/(x - 1), 2022/x and 2022/(x + 1), smallest the last."
+    ],
+    "2022 UKMT IMC, Problem 10": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 100 rectangles of perimeter 8 lose 2 cm at each of the 99 joins: 800 - 198 = 602."
+    ],
+    "2022 UKMT IMC, Problem 11": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): x/4 = x + 9 gives x = -12."
+    ],
+    "2022 UKMT IMC, Problem 12": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): each triangle has twice the area of the one before (scale sqrt 2): 2 + 4 + 8 = 14."
+    ],
+    "2022 UKMT IMC, Problem 13": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): (n - 1)n(n + 1) = 3n gives n = 0 or n^2 = 4: (-1, 0, 1), (1, 2, 3), (-3, -2, -1)."
+    ],
+    "2022 UKMT IMC, Problem 14": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): equal second-row cells n make the third row 2n, 2n and the top 4n: a multiple of 4."
+    ],
+    "2022 UKMT IMC, Problem 15": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the mirror is the perpendicular bisector of the segment from (5, 3) to (1, -1): through (3, 1) with slope -1, y = 4 - x."
+    ],
+    "2022 UKMT IMC, Problem 16": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 4^2022 / 2 = 2^4044 / 2 = 2^4043."
+    ],
+    "2022 UKMT IMC, Problem 17": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): X is two 6 cm segments and two semicircles; Y is three 4 cm segments and three third-circles: both 12 + 2 pi."
+    ],
+    "2022 UKMT IMC, Problem 18": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): c(1 + c/100) = 56 gives c^2 + 100c - 5600 = 0: c = 40."
+    ],
+    "2022 UKMT IMC, Problem 19": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the sector is (1/2)(radius)(arc) = (1/2)(6)(10) = 30."
+    ],
+    "2022 UKMT IMC, Problem 20": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): with mean m the list is x, y, m + 2, m + 4, m + 4 and x + y = 2m - 10; y at most m + 1 makes x = m - 11: range 15."
+    ],
+    "2022 UKMT IMC, Problem 21": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the small semicircle's radius r has r^2 + r^2 = 4, so its area pi is half of 2 pi: 1/2."
+    ],
+    "2022 UKMT IMC, Problem 22": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the four perimeters show length + width = 20; of the options only 96 = 8 times 12 fits."
+    ],
+    "2022 UKMT IMC, Problem 23": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the hexagon's chord PQ = 4 sin 60 = 2 sqrt 3, so the overlap is 2 by (4 - 2 sqrt 3): 8 - 4 sqrt 3."
+    ],
+    "2022 UKMT IMC, Problem 24": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): c = 2a, b = 2d and c + 2d = a + 2b give a = 2d, so the four pies cost 9d: 18."
+    ],
+    "2022 UKMT IMC, Problem 25": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the border equals the patio, so (x + 2)(y + 2) = 2xy, that is (x - 2)(y - 2) = 8: x = 3, 4, 6, 10."
     ]
   }
 }
