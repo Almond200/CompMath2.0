@@ -45569,6 +45569,106 @@
     "2000 Pascal Contest, Problem 25": [
       700,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): place B at the origin: SQ runs from (3, 0) to (9, 4), and the projections of P and R onto it differ by 20/sqrt 52 = 10/sqrt 13."
+    ],
+    "1999 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 20/2 = 10."
+    ],
+    "1999 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): k^3 - 8 = 0 at k = 2, so the product is 0."
+    ],
+    "1999 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): heart^2 = 36: 6."
+    ],
+    "1999 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 15 + 7 = 22, divisible by 11."
+    ],
+    "1999 Pascal Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 40 - 25 = 15."
+    ],
+    "1999 Pascal Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the angles at the point sum to 360: a + b = 360 - 110 - 60 = 190."
+    ],
+    "1999 Pascal Contest, Problem 7": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2x = 6 and 3y = 15: 21."
+    ],
+    "1999 Pascal Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 240 - 30 - 55 - 65 = 90."
+    ],
+    "1999 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the shaded triangle has base 2 and height 3: 3."
+    ],
+    "1999 Pascal Contest, Problem 10": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 10 + 1000 = 1010 = 1.01 times 10^3."
+    ],
+    "1999 Pascal Contest, Problem 11": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 100 days is 14 weeks and 2 days: Friday."
+    ],
+    "1999 Pascal Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the next time with identical digits is 11:11, 5 hours 16 minutes later: 316."
+    ],
+    "1999 Pascal Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each circle around a digit multiplies it by 10: 3(10^4) + 1(10^2) + 5 = 30105."
+    ],
+    "1999 Pascal Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 512 less the 4 by 4 by 8 hole: 384."
+    ],
+    "1999 Pascal Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 52 makes it divisible by 4, and 7 + k + 5 + 2 divisible by 3 gives k = 1, 4, 7: 3."
+    ],
+    "1999 Pascal Contest, Problem 16": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 60% - 40% = 20% of the votes is 24: 120."
+    ],
+    "1999 Pascal Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the opposite angle is 80 and the supplement of 150 is 30: x = 70."
+    ],
+    "1999 Pascal Contest, Problem 18": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the height 4 and slant side 5 give an overhang of 3: BC = 10 and the perimeter 26."
+    ],
+    "1999 Pascal Contest, Problem 19": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each pair sums to (9 + 53) = 62, so 15 pairs with 47."
+    ],
+    "1999 Pascal Contest, Problem 20": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each factor ends in 6: 6."
+    ],
+    "1999 Pascal Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the prime must be two from an odd square; checking 9, 25, 49, 81 gives 10, 24, 48, 80 and 82: 5."
+    ],
+    "1999 Pascal Contest, Problem 22": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): in terms of x, y = 3x/2, z = 15x/4 and w = 4x: x, y, z, w."
+    ],
+    "1999 Pascal Contest, Problem 23": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): equal times give x/8 + (22.5 - x)/5 = x/4 + (22.5 - x)/10, so Bert rides 10 km; the bike waits from 1.25 h to 2.5 h: 75 minutes."
+    ],
+    "1999 Pascal Contest, Problem 24": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): there are 9 times 8 = 72 ordered pairs, so at most 73 digits, and a trail using every pair exists: 73."
+    ],
+    "1999 Pascal Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with l and m parallel, C1's diameter is their distance; placing the centres and requiring the tangencies with radii 9 and 4 gives r = 12."
     ]
   }
 }
