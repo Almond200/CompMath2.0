@@ -36955,6 +36955,106 @@
     "2016 Fermat Contest, Problem 25": [
       1200,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): split A into chains b, 3b, 9b, ...; a largest triple-free set takes alternate elements, with one way for odd chains and m + 1 for chains of length 2m: n = 4^4 3^33 2^302 = 2^310 3^33, so N = 4 + 9 + 96100 + 1089 = 97202."
+    ],
+    "2015 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the five numbers centre on 10."
+    ],
+    "2015 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 10/5 = 2."
+    ],
+    "2015 Fermat Contest, Problem 3": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the round trip is 10 gaps and 70% is 7: out 5 and back 2, at S."
+    ],
+    "2015 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (-6)^2 = 36."
+    ],
+    "2015 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the fourth corner is (7, -2)."
+    ],
+    "2015 Fermat Contest, Problem 6": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): triangle ZMN is right-angled at M, so angle Z = 90 - 68 = 22 and X = 180 - 55 - 22 = 103."
+    ],
+    "2015 Fermat Contest, Problem 7": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 30 dollars is a quarter of the price 120, and the father gives the last quarter: 30."
+    ],
+    "2015 Fermat Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 225 = 3^2 5^2: x + y = 4."
+    ],
+    "2015 Fermat Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 25 + 19 - 36 = 8."
+    ],
+    "2015 Fermat Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Bruce takes 4 hours and Anca drives 3 hours 20 minutes: 40 minutes of rest."
+    ],
+    "2015 Fermat Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): three choices for each digit: 27."
+    ],
+    "2015 Fermat Contest, Problem 12": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): cos theta = (1/2)/(sqrt 2/2) = sqrt 2/2: 45 degrees."
+    ],
+    "2015 Fermat Contest, Problem 13": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): after k years 100 times 2^k > 10000/2^k needs 4^k > 100: k = 4, 2004."
+    ],
+    "2015 Fermat Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): QMS has base MS = s/2 and height s: s^2/4, so 1 : 4."
+    ],
+    "2015 Fermat Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): c + w = 45 and 4c - w = 135 give c = 36: 9 wrong."
+    ],
+    "2015 Fermat Contest, Problem 16": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): R is on the circle with diameter PQ, so t^2 = 4 times 16: t = 8."
+    ],
+    "2015 Fermat Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a + b = 3a - 3b gives a = 2b: 2."
+    ],
+    "2015 Fermat Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): equal roots need k^2 - 7k + 10 = 0: k = 2 or 5, sum 7."
+    ],
+    "2015 Fermat Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the x-intercepts are -2/m, -3/m, -4/m, summing to -9/m = 36: m = -1/4."
+    ],
+    "2015 Fermat Contest, Problem 20": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a^2014(a + 1) is divisible by 5 when a is 0 or 4 mod 5: 4, 5, 9, 10."
+    ],
+    "2015 Fermat Contest, Problem 21": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Amina wins on her first, second or third toss: 1/2 + 1/8 + 1/32 = 21/32."
+    ],
+    "2015 Fermat Contest, Problem 22": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with a = b - d and c = b + d the terms are 4b - 3d, 4b + d, 4b + 2d, and the geometric condition gives d = -12b/7; then abc = -95b^3/49 = 17955, so b = -21, d = 36: -57, -21, 15, sum -63."
+    ],
+    "2015 Fermat Contest, Problem 23": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (y - 2x)^2 + (x + 1)^2 = 625 = 25^2: the representations of 625 as a sum of two squares give 7 pairs with 0 <= x <= y."
+    ],
+    "2015 Fermat Contest, Problem 24": [
+      1100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the upper centre is 65 from the square's top corner, so 33 to its right; the lower centre (279 + r, r) is r + 65 from it: r^2 - 866r + 109089 = 0, r = 153."
+    ],
+    "2015 Fermat Contest, Problem 25": [
+      1300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the period of m/n is the order of 10 modulo the part of n prime to 10; with n squarefree that part divides 3 times 7 times 11 times 13 times 37 and must have order 6; summing phi over those n, times 1, 2, 5 or 10, gives F = 1109700, so G = 1109707: 181."
     ]
   }
 }
