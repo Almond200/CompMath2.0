@@ -25258,6 +25258,242 @@
     "2013 Utah State Math Contest Senior, Problem 30": [
       1100,
       "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): multiply by r: 2(x^2 + y^2) = x."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 1": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): digit sum 18 and last digits: 1, 2, 3, 6 and 9."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 2": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): facing pages are consecutive: 52 times 53 = 2756."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 3": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): count paths row by row as in Pascal's triangle: 1, 4, 6, 4, 1 then 5, 10, 10, 5, then 15, 20, 15, then 35, 35."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 4": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1.2666... = 1 + 4/15."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 5": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): overhang 3 and leg 5 give height 4: (12 + 6)/2 times 4."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 6": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the longest side faces the largest angle, so AB."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 7": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): ten scores: the median is the mean of 80 and 84."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 8": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): each new triangle adds 2 toothpicks: 2(50) + 1."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 9": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): each topping is in or out: 2^4."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 10": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 4n - m."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 11": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): by dimes: 6 + 4 + 2 = 12."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 12": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): three equally likely strings mom, mmo, omm."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 13": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 139 days later, 139 = 6 mod 7: Wednesday."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 14": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 450 times (1/2)(2/3)(4/5) = 120 are multiples of none of 2, 3, 5."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 15": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a 3 + 3 sqrt 2 square minus four corner triangles: 18 + 18 sqrt 2."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 16": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the highest prime powers: 8 times 9 times 5 times 7."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 17": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 8! has 2^7 and 4^3 = 2^6, so 2^6."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 18": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): sum even with product even means exactly two odds or none: (3/8 + 1/8)/(7/8)."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 19": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 80, then 72, then 64.80."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 20": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the three triangles share base AC and their apexes lie on the parallel line, so equal heights."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 21": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): b^2/2 = b gives b = 2, area 2."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 22": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): x/z = (3/2)(2/7) = 3/7."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 23": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1200 square meters times the 16 meters drained."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 24": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): read the two values off the graphs."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 25": [
+      300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 3x = 4s."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 26": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 13 clubs and 3 more queens: 16/52."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 27": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1.25 times 0.6 = 0.75."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 28": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): side R sqrt 3 gives area 3 sqrt 3 R^2/4 against pi R^2."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 29": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): after 1 minute alone, 1 - 1/h remains at rate 1/h + 1/c: h(c + 1)/(h + c)."
+    ],
+    "2006 Utah State Math Contest Junior, Problem 30": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the nest y satisfies y^2 = x + y and x + y = 2, so y = sqrt 2."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 1": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): count paths row by row as in Pascal's triangle: 1, 4, 6, 4, 1 then 5, 10, 10, 5, then 15, 20, 15, then 35, 35."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 2": [
+      300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 44^2 = 1936 and 45^2 = 2025."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 3": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 25! has six factors of 5 and more than six of 2, so 10^6."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 4": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): ten scores total 830, and the nine known ones total 750."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 5": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 12 + 20 - 26 = 6."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 6": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1.25 times 0.6 = 0.75."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 7": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (a + x) - (x - a) = 2a."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 8": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): side R sqrt 3 gives area 3 sqrt 3 R^2/4 against pi R^2."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 9": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1.2666... = 1 + 4/15."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 10": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 6j + 4(100 - j) = 475 gives j = 37.5."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 11": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 80, then 72, then 64.80."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 12": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 500 - 50 pi is about 343."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 13": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): f(f(x)) = x, so the even terms are x."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 14": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): M = 1 and F = 9, and the columns force 9567 + 1085 = 10652, so L = 6."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 15": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): read g(3) off its graph, then f at that value."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 16": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): powers of 3 mod 5 cycle with period 4 and 3333 = 1 mod 4: 3."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 17": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): one of the 6!/(2!4!) = 15 arrangements."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 18": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): three quarters of a radius-12 circle, plus quarter circles of radii 4 and 2 around the corners: 113 pi."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 19": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 144 in base b is b^2 + 4b + 4 = (b + 2)^2."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 20": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the three triangles share base AC and their apexes lie on the parallel line, so equal heights."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 21": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): expand along the sparse rows and columns: -240, so none of these."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 22": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 91 like some candy; the given counts force gumdrops-only 18, licorice-and-gumdrops 12, chocolate-and-gumdrops 9, leaving 6."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 23": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): areas 100, 50, 25, ... sum to 200."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 24": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a(1, 0, -1) + b(1, 1, 2) = (a + b, b, 2b - a): (2, 1, 2) fails."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 25": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (3x + 2)(x - 3) >= 0 and x not 4: three intervals fit."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 26": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): each vote is odd, so an odd number of ballots, at least 8 since 5n >= 37: nine."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 27": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the equilateral triangle has the most area: height p/(2 sqrt 3)."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 29": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): after 1 minute alone, 1 - 1/h remains at rate 1/h + 1/c: h(c + 1)/(h + c)."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 30": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the nest y satisfies y^2 = x + y and x + y = 2, so y = sqrt 2."
     ]
   }
 }

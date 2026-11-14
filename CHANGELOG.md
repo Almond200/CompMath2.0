@@ -2,6 +2,7 @@
 
 **2026-11-14**
 
+- **Utah State Math Contest 2006 (59 problems):** the University of Utah's grades 7–9 and 10–12 papers (30 questions each that year), read from page images; the Senior paper repeats nine Junior problems. Senior #28, a limit of an integral, is left out as calculus. The cryptarithm (#14, L = 6) and the 6×6 determinant (#21, −240, so "none of these") are checked by computation and against the official solutions.
 - **Utah State Math Contest 2013 (59 problems):** both papers read from page images and every answer worked; the Senior paper repeats 13 Junior problems, which copy their twin. Senior #21 ($|f(a)-f(b)|\le|a-b|^2$ forces a constant) is left out as calculus. Notes in the reasons: Junior #5 / Senior #4's magic square is fixed only with the diagonals, as the examples have; Senior #3's official answer, 1000, counts a leading zero (the count is 900). Six earlier Utah set-diagram questions (2012 J23, 2014 J1, J2 and S1, 2017 J10 and S4) moved from Extremal subsets and set families to Two and three sets; Venn diagrams, where they belong.
 - **Contest filters: Select all and Deselect all (owner):** on Problems by topic and Problems by difficulty, two buttons above the contest chips switch every contest on or off, so one contest can be chosen in two clicks; with none chosen the page says so.
 - **Contests that belong together (owner):** in Practice's Contests list the AMC 8, 10 and 12, HMMT February and November, ARML and ARML Local, and PUMaC's two divisions sit together without a rule between them.
