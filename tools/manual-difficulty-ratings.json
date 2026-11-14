@@ -41051,6 +41051,106 @@
     "2003 Cayley Contest, Problem 25": [
       900,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the lacing is symmetric and the exterior angles grow by theta along the chain until the middle triangle closes: (2n + 1) theta = 180, theta = 60, 36, 20, 12, 4: 5."
+    ],
+    "2002 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 5x + 8 + 2x = 7x + 8."
+    ],
+    "2002 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 25 - (4 + 9) = 12."
+    ],
+    "2002 Cayley Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 9 - 4(-8) = 41."
+    ],
+    "2002 Cayley Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): n = 200, and 2/5 of it is 80."
+    ],
+    "2002 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the exponents sum to 0: 2^0 = 1."
+    ],
+    "2002 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): angle ACB = 80, so angle AED = 80 by the parallels and x = 100."
+    ],
+    "2002 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): y = x/2 + b through (-2, 4): b = 5."
+    ],
+    "2002 Cayley Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 4 times 17 - 3 times 18 = 68 - 54 = 14."
+    ],
+    "2002 Cayley Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): triangle CDE is isosceles with apex angle 40; around D, y = 360 - 90 - 40 - 90 = 140."
+    ],
+    "2002 Cayley Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (x - 5)/4 = (x - 4)/5 gives 5x - 25 = 4x - 16: x = 9."
+    ],
+    "2002 Cayley Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the intercepts are A(4, 0) and B(0, -8): (1/2)(4)(8) = 16."
+    ],
+    "2002 Cayley Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 10 times 1.4 times 0.7 = 9.80."
+    ],
+    "2002 Cayley Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): BC = 200, and 120 + (200 - x) = 160 + x: FB = 80."
+    ],
+    "2002 Cayley Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (a + b)(c + d) = 42 gives a + b = 14: 17."
+    ],
+    "2002 Cayley Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): split by the first move from A (to D, E or B): 1 + 1 + 3 = 5 paths."
+    ],
+    "2002 Cayley Contest, Problem 16": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 358800 lies between 24^4 and 25^4, and 23 times 24 times 25 times 26 = 358800: 98."
+    ],
+    "2002 Cayley Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): aab with a from 1 to 9 and b any other digit: 9 times 9 = 81."
+    ],
+    "2002 Cayley Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): DF is a midline, so ADF has 1/4 of the area, and the altitude AE halves it: 1/8."
+    ],
+    "2002 Cayley Contest, Problem 19": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a^2 - b^2 = (a - b)(a + b) = 555555555555554 times 10^15: 14 fives and a 4 sum to 74."
+    ],
+    "2002 Cayley Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the 160 pi of water fills both tanks to depth h: (16 + 36) pi h = 160 pi, h = 40/13."
+    ],
+    "2002 Cayley Contest, Problem 21": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a 2 pi quarter arc means circumference 8 pi, r = 4: the sector is 16 pi / 4 = 4 pi."
+    ],
+    "2002 Cayley Contest, Problem 22": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): k terms from a give k(2a + k - 1) = 150 with one odd factor; each odd divisor of 75 but 1 gives a run (2, 3, 5, 6 and 10 terms): 5."
+    ],
+    "2002 Cayley Contest, Problem 23": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): AF = 40 and FD = 30 by Pythagoras, EF = 12 by similar triangles, and AECD is a parallelogram so CD = 52: (1/2)(12 + 52)(30) = 960."
+    ],
+    "2002 Cayley Contest, Problem 24": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the centres are 15 apart and 12 apart across, so 9 apart vertically: depth 24, and 4374 pi - 288 pi - 972 pi = 3114 pi."
+    ],
+    "2002 Cayley Contest, Problem 25": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): subtracting, k(k - 1)x = 6, so k(k - 1) = 2 or 6: k = 2, -1, 3, -2, and y = (kx + 7)/5 is an integer only for k = 3 and -2: 2."
     ]
   }
 }
