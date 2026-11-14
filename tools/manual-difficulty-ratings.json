@@ -28423,6 +28423,262 @@
     "2023 MBMT Upper Number Theory, Problem 8": [
       1300,
       "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): by Wilson, the product of k!^2 from 1 to 40 reduces mod 41 by pairing k! with (40 - k)!."
+    ],
+    "2022 MBMT Lower Algebra, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 7 loaves of 25 slices is 175 days, 25 weeks."
+    ],
+    "2022 MBMT Lower Algebra, Problem 2": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): two thirds of 15."
+    ],
+    "2022 MBMT Lower Algebra, Problem 3": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 10 books tripled the collection, so she began with 5; 20 more days add 20."
+    ],
+    "2022 MBMT Lower Algebra, Problem 4": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a palindrome aba with 2a + b = 16 and the stated digit condition."
+    ],
+    "2022 MBMT Lower Algebra, Problem 5": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): (n(x + 2) - 6)/n = x for every x forces 2n = 6."
+    ],
+    "2022 MBMT Lower Algebra, Problem 6": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): g - 1 = (b + 1)^2 and the second condition give two equations in the counts."
+    ],
+    "2022 MBMT Lower Algebra, Problem 7": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): x = plus or minus (2/sqrt 3) y, so the ratio is 7 + 4 sqrt 3 or 7 - 4 sqrt 3, product 1."
+    ],
+    "2022 MBMT Lower Algebra, Problem 8": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the integers nearer 264^2 than either neighboring square run from 264^2 - 263 to 264^2 + 264."
+    ],
+    "2022 MBMT Lower Geometry, Problem 1": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 200/50 hops."
+    ],
+    "2022 MBMT Lower Geometry, Problem 2": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 6/3."
+    ],
+    "2022 MBMT Lower Geometry, Problem 3": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): base CD and height BC: half the rectangle."
+    ],
+    "2022 MBMT Lower Geometry, Problem 4": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 10 by 3 against 6 by 5: perimeters 26 and 22."
+    ],
+    "2022 MBMT Lower Geometry, Problem 5": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a right isosceles triangle with legs 6."
+    ],
+    "2022 MBMT Lower Geometry, Problem 6": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): angles 1, 2 and 177 keep the sides different."
+    ],
+    "2022 MBMT Lower Geometry, Problem 7": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): E is 3 from line AB on either side: distances 3 and 9 from CD."
+    ],
+    "2022 MBMT Lower Geometry, Problem 8": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): (2 - x)^2 + 4 = (2 + x)^2 gives x = 1/2."
+    ],
+    "2022 MBMT Lower Counting, Problem 1": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the first coin does not matter: 1/2."
+    ],
+    "2022 MBMT Lower Counting, Problem 2": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): losing the nickel or the dime leaves at least 30 cents: 2/3."
+    ],
+    "2022 MBMT Lower Counting, Problem 3": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): products of two of 1, 2, 4, 8 are the powers 2^0 to 2^6: 7 values."
+    ],
+    "2022 MBMT Lower Counting, Problem 4": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): pairs (1, 9), (2, 8), (3, 7), (4, 6)."
+    ],
+    "2022 MBMT Lower Counting, Problem 5": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): count the outcomes of the stated kind among the 9 equally likely pairs."
+    ],
+    "2022 MBMT Lower Counting, Problem 6": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): same length pairs: C(3, 2) + C(4, 2) + C(5, 2) = 19 of C(12, 2) = 66."
+    ],
+    "2022 MBMT Lower Counting, Problem 7": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a product ending in 0 needs a 5 and an even number: 6 of 36."
+    ],
+    "2022 MBMT Lower Counting, Problem 8": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the next card is drawn from the 49 left, given the cards shown."
+    ],
+    "2022 MBMT Lower Number Theory, Problem 1": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 16 = 2^4 has 5 divisors."
+    ],
+    "2022 MBMT Lower Number Theory, Problem 2": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 47 = 5 times 9 + 2."
+    ],
+    "2022 MBMT Lower Number Theory, Problem 3": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 97 is prime."
+    ],
+    "2022 MBMT Lower Number Theory, Problem 4": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): an odd digit sum and an even digit product: 988."
+    ],
+    "2022 MBMT Lower Number Theory, Problem 5": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 8 to 12 has three evens, 9 and 12, and 11: sum 50."
+    ],
+    "2022 MBMT Lower Number Theory, Problem 6": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 5! = 120 ends in one zero and every other term in more."
+    ],
+    "2022 MBMT Lower Number Theory, Problem 7": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): work from the given conditions on the terms of the progression."
+    ],
+    "2022 MBMT Lower Number Theory, Problem 8": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the largest tower among the orders of 2, 3, 4; its last digit by the cycle of powers."
+    ],
+    "2022 MBMT Upper Algebra, Problem 1": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 10 books tripled the collection, so she began with 5; 20 more days add 20."
+    ],
+    "2022 MBMT Upper Algebra, Problem 2": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a palindrome aba with 2a + b = 16 and the stated digit condition."
+    ],
+    "2022 MBMT Upper Algebra, Problem 3": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): g - 1 = (b + 1)^2 and the second condition give two equations in the counts."
+    ],
+    "2022 MBMT Upper Algebra, Problem 4": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the integers nearer 264^2 than either neighboring square run from 264^2 - 263 to 264^2 + 264."
+    ],
+    "2022 MBMT Upper Algebra, Problem 5": [
+      1200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the ceiling of x - 1/5 equals the floor of x + 1/5 exactly when x is within 1/5 of an integer: [0, 1/5], [4/5, 6/5] and [9/5, 2], a fraction 2/5 of [0, 2]."
+    ],
+    "2022 MBMT Upper Algebra, Problem 6": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the two graphs overlap along a segment for two values of c, summing to -40."
+    ],
+    "2022 MBMT Upper Algebra, Problem 7": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): z(x + y) = 288 - (x + y)^2 + xy, so z = (272 + xy)/4 with xy <= 4: z at most 69."
+    ],
+    "2022 MBMT Upper Algebra, Problem 8": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): x_(n+1) - 1 = (sqrt(x_n - 1) + 1)^2, so sqrt(x_n - 1) = sqrt 3 + n and x_100 = (100 + sqrt 3)^2 + 1 = 10004 + 200 sqrt 3."
+    ],
+    "2022 MBMT Upper Geometry, Problem 1": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): base CD and height BC: half the rectangle."
+    ],
+    "2022 MBMT Upper Geometry, Problem 2": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 10 by 3 against 6 by 5: perimeters 26 and 22."
+    ],
+    "2022 MBMT Upper Geometry, Problem 3": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): angles 1, 2 and 177 keep the sides different."
+    ],
+    "2022 MBMT Upper Geometry, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): (2 - x)^2 + 4 = (2 + x)^2 gives x = 1/2."
+    ],
+    "2022 MBMT Upper Geometry, Problem 5": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the diagonals meet at 60 and 120 degrees: sides 1 and sqrt 3."
+    ],
+    "2022 MBMT Upper Geometry, Problem 6": [
+      1400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the bisector from C cuts AD in the ratio of AC to DC."
+    ],
+    "2022 MBMT Upper Geometry, Problem 7": [
+      1400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): tangency at D makes angle ADE equal to DCE; chase with DE parallel to BC."
+    ],
+    "2022 MBMT Upper Geometry, Problem 8": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): BD = BA makes ABD isosceles; the right angle at D and similar triangles give EC."
+    ],
+    "2022 MBMT Upper Counting, Problem 1": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): products of two of 1, 2, 4, 8 are the powers 2^0 to 2^6: 7 values."
+    ],
+    "2022 MBMT Upper Counting, Problem 2": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): pairs (1, 9), (2, 8), (3, 7), (4, 6)."
+    ],
+    "2022 MBMT Upper Counting, Problem 3": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): same length pairs: C(3, 2) + C(4, 2) + C(5, 2) = 19 of C(12, 2) = 66."
+    ],
+    "2022 MBMT Upper Counting, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the next card is drawn from the 49 left, given the cards shown."
+    ],
+    "2022 MBMT Upper Counting, Problem 5": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): of C(5, 3) = 10 draws, more spoons than forks in 7."
+    ],
+    "2022 MBMT Upper Counting, Problem 6": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each coin leaves on the first flip it comes up heads; the condition concerns those first-heads times."
+    ],
+    "2022 MBMT Upper Counting, Problem 7": [
+      1400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the running sums mod 3 form states; the first to reach 0 mod 3 wins."
+    ],
+    "2022 MBMT Upper Counting, Problem 8": [
+      1400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each person's statement fixes their type relative to the neighbor; count the consistent lines."
+    ],
+    "2022 MBMT Upper Number Theory, Problem 1": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 97 is prime."
+    ],
+    "2022 MBMT Upper Number Theory, Problem 2": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): an odd digit sum and an even digit product: 988."
+    ],
+    "2022 MBMT Upper Number Theory, Problem 3": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 5! = 120 ends in one zero and every other term in more."
+    ],
+    "2022 MBMT Upper Number Theory, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the largest tower among the orders of 2, 3, 4; its last digit by the cycle of powers."
+    ],
+    "2022 MBMT Upper Number Theory, Problem 5": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 512n has extra divisors unless n is a power of 2: 2048 is the even number from 2022 on that adds fewest."
+    ],
+    "2022 MBMT Upper Number Theory, Problem 6": [
+      1200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): count the products in a 10 by 10 table that change when one entry is wrong."
+    ],
+    "2022 MBMT Upper Number Theory, Problem 7": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): for each prime, one of the two exponents is the full power: (2(29) + 1)(2(13) + 1) = 1593."
+    ],
+    "2022 MBMT Upper Number Theory, Problem 8": [
+      1400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): x + y = xy for prices in cents: (100x)(100y)/10000 = x + y; bound the digits."
     ]
   }
 }
