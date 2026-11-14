@@ -389,5 +389,18 @@ window.MATH_CONTEST_PAPERS = {
     "url": "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf",
     "solUrl": "https://berkeley.mt/archives/bmt-2014/AnaS2014A.pdf",
     "solKind": "answer-key"
+  },
+  "2014 BMT Geometry": {
+    "url": "https://berkeley.mt/archives/bmt-2014/GeoS2014.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2014/GeoS2014A.pdf",
+    "solKind": "answer-key"
+  },
+  "2013 BMT Analysis": {
+    "url": "https://berkeley.mt/archives/bmt-2013/AnaS2013.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2013/AnaS2013S.pdf"
+  },
+  "2013 BMT Discrete Math": {
+    "url": "https://berkeley.mt/archives/bmt-2013/DisS2013.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2013/DisS2013S.pdf"
   }
 };

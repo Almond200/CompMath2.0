@@ -167,7 +167,10 @@
     "2016 BMT Geometry": "https://berkeley.mt/archives/bmt-2016/GeoS2016.pdf",
     "2015 BMT Analysis": "https://berkeley.mt/archives/bmt-2015/AnaS2015.pdf",
     "2015 BMT Geometry": "https://berkeley.mt/archives/bmt-2015/GeoS2015.pdf",
-    "2014 BMT Analysis": "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf"
+    "2014 BMT Analysis": "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf",
+    "2014 BMT Geometry": "https://berkeley.mt/archives/bmt-2014/GeoS2014.pdf",
+    "2013 BMT Analysis": "https://berkeley.mt/archives/bmt-2013/AnaS2013.pdf",
+    "2013 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2013/DisS2013.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -38137,6 +38140,106 @@
     "2014 BMT Analysis, Problem 10": [
       3500,
       "Bracket three slightly perturbed cubic roots by exact rational half-rounding intervals to certify their scaled nearest integers."
+    ],
+    "2014 BMT Geometry, Problem 1": [
+      1500,
+      "Compare a regular hexagon area with the disk of its apothem-radius incircle."
+    ],
+    "2014 BMT Geometry, Problem 2": [
+      1800,
+      "Find a regular-hexagon diagonal intersection and evaluate the area of the resulting center-based quadrilateral."
+    ],
+    "2014 BMT Geometry, Problem 3": [
+      2350,
+      "Compare the isosceles triangle and a circle-diameter altitude construction to recover a fixed chord length."
+    ],
+    "2014 BMT Geometry, Problem 4": [
+      3550,
+      "Minimize the cylinder length over all three axial sphere orders using sharp radial separation bounds; a shorter exact packing disproves the official order and value."
+    ],
+    "2014 BMT Geometry, Problem 5": [
+      3500,
+      "Solve a formal equal-radius hypercube tangency equation and audit feasibility: the resulting adjacent corner hyperspheres overlap, so the asserted nonoverlapping packing does not exist."
+    ],
+    "2014 BMT Geometry, Problem 6": [
+      2550,
+      "Intersect a square diagonal-like line with a corner-centered circle and project to the opposite side."
+    ],
+    "2014 BMT Geometry, Problem 7": [
+      3050,
+      "Parameterize a point on a parallelogram side ray, compare its cevian intersections and solve the length equality with the segment-order restriction."
+    ],
+    "2014 BMT Geometry, Problem 8": [
+      3000,
+      "Split a curvilinear region into a circular segment and an inscribed triangle whose area cancels the associated central triangle."
+    ],
+    "2014 BMT Geometry, Problem 9": [
+      3600,
+      "Audit two external-equilateral cevian lines, which meet at sixty or one hundred twenty degrees; their given distances violate the resulting point-to-line lower bound."
+    ],
+    "2014 BMT Geometry, Problem 10": [
+      3750,
+      "Average polygon hull areas over independent visibility subsets of eight convex-position points; the printed marginal probabilities alone do not specify that independence."
+    ],
+    "2013 BMT Analysis, Problem 1": [
+      1000,
+      "Add a short pair-sum linear system and subtract the unwanted pair."
+    ],
+    "2013 BMT Analysis, Problem 2": [
+      2000,
+      "Apply the quadratic-mean bound to a quartic unit curve and attain the maximal distance at equal coordinate magnitudes."
+    ],
+    "2013 BMT Analysis, Problem 4": [
+      2400,
+      "Separate real and imaginary parts of a complex quadratic condition and list the resulting moduli."
+    ],
+    "2013 BMT Analysis, Problem 6": [
+      3450,
+      "Obtain a cubic minimal polynomial from a primitive fourteenth root of unity, prove its irreducibility and evaluate its monic normalization."
+    ],
+    "2013 BMT Analysis, Problem 7": [
+      3650,
+      "Find the smallest positive parameter admitting a positive cubic solution through an exact nonnegative factorization, without requiring calculus."
+    ],
+    "2013 BMT Discrete Math, Problem 1": [
+      1250,
+      "Solve two remainder conditions together with parity and select the unique integer in the prescribed interval."
+    ],
+    "2013 BMT Discrete Math, Problem 2": [
+      1800,
+      "Enumerate three four-sided dice outcomes and test coprimality of their sum and product; the official final probability is correct but its written subtraction is not."
+    ],
+    "2013 BMT Discrete Math, Problem 3": [
+      2550,
+      "Encode each pile size by a subset of the removal amounts, match the subset-count lower bound with a binary construction."
+    ],
+    "2013 BMT Discrete Math, Problem 4": [
+      2600,
+      "Solve an iterated affine function around its fixed point and reduce the large exponential modulo a prime."
+    ],
+    "2013 BMT Discrete Math, Problem 5": [
+      3200,
+      "Multiply the nonprimitive roots under the intended positive smaller-exponent condition; the printed unrestricted integer exponent also allows zero and selects every root."
+    ],
+    "2013 BMT Discrete Math, Problem 6": [
+      3200,
+      "Count binary strings whose first specified three-flip pattern ends exactly at the last position, using the no-adjacent-tail recurrence."
+    ],
+    "2013 BMT Discrete Math, Problem 7": [
+      3150,
+      "Reduce containment of two additive numerical semigroups to representability of their generators and enumerate the possible second generators."
+    ],
+    "2013 BMT Discrete Math, Problem 8": [
+      2600,
+      "Condition a nested uniform decreasing-integer random map on its first value and include its absorbing zero case."
+    ],
+    "2013 BMT Discrete Math, Problem 9": [
+      3600,
+      "Find the diameter of a circulant pass graph; complete breadth-first distances independently verify the extremal shortest path."
+    ],
+    "2013 BMT Discrete Math, Problem 10": [
+      3500,
+      "Minimize the degree of a permutation of prescribed order by splitting its prime-power cycle lengths; the paper asks for general k while the numerical key specializes to 2013."
     ]
   }
 }
