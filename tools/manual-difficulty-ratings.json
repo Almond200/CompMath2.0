@@ -29959,6 +29959,114 @@
     "2015 MBMT Upper Number Theory, Problem 8": [
       1300,
       "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): n = (a - b)(a + b) in two ways needs two factor pairs of equal parity; count up to 400: 196."
+    ],
+    "2025 Calgary Junior Math Contest, Problem 1": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): Bob gets 454/4 and Alice a third of the remaining 3/4, also 454/4: difference 0."
+    ],
+    "2025 Calgary Junior Math Contest, Problem 2": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 10 coins carry 20 colors: 20 - 3 - 8 - 5 = 4 green."
+    ],
+    "2025 Calgary Junior Math Contest, Problem 3": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 28,800,000 cm at 1 cm a minute is 20,000 days."
+    ],
+    "2025 Calgary Junior Math Contest, Problem 4": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): BC = 4 AC with AB = 15: C between gives AC = 3, A between gives AC = 5."
+    ],
+    "2025 Calgary Junior Math Contest, Problem 5": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 2 would make the sum even, so five odd primes; the four smallest, 3 + 5 + 7 + 11 = 26, leave 29."
+    ],
+    "2025 Calgary Junior Math Contest, Problem 6": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): ABD is isosceles with base angles 52, and ADC with base angles half of 128: 26."
+    ],
+    "2025 Calgary Junior Math Contest, Problem 7": [
+      700,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): from 37 the values 20, 4, 8, 16, 14, 10, 2, 4 cycle with period 6."
+    ],
+    "2025 Calgary Junior Math Contest, Problem 8": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): in j - p years Penny is j and Jooni 2j - p: 3j - p = pj + j - p gives p = 2."
+    ],
+    "2025 Calgary Junior Math Contest, Problem 9": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the corner triangles take 9/25, 6/25 and 4/25 of ABC, leaving DEF 6/25: ABC = 75."
+    ],
+    "2024 Calgary Junior Math Contest, Problem 1": [
+      200,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 3 + N = 8."
+    ],
+    "2024 Calgary Junior Math Contest, Problem 2": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): work backward: 6 left is two thirds of what she had before Daniel."
+    ],
+    "2024 Calgary Junior Math Contest, Problem 3": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the 5 blue and 3 of one other color can come first: 9."
+    ],
+    "2024 Calgary Junior Math Contest, Problem 4": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the tangent-chord angle is half the arc AB."
+    ],
+    "2024 Calgary Junior Math Contest, Problem 5": [
+      700,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the left feet take all blue or the red shoe on one of three, 4 ways, and likewise the right: 16."
+    ],
+    "2024 Calgary Junior Math Contest, Problem 6": [
+      700,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 2024 = 2^3 times 11 times 23 forces a = 2 and (b - c)(b + c) = 253 = 11 times 23: b = 17, c = 6."
+    ],
+    "2024 Calgary Junior Math Contest, Problem 7": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 20 + 24 exceeds 1 + ... + 8 = 36 by the doubly colored sum, 8."
+    ],
+    "2024 Calgary Junior Math Contest, Problem 8": [
+      1000,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the half-circle on AC makes the feet D and E; similar triangles give the trapezoid's bases and height."
+    ],
+    "2024 Calgary Junior Math Contest, Problem 9": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): search forward month by month for the next date whose six digits fit the stated pattern."
+    ],
+    "2023 Calgary Junior Math Contest, Problem 1": [
+      100,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 10/2 + 6."
+    ],
+    "2023 Calgary Junior Math Contest, Problem 2": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): five days in arithmetic progression with difference 3 and total 80: the middle day is 16, the fourth 19."
+    ],
+    "2023 Calgary Junior Math Contest, Problem 3": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the digit sums of 2024 to 2027 are 8, 9, 10, 11: 2027."
+    ],
+    "2023 Calgary Junior Math Contest, Problem 4": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 100 pi is about 314, between 17^2 = 289 and 18^2 = 324, closer to 324."
+    ],
+    "2023 Calgary Junior Math Contest, Problem 5": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the total 1940 with 19 perfect scores leaves 40."
+    ],
+    "2023 Calgary Junior Math Contest, Problem 6": [
+      700,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): triangles on the same diagonal segments have proportional areas: 12 times 25/15 = 20."
+    ],
+    "2023 Calgary Junior Math Contest, Problem 7": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 1/n - 1/(n + 2) = 2/(n(n + 2)), and 99 = 9 times 11: 1/9 - 1/11 = 2/99."
+    ],
+    "2023 Calgary Junior Math Contest, Problem 8": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 10000 = 2^4 5^4 split with no zero digits: 625 times 16."
+    ],
+    "2023 Calgary Junior Math Contest, Problem 9": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): each die shows four side faces summing to 14; maximize the top and bottom faces of the stack."
     ]
   }
 }
