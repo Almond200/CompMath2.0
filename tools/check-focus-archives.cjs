@@ -25,7 +25,9 @@ for(const year of [2016,2017,2018,2019,2020,2021,2022,2023,2025]) for(const subj
  };
  const sparse2016={
    'Algebra':[[1,2],[2,4],[3,5],[4,6],[5,7],[7,8]],
-   'Combinatorics':[[1,3],[2,4],[3,5],[4,6],[5,7],[8,8]]
+   'Combinatorics':[[1,3],[2,4],[3,5],[4,6],[5,7],[8,8]],
+   'Geometry':[[1,2],[2,3],[3,4],[5,6],[6,7],[7,8]],
+   'Number Theory':[[1,1],[2,3],[3,5],[4,6],[5,7],[7,8]]
  };
  const shared=year===2016&&sparse2016[subject]?sparse2016[subject]
    :year===2018&&sparse2018[subject]?sparse2018[subject]

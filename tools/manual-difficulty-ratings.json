@@ -175,7 +175,11 @@
     "2016 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraA.pdf",
     "2016 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraB.pdf",
     "2016 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsA.pdf",
-    "2016 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsB.pdf"
+    "2016 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsB.pdf",
+    "2016 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2016_GeometryA.pdf",
+    "2016 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2016_GeometryB.pdf",
+    "2016 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryA.pdf",
+    "2016 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -38413,6 +38417,134 @@
     "2016 PUMaC Division B Combinatorics, Problem 8": [
       4000,
       "Translate universal medal-weight superiority into strict cumulative-count dominance and enumerate the bounded medal-count tuples."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 1": [
+      2350,
+      "Locate the tangency of an equilateral triangle corner circle with the circumcircle of a parallel smaller triangle."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 2": [
+      2600,
+      "Find a square-based circumcircle and intersect a radius line with a midpoint cevian using exact coordinates."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 3": [
+      3000,
+      "Unroll a cone geodesic into a chord whose radial midpoint condition fixes the sector angle and slant-to-base ratio."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 4": [
+      3100,
+      "Convert equal centroid and incenter base areas to a perimeter condition and attain the largest admissible integer side."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 5": [
+      3300,
+      "Use circle powers among altitude feet to identify a right triangle through the prescribed point and recover its remaining length."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 6": [
+      3550,
+      "Combine a diameter-circle right angle with an obtuse central distance condition in an isosceles triangle and solve the length ratio."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 7": [
+      3700,
+      "Use a parallel chord and two similar secant triangles to cancel an unknown scale and obtain a cyclic quadrilateral construction area."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 8": [
+      4000,
+      "Relate the midpoint-perpendicular circumcircle point to the orthocenter, then use altitude-foot circles and powers to recover both projected side intersections."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 1": [
+      1750,
+      "Relate the centers of four equal circles in a symmetric ring and recover the radius of their central tangent circle."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 2": [
+      2350,
+      "Locate the tangency of an equilateral triangle corner circle with the circumcircle of a parallel smaller triangle."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 3": [
+      2600,
+      "Find a square-based circumcircle and intersect a radius line with a midpoint cevian using exact coordinates."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 4": [
+      3000,
+      "Unroll a cone geodesic into a chord whose radial midpoint condition fixes the sector angle and slant-to-base ratio."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 5": [
+      3300,
+      "Resolve three opposite vertex pairs into orthogonal half-diagonals and sum the two pyramidal volumes of a nonregular octahedron."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 6": [
+      3300,
+      "Use circle powers among altitude feet to identify a right triangle through the prescribed point and recover its remaining length."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 7": [
+      3550,
+      "Combine a diameter-circle right angle with an obtuse central distance condition in an isosceles triangle and solve the length ratio."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 8": [
+      3700,
+      "Use a parallel chord and two similar secant triangles to cancel an unknown scale and obtain a cyclic quadrilateral construction area."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 1": [
+      1250,
+      "Complete each prime exponent to the next multiple of three to obtain a minimal cube multiplier."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 2": [
+      2200,
+      "Solve the first two nontrivial rows of a two-index linear recurrence and reduce a resulting quadratic row value modulo one thousand."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 3": [
+      3200,
+      "Follow the smallest-prime-factor steps of an odd noncoprimality map and prove the first parameter avoiding divisibility by three; the stated domain needs to exclude one."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 4": [
+      3300,
+      "Count idempotent last digits by assigning each prime-power base factor to consecutive integers and minimize the required number of distinct prime factors."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 5": [
+      3500,
+      "Factor a gcd-to-lcm divisor-pair sum into independent prime-exponent sums and simplify its exact rational value."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 6": [
+      3700,
+      "Separate a large prime-exponent power difference into its linear and cyclotomic factors and identify the four least prime divisors by their orders."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 7": [
+      3800,
+      "Count self-power congruences over a complete CRT period through multiplicative orders and a gcd sum, independently checking every integer in the original interval."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 8": [
+      4200,
+      "Count square-congruence roots through all singular and nonsingular prime-power valuation regimes, then enumerate the parameters dividing their root counts."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 1": [
+      1250,
+      "Complete each prime exponent to the next multiple of three to obtain a minimal cube multiplier."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 2": [
+      1700,
+      "Use a digit-sum divisibility condition to reduce the possible two-digit integers to a short list of multiples."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 3": [
+      2200,
+      "Solve the first two nontrivial rows of a two-index linear recurrence and reduce a resulting quadratic row value modulo one thousand."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 4": [
+      2550,
+      "Express a divisor product as an exponent of its integer and classify divisor-count factors having exactly one factor of two."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 5": [
+      3200,
+      "Follow the smallest-prime-factor steps of an odd noncoprimality map and prove the first parameter avoiding divisibility by three; the stated domain needs to exclude one."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 6": [
+      3300,
+      "Count idempotent last digits by assigning each prime-power base factor to consecutive integers and minimize the required number of distinct prime factors."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 7": [
+      3500,
+      "Factor a gcd-to-lcm divisor-pair sum into independent prime-exponent sums and simplify its exact rational value."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 8": [
+      3800,
+      "Count self-power congruences over a complete CRT period through multiplicative orders and a gcd sum, independently checking every integer in the original interval."
     ]
   }
 }
