@@ -38651,6 +38651,106 @@
     "1999 Fermat Contest, Problem 25": [
       900,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the fraction is 2 - (2n + 10)/((n - 1)(n - 3)); the remainder term is an integer only for n = -5, -1, 2, 4, 7: five values."
+    ],
+    "1998 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 15/30 = 1/2."
+    ],
+    "1998 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Sue has 100 - 20 - 45 = 35%: 350 votes."
+    ],
+    "1998 Fermat Contest, Problem 3": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): opposite sides of the parallelogram are equal: WX spans 6 across, so ZY does too and t - 4 = 6, t = 10."
+    ],
+    "1998 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1 and 100 give the largest sum, 101."
+    ],
+    "1998 Fermat Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 49 - 6 = 43."
+    ],
+    "1998 Fermat Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 6^30/3 = 2 times 6^29."
+    ],
+    "1998 Fermat Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the twelve numbers sum to 60: average 5."
+    ],
+    "1998 Fermat Contest, Problem 8": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the 45-degree path makes isosceles right triangles across the width 2; it bounces 5 times before reaching S."
+    ],
+    "1998 Fermat Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the rows give 11, 6 + x, x + 7, then 17 + x and 2x + 13, then 3x + 30 = 60: x = 10."
+    ],
+    "1998 Fermat Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): AB = 4, BC = 8, CD = 5: AB : BD = 4 : 13."
+    ],
+    "1998 Fermat Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): y = 100 - 3x > 0 for x = 1 to 33."
+    ],
+    "1998 Fermat Contest, Problem 12": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): AC has slope -sqrt 3, so CB, perpendicular to it, has slope 1/sqrt 3; it rises 5/sqrt 3 over the 5 from C to x = 13: y = 5/sqrt 3."
+    ],
+    "1998 Fermat Contest, Problem 13": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 8 numbers, each digit place showing 1 and 2 four times each: 12 times 111 = 1332."
+    ],
+    "1998 Fermat Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with y-intercept b the x-intercepts are -2b, -3b, -4b, summing to -9b = 36: b = -4."
+    ],
+    "1998 Fermat Contest, Problem 15": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): xy is least at x = 5, y = -3 (or x = -2, y = 7): -15 - 8 = -23."
+    ],
+    "1998 Fermat Contest, Problem 16": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a cube needs p + 4 and q to be multiples of 3: p = 2, q = 3, sum 5."
+    ],
+    "1998 Fermat Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the blocks have lengths 1, 2, ..., 13 covering 91 terms; the 14th block (digit 4) contains term 100: 4."
+    ],
+    "1998 Fermat Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Q is 1 and 1 across and 2 up from R: sqrt(1 + 1 + 4) = sqrt 6."
+    ],
+    "1998 Fermat Contest, Problem 19": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the centre is r from BC and on the perpendicular bisector of AD: (14 - r)^2 + 7^2 = r^2 gives r = 8.75."
+    ],
+    "1998 Fermat Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a card ends red when it was turned an even number of times: neither 2 nor 3 divides it (33) or both do (16): 49."
+    ],
+    "1998 Fermat Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 123456789 times 999999999 = 123456789 times 10^9 - 123456789 = 123456788876543211: no 9s."
+    ],
+    "1998 Fermat Contest, Problem 22": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): subtracting the two expressions gives a + c = 2b, so N = 13b, between 131 and 150 only for b = 11: a + b + c = 33."
+    ],
+    "1998 Fermat Contest, Problem 23": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): single + 2 double + 3 triple = 200 and single + double + triple = 140, so double + 2 triple = 60 with double 24: 18."
+    ],
+    "1998 Fermat Contest, Problem 24": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the angle between the hands is one of the 72-degree angles (the hands differ in length): 270 + m/2 - 6m = 72 gives m = 36, 9:36."
+    ],
+    "1998 Fermat Contest, Problem 25": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the minimum of the three lines is greatest where y = x/2 + 1 meets y = -3x/4 + 7, at x = 24/5: 17/5."
     ]
   }
 }
