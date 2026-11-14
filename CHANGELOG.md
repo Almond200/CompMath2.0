@@ -1,5 +1,10 @@
 # Changelog
 
+**2026-11-14**
+
+- **Contest lists show the AMC and AIME first (owner):** the Practice contest list and random-problem buttons, the contest chips and groups on Problems by topic and by difficulty, a problem's difficulty chart and the card and topic profiles show the AMC 8, 10 and 12 and the AIME; a "Show N more contests" button brings the others and holds while moving between pages. The browse, profile and accessibility checks test both states. AHSME and the Duke Math Meet are no longer listed as unwritten.
+- **Math in topic names and lesson titles (owner's screenshot):** topic names such as "Symmetric expressions: $x+y$, $xy$ and $x^n+y^n$" were shown with their dollar signs stripped and carets raw in profiles, topic pages and the topic picker; they are now set by KaTeX (`mathHtml` in `js/app.js`), as are Learn lesson titles in a card's "Study this more". Keyword chips show `^` exponents as superscripts, and the recurrence solver, Fermat and de Moivre tools write their exponents as superscripts. A sweep of all 782 card pages, all 462 topic pages and 250 random problem pages found no other raw math and no KaTeX errors.
+
 **2026-11-13**
 
 - **Utah State Math Contest (in progress; owner: "keep looking for contests", without calculus):** Junior and Senior exams from Weber State's archive, 2009 to 2011 so far (237 problems), with shared problems copied between the two papers and calculus questions left out. The 2011 HMMT calculus questions stay where they are, at the owner's word.

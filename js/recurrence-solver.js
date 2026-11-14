@@ -339,7 +339,7 @@
       var html = '<div class="rs-answer"><div class="rs-answer-label">Closed form</div><div class="rs-formula" data-tex="' + escapeAttr(res.closedLatex) + '"></div></div>';
       if (res.note) html += '<div class="rs-note">' + escapeHtml(res.note) + "</div>";
       html += '<details class="rs-steps"><summary>Show the working</summary><div class="rs-general rs-formula" data-tex="' + escapeAttr(res.generalLatex) + '"></div>';
-      res.steps.forEach(function (s) { html += '<div class="rs-step"><span class="rs-step-label">' + escapeHtml(s.label) + '</span><span class="rs-formula" data-tex="' + escapeAttr(s.tex) + '"></span></div>'; });
+      res.steps.forEach(function (s) { html += '<div class="rs-step"><span class="rs-step-label">' + escapeHtml(s.label).replace(/\^(n|\{[^}]*\}|\d+)/g, function (m, e) { return '<sup>' + e.replace(/^\{|\}$/g, '') + '</sup>'; }) + '</span><span class="rs-formula" data-tex="' + escapeAttr(s.tex) + '"></span></div>'; });
       html += "</details>";
       html += '<table class="rs-check"><thead><tr><th>n</th><th>by recurrence</th><th>by formula</th></tr></thead><tbody>';
       res.check.rows.forEach(function (r) { html += "<tr><td>" + r.n + "</td><td>" + r.rec + "</td><td>" + r.closed + (r.match ? "" : " ✗") + "</td></tr>"; });

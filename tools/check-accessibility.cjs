@@ -73,7 +73,7 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     });
     for (const [name, color] of Object.entries(colors)) if (name !== '--text-faint') assert.ok(contrast(colors['--text-faint'], color) >= 4.5, name);
     const contest = page.locator('[role="radiogroup"][aria-label="Contest"]');
-    await radio(contest, 'ArrowRight', 'AMC 8'); await radio(contest, 'End', 'HMMT February');
+    await radio(contest, 'ArrowRight', 'AMC 8'); await radio(contest, 'End', 'AIME');   // AMC and AIME show first (owner, 2026-11-14)
     await radio(contest, 'ArrowRight', 'Any contest'); await radio(contest, 'Home', 'Any contest');
     await radio(page.locator('[aria-label="Mock type"]'), 'ArrowRight', 'Generate a mock');
     await radio(page.locator('[aria-label="Mock contest"]'), 'ArrowDown', 'AMC 10');
