@@ -38251,6 +38251,106 @@
     "2003 Fermat Contest, Problem 25": [
       900,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1 times 4 + 2112 = 46^2; n + 2112 = a^2 and 4n + 2112 = b^2 give (2a - b)(2a + b) = 6336, whose suitable factor pairs give 7 values of n."
+    ],
+    "2002 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 5 - 2 times 9 = -13."
+    ],
+    "2002 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 30/6 = 5."
+    ],
+    "2002 Fermat Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 56 hours is 2 days and 8 hours: 5:04 p.m."
+    ],
+    "2002 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2 is the smallest prime, not 3."
+    ],
+    "2002 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 800 of 5000 square cm: 16%."
+    ],
+    "2002 Fermat Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Justina > Gisa > Henry and Gisa > Ivan > Katie: Justina."
+    ],
+    "2002 Fermat Contest, Problem 7": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): opposite rectangles' products agree: shaded times 15 = 6 times 25, so 10."
+    ],
+    "2002 Fermat Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): DC = DE makes angle CDE = 40, so y = 360 - 90 - 40 - 90 = 140."
+    ],
+    "2002 Fermat Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3, 6, ..., 18 are 6 of 20."
+    ],
+    "2002 Fermat Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x + 16 = 3x gives x = 8: side 24, perimeter 96."
+    ],
+    "2002 Fermat Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): slope 2 through (1, 0): b = 2 times 6 = 12."
+    ],
+    "2002 Fermat Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 10^2 to 31^2: 22 squares."
+    ],
+    "2002 Fermat Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): aab with a from 1 to 9 and b any other digit: 9 times 9 = 81."
+    ],
+    "2002 Fermat Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2002 = 7 times 286 is in column 7, row 286: 293."
+    ],
+    "2002 Fermat Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the terms are a, 2, a + 2, 2(a + 2), 4(a + 2), 8(a + 2) = 56: a = 5."
+    ],
+    "2002 Fermat Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (a + b)(c + d) = 68 with c + d = 4 gives a + b = 17: 21."
+    ],
+    "2002 Fermat Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 21m + 28f = 24 times 140 with m + f = 140: f = 60."
+    ],
+    "2002 Fermat Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the fold makes BECF a square of side 8, so AB = 3 and BC = 8 sqrt 2: 3 + 11.31 + 11 + 8 = 33.3."
+    ],
+    "2002 Fermat Contest, Problem 19": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 8(6^10) = 2^13 3^10: b - a = -3."
+    ],
+    "2002 Fermat Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): translate ABC onto PQR: 8 up and 15 - 9 = 6 across, so AP = 10."
+    ],
+    "2002 Fermat Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): square both sides: the product telescopes to 2n + 1 = 81, so n = 40."
+    ],
+    "2002 Fermat Contest, Problem 22": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): f(2) = 10, f(4) = 28, f(8) = 28 + 28 + 32 = 88."
+    ],
+    "2002 Fermat Contest, Problem 23": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (45 + 8m + 9k)/(9 + m + k) = 7.3 gives 7m + 17k = 207: k = 6, m = 15, sum 21."
+    ],
+    "2002 Fermat Contest, Problem 24": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the large container ends full to its brim; the water above the small one's rim at 18 cm, pi times 36 times 2 = 72 pi, falls in: 72/25 = 2.88."
+    ],
+    "2002 Fermat Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): place the five known edges on the four faces; the triangle inequalities on the two faces through the unknown edge leave 31 to 33 or 57 to 59 depending on the placement: 6 values."
     ]
   }
 }
