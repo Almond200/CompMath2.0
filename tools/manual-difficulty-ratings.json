@@ -41551,6 +41551,106 @@
     "1998 Cayley Contest, Problem 25": [
       900,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): equilateral rows sit sqrt 3/2 apart, so 1 + floor(99/(sqrt 3/2)) = 115 rows of 100 and 99 alternately: 58(100) + 57(99) = 11443, 1443 more."
+    ],
+    "2025 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 0 + 10 = 10."
+    ],
+    "2025 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): only -4 and -3.5 lie left of -3: 2."
+    ],
+    "2025 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3x = 54: x = 18."
+    ],
+    "2025 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the multiples 10, 15, ..., 55: 10."
+    ],
+    "2025 Pascal Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): one more step of 1 right and 2 up from (-1, 4): (0, 6)."
+    ],
+    "2025 Pascal Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 4^3 = 64 = 8^2: a = 2."
+    ],
+    "2025 Pascal Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): Grade 8 likes are 125 - 68 = 57 and Grade 9 dislikes 140 - 92 = 48: 68 + 48 = 116."
+    ],
+    "2025 Pascal Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): Rachel and Christophe share 36 as 2 : 1: 12."
+    ],
+    "2025 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): y = 3(2x + 1) is an odd multiple of 3 at least 9: 45."
+    ],
+    "2025 Pascal Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the large square has area 18 + 18 = 36: side 6."
+    ],
+    "2025 Pascal Contest, Problem 11": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): AB = AD makes angle ADB = 80, so ADC = 100, and AD = DC gives ACD = 40."
+    ],
+    "2025 Pascal Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): nine of the integers are at least 1, so the largest is at most 30 - 9 = 21."
+    ],
+    "2025 Pascal Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): BC = sqrt(289 - 64) = 15: 225."
+    ],
+    "2025 Pascal Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 6 times 4 - 5 times 3 = 9."
+    ],
+    "2025 Pascal Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): all three agree on question 3; if 24 were wrong each would have both others right, which the answers rule out, so 24 is right, then question 1 is 15 and question 2 is 38: 77."
+    ],
+    "2025 Pascal Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): Pedro sits 24th from the left and Hwie-Lie 19th: 4 between."
+    ],
+    "2025 Pascal Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3! 5! = 720 = 8 times 9 times 10, so 3! 5! 7! = 10!: 10."
+    ],
+    "2025 Pascal Contest, Problem 18": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the dials return every 18 s and 45 s: lcm = 90."
+    ],
+    "2025 Pascal Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the water is (3/4)(32 pi) = 24 pi of B's 128 pi: 3/16."
+    ],
+    "2025 Pascal Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): all one colour: C(5, 3) + C(3, 3) = 11 of C(10, 3) = 120, so 109/120."
+    ],
+    "2025 Pascal Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the half perimeter is a multiple of 7 and the area of 9; a + b = 7 fails, and 5 + 9 = 14 works: 28."
+    ],
+    "2025 Pascal Contest, Problem 22": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): four rounds bring the robot back to the start, so 26 rounds act as 2: it ends at (-6, -2) from the start: 40."
+    ],
+    "2025 Pascal Contest, Problem 23": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the face touching -20, -56 and 0 is -76; the other three faces give v + y = 20, x + y = 76, v + x = 56: x = 56."
+    ],
+    "2025 Pascal Contest, Problem 24": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the figure is a hexagon of area 16 plus semicircles on AB, CD, EF, GH less those on BC, DE, FG, HA: 16 + pi/4, y = 1679, digit sum 23."
+    ],
+    "2025 Pascal Contest, Problem 25": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the digit sum 48 + 3(A + B + C) and last two digits 160 + (A + B + C) force A + B + C = 8 or 20: 45 + 36 = 81."
     ]
   }
 }
