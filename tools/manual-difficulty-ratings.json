@@ -28167,6 +28167,262 @@
     "2024 MBMT Upper Number Theory, Problem 8": [
       700,
       "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 13 times 4 = 52 = 1 mod 17."
+    ],
+    "2023 MBMT Lower Algebra, Problem 1": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 60 times 5."
+    ],
+    "2023 MBMT Lower Algebra, Problem 2": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 4 parts make 16."
+    ],
+    "2023 MBMT Lower Algebra, Problem 3": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 2x = x + 5."
+    ],
+    "2023 MBMT Lower Algebra, Problem 4": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 90 minutes of real time show 60: m + (90 - m)/2 = 60."
+    ],
+    "2023 MBMT Lower Algebra, Problem 5": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a cuts one way and b the other give (a + 1)(b + 1) = 63 = 7 times 9: 6 + 8 = 14."
+    ],
+    "2023 MBMT Lower Algebra, Problem 6": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): (10000 + 4)(10000 - 4) + 16 = 10000^2."
+    ],
+    "2023 MBMT Lower Algebra, Problem 7": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a_(2n - 1)/a_(2n) = (2n - 1)/(2n + 1), so the product telescopes to 1/21."
+    ],
+    "2023 MBMT Lower Algebra, Problem 8": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): x_n + 1 triples each step: x_20 = 3^20 - 1."
+    ],
+    "2023 MBMT Lower Geometry, Problem 1": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 180 - 60 - 75."
+    ],
+    "2023 MBMT Lower Geometry, Problem 2": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): half the unit square."
+    ],
+    "2023 MBMT Lower Geometry, Problem 3": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 3 times 8 = 4s."
+    ],
+    "2023 MBMT Lower Geometry, Problem 4": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a rhombus of two equilateral triangles has its four sides and one diagonal equal: 5."
+    ],
+    "2023 MBMT Lower Geometry, Problem 5": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the diagonal 4 sqrt 2 is a diameter."
+    ],
+    "2023 MBMT Lower Geometry, Problem 6": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 4 seconds across, drifting 48 meters: 20, 48, 52."
+    ],
+    "2023 MBMT Lower Geometry, Problem 7": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 7, 24, 25 and 15, 20, 25 are right triangles, so A and C are right angles and their sum is 180."
+    ],
+    "2023 MBMT Lower Geometry, Problem 8": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a rectangle with base x on the triangle's side has height (sqrt 3/2)(1 - x); the perimeter is least at an end."
+    ],
+    "2023 MBMT Lower Counting, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 2 of 6 faces."
+    ],
+    "2023 MBMT Lower Counting, Problem 2": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 2 times 6."
+    ],
+    "2023 MBMT Lower Counting, Problem 3": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 0 to 30 balls in the red box."
+    ],
+    "2023 MBMT Lower Counting, Problem 4": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): one chance in two for each of 8 rows: 1/256."
+    ],
+    "2023 MBMT Lower Counting, Problem 5": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): count by quarters and dimes; pennies fill the rest."
+    ],
+    "2023 MBMT Lower Counting, Problem 6": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): three of one color and one each of the others make 5 socks with one pair, but 6 force two pairs."
+    ],
+    "2023 MBMT Lower Counting, Problem 7": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 11 adjacent pairs out of 66: 1/6."
+    ],
+    "2023 MBMT Lower Counting, Problem 8": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): dropping the Ts leaves any string of M and B of length 0 to 6: 2^7 - 1."
+    ],
+    "2023 MBMT Lower Number Theory, Problem 1": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 6 is the next multiple of 3."
+    ],
+    "2023 MBMT Lower Number Theory, Problem 2": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): squares with digit sum 9 below the next one: 9, 36, 81, 144."
+    ],
+    "2023 MBMT Lower Number Theory, Problem 3": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a square ends in 9 when the number ends in 3 or 7: 2017."
+    ],
+    "2023 MBMT Lower Number Theory, Problem 4": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): gcd(100, 160) = 20 has 6 divisors."
+    ],
+    "2023 MBMT Lower Number Theory, Problem 5": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 33 multiples of 3 less 16 multiples of 6."
+    ],
+    "2023 MBMT Lower Number Theory, Problem 6": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 12000 = 2^5 3 5^3: a = 2000 is coprime to b only when b is a power of 3, b = 3, c = 4000."
+    ],
+    "2023 MBMT Lower Number Theory, Problem 7": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 18!(1 + 19 + 380) = 18! times 400, and 18! has 8 factors of 3."
+    ],
+    "2023 MBMT Lower Number Theory, Problem 8": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): reading n^2, n, 1 as one number gives a polynomial in a power of 10; solve for n."
+    ],
+    "2023 MBMT Upper Algebra, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 2x = x + 5."
+    ],
+    "2023 MBMT Upper Algebra, Problem 2": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 90 minutes of real time show 60: m + (90 - m)/2 = 60."
+    ],
+    "2023 MBMT Upper Algebra, Problem 3": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): (10000 + 4)(10000 - 4) + 16 = 10000^2."
+    ],
+    "2023 MBMT Upper Algebra, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a_(2n - 1)/a_(2n) = (2n - 1)/(2n + 1), so the product telescopes to 1/21."
+    ],
+    "2023 MBMT Upper Algebra, Problem 5": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): x_n + 1 triples each step: x_20 = 3^20 - 1."
+    ],
+    "2023 MBMT Upper Algebra, Problem 6": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the tower t satisfies t = 0.25^t, and t = 1/2 works."
+    ],
+    "2023 MBMT Upper Algebra, Problem 7": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): third differences of a cubic are constant: from 2, 0, 2, 3 the next value is -2."
+    ],
+    "2023 MBMT Upper Algebra, Problem 8": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): AM-GM on 2x, 3y, 4z gives 4 >= (24xyz)^(1/3) = 4, so 2x = 3y = 4z = 4."
+    ],
+    "2023 MBMT Upper Geometry, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 3 times 8 = 4s."
+    ],
+    "2023 MBMT Upper Geometry, Problem 2": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a rhombus of two equilateral triangles has its four sides and one diagonal equal: 5."
+    ],
+    "2023 MBMT Upper Geometry, Problem 3": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 4 seconds across, drifting 48 meters: 20, 48, 52."
+    ],
+    "2023 MBMT Upper Geometry, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 7, 24, 25 and 15, 20, 25 are right triangles, so A and C are right angles and their sum is 180."
+    ],
+    "2023 MBMT Upper Geometry, Problem 5": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a rectangle with base x on the triangle's side has height (sqrt 3/2)(1 - x); the perimeter is least at an end."
+    ],
+    "2023 MBMT Upper Geometry, Problem 6": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the three tangent lines cut off three small equilateral triangles, each a third the size."
+    ],
+    "2023 MBMT Upper Geometry, Problem 7": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): drop the altitude from A; with angles 105, 45, 30 the median BM makes 15 degrees with BC."
+    ],
+    "2023 MBMT Upper Geometry, Problem 8": [
+      1600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): P lies on the perpendicular bisector of AC through O; minimize its distance to B on the circle."
+    ],
+    "2023 MBMT Upper Counting, Problem 1": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 0 to 30 balls in the red box."
+    ],
+    "2023 MBMT Upper Counting, Problem 2": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): one chance in two for each of 8 rows: 1/256."
+    ],
+    "2023 MBMT Upper Counting, Problem 3": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): three of one color and one each of the others make 5 socks with one pair, but 6 force two pairs."
+    ],
+    "2023 MBMT Upper Counting, Problem 4": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 11 adjacent pairs out of 66: 1/6."
+    ],
+    "2023 MBMT Upper Counting, Problem 5": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): dropping the Ts leaves any string of M and B of length 0 to 6: 2^7 - 1."
+    ],
+    "2023 MBMT Upper Counting, Problem 6": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a tail forces the next flip to be heads: a two-state recursion for the chance of heads on the nth flip."
+    ],
+    "2023 MBMT Upper Counting, Problem 7": [
+      1400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): from each palindrome x the sums x through x + 9 are reachable; find the gaps below 1000."
+    ],
+    "2023 MBMT Upper Counting, Problem 8": [
+      1500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the chance of ever landing on a given integer is the same at every step after the start."
+    ],
+    "2023 MBMT Upper Number Theory, Problem 1": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a square ends in 9 when the number ends in 3 or 7: 2017."
+    ],
+    "2023 MBMT Upper Number Theory, Problem 2": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): gcd(100, 160) = 20 has 6 divisors."
+    ],
+    "2023 MBMT Upper Number Theory, Problem 3": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 12000 = 2^5 3 5^3: a = 2000 is coprime to b only when b is a power of 3, b = 3, c = 4000."
+    ],
+    "2023 MBMT Upper Number Theory, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 18!(1 + 19 + 380) = 18! times 400, and 18! has 8 factors of 3."
+    ],
+    "2023 MBMT Upper Number Theory, Problem 5": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): reading n^2, n, 1 as one number gives a polynomial in a power of 10; solve for n."
+    ],
+    "2023 MBMT Upper Number Theory, Problem 6": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): use as many 3s as possible: 200 = 3(66) + 2, so 2 times 3^66."
+    ],
+    "2023 MBMT Upper Number Theory, Problem 7": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): x(x + 1)(x + 2) = 6 times C(x + 2, 3), summing to 6 C(42, 4); reduce mod 40."
+    ],
+    "2023 MBMT Upper Number Theory, Problem 8": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): by Wilson, the product of k!^2 from 1 to 40 reduces mod 41 by pairing k! with (40 - k)!."
     ]
   }
 }
