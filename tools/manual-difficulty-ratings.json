@@ -37755,6 +37755,106 @@
     "2008 Fermat Contest, Problem 25": [
       1000,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the top is planar, so opposite edges have equal sums (twice the height over the centre) and edges A, C, E sum to B, D, F; placing 4, 7 and 10 to make that common sum 26 gives 78."
+    ],
+    "2007 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 24/8 = 3."
+    ],
+    "2007 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x = 4 and w = 5: 20."
+    ],
+    "2007 Fermat Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 7/8 - 1/2 = 3/8."
+    ],
+    "2007 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): -50 - 1 = -51."
+    ],
+    "2007 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1 + 1/2 = 3/2."
+    ],
+    "2007 Fermat Contest, Problem 6": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the rectangle is 8 by 5, so the trapezoid with parallel sides 4 and 2 and height 5 has area 15."
+    ],
+    "2007 Fermat Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 42 = 2 times 3 times 7, and 2 + 7 = 9 leaves 3."
+    ],
+    "2007 Fermat Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with Monday d the days are d, 2d, d, d/2, d; d/2 = 5 gives 10 + 20 + 10 + 5 + 10 = 55."
+    ],
+    "2007 Fermat Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x + 3 = 1/2, so x + 5 = 5/2 and the value is 2/5."
+    ],
+    "2007 Fermat Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3 DVDs for the price of 2.5 is 6 for the price of 5."
+    ],
+    "2007 Fermat Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the median gives x = 7 and the total 40 gives y = 16."
+    ],
+    "2007 Fermat Contest, Problem 12": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): PQS is a 30-60-90 triangle with PQ = 10, so QS = 20, and QSR is isosceles with QR = QS: 20."
+    ],
+    "2007 Fermat Contest, Problem 13": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the unknown labels sum to 1 + 4 + 5 + 6 + 7 = 23; R, joined to 0, must be prime-making, which forces R = 5: 23 - 5 = 18."
+    ],
+    "2007 Fermat Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1.25a > 5b means a > 4b: b = 1, a = 5, sum 6."
+    ],
+    "2007 Fermat Contest, Problem 15": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): doubling must not carry, so the digits come from 0, 2, 4 with the first nonzero: 2 times 3 times 3 = 18."
+    ],
+    "2007 Fermat Contest, Problem 16": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the perimeter is 18 + 4AP, and AP = 3 - 3 sqrt 2/2 = 0.879: 21.5."
+    ],
+    "2007 Fermat Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): B = (b, 0) with BA perpendicular to BC gives b = 4 or 6, and equal legs force b = 6."
+    ],
+    "2007 Fermat Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): from n each, Karen keeps (n - 12)/2 and Alphonso has n + 12 + (n - 12)/2 = 4 times that: n = 60, Karen 24."
+    ],
+    "2007 Fermat Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): AC < 10 + 9 = 19 and 19 < 5 + AC, so 14 < AC < 19: 15."
+    ],
+    "2007 Fermat Contest, Problem 20": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the parabola opens down (a < 0) with a positive y-intercept (c > 0): c - a > 0 always."
+    ],
+    "2007 Fermat Contest, Problem 21": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the middle three sum to 3m and all five to 5m; 3m square and 5m cube force m = 3^3 5^2 = 675."
+    ],
+    "2007 Fermat Contest, Problem 22": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the 45-degree path has length 4 sqrt 2 times the short side, and the long side is twice the short: 6 times 7/(4 sqrt 2) = 7.4, about 7.5."
+    ],
+    "2007 Fermat Contest, Problem 23": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with OX = x the triangle is x - 10 below the ceiling and X is 60/sqrt 3 from the centre: x^2 = (x - 10)^2 + 1200 gives x = 65, depth 55."
+    ],
+    "2007 Fermat Contest, Problem 24": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the line y = x - p meets y = x^2 where x^2 - x + p = 0; Q the midpoint of PR gives 2x_Q = p + x_R with x_Q + x_R = 1: p = -8.24, intercept 8.2."
+    ],
+    "2007 Fermat Contest, Problem 25": [
+      1000,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): equal chances give 2(b(b - 1) + g(g - 1)) = (b + g)(b + g - 1), that is (g - b)^2 = b + g: b + g a square, and counting with 4 <= b <= g <= 2007 gives 59."
     ]
   }
 }
