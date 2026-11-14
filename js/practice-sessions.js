@@ -79,7 +79,10 @@
     if (set.kind === 'mock') checkpoint(set,now);
     if (set.status === 'finished') return false;
     const text = String(value).trim();
-    if (root.MATH_MOCK_EXTRAS?.[slug]) {
+    // A problem read in its official paper (set.selfCheck) takes any short answer; the solver
+    // checks it against the official solution at review.
+    if (set.selfCheck?.[slug]) { if (text.length > 60) return false; }
+    else if (root.MATH_MOCK_EXTRAS?.[slug]) {
       if (text) { try { const v=math.values(text); if(text.length>120 || v.length!==1 || !Number.isFinite(v[0])) return false; } catch(e) { return false; } }
     } else if (!(text === '' || (aime ? /^\d{1,3}$/.test(text) : /^[A-E]$/.test(text)))) return false;
     set.answers[slug] = text;
@@ -89,6 +92,7 @@
     // A problem the MAA voided is never graded (MATH_ANSWER_KEYS.voided), answered or not.
     if (root.MATH_ANSWER_KEYS?.voided?.[slug]) return 'Voided';
     if (!set.answers[slug]) return 'Unanswered';
+    if (set.selfCheck?.[slug]) return set.self?.[slug] || 'Check yourself';
     const extra = root.MATH_MOCK_EXTRAS?.[slug];
     if (extra) return extra.answers.some(key => math.same(set.answers[slug],key)) ? 'Correct' : 'Incorrect';
     const key = root.MATH_ANSWER_KEYS?.answers?.[slug];
@@ -97,7 +101,15 @@
     const same = /^\d+$/.test(key) ? /^\d{1,3}$/.test(actual) && Number(actual) === Number(key) : actual.toUpperCase() === key;
     return same ? 'Correct' : 'Incorrect';
   }
-  const api = { KEY, read, save, create, createMock, checkpoint, pause, resume, finish, timeLeft, answer, result };
+  // After finishing, the solver marks a self-checked answer right or wrong (or clears the mark).
+  function selfMark(set, slug, verdict) {
+    if (set.status !== 'finished' || !set.selfCheck?.[slug] || !set.answers[slug]) return false;
+    if (!['Correct', 'Incorrect', null].includes(verdict)) return false;
+    set.self = { ...(set.self || {}) };
+    if (verdict) set.self[slug] = verdict; else delete set.self[slug];
+    return true;
+  }
+  const api = { KEY, read, save, create, createMock, checkpoint, pause, resume, finish, timeLeft, answer, result, selfMark };
   if (typeof module !== 'undefined') module.exports = api;
   else root.PracticeSessions = api;
 })(typeof window === 'undefined' ? globalThis : window);

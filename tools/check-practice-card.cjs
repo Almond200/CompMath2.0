@@ -13,17 +13,17 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const fits=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no horizontal overflow at '+page.url());
  await page.goto(base+'/#/practice');const form=page.locator('#card-practice-form');await form.waitFor();
  const heads=await page.locator('.sh-section > h3').allInnerTexts();assert.deepEqual(heads.slice(heads.indexOf('Practice a topic'),heads.indexOf('Practice a topic')+3),['Practice a topic','Practice a card','Practice a contest'],'it sits with Practice a topic, before Practice a contest');
- assert.deepEqual(await form.locator('[data-card-kind]').allInnerTexts(),['Formula','Method','Pattern']);assert.equal(await form.locator('[type="submit"]').isDisabled(),true);
+ assert.equal(await form.locator('[data-card-kind]').count(),0,'one search, no kind buttons');assert.match(await page.locator('#pr-card .practice-panel-intro').innerText(),/reference's cards/);assert.equal(await form.locator('[type="submit"]').isDisabled(),true);
  assert.match(await page.locator('#card-band-note').innerText(),/^Difficulty is measured inside the card you choose/);
  // Nothing is offered until something is typed; then the matching cards, most problems first.
  const input=page.locator('#card-practice-name'),opts=page.locator('#card-practice-options button');
  await input.click();assert.equal(await page.locator('#card-practice-options').isVisible(),false);assert.equal(await opts.count(),0);
  await input.fill('e');assert.equal(await opts.count(),8);
- const order=(await opts.locator('.practice-topic-context').allInnerTexts()).map(t=>parseInt(t));assert.deepEqual(order,[...order].sort((a,b)=>b-a));
+ const num=t=>+t.match(/(\d+) problems?$/)[1],order=(await opts.locator('.practice-topic-context').allInnerTexts()).map(num);assert((await opts.locator('.practice-topic-context').allInnerTexts()).every(t=>/^(Formula|Method|Pattern) · \d+ problems?$/.test(t)),'each suggestion names its kind');assert.deepEqual(order,[...order].sort((a,b)=>b-a));
  await input.fill('');assert.equal(await page.locator('#card-practice-options').isVisible(),false);
  // Typing narrows by name; the keyboard chooses.
  await input.fill('pyth');assert((await opts.allInnerTexts()).every(t=>/pyth/i.test(t)));assert.equal(await opts.first().locator('.practice-topic-name').innerText(),'Pythagorean Theorem');
- const counts=(await opts.locator('.practice-topic-context').allInnerTexts()).map(t=>parseInt(t));await input.press('ArrowDown');await input.press('ArrowUp');await input.press('Enter');
+ const counts=(await opts.locator('.practice-topic-context').allInnerTexts()).map(num);await input.press('ArrowDown');await input.press('ArrowUp');await input.press('Enter');
  assert.equal(await input.inputValue(),'Pythagorean Theorem');assert.equal(await page.locator('#card-practice-options').isVisible(),false);
  const avail=parseInt(await page.locator('#card-practice-status').innerText());assert.equal(avail,counts[0]);assert.equal(await form.locator('[type="submit"]').isEnabled(),true);
  await page.locator('#card-band').fill('5');const note=await page.locator('#card-band-note').innerText();assert.match(note,/^Very hard for this card is an Elo rating of \d+ to \d+: one fifth of its problems/);
@@ -37,12 +37,11 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  for(const s of set.slugs)assert(cites.get(s)?.cards.has('pythagorean-theorem'),s+' cites the card');
  assert.equal(new Set(set.slugs.map(s=>cites.get(s).ref.slice(0,4)+'|'+cites.get(s).strategy)).size,7,'no problem appears as both its AMC 10 and AMC 12 copy');
  await fits();
- // Methods and patterns have their own lists; a card with few problems caps the count.
- await page.goto(base+'/#/practice');await form.waitFor();await page.locator('[data-card-kind="method"]').click();assert.equal(await input.getAttribute('placeholder'),'Search a method...');
- await input.fill('case');assert.equal(await opts.first().locator('.practice-topic-name').innerText(),'Casework');
- await page.locator('[data-card-kind="pattern"]').click();assert.equal(await input.inputValue(),'');await input.fill('a');assert(await opts.count()>0);const pat=await opts.first().locator('.practice-topic-name').innerText();await opts.first().click();
- assert.equal(await input.inputValue(),pat);assert.match(await page.locator('#card-practice-status').innerText(),/^\d+ matching problems? available\.$/);
- await page.locator('[data-card-kind="formula"]').click();await input.fill('hook');await opts.first().click();const n=parseInt(await page.locator('#card-practice-status').innerText());
+ // Methods and patterns come from the same search; a card with few problems caps the count.
+ await page.goto(base+'/#/practice');await form.waitFor();assert.equal(await input.getAttribute('placeholder'),"Search the reference's cards...");
+ await input.fill('casework');assert.equal(await opts.first().locator('.practice-topic-name').innerText(),'Casework');assert.match(await opts.first().locator('.practice-topic-context').innerText(),/^Method · /);
+ await opts.first().click();assert.match(await page.locator('#card-practice-status').innerText(),/^\d+ matching problems? available\.$/);
+ await input.fill('hook');await opts.first().click();const n=parseInt(await page.locator('#card-practice-status').innerText());
  assert(n>=1&&n<30);assert.equal(await page.locator('#card-count').getAttribute('max'),String(n));
  await input.fill('zzzz');assert.equal(await page.locator('#card-practice-options').isVisible(),false);assert.equal(await page.locator('#card-practice-status').innerText(),'Choose a card from the suggestions.');assert.equal(await form.locator('[type="submit"]').isDisabled(),true);
  await fits();assert.equal(await page.locator('.katex-error').count(),0);assert.deepEqual(errors,[]);

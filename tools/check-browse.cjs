@@ -96,7 +96,8 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const years=(await page.locator('.br-group').last().locator('.br-ref').allInnerTexts()).map(s=>+s.slice(0,4));assert.deepEqual(years,[...years].sort((a,b)=>b-a),'newest first within a contest');
  for(const f of ['AMC 8','AMC 10','AMC 12','HMMT February','HMMT November','ARML','ARML Local','SMT','Duke Math Meet','UMD HSMC','CMIMC','Math Prize for Girls','MMATHS','Girls in Math at Yale','Lehigh','Utah State Math Contest','BMT','PUMaC Division A','PUMaC Division B'])if(await page.locator(`[data-br-fam="${f}"]`).count())await page.locator(`[data-br-fam="${f}"]`).click();
  assert.deepEqual(await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent)),['AIME']);
- await page.locator('[data-br-fam="AIME"]').click();assert.equal(await page.locator('[data-br-fam][aria-pressed="true"]').count(),await page.locator('[data-br-fam]').count(),'switching the last contest off restores all');
+ await page.locator('[data-br-fam="AIME"]').click();assert.equal(await page.locator('[data-br-fam][aria-pressed="true"]').count(),0,'switching the last contest off leaves none');assert.match(await page.locator('.chain-empty').innerText(),/No contest is chosen/);
+ await page.locator('[data-br-all="on"]').click();
  // Select all and Deselect all (owner, 2026-11-14): deselect everything, then choose one contest.
  assert(await page.locator('[data-br-all="on"]').isDisabled());await page.locator('[data-br-all="off"]').click();
  assert.equal(await page.locator('[data-br-fam][aria-pressed="true"]').count(),0);assert.match(await page.locator('.chain-empty').innerText(),/No contest is chosen/);

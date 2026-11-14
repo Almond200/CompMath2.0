@@ -3526,6 +3526,16 @@
   const FAM_BY_SLUG = {}; FAMILIES.forEach(f => { FAM_BY_SLUG[famSlug(f)] = f; });
   const famCount = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].length, 0);
   // "Written" means the problem has its write-up (a strategy) in the app. A problem with only its text, or only its cards, is not counted.
+  // The Contests list shows each contest's latest years; a long run of years opens on request
+  // (owner, 2026-11-14: the list grew long with every contest added).
+  const CT_YEARS = 12, ctYearsOpen = new Set();
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-ct-years]"); if (!b) return;
+    const f = b.dataset.ctYears, y = window.scrollY;
+    ctYearsOpen.has(f) ? ctYearsOpen.delete(f) : ctYearsOpen.add(f);
+    render(); window.scrollTo(0, y);
+    document.querySelector(`[data-ct-years="${CSS.escape(f)}"]`)?.focus({ preventScroll: true });
+  });
   const famWritten = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].filter(p => p.strategy).length, 0);
   // Whether the Practice page lists the contests still to come (hidden until asked for).
   let showUnwritten = false;
@@ -5667,6 +5677,39 @@
   const isMock = set => set.kind === 'mock';
   const practiceSetLabel = set => isMock(set) && set.mock.mode === 'generated' ? 'Generated ' + set.mock.family : set.label;
   const hasMockAnswer = p => window.MATH_ANSWER_KEYS?.answers?.[p.slug] != null || !!window.MATH_MOCK_EXTRAS?.[p.slug];
+  // Practice draws from every contest (owner, 2026-11-14). A problem whose statement and answer
+  // the app does not keep is read where its page links (the official paper, or the AoPS wiki for
+  // the AHSME), and the solver checks their answer against the official solution at review.
+  // Calculus questions stay out of practice.
+  const paperProblem = p => !hasMockAnswer(p) && !!p.url && !(p.tree || []).some(t => t.startsWith("alg.calc"));
+  const practiceEligible = p => (hasMockAnswer(p) || paperProblem(p)) && !window.MATH_ANSWER_KEYS?.voided?.[p.slug];
+  // The contests a topic or card set may draw from, kept between visits.
+  let practiceOff = (() => { try { return new Set(JSON.parse(localStorage.getItem("mq-practice-off") || "[]")); } catch (e) { return new Set(); } })();
+  const practiceFamOn = p => !practiceOff.has(p.fam);
+  function practiceFamsHtml() {
+    const fams = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && practiceEligible(p)));
+    const on = fams.filter(f => !practiceOff.has(f)).length;
+    const sum = on === fams.length ? "All contests" : on ? `${on} of ${fams.length} contests` : "No contest";
+    return `<details class="pr-fams"><summary><span class="pr-fams-label">Contests</span><span class="pr-fams-sum">${sum}</span></summary>
+      <p class="pr-fams-note">Problems from the AMC and AIME appear in the app. Those from other contests open in the official paper (the AoPS wiki for the AHSME), and you check your answer against the official solution when you review.</p>
+      <div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-pr-all="on"${on === fams.length ? " disabled" : ""}>Select all</button><button type="button" class="fam-bulk-btn" data-pr-all="off"${on ? "" : " disabled"}>Deselect all</button></div>
+      <div class="fam-chips" role="group" aria-label="Contests to draw from">${fams.map(f => `<button type="button" class="fam-chip" data-pr-fam="${escapeAttr(f)}" aria-pressed="${!practiceOff.has(f)}">${famDot(f)}${f}</button>`).join("")}</div></details>`;
+  }
+  // A change in one panel's chooser updates both, keeping each open as it was.
+  document.addEventListener("click", e => {
+    const one = e.target.closest("[data-pr-fam]"), all = e.target.closest("[data-pr-all]");
+    if (!one && !all) return;
+    if (one) { const f = one.dataset.prFam; practiceOff.has(f) ? practiceOff.delete(f) : practiceOff.add(f); }
+    else practiceOff = all.dataset.prAll === "on" ? new Set() : new Set(FAMILIES);
+    try { localStorage.setItem("mq-practice-off", JSON.stringify([...practiceOff])); } catch (err) {}
+    const focus = one ? `[data-pr-fam="${CSS.escape(one.dataset.prFam)}"]` : `[data-pr-all="${all.dataset.prAll}"]`, inPanel = e.target.closest(".sh-section")?.id;
+    const wasOpen = new Set([...document.querySelectorAll(".pr-fams")].filter(d => d.open).map(d => d.closest(".sh-section")?.id));
+    document.querySelectorAll(".pr-fams").forEach(d => { d.outerHTML = practiceFamsHtml(); });
+    document.querySelectorAll(".pr-fams").forEach(d => { d.open = wasOpen.has(d.closest(".sh-section")?.id); });
+    const target = document.querySelector(`#${inPanel} ${focus}`);
+    (target && !target.disabled ? target : document.querySelector(`#${inPanel} [data-pr-all]:not([disabled])`))?.focus({ preventScroll: true });
+    document.dispatchEvent(new Event("practice-fams"));
+  });
   const isVoidedProblem = p => !!window.MATH_ANSWER_KEYS?.voided?.[p.slug];
   function mockPapers() { return mockPaperCatalog ||= mockContests.papers(PROBLEM_DB, hasMockAnswer); }
   function mockTime(ms) { const s=Math.ceil(Math.max(0,ms)/1000); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
@@ -5850,7 +5893,7 @@
   }
   function renderPracticeResults(set) {
     const total = set.slugs.length;
-    const counts = { Correct: 0, Incorrect: 0, Unanswered: 0, 'Answer unavailable': 0, Voided: 0 };
+    const counts = { Correct: 0, Incorrect: 0, Unanswered: 0, 'Answer unavailable': 0, Voided: 0, 'Check yourself': 0 };
     set.slugs.forEach(slug => counts[practiceSessions.result(set, slug)]++);
     const reviewUrl = '#/practice/set/' + encodeURIComponent(set.id) + '/review';
     const mock = isMock(set), score = mock ? mockScore(set) : null;
@@ -5861,6 +5904,7 @@
         ${mock ? `<p class="practice-results-meta">${mockTimeSummary(set)}</p>` : ''}
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
+        ${counts['Check yourself'] ? `<p class="practice-results-meta">${counts['Check yourself']} to check against the official solution: open ${counts['Check yourself'] === 1 ? 'it' : 'each'} in the review and mark your answer right or wrong.</p>` : ''}
         ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided by the MAA${mock ? ', full credit awarded' : ', not graded'}</p>` : ''}
         <a class="hp-btn" href="${reviewUrl}">Review problems</a>
       </section>
@@ -5889,7 +5933,8 @@
     const slug = set.slugs[set.current], p = PROBLEM_BY_SLUG[slug];
     const answered = set.slugs.filter(id => set.answers[id]).length;
     const outcome = practiceSessions.result(set, slug);
-    const aime = p && /AIME/.test(p.fam), exact = !!window.MATH_MOCK_EXTRAS?.[slug];
+    const aime = p && /AIME/.test(p.fam), exact = !!window.MATH_MOCK_EXTRAS?.[slug], paper = !!(p && set.selfCheck?.[slug]);
+    const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
     const correct = exact ? window.MATH_MOCK_EXTRAS[slug].answers.map(exactAnswerHtml).join(' or ') : escapeAttr(window.MATH_ANSWER_KEYS?.answers?.[slug] || '');
     const nav = set.slugs.map((id, i) => {
       const result = practiceSessions.result(set, id);
@@ -5909,12 +5954,14 @@
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
       <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p && (!mock || finished) ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
-        ${p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
+        ${paper ? `<div class="practice-paper"><p>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. Compare your answer with the official solution and mark it below.` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. When you review, you check it against the official solution.`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open the problem ${uiIcon("arrow-up-right")}</a></div>`
+          : p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>Your answer</h3>
-          ${aime || exact ? (set.answers[slug] ? `<p class="practice-submitted">${exact ? exactAnswerHtml(set.answers[slug]) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
+          ${aime || exact || paper ? (set.answers[slug] ? `<p class="practice-submitted">${exact ? exactAnswerHtml(set.answers[slug]) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
+          ${paper ? `<div class="practice-self">${p.solUrl ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
           ${practiceExplanationHtml(p)}`
-          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact ? `<label for="practice-answer">${exact ? 'Exact value (fractions, sqrt, pi)' : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact ? 'text' : 'numeric'}" maxlength="${exact ? '120' : '3'}" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
+          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact || paper ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? 'Exact value (fractions, sqrt, pi)' : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact || paper ? 'text' : 'numeric'}" maxlength="${paper ? '60' : exact ? '120' : '3'}" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
       </section></div>`;
     const redraw = () => {
@@ -5979,7 +6026,7 @@
       const valid = practiceSessions.answer(set, slug, e.target.value, aime);
       if(set.status==='finished'){savePractice();renderTopicPracticeSet();return;}
       e.target.setAttribute('aria-invalid', String(!valid));
-      $content.querySelector('#practice-answer-error').textContent = valid ? '' : (exact ? 'Use a number or an expression with fractions, sqrt and pi. This value has not been saved.' : 'Use an integer from 000 to 999. This value has not been saved.');
+      $content.querySelector('#practice-answer-error').textContent = valid ? '' : paper ? 'Use at most 60 characters. This value has not been saved.' : (exact ? 'Use a number or an expression with fractions, sqrt and pi. This value has not been saved.' : 'Use an integer from 000 to 999. This value has not been saved.');
       if (valid) { schedulePracticeSave(); syncAnswerUI(); }
       else if (clearAnswer) clearAnswer.disabled = !e.target.value && !set.answers[slug];
     });
@@ -5994,11 +6041,20 @@
     });
     $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; schedulePracticeSave(); const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-marked', e.target.checked); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${e.target.checked ? ', marked for review' : ''}`); });
     savePractice();
-    if (p) showStatement(p, '.practice-set-st');
+    if (p && !paper) showStatement(p, '.practice-set-st');
+    $content.querySelectorAll('[data-self]').forEach(b => b.addEventListener('click', () => {
+      const v = b.getAttribute('aria-pressed') === 'true' ? null : b.dataset.self;
+      if (!practiceSessions.selfMark(set, slug, v)) return;
+      savePractice(); redraw(); $content.querySelector(`[data-self="${b.dataset.self}"]`)?.focus({ preventScroll: true });
+    }));
     renderMath($content);
     startMockClock(set);
   }
   let practiceTopicIndex;
+  function markPaperProblems(set, problems) {
+    const paper = problems.filter(paperProblem);
+    if (paper.length) set.selfCheck = Object.fromEntries(paper.map(p => [p.slug, true]));
+  }
   function wireTopicPractice(root) {
     const form = root.querySelector("#topic-practice-form");
     if (!form) return;
@@ -6008,8 +6064,9 @@
     const difficulty = form.elements.difficulty;
     let generating = false, selectedTopicId = null, activeTopic = -1;
     let desiredCount = count.valueAsNumber;
-    const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB,
-      p => hasMockAnswer(p) && !window.MATH_ANSWER_KEYS?.voided?.[p.slug]);
+    const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible);
+    // The pool a topic draws from under the current contest choice, for the browser checks.
+    window.MATH_PRACTICE_POOL = id => (topics.nodes.get(id)?.problems || []).filter(practiceFamOn).map(p => p.slug);
     const findTopic = () => {
       const selected = topics.nodes.get(selectedTopicId);
       return selected && topic.value === selected.label ? selected : topics.resolve(topic.value);
@@ -6017,7 +6074,7 @@
     function update() {
       const choices = topics.search(topic.value);
       suggestions.innerHTML = choices.map((node,i) => {
-        const size = problemDifficulty.filter(node.problems, DIFFS[difficulty.valueAsNumber]).length;
+        const size = problemDifficulty.filter(node.problems.filter(practiceFamOn), DIFFS[difficulty.valueAsNumber]).length;
         const context = node.path.slice(0, -1).join(' › ');
         return `<button type="button" class="set-find-opt practice-topic-option${i === 0 ? ' is-cur' : ''}" role="option" id="practice-topic-${i}" data-topic-id="${node.id}" aria-selected="${i === 0}"><span class="practice-topic-name">${mathHtml(node.name)}</span><span class="practice-topic-context">${escapeAttr(context)}${context ? ' · ' : ''}${size} problem${size === 1 ? '' : 's'}</span></button>`;
       }).join('');
@@ -6052,9 +6109,11 @@
     function difficultyLabel() {
       return problemDifficulty.levels[difficulty.valueAsNumber].label;
     }
+    const onFams = () => form.isConnected ? update() : document.removeEventListener("practice-fams", onFams);
+    document.addEventListener("practice-fams", onFams);
     function matchingProblems() {
       const match = findTopic(), band = DIFFS[difficulty.valueAsNumber];
-      return match ? problemDifficulty.filter(match.problems, band) : [];
+      return match ? problemDifficulty.filter(match.problems.filter(practiceFamOn), band) : [];
     }
     function closeTopics() { suggestions.hidden = true; topic.setAttribute('aria-expanded','false'); topic.removeAttribute('aria-activedescendant'); activeTopic = -1; }
     function openTopics() {
@@ -6104,15 +6163,16 @@
           pool[i] = pool[pool.length - 1];
           pool.pop();
         }
-        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug]).map(p => p.year))].map(loadStatements));
+        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug] && !paperProblem(p)).map(p => p.year))].map(loadStatements));
         if (!form.isConnected) return;
-        problems.push(...batch.filter(p => window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
+        problems.push(...batch.filter(p => paperProblem(p) || window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
       }
       generating = false;
       form.querySelector("fieldset").disabled = false;
       if (!problems.length) { status.textContent = "No statements could be loaded. Try again or choose another topic."; return; }
       topicPracticeSet = practiceSessions.create(label, level, problemDifficulty.order(problems).map(p => p.slug));
       topicPracticeSet.topicId = match.id;
+      markPaperProblems(topicPracticeSet, problems);
       savePractice();
       location.hash = '#/practice/set/' + topicPracticeSet.id;
     });
@@ -6125,13 +6185,12 @@
   function cardPracticePanelHtml() {
     return `<section class="sh-section" id="pr-card">
       <h3>Practice a card</h3>
-      <p class="practice-panel-intro">Choose a formula, a method or a pattern to build an untimed set from the contest problems that use it.</p>
+      <p class="practice-panel-intro">Choose one of the reference's cards (a formula, method or pattern) to build an untimed set from the contest problems that use it.</p>
       <form id="card-practice-form" novalidate><fieldset aria-label="Card practice options">
-        <div class="rand-btns" role="radiogroup" aria-label="Kind of card">${["formula", "method", "pattern"].map((k, i) =>
-          `<button type="button" role="radio" aria-checked="${i === 0}" data-card-kind="${k}">${k.charAt(0).toUpperCase() + k.slice(1)}</button>`).join("")}</div>
-        <label class="mock-field-label" for="card-practice-name">Card</label>
-        <div class="practice-topic-search"><input id="card-practice-name" class="set-find-input" type="search" placeholder="Search a formula..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="card-practice-options" aria-describedby="card-practice-status">
+        <label class="mock-field-label" for="card-practice-name">Reference card</label>
+        <div class="practice-topic-search"><input id="card-practice-name" class="set-find-input" type="search" placeholder="Search the reference's cards..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="card-practice-options" aria-describedby="card-practice-status">
         <div id="card-practice-options" class="set-find-list" role="listbox" aria-label="Cards" hidden></div></div>
+        ${practiceFamsHtml()}
         <div class="rand-diff"><label for="card-count">Questions</label>
           <input id="card-count" type="range" min="1" max="30" value="5"><output id="card-count-value" for="card-count">5</output></div>
         <div class="rand-diff"><label for="card-band">Difficulty</label>
@@ -6151,29 +6210,30 @@
     const plain = name => window.PracticeTopics.label(name);
     // Every card's eligible problems, each shared AMC 10/12 problem once.
     const pools = cardPracticePools ||= (() => {
-      const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB,
-        p => hasMockAnswer(p) && !window.MATH_ANSWER_KEYS?.voided?.[p.slug]);
+      const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible);
       const eligible = new Set(topics.nodes.get("mixed").problems), by = {};
       Object.keys(PROBLEMS_BY_CARD).forEach(id => { const ps = PROBLEMS_BY_CARD[id].filter(p => eligible.has(p)); if (ps.length && BY_ID[id]) by[id] = ps; });
       return by;
     })();
-    const cardsOf = k => Object.keys(pools).filter(id => kindOf(BY_ID[id].formula) === k).sort((a, b) => pools[b].length - pools[a].length || plain(BY_ID[a].formula.name).localeCompare(plain(BY_ID[b].formula.name)));
-    let kind = "formula", chosen = null, active = -1, choices = [], desired = count.valueAsNumber, generating = false;
+    // One search over every kind of card (owner, 2026-11-14); each suggestion names its kind.
+    const KIND_NAME = { formula: "Formula", method: "Method", pattern: "Pattern" };
+    const allCards = () => Object.keys(pools).sort((a, b) => pools[b].length - pools[a].length || plain(BY_ID[a].formula.name).localeCompare(plain(BY_ID[b].formula.name)));
+    let chosen = null, active = -1, choices = [], desired = count.valueAsNumber, generating = false;
     const level = () => problemDifficulty.levels[band.valueAsNumber].label;
-    const pool = () => chosen ? problemDifficulty.filter(pools[chosen], DIFFS[band.valueAsNumber]) : [];
+    const pool = () => chosen ? problemDifficulty.filter(pools[chosen].filter(practiceFamOn), DIFFS[band.valueAsNumber]) : [];
     function close() { options.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; }
     function highlight() {
       [...options.children].forEach((b, i) => { b.classList.toggle("is-cur", i === active); b.setAttribute("aria-selected", String(i === active)); });
       if (choices[active]) input.setAttribute("aria-activedescendant", "card-practice-" + active); else input.removeAttribute("aria-activedescendant");
     }
-    // Nothing is offered until something is typed (owner, 2026-11-11); then the cards of the
-    // kind whose names match, most used first.
+    // Nothing is offered until something is typed (owner, 2026-11-11); then the cards whose
+    // names match, most used first.
     function suggest() {
       const q = input.value.trim().toLowerCase();
       if (!q || (chosen && plain(BY_ID[chosen].formula.name).toLowerCase() === q)) { choices = []; options.innerHTML = ""; close(); return; }
-      choices = cardsOf(kind).filter(id => plain(BY_ID[id].formula.name).toLowerCase().includes(q)).slice(0, 8);
-      options.innerHTML = choices.map((id, i) => { const n = problemDifficulty.filter(pools[id], DIFFS[band.valueAsNumber]).length;
-        return `<button type="button" class="set-find-opt practice-topic-option" id="card-practice-${i}" role="option" aria-selected="false"><span class="practice-topic-name">${BY_ID[id].formula.name}</span><span class="practice-topic-context">${n} problem${n === 1 ? "" : "s"}</span></button>`; }).join("");
+      choices = allCards().filter(id => plain(BY_ID[id].formula.name).toLowerCase().includes(q)).slice(0, 8);
+      options.innerHTML = choices.map((id, i) => { const n = problemDifficulty.filter(pools[id].filter(practiceFamOn), DIFFS[band.valueAsNumber]).length;
+        return `<button type="button" class="set-find-opt practice-topic-option" id="card-practice-${i}" role="option" aria-selected="false"><span class="practice-topic-name">${BY_ID[id].formula.name}</span><span class="practice-topic-context">${KIND_NAME[kindOf(BY_ID[id].formula)] || "Card"} · ${n} problem${n === 1 ? "" : "s"}</span></button>`; }).join("");
       [...options.children].forEach((b, i) => {
         b.addEventListener("mousemove", () => { if (active !== i) { active = i; highlight(); } });
         b.addEventListener("click", () => { chosen = choices[i]; input.value = plain(BY_ID[chosen].formula.name); update(); input.focus({ preventScroll: true }); close(); });
@@ -6196,11 +6256,6 @@
       status.textContent = chosen ? `${ps.length} matching problem${ps.length === 1 ? "" : "s"} available.` : input.value.trim() ? "Choose a card from the suggestions." : "";
       submit.disabled = generating || !ps.length;
     }
-    form.querySelectorAll("[data-card-kind]").forEach(b => b.addEventListener("click", () => {
-      kind = b.dataset.cardKind; chosen = null; input.value = ""; input.placeholder = `Search a ${kind}...`;
-      form.querySelectorAll("[data-card-kind]").forEach(x => x.setAttribute("aria-checked", String(x === b)));
-      close(); update();
-    }));
     input.addEventListener("focus", suggest);
     input.addEventListener("input", () => { chosen = null; update(); suggest(); });
     input.addEventListener("keydown", e => {
@@ -6213,6 +6268,8 @@
     form.addEventListener("focusout", e => { if (!e.relatedTarget?.closest?.("#card-practice-form .practice-topic-search")) close(); });
     count.addEventListener("input", () => { desired = count.valueAsNumber; update(); });
     band.addEventListener("input", update);
+    const onFams = () => form.isConnected ? update() : document.removeEventListener("practice-fams", onFams);
+    document.addEventListener("practice-fams", onFams);
     form.addEventListener("submit", async e => {
       e.preventDefault();
       const ps = pool(), requested = count.valueAsNumber;
@@ -6222,14 +6279,15 @@
       while (ps.length && problems.length < requested) {
         const batch = [];
         while (ps.length && batch.length < requested - problems.length) { const i = Math.floor(Math.random() * ps.length); batch.push(ps[i]); ps[i] = ps[ps.length - 1]; ps.pop(); }
-        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug]).map(p => p.year))].map(loadStatements));
+        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug] && !paperProblem(p)).map(p => p.year))].map(loadStatements));
         if (!form.isConnected) return;
-        problems.push(...batch.filter(p => window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
+        problems.push(...batch.filter(p => paperProblem(p) || window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
       }
       generating = false; form.querySelector("fieldset").disabled = false;
       if (!problems.length) { status.textContent = "No statements could be loaded. Try again or choose another card."; return; }
       topicPracticeSet = practiceSessions.create(label, lv, problemDifficulty.order(problems).map(p => p.slug));
       topicPracticeSet.cardId = id;
+      markPaperProblems(topicPracticeSet, problems);
       savePractice();
       location.hash = "#/practice/set/" + topicPracticeSet.id;
     });
@@ -6302,6 +6360,7 @@
             <label for="topic-name">Topic</label>
             <div class="practice-topic-search"><input id="topic-name" class="set-find-input" type="search" name="topic" placeholder="Search a topic..." required autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="practice-topic-options" aria-describedby="topic-practice-status">
             <div id="practice-topic-options" class="set-find-list" role="listbox" aria-label="Topics" hidden></div></div>
+            ${practiceFamsHtml()}
             <div class="rand-diff"><label for="topic-count">Questions</label>
               <input id="topic-count" type="range" name="count" min="1" max="30" value="5"><output id="topic-count-value" for="topic-count">5</output></div>
             <div class="rand-diff"><label for="topic-band">Difficulty</label>
@@ -6319,8 +6378,9 @@
           <div class="ct-browse"><a class="ct-browse-btn" href="#/browse/topics">Browse by topic</a><a class="ct-browse-btn" href="#/browse/difficulty">Browse by difficulty</a></div>
           <div class="ct-list">${fams.filter(famShown).map((f, i, a) => `
             <div class="ct-row${i && famSeries(a[i - 1]) === famSeries(f) ? " ct-same" : ""}">
-              <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famWritten(f).toLocaleString()} problem${famWritten(f) === 1 ? "" : "s"} written</span></a>
-              <div class="ct-years">${yearsOf(f).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}</div>
+              <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famCount(f).toLocaleString()} problem${famCount(f) === 1 ? "" : "s"}</span></a>
+              <div class="ct-years">${(ctYearsOpen.has(f) ? yearsOf(f) : yearsOf(f).slice(0, CT_YEARS)).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}${yearsOf(f).length > CT_YEARS
+                ? `<button type="button" class="ct-years-more" data-ct-years="${escapeAttr(f)}" aria-expanded="${ctYearsOpen.has(f)}">${ctYearsOpen.has(f) ? "Fewer years" : `All ${yearsOf(f).length} years`}</button>` : ""}</div>
             </div>`).join("")}
             ${famMoreBtn(extraFams(fams))}
             ${(() => {
@@ -9806,9 +9866,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (!fam && !more) return;
     if (fam) {
       const f = fam.dataset.brFam;
+      // Switching the last contest off leaves none chosen (owner, 2026-11-14), as Deselect all does.
       browseOff.has(f) ? browseOff.delete(f) : browseOff.add(f);
-      // Switching the last contest off would leave nothing: it brings them all back instead.
-      if ([...fam.parentNode.querySelectorAll("[data-br-fam]")].every(b => browseOff.has(b.dataset.brFam))) browseOff = new Set();
     } else browseOpen.add(more.dataset.brMore);
     const y = window.scrollY, name = fam ? "data-br-fam" : null, value = fam && fam.dataset.brFam;
     renderBrowse(getRoute());

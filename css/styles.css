@@ -2891,6 +2891,8 @@ details[open] > summary.set-panel-title::after { transform: rotate(90deg); }
   background: var(--space-soft); color: var(--space);
 }
 .ct-years a:hover { filter: brightness(1.15); }
+.ct-years-more { font: inherit; font-size: 12.5px; font-weight: 650; padding: 3px 9px; border: 1px dashed var(--border); border-radius: 7px; background: none; color: var(--text-dim); cursor: pointer; }
+.ct-years-more:hover { color: var(--space); border-color: var(--space); }
 @media (max-width: 640px) { .ct-row { grid-template-columns: 1fr; gap: 6px; } }
 .pl-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 6px; }
 .hp-panel .pl-list { grid-template-columns: 1fr; gap: 0; }
@@ -4664,3 +4666,19 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 .chain-official .aops-btn { margin: 0; }
 .chain-official-note { font-size: calc(13px * var(--tx)); color: var(--text-dim); }
 @media (max-width: 640px) { .ct-papers button { padding: 0 6px; } }
+
+/* Practice a topic and Practice a card: which contests a set draws from (owner, 2026-11-14). */
+.pr-fams { margin: 2px 0 12px; }
+.pr-fams > summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px; font-weight: 650; color: var(--text); list-style: none; padding: 4px 0; }
+.pr-fams > summary::-webkit-details-marker { display: none; }
+.pr-fams > summary::after { content: ""; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); opacity: 0.6; }
+.pr-fams[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.pr-fams-sum { font-weight: 600; color: var(--space, var(--accent)); }
+.pr-fams-note { margin: 4px 0 10px; max-width: 640px; font-size: 12.5px; line-height: 1.5; color: var(--text-dim); }
+.pr-fams .fam-chip[aria-pressed="true"] { border-color: var(--space, var(--accent)); background: var(--space-soft, var(--bg-panel)); color: var(--space, var(--accent)); }
+/* A problem read in its official paper, and the reviewer's own check of it. */
+.practice-paper { padding: 4px 0 2px; }
+.practice-paper p { margin: 0 0 10px; line-height: 1.55; color: var(--text); }
+.practice-self { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 6px 0 14px; }
+.practice-self .rand-btns { margin: 0; }
+.practice-self [data-self][aria-pressed="true"] { background: var(--space); color: #fff; }
