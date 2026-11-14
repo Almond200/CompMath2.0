@@ -203,7 +203,11 @@
     "2013 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2013_GeometryA.pdf",
     "2013 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2013_GeometryB.pdf",
     "2013 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2013_NumberTheoryA.pdf",
-    "2013 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2013_NumberTheoryB.pdf"
+    "2013 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2013_NumberTheoryB.pdf",
+    "2012 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2012_AlgebraA.pdf",
+    "2012 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2012_AlgebraB.pdf",
+    "2012 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2012_CombinatoricsA.pdf",
+    "2012 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2012_CombinatoricsB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -39337,6 +39341,134 @@
     "2013 PUMaC Division B Number Theory, Problem 8": [
       3450,
       "Find minimum representable amounts in all residue classes of one denomination and read the largest unattainable amount; the two-denomination closed formula does not apply directly."
+    ],
+    "2012 PUMaC Division A Algebra, Problem 1": [
+      2700,
+      "Solve the positive fixed points of an infinite radical and a periodic continued fraction, then use monotonicity and the strict threshold."
+    ],
+    "2012 PUMaC Division A Algebra, Problem 2": [
+      2450,
+      "Combine cyclic rational terms over a common denominator and recognize the negative product of their differences."
+    ],
+    "2012 PUMaC Division A Algebra, Problem 3": [
+      2550,
+      "Write a rational series term as a two-step difference of reciprocal squares and keep the uncancelled boundary terms."
+    ],
+    "2012 PUMaC Division A Algebra, Problem 4": [
+      2700,
+      "Use the parity of two polynomial values at consecutive integers to exclude every integer root."
+    ],
+    "2012 PUMaC Division A Algebra, Problem 5": [
+      3450,
+      "Reduce a power polynomial in the cyclotomic quotient ring and identify its two valid exponent classes modulo six."
+    ],
+    "2012 PUMaC Division A Algebra, Problem 6": [
+      3300,
+      "Identify a ternary digit-sum recurrence and count bounded digit strings with the specified sum, including leading-zero padding."
+    ],
+    "2012 PUMaC Division A Algebra, Problem 7": [
+      3200,
+      "Prove the exact alternating quadratic formula of a rounded-square-root recurrence and reduce the requested term modulo ten thousand."
+    ],
+    "2012 PUMaC Division A Algebra, Problem 8": [
+      3700,
+      "Expand each shifted floor in binary digits and cancel the entire parameter dependence in a long sum."
+    ],
+    "2012 PUMaC Division B Algebra, Problem 1": [
+      1550,
+      "Compare the two-adic and five-adic factorial valuations to rule out every later odd last nonzero digit."
+    ],
+    "2012 PUMaC Division B Algebra, Problem 2": [
+      1750,
+      "Find a six-term zero-sum period of a signed recurrence and evaluate the remaining terms."
+    ],
+    "2012 PUMaC Division B Algebra, Problem 3": [
+      2350,
+      "Use the sum and product of two real cube roots to derive a cubic for their sum and select its unique real root."
+    ],
+    "2012 PUMaC Division B Algebra, Problem 4": [
+      2450,
+      "Combine cyclic rational terms over a common denominator and recognize the negative product of their differences."
+    ],
+    "2012 PUMaC Division B Algebra, Problem 5": [
+      2950,
+      "Separate a cubic floor sequence at the point where consecutive increments exceed one and count its initial consecutive output range."
+    ],
+    "2012 PUMaC Division B Algebra, Problem 6": [
+      2550,
+      "Write a rational series term as a two-step difference of reciprocal squares and keep the uncancelled boundary terms."
+    ],
+    "2012 PUMaC Division B Algebra, Problem 7": [
+      2700,
+      "Use the parity of two polynomial values at consecutive integers to exclude every integer root."
+    ],
+    "2012 PUMaC Division B Algebra, Problem 8": [
+      3200,
+      "Prove the exact alternating quadratic formula of a rounded-square-root recurrence and reduce the requested term modulo ten thousand."
+    ],
+    "2012 PUMaC Division A Combinatorics, Problem 1": [
+      1950,
+      "Count three-element subsets of a mixed-parity interval with an even total."
+    ],
+    "2012 PUMaC Division A Combinatorics, Problem 2": [
+      2650,
+      "Recognize allowed adjacent tuple permutations as a complete bipartite graph and count its Hamiltonian orders."
+    ],
+    "2012 PUMaC Division A Combinatorics, Problem 3": [
+      2500,
+      "Condition jointly on the two die identities and their labelled outcomes to recover the posterior chance of reusing the die."
+    ],
+    "2012 PUMaC Division A Combinatorics, Problem 4": [
+      3100,
+      "Choose strictly increasing coordinate lists and pair them in order, then sum over list lengths by Vandermonde."
+    ],
+    "2012 PUMaC Division A Combinatorics, Problem 5": [
+      3150,
+      "Track the target person by position and sum the geometric waiting times for its successive one-position advances."
+    ],
+    "2012 PUMaC Division A Combinatorics, Problem 6": [
+      3250,
+      "Count binary face colorings of a pentagonal bipyramid modulo its ten proper rotations."
+    ],
+    "2012 PUMaC Division A Combinatorics, Problem 7": [
+      3850,
+      "Count Hamiltonian grading orders on a three-row cyclic strip and reduce the resulting recurrence modulo one hundred; an independent frontier degree/connectivity count verifies the total."
+    ],
+    "2012 PUMaC Division A Combinatorics, Problem 8": [
+      3800,
+      "Translate two simultaneous student movements into conjugation and count the resulting two-four-cycle class; direct simulation of every initial order verifies the count."
+    ],
+    "2012 PUMaC Division B Combinatorics, Problem 1": [
+      2000,
+      "Average the point weights over a uniform two-subset of correct answers; equal individual success probabilities alone do not imply that conditional model."
+    ],
+    "2012 PUMaC Division B Combinatorics, Problem 2": [
+      1950,
+      "Count three-element subsets of a mixed-parity interval with an even total."
+    ],
+    "2012 PUMaC Division B Combinatorics, Problem 3": [
+      2650,
+      "Recognize allowed adjacent tuple permutations as a complete bipartite graph and count its Hamiltonian orders."
+    ],
+    "2012 PUMaC Division B Combinatorics, Problem 4": [
+      2450,
+      "Count subsets by their size and largest allowed element, then sum the binomial counts with a boundary correction."
+    ],
+    "2012 PUMaC Division B Combinatorics, Problem 5": [
+      2500,
+      "Condition jointly on the two die identities and their labelled outcomes to recover the posterior chance of reusing the die."
+    ],
+    "2012 PUMaC Division B Combinatorics, Problem 6": [
+      3100,
+      "Choose strictly increasing coordinate lists and pair them in order, then sum over list lengths by Vandermonde."
+    ],
+    "2012 PUMaC Division B Combinatorics, Problem 7": [
+      3150,
+      "Track the target person by position and sum the geometric waiting times for its successive one-position advances."
+    ],
+    "2012 PUMaC Division B Combinatorics, Problem 8": [
+      3850,
+      "Count Hamiltonian grading orders on a three-row cyclic strip and reduce the resulting recurrence modulo one hundred; an independent frontier degree/connectivity count verifies the total."
     ]
   }
 }
