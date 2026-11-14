@@ -153,7 +153,49 @@
     "2018 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/Number-Theory-B-Test.pdf",
     "2017 BMT Analysis": "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf",
     "2017 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2017/DisS2017.pdf",
-    "2017 BMT Geometry": "https://oss.linstitute.net/wechatimg/2019/10/bmt2017geometry.pdf"
+    "2017 BMT Geometry": "https://oss.linstitute.net/wechatimg/2019/10/bmt2017geometry.pdf",
+    "2017 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_A.pdf",
+    "2017 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_B.pdf",
+    "2017 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2017_Combo_A.pdf",
+    "2017 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2017_Combo_B.pdf",
+    "2017 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2017_Geo_A.pdf",
+    "2017 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2017_Geo_B.pdf",
+    "2017 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2017_NT_A.pdf",
+    "2017 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2017_NT_B.pdf",
+    "2016 BMT Analysis": "https://berkeley.mt/archives/bmt-2016/AnaS2016.pdf",
+    "2016 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2016/DisS2016.pdf",
+    "2016 BMT Geometry": "https://berkeley.mt/archives/bmt-2016/GeoS2016.pdf",
+    "2015 BMT Analysis": "https://berkeley.mt/archives/bmt-2015/AnaS2015.pdf",
+    "2015 BMT Geometry": "https://berkeley.mt/archives/bmt-2015/GeoS2015.pdf",
+    "2014 BMT Analysis": "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf",
+    "2014 BMT Geometry": "https://berkeley.mt/archives/bmt-2014/GeoS2014.pdf",
+    "2013 BMT Analysis": "https://berkeley.mt/archives/bmt-2013/AnaS2013.pdf",
+    "2013 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2013/DisS2013.pdf",
+    "2013 BMT Geometry": "https://berkeley.mt/archives/bmt-2013/GeoS2013.pdf",
+    "2016 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraA.pdf",
+    "2016 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraB.pdf",
+    "2016 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsA.pdf",
+    "2016 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsB.pdf",
+    "2016 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2016_GeometryA.pdf",
+    "2016 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2016_GeometryB.pdf",
+    "2016 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryA.pdf",
+    "2016 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryB.pdf",
+    "2015 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2015_AlgebraA.pdf",
+    "2015 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2015_AlgebraB.pdf",
+    "2015 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsA.pdf",
+    "2015 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsB.pdf",
+    "2015 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2015_GeometryA.pdf",
+    "2015 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2015_GeometryB.pdf",
+    "2015 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryA.pdf",
+    "2015 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryB.pdf",
+    "2014 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2014_AlgebraA.pdf",
+    "2014 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2014_AlgebraB.pdf",
+    "2014 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsA.pdf",
+    "2014 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsB.pdf",
+    "2014 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2014_GeometryA.pdf",
+    "2014 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2014_GeometryB.pdf",
+    "2014 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryA.pdf",
+    "2014 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -37655,6 +37697,1382 @@
     "2009 Fermat Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each circle's plane meets the base plane in a side of an equilateral triangle with the tangency points at the midpoints; the tilt of 45 degrees and radius 10 place the contact points on a circle of radius about 7.3."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 1": [
+      1700,
+      "Rewrite a custom binary operation around its absorbing element inside a long nested expression."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 2": [
+      2250,
+      "Use conjugate cube roots to derive a cubic for twice each real part and apply Vieta to their product."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 3": [
+      2550,
+      "Replace equal logarithms by a common exponent; AM-GM equality forces the unique positive triple."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 4": [
+      2750,
+      "Take successive differences to obtain a constant-term linear recurrence and identify the boundary initial value keeping every term positive."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 5": [
+      2750,
+      "Prove complementary inputs remain complementary under a polynomial iterate, making every paired summand constant."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 6": [
+      3300,
+      "Compute shifted reciprocal root sums through transformed Vieta coefficients and count the real roots; the source also accepts excluding zero under its informal surprise wording."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 7": [
+      3350,
+      "Rewrite each lacunary exponential-series term as a difference of successive reciprocal powers and pass to the limit."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 8": [
+      4050,
+      "Evaluate a nonperiodic generalized continued fraction by a finite Euler continued-fraction identity and a weighted geometric-series limit; the specific Euler identity is not covered by an existing card."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 1": [
+      1400,
+      "Reduce a nested power equation while retaining the unit base; the organizers accepted both the intended value and the overlooked unit-base alternative."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 2": [
+      1600,
+      "Factor a bivariate polynomial into separate linear factors and multiply its two binomial coefficients."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 3": [
+      1700,
+      "Rewrite a custom binary operation around its absorbing element inside a long nested expression."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 4": [
+      2250,
+      "Use conjugate cube roots to derive a cubic for twice each real part and apply Vieta to their product."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 5": [
+      2550,
+      "Replace equal logarithms by a common exponent; AM-GM equality forces the unique positive triple."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 6": [
+      2750,
+      "Take successive differences to obtain a constant-term linear recurrence and identify the boundary initial value keeping every term positive."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 7": [
+      2750,
+      "Prove complementary inputs remain complementary under a polynomial iterate, making every paired summand constant."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 8": [
+      3300,
+      "Compute shifted reciprocal root sums through transformed Vieta coefficients and count the real roots; the source also accepts excluding zero under its informal surprise wording."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 1": [
+      2600,
+      "Multiply a fixed singleton survival probability through a coalescent process and use disjointness when two clusters remain."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 2": [
+      2550,
+      "Sum three-digit numbers avoiding equal adjacent digits by digit complements, correcting the short leading-zero representations."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 3": [
+      2700,
+      "Update a uniform prior on the number of black balls after one black observation and average the next-draw probability."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 4": [
+      3100,
+      "Find the least extinction fixed point of a branching die process by increasing finite-generation probabilities; a specific branching-process card is absent."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 5": [
+      3250,
+      "Express each minimum adjacent-swap cost through inversions and build its weighted permutation sum by inserting the next largest letter."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 6": [
+      3550,
+      "Evaluate a reciprocal shifted-binomial expectation and locate its strict integer threshold with exact power comparisons."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 7": [
+      3700,
+      "Convert a board of mutually attacking rooks into a two-regular bipartite graph and count placements by cycles or row-degree dynamic programming."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 8": [
+      3850,
+      "Average pattern waiting times over all four-bit words using their prefix-suffix overlaps; exact finite-state first-step systems independently verify every overlap class."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 1": [
+      1000,
+      "Count permutations satisfying one fixed relative order among three distinguished letters."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 2": [
+      2250,
+      "Count binary colorings of a tetrahedron with one subdivided face under the rotations preserving that distinguished face."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 3": [
+      2600,
+      "Multiply a fixed singleton survival probability through a coalescent process and use disjointness when two clusters remain."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 4": [
+      2550,
+      "Sum three-digit numbers avoiding equal adjacent digits by digit complements, correcting the short leading-zero representations."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 5": [
+      2700,
+      "Update a uniform prior on the number of black balls after one black observation and average the next-draw probability."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 6": [
+      3100,
+      "Find the least extinction fixed point of a branching die process by increasing finite-generation probabilities; a specific branching-process card is absent."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 7": [
+      3250,
+      "Express each minimum adjacent-swap cost through inversions and build its weighted permutation sum by inserting the next largest letter."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 8": [
+      3550,
+      "Evaluate a reciprocal shifted-binomial expectation and locate its strict integer threshold with exact power comparisons."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 1": [
+      1800,
+      "Recognize the second circle intersection as the foot of the isosceles triangle altitude and halve its area."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 2": [
+      2650,
+      "Combine a right diagonal and exact parallelogram area into a square-divisor condition, then test all possible integer sides."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 3": [
+      3000,
+      "Find the pentagonal section of a regular hexagonal prism and split its exact planar area into a rectangle and triangle."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 4": [
+      3000,
+      "Identify a supplementary angle from the three point distances, reflect to the equilateral circumcircle and compare the congruent circumcircle centers."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 5": [
+      3250,
+      "Use the orthocenter vector identity in a rectangular center-and-altitude configuration to fix the remaining vertex and recover the common chord length."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 6": [
+      3500,
+      "Track equal-radius right triangles through two intersecting circles and recognize the target quadrilateral as an isosceles trapezoid."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 7": [
+      3800,
+      "Project a cyclic quadrilateral to a line, preserve its signed cross-ratio and solve for the displacement between two prescribed intersections."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 8": [
+      4100,
+      "Relate a mixtilinear contact point to incircle tangents and the circumcircle chord; the source explicitly corrects the tangent-side pair and accepts a different answer for the printed pair."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 1": [
+      1600,
+      "Use two successive medial triangles to partition an equilateral triangle into three congruent trapezoids and a small central triangle."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 2": [
+      2250,
+      "Use a cyclic kite diameter and its perpendicular chord to minimize the area over the integral center-to-diagonal offset."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 3": [
+      1800,
+      "Recognize the second circle intersection as the foot of the isosceles triangle altitude and halve its area."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 4": [
+      2650,
+      "Combine a right diagonal and exact parallelogram area into a square-divisor condition, then test all possible integer sides."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 5": [
+      3000,
+      "Find the pentagonal section of a regular hexagonal prism and split its exact planar area into a rectangle and triangle."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 6": [
+      3000,
+      "Identify a supplementary angle from the three point distances, reflect to the equilateral circumcircle and compare the congruent circumcircle centers."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 7": [
+      3250,
+      "Use the orthocenter vector identity in a rectangular center-and-altitude configuration to fix the remaining vertex and recover the common chord length."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 8": [
+      3500,
+      "Track equal-radius right triangles through two intersecting circles and recognize the target quadrilateral as an isosceles trapezoid."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 1": [
+      2750,
+      "Bound and attain the extremes of repeated median-plus-one replacements on a list of consecutive integers."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 2": [
+      2850,
+      "Under the intended distinct-index reading, assign separate prime factors to neighboring sequence terms; the literal condition including equal indices is inconsistent."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 3": [
+      2700,
+      "Shift three positive integer dimensions to turn a box bigness into a product of three factors at least three and locate consecutive attainable values."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 4": [
+      3450,
+      "Characterize bases preserving every small digit-sum divisibility test by an LCM congruence and round the exact ratio."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 5": [
+      3550,
+      "Factor a shifted quartic and classify residues modulo three, five and seven to sum its least odd prime factors."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 6": [
+      3900,
+      "Cover every forbidden exponent class by proper prime divisors and solve the compatible CRT systems; the source proves a construction but omits a global minimality argument."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 7": [
+      3950,
+      "Pair opposite nonzero ordinates and count cubic root patterns over a finite field; exhaustive verification gives one fewer pair than the official count, whose proof misses the triple-root cubic."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 8": [
+      3800,
+      "Expand a moving interval gcd sum by its divisors and minimize the multiple counts; all permitted interval positions independently verify the minimum."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 1": [
+      1400,
+      "Construct the smallest positive integer of each prescribed digit sum by filling the largest trailing digits and sum the finite list."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 2": [
+      2050,
+      "Count divisibility pairs in a short set of repeated-digit numbers, checking the repunit and digit factors."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 3": [
+      2750,
+      "Bound and attain the extremes of repeated median-plus-one replacements on a list of consecutive integers."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 4": [
+      2850,
+      "Under the intended distinct-index reading, assign separate prime factors to neighboring sequence terms; the literal condition including equal indices is inconsistent."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 5": [
+      2700,
+      "Shift three positive integer dimensions to turn a box bigness into a product of three factors at least three and locate consecutive attainable values."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 6": [
+      3450,
+      "Characterize bases preserving every small digit-sum divisibility test by an LCM congruence and round the exact ratio."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 7": [
+      3550,
+      "Factor a shifted quartic and classify residues modulo three, five and seven to sum its least odd prime factors."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 8": [
+      3900,
+      "Cover every forbidden exponent class by proper prime divisors and solve the compatible CRT systems; the source proves a construction but omits a global minimality argument."
+    ],
+    "2016 BMT Analysis, Problem 1": [
+      900,
+      "Evaluate a difference of consecutive cubes by factoring rather than expanding both large cubes."
+    ],
+    "2016 BMT Analysis, Problem 2": [
+      1700,
+      "Translate a pair of logarithmic exponential equations and exhibit an integer solution pair."
+    ],
+    "2016 BMT Analysis, Problem 3": [
+      1850,
+      "Track the runner from the trailing end of a moving train until he exits the tunnel, separating ground speed and distance along the train."
+    ],
+    "2016 BMT Analysis, Problem 4": [
+      2600,
+      "Express an alternating geometric sum and the endpoint sum in the common ratio and recover the even-length progression."
+    ],
+    "2016 BMT Analysis, Problem 5": [
+      2400,
+      "Pair complementary angles in a finite tangent-ratio sum, leaving the middle term alone."
+    ],
+    "2016 BMT Analysis, Problem 7": [
+      2700,
+      "Extract the quadratic coefficient of a product of squared linear factors through the first two coefficient power sums."
+    ],
+    "2016 BMT Analysis, Problem 10": [
+      3300,
+      "Recognize an alternating central-binomial infinite series as a negative-half binomial expansion."
+    ],
+    "2016 BMT Discrete Math, Problem 1": [
+      1000,
+      "Use the fixed average coin value to force an integer ratio of nickels to quarters."
+    ],
+    "2016 BMT Discrete Math, Problem 2": [
+      1200,
+      "Count integers divisible by exactly one of two given divisors."
+    ],
+    "2016 BMT Discrete Math, Problem 3": [
+      1450,
+      "Choose the ranks and suits of a full-house poker hand without ordering the hand."
+    ],
+    "2016 BMT Discrete Math, Problem 4": [
+      2250,
+      "Distribute distinguishable socks to three recipients with equal final sizes and forbidden original owners."
+    ],
+    "2016 BMT Discrete Math, Problem 5": [
+      2600,
+      "Reduce a descending power tower through the short exponent cycles needed for its last two digits."
+    ],
+    "2016 BMT Discrete Math, Problem 6": [
+      3050,
+      "Optimize an asymmetric pair-merging operation by doubling the largest partial total and adding the remaining labels in order."
+    ],
+    "2016 BMT Discrete Math, Problem 7": [
+      3000,
+      "Match a long divisibility chain with a logarithmic-level proper coloring of the divisibility graph."
+    ],
+    "2016 BMT Discrete Math, Problem 8": [
+      3300,
+      "Bound a regular hypercube quadratic form edge by edge and attain equality with opposite signs on its two parity classes."
+    ],
+    "2016 BMT Discrete Math, Problem 9": [
+      3500,
+      "Use a small algebraic conjugate to locate an irrational power just below an integer trace and compute that trace modulo one hundred."
+    ],
+    "2016 BMT Discrete Math, Problem 10": [
+      3650,
+      "Find the smallest rectangle admitting a fault-free domino tiling; exhaustive finite board search independently verifies the minimum and a witness."
+    ],
+    "2016 BMT Geometry, Problem 1": [
+      1000,
+      "Match a rectangular box volume to a cube and compare their surface areas."
+    ],
+    "2016 BMT Geometry, Problem 2": [
+      1600,
+      "Evaluate the area of a cyclic quadrilateral from its four side lengths."
+    ],
+    "2016 BMT Geometry, Problem 3": [
+      2200,
+      "Enumerate all permitted integer third sides and keep precisely those producing acute triangles."
+    ],
+    "2016 BMT Geometry, Problem 4": [
+      2450,
+      "Fit a corner square into an equilateral triangle and compare exact side-scaled areas."
+    ],
+    "2016 BMT Geometry, Problem 5": [
+      3000,
+      "Apply the total turning or angle sum of a pentagram inside a convex pentagon."
+    ],
+    "2016 BMT Geometry, Problem 6": [
+      2850,
+      "Scale the triangle of medians to the centroid-distance triangle and recover its area from the original side lengths."
+    ],
+    "2016 BMT Geometry, Problem 7": [
+      2700,
+      "Use the prescribed exterior thirty-sixty-ninety construction to locate the vertex and calculate a signed triangle area."
+    ],
+    "2016 BMT Geometry, Problem 8": [
+      3350,
+      "Center the vertices of a regular seven-dimensional unit simplex and compute their common squared radius; the dimension-specific simplex fact lacks a dedicated card or tree leaf."
+    ],
+    "2016 BMT Geometry, Problem 9": [
+      3500,
+      "Express external-square endpoints in right-triangle coordinates and combine two given squared distances to recover a third."
+    ],
+    "2016 BMT Geometry, Problem 10": [
+      3500,
+      "Sum the squared radii of the intended shrinking tangent-circle chain; the printed recurrence does not specify the shrinking direction and also allows larger or backtracking circles."
+    ],
+    "2015 BMT Analysis, Problem 1": [
+      2250,
+      "Recover a four-term dyadic expansion with integer exponents and prove uniqueness by binary carries."
+    ],
+    "2015 BMT Analysis, Problem 2": [
+      2150,
+      "Read a rational generating-function coefficient as a prefix sum of consecutive integers, avoiding any need for differentiation."
+    ],
+    "2015 BMT Analysis, Problem 3": [
+      2450,
+      "Reduce a quadratic integer system to bounded squares and exhaust the remaining sign choices."
+    ],
+    "2015 BMT Analysis, Problem 4": [
+      2750,
+      "Use the intended sixth-period linear recurrence; the printed starting index leaves two tail initial values free and the requested sum is not determined."
+    ],
+    "2015 BMT Analysis, Problem 5": [
+      2300,
+      "Complete a planar circle equation and compare its nearest and farthest distances to the origin."
+    ],
+    "2015 BMT Analysis, Problem 6": [
+      2800,
+      "Relate the sum and reciprocal sum of five geometric-progression roots through their central term and recover the absolute product."
+    ],
+    "2015 BMT Analysis, Problem 7": [
+      2950,
+      "Read an alternating even-binomial sum as the real part of a complex binomial power."
+    ],
+    "2015 BMT Analysis, Problem 8": [
+      3550,
+      "Reverse a product over seventh roots of unity using the two roots of a quadratic and reduce the resulting powers."
+    ],
+    "2015 BMT Geometry, Problem 1": [
+      1200,
+      "Apply the angle between two internal triangle angle bisectors."
+    ],
+    "2015 BMT Geometry, Problem 2": [
+      1850,
+      "Decompose the overlap of alternating-vertex equilateral triangles in a regular hexagon into equal elementary regions."
+    ],
+    "2015 BMT Geometry, Problem 3": [
+      1950,
+      "Maximize the altitude to a fixed base when a specified cevian has fixed length."
+    ],
+    "2015 BMT Geometry, Problem 4": [
+      2450,
+      "Express two opposite-corner circle centers through their radius sum and reject the extraneous large algebraic root."
+    ],
+    "2015 BMT Geometry, Problem 5": [
+      2000,
+      "Compute the three possible fourth parallelogram vertices and the area of their triangle."
+    ],
+    "2015 BMT Geometry, Problem 6": [
+      2500,
+      "Parameterize a secant from a sphere point and solve for its second intersection exactly."
+    ],
+    "2015 BMT Geometry, Problem 7": [
+      2850,
+      "Reflect one endpoint across a plane to minimize a broken spatial path and compute its squared length."
+    ],
+    "2015 BMT Geometry, Problem 8": [
+      3150,
+      "Map an inscribed ellipse quadrilateral to the unit circle, characterize equality in its maximal area and recover the counterclockwise next vertex."
+    ],
+    "2015 BMT Geometry, Problem 9": [
+      3500,
+      "Identify the altitude feet cut out by a diameter circle and intersect their chord with a median to obtain its exact ratio."
+    ],
+    "2015 BMT Geometry, Problem 10": [
+      3550,
+      "Audit the printed tangent-circle configuration: point powers force tangent distances incompatible with the triangle side determined by its equilateral inner triangle, so the prescribed circle does not exist."
+    ],
+    "2014 BMT Analysis, Problem 1": [
+      1500,
+      "Substitute a positive exponential into a quadratic and recover both real exponents."
+    ],
+    "2014 BMT Analysis, Problem 2": [
+      1600,
+      "Factor a cubic with an integer root and compare its remaining positive quadratic roots."
+    ],
+    "2014 BMT Analysis, Problem 3": [
+      2000,
+      "Bound marker spacing from a fixed travel distance and exact marker count; the limiting endpoint convention needs clarification for attained largest and smallest values."
+    ],
+    "2014 BMT Analysis, Problem 4": [
+      2900,
+      "Center five arithmetic-progression roots at their mean and compare polynomial values at symmetric arguments."
+    ],
+    "2014 BMT Analysis, Problem 6": [
+      3000,
+      "Close a short chain of substitutions in a functional equation and solve the resulting linear system of values."
+    ],
+    "2014 BMT Analysis, Problem 7": [
+      3250,
+      "Pair the four sums of roots of two quadratics around a real center and evaluate their conjugate distance product."
+    ],
+    "2014 BMT Analysis, Problem 8": [
+      3550,
+      "Sum a weighted sequence from its alternating partial-sum formulas; the literal integer-valued requirement already contradicts the prescribed zeroth value."
+    ],
+    "2014 BMT Analysis, Problem 10": [
+      3500,
+      "Bracket three slightly perturbed cubic roots by exact rational half-rounding intervals to certify their scaled nearest integers."
+    ],
+    "2014 BMT Geometry, Problem 1": [
+      1500,
+      "Compare a regular hexagon area with the disk of its apothem-radius incircle."
+    ],
+    "2014 BMT Geometry, Problem 2": [
+      1800,
+      "Find a regular-hexagon diagonal intersection and evaluate the area of the resulting center-based quadrilateral."
+    ],
+    "2014 BMT Geometry, Problem 3": [
+      2350,
+      "Compare the isosceles triangle and a circle-diameter altitude construction to recover a fixed chord length."
+    ],
+    "2014 BMT Geometry, Problem 4": [
+      3550,
+      "Minimize the cylinder length over all three axial sphere orders using sharp radial separation bounds; a shorter exact packing disproves the official order and value."
+    ],
+    "2014 BMT Geometry, Problem 5": [
+      3500,
+      "Solve a formal equal-radius hypercube tangency equation and audit feasibility: the resulting adjacent corner hyperspheres overlap, so the asserted nonoverlapping packing does not exist."
+    ],
+    "2014 BMT Geometry, Problem 6": [
+      2550,
+      "Intersect a square diagonal-like line with a corner-centered circle and project to the opposite side."
+    ],
+    "2014 BMT Geometry, Problem 7": [
+      3050,
+      "Parameterize a point on a parallelogram side ray, compare its cevian intersections and solve the length equality with the segment-order restriction."
+    ],
+    "2014 BMT Geometry, Problem 8": [
+      3000,
+      "Split a curvilinear region into a circular segment and an inscribed triangle whose area cancels the associated central triangle."
+    ],
+    "2014 BMT Geometry, Problem 9": [
+      3600,
+      "Audit two external-equilateral cevian lines, which meet at sixty or one hundred twenty degrees; their given distances violate the resulting point-to-line lower bound."
+    ],
+    "2014 BMT Geometry, Problem 10": [
+      3750,
+      "Average polygon hull areas over independent visibility subsets of eight convex-position points; the printed marginal probabilities alone do not specify that independence."
+    ],
+    "2013 BMT Analysis, Problem 1": [
+      1000,
+      "Add a short pair-sum linear system and subtract the unwanted pair."
+    ],
+    "2013 BMT Analysis, Problem 2": [
+      2000,
+      "Apply the quadratic-mean bound to a quartic unit curve and attain the maximal distance at equal coordinate magnitudes."
+    ],
+    "2013 BMT Analysis, Problem 4": [
+      2400,
+      "Separate real and imaginary parts of a complex quadratic condition and list the resulting moduli."
+    ],
+    "2013 BMT Analysis, Problem 6": [
+      3450,
+      "Obtain a cubic minimal polynomial from a primitive fourteenth root of unity, prove its irreducibility and evaluate its monic normalization."
+    ],
+    "2013 BMT Analysis, Problem 7": [
+      3650,
+      "Find the smallest positive parameter admitting a positive cubic solution through an exact nonnegative factorization, without requiring calculus."
+    ],
+    "2013 BMT Discrete Math, Problem 1": [
+      1250,
+      "Solve two remainder conditions together with parity and select the unique integer in the prescribed interval."
+    ],
+    "2013 BMT Discrete Math, Problem 2": [
+      1800,
+      "Enumerate three four-sided dice outcomes and test coprimality of their sum and product; the official final probability is correct but its written subtraction is not."
+    ],
+    "2013 BMT Discrete Math, Problem 3": [
+      2550,
+      "Encode each pile size by a subset of the removal amounts, match the subset-count lower bound with a binary construction."
+    ],
+    "2013 BMT Discrete Math, Problem 4": [
+      2600,
+      "Solve an iterated affine function around its fixed point and reduce the large exponential modulo a prime."
+    ],
+    "2013 BMT Discrete Math, Problem 5": [
+      3200,
+      "Multiply the nonprimitive roots under the intended positive smaller-exponent condition; the printed unrestricted integer exponent also allows zero and selects every root."
+    ],
+    "2013 BMT Discrete Math, Problem 6": [
+      3200,
+      "Count binary strings whose first specified three-flip pattern ends exactly at the last position, using the no-adjacent-tail recurrence."
+    ],
+    "2013 BMT Discrete Math, Problem 7": [
+      3150,
+      "Reduce containment of two additive numerical semigroups to representability of their generators and enumerate the possible second generators."
+    ],
+    "2013 BMT Discrete Math, Problem 8": [
+      2600,
+      "Condition a nested uniform decreasing-integer random map on its first value and include its absorbing zero case."
+    ],
+    "2013 BMT Discrete Math, Problem 9": [
+      3600,
+      "Find the diameter of a circulant pass graph; complete breadth-first distances independently verify the extremal shortest path."
+    ],
+    "2013 BMT Discrete Math, Problem 10": [
+      3500,
+      "Minimize the degree of a permutation of prescribed order by splitting its prime-power cycle lengths; the paper asks for general k while the numerical key specializes to 2013."
+    ],
+    "2013 BMT Geometry, Problem 1": [
+      1400,
+      "Recover the side sum from a rectangle area and diagonal, then double it for the perimeter; the official answer is only the semiperimeter."
+    ],
+    "2013 BMT Geometry, Problem 2": [
+      1850,
+      "Relate center distances along a sixty-degree angle bisector and obtain the smaller tangent radius; the official value fails the tangency equation."
+    ],
+    "2013 BMT Geometry, Problem 3": [
+      2350,
+      "Use the circumradius of a regular tetrahedron and its unit edge to recover the central angle sine."
+    ],
+    "2013 BMT Geometry, Problem 4": [
+      2300,
+      "Solve the two numerical cube size relations and compute the requested surface-to-volume ratio; the official reciprocal-sized result disagrees with direct substitution."
+    ],
+    "2013 BMT Geometry, Problem 5": [
+      2650,
+      "Describe the fixed-angle locus on both sides of a chord and add the two exact circular segment areas."
+    ],
+    "2013 BMT Geometry, Problem 6": [
+      2950,
+      "Use similar secant triangles in a cyclic quadrilateral to recover two exterior lengths and then the target triangle area."
+    ],
+    "2013 BMT Geometry, Problem 7": [
+      3100,
+      "Convert a fixed-area right-triangle subconfiguration into a reciprocal-product constraint and find the full interval of a weighted midpoint-distance sum."
+    ],
+    "2013 BMT Geometry, Problem 8": [
+      3400,
+      "Construct an excircle diameter and a second right-isosceles triangle, then evaluate the area formed by their centers."
+    ],
+    "2013 BMT Geometry, Problem 9": [
+      3600,
+      "Recognize the shared-circle Miquel point, identify a right common circumcircle and recover its radius from the fixed contact chord."
+    ],
+    "2013 BMT Geometry, Problem 10": [
+      3850,
+      "Project the harmonic incircle quadrilateral to the opposite side and evaluate the absolute reciprocal-distance difference; the PDF absolute-value bars are essential."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 1": [
+      1750,
+      "Cube a radical recurrence to expose constant three-term block sums and add its initial exceptional term."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 2": [
+      1850,
+      "Use the fixed point of an affine map to solve equality of its fifth and first iterates."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 3": [
+      2450,
+      "Replace a nested logarithmic power by one logarithm variable, factor its cubic and recover the original positive solutions."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 4": [
+      3200,
+      "Bound an integer-coefficient polynomial value through its known congruences and construct a polynomial attaining the least positive CRT representative."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 5": [
+      3100,
+      "Compress an integer squaring-and-halving recurrence into transitions between one-less-than-power-of-two states and count their total index length."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 6": [
+      3950,
+      "Prove the optimal shape and descending order of a binary merge tree by local rotations, then compare its exact value with factorials to certify the requested rounding."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 7": [
+      3750,
+      "Classify a polynomial functional identity by root closure under squaring and shifted squaring, then bound the surviving root multiplicities by a divisor condition."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 8": [
+      4050,
+      "Subtract reciprocal-argument lacunary double series and partition positive exponents by their two-adic and three-adic factors to obtain a rational function."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 1": [
+      1000,
+      "Undo two nested squarings and retain only the prescribed positive real value."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 2": [
+      1750,
+      "Cube a radical recurrence to expose constant three-term block sums and add its initial exceptional term."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 3": [
+      2000,
+      "Translate the coordinate axes of a cubic and track the sum of its new real intercepts."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 4": [
+      1850,
+      "Use the fixed point of an affine map to solve equality of its fifth and first iterates."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 5": [
+      2450,
+      "Replace a nested logarithmic power by one logarithm variable, factor its cubic and recover the original positive solutions."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 6": [
+      3200,
+      "Bound an integer-coefficient polynomial value through its known congruences and construct a polynomial attaining the least positive CRT representative."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 7": [
+      3100,
+      "Compress an integer squaring-and-halving recurrence into transitions between one-less-than-power-of-two states and count their total index length."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 8": [
+      3750,
+      "Classify a polynomial functional identity by root closure under squaring and shifted squaring, then bound the surviving root multiplicities by a divisor condition."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 1": [
+      2250,
+      "Count binary cube-face colorings avoiding monochromatic vertices, up to the twenty-four proper rotations."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 2": [
+      2600,
+      "Compute the third-ranked entrant survival probability under repeated random pairings, independently verifying the uniform-bracket expression by a round-state recursion."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 3": [
+      2850,
+      "Use distinct conditional-mean announcements to force a common viewing direction around a cycle, then recover all six bounded dice rolls."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 4": [
+      2950,
+      "Track the expected squared displacement of a symmetric knight walk through its constant one-step increment."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 5": [
+      3450,
+      "Index consecutive first appearances by the number of types already seen and sum their adjacency indicators through the finite discovery process."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 6": [
+      3150,
+      "Solve the absorbing fair-walk expected duration and evaluate it at the given off-center starting position."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 7": [
+      3750,
+      "Condition hourly random train times on an hour with no arrival, accounting for the changed arrival-phase distribution before comparing the two waiting expectations."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 8": [
+      4000,
+      "Translate universal medal-weight superiority into strict cumulative-count dominance and enumerate the bounded medal-count tuples."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 1": [
+      1000,
+      "Count ordered pairs of six-sided dice with a large absolute difference."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 2": [
+      1200,
+      "Sum the upper tail of a seven-day independent fair-coin practice schedule."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 3": [
+      2250,
+      "Count binary cube-face colorings avoiding monochromatic vertices, up to the twenty-four proper rotations."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 4": [
+      2600,
+      "Compute the third-ranked entrant survival probability under repeated random pairings, independently verifying the uniform-bracket expression by a round-state recursion."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 5": [
+      2850,
+      "Use distinct conditional-mean announcements to force a common viewing direction around a cycle, then recover all six bounded dice rolls."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 6": [
+      2950,
+      "Track the expected squared displacement of a symmetric knight walk through its constant one-step increment."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 7": [
+      3450,
+      "Index consecutive first appearances by the number of types already seen and sum their adjacency indicators through the finite discovery process."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 8": [
+      4000,
+      "Translate universal medal-weight superiority into strict cumulative-count dominance and enumerate the bounded medal-count tuples."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 1": [
+      2350,
+      "Locate the tangency of an equilateral triangle corner circle with the circumcircle of a parallel smaller triangle."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 2": [
+      2600,
+      "Find a square-based circumcircle and intersect a radius line with a midpoint cevian using exact coordinates."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 3": [
+      3000,
+      "Unroll a cone geodesic into a chord whose radial midpoint condition fixes the sector angle and slant-to-base ratio."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 4": [
+      3100,
+      "Convert equal centroid and incenter base areas to a perimeter condition and attain the largest admissible integer side."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 5": [
+      3300,
+      "Use circle powers among altitude feet to identify a right triangle through the prescribed point and recover its remaining length."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 6": [
+      3550,
+      "Combine a diameter-circle right angle with an obtuse central distance condition in an isosceles triangle and solve the length ratio."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 7": [
+      3700,
+      "Use a parallel chord and two similar secant triangles to cancel an unknown scale and obtain a cyclic quadrilateral construction area."
+    ],
+    "2016 PUMaC Division A Geometry, Problem 8": [
+      4000,
+      "Relate the midpoint-perpendicular circumcircle point to the orthocenter, then use altitude-foot circles and powers to recover both projected side intersections."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 1": [
+      1750,
+      "Relate the centers of four equal circles in a symmetric ring and recover the radius of their central tangent circle."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 2": [
+      2350,
+      "Locate the tangency of an equilateral triangle corner circle with the circumcircle of a parallel smaller triangle."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 3": [
+      2600,
+      "Find a square-based circumcircle and intersect a radius line with a midpoint cevian using exact coordinates."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 4": [
+      3000,
+      "Unroll a cone geodesic into a chord whose radial midpoint condition fixes the sector angle and slant-to-base ratio."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 5": [
+      3300,
+      "Resolve three opposite vertex pairs into orthogonal half-diagonals and sum the two pyramidal volumes of a nonregular octahedron."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 6": [
+      3300,
+      "Use circle powers among altitude feet to identify a right triangle through the prescribed point and recover its remaining length."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 7": [
+      3550,
+      "Combine a diameter-circle right angle with an obtuse central distance condition in an isosceles triangle and solve the length ratio."
+    ],
+    "2016 PUMaC Division B Geometry, Problem 8": [
+      3700,
+      "Use a parallel chord and two similar secant triangles to cancel an unknown scale and obtain a cyclic quadrilateral construction area."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 1": [
+      1250,
+      "Complete each prime exponent to the next multiple of three to obtain a minimal cube multiplier."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 2": [
+      2200,
+      "Solve the first two nontrivial rows of a two-index linear recurrence and reduce a resulting quadratic row value modulo one thousand."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 3": [
+      3200,
+      "Follow the smallest-prime-factor steps of an odd noncoprimality map and prove the first parameter avoiding divisibility by three; the stated domain needs to exclude one."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 4": [
+      3300,
+      "Count idempotent last digits by assigning each prime-power base factor to consecutive integers and minimize the required number of distinct prime factors."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 5": [
+      3500,
+      "Factor a gcd-to-lcm divisor-pair sum into independent prime-exponent sums and simplify its exact rational value."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 6": [
+      3700,
+      "Separate a large prime-exponent power difference into its linear and cyclotomic factors and identify the four least prime divisors by their orders."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 7": [
+      3800,
+      "Count self-power congruences over a complete CRT period through multiplicative orders and a gcd sum, independently checking every integer in the original interval."
+    ],
+    "2016 PUMaC Division A Number Theory, Problem 8": [
+      4200,
+      "Count square-congruence roots through all singular and nonsingular prime-power valuation regimes, then enumerate the parameters dividing their root counts."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 1": [
+      1250,
+      "Complete each prime exponent to the next multiple of three to obtain a minimal cube multiplier."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 2": [
+      1700,
+      "Use a digit-sum divisibility condition to reduce the possible two-digit integers to a short list of multiples."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 3": [
+      2200,
+      "Solve the first two nontrivial rows of a two-index linear recurrence and reduce a resulting quadratic row value modulo one thousand."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 4": [
+      2550,
+      "Express a divisor product as an exponent of its integer and classify divisor-count factors having exactly one factor of two."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 5": [
+      3200,
+      "Follow the smallest-prime-factor steps of an odd noncoprimality map and prove the first parameter avoiding divisibility by three; the stated domain needs to exclude one."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 6": [
+      3300,
+      "Count idempotent last digits by assigning each prime-power base factor to consecutive integers and minimize the required number of distinct prime factors."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 7": [
+      3500,
+      "Factor a gcd-to-lcm divisor-pair sum into independent prime-exponent sums and simplify its exact rational value."
+    ],
+    "2016 PUMaC Division B Number Theory, Problem 8": [
+      3800,
+      "Count self-power congruences over a complete CRT period through multiplicative orders and a gcd sum, independently checking every integer in the original interval."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 1": [
+      1900,
+      "Count bounded integer base-power pairs by their positive exponent, using exact integer power bounds."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 2": [
+      2800,
+      "Match affine parameters between two cubic plane-curve equations; the organizers voided the question because constant maps are allowed, and even nondegenerate maps have two vertical orientations."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 3": [
+      2600,
+      "Factor a sextic into repeated and simple quadratic factors and sum only the simple roots."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 4": [
+      2800,
+      "Replace a positive rational recurrence by successive-term ratios, telescope their harmonic increments and locate the first strict decrease."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 5": [
+      3150,
+      "Conjugate a binary merge to multiplication, making its random order irrelevant, and evaluate its final root-of-unity product."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 6": [
+      3600,
+      "Recognize equal divided differences as three collinear quartic graph points and bound their minimum height with the fixed sum of squared shifted roots."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 7": [
+      3850,
+      "Bound a recursively generated radical set by its limiting fixed point and identify its largest empty interval, respecting closed endpoints."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 8": [
+      3900,
+      "Prove a residue has full prime-field order, filter coefficient classes over roots of unity and attain the minimum positive coefficient sum."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 1": [
+      1250,
+      "Solve the total-price quadratic for an order size and convert a fixed production rate to elapsed minutes."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 2": [
+      1650,
+      "Enumerate functions on a three-element set satisfying one constrained sum of iterated values."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 3": [
+      2500,
+      "Under the intended integer-pair restriction, turn the difference between two progression predictions into a square-divisibility condition and count bounded multiples; the printed pair domain omits integrality."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 4": [
+      2800,
+      "Match affine parameters between two cubic plane-curve equations; the organizers voided the question because constant maps are allowed, and even nondegenerate maps have two vertical orientations."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 5": [
+      2600,
+      "Factor a sextic into repeated and simple quadratic factors and sum only the simple roots."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 6": [
+      2800,
+      "Replace a positive rational recurrence by successive-term ratios, telescope their harmonic increments and locate the first strict decrease."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 7": [
+      3600,
+      "Recognize equal divided differences as three collinear quartic graph points and bound their minimum height with the fixed sum of squared shifted roots."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 8": [
+      3850,
+      "Bound a recursively generated radical set by its limiting fixed point and identify its largest empty interval, respecting closed endpoints."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 1": [
+      1850,
+      "Count all nonempty words from a bounded multiset, across every possible length; the official solution copies the Division B three-letter restriction absent from this prompt."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 2": [
+      2000,
+      "Sum color-appearance indicators across repeated uniform draws with replacement."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 3": [
+      2800,
+      "Count eligible index pairs and average the matching value-pair condition in a uniform random permutation."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 4": [
+      3150,
+      "Average numbers with strictly increasing and weakly decreasing digit blocks by their coordinate means, independently enumerating every admissible number."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 5": [
+      3650,
+      "Count ten-mark three-dimensional line-hitting colorings by two permutation layers and a four-mark layer, checking every admissible layer combination."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 6": [
+      3250,
+      "Solve the waiting-time equations for four consecutive daily successes and recover the unique success probability."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 7": [
+      3750,
+      "Count two-color grid fillings avoiding monochromatic axis-aligned rectangles and independently check all sixteen-bit boards."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 8": [
+      4250,
+      "Reduce a hereditary tournament condition to one small strongly connected core and ordered singleton components; exact isomorphism enumeration corrects the official overcount of five-vertex cores."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 1": [
+      1300,
+      "Count fixed-length words from a bounded multiset of letters by whether the repeated letter occurs twice."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 2": [
+      1850,
+      "Find a shortest valid sequence of coin-machine moves with forbidden repeated input amounts; complete short-path state search verifies the minimum."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 3": [
+      2250,
+      "Count bounded stock-price walks with fixed endpoints by reflecting those that hit the forbidden zero level."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 4": [
+      2000,
+      "Sum color-appearance indicators across repeated uniform draws with replacement."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 5": [
+      2800,
+      "Count eligible index pairs and average the matching value-pair condition in a uniform random permutation."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 6": [
+      3150,
+      "Average numbers with strictly increasing and weakly decreasing digit blocks by their coordinate means, independently enumerating every admissible number."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 7": [
+      3650,
+      "Count ten-mark three-dimensional line-hitting colorings by two permutation layers and a four-mark layer, checking every admissible layer combination."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 8": [
+      3800,
+      "Count maximum nonattacking king placements on a square board; an independent row-mask transfer count verifies the inclusion-exclusion total."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 1": [
+      1700,
+      "Subtract the area of an inscribed regular dodecagon from its circumdisk using twelve equal central triangles."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 2": [
+      3000,
+      "Unfold the reachable windows of a cube surface and add four circular-segment areas to the starting face."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 3": [
+      2500,
+      "Chase cyclic and isosceles-triangle angles through an internal angle bisector to obtain an equilateral subtriangle."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 4": [
+      3100,
+      "Offset the tetrahedron faces by the ball radius, bound center separations by the remaining tetrahedron diameter and attain the bound at its vertices."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 5": [
+      3200,
+      "Identify an equilateral chord triangle through Ptolemy and solve the remaining chord with the cosine rule."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 6": [
+      3900,
+      "Translate the altitude and orthocenter condition to the outer tangent triangle and combine arithmetic side spacing with the unit inradius to obtain the contact-triangle area."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 7": [
+      4200,
+      "Locate the second positively oriented similarity center and identify the moving Miquel point as the projection of a fixed point to a rotating line, giving an exact circular locus."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 8": [
+      4200,
+      "Use the incircle contact configuration and a harmonic pencil to relate the two intercepted side segments; exact tangency and collinearity elimination independently checks the unique admissible ratio."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 1": [
+      1750,
+      "Use the two congruent exterior right triangles on a square to express their opposite vertices by a quarter turn and recover their separation."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 2": [
+      1600,
+      "Convert a regular tetrahedron volume ratio to an edge ratio and then compute its altitude."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 3": [
+      1700,
+      "Subtract the area of an inscribed regular dodecagon from its circumdisk using twelve equal central triangles."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 4": [
+      3000,
+      "Unfold the reachable windows of a cube surface and add four circular-segment areas to the starting face."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 5": [
+      2500,
+      "Chase cyclic and isosceles-triangle angles through an internal angle bisector to obtain an equilateral subtriangle."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 6": [
+      3100,
+      "Offset the tetrahedron faces by the ball radius, bound center separations by the remaining tetrahedron diameter and attain the bound at its vertices."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 7": [
+      3200,
+      "Identify an equilateral chord triangle through Ptolemy and solve the remaining chord with the cosine rule."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 8": [
+      3900,
+      "Translate the altitude and orthocenter condition to the outer tangent triangle and combine arithmetic side spacing with the unit inradius to obtain the contact-triangle area."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 1": [
+      1450,
+      "Find the four-step last-digit cycle of powers of twenty-two and select the twenty-second qualifying exponent."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 2": [
+      1950,
+      "Split by the parity controlling the gcd of twice an integer and its square, then retain all positive roots of the resulting quadratics."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 3": [
+      2850,
+      "Intersect the exact digit-length intervals in three number bases and choose the largest admissible integer."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 4": [
+      3000,
+      "Invert an exponent modulo the prime-field group order to recover the unique nonzero power-congruence solution."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 5": [
+      3200,
+      "Separate the unit base from a finite geometric sum and use factorial divisibility by the multiplicative group order, checking the small exceptional primes."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 6": [
+      3500,
+      "Factor a divisor-cube sum into squared triangular numbers of prime exponents and minimize the integer supplying factors of five and seven."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 7": [
+      3700,
+      "Evaluate primitive-root power sums by inclusion-exclusion over the prime divisors of the group order and count the exponents giving zero modulo the prime."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 8": [
+      4250,
+      "Convert summed prime-base carries to weighted binomial valuations and classify the odd binomial row modulo four; the power-of-two row recurrence gives the exact count."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 1": [
+      1100,
+      "Reduce every power of ten to one modulo nine and count the terms."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 2": [
+      1450,
+      "Find the four-step last-digit cycle of powers of twenty-two and select the twenty-second qualifying exponent."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 3": [
+      1950,
+      "Split by the parity controlling the gcd of twice an integer and its square, then retain all positive roots of the resulting quadratics."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 4": [
+      2200,
+      "Use equality of the reflected chord angles to obtain a constant central step and count the distinct circular billiard impacts before returning to the origin."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 5": [
+      2300,
+      "Reduce the inverse-exponent fixed-point condition to the two square roots of one for each odd prime."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 6": [
+      2850,
+      "Intersect the exact digit-length intervals in three number bases and choose the largest admissible integer."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 7": [
+      3000,
+      "Invert an exponent modulo the prime-field group order to recover the unique nonzero power-congruence solution."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 8": [
+      3700,
+      "Evaluate primitive-root power sums by inclusion-exclusion over the prime divisors of the group order and count the exponents giving zero modulo the prime."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 1": [
+      2350,
+      "Group distinct integer points into reflected pairs and select the twelve least absolute-distance costs."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 2": [
+      2600,
+      "Subtract equal-expenditure equations, use integer purchase counts to bound a common ratio and recover the first-day purchase."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 3": [
+      2850,
+      "Recognize tangent addition in a finite nonnegative functional equation and select the admissible branch before evaluating two squared values."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 4": [
+      2800,
+      "Evaluate a floor-and-ceiling divide recurrence by its dyadic triangular-wave structure."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 5": [
+      2900,
+      "Reduce a symmetric quadratic constraint to a bounded sum variable and attain the extreme values of the pairwise-product sum."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 6": [
+      3200,
+      "Prove a rational recurrence has period six and sum the two alternating geometric subsequences actually sampled."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 7": [
+      3300,
+      "Apply the weighted cubic Holder bound with an explicit positive equality triple and determine the least power making the optimum integral."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 8": [
+      3850,
+      "Invert the triangular-index decomposition of a signed recursive function and minimize the first index attaining the prescribed value."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 1": [
+      1250,
+      "Rationalize consecutive square-root denominators so that every interior radical cancels."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 2": [
+      2500,
+      "Follow successive function iterates and exclude an alternating exponential term using nonnegativity on the whole integer domain."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 3": [
+      2350,
+      "Group distinct integer points into reflected pairs and select the twelve least absolute-distance costs."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 4": [
+      2600,
+      "Subtract equal-expenditure equations, use integer purchase counts to bound a common ratio and recover the first-day purchase."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 5": [
+      2850,
+      "Shift a nonlinear recurrence by its index, identify an exponential solution and verify uniqueness from the nonzero recurrence denominator."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 6": [
+      2800,
+      "Evaluate a floor-and-ceiling divide recurrence by its dyadic triangular-wave structure."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 7": [
+      2900,
+      "Reduce a symmetric quadratic constraint to a bounded sum variable and attain the extreme values of the pairwise-product sum."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 8": [
+      3200,
+      "Prove a rational recurrence has period six and sum the two alternating geometric subsequences actually sampled."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 1": [
+      2600,
+      "Exclude a five-square dissection by corner boundary constraints and construct all larger counts from three seed dissections."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 2": [
+      2400,
+      "Maximize bounded regions in a line arrangement by counting new finite segments and realize the bound in general position."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 3": [
+      3000,
+      "Count proper colorings of an octahedron modulo spatial rotations, independently enumerating the dual cube colorings and all twenty-four rotations."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 4": [
+      2200,
+      "Count independent row tilings by a Fibonacci recurrence because the permitted domino orientation cannot cross rows."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 5": [
+      3350,
+      "Translate divisor incomparability to an antichain in a product of three exponent chains and match a middle-rank construction to an exact chain-cover bound."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 6": [
+      3500,
+      "Classify all intersections of hypercube vertex diagonals by coordinates fixed at endpoints or one half and count the admissible coordinate patterns."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 7": [
+      3850,
+      "Under the intended unseen-opponent interpretation, bound permutation agreement covers by a complementary bipartite matching and a cyclic block construction; the statement omits the information restriction."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 8": [
+      3500,
+      "Encode visiting schedules as pairwise incomparable day subsets and compare the two consecutive middle-layer capacities."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 1": [
+      1800,
+      "Compute the diagonal-band area in an unequal arrival-time rectangle under the intended independent-uniform model; independence is not explicitly stated."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 2": [
+      2100,
+      "Separate grid labels into row and column contributions so fixed selection degrees force the same total for every valid choice."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 3": [
+      2600,
+      "Exclude a five-square dissection by corner boundary constraints and construct all larger counts from three seed dissections."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 4": [
+      3000,
+      "Bound a noncrossing equal-label circular matching by removing a shortest chord interval and attain the bound with nested chords."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 5": [
+      2200,
+      "Count independent row tilings by a Fibonacci recurrence because the permitted domino orientation cannot cross rows."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 6": [
+      2800,
+      "Choose an interior binary subgrid freely and force its final row and column through compatible parity constraints."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 7": [
+      3450,
+      "Partition an integer set into odd cycles under two forbidden differences, attain the residue-class bound and check it by exact finite-state optimization."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 8": [
+      3500,
+      "Encode visiting schedules as pairwise incomparable day subsets and compare the two consecutive middle-layer capacities."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 1": [
+      2450,
+      "Read the printed cevian-area diagram and solve the two common-altitude ratio relations for its unknown upper region."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 2": [
+      2450,
+      "Find the intersection ratio of a median and angle bisector, then subtract their overlapping area contributions."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 3": [
+      2650,
+      "Recover the circumcenter-to-chord distance and use the centroid ratio to scale the area of a triangle with known included angle."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 4": [
+      3100,
+      "Recover the circumdiameter of a cyclic quadrilateral from its ordered side lengths and exact area."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 5": [
+      3250,
+      "Use equal distances from a median point to the side endpoints and a parallel-line construction to fix the altitude intersection ratio."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 6": [
+      3550,
+      "Combine the actual circumcenter and successive altitude-foot projections to find the area of the constructed concave quadrilateral."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 7": [
+      3350,
+      "Relate a right angle on a chord to the chord midpoint, then apply the midpoint squared-distance identity to obtain a fixed length."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 8": [
+      3750,
+      "Use conjugacy of opposite-side intersection points in a cyclic complete quadrilateral to determine their center-angle cosine from two distances."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 1": [
+      2450,
+      "Find the intersection ratio of a median and angle bisector, then subtract their overlapping area contributions."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 2": [
+      2500,
+      "Slice an equilateral-based pyramid through a base midpoint and convert the section area into the requested perpendicular distance."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 3": [
+      2600,
+      "Relate three equal cevian regions through shared altitudes and solve the resulting positive area equation."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 4": [
+      2650,
+      "Recover the circumcenter-to-chord distance and use the centroid ratio to scale the area of a triangle with known included angle."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 5": [
+      3100,
+      "Recover the circumdiameter of a cyclic quadrilateral from its ordered side lengths and exact area."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 6": [
+      3250,
+      "Use equal distances from a median point to the side endpoints and a parallel-line construction to fix the altitude intersection ratio."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 7": [
+      3400,
+      "For the intended convex quadrilateral, identify a circumcenter from two angle constraints and find the diagonal angle; allowing a simple concave quadrilateral produces a different answer."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 8": [
+      3750,
+      "Use conjugacy of opposite-side intersection points in a cyclic complete quadrilateral to determine their center-angle cosine from two distances."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 1": [
+      2200,
+      "Evaluate a monic cubic one unit away from its distinct negative integer roots and enumerate its three positive factors."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 2": [
+      1850,
+      "Reduce the exponent tower modulo the last-digit cycle length before evaluating its final digit."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 3": [
+      2450,
+      "Count prime valuations in a factorial, divide by the base exponent and express the trailing-zero count in the requested radix."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 4": [
+      2950,
+      "Factor a square minus one into neighboring even integers and classify their power-of-two parts."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 5": [
+      3050,
+      "Turn a quadratic integer equation into a bounded sum of squares and enumerate every lattice solution."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 6": [
+      3400,
+      "Combine a congruence obstruction with the maximum sum of a short reciprocal list, then attain the minimum using valid distinct denominators; the official witness has an incorrect final denominator."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 7": [
+      3400,
+      "Rewrite an odd-square quotient as a divisibility relation and characterize all eligible parameters by a power-of-two condition."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 8": [
+      4050,
+      "Use consecutive-square gaps to force the two largest variables equal and reduce all remaining cases to two exact linear systems."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 1": [
+      2200,
+      "Evaluate a monic cubic one unit away from its distinct negative integer roots and enumerate its three positive factors."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 2": [
+      1850,
+      "Reduce the exponent tower modulo the last-digit cycle length before evaluating its final digit."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 3": [
+      2750,
+      "Optimize a divisor count over nonincreasing prime exponents and verify the unique three-digit maximum."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 4": [
+      2800,
+      "Replace each fraction gcd by its gcd with the fixed numerator-denominator sum and count half the reduced residue system."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 5": [
+      2950,
+      "Factor a square minus one into neighboring even integers and classify their power-of-two parts."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 6": [
+      3400,
+      "Combine a congruence obstruction with the maximum sum of a short reciprocal list, then attain the minimum using valid distinct denominators; the official witness has an incorrect final denominator."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 7": [
+      3650,
+      "Determine automorphisms of a finite divisibility order from multiplication neighborhoods, keeping the forced coupled swaps of prime multiples."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 8": [
+      3400,
+      "Rewrite an odd-square quotient as a divisibility relation and characterize all eligible parameters by a power-of-two condition."
     ]
   }
 }

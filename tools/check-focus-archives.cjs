@@ -14,7 +14,7 @@ const roundLabel=round=>({'Combinatorics':'Combo','Number Theory':'NT','Discrete
 const familyLabel=fam=>fam.replace(' Division ',' ');
 assert(!context.window.MATH_PLANNED_CONTESTS.some(c=>/^(BMT|PUMaC)$/.test(c.name)),'live archives have no duplicate coming-soon entry');
 // Match the actual shared questions, which need not occupy consecutive B slots.
-for(const year of [2018,2019,2020,2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) {
+for(const year of [2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) {
  const bNumbers=year===2019&&subject==='Geometry'?[2,3,4,5,6,7,8]
    :year===2019&&subject==='Number Theory'?[2,3,5,7,8]
    :year===2020&&subject==='Combinatorics'?[2,3,4,5,7,8]:[3,4,5,6,7,8];
@@ -23,7 +23,27 @@ for(const year of [2018,2019,2020,2021,2022,2023,2025]) for(const subject of ['A
    'Geometry':[[1,1],[2,3],[3,4],[4,6],[5,7],[7,8]],
    'Number Theory':[[1,2],[2,3],[3,5],[4,6],[6,7],[7,8]]
  };
- const shared=year===2018&&sparse2018[subject]?sparse2018[subject]
+ const sparse2016={
+   'Algebra':[[1,2],[2,4],[3,5],[4,6],[5,7],[7,8]],
+   'Combinatorics':[[1,3],[2,4],[3,5],[4,6],[5,7],[8,8]],
+   'Geometry':[[1,2],[2,3],[3,4],[5,6],[6,7],[7,8]],
+   'Number Theory':[[1,1],[2,3],[3,5],[4,6],[5,7],[7,8]]
+ };
+ const sparse2014={
+   'Algebra':[[1,3],[2,4],[4,6],[5,7],[6,8]],
+   'Combinatorics':[[1,3],[4,5],[8,8]],
+   'Geometry':[[2,1],[3,4],[4,5],[5,6],[8,8]],
+   'Number Theory':[[1,1],[2,2],[4,5],[6,6],[7,8]]
+ };
+ const sparse2015={
+   'Algebra':[[2,4],[3,5],[4,6],[6,7],[7,8]],
+   'Combinatorics':[[2,4],[3,5],[4,6],[5,7]],
+   'Number Theory':[[1,2],[2,3],[3,6],[4,7],[7,8]]
+ };
+ const shared=year===2014&&sparse2014[subject]?sparse2014[subject]
+   :year===2015&&sparse2015[subject]?sparse2015[subject]
+   :year===2016&&sparse2016[subject]?sparse2016[subject]
+   :year===2018&&sparse2018[subject]?sparse2018[subject]
    :bNumbers.map((b,i)=>[i+1,b]);
  for(const [aNumber,bNumber] of shared){
   const refs=[`${year} PUMaC Division A ${subject}, Problem ${aNumber}`,`${year} PUMaC Division B ${subject}, Problem ${bNumber}`];
@@ -70,8 +90,8 @@ for(const [paper,source] of Object.entries(papers)) {
    for(const [key,rounds] of families){
     const [fam,year]=key.split('|'),familySlug=fam.toLowerCase().replaceAll(' ','-');
     if(browserYears.size&&!browserYears.has(year))continue;
-    await page.goto(`${base}/#/problems/${familySlug}/${year}`);await page.locator('.ct-papers [role="tab"]').first().waitFor();
-    assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),rounds.map(x=>x.round).sort().map(roundLabel));
+    await page.goto(`${base}/#/problems/${familySlug}/${year}`);await page.locator('.db-group.is-shown .pp-tiles').waitFor();
+    assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),rounds.length>1?rounds.map(x=>x.round).sort().map(roundLabel):[]);
     for(const {paper,source,round,ps} of rounds){
      const paperSlug=paper.replace(/^\d{4} /,'').toLowerCase().replaceAll(' ','-');
      await page.goto(`${base}/#/problems/${familySlug}/${year}/${paperSlug}`);

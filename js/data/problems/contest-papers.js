@@ -328,5 +328,179 @@ window.MATH_CONTEST_PAPERS = {
     "solUrl": "https://berkeley.mt/archives/bmt-2017/GeoS2017A.pdf",
     "solKind": "answer-key",
     "mirror": true
+  },
+  "2017 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_A_Solutions.pdf"
+  },
+  "2017 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_B_Solutions.pdf"
+  },
+  "2017 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_Combo_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_Combo_A_Solutions.pdf"
+  },
+  "2017 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_Combo_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_Combo_B_Solutions.pdf"
+  },
+  "2017 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_Geo_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_Geo_A_Solutions.pdf"
+  },
+  "2017 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_Geo_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_Geo_B_Solutions.pdf"
+  },
+  "2017 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_NT_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC_2017_NT_A_SolRevised.pdf"
+  },
+  "2017 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_NT_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_NT_B_Solutions.pdf"
+  },
+  "2016 BMT Analysis": {
+    "url": "https://berkeley.mt/archives/bmt-2016/AnaS2016.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2016/AnaS2016A.pdf",
+    "solKind": "answer-key"
+  },
+  "2016 BMT Discrete Math": {
+    "url": "https://berkeley.mt/archives/bmt-2016/DisS2016.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2016/DisS2016A.pdf",
+    "solKind": "answer-key"
+  },
+  "2016 BMT Geometry": {
+    "url": "https://berkeley.mt/archives/bmt-2016/GeoS2016.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2016/GeoS2016A.pdf",
+    "solKind": "answer-key"
+  },
+  "2015 BMT Analysis": {
+    "url": "https://berkeley.mt/archives/bmt-2015/AnaS2015.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2015/AnaS2015S.pdf"
+  },
+  "2015 BMT Geometry": {
+    "url": "https://berkeley.mt/archives/bmt-2015/GeoS2015.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2015/GeoS2015A.pdf",
+    "solKind": "answer-key"
+  },
+  "2014 BMT Analysis": {
+    "url": "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2014/AnaS2014A.pdf",
+    "solKind": "answer-key"
+  },
+  "2014 BMT Geometry": {
+    "url": "https://berkeley.mt/archives/bmt-2014/GeoS2014.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2014/GeoS2014A.pdf",
+    "solKind": "answer-key"
+  },
+  "2013 BMT Analysis": {
+    "url": "https://berkeley.mt/archives/bmt-2013/AnaS2013.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2013/AnaS2013S.pdf"
+  },
+  "2013 BMT Discrete Math": {
+    "url": "https://berkeley.mt/archives/bmt-2013/DisS2013.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2013/DisS2013S.pdf"
+  },
+  "2013 BMT Geometry": {
+    "url": "https://berkeley.mt/archives/bmt-2013/GeoS2013.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2013/GeoS2013S.pdf"
+  },
+  "2016 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraASol.pdf"
+  },
+  "2016 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraBSol.pdf"
+  },
+  "2016 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsASol.pdf"
+  },
+  "2016 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsBSol.pdf"
+  },
+  "2016 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2016_GeometryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2016_GeometryASol.pdf"
+  },
+  "2016 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2016_GeometryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2016_GeometryBSol.pdf"
+  },
+  "2016 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryASol.pdf"
+  },
+  "2016 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryBSol.pdf"
+  },
+  "2015 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2015_AlgebraA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2015_AlgebraASol.pdf"
+  },
+  "2015 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2015_AlgebraB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2015_AlgebraBSol.pdf"
+  },
+  "2015 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsASol.pdf"
+  },
+  "2015 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsBSol.pdf"
+  },
+  "2015 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2015_GeometryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2015_GeometryASol.pdf"
+  },
+  "2015 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2015_GeometryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2015_GeometryBSol.pdf"
+  },
+  "2015 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryASol-wes5.pdf"
+  },
+  "2015 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryBSol.pdf"
+  },
+  "2014 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2014_AlgebraA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2014_AlgebraASol.pdf"
+  },
+  "2014 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2014_AlgebraB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2014_AlgebraBSol.pdf"
+  },
+  "2014 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsASol.pdf"
+  },
+  "2014 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsBSol.pdf"
+  },
+  "2014 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2014_GeometryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2014_GeometryASol.pdf"
+  },
+  "2014 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2014_GeometryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2014_GeometryBSol.pdf"
+  },
+  "2014 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryASol.pdf"
+  },
+  "2014 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryBSol.pdf"
   }
 };
