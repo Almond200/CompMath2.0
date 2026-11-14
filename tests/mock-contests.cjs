@@ -24,6 +24,24 @@ for(const family of Object.keys(M.formats))for(let k=0;k<40;k++){
  const errors=g.problems.map((p,i)=>Math.abs(p.elo-g.model.targets[i]));assert.ok(Math.max(...errors)<350,JSON.stringify({family,errors}));n++;
 }
 assert.ok(cross>0);assert.ok(hmmt>0,'HMMT may be used despite its 2019 date');
+// Source contests are independent of the format, and never silently fall back to other contests.
+for(const sources of [['AMC 8'],['AMC 12'],['AIME'],['AMC 10','AMC 12']]){
+ const selected=M.generate(problems,catalog,'AMC 10',has,voided,rng,sources);
+ assert.equal(selected.problems.length,25);
+ assert(selected.problems.every(p=>sources.includes(p.fam)));
+ assert.equal(new Set(selected.problems.map(M.identity)).size,25);
+}
+assert.throws(()=>M.generate(problems,catalog,'AMC 8',has,voided,rng,[]),/selected contests/);
+assert.throws(()=>M.generate(problems,catalog,'AMC 8',has,voided,rng,['not a contest']),/selected contests/);
+const pair=[{slug:'ten',fam:'AMC 10',year:2020,strategy:'same',elo:1000},
+ {slug:'twelve',fam:'AMC 12',year:2020,strategy:'same',elo:1000}];
+assert.deepEqual(M.sourcePool(pair,{startYear:2022},()=>true,()=>false,['AMC 12']).map(p=>p.slug),['twelve'],'filter before twin deduplication');
+assert.equal(M.sourcePool([...pair,{slug:'new',fam:'AMC 12',year:2025,elo:1500}],{startYear:2022},()=>true).length,1,'reserve recent model papers');
+assert.equal(M.sourcePool(pair,{startYear:2022},()=>true,p=>p.slug==='twelve',['AMC 12']).length,0,'voids stay out');
+assert.equal(M.sourcePool(pair,{startYear:2022},()=>false).length,0,'ineligible statements stay out');
+const pending=M.score({mock:{family:'AMC 10'},slugs:['a','b']},s=>s==='a'?'Check yourself':'Correct');
+assert.equal(pending.counts['Check yourself'],1);assert.equal(pending.points,6);assert.equal(pending.max,12);
+
 // Timer freezes on every explicit pause/read, including pagehide snapshots, and only active time expires.
 const s=P.createMock('Test',['x'],{family:'AMC 10',mode:'generated',durationMs:10000},1000);
 assert.equal(P.timeLeft(s,2500),8500);P.pause(s,3000);assert.equal(P.timeLeft(s,900000),8000);P.resume(s,200000);assert.equal(P.timeLeft(s,201000),7000);
