@@ -30175,6 +30175,114 @@
     "2019 Calgary Junior Math Contest, Problem 9": [
       900,
       "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): b - a and c - b are squares summing to a square: 9 + 16 = 25 with a = 1 gives c = 26."
+    ],
+    "2018 Calgary Junior Math Contest, Problem 1": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 4! arrangements less the 6 starting with 0: 18."
+    ],
+    "2018 Calgary Junior Math Contest, Problem 2": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the given conditions on the sides leave a prime area of 11."
+    ],
+    "2018 Calgary Junior Math Contest, Problem 3": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): count the lineups of two brothers and two sisters with neither pair adjacent: 8."
+    ],
+    "2018 Calgary Junior Math Contest, Problem 4": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 1/x - 1/(x + 1) = 1/(x(x + 1)), so x(x + 1) = 132 and x = 11."
+    ],
+    "2018 Calgary Junior Math Contest, Problem 5": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 2 ml a day over the stated span, converted to litres."
+    ],
+    "2018 Calgary Junior Math Contest, Problem 6": [
+      700,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): angle APB is right on the diameter; use the stated condition on P."
+    ],
+    "2018 Calgary Junior Math Contest, Problem 7": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): each crossing joins lights 4 m across and 3 m along: 5 m legs."
+    ],
+    "2018 Calgary Junior Math Contest, Problem 8": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 127 - 9y must be a multiple of 8: y = 7 gives x = 8."
+    ],
+    "2018 Calgary Junior Math Contest, Problem 9": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the shaded region from the stated strips and squares by adding and subtracting areas."
+    ],
+    "2017 Calgary Junior Math Contest, Problem 1": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): a stack of n dice shows 4n + 1 faces: 4n + 1 = 101 gives 25."
+    ],
+    "2017 Calgary Junior Math Contest, Problem 2": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the figure's horizontal and vertical edges add to a rectangle's: 28."
+    ],
+    "2017 Calgary Junior Math Contest, Problem 3": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): test primes p with (p + 1)/2 prime after 13."
+    ],
+    "2017 Calgary Junior Math Contest, Problem 4": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 10s + 6r = 20 with s + r = 3: r = 2.5 hours."
+    ],
+    "2017 Calgary Junior Math Contest, Problem 5": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): ((32x + 32)/32) - x = 1 whatever x is."
+    ],
+    "2017 Calgary Junior Math Contest, Problem 6": [
+      700,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): wins and losses earn points in the stated ranges; 50 points in 6 games needs at least 2 wins."
+    ],
+    "2017 Calgary Junior Math Contest, Problem 7": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 24 = 2(a - (24 - a)) gives a = 18."
+    ],
+    "2017 Calgary Junior Math Contest, Problem 8": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the belt's straight parts are 60, 80 and 100, and its arcs together make one full circle around a pulley."
+    ],
+    "2017 Calgary Junior Math Contest, Problem 9": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the chance the second ball matches or differs from the first, out of the 29 left."
+    ],
+    "2016 Calgary Junior Math Contest, Problem 1": [
+      200,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 13 is prime, so 1 by 13: 28."
+    ],
+    "2016 Calgary Junior Math Contest, Problem 2": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): her age n makes 1 + 2 + ... + n a year she names; solve the triangular-number condition."
+    ],
+    "2016 Calgary Junior Math Contest, Problem 3": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): k/64 reduces to denominator 8 when gcd(k, 64) = 8: k = 8, 24, 40, 56."
+    ],
+    "2016 Calgary Junior Math Contest, Problem 4": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): one of each color, then 2 more among 4 colors: C(5, 3) = 10."
+    ],
+    "2016 Calgary Junior Math Contest, Problem 5": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): line up the columns of 2XXY + 3XYZ = ZYXX and read off the carries."
+    ],
+    "2016 Calgary Junior Math Contest, Problem 6": [
+      700,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): count the equilateral triangles by size: 13."
+    ],
+    "2016 Calgary Junior Math Contest, Problem 7": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 0.8 times 1.2 = 0.96."
+    ],
+    "2016 Calgary Junior Math Contest, Problem 8": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the overall average sits between the two groups' averages in the ratio of their sizes."
+    ],
+    "2016 Calgary Junior Math Contest, Problem 9": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): s sqrt 3 = 9 gives s^2 = 27, and the surface area 6 s^2 = 162."
     ]
   }
 }
