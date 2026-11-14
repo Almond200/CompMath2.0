@@ -46669,6 +46669,106 @@
     "2017 UKMT SMC, Problem 25": [
       900,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the corner right triangles have angle 40, which fixes the inner nonagon's side against the outer one: (1 - cos 40)/(1 + cos 40)."
+    ],
+    "2016 UKMT SMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 987654321 times 9 = 8888888889: one 9."
+    ],
+    "2016 UKMT SMC, Problem 2": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 5.50 is 110% of 5, so Friday's price is 90% of 5: 4.50."
+    ],
+    "2016 UKMT SMC, Problem 3": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the centre stays 1 from each side, tracing a 3 by 3 square: 12."
+    ],
+    "2016 UKMT SMC, Problem 4": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the other angles are a and 100 - a, differing by 100 - 2a; only 80 gives a scalene triangle (10 and 90)."
+    ],
+    "2016 UKMT SMC, Problem 5": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): from 256, 324 and 625 two squares share a middle digit: 2."
+    ],
+    "2016 UKMT SMC, Problem 6": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): CF/CE = BA/BE gives CF = 3/4, and the trapezium has area (1/2)(3 + 3/4)(3) = 45/8."
+    ],
+    "2016 UKMT SMC, Problem 7": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the options rise in order from 2016^-1 to 2016^1: 2016^-1."
+    ],
+    "2016 UKMT SMC, Problem 8": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): each quarter of the square holds a triangular number of small squares: 4 T_6 = 84."
+    ],
+    "2016 UKMT SMC, Problem 9": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the circle and the parabola pass through (1, 0) and (0, 1) and y = x through two corners: 3."
+    ],
+    "2016 UKMT SMC, Problem 10": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 5 has no row or column to hide in but the corner; 7 goes in the middle row, then 8, 2, 3, 9 follow: 3 times 2 times 5 = 30."
+    ],
+    "2016 UKMT SMC, Problem 11": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the six cells form an arithmetic sequence from 10 to 25 with step 3: X = 19."
+    ],
+    "2016 UKMT SMC, Problem 12": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 2016 = 2^5 3^2 7, so the smallest square multiple is (2^3 3 7)^2 = 168^2."
+    ],
+    "2016 UKMT SMC, Problem 13": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): quarter circles of radii 1, 1, 2, 3, 5 total (pi/2)(12) = 6 pi."
+    ],
+    "2016 UKMT SMC, Problem 14": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 33 is not prime but 31 is."
+    ],
+    "2016 UKMT SMC, Problem 15": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the lines form a hexagon whose exterior angles are 55, 60, 65, p, q, r: sum 360, so 180."
+    ],
+    "2016 UKMT SMC, Problem 16": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): sqrt 2016 + sqrt 56 = 12 sqrt 14 + 2 sqrt 14 = 14^(3/2): k = 3/2."
+    ],
+    "2016 UKMT SMC, Problem 17": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): an increasing code is a choice of 3 digits from 9: C(9, 3) = 84."
+    ],
+    "2016 UKMT SMC, Problem 18": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the arc ends make a square, and the turned-over arcs move area outside to inside: the area of the square, 2."
+    ],
+    "2016 UKMT SMC, Problem 19": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): with no quadrilateral possible, the largest side is at least the sum of the next three twice over: l >= 1 + 2 + 3 and m >= 2 + 3 + 6 = 11."
+    ],
+    "2016 UKMT SMC, Problem 20": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): a 2 by 3 rectangle cut by its diagonals gives triangles of 3/2; the octagon is a 2 by 2 square plus four of them: 10."
+    ],
+    "2016 UKMT SMC, Problem 21": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the ten centres are 36 degrees apart, so with disc radius r, sin 18 = r/(1 + r): the outer radius 1 + 2r = (1 + sin 18)/(1 - sin 18)."
+    ],
+    "2016 UKMT SMC, Problem 22": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): if Cam told the truth, Ben's and Dan's statements would come true, a contradiction; so Cam lies and Ben and Dan both tell the truth."
+    ],
+    "2016 UKMT SMC, Problem 23": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the sphere's radius is half the space diagonal, sqrt 147; a cube of side 2x has 3x^2 = 147: 14."
+    ],
+    "2016 UKMT SMC, Problem 24": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): equal tangents give UT = 1 + (2 - h), and Pythagoras in URT gives h = 4/3: 4 : 3."
+    ],
+    "2016 UKMT SMC, Problem 25": [
+      800,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): n is the smallest with 7n >= 10^2015, so 7n = 10^2015 + a; long division by 7 ends with 40 + a = 42: units digit 6."
     ]
   }
 }
