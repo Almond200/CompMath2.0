@@ -45269,6 +45269,106 @@
     "2003 Pascal Contest, Problem 25": [
       700,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with edge 2x, the foot from F is the midpoint of LK; Pythagoras in space gives FQ = 10 for an edge of about 6.86: volume about 323."
+    ],
+    "2002 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 18/6 = 3."
+    ],
+    "2002 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): half of 2002 is 1001."
+    ],
+    "2002 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): x = 8 and y = 7: 15."
+    ],
+    "2002 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (9 - 3)^2 = 36."
+    ],
+    "2002 Pascal Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): work back from 20: 20 - 5 + 6 - 7 = 14."
+    ],
+    "2002 Pascal Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): alternate angles put x in the triangle: x = 180 - 70 - 50 = 60."
+    ],
+    "2002 Pascal Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): n = 200, and 2/5 of it is 80."
+    ],
+    "2002 Pascal Contest, Problem 8": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 1 - 1/25 = 24/25."
+    ],
+    "2002 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the side lengths match up as 2 by 3, 5 by 3, 5 by 5, so the shaded one is 2 by 5: 10."
+    ],
+    "2002 Pascal Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each new square adds 3 toothpicks: 4 + 9(3) = 31."
+    ],
+    "2002 Pascal Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): x + 16 = 3x gives x = 8, side 24: 96."
+    ],
+    "2002 Pascal Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2a + 4a = 24 gives a = 4, and the sixth term is 4(2^5) = 128."
+    ],
+    "2002 Pascal Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): base AC = 6 on x = 1 and height 3: 9."
+    ],
+    "2002 Pascal Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (25(75) + 5(40))/30 = 69.2."
+    ],
+    "2002 Pascal Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): BC = 200, and 120 + (200 - x) = 160 + x: FB = 80."
+    ],
+    "2002 Pascal Contest, Problem 16": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 5^3 ends in 5 and the product is odd: 5."
+    ],
+    "2002 Pascal Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 1000 = 2^3 5^3 with no zero digits means 8 times 125: 133."
+    ],
+    "2002 Pascal Contest, Problem 18": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the three sums total 280, twice everyone, so Akira = 140 - 88 = 52."
+    ],
+    "2002 Pascal Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2002 = 7(286): row 286, column 7, so 293."
+    ],
+    "2002 Pascal Contest, Problem 20": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 25 - x^2 must be a square: x = 0, +-3, +-4, +-5, 7 values."
+    ],
+    "2002 Pascal Contest, Problem 21": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the largest cube inside is 4 by 4 by 4: 120 - 64 = 56."
+    ],
+    "2002 Pascal Contest, Problem 22": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 460 voted for at least one: 375 + 275 - 460 = 190."
+    ],
+    "2002 Pascal Contest, Problem 23": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 64 = 2^6 = 4^3 = 8^2 = 64^1 with the negative bases for even exponents: 6 pairs."
+    ],
+    "2002 Pascal Contest, Problem 24": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the semicircle on AB (pi/4) less the segment of the quarter circle (pi/4 - 1/2): 1/2."
+    ],
+    "2002 Pascal Contest, Problem 25": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with the small container at the bottom the large one is full; the water above the small one's rim, pi(36)(2) = 72 pi, pours in: 72/25 = 2.88 cm."
     ]
   }
 }
