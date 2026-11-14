@@ -3382,7 +3382,11 @@
   // at the CEMC's standard addresses.
   function fermatPdf(ref, which) {
     const m = ref.match(/^(\d{4}) (Fermat|Cayley|Pascal) Contest,\s*Problem\s+\d+$/);
-    return m ? "https://cemc.uwaterloo.ca/sites/default/files/documents/" + m[1] + "/" + m[1] + m[2] + (which === "solutions" ? "Solution" : "Contest") + ".pdf" : null;
+    if (!m) return null;
+    const kind = which === "solutions" ? "Solution" : "Contest";
+    // The 2024 Pascal solutions sit in the 2026 folder; every other year's files sit in their own year's folder.
+    const folder = m[1] === "2024" && m[2] === "Pascal" && kind === "Solution" ? "2026" : m[1];
+    return "https://cemc.uwaterloo.ca/sites/default/files/documents/" + folder + "/" + m[1] + m[2] + kind + ".pdf";
   }
   // The official paper or solutions as a PDF, for the contests that publish them.
   const officialPdf = (ref, which) => hmmtPdf(ref, which) || armlPdf(ref, which) || smtPdf(ref, which) || dmmPdf(ref, which) || umdPdf(ref, which) || cmimcPdf(ref, which) || mathPrizePdf(ref, which) || mmathsPdf(ref, which) || gimPdf(ref, which) || lehighPdf(ref, which) || utahPdf(ref, which) || mathcountsPdf(ref, which) || mbmtPdf(ref, which) || calgaryPdf(ref, which) || columbusPdf(ref, which) || fermatPdf(ref, which);
