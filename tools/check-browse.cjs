@@ -97,6 +97,11 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  for(const f of ['AMC 8','AMC 10','AMC 12','HMMT February','HMMT November','ARML','ARML Local','SMT','Duke Math Meet','UMD HSMC','CMIMC','Math Prize for Girls','MMATHS','Girls in Math at Yale','Lehigh','Utah State Math Contest','BMT','PUMaC Division A','PUMaC Division B'])if(await page.locator(`[data-br-fam="${f}"]`).count())await page.locator(`[data-br-fam="${f}"]`).click();
  assert.deepEqual(await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent)),['AIME']);
  await page.locator('[data-br-fam="AIME"]').click();assert.equal(await page.locator('[data-br-fam][aria-pressed="true"]').count(),await page.locator('[data-br-fam]').count(),'switching the last contest off restores all');
+ // Select all and Deselect all (owner, 2026-11-14): deselect everything, then choose one contest.
+ assert(await page.locator('[data-br-all="on"]').isDisabled());await page.locator('[data-br-all="off"]').click();
+ assert.equal(await page.locator('[data-br-fam][aria-pressed="true"]').count(),0);assert.match(await page.locator('.chain-empty').innerText(),/No contest is chosen/);
+ await page.locator('[data-br-fam="AIME"]').click();assert.deepEqual(await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent)),['AIME']);
+ await page.locator('[data-br-all="on"]').click();assert.equal(await page.locator('[data-br-fam][aria-pressed="false"]').count(),0);
  const more=page.locator('[data-br-more]').first();if(await more.count()){const g=more.locator('xpath=..');const n=parseInt(await g.locator('.br-count').innerText());await more.click();const grp=page.locator('.br-group').filter({has:page.locator('.br-count',{hasText:new RegExp('^'+n+' ')})}).first();assert.equal(await grp.locator('.br-row').count(),n);
   // A list opened in full offers Show less, which folds it back and keeps its heading on screen.
   const less=grp.locator('[data-br-less]');assert.equal(await less.innerText(),'Show less');assert.equal(await grp.locator('[data-br-more]').count(),0);await less.scrollIntoViewIfNeeded();await less.click();

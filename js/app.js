@@ -9726,7 +9726,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const browseBackHtml = () => `<div class="back-row"><a class="back-link" href="#/practice" data-goto="pr-contests">${uiIcon("arrow-left")} Contests</a></div>`;
   function famChipsHtml(problems) {
     const all = FAMILIES.filter(f => problems.some(p => p.fam === f)), fams = all.filter(famShown);
-    return `<div class="fam-chips" role="group" aria-label="Contests shown">${fams.map(f =>
+    // Select all and Deselect all (owner, 2026-11-14): deselect, then choose the one contest wanted.
+    const offN = all.filter(f => browseOff.has(f)).length;
+    return `<div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-br-all="on"${offN ? "" : " disabled"}>Select all</button><button type="button" class="fam-bulk-btn" data-br-all="off"${offN === all.length ? " disabled" : ""}>Deselect all</button></div>
+      <div class="fam-chips" role="group" aria-label="Contests shown">${fams.map(f =>
       `<button type="button" class="fam-chip" data-br-fam="${escapeAttr(f)}" aria-pressed="${!browseOff.has(f)}">${famDot(f)}${f}<span class="br-count">${problems.filter(p => p.fam === f).length.toLocaleString()}</span></button>`).join("")}${famMoreBtn(extraFams(all), "fam-chip")}</div>`;
   }
   function browseGroupsHtml(key, problems, sort) {
@@ -9740,7 +9743,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         ${list.length > shown.length ? `<button type="button" class="ct-toggle" data-br-more="${escapeAttr(f)}">Show all ${list.length}</button>`
           : list.length > BROWSE_PAGE ? `<button type="button" class="ct-toggle" data-br-less="${escapeAttr(f)}">Show less</button>` : ""}</section>`;
     }).join("");
-    return groups || `<p class="chain-empty">No problems here.</p>`;
+    return groups || `<p class="chain-empty">${FAMILIES.every(f => browseOff.has(f) || !problems.some(p => p.fam === f)) ? "No contest is chosen: choose one above." : "No problems here."}</p>`;
   }
   const eloOf = p => Number.isFinite(p.elo) ? p.elo : 1e9;
   const byEasiest = (a, b) => eloOf(a) - eloOf(b) || b.year - a.year || a.ref.localeCompare(b.ref, undefined, { numeric: true });
@@ -9774,6 +9777,16 @@ The book remembers the last lesson you opened, in this browser, and the contents
       rail.querySelector(".tt-body").innerHTML = topicRailHtml(rail.dataset.sel || null);
       rail.scrollTop = top;
       rail.querySelector(`[data-tt="${id}"]`)?.focus({ preventScroll: true });
+      return;
+    }
+    const bulk = e.target.closest("[data-br-all]");
+    if (bulk) {
+      browseOff = bulk.dataset.brAll === "on" ? new Set() : new Set(FAMILIES);
+      const y = window.scrollY, which = bulk.dataset.brAll;
+      renderBrowse(getRoute());
+      window.scrollTo(0, y);
+      const again = $content.querySelector(`[data-br-all="${which}"]`);
+      (again && !again.disabled ? again : $content.querySelector(`[data-br-all]:not([disabled])`))?.focus({ preventScroll: true });
       return;
     }
     const fam = e.target.closest("[data-br-fam]"), more = e.target.closest("[data-br-more]"), less = e.target.closest("[data-br-less]"), mob = e.target.closest(".tt-mobile-btn");

@@ -4445,6 +4445,11 @@ dialog.app-confirm { inset-block: 0 12vh; }
 /* Contest chips: a coloured dot and the contest's name. On the browse pages a chip switches its
    contest on and off; under a problem's chart it chooses the contest to compare with. */
 .fam-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.fam-bulk { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
+.fam-bulk-btn { height: 26px; padding: 0 11px; border: 1px solid var(--border); border-radius: 999px; background: var(--bg-card); color: var(--text-dim);
+  font: inherit; font-size: 12px; font-weight: 650; cursor: pointer; }
+.fam-bulk-btn:hover:not(:disabled) { border-color: var(--space, var(--accent)); color: var(--space, var(--accent)); background: var(--space-soft, var(--bg-panel)); }
+.fam-bulk-btn:disabled { opacity: 0.45; cursor: default; }
 .fam-chip { display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 11px; border: 1px solid var(--border); border-radius: 999px;
   background: var(--bg-card); color: var(--text); font: inherit; font-size: 12.5px; font-weight: 650; cursor: pointer; }
 .fam-chip:hover { border-color: var(--text-faint); }
