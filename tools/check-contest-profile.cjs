@@ -62,7 +62,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const href=await page.locator('.pf-topics tbody a').first().getAttribute('href');assert.match(href,/^#\/browse\/topics\/[\w.-]+$/);
  await page.locator('.pf-topics tbody a').first().click();await page.locator('.browse-topics').waitFor();await page.goBack();await page.locator('.contest-profile').waitFor();
  // A card with a handful of problems: figures and a line each, no tables, chart or periods.
- const few=await open('partitions'),fe=expected('partitions');assert(fe.n>0&&fe.n<5);
+ const few=await open('bretschneiders-formula'),fe=expected('bretschneiders-formula');assert(fe.n>0&&fe.n<5);
  assert.equal(await few.locator('.pf-stat b').first().innerText(),String(fe.n));assert.equal(await few.locator('table, .elo-chart, .pf-eras').count(),0);
  assert.match(await rowOf(few,'Difficulty').innerText(),/Rated \d+( and \d+)?\./);assert(await rowOf(few,'Topics').locator('a').count()>0);
  // Between the two: tables and a chart, but too few problems for periods to mean anything.
