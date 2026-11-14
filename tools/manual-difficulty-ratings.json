@@ -35367,6 +35367,202 @@
     "1998 Columbus State Tournament, Problem 50": [
       600,
       "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the barrels go 1, 2, 3, 4, 5, 4, 3, 2 and repeat every 8; 10^6 is 0 mod 8: barrel 2."
+    ],
+    "1997 Columbus State Tournament, Problem 1": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2^(-6) x^6 y^4 z^(-2) over 2^(-4) x^4 y^(-2) z^2 is x^2 y^6/(4z^4)."
+    ],
+    "1997 Columbus State Tournament, Problem 2": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 6a/(4 - 3a) = -6a/(3a - 4), so the sum is (8 - 6a)/(3a - 4) = -2."
+    ],
+    "1997 Columbus State Tournament, Problem 3": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x = 2 and y = -3: product -6."
+    ],
+    "1997 Columbus State Tournament, Problem 4": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): d(1/r + 1/s) = t gives d = rst/(r + s)."
+    ],
+    "1997 Columbus State Tournament, Problem 5": [
+      200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (-9 + 5)/(-1 - 1) = 2."
+    ],
+    "1997 Columbus State Tournament, Problem 6": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (4t)^2 + (4(t - 1))^2 = 64 gives 2t^2 - 2t - 3 = 0, t = 1.82 hours: about 1:49."
+    ],
+    "1997 Columbus State Tournament, Problem 7": [
+      200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the product is -2/3."
+    ],
+    "1997 Columbus State Tournament, Problem 8": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (x + 3/2)^2 + (y - 2)^2 = 3 + 9/4 + 4 = 37/4: r = sqrt 37/2."
+    ],
+    "1997 Columbus State Tournament, Problem 9": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): ABC has base 5 and area 40, so the height is 16; ACE has base 23.5, and BD = 23.5 - 5 - 10 = 17/2."
+    ],
+    "1997 Columbus State Tournament, Problem 10": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): d/3 + d/24 = 6: d = 16."
+    ],
+    "1997 Columbus State Tournament, Problem 11": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): dough scales with area: 20 times (20/16)^2 = 31.25."
+    ],
+    "1997 Columbus State Tournament, Problem 12": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): height sqrt(25 - 4) = sqrt 21 and top 11 - 5 = 6: (11 + 6)/2 times sqrt 21."
+    ],
+    "1997 Columbus State Tournament, Problem 13": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): r = P(4) = 8."
+    ],
+    "1997 Columbus State Tournament, Problem 14": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): ACD has area 150, and ABE, similar with half the area, has sides scaled by 1/sqrt 2: AE times BE = 300/2 = 150."
+    ],
+    "1997 Columbus State Tournament, Problem 15": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a^(x + 1) = a^2 + a = a(a + 1), so x = log_a(a + 1)."
+    ],
+    "1997 Columbus State Tournament, Problem 16": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a function from A takes each of a, b, c exactly once: (i) and (iii)."
+    ],
+    "1997 Columbus State Tournament, Problem 17": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 0.3(10 - x) + x = 5: x = 2.857."
+    ],
+    "1997 Columbus State Tournament, Problem 18": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 36000/n - 36000/(n + 3) = 1000 gives n^2 + 3n - 108 = 0: n = 9."
+    ],
+    "1997 Columbus State Tournament, Problem 19": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 75 times (50/30)^2 = 208.33."
+    ],
+    "1997 Columbus State Tournament, Problem 20": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (20 times 84 + 25 times 66)/45 = 74."
+    ],
+    "1997 Columbus State Tournament, Problem 21": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (1/2)(1)(1) sin 2 alpha."
+    ],
+    "1997 Columbus State Tournament, Problem 22": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): tan theta = |(3 - (-2))/(1 - 6)| = 1: 45 degrees."
+    ],
+    "1997 Columbus State Tournament, Problem 23": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the line crosses the axis at -2/3 and reaches 8 at x = 2: (1/2)(8/3)(8) = 32/3."
+    ],
+    "1997 Columbus State Tournament, Problem 24": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): log cot x = log cos x - log sin x = log cos x + log csc x."
+    ],
+    "1997 Columbus State Tournament, Problem 25": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): i^(n!) is i for 0! and 1!, -1 for 2! and 3!, and 1 from 4! on: 2i - 2 + 97 = 95 + 2i."
+    ],
+    "1997 Columbus State Tournament, Problem 26": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the tangent at C = (sqrt 2/2, -sqrt 2/2) is x - y = sqrt 2, meeting y = sqrt 2/2 at P = (3 sqrt 2/2, sqrt 2/2): PD = sqrt(8 + 2) = sqrt 10."
+    ],
+    "1997 Columbus State Tournament, Problem 27": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): of the 10 triples only (15, 30, 40), (30, 40, 60) and (40, 60, 90) make triangles: 3/10."
+    ],
+    "1997 Columbus State Tournament, Problem 28": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): B alone empties 1/2 - 1/5 = 3/10 an hour: 3 hours 20 minutes."
+    ],
+    "1997 Columbus State Tournament, Problem 29": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): together they mow 5/12 an hour, so half takes 1.2 hours; the son's half takes 3: 4 hours 12 minutes."
+    ],
+    "1997 Columbus State Tournament, Problem 30": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): AD times DB = CD^2 = 25 with AD + DB = 12: AD = 6 - sqrt 11."
+    ],
+    "1997 Columbus State Tournament, Problem 31": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): each choice of three different digits gives one such number: C(10, 3) = 120."
+    ],
+    "1997 Columbus State Tournament, Problem 32": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): sixth powers below 10000: 1 + 64 + 729 + 4096 = 4890."
+    ],
+    "1997 Columbus State Tournament, Problem 33": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x^3 comes from (2 sqrt x)^6: C(8, 6) 2^6 = 1792."
+    ],
+    "1997 Columbus State Tournament, Problem 34": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): b + y = r + y = r + b = 2 gives one of each: 3."
+    ],
+    "1997 Columbus State Tournament, Problem 35": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (-1, 1) and (1, 1) give base 2 and (3, 9) height 8: area 8."
+    ],
+    "1997 Columbus State Tournament, Problem 36": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): BC/AC = sin 120/sin B with B < 30, so the ratio exceeds sqrt 3."
+    ],
+    "1997 Columbus State Tournament, Problem 37": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): h(1 + 2(0.75 + 0.75^2 + 0.75^3)) = 4.46875h = 286: h = 64."
+    ],
+    "1997 Columbus State Tournament, Problem 38": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): order the 3 couples and each couple's 2 seats: 3! times 2^3 = 48."
+    ],
+    "1997 Columbus State Tournament, Problem 39": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the first shooter wins on shot 1, 3, 5, ...: (1/2)/(1 - 1/4) = 2/3."
+    ],
+    "1997 Columbus State Tournament, Problem 40": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the roots sum to 4."
+    ],
+    "1997 Columbus State Tournament, Problem 41": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the top quarter of the square |x| + |y| <= 1: 1/2."
+    ],
+    "1997 Columbus State Tournament, Problem 42": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the tangent from (-1, 0) to the circle at (2, 0) has slope 1/(2 sqrt 2); with x^2 + y^2 = 1 it gives 9x^2 + 2x - 7 = 0: P = (7/9, 4 sqrt 2/9)."
+    ],
+    "1997 Columbus State Tournament, Problem 43": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the moduli telescope to 1/181 and the angles add to 1800 = 5 times 360: 1/181."
+    ],
+    "1997 Columbus State Tournament, Problem 44": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): A and C are (-1/2, +/- sqrt 3/2), so AB = BC = 1 and AD = CD = sqrt(3.5^2 + 3/4) = sqrt 13: 2 + 2 sqrt 13."
+    ],
+    "1997 Columbus State Tournament, Problem 45": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): theta/2 lies between 135 and 180, so cos(theta/2) = -sqrt((1 + 1/3)/2) = -sqrt 6/3."
+    ],
+    "1997 Columbus State Tournament, Problem 46": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): A, B or C president: 3 times 4 times 5 = 60; F president: 5 times 6 = 30; total 90."
+    ],
+    "1997 Columbus State Tournament, Problem 47": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 3 times the first plus 11 times the second gives (3x + 4y)(x + y) = 0; the four solutions are (+/- sqrt 2, -/+ sqrt 2) and (-/+ 4/sqrt 5, +/- 3/sqrt 5): product 576/25."
+    ],
+    "1997 Columbus State Tournament, Problem 49": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): grouping by s = x + y: sum of s(s - 1) for s = 2 to 100 = 338350 - 5050 = 333300."
+    ],
+    "1997 Columbus State Tournament, Problem 50": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (x - 1)^2 + 2(y + 3/2)^2 = 6, so a^2 = 6 and b^2 = 3: pi sqrt 18 = 3 sqrt 2 pi."
     ]
   }
 }
