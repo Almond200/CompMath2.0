@@ -45369,6 +45369,106 @@
     "2002 Pascal Contest, Problem 25": [
       600,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with the small container at the bottom the large one is full; the water above the small one's rim, pi(36)(2) = 72 pi, pours in: 72/25 = 2.88 cm."
+    ],
+    "2001 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (30 - 12)/9 = 2."
+    ],
+    "2001 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the remainder on division by 10 is the units digit: 8."
+    ],
+    "2001 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (32 - 8)/4 = 6."
+    ],
+    "2001 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with x = 1/4, 1/x = 4 is largest."
+    ],
+    "2001 Pascal Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): angle ACB = 180 - 130 = 50 = angle BAC, so x = 180 - 100 = 80."
+    ],
+    "2001 Pascal Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 0.7(80) + 0.3(90) = 83."
+    ],
+    "2001 Pascal Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): x - 4 must divide 24; the least x is 4 - 24 = -20."
+    ],
+    "2001 Pascal Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the nth term is (n + 4)x^(n - 1): 54x^49."
+    ],
+    "2001 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): BC = sqrt(8^2 + 15^2) = 17: 40."
+    ],
+    "2001 Pascal Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): Dean averages 9, so Ruth scores 9.5 in each of 18 games: 171."
+    ],
+    "2001 Pascal Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): a rising straight line for 10 minutes, then a flat one: graph (D)."
+    ],
+    "2001 Pascal Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the worst case eats all 10 butterscotch, all 6 mint and 1 chocolate: 18."
+    ],
+    "2001 Pascal Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): his age is 2001 minus the year, so 1977: 1 + 9 + 7 + 7 = 24."
+    ],
+    "2001 Pascal Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 6 multiples of 3 and 4 of 5, with 15 counted twice: 9/20."
+    ],
+    "2001 Pascal Contest, Problem 15": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): a triangle of area 16 on a base of 8 has height 4: slope 4/8 = 1/2."
+    ],
+    "2001 Pascal Contest, Problem 16": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): count by size: small triangles, then those of side 2 (including the 2 across the halves) and side 3: 28."
+    ],
+    "2001 Pascal Contest, Problem 17": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): opposite sides of a rectangle are translates: (5, 5) to (9, 2) is over 4 and down 3, so a = 11 and b = 10: 1."
+    ],
+    "2001 Pascal Contest, Problem 18": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): in decreasing order: 9800, 9710, 9701, 9620, 9611."
+    ],
+    "2001 Pascal Contest, Problem 19": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the width x is a diameter, and the length 10 is two radii plus the centre distance: x + 2x/3 = 10, x = 6."
+    ],
+    "2001 Pascal Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): triangle DEC is half the square, area 2, and each midpoint halves the triangle on DC: DFC 1, DGC 1/2, CHD 1/4, IDC 1/8."
+    ],
+    "2001 Pascal Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the trip takes 45 minutes longer at 10 km/h than at 20: it is 15 km, 45 minutes at 20, so she leaves at 3:45 and needs 12 km/h to arrive at 5:00."
+    ],
+    "2001 Pascal Contest, Problem 22": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the circle has area 16 pi, radius 4, so the sector less right triangle ABC (legs 2 sqrt 2 each) gives 2 pi - 4."
+    ],
+    "2001 Pascal Contest, Problem 23": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): place the points from 0 to 19 to realize the listed distances; the only consistent placement gives the missing distance 12."
+    ],
+    "2001 Pascal Contest, Problem 24": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the air has the same volume either way up: pi(H - 20) in the narrow part equals 9 pi(H - 28) in the wide part: H = 29."
+    ],
+    "2001 Pascal Contest, Problem 25": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): abba + cddc = 1efe1 forces a + c = 11 and the middle columns force b + d = 0 or 11: 4 pairs {a, c} times 9 choices of (b, d) = 36."
     ]
   }
 }
