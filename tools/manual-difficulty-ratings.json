@@ -40051,6 +40051,106 @@
     "2013 Cayley Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): from n to n + 1 the value n - Z(n!) rises by 1 minus the power of 5 in n + 1, so it stalls at multiples of 5 and falls back at multiples of 25; counting those taken at least three times from n = 100 to 10000 gives 6."
+    ],
+    "2012 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 3/3 = 1."
+    ],
+    "2012 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1 + 3 + x = 9: x = 5."
+    ],
+    "2012 Cayley Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): turn the figure a quarter turn clockwise: (A)."
+    ],
+    "2012 Cayley Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): -1 + 1 - 1 = -1."
+    ],
+    "2012 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 100 - x = 81: x = 19."
+    ],
+    "2012 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 18 bananas of 30 pieces: 3/5."
+    ],
+    "2012 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): Greek is 100 - 20 - 38 = 42% of 150: 63."
+    ],
+    "2012 Cayley Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (2/3)(3/4)(4/5) = 2/5."
+    ],
+    "2012 Cayley Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 30 - (20 + 9 - 5) = 6."
+    ],
+    "2012 Cayley Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): cutting out a corner cube removes three unit faces and exposes three: still 2(8 + 8 + 4) = 40."
+    ],
+    "2012 Cayley Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 3 times 6 + 90 times 0.25 = 18 + 22.50 = 40.50."
+    ],
+    "2012 Cayley Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): q = 2p/5 and pq = 90 give p^2 = 225: p = 15."
+    ],
+    "2012 Cayley Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the odd multiples of 55 between 400 and 600: only 495, digit sum 18."
+    ],
+    "2012 Cayley Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the exterior angle SWR of triangle RWU: 50 = 30 + x, x = 20."
+    ],
+    "2012 Cayley Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): OP = 3 and OQ = 9, so the ring between them has area 81 pi - 9 pi = 72 pi."
+    ],
+    "2012 Cayley Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): c = 8 from x = 0, and a + b + c = 9 from x = 1: a + b = 1."
+    ],
+    "2012 Cayley Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the pieces are 1, 2, 4, 8 parts of 15: 8/15."
+    ],
+    "2012 Cayley Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the six sum to 6a + 15, and dropping one leaves 2012 only for a = 400, erasing 403: digit sum 7."
+    ],
+    "2012 Cayley Contest, Problem 19": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each of p, q, r, s, u lies on two lines, so 5S = 2(115) + 90 and S = 64; so p + q = 48 on the line through 9 and 7, and the other lines leave q = 27."
+    ],
+    "2012 Cayley Contest, Problem 20": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2700 = 2^2 3^3 5^2 needs at least five digits: 2, 5, 5, 6, 9 gives the smallest, 25569: digit sum 27."
+    ],
+    "2012 Cayley Contest, Problem 21": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): x(1 + y) = 391 = 17 times 23 with x > y: x = 23, y = 16, sum 39."
+    ],
+    "2012 Cayley Contest, Problem 22": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): by which monkey is number 1: the R monkey moves to P in 3 of the 20 equally likely cases, 3/20."
+    ],
+    "2012 Cayley Contest, Problem 23": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): P and Q are 6 sqrt 2 above OR with PQ = 12 sqrt 2 and OS = 6 sqrt 2: area (18 sqrt 2/2)(6 sqrt 2) = 108."
+    ],
+    "2012 Cayley Contest, Problem 24": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): exchanges with no fixed points and no 2-cycles have cycle types 6 (120 ways) or 3 + 3 (40 ways): 160."
+    ],
+    "2012 Cayley Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): doubling lowers the digit sum by 9 for each digit 5 or more: 208 - 100 = 108 = 9 times 12, so with 4 + 3 + 2 = 9 others there are 3 fives."
     ]
   }
 }
