@@ -344,5 +344,21 @@ window.MATH_CONTEST_PAPERS = {
   "2017 PUMaC Division B Combinatorics": {
     "url": "https://pumac.princeton.edu/s/PUMaC2017_Combo_B.pdf",
     "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_Combo_B_Solutions.pdf"
+  },
+  "2017 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_Geo_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_Geo_A_Solutions.pdf"
+  },
+  "2017 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_Geo_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_Geo_B_Solutions.pdf"
+  },
+  "2017 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_NT_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC_2017_NT_A_SolRevised.pdf"
+  },
+  "2017 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_NT_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_NT_B_Solutions.pdf"
   }
 };

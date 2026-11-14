@@ -157,7 +157,11 @@
     "2017 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_A.pdf",
     "2017 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_B.pdf",
     "2017 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2017_Combo_A.pdf",
-    "2017 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2017_Combo_B.pdf"
+    "2017 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2017_Combo_B.pdf",
+    "2017 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2017_Geo_A.pdf",
+    "2017 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2017_Geo_B.pdf",
+    "2017 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2017_NT_A.pdf",
+    "2017 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2017_NT_B.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -37787,6 +37791,134 @@
     "2017 PUMaC Division B Combinatorics, Problem 8": [
       3550,
       "Evaluate a reciprocal shifted-binomial expectation and locate its strict integer threshold with exact power comparisons."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 1": [
+      1800,
+      "Recognize the second circle intersection as the foot of the isosceles triangle altitude and halve its area."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 2": [
+      2650,
+      "Combine a right diagonal and exact parallelogram area into a square-divisor condition, then test all possible integer sides."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 3": [
+      3000,
+      "Find the pentagonal section of a regular hexagonal prism and split its exact planar area into a rectangle and triangle."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 4": [
+      3000,
+      "Identify a supplementary angle from the three point distances, reflect to the equilateral circumcircle and compare the congruent circumcircle centers."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 5": [
+      3250,
+      "Use the orthocenter vector identity in a rectangular center-and-altitude configuration to fix the remaining vertex and recover the common chord length."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 6": [
+      3500,
+      "Track equal-radius right triangles through two intersecting circles and recognize the target quadrilateral as an isosceles trapezoid."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 7": [
+      3800,
+      "Project a cyclic quadrilateral to a line, preserve its signed cross-ratio and solve for the displacement between two prescribed intersections."
+    ],
+    "2017 PUMaC Division A Geometry, Problem 8": [
+      4100,
+      "Relate a mixtilinear contact point to incircle tangents and the circumcircle chord; the source explicitly corrects the tangent-side pair and accepts a different answer for the printed pair."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 1": [
+      1600,
+      "Use two successive medial triangles to partition an equilateral triangle into three congruent trapezoids and a small central triangle."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 2": [
+      2250,
+      "Use a cyclic kite diameter and its perpendicular chord to minimize the area over the integral center-to-diagonal offset."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 3": [
+      1800,
+      "Recognize the second circle intersection as the foot of the isosceles triangle altitude and halve its area."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 4": [
+      2650,
+      "Combine a right diagonal and exact parallelogram area into a square-divisor condition, then test all possible integer sides."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 5": [
+      3000,
+      "Find the pentagonal section of a regular hexagonal prism and split its exact planar area into a rectangle and triangle."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 6": [
+      3000,
+      "Identify a supplementary angle from the three point distances, reflect to the equilateral circumcircle and compare the congruent circumcircle centers."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 7": [
+      3250,
+      "Use the orthocenter vector identity in a rectangular center-and-altitude configuration to fix the remaining vertex and recover the common chord length."
+    ],
+    "2017 PUMaC Division B Geometry, Problem 8": [
+      3500,
+      "Track equal-radius right triangles through two intersecting circles and recognize the target quadrilateral as an isosceles trapezoid."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 1": [
+      2750,
+      "Bound and attain the extremes of repeated median-plus-one replacements on a list of consecutive integers."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 2": [
+      2850,
+      "Under the intended distinct-index reading, assign separate prime factors to neighboring sequence terms; the literal condition including equal indices is inconsistent."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 3": [
+      2700,
+      "Shift three positive integer dimensions to turn a box bigness into a product of three factors at least three and locate consecutive attainable values."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 4": [
+      3450,
+      "Characterize bases preserving every small digit-sum divisibility test by an LCM congruence and round the exact ratio."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 5": [
+      3550,
+      "Factor a shifted quartic and classify residues modulo three, five and seven to sum its least odd prime factors."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 6": [
+      3900,
+      "Cover every forbidden exponent class by proper prime divisors and solve the compatible CRT systems; the source proves a construction but omits a global minimality argument."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 7": [
+      3950,
+      "Pair opposite nonzero ordinates and count cubic root patterns over a finite field; exhaustive verification gives one fewer pair than the official count, whose proof misses the triple-root cubic."
+    ],
+    "2017 PUMaC Division A Number Theory, Problem 8": [
+      3800,
+      "Expand a moving interval gcd sum by its divisors and minimize the multiple counts; all permitted interval positions independently verify the minimum."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 1": [
+      1400,
+      "Construct the smallest positive integer of each prescribed digit sum by filling the largest trailing digits and sum the finite list."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 2": [
+      2050,
+      "Count divisibility pairs in a short set of repeated-digit numbers, checking the repunit and digit factors."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 3": [
+      2750,
+      "Bound and attain the extremes of repeated median-plus-one replacements on a list of consecutive integers."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 4": [
+      2850,
+      "Under the intended distinct-index reading, assign separate prime factors to neighboring sequence terms; the literal condition including equal indices is inconsistent."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 5": [
+      2700,
+      "Shift three positive integer dimensions to turn a box bigness into a product of three factors at least three and locate consecutive attainable values."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 6": [
+      3450,
+      "Characterize bases preserving every small digit-sum divisibility test by an LCM congruence and round the exact ratio."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 7": [
+      3550,
+      "Factor a shifted quartic and classify residues modulo three, five and seven to sum its least odd prime factors."
+    ],
+    "2017 PUMaC Division B Number Theory, Problem 8": [
+      3900,
+      "Cover every forbidden exponent class by proper prime divisors and solve the compatible CRT systems; the source proves a construction but omits a global minimality argument."
     ]
   }
 }
