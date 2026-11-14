@@ -47169,6 +47169,106 @@
     "2026 UKMT IMC, Problem 25": [
       700,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): of the 35 sets of three days, 21 leave a run of at least three non-swim days round the week: 3/5."
+    ],
+    "2025 UKMT IMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the values are -14, -16, -18, -20 and -22: A."
+    ],
+    "2025 UKMT IMC, Problem 2": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 2652134 = 13 times 204010 + 4: remainder 4."
+    ],
+    "2025 UKMT IMC, Problem 3": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): SR = SQ = ST makes STR isosceles with base angles (180 - 150)/2 = 15, and the same on the other side: 60 - 30 = 30."
+    ],
+    "2025 UKMT IMC, Problem 4": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): n cats have 4n legs and n tails, so 3n = 12: 4 cats, 8 ears."
+    ],
+    "2025 UKMT IMC, Problem 5": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the inner brackets give 1, then 1/5, and 5 divided by 1/5 is 25."
+    ],
+    "2025 UKMT IMC, Problem 6": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 3n + 7 even forces n odd, so 3n + 2 is odd."
+    ],
+    "2025 UKMT IMC, Problem 7": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the dolphin and the shark contradict each other, so exactly one is right; the octopus and starfish are then wrong: 1."
+    ],
+    "2025 UKMT IMC, Problem 8": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 34 1/7 = 239/7 and 17 1/14 = 239/14: 2."
+    ],
+    "2025 UKMT IMC, Problem 9": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): two non-touching rows from 4: C(3, 2) = 3; two non-touching columns from 7: C(6, 2) = 15: 45."
+    ],
+    "2025 UKMT IMC, Problem 10": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 2025^2 - 2(2025) + 1 = 2024^2: 2024."
+    ],
+    "2025 UKMT IMC, Problem 11": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): (m + 1)(n + 1) = mn + m + n + 1, so m + n = 400 - 361 = 39."
+    ],
+    "2025 UKMT IMC, Problem 12": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): with n dogs, 3n/5 + 32 = 5n/3 gives n = 30."
+    ],
+    "2025 UKMT IMC, Problem 13": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): x times 120 times 496 = 496 times 360 times 48: x = 144."
+    ],
+    "2025 UKMT IMC, Problem 14": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 1/9 + 2/9 + 3/9 + 4/9 = 10/9 = 1.111."
+    ],
+    "2025 UKMT IMC, Problem 15": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): (729 - 81)/(512 - 8) = 648/504 = 9/7."
+    ],
+    "2025 UKMT IMC, Problem 16": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): each book is a penny short of whole pounds, so 44 books; then 2x + y = 57 with x + y = 44: 13."
+    ],
+    "2025 UKMT IMC, Problem 17": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): blue is 0.6(0.6) + 0.4(0.4) = 52% of the mix: 52 : 48 = 13 : 12."
+    ],
+    "2025 UKMT IMC, Problem 18": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): each circle has radius 13 and the centres are 10 apart, so the common chord is 2 sqrt(13^2 - 5^2) = 24."
+    ],
+    "2025 UKMT IMC, Problem 19": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the totals must be multiples of 3, 4 and 5 for the three ratios: Roy 36 + 12, Rob 36 + 9, Rog 34 + 17: Rob and Roy."
+    ],
+    "2025 UKMT IMC, Problem 20": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): y = 90 + x/2, so y/x = 90/x + 1/2 is an integer, largest at x = 4: 23."
+    ],
+    "2025 UKMT IMC, Problem 21": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 8 = 3 (mod 5), and 3^4 = 1 (mod 5), so 8^8 = 1 (mod 5)."
+    ],
+    "2025 UKMT IMC, Problem 22": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the centres are 20 apart and their heights differ by 12, so the touch points are 16 apart."
+    ],
+    "2025 UKMT IMC, Problem 23": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the sums of squares to opposite corners agree: 25 + 196 - 100 = 121, so 11."
+    ],
+    "2025 UKMT IMC, Problem 24": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): combining the three bills gives r = 2.5, and adding them 4(w + y + r) + 2.5 = 26.5: 6."
+    ],
+    "2025 UKMT IMC, Problem 25": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): with the rectangle l by h, ly = 12, hx = 10 and (l - x)(h - y) = 12 give A^2 - 34A + 120 = 0: A = 30, shaded 30 - 17 = 13."
     ]
   }
 }
