@@ -36055,6 +36055,106 @@
     "2024 Fermat Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each ratio sqrt(a_n/a_(n - 1)) is 2 or 1/2, so each step multiplies by 4 or 1/4; from 4 to 4^5 in 10 steps needs 7 up and 3 down: C(10, 3) = 120, so 20."
+    ],
+    "2025 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2 - 0 + 10 = 12."
+    ],
+    "2025 Fermat Contest, Problem 2": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Friday's bar is 20%: 0.2 times 3000 = 600."
+    ],
+    "2025 Fermat Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the integers 3 to 13: 11."
+    ],
+    "2025 Fermat Contest, Problem 4": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): R + C = 36 with R = 2C: C = 12."
+    ],
+    "2025 Fermat Contest, Problem 5": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the sides of the tilted rectangle are sqrt 2 and 2 sqrt 2 long: area 4."
+    ],
+    "2025 Fermat Contest, Problem 6": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2025 = 45^2 and the next square is 46^2 = 2116: n = 91."
+    ],
+    "2025 Fermat Contest, Problem 7": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): scores with three arrows from 10, 5, 1: 13 would need the other two to make 3, 8 or 12, none possible."
+    ],
+    "2025 Fermat Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 15 times 18 - 5 times 12 = 210 over 10: 21."
+    ],
+    "2025 Fermat Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 72 = (x - y)(x + y) = 12(x + y): 6."
+    ],
+    "2025 Fermat Contest, Problem 10": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): m + n = 50 and 3m + 4n = 186 give n = 36, m = 14: -22."
+    ],
+    "2025 Fermat Contest, Problem 11": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a bulb ends on when an odd number of 2, 3, 4 divide it: 2, 3, 9, 10 and 12, five bulbs."
+    ],
+    "2025 Fermat Contest, Problem 12": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the rate is the slope from the origin, steepest for A."
+    ],
+    "2025 Fermat Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2t = 12 gives t = 6, so b = 2 + 6 = 8."
+    ],
+    "2025 Fermat Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): it doubles each minute, so a quarter full two minutes before 9:20: 9:18."
+    ],
+    "2025 Fermat Contest, Problem 15": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): lcm(12, 13, 14, 15) = 5460 and the least five-digit multiple is 10920: 9."
+    ],
+    "2025 Fermat Contest, Problem 16": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the width is the height h plus 2, and h(h + 2) = 224 gives h = 14; 224 - 49 pi is about 70."
+    ],
+    "2025 Fermat Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (2/7)(2/5) + (5/7)(3/4) = 16/140 + 75/140 = 13/20."
+    ],
+    "2025 Fermat Contest, Problem 18": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): in the same time Morgan runs 1800 and Henri 1710; when Morgan runs 2000 Henri runs 1900: 100 m."
+    ],
+    "2025 Fermat Contest, Problem 19": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the line meets y = 0 at -7/m and y = 2 at -5/m, so the area is 12/m = 3: m = 4."
+    ],
+    "2025 Fermat Contest, Problem 20": [
+      1000,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the digits are two 5s, then 8, or 2 and 4, or three 2s, padded with 1s to at most five digits; arranging each multiset gives 127 in all: 27."
+    ],
+    "2025 Fermat Contest, Problem 21": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the legs multiply to 108 and the hypotenuse is an integer only for 9, 12, 15: c = 15."
+    ],
+    "2025 Fermat Contest, Problem 22": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): subtracting gives 2 times 3^(z - 1) = 4374, so z = 8 and 2^x + 2^y = 72, 2^(x + y) = 512: {x, y} = {3, 6}, product 144, so 44."
+    ],
+    "2025 Fermat Contest, Problem 23": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1/x + 1/(x - 14) = 1/24 gives x^2 - 62x + 336 = 0: x = 56."
+    ],
+    "2025 Fermat Contest, Problem 24": [
+      1000,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): f(x) - 59x has roots 1, 2, 3, so f(x) = (x - 1)(x - 2)(x - 3)(x - c) + 59x; the c terms cancel: 336 times 14 + 236 = 4940, digit sum 17."
+    ],
+    "2025 Fermat Contest, Problem 25": [
+      1100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a_n^2 is divisible by 45^2 exactly when 45 divides a_n; mod 45 that first happens at n = 34 and then every 60 terms: 34, 94, ..., 2014, which is 34 terms."
     ]
   }
 }
