@@ -30499,6 +30499,114 @@
     "2010 Calgary Junior Math Contest, Problem 9": [
       900,
       "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): each pass keeps every other number; track the survivor's position through the passes."
+    ],
+    "2009 Calgary Junior Math Contest, Problem 1": [
+      200,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 1, 3, 5, 7, 9: 5 numbers."
+    ],
+    "2009 Calgary Junior Math Contest, Problem 2": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the overall average splits the gap between 80 and 200 in the ratio of the counts."
+    ],
+    "2009 Calgary Junior Math Contest, Problem 3": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): each quarter is 3 cm; follow the mouse around the circle."
+    ],
+    "2009 Calgary Junior Math Contest, Problem 4": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the longest side is under half of 17: 8."
+    ],
+    "2009 Calgary Junior Math Contest, Problem 5": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): A = 2k, B = 3k and 4(2k + 100) = 3(3k + 100) give k = 100: A = 200."
+    ],
+    "2009 Calgary Junior Math Contest, Problem 6": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 10b + a = 1.2(10a + b) gives 4b = 5a: 45."
+    ],
+    "2009 Calgary Junior Math Contest, Problem 7": [
+      700,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): equal-area rings mean radii proportional to 1, sqrt 2, sqrt 3, 2."
+    ],
+    "2009 Calgary Junior Math Contest, Problem 8": [
+      700,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): feed equal shares; the leftover is the remainder on dividing by 4."
+    ],
+    "2009 Calgary Junior Math Contest, Problem 9": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the dog's reachable region around the house is quarter and half circles; add their areas."
+    ],
+    "2008 Calgary Junior Math Contest, Problem 1": [
+      200,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): an odd sum of two primes includes 2: 2 times 7."
+    ],
+    "2008 Calgary Junior Math Contest, Problem 2": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 2/7 < 7/X means X < 49/2: 24."
+    ],
+    "2008 Calgary Junior Math Contest, Problem 3": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 9 + 11 - 5 + 10 = 25."
+    ],
+    "2008 Calgary Junior Math Contest, Problem 4": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): test the years after 2008 for the stated divisibility pattern."
+    ],
+    "2008 Calgary Junior Math Contest, Problem 5": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): sides summing to 13 with squares summing to 85: 7 and 6, so 49."
+    ],
+    "2008 Calgary Junior Math Contest, Problem 6": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): petals and leaves give two linear equations in the two kinds of flower."
+    ],
+    "2008 Calgary Junior Math Contest, Problem 7": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): BC : CD : DE = 1 : 2 : 4, and triangles with apex A share the height: 2/7 of 56 = 16."
+    ],
+    "2008 Calgary Junior Math Contest, Problem 8": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): C(5, 4) = 5 is too few and C(6, 4) = 15 enough: 6 items."
+    ],
+    "2008 Calgary Junior Math Contest, Problem 9": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): leg a with r = (2a - a sqrt 2)/2 = 1 gives a = 2 + sqrt 2, perimeter (2 + sqrt 2)^2 = 6 + 4 sqrt 2."
+    ],
+    "2007 Calgary Junior Math Contest, Problem 1": [
+      100,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 55 - 37 = 18 = 8 + 10."
+    ],
+    "2007 Calgary Junior Math Contest, Problem 2": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): period 9, and 2007 is a multiple of 9: H."
+    ],
+    "2007 Calgary Junior Math Contest, Problem 3": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): search forward for the next date whose MMDDYYYY digits are all even."
+    ],
+    "2007 Calgary Junior Math Contest, Problem 4": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): analyze the game from the end: find the winning first choices."
+    ],
+    "2007 Calgary Junior Math Contest, Problem 5": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): two quarter circles of radius 4 overlap in the lens: 2(4 pi) - 16."
+    ],
+    "2007 Calgary Junior Math Contest, Problem 6": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): count the shaded squares added from each figure to the next."
+    ],
+    "2007 Calgary Junior Math Contest, Problem 7": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): extend the pattern 1/n + n/A = A/B to n = 5."
+    ],
+    "2007 Calgary Junior Math Contest, Problem 8": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 720 = 16 times 9 times 5: C = 0, the last four digits divisible by 16 fix B, and the digit sum fixes A."
+    ],
+    "2007 Calgary Junior Math Contest, Problem 9": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the semicircle's center and radius from the rectangle's sides give BD."
     ]
   }
 }
