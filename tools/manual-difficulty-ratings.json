@@ -179,7 +179,11 @@
     "2016 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2016_GeometryA.pdf",
     "2016 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2016_GeometryB.pdf",
     "2016 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryA.pdf",
-    "2016 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryB.pdf"
+    "2016 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2016_NumberTheoryB.pdf",
+    "2015 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2015_AlgebraA.pdf",
+    "2015 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2015_AlgebraB.pdf",
+    "2015 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsA.pdf",
+    "2015 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -38545,6 +38549,134 @@
     "2016 PUMaC Division B Number Theory, Problem 8": [
       3800,
       "Count self-power congruences over a complete CRT period through multiplicative orders and a gcd sum, independently checking every integer in the original interval."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 1": [
+      1900,
+      "Count bounded integer base-power pairs by their positive exponent, using exact integer power bounds."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 2": [
+      2800,
+      "Match affine parameters between two cubic plane-curve equations; the organizers voided the question because constant maps are allowed, and even nondegenerate maps have two vertical orientations."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 3": [
+      2600,
+      "Factor a sextic into repeated and simple quadratic factors and sum only the simple roots."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 4": [
+      2800,
+      "Replace a positive rational recurrence by successive-term ratios, telescope their harmonic increments and locate the first strict decrease."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 5": [
+      3150,
+      "Conjugate a binary merge to multiplication, making its random order irrelevant, and evaluate its final root-of-unity product."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 6": [
+      3600,
+      "Recognize equal divided differences as three collinear quartic graph points and bound their minimum height with the fixed sum of squared shifted roots."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 7": [
+      3850,
+      "Bound a recursively generated radical set by its limiting fixed point and identify its largest empty interval, respecting closed endpoints."
+    ],
+    "2015 PUMaC Division A Algebra, Problem 8": [
+      3900,
+      "Prove a residue has full prime-field order, filter coefficient classes over roots of unity and attain the minimum positive coefficient sum."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 1": [
+      1250,
+      "Solve the total-price quadratic for an order size and convert a fixed production rate to elapsed minutes."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 2": [
+      1650,
+      "Enumerate functions on a three-element set satisfying one constrained sum of iterated values."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 3": [
+      2500,
+      "Under the intended integer-pair restriction, turn the difference between two progression predictions into a square-divisibility condition and count bounded multiples; the printed pair domain omits integrality."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 4": [
+      2800,
+      "Match affine parameters between two cubic plane-curve equations; the organizers voided the question because constant maps are allowed, and even nondegenerate maps have two vertical orientations."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 5": [
+      2600,
+      "Factor a sextic into repeated and simple quadratic factors and sum only the simple roots."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 6": [
+      2800,
+      "Replace a positive rational recurrence by successive-term ratios, telescope their harmonic increments and locate the first strict decrease."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 7": [
+      3600,
+      "Recognize equal divided differences as three collinear quartic graph points and bound their minimum height with the fixed sum of squared shifted roots."
+    ],
+    "2015 PUMaC Division B Algebra, Problem 8": [
+      3850,
+      "Bound a recursively generated radical set by its limiting fixed point and identify its largest empty interval, respecting closed endpoints."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 1": [
+      1850,
+      "Count all nonempty words from a bounded multiset, across every possible length; the official solution copies the Division B three-letter restriction absent from this prompt."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 2": [
+      2000,
+      "Sum color-appearance indicators across repeated uniform draws with replacement."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 3": [
+      2800,
+      "Count eligible index pairs and average the matching value-pair condition in a uniform random permutation."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 4": [
+      3150,
+      "Average numbers with strictly increasing and weakly decreasing digit blocks by their coordinate means, independently enumerating every admissible number."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 5": [
+      3650,
+      "Count ten-mark three-dimensional line-hitting colorings by two permutation layers and a four-mark layer, checking every admissible layer combination."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 6": [
+      3250,
+      "Solve the waiting-time equations for four consecutive daily successes and recover the unique success probability."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 7": [
+      3750,
+      "Count two-color grid fillings avoiding monochromatic axis-aligned rectangles and independently check all sixteen-bit boards."
+    ],
+    "2015 PUMaC Division A Combinatorics, Problem 8": [
+      4250,
+      "Reduce a hereditary tournament condition to one small strongly connected core and ordered singleton components; exact isomorphism enumeration corrects the official overcount of five-vertex cores."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 1": [
+      1300,
+      "Count fixed-length words from a bounded multiset of letters by whether the repeated letter occurs twice."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 2": [
+      1850,
+      "Find a shortest valid sequence of coin-machine moves with forbidden repeated input amounts; complete short-path state search verifies the minimum."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 3": [
+      2250,
+      "Count bounded stock-price walks with fixed endpoints by reflecting those that hit the forbidden zero level."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 4": [
+      2000,
+      "Sum color-appearance indicators across repeated uniform draws with replacement."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 5": [
+      2800,
+      "Count eligible index pairs and average the matching value-pair condition in a uniform random permutation."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 6": [
+      3150,
+      "Average numbers with strictly increasing and weakly decreasing digit blocks by their coordinate means, independently enumerating every admissible number."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 7": [
+      3650,
+      "Count ten-mark three-dimensional line-hitting colorings by two permutation layers and a four-mark layer, checking every admissible layer combination."
+    ],
+    "2015 PUMaC Division B Combinatorics, Problem 8": [
+      3800,
+      "Count maximum nonattacking king placements on a square board; an independent row-mask transfer count verifies the inclusion-exclusion total."
     ]
   }
 }
