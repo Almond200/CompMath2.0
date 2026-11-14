@@ -44169,6 +44169,106 @@
     "2014 Pascal Contest, Problem 25": [
       800,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2009/2014 + 2019/n has numerator 2009n + 2019(2014) over 2014n; making 1004 divide the reduced numerator first happens at n = 1942: 16."
+    ],
+    "2013 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 492/4 = 123."
+    ],
+    "2013 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the cost per item is 26 divided by 8."
+    ],
+    "2013 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): pieces (A) to (D) all appear in the square; (E) does not."
+    ],
+    "2013 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 15 kg is halfway between 10 and 20, reached halfway between ages 6 and 8: 7."
+    ],
+    "2013 Pascal Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 1 + 8 + 27 + 64 = 100 = 10^2."
+    ],
+    "2013 Pascal Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): a fifth of the way takes 10 minutes, and two fifths remain: 20."
+    ],
+    "2013 Pascal Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (10 + 3)(10 - 3) = 91."
+    ],
+    "2013 Pascal Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): TU = 3 and UR = 4: TR = 5."
+    ],
+    "2013 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 50 km takes 4 L at 1.20: 4.80."
+    ],
+    "2013 Pascal Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the next time using 2, 3 and 5 once each is 5:23, 91 minutes after 3:52."
+    ],
+    "2013 Pascal Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each block of 4 has 2 hearts; 13 blocks give 26 and the 53rd symbol is a heart: 27."
+    ],
+    "2013 Pascal Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 22 - 3z = -40: z = 62/3."
+    ],
+    "2013 Pascal Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the 11 numbers sum to 66 and the remaining 10 must sum to 61: remove 5."
+    ],
+    "2013 Pascal Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): angle SQT = 180 - 152 = 28, and x + 28 + 3x = 180: x = 38."
+    ],
+    "2013 Pascal Contest, Problem 15": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 64^2 = 4^6: n = 6."
+    ],
+    "2013 Pascal Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3x + 1 even means x is odd, so 7x + 4 is odd."
+    ],
+    "2013 Pascal Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the non-country 60% keeps the 65 : 35 split, so hip hop is 0.65 times 60 = 39%."
+    ],
+    "2013 Pascal Contest, Problem 18": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the four quarter circles inside the square make one unit circle: 4 - pi."
+    ],
+    "2013 Pascal Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the 7 equal stripes total 7(350) = 2450 = 2h^2: h = 35."
+    ],
+    "2013 Pascal Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): of the 24 equally likely pairs, Sam is higher in 0 + 1 + 2 + 3 = 6: 1/4."
+    ],
+    "2013 Pascal Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 636405 = 3 times 5 times 7 times 11 times 29 times 19, which groups into 77 times 87 times 95: 259."
+    ],
+    "2013 Pascal Contest, Problem 22": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): unrolled, the stairs are the hypotenuse of a 20 pi by 25 triangle, about 67.6, plus the 5 m ladder: 72.6."
+    ],
+    "2013 Pascal Contest, Problem 23": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): t must be the largest; s is either second largest (p, q, r below it in 3! = 6 orders) or third with r second (2 orders): 8."
+    ],
+    "2013 Pascal Contest, Problem 24": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the trips are counted 2.2x times; everyone went on two trips and 160 on a third: 2x + 160 = 2.2x, x = 800."
+    ],
+    "2013 Pascal Contest, Problem 25": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): build the sequence and its differences together, each difference the next integer missing from the sequence: the 100th term is 5764."
     ]
   }
 }
