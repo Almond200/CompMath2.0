@@ -41251,6 +41251,106 @@
     "2001 Cayley Contest, Problem 25": [
       900,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): A = (3, 3) and B = (3 + 2 sqrt 3, 1); the common tangent through the external centre of similitude gives the intercept 9 + 3 sqrt 3."
+    ],
+    "2000 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2(3) - 25 = -19."
+    ],
+    "2000 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 48 is 3 mod 5: the third arrow."
+    ],
+    "2000 Cayley Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): complete the two rectangles to find the missing sides: 2 + 3 + 2 + 6 + 2 + 4 + 3 = 22."
+    ],
+    "2000 Cayley Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the 15 cows and sheep must be matched by 15 goats: buy 9."
+    ],
+    "2000 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the tenth triangular number is 10 times 11 / 2 = 55."
+    ],
+    "2000 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a digit sum of 89 means nine 9s and one 8, and an even number must end in the 8."
+    ],
+    "2000 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the angles on the line give 20 + (10x - 2) + (3x + 6) = 180: x = 12, angle CED = 42."
+    ],
+    "2000 Cayley Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1 - 1/2 - 3/8 = 1/8 of 240: 30."
+    ],
+    "2000 Cayley Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the terms -50 to 50 cancel, leaving 52 + 54 + 56 = 162."
+    ],
+    "2000 Cayley Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the ages total 47 years 6 months: 15 years 10 months."
+    ],
+    "2000 Cayley Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): twelve shirts are four groups of two at the regular price and one at a dollar: 8p + 4 = 120, p = 14.50."
+    ],
+    "2000 Cayley Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): opposite numbers differ by n/2 = 14 - 5 = 9: n = 18."
+    ],
+    "2000 Cayley Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the middle integer is the mean 99, and the largest is 9 more: 108."
+    ],
+    "2000 Cayley Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): equal products of four neighbours force period 4, so the boxes hold 2, 4, 3, x in some order: 24x = 120, x = 5."
+    ],
+    "2000 Cayley Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the sides drop by 2 from 24 down to the eighth square's 10: perimeter 40."
+    ],
+    "2000 Cayley Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): AED is a 5-12-13 right triangle of area 30 with base AD, so the rectangle has twice that: 60."
+    ],
+    "2000 Cayley Contest, Problem 17": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): split the hexagon into small congruent triangles: FEDG takes 5 of the pieces that make up BCG: 5 : 1."
+    ],
+    "2000 Cayley Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the distinct factors are 1, 2 and 8; trying the six orders, 8^2 - 2^1 + 1^8 = 263 is largest."
+    ],
+    "2000 Cayley Contest, Problem 19": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the tangents at the two touch points make the centre angle 60 degrees, so C travels a sixth of 12 pi: 2 pi."
+    ],
+    "2000 Cayley Contest, Problem 20": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a difference of 3 keeps the residue mod 3, and the classes have 14, 13 and 13 numbers, so at most 19 pairs differ by 3: 3(19) + 1 = 58."
+    ],
+    "2000 Cayley Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): edge cubes off the corners number 4(4 + 3 + 2) = 36 and corners 8: 9 : 2."
+    ],
+    "2000 Cayley Contest, Problem 22": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): unfold the 45-degree path: it zigzags between the long sides 18 apart, and covering 150 = 8 times 18 + 6 to reach the midpoint puts X 3 cm from a corner."
+    ],
+    "2000 Cayley Contest, Problem 23": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the two-digit multiples of 17 or 23 force 3, 4, 6, 9, 2 repeating, with a side path 6, 8, 5, 1, 7 that ends; the 2000th digit can be 2 or 5: 7."
+    ],
+    "2000 Cayley Contest, Problem 24": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): DE = 7 by Pythagoras and ABC is congruent to DFE, so the perimeter regroups as CE + AD = 18 + 24 = 42."
+    ],
+    "2000 Cayley Contest, Problem 25": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1 + y^2 + y^4 = (1 + y + y^2)(1 - y + y^2), so x(1 - y + y^2) = 15 too; dividing gives y = 2 or 1/2: sum 5/2."
     ]
   }
 }
