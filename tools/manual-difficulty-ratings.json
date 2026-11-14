@@ -39551,6 +39551,106 @@
     "2018 Cayley Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): six-term sums positive and eleven-term sums negative force the pattern x, x, x, x, y repeating with 5x + y > 0 and 9x + 2y < 0; counting the integer pairs with a term in [-16, 16] gives 56."
+    ],
+    "2017 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (6 - 2) times 111 = 444."
+    ],
+    "2017 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 16/2 = 8."
+    ],
+    "2017 Cayley Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the diameters stack: 20 + 40 + 60 = 120."
+    ],
+    "2017 Cayley Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each is 1 minus a small fraction, and 8/9 has the smallest gap: 8/9."
+    ],
+    "2017 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 300 litres in 25 hours: 12 an hour."
+    ],
+    "2017 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the layers double each fold, so they are powers of 2: 16."
+    ],
+    "2017 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): ab(a - b) = 14 times (-5) = -70."
+    ],
+    "2017 Cayley Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): check each pair of cards: only 147, 234, 257 share exactly one number pairwise."
+    ],
+    "2017 Cayley Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the pre-tax bill is 226/1.13 = 200, and 15% of 200 is 30."
+    ],
+    "2017 Cayley Contest, Problem 10": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): angles on the line PR give x + (x - 50) = 180, so x = 115; TU parallel to PS makes URS and TUR alternate angles: x + 25 = 140."
+    ],
+    "2017 Cayley Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each square is 4 by 4 and the boundary has 22 unit sides: 88."
+    ],
+    "2017 Cayley Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 27 + 28 = 55 over 5: 11."
+    ],
+    "2017 Cayley Contest, Problem 13": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2(XYZ) + YZ = 1675: X = 8, Y = 2, Z = 5, sum 15."
+    ],
+    "2017 Cayley Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): Jie is taller than Faye, who is taller than Goa and Han, and Jie than Igor: Jie."
+    ],
+    "2017 Cayley Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): red : blue : purple = 8 : 14 : 21, and 8 parts are 32: 43 parts are 172."
+    ],
+    "2017 Cayley Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the sum is (x + 2y)/5 + (x + 2y)/3 = 6 + 10 = 16."
+    ],
+    "2017 Cayley Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1230 = 2 times 3 times 5 times 41; the smallest sum puts 41 alone and splits 30 as 5 and 6: 52."
+    ],
+    "2017 Cayley Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1/7 <= 6/n <= 1/4 means 24 <= n <= 42: 19."
+    ],
+    "2017 Cayley Contest, Problem 19": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): at x = 5 the lines are at 2 and 6, 4 apart, and 4 from (1, 1): area 8."
+    ],
+    "2017 Cayley Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): Y gains 1 km/h = 1/3.6 m/s and must gain 11 m: 39.6 s."
+    ],
+    "2017 Cayley Contest, Problem 21": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): place 2 away from 1, then try the cases for the rest of the grid: only x = 4 works, one value."
+    ],
+    "2017 Cayley Contest, Problem 22": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with equal perimeters, write the rectangles' sides in terms of x: 2(4x - 42) + 2x = 168 - 4x gives x = 18, so the shaded one is 18 by 30: 540."
+    ],
+    "2017 Cayley Contest, Problem 23": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): obtuse needs x^2 + 100 < 289 (x = 8 to 13) or x^2 > 389 (x = 20 to 26), with 7 < x < 27: sum 224."
+    ],
+    "2017 Cayley Contest, Problem 24": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): track the coins' positions; only moves into empty squares count: 42 sequences."
+    ],
+    "2017 Cayley Contest, Problem 25": [
+      1200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): m exists exactly when x and x + 1 are both prime powers whose doubles exceed n (so nothing else up to n is a multiple); counting such n from 50 to 2017 gives 393."
     ]
   }
 }
