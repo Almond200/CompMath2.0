@@ -31542,7 +31542,7 @@
     ],
     "2016 Columbus State Tournament, Problem 24": [
       1000,
-      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): with t = 2 - x > 0, f = t + 1/t - 2 + ... rewrite and apply AM-GM: minimum 2."
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): with t = 2 - x > 0 the expression is (1 + t^2)/t = t + 1/t, at least 2 by AM-GM."
     ],
     "2016 Columbus State Tournament, Problem 25": [
       700,
