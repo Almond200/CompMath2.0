@@ -211,7 +211,11 @@
     "2012 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2012_GeometryA.pdf",
     "2012 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2012_GeometryB.pdf",
     "2012 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2012_NumberTheoryA.pdf",
-    "2012 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2012_NumberTheoryB.pdf"
+    "2012 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2012_NumberTheoryB.pdf",
+    "2011 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2011_AlgebraA.pdf",
+    "2011 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2011_AlgebraB.pdf",
+    "2011 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2011_CombinatoricsA.pdf",
+    "2011 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2011_CombinatoricsB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -39601,6 +39605,134 @@
     "2012 PUMaC Division B Number Theory, Problem 8": [
       3900,
       "Apply lifting the exponent to successive power-tower differences and propagate the exact valuation from its initial two-step case."
+    ],
+    "2011 PUMaC Division A Algebra, Problem 1": [
+      2900,
+      "Use the first two root power sums to bound two possible integer roots and classify their multiplicities before evaluating the sextic."
+    ],
+    "2011 PUMaC Division A Algebra, Problem 2": [
+      2900,
+      "Take prime valuations of a multiplicative two-index recurrence to obtain an additive Pascal recurrence and compute the requested exact exponent."
+    ],
+    "2011 PUMaC Division A Algebra, Problem 3": [
+      3000,
+      "Classify stopping cycles of an integer machine and compare the first-repeat length from every allowed initial state."
+    ],
+    "2011 PUMaC Division A Algebra, Problem 4": [
+      3350,
+      "Apply Vieta with roots reused as coefficients, split off the zero branch and bound the nonzero product sharply with an attaining real triple."
+    ],
+    "2011 PUMaC Division A Algebra, Problem 5": [
+      3450,
+      "Generate the six fractional-linear compositions of two involutions and use their orders to bound a real orbit, accounting for the initial point in the count."
+    ],
+    "2011 PUMaC Division A Algebra, Problem 6": [
+      3050,
+      "Take first differences of a second-order recurrence, sum the resulting affine geometric progression and rigorously bound the remaining rounding error."
+    ],
+    "2011 PUMaC Division A Algebra, Problem 7": [
+      3850,
+      "Determine which permutations preserve every rational relation among sixth roots of unity and verify the two surviving conjugation maps."
+    ],
+    "2011 PUMaC Division A Algebra, Problem 8": [
+      4400,
+      "Exploit the given uniqueness of a root-of-unity interpolation polynomial, force its coefficients to unit signs and read the target from its reduced square convolution."
+    ],
+    "2011 PUMaC Division B Algebra, Problem 1": [
+      1600,
+      "Recognize the denominator as the middle input and evaluate two nested range-to-median operations."
+    ],
+    "2011 PUMaC Division B Algebra, Problem 2": [
+      2300,
+      "Compute symmetric eighth powers by repeated squaring of root power sums and take the final absolute value."
+    ],
+    "2011 PUMaC Division B Algebra, Problem 3": [
+      2550,
+      "Factor a cubic into a linear factor and an always-positive quadratic, then classify its distinct prime outputs."
+    ],
+    "2011 PUMaC Division B Algebra, Problem 4": [
+      3100,
+      "Compare the specified nested tail at z and iz; the resulting relation forces incompatible values of f at zero, so the stated function does not exist despite the intended fixed-point answer."
+    ],
+    "2011 PUMaC Division B Algebra, Problem 5": [
+      2900,
+      "Use the first two root power sums to bound two possible integer roots and classify their multiplicities before evaluating the sextic."
+    ],
+    "2011 PUMaC Division B Algebra, Problem 6": [
+      3000,
+      "Classify stopping cycles of an integer machine and compare the first-repeat length from every allowed initial state."
+    ],
+    "2011 PUMaC Division B Algebra, Problem 7": [
+      3050,
+      "Take first differences of a second-order recurrence, sum the resulting affine geometric progression and rigorously bound the remaining rounding error."
+    ],
+    "2011 PUMaC Division B Algebra, Problem 8": [
+      3850,
+      "Determine which permutations preserve every rational relation among sixth roots of unity and verify the two surviving conjugation maps."
+    ],
+    "2011 PUMaC Division A Combinatorics, Problem 1": [
+      2450,
+      "Track the distinct output values of a two-digit plus three-digit sum, using the fixed digit sum to avoid counting repeated representations."
+    ],
+    "2011 PUMaC Division A Combinatorics, Problem 2": [
+      3100,
+      "Count distinct board colorings admitting a black-white domino tiling rather than counting colored tilings multiple times."
+    ],
+    "2011 PUMaC Division A Combinatorics, Problem 3": [
+      2850,
+      "Condition on relative square sides and measure the adjacent-side unit-square region outside a quadrant."
+    ],
+    "2011 PUMaC Division A Combinatorics, Problem 4": [
+      3000,
+      "Count actual four-bishop square subsets and exclude every placement with three or more on a common diagonal."
+    ],
+    "2011 PUMaC Division A Combinatorics, Problem 5": [
+      3550,
+      "Average the length of the initial consecutive monotone permutation run through its tail probabilities and telescope the finite factorial sum."
+    ],
+    "2011 PUMaC Division A Combinatorics, Problem 6": [
+      3300,
+      "Count a bounded inventory of power-of-two weights through a factored generating function or a binary inventory bijection."
+    ],
+    "2011 PUMaC Division A Combinatorics, Problem 7": [
+      3750,
+      "Reflect fixed-endpoint audience walks at adjacent height barriers to isolate the exact maximum, then compute the two-adic valuation of the resulting binomial difference."
+    ],
+    "2011 PUMaC Division A Combinatorics, Problem 8": [
+      4200,
+      "Reduce unique-route networks to trees, maximize five-vertex paths by a leaf redistribution bound and check the global optimum through a complete rooted depth-profile dynamic program."
+    ],
+    "2011 PUMaC Division B Combinatorics, Problem 1": [
+      1700,
+      "Subtract adjacent-vowel arrangements from all permutations of five distinct letters."
+    ],
+    "2011 PUMaC Division B Combinatorics, Problem 2": [
+      2450,
+      "Track the distinct output values of a two-digit plus three-digit sum, using the fixed digit sum to avoid counting repeated representations."
+    ],
+    "2011 PUMaC Division B Combinatorics, Problem 3": [
+      3100,
+      "Count distinct board colorings admitting a black-white domino tiling rather than counting colored tilings multiple times."
+    ],
+    "2011 PUMaC Division B Combinatorics, Problem 4": [
+      3450,
+      "Determine bounded multiplicative maps from their prime images, enforce all injectivity collisions and count the two free images."
+    ],
+    "2011 PUMaC Division B Combinatorics, Problem 5": [
+      2850,
+      "Condition on relative square sides and measure the adjacent-side unit-square region outside a quadrant."
+    ],
+    "2011 PUMaC Division B Combinatorics, Problem 6": [
+      3000,
+      "Count actual four-bishop square subsets and exclude every placement with three or more on a common diagonal."
+    ],
+    "2011 PUMaC Division B Combinatorics, Problem 7": [
+      3300,
+      "Count a bounded inventory of power-of-two weights through a factored generating function or a binary inventory bijection."
+    ],
+    "2011 PUMaC Division B Combinatorics, Problem 8": [
+      3750,
+      "Reflect fixed-endpoint audience walks at adjacent height barriers to isolate the exact maximum, then compute the two-adic valuation of the resulting binomial difference."
     ]
   }
 }

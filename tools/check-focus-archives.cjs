@@ -14,7 +14,7 @@ const roundLabel=round=>({'Combinatorics':'Combo','Number Theory':'NT','Discrete
 const familyLabel=fam=>fam.replace(' Division ',' ');
 assert(!context.window.MATH_PLANNED_CONTESTS.some(c=>/^(BMT|PUMaC)$/.test(c.name)),'live archives have no duplicate coming-soon entry');
 // Match the actual shared questions, which need not occupy consecutive B slots.
-for(const year of [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) {
+for(const year of [2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) {
  const bNumbers=year===2019&&subject==='Geometry'?[2,3,4,5,6,7,8]
    :year===2019&&subject==='Number Theory'?[2,3,5,7,8]
    :year===2020&&subject==='Combinatorics'?[2,3,4,5,7,8]:[3,4,5,6,7,8];
@@ -30,6 +30,10 @@ for(const year of [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2
    'Combinatorics':[[1,3],[2,4],[3,5],[4,6],[5,7],[8,8]],
    'Geometry':[[1,2],[2,3],[3,4],[5,6],[6,7],[7,8]],
    'Number Theory':[[1,1],[2,3],[3,5],[4,6],[5,7],[7,8]]
+ };
+ const sparse2011={
+   'Algebra':[[1,5],[3,6],[6,7],[7,8]],
+   'Combinatorics':[[1,2],[2,3],[3,5],[4,6],[6,7],[7,8]]
  };
  const sparse2012={
    'Algebra':[[2,4],[3,6],[4,7],[7,8]],
@@ -54,7 +58,8 @@ for(const year of [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2
    'Combinatorics':[[2,4],[3,5],[4,6],[5,7]],
    'Number Theory':[[1,2],[2,3],[3,6],[4,7],[7,8]]
  };
- const shared=year===2012&&sparse2012[subject]?sparse2012[subject]
+ const shared=year===2011&&sparse2011[subject]?sparse2011[subject]
+   :year===2012&&sparse2012[subject]?sparse2012[subject]
    :year===2013&&sparse2013[subject]?sparse2013[subject]
    :year===2014&&sparse2014[subject]?sparse2014[subject]
    :year===2015&&sparse2015[subject]?sparse2015[subject]
