@@ -40751,6 +40751,106 @@
     "2006 Cayley Contest, Problem 25": [
       1000,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the semicircle tips 30 degrees each way before touching the line 12 cm up; the contact points are 2(4 sqrt 3 - 4 pi/3) = 5.48 cm apart: 55 mm."
+    ],
+    "2005 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 4a + (1 - 2 + 3 - 4) = 4a - 2."
+    ],
+    "2005 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (4/5)(5/6)(6/7)(7/8)(8/9) = 4/9."
+    ],
+    "2005 Cayley Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 70 = 4 times 17 + 2."
+    ],
+    "2005 Cayley Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 6x = x + 10: x = 2."
+    ],
+    "2005 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (25 - 16)^3 = 9^3 = 729."
+    ],
+    "2005 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 8 times 40 times 18 = 5760 = 12 times 32 times r: r = 15."
+    ],
+    "2005 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the slope -b/8 = -3/2 gives b = 12."
+    ],
+    "2005 Cayley Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1 hour plus 2 hours for 24 km: 8 km/h."
+    ],
+    "2005 Cayley Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the rectangle is 8 by 10 and the unshaded triangle MCN has area 10: 70/80 = 87.5%."
+    ],
+    "2005 Cayley Contest, Problem 10": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): angle QRT = 52, so 2x + 52 = 180 and x = 64; the quadrilateral's angles give PQR = 360 - 64 - 128 - 52 = 116."
+    ],
+    "2005 Cayley Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 3 times 37 - 43 = 68 shared by two kicks: 34."
+    ],
+    "2005 Cayley Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): x = -2 meets the lines at (-2, 12) and (-2, -3): base 15, height 6 to (4, 0), area 45."
+    ],
+    "2005 Cayley Contest, Problem 13": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2520 m is 6 laps and 120 m; from the start 50 m before B, that is 70 m past B, 30 m from C."
+    ],
+    "2005 Cayley Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 10 + x must be a square between 11 and 109: 16, 25, ..., 100, seven values."
+    ],
+    "2005 Cayley Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 6 choices for the first 0, 2 for the next 0 and 3 for the 5: 36."
+    ],
+    "2005 Cayley Contest, Problem 16": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 88, 24, 64, 40, 24, 16, 8, 8, 0, 8, 8, 0, ...: the first 100 terms sum to 760."
+    ],
+    "2005 Cayley Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1000^100 = 10^300 = googol^3."
+    ],
+    "2005 Cayley Contest, Problem 18": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): follow the branching probabilities from S to B through each junction: 1/3 + 1/6 + 1/9 = 11/18."
+    ],
+    "2005 Cayley Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): BD = 12 and BC = 16; completing the rectangle BCED, AE = 21 and CE = 12: AC = sqrt 585, about 24.2."
+    ],
+    "2005 Cayley Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): A = B/2 and C = 0.8(1.5B) = 1.2B, so 2.7B = 81: B = 30."
+    ],
+    "2005 Cayley Contest, Problem 21": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 17a + 5b = 453 needs a = 4 mod 5: a = 4, 9, 14, 19, 24, five ways."
+    ],
+    "2005 Cayley Contest, Problem 22": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): PO + RO = 13, so AP + RB = 20 - 13 = 7; the perimeter is the quarter arc 5 pi plus the diagonal 10 plus 7: 17 + 5 pi."
+    ],
+    "2005 Cayley Contest, Problem 23": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): Dexter catches Anna at 12:45 (4 km out), then he and Bill, 3/4 km apart, close at 9 km/h: 5 minutes, 12:50."
+    ],
+    "2005 Cayley Contest, Problem 24": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the flap below the base is similar to ABC with area ratio 0.16, so scale 0.4 and side 4.8; the pieces of AB then give DE = 4.8 + 3.6 = 8.4."
+    ],
+    "2005 Cayley Contest, Problem 25": [
+      1000,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1/a^2 + 1/b^2 = 1/c^2 means (ab/c)^2 = a^2 + b^2, so a, b are the legs of a Pythagorean triple scaled to make ab/c fit; the a up to 100 are 15, 20, 30, 40, 45, 60, 65, 75, 80, 90, 100: 620."
     ]
   }
 }
