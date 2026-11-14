@@ -454,5 +454,21 @@ window.MATH_CONTEST_PAPERS = {
   "2015 PUMaC Division B Combinatorics": {
     "url": "https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsB.pdf",
     "solUrl": "https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsBSol.pdf"
+  },
+  "2015 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2015_GeometryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2015_GeometryASol.pdf"
+  },
+  "2015 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2015_GeometryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2015_GeometryBSol.pdf"
+  },
+  "2015 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryASol-wes5.pdf"
+  },
+  "2015 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryBSol.pdf"
   }
 };

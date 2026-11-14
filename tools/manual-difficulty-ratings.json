@@ -183,7 +183,11 @@
     "2015 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2015_AlgebraA.pdf",
     "2015 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2015_AlgebraB.pdf",
     "2015 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsA.pdf",
-    "2015 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsB.pdf"
+    "2015 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2015_CombinatoricsB.pdf",
+    "2015 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2015_GeometryA.pdf",
+    "2015 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2015_GeometryB.pdf",
+    "2015 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryA.pdf",
+    "2015 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -38677,6 +38681,134 @@
     "2015 PUMaC Division B Combinatorics, Problem 8": [
       3800,
       "Count maximum nonattacking king placements on a square board; an independent row-mask transfer count verifies the inclusion-exclusion total."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 1": [
+      1700,
+      "Subtract the area of an inscribed regular dodecagon from its circumdisk using twelve equal central triangles."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 2": [
+      3000,
+      "Unfold the reachable windows of a cube surface and add four circular-segment areas to the starting face."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 3": [
+      2500,
+      "Chase cyclic and isosceles-triangle angles through an internal angle bisector to obtain an equilateral subtriangle."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 4": [
+      3100,
+      "Offset the tetrahedron faces by the ball radius, bound center separations by the remaining tetrahedron diameter and attain the bound at its vertices."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 5": [
+      3200,
+      "Identify an equilateral chord triangle through Ptolemy and solve the remaining chord with the cosine rule."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 6": [
+      3900,
+      "Translate the altitude and orthocenter condition to the outer tangent triangle and combine arithmetic side spacing with the unit inradius to obtain the contact-triangle area."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 7": [
+      4200,
+      "Locate the second positively oriented similarity center and identify the moving Miquel point as the projection of a fixed point to a rotating line, giving an exact circular locus."
+    ],
+    "2015 PUMaC Division A Geometry, Problem 8": [
+      4200,
+      "Use the incircle contact configuration and a harmonic pencil to relate the two intercepted side segments; exact tangency and collinearity elimination independently checks the unique admissible ratio."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 1": [
+      1750,
+      "Use the two congruent exterior right triangles on a square to express their opposite vertices by a quarter turn and recover their separation."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 2": [
+      1600,
+      "Convert a regular tetrahedron volume ratio to an edge ratio and then compute its altitude."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 3": [
+      1700,
+      "Subtract the area of an inscribed regular dodecagon from its circumdisk using twelve equal central triangles."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 4": [
+      3000,
+      "Unfold the reachable windows of a cube surface and add four circular-segment areas to the starting face."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 5": [
+      2500,
+      "Chase cyclic and isosceles-triangle angles through an internal angle bisector to obtain an equilateral subtriangle."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 6": [
+      3100,
+      "Offset the tetrahedron faces by the ball radius, bound center separations by the remaining tetrahedron diameter and attain the bound at its vertices."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 7": [
+      3200,
+      "Identify an equilateral chord triangle through Ptolemy and solve the remaining chord with the cosine rule."
+    ],
+    "2015 PUMaC Division B Geometry, Problem 8": [
+      3900,
+      "Translate the altitude and orthocenter condition to the outer tangent triangle and combine arithmetic side spacing with the unit inradius to obtain the contact-triangle area."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 1": [
+      1450,
+      "Find the four-step last-digit cycle of powers of twenty-two and select the twenty-second qualifying exponent."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 2": [
+      1950,
+      "Split by the parity controlling the gcd of twice an integer and its square, then retain all positive roots of the resulting quadratics."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 3": [
+      2850,
+      "Intersect the exact digit-length intervals in three number bases and choose the largest admissible integer."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 4": [
+      3000,
+      "Invert an exponent modulo the prime-field group order to recover the unique nonzero power-congruence solution."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 5": [
+      3200,
+      "Separate the unit base from a finite geometric sum and use factorial divisibility by the multiplicative group order, checking the small exceptional primes."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 6": [
+      3500,
+      "Factor a divisor-cube sum into squared triangular numbers of prime exponents and minimize the integer supplying factors of five and seven."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 7": [
+      3700,
+      "Evaluate primitive-root power sums by inclusion-exclusion over the prime divisors of the group order and count the exponents giving zero modulo the prime."
+    ],
+    "2015 PUMaC Division A Number Theory, Problem 8": [
+      4250,
+      "Convert summed prime-base carries to weighted binomial valuations and classify the odd binomial row modulo four; the power-of-two row recurrence gives the exact count."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 1": [
+      1100,
+      "Reduce every power of ten to one modulo nine and count the terms."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 2": [
+      1450,
+      "Find the four-step last-digit cycle of powers of twenty-two and select the twenty-second qualifying exponent."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 3": [
+      1950,
+      "Split by the parity controlling the gcd of twice an integer and its square, then retain all positive roots of the resulting quadratics."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 4": [
+      2200,
+      "Use equality of the reflected chord angles to obtain a constant central step and count the distinct circular billiard impacts before returning to the origin."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 5": [
+      2300,
+      "Reduce the inverse-exponent fixed-point condition to the two square roots of one for each odd prime."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 6": [
+      2850,
+      "Intersect the exact digit-length intervals in three number bases and choose the largest admissible integer."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 7": [
+      3000,
+      "Invert an exponent modulo the prime-field group order to recover the unique nonzero power-congruence solution."
+    ],
+    "2015 PUMaC Division B Number Theory, Problem 8": [
+      3700,
+      "Evaluate primitive-root power sums by inclusion-exclusion over the prime divisors of the group order and count the exponents giving zero modulo the prime."
     ]
   }
 }
