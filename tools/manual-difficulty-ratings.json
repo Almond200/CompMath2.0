@@ -36755,6 +36755,106 @@
     "2018 Fermat Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with t = (10^k - 1)/9 the equation is (9P - R^2)t = Q - 2P; for k >= 3 both sides vanish, giving (1, 2, 3) and (4, 8, 6); k = 2 adds (7, 3, 8) and k = 1 has 8: N = 4043, digit sum 11."
+    ],
+    "2017 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (6 - 4) times 2017 = 4034."
+    ],
+    "2017 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): count the shaded unit squares of the 8 by 8 grid: 49."
+    ],
+    "2017 Fermat Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2 + 3 + 6 = 11, product 36."
+    ],
+    "2017 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 300 litres in 25 hours: 12 an hour."
+    ],
+    "2017 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a downward parabola with vertex (0, 4)."
+    ],
+    "2017 Fermat Contest, Problem 6": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (5 + 9)/2 = 7, so (5 + x)/2 = 10 and (x + 9)/2 = 12: x = 15."
+    ],
+    "2017 Fermat Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1 + a + 1 = 0: a = -2."
+    ],
+    "2017 Fermat Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3/(4n) = 3/12: n = 4."
+    ],
+    "2017 Fermat Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 100 hours is 4 days and 4 hours before Friday 5 p.m.: 1 p.m. Monday."
+    ],
+    "2017 Fermat Contest, Problem 10": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): n + (n - 1) + (n - 2) + (n - 3) >= 100 gives n >= 26.5: 27."
+    ],
+    "2017 Fermat Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 45% brought oranges, so 9 is 45% of 20."
+    ],
+    "2017 Fermat Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2ab ranges over 200 to 299; those above 217 are 218 to 299: 82."
+    ],
+    "2017 Fermat Contest, Problem 13": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): PQ through (4, 0) and (2, 4) has slope -2 and intercept 8: area 4 times 8/2 = 16."
+    ],
+    "2017 Fermat Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (3/2)(4/3)...(10/9) telescopes to 10/2 = 5."
+    ],
+    "2017 Fermat Contest, Problem 15": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): angle XMY = 150 makes XMY isosceles with MX = MY = MZ, so X lies on the circle on diameter YZ and angle YXZ = 90: XZY = 75."
+    ],
+    "2017 Fermat Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the sum is (x + 2y)/5 + (x + 2y)/3 = 6 + 10 = 16."
+    ],
+    "2017 Fermat Contest, Problem 17": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the base l by w has l + w = 10 and lw dividing 144: 2 by 8, 4 by 6 and 1 by 9 give heights 9, 6 and 16, sum 31."
+    ],
+    "2017 Fermat Contest, Problem 18": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): floor(x) = 6 gives x = 6, and floor(y) = 8 gives y = 71/8: 119/8."
+    ],
+    "2017 Fermat Contest, Problem 19": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the point (a, (24 - 3a)/8) needs |24 - 3a| = 8|a|: a = 24/11 or -24/5, sum -144/55."
+    ],
+    "2017 Fermat Contest, Problem 20": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): m^n = 2^25 3^40 needs n to divide gcd(25, 40) = 5: m = 2^5 3^8, so m + n = 209957."
+    ],
+    "2017 Fermat Contest, Problem 21": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): doubling WXYZ must keep the W and Y digits and make all seven letters distinct; trying the cases leaves U = 2, 4 or 6: 3 values."
+    ],
+    "2017 Fermat Contest, Problem 22": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): in a cross-section the sphere's centre is (12 - s, s) and the cone's side is 30x = 12z; its distance s from that side gives s = 4.84."
+    ],
+    "2017 Fermat Contest, Problem 23": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a + b/c = 101 and a/c + b = 68 with positive integers give a = 96, b = 60, c = 12: (a + b)/c = 13."
+    ],
+    "2017 Fermat Contest, Problem 24": [
+      1100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): an unbeaten team has probability 8/2^7 = 1/16, a winless one 1/16, and both 56/2^13 = 7/1024: 1 - 1/8 + 7/1024 = 903/1024."
+    ],
+    "2017 Fermat Contest, Problem 25": [
+      1200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): s = r^2 satisfies s^2 = 3s + 11, and s^3 - 2s^2 - 14s - 11 = (s + 1)(s^2 - 3s - 11) kills the first terms; s^5 = 499s + 1023 forces a = 23, b = 13, c = 121: 15339."
     ]
   }
 }
