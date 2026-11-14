@@ -37555,6 +37555,106 @@
     "2010 Fermat Contest, Problem 25": [
       1200,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): write each factor as a ratio of 1 - x^k terms; matching the product to 1 - 2x through x^6 fixes the exponents, and the inequalities leave a = 23."
+    ],
+    "2009 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3 + 27 = 30."
+    ],
+    "2009 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 14 = x + 5: 9."
+    ],
+    "2009 Fermat Contest, Problem 3": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): angle PQS = 180 - 125 = 55, so angle PSQ = 180 - 30 - 55 = 95, and x is vertically opposite it."
+    ],
+    "2009 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2/3 + 3/5 = 19/15."
+    ],
+    "2009 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1 - 4/2 = -1."
+    ],
+    "2009 Fermat Contest, Problem 6": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): count the cubes removed from the visible front of the 4 by 4 by 4 stack: 64 - 18 = 46."
+    ],
+    "2009 Fermat Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): sqrt(4n^2) = 2n = 64: n = 32."
+    ],
+    "2009 Fermat Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): all fifty 3-minute songs fill 150 minutes, and six 5-minute songs fill the last 30: 56."
+    ],
+    "2009 Fermat Contest, Problem 9": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each move takes a spade out of one overfull row and column into one short row and column; the counts need at least 3 moves, and 3 suffice."
+    ],
+    "2009 Fermat Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the top drops from 24 to 20, so the foot moves from 7 to 15: 8 m."
+    ],
+    "2009 Fermat Contest, Problem 11": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (m + 3)/(n + 3) - m/n = 3(n - m)/(n(n + 3)) > 0."
+    ],
+    "2009 Fermat Contest, Problem 12": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the last three digits sum to 5: C(7, 2) = 21."
+    ],
+    "2009 Fermat Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x + 1 must be one of the 8 divisors of 6, positive or negative."
+    ],
+    "2009 Fermat Contest, Problem 14": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each line needs two numbers with product 72; the distinct pairs 1 and 72, 2 and 36, 3 and 24, 4 and 18 sum to 160."
+    ],
+    "2009 Fermat Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 90% of the present plus 10% of the absent: 81 + 1 = 82%."
+    ],
+    "2009 Fermat Contest, Problem 16": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the top die shows five faces (hide the 1): 20; dice showing a pair of opposite faces add 7 plus their best unpaired faces: 20 + 13 + 13 + 18 + 18 + 7 = 89."
+    ],
+    "2009 Fermat Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): r(pi + 2) = 20 gives r = 3.89 and area pi r^2/2 = 23.8."
+    ],
+    "2009 Fermat Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): d/70 - d/75 = 2 minutes = 1/30 hour: d = 35."
+    ],
+    "2009 Fermat Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2^(xy) = 15^y = 32 = 2^5: xy = 5."
+    ],
+    "2009 Fermat Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the square has side sqrt pi, so O is sqrt pi/2 from the side: PQ = 2 sqrt(1 - pi/4) = sqrt(4 - pi)."
+    ],
+    "2009 Fermat Contest, Problem 21": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3k + 2k - both <= 120 with both <= 2k gives k <= 40: 80."
+    ],
+    "2009 Fermat Contest, Problem 22": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the figure has area 48, so each piece is 16: one line meets PQ at (16/3, 6) (slope 9/8) and the other RS at (8, 2) (slope 1/4): 11/8."
+    ],
+    "2009 Fermat Contest, Problem 23": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): adding pairs of equations gives (a + b)(c + d) = 77, (a + c)(b + d) = 81 and (a + d)(b + c) = 72; with positive integers, a, b, c, d = 2, 5, 7, 4: 18."
+    ],
+    "2009 Fermat Contest, Problem 24": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): no machine creates a common factor that the input lacked, so gcd stays 1; (2009, 1008) has common factor 7."
+    ],
+    "2009 Fermat Contest, Problem 25": [
+      1100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each circle's plane meets the base plane in a side of an equilateral triangle with the tangency points at the midpoints; the tilt of 45 degrees and radius 10 place the contact points on a circle of radius about 7.3."
     ]
   }
 }
