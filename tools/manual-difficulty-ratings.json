@@ -187,7 +187,11 @@
     "2015 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2015_GeometryA.pdf",
     "2015 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2015_GeometryB.pdf",
     "2015 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryA.pdf",
-    "2015 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryB.pdf"
+    "2015 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2015_NumberTheoryB.pdf",
+    "2014 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2014_AlgebraA.pdf",
+    "2014 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2014_AlgebraB.pdf",
+    "2014 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsA.pdf",
+    "2014 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -38809,6 +38813,134 @@
     "2015 PUMaC Division B Number Theory, Problem 8": [
       3700,
       "Evaluate primitive-root power sums by inclusion-exclusion over the prime divisors of the group order and count the exponents giving zero modulo the prime."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 1": [
+      2350,
+      "Group distinct integer points into reflected pairs and select the twelve least absolute-distance costs."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 2": [
+      2600,
+      "Subtract equal-expenditure equations, use integer purchase counts to bound a common ratio and recover the first-day purchase."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 3": [
+      2850,
+      "Recognize tangent addition in a finite nonnegative functional equation and select the admissible branch before evaluating two squared values."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 4": [
+      2800,
+      "Evaluate a floor-and-ceiling divide recurrence by its dyadic triangular-wave structure."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 5": [
+      2900,
+      "Reduce a symmetric quadratic constraint to a bounded sum variable and attain the extreme values of the pairwise-product sum."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 6": [
+      3200,
+      "Prove a rational recurrence has period six and sum the two alternating geometric subsequences actually sampled."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 7": [
+      3300,
+      "Apply the weighted cubic Holder bound with an explicit positive equality triple and determine the least power making the optimum integral."
+    ],
+    "2014 PUMaC Division A Algebra, Problem 8": [
+      3850,
+      "Invert the triangular-index decomposition of a signed recursive function and minimize the first index attaining the prescribed value."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 1": [
+      1250,
+      "Rationalize consecutive square-root denominators so that every interior radical cancels."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 2": [
+      2500,
+      "Follow successive function iterates and exclude an alternating exponential term using nonnegativity on the whole integer domain."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 3": [
+      2350,
+      "Group distinct integer points into reflected pairs and select the twelve least absolute-distance costs."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 4": [
+      2600,
+      "Subtract equal-expenditure equations, use integer purchase counts to bound a common ratio and recover the first-day purchase."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 5": [
+      2850,
+      "Shift a nonlinear recurrence by its index, identify an exponential solution and verify uniqueness from the nonzero recurrence denominator."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 6": [
+      2800,
+      "Evaluate a floor-and-ceiling divide recurrence by its dyadic triangular-wave structure."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 7": [
+      2900,
+      "Reduce a symmetric quadratic constraint to a bounded sum variable and attain the extreme values of the pairwise-product sum."
+    ],
+    "2014 PUMaC Division B Algebra, Problem 8": [
+      3200,
+      "Prove a rational recurrence has period six and sum the two alternating geometric subsequences actually sampled."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 1": [
+      2600,
+      "Exclude a five-square dissection by corner boundary constraints and construct all larger counts from three seed dissections."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 2": [
+      2400,
+      "Maximize bounded regions in a line arrangement by counting new finite segments and realize the bound in general position."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 3": [
+      3000,
+      "Count proper colorings of an octahedron modulo spatial rotations, independently enumerating the dual cube colorings and all twenty-four rotations."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 4": [
+      2200,
+      "Count independent row tilings by a Fibonacci recurrence because the permitted domino orientation cannot cross rows."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 5": [
+      3350,
+      "Translate divisor incomparability to an antichain in a product of three exponent chains and match a middle-rank construction to an exact chain-cover bound."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 6": [
+      3500,
+      "Classify all intersections of hypercube vertex diagonals by coordinates fixed at endpoints or one half and count the admissible coordinate patterns."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 7": [
+      3850,
+      "Under the intended unseen-opponent interpretation, bound permutation agreement covers by a complementary bipartite matching and a cyclic block construction; the statement omits the information restriction."
+    ],
+    "2014 PUMaC Division A Combinatorics, Problem 8": [
+      3500,
+      "Encode visiting schedules as pairwise incomparable day subsets and compare the two consecutive middle-layer capacities."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 1": [
+      1800,
+      "Compute the diagonal-band area in an unequal arrival-time rectangle under the intended independent-uniform model; independence is not explicitly stated."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 2": [
+      2100,
+      "Separate grid labels into row and column contributions so fixed selection degrees force the same total for every valid choice."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 3": [
+      2600,
+      "Exclude a five-square dissection by corner boundary constraints and construct all larger counts from three seed dissections."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 4": [
+      3000,
+      "Bound a noncrossing equal-label circular matching by removing a shortest chord interval and attain the bound with nested chords."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 5": [
+      2200,
+      "Count independent row tilings by a Fibonacci recurrence because the permitted domino orientation cannot cross rows."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 6": [
+      2800,
+      "Choose an interior binary subgrid freely and force its final row and column through compatible parity constraints."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 7": [
+      3450,
+      "Partition an integer set into odd cycles under two forbidden differences, attain the residue-class bound and check it by exact finite-state optimization."
+    ],
+    "2014 PUMaC Division B Combinatorics, Problem 8": [
+      3500,
+      "Encode visiting schedules as pairwise incomparable day subsets and compare the two consecutive middle-layer capacities."
     ]
   }
 }
