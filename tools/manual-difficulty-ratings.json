@@ -31067,6 +31067,186 @@
     "2019 Columbus State Tournament, Problem 50": [
       1400,
       "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the folds send A and D to a common point P; the right triangles from the folds fix the trapezoid."
+    ],
+    "2018 Columbus State Tournament, Problem 1": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2018 = 2 times 1009: 4 divisors."
+    ],
+    "2018 Columbus State Tournament, Problem 2": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 44^2 = 1936 and 45^2 = 2025: 44."
+    ],
+    "2018 Columbus State Tournament, Problem 3": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): gcf times lcm equals the product of the two numbers."
+    ],
+    "2018 Columbus State Tournament, Problem 4": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a volume growing by 1/7 shrinks back by (1/7)/(8/7) = 1/8."
+    ],
+    "2018 Columbus State Tournament, Problem 5": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): divide by 3 - 2i: multiply by the conjugate over 13."
+    ],
+    "2018 Columbus State Tournament, Problem 6": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): n consecutive integers summing to 45: n(2a + n - 1) = 90 with a positive; largest n = 9."
+    ],
+    "2018 Columbus State Tournament, Problem 7": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1/x + 1/y + 1/z > 1 with x > y > z > 1 forces z = 2, y = 3 and x < 6."
+    ],
+    "2018 Columbus State Tournament, Problem 8": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): every positive integer is a sum of distinct powers of 2: all 90."
+    ],
+    "2018 Columbus State Tournament, Problem 9": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): substituting z gives a circle-like condition; a unique solution means its radius is 0."
+    ],
+    "2018 Columbus State Tournament, Problem 10": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the two radicals are at least 4 and 8, so both are tight: x = 3/2 and 2x + 3y = 0."
+    ],
+    "2018 Columbus State Tournament, Problem 11": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (x - 3y)(x + y) = 0 with positive values gives x = 3y: 5/2."
+    ],
+    "2018 Columbus State Tournament, Problem 12": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): fourth powers of primes other than 3 and 5 leave set remainders; test small primes."
+    ],
+    "2018 Columbus State Tournament, Problem 13": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 8^k cycles 8, 4, 2, 6 with period 4, and 2018 is 2 mod 4: 4."
+    ],
+    "2018 Columbus State Tournament, Problem 14": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the nested root is an integer only for a perfect power of the right form among 4-digit numbers."
+    ],
+    "2018 Columbus State Tournament, Problem 15": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 26/21 = 1 + 5/21 = 1 + 1/(4 + 1/5): x = 1, y = 4, z = 5."
+    ],
+    "2018 Columbus State Tournament, Problem 16": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): count the color patterns from the three independent picks."
+    ],
+    "2018 Columbus State Tournament, Problem 17": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): check the cyclic sum of products mod 3 over the 24 permutations."
+    ],
+    "2018 Columbus State Tournament, Problem 18": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): ab = 351 - a - b gives (a + 1)(b + 1) = 352 with both at most 26."
+    ],
+    "2018 Columbus State Tournament, Problem 19": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): c^2 - a^2 = 100 with c - a and c + a both even: one triangle."
+    ],
+    "2018 Columbus State Tournament, Problem 20": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): substitute u, v for the cube roots; the equation becomes a quadratic in their ratio."
+    ],
+    "2018 Columbus State Tournament, Problem 21": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the fraction is an integer when n + 2018 divides a fixed number; count its divisors."
+    ],
+    "2018 Columbus State Tournament, Problem 22": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2017 = 2 mod 13 and 2^12 = 1 mod 13: reduce 2018 mod 12."
+    ],
+    "2018 Columbus State Tournament, Problem 23": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): lcm 60 needs a 4, a 5, and a 3 or 6 among the three dice: count the ordered triples."
+    ],
+    "2018 Columbus State Tournament, Problem 24": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): walking speeds on still, up and down escalators give the times by adding speeds."
+    ],
+    "2018 Columbus State Tournament, Problem 25": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1/x + 1/y + 1/z > 1 with x > y > z > 1 forces z = 2, y = 3 and x < 6."
+    ],
+    "2018 Columbus State Tournament, Problem 26": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): f(n + 1) = f(n) + 1 + n gives f(n) = n(n + 1)/2: 20100."
+    ],
+    "2018 Columbus State Tournament, Problem 27": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): write each log in natural logs and apply the inequality over the three fractions."
+    ],
+    "2018 Columbus State Tournament, Problem 28": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x1 + x2 = 1 and x1 x2 = m: express x1^5 + x2^5 in m and solve."
+    ],
+    "2018 Columbus State Tournament, Problem 29": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the legs are 1680 and 1118; r = (a + b - c)/2."
+    ],
+    "2018 Columbus State Tournament, Problem 30": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the relation ties f(x + 1) to f(x); one factor in the product vanishes."
+    ],
+    "2018 Columbus State Tournament, Problem 31": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the largest powers of 7 and 13 dividing the factorial."
+    ],
+    "2018 Columbus State Tournament, Problem 32": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): take log base 100 of both terms; the two terms turn out equal."
+    ],
+    "2018 Columbus State Tournament, Problem 33": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): with t = x + 1/x the expression simplifies to a function of t >= 2."
+    ],
+    "2018 Columbus State Tournament, Problem 34": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): with u = 3^x + 3^(-x) >= 2 each, the sum of the three u is 10; bound E."
+    ],
+    "2018 Columbus State Tournament, Problem 35": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (sec x - tan x)(sec x + tan x) = 1 gives sec x + tan x = 2; add to find sec x."
+    ],
+    "2018 Columbus State Tournament, Problem 36": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the line through (-1, -25) with slope 1 meets the axes; count the lattice points between."
+    ],
+    "2018 Columbus State Tournament, Problem 37": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the small cube's space diagonal is the large cube's side: volume ratio 3 sqrt 3."
+    ],
+    "2018 Columbus State Tournament, Problem 38": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): in polar form S(4 - 3 sin 2t) = 7, so S = 7/(4 - 3 sin 2t) runs from 1 to 7."
+    ],
+    "2018 Columbus State Tournament, Problem 39": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): sides are inversely proportional to the altitudes: 1/h must satisfy the triangle inequality."
+    ],
+    "2018 Columbus State Tournament, Problem 40": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): BD = BC makes equal arcs; Ptolemy on ABCD with the given lengths gives AD."
+    ],
+    "2018 Columbus State Tournament, Problem 41": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): each corner triangle takes (3/4)(1/4) of ABC: DEF is 1 - 9/16 = 7/16 of it."
+    ],
+    "2018 Columbus State Tournament, Problem 42": [
+      1500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): complete the squares: the sum of (x - 2^2017)^2 terms is fixed; count the integer points."
+    ],
+    "2018 Columbus State Tournament, Problem 43": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): n^2 + 6n - 2095 = 10 p(n) bounds n to a few values; test them."
+    ],
+    "2018 Columbus State Tournament, Problem 48": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the chord exceeds the radius when the central angle exceeds 60 degrees: 2/3."
+    ],
+    "2018 Columbus State Tournament, Problem 50": [
+      1500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2^(sin^4 - cos^4) - 2^(cos^4 - sin^4) = cos 2x with sin^4 - cos^4 = -cos 2x; solve and count in [0, 2018]."
     ]
   }
 }
