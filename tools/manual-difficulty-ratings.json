@@ -27655,6 +27655,262 @@
     "2026 MBMT Upper Number Theory, Problem 8": [
       1500,
       "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): f(n) = sum of d phi(n/d) is multiplicative, f(p) = 2p - 1; count the divisors of the product."
+    ],
+    "2025 MBMT Lower Algebra, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 10 apples at 2 per liter."
+    ],
+    "2025 MBMT Lower Algebra, Problem 2": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): write both sides as powers of 3 and compare exponents."
+    ],
+    "2025 MBMT Lower Algebra, Problem 3": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): half the class gains 3 points, so the mean rises by 3/2."
+    ],
+    "2025 MBMT Lower Algebra, Problem 4": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the red, blue and green counts fix the yellow ones from the given fraction."
+    ],
+    "2025 MBMT Lower Algebra, Problem 5": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): heads and legs give two linear equations in the numbers of chickens and chimeras."
+    ],
+    "2025 MBMT Lower Algebra, Problem 6": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): ab = 2a + 2b gives (a - 2)(b - 2) = 4: 3 by 6 and 4 by 4, perimeters 18 and 16."
+    ],
+    "2025 MBMT Lower Algebra, Problem 7": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 40 down, then twice each bounce height: 40 + 2(30)/(1 - 3/4)."
+    ],
+    "2025 MBMT Lower Algebra, Problem 8": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): with s = x^(1/3) + y^(1/3) and p their product, cube s: x + y = s^3 - 3ps, which fixes p."
+    ],
+    "2025 MBMT Lower Geometry, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): pi r^2 over 2 pi r is r/2."
+    ],
+    "2025 MBMT Lower Geometry, Problem 2": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): an angle inscribed in a semicircle is right."
+    ],
+    "2025 MBMT Lower Geometry, Problem 3": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the area 15 sin C is largest at a right angle."
+    ],
+    "2025 MBMT Lower Geometry, Problem 4": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each diagonal splits the quadrilateral into two of the triangles, so the four sum to twice its area."
+    ],
+    "2025 MBMT Lower Geometry, Problem 5": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the octahedron is two pyramids on a rhombus of diagonals 2 and 3 with height 2: one sixth of the box."
+    ],
+    "2025 MBMT Lower Geometry, Problem 6": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the two quarter-circle regions overlap; add and subtract their areas within the rectangle."
+    ],
+    "2025 MBMT Lower Geometry, Problem 7": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the chord is 15 from the first center, so 6 from the second: sqrt(36 + 64)."
+    ],
+    "2025 MBMT Lower Geometry, Problem 8": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): in coordinates the rhombus has diagonals 10 and 5, area 25 and side 5 sqrt 5/2: r = 25/(5 sqrt 5) = sqrt 5."
+    ],
+    "2025 MBMT Lower Counting, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): half of the 3! orders."
+    ],
+    "2025 MBMT Lower Counting, Problem 2": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): jumps of 2 and 5 from pad 1 to 13: two 5s and one 2 in three orders, or six 2s."
+    ],
+    "2025 MBMT Lower Counting, Problem 3": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): HHT, HHH, THH out of 8: 3/8."
+    ],
+    "2025 MBMT Lower Counting, Problem 4": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): whatever Sam picks, the arm beats it with probability 1/3."
+    ],
+    "2025 MBMT Lower Counting, Problem 5": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): count outfits by how many pieces he wears."
+    ],
+    "2025 MBMT Lower Counting, Problem 6": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): place three head-runs of lengths 1, 2, 3 among the three tails: 3! orders times the gap choices."
+    ],
+    "2025 MBMT Lower Counting, Problem 7": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): P(box | red) is proportional to the box's red balls x."
+    ],
+    "2025 MBMT Lower Counting, Problem 8": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): multiples of 6, 10 and 15, less three times the multiples of 30: 50 + 30 + 20 - 3(10)."
+    ],
+    "2025 MBMT Lower Number Theory, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): odd multiples of 5 from 105 up, skipping multiples of 3: 115."
+    ],
+    "2025 MBMT Lower Number Theory, Problem 2": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the multiples of lcm 12: the second is 24."
+    ],
+    "2025 MBMT Lower Number Theory, Problem 3": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 70 cookies: 11 bags of 6 against 7 of 10."
+    ],
+    "2025 MBMT Lower Number Theory, Problem 4": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 10a + b = 5(a + b) gives 5a = 4b: 45."
+    ],
+    "2025 MBMT Lower Number Theory, Problem 5": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): divisible by 4 and by 3: the last two digits and the digit sum fix X."
+    ],
+    "2025 MBMT Lower Number Theory, Problem 6": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 1 more than a multiple of lcm(2, 3, 4, 8, 9, 11) = 792."
+    ],
+    "2025 MBMT Lower Number Theory, Problem 7": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each digit sits in each place twice: 222 times the digit sum 3(m + 1), always a multiple of 666."
+    ],
+    "2025 MBMT Lower Number Theory, Problem 8": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the floors add the number's truncations: n with digit sum 20 and those truncations summing to 2025."
+    ],
+    "2025 MBMT Upper Algebra, Problem 1": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): write both sides as powers of 3 and compare exponents."
+    ],
+    "2025 MBMT Upper Algebra, Problem 2": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): half the class gains 3 points, so the mean rises by 3/2."
+    ],
+    "2025 MBMT Upper Algebra, Problem 3": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): heads and legs give two linear equations in the numbers of chickens and chimeras."
+    ],
+    "2025 MBMT Upper Algebra, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): ab = 2a + 2b gives (a - 2)(b - 2) = 4: 3 by 6 and 4 by 4, perimeters 18 and 16."
+    ],
+    "2025 MBMT Upper Algebra, Problem 5": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 40 down, then twice each bounce height: 40 + 2(30)/(1 - 3/4)."
+    ],
+    "2025 MBMT Upper Algebra, Problem 6": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): with s = x^(1/3) + y^(1/3) and p their product, cube s: x + y = s^3 - 3ps, which fixes p."
+    ],
+    "2025 MBMT Upper Algebra, Problem 7": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): f(x) = (x^101 + 1)/(x + 1) = x^100 - x^99 + ... + 1, and the remainder on dividing again is f(-1) = 101."
+    ],
+    "2025 MBMT Upper Algebra, Problem 8": [
+      1600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each step's positive root grows by 2^n: x_n = 2^(n + 1) - 1, summed with a geometric series."
+    ],
+    "2025 MBMT Upper Geometry, Problem 1": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): an angle inscribed in a semicircle is right."
+    ],
+    "2025 MBMT Upper Geometry, Problem 2": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): both triangles isosceles puts P at the midpoint of the hypotenuse: BP = 5."
+    ],
+    "2025 MBMT Upper Geometry, Problem 3": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each diagonal splits the quadrilateral into two of the triangles, so the four sum to twice its area."
+    ],
+    "2025 MBMT Upper Geometry, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the octahedron is two pyramids on a rhombus of diagonals 2 and 3 with height 2: one sixth of the box."
+    ],
+    "2025 MBMT Upper Geometry, Problem 5": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the chord is 15 from the first center, so 6 from the second: sqrt(36 + 64)."
+    ],
+    "2025 MBMT Upper Geometry, Problem 6": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): in coordinates the rhombus has diagonals 10 and 5, area 25 and side 5 sqrt 5/2: r = 25/(5 sqrt 5) = sqrt 5."
+    ],
+    "2025 MBMT Upper Geometry, Problem 7": [
+      1500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): P is the midpoint of arc BC, so PY bisects BC; similar triangles relate PY, XY and the arc."
+    ],
+    "2025 MBMT Upper Geometry, Problem 8": [
+      1400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): G_A = (I + B + C)/3 and so on, so G_A G_B G_C is the image of ABC under a homothety of ratio -1/3: area 84/9 = 28/3."
+    ],
+    "2025 MBMT Upper Counting, Problem 1": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): jumps of 2 and 5 from pad 1 to 13: two 5s and one 2 in three orders, or six 2s."
+    ],
+    "2025 MBMT Upper Counting, Problem 2": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): HHT, HHH, THH out of 8: 3/8."
+    ],
+    "2025 MBMT Upper Counting, Problem 3": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): whatever Sam picks, the arm beats it with probability 1/3."
+    ],
+    "2025 MBMT Upper Counting, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): place three head-runs of lengths 1, 2, 3 among the three tails: 3! orders times the gap choices."
+    ],
+    "2025 MBMT Upper Counting, Problem 5": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): P(box | red) is proportional to the box's red balls x."
+    ],
+    "2025 MBMT Upper Counting, Problem 6": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): multiples of 6, 10 and 15, less three times the multiples of 30: 50 + 30 + 20 - 3(10)."
+    ],
+    "2025 MBMT Upper Counting, Problem 7": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): monomials of degree at most 12 in three variables: C(15, 3) = 455."
+    ],
+    "2025 MBMT Upper Counting, Problem 8": [
+      1500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each element independently lies in none, some or all of the chain; count the triples of proper inclusions out of 16^3."
+    ],
+    "2025 MBMT Upper Number Theory, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the multiples of lcm 12: the second is 24."
+    ],
+    "2025 MBMT Upper Number Theory, Problem 2": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 210 against Ricky's 1 times 2 times 3 times 5 = 30."
+    ],
+    "2025 MBMT Upper Number Theory, Problem 3": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): divisible by 4 and by 3: the last two digits and the digit sum fix X."
+    ],
+    "2025 MBMT Upper Number Theory, Problem 4": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 1 more than a multiple of lcm(2, 3, 4, 8, 9, 11) = 792."
+    ],
+    "2025 MBMT Upper Number Theory, Problem 5": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each digit sits in each place twice: 222 times the digit sum 3(m + 1), always a multiple of 666."
+    ],
+    "2025 MBMT Upper Number Theory, Problem 6": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the floors add the number's truncations: n with digit sum 20 and those truncations summing to 2025."
+    ],
+    "2025 MBMT Upper Number Theory, Problem 7": [
+      1200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): twin primes above 3 are 6k - 1 and 6k + 1, so mn = 36k^2 - 1."
+    ],
+    "2025 MBMT Upper Number Theory, Problem 8": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the numbers prime to n pair up as a and n - a: n phi(n)/2 = 210 times 48/2."
     ]
   }
 }
