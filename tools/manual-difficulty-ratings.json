@@ -38451,6 +38451,106 @@
     "2001 Fermat Contest, Problem 25": [
       900,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the 180 segments: red dot ends total 2 times 2 + 16 times 3 + 34 times 4 = 188 = 2R + 98, so R = 45 red and 180 - 98 - 45 = 37 blue."
+    ],
+    "2000 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 29 + 12 + 23 = 64 = 2^6."
+    ],
+    "2000 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 48 is 3 mod 5: the third arrow."
+    ],
+    "2000 Fermat Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the 15 cows and sheep must be matched by 15 goats: buy 9."
+    ],
+    "2000 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 81 divided by 5 leaves 1."
+    ],
+    "2000 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 30y = 10 + y: y = 10/29."
+    ],
+    "2000 Fermat Contest, Problem 6": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): sqrt x = 9 means x = 81, whose square is 6561."
+    ],
+    "2000 Fermat Contest, Problem 7": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the terms -300 to 300 cancel, leaving 303 + 306 + 309 = 918."
+    ],
+    "2000 Fermat Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 60% + 28% = 88% voted: 12% did not."
+    ],
+    "2000 Fermat Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the seven sum to 91 and the known five to 56: x + y = 35."
+    ],
+    "2000 Fermat Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x^3 + x^2 + 2x + 3 = x^3 + x^2 + x - 6: x = -9."
+    ],
+    "2000 Fermat Contest, Problem 11": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): track the labelled vertices through the reflection in PQ and then the 144-degree turn (two fifths of a revolution): (C)."
+    ],
+    "2000 Fermat Contest, Problem 12": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 15^6 28^5 55^7 = 2^10 3^6 5^13 7^5 11^7: ten pairs of 2 and 5."
+    ],
+    "2000 Fermat Contest, Problem 13": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each small rectangle is x by 3x, so AB = 5x and BC = 3x: 5 : 3."
+    ],
+    "2000 Fermat Contest, Problem 14": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): split the hexagon into small congruent triangles: FEDG takes 5 of the pieces that make up BCG: 5 : 1."
+    ],
+    "2000 Fermat Contest, Problem 15": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 24 = 2(8 + t_8) gives t_8 = 4; then t_10 = 56 and t_11 = 2(24 + 56) = 160."
+    ],
+    "2000 Fermat Contest, Problem 16": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): of the 12 arrangements, the ends sum to an even number when both are 2 or both odd (3, 5): 4 of 12 = 1/3."
+    ],
+    "2000 Fermat Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): AB = 6, AC = 8 and BC = 10, so angle A = 90."
+    ],
+    "2000 Fermat Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): P^2 - Q^2 = (P - Q)(P + Q) = (2 times 3^(-2000))(2 times 3^2000) = 4."
+    ],
+    "2000 Fermat Contest, Problem 19": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): unfold the 45-degree path: it zigzags between the long sides 18 apart, and covering 150 = 8 times 18 + 6 to reach the midpoint puts X 3 cm from a corner."
+    ],
+    "2000 Fermat Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with the common value 60t: a = 12t, b = 15t, c = 20t, d = 30t, e = 60t, so k = 522t: 522."
+    ],
+    "2000 Fermat Contest, Problem 21": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the tangent from B touches circle C at T with BT = 10 sqrt 3 and angle B = 30: triangle BTC minus the 30-degree sector of B and the 60-degree sector of C is 86.6 - 26.2 - 52.4, about 8."
+    ],
+    "2000 Fermat Contest, Problem 22": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the two-digit multiples of 17 or 23 force 3, 4, 6, 9, 2 repeating, with a side path 6, 8, 5, 1, 7 that ends; the 2000th digit can be 2 or 5: 7."
+    ],
+    "2000 Fermat Contest, Problem 23": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the circle has radius 1 and centre (1, 1), and the diagonal y = x/2 is 1/sqrt 5 from it: AB = 2 sqrt(1 - 1/5) = 4/sqrt 5."
+    ],
+    "2000 Fermat Contest, Problem 24": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1 + y^2 + y^4 = (1 + y + y^2)(1 - y + y^2), so x(1 - y + y^2) = 15 too; dividing gives y = 2 or 1/2: sum 5/2."
+    ],
+    "2000 Fermat Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the two planes cut the cube into four pieces; with edge 2 the smallest is 7/6 and the largest 17/6: 7 : 17."
     ]
   }
 }
