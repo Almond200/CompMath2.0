@@ -40851,6 +40851,106 @@
     "2005 Cayley Contest, Problem 25": [
       1000,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1/a^2 + 1/b^2 = 1/c^2 means (ab/c)^2 = a^2 + b^2, so a, b are the legs of a Pythagorean triple scaled to make ab/c fit; the a up to 100 are 15, 20, 30, 40, 45, 60, 65, 75, 80, 90, 100: 620."
+    ],
+    "2004 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 4 + 1 + 0 + 1 + 4 = 10."
+    ],
+    "2004 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 25% of 2004 is 501, which is 50% of 1002."
+    ],
+    "2004 Cayley Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): C = 2B - A = (5, 7)."
+    ],
+    "2004 Cayley Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): x - 2 = -2: x = 0."
+    ],
+    "2004 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the outer perimeters go 4, 8, 12, ...: the fifth is 20."
+    ],
+    "2004 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 7(x + 6y) = 7 times 17 = 119."
+    ],
+    "2004 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 3 times 3^2 = 3^3: a = 3."
+    ],
+    "2004 Cayley Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the radii are 12 and 7: AB = 5."
+    ],
+    "2004 Cayley Contest, Problem 9": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): AC spans 16 across and 12 up (20) and BC 16 across and 30 up (34): 54."
+    ],
+    "2004 Cayley Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): fold the net: J lands opposite G."
+    ],
+    "2004 Cayley Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): work back from 18 = 3 times the fourth term (6), then 6 = 3 times the second (2): 2x = 3, x = 3/2."
+    ],
+    "2004 Cayley Contest, Problem 12": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the line sum is 2x + 5; the first column and second row fill two cells, and the second column gives x = -1: the sum is 3."
+    ],
+    "2004 Cayley Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the small square has side 18 and area 324; with the shaded 160 the large one has 484, side 22: 88."
+    ],
+    "2004 Cayley Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (24 + x)/3 = (y + 16)/2 gives 2x = 3y: 3 : 2."
+    ],
+    "2004 Cayley Contest, Problem 15": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the exterior angle at C gives 2x + y = 100 and triangle ACD gives x + y = 80: x = 20."
+    ],
+    "2004 Cayley Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): both dice at most 3: 9/36 = 1/4."
+    ],
+    "2004 Cayley Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (m + n)/(mn) = 20/(mn) = 5/24: mn = 96."
+    ],
+    "2004 Cayley Contest, Problem 18": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the cube's 8 vertices all have degree 3, so a trail can use at most 9 of the 12 edges: 108 cm."
+    ],
+    "2004 Cayley Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each fraction 2^(k-1)/2^k is 1/2, and there are 2004 of them: 1002."
+    ],
+    "2004 Cayley Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): C + A = 15, C + B = 18, B + A = 13: B = 8, so two arrows in B score 16."
+    ],
+    "2004 Cayley Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2k blue and 7k red; after 2k days the reds left are 7k - 6k = k = 15: 9k = 135."
+    ],
+    "2004 Cayley Contest, Problem 22": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 20(10 + x) - 10x = 280 gives x = 8; the wall cuts off trapezoid CBAD of height 12 and half the area: 6(10 + CD) = 140, CD = 40/3."
+    ],
+    "2004 Cayley Contest, Problem 23": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): Marcos closes 12 m/s on 30 m (2.5 s) and Michael 5 m/s on 15 m (3 s); after 2.5 s Michael is 2.5 m short: 2.5 m."
+    ],
+    "2004 Cayley Contest, Problem 24": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each isosceles triangle has height^2 = 16x^2 - x^2/4 = 15x^2/4, so AX^2 = 6x^2 and AY^2 = 10x^2: the new triangle is right-angled with area sqrt(15) x^2 < 2004, x < 22.75: 22."
+    ],
+    "2004 Cayley Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): gcd(7x + k, k + 1) = gcd(7x - 1, k + 1), so 7x - 1 must have no factor from 2 to 301: 7x - 1 is a prime above 301 or 1: x = 44, 50, 60."
     ]
   }
 }
