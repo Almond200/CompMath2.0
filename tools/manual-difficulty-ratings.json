@@ -37355,6 +37355,106 @@
     "2012 Fermat Contest, Problem 25": [
       1200,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): doubling a 3, 4, 5, 6 contributes 6, 8, 1, 3 to the digit sum; the two sums give y + z = 100 and 3w + 4x + z = 400, which bound the numbers of digits of the largest and smallest N: the product has 408 digits."
+    ],
+    "2011 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 20/29."
+    ],
+    "2011 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (7 times 77 + 77)/77 = 8."
+    ],
+    "2011 Fermat Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the other side is 192/24 = 8: perimeter 64."
+    ],
+    "2011 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): sqrt(n + 9) = 25 gives n = 616."
+    ],
+    "2011 Fermat Contest, Problem 5": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): angle QST = 40, angle PSR = 60, so x = 180 - 60 - 40 = 80."
+    ],
+    "2011 Fermat Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 8 + 9 + 10 = 27: product 720."
+    ],
+    "2011 Fermat Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (1/12 + 1/10)/2 = 11/120."
+    ],
+    "2011 Fermat Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): sandwiches take 100 - 30 - 35 - 25 = 10%: 20 students."
+    ],
+    "2011 Fermat Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 50 - 25 - 16 + 8 = 17."
+    ],
+    "2011 Fermat Contest, Problem 10": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): QR = 2 + 9 = 11 is the side, so the shaded rectangle is 6 - 2 = 4 high and 8 - (11 - 10) = 7 wide: 28."
+    ],
+    "2011 Fermat Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the worst case takes 2 of each colour and the 1 white, 7 gumballs: the 8th makes three of a colour."
+    ],
+    "2011 Fermat Contest, Problem 12": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): y = a(x + 1)(x - 4) with -4a = 8, a = -2: w = -2(4)(-1) = 8."
+    ],
+    "2011 Fermat Contest, Problem 13": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Xavier has 30 and the other two 20, with Y = Z + 4: Z = 8."
+    ],
+    "2011 Fermat Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the average of two multiples of 4 is 2(a + b), which is even; the other four can fail."
+    ],
+    "2011 Fermat Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): n^2 - m^2 = n + m = 2m + 1 > 20 needs m >= 10: 100 + 121 = 221."
+    ],
+    "2011 Fermat Contest, Problem 16": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): XYZ is similar to the big triangle with legs PR = 4h and RQ = 3w, so 3w/(4h) = YZ/XY = 2: h/w = 3/8."
+    ],
+    "2011 Fermat Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3^(2x) = 64 gives 3^x = 8: 3^(-x) = 1/8."
+    ],
+    "2011 Fermat Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each cut halves an isosceles right triangle through its right angle, so the longest edge shrinks by sqrt 2 per cut: 4 sqrt 2 after the first cut, then 4, 2 sqrt 2, 2."
+    ],
+    "2011 Fermat Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): PQ = 6 and OQ = R - 4, so R^2 = 36 + (R - 4)^2: R = 6.5."
+    ],
+    "2011 Fermat Contest, Problem 20": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): abc = (ar)^3 = 46656, so b = 36 and a + c = 114 - 36 = 78."
+    ],
+    "2011 Fermat Contest, Problem 21": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): row 28 runs from 379 to 406 and contains 400: 28 times (379 + 406)/2 = 10990."
+    ],
+    "2011 Fermat Contest, Problem 22": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (p + 1/q)/(1/p + q) = p/q = 17, so p = 17q and 18q <= 100: q = 1 to 5."
+    ],
+    "2011 Fermat Contest, Problem 23": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the best plan has all three arrive together: one rides partway and walks, the motorcycle returns for the walker; balancing the times gives t = 23/6, about 3.83."
+    ],
+    "2011 Fermat Contest, Problem 24": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): w + x = 1 and w + y = 2; either x + y = 3 and w + z = 4 (z = 4) or w + z = 3 and x + y = 4 (z = 3.5), both with distinct sums: 15/2."
+    ],
+    "2011 Fermat Contest, Problem 25": [
+      1100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the critical points lie on the end circles, centred 5 from the middle along the diagonal; requiring each point (with distance m from the centre line in the face direction and height z) to satisfy z <= H(1 - m/10) gives H about 22.07."
     ]
   }
 }
