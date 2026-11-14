@@ -45169,6 +45169,106 @@
     "2004 Pascal Contest, Problem 25": [
       700,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the trapezoid has area 7h/2; ABZ and XYZ are similar in ratio 2 : 1 and ABW and CYW in ratio 2 : 3, so AZW = 2h/3 - 2h/5 = 4h/15, which is 8/105 of the trapezoid."
+    ],
+    "2003 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 13 - 5 = 8."
+    ],
+    "2003 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each term is 3 times the last: 3(54) = 162."
+    ],
+    "2003 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (6 + 18 - 3)/3 = 7."
+    ],
+    "2003 Pascal Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the vertical angle is 40 and the supplement of 120 is 60: x = 80."
+    ],
+    "2003 Pascal Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2^8 / 2^6 = 4."
+    ],
+    "2003 Pascal Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 19/6 is not 18/5."
+    ],
+    "2003 Pascal Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): from the bottom, F = 4, E = 5, D = 2, then A = 8, B = 1 and C = 6: 14."
+    ],
+    "2003 Pascal Contest, Problem 8": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): A = (-1, 5), so the rectangle is 5 by 3: 15."
+    ],
+    "2003 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): an odd prime that is a sum of two primes is 2 more than a prime: 19 = 17 + 2."
+    ],
+    "2003 Pascal Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): to eight places the choices are 3.2571 then 2571, 5715, 7171, 1111 repeating: the 71 repeat is largest."
+    ],
+    "2003 Pascal Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 8 - 6k = 4: k = 2/3."
+    ],
+    "2003 Pascal Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 1 calculator = 100 rulers = 300 compasses = 600 protractors."
+    ],
+    "2003 Pascal Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): four squares meeting at a corner need four colours, and repeating a 2 by 2 block of colours shows four suffice: 4."
+    ],
+    "2003 Pascal Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (x, y) = (1, 4), (2, 3), (3, 2), (4, 1) give 2x - y = -2, 1, 4, 7: -2."
+    ],
+    "2003 Pascal Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the 6 by 6 square less four right triangles with legs 2 and 4: 36 - 16 = 20."
+    ],
+    "2003 Pascal Contest, Problem 16": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the order does not depend on n: n - 9, n - 4, n - 1, n + 3, n + 6, middle n - 1."
+    ],
+    "2003 Pascal Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the triangle PQR gives 59 + 3y + 40 = 180, y = 27, and triangle PRY gives x = 180 - 59 - 54 = 67."
+    ],
+    "2003 Pascal Contest, Problem 18": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 7n - 11 = 6(n + 1): n = 17."
+    ],
+    "2003 Pascal Contest, Problem 19": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): AC^2 = 4^2 + 7^2 = 65, so with DC = 1, AD = 8: 14 + 4 = 18."
+    ],
+    "2003 Pascal Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): Evenland digits are twice the base-5 digits: 111 = 421 in base 5, so 842."
+    ],
+    "2003 Pascal Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the lights turn green 10 s apart, so the eighth turns green at 70 s while the first stays green until 90 s: 20."
+    ],
+    "2003 Pascal Contest, Problem 22": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the chord PQ equals A's radius (60 degrees) and is sqrt 2 times B's radius (90 degrees): 2 : 1."
+    ],
+    "2003 Pascal Contest, Problem 23": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with the escalator moving v steps in Jack's time, 29 + v = 11 + 2v gives v = 18: 47."
+    ],
+    "2003 Pascal Contest, Problem 24": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the sides 121/2 and 143/3 are in ratio 33 : 26, so the fewest squares are 33 times 26 = 858."
+    ],
+    "2003 Pascal Contest, Problem 25": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with edge 2x, the foot from F is the midpoint of LK; Pythagoras in space gives FQ = 10 for an edge of about 6.86: volume about 323."
     ]
   }
 }
