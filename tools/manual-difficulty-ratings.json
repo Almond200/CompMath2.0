@@ -44269,6 +44269,106 @@
     "2013 Pascal Contest, Problem 25": [
       700,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): build the sequence and its differences together, each difference the next integer missing from the sequence: the 100th term is 5764."
+    ],
+    "2012 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 16/2 = 8."
+    ],
+    "2012 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 50% of 200: 100."
+    ],
+    "2012 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 60/8 = 7.5 is not whole."
+    ],
+    "2012 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): it is now 7:46, 14 minutes before 8:00."
+    ],
+    "2012 Pascal Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 800000 + 4000 + 90 + 5 = 804095."
+    ],
+    "2012 Pascal Contest, Problem 6": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 0.320 - 0.023 = 0.297."
+    ],
+    "2012 Pascal Contest, Problem 7": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 150 m per minute: 900 m in 6 minutes."
+    ],
+    "2012 Pascal Contest, Problem 8": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the ruler's marks put P and Q 2.25 units apart."
+    ],
+    "2012 Pascal Contest, Problem 9": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 4x + 1 = 3x + 3: x = 2."
+    ],
+    "2012 Pascal Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): there are 6 doctors and 3 nurses including Robert, so d = 6 and n = 2: 12."
+    ],
+    "2012 Pascal Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the fourth corner is (5, 7)."
+    ],
+    "2012 Pascal Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): seven payments of 3.71 make 25.97, 3 cents short: 3 students paid 3.72."
+    ],
+    "2012 Pascal Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): g^2 - 36 = 45: g = 9."
+    ],
+    "2012 Pascal Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): PQ = 4, QR = 4, PS = 1, and RS is the hypotenuse of a 4-3 right triangle: 14."
+    ],
+    "2012 Pascal Contest, Problem 15": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the 2-part difference is 6, so the 8 parts total 24."
+    ],
+    "2012 Pascal Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): of the 25 squares, the shading adds up to 4 + 8(1/2) + 4(1/2) = 10: 40%."
+    ],
+    "2012 Pascal Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): angle PRS = (180 - 34)/2 = 73 and angle PQT = 62; the exterior angle gives x = 73 - 62 = 11."
+    ],
+    "2012 Pascal Contest, Problem 18": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the unpainted core is 4 by 4 by 1: 16."
+    ],
+    "2012 Pascal Contest, Problem 19": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with sides a, b across and c, d down, ac = 9, bc = 10, bd = 15, so ad = (9)(15)/10 = 27/2."
+    ],
+    "2012 Pascal Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): N - 7 is a multiple of lcm(10, 11, 12) = 660: N = 667, digit sum 19."
+    ],
+    "2012 Pascal Contest, Problem 21": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the pieces are 1, 2, 4, 8 parts of 15: 8/15."
+    ],
+    "2012 Pascal Contest, Problem 22": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each unshaded part is 108 pi, so each circle has area 324 pi, r = 18: 36 pi."
+    ],
+    "2012 Pascal Contest, Problem 23": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (8 + pi)h = 80: h is about 7.2."
+    ],
+    "2012 Pascal Contest, Problem 24": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): shift to 0 to 8: the three shared circles sum to 4S - 36, a multiple of 4, least 4 with 0, 1, 3; then S = 10 and u = 3: 2015."
+    ],
+    "2012 Pascal Contest, Problem 25": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): every pair is connected exactly when the friendship graph on 4 people is connected: 38 of the 64 graphs, 19/32."
     ]
   }
 }
