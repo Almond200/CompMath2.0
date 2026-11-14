@@ -41951,6 +41951,106 @@
     "2022 Pascal Contest, Problem 25": [
       700,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the fly flies sqrt(60^2 + 165^2); unrolled, the ant crawls sqrt((30(6n + 3))^2 + 165^2), which first beats 20 times the fly at n = 19."
+    ],
+    "2021 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 12 - 3 = 9."
+    ],
+    "2021 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 1/2 = 4/8."
+    ],
+    "2021 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 4 times 13.25 = 53.00."
+    ],
+    "2021 Pascal Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the 7 squares meet only at corners, so the perimeter is 7 times 4 = 28."
+    ],
+    "2021 Pascal Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): in seconds the times are 63, 60, 90, 68, 57; the middle one is 63."
+    ],
+    "2021 Pascal Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 15 times 12 - 13 times 10 = 50."
+    ],
+    "2021 Pascal Contest, Problem 7": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 1.1 times 500 = 550."
+    ],
+    "2021 Pascal Contest, Problem 8": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 5(n - 2) = 85: n = 19."
+    ],
+    "2021 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2 circles balance a triangle, which balances 3 squares: 4 circles balance 6 squares."
+    ],
+    "2021 Pascal Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): multiples of 35 from 105 to 280 that are odd: 105, 175, 245."
+    ],
+    "2021 Pascal Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2^3 times 3^2 = 72."
+    ],
+    "2021 Pascal Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): angle PRQ = 36, so RS bisects it into 18s: angle RSQ = 90 - 18 = 72."
+    ],
+    "2021 Pascal Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3m + 3 = n - 2, so 3m - n = -5."
+    ],
+    "2021 Pascal Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): following the three rounds of moves on the grid: 25 to 38, then 38 to 29, then 29 to 16."
+    ],
+    "2021 Pascal Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): of the 25 meeting points, 15 have the disc touching two shaded and two unshaded squares: 3/5."
+    ],
+    "2021 Pascal Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2^4 3^2 5^5 needs 2^2 3 5 more to make every exponent a multiple of 3: 60."
+    ],
+    "2021 Pascal Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): removing the shared pieces leaves two grid diagonals in Paths 1 and 3 and a semicircle over the same ends in Path 2: x = z < y."
+    ],
+    "2021 Pascal Contest, Problem 18": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): x divides the gaps 45 and 63, so divides gcd 9: 9."
+    ],
+    "2021 Pascal Contest, Problem 19": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): work backwards from 1: times 6, 5, 4, 3, 2: 720."
+    ],
+    "2021 Pascal Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 8R divisible by 3 gives R = 1, 4 or 7; then 8RS divisible by 4 leaves 7 pairs (R, S), and T = 0 or 5: 14."
+    ],
+    "2021 Pascal Contest, Problem 21": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the volumes total 2100, so x^3 = 2100 - 27 - 1728 = 345: x is about 7."
+    ],
+    "2021 Pascal Contest, Problem 22": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each height is 2, 3 or 6; listing by the number of 6s gives 14 distinct sums from 8 to 24."
+    ],
+    "2021 Pascal Contest, Problem 23": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): curled up, WY is the height 3 and VY a quarter-circle chord of a circle with circumference 4: VY^2 = 8/pi^2, so WV = sqrt((8 + 9 pi^2)/pi^2): 18."
+    ],
+    "2021 Pascal Contest, Problem 24": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the position of 47 moves by x to 2x - 1 or 2(x - 33) and cycles with period 12, reaching 24 in every 12th list: 83."
+    ],
+    "2021 Pascal Contest, Problem 25": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): n - 4 is a multiple of 16 and n = 180, so the removed four sum to 16290 - 15763 = 527; with three of them consecutive above 100 there are 22 values of s."
     ]
   }
 }
