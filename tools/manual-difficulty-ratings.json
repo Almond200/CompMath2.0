@@ -39651,6 +39651,106 @@
     "2017 Cayley Contest, Problem 25": [
       1200,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): m exists exactly when x and x + 1 are both prime powers whose doubles exceed n (so nothing else up to n is a multiple); counting such n from 50 to 2017 gives 393."
+    ],
+    "2016 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 5 - 3 = 2."
+    ],
+    "2016 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 7 of the 20 chose the square: 13."
+    ],
+    "2016 Cayley Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): sqrt(25 - 16) = 3."
+    ],
+    "2016 Cayley Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 12 metres in half-metre steps: 24."
+    ],
+    "2016 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the angles at Q along the line PR add to 180: x = 50."
+    ],
+    "2016 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (3a - 7)/(a - 2) = 2 gives a = 3."
+    ],
+    "2016 Cayley Contest, Problem 7": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with no wins the team cannot outscore its opponents: 0 wins, 1 loss, 2 ties is impossible."
+    ],
+    "2016 Cayley Contest, Problem 8": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): BEE = 2 + 5 + 5 = 12 is largest."
+    ],
+    "2016 Cayley Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 43 - 4k > 0 for k = 0 to 10: 11 terms."
+    ],
+    "2016 Cayley Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 3 times C(5, 2) = 30."
+    ],
+    "2016 Cayley Contest, Problem 11": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with Q at the origin, P = (-4, 0) and T = (8, -5): 13."
+    ],
+    "2016 Cayley Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 15 odd numbers beat 9, 3, 6 and 12."
+    ],
+    "2016 Cayley Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1/6 = 4/24 < 5/24 < 6/24 = 1/4."
+    ],
+    "2016 Cayley Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 10^100 times 10^20 = 10^120: 120 zeros."
+    ],
+    "2016 Cayley Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): lcm(20, 16, 2016) = 10080: tens digit 8."
+    ],
+    "2016 Cayley Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): reflecting in both axes is a half turn about the origin: (D)."
+    ],
+    "2016 Cayley Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the pentagon's boundary is three sides of the square (90) plus PZ + ZS = 2x - 30: 60 + 2x."
+    ],
+    "2016 Cayley Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the three sum to 3282/2 = 1641, so they are 407, 591, 643: 643 - 407 = 236."
+    ],
+    "2016 Cayley Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): diametrically opposite labels differ by n/2: 35 - 7 = 28, so n = 56."
+    ],
+    "2016 Cayley Contest, Problem 20": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with q groups of 4, n = 4q + r = 3(q + 3) + r' = 2(q + 8) + 1, so 2q = 17 - r forces r = 3, q = 7: n = 31 (3 groups of 3 short by 2), n^2 - n = 930, digit sum 12."
+    ],
+    "2016 Cayley Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 20n + 36 = 21(n + 1) gives n = 15, total 336; 22 times 17 = 374: 38."
+    ],
+    "2016 Cayley Contest, Problem 22": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the track is 50 pi km; Alain's 20 km head start leaves Louise to close 50 pi - 20 at 180 km/h, then 50 pi for each later pass: (50 pi - 20 + 150 pi)/180 = (10 pi - 1)/9."
+    ],
+    "2016 Cayley Contest, Problem 23": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): of the 70 choices of four sides, those whose extended lines close up around the octagon number 38: 19/35."
+    ],
+    "2016 Cayley Contest, Problem 24": [
+      1000,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the integers strictly between sqrt q and q number 19 only for q from 23.1 to 25 (q a fraction with denominator at most 10); summing the distinct such q gives 777.5."
+    ],
+    "2016 Cayley Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): count words letter by letter, tracking whether the last letter is a vowel: 199776 begin with a vowel."
     ]
   }
 }
