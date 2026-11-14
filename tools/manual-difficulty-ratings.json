@@ -36855,6 +36855,106 @@
     "2017 Fermat Contest, Problem 25": [
       1200,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): s = r^2 satisfies s^2 = 3s + 11, and s^3 - 2s^2 - 14s - 11 = (s + 1)(s^2 - 3s - 11) kills the first terms; s^5 = 499s + 1023 forces a = 23, b = 13, c = 121: 15339."
+    ],
+    "2016 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): y = 6 and z = 18."
+    ],
+    "2016 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): four base edges and four up to the apex: 8."
+    ],
+    "2016 Fermat Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 20(1 + 16)/(20 times 16) = 17/16."
+    ],
+    "2016 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the nth oblong number is n(n + 1): 7 times 8 = 56."
+    ],
+    "2016 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): R = 2Q - P = (7, 11)."
+    ],
+    "2016 Fermat Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a week has 10 + 5 times 2 = 20 messages: 80 in four weeks."
+    ],
+    "2016 Fermat Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): -8 - 9 = -17."
+    ],
+    "2016 Fermat Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 25 - sqrt n = 9 gives sqrt n = 16: n = 256."
+    ],
+    "2016 Fermat Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 12 is 20% of 60, so x = 20 and 15% of 20 is 3."
+    ],
+    "2016 Fermat Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the midpoint square has side sqrt 2 and area 2 against 4: 1 : 2."
+    ],
+    "2016 Fermat Contest, Problem 11": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): PS = 5, so PQ = 16 and QR = 20: 11 + 13 + 20 = 44."
+    ],
+    "2016 Fermat Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 128 = 2^7 has square divisors 4, 16, 64 above 1: 3."
+    ],
+    "2016 Fermat Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2(2x - 3) = 4x + 4x - 3 gives x = -3/4."
+    ],
+    "2016 Fermat Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a + b = 4 times 13 - 26 = 26 with 4 < a < b < 22: a = 5 to 12 (b = 21 down to 14), 8 pairs."
+    ],
+    "2016 Fermat Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 10 km at 12 km/h take 50 minutes, leaving 40 minutes for 6 km: 9 km/h."
+    ],
+    "2016 Fermat Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the roots sum to -12: -30."
+    ],
+    "2016 Fermat Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): diametrically opposite labels differ by n/2: 35 - 7 = 28, so n = 56."
+    ],
+    "2016 Fermat Contest, Problem 18": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with s = x + y, x - y = 9s and xy = -60s; solving gives x = 5s, y = -4s and -20s^2 = -60s, s = 3: 3 + 27 - 180 = -150."
+    ],
+    "2016 Fermat Contest, Problem 19": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with q groups of 4, n = 4q + r = 3(q + 3) + r' = 2(q + 8) + 1, so 2q = 17 - r forces r = 3, q = 7: n = 31 (3 groups of 3 short by 2), n^2 - n = 930, digit sum 12."
+    ],
+    "2016 Fermat Contest, Problem 20": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): angle YWV = 55, so Q'WY = 125 - 55 = 70, and R'Y parallel to Q'W gives R'YW = 110 = PYV."
+    ],
+    "2016 Fermat Contest, Problem 21": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a gold reaches box 3 with probability (1/2)(2/4) + (1/2)(1/4) = 3/8; then (3/8)(2/5) + (5/8)(1/5) = 11/40."
+    ],
+    "2016 Fermat Contest, Problem 22": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x and y separate: (x + 3)^2 + 4(x - 7)^2 is least at x = 5 (80) and 2(y - 2)^2 + (y + 4)^2 at y = 0 (24): 104."
+    ],
+    "2016 Fermat Contest, Problem 23": [
+      1100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the angles round the central coin add to 180 on each side: with sin = 3/5 and cos = 2/5 the remaining angle is about 39.84, and 2/(r + 2) = cos 39.84 gives r = 0.605."
+    ],
+    "2016 Fermat Contest, Problem 24": [
+      1000,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): for floor(sqrt k) = m the multiples of m in [m^2, m^2 + 2m] are m^2, m^2 + m, m^2 + 2m, summing to 3m^2 + 3m; over m = 1 to 999: 999999000."
+    ],
+    "2016 Fermat Contest, Problem 25": [
+      1200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): split A into chains b, 3b, 9b, ...; a largest triple-free set takes alternate elements, with one way for odd chains and m + 1 for chains of length 2m: n = 4^4 3^33 2^302 = 2^310 3^33, so N = 4 + 9 + 96100 + 1089 = 97202."
     ]
   }
 }
