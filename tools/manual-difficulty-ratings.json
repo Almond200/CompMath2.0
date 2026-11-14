@@ -38151,6 +38151,106 @@
     "2004 Fermat Contest, Problem 25": [
       900,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): along the diagonal the cube's vertices lie at 0, sqrt 3, 2 sqrt 3, 3 sqrt 3, the middle ones sqrt 6 from the axis; the cone's radius is a sixth of the depth, so they touch at depth 6 sqrt 6: the nearest vertex is 6 sqrt 6 - sqrt 3 from the apex."
+    ],
+    "2003 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 27 - 9 + 3 - 1 = 20."
+    ],
+    "2003 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 25 + 5b = 60: b = 7."
+    ],
+    "2003 Fermat Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 50 + 130 = 180 makes the line straight, so 4x + x = 90: x = 18."
+    ],
+    "2003 Fermat Contest, Problem 4": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): crossing out every third remaining number from 1 leaves 2 and 8: 10."
+    ],
+    "2003 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 220 is 80% of the mass: 275."
+    ],
+    "2003 Fermat Contest, Problem 6": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the 6 boys must be 3/8 of the players: 16 in all, so 8 more girls."
+    ],
+    "2003 Fermat Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 4000 cm^3 over a base of 800 cm^2 adds 5 cm to the 15: 20."
+    ],
+    "2003 Fermat Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): AD is perpendicular to BC, so its slope is the negative reciprocal of BC's: 3/11."
+    ],
+    "2003 Fermat Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (1/5 + 1/10)/2 = 3/20 = 1/x: x = 20/3."
+    ],
+    "2003 Fermat Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3 steps of 0.5 m equal 4 of Jim's, so his are 0.375 m: 24 steps make 9 m."
+    ],
+    "2003 Fermat Contest, Problem 11": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2 routes A to X to B, 6 via X and Y, 3 via Y only: 8/11 pass through X."
+    ],
+    "2003 Fermat Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): AC = 10 sqrt 2, so AD = 10 sqrt 2 - 10, about 4."
+    ],
+    "2003 Fermat Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x = 2 and y = 1: 2^(4 - 1) = 8."
+    ],
+    "2003 Fermat Contest, Problem 14": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the exterior angles give angle APR = 55 + a and angle QPR = 55 + b, which add to 180: a + b = 70."
+    ],
+    "2003 Fermat Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3t = 4s, so the triangle's side is a multiple of 4: 20."
+    ],
+    "2003 Fermat Contest, Problem 16": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 810 = 2 times 3^4 times 5 in four distinct digits forces 3, 5, 6, 9: sum 23."
+    ],
+    "2003 Fermat Contest, Problem 17": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): angle BAD = angle B makes DA = DB = 2x; with DC = x, ADC is 30-60-90 and so is ABC: AB = 2(sqrt 3 x) = 2 sqrt 3 x."
+    ],
+    "2003 Fermat Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the change saves 2.1 L per 100 km, 1.68 dollars: 400/1.68 times 100 = 23810 km."
+    ],
+    "2003 Fermat Contest, Problem 19": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): angle BSX = 45 and tan TSY = 3 (about 71.6), so TSB = 26.6, about 27."
+    ],
+    "2003 Fermat Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): b^2 = ac makes the discriminant -3ac < 0 with a > 0: entirely above the axis."
+    ],
+    "2003 Fermat Contest, Problem 21": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 6, 3, 10, 5, 16, 8, 4, 2, 1, 4, 2, 1, ...: from the 7th term the cycle 4, 2, 1 has t_(3k) = 1, so t_100 = 4."
+    ],
+    "2003 Fermat Contest, Problem 22": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each diagonal is parallel to a side; the inner pentagon is similar with golden-ratio scaling, and the total area is (5 + sqrt 5)/2 = 3.62."
+    ],
+    "2003 Fermat Contest, Problem 23": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with edges 2a, 2b, 2c: a^2 + b^2 = 16, a^2 + c^2 = 36, b^2 + c^2 = 25, so a^2 b^2 c^2 = (27/2)(5/2)(45/2) and V = 8abc = 90 sqrt 6."
+    ],
+    "2003 Fermat Contest, Problem 24": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the product of the (1 + 2^k x^(3^k)) is squared, so each exponent uses base-3 digits; 2003 = 2202012 in base 3, and the digits give (2^6)^2 (2^5)^2 (2^3)^2 (2 times 2) = 2^30."
+    ],
+    "2003 Fermat Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1 times 4 + 2112 = 46^2; n + 2112 = a^2 and 4n + 2112 = b^2 give (2a - b)(2a + b) = 6336, whose suitable factor pairs give 7 values of n."
     ]
   }
 }
