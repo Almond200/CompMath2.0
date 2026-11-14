@@ -208,5 +208,21 @@ window.MATH_CONTEST_PAPERS = {
   "2020 PUMaC Division B Combinatorics": {
     "url": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_B.pdf",
     "solUrl": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_B_Solutions.pdf"
+  },
+  "2020 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/2020GeometryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2020GeometryASols.pdf"
+  },
+  "2020 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/2020GeometryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2020GeometryBSol.pdf"
+  },
+  "2020 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_A_2020.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_A_2020_Solutions.pdf"
+  },
+  "2020 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2020.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2020_Solutions.pdf"
   }
 };

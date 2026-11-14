@@ -124,7 +124,11 @@
     "2020 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/2020AlgebraAQuestions.pdf",
     "2020 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/2020AlgebraBQuestions.pdf",
     "2020 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_A-2.pdf",
-    "2020 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_B.pdf"
+    "2020 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_B.pdf",
+    "2020 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/2020GeometryA.pdf",
+    "2020 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/2020GeometryB.pdf",
+    "2020 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_A_2020.pdf",
+    "2020 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2020.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -25154,6 +25158,134 @@
     "2020 PUMaC Division B Combinatorics, Problem 8": [
       3900,
       "Analyze radial stabilization on an infinite three-regular tree and characterize initial chip counts whose final configuration has no collisions."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 1": [
+      2200,
+      "Express the area between two centers and a common tangent as a trapezoid and recover the second radius."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 2": [
+      2200,
+      "Use the two adjacent half-angles to express the tangent segments along a side of a circumscribed hexagon."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 3": [
+      2550,
+      "Review the officially voided orthodiagonal cyclic quadrilateral: the midpoint-distance conditions contradict the fixed circumradius."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 4": [
+      2800,
+      "Identify an ellipse as the tangent-circle center locus and compare its area with the original and diameter circles."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 5": [
+      2900,
+      "Recover cevian ratios, place the common chord on a known cevian using equal powers and compute its segment length."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 6": [
+      3100,
+      "Transport the minimum-area circumellipse from an equilateral triangle by an affine map and scale its area by the triangle determinant."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 7": [
+      3500,
+      "Use the minimum tangent circle and reciprocal chord intersections to identify a circumcircle chord distance with the triangle altitude."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 8": [
+      3850,
+      "Identify four homothety-line intersections as arc midpoints, then compute their rectangular area from the cyclic quadrilateral radius and diagonal angle."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 1": [
+      1500,
+      "Compare the two circular-arc routes including both perpendicular road crossings to locate the break-even turn angle."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 2": [
+      2000,
+      "Pack seven separated points in a circular disk; six angular sectors prove the lower bound attained by a central point and a regular hexagon."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 3": [
+      2200,
+      "Express the area between two centers and a common tangent as a trapezoid and recover the second radius."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 4": [
+      2200,
+      "Use the two adjacent half-angles to express the tangent segments along a side of a circumscribed hexagon."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 5": [
+      2550,
+      "Review the officially voided orthodiagonal cyclic quadrilateral: the midpoint-distance conditions contradict the fixed circumradius."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 6": [
+      2800,
+      "Identify an ellipse as the tangent-circle center locus and compare its area with the original and diameter circles."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 7": [
+      2900,
+      "Recover cevian ratios, place the common chord on a known cevian using equal powers and compute its segment length."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 8": [
+      3100,
+      "Transport the minimum-area circumellipse from an equilateral triangle by an affine map and scale its area by the triangle determinant."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 1": [
+      1900,
+      "Reduce the large base power modulo one hundred, then sum its repeated powers."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 2": [
+      2700,
+      "Bound a symmetric three-integer product equation until one variable is a signed unit, then enumerate its divisor cases."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 3": [
+      2100,
+      "List the largest simultaneous decimal and base-five palindromes through their leading digits and positional ranges."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 4": [
+      3000,
+      "Show the least distinguishing divisor is a prime power and count pairs by their two-adic valuations and divisibility by three."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 5": [
+      3750,
+      "Classify numeral-polynomial divisibility across bases; exhaustive rational polynomial division and integer-valued quotient checks verify all one hundred cases."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 6": [
+      3650,
+      "Count a binary quadratic congruence separately modulo two primes, then combine the local residue counts by CRT."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 7": [
+      3750,
+      "Classify the first exponents reaching a fixed odd residue modulo a power of two and sum over every residue class."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 8": [
+      3900,
+      "Audit cycles of modular exponentiation with prescribed decimal suffixes: the intended construction works for lengths at least two, but the printed positive-length quantifier includes a failing one-step case."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 1": [
+      1100,
+      "Find the smallest divisor larger than a specified remainder after subtracting that remainder from the dividend."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 2": [
+      2250,
+      "Count distinct staggered flag arrangements through odd factor pairs, treating rotations as the same design."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 3": [
+      1900,
+      "Reduce the large base power modulo one hundred, then sum its repeated powers."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 4": [
+      2700,
+      "Bound a symmetric three-integer product equation until one variable is a signed unit, then enumerate its divisor cases."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 5": [
+      2100,
+      "List the largest simultaneous decimal and base-five palindromes through their leading digits and positional ranges."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 6": [
+      3000,
+      "Show the least distinguishing divisor is a prime power and count pairs by their two-adic valuations and divisibility by three."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 7": [
+      3750,
+      "Classify numeral-polynomial divisibility across bases; exhaustive rational polynomial division and integer-valued quotient checks verify all one hundred cases."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 8": [
+      3650,
+      "Count a binary quadratic congruence separately modulo two primes, then combine the local residue counts by CRT."
     ]
   }
 }
