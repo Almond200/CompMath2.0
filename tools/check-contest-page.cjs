@@ -146,7 +146,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  // HMMT February: the three individual rounds as tabs; history grows with Step H.
  // No mock format is inferred from archival entries without answer keys.
  await page.goto(base+'/#/problems/hmmt-february/2019');await page.locator('.db-group.is-shown .pp-tiles').waitFor();
- assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),['Algebra & Number Theory','Combinatorics','Geometry']);
+ assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),['Alg & NT','Combo','Geometry']);
  // A round is compared only with the same round (owner, 2026-11-13): Algebra (and Number Theory)
  // with itself, so the 2011 two-subject papers are outside the series.
  const hmmtYears=[...new Set(db.filter(p=>/ HMMT February Algebra(?: and Number Theory)?$/.test(p.paper)).map(p=>+p.paper.slice(0,4)))],earlier=hmmtYears.filter(y=>y<2019).length;
