@@ -199,7 +199,11 @@
     "2013 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2013_AlgebraA.pdf",
     "2013 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2013_AlgebraB.pdf",
     "2013 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2013_CombinatoricsA.pdf",
-    "2013 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2013_CombinatoricsB.pdf"
+    "2013 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2013_CombinatoricsB.pdf",
+    "2013 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2013_GeometryA.pdf",
+    "2013 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2013_GeometryB.pdf",
+    "2013 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2013_NumberTheoryA.pdf",
+    "2013 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2013_NumberTheoryB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -39205,6 +39209,134 @@
     "2013 PUMaC Division B Combinatorics, Problem 8": [
       2750,
       "Condition the full ordered dice sample space on its maximum and average the exact sums, without artificially fixing one die."
+    ],
+    "2013 PUMaC Division A Geometry, Problem 1": [
+      2250,
+      "Average the three central triangle areas over every independent radial-length choice and use symmetry to combine them."
+    ],
+    "2013 PUMaC Division A Geometry, Problem 2": [
+      3100,
+      "Relate three side distances of an incircle point, solve the two radius branches and use their stated ordering to reject the extraneous branch."
+    ],
+    "2013 PUMaC Division A Geometry, Problem 3": [
+      3150,
+      "Identify the rectangle swept during arc contact and the added quadrant during the final pivot, verifying the union boundaries."
+    ],
+    "2013 PUMaC Division A Geometry, Problem 4": [
+      3450,
+      "Reconstruct the twelve rotated side segments, identify the smallest triangular region and compare its area with the original equilateral triangle; the referenced source diagram is absent."
+    ],
+    "2013 PUMaC Division A Geometry, Problem 5": [
+      3850,
+      "Derive a sphere perspective-silhouette equation from line tangency; the printed height is not uniquely determined because the free horizontal projection parameter allows a full family of spheres."
+    ],
+    "2013 PUMaC Division A Geometry, Problem 6": [
+      3600,
+      "Translate consecutive orthocenter differences to the correct cyclic side lengths and solve the requested diagonal; the official solution swaps two sides and prints an incorrect formula."
+    ],
+    "2013 PUMaC Division A Geometry, Problem 7": [
+      3450,
+      "Apply the sine rule to a cevian triangle and the whole triangle, then use the interior angle range to select the only possible angle."
+    ],
+    "2013 PUMaC Division A Geometry, Problem 8": [
+      3850,
+      "Combine a common sphere-chord power with three orthogonal midpoint projections, maximize the power and construct a center attaining the minimum radius."
+    ],
+    "2013 PUMaC Division B Geometry, Problem 1": [
+      1700,
+      "Use a diameter angle to make a right triangle and compare circle areas proportional to its squared side lengths."
+    ],
+    "2013 PUMaC Division B Geometry, Problem 2": [
+      2600,
+      "Recognize two equal-distance cevians in an isosceles triangle and halve a central angle in the resulting circle."
+    ],
+    "2013 PUMaC Division B Geometry, Problem 3": [
+      2900,
+      "Classify central regular sections of a cube as three squares and four hexagons and add their exact areas."
+    ],
+    "2013 PUMaC Division B Geometry, Problem 4": [
+      3100,
+      "Relate three side distances of an incircle point, solve the two radius branches and use their stated ordering to reject the extraneous branch."
+    ],
+    "2013 PUMaC Division B Geometry, Problem 5": [
+      3250,
+      "Relate the two cyclic-circle chord triangles and use the outside-point condition to select the correct radius branch."
+    ],
+    "2013 PUMaC Division B Geometry, Problem 6": [
+      3450,
+      "Reconstruct the twelve rotated side segments, identify the smallest triangular region and compare its area with the original equilateral triangle; the referenced source diagram is absent."
+    ],
+    "2013 PUMaC Division B Geometry, Problem 7": [
+      3900,
+      "Bound the distance-angle product of two fixed skew edges through the projected connecting edges and attain the sharp tetrahedron-volume maximum; the final signed exponent product is correct despite erroneous intermediate powers."
+    ],
+    "2013 PUMaC Division B Geometry, Problem 8": [
+      3000,
+      "Multiply the squared side ratios of four successive affine equilateral-triangle constructions to obtain the exact area fraction."
+    ],
+    "2013 PUMaC Division A Number Theory, Problem 1": [
+      2200,
+      "Force one prime factor from a divisibility condition, then factor the remaining shifted prime-pair equation."
+    ],
+    "2013 PUMaC Division A Number Theory, Problem 2": [
+      2700,
+      "Find the full multiplicative order modulo one thousand and exclude every smaller positive exponent."
+    ],
+    "2013 PUMaC Division A Number Theory, Problem 3": [
+      2850,
+      "Use exchange arguments to reduce a maximal integer product to twos and threes, then read its prime exponents."
+    ],
+    "2013 PUMaC Division A Number Theory, Problem 4": [
+      3450,
+      "Apply the exponential gcd identity twice and reduce the enormous remaining exponent through a totient period."
+    ],
+    "2013 PUMaC Division A Number Theory, Problem 5": [
+      3300,
+      "Bound a self-describing digit histogram and enumerate all ten-slot count vectors with the required total."
+    ],
+    "2013 PUMaC Division A Number Theory, Problem 6": [
+      3450,
+      "Find minimum representable amounts in all residue classes of one denomination and read the largest unattainable amount; the two-denomination closed formula does not apply directly."
+    ],
+    "2013 PUMaC Division A Number Theory, Problem 7": [
+      3900,
+      "Factor the total root count across the prime moduli, derive a degree bound and construct a monic CRT polynomial attaining every prescribed local root count."
+    ],
+    "2013 PUMaC Division A Number Theory, Problem 8": [
+      3500,
+      "Use invertibility of a power map for every nonexceptional prime and verify an explicit residue witness for the remaining prime."
+    ],
+    "2013 PUMaC Division B Number Theory, Problem 1": [
+      2200,
+      "Force one prime factor from a divisibility condition, then factor the remaining shifted prime-pair equation."
+    ],
+    "2013 PUMaC Division B Number Theory, Problem 2": [
+      2700,
+      "Find the full multiplicative order modulo one thousand and exclude every smaller positive exponent."
+    ],
+    "2013 PUMaC Division B Number Theory, Problem 3": [
+      2450,
+      "Combine four congruences sharing a shifted residue and solve the final coprime modulus condition."
+    ],
+    "2013 PUMaC Division B Number Theory, Problem 4": [
+      3350,
+      "Translate trailing zeros of a binomial coefficient into exact two-adic and five-adic residue classes and minimize their CRT combinations."
+    ],
+    "2013 PUMaC Division B Number Theory, Problem 5": [
+      2850,
+      "Use exchange arguments to reduce a maximal integer product to twos and threes, then read its prime exponents."
+    ],
+    "2013 PUMaC Division B Number Theory, Problem 6": [
+      3450,
+      "Apply the exponential gcd identity twice and reduce the enormous remaining exponent through a totient period."
+    ],
+    "2013 PUMaC Division B Number Theory, Problem 7": [
+      3300,
+      "Bound a self-describing digit histogram and enumerate all ten-slot count vectors with the required total."
+    ],
+    "2013 PUMaC Division B Number Theory, Problem 8": [
+      3450,
+      "Find minimum representable amounts in all residue classes of one denomination and read the largest unattainable amount; the two-denomination closed formula does not apply directly."
     ]
   }
 }
