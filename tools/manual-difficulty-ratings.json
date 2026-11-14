@@ -44769,6 +44769,106 @@
     "2008 Pascal Contest, Problem 25": [
       700,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): RQ = 4; similar triangles give PL = sqrt 3 and RL = 3, and the lines PL and RM meet where PF = 4 sqrt 3 / 7."
+    ],
+    "2007 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3(2) - 5 = 1."
+    ],
+    "2007 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): x lies between -2 and -1: -1.3."
+    ],
+    "2007 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): a 1 by 1 square in a 3 by 5 rectangle: 1/15."
+    ],
+    "2007 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2^5 - 5^2 = 32 - 25 = 7."
+    ],
+    "2007 Pascal Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 8.25 an hour: 41.25 for five hours."
+    ],
+    "2007 Pascal Contest, Problem 6": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (8 + 6)/10 = 7/5."
+    ],
+    "2007 Pascal Contest, Problem 7": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 100000 + 1000 = 101000."
+    ],
+    "2007 Pascal Contest, Problem 8": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): base BC = 12 and height 9: 54."
+    ],
+    "2007 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 5/8 - 1/16 = 9/16."
+    ],
+    "2007 Pascal Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): M = 669 and N = 223: 446."
+    ],
+    "2007 Pascal Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the first mean is 11, so 12 + y = 22: y = 10."
+    ],
+    "2007 Pascal Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): angle RPQ = 48 is vertical to angle MPN, and isosceles PMN has base angles (180 - 48)/2 = 66."
+    ],
+    "2007 Pascal Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3 + 7 = 10: 21."
+    ],
+    "2007 Pascal Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3 parts are 21, so 10 parts are 70."
+    ],
+    "2007 Pascal Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 15 + 21 = 36 = 1 + 2 + ... + 8: none left over."
+    ],
+    "2007 Pascal Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the middle row gives the sum 48, so P + Q = 44 and R + S = 20: 64."
+    ],
+    "2007 Pascal Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 50 + x + 19 + x = 85 gives x = 8: 58."
+    ],
+    "2007 Pascal Contest, Problem 18": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 10/3 = 1/x + 1, so 1/x = 7/3: x = 3/7."
+    ],
+    "2007 Pascal Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): PQ = sqrt(169 - 25) = 12 and QS = sqrt(1369 - 144) = 35: 12 + 35 + 37 = 84."
+    ],
+    "2007 Pascal Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): EBCF is a 40 by 30 rectangle plus a right triangle of area 1000, 2200 in all, half of ABCD: AB = 55, AE = 15."
+    ],
+    "2007 Pascal Contest, Problem 21": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): P = 11, so T = 13 and Q = 15; then R = 9 and S = 4: Q is largest."
+    ],
+    "2007 Pascal Contest, Problem 22": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): PR = 17; Asafa runs 30 km in the time Florence runs 24, so she runs at 84/5 km/h; over the last 7 km Asafa takes 20 min and Florence 25: 5."
+    ],
+    "2007 Pascal Contest, Problem 23": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the shaded part is (360 - x)/360 of the small circle plus x/360 of the ring of area 3 pi: (360 + 2x)/360 = 5/3, x = 120."
+    ],
+    "2007 Pascal Contest, Problem 24": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the odd squares run down the diagonal from 1; 2025 = 45^2 is 18 places left of 2007, which fixes the rings around it: 1832 above and 2190 below, 4022."
+    ],
+    "2007 Pascal Contest, Problem 25": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3x has only even digits exactly when no carries make an odd digit; counting digit by digit gives 82."
     ]
   }
 }
