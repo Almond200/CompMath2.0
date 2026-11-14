@@ -40451,6 +40451,106 @@
     "2009 Cayley Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a square nearly full but not quite needs the diagonal to pass just above a lattice point, i.e. mq - np = 1 with small error; the first pair with 2n < m < 3n is (34, 15): mn = 510."
+    ],
+    "2008 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 9 - 4 + 1 = 6."
+    ],
+    "2008 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): sqrt 9/(5 - 4) = 3."
+    ],
+    "2008 Cayley Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 0.81 is 0.19 from 1, closer than 4/3, 1.2, 1 1/3 or 7/10."
+    ],
+    "2008 Cayley Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 8 of 26: 4/13."
+    ],
+    "2008 Cayley Contest, Problem 5": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): even already; divisible by 3 needs 17 + d a multiple of 3: d = 1, 4 or 7, and only 4 is offered."
+    ],
+    "2008 Cayley Contest, Problem 6": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 40/x = 20: x = 2."
+    ],
+    "2008 Cayley Contest, Problem 7": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): extending QR makes a rectangle: RS spans 3 by 4, so 5; perimeter 3 + 3 + 5 + 7 + 6 = 24."
+    ],
+    "2008 Cayley Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): PQR isosceles with apex 40 gives angle PRQ = 70 = angle SRT, and RS = RT gives x = 55."
+    ],
+    "2008 Cayley Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the even numbers below 91 are 2 to 90: 45 = (ab - 1)/2."
+    ],
+    "2008 Cayley Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 20 + 200 daytime minutes at 10 cents + 100 paid evening minutes at 5 cents: 45 dollars."
+    ],
+    "2008 Cayley Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 10d + 25q = 265 with q > d: d = 4, q = 9, 13 coins."
+    ],
+    "2008 Cayley Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the line from (0, -4) through M = (6, 0) has slope 2/3, reaching (12, 4)."
+    ],
+    "2008 Cayley Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): fold the net and check which faces meet at each corner: (B)."
+    ],
+    "2008 Cayley Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 20, 10, 5, 16, 8, 4, 2, 1, 4, 2: the 10th term is 2."
+    ],
+    "2008 Cayley Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 555 = 3 times 5 times 37 = 15 times 37: 52."
+    ],
+    "2008 Cayley Contest, Problem 16": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): PQ = PR makes angle PRQ = x, and triangle SPQ gives x = y; then 3y + 2y = 180, so RPQ = 3y = 108."
+    ],
+    "2008 Cayley Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): largest 10/12 and smallest 3/21: 5/6 - 1/7 = 29/42."
+    ],
+    "2008 Cayley Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): o + 2(o + 11) + 3(o - 18) = 100 gives o = 22."
+    ],
+    "2008 Cayley Contest, Problem 19": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2A/3 = 3P/4 gives P = 8A/9; rotten 4A/3 of 17A/9: 12/17."
+    ],
+    "2008 Cayley Contest, Problem 20": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): in right triangle PRS the angle at R is 60, so RS = 24; QS = 32 and P is 12 sin 60 = 6 sqrt 3 above it: 96 sqrt 3."
+    ],
+    "2008 Cayley Contest, Problem 21": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the inner pane is one ninth of the window: R^2 = 9 times 400, R = 60, so x = 60 - 20 = 40."
+    ],
+    "2008 Cayley Contest, Problem 22": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): N = 1 + 51 + (10 + 100 + ... + 10^51) = 111...1162, forty-nine 1s followed by 162: digit sum 58."
+    ],
+    "2008 Cayley Contest, Problem 23": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (y - 1)^(x + y) = 64 = 64^1 = 8^2 = (-8)^2 = 4^3 = 2^6 = (-2)^6: six choices, six values of x."
+    ],
+    "2008 Cayley Contest, Problem 24": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the dot moves on quarter circles of radii 1/2, sqrt 5/2, sqrt 5/2, 1/2 as the cube rolls four times: (1 + sqrt 5) pi/2."
+    ],
+    "2008 Cayley Contest, Problem 25": [
+      1000,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): by linearity each of the 6 adjacent pairs is equally likely to be any pair of the seven numbers: 6 times the average of (x - y)^2 over the 21 pairs = 392."
     ]
   }
 }
