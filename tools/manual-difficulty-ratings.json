@@ -46769,6 +46769,106 @@
     "2016 UKMT SMC, Problem 25": [
       800,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): n is the smallest with 7n >= 10^2015, so 7n = 10^2015 + a; long division by 7 ends with 40 + a = 42: units digit 6."
+    ],
+    "2015 UKMT SMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 2015^2 - (2015 + 1)(2015 - 1) = 1."
+    ],
+    "2015 UKMT SMC, Problem 2": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): x^2 = 25: the roots 5 and -5 sum to 0."
+    ],
+    "2015 UKMT SMC, Problem 3": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 80p a litre rose to 125p: 45/80 is about 56%."
+    ],
+    "2015 UKMT SMC, Problem 4": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the large circle has twice the radius, four times the area: 3/4 lies outside."
+    ],
+    "2015 UKMT SMC, Problem 5": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 40 + 2n = 3n gives n = 40: digit sum 4."
+    ],
+    "2015 UKMT SMC, Problem 6": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): odd prime sums force odd and even to alternate; 10 cannot sit by 5, so 6 and 8 flank 5, then 7 and 9, leaving 10 at the bottom."
+    ],
+    "2015 UKMT SMC, Problem 7": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): evaluating each nested fraction, A = 2/3, D = 3/8 and E = 3/8, while B = 6 is the only value above 1."
+    ],
+    "2015 UKMT SMC, Problem 8": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): each net uses R, S, T, one of P and Q, and two of U, V, W: 2 times 3 = 6."
+    ],
+    "2015 UKMT SMC, Problem 9": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): four distinct lines can meet in 1, 3, 4, 5 or 6 points but not 2."
+    ],
+    "2015 UKMT SMC, Problem 10": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): both halves of 210 are 105, so n(n + 1)/2 = 105: n = 14."
+    ],
+    "2015 UKMT SMC, Problem 11": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): listing the towers by how many sizes repeat gives 10 sums, with 18 twice: 9 heights."
+    ],
+    "2015 UKMT SMC, Problem 12": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): equal tangents make triangles QUS and RTS isosceles, and the angles at S give gamma = (alpha + beta)/2."
+    ],
+    "2015 UKMT SMC, Problem 13": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the claim fits a truthful day after a lying day or a lying day after a truthful one; both knaves fit only on Friday."
+    ],
+    "2015 UKMT SMC, Problem 14": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the height on the base 22 is 8, so the foot is 6 from B and 16 from D: y = sqrt(64 + 256) = 8 sqrt 5."
+    ],
+    "2015 UKMT SMC, Problem 15": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): at the end the large vase holds water to 16 cm less the empty upper half of the small vase: 100h = 1600 - 200, h = 14."
+    ],
+    "2015 UKMT SMC, Problem 16": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the colours must alternate; after the first Fnarg (6 ways) and the second (2 ways) the rest are forced: 12."
+    ],
+    "2015 UKMT SMC, Problem 17": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the centres form a square with side r + 1 and diagonal 2: (r + 1)^2 = 2, r = sqrt 2 - 1."
+    ],
+    "2015 UKMT SMC, Problem 18": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 10! = 2^8 3^4 5^2 7, so the largest square factor is (2^4 3^2 5)^2: k = 720."
+    ],
+    "2015 UKMT SMC, Problem 19": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): with sides x, x + 8, 50 the slopes from P agree: 8/x = (50 - x)/(2x + 8), so x^2 - 34x + 64 = 0: 2 or 32."
+    ],
+    "2015 UKMT SMC, Problem 20": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the corner opposite the pivot sweeps a semicircle of radius sqrt 2, and the pad's two half squares add 1: pi + 1."
+    ],
+    "2015 UKMT SMC, Problem 21": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): all the small triangles are 2 : 3 : 4; with AP = x, XS = 2x and QZ = 4x/3, so 2x + x + 4x/3 = 4: 12/13."
+    ],
+    "2015 UKMT SMC, Problem 22": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): over a common denominator the numerator is x^2 - (x^2 + 1) + 1 = 0: f(2015) = 0."
+    ],
+    "2015 UKMT SMC, Problem 23": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): each digit takes each place 6 times, so the sum is 6666(a + b + c + d) = 2 3 11 101 (a + b + c + d): 101."
+    ],
+    "2015 UKMT SMC, Problem 24": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 1, 13, 17, 19 and 23 share a factor with nothing else, and a row of the other 20 exists: 20."
+    ],
+    "2015 UKMT SMC, Problem 25": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): f(40) = 2f(2) + f(10) gives f(2) = 3 and f(5) = 11: f(500) = 2(3) + 3(11) = 39."
     ]
   }
 }
