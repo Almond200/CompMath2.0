@@ -6311,8 +6311,8 @@
           <h3>Contests</h3>
           <p class="practice-panel-intro">Browse past papers by contest and year.</p>
           <div class="ct-browse"><a class="ct-browse-btn" href="#/browse/topics">Browse by topic</a><a class="ct-browse-btn" href="#/browse/difficulty">Browse by difficulty</a></div>
-          <div class="ct-list">${fams.filter(famShown).map(f => `
-            <div class="ct-row">
+          <div class="ct-list">${fams.filter(famShown).map((f, i, a) => `
+            <div class="ct-row${i && famSeries(a[i - 1]) === famSeries(f) ? " ct-same" : ""}">
               <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famWritten(f).toLocaleString()} problem${famWritten(f) === 1 ? "" : "s"} written</span></a>
               <div class="ct-years">${yearsOf(f).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}</div>
             </div>`).join("")}
@@ -9698,6 +9698,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const famShown = f => famsOpen || CORE_FAMS.has(f);
   // n counts the contests beyond the AMC and AIME in that list; cls styles the button for its row.
   const famMoreBtn = (n, cls = "ct-toggle") => n > 0 ? `<button type="button" class="${cls} fam-more-btn" aria-expanded="${famsOpen}">${famsOpen ? "Show fewer contests" : `Show ${n} more contest${n === 1 ? "" : "s"}`}</button>` : "";
+  // Papers of one contest (the AMC 8, 10 and 12; HMMT February and November; ARML and ARML Local;
+  // PUMaC's two divisions) sit together in the Contests list, without a rule between them (owner, 2026-11-14).
+  const famSeries = f => f.replace(/^AMC \d+$/, "AMC").replace(/ (February|November|Local|Division [AB])$/, "");
   const extraFams = list => list.filter(f => !CORE_FAMS.has(f)).length;
   document.addEventListener("click", e => {
     const b = e.target.closest(".fam-more-btn");
