@@ -150,7 +150,10 @@
     "2018 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/Geometry-A-Test.pdf",
     "2018 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/GeoBTest.pdf",
     "2018 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/Number-Theory-A-Test.pdf",
-    "2018 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/Number-Theory-B-Test.pdf"
+    "2018 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/Number-Theory-B-Test.pdf",
+    "2017 BMT Analysis": "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf",
+    "2017 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2017/DisS2017.pdf",
+    "2017 BMT Geometry": "https://oss.linstitute.net/wechatimg/2019/10/bmt2017geometry.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -26532,6 +26535,114 @@
     "2018 PUMaC Division B Number Theory, Problem 8": [
       3750,
       "Parametrize three integers with equal pairwise LCM by pairwise-coprime factors and minimize the common scale imposed by reciprocal-sum divisibility."
+    ],
+    "2017 BMT Analysis, Problem 1": [
+      1300,
+      "Bound the number of maximum scores by the positive minimum score and exhibit an attaining score distribution."
+    ],
+    "2017 BMT Analysis, Problem 2": [
+      1600,
+      "Replace an exponential by a positive variable and solve the resulting quadratic before recovering the real exponents."
+    ],
+    "2017 BMT Analysis, Problem 4": [
+      2300,
+      "Evaluate a quadratically weighted infinite geometric series at one half."
+    ],
+    "2017 BMT Analysis, Problem 5": [
+      2000,
+      "Find the unique height at which a nested absolute-value graph has three distinct preimages."
+    ],
+    "2017 BMT Analysis, Problem 6": [
+      3300,
+      "Cube a cyclic linear transformation, identify its affine action on three cubic roots and recover the transformed pair sum."
+    ],
+    "2017 BMT Analysis, Problem 7": [
+      3100,
+      "Split an alternating rational series into two odd-denominator series and evaluate it with the Gregory-Leibniz identity; a specific inverse-trigonometric power-series card is absent."
+    ],
+    "2017 BMT Analysis, Problem 10": [
+      3600,
+      "Swap a harmonic-weighted binomial sum and evaluate its alternating binomial tails through Pascal cancellation."
+    ],
+    "2017 BMT Discrete Math, Problem 1": [
+      1000,
+      "Count same-color pairs in a finite sock sample without replacement."
+    ],
+    "2017 BMT Discrete Math, Problem 2": [
+      1500,
+      "Count four labeled year choices that use each of three subjects at least once."
+    ],
+    "2017 BMT Discrete Math, Problem 3": [
+      1500,
+      "Minimize an integer with eight total divisors by comparing its possible exponent partitions."
+    ],
+    "2017 BMT Discrete Math, Problem 4": [
+      1500,
+      "Choose the largest permitted digit subset with sum divisible by nine and arrange it in descending order."
+    ],
+    "2017 BMT Discrete Math, Problem 5": [
+      2200,
+      "Count all subsets of a nine-term interval containing no consecutive pair, including the empty set."
+    ],
+    "2017 BMT Discrete Math, Problem 6": [
+      3000,
+      "Recognize a finite function whose fifth iterate is constantly one as a rooted labeled tree; enumerate all functions independently."
+    ],
+    "2017 BMT Discrete Math, Problem 7": [
+      3400,
+      "Under independent light states, split Chebyshev shells into corners and noncorners and sum the four-neighbor indicator probabilities; independence is implicit rather than stated."
+    ],
+    "2017 BMT Discrete Math, Problem 8": [
+      3550,
+      "Condition a second-weakest tournament entrant on the weakest player reaching each potential meeting round and sum the seeded bracket contributions."
+    ],
+    "2017 BMT Discrete Math, Problem 9": [
+      3650,
+      "Expand a fourth occupancy moment by distinct trial indices and evaluate its limiting factorial moments."
+    ],
+    "2017 BMT Discrete Math, Problem 10": [
+      3700,
+      "Reverse an alternating totient floor sum and separate its odd divisor contribution."
+    ],
+    "2017 BMT Geometry, Problem 1": [
+      2450,
+      "Bound the number of distinct positive integer exterior angles by their fixed sum and construct an attaining convex polygon."
+    ],
+    "2017 BMT Geometry, Problem 2": [
+      1500,
+      "Find the three possible fourth parallelogram vertices and evaluate the area of their triangle."
+    ],
+    "2017 BMT Geometry, Problem 3": [
+      2300,
+      "Intersect the square on a long hexagon diagonal with the regular hexagon and subtract its exact polygonal overlap."
+    ],
+    "2017 BMT Geometry, Problem 4": [
+      2800,
+      "Count bounded five-coordinate integer vectors by their square contributions; the higher-dimensional lattice count has no specific geometry leaf."
+    ],
+    "2017 BMT Geometry, Problem 5": [
+      1850,
+      "Audit polynomial roots prescribed as triangle sides: the printed roots violate the triangle inequality, so the formal radius-product answer has no real triangle."
+    ],
+    "2017 BMT Geometry, Problem 6": [
+      3750,
+      "Compute the largest box from independent maximal interval spacings; the written uniform-cut model gives a different expectation from the official key."
+    ],
+    "2017 BMT Geometry, Problem 7": [
+      3100,
+      "Transport a largest inscribed triangle from the unit circle through an area-scaling ellipse map."
+    ],
+    "2017 BMT Geometry, Problem 8": [
+      3800,
+      "Audit an intersection-of-triangles area problem whose missing inscribed restriction leaves the given circle unused; the printed family has empty intersection."
+    ],
+    "2017 BMT Geometry, Problem 9": [
+      3900,
+      "Use a tangent polar to fix an external point and bound the vertex-angle sine by an auxiliary circle; the sharp bound disagrees with the supplied key."
+    ],
+    "2017 BMT Geometry, Problem 10": [
+      2700,
+      "Compare equal-longitude spherical zones through their latitude sines; the common radius factor cancels."
     ]
   }
 }

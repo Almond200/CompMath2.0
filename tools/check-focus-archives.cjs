@@ -43,6 +43,8 @@ for(const [paper,source] of Object.entries(papers)) {
     assert(Number.isFinite(context.window.MATH_PROBLEM_RATINGS.ratings[slug(p.ref)].elo),p.ref);
   }
   assert.match(source.url,/^https:\/\//);assert.match(source.solUrl,/^https:\/\//);
+  assert(source.solKind===undefined||source.solKind==='answer-key',paper);
+  assert(source.mirror===undefined||source.mirror===true,paper);
   const key=m[2]+'|'+m[1];if(!families.has(key))families.set(key,[]);
   families.get(key).push({paper,source,round:m[3],ps});
 }
@@ -82,6 +84,11 @@ for(const [paper,source] of Object.entries(papers)) {
       const toggle=page.locator('.prob-chain .chain-toggle');await toggle.waitFor();
       if(await toggle.getAttribute('aria-expanded')==='false')await toggle.click();
       assert.deepEqual(await page.locator('.aops-btn').evaluateAll(xs=>xs.map(x=>x.href)),[source.url,source.solUrl]);
+      if(source.solKind==='answer-key'){
+       assert.match(await page.locator('.chain-official .aops-btn').innerText(),/official answer key/);
+       assert.match(await page.locator('.chain-official-note').innerText(),/official answer key/);
+      }
+      if(source.mirror)assert.match(await page.locator('.aops-btn').first().innerText(),/original paper \(mirror\)/);
       assert.equal(await page.locator('.chain-strategy:not(.chain-official)').count(),0);
       assert(await page.locator('.ptree-node.is-filed').count()>0);
       assert.equal(await page.locator('.katex-error').count(),0);

@@ -3457,6 +3457,7 @@
       // Where the official solution is, for a problem whose solution we link instead of write.
       // An AHSME problem has no solution of ours either (owner, 2026-11-13): its AoPS wiki page has them.
       solUrl: paper?.solUrl || officialPdf(e.ref, "solutions") || (!e.strategy ? aopsUrl(e.ref, pr.fam) : null),
+      solKind: paper?.solKind || null, sourceMirror: !!paper?.mirror,
       solAops: !paper?.solUrl && !officialPdf(e.ref, "solutions") && !e.strategy && !!aopsUrl(e.ref, pr.fam),
       formulas, trickFormulas, types: problemTypes(e), subjects: problemSubjects(e, formulas, pr.cname), strategy: e.strategy || "",
       trick: e.trick || "",
@@ -9926,14 +9927,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const number = solution !== p.num
       ? `; paper problem ${p.num} is solution ${solution}`
       : p.num ? `; this is problem ${p.num}` : "";
-    return `The round's official solutions, as one PDF${number}.${legacy
+    return `The round's official ${p.solKind === "answer-key" ? "answer key" : "solutions"}, as one PDF${number}.${legacy
       ? ` The <a href="https://www.hmmt.org/www/archive/32" target="_blank" rel="noopener noreferrer">HMMT February 2000 archive</a> links these PDFs, which are headed “Rice Mathematics Tournament 2000.”` : ""}`;
   }
   function chainInnerHtml(p, chainCol, chain, altIds, afterChain = "") {
     return `<div class="chain-duo">${chainSec("Topic", topicTreeHtml(p))}${chainSec("Difficulty", difficultyHtml(p))}</div>
         ${chainSec("Brief solution", `${ownFigureHtml(p)}${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>`
           // No solution of our own for these (owner, 2026-11-12): the contest's official one is a click away.
-          : p.solUrl ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">${p.solAops ? "Open the solutions on AoPS" : "Open the official solution"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">${p.solAops ? "The Art of Problem Solving wiki's page for this problem, with its solutions." : (/^ARML/.test(p.fam) ? `The contest's official booklet, open at the Individual round's solutions${p.num ? `; this is problem I-${p.num}` : ""}.` : officialSolutionNote(p))}</span></p>` : ""}
+          : p.solUrl ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">${p.solAops ? "Open the solutions on AoPS" : p.solKind === "answer-key" ? "Open the official answer key" : "Open the official solution"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">${p.solAops ? "The Art of Problem Solving wiki's page for this problem, with its solutions." : (/^ARML/.test(p.fam) ? `The contest's official booklet, open at the Individual round's solutions${p.num ? `; this is problem I-${p.num}` : ""}.` : officialSolutionNote(p))}</span></p>` : ""}
         ${p.trick ? `<p class="chain-strategy chain-alt">${p.trick}</p>` : ""}
         <div class="chain-grid">
           ${chainCol("Pattern", chain.pattern, "Not classified yet")}
@@ -10049,8 +10050,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <div class="prob-statement"></div>
 
         </section>` : ""}
-        <p class="prob-note">${p.urlLabel === "archive" ? (/^ARML/.test(p.fam) ? `The statement is in the contest's official booklet, open at the Individual round${p.num ? `; this is problem I-${p.num}` : ""}.` : `The statement is in the round's official paper, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.`) : "Solutions live on the Art of Problem Solving wiki."}</p>
-        ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.urlLabel === "archive" ? "Open the official paper" : "Open on AoPS"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
+        <p class="prob-note">${p.sourceMirror ? `The round's original paper is hosted by an external archive${p.num ? `; this is problem ${p.num}` : ""}.` : p.urlLabel === "archive" ? (/^ARML/.test(p.fam) ? `The statement is in the contest's official booklet, open at the Individual round${p.num ? `; this is problem I-${p.num}` : ""}.` : `The statement is in the round's official paper, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.`) : "Solutions live on the Art of Problem Solving wiki."}</p>
+        ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.sourceMirror ? "Open the original paper (mirror)" : p.urlLabel === "archive" ? "Open the official paper" : "Open on AoPS"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
         ${chainHtml}
         ${SOLUTION_YEARS.has(String(p.year)) ? `<section class="prob-chain prob-solution${pv ? " pv-sol" : ""}"${pv ? "" : ` id="prob-sol"`} data-slug="${p.slug}" hidden>
           <h4>Solution</h4>

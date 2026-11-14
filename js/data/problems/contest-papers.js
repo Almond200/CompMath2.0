@@ -312,5 +312,21 @@ window.MATH_CONTEST_PAPERS = {
   "2018 PUMaC Division B Number Theory": {
     "url": "https://pumac.princeton.edu/s/Number-Theory-B-Test.pdf",
     "solUrl": "https://pumac.princeton.edu/s/Number-Theory-B-Solutions.pdf"
+  },
+  "2017 BMT Analysis": {
+    "url": "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2017/AnaS2017A.pdf",
+    "solKind": "answer-key"
+  },
+  "2017 BMT Discrete Math": {
+    "url": "https://berkeley.mt/archives/bmt-2017/DisS2017.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2017/DisS2017A.pdf",
+    "solKind": "answer-key"
+  },
+  "2017 BMT Geometry": {
+    "url": "https://oss.linstitute.net/wechatimg/2019/10/bmt2017geometry.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2017/GeoS2017A.pdf",
+    "solKind": "answer-key",
+    "mirror": true
   }
 };
