@@ -31643,6 +31643,202 @@
     "2016 Columbus State Tournament, Problem 50": [
       1400,
       "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): substitute z = -x - y and solve over the rationals."
+    ],
+    "2015 Columbus State Tournament, Problem 1": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 224/1111 = 0.2016 repeating with period 4; 2015 is 3 mod 4."
+    ],
+    "2015 Columbus State Tournament, Problem 2": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2015 = 5 times 13 times 31 and the pair sum 623 fixes the roots 5, 13, 31: b = -49."
+    ],
+    "2015 Columbus State Tournament, Problem 3": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the difference of the polynomials has degree 5: at most 5 meetings."
+    ],
+    "2015 Columbus State Tournament, Problem 4": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2015^5 - 2015 = 2015(2015^4 - 1); count the factors of 2 by lifting the exponent."
+    ],
+    "2015 Columbus State Tournament, Problem 5": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 31x + 13y = 2015 = 5 times 13 times 31: count the positive solutions."
+    ],
+    "2015 Columbus State Tournament, Problem 6": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): isolate the radical and square; keep only the root that satisfies the original."
+    ],
+    "2015 Columbus State Tournament, Problem 7": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the completion percentage 4763/7989."
+    ],
+    "2015 Columbus State Tournament, Problem 8": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 3.59 = 1.05 times 0.98 times the Monday price."
+    ],
+    "2015 Columbus State Tournament, Problem 9": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x op y = (1 + x)(1 + y) - 1: (1 + x)^2 = 1 + 2x gives x = 0."
+    ],
+    "2015 Columbus State Tournament, Problem 10": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 671 + 503 - 167 = 1007."
+    ],
+    "2015 Columbus State Tournament, Problem 11": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): test each assignment of knight, knave and spy against the three statements."
+    ],
+    "2015 Columbus State Tournament, Problem 12": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): triangles on opposite sides of an interior point together make half the rectangle; balance the given areas in pairs."
+    ],
+    "2015 Columbus State Tournament, Problem 13": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1006 + 1007 = 2013: the two odd powers sum to 0 mod 2013, leaving 2016, remainder 3."
+    ],
+    "2015 Columbus State Tournament, Problem 14": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): she must gain 44 feet on the truck within the stated time."
+    ],
+    "2015 Columbus State Tournament, Problem 15": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the center lies on the y-axis, equidistant from (0, b) and (a, 0)."
+    ],
+    "2015 Columbus State Tournament, Problem 16": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the harmonic mean of 30 and 60: 40."
+    ],
+    "2015 Columbus State Tournament, Problem 17": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 4/(10 - c) + 4/(10 + c) = 5/6 hour: solve for the current."
+    ],
+    "2015 Columbus State Tournament, Problem 18": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (a + b)^2 = 5ab and (a - b)^2 = ab: their ratio."
+    ],
+    "2015 Columbus State Tournament, Problem 19": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 17 - 12 sqrt 2 = (3 - 2 sqrt 2)^2; take the reciprocal."
+    ],
+    "2015 Columbus State Tournament, Problem 20": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): |x^2 - 3| <= 3 - x^2 means x^2 <= 3."
+    ],
+    "2015 Columbus State Tournament, Problem 21": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the denominator x^2 + 2x + c never vanishes: discriminant negative, c > 1."
+    ],
+    "2015 Columbus State Tournament, Problem 22": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the center lies on the perpendicular to the tangent at (0, 8) and is equidistant from the origin."
+    ],
+    "2015 Columbus State Tournament, Problem 23": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): r^2015 = -2014r - 2016 and the roots sum to 0: the average is -2016."
+    ],
+    "2015 Columbus State Tournament, Problem 24": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the inradius is a third of the height: compute from the area 6."
+    ],
+    "2015 Columbus State Tournament, Problem 25": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): combine the fractions and factor to get integer solutions; minimize x + y."
+    ],
+    "2015 Columbus State Tournament, Problem 26": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): AB is a fixed chord; count points of the ellipse at the height giving area 4 on each side."
+    ],
+    "2015 Columbus State Tournament, Problem 27": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the highest and lowest prices after n days differ by the ratio (0.9/0.8)^n."
+    ],
+    "2015 Columbus State Tournament, Problem 28": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): both radicands squares with difference 9: x - 7 = 16 and x + 2 = 25, y = 9."
+    ],
+    "2015 Columbus State Tournament, Problem 29": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a quadratic in log_2 x; the product of the solutions is 2 to the sum of the logs."
+    ],
+    "2015 Columbus State Tournament, Problem 30": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): log base a^(p/q) of x is (q/p) log_a x."
+    ],
+    "2015 Columbus State Tournament, Problem 31": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): construct the point on BC with BE = BD; the 100-20-60 triangle chase gives BC = BD + AD."
+    ],
+    "2015 Columbus State Tournament, Problem 32": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): exactly one insured: 3(0.6)(0.4)^2."
+    ],
+    "2015 Columbus State Tournament, Problem 33": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 5 times 7 times 6 outfits minus the forbidden combinations."
+    ],
+    "2015 Columbus State Tournament, Problem 34": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): C(12, 3) - C(5, 3) triangles."
+    ],
+    "2015 Columbus State Tournament, Problem 35": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the centers' triangle is similar to the outer one; find the ratio from the circle sizes."
+    ],
+    "2015 Columbus State Tournament, Problem 36": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): each new triangle is a fixed scale of the previous one; the areas form a geometric series."
+    ],
+    "2015 Columbus State Tournament, Problem 37": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2c = M and 2a = M + 2R give b^2 = a^2 - c^2 from the stated relation."
+    ],
+    "2015 Columbus State Tournament, Problem 38": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): speed = 275 times 44 pi inches per minute, converted to miles per hour."
+    ],
+    "2015 Columbus State Tournament, Problem 39": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): sin 3t = 3 sin t - 4 sin^3 t."
+    ],
+    "2015 Columbus State Tournament, Problem 40": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): use the two angles of elevation and the 900 m baseline to solve for the height."
+    ],
+    "2015 Columbus State Tournament, Problem 41": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): in the third quadrant arccos(cos t) = 2 pi - t."
+    ],
+    "2015 Columbus State Tournament, Problem 42": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): on [pi/2, 3 pi/2], x = pi - arcsin y."
+    ],
+    "2015 Columbus State Tournament, Problem 43": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): half the chord is R sin(theta/2): d = 2R sin(theta/2)."
+    ],
+    "2015 Columbus State Tournament, Problem 44": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): tangent circles along the ray: the distances give the radii relation."
+    ],
+    "2015 Columbus State Tournament, Problem 45": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): revenue p q = p(420 - 12p) is largest at the vertex."
+    ],
+    "2015 Columbus State Tournament, Problem 46": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the determinant of consecutive Fibonacci numbers is Cassini's identity: plus or minus 1."
+    ],
+    "2015 Columbus State Tournament, Problem 47": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): R on the circle sees PQ at a fixed angle on each arc: compare the arc lengths."
+    ],
+    "2015 Columbus State Tournament, Problem 49": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a linear program: test the corners of the feasible region."
+    ],
+    "2015 Columbus State Tournament, Problem 50": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the plane section is a circle; the cone's angle and r give the requested length."
     ]
   }
 }
