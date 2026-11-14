@@ -38051,6 +38051,106 @@
     "2005 Fermat Contest, Problem 24": [
       900,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): both selections include the first and last terms, so n = 6k + 1 and each selection averages the middle term M: (3k + 1)M = 320 and (2k + 1)M = 224 give k = 3, M = 32: 19 times 32 = 608."
+    ],
+    "2004 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 10/(110 - 100) = 1."
+    ],
+    "2004 Fermat Contest, Problem 2": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): sqrt(1 + 16 + 64) = sqrt 81 = 9."
+    ],
+    "2004 Fermat Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x = 4 and y = 3: 1."
+    ],
+    "2004 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1800 cm^3 at 2 g/cm^3 is 3600 g, over 25 pieces: 144 g."
+    ],
+    "2004 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (1/5)(1/7) = 1/35 = 1/(x + 5): x = 30."
+    ],
+    "2004 Fermat Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3 cans fill 2/3 L, so 4.5 cans a litre: 36 for 8 litres."
+    ],
+    "2004 Fermat Contest, Problem 7": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (x^2 - 4)/(x^2 - 2x) = (x + 2)/x = (11/5)/(1/5) = 11."
+    ],
+    "2004 Fermat Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 40 litres cost 36.60: 91.5 cents a litre."
+    ],
+    "2004 Fermat Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 10400 and 22000 in 2004: 11600."
+    ],
+    "2004 Fermat Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): read the two balances as equations and substitute: 3."
+    ],
+    "2004 Fermat Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): square the position of x and negate it: the point c."
+    ],
+    "2004 Fermat Contest, Problem 12": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): S is 3/4 of the way from P to Q, so Q = P + (4/3)(S - P) = (18, 9)."
+    ],
+    "2004 Fermat Contest, Problem 13": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the exterior angle at C gives 2x + y = 100 and triangle ACD gives x + y = 80: x = 20."
+    ],
+    "2004 Fermat Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): DC = 5 and AD is the height of right triangle DEC: 3 times 4/5 = 2.4."
+    ],
+    "2004 Fermat Contest, Problem 15": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (x - y)(x + y) = 0: the lines y = x and y = -x."
+    ],
+    "2004 Fermat Contest, Problem 16": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the two leftover regions are equal exactly when the circle and triangle have equal area: pi r^2 = 24, r = 2.76."
+    ],
+    "2004 Fermat Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the difference is y - x = 3x, and x + 2y + 2 = x + 3d gives d = 2x + 2: x = 2, y - x = 6."
+    ],
+    "2004 Fermat Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): expanding, a = 2 and the vertex at 2 means (5 + 2b)/4 = 2: b = 3/2."
+    ],
+    "2004 Fermat Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 600p + 400(0.6p) + 200(0.25p) = 890p = 72000: p = 80.90."
+    ],
+    "2004 Fermat Contest, Problem 20": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Marcos closes 12 m/s on 30 m (2.5 s) and Michael 5 m/s on 15 m (3 s); after 2.5 s Michael is 2.5 m short: 2.5 m."
+    ],
+    "2004 Fermat Contest, Problem 21": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): t/B + (t - 1)/J = 1: t = B(J + 1)/(B + J)."
+    ],
+    "2004 Fermat Contest, Problem 22": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): for k <= 300 the number has too few digits, so it is 2^(k - 300) 10^300 with 2^7 = 128: digit sum 11."
+    ],
+    "2004 Fermat Contest, Problem 23": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the area is (1/2)AB(24 + 36) = 30 AB and also 32.5h; with AB^2 = h^2 + 32.5^2 this gives AB = 84.5: area 2535."
+    ],
+    "2004 Fermat Contest, Problem 24": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): f must be cubic: matching a(x^3 - (x - 2)^3) + p(x^2 - (x - 2)^2) + 2q = 4x^2 - 4x + 1 gives a = 2/3, p = 1, q = -1/6: 5/6."
+    ],
+    "2004 Fermat Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): along the diagonal the cube's vertices lie at 0, sqrt 3, 2 sqrt 3, 3 sqrt 3, the middle ones sqrt 6 from the axis; the cone's radius is a sixth of the depth, so they touch at depth 6 sqrt 6: the nearest vertex is 6 sqrt 6 - sqrt 3 from the apex."
     ]
   }
 }
