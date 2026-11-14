@@ -328,5 +328,21 @@ window.MATH_CONTEST_PAPERS = {
     "solUrl": "https://berkeley.mt/archives/bmt-2017/GeoS2017A.pdf",
     "solKind": "answer-key",
     "mirror": true
+  },
+  "2017 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_A_Solutions.pdf"
+  },
+  "2017 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_B_Solutions.pdf"
+  },
+  "2017 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_Combo_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_Combo_A_Solutions.pdf"
+  },
+  "2017 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2017_Combo_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_Combo_B_Solutions.pdf"
   }
 };

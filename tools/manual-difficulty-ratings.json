@@ -153,7 +153,11 @@
     "2018 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/Number-Theory-B-Test.pdf",
     "2017 BMT Analysis": "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf",
     "2017 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2017/DisS2017.pdf",
-    "2017 BMT Geometry": "https://oss.linstitute.net/wechatimg/2019/10/bmt2017geometry.pdf"
+    "2017 BMT Geometry": "https://oss.linstitute.net/wechatimg/2019/10/bmt2017geometry.pdf",
+    "2017 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_A.pdf",
+    "2017 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2017_Algebra_B.pdf",
+    "2017 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2017_Combo_A.pdf",
+    "2017 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2017_Combo_B.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -37655,6 +37659,134 @@
     "2009 Fermat Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each circle's plane meets the base plane in a side of an equilateral triangle with the tangency points at the midpoints; the tilt of 45 degrees and radius 10 place the contact points on a circle of radius about 7.3."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 1": [
+      1700,
+      "Rewrite a custom binary operation around its absorbing element inside a long nested expression."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 2": [
+      2250,
+      "Use conjugate cube roots to derive a cubic for twice each real part and apply Vieta to their product."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 3": [
+      2550,
+      "Replace equal logarithms by a common exponent; AM-GM equality forces the unique positive triple."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 4": [
+      2750,
+      "Take successive differences to obtain a constant-term linear recurrence and identify the boundary initial value keeping every term positive."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 5": [
+      2750,
+      "Prove complementary inputs remain complementary under a polynomial iterate, making every paired summand constant."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 6": [
+      3300,
+      "Compute shifted reciprocal root sums through transformed Vieta coefficients and count the real roots; the source also accepts excluding zero under its informal surprise wording."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 7": [
+      3350,
+      "Rewrite each lacunary exponential-series term as a difference of successive reciprocal powers and pass to the limit."
+    ],
+    "2017 PUMaC Division A Algebra, Problem 8": [
+      4050,
+      "Evaluate a nonperiodic generalized continued fraction by a finite Euler continued-fraction identity and a weighted geometric-series limit; the specific Euler identity is not covered by an existing card."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 1": [
+      1400,
+      "Reduce a nested power equation while retaining the unit base; the organizers accepted both the intended value and the overlooked unit-base alternative."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 2": [
+      1600,
+      "Factor a bivariate polynomial into separate linear factors and multiply its two binomial coefficients."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 3": [
+      1700,
+      "Rewrite a custom binary operation around its absorbing element inside a long nested expression."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 4": [
+      2250,
+      "Use conjugate cube roots to derive a cubic for twice each real part and apply Vieta to their product."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 5": [
+      2550,
+      "Replace equal logarithms by a common exponent; AM-GM equality forces the unique positive triple."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 6": [
+      2750,
+      "Take successive differences to obtain a constant-term linear recurrence and identify the boundary initial value keeping every term positive."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 7": [
+      2750,
+      "Prove complementary inputs remain complementary under a polynomial iterate, making every paired summand constant."
+    ],
+    "2017 PUMaC Division B Algebra, Problem 8": [
+      3300,
+      "Compute shifted reciprocal root sums through transformed Vieta coefficients and count the real roots; the source also accepts excluding zero under its informal surprise wording."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 1": [
+      2600,
+      "Multiply a fixed singleton survival probability through a coalescent process and use disjointness when two clusters remain."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 2": [
+      2550,
+      "Sum three-digit numbers avoiding equal adjacent digits by digit complements, correcting the short leading-zero representations."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 3": [
+      2700,
+      "Update a uniform prior on the number of black balls after one black observation and average the next-draw probability."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 4": [
+      3100,
+      "Find the least extinction fixed point of a branching die process by increasing finite-generation probabilities; a specific branching-process card is absent."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 5": [
+      3250,
+      "Express each minimum adjacent-swap cost through inversions and build its weighted permutation sum by inserting the next largest letter."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 6": [
+      3550,
+      "Evaluate a reciprocal shifted-binomial expectation and locate its strict integer threshold with exact power comparisons."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 7": [
+      3700,
+      "Convert a board of mutually attacking rooks into a two-regular bipartite graph and count placements by cycles or row-degree dynamic programming."
+    ],
+    "2017 PUMaC Division A Combinatorics, Problem 8": [
+      3850,
+      "Average pattern waiting times over all four-bit words using their prefix-suffix overlaps; exact finite-state first-step systems independently verify every overlap class."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 1": [
+      1000,
+      "Count permutations satisfying one fixed relative order among three distinguished letters."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 2": [
+      2250,
+      "Count binary colorings of a tetrahedron with one subdivided face under the rotations preserving that distinguished face."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 3": [
+      2600,
+      "Multiply a fixed singleton survival probability through a coalescent process and use disjointness when two clusters remain."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 4": [
+      2550,
+      "Sum three-digit numbers avoiding equal adjacent digits by digit complements, correcting the short leading-zero representations."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 5": [
+      2700,
+      "Update a uniform prior on the number of black balls after one black observation and average the next-draw probability."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 6": [
+      3100,
+      "Find the least extinction fixed point of a branching die process by increasing finite-generation probabilities; a specific branching-process card is absent."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 7": [
+      3250,
+      "Express each minimum adjacent-swap cost through inversions and build its weighted permutation sum by inserting the next largest letter."
+    ],
+    "2017 PUMaC Division B Combinatorics, Problem 8": [
+      3550,
+      "Evaluate a reciprocal shifted-binomial expectation and locate its strict integer threshold with exact power comparisons."
     ]
   }
 }
