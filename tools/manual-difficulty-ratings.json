@@ -37955,6 +37955,102 @@
     "2006 Fermat Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the base centres form an equilateral triangle of side 100 and the sphere's centre sits over its centre, 100/sqrt 3 away; tangency to each cone's slant side with the top level at 120 gives r = 38.5."
+    ],
+    "2005 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 165/10 = 16.5."
+    ],
+    "2005 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1/2 - 1/3 + 3/9 = 1/2."
+    ],
+    "2005 Fermat Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a = 1/2 and b = 2/3 give (3 + 12)/(6 + 4) = 3/2."
+    ],
+    "2005 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 13 + x^2 = 49: x = 6 or -6."
+    ],
+    "2005 Fermat Contest, Problem 5": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each roll turns the coin 270 degrees, so two rolls turn it 540, a half turn."
+    ],
+    "2005 Fermat Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2005 = 4 times 501 + 1: 501 times 10 + 1 = 5011."
+    ],
+    "2005 Fermat Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): B + (B + 21) + (B + 36) = 180: B = 41."
+    ],
+    "2005 Fermat Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): ages a, a + 1, a + 2 sum to 42, so a = 13, and the oldest three are 17, 18, 19: 54."
+    ],
+    "2005 Fermat Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x = -2 meets the lines at (-2, 12) and (-2, -3): base 15, height 6 to (4, 0), area 45."
+    ],
+    "2005 Fermat Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 0.5P = 0.2Q gives P = 0.4Q: 40%."
+    ],
+    "2005 Fermat Contest, Problem 11": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the squares of sides 6 and 5 force a middle square of side 1 and a top-right square of side 7: 11 by 13, perimeter 48."
+    ],
+    "2005 Fermat Contest, Problem 12": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 6 choices for the first 0, 2 for the next 0 and 3 for the 5: 36."
+    ],
+    "2005 Fermat Contest, Problem 13": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a circle touching three sides of the regular hexagon must touch all six, so at most 2."
+    ],
+    "2005 Fermat Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): L/4 - L/6 = 14: L = 168."
+    ],
+    "2005 Fermat Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x = 4 gives 22 and x = -2/5 gives 0."
+    ],
+    "2005 Fermat Contest, Problem 16": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the radii are sqrt 2 and 2 sqrt 2: 8 pi - 2 pi = 6 pi."
+    ],
+    "2005 Fermat Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 32 pi of water over a base of 16 pi: depth 2."
+    ],
+    "2005 Fermat Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 10 correct give 30 and 9 correct at most 28: 29 is impossible."
+    ],
+    "2005 Fermat Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Chris gains 8 km/h on 1 km: 1/8 hour, 7.5 minutes."
+    ],
+    "2005 Fermat Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the height to BC is sqrt((x + 1)^2 - (x - 1)^2) = 2 sqrt x: area (x - 1) times 2 sqrt x."
+    ],
+    "2005 Fermat Contest, Problem 21": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a^b is largest with an even exponent and a small base: (-1)^(-2) + (-3)^(-2) = 1 + 1/9 = 10/9."
+    ],
+    "2005 Fermat Contest, Problem 22": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the centre is the midpoint of PS, so r^2 = 14^2 + 12^2 = 340; the square of side s has (14 + s)^2 + s^2 = 340: s^2 = 16."
+    ],
+    "2005 Fermat Contest, Problem 23": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): half the cube's surface is 48, and the cut is a regular hexagon of side 2 sqrt 2, area 12 sqrt 3 = 20.8: 69."
+    ],
+    "2005 Fermat Contest, Problem 24": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): both selections include the first and last terms, so n = 6k + 1 and each selection averages the middle term M: (3k + 1)M = 320 and (2k + 1)M = 224 give k = 3, M = 32: 19 times 32 = 608."
     ]
   }
 }
