@@ -22247,6 +22247,930 @@
     "2017 Utah State Math Contest Senior, Problem 40": [
       1500,
       "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 4 sin^3 x - sin x relates to sin 3x; combine the periods."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 1": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the days form 1 + 2 + ... + 15."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 2": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 4! orders less those with the two novels adjacent."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 3": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): equal times: 400/(v + 50) = 200/(v - 50)."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 4": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1 - P(sum at most 3)."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 5": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the foot of the perpendicular to y = 2x is the midpoint of AB."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 6": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the focus is as far above the vertex as the directrix is below."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 7": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): fill rates add and the drain's subtracts."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 8": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): list the partitions of 7."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 9": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the exterior angle 120 makes the isosceles triangle equilateral."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 10": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a three-set Venn diagram from the given counts."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 11": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 100 terms, first 35, difference 2."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 12": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2n a square and 3n a cube: exponent conditions mod 2 and 3."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 13": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): combine the remainders mod 5 and 9."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 14": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 15 + 10 - 5."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 15": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the third side lies strictly between 5 and 7."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 16": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): each even number exceeds its odd partner by 1."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 17": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): shift to f(x) and chart the signs of the factors."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 18": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): combine: log_4(x - 3) = 3."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 19": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): cross-multiply: ab is fixed by the proportion."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 20": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): condition on at least one girl named Nancy."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 21": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): write both sides as powers of 5."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 22": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the crossing height is the harmonic combination 10 * 15/25."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 23": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the diagonal against two sides of the square."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 24": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): one third of base times height."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 25": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): exactly 11 divisors means p^10: 2^10."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 26": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the discriminant a^2 - 4a decides the number of roots."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 27": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): opposite subrectangles have equal products of areas."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 28": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): riders and fares give two linear equations."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 29": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): count the outcomes where one person's coin differs."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 30": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): area x(12 - 2x) is a downward parabola."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 31": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the nine-coin tip times the travellers is 841 cents: factor."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 32": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): fix the median and push the others to extremes."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 33": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): buy as many 5-boxes as possible, then 3-boxes."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 34": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): powers of 3 cycle in fours."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 35": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): x - 3x^2 >= 0 between its roots."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 36": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the cable is a parabola through the towers' tops and lowest point."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 37": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): square both sides and solve."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 38": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the odd terms cancel in the sum of conjugate cubes."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 39": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (x - y)^3 = x^3 - y^3 - 3xy(x - y)."
+    ],
+    "2018 Utah State Math Contest Junior, Problem 40": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): read the radii and subtract the areas."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 1": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the chain moves equal lengths on both wheels; the rear wheel turns twice as fast."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 2": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): fill rates add and the drain's subtracts."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 3": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): count the outcomes where one coin differs from the other two."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 4": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a three-set Venn diagram from the given counts."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 5": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): opposite subrectangles have equal products of areas."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 6": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): C(6, 2) * 2^2."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 7": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 5 degrees of the Earth's circumference along a meridian."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 8": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): perpendicular paths: the separation is a hypotenuse."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 9": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): each even number exceeds its odd partner by 1."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 10": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): three sides of fencing: x(100 - 2x) is largest at its vertex."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 11": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the angle of the shadow is the arc's share of the circumference."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 12": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): z = 2 sqrt 2 cis 135 degrees; raise to the fourth power."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 13": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): sin x(1 + 2 cos x) = 0 on the interval."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 14": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): expand the base-8 digits."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 15": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 9 + 180 digits for pages 1 to 99, then three per page."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 16": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): find the pattern relating consecutive fractions."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 17": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 18! = -1 mod 19."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 18": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 6! orders less those with the two novels adjacent."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 19": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): list the 16 sequences with exactly one run of two heads."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 20": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the altitude to 8 is 3."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 21": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): square both sides and solve."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 22": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): multiples of 2, 3 or 5 up to 60."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 23": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): equal roots of powers of 7: equate the exponents."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 24": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a^2 - 4|a| > 0 casewise."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 25": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): chase the angles in the figure."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 26": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): fix the median and push the others to extremes."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 27": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): powers of 3 cycle in fours."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 28": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): write each log in natural logs: the product telescopes to a multiple of log_a d."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 29": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): choose two of six horizontal and two of six vertical lines."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 30": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the line meets the parabola only at P: a double root."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 31": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): simplify the compound fraction and solve."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 32": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a digit product has only primes 2, 3, 5, 7."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 33": [
+      1500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): each stage adds 4/9 of the previous new area."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 34": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): locate the parabola's vertex and the circle's conditions."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 35": [
+      1500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a - b divides p(a) - p(b), which limits the possible values."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 36": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): tangency: the centre's distance to the line equals the radius."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 37": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the odd terms cancel in the sum of conjugate cubes."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 38": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): revenue (90 + 5k)(200 - 10k) is a downward parabola."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 40": [
+      1500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): simplify with half-angle identities, then read the period."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 1": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): only x^2 = 12 gives real roots: their product is -12."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 2": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): subtract the known rates from the combined rate."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 3": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): real coefficients give the conjugate 3 + 2i."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 4": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): multiply the two equations: xy + 2 + 1/(xy) = 8."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 5": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): average the vinegar fractions 1/2, 1/3 and 1/4."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 6": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): count the prime days in each prime month."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 7": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): fuel use per hour idling and per mile driving."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 8": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the payments' total against the loan."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 9": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2^12 = 1 mod 13, so 2^1000 = 2^4."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 10": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the time already used fixes the speed needed."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 11": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): an odd number of divisors means a perfect square."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 12": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): ten ordered triples sum to 6."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 13": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): subtract the inner circles from the large one."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 14": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): test 3, 7 and 11 by their rules."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 15": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): multiply the fraction by 5 repeatedly."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 16": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): angles in progression with a right angle: 30-60-90."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 17": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 10a + b + 10b + a = 11(a + b)."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 18": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): vertex form with p = -3: (x - 4)^2 = -12(y - 5)."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 19": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the parallel lines make similar triangles at E."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 20": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): split the square into nine small squares: two bugs share one."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 21": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1648 = 2^4 * 103."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 22": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the edge, half-diagonal and height form a right triangle."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 23": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): count down-right paths on the diagram."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 24": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): each condition says n + 1 is a multiple of the divisor."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 25": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): test each candidate for the required triangle."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 26": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): each term is twice the previous plus the one before."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 27": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): two candies from four equally likely colours."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 28": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the square's diagonal is the log's diameter: 2/pi of the area."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 29": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): factor both and take the smaller power of each prime."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 30": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): selections with repetition: C(6 + 1, 2)."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 31": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): each is short of the price by a fixed amount."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 32": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the waist and hem radii from the given lengths."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 33": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): count arrangements of STATE with the two T's."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 34": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): pi r^2 = 32000 gives the radius."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 35": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (1 - p)(1 + q) = 1."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 36": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): undo each customer's halving from the end."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 37": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): three consecutive integers n, n + 1, n + 2."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 38": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the remainders fix the survivors below 28."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 39": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the hypotenuse is a diameter; the area is largest when isosceles."
+    ],
+    "2019 Utah State Math Contest Junior, Problem 40": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 144 has 15 divisors: 8 unordered side pairs."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 1": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): place the digits to make primes with the smallest total."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 3": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the term with y^4: C(14, 4)(2x^2)^10 y^4."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 4": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the marbles after n students form a triangular number plus one."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 5": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): OY = 6 and OZ = 12 make OYZ a 30-60-90 triangle."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 6": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): sums of three distinct multiples of 3: count the reachable values."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 8": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): substitute y^2 = 9 - x^2: a quadratic in x on [-3, 3]."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 9": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the total area is a quadratic in the cut point; take its vertex."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 11": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): write each log in base b."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 12": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): count the factors of 5."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 14": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): V - E + F = 2."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 15": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): build right triangles for each angle and use the cosine of a sum."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 16": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2^12 = 1 mod 13, so 2^1000 = 2^4."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 17": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): n + 1 is a multiple of each divisor: lcm minus 1."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 18": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): read the period and the extreme heights from the sine model."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 19": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): n lines make at most 1 + n(n + 1)/2 regions."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 21": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): compare the trapezoid's area with the parallelogram's."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 22": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): ten ordered triples sum to 6."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 23": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): take logs of both relations and solve for a and b."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 24": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (sin + cos)^2 = 1 + sin 2 theta."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 25": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 27^x/3^y = 3^(3x - y) = 3^12."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 26": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): twelve primes below 40, so 2^12 divisors."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 27": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): solve both quadratic inequalities and compare the interval lengths."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 28": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): every even-length palindrome is divisible by 11."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 29": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): s^3 = 3 s^2."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 30": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): two candies from four equally likely colours."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 31": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the lens is two 120-degree segments."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 32": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): angles subtending the same arc are equal."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 33": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): real roots for every b need c >= 0 when a < 0."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 34": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): with u = 9^x: u^2 - u - 2 = 0, only u = 2 is valid."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 35": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): chart each set's rational inequality and compare."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 36": [
+      1500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): count the crossings of the sine with the parabola over each half-period."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 37": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): drain x litres of the mixture and refill with antifreeze."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 38": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): repunits: gcd(R_100, R_8) = R_gcd(100, 8) = 1111."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 39": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): area scales by the product of the two factors."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 40": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2^10 divisors less the divisor 1 is odd."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 1": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): scale the moon's diameter by the same ratio."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 2": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the sum of the roots is minus the x^4 coefficient: 0."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 3": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 444...4 = 4 * 111...1, and 11...1 is 3 mod 4 beyond one digit."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 4": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the radius in inches times the scale."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 5": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 13 * C(4, 3) * 12 * C(4, 2)."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 6": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): track the chocolate in each solution."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 7": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the fall plus twice the sum of the rebounds."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 8": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): swap x and y and solve."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 9": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): count palindromes with the stated property."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 10": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): right triangles in the shelf's corner geometry."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 11": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the front edges from the same right triangles."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 12": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): C(12, 4) * C(8, 3)."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 13": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1.7 times the price less the discount."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 14": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): case on the signs of the variables."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 15": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): powers of 3 cycle in fours."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 16": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): pair the players: 4! matchings."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 17": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): c = b/3, so c + 3 = b/3 + 3."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 18": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a^2 - 4a > 0 when a < 0."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 19": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): largest numerators over smallest denominators."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 20": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): slant height 13, lateral area pi r l."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 21": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the foot of the perpendicular to y = 3x is the midpoint of PQ."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 22": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): fix a teacher and place the students."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 23": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the ladder's length fixed: the top slides down."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 24": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): substitute (1, 2) into both equations."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 25": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (2 + 1)(4 + 1)."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 26": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the L's area as a share of the triangle fixes the length."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 27": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 10 + 15 - 5 with disease."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 28": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 3 + 2 sqrt 2 = (1 + sqrt 2)^2."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 29": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): F = 9C/5 + 32 = C."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 30": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): half-diagonals x and x + 2 with hypotenuse 10."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 31": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the five sums total four times the ages."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 32": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): each is short of the price by a fixed amount."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 33": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the recurrence has period 6."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 34": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): similar triangles EBF and DCF give BF."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 35": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): coupon collector for four colours."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 36": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the eating rates give linear relations."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 37": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the digits 1 to 9 split into three numbers; place them by value."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 38": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): combine the remainders mod 11 and 12."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 39": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): similar triangles turn the area ratio into a length ratio."
+    ],
+    "2020 Utah State Math Contest Junior, Problem 40": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the larger piece exceeds the bound on a central interval."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 1": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): case on the signs of the variables."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 2": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the centres form an equilateral triangle; subtract three 60-degree sectors."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 3": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1 - (12 * 11 * 10 * 9 * 8)/12^5."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 4": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): substitute (1, 4) into both and solve for a and b."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 5": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): Heron's formula with the sides in p."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 6": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): f(-x) = -f(x), and the ratio stays between -1 and 1."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 7": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): unroll the can: the helix becomes a straight line."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 8": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 50 hours is 2 hours mod 12."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 9": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): coupon collector for four colours."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 10": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the x^50 coefficient is 0 + 1 + ... + 50."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 11": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the line of sight is tangent to the Earth: cos of the central angle."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 12": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the fuel's cross-section is a circular segment."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 13": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the larger piece exceeds the bound on a central interval."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 14": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): two solutions of a linear system mean the whole line of solutions."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 15": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a googolplex is 10^(10^100): peel off the logs."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 16": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the bisector's direction is the sum of unit vectors along the lines."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 17": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): pair the players: 4! matchings."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 18": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): with t the sum of cube roots, t^3 = 4 - 3t, so t = 1."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 19": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the octahedron is a sixth of the cube."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 20": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): count the plates matching the witness's partial description."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 21": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): fix the edge total and maximize the volume or area as a function of x."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 22": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): expand the base-7 digits, fraction part included."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 23": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the octagon's area from its circumradius 10, times the depth."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 24": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): arrange the subject blocks, then the books within each."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 25": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): Stewart's theorem with AD = 1 and DB = 3."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 27": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): x^2 - 10|x| + 21 = 0: |x| = 3 or 7."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 28": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): n divides the differences of the numbers: their gcd."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 29": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): read the period and extremes from the trig model."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 31": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): r + (-r) + s = -alpha/3 with the product condition."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 32": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the subtended angle and the distance give the island's width."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 34": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the cyclic product of logs is 1."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 35": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (sec - tan)^2 = (1 - sin)/(1 + sin)."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 36": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a geometric series with ratio 1/2."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 37": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): four consecutive even numbers sum to 8n + 12."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 38": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the nested expression repeats inside itself, so substituting its value 2 back gives an equation for x."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 39": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): find the third side and the cosine of the angle."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 40": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): y must be even; count the y keeping x positive."
     ]
   }
 }
