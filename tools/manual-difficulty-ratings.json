@@ -26875,6 +26875,226 @@
     "2007 Utah State Math Contest Senior, Problem 30": [
       600,
       "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): |8 + 3 + 4|/sqrt 5 = 3 sqrt 5."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 1": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): ab = (16 - 9)/2 = 7/2, so a^3 + b^3 = 64 - 3(7/2)(4) = 22."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 2": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): DE = DO = OC makes two isosceles triangles: the base angles chase to 3x = 30."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 3": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the region is two halves of the radius-1 circle minus two halves of the radius-1/2 circle: 3 pi/4."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 4": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): f(t) = (t + 1)^2 - 3(t + 1) + 5 = t^2 - t + 3."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 5": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): inscribed angles on equal arcs and the exterior angle of the chord triangle: 96 - 44 = 52."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 6": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the center of a 1-to-9 magic square is 5, so N + 5 + 7 = 15."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 7": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): multiply by the conjugate: (24 - 32i)/20."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 8": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the inscribed square has side r sqrt 2: 2 pi r over 4 sqrt 2 r."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 9": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): x = (sqrt x)^2 and x = x^3/x^2 are rational, but x = sqrt 2 fails III."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 10": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): b is minus the sum of the roots."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 11": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the three extra days, the 29th to the 31st, are neither Friday nor Monday, so July 1 is a Tuesday and July 20 a Sunday."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 12": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): every removal of 3 leaves an equilateral triangle among the 10 points (tilted ones included), and 4 suffice."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 13": [
+      300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 5^4 = 625."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 14": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): digit sum 46 and the alternating sum rule out 3, 9 and 11; 7 divides it."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 15": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2 or 3 equilateral pieces cannot tile, and joining midpoints gives 4."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 16": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 150 road ends, two per road."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 17": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 5x(x - 1) = 100 gives x = 5 or -4, and -4 is outside the domain."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 18": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2(100a + 10b + c) = 100c + 10b + a forces 199a = 98c, impossible with digits."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 19": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the two statements stand or fall together, so both lie: I and III hold."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 20": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): two purses fit, 40 or 45 pennies; the official answer averages them as equally likely (85 percent), an assumption the problem never states."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 21": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): ten blocks with three Ts and two As: 10!/(3! 2!)."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 22": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): A + A/3 + 2A = 180."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 23": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 5 km ends halfway along the third side: sqrt(3.5^2 + 0.75) = sqrt 13."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 24": [
+      300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 10^-9 times 10^9 = 1."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 26": [
+      300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 3 divided by 2/5 = 7 1/2."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 27": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): V is proportional to h(x - 2 sqrt 3 h)^2; AM-GM on 4 sqrt 3 h and the two equal factors gives h = sqrt 3 x/18."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 28": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): only numbers prime to 6 are shiny: 2 of every 6, so 150 pennies, 100 rolled."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 29": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): y = (d - c)/b at x = 0."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 30": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2^(6x) = 2^(x + 35)."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 1": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): DE = DO = OC makes two isosceles triangles: the base angles chase to 3x = 30."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 2": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the region is two halves of the radius-1 circle minus two halves of the radius-1/2 circle: 3 pi/4."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 3": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): f(t) = (t + 1)^2 - 3(t + 1) + 5 = t^2 - t + 3."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 4": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): squaring gives a + d = 0 and a^2 = d^2 = 3: d = sqrt 3."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 5": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 0 + log 5 + x = 3 log 4 = log 64, so x = log 12.8."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 6": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (x + 5)(x - 2) < 0 is an interval of length 7, of which x < -sqrt 5 keeps 5 - sqrt 5."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 7": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the inscribed square has side r sqrt 2: 2 pi r over 4 sqrt 2 r."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 8": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): x = (sqrt x)^2 and x = x^3/x^2 are rational, but x = sqrt 2 fails III."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 9": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 9(x - 3)^2 + 4(y + 2)^2 = 36."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 10": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 6^6 strings less the 6! with distinct digits."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 11": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the other seven students solve 29 problems, so one of them solves at least 5."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 12": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the repeated digit sum is the remainder mod 9, and 2008 is 1 mod 9."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 13": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): equal times at 10 and 5 miles per hour average 7.5, a pace of 8 minutes per mile."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 14": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): cos 2t (2 sin 2t - 1) = 0 gives the four odd multiples of pi/4 and pi/12, 5pi/12, 13pi/12, 17pi/12."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 15": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2(100a + 10b + c) = 100c + 10b + a forces 199a = 98c, impossible with digits."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 16": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): two purses fit, 40 or 45 pennies; the official answer averages them as equally likely (85 percent), an assumption the problem never states."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 17": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): peel the logs: log_2 x = 4, x = 16, and 16^(-2/3) = cube root 2/8."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 18": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): ten blocks with three Ts and two As: 10!/(3! 2!)."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 19": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): only numbers prime to 6 are shiny: 2 of every 6, so 150 pennies, 100 rolled."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 21": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): on a truthful day, prime and half male force 2 friends, against three older; so she lies today and cannot have said the true statement about 288."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 22": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 24 times 23 times 22 = 24!/21!."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 23": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the rationals are countable and the reals are not, so (e) is false; the others are true."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 24": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 108 degrees does not divide 360, so regular pentagons cannot meet around a point."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 25": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 5 km ends halfway along the third side: sqrt(3.5^2 + 0.75) = sqrt 13."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 27": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): V is proportional to h(x - 2 sqrt 3 h)^2; AM-GM on 4 sqrt 3 h and the two equal factors gives h = sqrt 3 x/18."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 30": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1/36 + 1/12 + 1/x = 1/6 gives x = 18."
     ]
   }
 }
