@@ -30607,6 +30607,114 @@
     "2007 Calgary Junior Math Contest, Problem 9": [
       900,
       "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the semicircle's center and radius from the rectangle's sides give BD."
+    ],
+    "2006 Calgary Junior Math Contest, Problem 1": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): subtract the squares from 99: only 99 - 16 = 83 is prime."
+    ],
+    "2006 Calgary Junior Math Contest, Problem 2": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the two after-tax prices differ by 8 percent of the price; use the stated condition."
+    ],
+    "2006 Calgary Junior Math Contest, Problem 3": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): each side is less than the sum of the others: the fourth side is below 19.5, from 1 to 19."
+    ],
+    "2006 Calgary Junior Math Contest, Problem 4": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): translate both statements about the line into equations in the positions."
+    ],
+    "2006 Calgary Junior Math Contest, Problem 5": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): Carol runs 600 m while Bob runs 800 m; when Bob finishes, Carol is at 750 m."
+    ],
+    "2006 Calgary Junior Math Contest, Problem 6": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the 31 grades from 70 to 100 total 2635; removing one score gives the stated average."
+    ],
+    "2006 Calgary Junior Math Contest, Problem 7": [
+      700,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): count the 1s page by page through the units and tens until there are 24."
+    ],
+    "2006 Calgary Junior Math Contest, Problem 8": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): count the codes before the given one letter by letter."
+    ],
+    "2006 Calgary Junior Math Contest, Problem 9": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): N/11 = 10101...01, with 1003 ones and 1002 zeros."
+    ],
+    "2005 Calgary Junior Math Contest, Problem 1": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): pennies, nickels and dimes covering every amount up to 10 cents with the fewest coins."
+    ],
+    "2005 Calgary Junior Math Contest, Problem 2": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): one of a prime sum and difference pair must involve 2: P = 5, Q = 2."
+    ],
+    "2005 Calgary Junior Math Contest, Problem 3": [
+      700,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): count the circles in each region between the lines that touch the given circle and both lines."
+    ],
+    "2005 Calgary Junior Math Contest, Problem 4": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): compare the largest and smallest arrangements of the three digits."
+    ],
+    "2005 Calgary Junior Math Contest, Problem 5": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): pi r^2 equals 20 l, so l = pi r^2/20."
+    ],
+    "2005 Calgary Junior Math Contest, Problem 6": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 4d - (30 - d) = 0 gives d = 6."
+    ],
+    "2005 Calgary Junior Math Contest, Problem 7": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): each new block of squares adds a fixed amount to the perimeter."
+    ],
+    "2005 Calgary Junior Math Contest, Problem 8": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the count goes thumb to little finger and back: period 8."
+    ],
+    "2005 Calgary Junior Math Contest, Problem 9": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): a tangential quadrilateral has equal sums of opposite sides: 4 + 16 = 9 + x, x = 11."
+    ],
+    "2004 Calgary Junior Math Contest, Problem 1": [
+      200,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): solve the fraction equation for N."
+    ],
+    "2004 Calgary Junior Math Contest, Problem 2": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): two triangles have angles totalling 360: 360 - 350 = 10."
+    ],
+    "2004 Calgary Junior Math Contest, Problem 3": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): piano keys repeat in groups of seven white keys; count from A to C."
+    ],
+    "2004 Calgary Junior Math Contest, Problem 4": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): count each digit needed on each birthday and when two candles of a kind run out."
+    ],
+    "2004 Calgary Junior Math Contest, Problem 5": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 2 times 1.5 = 3, an increase of 200 percent."
+    ],
+    "2004 Calgary Junior Math Contest, Problem 6": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 12 oranges plus 36 oranges for $18: 37.5 cents each."
+    ],
+    "2004 Calgary Junior Math Contest, Problem 7": [
+      700,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): work backward through the possible operations to the starting number."
+    ],
+    "2004 Calgary Junior Math Contest, Problem 8": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): track the coffee fraction after each refill with milk."
+    ],
+    "2004 Calgary Junior Math Contest, Problem 9": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the diagonals satisfy pq = 120 and p^2 + q^2 = 400: the shorter is 2 sqrt 10."
     ]
   }
 }
