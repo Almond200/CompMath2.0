@@ -14102,7 +14102,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2020 UKMT SMC, Problem 19", formulas: [], strategy: "", tree: ["alg.ineq.optimize.integer"] },
   { ref: "2020 UKMT SMC, Problem 20", formulas: ["exponent-laws"], strategy: "", tree: ["alg.exp.rules.eq"] },
   { ref: "2020 UKMT SMC, Problem 21", formulas: [], strategy: "", tree: ["nt.digit.sum"] },
-  { ref: "2020 UKMT SMC, Problem 22", formulas: ["completing-the-square"], strategy: "", tree: ["alg.poly.quad.roots"] },
+  { ref: "2020 UKMT SMC, Problem 22", formulas: [], strategy: "", tree: ["alg.poly.quad.roots"] },
   { ref: "2020 UKMT SMC, Problem 23", formulas: [], strategy: "", tree: ["alg.fn.feq"] },
   { ref: "2020 UKMT SMC, Problem 24", formulas: ["law-of-cosines"], strategy: "", tree: ["geo.tri.cevian.bisector"] },
   { ref: "2020 UKMT SMC, Problem 25", formulas: [], strategy: "", tree: ["geo.poly.regular.other"] },
