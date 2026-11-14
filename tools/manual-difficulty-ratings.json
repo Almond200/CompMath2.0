@@ -31447,6 +31447,202 @@
     "2017 Columbus State Tournament, Problem 50": [
       1500,
       "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): use the two cube decompositions of 1729 to write the target in the required form."
+    ],
+    "2016 Columbus State Tournament, Problem 1": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): perpendicular lines have slopes multiplying to -1: (-3/2)(a/3) = -1, a = 2."
+    ],
+    "2016 Columbus State Tournament, Problem 2": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): read the edges from the given lengths and add the six faces."
+    ],
+    "2016 Columbus State Tournament, Problem 3": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2016 is a multiple of 4: 1."
+    ],
+    "2016 Columbus State Tournament, Problem 4": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1 + 1/x decreases, so the minimum is at x = 2016."
+    ],
+    "2016 Columbus State Tournament, Problem 5": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 4 times 6 - 3 times 7 = 3."
+    ],
+    "2016 Columbus State Tournament, Problem 6": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x^2 - 2x + 5 - k = 0 has one root when its discriminant is 0: k = 4."
+    ],
+    "2016 Columbus State Tournament, Problem 7": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (x - 1)^2 + (y - 2)^2 = 9: radius 3."
+    ],
+    "2016 Columbus State Tournament, Problem 8": [
+      200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (x - 1)^2 + 2: vertex (1, 2)."
+    ],
+    "2016 Columbus State Tournament, Problem 9": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the product of all four roots of the quartic is the constant term, 3."
+    ],
+    "2016 Columbus State Tournament, Problem 10": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): ab = 225 and a + b = 78: a = 3, b = 75, ratio 25."
+    ],
+    "2016 Columbus State Tournament, Problem 11": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2x - 3 is odd, so its square is at least 1: minimum 3."
+    ],
+    "2016 Columbus State Tournament, Problem 12": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 4 men are 20 percent of 20 people: 10 more women."
+    ],
+    "2016 Columbus State Tournament, Problem 13": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): set x = 1: (1 - 2)^2016 = 1."
+    ],
+    "2016 Columbus State Tournament, Problem 14": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 0 must be in the first set, so a + b = 0 or a = 0; match the elements: b - a = 2."
+    ],
+    "2016 Columbus State Tournament, Problem 15": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): expand the cube and read the three lowest coefficients."
+    ],
+    "2016 Columbus State Tournament, Problem 16": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a power is 1 when its exponent is 0 or its base is 1 or -1 with an even exponent; count each case."
+    ],
+    "2016 Columbus State Tournament, Problem 17": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): count 3-digit numbers with the stated digit sum over 900."
+    ],
+    "2016 Columbus State Tournament, Problem 18": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (x + 5)^2 + (2y - 5)^2 = 0 gives x = -5, y = 5/2."
+    ],
+    "2016 Columbus State Tournament, Problem 19": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): subtract: 2(x - y) = k - 2, so 0 < x - y < 1."
+    ],
+    "2016 Columbus State Tournament, Problem 20": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): simplify the quotient of logs with change of base."
+    ],
+    "2016 Columbus State Tournament, Problem 21": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): odd and f(x) = f(1 - x) give period 2, and f(0) = 0: f(2016) = 0."
+    ],
+    "2016 Columbus State Tournament, Problem 22": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (x - 7)(y - 7) = 49: 3 pairs."
+    ],
+    "2016 Columbus State Tournament, Problem 23": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the quadratic is at most 0 at both 2 and 4: 4 - 2a - 4 <= 0 and 16 - 4a - 4 <= 0."
+    ],
+    "2016 Columbus State Tournament, Problem 24": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): with t = 2 - x > 0, f = t + 1/t - 2 + ... rewrite and apply AM-GM: minimum 2."
+    ],
+    "2016 Columbus State Tournament, Problem 25": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): solve the linear system in log x and log y, then add them."
+    ],
+    "2016 Columbus State Tournament, Problem 26": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): roots r, s with r + s = 2 and the third root -2; the cubic fixes a = 2."
+    ],
+    "2016 Columbus State Tournament, Problem 27": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): log_(x^2) b + log_(b^2) x = 1 forces log_x b = 1, so x = b."
+    ],
+    "2016 Columbus State Tournament, Problem 28": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 3^(1 - 2x) = pi gives 9^x = 3/pi; then 9^(1 + x) = 27/pi."
+    ],
+    "2016 Columbus State Tournament, Problem 29": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x = sqrt 2; then x^3 + 2x^2 - 2x - 5 = -1, and the power gives 1."
+    ],
+    "2016 Columbus State Tournament, Problem 30": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the product of (k + 1)/k is 2017."
+    ],
+    "2016 Columbus State Tournament, Problem 31": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): each t^2 + 1/t^2 >= 2 with equality at t = plus or minus 1: 8 triples."
+    ],
+    "2016 Columbus State Tournament, Problem 32": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the discriminant 4a^2 + 1 is positive: 2 solutions."
+    ],
+    "2016 Columbus State Tournament, Problem 33": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the inside decreases on (-infinity, -1), where the log base 1/2 then increases."
+    ],
+    "2016 Columbus State Tournament, Problem 34": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): t^3 + 2016t is odd and increasing, so x - 1 = -(y - 1): x + y = 2."
+    ],
+    "2016 Columbus State Tournament, Problem 35": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a + b = ab gives (a - 1)(b - 1) = 1, so the log is 0."
+    ],
+    "2016 Columbus State Tournament, Problem 36": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): S10, S20 - S10, S30 - S20, S40 - S30 form a geometric sequence: ratio 2, so S40 = 150."
+    ],
+    "2016 Columbus State Tournament, Problem 37": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x + 1 - 2 sqrt x = (1 - sqrt x)^2: the sum is 2."
+    ],
+    "2016 Columbus State Tournament, Problem 38": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): sin negative and tan negative put the angle in the fourth quadrant: cos = 2 sqrt 2/3."
+    ],
+    "2016 Columbus State Tournament, Problem 39": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): f(f(f(x))) = a^3 x + b(a^2 + a + 1): solve for a and b."
+    ],
+    "2016 Columbus State Tournament, Problem 40": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 4 + 9 - 12 cos 60 = 7: sqrt 7."
+    ],
+    "2016 Columbus State Tournament, Problem 41": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1 - sin 2t = (sin t - cos t)^2: take signs in the given range."
+    ],
+    "2016 Columbus State Tournament, Problem 42": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the distance from the origin to the center is sqrt 2, and the radius 2 sqrt 2; the nearest point is sqrt 2 away."
+    ],
+    "2016 Columbus State Tournament, Problem 43": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): sin^4 + cos^4 = 1 - (1/2) sin^2 2x; a quadratic in sin 2x on [-1, 1]."
+    ],
+    "2016 Columbus State Tournament, Problem 45": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the system is symmetric; subtracting forces x = y, then test integer values."
+    ],
+    "2016 Columbus State Tournament, Problem 46": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): f(2x - 1) = 2f(x) - 1 from f(f(f(x))); x = 1 gives f(1) = 1 and then f(0)."
+    ],
+    "2016 Columbus State Tournament, Problem 47": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): |z|^2016 = |z| gives |z| = 0 or 1; then z^2017 = 1: 2017 roots plus 0."
+    ],
+    "2016 Columbus State Tournament, Problem 48": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): perpendicular medians: the centroid splits them 2:1, giving right triangles with the side lengths."
+    ],
+    "2016 Columbus State Tournament, Problem 49": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x = e^(i theta), so x^3 + 1/x^3 = 2 cos 3 theta."
+    ],
+    "2016 Columbus State Tournament, Problem 50": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): substitute z = -x - y and solve over the rationals."
     ]
   }
 }
