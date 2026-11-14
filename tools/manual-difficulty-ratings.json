@@ -41151,6 +41151,106 @@
     "2002 Cayley Contest, Problem 25": [
       700,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): subtracting, k(k - 1)x = 6, so k(k - 1) = 2 or 6: k = 2, -1, 3, -2, and y = (kx + 7)/5 is an integer only for k = 3 and -2: 2."
+    ],
+    "2001 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (30 - 12)/9 = 2."
+    ],
+    "2001 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (15/4)(10/3) = 25/2."
+    ],
+    "2001 Cayley Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with x = 1/4, 1/x = 4 is largest."
+    ],
+    "2001 Cayley Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 3 boys and 4 girls of 50: 14%."
+    ],
+    "2001 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): alternate angles give angle ACB = 50, the isosceles triangle gives angle BAC = 50: x = 80."
+    ],
+    "2001 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): Dean averages 9, so Ruth scores 9.5 in each of 18 games: 171."
+    ],
+    "2001 Cayley Contest, Problem 7": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the square less triangle ABD (2) and triangle MCN (1/2): 3/2."
+    ],
+    "2001 Cayley Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a triangle of area 16 on a base of 8 has height 4: slope 4/8 = 1/2."
+    ],
+    "2001 Cayley Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (10^3 times 10^x)^2 = 10^(6 + 2x) = 10^18: x = 6."
+    ],
+    "2001 Cayley Contest, Problem 10": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the middle integer is 15, and the largest and smallest sum to twice it: 30."
+    ],
+    "2001 Cayley Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 60 is a multiple of 15, so the remainder is 49 mod 15 = 4."
+    ],
+    "2001 Cayley Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 6 + 36 + 216 = 258."
+    ],
+    "2001 Cayley Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the steps are 17 and 11, so common terms recur every lcm(11, 17) = 187: 71 + 187 = 258."
+    ],
+    "2001 Cayley Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): opposite sides of a rectangle are translates: (5, 5) to (9, 2) is over 4 and down 3, so a = 11 and b = 10: 1."
+    ],
+    "2001 Cayley Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): forest 2/5 and dunes 3/20 leave 9/20 for the 90 hectares of farm: 200."
+    ],
+    "2001 Cayley Contest, Problem 16": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 7x - 7 < 15 and 25 < 7x + 28 give -3/7 < x < 22/7: x = 0, 1, 2, 3."
+    ],
+    "2001 Cayley Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): AP = BP = sqrt(4 + 4 + 1) = 3 and AB = 2, so the height to AB is sqrt 8: area sqrt 8."
+    ],
+    "2001 Cayley Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the digit sum 15 + 3k (k sixes) is a multiple of 9 only for one 6 or four 6s: 5 + 5 = 10."
+    ],
+    "2001 Cayley Contest, Problem 19": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): adding the three equations gives twice the total, 210: average 35."
+    ],
+    "2001 Cayley Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the four semicircles (2 pi) less the parts of the circle outside the square (2 pi - 4): 4."
+    ],
+    "2001 Cayley Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): P = (t, 5t + 3) gives M = ((t + 3)/2, (5t + 1)/2), on y = 5x - 7."
+    ],
+    "2001 Cayley Contest, Problem 22": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): AB = 5, so the small circle lies inside the large one: 12 - 5 - 6 = 1."
+    ],
+    "2001 Cayley Contest, Problem 23": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the air has the same volume either way up: pi(H - 20) in the narrow part equals 9 pi(H - 28) in the wide part: H = 29."
+    ],
+    "2001 Cayley Contest, Problem 24": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): abba + cddc = 1efe1 forces a + c = 11 and the middle columns force b + d = 0 or 11: 4 pairs {a, c} times 9 choices of (b, d) = 36."
+    ],
+    "2001 Cayley Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): A = (3, 3) and B = (3 + 2 sqrt 3, 1); the common tangent through the external centre of similitude gives the intercept 9 + 3 sqrt 3."
     ]
   }
 }
