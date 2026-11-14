@@ -170,7 +170,8 @@
     "2014 BMT Analysis": "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf",
     "2014 BMT Geometry": "https://berkeley.mt/archives/bmt-2014/GeoS2014.pdf",
     "2013 BMT Analysis": "https://berkeley.mt/archives/bmt-2013/AnaS2013.pdf",
-    "2013 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2013/DisS2013.pdf"
+    "2013 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2013/DisS2013.pdf",
+    "2013 BMT Geometry": "https://berkeley.mt/archives/bmt-2013/GeoS2013.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -38240,6 +38241,46 @@
     "2013 BMT Discrete Math, Problem 10": [
       3500,
       "Minimize the degree of a permutation of prescribed order by splitting its prime-power cycle lengths; the paper asks for general k while the numerical key specializes to 2013."
+    ],
+    "2013 BMT Geometry, Problem 1": [
+      1400,
+      "Recover the side sum from a rectangle area and diagonal, then double it for the perimeter; the official answer is only the semiperimeter."
+    ],
+    "2013 BMT Geometry, Problem 2": [
+      1850,
+      "Relate center distances along a sixty-degree angle bisector and obtain the smaller tangent radius; the official value fails the tangency equation."
+    ],
+    "2013 BMT Geometry, Problem 3": [
+      2350,
+      "Use the circumradius of a regular tetrahedron and its unit edge to recover the central angle sine."
+    ],
+    "2013 BMT Geometry, Problem 4": [
+      2300,
+      "Solve the two numerical cube size relations and compute the requested surface-to-volume ratio; the official reciprocal-sized result disagrees with direct substitution."
+    ],
+    "2013 BMT Geometry, Problem 5": [
+      2650,
+      "Describe the fixed-angle locus on both sides of a chord and add the two exact circular segment areas."
+    ],
+    "2013 BMT Geometry, Problem 6": [
+      2950,
+      "Use similar secant triangles in a cyclic quadrilateral to recover two exterior lengths and then the target triangle area."
+    ],
+    "2013 BMT Geometry, Problem 7": [
+      3100,
+      "Convert a fixed-area right-triangle subconfiguration into a reciprocal-product constraint and find the full interval of a weighted midpoint-distance sum."
+    ],
+    "2013 BMT Geometry, Problem 8": [
+      3400,
+      "Construct an excircle diameter and a second right-isosceles triangle, then evaluate the area formed by their centers."
+    ],
+    "2013 BMT Geometry, Problem 9": [
+      3600,
+      "Recognize the shared-circle Miquel point, identify a right common circumcircle and recover its radius from the fixed contact chord."
+    ],
+    "2013 BMT Geometry, Problem 10": [
+      3850,
+      "Project the harmonic incircle quadrilateral to the opposite side and evaluate the absolute reciprocal-distance difference; the PDF absolute-value bars are essential."
     ]
   }
 }

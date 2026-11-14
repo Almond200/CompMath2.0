@@ -13280,6 +13280,17 @@ window.MATH_PROBLEM_DB = [
   { ref: "2013 BMT Discrete Math, Problem 8", formulas: ["total-expectation"], strategy: "", tree: ["cp.exp.basic"] },
   { ref: "2013 BMT Discrete Math, Problem 9", formulas: ["constructive-counting"], strategy: "", tree: ["cp.graph.basic.paths"] },
   { ref: "2013 BMT Discrete Math, Problem 10", formulas: ["permutation-cycle-structure", "lcm-common-multiples"], strategy: "", tree: ["cp.basic.perm.cycle"] },
+  // ---- 2013 BMT Geometry. Reviewed metadata only; official papers and solutions linked by the app.
+  { ref: "2013 BMT Geometry, Problem 1", formulas: ["pythagorean-theorem", "two-variable-identities"], strategy: "", tree: ["geo.poly.quad.rect"] },
+  { ref: "2013 BMT Geometry, Problem 2", formulas: ["circle-in-angle", "tangent-circles"], strategy: "", tree: ["geo.circ.tangent.inscribed"] },
+  { ref: "2013 BMT Geometry, Problem 3", formulas: ["regular-tetrahedron", "law-of-cosines"], strategy: "", tree: ["geo.solid.round.pyramid"] },
+  { ref: "2013 BMT Geometry, Problem 4", formulas: ["cube", "exponent-laws"], strategy: "", tree: ["geo.solid.prism.box"] },
+  { ref: "2013 BMT Geometry, Problem 5", formulas: ["inscribed-angle-theorem", "circular-segment"], strategy: "", tree: ["geo.circ.arc.sector", "geo.circ.inscribed.thm"] },
+  { ref: "2013 BMT Geometry, Problem 6", formulas: ["triangle-similarity", "herons-formula"], strategy: "", tree: ["geo.circ.cyclic"] },
+  { ref: "2013 BMT Geometry, Problem 7", formulas: ["distance-midpoint", "am-gm"], strategy: "", tree: ["geo.comb.extreme.maxmin"] },
+  { ref: "2013 BMT Geometry, Problem 8", formulas: ["exradii", "inradius-area", "special-right-triangles"], strategy: "", tree: ["geo.tri.radii.ex", "geo.tri.special.right"] },
+  { ref: "2013 BMT Geometry, Problem 9", formulas: ["miquels-theorem", "inscribed-angle-theorem", "median-to-hypotenuse"], strategy: "", tree: ["geo.circ.proj", "geo.tri.radii.circum"] },
+  { ref: "2013 BMT Geometry, Problem 10", formulas: ["harmonic-quadrilateral", "cross-ratio"], strategy: "", tree: ["geo.circ.proj"] },
   // ---- Text-only entries: every other AMC 8, AMC 10, and AMC 12 problem LIVE publishes. Statement now, tags later.
   { ref: "1985 AJHSME, Problem 1", formulas: [], strategy: "Every factor in the first fraction's numerator and denominator cancels against the second fraction: $3$, $5$, $7$, $9$, $11$ all appear once on top and once below. The product is $1$, choice (A).", tree: ["alg.word.compute.fraction"] },
   { ref: "1985 AJHSME, Problem 2", formulas: ["arithmetic-series"], strategy: "Ten terms averaging $\\tfrac{90+99}2=94.5$ add to $945$, choice (B).", tree: ["alg.seq.ap.arith"] },

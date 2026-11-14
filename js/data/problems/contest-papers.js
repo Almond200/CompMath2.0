@@ -402,5 +402,9 @@ window.MATH_CONTEST_PAPERS = {
   "2013 BMT Discrete Math": {
     "url": "https://berkeley.mt/archives/bmt-2013/DisS2013.pdf",
     "solUrl": "https://berkeley.mt/archives/bmt-2013/DisS2013S.pdf"
+  },
+  "2013 BMT Geometry": {
+    "url": "https://berkeley.mt/archives/bmt-2013/GeoS2013.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2013/GeoS2013S.pdf"
   }
 };
