@@ -46469,6 +46469,106 @@
     "2019 UKMT SMC, Problem 25": [
       800,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): with X the centre of the square, O1X = 1/2 and angle O1XP = 135: 4k^2 + 2 sqrt 2 k - 3 = 0, area 2k^2 = 2 - sqrt 7 / 2."
+    ],
+    "2018 UKMT SMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): an odd base gives an odd power: 1^2, 3^4 and 5^6 are odd, 3 in all."
+    ],
+    "2018 UKMT SMC, Problem 2": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 2018 = 2 times 1009: 1011."
+    ],
+    "2018 UKMT SMC, Problem 3": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 135 degrees is a quarter turn and then an eighth of a turn: option D."
+    ],
+    "2018 UKMT SMC, Problem 4": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): every option has a factor of 5 except 2015^2/5^2 = 403^2."
+    ],
+    "2018 UKMT SMC, Problem 5": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): each fraction is near 4; only 487/121 exceeds 484/121 = 4."
+    ],
+    "2018 UKMT SMC, Problem 6": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 5^2 (3 5) 3^2 (3^3/5)(3^4/5^2) = 3^10."
+    ],
+    "2018 UKMT SMC, Problem 7": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): P's diameter is the two smaller diameters together, so the circumferences match: 1."
+    ],
+    "2018 UKMT SMC, Problem 8": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the last two digits of 7^n cycle 07, 49, 43, 01, and 2018 = 4(504) + 2: 49."
+    ],
+    "2018 UKMT SMC, Problem 9": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the decagon is 10 congruent triangles from the centre and the rectangle 4 of them: 2 : 5."
+    ],
+    "2018 UKMT SMC, Problem 10": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 1 + 2.5 + 4.5 = 8 km in half an hour: 16 km/h."
+    ],
+    "2018 UKMT SMC, Problem 11": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): only x^4 + 1 is nonzero at x = 0: 1."
+    ],
+    "2018 UKMT SMC, Problem 12": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): a plane meets each of the four faces at most once, so the section has at most four sides: not a pentagon."
+    ],
+    "2018 UKMT SMC, Problem 13": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): x = mx - 4 gives (m - 1)x = 4, so m - 1 = 1, 2, 4: 2 + 3 + 5 = 10."
+    ],
+    "2018 UKMT SMC, Problem 14": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 3x + 5y = 55 with 1 <= x <= 8 forces x = 5, y = 8: the median is 8."
+    ],
+    "2018 UKMT SMC, Problem 15": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the square has side sqrt 2, so the shaded part is pi - 2 and the triangle has area 1: 1 : pi - 2."
+    ],
+    "2018 UKMT SMC, Problem 16": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): q = 4p/3, r = 2p, s = 4p give k = 77p/3, least with p = 3: 77."
+    ],
+    "2018 UKMT SMC, Problem 17": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 1100 + 20m + 50n = 52(11 + m + n) gives c = 275 - 15m coins: 40 is impossible."
+    ],
+    "2018 UKMT SMC, Problem 18": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): each rounded angle is within 0.5 of the true one, so the sum lies from 178.5 to 181.5: 179, 180 or 181."
+    ],
+    "2018 UKMT SMC, Problem 19": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): mn = 360 with m, n >= 3: 10 factor pairs in two orders, 20."
+    ],
+    "2018 UKMT SMC, Problem 20": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the tangent radius makes OP = 1/sin theta and PR = 1/(sin theta cos theta): the area is 1/(sin theta cos theta)."
+    ],
+    "2018 UKMT SMC, Problem 21": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): reflecting in y = 1 gives 2 - y = 1/x, and then in y = -x gives y = -1/(x + 2)."
+    ],
+    "2018 UKMT SMC, Problem 22": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 30-60-90 triangles around the equilateral triangle scale its pieces; the shaded parts total 28."
+    ],
+    "2018 UKMT SMC, Problem 23": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): f(f(f(x))) = a^3 x + (a^2 + a + 1)b = 27x - 52 gives f(x) = 3x - 4, so g(x) = (x + 4)/3."
+    ],
+    "2018 UKMT SMC, Problem 24": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): PA = PC = 2 sqrt 3, and the arc ratio makes AC = 2 sqrt 3 too: the height of an equilateral triangle of side 2 sqrt 3 is 3."
+    ],
+    "2018 UKMT SMC, Problem 25": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the tangent points make a square of side r, so s^2 = 2r^2 + r^2: (1/2)pi r^2 / ((1/4)pi s^2) = 2/3."
     ]
   }
 }
