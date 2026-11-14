@@ -252,5 +252,33 @@ window.MATH_CONTEST_PAPERS = {
   "2019 PUMaC Division B Combinatorics": {
     "url": "https://pumac.princeton.edu/s/2019Combo_B.pdf",
     "solUrl": "https://pumac.princeton.edu/s/2019Combo_B_Sols.pdf"
+  },
+  "2019 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/2019Geometry_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019Geometry_A-SOLS.pdf"
+  },
+  "2019 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/2019Geometry_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019Geometry_B-SOLS.pdf"
+  },
+  "2019 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/2019NT_A_Div.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019NT_SOLS_A.pdf"
+  },
+  "2019 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/2019NT_B_Div.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019NT_SOLS_B.pdf"
+  },
+  "2018 BMT Algebra": {
+    "url": "https://berkeley.mt/archives/bmt-2018/ALSP18.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2018/ALSP18A.pdf"
+  },
+  "2018 BMT Discrete Math": {
+    "url": "https://berkeley.mt/archives/bmt-2018/COSP18.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2018/COSP18A.pdf"
+  },
+  "2018 BMT Geometry": {
+    "url": "https://berkeley.mt/archives/bmt-2018/GEOSP18.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2018/GEOSP18A.pdf"
   }
 };
