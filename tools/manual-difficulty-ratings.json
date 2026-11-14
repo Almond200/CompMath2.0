@@ -28935,6 +28935,262 @@
     "2019 MBMT Upper Number Theory, Problem 8": [
       1700,
       "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a pegboard is a rotated unit lattice; maximize, over rotations and shifts, the least distance between points of the two: 1/sqrt 10."
+    ],
+    "2018 MBMT Lower Algebra, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 1 + 3k > 10 first at k = 4 purchases: 24 months."
+    ],
+    "2018 MBMT Lower Algebra, Problem 2": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): UMBC 74 against UVA 54: 20."
+    ],
+    "2018 MBMT Lower Algebra, Problem 3": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 1 + 2 + ... + 10 = 55, and 55 - 50 = 5."
+    ],
+    "2018 MBMT Lower Algebra, Problem 4": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each half is half the cake: (50 + x)/2 = 30, so x = 10 percent."
+    ],
+    "2018 MBMT Lower Algebra, Problem 5": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): count the pages read each week, the Thursday reviews adding all pages so far, until 500."
+    ],
+    "2018 MBMT Lower Algebra, Problem 6": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the top circle's value is a fixed weighted average of the squares; place the numbers to make it largest and smallest."
+    ],
+    "2018 MBMT Lower Algebra, Problem 7": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the longest gap between resets is 8 hours, 10 PM to 6 AM, and the watch falls behind by 1 percent of it: 288 seconds."
+    ],
+    "2018 MBMT Lower Algebra, Problem 8": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): expand: a^2 + 4ab + 4b^2 = 144 and subtract to get 4ab + 2b^2 = 72, then solve."
+    ],
+    "2018 MBMT Lower Geometry, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): radius 3: 9 pi."
+    ],
+    "2018 MBMT Lower Geometry, Problem 2": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): B between A and C or not: 5 or 17."
+    ],
+    "2018 MBMT Lower Geometry, Problem 3": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 84 = 12(5 + b)/2."
+    ],
+    "2018 MBMT Lower Geometry, Problem 4": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 8 corner cubes removed from 27: 19/27."
+    ],
+    "2018 MBMT Lower Geometry, Problem 5": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): similar triangles from the tower's top over the wall's top to the ground."
+    ],
+    "2018 MBMT Lower Geometry, Problem 6": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): doubling the side quadruples the area: 8 people."
+    ],
+    "2018 MBMT Lower Geometry, Problem 7": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the 45-degree bisector makes isosceles right triangles ABE and ECF; FE = FD fixes BC = 2 + sqrt 2."
+    ],
+    "2018 MBMT Lower Geometry, Problem 8": [
+      1200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): chase the angles of the square and the perpendicular to BC: 55 degrees."
+    ],
+    "2018 MBMT Lower Counting, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 26 letters times 10 digits."
+    ],
+    "2018 MBMT Lower Counting, Problem 2": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): compare the chances: odd has 3 of 6 faces."
+    ],
+    "2018 MBMT Lower Counting, Problem 3": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each coin survives a flip with chance 1/2; combine the two coins."
+    ],
+    "2018 MBMT Lower Counting, Problem 4": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 75 percent has a topping: 50 + 40 - 75 = 15."
+    ],
+    "2018 MBMT Lower Counting, Problem 5": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 8 readings of the square (4 starts, 2 directions) less the one he saw."
+    ],
+    "2018 MBMT Lower Counting, Problem 6": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each stops on a uniform value from his allowed range; count the pairs summing to 7."
+    ],
+    "2018 MBMT Lower Counting, Problem 7": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 9 squares for the first piece, 4 for the second."
+    ],
+    "2018 MBMT Lower Counting, Problem 8": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): count strings by their last bead with the stated rules."
+    ],
+    "2018 MBMT Lower Number Theory, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 4n ends in 8 with two digits: n = 7, and 5n = 35."
+    ],
+    "2018 MBMT Lower Number Theory, Problem 2": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 9 and 8: Anna 9, Bob 8."
+    ],
+    "2018 MBMT Lower Number Theory, Problem 3": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 25 = 3^2 + 4^2."
+    ],
+    "2018 MBMT Lower Number Theory, Problem 4": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): A in {3, 6, 9} and AB a multiple of 3: 12 numbers."
+    ],
+    "2018 MBMT Lower Number Theory, Problem 5": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 2^(a + 3b) < 1000 means a + 3b <= 9."
+    ],
+    "2018 MBMT Lower Number Theory, Problem 6": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): write the numbers as g x and g y with xy = 8 and x, y coprime: 8."
+    ],
+    "2018 MBMT Lower Number Theory, Problem 7": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the two schedules coincide every lcm(91, k) days; find k from the stated condition."
+    ],
+    "2018 MBMT Lower Number Theory, Problem 8": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): solve the three congruences: 500."
+    ],
+    "2018 MBMT Upper Algebra, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): UMBC 74 against UVA 54: 20."
+    ],
+    "2018 MBMT Upper Algebra, Problem 2": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 1 + 2 + ... + 10 = 55, and 55 - 50 = 5."
+    ],
+    "2018 MBMT Upper Algebra, Problem 3": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the longest gap between resets is 8 hours, 10 PM to 6 AM, and the watch falls behind by 1 percent of it: 288 seconds."
+    ],
+    "2018 MBMT Upper Algebra, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): expand: a^2 + 4ab + 4b^2 = 144 and subtract to get 4ab + 2b^2 = 72, then solve."
+    ],
+    "2018 MBMT Upper Algebra, Problem 5": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): x(9 - 2x)(10 - 2x) = 60 has solutions x = 2 and others below 9/2."
+    ],
+    "2018 MBMT Upper Algebra, Problem 6": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the two squares cannot both vanish; minimize over y and then x: 1."
+    ],
+    "2018 MBMT Upper Algebra, Problem 7": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): pin x between consecutive integers by size; the floors and ceilings are then constants and x follows."
+    ],
+    "2018 MBMT Upper Algebra, Problem 8": [
+      1500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): minimize the given expression."
+    ],
+    "2018 MBMT Upper Geometry, Problem 1": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 8 corner cubes removed from 27: 19/27."
+    ],
+    "2018 MBMT Upper Geometry, Problem 2": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): B between A and C or not: 5 or 17."
+    ],
+    "2018 MBMT Upper Geometry, Problem 3": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the 45-degree bisector makes isosceles right triangles ABE and ECF; FE = FD fixes BC = 2 + sqrt 2."
+    ],
+    "2018 MBMT Upper Geometry, Problem 4": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): light through the open ends lights two cones' footprints: area 441 pi."
+    ],
+    "2018 MBMT Upper Geometry, Problem 5": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): AB^2 = AC^2 + BC^2 - 2(AC)(BC) cos 45 has two roots AC; the areas differ by 60."
+    ],
+    "2018 MBMT Upper Geometry, Problem 6": [
+      1200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): chase the angles of the square and the perpendicular to BC: 55 degrees."
+    ],
+    "2018 MBMT Upper Geometry, Problem 7": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): C is sqrt 3 from the center of the radius-1 circle, so each tangent has length sqrt 2; locate D from there."
+    ],
+    "2018 MBMT Upper Geometry, Problem 8": [
+      1500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): with A = 60 degrees, AH = AO, and OH = |AB - AC| = 4."
+    ],
+    "2018 MBMT Upper Counting, Problem 1": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): compare the chances: odd has 3 of 6 faces."
+    ],
+    "2018 MBMT Upper Counting, Problem 2": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 75 percent has a topping: 50 + 40 - 75 = 15."
+    ],
+    "2018 MBMT Upper Counting, Problem 3": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each stops on a uniform value from his allowed range; count the pairs summing to 7."
+    ],
+    "2018 MBMT Upper Counting, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): count strings by their last bead with the stated rules."
+    ],
+    "2018 MBMT Upper Counting, Problem 5": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each club picks one of the 3 others; count the choices with no two clubs picking each other, out of 3^4."
+    ],
+    "2018 MBMT Upper Counting, Problem 6": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): count the draft orders in which he can still get his three picks."
+    ],
+    "2018 MBMT Upper Counting, Problem 7": [
+      1400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): eat the hexagon of chocolates keeping the stated shape condition: 288 orders."
+    ],
+    "2018 MBMT Upper Counting, Problem 8": [
+      1500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a 3-coloring of the 100 small triangles bounds the pieces from below; a construction meets it."
+    ],
+    "2018 MBMT Upper Number Theory, Problem 1": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 1 more than a multiple of 12 between 20 and 30: 25."
+    ],
+    "2018 MBMT Upper Number Theory, Problem 2": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): A in {3, 6, 9} and AB a multiple of 3: 12 numbers."
+    ],
+    "2018 MBMT Upper Number Theory, Problem 3": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 2^(a + 3b) < 1000 means a + 3b <= 9."
+    ],
+    "2018 MBMT Upper Number Theory, Problem 4": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): write the numbers as g x and g y with xy = 8 and x, y coprime: 8."
+    ],
+    "2018 MBMT Upper Number Theory, Problem 5": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): work backward: remove a final 1 or subtract 1 to reach the start in fewest steps."
+    ],
+    "2018 MBMT Upper Number Theory, Problem 6": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): for each k, count the multiples of k in [k^3, (k + 1)^3)."
+    ],
+    "2018 MBMT Upper Number Theory, Problem 7": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): extend the previous system with the fourth congruence: 8508."
+    ],
+    "2018 MBMT Upper Number Theory, Problem 8": [
+      1500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): every n^71 - n is divisible by each prime p with p - 1 dividing 70; their product is the gcd 4686."
     ]
   }
 }
