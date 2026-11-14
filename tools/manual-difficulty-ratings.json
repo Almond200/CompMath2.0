@@ -36355,6 +36355,106 @@
     "2022 Fermat Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): mod 5 the centre is 0, and the lines force h = -a, g = -b, c = -a - b, f = a + b, d = -2a - b, e = 2a + b; weight each residue by its count among 1 to 9 (one 0, two of each other) and sum over a, b: N = 3073."
+    ],
+    "2021 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2 times 3 = 6."
+    ],
+    "2021 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2 + 15 + 2 = 19."
+    ],
+    "2021 Fermat Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 60/4 = 15."
+    ],
+    "2021 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 4x/(3x) = 4/3 for any nonzero x."
+    ],
+    "2021 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 53 is prime; the others are 2 times 3, 3 times 9, 3 times 13, 7 times 11."
+    ],
+    "2021 Fermat Contest, Problem 6": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the fold and the unfold cancel, so the figure is just the original turned 90 degrees clockwise."
+    ],
+    "2021 Fermat Contest, Problem 7": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x > x^2 exactly when 0 < x < 1: x = 1/2."
+    ],
+    "2021 Fermat Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (10b + a) - (10a + b) = 9(b - a) = 54: 6."
+    ],
+    "2021 Fermat Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the new line is y = 2x - 2, which meets the axis at x = 1."
+    ],
+    "2021 Fermat Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3^(x + 2) = 9 times 3^x = 45."
+    ],
+    "2021 Fermat Contest, Problem 11": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2R ends in 0 with R nonzero, so R = 5 and carries 1; 7 + 9 + 1 = 17 gives Q = 7 and P + 3 + 1 = 5 gives P = 1: 13."
+    ],
+    "2021 Fermat Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 9 divides n^2 exactly when 3 divides n: 3, 6, ..., 18, six squares."
+    ],
+    "2021 Fermat Contest, Problem 13": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): WZ = XZ = 6 and XY = YZ = 3 sqrt 2: 12 sqrt 2 + 6, about 23."
+    ],
+    "2021 Fermat Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): cycling at 3v for 4 hours against running at v for 1: 12 : 1."
+    ],
+    "2021 Fermat Contest, Problem 15": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a + b = 2021 - 44a is least at the largest a with b positive, a = 44 and b = 41: 85."
+    ],
+    "2021 Fermat Contest, Problem 16": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): if a >= 5 both factorials end in 0; otherwise a! is 1, 2, 6 or 24, and the differences end in 9, 8, 4, 6, 1, 5, 3, 2 or 8: never 7."
+    ],
+    "2021 Fermat Contest, Problem 17": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the two largest sum to 44, at best 21 and 23, leaving at most 20 + 19 + 18 + 17 + 16 = 90 for the middle five: (10 + 90 + 44)/9 = 16."
+    ],
+    "2021 Fermat Contest, Problem 18": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): semicircle areas go as squared diameters: 2PQ^2 + QR^2 = 5QR^2, so PQ = sqrt 2 QR and cos Q = (QR/2)/PQ = 1/sqrt 8."
+    ],
+    "2021 Fermat Contest, Problem 19": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x + y + z = +/- 2 gives z = -5 or -9, so x = 36 or 20 and y = -29 or -13: S = -42."
+    ],
+    "2021 Fermat Contest, Problem 20": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with ST = a and angle STR = t, RT = a/cos t and QR = a tan t sin t, so PQ = a cos t and PQ times PY = a^2 = 30: a = sqrt 30, about 5.5."
+    ],
+    "2021 Fermat Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): f(12) = f(2) + f(2) + f(3) = 17."
+    ],
+    "2021 Fermat Contest, Problem 22": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): half the height leaves an unpainted top cone of slant 2.5 and radius 1.5: painted 15 pi - 3.75 pi + 9 pi = 20.25 pi of 24 pi, 27/32, so 59."
+    ],
+    "2021 Fermat Contest, Problem 23": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Figure n is a triangle of side 2^n holding 2^n(2^n + 1)/2 dots, 3^n of them unshaded; n = 9 gives 131328 - 19683 = 111645, n = 8 only 26335."
+    ],
+    "2021 Fermat Contest, Problem 24": [
+      1100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the curves meet when (a - 1/2)^2 + b^2 >= 1/4 (the disk is a^2 + b^2 <= 1/4); the excluded lens has area (2 pi/3 - sqrt 3/2)/4: p = 1/3 + sqrt 3/(2 pi) = 0.609, so 61."
+    ],
+    "2021 Fermat Contest, Problem 25": [
+      1100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): ordered triples split each exponent 2 in C(4, 2) = 6 ways: 6^8; remove the 3 times 2^8 with two equal entries and divide by 6: 279808, so 8."
     ]
   }
 }
