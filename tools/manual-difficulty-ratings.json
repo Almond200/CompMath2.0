@@ -30715,6 +30715,190 @@
     "2004 Calgary Junior Math Contest, Problem 9": [
       800,
       "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the diagonals satisfy pq = 120 and p^2 + q^2 = 400: the shorter is 2 sqrt 10."
+    ],
+    "2020 Columbus State Tournament, Problem 1": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2020 = 2^2 times 5 times 101: 3 times 2 times 2."
+    ],
+    "2020 Columbus State Tournament, Problem 2": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a^2 + 4a < 0 gives -4 < a < 0."
+    ],
+    "2020 Columbus State Tournament, Problem 3": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the largest x and y are the exponents of 5 and 11 in 2020!."
+    ],
+    "2020 Columbus State Tournament, Problem 4": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): powers of i cycle with period 4: the 2021 terms leave 1."
+    ],
+    "2020 Columbus State Tournament, Problem 5": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): each line y = mx meets the parabola where x^2 - mx - 3 = 0, product -3; four lines give 81."
+    ],
+    "2020 Columbus State Tournament, Problem 6": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the quadratic factors only at the values making it plus or minus a prime; test them."
+    ],
+    "2020 Columbus State Tournament, Problem 7": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): count the 2s place by place up to each candidate."
+    ],
+    "2020 Columbus State Tournament, Problem 8": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a rhombus with diagonals 8 and 6: 24."
+    ],
+    "2020 Columbus State Tournament, Problem 9": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1/s + 1/t + 1/r = (st + tr + rs)/(str) = 3/2."
+    ],
+    "2020 Columbus State Tournament, Problem 10": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): B holds the even numbers up to 198 and C the halves up to 49.5: common integers 2 to 48 even."
+    ],
+    "2020 Columbus State Tournament, Problem 11": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): count triples in arithmetic progression among 1 to 8 over C(8, 3)."
+    ],
+    "2020 Columbus State Tournament, Problem 12": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): f(n) = n^3 - (n - 1)^3 = 3n^2 - 3n + 1, so abc = -9."
+    ],
+    "2020 Columbus State Tournament, Problem 13": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): substitute u = x^2 + x - 1 and solve the radical equation."
+    ],
+    "2020 Columbus State Tournament, Problem 14": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the circle through the three intercepts meets the parabola again at the reflection of the y-intercept: (6, 2)."
+    ],
+    "2020 Columbus State Tournament, Problem 15": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): log(x^2 + 1) starts above log_3 x, and log_3 x grows faster for large x, so the graphs cross; count the crossings."
+    ],
+    "2020 Columbus State Tournament, Problem 16": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (x - 1)/(x + 1) = 1 - 2/(x + 1): 3 - 2(2020/2019)."
+    ],
+    "2020 Columbus State Tournament, Problem 17": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (a - b)(a + b) = 2020 with a + b a multiple of 4 and both factors even."
+    ],
+    "2020 Columbus State Tournament, Problem 18": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): square: 1 - sin 2x = 1/9, so sin 2x = 8/9."
+    ],
+    "2020 Columbus State Tournament, Problem 19": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): odd numbers of eggs each day: the total is a square of the number of days."
+    ],
+    "2020 Columbus State Tournament, Problem 20": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): n(n - 3)/2 >= 2020 first at n = 66."
+    ],
+    "2020 Columbus State Tournament, Problem 21": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the repeating continued fraction x = 1 + 1/(2 + 1/x) gives a quadratic."
+    ],
+    "2020 Columbus State Tournament, Problem 22": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): f(0) = 1 and f(n) = 3^n: (3^10 - 1)/2 = 29524."
+    ],
+    "2020 Columbus State Tournament, Problem 23": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): |5x - 4| = 4 or 2, giving four solutions."
+    ],
+    "2020 Columbus State Tournament, Problem 24": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): f is its own inverse, which forces a + d = 0."
+    ],
+    "2020 Columbus State Tournament, Problem 25": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the operation is a disguised addition; it collapses to a fixed value once 2 is reached."
+    ],
+    "2020 Columbus State Tournament, Problem 26": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the repetend of k/19 times 19 is 10^18 - 1, ending in 999: x21 times 19 ends in 999."
+    ],
+    "2020 Columbus State Tournament, Problem 27": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): each digit sits in each place 24 times: 24 times 15 times 11111 = 3999960."
+    ],
+    "2020 Columbus State Tournament, Problem 28": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): each step needs sqrt(n^2 - x) inside the previous domain; follow the intervals until empty."
+    ],
+    "2020 Columbus State Tournament, Problem 29": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the box pattern is counting in base 6: write the step number in base 6 and add the digits."
+    ],
+    "2020 Columbus State Tournament, Problem 30": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2b = a + c with a^2 + b^2 = c^2 makes a 3-4-5 triangle: legs are multiples of 3 or 4."
+    ],
+    "2020 Columbus State Tournament, Problem 31": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): AM-GM on each (a + b) >= 2 sqrt(ab) and on the three cubes: 3 times 8 = 24."
+    ],
+    "2020 Columbus State Tournament, Problem 32": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): sin(2x + 3 pi/2) = -cos 2x = 1 - 2cos^2 x: a quadratic in cos x with minimum at cos x = 1."
+    ],
+    "2020 Columbus State Tournament, Problem 34": [
+      1500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): for an integer root, the root and the consecutive primes must satisfy tight bounds; test the cases."
+    ],
+    "2020 Columbus State Tournament, Problem 35": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): f(1) and f(i) real fix the imaginary parts of alpha and beta; minimize the moduli."
+    ],
+    "2020 Columbus State Tournament, Problem 37": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): multiply by 1 - 1/2: the product of (1 + 1/2^(2^n)) telescopes to 2(1 - 1/2^(2^11))."
+    ],
+    "2020 Columbus State Tournament, Problem 38": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the sum ranges over values with fixed parity and residue; check which M is reachable."
+    ],
+    "2020 Columbus State Tournament, Problem 39": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): rewrite tan(x/2) = cot 3x as an equation of angles and count solutions in [0, 2 pi]."
+    ],
+    "2020 Columbus State Tournament, Problem 40": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): opposite pyramids on parallel faces sum to a third of the cube: pair the given volumes."
+    ],
+    "2020 Columbus State Tournament, Problem 41": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1/x - 1/y = 1/2020 becomes (2020 - x)(2020 + y) = 2020^2; count factor pairs."
+    ],
+    "2020 Columbus State Tournament, Problem 42": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): primes mod 3 in a set of five or more force three whose sum is divisible by 3."
+    ],
+    "2020 Columbus State Tournament, Problem 43": [
+      1500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1/(x + 1) = a/(a + b + c), so the three sum to 1; expand to get xyz."
+    ],
+    "2020 Columbus State Tournament, Problem 44": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2020 = 4 times 505 = 4(5 times 101): count representations with x < y."
+    ],
+    "2020 Columbus State Tournament, Problem 45": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): ED = 9 times 5/12 = 15/4; the center's offsets from E give R^2."
+    ],
+    "2020 Columbus State Tournament, Problem 46": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the given areas fix the ratios along the cevians; solve for the quadrilateral."
+    ],
+    "2020 Columbus State Tournament, Problem 48": [
+      1600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the sum of cube roots vanishes when x is the average-like value forced by Vieta: M/N."
+    ],
+    "2020 Columbus State Tournament, Problem 50": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): they meet when their times differ by at most 5 minutes: 1 - (55/60)^2."
     ]
   }
 }
