@@ -32787,6 +32787,202 @@
     "2010 Columbus State Tournament, Problem 50": [
       1000,
       "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a common point makes the coefficients of the m terms vanish."
+    ],
+    "2009 Columbus State Tournament, Problem 1": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 5 times 82 - 4 times 85 = 70."
+    ],
+    "2009 Columbus State Tournament, Problem 2": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): multiply top and bottom by x^2010: (x^3 - x)/(x^2 - 1) = x."
+    ],
+    "2009 Columbus State Tournament, Problem 3": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): clearing denominators gives x^2 - 8x - 9 = 0, with roots 9 and -1 (both allowed): product -9."
+    ],
+    "2009 Columbus State Tournament, Problem 4": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): area ratio 0.64 means side ratio 0.8 and volume ratio 0.512."
+    ],
+    "2009 Columbus State Tournament, Problem 5": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): slopes -1/3 and -a/2 multiply to -1: a = -6."
+    ],
+    "2009 Columbus State Tournament, Problem 6": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (2x - 3)(x + 2) < 0: -2 < x < 3/2."
+    ],
+    "2009 Columbus State Tournament, Problem 7": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a vertex on the x-axis means discriminant 0: b^2 = 16."
+    ],
+    "2009 Columbus State Tournament, Problem 8": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): compose f three times and simplify."
+    ],
+    "2009 Columbus State Tournament, Problem 9": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): equal sums force the center and the placement of the rest."
+    ],
+    "2009 Columbus State Tournament, Problem 10": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 12 times 9/2 = 54."
+    ],
+    "2009 Columbus State Tournament, Problem 11": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the slope -a/b < 0 and the intercepts' signs rule out one quadrant."
+    ],
+    "2009 Columbus State Tournament, Problem 12": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a^2 + b^2 + c^2 = k^2 - 2h."
+    ],
+    "2009 Columbus State Tournament, Problem 13": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the straight pieces add to the perimeter 31 and the arcs to one full circle of radius 2: 31 + 4 pi."
+    ],
+    "2009 Columbus State Tournament, Problem 14": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): each pair a^2 - (a - 1)^2 = a + (a - 1), so n = 2 + 3 + ... + 2009 = 2019044 = 4 times 251 times 2011, not divisible by 512."
+    ],
+    "2009 Columbus State Tournament, Problem 15": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x = 1 and -1 give 2A + B + C = 0 and B = C, so the cubic is A(x - 1)(x + 1)^2 up to the root's sign: -1 is the double root."
+    ],
+    "2009 Columbus State Tournament, Problem 16": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1001 M = 1000 M + M adds two strings of 1s with no carries: digit sum 2 times 1111 = 2222."
+    ],
+    "2009 Columbus State Tournament, Problem 17": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 3^98 = (10 - 1)^49 = -1 + 490 - 117600 + ... mod 1000: 889."
+    ],
+    "2009 Columbus State Tournament, Problem 18": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): in (a - a^(-1/2))^2009 the term with k minus signs has a^(2009 - 3k/2) = a^(-1003) at k = 2008: C(2009, 2008) = 2009."
+    ],
+    "2009 Columbus State Tournament, Problem 19": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): log b times log_b a = log a, and log(1/a) = -log a: -1."
+    ],
+    "2009 Columbus State Tournament, Problem 20": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 3x - 1 runs over [-1, 1], so arccos/pi + 1 runs over [1, 2] and its square over [1, 4]."
+    ],
+    "2009 Columbus State Tournament, Problem 21": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 8 sin x = 3 cos^2 x = 3 - 3 sin^2 x: sin x = 1/3."
+    ],
+    "2009 Columbus State Tournament, Problem 22": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): r sin(t + pi/3) = 1 expands to a line in x and y."
+    ],
+    "2009 Columbus State Tournament, Problem 23": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x plus or minus 6 sqrt(x - 9) are squares of sqrt(x - 9) plus or minus 3; split by sign."
+    ],
+    "2009 Columbus State Tournament, Problem 24": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): after an hour the bearings differ by a known angle; law of cosines for the distance."
+    ],
+    "2009 Columbus State Tournament, Problem 25": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the two triangles in the square overlap in a rhombus; compute its area."
+    ],
+    "2009 Columbus State Tournament, Problem 26": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): A is the reflection of O across the line of two centers, so ABC is congruent to the triangle of centers, whose circumradius is 2 (about O)."
+    ],
+    "2009 Columbus State Tournament, Problem 27": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): count the 49 pairs (a, b) with a^2 >= 4b."
+    ],
+    "2009 Columbus State Tournament, Problem 28": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): reflecting across x = 6 and y = 2 cancels the alternating sum except for the 12 by 4 rectangle between the axes and the center lines: 48."
+    ],
+    "2009 Columbus State Tournament, Problem 29": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): y(2x + 3) = 2009 = 7^2 times 41: 2x + 3 is a divisor at least 5, namely 7, 41, 49, 287 or 2009: 5 solutions."
+    ],
+    "2009 Columbus State Tournament, Problem 30": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): each midpoint triangle halves the perimeter: 10/(1 - 1/2) = 20."
+    ],
+    "2009 Columbus State Tournament, Problem 31": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): sin t cos t = sin 2t/2 collapses the product step by step to sin(pi/2)/2^2008."
+    ],
+    "2009 Columbus State Tournament, Problem 32": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the triangle A, B, top has angles 30, 135 and 15 at the top: the law of sines gives the line of sight, and the vertical 750 then gives the inclination."
+    ],
+    "2009 Columbus State Tournament, Problem 33": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): symmetry about x = 7/4 gives b = -7a/2; ax^2 + (b - 7)x = 0 with one solution needs b = 7, so a = -2 and a + b = 5."
+    ],
+    "2009 Columbus State Tournament, Problem 34": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (ab + 1)/b = 7(ab + 1)/a gives a = 7b, and a + 2b = 9b < 80: b = 1 to 8, 8 pairs."
+    ],
+    "2009 Columbus State Tournament, Problem 35": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): use (c) as a Euclidean step: 3 # 7 = (7/4)(3 # 4) = 7(3 # 1) = 7(3/2)(1 # 2) = 7(3/2)(2)(1 # 1) = 63."
+    ],
+    "2009 Columbus State Tournament, Problem 36": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2009 = 7^2 times 41 = (7 times 4)^2 + (7 times 5)^2 is the only split up to order and sign: 8 pairs."
+    ],
+    "2009 Columbus State Tournament, Problem 37": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): subtract 10 times the count from the cost: 15b + 40c + 60d = 300; maximize c over the integer solutions."
+    ],
+    "2009 Columbus State Tournament, Problem 38": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): they meet when the arrival times differ by at most 20 minutes: 1 - (2/3)^2."
+    ],
+    "2009 Columbus State Tournament, Problem 39": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): tan(x - y) = 2 tan y/(1 + 3 tan^2 y) <= 1/sqrt 3 by AM-GM: pi/6."
+    ],
+    "2009 Columbus State Tournament, Problem 40": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): north 4 - 1 + 1/4 - ... = 16/5 and east 2 - 1/2 + ... = 8/5: distance 8 sqrt 5/5."
+    ],
+    "2009 Columbus State Tournament, Problem 41": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): divisible by 9 and 11: the digit sum and the alternating sum fix a and b."
+    ],
+    "2009 Columbus State Tournament, Problem 42": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): sides are proportional to 1/210 : 1/195 : 1/182 = 13 : 14 : 15; the altitude 12t to side 14t is 195, so t = 16.25 and the area 84 t^2 = 22181.25."
+    ],
+    "2009 Columbus State Tournament, Problem 43": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): BD : DC = 3 : 4 and AD = 12 sqrt 2/7; the inradius of ABD is its area over its semiperimeter."
+    ],
+    "2009 Columbus State Tournament, Problem 44": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the r_i multiply to 2009 = 7^2 times 41 and sum to 56: 7, 7, 41 and one 1, so n = 4."
+    ],
+    "2009 Columbus State Tournament, Problem 45": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): even with period 4, with roots 0, 2 and 4 in [0, 4] (2 forced by the symmetry); count them in (-8, 10]."
+    ],
+    "2009 Columbus State Tournament, Problem 46": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the sum of the pairwise products is ((1 + ... + 100)^2 - (1^2 + ... + 100^2))/2 = (5050^2 - 338350)/2 = 12582075."
+    ],
+    "2009 Columbus State Tournament, Problem 47": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the lines through (2, 4) meet the upper half of the circle about (0, 1) twice between the tangent slope 5/12 and the slope 3/4 to (-2, 1)."
+    ],
+    "2009 Columbus State Tournament, Problem 49": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): decreasing on [a, b] with f(a) = log_C C(a - 1) and f(b) = log_C C(b - 1): (x - 2)/(x + 2) = C(x - 1) has two roots above 2, so 0 < C < 1/9."
+    ],
+    "2009 Columbus State Tournament, Problem 50": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): with AB = AC = 1, AQ = 2 AP cos A and QB = 1 - AQ = AP = BC = 2 sin(A/2), so 2 sin(A/2)(1 + 2 cos A) = 1, which holds at A = 20."
     ]
   }
 }
