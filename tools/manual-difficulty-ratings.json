@@ -26643,6 +26643,238 @@
     "2017 BMT Geometry, Problem 10": [
       2700,
       "Compare equal-longitude spherical zones through their latitude sines; the common radius factor cancels."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 1": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2007 = 3^2 times 223, so 3 times 2 divisors."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 2": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 54 + 30 + 11 = 95 = 137 in base eight."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 3": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 0.999... = 9/9 = 1."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 4": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): multiples of lcm(4, 6, 9) = 36 from 108 to 972: 25."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 5": [
+      300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2 + 4 = 6 leaves remainder 1."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 6": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): g = b - 1 and b = 2(g - 1) give 4 boys and 3 girls."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 7": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the clues pair genders and shirts; the only white-shirted boy is MIKEN."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 8": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the four semicircles cover the square with the petals counted twice: 4(8 pi) - 64 = 32(pi - 2)."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 9": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): area of the inner circle over the whole target: 1/16."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 10": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): sort the triangles of the pentagram by shape: 5 + 10 + 5 + 10 + 5 = 35."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 11": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): -17 <= 3x - 2 <= 17."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 12": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): r^2 - r + 1 has negative discriminant, so r^2 + 1 > r always; each other choice fails for some r."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 13": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1.1^4 = 1.4641."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 14": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the 120-degree corner makes triangle GFH isosceles, so the squares match and BGD is equilateral; ABC is 30-60-90 with leg 1: sqrt 3/6."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 15": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): Fibonacci mod 4 runs 1, 1, 2, 3, 1, 0 and repeats, so every sixth term."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 16": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 0.8 times 1.25 = 1."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 17": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2^29 is 5 mod 9 and the ten digits sum to 45, so the missing digit is 4."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 18": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): row k holds k odd numbers; 289 is the 145th odd number, and rows 1 to 16 hold 136."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 19": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the worm skips volume A's pages and Z's: 52 - 3.5 = 48.5."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 20": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 5x^2 - 3x - 9 = 0."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 21": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the two sums add to 2, so their product is at most 1."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 22": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 10, 24, 26 is a right triangle of area 120, so the rectangle is 40 by 3."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 23": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 10C7 = 120 = 5!/1! = 5P4."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 24": [
+      300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (1/2)/(2/3) = 3/4."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 25": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): corresponding angles make 2x - 18 and x + 12 supplementary, x = 62, and y = 180 - 47 - 74 = 59."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 26": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): m + 3 = 3x and x + 3 = (m + 3)/2 give x = 6 and m = 15."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 27": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1/3 + 1/2 + 1/s = 13/12."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 28": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): after 1/4 and 11/18 of the rest, 1/8 of the allowance is left: $3 plus 1/24 of it, so the allowance is $12 and he saves $0.50."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 29": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 9!/(4! 3! 2!) = 1260 = 7!/4."
+    ],
+    "2007 Utah State Math Contest Junior, Problem 30": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): n(n - 1)/2 = 66 gives 12."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 1": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): gcd(19!, 19! + 17) = gcd(19!, 17) = 17."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 2": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 0.999... = 9/9 = 1."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 3": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 0.8 times 1.25 = 1."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 4": [
+      400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2007 = 3^2 times 223, so 3 times 2 divisors."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 5": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2^29 is 5 mod 9 and the ten digits sum to 45, so the missing digit is 4."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 6": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): row k holds k odd numbers; 289 is the 145th odd number, and rows 1 to 16 hold 136."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 7": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a/(1 - r) = 4 and ar = 3/4: a = 3, r = 1/4."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 8": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): e^x >= 1 + x on the whole line, so ln(1 + x) < x for x > 0, and each other choice fails."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 9": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the worm skips volume A's pages and Z's: 52 - 3.5 = 48.5."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 10": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the number is e^(i pi/4), so n = 8."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 11": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the first and last labels are equally likely to be the larger: 1/2."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 12": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): corners (2 cos t, 3 sin t) give area 12 sin 2t, largest at 45 degrees: 2 sqrt 2 by 3 sqrt 2."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 13": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the values 0, 2869, the divergent harmonic sum, 5050 and 2 put the sum of squares in the middle."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 14": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): side 6 sqrt 5 and area 144, so the height is 24/sqrt 5 and the radius half of it."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 15": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the two sums add to 2, so their product is at most 1."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 17": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 10, 24, 26 is a right triangle of area 120, so the rectangle is 40 by 3."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 18": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): lines to (1/2, 1) and (1, 1/2): cos alpha = 4/5, so sin alpha = 3/5."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 19": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): pi r^2 = (sqrt 3/4) s^2 gives s/r about 2.7."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 20": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (b + 5)^2 = 3b^2 + 2b + 1 gives b = 6."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 21": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 64 sin 120 = 32 sqrt 3, about 55."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 22": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the upward parabola is -1 at a and at b, so one root lies below a and one above b."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 23": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): any 3 of the 8 points: 56."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 24": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): x = 1/(2 + x) gives x = sqrt 2 - 1."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 25": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): C(6, 3)/2^6 = 5/16."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 26": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): cos 30 = sin 60, so f(cos 30) = sin 180 = 0."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 27": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): t = (1/2)^x lies in (0, 1) and t^2 + 2t = -b, so -3 < b < 0."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 28": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): g(1) = s satisfies f(s) = 188: 3s^2 - s - 184 = 0, s = 8."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 30": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): |8 + 3 + 4|/sqrt 5 = 3 sqrt 5."
     ]
   }
 }
