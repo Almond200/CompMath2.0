@@ -42251,6 +42251,106 @@
     "2019 Pascal Contest, Problem 25": [
       800,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): equal ratios on QS give (8x + 50)/(5x + 20) = (8x + 32)/(5x + 11), x = 5; then the cevians through W give PTW + QTW = 108 and QTW = 2.5 PTW: about 30.9, so 31."
+    ],
+    "2018 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 1.2 is the smallest."
+    ],
+    "2018 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2020/2 = 1010."
+    ],
+    "2018 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 11 days later is a week and 4 days: Sunday."
+    ],
+    "2018 Pascal Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 156 charges at 0.78: 121.68."
+    ],
+    "2018 Pascal Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): cancelling 3 times 3 times 7 leaves n^2 = 5^2 times 9: n = 15."
+    ],
+    "2018 Pascal Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the two shaded triangles span the 2 by 6 and 4 by 6 parts and halve each: 50%."
+    ],
+    "2018 Pascal Contest, Problem 7": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 8 pink of 20: 2/5."
+    ],
+    "2018 Pascal Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each part is 0.25, so S = 1.25 and T = 3.75: 5."
+    ],
+    "2018 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): distinct values below 20 force 2^3 = 8: 8 times 8 = 64."
+    ],
+    "2018 Pascal Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the line is y = x + 3: (0, 3)."
+    ],
+    "2018 Pascal Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): playing takes 360 - 130 - 110 = 120 degrees, a third of 24 hours: 8."
+    ],
+    "2018 Pascal Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): Glenda has 16, Karl and Liu 11 and 13, Helga and Julia 12 and 14: Ioana 15."
+    ],
+    "2018 Pascal Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 6x = 30 gives x = 5: area 2x^2 = 50."
+    ],
+    "2018 Pascal Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the five sum to 55, and 11 is the mean of the other four, 44/4."
+    ],
+    "2018 Pascal Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the next such time is 12:34, 7 hours 38 minutes after 4:56: 458."
+    ],
+    "2018 Pascal Contest, Problem 16": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the counts are in ratio 2 : 1 at n = 9 (6 X, 3 Y), 18 (6 X, 12 Y), 36 and 72: 135."
+    ],
+    "2018 Pascal Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): n = (pq)^2 < 1000 needs pq <= 31: the pairs 6, 10, 14, 15, 21, 22, 26 give 7."
+    ],
+    "2018 Pascal Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): angles P and R sum to 60, so the halves sum to 30: angle PSR = 150."
+    ],
+    "2018 Pascal Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): x/90 - x/120 = 16/60 gives x/360 = 4/15: x = 96."
+    ],
+    "2018 Pascal Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): split into rectangle PQRX (16), right triangle RXT (24) and isosceles TSR with height 12 (60): 100."
+    ],
+    "2018 Pascal Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): count the ways to reach each unshaded square row by row: 6 + 12 + 6 = 24."
+    ],
+    "2018 Pascal Contest, Problem 22": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3 times the nodes = 2 times 13788: 9192."
+    ],
+    "2018 Pascal Contest, Problem 23": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the lens of the two unit circles is 2(pi/3 - sqrt 3/4), and the small circle has area pi/4: about 0.443, so 0.44."
+    ],
+    "2018 Pascal Contest, Problem 24": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): every 4 in a row hold at least 3 tall students and every 7 at most 5; TTSTTTSTT works and no line of 10 does: 9."
+    ],
+    "2018 Pascal Contest, Problem 25": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): r = 500 mod n, s = n mod r and r mod s = 0 are steps of the Euclidean algorithm; checking each n gives 13."
     ]
   }
 }
