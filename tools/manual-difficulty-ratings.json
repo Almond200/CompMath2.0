@@ -39351,6 +39351,106 @@
     "2020 Cayley Contest, Problem 25": [
       1000,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): tau(2n) = 64 and tau(5n) = 60 fix the exponents of 2 and 5 in n; the numbers up to 20000 are 10500, 13500, 16500, 19500: 4."
+    ],
+    "2019 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 0 + 1 - 9 = -8."
+    ],
+    "2019 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2020 - 25 = 1995."
+    ],
+    "2019 Cayley Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 100% - 38% = 62%."
+    ],
+    "2019 Cayley Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (2/3)(3/2) = 1."
+    ],
+    "2019 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 10d = 520, so 2d = 104."
+    ],
+    "2019 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): y = x + 4 - 6 = x - 2: intercept -2."
+    ],
+    "2019 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2 + x + 10 = 3x: x = 6."
+    ],
+    "2019 Cayley Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a right-and-up path has length equal to the rights plus the ups: E needs only 1 + 4 = 5."
+    ],
+    "2019 Cayley Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (pqr)^2 = 16: pqr = 4 (or -4)."
+    ],
+    "2019 Cayley Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (1/2)(1/2) + (1/2)(1/3) = 5/12."
+    ],
+    "2019 Cayley Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the unlabelled circles hold 519 (so that 519 + 600 = 1119) and 900 (900 + 1119 = 2019): x = 900 - 519 = 381."
+    ],
+    "2019 Cayley Contest, Problem 12": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): QPR is isosceles with apex 108, so angle QRP = 36 and PRS = 108 - 36 = 72."
+    ],
+    "2019 Cayley Contest, Problem 13": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the units give q = 7 (3 + 2 + q ends in 2), the tens p = 9 with carries, the hundreds n = 6: m = 2, sum 24."
+    ],
+    "2019 Cayley Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): fill the Latin square row by row and column by column: the starred cell is B."
+    ],
+    "2019 Cayley Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): PR has slope -1/4, so PQ has slope 4: s = 2 + 8 = 10."
+    ],
+    "2019 Cayley Contest, Problem 16": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with b behind her, n = 2b + b + 1 = 3b + 1: 25."
+    ],
+    "2019 Cayley Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the cut is the 13-long diagonal of the 5 by 12 face: 2(30) + 15 + 36 + 39 = 150."
+    ],
+    "2019 Cayley Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): in the time André runs 10 s Carl has run 30 s, the same distance: y : x = 3 : 1."
+    ],
+    "2019 Cayley Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the ratio is 2^(2y); xy = 6 gives y = 6, 3, 2, 1: 4096 + 64 + 16 + 4 = 4180."
+    ],
+    "2019 Cayley Contest, Problem 20": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the radii are 25, 5, 15; the rectangle is 50 high, and Z, 15 from the bottom and right sides, is sqrt(40^2 - 10^2) = 38.7 across from X: width 78.7, area about 3940, closest to 3950."
+    ],
+    "2019 Cayley Contest, Problem 21": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with N = PQRST, 4(10N + 4) = 400000 + N gives 39N = 399984: N = 10256, digit sum 14."
+    ],
+    "2019 Cayley Contest, Problem 22": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the triples force at least 3 buses, and following the constraints shows 3 cannot work; 4 do (Abu and Cha, Bai and Fan, Don and Eva, Gia)."
+    ],
+    "2019 Cayley Contest, Problem 23": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each quarter of the wheel covers pi metres of path; over three turns, compare the shaded arcs' contact intervals with the shaded stripes: about 26%."
+    ],
+    "2019 Cayley Contest, Problem 24": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): s = 11s' and t = 101t' with r, s', t' from 2 to 9, so rst = 1111 r s' t'; counting the distinct products r s' t' gives 85."
+    ],
+    "2019 Cayley Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with edges a, b, c the face diagonals give a^2 + b^2 = 1867^2 and b^2 + c^2 = 2019^2, so positivity needs 2019^2 - 1867^2 < x^2 < 2019^2 + 1867^2: 1981 values."
     ]
   }
 }
