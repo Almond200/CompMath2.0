@@ -38751,6 +38751,106 @@
     "1998 Fermat Contest, Problem 25": [
       700,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the minimum of the three lines is greatest where y = x/2 + 1 meets y = -3x/4 + 7, at x = 24/5: 17/5."
+    ],
+    "2025 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the numerator and denominator are equal: 1."
+    ],
+    "2025 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 14 - 12 = 2."
+    ],
+    "2025 Cayley Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the rectangles side by side across the width: 5 times 4 + 4 times 8 = 52."
+    ],
+    "2025 Cayley Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the four terms average n = 17."
+    ],
+    "2025 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 150 people in 200 seats: 75%."
+    ],
+    "2025 Cayley Contest, Problem 6": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): DEC = t + 2t = 63 gives t = 21, and ABC = 8t = 168."
+    ],
+    "2025 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2 sqrt x = 32: x = 256."
+    ],
+    "2025 Cayley Contest, Problem 8": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): AB = AD makes angle ADB = 80, so ADC = 100, and AD = DC gives ACD = 40."
+    ],
+    "2025 Cayley Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 21 = 5 + 5 + 5 + 3 + 3 needs 5 blocks, and four reach at most 20."
+    ],
+    "2025 Cayley Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with x = 1/4: 3x = 3/4 beats sqrt x = 1/2, x^2 and -x."
+    ],
+    "2025 Cayley Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2025 = 45^2 and the next square is 46^2 = 2116: n = 91."
+    ],
+    "2025 Cayley Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the outer pentagons give v + w = 7 and y + z = 8, so the middle one gives x = 25 - 15 = 10."
+    ],
+    "2025 Cayley Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2 matching pairs of 6: 1/3."
+    ],
+    "2025 Cayley Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 85 + 60 - 32 = 113 ordered a topping: 87 did not."
+    ],
+    "2025 Cayley Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): BC = sqrt(1600 - 400) = 20 sqrt 3, radius 10 sqrt 3: area 300 pi/2 = 150 pi."
+    ],
+    "2025 Cayley Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 280, 120, 200 become 260, 100, 180: 13 : 5 : 9."
+    ],
+    "2025 Cayley Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 100* = 1/20 and (1/20)* = 100."
+    ],
+    "2025 Cayley Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each round leaves 1 L more in the 5 L bottle: 1, then 2, then 3."
+    ],
+    "2025 Cayley Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with B at the origin and side s, line ED meets x = s/4 at height 3s/4: FGC has legs 3s/4 and 3s/4, area 9k/32."
+    ],
+    "2025 Cayley Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): both paths have length 24 pi (four semicircles of diameter 12, three of diameter 16), so t - t/3 = 12: Violet takes 18 s."
+    ],
+    "2025 Cayley Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): C = B + 4(B - A) = (12, 15): 27."
+    ],
+    "2025 Cayley Contest, Problem 22": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 24 = km has 8 divisors m (giving 2425, ..., 2448) and 25 has 3 (2526, 2530, 2550): 11."
+    ],
+    "2025 Cayley Contest, Problem 23": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): A, B, C are N/4, N/6, N/8, so 24 divides N: 96."
+    ],
+    "2025 Cayley Contest, Problem 24": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the octagon has area 2 sqrt 2 x^2 and the dodecagon 3y^2, each half the circle's: x - y is about 64.9, so 65."
+    ],
+    "2025 Cayley Contest, Problem 25": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): proper colourings of a 6-cycle with 4 colours: 3^6 + 3 = 732, so 32."
     ]
   }
 }
