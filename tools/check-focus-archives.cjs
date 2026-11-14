@@ -40,6 +40,8 @@ for(const [paper,source] of Object.entries(papers)) {
    await page.addInitScript(t=>localStorage.setItem('theme',t),theme);
    const base=process.env.COMPMATH_URL||'http://localhost:8898';
    await page.goto(base+'/#/practice');await page.locator('.ct-row').first().waitFor();
+   const more=page.locator('#pr-contests .fam-more-btn[aria-expanded="false"]');
+   if(await more.count())await more.click();
    const latest=new Map();
    for(const key of families.keys()){
     const [fam,year]=key.split('|');latest.set(fam,Math.max(+year,latest.get(fam)||0));

@@ -41,7 +41,11 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   assert.deepEqual(await pf.locator('.pf-k').allInnerTexts().then(x=>x.slice(0,4)),['Contests:','Difficulty:','Topics:','Over time:']);
   const contests=rowOf(pf,'Contests'),aime=contests.locator('tbody tr').filter({hasText:'AIME'}).locator('td');
   assert.equal(await aime.nth(1).innerText(),String(e.aime));assert.equal(await aime.nth(2).innerText(),e.aimeShare);assert.equal(await aime.nth(3).innerText(),'#'+e.aimeAt);
+  // The table shows the AMC and AIME rows first (owner, 2026-11-14); Show more contests adds the rest.
+  assert((await contests.locator('tbody tr th').allInnerTexts()).every(t=>/^(AMC (8|10|12)|AIME)$/.test(t.trim())),'only AMC and AIME rows by default');
+  if(await contests.locator('.fam-more-btn').count()){await contests.locator('.fam-more-btn').click();await contests.locator('.fam-more-btn[aria-expanded="true"]').waitFor();}
   const counted=await contests.locator('tbody tr td:nth-child(3)').allInnerTexts();assert.equal(counted.reduce((a,b)=>a+ +b,0),e.n,'the contests add up to the problems');
+  if(await contests.locator('.fam-more-btn').count()){await contests.locator('.fam-more-btn').click();await contests.locator('.fam-more-btn[aria-expanded="false"]').waitFor();}
   const words=await rowOf(pf,'Difficulty').locator('.pf-words').innerText();
   assert.equal(words,`Median rating ${e.med}. Half of its problems are rated ${e.q1} to ${e.q3}; the full range is ${e.min} to ${e.max}. The median is harder than ${e.harder}% of all problems.`);
   const chart=rowOf(pf,'Difficulty').locator('.elo-chart');assert.equal(await chart.locator('.elo-bar').count(),NB);assert.deepEqual(await chart.locator('a.elo-bar').evaluateAll(xs=>xs.map(x=>x.getAttribute('href'))),Array.from({length:NB},(_,i)=>'#/browse/difficulty/'+(200+200*i)),'every bar opens its range');assert.equal(await chart.evaluate(el=>el.classList.contains('has-cur')),false,'no bar is singled out');assert.equal(await chart.locator('.elo-mark').count(),1);
@@ -58,11 +62,11 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const href=await page.locator('.pf-topics tbody a').first().getAttribute('href');assert.match(href,/^#\/browse\/topics\/[\w.-]+$/);
  await page.locator('.pf-topics tbody a').first().click();await page.locator('.browse-topics').waitFor();await page.goBack();await page.locator('.contest-profile').waitFor();
  // A card with a handful of problems: figures and a line each, no tables, chart or periods.
- const few=await open('partitions'),fe=expected('partitions');assert(fe.n>0&&fe.n<5);
+ const few=await open('bretschneiders-formula'),fe=expected('bretschneiders-formula');assert(fe.n>0&&fe.n<5);
  assert.equal(await few.locator('.pf-stat b').first().innerText(),String(fe.n));assert.equal(await few.locator('table, .elo-chart, .pf-eras').count(),0);
  assert.match(await rowOf(few,'Difficulty').innerText(),/Rated \d+( and \d+)?\./);assert(await rowOf(few,'Topics').locator('a').count()>0);
  // Between the two: tables and a chart, but too few problems for periods to mean anything.
- const mid=await open('ptolemys-theorem'),me=expected('ptolemys-theorem');assert(me.n>=8&&me.n<30);
+ const mid=await open('stewarts-theorem'),me=expected('stewarts-theorem');assert(me.n>=8&&me.n<30);
  assert.equal(await mid.locator('table').count(),2);assert.equal(await mid.locator('.elo-chart').count(),1);assert.equal(await mid.locator('.pf-eras').count(),0);
  // A topic's profile on its Problems by topic page (T6): the same figures and rows for the
  // problems filed under the topic and its subtopics, and the cards they cite most.

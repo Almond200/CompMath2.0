@@ -455,7 +455,7 @@
       pts.forEach(function (p, i) { s += '<circle cx="' + r2(cx + p.re * sc) + '" cy="' + r2(cy - p.im * sc) + '" r="' + (i === n ? 5 : 3.5) + '" class="' + (i === n ? "gd-gold" : "gd-acc") + '"/>'; });
       svg.innerHTML = s;
       var r = Math.hypot(a, b), th = Math.atan2(b, a) * 180 / Math.PI;
-      cap.innerHTML = "z = r·(cos θ + i sin θ) with r = <b>" + r2(r) + "</b>, θ = <b>" + r2(th) + "°</b>. Then zⁿ = rⁿ(cos nθ + i sin nθ): magnitude " + (r > 1 ? "grows" : r < 1 ? "shrinks" : "stays fixed") + " and the angle steps by θ each power (gold = z^" + n + ").";
+      cap.innerHTML = "z = r·(cos θ + i sin θ) with r = <b>" + r2(r) + "</b>, θ = <b>" + r2(th) + "°</b>. Then zⁿ = rⁿ(cos nθ + i sin nθ): magnitude " + (r > 1 ? "grows" : r < 1 ? "shrinks" : "stays fixed") + " and the angle steps by θ each power (gold = z<sup>" + n + "</sup>).";
     }
     host.querySelector(".dm-go").addEventListener("click", run); wireEnter(host, ".dm-a,.dm-b,.dm-n", run); run();
   } };
@@ -952,7 +952,7 @@
       var r = modpow(a, p - 1, p), ra = modpow(a, p, p);
       out.innerHTML =
         '<div class="tool-sub">' + K(a + "^{" + (p - 1) + "} \\equiv " + r + " \\pmod{" + p + "}") + "</div>" +
-        '<div class="tool-cap">' + (a % p === 0 ? "Here p ∣ a, so aᵖ⁻¹ ≡ 0. " : "Since p ∤ a, aᵖ⁻¹ ≡ 1 (mod p). ") + "Always aᵖ ≡ a (mod p): " + a + "^" + p + " ≡ " + ra + " ≡ " + ((a % p) + p) % p + ".</div>";
+        '<div class="tool-cap">' + (a % p === 0 ? "Here p ∣ a, so aᵖ⁻¹ ≡ 0. " : "Since p ∤ a, aᵖ⁻¹ ≡ 1 (mod p). ") + "Always aᵖ ≡ a (mod p): " + a + "<sup>" + p + "</sup> ≡ " + ra + " ≡ " + ((a % p) + p) % p + ".</div>";
     }
     host.querySelector(".fl-go").addEventListener("click", run); wireEnter(host, ".fl-a,.fl-p", run); run();
   } };
