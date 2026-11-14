@@ -45069,6 +45069,106 @@
     "2005 Pascal Contest, Problem 25": [
       700,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): AD = 75 and FC = 60; F is 36 from BC (the area of BFC two ways) and 48 along from D, so 14 from AD: AB = 50."
+    ],
+    "2004 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 5 times 4 / 2 = 10."
+    ],
+    "2004 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the three sum to 24, so x = 10."
+    ],
+    "2004 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): lcm(9, 4, 18) = 36."
+    ],
+    "2004 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): AC = sqrt(100 - 64) = 6: (1/2)(8)(6) = 24."
+    ],
+    "2004 Pascal Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (5 - 2)/(5 + 2) = 3/7."
+    ],
+    "2004 Pascal Contest, Problem 6": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 4 + 9 - 8 + 1 = 6."
+    ],
+    "2004 Pascal Contest, Problem 7": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 27 - 6 = 21."
+    ],
+    "2004 Pascal Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 0.18 times 42 = 0.27x: x = 28."
+    ],
+    "2004 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each face is 16, so the edge is 4: 64."
+    ],
+    "2004 Pascal Contest, Problem 10": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3x = 6, so z = 6 + 3 = 9."
+    ],
+    "2004 Pascal Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each of the four rectangles is cut into two equal triangles, one shaded: 8."
+    ],
+    "2004 Pascal Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): tripling the second balance and comparing with the first leaves 2 of one shape balancing 6 of another: 3."
+    ],
+    "2004 Pascal Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): her distance rises to 1 at the first corner and to sqrt 2 at the far corner, then falls back: graph (C)."
+    ],
+    "2004 Pascal Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the nth figure is an (n + 2)-square with an n-square shaded: 12^2 - 10^2 = 44."
+    ],
+    "2004 Pascal Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each boy needs 2 brothers, so 3 boys, and each girl needs a sister, so 2 girls: 5."
+    ],
+    "2004 Pascal Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): a^2 = 33 - 3b must be a square below 33 with 3 dividing 33 - a^2: a = 3, b = 8, ab = 24."
+    ],
+    "2004 Pascal Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 0.111... + 0.1212... + 0.123123... to six places: 0.355446."
+    ],
+    "2004 Pascal Contest, Problem 18": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): -5(x - 1) - 6 = 9 gives x = -2."
+    ],
+    "2004 Pascal Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each week adds the branches that are two weeks old, so the counts are Fibonacci: 1, 1, 2, 3, 5, 8, 13, 21."
+    ],
+    "2004 Pascal Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the arrow at k moves to 2k mod 7; 6, 5, 3 form a cycle of 3, so after turn 21 it is at 6 and after turn 1 at 5."
+    ],
+    "2004 Pascal Contest, Problem 21": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): count the paths into each letter from the ones above: 6 to each L, 12 in all."
+    ],
+    "2004 Pascal Contest, Problem 22": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the water and gold fill 20 by 20 by 15: the water is 6000 - 3375 = 2625 cm^3, depth 2625/400, about 6.56."
+    ],
+    "2004 Pascal Contest, Problem 23": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): of the 15 pairs of coins, those with a quarter, except a quarter with a nickel, reach 30 cents: 9/15 = 3/5."
+    ],
+    "2004 Pascal Contest, Problem 24": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the group with n terms holds the fractions whose parts sum to n + 1; the fifth fraction equal to 3/7 is 15/35, the 35th term of the 49-term group: 1176 + 35 = 1211."
+    ],
+    "2004 Pascal Contest, Problem 25": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the trapezoid has area 7h/2; ABZ and XYZ are similar in ratio 2 : 1 and ABW and CYW in ratio 2 : 3, so AZW = 2h/3 - 2h/5 = 4h/15, which is 8/105 of the trapezoid."
     ]
   }
 }
