@@ -171,7 +171,11 @@
     "2014 BMT Geometry": "https://berkeley.mt/archives/bmt-2014/GeoS2014.pdf",
     "2013 BMT Analysis": "https://berkeley.mt/archives/bmt-2013/AnaS2013.pdf",
     "2013 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2013/DisS2013.pdf",
-    "2013 BMT Geometry": "https://berkeley.mt/archives/bmt-2013/GeoS2013.pdf"
+    "2013 BMT Geometry": "https://berkeley.mt/archives/bmt-2013/GeoS2013.pdf",
+    "2016 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraA.pdf",
+    "2016 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraB.pdf",
+    "2016 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsA.pdf",
+    "2016 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -38281,6 +38285,134 @@
     "2013 BMT Geometry, Problem 10": [
       3850,
       "Project the harmonic incircle quadrilateral to the opposite side and evaluate the absolute reciprocal-distance difference; the PDF absolute-value bars are essential."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 1": [
+      1750,
+      "Cube a radical recurrence to expose constant three-term block sums and add its initial exceptional term."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 2": [
+      1850,
+      "Use the fixed point of an affine map to solve equality of its fifth and first iterates."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 3": [
+      2450,
+      "Replace a nested logarithmic power by one logarithm variable, factor its cubic and recover the original positive solutions."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 4": [
+      3200,
+      "Bound an integer-coefficient polynomial value through its known congruences and construct a polynomial attaining the least positive CRT representative."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 5": [
+      3100,
+      "Compress an integer squaring-and-halving recurrence into transitions between one-less-than-power-of-two states and count their total index length."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 6": [
+      3950,
+      "Prove the optimal shape and descending order of a binary merge tree by local rotations, then compare its exact value with factorials to certify the requested rounding."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 7": [
+      3750,
+      "Classify a polynomial functional identity by root closure under squaring and shifted squaring, then bound the surviving root multiplicities by a divisor condition."
+    ],
+    "2016 PUMaC Division A Algebra, Problem 8": [
+      4050,
+      "Subtract reciprocal-argument lacunary double series and partition positive exponents by their two-adic and three-adic factors to obtain a rational function."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 1": [
+      1000,
+      "Undo two nested squarings and retain only the prescribed positive real value."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 2": [
+      1750,
+      "Cube a radical recurrence to expose constant three-term block sums and add its initial exceptional term."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 3": [
+      2000,
+      "Translate the coordinate axes of a cubic and track the sum of its new real intercepts."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 4": [
+      1850,
+      "Use the fixed point of an affine map to solve equality of its fifth and first iterates."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 5": [
+      2450,
+      "Replace a nested logarithmic power by one logarithm variable, factor its cubic and recover the original positive solutions."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 6": [
+      3200,
+      "Bound an integer-coefficient polynomial value through its known congruences and construct a polynomial attaining the least positive CRT representative."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 7": [
+      3100,
+      "Compress an integer squaring-and-halving recurrence into transitions between one-less-than-power-of-two states and count their total index length."
+    ],
+    "2016 PUMaC Division B Algebra, Problem 8": [
+      3750,
+      "Classify a polynomial functional identity by root closure under squaring and shifted squaring, then bound the surviving root multiplicities by a divisor condition."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 1": [
+      2250,
+      "Count binary cube-face colorings avoiding monochromatic vertices, up to the twenty-four proper rotations."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 2": [
+      2600,
+      "Compute the third-ranked entrant survival probability under repeated random pairings, independently verifying the uniform-bracket expression by a round-state recursion."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 3": [
+      2850,
+      "Use distinct conditional-mean announcements to force a common viewing direction around a cycle, then recover all six bounded dice rolls."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 4": [
+      2950,
+      "Track the expected squared displacement of a symmetric knight walk through its constant one-step increment."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 5": [
+      3450,
+      "Index consecutive first appearances by the number of types already seen and sum their adjacency indicators through the finite discovery process."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 6": [
+      3150,
+      "Solve the absorbing fair-walk expected duration and evaluate it at the given off-center starting position."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 7": [
+      3750,
+      "Condition hourly random train times on an hour with no arrival, accounting for the changed arrival-phase distribution before comparing the two waiting expectations."
+    ],
+    "2016 PUMaC Division A Combinatorics, Problem 8": [
+      4000,
+      "Translate universal medal-weight superiority into strict cumulative-count dominance and enumerate the bounded medal-count tuples."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 1": [
+      1000,
+      "Count ordered pairs of six-sided dice with a large absolute difference."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 2": [
+      1200,
+      "Sum the upper tail of a seven-day independent fair-coin practice schedule."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 3": [
+      2250,
+      "Count binary cube-face colorings avoiding monochromatic vertices, up to the twenty-four proper rotations."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 4": [
+      2600,
+      "Compute the third-ranked entrant survival probability under repeated random pairings, independently verifying the uniform-bracket expression by a round-state recursion."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 5": [
+      2850,
+      "Use distinct conditional-mean announcements to force a common viewing direction around a cycle, then recover all six bounded dice rolls."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 6": [
+      2950,
+      "Track the expected squared displacement of a symmetric knight walk through its constant one-step increment."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 7": [
+      3450,
+      "Index consecutive first appearances by the number of types already seen and sum their adjacency indicators through the finite discovery process."
+    ],
+    "2016 PUMaC Division B Combinatorics, Problem 8": [
+      4000,
+      "Translate universal medal-weight superiority into strict cumulative-count dominance and enumerate the bounded medal-count tuples."
     ]
   }
 }

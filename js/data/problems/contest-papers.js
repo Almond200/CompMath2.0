@@ -406,5 +406,21 @@ window.MATH_CONTEST_PAPERS = {
   "2013 BMT Geometry": {
     "url": "https://berkeley.mt/archives/bmt-2013/GeoS2013.pdf",
     "solUrl": "https://berkeley.mt/archives/bmt-2013/GeoS2013S.pdf"
+  },
+  "2016 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraASol.pdf"
+  },
+  "2016 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2016_AlgebraBSol.pdf"
+  },
+  "2016 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsASol.pdf"
+  },
+  "2016 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2016_CombinatoricsBSol.pdf"
   }
 };
