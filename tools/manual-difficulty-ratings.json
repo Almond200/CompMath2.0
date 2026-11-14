@@ -37055,6 +37055,106 @@
     "2015 Fermat Contest, Problem 25": [
       1300,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the period of m/n is the order of 10 modulo the part of n prime to 10; with n squarefree that part divides 3 times 7 times 11 times 13 times 37 and must have order 6; summing phi over those n, times 1, 2, 5 or 10, gives F = 1109700, so G = 1109707: 181."
+    ],
+    "2014 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (15 - 9)/3 = 2."
+    ],
+    "2014 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1000 < 2014 < 10000, that is between 10^3 and 10^4."
+    ],
+    "2014 Fermat Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (2)(-2) = -4."
+    ],
+    "2014 Fermat Contest, Problem 4": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): xy = 24 with x - y = 5: 8 and 3, sum 11."
+    ],
+    "2014 Fermat Contest, Problem 5": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the side 3 is a radius: 9 pi."
+    ],
+    "2014 Fermat Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): N = 32, and 75% of 32 is 24."
+    ],
+    "2014 Fermat Contest, Problem 7": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): angle PRQ = x and angle PQR = 2x (the two marked parts), so x + 2x + 30 = 180: x = 50."
+    ],
+    "2014 Fermat Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Amy > Carla > Eric > Dan > Bob: Bob."
+    ],
+    "2014 Fermat Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): TU spans 8 across and 8 - 1 - 1 = 6 up: 10."
+    ],
+    "2014 Fermat Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a half turn about 1 sends [-2, 3] to [-1, 4]."
+    ],
+    "2014 Fermat Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 9a = 6b and 6a = 4b: (6b + 8b)/(4b) = 7/2."
+    ],
+    "2014 Fermat Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 10^(x + 5) = 10^8: x = 3."
+    ],
+    "2014 Fermat Contest, Problem 13": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): digit sums of 3 from 10 to 999: 3 two-digit (12, 21, 30) and 6 three-digit with leading digit 1, 2, 3: 9."
+    ],
+    "2014 Fermat Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 100w - 20(70 - w) = 5440: w = 57."
+    ],
+    "2014 Fermat Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the 16 products: 4 comes up three times (1 times 4, 4 times 1, 2 times 2), more than any other."
+    ],
+    "2014 Fermat Contest, Problem 16": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): in 5 hours at most 400 km: the largest palindrome by 14231 is 14141, 310 km, 62 km/h."
+    ],
+    "2014 Fermat Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 75n + 15 + 3(n - 3) = 78.3n: n = 20."
+    ],
+    "2014 Fermat Contest, Problem 18": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the parallelogram is s by s with base 2s along the diagonal direction: PR^2 = (2s)^2 + s^2 = 8100, s^2 = 1620."
+    ],
+    "2014 Fermat Contest, Problem 19": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the digits may include 0: the largest sum is 2556 (9, 8, 7 in the hundreds) and the smallest 711 (1, 2, 3 hundreds, 0, 4, 5 tens): 1845."
+    ],
+    "2014 Fermat Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): PST, SQV and TUR are equilateral; with ST = a the sum a + 2(30 - a) = 35 gives a = 25: VU = 30 - 10 = 20."
+    ],
+    "2014 Fermat Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each step keeps 4/5 of the peanuts: 10 times 16/25 = 6.4 kg, raisins 3.6: 16 : 9."
+    ],
+    "2014 Fermat Contest, Problem 22": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): adding the two trips, each hill is crossed once each way: 1/99 + 1/63 = 2/77, the same as two flat crossings, so 2D/77 = 8 hours: D = 308."
+    ],
+    "2014 Fermat Contest, Problem 23": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the area is 7500, so the height from P to QR is 120; the top three sections take 3/4 of the area, a similar triangle of height 120 sqrt 3/2: h = 120 - 103.9 = 16.1."
+    ],
+    "2014 Fermat Contest, Problem 24": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 8! - 3 times 7! + 3 times 6! - 5! = 27240."
+    ],
+    "2014 Fermat Contest, Problem 25": [
+      1200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the chord's slope gives r + t = 12/5 + m/5 and its length 13 gives |t - r| = 5; substituting s and u, r + s + t + u = 27 becomes 20n = m^2 - 10m + 461, which has 29 solutions with n <= 1000."
     ]
   }
 }
