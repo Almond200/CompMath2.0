@@ -47,6 +47,7 @@ html[data-text="larger"] { --tx: 1.3; }
   --level-cayley: #4a7fb5;
   --level-pascal: #b5833a;
   --level-ukmt: #8a4f9e;
+  --level-ukmti: #b0628f;
   --radius: 12px;
   --ui-shadow: 0 4px 16px rgba(0, 0, 0, 0.32);
   --ui-shadow-color: rgba(0, 0, 0, 0.32);
@@ -104,6 +105,7 @@ html[data-text="larger"] { --tx: 1.3; }
   --level-cayley: #2f5c8a;
   --level-pascal: #85601f;
   --level-ukmt: #633872;
+  --level-ukmti: #82406a;
 }
 
 /* A few elements hardcode a dark translucent fill; re-tint them for light mode. */

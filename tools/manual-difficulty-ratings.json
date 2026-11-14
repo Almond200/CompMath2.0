@@ -47069,6 +47069,106 @@
     "2013 UKMT SMC, Problem 25": [
       700,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): routes alternate X-lines and Y-lines: 9 with two lines, 36 with four and 36 with six, 81."
+    ],
+    "2026 UKMT IMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): (1 + ... + n)/n = (n + 1)/2 grows with n: the last, 7/2."
+    ],
+    "2026 UKMT IMC, Problem 2": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 2026 minutes is 1 day 9 hours 46 minutes: 06:12 on Wednesday."
+    ],
+    "2026 UKMT IMC, Problem 3": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): (n - 1)n(n + 1) = 120 gives 4, 5, 6: the largest face is 30."
+    ],
+    "2026 UKMT IMC, Problem 4": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 1 : 1/2 : 1/4 = 4 : 2 : 1, so the smallest part is 35/7 = 5."
+    ],
+    "2026 UKMT IMC, Problem 5": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the inner steps match the outer edges, so the perimeter is that of a p by r rectangle: 2p + 2r."
+    ],
+    "2026 UKMT IMC, Problem 6": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): n/(n + 1) > 0.92 gives n > 11.5: 12/13."
+    ],
+    "2026 UKMT IMC, Problem 7": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 97 must pair with 1, 95 with 5, 99 with 9, 96 with 3 and 98 with 7: 97 - 11 = 86."
+    ],
+    "2026 UKMT IMC, Problem 8": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the exterior angle PSQ is y + 20 and also z + 30: y = z + 10."
+    ],
+    "2026 UKMT IMC, Problem 9": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): n^2 - 1 = (n - 1)(n + 1): 24, 48, 120, 168 are multiples of 24 but 80 is not: 4."
+    ],
+    "2026 UKMT IMC, Problem 10": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): halving the 5-5-6 triangle gives 3-4-5 triangles: 12x^2 = 108, x = 3, longest side 18."
+    ],
+    "2026 UKMT IMC, Problem 11": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): carries are at most 1; U = 1, M = 6, T + C = 6 and K + I = 9: 15."
+    ],
+    "2026 UKMT IMC, Problem 12": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the large quarter circle has radius 2 sqrt 2 x and area 2 pi x^2, the small one pi x^2: pi x^2."
+    ],
+    "2026 UKMT IMC, Problem 13": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): x = 5 as the mean, 2, 3 or 4 as the median, or 1, 2, 4, 13 as the mode: 6 values."
+    ],
+    "2026 UKMT IMC, Problem 14": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the largest angle must be a triangular number above 60, and 78 forces the others; 78 + 66 + 36: 36."
+    ],
+    "2026 UKMT IMC, Problem 15": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the triangle is (1/2)(4X)^2 sin 60 = 8X^2 sin 60 and the parallelograms 3(5X)(X sin 60): 8 : 15."
+    ],
+    "2026 UKMT IMC, Problem 16": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the gap closes 100 km in 75 minutes, so 80 km in the first hour: 200 + 80 = 280."
+    ],
+    "2026 UKMT IMC, Problem 17": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the overlap is a parallelogram; congruent triangles give x^2 = 1 + (2 - x)^2, x = 5/4: area 5/4."
+    ],
+    "2026 UKMT IMC, Problem 18": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): with the exterior angle theorem twice, alpha + 2 beta = alpha + 30: beta = 15."
+    ],
+    "2026 UKMT IMC, Problem 19": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): peel the fraction: 1 + 1/(1 + 1/x) = 8/5, so 1/x = 2/3 and x = 3/2."
+    ],
+    "2026 UKMT IMC, Problem 20": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): matching the vertical rise gives (x + y) sin 45 = 5 and the horizontal run gives z = 4: 18 + 5 sqrt 2."
+    ],
+    "2026 UKMT IMC, Problem 21": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): (x + y)^3 - (x^3 + y^3) = 3xy(x + y): 216 - 198 = 18xy, xy = 1."
+    ],
+    "2026 UKMT IMC, Problem 22": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the route visits the centre once and goes round the ring before and after; counting by the ring cell before the centre: 2 + 12 + 4 = 18."
+    ],
+    "2026 UKMT IMC, Problem 23": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): Oliver asked 100n with n saying no; Teresa's x must make 2(100n + x)/100 an integer, least with n = 1, x = 50: 2 said no to her."
+    ],
+    "2026 UKMT IMC, Problem 24": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the segments from T to the midpoints halve each side triangle, so opposite quadrilaterals have equal sums: 20 + 15 - 24 = 11."
+    ],
+    "2026 UKMT IMC, Problem 25": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): of the 35 sets of three days, 21 leave a run of at least three non-swim days round the week: 3/5."
     ]
   }
 }
