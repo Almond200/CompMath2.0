@@ -207,7 +207,11 @@
     "2012 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2012_AlgebraA.pdf",
     "2012 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2012_AlgebraB.pdf",
     "2012 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2012_CombinatoricsA.pdf",
-    "2012 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2012_CombinatoricsB.pdf"
+    "2012 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2012_CombinatoricsB.pdf",
+    "2012 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2012_GeometryA.pdf",
+    "2012 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2012_GeometryB.pdf",
+    "2012 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2012_NumberTheoryA.pdf",
+    "2012 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2012_NumberTheoryB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -39469,6 +39473,134 @@
     "2012 PUMaC Division B Combinatorics, Problem 8": [
       3850,
       "Count Hamiltonian grading orders on a three-row cyclic strip and reduce the resulting recurrence modulo one hundred; an independent frontier degree/connectivity count verifies the total."
+    ],
+    "2012 PUMaC Division A Geometry, Problem 1": [
+      3150,
+      "Verify the common-tangent rectangle around three touching disks and its exact area; a separate support-line optimization agrees, while independent global optimality remains a recorded proof gap."
+    ],
+    "2012 PUMaC Division A Geometry, Problem 2": [
+      2800,
+      "Find the common chord and its distance from the second center, then compute the exact triangle area."
+    ],
+    "2012 PUMaC Division A Geometry, Problem 3": [
+      3350,
+      "Use the symmetric pursuit velocity to obtain proportional radial decay, then solve the exponential area ratio; the continuous proportional-rate model has no dedicated existing card."
+    ],
+    "2012 PUMaC Division A Geometry, Problem 4": [
+      3050,
+      "Use a centered inscribed square to fix the foci at side midpoints, then recover the full minor-axis square from the focal-distance sum."
+    ],
+    "2012 PUMaC Division A Geometry, Problem 5": [
+      3400,
+      "For the nontrivial point on the side, prove the two circumcircles have equal radii and convert their center separation to the common external tangent length."
+    ],
+    "2012 PUMaC Division A Geometry, Problem 6": [
+      3850,
+      "Unfold triangular billiards, classify route midpoints by lattice congruence classes and fold them back, checking valid first-hit witnesses for every physical midpoint."
+    ],
+    "2012 PUMaC Division A Geometry, Problem 7": [
+      3650,
+      "Find a cyclic equatorial area and radius, recover the perpendicular diagonal from the bipyramid volume and sum the eight equal slant edges."
+    ],
+    "2012 PUMaC Division A Geometry, Problem 8": [
+      3750,
+      "Pair half-angle cotangents of opposite cyclic angles, then recover the remaining sine ratio from the side-length data."
+    ],
+    "2012 PUMaC Division B Geometry, Problem 1": [
+      1950,
+      "Convert the filter-paper sector circumference to the cone radius and recover its axial-section apex angle."
+    ],
+    "2012 PUMaC Division B Geometry, Problem 2": [
+      2450,
+      "Relate a corner-rotated rectangle sweep to the quarter-disk of its diagonal and recover the missing side."
+    ],
+    "2012 PUMaC Division B Geometry, Problem 3": [
+      2500,
+      "Compare the circumradius and apothem of two similar midpoint dodecagons and square the exact half-angle ratio."
+    ],
+    "2012 PUMaC Division B Geometry, Problem 4": [
+      3150,
+      "Verify the common-tangent rectangle around three touching disks and its exact area; a separate support-line optimization agrees, while independent global optimality remains a recorded proof gap."
+    ],
+    "2012 PUMaC Division B Geometry, Problem 5": [
+      2800,
+      "Find the common chord and its distance from the second center, then compute the exact triangle area."
+    ],
+    "2012 PUMaC Division B Geometry, Problem 6": [
+      3050,
+      "Use a centered inscribed square to fix the foci at side midpoints, then recover the full minor-axis square from the focal-distance sum."
+    ],
+    "2012 PUMaC Division B Geometry, Problem 7": [
+      4050,
+      "Encode shared great-circle intersections as cyclic arrival phases, optimize the minimum pairwise phase gap and exhibit a collision-free periodic schedule at the bound."
+    ],
+    "2012 PUMaC Division B Geometry, Problem 8": [
+      3050,
+      "Identify an isosceles trapezoid from its cyclic side data and recover its circumradius through a diagonal and an included angle."
+    ],
+    "2012 PUMaC Division A Number Theory, Problem 1": [
+      1950,
+      "Solve two candy-remainder congruences and choose the first representative above the stated threshold."
+    ],
+    "2012 PUMaC Division A Number Theory, Problem 2": [
+      2850,
+      "Force four positive squares to be even modulo eight and descend until the only possible four-term sum is four ones."
+    ],
+    "2012 PUMaC Division A Number Theory, Problem 3": [
+      3100,
+      "Track the finite last-two-digit states of a branching power tower and prove the residue set stabilizes."
+    ],
+    "2012 PUMaC Division A Number Theory, Problem 4": [
+      3500,
+      "Use low moduli to bound one exponent and consecutive-square gaps to classify the remaining exponential-square equations."
+    ],
+    "2012 PUMaC Division A Number Theory, Problem 5": [
+      3850,
+      "Characterize leading digits by fractional logarithms, exclude powers of ten and use irrational-rotation density; explicit convergent-based exponents verify every remaining integer."
+    ],
+    "2012 PUMaC Division A Number Theory, Problem 6": [
+      3900,
+      "Apply lifting the exponent to successive power-tower differences and propagate the exact valuation from its initial two-step case."
+    ],
+    "2012 PUMaC Division A Number Theory, Problem 7": [
+      3550,
+      "Combine a fourth-power equation and a fifth-power equation, bound all positive variables and use modular square restrictions to classify the finite solution set."
+    ],
+    "2012 PUMaC Division A Number Theory, Problem 8": [
+      4200,
+      "Force a cyclotomic divisor of a prime-power remainder and use order and low-modulus contradictions to exclude larger exponents; the source incorrectly restricts a required prime power to a prime, though the maximum remains correct."
+    ],
+    "2012 PUMaC Division B Number Theory, Problem 1": [
+      2250,
+      "Interpret a positional square in its base and use the permitted real third side to enumerate every valid pair of integer leg lengths."
+    ],
+    "2012 PUMaC Division B Number Theory, Problem 2": [
+      3050,
+      "Enumerate multiplicative partitions of the prescribed divisor count and minimize the corresponding prime-exponent assignments under a fixed required divisor."
+    ],
+    "2012 PUMaC Division B Number Theory, Problem 3": [
+      2600,
+      "Pair divisors of a perfect square around its square root and subtract the divisors of the smaller power."
+    ],
+    "2012 PUMaC Division B Number Theory, Problem 4": [
+      1950,
+      "Solve two candy-remainder congruences and choose the first representative above the stated threshold."
+    ],
+    "2012 PUMaC Division B Number Theory, Problem 5": [
+      2850,
+      "Force four positive squares to be even modulo eight and descend until the only possible four-term sum is four ones."
+    ],
+    "2012 PUMaC Division B Number Theory, Problem 6": [
+      2800,
+      "Reduce gcds of neighboring quadratic values to small linear expressions and evaluate the three exact factors."
+    ],
+    "2012 PUMaC Division B Number Theory, Problem 7": [
+      3500,
+      "Use low moduli to bound one exponent and consecutive-square gaps to classify the remaining exponential-square equations."
+    ],
+    "2012 PUMaC Division B Number Theory, Problem 8": [
+      3900,
+      "Apply lifting the exponent to successive power-tower differences and propagate the exact valuation from its initial two-step case."
     ]
   }
 }
