@@ -39251,6 +39251,106 @@
     "2021 Cayley Contest, Problem 25": [
       1000,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): area at most 10 with base JK = 5 means distance at most 4 from 4x + 3y = 29: the strip 9 <= 4x + 3y <= 49 inside the square has area 313/4 = (300 + 13)/(40 - 36): 49."
+    ],
+    "2020 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 0/40 = 0."
+    ],
+    "2020 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 12 - 3 = 9."
+    ],
+    "2020 Cayley Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the fourth corner of the rectangle is (5, 3)."
+    ],
+    "2020 Cayley Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1/25 < 1/20."
+    ],
+    "2020 Cayley Contest, Problem 5": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): angle QSP = 130, and the exterior angle RQS = 150 = 130 + x: x = 20."
+    ],
+    "2020 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): read the goldfinches off the bar graph against the total: 30%."
+    ],
+    "2020 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): m + n = 10 with m >= 1: n = 9."
+    ],
+    "2020 Cayley Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 140 remains, 15% of it is 21, and Dale gets half: 10.50."
+    ],
+    "2020 Cayley Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): row k has 2k - 1 squares, k of them unshaded: row 2020 has 2019 shaded."
+    ],
+    "2020 Cayley Contest, Problem 10": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): extend RQ to U on PT: UQ = 12, so PU = 5; the perimeter gives RS = 8 and PT = 13: 30 times 8 + 30 = 270."
+    ],
+    "2020 Cayley Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 5 times 45 = 225."
+    ],
+    "2020 Cayley Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 21 = 1 times 3 times 7: 11."
+    ],
+    "2020 Cayley Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 8^20 = 2^60: n = 60."
+    ],
+    "2020 Cayley Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): two negatives and the largest positive: (-6)(-4)(7) = 168."
+    ],
+    "2020 Cayley Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 63 non-red marbles are 7 parts, so a part is 9 and red is 18."
+    ],
+    "2020 Cayley Contest, Problem 16": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): OQ is the square's diagonal and a radius: 2s^2 = r^2 = 72, so s^2 = 36."
+    ],
+    "2020 Cayley Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the number of bags must be a multiple of lcm(50, 40, 25) = 200: 4 + 5 + 8 = 17 boxes."
+    ],
+    "2020 Cayley Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): d/40 - d/60 = 2 gives d = 240 and the right time 5 hours: 48 km/h."
+    ],
+    "2020 Cayley Contest, Problem 19": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): scores are 5c + u with c + u <= 10; from 30 to 50 the scores 39, 43, 44, 47, 48, 49 are impossible: 6."
+    ],
+    "2020 Cayley Contest, Problem 20": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the last digits of 3^m and 7^n each cycle with period 4; counting the pairs whose last digits add to 10: 2625."
+    ],
+    "2020 Cayley Contest, Problem 21": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): integer points on y = 4x + 3 strictly inside the box need 25 < x < 75 and 120 < 4x + 3 < 250: x = 30 to 61, 32 points."
+    ],
+    "2020 Cayley Contest, Problem 22": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): PS = 4 from PQ = 5 and QS = 3; triangles PSQ and RTQ are similar, so QR = 5 times 4/3 = 20/3 and SR = 11/3."
+    ],
+    "2020 Cayley Contest, Problem 23": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): place the digits in order of first appearance and separate the 2s; counting the valid arrangements gives 254."
+    ],
+    "2020 Cayley Contest, Problem 24": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): compute the tetrahedron FGMP's volume two ways: with GP = x, [PFM] times 100 = 20000x, and [PFM] = 100 sqrt 2 sqrt(20000 + x^2) gives x = 100 sqrt 2: HP = 58.6, about 59."
+    ],
+    "2020 Cayley Contest, Problem 25": [
+      1000,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): tau(2n) = 64 and tau(5n) = 60 fix the exponents of 2 and 5 in n; the numbers up to 20000 are 10500, 13500, 16500, 19500: 4."
     ]
   }
 }
