@@ -32591,6 +32591,202 @@
     "2011 Columbus State Tournament, Problem 48": [
       1500,
       "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the tetrahedron exists for a region of (x, y) in the unit square; compute its area."
+    ],
+    "2010 Columbus State Tournament, Problem 1": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 4 times 6 - 3 times 5 = 9."
+    ],
+    "2010 Columbus State Tournament, Problem 2": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): slopes -2/3 and -6/a multiply to -1: a = -4."
+    ],
+    "2010 Columbus State Tournament, Problem 3": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): express the requested power in terms of the given ratio."
+    ],
+    "2010 Columbus State Tournament, Problem 4": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (x - y)^2 = (x + y)^2 - 4xy; evaluate the requested expression."
+    ],
+    "2010 Columbus State Tournament, Problem 5": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the square's diagonal pi sqrt 2 is a diameter: area pi^3/2."
+    ],
+    "2010 Columbus State Tournament, Problem 6": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): replace x by x/3 in the given formula."
+    ],
+    "2010 Columbus State Tournament, Problem 7": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x^3 = 64, so log_2 x^3 = 6."
+    ],
+    "2010 Columbus State Tournament, Problem 8": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2a^2 b^2 = (a^2 + b^2)^2 - (a^4 + b^4)."
+    ],
+    "2010 Columbus State Tournament, Problem 9": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the product of the four roots is the constant term, 16."
+    ],
+    "2010 Columbus State Tournament, Problem 10": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (x - 3/2)^2 + (y + 2)^2 = ...: center (3/2, -2)."
+    ],
+    "2010 Columbus State Tournament, Problem 11": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x^2 - 4x - k = 0 has one root when 16 + 4k = 0: k = -4."
+    ],
+    "2010 Columbus State Tournament, Problem 12": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (1 + x/100)(1 - y/100) = 1 relates x and y."
+    ],
+    "2010 Columbus State Tournament, Problem 13": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): A = 7^8042(7^3 - 7^2 + 7 - 1) = 300 times 7^8042: last two digits 00."
+    ],
+    "2010 Columbus State Tournament, Problem 14": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 402 + 80 + 16 + 3 = 501."
+    ],
+    "2010 Columbus State Tournament, Problem 15": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2010 = 2 times 3 times 5 times 67 has the prime 3 to an odd power: no solutions."
+    ],
+    "2010 Columbus State Tournament, Problem 16": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): compare the five volumes."
+    ],
+    "2010 Columbus State Tournament, Problem 17": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the orbit's circumference at radius 3963 + 126 miles over the speed."
+    ],
+    "2010 Columbus State Tournament, Problem 18": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): |x - 1| + |x + 1| = 2 holds for every x in [-1, 1]: infinitely many."
+    ],
+    "2010 Columbus State Tournament, Problem 19": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): set the equal ratios to k and solve for a and b in terms of c and d."
+    ],
+    "2010 Columbus State Tournament, Problem 20": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): count squares and triangles per repeating block of the tiling."
+    ],
+    "2010 Columbus State Tournament, Problem 21": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2010 = 2 times 3 times 5 times 67: 16 divisors."
+    ],
+    "2010 Columbus State Tournament, Problem 22": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (2009 + k)/k = 1 + 2009/k is an integer when k divides 2009 = 7^2 times 41: 6 values."
+    ],
+    "2010 Columbus State Tournament, Problem 23": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the equation reduces to x/y = 10, so x + y = 11y <= 120: 10 pairs."
+    ],
+    "2010 Columbus State Tournament, Problem 24": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the product of (k + 1)/k telescopes to 2011/2."
+    ],
+    "2010 Columbus State Tournament, Problem 25": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the sum of the squares of the medians is 3/4 of the sum of the squares of the sides: 75/2."
+    ],
+    "2010 Columbus State Tournament, Problem 26": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): MNPQ is a square; its diagonal is the square's side plus two triangle heights."
+    ],
+    "2010 Columbus State Tournament, Problem 27": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the cube's space diagonal is the sphere's diameter: side 2r/sqrt 3."
+    ],
+    "2010 Columbus State Tournament, Problem 28": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): an implication is equivalent to its contrapositive."
+    ],
+    "2010 Columbus State Tournament, Problem 29": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (4/3) pi r^3 over (2r)^3 = pi/6."
+    ],
+    "2010 Columbus State Tournament, Problem 30": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a $1 bet on red: 18/38 win against 20/38 loss."
+    ],
+    "2010 Columbus State Tournament, Problem 31": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): compare logarithms: 30 log 67, 67 log 2010, 2010 log 30."
+    ],
+    "2010 Columbus State Tournament, Problem 32": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): f(2x + 1) - f(2x - 1) = x telescopes over odd arguments: f(2011) = 1 + 2 + ... + 1005."
+    ],
+    "2010 Columbus State Tournament, Problem 33": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): each t^2 + 1/t^2 >= 2, with weights summing to 12: equality forces plus or minus 1 in each: 8 triples."
+    ],
+    "2010 Columbus State Tournament, Problem 34": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): compare the exponents with sin < cos in the range and log base b < 1 decreasing."
+    ],
+    "2010 Columbus State Tournament, Problem 35": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): each radicand is a perfect square in sqrt(4x - 3); take the roots and solve."
+    ],
+    "2010 Columbus State Tournament, Problem 36": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1/(x^2 + 5x + 6) = 1/(x + 2) - 1/(x + 3): 1/3 - 1/2013."
+    ],
+    "2010 Columbus State Tournament, Problem 37": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): n ends at position n(n + 1)/2: 63 ends at 2016 and 62 at 1953, so the 2010th is 63."
+    ],
+    "2010 Columbus State Tournament, Problem 38": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2010^2 = 2310^2 + b^2 - 2310b: solve the quadratic and keep the acute case."
+    ],
+    "2010 Columbus State Tournament, Problem 39": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): gcd(k + 5, numerator) shares a factor exactly when k + 5 shares a prime with the fixed constant."
+    ],
+    "2010 Columbus State Tournament, Problem 40": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the sum is a sine times a fixed cosine; it stays nonnegative for all x only when that cosine is 0."
+    ],
+    "2010 Columbus State Tournament, Problem 42": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): use the law of sines and cos(alpha - beta) to find the angles."
+    ],
+    "2010 Columbus State Tournament, Problem 43": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): f(x^y) = y f(x) makes f a multiple of a logarithm; with f(a) = 0 for a not 1 it is identically 0."
+    ],
+    "2010 Columbus State Tournament, Problem 44": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): Menelaus on triangle AMC with the line BDN gives AN : NC."
+    ],
+    "2010 Columbus State Tournament, Problem 45": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): Bayes with the disease rate, the test's accuracy and its false positive rate."
+    ],
+    "2010 Columbus State Tournament, Problem 46": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): reflect the trapezoid across its sides to straighten the ball's path."
+    ],
+    "2010 Columbus State Tournament, Problem 47": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (a - b)(a + b) + (c - d)(c + d) = a + b + c + d forces a - b = c - d = 1."
+    ],
+    "2010 Columbus State Tournament, Problem 48": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): D is the circumcenter of ABC since angle ADB is twice ACB; compute with the radius 147."
+    ],
+    "2010 Columbus State Tournament, Problem 49": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the roots of X^2 + X + 1 are cube roots of unity w with w^2010 = 1: 1 + aw + b = 0 for both forces a = 0 and b = -1."
+    ],
+    "2010 Columbus State Tournament, Problem 50": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a common point makes the coefficients of the m terms vanish."
     ]
   }
 }
