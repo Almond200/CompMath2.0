@@ -45669,6 +45669,106 @@
     "1999 Pascal Contest, Problem 25": [
       900,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with l and m parallel, C1's diameter is their distance; placing the centres and requiring the tangencies with radii 9 and 4 gives r = 12."
+    ],
+    "1998 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 9/18 = 1/2."
+    ],
+    "1998 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): x - 5 = 13: x = 18."
+    ],
+    "1998 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): Sue has 100 - 20 - 45 = 35%: 350 votes."
+    ],
+    "1998 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (13 - 5)^2 = 64."
+    ],
+    "1998 Pascal Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 5^(6 + 9 + 1 - 3) = 5^13."
+    ],
+    "1998 Pascal Contest, Problem 6": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2(x^2 + 9) has a factor of 2, so it is even."
+    ],
+    "1998 Pascal Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the pairs 490 - 491, ..., 508 - 509 give -10, and 510 is left: 500."
+    ],
+    "1998 Pascal Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the sum stays 0 + 60 over 12 numbers: 5."
+    ],
+    "1998 Pascal Contest, Problem 9": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 0.6 times 10^30 = 6.0 times 10^29."
+    ],
+    "1998 Pascal Contest, Problem 10": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): x = 25 - 14 = 11."
+    ],
+    "1998 Pascal Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the rows give 11, 6 + x, x + 7, then 17 + x and 2x + 13, then 3x + 30 = 60: x = 10."
+    ],
+    "1998 Pascal Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): angle BAC = 55 = angle ABC, so AC = CB = DA; isosceles DAC has base angles 40: angle DAC = 100."
+    ],
+    "1998 Pascal Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 300 wheel-kilometres shared equally by 5 wheels: 60."
+    ],
+    "1998 Pascal Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the digits are 2 and four 0s, or 1, 1 and three 0s with the first digit 1: 1 + 4 = 5."
+    ],
+    "1998 Pascal Contest, Problem 15": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): AB = 4, BC = 8, CD = 5: AB : BD = 4 : 13."
+    ],
+    "1998 Pascal Contest, Problem 16": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the 45-degree path makes isosceles right triangles across the width 2; it bounces 5 times before reaching S."
+    ],
+    "1998 Pascal Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 1998 = 2 times 3^3 times 37: 2 + 3 + 37 = 42."
+    ],
+    "1998 Pascal Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): AD : DC = 2 : 1 carries over to AG : GH, so GH = 3; the shaded area is 2 + 16 - 9 = 9."
+    ],
+    "1998 Pascal Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the blocks have lengths 1, 2, ..., 13 covering 91 terms; the 14th block (digit 4) contains term 100: 4."
+    ],
+    "1998 Pascal Contest, Problem 20": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): d/100 - d/110 = 9/60 gives d = 165."
+    ],
+    "1998 Pascal Contest, Problem 21": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): Q is 1 and 1 across and 2 up from R: sqrt(1 + 1 + 4) = sqrt 6."
+    ],
+    "1998 Pascal Contest, Problem 22": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): a card ends red when it was turned an even number of times: neither 2 nor 3 divides it (33) or both do (16): 49."
+    ],
+    "1998 Pascal Contest, Problem 23": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 123456789 times 999999999 = 123456789 times 10^9 - 123456789 = 123456788876543211: no 9s."
+    ],
+    "1998 Pascal Contest, Problem 24": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): single + 2 double + 3 triple = 200 and single + double + triple = 140, so double + 2 triple = 60 with double 24: 18."
+    ],
+    "1998 Pascal Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): equilateral rows sit sqrt 3/2 apart, so 1 + floor(99/(sqrt 3/2)) = 115 rows of 100 and 99 alternately: 58(100) + 57(99) = 11443, 1443 more."
     ]
   }
 }
