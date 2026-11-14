@@ -195,7 +195,11 @@
     "2014 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2014_GeometryA.pdf",
     "2014 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2014_GeometryB.pdf",
     "2014 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryA.pdf",
-    "2014 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryB.pdf"
+    "2014 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryB.pdf",
+    "2013 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2013_AlgebraA.pdf",
+    "2013 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2013_AlgebraB.pdf",
+    "2013 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2013_CombinatoricsA.pdf",
+    "2013 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2013_CombinatoricsB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -39073,6 +39077,134 @@
     "2014 PUMaC Division B Number Theory, Problem 8": [
       3400,
       "Rewrite an odd-square quotient as a divisibility relation and characterize all eligible parameters by a power-of-two condition."
+    ],
+    "2013 PUMaC Division A Algebra, Problem 1": [
+      2200,
+      "Shift three positive variables to a fixed product and count ordered prime-exponent distributions."
+    ],
+    "2013 PUMaC Division A Algebra, Problem 2": [
+      2600,
+      "Represent the next square by an integer offset and count every bounded affine offset pair."
+    ],
+    "2013 PUMaC Division A Algebra, Problem 3": [
+      2900,
+      "Factor a large target expression through a quadratic form whose value doubles under the two-variable linear recurrence."
+    ],
+    "2013 PUMaC Division A Algebra, Problem 4": [
+      3100,
+      "Express a monic cubic by a repeated integer root and reduce coefficient compatibility to a short difference-of-squares factor list."
+    ],
+    "2013 PUMaC Division A Algebra, Problem 5": [
+      3200,
+      "Maximize one variable by a sharp quadratic envelope for the remaining pairwise sum and exhibit the equality triple."
+    ],
+    "2013 PUMaC Division A Algebra, Problem 6": [
+      3750,
+      "Recognize a cosine tripling functional equation, group the prescribed iterates by their residue period and bound the final radical between consecutive integers."
+    ],
+    "2013 PUMaC Division A Algebra, Problem 7": [
+      3400,
+      "Identify a linear tail value in a generalized Ramanujan radical and justify the limit using bounded finite truncations."
+    ],
+    "2013 PUMaC Division A Algebra, Problem 8": [
+      4400,
+      "Classify composition-preserving bijections of the six-letter symmetric group and impose the condition on every eligible permutation; exhaustive Cayley-map verification corrects the official overcount of outer automorphisms."
+    ],
+    "2013 PUMaC Division B Algebra, Problem 1": [
+      2200,
+      "Shift three positive variables to a fixed product and count ordered prime-exponent distributions."
+    ],
+    "2013 PUMaC Division B Algebra, Problem 2": [
+      2600,
+      "Reduce alternating row and column flips to parity classes and optimize the total lit cells under odd row and column counts."
+    ],
+    "2013 PUMaC Division B Algebra, Problem 3": [
+      3250,
+      "Extract an exact reciprocal telescoping relation from a rational recurrence and prove the boundary terms vanish through an invariant ratio interval."
+    ],
+    "2013 PUMaC Division B Algebra, Problem 4": [
+      3050,
+      "Combine iterated tent functions with absolute-distance graphs and sum the areas of their nonnegative compactly supported pieces."
+    ],
+    "2013 PUMaC Division B Algebra, Problem 5": [
+      2600,
+      "Represent the next square by an integer offset and count every bounded affine offset pair."
+    ],
+    "2013 PUMaC Division B Algebra, Problem 6": [
+      3100,
+      "Express a monic cubic by a repeated integer root and reduce coefficient compatibility to a short difference-of-squares factor list."
+    ],
+    "2013 PUMaC Division B Algebra, Problem 7": [
+      3400,
+      "Identify a linear tail value in a generalized Ramanujan radical and justify the limit using bounded finite truncations."
+    ],
+    "2013 PUMaC Division B Algebra, Problem 8": [
+      4050,
+      "Classify bounded-modulus integer quartics by zero roots, real unit roots and conjugate pairs, correcting the source intermediate table; exact coefficient enumeration checks the final count."
+    ],
+    "2013 PUMaC Division A Combinatorics, Problem 1": [
+      3000,
+      "Convert a no-three-collinear choice among five-line intersections to a cycle on the lines and verify all geometric incidences."
+    ],
+    "2013 PUMaC Division A Combinatorics, Problem 2": [
+      2350,
+      "Count binary edge necklaces under rotations only, distinguishing reflection from rotational equivalence."
+    ],
+    "2013 PUMaC Division A Combinatorics, Problem 3": [
+      2750,
+      "Count bounded zigzag integer tuples by alternating cumulative-sum transitions, independently enumerating the full small domain."
+    ],
+    "2013 PUMaC Division A Combinatorics, Problem 4": [
+      2750,
+      "Condition the full ordered dice sample space on its maximum and average the exact sums, without artificially fixing one die."
+    ],
+    "2013 PUMaC Division A Combinatorics, Problem 5": [
+      3150,
+      "Count supported colored block stacks by their successive occupied layer masks, including the empty stack."
+    ],
+    "2013 PUMaC Division A Combinatorics, Problem 6": [
+      3400,
+      "Use the spanning-forest cycle rank and a triangle-cactus construction to minimize rooted oriented cycles; the printed definition also permits length-two edge returns, unlike the intended solution."
+    ],
+    "2013 PUMaC Division A Combinatorics, Problem 7": [
+      3050,
+      "Enumerate terminal best-of-five game sequences to obtain the expectation polynomial and evaluate it outside the probability interval; the intended model assumes independent games."
+    ],
+    "2013 PUMaC Division A Combinatorics, Problem 8": [
+      3650,
+      "Count rotational permutation classes whose shift-agreement multiplicities are all at most three and correct overlap among forbidden match positions."
+    ],
+    "2013 PUMaC Division B Combinatorics, Problem 1": [
+      2250,
+      "Enumerate allowable vowel/consonant layouts with two run restrictions, then account for the repeated consonant."
+    ],
+    "2013 PUMaC Division B Combinatorics, Problem 2": [
+      2350,
+      "Choose nested prime exponents in a divisibility chain and reduce the product of triangular counts modulo the given composite."
+    ],
+    "2013 PUMaC Division B Combinatorics, Problem 3": [
+      2050,
+      "Subtract lattice paths through one forbidden checkpoint from all endpoint paths."
+    ],
+    "2013 PUMaC Division B Combinatorics, Problem 4": [
+      3150,
+      "Count supported colored block stacks by their successive occupied layer masks, including the empty stack."
+    ],
+    "2013 PUMaC Division B Combinatorics, Problem 5": [
+      3400,
+      "Use the spanning-forest cycle rank and a triangle-cactus construction to minimize rooted oriented cycles; the printed definition also permits length-two edge returns, unlike the intended solution."
+    ],
+    "2013 PUMaC Division B Combinatorics, Problem 6": [
+      2450,
+      "Encode increasing sequences by subsets with minimum spacing and count them through a Fibonacci recurrence."
+    ],
+    "2013 PUMaC Division B Combinatorics, Problem 7": [
+      2200,
+      "Exclude course sequences missing either of two required properties and restore their overlap."
+    ],
+    "2013 PUMaC Division B Combinatorics, Problem 8": [
+      2750,
+      "Condition the full ordered dice sample space on its maximum and average the exact sums, without artificially fixing one die."
     ]
   }
 }
