@@ -8,6 +8,8 @@ for (const file of ['problem-db.js','difficulty-ratings.js','contest-papers.js',
 const db=context.window.MATH_PROBLEM_DB, papers=context.window.MATH_CONTEST_PAPERS;
 const slug=ref=>ref.replace(', Problem ',' ').toLowerCase().replaceAll(' ','-');
 const families=new Map();
+// Metadata checks always cover the full registry; data-only batches may scope browser years.
+const browserYears=new Set((process.env.COMPMATH_FOCUS_YEARS||'').split(',').filter(Boolean));
 const roundLabel=round=>({'Combinatorics':'Combo','Number Theory':'NT','Discrete Math':'Discrete'}[round]||round);
 const familyLabel=fam=>fam.replace(' Division ',' ');
 assert(!context.window.MATH_PLANNED_CONTESTS.some(c=>/^(BMT|PUMaC)$/.test(c.name)),'live archives have no duplicate coming-soon entry');
@@ -58,6 +60,7 @@ for(const [paper,source] of Object.entries(papers)) {
    }
    for(const [key,rounds] of families){
     const [fam,year]=key.split('|'),familySlug=fam.toLowerCase().replaceAll(' ','-');
+    if(browserYears.size&&!browserYears.has(year))continue;
     await page.goto(`${base}/#/problems/${familySlug}/${year}`);await page.locator('.ct-papers [role="tab"]').first().waitFor();
     assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),rounds.map(x=>x.round).sort().map(roundLabel));
     for(const {paper,source,round,ps} of rounds){

@@ -139,7 +139,10 @@
     "2019 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/2019Geometry_A.pdf",
     "2019 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/2019Geometry_B.pdf",
     "2019 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/2019NT_A_Div.pdf",
-    "2019 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/2019NT_B_Div.pdf"
+    "2019 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/2019NT_B_Div.pdf",
+    "2018 BMT Algebra": "https://berkeley.mt/archives/bmt-2018/ALSP18.pdf",
+    "2018 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2018/COSP18.pdf",
+    "2018 BMT Geometry": "https://berkeley.mt/archives/bmt-2018/GEOSP18.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -26145,6 +26148,126 @@
     "2019 PUMaC Division B Number Theory, Problem 8": [
       3850,
       "Characterize unavoidable fixed-length prime products by the exponent of the unit residues modulo a squarefree composite."
+    ],
+    "2018 BMT Algebra, Problem 1": [
+      1600,
+      "Use the average speed during uniform acceleration and braking to bound the total runway distance in consistent time units."
+    ],
+    "2018 BMT Algebra, Problem 2": [
+      1550,
+      "Force a cubic with one distinct complex root to be a perfect cube and compare coefficients."
+    ],
+    "2018 BMT Algebra, Problem 3": [
+      2300,
+      "Remove equal values at two arguments and compare the remaining three divided-difference slopes to determine the least degree."
+    ],
+    "2018 BMT Algebra, Problem 4": [
+      2350,
+      "Telescope a sum of consecutive cubic products before reducing it modulo a composite integer."
+    ],
+    "2018 BMT Algebra, Problem 5": [
+      3000,
+      "Eliminate a common root of a cubic and a parameterized quadratic, then read the product of parameter roots from its resultant."
+    ],
+    "2018 BMT Algebra, Problem 6": [
+      2800,
+      "Bound the product of three real variables by their squared sum and verify the sharp minimum at equal positive variables."
+    ],
+    "2018 BMT Algebra, Problem 7": [
+      3100,
+      "Collapse an integrated binomial row and sum its factorial-weighted exponential generating series."
+    ],
+    "2018 BMT Algebra, Problem 8": [
+      3400,
+      "Extract a coefficient from a signed weighted binomial sum and retain only the two terms that can contribute."
+    ],
+    "2018 BMT Algebra, Problem 9": [
+      2850,
+      "Center symmetric rational factors at one repeated quadratic expression and solve the remaining equation with excluded denominators checked."
+    ],
+    "2018 BMT Algebra, Problem 10": [
+      3500,
+      "Generate the first root power sums of a sparse cubic and locate the first pair satisfying a multiplicative normalized-sum relation."
+    ],
+    "2018 BMT Discrete Math, Problem 1": [
+      1250,
+      "Count color choices for three distinct pens; the printed wording permits reusing colors, while the official falling factorial assumes an omitted distinct-color condition."
+    ],
+    "2018 BMT Discrete Math, Problem 2": [
+      2100,
+      "Count five subject totals bounded by six with total twelve; every vector is realizable by six distinct-subject pairs, and the correct source formula gives 1190 rather than its stated 1694."
+    ],
+    "2018 BMT Discrete Math, Problem 3": [
+      2000,
+      "Subtract the axis-aligned lattice rectangles strictly containing a given central point from all rectangle choices."
+    ],
+    "2018 BMT Discrete Math, Problem 4": [
+      2400,
+      "Count the first occurrence of a four-letter pattern within eight independent digits, subtracting the one possible repeated disjoint occurrence."
+    ],
+    "2018 BMT Discrete Math, Problem 5": [
+      2800,
+      "Use the fixed edge count of every spanning tree to determine the parity of the last safe move in an edge-removal game."
+    ],
+    "2018 BMT Discrete Math, Problem 6": [
+      2350,
+      "Regroup a nonnegative double binomial sum along diagonals and evaluate the resulting geometric series."
+    ],
+    "2018 BMT Discrete Math, Problem 7": [
+      2600,
+      "Separate shared-endpoint segment pairs from four-vertex diagonal pairings to count all intersections in a regular polygon."
+    ],
+    "2018 BMT Discrete Math, Problem 8": [
+      3300,
+      "Show the last new vertex visited by a symmetric cycle walk is uniform among the nonstarting vertices and average its graph distance."
+    ],
+    "2018 BMT Discrete Math, Problem 9": [
+      3650,
+      "Count permutations with a power equal to a specified reversing involution by grouping its six pairs into compatible cycle lengths."
+    ],
+    "2018 BMT Discrete Math, Problem 10": [
+      3600,
+      "Recognize a greedy boundary reduction for two-color domino tilings and average its recurrence over a geometric random strip length."
+    ],
+    "2018 BMT Geometry, Problem 1": [
+      1000,
+      "Cancel the scale factor in a cube surface-area and volume ratio."
+    ],
+    "2018 BMT Geometry, Problem 2": [
+      1850,
+      "Cancel equal circular sectors in the overlap of a square circumcircle and a unit vertex-centered circle."
+    ],
+    "2018 BMT Geometry, Problem 3": [
+      1950,
+      "Maximize a fixed-perimeter triangle area at the equilateral configuration and square its value."
+    ],
+    "2018 BMT Geometry, Problem 4": [
+      2950,
+      "Bound triple intersections among six nonparallel lines and realize the minimum using triangle sides and medians."
+    ],
+    "2018 BMT Geometry, Problem 5": [
+      2600,
+      "Translate obtuse corner triangles into overlapping side-diameter semicircles and sum their four disjoint lens regions."
+    ],
+    "2018 BMT Geometry, Problem 6": [
+      2500,
+      "Optimize the area of an integer-sided triangle with two sides at most ten and compare the admissible third sides adjacent to a right angle."
+    ],
+    "2018 BMT Geometry, Problem 7": [
+      2750,
+      "Scale an ellipse to a circle and recover the positive slope of a tangent through a fixed external point."
+    ],
+    "2018 BMT Geometry, Problem 8": [
+      3350,
+      "Optimize a fixed-inradius triangle under a maximum-side bound; tangent-length inequalities independently prove the claimed isosceles extremum."
+    ],
+    "2018 BMT Geometry, Problem 9": [
+      3200,
+      "Convert an integer-area condition for three consecutive sides to a Pell equation and find its first admissible index above the cutoff."
+    ],
+    "2018 BMT Geometry, Problem 10": [
+      2350,
+      "Recover a sphere-section height from a curved surface-area ratio and compute the disk cut by the plane."
     ]
   }
 }
