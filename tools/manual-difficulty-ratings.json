@@ -30067,6 +30067,114 @@
     "2023 Calgary Junior Math Contest, Problem 9": [
       900,
       "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): each die shows four side faces summing to 14; maximize the top and bottom faces of the stack."
+    ],
+    "2022 Calgary Junior Math Contest, Problem 1": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): count the days to the stated date in blocks of three."
+    ],
+    "2022 Calgary Junior Math Contest, Problem 2": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 0.1 mg is 0.1 percent of the original, so the original held 100 mg."
+    ],
+    "2022 Calgary Junior Math Contest, Problem 3": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 3t + 4s = 80 with t + s = 25: 20 triangles."
+    ],
+    "2022 Calgary Junior Math Contest, Problem 4": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the pattern's period and 2022 modulo it give the letter N."
+    ],
+    "2022 Calgary Junior Math Contest, Problem 5": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): pi d^2/4 between 10 and 100 means d from 4 to 11: 8 sizes."
+    ],
+    "2022 Calgary Junior Math Contest, Problem 6": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): count the dates DD/MM/YYYY written with exactly two different digits."
+    ],
+    "2022 Calgary Junior Math Contest, Problem 7": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): replace x^3 by 2 throughout to simplify."
+    ],
+    "2022 Calgary Junior Math Contest, Problem 8": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): EB = 3/7 of AB and BF = 2/5 of BC: (1/2)(3/7)(2/5)(140) = 12."
+    ],
+    "2022 Calgary Junior Math Contest, Problem 9": [
+      1100,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the allowed two-digit pairs form a graph on digits; count walks from 4 to 5 of length up to 99."
+    ],
+    "2021 Calgary Junior Math Contest, Problem 1": [
+      300,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the six pay 9 times 30 between them, 45 each: 15 extra."
+    ],
+    "2021 Calgary Junior Math Contest, Problem 2": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the infected houses can double each day; count the days for the virus to reach all 20."
+    ],
+    "2021 Calgary Junior Math Contest, Problem 3": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 1/25 + 1/20 = 9/100 of the lawn a minute: 100/9 minutes."
+    ],
+    "2021 Calgary Junior Math Contest, Problem 4": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): (4 + 2)/2 times 3 minus a half circle of radius 1: 9 - pi/2."
+    ],
+    "2021 Calgary Junior Math Contest, Problem 5": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): x + y = 20 and xy = 64: 4 and 16."
+    ],
+    "2021 Calgary Junior Math Contest, Problem 6": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): evaluate 3^7 + 51 and test small b for a seventh power a^7 - 5^b."
+    ],
+    "2021 Calgary Junior Math Contest, Problem 7": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): on a flat sloping bottom opposite corners' depths add equally: 60 + 130 = 100 + D, so 90."
+    ],
+    "2021 Calgary Junior Math Contest, Problem 8": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 28c + 34o + 51r with each at least one: solve the linear equation for the stated total."
+    ],
+    "2021 Calgary Junior Math Contest, Problem 9": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): of the 121 equally likely pairs, count those with each difference."
+    ],
+    "2019 Calgary Junior Math Contest, Problem 1": [
+      200,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): sides summing to 5: 2 by 3 is largest, 6."
+    ],
+    "2019 Calgary Junior Math Contest, Problem 2": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 1.1p - 10 against the stated final price."
+    ],
+    "2019 Calgary Junior Math Contest, Problem 3": [
+      400,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): a constant rate from the start time over the work done fixes the finishing time, 5 PM."
+    ],
+    "2019 Calgary Junior Math Contest, Problem 4": [
+      500,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): (10 + 20 + ... + 110)/60 = 660/60 = 11 km."
+    ],
+    "2019 Calgary Junior Math Contest, Problem 5": [
+      800,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): more than 50 square cm of holes of area pi each needs 16, and 16 disks of radius 1 fit."
+    ],
+    "2019 Calgary Junior Math Contest, Problem 6": [
+      700,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): the pentagon and its reflection overlap only on the x-axis: twice the pentagon's area."
+    ],
+    "2019 Calgary Junior Math Contest, Problem 7": [
+      600,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): 10 m by 10 m by 1 cm is 10^9 cubic millimetres."
+    ],
+    "2019 Calgary Junior Math Contest, Problem 8": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): find the next n with n + 1 prime, n + 2 twice a prime and n + 3 three times a prime."
+    ],
+    "2019 Calgary Junior Math Contest, Problem 9": [
+      900,
+      "Author estimate (the Calgary Junior Mathematics Contest publishes no solve counts; placed on the collection’s scale by its route, Part A running from an easy AMC 8 problem to an early AMC 10 one): b - a and c - b are squares summing to a square: 9 + 16 = 25 with a = 1 gives c = 26."
     ]
   }
 }
