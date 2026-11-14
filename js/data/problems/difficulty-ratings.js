@@ -3,7 +3,7 @@
 window.MATH_PROBLEM_RATINGS = {
   "meta": {
     "url": "https://live.poshenloh.com/past-contests/difficulty",
-    "retrieved": "2026-11-12",
+    "retrieved": "2026-11-13",
     "sourceCount": 6500,
     "liveCount": 6475,
     "manualCount": 6622,
