@@ -164,7 +164,10 @@
     "2017 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2017_NT_B.pdf",
     "2016 BMT Analysis": "https://berkeley.mt/archives/bmt-2016/AnaS2016.pdf",
     "2016 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2016/DisS2016.pdf",
-    "2016 BMT Geometry": "https://berkeley.mt/archives/bmt-2016/GeoS2016.pdf"
+    "2016 BMT Geometry": "https://berkeley.mt/archives/bmt-2016/GeoS2016.pdf",
+    "2015 BMT Analysis": "https://berkeley.mt/archives/bmt-2015/AnaS2015.pdf",
+    "2015 BMT Geometry": "https://berkeley.mt/archives/bmt-2015/GeoS2015.pdf",
+    "2014 BMT Analysis": "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -38030,6 +38033,110 @@
     "2016 BMT Geometry, Problem 10": [
       3500,
       "Sum the squared radii of the intended shrinking tangent-circle chain; the printed recurrence does not specify the shrinking direction and also allows larger or backtracking circles."
+    ],
+    "2015 BMT Analysis, Problem 1": [
+      2250,
+      "Recover a four-term dyadic expansion with integer exponents and prove uniqueness by binary carries."
+    ],
+    "2015 BMT Analysis, Problem 2": [
+      2150,
+      "Read a rational generating-function coefficient as a prefix sum of consecutive integers, avoiding any need for differentiation."
+    ],
+    "2015 BMT Analysis, Problem 3": [
+      2450,
+      "Reduce a quadratic integer system to bounded squares and exhaust the remaining sign choices."
+    ],
+    "2015 BMT Analysis, Problem 4": [
+      2750,
+      "Use the intended sixth-period linear recurrence; the printed starting index leaves two tail initial values free and the requested sum is not determined."
+    ],
+    "2015 BMT Analysis, Problem 5": [
+      2300,
+      "Complete a planar circle equation and compare its nearest and farthest distances to the origin."
+    ],
+    "2015 BMT Analysis, Problem 6": [
+      2800,
+      "Relate the sum and reciprocal sum of five geometric-progression roots through their central term and recover the absolute product."
+    ],
+    "2015 BMT Analysis, Problem 7": [
+      2950,
+      "Read an alternating even-binomial sum as the real part of a complex binomial power."
+    ],
+    "2015 BMT Analysis, Problem 8": [
+      3550,
+      "Reverse a product over seventh roots of unity using the two roots of a quadratic and reduce the resulting powers."
+    ],
+    "2015 BMT Geometry, Problem 1": [
+      1200,
+      "Apply the angle between two internal triangle angle bisectors."
+    ],
+    "2015 BMT Geometry, Problem 2": [
+      1850,
+      "Decompose the overlap of alternating-vertex equilateral triangles in a regular hexagon into equal elementary regions."
+    ],
+    "2015 BMT Geometry, Problem 3": [
+      1950,
+      "Maximize the altitude to a fixed base when a specified cevian has fixed length."
+    ],
+    "2015 BMT Geometry, Problem 4": [
+      2450,
+      "Express two opposite-corner circle centers through their radius sum and reject the extraneous large algebraic root."
+    ],
+    "2015 BMT Geometry, Problem 5": [
+      2000,
+      "Compute the three possible fourth parallelogram vertices and the area of their triangle."
+    ],
+    "2015 BMT Geometry, Problem 6": [
+      2500,
+      "Parameterize a secant from a sphere point and solve for its second intersection exactly."
+    ],
+    "2015 BMT Geometry, Problem 7": [
+      2850,
+      "Reflect one endpoint across a plane to minimize a broken spatial path and compute its squared length."
+    ],
+    "2015 BMT Geometry, Problem 8": [
+      3150,
+      "Map an inscribed ellipse quadrilateral to the unit circle, characterize equality in its maximal area and recover the counterclockwise next vertex."
+    ],
+    "2015 BMT Geometry, Problem 9": [
+      3500,
+      "Identify the altitude feet cut out by a diameter circle and intersect their chord with a median to obtain its exact ratio."
+    ],
+    "2015 BMT Geometry, Problem 10": [
+      3550,
+      "Audit the printed tangent-circle configuration: point powers force tangent distances incompatible with the triangle side determined by its equilateral inner triangle, so the prescribed circle does not exist."
+    ],
+    "2014 BMT Analysis, Problem 1": [
+      1500,
+      "Substitute a positive exponential into a quadratic and recover both real exponents."
+    ],
+    "2014 BMT Analysis, Problem 2": [
+      1600,
+      "Factor a cubic with an integer root and compare its remaining positive quadratic roots."
+    ],
+    "2014 BMT Analysis, Problem 3": [
+      2000,
+      "Bound marker spacing from a fixed travel distance and exact marker count; the limiting endpoint convention needs clarification for attained largest and smallest values."
+    ],
+    "2014 BMT Analysis, Problem 4": [
+      2900,
+      "Center five arithmetic-progression roots at their mean and compare polynomial values at symmetric arguments."
+    ],
+    "2014 BMT Analysis, Problem 6": [
+      3000,
+      "Close a short chain of substitutions in a functional equation and solve the resulting linear system of values."
+    ],
+    "2014 BMT Analysis, Problem 7": [
+      3250,
+      "Pair the four sums of roots of two quadratics around a real center and evaluate their conjugate distance product."
+    ],
+    "2014 BMT Analysis, Problem 8": [
+      3550,
+      "Sum a weighted sequence from its alternating partial-sum formulas; the literal integer-valued requirement already contradicts the prescribed zeroth value."
+    ],
+    "2014 BMT Analysis, Problem 10": [
+      3500,
+      "Bracket three slightly perturbed cubic roots by exact rational half-rounding intervals to certify their scaled nearest integers."
     ]
   }
 }

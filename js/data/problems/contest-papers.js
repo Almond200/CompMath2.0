@@ -375,5 +375,19 @@ window.MATH_CONTEST_PAPERS = {
     "url": "https://berkeley.mt/archives/bmt-2016/GeoS2016.pdf",
     "solUrl": "https://berkeley.mt/archives/bmt-2016/GeoS2016A.pdf",
     "solKind": "answer-key"
+  },
+  "2015 BMT Analysis": {
+    "url": "https://berkeley.mt/archives/bmt-2015/AnaS2015.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2015/AnaS2015S.pdf"
+  },
+  "2015 BMT Geometry": {
+    "url": "https://berkeley.mt/archives/bmt-2015/GeoS2015.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2015/GeoS2015A.pdf",
+    "solKind": "answer-key"
+  },
+  "2014 BMT Analysis": {
+    "url": "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2014/AnaS2014A.pdf",
+    "solKind": "answer-key"
   }
 };

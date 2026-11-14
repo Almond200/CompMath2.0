@@ -70,8 +70,8 @@ for(const [paper,source] of Object.entries(papers)) {
    for(const [key,rounds] of families){
     const [fam,year]=key.split('|'),familySlug=fam.toLowerCase().replaceAll(' ','-');
     if(browserYears.size&&!browserYears.has(year))continue;
-    await page.goto(`${base}/#/problems/${familySlug}/${year}`);await page.locator('.ct-papers [role="tab"]').first().waitFor();
-    assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),rounds.map(x=>x.round).sort().map(roundLabel));
+    await page.goto(`${base}/#/problems/${familySlug}/${year}`);await page.locator('.db-group.is-shown .pp-tiles').waitFor();
+    assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),rounds.length>1?rounds.map(x=>x.round).sort().map(roundLabel):[]);
     for(const {paper,source,round,ps} of rounds){
      const paperSlug=paper.replace(/^\d{4} /,'').toLowerCase().replaceAll(' ','-');
      await page.goto(`${base}/#/problems/${familySlug}/${year}/${paperSlug}`);
