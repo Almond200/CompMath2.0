@@ -120,7 +120,22 @@
     "2021 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2021-1.pdf",
     "2020 BMT Algebra": "https://berkeley.mt/archives/bmt-2020/algebra-problems.pdf",
     "2020 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2020/discrete-problems.pdf",
-    "2020 BMT Geometry": "https://berkeley.mt/archives/bmt-2020/geometry-problems.pdf"
+    "2020 BMT Geometry": "https://berkeley.mt/archives/bmt-2020/geometry-problems.pdf",
+    "2020 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/2020AlgebraAQuestions.pdf",
+    "2020 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/2020AlgebraBQuestions.pdf",
+    "2020 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_A-2.pdf",
+    "2020 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_B.pdf",
+    "2020 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/2020GeometryA.pdf",
+    "2020 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/2020GeometryB.pdf",
+    "2020 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_A_2020.pdf",
+    "2020 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2020.pdf",
+    "2019 BMT Algebra": "https://berkeley.mt/archives/bmt-2019/algebra-problems.pdf",
+    "2019 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2019/discrete-problems.pdf",
+    "2019 BMT Geometry": "https://berkeley.mt/archives/bmt-2019/geometry-problems.pdf",
+    "2019 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/2019Algebra_A.pdf",
+    "2019 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/2019Algebra_B.pdf",
+    "2019 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/2019Combo_A.pdf",
+    "2019 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/2019Combo_B.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -25494,6 +25509,510 @@
     "2006 Utah State Math Contest Senior, Problem 30": [
       1000,
       "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the nest y satisfies y^2 = x + y and x + y = 2, so y = sqrt 2."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 1": [
+      2400,
+      "Impose order three on a fractional linear map and maximize the resulting quadratic parameter relation."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 2": [
+      2650,
+      "Intersect a line through two known points of a cubic curve and recover the third intersection from Vieta."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 3": [
+      3000,
+      "Use closure of a finite image under addition modulo one to classify the possible rational values and sum them."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 4": [
+      3050,
+      "Express a product over unordered pairs of transformed roots as a power of two polynomial evaluations."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 5": [
+      3500,
+      "Subtract successive prefix identities to obtain a floor-indexed nonlinear recurrence and locate its first threshold crossing."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 6": [
+      3800,
+      "Review a multiplicative polynomial functional equation on root-of-unity rays; its printed uniqueness fails for the allowed zero/nonzero indicator function."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 7": [
+      3750,
+      "Prove a sine has degree six, eliminate it from a quadratic transform, and evaluate the irreducible minimal polynomial at one."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 8": [
+      3900,
+      "Count faithful Klein-four actions by their orbits, subtract cyclic actions and bound the last degree with fewer than the prescribed number of subgroups."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 1": [
+      1400,
+      "Find the parameter endpoint at which a quadratic first has real roots by its linear discriminant."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 2": [
+      1600,
+      "Spend a fixed integer study-hour budget by checking the concave quadratic return from the third subject."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 3": [
+      2400,
+      "Impose order three on a fractional linear map and maximize the resulting quadratic parameter relation."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 4": [
+      2650,
+      "Intersect a line through two known points of a cubic curve and recover the third intersection from Vieta."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 5": [
+      3000,
+      "Use closure of a finite image under addition modulo one to classify the possible rational values and sum them."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 6": [
+      3050,
+      "Express a product over unordered pairs of transformed roots as a power of two polynomial evaluations."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 7": [
+      3500,
+      "Subtract successive prefix identities to obtain a floor-indexed nonlinear recurrence and locate its first threshold crossing."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 8": [
+      3800,
+      "Review a multiplicative polynomial functional equation on root-of-unity rays; its printed uniqueness fails for the allowed zero/nonzero indicator function."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 1": [
+      2300,
+      "Count orders of the eight fixed cube positions whose every initial segment is connected; full permutation enumeration verifies the cases."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 2": [
+      2800,
+      "Count ordered triples of distinct coins with prescribed final usage counts; distinguish the coins as required by the corrected source."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 3": [
+      2800,
+      "Interleave four ordered sequences of grid cuts while allowing each outer margin to be discarded in one or two cuts."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 4": [
+      3250,
+      "Count families in a four-element power set subject to pair co-occurrence restrictions, separating the selected triples."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 5": [
+      3600,
+      "Count connected remnants of a randomly deleted figure-eight graph, treating the two cycles and their shared vertex separately."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 6": [
+      3900,
+      "Analyze radial stabilization on an infinite three-regular tree and characterize initial chip counts whose final configuration has no collisions."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 7": [
+      3700,
+      "Recognize a weighted recursive state expression as an occupancy expectation, then estimate a binomial probability accurately enough to round."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 8": [
+      3900,
+      "Count positive three-part compositions with separate forbidden multiples through a telescoping generating function and test divisibility for eighteen parameters."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 1": [
+      1200,
+      "Sum word counts over five lengths with ten independent letter-and-emphasis choices at every position."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 2": [
+      2300,
+      "Count orders of the eight fixed cube positions whose every initial segment is connected; full permutation enumeration verifies the cases."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 3": [
+      2800,
+      "Count ordered triples of distinct coins with prescribed final usage counts; distinguish the coins as required by the corrected source."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 4": [
+      2800,
+      "Interleave four ordered sequences of grid cuts while allowing each outer margin to be discarded in one or two cuts."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 5": [
+      3250,
+      "Count families in a four-element power set subject to pair co-occurrence restrictions, separating the selected triples."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 6": [
+      3450,
+      "Weight the coefficients of a bundle-subset polynomial by a normalized geometric supply distribution and evaluate it at one half."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 7": [
+      3600,
+      "Count connected remnants of a randomly deleted figure-eight graph, treating the two cycles and their shared vertex separately."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 8": [
+      3900,
+      "Analyze radial stabilization on an infinite three-regular tree and characterize initial chip counts whose final configuration has no collisions."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 1": [
+      2200,
+      "Express the area between two centers and a common tangent as a trapezoid and recover the second radius."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 2": [
+      2200,
+      "Use the two adjacent half-angles to express the tangent segments along a side of a circumscribed hexagon."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 3": [
+      2550,
+      "Review the officially voided orthodiagonal cyclic quadrilateral: the midpoint-distance conditions contradict the fixed circumradius."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 4": [
+      2800,
+      "Identify an ellipse as the tangent-circle center locus and compare its area with the original and diameter circles."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 5": [
+      2900,
+      "Recover cevian ratios, place the common chord on a known cevian using equal powers and compute its segment length."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 6": [
+      3100,
+      "Transport the minimum-area circumellipse from an equilateral triangle by an affine map and scale its area by the triangle determinant."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 7": [
+      3500,
+      "Use the minimum tangent circle and reciprocal chord intersections to identify a circumcircle chord distance with the triangle altitude."
+    ],
+    "2020 PUMaC Division A Geometry, Problem 8": [
+      3850,
+      "Identify four homothety-line intersections as arc midpoints, then compute their rectangular area from the cyclic quadrilateral radius and diagonal angle."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 1": [
+      1500,
+      "Compare the two circular-arc routes including both perpendicular road crossings to locate the break-even turn angle."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 2": [
+      2000,
+      "Pack seven separated points in a circular disk; six angular sectors prove the lower bound attained by a central point and a regular hexagon."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 3": [
+      2200,
+      "Express the area between two centers and a common tangent as a trapezoid and recover the second radius."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 4": [
+      2200,
+      "Use the two adjacent half-angles to express the tangent segments along a side of a circumscribed hexagon."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 5": [
+      2550,
+      "Review the officially voided orthodiagonal cyclic quadrilateral: the midpoint-distance conditions contradict the fixed circumradius."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 6": [
+      2800,
+      "Identify an ellipse as the tangent-circle center locus and compare its area with the original and diameter circles."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 7": [
+      2900,
+      "Recover cevian ratios, place the common chord on a known cevian using equal powers and compute its segment length."
+    ],
+    "2020 PUMaC Division B Geometry, Problem 8": [
+      3100,
+      "Transport the minimum-area circumellipse from an equilateral triangle by an affine map and scale its area by the triangle determinant."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 1": [
+      1900,
+      "Reduce the large base power modulo one hundred, then sum its repeated powers."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 2": [
+      2700,
+      "Bound a symmetric three-integer product equation until one variable is a signed unit, then enumerate its divisor cases."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 3": [
+      2100,
+      "List the largest simultaneous decimal and base-five palindromes through their leading digits and positional ranges."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 4": [
+      3000,
+      "Show the least distinguishing divisor is a prime power and count pairs by their two-adic valuations and divisibility by three."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 5": [
+      3750,
+      "Classify numeral-polynomial divisibility across bases; exhaustive rational polynomial division and integer-valued quotient checks verify all one hundred cases."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 6": [
+      3650,
+      "Count a binary quadratic congruence separately modulo two primes, then combine the local residue counts by CRT."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 7": [
+      3750,
+      "Classify the first exponents reaching a fixed odd residue modulo a power of two and sum over every residue class."
+    ],
+    "2020 PUMaC Division A Number Theory, Problem 8": [
+      3900,
+      "Audit cycles of modular exponentiation with prescribed decimal suffixes: the intended construction works for lengths at least two, but the printed positive-length quantifier includes a failing one-step case."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 1": [
+      1100,
+      "Find the smallest divisor larger than a specified remainder after subtracting that remainder from the dividend."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 2": [
+      2250,
+      "Count distinct staggered flag arrangements through odd factor pairs, treating rotations as the same design."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 3": [
+      1900,
+      "Reduce the large base power modulo one hundred, then sum its repeated powers."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 4": [
+      2700,
+      "Bound a symmetric three-integer product equation until one variable is a signed unit, then enumerate its divisor cases."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 5": [
+      2100,
+      "List the largest simultaneous decimal and base-five palindromes through their leading digits and positional ranges."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 6": [
+      3000,
+      "Show the least distinguishing divisor is a prime power and count pairs by their two-adic valuations and divisibility by three."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 7": [
+      3750,
+      "Classify numeral-polynomial divisibility across bases; exhaustive rational polynomial division and integer-valued quotient checks verify all one hundred cases."
+    ],
+    "2020 PUMaC Division B Number Theory, Problem 8": [
+      3650,
+      "Count a binary quadratic congruence separately modulo two primes, then combine the local residue counts by CRT."
+    ],
+    "2019 BMT Algebra, Problem 1": [
+      950,
+      "Factor a quadratic inequality and count the integers strictly between its two roots."
+    ],
+    "2019 BMT Algebra, Problem 2": [
+      1100,
+      "Reflect a point across the diagonal and use its fixed line slope to recover both positive coordinates."
+    ],
+    "2019 BMT Algebra, Problem 3": [
+      1600,
+      "Complete squares to a lattice circle, count its representations and sum coordinates by central symmetry."
+    ],
+    "2019 BMT Algebra, Problem 4": [
+      1500,
+      "Compare the area of a centered disk with its enclosing uniform sampling square."
+    ],
+    "2019 BMT Algebra, Problem 5": [
+      2100,
+      "Separate unit bases and zero exponent in a variable-base exponential equation and sum all admissible quadratic roots."
+    ],
+    "2019 BMT Algebra, Problem 6": [
+      2500,
+      "Maximize a coordinate ratio on a circle through the limiting slope of a tangent from the origin."
+    ],
+    "2019 BMT Algebra, Problem 7": [
+      2600,
+      "Convert a cubic root-cube sum to an integer relation between coefficients and enumerate the possible divisors."
+    ],
+    "2019 BMT Algebra, Problem 8": [
+      3100,
+      "Filter a biased binomial count modulo four and minimize the requested integer encoding of the resulting rational correction."
+    ],
+    "2019 BMT Algebra, Problem 9": [
+      2800,
+      "Multiply the strict first-quadrant roots of ten unity equations and determine the exact order of their combined phase."
+    ],
+    "2019 BMT Algebra, Problem 10": [
+      3000,
+      "Reduce a semidefinite ternary quadratic inequality to seven integer offset patterns and count their bounded free coordinates."
+    ],
+    "2019 BMT Discrete Math, Problem 1": [
+      2600,
+      "Condition on the first monochromatic run to determine whether an eventual long run ends opposite the first flip; the official final value is correct despite its printed recurrence."
+    ],
+    "2019 BMT Discrete Math, Problem 2": [
+      1450,
+      "Condition a randomly selected mixed-bag coin on observing tails."
+    ],
+    "2019 BMT Discrete Math, Problem 3": [
+      1100,
+      "Count pairwise greetings from a regular friendship graph by summing degrees."
+    ],
+    "2019 BMT Discrete Math, Problem 4": [
+      2050,
+      "Clear two reciprocal denominators, factor the shifted equation and check the ordered positive pair below one hundred."
+    ],
+    "2019 BMT Discrete Math, Problem 5": [
+      2050,
+      "Reduce a power separately modulo the two prime factors of a composite modulus."
+    ],
+    "2019 BMT Discrete Math, Problem 6": [
+      2200,
+      "Classify triangular numbers that are semiprimes within a fixed upper bound."
+    ],
+    "2019 BMT Discrete Math, Problem 7": [
+      2600,
+      "Count local direction changes in all one-, two- and three-digit positive numbers, ignoring equal consecutive digits."
+    ],
+    "2019 BMT Discrete Math, Problem 8": [
+      2650,
+      "Invert a small totient value by constraining each prime minus one and its allowable exponent."
+    ],
+    "2019 BMT Discrete Math, Problem 9": [
+      2900,
+      "Evaluate a reciprocal sum over a full rotated root-of-unity orbit using the logarithmic derivative of its polynomial."
+    ],
+    "2019 BMT Discrete Math, Problem 10": [
+      3400,
+      "Invert scaled coprime square sums and evaluate the two-prime divisor expression in its required integer-minus-fraction form."
+    ],
+    "2019 BMT Geometry, Problem 1": [
+      1150,
+      "Read a trapezoid from a unit triangular lattice and compute its height and two parallel sides."
+    ],
+    "2019 BMT Geometry, Problem 2": [
+      2500,
+      "Bound a planar nonobtuse point set through its convex hull and exhibit a four-point square attaining the bound."
+    ],
+    "2019 BMT Geometry, Problem 3": [
+      1500,
+      "Use the midpoint and two parallelograms to identify three consecutive equal collinear segments."
+    ],
+    "2019 BMT Geometry, Problem 4": [
+      1700,
+      "Recover the sum of two right-triangle legs from their squared sum and their fixed product."
+    ],
+    "2019 BMT Geometry, Problem 5": [
+      2200,
+      "Read an ellipse from a constant sum of complex-plane distances and compute its semiaxis area."
+    ],
+    "2019 BMT Geometry, Problem 6": [
+      2350,
+      "Combine an angle-bisector division in a three-four-five triangle with a doubling homothety through a parallelogram."
+    ],
+    "2019 BMT Geometry, Problem 7": [
+      2900,
+      "Parametrize paired reflected points on a trapezoid base and measure the intervals whose line intersection subtends a sufficiently large angle."
+    ],
+    "2019 BMT Geometry, Problem 8": [
+      3400,
+      "Identify the reflected-centroid triangle circumcenter as the symmedian point via common pedal circles, then compare two cevian intercepts."
+    ],
+    "2019 BMT Geometry, Problem 9": [
+      3900,
+      "Optimize an incircle-tangent cross-section in a trirectangular tetrahedron and evaluate its limiting area ratio."
+    ],
+    "2019 BMT Geometry, Problem 10": [
+      3650,
+      "Require tangency of two Apollonius loci for a unique distance-ratio point; the published solution scales the printed base twelve as eighteen, changing the final area."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 1": [
+      2000,
+      "Replace logarithms by real coordinates, complete a circle equation and maximize the squared coordinate sum."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 2": [
+      2150,
+      "Conjugate a quadratic iterate to repeated squaring and compute the distance between its two extreme real preimages."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 3": [
+      2450,
+      "Track the sum of roots with multiplicity through one hundred quadratic compositions and recover its initial logarithm."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 4": [
+      2750,
+      "Use an integer-valued inequality to restrict a recursive function parameter to two cases and evaluate both resulting sequences."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 5": [
+      3000,
+      "Evaluate a double product of coprime unity-root sets by specializing their monic polynomials."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 6": [
+      3250,
+      "Count bounded-digit weak binary representations using a carry recurrence and dyadic blocks of its first differences."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 7": [
+      3500,
+      "Convert a double-indexed recurrence to a rational bivariate generating function, justify the convergent specialization and solve for its parameter."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 8": [
+      3750,
+      "Propagate eventual equality backward between two nonlinear recurrences, classify collisions among four possible initial values and optimize the resulting circle."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 1": [
+      1400,
+      "Compare the balanced and endpoint integer splits of a fixed positive sum to find the range of a reciprocal sum."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 2": [
+      1900,
+      "Substitute an exponential-linear relation twice to collapse a tower-like logarithmic quotient to a constant."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 3": [
+      2000,
+      "Replace logarithms by real coordinates, complete a circle equation and maximize the squared coordinate sum."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 4": [
+      2150,
+      "Conjugate a quadratic iterate to repeated squaring and compute the distance between its two extreme real preimages."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 5": [
+      2450,
+      "Track the sum of roots with multiplicity through one hundred quadratic compositions and recover its initial logarithm."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 6": [
+      2750,
+      "Use an integer-valued inequality to restrict a recursive function parameter to two cases and evaluate both resulting sequences."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 7": [
+      3000,
+      "Evaluate a double product of coprime unity-root sets by specializing their monic polynomials."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 8": [
+      3250,
+      "Count bounded-digit weak binary representations using a carry recurrence and dyadic blocks of its first differences."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 1": [
+      1850,
+      "Separate a uniform score comparison from its tie case and apply a biased one-point bonus."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 2": [
+      2100,
+      "Map ten independent weighted coin outcomes bijectively to even binary integers and count those in a target interval."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 3": [
+      2350,
+      "Expand the product of two random-walk coordinates into same-step and different-step indicator products."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 4": [
+      3050,
+      "Count the probability a specified coupon has appeared at least twice when a uniform six-type collection first becomes complete."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 5": [
+      2600,
+      "Shift five residue-restricted candy draws and count the nonnegative excess allocations leaving a minimum remainder."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 6": [
+      3400,
+      "Translate rounded shooting percentages to lattice points in half-open trapezoids and count the conditional team-size range."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 7": [
+      3500,
+      "Assign two longest monochromatic-path ranks to each ordered vertex and construct a matching grid coloring for the sharp threshold."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 8": [
+      3850,
+      "Count forests with a no-valley path condition row by row and audit the product last-digit cycle; the source recurrence gives the hundredth index 396 rather than its stated 399."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 1": [
+      1450,
+      "Treat two adjacent distinguished letters as an ordered block among two repeated-letter groups."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 2": [
+      1800,
+      "Count equally likely weak race orderings with exactly one tied pair, distinguishing sole and shared first place."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 3": [
+      1850,
+      "Separate a uniform score comparison from its tie case and apply a biased one-point bonus."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 4": [
+      2100,
+      "Map ten independent weighted coin outcomes bijectively to even binary integers and count those in a target interval."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 5": [
+      2350,
+      "Expand the product of two random-walk coordinates into same-step and different-step indicator products."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 6": [
+      3050,
+      "Count the probability a specified coupon has appeared at least twice when a uniform six-type collection first becomes complete."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 7": [
+      2600,
+      "Shift five residue-restricted candy draws and count the nonnegative excess allocations leaving a minimum remainder."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 8": [
+      3400,
+      "Translate rounded shooting percentages to lattice points in half-open trapezoids and count the conditional team-size range."
     ]
   }
 }

@@ -192,5 +192,65 @@ window.MATH_CONTEST_PAPERS = {
   "2020 BMT Geometry": {
     "url": "https://berkeley.mt/archives/bmt-2020/geometry-problems.pdf",
     "solUrl": "https://berkeley.mt/archives/bmt-2020/geometry-solutions.pdf"
+  },
+  "2020 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/2020AlgebraAQuestions.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2020AlgebraASolutions.pdf"
+  },
+  "2020 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/2020AlgebraBQuestions.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2020AlgebraBSolutions.pdf"
+  },
+  "2020 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_A-2.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_A_Solutions.pdf"
+  },
+  "2020 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_B_Solutions.pdf"
+  },
+  "2020 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/2020GeometryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2020GeometryASols.pdf"
+  },
+  "2020 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/2020GeometryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2020GeometryBSol.pdf"
+  },
+  "2020 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_A_2020.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_A_2020_Solutions.pdf"
+  },
+  "2020 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2020.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2020_Solutions.pdf"
+  },
+  "2019 BMT Algebra": {
+    "url": "https://berkeley.mt/archives/bmt-2019/algebra-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2019/algebra-solutions.pdf"
+  },
+  "2019 BMT Discrete Math": {
+    "url": "https://berkeley.mt/archives/bmt-2019/discrete-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2019/discrete-solutions.pdf"
+  },
+  "2019 BMT Geometry": {
+    "url": "https://berkeley.mt/archives/bmt-2019/geometry-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2019/geometry-solutions.pdf"
+  },
+  "2019 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/2019Algebra_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019Algebra_ASOLS.pdf"
+  },
+  "2019 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/2019Algebra_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019Algebra_BSOLS.pdf"
+  },
+  "2019 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/2019Combo_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019Combo_A_Sols.pdf"
+  },
+  "2019 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/2019Combo_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019Combo_B_Sols.pdf"
   }
 };

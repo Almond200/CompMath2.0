@@ -8,10 +8,13 @@ for (const file of ['problem-db.js','difficulty-ratings.js','contest-papers.js',
 const db=context.window.MATH_PROBLEM_DB, papers=context.window.MATH_CONTEST_PAPERS;
 const slug=ref=>ref.replace(', Problem ',' ').toLowerCase().replaceAll(' ','-');
 const families=new Map();
+const roundLabel=round=>({'Combinatorics':'Combo','Number Theory':'NT','Discrete Math':'Discrete'}[round]||round);
+const familyLabel=fam=>fam.replace(' Division ',' ');
 assert(!context.window.MATH_PLANNED_CONTESTS.some(c=>/^(BMT|PUMaC)$/.test(c.name)),'live archives have no duplicate coming-soon entry');
-// The first six A questions recur as B questions 3–8 in these papers.
-for(const year of [2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) for(let n=1;n<=6;n++){
-  const refs=[`${year} PUMaC Division A ${subject}, Problem ${n}`,`${year} PUMaC Division B ${subject}, Problem ${n+2}`];
+// Match the actual shared questions, which need not occupy consecutive B slots.
+for(const year of [2019,2020,2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) for(let n=1;n<=6;n++){
+  const bNumber=year===2020&&subject==='Combinatorics'?[2,3,4,5,7,8][n-1]:n+2;
+  const refs=[`${year} PUMaC Division A ${subject}, Problem ${n}`,`${year} PUMaC Division B ${subject}, Problem ${bNumber}`];
   if(!db.some(p=>p.ref===refs[0]))continue;
   const metadata=refs.map(ref=>{
     const p=db.find(p=>p.ref===ref);assert(p,ref);
@@ -39,6 +42,8 @@ for(const [paper,source] of Object.entries(papers)) {
    await page.addInitScript(t=>localStorage.setItem('theme',t),theme);
    const base=process.env.COMPMATH_URL||'http://localhost:8898';
    await page.goto(base+'/#/practice');await page.locator('.ct-row').first().waitFor();
+   const more=page.locator('#pr-contests .fam-more-btn[aria-expanded="false"]');
+   if(await more.count())await more.click();
    const latest=new Map();
    for(const key of families.keys()){
     const [fam,year]=key.split('|');latest.set(fam,Math.max(+year,latest.get(fam)||0));
@@ -50,7 +55,7 @@ for(const [paper,source] of Object.entries(papers)) {
    for(const [key,rounds] of families){
     const [fam,year]=key.split('|'),familySlug=fam.toLowerCase().replaceAll(' ','-');
     await page.goto(`${base}/#/problems/${familySlug}/${year}`);await page.locator('.ct-papers [role="tab"]').first().waitFor();
-    assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),rounds.map(x=>x.round).sort());
+    assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),rounds.map(x=>x.round).sort().map(roundLabel));
     for(const {paper,source,round,ps} of rounds){
      const paperSlug=paper.replace(/^\d{4} /,'').toLowerCase().replaceAll(' ','-');
      await page.goto(`${base}/#/problems/${familySlug}/${year}/${paperSlug}`);
@@ -67,7 +72,7 @@ for(const [paper,source] of Object.entries(papers)) {
       assert(await page.locator('.ptree-node.is-filed').count()>0);
       assert.equal(await page.locator('.katex-error').count(),0);
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
-      assert((await page.locator('h2').innerText()).includes(fam));
+      assert((await page.locator('h2').innerText()).includes(familyLabel(fam)));
      }
     }
    }
