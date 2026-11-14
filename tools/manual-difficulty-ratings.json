@@ -46569,6 +46569,106 @@
     "2018 UKMT SMC, Problem 25": [
       700,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the tangent points make a square of side r, so s^2 = 2r^2 + r^2: (1/2)pi r^2 / ((1/4)pi s^2) = 2/3."
+    ],
+    "2017 UKMT SMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 2015 is a multiple of 5, 2016 and 2018 are even, and 2019 a multiple of 3: 2017."
+    ],
+    "2017 UKMT SMC, Problem 2": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 26/40 = 0.65 g/cm."
+    ],
+    "2017 UKMT SMC, Problem 3": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the two outer pairs must have equal sums, and only 2 + 9 = 5 + 6: 14 is in the middle."
+    ],
+    "2017 UKMT SMC, Problem 4": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): (2017^2 - 1)/2017 = 2018 times 2016 / 2017."
+    ],
+    "2017 UKMT SMC, Problem 5": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 13.4 times 10^9 times 6 times 10^12 is about 8 times 10^22."
+    ],
+    "2017 UKMT SMC, Problem 6": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): three mutually joined circles need three colours, and three suffice."
+    ],
+    "2017 UKMT SMC, Problem 7": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): sqrt 2 + 2 sqrt 2 + 3 sqrt 2 = 6 sqrt 2 = sqrt 72."
+    ],
+    "2017 UKMT SMC, Problem 8": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 4^(-1/2) = 1/2 is the only non-integer."
+    ],
+    "2017 UKMT SMC, Problem 9": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the tiles have total area 2 + 6 + ... + 72 = 240 = 15 times 16: n = 15."
+    ],
+    "2017 UKMT SMC, Problem 10": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): sides 1 and a inside a by 3 with 1/a = a/3: sqrt 3 : 1."
+    ],
+    "2017 UKMT SMC, Problem 11": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): (a + b)(a - b) = 4(a + b) gives a - b = 4, and a + b = 32: 18."
+    ],
+    "2017 UKMT SMC, Problem 12": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the decagon's interior angle is 144, so the quadrilateral gives x + 90 + 216 + 36 = 360: 18."
+    ],
+    "2017 UKMT SMC, Problem 13": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): Josh and Genotan cannot both tell the truth; if Josh lied, Tegan would be guilty too, so Genotan is guilty."
+    ],
+    "2017 UKMT SMC, Problem 14": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the pentagon gives 4x + y = 540 and the hexagon 5x + 360 - y = 720: 9x = 900, x = 100."
+    ],
+    "2017 UKMT SMC, Problem 15": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the four corner triangles make half the square: 10x - 24 = x^2, x = 4 or 6, and x > 4: 6."
+    ],
+    "2017 UKMT SMC, Problem 16": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the two right triangles are similar, the smaller scaled by 20/25: 400 - 150 - 96 = 154."
+    ],
+    "2017 UKMT SMC, Problem 17": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): each gift is a third, so the counts stay multiples of 3; tracking the gifts gives b = 7, a = 10: Beth began with 50."
+    ],
+    "2017 UKMT SMC, Problem 18": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 2(x + y) = 5 sqrt(xy) squares to 4x^2 - 17xy + 4y^2 = 0 = (4x - y)(x - 4y): 4 : 1."
+    ],
+    "2017 UKMT SMC, Problem 19": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the diagonal's slope gives RQ = sqrt 5 for the 1-2 right triangle, and similar triangles give QS = 2/sqrt 5: PQ = 4/sqrt 5."
+    ],
+    "2017 UKMT SMC, Problem 20": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): two quarter arcs of radius sqrt 2 and two of radius sqrt 2 - 1: (2 sqrt 2 - 1) pi."
+    ],
+    "2017 UKMT SMC, Problem 21": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): (2x + y)(2x - y) = 15 = 5 times 3 or 15 times 1: (2, 1) and (3, 7)."
+    ],
+    "2017 UKMT SMC, Problem 22": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the octagon is 8 triangles with sides sqrt 2/2 and angle 45: 8 (1/2)(1/2) sin 45 = sqrt 2."
+    ],
+    "2017 UKMT SMC, Problem 23": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): reflecting in y = x + 2 swaps y with x + 2: x + 2 = (y - 2)^2, so x = y^2 - 4y + 2."
+    ],
+    "2017 UKMT SMC, Problem 24": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the lines fall into n directions of k parallel lines each with k(n - 1) = 10: 11, 12, 15 or 20 lines, not 16."
+    ],
+    "2017 UKMT SMC, Problem 25": [
+      900,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the corner right triangles have angle 40, which fixes the inner nonagon's side against the outer one: (1 - cos 40)/(1 + cos 40)."
     ]
   }
 }
