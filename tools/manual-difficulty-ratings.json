@@ -161,7 +161,10 @@
     "2017 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2017_Geo_A.pdf",
     "2017 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2017_Geo_B.pdf",
     "2017 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2017_NT_A.pdf",
-    "2017 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2017_NT_B.pdf"
+    "2017 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2017_NT_B.pdf",
+    "2016 BMT Analysis": "https://berkeley.mt/archives/bmt-2016/AnaS2016.pdf",
+    "2016 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2016/DisS2016.pdf",
+    "2016 BMT Geometry": "https://berkeley.mt/archives/bmt-2016/GeoS2016.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -37919,6 +37922,114 @@
     "2017 PUMaC Division B Number Theory, Problem 8": [
       3900,
       "Cover every forbidden exponent class by proper prime divisors and solve the compatible CRT systems; the source proves a construction but omits a global minimality argument."
+    ],
+    "2016 BMT Analysis, Problem 1": [
+      900,
+      "Evaluate a difference of consecutive cubes by factoring rather than expanding both large cubes."
+    ],
+    "2016 BMT Analysis, Problem 2": [
+      1700,
+      "Translate a pair of logarithmic exponential equations and exhibit an integer solution pair."
+    ],
+    "2016 BMT Analysis, Problem 3": [
+      1850,
+      "Track the runner from the trailing end of a moving train until he exits the tunnel, separating ground speed and distance along the train."
+    ],
+    "2016 BMT Analysis, Problem 4": [
+      2600,
+      "Express an alternating geometric sum and the endpoint sum in the common ratio and recover the even-length progression."
+    ],
+    "2016 BMT Analysis, Problem 5": [
+      2400,
+      "Pair complementary angles in a finite tangent-ratio sum, leaving the middle term alone."
+    ],
+    "2016 BMT Analysis, Problem 7": [
+      2700,
+      "Extract the quadratic coefficient of a product of squared linear factors through the first two coefficient power sums."
+    ],
+    "2016 BMT Analysis, Problem 10": [
+      3300,
+      "Recognize an alternating central-binomial infinite series as a negative-half binomial expansion."
+    ],
+    "2016 BMT Discrete Math, Problem 1": [
+      1000,
+      "Use the fixed average coin value to force an integer ratio of nickels to quarters."
+    ],
+    "2016 BMT Discrete Math, Problem 2": [
+      1200,
+      "Count integers divisible by exactly one of two given divisors."
+    ],
+    "2016 BMT Discrete Math, Problem 3": [
+      1450,
+      "Choose the ranks and suits of a full-house poker hand without ordering the hand."
+    ],
+    "2016 BMT Discrete Math, Problem 4": [
+      2250,
+      "Distribute distinguishable socks to three recipients with equal final sizes and forbidden original owners."
+    ],
+    "2016 BMT Discrete Math, Problem 5": [
+      2600,
+      "Reduce a descending power tower through the short exponent cycles needed for its last two digits."
+    ],
+    "2016 BMT Discrete Math, Problem 6": [
+      3050,
+      "Optimize an asymmetric pair-merging operation by doubling the largest partial total and adding the remaining labels in order."
+    ],
+    "2016 BMT Discrete Math, Problem 7": [
+      3000,
+      "Match a long divisibility chain with a logarithmic-level proper coloring of the divisibility graph."
+    ],
+    "2016 BMT Discrete Math, Problem 8": [
+      3300,
+      "Bound a regular hypercube quadratic form edge by edge and attain equality with opposite signs on its two parity classes."
+    ],
+    "2016 BMT Discrete Math, Problem 9": [
+      3500,
+      "Use a small algebraic conjugate to locate an irrational power just below an integer trace and compute that trace modulo one hundred."
+    ],
+    "2016 BMT Discrete Math, Problem 10": [
+      3650,
+      "Find the smallest rectangle admitting a fault-free domino tiling; exhaustive finite board search independently verifies the minimum and a witness."
+    ],
+    "2016 BMT Geometry, Problem 1": [
+      1000,
+      "Match a rectangular box volume to a cube and compare their surface areas."
+    ],
+    "2016 BMT Geometry, Problem 2": [
+      1600,
+      "Evaluate the area of a cyclic quadrilateral from its four side lengths."
+    ],
+    "2016 BMT Geometry, Problem 3": [
+      2200,
+      "Enumerate all permitted integer third sides and keep precisely those producing acute triangles."
+    ],
+    "2016 BMT Geometry, Problem 4": [
+      2450,
+      "Fit a corner square into an equilateral triangle and compare exact side-scaled areas."
+    ],
+    "2016 BMT Geometry, Problem 5": [
+      3000,
+      "Apply the total turning or angle sum of a pentagram inside a convex pentagon."
+    ],
+    "2016 BMT Geometry, Problem 6": [
+      2850,
+      "Scale the triangle of medians to the centroid-distance triangle and recover its area from the original side lengths."
+    ],
+    "2016 BMT Geometry, Problem 7": [
+      2700,
+      "Use the prescribed exterior thirty-sixty-ninety construction to locate the vertex and calculate a signed triangle area."
+    ],
+    "2016 BMT Geometry, Problem 8": [
+      3350,
+      "Center the vertices of a regular seven-dimensional unit simplex and compute their common squared radius; the dimension-specific simplex fact lacks a dedicated card or tree leaf."
+    ],
+    "2016 BMT Geometry, Problem 9": [
+      3500,
+      "Express external-square endpoints in right-triangle coordinates and combine two given squared distances to recover a third."
+    ],
+    "2016 BMT Geometry, Problem 10": [
+      3500,
+      "Sum the squared radii of the intended shrinking tangent-circle chain; the printed recurrence does not specify the shrinking direction and also allows larger or backtracking circles."
     ]
   }
 }

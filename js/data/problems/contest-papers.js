@@ -360,5 +360,20 @@ window.MATH_CONTEST_PAPERS = {
   "2017 PUMaC Division B Number Theory": {
     "url": "https://pumac.princeton.edu/s/PUMaC2017_NT_B.pdf",
     "solUrl": "https://pumac.princeton.edu/s/PUMaC2017_NT_B_Solutions.pdf"
+  },
+  "2016 BMT Analysis": {
+    "url": "https://berkeley.mt/archives/bmt-2016/AnaS2016.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2016/AnaS2016A.pdf",
+    "solKind": "answer-key"
+  },
+  "2016 BMT Discrete Math": {
+    "url": "https://berkeley.mt/archives/bmt-2016/DisS2016.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2016/DisS2016A.pdf",
+    "solKind": "answer-key"
+  },
+  "2016 BMT Geometry": {
+    "url": "https://berkeley.mt/archives/bmt-2016/GeoS2016.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmt-2016/GeoS2016A.pdf",
+    "solKind": "answer-key"
   }
 };
