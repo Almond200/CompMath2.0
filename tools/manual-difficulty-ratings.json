@@ -46269,6 +46269,106 @@
     "2021 UKMT SMC, Problem 25": [
       900,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): similar triangles OQP and VQR split PR as 2 : 5, which gives OV = 5 sqrt 2 and the square's side 5; the pieces then total 9."
+    ],
+    "2020 UKMT SMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 2020/400 = 5.05."
+    ],
+    "2020 UKMT SMC, Problem 2": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the units digit is that of 4 times 8, so 2."
+    ],
+    "2020 UKMT SMC, Problem 3": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the centre cube shows 2 faces and the four others 5 each: 22."
+    ],
+    "2020 UKMT SMC, Problem 4": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): q = 10, r = 10.1, s = 10: 32.1."
+    ],
+    "2020 UKMT SMC, Problem 5": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 123454321 is about 1.2 times 10^8, so its root is about 1.1 times 10^4: 11111."
+    ],
+    "2020 UKMT SMC, Problem 6": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the class size is a multiple of 28 below 30: 28 students, 7 play hockey."
+    ],
+    "2020 UKMT SMC, Problem 7": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 47/225 is about 20%, a fall of about 80%."
+    ],
+    "2020 UKMT SMC, Problem 8": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): (106 + 15)(106 - 15) = 121 times 91 = 7 times 11^2 times 13: 13."
+    ],
+    "2020 UKMT SMC, Problem 9": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 180 km/h is 50 m/s, so 1 second apart is 50 m."
+    ],
+    "2020 UKMT SMC, Problem 10": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): P and Q are 4 apart, R is next to P and S next to Q, so T and U have two people between them."
+    ],
+    "2020 UKMT SMC, Problem 11": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the octagon has four sides of 1, two of 1/sqrt 2 and two of 1 - 1/sqrt 2: 6."
+    ],
+    "2020 UKMT SMC, Problem 12": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 2j + 3t = 380 with t = 2w gives 2(j + t + w) = 380: 190."
+    ],
+    "2020 UKMT SMC, Problem 13": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 8 + 4 + 2 + 1 = 15 factors of 2 in 16!: k = 15."
+    ],
+    "2020 UKMT SMC, Problem 14": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): count the non-adjacent places for the two reds column by column (18 ways), then 6 places for the yellow: 108."
+    ],
+    "2020 UKMT SMC, Problem 15": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): two 30-60-90 triangles with legs 3 and 3 sqrt 3, and the 240-degree sector outside them: 6 pi + 9 sqrt 3."
+    ],
+    "2020 UKMT SMC, Problem 16": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): y^2 - x^2 = 2(x + y) factors as (y + x)(y - x - 2) = 0: two crossing lines."
+    ],
+    "2020 UKMT SMC, Problem 17": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 3/(n + 1/p) < 3 forces it to be 2 with 3m = 15: n + 1/p = 3/2, so n = 1, p = 2."
+    ],
+    "2020 UKMT SMC, Problem 18": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the centres are 5 apart, so the touching circles have radii 5 + 2 and 5 - 2: 10."
+    ],
+    "2020 UKMT SMC, Problem 19": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): p - q = s + t with distinct digits gives t from 1 to 9 - (1 + 2) = 6, all possible: 6."
+    ],
+    "2020 UKMT SMC, Problem 20": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): in base sqrt 2 and sqrt 3 the equations become 4y = -(x + 8) and 4x + 2y = 3: x = 2, y = -5/2, so 5^(-1/2)."
+    ],
+    "2020 UKMT SMC, Problem 21": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): (10^2020 + 2020)^2 = 10^4040 + 4040 times 10^2020 + 4080400 with no overlapping digits: 1 + 4 + 4 + 4 + 8 + 4 = 25."
+    ],
+    "2020 UKMT SMC, Problem 22": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): equal areas give (2 - x)(1 - x) = 1, so x = (3 - sqrt 5)/2 and the perimeter 6 - 4x = 2 sqrt 5."
+    ],
+    "2020 UKMT SMC, Problem 23": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): f(x)/f(3) = x^3/27: (8000 - 8)/27 = 296."
+    ],
+    "2020 UKMT SMC, Problem 24": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the bisector and the parallel make triangle PTS isosceles, so ST = PT = 7 and TQ = 5; the cosine rule at 120 gives t^2 + 5t - 24 = 0: SQ = 3."
+    ],
+    "2020 UKMT SMC, Problem 25": [
+      800,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the m-gon and n-gon angles exceed 180 by the p-gon's exterior angle; (m, n) = (7, 3) gives an excess of 360/42: p = 42."
     ]
   }
 }
