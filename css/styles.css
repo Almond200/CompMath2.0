@@ -2871,6 +2871,7 @@ details[open] > summary.set-panel-title::after { transform: rotate(90deg); }
 .ct-list { display: flex; flex-direction: column; }
 .ct-row { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 14px; align-items: baseline; padding: 9px 0; border-top: 1px solid var(--border); }
 .ct-row:first-child { border-top: none; padding-top: 2px; }
+.ct-list .ct-row.ct-same { border-top: none; padding-top: 0; }
 .ct-name { display: flex; flex-direction: column; font-size: 14.5px; font-weight: 750; color: var(--text); text-decoration: none; }
 .ct-name:hover { color: var(--space); }
 .ct-n { font-size: 12px; font-weight: 600; color: var(--text-faint); }
