@@ -46369,6 +46369,106 @@
     "2020 UKMT SMC, Problem 25": [
       800,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the m-gon and n-gon angles exceed 180 by the p-gon's exterior angle; (m, n) = (7, 3) gives an excess of 360/42: p = 42."
+    ],
+    "2019 UKMT SMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): (123 - 23)(123 + 23) = 14600."
+    ],
+    "2019 UKMT SMC, Problem 2": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): (2019 - 1999) - (2000 - 2020) = 40."
+    ],
+    "2019 UKMT SMC, Problem 3": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): a thousandth of 2.5 cm is 0.025 mm = 1/40 mm."
+    ],
+    "2019 UKMT SMC, Problem 4": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): n(n + 2) is prime only when n = 1: 1 value."
+    ],
+    "2019 UKMT SMC, Problem 5": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): each circle needs exactly one same-coloured neighbour, so one colour fails and two suffice."
+    ],
+    "2019 UKMT SMC, Problem 6": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the nine factors of 100 multiply to 10^9, so each line multiplies to 1000: x = 1000/50 = 20."
+    ],
+    "2019 UKMT SMC, Problem 7": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): put 1, 2 over 3, 4: 1/3 + 2/4 = 5/6 beats 1/4 + 2/3."
+    ],
+    "2019 UKMT SMC, Problem 8": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 3^5 < 3^(3^x) = 333 < 3^6, so 5 < 3^x < 6 and 1 < x < 2."
+    ],
+    "2019 UKMT SMC, Problem 9": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): four folds make 16 layers, so the cut corner becomes 16 quarter circles: four whole holes."
+    ],
+    "2019 UKMT SMC, Problem 10": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): n = 20 gives 119 = 7 times 17 and 121 = 11^2."
+    ],
+    "2019 UKMT SMC, Problem 11": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 200 - sqrt k must be a square from 0 to 196: 15 values."
+    ],
+    "2019 UKMT SMC, Problem 12": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the diagonals cut the rhombus into four 30-60-90 pieces with the inradius 1 as height: 4(1/2)(sqrt 3 + 1/sqrt 3) = 8 sqrt 3 / 3."
+    ],
+    "2019 UKMT SMC, Problem 13": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): n^2 + 64 = (n + 1)^2 - 25 gives n = 44: 1936 + 64 = 2000."
+    ],
+    "2019 UKMT SMC, Problem 14": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 10! = 2^8 3^4 5^2 7, so the largest square factor is (2^4 3^2 5)^2 = 720^2 = (6!)^2."
+    ],
+    "2019 UKMT SMC, Problem 15": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the pairwise gcds are the primes 2, 3, 5, so the numbers are 6, 10, 15: 31."
+    ],
+    "2019 UKMT SMC, Problem 16": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): twice the second less the first gives x + y + z = 30: mean 10."
+    ],
+    "2019 UKMT SMC, Problem 17": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 2019 consecutive integers summing to 2019 must run from -1008 to 1010, so 0 is among them: product 0."
+    ],
+    "2019 UKMT SMC, Problem 18": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the folded corner lies on the midline, so a 30-60-90 triangle gives angle 60 at Q and 2(90 - alpha) + 60 = 90: 75."
+    ],
+    "2019 UKMT SMC, Problem 19": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): y = +-sqrt(sin x^2): through the origin, symmetric about the x-axis, with gaps where sin x^2 < 0: graph A."
+    ],
+    "2019 UKMT SMC, Problem 20": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): with angle ZXY = 2x, triangle AZP has angles 60, 2x and 90 + x: x = 10, so 20."
+    ],
+    "2019 UKMT SMC, Problem 21": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): LS^2 = (1000 - 30t)^2 + (40t)^2 = 2500((t - 12)^2 + 256), least at t = 12: 8 m."
+    ],
+    "2019 UKMT SMC, Problem 22": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): n = 2019 gives f(0) = -2019, and n = 0 gives f(2019) = -2019(1 + f(0)) = 2018 times 2019."
+    ],
+    "2019 UKMT SMC, Problem 23": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the cut through six edge midpoints is a regular hexagon of side sqrt 2: 3 sqrt 3."
+    ],
+    "2019 UKMT SMC, Problem 24": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): each has the form sqrt(a - b) - sqrt(a + b), whose square is 2a - 2 sqrt(a^2 - b^2): x^2 = 6, y^2 = 12, z^2 = 2, and the signs give xyz = 12."
+    ],
+    "2019 UKMT SMC, Problem 25": [
+      800,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): with X the centre of the square, O1X = 1/2 and angle O1XP = 135: 4k^2 + 2 sqrt 2 k - 3 = 0, area 2k^2 = 2 - sqrt 7 / 2."
     ]
   }
 }
