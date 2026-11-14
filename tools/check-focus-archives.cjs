@@ -8,6 +8,8 @@ for (const file of ['problem-db.js','difficulty-ratings.js','contest-papers.js',
 const db=context.window.MATH_PROBLEM_DB, papers=context.window.MATH_CONTEST_PAPERS;
 const slug=ref=>ref.replace(', Problem ',' ').toLowerCase().replaceAll(' ','-');
 const families=new Map();
+const roundLabel=round=>({'Combinatorics':'Combo','Number Theory':'NT','Discrete Math':'Discrete'}[round]||round);
+const familyLabel=fam=>fam.replace(' Division ',' ');
 assert(!context.window.MATH_PLANNED_CONTESTS.some(c=>/^(BMT|PUMaC)$/.test(c.name)),'live archives have no duplicate coming-soon entry');
 // Match the actual shared questions, which need not occupy consecutive B slots.
 for(const year of [2019,2020,2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) for(let n=1;n<=6;n++){
@@ -53,7 +55,7 @@ for(const [paper,source] of Object.entries(papers)) {
    for(const [key,rounds] of families){
     const [fam,year]=key.split('|'),familySlug=fam.toLowerCase().replaceAll(' ','-');
     await page.goto(`${base}/#/problems/${familySlug}/${year}`);await page.locator('.ct-papers [role="tab"]').first().waitFor();
-    assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),rounds.map(x=>x.round).sort());
+    assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),rounds.map(x=>x.round).sort().map(roundLabel));
     for(const {paper,source,round,ps} of rounds){
      const paperSlug=paper.replace(/^\d{4} /,'').toLowerCase().replaceAll(' ','-');
      await page.goto(`${base}/#/problems/${familySlug}/${year}/${paperSlug}`);
@@ -70,7 +72,7 @@ for(const [paper,source] of Object.entries(papers)) {
       assert(await page.locator('.ptree-node.is-filed').count()>0);
       assert.equal(await page.locator('.katex-error').count(),0);
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
-      assert((await page.locator('h2').innerText()).includes(fam));
+      assert((await page.locator('h2').innerText()).includes(familyLabel(fam)));
      }
     }
    }

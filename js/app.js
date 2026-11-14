@@ -2985,7 +2985,7 @@
       // A few problems are named in a line; shares and bars of one or two problems say nothing.
       if (few) out.rows.contests = row("Contests", dots(fams.map(x => `${famDot(x.fam)}${escapeAttr(x.fam)} <span class="pf-sub">${x.ps.map(p => "#" + p.num).join(", ")}</span>`)));
       else out.rows.contests = row("Contests", `<table class="pf-table"><thead><tr><th scope="col" aria-label="Contest"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of the contest", "Share")}</th><th scope="col">${duo("Typical question", "Typical #")}</th></tr></thead><tbody>${fams.filter(x => famShown(x.fam)).map(x =>
-        `<tr><th scope="row">${famDot(x.fam)}${escapeAttr(x.fam)}</th><td class="pf-meter-cell">${sized(x) ? `<span class="pf-meter"><i style="width:${Math.max(2, x.share / shareMax * 100).toFixed(1)}%;background:${famColor(x.fam)}"></i></span>` : ""}</td><td>${x.ps.length}</td><td>${sized(x) ? pfPct(x.share) : `${x.ps.length} of ${all.fam[x.fam]}`}</td><td>#${x.at}</td></tr>`).join("")}</tbody></table>${famMoreBtn(extraFams(fams.map(x => x.fam)))}`, true);
+        `<tr><th scope="row">${famDot(x.fam)}${escapeAttr(x.fam)}</th><td class="pf-meter-cell"><span class="pf-meter">${sized(x) ? `<i style="width:${Math.max(2, x.share / shareMax * 100).toFixed(1)}%;background:${famColor(x.fam)}"></i>` : ""}</span></td><td>${x.ps.length}</td><td>${sized(x) ? pfPct(x.share) : `${x.ps.length} of ${all.fam[x.fam]}`}</td><td>#${x.at}</td></tr>`).join("")}</tbody></table>${famMoreBtn(extraFams(fams.map(x => x.fam)))}`, true);
 
       // Difficulty: the ratings in words, then their spread, stacked by contest in the colours
       // of the rows above. A handful of ratings is listed, not charted.
@@ -3348,16 +3348,21 @@
   function problemSlug(ref) {
     return ref.toLowerCase().replace(/,?\s*problem\s+/, "-").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
   }
-  // The display form of a reference. HMMT names are long ("2019 HMMT February Algebra and Number
-  // Theory, Problem 3"), so the month and the round are shortened: "2019 HMMT Feb Alg & NT #3".
+  // The display form of a reference. Round names are long ("2019 HMMT February Algebra and Number
+  // Theory, Problem 3"), so the month, the round and the division are shortened: "2019 HMMT Feb Alg & NT #3",
+  // "2021 CMIMC Combo & CS Div 1 #4", "2022 PUMaC A NT #2", "2015 Utah Senior #7" (owner: abbreviate titles).
   // `refInGroup` drops the contest's own name as well, for a row under that contest's heading.
-  const HMMT_ROUNDS = { "Advanced Topics": "Adv Topics", "General": "Gen", "Algebra and Combinatorics": "Alg & Combo", "Algebra and Geometry": "Alg & Geo", "Combinatorics and Geometry": "Combo & Geo", "Algebra and Number Theory": "Alg & NT", "Combinatorics": "Combo", "Geometry": "Geometry" };
-  const shortRound = r => HMMT_ROUNDS[r] || r;
+  const ROUND_SHORT = { "Advanced Topics": "Adv Topics", "General": "Gen", "Algebra and Combinatorics": "Alg & Combo", "Algebra and Geometry": "Alg & Geo", "Combinatorics and Geometry": "Combo & Geo", "Algebra and Number Theory": "Alg & NT", "Combinatorics and Computer Science": "Combo & CS", "Combinatorics": "Combo", "Number Theory": "NT", "Computer Science": "CS", "Discrete Math": "Discrete" };
+  const shortRound = r => { const d = r.match(/^(.*?) Division (\d)$/); return d ? `${shortRound(d[1])} Div ${d[2]}` : ROUND_SHORT[r] || r; };
+  const ROUNDED = "HMMT (?:February|November)|CMIMC|SMT|BMT|PUMaC Division [AB]|Utah State Math Contest";
+  const shortFam = f => f.replace(/^HMMT (February|November)$/, (_, m) => "HMMT " + m.slice(0, 3)).replace(/^PUMaC Division /, "PUMaC ").replace(/^Utah State Math Contest$/, "Utah");
   function refShort(ref) {
-    return ref.replace(/,\s*Problem\s+/, " #").replace(/\bHMMT (February|November) (.+?) #/, (_, m, r) => `HMMT ${m.slice(0, 3)} ${shortRound(r)} #`);
+    const m = ref.match(new RegExp(`^(\\d{4}) (${ROUNDED}) (.+?),\\s*Problem\\s+(\\d+)$`));
+    if (m) return `${m[1]} ${shortFam(m[2])} ${shortRound(m[3])} #${m[4]}`;
+    return ref.replace(/,\s*Problem\s+/, " #").replace(/ (?:Individual|Math Contest) #/, " #");
   }
   function refInGroup(ref) {
-    const m = ref.match(/^(\d{4}) (?:HMMT (?:February|November)|BMT|PUMaC Division [AB]) (.+?),\s*Problem\s+(\d+)$/);
+    const m = ref.match(new RegExp(`^(\\d{4}) (?:${ROUNDED}) (.+?),\\s*Problem\\s+(\\d+)$`));
     return m ? `${m[1]} ${shortRound(m[2])} #${m[3]}` : refShort(ref);
   }
   function yearOf(ref) { const m = ref.match(/^(\d{4})/); return m ? +m[1] : 0; }
@@ -9435,7 +9440,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <select class="ct-yb-select" aria-label="Year">${years.map(y => `<option value="${y}"${y === year ? " selected" : ""}>${y}</option>`).join("")}</select>
         ${newer ? `<a class="ct-yb-step" href="${ystep(newer)}" data-step-year="${newer}" aria-label="${newer}">${stepChevron(1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(1)}</span>`}
       </div>
-      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 ").replace(/^(?:HMMT (?:February|November)|SMT|CMIMC|Utah State Math Contest|BMT|PUMaC Division [AB]) /, "").replace(/ and /g, " & "))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
+      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 ").replace(new RegExp(`^(?:${ROUNDED}) (.+)$`), (_, r) => shortRound(r)).replace(/ and /g, " & "))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
       ${body}
       <nav class="topic-nav" aria-label="Neighbouring years">
         ${older ? `<a class="topic-step" href="${ystep(older)}" data-step-year="${older}"><span class="ts-dir">${uiIcon("arrow-left")} Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
@@ -9721,7 +9726,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const browseBackHtml = () => `<div class="back-row"><a class="back-link" href="#/practice" data-goto="pr-contests">${uiIcon("arrow-left")} Contests</a></div>`;
   function famChipsHtml(problems) {
     const all = FAMILIES.filter(f => problems.some(p => p.fam === f)), fams = all.filter(famShown);
-    return `<div class="fam-chips" role="group" aria-label="Contests shown">${fams.map(f =>
+    // Select all and Deselect all (owner, 2026-11-14): deselect, then choose the one contest wanted.
+    const offN = all.filter(f => browseOff.has(f)).length;
+    return `<div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-br-all="on"${offN ? "" : " disabled"}>Select all</button><button type="button" class="fam-bulk-btn" data-br-all="off"${offN === all.length ? " disabled" : ""}>Deselect all</button></div>
+      <div class="fam-chips" role="group" aria-label="Contests shown">${fams.map(f =>
       `<button type="button" class="fam-chip" data-br-fam="${escapeAttr(f)}" aria-pressed="${!browseOff.has(f)}">${famDot(f)}${f}<span class="br-count">${problems.filter(p => p.fam === f).length.toLocaleString()}</span></button>`).join("")}${famMoreBtn(extraFams(all), "fam-chip")}</div>`;
   }
   function browseGroupsHtml(key, problems, sort) {
@@ -9735,7 +9743,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         ${list.length > shown.length ? `<button type="button" class="ct-toggle" data-br-more="${escapeAttr(f)}">Show all ${list.length}</button>`
           : list.length > BROWSE_PAGE ? `<button type="button" class="ct-toggle" data-br-less="${escapeAttr(f)}">Show less</button>` : ""}</section>`;
     }).join("");
-    return groups || `<p class="chain-empty">No problems here.</p>`;
+    return groups || `<p class="chain-empty">${FAMILIES.every(f => browseOff.has(f) || !problems.some(p => p.fam === f)) ? "No contest is chosen: choose one above." : "No problems here."}</p>`;
   }
   const eloOf = p => Number.isFinite(p.elo) ? p.elo : 1e9;
   const byEasiest = (a, b) => eloOf(a) - eloOf(b) || b.year - a.year || a.ref.localeCompare(b.ref, undefined, { numeric: true });
@@ -9769,6 +9777,16 @@ The book remembers the last lesson you opened, in this browser, and the contents
       rail.querySelector(".tt-body").innerHTML = topicRailHtml(rail.dataset.sel || null);
       rail.scrollTop = top;
       rail.querySelector(`[data-tt="${id}"]`)?.focus({ preventScroll: true });
+      return;
+    }
+    const bulk = e.target.closest("[data-br-all]");
+    if (bulk) {
+      browseOff = bulk.dataset.brAll === "on" ? new Set() : new Set(FAMILIES);
+      const y = window.scrollY, which = bulk.dataset.brAll;
+      renderBrowse(getRoute());
+      window.scrollTo(0, y);
+      const again = $content.querySelector(`[data-br-all="${which}"]`);
+      (again && !again.disabled ? again : $content.querySelector(`[data-br-all]:not([disabled])`))?.focus({ preventScroll: true });
       return;
     }
     const fam = e.target.closest("[data-br-fam]"), more = e.target.closest("[data-br-more]"), less = e.target.closest("[data-br-less]"), mob = e.target.closest(".tt-mobile-btn");
