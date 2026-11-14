@@ -43,16 +43,20 @@
     }
     return {startYear,endYear,years:[...new Set(recent.map(g=>g.year))].sort(),means,targets:monotone(means)};
   }
-  function generate(problems, catalog, family, hasAnswer, isVoided=()=>false, random=Math.random) {
-    const model=curve(catalog,family,isVoided), format=formats[family], unique=new Map();
-    for(const p of problems){
-      // The owner explicitly allows our 2019 HMMT round as an exception to the older-source cutoff.
-      const older=p.year<model.startYear || p.fam==='HMMT February';
-      if(!older||!hasAnswer(p)||isVoided(p)||!Number.isFinite(p.elo))continue;
-      const key=identity(p);if(!unique.has(key))unique.set(key,p);
+  function sourcePool(problems, model, eligible, isVoided = () => false, sources = null) {
+    const allowed = sources == null ? null : new Set(sources), unique = new Map();
+    for (const p of problems) {
+      // Preserve the approved HMMT exception to the older-source cutoff.
+      const older = p.year < model.startYear || p.fam === 'HMMT February';
+      if (!older || (allowed && !allowed.has(p.fam)) || !eligible(p) || isVoided(p) || !Number.isFinite(p.elo)) continue;
+      const key = identity(p); if (!unique.has(key)) unique.set(key, p);
     }
-    let pool=[...unique.values()];
-    if(pool.length<format.count)throw Error('Not enough older problems are available to build this mock.');
+    return [...unique.values()];
+  }
+  function generate(problems, catalog, family, eligible, isVoided=()=>false, random=Math.random, sources=null) {
+    const model=curve(catalog,family,isVoided), format=formats[family];
+    let pool=sourcePool(problems,model,eligible,isVoided,sources);
+    if(pool.length<format.count)throw Error('Not enough eligible older problems in the selected contests to build this mock.');
     const selected=[];
     for(const target of model.targets.slice().reverse()){
       const nearest=Math.min(...pool.map(p=>Math.abs(p.elo-target)));
@@ -62,15 +66,15 @@
       pool=pool.filter(p=>p!==chosen);
     }
     selected.sort((a,b)=>a.elo-b.elo||a.slug.localeCompare(b.slug));
-    return {problems:selected,model};
+    return {problems:selected,model,sources:[...new Set(selected.map(p=>p.fam))]};
   }
   function score(set, result) {
     const f=formats[set.mock?.family];if(!f)return null;
-    const counts={Correct:0,Incorrect:0,Unanswered:0,Voided:0,'Answer unavailable':0};
+    const counts={Correct:0,Incorrect:0,Unanswered:0,Voided:0,'Answer unavailable':0,'Check yourself':0};
     set.slugs.forEach(s=>counts[result(s)]++);
     const points=(counts.Correct+counts.Voided)*f.correct+counts.Unanswered*f.blank;
     return {points,max:set.slugs.length*f.correct,counts};
   }
-  const api={formats,identity,papers,curve,generate,score,monotone};
+  const api={formats,identity,papers,curve,sourcePool,generate,score,monotone};
   if(typeof module!=='undefined')module.exports=api;else root.MockContests=api;
 })(typeof window!=='undefined'?window:globalThis);
