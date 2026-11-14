@@ -40251,6 +40251,106 @@
     "2011 Cayley Contest, Problem 25": [
       1000,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): split the unit square by where a and b round and where 2a + 2b rounds; the favourable regions total 7/16."
+    ],
+    "2010 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 6 + 2 = 8."
+    ],
+    "2010 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each number is 30 degrees apart: 120 degrees reaches the 4."
+    ],
+    "2010 Cayley Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): x + 5 = 6: x = 1."
+    ],
+    "2010 Cayley Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2 + 2/3 = 8/3, so the value is 3/8."
+    ],
+    "2010 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (1/3)/(3/5) = 5/9."
+    ],
+    "2010 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the angles are x, 3x and 6x summing to 180: x = 18, largest 108."
+    ],
+    "2010 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the middle one is 9: smallest 7."
+    ],
+    "2010 Cayley Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): PMN has legs 15 and 15 from a side of 30: 112.5."
+    ],
+    "2010 Cayley Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): equal intercepts need slope -1: y = -x + 4."
+    ],
+    "2010 Cayley Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): boys 240 + 240 = 480 and girls 160 + 360 = 520: 12 : 13."
+    ],
+    "2010 Cayley Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the product is largest when x and y are closest: 15 times 16 = 240."
+    ],
+    "2010 Cayley Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the original price is 112/0.8 = 140, and 70% of it is 98."
+    ],
+    "2010 Cayley Contest, Problem 13": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each small circle has the big radius 6 as its diameter, radius 3: the big disc less the two small ones is 36 pi - 18 pi = 18 pi."
+    ],
+    "2010 Cayley Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 50 = 1 + 49 = 25 + 25: (1, 7), (7, 1), (5, 5)."
+    ],
+    "2010 Cayley Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 400 loonies weigh as much as 1600 dimes: 160 dollars."
+    ],
+    "2010 Cayley Contest, Problem 16": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the nine odd numbers from 5 to 21 sum to 117, so each line sums to 39 and the centre is 13; the lines through 5, 9, 17 then fix x = 11."
+    ],
+    "2010 Cayley Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): consecutive integers: the two multiples of 3 are 3 apart and the two multiples of 5 are 5 apart; the only consistent placement puts a multiple of 15 at D."
+    ],
+    "2010 Cayley Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): angle PRQ = 2x, so angle SRT = 2x (vertical), and RS = RT gives RST = (180 - 2x)/2 = 90 - x."
+    ],
+    "2010 Cayley Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): one even digit and two odd: even first (4 times 25) or even in another place (5 times 2 times 25): 100 + 250 = 350."
+    ],
+    "2010 Cayley Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): n^200 < 3^500 means n^2 < 3^5 = 243: n = 15."
+    ],
+    "2010 Cayley Contest, Problem 21": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): folding makes a right angle, so the paper overlaps itself in an isosceles right triangle with legs 8: 136 - 32 = 104."
+    ],
+    "2010 Cayley Contest, Problem 22": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): pair each odd-position term with the next, which is 1 larger: the odd-position sum is (5307 - 1005)/2 = 2151."
+    ],
+    "2010 Cayley Contest, Problem 23": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): Blair's bars lie between the others in weight, so their average is between 45/24 and 26/13: with b bars, 45/24 < 29/b < 2, so b = 15."
+    ],
+    "2010 Cayley Contest, Problem 24": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the coin's centre lies in a 42 by 42 square; it wins in a 2 by 2 square in each of the 25 cells: 100/1764 = 25/441."
+    ],
+    "2010 Cayley Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the position is the last digit of 1^1 + 2^2 + ... + 1234^1234; the last digits of n^n repeat every 20: 7."
     ]
   }
 }
