@@ -33,25 +33,35 @@ for (const [ref, [elo, reason]] of Object.entries(manual.ratings)) {
 let cases = 0;
 for (let n = 1; n <= 125; n++) {
   const pool = Array.from({ length:n }, (_, i) => ({ slug:String(i), elo:1000 + i * 7 })).reverse();
-  const before = pool.slice();
+  const before = pool.slice(), ranges = D.ranges(pool);
   const bands = D.levels.slice(1).map(l => D.filter(pool, l.id));
   assert.deepEqual(pool, before, 'selection must not mutate its caller');
-  assert.ok(bands.every(a => a.length > 0), 'small topics never produce an empty rank level');
-  assert.equal(new Set(bands.flat().map(p => p.slug)).size, n, 'five levels cover every rated problem');
-  if (n >= 5) {
-    assert.equal(bands.flat().length, n, 'distinct ratings form disjoint quintiles');
-    assert.ok(Math.max(...bands.map(a => a.length)) - Math.min(...bands.map(a => a.length)) <= 1);
-  }
-  for (let i=1;i<bands.length;i++) assert.ok(Math.max(...bands[i-1].map(p=>p.elo)) <= Math.min(...bands[i].map(p=>p.elo)));
+  assert.equal(new Set(bands.flat().map(p => p.slug)).size, n, 'cover every rated problem');
+  assert.equal(bands.flat().length, n, 'no overlap or fallback across levels, including tiny pools');
+  if (n > 1) {
+    const widths = ranges.filter(Boolean).map(r => r.high - r.low + 1);
+    assert.ok(Math.max(...widths) - Math.min(...widths) <= 1, 'similar Elo widths, not similar counts');
+    assert.equal(ranges.filter(Boolean)[0].low, 1000);
+    assert.equal(ranges.filter(Boolean).at(-1).high, 1000 + (n - 1) * 7);
+  } else assert.equal(bands[2].length, 1, 'one rating has no relative spread; use Medium');
   cases++;
 }
 const tied = [500,600,600,600,600,700,800,900,1000,1100].map((elo,i)=>({slug:String(i),elo}));
 for (const l of D.levels.slice(1)) {
   const band=D.filter(tied,l.id);
-  assert.ok(band.length);
   if (band.some(p=>p.elo===600)) assert.equal(band.filter(p=>p.elo===600).length,4,'never split equal Elo values');
 }
-for (const l of D.levels.slice(1)) assert.equal(D.filter([{elo:700},{elo:700}],l.id).length,2);
+assert.equal(D.levels.slice(1).flatMap(l=>D.filter(tied,l.id)).length,tied.length,'ties belong to exactly one band');
+assert.equal(D.filter([{elo:700},{elo:700}],'medium').length,2);
+assert.equal(D.filter([{elo:700},{elo:700}],'very-hard').length,0,'do not invent relative difficulty for one rating');
+const skewed=[...Array.from({length:90},(_,i)=>({slug:'low'+i,elo:500+i})),{slug:'top',elo:3500}];
+assert.deepEqual(D.range(skewed,'very-hard'),{low:2901,high:3500});
+assert.deepEqual(D.filter(skewed,'very-hard').map(p=>p.slug),['top'],'a long tail is split by Elo width rather than population');
+assert.equal(D.filter(skewed,'medium').length,0,'gaps stay empty instead of silently drawing another range');
+assert.match(D.describe(skewed,'medium'),/No problems fall in this interval/);
+assert.deepEqual(D.range([{elo:1000},{elo:2000}],'hard'),{low:1601,high:1800},'recalibrate from the selected pool');
+assert.match(D.describe([{elo:700}],'very-hard'),/same Elo rating.*Medium or Any/);
+assert.equal(D.range([],'hard'),null);
 const unrated = {slug:'future',elo:null};
 const mixed = [...tied,unrated];
 assert.deepEqual(D.filter(mixed,''),mixed,'Any has no hidden rating filter');
@@ -71,11 +81,12 @@ const amc8=problems.filter(p=>/AMC 8|AJHSME/.test(p.ref));
 const aime=problems.filter(p=>/AIME/.test(p.ref));
 const top8=D.filter(amc8,'very-hard'),topAime=D.filter(aime,'very-hard');
 assert.ok(Math.max(...top8.map(p=>p.elo)) < Math.min(...topAime.map(p=>p.elo)), 'contest-relative hard ranges differ');
-// HMMT February: whole rounds of ten, every problem rated; one round splits evenly into fifths.
+// HMMT February: whole rounds of ten, every problem rated; one round uses equal-width Elo intervals.
 const hmmt=problems.filter(p=>/HMMT February/.test(p.ref));
 assert.ok(hmmt.length>=30&&hmmt.length%10===0);assert.ok(hmmt.every(p=>Number.isFinite(p.elo)));
 const hmmtGeo=hmmt.filter(p=>/^2019 HMMT February Geometry,/.test(p.ref));assert.equal(hmmtGeo.length,10);
-for(const l of D.levels.slice(1)) assert.equal(D.filter(hmmtGeo,l.id).length,2);
+assert.equal(D.levels.slice(1).flatMap(l=>D.filter(hmmtGeo,l.id)).length,10);
+const geoWidths=D.ranges(hmmtGeo).map(r=>r.high-r.low+1);assert.ok(Math.max(...geoWidths)-Math.min(...geoWidths)<=1);
 // Exercise the real importer on aliases and a later published replacement for a manual estimate.
 require('node:child_process').execFileSync('python3', ['-c', `
 import importlib.util
@@ -100,4 +111,4 @@ try: m.build(index,rows,{'ratings':{'unknown':[650,'invalid reference']}},[ref],
 except ValueError: pass
 else: raise AssertionError('unknown manual reference accepted')
 `], { stdio: 'pipe' });
-console.log(`Problem difficulty: ${problems.length} ratings (${data.meta.liveCount} LIVE, ${data.meta.manualCount} manual), ${cases} pool sizes, ties, tiny topics, uniform Any, contextual quintiles and shared estimates passed.`);
+console.log(`Problem difficulty: ${problems.length} ratings (${data.meta.liveCount} LIVE, ${data.meta.manualCount} manual), ${cases} pool sizes, ties, tiny topics, uniform Any, adaptive Elo widths, gaps, contextual recalibration and shared estimates passed.`);

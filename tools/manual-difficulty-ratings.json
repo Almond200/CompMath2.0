@@ -215,7 +215,11 @@
     "2011 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2011_AlgebraA.pdf",
     "2011 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2011_AlgebraB.pdf",
     "2011 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2011_CombinatoricsA.pdf",
-    "2011 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2011_CombinatoricsB.pdf"
+    "2011 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2011_CombinatoricsB.pdf",
+    "2011 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2011_GeometryA.pdf",
+    "2011 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2011_GeometryB.pdf",
+    "2011 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2011_NumberTheoryA.pdf",
+    "2011 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2011_NumberTheoryB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -48929,6 +48933,134 @@
     "2011 PUMaC Division B Combinatorics, Problem 8": [
       3750,
       "Reflect fixed-endpoint audience walks at adjacent height barriers to isolate the exact maximum, then compute the two-adic valuation of the resulting binomial difference."
+    ],
+    "2011 PUMaC Division A Geometry, Problem 1": [
+      2450,
+      "Find the arc followed by the larger center and add its swept circular strip to the initial disk before multiplying by the log length."
+    ],
+    "2011 PUMaC Division A Geometry, Problem 2": [
+      3000,
+      "Translate the preserved fold distances to both hinge endpoints into spatial distance equations and locate the common point projection."
+    ],
+    "2011 PUMaC Division A Geometry, Problem 3": [
+      3200,
+      "Combine equal tangent lengths with a second equal-distance circle to convert the external tangent angles into the requested inscribed angle."
+    ],
+    "2011 PUMaC Division A Geometry, Problem 4": [
+      3300,
+      "Use the incenter and the circle through two vertices to find congruent right triangles and the equal initial side segment."
+    ],
+    "2011 PUMaC Division A Geometry, Problem 5": [
+      3000,
+      "Replace the variable two-segment sum by a fixed vector displacement and identify an attaining straight-line configuration."
+    ],
+    "2011 PUMaC Division A Geometry, Problem 6": [
+      3500,
+      "Show that the chord midpoint moves on a concentric circular arc, calculate its radius and verify that the nearest point to the fixed endpoint is attained."
+    ],
+    "2011 PUMaC Division A Geometry, Problem 7": [
+      3750,
+      "Extend the external angle bisectors to the excenter, compare similar cyclic triangles and convert the remaining area ratio through the exradius."
+    ],
+    "2011 PUMaC Division A Geometry, Problem 8": [
+      3900,
+      "Reflect the inner triangle to build a tangential isosceles trapezoid, identify its incenter and compare its incircle with the smaller angle-circle by homothety."
+    ],
+    "2011 PUMaC Division B Geometry, Problem 1": [
+      1800,
+      "Extend the altitude and use the resulting isosceles triangle to transfer the given angles."
+    ],
+    "2011 PUMaC Division B Geometry, Problem 2": [
+      2450,
+      "Find the arc followed by the larger center and add its swept circular strip to the initial disk before multiplying by the log length."
+    ],
+    "2011 PUMaC Division B Geometry, Problem 3": [
+      2300,
+      "Use the intersecting trapezoid cevians and parallel bases to determine the final side ratio."
+    ],
+    "2011 PUMaC Division B Geometry, Problem 4": [
+      2600,
+      "Subtract squared chord-endpoint distances to obtain a family of parallel lines and maximize its parameter at a tangent support line."
+    ],
+    "2011 PUMaC Division B Geometry, Problem 5": [
+      2850,
+      "Check internal as well as external tangency: four distinct circles can share a single tangent point with the fourth radius arbitrarily large, so the printed maximum does not exist."
+    ],
+    "2011 PUMaC Division B Geometry, Problem 6": [
+      3000,
+      "Translate the preserved fold distances to both hinge endpoints into spatial distance equations and locate the common point projection."
+    ],
+    "2011 PUMaC Division B Geometry, Problem 7": [
+      3000,
+      "Replace the variable two-segment sum by a fixed vector displacement and identify an attaining straight-line configuration."
+    ],
+    "2011 PUMaC Division B Geometry, Problem 8": [
+      3500,
+      "Show that the chord midpoint moves on a concentric circular arc, calculate its radius and verify that the nearest point to the fixed endpoint is attained."
+    ],
+    "2011 PUMaC Division A Number Theory, Problem 1": [
+      2600,
+      "Write the divisor sum as a product of two geometric factors and classify the bounded prime exponents."
+    ],
+    "2011 PUMaC Division A Number Theory, Problem 2": [
+      2400,
+      "Eliminate the least common multiple to force three times a square, then construct an integer partner achieving the largest allowed value."
+    ],
+    "2011 PUMaC Division A Number Theory, Problem 3": [
+      2800,
+      "Tabulate the full six-term power cycle modulo the fixed prime and restrict the exponent to a prime in its only admissible congruence class."
+    ],
+    "2011 PUMaC Division A Number Theory, Problem 4": [
+      3100,
+      "Bound the least of the three positive variables, factor the remaining two-variable equation and count all distinct ordered permutations."
+    ],
+    "2011 PUMaC Division A Number Theory, Problem 5": [
+      3450,
+      "Expand the divisor-count coefficients as a double sum, justify the positive-term rearrangement and square the supplied reciprocal-square sum."
+    ],
+    "2011 PUMaC Division A Number Theory, Problem 6": [
+      3600,
+      "Find the first modulus with a missing sum of a cube and a fourth power and verify complete residue coverage for every smaller modulus."
+    ],
+    "2011 PUMaC Division A Number Theory, Problem 7": [
+      3800,
+      "Identify Fibonacci doubling identities in the nonlinear recurrence, reduce the exponential index by the actual modular period and combine the residues."
+    ],
+    "2011 PUMaC Division A Number Theory, Problem 8": [
+      4150,
+      "Convert consecutive cubes to a Pell equation, use the required congruence to force an even unit power and reduce every possible index to a fixed difference-of-squares factorization."
+    ],
+    "2011 PUMaC Division B Number Theory, Problem 1": [
+      1600,
+      "Recognize the integer as a difference of cubes and factor it completely to isolate the largest prime."
+    ],
+    "2011 PUMaC Division B Number Theory, Problem 2": [
+      2350,
+      "Convert the robots bases to decimal constraints, use the square residues modulo five to bound the factorial and check the remaining bases."
+    ],
+    "2011 PUMaC Division B Number Theory, Problem 3": [
+      2600,
+      "Write the divisor sum as a product of two geometric factors and classify the bounded prime exponents."
+    ],
+    "2011 PUMaC Division B Number Theory, Problem 4": [
+      2400,
+      "Eliminate the least common multiple to force three times a square, then construct an integer partner achieving the largest allowed value."
+    ],
+    "2011 PUMaC Division B Number Theory, Problem 5": [
+      2800,
+      "Tabulate the full six-term power cycle modulo the fixed prime and restrict the exponent to a prime in its only admissible congruence class."
+    ],
+    "2011 PUMaC Division B Number Theory, Problem 6": [
+      3100,
+      "Bound the least of the three positive variables, factor the remaining two-variable equation and count all distinct ordered permutations."
+    ],
+    "2011 PUMaC Division B Number Theory, Problem 7": [
+      3400,
+      "Turn a consecutive sum of cubes into a negative Pell equation and list every solution within the given bound."
+    ],
+    "2011 PUMaC Division B Number Theory, Problem 8": [
+      3450,
+      "Expand the divisor-count coefficients as a double sum, justify the positive-term rearrangement and square the supplied reciprocal-square sum."
     ]
   }
 }

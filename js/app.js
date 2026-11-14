@@ -5726,7 +5726,7 @@
       </header>
       ${recent ? `<div class="sh-recent"><span class="hp-label">Recently opened</span><div class="rc-chips">${recent}</div></div>` : ""}`;
   }
-  // Shared five-level Elo rank selection, recalibrated after the contest/topic filter.
+  // Shared equal-width Elo intervals, recalibrated after the contest/topic filter.
   const DIFFS = problemDifficulty.levels.map(level => level.id);
   function wireRandomPicker(root) {
     const box = root.querySelector(".rand-picker");
@@ -5738,14 +5738,15 @@
       const level = problemDifficulty.levels[+range.value].label;
       box.querySelector(".rand-diff-val").textContent = level;
       range.setAttribute("aria-valuetext", level);
-      // What a level means in Elo terms (owner, 2026-11-11): the ratings it covers for the
-      // chosen contest, drawn from the same pool and the same fifths the draw itself uses.
-      const scope = fam ? `the ${fam} problems` : "all the problems";
-      const elos = d ? problemDifficulty.filter(PROBLEM_DB.filter(p => !fam || p.fam === fam), d).map(p => p.elo) : [];
-      box.querySelector(".rand-diff-note").textContent = elos.length
-        ? `${level} is an Elo rating of ${Math.min(...elos)} to ${Math.max(...elos)}: one fifth of ${scope}, where a higher rating means a harder problem.`
-        : `Difficulty goes by Elo rating: a higher rating means a harder problem. Each level is a fifth of ${scope}, from the lowest rated to the highest.`;
-      go.href = "#/special/randomproblem" + (fam ? "/" + encodeURIComponent(fam) : "") + (d ? "/" + d : "");
+      const pool = PROBLEM_DB.filter(p => !fam || p.fam === fam);
+      const eligible = problemDifficulty.filter(pool, d);
+      box.querySelector(".rand-diff-note").textContent = problemDifficulty.describe(pool, d, fam || "all contests");
+      if (eligible.length) {
+        go.href = "#/special/randomproblem" + (fam ? "/" + encodeURIComponent(fam) : "") + (d ? "/" + d : "");
+        go.removeAttribute("aria-disabled"); go.removeAttribute("tabindex");
+      } else {
+        go.removeAttribute("href"); go.setAttribute("aria-disabled", "true"); go.tabIndex = -1;
+      }
     };
     box.querySelectorAll("[data-rand-fam]").forEach(b => b.addEventListener("click", () => {
       fam = b.dataset.randFam;
@@ -6155,7 +6156,7 @@
     let desiredCount = count.valueAsNumber;
     const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible);
     // The pool a topic draws from under the current contest choice, for the browser checks.
-    window.MATH_PRACTICE_POOL = id => (topics.nodes.get(id)?.problems || []).filter(practiceFamOn).map(p => p.slug);
+    window.MATH_PRACTICE_POOL = id => topics.select(id, practiceFamOn).map(p => p.slug);
     const findTopic = () => {
       const selected = topics.nodes.get(selectedTopicId);
       return selected && topic.value === selected.label ? selected : topics.resolve(topic.value);
@@ -6163,7 +6164,7 @@
     function update() {
       const choices = topics.search(topic.value);
       suggestions.innerHTML = choices.map((node,i) => {
-        const size = problemDifficulty.filter(node.problems.filter(practiceFamOn), DIFFS[difficulty.valueAsNumber]).length;
+        const size = problemDifficulty.filter(topics.select(node.id, practiceFamOn), DIFFS[difficulty.valueAsNumber]).length;
         const context = node.path.slice(0, -1).join(' › ');
         return `<button type="button" class="set-find-opt practice-topic-option${i === 0 ? ' is-cur' : ''}" role="option" id="practice-topic-${i}" data-topic-id="${node.id}" aria-selected="${i === 0}"><span class="practice-topic-name">${mathHtml(node.name)}</span><span class="practice-topic-context">${escapeAttr(context)}${context ? ' · ' : ''}${size} problem${size === 1 ? '' : 's'}</span></button>`;
       }).join('');
@@ -6184,13 +6185,9 @@
       form.querySelector("#topic-count-value").textContent = count.value;
       form.querySelector("#topic-band-value").textContent = difficultyLabel();
       difficulty.setAttribute("aria-valuetext", difficultyLabel());
-      // Here a level is measured inside the chosen topic, not across a contest (owner,
-      // 2026-11-11: say so, since it works differently from the random picker).
-      const level = difficulty.valueAsNumber ? difficultyLabel() : "", rated = level && match ? pool.map(p => p.elo).filter(Number.isFinite) : [];
-      form.querySelector("#topic-band-note").textContent = rated.length
-        ? `${level} in this topic is an Elo rating of ${Math.min(...rated)} to ${Math.max(...rated)}: one fifth of its problems, where a higher rating means a harder problem.`
-        : level ? `${level} is one fifth of the chosen topic's problems by Elo rating, where a higher rating means a harder problem. Choose a topic to see the ratings it covers.`
-        : "Difficulty is measured inside the topic you choose: each level is a fifth of that topic's problems by Elo rating, so Hard in an easy topic is rated lower than Hard in a difficult one.";
+      form.querySelector("#topic-band-note").textContent = match
+        ? problemDifficulty.describe(topics.select(match.id, practiceFamOn), DIFFS[difficulty.valueAsNumber], "this topic")
+        : "Choose a topic to see five similar Elo intervals for the selected contests.";
       status.textContent = match ? pool.length + " matching problem" + (pool.length === 1 ? "" : "s") + " available" + (match.children.length ? ", including subtopics." : ".")
         : topic.value.trim() ? "Choose a topic from the suggestions." : "";
       form.querySelector("button[type=submit]").disabled = generating || !pool.length;
@@ -6202,7 +6199,7 @@
     document.addEventListener("practice-fams", onFams);
     function matchingProblems() {
       const match = findTopic(), band = DIFFS[difficulty.valueAsNumber];
-      return match ? problemDifficulty.filter(match.problems.filter(practiceFamOn), band) : [];
+      return match ? problemDifficulty.filter(topics.select(match.id, practiceFamOn), band) : [];
     }
     function closeTopics() { suggestions.hidden = true; topic.setAttribute('aria-expanded','false'); topic.removeAttribute('aria-activedescendant'); activeTopic = -1; }
     function openTopics() {
@@ -6300,16 +6297,17 @@
     // Every card's eligible problems, each shared AMC 10/12 problem once.
     const pools = cardPracticePools ||= (() => {
       const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible);
-      const eligible = new Set(topics.nodes.get("mixed").problems), by = {};
-      Object.keys(PROBLEMS_BY_CARD).forEach(id => { const ps = PROBLEMS_BY_CARD[id].filter(p => eligible.has(p)); if (ps.length && BY_ID[id]) by[id] = ps; });
+      const by = {};
+      Object.keys(PROBLEMS_BY_CARD).forEach(id => { const ps = PROBLEMS_BY_CARD[id].filter(practiceEligible); if (ps.length && BY_ID[id]) by[id] = ps; });
       return by;
     })();
     // One search over every kind of card (owner, 2026-11-14); each suggestion names its kind.
     const KIND_NAME = { formula: "Formula", method: "Method", pattern: "Pattern" };
     const allCards = () => Object.keys(pools).sort((a, b) => pools[b].length - pools[a].length || plain(BY_ID[a].formula.name).localeCompare(plain(BY_ID[b].formula.name)));
     let chosen = null, active = -1, choices = [], desired = count.valueAsNumber, generating = false;
+    const selectedPool = id => practiceTopicIndex.unique((pools[id] || []).filter(practiceFamOn));
     const level = () => problemDifficulty.levels[band.valueAsNumber].label;
-    const pool = () => chosen ? problemDifficulty.filter(pools[chosen].filter(practiceFamOn), DIFFS[band.valueAsNumber]) : [];
+    const pool = () => chosen ? problemDifficulty.filter(selectedPool(chosen), DIFFS[band.valueAsNumber]) : [];
     function close() { options.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; }
     function highlight() {
       [...options.children].forEach((b, i) => { b.classList.toggle("is-cur", i === active); b.setAttribute("aria-selected", String(i === active)); });
@@ -6321,7 +6319,7 @@
       const q = input.value.trim().toLowerCase();
       if (!q || (chosen && plain(BY_ID[chosen].formula.name).toLowerCase() === q)) { choices = []; options.innerHTML = ""; close(); return; }
       choices = allCards().filter(id => plain(BY_ID[id].formula.name).toLowerCase().includes(q)).slice(0, 8);
-      options.innerHTML = choices.map((id, i) => { const n = problemDifficulty.filter(pools[id].filter(practiceFamOn), DIFFS[band.valueAsNumber]).length;
+      options.innerHTML = choices.map((id, i) => { const n = problemDifficulty.filter(selectedPool(id), DIFFS[band.valueAsNumber]).length;
         return `<button type="button" class="set-find-opt practice-topic-option" id="card-practice-${i}" role="option" aria-selected="false"><span class="practice-topic-name">${BY_ID[id].formula.name}</span><span class="practice-topic-context">${KIND_NAME[kindOf(BY_ID[id].formula)] || "Card"} · ${n} problem${n === 1 ? "" : "s"}</span></button>`; }).join("");
       [...options.children].forEach((b, i) => {
         b.addEventListener("mousemove", () => { if (active !== i) { active = i; highlight(); } });
@@ -6337,11 +6335,9 @@
       form.querySelector("#card-count-value").textContent = count.value;
       form.querySelector("#card-band-value").textContent = level();
       band.setAttribute("aria-valuetext", level());
-      const rated = band.valueAsNumber && chosen ? ps.map(p => p.elo).filter(Number.isFinite) : [];
-      form.querySelector("#card-band-note").textContent = rated.length
-        ? `${level()} for this card is an Elo rating of ${Math.min(...rated)} to ${Math.max(...rated)}: one fifth of its problems, where a higher rating means a harder problem.`
-        : band.valueAsNumber ? `${level()} is one fifth of the chosen card's problems by Elo rating, where a higher rating means a harder problem. Choose a card to see the ratings it covers.`
-        : "Difficulty is measured inside the card you choose: each level is a fifth of the problems that use it, by Elo rating.";
+      form.querySelector("#card-band-note").textContent = chosen
+        ? problemDifficulty.describe(selectedPool(chosen), DIFFS[band.valueAsNumber], "this card")
+        : "Choose a card to see five similar Elo intervals for the selected contests.";
       status.textContent = chosen ? `${ps.length} matching problem${ps.length === 1 ? "" : "s"} available.` : input.value.trim() ? "Choose a card from the suggestions." : "";
       submit.disabled = generating || !ps.length;
     }
@@ -6469,7 +6465,7 @@
             <div class="ct-row${i && famSeries(a[i - 1]) === famSeries(f) ? " ct-same" : ""}">
               <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famCount(f).toLocaleString()} problem${famCount(f) === 1 ? "" : "s"}</span></a>
               <div class="ct-years">${(ctYearsOpen.has(f) ? yearsOf(f) : yearsOf(f).slice(0, CT_YEARS)).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}${yearsOf(f).length > CT_YEARS
-                ? `<button type="button" class="ct-years-more" data-ct-years="${escapeAttr(f)}" aria-expanded="${ctYearsOpen.has(f)}">${ctYearsOpen.has(f) ? "Fewer years" : `All ${yearsOf(f).length} years`}</button>` : ""}</div>
+                ? `<button type="button" class="ct-years-more" data-ct-years="${escapeAttr(f)}" aria-expanded="${ctYearsOpen.has(f)}">${ctYearsOpen.has(f) ? "Fewer years" : `Show ${yearsOf(f).length - CT_YEARS} more year${yearsOf(f).length - CT_YEARS === 1 ? "" : "s"}`}</button>` : ""}</div>
             </div>`).join("")}
             ${famMoreBtn(extraFams(fams))}
             ${(() => {
@@ -10375,7 +10371,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const filterHelp = `<p class="special-note">Combine any of these, in any order, separated by slashes: a kind (Formula, Method, Pattern), a subject (Geometry, Algebra, Number Theory, Counting, Proof), a contest tier (AMC, AIME Early, AIME Late, Olympiad), or an importance within its subsection (High, Medium, Low, Lower, Lowest). For example, Special:Browse/Method/Geometry or Special:Browse/Pattern/AIME Late.</p>`;
   const problemLinks = probs => `<ul class="wiki-list">${probs.slice().sort((a, b) => b.year - a.year || a.ref.localeCompare(b.ref, undefined, { numeric: true }))
     .map(p => `<li><a href="#/problem/${p.slug}">${refShort(p.ref)}</a></li>`).join("")}</ul>`;
-  // Filter the contest first, then rank its own Elo values. Any remains an unfiltered uniform draw.
+  // Filter the contest first, then split its Elo span. Any remains an unfiltered uniform draw.
   function randomProblemTo(arg) {
     const m = String(arg || "").match(/^(?:(.*?)\/)?(very[- ]easy|easy|medium|hard|very[- ]hard)$/i);
     const a = resolveContest(m ? (m[1] || "") : arg), band = m ? m[2].toLowerCase().replace(/ /g, "-") : "";

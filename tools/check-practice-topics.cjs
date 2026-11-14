@@ -48,6 +48,34 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  });
  await submit.click();await page.locator(`.practice-set-st[data-slug="${target}"]`).waitFor();await page.evaluate(()=>Math.random=window.topicTestRandom);
  set=await stored();assert.equal(set.topicId,'geo');assert(!set.kind);await page.locator('#practice-answer').fill('120');await page.locator('#finish-practice').click();await page.locator('.practice-results').waitFor();assert.equal(await page.locator('[data-result="Correct"]').count(),1);
+ // Ranges, counts and actual draws all recalibrate after BOTH contest and topic selection.
+ await home();await select('Geometry','geo');
+ await page.locator('#pr-topic .pr-fams summary').click();
+ await page.locator('#pr-topic [data-pr-all="off"]').click();
+ await page.locator('#pr-topic [data-pr-fam="AMC 8"]').click();
+ const ratings=await page.evaluate(()=>MATH_PRACTICE_POOL('geo').map(s=>MATH_PROBLEM_RATINGS.ratings[s].elo));
+ const low=Math.min(...ratings),high=Math.max(...ratings),span=high-low+1;
+ for(let i=0;i<5;i++){
+  await page.locator('#topic-band').fill(String(i+1));
+  const lo=Math.ceil(low+i*span/5),hi=Math.ceil(low+(i+1)*span/5)-1;
+  const note=await page.locator('#topic-band-note').innerText();assert(note.includes(`${lo}–${hi} Elo`));assert(!note.includes('one fifth'));
+  const expected=ratings.filter(e=>e>=lo&&e<=hi).length;
+  assert.equal(parseInt(await page.locator('#topic-practice-status').innerText()),expected);
+  assert.equal(await submit.isDisabled(),expected===0);
+ }
+ await count.fill('3');await submit.click();await page.locator('.practice-session-top').waitFor();set=await stored();
+ assert(set.slugs.length>0&&set.slugs.length<=3);
+ const chosenRatings=await page.evaluate(slugs=>slugs.map(s=>MATH_PROBLEM_RATINGS.ratings[s].elo),set.slugs);
+ assert(chosenRatings.every(e=>e>=Math.ceil(low+4*span/5)&&e<=high),'generated problems stay within displayed bounds');
+ assert(set.slugs.every(s=>/amc-8|ajhsme/.test(s)),'selected contest only');
+ await home();await select('Algebra','alg');await page.locator('#topic-band').fill('5');
+ const algebra=await page.evaluate(()=>MATH_PRACTICE_POOL('alg').map(s=>MATH_PROBLEM_RATINGS.ratings[s].elo));
+ assert((await page.locator('#topic-band-note').innerText()).includes(`${Math.ceil(Math.min(...algebra)+4*(Math.max(...algebra)-Math.min(...algebra)+1)/5)}–${Math.max(...algebra)} Elo`),'changing topic recomputes the interval');
+ // Year expanders report the hidden count, including singular/plural, and can fold back.
+ const years=page.locator('#pr-contests .ct-years-more').first(),row=years.locator('..');
+ const label=await years.innerText(),hidden=+label.match(/^Show (\d+) more years?$/)[1],shown=await row.locator('a').count();
+ await years.click();assert.equal(await row.locator('a').count(),shown+hidden);assert.equal(await years.innerText(),'Fewer years');
+ await years.click();assert.equal(await row.locator('a').count(),shown);assert.equal(await years.innerText(),label);
  assert.equal(await page.locator('.katex-error').count(),0);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.deepEqual(errors,[]);
  console.log(theme,width,'tree-only choices, ancestor pools, counts/difficulty, rare topics, keyboard/scroll, saved/legacy sets and exact-value topic grading: passed');await page.close();
 }
