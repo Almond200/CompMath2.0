@@ -146,7 +146,11 @@
     "2018 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/Algebra-A-Test.pdf",
     "2018 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/Algebra-B-Test.pdf",
     "2018 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/Combinatorics-A-Test.pdf",
-    "2018 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/Combinatorics-B-Test.pdf"
+    "2018 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/Combinatorics-B-Test.pdf",
+    "2018 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/Geometry-A-Test.pdf",
+    "2018 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/GeoBTest.pdf",
+    "2018 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/Number-Theory-A-Test.pdf",
+    "2018 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/Number-Theory-B-Test.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -26400,6 +26404,134 @@
     "2018 PUMaC Division B Combinatorics, Problem 8": [
       3650,
       "Separate a rotating variable-hop walk into valuation layers and sum their short direction cycles across a very large sparse power prefix."
+    ],
+    "2018 PUMaC Division A Geometry, Problem 1": [
+      1800,
+      "Cancel congruent strips cut by two offset perpendicular lines through a disk to recover a quarter-circle area minus a square."
+    ],
+    "2018 PUMaC Division A Geometry, Problem 2": [
+      2550,
+      "Relate a right-triangle hypotenuse and its area through its projection onto a circle diameter."
+    ],
+    "2018 PUMaC Division A Geometry, Problem 3": [
+      2800,
+      "Recognize the incenter-excenter diameter circle and reflect a side intersection across the internal angle bisector."
+    ],
+    "2018 PUMaC Division A Geometry, Problem 4": [
+      3300,
+      "Find the pedal line of a circumcircle point, identify an equilateral triangle and compute a derived chordal area."
+    ],
+    "2018 PUMaC Division A Geometry, Problem 5": [
+      3150,
+      "Sum complementary cevian area ratios at the circumcenter and use its equal vertex distances to evaluate reciprocal cevian lengths."
+    ],
+    "2018 PUMaC Division A Geometry, Problem 6": [
+      3650,
+      "Combine the mixtilinear tangency collinearity with the arc-midpoint incenter distance and a right isosceles triangle."
+    ],
+    "2018 PUMaC Division A Geometry, Problem 7": [
+      3500,
+      "Reflect a parallelogram diagonal to a symmedian and locate the tangent intersection through two similar three-four-five triangles."
+    ],
+    "2018 PUMaC Division A Geometry, Problem 8": [
+      3850,
+      "Transport a tangent intersection through a secant similarity and compare circumradii through equal angles to recover the angle-bisector segment."
+    ],
+    "2018 PUMaC Division B Geometry, Problem 1": [
+      1800,
+      "Cancel congruent strips cut by two offset perpendicular lines through a disk to recover a quarter-circle area minus a square."
+    ],
+    "2018 PUMaC Division B Geometry, Problem 2": [
+      1950,
+      "Solve the cone height from a sphere cross-section and select the taller inscribed configuration."
+    ],
+    "2018 PUMaC Division B Geometry, Problem 3": [
+      2550,
+      "Relate a right-triangle hypotenuse and its area through its projection onto a circle diameter."
+    ],
+    "2018 PUMaC Division B Geometry, Problem 4": [
+      2800,
+      "Recognize the incenter-excenter diameter circle and reflect a side intersection across the internal angle bisector."
+    ],
+    "2018 PUMaC Division B Geometry, Problem 5": [
+      2700,
+      "Use a radical axis and equal tangent lengths in a rectangle; the official source also accepts the endpoint tangent giving a second area."
+    ],
+    "2018 PUMaC Division B Geometry, Problem 6": [
+      3300,
+      "Find the pedal line of a circumcircle point, identify an equilateral triangle and compute a derived chordal area."
+    ],
+    "2018 PUMaC Division B Geometry, Problem 7": [
+      3150,
+      "Sum complementary cevian area ratios at the circumcenter and use its equal vertex distances to evaluate reciprocal cevian lengths."
+    ],
+    "2018 PUMaC Division B Geometry, Problem 8": [
+      3500,
+      "Reflect a parallelogram diagonal to a symmedian and locate the tangent intersection through two similar three-four-five triangles."
+    ],
+    "2018 PUMaC Division A Number Theory, Problem 1": [
+      1300,
+      "Combine two short modular power cycles and count the admissible exponents below a cutoff."
+    ],
+    "2018 PUMaC Division A Number Theory, Problem 2": [
+      2350,
+      "Locate the first two integers with a fixed total number of prime factors and sum the running multiplicity of the maximum."
+    ],
+    "2018 PUMaC Division A Number Theory, Problem 3": [
+      3000,
+      "Compare digit-one counts across every base, first forcing only zero and one digits in base four, then verify the maximal candidate."
+    ],
+    "2018 PUMaC Division A Number Theory, Problem 4": [
+      3400,
+      "Interpret a random divisor GCD-LCM identity as independent median conditions on prime exponents and bound the required number of distinct primes."
+    ],
+    "2018 PUMaC Division A Number Theory, Problem 5": [
+      3450,
+      "Evaluate a shifted exponential product through a full unit-group cycle modulo a prime power and combine it with the power-of-two residue."
+    ],
+    "2018 PUMaC Division A Number Theory, Problem 6": [
+      3500,
+      "Split a polynomial product modulo a prime into factorial factors and a permuted sixth-power residue quotient, treating its exceptional roots separately."
+    ],
+    "2018 PUMaC Division A Number Theory, Problem 7": [
+      3750,
+      "Parametrize three integers with equal pairwise LCM by pairwise-coprime factors and minimize the common scale imposed by reciprocal-sum divisibility."
+    ],
+    "2018 PUMaC Division A Number Theory, Problem 8": [
+      3950,
+      "Count the value frequencies of a modular power map through a composite-modulus multiplication table, then locate the first prime meeting both frequency restrictions."
+    ],
+    "2018 PUMaC Division B Number Theory, Problem 1": [
+      950,
+      "Factor a sum of cubes and identify the largest prime in its complete factorization."
+    ],
+    "2018 PUMaC Division B Number Theory, Problem 2": [
+      1300,
+      "Combine two short modular power cycles and count the admissible exponents below a cutoff."
+    ],
+    "2018 PUMaC Division B Number Theory, Problem 3": [
+      2350,
+      "Locate the first two integers with a fixed total number of prime factors and sum the running multiplicity of the maximum."
+    ],
+    "2018 PUMaC Division B Number Theory, Problem 4": [
+      2300,
+      "Translate an alternating two-digit-block divisibility test into a square-root-of-minus-one condition on the base."
+    ],
+    "2018 PUMaC Division B Number Theory, Problem 5": [
+      3000,
+      "Compare digit-one counts across every base, first forcing only zero and one digits in base four, then verify the maximal candidate."
+    ],
+    "2018 PUMaC Division B Number Theory, Problem 6": [
+      3400,
+      "Interpret a random divisor GCD-LCM identity as independent median conditions on prime exponents and bound the required number of distinct primes."
+    ],
+    "2018 PUMaC Division B Number Theory, Problem 7": [
+      3500,
+      "Split a polynomial product modulo a prime into factorial factors and a permuted sixth-power residue quotient, treating its exceptional roots separately."
+    ],
+    "2018 PUMaC Division B Number Theory, Problem 8": [
+      3750,
+      "Parametrize three integers with equal pairwise LCM by pairwise-coprime factors and minimize the common scale imposed by reciprocal-sum divisibility."
     ]
   }
 }

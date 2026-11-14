@@ -18,7 +18,12 @@ for(const year of [2018,2019,2020,2021,2022,2023,2025]) for(const subject of ['A
  const bNumbers=year===2019&&subject==='Geometry'?[2,3,4,5,6,7,8]
    :year===2019&&subject==='Number Theory'?[2,3,5,7,8]
    :year===2020&&subject==='Combinatorics'?[2,3,4,5,7,8]:[3,4,5,6,7,8];
- const shared=year===2018&&subject==='Combinatorics'?[[1,2],[2,3],[3,5],[4,6],[5,7],[7,8]]
+ const sparse2018={
+   'Combinatorics':[[1,2],[2,3],[3,5],[4,6],[5,7],[7,8]],
+   'Geometry':[[1,1],[2,3],[3,4],[4,6],[5,7],[7,8]],
+   'Number Theory':[[1,2],[2,3],[3,5],[4,6],[6,7],[7,8]]
+ };
+ const shared=year===2018&&sparse2018[subject]?sparse2018[subject]
    :bNumbers.map((b,i)=>[i+1,b]);
  for(const [aNumber,bNumber] of shared){
   const refs=[`${year} PUMaC Division A ${subject}, Problem ${aNumber}`,`${year} PUMaC Division B ${subject}, Problem ${bNumber}`];
