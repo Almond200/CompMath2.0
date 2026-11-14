@@ -39451,6 +39451,106 @@
     "2019 Cayley Contest, Problem 25": [
       900,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with edges a, b, c the face diagonals give a^2 + b^2 = 1867^2 and b^2 + c^2 = 2019^2, so positivity needs 2019^2 - 1867^2 < x^2 < 2019^2 + 1867^2: 1981 values."
+    ],
+    "2018 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 3n = 12: n = 4."
+    ],
+    "2018 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): half of 20 is 10, so 7 more."
+    ],
+    "2018 Cayley Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each part is 1/4: S = 1.25."
+    ],
+    "2018 Cayley Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 9^4 = 3^8."
+    ],
+    "2018 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a third of 9 pi: 3 pi."
+    ],
+    "2018 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): x^2 + 2x - x^2 - x = x = 2018."
+    ],
+    "2018 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 24 more on 24 is a 100% increase."
+    ],
+    "2018 Cayley Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a horizontal line needs 2k + 1 = 4k - 5: k = 3."
+    ],
+    "2018 Cayley Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a + b = 99 - 5 = 94: average 47."
+    ],
+    "2018 Cayley Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): Glenda has 16 (the only square), Karl and Liu 11 and 13, Helga and Julia 12 and 14: Ioana 15."
+    ],
+    "2018 Cayley Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (16 - 1)/4 = 15/4."
+    ],
+    "2018 Cayley Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1 Zed = 16 Exes = 8 times 29 Wyes = 232."
+    ],
+    "2018 Cayley Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): x + 1 is one of the 4 divisors of 3, positive or negative."
+    ],
+    "2018 Cayley Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the segment spans 15 by 10 with gcd 5: 5 + 1 = 6 lattice points."
+    ],
+    "2018 Cayley Contest, Problem 15": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): angle QPS = 60, so RPQ = RPS = 150; each isosceles triangle has base angles 15: QRS = 30."
+    ],
+    "2018 Cayley Contest, Problem 16": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the number of ways to rung k is the sum for k - 1 and k - 2: 1, 2, 3, 5, 8."
+    ],
+    "2018 Cayley Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): x - y = 5x + 5y gives x = -3y/2: (2x + 3y)/(3x - 2y) = 0."
+    ],
+    "2018 Cayley Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a parallelogram with vertical sides of length 5, 4 apart: 20."
+    ],
+    "2018 Cayley Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (3/5)S = (6/25)L gives S : L = 2 : 5."
+    ],
+    "2018 Cayley Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the product is a power of 2 only if all three choose from 2, 4, 8: 1 - 27/125 = 98/125."
+    ],
+    "2018 Cayley Contest, Problem 21": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): s + t + u + v = 10 would force q = r = 1, impossible; 9 is reached (s = 1, t = 3, u = 2, v = 3)."
+    ],
+    "2018 Cayley Contest, Problem 22": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 30! has 3^14 and 5^7; 36^x 25^y needs 2x <= 14 and 2y <= 7, so x <= 7, y <= 3: 10."
+    ],
+    "2018 Cayley Contest, Problem 23": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the three bottom centres form an equilateral triangle of side 2, so the base triangle has side 2 + 2 sqrt 3; the top sphere sits 2 sqrt 6/3 higher, so the height is 2 + 2 sqrt 6/3: volume about 47.0."
+    ],
+    "2018 Cayley Contest, Problem 24": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): with 2 gold between each pair of blacks, the 2 leftover golds go in the n + 1 gaps: C(n + 2, 2) > 1000000 first at n = 1413, digit sum 9."
+    ],
+    "2018 Cayley Contest, Problem 25": [
+      1100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): six-term sums positive and eleven-term sums negative force the pattern x, x, x, x, y repeating with 5x + y > 0 and 9x + 2y < 0; counting the integer pairs with a term in [-16, 16] gives 56."
     ]
   }
 }
