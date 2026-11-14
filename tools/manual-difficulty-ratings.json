@@ -38351,6 +38351,106 @@
     "2002 Fermat Contest, Problem 25": [
       900,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): place the five known edges on the four faces; the triangle inequalities on the two faces through the unknown edge leave 31 to 33 or 57 to 59 depending on the placement: 6 values."
+    ],
+    "2001 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 10x = 5: x = 1/2."
+    ],
+    "2001 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with x = 1/4, 1/x = 4 is largest."
+    ],
+    "2001 Fermat Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3 boys and 4 girls of 50: 14%."
+    ],
+    "2001 Fermat Contest, Problem 4": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the union of the 8 by 5 and 4 by 9 rectangles less their 2 by 1.5 overlap counted once: 40 + 36 - 3 = 73."
+    ],
+    "2001 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3B + B + B/2 = 180: B = 40."
+    ],
+    "2001 Fermat Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the sister gets a sixth of the marbles, 9, so there were 54; Pat keeps 27 - 9 = 18."
+    ],
+    "2001 Fermat Contest, Problem 7": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the square less triangle ABD (2) and triangle MCN (1/2): 3/2."
+    ],
+    "2001 Fermat Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): peel the nested radicals one level at a time: x = 1."
+    ],
+    "2001 Fermat Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the worst case eats all 10 butterscotch, all 6 mint and 1 chocolate: 18."
+    ],
+    "2001 Fermat Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 60 is a multiple of 15, so the remainder is 49 mod 15 = 4."
+    ],
+    "2001 Fermat Contest, Problem 11": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): about 2.0 times 10^15, whose fourth root is 10^3.75 times 2^(1/4), about 6700."
+    ],
+    "2001 Fermat Contest, Problem 12": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 7x - 7 < 15 and 25 < 7x + 28 give -3/7 < x < 22/7: x = 0, 1, 2, 3."
+    ],
+    "2001 Fermat Contest, Problem 13": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): AP = BP = sqrt(4 + 4 + 1) = 3 and AB = 2, so the height to AB is sqrt 8: area sqrt 8."
+    ],
+    "2001 Fermat Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the last digits of powers of 2 cycle 2, 4, 8, 6, and 2002 is 2 mod 4: 4."
+    ],
+    "2001 Fermat Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the centre is (r, 2) and (8 - r)^2 + 4 = r^2: r = 17/4."
+    ],
+    "2001 Fermat Contest, Problem 16": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the isosceles triangles AXD and CYD and the right angle at B leave angle XDY = 45 whatever the shape."
+    ],
+    "2001 Fermat Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): adding the three equations gives twice the total, 210: average 35."
+    ],
+    "2001 Fermat Contest, Problem 18": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the big circle has radius 2; the small ones have radius 1 and centres (x, 1), (x, 3), 3 from (2, 2): x = 2 + sqrt 8, so the length is 3 + sqrt 8."
+    ],
+    "2001 Fermat Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the trip takes 45 minutes longer at 10 km/h than at 20: it is 15 km, 45 minutes at 20, so she leaves at 3:45 and needs 12 km/h to arrive at 5:00."
+    ],
+    "2001 Fermat Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): P = (t, 5t + 3) gives M = ((t + 3)/2, (5t + 1)/2), on y = 5x - 7."
+    ],
+    "2001 Fermat Contest, Problem 21": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the even squares sit at one corner of the spiral, so 400 = 20^2 lies on a corner with 399 and 401 placed as in (D)."
+    ],
+    "2001 Fermat Contest, Problem 22": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the air has the same volume either way up: pi(H - 20) in the narrow part equals 9 pi(H - 28) in the wide part: H = 29."
+    ],
+    "2001 Fermat Contest, Problem 23": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the fixed point is 4 and t_n - 4 is multiplied by -5 each step: t_n = 4 - 2(-5)^n, so p + q + r = 4 - 2 - 5 = -3."
+    ],
+    "2001 Fermat Contest, Problem 24": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): A = (3, 3) and B = (3 + 2 sqrt 3, 1); the common tangent through the external centre of similitude gives the intercept 9 + 3 sqrt 3."
+    ],
+    "2001 Fermat Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the 180 segments: red dot ends total 2 times 2 + 16 times 3 + 34 times 4 = 188 = 2R + 98, so R = 45 red and 180 - 98 - 45 = 37 blue."
     ]
   }
 }
