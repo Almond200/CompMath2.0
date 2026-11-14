@@ -2,7 +2,7 @@
 
 **2026-11-14**
 
-- **CEMC Cayley Contest (in progress):** the Grade 10 contest of the same centre, a new family sharing Fermat's links and credits; 2012 to 2025 are filed (350 problems).
+- **CEMC Cayley Contest (in progress):** the Grade 10 contest of the same centre, a new family sharing Fermat's links and credits; 2011 to 2025 are filed (375 problems).
 - **CEMC Fermat Contest (done, 699 problems):** the Grade 11 contest of the University of Waterloo's Centre for Education in Mathematics and Computing, 1998 to 2025, a new family; each problem opens the official contest and solutions. 2005 #25, which the CEMC says was flawed, is left out.
 - **Columbus State Invitational Mathematics Tournament (done, 1,310 problems):** the Individual test for every posted year, 1993, 1994 and 1997 to 2022 (2001 to 2003, 1997, 1994 and 1993 read from scans, 1999 and 1998 from rendered pages; 1993 to 2001 have no posted solutions, so their answers were computed), a new family, each problem opening the official test and solutions; the ciphering round is left out. 2006 has 54 questions; 2021 has 30, posted as one file with the solutions, which serves as both links; 2022 has 30 in three scanned files of ten, with no solutions, and each problem opens its own scan. Calculus questions (limits, derivatives, integrals, series, a differential equation) and three physics questions are left out; the list is in PLAN item 14.
 - **Calgary Junior Mathematics Contest:** Part A, the short-answer questions, of the University of Calgary's junior high contest; a new family whose problems open the official English paper and solutions. all 189 Part A problems, 2004 to 2019 and 2021 to 2025 (no 2020), are filed. Part B (written proofs) is left out.
