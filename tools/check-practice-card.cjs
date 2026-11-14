@@ -35,7 +35,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const set=await page.evaluate(()=>JSON.parse(localStorage.getItem('mq-practice-sets')).find(s=>location.hash.endsWith(s.id)));
  assert.equal(set.cardId,'pythagorean-theorem');assert.equal(set.slugs.length,7);assert.equal(new Set(set.slugs).size,7);
  for(const s of set.slugs)assert(cites.get(s)?.cards.has('pythagorean-theorem'),s+' cites the card');
- assert.equal(new Set(set.slugs.map(s=>cites.get(s).ref.slice(0,4)+'|'+cites.get(s).strategy)).size,7,'no problem appears as both its AMC 10 and AMC 12 copy');
+ assert.equal(new Set(set.slugs.map(s=>cites.get(s).ref.slice(0,4)+'|'+(cites.get(s).strategy||cites.get(s).ref))).size,7,'no problem appears as both its AMC 10 and AMC 12 copy');
  await fits();
  // Methods and patterns come from the same search; a card with few problems caps the count.
  await page.goto(base+'/#/practice');await form.waitFor();assert.equal(await input.getAttribute('placeholder'),"Search the reference's cards...");
