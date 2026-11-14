@@ -47969,6 +47969,106 @@
     "2018 UKMT IMC, Problem 25": [
       700,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): each vertex of the small triangle is sqrt 3 from two sides of the large one, so 30-60-90 triangles give AF = BH = 3: the edges differ by 6."
+    ],
+    "2017 UKMT IMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): (200 + 20 + 2)/500 = 0.444."
+    ],
+    "2017 UKMT IMC, Problem 2": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): a third of the circle is a 120-degree sector, between the 90 of A and the 135 of C: B."
+    ],
+    "2017 UKMT IMC, Problem 3": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): squares end in 0, 1, 4, 5, 6 or 9, never 7."
+    ],
+    "2017 UKMT IMC, Problem 4": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): an odd sum of two primes uses 2, and 11 - 2 = 9 is not prime."
+    ],
+    "2017 UKMT IMC, Problem 5": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the ring is 3/4 of the outer circle, and half of its six pieces are shaded: 3/8."
+    ],
+    "2017 UKMT IMC, Problem 6": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the angles are 60, 80, 100, 120: 120 - 60 = 60."
+    ],
+    "2017 UKMT IMC, Problem 7": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): four consecutive integers have a non-integer mean, so the range is at least 4, and 2015, 2016, 2018, 2019 works."
+    ],
+    "2017 UKMT IMC, Problem 8": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): written out, the options agree to four places; 1.3542542... has the largest fifth digit: D."
+    ],
+    "2017 UKMT IMC, Problem 9": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): ab - ba = 9(a - b), largest for 91 - 19 = 72."
+    ],
+    "2017 UKMT IMC, Problem 10": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the parallels give 43 and 29 at A, and the angles at A sum to 360: x = 108."
+    ],
+    "2017 UKMT IMC, Problem 11": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the triangles have areas A, 4A, 9A, 16A, and the shaded parts total 3A + 8A + 15A: 26."
+    ],
+    "2017 UKMT IMC, Problem 12": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the total gives Eve 28 and Alice 21, then Bob 18, Clare 22, Dan 16: Dan."
+    ],
+    "2017 UKMT IMC, Problem 13": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): PR = 5, and PRS is similar to PQR with PR in place of QR: RS = 15/4 and PS = 25/4, perimeter 22."
+    ],
+    "2017 UKMT IMC, Problem 14": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 2^(6x) = 2^45: x = 7.5."
+    ],
+    "2017 UKMT IMC, Problem 15": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): with angle QRS = x, the isosceles triangles give angles 2x, 3x and x in triangle PSR: x = 30."
+    ],
+    "2017 UKMT IMC, Problem 16": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): ab = 2(a + b) = 6(a - b) gives a = 2b, then b = 3, a = 6: sum 9."
+    ],
+    "2017 UKMT IMC, Problem 17": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the pentagon VWXYZ has angles 108, 90, x, 90 and a reflex 198: 540 - 486 = 54."
+    ],
+    "2017 UKMT IMC, Problem 18": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 30 litres is 5/6 - 4/5 = 1/30 of the tank: 900."
+    ],
+    "2017 UKMT IMC, Problem 19": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): PTUS is a rectangle x by 3x with perimeter 8x = 40: x = 5, area 75."
+    ],
+    "2017 UKMT IMC, Problem 20": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the arcs' angles total 7(360) - 900 = (9/2)(360), so the area is 9/2 circles of radius 2: 18 pi."
+    ],
+    "2017 UKMT IMC, Problem 21": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 3b + 5c = 61 toes per foot pair and 2b + 4c = 46 fingers give b = 7, c = 8: 15 frogs."
+    ],
+    "2017 UKMT IMC, Problem 22": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): MN = sqrt(64 - 16) = 4 sqrt 3 and PN = 8, so the perimeter is 12 + 4 sqrt 3, about 18.9: 19."
+    ],
+    "2017 UKMT IMC, Problem 23": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 120 orders less the 48 with the boys together: 72."
+    ],
+    "2017 UKMT IMC, Problem 24": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the product of the square roots of (k + 1)/k telescopes to sqrt((n + 2)/2), first an integer at n = 6."
+    ],
+    "2017 UKMT IMC, Problem 25": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the side of the square and two radii form an equilateral triangle, so the circle's part in the square is a 60-degree sector plus triangles: x = pi/3 + sqrt 3/2 - 1."
     ]
   }
 }
