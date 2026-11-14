@@ -37455,6 +37455,106 @@
     "2011 Fermat Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the critical points lie on the end circles, centred 5 from the middle along the diagonal; requiring each point (with distance m from the centre line in the face direction and height z) to satisfy z <= H(1 - m/10) gives H about 22.07."
+    ],
+    "2010 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1/2 + 1/2 + 1/3 + 1/3 + 1/3 = 2."
+    ],
+    "2010 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2% of 1 is 2/100."
+    ],
+    "2010 Fermat Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): PQ = 1, QR = 2 and RS = 6: 9."
+    ],
+    "2010 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (3 + 24)/3 = 9."
+    ],
+    "2010 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2^(x + 3) = 8 times 16 = 128."
+    ],
+    "2010 Fermat Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): an n by n grid has (n - 1)^2 interior points: 11^2 = 121."
+    ],
+    "2010 Fermat Contest, Problem 7": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): angle RQS = 70, so 70 + 3x + x + 14 = 180: x = 24."
+    ],
+    "2010 Fermat Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): half of 2/3 plus half of 2/4: 1/3 + 1/4 = 7/12."
+    ],
+    "2010 Fermat Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 5 times 4 + 4 times 3 = 32."
+    ],
+    "2010 Fermat Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (2x - 1)(x - 4) = 0 with x not 4: 2x = 1."
+    ],
+    "2010 Fermat Contest, Problem 11": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 400 loonies weigh as much as 1600 dimes: 160 dollars."
+    ],
+    "2010 Fermat Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): k is 3 mod 7, so 3k is 9, that is 2, mod 7."
+    ],
+    "2010 Fermat Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3800 - 3200 = 600 over ten numbers: 60."
+    ],
+    "2010 Fermat Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): if everyone caught at least 3, the total would be at least 12: someone caught fewer than 3."
+    ],
+    "2010 Fermat Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 9 < sqrt p < 11 means 81 < p < 121: 39."
+    ],
+    "2010 Fermat Contest, Problem 16": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2010 = 2 times 3 times 5 times 67, and the closest factor pair is 67 and 30: 37."
+    ],
+    "2010 Fermat Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): T and U trisect PR, so triangles QTU and STU each take a third of half the rectangle: 2.5 + 2.5 = 5."
+    ],
+    "2010 Fermat Contest, Problem 18": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): opposite rectangles in a 2 by 2 split have equal perimeter sums: W + Z = X + Y, so Z = 6."
+    ],
+    "2010 Fermat Contest, Problem 19": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): PQRS is two equilateral triangles; P is 3 sqrt 3 from line QS at its midpoint M, so MT = sqrt(196 - 27) = 13 and ST = 10."
+    ],
+    "2010 Fermat Contest, Problem 20": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): distances to opposite sides sum to 5, so they pair as {1, 4} and {2, 3}; choosing which pair is horizontal and the order in each: 2 times 2 times 2 = 8."
+    ],
+    "2010 Fermat Contest, Problem 21": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x - z = (x - y) - (z - y) = -11(z - y) = 11(y - z): 11."
+    ],
+    "2010 Fermat Contest, Problem 22": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): QS = 25 is an edge; P and R are 12 from it, at 16 and 9 along it from Q, in perpendicular faces: PR = sqrt(7^2 + 12^2 + 12^2) = sqrt 337, about 18.4."
+    ],
+    "2010 Fermat Contest, Problem 23": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): t_n = k for 2k values of n (from k^2 - k + 1 to k^2 + k), each block adding 2; k = 1 to 44 gives 88 for n <= 1980, and the 30 terms with t = 45 add 2/3: 88 2/3."
+    ],
+    "2010 Fermat Contest, Problem 24": [
+      1100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the sphere numbers are trinomial coefficients; the internal ones in layer n are those with all three parts positive, 3^n - 3 times 2^n + 3 for n = 1 to 12: 772626."
+    ],
+    "2010 Fermat Contest, Problem 25": [
+      1200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): write each factor as a ratio of 1 - x^k terms; matching the product to 1 - 2x through x^6 fixes the exponents, and the inequalities leave a = 23."
     ]
   }
 }
