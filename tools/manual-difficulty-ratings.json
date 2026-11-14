@@ -34567,6 +34567,206 @@
     "2002 Columbus State Tournament, Problem 50": [
       600,
       "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): DC is a chord of 60 degrees, length 6, at height 3 sqrt 3 above AB: area 9 sqrt 3."
+    ],
+    "2001 Columbus State Tournament, Problem 1": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): even multiples of 11 are 22, 44, 66, 88; only 8 times 8 = 64 is both a square and a cube: 88."
+    ],
+    "2001 Columbus State Tournament, Problem 2": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1 to 99 use 189 digits; 1230 - 189 = 1041 = 3 times 347 more pages: 99 + 347 = 446."
+    ],
+    "2001 Columbus State Tournament, Problem 3": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 10a + b = 2ab: try the choices, 36 = 2 times 18."
+    ],
+    "2001 Columbus State Tournament, Problem 4": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the snail is at 3(k - 1) feet each morning and reaches 3(k - 1) + 4 >= 21 first on day 7: Saturday."
+    ],
+    "2001 Columbus State Tournament, Problem 5": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): clearing denominators the x^2 terms cancel: 6x - 11 = 0, x = 11/6."
+    ],
+    "2001 Columbus State Tournament, Problem 6": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): Chad will be 3m and I m + 3 = 3m/2: m = 6."
+    ],
+    "2001 Columbus State Tournament, Problem 7": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): square: x^2 + 2x - 15 = 0, and x = -5 fails sqrt >= 0: only 3."
+    ],
+    "2001 Columbus State Tournament, Problem 8": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2 times C(6, 2) = 30."
+    ],
+    "2001 Columbus State Tournament, Problem 9": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): one solution needs b^2 = 4 times 3 times 12 = 144: b = 12 or -12."
+    ],
+    "2001 Columbus State Tournament, Problem 10": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): every match eliminates one player and 31 must go: 31 matches."
+    ],
+    "2001 Columbus State Tournament, Problem 11": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): y = -3x/2 + 4: slope -3/2 times intercept 4 is -6."
+    ],
+    "2001 Columbus State Tournament, Problem 12": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): one more than a multiple of lcm(2, 3, 4, 5, 6) = 60: 61."
+    ],
+    "2001 Columbus State Tournament, Problem 13": [
+      200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1/8 = 12.5%."
+    ],
+    "2001 Columbus State Tournament, Problem 14": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): floor(40/5) + floor(40/25) = 9."
+    ],
+    "2001 Columbus State Tournament, Problem 15": [
+      200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the middle one is 804/3 = 268: smallest 267."
+    ],
+    "2001 Columbus State Tournament, Problem 16": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2, 3, 5 and 13, 23, 31, 41, 43, 53: 9."
+    ],
+    "2001 Columbus State Tournament, Problem 17": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 0.06x > 300 + 0.03x: x > 10000."
+    ],
+    "2001 Columbus State Tournament, Problem 18": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): digits from 2, 3, 5, 7: 777 and 775 are composite and 773 is prime: digit sum 17."
+    ],
+    "2001 Columbus State Tournament, Problem 19": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 15a = 48b; lcm(15, 48) = 240 gives a = 16."
+    ],
+    "2001 Columbus State Tournament, Problem 20": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): vertices (0, 0), (5, 0), (5, 6), (2, 2), (0, 2): area 16."
+    ],
+    "2001 Columbus State Tournament, Problem 21": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a staircase outline has the perimeter of its bounding rectangle, 12 by 8 + 2: 2(12 + 10) = 44."
+    ],
+    "2001 Columbus State Tournament, Problem 22": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the discriminant is p^2 - (p^2 - 1) = 1, so the roots differ by 1."
+    ],
+    "2001 Columbus State Tournament, Problem 23": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the fractions cancel and leave x = 3, which is excluded: no solution."
+    ],
+    "2001 Columbus State Tournament, Problem 24": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 0.444... = 4/9, whose root is 2/3 = 0.666."
+    ],
+    "2001 Columbus State Tournament, Problem 25": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the six sum to 6a + 15 and 6a + 15 - (a + k) = 2001 needs 5a = 1986 + k: k = 4, a = 398, erased 402."
+    ],
+    "2001 Columbus State Tournament, Problem 26": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): y = (x + 3)/(x - 1) solves to x = (y + 3)/(y - 1): f is its own inverse."
+    ],
+    "2001 Columbus State Tournament, Problem 27": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the hundreds digits differ by 1 and the larger number takes the smallest remaining digits: 745 - 698 = 47."
+    ],
+    "2001 Columbus State Tournament, Problem 28": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 111 is -1 mod 7, and an odd power is -1, that is 6."
+    ],
+    "2001 Columbus State Tournament, Problem 29": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a + b = 32 and (a + b)/(ab) = 2/15 give ab = 240, so (a - b)^2 = 1024 - 960 = 64: 8."
+    ],
+    "2001 Columbus State Tournament, Problem 30": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): only 3, 4, 5 works, in 6 orders: 6/216 = 1/36."
+    ],
+    "2001 Columbus State Tournament, Problem 31": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the chain turns the rear sprocket 2 times 5/3 times a second, so the wheel covers 100 pi inches a second: 17.850 mph."
+    ],
+    "2001 Columbus State Tournament, Problem 32": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): cover-up: A = 1, B = -2, C = 1, sum 0."
+    ],
+    "2001 Columbus State Tournament, Problem 33": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): C(8, 2) = 28."
+    ],
+    "2001 Columbus State Tournament, Problem 34": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a * b = ab(a - 1): x^2(x + 1) - x(x + 1)(x - 1) = x^2 + x."
+    ],
+    "2001 Columbus State Tournament, Problem 35": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): three widths make two lengths, 3w = 2l; the big perimeter 2(3w + l + w) = 11w = 176 gives w = 16, l = 24: 80."
+    ],
+    "2001 Columbus State Tournament, Problem 36": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a + b = 12 and 9(b - a) = 18: 57 + 75 = 132."
+    ],
+    "2001 Columbus State Tournament, Problem 37": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): real coefficients make 3 - 2i a root too: c/2 = 13, c = 26."
+    ],
+    "2001 Columbus State Tournament, Problem 38": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): by induction each term is below 2 (sqrt 2^2 = 2) and above the one before: 1 < x_2001 < 2."
+    ],
+    "2001 Columbus State Tournament, Problem 39": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the right angles at B and D put ABCD on the circle with diameter AC: 12.5 BD = 11.7 times 10 + 4.4 times 7.5 = 150, BD = 12."
+    ],
+    "2001 Columbus State Tournament, Problem 40": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): cos alpha = -9/41: tan alpha = -40/9."
+    ],
+    "2001 Columbus State Tournament, Problem 41": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the center lies on x = 2 (from the two points at height 7); equal distances give (2, 3), radius 5."
+    ],
+    "2001 Columbus State Tournament, Problem 42": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the left side is 2 - x, x, 4 - x and x - 2 on the four pieces: 0.5, 1.5, 2.5 and 3.5."
+    ],
+    "2001 Columbus State Tournament, Problem 43": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 3 sin + 4 cos is at most 5 < 6: no solutions."
+    ],
+    "2001 Columbus State Tournament, Problem 44": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a + b + c = 35 and a^2 + b^2 + c^2 = 441: 2(ab + bc + ca) = 1225 - 441 = 784."
+    ],
+    "2001 Columbus State Tournament, Problem 45": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): BD = BC = h and AB = h sqrt 3, so h(sqrt 3 - 1) = 4: h = 2 sqrt 3 + 2."
+    ],
+    "2001 Columbus State Tournament, Problem 46": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x^1000 + |x| is even and increases for x > 0 from 0: one positive and one negative root."
+    ],
+    "2001 Columbus State Tournament, Problem 47": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the three sides count the corners twice: 45 + corners = 3 times 17, corners 6."
+    ],
+    "2001 Columbus State Tournament, Problem 48": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the overlap of strips of widths 2 and 1 crossing at 60 degrees is a parallelogram of area 2 times 1/sin 60 = 4 sqrt 3/3."
+    ],
+    "2001 Columbus State Tournament, Problem 49": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): summing the bounds for n = 1 to 500 gives sqrt 501 - 1 < S < sqrt 500, that is 21.4 < S < 22.4."
+    ],
+    "2001 Columbus State Tournament, Problem 50": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): each corner triangle has a third the side, and each stage adds 3 times as many circles of 1/9 the area: (pi/12)/(1 - 1/3) = pi/8."
     ]
   }
 }
