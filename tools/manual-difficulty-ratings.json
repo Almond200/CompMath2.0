@@ -43869,6 +43869,106 @@
     "2017 Pascal Contest, Problem 25": [
       800,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the guess with no matches rules out a digit in each place, and the counts then leave 13 possible numbers, summing to 526 758."
+    ],
+    "2016 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 300 + 2020 + 10001 = 12321."
+    ],
+    "2016 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 4^2 = 16 beats 8, 2, 2 and 6."
+    ],
+    "2016 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the segments pair up into three lengths of 6: 18."
+    ],
+    "2016 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2 of the 5 unit squares are shaded: 40%."
+    ],
+    "2016 Pascal Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each space is 5, so m = 15 and n = 70: 55."
+    ],
+    "2016 Pascal Contest, Problem 6": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 4 times 3 - 5 times 2 = 2."
+    ],
+    "2016 Pascal Contest, Problem 7": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3 cm = 0.03 m and 5 mm = 0.005 m: 2.035 m."
+    ],
+    "2016 Pascal Contest, Problem 8": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3, 6 and 18 average 9."
+    ],
+    "2016 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): ties add nothing and a loss subtracts, so 0 wins, 1 loss and 2 ties cannot leave the team ahead."
+    ],
+    "2016 Pascal Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): three faces are half shaded: 3(2) of 24 = 1/4."
+    ],
+    "2016 Pascal Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the nth oblong number is n(n + 1): 7 times 8 = 56."
+    ],
+    "2016 Pascal Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): QR = 6 and PQ = 3, so PRSU is 9 by 6: 30."
+    ],
+    "2016 Pascal Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 9x = 20: x = 20/9."
+    ],
+    "2016 Pascal Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): P and T differ by 4 + 8 = 12 one way and 8 - 3 = 5 the other: 13."
+    ],
+    "2016 Pascal Contest, Problem 15": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): p runs over the divisors 1, 3, 5, 15, 25, 75 of 75: 124."
+    ],
+    "2016 Pascal Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 60 to 69 and the 8 others ending in 6 make 18 of 90: 1/5."
+    ],
+    "2016 Pascal Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): lcm(10, ..., 15) = 60060, and the smallest six-digit multiple is 120120: tens digit 2."
+    ],
+    "2016 Pascal Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 1 must sit between 2 and 3, then each number's neighbours are forced: odds on one side and evens on the other, with x = 8 and y = 12: 20."
+    ],
+    "2016 Pascal Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 13 + (n - 20)/4 = n/2 gives n = 32."
+    ],
+    "2016 Pascal Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): triangle WQR gives 38 + (180 - 2x) + (180 - 2y) = 180, so x + y = 109 and angle QUR = 180 - 109 = 71."
+    ],
+    "2016 Pascal Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): count the paths to each grid point by adding the counts from the points before it: 6 + 4 + 4 = 14."
+    ],
+    "2016 Pascal Contest, Problem 22": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with q groups of 4, n = 4q + r = 3(q + 3) + r' = 2(q + 8) + 1, so 2q = 17 - r forces r = 3, q = 7: n = 31 (3 groups of 3 short by 2), n^2 - n = 930, digit sum 12."
+    ],
+    "2016 Pascal Contest, Problem 23": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the altitude from P to QR is 36 and from S is 15 sqrt 3; PQS has area (1/2)(36 - 15 sqrt 3)(15), about 75."
+    ],
+    "2016 Pascal Contest, Problem 24": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): a collision is the same as the balls passing through each other, so each ball leaves as if alone; the sixth exit time is 30 s for (C) and 35 s for the others."
+    ],
+    "2016 Pascal Contest, Problem 25": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each row must be one of the 6 mixed rows, giving 216; inclusion-exclusion over columns that are all 0 or all 1 leaves 102."
     ]
   }
 }
