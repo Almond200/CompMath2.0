@@ -20823,6 +20823,246 @@
     "2011 Utah State Math Contest Senior, Problem 40": [
       1600,
       "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the tangent lines to the three circles form similar triangles."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 1": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): units digits of powers cycle."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 2": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the train covers its own length plus the tunnel."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 3": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 6 * 5 * 4 of 216 outcomes."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 4": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 5 * 7 - 5 - 7."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 5": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a right triangle: the third altitude is 2K/25."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 6": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): factor 96 as two even factors; the widest pair gives the largest x."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 7": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the remainders in each grouping fix the count."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 8": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 10!/(2! 2! 2!) for the repeated digits."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 9": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the centres form a square; subtract the sectors."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 10": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 12 * 11 * 10."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 11": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): complete the square."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 12": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): count integers between the two roots."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 13": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2 * C(12, 2)."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 14": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): count the reachable totals."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 15": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): run the recurrence to the sixth term."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 16": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): powers of -i cycle with period 4."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 17": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): compose the fraction three times."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 18": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): toggle 1 to pair even and odd sums."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 19": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the cable's sag forms 5-12-13 triangles; balance the vertical forces."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 20": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the centre is equidistant from the three points."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 21": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): compare C(a, k) C(b, 10 - k)/C(15, 10)."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 22": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): move everything to one side and chart the signs."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 23": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): De Morgan's laws simplify the expression."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 24": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): divide: the quotient dominates for large |x|."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 25": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a < 5 is not enough; compare the parabolas everywhere."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 26": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): AO from the tangent, then the angle at the centre."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 27": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): C(5, 3)(-2)^3."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 28": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): square away the radicals in the distance sum."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 29": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): V - E + F = 2."
+    ],
+    "2012 Utah State Math Contest Junior, Problem 30": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): swap x and y and solve."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 1": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the divisors of 2^20 sum to 2^21 - 1."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 2": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): V - E + F = 2."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 3": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): s sqrt 3 = s^3."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 4": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 10!/(2! 2! 2!) for the repeated digits."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 5": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): compose the fraction three times."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 6": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): at most the degree of rational roots."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 7": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): sector less triangle with the angle from the arc length."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 8": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the train covers its own length plus the tunnel."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 9": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): swap and solve with logs."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 10": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 5 * 7 - 5 - 7."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 11": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): factor 96 as two even factors; the widest pair gives the largest x."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 12": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the centres form a square; subtract the sectors."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 13": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the lazy caterer: 1 + 5 + C(5, 2)."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 14": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): C(24, 2) handshakes, three seconds each."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 15": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the cable's sag forms 5-12-13 triangles; balance the vertical forces."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 16": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the centre is equidistant from the three points."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 17": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): compare C(a, k) C(b, 10 - k)/C(15, 10)."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 18": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): AO from the tangent, then the angle at the centre."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 19": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): square away the radicals in the distance sum."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 20": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): choices per position multiply."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 21": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): replace x by 1 - x and solve the pair."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 22": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): match the bases and solve for x and y."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 23": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): distances are areas under the speed graphs."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 24": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): multiply by r and substitute x and y."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 25": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a linear function is largest at a vertex of the region."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 26": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): split each term so consecutive pieces cancel."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 27": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): nested loops multiply the counts."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 28": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): independent guesses with chance 1/5."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 29": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): run the recurrence to the requested term."
+    ],
+    "2012 Utah State Math Contest Senior, Problem 30": [
+      1400,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the guards' statements force the answer."
     ]
   }
 }
