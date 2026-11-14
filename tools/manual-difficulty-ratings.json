@@ -44669,6 +44669,106 @@
     "2009 Pascal Contest, Problem 25": [
       700,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each machine keeps gcd(m, n), which starts at 1; gcd(2009, 1008) = 7, so that pair is impossible."
+    ],
+    "2008 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 9/24 = 3/8."
+    ],
+    "2008 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3x = 21, so 6x = 42."
+    ],
+    "2008 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): sqrt(25 - 16) = 3."
+    ],
+    "2008 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): QM = 8 - 3 = 5 and LM = 2: 10."
+    ],
+    "2008 Pascal Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (36 - 6)/(12 + 6) = 5/3."
+    ],
+    "2008 Pascal Contest, Problem 6": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the exterior angle 136 = 64 + x: x = 72."
+    ],
+    "2008 Pascal Contest, Problem 7": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 8 blue of 26: 4/13."
+    ],
+    "2008 Pascal Contest, Problem 8": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 18 apples an hour: 27 in 1.5 hours."
+    ],
+    "2008 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): squares of side 2 in a 5 by 3 grid: 4 wires of 10 and 6 wires of 6, 76."
+    ],
+    "2008 Pascal Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): P = -14 and Q = 46 are 60 apart, so S = 31 and T = 6: 25."
+    ],
+    "2008 Pascal Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 9 boys and 8 girls of 50: 34%."
+    ],
+    "2008 Pascal Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2(x + 4) + 2(x - 2) = 56 gives x = 13: 17 times 11 = 187."
+    ],
+    "2008 Pascal Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2^5 3^5 = 6^5."
+    ],
+    "2008 Pascal Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with no zero digits, the units add to 10 and the tens and hundreds to 9 each: 28."
+    ],
+    "2008 Pascal Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): QS = 15 from triangle QSR, then PQ = 17: 17 + 25 + 28 = 70."
+    ],
+    "2008 Pascal Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): pi r^2 / (2 pi r) = r/2 = 20: r = 40."
+    ],
+    "2008 Pascal Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each face is 900, so the edge is 30 and the volume 27000; 27000/216 = 125."
+    ],
+    "2008 Pascal Contest, Problem 18": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 10d + 25q = 265 needs q odd: (d, q) = (24, 1), (19, 3), (14, 5), (9, 7), and more quarters means fewer coins: 16."
+    ],
+    "2008 Pascal Contest, Problem 19": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): for each third digit c from 1 to 9 there are c choices of the first digit: 1 + 2 + ... + 9 = 45."
+    ],
+    "2008 Pascal Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the six sum to 12134 and the four to 8032, so the other two average 4102/2 = 2051."
+    ],
+    "2008 Pascal Contest, Problem 21": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): largest 10/12, smallest 3/21: 5/6 - 1/7 = 29/42."
+    ],
+    "2008 Pascal Contest, Problem 22": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): d/4 - d/6 = 1/16 hour: d = 3/4 km."
+    ],
+    "2008 Pascal Contest, Problem 23": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with the cut d from M, the left pieces total 4d - 6.5, which must be half of 17: d = 3.75."
+    ],
+    "2008 Pascal Contest, Problem 24": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the four circles P, Q, R, S form a cycle (18 colourings with 3 colours) and T, joined only to R, has 2 choices: 36."
+    ],
+    "2008 Pascal Contest, Problem 25": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): RQ = 4; similar triangles give PL = sqrt 3 and RL = 3, and the lines PL and RM meet where PF = 4 sqrt 3 / 7."
     ]
   }
 }
