@@ -41451,6 +41451,106 @@
     "1999 Cayley Contest, Problem 25": [
       900,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 3^(2p) + 3^(3q) + 3^(5r) is a power of 3 only when 2p = 3q = 5r = 30m, giving 3^(30m + 1): 30m + 1 = 7s first at m = 3, s = 13, and 45 + 30 + 18 + 13 = 106."
+    ],
+    "1998 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 0.09 + 0.1 = 0.19."
+    ],
+    "1998 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): Sue has 100 - 20 - 45 = 35%: 350 votes."
+    ],
+    "1998 Cayley Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a^(9 + 15 - 3) = a^21."
+    ],
+    "1998 Cayley Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1 and 100 give the largest sum, 101."
+    ],
+    "1998 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (1/2)(12)BC = 30 gives BC = 5: 2(12 + 5) = 34."
+    ],
+    "1998 Cayley Contest, Problem 6": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2q - 3 = 11: q = 7."
+    ],
+    "1998 Cayley Contest, Problem 7": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): co-interior angles give 2x + 70 = 180, x = 55, and the triangle gives y = 180 - 70 - 55 = 55."
+    ],
+    "1998 Cayley Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): base 6 along y = 1 and height 2: 6."
+    ],
+    "1998 Cayley Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the rows give 11, 6 + x, x + 7, then 17 + x and 2x + 13, then 3x + 30 = 60: x = 10."
+    ],
+    "1998 Cayley Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the digits are 2 and four 0s, or 1, 1 and three 0s with the first digit 1: 1 + 4 = 5."
+    ],
+    "1998 Cayley Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): y = (x + y) + (y + z) - (x + y + z) = 19 + 18 - 25 = 12."
+    ],
+    "1998 Cayley Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each central angle is 360/5 = 72, and x spans two: 144."
+    ],
+    "1998 Cayley Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 6s^2 = 54 gives s = 3: 27."
+    ],
+    "1998 Cayley Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): y = 100 - 3x > 0 for x = 1 to 33."
+    ],
+    "1998 Cayley Contest, Problem 15": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): y - 5 = 25 and x = 3: 33."
+    ],
+    "1998 Cayley Contest, Problem 16": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the five triangles on equal pieces of AC from B have equal area 45/10 each, and likewise from D: 4 + 4 shaded give 18."
+    ],
+    "1998 Cayley Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a cube needs p + 4 and q to be multiples of 3: p = 2, q = 3, sum 5."
+    ],
+    "1998 Cayley Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): Q is 1 and 1 across and 2 up from R: sqrt(1 + 1 + 4) = sqrt 6."
+    ],
+    "1998 Cayley Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 3 to 9 boys and 15 to 22 girls with more than 25 in all: 26 to 31, 6 sizes."
+    ],
+    "1998 Cayley Contest, Problem 20": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the centre is r from BC and on the perpendicular bisector of AD: (14 - r)^2 + 7^2 = r^2 gives r = 8.75."
+    ],
+    "1998 Cayley Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a - 2 + c = -5 and 64a - 8 + c = 52 give a = 1, c = -4: x^3 - 2x - 4 = (x - 2)(x^2 + 2x + 2), x = 2."
+    ],
+    "1998 Cayley Contest, Problem 22": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the wheel's centre is 8 up and 25 - 8 = 17 from O, so 15 along; 10 is left at each end: 20."
+    ],
+    "1998 Cayley Contest, Problem 23": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): subtracting the two expressions gives a + c = 2b, so N = 13b, between 131 and 150 only for b = 11: a + b + c = 33."
+    ],
+    "1998 Cayley Contest, Problem 24": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): single + 2 double + 3 triple = 200 and single + double + triple = 140, so double + 2 triple = 60 with double 24: 18."
+    ],
+    "1998 Cayley Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): equilateral rows sit sqrt 3/2 apart, so 1 + floor(99/(sqrt 3/2)) = 115 rows of 100 and 99 alternately: 58(100) + 57(99) = 11443, 1443 more."
     ]
   }
 }
