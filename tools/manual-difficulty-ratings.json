@@ -33583,6 +33583,202 @@
     "2006 Columbus State Tournament, Problem 54": [
       800,
       "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the face centers form a tetrahedron with one third the edge: 3^3 = 27."
+    ],
+    "2005 Columbus State Tournament, Problem 1": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the worst case takes all 4 times 401 = 1604 of the other colors first: 1607."
+    ],
+    "2005 Columbus State Tournament, Problem 2": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): log_3 27 = 3, and (a^(1/3))^3 = a."
+    ],
+    "2005 Columbus State Tournament, Problem 3": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): addition and multiplication are associative; subtraction and division are not."
+    ],
+    "2005 Columbus State Tournament, Problem 4": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the cube root of -1/27 is -1/3, and (-1/3)^(-2) = 9."
+    ],
+    "2005 Columbus State Tournament, Problem 5": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (x + a)(x - a) = 1 gives x = +/- sqrt(1 + a^2), none of the listed values."
+    ],
+    "2005 Columbus State Tournament, Problem 6": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the chain collapses to log_a a^4 = 4."
+    ],
+    "2005 Columbus State Tournament, Problem 7": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): in 180 seconds it goes 180a/(6t) = 30a/t feet, which is 10a/t yards."
+    ],
+    "2005 Columbus State Tournament, Problem 8": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): above both lines, which meet at (1, 1): points in quadrants I and II only."
+    ],
+    "2005 Columbus State Tournament, Problem 9": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): with u = x - 2005 the left side is (4010u + 2)/(2(u^2 - 1)), and clearing gives u(1 - 2005^2) = 0: x = 2005."
+    ],
+    "2005 Columbus State Tournament, Problem 10": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): take logs: (log x)^2 = 2 log x - 1, so log x = 1 and x = 10."
+    ],
+    "2005 Columbus State Tournament, Problem 11": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the four regions do not make a true triangle, so add their areas square by square: 32."
+    ],
+    "2005 Columbus State Tournament, Problem 12": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): midpoint (6, 5), slope of PQ -2/3, so the perpendicular has slope 3/2."
+    ],
+    "2005 Columbus State Tournament, Problem 13": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): meshing teeth pass at the same rate: 2005 times 101/401 = 505."
+    ],
+    "2005 Columbus State Tournament, Problem 14": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): square: x^2 + x - 3 = 0; only (-1 + sqrt 13)/2 keeps x + 2 >= 0."
+    ],
+    "2005 Columbus State Tournament, Problem 15": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x^4 - 2x^3 - 3x^2 + 2x + 2 = (x^2 - 1)(x^2 - 2x - 2): the rational roots +/- 1 multiply to -1."
+    ],
+    "2005 Columbus State Tournament, Problem 16": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (2^x - 3^y)(2^x + 3^y) = 2005 = 5 times 401 (or 1 times 2005) makes 2^x = 203 or 1003: none."
+    ],
+    "2005 Columbus State Tournament, Problem 17": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): standing upright, its top drops to 24, and the foot moves sqrt(900 - 576) = 18."
+    ],
+    "2005 Columbus State Tournament, Problem 18": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 100 + 6c = 4(40 + c): c = 30."
+    ],
+    "2005 Columbus State Tournament, Problem 19": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): cos 36 cos 72 = 1/4 (multiply by sin 36 and use the double angle twice): theta = 36."
+    ],
+    "2005 Columbus State Tournament, Problem 20": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): sides 3k, 2k, 2k have height (sqrt 7/2)k on the base 3k: 3 sqrt 7 k^2/4 = 200, k = 10.04."
+    ],
+    "2005 Columbus State Tournament, Problem 21": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the middle term a_201 is the average 5, so a_200 = 4."
+    ],
+    "2005 Columbus State Tournament, Problem 22": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the term with k factors x^(-3) has x^(4010 - 5k), so k = 802: 2005!/(802! 1203!)."
+    ],
+    "2005 Columbus State Tournament, Problem 23": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2^10 is 1 mod 11, so 2^2005 = 2^5 = 32 is 10 and the sum is 0 mod 11."
+    ],
+    "2005 Columbus State Tournament, Problem 24": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 4x - 6 >= 0 needs x >= 3/2; then -(4x - 6) <= x^2 - 3x <= 4x - 6 gives 2 <= x <= 6."
+    ],
+    "2005 Columbus State Tournament, Problem 25": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 401 + 80 + 16 + 3 = 500."
+    ],
+    "2005 Columbus State Tournament, Problem 26": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): after t minutes 800t grams of salt are in 4000 + 20t liters: 40t/(200 + t)."
+    ],
+    "2005 Columbus State Tournament, Problem 27": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): p + q sqrt 2 = (a - b sqrt 2)/(a^2 - 2b^2): q = -b/(a^2 - 2b^2)."
+    ],
+    "2005 Columbus State Tournament, Problem 28": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): roots 1 and 2 give a_n = A + B 2^n; a_0 = 3 and a_1 = 7 give 2^(n + 2) - 1."
+    ],
+    "2005 Columbus State Tournament, Problem 29": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the sight line past the corner gives (s + 34)/1775 = 20/(s/2): s^2 + 34s = 71000, s = 250."
+    ],
+    "2005 Columbus State Tournament, Problem 30": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): water of depth h has radius h/3, so pi h^3/27 = 45 + 3t: h = 3((45 + 3t)/pi)^(1/3)."
+    ],
+    "2005 Columbus State Tournament, Problem 31": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): roots of opposite signs need a negative product 2a^2 - 1: |a| < sqrt 2/2."
+    ],
+    "2005 Columbus State Tournament, Problem 32": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): two thirds remain every 3 hours: 300(2/3)^(t/3)."
+    ],
+    "2005 Columbus State Tournament, Problem 33": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the base is L - 1 from the wall, so L^2 = h^2 + (L - 1)^2: L = (h^2 + 1)/2."
+    ],
+    "2005 Columbus State Tournament, Problem 34": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): subtracting the circles puts Q at x = r^2/2, y = (r/2) sqrt(4 - r^2); the line from (0, r) meets the axis at r^2/(2 - sqrt(4 - r^2)) = 2 + sqrt(4 - r^2)."
+    ],
+    "2005 Columbus State Tournament, Problem 35": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the difference is 2x/(sqrt(x^2 + ax) + sqrt(x^2 + bx)), below 2x/(2x) = 1 and as close to 1 as we like: L = 1."
+    ],
+    "2005 Columbus State Tournament, Problem 36": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): g(f(x)) = -2 + sqrt((x + 2)^2) = -2 + |x + 2| = -x - 4 for x <= -2."
+    ],
+    "2005 Columbus State Tournament, Problem 37": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): sin t = x gives cos t = sqrt(1 - x^2): tan t = x/sqrt(1 - x^2)."
+    ],
+    "2005 Columbus State Tournament, Problem 38": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): glue BAD into one block: 5! = 120."
+    ],
+    "2005 Columbus State Tournament, Problem 39": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the sets differ exactly when some element lies in one and not the other: IV."
+    ],
+    "2005 Columbus State Tournament, Problem 40": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 8t + 7 = 4(2t + 1) + 3, so S is inside T, and 3 is in T but not in S."
+    ],
+    "2005 Columbus State Tournament, Problem 41": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the ratio is below 1/4 when the point is within 1/5 of an end: 2/5."
+    ],
+    "2005 Columbus State Tournament, Problem 42": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): C(6 + 2, 2) = 28 = 8!/(2! 6!)."
+    ],
+    "2005 Columbus State Tournament, Problem 43": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): C(14, 5) minus the C(12, 3) committees with both: 1782 = 2 C(12, 4) + C(12, 5)."
+    ],
+    "2005 Columbus State Tournament, Problem 44": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 5 rights and 3 ups: C(8, 3) = 8!/(3! 5!)."
+    ],
+    "2005 Columbus State Tournament, Problem 46": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the 5 diagonal pairs and the 10 pairs {(a, b), (b, a)} are 15 independent choices: 2^15 - 1 nonempty."
+    ],
+    "2005 Columbus State Tournament, Problem 47": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): cut the triangle into four of side 1/2: two of the five points share one, so the probability is 1."
+    ],
+    "2005 Columbus State Tournament, Problem 48": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): Menelaus on triangle AEC with the line B, D, F: (AD/DE)(EB/BC)(CF/FA) = (5/2)(1/4)(CF/FA) = 1, so FA/FC = 5/8."
+    ],
+    "2005 Columbus State Tournament, Problem 49": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): cut off a parallelogram: the rest is a 13-14-15 triangle with altitude 11.2, so the area is (10 + 25)/2 times 11.2 = 196."
+    ],
+    "2005 Columbus State Tournament, Problem 50": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): AF spans the octagon's width s(1 + sqrt 2) = 1: s = sqrt 2 - 1."
     ]
   }
 }
