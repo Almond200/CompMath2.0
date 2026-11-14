@@ -3346,8 +3346,9 @@
     return f ? "https://www.mathcounts.org/sites/default/files/" + f[which === "solutions" ? "solutions" : m[3]] : null;
   }
   // MBMT (Montgomery Blair Math Tournament): two divisions a year under new names each time, the
-  // archive listing the harder one second; [Lower, Upper] by year. 2015 has no solutions posted.
-  const MBMT_DIVS = { 2015: ["euler", "fermat"], 2016: ["euclid", "lobachevsky"], 2017: ["ramanujan", "pascal"], 2018: ["cantor", "gauss"], 2019: ["descartes", "leibniz"], 2022: ["dedekind", "zermelo"], 2023: ["bernoulli", "germain"], 2024: ["brahmagupta", "godel"], 2025: ["erdos", "weierstrass"], 2026: ["abel", "jacobi"] };
+  // archive listing the harder one second, except 2015, whose Fermat round repeats Euler's easier
+  // problems; [Lower, Upper] by year. 2015 has no solutions posted.
+  const MBMT_DIVS = { 2015: ["fermat", "euler"], 2016: ["euclid", "lobachevsky"], 2017: ["ramanujan", "pascal"], 2018: ["cantor", "gauss"], 2019: ["descartes", "leibniz"], 2022: ["dedekind", "zermelo"], 2023: ["bernoulli", "germain"], 2024: ["brahmagupta", "godel"], 2025: ["erdos", "weierstrass"], 2026: ["abel", "jacobi"] };
   const MBMT_SUBJ = { "Algebra": "algebra", "Geometry": "geometry", "Counting": "counting", "Number Theory": "nt" };
   function mbmtPdf(ref, which) {
     const m = ref.match(/^(\d{4}) MBMT (Lower|Upper) (Algebra|Geometry|Counting|Number Theory),\s*Problem\s+\d+$/), d = m && MBMT_DIVS[m[1]];
@@ -3482,9 +3483,11 @@
       url: e.url || paper?.url || officialPdf(e.ref, "problems") || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
       // Where the official solution is, for a problem whose solution we link instead of write.
       // An AHSME problem has no solution of ours either (owner, 2026-11-13): its AoPS wiki page has them.
-      solUrl: paper?.solUrl || officialPdf(e.ref, "solutions") || (!e.strategy ? aopsUrl(e.ref, pr.fam) : null),
+      // Only the MAA contests have a per-problem AoPS page to fall back on; an archive contest
+      // without posted solutions gets no solution link rather than its archive mislabelled as AoPS.
+      solUrl: paper?.solUrl || officialPdf(e.ref, "solutions") || (!e.strategy && !ARCHIVE_URL[pr.fam] ? aopsUrl(e.ref, pr.fam) : null),
       solKind: paper?.solKind || null, sourceMirror: !!paper?.mirror,
-      solAops: !paper?.solUrl && !officialPdf(e.ref, "solutions") && !e.strategy && !!aopsUrl(e.ref, pr.fam),
+      solAops: !paper?.solUrl && !officialPdf(e.ref, "solutions") && !e.strategy && !ARCHIVE_URL[pr.fam] && !!aopsUrl(e.ref, pr.fam),
       formulas, trickFormulas, types: problemTypes(e), subjects: problemSubjects(e, formulas, pr.cname), strategy: e.strategy || "",
       trick: e.trick || "",
       // Hints we write (revealed one at a time before the strategy) and the card that is the

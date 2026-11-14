@@ -29703,6 +29703,262 @@
     "2016 MBMT Upper Number Theory, Problem 8": [
       1500,
       "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): in base b the number is congruent to its digit sum mod b - 1; count the b with b - 1 dividing that sum."
+    ],
+    "2015 MBMT Lower Algebra, Problem 1": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 3x - 20 = x gives 10."
+    ],
+    "2015 MBMT Lower Algebra, Problem 2": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 3g + 5(10 - g) = 36 gives 7 good hours, so 3 bad."
+    ],
+    "2015 MBMT Lower Algebra, Problem 3": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 90 - 5t = 15 after 15 minutes."
+    ],
+    "2015 MBMT Lower Algebra, Problem 4": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 100 times 1.2^2 = 144."
+    ],
+    "2015 MBMT Lower Algebra, Problem 5": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 4^2 times 8^6 = 2^4 times 2^18 = 2^22."
+    ],
+    "2015 MBMT Lower Algebra, Problem 6": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): x - y = 16/2 = 8, so x = 5, y = -3 and xy = -15."
+    ],
+    "2015 MBMT Lower Algebra, Problem 7": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): x = 15 - 4 = 11."
+    ],
+    "2015 MBMT Lower Algebra, Problem 8": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 300 = G + 15r and 270 = G + 9r give r = 5, G = 225: (225 + 125)/25 = 14 cows."
+    ],
+    "2015 MBMT Lower Geometry, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): radius 1: circumference 2 pi."
+    ],
+    "2015 MBMT Lower Geometry, Problem 2": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 5, 12, 13."
+    ],
+    "2015 MBMT Lower Geometry, Problem 3": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the diagonal of a square of area 2015 is sqrt 4030."
+    ],
+    "2015 MBMT Lower Geometry, Problem 4": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the second candle has 8 times the volume, so it burns 8 times as long: 400 minutes from 1:00 PM."
+    ],
+    "2015 MBMT Lower Geometry, Problem 5": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): twice the area is 12 times 6 = 8 times AB: AB = 9."
+    ],
+    "2015 MBMT Lower Geometry, Problem 6": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the chain of isosceles triangles gives 5 angle B = 180: 36 degrees."
+    ],
+    "2015 MBMT Lower Geometry, Problem 7": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): angle ADC inside is 120 = 2 times angle ABC, so B lies on the circle about D of radius 4: BD = 4."
+    ],
+    "2015 MBMT Lower Geometry, Problem 8": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a tangential trapezoid has bases summing to the legs, 28: area = 5 times 28."
+    ],
+    "2015 MBMT Lower Counting, Problem 1": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 3 times 5."
+    ],
+    "2015 MBMT Lower Counting, Problem 2": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 4! = 24."
+    ],
+    "2015 MBMT Lower Counting, Problem 3": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 10 left shoes, then 9 right shoes from other pairs."
+    ],
+    "2015 MBMT Lower Counting, Problem 4": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 12 times 10 between the teams plus 22 times 2 with the referees."
+    ],
+    "2015 MBMT Lower Counting, Problem 5": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 1/2 + 1/13 - 1/26 = 7/13."
+    ],
+    "2015 MBMT Lower Counting, Problem 6": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): (56 + 28 + 8 + 1)/256 = 93/256."
+    ],
+    "2015 MBMT Lower Counting, Problem 7": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the first card is as likely a spade as either later card: 13/50 given two non-spades."
+    ],
+    "2015 MBMT Lower Counting, Problem 8": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): Connie wins outright when above 1 (half the time) and with chance 1/11 otherwise: 6/11."
+    ],
+    "2015 MBMT Lower Number Theory, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 102 to 198 by 3s: 33."
+    ],
+    "2015 MBMT Lower Number Theory, Problem 2": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): lcm(3, 4, 8) = 24."
+    ],
+    "2015 MBMT Lower Number Theory, Problem 3": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the product telescopes to 1/10 of 1000."
+    ],
+    "2015 MBMT Lower Number Theory, Problem 4": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): from 5! on every term ends in 0: 1 + 2 + 6 + 24 = 33."
+    ],
+    "2015 MBMT Lower Number Theory, Problem 5": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 23/99 = 0.2323..., and the 100th digit is 3."
+    ],
+    "2015 MBMT Lower Number Theory, Problem 6": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each pass opens every other unopened locker, halving the closed set: the last opened is 64."
+    ],
+    "2015 MBMT Lower Number Theory, Problem 7": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): abba/aa = (91a + 10b)/a, so a divides 10b: count over a from 1 to 9: 50."
+    ],
+    "2015 MBMT Lower Number Theory, Problem 8": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): c = 17 mod 31 and 16 mod 30: 916."
+    ],
+    "2015 MBMT Upper Algebra, Problem 1": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 100 times 1.2^2 = 144."
+    ],
+    "2015 MBMT Upper Algebra, Problem 2": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): x - y = 16/2 = 8, so x = 5, y = -3 and xy = -15."
+    ],
+    "2015 MBMT Upper Algebra, Problem 3": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): x = 15 - 4 = 11."
+    ],
+    "2015 MBMT Upper Algebra, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): subtracting consecutive definitions gives a_n = n a_(n - 1) from n = 4: a_7 = 2520."
+    ],
+    "2015 MBMT Upper Algebra, Problem 5": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 300 = G + 15r and 270 = G + 9r give r = 5, G = 225: (225 + 125)/25 = 14 cows."
+    ],
+    "2015 MBMT Upper Algebra, Problem 6": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 3072 = 2^10 times 3 and 324 = 2^2 3^4; solve for the exponents of a and b."
+    ],
+    "2015 MBMT Upper Algebra, Problem 7": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): (x - 4y)^2 + (y - 3z)^2 + (z - 1)^2 = 0 gives (12, 3, 1)."
+    ],
+    "2015 MBMT Upper Algebra, Problem 8": [
+      1200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): divide by x^2: (x + 1/x)^2 - 4(x + 1/x) - 5 = 0, so x + 1/x = 5 and x = (5 + sqrt 21)/2."
+    ],
+    "2015 MBMT Upper Geometry, Problem 1": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the diagonal of a square of area 2015 is sqrt 4030."
+    ],
+    "2015 MBMT Upper Geometry, Problem 2": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): twice the area is 12 times 6 = 8 times AB: AB = 9."
+    ],
+    "2015 MBMT Upper Geometry, Problem 3": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the chain of isosceles triangles gives 5 angle B = 180: 36 degrees."
+    ],
+    "2015 MBMT Upper Geometry, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): (32 + r)^2 - r^2 = 40^2 gives r = 9."
+    ],
+    "2015 MBMT Upper Geometry, Problem 5": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the chord subtends 120 degrees: 4 pi/3 - sqrt 3."
+    ],
+    "2015 MBMT Upper Geometry, Problem 6": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): angle ADC inside is 120 = 2 times angle ABC, so B lies on the circle about D of radius 4: BD = 4."
+    ],
+    "2015 MBMT Upper Geometry, Problem 7": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a tangential trapezoid has bases summing to the legs, 28: area = 5 times 28."
+    ],
+    "2015 MBMT Upper Geometry, Problem 8": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): ED = 80/4 = 20; the center lies 1 from E along AB and 8 along CD, so R^2 = 9^2 + 8^2 = 145."
+    ],
+    "2015 MBMT Upper Counting, Problem 1": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 10 left shoes, then 9 right shoes from other pairs."
+    ],
+    "2015 MBMT Upper Counting, Problem 2": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 12 times 10 between the teams plus 22 times 2 with the referees."
+    ],
+    "2015 MBMT Upper Counting, Problem 3": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): (56 + 28 + 8 + 1)/256 = 93/256."
+    ],
+    "2015 MBMT Upper Counting, Problem 4": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 36 runs of consecutive pages out of 255 nonempty subsets: 12/85."
+    ],
+    "2015 MBMT Upper Counting, Problem 5": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the first card is as likely a spade as either later card: 13/50 given two non-spades."
+    ],
+    "2015 MBMT Upper Counting, Problem 6": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): Connie wins outright when above 1 (half the time) and with chance 1/11 otherwise: 6/11."
+    ],
+    "2015 MBMT Upper Counting, Problem 7": [
+      1200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): only 1s and 6s matter: the ten 1s must come with at most one 6 among them, (1 + 10/2)/2^10 = 3/512."
+    ],
+    "2015 MBMT Upper Counting, Problem 8": [
+      1200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): sum over Alice's count a: (5/6)^(a - 1)(1/6) times (1/2)^(a - 1) = 2/7."
+    ],
+    "2015 MBMT Upper Number Theory, Problem 1": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the product telescopes to 1/10 of 1000."
+    ],
+    "2015 MBMT Upper Number Theory, Problem 2": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): from 5! on every term ends in 0: 1 + 2 + 6 + 24 = 33."
+    ],
+    "2015 MBMT Upper Number Theory, Problem 3": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each pass opens every other unopened locker, halving the closed set: the last opened is 64."
+    ],
+    "2015 MBMT Upper Number Theory, Problem 4": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 12 = 2^2 times 3: 30! has 26 twos and 14 threes, so 13 zeros."
+    ],
+    "2015 MBMT Upper Number Theory, Problem 5": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): abba/aa = (91a + 10b)/a, so a divides 10b: count over a from 1 to 9: 50."
+    ],
+    "2015 MBMT Upper Number Theory, Problem 6": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): c = 17 mod 31 and 16 mod 30: 916."
+    ],
+    "2015 MBMT Upper Number Theory, Problem 7": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): abc/999 with denominator prime means denominator 37, so abc is a multiple of 27 with b = 2(a + c): 162, r = 6/37."
+    ],
+    "2015 MBMT Upper Number Theory, Problem 8": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): n = (a - b)(a + b) in two ways needs two factor pairs of equal parity; count up to 400: 196."
     ]
   }
 }
