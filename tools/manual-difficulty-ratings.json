@@ -44069,6 +44069,106 @@
     "2015 Pascal Contest, Problem 25": [
       700,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): build the rows: 2731 appears as 2n + 1, and the n that would put it in X never becomes a V entry, so it sits in W, Y and Z."
+    ],
+    "2014 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 48 - 2 = 46."
+    ],
+    "2014 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the triangle's angles give 50 + x + 45 = 180: 85."
+    ],
+    "2014 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 0.3 times 200 = 60."
+    ],
+    "2014 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with x = 3 the sides are 4, 3, 6 and 10: 23."
+    ],
+    "2014 Pascal Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 9(2) + 4(1) = 22."
+    ],
+    "2014 Pascal Contest, Problem 6": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the graph is at 3 degrees again only at 9 p.m."
+    ],
+    "2014 Pascal Contest, Problem 7": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): cancelling 5 and 6 leaves n^2 = 36: n = 6."
+    ],
+    "2014 Pascal Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the square and its lines are symmetric about L, so only the circle moves, to the mirror-image triangle."
+    ],
+    "2014 Pascal Contest, Problem 9": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 16 - 8 = 8 = 2^3."
+    ],
+    "2014 Pascal Contest, Problem 10": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 3/4 + 4/16 = 1."
+    ],
+    "2014 Pascal Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the two dice carry 42 dots, and the five faces shown carry 18: 24."
+    ],
+    "2014 Pascal Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): three pieces of 2/3 make 2, so six make 4."
+    ],
+    "2014 Pascal Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 1X2 = 8Y + 45 forces Y = 7 and 132: X + Y = 10."
+    ],
+    "2014 Pascal Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (x + 2y) - (2x + y) = y - x = -y."
+    ],
+    "2014 Pascal Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): PR = sqrt(30^2 - 18^2) = 24 is the height on base SQ = 14: 168."
+    ],
+    "2014 Pascal Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the second row gives the triangle 6, the first the heart 7, the fourth the club 10, and the third the last symbol 5."
+    ],
+    "2014 Pascal Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 5400 = 2(600 + 20L + 30L): L = 42."
+    ],
+    "2014 Pascal Contest, Problem 18": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): xy = 36, which has 9 divisor pairs (x, y)."
+    ],
+    "2014 Pascal Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): in the 4 by 4 table of products, 4 appears 3 times, more than any other."
+    ],
+    "2014 Pascal Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the arcs total (pi/2)(x + y + z + 4) = 4 pi, so the square has side pi and area pi^2."
+    ],
+    "2014 Pascal Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the diagonal of a 30 by 45 rectangle meets gcd(30, 45) + 1 = 16 lattice points."
+    ],
+    "2014 Pascal Contest, Problem 22": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the four triangles form a cycle Top-Left-Bottom-Right; counting by the number of colours used gives 260 = 4^4 + 4."
+    ],
+    "2014 Pascal Contest, Problem 23": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): PQ^2 = (16 + 36 + 16)n = 68n is a square first at n = 17."
+    ],
+    "2014 Pascal Contest, Problem 24": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): uphill and downhill swap on the way back: x/4 + y/6 = 1.1 and x/6 + y/4 = 1.15 give x + y = 5.4, so 7.9 km."
+    ],
+    "2014 Pascal Contest, Problem 25": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2009/2014 + 2019/n has numerator 2009n + 2019(2014) over 2014n; making 1004 divide the reduced numerator first happens at n = 1942: 16."
     ]
   }
 }
