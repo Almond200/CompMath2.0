@@ -41351,6 +41351,106 @@
     "2000 Cayley Contest, Problem 25": [
       800,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 1 + y^2 + y^4 = (1 + y + y^2)(1 - y + y^2), so x(1 - y + y^2) = 15 too; dividing gives y = 2 or 1/2: sum 5/2."
+    ],
+    "1999 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 9 + 49 - 25 = 33."
+    ],
+    "1999 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 25 + 8 = 33 = 3 times 11."
+    ],
+    "1999 Cayley Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 100 days is 14 weeks and 2 days: Friday."
+    ],
+    "1999 Cayley Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 5 of the 12 half-squares are shaded: 5/12."
+    ],
+    "1999 Cayley Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): y = 12 and z = 24: 36."
+    ],
+    "1999 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the angles at the point sum to 360: 3a + 150 = 360, a = 70."
+    ],
+    "1999 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): AB = 8, so C is 8 below A: k = 5 - 8 = -3."
+    ],
+    "1999 Cayley Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the height 4 and slant side 5 give an overhang of 3: BC = 10 and the perimeter 26."
+    ],
+    "1999 Cayley Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 4 times 16 - 3 times 15 = 19."
+    ],
+    "1999 Cayley Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 512 less the 4 by 4 by 8 hole: 384."
+    ],
+    "1999 Cayley Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the next time with identical digits is 11:11, 5 hours 16 minutes later: 316."
+    ],
+    "1999 Cayley Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each pair sums to (9 + 53) = 62, so 15 pairs with 47."
+    ],
+    "1999 Cayley Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each factor ends in 6, and 6 times 6 times 6 ends in 6."
+    ],
+    "1999 Cayley Contest, Problem 14": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): some candidate gets at least 61/4, so 16, and 16, 15, 15, 15 shows it is enough."
+    ],
+    "1999 Cayley Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 3 L of chocolate in 60 L: 5%."
+    ],
+    "1999 Cayley Contest, Problem 16": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the rectangle is 60 by 20, so the big radius satisfies r^2 = 30^2 + 10^2 = 1000: 1000 pi."
+    ],
+    "1999 Cayley Contest, Problem 17": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2000 = 2^4 5^3 needs the three 5s and the 2^4 in two digits 2 and 8: 25558, digit sum 25."
+    ],
+    "1999 Cayley Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the pail's rim and the tub make 45-45-90 triangles, so the water stands 20 below the 50 cm rim: 30."
+    ],
+    "1999 Cayley Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the prime must be two from an odd square; checking 9, 25, 49, 81 gives 10, 24, 48, 80 and 82: 5."
+    ],
+    "1999 Cayley Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): AC = sqrt 2 cuts off a right triangle of area 1/2, and isosceles ADC has height 3/sqrt 2 and area 3/2: 2."
+    ],
+    "1999 Cayley Contest, Problem 21": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): there are 9 times 8 = 72 ordered pairs, so at most 73 digits, and a trail using every pair exists: 73."
+    ],
+    "1999 Cayley Contest, Problem 22": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): reflect N in PQ: MS spans 120 across and 105 + 55 = 160 down: 200."
+    ],
+    "1999 Cayley Contest, Problem 23": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the numbers are 1 + 3n for n = 1 to 15, so the sums are 3 + 3(k + l + m) with distinct k, l, m from 1 to 15, whose sums cover 6 to 42: 37 values."
+    ],
+    "1999 Cayley Contest, Problem 24": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): a power equals 1 when the base is 1 (x = 1, 4), the base is -1 with even exponent (x = 2) or the exponent is 0 with nonzero base (x = 6, -10): sum 3."
+    ],
+    "1999 Cayley Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 3^(2p) + 3^(3q) + 3^(5r) is a power of 3 only when 2p = 3q = 5r = 30m, giving 3^(30m + 1): 30m + 1 = 7s first at m = 3, s = 13, and 45 + 30 + 18 + 13 = 106."
     ]
   }
 }
