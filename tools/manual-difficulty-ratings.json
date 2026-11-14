@@ -41851,6 +41851,106 @@
     "2023 Pascal Contest, Problem 25": [
       800,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the 2023s number 5, 3 or 2: 1 + 2022 + (2021)(1011) + (1010)(1011) = 3 066 364, digit sum 28."
+    ],
+    "2022 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 42/2 = 21."
+    ],
+    "2022 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 2 + 6 + 2 + 8 = 18."
+    ],
+    "2022 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each fraction is 1/2: 2."
+    ],
+    "2022 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): -3.4 is 0.4 from -3."
+    ],
+    "2022 Pascal Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): PR = 10 - 3 = 7 and QS = 17 - 5 = 12: 7 : 12."
+    ],
+    "2022 Pascal Contest, Problem 6": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): they have 18 tasks, 9 each: Robyn takes 5 of Sasha's."
+    ],
+    "2022 Pascal Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the right-angled figure has the perimeter of its 3x by 2x bounding rectangle: 10x."
+    ],
+    "2022 Pascal Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): Green and Blue take half the circle, so Red and Yellow have the other half: 1/2."
+    ],
+    "2022 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 0 = 2(-4) + b: b = 8."
+    ],
+    "2022 Pascal Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): count routes point by point: 3 to the middle junction, 4 to each of the last two, 8 in all."
+    ],
+    "2022 Pascal Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): QR = PS = 3 and QS = 4 is perpendicular to them, so the slanted sides are 5: 16."
+    ],
+    "2022 Pascal Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): ten numbers end in 6 and ten are in the sixties, 66 counted twice: 19."
+    ],
+    "2022 Pascal Contest, Problem 13": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): Mayar covers 2/3 of the 90 m: 60."
+    ],
+    "2022 Pascal Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): Cao and Dhruv are older than Bev, and Andy and Elcim younger: Bev is third."
+    ],
+    "2022 Pascal Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): an odd sum of two primes uses 2, so n - 2 must be prime: 19, 21 and 25 work."
+    ],
+    "2022 Pascal Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each pair played 20 games; Bingyi won 16 against Alvin and 12 against Cheska: 28."
+    ],
+    "2022 Pascal Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): c = b + 5 and a = b - 5, so b + b + 5 = b - 5: b = -10."
+    ],
+    "2022 Pascal Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): tracking the steps, the order repeats every 10 and is reversed after step 5: N = 2025."
+    ],
+    "2022 Pascal Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the two 3s take any 2 of the 6 places around 2, 0, 2, 2: C(6, 2) = 15."
+    ],
+    "2022 Pascal Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the two sixths cap the share at 1/6, ruling out n = 7 to 10, and no split into fifths exists; n = 2, 3, 4 and 6 work: 5 + 34 = 39."
+    ],
+    "2022 Pascal Contest, Problem 21": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 81 holes, and the diagonals hold 9 + 9 - 1 = 17 pegs: 64."
+    ],
+    "2022 Pascal Contest, Problem 22": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 4^127, 5^129 and 7^131 end in 24, 25 and 03 (mod 100): 52."
+    ],
+    "2022 Pascal Contest, Problem 23": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): adding the small circle's unshaded part to both regions, the large sector equals the small circle, 1/9 of the large one: 40."
+    ],
+    "2022 Pascal Contest, Problem 24": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the first three digits are 10^2 to 31^2 and the last four are 10^3 to 21^3; matching the third digit with the last gives 30."
+    ],
+    "2022 Pascal Contest, Problem 25": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the fly flies sqrt(60^2 + 165^2); unrolled, the ant crawls sqrt((30(6n + 3))^2 + 165^2), which first beats 20 times the fly at n = 19."
     ]
   }
 }
