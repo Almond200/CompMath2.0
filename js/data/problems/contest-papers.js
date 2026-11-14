@@ -280,5 +280,37 @@ window.MATH_CONTEST_PAPERS = {
   "2018 BMT Geometry": {
     "url": "https://berkeley.mt/archives/bmt-2018/GEOSP18.pdf",
     "solUrl": "https://berkeley.mt/archives/bmt-2018/GEOSP18A.pdf"
+  },
+  "2018 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/Algebra-A-Test.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Algebra-A-Solutions.pdf"
+  },
+  "2018 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/Algebra-B-Test.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Algebra-B-Solutions.pdf"
+  },
+  "2018 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/Combinatorics-A-Test.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Combinatorics-A-Solutions.pdf"
+  },
+  "2018 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/Combinatorics-B-Test.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Combinatorics-B-Solutions.pdf"
+  },
+  "2018 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/Geometry-A-Test.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Geometry-A-Solutions.pdf"
+  },
+  "2018 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/GeoBTest.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Geometry-B-Solutions.pdf"
+  },
+  "2018 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/Number-Theory-A-Test.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Number-Theory-A-Solutions.pdf"
+  },
+  "2018 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/Number-Theory-B-Test.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/Number-Theory-B-Solutions.pdf"
   }
 };
