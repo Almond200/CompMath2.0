@@ -2,7 +2,7 @@
 
 **2026-11-14**
 
-- **UKMT Senior Mathematical Challenge (in progress):** a new family, each problem linking the paper and solutions the UKMT posts free (2013 and 2015 to 2026); 2015 to 2026 are filed (300 problems).
+- **UKMT Senior Mathematical Challenge (done, 325 problems):** a new family, each problem linking the paper and solutions the UKMT posts free; every posted year (2013 and 2015 to 2026) is filed with tree filings, cards and author-estimated ratings.
 - **CEMC Pascal Contest (done, 700 problems):** the Grade 9 contest, a third CEMC family with the same links and credits (its own colour and level); every year from 1998 to 2025 is filed, with tree filings, cards and author-estimated ratings, and questions shared with that year's Cayley or Fermat keep the earlier filing ( the 2024 solutions link points to the CEMC's 2026 folder, where that file sits). Seven problems that only recognise a 3-4-5, 5-12-13 or 7-24-25 triangle now cite the Pythagorean Theorem instead of the triple parametrization (AUDITS.md).
 - **CEMC Cayley Contest (done, 700 problems):** the Grade 10 contest of the same centre, a new family sharing Fermat's links and credits; every year from 1998 to 2025 is filed, with tree filings, cards and author-estimated ratings, and the questions Cayley shares with that year's Fermat are filed under both. Thirty-six coordinate problems (most from the CEMC filings) were moved off Distance from a point to a line, whose route they never use (AUDITS.md).
 - **CEMC Fermat Contest (done, 699 problems):** the Grade 11 contest of the University of Waterloo's Centre for Education in Mathematics and Computing, 1998 to 2025, a new family; each problem opens the official contest and solutions. 2005 #25, which the CEMC says was flawed, is left out.

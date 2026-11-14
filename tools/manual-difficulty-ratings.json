@@ -46969,6 +46969,106 @@
     "2026 UKMT SMC, Problem 25": [
       900,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the six central edges fix the rest of the centre, each corner triangle has 2 colourings, and three cases for the spokes give 66: 8 times 66 = 528."
+    ],
+    "2013 UKMT SMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): multiplication first: 6, 4, 5, 5 and 0, so 2 + 0 + 1 + 3 is largest."
+    ],
+    "2013 UKMT SMC, Problem 2": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 2 + 0.08 + 0.003 = 2.083 m."
+    ],
+    "2013 UKMT SMC, Problem 3": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the tens digit matches that of 13^2 - 13 = 156: 5."
+    ],
+    "2013 UKMT SMC, Problem 4": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): any route through every square must include M, K, L and Q, R, P as runs: 2 routes."
+    ],
+    "2013 UKMT SMC, Problem 5": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): subtracting the expanded equations gives 2(x - y) = 40: 20."
+    ],
+    "2013 UKMT SMC, Problem 6": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): six lengths are 1/4 - 1/5 = 1/20 of the distance: 120."
+    ],
+    "2013 UKMT SMC, Problem 7": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): k items cost a whole number of pounds less k pence, and 65.76 is 24 pence short: k = 24 (at most 66 items)."
+    ],
+    "2013 UKMT SMC, Problem 8": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the large square of side 4x less four triangles of area 2x^2 leaves 8x^2: side 2 sqrt 2 x."
+    ],
+    "2013 UKMT SMC, Problem 9": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): a quarter of the area lost leaves side sqrt 3/2, above 0.85: a reduction under 15%, so 13%."
+    ],
+    "2013 UKMT SMC, Problem 10": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): median 10, mean 9, mode 11 force a, b, 10, 11, 11 with a + b = 13 and b <= 9: a = 4."
+    ],
+    "2013 UKMT SMC, Problem 11": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the radius to the tangent point is the height, so (1/2) x r = pi r^2: x = 2 pi r, ratio 1 : 1."
+    ],
+    "2013 UKMT SMC, Problem 12": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 3 choices for the first sweet and 2 for each of the next four: 48."
+    ],
+    "2013 UKMT SMC, Problem 13": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): Angus covers 3(1/3) + 6(1/3) = 3 miles; Bruce walks 1.5 miles in 30 min and runs 1.5 in 15: 45."
+    ],
+    "2013 UKMT SMC, Problem 14": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): with RS = 1 and PS = 2, RST is similar to PRS with hypotenuses 1 : sqrt 5, so it has 1/5 of PRS: 1 : 10."
+    ],
+    "2013 UKMT SMC, Problem 15": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 4^n - 1 = (2^n - 1)(2^n + 1) is prime only for n = 1."
+    ],
+    "2013 UKMT SMC, Problem 16": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 91 = 8(11) + 3 = 7 times 13, and neither 7 nor 13 is 3 mod 8."
+    ],
+    "2013 UKMT SMC, Problem 17": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the trisectors make isosceles triangles: PU = (1/2)/cos 20 and UY = PU cos 80, so UT = cos 80 / cos 20."
+    ],
+    "2013 UKMT SMC, Problem 18": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the seven numbers multiply to (2^3 3^2 5 7)^2, so each set multiplies to 2520."
+    ],
+    "2013 UKMT SMC, Problem 19": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): 10 pairs in each of 5 rows and 5 columns give 100, and 3-4-5 rectangles give 8 diagonals: 108."
+    ],
+    "2013 UKMT SMC, Problem 20": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): x = ky and x + y = k(x - y) give k^2 - 2k - 1 = 0: k = 1 + sqrt 2."
+    ],
+    "2013 UKMT SMC, Problem 21": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): four semicircles and four three-quarter circles of radius 1/4: 10 pi r = 5 pi/2."
+    ],
+    "2013 UKMT SMC, Problem 22": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the composite ones are products of two numbers 10k + 1, which needs a factor at most 31: 12 such products, so 99 - 12 = 87."
+    ],
+    "2013 UKMT SMC, Problem 23": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): USV and QPV are similar with ratio 1 : 2, so USV and QWT each have 1/12 of the square: 1 - 1/2 - 1/12 - 1/12 = 1/3."
+    ],
+    "2013 UKMT SMC, Problem 24": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): the cosine rule in ROS gives cos theta = -23/40, and in POQ x^2 = 16 + 100 + 46 = 162: 9 sqrt 2."
+    ],
+    "2013 UKMT SMC, Problem 25": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to an early AIME one): routes alternate X-lines and Y-lines: 9 with two lines, 36 with four and 36 with six, 81."
     ]
   }
 }
