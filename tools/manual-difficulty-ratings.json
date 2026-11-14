@@ -47869,6 +47869,106 @@
     "2019 UKMT IMC, Problem 25": [
       700,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): each semicircle touches two sides, so the centres sit where 30-60-90 triangles from the corners meet: side 2 sqrt 3."
+    ],
+    "2018 UKMT IMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 1 + 8 = 9."
+    ],
+    "2018 UKMT IMC, Problem 2": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 1 is not prime, 111 = 3 times 37 and 1111 = 11 times 101: only 11."
+    ],
+    "2018 UKMT IMC, Problem 3": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 440 million times 5 = 2.2 billion."
+    ],
+    "2018 UKMT IMC, Problem 4": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): both triangles are isosceles, so the kite's angles are x, x, 2x and x: 5x = 360, x = 72."
+    ],
+    "2018 UKMT IMC, Problem 5": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 26/206 is about 1/8."
+    ],
+    "2018 UKMT IMC, Problem 6": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 1020/60 = 17."
+    ],
+    "2018 UKMT IMC, Problem 7": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): of 16, 25, 36, 49, 64, 81, only 49 has digit product 36, a square: 1."
+    ],
+    "2018 UKMT IMC, Problem 8": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the four corner triangles are congruent and fill 49 - 25 = 24: each 6."
+    ],
+    "2018 UKMT IMC, Problem 9": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 6/20 < n/20 < 8/20: n = 7."
+    ],
+    "2018 UKMT IMC, Problem 10": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): a difference of squares is odd or a multiple of 4: 10 is neither."
+    ],
+    "2018 UKMT IMC, Problem 11": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the diagonals split the hexagon into 12 congruent triangles, 5 of them shaded: 12(4) = 48."
+    ],
+    "2018 UKMT IMC, Problem 12": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the switch reverses each row, so 79, 78, 147 and 123 come out as products equal to the originals; 159 times 951 becomes 357 times 753."
+    ],
+    "2018 UKMT IMC, Problem 13": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the small hexagon shares the rhombus edge x and the large one has edge 2x: 1 : 4."
+    ],
+    "2018 UKMT IMC, Problem 14": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 10/9 + 9/10 = 181/90 = 2.0111."
+    ],
+    "2018 UKMT IMC, Problem 15": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): an overlap of two triangles can have three to six sides, and each regular shape listed can arise: 4."
+    ],
+    "2018 UKMT IMC, Problem 16": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the sectors inside the triangle total half a circle, so two and a half unit circles are shaded: 5 pi/2."
+    ],
+    "2018 UKMT IMC, Problem 17": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): reversing raises the number by 99 when the last digit is one more than the first: 8 pairs of end digits times 10 middles, 80."
+    ],
+    "2018 UKMT IMC, Problem 18": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the pentagon and triangle angles give angle BAD = 6 in the quadrilateral, and 6 + 60 + x = 90: x = 24."
+    ],
+    "2018 UKMT IMC, Problem 19": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): xy = (x + 4)(y - 3) = (x + 8)(y - 4) gives 3x - 4y = -12 and 4x - 8y = -32: x = 4, y = 6, sum 10."
+    ],
+    "2018 UKMT IMC, Problem 20": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): a 0-1 multiple of 72 needs a digit sum of 9 and to end in 000: nine 1s then 000, 12 digits."
+    ],
+    "2018 UKMT IMC, Problem 21": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): two of x, x + 6, x^2 must be equal: x = x^2 gives 0, 1 and x + 6 = x^2 gives 3, -2: 4."
+    ],
+    "2018 UKMT IMC, Problem 22": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the slanted L-shape meets the rectangle in congruent right triangles at the corners, which fix the rectangle's sides: area 24."
+    ],
+    "2018 UKMT IMC, Problem 23": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the hexagon is an equilateral triangle of side 11 less ones of side 1, 2, 6: (121 - 41) sqrt 3/4 = 20 sqrt 3."
+    ],
+    "2018 UKMT IMC, Problem 24": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the lists are x, y, 5, 5, x + 5 or x, 5, 5, y, x + 5 with 2x + y = 10 and x <= y <= x + 5: 2 lists."
+    ],
+    "2018 UKMT IMC, Problem 25": [
+      700,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): each vertex of the small triangle is sqrt 3 from two sides of the large one, so 30-60-90 triangles give AF = BH = 3: the edges differ by 6."
     ]
   }
 }
