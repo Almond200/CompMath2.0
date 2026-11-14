@@ -29447,6 +29447,262 @@
     "2017 MBMT Upper Number Theory, Problem 8": [
       1600,
       "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): cards 26^k in pairs act as base-26 digits 0, 1, 2; count the representable sums."
+    ],
+    "2016 MBMT Lower Algebra, Problem 1": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 2 times 4 + 4 times 2."
+    ],
+    "2016 MBMT Lower Algebra, Problem 2": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 18 + (54/9) times 3 = 36."
+    ],
+    "2016 MBMT Lower Algebra, Problem 3": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 20, 16, 36, 52, 88."
+    ],
+    "2016 MBMT Lower Algebra, Problem 4": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): n^4 = 2^12 gives n = 2^3."
+    ],
+    "2016 MBMT Lower Algebra, Problem 5": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): r_A = 3 r_B and g_A = g_B/2 with both totals 50."
+    ],
+    "2016 MBMT Lower Algebra, Problem 6": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): set x = 1: (4 + 10 - 1)^2 = 169."
+    ],
+    "2016 MBMT Lower Algebra, Problem 7": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 1^2 - 2(-9) = 19."
+    ],
+    "2016 MBMT Lower Algebra, Problem 8": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): replace x by 1/x to get a second equation and solve the pair for f(x)."
+    ],
+    "2016 MBMT Lower Geometry, Problem 1": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): sides 6 and 4."
+    ],
+    "2016 MBMT Lower Geometry, Problem 2": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): net 4 north and 3 east: 5."
+    ],
+    "2016 MBMT Lower Geometry, Problem 3": [
+      400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the medial triangle of side 1 has perimeter 3."
+    ],
+    "2016 MBMT Lower Geometry, Problem 4": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): by the triangle inequality BC runs over the integers from 70 to 78, which sum to 666."
+    ],
+    "2016 MBMT Lower Geometry, Problem 5": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the shoelace formula on the four vertices."
+    ],
+    "2016 MBMT Lower Geometry, Problem 6": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the circle of radius 17 meets a side 15 from the center at half-chord 8, so EF = 16."
+    ],
+    "2016 MBMT Lower Geometry, Problem 7": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a rhombus with diagonals 6 and 4: area 12."
+    ],
+    "2016 MBMT Lower Geometry, Problem 8": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the star of 12 unit-2 triangles: the hexagon of 6 plus 6 more, 12 times sqrt 3."
+    ],
+    "2016 MBMT Lower Counting, Problem 1": [
+      100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 16 times 18 times 7 = 2016."
+    ],
+    "2016 MBMT Lower Counting, Problem 2": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): F is in 5 of the 15 pairs: 1/3."
+    ],
+    "2016 MBMT Lower Counting, Problem 3": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each coin survives two flips with chance 1/4: 2016/4."
+    ],
+    "2016 MBMT Lower Counting, Problem 4": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): no HT means some tails then heads: 9 sequences of 256."
+    ],
+    "2016 MBMT Lower Counting, Problem 5": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): choices per topic group with at most one of each kind, multiplied, less the empty pizza."
+    ],
+    "2016 MBMT Lower Counting, Problem 6": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 2(4/5)(1/5) = 8/25."
+    ],
+    "2016 MBMT Lower Counting, Problem 7": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each move lands on the target vertex with chance 1/5, so the expected wait is 5 minutes."
+    ],
+    "2016 MBMT Lower Counting, Problem 8": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): multisets of 3 from 10 values: C(12, 3) = 220."
+    ],
+    "2016 MBMT Lower Number Theory, Problem 1": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 6! = 720 = -1 mod 7."
+    ],
+    "2016 MBMT Lower Number Theory, Problem 2": [
+      200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 1, 6, ..., 96: 20 numbers."
+    ],
+    "2016 MBMT Lower Number Theory, Problem 3": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the smallest n that splits evenly for every possible group size is 120."
+    ],
+    "2016 MBMT Lower Number Theory, Problem 4": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): divisors 6d with d dividing 336: 6 sigma(336) = 6 times 992."
+    ],
+    "2016 MBMT Lower Number Theory, Problem 5": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): n = 2 mod 9 and 1 mod 10: 101."
+    ],
+    "2016 MBMT Lower Number Theory, Problem 6": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 8 of every 30 numbers avoid 2, 3, 5: the 200th is in the 25th block, 749."
+    ],
+    "2016 MBMT Lower Number Theory, Problem 7": [
+      1200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a^2 = 2b^2 + 1 with b odd: a^2 = 3 mod 8, impossible."
+    ],
+    "2016 MBMT Lower Number Theory, Problem 8": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a power tower of 3s: 3^(odd) with exponent 3 mod 4 ends in 7."
+    ],
+    "2016 MBMT Upper Algebra, Problem 1": [
+      300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): test powers of n against 2016."
+    ],
+    "2016 MBMT Upper Algebra, Problem 2": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): work backward from E5 = 16 and E1 = 20 through the recurrence."
+    ],
+    "2016 MBMT Upper Algebra, Problem 3": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the roots of f(x + 2) are the roots of f shifted by -2: -1729 - 6."
+    ],
+    "2016 MBMT Upper Algebra, Problem 4": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): d, j, dj - 4d in arithmetic progression gives 2j = d + dj - 4d; factor."
+    ],
+    "2016 MBMT Upper Algebra, Problem 5": [
+      1200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): sum (50 + k)(50 - k) = sum 2500 - k^2 over k = 0 to 50."
+    ],
+    "2016 MBMT Upper Algebra, Problem 6": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): replace x by 1/x to get a second equation and solve the pair for f(x)."
+    ],
+    "2016 MBMT Upper Algebra, Problem 7": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 1/((n + 1)(n + 5)) splits into a telescoping difference with gap 4: 25/24."
+    ],
+    "2016 MBMT Upper Algebra, Problem 8": [
+      1500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): x = y = 0 and y = 1 give f(0) and f(1); then f(x) = x + 1 or another form, and evaluate."
+    ],
+    "2016 MBMT Upper Geometry, Problem 1": [
+      800,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the circle of radius 17 meets a side 15 from the center at half-chord 8, so EF = 16."
+    ],
+    "2016 MBMT Upper Geometry, Problem 2": [
+      500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a rhombus with diagonals 6 and 4: area 12."
+    ],
+    "2016 MBMT Upper Geometry, Problem 3": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): CD^2 = 20 times 16, so CD = 8 sqrt 5 and the area is 36 times 8 sqrt 5/2."
+    ],
+    "2016 MBMT Upper Geometry, Problem 4": [
+      1200,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the secant and the ray from C give CB times CA = CD times CE."
+    ],
+    "2016 MBMT Upper Geometry, Problem 5": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the cross section is a 3-4-5 isosceles triangle with inradius 3/2: compare the sphere and cone volumes, 3/8."
+    ],
+    "2016 MBMT Upper Geometry, Problem 6": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): a disk of radius 1/2 contains a lattice point when its center is within 1/2 of a corner: the four quarter disks fill pi/4 of the unit square."
+    ],
+    "2016 MBMT Upper Geometry, Problem 7": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): reflect D across AC so the broken path through P becomes a straight segment: 1 + sqrt 7."
+    ],
+    "2016 MBMT Upper Geometry, Problem 8": [
+      1500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the rhombus with a 30-degree angle and D, G, A placed on the rectangle's lines fixes the side: 12."
+    ],
+    "2016 MBMT Upper Counting, Problem 1": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): pairs from 1-5 and 6-10 summing as asked: 13/25."
+    ],
+    "2016 MBMT Upper Counting, Problem 2": [
+      700,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): no HT means some tails then heads: 9 sequences of 256."
+    ],
+    "2016 MBMT Upper Counting, Problem 3": [
+      900,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): each move lands on the target vertex with chance 1/5, so the expected wait is 5 minutes."
+    ],
+    "2016 MBMT Upper Counting, Problem 4": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): multisets of 4 from 10 values: C(13, 4) = 715."
+    ],
+    "2016 MBMT Upper Counting, Problem 5": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): nonzero digits with at least one of 3, 6, 9: 9^3 - 6^3 = 513."
+    ],
+    "2016 MBMT Upper Counting, Problem 6": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): count the pie choices of the stated kind; 467/512 by complement."
+    ],
+    "2016 MBMT Upper Counting, Problem 7": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): only the 16 aces and face cards matter: the 4 aces come first with chance 1/C(16, 4) = 1/1820."
+    ],
+    "2016 MBMT Upper Counting, Problem 8": [
+      1500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): three independent uniform values on overlapping intervals; integrate over Bob's value region by region."
+    ],
+    "2016 MBMT Upper Number Theory, Problem 1": [
+      600,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): the smallest n that splits evenly for every possible group size is 120."
+    ],
+    "2016 MBMT Upper Number Theory, Problem 2": [
+      1000,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 2016 = 2^5 3^2 7, so n = 14 m^2: m^2 <= 144, 12 values."
+    ],
+    "2016 MBMT Upper Number Theory, Problem 3": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 8 of every 30 numbers avoid 2, 3, 5: the 200th is in the 25th block, 749."
+    ],
+    "2016 MBMT Upper Number Theory, Problem 4": [
+      1100,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): gcd(n(n + 2), (n + 1)(n + 3)) divides 3: 3."
+    ],
+    "2016 MBMT Upper Number Theory, Problem 5": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): pairwise coprime composites below the bound: one prime square for each prime p with p^2 small enough."
+    ],
+    "2016 MBMT Upper Number Theory, Problem 6": [
+      1300,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): factor the sum of powers of 2 into primes and count the divisors: 21."
+    ],
+    "2016 MBMT Upper Number Theory, Problem 7": [
+      1400,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): 10^k + 1 divides 10^100 + 1 when 100/k is odd: k = 0, 4, 20, 100."
+    ],
+    "2016 MBMT Upper Number Theory, Problem 8": [
+      1500,
+      "Author estimate (MBMT publishes no solve counts; placed on the collection’s scale by its route, the Lower division running from an early AMC 8 problem to a late one and the Upper division to an AMC 10 or early AIME one): in base b the number is congruent to its digit sum mod b - 1; count the b with b - 1 dividing that sum."
     ]
   }
 }
