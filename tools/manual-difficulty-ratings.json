@@ -40951,6 +40951,106 @@
     "2004 Cayley Contest, Problem 25": [
       900,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): gcd(7x + k, k + 1) = gcd(7x - 1, k + 1), so 7x - 1 must have no factor from 2 to 301: 7x - 1 is a prime above 301 or 1: x = 44, 50, 60."
+    ],
+    "2003 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 6/1 = 6."
+    ],
+    "2003 Cayley Contest, Problem 2": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (17 - 15)(17 + 15) = 64 = 8^2."
+    ],
+    "2003 Cayley Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 42 = 2 times 3 times 7, so it is divisible by 7."
+    ],
+    "2003 Cayley Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 25% is five times 5%: 40."
+    ],
+    "2003 Cayley Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2/3 + 7/2 = 25/6, about 4.17: 4."
+    ],
+    "2003 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the angles at B on the line sum to 180: 3x + 99 = 180, x = 27."
+    ],
+    "2003 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the full quarter sums to 13 + 17 + 45 = 75, so the three others give x + y + z + 171 = 225: 54."
+    ],
+    "2003 Cayley Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): perimeter 60 gives side 15: 225."
+    ],
+    "2003 Cayley Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): x + 1/5 = 3/5: x = 2/5."
+    ],
+    "2003 Cayley Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the 6 boys must be 3/8 of the players, 16 in all: 8 more girls."
+    ],
+    "2003 Cayley Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): N = 1111111000: 7."
+    ],
+    "2003 Cayley Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): slope BC = -1/3, so 1/(a - 9) = -1/3: a = 6."
+    ],
+    "2003 Cayley Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the square less two right triangles 10 by 8: 100 - 80 = 20."
+    ],
+    "2003 Cayley Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 3 steps of 0.5 m equal 4 of Jim's, so his are 0.375 m: 24 steps make 9 m."
+    ],
+    "2003 Cayley Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the parallels give angle ABC = 110 and base angles x: 2x + 110 = 180, x = 35."
+    ],
+    "2003 Cayley Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2^4006 3^2002 / (2^2002 3^2002 2^2003) = 2."
+    ],
+    "2003 Cayley Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the shaded circle of radius 1 and ring from 2 to 3 have area pi + 5 pi of 16 pi: 3 : 8."
+    ],
+    "2003 Cayley Contest, Problem 18": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 496 = 512 - 16 = 2^9 - 2^4: 13."
+    ],
+    "2003 Cayley Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 810 = 2 times 3^4 times 5 in four distinct digits forces 3, 5, 6, 9: sum 23."
+    ],
+    "2003 Cayley Contest, Problem 20": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the change saves 2.1 L per 100 km, 1.68 dollars: 400/1.68 times 100 = 23810 km."
+    ],
+    "2003 Cayley Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): together they close a lap every 24 s: 1/24 - 1/56 = 1/42, so 42 s."
+    ],
+    "2003 Cayley Contest, Problem 22": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): triangle AEF is similar to ABC with ratio 12/30, so (h - 12)/h = 2/5: h = 20, area (1/2)(12)(8) = 48."
+    ],
+    "2003 Cayley Contest, Problem 23": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the base side is 12 sqrt 10, each face gives slant height 1680/(12 sqrt 10) = 14 sqrt 10, and h^2 = 1960 - 360 = 1600: 40."
+    ],
+    "2003 Cayley Contest, Problem 24": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): split 0 to 9 by residue mod 3 into 4, 3 and 3; residue patterns 0000, 0012, 0111, 0222, 1122 give 1 + 54 + 4 + 4 + 9 = 72."
+    ],
+    "2003 Cayley Contest, Problem 25": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the lacing is symmetric and the exterior angles grow by theta along the chain until the middle triangle closes: (2n + 1) theta = 180, theta = 60, 36, 20, 12, 4: 5."
     ]
   }
 }
