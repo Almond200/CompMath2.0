@@ -47269,6 +47269,106 @@
     "2025 UKMT IMC, Problem 25": [
       700,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): with the rectangle l by h, ly = 12, hx = 10 and (l - x)(h - y) = 12 give A^2 - 34A + 120 = 0: A = 30, shaded 30 - 17 = 13."
+    ],
+    "2024 UKMT IMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 44/(-4) = -11."
+    ],
+    "2024 UKMT IMC, Problem 2": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 97 - 11 = 86."
+    ],
+    "2024 UKMT IMC, Problem 3": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): T halves PQ, so the shaded triangle is half of PQR, a quarter of the square."
+    ],
+    "2024 UKMT IMC, Problem 4": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 5 + 12 = 17: sqrt 17."
+    ],
+    "2024 UKMT IMC, Problem 5": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the youngest three are 5, 6, 7, so the oldest are 9, 10, 11: 10."
+    ],
+    "2024 UKMT IMC, Problem 6": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): (5, 0), (4, 3), (3, 4), (0, 5) are 5 from the origin; (2, 2) is not."
+    ],
+    "2024 UKMT IMC, Problem 7": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 5 times 10^7 grains in 25 000 cans: 2000."
+    ],
+    "2024 UKMT IMC, Problem 8": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 999(999 + 1) = 999 000."
+    ],
+    "2024 UKMT IMC, Problem 9": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): each sector has two radii of side x and an arc l with 2x + l = 18; the shape has 6x + 3l = 3(18) = 54."
+    ],
+    "2024 UKMT IMC, Problem 10": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 5/6 + 4/5 = 49/30."
+    ],
+    "2024 UKMT IMC, Problem 11": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the frame is 80^2 - 72^2 = 1216 of 6400: 19%."
+    ],
+    "2024 UKMT IMC, Problem 12": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): each new hypotenuse squared grows by 1: sqrt 9 = 3."
+    ],
+    "2024 UKMT IMC, Problem 13": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 1.2x = 2(0.8)(x - 20) gives x = 80."
+    ],
+    "2024 UKMT IMC, Problem 14": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the angles are 72, 84, 96, 108; two pairs of adjacent angles sum to 180: a trapezium."
+    ],
+    "2024 UKMT IMC, Problem 15": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the three conditions add to c + b + r = 5000 with c + b = r + 4000: r = 500."
+    ],
+    "2024 UKMT IMC, Problem 16": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 5! and beyond are multiples of 5, and 1 + 2 + 6 + 24 = 33 leaves 3."
+    ],
+    "2024 UKMT IMC, Problem 17": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): 4^9 / 4^6 = 64."
+    ],
+    "2024 UKMT IMC, Problem 18": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): Q = (1, 4), R = (4, 1), S = (4, -1); with T = (4, 4) the area is (25 - 9)/2 = 8."
+    ],
+    "2024 UKMT IMC, Problem 19": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): comparing a column with a diagonal fixes t = 4 and s = 9, so the product is 216: 2 times x times 3 = 216, x = 36."
+    ],
+    "2024 UKMT IMC, Problem 20": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): three for the price of two saves a third of a shirt each, so a shirt is 16.50: 33."
+    ],
+    "2024 UKMT IMC, Problem 21": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the semicircle centres form a square of side 2 sqrt 2 with radius sqrt 2 arcs: 8 - 2 pi."
+    ],
+    "2024 UKMT IMC, Problem 22": [
+      500,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): the cut adds one face to at most six from the cube, so at most 7 faces: not 8."
+    ],
+    "2024 UKMT IMC, Problem 23": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): O, P and the touching point are collinear, so OP = R - r, and PA = PO puts the foot at R/2: (R/2)^2 + r^2 = (R - r)^2, r : R = 3 : 8."
+    ],
+    "2024 UKMT IMC, Problem 24": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): with the hexagon of side 2x, the pentagon is a rectangle plus a triangle; setting it to a quarter of 6xh fixes PT, and the two walks are 3 : 5."
+    ],
+    "2024 UKMT IMC, Problem 25": [
+      600,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 10 one): (100 + x)(100 - y) = 10 000, so 100 - y is a divisor of 10 000 below 100: 12 values."
     ]
   }
 }
