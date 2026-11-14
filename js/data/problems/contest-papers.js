@@ -252,5 +252,21 @@ window.MATH_CONTEST_PAPERS = {
   "2019 PUMaC Division B Combinatorics": {
     "url": "https://pumac.princeton.edu/s/2019Combo_B.pdf",
     "solUrl": "https://pumac.princeton.edu/s/2019Combo_B_Sols.pdf"
+  },
+  "2019 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/2019Geometry_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019Geometry_A-SOLS.pdf"
+  },
+  "2019 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/2019Geometry_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019Geometry_B-SOLS.pdf"
+  },
+  "2019 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/2019NT_A_Div.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019NT_SOLS_A.pdf"
+  },
+  "2019 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/2019NT_B_Div.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019NT_SOLS_B.pdf"
   }
 };

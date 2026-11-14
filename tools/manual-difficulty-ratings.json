@@ -135,7 +135,11 @@
     "2019 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/2019Algebra_A.pdf",
     "2019 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/2019Algebra_B.pdf",
     "2019 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/2019Combo_A.pdf",
-    "2019 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/2019Combo_B.pdf"
+    "2019 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/2019Combo_B.pdf",
+    "2019 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/2019Geometry_A.pdf",
+    "2019 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/2019Geometry_B.pdf",
+    "2019 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/2019NT_A_Div.pdf",
+    "2019 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/2019NT_B_Div.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -26013,6 +26017,134 @@
     "2019 PUMaC Division B Combinatorics, Problem 8": [
       3400,
       "Translate rounded shooting percentages to lattice points in half-open trapezoids and count the conditional team-size range."
+    ],
+    "2019 PUMaC Division A Geometry, Problem 1": [
+      1800,
+      "Recover the axis and base radius of a right cone from a spatial diameter and its apex."
+    ],
+    "2019 PUMaC Division A Geometry, Problem 2": [
+      2850,
+      "Reflect an orthocenter to the circumcircle and combine perpendicular chord identities with a fixed triangle-area ratio."
+    ],
+    "2019 PUMaC Division A Geometry, Problem 3": [
+      2450,
+      "Translate containment of a variable-radius circle in a square into two symmetric triangular regions of its center coordinates."
+    ],
+    "2019 PUMaC Division A Geometry, Problem 4": [
+      2700,
+      "Use equal circle powers on a perpendicular line together with a median-length identity to recover two squared side lengths."
+    ],
+    "2019 PUMaC Division A Geometry, Problem 5": [
+      2850,
+      "Identify a cyclic quadrilateral from tangent-circle angles and reduce its diameter to a positive quadratic root."
+    ],
+    "2019 PUMaC Division A Geometry, Problem 6": [
+      3900,
+      "Track antipodal perimeter walkers through their midpoint star and convex hull; the ordinary-corner interpretation is accepted, while the source self-intersection count is incorrect."
+    ],
+    "2019 PUMaC Division A Geometry, Problem 7": [
+      3400,
+      "Relate intersecting trapezoid circumcircles by spiral similarity and prove a derived line bisects the remaining leg."
+    ],
+    "2019 PUMaC Division A Geometry, Problem 8": [
+      4000,
+      "Use reciprocal polar incidences, a circle homothety and an angle bisector to recover a chord from an internally tangent-circle configuration."
+    ],
+    "2019 PUMaC Division B Geometry, Problem 1": [
+      1500,
+      "Relate an obtuse inscribed angle to the convex central angle completing a quadrilateral."
+    ],
+    "2019 PUMaC Division B Geometry, Problem 2": [
+      1800,
+      "Recover the axis and base radius of a right cone from a spatial diameter and its apex."
+    ],
+    "2019 PUMaC Division B Geometry, Problem 3": [
+      2850,
+      "Reflect an orthocenter to the circumcircle and combine perpendicular chord identities with a fixed triangle-area ratio."
+    ],
+    "2019 PUMaC Division B Geometry, Problem 4": [
+      2450,
+      "Translate containment of a variable-radius circle in a square into two symmetric triangular regions of its center coordinates."
+    ],
+    "2019 PUMaC Division B Geometry, Problem 5": [
+      2700,
+      "Use equal circle powers on a perpendicular line together with a median-length identity to recover two squared side lengths."
+    ],
+    "2019 PUMaC Division B Geometry, Problem 6": [
+      2850,
+      "Identify a cyclic quadrilateral from tangent-circle angles and reduce its diameter to a positive quadratic root."
+    ],
+    "2019 PUMaC Division B Geometry, Problem 7": [
+      3900,
+      "Track antipodal perimeter walkers through their midpoint star and convex hull; the ordinary-corner interpretation is accepted, while the source self-intersection count is incorrect."
+    ],
+    "2019 PUMaC Division B Geometry, Problem 8": [
+      3400,
+      "Relate intersecting trapezoid circumcircles by spiral similarity and prove a derived line bisects the remaining leg."
+    ],
+    "2019 PUMaC Division A Number Theory, Problem 1": [
+      1500,
+      "Count the independent prime-exponent pairs realizing a fixed least common multiple."
+    ],
+    "2019 PUMaC Division A Number Theory, Problem 2": [
+      2100,
+      "Factor a divisor sum of the completely multiplicative sign function and recognize the indicator of perfect squares."
+    ],
+    "2019 PUMaC Division A Number Theory, Problem 3": [
+      3150,
+      "Locate the first long interval avoiding a digit-sum residue by examining trailing nines and carry transitions."
+    ],
+    "2019 PUMaC Division A Number Theory, Problem 4": [
+      3200,
+      "Group a binary logarithm floor sum into dyadic blocks and solve the resulting divisibility equation. The standalone A prompt misprints the summand as a constant in the index; its intended B7 twin is explicit in the solution."
+    ],
+    "2019 PUMaC Division A Number Theory, Problem 5": [
+      3850,
+      "Characterize unavoidable fixed-length prime products by the exponent of the unit residues modulo a squarefree composite."
+    ],
+    "2019 PUMaC Division A Number Theory, Problem 6": [
+      3500,
+      "Restrict a prime-pair square quotient with Fermat and valuations, then exhaust the remaining primes below two hundred."
+    ],
+    "2019 PUMaC Division A Number Theory, Problem 7": [
+      3900,
+      "Optimize prime residue representatives under a divisor-sum exclusion and cancel a long sum using multiplicative-order symmetries."
+    ],
+    "2019 PUMaC Division A Number Theory, Problem 8": [
+      3850,
+      "Count square residues in the image of a unit-plus-inverse map modulo a prime square, treating the two exceptional residue classes separately."
+    ],
+    "2019 PUMaC Division B Number Theory, Problem 1": [
+      1200,
+      "Invert a small product of all positive divisors by pairing complementary divisors."
+    ],
+    "2019 PUMaC Division B Number Theory, Problem 2": [
+      1500,
+      "Count the independent prime-exponent pairs realizing a fixed least common multiple."
+    ],
+    "2019 PUMaC Division B Number Theory, Problem 3": [
+      2100,
+      "Factor a divisor sum of the completely multiplicative sign function and recognize the indicator of perfect squares."
+    ],
+    "2019 PUMaC Division B Number Theory, Problem 4": [
+      3000,
+      "Relate consecutive-integer sums allowing negative terms to odd divisors and minimize the odd prime-power factorization for a prescribed representation count."
+    ],
+    "2019 PUMaC Division B Number Theory, Problem 5": [
+      3150,
+      "Locate the first long interval avoiding a digit-sum residue by examining trailing nines and carry transitions."
+    ],
+    "2019 PUMaC Division B Number Theory, Problem 6": [
+      3900,
+      "Audit an odd-part polynomial congruence: two allowed degree-2019 integer polynomials give distinct requested residues because the source odd-power-sum lemma fails."
+    ],
+    "2019 PUMaC Division B Number Theory, Problem 7": [
+      3200,
+      "Group a binary logarithm floor sum into dyadic blocks and solve the resulting divisibility equation."
+    ],
+    "2019 PUMaC Division B Number Theory, Problem 8": [
+      3850,
+      "Characterize unavoidable fixed-length prime products by the exponent of the unit residues modulo a squarefree composite."
     ]
   }
 }

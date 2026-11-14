@@ -12,15 +12,19 @@ const roundLabel=round=>({'Combinatorics':'Combo','Number Theory':'NT','Discrete
 const familyLabel=fam=>fam.replace(' Division ',' ');
 assert(!context.window.MATH_PLANNED_CONTESTS.some(c=>/^(BMT|PUMaC)$/.test(c.name)),'live archives have no duplicate coming-soon entry');
 // Match the actual shared questions, which need not occupy consecutive B slots.
-for(const year of [2019,2020,2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) for(let n=1;n<=6;n++){
-  const bNumber=year===2020&&subject==='Combinatorics'?[2,3,4,5,7,8][n-1]:n+2;
-  const refs=[`${year} PUMaC Division A ${subject}, Problem ${n}`,`${year} PUMaC Division B ${subject}, Problem ${bNumber}`];
+for(const year of [2019,2020,2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) {
+ const shared=year===2019&&subject==='Geometry'?[2,3,4,5,6,7,8]
+   :year===2019&&subject==='Number Theory'?[2,3,5,7,8]
+   :year===2020&&subject==='Combinatorics'?[2,3,4,5,7,8]:[3,4,5,6,7,8];
+ for(const [index,bNumber] of shared.entries()){
+  const refs=[`${year} PUMaC Division A ${subject}, Problem ${index+1}`,`${year} PUMaC Division B ${subject}, Problem ${bNumber}`];
   if(!db.some(p=>p.ref===refs[0]))continue;
   const metadata=refs.map(ref=>{
     const p=db.find(p=>p.ref===ref);assert(p,ref);
     return JSON.stringify([p.formulas,p.tree,context.window.MATH_PROBLEM_RATINGS.ratings[slug(ref)].elo]);
   });
   assert.equal(metadata[0],metadata[1],refs.join(' / '));
+ }
 }
 for(const [paper,source] of Object.entries(papers)) {
   const m=paper.match(/^(\d{4}) (BMT|PUMaC Division [AB]) (.+)$/);assert(m,paper);
