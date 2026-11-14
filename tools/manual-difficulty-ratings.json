@@ -120,7 +120,11 @@
     "2021 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2021-1.pdf",
     "2020 BMT Algebra": "https://berkeley.mt/archives/bmt-2020/algebra-problems.pdf",
     "2020 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2020/discrete-problems.pdf",
-    "2020 BMT Geometry": "https://berkeley.mt/archives/bmt-2020/geometry-problems.pdf"
+    "2020 BMT Geometry": "https://berkeley.mt/archives/bmt-2020/geometry-problems.pdf",
+    "2020 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/2020AlgebraAQuestions.pdf",
+    "2020 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/2020AlgebraBQuestions.pdf",
+    "2020 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_A-2.pdf",
+    "2020 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_B.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -6882,6 +6886,134 @@
     "2020 BMT Geometry, Problem 10": [
       4000,
       "Use the Urquhart focal-sum configuration to transfer an ellipse intersection perimeter and independently verify the original ordered intersections."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 1": [
+      2400,
+      "Impose order three on a fractional linear map and maximize the resulting quadratic parameter relation."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 2": [
+      2650,
+      "Intersect a line through two known points of a cubic curve and recover the third intersection from Vieta."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 3": [
+      3000,
+      "Use closure of a finite image under addition modulo one to classify the possible rational values and sum them."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 4": [
+      3050,
+      "Express a product over unordered pairs of transformed roots as a power of two polynomial evaluations."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 5": [
+      3500,
+      "Subtract successive prefix identities to obtain a floor-indexed nonlinear recurrence and locate its first threshold crossing."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 6": [
+      3800,
+      "Review a multiplicative polynomial functional equation on root-of-unity rays; its printed uniqueness fails for the allowed zero/nonzero indicator function."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 7": [
+      3750,
+      "Prove a sine has degree six, eliminate it from a quadratic transform, and evaluate the irreducible minimal polynomial at one."
+    ],
+    "2020 PUMaC Division A Algebra, Problem 8": [
+      3900,
+      "Count faithful Klein-four actions by their orbits, subtract cyclic actions and bound the last degree with fewer than the prescribed number of subgroups."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 1": [
+      1400,
+      "Find the parameter endpoint at which a quadratic first has real roots by its linear discriminant."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 2": [
+      1600,
+      "Spend a fixed integer study-hour budget by checking the concave quadratic return from the third subject."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 3": [
+      2400,
+      "Impose order three on a fractional linear map and maximize the resulting quadratic parameter relation."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 4": [
+      2650,
+      "Intersect a line through two known points of a cubic curve and recover the third intersection from Vieta."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 5": [
+      3000,
+      "Use closure of a finite image under addition modulo one to classify the possible rational values and sum them."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 6": [
+      3050,
+      "Express a product over unordered pairs of transformed roots as a power of two polynomial evaluations."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 7": [
+      3500,
+      "Subtract successive prefix identities to obtain a floor-indexed nonlinear recurrence and locate its first threshold crossing."
+    ],
+    "2020 PUMaC Division B Algebra, Problem 8": [
+      3800,
+      "Review a multiplicative polynomial functional equation on root-of-unity rays; its printed uniqueness fails for the allowed zero/nonzero indicator function."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 1": [
+      2300,
+      "Count orders of the eight fixed cube positions whose every initial segment is connected; full permutation enumeration verifies the cases."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 2": [
+      2800,
+      "Count ordered triples of distinct coins with prescribed final usage counts; distinguish the coins as required by the corrected source."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 3": [
+      2800,
+      "Interleave four ordered sequences of grid cuts while allowing each outer margin to be discarded in one or two cuts."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 4": [
+      3250,
+      "Count families in a four-element power set subject to pair co-occurrence restrictions, separating the selected triples."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 5": [
+      3600,
+      "Count connected remnants of a randomly deleted figure-eight graph, treating the two cycles and their shared vertex separately."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 6": [
+      3900,
+      "Analyze radial stabilization on an infinite three-regular tree and characterize initial chip counts whose final configuration has no collisions."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 7": [
+      3700,
+      "Recognize a weighted recursive state expression as an occupancy expectation, then estimate a binomial probability accurately enough to round."
+    ],
+    "2020 PUMaC Division A Combinatorics, Problem 8": [
+      3900,
+      "Count positive three-part compositions with separate forbidden multiples through a telescoping generating function and test divisibility for eighteen parameters."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 1": [
+      1200,
+      "Sum word counts over five lengths with ten independent letter-and-emphasis choices at every position."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 2": [
+      2300,
+      "Count orders of the eight fixed cube positions whose every initial segment is connected; full permutation enumeration verifies the cases."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 3": [
+      2800,
+      "Count ordered triples of distinct coins with prescribed final usage counts; distinguish the coins as required by the corrected source."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 4": [
+      2800,
+      "Interleave four ordered sequences of grid cuts while allowing each outer margin to be discarded in one or two cuts."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 5": [
+      3250,
+      "Count families in a four-element power set subject to pair co-occurrence restrictions, separating the selected triples."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 6": [
+      3450,
+      "Weight the coefficients of a bundle-subset polynomial by a normalized geometric supply distribution and evaluate it at one half."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 7": [
+      3600,
+      "Count connected remnants of a randomly deleted figure-eight graph, treating the two cycles and their shared vertex separately."
+    ],
+    "2020 PUMaC Division B Combinatorics, Problem 8": [
+      3900,
+      "Analyze radial stabilization on an infinite three-regular tree and characterize initial chip counts whose final configuration has no collisions."
     ]
   }
 }

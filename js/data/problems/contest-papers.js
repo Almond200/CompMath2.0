@@ -192,5 +192,21 @@ window.MATH_CONTEST_PAPERS = {
   "2020 BMT Geometry": {
     "url": "https://berkeley.mt/archives/bmt-2020/geometry-problems.pdf",
     "solUrl": "https://berkeley.mt/archives/bmt-2020/geometry-solutions.pdf"
+  },
+  "2020 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/2020AlgebraAQuestions.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2020AlgebraASolutions.pdf"
+  },
+  "2020 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/2020AlgebraBQuestions.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2020AlgebraBSolutions.pdf"
+  },
+  "2020 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_A-2.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_A_Solutions.pdf"
+  },
+  "2020 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2020__PUMaC_Combinatorics_B_Solutions.pdf"
   }
 };
