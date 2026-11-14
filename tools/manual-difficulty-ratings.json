@@ -25022,6 +25022,242 @@
     "2020 BMT Geometry, Problem 10": [
       4000,
       "Use the Urquhart focal-sum configuration to transfer an ellipse intersection perimeter and independently verify the original ordered intersections."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 1": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): weights on either pan give balanced ternary: 1, 3, 9 and 27."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 2": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): n(n-1)/2 = 66 gives 12."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 3": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 0.8 times 1.25 is 1, no net change."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 4": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (y-x)(y+x) = 169 forces y - x = 1, so x = 84 and y = 85."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 5": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the full column fixes the sum 144; rows and columns alone leave A free, and the diagonals, as in the examples, give A = 48."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 6": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the longest side faces the largest angle, so AB."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 7": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the intercepts 3a and 3b have the same sign, so the line slopes down: lines 1 and 2."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 8": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the roots of f(2x) are half those of f, so the gap halves."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 9": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the highest prime powers: 8 times 9 times 5 times 7."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 10": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the nest y satisfies y^2 = x + y and x + y = 2, so y = sqrt 2."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 11": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): both is 9 percent, so either is 31 percent."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 12": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1997 = 1843 + 154, and 97y + 19z = 154 has y = 1, z = 3."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 13": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 13 + 5 = 18 and 13 times 5 = 65."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 14": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (1/3)(1/4) + (2/3)(1/4) = 1/4."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 15": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): read the tea drinkers aged 18 to 25 from the table: 10 of 900."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 16": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (2x - 7)^2 - (2k)^2 = 65 has four factor pairs: x = 20, 8, -1, -13."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 17": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1 + 73/99."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 18": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): pennies are 3 more than a multiple of 5; both solutions have 2 dimes."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 19": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): group the terms: m(3m - 4)(2m^n - 3)."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 20": [
+      500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a zeroth power inside the tower makes it 1."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 21": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): each clause is a time shift: half the sum of their ages was 2 years ago, giving the prince 12 and the princess 16."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 22": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): C(7,3) + C(3,3) + C(5,3) of the C(15,3) choices."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 23": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): x + y = 6 gives z = 12, and exactly-one 25 gives Spanish 26."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 24": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2 times (1/4)(3/4)."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 25": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the first two get clean cartons and the third a bad one: (7/12)(6/11)(5/10)."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 26": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 45 of the 100 students have B or above: C(45,2)/C(100,2)."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 27": [
+      700,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): inside B and C and outside A."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 28": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the outer square has area 4 and the inner square, with diagonal 2, area 2."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 29": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): test the sets: 1/5 + 1/9 + 1/45 = 1/3."
+    ],
+    "2013 Utah State Math Contest Junior, Problem 30": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): subtracting the equations gives 4r = 2k, so r = 3 and k = 6."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 1": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): weights on either pan give balanced ternary: 1, 3, 9 and 27."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 2": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): n(n-1)/2 = 66 gives 12."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 3": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 9 times 10 times 10 = 900 palindromes; the official answer, 1000, counts a leading zero."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 4": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the full column fixes the sum 144; rows and columns alone leave A free, and the diagonals, as in the examples, give A = 48."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 5": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): a vertex is the sum of two midpoints minus the third: (7, 0), (3, 8), (-5, 4)."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 6": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 2 + 4 + ... + 80 = 40 times 41."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 7": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1997 = 1843 + 154, and 97y + 19z = 154 has y = 1, z = 3."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 8": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 13 + 5 = 18 and 13 times 5 = 65."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 9": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): subtracting the equations gives 4r = 2k, so r = 3 and k = 6."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 10": [
+      1200,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (2x - 7)^2 - (2k)^2 = 65 has four factor pairs: x = 20, 8, -1, -13."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 11": [
+      600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 1 + 73/99."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 12": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 45 of the 100 students have B or above: C(45,2)/C(100,2)."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 13": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): first term -2/3 over 1 + 2/3."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 14": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the minute hand gains 5.5 degrees a minute on a 210-degree lead."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 15": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): sin 2x cancels the cross term of the square, leaving 1."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 16": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): pennies are 3 more than a multiple of 5; both solutions have 2 dimes."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 17": [
+      1500,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): with t = x/e - 1 the given inequality reads e^(x/e) >= x, so x^(1/x) <= e^(1/e), with equality at x = e."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 18": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): each clause is a time shift: half the sum of their ages was 2 years ago, giving the prince 12 and the princess 16."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 19": [
+      900,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): (y-x)(y+x) = 169 forces y - x = 1, so x = 84 and y = 85."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 20": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the two roots multiply to 4, so the sum is at least 4, reached at n = 24."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 22": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): x + y = 6 gives z = 12, and exactly-one 25 gives Spanish 26."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 23": [
+      1300,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): only the mean must rise: the 11th value can equal 42, and 80 need not exceed the old maximum."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 24": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 9 times 9! of the 9 times 10^9 ten-digit numbers."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 25": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): add P(brand) times P(allergic to it): (4 + 6 + 3)/40."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 26": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): 3 times (1/4)(3/4)^2."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 27": [
+      1000,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): Option I is 1/4; Option II counts 12 of 36 ordered rolls."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 28": [
+      800,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): the remaining red time is uniform on 0 to 50 seconds."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 29": [
+      1600,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): Dan survives exactly when every trout is eaten before him, 1/(T + 1) by symmetry among those T + 1 fish."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 30": [
+      1100,
+      "Author estimate (the Utah State Math Contest publishes no solve counts; placed on the collection’s scale by its route, the Junior exam running from an early AMC 10 problem to a late one and the Senior exam to a late AMC 12 one): multiply by r: 2(x^2 + y^2) = x."
     ]
   }
 }
