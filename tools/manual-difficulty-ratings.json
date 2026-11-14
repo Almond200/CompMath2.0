@@ -32223,6 +32223,190 @@
     "2013 Columbus State Tournament, Problem 50": [
       1300,
       "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): BC parallel to PR makes QBC similar to QPR; the areas fix the ratio."
+    ],
+    "2012 Columbus State Tournament, Problem 1": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): count the outcomes of the stated event among the 36."
+    ],
+    "2012 Columbus State Tournament, Problem 2": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): from 6! on every term ends in 0, so 0! + 2! + 4! = 27 gives 7."
+    ],
+    "2012 Columbus State Tournament, Problem 3": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): in perpendicular planes FC is a space diagonal of the 4 by 4 by 4 frame: 4 sqrt 3."
+    ],
+    "2012 Columbus State Tournament, Problem 4": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 0.4 times 5 + 0.3 times 10 + 0.2 times 25 = 10: the fair price."
+    ],
+    "2012 Columbus State Tournament, Problem 5": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1/3 + 1/6 = 1/2 job an hour: 2 hours."
+    ],
+    "2012 Columbus State Tournament, Problem 6": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2012 = 4 times 503: (1 + 2 + 4)(1 + 503) = 3528."
+    ],
+    "2012 Columbus State Tournament, Problem 7": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): locate the quartic's roots in (0, 1) by its sign changes."
+    ],
+    "2012 Columbus State Tournament, Problem 8": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): substitute the roots of the divisor to read off the remainder."
+    ],
+    "2012 Columbus State Tournament, Problem 9": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the three angles have tangents 1, 1/2, 1/3, and arctan(1/2) + arctan(1/3) = 45."
+    ],
+    "2012 Columbus State Tournament, Problem 10": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): factor the denominator x^2 - 4: the hole at x = 2 and the asymptote at x = -2 fix the constants."
+    ],
+    "2012 Columbus State Tournament, Problem 11": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): write N as a product of prime powers and supply the odd exponents."
+    ],
+    "2012 Columbus State Tournament, Problem 12": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the other 4 elements are free: 2^4 = 16."
+    ],
+    "2012 Columbus State Tournament, Problem 13": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): tan k tan(90 - k) = 1 pairs the factors, leaving tan 45 = 1."
+    ],
+    "2012 Columbus State Tournament, Problem 14": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): log_3(9 - 3^x) = 3 - x gives a quadratic in 3^x."
+    ],
+    "2012 Columbus State Tournament, Problem 15": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): equal arcs for one pair of opposite sides make the quadrilateral an isosceles trapezoid."
+    ],
+    "2012 Columbus State Tournament, Problem 16": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): cube or square x to find its minimal polynomial and evaluate."
+    ],
+    "2012 Columbus State Tournament, Problem 17": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): test each proposition about lines and planes in space."
+    ],
+    "2012 Columbus State Tournament, Problem 18": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): count the draws with the stated colors over C(10, 5)."
+    ],
+    "2012 Columbus State Tournament, Problem 19": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): n^2 + 37 = m^2 gives (m - n)(m + n) = 37: n = plus or minus 18."
+    ],
+    "2012 Columbus State Tournament, Problem 20": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): square carefully and check each root in the original."
+    ],
+    "2012 Columbus State Tournament, Problem 21": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the sums of binomial coefficients double with each n."
+    ],
+    "2012 Columbus State Tournament, Problem 22": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the double sum separates into telescoping parts."
+    ],
+    "2012 Columbus State Tournament, Problem 23": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the trajectory is a quadratic in x; read the requested height or range."
+    ],
+    "2012 Columbus State Tournament, Problem 24": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): Q(t) = Q0(1 - e^(-t/a)): solve for the time to reach the stated charge."
+    ],
+    "2012 Columbus State Tournament, Problem 25": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): with BD = AC + 2 and the isosceles right triangle, compute OD."
+    ],
+    "2012 Columbus State Tournament, Problem 26": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the chord 2 sin(180/n) equals the side: solve for n."
+    ],
+    "2012 Columbus State Tournament, Problem 27": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the board's pattern repeats along its length: count grey squares per period."
+    ],
+    "2012 Columbus State Tournament, Problem 28": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): perpendicular diagonals of an isosceles trapezoid make the height the average of the bases: 4 times 4."
+    ],
+    "2012 Columbus State Tournament, Problem 29": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the radius is 17: half the chord sqrt(17^2 - 15^2) = 8, so AB = 16."
+    ],
+    "2012 Columbus State Tournament, Problem 30": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the tangent length from C to the circle on AB."
+    ],
+    "2012 Columbus State Tournament, Problem 31": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): cone, sphere and cylinder of the same radius and height have volumes 1 : 2 : 3."
+    ],
+    "2012 Columbus State Tournament, Problem 32": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the hexagon of area 54 sqrt 3 has side 6, perimeter 36: square of side 9, area 81."
+    ],
+    "2012 Columbus State Tournament, Problem 33": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 10!/(5! 3! 2!) = 2520."
+    ],
+    "2012 Columbus State Tournament, Problem 34": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): phi^n = F_n phi + F_(n - 1): read the coefficients."
+    ],
+    "2012 Columbus State Tournament, Problem 35": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): EFGH is a square; its side from the legs 1509 and 503."
+    ],
+    "2012 Columbus State Tournament, Problem 36": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): solve the two circles' equations for the intersection A."
+    ],
+    "2012 Columbus State Tournament, Problem 37": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the condition on |z| becomes a circle or line in x and y."
+    ],
+    "2012 Columbus State Tournament, Problem 39": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the nearest point is along the perpendicular from the center to the line."
+    ],
+    "2012 Columbus State Tournament, Problem 40": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): square cos x - sin x to get sin 2x, then cos 2x by the Pythagorean identity with the sign from the interval."
+    ],
+    "2012 Columbus State Tournament, Problem 41": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): n = 64: the sum of i^k for k = 1 to 64 is 0."
+    ],
+    "2012 Columbus State Tournament, Problem 42": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): replace x by 1/x and solve the pair for f(x); then minimize with AM-GM."
+    ],
+    "2012 Columbus State Tournament, Problem 43": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1/(k sqrt(k + 1) + (k + 1) sqrt k) = 1/sqrt k - 1/sqrt(k + 1)."
+    ],
+    "2012 Columbus State Tournament, Problem 47": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): test the sums of three squares equal to 2012 with positive values."
+    ],
+    "2012 Columbus State Tournament, Problem 48": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the values m/2 + n/5 in the set; sum the distinct ones."
+    ],
+    "2012 Columbus State Tournament, Problem 49": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): Menelaus on triangle ABC with the transversal LNM."
+    ],
+    "2012 Columbus State Tournament, Problem 50": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the coin's center must avoid the bands near the triangles' edges: compare areas."
     ]
   }
 }
