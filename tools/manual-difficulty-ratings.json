@@ -36555,6 +36555,106 @@
     "2020 Fermat Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): failure needs |x - y| or |x - z| at least 1/2, each with probability 1/4; both at once (on the same side) is two pyramids of volume 1/24: 1 - (1/2 - 1/12) = 7/12."
+    ],
+    "2019 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 14 = 2 times 5 + 4."
+    ],
+    "2019 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 20(x + y) - 19(x + y) = x + y."
+    ],
+    "2019 Fermat Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 8 - 6/2 = 5."
+    ],
+    "2019 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each part is 5: PS = 15 and TV = 10, sum 25."
+    ],
+    "2019 Fermat Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a third of an hour at 30 km/h: 10 km."
+    ],
+    "2019 Fermat Contest, Problem 6": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each shaded triangle has base a third of SR and the full height: three halves of a third, so 1/2."
+    ],
+    "2019 Fermat Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Blythe is north of Arva, which is north of Cans, Dundee and Ernie."
+    ],
+    "2019 Fermat Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 8 times 48 times 81 = 2^7 3^5: k = 5."
+    ],
+    "2019 Fermat Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (3/24 + 4/24)/2 = 7/48."
+    ],
+    "2019 Fermat Contest, Problem 10": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the closest are 28753 (1247 below) and 32578 (2578 above): 28753, tens digit 5."
+    ],
+    "2019 Fermat Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): perpendicular through (3, 0) has slope -1: y = -x + 3, intercept 3."
+    ],
+    "2019 Fermat Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 21 + 20 = 41 of 80: 51.25%."
+    ],
+    "2019 Fermat Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 8x + 7x = 60 gives x = 4: 32 minutes after 7, 7:32."
+    ],
+    "2019 Fermat Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): fill the Latin square row by row and column by column: the starred cell is B."
+    ],
+    "2019 Fermat Contest, Problem 15": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): by the number of green balls: 0, 1, 2, 3 give 1 + 4 + 6 + 4 = 15 arrangements."
+    ],
+    "2019 Fermat Contest, Problem 16": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with x = 2y the figure splits into 7 squares of side y, so 7y^2 = 252 and y = 6; the boundary is 16 segments of length y: 96."
+    ],
+    "2019 Fermat Contest, Problem 17": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): QP = PU makes QPU isosceles with apex angle 108 - 60 = 48, so its base angles are 66; by symmetry 360 - 66 - 60 - 66 = 168."
+    ],
+    "2019 Fermat Contest, Problem 18": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the last digit is 0 and the number of 1s a multiple of 3: the leading 1 plus 2 or 5 more among the 5 middle digits, C(5, 2) + C(5, 5) = 11."
+    ],
+    "2019 Fermat Contest, Problem 19": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 63 = 2 times 31 + 1, 31 = 2 times 15 + 1, ..., down to 1 in five steps: 6 times 3^5 = 1458."
+    ],
+    "2019 Fermat Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): circumradius 2 means side 2 sqrt 3: area 3 sqrt 3."
+    ],
+    "2019 Fermat Contest, Problem 21": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with N = PQRST, 4(10N + 4) = 400000 + N gives 39N = 399984: N = 10256, digit sum 14."
+    ],
+    "2019 Fermat Contest, Problem 22": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with big radius R the small diameter is 2R - 9; T = (0, R - 5) on the small circle gives R^2 - R(2R - 9) + (R - 5)^2 = 0, so R = 25: 50 + 41 = 91."
+    ],
+    "2019 Fermat Contest, Problem 23": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): n is a sum of k >= 4 consecutive positive integers when n = ka + k(k - 1)/2 with a >= 1; checking each n up to 100 gives 63."
+    ],
+    "2019 Fermat Contest, Problem 24": [
+      1000,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): two negative roots need sum r + 7 < 0, product r + 87 > 0 and discriminant (r + 23)(r - 13) > 0: -87 < r < -23, so 87^2 + 23^2 = 8098."
+    ],
+    "2019 Fermat Contest, Problem 25": [
+      1300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): RQ : RS = m : n, so with sides mk, nk the perimeter is (m + n)(k + 1) with 1 < k < (n + m)/(n - m); counting the integers in that range and setting it to m^2 + 2m - 1 forces n - m = 4."
     ]
   }
 }
