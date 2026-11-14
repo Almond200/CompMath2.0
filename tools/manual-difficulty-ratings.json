@@ -142,7 +142,11 @@
     "2019 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/2019NT_B_Div.pdf",
     "2018 BMT Algebra": "https://berkeley.mt/archives/bmt-2018/ALSP18.pdf",
     "2018 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2018/COSP18.pdf",
-    "2018 BMT Geometry": "https://berkeley.mt/archives/bmt-2018/GEOSP18.pdf"
+    "2018 BMT Geometry": "https://berkeley.mt/archives/bmt-2018/GEOSP18.pdf",
+    "2018 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/Algebra-A-Test.pdf",
+    "2018 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/Algebra-B-Test.pdf",
+    "2018 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/Combinatorics-A-Test.pdf",
+    "2018 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/Combinatorics-B-Test.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -26268,6 +26272,134 @@
     "2018 BMT Geometry, Problem 10": [
       2350,
       "Recover a sphere-section height from a curved surface-area ratio and compute the disk cut by the plane."
+    ],
+    "2018 PUMaC Division A Algebra, Problem 1": [
+      1700,
+      "Express a decimal with two separated unit digits as two geometric terms and sum both progressions."
+    ],
+    "2018 PUMaC Division A Algebra, Problem 2": [
+      2300,
+      "Subtract successive weighted-prefix identities to recover the sequence and locate the first term below a rational threshold."
+    ],
+    "2018 PUMaC Division A Algebra, Problem 3": [
+      2850,
+      "Prove a rational recurrence has period five and turn a specified late value into a shifted divisor-pair count."
+    ],
+    "2018 PUMaC Division A Algebra, Problem 4": [
+      2600,
+      "Fix two opposite-pair sums and minimize the squared norm at equal members of each pair; squared differences justify the bound for arbitrary real variables."
+    ],
+    "2018 PUMaC Division A Algebra, Problem 5": [
+      3000,
+      "Rewrite a signed weighted pair sum as a square minus a fixed geometric sum and attain the minimum odd absolute signed total."
+    ],
+    "2018 PUMaC Division A Algebra, Problem 6": [
+      3400,
+      "Convert a reciprocal constraint to a cotangent addition identity and maximize a bounded trigonometric quadratic with an admissible equality point."
+    ],
+    "2018 PUMaC Division A Algebra, Problem 7": [
+      3750,
+      "Solve a convolution recurrence through a square-root generating function and compute the exact two-adic denominator of its coefficient."
+    ],
+    "2018 PUMaC Division A Algebra, Problem 8": [
+      3900,
+      "Exchange absolutely convergent geometric expansions of a rational cosine series; exact arithmetic in the forty-eighth cyclotomic field independently verifies the rational sum."
+    ],
+    "2018 PUMaC Division B Algebra, Problem 1": [
+      1300,
+      "Solve a nested reciprocal equation for an absolute distance and add its two symmetric solutions."
+    ],
+    "2018 PUMaC Division B Algebra, Problem 2": [
+      1500,
+      "Telescope reciprocal products along an arithmetic progression to identify the final denominator."
+    ],
+    "2018 PUMaC Division B Algebra, Problem 3": [
+      1700,
+      "Express a decimal with two separated unit digits as two geometric terms and sum both progressions."
+    ],
+    "2018 PUMaC Division B Algebra, Problem 4": [
+      2300,
+      "Subtract successive weighted-prefix identities to recover the sequence and locate the first term below a rational threshold."
+    ],
+    "2018 PUMaC Division B Algebra, Problem 5": [
+      2850,
+      "Prove a rational recurrence has period five and turn a specified late value into a shifted divisor-pair count."
+    ],
+    "2018 PUMaC Division B Algebra, Problem 6": [
+      2600,
+      "Fix two opposite-pair sums and minimize the squared norm at equal members of each pair; squared differences justify the bound for arbitrary real variables."
+    ],
+    "2018 PUMaC Division B Algebra, Problem 7": [
+      3000,
+      "Rewrite a signed weighted pair sum as a square minus a fixed geometric sum and attain the minimum odd absolute signed total."
+    ],
+    "2018 PUMaC Division B Algebra, Problem 8": [
+      3400,
+      "Convert a reciprocal constraint to a cotangent addition identity and maximize a bounded trigonometric quadratic with an admissible equality point."
+    ],
+    "2018 PUMaC Division A Combinatorics, Problem 1": [
+      2000,
+      "Subtract five-letter color strings containing a monochromatic triple by the total multiplicity of that color."
+    ],
+    "2018 PUMaC Division A Combinatorics, Problem 2": [
+      2350,
+      "Pair successive ballot votes while the lead remains at most two, then enforce the final tie."
+    ],
+    "2018 PUMaC Division A Combinatorics, Problem 3": [
+      3000,
+      "Count extremal-distance hexagonal-lattice walks through pairs of adjacent directions, correcting the corner overcount."
+    ],
+    "2018 PUMaC Division A Combinatorics, Problem 4": [
+      3200,
+      "Track the extra high-bit contribution when adding two independent uniform binary integers and evaluate its expected digit count."
+    ],
+    "2018 PUMaC Division A Combinatorics, Problem 5": [
+      3400,
+      "Count surjective colorings of the eight Venn regions under the six set symmetries using fixed-coloring orbits and inclusion-exclusion."
+    ],
+    "2018 PUMaC Division A Combinatorics, Problem 6": [
+      3800,
+      "Characterize minimum vertex-blocking sets leaving one boundary lattice path and count the two Catalan families with their common diagonal removed."
+    ],
+    "2018 PUMaC Division A Combinatorics, Problem 7": [
+      3650,
+      "Separate a rotating variable-hop walk into valuation layers and sum their short direction cycles across a very large sparse power prefix."
+    ],
+    "2018 PUMaC Division A Combinatorics, Problem 8": [
+      4050,
+      "Classify exposed faces of a four-dimensional permutohedron by weak coordinate orders and count its two-dimensional faces; no specific higher-dimensional-polytope node exists."
+    ],
+    "2018 PUMaC Division B Combinatorics, Problem 1": [
+      1250,
+      "Count four-die outcomes whose product has exactly one prime factor and three unit factors."
+    ],
+    "2018 PUMaC Division B Combinatorics, Problem 2": [
+      2000,
+      "Subtract five-letter color strings containing a monochromatic triple by the total multiplicity of that color."
+    ],
+    "2018 PUMaC Division B Combinatorics, Problem 3": [
+      2350,
+      "Pair successive ballot votes while the lead remains at most two, then enforce the final tie."
+    ],
+    "2018 PUMaC Division B Combinatorics, Problem 4": [
+      2800,
+      "Encode divisor chains by nondecreasing prime exponents and reduce their binomial count modulo a large prime."
+    ],
+    "2018 PUMaC Division B Combinatorics, Problem 5": [
+      3000,
+      "Count extremal-distance hexagonal-lattice walks through pairs of adjacent directions, correcting the corner overcount."
+    ],
+    "2018 PUMaC Division B Combinatorics, Problem 6": [
+      3200,
+      "Track the extra high-bit contribution when adding two independent uniform binary integers and evaluate its expected digit count."
+    ],
+    "2018 PUMaC Division B Combinatorics, Problem 7": [
+      3400,
+      "Count surjective colorings of the eight Venn regions under the six set symmetries using fixed-coloring orbits and inclusion-exclusion."
+    ],
+    "2018 PUMaC Division B Combinatorics, Problem 8": [
+      3650,
+      "Separate a rotating variable-hop walk into valuation layers and sum their short direction cycles across a very large sparse power prefix."
     ]
   }
 }

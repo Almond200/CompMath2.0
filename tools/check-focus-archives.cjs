@@ -14,12 +14,14 @@ const roundLabel=round=>({'Combinatorics':'Combo','Number Theory':'NT','Discrete
 const familyLabel=fam=>fam.replace(' Division ',' ');
 assert(!context.window.MATH_PLANNED_CONTESTS.some(c=>/^(BMT|PUMaC)$/.test(c.name)),'live archives have no duplicate coming-soon entry');
 // Match the actual shared questions, which need not occupy consecutive B slots.
-for(const year of [2019,2020,2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) {
- const shared=year===2019&&subject==='Geometry'?[2,3,4,5,6,7,8]
+for(const year of [2018,2019,2020,2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) {
+ const bNumbers=year===2019&&subject==='Geometry'?[2,3,4,5,6,7,8]
    :year===2019&&subject==='Number Theory'?[2,3,5,7,8]
    :year===2020&&subject==='Combinatorics'?[2,3,4,5,7,8]:[3,4,5,6,7,8];
- for(const [index,bNumber] of shared.entries()){
-  const refs=[`${year} PUMaC Division A ${subject}, Problem ${index+1}`,`${year} PUMaC Division B ${subject}, Problem ${bNumber}`];
+ const shared=year===2018&&subject==='Combinatorics'?[[1,2],[2,3],[3,5],[4,6],[5,7],[7,8]]
+   :bNumbers.map((b,i)=>[i+1,b]);
+ for(const [aNumber,bNumber] of shared){
+  const refs=[`${year} PUMaC Division A ${subject}, Problem ${aNumber}`,`${year} PUMaC Division B ${subject}, Problem ${bNumber}`];
   if(!db.some(p=>p.ref===refs[0]))continue;
   const metadata=refs.map(ref=>{
     const p=db.find(p=>p.ref===ref);assert(p,ref);
