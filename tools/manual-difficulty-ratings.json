@@ -36155,6 +36155,106 @@
     "2025 Fermat Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): a_n^2 is divisible by 45^2 exactly when 45 divides a_n; mod 45 that first happens at n = 34 and then every 60 terms: 34, 94, ..., 2014, which is 34 terms."
+    ],
+    "2023 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 0.3 + 0.03 = 0.33."
+    ],
+    "2023 Fermat Contest, Problem 2": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x = 2 and y = 8: 10."
+    ],
+    "2023 Fermat Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 5x^2 = 20."
+    ],
+    "2023 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 7 times 24 times 60 = 10080."
+    ],
+    "2023 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 2 times 0 + 2 times 3 = 6."
+    ],
+    "2023 Fermat Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): two colours for each of three doors: 2^3 = 8."
+    ],
+    "2023 Fermat Contest, Problem 7": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 6 packs of juice (12 dollars) and 4 bags of apples (16 dollars): 28."
+    ],
+    "2023 Fermat Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Ari takes 1.5 hours and Bri 2: 30 minutes."
+    ],
+    "2023 Fermat Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 9000 litres make 3000 a tank: 600 from A."
+    ],
+    "2023 Fermat Contest, Problem 10": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): AB = 1 and AC = 5 give BC = 4 and CD = 2: 1 : 2."
+    ],
+    "2023 Fermat Contest, Problem 11": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): Mathilde had 100/1.25 = 80 and Salah 100/0.8 = 125: 205."
+    ],
+    "2023 Fermat Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): pi r^2/2 = 8 pi: r = 4."
+    ],
+    "2023 Fermat Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (a + b)(x + 2) = 12(x + 2) = 60: x = 3."
+    ],
+    "2023 Fermat Contest, Problem 14": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the intercepts are -3 and 3/2: 9/2 apart."
+    ],
+    "2023 Fermat Contest, Problem 15": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 16, 9, 5, 3, 2, 2, ...: 2 is fixed, so the 101st term is 2."
+    ],
+    "2023 Fermat Contest, Problem 16": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the grid shows 11 ones; 9 : 16 needs five more, so every card in the chosen line would have to show 0 and flip, but every row and column shows a 1."
+    ],
+    "2023 Fermat Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 1184 = 2^5 times 37: sigma = 63 times 38 = 2394."
+    ],
+    "2023 Fermat Contest, Problem 18": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): every 4 jumps move (-2, -2); after 4k + 3 jumps the position is (-2k - 2, -2k + 2), which is (-162, -158) at k = 80: n = 323, so 9 + 4 + 9 = 22."
+    ],
+    "2023 Fermat Contest, Problem 19": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x^2 + 4y = 13 needs x odd; x = 9 gives y = -17 and x - y = 26."
+    ],
+    "2023 Fermat Contest, Problem 20": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the zero counts of n! jump by 2 at multiples of 25 and by 3 at 125, skipping 5, 11, 17, 23, 29 and 30: 24 values."
+    ],
+    "2023 Fermat Contest, Problem 21": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each circle sums its neighbours, so the circles are the four largest sums; trying the arrangements gives at most x + y = 20."
+    ],
+    "2023 Fermat Contest, Problem 22": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): xy = y^2 - x^2, so t = x/y has t^2 + t = 1 and 1/t = t + 1: (t + 1/t)^2 = (2t + 1)^2 = 5."
+    ],
+    "2023 Fermat Contest, Problem 23": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): count the three-digit numbers with digit sums 7 to 11 (leading digit at least 1, digits at most 9): 224, so 24."
+    ],
+    "2023 Fermat Contest, Problem 24": [
+      1000,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): BD is a common hypotenuse, so a^2 + d^2 = b^2 + c^2 and ad + bc = 4410 with a + b + c + d = 224; the sides 7, 77, 49, 91 work: 2 times 8330 = 16660, so 60."
+    ],
+    "2023 Fermat Contest, Problem 25": [
+      1100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the top face lies within 2 sqrt 2 of the centre; unfolding a side face, a point at offset u and depth v is reached when u^2 + (2 + v)^2 <= 25, and the four side regions with the top give A = 61.81: 6181, so 81."
     ]
   }
 }
