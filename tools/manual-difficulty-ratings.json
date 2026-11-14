@@ -37655,6 +37655,106 @@
     "2009 Fermat Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): each circle's plane meets the base plane in a side of an equilateral triangle with the tangency points at the midpoints; the tilt of 45 degrees and radius 10 place the contact points on a circle of radius about 7.3."
+    ],
+    "2008 Fermat Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 30/6 = 5."
+    ],
+    "2008 Fermat Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 6(3/2 + 2/3) = 9 + 4 = 13."
+    ],
+    "2008 Fermat Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the right side is 115 and 1 + 2 + 3 + 4 + 5 = 15: x = 100."
+    ],
+    "2008 Fermat Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (38000 - 9600)/40 = 710."
+    ],
+    "2008 Fermat Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): sqrt x = 9: x = 81."
+    ],
+    "2008 Fermat Contest, Problem 6": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the isosceles triangles QRS (apex 60) and QPS (apex 30) give base angles 60 and 75 at Q: 75 - 60 = 15."
+    ],
+    "2008 Fermat Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 3p is odd and 2q even: 3p + 2q is odd."
+    ],
+    "2008 Fermat Contest, Problem 8": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): no zero digits forces c + f = 10 and b + e = a + d = 9: 28."
+    ],
+    "2008 Fermat Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): 10500 is 42% of 25000; X got 5000 and Z the other 38%: 9500."
+    ],
+    "2008 Fermat Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the lines meet at (1, 1) and y = -2x + 3 meets the axis at 3/2: area 3/4."
+    ],
+    "2008 Fermat Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): x = 1/2, so 3/y = 1 and y = 3: 7/2."
+    ],
+    "2008 Fermat Contest, Problem 12": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the marks total 462, so x + y = 122 and y <= 100 gives x >= 22."
+    ],
+    "2008 Fermat Contest, Problem 13": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the centres are 5, 4 and 3 apart, a right triangle: area 6."
+    ],
+    "2008 Fermat Contest, Problem 14": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): semicircle areas go as squared diameters: the big one is 400 parts, the small ones 144 and 64; shaded 192 against 208, so 12 : 13."
+    ],
+    "2008 Fermat Contest, Problem 15": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the laps take 72, 80, 60 and 50 seconds: 262 seconds, 4 minutes 22 seconds."
+    ],
+    "2008 Fermat Contest, Problem 16": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): OP makes 45 degrees with the base and OQ an angle with tangent 2/6: 45 - 18.43 = 26.6."
+    ],
+    "2008 Fermat Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): (n + 1)^2 - n^2 = 2n + 1 = 199: 99^2 + 100^2 = 19801."
+    ],
+    "2008 Fermat Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the difference is a, so b = 3a and a - 6 - b = 4a gives a = -1: the 100th term is -100."
+    ],
+    "2008 Fermat Contest, Problem 19": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): in right triangle PRS the angle at R is 60, so RS = 24; QS = 32 and P is 12 sin 60 = 6 sqrt 3 above it: 96 sqrt 3."
+    ],
+    "2008 Fermat Contest, Problem 20": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): WM = sqrt(9 - 1.44) = 2.75, and triangle XPW is similar to WMZ, so PW = 1.2 times 1/3 = 0.4: 3.15."
+    ],
+    "2008 Fermat Contest, Problem 21": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): N = 1 + 51 + (10 + 100 + ... + 10^51) = 111...1162, forty-nine 1s followed by 162: digit sum 58."
+    ],
+    "2008 Fermat Contest, Problem 22": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the curves meet where 9x^2/8 = k + 4, at height x^2 - k = (32 - k)/9; so -4 <= k <= 32: 37 values."
+    ],
+    "2008 Fermat Contest, Problem 23": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): PU = 3 sqrt 2 and the radius is 1 (from the 45-degree corner), so PX = sqrt 17; the equal tangents from W to the circle give PW about 4.685."
+    ],
+    "2008 Fermat Contest, Problem 24": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): with a <= b <= c, 3/a > 3/4 bounds a to 2, 3, 4; listing each case and counting orders gives 25 triples."
+    ],
+    "2008 Fermat Contest, Problem 25": [
+      1000,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 or mid AMC 12 one): the top is planar, so opposite edges have equal sums (twice the height over the centre) and edges A, C, E sum to B, D, F; placing 4, 7 and 10 to make that common sum 26 gives 78."
     ]
   }
 }
