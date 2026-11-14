@@ -45469,6 +45469,106 @@
     "2001 Pascal Contest, Problem 25": [
       800,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): abba + cddc = 1efe1 forces a + c = 11 and the middle columns force b + d = 0 or 11: 4 pairs {a, c} times 9 choices of (b, d) = 36."
+    ],
+    "2000 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 25 + 6 = 31."
+    ],
+    "2000 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 29 + 12 + 23 = 64 = 2^6."
+    ],
+    "2000 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): (4 + 6)/(4 - 3) = 10."
+    ],
+    "2000 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 48 is 3 mod 5: the third arrow."
+    ],
+    "2000 Pascal Contest, Problem 5": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): y = 37/6, so 1/y = 6/37."
+    ],
+    "2000 Pascal Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): as decimals 0.667, 0.767, 0.9, 0.733, 0.8: the middle is 23/30."
+    ],
+    "2000 Pascal Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each square is 6 smaller than the next: 22, 16, 10, perimeter 40."
+    ],
+    "2000 Pascal Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): alternate angles give y = x, and the triangle gives 2x + x + 60 = 180: 40."
+    ],
+    "2000 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the ages total 44 years 6 months: 14 years 10 months."
+    ],
+    "2000 Pascal Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): -sqrt 8 is about -2.8 and sqrt 32 about 5.7: -2 to 5, 8 integers."
+    ],
+    "2000 Pascal Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): twelve shirts are four groups of two at the regular price and one at a dollar: 8p + 4 = 120, p = 14.50."
+    ],
+    "2000 Pascal Contest, Problem 12": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 30 = 2(10 + a) gives a = 5, then b = 70 and c = 2(70 + 30) = 200."
+    ],
+    "2000 Pascal Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): largest numerators over smallest denominators: 6/1 + 5/2 + 4/3 = 59/6."
+    ],
+    "2000 Pascal Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the seven sum to 91 and the known five to 56: x + y = 35."
+    ],
+    "2000 Pascal Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the spacing rules allow only 312132 and 231213, and the odd one ends 213."
+    ],
+    "2000 Pascal Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each midpoint square has half the area of the one before: the shaded part is 3/8 of 64 = 24."
+    ],
+    "2000 Pascal Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the missing leg is 15, and the area two ways gives 20(15) = 25h: h = 12."
+    ],
+    "2000 Pascal Contest, Problem 18": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with rectangles x by 3x, AB = 5x and BC = 3x: 5 : 3."
+    ],
+    "2000 Pascal Contest, Problem 19": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 251 multiples of 4 from 2000 to 3000, less the 8 century years not divisible by 400: 243."
+    ],
+    "2000 Pascal Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): a line crosses at most 7 horizontal and 7 vertical grid lines, entering a new square each time: 15."
+    ],
+    "2000 Pascal Contest, Problem 21": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the semicircles make a circle of area 25 pi, so the rectangle has area 25 pi + 100 and AB = 2.5 pi + 10: the gap is 2.5 pi."
+    ],
+    "2000 Pascal Contest, Problem 22": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): edge cubes off the corners number 4(4 + 3 + 2) = 36 and corners 8: 9 : 2."
+    ],
+    "2000 Pascal Contest, Problem 23": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the two-digit multiples of 17 or 23 force 3, 4, 6, 9, 2 repeating, with a side path 6, 8, 5, 1, 7 that ends; the 2000th digit can be 2 or 5: 7."
+    ],
+    "2000 Pascal Contest, Problem 24": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): C(7, 3) = 35 less the C(4, 3) = 4 collinear triples: 31."
+    ],
+    "2000 Pascal Contest, Problem 25": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): place B at the origin: SQ runs from (3, 0) to (9, 4), and the projections of P and R onto it differ by 20/sqrt 52 = 10/sqrt 13."
     ]
   }
 }
