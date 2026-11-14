@@ -34967,6 +34967,206 @@
     "2000 Columbus State Tournament, Problem 50": [
       600,
       "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): middle term 8, so (64 - d^2)8 = 384 gives d^2 = 16: 3 times 64 + 2 times 16 = 224."
+    ],
+    "1999 Columbus State Tournament, Problem 1": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): g(t) = t(2t - 1)(t - 1) has zeros 0, 1/2 and 1, all in (-1, 2)."
+    ],
+    "1999 Columbus State Tournament, Problem 2": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1/(1/(2a) + b) = 2a/(1 + 2ab)."
+    ],
+    "1999 Columbus State Tournament, Problem 3": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): clearing denominators gives x^2 - 3x - 4 = 0, roots 4 and -1: sum 3."
+    ],
+    "1999 Columbus State Tournament, Problem 4": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the powers of i repeat every 4 and sum to 0 over each block: i^16 = 1 is left."
+    ],
+    "1999 Columbus State Tournament, Problem 5": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): t = log_b x: t/2 + 1/(2t) = 1 gives t = 1, x = b."
+    ],
+    "1999 Columbus State Tournament, Problem 6": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): side 25 and half-diagonals 20 and 15: the inradius is 20 times 15/25 = 12, area 144 pi."
+    ],
+    "1999 Columbus State Tournament, Problem 7": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): divide by x - 3 repeatedly: P(x) = (x - 3)^3 (x^2 + 2), n = 3."
+    ],
+    "1999 Columbus State Tournament, Problem 8": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the roots sum to -3/8 + 11/2 = 41/8 = -a/16: a = -82."
+    ],
+    "1999 Columbus State Tournament, Problem 9": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 4x^2 - 68x + 289 = (2x - 17)^2: one solution."
+    ],
+    "1999 Columbus State Tournament, Problem 10": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1 + (x + 7)/(x^2 + 7x + 3) = (x^2 + 8x + 10)/(x^2 + 7x + 3): 8 + 10 + 7 + 3 = 28."
+    ],
+    "1999 Columbus State Tournament, Problem 11": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2^10 subsets less the 2^5 with only even numbers: 992."
+    ],
+    "1999 Columbus State Tournament, Problem 12": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x^4 = 1/16: x = 1/2."
+    ],
+    "1999 Columbus State Tournament, Problem 13": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the distance is |2 + 4 - 4|/sqrt 2 = sqrt 2."
+    ],
+    "1999 Columbus State Tournament, Problem 14": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the inner values are 8, 24 and 2, and (8 + 24)/4 = 8."
+    ],
+    "1999 Columbus State Tournament, Problem 15": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): try each liar: only a lying Doc leaves a possible number (10, 15 or 30); the others force a contradiction."
+    ],
+    "1999 Columbus State Tournament, Problem 16": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): by pieces: x = 1 (between -5/2 and 5) and x = -13 (below -5/2): sum -12."
+    ],
+    "1999 Columbus State Tournament, Problem 17": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the five tip angles of a star pentagon sum to 180 degrees: S = pi."
+    ],
+    "1999 Columbus State Tournament, Problem 18": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the base is the diameter 2r and the height at most r: r^2."
+    ],
+    "1999 Columbus State Tournament, Problem 19": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): s^2(s - 1) = 648 = 81 times 8: s = 9."
+    ],
+    "1999 Columbus State Tournament, Problem 20": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the circumference grows by 2 pi times 5 = 10 pi."
+    ],
+    "1999 Columbus State Tournament, Problem 21": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (5^(5^5))^(1/5) = 5^(5^5/5) = 5^(5^4)."
+    ],
+    "1999 Columbus State Tournament, Problem 22": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (n - 1)^2 + n^2 + (n + 1)^2 = 3n^2 + 2 is never divisible by 3 (but 50 and 77 occur)."
+    ],
+    "1999 Columbus State Tournament, Problem 23": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the diameter is the diagonal 8 sqrt 2: circumference 8 sqrt 2 pi."
+    ],
+    "1999 Columbus State Tournament, Problem 24": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the moves net 5 across and 10 down: s = sqrt(25 + 100) = 5 sqrt 5."
+    ],
+    "1999 Columbus State Tournament, Problem 25": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1/f(x) = (sqrt(x + 2) - sqrt x)/2 telescopes: (sqrt 7 - 1)/2."
+    ],
+    "1999 Columbus State Tournament, Problem 26": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): C(4, 3)/C(6, 3) = 1/5 = 4! 3!/6!."
+    ],
+    "1999 Columbus State Tournament, Problem 27": [
+      200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): AD is 3 parts and AC 2: 150%."
+    ],
+    "1999 Columbus State Tournament, Problem 28": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x = (2/3)y = (2/3)(0.3z) = 0.2z: 20%."
+    ],
+    "1999 Columbus State Tournament, Problem 29": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the number is cis 60, and 100 times 60 is 240 mod 360: (-1 - i sqrt 3)/2."
+    ],
+    "1999 Columbus State Tournament, Problem 30": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 4/sin 2q = 3/sin q gives cos q = 2/3: q = 48.2 degrees."
+    ],
+    "1999 Columbus State Tournament, Problem 31": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 5k^2 = 20 gives legs 4 and 10: hypotenuse sqrt 116 = 2 sqrt 29."
+    ],
+    "1999 Columbus State Tournament, Problem 32": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 0.8 times 1.2 = 0.96."
+    ],
+    "1999 Columbus State Tournament, Problem 33": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1, 3, 2, -1, -3, -2 repeats with sum 0; 100 = 96 + 4 leaves 1 + 3 + 2 - 1 = 5."
+    ],
+    "1999 Columbus State Tournament, Problem 34": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (10^m + 1)^2 = 10^(2m) + 2 times 10^m + 1: digit sum 4."
+    ],
+    "1999 Columbus State Tournament, Problem 35": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a_1 = 8, b_1 = -3; a_2 = 7, b_2 = 14; a_3 = 56, which is 0 mod 4."
+    ],
+    "1999 Columbus State Tournament, Problem 36": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): both powers are odd, so the sum is even: 2."
+    ],
+    "1999 Columbus State Tournament, Problem 37": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 83 multiples of 12 and 55 of 18, less 27 of 36: 111."
+    ],
+    "1999 Columbus State Tournament, Problem 38": [
+      600,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): f(2) = f(1)^2 = 64 and f(2/3)^3 = f(2): f(2/3) = 4."
+    ],
+    "1999 Columbus State Tournament, Problem 39": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the sum is (x^2000 - 1)/(x - 1), positive for x > -1 and 0 at x = -1, negative below: x <= -1."
+    ],
+    "1999 Columbus State Tournament, Problem 40": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): side 1 gives circumradius 1/sqrt 3: diameter 2/sqrt 3."
+    ],
+    "1999 Columbus State Tournament, Problem 41": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (30/360) times 36 pi = 3 pi."
+    ],
+    "1999 Columbus State Tournament, Problem 42": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 128, 256 and 512 among 900 numbers: 1/300."
+    ],
+    "1999 Columbus State Tournament, Problem 43": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): by symmetry it is first or second with probability 2/4 = 1/2."
+    ],
+    "1999 Columbus State Tournament, Problem 44": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): by symmetry DM = BN = t, and 1 + t^2 = 2(1 - t)^2 gives t = 2 - sqrt 3; the side^2 is 8 - 4 sqrt 3: area 2 sqrt 3 - 3."
+    ],
+    "1999 Columbus State Tournament, Problem 45": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a sin x + b cos x = sqrt(a^2 + b^2) sin(x + phi): maximum sqrt(a^2 + b^2)."
+    ],
+    "1999 Columbus State Tournament, Problem 46": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): s_1999 = 1000 and s_2000 = -1000: sum 0."
+    ],
+    "1999 Columbus State Tournament, Problem 47": [
+      500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (5/4)x^2 - mx + 44 = 0 needs m^2 >= 220: m = 15."
+    ],
+    "1999 Columbus State Tournament, Problem 48": [
+      200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 10 - 7 < c < 10 + 7."
+    ],
+    "1999 Columbus State Tournament, Problem 49": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (5x - 7)^2 = (2x - 4)(10x + 4) gives x = 5 or 13/5: terms 6, 18, 54, 162 or 1.2, 6, 30, 150."
+    ],
+    "1999 Columbus State Tournament, Problem 50": [
+      400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (x - 7)^2 + (x^2 - 7)^2 = x^4 - 13x^2 - 14x + 98."
     ]
   }
 }
