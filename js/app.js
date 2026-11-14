@@ -3566,7 +3566,10 @@
       const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
       return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
     });
-    const body = fams.map(fam => {
+    // The AMC and AIME first, the other contests on request, as in the other contest lists
+    // (owner, 2026-11-14); a card cited only outside them shows its contests at once.
+    const shownFams = fams.some(f => CORE_FAMS.has(f)) ? fams.filter(famShown) : fams;
+    const body = shownFams.map(fam => {
       const hidden = groups[fam].length - PROB_GROUP_PREVIEW;
       const rows = groups[fam].map((p, i) => {
         return `<li class="prob-row${i >= PROB_GROUP_PREVIEW ? " prob-extra" : ""}">
@@ -3584,6 +3587,7 @@
       <div class="practice contest-refs">
         <h4>Practice problems <span class="practice-note">${probs.length}</span></h4>
         ${body}
+        ${shownFams === fams ? "" : famMoreBtn(extraFams(fams))}
       </div>`;
   }
 

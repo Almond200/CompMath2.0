@@ -2,6 +2,7 @@
 
 **2026-11-14**
 
+- **A card's practice problems:** the list on a card's page shows the AMC and AIME groups first, with "Show N more contests" for the rest (Pythagorean Theorem's ran to twenty groups, about 3,300 px).
 - **Practice draws from every contest (owner: "make it more diverse, with options to filter what contests appear"):** Practice a topic and Practice a card now use problems from every contest, not only the AMC and AIME, which were the only ones with statements and answer keys in the app. A problem from another contest opens in its official paper (the AoPS wiki for the AHSME); you type your answer, and at review you open the official solution and mark it "I was right" or "I was wrong". A Contests chooser in both panels (Select all, Deselect all, one chip per contest; remembered between visits) picks which contests a set draws from. Calculus questions stay out. Mocks stay AMC and AIME, since they need the in-app statements and keys.
 - **Practice a card is one search (owner):** the Formula / Method / Pattern buttons are gone; one field searches all of the reference's cards, and each suggestion names its kind.
 - **Contest chips: none chosen means none (owner):** switching the last contest off on the browse pages leaves none chosen, as Deselect all does, instead of switching every contest back on.
