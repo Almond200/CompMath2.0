@@ -30899,6 +30899,174 @@
     "2020 Columbus State Tournament, Problem 50": [
       1300,
       "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): they meet when their times differ by at most 5 minutes: 1 - (55/60)^2."
+    ],
+    "2019 Columbus State Tournament, Problem 1": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the diamond |x| + |y| = 2 meets the hyperbola x^2 - y^2 = 1 in four points."
+    ],
+    "2019 Columbus State Tournament, Problem 2": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): test two-digit numbers 10a + b against their digit sums for the largest remainder."
+    ],
+    "2019 Columbus State Tournament, Problem 3": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 2d + 5q = 400 needs q even, from 2 to 78: 39 ways."
+    ],
+    "2019 Columbus State Tournament, Problem 4": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 24 + 2 sqrt 143 = (sqrt 13 + sqrt 11)^2: |13 - 11| = 2."
+    ],
+    "2019 Columbus State Tournament, Problem 5": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 5^6 - 1 = (5^3 - 1)(5^3 + 1) = 124 times 126: primes 2, 3, 7, 31."
+    ],
+    "2019 Columbus State Tournament, Problem 6": [
+      700,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x^4 - 4x^3 + 6x^2 - 3x = (x - 1)^4 + x - 1, and (x - 1)^2 divides the first part: remainder x - 1."
+    ],
+    "2019 Columbus State Tournament, Problem 7": [
+      300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): 1 - 1/8 = 0.875."
+    ],
+    "2019 Columbus State Tournament, Problem 8": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the repetend of 1/97 times 97 is 10^96 - 1, ending in 9s: x67 times 97 ends in 999."
+    ],
+    "2019 Columbus State Tournament, Problem 9": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the sum of absolute values is piecewise linear with its minimum 4 reached on an interval or at points."
+    ],
+    "2019 Columbus State Tournament, Problem 10": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): reduce t^8 with t^3 = t + 2 repeatedly."
+    ],
+    "2019 Columbus State Tournament, Problem 11": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): cos^2 k + cos^2(90 - k) = 1 pairs the terms."
+    ],
+    "2019 Columbus State Tournament, Problem 13": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): subtract to find the common root, then each other root by Vieta."
+    ],
+    "2019 Columbus State Tournament, Problem 14": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): six consecutive integers summing to 2019 give a1; evaluate the combination."
+    ],
+    "2019 Columbus State Tournament, Problem 15": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): expand the sum of fifth powers to a quintic and read the product of its roots."
+    ],
+    "2019 Columbus State Tournament, Problem 16": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): log_9 x + 1/(2 log_3 x) = 1 is a quadratic in log_3 x: x = 3."
+    ],
+    "2019 Columbus State Tournament, Problem 17": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): each digit sits in each place 6 times: 6 times 10 times 1111 = 66660."
+    ],
+    "2019 Columbus State Tournament, Problem 18": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): roots 4 - d, 4, 4 + d sum to 12; the pair sum 44 gives d^2 = 4, so a = -48."
+    ],
+    "2019 Columbus State Tournament, Problem 19": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): opposite pyramids sum to a third of the cube: pair the given volumes."
+    ],
+    "2019 Columbus State Tournament, Problem 20": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the six divisors multiply to N^3; N^3/648 is the missing one."
+    ],
+    "2019 Columbus State Tournament, Problem 21": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x + 1/x is least when x = (a + b)/(a - b) is near 1: b as large as possible with a = b + 1."
+    ],
+    "2019 Columbus State Tournament, Problem 22": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): count perfect powers up to the bound by inclusion-exclusion over exponents."
+    ],
+    "2019 Columbus State Tournament, Problem 23": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the last ball drawn decides which color ran out first; by symmetry it is red with chance 5/8."
+    ],
+    "2019 Columbus State Tournament, Problem 24": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): a sum of |x - j| is least at the median of 0 to 2019."
+    ],
+    "2019 Columbus State Tournament, Problem 25": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): minimize the vertical gap |x| + x^2 + 3x + 2 on each side of 0."
+    ],
+    "2019 Columbus State Tournament, Problem 26": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): f(f(f(z))) = z for this Mobius map; reduce n mod 3."
+    ],
+    "2019 Columbus State Tournament, Problem 27": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the recurrence x_(n+1) = a + 1/x_n is periodic with period 3; use x_674."
+    ],
+    "2019 Columbus State Tournament, Problem 28": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): replace x by -x and solve the pair of equations for f(x)."
+    ],
+    "2019 Columbus State Tournament, Problem 29": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): (12 - x)(12 + y) = 144: count divisors of 144 below 12."
+    ],
+    "2019 Columbus State Tournament, Problem 30": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): write the expression in sin^2 and cos^2 and minimize by AM-GM."
+    ],
+    "2019 Columbus State Tournament, Problem 31": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): eliminate alpha using the double-angle forms of the two equations."
+    ],
+    "2019 Columbus State Tournament, Problem 32": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): max(t, 1 - t) is uniform on [1/2, 1]: expectation 3/4."
+    ],
+    "2019 Columbus State Tournament, Problem 35": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): place the octahedron's vertices on the axes at distance 2 sqrt 2 and compute MN."
+    ],
+    "2019 Columbus State Tournament, Problem 37": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): cos x is a root of t^2 - t - 1, so cos 2x = 2 cos^2 x - 1 satisfies a matching quadratic."
+    ],
+    "2019 Columbus State Tournament, Problem 38": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): x^2 + y^2 = x^3 + y^3 forces small values; bound and check."
+    ],
+    "2019 Columbus State Tournament, Problem 41": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): write 2019 greedily as non-consecutive Fibonacci numbers."
+    ],
+    "2019 Columbus State Tournament, Problem 42": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): both radicands squares: their difference 8060 factors as a difference of squares."
+    ],
+    "2019 Columbus State Tournament, Problem 43": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the least n with n(n + 1)/2 >= 2019 and the right parity: 64."
+    ],
+    "2019 Columbus State Tournament, Problem 44": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): sqrt(1 + 1/k^2 + 1/(k + 1)^2) = 1 + 1/k - 1/(k + 1): 2019 + 1 - 1/2020."
+    ],
+    "2019 Columbus State Tournament, Problem 46": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): multiply out: (xyz - z - 1)/(xyz) = 19/97, so xyz is a multiple of 97; bound x, y, z."
+    ],
+    "2019 Columbus State Tournament, Problem 48": [
+      1500,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the semicircles' chords and the given segments relate by power of a point at E and F."
+    ],
+    "2019 Columbus State Tournament, Problem 49": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the three corner triangles' areas give two equations in the side and the cuts."
+    ],
+    "2019 Columbus State Tournament, Problem 50": [
+      1400,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 50 questions running from an early AMC 10 problem to an AIME one): the folds send A and D to a common point P; the right triangles from the folds fix the trapezoid."
     ]
   }
 }
