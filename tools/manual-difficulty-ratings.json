@@ -191,7 +191,11 @@
     "2014 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2014_AlgebraA.pdf",
     "2014 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2014_AlgebraB.pdf",
     "2014 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsA.pdf",
-    "2014 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsB.pdf"
+    "2014 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2014_CombinatoricsB.pdf",
+    "2014 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2014_GeometryA.pdf",
+    "2014 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2014_GeometryB.pdf",
+    "2014 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryA.pdf",
+    "2014 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -38941,6 +38945,134 @@
     "2014 PUMaC Division B Combinatorics, Problem 8": [
       3500,
       "Encode visiting schedules as pairwise incomparable day subsets and compare the two consecutive middle-layer capacities."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 1": [
+      2450,
+      "Read the printed cevian-area diagram and solve the two common-altitude ratio relations for its unknown upper region."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 2": [
+      2450,
+      "Find the intersection ratio of a median and angle bisector, then subtract their overlapping area contributions."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 3": [
+      2650,
+      "Recover the circumcenter-to-chord distance and use the centroid ratio to scale the area of a triangle with known included angle."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 4": [
+      3100,
+      "Recover the circumdiameter of a cyclic quadrilateral from its ordered side lengths and exact area."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 5": [
+      3250,
+      "Use equal distances from a median point to the side endpoints and a parallel-line construction to fix the altitude intersection ratio."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 6": [
+      3550,
+      "Combine the actual circumcenter and successive altitude-foot projections to find the area of the constructed concave quadrilateral."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 7": [
+      3350,
+      "Relate a right angle on a chord to the chord midpoint, then apply the midpoint squared-distance identity to obtain a fixed length."
+    ],
+    "2014 PUMaC Division A Geometry, Problem 8": [
+      3750,
+      "Use conjugacy of opposite-side intersection points in a cyclic complete quadrilateral to determine their center-angle cosine from two distances."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 1": [
+      2450,
+      "Find the intersection ratio of a median and angle bisector, then subtract their overlapping area contributions."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 2": [
+      2500,
+      "Slice an equilateral-based pyramid through a base midpoint and convert the section area into the requested perpendicular distance."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 3": [
+      2600,
+      "Relate three equal cevian regions through shared altitudes and solve the resulting positive area equation."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 4": [
+      2650,
+      "Recover the circumcenter-to-chord distance and use the centroid ratio to scale the area of a triangle with known included angle."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 5": [
+      3100,
+      "Recover the circumdiameter of a cyclic quadrilateral from its ordered side lengths and exact area."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 6": [
+      3250,
+      "Use equal distances from a median point to the side endpoints and a parallel-line construction to fix the altitude intersection ratio."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 7": [
+      3400,
+      "For the intended convex quadrilateral, identify a circumcenter from two angle constraints and find the diagonal angle; allowing a simple concave quadrilateral produces a different answer."
+    ],
+    "2014 PUMaC Division B Geometry, Problem 8": [
+      3750,
+      "Use conjugacy of opposite-side intersection points in a cyclic complete quadrilateral to determine their center-angle cosine from two distances."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 1": [
+      2200,
+      "Evaluate a monic cubic one unit away from its distinct negative integer roots and enumerate its three positive factors."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 2": [
+      1850,
+      "Reduce the exponent tower modulo the last-digit cycle length before evaluating its final digit."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 3": [
+      2450,
+      "Count prime valuations in a factorial, divide by the base exponent and express the trailing-zero count in the requested radix."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 4": [
+      2950,
+      "Factor a square minus one into neighboring even integers and classify their power-of-two parts."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 5": [
+      3050,
+      "Turn a quadratic integer equation into a bounded sum of squares and enumerate every lattice solution."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 6": [
+      3400,
+      "Combine a congruence obstruction with the maximum sum of a short reciprocal list, then attain the minimum using valid distinct denominators; the official witness has an incorrect final denominator."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 7": [
+      3400,
+      "Rewrite an odd-square quotient as a divisibility relation and characterize all eligible parameters by a power-of-two condition."
+    ],
+    "2014 PUMaC Division A Number Theory, Problem 8": [
+      4050,
+      "Use consecutive-square gaps to force the two largest variables equal and reduce all remaining cases to two exact linear systems."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 1": [
+      2200,
+      "Evaluate a monic cubic one unit away from its distinct negative integer roots and enumerate its three positive factors."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 2": [
+      1850,
+      "Reduce the exponent tower modulo the last-digit cycle length before evaluating its final digit."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 3": [
+      2750,
+      "Optimize a divisor count over nonincreasing prime exponents and verify the unique three-digit maximum."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 4": [
+      2800,
+      "Replace each fraction gcd by its gcd with the fixed numerator-denominator sum and count half the reduced residue system."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 5": [
+      2950,
+      "Factor a square minus one into neighboring even integers and classify their power-of-two parts."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 6": [
+      3400,
+      "Combine a congruence obstruction with the maximum sum of a short reciprocal list, then attain the minimum using valid distinct denominators; the official witness has an incorrect final denominator."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 7": [
+      3650,
+      "Determine automorphisms of a finite divisibility order from multiplication neighborhoods, keeping the forced coupled swaps of prime multiples."
+    ],
+    "2014 PUMaC Division B Number Theory, Problem 8": [
+      3400,
+      "Rewrite an odd-square quotient as a divisibility relation and characterize all eligible parameters by a power-of-two condition."
     ]
   }
 }
