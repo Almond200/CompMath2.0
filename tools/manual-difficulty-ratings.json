@@ -34083,6 +34083,90 @@
     "2021 Columbus State Tournament, Problem 29": [
       1000,
       "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): k(2a + k - 1) = 2 times 43 times 47 with one factor odd and k >= 2: k = 2, 43 and 47, so 3 ways."
+    ],
+    "2022 Columbus State Tournament, Problem 2": [
+      900,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): phi(2022) = 672 numbers, paired n with 2022 - n, sum to 336 times 2022: N = 336, digit sum 12."
+    ],
+    "2022 Columbus State Tournament, Problem 3": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): BD = (3/5)BF, CE = (3/5)CD and AF = (7/25)AE (cosines of B, C and A); round the loop t = (7/25)(16/5 - 9t/25), so FA = 35/43 and n - m = 8."
+    ],
+    "2022 Columbus State Tournament, Problem 4": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): a^2 + b^2 = 674 = 7^2 + 25^2; a parallel cut of equal-ratio areas has 8x^2 = b^2 + 7a^2 = 968: x = 11, digit sum 2."
+    ],
+    "2022 Columbus State Tournament, Problem 6": [
+      800,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): (sin x + cos x - 1)^2 = 2 + 2 sin x cos x - 2 sin x - 2 cos x = 2(1 - sin x)(1 - cos x): a + b + c = 4."
+    ],
+    "2022 Columbus State Tournament, Problem 8": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): each hop changes x + y by an odd amount of at most 7, so at least 578 hops, an even number as 4044 is even; 291 hops (4, 3), 286 hops (3, 4) and one (5, 0) reach (2022, 2022): digit sum 20."
+    ],
+    "2022 Columbus State Tournament, Problem 9": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): the homothety at A sends D to the midpoint of arc BC, so AD bisects angle A: BD = 4, DC = 16, and AD^2 = 5 times 20 - 4 times 16 = 36: AD = 6."
+    ],
+    "2022 Columbus State Tournament, Problem 11": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): near n the terms are n with small swaps, so x_211 = 210 and x_212 is the least unused number prime to 2 times 3 times 5 times 7: 211 is used and 213, 215, 217, 219 fail, so 221."
+    ],
+    "2022 Columbus State Tournament, Problem 12": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): colourings of a 5-cycle with 5 colours number 4^5 - 4 = 1020, so x = 2040 - 2022 = 18."
+    ],
+    "2022 Columbus State Tournament, Problem 13": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): rotating triangle ADN about A shows MN = BM + DN; then (1 - u)^2 + (1 - v)^2 = (u + v)^2 gives uv = 1 - 5/6: 1/(uv) = 6."
+    ],
+    "2022 Columbus State Tournament, Problem 14": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): f(f(x)) - x divided by f(x) - x is x^2 + (b + 1)x + b + c + 1, with roots +/- 2/3: b = -1, c = -4/9, and 3|x_1 - x_2| = 3 times 5/3 = 5."
+    ],
+    "2022 Columbus State Tournament, Problem 15": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): w = z + z^2 + z^4 and its conjugate z^3 + z^5 + z^6 sum to -1 and multiply to 2, so w = (-1 + i sqrt 7)/2: m + n = 6."
+    ],
+    "2022 Columbus State Tournament, Problem 16": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): d_i d_(k + 1 - i) = N, so k + 1 = 42 and N has 41 divisors: N = 2^40, which is 2 mod 7."
+    ],
+    "2022 Columbus State Tournament, Problem 17": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): x^3 + y^3 + z^3 - 3xyz = (x + y + z)(x^2 + y^2 + z^2 - xy - yz - zx) gives the second factor 3/2, so x^2 + y^2 + z^2 = 109 and the circle about (6, 6, 6) has r^2 = 109 - 108: r = 1."
+    ],
+    "2022 Columbus State Tournament, Problem 18": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): the rays meet (with angles a at O and b at A, a + b < pi) with probability 1/4; then XO < OA exactly when b < pi - a - b, half of that triangle of angles: 1/2."
+    ],
+    "2022 Columbus State Tournament, Problem 19": [
+      1000,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): search the multiples of 2021 for the digits 2022: the first is 382 times 2021 = 772022, digit sum 13."
+    ],
+    "2022 Columbus State Tournament, Problem 20": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): (x + y - z)^2 = 4xy and its cyclic versions make x, y, z all of one sign; with positive coefficients summing to 0 they are all 0: x + y + z = 0."
+    ],
+    "2022 Columbus State Tournament, Problem 23": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): (5a - 2022)(5b - 2022) = 2022^2; the factor pairs with both factors 3 mod 5 (as 5a - 2022 must be) and a < b give 3 solutions."
+    ],
+    "2022 Columbus State Tournament, Problem 24": [
+      1300,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): the fractions m/2022 and (m + 1)/2023 are neighbours with determinant 1 at the tightest m, so the least denominator between them is 2022 + 2023 = 4045: digit sum 13."
+    ],
+    "2022 Columbus State Tournament, Problem 27": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): split the octagon (area 4) into rectangles and triangles and average their centroids by area: x_G = 31/24, m - n = 7."
+    ],
+    "2022 Columbus State Tournament, Problem 28": [
+      1100,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): reflect A in y = x and in the x-axis: the perimeter is at least the distance from (1389, 339) to (339, -1389), sqrt(1050^2 + 1728^2) = 2022."
+    ],
+    "2022 Columbus State Tournament, Problem 29": [
+      1200,
+      "Author estimate (the Columbus State tournament publishes no solve counts; placed on the collection’s scale by its route, its 30 questions running from an early AMC 10 problem to an AIME one): the circumcenter (1/2, 1/2, 1) gives R^2 = 3/2; r = 3V/S = 1/(1/2 + 1 + 1 + 3/2) = 1/4: R^2/r^2 = 24."
     ]
   }
 }
