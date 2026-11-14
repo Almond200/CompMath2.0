@@ -43969,6 +43969,106 @@
     "2016 Pascal Contest, Problem 25": [
       700,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each row must be one of the 6 mixed rows, giving 216; inclusion-exclusion over columns that are all 0 or all 1 leaves 102."
+    ],
+    "2015 Pascal Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 35/5 = 7."
+    ],
+    "2015 Pascal Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the figure above PQ lands below it, still touching the line at two points."
+    ],
+    "2015 Pascal Contest, Problem 3": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 14 = n + 8: n = 6."
+    ],
+    "2015 Pascal Contest, Problem 4": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): only 0.8 exceeds 0.7."
+    ],
+    "2015 Pascal Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 4 + 0.3 + 0.009 = 4.309."
+    ],
+    "2015 Pascal Contest, Problem 6": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 66 - 23 - 24 = 19."
+    ],
+    "2015 Pascal Contest, Problem 7": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 8n is even for every n."
+    ],
+    "2015 Pascal Contest, Problem 8": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the last 40% is 8 km: 20 km."
+    ],
+    "2015 Pascal Contest, Problem 9": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): angle QTR = 180 - 50 - 90 = 40 is vertical to angle STP, so x = 180 - 110 - 40 = 30."
+    ],
+    "2015 Pascal Contest, Problem 10": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): sqrt(16 times 4) = 8 = 2^3."
+    ],
+    "2015 Pascal Contest, Problem 11": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each block has 5 hearts and 2 spades, 3 more hearts: 150."
+    ],
+    "2015 Pascal Contest, Problem 12": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): lcm(3, 5, 7, 9) = 315."
+    ],
+    "2015 Pascal Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): each square has side 20; Anna walks 20 sides and Aaron 12: 640."
+    ],
+    "2015 Pascal Contest, Problem 14": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 4/8 + 8/4 = 5/2."
+    ],
+    "2015 Pascal Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): after k years Steve has 100(2^k) and Wayne 10000/2^k, so 4^k > 100 first at k = 4: 2004."
+    ],
+    "2015 Pascal Contest, Problem 16": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): Bruce takes 4 hours and Anca drives for 3 h 20 min: she rests 40 minutes."
+    ],
+    "2015 Pascal Contest, Problem 17": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the circles sit in a 3 by 2 block of squares of side 2r; the centre rectangle has perimeter 12r = 60, so PQRS is 30 by 20: 600."
+    ],
+    "2015 Pascal Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the line sums force the missing entries: a + b + c = 47."
+    ],
+    "2015 Pascal Contest, Problem 19": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): undo the steps: 16 doubled is 32, plus 4 is 36, which is two-thirds of 54."
+    ],
+    "2015 Pascal Contest, Problem 20": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): with 0, 1 or 2 five-dollar bills, the rest in 1s and 2s: 6 + 3 + 1 = 10."
+    ],
+    "2015 Pascal Contest, Problem 21": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): subtract the corner triangles from the 4 by 4 square: m = 16 - 2 - 9/2 - 2 = 15/2, n = 13/2 and p = 7: n < p < m."
+    ],
+    "2015 Pascal Contest, Problem 22": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): z = xyc = (10xc)(15yc)/(150c) = 742.00 times 675.75 / 397.50 = 1261.40."
+    ],
+    "2015 Pascal Contest, Problem 23": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): 6ab = c^2 with c <= 35 forces c to be a multiple of 6, and counting the factor pairs of c^2/6 with a < b < c gives 8."
+    ],
+    "2015 Pascal Contest, Problem 24": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): the links form an 8-edge graph whose only degree-2 vertices are Cai and Fay; a 7-edge drawing fails, and checking degrees and the forced placement leaves 2 drawings."
+    ],
+    "2015 Pascal Contest, Problem 25": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a mid AMC 10 one): build the rows: 2731 appears as 2n + 1, and the n that would put it in X never becomes a V entry, so it sits in W, Y and Z."
     ]
   }
 }
