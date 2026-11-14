@@ -43,9 +43,13 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   assert.match(tip[0],/^"\d+–\d+: \d+ problems?"$/);assert.notEqual(tip[1],'rgba(0, 0, 0, 0)','the hovered column is tinted');assert.equal(tip[0],JSON.stringify(tip[2]));assert.equal(tip[3],false,'no late browser tooltip');
   await page.mouse.move(2,2);
  }
- // Every rated contest has a chip, HMMT February included, and choosing it redraws the chart.
+ // The AMC and AIME chips show first (owner, 2026-11-14); Show more contests adds every other
+ // rated contest, HMMT February included, and choosing one redraws the chart.
+ assert.deepEqual(await page.locator('.elo-box [data-elo-fam]').allInnerTexts(),['AMC 8','AMC 10','AMC 12','AIME','All contests']);
+ await page.locator('.elo-box .fam-more-btn').click();await page.locator('.elo-box [data-elo-fam="hmmt-february"]').waitFor();
  assert.deepEqual(await page.locator('.elo-box [data-elo-fam]').allInnerTexts(),['AMC 8','AMC 10','AMC 12','AIME','HMMT February','HMMT November','ARML','ARML Local','SMT','Duke Math Meet','UMD HSMC','CMIMC','Math Prize for Girls','MMATHS','Girls in Math at Yale','Lehigh','Utah State Math Contest','All contests']);
  await page.locator('[data-elo-fam="hmmt-february"]').click();assert.match(await page.locator('.elo-note').innerText(),/of HMMT February problems/);assert.equal(await page.locator('[data-elo-fam][aria-pressed="true"]').innerText(),'HMMT February');
+ await page.locator('.elo-box .fam-more-btn').click();await page.locator('.elo-box [data-elo-fam="hmmt-february"]').waitFor({state:'detached'});
  // A column with no problems answers the pointer like any other and opens its range.
  assert.equal(await page.locator('.elo-box .elo-bar').evaluateAll((xs,nb)=>xs.length===nb&&xs.every(x=>x.tagName==='A'&&x.dataset.tip),NB),true);
  const empty=page.locator('.elo-box a.elo-bar.is-empty').first();assert.match(await empty.getAttribute('data-tip'),/^200–399: 0 problems$/);
@@ -71,10 +75,14 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.match(page.url(),/#\/browse\/topics$/,'opening a branch does not leave the page');
  await page.locator('.tt-name[href="#/browse/topics/geo.tri.special"]').click();await page.locator('.br-group').first().waitFor();
  assert.equal(await page.locator('h2').innerText(),'Special triangles');
+ // Only the AMC and AIME groups show at first (owner, 2026-11-14); Show more contests brings the rest.
+ assert.deepEqual(await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent)),['AMC 8','AMC 10','AMC 12','AIME']);
+ await page.locator('.fam-chips .fam-more-btn').click();await page.locator('.fam-chips .fam-more-btn[aria-expanded="true"]').waitFor();
  const heads=await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent));assert.deepEqual(heads.slice(0,4),['AMC 8','AMC 10','AMC 12','AIME']);assert(heads.slice(4).every(h=>/^(HMMT (February|November)|ARML|ARML Local|SMT|Duke Math Meet|UMD HSMC|CMIMC|Math Prize for Girls|MMATHS|Girls in Math at Yale|Lehigh|Utah State Math Contest)$/.test(h)),'HMMT and ARML, when the topic has some, come after the AIME');assert.deepEqual(heads.slice(4),[...heads.slice(4)].sort((a,b)=>['HMMT February','HMMT November','ARML','ARML Local','SMT','Duke Math Meet','UMD HSMC','CMIMC','Math Prize for Girls','MMATHS','Girls in Math at Yale','Lehigh','Utah State Math Contest'].indexOf(a)-['HMMT February','HMMT November','ARML','ARML Local','SMT','Duke Math Meet','UMD HSMC','CMIMC','Math Prize for Girls','MMATHS','Girls in Math at Yale','Lehigh','Utah State Math Contest'].indexOf(b)),'in the families order');
  const total=(await page.locator('.br-group-h .br-count').allInnerTexts()).reduce((n,s)=>n+parseInt(s),0);assert.match(await page.locator('.practice-panel-intro').innerText(),new RegExp('^'+total+' problems'));
+ await page.locator('.fam-chips .fam-more-btn').click();await page.locator('.fam-chips .fam-more-btn[aria-expanded="false"]').waitFor();
  const elos=(await page.locator('.br-group').first().locator('.br-elo').allInnerTexts()).map(Number);assert.deepEqual(elos,[...elos].sort((a,b)=>a-b),'easiest first within a contest');
- await page.locator('[data-br-fam="AMC 8"]').click();assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'),'false');assert.equal(await page.locator('.br-group').count(),heads.length-1);
+ await page.locator('[data-br-fam="AMC 8"]').click();assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'),'false');assert.equal(await page.locator('.br-group').count(),heads.filter(h=>/^(AMC (8|10|12)|AIME)$/.test(h)).length-1);
  if(width===375){assert.equal(await page.locator('.tt').isVisible(),false);await page.locator('.tt-mobile-btn').click();assert.equal(await page.locator('.tt').isVisible(),true);}
  await fits();
  // Problems by difficulty: the contest switched off stays off, one stacked chart, groups by contest.
@@ -82,6 +90,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'),'false');await page.locator('[data-br-fam="AMC 8"]').click();
  assert.equal(await page.locator('.elo-panel .elo-bar').count(),NB);assert.equal(await page.locator('.elo-bar[aria-current]').count(),1);
  await page.locator('.elo-bar[href$="/2600"]').click();await page.waitForFunction(()=>/2600/.test(document.querySelector('.br-band-h')?.textContent));assert.match(await page.locator('.br-band-h').innerText(),/^Rated 2600 to 2799$/);
+ if(await page.locator('.fam-chips .fam-more-btn[aria-expanded="false"]').count()){await page.locator('.fam-chips .fam-more-btn').click();await page.locator('.fam-chips .fam-more-btn[aria-expanded="true"]').waitFor();}
  const shown=parseInt((await page.locator('.br-band .br-count').innerText()).replace(',',''));
  const expected=await page.evaluate(()=>Object.values(MATH_PROBLEM_RATINGS.ratings).filter(r=>r.elo>=2600&&r.elo<2800).length);assert.equal(shown,expected);
  const years=(await page.locator('.br-group').last().locator('.br-ref').allInnerTexts()).map(s=>+s.slice(0,4));assert.deepEqual(years,[...years].sort((a,b)=>b-a),'newest first within a contest');

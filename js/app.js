@@ -2578,7 +2578,7 @@
     const tags = f.keywords.slice(0, 6).map(k => {
       const hit = queryTokens && queryTokens.some(tok =>
         wordsOf(k).some(w => w === tok || (tok.length >= 3 && w.startsWith(tok))));
-      return `<span class="tag${hit ? " tag-hit" : ""}" data-tag="${escapeAttr(k)}">${escapeAttr(k)}</span>`;
+      return `<span class="tag${hit ? " tag-hit" : ""}" data-tag="${escapeAttr(k)}">${tagText(k)}</span>`;
     });
     return `<div class="tag-row">${tchips.join("")}${tags.join("")}</div>`;
   }
@@ -2966,8 +2966,11 @@
       // One line per contest it appears in (owner, 2026-11-11): "1 in 22 AIME" says more than
       // one figure across contests of very different sizes. A contest with only a few papers
       // in the collection gets its plain count.
-      share: `<div class="pf-stat pf-odds">${FAMILIES.map(x => [x, probs.filter(p => p.fam === x).length]).filter(x => x[1]).map(([x, n]) =>
-        `<span class="pf-odd"><b>${all.fam[x] >= 100 ? `1 in ${Math.max(1, Math.round(all.fam[x] / n)).toLocaleString("en-US")}` : `${n} of ${all.fam[x]}`}</b>${escapeAttr(x)}</span>`).join("")}</div>`,
+      share: (() => {
+        const seen = FAMILIES.map(x => [x, probs.filter(p => p.fam === x).length]).filter(x => x[1]);
+        return `<div class="pf-stat pf-odds">${seen.filter(([x]) => famShown(x)).map(([x, n]) =>
+        `<span class="pf-odd"><b>${all.fam[x] >= 100 ? `1 in ${Math.max(1, Math.round(all.fam[x] / n)).toLocaleString("en-US")}` : `${n} of ${all.fam[x]}`}</b>${escapeAttr(x)}</span>`).join("")}${famMoreBtn(extraFams(seen.map(([x]) => x)), "ct-toggle pf-more")}</div>`;
+      })(),
       med: med != null ? stat(med, elos.length === 1 ? "rating" : "median rating") : "",
       years: stat(y0 === y1 ? y0 : `${y0}&ndash;${y1}`, y0 === y1 ? "year seen" : "years seen")
     };
@@ -2981,8 +2984,8 @@
       const shareMax = Math.max(0, ...fams.filter(sized).map(x => x.share));
       // A few problems are named in a line; shares and bars of one or two problems say nothing.
       if (few) out.rows.contests = row("Contests", dots(fams.map(x => `${famDot(x.fam)}${escapeAttr(x.fam)} <span class="pf-sub">${x.ps.map(p => "#" + p.num).join(", ")}</span>`)));
-      else out.rows.contests = row("Contests", `<table class="pf-table"><thead><tr><th scope="col" aria-label="Contest"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of the contest", "Share")}</th><th scope="col">${duo("Typical question", "Typical #")}</th></tr></thead><tbody>${fams.map(x =>
-        `<tr><th scope="row">${famDot(x.fam)}${escapeAttr(x.fam)}</th><td class="pf-meter-cell">${sized(x) ? `<span class="pf-meter"><i style="width:${Math.max(2, x.share / shareMax * 100).toFixed(1)}%;background:${famColor(x.fam)}"></i></span>` : ""}</td><td>${x.ps.length}</td><td>${sized(x) ? pfPct(x.share) : `${x.ps.length} of ${all.fam[x.fam]}`}</td><td>#${x.at}</td></tr>`).join("")}</tbody></table>`, true);
+      else out.rows.contests = row("Contests", `<table class="pf-table"><thead><tr><th scope="col" aria-label="Contest"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of the contest", "Share")}</th><th scope="col">${duo("Typical question", "Typical #")}</th></tr></thead><tbody>${fams.filter(x => famShown(x.fam)).map(x =>
+        `<tr><th scope="row">${famDot(x.fam)}${escapeAttr(x.fam)}</th><td class="pf-meter-cell">${sized(x) ? `<span class="pf-meter"><i style="width:${Math.max(2, x.share / shareMax * 100).toFixed(1)}%;background:${famColor(x.fam)}"></i></span>` : ""}</td><td>${x.ps.length}</td><td>${sized(x) ? pfPct(x.share) : `${x.ps.length} of ${all.fam[x.fam]}`}</td><td>#${x.at}</td></tr>`).join("")}</tbody></table>${famMoreBtn(extraFams(fams.map(x => x.fam)))}`, true);
 
       // Difficulty: the ratings in words, then their spread, stacked by contest in the colours
       // of the rows above. A handful of ratings is listed, not charted.
@@ -3035,12 +3038,12 @@
       const nodes = {};
       probs.forEach(p => new Set(p.tree).forEach(id => { if (TOPIC_NODES.has(id)) nodes[id] = (nodes[id] || 0) + 1; }));
       const top = Object.keys(nodes).sort((a, b) => nodes[b] - nodes[a] || TOPIC_NODES.get(a).order - TOPIC_NODES.get(b).order).slice(0, 5);
-      if (top.length && few) rows.push(row("Topics", dots(top.map(id => `<a href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}</a>${N > 1 ? ` <span class="pf-sub">${nodes[id]}</span>` : ""}`))));
+      if (top.length && few) rows.push(row("Topics", dots(top.map(id => `<a href="${topicHash(id)}">${topicHtml(TOPIC_NODES.get(id))}</a>${N > 1 ? ` <span class="pf-sub">${nodes[id]}</span>` : ""}`))));
       else if (top.length) {
         const topMax = nodes[top[0]];
         rows.push(row("Topics", `<table class="pf-table pf-topics"><thead><tr><th scope="col" aria-label="Topic"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of its problems", "Share")}</th></tr></thead><tbody>${top.map(id => {
           const n = TOPIC_NODES.get(id), path = topicPath(id), area = path.length > 1 ? path[Math.min(1, path.length - 2)] : null;
-          return `<tr><th scope="row"><a href="${topicHash(id)}" title="${escapeAttr(path.map(x => window.PracticeTopics.label(x.name)).join(" › "))}">${topicLabel(n)}</a>${area ? `<span class="pf-sub">${topicLabel(area)}</span>` : ""}</th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${Math.max(2, nodes[id] / topMax * 100).toFixed(1)}%"></i></span></td><td>${nodes[id]}</td><td>${pfPct(nodes[id] / N)}</td></tr>`;
+          return `<tr><th scope="row"><a href="${topicHash(id)}" title="${escapeAttr(path.map(x => window.PracticeTopics.label(x.name)).join(" › "))}">${topicHtml(n)}</a>${area ? `<span class="pf-sub">${topicHtml(area)}</span>` : ""}</th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${Math.max(2, nodes[id] / topMax * 100).toFixed(1)}%"></i></span></td><td>${nodes[id]}</td><td>${pfPct(nodes[id] / N)}</td></tr>`;
         }).join("")}</tbody></table>`, true));
       }
 
@@ -4557,6 +4560,14 @@
     }));
   }
 
+  // Short text that may hold $...$ math (topic names, lesson titles) as HTML: the math set by
+  // KaTeX, the rest escaped. Use it wherever such text is shown as an element's content.
+  function mathHtml(text) {
+    return String(text).split(/(\$[^$]+\$)/).map(seg => /^\$[^$]+\$$/.test(seg) && window.katex
+      ? katex.renderToString(seg.slice(1, -1), { throwOnError: false }) : escapeAttr(seg)).join("");
+  }
+  // A keyword chip's text: keywords are plain ASCII, so show a^2 or x^n as a superscript.
+  const tagText = k => escapeAttr(k).replace(/\^(\{[^}]*\}|\([^)]*\)|-?[A-Za-z0-9]+)/g, (m, e) => `<sup>${e.replace(/^[{(]|[})]$/g, "")}</sup>`);
   function escapeAttr(s) {
     return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
   }
@@ -5995,7 +6006,7 @@
       suggestions.innerHTML = choices.map((node,i) => {
         const size = problemDifficulty.filter(node.problems, DIFFS[difficulty.valueAsNumber]).length;
         const context = node.path.slice(0, -1).join(' › ');
-        return `<button type="button" class="set-find-opt practice-topic-option${i === 0 ? ' is-cur' : ''}" role="option" id="practice-topic-${i}" data-topic-id="${node.id}" aria-selected="${i === 0}"><span class="practice-topic-name">${escapeAttr(node.label)}</span><span class="practice-topic-context">${escapeAttr(context)}${context ? ' · ' : ''}${size} problem${size === 1 ? '' : 's'}</span></button>`;
+        return `<button type="button" class="set-find-opt practice-topic-option${i === 0 ? ' is-cur' : ''}" role="option" id="practice-topic-${i}" data-topic-id="${node.id}" aria-selected="${i === 0}"><span class="practice-topic-name">${mathHtml(node.name)}</span><span class="practice-topic-context">${escapeAttr(context)}${context ? ' · ' : ''}${size} problem${size === 1 ? '' : 's'}</span></button>`;
       }).join('');
       suggestions.querySelectorAll('button').forEach((b,i) => {
         b.addEventListener('click', () => { selectedTopicId = choices[i].id; topic.value = choices[i].label; topic.focus({preventScroll:true}); update(); closeTopics(); });
@@ -6260,8 +6271,9 @@
             <p class="practice-panel-intro">Try a past contest problem, with your choice of contest and difficulty.</p>
             <div class="rand-btns" role="radiogroup" aria-label="Contest">
               <button type="button" role="radio" aria-checked="true" data-rand-fam="">Any contest</button>
-              ${fams.map(f => `<button type="button" role="radio" aria-checked="false" data-rand-fam="${escapeAttr(f)}">${escapeAttr(f)}</button>`).join("")}
+              ${fams.filter(famShown).map(f => `<button type="button" role="radio" aria-checked="false" data-rand-fam="${escapeAttr(f)}">${escapeAttr(f)}</button>`).join("")}
             </div>
+            ${famMoreBtn(extraFams(fams))}
             <div class="rand-diff">
               <label for="rand-diff-range">Difficulty</label>
               <input type="range" id="rand-diff-range" min="0" max="5" step="1" value="0">
@@ -6292,11 +6304,12 @@
           <h3>Contests</h3>
           <p class="practice-panel-intro">Browse past papers by contest and year.</p>
           <div class="ct-browse"><a class="ct-browse-btn" href="#/browse/topics">Browse by topic</a><a class="ct-browse-btn" href="#/browse/difficulty">Browse by difficulty</a></div>
-          <div class="ct-list">${fams.map(f => `
+          <div class="ct-list">${fams.filter(famShown).map(f => `
             <div class="ct-row">
               <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famWritten(f).toLocaleString()} problem${famWritten(f) === 1 ? "" : "s"} written</span></a>
               <div class="ct-years">${yearsOf(f).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}</div>
             </div>`).join("")}
+            ${famMoreBtn(extraFams(fams))}
             ${(() => {
               const planned = (window.MATH_PLANNED_CONTESTS || []).filter(c => !fams.includes(c.name));
               if (!planned.length) return "";
@@ -9327,7 +9340,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const pie = `<svg class="pp-pie" viewBox="0 0 100 100" role="img" aria-label="Subjects: ${subs.map(r => `${topicLabel(r)} ${(bySub[r.id] || []).length}`).join(", ")}">${slices}</svg>`;
     const subjects = sec("Subjects", `<div class="pp-subjects">${pie}<table class="pf-table pp-table"><thead><tr><th scope="col" aria-label="Subject"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th>${cmp ? `<th scope="col">${base.id === "all" ? "Usual" : base.label}</th>` : ""}<th scope="col"><span class="pf-long">Median rating</span><span class="pf-short" aria-hidden="true">Median</span></th></tr></thead><tbody>${subs.map(r => {
       const xs = (bySub[r.id] || []).sort((x, y) => x - y), u = cmp ? cmp.subjects[r.id] || 0 : 0;
-      return `<tr><th scope="row"><i class="fam-dot" style="background:var(--subj-${r.id})"></i><a href="${topicHash(r.id)}">${topicLabel(r)}</a></th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${xs.length ? Math.max(2, xs.length / subMax * 100).toFixed(1) : 0}%;background:var(--subj-${r.id})"></i></span></td><td>${xs.length}</td>${cmp ? `<td>${Number.isInteger(u) ? u : u.toFixed(1)}</td>` : ""}<td>${xs.length ? quantile(xs, 0.5) : "&ndash;"}</td></tr>`;
+      return `<tr><th scope="row"><i class="fam-dot" style="background:var(--subj-${r.id})"></i><a href="${topicHash(r.id)}">${topicHtml(r)}</a></th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${xs.length ? Math.max(2, xs.length / subMax * 100).toFixed(1) : 0}%;background:var(--subj-${r.id})"></i></span></td><td>${xs.length}</td>${cmp ? `<td>${Number.isInteger(u) ? u : u.toFixed(1)}</td>` : ""}<td>${xs.length ? quantile(xs, 0.5) : "&ndash;"}</td></tr>`;
     }).join("")}</tbody></table></div>`);
 
     // Over the years: the contest's median paper rating, sitting by sitting, with this paper's
@@ -9355,7 +9368,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const areas = {};
     ps.forEach(p => new Set(p.tree.filter(t => TOPIC_NODES.has(t)).map(t => { const path = topicPath(t); return path[Math.min(1, path.length - 1)].id; })).forEach(id => { areas[id] = (areas[id] || 0) + 1; }));
     const areaIds = Object.keys(areas).sort((x, y) => areas[y] - areas[x] || TOPIC_NODES.get(x).order - TOPIC_NODES.get(y).order);
-    const topics = areaIds.length ? sec("Topics", `<div class="br-kids pp-areas">${areaIds.map(id => `<a class="br-kid" href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}<span class="br-count">${areas[id]}</span></a>`).join("")}</div>`) : "";
+    const topics = areaIds.length ? sec("Topics", `<div class="br-kids pp-areas">${areaIds.map(id => `<a class="br-kid" href="${topicHash(id)}">${topicHtml(TOPIC_NODES.get(id))}<span class="br-count">${areas[id]}</span></a>`).join("")}</div>`) : "";
     return stats + sec("Problems", tiles, mock) + curve + subjects + years + topics;
   }
   // Choosing what to compare with redraws the page in place.
@@ -9555,6 +9568,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const topicPath = id => { const out = []; let n = TOPIC_NODES.get(id); while (n) { out.unshift(n); n = TOPIC_NODES.get(n.parent); } return out; };
   // A node's name as plain text (no LaTeX), for the dense tree rail and its labels.
   const topicLabel = n => escapeAttr(window.PracticeTopics.label(n.name));
+  // A topic's name as HTML: its $...$ parts set by KaTeX (as everywhere else in the app), the rest
+  // escaped. topicLabel stays plain text for attributes, SVG titles and aria labels.
+  const topicHtml = n => mathHtml(n.name);
   let TOPIC_PROBLEMS = null;
   function topicProblems(id) {
     if (!TOPIC_PROBLEMS) {
@@ -9653,8 +9669,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return `<div class="elo-box" data-elo="${p.elo}"${manual ? " data-manual" : ""}>
       <p class="elo-head"><span class="elo-num">${p.elo}</span><span class="elo-note">${eloNote(p.elo, fam, manual)}</span></p>
       <div class="elo-plot">${eloChartHtml({ shown: fam ? [fam] : RATED_FAMS, mark: p.elo, compact: true })}</div>
-      <div class="fam-chips" role="group" aria-label="Compare with">${[...RATED_FAMS, null].map(f =>
-        `<button type="button" class="fam-chip" data-elo-fam="${f ? famSlug(f) : "all"}" aria-pressed="${f === fam}">${f ? famDot(f) : ""}${f || "All contests"}</button>`).join("")}</div>
+      <div class="fam-chips" role="group" aria-label="Compare with">${[...RATED_FAMS.filter(f => famShown(f) || f === fam), null].map(f =>
+        `<button type="button" class="fam-chip" data-elo-fam="${f ? famSlug(f) : "all"}" aria-pressed="${f === fam}">${f ? famDot(f) : ""}${f || "All contests"}</button>`).join("")}${famMoreBtn(extraFams(RATED_FAMS.filter(f => f !== fam)), "fam-chip")}</div>
     </div>`;
   }
   document.addEventListener("click", e => {
@@ -9666,6 +9682,25 @@ The book remembers the last lesson you opened, in this browser, and the contents
     box.querySelectorAll("[data-elo-fam]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
   });
 
+  // ---------- Contest lists: AMC and AIME first (owner, 2026-11-14) ----------
+  // Lists of contests show the AMC 8, 10 and 12 and the AIME; the other contests wait behind a
+  // "Show more contests" button. The choice holds while moving between pages.
+  const CORE_FAMS = new Set(["AMC 8", "AMC 10", "AMC 12", "AIME"]);
+  let famsOpen = false;
+  const famShown = f => famsOpen || CORE_FAMS.has(f);
+  // n counts the contests beyond the AMC and AIME in that list; cls styles the button for its row.
+  const famMoreBtn = (n, cls = "ct-toggle") => n > 0 ? `<button type="button" class="${cls} fam-more-btn" aria-expanded="${famsOpen}">${famsOpen ? "Show fewer contests" : `Show ${n} more contest${n === 1 ? "" : "s"}`}</button>` : "";
+  const extraFams = list => list.filter(f => !CORE_FAMS.has(f)).length;
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".fam-more-btn");
+    if (!b) return;
+    const y = window.scrollY;
+    famsOpen = !famsOpen;
+    render();
+    window.scrollTo(0, y);
+    document.querySelector(".fam-more-btn")?.focus({ preventScroll: true });
+  });
+
   // ---------- Problems by topic, Problems by difficulty ----------
   // Two separate pages (owner, 2026-11-11). Both list problems grouped by contest, and both carry
   // the same contest chips: a chip switches its contest off and on, on the chart and in the lists.
@@ -9674,13 +9709,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
   let browseKey = "", browseOpen = new Set();   // groups opened in full on the current page
   const browseBackHtml = () => `<div class="back-row"><a class="back-link" href="#/practice" data-goto="pr-contests">${uiIcon("arrow-left")} Contests</a></div>`;
   function famChipsHtml(problems) {
-    const fams = FAMILIES.filter(f => problems.some(p => p.fam === f));
+    const all = FAMILIES.filter(f => problems.some(p => p.fam === f)), fams = all.filter(famShown);
     return `<div class="fam-chips" role="group" aria-label="Contests shown">${fams.map(f =>
-      `<button type="button" class="fam-chip" data-br-fam="${escapeAttr(f)}" aria-pressed="${!browseOff.has(f)}">${famDot(f)}${f}<span class="br-count">${problems.filter(p => p.fam === f).length.toLocaleString()}</span></button>`).join("")}</div>`;
+      `<button type="button" class="fam-chip" data-br-fam="${escapeAttr(f)}" aria-pressed="${!browseOff.has(f)}">${famDot(f)}${f}<span class="br-count">${problems.filter(p => p.fam === f).length.toLocaleString()}</span></button>`).join("")}${famMoreBtn(extraFams(all), "fam-chip")}</div>`;
   }
   function browseGroupsHtml(key, problems, sort) {
     if (browseKey !== key) { browseKey = key; browseOpen = new Set(); }
-    const groups = FAMILIES.filter(f => !browseOff.has(f)).map(f => {
+    const groups = FAMILIES.filter(f => !browseOff.has(f) && famShown(f)).map(f => {
       const list = problems.filter(p => p.fam === f).sort(sort);
       if (!list.length) return "";
       const shown = browseOpen.has(f) ? list : list.slice(0, BROWSE_PAGE);
@@ -9702,7 +9737,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const kids = n.children.length, open = kids && ttOpen.has(n.id);
       return `<li><div class="tt-row${n.id === sel ? " is-cur" : ""}" style="--d:${d}">${kids
         ? `<button type="button" class="tt-tw" data-tt="${n.id}" aria-expanded="${!!open}" aria-label="${open ? "Collapse" : "Expand"} ${topicLabel(n)}">${uiIcon("chevron-right")}</button>`
-        : `<span class="tt-tw" aria-hidden="true"></span>`}<a class="tt-name" href="${topicHash(n.id)}"${n.id === sel ? ' aria-current="page"' : ""}>${topicLabel(n)}</a><span class="br-count">${topicProblems(n.id).length.toLocaleString()}</span></div>${open ? `<ul>${n.children.map(c => row(TOPIC_NODES.get(c), d + 1)).join("")}</ul>` : ""}</li>`;
+        : `<span class="tt-tw" aria-hidden="true"></span>`}<a class="tt-name" href="${topicHash(n.id)}"${n.id === sel ? ' aria-current="page"' : ""}>${topicHtml(n)}</a><span class="br-count">${topicProblems(n.id).length.toLocaleString()}</span></div>${open ? `<ul>${n.children.map(c => row(TOPIC_NODES.get(c), d + 1)).join("")}</ul>` : ""}</li>`;
     };
     return `<ul class="tt-list">${TOPIC_ROOTS.map(r => row(r, 0)).join("")}</ul>`;
   }
@@ -9761,15 +9796,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (!node) {
         main = `<div class="detail-head"><h2 class="card-name">Problems by topic</h2></div>
           <p class="practice-panel-intro">Every problem is filed in one tree of topics, from a subject down to a specific kind of problem. Choose a topic to see its problems, grouped by contest.</p>
-          <div class="br-subjects">${TOPIC_ROOTS.map(r => `<section class="br-subject"><h3><a href="${topicHash(r.id)}">${topicLabel(r)}</a><span class="br-count">${topicProblems(r.id).length.toLocaleString()} problems</span></h3>
-            <ul>${r.children.map(c => TOPIC_NODES.get(c)).map(c => `<li><a href="${topicHash(c.id)}">${topicLabel(c)}</a><span class="br-count">${topicProblems(c.id).length}</span></li>`).join("")}</ul></section>`).join("")}</div>`;
+          <div class="br-subjects">${TOPIC_ROOTS.map(r => `<section class="br-subject"><h3><a href="${topicHash(r.id)}">${topicHtml(r)}</a><span class="br-count">${topicProblems(r.id).length.toLocaleString()} problems</span></h3>
+            <ul>${r.children.map(c => TOPIC_NODES.get(c)).map(c => `<li><a href="${topicHash(c.id)}">${topicHtml(c)}</a><span class="br-count">${topicProblems(c.id).length}</span></li>`).join("")}</ul></section>`).join("")}</div>`;
       } else {
         const all = topicProblems(node.id), kids = node.children.map(c => TOPIC_NODES.get(c));
-        const crumbs = [`<a href="#/browse/topics">Topics</a>`, ...topicPath(node.id).slice(0, -1).map(n => `<a href="${topicHash(n.id)}">${topicLabel(n)}</a>`)].join(` <span aria-hidden="true">›</span> `);
+        const crumbs = [`<a href="#/browse/topics">Topics</a>`, ...topicPath(node.id).slice(0, -1).map(n => `<a href="${topicHash(n.id)}">${topicHtml(n)}</a>`)].join(` <span aria-hidden="true">›</span> `);
         main = `<div class="br-crumbs">${crumbs}</div>
           <div class="detail-head"><h2 class="card-name">${node.name}</h2></div>
           <p class="practice-panel-intro">${all.length.toLocaleString()} problem${all.length === 1 ? "" : "s"}${kids.length ? ", including its subtopics" : ""}. Each contest's problems run from easiest to hardest.</p>
-          ${kids.length ? `<div class="br-kids"><span class="br-kids-l">Subtopics</span>${kids.map(c => `<a class="br-kid" href="${topicHash(c.id)}">${topicLabel(c)}<span class="br-count">${topicProblems(c.id).length}</span></a>`).join("")}</div>` : ""}
+          ${kids.length ? `<div class="br-kids"><span class="br-kids-l">Subtopics</span>${kids.map(c => `<a class="br-kid" href="${topicHash(c.id)}">${topicHtml(c)}<span class="br-count">${topicProblems(c.id).length}</span></a>`).join("")}</div>` : ""}
           ${topicProfileHtml(node, all)}
           <h3 class="pp-h tp-problems-h">Problems</h3>
           ${famChipsHtml(all)}
@@ -9790,7 +9825,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       }
     } else {
       const rated = PROBLEM_DB.filter(p => Number.isFinite(p.elo));
-      const active = RATED_FAMS.filter(f => !browseOff.has(f));
+      const active = RATED_FAMS.filter(f => !browseOff.has(f) && famShown(f));
       const inBinN = b => rated.filter(p => binOf(p.elo) === b && active.includes(p.fam)).length;
       const filled = eloBins().filter(b => inBinN(b));
       // With no range chosen, the fullest one opens, so the page never starts empty.
@@ -9894,7 +9929,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return LESSONS_BY_CARD[fid] || [];
   }
   function studyLessonLink({ b, c, l }) {
-    return `<a class="chain-study-link" href="${learnHash(b, c, lessonNum(l))}">${escapeAttr(b.title)} · ${escapeAttr(l.title)} <span class="chain-study-l">${l.code}</span></a>`;
+    return `<a class="chain-study-link" href="${learnHash(b, c, lessonNum(l))}">${escapeAttr(b.title)} · ${mathHtml(l.title)} <span class="chain-study-l">${l.code}</span></a>`;
   }
   // Study this more on a card page (owner, 2026-11-07): only the lessons whose "Teaches you
   // about" row lists the card, not every lesson that links or relates to it, one per bullet.
