@@ -9,9 +9,10 @@ const db=context.window.MATH_PROBLEM_DB, papers=context.window.MATH_CONTEST_PAPE
 const slug=ref=>ref.replace(', Problem ',' ').toLowerCase().replaceAll(' ','-');
 const families=new Map();
 assert(!context.window.MATH_PLANNED_CONTESTS.some(c=>/^(BMT|PUMaC)$/.test(c.name)),'live archives have no duplicate coming-soon entry');
-// The first six A questions recur as B questions 3–8 in these papers.
-for(const year of [2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) for(let n=1;n<=6;n++){
-  const refs=[`${year} PUMaC Division A ${subject}, Problem ${n}`,`${year} PUMaC Division B ${subject}, Problem ${n+2}`];
+// Match the actual shared questions, which need not occupy consecutive B slots.
+for(const year of [2020,2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) for(let n=1;n<=6;n++){
+  const bNumber=year===2020&&subject==='Combinatorics'?[2,3,4,5,7,8][n-1]:n+2;
+  const refs=[`${year} PUMaC Division A ${subject}, Problem ${n}`,`${year} PUMaC Division B ${subject}, Problem ${bNumber}`];
   if(!db.some(p=>p.ref===refs[0]))continue;
   const metadata=refs.map(ref=>{
     const p=db.find(p=>p.ref===ref);assert(p,ref);
@@ -39,6 +40,8 @@ for(const [paper,source] of Object.entries(papers)) {
    await page.addInitScript(t=>localStorage.setItem('theme',t),theme);
    const base=process.env.COMPMATH_URL||'http://localhost:8898';
    await page.goto(base+'/#/practice');await page.locator('.ct-row').first().waitFor();
+   const more=page.locator('#pr-contests .fam-more-btn[aria-expanded="false"]');
+   if(await more.count())await more.click();
    const latest=new Map();
    for(const key of families.keys()){
     const [fam,year]=key.split('|');latest.set(fam,Math.max(+year,latest.get(fam)||0));
