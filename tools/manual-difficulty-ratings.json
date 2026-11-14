@@ -39051,6 +39051,106 @@
     "2023 Cayley Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): AB0AB = 1001 times AB = 7 times 11 times 13 times AB; count the sets of five distinct odd factors by how 7, 11 and 13 appear: 24."
+    ],
+    "2022 Cayley Contest, Problem 1": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 2 + 0 = 2."
+    ],
+    "2022 Cayley Contest, Problem 2": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 119 = 7 times 17."
+    ],
+    "2022 Cayley Contest, Problem 3": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): compare each with 1/2 and 1: the largest is the fraction above 1."
+    ],
+    "2022 Cayley Contest, Problem 4": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the pattern repeats every 5 and 22 is 2 mod 5: the second shape."
+    ],
+    "2022 Cayley Contest, Problem 5": [
+      100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 5 times 25 = 125."
+    ],
+    "2022 Cayley Contest, Problem 6": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the graph rises from 0 to 3 and from 8 to 10 minutes: 5 minutes."
+    ],
+    "2022 Cayley Contest, Problem 7": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): six equal arcs of 60 degrees; A to C spans two: 120."
+    ],
+    "2022 Cayley Contest, Problem 8": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the side pairs 1 and 24, 2 and 12, 3 and 8, 4 and 6 give perimeters 50, 28, 22, 20: not 36."
+    ],
+    "2022 Cayley Contest, Problem 9": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): (3 + b)/(3 - b) = -4 gives 3 + b = -12 + 4b: b = 5."
+    ],
+    "2022 Cayley Contest, Problem 10": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): x = 0.2y = 0.5z, so z = 0.4y: 40%."
+    ],
+    "2022 Cayley Contest, Problem 11": [
+      200,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 3 cents a gram: 1.80 buys 60 g."
+    ],
+    "2022 Cayley Contest, Problem 12": [
+      400,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): each flip reflects the triangle in the edge kept on the table; track the vertices through both flips: (E)."
+    ],
+    "2022 Cayley Contest, Problem 13": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the small cubes have edge 2, so the large one has edge 4: 64."
+    ],
+    "2022 Cayley Contest, Problem 14": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 178 can start at the first, second or third digit: 100 + 90 + 90 = 280 five-digit numbers."
+    ],
+    "2022 Cayley Contest, Problem 15": [
+      300,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): c = b + 5 and a = b - 5, so b + b + 5 = b - 5: b = -10."
+    ],
+    "2022 Cayley Contest, Problem 16": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): extending PQ and TS makes the square PXTU; QXS is an isosceles right triangle with hypotenuse 8, QX = 4 sqrt 2: perimeter 40 + 16 sqrt 2, about 63."
+    ],
+    "2022 Cayley Contest, Problem 17": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): four shirts can be two of one colour and two of another; with five, either some colour appears three times or all three colours appear."
+    ],
+    "2022 Cayley Contest, Problem 18": [
+      500,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the gold balls double each day, to 128, and each day adds two blacks per gold: 1 + 2(1 + 2 + ... + 64) = 255 black, 383 in all."
+    ],
+    "2022 Cayley Contest, Problem 19": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the first triangle has area 9, so the second (from x = 3 to d, height 2d - 6) has area (d - 3)^2 = 36: d = 9."
+    ],
+    "2022 Cayley Contest, Problem 20": [
+      800,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): m = 3^a 5^b and n = 3^c 5^d with 3a + 1 = 5c and 3b = 5d + 1: a = 3, c = 2, b = 2, d = 1, so m = 675, n = 45: 720."
+    ],
+    "2022 Cayley Contest, Problem 21": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): 20x + 11y = 881 needs 11y ending in 1, y = 11, 31, 51, 71: 11 + 71 = 82."
+    ],
+    "2022 Cayley Contest, Problem 22": [
+      600,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): adding the unshaded small sector to both regions, the big sector equals the small circle, pi = 9 pi times x/360: x = 40."
+    ],
+    "2022 Cayley Contest, Problem 23": [
+      700,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): the sum is even when an even number of the four are odd (5 odd and 4 even choices): (9^4 + 1)/2 = 3281 of 6561, digits 3, 2, 8, 1 give 78."
+    ],
+    "2022 Cayley Contest, Problem 24": [
+      900,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): seen along a body diagonal, the cube's shadow is a regular hexagon whose area is sqrt 3 times the square of the edge: 64 sqrt 3, so 67."
+    ],
+    "2022 Cayley Contest, Problem 25": [
+      1000,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an early AMC 10 problem to a late AMC 10 one): follow the removals round the circle (a Josephus-type process with every second remaining token removed): T = 337 leaves 162, and the smallest T leaving 162 is 209: 9."
     ]
   }
 }
