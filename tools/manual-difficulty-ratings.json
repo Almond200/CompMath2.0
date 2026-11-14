@@ -131,7 +131,11 @@
     "2020 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PuMaC_Number_Theory_B_2020.pdf",
     "2019 BMT Algebra": "https://berkeley.mt/archives/bmt-2019/algebra-problems.pdf",
     "2019 BMT Discrete Math": "https://berkeley.mt/archives/bmt-2019/discrete-problems.pdf",
-    "2019 BMT Geometry": "https://berkeley.mt/archives/bmt-2019/geometry-problems.pdf"
+    "2019 BMT Geometry": "https://berkeley.mt/archives/bmt-2019/geometry-problems.pdf",
+    "2019 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/2019Algebra_A.pdf",
+    "2019 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/2019Algebra_B.pdf",
+    "2019 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/2019Combo_A.pdf",
+    "2019 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/2019Combo_B.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -25409,6 +25413,134 @@
     "2019 BMT Geometry, Problem 10": [
       3650,
       "Require tangency of two Apollonius loci for a unique distance-ratio point; the published solution scales the printed base twelve as eighteen, changing the final area."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 1": [
+      2000,
+      "Replace logarithms by real coordinates, complete a circle equation and maximize the squared coordinate sum."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 2": [
+      2150,
+      "Conjugate a quadratic iterate to repeated squaring and compute the distance between its two extreme real preimages."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 3": [
+      2450,
+      "Track the sum of roots with multiplicity through one hundred quadratic compositions and recover its initial logarithm."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 4": [
+      2750,
+      "Use an integer-valued inequality to restrict a recursive function parameter to two cases and evaluate both resulting sequences."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 5": [
+      3000,
+      "Evaluate a double product of coprime unity-root sets by specializing their monic polynomials."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 6": [
+      3250,
+      "Count bounded-digit weak binary representations using a carry recurrence and dyadic blocks of its first differences."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 7": [
+      3500,
+      "Convert a double-indexed recurrence to a rational bivariate generating function, justify the convergent specialization and solve for its parameter."
+    ],
+    "2019 PUMaC Division A Algebra, Problem 8": [
+      3750,
+      "Propagate eventual equality backward between two nonlinear recurrences, classify collisions among four possible initial values and optimize the resulting circle."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 1": [
+      1400,
+      "Compare the balanced and endpoint integer splits of a fixed positive sum to find the range of a reciprocal sum."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 2": [
+      1900,
+      "Substitute an exponential-linear relation twice to collapse a tower-like logarithmic quotient to a constant."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 3": [
+      2000,
+      "Replace logarithms by real coordinates, complete a circle equation and maximize the squared coordinate sum."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 4": [
+      2150,
+      "Conjugate a quadratic iterate to repeated squaring and compute the distance between its two extreme real preimages."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 5": [
+      2450,
+      "Track the sum of roots with multiplicity through one hundred quadratic compositions and recover its initial logarithm."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 6": [
+      2750,
+      "Use an integer-valued inequality to restrict a recursive function parameter to two cases and evaluate both resulting sequences."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 7": [
+      3000,
+      "Evaluate a double product of coprime unity-root sets by specializing their monic polynomials."
+    ],
+    "2019 PUMaC Division B Algebra, Problem 8": [
+      3250,
+      "Count bounded-digit weak binary representations using a carry recurrence and dyadic blocks of its first differences."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 1": [
+      1850,
+      "Separate a uniform score comparison from its tie case and apply a biased one-point bonus."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 2": [
+      2100,
+      "Map ten independent weighted coin outcomes bijectively to even binary integers and count those in a target interval."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 3": [
+      2350,
+      "Expand the product of two random-walk coordinates into same-step and different-step indicator products."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 4": [
+      3050,
+      "Count the probability a specified coupon has appeared at least twice when a uniform six-type collection first becomes complete."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 5": [
+      2600,
+      "Shift five residue-restricted candy draws and count the nonnegative excess allocations leaving a minimum remainder."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 6": [
+      3400,
+      "Translate rounded shooting percentages to lattice points in half-open trapezoids and count the conditional team-size range."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 7": [
+      3500,
+      "Assign two longest monochromatic-path ranks to each ordered vertex and construct a matching grid coloring for the sharp threshold."
+    ],
+    "2019 PUMaC Division A Combinatorics, Problem 8": [
+      3850,
+      "Count forests with a no-valley path condition row by row and audit the product last-digit cycle; the source recurrence gives the hundredth index 396 rather than its stated 399."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 1": [
+      1450,
+      "Treat two adjacent distinguished letters as an ordered block among two repeated-letter groups."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 2": [
+      1800,
+      "Count equally likely weak race orderings with exactly one tied pair, distinguishing sole and shared first place."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 3": [
+      1850,
+      "Separate a uniform score comparison from its tie case and apply a biased one-point bonus."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 4": [
+      2100,
+      "Map ten independent weighted coin outcomes bijectively to even binary integers and count those in a target interval."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 5": [
+      2350,
+      "Expand the product of two random-walk coordinates into same-step and different-step indicator products."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 6": [
+      3050,
+      "Count the probability a specified coupon has appeared at least twice when a uniform six-type collection first becomes complete."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 7": [
+      2600,
+      "Shift five residue-restricted candy draws and count the nonnegative excess allocations leaving a minimum remainder."
+    ],
+    "2019 PUMaC Division B Combinatorics, Problem 8": [
+      3400,
+      "Translate rounded shooting percentages to lattice points in half-open trapezoids and count the conditional team-size range."
     ]
   }
 }

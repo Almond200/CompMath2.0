@@ -236,5 +236,21 @@ window.MATH_CONTEST_PAPERS = {
   "2019 BMT Geometry": {
     "url": "https://berkeley.mt/archives/bmt-2019/geometry-problems.pdf",
     "solUrl": "https://berkeley.mt/archives/bmt-2019/geometry-solutions.pdf"
+  },
+  "2019 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/2019Algebra_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019Algebra_ASOLS.pdf"
+  },
+  "2019 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/2019Algebra_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019Algebra_BSOLS.pdf"
+  },
+  "2019 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/2019Combo_A.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019Combo_A_Sols.pdf"
+  },
+  "2019 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/2019Combo_B.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/2019Combo_B_Sols.pdf"
   }
 };

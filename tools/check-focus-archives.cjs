@@ -10,7 +10,7 @@ const slug=ref=>ref.replace(', Problem ',' ').toLowerCase().replaceAll(' ','-');
 const families=new Map();
 assert(!context.window.MATH_PLANNED_CONTESTS.some(c=>/^(BMT|PUMaC)$/.test(c.name)),'live archives have no duplicate coming-soon entry');
 // Match the actual shared questions, which need not occupy consecutive B slots.
-for(const year of [2020,2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) for(let n=1;n<=6;n++){
+for(const year of [2019,2020,2021,2022,2023,2025]) for(const subject of ['Algebra','Combinatorics','Geometry','Number Theory']) for(let n=1;n<=6;n++){
   const bNumber=year===2020&&subject==='Combinatorics'?[2,3,4,5,7,8][n-1]:n+2;
   const refs=[`${year} PUMaC Division A ${subject}, Problem ${n}`,`${year} PUMaC Division B ${subject}, Problem ${bNumber}`];
   if(!db.some(p=>p.ref===refs[0]))continue;
