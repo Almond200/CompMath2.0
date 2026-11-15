@@ -9670,8 +9670,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const mean = xs => Math.round(xs.reduce((n, x) => n + x.med, 0) / xs.length);
       const first = per.slice(0, Math.min(5, per.length >> 1)), last = per.slice(-first.length);
       const drift = mean(last) - mean(first);
-      years = sec("Over the years", `<div class="py-plot"><span class="py-axis" aria-hidden="true"><em>${yTop}</em><em>${yLow}</em></span><div class="py" style="--pq:${famColor(fam)}">${per.map(x =>
-        `<a class="py-bar${x.s === sit ? " is-cur" : ""}" href="#/problems/${famSlug(fam)}/${x.year}${x.paper}" data-tip="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}: median paper rating ${x.med}" aria-label="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}, median paper rating ${x.med}"${x.s === sit ? ' aria-current="true"' : ""}><span class="py-col"><i style="height:${((x.med - yLow) / (yTop - yLow) * 100).toFixed(1)}%"></i></span><span class="py-n">${String(x.year).slice(2)}${x.s % 10 === 2 ? "F" : x.s % 10 === 1 ? "S" : ""}</span></a>`).join("")}</div></div>
+      // A long run of sittings (the AMC 12 back to the 1950 AHSME) cannot label every bar: label
+      // round years only, every 2, 5 or 10, always the current sitting, never right beside it, and
+      // half as many on a phone (owner, 2026-11-15).
+      const step = per.length <= 30 ? 1 : per.length <= 60 ? 2 : per.length <= 120 ? 5 : 10, at = per.findIndex(x => x.s === sit);
+      const labelled = (x, i) => i === at || (step === 1 || (x.year % step === 0 && (i === 0 || per[i - 1].year !== x.year) && Math.abs(i - at) > 1));
+      const halved = (x, i) => i !== at && (step === 1 ? i % 2 === 1 || Math.abs(i - at) === 1 : x.year % (2 * step) !== 0 || Math.abs(i - at) <= step);
+      years = sec("Over the years", `<div class="py-plot"><span class="py-axis" aria-hidden="true"><em>${yTop}</em><em>${yLow}</em></span><div class="py" style="--pq:${famColor(fam)}">${per.map((x, i) =>
+        `<a class="py-bar${x.s === sit ? " is-cur" : ""}${labelled(x, i) ? "" : " py-nolab"}${halved(x, i) ? " py-half" : ""}" href="#/problems/${famSlug(fam)}/${x.year}${x.paper}" data-tip="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}: median paper rating ${x.med}" aria-label="${sitLabel(x.s)}${x.n > 1 ? `, ${both(x.n)}` : ""}, median paper rating ${x.med}"${x.s === sit ? ' aria-current="true"' : ""}><span class="py-col"><i style="height:${((x.med - yLow) / (yTop - yLow) * 100).toFixed(1)}%"></i></span><span class="py-n">${String(x.year).slice(2)}${x.s % 10 === 2 ? "F" : x.s % 10 === 1 ? "S" : ""}</span></a>`).join("")}</div></div>
         <p class="pp-words">${pair ? `Each bar is one sitting of the contest, with its ${pair} taken together. ` : ""}The median ${escapeAttr(series)} paper was rated ${mean(first)} in ${sitSpan(first.map(x => x.s))} and ${mean(last)} in ${sitSpan(last.map(x => x.s))}: ${drift === 0 ? "no change" : `${Math.abs(drift)} points ${drift > 0 ? "harder" : "easier"}`}. ${cur.n > 1 ? `${sitLabel(sit)} averages ${cur.med} over ${both(cur.n)}; this paper is rated ${med}.` : `This paper is rated ${med}.`}</p>`);
     }
 
