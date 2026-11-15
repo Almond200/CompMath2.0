@@ -219,7 +219,11 @@
     "2011 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2011_GeometryA.pdf",
     "2011 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2011_GeometryB.pdf",
     "2011 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2011_NumberTheoryA.pdf",
-    "2011 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2011_NumberTheoryB.pdf"
+    "2011 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2011_NumberTheoryB.pdf",
+    "2010 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2010_AlgebraA.pdf",
+    "2010 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2010_AlgebraB.pdf",
+    "2010 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsA.pdf",
+    "2010 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -49061,6 +49065,134 @@
     "2011 PUMaC Division B Number Theory, Problem 8": [
       3450,
       "Expand the divisor-count coefficients as a double sum, justify the positive-term rearrangement and square the supplied reciprocal-square sum."
+    ],
+    "2010 PUMaC Division A Algebra, Problem 1": [
+      1200,
+      "Evaluate the polynomial at one to obtain the coefficient sum."
+    ],
+    "2010 PUMaC Division A Algebra, Problem 2": [
+      2550,
+      "Bound the nonzero terms in a sum of integer-root floors and evaluate each exact integer root."
+    ],
+    "2010 PUMaC Division A Algebra, Problem 3": [
+      2900,
+      "Find both positive exponential-power intersections, prove there are no others and bracket the unique negative intersection tightly enough to round the total."
+    ],
+    "2010 PUMaC Division A Algebra, Problem 4": [
+      3000,
+      "Solve the principal nested-radical fixed point and compare the exact positive threshold; retain the accepted zero input omitted by the intended positive-only answer."
+    ],
+    "2010 PUMaC Division A Algebra, Problem 5": [
+      3250,
+      "Shift all three cubic roots, invert them and recover their squared power sum from the transformed Vieta coefficients."
+    ],
+    "2010 PUMaC Division A Algebra, Problem 6": [
+      3200,
+      "Remove the quadratic defect from the additive identity and determine its integer values from two prescribed arguments."
+    ],
+    "2010 PUMaC Division A Algebra, Problem 7": [
+      3500,
+      "Complete the half-circle sine product by symmetry and evaluate the full root-of-unity distance product."
+    ],
+    "2010 PUMaC Division A Algebra, Problem 8": [
+      3650,
+      "Use integer-coefficient difference divisibility to isolate the only possible integer root of the shifted polynomial, while retaining the missing existence assumption in the printed question."
+    ],
+    "2010 PUMaC Division B Algebra, Problem 1": [
+      1400,
+      "Evaluate the defined operation in both input orders and subtract."
+    ],
+    "2010 PUMaC Division B Algebra, Problem 2": [
+      2300,
+      "Check the complete residue systems for successive small primes to find the fourth prime divisor of a quadratic value."
+    ],
+    "2010 PUMaC Division B Algebra, Problem 3": [
+      2500,
+      "Multiply by the finite geometric sum in a fifth root to rationalize its difference from one and read all five coefficients."
+    ],
+    "2010 PUMaC Division B Algebra, Problem 4": [
+      2900,
+      "Find both positive exponential-power intersections, prove there are no others and bracket the unique negative intersection tightly enough to round the total."
+    ],
+    "2010 PUMaC Division B Algebra, Problem 5": [
+      2600,
+      "Reduce the ninth power by the given cubic and check the resulting irrational linear expression; the source explicitly redacts the question because its value is not an integer."
+    ],
+    "2010 PUMaC Division B Algebra, Problem 6": [
+      3000,
+      "Solve the principal nested-radical fixed point and compare the exact positive threshold; retain the accepted zero input omitted by the intended positive-only answer."
+    ],
+    "2010 PUMaC Division B Algebra, Problem 7": [
+      3150,
+      "Alternate the shifted functional equations, sum a geometric progression and reduce modulo three hundred before dividing by three."
+    ],
+    "2010 PUMaC Division B Algebra, Problem 8": [
+      3500,
+      "Complete the half-circle sine product by symmetry and evaluate the full root-of-unity distance product."
+    ],
+    "2010 PUMaC Division A Combinatorics, Problem 1": [
+      2300,
+      "Condition on the last menu choice and require each of the earlier independent orders to avoid that item."
+    ],
+    "2010 PUMaC Division A Combinatorics, Problem 2": [
+      2500,
+      "Translate the cyclic two-digit comparisons into a weak and a strict digit inequality and count the two possible equality patterns."
+    ],
+    "2010 PUMaC Division A Combinatorics, Problem 3": [
+      2600,
+      "Add each circle through its maximum number of distinct intersections and give a configuration attaining all increments."
+    ],
+    "2010 PUMaC Division A Combinatorics, Problem 4": [
+      3250,
+      "Solve the absorbing corner-reward walk on the actual twenty-five-square board using its boundary values and symmetries."
+    ],
+    "2010 PUMaC Division A Combinatorics, Problem 5": [
+      3450,
+      "Maximize rook placements under the row-column attack restriction, force the full degree pattern and count the attaining boards."
+    ],
+    "2010 PUMaC Division A Combinatorics, Problem 6": [
+      3650,
+      "Count all crossing diagonal pairs of a regular decagon and correct the triple-concurrent and central multiplicities."
+    ],
+    "2010 PUMaC Division A Combinatorics, Problem 7": [
+      3500,
+      "Locate the sole peak and valley, distribute the intermediate values among monotone runs and sum the resulting weighted geometric powers."
+    ],
+    "2010 PUMaC Division A Combinatorics, Problem 8": [
+      3900,
+      "Recognize the diagonal binomial sums as Fibonacci counts, telescope the even-index sum and compute its modular value."
+    ],
+    "2010 PUMaC Division B Combinatorics, Problem 1": [
+      2200,
+      "Arrange the five ordinary songs, choose three gaps and permute the three distinguished songs into them."
+    ],
+    "2010 PUMaC Division B Combinatorics, Problem 2": [
+      2300,
+      "Condition on the last menu choice and require each of the earlier independent orders to avoid that item."
+    ],
+    "2010 PUMaC Division B Combinatorics, Problem 3": [
+      2500,
+      "Translate the cyclic two-digit comparisons into a weak and a strict digit inequality and count the two possible equality patterns."
+    ],
+    "2010 PUMaC Division B Combinatorics, Problem 4": [
+      2600,
+      "Add each circle through its maximum number of distinct intersections and give a configuration attaining all increments."
+    ],
+    "2010 PUMaC Division B Combinatorics, Problem 5": [
+      3000,
+      "Bound the possible total wins by the two participant groups and combine that inequality with the divisibility of the game count."
+    ],
+    "2010 PUMaC Division B Combinatorics, Problem 6": [
+      3600,
+      "Build the finite state graph of the pentagon line arrangement and solve its absorbing expected-return equations after the first exit."
+    ],
+    "2010 PUMaC Division B Combinatorics, Problem 7": [
+      3450,
+      "Maximize rook placements under the row-column attack restriction, force the full degree pattern and count the attaining boards."
+    ],
+    "2010 PUMaC Division B Combinatorics, Problem 8": [
+      3500,
+      "Locate the sole peak and valley, distribute the intermediate values among monotone runs and sum the resulting weighted geometric powers."
     ]
   }
 }

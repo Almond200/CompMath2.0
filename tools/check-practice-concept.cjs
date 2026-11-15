@@ -1,4 +1,4 @@
-// One concept panel, with a sliding, keyboard-operable Topics/Cards switch.
+// One concept panel, with a compact, keyboard-operable Topics/Cards switch.
 const { chromium } = require('playwright'), assert = require('node:assert/strict');
 const base = process.env.COMPMATH_URL || 'http://localhost:8765';
 (async () => { const browser = await chromium.launch({ executablePath: process.env.CHROME || '/usr/bin/chromium', args: ['--no-sandbox'] });
@@ -8,7 +8,7 @@ const base = process.env.COMPMATH_URL || 'http://localhost:8765';
   await page.goto(base+'/#/practice'); await page.locator('#pr-concept').waitFor();
   assert.equal(await page.locator('#pr-concept > h3').innerText(),'Practice a concept');
   assert.equal(await page.locator('#pr-topic').isVisible(),true); assert.equal(await page.locator('#pr-card').isVisible(),false);
-  const tabs=page.locator('.concept-switch [role="tab"]'); assert.equal(await tabs.count(),2);
+  const tabs=page.locator('.concept-modes [role="tab"]'); assert.equal(await tabs.count(),2);
   await page.locator('#topic-name').fill('Triangles'); await page.locator('[data-topic-id="geo.tri"]').click();
   await page.locator('#topic-band').fill('4'); await page.locator('#topic-count').fill('3');
   await page.locator('#concept-card-tab').click(); assert.equal(await page.locator('#pr-topic').isVisible(),false); assert.equal(await page.locator('#pr-card').isVisible(),true);
@@ -19,11 +19,13 @@ const base = process.env.COMPMATH_URL || 'http://localhost:8765';
   assert.equal(await page.evaluate(()=>document.activeElement.id),'concept-topic-tab');
   await page.locator('#concept-topic-tab').press('End'); assert.equal(await page.locator('#card-practice-name').inputValue(),'Pythagorean Theorem');
   assert.equal(await page.locator('#card-practice-status').innerText(),cardStatus);
-  assert.equal(await page.locator('.concept-switch [aria-selected="true"]').count(),1);
+  assert.equal(await page.locator('.concept-modes [aria-selected="true"]').count(),1);
   assert.equal(await page.locator('#concept-card-tab').getAttribute('tabindex'),'0'); assert.equal(await page.locator('#concept-topic-tab').getAttribute('tabindex'),'-1');
-  await page.emulateMedia({reducedMotion:'reduce'});
-  assert((await page.locator('.concept-switch').evaluate(el=>parseFloat(getComputedStyle(el,'::before').transitionDuration)))<0.001);
+  const style=el=>{const c=getComputedStyle(el);return {padding:c.padding,borderRadius:c.borderRadius,fontSize:c.fontSize,fontWeight:c.fontWeight,background:c.backgroundColor,color:c.color,border:c.border};};
+  assert.deepEqual(await page.locator('#concept-card-tab').evaluate(style),await page.locator('[data-mock-mode="paper"]').evaluate(style),'selected concept button matches selected contest button');
+  assert.deepEqual(await page.locator('#concept-topic-tab').evaluate(style),await page.locator('[data-mock-mode="generated"]').evaluate(style),'unselected buttons match too');
+
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)); assert.deepEqual(errors,[]);
-  console.log(theme,width,'one panel, slide switch, keyboard, retained choices and reduced motion passed'); await page.close();
+  console.log(theme,width,'one panel, compact buttons matching contest controls, keyboard and retained choices passed'); await page.close();
  }} finally { await browser.close(); }
 })().catch(e=>{console.error(e);process.exitCode=1});

@@ -5721,7 +5721,7 @@
     methods: `Methods are the moves you make once you are inside a problem. Each one names the <a href="#/formulas">formulas</a> it relies on, and <a href="#/patterns">patterns</a> tell you when it is worth trying.`,
     patterns: `Patterns are the problem shapes worth recognizing before you start. Each one points to the <a href="#/methods">methods</a> worth trying, and those lead to the <a href="#/formulas">formulas</a> they use.`,
     learn: `Textbooks teach the cards in order: each lesson explains an idea, links the formulas, methods, and patterns it uses, and ends with problems of its own and contest problems. Lists gather cards by contest level or by theme, and your own lists keep the cards you choose.`,
-    practice: `Real contest problems, each linked to the patterns, methods, and formulas it uses, with a strategy you can reveal.`
+    practice: `Real contest problems, organized by topic and difficulty, with the reference cards they use and links to their sources and solutions.`
   };
   const KINDS_OF_SPACE = { formulas: ["formula"], methods: ["method"], patterns: ["pattern"], learn: ["lesson"], practice: ["problem"] };
   function spaceHeadHtml(name) {
@@ -5788,7 +5788,7 @@
     const on = fams.filter(f => !practiceOff.has(f)).length;
     const sum = on === fams.length ? "All contests" : on ? `${on} of ${fams.length} contests` : "No contest";
     return `<details class="pr-fams"><summary><span class="pr-fams-label">Contests</span><span class="pr-fams-sum">${sum}</span></summary>
-      <p class="pr-fams-note">Problems from the AMC and AIME appear in the app. Those from other contests open in the official paper (the AoPS wiki for the AHSME), and you check your answer against the official solution when you review.</p>
+      <p class="pr-fams-note">Choose the contests to draw from. Some questions open in their source paper or on AoPS; for those, you check your answer against the official solution during review.</p>
       <div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-pr-all="on"${on === fams.length ? " disabled" : ""}>Select all</button><button type="button" class="fam-bulk-btn" data-pr-all="off"${on ? "" : " disabled"}>Deselect all</button></div>
       <div class="fam-chips" role="group" aria-label="Contests to draw from">${fams.map(f => `<button type="button" class="fam-chip" data-pr-fam="${escapeAttr(f)}" aria-pressed="${!practiceOff.has(f)}">${famDot(f)}${f}</button>`).join("")}</div></details>`;
   }
@@ -5838,7 +5838,7 @@
   function mockPracticePanelHtml() {
     return `<section class="sh-section" id="pr-mock">
       <h3>Practice a contest</h3>
-      <p class="practice-panel-intro">Take a past paper or build a mock from problems matched to recent contest difficulty. The timer pauses when you leave.</p>
+      <p class="practice-panel-intro">Take a past paper, or choose source contests for a mock modeled on recent papers. The timer pauses when you leave.</p>
       <form id="mock-contest-form"><fieldset aria-label="Mock contest options">
         <div class="rand-btns mock-modes" role="radiogroup" aria-label="Mock type">
           <button type="button" role="radio" aria-checked="true" data-mock-mode="paper">Past contest</button>
@@ -5852,7 +5852,7 @@
           <div id="mock-paper-options" class="set-find-list" role="listbox" aria-label="Past contests" hidden></div></div>
         </div>
         <div class="mock-source-field" hidden></div>
-        <p class="mock-generation-info" hidden>Choose the contests your questions come from. Each question keeps its original answer format. Questions read in an official paper are checked against its solution when you review.</p>
+        <p class="mock-generation-info" hidden>Questions come from your selected contests and keep their original answer formats. For questions linked to an official paper, check your answer against its solution during review.</p>
         <p id="mock-contest-info" class="prob-note"></p><p id="mock-contest-status" role="status"></p>
         <button type="submit" class="hp-btn">Start mock</button>
       </fieldset></form>
@@ -5884,7 +5884,6 @@
       info.textContent=`${f.count} problems · ${f.minutes} minutes${model?' · Modeled on '+model.startYear+'–'+model.endYear:''}`;
       let pool=[];
       if(model){
-        form.querySelector('.mock-generation-info').textContent=`Uses questions from before ${model.startYear}, plus HMMT February. Each keeps its original answer format. Questions read in an official paper are checked against its solution when you review.`;
         const available=mockContests.sourcePool(PROBLEM_DB,model,practiceEligible,isVoidedProblem);
         const fams=FAMILIES.filter(f=>available.some(p=>p.fam===f)),on=fams.filter(f=>!sourceOff.has(f)).length;
         const open=sourceBox.querySelector('details')?.open;
@@ -6321,7 +6320,7 @@
   }
   let practiceConceptMode = "topic";
   function wireConceptPractice(root) {
-    const bar = root.querySelector('.concept-switch'); if (!bar) return;
+    const bar = root.querySelector('.concept-modes'); if (!bar) return;
     const tabs = [...bar.querySelectorAll('[role="tab"]')];
     function choose(mode, focus=false) {
       practiceConceptMode = mode; bar.dataset.mode = mode;
@@ -6492,7 +6491,7 @@
         </section>
         <section class="sh-section" id="pr-concept">
           <h3>Practice a concept</h3>
-          <div class="concept-switch" role="tablist" aria-label="Practice concept type" data-mode="${practiceConceptMode}">
+          <div class="rand-btns concept-modes" role="tablist" aria-label="Practice concept type" data-mode="${practiceConceptMode}">
             <button type="button" role="tab" id="concept-topic-tab" data-concept-mode="topic" aria-controls="pr-topic" aria-selected="${practiceConceptMode === "topic"}" tabindex="${practiceConceptMode === "topic" ? 0 : -1}">Topics</button>
             <button type="button" role="tab" id="concept-card-tab" data-concept-mode="card" aria-controls="pr-card" aria-selected="${practiceConceptMode === "card"}" tabindex="${practiceConceptMode === "card" ? 0 : -1}">Cards</button>
           </div>
