@@ -50909,6 +50909,198 @@
     "2025 MATHCOUNTS National Team, Problem 10": [
       1400,
       "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): with the apex's foot at distances x, s - x and y, s - y from the four sides, each face has area (s/2) sqrt(h^2 + d^2); subtracting opposite faces removes h, and solving for s gives the base area s^2 = 2 sqrt 561."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 1": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 30 calories is 75% of the regular serving: 30/0.75 = 40 calories."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 2": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): reading the table, the family members with exactly one scoop make up 60%."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 3": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 5 + 13 - 4 = 14 students had something, so 17 - 14 = 3 had neither."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 4": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the twelve scores from the stem-and-leaf plot total 1032: mean 86."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 5": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): cutting 2-inch squares leaves an 8 by 8 base of height 2: 128 cubic inches."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 6": [
+      400,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the three colours' probabilities sum to 1, so P(yellow) = P(not red) + P(not green) - 1 = 1/6."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 7": [
+      400,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the diameter is 264 - 14 = 250 feet, so two trips cover 500 pi feet in 20 minutes: 25 pi feet per minute."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 8": [
+      400,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a referential set of size k must contain k: {1}, three 2-sets with 2, three 3-sets with 3, and {1, 2, 3, 4}: 8."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 9": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): casework on where x falls: median 12.5 gives x = 8, median (x + 14)/2 gives x = 14, median 15.5 gives x = 20: 8 + 14 + 20 = 42."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 10": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a line halving a rectangle passes through its centre (6, 6); with intercept 2 the slope is (6 - 2)/6 = 2/3."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 11": [
+      400,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): at 3:08 the hands are |30 x 3 - 5.5 x 8| = |90 - 44| = 46 degrees apart."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 12": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the triangle with vertices (0, 0), (4, 3), (8, 0) has area 12 and centroid at x = 4, so Pappus gives 2 pi x 4 x 12 = 96 pi."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 13": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 27^(9^81) = 3^(3 x 3^162) = 3^(3^163), so 3^(3^n) must exceed it: 3^n > 163, n = 5."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 14": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 20^24 = 2^48 5^24, and 3x + 2y = 48 has 9 solutions in nonnegative integers while 3x + 2y = 24 has 5: 9 x 5 = 45."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 15": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 7-24-25 and 15-20-25 are right triangles on BD, so ABCD is cyclic with diameter BD; Ptolemy gives 25 AC = 7 x 20 + 24 x 15 = 500: AC = 20."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 16": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the numerator is x^11 times the denominator, so x^11 = 2024^3 and x = 2024^(3/11), about 7.97: 8."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 17": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): f(n)/n adds 1 for each prime factor counted with multiplicity, so f(2023) = f(7 x 17^2) = 3 x 2023 = 6069."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 18": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): [3] and [4] cannot both be true, and testing the cases leaves [2], [5] and [7] true and [3], [4] false: 2 x 5 x 7 = 70."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 19": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the expression is (x - 5)^2 - 4|x - 5| + 9, least when |x - 5| = 2: the least such x is 3."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 20": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): with original speed v the times are 15/v, 10/v and 3/(1.8v), total 80/(3v) for 33 miles, so 99v/80 = 55: v = 44.4 mi/h."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 21": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): f(878) - f(676) and f(758) - f(675) share the factor 7! 6!, leaving 342; then f(342) = 3! 4! 2! = 288."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 22": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): with face areas A, B, C the volume is sqrt(ABC) and each edge is the volume over a face; faces 4, 9 and 25 give edges 6/5, 10/3 and 15/2 and volume 30, and no smaller volume avoids an integer edge: 30."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 23": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the digits are 4, 6, 8, 9, and the products over all three-digit strings sum to (4 + 6 + 8 + 9)^3 = 27^3 = 19683."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 24": [
+      1200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): gcd exactly 100 = 2^2 5^2 means each exponent pair has minimum 2: 9 ordered choices per prime, 81 in all, 80 with a and b different, 40 unordered pairs of the C(49, 2) = 1176: 5/147."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 25": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): for points at angle t apart the squared distance is 2r^2(1 - cos t), and cos t averages 0: 2 x 36 = 72."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 26": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the roots 2 and 3 of the recurrence give a_n = 3^(n-1) + 2^(n-1), so the sum is (1/3) x 1 + (1/2)(1/2) = 7/12."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 27": [
+      1300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): by symmetry two vertices are (+-s, s^2) and the next two (+-s/2, s^2/4), a height (sqrt 3/2)s apart: s = 2 sqrt 3/3 and the area is (3 sqrt 3/2)s^2 = 2 sqrt 3."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 28": [
+      1300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): by symmetry it is 1 - 3 P(a > b + c) over the cube [1, 4]^3; the region a > b + c is a small tetrahedron, and the answer is 23/27."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 29": [
+      1400,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): in each quadrant the graph is the arc of (x - 9)^2 + (y - 9)^2 = 108 inside it; each axis cuts off 60 degrees, leaving 240 degrees of a circle of radius 6 sqrt 3: 4 x (2/3) x 12 sqrt 3 pi = 32 sqrt 3 pi."
+    ],
+    "2024 MATHCOUNTS National Sprint, Problem 30": [
+      1500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the base has circumradius 4, so the height is sqrt(21 - 16) = sqrt 5 and the volume 4 sqrt 15; the faces total 12 sqrt 3 + 3 x 6 sqrt 3 = 30 sqrt 3, so r = 3V/S = 2 sqrt 5/5."
+    ],
+    "2024 MATHCOUNTS National Target, Problem 1": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a malasada costs 432/12 = 36 cents, so $10.08 buys 28, resold for $20.44: (2044 - 1008)/28 = 37 cents each."
+    ],
+    "2024 MATHCOUNTS National Target, Problem 2": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): extend CM to meet line AB; with M the midpoint of AD the triangles at M are congruent, and the right angle at C with BC = 7 makes B equidistant from the ends: BM = sqrt 193."
+    ],
+    "2024 MATHCOUNTS National Target, Problem 3": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): with a ten-point and b twelve-point questions, a + b = 30 and 10a + 12b = 342 give b = 21."
+    ],
+    "2024 MATHCOUNTS National Target, Problem 4": [
+      1200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): count the shuffles containing each four-card sequence as a block, 5! each, and subtract those containing both, which depend on how the sequences can overlap: 53/2880."
+    ],
+    "2024 MATHCOUNTS National Target, Problem 5": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): draws only repeat a game, so each decisive game takes 3/2 games on average; the match needs 2 or 3 decisive games (3 with probability 1/2): (3/2)(5/2) = 15/4."
+    ],
+    "2024 MATHCOUNTS National Target, Problem 6": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): n, n + 1, n + 2 squarefree with two prime factors each rules out multiples of 4 and of 9 among them, which restricts n mod 4 and mod 9; checking the classes mod 24 that occur, the remainders sum to 44."
+    ],
+    "2024 MATHCOUNTS National Target, Problem 7": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the slant height is 5, so the unrolled cone is a sector of 216 degrees, and the 150-degree arc of the base becomes 90 degrees: the shortest path is the chord 5 sqrt 2, about 7.07."
+    ],
+    "2024 MATHCOUNTS National Target, Problem 8": [
+      1500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): f(f(x)) = 0 with the single real root -1 forces f(-1) to be the only usable root of f, a double root at the vertex level; solving for a and b gives f(f(1)) = 12 + 4 sqrt 5."
+    ],
+    "2024 MATHCOUNTS National Team, Problem 1": [
+      400,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 30 km/h is 500 m a minute and a wheel covers 0.6 pi m a turn: 500/(0.6 pi), about 265."
+    ],
+    "2024 MATHCOUNTS National Team, Problem 2": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the cube has side 5, and each side of ABC joins midpoints of edges, a space diagonal of a box with halves 2.5: summing the three lengths gives about 15.78."
+    ],
+    "2024 MATHCOUNTS National Team, Problem 3": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the digit product is twice the digit sum; the digits 5, 4, 1 work (20 = 2 x 10), and of their arrangements the prime is 541."
+    ],
+    "2024 MATHCOUNTS National Team, Problem 4": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the 13-14-15 triangle has area 84 and altitude 12 from C; the half-area cut is a right triangle similar to the one on the side of the longer part: its height is 4 sqrt 7."
+    ],
+    "2024 MATHCOUNTS National Team, Problem 5": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a number not divisible by 2 to 25 avoids the primes up to 23; the proportion is the product of (1 - 1/p), about 16.4%: 16%."
+    ],
+    "2024 MATHCOUNTS National Team, Problem 6": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 1000 less the multiples of 8 up to 1000 that contain a 7: 979."
+    ],
+    "2024 MATHCOUNTS National Team, Problem 7": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): equal chances for the sums 2 to 7 force the die's probabilities, with p6 as small as the pattern allows; the sum 12 needs 6 and 6: 1/121."
+    ],
+    "2024 MATHCOUNTS National Team, Problem 8": [
+      1200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a rectilinear octagon alternates horizontal and vertical sides, each set summing to zero with signs; choosing the two notches to cut away the least area gives 99."
+    ],
+    "2024 MATHCOUNTS National Team, Problem 9": [
+      1500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): after 289 rounds the single number is the sum of C(289, k) times the k-th term, and modulo 289 = 17^2 most binomial coefficients vanish; the triangular numbers then give 272."
+    ],
+    "2024 MATHCOUNTS National Team, Problem 10": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): place the two grey cubes in cells at Chebyshev distance at least 2 in the 3 by 3 by 3 grid: 193 of the 351 pairs."
     ]
   }
 }
