@@ -49881,6 +49881,126 @@
     "2024 CHMMC Individual, Problem 15": [
       2300,
       "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): each value k up to 5 that occurs must be followed later by k + 1, so the values used form a run up to 6 entered in order; a direct count of the 5^7 functions gives 4919."
+    ],
+    "2022 CHMMC Individual, Problem 1": [
+      1300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): X - Y(X) = 98 AB, so the divisors of 98 work (sum 171), and n = 10000 works vacuously while no other n can: 10171."
+    ],
+    "2022 CHMMC Individual, Problem 2": [
+      1100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): with fill rates R, B and drain rate r, R - r = 1/300, B - r = 1/600 and R + B = 1/15 per second give r = 1/40: a third of the sink drains in 40/3, about 11 seconds."
+    ],
+    "2022 CHMMC Individual, Problem 3": [
+      1700,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the sphere's radius is the inradius 4 of the 13-14-15 triangle and the prism's height is 8; a cross-section circle of area 15 pi sits at distance 1 from the centre, giving two positions of the plane: areas summing to 448/3."
+    ],
+    "2022 CHMMC Individual, Problem 4": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): xy + yz + zx - xyz = 1 + (1 - x)(1 - y)(1 - z) with x + y + z = 2; the product runs from -1 (at 2, 0, 0) to 1/27 (at 2/3 each): m + n = 0 + 28/27."
+    ],
+    "2022 CHMMC Individual, Problem 5": [
+      1700,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): choose which copy of the word supplies each of C, H, M, M, C in order and count the matching positions within the copies: 434."
+    ],
+    "2022 CHMMC Individual, Problem 6": [
+      1800,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): z_n = a_n + b_n i satisfies z_n = z_(n-1) z_(n-2), so z_n = (1 + i)^(F_n) with Fibonacci exponents; a_n/b_n = cot(F_n pi/4) runs through 1, 0 and -1 by F_n mod 8: 675."
+    ],
+    "2022 CHMMC Individual, Problem 7": [
+      1700,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): angle BOC = 120 and angle BA'C = 60 make A'BOC cyclic with the same circumradius R = 4 sqrt 3; the perimeter 30 fixes the other sides and gives A'O = 6 sqrt 3."
+    ],
+    "2022 CHMMC Individual, Problem 8": [
+      1800,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): weight each count k of other slips by C(9, k) times the chance 1/(k + 1) that Bob's slip is drawn: the conditional mean of k + 1 is 5120/1023."
+    ],
+    "2022 CHMMC Individual, Problem 9": [
+      1800,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): x = 2 forces b at least 4, and x^a = x^b for all x modulo 16 x 9 x 5 x 11 needs a - b a multiple of lcm(4, 6, 4, 10) = 60: a = 64, b = 4, 68."
+    ],
+    "2022 CHMMC Individual, Problem 10": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): for coprime m, n a unit root forces x^m and x^n to be the two primitive cube roots of unity, so m and n are 1 and 2 mod 3 in some order; scaling by d and counting pairs up to 100: 1260."
+    ],
+    "2022 CHMMC Individual, Problem 11": [
+      2200,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the condition C = 3B/2 makes angle C obtuse, and with the tangents at A, B, C the line OX meets YZ in a ratio found from the angles of the tangential triangle: ZP/YP = 63/32."
+    ],
+    "2022 CHMMC Individual, Problem 12": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): 2022 = 2 x 3 x 337: sum the geometric series in a modulo each prime, using Fermat's little theorem for 337, and combine: 1649."
+    ],
+    "2022 CHMMC Individual, Problem 13": [
+      2100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): an alternating Hamiltonian path fills the grid two rows at a time, so a colouring works only with a row-by-row pattern counted by a recursion on the rows: 43/1024."
+    ],
+    "2022 CHMMC Individual, Problem 14": [
+      2200,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the tangent line through the midpoint of BC and its reflection through BC's parallel tangent fix T on EF; with AB = 8, BC = 10, CA = 12 the area of ATB is 135 sqrt 7/4."
+    ],
+    "2022 CHMMC Individual, Problem 15": [
+      2300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the units mod n are spread evenly over the units mod each divisor d > 1, phi(n)/phi(d) in each class, and the units mod d pair as r and d - r, so the remainders sum to d phi(n)/2; summing over the divisors of 396: 65460."
+    ],
+    "2021 CHMMC Individual, Problem 1": [
+      1100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the median 94 forces the middle pair 93 and 95, so 90, 91, 92, 93, 95 come first; an even count of odd numbers leaves 96, 98, 99 above: 96."
+    ],
+    "2021 CHMMC Individual, Problem 2": [
+      1400,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): there are no borrows exactly when each digit of x is at least the matching digit of y; counting digit pairs place by place and removing x = y gives 135225."
+    ],
+    "2021 CHMMC Individual, Problem 3": [
+      1300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): pairing k(k + 1)(k + 2) - (k + 1)(k + 2)(k + 3) = -3(k + 1)(k + 2) and adding the last term 1010 x 2019 x 2021 leaves 3(n + 1)^2 with n = 1009: 3060300."
+    ],
+    "2021 CHMMC Individual, Problem 4": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the fraction lies between -1 and 1 since a^2 + b^2 + 1 exceeds |ab + a + b| unless both are small, so it is 0 or 1 and the cases give 3 pairs."
+    ],
+    "2021 CHMMC Individual, Problem 5": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): a corner is covered exactly when its 2 by 2 quadrant has been chosen, so it is coupon collecting over four quadrants: 4(1 + 1/2 + 1/3 + 1/4) = 25/3, m + n = 28."
+    ],
+    "2021 CHMMC Individual, Problem 6": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): x^3 - 4x^2 + x + 6 = (x - 2)(x + 1)(x - 3), so the product is -P(2) P(-1) P(3): -2688."
+    ],
+    "2021 CHMMC Individual, Problem 7": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the rectangle and the square share the diagonal AC, so ABXCDY is cyclic on the circle with diameter AC; maximising the area of BXC over the rectangle's position gives m/n with m + n = 137."
+    ],
+    "2021 CHMMC Individual, Problem 8": [
+      2100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): an Earl-path is a lattice path from (0, 0) to (4, 4) with each step's part across y = x reflected back; counting the ways to place teleports on Catalan-type paths gives 3584."
+    ],
+    "2021 CHMMC Individual, Problem 9": [
+      1900,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): P(1) = product of (1 - cos(2 pi k/2023)) = 2^2022 times the product of sin^2(pi k/2023) = 2023^2/2^2022; 29 + 4 = 33 mod 100."
+    ],
+    "2021 CHMMC Individual, Problem 10": [
+      1900,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the 8 Aces and Kings split the other 44 cards into 9 gaps of mean 44/9; with k Kings before the first Ace, k gaps lie between them, and averaging over k given the first King comes first: m + n = 424."
+    ],
+    "2021 CHMMC Individual, Problem 11": [
+      2200,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the excess theta = arctan 3 - arctan 1/2 makes the beam's legs similar right triangles shrinking by a fixed ratio, so the quadrilateral areas form a geometric limit: m + n = 39."
+    ],
+    "2021 CHMMC Individual, Problem 12": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): sqrt(phi(n)) at least 22 means phi(n) at least 484; bounding phi(n) from below by its prime factors, the largest n with phi(n) < 484 is 2310 = 2 x 3 x 5 x 7 x 11: N = 2311."
+    ],
+    "2021 CHMMC Individual, Problem 13": [
+      2200,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): induction gives closed forms for a_j and b_j in factorials, and a_2021 + b_2021 reduces modulo 2017 with Wilson-type congruences: 1043."
+    ],
+    "2021 CHMMC Individual, Problem 14": [
+      2100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): completing squares, 2(2g(m) + 2021) = (2m + 1)^2 + 2021^2, so n must divide a sum of an odd square and 2021^2; testing the odd n below 100 prime power by prime power with quadratic residues gives 18."
+    ],
+    "2021 CHMMC Individual, Problem 15": [
+      2300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): BHOC cyclic forces angle A = 60, and cos(B - C) = 11/32 fixes the triangle in the unit circle; the Euler line OH meets BC at T with TO = m sqrt p/n, m + n + p = 46."
     ]
   }
 }
