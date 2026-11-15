@@ -9,7 +9,8 @@ const slug=ref=>ref.toLowerCase().replace(/,?\s*problem\s+/,'-').replace(/[^a-z0
 const ratings=window.MATH_PROBLEM_RATINGS.ratings,db=window.MATH_PROBLEM_DB.map(p=>({...p,elo:(ratings[slug(p.ref)]||{}).elo,year:+p.ref.slice(0,4),num:+p.ref.match(/(\d+)$/)[1]}));
 assert(db.every(p=>Number.isFinite(p.elo)&&p.year>1900&&p.num>0),'every problem has a rating, a year and a number');
 // The charts' scale grows past 3800 to fit the hardest problem (owner, 2026-11-12).
-const NB=(Math.max(3800,...db.map(p=>(Math.floor(p.elo/200)+1)*200))-200)/200;
+const LO=Math.min(200,...db.map(p=>Math.floor(p.elo/200)*200));
+const NB=(Math.max(3800,...db.map(p=>(Math.floor(p.elo/200)+1)*200))-LO)/200;
 const q=(xs,f)=>{const s=[...xs].sort((a,b)=>a-b),i=(s.length-1)*f,lo=Math.floor(i),hi=Math.ceil(i);return Math.round(s[lo]+(s[hi]-s[lo])*(i-lo));};
 const pct=x=>!x?'0%':x>=0.0995?Math.round(x*100)+'%':(x*100).toFixed(1)+'%';
 function expected(id){
@@ -48,7 +49,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   if(await contests.locator('.fam-more-btn').count()){await contests.locator('.fam-more-btn').click();await contests.locator('.fam-more-btn[aria-expanded="false"]').waitFor();}
   const words=await rowOf(pf,'Difficulty').locator('.pf-words').innerText();
   assert.equal(words,`Median rating ${e.med}. Half of its problems are rated ${e.q1} to ${e.q3}; the full range is ${e.min} to ${e.max}. The median is harder than ${e.harder}% of all problems.`);
-  const chart=rowOf(pf,'Difficulty').locator('.elo-chart');assert.equal(await chart.locator('.elo-bar').count(),NB);assert.deepEqual(await chart.locator('a.elo-bar').evaluateAll(xs=>xs.map(x=>x.getAttribute('href'))),Array.from({length:NB},(_,i)=>'#/browse/difficulty/'+(200+200*i)),'every bar opens its range');assert.equal(await chart.evaluate(el=>el.classList.contains('has-cur')),false,'no bar is singled out');assert.equal(await chart.locator('.elo-mark').count(),1);
+  const chart=rowOf(pf,'Difficulty').locator('.elo-chart');assert.equal(await chart.locator('.elo-bar').count(),NB);assert.deepEqual(await chart.locator('a.elo-bar').evaluateAll(xs=>xs.map(x=>x.getAttribute('href'))),Array.from({length:NB},(_,i)=>'#/browse/difficulty/'+(LO+200*i)),'every bar opens its range');assert.equal(await chart.evaluate(el=>el.classList.contains('has-cur')),false,'no bar is singled out');assert.equal(await chart.locator('.elo-mark').count(),1);
   const topics=rowOf(pf,'Topics');assert.equal(await topics.locator('tbody tr').count(),5);assert.equal(await topics.locator('tbody tr').first().locator('td').nth(1).innerText(),String(e.top));
   const tn=(await topics.locator('tbody tr td:nth-child(3)').allInnerTexts()).map(Number);assert.deepEqual(tn,[...tn].sort((a,b)=>b-a),'most used topic first');
   const time=rowOf(pf,'Over time');assert.match(await time.locator('.pf-words').innerText(),new RegExp(`${e.recent} of the ${e.n} are from ${e.last} on\\.$`));

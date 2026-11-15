@@ -11,10 +11,10 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const page=await browser.newPage({viewport:{width,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(15000);
  await page.addInitScript(t=>localStorage.setItem('theme',t),theme);
  const fits=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no horizontal overflow at '+page.url());
- await page.goto(base+'/#/practice');const form=page.locator('#card-practice-form');await form.waitFor();
- const heads=await page.locator('.sh-section > h3').allInnerTexts();assert.deepEqual(heads.slice(heads.indexOf('Practice a topic'),heads.indexOf('Practice a topic')+3),['Practice a topic','Practice a card','Practice a contest'],'it sits with Practice a topic, before Practice a contest');
+ await page.goto(base+'/#/practice');const form=page.locator('#card-practice-form');await page.locator('#concept-card-tab').click();await form.waitFor();
+ const heads=await page.locator('.sh-section > h3').allInnerTexts();assert.deepEqual(heads.slice(heads.indexOf('Practice a concept'),heads.indexOf('Practice a concept')+2),['Practice a concept','Practice a contest'],'one concept area sits before Practice a contest');
  assert.equal(await form.locator('[data-card-kind]').count(),0,'one search, no kind buttons');assert.match(await page.locator('#pr-card .practice-panel-intro').innerText(),/reference's cards/);assert.equal(await form.locator('[type="submit"]').isDisabled(),true);
- assert.match(await page.locator('#card-band-note').innerText(),/^Difficulty is measured inside the card you choose/);
+ assert.match(await page.locator('#card-band-note').innerText(),/^Choose a card to see five similar Elo intervals/);
  // Nothing is offered until something is typed; then the matching cards, most problems first.
  const input=page.locator('#card-practice-name'),opts=page.locator('#card-practice-options button');
  await input.click();assert.equal(await page.locator('#card-practice-options').isVisible(),false);assert.equal(await opts.count(),0);
@@ -26,19 +26,22 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const counts=(await opts.locator('.practice-topic-context').allInnerTexts()).map(num);await input.press('ArrowDown');await input.press('ArrowUp');await input.press('Enter');
  assert.equal(await input.inputValue(),'Pythagorean Theorem');assert.equal(await page.locator('#card-practice-options').isVisible(),false);
  const avail=parseInt(await page.locator('#card-practice-status').innerText());assert.equal(avail,counts[0]);assert.equal(await form.locator('[type="submit"]').isEnabled(),true);
- await page.locator('#card-band').fill('5');const note=await page.locator('#card-band-note').innerText();assert.match(note,/^Very hard for this card is an Elo rating of \d+ to \d+: one fifth of its problems/);
- const few=parseInt(await page.locator('#card-practice-status').innerText());assert(few<avail&&few>=Math.floor(avail/5));
- await page.locator('#card-band').fill('0');await page.locator('#card-count').fill('7');assert.equal(await page.locator('#card-count-value').innerText(),'7');
+ await page.locator('#card-band').fill('5');const note=await page.locator('#card-band-note').innerText();assert.match(note,/^Very hard in this card: \d+–\d+ Elo\./);
+ const few=parseInt(await page.locator('#card-practice-status').innerText());assert(few>0&&few<avail);
+ await page.locator('#card-count').fill('7');assert.equal(await page.locator('#card-count-value').innerText(),'7');
  // The set: seven problems, each citing the card, no shared AMC 10/12 problem twice, saved with the card's id.
  await form.locator('[type="submit"]').click();await page.waitForFunction(()=>/#\/practice\/set\//.test(location.hash));await page.locator('.practice-session-top').waitFor();
  assert.match(await page.locator('.practice-session-top h2').innerText(),/^Practice set · Pythagorean Theorem$/);
  const set=await page.evaluate(()=>JSON.parse(localStorage.getItem('mq-practice-sets')).find(s=>location.hash.endsWith(s.id)));
  assert.equal(set.cardId,'pythagorean-theorem');assert.equal(set.slugs.length,7);assert.equal(new Set(set.slugs).size,7);
+ const [lo,hi]=note.match(/(\d+)–(\d+) Elo/).slice(1).map(Number);
+ const drawn=await page.evaluate(slugs=>slugs.map(s=>MATH_PROBLEM_RATINGS.ratings[s].elo),set.slugs);
+ assert(drawn.every(e=>e>=lo&&e<=hi),'card set follows the displayed Elo interval');
  for(const s of set.slugs)assert(cites.get(s)?.cards.has('pythagorean-theorem'),s+' cites the card');
  assert.equal(new Set(set.slugs.map(s=>cites.get(s).ref.slice(0,4)+'|'+(cites.get(s).strategy||cites.get(s).ref))).size,7,'no problem appears as both its AMC 10 and AMC 12 copy');
  await fits();
  // Methods and patterns come from the same search; a card with few problems caps the count.
- await page.goto(base+'/#/practice');await form.waitFor();assert.equal(await input.getAttribute('placeholder'),"Search the reference's cards...");
+ await page.goto(base+'/#/practice');await page.locator('#concept-card-tab').click();await form.waitFor();assert.equal(await input.getAttribute('placeholder'),"Search the reference's cards...");
  await input.fill('casework');assert.equal(await opts.first().locator('.practice-topic-name').innerText(),'Casework');assert.match(await opts.first().locator('.practice-topic-context').innerText(),/^Method · /);
  await opts.first().click();assert.match(await page.locator('#card-practice-status').innerText(),/^\d+ matching problems? available\.$/);
  await input.fill('hook');await opts.first().click();const n=parseInt(await page.locator('#card-practice-status').innerText());

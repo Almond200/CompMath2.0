@@ -232,6 +232,7 @@
   const ORDERS = ["curated", "problems"];
   // A problem page's strategy and card chain: shown at once, or behind a button so the reader
   // can try the problem first (Settings -> Practice).
+  const CONTEST_LIST_MODES = ["click", "show"];
   const STRATEGY_MODES = ["click", "show"];   // Click to show is the default (owner, 2026-10-31)
   // Figure captions on the browsing cards. A card's own page always shows them, since there
   // the caption is part of the explanation; on the card grid some readers want just the picture.
@@ -296,6 +297,7 @@
       order: pick(P.order, ORDERS),
       strategy: P.strategyChosen ? pick(P.strategy, STRATEGY_MODES) : STRATEGY_MODES[0],
       strategyChosen: !!P.strategyChosen,
+      contestLists: pick(P.contestLists, CONTEST_LIST_MODES),
       captions: pick(P.captions, CAPTION_MODES),
       tools: pick(P.tools, TOOLS_MODES),
       lessonLinks: pick(P.lessonLinks, LESSON_LINK_MODES),
@@ -316,7 +318,7 @@
           density: state.density, notation: state.notation,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonWidth: state.lessonWidth
+          tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonWidth: state.lessonWidth
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -350,6 +352,7 @@
     lessonWidth: _loaded.lessonWidth, // "reading" | "full" — a lesson's explanation at 760px or across the column
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     strategyChosen: _loaded.strategyChosen,
+    contestLists: _loaded.contestLists,
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
     scroll: _loaded.scroll,      // "normal" | "slow" | "fast" — mouse-wheel and trackpad scroll speed
     start: _loaded.start,        // "landing" | "formulas" — where the app opens when no page is asked for
@@ -2902,7 +2905,7 @@
   // sentence (the "## Contest profile" section; it never names a problem) over computed
   // counts. Only converted cards carry one; the others keep their "On contests" prose.
   // Historical paper-position thirds, kept for the statistics page's chart.
-  // Picker difficulty uses Elo rank within the selected pool, independently of these charts.
+  // Picker difficulty uses equal-width Elo intervals within the selected pool, independently of these charts.
   let FAM_MAXNUM = null;
   // Where the problem sits in its paper, from near 0 (the first problem) to 1 (the last).
   function paperPos(p) {
@@ -2968,8 +2971,8 @@
       // in the collection gets its plain count.
       share: (() => {
         const seen = FAMILIES.map(x => [x, probs.filter(p => p.fam === x).length]).filter(x => x[1]);
-        return `<div class="pf-stat pf-odds">${seen.filter(([x]) => famShown(x)).map(([x, n]) =>
-        `<span class="pf-odd"><b>${all.fam[x] >= 100 ? `1 in ${Math.max(1, Math.round(all.fam[x] / n)).toLocaleString("en-US")}` : `${n} of ${all.fam[x]}`}</b>${escapeAttr(x)}</span>`).join("")}${famMoreBtn(extraFams(seen.map(([x]) => x)), "ct-toggle pf-more")}</div>`;
+        return `<div class="pf-stat pf-odds">${seen.filter(([x]) => famShown(x, "profile-odds")).map(([x, n]) =>
+        `<span class="pf-odd"><b>${all.fam[x] >= 100 ? `1 in ${Math.max(1, Math.round(all.fam[x] / n)).toLocaleString("en-US")}` : `${n} of ${all.fam[x]}`}</b>${escapeAttr(x)}</span>`).join("")}${famMoreBtn(extraFams(seen.map(([x]) => x)), "ct-toggle pf-more", "profile-odds")}</div>`;
       })(),
       med: med != null ? stat(med, elos.length === 1 ? "rating" : "median rating") : "",
       years: stat(y0 === y1 ? y0 : `${y0}&ndash;${y1}`, y0 === y1 ? "year seen" : "years seen")
@@ -2984,8 +2987,8 @@
       const shareMax = Math.max(0, ...fams.filter(sized).map(x => x.share));
       // A few problems are named in a line; shares and bars of one or two problems say nothing.
       if (few) out.rows.contests = row("Contests", dots(fams.map(x => `${famDot(x.fam)}${escapeAttr(x.fam)} <span class="pf-sub">${x.ps.map(p => "#" + p.num).join(", ")}</span>`)));
-      else out.rows.contests = row("Contests", `<table class="pf-table"><thead><tr><th scope="col" aria-label="Contest"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of the contest", "Share")}</th><th scope="col">${duo("Typical question", "Typical #")}</th></tr></thead><tbody>${fams.filter(x => famShown(x.fam)).map(x =>
-        `<tr><th scope="row">${famDot(x.fam)}${escapeAttr(x.fam)}</th><td class="pf-meter-cell"><span class="pf-meter">${sized(x) ? `<i style="width:${Math.max(2, x.share / shareMax * 100).toFixed(1)}%;background:${famColor(x.fam)}"></i>` : ""}</span></td><td>${x.ps.length}</td><td>${sized(x) ? pfPct(x.share) : `${x.ps.length} of ${all.fam[x.fam]}`}</td><td>#${x.at}</td></tr>`).join("")}</tbody></table>${famMoreBtn(extraFams(fams.map(x => x.fam)))}`, true);
+      else out.rows.contests = row("Contests", `<table class="pf-table"><thead><tr><th scope="col" aria-label="Contest"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of the contest", "Share")}</th><th scope="col">${duo("Typical question", "Typical #")}</th></tr></thead><tbody>${fams.filter(x => famShown(x.fam, "profile-contests")).map(x =>
+        `<tr><th scope="row">${famDot(x.fam)}${escapeAttr(x.fam)}</th><td class="pf-meter-cell"><span class="pf-meter">${sized(x) ? `<i style="width:${Math.max(2, x.share / shareMax * 100).toFixed(1)}%;background:${famColor(x.fam)}"></i>` : ""}</span></td><td>${x.ps.length}</td><td>${sized(x) ? pfPct(x.share) : `${x.ps.length} of ${all.fam[x.fam]}`}</td><td>#${x.at}</td></tr>`).join("")}</tbody></table>${famMoreBtn(extraFams(fams.map(x => x.fam)), "ct-toggle", "profile-contests")}`, true);
 
       // Difficulty: the ratings in words, then their spread, stacked by contest in the colours
       // of the rows above. A handful of ratings is listed, not charted.
@@ -3628,7 +3631,7 @@
   // dozens of problems, and one long list mixing every contest made it hard to find, say, the
   // AMC 10 ones. Each group shows its first few rows, so every contest stays visible, and has
   // its own button for the rest, so opening the AMC 10 problems does not also unroll 60 AIME ones.
-  const PROB_GROUP_PREVIEW = 3;
+  const PROB_GROUP_PREVIEW = 3, probGroupsOpen = new Map();
 
   function contestHtml(f) {
     const probs = PROBLEMS_BY_CARD[f.id] || [];
@@ -3650,26 +3653,27 @@
     });
     // The AMC and AIME first, the other contests on request, as in the other contest lists
     // (owner, 2026-11-14); a card cited only outside them shows its contests at once.
-    const shownFams = fams.some(f => CORE_FAMS.has(f)) ? fams.filter(famShown) : fams;
+    const shownFams = fams.some(f => CORE_FAMS.has(f)) ? fams.filter(f => famShown(f, "card-problems")) : fams;
     const body = shownFams.map(fam => {
       const hidden = groups[fam].length - PROB_GROUP_PREVIEW;
+      const groupKey = f.id + "|" + fam, groupOpen = probGroupsOpen.get(groupKey) ?? state.contestLists === "show";
       const rows = groups[fam].map((p, i) => {
         return `<li class="prob-row${i >= PROB_GROUP_PREVIEW ? " prob-extra" : ""}">
          <a class="prob-open" href="#/problem/${p.slug}">${refShort(p.ref)}</a>
          ${p.url ? `<a class="ref-ext-link" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer" title="Open the source">${p.urlLabel} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
        </li>`;
       }).join("");
-      return `<div class="prob-group" data-fam="${escapeAttr(fam)}">
+      return `<div class="prob-group${groupOpen ? " probs-open" : ""}" data-prob-group="${escapeAttr(groupKey)}" data-fam="${escapeAttr(fam)}">
           <div class="prob-group-head">${fam} <span class="practice-note">${groups[fam].length}</span></div>
           <ul class="prob-list">${rows}</ul>
-          ${hidden > 0 ? `<button type="button" class="show-more-btn prob-more" aria-expanded="false">Show ${hidden} more ${fam}</button>` : ""}
+          ${hidden > 0 ? `<button type="button" class="show-more-btn prob-more" aria-expanded="${groupOpen}">${groupOpen ? "Show fewer" : `Show ${hidden} more ${fam}`}</button>` : ""}
         </div>`;
     }).join("");
     return `
       <div class="practice contest-refs">
         <h4>Practice problems <span class="practice-note">${probs.length}</span></h4>
         ${body}
-        ${shownFams === fams ? "" : famMoreBtn(extraFams(fams))}
+        ${shownFams === fams ? "" : famMoreBtn(extraFams(fams), "ct-toggle", "card-problems")}
       </div>`;
   }
 
@@ -4661,6 +4665,7 @@
     (root || document).querySelectorAll(".prob-more").forEach(btn => btn.addEventListener("click", () => {
       const box = btn.closest(".prob-group");
       const open = box.classList.toggle("probs-open");
+      probGroupsOpen.set(box.dataset.probGroup, open);
       btn.setAttribute("aria-expanded", open ? "true" : "false");
       btn.textContent = open
         ? "Show fewer"
@@ -4797,7 +4802,7 @@
   const SETTING_DEFAULTS = {
     theme: "light", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
     notation: NOTATIONS[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
-    order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], lessonWidth: LESSON_WIDTHS[0], strategy: STRATEGY_MODES[0]
+    order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], lessonWidth: LESSON_WIDTHS[0], strategy: STRATEGY_MODES[0], contestLists: CONTEST_LIST_MODES[0]
   };
   function settingRow(name, desc, key, current, options, pv) {
     const def = SETTING_DEFAULTS[key];
@@ -4845,6 +4850,7 @@
           <h3 class="set-panel-title">Browsing</h3>
           ${settingRow("Subject pages", "Every card in a subject on one scrolling page, grouped by topic, or just the names, A to Z.", "layout", state.layout, [["cards", "Cards"], ["wiki", "A&ndash;Z index"]], "subject")}
           ${settingRow("Card order", "How cards are ordered on a subject page. Curated keeps the order the cards were written in; Most used puts first the cards that the most practice problems use.", "order", state.order, [["curated", "Curated"], ["problems", "Most used"]], "subject")}
+          ${settingRow("Contest lists", "Click to expand starts contest statistics, year lists and practice-problem lists collapsed, and resets them when you leave a page. Always expanded shows their full lists by default.", "contestLists", state.contestLists, [["click", "Click to expand"], ["show", "Always expanded"]])}
           ${settingRow("When the app opens", "Where you land when you open the app without a link to a particular page. The front page shows the four spaces; Formulas goes straight in. The logo still takes you to the front page.", "start", state.start, [["landing", "Front page"], ["formulas", "Formulas"]])}
         </section>
         <section class="set-panel">
@@ -5011,6 +5017,7 @@
         start: "startup, start page, home page, homepage, landing page, open on, launch, default page, front page, first page, when it opens",
         lessonLinks: "lesson links, drawer, open cards beside, side panel, card links, links, preview, popup",
         lessonWidth: "lesson width, text width, line length, wide text, narrow text, full width, reading width, column, paragraphs, lesson text",
+        contestLists: "show more, show all, expanded, collapsed, contests, statistics, stats, practice problems, years",
         strategy: "spoilers, spoiler, solution, solutions, reveal, answers, answer, hide the strategy, show the strategy, how this problem works, hints",
         "Export progress": "export data, export, save data, my data, data, backup, back up, save my progress, save, download, file, json, transfer, move to another browser, keep my lists, history, stars",
         "Import progress": "import data, import, load data, data, restore, upload, load a backup, file, json, transfer, from another browser, reset",
@@ -5717,7 +5724,7 @@
     methods: `Methods are the moves you make once you are inside a problem. Each one names the <a href="#/formulas">formulas</a> it relies on, and <a href="#/patterns">patterns</a> tell you when it is worth trying.`,
     patterns: `Patterns are the problem shapes worth recognizing before you start. Each one points to the <a href="#/methods">methods</a> worth trying, and those lead to the <a href="#/formulas">formulas</a> they use.`,
     learn: `Textbooks teach the cards in order: each lesson explains an idea, links the formulas, methods, and patterns it uses, and ends with problems of its own and contest problems. Lists gather cards by contest level or by theme, and your own lists keep the cards you choose.`,
-    practice: `Real contest problems, each linked to the patterns, methods, and formulas it uses, with a strategy you can reveal.`
+    practice: `Real contest problems, organized by topic and difficulty, with the reference cards they use and links to their sources and solutions.`
   };
   const KINDS_OF_SPACE = { formulas: ["formula"], methods: ["method"], patterns: ["pattern"], learn: ["lesson"], practice: ["problem"] };
   function spaceHeadHtml(name) {
@@ -5729,7 +5736,7 @@
       </header>
       ${recent ? `<div class="sh-recent"><span class="hp-label">Recently opened</span><div class="rc-chips">${recent}</div></div>` : ""}`;
   }
-  // Shared five-level Elo rank selection, recalibrated after the contest/topic filter.
+  // Shared equal-width Elo intervals, recalibrated after the contest/topic filter.
   const DIFFS = problemDifficulty.levels.map(level => level.id);
   function wireRandomPicker(root) {
     const box = root.querySelector(".rand-picker");
@@ -5741,14 +5748,15 @@
       const level = problemDifficulty.levels[+range.value].label;
       box.querySelector(".rand-diff-val").textContent = level;
       range.setAttribute("aria-valuetext", level);
-      // What a level means in Elo terms (owner, 2026-11-11): the ratings it covers for the
-      // chosen contest, drawn from the same pool and the same fifths the draw itself uses.
-      const scope = fam ? `the ${fam} problems` : "all the problems";
-      const elos = d ? problemDifficulty.filter(PROBLEM_DB.filter(p => !fam || p.fam === fam), d).map(p => p.elo) : [];
-      box.querySelector(".rand-diff-note").textContent = elos.length
-        ? `${level} is an Elo rating of ${Math.min(...elos)} to ${Math.max(...elos)}: one fifth of ${scope}, where a higher rating means a harder problem.`
-        : `Difficulty goes by Elo rating: a higher rating means a harder problem. Each level is a fifth of ${scope}, from the lowest rated to the highest.`;
-      go.href = "#/special/randomproblem" + (fam ? "/" + encodeURIComponent(fam) : "") + (d ? "/" + d : "");
+      const pool = PROBLEM_DB.filter(p => !fam || p.fam === fam);
+      const eligible = problemDifficulty.filter(pool, d);
+      box.querySelector(".rand-diff-note").textContent = problemDifficulty.describe(pool, d, fam || "all contests");
+      if (eligible.length) {
+        go.href = "#/special/randomproblem" + (fam ? "/" + encodeURIComponent(fam) : "") + (d ? "/" + d : "");
+        go.removeAttribute("aria-disabled"); go.removeAttribute("tabindex");
+      } else {
+        go.removeAttribute("href"); go.setAttribute("aria-disabled", "true"); go.tabIndex = -1;
+      }
     };
     box.querySelectorAll("[data-rand-fam]").forEach(b => b.addEventListener("click", () => {
       fam = b.dataset.randFam;
@@ -5783,7 +5791,7 @@
     const on = fams.filter(f => !practiceOff.has(f)).length;
     const sum = on === fams.length ? "All contests" : on ? `${on} of ${fams.length} contests` : "No contest";
     return `<details class="pr-fams"><summary><span class="pr-fams-label">Contests</span><span class="pr-fams-sum">${sum}</span></summary>
-      <p class="pr-fams-note">Problems from the AMC and AIME appear in the app. Those from other contests open in the official paper (the AoPS wiki for the AHSME), and you check your answer against the official solution when you review.</p>
+      <p class="pr-fams-note">Choose the contests to draw from. Some questions open in their source paper or on AoPS; for those, you check your answer against the official solution during review.</p>
       <div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-pr-all="on"${on === fams.length ? " disabled" : ""}>Select all</button><button type="button" class="fam-bulk-btn" data-pr-all="off"${on ? "" : " disabled"}>Deselect all</button></div>
       <div class="fam-chips" role="group" aria-label="Contests to draw from">${fams.map(f => `<button type="button" class="fam-chip" data-pr-fam="${escapeAttr(f)}" aria-pressed="${!practiceOff.has(f)}">${famDot(f)}${f}</button>`).join("")}</div></details>`;
   }
@@ -5794,10 +5802,11 @@
     if (one) { const f = one.dataset.prFam; practiceOff.has(f) ? practiceOff.delete(f) : practiceOff.add(f); }
     else practiceOff = all.dataset.prAll === "on" ? new Set() : new Set(FAMILIES);
     try { localStorage.setItem("mq-practice-off", JSON.stringify([...practiceOff])); } catch (err) {}
-    const focus = one ? `[data-pr-fam="${CSS.escape(one.dataset.prFam)}"]` : `[data-pr-all="${all.dataset.prAll}"]`, inPanel = e.target.closest(".sh-section")?.id;
-    const wasOpen = new Set([...document.querySelectorAll(".pr-fams")].filter(d => d.open).map(d => d.closest(".sh-section")?.id));
-    document.querySelectorAll(".pr-fams").forEach(d => { d.outerHTML = practiceFamsHtml(); });
-    document.querySelectorAll(".pr-fams").forEach(d => { d.open = wasOpen.has(d.closest(".sh-section")?.id); });
+    const focus = one ? `[data-pr-fam="${CSS.escape(one.dataset.prFam)}"]` : `[data-pr-all="${all.dataset.prAll}"]`, inPanel = e.target.closest("#pr-topic, #pr-card")?.id;
+    const selector = "#pr-topic .pr-fams, #pr-card .pr-fams";
+    const wasOpen = new Set([...document.querySelectorAll(selector)].filter(d => d.open).map(d => d.closest("#pr-topic, #pr-card")?.id));
+    document.querySelectorAll(selector).forEach(d => { d.outerHTML = practiceFamsHtml(); });
+    document.querySelectorAll(selector).forEach(d => { d.open = wasOpen.has(d.closest("#pr-topic, #pr-card")?.id); });
     const target = document.querySelector(`#${inPanel} ${focus}`);
     (target && !target.disabled ? target : document.querySelector(`#${inPanel} [data-pr-all]:not([disabled])`))?.focus({ preventScroll: true });
     document.dispatchEvent(new Event("practice-fams"));
@@ -5832,20 +5841,21 @@
   function mockPracticePanelHtml() {
     return `<section class="sh-section" id="pr-mock">
       <h3>Practice a contest</h3>
-      <p class="practice-panel-intro">Take a past paper or build a mock from problems matched to recent contest difficulty. The timer pauses when you leave.</p>
+      <p class="practice-panel-intro">Take a past paper, or choose source contests for a mock modeled on recent papers. The timer pauses when you leave.</p>
       <form id="mock-contest-form"><fieldset aria-label="Mock contest options">
         <div class="rand-btns mock-modes" role="radiogroup" aria-label="Mock type">
           <button type="button" role="radio" aria-checked="true" data-mock-mode="paper">Past contest</button>
           <button type="button" role="radio" aria-checked="false" data-mock-mode="generated">Generate a mock</button>
         </div>
-        <label class="mock-field-label">Contest</label>
+        <label class="mock-field-label">Contest format</label>
         <div class="rand-btns" role="radiogroup" aria-label="Mock contest">${Object.keys(mockContests.formats).map((f,i)=>`<button type="button" role="radio" aria-checked="${i===0}" data-mock-family="${f}">${f}</button>`).join('')}</div>
         <div class="mock-paper-field">
           <label for="mock-paper-name">Year and paper</label>
           <div class="mock-paper-search"><input id="mock-paper-name" class="set-find-input" type="search" placeholder="Search a year or paper..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="mock-paper-options">
           <div id="mock-paper-options" class="set-find-list" role="listbox" aria-label="Past contests" hidden></div></div>
         </div>
-        <p class="mock-generation-info" hidden>Uses older AMC and AIME problems, with HMMT also eligible. Each problem keeps its original answer format.</p>
+        <div class="mock-source-field" hidden></div>
+        <p class="mock-generation-info" hidden>Questions come from your selected contests and keep their original answer formats. For questions linked to an official paper, check your answer against its solution during review.</p>
         <p id="mock-contest-info" class="prob-note"></p><p id="mock-contest-status" role="status"></p>
         <button type="submit" class="hp-btn">Start mock</button>
       </fieldset></form>
@@ -5856,6 +5866,9 @@
     const input=form.querySelector('#mock-paper-name'), options=form.querySelector('#mock-paper-options');
     const status=form.querySelector('#mock-contest-status'), submit=form.querySelector('[type="submit"]'), info=form.querySelector('#mock-contest-info');
     const catalog=mockPapers();let family='AMC 8',mode='paper',active=-1,busy=false,choices=[];
+    let sourceOff;try{sourceOff=new Set(JSON.parse(localStorage.getItem('mq-mock-sources-off')||'[]'));}catch(e){sourceOff=new Set();}
+    const sourceBox=form.querySelector('.mock-source-field');
+    const chosenSources=()=>FAMILIES.filter(f=>!sourceOff.has(f));
     const currentPapers=()=>catalog.filter(g=>g.family===family);
     function close(){options.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');active=-1;}
     function highlight(){[...options.children].forEach((b,i)=>{b.classList.toggle('is-cur',i===active);b.setAttribute('aria-selected',String(i===active));});if(choices[active])input.setAttribute('aria-activedescendant','mock-paper-'+active);}
@@ -5867,14 +5880,35 @@
       active=choices.length?0:-1;options.hidden=!choices.length;input.setAttribute('aria-expanded',String(!options.hidden));highlight();
       [...options.children].forEach((b,i)=>{b.addEventListener('mousemove',()=>{active=i;highlight();});b.addEventListener('click',()=>{input.value=choices[i].label;update();input.focus();close();});});
     }
-    function update(){
+    function update(clearStatus=true){
       const f=mockContests.formats[family],paper=currentPapers().find(g=>g.label.toLowerCase()===input.value.trim().toLowerCase());
       const model=mode==='generated'?mockContests.curve(catalog,family,isVoidedProblem):null;
-      form.querySelector('.mock-paper-field').hidden=mode!=='paper';form.querySelector('.mock-generation-info').hidden=mode!=='generated';
+      form.querySelector('.mock-paper-field').hidden=mode!=='paper';form.querySelector('.mock-generation-info').hidden=mode!=='generated';sourceBox.hidden=mode!=='generated';
       info.textContent=`${f.count} problems · ${f.minutes} minutes${model?' · Modeled on '+model.startYear+'–'+model.endYear:''}`;
-      submit.textContent=mode==='paper'?'Start mock':'Generate mock';submit.disabled=busy||(mode==='paper'&&!paper);
-      if(!busy)status.textContent='';
+      let pool=[];
+      if(model){
+        const available=mockContests.sourcePool(PROBLEM_DB,model,practiceEligible,isVoidedProblem);
+        const fams=FAMILIES.filter(f=>available.some(p=>p.fam===f)),on=fams.filter(f=>!sourceOff.has(f)).length;
+        const open=sourceBox.querySelector('details')?.open;
+        sourceBox.innerHTML=`<details class="pr-fams"${open?' open':''}><summary><span class="pr-fams-label">Question sources</span><span class="pr-fams-sum">${on===fams.length?'All contests':on?`${on} of ${fams.length} contests`:'No contests'}</span></summary>
+          <div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-mock-source-all="on"${on===fams.length?' disabled':''}>Select all</button><button type="button" class="fam-bulk-btn" data-mock-source-all="off"${on?'':' disabled'}>Deselect all</button></div>
+          <div class="fam-chips" role="group" aria-label="Mock question sources">${fams.map(f=>`<button type="button" class="fam-chip" data-mock-source="${escapeAttr(f)}" aria-pressed="${!sourceOff.has(f)}">${famDot(f)}${f}</button>`).join('')}</div></details>`;
+        pool=mockContests.sourcePool(PROBLEM_DB,model,practiceEligible,isVoidedProblem,chosenSources());
+      }
+      submit.textContent=mode==='paper'?'Start mock':'Generate mock';submit.disabled=busy||(mode==='paper'?!paper:pool.length<f.count);
+      if(!busy&&clearStatus){
+        status.textContent=mode==='generated'?`${pool.length.toLocaleString()} eligible questions in the selected contests.${pool.length<f.count?` Choose more contests to reach ${f.count} questions.`:''}`:'';
+        if(model&&pool.length>=f.count&&model.targets.some(t=>!pool.some(p=>Math.abs(p.elo-t)<=350)))status.textContent+=' The selected sources do not cover the full target difficulty; the closest available questions will be used.';
+      }
     }
+    form.addEventListener('click',e=>{
+      const one=e.target.closest('[data-mock-source]'),all=e.target.closest('[data-mock-source-all]');if(!one&&!all)return;
+      if(one){const f=one.dataset.mockSource;sourceOff.has(f)?sourceOff.delete(f):sourceOff.add(f);}
+      else sourceOff=all.dataset.mockSourceAll==='on'?new Set():new Set(FAMILIES);
+      try{localStorage.setItem('mq-mock-sources-off',JSON.stringify([...sourceOff]));}catch(e){}
+      const selector=one?`[data-mock-source="${CSS.escape(one.dataset.mockSource)}"]`:`[data-mock-source-all="${all.dataset.mockSourceAll}"]`;
+      update();sourceBox.querySelector(selector)?.focus({preventScroll:true});
+    });
     function setFamily(f){family=f;form.querySelectorAll('[data-mock-family]').forEach(b=>b.setAttribute('aria-checked',String(b.dataset.mockFamily===f)));input.value='';choices=[];options.innerHTML='';close();update();}
     form.querySelectorAll('[data-mock-family]').forEach(b=>b.addEventListener('click',()=>setFamily(b.dataset.mockFamily)));
     form.querySelectorAll('[data-mock-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mockMode;form.querySelectorAll('[data-mock-mode]').forEach(x=>x.setAttribute('aria-checked',String(x===b)));close();update();}));
@@ -5886,15 +5920,15 @@
       const paper=currentPapers().find(g=>g.label.toLowerCase()===input.value.trim().toLowerCase());if(mode==='paper'&&!paper)return;
       busy=true;form.querySelector('fieldset').disabled=true;status.textContent='Loading mock problems...';
       try{
-        const plan=mode==='paper'?{problems:paper.problems}:mockContests.generate(PROBLEM_DB,catalog,family,hasMockAnswer,isVoidedProblem);
-        await Promise.all([...new Set(plan.problems.filter(p=>!window.MATH_MOCK_EXTRAS?.[p.slug]).map(p=>p.year))].map(loadStatements));
+        const plan=mode==='paper'?{problems:paper.problems}:mockContests.generate(PROBLEM_DB,catalog,family,practiceEligible,isVoidedProblem,Math.random,chosenSources());
+        await Promise.all([...new Set(plan.problems.filter(p=>!window.MATH_MOCK_EXTRAS?.[p.slug]&&!paperProblem(p)).map(p=>p.year))].map(loadStatements));
         if(!form.isConnected)return;
-        if(plan.problems.some(p=>!window.MATH_STATEMENTS?.[p.slug]&&!window.MATH_MOCK_EXTRAS?.[p.slug]))throw Error('Some statements could not be loaded. Try again.');
+        if(plan.problems.some(p=>!paperProblem(p)&&!window.MATH_STATEMENTS?.[p.slug]&&!window.MATH_MOCK_EXTRAS?.[p.slug]))throw Error('Some statements could not be loaded. Try again.');
         const label=mode==='paper'?paper.label:'Generated '+family;
         const mock={mode,family,durationMs:mockContests.formats[family].minutes*60000};
-        if(plan.model){mock.modelStartYear=plan.model.startYear;mock.modelEndYear=plan.model.endYear;mock.targets=plan.model.targets;mock.hmmtException=true;}
-        topicPracticeSet=practiceSessions.createMock(label,plan.problems.map(p=>p.slug),mock);savePractice();location.hash='#/practice/set/'+topicPracticeSet.id;
-      }catch(err){status.textContent=err.message;}finally{busy=false;form.querySelector('fieldset').disabled=false;submit.disabled=false;}
+        if(plan.model){mock.modelStartYear=plan.model.startYear;mock.modelEndYear=plan.model.endYear;mock.targets=plan.model.targets;mock.sources=chosenSources();mock.usedSources=plan.sources;mock.hmmtException=true;}
+        topicPracticeSet=practiceSessions.createMock(label,plan.problems.map(p=>p.slug),mock);markPaperProblems(topicPracticeSet,plan.problems);savePractice();location.hash='#/practice/set/'+topicPracticeSet.id;
+      }catch(err){status.textContent=err.message;}finally{busy=false;form.querySelector('fieldset').disabled=false;update(false);}
     });
     // Arriving from a paper's "Mock this paper" button: its contest and paper are already
     // chosen, so Start mock is one press away.
@@ -5989,7 +6023,7 @@
     set.slugs.forEach(slug => counts[practiceSessions.result(set, slug)]++);
     const reviewUrl = '#/practice/set/' + encodeURIComponent(set.id) + '/review';
     const mock = isMock(set), score = mock ? mockScore(set) : null;
-    const stats = mock ? [[score.points+'/'+score.max,'Mock score'],[counts.Correct+'/'+total,'Correct'],[counts.Incorrect,'Incorrect'],[counts.Unanswered,'Unanswered']] : [[counts.Correct + '/' + total, 'Correct'], [Math.round(100 * counts.Correct / total) + '%', 'Score'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
+    const stats = mock ? [[score.points+'/'+score.max,counts['Check yourself']?'Score so far':'Mock score'],[counts.Correct+'/'+total,'Correct'],[counts.Incorrect,'Incorrect'],[counts.Unanswered,'Unanswered']] : [[counts.Correct + '/' + total, 'Correct'], [Math.round(100 * counts.Correct / total) + '%', 'Score'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
     $content.innerHTML = `<div class="space-home practice-session practice-results">
       <a class="back-link" href="#/practice">${uiIcon("arrow-left")} Back to Practice</a>
       <section class="sh-section"><h2>${mock ? 'Mock complete' : 'Practice complete'}</h2><p class="practice-results-subtitle">${escapeAttr(practiceSetLabel(set))} · ${total} problem${total === 1 ? '' : 's'}${mock ? ' · '+(set.mock.mode==='paper'?'Past contest':'Generated mock') : ' · '+escapeAttr(set.difficulty)+' difficulty'}</p>
@@ -6158,7 +6192,7 @@
     let desiredCount = count.valueAsNumber;
     const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible);
     // The pool a topic draws from under the current contest choice, for the browser checks.
-    window.MATH_PRACTICE_POOL = id => (topics.nodes.get(id)?.problems || []).filter(practiceFamOn).map(p => p.slug);
+    window.MATH_PRACTICE_POOL = id => topics.select(id, practiceFamOn).map(p => p.slug);
     const findTopic = () => {
       const selected = topics.nodes.get(selectedTopicId);
       return selected && topic.value === selected.label ? selected : topics.resolve(topic.value);
@@ -6166,7 +6200,7 @@
     function update() {
       const choices = topics.search(topic.value);
       suggestions.innerHTML = choices.map((node,i) => {
-        const size = problemDifficulty.filter(node.problems.filter(practiceFamOn), DIFFS[difficulty.valueAsNumber]).length;
+        const size = problemDifficulty.filter(topics.select(node.id, practiceFamOn), DIFFS[difficulty.valueAsNumber]).length;
         const context = node.path.slice(0, -1).join(' › ');
         return `<button type="button" class="set-find-opt practice-topic-option${i === 0 ? ' is-cur' : ''}" role="option" id="practice-topic-${i}" data-topic-id="${node.id}" aria-selected="${i === 0}"><span class="practice-topic-name">${mathHtml(node.name)}</span><span class="practice-topic-context">${escapeAttr(context)}${context ? ' · ' : ''}${size} problem${size === 1 ? '' : 's'}</span></button>`;
       }).join('');
@@ -6187,13 +6221,9 @@
       form.querySelector("#topic-count-value").textContent = count.value;
       form.querySelector("#topic-band-value").textContent = difficultyLabel();
       difficulty.setAttribute("aria-valuetext", difficultyLabel());
-      // Here a level is measured inside the chosen topic, not across a contest (owner,
-      // 2026-11-11: say so, since it works differently from the random picker).
-      const level = difficulty.valueAsNumber ? difficultyLabel() : "", rated = level && match ? pool.map(p => p.elo).filter(Number.isFinite) : [];
-      form.querySelector("#topic-band-note").textContent = rated.length
-        ? `${level} in this topic is an Elo rating of ${Math.min(...rated)} to ${Math.max(...rated)}: one fifth of its problems, where a higher rating means a harder problem.`
-        : level ? `${level} is one fifth of the chosen topic's problems by Elo rating, where a higher rating means a harder problem. Choose a topic to see the ratings it covers.`
-        : "Difficulty is measured inside the topic you choose: each level is a fifth of that topic's problems by Elo rating, so Hard in an easy topic is rated lower than Hard in a difficult one.";
+      form.querySelector("#topic-band-note").textContent = match
+        ? problemDifficulty.describe(topics.select(match.id, practiceFamOn), DIFFS[difficulty.valueAsNumber], "this topic")
+        : "Choose a topic to see five similar Elo intervals for the selected contests.";
       status.textContent = match ? pool.length + " matching problem" + (pool.length === 1 ? "" : "s") + " available" + (match.children.length ? ", including subtopics." : ".")
         : topic.value.trim() ? "Choose a topic from the suggestions." : "";
       form.querySelector("button[type=submit]").disabled = generating || !pool.length;
@@ -6205,7 +6235,7 @@
     document.addEventListener("practice-fams", onFams);
     function matchingProblems() {
       const match = findTopic(), band = DIFFS[difficulty.valueAsNumber];
-      return match ? problemDifficulty.filter(match.problems.filter(practiceFamOn), band) : [];
+      return match ? problemDifficulty.filter(topics.select(match.id, practiceFamOn), band) : [];
     }
     function closeTopics() { suggestions.hidden = true; topic.setAttribute('aria-expanded','false'); topic.removeAttribute('aria-activedescendant'); activeTopic = -1; }
     function openTopics() {
@@ -6270,13 +6300,11 @@
     });
     update();
   }
-  // Practice a card (owner, 2026-11-11; it sits right after Practice a topic, its sibling, and
-  // before Practice a contest): an untimed set from the contest problems that cite one
+  // The card view of Practice a concept builds an untimed set from problems that cite one
   // formula, method or pattern. It draws from the same eligible, twin-free pool as Practice a
   // topic (the Mixed pool) and builds the same kind of saved set; only the choice differs.
   function cardPracticePanelHtml() {
-    return `<section class="sh-section" id="pr-card">
-      <h3>Practice a card</h3>
+    return `<div class="concept-panel" id="pr-card" role="tabpanel" aria-labelledby="concept-card-tab"${practiceConceptMode === "card" ? "" : " hidden"}>
       <p class="practice-panel-intro">Choose one of the reference's cards (a formula, method or pattern) to build an untimed set from the contest problems that use it.</p>
       <form id="card-practice-form" novalidate><fieldset aria-label="Card practice options">
         <label class="mock-field-label" for="card-practice-name">Reference card</label>
@@ -6291,7 +6319,27 @@
         <p id="card-practice-status" role="status"></p>
         <button type="submit" class="hp-btn">Generate set</button>
       </fieldset></form>
-    </section>`;
+    </div>`;
+  }
+  let practiceConceptMode = "topic";
+  function wireConceptPractice(root) {
+    const bar = root.querySelector('.concept-modes'); if (!bar) return;
+    const tabs = [...bar.querySelectorAll('[role="tab"]')];
+    function choose(mode, focus=false) {
+      practiceConceptMode = mode; bar.dataset.mode = mode;
+      for (const tab of tabs) {
+        const selected = tab.dataset.conceptMode === mode;
+        tab.setAttribute('aria-selected', String(selected)); tab.tabIndex = selected ? 0 : -1;
+        root.querySelector('#'+tab.getAttribute('aria-controls')).hidden = !selected;
+        if (selected && focus) tab.focus();
+      }
+    }
+    tabs.forEach(tab => tab.addEventListener('click', () => choose(tab.dataset.conceptMode)));
+    bar.addEventListener('keydown', e => {
+      if (!['ArrowLeft','ArrowRight','Home','End'].includes(e.key)) return;
+      e.preventDefault();
+      choose(e.key === 'Home' ? 'topic' : e.key === 'End' ? 'card' : practiceConceptMode === 'topic' ? 'card' : 'topic', true);
+    });
   }
   let cardPracticePools = null;
   function wireCardPractice(root) {
@@ -6303,16 +6351,17 @@
     // Every card's eligible problems, each shared AMC 10/12 problem once.
     const pools = cardPracticePools ||= (() => {
       const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible);
-      const eligible = new Set(topics.nodes.get("mixed").problems), by = {};
-      Object.keys(PROBLEMS_BY_CARD).forEach(id => { const ps = PROBLEMS_BY_CARD[id].filter(p => eligible.has(p)); if (ps.length && BY_ID[id]) by[id] = ps; });
+      const by = {};
+      Object.keys(PROBLEMS_BY_CARD).forEach(id => { const ps = PROBLEMS_BY_CARD[id].filter(practiceEligible); if (ps.length && BY_ID[id]) by[id] = ps; });
       return by;
     })();
     // One search over every kind of card (owner, 2026-11-14); each suggestion names its kind.
     const KIND_NAME = { formula: "Formula", method: "Method", pattern: "Pattern" };
     const allCards = () => Object.keys(pools).sort((a, b) => pools[b].length - pools[a].length || plain(BY_ID[a].formula.name).localeCompare(plain(BY_ID[b].formula.name)));
     let chosen = null, active = -1, choices = [], desired = count.valueAsNumber, generating = false;
+    const selectedPool = id => practiceTopicIndex.unique((pools[id] || []).filter(practiceFamOn));
     const level = () => problemDifficulty.levels[band.valueAsNumber].label;
-    const pool = () => chosen ? problemDifficulty.filter(pools[chosen].filter(practiceFamOn), DIFFS[band.valueAsNumber]) : [];
+    const pool = () => chosen ? problemDifficulty.filter(selectedPool(chosen), DIFFS[band.valueAsNumber]) : [];
     function close() { options.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; }
     function highlight() {
       [...options.children].forEach((b, i) => { b.classList.toggle("is-cur", i === active); b.setAttribute("aria-selected", String(i === active)); });
@@ -6324,7 +6373,7 @@
       const q = input.value.trim().toLowerCase();
       if (!q || (chosen && plain(BY_ID[chosen].formula.name).toLowerCase() === q)) { choices = []; options.innerHTML = ""; close(); return; }
       choices = allCards().filter(id => plain(BY_ID[id].formula.name).toLowerCase().includes(q)).slice(0, 8);
-      options.innerHTML = choices.map((id, i) => { const n = problemDifficulty.filter(pools[id].filter(practiceFamOn), DIFFS[band.valueAsNumber]).length;
+      options.innerHTML = choices.map((id, i) => { const n = problemDifficulty.filter(selectedPool(id), DIFFS[band.valueAsNumber]).length;
         return `<button type="button" class="set-find-opt practice-topic-option" id="card-practice-${i}" role="option" aria-selected="false"><span class="practice-topic-name">${BY_ID[id].formula.name}</span><span class="practice-topic-context">${KIND_NAME[kindOf(BY_ID[id].formula)] || "Card"} · ${n} problem${n === 1 ? "" : "s"}</span></button>`; }).join("");
       [...options.children].forEach((b, i) => {
         b.addEventListener("mousemove", () => { if (active !== i) { active = i; highlight(); } });
@@ -6340,11 +6389,9 @@
       form.querySelector("#card-count-value").textContent = count.value;
       form.querySelector("#card-band-value").textContent = level();
       band.setAttribute("aria-valuetext", level());
-      const rated = band.valueAsNumber && chosen ? ps.map(p => p.elo).filter(Number.isFinite) : [];
-      form.querySelector("#card-band-note").textContent = rated.length
-        ? `${level()} for this card is an Elo rating of ${Math.min(...rated)} to ${Math.max(...rated)}: one fifth of its problems, where a higher rating means a harder problem.`
-        : band.valueAsNumber ? `${level()} is one fifth of the chosen card's problems by Elo rating, where a higher rating means a harder problem. Choose a card to see the ratings it covers.`
-        : "Difficulty is measured inside the card you choose: each level is a fifth of the problems that use it, by Elo rating.";
+      form.querySelector("#card-band-note").textContent = chosen
+        ? problemDifficulty.describe(selectedPool(chosen), DIFFS[band.valueAsNumber], "this card")
+        : "Choose a card to see five similar Elo intervals for the selected contests.";
       status.textContent = chosen ? `${ps.length} matching problem${ps.length === 1 ? "" : "s"} available.` : input.value.trim() ? "Choose a card from the suggestions." : "";
       submit.disabled = generating || !ps.length;
     }
@@ -6434,9 +6481,9 @@
             <p class="practice-panel-intro">Try a past contest problem, with your choice of contest and difficulty.</p>
             <div class="rand-btns" role="radiogroup" aria-label="Contest">
               <button type="button" role="radio" aria-checked="true" data-rand-fam="">Any contest</button>
-              ${fams.filter(famShown).map(f => `<button type="button" role="radio" aria-checked="false" data-rand-fam="${escapeAttr(f)}">${escapeAttr(f)}</button>`).join("")}
+              ${fams.filter(f => famShown(f, "random-contests")).map(f => `<button type="button" role="radio" aria-checked="false" data-rand-fam="${escapeAttr(f)}">${escapeAttr(f)}</button>`).join("")}
             </div>
-            ${famMoreBtn(extraFams(fams))}
+            ${famMoreBtn(extraFams(fams), "ct-toggle", "random-contests")}
             <div class="rand-diff">
               <label for="rand-diff-range">Difficulty</label>
               <input type="range" id="rand-diff-range" min="0" max="5" step="1" value="0">
@@ -6445,8 +6492,13 @@
             <p class="rand-diff-note" aria-live="polite"></p>
             <a class="hp-btn rand-go" href="#/special/randomproblem">Open a random problem</a>
         </section>
-        <section class="sh-section" id="pr-topic">
-          <h3>Practice a topic</h3>
+        <section class="sh-section" id="pr-concept">
+          <h3>Practice a concept</h3>
+          <div class="rand-btns concept-modes" role="tablist" aria-label="Practice concept type" data-mode="${practiceConceptMode}">
+            <button type="button" role="tab" id="concept-topic-tab" data-concept-mode="topic" aria-controls="pr-topic" aria-selected="${practiceConceptMode === "topic"}" tabindex="${practiceConceptMode === "topic" ? 0 : -1}">Topics</button>
+            <button type="button" role="tab" id="concept-card-tab" data-concept-mode="card" aria-controls="pr-card" aria-selected="${practiceConceptMode === "card"}" tabindex="${practiceConceptMode === "card" ? 0 : -1}">Cards</button>
+          </div>
+          <div class="concept-panel" id="pr-topic" role="tabpanel" aria-labelledby="concept-topic-tab"${practiceConceptMode === "topic" ? "" : " hidden"}>
           <p class="practice-panel-intro">Choose a topic to build an untimed set. Broader topics include all their subtopics.</p>
           <form id="topic-practice-form" novalidate><fieldset aria-label="Practice set options">
             <label for="topic-name">Topic</label>
@@ -6461,20 +6513,21 @@
             <p id="topic-practice-status" role="status"></p>
             <button type="submit" class="hp-btn">Generate set</button>
           </fieldset></form>
+          </div>
+          ${cardPracticePanelHtml()}
         </section>
-        ${cardPracticePanelHtml()}
         ${mockPracticePanelHtml()}
         <section class="sh-section" id="pr-contests">
           <h3>Contests</h3>
           <p class="practice-panel-intro">Browse past papers by contest and year.</p>
           <div class="ct-browse"><a class="ct-browse-btn" href="#/browse/topics">Browse by topic</a><a class="ct-browse-btn" href="#/browse/difficulty">Browse by difficulty</a></div>
-          <div class="ct-list">${fams.filter(famShown).map((f, i, a) => `
+          <div class="ct-list">${fams.filter(f => famShown(f, "contest-years")).map((f, i, a) => `
             <div class="ct-row${i && famSeries(a[i - 1]) === famSeries(f) ? " ct-same" : ""}">
               <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famCount(f).toLocaleString()} problem${famCount(f) === 1 ? "" : "s"}</span></a>
               <div class="ct-years">${(ctYearsOpen.has(f) ? yearsOf(f) : yearsOf(f).slice(0, CT_YEARS)).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}${yearsOf(f).length > CT_YEARS
-                ? `<button type="button" class="ct-years-more" data-ct-years="${escapeAttr(f)}" aria-expanded="${ctYearsOpen.has(f)}">${ctYearsOpen.has(f) ? "Fewer years" : `All ${yearsOf(f).length} years`}</button>` : ""}</div>
+                ? `<button type="button" class="ct-years-more" data-ct-years="${escapeAttr(f)}" aria-expanded="${ctYearsOpen.has(f)}">${ctYearsOpen.has(f) ? "Fewer years" : `Show ${yearsOf(f).length - CT_YEARS} more year${yearsOf(f).length - CT_YEARS === 1 ? "" : "s"}`}</button>` : ""}</div>
             </div>`).join("")}
-            ${famMoreBtn(extraFams(fams))}
+            ${famMoreBtn(extraFams(fams), "ct-toggle", "contest-years")}
             ${(() => {
               const planned = (window.MATH_PLANNED_CONTESTS || []).filter(c => !fams.includes(c.name));
               if (!planned.length) return "";
@@ -6493,6 +6546,7 @@
     $content.innerHTML = `<div class="space-home">${body}</div>`;
     wireRandomPicker($content);
     wireTopicPractice($content);
+    wireConceptPractice($content);
     wireMockPractice($content);
     wireCardPractice($content);
     wirePracticeHistory($content);
@@ -9784,9 +9838,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const famColor = f => FAM_COLOR[f] || "var(--level-oly)";
   const RATED_FAMS = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && Number.isFinite(p.elo)));
   // The scale ends at 3800 unless a problem is rated above that (owner, 2026-11-12: harder
-  // contests than the AIME may be added); then it grows to the bin that holds the hardest one.
-  const ELO_BIN = 200, ELO_LO = 200;
-  const ELO_HI = Math.max(3800, ...PROBLEM_DB.filter(p => Number.isFinite(p.elo)).map(p => (Math.floor(p.elo / ELO_BIN) + 1) * ELO_BIN));
+  // contests than the AIME may be added); both ends grow to include every actual rating.
+  const ELO_BIN = 200, RATED_ELOS = PROBLEM_DB.filter(p => Number.isFinite(p.elo)).map(p => p.elo);
+  const ELO_LO = Math.min(200, ...RATED_ELOS.map(elo => Math.floor(elo / ELO_BIN) * ELO_BIN));
+  const ELO_HI = Math.max(3800, ...RATED_ELOS.map(elo => (Math.floor(elo / ELO_BIN) + 1) * ELO_BIN));
   const eloBins = () => Array.from({ length: (ELO_HI - ELO_LO) / ELO_BIN }, (_, i) => ELO_LO + i * ELO_BIN);
   const binOf = elo => Math.min(ELO_HI - ELO_BIN, Math.max(ELO_LO, Math.floor(elo / ELO_BIN) * ELO_BIN));
   const famDot = f => `<i class="fam-dot" style="background:${famColor(f)}"></i>`;
@@ -9835,8 +9890,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return `<div class="elo-box" data-elo="${p.elo}"${manual ? " data-manual" : ""}>
       <p class="elo-head"><span class="elo-num">${p.elo}</span><span class="elo-note">${eloNote(p.elo, fam, manual)}</span></p>
       <div class="elo-plot">${eloChartHtml({ shown: fam ? [fam] : RATED_FAMS, mark: p.elo, compact: true })}</div>
-      <div class="fam-chips" role="group" aria-label="Compare with">${[...RATED_FAMS.filter(f => famShown(f) || f === fam), null].map(f =>
-        `<button type="button" class="fam-chip" data-elo-fam="${f ? famSlug(f) : "all"}" aria-pressed="${f === fam}">${f ? famDot(f) : ""}${f || "All contests"}</button>`).join("")}${famMoreBtn(extraFams(RATED_FAMS.filter(f => f !== fam)), "fam-chip")}</div>
+      <div class="fam-chips" role="group" aria-label="Compare with">${[...RATED_FAMS.filter(f => famShown(f, "problem-rating-contests") || f === fam), null].map(f =>
+        `<button type="button" class="fam-chip" data-elo-fam="${f ? famSlug(f) : "all"}" aria-pressed="${f === fam}">${f ? famDot(f) : ""}${f || "All contests"}</button>`).join("")}${famMoreBtn(extraFams(RATED_FAMS.filter(f => f !== fam)), "fam-chip", "problem-rating-contests")}</div>
     </div>`;
   }
   document.addEventListener("click", e => {
@@ -9850,12 +9905,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
   // ---------- Contest lists: AMC and AIME first (owner, 2026-11-14) ----------
   // Lists of contests show the AMC 8, 10 and 12 and the AIME; the other contests wait behind a
-  // "Show more contests" button. The choice holds while moving between pages.
+  // "Show more contests" button. Expansions reset on navigation unless Settings opens them by default.
   const CORE_FAMS = new Set(["AMC 8", "AMC 10", "AMC 12", "AIME"]);
-  let famsOpen = false;
-  const famShown = f => famsOpen || CORE_FAMS.has(f);
+  const contestExpansions = new Map();
+  let expansionPage = null, expansionBrowseKind = null;
+  const famsOpen = key => contestExpansions.get(key) ?? state.contestLists === "show";
+  const famShown = (f, key = "browse-contests") => famsOpen(key) || CORE_FAMS.has(f);
   // n counts the contests beyond the AMC and AIME in that list; cls styles the button for its row.
-  const famMoreBtn = (n, cls = "ct-toggle") => n > 0 ? `<button type="button" class="${cls} fam-more-btn" aria-expanded="${famsOpen}">${famsOpen ? "Show fewer contests" : `Show ${n} more contest${n === 1 ? "" : "s"}`}</button>` : "";
+  const famMoreBtn = (n, cls = "ct-toggle", key = "browse-contests") => n > 0 ? `<button type="button" class="${cls} fam-more-btn" data-fam-list="${key}" aria-expanded="${famsOpen(key)}">${famsOpen(key) ? "Show fewer contests" : `Show ${n} more contest${n === 1 ? "" : "s"}`}</button>` : "";
   // Papers of one contest (the AMC 8, 10 and 12; HMMT February and November; ARML and ARML Local;
   // PUMaC's two divisions) sit together in the Contests list, without a rule between them (owner, 2026-11-14).
   const famSeries = f => f.replace(/^AMC \d+$/, "AMC").replace(/^MATHCOUNTS (Chapter|State|National)$/, "MATHCOUNTS").replace(/ (February|November|Local|Division [AB]|Lower|Upper)$/, "");
@@ -9864,10 +9921,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const b = e.target.closest(".fam-more-btn");
     if (!b) return;
     const y = window.scrollY;
-    famsOpen = !famsOpen;
+    const key = b.dataset.famList;
+    contestExpansions.set(key, !famsOpen(key));
     render();
     window.scrollTo(0, y);
-    document.querySelector(".fam-more-btn")?.focus({ preventScroll: true });
+    document.querySelector(`[data-fam-list="${CSS.escape(key)}"]`)?.focus({ preventScroll: true });
   });
 
   // ---------- Problems by topic, Problems by difficulty ----------
@@ -9878,7 +9936,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   let browseKey = "", browseOpen = new Set();   // groups opened in full on the current page
   const browseBackHtml = () => `<div class="back-row"><a class="back-link" href="#/practice" data-goto="pr-contests">${uiIcon("arrow-left")} Contests</a></div>`;
   function famChipsHtml(problems) {
-    const all = FAMILIES.filter(f => problems.some(p => p.fam === f)), fams = all.filter(famShown);
+    const all = FAMILIES.filter(f => problems.some(p => p.fam === f)), fams = all.filter(f => famShown(f));
     // Select all and Deselect all (owner, 2026-11-14): deselect, then choose the one contest wanted.
     const offN = all.filter(f => browseOff.has(f)).length;
     return `<div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-br-all="on"${offN ? "" : " disabled"}>Select all</button><button type="button" class="fam-bulk-btn" data-br-all="off"${offN === all.length ? " disabled" : ""}>Deselect all</button></div>
@@ -9886,8 +9944,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       `<button type="button" class="fam-chip" data-br-fam="${escapeAttr(f)}" aria-pressed="${!browseOff.has(f)}">${famDot(f)}${f}<span class="br-count">${problems.filter(p => p.fam === f).length.toLocaleString()}</span></button>`).join("")}${famMoreBtn(extraFams(all), "fam-chip")}</div>`;
   }
   function browseGroupsHtml(key, problems, sort) {
-    if (browseKey !== key) { browseKey = key; browseOpen = new Set(); }
-    const groups = FAMILIES.filter(f => !browseOff.has(f) && famShown(f)).map(f => {
+    if (browseKey !== key) { browseKey = key; browseOpen = new Set(state.contestLists === "show" ? FAMILIES : []); }
+    const groups = FAMILIES.filter(f => !browseOff.has(f)).map(f => {
       const list = problems.filter(p => p.fam === f).sort(sort);
       if (!list.length) return "";
       const shown = browseOpen.has(f) ? list : list.slice(0, BROWSE_PAGE);
@@ -10006,7 +10064,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       }
     } else {
       const rated = PROBLEM_DB.filter(p => Number.isFinite(p.elo));
-      const active = RATED_FAMS.filter(f => !browseOff.has(f) && famShown(f));
+      const active = RATED_FAMS.filter(f => !browseOff.has(f));
       const inBinN = b => rated.filter(p => binOf(p.elo) === b && active.includes(p.fam)).length;
       const filled = eloBins().filter(b => inBinN(b));
       // With no range chosen, the fullest one opens, so the page never starts empty.
@@ -10378,7 +10436,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const filterHelp = `<p class="special-note">Combine any of these, in any order, separated by slashes: a kind (Formula, Method, Pattern), a subject (Geometry, Algebra, Number Theory, Counting, Proof), a contest tier (AMC, AIME Early, AIME Late, Olympiad), or an importance within its subsection (High, Medium, Low, Lower, Lowest). For example, Special:Browse/Method/Geometry or Special:Browse/Pattern/AIME Late.</p>`;
   const problemLinks = probs => `<ul class="wiki-list">${probs.slice().sort((a, b) => b.year - a.year || a.ref.localeCompare(b.ref, undefined, { numeric: true }))
     .map(p => `<li><a href="#/problem/${p.slug}">${refShort(p.ref)}</a></li>`).join("")}</ul>`;
-  // Filter the contest first, then rank its own Elo values. Any remains an unfiltered uniform draw.
+  // Filter the contest first, then split its Elo span. Any remains an unfiltered uniform draw.
   function randomProblemTo(arg) {
     const m = String(arg || "").match(/^(?:(.*?)\/)?(very[- ]easy|easy|medium|hard|very[- ]hard)$/i);
     const a = resolveContest(m ? (m[1] || "") : arg), band = m ? m[2].toLowerCase().replace(/ /g, "-") : "";
@@ -10766,6 +10824,19 @@ The book remembers the last lesson you opened, in this browser, and the contents
     cancelPracticeFinishConfirm();
     clearInterval(mockClockInterval);mockClockInterval=0;
     const route = getRoute();
+    if (expansionPage !== location.hash) {
+      // Changing a bar or topic is navigation within the same browser, not leaving it.
+      // Keep its contest chooser open without carrying card/profile expansions elsewhere.
+      const keepBrowse = route.type === "browse" && route.kind === expansionBrowseKind;
+      const browseExpanded = keepBrowse ? contestExpansions.get("browse-contests") : undefined;
+      expansionPage = location.hash;
+      expansionBrowseKind = route.type === "browse" ? route.kind : null;
+      contestExpansions.clear(); probGroupsOpen.clear();
+      if (browseExpanded !== undefined) contestExpansions.set("browse-contests", browseExpanded);
+      ctYearsOpen.clear();
+      if (state.contestLists === "show") FAMILIES.forEach(f => ctYearsOpen.add(f));
+      browseKey = ""; browseOpen.clear();
+    }
     // Leaving a list closes its group editor, tidying the sections as Done would.
     if (groupEdit && !(route.type === "list" && route.listId === groupEdit.listId)) {
       const l = geList();

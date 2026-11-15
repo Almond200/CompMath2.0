@@ -3039,7 +3039,7 @@ html[data-cols="spacious"] .content .cards.search-results { grid-template-column
   background: var(--bg-panel); color: var(--text); border: 1px solid var(--border);
 }
 .rand-btns button:where(:not(:disabled):not([aria-disabled="true"])):hover { border-color: var(--space); color: var(--space); }
-.rand-btns button[aria-checked="true"] { background: var(--space); border-color: var(--space); color: #fff; }
+.rand-btns button[aria-checked="true"], .concept-modes button[aria-selected="true"] { background: var(--space); border-color: var(--space); color: #fff; }
 .rand-diff { display: flex; align-items: center; gap: 12px; margin-top: 14px; font-size: 13px; font-weight: 650; color: var(--text-dim); }
 .rand-picker .rand-go, #topic-practice-form .hp-btn, #card-practice-form .hp-btn { white-space: nowrap; }
 .rand-picker .rand-btns { margin-top: 10px; }
@@ -3556,7 +3556,7 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
 /* Dark mode, second pass: Related chips, the random-problem
    buttons, and the math in formula boxes drop one step from white. Dark only. */
 :root[data-theme="dark"] .related-item { color: var(--text-head); }
-:root[data-theme="dark"] :is(.hp-btn, .rand-go, .rand-btns button[aria-checked="true"]) { color: #d3dae9; }
+:root[data-theme="dark"] :is(.hp-btn, .rand-go, .rand-btns button[aria-checked="true"], .concept-modes button[aria-selected="true"]) { color: #d3dae9; }
 :root[data-theme="dark"] .formula-display, :root[data-theme="dark"] .formula-display .katex { color: #cdd5e8; }
 
 /* Front page "How the four fit together" and "Jump to": the same softer shade. Dark only. */
@@ -4037,6 +4037,8 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 /* Match Practice typography to the reference panels and Settings search. */
 body[data-space="practice"] .sh-section > h3 { font-family: inherit; font-size: calc(16px * var(--tx)); font-weight: 700; }
 body[data-space="practice"] .practice-panel-intro { margin: 6px 0 12px; font-size: 14px; color: var(--text-dim); }
+.concept-modes { margin: 12px 0 16px; }
+
 #past-practice-sets > h3 + p { font-size: 14px; color: var(--text-dim); }
 
 .practice-session > .back-link { margin-bottom: 4px; }

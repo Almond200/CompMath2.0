@@ -29,6 +29,11 @@ assert.equal(index.search('geometry parallel')[0].id, 'geo.old.parallel');
 assert.deepEqual(index.search('').map(n => n.id), ['mixed', 'geo']);
 assert.equal(index.resolve('Mixed').id, 'mixed');
 assert.equal(index.nodes.get('mixed').problems.length, 7, 'Mixed draws every eligible problem once');
+const twelveOnly = index.select('geo.old.parallel',p=>p.ref.includes('AMC 12'));
+assert(twelveOnly.some(p=>p.ref==='2024 AMC 12A, Problem 2'),'select the enabled twin after filtering contests');
+assert.equal(twelveOnly.length,3);
+assert.equal(index.select('mixed',()=>false).length,0);
+assert.deepEqual(index.select('mixed'),index.nodes.get('mixed').problems,'default selection remains stable');
 assert.equal(index.resolve('Heron formula'), null, 'card labels are not topic options');
 assert.equal(label(String.raw`Denesting $\sqrt{a+\sqrt b}$`), 'Denesting √(a+√b)');
 const ambiguous = build(tree, [

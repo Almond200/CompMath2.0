@@ -502,5 +502,133 @@ window.MATH_CONTEST_PAPERS = {
   "2014 PUMaC Division B Number Theory": {
     "url": "https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryB.pdf",
     "solUrl": "https://pumac.princeton.edu/s/PUMaC2014_NumberTheoryBSol.pdf"
+  },
+  "2013 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2013_AlgebraA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2013_AlgebraASol.pdf"
+  },
+  "2013 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2013_AlgebraB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2013_AlgebraBSol.pdf"
+  },
+  "2013 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2013_CombinatoricsA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2013_CombinatoricsASol.pdf"
+  },
+  "2013 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2013_CombinatoricsB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2013_CombinatoricsBSol.pdf"
+  },
+  "2013 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2013_GeometryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2013_GeometryASol.pdf"
+  },
+  "2013 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2013_GeometryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2013_GeometryBSol.pdf"
+  },
+  "2013 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2013_NumberTheoryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2013_NumberTheoryASol.pdf"
+  },
+  "2013 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2013_NumberTheoryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2013_NumberTheoryBSol.pdf"
+  },
+  "2012 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2012_AlgebraA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2012_AlgebraASol.pdf"
+  },
+  "2012 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2012_AlgebraB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2012_AlgebraBSol.pdf"
+  },
+  "2012 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2012_CombinatoricsA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2012_CombinatoricsASol.pdf"
+  },
+  "2012 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2012_CombinatoricsB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2012_CombinatoricsBSol.pdf"
+  },
+  "2012 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2012_GeometryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2012_GeometryASol.pdf"
+  },
+  "2012 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2012_GeometryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2012_GeometryBSol.pdf"
+  },
+  "2012 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2012_NumberTheoryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2012_NumberTheoryASol.pdf"
+  },
+  "2012 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2012_NumberTheoryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2012_NumberTheoryBSol.pdf"
+  },
+  "2011 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2011_AlgebraA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2011_AlgebraASol.pdf"
+  },
+  "2011 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2011_AlgebraB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2011_AlgebraBSol.pdf"
+  },
+  "2011 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2011_CombinatoricsA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2011_CombinatoricsASol.pdf"
+  },
+  "2011 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2011_CombinatoricsB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2011_CombinatoricsBSol.pdf"
+  },
+  "2011 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2011_GeometryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2011_GeometryASol.pdf"
+  },
+  "2011 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2011_GeometryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2011_GeometryBSol.pdf"
+  },
+  "2011 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2011_NumberTheoryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2011_NumberTheoryASol.pdf"
+  },
+  "2011 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2011_NumberTheoryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2011_NumberTheoryBSol.pdf"
+  },
+  "2010 PUMaC Division A Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2010_AlgebraA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2010_AlgebraASol.pdf"
+  },
+  "2010 PUMaC Division B Algebra": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2010_AlgebraB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2010_AlgebraBSol.pdf"
+  },
+  "2010 PUMaC Division A Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsASol.pdf"
+  },
+  "2010 PUMaC Division B Combinatorics": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsBSol.pdf"
+  },
+  "2010 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2010_GeometryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2010_GeometryASol.pdf"
+  },
+  "2010 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2010_GeometryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2010_GeometryBSol.pdf"
+  },
+  "2010 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryASol.pdf"
+  },
+  "2010 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryBSol.pdf"
   }
 };

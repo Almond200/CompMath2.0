@@ -4,7 +4,8 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict');
 const base=process.env.COMPMATH_URL||'http://localhost:8765',path=require('node:path');
 global.window={};require(path.join(__dirname,'../js/data/problems/difficulty-ratings.js'));
 // The charts' scale grows past 3800 to fit the hardest problem (owner, 2026-11-12).
-const NB=(Math.max(3800,...Object.values(window.MATH_PROBLEM_RATINGS.ratings).map(r=>(Math.floor(r.elo/200)+1)*200))-200)/200;
+const LO=Math.min(200,...Object.values(window.MATH_PROBLEM_RATINGS.ratings).map(r=>Math.floor(r.elo/200)*200));
+const NB=(Math.max(3800,...Object.values(window.MATH_PROBLEM_RATINGS.ratings).map(r=>(Math.floor(r.elo/200)+1)*200))-LO)/200;
 (async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME||undefined,args:['--no-sandbox']});try{
 for(const theme of ['light','dark'])for(const width of [1280,375]){
  const page=await browser.newPage({viewport:{width,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(15000);
@@ -52,10 +53,10 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await page.locator('.elo-box .fam-more-btn').click();await page.locator('.elo-box [data-elo-fam="hmmt-february"]').waitFor({state:'detached'});
  // A column with no problems answers the pointer like any other and opens its range.
  assert.equal(await page.locator('.elo-box .elo-bar').evaluateAll((xs,nb)=>xs.length===nb&&xs.every(x=>x.tagName==='A'&&x.dataset.tip),NB),true);
- const empty=page.locator('.elo-box a.elo-bar.is-empty').first();assert.match(await empty.getAttribute('data-tip'),/^200–399: 0 problems$/);
+ const empty=page.locator('.elo-box a.elo-bar.is-empty').first();assert.match(await empty.getAttribute('data-tip'),new RegExp(`^${LO}–${LO+199}: 0 problems$`));
  if(width===1280){const eb=await empty.boundingBox();await page.mouse.move(eb.x+eb.width/2,eb.y+eb.height/2);
-  assert.deepEqual(await empty.evaluate(el=>[getComputedStyle(el,'::before').content,getComputedStyle(el).backgroundColor!=='rgba(0, 0, 0, 0)',getComputedStyle(el).cursor]),['"200–399: 0 problems"',true,'pointer']);await page.mouse.move(2,2);}
- await empty.click();await page.locator('.br-band-h').waitFor();assert.match(await page.locator('.br-band-h').innerText(),/^Rated 200 to 399$/);
+  assert.deepEqual(await empty.evaluate(el=>[getComputedStyle(el,'::before').content,getComputedStyle(el).backgroundColor!=='rgba(0, 0, 0, 0)',getComputedStyle(el).cursor]),[JSON.stringify(`${LO}–${LO+199}: 0 problems`),true,'pointer']);await page.mouse.move(2,2);}
+ await empty.click();await page.locator('.br-band-h').waitFor();assert.match(await page.locator('.br-band-h').innerText(),new RegExp(`^Rated ${LO} to ${LO+199}$`));
  await page.goBack();await page.locator('.prob-chain').waitFor();const t2=page.locator('.prob-chain .chain-toggle');if(await t2.getAttribute('aria-expanded')==='false')await t2.click();
  await fits();
  // A problem's topic box opens that topic.
@@ -75,19 +76,25 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.match(page.url(),/#\/browse\/topics$/,'opening a branch does not leave the page');
  await page.locator('.tt-name[href="#/browse/topics/geo.tri.special"]').click();await page.locator('.br-group').first().waitFor();
  assert.equal(await page.locator('h2').innerText(),'Special triangles');
- // Only the AMC and AIME groups show at first (owner, 2026-11-14); Show more contests brings the rest.
- assert.deepEqual(await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent)),['AMC 8','AMC 10','AMC 12','AIME']);
+ // Folding filter buttons changes only their visibility, not the selected contests or results.
+ const foldedHeads=await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent));
+ assert(foldedHeads.length>4);assert.deepEqual(foldedHeads.slice(0,4),['AMC 8','AMC 10','AMC 12','AIME']);
  await page.locator('.fam-chips .fam-more-btn').click();await page.locator('.fam-chips .fam-more-btn[aria-expanded="true"]').waitFor();
- const heads=await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent));assert.deepEqual(heads.slice(0,4),['AMC 8','AMC 10','AMC 12','AIME']);assert(heads.slice(4).every(h=>/^(MATHCOUNTS (Chapter|State|National)|MBMT (Lower|Upper)|Calgary Junior Math Contest|Columbus State Tournament|Fermat Contest|Cayley Contest|Pascal Contest|UKMT SMC|UKMT IMC|UKMT JMC|HMMT (February|November)|ARML|ARML Local|SMT|Duke Math Meet|UMD HSMC|CMIMC|Math Prize for Girls|MMATHS|Girls in Math at Yale|Lehigh|Utah State Math Contest|BMT|PUMaC Division [AB])$/.test(h)),'HMMT and ARML, when the topic has some, come after the AIME');assert.deepEqual(heads.slice(4),[...heads.slice(4)].sort((a,b)=>['MATHCOUNTS Chapter','MATHCOUNTS State','MATHCOUNTS National','MBMT Lower','MBMT Upper','Calgary Junior Math Contest','Columbus State Tournament','Fermat Contest','Cayley Contest','Pascal Contest','UKMT SMC','UKMT IMC','UKMT JMC','HMMT February','HMMT November','ARML','ARML Local','SMT','Duke Math Meet','UMD HSMC','CMIMC','Math Prize for Girls','MMATHS','Girls in Math at Yale','Lehigh','Utah State Math Contest','BMT','PUMaC Division A','PUMaC Division B'].indexOf(a)-['MATHCOUNTS Chapter','MATHCOUNTS State','MATHCOUNTS National','MBMT Lower','MBMT Upper','Calgary Junior Math Contest','Columbus State Tournament','Fermat Contest','Cayley Contest','Pascal Contest','UKMT SMC','UKMT IMC','UKMT JMC','HMMT February','HMMT November','ARML','ARML Local','SMT','Duke Math Meet','UMD HSMC','CMIMC','Math Prize for Girls','MMATHS','Girls in Math at Yale','Lehigh','Utah State Math Contest','BMT','PUMaC Division A','PUMaC Division B'].indexOf(b)),'in the families order');
+ const heads=await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent));assert.deepEqual(heads,foldedHeads,'opening filter chips keeps all selected results');assert.deepEqual(heads.slice(0,4),['AMC 8','AMC 10','AMC 12','AIME']);assert(heads.slice(4).every(h=>/^(MATHCOUNTS (Chapter|State|National)|MBMT (Lower|Upper)|Calgary Junior Math Contest|Columbus State Tournament|Fermat Contest|Cayley Contest|Pascal Contest|UKMT SMC|UKMT IMC|UKMT JMC|HMMT (February|November)|ARML|ARML Local|SMT|Duke Math Meet|UMD HSMC|CMIMC|Math Prize for Girls|MMATHS|Girls in Math at Yale|Lehigh|Utah State Math Contest|BMT|PUMaC Division [AB])$/.test(h)),'HMMT and ARML, when the topic has some, come after the AIME');assert.deepEqual(heads.slice(4),[...heads.slice(4)].sort((a,b)=>['MATHCOUNTS Chapter','MATHCOUNTS State','MATHCOUNTS National','MBMT Lower','MBMT Upper','Calgary Junior Math Contest','Columbus State Tournament','Fermat Contest','Cayley Contest','Pascal Contest','UKMT SMC','UKMT IMC','HMMT February','HMMT November','ARML','ARML Local','SMT','Duke Math Meet','UMD HSMC','CMIMC','Math Prize for Girls','MMATHS','Girls in Math at Yale','Lehigh','Utah State Math Contest','BMT','PUMaC Division A','PUMaC Division B'].indexOf(a)-['MATHCOUNTS Chapter','MATHCOUNTS State','MATHCOUNTS National','MBMT Lower','MBMT Upper','Calgary Junior Math Contest','Columbus State Tournament','Fermat Contest','Cayley Contest','Pascal Contest','UKMT SMC','UKMT IMC','HMMT February','HMMT November','ARML','ARML Local','SMT','Duke Math Meet','UMD HSMC','CMIMC','Math Prize for Girls','MMATHS','Girls in Math at Yale','Lehigh','Utah State Math Contest','BMT','PUMaC Division A','PUMaC Division B'].indexOf(b)),'in the families order');
  const total=(await page.locator('.br-group-h .br-count').allInnerTexts()).reduce((n,s)=>n+parseInt(s),0);assert.match(await page.locator('.practice-panel-intro').innerText(),new RegExp('^'+total+' problems'));
  await page.locator('.fam-chips .fam-more-btn').click();await page.locator('.fam-chips .fam-more-btn[aria-expanded="false"]').waitFor();
  const elos=(await page.locator('.br-group').first().locator('.br-elo').allInnerTexts()).map(Number);assert.deepEqual(elos,[...elos].sort((a,b)=>a-b),'easiest first within a contest');
- await page.locator('[data-br-fam="AMC 8"]').click();assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'),'false');assert.equal(await page.locator('.br-group').count(),heads.filter(h=>/^(AMC (8|10|12)|AIME)$/.test(h)).length-1);
+ await page.locator('[data-br-fam="AMC 8"]').click();assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'),'false');assert.equal(await page.locator('.br-group').count(),heads.length-1);
  if(width===375){assert.equal(await page.locator('.tt').isVisible(),false);await page.locator('.tt-mobile-btn').click();assert.equal(await page.locator('.tt').isVisible(),true);}
  await fits();
  // Problems by difficulty: the contest switched off stays off, one stacked chart, groups by contest.
  await go('#/browse/difficulty');await page.locator('.elo-panel').waitFor();assert.equal(await page.locator('h2').innerText(),'Problems by difficulty');assert.doesNotMatch(await page.locator('.browse-page').innerText(),/LIVE/,'the ratings carry no source name');
  assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'),'false');await page.locator('[data-br-fam="AMC 8"]').click();
+ const bins=await page.locator('.elo-panel .elo-bar').evaluateAll(xs=>xs.map(x=>{const m=x.dataset.tip.match(/^(\d+)–(\d+): (\d+)/);return m.slice(1).map(Number);}));
+ const allRatings=await page.evaluate(()=>Object.values(MATH_PROBLEM_RATINGS.ratings).map(r=>r.elo));
+ for(const [lo,hi,count] of bins)assert.equal(count,allRatings.filter(e=>e>=lo&&e<=hi).length,'each bar counts its actual rating interval');
+ assert.equal(bins.reduce((n,b)=>n+b[2],0),allRatings.length,'every rated problem is represented exactly once, including ratings below200');
+
  assert.equal(await page.locator('.elo-panel .elo-bar').count(),NB);assert.equal(await page.locator('.elo-bar[aria-current]').count(),1);
  await page.locator('.elo-bar[href$="/2600"]').click();await page.waitForFunction(()=>/2600/.test(document.querySelector('.br-band-h')?.textContent));assert.match(await page.locator('.br-band-h').innerText(),/^Rated 2600 to 2799$/);
  if(await page.locator('.fam-chips .fam-more-btn[aria-expanded="false"]').count()){await page.locator('.fam-chips .fam-more-btn').click();await page.locator('.fam-chips .fam-more-btn[aria-expanded="true"]').waitFor();}
