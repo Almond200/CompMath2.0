@@ -223,7 +223,11 @@
     "2010 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2010_AlgebraA.pdf",
     "2010 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2010_AlgebraB.pdf",
     "2010 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsA.pdf",
-    "2010 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsB.pdf"
+    "2010 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsB.pdf",
+    "2010 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2010_GeometryA.pdf",
+    "2010 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2010_GeometryB.pdf",
+    "2010 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryA.pdf",
+    "2010 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -49193,6 +49197,134 @@
     "2010 PUMaC Division B Combinatorics, Problem 8": [
       3500,
       "Locate the sole peak and valley, distribute the intermediate values among monotone runs and sum the resulting weighted geometric powers."
+    ],
+    "2010 PUMaC Division A Geometry, Problem 1": [
+      2500,
+      "Write the actual nested-square coordinates or compare equal-height triangles to show that the requested area is constant."
+    ],
+    "2010 PUMaC Division A Geometry, Problem 2": [
+      2750,
+      "Separate the indefinite midpoint walk into two geometric sequences of lengths and sum them exactly."
+    ],
+    "2010 PUMaC Division A Geometry, Problem 3": [
+      2550,
+      "Divide the opposite side by the angle-bisector theorem and compute the bisector length to compare with its adjacent segment."
+    ],
+    "2010 PUMaC Division A Geometry, Problem 4": [
+      3100,
+      "Parameterize both diagonal points by their common fractional distance and impose collinearity in the actual regular hexagon."
+    ],
+    "2010 PUMaC Division A Geometry, Problem 5": [
+      3150,
+      "Compute the cuboctahedron by truncating eight cube corners and compare with the equal-edge octahedron volume."
+    ],
+    "2010 PUMaC Division A Geometry, Problem 6": [
+      3550,
+      "Reflect the diameter intersection across the fold chord and apply Thales and Ptolemy to the resulting original-circle quadrilateral."
+    ],
+    "2010 PUMaC Division A Geometry, Problem 7": [
+      3400,
+      "Translate the rectangle area ratio into a relation between two tangent parameters and use angle addition to show the requested angle is constant."
+    ],
+    "2010 PUMaC Division A Geometry, Problem 8": [
+      3800,
+      "Check the missing source-exclusion condition: one ball containing the source blocks every ray as written; the intended outside-source problem instead requires four directional caps and admits a disjoint tetrahedral construction."
+    ],
+    "2010 PUMaC Division B Geometry, Problem 1": [
+      1400,
+      "Relate each exterior angle to its interior angle and use the full exterior-angle sum to recover the side count."
+    ],
+    "2010 PUMaC Division B Geometry, Problem 2": [
+      2200,
+      "Reflect one endpoint across the axis and intersect the joining line with the axis to attain the shortest broken path."
+    ],
+    "2010 PUMaC Division B Geometry, Problem 3": [
+      2500,
+      "Write the actual nested-square coordinates or compare equal-height triangles to show that the requested area is constant."
+    ],
+    "2010 PUMaC Division B Geometry, Problem 4": [
+      3100,
+      "Rotate a right triangle by ninety degrees and use the imposed length equality to force a congruent triangle pair and bisect a right angle."
+    ],
+    "2010 PUMaC Division B Geometry, Problem 5": [
+      2750,
+      "Separate the indefinite midpoint walk into two geometric sequences of lengths and sum them exactly."
+    ],
+    "2010 PUMaC Division B Geometry, Problem 6": [
+      3100,
+      "Parameterize both diagonal points by their common fractional distance and impose collinearity in the actual regular hexagon."
+    ],
+    "2010 PUMaC Division B Geometry, Problem 7": [
+      3150,
+      "Compute the cuboctahedron by truncating eight cube corners and compare with the equal-edge octahedron volume."
+    ],
+    "2010 PUMaC Division B Geometry, Problem 8": [
+      3500,
+      "Use the weighted sum of the three point-to-side distances as twice the fixed triangle area, apply Cauchy and verify equality at the incenter."
+    ],
+    "2010 PUMaC Division A Number Theory, Problem 1": [
+      2150,
+      "Test the first consecutive fourth-power sums for primality and factor the first composite exactly."
+    ],
+    "2010 PUMaC Division A Number Theory, Problem 2": [
+      2600,
+      "Bound the integer using its own divisor contribution and exhaust the possible divisor-sum factorizations."
+    ],
+    "2010 PUMaC Division A Number Theory, Problem 3": [
+      2500,
+      "Factor the difference of squares and test successive integers for exactly three distinct prime factors with exponent one."
+    ],
+    "2010 PUMaC Division A Number Theory, Problem 4": [
+      3200,
+      "Take the largest prime divisor of the integer and prove its exponent in the product with the totient is odd, leaving only one."
+    ],
+    "2010 PUMaC Division A Number Theory, Problem 5": [
+      3300,
+      "Use coprimality of consecutive factors to constrain divisibility and check every pair below an attaining squared-norm bound."
+    ],
+    "2010 PUMaC Division A Number Theory, Problem 6": [
+      3450,
+      "Factor the two long decimal numerals through their common geometric block and reduce the remaining short numerator and denominator."
+    ],
+    "2010 PUMaC Division A Number Theory, Problem 7": [
+      3850,
+      "Use finite-field interpolation to realize every value function at each prime divisor and combine independent polynomial functions by coefficientwise CRT."
+    ],
+    "2010 PUMaC Division A Number Theory, Problem 8": [
+      3550,
+      "Transform consecutive Pythagorean side lengths into a negative Pell equation and generate its first three positive nontrivial solutions."
+    ],
+    "2010 PUMaC Division B Number Theory, Problem 1": [
+      1500,
+      "Evaluate divisor counts over the entire short allowed interval and identify the unique maximum."
+    ],
+    "2010 PUMaC Division B Number Theory, Problem 2": [
+      1800,
+      "Count each decimal digit in each position over the full two-digit range and add the positional digit sums."
+    ],
+    "2010 PUMaC Division B Number Theory, Problem 3": [
+      2150,
+      "Test the first consecutive fourth-power sums for primality and factor the first composite exactly."
+    ],
+    "2010 PUMaC Division B Number Theory, Problem 4": [
+      2500,
+      "Factor the difference of squares and test successive integers for exactly three distinct prime factors with exponent one."
+    ],
+    "2010 PUMaC Division B Number Theory, Problem 5": [
+      2800,
+      "Use that the three positive cyclic ratios multiply to one, so their sum is at least three and cannot equal two."
+    ],
+    "2010 PUMaC Division B Number Theory, Problem 6": [
+      3300,
+      "Use coprimality of consecutive factors to constrain divisibility and check every pair below an attaining squared-norm bound."
+    ],
+    "2010 PUMaC Division B Number Theory, Problem 7": [
+      3450,
+      "Factor the two long decimal numerals through their common geometric block and reduce the remaining short numerator and denominator."
+    ],
+    "2010 PUMaC Division B Number Theory, Problem 8": [
+      3700,
+      "Remove every divisor containing a factor five and count the exponent residue triples giving the requested last digit."
     ]
   }
 }
