@@ -51101,6 +51101,198 @@
     "2024 MATHCOUNTS National Team, Problem 10": [
       1000,
       "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): place the two grey cubes in cells at Chebyshev distance at least 2 in the 3 by 3 by 3 grid: 193 of the 351 pairs."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 1": [
+      200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 2x - 3 = 99: x = 51."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 2": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): colour the figure like a checkerboard: no two shaded squares may share a side, and the larger colour class of the 17 squares holds 9."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 3": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): MATHEMATICS uses the letters M, A, T, H, E, I, C, S, 8 of the 26: 4/13."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 4": [
+      400,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the numbers 44, 48, 84, 88 sum to 264, and 264/12 = 22."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 5": [
+      400,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the last three rounds must total at most 263 - 68 = 195, an average of 65, 7 below par."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 6": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the lines meet at (0, 0), (1, 1) and (1, -1): area (1/2)(2)(1) = 1."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 7": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): A + B/10 = (A + B)/2 gives 10A + B = 5A + 5B, so 5A = 4B: A = 4, B = 5, n = 4.5."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 8": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 11-60-61 is a right triangle, so the semicircle on AC = 61 has area (1/2) pi (61/2)^2 = 3721 pi/8: 3721 + 8 = 3729."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 9": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): (q - d) q (q + d) is a prime only if two factors are +-1; the progression -3, -1, 1 gives product 3, and no smaller p works: -3."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 10": [
+      400,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 3 x 4 x 5 x 4 = 240 sandwiches, less the 3 x 5 = 15 with both ham and mayonnaise: 225."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 11": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): northwest and southwest are 90 degrees apart, so after half an hour the cars are 12.5 and 30 miles away: sqrt(12.5^2 + 30^2) = 32.5."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 12": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): each press turns sqrt(k) into sqrt(k + 1), so from 3 = sqrt 9 the display reads sqrt(9 + n): n = 144 - 9 = 135."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 13": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the five numbers sum to 18; casework on a unique mode shows the possible medians, which sum to 12."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 14": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 1150 enrolments for 1000 students leave 150 extras, and each student in all three uses 2 of them: at most 75."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 15": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): with a + b + c = 2 and each between -10 and 10, abc is largest with two negatives and one large positive: (-4)(-4)(10) = 160."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 16": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): |x| + |y| = 1 is a square, and 2x + 3y is least at a vertex: (0, -1) gives -3."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 17": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 28/(ab) = c means abc = 28 = 2^2 x 7: C(4, 2) x C(3, 2) = 6 x 3 = 18 ordered triples."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 18": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the terms u^i v^j w^k with i + j + k = 8: C(10, 2) = 45."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 19": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): n(n^2 + n + 1) is 0 mod 7 when n is 0 mod 7 or n^2 + n + 1 is, i.e. n = 2 or 4: 3 residues of 7, so 900 of 2100."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 20": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): b divides gcd(192, 360) = 24 and c = 360/b must divide 750; the few b that work give sums a + b + c + d adding to 180."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 21": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): each new line adds one more region than the number of crossings it makes inside the figure; arranging four lines to cross as often as possible gives 15."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 22": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the share of leading-2 numbers first reaches exactly 36% when N is in the 2000s: with 111 + (N - 1999) such numbers, 100(N - 1888) = 36N gives N = 2950."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 23": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the six arrangements sum to 222(A + B + C), so the missing number is 222(A + B + C) - 1729; only A + B + C = 11 gives one of the arrangements: 713."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 24": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): clearing denominators, 3xy - 10x - 10y - 10 = 0, so (3x - 10)(3y - 10) = 130; the factor pairs give x values summing to 46."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 25": [
+      1300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): A is the numbers 2^a 3^b 5^c 7^d with exponents 0 to 4, 625 of them; the divisor count is a multiple of 3 when some exponent is 2: 625 - 4^4 = 369, so 369/625."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 26": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): with s = x + y and p = xy, s + p = 3 and s^2 - 2p = 5 give s^2 + 2s - 11 = 0, s = 2 sqrt 3 - 1: s + 1 = 2 sqrt 3."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 27": [
+      1200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the four lines through (a, b) give b = m(a - 12) = 10 - a/m and b = n(a - 6) = -4 - a/n; eliminating m and n leaves (a, b) with a + b = 108/29."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 28": [
+      1200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the same number of coins and the same value with different counts means trading 11 seven-cent and 5 twenty-three-cent coins for 16 twelve-cent coins (x + y + z = 0, 7x + 12y + 23z = 0); the smallest such collection is worth 16 x 12 = 77 + 115 = 192 cents."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 29": [
+      1200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): count the arrangements of EEFILNS that come before NIEELFS letter by letter in alphabetical order: NIEELFS is word 1983."
+    ],
+    "2021 MATHCOUNTS National Sprint, Problem 30": [
+      1300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): with tangent lengths 20, 101 and x, r^2 = 20 x 101 x x/(121 + x) is below 2020, so the largest integer r is 44."
+    ],
+    "2021 MATHCOUNTS National Target, Problem 1": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 100 m in 9.58 s is 100/9.58 x 3.6 km/h, about 37.6."
+    ],
+    "2021 MATHCOUNTS National Target, Problem 2": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): splitting the hexagon into 24 small congruent triangles, the trapezoid covers 5 of them: 5/24."
+    ],
+    "2021 MATHCOUNTS National Target, Problem 3": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): with p pennies and n nickels, 10p + 25n = 7(p + 5n) gives 3p = 10n: p/n = 10/3."
+    ],
+    "2021 MATHCOUNTS National Target, Problem 4": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): weight scales with the cube of height: 185 x (87/69)^3, about 371 pounds."
+    ],
+    "2021 MATHCOUNTS National Target, Problem 5": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a divisor count not divisible by 4 allows at most one factor (e + 1) to be even, and only 2 mod 4; so three primes need even exponents: 3^2 x 5^2 x 7^2 x 11 = 121275."
+    ],
+    "2021 MATHCOUNTS National Target, Problem 6": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): Merlin must be able to seat each group whatever the earlier random placements; the worst case for the group of 6 or 7 forces 40 seats."
+    ],
+    "2021 MATHCOUNTS National Target, Problem 7": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a triangle in a circle of radius 20 has perimeter at most that of the inscribed equilateral one, 60 sqrt 3, about 103.9; integer sides 34, 35, 34 fit: 103."
+    ],
+    "2021 MATHCOUNTS National Target, Problem 8": [
+      1500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): Simpson's paradox: Jody can win both days by percentage yet trail overall, when her large box has a low rate and Shelli's large box a high one; with boxes of 1 to 100 the gap J - S can be about -96."
+    ],
+    "2021 MATHCOUNTS National Team, Problem 1": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): put 99 in c and 10 in d, and the next largest in the sum: (98 + 97)(99 - 10) = 195 x 89 = 17355, which beats spending 99 on the sum."
+    ],
+    "2021 MATHCOUNTS National Team, Problem 2": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): two Cs need a B on each side of each and an A between them; the Bs need As round them in pairs; building the shortest string that obeys every rule gives 10 letters."
+    ],
+    "2021 MATHCOUNTS National Team, Problem 3": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): every exponent other than 1 is 2x + 3y, so the squbes are the numbers with no prime to the first power (1, 4, 8, 9, 16, 25, 27, 32, 36, ...): 28 below 300."
+    ],
+    "2021 MATHCOUNTS National Team, Problem 4": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the ISBN check sum gives a linear condition on A and B modulo 11; each A fixes B mod 11, and 9 pairs of digits work."
+    ],
+    "2021 MATHCOUNTS National Team, Problem 5": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the points of S form a lattice, odd coordinates with x + y a multiple of 7; its fundamental parallelogram has area 28, the smallest quadrilateral with vertices in S."
+    ],
+    "2021 MATHCOUNTS National Team, Problem 6": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): ending due north needs as many E as W steps and more N than S; counting the step strings: 126 of 1024, 63/512."
+    ],
+    "2021 MATHCOUNTS National Team, Problem 7": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the octagon's side s satisfies s + 2(s/sqrt 2) = 2, so s = 2(sqrt 2 - 1) and the area 2(1 + sqrt 2)s^2 is about 3.31."
+    ],
+    "2021 MATHCOUNTS National Team, Problem 8": [
+      1200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the multiplicities sum to 27 with a unique largest; the product is greatest with 3s, one 4 on top and a 2: 4 + 7 x 3 + 2 = 27 gives 4 x 3^7 x 2 = 17496."
+    ],
+    "2021 MATHCOUNTS National Team, Problem 9": [
+      1300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the three faces at each vertex must multiply to a square, so opposite faces carry matching prime parities; the least distinct labels sum to 55."
+    ],
+    "2021 MATHCOUNTS National Team, Problem 10": [
+      1200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): with p(n) the chance of landing on n, p(n) = (p(n - 3) + p(n - 8))/2, which settles to 2/11 = 1/(average hop 5.5): about 18%."
     ]
   }
 }
