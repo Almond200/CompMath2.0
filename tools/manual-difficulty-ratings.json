@@ -52061,6 +52061,198 @@
     "2014 MATHCOUNTS National Team, Problem 10": [
       1100,
       "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): an angle chase with the given 20, 60, 50 and 30 degrees and an auxiliary equilateral triangle gives angle ADB = 80."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 1": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 1 to 9 use 9 digits, and the next 24 digits are the twelve numbers 10 to 21: 21."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 2": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): Gauss had 121 of 660 votes: 121/660 x 360 = 66 degrees."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 3": [
+      400,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 3 <= n^2 <= 99 for n = 2 to 9: 2 + 3 + ... + 9 = 44."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 4": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the ten weights total 60; splitting them into three sets of 20 forces each 8 into a different set: 3 sets."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 5": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the three smallest are at least 1, 2, 3, leaving 74 for the two largest, so the second largest is at most 36 (36 and 38)."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 6": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 4 customers an hour, a third buying at $6 profit: $8 an hour."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 7": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): P(A) = 1/4 and P(B) = 3/8, so at least one occurs with probability 1 - (3/4)(5/8) = 17/32."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 8": [
+      400,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a 200% increase triples the population: 54000/3 = 18000."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 9": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 2(a + 2b + 3c) - (a + 3b + 5c) = a + b + c = 60 - 8 = 52."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 10": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): rows of five with at least two blue marbles and every blue beside another: count the arrangements of blue runs of length 2 or more: 11."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 11": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): squares of 1 to 20 with an odd tens digit: 16, 36, 196, 256, n = 4, 6, 14, 16: 4."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 12": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): L has intercept -2 and passes through (-11, -4), so its slope is 2/11: (2/11)(-2) = -4/11."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 13": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): T = 25 on BC = 10, S = 16 sqrt 3/3 on AB = 8 and R = 3 sqrt 3 on AC = 6 for the 120-degree triangles: (R + S)/T = (25 sqrt 3/3)/25 = sqrt 3/3."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 14": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the circle has radius 3, so the trapezoid's height is 6, and the tangent lengths with EF = 9 fix the bases: area 54."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 15": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): (n + 1)(n + 2) + n(n + 2) + n(n + 1) = 47 gives n^2 + 2n - 15 = 0: n = 3."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 16": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): (6 + p)^2 = 3(30 - p) gives p = 3, terms 3, 9, 27, ...: the fifth is 243."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 17": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): ordered triples of 1 to 6 summing to 8: C(7, 2) = 21 of 216, so 7/72."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 18": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): (xyz)^2 = 6, so x^2 = 6/4 = 3/2, y^2 = 6/9 = 2/3 and z^2 = 6: 49/6."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 19": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): unfold two faces into a 10 by 20 rectangle: the shortest path is sqrt(100 + 400) = 10 sqrt 5 feet."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 20": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): multiplying the equations gives xy + 2 + 1/(xy) = 49/10, so xy + 1/(xy) = 2.9: xy = 2.5 at most."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 21": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): in the cross-section the incircle radius 4 of an isosceles triangle with half-base 6 gives 4(6 + sqrt(36 + h^2)) = 6h: h = 14.4."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 22": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): power of P along the chords through P and the diameter gives the circle's radius and MP; then MN follows: 12 (a second answer from another reading was also accepted)."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 23": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): each term is the least number above the previous with digit sum n; continuing 1, 2, ..., 9, 19, 29, ... to the 25th term gives 799."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 24": [
+      1200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): each inner vertex is at height (sqrt 3/2) from its side, so EFGH has diagonal sqrt 3 - 1 against the side 1: area ratio (sqrt 3 - 1)^2/2 = 2 - sqrt 3."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 25": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the five who left played 10 games among the others, so C(n - 5, 2) = 210 and n - 5 = 21: 26 players."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 26": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 0.121212... in base 3 is 12_3/(9 - 1) = 5/8."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 27": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 8a + 28d = 2008 gives 2a + 7d = 502, and a must be 6 mod 7: the least member is 6."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 28": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): odd and even divisors are equal in number exactly when n is 2 mod 4: 102, 106, ..., 998, 225 numbers."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 29": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the circle has centre (3, 4) at distance 5 from the origin and radius 7, so the nearest point is 2 away: x^2 + y^2 at least 4."
+    ],
+    "2012 MATHCOUNTS National Sprint, Problem 30": [
+      1200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): count the 6-move monotone paths over the surface of the 2 by 2 by 2 cube face by face, avoiding double counts on shared edges: 54."
+    ],
+    "2012 MATHCOUNTS National Target, Problem 1": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the third side is 15 or sqrt(144 - 81) = 3 sqrt 7: 15 x 3 sqrt 7 = 45 sqrt 7."
+    ],
+    "2012 MATHCOUNTS National Target, Problem 2": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): of the C(8, 3) = 56 triangles, those using no side of the octagon number 16: 2/7."
+    ],
+    "2012 MATHCOUNTS National Target, Problem 3": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): x, y, z are in arithmetic progression with sum 3y = 3(z - x), so y = z - x = (x + z)/2: x/z = 1/3."
+    ],
+    "2012 MATHCOUNTS National Target, Problem 4": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): C(16, 3) = 560 triples less the 44 collinear ones (rows, columns and diagonals of the grid): 516."
+    ],
+    "2012 MATHCOUNTS National Target, Problem 5": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the six short diagonals are sqrt 3 and the three long ones 2: (sqrt 3)^6 x 2^3 = 27 x 8 = 216."
+    ],
+    "2012 MATHCOUNTS National Target, Problem 6": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): with m = n - 1 the area is 4m and the boundary has 8 + m + gcd(8, m) points, so Pick gives 7m - gcd(8, m) = 1126: m = 161, n = 162."
+    ],
+    "2012 MATHCOUNTS National Target, Problem 7": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 5, 15, 25, 35, 45 pairwise sum to multiples of 10, so they need 5 different subsets, and 5 subsets suffice: 5."
+    ],
+    "2012 MATHCOUNTS National Target, Problem 8": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): x + y + z <= 1 cuts a corner tetrahedron of volume 1/6 from the unit cube: 1/6."
+    ],
+    "2012 MATHCOUNTS National Team, Problem 1": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): second differences of 2 give a = 1, and then b = 5, c = 0: 100^2 + 5 x 100 = 10500."
+    ],
+    "2012 MATHCOUNTS National Team, Problem 2": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): given 5 heads in 8 tosses, Sara's count k has probability C(5, k)C(3, 5 - k)/56; she or Kaleb has exactly 3 when k = 3 or 2: (30 + 10)/56 = 5/7."
+    ],
+    "2012 MATHCOUNTS National Team, Problem 3": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): DE x EC = r^2 gives r = 8, so the bases are 4 + 8 and 8 + 16 with height 16: (12 + 24)/2 x 16 = 288."
+    ],
+    "2012 MATHCOUNTS National Team, Problem 4": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): x + (n + 1)/n = x(n + 1)/n gives x = n + 1: the 2012th term is 2013."
+    ],
+    "2012 MATHCOUNTS National Team, Problem 5": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the six pair sums total 3(a + b + c + d), so the repeated sum makes 220 + r a multiple of 3; r = 44 gives the integers 12, 15, 29, 32: 12."
+    ],
+    "2012 MATHCOUNTS National Team, Problem 6": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): n^2 divides n! exactly when n divides (n - 1)!, true for composite n above 4: 50 composites from 50 to 99 less 10 primes: 40."
+    ],
+    "2012 MATHCOUNTS National Team, Problem 7": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 25^64 x 64^25 = 5^128 x 2^150, so N = 5^64 x 2^75 = 2048 x 10^64: digit sum 14."
+    ],
+    "2012 MATHCOUNTS National Team, Problem 8": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): AB = AD and BC = CD make AC a diameter of length 12 with right angles at B and D; area 60 = AB x BC, and AB^2 + BC^2 = 144: perimeter 2(AB + BC) = 4 sqrt 66."
+    ],
+    "2012 MATHCOUNTS National Team, Problem 9": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a remaining cube of edge k fits in (6 - k)^3 positions; for k = 1 to 4: 125 + 64 + 27 + 8 = 224."
+    ],
+    "2012 MATHCOUNTS National Team, Problem 10": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the lines make angles with tan 4/3 and tan 12/5; the bisector's tangent tan((A + B)/2) comes out as 7/4."
     ]
   }
 }
