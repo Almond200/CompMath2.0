@@ -50361,6 +50361,126 @@
     "2015 CHMMC Individual, Problem 15": [
       2200,
       "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): similar right triangles along the bisector at each corner give (1 + r)/(1 - r) = sec theta, so r = 1 - 2/(1 + sec theta) grows with theta; the four angles theta sum to pi, so r_A > r_B > r_C forces theta_C < pi/3, and lambda = 1 - 2/(1 + sec 60) = 1/3."
+    ],
+    "2014 CHMMC Individual, Problem 1": [
+      900,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the row sums and the column sums both total the grid: 33 + 55 + 50 = 51 + n + 41, n = 46."
+    ],
+    "2014 CHMMC Individual, Problem 2": [
+      1300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the choices are most numerous when 14 of the 15 colour-length types are present; all 15 would give 15 x 8/2 = 60 pairs differing in both, and the missing type removes 8: 52."
+    ],
+    "2014 CHMMC Individual, Problem 3": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): 2014 = 2 x 19 x 53; with groups of size m one needs ceil(2m/3) votes to win a group and just over m/3 to block one, and comparing the divisors, groups of 19 need the fewest votes (696): 19."
+    ],
+    "2014 CHMMC Individual, Problem 4": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): waiting a day multiplies the utility by (103/101)(l - 1)/l with l days left, which drops below 1 once l is at most 51: sell on day 365 - 51 = 314."
+    ],
+    "2014 CHMMC Individual, Problem 5": [
+      1300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): tangents 60 degrees apart meet radii 120 degrees apart, so the radius is 3 and the convex arc between the tangency points measures 240 degrees: 4 pi (2 pi was also accepted)."
+    ],
+    "2014 CHMMC Individual, Problem 6": [
+      1300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): modulo 8 the values are only 0, 1 and 4, with 0 -> 0 or 1, 1 -> 1 or 4 and 4 -> 0 both ways; counting the 4-step walks from 0 back to 0: 7."
+    ],
+    "2014 CHMMC Individual, Problem 7": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the card in position i from the top moves to position 2i mod 9 each shuffle, so the order is the order of 2 modulo 9: 6."
+    ],
+    "2014 CHMMC Individual, Problem 8": [
+      1400,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): with P the foot of the perpendicular from O to the secant, P bisects AC so BP = 4 - 1 = 3, and the 45-degree angle makes OP = 3; then the radius is sqrt(3^2 + 4^2) = 5."
+    ],
+    "2014 CHMMC Individual, Problem 9": [
+      1400,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): z + 1/z = 1 makes z a primitive sixth root of unity, so z^96 = 1 and z^96 + 1/z^96 = 2."
+    ],
+    "2014 CHMMC Individual, Problem 10": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): tan(a - b) = 4 tan b/(1 + 5 tan^2 b) = 4/(1/tan b + 5 tan b), at most 4/(2 sqrt 5) = 2/sqrt 5, where sin(a - b) = 2/3."
+    ],
+    "2014 CHMMC Individual, Problem 11": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): with SM/SB = x and SN/SD = y, splitting SAMPN two ways gives 1/x + 1/y = 3, and the volume ratio (x + y)/4 = 3x^2/(4(3x - 1)) runs from 1/3 at x = 2/3 to 3/8 at x = 1: (1/3, 3/8)."
+    ],
+    "2014 CHMMC Individual, Problem 12": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the placements avoiding the missing diagonal are the derangements of 5: 120 - 120 + 60 - 20 + 5 - 1 = 44."
+    ],
+    "2014 CHMMC Individual, Problem 13": [
+      1900,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): a city joined to only one other city kills every Hamiltonian cycle, leaving C(19, 2) + 1 = 172 roads, and no graph with more roads avoids one."
+    ],
+    "2014 CHMMC Individual, Problem 14": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): by Vieta the semiperimeter is 10/2 = 5, and the product of (5 - r_i) is the quartic's value at 5, 19; Brahmagupta's formula gives area sqrt 19."
+    ],
+    "2014 CHMMC Individual, Problem 15": [
+      1900,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the relation is linear and is solved by f(n + m) + g(n - m); matching the rows n = 0 and n = 1 gives f(t) = t^2 and g(t) = -t, so u(30, -5) = 25^2 - 35 = 590."
+    ],
+    "2013 CHMMC Individual, Problem 1": [
+      1100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the roots are 3 sqrt 7, 4 sqrt 7, 5 sqrt 7, the sides of a right triangle, and the product is 16 times the square of its area by Heron's formula: sqrt(16 x 42^2) = 168."
+    ],
+    "2013 CHMMC Individual, Problem 2": [
+      1200,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): by residues mod 3 the digits split 4, 3, 3; three of one residue or one of each: C(4, 3) + C(3, 3) + C(3, 3) + 4 x 3 x 3 = 42."
+    ],
+    "2013 CHMMC Individual, Problem 3": [
+      1300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the graph y = b|x|/a meets the circle at (+-a, b), so the triangle has area |ab| and the radius is sqrt(a^2 + b^2); area = radius forces a^2 = b^2 = 2: area 2."
+    ],
+    "2013 CHMMC Individual, Problem 4": [
+      1200,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): for a root, x^3 + x - 1 = 0 gives x^3 = 1 - x, so each term x^3/(1 - x) is 1: 3."
+    ],
+    "2013 CHMMC Individual, Problem 5": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): unfolding the reflections, the beam runs along y = x until it meets a corner of the tiled plane, at x = lcm(48, 126) = 1008: distance 1008 sqrt 2."
+    ],
+    "2013 CHMMC Individual, Problem 6": [
+      1300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the odd-size subsets of 99 people number 2^98, less the 99 single people: 2^98 - 99."
+    ],
+    "2013 CHMMC Individual, Problem 7": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): log_k(k + 1)^2 = 2 log_k(k + 1), and the 998 factors telescope to 2^998 log_2 1000, so log_2 S = 998 + log_2 log_2 1000, just over 1001: 1001."
+    ],
+    "2013 CHMMC Individual, Problem 8": [
+      1100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): door k is toggled once per divisor of k, so it ends unlocked when k has an odd number of divisors, a perfect square: 20 doors."
+    ],
+    "2013 CHMMC Individual, Problem 9": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the distance to B keeps falling along AC exactly when angle ACB is at least 90 degrees, so C lies in the disc on diameter AB: area pi/4."
+    ],
+    "2013 CHMMC Individual, Problem 10": [
+      1400,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): a closed tour of the 4 by 4 grid through every square: coordinatising and following the forced moves at the corners gives 6."
+    ],
+    "2013 CHMMC Individual, Problem 11": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the non-real roots come in conjugate pairs, so the two with sum 4 + 7i are conjugate to the two with product 3 - 4i, whose product is then 3 + 4i; q = mn + pq + (m + n)(p + q) = 6 + (4 + 7i)(4 - 7i) = 71."
+    ],
+    "2013 CHMMC Individual, Problem 12": [
+      1700,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): at height s the cone's radius r - s/2 equals the cube's half-diagonal s/sqrt 2, so s = 2r(sqrt 2 - 1) and s^3 over (2/3) pi r^3 is 12(5 sqrt 2 - 7)/pi = (60 sqrt 2 - 84)/pi."
+    ],
+    "2013 CHMMC Individual, Problem 13": [
+      1700,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): z = 9 + 1/(5 + 1/z) gives 5z^2 - 45z - 9 = 0, so z = (45 + 21 sqrt 5)/10 and y = z/(z + 1) = (27 + 21 sqrt 5)/82: 21 + 5 + 27 + 82 = 135 (the official solution sheet answers a different question here)."
+    ],
+    "2013 CHMMC Individual, Problem 14": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): colouring the octahedron's faces is colouring the cube's vertices; Burnside over the 24 rotations gives (256 + 6 x 4 + 3 x 16 + 8 x 16 + 6 x 16)/24 = 23."
+    ],
+    "2013 CHMMC Individual, Problem 15": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): n^5 matches the sum's last digit, 4, and its size, a little below 170 but above 133; Euler's conjecture counterexample: n = 144 (the official solution sheet answers a different question here)."
     ]
   }
 }
