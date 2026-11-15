@@ -50001,6 +50001,66 @@
     "2021 CHMMC Individual, Problem 15": [
       2300,
       "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): BHOC cyclic forces angle A = 60, and cos(B - C) = 11/32 fixes the triangle in the unit circle; the Euler line OH meets BC at T with TO = m sqrt p/n, m + n + p = 46."
+    ],
+    "2020 CHMMC Individual, Problem 1": [
+      1300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the right triangle is 3, 4, 5 or 3, sqrt 7, 4, so the base radius is its hypotenuse over 2, 5/2 or 2; slant height 3 makes the height sqrt 11/2 or sqrt 5, and the smaller volume 25 pi sqrt 11/24 gives 12."
+    ],
+    "2020 CHMMC Individual, Problem 2": [
+      1300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): each of the C(900, 2) pairs is a side of two equilateral triangles, and the 300 triangles with all three vertices among the students are counted three times each way: 2 C(900, 2) - 2 x 300 = 808500."
+    ],
+    "2020 CHMMC Individual, Problem 3": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): n and n + 1 can both have digit sum divisible by 17 only across a carry, which drops the digit sum by 9k - 1 = 17, so n ends in 99; the extreme CIT Beavers differ by 79200."
+    ],
+    "2020 CHMMC Individual, Problem 4": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): n = 0 gives z = 2 or P(y) = 0, and matching the n^2 terms of P(y - n) + P(y + n) forces P''(y) = 0 term by term: y = 2, P(2) = -22."
+    ],
+    "2020 CHMMC Individual, Problem 5": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): for n = 2^a 3^b the share of divisors divisible by 6 is ab/((a + 1)(b + 1)) = 3/5, giving five pairs (a, b); S/36 = 2345."
+    ],
+    "2020 CHMMC Individual, Problem 6": [
+      1900,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): with p and q points on the dark half of each edge, the number of mixed pieces is |p - q| + 1, so exactly 3 means |p - q| = 2; with binomial counts: m + n = 39."
+    ],
+    "2020 CHMMC Individual, Problem 7": [
+      1900,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the nine other points have distinct red degrees 0 to 9 but 0 and 9 cannot both occur, which forces a unique nested construction; counting its red triangles gives 30."
+    ],
+    "2020 CHMMC Individual, Problem 8": [
+      1800,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): arctan(j^2 - j + 1) = arctan j - arctan(j - 1) plus pi/2 corrections, so the sum telescopes with the arctan 2020 term: m + n = 4045."
+    ],
+    "2020 CHMMC Individual, Problem 9": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): odd primes p dividing n would divide n^5 sigma(n) and phi(n)'s factor p - 1 issues force n = 2^k or n = 2p with p - 1 dividing 190: n = 2, 4, 6, 22, 382, sum 416."
+    ],
+    "2020 CHMMC Individual, Problem 10": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the configured route is one path 1 to 60; the hacked teleporter traps the researcher only if it points back into the part of the route already travelled, so averaging over the hacked room and its new target: m + n = 88."
+    ],
+    "2020 CHMMC Individual, Problem 11": [
+      2100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): S_n is the primitive n-th roots together with -1 when n is even, and the product of |1 - Q| over primitive roots is Phi_n(1), a prime for prime powers and 1 otherwise; checking 3 to 100: 68."
+    ],
+    "2020 CHMMC Individual, Problem 12": [
+      2200,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): with theta = 90 - angle APB, the tangent-chord angles give CPA ~ O1PO2 ~ BPD, PC = PB, PD = PA and angle CPD = 90 + 3 theta, so the ratio is |cos 3 theta|/2 = 1/4: theta = 20, 40, 80, angle APB = 70 + 50 + 10 = 130."
+    ],
+    "2020 CHMMC Individual, Problem 13": [
+      2200,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): with x = a - b, y = b - c, z = c - d the left side becomes a cubic in s = x + y + z plus a nonnegative term in xyz s, so it is at most f(s); the bound forces s = 8: d - a = -8."
+    ],
+    "2020 CHMMC Individual, Problem 14": [
+      2400,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): by the law of cosines the two curves are the loci where the foci (0, +-a) subtend 60 and 120 degrees, two arcs; the collinear points with gaps 5, 1, 3 fix a^2 = (m + n sqrt p)/q: 144."
+    ],
+    "2020 CHMMC Individual, Problem 15": [
+      2600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): by Hall's theorem a quasi-complete set lacks a transversal only if some k rows meet fewer than k columns; the extremal sets give theta(n) = n^2 - 2n + 3 and n^2 (n - 1) exceptions: 363 + 7600 = 7963."
     ]
   }
 }
