@@ -7,6 +7,7 @@
 - **Contest-page check:** follows main's recalibrated equal-width Elo levels.
 - **Contest order:** contests are listed by prestige: the AMC and AIME, then HMMT, PUMaC, CMIMC, SMT, BMT, ARML, Math Prize for Girls, CHMMC and Duke, then MATHCOUNTS, the UKMT and CEMC contests and the rest. Each series stays together, junior first (AMC 8, 10, 12; Pascal, Cayley, Fermat; JMC, IMC, SMC), without a rule between its rows.
 - **Show more contests:** the button now shows or hides the extra contests where they are, instead of redrawing the page, so typed searches and choices stay put and the page no longer jumps; folding keeps the button under the pointer.
+- **Card links in lessons:** pressing a card's name in a lesson now opens the card's page by default; opening it beside the lesson is the option. A choice saved only because it was the old default gives way to the new one; a choice made from now on is kept.
 - **Thin scrollbars:** the Recently opened row, the geometry explorer's pills and the practice rail no longer set `scrollbar-width`, which made Chrome draw its grey bar instead of the app's thin one (the same fix as the topic rail's).
 - **Practice a card search:** besides names, the search now uses the reference search among the cards with practice problems, so typos ("pythagoren", "shoelase", "chiken nugget") and descriptions ("ways to choose") find the card.
 

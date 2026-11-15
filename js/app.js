@@ -240,7 +240,9 @@
   // A card page can carry a Wikipedia-style column of page tools on the right (off by default).
   const TOOLS_MODES = ["off", "on"];
   // A card link in a lesson: open the card in the drawer beside the lesson, or go to its page.
-  const LESSON_LINK_MODES = ["drawer", "card"];
+  // A card link in a lesson goes to the card's page by default (owner, 2026-11-15); opening it beside
+  // the lesson is the option.
+  const LESSON_LINK_MODES = ["card", "drawer"];
   // How wide a lesson's explanation runs (owner, 2026-11-08): a 760px reading width, or the full column.
   const LESSON_WIDTHS = ["reading", "full"];
   const SECTION_IDS = SECTIONS.map(s => s.id);
@@ -300,7 +302,10 @@
       contestLists: pick(P.contestLists, CONTEST_LIST_MODES),
       captions: pick(P.captions, CAPTION_MODES),
       tools: pick(P.tools, TOOLS_MODES),
-      lessonLinks: pick(P.lessonLinks, LESSON_LINK_MODES),
+      // A stored choice counts only if it was made after the default changed (2026-11-15), so a value
+      // saved merely because it was the old default gives way to the new one.
+      lessonLinks: P.lessonLinksChosen ? pick(P.lessonLinks, LESSON_LINK_MODES) : LESSON_LINK_MODES[0],
+      lessonLinksChosen: !!P.lessonLinksChosen,
       lessonWidth: pick(P.lessonWidth, LESSON_WIDTHS),
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
@@ -318,7 +323,7 @@
           density: state.density, notation: state.notation,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonWidth: state.lessonWidth
+          tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonLinksChosen: !!state.lessonLinksChosen, lessonWidth: state.lessonWidth
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -352,6 +357,7 @@
     lessonWidth: _loaded.lessonWidth, // "reading" | "full" — a lesson's explanation at 760px or across the column
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     strategyChosen: _loaded.strategyChosen,
+    lessonLinksChosen: _loaded.lessonLinksChosen,
     contestLists: _loaded.contestLists,
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
     scroll: _loaded.scroll,      // "normal" | "slow" | "fast" — mouse-wheel and trackpad scroll speed
@@ -5020,6 +5026,7 @@
         if (state[key] === next) return;
         state[key] = next;
         if (key === "strategy") state.strategyChosen = true;
+        if (key === "lessonLinks") state.lessonLinksChosen = true;
         applyLayout();
         saveSettings();
       }
