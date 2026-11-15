@@ -49425,6 +49425,106 @@
     "2026 UKMT JMC, Problem 25": [
       500,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 24 orders with no tie, and 6 pairs that tie each with 3! = 6 orders: 24 + 36 = 60."
+    ],
+    "2025 UKMT JMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 10% of 20 is 2, and half of 2 is 1."
+    ],
+    "2025 UKMT JMC, Problem 2": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 9999/3333 = 3."
+    ],
+    "2025 UKMT JMC, Problem 3": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 2025 = 3^4 x 5^2, so 15, 25, 45, 75 and 225 all divide it: 5."
+    ],
+    "2025 UKMT JMC, Problem 4": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 60 hours less 59 hours 58 minutes 21 seconds is 1 minute 39 seconds: 99."
+    ],
+    "2025 UKMT JMC, Problem 5": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): PQ = PT makes angle QPT = 90 - 60 = 30, and angle QPR = 45: 45 - 30 = 15."
+    ],
+    "2025 UKMT JMC, Problem 6": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): Sandra swims 4/3 x 36 = 48 lengths of 25 m: 1200 m."
+    ],
+    "2025 UKMT JMC, Problem 7": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the smallest four-digit multiple of 3 is 1002 and the largest three-digit multiple of 4 is 996: 6."
+    ],
+    "2025 UKMT JMC, Problem 8": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 8.8 kg is 8800 g, that is 88 bars of 100 g."
+    ],
+    "2025 UKMT JMC, Problem 9": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the tens digits are 1 and 2 and the units digits 0 and 3: 10 + 23 = 33."
+    ],
+    "2025 UKMT JMC, Problem 10": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): two thirds of the length is 60 cm: 90 cm."
+    ],
+    "2025 UKMT JMC, Problem 11": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the cube is 1 or 8, and 1 leaves no square beside it; of 6, 7, 8 and 7, 8, 9 only 7, 8, 9 fits: 504."
+    ],
+    "2025 UKMT JMC, Problem 12": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): each square has side 12, so PT = SW = 12 - TS and 24 - TS = 21: TS = 3, area 36."
+    ],
+    "2025 UKMT JMC, Problem 13": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the nth rectangle is 8 + 2n by 12 + n, equal only at n = 4: one square, of side 16."
+    ],
+    "2025 UKMT JMC, Problem 14": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 27 + 64 + 125 = 216 = 6^3."
+    ],
+    "2025 UKMT JMC, Problem 15": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 8 pounds 13 ounces is 141 ounces, about 141 x 28.35 g, or about 4 kg."
+    ],
+    "2025 UKMT JMC, Problem 16": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): (0.2)(0.4)(60) + (0.4)(0.6)(80) = 4.8 + 19.2 = 24."
+    ],
+    "2025 UKMT JMC, Problem 17": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): every triangle has its base on one of the two long parallel sides, four on each: 8."
+    ],
+    "2025 UKMT JMC, Problem 18": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the number is a multiple of lcm(9, 12) = 36, which already has nine factors: 36."
+    ],
+    "2025 UKMT JMC, Problem 19": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the four Ps take 1, 2, 3 and 4, the three Qs 1, 2 and 4, leaving R2, R4 and S2: S4 is not made."
+    ],
+    "2025 UKMT JMC, Problem 20": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): RS = x and QR = x + 1 with QS = 4 give x = 1.5: PS = 6 + 1.5 = 7.5 cm."
+    ],
+    "2025 UKMT JMC, Problem 21": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): with side 3l the tilted square has side squared (2l)^2 + l^2 = 5l^2: 5 : 9."
+    ],
+    "2025 UKMT JMC, Problem 22": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 4x + 5y = 31 forces x = 4, y = 3, then 5 bags of the third kind: 4 + 6 + 15 = 25."
+    ],
+    "2025 UKMT JMC, Problem 23": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): y + z = 2x and x + z = 3y make the round trip both 3x and 4y, a multiple of 12: 108 km."
+    ],
+    "2025 UKMT JMC, Problem 24": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): N divides 180 - 5 = 175 = 5^2 x 7 and exceeds 5: N = 7, 25, 35 or 175."
+    ],
+    "2025 UKMT JMC, Problem 25": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): only face diagonals can make equilateral triangles: 12 diagonals in 2 triangles each, every triangle counted three times, 24/3 = 8."
     ]
   }
 }
