@@ -49725,6 +49725,54 @@
     "2023 UKMT JMC, Problem 25": [
       400,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): working back, the neighbour had 12 left, so the son had 30 to start and the total was 57: 5 + 7 = 12."
+    ],
+    "2026 CHMMC Individual, Problem 1": [
+      1300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): Alpha is left 8N/39, so 39 divides N, and the order Zeta, Gamma, Epsilon, Eta, Delta, Beta, Alpha runs 39, 36, 24, 21, 20, 16, 8, 0; Epsilon must leave a multiple of 7, at least 21: 3."
+    ],
+    "2026 CHMMC Individual, Problem 2": [
+      1300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): with a_k = a_0 + kx, the two geometric conditions give n = 3 + x/(a_0 + x) and p = 7 + 9x/(a_0 + x), so p = 9n - 20: c d = -180."
+    ],
+    "2026 CHMMC Individual, Problem 3": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the correct digits over the five turns total 5, so failing means exactly one correct at every turn; fixing digit 1, 3 of the 24 placements do this: 1 - 1/8 = 7/8."
+    ],
+    "2026 CHMMC Individual, Problem 4": [
+      1800,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): f(a + b) - f(a) - f(b) records the binary carries, so the values are exactly the base-3 numbers with digits 0 and 1: 127 of them up to 2026."
+    ],
+    "2026 CHMMC Individual, Problem 5": [
+      1700,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): a row with two equal neighbours forces every later row to be its complement; otherwise the rows alternate freely: 2^10 + 2^10 - 2 = 2046."
+    ],
+    "2026 CHMMC Individual, Problem 6": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the circle is centred at the parallelogram's centre, at distances 5 and 7 from the sides, so its chords on the sides are 2 sqrt 25 and 2 sqrt 1: heights 10 and 2, area 168 x 2/14 = 24."
+    ],
+    "2026 CHMMC Individual, Problem 7": [
+      1700,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): three steps of 6 and seven of 7; gcd(a_i, a_i + d) = gcd(a_i, d) must be 1, so no multiple of 6 before a 6 and no multiple of 7 before a 7: 12 of the 120."
+    ],
+    "2026 CHMMC Individual, Problem 8": [
+      2300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): CD and BE meet at the reflection A' of A, so F is the orthocentre of A'BC, the reflection of the orthocentre of ABC; the areas 1, 2, 4 fix the side ratios: 18."
+    ],
+    "2026 CHMMC Individual, Problem 9": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): a/b^2 = (c - 2026)/(2026c); a multiple of 1013 is needed unless 1013 divides c, and c = 1013d leads to a = 3."
+    ],
+    "2026 CHMMC Individual, Problem 10": [
+      2100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the heights rise along the three edges from the lowest vertex by 1, 2 and 4, and the squares of an edge's components along a direction sum over three edges to s^2: s^2 = 1 + 4 + 16, s = sqrt 21."
+    ],
+    "2026 CHMMC Individual, Problem 11": [
+      2300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): with conjugate pairs of moduli alpha and beta, alpha beta = 10 and 69 < alpha^2 + beta^2 + 4 alpha beta, so (alpha + beta)^2 > 49: the sum 2(alpha + beta) exceeds 14."
+    ],
+    "2026 CHMMC Individual, Problem 12": [
+      2500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): track the gap between the odd one out and the pair; first-step equations on the states [0], [1], [n] give (10 + 4 sqrt 2)/3."
     ]
   }
 }

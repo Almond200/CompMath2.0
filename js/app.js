@@ -2920,7 +2920,7 @@
   // (owner, 2026-10-31): the contest's level plus the place in its paper. The offsets say roughly
   // where each contest starts against the others (an early AIME problem is about as hard as a
   // late AMC 12 one); they order a list, they are not a rating.
-  const FAM_LEVEL = { "AMC 8": 0, "MATHCOUNTS Chapter": 0.25, "MATHCOUNTS State": 0.5, "MATHCOUNTS National": 0.8, "MBMT Lower": 0.2, "MBMT Upper": 0.55, "Calgary Junior Math Contest": 0.35, "Columbus State Tournament": 1.1, "Fermat Contest": 0.75, "Cayley Contest": 0.6, "Pascal Contest": 0.4, "UKMT SMC": 0.8, "UKMT IMC": 0.35, "UKMT JMC": 0.1, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "ARML": 1.8, "ARML Local": 1.2, "SMT": 1.9, "Duke Math Meet": 1.5, "UMD HSMC": 1.0, "CMIMC": 2.0, "Math Prize for Girls": 1.4, "MMATHS": 1.3, "Girls in Math at Yale": 1.0, "Lehigh": 0.9, "Utah State Math Contest": 0.8, "BMT": 2.2, "PUMaC Division A": 2.2, "PUMaC Division B": 1.9, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
+  const FAM_LEVEL = { "AMC 8": 0, "MATHCOUNTS Chapter": 0.25, "MATHCOUNTS State": 0.5, "MATHCOUNTS National": 0.8, "MBMT Lower": 0.2, "MBMT Upper": 0.55, "Calgary Junior Math Contest": 0.35, "Columbus State Tournament": 1.1, "Fermat Contest": 0.75, "Cayley Contest": 0.6, "Pascal Contest": 0.4, "UKMT SMC": 0.8, "UKMT IMC": 0.35, "UKMT JMC": 0.1, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "ARML": 1.8, "ARML Local": 1.2, "SMT": 1.9, "Duke Math Meet": 1.5, "CHMMC": 1.6, "UMD HSMC": 1.0, "CMIMC": 2.0, "Math Prize for Girls": 1.4, "MMATHS": 1.3, "Girls in Math at Yale": 1.0, "Lehigh": 0.9, "Utah State Math Contest": 0.8, "BMT": 2.2, "PUMaC Division A": 2.2, "PUMaC Division B": 1.9, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
   function difficultyScore(p) { return (FAM_LEVEL[p.fam] != null ? FAM_LEVEL[p.fam] : 2) + paperPos(p); }
   // Contest profile (rebuilt 2026-11-11, now that every problem has a rating and a place in the
   // topic tree): a strip of headline figures, then label-and-value rows. Everything is computed
@@ -3167,6 +3167,7 @@
     "ARML Local": "https://www.arml.com/ARML/arml_2019/page/index.php?page_type=public&page=4",
     "SMT": "https://www.stanfordmathtournament.com/past-tests/problems",
     "Duke Math Meet": "https://math.duke.edu/duke-math-meet",
+    "CHMMC": "https://www.caltechmathmeet.org/problems",
     "UMD HSMC": "https://mathcomp.math.umd.edu/past-contests/",
     "CMIMC": "https://cmimc.math.cmu.edu/math/past-problems",
     "Math Prize for Girls": "https://mathprize.atfoundation.org/resources",
@@ -3245,7 +3246,33 @@
   function dmmPdf(ref, which) {
     const m = ref.match(/^(\d{4}) Duke Math Meet Individual,\s*Problem\s+\d+$/), f = m && DMM_FILES[m[1]];
     return f ? (which === "solutions" ? f[1] || null : f[0]) : null;
+  }  // CHMMC, the Caltech Harvey Mudd Math Competition, run since 2024 as the Caltech Math Meet: the
+  // Individual round and its solutions as the Caltech Math Meet archive posts them (owner, 2026-11-15).
+  // 2010 and 2012 had two sittings each, named by season.
+  const CHMMC_FILES = {
+    "2026": ["006423_3b1888df47f145499354cebef416fbcb", "006423_70b0692ed8854f74a5d738c8621b727e"],
+    "2025": ["006423_71b733a8366e47c4bdd51d740960d0a3", "006423_b0f218885a5445a382b1394779ce59da"],
+    "2024": ["006423_252fd9f5089c44018f2573b19cdd81a6", "006423_af6be07cec6947d1ad839209001cc4b0"],
+    "2022": ["006423_1d46be5fd88740ddbd5d9664f7fe8167", "006423_503c17bd16b2438d863d7aacde96f4c5"],
+    "2021": ["006423_b54510281b29442da636c53d863ef26a", "006423_f9910d7abbe4409ba9138e2dd2e1b4e5"],
+    "2020": ["006423_8a6df432c9e34aa7b9d9129202117b7e", "006423_ae611b7adea74d59a6336c4e79d4b1ce"],
+    "2019": ["006423_a175f91b8a4a4a8bab31ca0a14792d08", "006423_51e4bf40e50b4aa5bd2a5fbc06da8009"],
+    "2018": ["006423_3431d9482d174c0e9a1735fcc9382bb2", "006423_821f3b99aa334c5ba43d4df788b8359c"],
+    "2017": ["006423_31fbf2c382a5447592d28c0fdcf4930a", "006423_9da7beed342545acb50cd3fd24c4bf16"],
+    "2016": ["006423_fb063e3e46584d6385d1e514a0067079", "006423_82ca553bc7854892b76b181c9b336188"],
+    "2015": ["006423_c81ee1cb9d604acaa66aa80c1fc9f9cb", "006423_c129634d052f4c138b7f094e8ae6bbfd"],
+    "2014": ["006423_63a21695ca7b44ccaf0a20cea326a1f7", "006423_4e087105c60445aabc2913f6f5759508"],
+    "2013": ["006423_f3c07b103e484bfaa5bd8860a763e333", "006423_9fb6b947158c439d8a80c083697a0d53"],
+    "2012 Fall": ["006423_917e33ba3350422c847779b19c8b3be3", "006423_6d6ab3b10a9d4a4fa338828e160aad6d"],
+    "2012 Spring": ["006423_624ec5ac1d7448fda7bbc9ace8654aae", "006423_bd8ee2297f7848e48e39ec6ec35f83df"],
+    "2010 Fall": ["006423_04de822230a64a58a07acb3775ffe186", "006423_2a09e247a6484d5a818b8408144efc17"],
+    "2010 Winter": ["006423_cc460047637644c9b29b8efaa41f7760", "006423_e114bd000eec4c11be31066bc3761c3e"]
+  };
+  function chmmcPdf(ref, which) {
+    const m = ref.match(/^(\d{4}) CHMMC (?:(Winter|Spring|Fall) )?Individual,\s*Problem\s+\d+$/), f = m && CHMMC_FILES[m[1] + (m[2] ? " " + m[2] : "")];
+    return f ? "https://www.caltechmathmeet.org/_files/ugd/" + f[which === "solutions" ? 1 : 0] + ".pdf" : null;
   }
+
   // University of Maryland High School Mathematics Competition, Part I (25 multiple-choice questions):
   // the paper and its solutions as the competition's site posts them (upload folders differ by year).
   const UMD_FILES_BASE = "https://mathcomp.math.umd.edu/files/";
@@ -3408,7 +3435,7 @@
     return f ? "https://ukmt.org.uk/wp-content/uploads/" + f[which === "solutions" ? 1 : 0] : null;
   }
   // The official paper or solutions as a PDF, for the contests that publish them.
-  const officialPdf = (ref, which) => hmmtPdf(ref, which) || armlPdf(ref, which) || smtPdf(ref, which) || dmmPdf(ref, which) || umdPdf(ref, which) || cmimcPdf(ref, which) || mathPrizePdf(ref, which) || mmathsPdf(ref, which) || gimPdf(ref, which) || lehighPdf(ref, which) || utahPdf(ref, which) || mathcountsPdf(ref, which) || mbmtPdf(ref, which) || calgaryPdf(ref, which) || columbusPdf(ref, which) || fermatPdf(ref, which) || ukmtPdf(ref, which);
+  const officialPdf = (ref, which) => hmmtPdf(ref, which) || armlPdf(ref, which) || smtPdf(ref, which) || dmmPdf(ref, which) || chmmcPdf(ref, which) || umdPdf(ref, which) || cmimcPdf(ref, which) || mathPrizePdf(ref, which) || mmathsPdf(ref, which) || gimPdf(ref, which) || lehighPdf(ref, which) || utahPdf(ref, which) || mathcountsPdf(ref, which) || mbmtPdf(ref, which) || calgaryPdf(ref, which) || columbusPdf(ref, which) || fermatPdf(ref, which) || ukmtPdf(ref, which);
   function aopsUrl(ref, fam) {
     if (fam && ARCHIVE_URL[fam]) return ARCHIVE_URL[fam];
     const m = ref.match(/^(.*),\s*Problem\s+(\d+)\s*$/);
@@ -3431,7 +3458,7 @@
   // `refInGroup` drops the contest's own name as well, for a row under that contest's heading.
   const ROUND_SHORT = { "Advanced Topics": "Adv Topics", "General": "Gen", "Algebra and Combinatorics": "Alg & Combo", "Algebra and Geometry": "Alg & Geo", "Combinatorics and Geometry": "Combo & Geo", "Algebra and Number Theory": "Alg & NT", "Combinatorics and Computer Science": "Combo & CS", "Combinatorics": "Combo", "Number Theory": "NT", "Computer Science": "CS", "Discrete Math": "Discrete" };
   const shortRound = r => { const d = r.match(/^(.*?) Division (\d)$/); return d ? `${shortRound(d[1])} Div ${d[2]}` : ROUND_SHORT[r] || r; };
-  const ROUNDED = "HMMT (?:February|November)|CMIMC|SMT|BMT|PUMaC Division [AB]|Utah State Math Contest|MATHCOUNTS (?:Chapter|State|National)|MBMT (?:Lower|Upper)";
+  const ROUNDED = "HMMT (?:February|November)|CMIMC|CHMMC|SMT|BMT|PUMaC Division [AB]|Utah State Math Contest|MATHCOUNTS (?:Chapter|State|National)|MBMT (?:Lower|Upper)";
   const shortFam = f => f.replace(/^HMMT (February|November)$/, (_, m) => "HMMT " + m.slice(0, 3)).replace(/^PUMaC Division /, "PUMaC ").replace(/^Utah State Math Contest$/, "Utah");
   function refShort(ref) {
     const m = ref.match(new RegExp(`^(\\d{4}) (${ROUNDED}) (.+?),\\s*Problem\\s+(\\d+)$`));
@@ -3458,7 +3485,8 @@
     else if (/^ARML Local\b/i.test(core)) fam = "ARML Local";  // ARML's local contest, Individual round (owner, 2026-11-13)
     else if (/^ARML\b/i.test(core)) fam = "ARML";            // the Individual round only (owner, 2026-11-13)
     else if (/^SMT\b/i.test(core)) fam = "SMT";                        // the subject tests (owner, 2026-11-13); the round stays in cname
-    else if (/^Duke Math Meet\b/i.test(core)) fam = "Duke Math Meet";  // the Individual round (owner, 2026-11-13)
+    else if (/^Duke Math Meet\b/i.test(core)) fam = "Duke Math Meet";
+    else if (/^CHMMC\b/.test(core)) fam = "CHMMC";  // the Individual round, also as the Caltech Math Meet (owner, 2026-11-15)  // the Individual round (owner, 2026-11-13)
     else if (/^UMD HSMC\b/i.test(core)) fam = "UMD HSMC";              // Part I only (owner, 2026-11-13)
     else if (/^CMIMC\b/i.test(core)) fam = "CMIMC";                    // the individual subject tests (owner, 2026-11-13)
     else if (/^Math Prize for Girls\b/i.test(core)) fam = "Math Prize for Girls";  // the 20-question test (owner, 2026-11-13)
@@ -3603,7 +3631,7 @@
   // Competition → year → problems tree for the Database sidebar navigator.
   const DB_TREE = {};
   PROBLEM_DB.forEach(p => { (DB_TREE[p.fam] = DB_TREE[p.fam] || {}); (DB_TREE[p.fam][p.year] = DB_TREE[p.fam][p.year] || []).push(p); });
-  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "MATHCOUNTS Chapter", "MATHCOUNTS State", "MATHCOUNTS National", "MBMT Lower", "MBMT Upper", "Calgary Junior Math Contest", "Columbus State Tournament", "Fermat Contest", "Cayley Contest", "Pascal Contest", "UKMT SMC", "UKMT IMC", "UKMT JMC", "HMMT February", "HMMT November", "ARML", "ARML Local", "SMT", "Duke Math Meet", "UMD HSMC", "CMIMC", "Math Prize for Girls", "MMATHS", "Girls in Math at Yale", "Lehigh", "Utah State Math Contest", "BMT", "PUMaC Division A", "PUMaC Division B", "Putnam", "HMMT"];
+  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "MATHCOUNTS Chapter", "MATHCOUNTS State", "MATHCOUNTS National", "MBMT Lower", "MBMT Upper", "Calgary Junior Math Contest", "Columbus State Tournament", "Fermat Contest", "Cayley Contest", "Pascal Contest", "UKMT SMC", "UKMT IMC", "UKMT JMC", "HMMT February", "HMMT November", "ARML", "ARML Local", "SMT", "Duke Math Meet", "CHMMC", "UMD HSMC", "CMIMC", "Math Prize for Girls", "MMATHS", "Girls in Math at Yale", "Lehigh", "Utah State Math Contest", "BMT", "PUMaC Division A", "PUMaC Division B", "Putnam", "HMMT"];
   const FAMILIES = Object.keys(DB_TREE).sort((a, b) => {
     const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
@@ -4910,6 +4938,7 @@
               <p>Problems from the <a href="https://ukmt.org.uk/competition-papers" target="_blank" rel="noopener noreferrer">Senior, Intermediate and Junior Mathematical Challenges</a> of the United Kingdom Mathematics Trust are listed the same way: each problem’s page opens the paper and its solutions as the UKMT posts them; nothing is reproduced. That material is © UKMT; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual test of the <a href="https://www.columbusstate.edu/math/tournament/previous-math-contest.php" target="_blank" rel="noopener noreferrer">Columbus State Invitational Mathematics Tournament</a> (Columbus State University) are listed the same way: each problem’s page opens the official test and its solutions; nothing is reproduced. That material is attributed to Columbus State University; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual round of the <a href="https://math.duke.edu/duke-math-meet" target="_blank" rel="noopener noreferrer">Duke Math Meet</a> (2007 to 2022) are listed the same way: each problem's page opens the round as Duke's mathematics department posts it, and its solutions where they were posted; nothing is reproduced. Duke Math Meet material is attributed to the Duke Math Meet; the MAA license above does not apply to it.</p>
+              <p>Problems from the Individual round of <a href="https://www.caltechmathmeet.org/problems" target="_blank" rel="noopener noreferrer">CHMMC</a>, the Caltech Harvey Mudd Math Competition, run since 2024 as the Caltech Math Meet (2010 to 2026; 2010 and 2012 had two sittings each), are listed the same way: each problem's page opens the round and its solutions on the Caltech Math Meet archive; nothing is reproduced. That material is attributed to CHMMC and the Caltech Math Meet; the MAA license above does not apply to it.</p>
               <p><a href="https://berkeley.mt/archives/bmt/" target="_blank" rel="noopener noreferrer">BMT</a> and <a href="https://pumac.princeton.edu/archives" target="_blank" rel="noopener noreferrer">PUMaC</a> entries link to the official contest papers and solutions. Their statements and solutions are not reproduced here.</p>
             </div>
           </div></div>
@@ -9834,7 +9863,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   // Difficulty: Elo ratings in bins of 200. Each contest has its own colour (the level tokens),
   // so one chart can stack every contest and still show which is which.
-  const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)", "HMMT November": "var(--level-hmmtn)", "ARML": "var(--level-arml)", "ARML Local": "var(--level-arml-local)", "SMT": "var(--level-smt)", "Duke Math Meet": "var(--level-dmm)", "UMD HSMC": "var(--level-umd)", "CMIMC": "var(--level-cmimc)", "Math Prize for Girls": "var(--level-mpfg)", "MMATHS": "var(--level-mmaths)", "Girls in Math at Yale": "var(--level-gim)", "Lehigh": "var(--level-lehigh)", "Utah State Math Contest": "var(--level-utah)", "MATHCOUNTS Chapter": "var(--level-mcc)", "MATHCOUNTS State": "var(--level-mcs)", "MATHCOUNTS National": "var(--level-mcn)", "MBMT Lower": "var(--level-mbl)", "MBMT Upper": "var(--level-mbu)", "Calgary Junior Math Contest": "var(--level-calg)", "Columbus State Tournament": "var(--level-cols)", "Fermat Contest": "var(--level-fermat)", "Cayley Contest": "var(--level-cayley)", "Pascal Contest": "var(--level-pascal)", "UKMT SMC": "var(--level-ukmt)", "UKMT IMC": "var(--level-ukmti)", "UKMT JMC": "var(--level-ukmtj)" };
+  const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)", "HMMT November": "var(--level-hmmtn)", "ARML": "var(--level-arml)", "ARML Local": "var(--level-arml-local)", "SMT": "var(--level-smt)", "Duke Math Meet": "var(--level-dmm)", "CHMMC": "var(--level-chmmc)", "UMD HSMC": "var(--level-umd)", "CMIMC": "var(--level-cmimc)", "Math Prize for Girls": "var(--level-mpfg)", "MMATHS": "var(--level-mmaths)", "Girls in Math at Yale": "var(--level-gim)", "Lehigh": "var(--level-lehigh)", "Utah State Math Contest": "var(--level-utah)", "MATHCOUNTS Chapter": "var(--level-mcc)", "MATHCOUNTS State": "var(--level-mcs)", "MATHCOUNTS National": "var(--level-mcn)", "MBMT Lower": "var(--level-mbl)", "MBMT Upper": "var(--level-mbu)", "Calgary Junior Math Contest": "var(--level-calg)", "Columbus State Tournament": "var(--level-cols)", "Fermat Contest": "var(--level-fermat)", "Cayley Contest": "var(--level-cayley)", "Pascal Contest": "var(--level-pascal)", "UKMT SMC": "var(--level-ukmt)", "UKMT IMC": "var(--level-ukmti)", "UKMT JMC": "var(--level-ukmtj)" };
   const famColor = f => FAM_COLOR[f] || "var(--level-oly)";
   const RATED_FAMS = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && Number.isFinite(p.elo)));
   // The scale ends at 3800 unless a problem is rated above that (owner, 2026-11-12: harder
@@ -10677,7 +10706,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const sitting = p.ref.replace(/,?\s*Problem.*$/, "").trim();
       const base = sitting.replace(/\b(19|20)\d\d\b/, "").replace(/\s+/g, " ").trim();
       bump(sitting); bump(base);
-      const m = base.match(/^(Fall )?(AMC 1[02]|AIME|HMMT February|HMMT November|HMMT|ARML Local|ARML|SMT|Duke Math Meet|UMD HSMC|CMIMC|Math Prize for Girls|MMATHS|Girls in Math at Yale|Lehigh|Utah State Math Contest|BMT|PUMaC Division [AB]|MATHCOUNTS (?:Chapter|State|National)|MBMT (?:Lower|Upper)|Calgary Junior Math Contest|Columbus State Tournament|Fermat Contest|Cayley Contest|Pascal Contest|UKMT SMC|UKMT IMC|UKMT JMC)/);
+      const m = base.match(/^(Fall )?(AMC 1[02]|AIME|HMMT February|HMMT November|HMMT|ARML Local|ARML|SMT|Duke Math Meet|CHMMC|UMD HSMC|CMIMC|Math Prize for Girls|MMATHS|Girls in Math at Yale|Lehigh|Utah State Math Contest|BMT|PUMaC Division [AB]|MATHCOUNTS (?:Chapter|State|National)|MBMT (?:Lower|Upper)|Calgary Junior Math Contest|Columbus State Tournament|Fermat Contest|Cayley Contest|Pascal Contest|UKMT SMC|UKMT IMC|UKMT JMC)/);
       if (m && m[2] !== base) bump(m[2]);
       if (/^HMMT (February|November)/.test(base) && base !== "HMMT") bump("HMMT");
     });

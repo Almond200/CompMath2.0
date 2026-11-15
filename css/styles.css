@@ -29,6 +29,7 @@ html[data-text="larger"] { --tx: 1.3; }
   --level-arml-local: #8fb84a;
   --level-smt: #c46a6a;
   --level-dmm: #5f8fd6;
+  --level-chmmc: #e07a3f;
   --level-umd: #d0a04a;
   --level-cmimc: #b06fd0;
   --level-mpfg: #d07a9e;
@@ -88,6 +89,7 @@ html[data-text="larger"] { --tx: 1.3; }
   --level-arml-local: #4f7a1c;
   --level-smt: #a63d3d;
   --level-dmm: #1f4f9a;
+  --level-chmmc: #a5501f;
   --level-umd: #8a5e12;
   --level-cmimc: #7a2fa0;
   --level-mpfg: #a3365f;
