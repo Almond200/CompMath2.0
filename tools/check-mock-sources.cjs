@@ -18,6 +18,11 @@ const base = process.env.COMPMATH_URL || 'http://localhost:8765';
   // Metadata-only sources use the established official-paper/self-check flow.
   await form.locator('[data-mock-source="PUMaC Division B"]').click();
   assert.equal(await submit.isEnabled(), true); assert.match(await form.locator('#mock-contest-status').innerText(), /closest available questions/);
+  await page.locator('#pr-topic .pr-fams summary').click();
+  await page.locator('#pr-topic [data-pr-all="off"]').click();
+  assert.equal(await form.locator('[data-mock-source="PUMaC Division B"]').getAttribute('aria-pressed'), 'true', 'concept contest changes do not replace the mock chooser');
+  assert.equal(await form.locator('[data-mock-source][aria-pressed="true"]').count(), 1);
+
   await form.locator('[data-mock-family="AMC 10"]').click();
   assert.match(await form.locator('#mock-contest-info').innerText(), /25 problems · 75 minutes/);
   assert.equal(await form.locator('[data-mock-source][aria-pressed="true"]').count(), 1, 'format changes preserve source selection');
