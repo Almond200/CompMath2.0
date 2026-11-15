@@ -51869,6 +51869,198 @@
     "2015 MATHCOUNTS National Team, Problem 10": [
       1000,
       "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): from a non-rainy Friday, no rain Saturday has chance 3/4 and then no rain Sunday again 3/4: 9/16."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 1": [
+      200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the mean of 1 to 10,000 is the mean of the ends: 10001/2 = 5000.5."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 2": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): of 3 to 12, the primes 3, 5, 7, 11 and the multiples of 4, 8, 12 leave 6, 9, 10: 3 of 10, 30%."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 3": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 100 x 29.53 = 2953 days, about 8.1 years: 8."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 4": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 4 pounds of red at $1 and 2 of green at $1.25: $6.50."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 5": [
+      200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the middle of nine consecutive integers summing to 216 is 24: the smallest is 20."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 6": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): B is on the perpendicular bisector of AC, so D is too, at x = 1; area AC x BD/2 = 18 with AC = 6 gives BD = 6: D = (1, -1)."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 7": [
+      300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 3(x - 21) > 8 means x > 23 2/3, and the least multiple of 7 above is 28."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 8": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a^2 + b^2 = 386 in integers allows 5 and 19, which also give the figure's perimeter of 86: a + b = 24."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 9": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the mean (16 + x)/5 must equal the median; trying x below 1 with median 1 gives x = -11."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 10": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): five unit circles in a 6-wide strip pack as three and two staggered, the rows sqrt 3 apart: width 2 + sqrt 3."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 11": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): drawing a line parallel to j and k through the bend and adding the alternate angles: x = 90."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 12": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): with a = 2013 and b = a + 1, the numerator is (a - b)^3 + a^2 b + 1 = a^2 b, so the quotient is a = 2013."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 13": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the corner sum c and side sum s satisfy 3s = 21 + c; the possible corner triples give 4 solutions up to symmetry."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 14": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a multiple of 9 and the next one use the same digits only when no carry breaks the pattern; listing the three-digit cases gives 9 pairs."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 15": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): three darts on the 16 regions: counting the 4096 ordered outcomes with total above 15 gives 52, so 13/1024."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 16": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a + b = 12 and a^2 + b^2 = 100 give 2ab = 44: area 11."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 17": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): adding the equations gives 4 times the sum 404, so the sum is 101 and c = 101 - 82 = 19."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 18": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): by symmetry the new number is larger as often as smaller; the chance of no change is 1/36 for the two rerolled dice, so (1 - 1/36)/2 = 35/72."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 19": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the shaded region is a sector of the radius-2 circle less the pieces cut by the chords; with angle NPR = 100 the area comes to 26 pi/9."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 20": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): matching coefficients with integer a, b, c, d: x^4 + x^3 - 2x^2 + 17x - 5 = (x^2 - 2x + 5)(x^2 + 3x - 1): a + b + c + d = 5."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 21": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 2^a + 2^b and 3^a + 3^b are multiples of 5 exactly when a - b is 2 mod 4 (2 and 3 have order 4 mod 5): 1/4."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 22": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a hypotenuse must have a prime factor 1 mod 4; 39 = 3 x 13, 40 = 8 x 5 and 41 work, but 42 = 2 x 3 x 7 has none: 42."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 23": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 441 in base b is (2b + 1)^2 and 351 in base b is 3b^2 + 5b + 1 = (2b - 1)^2, so b^2 = 9b: b = 9."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 24": [
+      1200,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): Mary's not knowing rules out 1 and 10, Jerry's not knowing then rules out more, and Mary's deduction leaves the numbers she could hold: they sum to 22."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 25": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the 2014th term is the geometric mean of the 14th and 4014th: sqrt(375 x 135) = 225."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 26": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): for D miles the faster trip saves D/60 - D/75 = D/300 hours and costs 3.5(D/35 - D/40) = D/80 dollars more: $3.75 an hour."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 27": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 6p^2 q^2 = 4p^3 q gives 6q = 4p: p = 3/5."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 28": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): f(f(x)) = x for a Mobius map other than the identity forces the trace a + d = 0."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 29": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): k consecutive pages summing to 880 and 1008: 1008 - 880 = 128 = k x (the shift), and k(2m + k - 1) = 1760 fixes k = 32 pages."
+    ],
+    "2014 MATHCOUNTS National Sprint, Problem 30": [
+      1300,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the largest equilateral triangle in a unit square shares a corner and is symmetric about the diagonal: side sqrt 6 - sqrt 2, area 2 sqrt 3 - 3; 2 + 3 + 3 = 8."
+    ],
+    "2014 MATHCOUNTS National Target, Problem 1": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): f(1) = 0, f(2) = 1, f(3) = 8 give 3a + b = 1 and 5a + b = 7: a = 3, b = -8, c = 5."
+    ],
+    "2014 MATHCOUNTS National Target, Problem 2": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a fixed weekly spend buys 1/3 + 1/4 + 1/5 gallons per dollar, so the average price is the harmonic mean of 3, 4, 5: about $3.83."
+    ],
+    "2014 MATHCOUNTS National Target, Problem 3": [
+      700,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a + b = 11(x + y) is a square, so x + y = 11, and a - b = 9(x - y) is a square, so x - y = 1: a = 65."
+    ],
+    "2014 MATHCOUNTS National Target, Problem 4": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): 135 = 87 + 86 + 39 - (pairs) + (all three), with the 'exactly two' counts given; solving for the triple overlap: 13."
+    ],
+    "2014 MATHCOUNTS National Target, Problem 5": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the 45-degree cuts make each frame piece 2 inches longer on its outer edge than its inner one, and the inner rectangle must be similar to 17.5 by 20: area 56."
+    ],
+    "2014 MATHCOUNTS National Target, Problem 6": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): a power equals 1 when the exponent is 0 with nonzero base, or the base is 1, or the base is -1 with an even exponent; the real solutions sum to 23/2."
+    ],
+    "2014 MATHCOUNTS National Target, Problem 7": [
+      800,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): true positives 0.01 x 0.95 against false positives 0.99 x 0.05: 0.0095/0.059 = 19/118."
+    ],
+    "2014 MATHCOUNTS National Target, Problem 8": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the centre lies on the perpendicular bisector 8x + 6y = 25 of the diagonal from (0, 0) to (4, 3); its least distance to the other vertex (4, 0) is |32 - 25|/10 = 7/10."
+    ],
+    "2014 MATHCOUNTS National Team, Problem 1": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): count the stacked boxes column by column, including the hidden ones against the wall: 25."
+    ],
+    "2014 MATHCOUNTS National Team, Problem 2": [
+      500,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): income 4.95 x 600 = 2970 less expenses -0.005 x 360000 + 3000 + 620 = 1820: $1150."
+    ],
+    "2014 MATHCOUNTS National Team, Problem 3": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): after 1995 the next number whose prime factorization uses each odd digit once is 2685 = 3 x 5 x 179."
+    ],
+    "2014 MATHCOUNTS National Team, Problem 4": [
+      900,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the terms are a_n = (n - 1)2^n, a power of 2 when n - 1 is; the largest n below 100 is 65."
+    ],
+    "2014 MATHCOUNTS National Team, Problem 5": [
+      600,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): sum 17 or 18 comes from (6, 6, 5) in 3 orders or (6, 6, 6): 4/216 = 1/54."
+    ],
+    "2014 MATHCOUNTS National Team, Problem 6": [
+      400,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): |x| + |y| <= 4 is a square with diagonals 8: area 32."
+    ],
+    "2014 MATHCOUNTS National Team, Problem 7": [
+      1000,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): with angle ACD twice angle ABD the arc centred at C is the circle through A, D, B; the area between the arcs is the difference of two segments: about 46."
+    ],
+    "2014 MATHCOUNTS National Team, Problem 8": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): following the flowchart, each written letter is A, N or B with fixed chances in fifths; multiplying them for B, A, N, A, N, A gives 27/15625 = 3^3/5^6."
+    ],
+    "2014 MATHCOUNTS National Team, Problem 9": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): non-adjacent walls of a pentagon form another 5-cycle, so this is a proper colouring of a 5-cycle with 5 colours: (5 - 1)^5 - (5 - 1) = 1020."
+    ],
+    "2014 MATHCOUNTS National Team, Problem 10": [
+      1100,
+      "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): an angle chase with the given 20, 60, 50 and 30 degrees and an auxiliary equilateral triangle gives angle ADB = 80."
     ]
   }
 }
