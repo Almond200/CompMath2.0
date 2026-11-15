@@ -49996,7 +49996,7 @@
     ],
     "2021 CHMMC Individual, Problem 14": [
       2100,
-      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): completing squares, 2(2g(m) + 2021) = (2m + 1)^2 + 2021^2, so n must divide a sum of an odd square and 2021^2; testing the odd n below 100 prime power by prime power with quadratic residues gives 18."
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): completing squares, 2(2g(m) + 2021) = (2m + 1)^2 + 2021^2, so an odd n works exactly when -2021^2 is a square modulo n: n = 1, the primes 1 mod 4 below 100, 43 and 47 (which divide 2021 = 43 x 47), and 25, 65, 85, 17 in all; the official answer 18 counts 93 = 3 x 31 as a prime and omits 43 and 47."
     ],
     "2021 CHMMC Individual, Problem 15": [
       2300,

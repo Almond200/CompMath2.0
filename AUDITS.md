@@ -2535,3 +2535,16 @@ A check of the 57 problems filed at `geo.coord.line.point` (Distance from a poin
 ### Retagging: the Pythagorean triple parametrization (2026-11-14)
 
 The card Pythagorean Triple Parametrization is the formula (m^2 - n^2, 2mn, m^2 + n^2). Seven problems cited it while their routes only recognise or use a familiar right triangle (3-4-5, 5-12-13, 7-24-25), or the converse of the Pythagorean theorem: 2020 Columbus State #30, 2002 #9 and 2001 #30, 2012 Fermat #22, 2000 Fermat #17, 2019 Cayley #17 and 2000 Cayley #16. They now cite the Pythagorean Theorem. The parametrization stays on 2014 Columbus State #47 (generating the triples), 2003 Columbus State #50 (every triple gives a rational point) and 2005 Cayley #25 (scaled triples).
+
+## CHMMC and the Caltech Math Meet (Step H, 2026-11-15)
+
+Added at the owner's request with the official Individual rounds and solutions from `caltechmathmeet.org/problems`. Answers were checked by computation where practical (2026 #3, #4, #5, #7, #9; 2025 #1, #2, #3, #5; 2024 #1, #10, #15; 2022 #5, #8, #9, #10, #12, #15; 2021 #2, #3, #6, #12, #14). Findings:
+
+- **2021 #14, official answer wrong.** The solution lists 93 among the primes 1 mod 4 (93 = 3 x 31) and leaves out 43 and 47, which divide 2021 and so make (2m + 1)^2 + 2021^2 divisible for 2m + 1 a multiple of them. A direct count gives 17 g-friendly odd n below 100 (1, the eleven primes 1 mod 4, 43, 47, 25, 65, 85); the reason records 17 and the error.
+- **2025 #10:** the archive's solution says the answer is 6 and that 7 was accepted at the contest; filed with 6.
+- **2025 #3:** the solution's last line ("floor(n + sqrt(n + 1)) at most 2025 exactly for n at most 1980") is loose (n = 1981 also satisfies that inequality), but a direct check of the original condition over all integer parts confirms 1980.
+- **Reading:** `pdftotext -layout` drops pieces of formulas (2021 #3's last term read as "1"; 2021 #12's square root vanished); every paper is now read with `-raw`.
+
+## UKMT Junior Mathematical Challenge (Step H, 2026-11-14 to 2026-11-15)
+
+The same links and credits as the SMC and IMC. Questions shared with the IMC of the same year were looked for by text overlap; none of the high-overlap pairs is the same question. 2023 to 2026 filed; the rest follows.

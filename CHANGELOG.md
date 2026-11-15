@@ -1,5 +1,11 @@
 # Changelog
 
+**2026-11-15**
+
+- **CHMMC, the Caltech Harvey Mudd Math Competition (now the Caltech Math Meet):** a new family at the owner's request; each problem opens the Individual round and its solutions on the Caltech Math Meet archive. 2021 to 2026 are filed (72 problems) with tree filings, cards and author-estimated ratings; 2021 #14's official answer is corrected (17, not 18).
+- **UKMT Junior Mathematical Challenge:** a third UKMT family; 2023 to 2026 are filed (100 problems), the rest to follow.
+- **Contest-page check:** follows main's recalibrated equal-width Elo levels.
+
 **2026-11-14**
 
 - **UKMT Intermediate Mathematical Challenge (done, 300 problems):** a second UKMT family with the same links and credits; every posted year (2015 to 2026) is filed with tree filings, cards and author-estimated ratings.
