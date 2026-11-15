@@ -49773,6 +49773,114 @@
     "2026 CHMMC Individual, Problem 12": [
       2500,
       "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): track the gap between the odd one out and the pair; first-step equations on the states [0], [1], [n] give (10 + 4 sqrt 2)/3."
+    ],
+    "2025 CHMMC Individual, Problem 1": [
+      1100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): everyone rides together exactly when 2, 3, 4, 5 are the lower numbers and 6, 7, 8, 9 the higher ones: 4! = 24 of the 105 pairings, 8/35."
+    ],
+    "2025 CHMMC Individual, Problem 2": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the quotient is -1 mod 2^12, so n 2^17 + 1 = (a 2^12 - 1)(b 2^12 - 1) with 32 dividing a + b; a = 1, b = 31 gives n = 3967."
+    ],
+    "2025 CHMMC Individual, Problem 3": [
+      1800,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the left side is largest just below an integer x = k + 1, and the condition becomes floor(n + sqrt(n + 1)) at most 2025: n = 1980."
+    ],
+    "2025 CHMMC Individual, Problem 4": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): AEF ~ ECF makes the circle on AF tangent to BC at E, so BE = EC = x, and CEF ~ BAE gives AB = x^2/9 = 16: x = 12, EF = 15, AE = 20, area 150."
+    ],
+    "2025 CHMMC Individual, Problem 5": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): odd n = 3^a m needs a/(a + 1) = 1/2 and the divisors of m split 2 : 1 between remainders 1 and 2: 75, 75 x 7, 75 x 13, 3 x 11^2, 3 x 17^2, five numbers."
+    ],
+    "2025 CHMMC Individual, Problem 6": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): 1 + 2 cos t = sin(3t/2)/sin(t/2), so the partial product is sin(pi/2)/(3^N sin(pi/(2 x 3^N))), which tends to 2/pi."
+    ],
+    "2025 CHMMC Individual, Problem 7": [
+      2100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): a circle of radius between n and n + 1 crosses 4(2n + 1) squares, one fewer per quadrant for each lattice point on it off the axes: 17 values."
+    ],
+    "2025 CHMMC Individual, Problem 8": [
+      2100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): angle chasing gives DBA ~ DEC and DAC ~ DBE; with E' the foot of the altitude from E to AD (EE' = 2), AC = CD x CE/DE', and the second similarity turns AC into BE: 10 sqrt 3/3."
+    ],
+    "2025 CHMMC Individual, Problem 9": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): scaling gives a o b = |a| (1 o b/a) and the second rule forces 20 o 25 = +-sqrt(20^2 + 25^2), both achieved: -1025."
+    ],
+    "2025 CHMMC Individual, Problem 10": [
+      2300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the cut is a halving cut or an even staircase between opposite corners, so new rectangles come from step counts dividing the sides; the official answer is 6 (7 was accepted at the contest)."
+    ],
+    "2025 CHMMC Individual, Problem 11": [
+      2400,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): reflecting P over AC makes QRP'A a rectangle; PQR equilateral forces PAP' equilateral and angle PAC = 30, so AB/AC = P'R/RC = sqrt 3/2."
+    ],
+    "2025 CHMMC Individual, Problem 12": [
+      2500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): with |x|^2 = a, |y|^2 = b, |z|^2 = c and abc = 144, |y conj z + x|^2 is at least 144/b + b - 24, least at a = 24, c = 3/4, b = 8: sqrt 2."
+    ],
+    "2024 CHMMC Individual, Problem 1": [
+      1300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the hands meet every 720/11 minutes; at 196 4/11 minutes the seconds hand is at 21.8 seconds, nearest the 4: 196."
+    ],
+    "2024 CHMMC Individual, Problem 2": [
+      1400,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): with n pirates each gets the same value, giving 3s(10 - n) = 5g(n - 6), so n = 7, 8 or 9; each case fixes the gold-to-silver value ratio, and four times as many silver coins gives Q: 52/3 in all."
+    ],
+    "2024 CHMMC Individual, Problem 3": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the third house ends 4th exactly when one of the later five houses goes on top and the right number of earlier ones lie above it: 5/64 each for 4th and 5th, so 1 - 10/64 = 17/32."
+    ],
+    "2024 CHMMC Individual, Problem 4": [
+      1700,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): floor(log_5 x) = 2 puts x in [25, 125); the right side is linear between jumps at x = 4k + 1, and log_3 x meets it once on each of the 11 pieces from 81 to 125: 11."
+    ],
+    "2024 CHMMC Individual, Problem 5": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): multiples of 4 are sums of distinct powers of 2 from 4 up; adding 9, 27 or 9 + 25 covers every larger number by residue mod 4, and 30 has no representation: 30."
+    ],
+    "2024 CHMMC Individual, Problem 6": [
+      1900,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the four points are coplanar exactly when they form a parallelogram, so opposite heights have equal sums, and halving the volume makes their mean half the height; the cases give volumes summing to 546."
+    ],
+    "2024 CHMMC Individual, Problem 7": [
+      1900,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the loser of each game plays blue next and blue wins with probability 2/3; summing over the possible series gives the expected number of blue wins: 238/81."
+    ],
+    "2024 CHMMC Individual, Problem 8": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the product of the roots and of 1 + root come from P(0) and P(-1) of the cubic, and the k-th term telescopes: 27/16."
+    ],
+    "2024 CHMMC Individual, Problem 9": [
+      2300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the condition YC x CA = ZB x BA puts X on a fixed line perpendicular to BC (the official route uses Jacobi's theorem); with AD = 15, BD = 8, DD' = 12 from the 8-15-17 and 3-4-5 right triangles and X at height 2, AX^2 = 12^2 + 13^2: sqrt 313."
+    ],
+    "2024 CHMMC Individual, Problem 10": [
+      1800,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): with n people Brian is at +1 or -1, so n divides 2023 or 2025, and n divides 2024 + k; counting the k for which 2024 + k shares a factor with 2025 or 2023: 1153."
+    ],
+    "2024 CHMMC Individual, Problem 11": [
+      2400,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): by Leibniz's formula PA^2 + PB^2 + PC^2 depends only on GP, and the area of the triangle with sides PA, PB, PC is a function of GP, so the region is a disc about the centre: (9 + 2 pi sqrt 3)/27."
+    ],
+    "2024 CHMMC Individual, Problem 12": [
+      2200,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): floor(k(3 - sqrt 3)) and the complementary Beatty sequence for 3 + sqrt 3 partition the integers, which turns the sum into a count: 347."
+    ],
+    "2024 CHMMC Individual, Problem 13": [
+      2400,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): cyclic shifts of a solution are solutions, so N is congruent mod 46 to the count of tuples with a shorter period; their 35th-power sums are fixed by Fermat-type congruences mod 2024: 40."
+    ],
+    "2024 CHMMC Individual, Problem 14": [
+      2600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): AKBI cyclic fixes angle B as 45 + C/2 from cos C = 2/5, and the bisector of angle IWE gives WB/WI by the angle bisector theorem and the law of sines: (7 sqrt 15 - 3 sqrt 35)/10."
+    ],
+    "2024 CHMMC Individual, Problem 15": [
+      2300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): each value k up to 5 that occurs must be followed later by k + 1, so the values used form a run up to 6 entered in order; a direct count of the 5^7 functions gives 4919."
     ]
   }
 }
