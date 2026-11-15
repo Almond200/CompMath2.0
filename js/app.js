@@ -9835,9 +9835,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const famColor = f => FAM_COLOR[f] || "var(--level-oly)";
   const RATED_FAMS = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && Number.isFinite(p.elo)));
   // The scale ends at 3800 unless a problem is rated above that (owner, 2026-11-12: harder
-  // contests than the AIME may be added); then it grows to the bin that holds the hardest one.
-  const ELO_BIN = 200, ELO_LO = 200;
-  const ELO_HI = Math.max(3800, ...PROBLEM_DB.filter(p => Number.isFinite(p.elo)).map(p => (Math.floor(p.elo / ELO_BIN) + 1) * ELO_BIN));
+  // contests than the AIME may be added); both ends grow to include every actual rating.
+  const ELO_BIN = 200, RATED_ELOS = PROBLEM_DB.filter(p => Number.isFinite(p.elo)).map(p => p.elo);
+  const ELO_LO = Math.min(200, ...RATED_ELOS.map(elo => Math.floor(elo / ELO_BIN) * ELO_BIN));
+  const ELO_HI = Math.max(3800, ...RATED_ELOS.map(elo => (Math.floor(elo / ELO_BIN) + 1) * ELO_BIN));
   const eloBins = () => Array.from({ length: (ELO_HI - ELO_LO) / ELO_BIN }, (_, i) => ELO_LO + i * ELO_BIN);
   const binOf = elo => Math.min(ELO_HI - ELO_BIN, Math.max(ELO_LO, Math.floor(elo / ELO_BIN) * ELO_BIN));
   const famDot = f => `<i class="fam-dot" style="background:${famColor(f)}"></i>`;
@@ -9904,7 +9905,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // "Show more contests" button. Expansions reset on navigation unless Settings opens them by default.
   const CORE_FAMS = new Set(["AMC 8", "AMC 10", "AMC 12", "AIME"]);
   const contestExpansions = new Map();
-  let expansionPage = null;
+  let expansionPage = null, expansionBrowseKind = null;
   const famsOpen = key => contestExpansions.get(key) ?? state.contestLists === "show";
   const famShown = (f, key = "browse-contests") => famsOpen(key) || CORE_FAMS.has(f);
   // n counts the contests beyond the AMC and AIME in that list; cls styles the button for its row.
@@ -9941,7 +9942,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   function browseGroupsHtml(key, problems, sort) {
     if (browseKey !== key) { browseKey = key; browseOpen = new Set(state.contestLists === "show" ? FAMILIES : []); }
-    const groups = FAMILIES.filter(f => !browseOff.has(f) && famShown(f)).map(f => {
+    const groups = FAMILIES.filter(f => !browseOff.has(f)).map(f => {
       const list = problems.filter(p => p.fam === f).sort(sort);
       if (!list.length) return "";
       const shown = browseOpen.has(f) ? list : list.slice(0, BROWSE_PAGE);
@@ -10060,7 +10061,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       }
     } else {
       const rated = PROBLEM_DB.filter(p => Number.isFinite(p.elo));
-      const active = RATED_FAMS.filter(f => !browseOff.has(f) && famShown(f));
+      const active = RATED_FAMS.filter(f => !browseOff.has(f));
       const inBinN = b => rated.filter(p => binOf(p.elo) === b && active.includes(p.fam)).length;
       const filled = eloBins().filter(b => inBinN(b));
       // With no range chosen, the fullest one opens, so the page never starts empty.
@@ -10821,8 +10822,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
     clearInterval(mockClockInterval);mockClockInterval=0;
     const route = getRoute();
     if (expansionPage !== location.hash) {
+      // Changing a bar or topic is navigation within the same browser, not leaving it.
+      // Keep its contest chooser open without carrying card/profile expansions elsewhere.
+      const keepBrowse = route.type === "browse" && route.kind === expansionBrowseKind;
+      const browseExpanded = keepBrowse ? contestExpansions.get("browse-contests") : undefined;
       expansionPage = location.hash;
+      expansionBrowseKind = route.type === "browse" ? route.kind : null;
       contestExpansions.clear(); probGroupsOpen.clear();
+      if (browseExpanded !== undefined) contestExpansions.set("browse-contests", browseExpanded);
       ctYearsOpen.clear();
       if (state.contestLists === "show") FAMILIES.forEach(f => ctYearsOpen.add(f));
       browseKey = ""; browseOpen.clear();
