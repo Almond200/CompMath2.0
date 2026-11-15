@@ -2971,8 +2971,8 @@
       // in the collection gets its plain count.
       share: (() => {
         const seen = FAMILIES.map(x => [x, probs.filter(p => p.fam === x).length]).filter(x => x[1]);
-        return `<div class="pf-stat pf-odds">${seen.filter(([x]) => famShown(x, "profile-odds")).map(([x, n]) =>
-        `<span class="pf-odd"><b>${all.fam[x] >= 100 ? `1 in ${Math.max(1, Math.round(all.fam[x] / n)).toLocaleString("en-US")}` : `${n} of ${all.fam[x]}`}</b>${escapeAttr(x)}</span>`).join("")}${famMoreBtn(extraFams(seen.map(([x]) => x)), "ct-toggle pf-more", "profile-odds")}</div>`;
+        return `<div class="pf-stat pf-odds">${seen.map(([x, n]) =>
+        `<span class="pf-odd"${famExtra(x, "profile-odds")}><b>${all.fam[x] >= 100 ? `1 in ${Math.max(1, Math.round(all.fam[x] / n)).toLocaleString("en-US")}` : `${n} of ${all.fam[x]}`}</b>${escapeAttr(x)}</span>`).join("")}${famMoreBtn(extraFams(seen.map(([x]) => x)), "ct-toggle pf-more", "profile-odds")}</div>`;
       })(),
       med: med != null ? stat(med, elos.length === 1 ? "rating" : "median rating") : "",
       years: stat(y0 === y1 ? y0 : `${y0}&ndash;${y1}`, y0 === y1 ? "year seen" : "years seen")
@@ -2987,8 +2987,8 @@
       const shareMax = Math.max(0, ...fams.filter(sized).map(x => x.share));
       // A few problems are named in a line; shares and bars of one or two problems say nothing.
       if (few) out.rows.contests = row("Contests", dots(fams.map(x => `${famDot(x.fam)}${escapeAttr(x.fam)} <span class="pf-sub">${x.ps.map(p => "#" + p.num).join(", ")}</span>`)));
-      else out.rows.contests = row("Contests", `<table class="pf-table"><thead><tr><th scope="col" aria-label="Contest"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of the contest", "Share")}</th><th scope="col">${duo("Typical question", "Typical #")}</th></tr></thead><tbody>${fams.filter(x => famShown(x.fam, "profile-contests")).map(x =>
-        `<tr><th scope="row">${famDot(x.fam)}${escapeAttr(x.fam)}</th><td class="pf-meter-cell"><span class="pf-meter">${sized(x) ? `<i style="width:${Math.max(2, x.share / shareMax * 100).toFixed(1)}%;background:${famColor(x.fam)}"></i>` : ""}</span></td><td>${x.ps.length}</td><td>${sized(x) ? pfPct(x.share) : `${x.ps.length} of ${all.fam[x.fam]}`}</td><td>#${x.at}</td></tr>`).join("")}</tbody></table>${famMoreBtn(extraFams(fams.map(x => x.fam)), "ct-toggle", "profile-contests")}`, true);
+      else out.rows.contests = row("Contests", `<table class="pf-table"><thead><tr><th scope="col" aria-label="Contest"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of the contest", "Share")}</th><th scope="col">${duo("Typical question", "Typical #")}</th></tr></thead><tbody>${fams.map(x =>
+        `<tr${famExtra(x.fam, "profile-contests")}><th scope="row">${famDot(x.fam)}${escapeAttr(x.fam)}</th><td class="pf-meter-cell"><span class="pf-meter">${sized(x) ? `<i style="width:${Math.max(2, x.share / shareMax * 100).toFixed(1)}%;background:${famColor(x.fam)}"></i>` : ""}</span></td><td>${x.ps.length}</td><td>${sized(x) ? pfPct(x.share) : `${x.ps.length} of ${all.fam[x.fam]}`}</td><td>#${x.at}</td></tr>`).join("")}</tbody></table>${famMoreBtn(extraFams(fams.map(x => x.fam)), "ct-toggle", "profile-contests")}`, true);
 
       // Difficulty: the ratings in words, then their spread, stacked by contest in the colours
       // of the rows above. A handful of ratings is listed, not charted.
@@ -3631,7 +3631,9 @@
   // Competition → year → problems tree for the Database sidebar navigator.
   const DB_TREE = {};
   PROBLEM_DB.forEach(p => { (DB_TREE[p.fam] = DB_TREE[p.fam] || {}); (DB_TREE[p.fam][p.year] = DB_TREE[p.fam][p.year] || []).push(p); });
-  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "MATHCOUNTS Chapter", "MATHCOUNTS State", "MATHCOUNTS National", "MBMT Lower", "MBMT Upper", "Calgary Junior Math Contest", "Columbus State Tournament", "Pascal Contest", "Cayley Contest", "Fermat Contest", "UKMT JMC", "UKMT IMC", "UKMT SMC", "HMMT February", "HMMT November", "ARML", "ARML Local", "SMT", "Duke Math Meet", "CHMMC", "UMD HSMC", "CMIMC", "Math Prize for Girls", "MMATHS", "Girls in Math at Yale", "Lehigh", "Utah State Math Contest", "BMT", "PUMaC Division A", "PUMaC Division B", "Putnam", "HMMT"];
+  // By prestige (owner, 2026-11-15): the AMC and AIME, then the national and university tournaments, then
+  // the other contests; a series (AMC, HMMT, PUMaC, ARML, MATHCOUNTS, UKMT, CEMC, MBMT) stays together, junior first.
+  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "PUMaC Division A", "PUMaC Division B", "CMIMC", "SMT", "BMT", "ARML", "ARML Local", "Math Prize for Girls", "CHMMC", "Duke Math Meet", "MATHCOUNTS Chapter", "MATHCOUNTS State", "MATHCOUNTS National", "UKMT JMC", "UKMT IMC", "UKMT SMC", "Pascal Contest", "Cayley Contest", "Fermat Contest", "MMATHS", "Girls in Math at Yale", "UMD HSMC", "Lehigh", "MBMT Lower", "MBMT Upper", "Columbus State Tournament", "Utah State Math Contest", "Calgary Junior Math Contest", "Putnam", "HMMT"];
   const FAMILIES = Object.keys(DB_TREE).sort((a, b) => {
     const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
@@ -3681,8 +3683,8 @@
     });
     // The AMC and AIME first, the other contests on request, as in the other contest lists
     // (owner, 2026-11-14); a card cited only outside them shows its contests at once.
-    const shownFams = fams.some(f => CORE_FAMS.has(f)) ? fams.filter(f => famShown(f, "card-problems")) : fams;
-    const body = shownFams.map(fam => {
+    const folds = fams.some(f => CORE_FAMS.has(f)) && fams.some(f => !CORE_FAMS.has(f));
+    const body = fams.map(fam => {
       const hidden = groups[fam].length - PROB_GROUP_PREVIEW;
       const groupKey = f.id + "|" + fam, groupOpen = probGroupsOpen.get(groupKey) ?? state.contestLists === "show";
       const rows = groups[fam].map((p, i) => {
@@ -3691,7 +3693,7 @@
          ${p.url ? `<a class="ref-ext-link" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer" title="Open the source">${p.urlLabel} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
        </li>`;
       }).join("");
-      return `<div class="prob-group${groupOpen ? " probs-open" : ""}" data-prob-group="${escapeAttr(groupKey)}" data-fam="${escapeAttr(fam)}">
+      return `<div class="prob-group${groupOpen ? " probs-open" : ""}" data-prob-group="${escapeAttr(groupKey)}" data-fam="${escapeAttr(fam)}"${folds ? famExtra(fam, "card-problems") : ""}>
           <div class="prob-group-head">${fam} <span class="practice-note">${groups[fam].length}</span></div>
           <ul class="prob-list">${rows}</ul>
           ${hidden > 0 ? `<button type="button" class="show-more-btn prob-more" aria-expanded="${groupOpen}">${groupOpen ? "Show fewer" : `Show ${hidden} more ${fam}`}</button>` : ""}
@@ -3701,7 +3703,7 @@
       <div class="practice contest-refs">
         <h4>Practice problems <span class="practice-note">${probs.length}</span></h4>
         ${body}
-        ${shownFams === fams ? "" : famMoreBtn(extraFams(fams), "ct-toggle", "card-problems")}
+        ${folds ? famMoreBtn(extraFams(fams), "ct-toggle", "card-problems") : ""}
       </div>`;
   }
 
@@ -6396,12 +6398,21 @@
       [...options.children].forEach((b, i) => { b.classList.toggle("is-cur", i === active); b.setAttribute("aria-selected", String(i === active)); });
       if (choices[active]) input.setAttribute("aria-activedescendant", "card-practice-" + active); else input.removeAttribute("aria-activedescendant");
     }
-    // Nothing is offered until something is typed (owner, 2026-11-11); then the cards whose
-    // names match, most used first.
+    // Nothing is offered until something is typed (owner, 2026-11-11). Then the cards whose names
+    // contain the words, names that start with them first and the most used next; after them the
+    // reference search's own answers among these cards (owner, 2026-11-15: a typo, a keyword or a
+    // plain description, "pythagoren", "ways to choose", "angle half split", still finds the card).
     function suggest() {
       const q = input.value.trim().toLowerCase();
       if (!q || (chosen && plain(BY_ID[chosen].formula.name).toLowerCase() === q)) { choices = []; options.innerHTML = ""; close(); return; }
-      choices = allCards().filter(id => plain(BY_ID[id].formula.name).toLowerCase().includes(q)).slice(0, 8);
+      const ids = allCards(), name = id => plain(BY_ID[id].formula.name).toLowerCase();
+      const named = ids.filter(id => name(id).includes(q)).sort((a, b) => name(b).startsWith(q) - name(a).startsWith(q));
+      let found = [];
+      if (named.length < 8) {
+        try { found = searchFormulas(input.value, { only: new Set(ids) }).results.map(e => e.formula.id).filter(id => pools[id] && !named.includes(id)); }
+        catch (err) { found = []; }
+      }
+      choices = named.concat(found).slice(0, 8);
       options.innerHTML = choices.map((id, i) => { const n = problemDifficulty.filter(selectedPool(id), DIFFS[band.valueAsNumber]).length;
         return `<button type="button" class="set-find-opt practice-topic-option" id="card-practice-${i}" role="option" aria-selected="false"><span class="practice-topic-name">${BY_ID[id].formula.name}</span><span class="practice-topic-context">${KIND_NAME[kindOf(BY_ID[id].formula)] || "Card"} · ${n} problem${n === 1 ? "" : "s"}</span></button>`; }).join("");
       [...options.children].forEach((b, i) => {
@@ -6510,7 +6521,7 @@
             <p class="practice-panel-intro">Try a past contest problem, with your choice of contest and difficulty.</p>
             <div class="rand-btns" role="radiogroup" aria-label="Contest">
               <button type="button" role="radio" aria-checked="true" data-rand-fam="">Any contest</button>
-              ${fams.filter(f => famShown(f, "random-contests")).map(f => `<button type="button" role="radio" aria-checked="false" data-rand-fam="${escapeAttr(f)}">${escapeAttr(f)}</button>`).join("")}
+              ${fams.map(f => `<button type="button" role="radio" aria-checked="false" data-rand-fam="${escapeAttr(f)}"${famExtra(f, "random-contests")}>${escapeAttr(f)}</button>`).join("")}
             </div>
             ${famMoreBtn(extraFams(fams), "ct-toggle", "random-contests")}
             <div class="rand-diff">
@@ -6550,8 +6561,8 @@
           <h3>Contests</h3>
           <p class="practice-panel-intro">Browse past papers by contest and year.</p>
           <div class="ct-browse"><a class="ct-browse-btn" href="#/browse/topics">Browse by topic</a><a class="ct-browse-btn" href="#/browse/difficulty">Browse by difficulty</a></div>
-          <div class="ct-list">${fams.filter(f => famShown(f, "contest-years")).map((f, i, a) => `
-            <div class="ct-row${i && famSeries(a[i - 1]) === famSeries(f) ? " ct-same" : ""}">
+          <div class="ct-list">${fams.map((f, i, a) => `
+            <div class="ct-row${i && famSeries(a[i - 1]) === famSeries(f) ? " ct-same" : ""}"${famExtra(f, "contest-years")}>
               <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famCount(f).toLocaleString()} problem${famCount(f) === 1 ? "" : "s"}</span></a>
               <div class="ct-years">${(ctYearsOpen.has(f) ? yearsOf(f) : yearsOf(f).slice(0, CT_YEARS)).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}${yearsOf(f).length > CT_YEARS
                 ? `<button type="button" class="ct-years-more" data-ct-years="${escapeAttr(f)}" aria-expanded="${ctYearsOpen.has(f)}">${ctYearsOpen.has(f) ? "Fewer years" : `Show ${yearsOf(f).length - CT_YEARS} more year${yearsOf(f).length - CT_YEARS === 1 ? "" : "s"}`}</button>` : ""}</div>
@@ -9919,8 +9930,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return `<div class="elo-box" data-elo="${p.elo}"${manual ? " data-manual" : ""}>
       <p class="elo-head"><span class="elo-num">${p.elo}</span><span class="elo-note">${eloNote(p.elo, fam, manual)}</span></p>
       <div class="elo-plot">${eloChartHtml({ shown: fam ? [fam] : RATED_FAMS, mark: p.elo, compact: true })}</div>
-      <div class="fam-chips" role="group" aria-label="Compare with">${[...RATED_FAMS.filter(f => famShown(f, "problem-rating-contests") || f === fam), null].map(f =>
-        `<button type="button" class="fam-chip" data-elo-fam="${f ? famSlug(f) : "all"}" aria-pressed="${f === fam}">${f ? famDot(f) : ""}${f || "All contests"}</button>`).join("")}${famMoreBtn(extraFams(RATED_FAMS.filter(f => f !== fam)), "fam-chip", "problem-rating-contests")}</div>
+      <div class="fam-chips" role="group" aria-label="Compare with">${[...RATED_FAMS, null].map(f =>
+        `<button type="button" class="fam-chip" data-elo-fam="${f ? famSlug(f) : "all"}" aria-pressed="${f === fam}"${f && f !== fam ? famExtra(f, "problem-rating-contests") : ""}>${f ? famDot(f) : ""}${f || "All contests"}</button>`).join("")}${famMoreBtn(extraFams(RATED_FAMS.filter(f => f !== fam)), "fam-chip", "problem-rating-contests")}</div>
     </div>`;
   }
   document.addEventListener("click", e => {
@@ -9941,7 +9952,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const famsOpen = key => contestExpansions.get(key) ?? state.contestLists === "show";
   const famShown = (f, key = "browse-contests") => famsOpen(key) || CORE_FAMS.has(f);
   // n counts the contests beyond the AMC and AIME in that list; cls styles the button for its row.
-  const famMoreBtn = (n, cls = "ct-toggle", key = "browse-contests") => n > 0 ? `<button type="button" class="${cls} fam-more-btn" data-fam-list="${key}" aria-expanded="${famsOpen(key)}">${famsOpen(key) ? "Show fewer contests" : `Show ${n} more contest${n === 1 ? "" : "s"}`}</button>` : "";
+  const famMoreLabel = (n, open) => open ? "Show fewer contests" : `Show ${n} more contest${n === 1 ? "" : "s"}`;
+  const famMoreBtn = (n, cls = "ct-toggle", key = "browse-contests") => n > 0 ? `<button type="button" class="${cls} fam-more-btn" data-fam-list="${key}" data-fam-n="${n}" aria-expanded="${famsOpen(key)}">${famMoreLabel(n, famsOpen(key))}</button>` : "";
+  // Every contest is rendered; one beyond the AMC and AIME carries the list's key and is hidden
+  // while the list is folded, so the button only shows or hides it, without redrawing the page
+  // (owner, 2026-11-15: a redraw cleared typed input and moved the page).
+  const famExtra = (f, key) => CORE_FAMS.has(f) ? "" : ` data-fam-extra="${key}"${famsOpen(key) ? "" : " hidden"}`;
   // Papers of one contest (the AMC 8, 10 and 12; HMMT February and November; ARML and ARML Local;
   // PUMaC's two divisions) sit together in the Contests list, without a rule between them (owner, 2026-11-14).
   const famSeries = f => f.replace(/^AMC \d+$/, "AMC").replace(/^MATHCOUNTS (Chapter|State|National)$/, "MATHCOUNTS").replace(/^(Fermat|Cayley|Pascal) Contest$/, "CEMC").replace(/^UKMT [SIJ]MC$/, "UKMT").replace(/ (February|November|Local|Division [AB]|Lower|Upper)$/, "");
@@ -9950,11 +9966,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const b = e.target.closest(".fam-more-btn");
     if (!b) return;
     const y = window.scrollY;
-    const key = b.dataset.famList;
-    contestExpansions.set(key, !famsOpen(key));
-    render();
-    window.scrollTo(0, y);
-    document.querySelector(`[data-fam-list="${CSS.escape(key)}"]`)?.focus({ preventScroll: true });
+    const key = b.dataset.famList, open = !famsOpen(key), top = b.getBoundingClientRect().top;
+    contestExpansions.set(key, open);
+    document.querySelectorAll(`[data-fam-extra="${CSS.escape(key)}"]`).forEach(el => { el.hidden = !open; });
+    document.querySelectorAll(`.fam-more-btn[data-fam-list="${CSS.escape(key)}"]`).forEach(x => {
+      x.setAttribute("aria-expanded", String(open)); x.textContent = famMoreLabel(+x.dataset.famN, open);
+    });
+    // Opening keeps the page where it is, so the new contests appear in place; folding keeps the
+    // pressed button under the pointer, since the rows above it go away.
+    window.scrollTo(0, open ? y : y + b.getBoundingClientRect().top - top);
   });
 
   // ---------- Problems by topic, Problems by difficulty ----------
@@ -9965,12 +9985,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
   let browseKey = "", browseOpen = new Set();   // groups opened in full on the current page
   const browseBackHtml = () => `<div class="back-row"><a class="back-link" href="#/practice" data-goto="pr-contests">${uiIcon("arrow-left")} Contests</a></div>`;
   function famChipsHtml(problems) {
-    const all = FAMILIES.filter(f => problems.some(p => p.fam === f)), fams = all.filter(f => famShown(f));
+    const all = FAMILIES.filter(f => problems.some(p => p.fam === f)), fams = all;
     // Select all and Deselect all (owner, 2026-11-14): deselect, then choose the one contest wanted.
     const offN = all.filter(f => browseOff.has(f)).length;
     return `<div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-br-all="on"${offN ? "" : " disabled"}>Select all</button><button type="button" class="fam-bulk-btn" data-br-all="off"${offN === all.length ? " disabled" : ""}>Deselect all</button></div>
       <div class="fam-chips" role="group" aria-label="Contests shown">${fams.map(f =>
-      `<button type="button" class="fam-chip" data-br-fam="${escapeAttr(f)}" aria-pressed="${!browseOff.has(f)}">${famDot(f)}${f}<span class="br-count">${problems.filter(p => p.fam === f).length.toLocaleString()}</span></button>`).join("")}${famMoreBtn(extraFams(all), "fam-chip")}</div>`;
+      `<button type="button" class="fam-chip" data-br-fam="${escapeAttr(f)}" aria-pressed="${!browseOff.has(f)}"${famExtra(f, "browse-contests")}>${famDot(f)}${f}<span class="br-count">${problems.filter(p => p.fam === f).length.toLocaleString()}</span></button>`).join("")}${famMoreBtn(extraFams(all), "fam-chip")}</div>`;
   }
   function browseGroupsHtml(key, problems, sort) {
     if (browseKey !== key) { browseKey = key; browseOpen = new Set(state.contestLists === "show" ? FAMILIES : []); }

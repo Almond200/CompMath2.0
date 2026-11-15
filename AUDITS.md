@@ -2548,3 +2548,13 @@ Added at the owner's request with the official Individual rounds and solutions f
 ## UKMT Junior Mathematical Challenge (Step H, 2026-11-14 to 2026-11-15)
 
 The same links and credits as the SMC and IMC. Questions shared with the IMC of the same year were looked for by text overlap; none of the high-overlap pairs is the same question. 2023 to 2026 filed; the rest follows.
+
+## Show more contests and the contest order (owner, 2026-11-15)
+
+**The glitch.** Every "Show N more contests" button redrew the whole page (`render()`), then scrolled back. Measured in headless Chromium at 1280 and 375 px: on Practice, a topic typed into Practice a topic was cleared by pressing Show more in the random picker or the Contests list, and the page moved by 100 to 400 px (the Contests list at both widths, the random picker and the browse chips on a phone). Now every list renders all its contests, the extra ones marked `data-fam-extra="<list>"` and `hidden` while folded (a CSS rule makes the attribute win over the chips' display); the button flips them and its own label in place. Re-measured: typed input stays, and the scroll stays within a few pixels; on folding the page keeps the pressed button where it was, as far as the page's end allows. A chosen contest stays chosen when its chip is folded away (main's rule that folding changes only visibility). The checks that counted chips or rows now count visible ones.
+
+**The order.** `FAM_ORDER` is by prestige (owner): AMC 8, 10, 12, AIME, HMMT February and November, PUMaC A and B, CMIMC, SMT, BMT, ARML and ARML Local, Math Prize for Girls, CHMMC, Duke, MATHCOUNTS Chapter, State, National, UKMT JMC, IMC, SMC, Pascal, Cayley, Fermat, MMATHS, Girls in Math at Yale, UMD HSMC, Lehigh, MBMT Lower and Upper, Columbus State, Utah State, Calgary Junior. `famSeries` groups the CEMC and UKMT contests like the AMC, HMMT, PUMaC, ARML, MATHCOUNTS and MBMT series.
+
+**Practice a card search.** Before, a card was offered only if its name contained the typed text. Now names come first (those starting with it first), then `searchFormulas(query, { only: cards with practice problems })`, the reference search with its typo repair, synonyms, keywords and semantic channel. Spot checks: "pythagoren", "angel bisector", "stars and bar", "chiken nugget", "ways to choose", "inclusion exlusion", "law of cosine", "shoelase" each put the intended card first.
+
+**Keyboard.** With folded chips hidden rather than removed, the arrow keys in a radio group (the random picker's contests) stepped onto hidden choices; `js/accessibility.js` now treats a hidden choice like a disabled one. `check-accessibility.cjs` passes again (36 scenarios).
