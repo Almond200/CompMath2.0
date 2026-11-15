@@ -240,7 +240,9 @@
   // A card page can carry a Wikipedia-style column of page tools on the right (off by default).
   const TOOLS_MODES = ["off", "on"];
   // A card link in a lesson: open the card in the drawer beside the lesson, or go to its page.
-  const LESSON_LINK_MODES = ["drawer", "card"];
+  // A card link in a lesson goes to the card's page by default (owner, 2026-11-15); opening it beside
+  // the lesson is the option.
+  const LESSON_LINK_MODES = ["card", "drawer"];
   // How wide a lesson's explanation runs (owner, 2026-11-08): a 760px reading width, or the full column.
   const LESSON_WIDTHS = ["reading", "full"];
   const SECTION_IDS = SECTIONS.map(s => s.id);
@@ -300,7 +302,10 @@
       contestLists: pick(P.contestLists, CONTEST_LIST_MODES),
       captions: pick(P.captions, CAPTION_MODES),
       tools: pick(P.tools, TOOLS_MODES),
-      lessonLinks: pick(P.lessonLinks, LESSON_LINK_MODES),
+      // A stored choice counts only if it was made after the default changed (2026-11-15), so a value
+      // saved merely because it was the old default gives way to the new one.
+      lessonLinks: P.lessonLinksChosen ? pick(P.lessonLinks, LESSON_LINK_MODES) : LESSON_LINK_MODES[0],
+      lessonLinksChosen: !!P.lessonLinksChosen,
       lessonWidth: pick(P.lessonWidth, LESSON_WIDTHS),
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
@@ -318,7 +323,7 @@
           density: state.density, notation: state.notation,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonWidth: state.lessonWidth
+          tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonLinksChosen: !!state.lessonLinksChosen, lessonWidth: state.lessonWidth
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -352,6 +357,7 @@
     lessonWidth: _loaded.lessonWidth, // "reading" | "full" — a lesson's explanation at 760px or across the column
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     strategyChosen: _loaded.strategyChosen,
+    lessonLinksChosen: _loaded.lessonLinksChosen,
     contestLists: _loaded.contestLists,
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
     scroll: _loaded.scroll,      // "normal" | "slow" | "fast" — mouse-wheel and trackpad scroll speed
@@ -5020,6 +5026,7 @@
         if (state[key] === next) return;
         state[key] = next;
         if (key === "strategy") state.strategyChosen = true;
+        if (key === "lessonLinks") state.lessonLinksChosen = true;
         applyLayout();
         saveSettings();
       }
@@ -5814,6 +5821,13 @@
   // Calculus questions stay out of practice.
   const paperProblem = p => !hasMockAnswer(p) && !!p.url && !(p.tree || []).some(t => t.startsWith("alg.calc"));
   const practiceEligible = p => (hasMockAnswer(p) || paperProblem(p)) && !window.MATH_ANSWER_KEYS?.voided?.[p.slug];
+  // Contests whose papers are multiple choice with five options, like the AMC; the others take a
+  // short answer. A problem with an official letter key is multiple choice whatever its contest.
+  const MC_FAMS = new Set(["AMC 8", "AMC 10", "AMC 12", "UKMT JMC", "UKMT IMC", "UKMT SMC", "Pascal Contest", "Cayley Contest", "Fermat Contest", "UMD HSMC", "Columbus State Tournament", "Utah State Math Contest"]);
+  const multipleChoice = p => { const k = window.MATH_ANSWER_KEYS?.answers?.[p.slug]; return k != null ? /^[A-E]$/.test(k) : !window.MATH_MOCK_EXTRAS?.[p.slug] && MC_FAMS.has(p.fam); };
+  // "Only questions in this format" for a generated mock (owner, 2026-11-15): multiple choice for
+  // the AMC formats, short answer for the AIME.
+  const sameAnswerFormat = (p, family) => multipleChoice(p) === (family !== "AIME");
   // The contests a topic or card set may draw from, kept between visits.
   let practiceOff = (() => { try { return new Set(JSON.parse(localStorage.getItem("mq-practice-off") || "[]")); } catch (e) { return new Set(); } })();
   const practiceFamOn = p => !practiceOff.has(p.fam);
@@ -5880,6 +5894,7 @@
         </div>
         <label class="mock-field-label">Contest format</label>
         <div class="rand-btns" role="radiogroup" aria-label="Mock contest">${Object.keys(mockContests.formats).map((f,i)=>`<button type="button" role="radio" aria-checked="${i===0}" data-mock-family="${f}">${f}</button>`).join('')}</div>
+        <label class="mock-same-format" hidden><input type="checkbox" id="mock-same-format"> <span id="mock-same-format-text">Only multiple-choice questions, like the AMC</span></label>
         <div class="mock-paper-field">
           <label for="mock-paper-name">Year and paper</label>
           <div class="mock-paper-search"><input id="mock-paper-name" class="set-find-input" type="search" placeholder="Search a year or paper..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="mock-paper-options">
@@ -5898,7 +5913,10 @@
     const status=form.querySelector('#mock-contest-status'), submit=form.querySelector('[type="submit"]'), info=form.querySelector('#mock-contest-info');
     const catalog=mockPapers();let family='AMC 8',mode='paper',active=-1,busy=false,choices=[];
     let sourceOff;try{sourceOff=new Set(JSON.parse(localStorage.getItem('mq-mock-sources-off')||'[]'));}catch(e){sourceOff=new Set();}
-    const sourceBox=form.querySelector('.mock-source-field');
+    const sourceBox=form.querySelector('.mock-source-field'), sameBox=form.querySelector('#mock-same-format');
+    try{sameBox.checked=localStorage.getItem('mq-mock-same-format')==='1';}catch(e){}
+    // The questions a generated mock may use: eligible, and in the chosen format's answer style when asked.
+    const mockEligible=p=>practiceEligible(p)&&(!sameBox.checked||sameAnswerFormat(p,family));
     const chosenSources=()=>FAMILIES.filter(f=>!sourceOff.has(f));
     const currentPapers=()=>catalog.filter(g=>g.family===family);
     function close(){options.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');active=-1;}
@@ -5915,16 +5933,18 @@
       const f=mockContests.formats[family],paper=currentPapers().find(g=>g.label.toLowerCase()===input.value.trim().toLowerCase());
       const model=mode==='generated'?mockContests.curve(catalog,family,isVoidedProblem):null;
       form.querySelector('.mock-paper-field').hidden=mode!=='paper';form.querySelector('.mock-generation-info').hidden=mode!=='generated';sourceBox.hidden=mode!=='generated';
+      form.querySelector('.mock-same-format').hidden=mode!=='generated';
+      form.querySelector('#mock-same-format-text').textContent=family==='AIME'?'Only short-answer questions, like the AIME':'Only multiple-choice questions, like the AMC';
       info.textContent=`${f.count} problems · ${f.minutes} minutes${model?' · Modeled on '+model.startYear+'–'+model.endYear:''}`;
       let pool=[];
       if(model){
-        const available=mockContests.sourcePool(PROBLEM_DB,model,practiceEligible,isVoidedProblem);
+        const available=mockContests.sourcePool(PROBLEM_DB,model,mockEligible,isVoidedProblem);
         const fams=FAMILIES.filter(f=>available.some(p=>p.fam===f)),on=fams.filter(f=>!sourceOff.has(f)).length;
         const open=sourceBox.querySelector('details')?.open;
         sourceBox.innerHTML=`<details class="pr-fams"${open?' open':''}><summary><span class="pr-fams-label">Question sources</span><span class="pr-fams-sum">${on===fams.length?'All contests':on?`${on} of ${fams.length} contests`:'No contests'}</span></summary>
           <div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-mock-source-all="on"${on===fams.length?' disabled':''}>Select all</button><button type="button" class="fam-bulk-btn" data-mock-source-all="off"${on?'':' disabled'}>Deselect all</button></div>
           <div class="fam-chips" role="group" aria-label="Mock question sources">${fams.map(f=>`<button type="button" class="fam-chip" data-mock-source="${escapeAttr(f)}" aria-pressed="${!sourceOff.has(f)}">${famDot(f)}${f}</button>`).join('')}</div></details>`;
-        pool=mockContests.sourcePool(PROBLEM_DB,model,practiceEligible,isVoidedProblem,chosenSources());
+        pool=mockContests.sourcePool(PROBLEM_DB,model,mockEligible,isVoidedProblem,chosenSources());
       }
       submit.textContent=mode==='paper'?'Start mock':'Generate mock';submit.disabled=busy||(mode==='paper'?!paper:pool.length<f.count);
       if(!busy&&clearStatus){
@@ -5942,6 +5962,7 @@
     });
     function setFamily(f){family=f;form.querySelectorAll('[data-mock-family]').forEach(b=>b.setAttribute('aria-checked',String(b.dataset.mockFamily===f)));input.value='';choices=[];options.innerHTML='';close();update();}
     form.querySelectorAll('[data-mock-family]').forEach(b=>b.addEventListener('click',()=>setFamily(b.dataset.mockFamily)));
+    sameBox.addEventListener('change',()=>{try{localStorage.setItem('mq-mock-same-format',sameBox.checked?'1':'0');}catch(e){}update();});
     form.querySelectorAll('[data-mock-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mockMode;form.querySelectorAll('[data-mock-mode]').forEach(x=>x.setAttribute('aria-checked',String(x===b)));close();update();}));
     input.addEventListener('focus',suggest);input.addEventListener('input',()=>{update();suggest();});
     input.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();close();}else if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(options.hidden)suggest();else if(choices.length)active=(active+(e.key==='ArrowDown'?1:-1)+choices.length)%choices.length;highlight();}else if(e.key==='Enter'&&!options.hidden&&active>=0){e.preventDefault();options.children[active]?.click();}});
@@ -5951,13 +5972,13 @@
       const paper=currentPapers().find(g=>g.label.toLowerCase()===input.value.trim().toLowerCase());if(mode==='paper'&&!paper)return;
       busy=true;form.querySelector('fieldset').disabled=true;status.textContent='Loading mock problems...';
       try{
-        const plan=mode==='paper'?{problems:paper.problems}:mockContests.generate(PROBLEM_DB,catalog,family,practiceEligible,isVoidedProblem,Math.random,chosenSources());
+        const plan=mode==='paper'?{problems:paper.problems}:mockContests.generate(PROBLEM_DB,catalog,family,mockEligible,isVoidedProblem,Math.random,chosenSources());
         await Promise.all([...new Set(plan.problems.filter(p=>!window.MATH_MOCK_EXTRAS?.[p.slug]&&!paperProblem(p)).map(p=>p.year))].map(loadStatements));
         if(!form.isConnected)return;
         if(plan.problems.some(p=>!paperProblem(p)&&!window.MATH_STATEMENTS?.[p.slug]&&!window.MATH_MOCK_EXTRAS?.[p.slug]))throw Error('Some statements could not be loaded. Try again.');
         const label=mode==='paper'?paper.label:'Generated '+family;
         const mock={mode,family,durationMs:mockContests.formats[family].minutes*60000};
-        if(plan.model){mock.modelStartYear=plan.model.startYear;mock.modelEndYear=plan.model.endYear;mock.targets=plan.model.targets;mock.sources=chosenSources();mock.usedSources=plan.sources;mock.hmmtException=true;}
+        if(plan.model){mock.modelStartYear=plan.model.startYear;mock.modelEndYear=plan.model.endYear;mock.targets=plan.model.targets;mock.sources=chosenSources();mock.usedSources=plan.sources;mock.hmmtException=true;if(sameBox.checked)mock.sameFormat=true;}
         topicPracticeSet=practiceSessions.createMock(label,plan.problems.map(p=>p.slug),mock);markPaperProblems(topicPracticeSet,plan.problems);savePractice();location.hash='#/practice/set/'+topicPracticeSet.id;
       }catch(err){status.textContent=err.message;}finally{busy=false;form.querySelector('fieldset').disabled=false;update(false);}
     });

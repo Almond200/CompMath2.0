@@ -4715,3 +4715,8 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 
 /* A folded contest list hides its extra contests in place (owner, 2026-11-15); the attribute must win over display rules. */
 [data-fam-extra][hidden] { display: none !important; }
+
+/* Generate a mock: keep to the format's answer style (owner, 2026-11-15). */
+.mock-same-format { display: flex; align-items: center; gap: 8px; margin: 10px 0 2px; font-size: 14px; color: var(--text-dim); cursor: pointer; }
+.mock-same-format[hidden] { display: none; }
+.mock-same-format input { margin: 0; width: 16px; height: 16px; accent-color: var(--space); cursor: pointer; }
