@@ -2971,8 +2971,8 @@
       // in the collection gets its plain count.
       share: (() => {
         const seen = FAMILIES.map(x => [x, probs.filter(p => p.fam === x).length]).filter(x => x[1]);
-        return `<div class="pf-stat pf-odds">${seen.filter(([x]) => famShown(x)).map(([x, n]) =>
-        `<span class="pf-odd"><b>${all.fam[x] >= 100 ? `1 in ${Math.max(1, Math.round(all.fam[x] / n)).toLocaleString("en-US")}` : `${n} of ${all.fam[x]}`}</b>${escapeAttr(x)}</span>`).join("")}${famMoreBtn(extraFams(seen.map(([x]) => x)), "ct-toggle pf-more")}</div>`;
+        return `<div class="pf-stat pf-odds">${seen.filter(([x]) => famShown(x, "profile-odds")).map(([x, n]) =>
+        `<span class="pf-odd"><b>${all.fam[x] >= 100 ? `1 in ${Math.max(1, Math.round(all.fam[x] / n)).toLocaleString("en-US")}` : `${n} of ${all.fam[x]}`}</b>${escapeAttr(x)}</span>`).join("")}${famMoreBtn(extraFams(seen.map(([x]) => x)), "ct-toggle pf-more", "profile-odds")}</div>`;
       })(),
       med: med != null ? stat(med, elos.length === 1 ? "rating" : "median rating") : "",
       years: stat(y0 === y1 ? y0 : `${y0}&ndash;${y1}`, y0 === y1 ? "year seen" : "years seen")
@@ -2987,8 +2987,8 @@
       const shareMax = Math.max(0, ...fams.filter(sized).map(x => x.share));
       // A few problems are named in a line; shares and bars of one or two problems say nothing.
       if (few) out.rows.contests = row("Contests", dots(fams.map(x => `${famDot(x.fam)}${escapeAttr(x.fam)} <span class="pf-sub">${x.ps.map(p => "#" + p.num).join(", ")}</span>`)));
-      else out.rows.contests = row("Contests", `<table class="pf-table"><thead><tr><th scope="col" aria-label="Contest"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of the contest", "Share")}</th><th scope="col">${duo("Typical question", "Typical #")}</th></tr></thead><tbody>${fams.filter(x => famShown(x.fam)).map(x =>
-        `<tr><th scope="row">${famDot(x.fam)}${escapeAttr(x.fam)}</th><td class="pf-meter-cell"><span class="pf-meter">${sized(x) ? `<i style="width:${Math.max(2, x.share / shareMax * 100).toFixed(1)}%;background:${famColor(x.fam)}"></i>` : ""}</span></td><td>${x.ps.length}</td><td>${sized(x) ? pfPct(x.share) : `${x.ps.length} of ${all.fam[x.fam]}`}</td><td>#${x.at}</td></tr>`).join("")}</tbody></table>${famMoreBtn(extraFams(fams.map(x => x.fam)))}`, true);
+      else out.rows.contests = row("Contests", `<table class="pf-table"><thead><tr><th scope="col" aria-label="Contest"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of the contest", "Share")}</th><th scope="col">${duo("Typical question", "Typical #")}</th></tr></thead><tbody>${fams.filter(x => famShown(x.fam, "profile-contests")).map(x =>
+        `<tr><th scope="row">${famDot(x.fam)}${escapeAttr(x.fam)}</th><td class="pf-meter-cell"><span class="pf-meter">${sized(x) ? `<i style="width:${Math.max(2, x.share / shareMax * 100).toFixed(1)}%;background:${famColor(x.fam)}"></i>` : ""}</span></td><td>${x.ps.length}</td><td>${sized(x) ? pfPct(x.share) : `${x.ps.length} of ${all.fam[x.fam]}`}</td><td>#${x.at}</td></tr>`).join("")}</tbody></table>${famMoreBtn(extraFams(fams.map(x => x.fam)), "ct-toggle", "profile-contests")}`, true);
 
       // Difficulty: the ratings in words, then their spread, stacked by contest in the colours
       // of the rows above. A handful of ratings is listed, not charted.
@@ -3628,7 +3628,7 @@
   // dozens of problems, and one long list mixing every contest made it hard to find, say, the
   // AMC 10 ones. Each group shows its first few rows, so every contest stays visible, and has
   // its own button for the rest, so opening the AMC 10 problems does not also unroll 60 AIME ones.
-  const PROB_GROUP_PREVIEW = 3;
+  const PROB_GROUP_PREVIEW = 3, probGroupsOpen = new Map();
 
   function contestHtml(f) {
     const probs = PROBLEMS_BY_CARD[f.id] || [];
@@ -3650,26 +3650,27 @@
     });
     // The AMC and AIME first, the other contests on request, as in the other contest lists
     // (owner, 2026-11-14); a card cited only outside them shows its contests at once.
-    const shownFams = fams.some(f => CORE_FAMS.has(f)) ? fams.filter(famShown) : fams;
+    const shownFams = fams.some(f => CORE_FAMS.has(f)) ? fams.filter(f => famShown(f, "card-problems")) : fams;
     const body = shownFams.map(fam => {
       const hidden = groups[fam].length - PROB_GROUP_PREVIEW;
+      const groupKey = f.id + "|" + fam, groupOpen = probGroupsOpen.get(groupKey) ?? state.contestLists === "show";
       const rows = groups[fam].map((p, i) => {
         return `<li class="prob-row${i >= PROB_GROUP_PREVIEW ? " prob-extra" : ""}">
          <a class="prob-open" href="#/problem/${p.slug}">${refShort(p.ref)}</a>
          ${p.url ? `<a class="ref-ext-link" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer" title="Open the source">${p.urlLabel} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
        </li>`;
       }).join("");
-      return `<div class="prob-group${state.contestLists === "show" ? " probs-open" : ""}" data-fam="${escapeAttr(fam)}">
+      return `<div class="prob-group${groupOpen ? " probs-open" : ""}" data-prob-group="${escapeAttr(groupKey)}" data-fam="${escapeAttr(fam)}">
           <div class="prob-group-head">${fam} <span class="practice-note">${groups[fam].length}</span></div>
           <ul class="prob-list">${rows}</ul>
-          ${hidden > 0 ? `<button type="button" class="show-more-btn prob-more" aria-expanded="${state.contestLists === "show"}">${state.contestLists === "show" ? "Show fewer" : `Show ${hidden} more ${fam}`}</button>` : ""}
+          ${hidden > 0 ? `<button type="button" class="show-more-btn prob-more" aria-expanded="${groupOpen}">${groupOpen ? "Show fewer" : `Show ${hidden} more ${fam}`}</button>` : ""}
         </div>`;
     }).join("");
     return `
       <div class="practice contest-refs">
         <h4>Practice problems <span class="practice-note">${probs.length}</span></h4>
         ${body}
-        ${shownFams === fams ? "" : famMoreBtn(extraFams(fams))}
+        ${shownFams === fams ? "" : famMoreBtn(extraFams(fams), "ct-toggle", "card-problems")}
       </div>`;
   }
 
@@ -4661,6 +4662,7 @@
     (root || document).querySelectorAll(".prob-more").forEach(btn => btn.addEventListener("click", () => {
       const box = btn.closest(".prob-group");
       const open = box.classList.toggle("probs-open");
+      probGroupsOpen.set(box.dataset.probGroup, open);
       btn.setAttribute("aria-expanded", open ? "true" : "false");
       btn.textContent = open
         ? "Show fewer"
@@ -5797,10 +5799,11 @@
     if (one) { const f = one.dataset.prFam; practiceOff.has(f) ? practiceOff.delete(f) : practiceOff.add(f); }
     else practiceOff = all.dataset.prAll === "on" ? new Set() : new Set(FAMILIES);
     try { localStorage.setItem("mq-practice-off", JSON.stringify([...practiceOff])); } catch (err) {}
-    const focus = one ? `[data-pr-fam="${CSS.escape(one.dataset.prFam)}"]` : `[data-pr-all="${all.dataset.prAll}"]`, inPanel = e.target.closest(".sh-section")?.id;
-    const wasOpen = new Set([...document.querySelectorAll(".pr-fams")].filter(d => d.open).map(d => d.closest(".sh-section")?.id));
-    document.querySelectorAll(".pr-fams").forEach(d => { d.outerHTML = practiceFamsHtml(); });
-    document.querySelectorAll(".pr-fams").forEach(d => { d.open = wasOpen.has(d.closest(".sh-section")?.id); });
+    const focus = one ? `[data-pr-fam="${CSS.escape(one.dataset.prFam)}"]` : `[data-pr-all="${all.dataset.prAll}"]`, inPanel = e.target.closest("#pr-topic, #pr-card")?.id;
+    const selector = "#pr-topic .pr-fams, #pr-card .pr-fams";
+    const wasOpen = new Set([...document.querySelectorAll(selector)].filter(d => d.open).map(d => d.closest("#pr-topic, #pr-card")?.id));
+    document.querySelectorAll(selector).forEach(d => { d.outerHTML = practiceFamsHtml(); });
+    document.querySelectorAll(selector).forEach(d => { d.open = wasOpen.has(d.closest("#pr-topic, #pr-card")?.id); });
     const target = document.querySelector(`#${inPanel} ${focus}`);
     (target && !target.disabled ? target : document.querySelector(`#${inPanel} [data-pr-all]:not([disabled])`))?.focus({ preventScroll: true });
     document.dispatchEvent(new Event("practice-fams"));
@@ -6295,13 +6298,11 @@
     });
     update();
   }
-  // Practice a card (owner, 2026-11-11; it sits right after Practice a topic, its sibling, and
-  // before Practice a contest): an untimed set from the contest problems that cite one
+  // The card view of Practice a concept builds an untimed set from problems that cite one
   // formula, method or pattern. It draws from the same eligible, twin-free pool as Practice a
   // topic (the Mixed pool) and builds the same kind of saved set; only the choice differs.
   function cardPracticePanelHtml() {
-    return `<section class="sh-section" id="pr-card">
-      <h3>Practice a card</h3>
+    return `<div class="concept-panel" id="pr-card" role="tabpanel" aria-labelledby="concept-card-tab"${practiceConceptMode === "card" ? "" : " hidden"}>
       <p class="practice-panel-intro">Choose one of the reference's cards (a formula, method or pattern) to build an untimed set from the contest problems that use it.</p>
       <form id="card-practice-form" novalidate><fieldset aria-label="Card practice options">
         <label class="mock-field-label" for="card-practice-name">Reference card</label>
@@ -6316,7 +6317,27 @@
         <p id="card-practice-status" role="status"></p>
         <button type="submit" class="hp-btn">Generate set</button>
       </fieldset></form>
-    </section>`;
+    </div>`;
+  }
+  let practiceConceptMode = "topic";
+  function wireConceptPractice(root) {
+    const bar = root.querySelector('.concept-switch'); if (!bar) return;
+    const tabs = [...bar.querySelectorAll('[role="tab"]')];
+    function choose(mode, focus=false) {
+      practiceConceptMode = mode; bar.dataset.mode = mode;
+      for (const tab of tabs) {
+        const selected = tab.dataset.conceptMode === mode;
+        tab.setAttribute('aria-selected', String(selected)); tab.tabIndex = selected ? 0 : -1;
+        root.querySelector('#'+tab.getAttribute('aria-controls')).hidden = !selected;
+        if (selected && focus) tab.focus();
+      }
+    }
+    tabs.forEach(tab => tab.addEventListener('click', () => choose(tab.dataset.conceptMode)));
+    bar.addEventListener('keydown', e => {
+      if (!['ArrowLeft','ArrowRight','Home','End'].includes(e.key)) return;
+      e.preventDefault();
+      choose(e.key === 'Home' ? 'topic' : e.key === 'End' ? 'card' : practiceConceptMode === 'topic' ? 'card' : 'topic', true);
+    });
   }
   let cardPracticePools = null;
   function wireCardPractice(root) {
@@ -6458,9 +6479,9 @@
             <p class="practice-panel-intro">Try a past contest problem, with your choice of contest and difficulty.</p>
             <div class="rand-btns" role="radiogroup" aria-label="Contest">
               <button type="button" role="radio" aria-checked="true" data-rand-fam="">Any contest</button>
-              ${fams.filter(famShown).map(f => `<button type="button" role="radio" aria-checked="false" data-rand-fam="${escapeAttr(f)}">${escapeAttr(f)}</button>`).join("")}
+              ${fams.filter(f => famShown(f, "random-contests")).map(f => `<button type="button" role="radio" aria-checked="false" data-rand-fam="${escapeAttr(f)}">${escapeAttr(f)}</button>`).join("")}
             </div>
-            ${famMoreBtn(extraFams(fams))}
+            ${famMoreBtn(extraFams(fams), "ct-toggle", "random-contests")}
             <div class="rand-diff">
               <label for="rand-diff-range">Difficulty</label>
               <input type="range" id="rand-diff-range" min="0" max="5" step="1" value="0">
@@ -6469,8 +6490,13 @@
             <p class="rand-diff-note" aria-live="polite"></p>
             <a class="hp-btn rand-go" href="#/special/randomproblem">Open a random problem</a>
         </section>
-        <section class="sh-section" id="pr-topic">
-          <h3>Practice a topic</h3>
+        <section class="sh-section" id="pr-concept">
+          <h3>Practice a concept</h3>
+          <div class="concept-switch" role="tablist" aria-label="Practice concept type" data-mode="${practiceConceptMode}">
+            <button type="button" role="tab" id="concept-topic-tab" data-concept-mode="topic" aria-controls="pr-topic" aria-selected="${practiceConceptMode === "topic"}" tabindex="${practiceConceptMode === "topic" ? 0 : -1}">Topics</button>
+            <button type="button" role="tab" id="concept-card-tab" data-concept-mode="card" aria-controls="pr-card" aria-selected="${practiceConceptMode === "card"}" tabindex="${practiceConceptMode === "card" ? 0 : -1}">Cards</button>
+          </div>
+          <div class="concept-panel" id="pr-topic" role="tabpanel" aria-labelledby="concept-topic-tab"${practiceConceptMode === "topic" ? "" : " hidden"}>
           <p class="practice-panel-intro">Choose a topic to build an untimed set. Broader topics include all their subtopics.</p>
           <form id="topic-practice-form" novalidate><fieldset aria-label="Practice set options">
             <label for="topic-name">Topic</label>
@@ -6485,20 +6511,21 @@
             <p id="topic-practice-status" role="status"></p>
             <button type="submit" class="hp-btn">Generate set</button>
           </fieldset></form>
+          </div>
+          ${cardPracticePanelHtml()}
         </section>
-        ${cardPracticePanelHtml()}
         ${mockPracticePanelHtml()}
         <section class="sh-section" id="pr-contests">
           <h3>Contests</h3>
           <p class="practice-panel-intro">Browse past papers by contest and year.</p>
           <div class="ct-browse"><a class="ct-browse-btn" href="#/browse/topics">Browse by topic</a><a class="ct-browse-btn" href="#/browse/difficulty">Browse by difficulty</a></div>
-          <div class="ct-list">${fams.filter(famShown).map((f, i, a) => `
+          <div class="ct-list">${fams.filter(f => famShown(f, "contest-years")).map((f, i, a) => `
             <div class="ct-row${i && famSeries(a[i - 1]) === famSeries(f) ? " ct-same" : ""}">
               <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famCount(f).toLocaleString()} problem${famCount(f) === 1 ? "" : "s"}</span></a>
               <div class="ct-years">${(ctYearsOpen.has(f) ? yearsOf(f) : yearsOf(f).slice(0, CT_YEARS)).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}${yearsOf(f).length > CT_YEARS
                 ? `<button type="button" class="ct-years-more" data-ct-years="${escapeAttr(f)}" aria-expanded="${ctYearsOpen.has(f)}">${ctYearsOpen.has(f) ? "Fewer years" : `Show ${yearsOf(f).length - CT_YEARS} more year${yearsOf(f).length - CT_YEARS === 1 ? "" : "s"}`}</button>` : ""}</div>
             </div>`).join("")}
-            ${famMoreBtn(extraFams(fams))}
+            ${famMoreBtn(extraFams(fams), "ct-toggle", "contest-years")}
             ${(() => {
               const planned = (window.MATH_PLANNED_CONTESTS || []).filter(c => !fams.includes(c.name));
               if (!planned.length) return "";
@@ -6517,6 +6544,7 @@
     $content.innerHTML = `<div class="space-home">${body}</div>`;
     wireRandomPicker($content);
     wireTopicPractice($content);
+    wireConceptPractice($content);
     wireMockPractice($content);
     wireCardPractice($content);
     wirePracticeHistory($content);
@@ -9859,8 +9887,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return `<div class="elo-box" data-elo="${p.elo}"${manual ? " data-manual" : ""}>
       <p class="elo-head"><span class="elo-num">${p.elo}</span><span class="elo-note">${eloNote(p.elo, fam, manual)}</span></p>
       <div class="elo-plot">${eloChartHtml({ shown: fam ? [fam] : RATED_FAMS, mark: p.elo, compact: true })}</div>
-      <div class="fam-chips" role="group" aria-label="Compare with">${[...RATED_FAMS.filter(f => famShown(f) || f === fam), null].map(f =>
-        `<button type="button" class="fam-chip" data-elo-fam="${f ? famSlug(f) : "all"}" aria-pressed="${f === fam}">${f ? famDot(f) : ""}${f || "All contests"}</button>`).join("")}${famMoreBtn(extraFams(RATED_FAMS.filter(f => f !== fam)), "fam-chip")}</div>
+      <div class="fam-chips" role="group" aria-label="Compare with">${[...RATED_FAMS.filter(f => famShown(f, "problem-rating-contests") || f === fam), null].map(f =>
+        `<button type="button" class="fam-chip" data-elo-fam="${f ? famSlug(f) : "all"}" aria-pressed="${f === fam}">${f ? famDot(f) : ""}${f || "All contests"}</button>`).join("")}${famMoreBtn(extraFams(RATED_FAMS.filter(f => f !== fam)), "fam-chip", "problem-rating-contests")}</div>
     </div>`;
   }
   document.addEventListener("click", e => {
@@ -9876,10 +9904,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // Lists of contests show the AMC 8, 10 and 12 and the AIME; the other contests wait behind a
   // "Show more contests" button. Expansions reset on navigation unless Settings opens them by default.
   const CORE_FAMS = new Set(["AMC 8", "AMC 10", "AMC 12", "AIME"]);
-  let famsOpen = state.contestLists === "show", expansionPage = null;
-  const famShown = f => famsOpen || CORE_FAMS.has(f);
+  const contestExpansions = new Map();
+  let expansionPage = null;
+  const famsOpen = key => contestExpansions.get(key) ?? state.contestLists === "show";
+  const famShown = (f, key = "browse-contests") => famsOpen(key) || CORE_FAMS.has(f);
   // n counts the contests beyond the AMC and AIME in that list; cls styles the button for its row.
-  const famMoreBtn = (n, cls = "ct-toggle") => n > 0 ? `<button type="button" class="${cls} fam-more-btn" aria-expanded="${famsOpen}">${famsOpen ? "Show fewer contests" : `Show ${n} more contest${n === 1 ? "" : "s"}`}</button>` : "";
+  const famMoreBtn = (n, cls = "ct-toggle", key = "browse-contests") => n > 0 ? `<button type="button" class="${cls} fam-more-btn" data-fam-list="${key}" aria-expanded="${famsOpen(key)}">${famsOpen(key) ? "Show fewer contests" : `Show ${n} more contest${n === 1 ? "" : "s"}`}</button>` : "";
   // Papers of one contest (the AMC 8, 10 and 12; HMMT February and November; ARML and ARML Local;
   // PUMaC's two divisions) sit together in the Contests list, without a rule between them (owner, 2026-11-14).
   const famSeries = f => f.replace(/^AMC \d+$/, "AMC").replace(/^MATHCOUNTS (Chapter|State|National)$/, "MATHCOUNTS").replace(/ (February|November|Local|Division [AB]|Lower|Upper)$/, "");
@@ -9888,10 +9918,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const b = e.target.closest(".fam-more-btn");
     if (!b) return;
     const y = window.scrollY;
-    famsOpen = !famsOpen;
+    const key = b.dataset.famList;
+    contestExpansions.set(key, !famsOpen(key));
     render();
     window.scrollTo(0, y);
-    document.querySelector(".fam-more-btn")?.focus({ preventScroll: true });
+    document.querySelector(`[data-fam-list="${CSS.escape(key)}"]`)?.focus({ preventScroll: true });
   });
 
   // ---------- Problems by topic, Problems by difficulty ----------
@@ -9902,7 +9933,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   let browseKey = "", browseOpen = new Set();   // groups opened in full on the current page
   const browseBackHtml = () => `<div class="back-row"><a class="back-link" href="#/practice" data-goto="pr-contests">${uiIcon("arrow-left")} Contests</a></div>`;
   function famChipsHtml(problems) {
-    const all = FAMILIES.filter(f => problems.some(p => p.fam === f)), fams = all.filter(famShown);
+    const all = FAMILIES.filter(f => problems.some(p => p.fam === f)), fams = all.filter(f => famShown(f));
     // Select all and Deselect all (owner, 2026-11-14): deselect, then choose the one contest wanted.
     const offN = all.filter(f => browseOff.has(f)).length;
     return `<div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-br-all="on"${offN ? "" : " disabled"}>Select all</button><button type="button" class="fam-bulk-btn" data-br-all="off"${offN === all.length ? " disabled" : ""}>Deselect all</button></div>
@@ -10792,7 +10823,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const route = getRoute();
     if (expansionPage !== location.hash) {
       expansionPage = location.hash;
-      famsOpen = state.contestLists === "show";
+      contestExpansions.clear(); probGroupsOpen.clear();
       ctYearsOpen.clear();
       if (state.contestLists === "show") FAMILIES.forEach(f => ctYearsOpen.add(f));
       browseKey = ""; browseOpen.clear();

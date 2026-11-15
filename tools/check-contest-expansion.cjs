@@ -12,7 +12,17 @@ const base = process.env.COMPMATH_URL || 'http://localhost:8765';
   const practice = page.locator('.contest-refs');
   assert.equal(await practice.locator('.fam-more-btn').getAttribute('aria-expanded'), 'false');
   await practice.locator('.fam-more-btn').click(); assert.equal(await practice.locator('.fam-more-btn').getAttribute('aria-expanded'), 'true');
+  const odds = page.locator('[data-fam-list="profile-odds"]'), table = page.locator('[data-fam-list="profile-contests"]');
+  assert.equal(await odds.getAttribute('aria-expanded'), 'false'); assert.equal(await table.getAttribute('aria-expanded'), 'false');
+  await table.click(); assert.equal(await table.getAttribute('aria-expanded'), 'true');
+  assert.equal(await odds.getAttribute('aria-expanded'), 'false'); assert.equal(await practice.locator('.fam-more-btn').getAttribute('aria-expanded'), 'true');
+  await odds.click(); assert.equal(await table.getAttribute('aria-expanded'), 'true');
+
   await practice.locator('.prob-more').first().click(); assert.equal(await practice.locator('.prob-more').first().getAttribute('aria-expanded'), 'true');
+  await table.click(); assert.equal(await table.getAttribute('aria-expanded'), 'false');
+  assert.equal(await odds.getAttribute('aria-expanded'), 'true');
+  assert.equal(await practice.locator('.prob-more').first().getAttribute('aria-expanded'), 'true', 'another section does not reset this problem group');
+
   await go('#/f/law-of-cosines'); await page.locator('.contest-refs').waitFor();
   assert.equal(await page.locator('.contest-refs .fam-more-btn').getAttribute('aria-expanded'), 'false', 'next card resets contest expansion');
   await go('#/f/pythagorean-theorem'); await practice.waitFor();
@@ -26,6 +36,10 @@ const base = process.env.COMPMATH_URL || 'http://localhost:8765';
   assert.equal(await practice.locator('.prob-extra').evaluateAll(xs => xs.every(x => getComputedStyle(x).display !== 'none')), true);
   await page.reload(); await practice.waitFor(); assert.equal(await practice.locator('.fam-more-btn').getAttribute('aria-expanded'), 'true', 'preference survives reload');
   await go('#/practice'); await page.locator('#pr-contests').waitFor();
+  const random = page.locator('[data-fam-list="random-contests"]'), archive = page.locator('[data-fam-list="contest-years"]');
+  await random.click(); assert.equal(await random.getAttribute('aria-expanded'), 'false');
+  assert.equal(await archive.getAttribute('aria-expanded'), 'true', 'the archive and random picker have independent expansion');
+
   const years = page.locator('#pr-contests .ct-years-more').first(); assert.equal(await years.getAttribute('aria-expanded'), 'true');
   await years.click(); assert.equal(await years.getAttribute('aria-expanded'), 'false', 'manual fold works on the current page');
   await go('#/f/law-of-cosines'); await page.locator('.contest-refs').waitFor();
