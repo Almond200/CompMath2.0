@@ -3,7 +3,5 @@
 // problem database, the random-problem picker, or the search suggestions. When a contest gets its
 // problems, move it out of this list (its row then appears with the others, with the number of problems
 // that have text). Short-answer and computation contests only for now: no proof-based competitions.
-window.MATH_PLANNED_CONTESTS = [
-  { name: "MATHCOUNTS National", host: "MATHCOUNTS Foundation", note: "The national Sprint and Target rounds; the foundation sells them rather than posting them free." },
-  { name: "Caltech Math Meet", host: "Caltech", note: "Formerly the Caltech Harvey Mudd Math Competition (CHMMC); no official archive of its rounds was found." }
-];
+// MATHCOUNTS National and the Caltech Math Meet (CHMMC) arrived on 2026-11-15, so the list is empty for now.
+window.MATH_PLANNED_CONTESTS = [];
