@@ -50597,6 +50597,126 @@
     "2012 CHMMC Spring Individual, Problem 15": [
       1900,
       "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the units mod 125 form a cyclic group of order 100, so for each b the number of a with a^b = 1 is gcd(b, 100); summing over b up to 100: 520."
+    ],
+    "2010 CHMMC Fall Individual, Problem 1": [
+      1000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the winning pairs are (1, 3), (2, 6) and their reverses, 4 of 36; at least one win in three games: 1 - (8/9)^3 = 217/729."
+    ],
+    "2010 CHMMC Fall Individual, Problem 2": [
+      900,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the triangles are similar with ratio 4, so DEF has 16 times the area: 15A = 360, A = 24."
+    ],
+    "2010 CHMMC Fall Individual, Problem 3": [
+      1100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): 2010 = 2 x 3 x 5 x 67 has 8 factor pairs m x n, and the perimeters 2(m + n) sum to 2 x sigma(2010) = 9792."
+    ],
+    "2010 CHMMC Fall Individual, Problem 4": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): log_k(k + 1)^2 = 2 log_k(k + 1), and the 998 factors telescope to 2^998 log_2 1000, so log_2 S = 998 + log_2 log_2 1000, just over 1001: 1001."
+    ],
+    "2010 CHMMC Fall Individual, Problem 5": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the distance to B keeps falling along AC exactly when angle ACB is at least 90 degrees, so C lies in the disc on diameter AB: area pi/4."
+    ],
+    "2010 CHMMC Fall Individual, Problem 6": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): 2^(10k) starts with 1 while the fractional part of 10k log 2 = 3.0103k stays below log 2; it first reaches it at k = 30, where 0.0103 x 30 = 0.309 > 0.30103: 30."
+    ],
+    "2010 CHMMC Fall Individual, Problem 7": [
+      1300,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the integers prime to 6 are 1 and 5 mod 6, so the sum is (1/2 + 1/32)/(1 - 1/64) = 34/63."
+    ],
+    "2010 CHMMC Fall Individual, Problem 8": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the slowest Euclid runs are on consecutive Fibonacci numbers, so 10 steps first happen with a = F_11 = 89 (and b = 55)."
+    ],
+    "2010 CHMMC Fall Individual, Problem 9": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): each circle sits in the corner at A, so consecutive radii shrink by (1 - sin 45)/(1 + sin 45) = (sqrt 2 - 1)^2; then (r_0/r_100)^(1/200) = sqrt 2 + 1."
+    ],
+    "2010 CHMMC Fall Individual, Problem 10": [
+      1800,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): Rachel advances 30 a minute; Mike's average speed depends on how often his multiples of n were already eaten at the common multiples of 30 and n, and it matches 30 exactly for n = 15, 20, 24, 25, 27, 28, 29, 31, 32, 33, 35, 36, 40, 45, 60 (checked by simulation): average 32."
+    ],
+    "2010 CHMMC Fall Individual, Problem 11": [
+      1700,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): if 6 is weighted, the rolls have chance proportional to 1, and if one of 1 to 5 is, to 5 x 5 = 25; so 6 is weighted with probability 1/26, and the next 6 has probability (1/26)(1/2) + (25/26)(1/10) = 3/26."
+    ],
+    "2010 CHMMC Fall Individual, Problem 12": [
+      1500,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): x^F leaves x^(F mod 3) on division by x^3 - 1, and the Fibonacci numbers mod 3 repeat with period 8; counting the residues among F_0 to F_99 gives 2a + b = 112."
+    ],
+    "2010 CHMMC Fall Individual, Problem 13": [
+      1800,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the middle term must be sin 3 theta, so 2 sin 3 theta = sin theta + sin 2 theta, which reduces to a quadratic in cos(theta/2): cos(theta/2) = sqrt 14/4."
+    ],
+    "2010 CHMMC Fall Individual, Problem 14": [
+      1900,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the section is a regular octahedron through the six vertices with two 1s, of edge sqrt 2: volume (sqrt 2)^3 sqrt 2/3 = 4/3."
+    ],
+    "2010 CHMMC Fall Individual, Problem 15": [
+      1900,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): by the ballot-type reflection argument, the blue count ever exceeds the red count with probability B/(R + 1) = 1957/2011."
+    ],
+    "2010 CHMMC Winter Individual, Problem 1": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): x^n - 1 is the product of Phi_d over d dividing n, so the lcm is the product of Phi_d for d up to 10, of degree phi(1) + ... + phi(10) = 32."
+    ],
+    "2010 CHMMC Winter Individual, Problem 2": [
+      1900,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): a line y = (c/d)x + b with d prime to 7 meets every residue class r in exactly one s, giving 7^2 = 49 recipes, and lines whose slope has 7 in the denominator all share the recipe of y = x/7: 50."
+    ],
+    "2010 CHMMC Winter Individual, Problem 3": [
+      1200,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the sum of tau(d) over d dividing n is multiplicative, and 15015 = 3 x 5 x 7 x 11 x 13 contributes 1 + 2 = 3 per prime: 3^5 = 243."
+    ],
+    "2010 CHMMC Winter Individual, Problem 4": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): 2202010_b - 2202010_3 = 71813265 in base 10; estimating 2b^6 + 2b^5 + 2b^3 + b near 71813265 + 2202010_3 gives b near 18, and divisibility checks confirm b = 18."
+    ],
+    "2010 CHMMC Winter Individual, Problem 5": [
+      1100,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): x + 1/x = 3, and squaring three times gives x^2 + x^-2 = 7, x^4 + x^-4 = 47, x^8 + x^-8 = 2207."
+    ],
+    "2010 CHMMC Winter Individual, Problem 6": [
+      1400,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): 5^k - 1 and 7^(k-1) bound the k-digit numbers in each base, and the ranges overlap up to k = 5 since 7^4 = 2401 < 3124 = 5^5 - 1 but 7^5 > 5^6 - 1: 3124."
+    ],
+    "2010 CHMMC Winter Individual, Problem 7": [
+      1800,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the right angle opposite the largest side gives (a + b)^2 + (a + c)^2 = (b + c)^2, i.e. (b - a)(c - a) = 2a^2; counting the divisor pairs of 2a^2 for a = 1 to 9: 1 + 2 + 3 + 3 + 3 + 6 + 3 + 4 + 5 = 30."
+    ],
+    "2010 CHMMC Winter Individual, Problem 8": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): after any two games three disjoint pairs have never been teammates (A-D, B-E, C-F in the official labelling), and a team of three holds at most one of them, so two teams cannot cover three: a third game is not enough, and four games work: 4."
+    ],
+    "2010 CHMMC Winter Individual, Problem 9": [
+      1700,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): AC is a diameter, so angle ABC is right and BC^2 = 4r^2 - 900; (2r - BC)(2r + BC) = 900 in even factor pairs gives r = 17, 25, 39, 113."
+    ],
+    "2010 CHMMC Winter Individual, Problem 10": [
+      1700,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): count colourings up to the 8 symmetries of the square, centre square apart: Burnside on the outer ring gives 51, doubled for the centre: 102."
+    ],
+    "2010 CHMMC Winter Individual, Problem 11": [
+      1700,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): the totatives below n sum to n phi(n)/2, so phi(n) = 4: n = 5, 8, 10, 12."
+    ],
+    "2010 CHMMC Winter Individual, Problem 12": [
+      1800,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): 21x + 17y + 10z = 2 x area = 168 by Heron, and AM-GM on 21x, 17y, 10z gives xyz at most 56^3/(21 x 17 x 10) = 12544/255."
+    ],
+    "2010 CHMMC Winter Individual, Problem 13": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): first-step equations give the chance that Alice regains the bag before Eve as 5/11 without Cathy and (5 + p)/(11 - 5p) with her; doubling: p = 55/61."
+    ],
+    "2010 CHMMC Winter Individual, Problem 14": [
+      2000,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): AOB is a 30-120-30 triangle, so R = (3 + 2 sqrt 3)r/3 and OM = r/sqrt 3 for the midpoint M of AB; with MX = R - OM - 1, the right triangle AMX gives (r + 1)^2 = r^2 + MX^2, so r = 9 - 4 sqrt 3 and R = 1 + 2 sqrt 3."
+    ],
+    "2010 CHMMC Winter Individual, Problem 15": [
+      1600,
+      "Author estimate (CHMMC publishes no solve counts; placed on the collection’s scale by its route, the round running from an easy AMC 12 problem to a late AIME one): for p > 3, p divides n^2 + n + 1 exactly when -3 is a square mod p, i.e. p = 1 mod 6; the 11 such primes below 100 plus p = 3: 12."
     ]
   }
 }

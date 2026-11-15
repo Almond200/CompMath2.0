@@ -2,7 +2,7 @@
 
 **2026-11-15**
 
-- **CHMMC, the Caltech Harvey Mudd Math Competition (now the Caltech Math Meet):** a new family at the owner's request; each problem opens the Individual round and its solutions on the Caltech Math Meet archive. 2021 to 2026 are filed (72 problems) with tree filings, cards and author-estimated ratings; 2021 #14's official answer is corrected (17, not 18).
+- **CHMMC, the Caltech Harvey Mudd Math Competition (now the Caltech Math Meet), done:** a new family at the owner's request; each problem opens the Individual round and its solutions on the Caltech Math Meet archive. every sitting from 2010 to 2026 is filed (248 problems) with tree filings, cards and author-estimated ratings; two official answers are corrected (2021 #14 and 2012 Fall #6).
 - **UKMT Junior Mathematical Challenge:** a third UKMT family; 2023 to 2026 are filed (100 problems), the rest to follow.
 - **Contest-page check:** follows main's recalibrated equal-width Elo levels.
 - **Contest order:** contests are listed by prestige: the AMC and AIME, then HMMT, PUMaC, CMIMC, SMT, BMT, ARML, Math Prize for Girls, CHMMC and Duke, then MATHCOUNTS, the UKMT and CEMC contests and the rest. Each series stays together, junior first (AMC 8, 10, 12; Pascal, Cayley, Fermat; JMC, IMC, SMC), without a rule between its rows.
