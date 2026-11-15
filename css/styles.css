@@ -2977,7 +2977,7 @@ a.card-result { color: var(--text); text-decoration: none; }
 .hp-panel .pl-item:hover { border-color: var(--border); background: var(--space-soft); color: var(--space); }
 .rc-row:hover { background: var(--space-soft); }
 /* Recently opened: one scrolling line; every link remains reachable. */
-.rc-chips { flex-wrap: nowrap; min-width: 0; overflow-x: auto; scrollbar-width: thin; }
+.rc-chips { flex-wrap: nowrap; min-width: 0; overflow-x: auto; }
 .rc-chips .rc-row { border-radius: 999px; height: 30px; box-sizing: border-box; }
 .rc-chips .rc-row { flex-shrink: 0; max-width: 100%; }
 .rc-chips .rc-name { flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -3597,7 +3597,7 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
    The column has no bottom padding (the negative bottom margin alone carries the divider to the
    foot of the page), so the panel is not pushed up at the end of a page. */
 .page-tools { border-left: 1px solid var(--border); padding-left: 16px; margin: -24px 0 -120px; padding-top: 24px; font-size: 13px; }
-.pt-inner { position: sticky; top: calc(var(--topbar-h, 61px) + 20px); margin-top: 40px; max-height: calc(100vh - var(--topbar-h, 61px) - 40px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; display: flex; flex-direction: column; gap: 18px; }
+.pt-inner { position: sticky; top: calc(var(--topbar-h, 61px) + 20px); margin-top: 40px; max-height: calc(100vh - var(--topbar-h, 61px) - 40px); overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 18px; }
 html[data-density="compact"] .page-tools { margin: -16px 0 -90px; padding-top: 16px; }
 html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top: 24px; }
 .pt-block { display: flex; flex-direction: column; gap: 4px; }
@@ -4277,7 +4277,7 @@ body.ge-selecting, body.ge-selecting * { user-select: none; -webkit-user-select:
 .ge-movebar { flex-direction: column; align-items: stretch; flex-wrap: nowrap; gap: 8px; }
 .ge-move-top { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .ge-move-n, .ge-move-k { flex: none; }
-.ge-move-pills { display: flex; gap: 6px; overflow-x: auto; min-width: 0; padding: 2px 0; scrollbar-width: thin; }
+.ge-move-pills { display: flex; gap: 6px; overflow-x: auto; min-width: 0; padding: 2px 0; }
 .ge-move-pills .ge-pill { flex: none; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ge-move-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
 @media (max-width: 520px) { .ge-move-top { flex-wrap: wrap; } .ge-move-pills { flex: 1 1 100%; } }
@@ -4712,3 +4712,6 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 .practice-self { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 6px 0 14px; }
 .practice-self .rand-btns { margin: 0; }
 .practice-self [data-self][aria-pressed="true"] { background: var(--space); color: #fff; }
+
+/* A folded contest list hides its extra contests in place (owner, 2026-11-15); the attribute must win over display rules. */
+[data-fam-extra][hidden] { display: none !important; }

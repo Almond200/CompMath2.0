@@ -4,7 +4,8 @@
   const groupSelector = '[role="radiogroup"], [role="tablist"]';
   const choices = group => [...group.querySelectorAll('[role="radio"], [role="tab"]')]
     .filter(el => el.closest(groupSelector) === group);
-  const enabled = el => !el.disabled && el.getAttribute('aria-disabled') !== 'true';
+  // A folded contest chip is hidden, not removed (2026-11-15), so arrow keys skip hidden choices.
+  const enabled = el => !el.disabled && !el.hidden && el.getAttribute('aria-disabled') !== 'true';
   const selected = el => el.getAttribute(el.getAttribute('role') === 'tab' ? 'aria-selected' : 'aria-checked') === 'true';
   function syncChoices() {
     document.querySelectorAll(groupSelector).forEach(group => {

@@ -1,5 +1,15 @@
 # Changelog
 
+**2026-11-15**
+
+- **CHMMC, the Caltech Harvey Mudd Math Competition (now the Caltech Math Meet):** a new family at the owner's request; each problem opens the Individual round and its solutions on the Caltech Math Meet archive. 2021 to 2026 are filed (72 problems) with tree filings, cards and author-estimated ratings; 2021 #14's official answer is corrected (17, not 18).
+- **UKMT Junior Mathematical Challenge:** a third UKMT family; 2023 to 2026 are filed (100 problems), the rest to follow.
+- **Contest-page check:** follows main's recalibrated equal-width Elo levels.
+- **Contest order:** contests are listed by prestige: the AMC and AIME, then HMMT, PUMaC, CMIMC, SMT, BMT, ARML, Math Prize for Girls, CHMMC and Duke, then MATHCOUNTS, the UKMT and CEMC contests and the rest. Each series stays together, junior first (AMC 8, 10, 12; Pascal, Cayley, Fermat; JMC, IMC, SMC), without a rule between its rows.
+- **Show more contests:** the button now shows or hides the extra contests where they are, instead of redrawing the page, so typed searches and choices stay put and the page no longer jumps; folding keeps the button under the pointer.
+- **Thin scrollbars:** the Recently opened row, the geometry explorer's pills and the practice rail no longer set `scrollbar-width`, which made Chrome draw its grey bar instead of the app's thin one (the same fix as the topic rail's).
+- **Practice a card search:** besides names, the search now uses the reference search among the cards with practice problems, so typos ("pythagoren", "shoelase", "chiken nugget") and descriptions ("ways to choose") find the card.
+
 **2026-11-14**
 
 - **UKMT Intermediate Mathematical Challenge (done, 300 problems):** a second UKMT family with the same links and credits; every posted year (2015 to 2026) is filed with tree filings, cards and author-estimated ratings.
