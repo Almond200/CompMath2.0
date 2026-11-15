@@ -49525,6 +49525,206 @@
     "2025 UKMT JMC, Problem 25": [
       400,
       "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): only face diagonals can make equilateral triangles: 12 diagonals in 2 triangles each, every triangle counted three times, 24/3 = 8."
+    ],
+    "2024 UKMT JMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 2 + 2, 2 x 2 and 2^2 are 4, 2 - 2 is 0 and 2 / 2 is 1: three values."
+    ],
+    "2024 UKMT JMC, Problem 2": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 10 litres is about a bucketful: a bucket."
+    ],
+    "2024 UKMT JMC, Problem 3": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the next square after 36 is 49, thirteen years on: 2037."
+    ],
+    "2024 UKMT JMC, Problem 4": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): one part in five is 20%."
+    ],
+    "2024 UKMT JMC, Problem 5": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 3 x 4 / 5 = 2.4 comes first: 1 + 2 - 2.4 = 0.6."
+    ],
+    "2024 UKMT JMC, Problem 6": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 25 leaves 1 on division by both 3 and 4."
+    ],
+    "2024 UKMT JMC, Problem 7": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the two small shaded triangles together match one larger one, each an eighth of the square: 3/8."
+    ],
+    "2024 UKMT JMC, Problem 8": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): with Skye x, Ishaa and Ana have 2x each: x/5x = 1/5."
+    ],
+    "2024 UKMT JMC, Problem 9": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): triangle PUT is isosceles with apex angle 120: (180 - 120)/2 = 30."
+    ],
+    "2024 UKMT JMC, Problem 10": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): h + r = 25 and 2h + 4r = 60 give 20 humans and 5 horses: 15."
+    ],
+    "2024 UKMT JMC, Problem 11": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the two small sides x and y make up a side of the large triangle, x + y = 10: 20 + 2(x + y) = 40."
+    ],
+    "2024 UKMT JMC, Problem 12": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): y times y ends in y, so y is 0, 1, 5 or 6, and 36 x 466 = 16776 fits: 6."
+    ],
+    "2024 UKMT JMC, Problem 13": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): SR = SP gives angle SPR = x = angle QPS, so angle PSQ = 2x = angle PQS: 5x = 180, x = 36."
+    ],
+    "2024 UKMT JMC, Problem 14": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the result is a single digit, which rules out divisors 1, 2, 3 and 5; 32 / 8 + 1 = 5: 8."
+    ],
+    "2024 UKMT JMC, Problem 15": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): angle SPQ = 70, so angle PQS = 55 in the isosceles triangle SPQ, and angle PQT = angle QPT = 70: 15."
+    ],
+    "2024 UKMT JMC, Problem 16": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 1000/7.7 is about 130."
+    ],
+    "2024 UKMT JMC, Problem 17": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the two triangles on opposite sides have heights summing to 10: their areas sum to 50, 50 - 24 = 26."
+    ],
+    "2024 UKMT JMC, Problem 18": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 3/7 of three bowls is 9/7 of a bowl: all the first and 2/7 of the second."
+    ],
+    "2024 UKMT JMC, Problem 19": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): if P is a Clown then Q, R, S are Joker, Clown, Joker; if P is a Joker they are Clown, Joker, Clown: 2 either way."
+    ],
+    "2024 UKMT JMC, Problem 20": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): a straight cut adds at most one side to each piece, so a piece has at most 6 + 1 = 7 sides: an octagon."
+    ],
+    "2024 UKMT JMC, Problem 21": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): with small squares x and shaded squares y, the large square is 4x = 3y - x, so x = 3y/5 and QR = 17y/5: 5/17."
+    ],
+    "2024 UKMT JMC, Problem 22": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): a furry ferret weighs 5/4 of a fit one and a fit one 6/5 of a friendly one: 50 x 3/2 = 75."
+    ],
+    "2024 UKMT JMC, Problem 23": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): s^2 = 6(s/2)(s - 6) = 3s(s - 6) gives s = 9: 36 cm."
+    ],
+    "2024 UKMT JMC, Problem 24": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): United lost one match by three goals and Rovers conceded none, so Rovers beat United 3-0."
+    ],
+    "2024 UKMT JMC, Problem 25": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the left-handed fraction L satisfies L/10 + (1 - L)/4 = 1/5: L = 1/3."
+    ],
+    "2023 UKMT JMC, Problem 1": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 3202 - 2023 = 1179."
+    ],
+    "2023 UKMT JMC, Problem 2": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): of the five options only 4 fails to divide 30: four."
+    ],
+    "2023 UKMT JMC, Problem 3": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 15/40 = 3/8."
+    ],
+    "2023 UKMT JMC, Problem 4": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 12, 24 and 36 are divisible by 2, 8 and 18, but 72 is not divisible by 14 nor 96 by 54: 36."
+    ],
+    "2023 UKMT JMC, Problem 5": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 100 m in about 20 s is about 5 m/s."
+    ],
+    "2023 UKMT JMC, Problem 6": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the top side gives 7, the bottom pair sums to 14 and must be 11 and 3, then 19 and 17: 7 + 19 + 11 + 3 + 17 = 57."
+    ],
+    "2023 UKMT JMC, Problem 7": [
+      100,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 102 - 98 = 4."
+    ],
+    "2023 UKMT JMC, Problem 8": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the sums are 1, 5, 13, 25, 41 and 61, of which 5, 13, 41 and 61 are prime: 4."
+    ],
+    "2023 UKMT JMC, Problem 9": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): equal base angles give 2x + 8 = 3x - 20, x = 28, so the apex is 180 - 128 = 52 = 4y - 8: y = 15."
+    ],
+    "2023 UKMT JMC, Problem 10": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the perimeter is that of the bounding rectangle, 2(h + 18) = 60, h = 12: 216 - 6 x 4 = 192."
+    ],
+    "2023 UKMT JMC, Problem 11": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 120 bags give 120 first cups, 60 second cups and 30 third cups: 210."
+    ],
+    "2023 UKMT JMC, Problem 12": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 60 cm in 20 minutes is 3 cm a minute, so 150 cm took 50 minutes: 1 pm."
+    ],
+    "2023 UKMT JMC, Problem 13": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the rectangles a by b have a + b = 8 (the outer side) and a - b = sqrt 20 (the inner side): perimeter 16 cm."
+    ],
+    "2023 UKMT JMC, Problem 14": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 3x ends in 7, so x = 9, and 1397 + 120y = 1997 gives y = 5: 14."
+    ],
+    "2023 UKMT JMC, Problem 15": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the 37-minute journey took 74 minutes from 17:52: 19:06."
+    ],
+    "2023 UKMT JMC, Problem 16": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): each half is aa, so the digit sum is even, a multiple of 11 and at most 36: 22, giving 2299, 3388, ..., 9922, eight PINs."
+    ],
+    "2023 UKMT JMC, Problem 17": [
+      200,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): q/p > 1 while every other expression is below 1: q/p."
+    ],
+    "2023 UKMT JMC, Problem 18": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): the quadrilateral's angles are 180 - p, 180 - q, 180 - r and 360 - s: p + q + r + s = 540."
+    ],
+    "2023 UKMT JMC, Problem 19": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): Rangers never led before the last goal, so half-time is a score r - v with r at most v at most 4, or 5 - 4: 15 + 1 = 16."
+    ],
+    "2023 UKMT JMC, Problem 20": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 1 across is 27 or 64, forcing 1 down 23 or 61 and 2 across 36 or 16: digit sums 18 or 17."
+    ],
+    "2023 UKMT JMC, Problem 21": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): pygmy p, grey 2p, white 6p, pink 24p and 6p - p = 20: p = 4, 33p = 132."
+    ],
+    "2023 UKMT JMC, Problem 22": [
+      300,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 5 and 7 go where the 5 and 7 products meet, then 3 completes 105, and c i = 12 with c = 2: 6."
+    ],
+    "2023 UKMT JMC, Problem 23": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): angle TOG = 120 - 72 = 48 and angle OTS = (180 - 72)/2 = 54: 180 - 48 - 54 = 78."
+    ],
+    "2023 UKMT JMC, Problem 24": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): 23 - n = 2 + a + b for n = 10a + b gives 11a + 2b = 21: born 2015; 2035 is the year with 20 = 2 x 10."
+    ],
+    "2023 UKMT JMC, Problem 25": [
+      400,
+      "Author estimate (the UKMT publishes no solve counts by question; placed on the collection’s scale by its route, its 25 questions running from an easy AMC 8 problem to a late AMC 8 one): working back, the neighbour had 12 left, so the son had 30 to start and the total was 57: 5 + 7 = 12."
     ]
   }
 }
