@@ -491,18 +491,8 @@ window.MATH_SECTIONS.push({
           name: "Inradius Formula",
           latex: String.raw`A = rs`,
           description: String.raw`The inradius $r$ of a triangle is the radius of its inscribed circle, the one circle inside the triangle tangent to all three sides, and the triangle's area is the inradius times the semiperimeter $s = \frac{a + b + c}{2}$ of the sides $a$, $b$, $c$. The same formula holds for any polygon that has an inscribed circle, with $s$ half its perimeter: the segments from the center to the vertices cut the polygon into triangles of height $r$, one on each side.`,
-          keywords: ["inradius", "incircle", "semiperimeter", "inscribed circle", "circle tangent to all three sides", "area"],
+          keywords: ["inradius", "incircle", "semiperimeter", "inscribed circle", "circle tangent to all three sides", "area", "incenter area split", "join incenter to vertices", "areas a : b : c"],
           importance: "high",
-          tier: "AMC",
-          level: ["AMC10", "AMC12", "AIME"]
-        },
-        {
-          id: "incenter-area-split",
-          name: "Incenter Splits the Area by the Sides",
-          latex: String.raw`[BIC] : [CIA] : [AIB] = a : b : c, \qquad [BIC] = \frac{a}{a+b+c}\,[ABC]`,
-          description: String.raw`Join the incenter $I$ to the vertices and $\triangle ABC$ splits into three triangles $BIC$, $CIA$, $AIB$, each with its own side of $ABC$ as a base and the inradius $r$ as its height. So their areas are in the ratio of those sides, $a$, $b$, $c$, and each is its side's share of the perimeter times the whole area. Summing them recovers $[ABC] = rs$, and the same weights give the incenter's [[barycentric-coordinates|barycentric coordinates]] $(a : b : c)$.`,
-          keywords: ["incenter area split", "join incenter to vertices", "three triangles proportional to sides", "areas a : b : c", "side fraction of perimeter", "area equals rs", "incenter barycentric a b c", "BIC CIA AIB"],
-          importance: "low",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
         },

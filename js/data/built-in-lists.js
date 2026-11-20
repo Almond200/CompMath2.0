@@ -15,14 +15,14 @@ window.MATH_BUILTIN_LISTS = [
 
   // ---- Study routes: contest tier x subject, complete ----
   { id: "route-amc-geometry", name: "AMC 10/12 Geometry", kind: "route", tier: "AMC", subject: "Geometry",
-    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 184 cards across 13 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 183 cards across 13 sections.",
     sections: [
       { title: "The Fundamentals",
         note: "The facts every other tool here is built on. When a geometry problem stalls, it is usually one of these you have not used yet.",
         ids: ["pythagorean-theorem", "special-right-triangles", "altitude-hypotenuse", "median-to-hypotenuse", "triangle-inequality", "triangle-type-by-sides", "integer-triangles-perimeter", "similar-figures-ratios", "midsegment-theorem", "intercept-theorem", "centroid-division", "cevian-area-ratio", "equilateral-triangle-facts", "15-75-90-triangle", "golden-ratio-pentagon", "inscribed-square", "isoperimetric-facts", "perpendicular-bisector-locus", "triangle-congruence", "parallel-exterior-angles", "triangle-similarity", "parallel-by-angle-sum", "clock-angle", "isosceles-triangle"] },
       { title: "Triangles: Sides, Areas & Radii",
         note: "The workhorses. Come here first when the figure hands you side lengths and wants another length or an area.",
-        ids: ["triangle-area-standard", "trig-area", "max-rectangle-in-triangle", "herons-formula", "inradius-area", "incenter-area-split", "circumradius-area", "right-triangle-inradius", "incircle-tangent-lengths", "incircle-excircle-touch", "shared-angle-area-ratio", "same-base-area-ratio", "law-of-sines", "law-of-cosines", "law-cosines-60-120", "law-of-cosines-special-triangles", "angle-bisector-theorem", "angle-bisector-length", "angle-bisector-circumcircle", "altitude-bisector-angle", "stewarts-theorem", "cevas-theorem", "apollonius-theorem", "median-triangle-area", "vivianis-theorem", "projection-formula", "triangle-13-14-15", "conway-circle"] },
+        ids: ["triangle-area-standard", "trig-area", "max-rectangle-in-triangle", "herons-formula", "inradius-area", "circumradius-area", "right-triangle-inradius", "incircle-tangent-lengths", "incircle-excircle-touch", "shared-angle-area-ratio", "same-base-area-ratio", "law-of-sines", "law-of-cosines", "law-cosines-60-120", "law-of-cosines-special-triangles", "angle-bisector-theorem", "angle-bisector-length", "angle-bisector-circumcircle", "altitude-bisector-angle", "stewarts-theorem", "cevas-theorem", "apollonius-theorem", "median-triangle-area", "vivianis-theorem", "projection-formula", "triangle-13-14-15", "conway-circle"] },
       { title: "Triangle Centers & Derived Triangles",
         note: "When the problem names a center, or builds a second triangle out of the first.",
         ids: ["triangle-center-angles", "medial-triangle"] },
@@ -429,7 +429,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["homothety-monge", "rotation-trick", "reflect-across-the-line", "unfold-the-bounces"] }
     ] },
   { id: "config-triangle-centers", name: "Triangle Center Properties", kind: "configuration", subject: "Recognize",
-    blurb: "What the centers DO, rather than how to find them. Every card here states a property of a triangle center or a relation between two of them — a distance, a ratio, a reflection, a concurrency — which is the form these facts actually arrive in on a contest. 35 cards across 6 groups. Definitions and the radius formulas live in the routes; this is the layer above them.",
+    blurb: "What the centers DO, rather than how to find them. Every card here states a property of a triangle center or a relation between two of them — a distance, a ratio, a reflection, a concurrency — which is the form these facts actually arrive in on a contest. 34 cards across 6 groups. Definitions and the radius formulas live in the routes; this is the layer above them.",
     sections: [
       { title: "The Euler Line & the Nine-Point Circle",
         note: "The spine of the subject: four centers on one line in a fixed ratio, and the circle that carries nine named points. Start here, because most relations between two centers are read off this picture.",
@@ -442,7 +442,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["orthocenter-properties", "triangle-center-angles", "orthic-triangle", "droz-farny"] },
       { title: "The Incenter & Excenter Family",
         note: "Four circles tangent to the same three lines, so everything here is a tangent length or a homothety. Fact 5 is the one that decides AIME problems.",
-        ids: ["incenter-excenter-lemma", "incircle-excircle-homothety", "incircle-excircle-touch", "incenter-area-split", "contact-triangle", "excentral-triangle", "gergonne-nagel-points", "feuerbach-theorem", "spieker-point", "perimeter-cleavers"] },
+        ids: ["incenter-excenter-lemma", "incircle-excircle-homothety", "incircle-excircle-touch", "contact-triangle", "excentral-triangle", "gergonne-nagel-points", "feuerbach-theorem", "spieker-point", "perimeter-cleavers"] },
       { title: "Symmedians & Conjugates",
         note: "Reflect a cevian in the angle bisector and you get its isogonal partner; do that to all three and they stay concurrent. This is where the named centers past the classical four come from.",
         ids: ["symmedian-lemoine", "lemoine-point", "harmonic-quadrilateral", "isogonal-conjugate", "isotomic-conjugate", "brocard-angle"] },
@@ -479,7 +479,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["shooting-lemma", "isogonal-line-lemma", "steiner-ratio-theorem", "humpty-queue-points", "dumpty-point"] },
     ] },
   { id: "config-area-toolkit", name: "Every Way to Find an Area", kind: "configuration", subject: "Recognize",
-    blurb: "Indexed by what the problem hands you rather than by what shape it is, because that is the order you actually need them in: you know what you have been given, and you are looking for the formula that eats it. 40 cards across 6 groups. If a figure's area is the unknown, the route to it is on this page.",
+    blurb: "Indexed by what the problem hands you rather than by what shape it is, because that is the order you actually need them in: you know what you have been given, and you are looking for the formula that eats it. 39 cards across 6 groups. If a figure's area is the unknown, the route to it is on this page.",
     sections: [
       { title: "From the Side Lengths Alone",
         note: "No angles, no height. Heron is the general answer and the one to reach for when a problem gives you three numbers and nothing else.",
@@ -495,7 +495,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["shoelace-formula", "picks-theorem", "picks-theorem-general", "picks-with-holes", "determinant-geometric", "cross-product-area"] },
       { title: "As a Ratio of Another Area",
         note: "Often you never need an absolute area at all. Two triangles on the same base, or a cevian cutting one, give a ratio immediately and the unknown cancels.",
-        ids: ["cevian-area-ratio", "same-base-area-ratio", "area-method", "rouths-theorem", "similar-figures-ratios", "median-triangle-area", "medial-triangle", "varignons-theorem", "incenter-area-split", "squares-on-triangle-flanks"] },
+        ids: ["cevian-area-ratio", "same-base-area-ratio", "area-method", "rouths-theorem", "similar-figures-ratios", "median-triangle-area", "medial-triangle", "varignons-theorem", "squares-on-triangle-flanks"] },
       { title: "Areas in Three Dimensions",
         note: "Surface areas, and the two tricks that turn a hard 3D area into an easy 2D one: project it and divide by a cosine, or slice it and compare cross-sections.",
         ids: ["projected-area-cosine", "cone-formulas", "sphere-formulas", "de-guas-theorem", "cavalieris-principle"] }

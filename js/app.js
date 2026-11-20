@@ -1350,7 +1350,7 @@
 
   // A card merged into another keeps working at its old address, so bookmarks and shared
   // links land on the card that absorbed it.
-  const MERGED_IDS = { "sp-substitution": "symmetric-polynomial-strategies", "picks-triangular-lattice": "picks-theorem-general", "hexagon-diagonals": "regular-hexagon-area", "cyclic-quad-diagonals": "ptolemy-second-theorem", "same-remainder": "subtract-equal-remainders", "ramsey-33": "pigeonhole", "moser-circle": "plane-regions" };
+  const MERGED_IDS = { "sp-substitution": "symmetric-polynomial-strategies", "picks-triangular-lattice": "picks-theorem-general", "hexagon-diagonals": "regular-hexagon-area", "cyclic-quad-diagonals": "ptolemy-second-theorem", "same-remainder": "subtract-equal-remainders", "ramsey-33": "pigeonhole", "moser-circle": "plane-regions", "incenter-area-split": "inradius-area" };
   function getRoute() {
     let m = location.hash.match(/^#\/f\/([\w-]+)$/);
     if (m && BY_ID[m[1]]) return { type: "formula", entry: BY_ID[m[1]] };

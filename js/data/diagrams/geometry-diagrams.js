@@ -4220,22 +4220,6 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
-  DIAGRAMS["incenter-area-split"] = [(() => {
-    const I = incenterOf(A, B, C);
-    const r = dist(I, foot(I, B, C));
-    return wrap(430, 330, [
-      poly([I, B, C], ACC, 0, ACCS), poly([I, C, A], GLD, 0, GLDS),
-      ABC(),
-      circ(I, r, FNT, 1.3, "none", "4 3"),
-      seg(I, A, DIM, 1.6), seg(I, B, DIM, 1.6), seg(I, C, DIM, 1.6),
-      seg(I, foot(I, B, C), ORG, 1.6), seg(I, foot(I, C, A), ORG, 1.6), seg(I, foot(I, A, B), ORG, 1.6),
-      rightAngle(foot(I, B, C), I, B, 8, ORG),
-      dot(I, ORG, 4.5), txt(add(I, [10, -8]), "I", ORG, 12.5),
-      txt(add(mid(I, foot(I, B, C)), [-9, -10]), "r", ORG, 12),
-      txt(add(mid(mid(B, C), I), [28, 4]), "[BIC] = ½·a·r", ACC, 11),
-      cap(430, 330, "every piece has height r on its own side, so [BIC] : [CIA] : [AIB] = a : b : c")
-    ]);
-  })()];
 
   DIAGRAMS["same-base-area-ratio"] = [(() => {
     const Aq = [92, 70], Bq = [70, 250], Cq = [350, 262], Dq = [330, 78];

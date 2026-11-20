@@ -432,7 +432,7 @@
     { q: String.raw`For which positive integers $x$ is the triangle with sides $x$, $x + 1$, $x + 2$ acute?`,
       s: String.raw`It is a triangle when $x + (x + 1) \gt x + 2$, that is $x \ge 2$. It is acute when $(x + 2)^2 \lt x^2 + (x + 1)^2$, which simplifies to $x^2 - 2x - 3 \gt 0$, $(x - 3)(x + 1) \gt 0$, so $x \gt 3$. So $x \ge 4$; $x = 3$ gives the right triangle $3, 4, 5$ and $x = 2$ the obtuse $2, 3, 4$.` }
   );
-  add("incenter-area-split",
+  add("inradius-area",
     { q: String.raw`In the right triangle with $BC = 5$, $CA = 12$, $AB = 13$, find the areas of $BIC$, $CIA$ and $AIB$, where $I$ is the incenter.`,
       s: String.raw`The area is $30$ and the perimeter $30$, so each piece is its side's share of $30$: $[BIC] = 5$, $[CIA] = 12$, $[AIB] = 13$. The inradius is $\tfrac{30}{15} = 2$, and indeed $\tfrac12\cdot5\cdot2 = 5$.` },
     { q: String.raw`A point $P$ inside triangle $ABC$ has $[PBC] : [PCA] : [PAB] = a : b : c$, the ratio of the opposite sides. Prove that $P$ is the incenter.`,

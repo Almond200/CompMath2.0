@@ -127,8 +127,8 @@ For [[nested-similar|nested similar figures]] with fixed length factor $0\lt k\l
       ]
     },
     "S3.4": {
-      prereq: ["triangle-area-standard", "similar-figures-ratios"],
-      cards: ["same-base-area-ratio", "shared-angle-area-ratio", "cevian-area-ratio", "incenter-area-split"],
+      prereq: ["triangle-area-standard", "similar-figures-ratios", "inradius-area"],
+      cards: ["same-base-area-ratio", "shared-angle-area-ratio", "cevian-area-ratio"],
       body: String.raw`Area ratios can preserve a useful relationship even when the triangles have different shapes. Write $[XYZ]$ for the ordinary, nonnegative area of triangle $XYZ$. The formula $[XYZ]=\tfrac12 bh$ lets either the base or the height cancel, provided the other factor is shared.
 
 If $D$ is strictly inside side $BC$ of triangle $ABC$, triangles $ABD$ and $ACD$ have the same perpendicular height from $A$ to line $BC$. Thus their areas have ratio $BD:DC$. This [[cevian-area-ratio|cevian area ratio]] gives $[ABD]=12$ and $[ACD]=18$ when $[ABC]=30$ and $BD:DC=2:3$. The area of one piece is $2/5$ of the whole, not $2/3$; part-to-part and part-to-whole ratios answer different questions.
@@ -147,7 +147,7 @@ The trigonometric area formula gives the same product ratio whenever the include
 
 The incenter supplies a different common-height construction. The internal angle bisectors of a triangle meet at $I$, the incenter. A point on an internal bisector is equally distant from its two side lines: dropping perpendiculars gives right triangles with common hypotenuse and matching acute angles. Intersecting two internal bisectors therefore gives equal distances to all three sides, and the point also lies on the third internal bisector. Denote that common perpendicular distance by $r$.
 
-Joining $I$ to the vertices partitions the triangle into three pieces. Over sides $a=BC$, $b=CA$, $c=AB$, the areas are $ar/2$, $br/2$, $cr/2$. Hence the [[incenter-area-split|incenter area split]] is in ratio $a:b:c$, not necessarily into equal thirds. In the thirteen-fourteen-fifteen triangle of area eighty-four, the piece over side fourteen is $84\cdot14/42=28$. The other two areas are thirty and twenty-six.
+Joining $I$ to the vertices partitions the triangle into three pieces. Over sides $a=BC$, $b=CA$, $c=AB$, the areas are $ar/2$, $br/2$, $cr/2$. Hence the [[inradius-area|incenter area split]] is in ratio $a:b:c$, not necessarily into equal thirds. In the thirteen-fourteen-fifteen triangle of area eighty-four, the piece over side fourteen is $84\cdot14/42=28$. The other two areas are thirty and twenty-six.
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 380" role="img" aria-label="Equal incenter distances make area proportional to side length" style="width:100%;max-width:520px;height:auto"><title>Equal incenter distances make area proportional to side length</title><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="M200 79L110 295H362Z"/><path d="M200 79L218 223L110 295M218 223L362 295"/><path d="M218 223V295M218 223L151.538 195.308M218 223L275.6 179.8" stroke-dasharray="5 4"/><path d="M218 285H228V295"/></g><circle cx="218" cy="223" r="3" fill="currentColor"/><g fill="currentColor" font-size="16" text-anchor="middle"><text x="200" y="60">A</text><text x="92" y="314">B</text><text x="379" y="314">C</text><text x="206" y="245">I</text><text x="137" y="181">13</text><text x="301" y="181">15</text><text x="260" y="320">14</text><text x="164" y="234">26</text><text x="282" y="236">30</text><text x="262" y="279">28</text><text x="181" y="192">r</text><text x="256" y="184">r</text><text x="231" y="262">r</text><text x="260" y="367">Areas 26 : 28 : 30 follow bases 13 : 14 : 15.</text></g></svg>
 
@@ -235,7 +235,7 @@ The weights on the three vertices must be consistent with every side ratio being
       ]
     },
     "S3.6": {
-      prereq: ["triangle-similarity", "similar-figures-ratios", "parallel-line-similarity", "midsegment-theorem", "intercept-theorem", "nested-similar", "same-base-area-ratio", "shared-angle-area-ratio", "cevian-area-ratio", "incenter-area-split", "angle-bisector-theorem", "centroid-division", "mass-points"],
+      prereq: ["triangle-similarity", "similar-figures-ratios", "parallel-line-similarity", "midsegment-theorem", "intercept-theorem", "nested-similar", "same-base-area-ratio", "shared-angle-area-ratio", "cevian-area-ratio", "inradius-area", "angle-bisector-theorem", "centroid-division", "mass-points"],
       cards: [],
       body: String.raw`A similarity argument begins with a justified correspondence. Matching angles, or proportional sides with the appropriate congruence-based criterion, produce one common positive length factor. Perimeters use that factor, areas its square, and volumes its cube; a partial change in dimensions need not preserve similarity.
 

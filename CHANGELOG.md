@@ -19,6 +19,7 @@
   - CMIMC's archive is gone from its site (404); its paper and solution links now open the same files in the source repository of CMIMC's own site, checked for all 33 papers and solutions (owner).
   - Later: the 7 CMIMC and 4 BMT proof-tagged problems retagged too (95 in all); PUMaC's 34 wait, since its archive is unreachable from here.
   - `derivative-extremum` stays as an isolated calculus card (owner); no AMC problem cites it.
+- **Incenter Splits the Area removed (owner: easy to derive):** `incenter-area-split` redirects to the Inradius Formula, whose Why it works already makes the split; its fact is now a Useful observation there, and its two exercises moved with it. 784 cards.
 - The semantic search index was not rebuilt: it needs the model-distillation venv, which this cloud container lacks; the new cards rank lexically until the next rebuild.
 
 **2026-11-17**
