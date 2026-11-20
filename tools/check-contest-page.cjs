@@ -165,6 +165,24 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const credit=page.locator('#prob-st .statement-credit');await credit.waitFor();assert.match(await credit.innerText(),/HMMT · Reproduced with permission/);assert.equal(await credit.locator('a').count(),0);
  assert.equal(await page.locator('[data-statement-fallback]').isVisible(),false);assert.match(await page.locator('.chain-official-note').innerText(),/as one PDF; this is problem 4\.$/);
  assert.equal(await page.locator('.ptree-node.is-filed').count(),1);assert.equal(await page.locator('.elo-box .elo-num').innerText(),String(JSON.parse(fs.readFileSync(path.join(__dirname,'manual-difficulty-ratings.json'),'utf8')).ratings['2019 HMMT February Combinatorics, Problem 4'][0]),'the rating comes from the data file');await fits();
+ // Contest searches use the same results for AMC and for archived papers.
+ const searches = [
+   ['2024 AMC 10A', ['2024 AMC 10A']],
+   ['2024 BMT', ['2024 BMT Algebra', '2024 BMT Discrete Math', '2024 BMT Geometry']],
+   ['PUMaC A Geometry 2009', ['2009 PUMaC Division A Geometry']],
+   ['2024 Yale Math Competitions', ['2024 Girls in Math at Yale Individual', '2024 MMATHS Individual']],
+   ['2024 CEMC Pascal', ['2024 Pascal Contest']]
+ ];
+ for (const [query, names] of searches) {
+   await page.locator('#search-input').fill(query);
+   await page.locator('.results-meta').filter({ hasText: query }).waitFor();
+   assert.deepEqual(await page.locator('.card-contest-result .card-name').allTextContents(), names, query);
+   assert.equal(await page.locator('.search-results > .card').first().locator('.badge-contest').innerText(), 'CONTEST');
+ }
+ await page.locator('.card-contest-result').click();
+ await page.locator('.db-group.is-shown .pp-tiles').waitFor();
+ assert.match(page.url(), /\/pascal-contest\/2024\/pascal-contest$/);
+ await fits();
  assert.equal(await page.locator('.katex-error').count(),0);assert.deepEqual(errors,[]);
  console.log(theme,width,'paper toggle, plain tiles, figures, compare-with choices, difficulty by question, subjects, years and 2021: passed');await page.close();
 }

@@ -1374,7 +1374,7 @@
       try { labels = m[1].split("+").map(decodeURIComponent).filter(Boolean); } catch (e) {}
       if (labels.length) return { type: "topic", labels };
     }
-    m = location.hash.match(/^#\/settings(?:\/(commands))?$/);
+    m = location.hash.match(/^#\/settings(?:\/(commands|credits))?$/);
     if (m) return { type: "settings", anchor: m[1] || null };
     m = location.hash.match(/^#\/formulas\/([\w-]+)(?:\/([\w-]+))?$/);
     if (m) {
@@ -4888,6 +4888,7 @@
   function renderSettingsPage() {
     shownIds = [];
     const theme = currentTheme();
+    const anchor = getRoute().anchor;
     $content.innerHTML = `
       <div class="settings-layout">
       <div class="settings-main">
@@ -4957,8 +4958,8 @@
           </div>
           <p class="settings-hint progress-msg" hidden></p>
         </section>
-        <section class="set-panel" id="set-credits">
-          <h3 class="set-panel-title">Credits and attribution</h3>
+        <details class="set-panel" id="set-credits"${anchor === "credits" ? " open" : ""}>
+          <summary class="set-panel-title">Credits and attribution</summary>
           <div class="set-row"><div class="set-text">
             <div class="set-name">Contest problem sources and license</div>
             <div class="set-desc">
@@ -4976,7 +4977,7 @@
               <p>Problems from the Sprint, Target and Team rounds of <a href="https://www.mathcounts.org/pastcompetition" target="_blank" rel="noopener noreferrer">MATHCOUNTS</a> Chapter, State and National competitions are listed the same way: each problem's page opens the official round and its solutions or answer key, from the papers the MATHCOUNTS Foundation posts free (2026 Chapter and State) or from the copies of the official papers kept by the <a href="https://mathteamnyc.weebly.com/mathcounts.html" target="_blank" rel="noopener noreferrer">MATHCOUNTS archive at mathteamnyc.weebly.com</a> (earlier years and the National competition); nothing is reproduced. That material is attributed to the MATHCOUNTS Foundation; the MAA license above does not apply to it.</p>
               <p>Problems from the individual Algebra, Geometry, Counting and Number Theory rounds of the <a href="https://mbmt.mbhs.edu/archive" target="_blank" rel="noopener noreferrer">Montgomery Blair Math Tournament</a> (MBMT) are listed the same way: each problem's page opens the official round and its solutions; nothing is reproduced. That material is attributed to the MBMT organizers at Montgomery Blair High School; the MAA license above does not apply to it.</p>
               <p>Problems from Part A of the <a href="https://science.ucalgary.ca/mathematics-statistics/engagement/educational-outreach/junior-math-contest/archive" target="_blank" rel="noopener noreferrer">Calgary Junior Mathematics Contest</a> (University of Calgary, 2004 to 2025) are listed the same way: each problem’s page opens the official paper and its solutions; nothing is reproduced. That material is attributed to the University of Calgary; the MAA license above does not apply to it.</p>
-              <p>Problem pages for the <a href="https://cemc.uwaterloo.ca/resources/past-contests" target="_blank" rel="noopener noreferrer">Fermat, Cayley and Pascal contests</a> link to the official papers and solutions. The 2025 statements and diagrams are © University of Waterloo, Centre for Education in Mathematics and Computing (CEMC), and formatted for this app under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.</p>
+              <p>Problem pages for the <a href="https://cemc.uwaterloo.ca/resources/past-contests" target="_blank" rel="noopener noreferrer">Fermat, Cayley and Pascal contests</a> link to the official papers and solutions. Statements and diagrams shown in the app are © University of Waterloo, Centre for Education in Mathematics and Computing (CEMC), and formatted under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.</p>
               <p>Problems from the <a href="https://ukmt.org.uk/competition-papers" target="_blank" rel="noopener noreferrer">Senior, Intermediate and Junior Mathematical Challenges</a> of the United Kingdom Mathematics Trust are listed the same way: each problem’s page opens the paper and its solutions as the UKMT posts them; nothing is reproduced. That material is © UKMT; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual test of the <a href="https://www.columbusstate.edu/math/tournament/previous-math-contest.php" target="_blank" rel="noopener noreferrer">Columbus State Invitational Mathematics Tournament</a> (Columbus State University) are listed the same way: each problem’s page opens the official test and its solutions; nothing is reproduced. That material is attributed to Columbus State University; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual round of the <a href="https://math.duke.edu/duke-math-meet" target="_blank" rel="noopener noreferrer">Duke Math Meet</a> (2007 to 2022) are listed the same way: each problem's page opens the round as Duke's mathematics department posts it, and its solutions where they were posted; nothing is reproduced. Duke Math Meet material is attributed to the Duke Math Meet; the MAA license above does not apply to it.</p>
@@ -4984,7 +4985,7 @@
               <p><a href="https://berkeley.mt/archives/bmt/" target="_blank" rel="noopener noreferrer">BMT</a> and <a href="https://pumac.princeton.edu/archives" target="_blank" rel="noopener noreferrer">PUMaC</a> entries link to the official contest papers and solutions. Their statements and solutions are not reproduced here.</p>
             </div>
           </div></div>
-        </section>
+        </details>
         <details class="set-panel set-lab">
           <summary class="set-panel-title">Experimental <span class="lab-tag">for fun</span></summary>
           <div class="set-body">
@@ -5013,7 +5014,7 @@
       </div>
       <aside class="set-preview" aria-label="Preview"></aside>
       </div>`;
-    if (getRoute().anchor === 'credits') setTimeout(() => $content.querySelector('#set-credits')?.scrollIntoView({block:'start'}), 0);
+    if (anchor === "credits") setTimeout(() => $content.querySelector("#set-credits")?.scrollIntoView({ block: "start" }), 0);
     fillSettingsPreview();
     const $cmdToggle = $content.querySelector(".command-toggle");
     if ($cmdToggle) $cmdToggle.addEventListener("click", () => {
@@ -5025,7 +5026,7 @@
     // #/settings/commands, the "All commands" link on every special page: open the list and
     // bring the Commands group into view. Deferred to after the router's hashchange handler (a
     // timer, not a frame: frames are paused in a background tab).
-    if (getRoute().anchor === "commands") {
+    if (anchor === "commands") {
       if ($cmdToggle && $content.querySelector(".command-all").hidden) $cmdToggle.click();
       const grp = $content.querySelector(".command-box");
       if (grp) setTimeout(() => grp.closest(".set-panel").scrollIntoView({ block: "start", behavior: "instant" }), 0);
@@ -7841,11 +7842,58 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const named = [out.fam, out.year, out.num].filter(x => x != null).length;
     return named >= 2 ? out : null;
   }
+  const CONTEST_QUERY_ALIASES = {
+    AHSME: ["AMC 12"], AJHSME: ["AMC 8"],
+    CEMC: ["Pascal Contest", "Cayley Contest", "Fermat Contest"],
+    HMMT: ["HMMT February", "HMMT November"],
+    MATHCOUNTS: ["MATHCOUNTS Chapter", "MATHCOUNTS State", "MATHCOUNTS National"],
+    MBMT: ["MBMT Lower", "MBMT Upper"],
+    PUMaC: ["PUMaC Division A", "PUMaC Division B"],
+    UKMT: ["UKMT JMC", "UKMT IMC", "UKMT SMC"],
+    "Girls in Math": ["Girls in Math at Yale"],
+    "Yale Math Competitions": ["MMATHS", "Girls in Math at Yale"],
+    "Math Prize": ["Math Prize for Girls"],
+    "Caltech Math Meet": ["CHMMC"]
+  };
+  const CONTEST_QUERY_SHORT = { feb: "february", nov: "november", div: "division", alg: "algebra", combo: "combinatorics", geo: "geometry", nt: "number theory", cs: "computer science" };
+  function contestQueryWords(text) {
+    const words = famSlug(text.replace(/([a-z])(?=\d)|(\d)(?=[a-z])/gi, "$& ")).split("-");
+    return words.filter(w => w && !/^(and|at|in|of|for|the|contest|competition|papers?|problems?|tests?|rounds?)$/.test(w))
+      .flatMap(w => Object.hasOwn(CONTEST_QUERY_SHORT, w) ? CONTEST_QUERY_SHORT[w].split(" ") : w);
+  }
+  const CONTEST_QUERY_NAMES = [
+    ...FAMILIES.filter(f => !/^(AMC |AIME$|Putnam$)/.test(f)).map(f => [f, [f]]),
+    ...Object.entries(CONTEST_QUERY_ALIASES)
+  ].map(([name, families]) => ({ families, name: contestQueryWords(name).join(" ") }))
+    .sort((a, b) => b.name.length - a.name.length);
+  function parseContestYearQuery(q) {
+    const exact = /\b(?:problem|prob|question)\s*(\d{1,2})\b|#\s*(\d{1,2})\b/i.exec(q);
+    const words = contestQueryWords(exact ? q.replace(exact[0], " ") : q);
+    const year = words.find(w => /^(19[5-9]\d|20\d\d)$/.test(w));
+    if (!year) return null;
+    const query = " " + words.filter(w => w !== year).join(" ") + " ";
+    const match = CONTEST_QUERY_NAMES.find(({ name }) => query.includes(" " + name + " "));
+    if (!match) return null;
+    // Match round names and division qualifiers against the actual paper names.
+    let remainder = query;
+    for (const { name, families } of CONTEST_QUERY_NAMES) {
+      if (match.families.every(f => families.includes(f))) remainder = remainder.replace(" " + name + " ", " ");
+    }
+    const rest = remainder.trim().split(/\s+/).filter(Boolean);
+    if (match.name === "ahsme" || match.name === "ajhsme") rest.push(match.name);
+    return { families: match.families, year: +year, num: exact && +(exact[1] || exact[2]), rest };
+  }
   // The problems a parsed reference names, newest first; any leftover words ("2025 aime
   // geometry") then rank them by how many of those words each problem's text carries.
-  function referencedProblems(q) {
-    const r = parseProblemQuery(q);
+  function referencedProblems(r) {
     if (!r) return null;
+    if (r.families) {
+      return r.families.flatMap(fam => DB_TREE[fam]?.[r.year] || []).filter(p => {
+        if (r.num && p.num !== r.num) return false;
+        const words = contestQueryWords(p.cname);
+        return r.rest.every(word => words.includes(word));
+      }).sort((a, b) => a.cname.localeCompare(b.cname) || a.num - b.num);
+    }
     const hits = PROBLEM_DB.filter(p => {
       if (r.year && p.year !== r.year) return false;
       if (r.num && p.num !== r.num) return false;
@@ -7971,7 +8019,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // else; the word matches then follow in their usual place without repeating them.
     // When it names problems that exist, the loose word matches are left out: "2024 aime 1
     // problem 3" would otherwise pull in every problem whose text says "problem".
-    let named = referencedProblems(query);
+    const ref = parseContestYearQuery(query) || parseProblemQuery(query);
+    let named = referencedProblems(ref);
     if (named && !named.length) named = null;
     // "AMC 10/12 number theory" names a book, not problem 12 of the AMC 10.
     const bookHits = bookMatches(query);
@@ -7982,9 +8031,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // A reference that names a contest and a year but no problem number ("2025 AIME I",
     // "2023 amc10b") also gets the paper itself as a result, ahead of its problems, linking to
     // that paper on its contest page. "2025 AIME" names two papers and gets both.
-    const ref = named && parseProblemQuery(query);
     const papers = [];
-    if (ref && ref.fam && ref.year && !ref.num) named.forEach(p => {
+    if (named && (ref.fam || ref.families) && ref.year && !ref.num) named.forEach(p => {
       let g = papers.find(x => x.cname === p.cname);
       if (!g) papers.push(g = { cname: p.cname, fam: p.fam, year: p.year, problems: [] });
       g.problems.push(p);
@@ -9832,14 +9880,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   function archiveStatement(p) {
     if (p.year >= 1998 && p.year <= 2026 && /^HMMT (February|November)$/.test(p.fam)) return HMMT_STATEMENTS;
-    if (p.year === 2025 && /^(Pascal|Cayley|Fermat) Contest$/.test(p.fam)) return CEMC_STATEMENTS;
+    if (p.year >= 2001 && p.year <= 2025 && /^(Pascal|Cayley|Fermat) Contest$/.test(p.fam)) return CEMC_STATEMENTS;
     if (/\bAHSME\b/.test(p.ref)) return AHSME_STATEMENTS;
     return null;
   }
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 32;
+  const STATEMENTS_V = 47;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {
