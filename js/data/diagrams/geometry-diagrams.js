@@ -7715,6 +7715,33 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
+  // A ball leaves the corner (0, 0) of a 3 x 2 table in the direction (1, 1). Folded, it bounces
+  // at (2, 2), (3, 1) and (2, 0) and ends at the corner (0, 2); unfolded, it is the straight segment
+  // from (0, 0) to (6, 6) through a 2 x 3 block of copies, length 6 sqrt 2 both ways.
+  DIAGRAMS["unfold-the-bounces"] = [(() => {
+    const k = 34, O1 = [38, 222], T = (x, y) => [O1[0] + k * x, O1[1] - k * y];
+    const O2 = [210, 250], U = (x, y) => [O2[0] + 34 * x, O2[1] - 34 * y];
+    const bounce = [[0, 0], [2, 2], [3, 1], [2, 0], [0, 2]];
+    let folded = 0; for (let i = 1; i < bounce.length; i++) folded += Math.hypot(bounce[i][0] - bounce[i - 1][0], bounce[i][1] - bounce[i - 1][1]);
+    const ok = Math.abs(folded - 6 * Math.SQRT2) < 1e-9 && 6 % 3 === 0 && 6 % 2 === 0 && [1, 2, 3, 4, 5].every(t => t % 3 !== 0 || t % 2 !== 0);
+    const grid = [];
+    for (let i = 0; i <= 2; i++) grid.push(seg(U(3 * i, 0), U(3 * i, 6), i % 2 ? FNT : DIM, 1.4));
+    for (let j = 0; j <= 3; j++) grid.push(seg(U(0, 2 * j), U(6, 2 * j), j % 3 ? FNT : DIM, 1.4));
+    const path = [];
+    for (let i = 1; i < bounce.length; i++) path.push(seg(T(...bounce[i - 1]), T(...bounce[i]), ACC, 2.4));
+    return wrap(430, 330, [
+      poly([T(0, 0), T(3, 0), T(3, 2), T(0, 2)], DIM, 1.8, ACCS), ...path,
+      ...[1, 2, 3].map(i => dot(T(...bounce[i]), GLD, 4)), dot(T(0, 0), DIM, 4.5), dot(T(0, 2), ACC, 5),
+      txt(add(T(0, 0), [0, 18]), "start", DIM, 12), txt(add(T(0, 2), [0, -10]), "end", ACC, 12),
+      txt(add(T(1.5, 0), [0, 34]), "the table, folded", DIM, 12),
+      poly([U(0, 0), U(3, 0), U(3, 2), U(0, 2)], DIM, 1.2, ACCS), ...grid,
+      seg(U(0, 0), U(6, 6), ACC, 2.6),
+      ...[[2, 2], [3, 3], [4, 4]].map(p => dot(U(...p), GLD, 4)), dot(U(0, 0), DIM, 4.5), dot(U(6, 6), ACC, 5),
+      txt(add(U(6, 6), [-8, -8]), "(6, 6)", ACC, 12, "end"), txt(add(U(3, 0), [0, 18]), "copies, unfolded", DIM, 12),
+      cap(430, 330, "Reflect the table, not the ball. In the copies the path is the straight line from (0, 0) in the direction (1, 1); it first meets a corner of a copy, a point (3m, 2n), at (6, 6). It crosses three grid lines on the way (x = 3, y = 2, y = 4), the three bounces, and both paths have length 6√2. Since m = 2 is even and n = 3 is odd, the ball ends at the corner (0, 2)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
   DIAGRAMS["tangency-equation"] = DIAGRAMS["tangency-condition"];
 
   // ---- Quadrilateral Inscribed in a Circle (pattern hub) ----
@@ -9282,6 +9309,30 @@ DIAGRAMS["trig-ceva"] = [(() => {
   // Spheres tangent to two planes, seen along the planes' common edge: each plane is a line
   // through the edge E, each sphere a circle tangent to both, and every center sits on the
   // bisector of the angle.
+  // The oblique cone with base radius 3 about O and vertex P = (3, 0, 8): the section y = 0 is the
+  // 6-8-10 right triangle PAB, and its incircle (radius 2, center (1, 2)) is the great circle of the
+  // largest sphere in the cone.
+  DIAGRAMS["cone-insphere"] = [(() => {
+    const k = 24, O = [150, 252], Q = (x, y) => [O[0] + k * x, O[1] - k * y];
+    const A = [3, 0], B = [-3, 0], P = [3, 8];
+    const a = Math.hypot(P[0] - B[0], P[1] - B[1]), b = Math.hypot(P[0] - A[0], P[1] - A[1]), c = 6;
+    const I = [(a * A[0] + b * B[0] + c * P[0]) / (a + b + c), (a * A[1] + b * B[1] + c * P[1]) / (a + b + c)];
+    const r = 2 * 24 / (a + b + c);
+    const ok = Math.abs(a - 10) < 1e-12 && Math.abs(b - 8) < 1e-12 && Math.abs(r - 2) < 1e-12 && Math.abs(I[0] - 1) < 1e-12 && Math.abs(I[1] - 2) < 1e-12;
+    return wrap(430, 330, [
+      seg(Q(-4.6, 0), Q(5.2, 0), FNT, 1.4),
+      poly([Q(...A), Q(...P), Q(...B)], DIM, 2, ACCS),
+      circ(Q(...I), r * k, ACC, 2.4, GLDS),
+      seg(Q(...P), Q(3, 0), FNT, 1.2, "4 4"),
+      dot(Q(...I), ACC, 4), dot(Q(0, 0), DIM, 3.5), dot(Q(1, 0), GLD, 4),
+      txt(add(Q(...P), [8, 0]), "P", DIM, 13, "start"), txt(add(Q(...A), [8, 14]), "A", DIM, 13, "start"), txt(add(Q(...B), [-8, 14]), "B", DIM, 13, "end"),
+      txt(add(Q(0, 0), [0, 18]), "O", DIM, 12), txt(add(Q(1, 0), [0, 18]), "T", GLD, 12),
+      txt(add(Q(-0.4, 4.5), [-6, 0]), "10", DIM, 13, "end"), txt(add(Q(3, 4.6), [8, 0]), "8", DIM, 13, "start"), txt(add(Q(-1.6, 0), [0, 18]), "6", DIM, 13),
+      txt(add(Q(...I), [0, -10]), "r = 2", ACC, 13),
+      cap(430, 330, "The section of the cone through its vertex P, perpendicular to the base and through the base's center O, is the triangle PAB with sides 6, 8, 10. Its incircle, radius 24 ÷ 12 = 2, is a great circle of the largest sphere in the cone; the sphere touches the base at T." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
   DIAGRAMS["spheres-two-planes"] = [(() => {
     const E = [40, 262], phi = 40, half = rad(phi / 2);
     const dirP = [1, 0], dirT = [Math.cos(rad(-phi)), Math.sin(rad(-phi))], bis = [Math.cos(-half), Math.sin(-half)];

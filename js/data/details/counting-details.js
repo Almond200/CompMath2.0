@@ -1702,6 +1702,7 @@ Drawing a figure without lifting the pencil, closed walks that use every street 
 - $R_{\text{lines}} = \dfrac{n^2 + n + 2}{2}$ — the maximum regions from $n$ lines, no two parallel and no three through one point
 - $R_{\text{circles}} = n^2 - n + 2$ — the maximum regions from $n$ circles, each pair meeting in two points
 - regions $= 1 + (\text{lines}) + (\text{crossings})$ for lines in the plane: each new line adds one region per crossing plus one, while each new circle that crosses the earlier curves at $k \gt 0$ points adds $k$ (a closed curve is cut into $k$ arcs, not $k + 1$)
+- $1 + \dbinom n2 + \dbinom n4$ — the regions cut from a disk by all chords of $n$ points on its circle, no three chords meeting inside: $1, 2, 4, 8, 16, 31, 57, \ldots$, which breaks the doubling pattern at $n = 6$
 
 ## Conditions
 The maximum needs general position: no two lines parallel and no three lines or circles through one point. Any parallel pair or triple concurrence loses regions, and problems often specify a configuration that deliberately fails it.
@@ -1712,6 +1713,8 @@ Incremental counting. When a new curve is drawn, it is cut by the earlier curves
 A new line crossing $k$ existing lines is cut into $k + 1$ pieces, so the lines add $1, 2, 3, \ldots$ new regions, and
 $$R_{\text{lines}} = 1 + \sum_{i=1}^{n} i = \frac{n^2 + n + 2}{2}.$$
 The same count line by line gives regions $= 1 + (\text{lines}) + (\text{crossings})$.
+
+Inside a disk the count is the same: each chord, drawn in turn, adds one region plus one for every earlier chord it crosses. There are $\binom n2$ chords, and every crossing comes from exactly one choice of four of the $n$ points (the two chords joining them in crossing pairs), so there are $\binom n4$ crossings and $1 + \binom n2 + \binom n4$ regions. Three chords through one interior point would merge crossings, which is why the count needs no three concurrent.
 
 The first circle makes $2$ regions. The $k$th circle crosses each earlier one twice, at $2(k - 1)$ points, which cut it into $2(k - 1)$ arcs, so it adds $2(k - 1)$ regions:
 $$R_{\text{circles}} = 2 + \sum_{k=2}^{n} 2(k - 1) = 2 + n(n - 1) = n^2 - n + 2.$$
@@ -2586,35 +2589,6 @@ Derangements, surjections, set partitions, and permutation-structure counts that
 
 ## Contest profile
 Advanced olympiad and Putnam counting, where EGFs handle counts that ordinary generating functions handle badly.
-`,
-
-"moser-circle": String.raw`
-## Key forms
-- $R(n) = \dbinom n4 + \dbinom n2 + 1$ — the regions cut from a disk by all chords of $n$ points on its circle, with no three chords meeting inside
-- $1, 2, 4, 8, 16, 31, 57, \ldots$ for $n = 1, 2, 3, \ldots$ — it agrees with $2^{n-1}$ up to $n = 5$ and then breaks
-
-## Conditions
-No three chords meet at one interior point. With a regular polygon chords do meet three at a time, and the count drops.
-
-## Why it works
-Apply [[eulers-polyhedron-formula|Euler's Formula]] $V - E + F = 2$ to the planar graph of points, chord crossings, and arcs. Its vertices are the $n$ points and the $\binom n4$ interior crossings, one for each choice of $4$ points, whose two diagonals cross:
-$$V = n + \binom n4.$$
-
-Each crossing lies on two chords, so the chords carry $2\binom n4$ crossings in all, and a chord with $j$ crossings is cut into $j + 1$ edges. Adding the $n$ arcs of the circle,
-$$E = \binom n2 + 2\binom n4 + n.$$
-
-Then $F = 2 - V + E = 2 + \binom n2 + \binom n4$, and removing the outer face leaves $R(n) = \binom n4 + \binom n2 + 1$. Equivalently, each new chord adds one region plus one more for every crossing it makes. For $n = 6$ this gives $15 + 15 + 1 = 31$, not $32$.
-
-## Useful observations
-- The formula is a warning: five data points agreeing with $2^{n-1}$ prove nothing, and the sequence breaks at exactly the moment most people stop checking.
-- Each interior crossing comes from choosing four points on the circle, giving $\binom n4$ vertices, which is what explains the shape of the formula.
-- The no-three-concurrent condition is essential and a common trap in problem statements.
-
-## Applications
-Regions cut by chords of a circle, and cautionary examples against extrapolating a pattern.
-
-## Contest profile
-A famous AMC and MATHCOUNTS trap; the instinct that the doubling pattern must continue is exactly what the problem punishes, so the formula is worth carrying.
 `,
 
 "gap-method": String.raw`

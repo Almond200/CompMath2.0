@@ -767,7 +767,7 @@ Conics, polar coordinates, vectors and transformations, and theorems about quadr
 | S10.3 Polar coordinates, tangency and determinants | Core II | `polar-coordinates`, `tangency-equation`, `determinant-geometric`, `lattice-points-gcd` | 4 |
 | S10.4 Vectors and transformations | Core | `vector-dot-product`, `vector-projection`, `reflection-composition`, `rotation-reflection-matrices`, `rotation-trick`, `rotation-center`, `linear-change-of-variables` | 17 |
 | S10.5 Theorems about quadrilaterals and hexagons | Core II | `british-flag-theorem`, `varignons-theorem`, `equiangular-hexagon-area` | 6 |
-| S10.6 Regions and neighborhoods | Extension | `moser-circle`, `steiner-neighborhood`, `isoperimetric-facts` | 7 |
+| S10.6 Regions and neighborhoods | Extension | `steiner-neighborhood`, `isoperimetric-facts` | 7 |
 | S10.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S10.8 Review Problems and S10.9 Challenge Problems | |
 
 ### S11. Space (Core)
@@ -1282,7 +1282,7 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 | G7.3 Cutting polygons into pieces (Core) | `area-by-pieces`, `trapezoid-parallelogram-areas`, `parallelogram-area`, `quadrilateral-diagonal-area`, `trapezoid-special-segments`, `varignons-theorem`, `circular-segment`, `inscribed-square`, `diagonal-angle-from-sides`, *(pattern)* `isosceles-trapezoid`, *(pattern)* `tethered-animal` |
 | G7.4 Symmetry and rotational structure (Core II) | `figure-symmetries`, `fit-copies`, *(pattern)* `square-crossing-segments` |
 | G7.5 Lattices, grids, unit geometry (Core) | `picks-theorem`, `lattice-points-gcd`, `british-flag-theorem` |
-| G7.6 Counting intersections, regions and pieces (Core) | `plane-regions`, `moser-circle`, `handshakes-diagonals`, `steiner-neighborhood`, *(pattern)* `counting-shapes`, *(pattern)* `zonogon-minkowski` |
+| G7.6 Counting intersections, regions and pieces (Core) | `plane-regions`, `handshakes-diagonals`, `steiner-neighborhood`, *(pattern)* `counting-shapes`, *(pattern)* `zonogon-minkowski` |
 | G7.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then G7.8 Review Problems and G7.9 Challenge Problems |
 
 ### G8. Three-dimensional geometry (Core II)

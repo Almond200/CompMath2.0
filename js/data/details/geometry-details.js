@@ -9932,3 +9932,71 @@ Angle chasing with equal sides or radii, heights and areas found on half the bas
 An AMC 8 and AMC 10 staple: one angle of an isosceles triangle is given and another is asked, often with two cases, or a height is found on half the base. On the AMC 12 and the AIME it is a step inside angle chases with radii and equal tangents.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"unfold-the-bounces": String.raw`
+## When to use
+A ball rolls on a rectangular table, a beam of light reflects inside a square room or a cube, or a path "continues by reflecting against the sides", and the question asks how long the path is before it first reaches a corner, how many bounces it makes, which corner it ends at, or where the $k$th bounce lands. A single bounce off one wall is [[reflect-across-the-line|reflecting across a line]]; a path that must stay on the surface of a solid is [[unfold-the-surface|unfolding a surface]].
+
+## How
+1. Put the box in coordinates: the table is $[0, a] \times [0, b]$ (a cube adds $[0, c]$) with the start at a convenient point, often the origin.
+2. Reflect the box across the wall the path hits, then across the next, and so on. The copies tile the plane by $a \times b$ rectangles, and the path becomes the straight line from the start in its first direction.
+3. Write the line as start $+\, t \cdot (\text{direction})$. A copy of a corner is a point $(am, bn)$ with $m$, $n$ integers, so solve for the smallest $t \gt 0$ that makes every coordinate a multiple of its side; this is often a divisibility or an $\operatorname{lcm}$, or a congruence when the start is not a corner.
+4. The length is the distance from the start to that point. Each vertical grid line $x = a, 2a, \ldots$ and each horizontal one the line crosses before then is one bounce.
+5. Fold back: an even $m$ means an even number of reflections in $x$, so the endpoint has $x = 0$; an odd $m$ gives $x = a$. The same for $n$ decides $y$.
+
+For the $3 \times 2$ table and a ball leaving $(0, 0)$ in the direction $(1, 1)$, the line $t(1, 1)$ first reaches a point $(3m, 2n)$ at $t = 6$, the point $(6, 6)$ with $m = 2$, $n = 3$. The path has length $6\sqrt2$, it crosses $x = 3$ and $y = 2, 4$, so it bounces $3$ times, and it ends at the corner $(0, 2)$.
+
+## Why it works
+Reflect the box across the wall where the path first hits it. The law of reflection says the outgoing part of the path makes the same angle with the wall as the incoming part, so the mirror image of the outgoing part across the wall continues the incoming part in a straight line, as when reflecting across a single line. In the reflected copy of the box, that image is a path with the same lengths and the same bounces, now starting where the first copy's straight line enters. Repeating at every wall, the whole path folds out into one straight line through a chain of copies, with the same length, and each wall it would have bounced off is a grid line the straight line crosses.
+
+The reflections of a rectangle $[0, a] \times [0, b]$ across its sides generate the tiling of the plane by the rectangles $[ia, (i + 1)a] \times [jb, (j + 1)b]$, and the corners of all the copies are exactly the points $(am, bn)$. Folding the plane back onto the box maps $x$ to $x$ reduced in the pattern $0 \to a \to 0$, so a coordinate $am$ goes to $0$ when $m$ is even and to $a$ when $m$ is odd. In space the cube's copies tile space and the same argument runs coordinate by coordinate.
+
+## Formulas it uses
+- [[reflection-coordinates]]: the copy of the box across a wall, and the folding back of a point, as $x \mapsto 2a - x$ or $x \mapsto -x$.
+- [[distance-3d]]: the length of the unfolded path in a cube or a box, as the distance between its two ends.
+- [[lattice-points-gcd]]: the first lattice point on a segment, and the number of grid lines crossed, come from a $\gcd$.
+
+## Common traps
+- Counting a crossing of a grid point as two bounces; a grid point is a corner, where the path ends.
+- Forgetting that the endpoint in the tiling must be folded back: $(6, 6)$ in the tiling of $3 \times 2$ rectangles is the corner $(0, 2)$ of the table, not $(3, 2)$.
+- Stopping at the first copy of a side instead of the first copy of a corner.
+- Starting at a point inside a side, not at a corner, and then solving $t \cdot d = (am, bn)$ without the starting offset.
+
+## Contest profile
+Rare but memorable on the AMC and AIME: a beam of light in a cube, or a path in a square that reflects until it hits a vertex, each a straight line in the tiling plus a short number-theory step.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"cone-insphere": String.raw`
+## Key forms
+- $r = \dfrac{[PAB]}{s}$ — the radius of the largest sphere in a cone is the inradius of the section $PAB$ through the vertex, perpendicular to the base, through its center
+- $r = \dfrac{Rh}{R + \ell}$ with $\ell = \sqrt{R^2 + h^2}$ — a right cone of base radius $R$ and height $h$
+- $AT = s - PB$ — where the sphere touches the base: the incircle's point of contact $T$ on $AB$
+- $\rho = \sqrt{R_1R_2}$ — the sphere in a frustum with base radii $R_1$ and $R_2$, the incircle of its trapezoid section
+
+## Conditions
+The cone has a circular base and any vertex $P$ off the base plane; when the foot of $P$ is the center the cone is right, and any plane through the axis will do. For an oblique cone the section must be the plane through $P$ perpendicular to the base, which passes through the center $O$ of the base circle and the foot of $P$; any other plane through $P$ and $O$ gives a triangle whose incircle is not a great circle of a sphere inside the cone. $A$ and $B$ are where that plane meets the base circle.
+
+## Why it works
+Call the plane $\Pi$; it is a plane of symmetry of the cone. First, no sphere in the cone is larger than the incircle. If a ball of radius $\rho$ about $X$ lies in the cone, so does its mirror image in $\Pi$, about $X'$. With $M = \frac{X + X'}{2}$, every point $M + v$ with $\lvert v\rvert \le \rho$ is the midpoint of $X + v$ and $X' + v$, one point of each ball, so, the cone being convex, the ball of radius $\rho$ about $M$ lies in it too. $M$ is in $\Pi$, so that ball's great circle in $\Pi$ lies in the triangle $PAB$, and $\rho \le r$.
+
+Second, the incircle is reached. Let $S$ be the sphere whose great circle in $\Pi$ is the incircle of $PAB$, touching the base plane at the incircle's contact point $T$ on $AB$. The lines from $P$ tangent to $S$ form a right circular cone $K'$ whose axis $PI$ lies in $\Pi$, and in $\Pi$ it shows as the two lines $PA$ and $PB$, both tangent to the incircle. Since $\Pi$ contains the axis of $K'$ and the normal of the base plane, these two generators decide the shape of the section: the base plane meets both of them on the same side of $P$, at $A$ and $B$, so it cuts $K'$ in an ellipse $E$ with its axis along $AB$ and its ends at $A$ and $B$.
+
+$S$ is a Dandelin sphere of $E$, so $T$ is a focus. Indeed, let $S_2$ be the second sphere inside $K'$ tangent to the base plane, on the far side from $P$, at $T_2$. For a point $Y$ of $E$, $YT$ and $YT_2$ are tangent lengths to $S$ and $S_2$, equal to the lengths along the generator $PY$ from $Y$ to the circles where $S$ and $S_2$ touch $K'$; so $YT + YT_2$ is the distance between those two circles along a generator, the same for every $Y$. The foci $T$ and $T_2$ lie on the major axis, so the major axis is $AB$, of length $2R$, and the center of $E$ is the midpoint $O$ of $AB$. Every point of an ellipse is within its semi-major axis of its center, so $E$ lies in the base disk of radius $R$. Hence every segment from $P$ to a point inside $E$ ends in the base, the part of $K'$ above the base plane lies inside the cone, and $S$, which lies inside that part, lies inside the cone.
+
+For a right cone the section is isosceles with base $2R$, height $h$ and legs $\ell$, so its area is $Rh$, its semiperimeter $R + \ell$, and $r = \frac{Rh}{R + \ell}$. In the oblique case $E$ meets the base circle only at $A$ and $B$, so $S$ touches the side of the cone only on the generators $PA$ and $PB$. The contact point is the incircle's: the tangents from $A$ have length $s - PB$, so $AT = s - PB$.
+
+A frustum is a cone with its top cut off, and the same [[cross-section-method|slice through the axis]] gives an isosceles trapezoid with parallel sides $2R_1$ and $2R_2$ and an inscribed circle of radius $\rho$. Equal tangents from each vertex make each leg $R_1 + R_2$, and the height is $2\rho$, so $4\rho^2 = (R_1 + R_2)^2 - (R_1 - R_2)^2 = 4R_1R_2$ and $\rho = \sqrt{R_1R_2}$.
+
+## Useful observations
+- The only three-dimensional step is choosing the right plane; after that it is the [[inradius-area|inradius]] $r = \frac{K}{s}$ of a triangle, with $K$ half the base $2R$ times the height of $P$ above the base.
+- For an oblique cone, the plane through $P$ and $O$ perpendicular to the base is the one to cut; the triangle is scalene, and its two slanted sides come from the distance formula.
+- The same slice handles a sphere in a frustum: the axial section is an isosceles trapezoid with an incircle, so its legs equal the sum of the two base radii ([[pitots-theorem|Pitot]]), and the sphere's diameter is the frustum's height.
+
+## Applications
+Finding the largest ball that fits in a cone, a slanted cone, or a truncated cone, and setting up any problem where a sphere touches the side and base of a cone, before slicing through the axis finishes it.
+
+## Contest profile
+An AMC 12 and AIME staple in the right-cone and frustum form; the oblique cone, from the harder invitational contests, is the version where the choice of plane needs an argument.
+`
+});

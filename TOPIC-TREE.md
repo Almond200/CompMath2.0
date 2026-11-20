@@ -1,6 +1,6 @@
 # Topic tree
 
-**Calculus area (2026-11-13, TQ21):** `alg.calc` with four leaves (Limits; Derivatives, rates and extrema; Integrals and areas; Series and convergence) was added so SMT's Calculus tests could be filed; the tree now has 462 nodes. It holds those 110 problems; the 2011 HMMT two-subject calculus questions still sit under precalculus nodes and can move here.
+**Calculus area removed (owner, 2026-11-17):** the owner decided the app keeps no calculus, so `alg.calc` and its four leaves are gone with the 110 SMT Calculus problems they held; the tree is back to 457 nodes. (It was added 2026-11-13 for TQ21.)
 
 **Status (2026-11-10):** T3 and requested tree finalization complete: 457 nodes, 28 areas, 314 leaves; all 4,725 problems filed and all 774 cards retained (739 homes, 35 general methods without). [Tree finalization after the full tagging pass](AUDITS.md#tree-finalization-after-the-full-tagging-pass) records the final decisions; [Tree repair log](AUDITS.md#tree-repair-log) records migrations. [Accuracy review 5: GCD, LCM and divisor counts](AUDITS.md#accuracy-review-5-gcd-lcm-and-divisor-counts) records the latest targeted review; [Tree depth and practice capacity](AUDITS.md#tree-depth-and-practice-capacity) measures depth and practice supply. Earlier counts and test filings below are historical. Tree-only T4 is implemented in [Tree-only Practice a topic](AUDITS.md#tree-only-practice-a-topic); techniques, T4b/T5/T6 and textbooks remain deferred.
 
@@ -231,11 +231,6 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Quadratic optimization `[alg.ineq.optimize.quad]`
     - Optimization with a constraint `[alg.ineq.optimize.constraint]`
     - Optimization over the integers `[alg.ineq.optimize.integer]`
-- **Calculus** `[alg.calc]`
-  - Limits `[alg.calc.limit]`
-  - Derivatives, rates and extrema `[alg.calc.deriv]`
-  - Integrals and areas `[alg.calc.integral]`
-  - Series and convergence `[alg.calc.series]`
 
 ### Counting & Probability `[cp]`
 

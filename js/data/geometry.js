@@ -2290,6 +2290,16 @@ window.MATH_SECTIONS.push({
           level: ["AIME"]
         },
         {
+          id: "cone-insphere",
+          name: "Largest Sphere in a Cone",
+          latex: String.raw`r_{\text{sphere}} = r_{\triangle PAB} = \frac{[PAB]}{s}, \qquad \text{right cone: } r = \frac{Rh}{R + \ell}`,
+          description: String.raw`The largest sphere inside a cone with a circular base, right or oblique, has as a great circle the incircle of the triangle $PAB$ cut from the cone by the plane through the vertex $P$ perpendicular to the base and through its center; $A$ and $B$ are the ends of the base diameter in that plane. So its radius is that triangle's inradius, area over semiperimeter. For a right cone with base radius $R$, height $h$ and slant height $\ell$ this is $\frac{Rh}{R + \ell}$.`,
+          keywords: ["sphere inscribed in a cone", "largest sphere in a cone", "oblique cone", "slanted cone", "insphere", "axial cross section", "incircle of the cross section", "sphere in a frustum"],
+          importance: "lower",
+          tier: "AIME Early",
+          level: ["AMC12", "AIME"]
+        },
+        {
           id: "descartes-sphere-theorem",
           name: "Soddy–Gosset Theorem (3D Descartes)",
           latex: String.raw`(k_1 + k_2 + k_3 + k_4 + k_5)^2 = 3\left(k_1^2 + k_2^2 + k_3^2 + k_4^2 + k_5^2\right)`,

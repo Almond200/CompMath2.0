@@ -1,5 +1,21 @@
 # Changelog
 
+**2026-11-20**
+
+- **Moser's Circle merged (owner):** the chord-region count $1+\binom n2+\binom n4$ is now a Key form of `plane-regions`, renamed Regions from Lines, Circles and Chords, and proved in its Why it works; `moser-circle` redirects there, its two exercises and the lesson links (S6, S10.6, G7) moved over, and S10.6 now lists it as a prerequisite since S6.4 teaches it.
+- **Reduction formulas (owner, "all the trig induction formulas"):** `reduction-identities` already held $90^\circ-\theta$, $-\theta$ and $180^\circ-\theta$; it is now Reduction Formulas (Cofunction, Sign & Periodicity) with every form for $90^\circ$, $180^\circ$ and $270^\circ\pm\theta$, the periods, and the rule "odd multiples swap the function, the sign is the quadrant's", all proved by quarter turns of the unit circle. Importance low → medium (27 problems cite it).
+- **Two new cards (owner, P75 and P76):** `unfold-the-bounces` (method: reflect the box, not the path; a corner is a lattice point $(am, bn)$), now cited by 2002 AIME I #11 and 2025 AMC 10B #25 instead of Reflecting Across a Line; and `cone-insphere` (the largest sphere in a cone, right or oblique, has the incircle of the section through the vertex perpendicular to the base as a great circle; frustum $\rho=\sqrt{R_1R_2}$), cited by 2014 HMMT February Geometry #5 and 2014 AMC 10B #23 / 12B #19. The oblique case was checked numerically for seven apexes and is proved with a Dandelin sphere. Each has a figure, an example and its routes. 783 cards.
+- `tools/add-to-list.py` keeps a blurb's "N cards across M groups" true as well as "sections".
+- **Chart labels no longer covered (owner):** a chart column that is a link (difficulty by question, years, Elo bins) labels itself, so it no longer also opens the problem preview on top of that label. Every chart label was checked for clipping at 1280 and 375 px.
+- **Popups fit a phone:** a hover preview with a figure was 420 px wide and widened the page on a 375 px screen (the intermittent overflow in `check-browse.cjs`); floating popups now keep 8 px from each edge.
+- **Contest sections on pages (owner):** the setting once called Contest lists is renamed so it is not mistaken for Lists in Learn; its choices are Folded and Unfolded, its text names the pages it affects, and it has a preview screen (a card's practice problems).
+- **Ratings below 100 (owner):** 415 author estimates were pinned at a floor of 100 (CEMC, UKMT, MBMT, Calgary, Columbus). Each is re-graded from its own solution sketch and the contest's level, from 10 (one-line arithmetic in an early Pascal or JMC question) to 90; nothing goes below 10. LIVE's own floor is 370, every early AMC 8 #1.
+- The semantic search index was not rebuilt: it needs the model-distillation venv, which this cloud container lacks; the new cards rank lexically until the next rebuild.
+
+**2026-11-17**
+
+- **No calculus:** at the owner's word the 110 SMT Calculus problems and the Calculus area of the topic tree (`alg.calc`, TQ21) are removed; the tree is back to 457 nodes, and nothing else depended on them.
+
 **2026-11-15**
 
 - **CHMMC, the Caltech Harvey Mudd Math Competition (now the Caltech Math Meet), done:** a new family at the owner's request; each problem opens the Individual round and its solutions on the Caltech Math Meet archive. every sitting from 2010 to 2026 is filed (248 problems) with tree filings, cards and author-estimated ratings; two official answers are corrected (2021 #14 and 2012 Fall #6).
