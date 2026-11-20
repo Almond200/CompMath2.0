@@ -18,7 +18,11 @@ bad, n, figs, nofig = [], 0, 0, 0
 withfig, seen = set(), set()
 statement_dir = os.path.join(ROOT, "js/data/problems/statements")
 hmmt_rounds = {
-    "february": {"algebra-and-number-theory": "algnt", "combinatorics": "comb", "geometry": "geo"},
+    "february": {
+        "algebra-and-number-theory": "algnt", "algebra": "alg", "combinatorics": "comb", "geometry": "geo",
+        "advanced-topics": "adv", "algebra-and-combinatorics": "algcomb",
+        "algebra-and-geometry": "alggeo", "combinatorics-and-geometry": "combgeo",
+    },
     "november": {"general": "gen", "theme": "thm"},
 }
 for f in sorted(glob.glob(os.path.join(statement_dir, "**", "*.js"), recursive=True)):
@@ -36,7 +40,7 @@ for f in sorted(glob.glob(os.path.join(statement_dir, "**", "*.js"), recursive=T
         s = s.replace("\\$", "")   # an escaped dollar sign is not a delimiter
         if slug not in (db_slugs if source else slugs): bad.append(f"{slug}: not a problem in the database")
         if s.replace("$$", "").count("$") % 2: bad.append(f"{slug}: unbalanced $")
-        if re.search(r"<[A-Za-z/]", re.sub(r"\$[^$]*\$", "", s)): bad.append(f"{slug}: raw tag outside maths")
+        if re.search(r"<[A-Za-z/]", re.sub(r"\$\$.*?\$\$|\$[^$]*\$", "", s, flags=re.S)): bad.append(f"{slug}: raw tag outside maths")
         if re.search(r"&(?:lt|gt|amp|nbsp|quot|#\d+);", s): bad.append(f"{slug}: an HTML entity was not decoded")
         if source == "hmmt":
             match = re.fullmatch(r"(\d{4})-hmmt-(february|november)-([a-z-]+)-\d+", slug)

@@ -4960,7 +4960,7 @@
             <div class="set-desc">
               <p>AMC, AJHSME, AHSME and AIME problems are &copy; Mathematical Association of America, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. This credit applies to their statements and figures throughout the app, including textbooks, previews and practice sets.</p>
               <p>Most text, figures and answer keys come from <a href="https://live.poshenloh.com/past-contests" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>. Some papers also use MAA PDF copies, the <a href="https://wiki.randommath.com/" target="_blank" rel="noopener noreferrer">Random Math wiki</a> and the <a href="https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>, and some answer keys were checked against those published by <a href="https://www.thethinkacademy.com/" target="_blank" rel="noopener noreferrer">Think Academy</a>. Statements have been reformatted for display, including LaTeX and figure layout.</p>
-              <p>Problems from the individual rounds of <a href="https://www.hmmt.org/www/archive/problems" target="_blank" rel="noopener noreferrer">HMMT February and November</a> are listed by topic and difficulty. The 2026 HMMT February and November individual statements and diagrams are reproduced with permission from HMMT. Problem pages link to the official papers and solutions. Mock contests also use author-restated prompts from the <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf" target="_blank" rel="noopener noreferrer">2019 HMMT February Geometry paper</a>, with answer values checked against its <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/solutions.pdf" target="_blank" rel="noopener noreferrer">official solutions</a>.</p>
+              <p>Problems from the individual rounds of <a href="https://www.hmmt.org/www/archive/problems" target="_blank" rel="noopener noreferrer">HMMT February and November</a> are listed by topic and difficulty. Individual statements and diagrams are reproduced with permission from HMMT. Problem pages link to the official papers and solutions. Mock contests also use author-restated prompts from the <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf" target="_blank" rel="noopener noreferrer">2019 HMMT February Geometry paper</a>, with answer values checked against its <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/solutions.pdf" target="_blank" rel="noopener noreferrer">official solutions</a>.</p>
               <p>Problems from the Individual round of <a href="https://www.arml.com/ARML/arml_2019/page/index.php?page_type=public&amp;page=4" target="_blank" rel="noopener noreferrer">ARML</a> (2009 to 2014 and 2016 to 2019, the years ARML has published) are listed the same way: their statements and solutions are not reproduced, and each problem's page opens ARML's official contest booklet at the round. The Individual round of ARML Local, ARML's own local contest, is listed the same way for 2009 to 2014, from the same book. ARML problems are &copy; American Regions Mathematics League; the MAA license above does not apply to them.</p>
               <p>Problems from the subject tests of the <a href="https://www.stanfordmathtournament.com/past-tests/problems" target="_blank" rel="noopener noreferrer">Stanford Math Tournament</a> (SMT: Algebra, Geometry, and Advanced, Discrete or in 2021 Combinatorics and Number Theory) are listed the same way: each problem's page opens SMT's official test and its official solutions; nothing is reproduced. SMT material is attributed to SMT; the MAA license above does not apply to it.</p>
               <p>Problems from Part I (the multiple-choice individual test) of the <a href="https://mathcomp.math.umd.edu/past-contests/" target="_blank" rel="noopener noreferrer">University of Maryland High School Mathematics Competition</a> (UMD HSMC) are listed the same way: each problem's page opens the year's official paper and solutions; nothing is reproduced. That material is attributed to the competition; the MAA license above does not apply to it.</p>
@@ -6086,14 +6086,14 @@
     lists.forEach(list => practiceHistoryObserver.observe(list));
     update();
   }
-  function practiceExplanationHtml(p) {
+  function practiceExplanationHtml(p, showSource) {
     if (!p) return '';
     const { chain, altIds, chainCol } = chainParts(p);
-    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, chainCol, chain, altIds, solutionLinksHtml(p))}</div>`;
+    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, chainCol, chain, altIds, solutionLinksHtml(p, showSource))}</div>`;
   }
   // Open in app and Open in AoPS under a solution's three columns (practice review, textbooks).
-  function solutionLinksHtml(p) {
-    const ext = p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.urlLabel === "archive" ? "Open in the archive" : "Open in AoPS"} ${uiIcon("arrow-up-right")}</a>` : "";
+  function solutionLinksHtml(p, showSource = true) {
+    const ext = showSource && p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.urlLabel === "archive" ? "Open in the archive" : "Open in AoPS"} ${uiIcon("arrow-up-right")}</a>` : "";
     return `<div class="practice-solution-links"><a class="aops-btn" href="#/problem/${p.slug}">Open in app</a>${ext}</div>`;
   }
   function practiceAnswerChoices(set, slug, finished) {
@@ -6164,13 +6164,13 @@
       </section>
       <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p && (!mock || finished) ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
         ${paper ? `${inlinePaper ? `<div class="practice-set-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div></div>` : ''}
-          <div class="practice-paper"><p data-statement-fallback>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. Compare your answer with the official solution and mark it below.` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. When you review, you check it against the official solution.`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${inlinePaper && p.urlLabel === "archive" ? "Open the official paper" : "Open the problem"} ${uiIcon("arrow-up-right")}</a></div>`
+          <div class="practice-paper"><p data-statement-fallback>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. Compare your answer with the official solution and mark it below.` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. When you review, you check it against the official solution.`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`
           : p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>Your answer</h3>
           ${aime || exact || paper ? (set.answers[slug] ? `<p class="practice-submitted">${exact ? exactAnswerHtml(set.answers[slug]) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
           ${paper ? `<div class="practice-self">${p.solUrl ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
-          ${practiceExplanationHtml(p)}`
+          ${practiceExplanationHtml(p, !paper)}`
           : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact || paper ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? 'Exact value (fractions, sqrt, pi)' : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact || paper ? 'text' : 'numeric'}" maxlength="${paper ? '60' : exact ? '120' : '3'}" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
       </section></div>`;
@@ -6251,7 +6251,7 @@
     });
     $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; schedulePracticeSave(); const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-marked', e.target.checked); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${e.target.checked ? ', marked for review' : ''}`); });
     savePractice();
-    if (p && (!paper || inlinePaper)) showStatement(p, '.practice-set-st');
+    if (p && (!paper || inlinePaper)) showStatement(p, '.practice-set-st', mock && !paper);
     $content.querySelectorAll('[data-self]').forEach(b => b.addEventListener('click', () => {
       const v = b.getAttribute('aria-pressed') === 'true' ? null : b.dataset.self;
       if (!practiceSessions.selfMark(set, slug, v)) return;
@@ -9805,18 +9805,22 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const MAA_RE = /\b(AMC|AIME|AJHSME)\b/;
   const HMMT_STATEMENTS = {
     dir: "hmmt",
-    credit: `© HMMT · Reproduced with permission · <a href="https://www.hmmt.org/www/archive/problems" target="_blank" rel="noopener noreferrer">HMMT archive</a>`
+    credit: "© HMMT · Reproduced with permission"
   };
   const CEMC_STATEMENTS = {
     dir: "cemc",
-    credit: `© University of Waterloo (CEMC) · Formatted for this app under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a> · <a href="https://cemc.uwaterloo.ca/resources/past-contests" target="_blank" rel="noopener noreferrer">CEMC archive</a>`
+    credit: `© University of Waterloo (CEMC) · Formatted for this app under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>`
   };
   const AHSME_STATEMENTS = {
     dir: "ahsme",
-    credit: `© Mathematical Association of America · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> · <a href="https://live.poshenloh.com/past-contests/amc12" target="_blank" rel="noopener noreferrer">AHSME archive on LIVE by Po-Shen Loh</a>`
+    credit: `© Mathematical Association of America · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> · LIVE by Po-Shen Loh`
   };
+  function problemSourceLabel(p) {
+    if (p.sourceMirror) return "Open the original paper (mirror)";
+    return p.urlLabel === "archive" ? "Open in archive" : "Open on AoPS";
+  }
   function archiveStatement(p) {
-    if (p.year === 2026 && /^HMMT (February|November)$/.test(p.fam)) return HMMT_STATEMENTS;
+    if (p.year >= 1998 && p.year <= 2026 && /^HMMT (February|November)$/.test(p.fam)) return HMMT_STATEMENTS;
     if (p.year === 2025 && /^(Pascal|Cayley|Fermat) Contest$/.test(p.fam)) return CEMC_STATEMENTS;
     if (/\bAHSME\b/.test(p.ref)) return AHSME_STATEMENTS;
     return null;
@@ -9824,7 +9828,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 31;
+  const STATEMENTS_V = 32;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {
@@ -9839,16 +9843,18 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return statementLoads[file];
   }
   // `box` picks the section to fill: the problem page's own, or the home page's problem of the day.
-  function showStatement(p, box = "#prob-st") {
-    const extra=window.MATH_MOCK_EXTRAS?.[p.slug];
-    const archive = archiveStatement(p);
-    (extra ? Promise.resolve(true) : loadStatements(archive ? `${archive.dir}/${p.year}` : p.year)).then(() => {
-      const st = extra ? {s:extra.statement} : window.MATH_STATEMENTS && window.MATH_STATEMENTS[p.slug];
+  function showStatement(p, box = "#prob-st", preferMock = false) {
+    const extra = window.MATH_MOCK_EXTRAS?.[p.slug];
+    const source = archiveStatement(p);
+    const useMock = extra && (preferMock || !source);
+    const archive = useMock ? null : source;
+    (useMock ? Promise.resolve(true) : loadStatements(archive ? `${archive.dir}/${p.year}` : p.year)).then(() => {
+      const st = useMock ? extra.statement : window.MATH_STATEMENTS?.[p.slug];
       const wrap = $content.querySelector(`${box}[data-slug="${p.slug}"]`);
       if (!st || !wrap) return;
       const body = wrap.querySelector(".prob-statement");
       body.textContent = "";
-      // A figure sits in the text as @@fig:<path>@@ and is an SVG file beside the statements.
+      // A figure sits in the text as @@fig:<path>@@ and uses an SVG or PNG in the figures directory.
       (typeof st === "string" ? st : st.s).split(/@@fig:([^@]+)@@/).forEach((part, i) => {
         if (i % 2) {
           const img = new Image();
@@ -10392,7 +10398,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
         </section>` : ""}
         <p class="prob-note" data-statement-fallback>${p.sourceMirror ? `The round's original paper is hosted by an external archive${p.num ? `; this is problem ${p.num}` : ""}.` : p.urlLabel === "archive" ? (/^ARML/.test(p.fam) ? `The statement is in the contest's official booklet, open at the Individual round${p.num ? `; this is problem I-${p.num}` : ""}.` : `The statement is in the round's official paper, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.`) : "Solutions live on the Art of Problem Solving wiki."}</p>
-        ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.sourceMirror ? "Open the original paper (mirror)" : p.urlLabel === "archive" ? "Open the official paper" : "Open on AoPS"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
+        ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
         ${chainHtml}
         ${SOLUTION_YEARS.has(String(p.year)) ? `<section class="prob-chain prob-solution${pv ? " pv-sol" : ""}"${pv ? "" : ` id="prob-sol"`} data-slug="${p.slug}" hidden>
           <h4>Solution</h4>

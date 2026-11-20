@@ -2,6 +2,14 @@
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
 const base = process.env.COMPMATH_URL || 'http://localhost:8898';
+const roundLabels = {
+  'Algebra and Number Theory': 'Alg & NT',
+  'Combinatorics': 'Combo',
+  'Advanced Topics': 'Adv Topics',
+  'Algebra and Combinatorics': 'Alg & Combo',
+  'Algebra and Geometry': 'Alg & Geo',
+  'Combinatorics and Geometry': 'Combo & Geo',
+};
 // The 2011 mixed papers reuse 27 questions across 60 paper references.
 // Preserve those paper references while requiring shared questions to agree.
 const fs = require('node:fs'), vm = require('node:vm');
@@ -59,14 +67,32 @@ for (const refs of sharedPapers) {
         const count = year === 2011 ? 20 : 10;
         await page.goto(`${base}/#/problems/hmmt-february/${year}`);
         await page.locator('.ct-papers [role="tab"]').first().waitFor();
-        assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(), rounds.map(([round]) => round.replaceAll(' and ', ' & ')));
+        assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(), rounds.map(([round]) => roundLabels[round] || round));
         assert.equal(await page.locator('.db-group.is-shown .pp-tiles .br-row').count(), count);
         for (const [round, folder] of rounds) {
-          const numbers = year === 2000 && round === 'Algebra' ? [1, 4, 5, 6, count] : year === 2010 && round === 'Algebra' ? [1, 2, count] : year === 2018 && round === 'Geometry' ? [1, 6, count] : [1, count];
+          let numbers = [1, count];
+          if (year === 2000 && round === 'Algebra') numbers = [1, 4, 5, 6, count];
+          if (year === 2000 && round === 'Geometry') numbers = [1, 2, 3, count];
+          if (year === 2010 && round === 'Algebra') numbers = [1, 2, count];
+          if (year === 2018 && round === 'Geometry') numbers = [1, 6, count];
           for (const number of numbers) {
             const ref = `${year} HMMT February ${round}, Problem ${number}`;
             const slug = ref.replace(', Problem ', ' ').toLowerCase().replaceAll(' ', '-');
             await page.goto(`${base}/#/problem/${slug}`);
+            const statement = page.locator('#prob-st');
+            const credit = statement.locator('.prob-statement + .statement-credit');
+            await credit.waitFor();
+            assert.match(await credit.innerText(), /HMMT · Reproduced with permission/);
+            assert.equal(await credit.locator('a').count(), 0);
+            assert.equal(await page.getByRole('link', { name: 'Open in archive', exact: true }).count(), 1);
+            if (year === 2000 && round === 'Geometry') {
+              const figure = statement.locator('img.prob-figure');
+              if (number === 2) assert.equal(await figure.count(), 0);
+              if (number === 3) {
+                assert.match(await figure.getAttribute('src'), /\/hmmt\/2000\/feb-geo-3-1\.png\?/);
+                await page.waitForFunction(() => document.querySelector('#prob-st img').naturalWidth > 0);
+              }
+            }
             const toggle = page.locator('.prob-chain .chain-toggle');
             await toggle.waitFor();
             if (await toggle.getAttribute('aria-expanded') === 'false') await toggle.click();
