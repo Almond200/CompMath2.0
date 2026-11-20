@@ -4960,7 +4960,7 @@
             <div class="set-desc">
               <p>AMC, AJHSME, AHSME and AIME problems are &copy; Mathematical Association of America, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. This credit applies to their statements and figures throughout the app, including textbooks, previews and practice sets.</p>
               <p>Most text, figures and answer keys come from <a href="https://live.poshenloh.com/past-contests" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>. Some papers also use MAA PDF copies, the <a href="https://wiki.randommath.com/" target="_blank" rel="noopener noreferrer">Random Math wiki</a> and the <a href="https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>, and some answer keys were checked against those published by <a href="https://www.thethinkacademy.com/" target="_blank" rel="noopener noreferrer">Think Academy</a>. Statements have been reformatted for display, including LaTeX and figure layout.</p>
-              <p>Problems from the individual rounds of <a href="https://www.hmmt.org/www/archive/problems" target="_blank" rel="noopener noreferrer">HMMT February</a> (Algebra and Number Theory, Combinatorics, Geometry) and HMMT November (General, Theme) are listed by topic and difficulty. Their statements and solutions are not reproduced: each problem's page opens the round's official paper and its official solutions on the HMMT archive. Mock contests also use author-restated prompts from the <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf" target="_blank" rel="noopener noreferrer">2019 HMMT February Geometry paper</a>, with answer values checked against its <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/solutions.pdf" target="_blank" rel="noopener noreferrer">official solutions</a>. HMMT material is attributed separately; the MAA license above does not apply to it.</p>
+              <p>Problems from the individual rounds of <a href="https://www.hmmt.org/www/archive/problems" target="_blank" rel="noopener noreferrer">HMMT February and November</a> are listed by topic and difficulty. The 2026 HMMT February individual statements and diagram are reproduced with permission from HMMT. Problem pages link to the official papers and solutions. Mock contests also use author-restated prompts from the <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf" target="_blank" rel="noopener noreferrer">2019 HMMT February Geometry paper</a>, with answer values checked against its <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/solutions.pdf" target="_blank" rel="noopener noreferrer">official solutions</a>.</p>
               <p>Problems from the Individual round of <a href="https://www.arml.com/ARML/arml_2019/page/index.php?page_type=public&amp;page=4" target="_blank" rel="noopener noreferrer">ARML</a> (2009 to 2014 and 2016 to 2019, the years ARML has published) are listed the same way: their statements and solutions are not reproduced, and each problem's page opens ARML's official contest booklet at the round. The Individual round of ARML Local, ARML's own local contest, is listed the same way for 2009 to 2014, from the same book. ARML problems are &copy; American Regions Mathematics League; the MAA license above does not apply to them.</p>
               <p>Problems from the subject tests of the <a href="https://www.stanfordmathtournament.com/past-tests/problems" target="_blank" rel="noopener noreferrer">Stanford Math Tournament</a> (SMT: Algebra, Geometry, and Advanced, Discrete or in 2021 Combinatorics and Number Theory) are listed the same way: each problem's page opens SMT's official test and its official solutions; nothing is reproduced. SMT material is attributed to SMT; the MAA license above does not apply to it.</p>
               <p>Problems from Part I (the multiple-choice individual test) of the <a href="https://mathcomp.math.umd.edu/past-contests/" target="_blank" rel="noopener noreferrer">University of Maryland High School Mathematics Competition</a> (UMD HSMC) are listed the same way: each problem's page opens the year's official paper and solutions; nothing is reproduced. That material is attributed to the competition; the MAA license above does not apply to it.</p>
@@ -4972,7 +4972,7 @@
               <p>Problems from the Sprint, Target and Team rounds of <a href="https://www.mathcounts.org/pastcompetition" target="_blank" rel="noopener noreferrer">MATHCOUNTS</a> Chapter, State and National competitions are listed the same way: each problem's page opens the official round and its solutions or answer key, from the papers the MATHCOUNTS Foundation posts free (2026 Chapter and State) or from the copies of the official papers kept by the <a href="https://mathteamnyc.weebly.com/mathcounts.html" target="_blank" rel="noopener noreferrer">MATHCOUNTS archive at mathteamnyc.weebly.com</a> (earlier years and the National competition); nothing is reproduced. That material is attributed to the MATHCOUNTS Foundation; the MAA license above does not apply to it.</p>
               <p>Problems from the individual Algebra, Geometry, Counting and Number Theory rounds of the <a href="https://mbmt.mbhs.edu/archive" target="_blank" rel="noopener noreferrer">Montgomery Blair Math Tournament</a> (MBMT) are listed the same way: each problem's page opens the official round and its solutions; nothing is reproduced. That material is attributed to the MBMT organizers at Montgomery Blair High School; the MAA license above does not apply to it.</p>
               <p>Problems from Part A of the <a href="https://science.ucalgary.ca/mathematics-statistics/engagement/educational-outreach/junior-math-contest/archive" target="_blank" rel="noopener noreferrer">Calgary Junior Mathematics Contest</a> (University of Calgary, 2004 to 2025) are listed the same way: each problem’s page opens the official paper and its solutions; nothing is reproduced. That material is attributed to the University of Calgary; the MAA license above does not apply to it.</p>
-              <p>Problems from the <a href="https://cemc.uwaterloo.ca/resources/past-contests" target="_blank" rel="noopener noreferrer">Fermat Contest</a> (Grade 11), Cayley Contest (Grade 10) and Pascal Contest (Grade 9) of the Centre for Education in Mathematics and Computing, University of Waterloo, are listed the same way: each problem’s page opens the official contest and its solutions; nothing is reproduced. That material is © the University of Waterloo and attributed to the CEMC; the MAA license above does not apply to it.</p>
+              <p>Problem pages for the <a href="https://cemc.uwaterloo.ca/resources/past-contests" target="_blank" rel="noopener noreferrer">Fermat, Cayley and Pascal contests</a> link to the official papers and solutions. The 2025 statements and diagrams are © University of Waterloo, Centre for Education in Mathematics and Computing (CEMC), and formatted for this app under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.</p>
               <p>Problems from the <a href="https://ukmt.org.uk/competition-papers" target="_blank" rel="noopener noreferrer">Senior, Intermediate and Junior Mathematical Challenges</a> of the United Kingdom Mathematics Trust are listed the same way: each problem’s page opens the paper and its solutions as the UKMT posts them; nothing is reproduced. That material is © UKMT; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual test of the <a href="https://www.columbusstate.edu/math/tournament/previous-math-contest.php" target="_blank" rel="noopener noreferrer">Columbus State Invitational Mathematics Tournament</a> (Columbus State University) are listed the same way: each problem’s page opens the official test and its solutions; nothing is reproduced. That material is attributed to Columbus State University; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual round of the <a href="https://math.duke.edu/duke-math-meet" target="_blank" rel="noopener noreferrer">Duke Math Meet</a> (2007 to 2022) are listed the same way: each problem's page opens the round as Duke's mathematics department posts it, and its solutions where they were posted; nothing is reproduced. Duke Math Meet material is attributed to the Duke Math Meet; the MAA license above does not apply to it.</p>
@@ -5490,7 +5490,7 @@
     fitBatch([...aside.querySelectorAll(".card .formula-display[data-latex], .lp-preview .formula-display[data-latex]")]);
     // The problem screen's statement and solution load as on the page itself.
     const pvp = PROBLEM_DB.find(x => x.ref === PV_PROBLEM);
-    if (pvp) { if (MAA_RE.test(pvp.ref)) showStatement(pvp, ".pv-st"); if (SOLUTION_YEARS.has(String(pvp.year))) showSolution(pvp, ".pv-sol"); }
+    if (pvp) { if (hasProblemStatement(pvp)) showStatement(pvp, ".pv-st"); if (SOLUTION_YEARS.has(String(pvp.year))) showSolution(pvp, ".pv-sol"); }
     if (pvResize) window.removeEventListener("resize", pvResize);
     pvResize = scale;
     window.addEventListener("resize", pvResize);
@@ -6142,6 +6142,7 @@
     const answered = set.slugs.filter(id => set.answers[id]).length;
     const outcome = practiceSessions.result(set, slug);
     const aime = p && /AIME/.test(p.fam), exact = !!window.MATH_MOCK_EXTRAS?.[slug], paper = !!(p && set.selfCheck?.[slug]);
+    const inlinePaper = paper && archiveStatement(p);
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
     const correct = exact ? window.MATH_MOCK_EXTRAS[slug].answers.map(exactAnswerHtml).join(' or ') : escapeAttr(window.MATH_ANSWER_KEYS?.answers?.[slug] || '');
     const nav = set.slugs.map((id, i) => {
@@ -6162,7 +6163,8 @@
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
       <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p && (!mock || finished) ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
-        ${paper ? `<div class="practice-paper"><p>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. Compare your answer with the official solution and mark it below.` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. When you review, you check it against the official solution.`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open the problem ${uiIcon("arrow-up-right")}</a></div>`
+        ${paper ? `${inlinePaper ? `<div class="practice-set-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div></div>` : ''}
+          <div class="practice-paper"><p data-statement-fallback>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. Compare your answer with the official solution and mark it below.` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. When you review, you check it against the official solution.`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${inlinePaper ? "Open the official paper" : "Open the problem"} ${uiIcon("arrow-up-right")}</a></div>`
           : p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>Your answer</h3>
           ${aime || exact || paper ? (set.answers[slug] ? `<p class="practice-submitted">${exact ? exactAnswerHtml(set.answers[slug]) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
@@ -6249,7 +6251,7 @@
     });
     $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; schedulePracticeSave(); const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-marked', e.target.checked); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${e.target.checked ? ', marked for review' : ''}`); });
     savePractice();
-    if (p && !paper) showStatement(p, '.practice-set-st');
+    if (p && (!paper || inlinePaper)) showStatement(p, '.practice-set-st');
     $content.querySelectorAll('[data-self]').forEach(b => b.addEventListener('click', () => {
       const v = b.getAttribute('aria-pressed') === 'true' ? null : b.dataset.self;
       if (!practiceSessions.selfMark(set, slug, v)) return;
@@ -9799,31 +9801,43 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
 
   // ---------- Problem statements ----------
-  // AMC/AIME statements use the shared credits in Settings > Credits and attribution.
-  // Source metadata and copyright headers remain in the data files stored under
-  // js/data/problems/statements/, loaded when a problem page opens, so the offline page stays
-  // light and a missing file simply shows no statement. Other contests link out as before.
+  // Keep the MAA files at the root so the existing importer can refresh them independently.
   const MAA_RE = /\b(AMC|AIME|AJHSME)\b/;
+  const HMMT_STATEMENTS = {
+    dir: "hmmt",
+    credit: `© HMMT · Reproduced with permission · <a href="https://www.hmmt.org/www/archive/problems" target="_blank" rel="noopener noreferrer">HMMT archive</a>`
+  };
+  const CEMC_STATEMENTS = {
+    dir: "cemc",
+    credit: `© University of Waterloo (CEMC) · Formatted for this app under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a> · <a href="https://cemc.uwaterloo.ca/resources/past-contests" target="_blank" rel="noopener noreferrer">CEMC archive</a>`
+  };
+  function archiveStatement(p) {
+    if (p.year === 2026 && p.fam === "HMMT February") return HMMT_STATEMENTS;
+    if (p.year === 2025 && /^(Pascal|Cayley|Fermat) Contest$/.test(p.fam)) return CEMC_STATEMENTS;
+    return null;
+  }
+  const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 28;
+  const STATEMENTS_V = 29;
   const statementLoads = {};
-  function loadStatements(year) {
-    if (!statementLoads[year]) {
-      statementLoads[year] = new Promise(res => {
+  function loadStatements(file) {
+    if (!statementLoads[file]) {
+      statementLoads[file] = new Promise(res => {
         const sc = document.createElement("script");
-        sc.src = `js/data/problems/statements/${year}.js?v=${STATEMENTS_V}`;
+        sc.src = `js/data/problems/statements/${file}.js?v=${STATEMENTS_V}`;
         sc.onload = () => res(true);
         sc.onerror = () => res(false);
         document.head.appendChild(sc);
       });
     }
-    return statementLoads[year];
+    return statementLoads[file];
   }
   // `box` picks the section to fill: the problem page's own, or the home page's problem of the day.
   function showStatement(p, box = "#prob-st") {
     const extra=window.MATH_MOCK_EXTRAS?.[p.slug];
-    (extra ? Promise.resolve(true) : loadStatements(p.year)).then(() => {
+    const archive = archiveStatement(p);
+    (extra ? Promise.resolve(true) : loadStatements(archive ? `${archive.dir}/${p.year}` : p.year)).then(() => {
       const st = extra ? {s:extra.statement} : window.MATH_STATEMENTS && window.MATH_STATEMENTS[p.slug];
       const wrap = $content.querySelector(`${box}[data-slug="${p.slug}"]`);
       if (!st || !wrap) return;
@@ -9869,6 +9883,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
           });
         }
       });
+      if (archive) {
+        if (!wrap.querySelector(".statement-credit")) {
+          wrap.insertAdjacentHTML("beforeend", `<p class="prob-note statement-credit">${archive.credit}</p>`);
+        }
+        const fallback = wrap.parentElement.querySelector("[data-statement-fallback]");
+        if (fallback) fallback.hidden = true;
+      }
       wrap.hidden = false;
       renderMath(wrap);
     });
@@ -10017,7 +10038,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const famExtra = (f, key) => CORE_FAMS.has(f) ? "" : ` data-fam-extra="${key}"${famsOpen(key) ? "" : " hidden"}`;
   // Papers of one contest (the AMC 8, 10 and 12; HMMT February and November; ARML and ARML Local;
   // PUMaC's two divisions) sit together in the Contests list, without a rule between them (owner, 2026-11-14).
-  const famSeries = f => f.replace(/^AMC \d+$/, "AMC").replace(/^MATHCOUNTS (Chapter|State|National)$/, "MATHCOUNTS").replace(/^(Fermat|Cayley|Pascal) Contest$/, "CEMC").replace(/^UKMT [SIJ]MC$/, "UKMT").replace(/ (February|November|Local|Division [AB]|Lower|Upper)$/, "");
+  const famSeries = f => f.replace(/^AMC \d+$/, "AMC").replace(/^MATHCOUNTS (Chapter|State|National)$/, "MATHCOUNTS").replace(/^(Fermat|Cayley|Pascal) Contest$/, "CEMC").replace(/^UKMT [SIJ]MC$/, "UKMT").replace(/^(MMATHS|Girls in Math at Yale)$/, "Yale Math Competitions").replace(/ (February|November|Local|Division [AB]|Lower|Upper)$/, "");
   const extraFams = list => list.filter(f => !CORE_FAMS.has(f)).length;
   document.addEventListener("click", e => {
     const b = e.target.closest(".fam-more-btn");
@@ -10361,11 +10382,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <div class="detail-head">
           <h2 class="card-name">${refShort(p.ref)}</h2>
         </div>
-        ${MAA_RE.test(p.ref) ? `<section class="prob-st${pv ? " pv-st" : ""}"${pv ? "" : ` id="prob-st"`} data-slug="${p.slug}" hidden>
+        ${hasProblemStatement(p) ? `<section class="prob-st${pv ? " pv-st" : ""}"${pv ? "" : ` id="prob-st"`} data-slug="${p.slug}" hidden>
           <div class="prob-statement"></div>
 
         </section>` : ""}
-        <p class="prob-note">${p.sourceMirror ? `The round's original paper is hosted by an external archive${p.num ? `; this is problem ${p.num}` : ""}.` : p.urlLabel === "archive" ? (/^ARML/.test(p.fam) ? `The statement is in the contest's official booklet, open at the Individual round${p.num ? `; this is problem I-${p.num}` : ""}.` : `The statement is in the round's official paper, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.`) : "Solutions live on the Art of Problem Solving wiki."}</p>
+        <p class="prob-note" data-statement-fallback>${p.sourceMirror ? `The round's original paper is hosted by an external archive${p.num ? `; this is problem ${p.num}` : ""}.` : p.urlLabel === "archive" ? (/^ARML/.test(p.fam) ? `The statement is in the contest's official booklet, open at the Individual round${p.num ? `; this is problem I-${p.num}` : ""}.` : `The statement is in the round's official paper, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.`) : "Solutions live on the Art of Problem Solving wiki."}</p>
         ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.sourceMirror ? "Open the original paper (mirror)" : p.urlLabel === "archive" ? "Open the official paper" : "Open on AoPS"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
         ${chainHtml}
         ${SOLUTION_YEARS.has(String(p.year)) ? `<section class="prob-chain prob-solution${pv ? " pv-sol" : ""}"${pv ? "" : ` id="prob-sol"`} data-slug="${p.slug}" hidden>
@@ -10382,7 +10403,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     shownIds = [];
     $content.innerHTML = problemDetailHtml(p, false);
     renderMath($content);
-    if (MAA_RE.test(p.ref)) showStatement(p);
+    if (hasProblemStatement(p)) showStatement(p);
     if (SOLUTION_YEARS.has(String(p.year))) showSolution(p);
   }
 
