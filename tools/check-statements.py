@@ -17,6 +17,10 @@ for ref in re.findall(r'\bref: "([^"]+)"', open(os.path.join(ROOT, "js/data/prob
 bad, n, figs, nofig = [], 0, 0, 0
 withfig, seen = set(), set()
 statement_dir = os.path.join(ROOT, "js/data/problems/statements")
+hmmt_rounds = {
+    "february": {"algebra-and-number-theory": "algnt", "combinatorics": "comb", "geometry": "geo"},
+    "november": {"general": "gen", "theme": "thm"},
+}
 for f in sorted(glob.glob(os.path.join(statement_dir, "**", "*.js"), recursive=True)):
     src = open(f, encoding="utf-8").read()
     source = os.path.dirname(os.path.relpath(f, statement_dir))
@@ -35,9 +39,9 @@ for f in sorted(glob.glob(os.path.join(statement_dir, "**", "*.js"), recursive=T
         if re.search(r"<[A-Za-z/]", re.sub(r"\$[^$]*\$", "", s)): bad.append(f"{slug}: raw tag outside maths")
         if re.search(r"&(?:lt|gt|amp|nbsp|quot|#\d+);", s): bad.append(f"{slug}: an HTML entity was not decoded")
         if source == "hmmt":
-            match = re.fullmatch(r"(\d{4})-hmmt-february-(algebra-and-number-theory|combinatorics|geometry)-\d+", slug)
-            rounds = {"algebra-and-number-theory": "algnt", "combinatorics": "comb", "geometry": "geo"}
-            if not match or u != f"https://hmmt-archive.s3.amazonaws.com/tournaments/{match[1]}/feb/{rounds[match[2]]}/problems.pdf":
+            match = re.fullmatch(r"(\d{4})-hmmt-(february|november)-([a-z-]+)-\d+", slug)
+            round_code = match and hmmt_rounds[match[2]].get(match[3])
+            if not round_code or u != f"https://hmmt-archive.s3.amazonaws.com/tournaments/{match[1]}/{match[2][:3]}/{round_code}/problems.pdf":
                 bad.append(f"{slug}: does not link its official HMMT paper")
         elif source == "cemc":
             match = re.fullmatch(r"(\d{4})-(pascal|cayley|fermat)-contest-\d+", slug)
