@@ -559,7 +559,10 @@ window.MATH_BOOK_INDEX["olympiad-geometry"] = [
       "semiperimeter",
       "inscribed circle",
       "circle tangent to all three sides",
-      "area"
+      "area",
+      "incenter area split",
+      "join incenter to vertices",
+      "areas a : b : c"
     ]
   },
   {

@@ -260,7 +260,6 @@ window.MATH_TOPIC_HOMES = {
   "max-rectangle-in-triangle": "geo.comb.extreme.maxmin",
   "herons-formula": "geo.tri.area",
   "inradius-area": "geo.tri.radii.in",
-  "incenter-area-split": "geo.tri.radii.in",
   "circumradius-area": "geo.tri.radii.circum",
   "right-triangle-inradius": "geo.tri.radii.in",
   "incircle-tangent-lengths": "geo.tri.radii.in",

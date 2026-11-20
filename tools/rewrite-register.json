@@ -1387,7 +1387,6 @@
     "trig-area": "formula",
     "trig-area-circumradius": "formula",
     "max-rectangle-in-triangle": "formula",
-    "incenter-area-split": "formula",
     "right-triangle-inradius": "formula",
     "conway-circle": "formula",
     "incircle-excircle-touch": "formula",
@@ -3608,20 +3607,6 @@
       ]
     ],
     "max-rectangle-in-triangle": [
-      [
-        "Why it works",
-        "kept -> Why it works"
-      ],
-      [
-        "How to use it",
-        "moved -> Useful observations"
-      ],
-      [
-        "On contests",
-        "rewritten -> Contest profile"
-      ]
-    ],
-    "incenter-area-split": [
       [
         "Why it works",
         "kept -> Why it works"

@@ -650,6 +650,7 @@ The argument uses only that one point is at distance $r$ from every side, so it 
 For a polygon the circle is not automatic as it is for a triangle: a convex quadrilateral has one exactly when its opposite sides have equal sums, by [[pitots-theorem|Pitot's Theorem]]. For the excircle opposite $A$, use the excenter $I_A$ in place of $I$: it is at distance $r_a$ from all three side lines, and $[I_AAB] + [I_ACA] - [I_ABC] = \frac12r_a(c + b - a) = r_a(s - a)$.
 
 ## Useful observations
+- The three pieces $BIC$, $CIA$, $AIB$ have areas $\frac{ar}{2}$, $\frac{br}{2}$, $\frac{cr}{2}$, so they are in the ratio $a : b : c$, and each is its side's share of the perimeter of $[ABC]$.
 - In a right triangle the incircle's contact points on the legs and the right-angle vertex form a square of side $r$, which with the [[incircle-tangent-lengths|incircle tangent lengths]] gives $r = s - c$.
 - Each altitude satisfies $h_a = \frac{2A}{a} = \frac{2rs}{a}$, and adding the reciprocals gives $\frac1{h_a} + \frac1{h_b} + \frac1{h_c} = \frac1r$.
 - Among triangles with a given perimeter, a larger area means a larger incircle, since $r = \frac As$ with $s$ fixed.
@@ -5271,34 +5272,6 @@ Angles between an altitude and a bisector, and configurations that involve both 
 Handy in AIME and olympiad geometry that has both an altitude and the circumcenter in one figure: half the difference of the two base angles drops out at once, and the isogonal view opens arguments that exchange the circumcenter and orthocenter.
 `,
 
-"incenter-area-split": String.raw`
-## Key forms
-- $[BIC] : [CIA] : [AIB] = a : b : c$ — joining the incenter to the vertices splits the triangle into three triangles with areas in the ratio of the sides they rest on
-- $[BIC] = \frac{a}{a + b + c}[ABC]$ — each piece is its side's fraction of the perimeter
-- $[ABC] = rs$ — the three areas $\frac12ar$, $\frac12br$, $\frac12cr$ add up to the area
-- $I = \frac{aA + bB + cC}{a + b + c}$ — the incenter's barycentric coordinates are $(a : b : c)$
-
-## Conditions
-$I$ is the incenter, $r$ the inradius, and $s$ the semiperimeter; the same split holds for any interior point, with the sub-areas as its barycentric weights.
-
-## Why it works
-The incircle is tangent to all three sides, so the incenter is a distance $r$ from each, and that $r$ is the height of each sub-triangle onto the side it rests on. Hence $[BIC] = \frac12 ar$, $[CIA] = \frac12 br$, and $[AIB] = \frac12 cr$, proportional to $a$, $b$, $c$. Adding gives $[ABC] = \frac12(a + b + c)r = rs$, the standard area formula, and dividing gives $[BIC] = \frac{a}{a + b + c}[ABC]$.
-
-For any interior point $P$, let $AP$ meet $BC$ at $D$. Triangles $ABP$ and $ACP$ share the base $AP$, so $\frac{BD}{DC} = \frac{[ABP]}{[ACP]}$, and comparing heights over $BC$ gives $\frac{AP}{PD} = \frac{[ABP] + [ACP]}{[PBC]}$. These are the ratios of the masses $[PBC]$, $[PCA]$, $[PAB]$ at $A$, $B$, $C$, so
-$$P = \frac{[PBC]A + [PCA]B + [PAB]C}{[ABC]},$$
-and for $P = I$ the weights are $\frac12 r(a, b, c)$.
-
-## Useful observations
-- A side-length ratio reads straight off as an area ratio, and the reverse.
-- Because the three areas are the natural weights, they are the incenter's barycentric coordinates, the quickest way to place the incenter in a coordinate or vector computation.
-- The one-line derivation of $[ABC] = rs$ gives $r$ whenever the area and the perimeter are known.
-
-## Applications
-Areas of the three triangles at the incenter, the incenter's coordinates, and the inradius from the area.
-
-## Contest profile
-AMC and AIME problems asking what fraction of the area a sub-triangle occupies, or needing the incenter's coordinates, use it directly.
-`,
 
 "orthocentric-system": String.raw`
 ## Key forms

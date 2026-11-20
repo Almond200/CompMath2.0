@@ -669,7 +669,7 @@ Similarity, parallel lines, ratios of areas, and mass points.
 | S3.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
 | S3.2 Similar triangles | Core | `triangle-similarity`, `similar-figures-ratios` | 69 |
 | S3.3 Parallel lines and midsegments | Core | `parallel-line-similarity`, `midsegment-theorem`, `intercept-theorem`, *(pattern)* `nested-similar` | 10 |
-| S3.4 Ratios of areas | Core | `same-base-area-ratio`, `shared-angle-area-ratio`, `cevian-area-ratio`, `incenter-area-split` | 11 |
+| S3.4 Ratios of areas | Core | `same-base-area-ratio`, `shared-angle-area-ratio`, `cevian-area-ratio` | 11 |
 | S3.5 Angle bisectors, medians and mass points | Core | `angle-bisector-theorem`, `centroid-division`, `mass-points` | 20 |
 | S3.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S3.7 Review Problems and S3.8 Challenge Problems | |
 

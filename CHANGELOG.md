@@ -16,7 +16,10 @@
   - 45 importance labels changed where usage made the old one clearly wrong: `percent-change` (188 problems) and `mean-median-mode` (110) were Low, now High; ten Lowest cards had problems and are now Lower; twelve Medium cards no problem uses are now Low. New High formula cards joined their Core lists.
   - Difficulty: PUMaC was rated above HMMT February at every position and BMT level with it, though HMMT February (rated from official solve counts) is the harder tournament; both were rescaled by one increasing map that keeps every problem's order.
   - 2025 AMC 10A #9 no longer uses a derivative.
-  - Found, not fixed: every CMIMC paper link now returns 404, since the CMIMC archive is gone from its site.
+  - CMIMC's archive is gone from its site (404); its paper and solution links now open the same files in the source repository of CMIMC's own site, checked for all 33 papers and solutions (owner).
+  - Later: the 7 CMIMC and 4 BMT proof-tagged problems retagged too (95 in all); PUMaC's 34 wait, since its archive is unreachable from here.
+  - `derivative-extremum` stays as an isolated calculus card (owner); no AMC problem cites it.
+- **Incenter Splits the Area removed (owner: easy to derive):** `incenter-area-split` redirects to the Inradius Formula, whose Why it works already makes the split; its fact is now a Useful observation there, and its two exercises moved with it. 784 cards.
 - The semantic search index was not rebuilt: it needs the model-distillation venv, which this cloud container lacks; the new cards rank lexically until the next rebuild.
 
 **2026-11-17**

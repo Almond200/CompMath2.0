@@ -1202,9 +1202,6 @@
   "hypergeometric": [
    "Hypergeometric Distribution"
   ],
-  "incenter-area-split": [
-   "Incenter Splits the Area by the Sides"
-  ],
   "incenter-coordinates": [
    "Center Coordinates as Weighted Averages"
   ],
@@ -1245,6 +1242,7 @@
    "Surjectivity in Functional Equations"
   ],
   "inradius-area": [
+   "Incenter Splits the Area by the Sides",
    "Inradius Formula"
   ],
   "inscribed-angle-theorem": [
