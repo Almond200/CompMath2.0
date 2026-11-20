@@ -9869,14 +9869,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   function archiveStatement(p) {
     if (p.year >= 1998 && p.year <= 2026 && /^HMMT (February|November)$/.test(p.fam)) return HMMT_STATEMENTS;
-    if (p.year >= 2002 && p.year <= 2025 && /^(Pascal|Cayley|Fermat) Contest$/.test(p.fam)) return CEMC_STATEMENTS;
+    if (p.year >= 2001 && p.year <= 2025 && /^(Pascal|Cayley|Fermat) Contest$/.test(p.fam)) return CEMC_STATEMENTS;
     if (/\bAHSME\b/.test(p.ref)) return AHSME_STATEMENTS;
     return null;
   }
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 46;
+  const STATEMENTS_V = 47;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {
