@@ -1,0 +1,109 @@
+// Problems and diagrams © 2014 HMMT. Reproduced with permission from HMMT.
+// Source: the official HMMT individual-round papers.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2014-hmmt-february-algebra-1": { s: String.raw`Given that $x$ and $y$ are nonzero real numbers such that $x+\frac{1}{y}=10$ and $y+\frac{1}{x}=\frac{5}{12}$, find all possible values of $x$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/alg/problems.pdf" },
+"2014-hmmt-february-algebra-2": { s: String.raw`Find the integer closest to
+
+$$\frac{1}{\sqrt[4]{5^{4}+1}-\sqrt[4]{5^{4}-1}}$$`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/alg/problems.pdf" },
+"2014-hmmt-february-algebra-3": { s: String.raw`Let
+
+$$A=\frac{1}{6}\left(\left(\log _{2}(3)\right)^{3}-\left(\log _{2}(6)\right)^{3}-\left(\log _{2}(12)\right)^{3}+\left(\log _{2}(24)\right)^{3}\right)$$
+
+Compute $2^{A}$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/alg/problems.pdf" },
+"2014-hmmt-february-algebra-4": { s: String.raw`Let $b$ and $c$ be real numbers, and define the polynomial $P(x)=x^{2}+b x+c$. Suppose that $P(P(1))=$ $P(P(2))=0$, and that $P(1) \neq P(2)$. Find $P(0)$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/alg/problems.pdf" },
+"2014-hmmt-february-algebra-5": { s: String.raw`Find the sum of all real numbers $x$ such that $5 x^{4}-10 x^{3}+10 x^{2}-5 x-11=0$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/alg/problems.pdf" },
+"2014-hmmt-february-algebra-6": { s: String.raw`Given that $w$ and $z$ are complex numbers such that $|w+z|=1$ and $\left|w^{2}+z^{2}\right|=14$, find the smallest possible value of $\left|w^{3}+z^{3}\right|$. Here, $|\cdot|$ denotes the absolute value of a complex number, given by $|a+b i|=\sqrt{a^{2}+b^{2}}$ whenever $a$ and $b$ are real numbers.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/alg/problems.pdf" },
+"2014-hmmt-february-algebra-7": { s: String.raw`Find the largest real number $c$ such that
+
+$$\sum_{i=1}^{101} x_{i}^{2} \geq c M^{2}$$
+
+whenever $x_{1}, \ldots, x_{101}$ are real numbers such that $x_{1}+\cdots+x_{101}=0$ and $M$ is the median of $x_{1}, \ldots, x_{101}$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/alg/problems.pdf" },
+"2014-hmmt-february-algebra-8": { s: String.raw`Find all real numbers $k$ such that $r^{4}+k r^{3}+r^{2}+4 k r+16=0$ is true for exactly one real number $r$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/alg/problems.pdf" },
+"2014-hmmt-february-algebra-9": { s: String.raw`Given that $a, b$, and $c$ are complex numbers satisfying
+
+$$\begin{aligned}
+a^{2}+a b+b^{2} & =1+i \\
+b^{2}+b c+c^{2} & =-2 \\
+c^{2}+c a+a^{2} & =1,
+\end{aligned}$$
+
+compute $(a b+b c+c a)^{2}$. (Here, $i=\sqrt{-1}$.)`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/alg/problems.pdf" },
+"2014-hmmt-february-algebra-10": { s: String.raw`For an integer $n$, let $f_{9}(n)$ denote the number of positive integers $d \leq 9$ dividing $n$. Suppose that $m$ is a positive integer and $b_{1}, b_{2}, \ldots, b_{m}$ are real numbers such that $f_{9}(n)=\sum_{j=1}^{m} b_{j} f_{9}(n-j)$ for all $n>m$. Find the smallest possible value of $m$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/alg/problems.pdf" },
+"2014-hmmt-february-combinatorics-1": { s: String.raw`There are 100 students who want to sign up for the class Introduction to Acting. There are three class sections for Introduction to Acting, each of which will fit exactly 20 students. The 100 students, including Alex and Zhu, are put in a lottery, and 60 of them are randomly selected to fill up the classes. What is the probability that Alex and Zhu end up getting into the same section for the class?`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/comb/problems.pdf" },
+"2014-hmmt-february-combinatorics-2": { s: String.raw`There are 10 people who want to choose a committee of 5 people among them. They do this by first electing a set of $1,2,3$, or 4 committee leaders, who then choose among the remaining people to complete the 5 -person committee. In how many ways can the committee be formed, assuming that people are distinguishable? (Two committees that have the same members but different sets of leaders are considered to be distinct.)`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/comb/problems.pdf" },
+"2014-hmmt-february-combinatorics-3": { s: String.raw`Bob writes a random string of 5 letters, where each letter is either $A, B, C$, or $D$. The letter in each position is independently chosen, and each of the letters $A, B, C, D$ is chosen with equal probability. Given that there are at least two $A$ 's in the string, find the probability that there are at least three $A$ 's in the string.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/comb/problems.pdf" },
+"2014-hmmt-february-combinatorics-4": { s: String.raw`Find the number of triples of sets $(A, B, C)$ such that:
+(a) $A, B, C \subseteq\{1,2,3, \ldots, 8\}$.
+(b) $|A \cap B|=|B \cap C|=|C \cap A|=2$.
+(c) $|A|=|B|=|C|=4$.
+
+Here, $|S|$ denotes the number of elements in the set $S$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/comb/problems.pdf" },
+"2014-hmmt-february-combinatorics-5": { s: String.raw`Eli, Joy, Paul, and Sam want to form a company; the company will have 16 shares to split among the 4 people. The following constraints are imposed:
+
+• Every person must get a positive integer number of shares, and all 16 shares must be given out.
+• No one person can have more shares than the other three people combined.
+
+Assuming that shares are indistinguishable, but people are distinguishable, in how many ways can the shares be given out?`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/comb/problems.pdf" },
+"2014-hmmt-february-combinatorics-6": { s: String.raw`We have a calculator with two buttons that displays an integer $x$. Pressing the first button replaces $x$ by $\left\lfloor\frac{x}{2}\right\rfloor$, and pressing the second button replaces $x$ by $4 x+1$. Initially, the calculator displays 0 . How many integers less than or equal to 2014 can be achieved through a sequence of arbitrary button presses? (It is permitted for the number displayed to exceed 2014 during the sequence. Here, $\lfloor y\rfloor$ denotes the greatest integer less than or equal to the real number $y$.)`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/comb/problems.pdf" },
+"2014-hmmt-february-combinatorics-7": { s: String.raw`Six distinguishable players are participating in a tennis tournament. Each player plays one match of tennis against every other player. There are no ties in this tournament- each tennis match results in a win for one player and a loss for the other. Suppose that whenever $A$ and $B$ are players in the tournament such that $A$ wins strictly more matches than $B$ over the course of the tournament, it is also true that $A$ wins the match against $B$ in the tournament. In how many ways could the tournament have gone?`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/comb/problems.pdf" },
+"2014-hmmt-february-combinatorics-8": { s: String.raw`The integers $1,2, \ldots, 64$ are written in the squares of a $8 \times 8$ chess board, such that for each $1 \leq i<64$, the numbers $i$ and $i+1$ are in squares that share an edge. What is the largest possible sum that can appear along one of the diagonals?`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/comb/problems.pdf" },
+"2014-hmmt-february-combinatorics-9": { s: String.raw`There is a heads up coin on every integer of the number line. Lucky is initially standing on the zero point of the number line facing in the positive direction. Lucky performs the following procedure: he looks at the coin (or lack thereof) underneath him, and then,
+
+• If the coin is heads up, Lucky flips it to tails up, turns around, and steps forward a distance of one unit.
+• If the coin is tails up, Lucky picks up the coin and steps forward a distance of one unit facing the same direction.
+• If there is no coin, Lucky places a coin heads up underneath him and steps forward a distance of one unit facing the same direction.
+
+He repeats this procedure until there are 20 coins anywhere that are tails up. How many times has Lucky performed the procedure when the process stops?`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/comb/problems.pdf" },
+"2014-hmmt-february-combinatorics-10": { s: String.raw`An up-right path from $(a, b) \in \mathbb{R}^{2}$ to $(c, d) \in \mathbb{R}^{2}$ is a finite sequence $\left(x_{1}, y_{1}\right), \ldots,\left(x_{k}, y_{k}\right)$ of points in $\mathbb{R}^{2}$ such that $(a, b)=\left(x_{1}, y_{1}\right),(c, d)=\left(x_{k}, y_{k}\right)$, and for each $1 \leq i<k$ we have that either $\left(x_{i+1}, y_{i+1}\right)=\left(x_{i}+1, y_{i}\right)$ or $\left(x_{i+1}, y_{i+1}\right)=\left(x_{i}, y_{i}+1\right)$. Two up-right paths are said to intersect if they share any point.
+
+Find the number of pairs $(A, B)$ where $A$ is an up-right path from $(0,0)$ to $(4,4), B$ is an up-right path from $(2,0)$ to $(6,4)$, and $A$ and $B$ do not intersect.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/comb/problems.pdf" },
+"2014-hmmt-february-geometry-1": { s: String.raw`Let $O_{1}$ and $O_{2}$ be concentric circles with radii 4 and 6 , respectively. A chord $A B$ is drawn in $O_{1}$ with length 2. Extend $A B$ to intersect $O_{2}$ in points $C$ and $D$. Find $C D$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf" },
+"2014-hmmt-february-geometry-2": { s: String.raw`Point $P$ and line $\ell$ are such that the distance from $P$ to $\ell$ is 12 . Given that $T$ is a point on $\ell$ such that $P T=13$, find the radius of the circle passing through $P$ and tangent to $\ell$ at $T$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf" },
+"2014-hmmt-february-geometry-3": { s: String.raw`$A B C$ is a triangle such that $B C=10, C A=12$. Let $M$ be the midpoint of side $A C$. Given that $B M$ is parallel to the external bisector of $\angle A$, find area of triangle $A B C$. (Lines $A B$ and $A C$ form two angles, one of which is $\angle B A C$. The external bisector of $\angle A$ is the line that bisects the other angle.)`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf" },
+"2014-hmmt-february-geometry-4": { s: String.raw`In quadrilateral $A B C D, \angle D A C=98^{\circ}, \angle D B C=82^{\circ}, \angle B C D=70^{\circ}$, and $B C=A D$. Find $\angle A C D$.
+
+@@fig:hmmt/2014/feb-geo-4-1.png@@`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf" },
+"2014-hmmt-february-geometry-5": { s: String.raw`Let $\mathcal{C}$ be a circle in the $x y$ plane with radius 1 and center $(0,0,0)$, and let $P$ be a point in space with coordinates $(3,4,8)$. Find the largest possible radius of a sphere that is contained entirely in the slanted cone with base $\mathcal{C}$ and vertex $P$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf" },
+"2014-hmmt-february-geometry-6": { s: String.raw`In quadrilateral $A B C D$, we have $A B=5, B C=6, C D=5, D A=4$, and $\angle A B C=90^{\circ}$. Let $A C$ and $B D$ meet at $E$. Compute $\frac{B E}{E D}$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf" },
+"2014-hmmt-february-geometry-7": { s: String.raw`Triangle $A B C$ has sides $A B=14, B C=13$, and $C A=15$. It is inscribed in circle $\Gamma$, which has center $O$. Let $M$ be the midpoint of $A B$, let $B^{\prime}$ be the point on $\Gamma$ diametrically opposite $B$, and let $X$ be the intersection of $A O$ and $M B^{\prime}$. Find the length of $A X$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf" },
+"2014-hmmt-february-geometry-8": { s: String.raw`Let $A B C$ be a triangle with sides $A B=6, B C=10$, and $C A=8$. Let $M$ and $N$ be the midpoints of $B A$ and $B C$, respectively. Choose the point $Y$ on ray $C M$ so that the circumcircle of triangle $A M Y$ is tangent to $A N$. Find the area of triangle $N A Y$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf" },
+"2014-hmmt-february-geometry-9": { s: String.raw`Two circles are said to be orthogonal if they intersect in two points, and their tangents at either point of intersection are perpendicular. Two circles $\omega_{1}$ and $\omega_{2}$ with radii 10 and 13 , respectively, are externally tangent at point $P$. Another circle $\omega_{3}$ with radius $2 \sqrt{2}$ passes through $P$ and is orthogonal to both $\omega_{1}$ and $\omega_{2}$. A fourth circle $\omega_{4}$, orthogonal to $\omega_{3}$, is externally tangent to $\omega_{1}$ and $\omega_{2}$. Compute the radius of $\omega_{4}$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf" },
+"2014-hmmt-february-geometry-10": { s: String.raw`Let $A B C$ be a triangle with $A B=13, B C=14$, and $C A=15$. Let $\Gamma$ be the circumcircle of $A B C$, let $O$ be its circumcenter, and let $M$ be the midpoint of minor arc $\widehat{B C}$. Circle $\omega_{1}$ is internally tangent to $\Gamma$ at $A$, and circle $\omega_{2}$, centered at $M$, is externally tangent to $\omega_{1}$ at a point $T$. Ray $A T$ meets segment $B C$ at point $S$, such that $B S-C S=4 / 15$. Find the radius of $\omega_{2}$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/feb/geo/problems.pdf" },
+"2014-hmmt-november-general-1": { s: String.raw`Two circles $\omega$ and $\gamma$ have radii 3 and 4 respectively, and their centers are 10 units apart. Let $x$ be the shortest possible distance between a point on $\omega$ and a point on $\gamma$, and let $y$ be the longest possible distance between a point on $\omega$ and a point on $\gamma$. Find the product $x y$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/gen/problems.pdf" },
+"2014-hmmt-november-general-2": { s: String.raw`Let $A B C$ be a triangle with $\angle B=90^{\circ}$. Given that there exists a point $D$ on $A C$ such that $A D=D C$ and $B D=B C$, compute the value of the ratio $\frac{A B}{B C}$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/gen/problems.pdf" },
+"2014-hmmt-november-general-3": { s: String.raw`Compute the greatest common divisor of $4^{8}-1$ and $8^{12}-1$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/gen/problems.pdf" },
+"2014-hmmt-november-general-4": { s: String.raw`In rectangle $A B C D$ with area 1 , point $M$ is selected on $\overline{A B}$ and points $X, Y$ are selected on $\overline{C D}$ such that $A X<A Y$. Suppose that $A M=B M$. Given that the area of triangle $M X Y$ is $\frac{1}{2014}$, compute the area of trapezoid $A X Y B$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/gen/problems.pdf" },
+"2014-hmmt-november-general-5": { s: String.raw`Mark and William are playing a game with a stored value. On his turn, a player may either multiply the stored value by 2 and add 1 or he may multiply the stored value by 4 and add 3 . The first player to make the stored value exceed $2^{100}$ wins. The stored value starts at 1 and Mark goes first. Assuming both players play optimally, what is the maximum number of times that William can make a move?
+(By optimal play, we mean that on any turn the player selects the move which leads to the best possible outcome given that the opponent is also playing optimally. If both moves lead to the same outcome, the player selects one of them arbitrarily.)`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/gen/problems.pdf" },
+"2014-hmmt-november-general-6": { s: String.raw`Let $A B C$ be a triangle with $A B=5, A C=4, B C=6$. The angle bisector of $C$ intersects side $A B$ at $X$. Points $M$ and $N$ are drawn on sides $B C$ and $A C$, respectively, such that $\overline{X M} \| \overline{A C}$ and $\overline{X N} \| \overline{B C}$. Compute the length $M N$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/gen/problems.pdf" },
+"2014-hmmt-november-general-7": { s: String.raw`Consider the set of 5 -tuples of positive integers at most 5 . We say the tuple ( $a_{1}, a_{2}, a_{3}, a_{4}, a_{5}$ ) is perfect if for any distinct indices $i, j, k$, the three numbers $a_{i}, a_{j}, a_{k}$ do not form an arithmetic progression (in any order). Find the number of perfect 5 -tuples.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/gen/problems.pdf" },
+"2014-hmmt-november-general-8": { s: String.raw`Let $a, b, c, x$ be reals with $(a+b)(b+c)(c+a) \neq 0$ that satisfy
+
+$$\frac{a^{2}}{a+b}=\frac{a^{2}}{a+c}+20, \quad \frac{b^{2}}{b+c}=\frac{b^{2}}{b+a}+14, \quad \text { and } \quad \frac{c^{2}}{c+a}=\frac{c^{2}}{c+b}+x$$
+
+Compute $x$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/gen/problems.pdf" },
+"2014-hmmt-november-general-9": { s: String.raw`For any positive integers $a$ and $b$, define $a \oplus b$ to be the result when adding $a$ to $b$ in binary (base 2), neglecting any carry-overs. For example, $20 \oplus 14=10100_{2} \oplus 1110_{2}=11010_{2}=26$. (The operation $\oplus$ is called the exclusive or.) Compute the sum
+
+$$\sum_{k=0}^{2^{2014}-1}\left(k \oplus\left\lfloor\frac{k}{2}\right\rfloor\right)$$
+
+Here $\lfloor x\rfloor$ is the greatest integer not exceeding $x$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/gen/problems.pdf" },
+"2014-hmmt-november-general-10": { s: String.raw`Suppose that $m$ and $n$ are integers with $1 \leq m \leq 49$ and $n \geq 0$ such that $m$ divides $n^{n+1}+1$. What is the number of possible values of $m$?`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/gen/problems.pdf" },
+"2014-hmmt-november-theme-1": { s: String.raw`Find the probability that the townspeople win if there are initially two townspeople and one goon.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/thm/problems.pdf" },
+"2014-hmmt-november-theme-2": { s: String.raw`Find the smallest positive integer $n$ such that, if there are initially $2 n$ townspeople and 1 goon, then the probability the townspeople win is greater than $50 \%$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/thm/problems.pdf" },
+"2014-hmmt-november-theme-3": { s: String.raw`Find the smallest positive integer $n$ such that, if there are initially $n+1$ townspeople and $n$ goons, then the probability the townspeople win is less than $1 \%$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/thm/problems.pdf" },
+"2014-hmmt-november-theme-4": { s: String.raw`Suppose there are initially 1001 townspeople and two goons. What is the probability that, when the game ends, there are exactly 1000 people in jail?`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/thm/problems.pdf" },
+"2014-hmmt-november-theme-5": { s: String.raw`Suppose that there are initially eight townspeople and one goon. One of the eight townspeople is named Jester. If Jester is sent to jail during some morning, then the game ends immediately in his sole victory. (However, the Jester does not win if he is sent to jail during some night.)
+Find the probability that only the Jester wins.
+
+@@fig:hmmt/2014/nov-thm-5-1.png@@`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/thm/problems.pdf" },
+"2014-hmmt-november-theme-6": { s: String.raw`Let $\mathcal{P}_{1}, \mathcal{P}_{2}, \mathcal{P}_{3}$ be pairwise distinct parabolas in the plane. Find the maximum possible number of intersections between two or more of the $\mathcal{P}_{i}$. In other words, find the maximum number of points that can lie on two or more of the parabolas $\mathcal{P}_{1}, \mathcal{P}_{2}, \mathcal{P}_{3}$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/thm/problems.pdf" },
+"2014-hmmt-november-theme-7": { s: String.raw`Let $\mathcal{P}$ be a parabola with focus $F$ and directrix $\ell$. A line through $F$ intersects $\mathcal{P}$ at two points $A$ and $B$. Let $D$ and $C$ be the feet of the altitudes from $A$ and $B$ onto $\ell$, respectively. Given that $A B=20$ and $C D=14$, compute the area of $A B C D$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/thm/problems.pdf" },
+"2014-hmmt-november-theme-8": { s: String.raw`Consider the parabola consisting of the points $(x, y)$ in the real plane satisfying
+
+$$(y+x)=(y-x)^{2}+3(y-x)+3 .$$
+
+Find the minimum possible value of $y$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/thm/problems.pdf" },
+"2014-hmmt-november-theme-9": { s: String.raw`In equilateral triangle $A B C$ with side length 2 , let the parabola with focus $A$ and directrix $B C$ intersect sides $A B$ and $A C$ at $A_{1}$ and $A_{2}$, respectively. Similarly, let the parabola with focus $B$ and directrix $C A$ intersect sides $B C$ and $B A$ at $B_{1}$ and $B_{2}$, respectively. Finally, let the parabola with focus $C$ and directrix $A B$ intersect sides $C A$ and $C B$ at $C_{1}$ and $C_{2}$, respectively.
+Find the perimeter of the triangle formed by lines $A_{1} A_{2}, B_{1} B_{2}, C_{1} C_{2}$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/thm/problems.pdf" },
+"2014-hmmt-november-theme-10": { s: String.raw`Let $z$ be a complex number and $k$ a positive integer such that $z^{k}$ is a positive real number other than 1. Let $f(n)$ denote the real part of the complex number $z^{n}$. Assume the parabola $p(n)=a n^{2}+b n+c$ intersects $f(n)$ four times, at $n=0,1,2,3$. Assuming the smallest possible value of $k$, find the largest possible value of $a$.`, u: "https://hmmt-archive.s3.amazonaws.com/tournaments/2014/nov/thm/problems.pdf" },
+});

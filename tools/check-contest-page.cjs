@@ -158,11 +158,12 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  if(hmmtYears.length>=3){assert.match(await shown().locator('.pp-stats').innerText(),/of all \d+ HMMT February Algebra papers/,'the rank is within the round');
   assert.ok((await shown().locator('.py-bar').evaluateAll(xs=>xs.map(x=>x.getAttribute('href')))).every(h=>/\/hmmt-february-algebra(-and-number-theory)?$/.test(h)),'a year bar opens the same round');}
  assert.equal(await page.locator('.db-group.is-shown .pp-tiles .br-row').count(),10);await page.locator('.ct-papers [role="tab"]').nth(2).click();assert.match(page.url(),/hmmt-february\/2019\/hmmt-february-geometry$/);await fits();
- // An HMMT problem's page: short name, the official paper for the statement, the official solution under Brief solution.
+ // An HMMT problem has an inline statement, an archive button, and an official solution under Brief solution.
  await page.goto(base+'/#/problem/2019-hmmt-february-combinatorics-4');await page.locator('.prob-chain').waitFor();assert.equal(await page.locator('h2.card-name').innerText(),'2019 HMMT Feb Combo #4');
  const tg=page.locator('.prob-chain .chain-toggle');if(await tg.getAttribute('aria-expanded')==='false')await tg.click();
- assert.deepEqual(await page.locator('.aops-btn').evaluateAll(xs=>xs.map(x=>[x.textContent.trim(),x.getAttribute('href')])),[['Open the official paper','https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/problems.pdf'],['Open the official solution','https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/solutions.pdf']]);
- assert.match(await page.locator('.prob-note').first().innerText(),/as one PDF; this is problem 4\.$/);assert.match(await page.locator('.chain-official-note').innerText(),/as one PDF; this is problem 4\.$/);
+ assert.deepEqual(await page.locator('.aops-btn').evaluateAll(xs=>xs.map(x=>[x.textContent.trim(),x.getAttribute('href')])),[['Open in archive','https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/problems.pdf'],['Open the official solution','https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/solutions.pdf']]);
+ const credit=page.locator('#prob-st .statement-credit');await credit.waitFor();assert.match(await credit.innerText(),/HMMT · Reproduced with permission/);assert.equal(await credit.locator('a').count(),0);
+ assert.equal(await page.locator('[data-statement-fallback]').isVisible(),false);assert.match(await page.locator('.chain-official-note').innerText(),/as one PDF; this is problem 4\.$/);
  assert.equal(await page.locator('.ptree-node.is-filed').count(),1);assert.equal(await page.locator('.elo-box .elo-num').innerText(),String(JSON.parse(fs.readFileSync(path.join(__dirname,'manual-difficulty-ratings.json'),'utf8')).ratings['2019 HMMT February Combinatorics, Problem 4'][0]),'the rating comes from the data file');await fits();
  assert.equal(await page.locator('.katex-error').count(),0);assert.deepEqual(errors,[]);
  console.log(theme,width,'paper toggle, plain tiles, figures, compare-with choices, difficulty by question, subjects, years and 2021: passed');await page.close();
