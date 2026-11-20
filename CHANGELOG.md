@@ -1,5 +1,9 @@
 # Changelog
 
+**2026-11-17**
+
+- **No calculus:** at the owner's word the 110 SMT Calculus problems and the Calculus area of the topic tree (`alg.calc`, TQ21) are removed; the tree is back to 457 nodes, and nothing else depended on them.
+
 **2026-11-15**
 
 - **CHMMC, the Caltech Harvey Mudd Math Competition (now the Caltech Math Meet), done:** a new family at the owner's request; each problem opens the Individual round and its solutions on the Caltech Math Meet archive. every sitting from 2010 to 2026 is filed (248 problems) with tree filings, cards and author-estimated ratings; two official answers are corrected (2021 #14 and 2012 Fall #6).

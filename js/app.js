@@ -3230,7 +3230,7 @@
   // SMT publishes each subject test as two PDFs, like HMMT: /pdfs/smt<year>/<subject>-problems.pdf
   // and -solutions.pdf. The Discrete test was Advanced from 2011 to 2014, and in 2021 two tests,
   // Combinatorics and Number Theory, replaced it.
-  const SMT_CODE = { "General": "general", "Algebra": "algebra", "Advanced": "advanced", "Discrete": "discrete", "Combinatorics": "combo", "Number Theory": "nt", "Geometry": "geometry", "Calculus": "calculus" };
+  const SMT_CODE = { "General": "general", "Algebra": "algebra", "Advanced": "advanced", "Discrete": "discrete", "Combinatorics": "combo", "Number Theory": "nt", "Geometry": "geometry" };
   function smtPdf(ref, which) {
     const m = ref.match(/^(\d{4}) SMT (.+?),\s*Problem\s+\d+$/);
     return m && SMT_CODE[m[2]] ? `https://www.stanfordmathtournament.com/pdfs/smt${m[1]}/${SMT_CODE[m[2]]}-${which}.pdf` : null;
@@ -5848,8 +5848,7 @@
   // Practice draws from every contest (owner, 2026-11-14). A problem whose statement and answer
   // the app does not keep is read where its page links (the official paper, or the AoPS wiki for
   // the AHSME), and the solver checks their answer against the official solution at review.
-  // Calculus questions stay out of practice.
-  const paperProblem = p => !hasMockAnswer(p) && !!p.url && !(p.tree || []).some(t => t.startsWith("alg.calc"));
+  const paperProblem = p => !hasMockAnswer(p) && !!p.url;
   const practiceEligible = p => (hasMockAnswer(p) || paperProblem(p)) && !window.MATH_ANSWER_KEYS?.voided?.[p.slug];
   // Contests whose papers are multiple choice with five options, like the AMC; the others take a
   // short answer. A problem with an official letter key is multiple choice whatever its contest.
