@@ -38,7 +38,8 @@
       </a>
       <nav class="space-switch" id="space-switch" aria-label="Spaces">
         <div class="space-ref">
-          <button type="button" class="space-ref-btn" id="space-ref-btn" aria-haspopup="true" aria-expanded="false">Reference <span class="space-ref-caret" aria-hidden="true"><svg class="ui-icon ui-icon-triangle-down" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4 5h16l-8 14Z" fill="currentColor"/></svg></span></button>
+          <button type="button" class="space-ref-btn" id="space-ref-btn" aria-controls="space-ref-menu" aria-expanded="false">Reference <span class="space-ref-caret" aria-hidden="true"><svg class="ui-icon ui-icon-triangle-down" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4 5h16l-8 14Z" fill="currentColor"/></svg></span></button>
+          <span id="space-ref-current" hidden></span>
           <div class="space-ref-menu" id="space-ref-menu" hidden>
             <button type="button" data-space-go="formulas">Formulas</button>
             <button type="button" data-space-go="methods">Methods</button>
@@ -240,6 +241,6 @@
   <script defer src="js/practice-sessions.js?v=7"></script>
   <script defer src="js/ui-icons.js?v=2"></script>
   <script defer src="js/accessibility.js?v=4"></script>
-  <script defer src="js/app.js?v=795"></script>
+  <script defer src="js/app.js?v=796"></script>
 </body>
 </html>

@@ -11268,7 +11268,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // Search results belong to no space either: they span all four kinds, so they get the whole
     // width and no sidebar.
     const searching = (route.type === "home" && (!!state.query.trim() || !!state.adv)) || route.type === "topic" || route.type === "special";
-    document.body.dataset.space = onLanding ? "home" : route.type === "settings" || searching ? "none" : state.space;
+    const space = onLanding ? "home" : route.type === "settings" || searching ? "none" : state.space;
+    document.body.dataset.space = space;
+    updateSpaceNavigation(space);
     // A list page's sidebar holds only the list's sections, under "On this list", drawn in the
     // same panel as a card's "On this page", so the section being read is marked the same way.
     const noSidebar = onLanding || searching || ["problems", "problem", "browse", "lists", "settings", "space", "learn"].indexOf(route.type) !== -1
@@ -11704,15 +11706,50 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // Formulas, Methods and Patterns sit behind one Reference menu at every width (owner,
   // 2026-11-11; on a narrow phone since 2026-10-31).
   const $refBtn = document.getElementById("space-ref-btn"), $refMenu = document.getElementById("space-ref-menu");
-  const closeRefMenu = () => { if ($refMenu && !$refMenu.hidden) { $refMenu.hidden = true; $refBtn.setAttribute("aria-expanded", "false"); } };
+  const $refCurrent = document.getElementById("space-ref-current");
+  function updateSpaceNavigation(space) {
+    const destinations = $spaceSwitch?.querySelectorAll("[data-space-go]") || [];
+    for (const button of destinations) {
+      if (button.dataset.spaceGo === space) button.setAttribute("aria-current", "page");
+      else button.removeAttribute("aria-current");
+    }
+    if (!$refBtn || !$refCurrent) return;
+    const current = $refMenu?.querySelector('[aria-current="page"]');
+    if (current) {
+      $refCurrent.textContent = SPACES[space].label + " is the current section.";
+      $refBtn.setAttribute("aria-describedby", $refCurrent.id);
+    } else {
+      $refBtn.removeAttribute("aria-describedby");
+    }
+  }
+  function closeRefMenu(restoreFocus = false) {
+    if (!$refMenu || $refMenu.hidden) return;
+    $refMenu.hidden = true;
+    $refBtn.setAttribute("aria-expanded", "false");
+    if (restoreFocus) $refBtn.focus({ preventScroll: true });
+  }
   if ($refBtn && $refMenu) {
-    $refBtn.addEventListener("click", e => {
-      e.stopPropagation();
-      $refMenu.hidden = !$refMenu.hidden;
-      $refBtn.setAttribute("aria-expanded", String(!$refMenu.hidden));
+    const ref = $refBtn.closest(".space-ref");
+    $refBtn.addEventListener("click", () => {
+      if (!$refMenu.hidden) {
+        closeRefMenu(true);
+        return;
+      }
+      $refMenu.hidden = false;
+      $refBtn.setAttribute("aria-expanded", "true");
+      const target = $refMenu.querySelector('[aria-current="page"]') || $refMenu.querySelector("button");
+      target?.focus({ preventScroll: true });
     });
-    document.addEventListener("click", e => { if (!e.target.closest(".space-ref")) closeRefMenu(); });
-    document.addEventListener("keydown", e => { if (e.key === "Escape") closeRefMenu(); });
+    document.addEventListener("click", e => { if (!ref.contains(e.target)) closeRefMenu(); });
+    ref.addEventListener("focusout", e => {
+      if (e.relatedTarget && !ref.contains(e.relatedTarget)) closeRefMenu();
+    });
+    ref.addEventListener("keydown", e => {
+      if (e.key !== "Escape" || $refMenu.hidden) return;
+      e.preventDefault();
+      e.stopPropagation();
+      closeRefMenu(true);
+    });
   }
   // A phone's search box gets a short placeholder; the long one would be cut off.
   (() => {
@@ -11732,7 +11769,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     state.landing = false;
     const go = b.dataset.spaceGo;
     const to = go === "practice" || go === "learn" ? "#/" + go : spaceEntry(go);
-    if (location.hash === to) render(); else location.hash = to;
+    goHash(to);
     window.scrollTo({ top: 0 });
   });
 
