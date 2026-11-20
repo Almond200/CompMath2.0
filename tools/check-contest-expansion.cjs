@@ -47,7 +47,7 @@ const base = process.env.COMPMATH_URL || 'http://localhost:8765';
   await go('#/settings'); await page.locator('[data-set="contestLists"][data-val="click"]').click();
   await go('#/practice'); await years.waitFor(); assert.equal(await years.getAttribute('aria-expanded'), 'false');
   await go('#/browse/difficulty/3600');
-  assert.equal(await page.locator('[data-br-fam="PUMaC Division B"]').count(),0,'extra chips start folded');
+  assert.equal(await page.locator('[data-br-fam="PUMaC Division B"]:visible').count(),0,'extra chips start folded');
   const right=page.locator('.br-step[aria-label^="Harder range"]'); assert.equal(await right.count(),1,'can go beyond the former AIME ceiling with folded chips');
   await right.click(); await page.waitForFunction(()=>!document.querySelector('.br-band-h')?.textContent.includes('3600'));
   const nextBand=await page.locator('.br-band-h').innerText(); assert.match(nextBand,/Rated (3800|4000|4200|4400)/);

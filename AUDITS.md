@@ -2535,3 +2535,35 @@ A check of the 57 problems filed at `geo.coord.line.point` (Distance from a poin
 ### Retagging: the Pythagorean triple parametrization (2026-11-14)
 
 The card Pythagorean Triple Parametrization is the formula (m^2 - n^2, 2mn, m^2 + n^2). Seven problems cited it while their routes only recognise or use a familiar right triangle (3-4-5, 5-12-13, 7-24-25), or the converse of the Pythagorean theorem: 2020 Columbus State #30, 2002 #9 and 2001 #30, 2012 Fermat #22, 2000 Fermat #17, 2019 Cayley #17 and 2000 Cayley #16. They now cite the Pythagorean Theorem. The parametrization stays on 2014 Columbus State #47 (generating the triples), 2003 Columbus State #50 (every triple gives a rational point) and 2005 Cayley #25 (scaled triples).
+
+## CHMMC and the Caltech Math Meet (Step H, 2026-11-15)
+
+Added at the owner's request with the official Individual rounds and solutions from `caltechmathmeet.org/problems`. Answers were checked by computation where practical (2026 #3, #4, #5, #7, #9; 2025 #1, #2, #3, #5; 2024 #1, #10, #15; 2022 #5, #8, #9, #10, #12, #15; 2021 #2, #3, #6, #12, #14). Findings:
+
+- **2021 #14, official answer wrong.** The solution lists 93 among the primes 1 mod 4 (93 = 3 x 31) and leaves out 43 and 47, which divide 2021 and so make (2m + 1)^2 + 2021^2 divisible for 2m + 1 a multiple of them. A direct count gives 17 g-friendly odd n below 100 (1, the eleven primes 1 mod 4, 43, 47, 25, 65, 85); the reason records 17 and the error.
+- **2025 #10:** the archive's solution says the answer is 6 and that 7 was accepted at the contest; filed with 6.
+- **2025 #3:** the solution's last line ("floor(n + sqrt(n + 1)) at most 2025 exactly for n at most 1980") is loose (n = 1981 also satisfies that inequality), but a direct check of the original condition over all integer parts confirms 1980.
+- **2012 Fall #6, official answer wrong.** The product of all pairwise distances of n equally spaced points on the unit circle is n^(n/2) (checked numerically for n = 2 to 9), rational for every even n and for the odd squares: 1027 values of n from 2 to 2013. The official 21 counts only the odd squares.
+- **2013 #13 and #15:** the posted solution sheet answers different questions (a set of reciprocals; digits summing to n/57). The paper's questions were solved and checked: the continued fraction gives y = (27 + 21 sqrt 5)/82, sum 135; 133^5 + 110^5 + 84^5 + 27^5 = 144^5.
+- **2014 #3:** the solution's shortcut formula ties group sizes 19 and 38, but counting blocked groups too (the opponent kept below 2/3) gives 696 votes at size 19, the official answer.
+- **2012 Fall #7** (when a series converges) is left out as calculus. **2010 Fall #4 and #5** are 2013 #7 and #9 again and share their filings.
+- **More checks by computation:** 2020 #2, #3, #5, #9, #11; 2019 #2, #6, #12; 2018 #2, #7, #9, #12; 2017 #2, #9, #10, #11, #15; 2016 #6, #15; 2015 #8; 2014 #6, #12, #14, #15; 2013 #2, #13, #15; 2012 Fall #6, #11, #15; 2012 Spring #1, #2, #8, #9, #12, #15; 2010 Fall #1, #3, #6, #7, #8, #10, #12, #13; 2010 Winter #13.
+- **Reading:** `pdftotext -layout` drops pieces of formulas (2021 #3's last term read as "1"; 2021 #12's square root vanished); every paper is now read with `-raw`.
+
+## UKMT Junior Mathematical Challenge (Step H, 2026-11-14 to 2026-11-15)
+
+The same links and credits as the SMC and IMC. Questions shared with the IMC of the same year were looked for by text overlap; none of the high-overlap pairs is the same question. 2023 to 2026 filed; the rest follows.
+
+## Show more contests and the contest order (owner, 2026-11-15)
+
+**The glitch.** Every "Show N more contests" button redrew the whole page (`render()`), then scrolled back. Measured in headless Chromium at 1280 and 375 px: on Practice, a topic typed into Practice a topic was cleared by pressing Show more in the random picker or the Contests list, and the page moved by 100 to 400 px (the Contests list at both widths, the random picker and the browse chips on a phone). Now every list renders all its contests, the extra ones marked `data-fam-extra="<list>"` and `hidden` while folded (a CSS rule makes the attribute win over the chips' display); the button flips them and its own label in place. Re-measured: typed input stays, and the scroll stays within a few pixels; on folding the page keeps the pressed button where it was, as far as the page's end allows. A chosen contest stays chosen when its chip is folded away (main's rule that folding changes only visibility). The checks that counted chips or rows now count visible ones.
+
+**The order.** `FAM_ORDER` is by prestige (owner): AMC 8, 10, 12, AIME, HMMT February and November, PUMaC A and B, CMIMC, SMT, BMT, ARML and ARML Local, Math Prize for Girls, CHMMC, Duke, MATHCOUNTS Chapter, State, National, UKMT JMC, IMC, SMC, Pascal, Cayley, Fermat, MMATHS, Girls in Math at Yale, UMD HSMC, Lehigh, MBMT Lower and Upper, Columbus State, Utah State, Calgary Junior. `famSeries` groups the CEMC and UKMT contests like the AMC, HMMT, PUMaC, ARML, MATHCOUNTS and MBMT series.
+
+**Practice a card search.** Before, a card was offered only if its name contained the typed text. Now names come first (those starting with it first), then `searchFormulas(query, { only: cards with practice problems })`, the reference search with its typo repair, synonyms, keywords and semantic channel. Spot checks: "pythagoren", "angel bisector", "stars and bar", "chiken nugget", "ways to choose", "inclusion exlusion", "law of cosine", "shoelase" each put the intended card first.
+
+**Keyboard.** With folded chips hidden rather than removed, the arrow keys in a radio group (the random picker's contests) stepped onto hidden choices; `js/accessibility.js` now treats a hidden choice like a disabled one. `check-accessibility.cjs` passes again (36 scenarios).
+
+## Generate a mock: questions in the format's answer style (owner, 2026-11-15)
+
+A problem counts as multiple choice when its official key is a letter, or, without a key, when its contest's papers are five-option multiple choice (`MC_FAMS`: AMC 8, 10, 12, the three UKMT challenges, Pascal, Cayley, Fermat, UMD HSMC Part I, Columbus State, Utah State; Utah's instructions say so, the others were read when they were filed). Exact-value extras and AIME keys are short answer. With the box ticked, the AMC formats draw only multiple-choice questions and the AIME only short-answer ones (15,490 eligible questions become 9,521 and 5,969 at the time of writing). Paper-only multiple-choice questions (UKMT, CEMC and the others linked to their papers) are still answered by typing the paper's answer and checked against the official solution, as before. Checked in light and dark: the box shows only for Generate a mock, its label follows the format, the source chips narrow, a generated set opens; `tests/mock-contests.cjs`, `check-accessibility.cjs`, `check-practice-actions.cjs` and `check-contest-page.cjs` pass.

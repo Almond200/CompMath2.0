@@ -43,7 +43,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   const contests=rowOf(pf,'Contests'),aime=contests.locator('tbody tr').filter({hasText:'AIME'}).locator('td');
   assert.equal(await aime.nth(1).innerText(),String(e.aime));assert.equal(await aime.nth(2).innerText(),e.aimeShare);assert.equal(await aime.nth(3).innerText(),'#'+e.aimeAt);
   // The table shows the AMC and AIME rows first (owner, 2026-11-14); Show more contests adds the rest.
-  assert((await contests.locator('tbody tr th').allInnerTexts()).every(t=>/^(AMC (8|10|12)|AIME)$/.test(t.trim())),'only AMC and AIME rows by default');
+  assert((await contests.locator('tbody tr:visible th').allInnerTexts()).every(t=>/^(AMC (8|10|12)|AIME)$/.test(t.trim())),'only AMC and AIME rows by default');
   if(await contests.locator('.fam-more-btn').count()){await contests.locator('.fam-more-btn').click();await contests.locator('.fam-more-btn[aria-expanded="true"]').waitFor();}
   const counted=await contests.locator('tbody tr td:nth-child(3)').allInnerTexts();assert.equal(counted.reduce((a,b)=>a+ +b,0),e.n,'the contests add up to the problems');
   if(await contests.locator('.fam-more-btn').count()){await contests.locator('.fam-more-btn').click();await contests.locator('.fam-more-btn[aria-expanded="false"]').waitFor();}

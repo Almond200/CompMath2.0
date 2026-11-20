@@ -29,6 +29,7 @@ html[data-text="larger"] { --tx: 1.3; }
   --level-arml-local: #8fb84a;
   --level-smt: #c46a6a;
   --level-dmm: #5f8fd6;
+  --level-chmmc: #e07a3f;
   --level-umd: #d0a04a;
   --level-cmimc: #b06fd0;
   --level-mpfg: #d07a9e;
@@ -48,6 +49,7 @@ html[data-text="larger"] { --tx: 1.3; }
   --level-pascal: #b5833a;
   --level-ukmt: #8a4f9e;
   --level-ukmti: #b0628f;
+  --level-ukmtj: #c27a5a;
   --radius: 12px;
   --ui-shadow: 0 4px 16px rgba(0, 0, 0, 0.32);
   --ui-shadow-color: rgba(0, 0, 0, 0.32);
@@ -87,6 +89,7 @@ html[data-text="larger"] { --tx: 1.3; }
   --level-arml-local: #4f7a1c;
   --level-smt: #a63d3d;
   --level-dmm: #1f4f9a;
+  --level-chmmc: #a5501f;
   --level-umd: #8a5e12;
   --level-cmimc: #7a2fa0;
   --level-mpfg: #a3365f;
@@ -106,6 +109,7 @@ html[data-text="larger"] { --tx: 1.3; }
   --level-pascal: #85601f;
   --level-ukmt: #633872;
   --level-ukmti: #82406a;
+  --level-ukmtj: #8f5238;
 }
 
 /* A few elements hardcode a dark translucent fill; re-tint them for light mode. */
@@ -2973,7 +2977,7 @@ a.card-result { color: var(--text); text-decoration: none; }
 .hp-panel .pl-item:hover { border-color: var(--border); background: var(--space-soft); color: var(--space); }
 .rc-row:hover { background: var(--space-soft); }
 /* Recently opened: one scrolling line; every link remains reachable. */
-.rc-chips { flex-wrap: nowrap; min-width: 0; overflow-x: auto; scrollbar-width: thin; }
+.rc-chips { flex-wrap: nowrap; min-width: 0; overflow-x: auto; }
 .rc-chips .rc-row { border-radius: 999px; height: 30px; box-sizing: border-box; }
 .rc-chips .rc-row { flex-shrink: 0; max-width: 100%; }
 .rc-chips .rc-name { flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -3593,7 +3597,7 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
    The column has no bottom padding (the negative bottom margin alone carries the divider to the
    foot of the page), so the panel is not pushed up at the end of a page. */
 .page-tools { border-left: 1px solid var(--border); padding-left: 16px; margin: -24px 0 -120px; padding-top: 24px; font-size: 13px; }
-.pt-inner { position: sticky; top: calc(var(--topbar-h, 61px) + 20px); margin-top: 40px; max-height: calc(100vh - var(--topbar-h, 61px) - 40px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; display: flex; flex-direction: column; gap: 18px; }
+.pt-inner { position: sticky; top: calc(var(--topbar-h, 61px) + 20px); margin-top: 40px; max-height: calc(100vh - var(--topbar-h, 61px) - 40px); overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 18px; }
 html[data-density="compact"] .page-tools { margin: -16px 0 -90px; padding-top: 16px; }
 html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top: 24px; }
 .pt-block { display: flex; flex-direction: column; gap: 4px; }
@@ -4273,7 +4277,7 @@ body.ge-selecting, body.ge-selecting * { user-select: none; -webkit-user-select:
 .ge-movebar { flex-direction: column; align-items: stretch; flex-wrap: nowrap; gap: 8px; }
 .ge-move-top { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .ge-move-n, .ge-move-k { flex: none; }
-.ge-move-pills { display: flex; gap: 6px; overflow-x: auto; min-width: 0; padding: 2px 0; scrollbar-width: thin; }
+.ge-move-pills { display: flex; gap: 6px; overflow-x: auto; min-width: 0; padding: 2px 0; }
 .ge-move-pills .ge-pill { flex: none; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ge-move-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
 @media (max-width: 520px) { .ge-move-top { flex-wrap: wrap; } .ge-move-pills { flex: 1 1 100%; } }
@@ -4597,6 +4601,7 @@ button.tt-tw:hover { background: var(--border); color: var(--text); }
 .py-bar.is-cur .py-col i, .py-bar:hover .py-col i { opacity: 1; }
 .py-n { padding-top: 4px; font-size: 10.5px; line-height: 1.3; text-align: center; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .py-bar.is-cur .py-n { color: var(--text); font-weight: 750; }
+.py-bar.py-nolab .py-n { visibility: hidden; }
 .pp-note { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 10px 0 0; font-size: calc(12.5px * var(--tx)); color: var(--text-dim); }
 .pp-words { margin: 6px 0 0; max-width: 760px; font-size: calc(14px * var(--tx)); line-height: 1.55; color: var(--text); }
 /* Difficulty by question: one bar per problem in the contest's colour, a tick at the usual
@@ -4621,7 +4626,7 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
   .pp-tiles { grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); }
   .py { gap: 2px; }
   .py-n { font-size: 9px; }
-  .py-bar:not(.is-cur):nth-child(even) .py-n { visibility: hidden; }
+  .py-bar.py-half .py-n { visibility: hidden; }
   .ct-papers button { font-size: 13px; }
   .pq-plot { padding-left: 28px; }
   .pq-grid { left: 28px; height: 120px; }
@@ -4708,3 +4713,11 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 .practice-self { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 6px 0 14px; }
 .practice-self .rand-btns { margin: 0; }
 .practice-self [data-self][aria-pressed="true"] { background: var(--space); color: #fff; }
+
+/* A folded contest list hides its extra contests in place (owner, 2026-11-15); the attribute must win over display rules. */
+[data-fam-extra][hidden] { display: none !important; }
+
+/* Generate a mock: keep to the format's answer style (owner, 2026-11-15). */
+.mock-same-format { display: flex; align-items: center; gap: 8px; margin: 10px 0 2px; font-size: 14px; color: var(--text-dim); cursor: pointer; }
+.mock-same-format[hidden] { display: none; }
+.mock-same-format input { margin: 0; width: 16px; height: 16px; accent-color: var(--space); cursor: pointer; }

@@ -1,5 +1,18 @@
 # Changelog
 
+**2026-11-15**
+
+- **CHMMC, the Caltech Harvey Mudd Math Competition (now the Caltech Math Meet), done:** a new family at the owner's request; each problem opens the Individual round and its solutions on the Caltech Math Meet archive. every sitting from 2010 to 2026 is filed (248 problems) with tree filings, cards and author-estimated ratings; two official answers are corrected (2021 #14 and 2012 Fall #6).
+- **UKMT Junior Mathematical Challenge:** a third UKMT family; 2023 to 2026 are filed (100 problems), the rest to follow.
+- **Contest-page check:** follows main's recalibrated equal-width Elo levels.
+- **Contest order:** contests are listed by prestige: the AMC and AIME, then HMMT, PUMaC, CMIMC, SMT, BMT, ARML, Math Prize for Girls, CHMMC and Duke, then MATHCOUNTS, the UKMT and CEMC contests and the rest. Each series stays together, junior first (AMC 8, 10, 12; Pascal, Cayley, Fermat; JMC, IMC, SMC), without a rule between its rows.
+- **Show more contests:** the button now shows or hides the extra contests where they are, instead of redrawing the page, so typed searches and choices stay put and the page no longer jumps; folding keeps the button under the pointer.
+- **Years chart:** a long run of sittings (the AMC 12 back to the 1950 AHSME) labels round years only, every 2, 5 or 10 years by length, always the current sitting and never right beside it, with half as many labels on a phone; no labels overlap.
+- **Generate a mock, same format:** a checkbox under Contest format keeps a generated mock to the format's answer style: multiple-choice questions for the AMC 8, 10 and 12 (the MAA's letter-keyed problems and the multiple-choice papers: UKMT, CEMC, UMD Part I, Columbus State, Utah State), short-answer questions for the AIME. The source list narrows to the contests that have such questions; the choice is remembered on the device.
+- **Card links in lessons:** pressing a card's name in a lesson now opens the card's page by default; opening it beside the lesson is the option. A choice saved only because it was the old default gives way to the new one; a choice made from now on is kept.
+- **Thin scrollbars:** the Recently opened row, the geometry explorer's pills and the practice rail no longer set `scrollbar-width`, which made Chrome draw its grey bar instead of the app's thin one (the same fix as the topic rail's).
+- **Practice a card search:** besides names, the search now uses the reference search among the cards with practice problems, so typos ("pythagoren", "shoelase", "chiken nugget") and descriptions ("ways to choose") find the card.
+
 **2026-11-14**
 
 - **UKMT Intermediate Mathematical Challenge (done, 300 problems):** a second UKMT family with the same links and credits; every posted year (2015 to 2026) is filed with tree filings, cards and author-estimated ratings.

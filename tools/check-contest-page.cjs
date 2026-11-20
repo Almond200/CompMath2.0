@@ -110,15 +110,16 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  // Opened the ordinary way, the panel starts empty again.
  await page.goto(base+'/#/problems/amc-8/2024');await page.locator('.pp-tiles').waitFor();await page.goto(base+'/#/practice');await page.locator('#mock-contest-form').waitFor();assert.equal(await page.locator('#mock-paper-name').inputValue(),'');
  // The random picker says what a level means in Elo terms, for the contest chosen.
- const fifth=(fam,k)=>{const xs=db.filter(p=>fam.test(p.paper)).map(p=>p.elo).sort((a,b)=>a-b);return [xs[Math.floor(k*xs.length/5)],xs[Math.max(Math.floor(k*xs.length/5),Math.floor((k+1)*xs.length/5)-1)]];};
- assert.match(await page.locator('.rand-picker .rand-diff-note').innerText(),/^Difficulty goes by Elo rating: a higher rating means a harder problem\. Each level is a fifth of all the problems/);
+ // Five equal-width Elo intervals over the selection's rating span (the 2026-11-14 recalibration).
+ const fifth=(fam,k)=>{const xs=db.filter(p=>fam.test(p.paper)).map(p=>p.elo),low=Math.min(...xs),span=Math.max(...xs)-low+1;return [Math.ceil(low+k*span/5),Math.ceil(low+(k+1)*span/5)-1];};
+ assert.match(await page.locator('.rand-picker .rand-diff-note').innerText(),/^The five levels cover similar Elo intervals, recalculated for your selection\./);
  await page.locator('[data-rand-fam="AMC 10"]').click();await page.locator('#rand-diff-range').fill('4');const [lo,hi]=fifth(/ AMC 10[AB]?$/,3);
- assert.equal(await page.locator('.rand-picker .rand-diff-note').innerText(),`Hard is an Elo rating of ${lo} to ${hi}: one fifth of the AMC 10 problems, where a higher rating means a harder problem.`);
+ assert.equal(await page.locator('.rand-picker .rand-diff-note').innerText(),`Hard in AMC 10: ${lo}–${hi} Elo. The five levels cover similar Elo intervals, recalculated for your selection.`);
  // Practice a topic measures a level inside the chosen topic, and says so.
- assert.match(await page.locator('#topic-band-note').innerText(),/^Difficulty is measured inside the topic you choose/);
- await page.locator('#topic-band').fill('4');assert.match(await page.locator('#topic-band-note').innerText(),/^Hard is one fifth of the chosen topic's problems by Elo rating.*Choose a topic/);
+ assert.equal(await page.locator('#topic-band-note').innerText(),'Choose a topic to see five similar Elo intervals for the selected contests.');
+ await page.locator('#topic-band').fill('4');assert.equal(await page.locator('#topic-band-note').innerText(),'Choose a topic to see five similar Elo intervals for the selected contests.');
  await page.locator('#practice-topic-name, [name="topic"]').first().fill('Geometry');await page.locator('.practice-topic-option').first().click();
- const tn=await page.locator('#topic-band-note').innerText();assert.match(tn,/^Hard in this topic is an Elo rating of \d+ to \d+: one fifth of its problems/);
+ const tn=await page.locator('#topic-band-note').innerText();assert.match(tn,/^Hard in this topic: \d+–\d+ Elo\. The five levels cover similar Elo intervals, recalculated for your selection\./);
  const [tlo,thi]=tn.match(/\d+/g).map(Number);assert(tlo<thi&&tlo>300&&thi<3800);
  await fits();
  // A linked paper opens on that paper; a year with one paper has no toggle.
