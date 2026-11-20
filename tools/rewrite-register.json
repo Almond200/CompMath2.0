@@ -1863,7 +1863,9 @@
     "complete-subset-sums": "formula",
     "symmetrizing-a-sum": "method",
     "polya-urn": "formula",
-    "intermediate-value-theorem": "formula"
+    "intermediate-value-theorem": "formula",
+    "unfold-the-bounces": "method",
+    "cone-insphere": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -9120,6 +9122,18 @@
       ]
     ],
     "intermediate-value-theorem": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "unfold-the-bounces": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "cone-insphere": [
       [
         "(new card)",
         "written directly in the formula template"

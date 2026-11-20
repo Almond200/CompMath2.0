@@ -19,7 +19,7 @@ cur += [i for i in ids if i not in cur]
 block = block[:m.start(1)] + ", ".join('"%s"' % i for i in cur) + block[m.end(1):]
 n = sum(len(re.findall(r'"([^"]+)"', x)) for x in re.findall(r'ids: \[([^\]]*)\]', block))
 k = len(re.findall(r'\{ title: "', block))
-block = re.sub(r'\d+ cards across \d+ sections', "%d cards across %d sections" % (n, k), block, count=1)
+block = re.sub(r"\d+ cards across (\d+) (sections|groups)", lambda mm: "%d cards across %d %s" % (n, k, mm.group(2)), block, count=1)
 s = s[:start] + block + s[end:]
 open(P, "w").write(s)
 print(lid, "/", title, "->", len(cur), "ids;", n, "cards in", k, "sections")

@@ -14,7 +14,7 @@ window.MATH_SECTIONS.push({
       title: "Geometry",
       groups: [
         { title: "Angle & Configuration Chasing", blurb: "Following angles around a figure until the configuration gives itself away.", ids: ["angle-chasing", "directed-angles", "directed-lengths", "phantom-point"] },
-        { title: "Standard Constructions", blurb: "Lines and points worth adding to a figure to reveal structure that is already there: a parallel line, a doubled median, a reflection across a bisector, or two sides extended to meet. Ask which one the figure is missing.", ids: ["extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "reflect-across-the-line", "triangle-of-centers", "shared-leg-pythagoras", "bisector-closer-region"] },
+        { title: "Standard Constructions", blurb: "Lines and points worth adding to a figure to reveal structure that is already there: a parallel line, a doubled median, a reflection across a bisector, or two sides extended to meet. Ask which one the figure is missing.", ids: ["extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "reflect-across-the-line", "triangle-of-centers", "shared-leg-pythagoras", "bisector-closer-region", "unfold-the-bounces"] },
         { title: "Ratios, Masses & Areas", blurb: "Turning length ratios into masses or areas so they can be added and compared.", ids: ["mass-points", "area-method", "area-by-pieces", "joined-shapes-perimeter", "ravi-substitution"] },
         { title: "Transformations & Inversion", blurb: "Moving the figure (rotating, scaling, or inverting it) into one that is easier to see.", ids: ["spiral-similarity", "homothety-monge", "inversion-properties", "sqrt-bc-inversion", "composing-transformations", "rotation-trick", "rotation-center", "affine-transformations", "linear-change-of-variables", "scale-one-level"] },
         { title: "Coordinate & Algebraic Bashes", blurb: "Putting the figure in coordinates, trigonometry, complex numbers, or barycentrics and computing.", ids: ["coordinate-bash", "trig-bash", "complex-bash", "vector-bash", "tangent-lines-from-point", "barycentric-coordinates", "tangency-equation", "closing-polygon-vectors"] },
@@ -215,6 +215,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "unfold-the-bounces",
+          name: "Unfolding Bounces in a Box",
+          type: "method",
+          subject: "geometry",
+          when: String.raw`A ball, a light beam or a path bounces around inside a square, a rectangle or a cube, with equal angles at every wall, and the question is how far it goes before reaching a corner, how many times it bounces, or where it ends.`,
+          move: String.raw`Reflect the box across each wall the path hits instead of reflecting the path. The copies tile the plane (or space), the path becomes one straight line, a corner of the box is a point of the lattice of copies' corners, and every grid line the line crosses is one bounce.`,
+          uses: ["reflection-coordinates", "distance-3d", "lattice-points-gcd"],
+          latex: String.raw`\text{corner} \iff \text{start} + t\,\vec d = (am,\ bn)`,
+          description: String.raw`Unfolding the bounces straightens a path that reflects off the walls of a box. Each reflection of the path across a wall is traded for a reflection of the box, so the path keeps its length and runs straight through a tiling of the plane by copies of the box. It reaches a corner exactly when the line reaches a point $(am, bn)$ with $m, n$ integers, and the parities of $m$ and $n$ say which corner.`,
+          keywords: ["billiards", "billiard ball in a rectangle", "light beam in a cube", "reflect the box", "unfold the reflections", "tiling by copies", "path reaches a corner", "number of bounces", "method"],
+          importance: "low",
+          tier: "AIME Early",
+          level: ["AMC10", "AMC12", "AIME"]
         },
         {
           id: "cross-section-method",

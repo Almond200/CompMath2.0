@@ -1043,11 +1043,11 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "reduction-identities",
-          name: "Cofunction, Sign & Periodicity Identities",
-          latex: String.raw`\sin(90^\circ - \theta) = \cos\theta, \qquad \cos(90^\circ - \theta) = \sin\theta, \qquad \sin(-\theta) = -\sin\theta, \qquad \cos(-\theta) = \cos\theta, \qquad \sin(180^\circ - \theta) = \sin\theta, \qquad \cos(180^\circ - \theta) = -\cos\theta`,
-          description: String.raw`Cofunctions swap sin/cos across complementary angles (likewise tan/cot, sec/csc). $\sin$ and $\tan$ are odd, $\cos$ is even. Supplementary angles keep $\sin$ but flip $\cos$ (and $\tan$). Periods: $\sin, \cos$ repeat every $360^\circ$, $\tan$ every $180^\circ$ — so any angle reduces to a first-quadrant reference angle plus a sign.`,
-          keywords: ["cofunction", "negative angle", "odd even", "supplementary angle", "periodicity", "reference angle", "reduction identities"],
-          importance: "low",
+          name: "Reduction Formulas (Cofunction, Sign & Periodicity)",
+          latex: String.raw`\sin(90^\circ \pm \theta) = \cos\theta, \quad \cos(90^\circ \pm \theta) = \mp\sin\theta, \qquad \sin(180^\circ \pm \theta) = \mp\sin\theta, \quad \cos(180^\circ \pm \theta) = -\cos\theta`,
+          description: String.raw`The reduction (or induction) formulas rewrite a function of $k \cdot 90^\circ \pm \theta$ as a function of $\theta$. An odd multiple of $90^\circ$ swaps the function ($\sin \leftrightarrow \cos$, $\tan \leftrightarrow \cot$, $\sec \leftrightarrow \csc$); an even multiple keeps it; and the sign is the sign the original function has at that angle when $\theta$ is acute. Sine and tangent are odd, cosine is even, sine and cosine repeat every $360^\circ$ and tangent every $180^\circ$, so every angle reduces to a first-quadrant reference angle and a sign.`,
+          keywords: ["cofunction", "negative angle", "odd even", "supplementary angle", "periodicity", "reference angle", "reduction identities", "reduction formulas", "induction formulas", "sin of 180 plus theta", "cos of 90 plus theta", "quadrant sign rule"],
+          importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12"]
         },

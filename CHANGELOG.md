@@ -1,5 +1,13 @@
 # Changelog
 
+**2026-11-20**
+
+- **Moser's Circle merged (owner):** the chord-region count $1+\binom n2+\binom n4$ is now a Key form of `plane-regions`, renamed Regions from Lines, Circles and Chords, and proved in its Why it works; `moser-circle` redirects there, its two exercises and the lesson links (S6, S10.6, G7) moved over, and S10.6 now lists it as a prerequisite since S6.4 teaches it.
+- **Reduction formulas (owner, "all the trig induction formulas"):** `reduction-identities` already held $90^\circ-\theta$, $-\theta$ and $180^\circ-\theta$; it is now Reduction Formulas (Cofunction, Sign & Periodicity) with every form for $90^\circ$, $180^\circ$ and $270^\circ\pm\theta$, the periods, and the rule "odd multiples swap the function, the sign is the quadrant's", all proved by quarter turns of the unit circle. Importance low → medium (27 problems cite it).
+- **Two new cards (owner, P75 and P76):** `unfold-the-bounces` (method: reflect the box, not the path; a corner is a lattice point $(am, bn)$), now cited by 2002 AIME I #11 and 2025 AMC 10B #25 instead of Reflecting Across a Line; and `cone-insphere` (the largest sphere in a cone, right or oblique, has the incircle of the section through the vertex perpendicular to the base as a great circle; frustum $\rho=\sqrt{R_1R_2}$), cited by 2014 HMMT February Geometry #5 and 2014 AMC 10B #23 / 12B #19. The oblique case was checked numerically for seven apexes and is proved with a Dandelin sphere. Each has a figure, an example and its routes. 783 cards.
+- `tools/add-to-list.py` keeps a blurb's "N cards across M groups" true as well as "sections".
+- The semantic search index was not rebuilt: it needs the model-distillation venv, which this cloud container lacks; the new cards rank lexically until the next rebuild.
+
 **2026-11-17**
 
 - **No calculus:** at the owner's word the 110 SMT Calculus problems and the Calculus area of the topic tree (`alg.calc`, TQ21) are removed; the tree is back to 457 nodes, and nothing else depended on them.
