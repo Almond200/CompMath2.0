@@ -231,7 +231,19 @@
     "2009 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2009_AlgebraA.pdf",
     "2009 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2009_AlgebraB.pdf",
     "2009 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsA.pdf",
-    "2009 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsB.pdf"
+    "2009 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsB.pdf",
+    "2009 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2009_GeometryA.pdf",
+    "2009 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2009_GeometryB.pdf",
+    "2009 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2009_NumberTheoryA.pdf",
+    "2009 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2009_NumberTheoryB.pdf",
+    "2008 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2008_AlgebraA.pdf",
+    "2008 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2008_AlgebraB.pdf",
+    "2008 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2008_CombinatoricsA.pdf",
+    "2008 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2008_CombinatoricsB.pdf",
+    "2008 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2008_GeometryA.pdf",
+    "2008 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2008_GeometryB.pdf",
+    "2008 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2008_NumberTheoryA.pdf",
+    "2008 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2008_NumberTheoryB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -49457,6 +49469,454 @@
     "2009 PUMaC Division B Combinatorics, Problem 8": [
       3500,
       "Identify the fourth-largest of five as the second-smallest, compute its exact discrete order-statistic expectation and retain the correction to the official reversed-rank answer."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 1": [
+      1950,
+      "Interpret the second fold on the reopened sheet and find the reflected point one half-unit from the crease using a right triangle."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 2": [
+      2200,
+      "Enumerate the possible pairs of sides on the two faces incident to the longest edge, then check the opposite edge against the remaining faces."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 3": [
+      2650,
+      "Rule out a nontrivial rotation on eleven vertices of a simple concave polygon and use composition to bound the number of reflection axes."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 4": [
+      2350,
+      "Add the midpoint of a radius to obtain equal sides by the midsegment theorem and chase the regular polygon's central angles."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 5": [
+      3250,
+      "Bound the two parts by the inside triangle and outer trapezoid on the same cross-section, then attain the ratio with a triangular polygon."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 6": [
+      2750,
+      "Recognize the four congruent truncations of a side-three regular tetrahedron and subtract their volumes before squaring."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 7": [
+      3200,
+      "Split into three triangles and reduce the sum of their areas to a quarter of the square of the given diagonal with the cosine rule."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 8": [
+      3550,
+      "Set up trigonometric Ceva at the interior point, verify the special angle by a trigonometric identity, and use the monotone sine ratio to rule out other angles."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 1": [
+      1150,
+      "Divide an inscribed regular dodecagon into twelve equal central triangles or apply its circumradius-area formula."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 2": [
+      1650,
+      "Compute the triangle's area from its sides, then divide by the semiperimeter for the inradius."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 3": [
+      1950,
+      "Interpret the second fold on the reopened sheet and find the reflected point one half-unit from the crease using a right triangle."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 4": [
+      2200,
+      "Enumerate the possible pairs of sides on the two faces incident to the longest edge, then check the opposite edge against the remaining faces."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 5": [
+      2650,
+      "Rule out a nontrivial rotation on eleven vertices of a simple concave polygon and use composition to bound the number of reflection axes."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 6": [
+      2350,
+      "Add the midpoint of a radius to obtain equal sides by the midsegment theorem and chase the regular polygon's central angles."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 7": [
+      3250,
+      "Bound the two parts by the inside triangle and outer trapezoid on the same cross-section, then attain the ratio with a triangular polygon."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 8": [
+      2750,
+      "Recognize the four congruent truncations of a side-three regular tetrahedron and subtract their volumes before squaring."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 1": [
+      1950,
+      "Use the divisibility conditions modulo nine and eleven on the unknown digits and enforce the digit range."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 2": [
+      1600,
+      "Compare each square term with its counterpart on the right using positivity and track when both comparisons are equalities."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 3": [
+      2550,
+      "Force the three exceptional input primes by successive residues modulo two, three and five, then check primality."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 4": [
+      2800,
+      "Change to the sum and difference of the signed variables and check the finitely many differences, preserving the negative solution omitted by the source."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 5": [
+      2900,
+      "Multiply the two leading-digit intervals to trap a power of ten, then verify a common-prefix witness using exact integer powers."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 6": [
+      3050,
+      "Bound the digit sum by comparing exponential growth with the number of available digits, filter the remaining sums modulo nine, and check attainment."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 7": [
+      2700,
+      "Use determinant-one Farey neighbors to certify the largest lower fraction under the denominator cap and compute it with Bezout."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 8": [
+      3700,
+      "Factor the odd divisor sum into distinct Fermat primes, use binary expansion to force their indices without gaps, then use the supplied composite Fermat number."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 1": [
+      1850,
+      "Complete the square to bound one signed coordinate, then enumerate square residuals and both signs with the required parity."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 2": [
+      1600,
+      "Check the first factorial sums directly and rule out every later sum using its fixed nonsquare ending."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 3": [
+      1950,
+      "Use the divisibility conditions modulo nine and eleven on the unknown digits and enforce the digit range."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 4": [
+      1600,
+      "Compare each square term with its counterpart on the right using positivity and track when both comparisons are equalities."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 5": [
+      2550,
+      "Force the three exceptional input primes by successive residues modulo two, three and five, then check primality."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 6": [
+      2800,
+      "Change to the sum and difference of the signed variables and check the finitely many differences, preserving the negative solution omitted by the source."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 7": [
+      2900,
+      "Multiply the two leading-digit intervals to trap a power of ten, then verify a common-prefix witness using exact integer powers."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 8": [
+      3050,
+      "Bound the digit sum by comparing exponential growth with the number of available digits, filter the remaining sums modulo nine, and check attainment."
+    ],
+    "2008 PUMaC Division A Algebra, Problem 1": [
+      1850,
+      "Group the terms by the triangular positions of the ones and search in the short run between consecutive square partial sums."
+    ],
+    "2008 PUMaC Division A Algebra, Problem 2": [
+      2250,
+      "Use differences on the equally spaced inputs to prove the interpolation degree and recover the polynomial."
+    ],
+    "2008 PUMaC Division A Algebra, Problem 3": [
+      2850,
+      "Factor out three consecutive integers, prove uniform divisibility by each needed prime power, and find a pair of values certifying the exact gcd."
+    ],
+    "2008 PUMaC Division A Algebra, Problem 4": [
+      2200,
+      "Intersect the first four positive-root intervals and show the fifth upper endpoint lies below an earlier lower endpoint."
+    ],
+    "2008 PUMaC Division A Algebra, Problem 5": [
+      2450,
+      "Exchange the order of two finite sums, counting the multiplicity of every reciprocal in the triangular array."
+    ],
+    "2008 PUMaC Division A Algebra, Problem 6": [
+      2200,
+      "Use the defining equation to replace the reciprocal by the negative root, then bound the largest real root between consecutive half-integers."
+    ],
+    "2008 PUMaC Division A Algebra, Problem 7": [
+      3050,
+      "Invert the linear denominator modulo the irreducible ninth cyclotomic polynomial and prove minimal degree under rational coefficients."
+    ],
+    "2008 PUMaC Division A Algebra, Problem 8": [
+      3750,
+      "Certify the minimum degree by the top finite difference, then prove coefficient minimality using the same divisibility constraint on each successive leading difference."
+    ],
+    "2008 PUMaC Division A Algebra, Problem 9": [
+      3350,
+      "Iterate the fractional-linear substitution, use the resulting polynomial identity to bound its degree, and solve for the coefficients."
+    ],
+    "2008 PUMaC Division A Algebra, Problem 10": [
+      3800,
+      "Order the variables, use divisibility by the square of the largest one, and compare the sum of cubes with the cube of the product to obtain a finite check."
+    ],
+    "2008 PUMaC Division B Algebra, Problem 1": [
+      1000,
+      "Evaluate the nested powers using their printed exponent structure before adding."
+    ],
+    "2008 PUMaC Division B Algebra, Problem 2": [
+      1450,
+      "Evaluate the inner logarithm and its factors before using the exact power of four in the outer logarithm."
+    ],
+    "2008 PUMaC Division B Algebra, Problem 3": [
+      1850,
+      "Group the terms by the triangular positions of the ones and search in the short run between consecutive square partial sums."
+    ],
+    "2008 PUMaC Division B Algebra, Problem 4": [
+      1800,
+      "Rewrite the denominator as a square plus one and bound the signed quotient, including equality in both directions."
+    ],
+    "2008 PUMaC Division B Algebra, Problem 5": [
+      2500,
+      "Compute the polynomial gcd and isolate its three distinct real roots using disjoint sign-change intervals."
+    ],
+    "2008 PUMaC Division B Algebra, Problem 6": [
+      2850,
+      "Factor out three consecutive integers, prove uniform divisibility by each needed prime power, and find a pair of values certifying the exact gcd."
+    ],
+    "2008 PUMaC Division B Algebra, Problem 7": [
+      2200,
+      "Intersect the first four positive-root intervals and show the fifth upper endpoint lies below an earlier lower endpoint."
+    ],
+    "2008 PUMaC Division B Algebra, Problem 8": [
+      2450,
+      "Exchange the order of two finite sums, counting the multiplicity of every reciprocal in the triangular array."
+    ],
+    "2008 PUMaC Division B Algebra, Problem 9": [
+      3750,
+      "Certify the minimum degree by the top finite difference, then prove coefficient minimality using the same divisibility constraint on each successive leading difference."
+    ],
+    "2008 PUMaC Division B Algebra, Problem 10": [
+      3350,
+      "Iterate the fractional-linear substitution, use the resulting polynomial identity to bound its degree, and solve for the coefficients."
+    ],
+    "2008 PUMaC Division A Combinatorics, Problem 1": [
+      1600,
+      "Split by the position of the unique seven while accounting for the leading digit restriction."
+    ],
+    "2008 PUMaC Division A Combinatorics, Problem 2": [
+      2150,
+      "Count triangle-corner and square-corner incidences in the repeated tiling and pass to the limiting density ratio."
+    ],
+    "2008 PUMaC Division A Combinatorics, Problem 3": [
+      1950,
+      "Evaluate the inner binomial row sum, then use the binomial theorem on the remaining weighted row."
+    ],
+    "2008 PUMaC Division A Combinatorics, Problem 4": [
+      2950,
+      "Collapse the finite alternating generalized-binomial sum by Pascal's identity and find every root of the resulting polynomial."
+    ],
+    "2008 PUMaC Division A Combinatorics, Problem 5": [
+      2450,
+      "Sort the five nonnegative shares, subtract the staircase, enumerate partitions of the remaining eight into at most five parts, and restore the recipient order."
+    ],
+    "2008 PUMaC Division A Combinatorics, Problem 6": [
+      2800,
+      "Identify the increasing grid as a standard Young tableau and count with its hook lengths."
+    ],
+    "2008 PUMaC Division A Combinatorics, Problem 7": [
+      3550,
+      "Track one face through the two random stages, use the contraction fixed point, and multiply by the number of unit faces."
+    ],
+    "2008 PUMaC Division A Combinatorics, Problem 8": [
+      3900,
+      "Translate the image of the all-zero card to zero, use the preserved midpoint relation to force linearity over the three-element field, and count the ordered bases."
+    ],
+    "2008 PUMaC Division A Combinatorics, Problem 9": [
+      3100,
+      "Read the triangular prism graph from the picture and count its spanning trees by a Laplacian cofactor or a complete cycle-complement count."
+    ],
+    "2008 PUMaC Division A Combinatorics, Problem 10": [
+      3050,
+      "Encode valid stack histories as Catalan paths and use the next desired output to reconstruct the history uniquely."
+    ],
+    "2008 PUMaC Division B Combinatorics, Problem 1": [
+      1450,
+      "Multiply the conditional probabilities of the three draws while both the color counts and total change."
+    ],
+    "2008 PUMaC Division B Combinatorics, Problem 2": [
+      1600,
+      "Split by the position of the unique seven while accounting for the leading digit restriction."
+    ],
+    "2008 PUMaC Division B Combinatorics, Problem 3": [
+      2150,
+      "Count triangle-corner and square-corner incidences in the repeated tiling and pass to the limiting density ratio."
+    ],
+    "2008 PUMaC Division B Combinatorics, Problem 4": [
+      3050,
+      "Opposite colors are necessary and sufficient because a Hamiltonian grid cycle splits into two even paths after deleting a black and a white square."
+    ],
+    "2008 PUMaC Division B Combinatorics, Problem 5": [
+      1950,
+      "Evaluate the inner binomial row sum, then use the binomial theorem on the remaining weighted row."
+    ],
+    "2008 PUMaC Division B Combinatorics, Problem 6": [
+      2950,
+      "Collapse the finite alternating generalized-binomial sum by Pascal's identity and find every root of the resulting polynomial."
+    ],
+    "2008 PUMaC Division B Combinatorics, Problem 7": [
+      2350,
+      "Sort the shares, subtract the staircase, enumerate partitions of the remaining six, and restore the recipient order."
+    ],
+    "2008 PUMaC Division B Combinatorics, Problem 8": [
+      2800,
+      "Identify the increasing grid as a standard Young tableau and count with its hook lengths."
+    ],
+    "2008 PUMaC Division B Combinatorics, Problem 9": [
+      3900,
+      "Translate the image of the all-zero card to zero, use the preserved midpoint relation to force linearity over the three-element field, and count the ordered bases."
+    ],
+    "2008 PUMaC Division B Combinatorics, Problem 10": [
+      3100,
+      "Read the triangular prism graph from the picture and count its spanning trees by a Laplacian cofactor or a complete cycle-complement count."
+    ],
+    "2008 PUMaC Division A Geometry, Problem 1": [
+      950,
+      "Recover the radius from the circumference and substitute into the circle-area formula."
+    ],
+    "2008 PUMaC Division A Geometry, Problem 2": [
+      2900,
+      "Split the neighborhood into a prism, edge half-cylinders, and vertex pieces that together make a sphere."
+    ],
+    "2008 PUMaC Division A Geometry, Problem 3": [
+      2600,
+      "Use the apothem of the chord-defined dodecagon and compare its circumradius with the outer polygon's before squaring the ratio."
+    ],
+    "2008 PUMaC Division A Geometry, Problem 4": [
+      2850,
+      "Bound the focal sum on the circle by its axis extrema and check that each intermediate integer level intersects at four points."
+    ],
+    "2008 PUMaC Division A Geometry, Problem 5": [
+      3150,
+      "Under the intended regular-pentagon condition, exploit rotational symmetry and the constant projected speed of each side's contraction."
+    ],
+    "2008 PUMaC Division A Geometry, Problem 6": [
+      3300,
+      "Locate the interior Fermat point and certify it by three pairwise 120-degree angles between the displacement vectors."
+    ],
+    "2008 PUMaC Division A Geometry, Problem 7": [
+      3450,
+      "Derive the two symmetric regions from the leg length, bound all line intercepts at the critical slopes, and exhibit an avoiding tangent line."
+    ],
+    "2008 PUMaC Division A Geometry, Problem 8": [
+      3800,
+      "Dissect the four-dimensional polytope into a unit tesseract and pyramids or compute the orthant volumes using its coordinate inequalities."
+    ],
+    "2008 PUMaC Division A Geometry, Problem 9": [
+      3550,
+      "Project to a parallel sphere section, recover the chord and the two oriented inscribed angles, and distinguish the acute angle convention for planes."
+    ],
+    "2008 PUMaC Division A Geometry, Problem 10": [
+      3900,
+      "Compute the projected equilateral spherical triangle's interior angle via tangent directions and apply spherical excess with the triple-angle identity."
+    ],
+    "2008 PUMaC Division B Geometry, Problem 1": [
+      1250,
+      "Multiply the independent length and width scale factors and compare the product with one."
+    ],
+    "2008 PUMaC Division B Geometry, Problem 2": [
+      950,
+      "Recover the radius from the circumference and substitute into the circle-area formula."
+    ],
+    "2008 PUMaC Division B Geometry, Problem 3": [
+      2900,
+      "Split the neighborhood into a prism, edge half-cylinders, and vertex pieces that together make a sphere."
+    ],
+    "2008 PUMaC Division B Geometry, Problem 4": [
+      1850,
+      "Attain the center-to-corner distance at the cube center and use the farthest corner to prove the radius is minimal."
+    ],
+    "2008 PUMaC Division B Geometry, Problem 5": [
+      2650,
+      "Resolve each radius into horizontal and vertical projections, then use the two vertical sides and their separation for the area."
+    ],
+    "2008 PUMaC Division B Geometry, Problem 6": [
+      2750,
+      "Identify the allowed internal and external tangents from the side conditions and evaluate the resulting angle difference."
+    ],
+    "2008 PUMaC Division B Geometry, Problem 7": [
+      2850,
+      "Bound the focal sum on the circle by its axis extrema and check that each intermediate integer level intersects at four points."
+    ],
+    "2008 PUMaC Division B Geometry, Problem 8": [
+      3150,
+      "Under the intended regular-pentagon condition, exploit rotational symmetry and the constant projected speed of each side's contraction."
+    ],
+    "2008 PUMaC Division B Geometry, Problem 9": [
+      3450,
+      "Derive the two symmetric regions from the leg length, bound all line intercepts at the critical slopes, and exhibit an avoiding tangent line."
+    ],
+    "2008 PUMaC Division B Geometry, Problem 10": [
+      3900,
+      "Compute the projected equilateral spherical triangle's interior angle via tangent directions and apply spherical excess with the triple-angle identity."
+    ],
+    "2008 PUMaC Division A Number Theory, Problem 1": [
+      1500,
+      "Count factors of five at each nonzero power of five and note there are more factors of two."
+    ],
+    "2008 PUMaC Division A Number Theory, Problem 2": [
+      2950,
+      "Separate negative and zero exponents, then use the exponential growth of the power difference to handle both variables above two."
+    ],
+    "2008 PUMaC Division A Number Theory, Problem 3": [
+      3350,
+      "Expand around plus and minus one, cancel the constants and prove that every term beyond the linear ones has an extra factor at both primes dividing 2009."
+    ],
+    "2008 PUMaC Division A Number Theory, Problem 4": [
+      2650,
+      "Pair the reduced residues and use the totient formula on prime powers to force the tiny list of possible base totients."
+    ],
+    "2008 PUMaC Division A Number Theory, Problem 5": [
+      3000,
+      "Reduce the tower separately modulo four and twenty-five, including nonunit bases, then recombine the four residues."
+    ],
+    "2008 PUMaC Division A Number Theory, Problem 6": [
+      3250,
+      "Shift all three coefficients to enforce positivity and compute the smallest representable value in each residue class to correct the official key."
+    ],
+    "2008 PUMaC Division A Number Theory, Problem 7": [
+      2550,
+      "Determine the order of two modulo 167 and invert the exponent multiplier in the resulting linear congruence."
+    ],
+    "2008 PUMaC Division A Number Theory, Problem 8": [
+      2800,
+      "Force the smaller prime to be two, convert the square condition to a factorization of a fixed integer, and test the candidate prime triples."
+    ],
+    "2008 PUMaC Division A Number Theory, Problem 9": [
+      3100,
+      "Bound the product strictly below sixty, then exhaust the integer triples and use the reciprocal pairing to check the surviving configurations."
+    ],
+    "2008 PUMaC Division A Number Theory, Problem 10": [
+      3200,
+      "Use denominator parity, bound sums with a negative term, exhaust the seven-positive-term case with decreasing reciprocal bounds, and verify a nine-term witness."
+    ],
+    "2008 PUMaC Division B Number Theory, Problem 1": [
+      1250,
+      "Use that the printed sevens are base subscripts so each numeral is congruent to its digit sum modulo six."
+    ],
+    "2008 PUMaC Division B Number Theory, Problem 2": [
+      1500,
+      "Count factors of five at each nonzero power of five and note there are more factors of two."
+    ],
+    "2008 PUMaC Division B Number Theory, Problem 3": [
+      2950,
+      "Separate negative and zero exponents, then use the exponential growth of the power difference to handle both variables above two."
+    ],
+    "2008 PUMaC Division B Number Theory, Problem 4": [
+      3350,
+      "Expand around plus and minus one, cancel the constants and prove that every term beyond the linear ones has an extra factor at both primes dividing 2009."
+    ],
+    "2008 PUMaC Division B Number Theory, Problem 5": [
+      2350,
+      "Count square roots of one modulo each prime power of 720, with four roots at the power of two, and combine the choices."
+    ],
+    "2008 PUMaC Division B Number Theory, Problem 6": [
+      2650,
+      "Pair the reduced residues and use the totient formula on prime powers to force the tiny list of possible base totients."
+    ],
+    "2008 PUMaC Division B Number Theory, Problem 7": [
+      3500,
+      "Exhibit a monic product of six consecutive even offsets that vanishes modulo 1024 and use a fifth difference on odd inputs to prove degree five can be essential."
+    ],
+    "2008 PUMaC Division B Number Theory, Problem 8": [
+      3250,
+      "Shift all three coefficients to enforce positivity and compute the smallest representable value in each residue class to correct the official key."
+    ],
+    "2008 PUMaC Division B Number Theory, Problem 9": [
+      2800,
+      "Force the smaller prime to be two, convert the square condition to a factorization of a fixed integer, and test the candidate prime triples."
+    ],
+    "2008 PUMaC Division B Number Theory, Problem 10": [
+      3200,
+      "Use denominator parity, bound sums with a negative term, exhaust the seven-positive-term case with decreasing reciprocal bounds, and verify a nine-term witness."
     ],
     "2026 UKMT JMC, Problem 1": [
       100,
