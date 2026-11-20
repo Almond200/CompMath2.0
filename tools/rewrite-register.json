@@ -1609,7 +1609,6 @@
     "absolute-value-identities": "formula",
     "subset-sum-facts": "formula",
     "balls-boxes-table": "formula",
-    "moser-circle": "formula",
     "pappus-centroid": "formula",
     "descartes-rule-signs": "formula",
     "weighted-am-gm": "formula",
@@ -6705,20 +6704,6 @@
       ]
     ],
     "balls-boxes-table": [
-      [
-        "Why it works",
-        "kept -> Why it works"
-      ],
-      [
-        "How to use it",
-        "moved -> Useful observations"
-      ],
-      [
-        "On contests",
-        "rewritten -> Contest profile"
-      ]
-    ],
-    "moser-circle": [
       [
         "Why it works",
         "kept -> Why it works"

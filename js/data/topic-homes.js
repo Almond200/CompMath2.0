@@ -162,7 +162,6 @@ window.MATH_TOPIC_HOMES = {
   "parking-functions": "cp.struct.words.digits",
   "ballot-problem": "cp.struct.catalan",
   "exponential-generating-functions": "cp.tech.gf",
-  "moser-circle": "geo.comb.count.regions",
   "plane-regions": "geo.comb.count.regions",
   "combinatorial-nullstellensatz": "cp.logic.pigeon.bounds",
   "necklace-formula": "cp.tech.sym",

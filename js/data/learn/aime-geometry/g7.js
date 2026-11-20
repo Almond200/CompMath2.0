@@ -185,12 +185,12 @@ Use the gcd to count lattice points on segments, Pick to pass between areas and 
     },
     "G7.6": {
       prereq: ["handshake-lemma", "permutations-combinations"],
-      cards: ["plane-regions", "moser-circle", "handshakes-diagonals", "steiner-neighborhood", "counting-shapes", "zonogon-minkowski"],
+      cards: ["plane-regions", "handshakes-diagonals", "steiner-neighborhood", "counting-shapes", "zonogon-minkowski"],
       body: String.raw`Counting in geometry asks how many intersection points, regions, triangles or diagonals a figure has, or how large the region swept by a moving shape is. The counts come from choosing points and lines; the regions come from Euler's formula; and swept areas follow from adding a border to a shape.
 
 The [[handshakes-diagonals|counts of pairs]] are binomial coefficients: $n$ points make $\binom n2$ segments, an $n$-gon has $\tfrac{n(n - 3)}{2}$ diagonals, and $n$ lines in general position meet in $\binom n2$ points. Two circles meet in at most $2$ points, so $n$ circles meet in at most $2\binom n2$. [[counting-shapes|Counting the shapes in a figure]] organizes by size and position or by the vertices that determine each shape; counting triangles in a grid of points subtracts the collinear triples from all triples.
 
-The number of [[plane-regions|regions]] made by lines and circles follows from Euler's formula $V - E + F = 2$, or from the rule that each new line adds one region plus one for each line it crosses: $n$ lines in general position make $1 + n + \binom n2$ regions, so $5$ lines make $16$. [[moser-circle|Moser's circle problem]]: chords joining $n$ points on a circle in general position cut the disk into $1 + \binom n2 + \binom n4$ regions, which is $1, 2, 4, 8, 16, 31$ for $n = 1, \ldots, 6$, breaking the pattern of powers of $2$.
+The number of [[plane-regions|regions]] made by lines and circles follows from Euler's formula $V - E + F = 2$, or from the rule that each new line adds one region plus one for each line it crosses: $n$ lines in general position make $1 + n + \binom n2$ regions, so $5$ lines make $16$. [[plane-regions|Moser's circle problem]]: chords joining $n$ points on a circle in general position cut the disk into $1 + \binom n2 + \binom n4$ regions, which is $1, 2, 4, 8, 16, 31$ for $n = 1, \ldots, 6$, breaking the pattern of powers of $2$.
 
 The set of points within distance $r$ of a convex shape, its [[steiner-neighborhood|Steiner neighborhood]], has area $A + Pr + \pi r^2$ (area plus perimeter times $r$ plus a full disk at the corners): for a $3 \times 4$ rectangle and $r = 1$, $12 + 14 + \pi = 26 + \pi$. The region swept when a point moves by independent amounts in several directions is a [[zonogon-minkowski|zonogon]], a polygon with opposite sides parallel and equal, whose area is the sum of the areas of the parallelograms spanned by pairs of directions.
 
@@ -221,7 +221,7 @@ Count pairs with binomial coefficients, regions with Euler's formula or the add-
       ]
     },
     "G7.7": {
-      prereq: ["polygon-angle-sums", "regular-polygon-area", "regular-hexagon-area", "area-by-pieces", "quadrilateral-diagonal-area", "trapezoid-special-segments", "picks-theorem", "lattice-points-gcd", "british-flag-theorem", "plane-regions", "moser-circle"],
+      prereq: ["polygon-angle-sums", "regular-polygon-area", "regular-hexagon-area", "area-by-pieces", "quadrilateral-diagonal-area", "trapezoid-special-segments", "picks-theorem", "lattice-points-gcd", "british-flag-theorem", "plane-regions"],
       cards: [],
       body: String.raw`[[polygon-angle-sums|The angles of an $n$-gon]] add to $(n - 2) \cdot 180^\circ$. [[regular-polygon-area|A regular polygon]] splits into congruent triangles from its center, and [[regular-hexagon-area|the regular hexagon]] into six equilateral triangles.
 
@@ -229,7 +229,7 @@ Count pairs with binomial coefficients, regions with Euler's formula or the add-
 
 [[picks-theorem|Pick's theorem]] gives the area of a lattice polygon as $I + \tfrac B2 - 1$, and [[lattice-points-gcd|a lattice segment]] holds $\gcd(\Delta x, \Delta y) + 1$ lattice points. [[british-flag-theorem|The British flag theorem]] says $PA^2 + PC^2 = PB^2 + PD^2$ for a point and a rectangle.
 
-[[plane-regions|Lines in general position]] cut the plane into $1 + n + \binom n2$ regions, and [[moser-circle|chords among $n$ points on a circle]] into $1 + \binom n2 + \binom n4$.`,
+[[plane-regions|Lines in general position]] cut the plane into $1 + n + \binom n2$ regions, and [[plane-regions|chords among $n$ points on a circle]] into $1 + \binom n2 + \binom n4$.`,
       strategies: [
         String.raw`For a regular polygon, split it from the center into congruent triangles.`,
         String.raw`For an odd shape, enclose it in a simple figure and subtract the pieces outside.`,

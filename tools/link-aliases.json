@@ -1602,14 +1602,6 @@
    "Morleys",
    "Morley’s"
   ],
-  "moser-circle": [
-   "Moser",
-   "Moser's",
-   "Moser's Circle",
-   "Mosers",
-   "Moser’s",
-   "Regions from Chords"
-  ],
   "muirheads-inequality": [
    "Muirhead",
    "Muirhead's",
@@ -1902,6 +1894,12 @@
    "Equation of a Plane from Its Intercepts"
   ],
   "plane-regions": [
+   "Moser",
+   "Moser's",
+   "Moser's Circle",
+   "Mosers",
+   "Moser’s",
+   "Regions from Chords",
    "Regions from Lines",
    "Regions from Lines and Circles"
   ],

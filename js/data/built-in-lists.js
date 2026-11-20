@@ -129,7 +129,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cycle-hunting", "cryptarithms", "digit-manipulation", "calendar-problems", "quadratic-perfect-square", "palindromes"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
-    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 89 cards across 11 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 88 cards across 11 sections.",
     sections: [
       { title: "Counting Basics",
         note: "Arrangements, selections and distributions. Almost every harder count reduces to one of these.",
@@ -142,7 +142,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["complementary-counting", "symmetry-probability", "bijection-method", "pie", "inclusion-exclusion", "casework-method", "constructive-counting", "uniform-overcount", "grid-path-fill", "elimination-counting", "digit-occurrences"] },
       { title: "Recursion & States",
         note: "When the count for n depends on the count for smaller n.",
-        ids: ["states-recursion-prob", "recursive-counting", "derangements", "non-adjacent-selection", "catalan-numbers", "parking-functions", "moser-circle", "plane-regions", "restricted-sequences", "tiling-a-board", "simulate-the-process", "working-backwards", "walk-counting-dp"] },
+        ids: ["states-recursion-prob", "recursive-counting", "derangements", "non-adjacent-selection", "catalan-numbers", "parking-functions", "plane-regions", "restricted-sequences", "tiling-a-board", "simulate-the-process", "working-backwards", "walk-counting-dp"] },
       { title: "Symmetry & Group Counting",
         note: "Counting up to a symmetry, where naive counting overcounts by a factor you must compute.",
         ids: ["permutation-cycle-structure"] },
@@ -689,7 +689,7 @@ window.MATH_BUILTIN_LISTS = [
     sections: [
       { title: "Counts With a Twist",
         note: "Answers that are not what the first guess suggests.",
-        ids: ["moser-circle", "derangements", "catalan-numbers", "complementary-counting", "plane-regions", "non-adjacent-selection"] },
+        ids: ["derangements", "catalan-numbers", "complementary-counting", "plane-regions", "non-adjacent-selection"] },
       { title: "Counting Up to Symmetry",
         note: "When rotations and reflections make two arrangements the same object.",
         ids: ["burnsides-lemma", "polya-enumeration", "necklace-formula", "cayleys-formula"] },
