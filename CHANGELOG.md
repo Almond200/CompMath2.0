@@ -10,6 +10,13 @@
 - **Popups fit a phone:** a hover preview with a figure was 420 px wide and widened the page on a 375 px screen (the intermittent overflow in `check-browse.cjs`); floating popups now keep 8 px from each edge.
 - **Contest sections on pages (owner):** the setting once called Contest lists is renamed so it is not mistaken for Lists in Learn; its choices are Folded and Unfolded, its text names the pages it affects, and it has a preview screen (a card's practice problems).
 - **Ratings below 100 (owner):** 415 author estimates were pinned at a floor of 100 (CEMC, UKMT, MBMT, Calgary, Columbus). Each is re-graded from its own solution sketch and the contest's level, from 10 (one-line arithmetic in an early Pascal or JMC question) to 90; nothing goes below 10. LIVE's own floor is 370, every early AMC 8 #1.
+- **Owner review: tiers, importance, missing methods, difficulty** (AUDITS.md, "Owner review of tiers, importance, methods and difficulty"):
+  - Two new methods, `bound-and-construct` and `small-cases-pattern` (P77, P78; 785 cards). 84 problems that cited proof-method cards were retagged from their official statements; PUMaC's 34 wait for its archive (down today).
+  - 103 cards' tiers moved down to where the AMC or AIME first needs them (main routes only; AHSME counts as the AMC 12 and AJHSME as the AMC 8; the invitationals do not count).
+  - 45 importance labels changed where usage made the old one clearly wrong: `percent-change` (188 problems) and `mean-median-mode` (110) were Low, now High; ten Lowest cards had problems and are now Lower; twelve Medium cards no problem uses are now Low. New High formula cards joined their Core lists.
+  - Difficulty: PUMaC was rated above HMMT February at every position and BMT level with it, though HMMT February (rated from official solve counts) is the harder tournament; both were rescaled by one increasing map that keeps every problem's order.
+  - 2025 AMC 10A #9 no longer uses a derivative.
+  - Found, not fixed: every CMIMC paper link now returns 404, since the CMIMC archive is gone from its site.
 - The semantic search index was not rebuilt: it needs the model-distillation venv, which this cloud container lacks; the new cards rank lexically until the next rebuild.
 
 **2026-11-17**

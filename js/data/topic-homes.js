@@ -594,6 +594,8 @@ window.MATH_TOPIC_HOMES = {
   "ravi-substitution": "geo.tri.radii.in",
   "barycentric-coordinates": null,
   "coordinate-bash": null,
+  "bound-and-construct": null,
+  "small-cases-pattern": null,
   "trig-bash": null,
   "complex-bash": "geo.coord.vector.complex",
   "vector-bash": "geo.coord.vector.dot",

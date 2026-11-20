@@ -93,7 +93,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Finding a dihedral angle reduces an angle between planes to an ordinary angle between two segments. Two faces meeting along an edge are measured by perpendiculars to that edge from one common point, so the problem becomes a triangle whose sides are computed in the solid; in coordinates, the angle $\theta$ comes from normal vectors $\vec n_1$, $\vec n_2$ of the two faces.`,
           keywords: ["dihedral angle", "angle between faces", "angle between planes", "folding along a line", "pyramid face angle", "method"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -108,7 +108,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Boxing a tetrahedron trades an awkward solid for a rectangular box, here $p \times q \times r$. Two kinds of tetrahedra have all four vertices at corners of a box: one whose opposite edges are equal in pairs, with its six edges as face diagonals, and one with three mutually perpendicular edges at a vertex, which is a corner of the box. Either way, every measurement of the tetrahedron becomes a simple measurement of the box.`,
           keywords: ["tetrahedron in a box", "isosceles tetrahedron", "disphenoid", "regular tetrahedron in a cube", "opposite edges equal", "trirectangular tetrahedron", "method"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -122,7 +122,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`A_1 + A_2 + \cdots = \frac{A_1}{1 - k^2}`,
           description: String.raw`Finding the ratio between consecutive levels reduces an infinite construction to one step. Each level is the previous one scaled by the same factor $k$, so a single computation fixes every level (the first has area $A_1$), and the total over infinitely many levels is a geometric series.`,
           keywords: ["nested figures", "inscribed repeatedly", "infinite sequence of squares", "scale factor between levels", "geometric series of areas", "method"],
-          importance: "medium",
+          importance: "low",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
         },
@@ -152,7 +152,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`c^2 - x^2 = b^2 - (a - x)^2`,
           description: String.raw`Writing the Pythagorean Theorem twice and subtracting removes the one length the two triangles share. With a base $a$ cut into $x$ and $a - x$ by the shared leg, and hypotenuses $c$ and $b$, each equation alone has two unknowns, the shared leg and a piece of the base, but their difference loses the shared leg entirely and leaves a linear equation in the base.`,
           keywords: ["altitude splits a triangle", "foot of the altitude", "subtract two pythagorean equations", "common chord", "shared leg", "method"],
-          importance: "medium",
+          importance: "low",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
         },
@@ -228,7 +228,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Unfolding the bounces straightens a path that reflects off the walls of a box. Each reflection of the path across a wall is traded for a reflection of the box, so the path keeps its length and runs straight through a tiling of the plane by copies of the box. It reaches a corner exactly when the line reaches a point $(am, bn)$ with $m, n$ integers, and the parities of $m$ and $n$ say which corner.`,
           keywords: ["billiards", "billiard ball in a rectangle", "light beam in a cube", "reflect the box", "unfold the reflections", "tiling by copies", "path reaches a corner", "number of bounces", "method"],
           importance: "low",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
@@ -243,7 +243,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The cross-section method replaces a solid configuration by one flat slice. Solids of revolution about a common axis are flat pictures spun around that axis, so the slice through the axis already holds every center, radius, and point of contact, and a three-dimensional problem becomes a problem about circles and lines.`,
           keywords: ["cross section", "torus", "sphere tangent", "axial slice", "3d to 2d", "method"],
           importance: "high",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -258,7 +258,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A perpendicular from a vertex to an angle bisector is half of a reflection. The bisector is a mirror that swaps the two sides of its angle, so reflecting across it moves a length from one side onto the other, which turns an angle condition into equal lengths and isosceles triangles.`,
           keywords: ["perpendicular to angle bisector", "foot of perpendicular to bisector", "double the perpendicular", "drop perpendicular and extend", "perpendicular from a vertex to a bisector", "reflect over the angle bisector", "reflect a vertex across the angle bisector", "angle bisector reflection", "reflect across the bisector", "isosceles triangle from an angle bisector", "congruent copy across the bisector", "AB plus BD equals AC", "angle B twice angle C", "c sin A/2", "b minus c over 2", "midline b-c", "auxiliary construction"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME", "Olympiad"]
         },
         {
@@ -318,7 +318,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Inversion about a circle with center $O$ and radius $r$ sends each point $P$ to the point $P^*$ on ray $OP$ with $OP \cdot OP^* = r^2$. It swaps the inside and outside of the circle, sends circles through $O$ to lines, and preserves angles, so it can turn a crowded picture of circles into lines and circles that are easy to handle.`,
           keywords: ["inversion properties", "inverse point", "op op* = r^2", "line to circle", "conformal", "inversion distance formula", "circle preserving", "inversive geometry", "inversion"],
           importance: "low",
-          tier: "Olympiad",
+          tier: "AIME Late",
           level: ["Olympiad"]
         },
         {
@@ -393,7 +393,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The rotation trick moves scattered distances into one triangle. Three segments from an interior point to the vertices of a regular polygon point in different directions; rotating about a vertex $B$ by the polygon's angle carries the point $P$ to $P'$, and one of the segments next to the others without changing its length.`,
           keywords: ["rotation", "point inside square", "point inside equilateral", "distances to vertices", "distances from a special point"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -438,7 +438,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A homothety, or dilation, scales a figure by a factor $k$ about a center $P$, keeping every direction. Any two circles of different radii are images of each other under two homotheties, centered at their two centers of similitude, so whatever is attached to one circle is copied onto the other.`,
           keywords: ["homothety", "dilation", "similitude center", "monge", "external tangents", "method"],
           importance: "high",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -467,7 +467,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`P = P_1 + P_2 + \cdots - 2(\text{shared lengths}), \qquad S = S_1 + S_2 + \cdots - 2(\text{shared faces})`,
           description: String.raw`Joining shapes hides edges: when two pieces are put together along a common edge, that edge was on the boundary of both and is now inside, so the perimeter of the whole is the sum of the pieces' perimeters minus twice the shared length. For cubes and boxes glued face to face the surface area loses twice each shared face. A staircase outline with right-angle corners has horizontal edges adding up to twice its width, whatever the steps.`,
           keywords: ["perimeter of joined shapes", "shared edge", "glued cubes surface area", "perimeter of figure made of squares", "hidden faces", "number of sides after joining", "rectilinear perimeter", "method"],
-          importance: "low",
+          importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10"]
         },
@@ -482,7 +482,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`a = y + z,\ \ b = z + x,\ \ c = x + y`,
           description: String.raw`Ravi substitution trades the sides $a$, $b$, $c$ of a triangle for its incircle tangent lengths $x = s - a$, $y = s - b$, $z = s - c$. Every triangle gives three positive tangent lengths and every three positive numbers give a triangle, so the triangle inequality disappears as a constraint and Heron's Formula becomes the symmetric product $\sqrt{xyz(x + y + z)}$.`,
           keywords: ["ravi", "tangent length substitution", "triangle inequality free", "heron simplified", "method"],
-          importance: "medium",
+          importance: "low",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
         },
@@ -498,7 +498,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Barycentric coordinates describe each point $P$ of the plane by three weights $\alpha$, $\beta$, $\gamma$ on the vertices of a fixed triangle $ABC$, adding up to $1$, and each weight is the fraction of the triangle's area cut off opposite its vertex, such as $\alpha = \frac{[PBC]}{[ABC]}$. They turn a triangle problem into linear algebra that is certain to finish.`,
           keywords: ["barycentric coordinates", "areal coordinates", "area ratios", "mass points", "incenter circumcenter coordinates", "homogeneous coordinates", "method"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AIME Early",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -543,7 +543,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Complex number bashing treats points of the plane as complex numbers. Multiplying by a complex number rotates and scales in one step (rotation by $\theta$ about the point $p$ is in the box), so a configuration made of rotations becomes short algebra, and the quotient $\frac{c - a}{b - a}$ records both the angle at $a$ and a ratio of lengths.`,
           keywords: ["complex bash", "complex numbers geometry", "rotation by multiplication", "roots of unity polygon", "equilateral condition", "method"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -557,8 +557,8 @@ window.MATH_SECTIONS.push({
           latex: String.raw`P = (1 - t)A + tB \qquad \vec u \cdot \vec v = 0 \iff \vec u \perp \vec v`,
           description: String.raw`Vector bashing is coordinates without axes. Instead of placing a figure on a grid, it names a point as the origin and writes every other point as a combination of a few basis vectors, so that a line is a point plus a multiple of a direction and a division of a segment is a weighted average, the point $P$ at fraction $t$ of the way from $A$ to $B$. It fits figures defined by ratios, midpoints, and parallelograms, where an axis would have to be forced, and it extends to three dimensions with no new idea. Because every vector is written from one origin, the algebra stays short.`,
           keywords: ["vector bash", "vectors", "position vectors", "basis vectors", "origin at a vertex", "weighted average of points", "method"],
-          importance: "low",
-          tier: "AIME Early",
+          importance: "high",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -574,7 +574,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Walking once around a closed polygon brings you back to the start, so its sides, taken as vectors in order, add to zero. When the angles are known, every direction is known and only the lengths are unknown, so closure becomes equations in the side lengths. Its two components give linear relations, such as $a - d = e - b = c - f$ for an equiangular hexagon, and dotting the sum with itself gives a relation among the products of the sides.`,
           keywords: ["closing a polygon", "side vectors add to zero", "equiangular polygon sides", "equiangular hexagon a - d = e - b = c - f", "polygon closure condition", "sum of the side vectors", "method"],
           importance: "lower",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -604,7 +604,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`An affine transformation is a linear map followed by a translation. It sends lines to lines and keeps parallel lines parallel, keeps ratios along each line, and multiplies every area by the same constant, so a question that only involves those quantities can be answered on the most symmetric figure available.`,
           keywords: ["affine transformation", "shear", "scaling", "stretch", "ellipse to circle", "area ratio invariant", "map to equilateral", "wlog equilateral", "method"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -634,7 +634,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A linear change of variables, $u = ax + by$ and $v = cx + dy$, gives the plane new coordinates along the directions that matter in the problem. The square grid becomes a grid of identical parallelograms, so every area changes by the same factor, the absolute value of the determinant, and a slanted region becomes a rectangle or a square.`,
           keywords: ["linear substitution", "change of variables", "u = x + y and v = x - y", "rotate the axes", "area scaling factor", "determinant scales area", "jacobian", "slanted grid", "area of a region bounded by slanted lines", "linear transformation of the plane", "map one plane to another", "mapping the xy-plane to the uv-plane", "linear map", "new coordinates u and v", "u = x + y, v = x - y substitution"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -817,7 +817,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\#\text{items needed} = \left\lceil \frac Ns \right\rceil, \qquad \#\text{items that fit} = \left\lfloor \frac Ns \right\rfloor`,
           description: String.raw`Rounding up to whole items answers "how many are needed" when the items come only in whole units of size $s$ and an amount $N$ must be covered: the answer is $\left\lceil \frac Ns \right\rceil$, the smallest whole number at least $\frac Ns$, written with the ceiling brackets. "How many fit" rounds down instead, with the floor. Later quantities are computed from the whole number of items, not from the exact quotient.`,
           keywords: ["round up", "ceiling", "how many needed", "whole number of", "buses needed", "cans needed", "full recipes", "at least how many", "method"],
-          importance: "lower",
+          importance: "medium",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10"]
         },
@@ -1163,7 +1163,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A function's symmetry is a statement about its values at paired points, and it can be read off an equation by looking at the sum of the two arguments. When the arguments always add to the same constant $c$ and the values are equal, the paired points sit at the same height on opposite sides of the vertical line $x = \frac{c}{2}$. When the values add to a constant $2b$ instead, the graph is carried to itself by a half turn about the center $(\frac{c}{2}, b)$. Shifts by a fixed amount give periods, and two symmetries together produce a period, which is what makes a value far from the origin computable. The even and odd functions are the case of axis $x = 0$ and center $(0, 0)$, treated in [[odd-even-functions|Odd and Even Functions]], and the symmetry between a function and its inverse across the line $y = x$ is in [[inverse-function-properties|Properties of Inverse Functions]].`,
           keywords: ["function", "symmetry of a function", "axis of symmetry", "center of symmetry", "periodic function", "period", "f(a+x)=f(a-x)", "reflection of a graph", "half turn", "anti-periodic"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -1223,7 +1223,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Interpolation recovers a polynomial from its values. A polynomial of degree at most $n - 1$ is fixed by $n$ values $y_i$ at points $x_i$, and $L_i(x)$ is the degree-$(n-1)$ polynomial equal to $1$ at $x_i$ and $0$ at the other points, so a problem that gives that many values has given the whole polynomial, and the work is to reach the requested value without expanding anything.`,
           keywords: ["interpolation", "points determine polynomial", "finite differences", "lagrange polynomial", "polynomial through given points", "interpolating polynomial"],
           importance: "low",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -1238,7 +1238,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Subtracting the pattern turns given values into known roots. When the data follow a simple function, the difference between the polynomial and that function vanishes at every data point, so it factors completely up to one constant, and a single extra fact pins the whole polynomial down.`,
           keywords: ["subtract and factor", "auxiliary polynomial", "xP(x) - 1", "P(k) = 1/k", "known roots", "Q(x) = P(x) - x", "polynomial with given values", "same value at several points", "equal values at two points", "method"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -1283,7 +1283,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Transforming the roots builds a new polynomial whose roots are a function of the old ones. It turns a question about awkward expressions in the roots into a question about the coefficients of a different polynomial, where Vieta's Formulas answer it directly.`,
           keywords: ["shift roots", "scale roots", "reciprocal roots", "reverse coefficients", "substitute"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -1433,7 +1433,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{place value: } 10^k \gt 9 \cdot (10^{k - 1} + \cdots + 1), \qquad \text{sign first, then size}`,
           description: String.raw`To make an expression built from given digits or numbers as large or small as possible, fill its most valuable position first. In a number the leading digit outweighs everything after it, so the largest digits go in the highest places, and in a sum of two numbers the two highest places take the two largest digits. For a product or a quotient, choose the sign first and then the sizes; for a fraction, the largest number over the smallest. A last comparison settles the few arrangements left.`,
           keywords: ["largest possible", "smallest possible", "arrange the digits", "place the digits", "maximize a sum of numbers", "greatest product", "most negative", "fill in the blanks", "method"],
-          importance: "lower",
+          importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10"]
         },
@@ -1494,7 +1494,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Smoothing, also called mixing variables, proves where an extremum occurs by improving any other configuration. If every configuration except one can be adjusted to a better one, the remaining configuration is the optimum, which turns the guess that equality holds when all variables are equal into a proof.`,
           keywords: ["smoothing", "mixing variables", "MV method", "equal variable method", "EV method", "adjust two variables", "extremum symmetric", "equality all equal", "method"],
           importance: "low",
-          tier: "Olympiad",
+          tier: "AMC",
           level: ["Olympiad"]
         },
         {
@@ -1584,7 +1584,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Trigonometric substitution writes an algebraic variable as a trigonometric function of an angle so that identities do the algebra. Radicals clear through the Pythagorean identity, and recursions and symmetric conditions become statements about doubling or adding angles.`,
           keywords: ["substitute cosine", "sqrt 1 minus x squared", "sqrt 1 plus x squared", "sqrt x squared minus 1", "x = a sin theta", "x = a tan theta", "x = a sec theta", "angle doubling", "triple angle 4x^3 - 3x", "tangent double angle", "a + b + c = abc tangent", "nested radicals", "chebyshev", "weierstrass substitution", "half angle radical", "method"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -1659,7 +1659,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A double sum adds a number for every pair of indices in some region, and the region can be swept by rows or by columns. One order often hides a structure that the other makes plain, such as a divisor sum that becomes a count of multiples.`,
           keywords: ["double sum", "double summation", "swap the order of summation", "interchange summation", "split a summation", "nested sums", "sum over pairs", "fubini for sums", "sum of i less than j", "triangular sum", "method"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME", "Olympiad"]
         },
         {
@@ -1776,7 +1776,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Squeezing between consecutive squares proves a number is not a perfect square by trapping it strictly between two squares that are next to each other. No square lies between $n^2$ and $(n+1)^2$, so the trap settles the question for every value where it closes, and only a few small values remain.`,
           keywords: ["between consecutive squares", "not a perfect square", "bounding", "squeeze", "floor of sqrt", "method"],
           importance: "low",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -1806,7 +1806,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Hensel lifting climbs from solutions modulo a prime to solutions modulo its powers, one power at a time. Near a known root $a$ modulo $p$, a polynomial $f$ is nearly linear, and the candidates above it are $a + pt$, and modulo the next power of the prime that approximation is exact, so every step is a linear congruence.`,
           keywords: ["hensel", "lift mod p squared", "p squared divides", "linear congruence", "simple root", "lifting solutions mod p"],
           importance: "medium",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -1906,10 +1906,10 @@ window.MATH_SECTIONS.push({
       groups: [
         { title: "Reframing the Count", blurb: "Counting something easier with the same answer: the complement, a bijection, a reflected path, a region's area, or the same set counted twice.", ids: ["complementary-counting", "bijection-method", "double-counting", "symmetry-probability", "reflection-principle", "elimination-counting", "geometric-probability"] },
         { title: "Building & Splitting", blurb: "Building each object step by step, gluing items that must stay together or slotting items into gaps, or splitting the count into cases.", ids: ["constructive-counting", "casework-method", "digit-occurrences", "counting-blocks", "gap-method", "uniform-overcount", "pie"] },
-        { title: "Working It Out by Hand", blurb: "Listing the cases in an order that cannot skip or repeat one, or running a short process step by step until it ends or repeats.", ids: ["organized-listing", "forced-entries", "layer-by-layer-search", "simulate-the-process"] },
+        { title: "Working It Out by Hand", blurb: "Listing the cases in an order that cannot skip or repeat one, or running a short process step by step until it ends or repeats.", ids: ["organized-listing", "forced-entries", "layer-by-layer-search", "small-cases-pattern", "simulate-the-process"] },
         { title: "Recursion & States", blurb: "Writing a count or probability in terms of smaller cases, filling a grid of counts, or solving the recursion.", ids: ["recursive-counting", "grid-path-fill", "walk-counting-dp", "states-recursion-prob", "transfer-matrix-method", "backward-induction"] },
         { title: "Algebraic Machinery", blurb: "Encoding a count as algebra, with generating functions or indicator variables.", ids: ["generating-function-method", "indicator-variables"] },
-        { title: "Existence Arguments", blurb: "Proving that something exists, or cannot, with invariants, monovariants, extremes, or probability.", ids: ["invariants-coloring", "monovariant", "extremal-principle", "dimension-arguments", "probabilistic-method", "odd-part-chains", "coloring-arguments", "pairing-to-bound", "strategy-stealing"] }
+        { title: "Existence Arguments", blurb: "Proving that something exists, or cannot, with invariants, monovariants, extremes, or probability.", ids: ["invariants-coloring", "monovariant", "bound-and-construct", "extremal-principle", "dimension-arguments", "probabilistic-method", "odd-part-chains", "coloring-arguments", "pairing-to-bound", "strategy-stealing"] }
       ],
       formulas: [
         {
@@ -1969,7 +1969,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Two ways to decide a game without solving it position by position. A symmetry strategy keeps the board symmetric after each of your moves, so whenever the opponent can move, the mirror image of that move is still available to you, and you are never the one stuck. Strategy stealing proves that the first player wins without saying how: if the second player had a winning strategy, the first player could make an arbitrary move and then use it, which is a contradiction whenever an extra move can only help.`,
           keywords: ["strategy stealing", "symmetry strategy", "mirror strategy", "copy the opponent", "first player wins", "chomp", "hex", "take the center then mirror"],
           importance: "low",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME", "Olympiad"]
         },
         {
@@ -2064,6 +2064,21 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
         {
+          id: "small-cases-pattern",
+          name: "Small Cases, Then the Pattern",
+          type: "method",
+          subject: "counting",
+          when: String.raw`A sequence, a function on the integers, a process or a count depends on $n$, and the question asks about a large $n$ such as $2019$ or $2^{2013}$, with no formula in sight.`,
+          move: String.raw`Work out the answer for $n = 1, 2, 3, \ldots$ in a table, look for a rule (often in base $2$, by parity, or by powers), then confirm the rule from the problem's own recursion before applying it to the large $n$.`,
+          uses: [],
+          latex: String.raw`n = 1, 2, 3, \ldots \ \longrightarrow\ \text{guess the rule} \ \longrightarrow\ \text{check it against the recursion} \ \longrightarrow\ n = 2019`,
+          description: String.raw`Small cases, then the pattern turns a question about a huge $n$ into a table of easy computations. The first few answers usually show their rule, such as a jump at every power of $2$ or a closed form in $n$; the rule is then checked against the way each case is built from the smaller ones, so that it is a proof and not a guess, and applied to the $n$ in the problem.`,
+          keywords: ["small cases", "find the pattern", "compute the first few terms", "guess and check", "pattern in base 2", "large n", "josephus", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
+        },
+        {
           id: "simulate-the-process",
           name: "Simulating the Process",
           type: "method",
@@ -2151,7 +2166,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Double counting computes the size of one set in two ways and equates the answers. It turns a hard sum into an easy one, proves identities without algebra, and, when one count can only be bounded, turns into an inequality.`,
           keywords: ["count two ways", "incidence", "tournament", "rows columns", "committee counting"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -2256,7 +2271,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The reflection principle counts paths that touch a forbidden line by matching them with paths of a simpler kind. Reflecting the part of a path after its first touch flips its endpoint across the line, and that matching makes the bad paths as easy to count as the good ones.`,
           keywords: ["André's Reflection Principle", "reflection", "bad paths", "barrier", "bijection", "catalan proof", "ballot", "Andre's reflection principle"],
           importance: "low",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -2376,7 +2391,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A monovariant is a quantity that every move pushes the same way. If it can take only finitely many values, the moves cannot go on forever, which proves that a process ends; and running an improvement process until it stops proves that a configuration with no possible improvement exists.`,
           keywords: ["monovariant", "process must stop", "termination", "strictly decreasing quantity", "local improvement", "number of inversions", "potential function", "method"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -2393,6 +2408,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AMC12", "AIME", "Olympiad"]
+        },
+        {
+          id: "bound-and-construct",
+          name: "Bound, Then Construct",
+          type: "method",
+          subject: "counting",
+          when: String.raw`The question asks for the largest or smallest possible value of something over all allowed configurations: the most pieces that can be placed, the fewest moves, the least number of committees, the best constant in an inequality.`,
+          move: String.raw`Do two separate jobs. Prove a bound that every allowed configuration obeys (often by splitting into blocks, pigeonhole, double counting or an inequality), then build one configuration that reaches the bound exactly. The answer is the bound only when both are done.`,
+          uses: ["pigeonhole"],
+          latex: String.raw`\text{answer} = M \iff \text{every configuration} \le M \ \text{ and some configuration} = M`,
+          description: String.raw`Bound, then construct is how every "largest possible" or "smallest possible" question is answered. A bound alone only says the answer is at most $M$; an example alone only says it is at least the example's value. The answer is found when a bound and an example meet, and the usual way to find the right $M$ is to try small examples first and let them suggest both the bound and the construction.`,
+          keywords: ["largest possible", "smallest possible", "maximum number", "minimum number", "bound and example", "upper bound and construction", "extremal combinatorics", "best constant", "method"],
+          importance: "high",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
         },
         {
           id: "extremal-principle",
@@ -2506,7 +2536,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`To prove that $P$ implies $Q$, prove instead that not $Q$ implies not $P$, an equivalent statement that is often easier to reach. The switch helps when "not $Q$" gives something to build with, such as a factorization when $Q$ says a number is prime.`,
           keywords: ["contrapositive", "if not q then not p", "converse", "inverse", "logically equivalent", "proof technique", "method"],
           importance: "high",
-          tier: "Olympiad",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -2536,7 +2566,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Without loss of generality, abbreviated WLOG, uses a symmetry of the problem to cut many cases down to one. Each skipped case becomes the chosen one after a relabeling that changes nothing in the statement, so proving one case proves them all. The care needed is in checking that the symmetry is really there.`,
           keywords: ["without loss of generality", "wlog", "assume a >= b >= c", "symmetric", "normalize", "relabel", "proof technique", "method"],
           importance: "medium",
-          tier: "Olympiad",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -2701,7 +2731,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A proof by construction proves that an object exists by building one and checking it. When the claim is for every $n$, the construction has to work for every $n$, so it is usually a family with a parameter, found by solving small cases and spotting what they have in common.`,
           keywords: ["proof by construction", "constructive proof", "explicit example", "existence", "construction achieving the bound", "proof technique", "method"],
           importance: "medium",
-          tier: "Olympiad",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -2768,7 +2798,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`This is a square crossed by two segments, $PQ$ and $RS$, one joining each pair of opposite sides. If the segments are perpendicular they have the same length, wherever they sit, because a quarter turn about the center swaps the two pairs of sides and turns one direction into the other. Extending the segments to the lines of the sides cuts the figure into right triangles that are all similar.`,
           keywords: ["perpendicular segments in a square", "segments joining opposite sides", "square through four points", "equal crossing segments", "quarter turn about the center", "square with a point on each side", "rotate a segment by 90 degrees in a square", "extend a segment to the sides of a square", "similar triangles in a square"],
           importance: "lower",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -2782,7 +2812,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`a^2 = p^2 + q^2,\ b^2 = q^2 + r^2,\ c^2 = r^2 + p^2`,
           description: String.raw`This is the tetrahedron whose opposite edges are equal in pairs, a disphenoid, with the regular tetrahedron as its most symmetric case. Such a tetrahedron, with opposite edges $a$, $b$, $c$, sits exactly inside a $p \times q \times r$ rectangular box with its edges as face diagonals, so its volume, circumsphere, and insphere all come from the box.`,
           keywords: ["isosceles tetrahedron", "disphenoid", "opposite edges equal", "congruent faces", "regular tetrahedron", "tetrahedron in a box", "pattern"],
-          importance: "medium",
+          importance: "low",
           tier: "AIME Early",
           level: ["AMC12", "AIME"]
         },
@@ -2797,7 +2827,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`n^3 = \underbrace{8}_{3\text{ faces}} + \underbrace{12(n - 2)}_{2} + \underbrace{6(n - 2)^2}_{1} + \underbrace{(n - 2)^3}_{0}`,
           description: String.raw`This is the problem of an $n \times n \times n$ cube made of unit cubes, painted on the outside and taken apart, with $n \ge 2$. A unit cube's number of painted faces depends only on where it sat: the $8$ corners have three, the cubes along the $12$ edges two, the cubes in the middle of the $6$ faces one, and the hidden core none. The four counts add back to $n^3$, which is the check.`,
           keywords: ["painted cube", "unit cubes painted", "cube painted on the outside", "how many faces painted", "painted box", "corner edge face interior cubes", "pattern"],
-          importance: "low",
+          importance: "high",
           tier: "AMC",
           level: ["AMC10", "AMC12"]
         },
@@ -3049,7 +3079,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{value} = \text{axis start} + (\text{marks}) \times (\text{scale}), \qquad \text{pie: } \tfrac{\text{angle}}{360^\circ}\times\text{total}`,
           description: String.raw`This is the problem that gives its data as a bar graph, a line graph, a pie chart, or a table, and asks for a total, an average, a percent, or a change. The work is reading the numbers correctly: the scale, the units, and where an axis starts, since a bar twice as tall stands for twice as much only when the axis starts at $0$.`,
           keywords: ["bar graph", "line graph", "pie chart", "table of data", "reading a graph", "data interpretation", "scale of an axis", "statistics from a chart", "pattern"],
-          importance: "lower",
+          importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10"]
         },
@@ -3064,7 +3094,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`S = a\,c - b\,w + u\,(N - c - w), \qquad c, w \ge 0, \quad c + w \le N`,
           description: String.raw`This is the test-score problem: $N$ questions, $a$ points for each right answer, $b$ off for each wrong one, and $u$ for each blank. The score is one linear equation in the counts $c$ and $w$, and the counts are whole numbers with $c + w \le N$. Divisibility or parity of the equation fixes the possible counts, and the bound on the total throws out the ones that need too many questions.`,
           keywords: ["test score", "points for a correct answer", "penalty for a wrong answer", "blank answers", "unanswered questions", "scoring rule", "how many correct", "possible scores", "score as a percent", "pattern"],
-          importance: "lower",
+          importance: "medium",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10"]
         },
@@ -3214,7 +3244,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\begin{gathered} a \star b = \text{(a rule given in the problem)} \\ \Rightarrow\; \text{rewrite the rule before evaluating} \end{gathered}`,
           description: String.raw`This is the problem that invents an operation, written with a new symbol and defined by a formula, and asks for a value, a solution, or a property of it. The rule is usually a familiar operation in disguise, a product of shifted numbers or a sum of reciprocals, and rewriting it in that form shows whether it is associative and what a long chain of it collapses to.`,
           keywords: ["defined operation", "custom operation", "new symbol", "star operation", "binary operation rule", "evaluate the chain", "associative operation", "operation as a function", "pattern"],
-          importance: "low",
+          importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
@@ -3375,7 +3405,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\overline{abba} = 1001a + 110b, \qquad 9 \cdot 10^{k-1} \text{ palindromes with } 2k - 1 \text{ or } 2k \text{ digits}`,
           description: String.raw`This is the problem about palindromes, numbers that read the same forwards and backwards, such as $\overline{abba}$ with digits $a \ne 0$ and $b$. A palindrome is fixed by its first half, which makes counting them a matter of choosing that half, and writing it in place value, as $\overline{abba} = 1001a + 110b$, shows its divisibility: every palindrome with an even number of digits is a multiple of $11$.`,
           keywords: ["palindrome", "palindromic number", "reads the same backwards", "abba", "count palindromes", "palindrome divisible by 11", "pattern"],
-          importance: "low",
+          importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
@@ -3445,7 +3475,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{person } i \text{ truthful} \iff \text{statement } i \text{ is true}`,
           description: String.raw`This is the puzzle whose data are statements rather than numbers: people who always tell the truth or always lie, or clues about an arrangement, some of which may be false. The rule that ties it together is that a truth-teller's statement is true and a liar's is false, so each guess about who is truthful either agrees with every statement or contradicts one, and only the consistent guesses survive.`,
           keywords: ["truth teller", "liar", "knights and knaves", "logic puzzle", "logical deduction", "consistent assignment", "who is lying", "arrangement clues", "pattern"],
-          importance: "low",
+          importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
@@ -3460,7 +3490,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\#\text{shapes} = \#(\text{size } 1) + \#(\text{size } 2) + \cdots, \qquad \text{or choose the lines that bound one}`,
           description: String.raw`This is the problem that shows a figure built from lines, such as a grid or a triangle cut by segments, and asks how many triangles, squares, or rectangles it contains, counting the large shapes made of several small ones. The shapes overlap, so the work is to count each exactly once, either by size and position or by choosing the lines that bound a shape.`,
           keywords: ["count triangles in a figure", "how many squares", "how many rectangles", "shapes of all sizes", "overlapping shapes", "count figures", "pattern"],
-          importance: "low",
+          importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
@@ -3505,7 +3535,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{magic sum} = \frac{\text{sum of all entries}}{n}, \qquad 3 \times 3:\ \text{center} = \frac{\text{magic sum}}{3}`,
           description: String.raw`This is the grid in which every row, every column, and both diagonals add to the same magic sum. The $n$ rows together hold every entry once, which fixes the magic sum before any entry is placed. In a $3 \times 3$ square the four lines through the center fix the center too, and two entries opposite each other across the center add to twice it.`,
           keywords: ["magic square", "magic sum", "rows columns diagonals same sum", "3 by 3 magic square", "center of a magic square", "numbers 1 to 9 in a grid", "arrangement of numbers in a grid", "pattern"],
-          importance: "lower",
+          importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
         },

@@ -3951,3 +3951,62 @@ The final contents of an urn after a fixed number of draws, the distribution of 
 Rare: an AMC 10/12 urn that adds a ball of the drawn colour, where noticing that every order is equally likely replaces a tree of cases, and HMMT versions in which the urn is disguised as votes or groups.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"bound-and-construct": String.raw`
+## When to use
+The problem asks for the maximum or minimum of a quantity over all configurations that obey some rule: how many pieces fit on a board with no two attacking, the fewest weighings or moves that always suffice, the largest set with no forbidden pair, the smallest $n$ for which something is forced, or the best constant $c$ in an inequality. A question that asks for the extreme value of a formula in one or two real variables is usually optimization instead, with [[am-gm|AM-GM]] or completing the square, though the same two halves are still needed.
+
+## How
+1. Try small cases or a smaller board to guess the answer $M$ and to see what the best configurations look like.
+2. Prove the bound: every allowed configuration has value at most $M$ (or at least $M$ for a minimum). Common tools are splitting the board into blocks that each hold at most one piece, [[pigeonhole|pigeonhole]], double counting, a coloring, or an inequality.
+3. Construct: exhibit one configuration that obeys the rule and has value exactly $M$, and check the rule for it.
+4. If the bound and the best example do not meet, improve whichever is weaker; never report a bound that no example reaches.
+
+For the most kings on an $8 \times 8$ board with no two attacking: split the board into sixteen $2 \times 2$ blocks. Two kings in one block attack each other, so at most one king per block, at most $16$ kings. Kings on the sixteen squares whose row and column are both odd are two apart in every direction, so none attack. The answer is $16$.
+
+## Why it works
+The maximum of a quantity over a finite (or bounded) set of configurations is the number $M$ such that no configuration exceeds $M$ and some configuration equals $M$. The bound proves the first half and the construction the second, so together they determine the maximum exactly; for a minimum the inequalities reverse. Neither half alone suffices: the bound $16$ for kings would also be a true bound if the real maximum were $15$, and an example with $15$ kings would not rule out $16$. Only when an example meets the bound is the bound the answer.
+
+## Formulas it uses
+- [[pigeonhole]]: the most common source of a bound, putting objects into blocks or classes that each hold a limited number.
+
+## Common traps
+- Reporting the value of a good-looking example without proving no example does better.
+- Proving a bound that is not tight and reporting it, when no configuration reaches it.
+- Checking the construction against only part of the rule, such as the rows but not the columns.
+- Forgetting that a "smallest $n$ that forces" question needs a bad example for $n - 1$ as its construction half.
+
+## Contest profile
+Throughout the AMC, AIME and the invitational contests: the most pieces on a board, the fewest moves, the largest subset avoiding a relation, the best constant. Late HMMT and PUMaC combinatorics problems are very often of this kind.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"small-cases-pattern": String.raw`
+## When to use
+The problem defines something for every positive integer $n$ (a sequence by a rule, a function by $f(2n)$ and $f(2n + 1)$, a game or an elimination on $n$ players, the number of rooms filled after $n$ minutes) and asks for its value at a large $n$, or for how many $n$ below a bound have a property. When the terms repeat, the pattern is a cycle and [[cycle-hunting|finding the period]] finishes; when the problem asks for the state after a few steps, [[simulate-the-process|simulating the process]] is enough.
+
+## How
+1. Compute the answer for $n = 1, 2, 3, \ldots$ up to about $8$ or $16$, in a table, carefully.
+2. Look for a rule: write $n$ in base $2$, compare with powers of $2$ or squares, take differences, or separate even and odd $n$.
+3. State the rule as a formula and check it on a case not yet used.
+4. Confirm it from the problem: show the rule is preserved by the step from smaller cases to larger ones (the problem's recursion), which is an induction.
+5. Apply it to the large $n$.
+
+For the Josephus problem, with $n$ people in a circle and every second one removed, starting with person $2$, the survivors for $n = 1, \ldots, 8$ are $1, 1, 3, 1, 3, 5, 7, 1$: the survivor is $1$ at each power of $2$ and goes up by $2$ after it, so $J(n) = 2(n - 2^k) + 1$ with $2^k$ the largest power of $2$ at most $n$. For $n = 100$, $J(100) = 2 \cdot 36 + 1 = 73$.
+
+## Why it works
+A pattern seen in a table is only a guess until it is proved, and the proof comes from how the problem builds each case from smaller ones. In the Josephus problem, after one pass around a circle of $2m$ people the $m$ odd-numbered people remain, with person $1$ about to skip, so the survivor is the survivor of $m$ people renumbered: $J(2m) = 2J(m) - 1$. With $2m + 1$ people, after the evens go, person $1$ is removed next, leaving $3, 5, \ldots, 2m + 1$, so $J(2m + 1) = 2J(m) + 1$. If $J(m) = 2(m - 2^k) + 1$, then $J(2m) = 4(m - 2^k) + 1 = 2(2m - 2^{k + 1}) + 1$ and $J(2m + 1) = 4(m - 2^k) + 3 = 2(2m + 1 - 2^{k + 1}) + 1$, the same formula one size up, and $J(1) = 1$ starts it; so by induction the formula holds for every $n$. In general the small cases reveal the rule and the recursion proves it, which is why both steps are needed.
+
+## Formulas it uses
+None of its own: the pattern is whatever the table shows, and the confirmation is an induction on the problem's own recursion.
+
+## Common traps
+- Trusting a pattern from too few cases: $1, 2, 4, 8, 16$ for the regions cut from a disk by chords breaks at the next case, $31$.
+- An arithmetic slip in one early case, which hides the real pattern or suggests a false one.
+- Starting the table at the wrong $n$, or indexing it differently from the problem, so the rule is off by one.
+- Applying the rule without checking that the problem's recursion preserves it.
+
+## Contest profile
+A staple of the later AMC questions and of HMMT and PUMaC problems with a year in them: a function defined on binary digits, an elimination, a sequence defined by a strange rule, a process run for $2^{n}$ steps.
+`
+});
