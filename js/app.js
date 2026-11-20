@@ -4973,7 +4973,7 @@
               <p>Problems from the Sprint, Target and Team rounds of <a href="https://www.mathcounts.org/pastcompetition" target="_blank" rel="noopener noreferrer">MATHCOUNTS</a> Chapter, State and National competitions are listed the same way: each problem's page opens the official round and its solutions or answer key, from the papers the MATHCOUNTS Foundation posts free (2026 Chapter and State) or from the copies of the official papers kept by the <a href="https://mathteamnyc.weebly.com/mathcounts.html" target="_blank" rel="noopener noreferrer">MATHCOUNTS archive at mathteamnyc.weebly.com</a> (earlier years and the National competition); nothing is reproduced. That material is attributed to the MATHCOUNTS Foundation; the MAA license above does not apply to it.</p>
               <p>Problems from the individual Algebra, Geometry, Counting and Number Theory rounds of the <a href="https://mbmt.mbhs.edu/archive" target="_blank" rel="noopener noreferrer">Montgomery Blair Math Tournament</a> (MBMT) are listed the same way: each problem's page opens the official round and its solutions; nothing is reproduced. That material is attributed to the MBMT organizers at Montgomery Blair High School; the MAA license above does not apply to it.</p>
               <p>Problems from Part A of the <a href="https://science.ucalgary.ca/mathematics-statistics/engagement/educational-outreach/junior-math-contest/archive" target="_blank" rel="noopener noreferrer">Calgary Junior Mathematics Contest</a> (University of Calgary, 2004 to 2025) are listed the same way: each problem’s page opens the official paper and its solutions; nothing is reproduced. That material is attributed to the University of Calgary; the MAA license above does not apply to it.</p>
-              <p>Problem pages for the <a href="https://cemc.uwaterloo.ca/resources/past-contests" target="_blank" rel="noopener noreferrer">Fermat, Cayley and Pascal contests</a> link to the official papers and solutions. The 2025 statements and diagrams are © University of Waterloo, Centre for Education in Mathematics and Computing (CEMC), and formatted for this app under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.</p>
+              <p>Problem pages for the <a href="https://cemc.uwaterloo.ca/resources/past-contests" target="_blank" rel="noopener noreferrer">Fermat, Cayley and Pascal contests</a> link to the official papers and solutions. Statements and diagrams shown in the app are © University of Waterloo, Centre for Education in Mathematics and Computing (CEMC), and formatted under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.</p>
               <p>Problems from the <a href="https://ukmt.org.uk/competition-papers" target="_blank" rel="noopener noreferrer">Senior, Intermediate and Junior Mathematical Challenges</a> of the United Kingdom Mathematics Trust are listed the same way: each problem’s page opens the paper and its solutions as the UKMT posts them; nothing is reproduced. That material is © UKMT; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual test of the <a href="https://www.columbusstate.edu/math/tournament/previous-math-contest.php" target="_blank" rel="noopener noreferrer">Columbus State Invitational Mathematics Tournament</a> (Columbus State University) are listed the same way: each problem’s page opens the official test and its solutions; nothing is reproduced. That material is attributed to Columbus State University; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual round of the <a href="https://math.duke.edu/duke-math-meet" target="_blank" rel="noopener noreferrer">Duke Math Meet</a> (2007 to 2022) are listed the same way: each problem's page opens the round as Duke's mathematics department posts it, and its solutions where they were posted; nothing is reproduced. Duke Math Meet material is attributed to the Duke Math Meet; the MAA license above does not apply to it.</p>
@@ -9859,6 +9859,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     dir: "cemc",
     credit: `© University of Waterloo (CEMC) · Formatted for this app under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>`
   };
+  const CEMC_STATEMENT_YEARS = new Set([2012, 2013, 2014, 2015, 2016, 2019, 2020, 2021, 2022, 2023, 2024, 2025]);
   const AHSME_STATEMENTS = {
     dir: "ahsme",
     credit: `© Mathematical Association of America · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> · LIVE by Po-Shen Loh`
@@ -9869,14 +9870,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   function archiveStatement(p) {
     if (p.year >= 1998 && p.year <= 2026 && /^HMMT (February|November)$/.test(p.fam)) return HMMT_STATEMENTS;
-    if (p.year === 2025 && /^(Pascal|Cayley|Fermat) Contest$/.test(p.fam)) return CEMC_STATEMENTS;
+    if (CEMC_STATEMENT_YEARS.has(p.year) && /^(Pascal|Cayley|Fermat) Contest$/.test(p.fam)) return CEMC_STATEMENTS;
     if (/\bAHSME\b/.test(p.ref)) return AHSME_STATEMENTS;
     return null;
   }
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 32;
+  const STATEMENTS_V = 33;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {

@@ -53,7 +53,8 @@ for f in sorted(glob.glob(os.path.join(statement_dir, "**", "*.js"), recursive=T
                 bad.append(f"{slug}: does not link its AHSME paper on LIVE")
         elif source == "cemc":
             match = re.fullmatch(r"(\d{4})-(pascal|cayley|fermat)-contest-\d+", slug)
-            if not match or u != f"https://cemc.uwaterloo.ca/sites/default/files/documents/{match[1]}/{match[1]}{match[2].title()}Contest.html":
+            paper = match and f"https://cemc.uwaterloo.ca/sites/default/files/documents/{match[1]}/{match[1]}{match[2].title()}Contest"
+            if not paper or u not in (paper + ".html", paper + ".pdf"):
                 bad.append(f"{slug}: does not link its official CEMC paper")
         elif not u.startswith(("https://live.poshenloh.com/", "https://artofproblemsolving.com/wiki/", "pdf:fall-2021-amc-10", "https://wiki.randommath.com/amc10/2026/part-a/", "https://wiki.randommath.com/amc12/2026/part-a/")):
             bad.append(f"{slug}: source link missing")
@@ -68,14 +69,15 @@ for f in sorted(glob.glob(os.path.join(statement_dir, "**", "*.js"), recursive=T
                 for line in re.split(r"\\\\", disp)[1:]:
                     if re.match(r"^[&\s]*(?:\\q?quad\b|\{\}|[+\-=<>]|\\(?:cdot|cdots|times)\b)", line):
                         bad.append("%s: an equation still has a hand-cut continuation line" % slug); break
-        for fig in re.findall(r"@@fig:([^@]+)@@", s):
-            withfig.add(slug)
+        for fig, choice in re.findall(r"@@(?:fig:([^@]+)|ci:([^|@]+)(?:\|[^@]*)?)@@", s):
+            if fig:
+                withfig.add(slug)
             figs += 1
-            p = os.path.join(ROOT, "js/data/problems/figures", fig)
+            p = os.path.join(ROOT, "js/data/problems/figures", fig or choice)
             head = open(p, "rb").read(200) if os.path.exists(p) else b""
             ok = head.lstrip().startswith((b"<?xml", b"<svg")) or head.startswith(b"\x89PNG\r\n\x1a\n")
             if not os.path.exists(p) or not ok:
-                bad.append("%s: figure %s missing or not an SVG or PNG" % (slug, fig)); nofig += 1
+                bad.append("%s: figure %s missing or not an SVG or PNG" % (slug, fig or choice)); nofig += 1
 # A figure drawn for the app (js/data/diagrams/problem-diagrams.js) belongs to a known problem whose
 # statement prints no figure of its own: two pictures of one problem would be redundant.
 own = re.findall(r'PROB\["([^"]+)"\] =', open(os.path.join(ROOT, "js/data/diagrams/problem-diagrams.js"), encoding="utf-8").read())
