@@ -1616,6 +1616,7 @@
     const r = fragmentUnder(anchor, at);
     const vw = document.documentElement.clientWidth;
     const vh = document.documentElement.clientHeight;
+    w = Math.min(w, vw - 16);   // a phone narrower than the popup: keep 8px each side
     el.style.width = w + "px";
     let left = (at ? at.x - w / 2 : r.left) + window.scrollX;
     if (left + w > window.scrollX + vw - 8) left = window.scrollX + vw - w - 8;
@@ -4916,7 +4917,7 @@
           <h3 class="set-panel-title">Browsing</h3>
           ${settingRow("Subject pages", "Every card in a subject on one scrolling page, grouped by topic, or just the names, A to Z.", "layout", state.layout, [["cards", "Cards"], ["wiki", "A&ndash;Z index"]], "subject")}
           ${settingRow("Card order", "How cards are ordered on a subject page. Curated keeps the order the cards were written in; Most used puts first the cards that the most practice problems use.", "order", state.order, [["curated", "Curated"], ["problems", "Most used"]], "subject")}
-          ${settingRow("Contest lists", "Click to expand starts contest statistics, year lists and practice-problem lists collapsed, and resets them when you leave a page. Always expanded shows their full lists by default.", "contestLists", state.contestLists, [["click", "Click to expand"], ["show", "Always expanded"]])}
+          ${settingRow("Contest sections on pages", "Some pages group problems or figures by contest: a card&rsquo;s practice problems, the contest statistics on a card&rsquo;s or topic&rsquo;s page, and the years on the Contests page. Folded shows the AMC and AIME, and the first three problems of each contest, with a Show more button for the rest, and folds them again when you leave the page. Unfolded shows every contest and every problem at once. This does not change your Lists in Learn.", "contestLists", state.contestLists, [["click", "Folded"], ["show", "Unfolded"]], "contests")}
           ${settingRow("When the app opens", "Where you land when you open the app without a link to a particular page. The front page shows the four spaces; Formulas goes straight in. The logo still takes you to the front page.", "start", state.start, [["landing", "Front page"], ["formulas", "Formulas"]])}
         </section>
         <section class="set-panel">
@@ -5085,7 +5086,7 @@
         start: "startup, start page, home page, homepage, landing page, open on, launch, default page, front page, first page, when it opens",
         lessonLinks: "lesson links, drawer, open cards beside, side panel, card links, links, preview, popup",
         lessonWidth: "lesson width, text width, line length, wide text, narrow text, full width, reading width, column, paragraphs, lesson text",
-        contestLists: "show more, show all, expanded, collapsed, contests, statistics, stats, practice problems, years",
+        contestLists: "contest sections, contest lists, show more, show all, expanded, collapsed, folded, unfolded, contests, statistics, stats, practice problems, years",
         strategy: "spoilers, spoiler, solution, solutions, reveal, answers, answer, hide the strategy, show the strategy, how this problem works, hints",
         "Export progress": "export data, export, save data, my data, data, backup, back up, save my progress, save, download, file, json, transfer, move to another browser, keep my lists, history, stars",
         "Import progress": "import data, import, load data, data, restore, upload, load a backup, file, json, transfer, from another browser, reset",
@@ -5376,6 +5377,13 @@
     return learnBookShellHtml(b, c, l, learnLessonMainHtml(b, c, l, d), state.lessonLinks === "drawer" ? learnDrawerInnerHtml("recursive-counting") : "");
   }
 
+  // A card's practice problems, folded or open as the Contest lists setting says.
+  const PV_CONTESTS = "angle-bisector-theorem";
+  function pvContestsHtml() {
+    const e = BY_ID[PV_CONTESTS];
+    return e ? `<div class="detail"><div class="detail-head"><h2 class="card-name">${e.formula.name}</h2></div><div class="detail-body">${contestHtml(e.formula)}</div></div>` : "";
+  }
+
   function pvProblemHtml() {
     const p = PROBLEM_DB.find(x => x.ref === PV_PROBLEM);
     return p ? problemDetailHtml(p, true) : "";
@@ -5426,6 +5434,7 @@
       pvScreen("page", "A card&rsquo;s page", pvPageHtml()) +
       pvScreen("subject", "A subject page", pvSubjectHtml(), PV_W + 260) +
       pvScreen("problem", "A problem page", pvProblemHtml()) +
+      pvScreen("contests", "A card&rsquo;s practice problems", pvContestsHtml()) +
       pvScreen("lesson", "A lesson", pvLessonHtml(), PV_W + 260) +
       `</div>
       <button type="button" class="pv-nav pv-next" aria-label="More previews">${uiIcon("chevron-right")}</button>`;
@@ -11852,7 +11861,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const hoverLinks = '.card-link, a.related-item[href^="#/f/"], a[href^="#/problem/"]';
   $content.addEventListener("mouseover", e => {
     const a = e.target.closest(hoverLinks);
-    if (!a) return;
+    // A chart column already labels itself (`data-tip`); a preview on top of that would cover it.
+    if (!a || a.hasAttribute("data-tip")) return;
     clearTimeout(cpTimer); clearTimeout(cpHide);
     if (cpFor === a) return;
     const at = { x: e.clientX, y: e.clientY };

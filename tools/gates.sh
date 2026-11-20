@@ -1,6 +1,6 @@
 #!/bin/sh
 # Every gate in CLAUDE.md, in order; stops at the first failure.
-export JSC=${JSC:-$PWD/tools/jsc-node} CHROME=${CHROME:-/opt/pw-browsers/chromium-1243/chrome-linux/chrome}
+export JSC=${JSC:-$PWD/tools/jsc-node} CHROME=${CHROME:-/opt/pw-browsers/chromium-1243/chrome-linux64/chrome}
 set -e
 python3 tools/scan-conventions.py > /tmp/gate-scan.txt || { tail -30 /tmp/gate-scan.txt; exit 1; }
 python3 tools/check-topics.py > /tmp/gate-topics.txt || { tail /tmp/gate-topics.txt; exit 1; }
