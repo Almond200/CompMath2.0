@@ -157,7 +157,7 @@ for(const [paper,source] of Object.entries(papers)) {
       assert(await page.locator('.ptree-node.is-filed').count()>0);
       assert.equal(await page.locator('.katex-error').count(),0);
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
-      assert((await page.locator('h2').innerText()).includes(familyLabel(fam)));
+      assert((await page.locator('h1').innerText()).includes(familyLabel(fam)));
      }
     }
    }

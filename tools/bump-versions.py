@@ -13,6 +13,13 @@ files = sys.argv[1:]
 if files == ["--changed"]:
     out = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout
     files = [l[3:].strip() for l in out.splitlines()]
+if any(f.startswith("js/data/learn/") and f.endswith(".js") for f in files):
+    summary = "js/data/learn-summary.js"
+    before = open(summary, "rb").read() if os.path.exists(summary) else b""
+    subprocess.run(["node", "tools/build-learn-summary.cjs"], check=True)
+    with open(summary, "rb") as generated:
+        if generated.read() != before and summary not in files:
+            files.append(summary)
 html = open("index.html").read()
 for f in files:
     pat = re.compile(r'(%s\?v=)(\d+)' % re.escape(f))
@@ -21,3 +28,13 @@ for f in files:
         print("bumped", f)
 open("index.html", "w").write(html)
 subprocess.run([sys.executable, "tools/sync-lab-versions.py"])
+
+ref = "reference/index.html"
+css = re.search(r'css/styles\.css\?v=(\d+)', html)
+if css:
+    with open(ref) as f:
+        old = f.read()
+    updated = re.sub(r"(?<=css/styles.css\?v=)\d+", css[1], old)
+    if updated != old:
+        with open(ref, "w") as f:
+            f.write(updated)

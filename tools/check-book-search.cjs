@@ -14,7 +14,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   const input=page.locator('.book-search input:visible').first();await input.fill(query);
   assert.equal(await input.evaluate(el=>getComputedStyle(el).outlineStyle),'none','book search keeps a single focus border');
   const list=input.locator('..').locator('[role=listbox]');await list.waitFor({state:'visible'});
-  const opts=list.locator('[role=option]');const kinds=await opts.locator('.set-find-group').allTextContents();
+  const opts=list.locator('[role=option]');await opts.first().waitFor();const kinds=await opts.locator('.set-find-group').allTextContents();
   const at=kinds.indexOf(kind);assert.ok(at>=0,query+' '+kind+' '+kinds);
   if(kind==='Index')assert.ok(at>=2,'Index follows direct results');
   if(keyboard){for(let i=0;i<at;i++)await input.press('ArrowDown');await input.press('Enter');}
@@ -46,7 +46,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.equal(band.animation,'none');assert.notEqual(band.bg,'rgba(0, 0, 0, 0)');
  await page.clock.fastForward(5000);assert.equal(await page.locator('.bks-found').count(),0);
  await page.goto(base+'/#/learn/amc-number-theory');
- const mathTerm=await page.evaluate(()=>window.MATH_BOOK_INDEX['amc-number-theory'].find(e=>e.term.includes('adic')).term);
+ const mathTerm='p-adic valuation';
  await search(mathTerm,'Index');assert.equal(await page.locator('.bks-found .book-index-entry').count(),1);
  assert.ok((await page.locator('.bks-found').innerText()).includes('adic'));
  await search(mathTerm,'Glossary');assert.ok((await page.locator('.bks-found dfn').innerText()).includes('adic'));

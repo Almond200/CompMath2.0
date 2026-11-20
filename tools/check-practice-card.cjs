@@ -31,7 +31,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await page.locator('#card-count').fill('7');assert.equal(await page.locator('#card-count-value').innerText(),'7');
  // The set: seven problems, each citing the card, no shared AMC 10/12 problem twice, saved with the card's id.
  await form.locator('[type="submit"]').click();await page.waitForFunction(()=>/#\/practice\/set\//.test(location.hash));await page.locator('.practice-session-top').waitFor();
- assert.match(await page.locator('.practice-session-top h2').innerText(),/^Practice set · Pythagorean Theorem$/);
+ assert.match(await page.locator('.practice-session-top h1').innerText(),/^Practice set · Pythagorean Theorem$/);
  const set=await page.evaluate(()=>JSON.parse(localStorage.getItem('mq-practice-sets')).find(s=>location.hash.endsWith(s.id)));
  assert.equal(set.cardId,'pythagorean-theorem');assert.equal(set.slugs.length,7);assert.equal(new Set(set.slugs).size,7);
  const [lo,hi]=note.match(/(\d+)–(\d+) Elo/).slice(1).map(Number);

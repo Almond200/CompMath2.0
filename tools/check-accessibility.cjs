@@ -95,9 +95,9 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     assert.equal(await page.evaluate(id => JSON.parse(localStorage.getItem('mq-practice-sets')).find(s => s.id === id).answers['2018-amc-10a-1'], setId), 'E');
     scenarios++;
 
-    await navigate('#/settings', '.settings-page');
+    await navigate('#/settings', '.settings-head');
     assert.match(await page.title(), /^Settings — /);
-    assert.equal(await page.evaluate(() => document.activeElement.tagName), 'H2');
+    assert.equal(await page.evaluate(() => document.activeElement.tagName), 'H1');
     await searchBorder(page.locator('.settings-head input[type="search"]'));
     await radio(page.locator('[role="radiogroup"][aria-label="Theme"]'), 'ArrowRight');
     assert.equal(await page.evaluate(() => document.activeElement.getAttribute('data-set')), 'theme');
@@ -192,7 +192,7 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     }
     scenarios++;
 
-    await navigate('#/settings', '.settings-page'); await page.locator('[data-set="scroll"][data-val="fast"]').click();
+    await navigate('#/settings', '.settings-head'); await page.locator('[data-set="scroll"][data-val="fast"]').click();
     await navigate('#/f/pythagorean-theorem', '.detail'); await page.emulateMedia({ reducedMotion:'reduce' });
     assert.equal(await page.evaluate(() => window.AppAccessibility.scrollBehavior()), 'instant');
     assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior), 'auto');
@@ -251,7 +251,7 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     await page.evaluate(() => document.getElementById('content').focus()); await page.keyboard.press('Shift');
     assert.equal(await page.evaluate(() => document.activeElement.id + ':' + getComputedStyle(document.activeElement).outlineStyle), 'content:none');
     await page.evaluate(() => window.AppAccessibility.focusMain()); await page.keyboard.press('Shift');
-    assert.equal(await page.evaluate(() => document.activeElement.tagName + ':' + getComputedStyle(document.activeElement).outlineStyle), 'H2:none');
+    assert.equal(await page.evaluate(() => document.activeElement.tagName + ':' + getComputedStyle(document.activeElement).outlineStyle), 'H1:none');
     await page.keyboard.press('Tab');
     assert.equal(await page.evaluate(() => document.activeElement.matches('button, a') && getComputedStyle(document.activeElement).outlineStyle), 'solid');
     await navigate('#/', '.hm-book');
