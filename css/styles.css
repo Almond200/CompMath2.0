@@ -2977,7 +2977,7 @@ a.card-result { color: var(--text); text-decoration: none; }
 .hp-panel .pl-item:hover { border-color: var(--border); background: var(--space-soft); color: var(--space); }
 .rc-row:hover { background: var(--space-soft); }
 /* Recently opened: one scrolling line; every link remains reachable. */
-.rc-chips { flex-wrap: nowrap; min-width: 0; overflow-x: auto; }
+.rc-chips { flex-wrap: nowrap; min-width: 0; overflow-x: auto; padding-bottom: 6px; }
 .rc-chips .rc-row { border-radius: 999px; height: 30px; box-sizing: border-box; }
 .rc-chips .rc-row { flex-shrink: 0; max-width: 100%; }
 .rc-chips .rc-name { flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
