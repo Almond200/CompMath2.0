@@ -227,7 +227,11 @@
     "2010 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2010_GeometryA.pdf",
     "2010 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2010_GeometryB.pdf",
     "2010 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryA.pdf",
-    "2010 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryB.pdf"
+    "2010 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryB.pdf",
+    "2009 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2009_AlgebraA.pdf",
+    "2009 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2009_AlgebraB.pdf",
+    "2009 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsA.pdf",
+    "2009 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -49325,6 +49329,134 @@
     "2010 PUMaC Division B Number Theory, Problem 8": [
       3700,
       "Remove every divisor containing a factor five and count the exponent residue triples giving the requested last digit."
+    ],
+    "2009 PUMaC Division A Algebra, Problem 1": [
+      2100,
+      "Factor or eliminate the three cubics and compute their complete common-root polynomial, without assuming every common root is integral."
+    ],
+    "2009 PUMaC Division A Algebra, Problem 2": [
+      2950,
+      "Expand a biquadratic generator in its rational basis, determine the least-degree expression for one radical and evaluate that polynomial."
+    ],
+    "2009 PUMaC Division A Algebra, Problem 3": [
+      2850,
+      "Rescale the nonnegative variables, bound the weighted square sum by the square of their total and give a single-coordinate equality case."
+    ],
+    "2009 PUMaC Division A Algebra, Problem 4": [
+      3700,
+      "Translate all doubled-angle sign restrictions into a shift condition on positional digits, force the alternating orbit and choose its smallest positive angle."
+    ],
+    "2009 PUMaC Division A Algebra, Problem 5": [
+      3300,
+      "Exclude odd exponents, find the sharp even-power trigonometric minimum and prove that every larger even exponent fails."
+    ],
+    "2009 PUMaC Division A Algebra, Problem 6": [
+      3500,
+      "Use zero and negative integer inputs to restrict the initial value, then classify the recurrence on every integer and verify all three resulting functions."
+    ],
+    "2009 PUMaC Division A Algebra, Problem 7": [
+      3650,
+      "Replace the bounded integer entries by multiplicities, eliminate two counts and optimize the remaining bounded integer parameter with attaining count vectors."
+    ],
+    "2009 PUMaC Division A Algebra, Problem 8": [
+      3950,
+      "Introduce the nonnegative square-root variable, complete four squares simultaneously and recover the unique attaining feasible tuple."
+    ],
+    "2009 PUMaC Division B Algebra, Problem 1": [
+      1850,
+      "Solve the generalized golden-ratio equation and use the prescribed reduced rational part to determine the requested integer parameters."
+    ],
+    "2009 PUMaC Division B Algebra, Problem 2": [
+      2300,
+      "Prove the nested radical obeys an irreducible monic quadratic and evaluate its least-degree rational polynomial."
+    ],
+    "2009 PUMaC Division B Algebra, Problem 3": [
+      2100,
+      "Factor or eliminate the three cubics and compute their complete common-root polynomial, without assuming every common root is integral."
+    ],
+    "2009 PUMaC Division B Algebra, Problem 4": [
+      2950,
+      "Expand a biquadratic generator in its rational basis, determine the least-degree expression for one radical and evaluate that polynomial."
+    ],
+    "2009 PUMaC Division B Algebra, Problem 5": [
+      2850,
+      "Rescale the nonnegative variables, bound the weighted square sum by the square of their total and give a single-coordinate equality case."
+    ],
+    "2009 PUMaC Division B Algebra, Problem 6": [
+      3700,
+      "Translate all doubled-angle sign restrictions into a shift condition on positional digits, force the alternating orbit and choose its smallest positive angle."
+    ],
+    "2009 PUMaC Division B Algebra, Problem 7": [
+      3300,
+      "Exclude odd exponents, find the sharp even-power trigonometric minimum and prove that every larger even exponent fails."
+    ],
+    "2009 PUMaC Division B Algebra, Problem 8": [
+      3500,
+      "Use zero and negative integer inputs to restrict the initial value, then classify the recurrence on every integer and verify all three resulting functions."
+    ],
+    "2009 PUMaC Division A Combinatorics, Problem 1": [
+      1900,
+      "Separate subsets according to whether their last element is chosen, or count every allowed gap placement."
+    ],
+    "2009 PUMaC Division A Combinatorics, Problem 2": [
+      2700,
+      "Count all signed outcomes of a balance and attain the minimum with balanced-ternary place weights covering the entire required interval."
+    ],
+    "2009 PUMaC Division A Combinatorics, Problem 3": [
+      2550,
+      "Split binary strings by their even number of ones and insert each zero in a distinct available gap."
+    ],
+    "2009 PUMaC Division A Combinatorics, Problem 4": [
+      3000,
+      "Bound the crossings of the three closed curves and exhibit a rectangle, triangle and circle realizing every needed intersection without triple points."
+    ],
+    "2009 PUMaC Division A Combinatorics, Problem 5": [
+      3750,
+      "Compare constant induced-subgraph edge counts to force a complete graph, then solve the resulting adjacent-factor prime-power condition rather than using the source incorrect double count."
+    ],
+    "2009 PUMaC Division A Combinatorics, Problem 6": [
+      3500,
+      "Bound every chosen diagonal by its unique endpoint in an alternating grid row and construct an attaining set with no shared endpoints or crossing cell diagonals."
+    ],
+    "2009 PUMaC Division A Combinatorics, Problem 7": [
+      3500,
+      "Identify the fourth-largest of five as the second-smallest, compute its exact discrete order-statistic expectation and retain the correction to the official reversed-rank answer."
+    ],
+    "2009 PUMaC Division A Combinatorics, Problem 8": [
+      3700,
+      "Count three-color seven-bead bracelet orbits under all rotations and reflections, keeping both forms of symmetry."
+    ],
+    "2009 PUMaC Division B Combinatorics, Problem 1": [
+      2250,
+      "Track return and nonreturn basketball-pass states for seven steps and forbid passes to the current holder."
+    ],
+    "2009 PUMaC Division B Combinatorics, Problem 2": [
+      1900,
+      "Separate subsets according to whether their last element is chosen, or count every allowed gap placement."
+    ],
+    "2009 PUMaC Division B Combinatorics, Problem 3": [
+      2700,
+      "Count all signed outcomes of a balance and attain the minimum with balanced-ternary place weights covering the entire required interval."
+    ],
+    "2009 PUMaC Division B Combinatorics, Problem 4": [
+      2550,
+      "Split binary strings by their even number of ones and insert each zero in a distinct available gap."
+    ],
+    "2009 PUMaC Division B Combinatorics, Problem 5": [
+      3000,
+      "Bound the crossings of the three closed curves and exhibit a rectangle, triangle and circle realizing every needed intersection without triple points."
+    ],
+    "2009 PUMaC Division B Combinatorics, Problem 6": [
+      3750,
+      "Compare constant induced-subgraph edge counts to force a complete graph, then solve the resulting adjacent-factor prime-power condition rather than using the source incorrect double count."
+    ],
+    "2009 PUMaC Division B Combinatorics, Problem 7": [
+      3500,
+      "Bound every chosen diagonal by its unique endpoint in an alternating grid row and construct an attaining set with no shared endpoints or crossing cell diagonals."
+    ],
+    "2009 PUMaC Division B Combinatorics, Problem 8": [
+      3500,
+      "Identify the fourth-largest of five as the second-smallest, compute its exact discrete order-statistic expectation and retain the correction to the official reversed-rank answer."
     ]
   }
 }
