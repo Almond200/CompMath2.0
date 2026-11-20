@@ -1374,7 +1374,7 @@
       try { labels = m[1].split("+").map(decodeURIComponent).filter(Boolean); } catch (e) {}
       if (labels.length) return { type: "topic", labels };
     }
-    m = location.hash.match(/^#\/settings(?:\/(commands))?$/);
+    m = location.hash.match(/^#\/settings(?:\/(commands|credits))?$/);
     if (m) return { type: "settings", anchor: m[1] || null };
     m = location.hash.match(/^#\/formulas\/([\w-]+)(?:\/([\w-]+))?$/);
     if (m) {
@@ -4884,6 +4884,7 @@
   function renderSettingsPage() {
     shownIds = [];
     const theme = currentTheme();
+    const anchor = getRoute().anchor;
     $content.innerHTML = `
       <div class="settings-layout">
       <div class="settings-main">
@@ -4953,8 +4954,8 @@
           </div>
           <p class="settings-hint progress-msg" hidden></p>
         </section>
-        <section class="set-panel" id="set-credits">
-          <h3 class="set-panel-title">Credits and attribution</h3>
+        <details class="set-panel" id="set-credits"${anchor === "credits" ? " open" : ""}>
+          <summary class="set-panel-title">Credits and attribution</summary>
           <div class="set-row"><div class="set-text">
             <div class="set-name">Contest problem sources and license</div>
             <div class="set-desc">
@@ -4980,7 +4981,7 @@
               <p><a href="https://berkeley.mt/archives/bmt/" target="_blank" rel="noopener noreferrer">BMT</a> and <a href="https://pumac.princeton.edu/archives" target="_blank" rel="noopener noreferrer">PUMaC</a> entries link to the official contest papers and solutions. Their statements and solutions are not reproduced here.</p>
             </div>
           </div></div>
-        </section>
+        </details>
         <details class="set-panel set-lab">
           <summary class="set-panel-title">Experimental <span class="lab-tag">for fun</span></summary>
           <div class="set-body">
@@ -5009,7 +5010,7 @@
       </div>
       <aside class="set-preview" aria-label="Preview"></aside>
       </div>`;
-    if (getRoute().anchor === 'credits') setTimeout(() => $content.querySelector('#set-credits')?.scrollIntoView({block:'start'}), 0);
+    if (anchor === "credits") setTimeout(() => $content.querySelector("#set-credits")?.scrollIntoView({ block: "start" }), 0);
     fillSettingsPreview();
     const $cmdToggle = $content.querySelector(".command-toggle");
     if ($cmdToggle) $cmdToggle.addEventListener("click", () => {
@@ -5021,7 +5022,7 @@
     // #/settings/commands, the "All commands" link on every special page: open the list and
     // bring the Commands group into view. Deferred to after the router's hashchange handler (a
     // timer, not a frame: frames are paused in a background tab).
-    if (getRoute().anchor === "commands") {
+    if (anchor === "commands") {
       if ($cmdToggle && $content.querySelector(".command-all").hidden) $cmdToggle.click();
       const grp = $content.querySelector(".command-box");
       if (grp) setTimeout(() => grp.closest(".set-panel").scrollIntoView({ block: "start", behavior: "instant" }), 0);
