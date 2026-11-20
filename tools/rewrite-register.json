@@ -1865,7 +1865,9 @@
     "polya-urn": "formula",
     "intermediate-value-theorem": "formula",
     "unfold-the-bounces": "method",
-    "cone-insphere": "formula"
+    "cone-insphere": "formula",
+    "bound-and-construct": "method",
+    "small-cases-pattern": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -9137,6 +9139,18 @@
       [
         "(new card)",
         "written directly in the formula template"
+      ]
+    ],
+    "bound-and-construct": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "small-cases-pattern": [
+      [
+        "(new card)",
+        "written directly in the method template"
       ]
     ]
   }

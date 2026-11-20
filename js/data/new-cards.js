@@ -82,5 +82,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Cards from Step H, approved 2026-11-13 (P70 to P72)", date: "2026-11-13",
     ids: ["symmetrizing-a-sum", "polya-urn", "intermediate-value-theorem"] },
   { label: "Owner requests: unfolding bounces, the largest sphere in a cone", date: "2026-11-20",
-    ids: ["unfold-the-bounces", "cone-insphere"] }
+    ids: ["unfold-the-bounces", "cone-insphere"] },
+  { label: "Owner review: contest methods for extremal and pattern problems", date: "2026-11-20",
+    ids: ["bound-and-construct", "small-cases-pattern"] }
 ];
