@@ -128,7 +128,7 @@ Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 
 @@fig:cemc/2010/fermat-8.png@@
 
-(A) $\frac35$  (B) $\frac72$  (C) $\frac47$  (D) $\frac67$  (E) $\frac7{12}$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2010/2010FermatContest.pdf" },
+(A) $\frac35$  (B) $\frac27$  (C) $\frac47$  (D) $\frac76$  (E) $\frac7{12}$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2010/2010FermatContest.pdf" },
 "2010-fermat-contest-9": { s: String.raw`The value of $k\nabla m$ is defined to be $k(k-m)$. For example, $7\nabla 2=7(7-2)=35$. What is the value of $(5\nabla 1)+(4\nabla 1)$?
 
 (A) $9$  (B) $84$  (C) $20$  (D) $32$  (E) $72$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2010/2010FermatContest.pdf" },
