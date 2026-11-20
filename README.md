@@ -268,13 +268,18 @@ then open `http://localhost:8688`. A local HTTP server is the recommended way to
 Opening `index.html` directly uses a script fallback for semantic vectors (`search-vectors.js`)
 instead of `fetch`. If neither vector source loads, search degrades to lexical-only.
 Keep the complete asset tree when copying the site for offline use.
+The [quick formula sheet](reference/index.html) is served as HTML and works with JavaScript disabled.
+
+The browser loads the reference shell first. Textbook contents use a small generated summary, and opening a lesson fetches its chapter. Searching within a book fetches that book's chapters so results still include lesson prose, the index, and the glossary. The contest catalog loads when a page needs it or the problem of the day comes into view.
+Run the startup browser check with `COMPMATH_URL=http://localhost:8688 CHROME=/usr/bin/chromium node tools/check-startup.cjs`.
 
 ## Structure
 
 Start with `CLAUDE.md` and `PLAN.md` (`LEARN-OUTLINE.md` holds the current Learn shelf and historical curriculum rationale; `TOPIC-TREE.md` holds the topic tree, its rules and its test filings). `PLAN.md` opens with "Current state": what is finished, what is in progress, and the next action. It is updated after every major change, so a new chat can pick up from it.
 
 ```
-index.html                     page shell and script order
+index.html                     HTML fallback, startup scripts, and versioned on-demand assets
+reference/index.html           quick formula sheet in plain HTML
 css/styles.css                 theme, layout, card and diagram styling
 js/app.js                      routing, rendering, and the search engine
 js/ui-icons.js                 shared font-independent SVG UI symbols
@@ -294,6 +299,7 @@ js/mock-contests.js            full-paper catalog, recent Elo curves, generation
 js/practice-sessions.js        saved topic/mock sets, answer grading and active-time clocks
 js/data/problems/mock-extras.js  ten separately attributed HMMT prompts/answer values
 js/data/topic-tree.js          the topic tree, generated from TOPIC-TREE.md by tools/build-topic-tree.py
+js/data/learn-summary.js       chapter and lesson summaries generated from the versioned chapter files
 js/data/topic-homes.js         every card's home node in the topic tree (hand-written)
 js/data/problems/*-problems.js per-card practice questions and contest references
 js/data/problems/statements/   problem statements by year, loaded on demand

@@ -4,27 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Competition Math Reference</title>
+  <meta name="description" content="Study competition math with formulas, solution methods, textbooks, and past contest problems for MATHCOUNTS, the AMC, AIME, and olympiads.">
   <link rel="icon" href="favicon.svg?v=1" type="image/svg+xml">
   <link rel="stylesheet" href="vendor/katex/katex.min.css?v=1">
   <!-- The two math fonts nearly every formula uses, fetched up front: card math is typeset only
        as cards near the screen, and text in a font still loading is drawn invisible. -->
   <link rel="preload" href="vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=537">
+  <link rel="stylesheet" href="css/styles.css?v=542">
   <script>document.documentElement.setAttribute("data-theme","light");try{if(localStorage.getItem("theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}var st="landing";try{st=((JSON.parse(localStorage.getItem("mq-settings")||"null")||{}).prefs||{}).start||"landing";}catch(e){}if((!location.hash||location.hash==="#")&&st==="landing")document.documentElement.classList.add("pre-landing");</script>
 </head>
-<body>
+<body class="app-pending">
   <a class="skip-link" href="#content">Skip to main content</a>
   <header class="topbar">
     <div class="topbar-inner">
       <button class="nav-toggle" id="nav-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Open section menu" title="Browse sections"><svg class="ui-icon ui-icon-menu" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5 6h14M5 12h14M5 18h14" fill="none" stroke="currentColor" stroke-width="2.3"/></svg></button>
-      <button class="brand" id="brand-home" title="Back to the start">
-        <span class="brand-sigma">&Sigma;</span>
-        <div class="brand-text">
-          <h1>Competition Math Reference</h1>
-          <p>MATHCOUNTS &middot; AMC 10/12 &middot; AIME &middot; Olympiad</p>
-        </div>
-      </button>
+      <a class="brand" id="brand-home" href="#" aria-label="Competition Math Reference home">
+        <span class="brand-sigma" aria-hidden="true">&Sigma;</span>
+      </a>
       <nav class="space-switch" id="space-switch" aria-label="Spaces">
         <div class="space-ref">
           <button type="button" class="space-ref-btn" id="space-ref-btn" aria-haspopup="true" aria-expanded="false">Reference <span class="space-ref-caret" aria-hidden="true"><svg class="ui-icon ui-icon-triangle-down" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4 5h16l-8 14Z" fill="currentColor"/></svg></span></button>
@@ -54,169 +51,181 @@
   <div class="nav-backdrop" id="nav-backdrop" hidden></div>
   <div class="layout">
     <nav class="sidebar" id="sidebar" aria-label="Section navigation"></nav>
-    <main class="content" id="content" tabindex="-1"></main>
+    <main class="content" id="content" tabindex="-1">
+      <div class="home static-home">
+        <h1 class="hm-name">Competition Math Reference</h1>
+        <p class="hm-sub">Study algebra, geometry, number theory, and combinatorics for MATHCOUNTS, the AMC, AIME, and olympiads.</p>
+        <p><a href="reference/index.html">Read the formula reference</a></p>
+        <noscript><p>Enable JavaScript to use search, textbooks, and interactive practice. The formula reference works without it.</p></noscript>
+      </div>
+    </main>
   </div>
 
-  <script src="vendor/katex/katex.min.js?v=1"></script>
-  <script src="vendor/katex/auto-render.min.js?v=1"></script>
-  <script src="js/data/geometry.js?v=333"></script>
-  <script src="js/data/algebra.js?v=242"></script>
-  <script src="js/data/number-theory.js?v=211"></script>
-  <script src="js/data/counting.js?v=218"></script>
-  <script src="js/data/patterns.js?v=358"></script>
-  <script src="js/data/details/geometry-details.js?v=420"></script>
-  <script src="js/data/details/algebra-details.js?v=304"></script>
-  <script src="js/data/details/number-theory-details.js?v=317"></script>
-  <script src="js/data/details/counting-details.js?v=277"></script>
-  <script src="js/data/details/proof-details.js?v=6"></script>
-  <script src="js/data/examples-supplement.js?v=331"></script>
-  <script src="js/data/connected.js?v=5"></script>
-  <script src="js/data/built-in-lists.js?v=138"></script>
-  <script src="js/data/new-cards.js?v=53"></script>
-  <script src="js/data/did-you-know.js?v=3"></script>
-  <script src="js/data/learn/aime-algebra/a10.js?v=9"></script>
-  <script src="js/data/learn/aime-counting/c10.js?v=9"></script>
-  <script src="js/data/learn/aime-geometry/g10.js?v=10"></script>
-  <script src="js/data/learn/aime-number-theory/n9.js?v=4"></script>
-  <script src="js/data/learn/amc-algebra/l15.js?v=9"></script>
-  <script src="js/data/learn/amc-counting/r11.js?v=17"></script>
-  <script src="js/data/learn/amc-geometry/s13.js?v=17"></script>
-  <script src="js/data/learn/amc-number-theory/m8.js?v=8"></script>
-  <script src="js/data/learn/olympiad-algebra/e6.js?v=4"></script>
-  <script src="js/data/learn/olympiad-combinatorics/k6.js?v=6"></script>
-  <script src="js/data/learn/olympiad-geometry/o8.js?v=7"></script>
-  <script src="js/data/learn/olympiad-number-theory/d5.js?v=5"></script>
-  <script src="js/data/learn/olympiad-proofs/p5.js?v=6"></script>
-  <script src="js/data/learn/shelf.js?v=56"></script>
-  <script src="js/data/learn/amc-algebra/l1.js?v=5"></script>
-  <script src="js/data/learn/amc-algebra/l2.js?v=4"></script>
-  <script src="js/data/learn/amc-algebra/l3.js?v=4"></script>
-  <script src="js/data/learn/amc-algebra/l4.js?v=4"></script>
-  <script src="js/data/learn/amc-algebra/l5.js?v=4"></script>
-  <script src="js/data/learn/amc-algebra/l6.js?v=4"></script>
-  <script src="js/data/learn/amc-algebra/l7.js?v=4"></script>
-  <script src="js/data/learn/amc-algebra/l8.js?v=3"></script>
-  <script src="js/data/learn/amc-algebra/l9.js?v=3"></script>
-  <script src="js/data/learn/amc-algebra/l10.js?v=5"></script>
-  <script src="js/data/learn/amc-algebra/l11.js?v=4"></script>
-  <script src="js/data/learn/amc-algebra/l12.js?v=3"></script>
-  <script src="js/data/learn/amc-algebra/l13.js?v=4"></script>
-  <script src="js/data/learn/amc-algebra/l14.js?v=3"></script>
-  <script src="js/data/learn/amc-number-theory/m1.js?v=4"></script>
-  <script src="js/data/learn/amc-number-theory/m2.js?v=3"></script>
-  <script src="js/data/learn/amc-number-theory/m3.js?v=3"></script>
-  <script src="js/data/learn/amc-number-theory/m4.js?v=3"></script>
-  <script src="js/data/learn/amc-number-theory/m5.js?v=3"></script>
-  <script src="js/data/learn/amc-number-theory/m6.js?v=4"></script>
-  <script src="js/data/learn/amc-number-theory/m7.js?v=3"></script>
-  <script src="js/data/learn/amc-counting/r1.js?v=6"></script>
-  <script src="js/data/learn/amc-counting/r2.js?v=4"></script>
-  <script src="js/data/learn/amc-counting/r3.js?v=9"></script>
-  <script src="js/data/learn/amc-counting/r4.js?v=3"></script>
-  <script src="js/data/learn/amc-counting/r5.js?v=4"></script>
-  <script src="js/data/learn/amc-counting/r6.js?v=3"></script>
-  <script src="js/data/learn/amc-counting/r7.js?v=3"></script>
-  <script src="js/data/learn/amc-counting/r8.js?v=5"></script>
-  <script src="js/data/learn/amc-counting/r9.js?v=5"></script>
-  <script src="js/data/learn/amc-counting/r10.js?v=4"></script>
-  <script src="js/data/learn/amc-geometry/s1.js?v=4"></script>
-  <script src="js/data/learn/amc-geometry/s2.js?v=3"></script>
-  <script src="js/data/learn/amc-geometry/s3.js?v=4"></script>
-  <script src="js/data/learn/amc-geometry/s4.js?v=6"></script>
-  <script src="js/data/learn/amc-geometry/s5.js?v=4"></script>
-  <script src="js/data/learn/amc-geometry/s6.js?v=4"></script>
-  <script src="js/data/learn/amc-geometry/s7.js?v=2"></script>
-  <script src="js/data/learn/amc-geometry/s8.js?v=2"></script>
-  <script src="js/data/learn/amc-geometry/s9.js?v=3"></script>
-  <script src="js/data/learn/amc-geometry/s10.js?v=3"></script>
-  <script src="js/data/learn/amc-geometry/s11.js?v=2"></script>
-  <script src="js/data/learn/amc-geometry/s12.js?v=2"></script>
-  <script src="js/data/learn/olympiad-proofs/p1.js?v=1"></script>
-  <script src="js/data/learn/olympiad-proofs/p2.js?v=1"></script>
-  <script src="js/data/learn/olympiad-proofs/p3.js?v=1"></script>
-  <script src="js/data/learn/olympiad-proofs/p4.js?v=1"></script>
-  <script src="js/data/learn/olympiad-algebra/e1.js?v=1"></script>
-  <script src="js/data/learn/olympiad-algebra/e2.js?v=1"></script>
-  <script src="js/data/learn/olympiad-algebra/e3.js?v=1"></script>
-  <script src="js/data/learn/olympiad-algebra/e4.js?v=2"></script>
-  <script src="js/data/learn/olympiad-algebra/e5.js?v=2"></script>
-  <script src="js/data/learn/olympiad-number-theory/d1.js?v=1"></script>
-  <script src="js/data/learn/olympiad-number-theory/d2.js?v=1"></script>
-  <script src="js/data/learn/olympiad-number-theory/d3.js?v=2"></script>
-  <script src="js/data/learn/olympiad-number-theory/d4.js?v=2"></script>
-  <script src="js/data/learn/olympiad-combinatorics/k1.js?v=1"></script>
-  <script src="js/data/learn/olympiad-combinatorics/k2.js?v=1"></script>
-  <script src="js/data/learn/olympiad-combinatorics/k3.js?v=2"></script>
-  <script src="js/data/learn/olympiad-combinatorics/k4.js?v=2"></script>
-  <script src="js/data/learn/olympiad-combinatorics/k5.js?v=2"></script>
-  <script src="js/data/learn/olympiad-geometry/o1.js?v=1"></script>
-  <script src="js/data/learn/olympiad-geometry/o2.js?v=1"></script>
-  <script src="js/data/learn/olympiad-geometry/o3.js?v=5"></script>
-  <script src="js/data/learn/olympiad-geometry/o4.js?v=4"></script>
-  <script src="js/data/learn/olympiad-geometry/o5.js?v=3"></script>
-  <script src="js/data/learn/olympiad-geometry/o6.js?v=3"></script>
-  <script src="js/data/learn/olympiad-geometry/o7.js?v=3"></script>
-  <script src="js/data/learn/aime-number-theory/n1.js?v=4"></script>
-  <script src="js/data/learn/aime-number-theory/n2.js?v=4"></script>
-  <script src="js/data/learn/aime-number-theory/n3.js?v=10"></script>
-  <script src="js/data/learn/aime-number-theory/n4.js?v=5"></script>
-  <script src="js/data/learn/aime-number-theory/n5.js?v=6"></script>
-  <script src="js/data/learn/aime-number-theory/n6.js?v=6"></script>
-  <script src="js/data/learn/aime-number-theory/n7.js?v=10"></script>
-  <script src="js/data/learn/aime-number-theory/n8.js?v=10"></script>
-  <script src="js/data/learn/aime-algebra/a1.js?v=9"></script>
-  <script src="js/data/learn/aime-algebra/a2.js?v=8"></script>
-  <script src="js/data/learn/aime-algebra/a3.js?v=9"></script>
-  <script src="js/data/learn/aime-algebra/a4.js?v=8"></script>
-  <script src="js/data/learn/aime-algebra/a5.js?v=7"></script>
-  <script src="js/data/learn/aime-algebra/a6.js?v=8"></script>
-  <script src="js/data/learn/aime-algebra/a7.js?v=8"></script>
-  <script src="js/data/learn/aime-algebra/a8.js?v=8"></script>
-  <script src="js/data/learn/aime-algebra/a9.js?v=7"></script>
-  <script src="js/data/learn/aime-counting/c1.js?v=10"></script>
-  <script src="js/data/learn/aime-counting/c2.js?v=7"></script>
-  <script src="js/data/learn/aime-counting/c3.js?v=8"></script>
-  <script src="js/data/learn/aime-counting/c4.js?v=11"></script>
-  <script src="js/data/learn/aime-counting/c5.js?v=17"></script>
-  <script src="js/data/learn/aime-counting/c6.js?v=8"></script>
-  <script src="js/data/learn/aime-counting/c7.js?v=12"></script>
-  <script src="js/data/learn/aime-counting/c8.js?v=7"></script>
-  <script src="js/data/learn/aime-counting/c9.js?v=8"></script>
-  <script src="js/data/learn/aime-geometry/g1.js?v=9"></script>
-  <script src="js/data/learn/aime-geometry/g2.js?v=7"></script>
-  <script src="js/data/learn/aime-geometry/g3.js?v=9"></script>
-  <script src="js/data/learn/aime-geometry/g4.js?v=10"></script>
-  <script src="js/data/learn/aime-geometry/g5.js?v=8"></script>
-  <script src="js/data/learn/aime-geometry/g6.js?v=8"></script>
-  <script src="js/data/learn/aime-geometry/g7.js?v=14"></script>
-  <script src="js/data/learn/aime-geometry/g8.js?v=7"></script>
-  <script src="js/data/learn/aime-geometry/g9.js?v=7"></script>
-  <script src="js/learn-answer.js?v=3"></script>
-  <script src="js/data/problems/geometry-problems.js?v=12"></script>
-  <script src="js/data/problems/contest-problems.js?v=13"></script>
-  <script src="js/data/problems/extra-problems.js?v=61"></script>
-  <script src="js/data/problems/problem-db.js?v=799"></script>
-  <script src="js/data/problems/contest-papers.js?v=58"></script>
-  <script src="js/data/problems/contests-planned.js?v=7"></script>
-  <script src="js/data/diagrams/geometry-diagrams.js?v=319"></script>
-  <script src="js/data/diagrams/general-diagrams.js?v=188"></script>
-  <script src="js/data/diagrams/problem-diagrams.js?v=134"></script>
-  <script src="js/recurrence-solver.js?v=4"></script>
-  <script src="js/geo-interactive.js?v=44"></script>
-  <script src="js/math-tools.js?v=26"></script>
-  <script src="js/mass-balance.js?v=7"></script>
-  <script src="js/data/search-glossary.js?v=68"></script>
-  <script src="js/search-semantic.js?v=5"></script>
-  <script src="js/data/problems/answer-keys.js?v=5"></script>
-  <script src="js/data/problems/difficulty-ratings.js?v=143"></script>
-  <script src="js/problem-difficulty.js?v=2"></script>
-  <script src="js/data/problems/mock-extras.js?v=3"></script>
-  <script src="js/mock-contests.js?v=4"></script>
-  <script src="js/data/topic-tree.js?v=3"></script>
-  <script src="js/practice-topics.js?v=4"></script>
-  <script src="js/practice-sessions.js?v=7"></script>
-  <script src="js/ui-icons.js?v=2"></script>
-  <script src="js/accessibility.js?v=4"></script>
-  <script src="js/app.js?v=787"></script>
+  <!-- The router loads these versioned assets when needed. Template contents are inert. -->
+  <template id="on-demand-scripts">
+    <script data-group="chapters" src="js/data/learn/aime-algebra/a10.js?v=9"></script>
+    <script data-group="chapters" src="js/data/learn/aime-counting/c10.js?v=9"></script>
+    <script data-group="chapters" src="js/data/learn/aime-geometry/g10.js?v=10"></script>
+    <script data-group="chapters" src="js/data/learn/aime-number-theory/n9.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l15.js?v=9"></script>
+    <script data-group="chapters" src="js/data/learn/amc-counting/r11.js?v=17"></script>
+    <script data-group="chapters" src="js/data/learn/amc-geometry/s13.js?v=17"></script>
+    <script data-group="chapters" src="js/data/learn/amc-number-theory/m8.js?v=8"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-algebra/e6.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-combinatorics/k6.js?v=6"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-geometry/o8.js?v=7"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-number-theory/d5.js?v=5"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-proofs/p5.js?v=6"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l1.js?v=5"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l2.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l3.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l4.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l5.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l6.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l7.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l8.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l9.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l10.js?v=5"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l11.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l12.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l13.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-algebra/l14.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-number-theory/m1.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-number-theory/m2.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-number-theory/m3.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-number-theory/m4.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-number-theory/m5.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-number-theory/m6.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-number-theory/m7.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-counting/r1.js?v=6"></script>
+    <script data-group="chapters" src="js/data/learn/amc-counting/r2.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-counting/r3.js?v=9"></script>
+    <script data-group="chapters" src="js/data/learn/amc-counting/r4.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-counting/r5.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-counting/r6.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-counting/r7.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-counting/r8.js?v=5"></script>
+    <script data-group="chapters" src="js/data/learn/amc-counting/r9.js?v=5"></script>
+    <script data-group="chapters" src="js/data/learn/amc-counting/r10.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-geometry/s1.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-geometry/s2.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-geometry/s3.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-geometry/s4.js?v=6"></script>
+    <script data-group="chapters" src="js/data/learn/amc-geometry/s5.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-geometry/s6.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/amc-geometry/s7.js?v=2"></script>
+    <script data-group="chapters" src="js/data/learn/amc-geometry/s8.js?v=2"></script>
+    <script data-group="chapters" src="js/data/learn/amc-geometry/s9.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-geometry/s10.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/amc-geometry/s11.js?v=2"></script>
+    <script data-group="chapters" src="js/data/learn/amc-geometry/s12.js?v=2"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-proofs/p1.js?v=1"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-proofs/p2.js?v=1"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-proofs/p3.js?v=1"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-proofs/p4.js?v=1"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-algebra/e1.js?v=1"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-algebra/e2.js?v=1"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-algebra/e3.js?v=1"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-algebra/e4.js?v=2"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-algebra/e5.js?v=2"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-number-theory/d1.js?v=1"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-number-theory/d2.js?v=1"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-number-theory/d3.js?v=2"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-number-theory/d4.js?v=2"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-combinatorics/k1.js?v=1"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-combinatorics/k2.js?v=1"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-combinatorics/k3.js?v=2"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-combinatorics/k4.js?v=2"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-combinatorics/k5.js?v=2"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-geometry/o1.js?v=1"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-geometry/o2.js?v=1"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-geometry/o3.js?v=5"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-geometry/o4.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-geometry/o5.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-geometry/o6.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/olympiad-geometry/o7.js?v=3"></script>
+    <script data-group="chapters" src="js/data/learn/aime-number-theory/n1.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/aime-number-theory/n2.js?v=4"></script>
+    <script data-group="chapters" src="js/data/learn/aime-number-theory/n3.js?v=10"></script>
+    <script data-group="chapters" src="js/data/learn/aime-number-theory/n4.js?v=5"></script>
+    <script data-group="chapters" src="js/data/learn/aime-number-theory/n5.js?v=6"></script>
+    <script data-group="chapters" src="js/data/learn/aime-number-theory/n6.js?v=6"></script>
+    <script data-group="chapters" src="js/data/learn/aime-number-theory/n7.js?v=10"></script>
+    <script data-group="chapters" src="js/data/learn/aime-number-theory/n8.js?v=10"></script>
+    <script data-group="chapters" src="js/data/learn/aime-algebra/a1.js?v=9"></script>
+    <script data-group="chapters" src="js/data/learn/aime-algebra/a2.js?v=8"></script>
+    <script data-group="chapters" src="js/data/learn/aime-algebra/a3.js?v=9"></script>
+    <script data-group="chapters" src="js/data/learn/aime-algebra/a4.js?v=8"></script>
+    <script data-group="chapters" src="js/data/learn/aime-algebra/a5.js?v=7"></script>
+    <script data-group="chapters" src="js/data/learn/aime-algebra/a6.js?v=8"></script>
+    <script data-group="chapters" src="js/data/learn/aime-algebra/a7.js?v=8"></script>
+    <script data-group="chapters" src="js/data/learn/aime-algebra/a8.js?v=8"></script>
+    <script data-group="chapters" src="js/data/learn/aime-algebra/a9.js?v=7"></script>
+    <script data-group="chapters" src="js/data/learn/aime-counting/c1.js?v=10"></script>
+    <script data-group="chapters" src="js/data/learn/aime-counting/c2.js?v=7"></script>
+    <script data-group="chapters" src="js/data/learn/aime-counting/c3.js?v=8"></script>
+    <script data-group="chapters" src="js/data/learn/aime-counting/c4.js?v=11"></script>
+    <script data-group="chapters" src="js/data/learn/aime-counting/c5.js?v=17"></script>
+    <script data-group="chapters" src="js/data/learn/aime-counting/c6.js?v=8"></script>
+    <script data-group="chapters" src="js/data/learn/aime-counting/c7.js?v=12"></script>
+    <script data-group="chapters" src="js/data/learn/aime-counting/c8.js?v=7"></script>
+    <script data-group="chapters" src="js/data/learn/aime-counting/c9.js?v=8"></script>
+    <script data-group="chapters" src="js/data/learn/aime-geometry/g1.js?v=9"></script>
+    <script data-group="chapters" src="js/data/learn/aime-geometry/g2.js?v=7"></script>
+    <script data-group="chapters" src="js/data/learn/aime-geometry/g3.js?v=9"></script>
+    <script data-group="chapters" src="js/data/learn/aime-geometry/g4.js?v=10"></script>
+    <script data-group="chapters" src="js/data/learn/aime-geometry/g5.js?v=8"></script>
+    <script data-group="chapters" src="js/data/learn/aime-geometry/g6.js?v=8"></script>
+    <script data-group="chapters" src="js/data/learn/aime-geometry/g7.js?v=14"></script>
+    <script data-group="chapters" src="js/data/learn/aime-geometry/g8.js?v=7"></script>
+    <script data-group="chapters" src="js/data/learn/aime-geometry/g9.js?v=7"></script>
+    <script data-group="answer-input" src="js/learn-answer.js?v=3"></script>
+    <script data-group="problems" src="js/data/problems/problem-db.js?v=799"></script>
+    <script data-group="problems" src="js/data/problems/contest-papers.js?v=58"></script>
+    <script data-group="problems" src="js/data/problems/contests-planned.js?v=7"></script>
+    <script data-group="problems" src="js/data/diagrams/problem-diagrams.js?v=134"></script>
+    <script data-group="widgets" src="js/recurrence-solver.js?v=4"></script>
+    <script data-group="widgets" src="js/geo-interactive.js?v=44"></script>
+    <script data-group="widgets" src="js/math-tools.js?v=26"></script>
+    <script data-group="widgets" src="js/mass-balance.js?v=7"></script>
+    <script data-group="practice" src="js/data/problems/answer-keys.js?v=5"></script>
+    <script data-group="problems" src="js/data/problems/difficulty-ratings.js?v=143"></script>
+    <script data-group="problems" src="js/data/problems/mock-extras.js?v=3"></script>
+    <script data-group="practice" src="js/mock-contests.js?v=4"></script>
+  </template>
+
+  <script defer src="vendor/katex/katex.min.js?v=1"></script>
+  <script defer src="vendor/katex/auto-render.min.js?v=1"></script>
+  <script defer src="js/data/geometry.js?v=333"></script>
+  <script defer src="js/data/algebra.js?v=242"></script>
+  <script defer src="js/data/number-theory.js?v=211"></script>
+  <script defer src="js/data/counting.js?v=218"></script>
+  <script defer src="js/data/patterns.js?v=358"></script>
+  <script defer src="js/data/details/geometry-details.js?v=420"></script>
+  <script defer src="js/data/details/algebra-details.js?v=304"></script>
+  <script defer src="js/data/details/number-theory-details.js?v=317"></script>
+  <script defer src="js/data/details/counting-details.js?v=277"></script>
+  <script defer src="js/data/details/proof-details.js?v=6"></script>
+  <script defer src="js/data/examples-supplement.js?v=331"></script>
+  <script defer src="js/data/connected.js?v=5"></script>
+  <script defer src="js/data/built-in-lists.js?v=138"></script>
+  <script defer src="js/data/new-cards.js?v=53"></script>
+  <script defer src="js/data/did-you-know.js?v=3"></script>
+  <script defer src="js/data/learn-summary.js?v=1"></script>
+  <script defer src="js/data/learn/shelf.js?v=56"></script>
+  <script defer src="js/data/problems/geometry-problems.js?v=12"></script>
+  <script defer src="js/data/problems/contest-problems.js?v=13"></script>
+  <script defer src="js/data/problems/extra-problems.js?v=61"></script>
+  <script defer src="js/data/diagrams/geometry-diagrams.js?v=319"></script>
+  <script defer src="js/data/diagrams/general-diagrams.js?v=188"></script>
+  <script defer src="js/data/search-glossary.js?v=68"></script>
+  <script defer src="js/search-semantic.js?v=5"></script>
+  <script defer src="js/problem-difficulty.js?v=2"></script>
+  <script defer src="js/data/topic-tree.js?v=3"></script>
+  <script defer src="js/practice-topics.js?v=4"></script>
+  <script defer src="js/practice-sessions.js?v=7"></script>
+  <script defer src="js/ui-icons.js?v=2"></script>
+  <script defer src="js/accessibility.js?v=4"></script>
+  <script defer src="js/app.js?v=793"></script>
 </body>
 </html>
