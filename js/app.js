@@ -3176,7 +3176,7 @@
     "Duke Math Meet": "https://math.duke.edu/duke-math-meet",
     "CHMMC": "https://www.caltechmathmeet.org/problems",
     "UMD HSMC": "https://mathcomp.math.umd.edu/past-contests/",
-    "CMIMC": "https://cmimc.math.cmu.edu/math/past-problems",
+    "CMIMC": "https://github.com/howard36/cmimc-official/tree/master/public/assets/docs/past-tests",
     "Math Prize for Girls": "https://mathprize.atfoundation.org/resources",
     "MMATHS": "https://www.mmaths.org/archive",
     "Girls in Math at Yale": "https://www.mmaths.org/archive",
@@ -3319,11 +3319,14 @@
     const p = f && (which === "solutions" ? f[1] : f[0]);
     return p ? UMD_FILES_BASE + p : null;
   }
-  // CMIMC's archive at cmimc.math.cmu.edu/archive/cmimc<year>/: one PDF per individual test and
+  // CMIMC's archive (once at cmimc.math.cmu.edu/archive/cmimc<year>/): one PDF per individual test and
   // one for its solutions (suffix _S). The subjects were renamed in 2019 and split into two
   // divisions in 2021; later years, whose files use another naming, are not filed yet.
   const CMIMC_CODE = { "Algebra": "Algebra", "Combinatorics": "Combinatorics", "Computer Science": "ComputerScience", "Geometry": "Geometry", "Number Theory": "NumberTheory",
     "Algebra and Number Theory": "ANT", "Combinatorics and Computer Science": "CCS" };
+  // The archive left the CMIMC site in 2026 (its /archive pages return 404); the same papers stay
+  // in the site's own source repository, which GitHub shows in its PDF viewer.
+  const CMIMC_ARCHIVE = "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/";
   function cmimcPdf(ref, which) {
     const m = ref.match(/^(\d{4}) CMIMC (.+?),\s*Problem\s+\d+$/);
     if (!m) return null;
@@ -3331,7 +3334,7 @@
     let stem;
     if (d) stem = { "Algebra and Number Theory": "AlgNT", "Combinatorics and Computer Science": "ComboCS", "Geometry": "Geo" }[d[1]] + "_D" + d[2];
     else stem = y >= 2019 && m[2] === "Geometry" ? "GEO" : CMIMC_CODE[m[2]];
-    return stem ? `https://cmimc.math.cmu.edu/archive/cmimc${y}/${y}_${stem}${which === "solutions" ? "_S" : ""}.pdf` : null;
+    return stem ? `${CMIMC_ARCHIVE}${y}_${stem}${which === "solutions" ? "_S" : ""}.pdf` : null;
   }
   // Math Prize for Girls: the Advantage Testing Foundation posts each year's 20-question test and
   // its solutions at mathprize.atfoundation.org/resources/past-tests/<year>/ (the 2009 files are
@@ -4965,7 +4968,7 @@
               <p>Problems from the Individual round of <a href="https://www.arml.com/ARML/arml_2019/page/index.php?page_type=public&amp;page=4" target="_blank" rel="noopener noreferrer">ARML</a> (2009 to 2014 and 2016 to 2019, the years ARML has published) are listed the same way: their statements and solutions are not reproduced, and each problem's page opens ARML's official contest booklet at the round. The Individual round of ARML Local, ARML's own local contest, is listed the same way for 2009 to 2014, from the same book. ARML problems are &copy; American Regions Mathematics League; the MAA license above does not apply to them.</p>
               <p>Problems from the subject tests of the <a href="https://www.stanfordmathtournament.com/past-tests/problems" target="_blank" rel="noopener noreferrer">Stanford Math Tournament</a> (SMT: Algebra, Geometry, and Advanced, Discrete or in 2021 Combinatorics and Number Theory) are listed the same way: each problem's page opens SMT's official test and its official solutions; nothing is reproduced. SMT material is attributed to SMT; the MAA license above does not apply to it.</p>
               <p>Problems from Part I (the multiple-choice individual test) of the <a href="https://mathcomp.math.umd.edu/past-contests/" target="_blank" rel="noopener noreferrer">University of Maryland High School Mathematics Competition</a> (UMD HSMC) are listed the same way: each problem's page opens the year's official paper and solutions; nothing is reproduced. That material is attributed to the competition; the MAA license above does not apply to it.</p>
-              <p>Problems from the individual subject tests of the <a href="https://cmimc.math.cmu.edu/math/past-problems" target="_blank" rel="noopener noreferrer">Carnegie Mellon Informatics and Mathematics Competition</a> (CMIMC, 2016 to 2022) are listed the same way: each problem's page opens CMIMC's official test and solutions; nothing is reproduced. CMIMC material is attributed to CMIMC; the MAA license above does not apply to it.</p>
+              <p>Problems from the individual subject tests of the <a href="https://cmimc.math.cmu.edu/" target="_blank" rel="noopener noreferrer">Carnegie Mellon Informatics and Mathematics Competition</a> (CMIMC, 2016 to 2022) are listed the same way: each problem's page opens CMIMC's official test and solutions, kept in the <a href="https://github.com/howard36/cmimc-official" target="_blank" rel="noopener noreferrer">source repository of CMIMC's own site</a> since the archive left the site; nothing is reproduced. CMIMC material is attributed to CMIMC; the MAA license above does not apply to it.</p>
               <p>Problems from the 20-question test of <a href="https://mathprize.atfoundation.org/resources" target="_blank" rel="noopener noreferrer">Math Prize for Girls</a> (2009 to 2026; there was no contest in 2020) are listed the same way: each problem's page opens the Advantage Testing Foundation's official test and, where posted, its solutions; nothing is reproduced. That material is attributed to the Advantage Testing Foundation; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual test of <a href="https://www.mmaths.org/archive" target="_blank" rel="noopener noreferrer">MMATHS</a>, the Math Majors of America Tournament for High Schools run by Yale Math Competitions (2014 to 2016 and 2018 to 2025; the 2017 files are lost), are listed the same way: each problem's page opens the official test and its solutions or answer key; nothing is reproduced. That material is attributed to Yale Math Competitions; the MAA license above does not apply to it. The Individual round of Girls in Math at Yale, from the same archive (2019 to 2026), is listed the same way.</p>
               <p>Problems from the <a href="https://www.lehigh.edu/~dmd1/oldcontests.html" target="_blank" rel="noopener noreferrer">Lehigh University High School Math Contest</a>, a two-hour individual test, are listed the same way: each problem's page opens the year's exam and solutions as Lehigh's mathematics department posts them; nothing is reproduced. That material is attributed to Lehigh University; the MAA license above does not apply to it.</p>
