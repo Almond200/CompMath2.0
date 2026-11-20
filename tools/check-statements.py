@@ -24,10 +24,10 @@ hmmt_rounds = {
 for f in sorted(glob.glob(os.path.join(statement_dir, "**", "*.js"), recursive=True)):
     src = open(f, encoding="utf-8").read()
     source = os.path.dirname(os.path.relpath(f, statement_dir))
-    if source not in ("", "hmmt", "cemc"):
+    if source not in ("", "hmmt", "cemc", "ahsme"):
         bad.append(f"{f}: unknown publisher directory")
         continue
-    credit = {"": "CC BY-NC-SA", "hmmt": "Reproduced with permission from HMMT", "cemc": "CC BY-NC 4.0"}[source]
+    credit = {"": "CC BY-NC-SA", "hmmt": "Reproduced with permission from HMMT", "cemc": "CC BY-NC 4.0", "ahsme": "CC BY-NC-SA 4.0"}[source]
     if credit not in src.split("window.")[0]: bad.append(f"{f}: missing credit header")
     for m in re.finditer(r'^"([a-z0-9-]+)": \{ s: String\.raw`(.*?)`, u: "([^"]*)" \},$', src, re.S | re.M):
         slug, s, u = m.groups(); n += 1
@@ -43,6 +43,10 @@ for f in sorted(glob.glob(os.path.join(statement_dir, "**", "*.js"), recursive=T
             round_code = match and hmmt_rounds[match[2]].get(match[3])
             if not round_code or u != f"https://hmmt-archive.s3.amazonaws.com/tournaments/{match[1]}/{match[2][:3]}/{round_code}/problems.pdf":
                 bad.append(f"{slug}: does not link its official HMMT paper")
+        elif source == "ahsme":
+            match = re.fullmatch(r"(\d{4})-ahsme-\d+", slug)
+            if not match or u != f"https://live.poshenloh.com/past-contests/amc12/{match[1]}":
+                bad.append(f"{slug}: does not link its AHSME paper on LIVE")
         elif source == "cemc":
             match = re.fullmatch(r"(\d{4})-(pascal|cayley|fermat)-contest-\d+", slug)
             if not match or u != f"https://cemc.uwaterloo.ca/sites/default/files/documents/{match[1]}/{match[1]}{match[2].title()}Contest.html":

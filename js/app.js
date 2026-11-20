@@ -6164,7 +6164,7 @@
       </section>
       <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p && (!mock || finished) ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
         ${paper ? `${inlinePaper ? `<div class="practice-set-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div></div>` : ''}
-          <div class="practice-paper"><p data-statement-fallback>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. Compare your answer with the official solution and mark it below.` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. When you review, you check it against the official solution.`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${inlinePaper ? "Open the official paper" : "Open the problem"} ${uiIcon("arrow-up-right")}</a></div>`
+          <div class="practice-paper"><p data-statement-fallback>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. Compare your answer with the official solution and mark it below.` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. When you review, you check it against the official solution.`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${inlinePaper && p.urlLabel === "archive" ? "Open the official paper" : "Open the problem"} ${uiIcon("arrow-up-right")}</a></div>`
           : p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>Your answer</h3>
           ${aime || exact || paper ? (set.answers[slug] ? `<p class="practice-submitted">${exact ? exactAnswerHtml(set.answers[slug]) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
@@ -9811,15 +9811,20 @@ The book remembers the last lesson you opened, in this browser, and the contents
     dir: "cemc",
     credit: `© University of Waterloo (CEMC) · Formatted for this app under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a> · <a href="https://cemc.uwaterloo.ca/resources/past-contests" target="_blank" rel="noopener noreferrer">CEMC archive</a>`
   };
+  const AHSME_STATEMENTS = {
+    dir: "ahsme",
+    credit: `© Mathematical Association of America · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> · <a href="https://live.poshenloh.com/past-contests/amc12" target="_blank" rel="noopener noreferrer">AHSME archive on LIVE by Po-Shen Loh</a>`
+  };
   function archiveStatement(p) {
     if (p.year === 2026 && /^HMMT (February|November)$/.test(p.fam)) return HMMT_STATEMENTS;
     if (p.year === 2025 && /^(Pascal|Cayley|Fermat) Contest$/.test(p.fam)) return CEMC_STATEMENTS;
+    if (/\bAHSME\b/.test(p.ref)) return AHSME_STATEMENTS;
     return null;
   }
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 30;
+  const STATEMENTS_V = 31;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {
