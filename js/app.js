@@ -11160,15 +11160,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (src && !loadedAssets.has(src)) requirements.push(loadAsset(src));
     };
     if (route.type === "formula") requireGroup("widgets");
-    if (route.type === "space" && route.name === "practice") {
-      requireGroup("practice");
-      requireGroup("answer-input");
-    }
-    if (route.type === "problems") requireGroup("practice");
-    if (route.type === "learn") {
-      requireChapter(route.book, route.chapter);
-      if (route.lesson) requireGroup("answer-input");
-    }
+    if (route.type === "space" && route.name === "practice" || route.type === "problems") requireGroup("practice");
+    if (route.type === "learn") requireChapter(route.book, route.chapter);
     if (route.type === "settings") {
       const book = LEARN_SHELF.find(book => book.id === "aime-counting");
       if (book) requireChapter(book, book.chapters.find(chapter => chapter.code === "C5"));
