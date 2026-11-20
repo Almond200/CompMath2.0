@@ -7831,11 +7831,58 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const named = [out.fam, out.year, out.num].filter(x => x != null).length;
     return named >= 2 ? out : null;
   }
+  const CONTEST_QUERY_ALIASES = {
+    AHSME: ["AMC 12"], AJHSME: ["AMC 8"],
+    CEMC: ["Pascal Contest", "Cayley Contest", "Fermat Contest"],
+    HMMT: ["HMMT February", "HMMT November"],
+    MATHCOUNTS: ["MATHCOUNTS Chapter", "MATHCOUNTS State", "MATHCOUNTS National"],
+    MBMT: ["MBMT Lower", "MBMT Upper"],
+    PUMaC: ["PUMaC Division A", "PUMaC Division B"],
+    UKMT: ["UKMT JMC", "UKMT IMC", "UKMT SMC"],
+    "Girls in Math": ["Girls in Math at Yale"],
+    "Yale Math Competitions": ["MMATHS", "Girls in Math at Yale"],
+    "Math Prize": ["Math Prize for Girls"],
+    "Caltech Math Meet": ["CHMMC"]
+  };
+  const CONTEST_QUERY_SHORT = { feb: "february", nov: "november", div: "division", alg: "algebra", combo: "combinatorics", geo: "geometry", nt: "number theory", cs: "computer science" };
+  function contestQueryWords(text) {
+    const words = famSlug(text.replace(/([a-z])(?=\d)|(\d)(?=[a-z])/gi, "$& ")).split("-");
+    return words.filter(w => w && !/^(and|at|in|of|for|the|contest|competition|papers?|problems?|tests?|rounds?)$/.test(w))
+      .flatMap(w => Object.hasOwn(CONTEST_QUERY_SHORT, w) ? CONTEST_QUERY_SHORT[w].split(" ") : w);
+  }
+  const CONTEST_QUERY_NAMES = [
+    ...FAMILIES.filter(f => !/^(AMC |AIME$|Putnam$)/.test(f)).map(f => [f, [f]]),
+    ...Object.entries(CONTEST_QUERY_ALIASES)
+  ].map(([name, families]) => ({ families, name: contestQueryWords(name).join(" ") }))
+    .sort((a, b) => b.name.length - a.name.length);
+  function parseContestYearQuery(q) {
+    const exact = /\b(?:problem|prob|question)\s*(\d{1,2})\b|#\s*(\d{1,2})\b/i.exec(q);
+    const words = contestQueryWords(exact ? q.replace(exact[0], " ") : q);
+    const year = words.find(w => /^(19[5-9]\d|20\d\d)$/.test(w));
+    if (!year) return null;
+    const query = " " + words.filter(w => w !== year).join(" ") + " ";
+    const match = CONTEST_QUERY_NAMES.find(({ name }) => query.includes(" " + name + " "));
+    if (!match) return null;
+    // Match round names and division qualifiers against the actual paper names.
+    let remainder = query;
+    for (const { name, families } of CONTEST_QUERY_NAMES) {
+      if (match.families.every(f => families.includes(f))) remainder = remainder.replace(" " + name + " ", " ");
+    }
+    const rest = remainder.trim().split(/\s+/).filter(Boolean);
+    if (match.name === "ahsme" || match.name === "ajhsme") rest.push(match.name);
+    return { families: match.families, year: +year, num: exact && +(exact[1] || exact[2]), rest };
+  }
   // The problems a parsed reference names, newest first; any leftover words ("2025 aime
   // geometry") then rank them by how many of those words each problem's text carries.
-  function referencedProblems(q) {
-    const r = parseProblemQuery(q);
+  function referencedProblems(r) {
     if (!r) return null;
+    if (r.families) {
+      return r.families.flatMap(fam => DB_TREE[fam]?.[r.year] || []).filter(p => {
+        if (r.num && p.num !== r.num) return false;
+        const words = contestQueryWords(p.cname);
+        return r.rest.every(word => words.includes(word));
+      }).sort((a, b) => a.cname.localeCompare(b.cname) || a.num - b.num);
+    }
     const hits = PROBLEM_DB.filter(p => {
       if (r.year && p.year !== r.year) return false;
       if (r.num && p.num !== r.num) return false;
@@ -7961,7 +8008,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // else; the word matches then follow in their usual place without repeating them.
     // When it names problems that exist, the loose word matches are left out: "2024 aime 1
     // problem 3" would otherwise pull in every problem whose text says "problem".
-    let named = referencedProblems(query);
+    const ref = parseContestYearQuery(query) || parseProblemQuery(query);
+    let named = referencedProblems(ref);
     if (named && !named.length) named = null;
     // "AMC 10/12 number theory" names a book, not problem 12 of the AMC 10.
     const bookHits = bookMatches(query);
@@ -7972,9 +8020,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // A reference that names a contest and a year but no problem number ("2025 AIME I",
     // "2023 amc10b") also gets the paper itself as a result, ahead of its problems, linking to
     // that paper on its contest page. "2025 AIME" names two papers and gets both.
-    const ref = named && parseProblemQuery(query);
     const papers = [];
-    if (ref && ref.fam && ref.year && !ref.num) named.forEach(p => {
+    if (named && (ref.fam || ref.families) && ref.year && !ref.num) named.forEach(p => {
       let g = papers.find(x => x.cname === p.cname);
       if (!g) papers.push(g = { cname: p.cname, fam: p.fam, year: p.year, problems: [] });
       g.problems.push(p);
