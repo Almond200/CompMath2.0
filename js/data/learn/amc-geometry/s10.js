@@ -179,13 +179,13 @@ Pair opposite corners for the British flag theorem, halve the diagonals for Vari
       ]
     },
     "S10.6": {
-      prereq: ["circle-basics", "handshakes-diagonals", "am-gm"],
-      cards: ["moser-circle", "steiner-neighborhood", "isoperimetric-facts"],
+      prereq: ["circle-basics", "handshakes-diagonals", "am-gm", "plane-regions"],
+      cards: ["steiner-neighborhood", "isoperimetric-facts"],
       body: String.raw`What is the area of the points within $1$ of a $3 \times 4$ rectangle? Into how many regions do the chords between $7$ points on a circle cut it? What is the largest area a triangle of perimeter $12$ can have? Three facts about regions.
 
 [[steiner-neighborhood|The neighborhood of a figure]], the points within distance $r$ of it, has area equal to the figure's area plus its perimeter times $r$ plus a full circle $\pi r^2$: the strips along the sides add $Pr$, and the rounded corners together make one circle, since a convex figure's corners turn through $360^\circ$ in all. For the $3 \times 4$ rectangle with $r = 1$: $12 + 14 + \pi = 26 + \pi$. In space, a box's neighborhood adds its surface area times $r$, quarter cylinders along the edges and a sphere at the corners.
 
-[[moser-circle|The regions cut by chords]] of $n$ points on a circle, no three chords meeting inside, number $1 + \binom n2 + \binom n4$: one region, plus one for each chord, plus one for each crossing of two chords. So $5$ points give $16$ and $7$ points $57$, and the doubling pattern $1, 2, 4, 8, 16$ breaks at $6$ points, with $31$.
+[[plane-regions|The regions cut by chords]] of $n$ points on a circle, no three chords meeting inside, number $1 + \binom n2 + \binom n4$: one region, plus one for each chord, plus one for each crossing of two chords. So $5$ points give $16$ and $7$ points $57$, and the doubling pattern $1, 2, 4, 8, 16$ breaks at $6$ points, with $31$.
 
 [[isoperimetric-facts|The isoperimetric facts]] give the largest area for a perimeter: among all shapes the circle, $A \le \tfrac{P^2}{4\pi}$; among rectangles the square, $\tfrac{P^2}{16}$; among triangles the equilateral one, $\tfrac{P^2}{12\sqrt3}$. A rectangle of perimeter $20$ has area at most $25$, and a triangle of perimeter $12$ at most $\tfrac{144}{12\sqrt3} = 4\sqrt3$. Each is the AM-GM inequality in disguise: for a rectangle, $\ell w \le \left(\tfrac{\ell + w}{2}\right)^2$.
 
@@ -213,7 +213,7 @@ Add area, perimeter times $r$ and $\pi r^2$ for a neighborhood, count chords and
       ]
     },
     "S10.7": {
-      prereq: ["conic-sections", "parabola-focus-directrix", "ellipse-properties", "hyperbola-properties", "conic-tangent-lines", "eccentricity", "parabolic-segment-area", "polar-coordinates", "tangency-equation", "determinant-geometric", "lattice-points-gcd", "vector-dot-product", "vector-projection", "reflection-composition", "rotation-reflection-matrices", "rotation-trick", "rotation-center", "linear-change-of-variables", "british-flag-theorem", "varignons-theorem", "equiangular-hexagon-area", "moser-circle", "steiner-neighborhood", "isoperimetric-facts"],
+      prereq: ["conic-sections", "parabola-focus-directrix", "ellipse-properties", "hyperbola-properties", "conic-tangent-lines", "eccentricity", "parabolic-segment-area", "polar-coordinates", "tangency-equation", "determinant-geometric", "lattice-points-gcd", "vector-dot-product", "vector-projection", "reflection-composition", "rotation-reflection-matrices", "rotation-trick", "rotation-center", "linear-change-of-variables", "british-flag-theorem", "varignons-theorem", "equiangular-hexagon-area", "plane-regions", "steiner-neighborhood", "isoperimetric-facts"],
       cards: [],
       body: String.raw`[[conic-sections|The conics]] are read in standard form: [[ellipse-properties|an ellipse]] adds distances to its foci, [[hyperbola-properties|a hyperbola]] subtracts them, [[parabola-focus-directrix|a parabola]] balances a focus and a directrix, and [[eccentricity|the eccentricity]] unites them; [[conic-tangent-lines|tangent lines]] meet once, and [[parabolic-segment-area|a parabolic segment]] is $\tfrac43$ of its triangle.
 
@@ -221,7 +221,7 @@ Add area, perimeter times $r$ and $\pi r^2$ for a neighborhood, count chords and
 
 [[vector-dot-product|The dot product]] and [[vector-projection|projections]] measure angles and shadows; [[reflection-composition|reflections compose]] into rotations, written as [[rotation-reflection-matrices|matrices]], with [[rotation-center|centers]] on perpendicular bisectors; [[rotation-trick|a rotation]] brings distances together; [[linear-change-of-variables|a change of variables]] scales areas.
 
-[[british-flag-theorem|The British flag theorem]], [[varignons-theorem|Varignon's theorem]] and [[equiangular-hexagon-area|the equiangular hexagon]] settle quadrilaterals and hexagons; [[steiner-neighborhood|neighborhoods]], [[moser-circle|chord regions]] and [[isoperimetric-facts|isoperimetric facts]] settle regions.`,
+[[british-flag-theorem|The British flag theorem]], [[varignons-theorem|Varignon's theorem]] and [[equiangular-hexagon-area|the equiangular hexagon]] settle quadrilaterals and hexagons; [[steiner-neighborhood|neighborhoods]], [[plane-regions|chord regions]] and [[isoperimetric-facts|isoperimetric facts]] settle regions.`,
       strategies: [
         String.raw`Complete the squares to put a conic in standard form, then read $a$, $b$ and $c$.`,
         String.raw`Use the focus property: sums for an ellipse, differences for a hyperbola, equal distances for a parabola.`,

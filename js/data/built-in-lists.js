@@ -15,14 +15,14 @@ window.MATH_BUILTIN_LISTS = [
 
   // ---- Study routes: contest tier x subject, complete ----
   { id: "route-amc-geometry", name: "AMC 10/12 Geometry", kind: "route", tier: "AMC", subject: "Geometry",
-    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 182 cards across 13 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 183 cards across 13 sections.",
     sections: [
       { title: "The Fundamentals",
         note: "The facts every other tool here is built on. When a geometry problem stalls, it is usually one of these you have not used yet.",
         ids: ["pythagorean-theorem", "special-right-triangles", "altitude-hypotenuse", "median-to-hypotenuse", "triangle-inequality", "triangle-type-by-sides", "integer-triangles-perimeter", "similar-figures-ratios", "midsegment-theorem", "intercept-theorem", "centroid-division", "cevian-area-ratio", "equilateral-triangle-facts", "15-75-90-triangle", "golden-ratio-pentagon", "inscribed-square", "isoperimetric-facts", "perpendicular-bisector-locus", "triangle-congruence", "parallel-exterior-angles", "triangle-similarity", "parallel-by-angle-sum", "clock-angle", "isosceles-triangle"] },
       { title: "Triangles: Sides, Areas & Radii",
         note: "The workhorses. Come here first when the figure hands you side lengths and wants another length or an area.",
-        ids: ["triangle-area-standard", "trig-area", "max-rectangle-in-triangle", "herons-formula", "inradius-area", "incenter-area-split", "circumradius-area", "right-triangle-inradius", "incircle-tangent-lengths", "incircle-excircle-touch", "shared-angle-area-ratio", "same-base-area-ratio", "law-of-sines", "law-of-cosines", "law-cosines-60-120", "law-of-cosines-special-triangles", "angle-bisector-theorem", "angle-bisector-length", "angle-bisector-circumcircle", "altitude-bisector-angle", "stewarts-theorem", "cevas-theorem", "apollonius-theorem", "median-triangle-area", "vivianis-theorem", "projection-formula", "triangle-13-14-15", "conway-circle"] },
+        ids: ["triangle-area-standard", "trig-area", "max-rectangle-in-triangle", "herons-formula", "inradius-area", "circumradius-area", "right-triangle-inradius", "incircle-tangent-lengths", "incircle-excircle-touch", "shared-angle-area-ratio", "same-base-area-ratio", "law-of-sines", "law-of-cosines", "law-cosines-60-120", "law-of-cosines-special-triangles", "angle-bisector-theorem", "angle-bisector-length", "angle-bisector-circumcircle", "altitude-bisector-angle", "stewarts-theorem", "cevas-theorem", "apollonius-theorem", "median-triangle-area", "vivianis-theorem", "projection-formula", "triangle-13-14-15", "conway-circle"] },
       { title: "Triangle Centers & Derived Triangles",
         note: "When the problem names a center, or builds a second triangle out of the first.",
         ids: ["triangle-center-angles", "medial-triangle"] },
@@ -40,7 +40,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["distance-midpoint", "line-forms", "angle-between-lines", "angle-bisectors-of-lines", "shoelace-formula", "picks-theorem", "point-line-distance", "circle-equation", "polar-coordinates", "british-flag-theorem", "ellipse-tangent-line", "section-formula", "reflection-coordinates", "reflection-composition", "rotation-90", "rotation-reflection-matrices", "rotation-center", "picks-theorem-general", "picks-with-holes", "parallel-lines-distance", "composing-transformations"] },
       { title: "Three Dimensions",
         note: "Mensuration of the named solids first, then analytic geometry in space for everything that is not one.",
-        ids: ["eulers-polyhedron-formula", "prism-pyramid-volumes", "sphere-formulas", "cone-formulas", "frustum-volume", "regular-tetrahedron", "regular-octahedron", "tetrahedron-centroid", "distance-3d", "space-diagonal", "cross-product-area", "plane-intercept-form", "vector-dot-product", "vector-projection", "cube", "dodecahedron-icosahedron"] },
+        ids: ["eulers-polyhedron-formula", "prism-pyramid-volumes", "sphere-formulas", "cone-formulas", "frustum-volume", "regular-tetrahedron", "regular-octahedron", "tetrahedron-centroid", "distance-3d", "space-diagonal", "cross-product-area", "plane-intercept-form", "vector-dot-product", "vector-projection", "cube", "dodecahedron-icosahedron", "cone-insphere"] },
       { title: "Angle & Configuration Chasing",
         note: "The default opening move: name the angles and see what the configuration forces.",
         ids: ["angle-chasing", "extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "shared-leg-pythagoras", "bisector-closer-region", "scale-one-level", "directed-lengths"] },
@@ -55,7 +55,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cavalieris-principle", "box-tetrahedron", "dihedral-angle", "fit-copies", "plane-cross-section", "cube-nets", "cube-stack-views"] },
       { title: "Configurations Worth Recognizing on Sight",
         note: "Whole problem shapes with an intended answer, not techniques.",
-        ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid", "rolling-without-slipping", "tethered-animal"] }
+        ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid", "rolling-without-slipping", "tethered-animal", "unfold-the-bounces"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
     blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 144 cards across 12 sections.",
@@ -129,11 +129,11 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cycle-hunting", "cryptarithms", "digit-manipulation", "calendar-problems", "quadratic-perfect-square", "palindromes"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
-    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 89 cards across 11 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 90 cards across 11 sections.",
     sections: [
       { title: "Counting Basics",
         note: "Arrangements, selections and distributions. Almost every harder count reduces to one of these.",
-        ids: ["permutations-combinations", "multiset-permutations", "circular-permutations", "grid-paths", "rectangles-in-grid", "handshakes-diagonals", "counting-functions", "subset-sum-facts", "stars-and-bars", "stars-bars-upper-bound", "balls-boxes-table", "organized-listing", "fencepost-counting", "counting-shapes", "inversions-adjacent-swaps", "complete-subset-sums"] },
+        ids: ["permutations-combinations", "multiset-permutations", "circular-permutations", "grid-paths", "rectangles-in-grid", "handshakes-diagonals", "counting-functions", "subset-sum-facts", "stars-and-bars", "stars-bars-upper-bound", "balls-boxes-table", "organized-listing", "fencepost-counting", "counting-shapes", "inversions-adjacent-swaps", "complete-subset-sums", "small-cases-pattern"] },
       { title: "Binomial Coefficients",
         note: "The identities worth knowing cold, since they turn a sum into a single coefficient.",
         ids: ["pascals-identity", "binomial-row-sums", "hockey-stick", "vandermonde", "committee-chair", "multinomial-theorem", "pascal-parity", "nested-subset-pairs", "squared-binomial-sum"] },
@@ -142,7 +142,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["complementary-counting", "symmetry-probability", "bijection-method", "pie", "inclusion-exclusion", "casework-method", "constructive-counting", "uniform-overcount", "grid-path-fill", "elimination-counting", "digit-occurrences"] },
       { title: "Recursion & States",
         note: "When the count for n depends on the count for smaller n.",
-        ids: ["states-recursion-prob", "recursive-counting", "derangements", "non-adjacent-selection", "catalan-numbers", "parking-functions", "moser-circle", "plane-regions", "restricted-sequences", "tiling-a-board", "simulate-the-process", "working-backwards", "walk-counting-dp"] },
+        ids: ["states-recursion-prob", "recursive-counting", "derangements", "non-adjacent-selection", "catalan-numbers", "parking-functions", "plane-regions", "restricted-sequences", "tiling-a-board", "simulate-the-process", "working-backwards", "walk-counting-dp"] },
       { title: "Symmetry & Group Counting",
         note: "Counting up to a symmetry, where naive counting overcounts by a factor you must compute.",
         ids: ["permutation-cycle-structure"] },
@@ -154,7 +154,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["expected-value", "tail-sum-expectation", "total-expectation", "expected-fixed-points", "variance-independence", "order-statistics"] },
       { title: "Existence Arguments",
         note: "Proving something must exist without constructing it.",
-        ids: ["pigeonhole", "odd-part-chains", "handshake-lemma", "invariants-coloring", "coloring-arguments", "pairing-to-bound", "subset-avoiding-relation"] },
+        ids: ["pigeonhole", "odd-part-chains", "handshake-lemma", "invariants-coloring", "coloring-arguments", "pairing-to-bound", "subset-avoiding-relation", "bound-and-construct"] },
       { title: "Graph Theory",
         note: "Vertices and edges, and the counting arguments specific to them.",
         ids: ["eulerian-paths", "graph-coloring", "disconnected-graph-edges"] },
@@ -410,7 +410,7 @@ window.MATH_BUILTIN_LISTS = [
     ] },
   // ---- Configurations: recurring shapes to recognize, not a syllabus ----
   { id: "config-geometry", name: "Geometry Configurations", kind: "configuration", subject: "Recognize",
-    blurb: "The configurations you actually meet. Recurring figures to recognize on sight \u2014 when a diagram matches one of these, the configuration usually supplies the missing step. 28 cards across 5 groups. The rarer named results moved to Deeper Configurations, so this list stays what its name promises.",
+    blurb: "The configurations you actually meet. Recurring figures to recognize on sight \u2014 when a diagram matches one of these, the configuration usually supplies the missing step. 29 cards across 5 groups. The rarer named results moved to Deeper Configurations, so this list stays what its name promises.",
     sections: [
       { title: "Circle Configurations",
         note: "A circle plus a point, a chord or a second circle. Most AIME circle problems are one of these wearing different letters.",
@@ -426,10 +426,10 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["ptolemys-theorem", "cyclic-perpendicular-diagonals", "varignons-theorem", "british-flag-theorem", "trapezoid-special-segments", "pitots-theorem"] },
       { title: "Move the Figure",
         note: "Configurations you recognize by transforming the picture rather than measuring it.",
-        ids: ["homothety-monge", "rotation-trick", "reflect-across-the-line"] }
+        ids: ["homothety-monge", "rotation-trick", "reflect-across-the-line", "unfold-the-bounces"] }
     ] },
   { id: "config-triangle-centers", name: "Triangle Center Properties", kind: "configuration", subject: "Recognize",
-    blurb: "What the centers DO, rather than how to find them. Every card here states a property of a triangle center or a relation between two of them — a distance, a ratio, a reflection, a concurrency — which is the form these facts actually arrive in on a contest. 35 cards across 6 groups. Definitions and the radius formulas live in the routes; this is the layer above them.",
+    blurb: "What the centers DO, rather than how to find them. Every card here states a property of a triangle center or a relation between two of them — a distance, a ratio, a reflection, a concurrency — which is the form these facts actually arrive in on a contest. 34 cards across 6 groups. Definitions and the radius formulas live in the routes; this is the layer above them.",
     sections: [
       { title: "The Euler Line & the Nine-Point Circle",
         note: "The spine of the subject: four centers on one line in a fixed ratio, and the circle that carries nine named points. Start here, because most relations between two centers are read off this picture.",
@@ -442,7 +442,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["orthocenter-properties", "triangle-center-angles", "orthic-triangle", "droz-farny"] },
       { title: "The Incenter & Excenter Family",
         note: "Four circles tangent to the same three lines, so everything here is a tangent length or a homothety. Fact 5 is the one that decides AIME problems.",
-        ids: ["incenter-excenter-lemma", "incircle-excircle-homothety", "incircle-excircle-touch", "incenter-area-split", "contact-triangle", "excentral-triangle", "gergonne-nagel-points", "feuerbach-theorem", "spieker-point", "perimeter-cleavers"] },
+        ids: ["incenter-excenter-lemma", "incircle-excircle-homothety", "incircle-excircle-touch", "contact-triangle", "excentral-triangle", "gergonne-nagel-points", "feuerbach-theorem", "spieker-point", "perimeter-cleavers"] },
       { title: "Symmedians & Conjugates",
         note: "Reflect a cevian in the angle bisector and you get its isogonal partner; do that to all three and they stay concurrent. This is where the named centers past the classical four come from.",
         ids: ["symmedian-lemoine", "lemoine-point", "harmonic-quadrilateral", "isogonal-conjugate", "isotomic-conjugate", "brocard-angle"] },
@@ -479,7 +479,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["shooting-lemma", "isogonal-line-lemma", "steiner-ratio-theorem", "humpty-queue-points", "dumpty-point"] },
     ] },
   { id: "config-area-toolkit", name: "Every Way to Find an Area", kind: "configuration", subject: "Recognize",
-    blurb: "Indexed by what the problem hands you rather than by what shape it is, because that is the order you actually need them in: you know what you have been given, and you are looking for the formula that eats it. 40 cards across 6 groups. If a figure's area is the unknown, the route to it is on this page.",
+    blurb: "Indexed by what the problem hands you rather than by what shape it is, because that is the order you actually need them in: you know what you have been given, and you are looking for the formula that eats it. 39 cards across 6 groups. If a figure's area is the unknown, the route to it is on this page.",
     sections: [
       { title: "From the Side Lengths Alone",
         note: "No angles, no height. Heron is the general answer and the one to reach for when a problem gives you three numbers and nothing else.",
@@ -495,7 +495,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["shoelace-formula", "picks-theorem", "picks-theorem-general", "picks-with-holes", "determinant-geometric", "cross-product-area"] },
       { title: "As a Ratio of Another Area",
         note: "Often you never need an absolute area at all. Two triangles on the same base, or a cevian cutting one, give a ratio immediately and the unknown cancels.",
-        ids: ["cevian-area-ratio", "same-base-area-ratio", "area-method", "rouths-theorem", "similar-figures-ratios", "median-triangle-area", "medial-triangle", "varignons-theorem", "incenter-area-split", "squares-on-triangle-flanks"] },
+        ids: ["cevian-area-ratio", "same-base-area-ratio", "area-method", "rouths-theorem", "similar-figures-ratios", "median-triangle-area", "medial-triangle", "varignons-theorem", "squares-on-triangle-flanks"] },
       { title: "Areas in Three Dimensions",
         note: "Surface areas, and the two tricks that turn a hard 3D area into an easy 2D one: project it and divide by a cosine, or slice it and compare cross-sections.",
         ids: ["projected-area-cosine", "cone-formulas", "sphere-formulas", "de-guas-theorem", "cavalieris-principle"] }
@@ -523,7 +523,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["chord-length", "common-chord-length", "equal-chords-arcs", "ptolemys-theorem", "law-of-cosines", "law-of-sines", "midsegment-theorem", "trapezoid-special-segments", "cotangent-rule"] }
     ] },
   { id: "config-solid-geometry", name: "The 3D Toolkit", kind: "configuration", subject: "Recognize",
-    blurb: "Solid geometry gathered into one place, because the library files it across three subsections and a handful of methods, and in a problem you need all of it at once. 31 cards across 5 groups, running from the volumes you memorize to the two moves that collapse a 3D problem into a 2D one.",
+    blurb: "Solid geometry gathered into one place, because the library files it across three subsections and a handful of methods, and in a problem you need all of it at once. 32 cards across 5 groups, running from the volumes you memorize to the two moves that collapse a 3D problem into a 2D one.",
     sections: [
       { title: "Volumes & Surface Areas",
         note: "The memorized layer. Everything else on this page assumes you can already get a volume once the solid is identified.",
@@ -539,7 +539,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cross-product-area", "vector-dot-product", "vector-projection", "projected-area-cosine", "plane-cross-section", "gram-determinant-volume"] },
       { title: "Collapsing 3D into 2D",
         note: "The two moves that make hard solids easy: take the right plane section and work inside it, or unfold the surface flat. Reach for these before coordinates.",
-        ids: ["cross-section-method", "cavalieris-principle", "unfold-the-surface", "painted-cubes", "spheres-two-planes"] }
+        ids: ["cross-section-method", "cavalieris-principle", "unfold-the-surface", "painted-cubes", "spheres-two-planes", "cone-insphere"] }
     ] },
   { id: "config-sums", name: "Sums Worth Recognizing", kind: "configuration", subject: "Recognize",
     blurb: "A sum you can name is a sum you can evaluate. These are the shapes worth spotting before reaching for algebra.",
@@ -689,7 +689,7 @@ window.MATH_BUILTIN_LISTS = [
     sections: [
       { title: "Counts With a Twist",
         note: "Answers that are not what the first guess suggests.",
-        ids: ["moser-circle", "derangements", "catalan-numbers", "complementary-counting", "plane-regions", "non-adjacent-selection"] },
+        ids: ["derangements", "catalan-numbers", "complementary-counting", "plane-regions", "non-adjacent-selection"] },
       { title: "Counting Up to Symmetry",
         note: "When rotations and reflections make two arrangements the same object.",
         ids: ["burnsides-lemma", "polya-enumeration", "necklace-formula", "cayleys-formula"] },
@@ -719,7 +719,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["wlog-symmetry"] },
     ] },
   { id: "core-geometry", name: "Geometry Core", kind: "core", subject: "Geometry",
-    blurb: "The 56 cards of geometry that matter most, whatever the contest. A first pass before the longer study routes: nothing here is rare.",
+    blurb: "The 58 cards of geometry that matter most, whatever the contest. A first pass before the longer study routes: nothing here is rare.",
     sections: [
       { title: "Advanced Triangle Theorems",
         note: "The high-importance cards here, easiest contests first.",
@@ -750,10 +750,10 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["polygon-angle-sums", "trapezoid-parallelogram-areas"] },
       { title: "Ratios & Constants to Memorize",
         note: "The high-importance cards here, easiest contests first.",
-        ids: ["equilateral-triangle-facts", "golden-ratio-pentagon"] },
+        ids: ["equilateral-triangle-facts", "golden-ratio-pentagon", "inscribed-square"] },
       { title: "Solid Geometry (3D)",
         note: "The high-importance cards here, easiest contests first.",
-        ids: ["cone-formulas", "prism-pyramid-volumes", "sphere-formulas"] },
+        ids: ["cone-formulas", "prism-pyramid-volumes", "sphere-formulas", "regular-tetrahedron"] },
       { title: "Tangent Circles & Chains",
         note: "The high-importance cards here, easiest contests first.",
         ids: ["tangent-circles"] },
@@ -774,7 +774,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cross-ratio"] },
     ] },
   { id: "core-algebra", name: "Algebra Core", kind: "core", subject: "Algebra",
-    blurb: "The 41 cards of algebra that matter most, whatever the contest. A first pass before the longer study routes: nothing here is rare.",
+    blurb: "The 43 cards of algebra that matter most, whatever the contest. A first pass before the longer study routes: nothing here is rare.",
     sections: [
       { title: "Algebra",
         note: "The high-importance cards here, easiest contests first.",
@@ -799,7 +799,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["quadratic-formula", "factor-remainder-theorem", "vietas-general", "vietas-quadratic", "polynomial-division"] },
       { title: "Rates, Work & Mixtures",
         note: "The high-importance cards here, easiest contests first.",
-        ids: ["relative-motion", "weighted-average"] },
+        ids: ["relative-motion", "weighted-average", "percent-change", "mean-median-mode"] },
       { title: "Sequences & Series",
         note: "The high-importance cards here, easiest contests first.",
         ids: ["arithmetic-series", "geometric-series"] },
@@ -811,7 +811,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["determinant-geometric", "determinant-basics"] },
     ] },
   { id: "core-number", name: "Number Theory Core", kind: "core", subject: "Number Theory",
-    blurb: "The 21 cards of number theory that matter most, whatever the contest. A first pass before the longer study routes: nothing here is rare.",
+    blurb: "The 22 cards of number theory that matter most, whatever the contest. A first pass before the longer study routes: nothing here is rare.",
     sections: [
       { title: "Bases, Digits & Decimals",
         note: "The high-importance cards here, easiest contests first.",
@@ -839,7 +839,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["squares-mod-small"] },
       { title: "Special Numbers & Sequences",
         note: "The high-importance cards here, easiest contests first.",
-        ids: ["lattice-points-gcd"] },
+        ids: ["lattice-points-gcd", "lattice-points-circle"] },
     ] },
   { id: "core-counting", name: "Counting & Probability Core", kind: "core", subject: "Counting & Probability",
     blurb: "The 24 cards of counting and probability that matter most, whatever the contest. A first pass before the longer study routes: nothing here is rare.",

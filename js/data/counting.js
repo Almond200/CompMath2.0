@@ -167,7 +167,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Count by element, not by set. Each of the $n$ elements lands in exactly one of three places — inside $A$ (so inside $B$ too), inside $B$ but outside $A$, or outside both — and the choices are independent, giving $3^n$. Summing over the size of $B$ instead gives $\sum_k \binom nk 2^k$, which is the Binomial Theorem at $x = 2$, so the two counts agree. The same argument extends: a chain $A_1 \subseteq A_2 \subseteq \cdots \subseteq A_m \subseteq S$ has $(m+1)^n$ choices, since each element picks the first set it enters, or none.`,
           keywords: ["nested subsets", "one subset inside another", "pairs of subsets", "3 to the n", "3^n subsets", "a subset of b", "choose two subsets one contained in the other", "chain of subsets", "sum of binomial times 2^k", "count by element"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -199,7 +199,7 @@ window.MATH_SECTIONS.push({
           latexPlain: String.raw`\binom{n}{0}^2 + \binom{n}{1}^2 + \binom{n}{2}^2 + \cdots + \binom{n}{n}^2 = \binom{2n}{n}`,
           description: String.raw`Split $2n$ objects into two halves of $n$ and choose $n$ of them: if $k$ come from the first half then $n-k$ come from the second, and $\binom{n}{k}\binom{n}{n-k} = \binom{n}{k}^2$. Summing over $k$ counts the same choices, so the squares add to the central binomial coefficient. It earns its own name because the answer is a single coefficient rather than a convolution, and because it counts the ways two people flipping $n$ coins each can get the same number of heads: of the $4^n$ equally likely outcomes, $\sum_k \binom{n}{k}^2 = \binom{2n}{n}$ match, so the probability is $\binom{2n}{n} / 4^n$.`,
           keywords: ["sum of squared binomial coefficients", "sum of squares of binomials", "binomial squares add to central", "2n choose n", "central binomial coefficient", "same number of heads", "two people flipping coins", "n choose k squared"],
-          importance: "medium",
+          importance: "low",
           tier: "AIME Early",
           level: ["AMC12", "AIME"]
         },
@@ -319,7 +319,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Maps from $[n] = \{1, \ldots, n\}$ onto $[k]$, counted by PIE over which outputs get missed; the count equals $k!\, S(n, k)$, with $S(n, k)$ the [[stirling-bell|Stirling number of the second kind]]. This is the "every box nonempty, distinct balls, distinct boxes" distribution count.`,
           keywords: ["onto", "surjective", "every box nonempty", "inclusion exclusion functions", "onto functions"],
           importance: "high",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -339,7 +339,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`$1, 1, 2, 5, 14, 42, 132, \dots$ Counts balanced parenthesizations, monotone lattice paths not crossing the diagonal, triangulations of an $(n{+}2)$-gon, and binary trees. Recurrence: $C_{n+1} = \sum C_i C_{n-i}$.`,
           keywords: ["catalan", "balanced parentheses", "dyck paths", "triangulations", "ballot"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -349,7 +349,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A parking function of length $n$ is a sequence $a_1, \ldots, a_n$ of numbers from $0$ to $n - 1$ whose sorted form $a_{(1)} \le a_{(2)} \le \cdots \le a_{(n)}$ has $a_{(i)} \le i - 1$ for every $i$; equivalently, for each $j$ at least $j$ of the terms are less than $j$. Their number is $\mathrm{PF}_n = (n+1)^{n-1}$. The name comes from $n$ cars on a one-way street of $n$ spots, each driving to its preferred spot and taking the first free one from there on: these are exactly the preference lists that let every car park. Pollak's proof bends the street into a circle of $n + 1$ spots.`,
           keywords: ["parking functions", "pollak circle", "cars parking", "preferred spot", "at least j less than j", "sorted sequence bound", "(n+1)^(n-1)"],
           importance: "lower",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
@@ -374,21 +374,11 @@ window.MATH_SECTIONS.push({
           level: ["Olympiad"]
         },
         {
-          id: "moser-circle",
-          name: "Moser's Circle (Regions from Chords)",
-          latex: String.raw`R(n) = \binom{n}{4} + \binom{n}{2} + 1 = 1,\ 2,\ 4,\ 8,\ 16,\ \mathbf{31},\ 57,\ \ldots`,
-          description: String.raw`The famous "powers of 2" trap. Put $n$ points on a circle and draw all $\binom n2$ chords (with no three crossing at one interior point); the number of regions is $\binom n4 + \binom n2 + 1$, not $2^{n-1}$. It agrees — $1, 2, 4, 8, 16$ — right up to $n = 5$, then breaks to $\mathbf{31}$ (not $32$) at $n = 6$. The count drops out of Euler's $V - E + F = 2$: each set of $4$ points gives one interior crossing ($\binom n4$ vertices). The perfect cautionary tale against extrapolating a pattern from five cases.`,
-          keywords: ["euler formula regions", "moser circle", "regions from chords", "points on a circle", "1 2 4 8 16 31", "not powers of two", "chord regions", "pattern trap"],
-          importance: "low",
-          tier: "AMC",
-          level: ["MATHCOUNTS", "AMC12", "AIME"]
-        },
-        {
           id: "plane-regions",
-          name: "Regions from Lines and Circles",
+          name: "Regions from Lines, Circles and Chords",
           latex: String.raw`R_{\text{lines}} = \frac{n^2 + n + 2}{2}, \qquad R_{\text{circles}} = n^2 - n + 2`,
-          description: String.raw`Maximum regions from $n$ lines (no two parallel, no three concurrent) or $n$ circles (each pair meeting twice). Incremental principle: a new line adds one region per crossing plus one, and a new circle that crosses the others at $k \gt 0$ points adds $k$ regions — which is also how region-counting problems with expected values decompose. Each new piece adds a region only when it splits one, so the rule needs the drawing so far to be connected: a piece joining two separate parts adds none (two disjoint unit circles centred at $(\pm2,0)$ make $3$ regions, and the line $y=0$, with $4$ crossings and $5$ pieces, brings them to $6$, not $8$). The maxima above are unaffected, since there every pair of curves crosses.`,
-          keywords: ["regions", "lazy caterer", "pancake", "lines divide plane", "circles divide plane"],
+          description: String.raw`Maximum regions from $n$ lines (no two parallel, no three concurrent) or $n$ circles (each pair meeting twice). Incremental principle: a new line adds one region per crossing plus one, and a new circle that crosses the others at $k \gt 0$ points adds $k$ regions — which is also how region-counting problems with expected values decompose. Each new piece adds a region only when it splits one, so the rule needs the drawing so far to be connected: a piece joining two separate parts adds none (two disjoint unit circles centred at $(\pm2,0)$ make $3$ regions, and the line $y=0$, with $4$ crossings and $5$ pieces, brings them to $6$, not $8$). The maxima above are unaffected, since there every pair of curves crosses. The same rule counts the regions cut from a disk by all the chords among $n$ points on its circle, no three chords meeting inside: $1 + \binom n2 + \binom n4$, one for the disk, one per chord and one per crossing. It runs $1, 2, 4, 8, 16$ and then $31$, not $32$.`,
+          keywords: ["regions", "lazy caterer", "pancake", "lines divide plane", "circles divide plane", "regions from chords", "moser circle", "points on a circle", "1 2 4 8 16 31", "not powers of two", "chord regions"],
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
@@ -449,7 +439,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The Hook Length Formula counts the ways to fill a Young diagram $\lambda$, a staircase of left-justified rows of $n$ cells with lengths that never increase going down, with $1, 2, \ldots, n$ so that numbers increase along every row and down every column. That count is $f^{\lambda}$. The hook $h(c)$ of a cell $c$ is the number of cells in its hook: the cell itself, the cells to its right, and the cells below it. For two rows of equal length it gives the [[catalan-numbers|Catalan numbers]].`,
           keywords: ["hook length formula", "young tableaux", "counting standard young tableaux", "young diagram", "hook lengths", "fill a staircase increasing rows and columns", "frame robinson thrall"],
           importance: "lower",
-          tier: "Olympiad",
+          tier: "AMC",
           level: ["Olympiad"]
         },
         {
@@ -481,7 +471,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Burnside's Lemma counts objects up to symmetry: the number of distinct colorings, when colorings related by a rotation or reflection count as the same, is the average, over the group $G$ of symmetries, of the number $|\mathrm{Fix}(g)|$ of colorings left unchanged by each symmetry $g$. A coloring is unchanged by a symmetry exactly when each cycle of positions the symmetry moves around is a single color, so with $k$ colors a symmetry with $c$ cycles fixes $k^c$ colorings. For the faces of a cube with $k$ colors this gives $\frac{k^6 + 3k^4 + 12k^3 + 8k^2}{24}$.`,
           keywords: ["burnside", "symmetry", "orbits", "colorings", "rotations", "necklace", "counting colorings up to symmetry"],
           importance: "high",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -502,7 +492,7 @@ window.MATH_SECTIONS.push({
           latexPlain: String.raw`x(x+1)(x+2)\cdots(x+n-1) = \begin{bmatrix} n \\ 1 \end{bmatrix} x + \begin{bmatrix} n \\ 2 \end{bmatrix} x^2 + \cdots + \begin{bmatrix} n \\ n \end{bmatrix} x^n`,
           description: String.raw`$\begin{bmatrix} n \\ k \end{bmatrix}$ counts permutations of $n$ elements with exactly $k$ cycles; recurrence $\begin{bmatrix} n \\ k \end{bmatrix} = (n-1)\begin{bmatrix} n-1 \\ k \end{bmatrix} + \begin{bmatrix} n-1 \\ k-1 \end{bmatrix}$. Probability a random permutation is one big cycle: $\frac{1}{n}$.`,
           keywords: ["cycles", "permutation cycle count", "rising factorial", "stirling numbers of the first kind", "unsigned stirling"],
-          importance: "lowest",
+          importance: "lower",
           tier: "Olympiad",
           level: ["AIME", "Olympiad"]
         },
@@ -559,7 +549,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`In Nim (several piles; a move removes any positive number from one pile; last move wins) the position is a loss for the player to move exactly when the binary XOR ("Nim-sum") of the pile sizes is $0$; otherwise you can always move to make it $0$. Sprague–Grundy extends this to every finite impartial game under normal play (the last player to move wins, and play always ends): each position gets a Grundy value $g = \operatorname{mex}$ of its options' values (the smallest nonnegative integer not among them), a position is losing iff $g = 0$, and a sum of independent such games, where each move is made in one component, has Grundy value the XOR of the parts — so any such collection plays exactly like a single Nim heap. It does not cover games that can loop, misère play (last move loses) or games of chance.`,
           keywords: ["nim", "sprague grundy", "grundy value", "mex minimum excludant", "xor nim sum", "impartial game", "game theory", "combinatorial game"],
           importance: "lower",
-          tier: "Olympiad",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         }
       ]
@@ -645,7 +635,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`In Pólya's urn, a ball is drawn at random and returned with one more ball of its colour, so a colour that is drawn becomes more likely to be drawn again. Every order of the same draws has the same probability, which reduces the urn to counting orders. Starting from one red and one blue ball, after $n$ draws every number of red draws from $0$ to $n$ is equally likely, with probability $\frac{1}{n + 1}$. From $r$ red and $b$ blue the general count is the formula shown, built from rising products.`,
           keywords: ["polya urn", "pólya's urn", "add a ball of the same color", "rich get richer", "reinforcement", "urn with replacement and addition", "every split equally likely", "beta binomial", "exchangeable draws"],
           importance: "low",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME", "Olympiad"]
         },
         {
@@ -706,7 +696,7 @@ window.MATH_SECTIONS.push({
           latexPlain: String.raw`G_X(s) = E[s^X] = P(X=0) + P(X=1)\,s + P(X=2)\,s^2 + \cdots, \qquad E[X] = G_X'(1), \quad \operatorname{Var}(X) = G_X''(1) + G_X'(1) - G_X'(1)^2, \qquad G_{X+Y} = G_X G_Y`,
           description: String.raw`Package a nonnegative-integer distribution into a power series $G_X(s) = E[s^X]$. Derivatives at $s=1$ read off the moments ($G'(1) = E[X]$, and $G''(1) = E[X(X-1)]$ gives the variance), and independent sums multiply their PGFs — so a sum of dice or coins has PGF a product, and its distribution is one polynomial expansion. The coefficient of $s^k$ recovers $P(X=k)$.`,
           keywords: ["probability generating function", "pgf", "expected value derivative", "variance from pgf", "sum of independent", "moment"],
-          importance: "lowest",
+          importance: "lower",
           tier: "Olympiad",
           level: ["AIME", "Olympiad"]
         }
@@ -755,7 +745,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`E[\#\text{fixed points}] = 1, \qquad P(\text{exactly } k) = \frac{\binom{n}{k} D_{n-k}}{n!}`,
           description: String.raw`Linearity with indicators: each position is fixed with probability $\frac{1}{n}$, so the expectation is exactly 1 for every $n$. The exact distribution uses derangement numbers $D_{n-k}$.`,
           keywords: ["fixed points", "matching hats", "indicator", "derangement distribution"],
-          importance: "medium",
+          importance: "low",
           tier: "AIME Early",
           level: ["AMC12", "AIME"]
         },
@@ -879,7 +869,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`e \le 3v - 6 \quad (v \ge 3), \qquad e \le 2v - 4 \ \text{ (triangle-free / bipartite)}`,
           description: String.raw`A corollary of [[eulers-polyhedron-formula|Euler's Formula]] $v - e + f = 2$: each face of a simple planar graph is bounded by $\ge 3$ edges and each edge borders $2$ faces, so $2e \ge 3f$; substituting bounds the edges. It is the fast non-planarity test: $K_5$ has $v=5, e=10 > 3(5)-6 = 9$, and $K_{3,3}$ (triangle-free) has $e = 9 > 2(6)-4 = 8$, so neither can be drawn without crossings.`,
           keywords: ["planar graph", "edge bound", "euler formula corollary", "non-planar", "k5 k33", "3v-6", "faces edges"],
-          importance: "medium",
+          importance: "low",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
         },
@@ -899,7 +889,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`G \text{ bipartite} \implies \nu(G) = \tau(G) \qquad \nu = \text{largest matching},\ \tau = \text{smallest vertex cover}`,
           description: String.raw`In bipartite graphs the largest set of independent edges equals the smallest set of vertices touching every edge, a min-max duality that is the dual of [[halls-marriage|Hall's Theorem]] and a special case of max-flow/min-cut. Its complement form (Kőnig–Egerváry): the maximum independent set equals $n$ minus the maximum matching. It is the go-to tool for covering and packing problems on grids and bipartite structures, for example the fewest lines covering all the rooks or marked cells of a board.`,
           keywords: ["konig theorem", "max matching min vertex cover", "bipartite duality", "egervary", "cover marked cells", "lines covering board"],
-          importance: "medium",
+          importance: "low",
           tier: "Olympiad",
           level: ["Olympiad"]
         },
@@ -920,7 +910,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The chromatic number $\chi(G)$ is the fewest colors for a proper vertex coloring. The greedy bound $\chi \le \Delta + 1$, with $\Delta$ the largest degree (order the vertices, color each with the least free color) is tight, for a connected graph, only for complete graphs and odd cycles (Brooks' theorem rules out equality otherwise; a triangle plus an isolated vertex shows why connected is needed). Two colors suffice exactly when there's no odd cycle (bipartite), and every planar graph is $4$-colorable (the Four Color Theorem).`,
           keywords: ["graph coloring", "chromatic number", "greedy bound delta plus one", "bipartite two color", "odd cycle", "four color theorem", "brooks"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AMC12", "AIME", "Olympiad"]
         },
         {

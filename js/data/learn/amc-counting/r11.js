@@ -467,7 +467,10 @@ window.MATH_BOOK_INDEX["amc-counting"] = [
       "pascal grid",
       "delannoy",
       "diagonal steps",
-      "walk on a grid"
+      "walk on a grid",
+      "paths along the arrows",
+      "one-way network",
+      "routes through a diagram"
     ]
   },
   {

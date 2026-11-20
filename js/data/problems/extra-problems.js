@@ -183,7 +183,7 @@
     { q: String.raw`Find the Zeckendorf representation of $2024$.`,
       s: String.raw`Greedily subtract the largest Fibonacci $\le$ the remainder: $2024=1597+377+34+13+3$ ($F_{16}+F_{13}+F_{8}+F_{6}+F_{3}$) — no two consecutive.` }
   );
-  add("moser-circle",
+  add("plane-regions",
     { q: String.raw`Six points on a circle are joined by all chords (no three meeting inside). How many interior intersection points and chord pieces are there, and how do they give the $31$ regions?`,
       s: String.raw`Interior crossings: $\binom64=15$. The $\binom62=15$ chords are cut into $15+2\cdot15=45$ pieces. With the $6$ boundary arcs, Euler's $V-E+F=2$ ($V=6+15=21$, $E=45+6=51$) gives $F=32$ — the $31$ interior regions plus the outer face.` }
   );
@@ -432,7 +432,7 @@
     { q: String.raw`For which positive integers $x$ is the triangle with sides $x$, $x + 1$, $x + 2$ acute?`,
       s: String.raw`It is a triangle when $x + (x + 1) \gt x + 2$, that is $x \ge 2$. It is acute when $(x + 2)^2 \lt x^2 + (x + 1)^2$, which simplifies to $x^2 - 2x - 3 \gt 0$, $(x - 3)(x + 1) \gt 0$, so $x \gt 3$. So $x \ge 4$; $x = 3$ gives the right triangle $3, 4, 5$ and $x = 2$ the obtuse $2, 3, 4$.` }
   );
-  add("incenter-area-split",
+  add("inradius-area",
     { q: String.raw`In the right triangle with $BC = 5$, $CA = 12$, $AB = 13$, find the areas of $BIC$, $CIA$ and $AIB$, where $I$ is the incenter.`,
       s: String.raw`The area is $30$ and the perimeter $30$, so each piece is its side's share of $30$: $[BIC] = 5$, $[CIA] = 12$, $[AIB] = 13$. The inradius is $\tfrac{30}{15} = 2$, and indeed $\tfrac12\cdot5\cdot2 = 5$.` },
     { q: String.raw`A point $P$ inside triangle $ABC$ has $[PBC] : [PCA] : [PAB] = a : b : c$, the ratio of the opposite sides. Prove that $P$ is the incenter.`,
@@ -961,7 +961,7 @@
     { q: String.raw`In how many orders of $6$ votes for $A$ and $2$ for $B$ is $A$ strictly ahead after every vote?`,
       s: String.raw`There are $\binom82 = 28$ orders, and the fraction with $A$ always ahead is $\tfrac{6 - 2}{8} = \tfrac12$, so $14$ orders. (Listing them confirms it: the first two votes must go to $A$, and so on.)` }
   );
-  add("moser-circle",
+  add("plane-regions",
     { q: String.raw`The region counts for $1$ to $5$ points on a circle are $1, 2, 4, 8, 16$, which suggests powers of $2$. Using the formula, how many regions do $8$ points give, and how far off is the guess?`,
       s: String.raw`$R(8) = \binom84 + \binom82 + 1 = 70 + 28 + 1 = 99$, while the guess says $2^7 = 128$. The formula is a polynomial of degree $4$ in $n$, so it falls far behind any doubling.` }
   );

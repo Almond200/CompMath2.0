@@ -188,7 +188,7 @@ For generators $(2,0)$, $(0,1)$ and $(-3,4)$, the lengths are two, one and five,
       related: [
         { card: "permutations-combinations", note: String.raw`the choices behind every count of segments and triangles (R1.4).` },
         { card: "pie", note: String.raw`removing shapes that do not fit, or overlaps (R3.5).` },
-        { card: "moser-circle", note: String.raw`regions inside a circle cut by its chords (S10.6).` }
+        { card: "plane-regions", note: String.raw`regions inside a circle cut by its chords (S10.6).` }
       ],
       exercises: [
         { q: String.raw`What is the largest number of regions into which $5$ lines can cut the plane?`, answer: "16",

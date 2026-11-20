@@ -18,7 +18,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The four classical templates, with $c$ a constant: additive → linear, additive-to-multiplicative → exponential, multiplicative-to-additive → logarithmic, multiplicative → power (each assuming continuity, monotonicity, or boundedness — contest problems always supply enough regularity). Recognizing the template usually solves the problem outright.`,
           keywords: ["cauchy equation", "additive", "multiplicative", "exponential form", "standard solutions"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -58,7 +58,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Newton's Sums express the power sums $p_k = \sum r_i^k$ of a polynomial's roots in terms of the elementary symmetric functions $e_1, e_2, \ldots$, which the coefficients supply. Each power sum is built from the earlier ones and one more coefficient, the third rung being $p_3 = e_1p_2 - e_2p_1 + 3e_3$, so any power sum of the roots can be found without finding the roots.`,
           keywords: ["power sums", "sum of squares of roots", "sum of cubes of roots", "symmetric"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -67,7 +67,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`f \text{ symmetric} \implies f = g(e_1, \ldots, e_n) \text{ for a unique polynomial } g`,
           description: String.raw`The Fundamental Theorem of Symmetric Polynomials says that every polynomial in $x_1, \ldots, x_n$ that is unchanged by every permutation of the variables can be written, in exactly one way, as a polynomial in the elementary symmetric polynomials $e_1 = x_1 + \cdots + x_n$, $e_2$, the sum of all products of two, and so on up to $e_n = x_1 \cdots x_n$. Integer coefficients stay integer. Combined with [[vietas-general|Vieta's Formulas]], it means any symmetric expression in a polynomial's roots can be computed from the coefficients.`,
           keywords: ["symmetric polynomial", "elementary symmetric", "e1 e2 e3", "symmetric functions of roots", "express in terms of sum and product"],
-          importance: "medium",
+          importance: "low",
           tier: "AIME Late",
           level: ["AMC12", "AIME", "Olympiad"]
         },
@@ -121,7 +121,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The Chinese Remainder Theorem for Polynomials says that the remainders of a polynomial modulo coprime polynomials determine its remainder modulo their product, just as the [[crt|Chinese Remainder Theorem]] does for integers. Its everyday form needs no long division: the remainder modulo a product $(x - a)(x - b)$ is the line through $(a, P(a))$ and $(b, P(b))$, because each value is itself a remainder by the [[factor-remainder-theorem|Remainder Theorem]].`,
           keywords: ["polynomial crt", "chinese remainder theorem for polynomials", "remainder mod a quadratic", "remainder when divided by (x-a)(x-b)", "coprime polynomials", "remainder by a product", "remainder mod a product of factors"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME", "Olympiad"]
         },
         {
@@ -182,7 +182,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Count sign changes between consecutive nonzero coefficients: the number of positive real roots equals that count or falls short of it by an even number. For negative roots, apply the same rule to $P(-x)$.`,
           keywords: ["sign changes", "positive roots", "negative roots", "real roots count"],
           importance: "low",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -191,7 +191,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`t^3 + pt + q = 0 \;\Rightarrow\; t = \sqrt[3]{-\tfrac{q}{2} + \sqrt{\tfrac{q^2}{4} + \tfrac{p^3}{27}}} + \sqrt[3]{-\tfrac{q}{2} - \sqrt{\tfrac{q^2}{4} + \tfrac{p^3}{27}}}, \qquad \Delta = -4p^3 - 27q^2`,
           description: String.raw`Any cubic is first depressed: $ax^3 + bx^2 + cx + d = 0$ becomes $t^3 + pt + q = 0$ under $x = t - \frac{b}{3a}$. Cardano's formula then gives a real root as a sum of two cube roots, and the discriminant $\Delta$ decides the shape. It is the fallback when no nice root exists.`,
           keywords: ["cardano formula", "cubic formula", "depressed cubic", "solve cubic", "discriminant cubic", "cube roots"],
-          importance: "lowest",
+          importance: "lower",
           tier: "Olympiad",
           level: ["Olympiad"]
         },
@@ -253,7 +253,7 @@ window.MATH_SECTIONS.push({
           latexPlain: String.raw`\operatorname{Res}(f, g) = a_m^{\,n} b_n^{\,m} (\alpha_1 - \beta_1)(\alpha_1 - \beta_2)\cdots(\alpha_m - \beta_n), \qquad \Delta_f = \frac{(-1)^{n(n-1)/2}}{a_n}\operatorname{Res}(f, f') = a_n^{2n-2}(r_1 - r_2)^2(r_1 - r_3)^2\cdots(r_{n-1} - r_n)^2`,
           description: String.raw`For $f$ of degree $m$ with leading coefficient $a_m$ and roots $\alpha_i$, and $g$ of degree $n$ with leading coefficient $b_n$ and roots $\beta_j$, the resultant $\operatorname{Res}(f,g)$ (the determinant of the Sylvester matrix) vanishes exactly when $f$ and $g$ share a root — so setting it to $0$ eliminates a variable from two polynomial equations. The discriminant of $f$ of degree $n$ with roots $r_i$ is the resultant of $f$ with its derivative $f'$ (up to a constant): $\Delta_f = 0$ iff $f$ has a repeated root, and its sign counts real vs. complex roots. Generalizes the familiar $b^2-4ac$ (degree 2) and the cubic discriminant to any degree, and is the clean way to state tangency/double-root conditions.`,
           keywords: ["resultant", "discriminant", "repeated root", "double root", "common root", "eliminate variable", "sylvester matrix", "product of differences", "tangency condition"],
-          importance: "lowest",
+          importance: "lower",
           tier: "Olympiad",
           level: ["Olympiad"]
         }
@@ -306,7 +306,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`One number attached to a square array. The $3 \times 3$ expansion above is Sarrus's rule, three downward diagonals minus three upward ones, and it does not extend to larger sizes. The properties carry the weight: swapping two rows flips the sign, adding a multiple of one row to another changes nothing, scaling a row scales the determinant, and $\det(AB) = \det A \cdot \det B$. A determinant is zero exactly when the rows are dependent, which is the form most contest uses take.`,
           keywords: ["determinant", "2x2 determinant", "3x3 determinant", "sarrus rule", "ad minus bc", "row operations on a determinant", "determinant zero dependent rows", "det AB", "leibniz formula", "permutation expansion"],
           importance: "high",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -316,7 +316,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A $2 \times 2$ determinant is the signed area of the parallelogram spanned by its rows, and a $3 \times 3$ one is the signed volume of the parallelepiped; the sign records orientation. Three points are therefore collinear exactly when that determinant vanishes, and four points are coplanar under the same test one dimension up. The same number says what a linear map does to area: every region's area is multiplied by $\lvert \det \rvert$.`,
           keywords: ["determinant area", "signed area", "collinearity test", "coplanarity test", "parallelepiped volume", "orientation sign", "area scale factor of a linear map", "cross product determinant"],
           importance: "high",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -337,7 +337,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Solves a square linear system one unknown at a time, without eliminating the others, which is what makes it worth knowing when a problem asks for a single variable out of three. The condition $\det A \ne 0$ is the whole solvability story: nonzero gives exactly one solution, while zero gives either none or infinitely many, and which of the two depends on whether $\mathbf{b}$ is consistent with the dependent rows.`,
           keywords: ["cramers rule", "solve a linear system", "unique solution", "determinant nonzero", "one variable at a time", "no solution or infinitely many", "square system", "consistency"],
           importance: "medium",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -357,7 +357,7 @@ window.MATH_SECTIONS.push({
           latexPlain: String.raw`A\mathbf{v} = \lambda \mathbf{v} \iff \det(A - \lambda I) = 0, \qquad \lambda_1 + \lambda_2 + \cdots + \lambda_n = \operatorname{tr} A, \qquad \lambda_1\lambda_2\cdots\lambda_n = \det A`,
           description: String.raw`An eigenvector is a direction the matrix only stretches, and $\lambda$ is the stretch factor; they exist exactly where $A - \lambda I$ is singular, which is the characteristic polynomial. Its coefficients are visible without solving it: the roots sum to the trace and multiply to the determinant. Since $A^n$ has eigenvalues $\lambda_i^n$ on the same eigenvectors, this is how a matrix power turns into a closed form and how a [[transfer-matrix-method|transfer matrix]] produces its [[linear-recurrence|linear recurrence]].`,
           keywords: ["eigenvalue", "eigenvector", "characteristic polynomial", "det A minus lambda I", "trace equals sum of eigenvalues", "diagonalization", "matrix power closed form", "spectrum", "trace of AB equals trace of BA", "AB - BA"],
-          importance: "lowest",
+          importance: "lower",
           tier: "Olympiad",
           level: ["Olympiad"]
         },
@@ -466,7 +466,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The product of two sums of two squares is itself a sum of two squares, the norm-multiplicativity of complex numbers $|zw| = |z||w|$ in disguise.`,
           keywords: ["sum of two squares", "product", "norms", "complex"],
           importance: "lower",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -497,7 +497,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Two "won't factor... wait, yes it does" identities. The first is a disguised [[difference-of-squares|difference of squares]]: $(a^2+b^2)^2 - (ab)^2$ — the $x^4+x^2+1$ family. The second pairs with the [[pairwise-sum-product|product of pairwise sums]], which writes $(a+b)(b+c)(c+a)$ through the symmetric sums, so together they convert between products and symmetric sums.`,
           keywords: ["x4 x2 1", "hidden difference of squares", "cube of sum minus cubes", "product of pairwise sums", "weird factorizations"],
           importance: "medium",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -537,7 +537,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`With $t = x + \frac{1}{x}$, every symmetric power $s_n = x^n + \frac{1}{x^n}$ is a polynomial in $t$ from the recurrence $s_n = t\,s_{n-1} - s_{n-2}$ (with $s_0 = 2,\; s_1 = t$): $s_2 = t^2 - 2$, $s_3 = t^3 - 3t$, $s_4 = t^4 - 4t^2 + 2$. The identical recurrence produces $2\cos n\theta$ from $2\cos\theta$ and $a^n + b^n$ whenever $ab = 1$.`,
           keywords: ["x plus 1 over x", "reciprocal power", "recurrence", "chebyshev", "x^n + 1/x^n", "symmetric power"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         }
       ]
@@ -660,7 +660,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Newton's Binomial Theorem for any real exponent $\alpha$ (valid for $|x| \lt 1$). The special case $\alpha = -k$ is what makes [[generating-function-method|generating functions]] usable: $\frac{1}{(1-x)^k}$ expands with the stars-and-bars coefficients $\binom{n+k-1}{k-1}$, so a product of such factors reads off a convolution count. The cases $k = 1$ ($\frac{1}{1-x} = \sum x^n$) and $k = 2$ ($\frac{1}{(1-x)^2} = \sum (n+1) x^n$) are the ones to know cold.`,
           keywords: ["generalized binomial", "negative binomial series", "newton binomial", "generating function expansion", "stars and bars coefficients", "1/(1-x)^k", "power series"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -731,7 +731,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Pairing two sorted sequences in the same order maximizes the sum of products; opposite order minimizes it. [[chebyshev-sum-inequality|Chebyshev's Sum Inequality]] follows.`,
           keywords: ["sorted", "pairing", "maximize product sum", "chebyshev"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -865,7 +865,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The triangle inequality for the $p$-norm: the norm of a sum is at most the sum of the norms. The case $p = 2$ (right) is literally $|\vec u| + |\vec v| \ge |\vec u + \vec v|$ — add the vectors tip to tail — and is the algebraic form of the reflection / shortest-path trick: a sum $\sum \sqrt{x_i^2 + y_i^2}$ is minimized by making the pieces collinear, giving $\sqrt{(\sum x_i)^2 + (\sum y_i)^2}$.`,
           keywords: ["minkowski inequality", "triangle inequality norm", "sum of square roots", "vector length", "shortest path algebraic", "reflection minimize"],
           importance: "lower",
-          tier: "Olympiad",
+          tier: "AIME Late",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -1043,11 +1043,11 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "reduction-identities",
-          name: "Cofunction, Sign & Periodicity Identities",
-          latex: String.raw`\sin(90^\circ - \theta) = \cos\theta, \qquad \cos(90^\circ - \theta) = \sin\theta, \qquad \sin(-\theta) = -\sin\theta, \qquad \cos(-\theta) = \cos\theta, \qquad \sin(180^\circ - \theta) = \sin\theta, \qquad \cos(180^\circ - \theta) = -\cos\theta`,
-          description: String.raw`Cofunctions swap sin/cos across complementary angles (likewise tan/cot, sec/csc). $\sin$ and $\tan$ are odd, $\cos$ is even. Supplementary angles keep $\sin$ but flip $\cos$ (and $\tan$). Periods: $\sin, \cos$ repeat every $360^\circ$, $\tan$ every $180^\circ$ — so any angle reduces to a first-quadrant reference angle plus a sign.`,
-          keywords: ["cofunction", "negative angle", "odd even", "supplementary angle", "periodicity", "reference angle", "reduction identities"],
-          importance: "low",
+          name: "Reduction Formulas (Cofunction, Sign & Periodicity)",
+          latex: String.raw`\sin(90^\circ \pm \theta) = \cos\theta, \quad \cos(90^\circ \pm \theta) = \mp\sin\theta, \qquad \sin(180^\circ \pm \theta) = \mp\sin\theta, \quad \cos(180^\circ \pm \theta) = -\cos\theta`,
+          description: String.raw`The reduction (or induction) formulas rewrite a function of $k \cdot 90^\circ \pm \theta$ as a function of $\theta$. An odd multiple of $90^\circ$ swaps the function ($\sin \leftrightarrow \cos$, $\tan \leftrightarrow \cot$, $\sec \leftrightarrow \csc$); an even multiple keeps it; and the sign is the sign the original function has at that angle when $\theta$ is acute. Sine and tangent are odd, cosine is even, sine and cosine repeat every $360^\circ$ and tangent every $180^\circ$, so every angle reduces to a first-quadrant reference angle and a sign.`,
+          keywords: ["cofunction", "negative angle", "odd even", "supplementary angle", "periodicity", "reference angle", "reduction identities", "reduction formulas", "induction formulas", "sin of 180 plus theta", "cos of 90 plus theta", "quadrant sign rule"],
+          importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12"]
         },
@@ -1128,7 +1128,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The triple angle formulas give the sine, cosine, and tangent of $3\theta$ as polynomials in the sine, cosine, or tangent of $\theta$. Each comes from writing $3\theta = 2\theta + \theta$ and applying the angle addition and double angle formulas, and the cosine form is the reason that a cubic of the shape $4x^3 - 3x = c$ can be solved with a cosine. The sine form also factors into a product of three sines $60^\circ$ apart, a product with a card of its own.`,
           keywords: ["triple angle", "sin 3x", "cos 3x", "triple angle formula", "sin 3 theta", "cos 3 theta"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -1160,7 +1160,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Repeatedly apply $\sin 2x = 2\sin x \cos x$ from the inside out: each doubling absorbs one cosine. It is the standard weapon for products of cosines at doubling angles.`,
           keywords: ["cosine product", "doubling angles", "sin 2x telescoping", "product of cosines"],
           importance: "lower",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -1170,7 +1170,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Read right-to-left: a term $\arctan\frac{a-b}{1+ab}$ splits into a difference, so sums of arctangents telescope. Trigger: denominators like $1 + n(n+1)$, i.e. $n^2 + n + 1$. The formula needs $ab > -1$; when $ab < -1$ the true difference is off by $\pi$.`,
           keywords: ["arctan sum", "telescoping arctangent", "inverse tangent", "tan difference"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -1233,7 +1233,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The reflection/complement identities plus the ranges that trip people up: $\arcsin$ returns values in $[-\tfrac\pi2, \tfrac\pi2]$, $\arctan$ in the open interval $(-\tfrac\pi2, \tfrac\pi2)$, which excludes both endpoints, and $\arccos$ in $[0, \pi]$. So $\arctan x + \arctan\frac1x$ is $+\tfrac\pi2$ for $x>0$ but $-\tfrac\pi2$ for $x\lt 0$, and the arctan addition formula needs a $\pm\pi$ correction once $xy > 1$ pushes the true sum outside the principal range. Getting the branch right is the whole game.`,
           keywords: ["inverse trig", "arcsin arccos", "arctan identity", "principal value range", "arctan addition branch", "complementary angles"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         }
       ]
@@ -1344,7 +1344,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\bar x = \frac{x_1 + \cdots + x_n}{n}, \qquad \text{median} = \text{middle value}, \qquad \text{range} = \max - \min`,
           description: String.raw`The mean, median, mode, and range are the four basic numbers that summarize a list. The mean is the sum divided by the count, the median is the middle value once the list is sorted, the mode is the most frequent value, and the range is the largest value minus the smallest. They respond differently to changes: moving one value changes the mean but often not the median.`,
           keywords: ["mean", "median", "mode", "range", "average", "statistics", "middle value", "most frequent value", "outlier", "data set"],
-          importance: "low",
+          importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
@@ -1354,7 +1354,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{new} = \text{old} \cdot \left(1 + \tfrac{p}{100}\right), \qquad \left(1 + \tfrac{p}{100}\right)\left(1 + \tfrac{q}{100}\right), \qquad A = P(1 + r)^n`,
           description: String.raw`A change of $p$ percent multiplies a quantity by $1 + \frac{p}{100}$, so percent changes combine by multiplying, not by adding. Raising by $x\%$ and then lowering by $x\%$ leaves a net loss of $\frac{x^2}{100}$ percent, and repeated growth at a rate $r$ per period gives compound growth: a starting amount $P$ becomes $A$ after $n$ periods, with two successive changes of $p$ and $q$ percent multiplying as the box shows.`,
           keywords: ["percent", "percent change", "percent increase", "percent decrease", "successive percent changes", "compound interest", "simple interest", "discount", "markup", "growth rate"],
-          importance: "low",
+          importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },

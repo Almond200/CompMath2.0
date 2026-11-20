@@ -276,7 +276,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A hexagon with all six angles $120^\circ$ need not be regular: its sides $a, b, c, d, e, f$ in order satisfy only $a - d = e - b = c - f$. Extending sides $b$, $d$, and $f$ until they meet gives an equilateral triangle of side $a + b + c$, and the three corners cut off are equilateral of sides $a$, $c$, and $e$ — subtract them and the area follows.`,
           keywords: ["equiangular hexagon", "all angles 120 degrees", "hexagon area", "corner triangles cut off", "extend alternate sides"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AMC12", "AIME", "Olympiad"]
         },
         {
@@ -491,18 +491,8 @@ window.MATH_SECTIONS.push({
           name: "Inradius Formula",
           latex: String.raw`A = rs`,
           description: String.raw`The inradius $r$ of a triangle is the radius of its inscribed circle, the one circle inside the triangle tangent to all three sides, and the triangle's area is the inradius times the semiperimeter $s = \frac{a + b + c}{2}$ of the sides $a$, $b$, $c$. The same formula holds for any polygon that has an inscribed circle, with $s$ half its perimeter: the segments from the center to the vertices cut the polygon into triangles of height $r$, one on each side.`,
-          keywords: ["inradius", "incircle", "semiperimeter", "inscribed circle", "circle tangent to all three sides", "area"],
+          keywords: ["inradius", "incircle", "semiperimeter", "inscribed circle", "circle tangent to all three sides", "area", "incenter area split", "join incenter to vertices", "areas a : b : c"],
           importance: "high",
-          tier: "AMC",
-          level: ["AMC10", "AMC12", "AIME"]
-        },
-        {
-          id: "incenter-area-split",
-          name: "Incenter Splits the Area by the Sides",
-          latex: String.raw`[BIC] : [CIA] : [AIB] = a : b : c, \qquad [BIC] = \frac{a}{a+b+c}\,[ABC]`,
-          description: String.raw`Join the incenter $I$ to the vertices and $\triangle ABC$ splits into three triangles $BIC$, $CIA$, $AIB$, each with its own side of $ABC$ as a base and the inradius $r$ as its height. So their areas are in the ratio of those sides, $a$, $b$, $c$, and each is its side's share of the perimeter times the whole area. Summing them recovers $[ABC] = rs$, and the same weights give the incenter's [[barycentric-coordinates|barycentric coordinates]] $(a : b : c)$.`,
-          keywords: ["incenter area split", "join incenter to vertices", "three triangles proportional to sides", "areas a : b : c", "side fraction of perimeter", "area equals rs", "incenter barycentric a b c", "BIC CIA AIB"],
-          importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
         },
@@ -603,7 +593,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The excircle opposite $A$ touches side $a$ and the extensions of the other two sides; its radius $r_a$ satisfies $K = r_a(s-a)$, mirroring $K = rs$, where $K$ is the area, $s$ the semiperimeter, $r$ the inradius and $R$ the circumradius. The tangent length from $A$ to its excircle is exactly $s$. Also $r_a = s\tan\frac{A}{2}$ while $r = (s-a)\tan\frac{A}{2}$, and the three exradii sum to $r_a + r_b + r_c = 4R + r$. Dividing those two tangent expressions gives $\frac{r}{r_a} = \frac{s-a}{s}$, which is the ratio of the homothety at $A$ carrying the incircle to the $A$-excircle.`,
           keywords: ["excircle", "exradius", "exradius formula", "exradii", "s minus a", "escribed circle", "tangent length s", "ra", "r_a + r_b + r_c = 4R + r", "sum of exradii"],
           importance: "medium",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -739,7 +729,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Menelaus' Theorem says that a line meeting the lines $BC$, $CA$, $AB$ of triangle $ABC$ at $D$, $E$, $F$ satisfies $\frac{AF}{FB} \cdot \frac{BD}{DC} \cdot \frac{CE}{EA} = 1$ with unsigned lengths, or $-1$ with directed ones. The converse needs the directed form: an unsigned product of $1$ proves collinearity only when one or all three of the points lie on extensions of the sides (the three midpoints give $1$ and are not collinear). It is the collinearity partner of [[cevas-theorem|Ceva's Theorem]], which has the same product for concurrent cevians.`,
           keywords: ["transversal", "collinear", "directed segments", "menelaus theorem", "transversal ratio product", "collinearity test"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -759,7 +749,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The three medians of any triangle are themselves the sides of a triangle, and the original triangle's area is $\frac43$ of that median triangle's area. The median triangle's area comes from [[herons-formula|Heron's Formula]].`,
           keywords: ["medians form triangle", "area from medians", "four thirds", "triangle formed by the medians", "area of the median triangle", "three quarters area"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -769,7 +759,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Routh's Theorem gives the area of the triangle formed by three cevians $AD$, $BE$, $CF$ of $\triangle ABC$ in terms of the ratios in which they cut the sides, $x = \frac{DC}{BD}$, $y = \frac{EA}{CE}$, $z = \frac{FB}{AF}$, all taken in the same direction around the triangle. For the cevians that cut each side in the ratio $2 : 1$ the inner triangle is $\frac17$ of $\triangle ABC$.`,
           keywords: ["cevian triangle", "one seventh", "area ratio", "routh"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -859,7 +849,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Each side is the sum of the projections of the other two onto it — drop the altitude from a vertex and read off the two pieces of the opposite side. Cheap and often overlooked, it sits right next to the Law of Cosines (adding the three, or eliminating cosines, recovers it) and instantly relates a side to the adjacent angles.`,
           keywords: ["projection formula", "a = b cos C + c cos B", "side as projections", "foot of altitude", "law of cosines neighbor"],
           importance: "medium",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -888,7 +878,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`AB \perp CD \iff AC^2 - AD^2 = BC^2 - BD^2, \qquad AC \perp BD \iff AB^2 + CD^2 = BC^2 + DA^2`,
           description: String.raw`Perpendicularity can be tested with lengths alone. For four points $A, B, C, D$ with $A \ne B$ and $C \ne D$, the lines $AB$ and $CD$ are perpendicular exactly when $AC^2 - AD^2 = BC^2 - BD^2$: the difference of the squared distances from $A$ to the two points $C$ and $D$ equals the same difference from $B$. Applied to a quadrilateral $ABCD$ it says the diagonals are perpendicular exactly when the squares of one pair of opposite sides add up to the squares of the other pair. It holds in the plane and in space, and it is the step that turns "these two lines are perpendicular" into an equation that can be added, subtracted, and chained.`,
           keywords: ["perpendicularity lemma", "perpendicular by lengths", "AC^2 - AD^2 = BC^2 - BD^2", "perpendicular diagonals", "sum of squares of opposite sides", "difference of squared distances", "orthodiagonal quadrilateral", "perpendicular lines test"],
-          importance: "medium",
+          importance: "low",
           tier: "Olympiad",
           level: ["Olympiad"]
         },
@@ -925,7 +915,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The midpoint $M$ of arc $BC$ (not containing $A$) is equidistant from $B$, $C$, the incenter $I$, and the $A$-excenter $I_A$ — so $B, C, I, I_A$ lie on a circle centered at $M$, of radius $2R\sin\frac A2$ with $R$ the circumradius. Proof: angle chase shows $\angle MBI = \angle MIB = \frac{A+B}{2}$. Also $AI = \frac{r}{\sin(A/2)}$, with $r$ the inradius, and $A$, $I$, $M$ are collinear (the bisector passes through the arc midpoint).`,
           keywords: ["incenter excenter", "fact 5", "arc midpoint", "equidistant", "bisector through arc midpoint", "AI = r / sin(A/2)", "distance from incenter to vertex", "B C I I_A concyclic"],
           importance: "high",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -945,7 +935,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Two cevians $AD$ and $AE$ of triangle $ABC$, with $D$ and $E$ on side $BC$, are isogonal when each is the reflection of the other in the bisector of angle $A$, that is, when $\angle BAD = \angle EAC$. Steiner's theorem says that the two ratios in which they cut $BC$ multiply to the square of the ratio of the adjacent sides, $\frac{BD}{DC} \cdot \frac{BE}{EC} = \frac{AB^2}{AC^2}$, and the converse holds: two points of side $BC$ whose ratios multiply to $\frac{AB^2}{AC^2}$ are the feet of isogonal cevians. It is the [[ratio-lemma|Ratio Lemma]] applied to both cevians at once, where the sines cancel because the two cevians cut the angle at $A$ into the same two pieces in opposite order.`,
           keywords: ["steiner ratio theorem", "steiner theorem isogonal", "isogonal cevians", "product of ratios on the opposite side", "BD/DC times BE/EC", "square of the side ratio", "isogonal feet", "reflection in the angle bisector"],
           importance: "low",
-          tier: "Olympiad",
+          tier: "AIME Late",
           level: ["Olympiad"]
         },
         {
@@ -985,7 +975,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A circle $\omega$ inside a circle $\Gamma$ touches $\Gamma$ at $T$ and touches a chord $BC$ of $\Gamma$ at $D$. Let $M$ be the midpoint of the arc $BC$ on the other side of $BC$ from $\omega$, the arc that does not contain $T$. The lemma "shoots" a line from $T$ through $D$ and says it hits $\Gamma$ exactly at $M$; the power of $M$ with respect to $\omega$ then equals $MB^2$, the same for every circle tangent to $BC$ and to $\Gamma$ on that side. It is the step behind the [[sawayama-thebault|Sawayama–Thébault Theorem]] and many problems about circles inscribed in a circular segment.`,
           keywords: ["shooting lemma", "circle tangent to a chord and the circumcircle", "line TD through the arc midpoint", "MD times MT equals MB squared", "homothety at the tangency point", "circle in a circular segment", "arc midpoint power", "tangent circle and chord"],
           importance: "low",
-          tier: "Olympiad",
+          tier: "AIME Early",
           level: ["Olympiad"]
         },
         {
@@ -995,7 +985,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Take one point on each side line of a triangle $ABC$: $D$ on $BC$, $E$ on $CA$, $F$ on $AB$, anywhere on the lines, inside the sides or beyond them. Draw the perpendicular to each side line at its point. The three perpendiculars pass through a single point if and only if $BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2 = 0$. The sum goes once around the triangle, and each term is the difference of the squares of the two pieces that a point cuts its side into. It turns "three lines meet" into one equation in lengths, which is why the perpendicular bisectors, the altitudes, and the perpendiculars at the incircle's touch points are all seen to concur at once. It is a different theorem from the one about distances from the circumcenter that shares the name.`,
           keywords: ["carnot perpendicularity", "concurrent perpendiculars", "perpendiculars to the sides concur", "alternating sum of squares", "BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2", "perpendiculars from points on the sides", "carnot concurrency criterion", "perpendicular concurrency criterion"],
           importance: "low",
-          tier: "Olympiad",
+          tier: "AIME Late",
           level: ["Olympiad"]
         }
       ]
@@ -1031,7 +1021,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The triangle formed by the three altitude feet, equivalently the pedal triangle of the orthocenter $H$; $R$ is the circumradius of $ABC$. In an acute triangle its angles are $\pi-2A,\ \pi-2B,\ \pi-2C$, its sides are $a\cos A,\ b\cos B,\ c\cos C$, and $H$ is its incenter, so the altitudes of $ABC$ bisect its angles.`,
           keywords: ["orthic triangle", "feet of altitudes", "pedal of orthocenter", "fagnano problem", "minimum perimeter inscribed triangle", "nine point circle", "antiparallel sides", "H is incenter of orthic", "angles pi - 2A", "orthic perimeter", "a cos A + b cos B + c cos C", "2[ABC]/R", "4R sin A sin B sin C", "orthic area 2 cos A cos B cos C", "reflection of orthocenter on circumcircle"],
           importance: "medium",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -1050,7 +1040,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{tangent lengths } s-a,\, s-b,\, s-c, \qquad \text{angles } 90^\circ - \tfrac A2, \ 90^\circ - \tfrac B2, \ 90^\circ - \tfrac C2, \qquad [\text{contact}] = \frac{r}{2R}\,[ABC]`,
           description: String.raw`The contact (intouch) triangle has the three incircle touch points as vertices; $s$ is the semiperimeter, $r$ the inradius and $R$ the circumradius of $ABC$. The tangent length from each vertex of $ABC$ is $s-a$, $s-b$, or $s-c$, the triangle is inscribed in the incircle so its circumradius is $r$, its angles are $90^\circ - \frac A2$, $90^\circ - \frac B2$, $90^\circ - \frac C2$, and its area is $\frac{r}{2R}[ABC]$. The segments from each vertex of $ABC$ to the opposite touch point concur at the [[gergonne-nagel-points|Gergonne point]].`,
           keywords: ["contact triangle", "intouch triangle", "incircle touch points", "tangent lengths s minus a", "gergonne point", "extouch triangle", "nagel point", "inscribed in incircle", "contact triangle area", "angles pi/2 - A/2"],
-          importance: "medium",
+          importance: "low",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
         },
@@ -1116,7 +1106,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`OH \parallel BC \iff \tan B \tan C = 3 \iff \cos A = 2\cos B\cos C, \qquad \text{acute } \triangle: \ OH \parallel BC \iff AH = 2\,HD`,
           description: String.raw`The [[euler-line-ratio|Euler line]] $OH$ runs parallel to $BC$ exactly when $O$ and $H$ stand at the same signed height above that side, the side of $A$ counted positive. The heights are $R\cos A$ and $2R\cos B\cos C$, so the condition is $\cos A = 2\cos B\cos C$, that is $\tan B \tan C = 3$, and it forces an acute triangle (an obtuse angle makes the product negative or less than $1$). In an acute triangle both centers are inside, and the condition reads $HD = \frac{1}{2}AH$, with $D$ the foot of the altitude from $A$: the orthocenter cuts the $A$-altitude $2 : 1$ from the vertex, and in general $AH : HD = (\tan B \tan C - 1) : 1$. With unsigned lengths $AH = 2\,HD$ alone is not enough: $A = (0, \sqrt2)$, $B = (1, 0)$, $C = (2, 0)$ has $AH = 2\sqrt2 = 2\,HD$, an obtuse angle at $B$, and $OH$ not parallel to $BC$.`,
           keywords: ["euler line parallel to a side", "OH parallel to BC", "euler line parallel to the base", "tan B tan C = 3", "orthocenter two thirds down the altitude", "cos A = 2 cos B cos C", "AH = 2 HD"],
-          importance: "medium",
+          importance: "low",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
         },
@@ -1207,7 +1197,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The orthocenter $H$ of a triangle, where its altitudes meet, has two reflections that land on the circumcircle: its reflection over a side, and its reflection over the midpoint of a side, which is the point opposite the far vertex. From these come the standard distances, with $R$ the circumradius and $O$ the circumcenter: $AH = 2R\cos A$, twice the distance $R\cos A$ from $O$ to side $BC$. The first reflection also shows that the circle through $H$, $B$, and $C$ is the mirror image of the circumcircle, with the same radius.`,
           keywords: ["orthocenter", "reflection over side", "2R cos A", "antipode", "circumcircle image", "distance from circumcenter to side", "R cos A", "AH = 2R cos A", "reflection of H over midpoint is antipode"],
           importance: "high",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -1267,7 +1257,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`For any point $P$ and centroid $G$: the sum of squared distances to the vertices splits into a point-dependent part ($3PG^2$) and a triangle constant ($\sum GA^2 = \frac{1}{3}\sum a^2$). Immediate corollary: the centroid minimizes $PA^2 + PB^2 + PC^2$.`,
           keywords: ["sum of squared distances", "centroid minimizes", "leibniz", "point mass", "GA^2 + GB^2 + GC^2 = (a^2+b^2+c^2)/3", "squared distances from centroid to vertices"],
           importance: "lower",
-          tier: "Olympiad",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -1463,7 +1453,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Three points $A$, $B$, $C$ on a circle make a "broken chord", the path $A \to B \to C$, here with $AB \lt BC$. Let $M$ be the midpoint of the arc $AC$ that contains $B$, and $F$ the foot of the perpendicular from $M$ to the longer piece $BC$. Then $F$ cuts the broken chord in half: the path from $A$ through $B$ to $F$ is as long as $FC$. It turns a sum of two chords into a single segment, which is how it computes $BF = \frac{BC - AB}{2}$ and lengths from the arc midpoint.`,
           keywords: ["archimedes broken chord", "broken chord theorem", "foot from the arc midpoint", "bisects the broken chord", "AB plus BF equals FC", "midpoint of arc ABC", "perpendicular from arc midpoint to the longer chord", "two chords from one point"],
           importance: "lower",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -1493,7 +1483,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`For two circles $\omega_1$ and $\omega_2$ with different centers $O_1$ and $O_2$, the difference $f(P)$ of the [[power-of-a-point|powers of a point]] $P$ with respect to them is a linear function of $P$, although each power on its own is quadratic. Its zero set is the [[radical-axis|radical axis]] $\ell$, and it is proportional to the signed distance $d(P, \ell)$, positive on the side of $O_2$, with the factor $2\,O_1O_2$. Being linear, $f$ takes the weighted average of its values at a weighted average of points, such as the point $tX + (1 - t)Y$ of the segment $XY$. That turns many statements about two circles into statements about one straight line.`,
           keywords: ["linearity of power of a point", "difference of powers is linear", "power difference", "linear function of the point", "distance to the radical axis", "weighted average of powers", "coaxal circles", "pencil of circles"],
           importance: "low",
-          tier: "Olympiad",
+          tier: "AIME Late",
           level: ["Olympiad"]
         },
         {
@@ -1568,8 +1558,8 @@ window.MATH_SECTIONS.push({
           latex: String.raw`[\text{arbelos}] = \tfrac{\pi}{4}\,BD^2, \qquad BD = 2\sqrt{ab}, \qquad r_{\text{twin}} = \frac{ab}{a+b}`,
           description: String.raw`Put $B$ on a segment $AC$, and let $a$ and $b$ be the radii of the two small semicircles, on the diameters $AB = 2a$ and $BC = 2b$. Cut them out of the semicircle on $AC$, all on the same side. The leftover region's area is exactly that of the circle whose diameter is $BD$, where $D$ is the point of the big semicircle straight above $B$, and Archimedes' two circles squeezed against that perpendicular, one in each lobe, turn out to have the same radius $\frac{ab}{a+b}$.`,
           keywords: ["arbelos", "shoemaker's knife", "Archimedes twin circles", "semicircles", "three semicircles", "twin circles equal radii"],
-          importance: "lowest",
-          tier: "AIME Late",
+          importance: "lower",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -1579,7 +1569,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A circle tangent to both sides of an angle has its center on the bisector, at distance $d = r/\sin\theta$ from the vertex, where $2\theta$ is the angle; the $k$-th circle of a chain has radius $r_k$ and center distance $d_k$. Chaining tangent circles into the corner therefore multiplies the radius by a fixed factor each step, so the radii form a geometric progression. The last relation is the flat case: three mutually tangent circles all touching one line, with $r_3$ the small one in the gap between the circles of radii $r_1$ and $r_2$.`,
           keywords: ["inscribed in an angle", "tangent to two lines", "sangaku", "chain of tangent circles", "geometric progression of radii", "corner circles", "circles in a wedge"],
           importance: "lower",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -1675,7 +1665,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Four ways to prove four points lie on one circle, all equivalences rather than one-way implications, and all written here for $ABCD$ taken in order around the circle. Supplementary opposite angles is the usual one. Equal angles subtending the same segment works when no quadrilateral is drawn — but only for vertices on the same side of that segment; from opposite sides the angles come out supplementary instead, which is the same statement wearing a disguise. With $P$ the point where the diagonals cross, the [[power-of-a-point|power of a point]] converse turns the whole thing into one length equation; the same test works from an external point, where two secants give $PA \cdot PB = PC \cdot PD$. [[ptolemys-inequality|Ptolemy]] is the metric test: $AC \cdot BD \le AB \cdot CD + BC \cdot AD$ always, with equality exactly when the four points are concyclic in that order. A fifth, for a point against a triangle: $P$ lies on the circumcircle of $ABC$ precisely when the feet of the perpendiculars from $P$ to the three sides are collinear.`,
           keywords: ["prove four points are concyclic", "concyclicity test", "cyclic quadrilateral test", "show points lie on a circle", "power of a point converse", "ptolemy equality test", "simson line test", "same segment equal angles", "opposite angles supplementary", "is it cyclic"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -1724,7 +1714,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{triangle: } d^2 = R^2 - 2Rr, \qquad \text{quadrilateral: } \frac{1}{(R-d)^2} + \frac{1}{(R+d)^2} = \frac{1}{r^2}`,
           description: String.raw`A polygon inscribed in one circle and circumscribed about another is bicentric, and that is a strong condition on the two circles alone: with $R$ and $r$ the radii of the outer and inner circles and $d$ the distance between their centers, a triangle forces Euler's relation and a quadrilateral forces Fuss's. Poncelet's closure theorem is the striking part — if even one such $n$-gon exists for a given pair of circles, then every point of the outer circle is a vertex of one, so the polygon can be rotated continuously and will still close up.`,
           keywords: ["bicentric polygon", "poncelet closure", "poncelet porism", "chapple theorem", "fuss theorem", "inscribed and circumscribed circles", "closes for every starting point", "d squared equals R squared minus 2Rr"],
-          importance: "lowest",
+          importance: "lower",
           tier: "Olympiad",
           level: ["Olympiad"]
         },
@@ -1735,7 +1725,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A quadrilateral is tangential (has an inscribed circle) if and only if the sums of opposite sides are equal.`,
           keywords: ["tangential", "inscribed circle", "opposite sides equal", "pitot theorem", "tangential quadrilateral", "sums of opposite sides equal"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -1755,7 +1745,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`For a point $P$ on arc $BC$ of the circumcircle of an equilateral triangle $ABC$, the distance to the far vertex $A$ equals the sum of the distances to the near vertices $B$ and $C$. It turns two distances into the third, and its converse places a point on the circumcircle as soon as one of its three distances is the sum of the other two, which then gives a $120^\circ$ angle at $P$.`,
           keywords: ["equilateral", "circumcircle point", "distance sum", "pompeiu", "van schooten", "longest distance is the sum of the other two"],
           importance: "lower",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -1901,7 +1891,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`d = \frac{\lvert c_1 - c_2\rvert}{\sqrt{a^2 + b^2}} \quad \text{for } ax + by + c_1 = 0 \text{ and } ax + by + c_2 = 0`,
           description: String.raw`Two parallel lines stay the same distance apart everywhere, so the distance between them is the length of any segment that joins them at right angles, and it can be read straight from their equations. Written with the same coefficients of $x$ and $y$, $ax + by + c_1 = 0$ and $ax + by + c_2 = 0$ are parallel and the distance is $\frac{\lvert c_1 - c_2\rvert}{\sqrt{a^2 + b^2}}$. The step that matters is matching the coefficients first, since an equation multiplied through by a constant describes the same line with a different constant term. Planes work the same way with one more term under the root, and lines that are not parallel meet, so their distance is $0$.`,
           keywords: ["distance between parallel lines", "parallel lines", "distance between two lines", "parallel planes", "strip width", "common perpendicular", "distance between lines"],
-          importance: "lower",
+          importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12"]
         },
@@ -1998,7 +1988,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Take two points $A$ and $B$ on an ellipse or hyperbola centered at $O$ with $OA \perp OB$. The sum of the reciprocal squares of the two radii does not depend on where the right angle is turned: it is $\frac1{a^2} + \frac1{b^2}$ for the ellipse and $\frac1{a^2} - \frac1{b^2}$ for the hyperbola. So the chord $AB$ always stays the same distance from the center, tangent to one fixed circle, and one radius growing forces the other down toward a limit.`,
           keywords: ["perpendicular radii", "perpendicular diameters of an ellipse", "reciprocal squares of radii", "rhombus inscribed in a hyperbola", "polar equation of a conic", "chord tangent to a fixed circle", "orthogonal radii"],
           importance: "lower",
-          tier: "AIME Late",
+          tier: "AIME Early",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -2028,7 +2018,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The sign of $B^2 - 4AC$ decides the type, and it survives both rotation and translation, so you can classify without putting the curve into standard form. A nonzero $B$ only means the axes are tilted, and rotating by $\theta$ with $\cot 2\theta = \frac{A - C}{B}$ removes it. Each case has degenerate members, where the plane cuts the cone through its apex: a point or nothing at all, one line or a pair of parallel lines, and two crossing lines respectively.`,
           keywords: ["classify a conic", "B squared minus 4AC", "discriminant of a conic", "xy term", "rotate the axes", "degenerate conic", "pair of lines", "second degree equation"],
           importance: "medium",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -2104,7 +2094,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`$R_\theta$ turns the plane about the origin and $F_\alpha$ reflects it in the line through the origin at angle $\alpha$; both send a point to a matrix times its coordinate column. Their determinants tell them apart, $+1$ for a rotation and $-1$ for a reflection, and composing is just multiplying, so $R_\alpha R_\beta = R_{\alpha+\beta}$ and $F_\beta F_\alpha = R_{2(\beta-\alpha)}$. Matrices about other centers are the same maps conjugated by a translation.`,
           keywords: ["rotation matrix", "reflection matrix", "cos sin matrix", "composing rotations", "two reflections make a rotation", "determinant plus or minus one", "orthogonal matrix", "transformation in coordinates"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -2124,7 +2114,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Two reflections never leave another reflection behind. When the mirrors $\ell_1$ and $\ell_2$ meet at angle $\theta$ the composite is a rotation through $2\theta$ about their intersection; when they are parallel at distance $d$ it is a translation by $2d$ across them. Order matters, since swapping the mirrors reverses the turn.`,
           keywords: ["composition of reflections", "two reflections make a rotation", "rotation by twice the angle", "double reflection", "composing isometries", "reflect then reflect", "mirror pair"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -2164,7 +2154,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`When a line $\ell$ is rotated by an angle $\theta$ about any center $O$, its image $\ell'$ crosses $\ell$ at the angle $\theta$, taken modulo $180^\circ$, wherever the center is. Read backward, it measures a rotation: the angle between any segment and its image is the angle of the rotation, so a rotation that sends one side of a figure to a known direction is pinned down by that direction alone.`,
           keywords: ["angle between a line and its image", "rotation angle from a line", "rotated line crosses at the rotation angle", "image of a line under rotation", "directions turn by the rotation angle", "rotating a segment"],
           importance: "low",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -2189,8 +2179,8 @@ window.MATH_SECTIONS.push({
           latex: String.raw`A_r = A + Pr + \pi r^2, \qquad V_r = V + Sr + \tfrac{\pi}{4}Lr^2 + \tfrac43\pi r^3 \ \ \text{(box)}`,
           description: String.raw`The points within distance $r$ of a convex region with area $A$ and perimeter $P$ cover the area $A_r = A + Pr + \pi r^2$: the band along the boundary adds perimeter times $r$, and the corner pieces fit together into one full disk. In space, the points within $r$ of a box with volume $V$, surface area $S$ and total edge length $L$ fill $V + Sr + \frac{\pi}{4}Lr^2 + \frac43\pi r^3$, from slabs on the faces, quarter-cylinders along the edges and eighth-spheres at the corners.`,
           keywords: ["steiner formula", "points within distance", "neighborhood of a region", "parallel region", "within one unit", "offset region", "rounded rectangle", "minkowski sum with a disk", "union of disks"],
-          importance: "lower",
-          tier: "AIME Early",
+          importance: "high",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -2290,6 +2280,16 @@ window.MATH_SECTIONS.push({
           level: ["AIME"]
         },
         {
+          id: "cone-insphere",
+          name: "Largest Sphere in a Cone",
+          latex: String.raw`r_{\text{sphere}} = r_{\triangle PAB} = \frac{[PAB]}{s}, \qquad \text{right cone: } r = \frac{Rh}{R + \ell}`,
+          description: String.raw`The largest sphere inside a cone with a circular base, right or oblique, has as a great circle the incircle of the triangle $PAB$ cut from the cone by the plane through the vertex $P$ perpendicular to the base and through its center; $A$ and $B$ are the ends of the base diameter in that plane. So its radius is that triangle's inradius, area over semiperimeter. For a right cone with base radius $R$, height $h$ and slant height $\ell$ this is $\frac{Rh}{R + \ell}$.`,
+          keywords: ["sphere inscribed in a cone", "largest sphere in a cone", "oblique cone", "slanted cone", "insphere", "axial cross section", "incircle of the cross section", "sphere in a frustum"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["AMC12", "AIME"]
+        },
+        {
           id: "descartes-sphere-theorem",
           name: "Soddy–Gosset Theorem (3D Descartes)",
           latex: String.raw`(k_1 + k_2 + k_3 + k_4 + k_5)^2 = 3\left(k_1^2 + k_2^2 + k_3^2 + k_4^2 + k_5^2\right)`,
@@ -2355,7 +2355,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`h = \frac{s\sqrt{6}}{3}, \qquad V = \frac{s^3\sqrt{2}}{12}, \qquad SA = s^2\sqrt{3}`,
           description: String.raw`A regular tetrahedron has four equilateral faces and six equal edges $s$. Its height is $\frac{s\sqrt6}{3}$, its volume is $\frac{s^3\sqrt2}{12}$, and its surface area is $s^2\sqrt3$. The center is a quarter of the way up from each face, so the circumradius $\frac{s\sqrt6}{4}$ is three times the inradius $\frac{s\sqrt6}{12}$, and the dihedral angle is $\arccos\frac13 \approx 70.5^\circ$. Most of this comes from one picture: the alternate vertices of a cube of edge $e$ are a regular tetrahedron of edge $e\sqrt2$.`,
           keywords: ["tetrahedron", "regular tetrahedron", "platonic", "volume", "height", "circumradius", "dihedral angle", "inradius", "R = 3r", "dihedral arccos 1/3", "tetrahedron in a cube", "opposite edges perpendicular", "four equal spheres"],
-          importance: "low",
+          importance: "high",
           tier: "AMC",
           level: ["AMC12", "AIME"]
         },
@@ -2416,7 +2416,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The insphere of a polyhedron is a sphere tangent to every face, and its radius $r$ comes from the volume $V$ and the total surface area $S$: cutting the solid into pyramids from the center, one on each face, each of height $r$, gives the volume as a third of $r$ times the area. The formula holds whenever some point is the same [[point-plane-distance|distance from every face]], which is how problems usually phrase it. It is the three-dimensional twin of $r = \frac As$ for the incircle of a triangle.`,
           keywords: ["inscribed sphere", "insphere", "3v over s", "distance to faces", "isosceles tetrahedron"],
           importance: "medium",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -2482,7 +2482,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The intercept form is the equation of the plane that meets the coordinate axes at $(a, 0, 0)$, $(0, b, 0)$, and $(0, 0, c)$, for nonzero intercepts $a$, $b$, $c$. Clearing denominators gives the standard form, with normal vector $(bc, ca, ab)$. It is the quickest way to write a cutting plane, and the tetrahedron it cuts from the first octant has volume $\frac{abc}{6}$.`,
           keywords: ["plane from three intercepts", "intercept form of a plane", "equation of a plane", "x/a + y/b + z/c = 1", "normal vector of a plane", "tetrahedron cut from octant", "plane through three points on the axes"],
           importance: "medium",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -2492,7 +2492,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The distance from a point $(x_0, y_0, z_0)$ to the plane $ax + by + cz + d_0 = 0$ is $\frac{|ax_0 + by_0 + cz_0 + d_0|}{\sqrt{a^2 + b^2 + c^2}}$, the length of the perpendicular from the point to the plane, with $(a, b, c)$ the plane's normal vector. When the plane is a face of a solid, the distance is also the height of a pyramid, $\frac{3V}{A}$ for a pyramid of volume $V$ on that face of area $A$, which is often faster than finding the plane's equation.`,
           keywords: ["distance to plane", "normal vector", "3d distance", "plane equation", "solid geometry"],
           importance: "high",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -2502,7 +2502,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Splits $\vec u$ into the part along $\vec v$ and the part perpendicular to it, with $\theta$ the angle between the two vectors, and the perpendicular leftover $\vec u - \operatorname{proj}_{\vec v}\vec u$ is the shortest vector from the line to the tip of $\vec u$. That second reading is what makes it a distance tool: the [[point-line-distance|distance from a point to a line]] or a plane is the length of exactly this leftover. The scalar $\vec u \cdot \vec v / \lvert\vec v\rvert$ is the signed shadow length, negative when the angle is obtuse.`,
           keywords: ["vector projection", "component along a vector", "perpendicular component", "shadow of a vector", "scalar projection", "distance from a point to a line", "orthogonal decomposition", "u dot v over v"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -2512,7 +2512,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`For lines through $P_1, P_2$ with direction vectors $\vec{d_1}, \vec{d_2}$: project the connecting vector onto the common perpendicular direction $\vec{d_1} \times \vec{d_2}$. Equivalent volume route: a tetrahedron with edge $AB$ on one line and edge $CD$ on the other, the lines meeting at angle $\theta$, has $V = \frac16 \cdot AB \cdot CD \cdot d \sin\theta$, so $d = \frac{6V}{AB \cdot CD \cdot \sin\theta}$.`,
           keywords: ["skew lines", "common perpendicular", "cross product distance", "3d lines"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -2522,7 +2522,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`For $\vec u = (u_1, u_2)$ and $\vec v = (v_1, v_2)$ meeting at the angle $\theta$, it measures alignment: positive for an acute angle, exactly $0$ when $\vec{u} \perp \vec{v}$, negative for obtuse. Gives the angle via $\cos\theta = \frac{\vec{u} \cdot \vec{v}}{|\vec{u}||\vec{v}|}$ and the scalar projection of $\vec{u}$ onto $\vec{v}$ as $\frac{\vec{u} \cdot \vec{v}}{|\vec{v}|}$.`,
           keywords: ["dot product", "scalar product", "angle between vectors", "perpendicular zero", "projection"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         }
       ]
@@ -2567,7 +2567,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`x = \frac{ah}{a + h}`,
           description: String.raw`Side $x$ of the square sitting on the base $a$ of a triangle with height $h$ to that base, when the foot of that height lies on the base (neither base angle obtuse; the longest side always qualifies). Proof: the small triangle above the square is similar to the whole, $\frac{h - x}{h} = \frac{x}{a}$.`,
           keywords: ["square in triangle", "inscribed square", "similar triangles", "square inscribed in a triangle", "largest inscribed square", "square inside a triangle"],
-          importance: "low",
+          importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
@@ -2643,7 +2643,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`f(z) = \frac{az + b}{cz + d}, \quad ad - bc \ne 0 \qquad \text{cross-ratio and the family of lines-and-circles are preserved}`,
           description: String.raw`The maps of the extended complex plane built from one fraction. Every one is a composition of translations, rotations, scalings, and the single inversion $z \mapsto \frac1z$, which is why the whole family sends lines and circles to lines and circles, treating a line as a circle through $\infty$. They preserve angles and the [[cross-ratio|cross-ratio]], three points can be sent to any other three in exactly one way, and $c = 0$ recovers the affine maps $z \mapsto \alpha z + \beta$.`,
           keywords: ["mobius transformation", "möbius", "linear fractional transformation", "(az+b)/(cz+d)", "extended complex plane", "circles to circles", "conformal", "cross ratio preserved", "three points determine it", "riemann sphere", "inversion as a map"],
-          importance: "lowest",
+          importance: "lower",
           tier: "Olympiad",
           level: ["Olympiad"]
         },
@@ -2664,7 +2664,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The cross-ratio of four collinear points is the single number preserved by every projection and perspectivity — the fundamental invariant of projective geometry. It is also unchanged when the four points are replaced by four concurrent lines (angular cross-ratio), is preserved by inversion, and is the same for four concyclic points seen from any fifth point of the circle. Since projection destroys lengths and angles but never the cross-ratio, chasing points through several projections reduces to holding one quantity fixed. The value $-1$ is the harmonic case.`,
           keywords: ["cross ratio", "projective invariant", "four collinear points", "preserved by projection", "anharmonic ratio", "pencil of lines", "concyclic cross ratio"],
           importance: "high",
-          tier: "Olympiad",
+          tier: "AIME Early",
           level: ["Olympiad"]
         },
         {

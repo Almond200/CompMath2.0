@@ -221,7 +221,6 @@ One can choose a base with an internal altitude foot, for example a longest side
       related: [
         { card: "incircle-tangent-lengths", note: String.raw`the tangent lengths $s - a$, $s - b$, $s - c$ inside Heron's formula (S5.6).` },
         { card: "circumradius-area", note: String.raw`the circumradius from the sides and the area, $R = \tfrac{abc}{4A}$ (S9.2).` },
-        { card: "incenter-area-split", note: String.raw`the three pieces of the inradius formula, in the ratio of the sides (S3.4).` }
       ],
       exercises: [
         { q: String.raw`What is the area of a triangle with sides $13$, $14$ and $15$?`, answer: "84",

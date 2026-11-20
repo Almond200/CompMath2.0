@@ -242,7 +242,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The number of ordered pairs of positive integers with $\operatorname{lcm}(a, b) = \prod p_i^{e_i}$ is $\prod(2e_i + 1)$. For each prime the larger of the two exponents must be exactly $e_i$, which leaves $2e_i + 1$ ordered choices, and different primes are independent.`,
           keywords: ["lcm pairs", "gcd lcm system", "max min exponents", "ordered pairs"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -252,7 +252,7 @@ window.MATH_SECTIONS.push({
           latexPlain: String.raw`(f * g)(n) = f(d_1)\, g\!\left(\tfrac{n}{d_1}\right) + \cdots + f(d_r)\, g\!\left(\tfrac{n}{d_r}\right) \;\; (d_1, \ldots, d_r \text{ the divisors of } n), \qquad \mu * \mathbf{1} = \varepsilon, \qquad \varphi * \mathbf{1} = \mathrm{id}`,
           description: String.raw`The Dirichlet convolution of two functions on the positive integers is $(f * g)(n) = \sum_{d \mid n} f(d)\,g\!\left(\frac nd\right)$. It is commutative and associative with identity $\varepsilon(n) = [n = 1]$ (with $\mathbf 1$ the constant function $1$ and $\mathrm{id}(n) = n$), it preserves multiplicativity, and the standard divisor-sum identities become one-line equations: $\varphi * \mathbf 1 = \mathrm{id}$, $\mathrm{id} * \mathbf 1 = \sigma$, $\mathbf 1 * \mathbf 1 = d$, and $\mu * \mathbf 1 = \varepsilon$.`,
           keywords: ["dirichlet convolution", "arithmetic functions", "mobius inversion", "multiplicative function", "divisor sum", "identity function", "convolution ring"],
-          importance: "lowest",
+          importance: "lower",
           tier: "Olympiad",
           level: ["Olympiad"]
         }
@@ -339,7 +339,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The multiplicative order of $a$ modulo $n$, for $a$ coprime to $n$, written $\operatorname{ord}_n(a)$, is the smallest positive exponent $d$ with $a^d \equiv 1 \pmod n$. Its key property is that $a^m \equiv 1$ exactly when $d$ divides $m$, so the order divides $\varphi(n)$ and the powers of $a$ repeat with period exactly $d$.`,
           keywords: ["order", "cycle length", "repeating decimal period", "divides"],
           importance: "medium",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -349,7 +349,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A modular inverse of $a$ modulo $n$ is a number $a^{-1}$ with $a \cdot a^{-1} \equiv 1 \pmod n$. It exists exactly when $\gcd(a, n) = 1$, and then it is unique modulo $n$; dividing by $a$ modulo $n$ means multiplying by it.`,
           keywords: ["inverse", "division mod n", "extended euclid", "modular multiplicative inverse", "inverse modulo n", "division modulo n"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         },
         {
@@ -379,7 +379,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`For coprime $m$ and $n$, the number of solutions modulo $mn$ of a polynomial congruence $f(x) \equiv 0$ is the number of solutions modulo $m$ times the number modulo $n$. The Chinese Remainder Theorem pairs each solution modulo $mn$ with a solution modulo $m$ and one modulo $n$.`,
           keywords: ["count solutions", "congruence", "multiply", "automorphic numbers"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME"]
         },
         {
@@ -399,7 +399,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`For every integer $n$, $n^k - n$ is divisible by each prime $p$ with $(p - 1) \mid (k - 1)$, and the largest number dividing $n^k - n$ for all $n$ is the product of those primes. So $n^3 - n$ is always a multiple of $6$, $n^5 - n$ of $30$, $n^7 - n$ of $42$, and $n^{13} - n$ of $2730$.`,
           keywords: ["n^k - n", "n^3 - n divisible by 6", "n^5 - n divisible by 30", "fermat little consequence", "universal divisor", "2730", "consecutive integers"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AMC12", "AIME"]
         }
       ]
@@ -472,7 +472,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The $p$-adic valuation $v_p(n)$ is the exponent of the prime $p$ in $n$: $p^{v_p(n)}$ divides $n$ but $p^{v_p(n) + 1}$ does not, with $v_p(0) = \infty$. Valuations add on products, subtract on quotients, and satisfy $v_p(m + n) \ge \min(v_p(m), v_p(n))$, with equality whenever the two valuations differ.`,
           keywords: ["p-adic valuation", "v_p", "exponent of a prime", "highest power dividing", "p^k exactly divides", "ultrametric", "non-archimedean", "valuation rules", "order of p in n"],
           importance: "medium",
-          tier: "AIME Early",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -514,7 +514,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`Lucas's Theorem says that for a prime $p$, $\binom mn$ modulo $p$ is the product of the binomial coefficients of the base-$p$ digits: if $m = (m_k\ldots m_0)_p$ and $n = (n_k\ldots n_0)_p$, then $\binom mn \equiv \binom{m_0}{n_0}\cdots\binom{m_k}{n_k} \pmod p$, with $\binom{a}{b} = 0$ when $b \gt a$.`,
           keywords: ["binomial mod p", "base p digits", "odd binomial", "pascal parity"],
           importance: "medium",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -523,7 +523,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`p + q \text{ odd},\ p, q \text{ prime} \implies 2 \in \{p, q\}, \qquad n \text{ even and prime} \implies n = 2`,
           description: String.raw`$2$ is the only even prime, so parity settles many prime questions at once. An odd sum or difference of two primes must use $2$, which leaves a single candidate for the other prime; a sum of two odd primes is even and larger than $2$, so never prime; and an expression that is always even, such as a product of two consecutive integers, can be prime only when it equals $2$.`,
           keywords: ["even prime", "2 is the only even prime", "sum of two primes", "odd sum of primes", "parity of primes", "prime and even", "goldbach"],
-          importance: "lower",
+          importance: "medium",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
@@ -563,7 +563,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\gcd(a, m) = 1 \implies \text{infinitely many primes } p \equiv a \pmod{m}`,
           description: String.raw`For a modulus $m$ and a residue $a$ coprime to it, the progression $a, a + m, a + 2m, \ldots$ contains infinitely many primes. The coprimality is needed, since a common factor of $a$ and $m$ divides every term. The general proof uses analysis far beyond a contest, so olympiad solutions quote the theorem by name; a few residues, such as $3$ and $1$ modulo $4$, have short proofs in the style of Euclid's.`,
           keywords: ["dirichlet theorem", "primes in arithmetic progression", "infinitely many primes congruent to a mod m", "infinitely many primes 1 mod 4", "infinitely many primes 3 mod 4", "prime in a residue class"],
-          importance: "lowest",
+          importance: "lower",
           tier: "Olympiad",
           level: ["Olympiad"]
         },
@@ -630,7 +630,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A Pell equation is $x^2 - Dy^2 = 1$ with $D$ a positive non-square integer. It has infinitely many positive solutions, and they are exactly the pairs with $x + y\sqrt D = (x_1 + y_1\sqrt D)^k$, where $(x_1, y_1)$ is the smallest positive solution.`,
           keywords: ["pell", "fundamental solution", "recurrence", "sqrt approximation"],
           importance: "low",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -805,7 +805,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The $n$th cyclotomic polynomial $\Phi_n(x)$ is the monic polynomial whose roots are the primitive $n$th roots of unity, the complex numbers $\zeta$ with $\zeta^n = 1$ and no smaller positive power equal to $1$. It has integer coefficients and degree $\varphi(n)$, and the $\Phi_d$ for the divisors $d$ of $n$ are exactly the pieces into which $x^n - 1$ factors. For an integer $a$, a prime $p$ dividing $\Phi_n(a)$ either divides $n$ or has $a$ of [[multiplicative-order|order]] exactly $n$ modulo $p$. That makes these polynomials the standard source of primes in the progression $1 \bmod n$ and of prime divisors of $a^n - 1$ that divide no smaller $a^d - 1$.`,
           keywords: ["cyclotomic polynomial", "phi n of x", "primitive roots of unity", "x^n minus 1 factorization", "prime divisors congruent to 1 mod n", "primes 1 mod n infinitely many", "order exactly n", "x^4 - x^2 + 1"],
           importance: "low",
-          tier: "Olympiad",
+          tier: "AMC",
           level: ["Olympiad"]
         },
         {
@@ -834,8 +834,8 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\#\{(a,b) \in \mathbb{Z}^2 : a^2 + b^2 = n\} = 4\left(d_1(n) - d_3(n)\right)`,
           description: String.raw`Counting all ordered, signed representations: $d_1$ and $d_3$ count divisors of $n$ congruent to $1$ and $3$ mod $4$. Consequence of unique factorization in the Gaussian integers; the count is $0$ exactly when some prime $\equiv 3 \pmod 4$ divides $n$ to an odd power.`,
           keywords: ["lattice points circle", "sum of two squares count", "representations", "gaussian integers"],
-          importance: "lower",
-          tier: "AIME Early",
+          importance: "high",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -865,7 +865,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`The Fibonacci sequence taken modulo $m$ eventually repeats, and since the recurrence runs backward too, it repeats from the very start. The period $\pi(m)$ controls every question about $F_n \bmod m$, and the last digit of $F_n$ cycles with period $\pi(10) = 60$. To find $F_n \bmod m$, the index $n$ is reduced modulo $\pi(m)$.`,
           keywords: ["pisano period", "fibonacci mod m", "last digit of fibonacci", "periodic recurrence", "cycle"],
           importance: "lower",
-          tier: "AIME Late",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -874,7 +874,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{composite } n \text{ with } b^{n-1} \equiv 1 \pmod n \ \forall \gcd(b,n)=1; \quad \text{Korselt: } n \text{ squarefree},\ (p-1)\mid(n-1)\ \forall p\mid n`,
           description: String.raw`A Fermat pseudoprime to base $b$ is a composite $n$ that nonetheless passes Fermat's test $b^{n-1}\equiv 1$; a Carmichael number passes it for every base coprime to $n$ — an "absolute" pseudoprime that fools the Fermat primality test entirely. Korselt's criterion characterizes them: squarefree with $(p-1)\mid(n-1)$ for each prime factor. The smallest is $561 = 3\cdot 11\cdot 17$. (Not to be confused with the Carmichael function $\lambda(n)$.)`,
           keywords: ["carmichael number", "fermat pseudoprime", "korselt criterion", "561", "absolute pseudoprime", "primality test fooled"],
-          importance: "lowest",
+          importance: "lower",
           tier: "Olympiad",
           level: ["Olympiad"]
         },
@@ -900,8 +900,8 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\frac{a}{b}, \frac{c}{d} \text{ Farey neighbors} \iff bc - ad = 1; \qquad \text{mediant} = \frac{a + c}{b + d}`,
           description: String.raw`$F_n$ lists reduced fractions in $[0,1]$ with denominator $\le n$ in order. The mediant of two neighbors is the first fraction to appear between them (in $F_{b+d}$). $|F_n| \approx \frac{3n^2}{\pi^2}$.`,
           keywords: ["farey", "mediant", "neighbors", "stern brocot", "fractions between"],
-          importance: "lower",
-          tier: "Olympiad",
+          importance: "high",
+          tier: "AMC",
           level: ["AIME", "Olympiad"]
         },
         {
@@ -941,7 +941,7 @@ window.MATH_SECTIONS.push({
           latexPlain: String.raw`\left\lfloor \frac{p}{q} \right\rfloor + \left\lfloor \frac{2p}{q} \right\rfloor + \cdots + \left\lfloor \frac{(q-1)p}{q} \right\rfloor = \frac{(p-1)(q-1)}{2} \qquad (\gcd(p, q) = 1)`,
           description: String.raw`The floors count lattice points under the diagonal of a $p \times q$ rectangle — and by symmetry the diagonal (which hits no interior lattice point when $\gcd = 1$) splits the $(p-1)(q-1)$ interior points evenly. Equivalently $\lfloor \frac{kp}{q} \rfloor + \lfloor \frac{(q-k)p}{q} \rfloor = p - 1$ pairs terms.`,
           keywords: ["floor sum", "lattice points under line", "reciprocity", "diagonal"],
-          importance: "lowest",
+          importance: "lower",
           tier: "Olympiad",
           level: ["AIME", "Olympiad"]
         }

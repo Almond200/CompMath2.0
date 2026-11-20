@@ -1702,6 +1702,7 @@ Drawing a figure without lifting the pencil, closed walks that use every street 
 - $R_{\text{lines}} = \dfrac{n^2 + n + 2}{2}$ — the maximum regions from $n$ lines, no two parallel and no three through one point
 - $R_{\text{circles}} = n^2 - n + 2$ — the maximum regions from $n$ circles, each pair meeting in two points
 - regions $= 1 + (\text{lines}) + (\text{crossings})$ for lines in the plane: each new line adds one region per crossing plus one, while each new circle that crosses the earlier curves at $k \gt 0$ points adds $k$ (a closed curve is cut into $k$ arcs, not $k + 1$)
+- $1 + \dbinom n2 + \dbinom n4$ — the regions cut from a disk by all chords of $n$ points on its circle, no three chords meeting inside: $1, 2, 4, 8, 16, 31, 57, \ldots$, which breaks the doubling pattern at $n = 6$
 
 ## Conditions
 The maximum needs general position: no two lines parallel and no three lines or circles through one point. Any parallel pair or triple concurrence loses regions, and problems often specify a configuration that deliberately fails it.
@@ -1712,6 +1713,8 @@ Incremental counting. When a new curve is drawn, it is cut by the earlier curves
 A new line crossing $k$ existing lines is cut into $k + 1$ pieces, so the lines add $1, 2, 3, \ldots$ new regions, and
 $$R_{\text{lines}} = 1 + \sum_{i=1}^{n} i = \frac{n^2 + n + 2}{2}.$$
 The same count line by line gives regions $= 1 + (\text{lines}) + (\text{crossings})$.
+
+Inside a disk the count is the same: each chord, drawn in turn, adds one region plus one for every earlier chord it crosses. There are $\binom n2$ chords, and every crossing comes from exactly one choice of four of the $n$ points (the two chords joining them in crossing pairs), so there are $\binom n4$ crossings and $1 + \binom n2 + \binom n4$ regions. Three chords through one interior point would merge crossings, which is why the count needs no three concurrent.
 
 The first circle makes $2$ regions. The $k$th circle crosses each earlier one twice, at $2(k - 1)$ points, which cut it into $2(k - 1)$ arcs, so it adds $2(k - 1)$ regions:
 $$R_{\text{circles}} = 2 + \sum_{k=2}^{n} 2(k - 1) = 2 + n(n - 1) = n^2 - n + 2.$$
@@ -2586,35 +2589,6 @@ Derangements, surjections, set partitions, and permutation-structure counts that
 
 ## Contest profile
 Advanced olympiad and Putnam counting, where EGFs handle counts that ordinary generating functions handle badly.
-`,
-
-"moser-circle": String.raw`
-## Key forms
-- $R(n) = \dbinom n4 + \dbinom n2 + 1$ — the regions cut from a disk by all chords of $n$ points on its circle, with no three chords meeting inside
-- $1, 2, 4, 8, 16, 31, 57, \ldots$ for $n = 1, 2, 3, \ldots$ — it agrees with $2^{n-1}$ up to $n = 5$ and then breaks
-
-## Conditions
-No three chords meet at one interior point. With a regular polygon chords do meet three at a time, and the count drops.
-
-## Why it works
-Apply [[eulers-polyhedron-formula|Euler's Formula]] $V - E + F = 2$ to the planar graph of points, chord crossings, and arcs. Its vertices are the $n$ points and the $\binom n4$ interior crossings, one for each choice of $4$ points, whose two diagonals cross:
-$$V = n + \binom n4.$$
-
-Each crossing lies on two chords, so the chords carry $2\binom n4$ crossings in all, and a chord with $j$ crossings is cut into $j + 1$ edges. Adding the $n$ arcs of the circle,
-$$E = \binom n2 + 2\binom n4 + n.$$
-
-Then $F = 2 - V + E = 2 + \binom n2 + \binom n4$, and removing the outer face leaves $R(n) = \binom n4 + \binom n2 + 1$. Equivalently, each new chord adds one region plus one more for every crossing it makes. For $n = 6$ this gives $15 + 15 + 1 = 31$, not $32$.
-
-## Useful observations
-- The formula is a warning: five data points agreeing with $2^{n-1}$ prove nothing, and the sequence breaks at exactly the moment most people stop checking.
-- Each interior crossing comes from choosing four points on the circle, giving $\binom n4$ vertices, which is what explains the shape of the formula.
-- The no-three-concurrent condition is essential and a common trap in problem statements.
-
-## Applications
-Regions cut by chords of a circle, and cautionary examples against extrapolating a pattern.
-
-## Contest profile
-A famous AMC and MATHCOUNTS trap; the instinct that the doubling pattern must continue is exactly what the problem punishes, so the formula is worth carrying.
 `,
 
 "gap-method": String.raw`
@@ -3975,5 +3949,64 @@ The final contents of an urn after a fixed number of draws, the distribution of 
 
 ## Contest profile
 Rare: an AMC 10/12 urn that adds a ball of the drawn colour, where noticing that every order is equally likely replaces a tree of cases, and HMMT versions in which the urn is disguised as votes or groups.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"bound-and-construct": String.raw`
+## When to use
+The problem asks for the maximum or minimum of a quantity over all configurations that obey some rule: how many pieces fit on a board with no two attacking, the fewest weighings or moves that always suffice, the largest set with no forbidden pair, the smallest $n$ for which something is forced, or the best constant $c$ in an inequality. A question that asks for the extreme value of a formula in one or two real variables is usually optimization instead, with [[am-gm|AM-GM]] or completing the square, though the same two halves are still needed.
+
+## How
+1. Try small cases or a smaller board to guess the answer $M$ and to see what the best configurations look like.
+2. Prove the bound: every allowed configuration has value at most $M$ (or at least $M$ for a minimum). Common tools are splitting the board into blocks that each hold at most one piece, [[pigeonhole|pigeonhole]], double counting, a coloring, or an inequality.
+3. Construct: exhibit one configuration that obeys the rule and has value exactly $M$, and check the rule for it.
+4. If the bound and the best example do not meet, improve whichever is weaker; never report a bound that no example reaches.
+
+For the most kings on an $8 \times 8$ board with no two attacking: split the board into sixteen $2 \times 2$ blocks. Two kings in one block attack each other, so at most one king per block, at most $16$ kings. Kings on the sixteen squares whose row and column are both odd are two apart in every direction, so none attack. The answer is $16$.
+
+## Why it works
+The maximum of a quantity over a finite (or bounded) set of configurations is the number $M$ such that no configuration exceeds $M$ and some configuration equals $M$. The bound proves the first half and the construction the second, so together they determine the maximum exactly; for a minimum the inequalities reverse. Neither half alone suffices: the bound $16$ for kings would also be a true bound if the real maximum were $15$, and an example with $15$ kings would not rule out $16$. Only when an example meets the bound is the bound the answer.
+
+## Formulas it uses
+- [[pigeonhole]]: the most common source of a bound, putting objects into blocks or classes that each hold a limited number.
+
+## Common traps
+- Reporting the value of a good-looking example without proving no example does better.
+- Proving a bound that is not tight and reporting it, when no configuration reaches it.
+- Checking the construction against only part of the rule, such as the rows but not the columns.
+- Forgetting that a "smallest $n$ that forces" question needs a bad example for $n - 1$ as its construction half.
+
+## Contest profile
+Throughout the AMC, AIME and the invitational contests: the most pieces on a board, the fewest moves, the largest subset avoiding a relation, the best constant. Late HMMT and PUMaC combinatorics problems are very often of this kind.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"small-cases-pattern": String.raw`
+## When to use
+The problem defines something for every positive integer $n$ (a sequence by a rule, a function by $f(2n)$ and $f(2n + 1)$, a game or an elimination on $n$ players, the number of rooms filled after $n$ minutes) and asks for its value at a large $n$, or for how many $n$ below a bound have a property. When the terms repeat, the pattern is a cycle and [[cycle-hunting|finding the period]] finishes; when the problem asks for the state after a few steps, [[simulate-the-process|simulating the process]] is enough.
+
+## How
+1. Compute the answer for $n = 1, 2, 3, \ldots$ up to about $8$ or $16$, in a table, carefully.
+2. Look for a rule: write $n$ in base $2$, compare with powers of $2$ or squares, take differences, or separate even and odd $n$.
+3. State the rule as a formula and check it on a case not yet used.
+4. Confirm it from the problem: show the rule is preserved by the step from smaller cases to larger ones (the problem's recursion), which is an induction.
+5. Apply it to the large $n$.
+
+For the Josephus problem, with $n$ people in a circle and every second one removed, starting with person $2$, the survivors for $n = 1, \ldots, 8$ are $1, 1, 3, 1, 3, 5, 7, 1$: the survivor is $1$ at each power of $2$ and goes up by $2$ after it, so $J(n) = 2(n - 2^k) + 1$ with $2^k$ the largest power of $2$ at most $n$. For $n = 100$, $J(100) = 2 \cdot 36 + 1 = 73$.
+
+## Why it works
+A pattern seen in a table is only a guess until it is proved, and the proof comes from how the problem builds each case from smaller ones. In the Josephus problem, after one pass around a circle of $2m$ people the $m$ odd-numbered people remain, with person $1$ about to skip, so the survivor is the survivor of $m$ people renumbered: $J(2m) = 2J(m) - 1$. With $2m + 1$ people, after the evens go, person $1$ is removed next, leaving $3, 5, \ldots, 2m + 1$, so $J(2m + 1) = 2J(m) + 1$. If $J(m) = 2(m - 2^k) + 1$, then $J(2m) = 4(m - 2^k) + 1 = 2(2m - 2^{k + 1}) + 1$ and $J(2m + 1) = 4(m - 2^k) + 3 = 2(2m + 1 - 2^{k + 1}) + 1$, the same formula one size up, and $J(1) = 1$ starts it; so by induction the formula holds for every $n$. In general the small cases reveal the rule and the recursion proves it, which is why both steps are needed.
+
+## Formulas it uses
+None of its own: the pattern is whatever the table shows, and the confirmation is an induction on the problem's own recursion.
+
+## Common traps
+- Trusting a pattern from too few cases: $1, 2, 4, 8, 16$ for the regions cut from a disk by chords breaks at the next case, $31$.
+- An arithmetic slip in one early case, which hides the real pattern or suggests a false one.
+- Starting the table at the wrong $n$, or indexing it differently from the problem, so the rule is off by one.
+- Applying the rule without checking that the problem's recursion preserves it.
+
+## Contest profile
+A staple of the later AMC questions and of HMMT and PUMaC problems with a year in them: a function defined on binary digits, an elimination, a sequence defined by a strange rule, a process run for $2^{n}$ steps.
 `
 });

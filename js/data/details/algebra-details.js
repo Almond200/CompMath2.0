@@ -1584,29 +1584,34 @@ The AIME uses them to locate points on the unit circle, sometimes with [[de-moiv
 
 "reduction-identities": String.raw`
 ## Key forms
-- $\sin(90^\circ - \theta) = \cos\theta$ and $\cos(90^\circ - \theta) = \sin\theta$ — the cofunction pair, likewise $\tan$ and $\cot$, $\sec$ and $\csc$
-- $\sin(-\theta) = -\sin\theta$ and $\cos(-\theta) = \cos\theta$ — sine and tangent are odd, cosine is even
-- $\sin(180^\circ - \theta) = \sin\theta$ and $\cos(180^\circ - \theta) = -\cos\theta$ — supplementary angles keep sine and flip cosine and tangent
-- sine and cosine repeat every $360^\circ$ and tangent every $180^\circ$
+- $\sin(90^\circ \pm \theta) = \cos\theta$, $\cos(90^\circ \pm \theta) = \mp\sin\theta$, $\tan(90^\circ \pm \theta) = \mp\cot\theta$ — a quarter turn swaps the function
+- $\sin(180^\circ \pm \theta) = \mp\sin\theta$, $\cos(180^\circ \pm \theta) = -\cos\theta$, $\tan(180^\circ \pm \theta) = \pm\tan\theta$ — a half turn keeps it
+- $\sin(270^\circ \pm \theta) = -\cos\theta$, $\cos(270^\circ \pm \theta) = \pm\sin\theta$, $\tan(270^\circ \pm \theta) = \mp\cot\theta$ — three quarter turns swap it again
+- $\sin(-\theta) = -\sin\theta$, $\cos(-\theta) = \cos\theta$, $\tan(-\theta) = -\tan\theta$ — sine and tangent are odd, cosine is even
+- $\sin(\theta + 360^\circ k) = \sin\theta$, $\cos(\theta + 360^\circ k) = \cos\theta$, $\tan(\theta + 180^\circ k) = \tan\theta$ — the periods, so $360^\circ - \theta$ acts as $-\theta$
+- $f(k \cdot 90^\circ \pm \theta) = \pm\, g(\theta)$, with $g$ the cofunction of $f$ for odd $k$ and $f$ itself for even $k$ — the sign is that of $f$ at the angle for acute $\theta$
 
 ## Conditions
-The identities hold for all angles where the functions are defined. Any angle reduces to a first-quadrant reference angle plus a sign.
+The identities hold for every angle where both sides are defined; the tangent and cotangent forms need $\theta$ away from the multiples of $90^\circ$ where they blow up. In radians, $90^\circ$ is $\frac{\pi}{2}$. The cofunction pairs are $\sin$ and $\cos$, $\tan$ and $\cot$, $\sec$ and $\csc$, and the secant forms follow from the cosine ones by taking reciprocals.
 
 ## Why it works
-Everything is a unit-circle reflection. Reflecting across $y = x$ swaps coordinates, giving the cofunction pair $\sin(90^\circ - \theta) = \cos\theta$. Reflecting across the $x$-axis negates $y$, so sine is odd, and fixes $x$, so cosine is even.
+Put $P = (\cos\theta, \sin\theta)$ on the unit circle. Turning it by $90^\circ$ about the origin sends $(x, y)$ to $(-y, x)$, so the point at angle $\theta + 90^\circ$ is $(-\sin\theta, \cos\theta)$: $\cos(90^\circ + \theta) = -\sin\theta$ and $\sin(90^\circ + \theta) = \cos\theta$. Reflecting across the $x$-axis sends the point at $\theta$ to the point at $-\theta$ and $(x, y)$ to $(x, -y)$, so cosine is even and sine is odd. Putting $-\theta$ for $\theta$ in the quarter-turn pair gives $\sin(90^\circ - \theta) = \cos\theta$ and $\cos(90^\circ - \theta) = \sin\theta$, which completes the first line.
 
-Reflecting across the $y$-axis is the supplement $180^\circ - \theta$: $y$ stays and $x$ flips, so sine is preserved and cosine negates. A full turn of $360^\circ$ returns every point, so sine and cosine repeat. A half turn sends $(x, y)$ to $(-x, -y)$, which keeps the ratio $\frac yx$, so tangent repeats every $180^\circ$; tangent and cotangent are odd as quotients of an odd and an even function.
+Two quarter turns send $(x, y)$ to $(-x, -y)$, so $\sin(180^\circ + \theta) = -\sin\theta$ and $\cos(180^\circ + \theta) = -\cos\theta$, and with $-\theta$ for $\theta$, $\sin(180^\circ - \theta) = \sin\theta$ and $\cos(180^\circ - \theta) = -\cos\theta$. A half turn followed by a quarter turn gives the $270^\circ$ line, and four quarter turns return every point, so sine and cosine have period $360^\circ$. Each tangent form is the sine form divided by the cosine form: for instance $\tan(90^\circ + \theta) = \frac{\cos\theta}{-\sin\theta} = -\cot\theta$, and the half turn negates both coordinates and keeps their ratio, so tangent has period $180^\circ$.
+
+The rule in the last Key form reads off the pattern: each quarter turn swaps the two coordinates, so an odd number of them swaps the function and an even number keeps it. In each formula the sign in front is the same for every $\theta$, so it can be read at one convenient value: for a small acute $\theta$, $g(\theta) \gt 0$, and the sign of the left side is the sign of $f$ in the quadrant where $k \cdot 90^\circ \pm \theta$ lies. For example $270^\circ - \theta$ lies in the third quadrant, where cosine is negative, so $\cos(270^\circ - \theta) = -\sin\theta$.
 
 ## Useful observations
-- Awkward angles are collapsed to first-quadrant values before other identities are applied.
-- The cofunction rule is why the sine and cosine graphs are shifts of each other, and the odd and even rules drop signs inside functions.
+- Awkward angles are collapsed to first-quadrant values before other identities are applied: $\cos 300^\circ = \cos(360^\circ - 60^\circ) = \cos 60^\circ = \frac12$, and $\tan 240^\circ = \tan 60^\circ = \sqrt3$.
+- The quarter-turn rule is why the sine and cosine graphs are shifts of each other, and it turns a sum like $\sin^2 1^\circ + \sin^2 2^\circ + \cdots + \sin^2 89^\circ$ into pairs $\sin^2\theta + \cos^2\theta$.
 - Remembering that tangent has period $180^\circ$, not $360^\circ$, avoids a common off-by-a-period slip.
+- In a triangle $A + B + C = 180^\circ$, so $\sin(A + B) = \sin C$, $\cos(A + B) = -\cos C$ and $\sin\frac{A + B}{2} = \cos\frac C2$.
 
 ## Applications
-Simplifying trigonometric expressions, reducing large angles, and telescoping or symmetric trigonometric sums where $\sin\theta$ and $\sin(180^\circ - \theta)$ must be seen to be equal.
+Simplifying trigonometric expressions, reducing large or negative angles, rewriting a triangle's angles through $A + B + C = 180^\circ$, and symmetric or telescoping trigonometric sums where $\sin\theta$ and $\sin(180^\circ - \theta)$, or $\sin\theta$ and $\cos(90^\circ - \theta)$, must be seen to be equal.
 
 ## Contest profile
-Routine simplification on the AMC and AIME, and the key to telescoping or symmetric trigonometric sums.
+Routine simplification on the AMC and AIME, and the key to symmetric trigonometric sums and products over $1^\circ, 2^\circ, \ldots$.
 `,
 
 "angle-addition": String.raw`

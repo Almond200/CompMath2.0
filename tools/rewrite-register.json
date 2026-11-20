@@ -1387,7 +1387,6 @@
     "trig-area": "formula",
     "trig-area-circumradius": "formula",
     "max-rectangle-in-triangle": "formula",
-    "incenter-area-split": "formula",
     "right-triangle-inradius": "formula",
     "conway-circle": "formula",
     "incircle-excircle-touch": "formula",
@@ -1609,7 +1608,6 @@
     "absolute-value-identities": "formula",
     "subset-sum-facts": "formula",
     "balls-boxes-table": "formula",
-    "moser-circle": "formula",
     "pappus-centroid": "formula",
     "descartes-rule-signs": "formula",
     "weighted-am-gm": "formula",
@@ -1864,7 +1862,11 @@
     "complete-subset-sums": "formula",
     "symmetrizing-a-sum": "method",
     "polya-urn": "formula",
-    "intermediate-value-theorem": "formula"
+    "intermediate-value-theorem": "formula",
+    "unfold-the-bounces": "method",
+    "cone-insphere": "formula",
+    "bound-and-construct": "method",
+    "small-cases-pattern": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -3605,20 +3607,6 @@
       ]
     ],
     "max-rectangle-in-triangle": [
-      [
-        "Why it works",
-        "kept -> Why it works"
-      ],
-      [
-        "How to use it",
-        "moved -> Useful observations"
-      ],
-      [
-        "On contests",
-        "rewritten -> Contest profile"
-      ]
-    ],
-    "incenter-area-split": [
       [
         "Why it works",
         "kept -> Why it works"
@@ -6718,20 +6706,6 @@
         "rewritten -> Contest profile"
       ]
     ],
-    "moser-circle": [
-      [
-        "Why it works",
-        "kept -> Why it works"
-      ],
-      [
-        "How to use it",
-        "moved -> Useful observations"
-      ],
-      [
-        "On contests",
-        "rewritten -> Contest profile"
-      ]
-    ],
     "pappus-centroid": [
       [
         "Why it works",
@@ -9138,6 +9112,30 @@
       [
         "(new card)",
         "written directly in the formula template"
+      ]
+    ],
+    "unfold-the-bounces": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "cone-insphere": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "bound-and-construct": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "small-cases-pattern": [
+      [
+        "(new card)",
+        "written directly in the method template"
       ]
     ]
   }
