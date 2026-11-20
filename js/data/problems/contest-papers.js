@@ -646,5 +646,21 @@ window.MATH_CONTEST_PAPERS = {
   "2009 PUMaC Division B Combinatorics": {
     "url": "https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsB.pdf",
     "solUrl": "https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsBSol.pdf"
+  },
+  "2009 PUMaC Division A Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2009_GeometryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2009_GeometryASol.pdf"
+  },
+  "2009 PUMaC Division B Geometry": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2009_GeometryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2009_GeometryBSol.pdf"
+  },
+  "2009 PUMaC Division A Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2009_NumberTheoryA.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2009_NumberTheoryASol.pdf"
+  },
+  "2009 PUMaC Division B Number Theory": {
+    "url": "https://pumac.princeton.edu/s/PUMaC2009_NumberTheoryB.pdf",
+    "solUrl": "https://pumac.princeton.edu/s/PUMaC2009_NumberTheoryBSol.pdf"
   }
 };

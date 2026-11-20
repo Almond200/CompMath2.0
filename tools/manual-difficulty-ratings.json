@@ -231,7 +231,11 @@
     "2009 PUMaC Division A Algebra": "https://pumac.princeton.edu/s/PUMaC2009_AlgebraA.pdf",
     "2009 PUMaC Division B Algebra": "https://pumac.princeton.edu/s/PUMaC2009_AlgebraB.pdf",
     "2009 PUMaC Division A Combinatorics": "https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsA.pdf",
-    "2009 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsB.pdf"
+    "2009 PUMaC Division B Combinatorics": "https://pumac.princeton.edu/s/PUMaC2009_CombinatoricsB.pdf",
+    "2009 PUMaC Division A Geometry": "https://pumac.princeton.edu/s/PUMaC2009_GeometryA.pdf",
+    "2009 PUMaC Division B Geometry": "https://pumac.princeton.edu/s/PUMaC2009_GeometryB.pdf",
+    "2009 PUMaC Division A Number Theory": "https://pumac.princeton.edu/s/PUMaC2009_NumberTheoryA.pdf",
+    "2009 PUMaC Division B Number Theory": "https://pumac.princeton.edu/s/PUMaC2009_NumberTheoryB.pdf"
   },
   "ratings": {
     "2026 AMC 10A, Problem 1": [
@@ -49457,6 +49461,134 @@
     "2009 PUMaC Division B Combinatorics, Problem 8": [
       3500,
       "Identify the fourth-largest of five as the second-smallest, compute its exact discrete order-statistic expectation and retain the correction to the official reversed-rank answer."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 1": [
+      1950,
+      "Interpret the second fold on the reopened sheet and find the reflected point one half-unit from the crease using a right triangle."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 2": [
+      2200,
+      "Enumerate the possible pairs of sides on the two faces incident to the longest edge, then check the opposite edge against the remaining faces."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 3": [
+      2650,
+      "Rule out a nontrivial rotation on eleven vertices of a simple concave polygon and use composition to bound the number of reflection axes."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 4": [
+      2350,
+      "Add the midpoint of a radius to obtain equal sides by the midsegment theorem and chase the regular polygon's central angles."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 5": [
+      3250,
+      "Bound the two parts by the inside triangle and outer trapezoid on the same cross-section, then attain the ratio with a triangular polygon."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 6": [
+      2750,
+      "Recognize the four congruent truncations of a side-three regular tetrahedron and subtract their volumes before squaring."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 7": [
+      3200,
+      "Split into three triangles and reduce the sum of their areas to a quarter of the square of the given diagonal with the cosine rule."
+    ],
+    "2009 PUMaC Division A Geometry, Problem 8": [
+      3550,
+      "Set up trigonometric Ceva at the interior point, verify the special angle by a trigonometric identity, and use the monotone sine ratio to rule out other angles."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 1": [
+      1150,
+      "Divide an inscribed regular dodecagon into twelve equal central triangles or apply its circumradius-area formula."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 2": [
+      1650,
+      "Compute the triangle's area from its sides, then divide by the semiperimeter for the inradius."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 3": [
+      1950,
+      "Interpret the second fold on the reopened sheet and find the reflected point one half-unit from the crease using a right triangle."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 4": [
+      2200,
+      "Enumerate the possible pairs of sides on the two faces incident to the longest edge, then check the opposite edge against the remaining faces."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 5": [
+      2650,
+      "Rule out a nontrivial rotation on eleven vertices of a simple concave polygon and use composition to bound the number of reflection axes."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 6": [
+      2350,
+      "Add the midpoint of a radius to obtain equal sides by the midsegment theorem and chase the regular polygon's central angles."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 7": [
+      3250,
+      "Bound the two parts by the inside triangle and outer trapezoid on the same cross-section, then attain the ratio with a triangular polygon."
+    ],
+    "2009 PUMaC Division B Geometry, Problem 8": [
+      2750,
+      "Recognize the four congruent truncations of a side-three regular tetrahedron and subtract their volumes before squaring."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 1": [
+      1950,
+      "Use the divisibility conditions modulo nine and eleven on the unknown digits and enforce the digit range."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 2": [
+      1600,
+      "Compare each square term with its counterpart on the right using positivity and track when both comparisons are equalities."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 3": [
+      2550,
+      "Force the three exceptional input primes by successive residues modulo two, three and five, then check primality."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 4": [
+      2800,
+      "Change to the sum and difference of the signed variables and check the finitely many differences, preserving the negative solution omitted by the source."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 5": [
+      2900,
+      "Multiply the two leading-digit intervals to trap a power of ten, then verify a common-prefix witness using exact integer powers."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 6": [
+      3050,
+      "Bound the digit sum by comparing exponential growth with the number of available digits, filter the remaining sums modulo nine, and check attainment."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 7": [
+      2700,
+      "Use determinant-one Farey neighbors to certify the largest lower fraction under the denominator cap and compute it with Bezout."
+    ],
+    "2009 PUMaC Division A Number Theory, Problem 8": [
+      3700,
+      "Factor the odd divisor sum into distinct Fermat primes, use binary expansion to force their indices without gaps, then use the supplied composite Fermat number."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 1": [
+      1850,
+      "Complete the square to bound one signed coordinate, then enumerate square residuals and both signs with the required parity."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 2": [
+      1600,
+      "Check the first factorial sums directly and rule out every later sum using its fixed nonsquare ending."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 3": [
+      1950,
+      "Use the divisibility conditions modulo nine and eleven on the unknown digits and enforce the digit range."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 4": [
+      1600,
+      "Compare each square term with its counterpart on the right using positivity and track when both comparisons are equalities."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 5": [
+      2550,
+      "Force the three exceptional input primes by successive residues modulo two, three and five, then check primality."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 6": [
+      2800,
+      "Change to the sum and difference of the signed variables and check the finitely many differences, preserving the negative solution omitted by the source."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 7": [
+      2900,
+      "Multiply the two leading-digit intervals to trap a power of ten, then verify a common-prefix witness using exact integer powers."
+    ],
+    "2009 PUMaC Division B Number Theory, Problem 8": [
+      3050,
+      "Bound the digit sum by comparing exponential growth with the number of available digits, filter the remaining sums modulo nine, and check attainment."
     ],
     "2026 UKMT JMC, Problem 1": [
       100,
