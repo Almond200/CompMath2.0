@@ -2,6 +2,99 @@
 // CC BY-NC 4.0: https://creativecommons.org/licenses/by-nc/4.0/
 // Transcribed from the official contest papers and reformatted for this app.
 Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2016-cayley-contest-1": { s: String.raw`The value of $(3+2)-(2+1)$ is
+
+(A) $8$  (B) $3$  (C) $1$  (D) $5$  (E) $2$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-2": { s: String.raw`Maya asked the 20 math teachers at her school to tell her their favourite shape. She represented their answers on the bar graph shown. The number of teachers who did not pick “Square” as their favourite shape was
+
+@@fig:cemc/2016/cayley-2.png@@
+
+(A) $14$  (B) $12$  (C) $15$  (D) $16$  (E) $13$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-3": { s: String.raw`The expression $\sqrt{5^2-4^2}$ is equal to
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $9$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-4": { s: String.raw`If each of Bill’s steps is $\frac12$ metre long, how many steps does Bill take to walk 12 metres in a straight line?
+
+(A) $9$  (B) $12$  (C) $16$  (D) $24$  (E) $36$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-5": { s: String.raw`In the diagram, $Q$ is on $PR$. The value of $x$ is
+
+@@fig:cemc/2016/cayley-5.png@@
+
+(A) $50$  (B) $80$  (C) $100$  (D) $16.7$  (E) $130$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-6": { s: String.raw`If the line that passes through the points $(2,7)$ and $(a,3a)$ has a slope of 2, the value of $a$ is
+
+(A) $\frac52$  (B) $10$  (C) $3$  (D) $\frac{11}{5}$  (E) $\frac{12}{5}$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-7": { s: String.raw`A soccer team played three games. Each game ended in a win, loss, or tie. (If a game finishes with both teams having scored the same number of goals, the game ends in a tie.) In total, the team scored more goals than were scored against them. Which of the following combinations of outcomes is not possible for this team?
+
+(A) 2 wins, 0 losses, 1 tie  (B) 1 win, 2 losses, 0 ties  (C) 0 wins, 1 loss, 2 ties  (D) 1 win, 1 loss, 1 tie  (E) 1 win, 0 losses, 2 ties`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-8": { s: String.raw`The first five letters of the alphabet are assigned the values $A=1$, $B=2$, $C=3$, $D=4$, and $E=5$. The value of a word equals the sum of the values of its letters. For example, the value of $BAD$ is $2+1+4=7$. Which of the following words has the largest value?
+
+(A) $BAD$  (B) $CAB$  (C) $DAD$  (D) $BEE$  (E) $BED$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-9": { s: String.raw`Grace writes a sequence of 20 numbers. The first number is 43 and each number after the first is 4 less than the number before it, so her sequence starts 43, 39, 35, …. How many of the numbers that Grace writes are positive?
+
+(A) $11$  (B) $9$  (C) $13$  (D) $15$  (E) $12$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-10": { s: String.raw`Five students play chess matches against each other. Each student plays three matches against each of the other students. How many matches are played in total?
+
+(A) $15$  (B) $8$  (C) $30$  (D) $60$  (E) $16$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-11": { s: String.raw`In the diagram, $PQ$ is perpendicular to $QR$, $QR$ is perpendicular to $RS$, and $RS$ is perpendicular to $ST$. If $PQ=4$, $QR=8$, $RS=8$, and $ST=3$, then the distance from $P$ to $T$ is
+
+@@fig:cemc/2016/cayley-11.png@@
+
+(A) $16$  (B) $12$  (C) $17$  (D) $15$  (E) $13$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-12": { s: String.raw`Alejandro has a box that contains 30 balls, numbered from 1 to 30. He randomly selects a ball from the box where each ball is equally likely to be chosen. Which of the following is most likely?
+
+(A) He selects a ball whose number is a multiple of 10.
+(B) He selects a ball whose number is odd.
+(C) He selects a ball whose number includes the digit 3.
+(D) He selects a ball whose number is a multiple of 5.
+(E) He selects a ball whose number includes the digit 2.`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-13": { s: String.raw`Which of the following fractions is both larger than $\frac16$ and smaller than $\frac14$?
+
+(A) $\frac5{12}$  (B) $\frac5{36}$  (C) $\frac5{24}$  (D) $\frac5{60}$  (E) $\frac5{48}$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-14": { s: String.raw`The number of zeros in the integer equal to $\left(10^{100}\right)\times\left(100^{10}\right)$ is
+
+(A) $120$  (B) $200$  (C) $220$  (D) $300$  (E) $110$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-15": { s: String.raw`What is the tens digit of the smallest positive integer that is divisible by each of 20, 16 and 2016?
+
+(A) $0$  (B) $2$  (C) $4$  (D) $6$  (E) $8$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-16": { s: String.raw`The triangle shown is reflected in the $x$-axis and the resulting triangle is reflected in the $y$-axis. Which of the following best represents the final position of the triangle?
+
+@@fig:cemc/2016/cayley-16-1.png@@
+
+(A) @@ci:cemc/2016/cayley-16-2.png@@
+(B) @@ci:cemc/2016/cayley-16-3.png@@
+(C) @@ci:cemc/2016/cayley-16-4.png@@
+(D) @@ci:cemc/2016/cayley-16-5.png@@
+(E) @@ci:cemc/2016/cayley-16-6.png@@`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-17": { s: String.raw`In the diagram, the perimeter of square $PQRS$ is 120 and the perimeter of $\triangle PZS$ is $2x$. Which of the following expressions in terms of $x$ is equal to the perimeter of pentagon $PQRSZ$?
+
+@@fig:cemc/2016/cayley-17.png@@
+
+(A) $120+2x$  (B) $40+2x$  (C) $60+2x$  (D) $90+2x$  (E) $30+2x$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-18": { s: String.raw`When three positive integers are added in pairs, the resulting sums are 998, 1050 and 1234. What is the difference between the largest and smallest of the three original positive integers?
+
+(A) $262$  (B) $248$  (C) $224$  (D) $250$  (E) $236$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-19": { s: String.raw`A total of $n$ points are equally spaced around a circle and are labelled with the integers 1 to $n$, in order. Two points are called diametrically opposite if the line segment joining them is a diameter of the circle. If the points labelled 7 and 35 are diametrically opposite, then $n$ equals
+
+(A) $54$  (B) $55$  (C) $56$  (D) $57$  (E) $58$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-20": { s: String.raw`There are $n$ students in the math club at Scoins Secondary School. When Mrs. Fryer tries to put the $n$ students in groups of 4, there is one group with fewer than 4 students, but all of the other groups are complete. When she tries to put the $n$ students in groups of 3, there are 3 more complete groups than there were with groups of 4, and there is again exactly one group that is not complete. When she tries to put the $n$ students in groups of 2, there are 5 more complete groups than there were with groups of 3, and there is again exactly one group that is not complete. The sum of the digits of the integer equal to $n^2-n$ is
+
+(A) $11$  (B) $12$  (C) $20$  (D) $13$  (E) $10$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-21": { s: String.raw`In her last basketball game, Jackie scored 36 points. These points raised the average (mean) number of points that she scored per game from 20 to 21. To raise this average to 22 points, how many points must Jackie score in her next game?
+
+(A) $38$  (B) $22$  (C) $23$  (D) $36$  (E) $37$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-22": { s: String.raw`Alain and Louise are driving on a circular track with radius 25 km. Alain leaves the starting line first, going clockwise around the track at a speed of 80 km/h. Fifteen minutes after Alain starts, Louise leaves the same starting line, going counter-clockwise around the track at a speed of 100 km/h. For how many hours will Louise have been driving when the two of them pass each other for the fourth time?
+
+(A) $\frac{50\pi-6}{45}$  (B) $\frac{4\pi+1}{4}$  (C) $\frac{10\pi-1}{9}$  (D) $\frac{15\pi+6}{16}$  (E) $\frac{25\pi-1}{24}$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-23": { s: String.raw`Suppose that $PQRSTUVW$ is a regular octagon. (A regular octagon is an octagon with eight equal side lengths and eight equal interior angles.) There are 70 ways in which four of its sides can be chosen at random. If four of its sides are chosen at random and each of these sides is extended infinitely in both directions, what is the probability that they will meet to form a quadrilateral that contains the octagon?
+
+(A) $\frac12$  (B) $\frac{19}{35}$  (C) $\frac{37}{70}$  (D) $\frac{17}{35}$  (E) $\frac{18}{35}$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-24": { s: String.raw`What is the sum of all numbers $q$ which can be written in the form $q=\dfrac ab$ where $a$ and $b$ are positive integers with $b\le10$ and for which there are exactly 19 integers $n$ that satisfy $\sqrt q<n<q$?
+
+(A) $871.5$  (B) $743.5$  (C) $777.5$  (D) $808.5$  (E) $1106.5$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
+"2016-cayley-contest-25": { s: String.raw`A new language uses only the letters A, B, C, D, and E. The letters A and E are called vowels, while the letters B, C and D are called consonants. A sequence of letters is called a word if it does not include the same letter twice in a row, and it does not include two vowels in a row. How many words are there in this language that are 10 letters long and that begin with a vowel?
+
+(A) $199\,680$  (B) $199\,968$  (C) $199\,584$  (D) $199\,872$  (E) $199\,776$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016CayleyContest.pdf" },
 "2016-fermat-contest-1": { s: String.raw`If $x=3$, $y=2x$ and $z=3y$, the value of $z$ is
 
 (A) $8$  (B) $9$  (C) $6$  (D) $18$  (E) $15$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2016/2016FermatContest.html" },
