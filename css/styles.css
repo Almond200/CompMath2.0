@@ -3064,6 +3064,8 @@ html.pre-landing .sidebar,
 body.app-pending .topbar,
 body.app-pending .sidebar { display: none; }
 
+html.startup-loading { background: var(--bg); }
+html.startup-loading body { visibility: hidden; }
 body.app-pending .layout { display: block; }
 .static-home, .static-reference { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
 .static-home .hm-sub { display: block; }
@@ -4384,9 +4386,12 @@ dialog.app-confirm { inset-block: 0 12vh; }
    looked huge beside a card's name); an invisible margin around each brings the area that
    answers a finger to at least 40px. */
 @media (pointer: coarse) {
-  .star-btn, .addlist-btn, .copy-btn, .ge-ico, #pr-lists .pl-new-btn, .nsh-info { position: relative; }
-  :is(.star-btn, .addlist-btn, .copy-btn, .ge-ico, #pr-lists .pl-new-btn, .nsh-info)::after {
+  .star-btn, .addlist-btn, .copy-btn, .ge-ico, #pr-lists .pl-new-btn, .nsh-info,
+  .lp-drawer-close, button.tt-tw { position: relative; }
+  :is(.star-btn, .addlist-btn, .copy-btn, .ge-ico, #pr-lists .pl-new-btn, .nsh-info, .lp-drawer-close, button.tt-tw)::after {
     content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, 40px); height: max(100%, 40px); transform: translate(-50%, -50%); }
+  /* Leave room between the close button and the expanded card actions below it. */
+  .lp-drawer .lp-drawer-head { margin-bottom: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
@@ -4565,6 +4570,12 @@ button.tt-tw:hover { background: var(--border); color: var(--text); }
   .br-band { flex-wrap: wrap; }
   .br-band-h { font-size: 16px; white-space: nowrap; }
   .br-band .br-count { flex-basis: 100%; margin: 2px 0 0; }
+}
+
+@media (pointer: coarse) {
+  /* Keep the arrow's 40px target inside its row, clear of the topic link. */
+  .tt-row { min-height: 40px; }
+  .tt-name { margin-inline-start: 9px; }
 }
 
 /* ---------- A contest paper's page (2026-11-11): figures, problem tiles, statistics ---------- */

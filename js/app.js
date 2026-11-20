@@ -4958,7 +4958,7 @@
           ${settingRow("Theme", "Light or dark. Dark is easier at night.", "theme", theme, [["light", "Light"], ["dark", "Dark"]])}
           ${settingRow("Density", "How tightly the whole app is spaced: page margins, the gaps between cards and sections, and the padding inside panels. Spacious gives everything more room; Compact fits more on each screen. Neither changes text size or card size.", "density", state.density, [["comfortable", "Comfortable"], ["spacious", "Spacious"], ["compact", "Compact"]])}
           ${settingRow("Card size", "How big each card is while browsing. Large cards are wider, so fewer fit across.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Large"]], "browse")}
-          ${settingRow("Text size", "How big the prose and the formulas are, everywhere in the app. Each step up is about 20% larger.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]], "browse page subject problem")}
+          ${settingRow("Text size", "Adjusts the size of reading text, headings, and math.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]], "browse page subject problem")}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Reading the math</h3>
@@ -11180,6 +11180,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         if (!current()) return;
         $content.innerHTML = '<section class="route-status"><h1>Content could not load</h1><p>Check your connection and try again.</p><button type="button" class="hp-btn">Try again</button> <a href="reference/index.html">Read the formula sheet</a></section>';
         $content.querySelector("button").onclick = () => renderCurrentPage(true);
+        document.documentElement.classList.remove("startup-loading");
         return true;
       });
     }
@@ -11290,6 +11291,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     fitCardFormulas($content);
     updatePageTitle(route);
     document.body.classList.remove("app-pending");
+    document.documentElement.classList.remove("startup-loading");
     return true;
   }
 

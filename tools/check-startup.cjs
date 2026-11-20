@@ -21,6 +21,24 @@ async function verifyFallback(page) {
   const browser = await chromium.launch({ executablePath: process.env.CHROME || undefined, args: ['--no-sandbox'] });
   try {
     const mobile = { viewport: { width: 375, height: 667 }, isMobile: true, hasTouch: true };
+    const slowStartup = await browser.newPage(mobile);
+    let resumeStartup;
+    const heldApp = new Promise(resolve => { resumeStartup = resolve; });
+    await slowStartup.route('**/js/app.js?*', async route => {
+      await heldApp;
+      await route.continue();
+    });
+    try {
+      await slowStartup.goto(base + '/', { waitUntil: 'commit' });
+      const fallback = slowStartup.locator('.static-home');
+      await fallback.waitFor({ state: 'attached' });
+      assert.equal(await fallback.isVisible(), false, 'fallback stays hidden while the app is loading');
+    } finally {
+      resumeStartup();
+    }
+    await slowStartup.locator('.home:not(.static-home)').waitFor();
+    await slowStartup.close();
+
     const noJavaScript = await browser.newPage({ ...mobile, javaScriptEnabled: false });
     await verifyFallback(noJavaScript);
     await noJavaScript.close();
@@ -63,7 +81,7 @@ async function verifyFallback(page) {
       assert.deepEqual(errors, []);
       await page.close();
     }
-    console.log('Verified HTML fallback, startup failure, on-demand requests, chapter retry, and problem links at desktop and phone widths.');
+    console.log('Verified blank startup, HTML fallback, startup failure, on-demand requests, chapter retry, and problem links at desktop and phone widths.');
   } finally {
     await browser.close();
   }
