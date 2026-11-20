@@ -4361,7 +4361,7 @@
         <section class="pt-block"><div class="pt-head">Tools</div>
           <button type="button" class="pt-act" data-pt="top">Back to top</button>
           <a href="${specialHref("WhatLinksHere", id)}">What links here <span class="pt-n">${linksIn}</span></a>
-          <a href="${specialHref("ProblemsUsing", id)}">Problems using this card <span class="pt-n">${probs}</span></a>
+          <a href="${specialHref("ProblemsUsing", id)}">Problems using this card <span class="pt-n" data-card-problem-count>${problemsReady ? probs : "&hellip;"}</span></a>
           <button type="button" class="pt-act" data-pt="permalink">Copy a permanent link</button>
           <button type="button" class="pt-act" data-pt="print">Print this page</button>
           <a href="#/special/random">Random card</a>
@@ -4467,7 +4467,11 @@
     state.landing = false;
     const hasDiagram = !!((window.MATH_DIAGRAMS || {})[f.id] || []).length;
     const exHtml = practiceHtml(f);
-    const profileHtml = contestProfileHtml(f, prof.text), problemsHtml = contestHtml(f);
+    const profileHtml = problemsReady ? contestProfileHtml(f, prof.text) : '<div hidden data-card-profile></div>';
+    const problemsHtml = problemsReady ? contestHtml(f) : '<div hidden data-card-problems></div>';
+    const widgetHtml = '<div class="interactive"><h4>Interactive</h4><div id="formula-widget"></div></div>';
+    const widget = window.MATH_WIDGETS?.[f.id];
+    const widgetsPending = assetGroups.get("widgets").some(src => !loadedAssets.has(src));
     // Not geometry-only: plenty of algebra and counting cards carry a computed figure,
     // and the Asymptote export works off the rendered SVG regardless of subject.
     const asyBtn = hasDiagram
@@ -4514,7 +4518,7 @@
           return `<div class="detail-diagrams dd-${Math.min(panels.length, 3)}">${inner}</div>`;
         })()}
         ${cardExplanationHtml(entry, sec)}
-        ${(window.MATH_WIDGETS || {})[f.id] ? `<div class="interactive"><h4>Interactive</h4><div id="formula-widget"></div></div>` : ""}
+        ${widget ? widgetHtml : widgetsPending ? '<div hidden data-card-widget></div>' : ""}
         ${profileHtml}
         ${exHtml}
         ${problemsHtml}
@@ -4525,12 +4529,61 @@
       </div>${withTools ? pageToolsHtml(entry) + "</div>" : ""}`;
     renderMath($content);
     if (withTools) wirePageTools($content, entry);
-    var wdg = (window.MATH_WIDGETS || {})[f.id];
-    if (wdg) { try { wdg.mount(document.getElementById("formula-widget")); addWidgetIntro(document.getElementById("formula-widget"), f.id); } catch (e) { if (window.console) console.warn("widget error:", f.id, e); } }
-    try { decorateNumberInputs(document.getElementById("formula-widget")); } catch (e) {}
+    const mountWidget = (host, tool) => {
+      try {
+        tool.mount(host);
+        addWidgetIntro(host, f.id);
+        decorateNumberInputs(host);
+      } catch (error) { console.warn("Could not mount widget", f.id, error); }
+    };
+    if (widget) mountWidget(document.getElementById("formula-widget"), widget);
     wireProblemToggle($content);
     wireProofToggles($content);
     buildPageToc();
+
+    // Replace the placeholders with their sections so the card keeps its usual styling.
+    const addSection = (slot, html) => {
+      slot.innerHTML = html;
+      const section = slot.firstElementChild;
+      if (section) {
+        slot.replaceWith(section);
+        renderMath(section);
+      } else slot.remove();
+      return section;
+    };
+
+    // The explanation and sidebar are ready before the optional datasets finish downloading.
+    const hash = location.hash;
+    const widgetSlot = $content.querySelector("[data-card-widget]");
+    if (widgetSlot) loadAssets("widgets").then(() => {
+      const tool = window.MATH_WIDGETS?.[f.id];
+      if (!tool || !widgetSlot.isConnected || location.hash !== hash) return;
+      const interactive = addSection(widgetSlot, widgetHtml);
+      mountWidget(interactive.querySelector("#formula-widget"), tool);
+      buildPageToc(true);
+    }, () => {});
+
+    const problems = $content.querySelector("[data-card-problems]");
+    if (problems) {
+      const profile = $content.querySelector("[data-card-profile]");
+      const count = $content.querySelector("[data-card-problem-count]");
+      const current = () => problems.isConnected && location.hash === hash;
+      const fillProblems = () => loadProblems().then(() => {
+        if (!current()) return;
+        addSection(profile, contestProfileHtml(f, prof.text));
+        const practice = addSection(problems, contestHtml(f));
+        if (count) count.textContent = problemCount(f.id);
+        if (practice) wireProblemToggle(practice);
+        buildPageToc(true);
+      }, () => {
+        if (!current()) return;
+        problems.innerHTML = '<button type="button" class="hp-btn">Retry loading practice problems</button>';
+        problems.hidden = false;
+        const retry = problems.firstElementChild;
+        retry.onclick = () => { retry.disabled = true; fillProblems(); };
+      });
+      fillProblems();
+    }
   }
 
   // ---------- "On this page": a card page's sections, listed under the sidebar ----------
@@ -4564,9 +4617,10 @@
     "Related patterns": "Hand-picked cards that are part of the same idea.",
     "Tags": "The keywords that search uses for this card."
   };
-  function buildPageToc() {
+  function buildPageToc(preserveFocus = false) {
     const toc = document.getElementById("page-toc");
     if (!toc) return;
+    const focused = preserveFocus && document.activeElement?.closest("#page-toc .toc-link")?.dataset.toc;
     const items = [];
     $content.querySelectorAll(".detail h4").forEach(h => {
       if (h.closest(".problem, .prob-row, .card")) return;
@@ -4580,9 +4634,10 @@
       }
       items.push(`<a class="toc-link" href="#${id}" data-toc="${id}">${escapeAttr(title)}</a>`);
     });
-    tocPinned = null;
+    if (!preserveFocus) tocPinned = null;
     toc.innerHTML = items.length ? `<div class="toc-head">On this page</div>${items.join("")}` : "";
     toc.hidden = !items.length;
+    if (focused) toc.querySelector(`[data-toc="${CSS.escape(focused)}"]`)?.focus({ preventScroll: true });
     markToc();
   }
   // A list page's sections in the same panel, each with its count of cards.
@@ -11144,7 +11199,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const route = getRoute();
     const requirements = [];
     const lessonHasProblems = route.lesson && learnLessonSummary(route.chapter, route.lesson)?.problems;
-    const needsProblems = ["formula", "problems", "problem", "browse", "settings"].includes(route.type)
+    const needsProblems = ["problems", "problem", "browse", "settings"].includes(route.type)
       || route.type === "space" && route.name === "practice"
       || route.type === "special" && (/^(randomproblem|problemsusing|unclassified|statistics|recent)$/.test(route.name)
         || route.name === "random" && /^problem(?:\/|$)/i.test(route.arg))
@@ -11159,7 +11214,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const src = chapter && chapterAsset(book, chapter);
       if (src && !loadedAssets.has(src)) requirements.push(loadAsset(src));
     };
-    if (route.type === "formula") requireGroup("widgets");
     if (route.type === "space" && route.name === "practice" || route.type === "problems") requireGroup("practice");
     if (route.type === "learn") requireChapter(route.book, route.chapter);
     if (route.type === "settings") {
@@ -11730,15 +11784,18 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   if ($refBtn && $refMenu) {
     const ref = $refBtn.closest(".space-ref");
-    $refBtn.addEventListener("click", () => {
+    $refBtn.addEventListener("click", event => {
       if (!$refMenu.hidden) {
         closeRefMenu(true);
         return;
       }
       $refMenu.hidden = false;
       $refBtn.setAttribute("aria-expanded", "true");
-      const target = $refMenu.querySelector('[aria-current="page"]') || $refMenu.querySelector("button");
-      target?.focus({ preventScroll: true });
+      // Keyboard activation enters the disclosure. Pointer activation keeps its native focus.
+      if (event.detail === 0) {
+        const target = $refMenu.querySelector('[aria-current="page"]') || $refMenu.querySelector("button");
+        target?.focus({ preventScroll: true });
+      }
     });
     document.addEventListener("click", e => { if (!ref.contains(e.target)) closeRefMenu(); });
     ref.addEventListener("focusout", e => {

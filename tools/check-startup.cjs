@@ -60,6 +60,32 @@ async function verifyFallback(page) {
       assert.equal(requested.filter(path => chapterPath.test(path)).length, 0);
       assert.equal(requested.includes(problemIndex), false);
 
+      // A cold card opens while the catalog is still in flight, keeping the reference layout.
+      let resumeCatalog;
+      const heldCatalog = new Promise(resolve => { resumeCatalog = resolve; });
+      await page.route('**/js/data/problems/problem-db.js?*', async route => {
+        await heldCatalog;
+        await route.continue();
+      });
+      let previousTocLink;
+      try {
+        await page.locator('main .card-name a[href="#/f/pythagorean-theorem"]').click();
+        await page.getByRole('heading', { name: 'Pythagorean Theorem', level: 1 }).waitFor();
+        assert.equal(await page.locator('.layout.no-sidebar').count(), 0);
+        assert.equal(await page.locator('.route-status, .contest-profile').count(), 0);
+        if (viewport.viewport.width === 1280) {
+          const link = page.locator('#page-toc .toc-link').first();
+          previousTocLink = await link.getAttribute('data-toc');
+          await link.focus();
+        }
+      } finally {
+        resumeCatalog();
+      }
+      await page.locator('.contest-profile').waitFor();
+      await page.locator('.contest-refs .prob-open').first().waitFor();
+      assert.equal(await page.locator('#page-toc [data-toc="sec-practice-problems"]').count(), 1);
+      if (previousTocLink) assert.equal(await page.locator('#page-toc .toc-link:focus').getAttribute('data-toc'), previousTocLink);
+
       await page.goto(base + '/#/learn/aime-counting');
       await page.getByRole('heading', { name: 'AIME Counting & Probability', level: 1 }).waitFor();
       assert.equal(await page.locator('a[href="#/learn/aime-counting/c5/challenge"]').count(), 1);
@@ -81,7 +107,7 @@ async function verifyFallback(page) {
       assert.deepEqual(errors, []);
       await page.close();
     }
-    console.log('Verified blank startup, HTML fallback, startup failure, on-demand requests, chapter retry, and problem links at desktop and phone widths.');
+    console.log('Verified blank startup, HTML fallback, startup failure, on-demand requests, immediate card navigation, chapter retry, and problem links at desktop and phone widths.');
   } finally {
     await browser.close();
   }
