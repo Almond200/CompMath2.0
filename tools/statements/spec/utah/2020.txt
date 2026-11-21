@@ -1,0 +1,334 @@
+=== junior-1
+You made a scale model of Earth and the moon. The Earth's diameter is about $1.3\times10^4$ kilometers. In the model the Earth's diameter is $50$ centimeters. The moon's diameter is about $3.5\times10^3$ kilometers. Find the diameter of the moon in your model.
+
+(a) $12$ centimeters  (b) $13$ centimeters  (c) $14$ centimeters  (d) $15$ centimeters  (e) $16$ centimeters
+=== junior-2
+What is the sum of all solutions (real, complex, and repeated) for the following polynomial equation: $x^5-4x^3+5x^2+x-7=0$.
+
+(a) $1$  (b) $0$  (c) $-4$  (d) $-7$  (e) None of the above
+=== junior-3
+How many squares are there in the infinite set $\{4,44,444,4444,44444,\ldots\}$?
+
+(a) One square  (b) Two squares  (c) Five squares  (d) Eleven squares  (e) Infinitely many squares
+=== junior-4
+An air traffic control radar screen is a circle with a diameter of $24$ inches. The radar screen is set to have a scale of $6$ inches : $25$ nautical miles. What is the area of the circular region covered by the radar?
+
+(a) $157$ nautical miles$^2$  (b) $314$ nautical miles$^2$  (c) $7{,}850$ nautical miles$^2$  (d) $31{,}400$ nautical miles$^2$  (e) None of the above.
+=== junior-5
+Using a standard deck of $52$ cards, how many ways are there to form a $5$-card hand that has $3$ cards of one rank and $2$ cards of another rank.
+
+(a) $156$  (b) $468$  (c) $1{,}872$  (d) $3{,}744$  (e) $4{,}212$
+=== junior-6
+Brady is tinkering with new chocolate milk recipes. He has made a $10\%$ chocolate milk solution (this means the solution is $10\%$ chocolate and $90\%$ milk). He also has $30$ gallons of a $25\%$ chocolate milk solution. The $10\%$ solution isn't very tasty, and the $25\%$ solution is too chocolaty. Brady is convinced that a $15\%$ solution will be perfect. Brady plans to add $10\%$ solution to the $25\%$ until it is a $15\%$ solution. Assuming he has plenty of $10\%$ solution, how many gallons of $15\%$ solution can he make?
+
+(a) $10$ gallons  (b) $20$ gallons  (c) $40$ gallons  (d) $60$ gallons  (e) $90$ gallons
+=== junior-7
+A ball is released from a height of $10$ feet. Each time the ball hits the ground it will bounce directly back up $\frac34$ of the distance it has fallen. What is the total distance the ball travels before it stops bouncing?
+
+(a) $70$ feet  (b) $80$ feet  (c) $60$ feet  (d) $75$ feet  (e) None of the above
+=== junior-8
+The function $f(x)=-\frac{2x}{x-1}$ is one-to-one. Its inverse is
+
+(a) $f^{-1}(x)=\frac x{x+2}$  (b) $f^{-1}(x)=\frac{x-1}{-2x}$  (c) $f^{-1}(x)=\frac{-2x}y+1$  (d) $f^{-1}(x)=\frac x{2(x+1)}$  (e) $f^{-1}(x)=\frac{-2y+x}x$
+=== junior-9
+A palindrome is a number that remains the same even if you reverse the order of its digits. For example, the number $15{,}351$ is a palindrome. What is the largest positive factor of every four-digit palindrome?
+
+(a) $1$  (b) $2$  (c) $7$  (d) $9$  (e) $11$
+=== junior-10
+Jason wants to build a corner shelf for his living room. Rather than building the shelf out of a solid piece of wood, he plans to construct it out of three $4$-inch wide boards, as shown in the diagram below.
+
+@@fig:utah2020_junior-10.png@@
+
+If he wants the total length of the shelf along the wall sides to be $17$ inches, what will the length of the front edge of the shelf (indicated by the bold line on board $C$) be? Round to the nearest inch.
+
+(a) $17$ inches  (b) $24$ inches  (c) $578$ inches  (d) $12$ inches  (e) $20$ inches
+=== junior-11
+Using the diagram in the previous problem (#10), what is the length of the front edge of boards $B$ and $A$ (indicated by the bold lines on each board), in that order? Round to the nearest inch.
+
+(a) $8$ inches, $4$ inches  (b) $9$ inches, $5$ inches  (c) $13$ inches, $7$ inches  (d) $16$ inches, $8$ inches  (e) Not enough information to compute.
+=== junior-12
+A committee is to be formed consisting of $4$ women and $3$ men. There are $12$ women and $8$ men available for the committee to be formed. How many possible committees are possible?
+
+(a) $495$  (b) $56$  (c) $390{,}700{,}800$  (d) $27{,}720$  (e) $77{,}520$
+=== junior-13
+A trader purchased a bracelet at a certain price. The trader then marked up the price $70\%$ and attempted to sell it at that price. The bracelet sat in the case for days before the trader cut the sale price by $25\%$. The next day someone bought the bracelet. What percent profit did the trader make?
+
+(a) $2.8\%$  (b) $17.5\%$  (c) $27.5\%$  (d) $35.7\%$  (e) $45\%$
+=== junior-14
+List all the possible values of $\frac x{|x|}+\frac y{|y|}+\frac{xy}{|xy|}$, where $x,y\in\mathbb R$.
+
+(a) $\{-3,3\}$  (b) $\{-3,0,3\}$  (c) $\{-3,-1,1,3\}$  (d) All real numbers  (e) None of above
+=== junior-15
+Find the units digit of $3^{999}$.
+
+(a) $1$  (b) $3$  (c) $5$  (d) $7$  (e) $9$
+=== junior-16
+Washington School sent their $4$ best chess players to challenge the $4$ best chess players from Lincoln School. Each of the Washington players will be randomly paired with a different Lincoln player for the first round of games. How many different possible pairings are possible for the first round of games?
+
+(a) $4$  (b) $16$  (c) $24$  (d) $576$  (e) $40{,}320$
+=== junior-17
+For all real numbers $b$ and $c$ such that the product of $c$ and $3$ is $b$, which of the following expressions represent the sum of $c$ and $3$ in terms of $b$?
+
+(a) $b+3$  (b) $3(b+3)$  (c) $3b+3$  (d) $\frac b3+3$  (e) $\frac{b+3}3$
+=== junior-18
+If $a<0$, then the quadratic function $y=x^2+ax+a$ has
+
+(a) One zero  (b) Two real zeros  (c) None  (d) Two conjugate complex zeros  (e) None of above
+=== junior-19
+What is the largest possible value for the sum of two fractions such that each of the four $1$-digit prime numbers occurs as one of the numerators or denominators?
+
+(a) $\frac32+\frac75$  (b) $\frac57+\frac23$  (c) $\frac52+\frac73$  (d) $\frac72+\frac53$  (e) $\frac95+\frac73$
+=== junior-20
+The red part of Santa's hat is made from material that forms a cone. If the cone has a base diameter of $10$ inches and a height of $12$ inches, how much material is needed to make the red part of Santa's hat?
+
+(a) $78.5$ inches$^2$  (b) $188$ inches$^2$  (c) $204$ inches$^2$  (d) $314$ inches$^2$  (e) $408$ inches$^2$
+=== junior-21
+The point $P=(-5,5)$ is reflected over the line $y=3x$, resulting in a point $Q$. What is the $x$-coordinate of point $Q$?
+
+(a) $4$  (b) $5$  (c) $6$  (d) $7$  (e) $8$
+=== junior-22
+Two teachers and three students sit randomly around a round table. What is the probability each student sits next to at least one teacher?
+
+(a) $50\%$  (b) $60\%$  (c) $40\%$  (d) $100\%$
+=== junior-23
+A ladder is leaning against a vertical wall with its bottom $15$ feet from the wall. If the bottom of the ladder is pulled out $9$ feet farther away from the wall, its upper end slides $13$ feet down. What is the length of the ladder?
+
+(a) $25$ feet  (b) $8$ yards  (c) $30$ feet  (d) $20$ feet  (e) $7$ yards
+=== junior-24
+If $(1,2)\in A\cap B$, $A=\{(x,y)\mid ax+by=1\}$, $B=\{(x,y)\mid2ax+by^2=2\}$, then $a+b=$
+
+(a) $3$  (b) $1$  (c) $-1$  (d) All real numbers  (e) None of above
+=== junior-25
+Note that $5625=3^2\cdot5^4$. How many positive integer divisors does $5625$ have?
+
+(a) $6$  (b) $7$  (c) $15$  (d) $16$  (e) None of the above.
+=== junior-26
+In the figure below, if the area of the letter L part equals the area of the triangle, and the length of the base and the height is $1$ unit, what is the length $x$ of the ends of the letter L?
+
+@@fig:utah2020_junior-26.png@@
+
+(a) $\sqrt{\frac13}$ units  (b) $\sqrt{\frac23}$ units  (c) $1-\sqrt{\frac13}$ units  (d) $1-\sqrt{\frac23}$ units  (e) $1+\sqrt{\frac23}$ units
+=== junior-27
+It is known that in a certain population $10\%$ of the population is afflicted by disease $A$, $15\%$ are afflicted by disease $B$, and $5\%$ are afflicted by both diseases. What proportion of the population is afflicted by disease $B$ if they are known to have disease $A$?
+
+(a) $50\%$  (b) $20\%$  (c) $5\%$  (d) $33.33\%$  (e) $1.5\%$
+=== junior-28
+Find the exact value of $\sqrt{3+2\sqrt2}-\sqrt{3-2\sqrt2}$.
+
+(a) $2$  (b) $1$  (c) $-2$  (d) $3$  (e) None of the above
+=== junior-29
+A temperature of $0^\circ$ Celsius is equivalent to $32^\circ$ Fahrenheit. At what temperature, if any, will a Fahrenheit thermometer and Celsius thermometer have the same reading? Assume that water boils at a temperature of $100^\circ$C ($212^\circ$F).
+
+(a) $-40^\circ$  (b) $-10^\circ$  (c) $20^\circ$  (d) $40^\circ$  (e) There is no temperature when the two scales produce the same reading.
+=== junior-30
+A rhombus has sides of length $10$ units, and its diagonals differ by $4$ units. What is its area?
+
+(a) $12$ units$^2$  (b) $24$ units$^2$  (c) $48$ units$^2$  (d) $96$ units$^2$  (e) $192$ units$^2$
+=== junior-31
+In a group of five friends, the sum of the ages of each group of four of them are $89$, $90$, $92$, $94$, and $95$. What is the age of the youngest?
+
+(a) $18$  (b) $20$  (c) $21$  (d) $24$  (e) None of the above
+=== junior-32
+John wants to buy a backpack but he is $\$18$ short. For the same backpack, Kate is $\$7$ short, Nancy is $\$6$ short, and Bubba is $\$4$ short. Which two of them, combining their money, can certainly buy the backpack?
+
+(a) John and Kate  (b) John and Nancy  (c) Nancy and Bubba  (d) All the above.  (e) None of the above
+=== junior-33
+In the sequence of numbers $1,4,3,-1,\ldots$ each term after the first two is equal to the term preceding it minus the term preceding that. Find the sum of the first one hundred terms of the sequence.
+
+(a) $1$  (b) $-2$  (c) $-3$  (d) $7$  (e) $3$
+=== junior-34
+Square $ABCD$ has sides of length $3$ units. Side $AB$ is extended through $B$ to $E$ with $BE=1$ unit. Segment $DE$ intersects side $BC$ at point $F$. What is the area of the triangle $CDF$?
+
+(a) $\frac{27}8$ units$^2$  (b) $3$ units$^2$  (c) $4$ units$^2$  (d) $\frac{25}6$ units$^2$  (e) $6$ units$^2$
+=== junior-35
+Each box of cereal contains a toy. The toy comes in $4$ different colors: red, orange, green, or blue. Each of the $4$ colors is equally likely to occur. Alex wants to get a toy in each of the $4$ colors. If Alex buys $4$ boxes of cereal, what is the probability that they get one toy of each of the $4$ colors?
+
+(a) $\frac1{256}$  (b) $\frac1{35}$  (c) $\frac3{32}$  (d) $\frac14$  (e) $\frac34$
+=== junior-36
+A goat, a horse, and a cow mistakenly enter a farmer's wheat field and eat some stalks of wheat. The horse eats twice as many stalks as the goat, and the cow eats twice as many stalks as the horse. The farmer demands $5$ tou of wheat from the owners of the animals to replace what was eaten. How much wheat should be replaced by the horse's owner?
+
+(a) $\frac57$ tou  (b) $1$ tou  (c) $\frac{10}7$ tou  (d) $2$ tou  (e) $\frac{20}7$ tou
+=== junior-37
+There are three, three-digit positive integer numbers. None of them contains the digit $0$, but all the remaining nine digits $1,2,\ldots,9$, appear exactly once in each number. Suppose that, from each given number, a new number is formed where the first and the last digits are exchanged. For example, if the three given numbers were $267$, $813$, $594$, then the three new numbers would be $762$, $318$, $495$. Now, assume that the sum of the three given numbers is $1665$. What will be the sum of the three new numbers with the first and third digits exchanged?
+
+(a) $5661$  (b) $4995$  (c) $1665$  (d) $999$  (e) None of above
+=== junior-38
+A positive whole number leaves a remainder of $7$ when divided by $11$ and a remainder of $10$ when divided by $12$. What is the remainder when divided by $66$?
+
+(a) $0$  (b) $40$  (c) $28$  (d) $52$  (e) $29$
+=== junior-39
+Consider the square $ABCD$ and extend side $AB$ through $B$ to point $E$. Segment $DE$ intersects side $BC$ at point $F$. If the ratio of area of the triangle $EBF$ to the area of the triangle $CDF$ is $\frac19$, what is the ratio of the length of segment $BE$ to the length of side $AB$?
+
+(a) $\frac13$  (b) $\frac12$  (c) $\frac32$  (d) $\frac23$
+=== junior-40
+A $1$-meter measuring stick is cut at a randomly selected location, creating two sticks. What is the probability that the larger of the two sticks is over twice as long as the shorter of the two sticks?
+
+(a) $\frac14$  (b) $\frac13$  (c) $\frac12$  (d) $\frac23$  (e) $\frac34$
+=== senior-1
+List all the possible values of $\frac x{|x|}+\frac{y+1}{|y+1|}+\frac{xz}{|xz|}+\frac{x+y+z}{|x+y+z|}$, where $x,y\in\mathbb R$.
+
+(a) $\{-4,4\}$  (b) $\{-4,0,4\}$  (c) $\{-4,-2,0,2,4\}$  (d) All real numbers  (e) None of the above
+=== senior-2
+The radius of each of the three circles shown is $r$. What is the shaded area (between the circles)?
+
+@@fig:utah2020_senior-2.png@@
+
+(a) $\frac{\sqrt3}2\pi r^2$  (b) $\left(\sqrt2-\frac\pi4\right)r^2$  (c) $\frac{\pi r^2}2$  (d) $\left(\sqrt5-\frac\pi3\right)r^2$  (e) $\left(\sqrt3-\frac\pi2\right)r^2$
+=== senior-3
+There are five people in a room. What is the probability at least two individuals are born in the same month?
+
+(a) $100\%$  (b) $61.8\%$  (c) $38.19\%$  (d) $38\%$  (e) $0\%$
+=== senior-4
+If $(1,4)\in A\cap B$ and $A=\{(x,y)\mid a^2x-b^2y-a=0\}$ with $B=\{(x,y)\mid ax+b\sqrt y=1\}$, then $A\cap B=$
+
+(a) $A\cap B=\{(x,y)\mid x=1,y=4\}$  (b) $A\cap B=\{(x,y)\mid x=1,y=1\}$  (c) $A\cap B=\{(x,y)\mid x=1\}$  (d) $A\cap B=\{(x,y)\mid y=4\}$  (e) None of the above
+=== senior-5
+The sides of a triangle are $p$, $p+1$, and $2p-1$. Its area is $2p\sqrt{10}$. Find $p$.
+
+(a) $10$  (b) $11$  (c) $21$  (d) $31$  (e) None of the above
+=== senior-6
+If $f(x)=\frac{e^x-1}{e^x+1}$, then
+
+(a) $f$ is odd and the range of $f$ is $(-1,1)$  (b) $f$ is odd and the range of $f$ is $(-1,\infty)$  (c) $f$ is even and the range of $f$ is $(-1,\infty)$  (d) $f$ is even and the range of $f$ is $(-1,1)$  (e) None of the above
+=== senior-7
+A can of soup has a radius of $1$ and a height of $2\pi$. As a bug makes its way from the bottom of the can to the top, it follows the path of a helix, making one complete revolution and ending in a spot directly above where it began. (See diagram below.) How far does the bug travel?
+
+@@fig:utah2020_senior-7.png@@
+
+(a) $4\pi$  (b) $\frac{\sqrt3}2\pi$  (c) $4\pi^2$  (d) $2\sqrt2\pi$  (e) $2\sqrt3\pi$
+=== senior-8
+What time does a 12-hour clock read $50$ hours before it reads $6$ o'clock?
+
+(a) $4$ o'clock  (b) $5$ o'clock  (c) $2$ o'clock  (d) $11$ o'clock  (e) None of the above.
+=== senior-9
+Each box of cereal contains a toy. The toy comes in $4$ different colors: red, orange, green or blue. Each of the $4$ colors is equally likely to occur. Alex wants to get a toy in each of the $4$ colors. If Alex buys $5$ boxes of cereal, what is the probability that they get at least one toy of each of the $4$ colors?
+
+(a) $\frac5{1024}$  (b) $\frac1{120}$  (c) $\frac1{64}$  (d) $\frac{15}{64}$  (e) $\frac15$
+=== senior-10
+Suppose that $f(x)=x(x+1)(x+2)(x+3)\cdots(x+50)$. What is the coefficient of $x^{50}$?
+
+(a) $1275$  (b) $1350$  (c) $1375$  (d) $1400$  (e) $1425$
+=== senior-11
+A surveillance satellite circles Earth at a height of $h$ miles above the surface. Suppose that $d$ is the distance, in miles, on the surface of Earth that can be observed from the satellite. See the following diagram below, which is not to scale.
+
+@@fig:utah2020_senior-11.png@@
+
+If the satellite is tasked to observe a distance ($d$) of $4{,}186.67$ miles, approximately how high is the satellite above Earth's surface ($h$)?
+
+(a) $50$ miles  (b) $100$ miles  (c) $300$ miles  (d) $500$ miles  (e) $700$ miles
+=== senior-12
+A company has a storage tank for vehicle fuel. The tank is a right circular cylinder with its axis parallel to the ground. The radius is $2$ feet and the length is $8$ feet. If the tank is full on day $1$ and the depth on day $20$ is $1$ foot, then determine the average daily consumption to the nearest tenth of a $\text{ft}^3$/day.
+
+(a) $3.8$ ft$^3$/day  (b) $4.0$ ft$^3$/day  (c) $4.5$ ft$^3$/day  (d) $4.8$ ft$^3$/day  (e) $5.1$ ft$^3$/day
+=== senior-13
+A $1$-meter measuring stick is cut at a randomly selected location, creating two sticks. What is the probability that the larger of the two sticks is over three times as long as the shorter of the two sticks, given that the longer of the two sticks is over twice as long as the shorter of the two sticks?
+
+(a) $\frac14$  (b) $\frac13$  (c) $\frac12$  (d) $\frac23$  (e) $\frac34$
+=== senior-14
+Suppose that $(x,y)=(5,8)$ and $(x,y)=(3,4)$ are solutions to the linear system of equations $\left\{\begin{array}{rcl}ax+by&=&e\\cx+dy&=&f\end{array}\right\}$, where $a,b,c,d,e$, and $f$ are real numbers. Which of the following is also a solution to this same system of equations?
+
+(a) $(6,6)$  (b) $(2,8)$  (c) $(4,7)$  (d) $(7,12)$  (e) $(6,9)$
+=== senior-15
+Simplify the following: $\log(\log(\log(\text{googolplex})))$
+
+(a) $2$  (b) $3$  (c) $10$  (d) $1$ million  (e) A googol
+=== senior-16
+An acute angle is formed by two lines of slope $1$ and $7$. What is the slope of the line which bisects this angle?
+
+(a) $2$  (b) $3$  (c) $1$  (d) $4$  (e) None of the above
+=== senior-17
+Washington School sent their $4$ best chess players to challenge the $4$ best chess players from Lincoln School. Each of the $4$ Washington players will be randomly paired with a different Lincoln player for the first round of games. How many different possible pairings are possible for the first round of games?
+
+(a) $4$  (b) $16$  (c) $24$  (d) $576$  (e) $40{,}320$
+=== senior-18
+Find the exact value of $\sqrt[3]{2+\sqrt5}+\sqrt[3]{2-\sqrt5}$.
+
+(a) $1$  (b) $2$  (c) $-1$  (d) $3$  (e) $6$
+=== senior-19
+An octahedron is formed by connecting the centers of the faces of a cube. What is the ratio of the volume of the cube to that of the contained octahedron?
+
+(a) $4:1$  (b) $6:1$  (c) $3:2$  (d) $5:1$  (e) None of the above
+=== senior-20
+The police were informed of a car that was speeding. The license plate had six entries that could be either numbers or letters. The person reporting the car said that the first three entries of the license plate were digits and the last three were letters. The person saw that the first digit was $8$. The last three letters comprised of "WHY", but the person could not remember the order of the letters. How many license plates must the police check?
+
+(a) $100$  (b) $600$  (c) $6$  (d) $60$  (e) $300$
+=== senior-21
+A cardboard box has a square base, with each edge of the base having a length of $x$ inches. The total length of all $12$ edges is $16$ inches. How long should $x$ be to maximize the volume?
+
+(a) $\frac13$ inches  (b) $\frac23$ inches  (c) $1$ inch  (d) $\frac43$ inches  (e) None of the above
+=== senior-22
+Convert the base $7$ number $2641.53$ to base $10$. What is the digit in the tenths position?
+
+(a) $3$  (b) $4$  (c) $6$  (d) $7$  (e) $8$
+=== senior-23
+A family just moved into a new house with an octagon pool. It is $10$ feet deep and $20$ feet across (from vertex to opposite vertex). The family wants to fill it up, but needs to know how much water it will take. What is the volume of the pool?
+
+(a) $1000\sqrt2$ ft$^3$  (b) $2000\sqrt2$ ft$^3$  (c) $4000\sqrt2$ ft$^3$  (d) $8000\sqrt2$ ft$^3$
+=== senior-24
+A student has a row of books that she is interested in reading. There are $3$ books on skiing, $5$ on mathematics, and $4$ books on statistics. She would like to keep these books together on a single row on her book shelf. The mathematics and statistics books should be kept back to back, but we may permute the individual books within topics. How many different permutations of the books are possible?
+
+(a) $103{,}680$  (b) $17{,}280$  (c) $69{,}120$  (d) $34{,}560$  (e) $17{,}280$
+=== senior-25
+In triangle $ABC$, $AC=6$ and $BC=5$. Point $D$ on $AB$ divides it into segments of length $AD=1$ and $DB=3$. What is the length $CD$?
+
+(a) $11$  (b) $\frac{15}2$  (c) $\frac{11}2$  (d) $15$  (e) None of the above
+=== senior-26
+Suppose $y''+y=0$. Which of the following is a possibility for $y=f(x)$?
+
+(a) $y=\tan x$  (b) $y=\sec x$  (c) $y=e^x$  (d) $y=\sin x$  (e) $y=\frac1x$
+=== senior-27
+What is the number of real-valued solutions of the equation $x^2+21=10|x|$.
+
+(a) $4$  (b) $2$  (c) $0$  (d) $6$  (e) None of the above
+=== senior-28
+Let $n$ be greatest integer that will divide the three integers $15482$, $15678$, and $16168$ and leave the same remainder. Which is the sum of the digits of $n$?
+
+(a) $5$  (b) $17$  (c) $18$  (d) $21$  (e) $25$
+=== senior-29
+A person's blood pressure, $P$, varies with the cycle of their heartbeat. The pressure (in mmHg) at time $t$ seconds for a particular person may be modeled by the function: $P(t)=100+20\cos(2\pi t)$ mmHg, $t\ge0$. According to this model, which of the following statements is accurate?
+
+(a) The maximum pressure is $100$ mmHg.  (b) The pressure goes through one complete cycle in $2$ seconds.  (c) The amplitude of the pressure function is $120$ mmHg.  (d) The pressure will reach a maximum value at time $t=1$ second.  (e) Both statements (b) and (d) are accurate.
+=== senior-30
+Let $f$ be a continuous function on $[a,b]$ and differentiable on $(a,b)$ such that $f(b)=10$ and $f(a)=2$. On which of the following intervals $[a,b]$ would the Mean Value Theorem guarantee a $c\in(a,b)$ such that $f'(c)=4$?
+
+(a) $[0,4]$  (b) $[0,3]$  (c) $[2,4]$  (d) $[1,10]$  (e) $(0,\infty)$
+=== senior-31
+Two roots of the polynomial $3x^3+\alpha x^2-5x-10$ are $r$ and $-r$ for some real number $r$. What is the value of $\alpha$?
+
+(a) $1$  (b) $2$  (c) $-1$  (d) $3$  (e) $6$
+=== senior-32
+A ship has spotted an island and is approaching its midpoint. It's distance from the island is about $9{,}130$ meters and the angle it subtends is $120^\circ$. What is the estimated width of the island?
+
+(a) $4{,}565$ meters  (b) $9{,}130$ meters  (c) $18{,}260$ meters  (d) $9{,}130\sqrt3$ meters  (e) $18{,}260\sqrt3$ meters
+=== senior-33
+Find the length of the curve $x=3t^2$, $y=2t^3$, $0\le t\le1$.
+
+(a) $2\sqrt2-2$  (b) $4\sqrt2-2$  (c) $4\sqrt2$  (d) $4\sqrt2-1$  (e) None of the above.
+=== senior-34
+Find exact value of the product $\log_ca\cdot\log_ab\cdot\log_bc$, if $\log_cb=3$.
+
+(a) $3$  (b) $27$  (c) $9$  (d) $1$  (e) None the above.
+=== senior-35
+What is the exact value of $2(\sec\theta-\tan\theta)^2$, if $\frac{1-\sin\theta}{1+\sin\theta}=3$?
+
+(a) $3$  (b) $9$  (c) $1$  (d) $5$  (e) None of the above
+=== senior-36
+Find the sum of the following infinite series: $\frac12+\frac1{2^2}+\frac1{2^3}+\frac1{2^4}+\cdots$.
+
+(a) $0.5$  (b) $1$  (c) $2$  (d) $0.968$  (e) $0.937$
+=== senior-37
+What is the greatest whole number that is a factor of the sum of any four consecutive positive even integers?
+
+(a) $1$  (b) $2$  (c) $4$  (d) $8$  (e) $16$
+=== senior-38
+Suppose that $2x+\sqrt{2x+\sqrt{2x+\sqrt{2x+\cdots}}}=2$, then $x$ is
+
+(a) $2+\sqrt2$  (b) $2-\sqrt2$  (c) $2-\sqrt3$  (d) $2+\sqrt3$  (e) None of the above.
+=== senior-39
+The two shortest sides of a right triangle have lengths $3$ and $\sqrt7$. Let $\alpha$ be the smallest angle of the triangle. What is $\cos\alpha$?
+
+(a) $\frac34$  (b) $\frac{\sqrt7}3$  (c) $\frac{\sqrt7}4$  (d) $\frac23$
+=== senior-40
+How many pairs of positive integers $(x,y)$ satisfy the equation $2x+11y=340$?
+
+(a) $15$  (b) $10$  (c) $20$  (d) $5$

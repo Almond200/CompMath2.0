@@ -2,6 +2,10 @@
 
 **2026-11-21**
 
+- **Practice sets look like AMC and AIME ones (owner):** when a problem's statement is in the app (every permitted contest), the practice page shows no copyright line and no "Open in archive" button during the contest; after the review "Open in archive" sits next to "Open in app" (the label is now "Open in archive" everywhere), and the "Open the official solution" button under "Your answer" is gone (the official solution stays in How this problem works). A paper problem with no statement in the app (for example Utah 2014) keeps its link, the only way to read it. Checked in both themes for AIME, HMMT and Utah (`check-practice-actions.cjs`, `check-browse.cjs`, `check-practice-card.cjs` pass).
+
+- **Utah State statements, 2018 to 2020 (240 problems):** Junior and Senior exams, 12 figures cropped and checked for clipping, shared problems copy their twin. Tag fixes: 2020 Junior #9 and #35 and Senior #7, #9 and #21 (cereal-toy problems are counting, not expected value; the helix and the box are not their old cards), 2019 Junior #27, #34 and Senior #30, #33, 2018 Junior #23 and Senior #8, #16, #31 (AUDITS.md). `STATEMENTS_V` 113. 2006 to 2008 and 2013 are scans, skipped at the owner's word; 2009 to 2012 and 2014 to 2017 are not done.
+
 - **Columbus State 2002 added (994 of 1,364; 6 figures; a scan read from images).** At the owner's word the harder scans (1993 to 2001) are left out. `STATEMENTS_V` 111.
 - **PUMaC statements complete (all 1,088 problems, Division A and B, 2008 to 2025 without 2024; 2021 has no Geometry paper).** 2021 added; the work needed no tag changes. `STATEMENTS_V` 109.
 - **PUMaC 2008 added (1,040 of 1,088; ten problems per round, 3 figures).** `STATEMENTS_V` 108.
