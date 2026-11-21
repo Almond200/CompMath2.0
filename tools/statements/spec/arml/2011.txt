@@ -1,0 +1,41 @@
+=== individual-1
+Compute the $2011^{\text{th}}$ smallest positive integer $N$ that gains an extra digit when doubled.
+=== individual-2
+In triangle $ABC$, $C$ is a right angle and $M$ is on $\overline{AC}$. A circle with radius $r$ is centered at $M$, is tangent to $\overline{AB}$, and is tangent to $\overline{BC}$ at $C$. If $AC=5$ and $BC=12$, compute $r$.
+=== individual-3
+The product of the first five terms of a geometric progression is $32$. If the fourth term is $17$, compute the second term.
+=== individual-4
+Polygon $A_1A_2\ldots A_n$ is a regular $n$-gon. For some integer $k<n$, quadrilateral $A_1A_2A_kA_{k+1}$ is a rectangle of area $6$. If the area of $A_1A_2\ldots A_n$ is $60$, compute $n$.
+=== individual-5
+A bag contains $20$ lavender marbles, $12$ emerald marbles, and some number of orange marbles. If the probability of drawing an orange marble in one try is $\frac{1}{y}$, compute the sum of all possible integer values of $y$.
+=== individual-6
+Compute the number of ordered quadruples of integers $(a,b,c,d)$ satisfying the following system of equations:
+$$\begin{cases}abc=12{,}000\\ bcd=24{,}000\\ cda=36{,}000.\end{cases}$$
+=== individual-7
+Let $n$ be a positive integer such that $\dfrac{3+4+\cdots+3n}{5+6+\cdots+5n}=\dfrac{4}{11}$. Compute $\dfrac{2+3+\cdots+2n}{4+5+\cdots+4n}$.
+=== individual-8
+The quadratic polynomial $f(x)$ has a zero at $x=2$. The polynomial $f(f(x))$ has only one real zero, at $x=5$. Compute $f(0)$.
+=== individual-9
+The Local Area Inspirational Math Exam comprises $15$ questions. All answers are integers ranging from $000$ to $999$, inclusive. If the $15$ answers form an arithmetic progression with the largest possible difference, compute the largest possible sum of those $15$ answers.
+=== individual-10
+Circle $\omega_1$ has center $O$, which is on circle $\omega_2$. The circles intersect at points $A$ and $C$. Point $B$ lies on $\omega_2$ such that $BA=37$, $BO=17$, and $BC=7$. Compute the area of $\omega_1$.
+=== local-individual-1
+Compute the value of $x$ such that the mean and median of the set $\{2,0,11,x,2011\}$ are equal.
+=== local-individual-2
+When $4$ is added to both the numerator and denominator of a certain fraction, the resulting fraction is equal to $3/5$. If $1$ is added to both the numerator and denominator of the original fraction, the resulting fraction is equal to $1/2$. Compute this fraction.
+=== local-individual-3
+The prime factorization of the three-digit number $N=\underline{A}\,\underline{0}\,\underline{B}$ is $N=3^A\times B$. Compute $N$.
+=== local-individual-4
+The interior angles of a convex polygon are in arithmetic progression. If the smallest interior angle is $130$ degrees and the largest interior angle is $170$ degrees, compute the number of sides of the polygon.
+=== local-individual-5
+If $\sin x+\cos x=5/4$, and $0<x<\pi/4$, compute $\cos(2x)$.
+=== local-individual-6
+Compute the constant term in the expansion of $\left(3x^2+\dfrac{2}{x}\right)^6$.
+=== local-individual-7
+Compute the tens digit in $1!+2!+\cdots+2011!=\displaystyle\sum_{n=1}^{2011}n!$.
+=== local-individual-8
+$ABCD$ is a square of side length $1$. $E$ lies on $\overline{BC}$ and $F$ lies on $\overline{CD}$ such that $AEF$ is an equilateral triangle. Compute $AE$.
+=== local-individual-9
+For a non-negative integer $k$, let $b(k)$ be the sum of the digits in the binary (base-$2$) representation of $k$. For example, $b(12)=b(1100_2)=1+1+0+0=2$. Compute the smallest integer $n$ such that $b(b(b(n)))>1$.
+=== local-individual-10
+Compute $\left\lceil\left(\sqrt{5}+\sqrt{3}\right)^4\right\rceil$, where $\lceil x\rceil$ is the smallest integer greater than or equal to $x$.
