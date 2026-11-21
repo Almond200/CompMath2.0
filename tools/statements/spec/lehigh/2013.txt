@@ -1,0 +1,88 @@
+=== 1
+What is the sum of the digits of $(1010101)^2$?
+=== 2
+Find two numbers whose sum is $52$ such that one is three times as large as the other.
+=== 3
+What is the area of a circle inscribed in a square of side-length $3$?
+=== 4
+A student takes three exams. The second has twice as many questions as the first, and the third has three times as many questions as the first. The student answers exactly $75\%$ of the questions correctly on the first exam, exactly $81\%$ on the second exam, and exactly $85\%$ on the third exam. Out of all the questions on the three exams, what percent did he answer correctly?
+=== 5
+How many members of the set $\left\{\frac17,\frac27,\frac37,\dots,\frac{99}7\right\}$ are integer multiples of $\frac25$?
+=== 6
+List all positive solutions of $x^3+x^2-2x-2=0$.
+=== 7
+Find all possible ordered pairs $(A,B)$ of digits for which the decimal number $\underline7\,\underline A\,\underline8\,\underline B$ is divisible by $45$.
+=== 8
+A sequence satisfies $a_1=3$, $a_2=5$, and $a_{n+2}=a_{n+1}-a_n$ for $n\ge 1$. What is the value of $a_{2013}$?
+=== 9
+Find the ordered triple $(a,b,c)$ of positive integers which satisfies both $(a+b)(a+c)=77$ and $(a+b)(b+c)=42$.
+=== 10
+The set of points $(x,y)$ which satisfy $|x|\le 1$, $|y|\le 1$, and $|y|=|x|+x$ consists of several line segments. What is the sum of the lengths of these segments?
+=== 11
+What is the smallest positive integer with more than $13$ positive divisors?
+=== 12
+How many positive integers less than $1200$ have no repeating digits; i.e., no digit occurs more than once.
+=== 13
+The sum of the first ten terms of a nonzero geometric series is $244$ times the sum of the first five terms. What is the common ratio?
+=== 14
+Five circles of equal radius are placed inside a square of side length $1$ in such a way that no two intersect in more than one point. What is the largest possible radius for these circles?
+=== 15
+You take six steps, each time moving either one step forward or one step back, with probability $\frac12$ of each each time. What is the probability that you end up back where you started?
+=== 16
+In the diagram below, $DA=AB=BE$, $GA=AC=CF$, and $IC=CB=BH$. If $EF=5$, $DI=6$, and $GH=7$, what is the area of triangle $ABC$?
+
+@@fig:lehigh2013_p16.png@@
+=== 17
+Assume that for every person the probability that they have exactly one child is $1/4$, the probability that they have exactly two children is $1/2$, and the probability that they have exactly three children is $1/4$. What is the probability that a person will have exactly four grandchildren?
+=== 18
+If $x=2+\sqrt3$, find an integer or fraction equal to $x^4+\dfrac1{x^4}$.
+=== 19
+Let $S=\{3,4,5,6,8,9,10,11,12\}$. What is the sum of the elements in $S$ which are divisors of $7021500420$?
+=== 20
+What is the largest base-$10$ number whose base-$3$ and base-$4$ expansions have the same number of digits?
+=== 21
+Find the area of triangle $ABC$ satisfying the following properties. $AC=13$ and $CM=4\sqrt{10}$, where $M$ is the midpoint of $AB$. The altitude from $C$ does not meet $AB$ itself, but it meets the extension of $AB$, and this altitude has length $12$.
+=== 22
+Four circles of radius $1$ are tangent to one another as in the diagram below, except that clearly the top and bottom circles are not tangent to one another. A tight band is wrapped around the four circles as in the diagram. What is its length?
+
+@@fig:lehigh2013_p22.png@@
+=== 23
+Diameter $AB$ of circle with center $O$ has length $2$. From the midpoint $Q$ of $OA$, a perpendicular is drawn intersecting the circle at $P$. Find the radius of the circle which can be inscribed in triangle $APB$.
+=== 24
+Find the maximum value of $x+y$ taken over all ordered pairs $(x,y)$ of real numbers which satisfy $x^2+y^2=4$ and $x+\sqrt5y\ge 2\sqrt5$.
+=== 25
+The bases of a trapezoid have lengths $12$ and $15$. Find the length of the segment parallel to the bases which passes through the point of intersection of the diagonals and extends from one side to the other.
+=== 26
+How many ordered pairs of integers $(x,y)$ satisfy $x+y-xy=49$?
+=== 27
+Compute the number of ordered $4$-tuples $(a,b,c,d)$ of positive integers such that $a+b+c+d=14$.
+=== 28
+For $n\ge 1$, let $d_n$ denote the length of the line segment connecting the two points where the line $y=x+n+1$ intersects the parabola $8x^2=y-\frac1{32}$. Compute the sum $\displaystyle\sum_{n=1}^{1000}\frac1{n\cdot d_n^2}$.
+=== 29
+Let $P(x)$ be a monic polynomial of degree $3$. (Monic here means that the coefficient of $x^3$ is $1$.) Suppose that the remainder when $P(x)$ is divided by $x^2-5x+6$ equals $2$ times the remainder when $P(x)$ is divided by $x^2-5x+4$. If $P(0)=100$, what is $P(5)$?
+=== 30
+What is the range of values of $a+\frac{3-b}{a}$ taken over all ordered pairs $(a,b)$ of real numbers for which $x^2-ax+b$ has two distinct positive roots? Use interval notation to express your answer.
+=== 31
+A bug starts at a corner vertex of the graph below and at each step moves along an adjacent edge, with equal probability for any adjacent edge. It continues until it gets to the center vertex. What is the expected (average) number of steps required until the first time it gets to the center vertex?
+
+@@fig:lehigh2013_p31.png@@
+=== 32
+List all positive integers which have exactly $6$ positive divisors, the sum of whose reciprocals is $2$.
+=== 33
+List all numbers which can be written as $x+y$ where $x$ and $y$ are positive integers satisfying $x^4+y^4=15266$.
+=== 34
+Compute all integers $r$ such that a circle of radius $r$ with diameter $AC$ has a point $B$ on the circle such that $AB=30$ and $BC$ is a positive integer.
+=== 35
+Out of all positive integers $n$ which have exactly $2107$ positive divisors, what is the largest number of positive divisors that $n^2$ could have?
+=== 36
+What is the smallest positive integer that cannot be written as the sum of $11$ or fewer factorials? Note that the factorials need not be distinct.
+=== 37
+Let $a$, $b$, and $c$ be distinct nonzero real numbers such that $\frac{1+a^3}{a}=\frac{1+b^3}{b}=\frac{1+c^3}{c}$. Determine all possible values of $a^3+b^3+c^3$.
+=== 38
+In the triangle below, angles $PAB$, $PBC$, and $PCA$ are each equal to the same value $\alpha$. The sides of triangle $ABC$ have lengths $7$, $8$, and $9$. Find $\tan(\alpha)$.
+
+@@fig:lehigh2013_p38.png@@
+=== 39
+What is the largest positive integer $n$, not a multiple of $10$, such that removing the last two digits of $n^2$ leaves a perfect square?
+=== 40
+Let $P(x)$ be a polynomial of degree $10$ such that $P(2^i)=i$ for $0\le i\le 10$. What is the coefficient of $x^1$ in $P(x)$?
