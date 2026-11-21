@@ -1,0 +1,188 @@
+=== division-a-algebra-1
+Given two polynomials $f$ and $g$ satisfying $f(x)\ge g(x)$ for all real $x$, a separating line between $f$ and $g$ is a line $h(x)=mx+k$ such that $f(x)\ge h(x)\ge g(x)$ for all real $x$. Consider the set of all possible separating lines between $f(x)=x^2-2x+5$ and $g(x)=1-x^2$. The set of slopes of these lines is a closed interval $[a,b]$. Determine $a^4+b^4$.
+=== division-a-algebra-2
+Let $P(x,y)$ be a polynomial with real coefficients in the variables $x,y$ that is not identically zero. Suppose that $P(\lfloor2a\rfloor,\lfloor3a\rfloor)=0$ for all real numbers $a$. If $P$ has the minimum possible degree and the coefficient of the monomial $y$ is $4$, find the coefficient of $x^2y^2$ in $P$.
+
+(The degree of a monomial $x^my^n$ is $m+n$. The degree of a polynomial $P(x,y)$ is then the maximum degree of any of its monomials.)
+=== division-a-algebra-3
+Find the number of real solutions $(x,y)$ to the system of equations:
+$$\begin{cases}\sin\left(x^2-y\right)=0\\|x|+|y|=2\pi\end{cases}$$
+=== division-a-algebra-4
+The set $C$ of all complex numbers $z$ satisfying $(z+1)^2=az$ for some $a\in[-10,3]$ is the union of two curves intersecting at a single point in the complex plane. If the sum of the lengths of these two curves is $\ell$, find $\lfloor\ell\rfloor$.
+=== division-a-algebra-5
+Suppose that $x,y,z$ are nonnegative real numbers satisfying the equation
+$$\sqrt{xyz}-\sqrt{(1-x)(1-y)z}-\sqrt{(1-x)y(1-z)}-\sqrt{x(1-y)(1-z)}=-\frac12.$$
+The largest possible value of $\sqrt{xy}$ equals $\frac{a+\sqrt b}c$, where $a$, $b$, and $c$ are positive integers such that $b$ is not divisible by the square of any prime. Find $a^2+b^2+c^2$.
+=== division-a-algebra-6
+Let $x,y,z$ be positive real numbers satisfying $4x^2-2xy+y^2=64$, $y^2-3yz+3z^2=36$, and $4x^2+3z^2=49$. If the maximum possible value of $2xy+yz-4zx$ can be expressed as $\sqrt n$ for some positive integer $n$, find $n$.
+=== division-a-algebra-7
+For a positive integer $n\ge1$, let $a_n=\left\lfloor\sqrt[3]n+\frac12\right\rfloor$. Given a positive integer $N\ge1$, let $\mathcal F_N$ denote the set of positive integers $n\ge1$ such that $a_n\le N$. Let $S_N=\sum_{n\in\mathcal F_N}\frac1{a_n^2}$. As $N$ goes to infinity, the quantity $S_N-3N$ tends to $\frac{a\pi^2}b$ for relatively prime positive integers $a,b$. Given that $\sum_{k=1}^\infty\frac1{k^2}=\frac{\pi^2}6$, find $a+b$.
+=== division-a-algebra-8
+The function $f$ sends sequences to sequences in the following way: given a sequence $\{a_n\}_{n=0}^\infty$ of real numbers, $f$ sends $\{a_n\}_{n=0}^\infty$ to the sequence $\{b_n\}_{n=0}^\infty$, where $b_n=\sum_{k=0}^na_k\binom nk$ for all $n\ge0$. Let $\{F_n\}_{n=0}^\infty$ be the Fibonacci sequence, defined by $F_0=0$, $F_1=1$, and $F_{n+2}=F_{n+1}+F_n$ for all $n\ge0$. Let $\{c_n\}_{n=0}^\infty$ denote the sequence obtained by applying the function $f$ to the sequence $\{F_n\}_{n=0}^\infty$ $2022$ times. Find $c_5\pmod{1000}$.
+=== division-b-algebra-1
+Let $q$ be the sum of the expressions $a_1^{-a_2^{a_3^{a_4}}}$ over all permutations $(a_1,a_2,a_3,a_4)$ of $(1,2,3,4)$. Determine $\lfloor q\rfloor$.
+=== division-b-algebra-2
+A pair $(f,g)$ of degree $2$ real polynomials is called foolish if $f(g(x))=f(x)\cdot g(x)$ for all real $x$. How many positive integers less than $2023$ can be a root of $g(x)$ for some foolish pair $(f,g)$?
+=== division-b-algebra-3
+Given two polynomials $f$ and $g$ satisfying $f(x)\ge g(x)$ for all real $x$, a separating line between $f$ and $g$ is a line $h(x)=mx+k$ such that $f(x)\ge h(x)\ge g(x)$ for all real $x$. Consider the set of all possible separating lines between $f(x)=x^2-2x+5$ and $g(x)=1-x^2$. The set of slopes of these lines is a closed interval $[a,b]$. Determine $a^4+b^4$.
+=== division-b-algebra-4
+Let $P(x,y)$ be a polynomial with real coefficients in the variables $x,y$ that is not identically zero. Suppose that $P(\lfloor2a\rfloor,\lfloor3a\rfloor)=0$ for all real numbers $a$. If $P$ has the minimum possible degree and the coefficient of the monomial $y$ is $4$, find the coefficient of $x^2y^2$ in $P$.
+
+(The degree of a monomial $x^my^n$ is $m+n$. The degree of a polynomial $P(x,y)$ is then the maximum degree of any of its monomials.)
+=== division-b-algebra-5
+Find the number of real solutions $(x,y)$ to the system of equations:
+$$\begin{cases}\sin\left(x^2-y\right)=0\\|x|+|y|=2\pi\end{cases}$$
+=== division-b-algebra-6
+The set $C$ of all complex numbers $z$ satisfying $(z+1)^2=az$ for some $a\in[-10,3]$ is the union of two curves intersecting at a single point in the complex plane. If the sum of the lengths of these two curves is $\ell$, find $\lfloor\ell\rfloor$.
+=== division-b-algebra-7
+Suppose that $x,y,z$ are nonnegative real numbers satisfying the equation
+$$\sqrt{xyz}-\sqrt{(1-x)(1-y)z}-\sqrt{(1-x)y(1-z)}-\sqrt{x(1-y)(1-z)}=-\frac12.$$
+The largest possible value of $\sqrt{xy}$ equals $\frac{a+\sqrt b}c$, where $a$, $b$, and $c$ are positive integers such that $b$ is not divisible by the square of any prime. Find $a^2+b^2+c^2$.
+=== division-b-algebra-8
+Let $x,y,z$ be positive real numbers satisfying $4x^2-2xy+y^2=64$, $y^2-3yz+3z^2=36$, and $4x^2+3z^2=49$. If the maximum possible value of $2xy+yz-4zx$ can be expressed as $\sqrt n$ for some positive integer $n$, find $n$.
+=== division-a-combinatorics-1
+In the country of PUMaC-land, there are $5$ villages and $3$ cities. Vedant is building roads between the $8$ settlements according to the following rules:
+
+a) There is at most one road between any two settlements;
+
+b) Any city has exactly three roads connected to it;
+
+c) Any village has exactly one road connected to it;
+
+d) Any two settlements are connected by a path of roads.
+
+In how many ways can Vedant build the roads?
+=== division-a-combinatorics-2
+Ten evenly spaced vertical lines in the plane are labeled $\ell_1,\ell_2,\ldots,\ell_{10}$ from left to right. A set $\{a,b,c,d\}$ of four distinct integers $a,b,c,d\in\{1,2,\ldots,10\}$ is squarish if some square has one vertex on each of the lines $\ell_a,\ell_b,\ell_c$, and $\ell_d$. Find the number of squarish sets.
+=== division-a-combinatorics-3
+Randy has a deck of $29$ distinct cards. He chooses one of the $29!$ permutations of the deck and then repeatedly rearranges the deck using that permutation until the deck returns to its original order for the first time. What is the maximum number of times Randy may need to rearrange the deck?
+=== division-a-combinatorics-4
+Let $C_n$ denote the $n$-dimensional unit cube, consisting of the $2^n$ points
+$$\{(x_1,x_2,\ldots,x_n)\mid x_i\in\{0,1\}\text{ for all }1\le i\le n\}.$$
+A tetrahedron is equilateral if all six side lengths are equal. Find the smallest positive integer $n$ for which there are four distinct points in $C_n$ that form a non-equilateral tetrahedron with integer side lengths.
+=== division-a-combinatorics-5
+An $n$-folding process on a rectangular piece of paper with sides aligned vertically and horizontally consists of repeating the following process $n$ times:
+
+• Take the piece of paper and fold it in half vertically (choosing to either fold the right side over the left, or the left side over the right).
+
+• Rotate the paper $90^\circ$ degrees clockwise.
+
+A $10$-folding process is performed on a piece of paper, resulting in a $1$-by-$1$ square base consisting of many stacked layers of paper. Let $d(i,j)$ be the Euclidean distance between the center of the $i$th square from the top and the center of the $j$th square from the top before the paper was folded. Determine the maximum possible value of $\sum_{i=1}^{1023}d(i,i+1)$.
+=== division-a-combinatorics-6
+Fine Hall has a broken elevator. Every second, it goes up a floor, goes down a floor, or stays still. You enter the elevator on the lowest floor, and after $8$ seconds, you are again on the lowest floor. If every possible such path is equally likely to occur, the probability you experience no stops is $\frac ab$, where $a,b$ are relatively prime positive integers. Find $a+b$.
+=== division-a-combinatorics-7
+Kelvin has a set of eight vertices. For each pair of distinct vertices, Kelvin independently draws an edge between them with probability $p\in(0,1)$. A set $S$ of four distinct vertices is called good if there exists an edge between $v$ and $w$ for all $v,w\in S$ with $v\ne w$. The variance of the number of good sets can be expressed as a polynomial $f(p)$ in the variable $p$. Find the sum of the absolute values of the coefficients of $f(p)$.
+
+(The variance of random variable $X$ is defined as $\mathbb E\left[X^2\right]-\mathbb E[X]^2$.)
+=== division-a-combinatorics-8
+A permutation $\pi:\{1,2,\ldots,N\}\to\{1,2,\ldots,N\}$ is very odd if the smallest positive integer $k$ such that $\pi^k(a)=a$ for all $1\le a\le N$ is odd, where $\pi^k$ denotes $\pi$ composed with itself $k$ times. Let $X_0=1$, and for $i\ge1$, let $X_i$ be the fraction of all permutations of $\{1,2,\ldots,i\}$ that are very odd. Let $\mathcal S$ denote the set of all ordered $4$-tuples $(A,B,C,D)$ of nonnegative integers such that $A+B+C+D=2023$. Find the last three digits of the integer
+$$2023\sum_{(A,B,C,D)\in\mathcal S}X_AX_BX_CX_D.$$
+=== division-b-combinatorics-1
+Betty has a $4$-by-$4$ square box of chocolates. Every time Betty eats a chocolate, she picks one from a row with the greatest number of remaining chocolates. In how many ways can Betty eat $5$ chocolates from her box, where order matters?
+=== division-b-combinatorics-2
+The base factorial number system is a unique representation for positive integers where the $n$th digit from the right ranges from $0$ to $n$ inclusive and has place value $n!$ for all $n\ge1$. For instance, $71$ can be written in base factorial as $2321_!=2\cdot4!+3\cdot3!+2\cdot2!+1\cdot1!$. Let $S_!(n)$ be the base $10$ sum of the digits of $n$ when $n$ is written in base factorial. Compute $\sum_{n=1}^{700}S_!(n)$ (expressed in base $10$).
+=== division-b-combinatorics-3
+In the country of PUMaC-land, there are $5$ villages and $3$ cities. Vedant is building roads between the $8$ settlements according to the following rules:
+
+a) There is at most one road between any two settlements;
+
+b) Any city has exactly three roads connected to it;
+
+c) Any village has exactly one road connected to it;
+
+d) Any two settlements are connected by a path of roads.
+
+In how many ways can Vedant build the roads?
+=== division-b-combinatorics-4
+Ten evenly spaced vertical lines in the plane are labeled $\ell_1,\ell_2,\ldots,\ell_{10}$ from left to right. A set $\{a,b,c,d\}$ of four distinct integers $a,b,c,d\in\{1,2,\ldots,10\}$ is squarish if some square has one vertex on each of the lines $\ell_a,\ell_b,\ell_c$, and $\ell_d$. Find the number of squarish sets.
+=== division-b-combinatorics-5
+Randy has a deck of $29$ distinct cards. He chooses one of the $29!$ permutations of the deck and then repeatedly rearranges the deck using that permutation until the deck returns to its original order for the first time. What is the maximum number of times Randy may need to rearrange the deck?
+=== division-b-combinatorics-6
+Let $C_n$ denote the $n$-dimensional unit cube, consisting of the $2^n$ points
+$$\{(x_1,x_2,\ldots,x_n)\mid x_i\in\{0,1\}\text{ for all }1\le i\le n\}.$$
+A tetrahedron is equilateral if all six side lengths are equal. Find the smallest positive integer $n$ for which there are four distinct points in $C_n$ that form a non-equilateral tetrahedron with integer side lengths.
+=== division-b-combinatorics-7
+An $n$-folding process on a rectangular piece of paper with sides aligned vertically and horizontally consists of repeating the following process $n$ times:
+
+• Take the piece of paper and fold it in half vertically (choosing to either fold the right side over the left, or the left side over the right).
+
+• Rotate the paper $90^\circ$ degrees clockwise.
+
+A $10$-folding process is performed on a piece of paper, resulting in a $1$-by-$1$ square base consisting of many stacked layers of paper. Let $d(i,j)$ be the Euclidean distance between the center of the $i$th square from the top and the center of the $j$th square from the top when the paper is unfolded. Determine the maximum possible value of $\sum_{i=1}^{1023}d(i,i+1)$.
+=== division-b-combinatorics-8
+Fine Hall has a broken elevator. Every second, it goes up a floor, goes down a floor, or stays still. You enter the elevator on the lowest floor, and after $8$ seconds, you are again on the lowest floor. If every possible such path is equally likely to occur, the probability you experience no stops is $\frac ab$, where $a,b$ are relatively prime positive integers. Find $a+b$.
+=== division-a-geometry-1
+Circle $\Gamma$ is centered at $(0,0)$ in the plane with radius $2022\sqrt3$. Circle $\Omega$ is centered on the $x$-axis, passes through the point $A=(6066,0)$, and intersects $\Gamma$ orthogonally at the point $P=(x,y)$ with $y>0$. If the length of the minor arc $AP$ on $\Omega$ can be expressed as $\frac{m\pi}n$ for relatively prime positive integers $m,n$, find $m+n$.
+
+(Two circles intersect orthogonally at a point $P$ if the tangent lines at $P$ form a right angle.)
+=== division-a-geometry-2
+An ellipse has foci $A$ and $B$ and has the property that there is some point $C$ on the ellipse such that the area of the circle passing through $A$, $B$, and, $C$ is equal to the area of the ellipse. Let $e$ be the largest possible eccentricity of the ellipse. One may write $e^2$ as $\frac{a+\sqrt b}c$, where $a$, $b$, and $c$ are integers such that $a$ and $c$ are relatively prime, and $b$ is not divisible by the square of any prime. Find $a^2+b^2+c^2$.
+=== division-a-geometry-3
+Daeun draws a unit circle centered at the origin and inscribes within it a regular hexagon $ABCDEF$. Then Dylan chooses a point $P$ within the circle of radius $2$ centered at the origin. Let $M$ be the maximum possible value of $|PA|\cdot|PB|\cdot|PC|\cdot|PD|\cdot|PE|\cdot|PF|$, and let $N$ be the number of possible points $P$ for which this maximal value is obtained. Find $M+N^2$.
+=== division-a-geometry-4
+Let $\triangle ABC$ be an equilateral triangle. Points $D,E,F$ are drawn on sides $AB$, $BC$, and $CA$ respectively such that $[ADF]=[BED]+[CEF]$ and $\triangle ADF\sim\triangle BED\sim\triangle CEF$. The ratio $\frac{[ABC]}{[DEF]}$ can be expressed as $\frac{a+b\sqrt c}d$, where $a,b,c$, and $d$ are positive integers such that $a$ and $d$ are relatively prime, and $c$ is not divisible by the square of any prime. Find $a+b+c+d$.
+
+(Here $[\mathcal P]$ denotes the area of polygon $\mathcal P$.)
+=== division-a-geometry-5
+Let $\triangle ABC$ be a triangle with $AB=5$, $BC=8$, and, $CA=7$. Let the center of the $A$-excircle be $O$, and let the $A$-excircle touch lines $BC$, $CA$, and, $AB$ at points $X$, $Y$, and, $Z$, respectively. Let $h_1,h_2$, and, $h_3$ denote the distances from $O$ to lines $XY$, $YZ$, and, $ZX$, respectively. If $h_1^2+h_2^2+h_3^2$ can be written as $\frac mn$ for relatively prime positive integers $m,n$, find $m+n$.
+=== division-a-geometry-6
+Triangle $\triangle ABC$ has sidelengths $AB=10$, $AC=14$, and, $BC=16$. Circle $\omega_1$ is tangent to rays $\overrightarrow{AB},\overrightarrow{AC}$ and passes through $B$. Circle $\omega_2$ is tangent to rays $\overrightarrow{AB},\overrightarrow{AC}$ and passes through $C$. Let $\omega_1,\omega_2$ intersect at points $X,Y$. The square of the perimeter of triangle $\triangle AXY$ is equal to $\frac{a+b\sqrt c}d$, where $a,b,c$, and, $d$ are positive integers such that $a$ and $d$ are relatively prime, and $c$ is not divisible by the square of any prime. Find $a+b+c+d$.
+=== division-a-geometry-7
+Let $\triangle ABC$ be a triangle with $BC=7$, $CA=6$, and, $AB=5$. Let $I$ be the incenter of $\triangle ABC$. Let the incircle of $\triangle ABC$ touch sides $BC$, $CA$, and $AB$ at points $D$, $E$, and $F$. Let the circumcircle of $\triangle AEF$ meet the circumcircle of $\triangle ABC$ for a second time at point $X\ne A$. Let $P$ denote the intersection of $XI$ and $EF$. If the product $XP\cdot IP$ can be written as $\frac mn$ for relatively prime positive integers $m,n$, find $m+n$.
+=== division-a-geometry-8
+Let $\triangle ABC$ have sidelengths $BC=7$, $CA=8$, and, $AB=9$, and let $\Omega$ denote the circumcircle of $\triangle ABC$. Let circles $\omega_A,\omega_B,\omega_C$ be internally tangent to the minor arcs $\widehat{BC},\widehat{CA},\widehat{AB}$ of $\Omega$, respectively, and tangent to the segments $BC,CA,AB$ at points $X,Y$, and, $Z$, respectively. Suppose that $\frac{BX}{XC}=\frac{CY}{YA}=\frac{AZ}{ZB}=\frac12$. Let $t_{AB}$ be the length of the common external tangent of $\omega_A$ and $\omega_B$, let $t_{BC}$ be the length of the common external tangent of $\omega_B$ and $\omega_C$, and let $t_{CA}$ be the length of the common external tangent of $\omega_C$ and $\omega_A$. If $t_{AB}+t_{BC}+t_{CA}$ can be expressed as $\frac mn$ for relatively prime positive integers $m,n$, find $m+n$.
+=== division-b-geometry-1
+A triangle $\triangle ABC$ is situated on the plane and a point $E$ is given on segment $AC$. Let $D$ be a point in the plane such that lines $AD$ and $BE$ are parallel. Suppose that $\angle EBC=25^\circ$, $\angle BCA=32^\circ$, and $\angle CAB=60^\circ$. Find the smallest possible value of $\angle DAB$ in degrees.
+=== division-b-geometry-2
+Three spheres are all externally tangent to a plane and to each other. Suppose that the radii of these spheres are $6$, $8$, and, $10$. The tangency points of these spheres with the plane form the vertices of a triangle. Determine the largest integer that is smaller than the perimeter of this triangle.
+=== division-b-geometry-3
+Circle $\Gamma$ is centered at $(0,0)$ in the plane with radius $2022\sqrt3$. Circle $\Omega$ is centered on the $x$-axis, passes through the point $A=(6066,0)$, and intersects $\Gamma$ orthogonally at the point $P=(x,y)$ with $y>0$. If the length of the minor arc $AP$ on $\Omega$ can be expressed as $\frac{m\pi}n$ for relatively prime positive integers $m,n$, find $m+n$.
+
+(Two circles intersect orthogonally at a point $P$ if the tangent lines at $P$ form a right angle.)
+=== division-b-geometry-4
+An ellipse has foci $A$ and $B$ and has the property that there is some point $C$ on the ellipse such that the area of the circle passing through $A$, $B$, and, $C$ is equal to the area of the ellipse. Let $e$ be the largest possible eccentricity of the ellipse. One may write $e^2$ as $\frac{a+\sqrt b}c$, where $a$, $b$, and $c$ are integers such that $a$ and $c$ are relatively prime, and $b$ is not divisible by the square of any prime. Find $a^2+b^2+c^2$.
+=== division-b-geometry-5
+Daeun draws a unit circle centered at the origin and inscribes within it a regular hexagon $ABCDEF$. Then Dylan chooses a point $P$ within the circle of radius $2$ centered at the origin. Let $M$ be the maximum possible value of $|PA|\cdot|PB|\cdot|PC|\cdot|PD|\cdot|PE|\cdot|PF|$, and let $N$ be the number of possible points $P$ for which this maximal value is obtained. Find $M+N^2$.
+=== division-b-geometry-6
+Let $\triangle ABC$ be an equilateral triangle. Points $D,E,F$ are drawn on sides $AB$, $BC$, and $CA$ respectively such that $[ADF]=[BED]+[CEF]$ and $\triangle ADF\sim\triangle BED\sim\triangle CEF$. The ratio $\frac{[ABC]}{[DEF]}$ can be expressed as $\frac{a+b\sqrt c}d$, where $a,b,c$, and $d$ are positive integers such that $a$ and $d$ are relatively prime, and $c$ is not divisible by the square of any prime. Find $a+b+c+d$.
+
+(Here $[\mathcal P]$ denotes the area of polygon $\mathcal P$.)
+=== division-b-geometry-7
+Let $\triangle ABC$ be a triangle with $AB=5$, $BC=8$, and, $CA=7$. Let the center of the $A$-excircle be $O$, and let the $A$-excircle touch lines $BC$, $CA$, and, $AB$ at points $X$, $Y$, and, $Z$, respectively. Let $h_1,h_2$, and, $h_3$ denote the distances from $O$ to lines $XY$, $YZ$, and, $ZX$, respectively. If $h_1^2+h_2^2+h_3^2$ can be written as $\frac mn$ for relatively prime positive integers $m,n$, find $m+n$.
+=== division-b-geometry-8
+Triangle $\triangle ABC$ has sidelengths $AB=10$, $AC=14$, and, $BC=16$. Circle $\omega_1$ is tangent to rays $\overrightarrow{AB},\overrightarrow{AC}$ and passes through $B$. Circle $\omega_2$ is tangent to rays $\overrightarrow{AB},\overrightarrow{AC}$ and passes through $C$. Let $\omega_1,\omega_2$ intersect at points $X,Y$. The square of the perimeter of triangle $\triangle AXY$ is equal to $\frac{a+b\sqrt c}d$, where $a,b,c$, and, $d$ are positive integers such that $a$ and $d$ are relatively prime, and $c$ is not divisible by the square of any prime. Find $a+b+c+d$.
+=== division-a-number-theory-1
+Find the sum of all prime numbers $p$ such that $p$ divides
+$$\left(p^2+p+20\right)^{p^2+p+2}+4\left(p^2+p+22\right)^{p^2-p+4}.$$
+=== division-a-number-theory-2
+Compute the sum of all positive integers whose positive divisors sum to $186$.
+=== division-a-number-theory-3
+Given $k\ge1$, let $p_k$ denote the $k$-th smallest prime number. If $N$ is the number of ordered $4$-tuples $(a,b,c,d)$ of positive integers satisfying $abcd=\prod_{k=1}^{2023}p_k$ with $a<b$ and $c<d$, find $N\pmod{1000}$.
+=== division-a-number-theory-4
+Find the number of ordered pairs $(x,y)$ of integers with $0\le x<2023$ and $0\le y<2023$ such that $y^3\equiv x^2\pmod{2023}$.
+=== division-a-number-theory-5
+A positive integer $\ell\ge2$ is called sweet if there exists a positive integer $n\ge10$ such that when the leftmost nonzero decimal digit of $n$ is deleted, the resulting number $m$ satisfies $n=m\ell$. Let $S$ denote the set of all sweet numbers $\ell$. If the sum $\sum_{\ell\in S}\frac1{\ell-1}$ can be written as $\frac AB$ for relatively prime positive integers $A,B$, find $A+B$.
+=== division-a-number-theory-6
+Given a positive integer $\ell$, define the sequence $\left\{a_n^{(\ell)}\right\}_{n=1}^\infty$ such that $a_n^{(\ell)}=\left\lfloor n+\sqrt[\ell]n+\frac12\right\rfloor$ for all positive integers $n$. Let $S$ denote the set of positive integers that appear in all three of the sequences $\left\{a_n^{(2)}\right\}_{n=1}^\infty$, $\left\{a_n^{(3)}\right\}_{n=1}^\infty$, and $\left\{a_n^{(4)}\right\}_{n=1}^\infty$. Find the sum of the elements of $S$ that lie in the interval $[1,100]$.
+=== division-a-number-theory-7
+For a positive integer $n$, let $f(n)$ be the number of integers $m$ satisfying $0\le m\le n-1$ such that there exists an integer solution to the congruence $x^2\equiv m\pmod n$. It is given that as $k$ goes to $\infty$, the value of $f\left(225^k\right)/225^k$ converges to some rational number $p/q$, where $p,q$ are relatively prime positive integers. Find $p+q$.
+=== division-a-number-theory-8
+For $n\ge2$, let $\omega(n)$ denote the number of distinct prime factors of $n$. We set $\omega(1)=0$. Compute the absolute value of
+$$\sum_{n=1}^{160}(-1)^{\omega(n)}\left\lfloor\frac{160}n\right\rfloor.$$
+=== division-b-number-theory-1
+Suppose that the greatest common divisor of $n$ and $5040$ is equal to $120$. Determine the sum of the four smallest possible positive integers $n$.
+=== division-b-number-theory-2
+Find the sum of the $23$ smallest positive integers that are $4$ more than a multiple of $23$ and whose last two digits are $23$.
+=== division-b-number-theory-3
+Find the sum of all prime numbers $p$ such that $p$ divides
+$$\left(p^2+p+20\right)^{p^2+p+2}+4\left(p^2+p+22\right)^{p^2-p+4}.$$
+=== division-b-number-theory-4
+Compute the sum of all positive integers whose positive divisors sum to $186$.
+=== division-b-number-theory-5
+Given $k\ge1$, let $p_k$ denote the $k$-th smallest prime number. If $N$ is the number of ordered $4$-tuples $(a,b,c,d)$ of positive integers satisfying $abcd=\prod_{k=1}^{2023}p_k$ with $a<b$ and $c<d$, find $N\pmod{1000}$.
+=== division-b-number-theory-6
+Find the number of ordered pairs $(x,y)$ of integers with $0\le x<2023$ and $0\le y<2023$ such that $y^3\equiv x^2\pmod{2023}$.
+=== division-b-number-theory-7
+A positive integer $\ell\ge2$ is called sweet if there exists a positive integer $n\ge10$ such that when the leftmost nonzero decimal digit of $n$ is deleted, the resulting number $m$ satisfies $n=m\ell$. Let $S$ denote the set of all sweet numbers $\ell$. If the sum $\sum_{\ell\in S}\frac1{\ell-1}$ can be written as $\frac AB$ for relatively prime positive integers $A,B$, find $A+B$.
+=== division-b-number-theory-8
+Given a positive integer $\ell$, define the sequence $\left\{a_n^{(\ell)}\right\}_{n=1}^\infty$ such that $a_n^{(\ell)}=\left\lfloor n+\sqrt[\ell]n+\frac12\right\rfloor$ for all positive integers $n$. Let $S$ denote the set of positive integers that appear in all three of the sequences $\left\{a_n^{(2)}\right\}_{n=1}^\infty$, $\left\{a_n^{(3)}\right\}_{n=1}^\infty$, and $\left\{a_n^{(4)}\right\}_{n=1}^\infty$. Find the sum of the elements of $S$ that lie in the interval $[1,100]$.
