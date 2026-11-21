@@ -10,9 +10,18 @@ A geometric progression starting at $a_0=3$ has an even number of terms. Suppose
 === analysis-5
 Find
 $$\frac{\tan 1^\circ}{1+\tan 1^\circ}+\frac{\tan 2^\circ}{1+\tan 2^\circ}+\dots+\frac{\tan 89^\circ}{1+\tan 89^\circ}$$
+=== analysis-6
+Amy is traveling on the $xy$-plane in a spaceship where her motion is described by the following equation $xe^y=ye^x$. Given that her $x$-component of velocity is a constant $3$ mph, the magnitude of her velocity as she approaches $(1,-1)$ can be expressed as $\dfrac{\sqrt{a+be^4}}{c+de^2}$. Find $\dfrac{ac}{bd}$. (You may assume that the initial conditions do allow her to approach $(1,-1)$)
 === analysis-7
 Find the coefficient of $x^2$ in the following polynomial
 $$(1-x)^2(1+2x)^2(1-3x)^2\dots(1-11x)^2$$
+=== analysis-8
+Evaluate the following limit
+$$\lim_{x\to 0}\left(1+2x+3x^2+4x^3+\dots\right)^{1/x}$$
+=== analysis-9
+Suppose $p''(x)=4x^2+4x+2$ where
+$$p(x)=a_0+a_1(x-1)+a_2(x-2)^2+a_3(x-3)^4+a_4(x-4)^4$$
+We have $p'(-3)=-24$ and $p(x)$ has the unique property that the sum of the third powers of the roots of $p(x)$ is equal to the sum of the fourth powers of the roots of $p(x)$. Find $a_0$.
 === analysis-10
 Evaluate
 $$\sum_{k=0}^{\infty}\left(\frac{-1}{8}\right)^k\binom{2k}{k}$$

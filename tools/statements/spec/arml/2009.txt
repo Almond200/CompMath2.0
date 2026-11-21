@@ -1,0 +1,42 @@
+=== individual-1
+Let $p$ be a prime number. If $p$ years ago, the ages of three children formed a geometric sequence with a sum of $p$ and a common ratio of $2$, compute the sum of the children's current ages.
+=== individual-2
+Define a reverse prime to be a positive integer $N$ such that when the digits of $N$ are read in reverse order, the resulting number is a prime. For example, the numbers $5$, $16$, and $110$ are all reverse primes. Compute the largest two-digit integer $N$ such that the numbers $N$, $4\cdot N$, and $5\cdot N$ are all reverse primes.
+=== individual-3
+Some students in a gym class are wearing blue jerseys, and the rest are wearing red jerseys. There are exactly $25$ ways to pick a team of three players that includes at least one player wearing each color. Compute the number of students in the class.
+=== individual-4
+Point $P$ is on the hypotenuse $\overline{EN}$ of right triangle $BEN$ such that $\overline{BP}$ bisects $\angle EBN$. Perpendiculars $\overline{PR}$ and $\overline{PS}$ are drawn to sides $\overline{BE}$ and $\overline{BN}$, respectively. If $EN=221$ and $PR=60$, compute $\dfrac{1}{BE}+\dfrac{1}{BN}$.
+=== individual-5
+Compute all real values of $x$ such that $\log_2(\log_2 x)=\log_4(\log_4 x)$.
+=== individual-6
+Let $k$ be the least common multiple of the numbers in the set $\mathcal{S}=\{1,2,\dots,30\}$. Determine the number of positive integer divisors of $k$ that are divisible by exactly $28$ of the numbers in the set $\mathcal{S}$.
+=== individual-7
+Let $A$ and $B$ be digits from the set $\{0,1,2,\dots,9\}$. Let $r$ be the two-digit integer $\underline{A}\,\underline{B}$ and let $s$ be the two-digit integer $\underline{B}\,\underline{A}$, so that $r$ and $s$ are members of the set $\{00,01,\dots,99\}$. Compute the number of ordered pairs $(A,B)$ such that $|r-s|=k^2$ for some integer $k$.
+=== individual-8
+For $k\ge 3$, we define an ordered $k$-tuple of real numbers $(x_1,x_2,\dots,x_k)$ to be special if, for every $i$ such that $1\le i\le k$, the product $x_1\cdot x_2\cdot\ldots\cdot x_k=x_i^2$. Compute the smallest value of $k$ such that there are at least $2009$ distinct special $k$-tuples.
+=== individual-9
+A cylinder with radius $r$ and height $h$ has volume $1$ and total surface area $12$. Compute $\dfrac{1}{r}+\dfrac{1}{h}$.
+=== individual-10
+If $6\tan^{-1}x+4\tan^{-1}(3x)=\pi$, compute $x^2$.
+=== local-individual-1
+Given $A\wedge B=\dfrac{A+B}{AB}$, compute $(2\wedge 6)\wedge(3\wedge 4)$.
+=== local-individual-2
+Compute the smallest value of $n$ for which the mean and median of the set $\{13,21,26,28,41,n\}$ are equal.
+=== local-individual-3
+Compute the number of subsets $S$ of the set $\{1,2,3,4,5,6,7,8,9\}$ such that the smallest element of $S$ is equal to the size of $S$.
+=== local-individual-4
+$A_1A_2\ldots A_{2009}$ is a regular $2009$-gon of area $K$. If $A_1A_{1005}=6$, compute $\lfloor K\rfloor$.
+=== local-individual-5
+Let $x,y$, and $z$ be real numbers randomly chosen between $0$ and $100$. Compute the probability that $\lceil x+y+z\rceil=\lceil x\rceil+\lceil y\rceil+\lceil z\rceil$, where $\lceil x\rceil$ denotes the smallest integer greater than or equal to $x$.
+=== local-individual-6
+An integer is called "rotatable" if it only uses the digits $0$, $1$, $6$, $8$, or $9$. Compute the sum of all three-digit rotatable numbers (note that the first digit cannot be a zero).
+=== local-individual-7
+Compute the number of ways to place the integers $1$ through $7$ in the blanks below so that the chain of inequalities is satisfied.
+$$\underline{\phantom{0}}<\underline{\phantom{0}}<\underline{\phantom{0}}>\underline{\phantom{0}}<\underline{\phantom{0}}>\underline{\phantom{0}}>\underline{\phantom{0}}$$
+(Example: $1<2<5>4<7>6>3$)
+=== local-individual-8
+The period of a sequence $s_0,s_1,\dots$ is the smallest positive integer $k$ such that $s_n=s_{n+k}$ for all $n\ge 0$. Compute the period of the sequence defined by $s_0=\tan 4^\circ$, $s_n=\dfrac{2s_{n-1}}{1-s_{n-1}^2}$ for $n>0$.
+=== local-individual-9
+For a positive integer $n$, define $a_n$ to be the smallest positive integer with exactly $n^2$ positive factors. Compute the smallest $n$ for which $a_n>a_{n+1}$.
+=== local-individual-10
+Let $\theta$ be an acute angle for which $\sin\theta$, $\sin 2\theta$, and $\sin 4\theta$ form a strictly increasing arithmetic sequence. Compute $\cos^3\theta-\cos\theta$.

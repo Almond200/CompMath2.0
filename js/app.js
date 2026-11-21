@@ -3722,7 +3722,7 @@
       const pr = parseRef(e.ref), slug = problemSlug(e.ref), rating = problemDifficulty.ratingFor(slug);
       const paper = (window.MATH_CONTEST_PAPERS || {})[e.ref.replace(/,\s*Problem\s+\d+$/, "")];
       return {
-        ref: e.ref, slug, tree: e.tree || [], elo: rating ? rating.elo : null, eloSource: rating ? rating.source : null,
+        ref: e.ref, slug, tree: e.tree || [], calculus: !!e.calculus, elo: rating ? rating.elo : null, eloSource: rating ? rating.source : null,
         url: e.url || paper?.url || officialPdf(e.ref, "problems") || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
         // Where the official solution is, for a problem whose solution we link instead of write.
         // An AHSME problem has no solution of ours either (owner, 2026-11-13): its AoPS wiki page has them.
@@ -9961,7 +9961,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const subjects = sec("Subjects", `<div class="pp-subjects">${pie}<table class="pf-table pp-table"><thead><tr><th scope="col" aria-label="Subject"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th>${cmp ? `<th scope="col">${base.id === "all" ? "Usual" : base.label}</th>` : ""}<th scope="col"><span class="pf-long">Median rating</span><span class="pf-short" aria-hidden="true">Median</span></th></tr></thead><tbody>${subs.map(r => {
       const xs = (bySub[r.id] || []).sort((x, y) => x - y), u = cmp ? cmp.subjects[r.id] || 0 : 0;
       return `<tr><th scope="row"><i class="fam-dot" style="background:var(--subj-${r.id})"></i><a href="${topicHash(r.id)}">${topicHtml(r)}</a></th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${xs.length ? Math.max(2, xs.length / subMax * 100).toFixed(1) : 0}%;background:var(--subj-${r.id})"></i></span></td><td>${xs.length}</td>${cmp ? `<td>${Number.isInteger(u) ? u : u.toFixed(1)}</td>` : ""}<td>${xs.length ? quantile(xs, 0.5) : "&ndash;"}</td></tr>`;
-    }).join("")}</tbody></table></div>`);
+    }).join("")}</tbody></table></div>${(n => n ? `<p class="pp-words">${n} calculus problem${n === 1 ? " is" : "s are"} not filed under a subject.</p>` : "")(rated.filter(p => p.calculus).length)}`);
 
     // Over the years: the contest's median paper rating, sitting by sitting, with this paper's
     // sitting picked out. Each bar opens its year.
@@ -10142,7 +10142,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 54;
+  const STATEMENTS_V = 55;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {
@@ -10259,7 +10259,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const PTREE_ELBOW = `<svg class="ptree-stem" aria-hidden="true"><line x1=".75" y1="0" x2=".75" y2="100%"/></svg><svg class="ptree-elbow" viewBox="0 0 20 12" width="20" height="12" aria-hidden="true"><path d="M.75 0v2a4 4 0 0 0 4 4H18.5M14.5 2l4 4-4 4"/></svg>`;
   function topicTreeHtml(p) {
     const paths = p.tree.filter(id => TOPIC_NODES.has(id)).map(topicPath);
-    if (!paths.length) return `<p class="chain-empty">Not filed yet.</p>`;
+    if (!paths.length) return `<p class="chain-empty">${p.calculus ? "n/a" : "Not filed yet."}</p>`;
     const filed = new Set(p.tree);
     const trie = new Map();
     for (const path of paths) {

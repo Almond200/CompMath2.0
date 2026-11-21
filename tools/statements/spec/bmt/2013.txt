@@ -3,12 +3,27 @@ Find the value of $a$ satisfying
 $$\begin{gathered}a+b=3\\ b+c=11\\ c+a=61\end{gathered}$$
 === analysis-2
 A point $P$ is given on the curve $x^4+y^4=1$. Find the maximum distance from the point $P$ to the origin.
+=== analysis-3
+Evaluate
+$$\lim_{x\to 0}\frac{\sin 2x}{e^{3x}-e^{-3x}}$$
 === analysis-4
 Given a complex number $z$ satisfies $\operatorname{Im}(z)=z^2-z$, find all possible values of $|z|$.
+=== analysis-5
+Suppose that $c_n=(-1)^n(n+1)$. While the sum $\displaystyle\sum_{n=0}^{\infty}c_n$ is divergent, we can still attempt to assign a value to the sum using other methods. The Abel Summation of a sequence, $a_n$, is
+$$\operatorname{Abel}(a_n)=\lim_{x\to 1^-}\sum_{n=0}^{\infty}a_nx^n.$$
+Find $\operatorname{Abel}(c_n)$.
 === analysis-6
 The minimal polynomial of a complex number $r$ is the unique polynomial with rational coefficients of minimal degree with leading coefficient $1$ that has $r$ as a root. If $f$ is the minimal polynomial of $\cos\frac{\pi}{7}$, what is $f(-1)$?
 === analysis-7
 If $x,y$ are positive real numbers satisfying $x^3-xy+1=y^3$, find the minimum possible value of $y$.
+=== analysis-8
+Billy is standing at $(1,0)$ in the coordinate plane as he watches his Aunt Sydney go for her morning jog starting at the origin. If Aunt Sydney runs into the First Quadrant at a constant speed of $1$ meter per second along the graph of $x=\frac{2}{5}y^2$, find the rate, in radians per second, at which Billy's head is turning clockwise when Aunt Sydney passes through $x=1$.
+=== analysis-9
+Evaluate the integral
+$$\int_0^1\sqrt{(x-1)^3+1}+x^{2/3}-(1-x)^{3/2}-\sqrt[3]{1-x^2}\,dx$$
+=== analysis-10
+Let the class of functions $f_n$ be defined such that $f_1(x)=|x^3-x^2|$ and $f_{k+1}(x)=|f_k(x)-x^3|$ for all $k\ge 1$. Denote by $S_n$ the sum of all $y$-values of $f_n(x)$'s "sharp" points in the First Quadrant. (A "sharp" point is a point for which the derivative is not defined.) Find the ratio of odd to even terms,
+$$\lim_{k\to\infty}\frac{S_{2k+1}}{S_{2k}}$$
 === discrete-math-1
 A number is between $500$ and $1000$ and has a remainder of $6$ when divided by $25$ and a remainder of $7$ when divided by $9$. Find the only odd number to satisfy these requirements.
 === discrete-math-2

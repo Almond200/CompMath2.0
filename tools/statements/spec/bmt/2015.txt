@@ -19,6 +19,12 @@ Evaluate $\displaystyle\sum_{k=0}^{37}(-1)^k\binom{75}{2k}$
 Let $\omega$ be a primitive $7$th root of unity. Find
 $$\prod_{k=0}^{6}\left(1+\omega^k-\omega^{2k}\right).$$
 (A complex number is a primitive root of unity if and only if it can be written in the form $e^{2k\pi i/n}$, where $k$ is relatively prime to $n$.)
+=== analysis-9
+Find
+$$\lim_{n\to\infty}\frac{1}{n^3}\left(\sqrt{n^2-1}+\sqrt{n^2-2^2}+\dots+\sqrt{n^2-(n-1)^2}\right).$$
+=== analysis-10
+Evaluate
+$$\int_0^{\pi/2}\ln(4\sin x)\,dx.$$
 === geometry-1
 Let $ABC$ be a triangle. The angle bisectors of $\angle ABC$ and $\angle ACB$ intersect at $D$. If $\angle BAC=80^\circ$, what are all possible values for $\angle BDC$?
 === geometry-2

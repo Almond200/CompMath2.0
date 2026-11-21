@@ -9,7 +9,7 @@ for(const f of ['problems/problem-db.js','problems/difficulty-ratings.js','topic
 const slug=ref=>ref.toLowerCase().replace(/,?\s*problem\s+/,'-').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
 const ratings=window.MATH_PROBLEM_RATINGS.ratings,parent=new Map(window.MATH_TOPIC_TREE.map(([id,,p])=>[id,p]));
 const rootOf=id=>{while(parent.get(id))id=parent.get(id);return id;};
-const db=window.MATH_PROBLEM_DB.map(p=>{const m=p.ref.match(/^(\d{4}) (.*), Problem (\d+)$/);return {paper:m[1]+' '+m[2],num:+m[3],elo:ratings[slug(p.ref)].elo,subject:rootOf(p.tree[0])};});
+const db=window.MATH_PROBLEM_DB.map(p=>{const m=p.ref.match(/^(\d{4}) (.*), Problem (\d+)$/);return {paper:m[1]+' '+m[2],num:+m[3],elo:ratings[slug(p.ref)].elo,subject:p.tree?rootOf(p.tree[0]):null};});
 const med=xs=>{const s=[...xs].sort((a,b)=>a-b),i=(s.length-1)/2;return Math.round((s[Math.floor(i)]+s[Math.ceil(i)])/2);};
 // Sittings in order: a year, except 2021's spring and fall AMC 10/12.
 const sitOf=paper=>+paper.slice(0,4)*10+(/ Fall /.test(paper)?2:/ Spring /.test(paper)?1:0);

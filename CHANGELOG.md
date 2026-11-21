@@ -2,6 +2,8 @@
 
 **2026-11-21**
 
+- **BMT calculus problems added (owner):** the 15 calculus problems of the 2013 to 2017 Analysis rounds (2013 #3, 5, 8, 9, 10; 2014 #5, 9; 2015 #9, 10; 2016 #6, 8, 9; 2017 #3, 8, 9) are in the database with statements and ratings, so those rounds have all ten problems. They have no tree filing (the Topic section says n/a) and no cards; a paper page's Subjects section says how many calculus problems it holds. The app still has no calculus tests or Calculus area. `check-contest-page.cjs` allows a problem with no tree.
+- **ARML statements begin:** 2009 Individual and Local Individual (20 problems).
 - **BMT 2020 to 2025 statements (355 of 355 now):** 180 more problems with 17 figures (the extractor clipped labels on several, so figures were cropped by hand from the page). Tag fixes: 2020 Algebra 9 (cubes identity, not matrices), 2024 Discrete 1 (added palindromes). BMT is complete.
 - **Statement credit and paper selector (owner):** the line under a problem's text now reads only "© Stanford Math Tournament" (likewise BMT, ARML, HMMT); "Reproduced with permission" is gone, as it is assumed. A contest year's paper selector spells every round out ("General", "Algebra and Number Theory"); problem lists keep their abbreviations. `check-contest-page.cjs` and `check-hmmt-archive.cjs` updated.
 - **BMT 2017 to 2019 statements:** 87 more problems (175 of 355 in all), each read against its page image; 2019 Geometry 1 and 3 keep their figures. No tag needed changing.

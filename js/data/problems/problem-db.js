@@ -16141,10 +16141,13 @@ window.MATH_PROBLEM_DB = [
   // ---- 2017 BMT Analysis. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2017 BMT Analysis, Problem 1", formulas: ["averages-to-totals"], strategy: "", tree: ["alg.word.stats.mean"] },
   { ref: "2017 BMT Analysis, Problem 2", formulas: ["exponent-laws", "quadratic-formula"], strategy: "", tree: ["alg.exp.rules.eq"] },
+  { ref: "2017 BMT Analysis, Problem 3", formulas: [], strategy: "", calculus: true },
   { ref: "2017 BMT Analysis, Problem 4", formulas: ["arithmetico-geometric"], strategy: "", tree: ["alg.seq.sum.other"] },
   { ref: "2017 BMT Analysis, Problem 5", formulas: ["absolute-value-rules", "abs-value-graphing"], strategy: "", tree: ["alg.eq.abs.eq"] },
   { ref: "2017 BMT Analysis, Problem 6", formulas: ["matrix-multiplication", "root-transformations", "vietas-general"], strategy: "", tree: ["alg.fn.basic.iterate", "alg.poly.vieta.transform"] },
   { ref: "2017 BMT Analysis, Problem 7", formulas: ["partial-fractions"], strategy: "", tree: ["alg.seq.sum.other"] },
+  { ref: "2017 BMT Analysis, Problem 8", formulas: [], strategy: "", calculus: true },
+  { ref: "2017 BMT Analysis, Problem 9", formulas: [], strategy: "", calculus: true },
   { ref: "2017 BMT Analysis, Problem 10", formulas: ["double-summation", "pascals-identity", "binomial-row-sums"], strategy: "", tree: ["cp.binom.thm.sums", "alg.seq.sum.other"] },
   // ---- 2017 BMT Discrete Math. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2017 BMT Discrete Math, Problem 1", formulas: ["basic-probability"], strategy: "", tree: ["cp.prob.basic.count"] },
@@ -16246,7 +16249,10 @@ window.MATH_PROBLEM_DB = [
   { ref: "2016 BMT Analysis, Problem 3", formulas: ["relative-motion", "several-rates"], strategy: "", tree: ["alg.word.rates.motion.meet"] },
   { ref: "2016 BMT Analysis, Problem 4", formulas: ["geometric-series"], strategy: "", tree: ["alg.seq.ap.geom"] },
   { ref: "2016 BMT Analysis, Problem 5", formulas: ["angle-addition"], strategy: "", tree: ["alg.trig.eq.many"] },
+  { ref: "2016 BMT Analysis, Problem 6", formulas: [], strategy: "", calculus: true },
   { ref: "2016 BMT Analysis, Problem 7", formulas: ["vietas-general", "two-variable-identities"], strategy: "", tree: ["alg.poly.construct.coeff"] },
+  { ref: "2016 BMT Analysis, Problem 8", formulas: [], strategy: "", calculus: true },
+  { ref: "2016 BMT Analysis, Problem 9", formulas: [], strategy: "", calculus: true },
   { ref: "2016 BMT Analysis, Problem 10", formulas: ["generalized-binomial-series"], strategy: "", tree: ["cp.binom.thm.sums", "alg.seq.sum.other"] },
   // ---- 2016 BMT Discrete Math. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2016 BMT Discrete Math, Problem 1", formulas: ["weighted-average"], strategy: "", tree: ["alg.word.stats.weighted"] },
@@ -16279,6 +16285,8 @@ window.MATH_PROBLEM_DB = [
   { ref: "2015 BMT Analysis, Problem 6", formulas: ["vietas-general", "geometric-series"], strategy: "", tree: ["alg.poly.vieta.basic", "alg.seq.ap.geom"] },
   { ref: "2015 BMT Analysis, Problem 7", formulas: ["binomial-theorem", "de-moivre"], strategy: "", tree: ["cp.binom.thm.sums"] },
   { ref: "2015 BMT Analysis, Problem 8", formulas: ["roots-of-unity", "products-over-roots", "vietas-quadratic"], strategy: "", tree: ["alg.cx.unity.sums"] },
+  { ref: "2015 BMT Analysis, Problem 9", formulas: [], strategy: "", calculus: true },
+  { ref: "2015 BMT Analysis, Problem 10", formulas: [], strategy: "", calculus: true },
   // ---- 2015 BMT Geometry. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2015 BMT Geometry, Problem 1", formulas: ["triangle-center-angles"], strategy: "", tree: ["geo.tri.radii.in"] },
   { ref: "2015 BMT Geometry, Problem 2", formulas: ["equilateral-triangle-facts", "similar-figures-ratios"], strategy: "", tree: ["geo.poly.composite.overlap", "geo.poly.regular.hex"] },
@@ -16295,9 +16303,11 @@ window.MATH_PROBLEM_DB = [
   { ref: "2014 BMT Analysis, Problem 2", formulas: ["rational-root-theorem", "quadratic-formula"], strategy: "", tree: ["alg.poly.higher"] },
   { ref: "2014 BMT Analysis, Problem 3", formulas: ["relative-motion"], strategy: "", tree: ["alg.word.rates.motion"] },
   { ref: "2014 BMT Analysis, Problem 4", formulas: ["vietas-general"], strategy: "", tree: ["alg.poly.vieta.basic"] },
+  { ref: "2014 BMT Analysis, Problem 5", formulas: [], strategy: "", calculus: true },
   { ref: "2014 BMT Analysis, Problem 6", formulas: ["functional-substitution"], strategy: "", tree: ["alg.fn.feq"] },
   { ref: "2014 BMT Analysis, Problem 7", formulas: ["complex-basics", "products-over-roots"], strategy: "", tree: ["alg.poly.vieta.transform", "alg.cx.polar.arith"] },
   { ref: "2014 BMT Analysis, Problem 8", formulas: ["abel-summation", "geometric-series", "telescoping"], strategy: "", tree: ["alg.seq.sum.other"] },
+  { ref: "2014 BMT Analysis, Problem 9", formulas: [], strategy: "", calculus: true },
   { ref: "2014 BMT Analysis, Problem 10", formulas: ["intermediate-value-theorem"], strategy: "", tree: ["alg.poly.higher"] },
   // ---- 2014 BMT Geometry. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2014 BMT Geometry, Problem 1", formulas: ["regular-hexagon-area", "circle-basics"], strategy: "", tree: ["geo.poly.regular.hex"] },
@@ -16313,9 +16323,14 @@ window.MATH_PROBLEM_DB = [
   // ---- 2013 BMT Analysis. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2013 BMT Analysis, Problem 1", formulas: ["linear-elimination"], strategy: "", tree: ["alg.eq.linear.system"] },
   { ref: "2013 BMT Analysis, Problem 2", formulas: ["power-mean-inequality"], strategy: "", tree: ["alg.ineq.optimize.constraint"] },
+  { ref: "2013 BMT Analysis, Problem 3", formulas: [], strategy: "", calculus: true },
   { ref: "2013 BMT Analysis, Problem 4", formulas: ["complex-basics", "complex-modulus-argument"], strategy: "", tree: ["alg.cx.polar.arith"] },
+  { ref: "2013 BMT Analysis, Problem 5", formulas: [], strategy: "", calculus: true },
   { ref: "2013 BMT Analysis, Problem 6", formulas: ["roots-of-unity", "rational-root-theorem"], strategy: "", tree: ["alg.poly.construct.given", "alg.cx.unity.poly"] },
   { ref: "2013 BMT Analysis, Problem 7", formulas: ["trivial-inequality", "useful-factorizations"], strategy: "", tree: ["alg.ineq.optimize.constraint"] },
+  { ref: "2013 BMT Analysis, Problem 8", formulas: [], strategy: "", calculus: true },
+  { ref: "2013 BMT Analysis, Problem 9", formulas: [], strategy: "", calculus: true },
+  { ref: "2013 BMT Analysis, Problem 10", formulas: [], strategy: "", calculus: true },
   // ---- 2013 BMT Discrete Math. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2013 BMT Discrete Math, Problem 1", formulas: ["crt"], strategy: "", tree: ["nt.mod.crt.system"] },
   { ref: "2013 BMT Discrete Math, Problem 2", formulas: ["basic-probability", "divisibility-rules"], strategy: "", tree: ["cp.prob.dice", "nt.div.gcd.basic"] },
