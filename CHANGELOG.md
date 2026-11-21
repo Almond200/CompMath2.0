@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **BMT 2017 to 2019 statements:** 87 more problems (175 of 355 in all), each read against its page image; 2019 Geometry 1 and 3 keep their figures. No tag needed changing.
 - **Problem statements for BMT 2013 to 2016 (owner: permission given):** Analysis, Discrete Math and Geometry rounds, 88 problems, each checked against its page image (the draft tools lose parts of formulas); the one figure (2016 Discrete Math 10) is cropped by hand. Tag fix: 2016 Geometry 9 cited the rotation-matrix card; its route is the law of cosines (AUDITS.md).
 - **Semantic search index rebuilt** (786 cards; `tests/book-search.cjs` passes again). Warm eval 158/187 top-1 (see PLAN.md).
 - **Problem statements for SMT (owner: permission given):** every subject test the database holds, 2011 to 2014 and 2018 to 2025 (667 problems) now show their statements and figures on each problem's page, credited "© Stanford Math Tournament · Reproduced with permission"; BMT and ARML are wired the same way, their statements to follow. Each statement was transcribed from the official PDF and checked against an image of its page. `check-statements.py` knows the new publishers.
