@@ -10156,7 +10156,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 70;
+  const STATEMENTS_V = 71;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {
@@ -10680,7 +10680,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const inner = chainInnerHtml(p, chainCol, chain, altIds);
     // A small "+ Show" / "- Hide" beside the heading opens and closes the strategy, like the
     // new-list + (owner, 2026-10-31). Click to show starts it closed; Shown starts it open.
-    const can = !!(p.strategy || p.solUrl || p.formulas.length);
+    // Every problem gets the button, calculus and other off-tree ones with nothing classified
+    // included, so the box behaves the same on every page (owner, 2026-11-21).
+    const can = true;
     const key = "problem-" + p.slug;
     const open = (!preview ? savedStrategy(key) : undefined) ?? (state.strategy !== "click");
     const hide = can && !open;

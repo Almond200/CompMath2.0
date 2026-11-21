@@ -1,0 +1,21 @@
+=== 1
+Notice that $\dfrac12+\dfrac24=1$. Find the number $N$ so that $\dfrac23+\dfrac3N=1$.
+=== 2
+You have two triangles, which altogether have six angles. Five of these angles are $50^\circ$, $60^\circ$, $70^\circ$, $80^\circ$, and $90^\circ$. How large (in degrees) is the sixth angle?
+=== 3
+Pianos on the planet Zoltan have more keys than those on Earth, but otherwise are quite similar. The lowest white key on a Zoltan piano is $A$ and the highest is $C$. In between, the white keys follow the repeating pattern $ABCDEFG$ and then starting over with $A$, eventually ending on $C$, just like on Earth. Which of the following numbers might be the number of white keys on a Zoltan piano?
+$$100,\quad 101,\quad 102,\quad 103,\quad 104,\quad 105,\quad 106$$
+=== 4
+When Phillipa is born, her parents buy candles shaped like the ten digits $0$ to $9$. They buy two of each kind of candle. On each of Phillipa's birthdays they light the appropriate candles on her birthday cake. So, for example, on her first birthday they use just one "$1$" candle, while on her $10$th birthday they use two candles, a "$1$" and a "$0$". Each candle can be used only $6$ times altogether. Eventually there comes a birthday when both copies of one of the required candles are already used up. How old (in years) does Phillipa become on that birthday?
+=== 5
+Suppose you increase one side of a rectangle by $100\%$ and the other side by $50\%$. By what percentage is the area of the rectangle increased?
+=== 6
+Beth buys $\$9$ worth of oranges that sell for $\$0.75$ each on Monday. On Thursday she finds that the oranges are on sale at $\$0.25$ each and buys another $\$9$ worth. What is the average cost per orange of the total number she bought?
+=== 7
+Sam thinks of a number, and whispers it to Sabrina. Sabrina either adds two to the number or doubles it, and whispers the result to Susan. Susan takes that number and either subtracts $3$ or divides the number by $3$. The final result she announces is $10$. What is the largest number Sam may have given Sabrina?
+=== 8
+Mr. Smith pours a full cup of coffee and drinks $\frac12$ cup of it, deciding it is too strong and needs some milk. So he fills the cup with milk, stirs it, and tastes again, drinking another $\frac14$ cup. Once again he fills the cup with milk, stirs it, and finds that this is just as he likes it. What ratio $\dfrac{\text{amount of coffee}}{\text{amount of milk}}$ does Mr. Smith like?
+=== 9
+In the figure $ABCD$ all four sides have length $10$ and the area is $60$. What is the length of the shorter diagonal, $AC$?
+
+@@fig:calgary2004_9.png@@

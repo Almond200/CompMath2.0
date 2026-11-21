@@ -1,0 +1,18 @@
+=== 1
+A prime number plus a perfect square equals $99$. What is the prime number?
+=== 2
+The price of a TV (before tax) is a whole number of dollars and is the same in Alberta and in BC. That tax is $7\%$ in Alberta and $15\%$ in BC. After the tax is applied the TV costs $\$10$ more in BC than in Alberta. What is the before-tax price (in dollars) of a TV?
+=== 3
+A quadrilateral has three sides of lengths $5.5$, $6.5$ and $7.5$ metres. The length of the fourth side in metres is a positive integer. How many possible lengths (in metres) can the fourth side have?
+=== 4
+Reim and Bindu are in a line with other students, waiting to see a movie. There are at most $30$ students in the line. Reim says: "There are three times as many students after me in this line than before me." Bindu says: "There are four times as many students after me in this line than before me." How many students are in the line?
+=== 5
+Anna, Bob and Carol ran a $1000$m race and each ran at a (different) constant speed throughout the entire race. When Anna finished, Bob and Carol were at the $800$m and $600$m mark respectively. When Bob finished, how far (in metres) was Bob ahead of Carol?
+=== 6
+Thirty-one students who write a contest get all the integer grades from $70$ through $100$, with different students getting different grades. When one particular score is removed, the average of the $30$ remaining scores is the same as the average of all $31$ scores. What score has been removed?
+=== 7
+Robert was reading a book and was counting the number of $1$s that appeared in the page numbers. He counted that there were $24$ ones. If the book starts on page $1$, how many pages does the book contain?
+=== 8
+All of the possible arrangements of the letters $MATH$ are used to form four letter codes. These codes are put in a list in alphabetical order. (So the first code in the list is $AHMT$.) What is the $7$th code in this list?
+=== 9
+The number $N=111\ldots1$ consists of $2006$ ones. It is exactly divisible by $11$. How many zeroes are there in the quotient $\dfrac{N}{11}$?

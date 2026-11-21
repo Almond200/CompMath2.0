@@ -1,0 +1,26 @@
+=== 1
+If you place one die on a table, you can see five faces of it (the front, back, left, right and top). If you stack two dice on a table, then the number of visible faces is nine. In a stack of three dice, the number of visible faces is thirteen, and so on. How many dice do you need to stack on a table (in a single stack) so that the number of visible faces is $101$?
+
+@@fig:calgary2017_1.png@@
+=== 2
+What is the perimeter (in cm) of the following figure?
+
+@@fig:calgary2017_2.png@@
+=== 3
+The integer $5$ has the property that it is prime and one more than it (i.e., $6$) is twice a prime ($6=2\times 3$). The next integer with this property is $13$, since $13$ is prime and one more than it (i.e., $14$) is twice a prime ($14=2\times 7$). What is the next integer after $13$ with this property?
+=== 4
+Srosh can jog at $10$ km per hour in sunny weather and at $6$ km per hour in rainy weather. She jogs $20$ km in $3$ hours. How much time (in hours) during her run was it raining?
+=== 5
+A number is multiplied by $\frac32$ and $\frac32$ is then added. The result is divided by $\frac32$ and finally the original number is subtracted. What is the answer?
+=== 6
+In the game of pickleball, the winner scores $9$ points while the loser gets between $0$ and $8$ points (inclusive). Ruby plays $6$ games and gets a total of $50$ points. What is the smallest possible number of games she won?
+=== 7
+Mary is $24$ years old. She is twice as old as Ann was when Mary was as old as Ann is now. How old is Ann?
+=== 8
+A belt runs tightly round three pulleys, each of diameter $40\,$cm The centre of the top pulley is $60\,$cm vertically above the centre of the second pulley, which is $80\,$cm horizontally from the centre of the rightmost one.
+
+What is the total length in cm of the belt?
+
+@@fig:calgary2017_8.png@@
+=== 9
+Rahat has a jar with ten red balls, ten blue balls, and ten yellow balls. He picks one ball at random and puts it in his pocket. Then he picks another ball at random from the remaining $29$ balls in the jar. What is the probability that the two balls Rahat selected have different colour?

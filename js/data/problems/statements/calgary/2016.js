@@ -1,0 +1,19 @@
+// Problems and diagrams © 2016 University of Calgary Junior Mathematics Contest. Reproduced with permission from the University of Calgary Junior Mathematics Contest.
+// Source: the official Calgary Junior Math Contest papers. Built by tools/statements/build.py from tools/statements/spec/calgary/2016.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2016-calgary-junior-math-contest-1": { s: String.raw`A rectangle with integer length and integer width has area $13\ \text{cm}^2$. What is the perimeter of the rectangle in cm?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/english-exam-2016.pdf" },
+"2016-calgary-junior-math-contest-2": { s: String.raw`A nice fact about the current year is that $2016$ is equal to the sum $1+2+3+\cdots+63$ of the first $63$ positive integers. When Richard told this to his grandmother, she said: Interesting! I was born in a year which is also the sum of the first $X$ positive integers, where $X$ is some positive integer. In what year was Richard's grandmother born? (You may assume that Richard's grandmother is less than $100$ years old.)`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/english-exam-2016.pdf" },
+"2016-calgary-junior-math-contest-3": { s: String.raw`Suppose you reduce each of the following $64$ fractions to lowest terms:
+$$\frac1{64},\frac2{64},\frac3{64},\ldots,\frac{64}{64}.$$
+How many of the resulting $64$ reduced fractions have a denominator of $8$?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/english-exam-2016.pdf" },
+"2016-calgary-junior-math-contest-4": { s: String.raw`Peppers come in four colours: green, red, yellow and orange. In how many ways can you make a bag of six peppers so that there is at least one of each colour?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/english-exam-2016.pdf" },
+"2016-calgary-junior-math-contest-5": { s: String.raw`In the following addition of four-digit numbers, $X,Y$ and $Z$ stand for digits (not necessarily different). If the addition is correct, what digit does $Y$ stand for?
+
+$$\begin{array}{rrrrr}&2&X&X&Y\\+&3&X&Y&Z\\\hline&Z&Y&X&X\end{array}$$`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/english-exam-2016.pdf" },
+"2016-calgary-junior-math-contest-6": { s: String.raw`How many equilateral triangles of any size are there in the figure below?
+
+@@fig:calgary/2016/6.png@@`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/english-exam-2016.pdf" },
+"2016-calgary-junior-math-contest-7": { s: String.raw`A number was decreased by $20\%$, and the resulting number increased by $20\%$. What percentage of the original number is the final result?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/english-exam-2016.pdf" },
+"2016-calgary-junior-math-contest-8": { s: String.raw`A group of grade $7$ students and grade $9$ students are at a banquet. The average height of the grade $9$ students is $180$ cm. The average height of the grade $7$ students is $160$ cm. If the average height of all students at the banquet is $168$ cm and there are $72$ grade $9$ students, how many grade $7$ students are there?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/english-exam-2016.pdf" },
+"2016-calgary-junior-math-contest-9": { s: String.raw`If the straight-line distance from one corner of a cube to the opposite corner (i.e., the length of the long diagonal or body-diagonal of a cube) is $9$ cm, what is the area (in $\text{cm}^2$) of one of its faces?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/english-exam-2016.pdf" },
+});

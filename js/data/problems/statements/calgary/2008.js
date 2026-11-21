@@ -1,0 +1,17 @@
+// Problems and diagrams © 2008 University of Calgary Junior Mathematics Contest. Reproduced with permission from the University of Calgary Junior Mathematics Contest.
+// Source: the official Calgary Junior Math Contest papers. Built by tools/statements/build.py from tools/statements/spec/calgary/2008.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2008-calgary-junior-math-contest-1": { s: String.raw`The sum of two prime numbers is $9$. What is their product?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam08.pdf" },
+"2008-calgary-junior-math-contest-2": { s: String.raw`Find the largest positive integer $X$ such that $2/7$ is smaller than $7/X$.`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam08.pdf" },
+"2008-calgary-junior-math-contest-3": { s: String.raw`In a class, $9$ students like hockey and $11$ students like soccer. Of these, $5$ students like both hockey and soccer. On the other hand, $10$ students in the class like neither hockey nor soccer. How many students are in the class?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam08.pdf" },
+"2008-calgary-junior-math-contest-4": { s: String.raw`Notice that $2008$ has the property that it is divisible by its first and last digits but not by its second or third digits (because $2008/2=1004$ and $2008/8=251$ are both whole numbers, but $2008/0$ is not a whole number). What is the smallest number greater than $2008$ with this same property?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam08.pdf" },
+"2008-calgary-junior-math-contest-5": { s: String.raw`Two squares have total area $85\ \text{cm}^2$ and total perimeter $52$ cm. What is the area in $\text{cm}^2$ of the larger square?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam08.pdf" },
+"2008-calgary-junior-math-contest-6": { s: String.raw`Shannon receives a bouquet of flowers containing two kinds of flower. One kind of flower has $13$ petals and $9$ leaves. The other kind has $8$ petals and $11$ leaves. Altogether in her bouquet there are $100$ petals. How many leaves are there in the bouquet?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam08.pdf" },
+"2008-calgary-junior-math-contest-7": { s: String.raw`The area of triangle $ABE$ is $56\ \text{m}^2$. Points $C$ and $D$ lie on side $BE$ such that $CD$ is twice as long as $BC$ and $DE$ is twice as long as $CD$. What is the area in $\text{m}^2$ of triangle $ABC$?
+
+@@fig:calgary/2008/7.png@@`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam08.pdf" },
+"2008-calgary-junior-math-contest-8": { s: String.raw`Twelve friends were at a restaurant. Each person ordered four items from the menu. No two people ordered exactly the same set of four items. At least how many different items are on the restaurant's menu?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam08.pdf" },
+"2008-calgary-junior-math-contest-9": { s: String.raw`A circle is inscribed in a right-angled isosceles triangle. The radius of the circle is $1$ cm. The perimeter of the triangle in cm can be written in the form $a+b\sqrt2$ where $a$ and $b$ are integers. What is $a$?
+
+@@fig:calgary/2008/9.png@@`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam08.pdf" },
+});

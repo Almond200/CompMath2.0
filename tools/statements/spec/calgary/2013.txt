@@ -1,0 +1,20 @@
+=== 1
+From the set $\{1,2,3,4,5,6,7,8,9\}$, all odd numbers are removed. How many numbers are remaining?
+=== 2
+A bag contains red, blue and green marbles. $2/3$ of the marbles are not red and $3/4$ of the marbles are not blue. What fraction of the marbles are not green? Express your fraction in lowest terms.
+=== 3
+Ajooni walked $9$ km at $4$ km per hour, then biked for $4$ hours at $9$ km per hour. What was her average speed (in km per hour) for the entire trip?
+=== 4
+Notice that the digits of $2013$ are four consecutive integers (because $0,1,2,3$ are consecutive integers). What was the last year (before $2013$) whose digits were four consecutive integers?
+=== 5
+A circle is inscribed in an isosceles trapezoid, as shown, with parallel edges of lengths $8$ and $18$ cm and sloping edges of length $L$ cm each. What is $L$?
+
+@@fig:calgary2013_5.png@@
+=== 6
+Mary has a large box of candies. If she gives a third of her candies to her mom, then a third of the remaining candies to her dad, and finally a third of what's left to her little sister, there will only be $16$ candies in the box. How many candies are in the box at the beginning?
+=== 7
+I have half a litre of solution, which is $40\%$ acid, and the rest water. If I mix it with $2$ litres of solution which is only $10\%$ acid, what is the percentage of acid in the mixture?
+=== 8
+A two-digit positive integer is said to be doubly-divisible if its two digits are different and non-zero, and it is exactly divisible by each of its two digits. For example, $12$ is doubly-divisible since it is divisible by $1$ and $2$, whereas $99$ is not doubly-divisible, since its digits are equal, and $90$ is not doubly-divisible, because it contains a zero. What is the largest doubly-divisible positive integer?
+=== 9
+What is the remainder when $2^{2013}$ is divided by $7$?

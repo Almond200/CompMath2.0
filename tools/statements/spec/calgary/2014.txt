@@ -1,0 +1,26 @@
+=== 1
+From the set $\{2,3,4,5,6,7,8,9,10,11,12\}$ all prime numbers are removed. How many numbers are remaining?
+=== 2
+Alex, Betty and Chi have a total of $87$ candies altogether. If Chi gives $4$ candies to Betty and $3$ candies to Alex, each person then has the same number of candies. How many candies did Chi start with?
+=== 3
+Roll three dice so that each die shows one number from $1$ to $6$, and multiply these three numbers together. What is the smallest positive even number which cannot be obtained?
+=== 4
+A glass in the shape of a cylinder is $10$ cm high and $15$ cm around, as shown. The glass has a logo on it occupying $2\%$ of the curved side of the glass. What is the area (in square cm) of the logo?
+
+@@fig:calgary2014_4.png@@
+=== 5
+A book has $200$ pages. How many times does the digit $5$ appear in the page numbers?
+=== 6
+A home has some fish, some birds and some cats. Altogether there are $15$ heads and $14$ legs. If the home has more than one of each animal, how many fish are there?
+=== 7
+A ceiling fan has blades $60$ cm long, and rotates at a rate of $2$ revolutions per second. The speed of the end of a blade can be written in the form $N\pi$ cm per second, where $N$ is a positive integer. What is $N$?
+
+@@fig:calgary2014_7.png@@
+=== 8
+In the diagram below, similarly marked segments are equal in length. Find the length of the segment $PQ$.
+
+@@fig:calgary2014_8.png@@
+=== 9
+Ruby cuts $7$ equal-sized round cookies from a big round piece of cookie dough, as in the diagram below. What fraction of the original cookie dough is left?
+
+@@fig:calgary2014_9.png@@

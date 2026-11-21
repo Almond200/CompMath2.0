@@ -1,0 +1,22 @@
+=== 1
+Nine people go to a restaurant. Three of the people are celebrating their birthdays, and so the other six people will pay for the meals of the three. Everybody orders a meal costing a total of $\$30$, including tax. How much will each of the six non-birthday people pay (in dollars) if they all pay the same amount?
+=== 2
+There are $20$ households indicated by circles in the diagram below. The house indicated by $\times$ is infected with a highly contagious virus. At $4$pm each day, one person from each house can visit another house connected by a line. A house may have only one visitor per day. By nightfall, any house that was visited by an infected person, or had a resident visit an infected house, will become infected. What is the minimum number of days for all houses to be infected?
+
+@@fig:calgary2021_2.png@@
+=== 3
+Dimitri and Tracy each mow lawns at a constant speed. Dimitri can mow the lawn in $25$ minutes and Tracy can mow the same lawn in $20$ minutes. If they work together, then how long will it take them to mow $40\%$ of the lawn (in minutes)? Write your answer as a fraction $a/b$ where $a$ and $b$ are positive integers with no common factor.
+=== 4
+A trapezoid with a base and top of lengths $4$ cm and $2$ cm, respectively, and a height of $3$ cm, has a half circle cut out with the diameter of $2$ cm coinciding with its smaller side. Find the exact area of the figure in square cm.
+
+@@fig:calgary2021_4.png@@
+=== 5
+Two integers sum to $20$. The square root of their product is $8$. Find the smaller of the two integers.
+=== 6
+Suppose that $a$ and $b$ are positive integers so that $\frac37+\frac15=\frac a7-\frac b5$. What is the smallest possible value of $a$?
+=== 7
+A swimming pool has a rectangular surface $ABCD$, four vertical sides, and a flat but slanting bottom. The depth of water at corners $A$, $B$ and $C$ are $60$ cm, $100$ cm and $130$ cm respectively. What is the depth of water (in cm) at the fourth corner $D$?
+=== 8
+Chloe, Ollie and Ruby won a contest and went shopping to celebrate. Chloe bought scarves at $\$28$ each, Ollie bought ties at $\$34$ each, and Ruby bought hats at $\$51$ each. Each person bought at least one item, and they spent $\$850$ altogether. How many scarves did Chloe buy?
+=== 9
+Karys and Isaac each pick (randomly and secretly) a positive integer between $1$ and $11$ inclusive. This means the non-negative difference between their two chosen numbers could be any of the $11$ integers between $0$ and $10$. For instance, the difference is $0$ if they both pick the same number, and $10$ if one of them picks $1$ and the other picks $11$. What is the most likely non-negative difference between their two numbers?

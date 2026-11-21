@@ -1,0 +1,19 @@
+// Problems and diagrams © 2023 University of Calgary Junior Mathematics Contest. Reproduced with permission from the University of Calgary Junior Mathematics Contest.
+// Source: the official Calgary Junior Math Contest papers. Built by tools/statements/build.py from tools/statements/spec/calgary/2023.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2023-calgary-junior-math-contest-1": { s: String.raw`Ashley is $10$ years old. Brittany is half of Ashley's age. Carla is $6$ years older than Brittany. How many years old is Carla?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/Jr-Math-examenglish-2023-v4.pdf" },
+"2023-calgary-junior-math-contest-2": { s: String.raw`Christina made a total of $\$80$ over five days. Each day, she made $\$3$ more than the previous day. How much money (in dollars) did she make on the fourth day?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/Jr-Math-examenglish-2023-v4.pdf" },
+"2023-calgary-junior-math-contest-3": { s: String.raw`The sum of the digits of $2023$ is $2+0+2+3=7$ which is a prime number. What is the next year that has the sum of its digits equal to a prime number?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/Jr-Math-examenglish-2023-v4.pdf" },
+"2023-calgary-junior-math-contest-4": { s: String.raw`Suppose you want to make a square with an integer side length and whose area is as close as possible (smaller or bigger) to the area of a circle with radius $10$ cm. What would be the side length of the square in cm?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/Jr-Math-examenglish-2023-v4.pdf" },
+"2023-calgary-junior-math-contest-5": { s: String.raw`A class of $20$ students wrote a test which was scored out of $100$. The class average was $97$. What is the lowest mark any student could have scored?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/Jr-Math-examenglish-2023-v4.pdf" },
+"2023-calgary-junior-math-contest-6": { s: String.raw`A quadrilateral $ABCD$ is divided by its diagonals into $4$ triangles, and the areas of three of the triangles in $\text{cm}^2$ are $25$, $15$ and $12$ as shown in the diagram. What is the area of the fourth triangle in $\text{cm}^2$?
+
+@@fig:calgary/2023/6.png@@`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/Jr-Math-examenglish-2023-v4.pdf" },
+"2023-calgary-junior-math-contest-7": { s: String.raw`Notice that
+$$\frac23-\frac35=\frac1{15},\qquad\frac45-\frac57=\frac3{35}\qquad\text{and}\qquad\frac67-\frac79=\frac5{63}.$$
+Using this same pattern, you get an equation $\dfrac ab-\dfrac cd=\dfrac e{99}$, where $a,b,c,d,e$ are (not necessarily different) positive integers. Find $a+b+c+d+e$.`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/Jr-Math-examenglish-2023-v4.pdf" },
+"2023-calgary-junior-math-contest-8": { s: String.raw`The product of a three-digit number and a two-digit number is $10000$. Neither of the two numbers has the digit $0$. What is the sum of the two numbers?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/Jr-Math-examenglish-2023-v4.pdf" },
+"2023-calgary-junior-math-contest-9": { s: String.raw`A cubical die has numbers from one to six on its six faces, so that the sum of the numbers on each pair of opposite faces is always equal to $7$. If we glue up $10$ dice putting one above the other, as in the diagram, and add all the numbers on the external faces (top, bottom and sides), what is the maximum sum we can get?
+
+@@fig:calgary/2023/9.png@@`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/Jr-Math-examenglish-2023-v4.pdf" },
+});
