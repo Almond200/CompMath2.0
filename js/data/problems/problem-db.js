@@ -11590,7 +11590,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2009 Columbus State Tournament, Problem 19", formulas: ["change-of-base"], strategy: "", tree: ["alg.exp.log.rules"] },
   { ref: "2009 Columbus State Tournament, Problem 20", formulas: ["inverse-trig-identities"], strategy: "", tree: ["alg.trig.eq.inverse"] },
   { ref: "2009 Columbus State Tournament, Problem 21", formulas: ["pythagorean-identities"], strategy: "", tree: ["alg.trig.eq.solve"] },
-  { ref: "2009 Columbus State Tournament, Problem 22", formulas: ["polar-coordinates"], strategy: "", tree: ["alg.trig.identity.sum"] },
+  { ref: "2009 Columbus State Tournament, Problem 22", formulas: ["polar-coordinates"], strategy: "", tree: ["geo.coord.line.slope"] },
   { ref: "2009 Columbus State Tournament, Problem 23", formulas: ["denesting-radicals"], strategy: "", tree: ["alg.eq.radical.eq"] },
   { ref: "2009 Columbus State Tournament, Problem 24", formulas: ["law-of-cosines"], strategy: "", tree: ["geo.tri.trig.cosines"] },
   { ref: "2009 Columbus State Tournament, Problem 25", formulas: ["equilateral-triangle-facts"], strategy: "", tree: ["geo.poly.composite.overlap"] },
