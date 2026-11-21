@@ -2623,3 +2623,7 @@ Tag fixes found while importing SMT statements:
 
 - 2023 SMT General #10: `right-triangle-inradius` / `geo.tri.radii.in` → `folded-paper`, `pythagorean-theorem` / `geo.basic.pyth.fold` (reflecting a triangle over the diagonal is a fold; no inradius in the route).
 - 2020 SMT General #6: `grid-paths`, `complementary-counting` / `cp.struct.paths.obstacle` → `time-per-leg`, `pythagorean-theorem` / `alg.word.rates.motion` (a timing problem; nothing is counted).
+
+Tag fixes found while importing BMT statements:
+
+- 2016 BMT Geometry #9: `rotation-reflection-matrices` → `law-of-cosines` (squares on the sides of a right triangle: $DG^2=4a^2+b^2$ and $EI^2=a^2+4b^2$ by the law of cosines at $B$ and $A$; no transformation matrices are used).

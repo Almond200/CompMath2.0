@@ -2,6 +2,8 @@
 
 **2026-11-21**
 
+- **Problem statements for BMT 2013 to 2016 (owner: permission given):** Analysis, Discrete Math and Geometry rounds, 88 problems, each checked against its page image (the draft tools lose parts of formulas); the one figure (2016 Discrete Math 10) is cropped by hand. Tag fix: 2016 Geometry 9 cited the rotation-matrix card; its route is the law of cosines (AUDITS.md).
+- **Semantic search index rebuilt** (786 cards; `tests/book-search.cjs` passes again). Warm eval 158/187 top-1 (see PLAN.md).
 - **Problem statements for SMT (owner: permission given):** every subject test the database holds, 2011 to 2014 and 2018 to 2025 (667 problems) now show their statements and figures on each problem's page, credited "© Stanford Math Tournament · Reproduced with permission"; BMT and ARML are wired the same way, their statements to follow. Each statement was transcribed from the official PDF and checked against an image of its page. `check-statements.py` knows the new publishers.
 - **Proof Methods olympiad-only (owner):** two new AMC methods, If-Then Statements and Settling a Claim with One Example (P79, P80; 786 cards), take the AMC problems of Proving the Contrapositive, Disproof by Counterexample and Proof by Construction; Symmetry Arguments now covers counting and takes Without Loss of Generality's. The five proof cards are Olympiad again (AUDITS.md, "Proof Methods kept olympiad-only").
 - **Angles on cards (owner):** a Settings choice writes a card's degree measures in radians ($60^\circ$ as $\frac{\pi}{3}$); lessons, examples, contest problems and figures keep degrees. In a formula box, parentheses around a converted fraction grow with it (`\left(`, `\right)`).
