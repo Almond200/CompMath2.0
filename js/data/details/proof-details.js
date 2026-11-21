@@ -82,7 +82,7 @@ No particular formula is needed; the work is a direct proof of the switched stat
 - Forgetting edge cases that the negation includes: "$n$ is not prime" includes $n = 1$.
 
 ## Contest profile
-An olympiad proof technique, frequent in number theory statements of the form "if ... is prime, then ...". In answer-only contests it appears only as reasoning behind a step.
+An olympiad proof technique, frequent in number theory statements of the form "if ... is prime, then ...". AMC questions about which statement follows from a rule are [[if-then-statements|If-Then Statements]].
 `,
 
 "proof-by-cases": String.raw`
@@ -109,7 +109,7 @@ If one of $A_1, \ldots, A_k$ must hold, and each one implies $Q$, then $Q$ holds
 - Too many cases when a factorization or a congruence would cover them together.
 
 ## Contest profile
-Appears at every level. On AMC and AIME it shows up as checking residues or parities; in olympiad solutions it is the structure of many number theory and inequality proofs.
+The structure of many olympiad number theory and inequality proofs, where every case must be covered and proved. On the AMC and AIME the same split is Casework.
 `,
 
 "wlog-symmetry": String.raw`
@@ -136,7 +136,7 @@ Any other case turns into the chosen one by a relabeling, and the relabeling lea
 - Scaling a statement that is not homogeneous.
 
 ## Contest profile
-A standard step in olympiad inequalities, geometry, and combinatorics. In answer-only contests it appears as an assumption on the order of the variables before casework.
+A standard step in olympiad inequalities, geometry, and combinatorics, where the symmetry has to be checked before it is used. In answer-only contests the same idea is [[symmetry-probability|Symmetry Arguments]].
 `,
 
 "proving-both-directions": String.raw`
@@ -217,7 +217,7 @@ A statement about all objects is false exactly when at least one object fails it
 - Confusing "not always true" with "never true"; a counterexample shows only the first.
 
 ## Contest profile
-Common in AMC "which of the following must be true" questions, where each wrong option has a counterexample, and in olympiad "prove or disprove" problems.
+Olympiad "prove or disprove" problems and the counterexample half of a proof that a bound is not improvable. An AMC question asking which statement must be true uses the same logic in a lighter form: [[settle-with-an-example|Settling a Claim with One Example]].
 `,
 
 "induction": String.raw`
@@ -416,7 +416,7 @@ No particular formula is needed; each construction is checked against the proble
 - Missing the cases where no object exists, which the construction should explain.
 
 ## Contest profile
-Central to olympiad combinatorics and number theory, and to the "achieve the bound" half of AIME optimization problems.
+Central to olympiad combinatorics and number theory, where the construction must work for every $n$ and be proved to. Answer-only contests use the same idea as [[bound-and-construct|Bound, Then Construct]] and [[settle-with-an-example|Settling a Claim with One Example]].
 `,
 
 "pigeonhole-argument": String.raw`

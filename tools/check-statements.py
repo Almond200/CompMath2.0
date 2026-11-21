@@ -28,10 +28,12 @@ hmmt_rounds = {
 for f in sorted(glob.glob(os.path.join(statement_dir, "**", "*.js"), recursive=True)):
     src = open(f, encoding="utf-8").read()
     source = os.path.dirname(os.path.relpath(f, statement_dir))
-    if source not in ("", "hmmt", "cemc", "ahsme"):
+    if source not in ("", "hmmt", "cemc", "ahsme", "smt", "bmt", "arml"):
         bad.append(f"{f}: unknown publisher directory")
         continue
-    credit = {"": "CC BY-NC-SA", "hmmt": "Reproduced with permission from HMMT", "cemc": "CC BY-NC 4.0", "ahsme": "CC BY-NC-SA 4.0"}[source]
+    credit = {"": "CC BY-NC-SA", "hmmt": "Reproduced with permission from HMMT", "cemc": "CC BY-NC 4.0", "ahsme": "CC BY-NC-SA 4.0",
+              "smt": "Reproduced with permission from the Stanford Math Tournament", "bmt": "Reproduced with permission from the Berkeley Math Tournament",
+              "arml": "Reproduced with permission from the American Regions Mathematics League"}[source]
     if credit not in src.split("window.")[0]: bad.append(f"{f}: missing credit header")
     for m in re.finditer(r'^"([a-z0-9-]+)": \{ s: String\.raw`(.*?)`, u: "([^"]*)" \},$', src, re.S | re.M):
         slug, s, u = m.groups(); n += 1
@@ -56,6 +58,14 @@ for f in sorted(glob.glob(os.path.join(statement_dir, "**", "*.js"), recursive=T
             paper = match and f"https://cemc.uwaterloo.ca/sites/default/files/documents/{match[1]}/{match[1]}{match[2].title()}Contest"
             if not paper or u not in (paper + ".html", paper + ".pdf"):
                 bad.append(f"{slug}: does not link its official CEMC paper")
+        elif source in ("smt", "bmt", "arml"):
+            pattern = {"smt": r"(\d{4})-smt-[a-z-]+-\d+", "bmt": r"(\d{4})-bmt-[a-z-]+-\d+", "arml": r"(\d{4})-arml-(?:local-)?individual-\d+"}[source]
+            host = {"smt": "https://www.stanfordmathtournament.com/pdfs/smt", "bmt": "https://berkeley.mt/archives/bmt-", "arml": "https://www.arml.com/ARML/arml_2019/public_contest_files/"}[source]
+            match = re.fullmatch(pattern, slug)
+            # BMT 2017 Geometry is only posted on a mirror of the official paper.
+            mirror = slug.startswith("2017-bmt-geometry-") and u.startswith("https://oss.linstitute.net/")
+            if not match or not (u.startswith(host) or mirror) or (source != "arml" and not mirror and match[1] not in u):
+                bad.append(f"{slug}: does not link its official paper")
         elif not u.startswith(("https://live.poshenloh.com/", "https://artofproblemsolving.com/wiki/", "pdf:fall-2021-amc-10", "https://wiki.randommath.com/amc10/2026/part-a/", "https://wiki.randommath.com/amc12/2026/part-a/")):
             bad.append(f"{slug}: source link missing")
         # A size command (\\tiny, \\small ...) shrinks a formula to near-unreadable size on screen.

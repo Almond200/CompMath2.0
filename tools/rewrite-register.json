@@ -1866,7 +1866,9 @@
     "unfold-the-bounces": "method",
     "cone-insphere": "formula",
     "bound-and-construct": "method",
-    "small-cases-pattern": "method"
+    "small-cases-pattern": "method",
+    "if-then-statements": "method",
+    "settle-with-an-example": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -9133,6 +9135,18 @@
       ]
     ],
     "small-cases-pattern": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "if-then-statements": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "settle-with-an-example": [
       [
         "(new card)",
         "written directly in the method template"

@@ -129,7 +129,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cycle-hunting", "cryptarithms", "digit-manipulation", "calendar-problems", "quadratic-perfect-square", "palindromes"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
-    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 90 cards across 11 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 92 cards across 11 sections.",
     sections: [
       { title: "Counting Basics",
         note: "Arrangements, selections and distributions. Almost every harder count reduces to one of these.",
@@ -154,7 +154,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["expected-value", "tail-sum-expectation", "total-expectation", "expected-fixed-points", "variance-independence", "order-statistics"] },
       { title: "Existence Arguments",
         note: "Proving something must exist without constructing it.",
-        ids: ["pigeonhole", "odd-part-chains", "handshake-lemma", "invariants-coloring", "coloring-arguments", "pairing-to-bound", "subset-avoiding-relation", "bound-and-construct"] },
+        ids: ["pigeonhole", "odd-part-chains", "handshake-lemma", "invariants-coloring", "coloring-arguments", "pairing-to-bound", "subset-avoiding-relation", "bound-and-construct", "if-then-statements", "settle-with-an-example"] },
       { title: "Graph Theory",
         note: "Vertices and edges, and the counting arguments specific to them.",
         ids: ["eulerian-paths", "graph-coloring", "disconnected-graph-edges"] },
@@ -959,6 +959,6 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["directed-lengths", "directed-angles"] },
       { title: "Testing the Answer",
         note: "Before marking a choice: estimate it, try a small case, or look for a counterexample.",
-        ids: ["estimating-answers", "disproof-by-counterexample", "organized-listing"] },
+        ids: ["estimating-answers", "settle-with-an-example", "organized-listing"] },
     ] },
 ];

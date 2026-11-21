@@ -258,6 +258,7 @@
   const DIAGRAM_MODES = ["none", "on"];
   const DENSITIES = ["comfortable", "compact", "spacious"];
   const NOTATIONS = ["sigma", "expanded"];
+  const ANGLE_MODES = ["degrees", "radians"];
   const TEXT_SIZES = ["normal", "large", "larger"];
   // How many rows of a card's formulas a browsing card shows: 1, 2, 3, or all of them. A card's
   // own page always shows every form.
@@ -329,6 +330,7 @@
       diagrams: pick(P.diagrams === "thumb" || P.diagrams === "curated" || P.diagrams === "all" ? "on" : P.diagrams, DIAGRAM_MODES),
       density: pick(P.density, DENSITIES),
       notation: pick(P.notation, NOTATIONS),
+      angles: pick(P.angles, ANGLE_MODES),
       text: pick(P.text, TEXT_SIZES),
       lines: pick(P.lines, FORMULA_LINES),
       order: pick(P.order, ORDERS),
@@ -355,7 +357,7 @@
         filter: { tiers: [...state.filter.tiers], importances: [...state.filter.importances] },
         prefs: {
           layout: state.layout, diagrams: state.diagrams,
-          density: state.density, notation: state.notation,
+          density: state.density, notation: state.notation, angles: state.angles,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
           tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonLinksChosen: !!state.lessonLinksChosen, lessonWidth: state.lessonWidth
@@ -383,6 +385,7 @@
     diagrams: _loaded.diagrams,  // "none" | "on" — figures on the card face
     density: _loaded.density,    // "comfortable" | "spacious" | "compact"
     notation: _loaded.notation,  // "sigma" | "expanded"
+    angles: _loaded.angles,      // "degrees" | "radians": how angle measures are written on cards
     text: _loaded.text,          // "normal" | "large"
     lines: _loaded.lines,        // "1" | "2" | "3" | "all" -- rows of a card's formulas shown while browsing
     order: _loaded.order,        // "tier" | "curated" | "problems" — card order on section pages (tier, then importance)
@@ -2158,6 +2161,7 @@
   function renderMath(container, lazyCards) {
     if (lazyCards) container.querySelectorAll(".cards > .card").forEach(c => { c.dataset.math = "0"; });
     const skip = el => lazyCards && el.closest('.card[data-math="0"]');
+    if (state.angles === "radians") anglesToRadians(container, skip);
     container.querySelectorAll(".formula-display[data-latex]").forEach(el => {
       if (skip(el)) return;
       try {
@@ -2186,6 +2190,43 @@
     tidyDiagrams(container);
     requestAnimationFrame(() => fitInlineMath(container));
     // Card formulas are fitted once, at the end of render(), after the layout settles.
+  }
+  // Angles on cards (owner, 2026-11-21): with Radians chosen, a card's degree measures are
+  // rewritten before the math is set, $60^\circ$ as $\frac{\pi}{3}$ and $k^\circ$ as
+  // $\tfrac{\pi}{180}k$. Only a card (a tile, or a card's page, marked data-angles) changes; its
+  // examples, contest problems, figures and every lesson keep degrees, since their wording
+  // ("in degrees") and answers depend on them.
+  const ANGLE_SKIP = ".katex, .practice, [data-card-problems], [data-card-profile], .contest-profile, .prob-statement, .diagram, svg, script, style, textarea, input";
+  const DEG = String.raw`\s*\^\s*(?:\{\s*\\circ\s*\}|\\circ)`;
+  const DEG_NUM = new RegExp(String.raw`(\d+(?:\.\d+)?)` + DEG, "g");
+  const DEG_SYM = new RegExp(String.raw`(\([^()]*\)|\\[a-zA-Z]+|[A-Za-z])` + DEG, "g");
+  function degreesAsRadians(d) {
+    const [ip, fp = ""] = d.split(".");
+    let num = parseInt(ip + fp, 10), den = 180 * 10 ** fp.length;
+    const g = (a, b) => b ? g(b, a % b) : a, k = g(num, den);
+    num /= k; den /= k;
+    if (!num) return "0";
+    const top = (num === 1 ? "" : num) + "\\pi";
+    return den === 1 ? top : `\\frac{${top}}{${den}}`;
+  }
+  const radianTex = tex => tex.replace(DEG_NUM, (m, d) => degreesAsRadians(d)).replace(DEG_SYM, (m, x) => `\\tfrac{\\pi}{180}${x}`);
+  function anglesToRadians(container, skip) {
+    const scopes = [...container.querySelectorAll("[data-angles]")];
+    const own = container.closest && container.closest("[data-angles]");
+    if (own) scopes.push(container);
+    scopes.forEach(scope => {
+      scope.querySelectorAll(".formula-display[data-latex]").forEach(el => {
+        if (!skip(el) && !el.closest(ANGLE_SKIP)) el.dataset.latex = radianTex(el.dataset.latex);
+      });
+      const walk = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      for (let n = walk.nextNode(); n; n = walk.nextNode()) if (/circ|°/.test(n.nodeValue)) nodes.push(n);
+      nodes.forEach(n => {
+        const el = n.parentElement;
+        if (!el || el.closest(ANGLE_SKIP) || skip(el)) return;
+        n.nodeValue = radianTex(n.nodeValue).replace(/(\d+(?:\.\d+)?)°/g, (m, d) => "$" + degreesAsRadians(d) + "$");
+      });
+    });
   }
   // Inline math wider than its line, on a phone or at a larger text size. Math held to its
   // punctuation first gets its own line breaks back; math that still overflows (a long root or
@@ -2643,7 +2684,7 @@
       ? `<span class="card-crumb">${entry.section.title} ${uiIcon("chevron-right")} ${entry.subsection.title}</span>`
       : "";
     return `
-      <article class="card card-${kindOf(f)}" data-id="${f.id}" id="f-${f.id}">
+      <article class="card card-${kindOf(f)}" data-id="${f.id}" id="f-${f.id}" data-angles>
         <div class="card-head">
           <h4 class="card-name"><a href="#/f/${f.id}">${f.name}</a></h4>
           <span class="card-tags">${kindBadgeHtml(f)}${impBadgeHtml(f)}</span>
@@ -4479,7 +4520,7 @@
       : "";
     const withTools = state.tools === "on";
     $content.innerHTML = `${withTools ? `<div class="detail-with-tools">` : ""}
-      <div class="detail">
+      <div class="detail" data-angles>
         <div class="back-row">
           ${backFromSearch
             ? `<a class="back-link" href="#" data-back-search>${uiIcon("arrow-left")} Back to ${backFromSearch.adv
@@ -4978,7 +5019,7 @@
   // allowed value the settings loader falls back to.
   const SETTING_DEFAULTS = {
     theme: "light", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
-    notation: NOTATIONS[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
+    notation: NOTATIONS[0], angles: ANGLE_MODES[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
     order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], lessonWidth: LESSON_WIDTHS[0], strategy: STRATEGY_MODES[0], contestLists: CONTEST_LIST_MODES[0]
   };
   function settingRow(name, desc, key, current, options, pv) {
@@ -5020,6 +5061,7 @@
           ${settingRow("Formula lines", "The most rows of a card's formulas to show while browsing, so the cards in a grid stay even. A card's own page always shows all of them. Card thumbnails are written with the most important formula first.", "lines", state.lines, [["1", "1"], ["2", "2"], ["3", "3"], ["all", "All"]], "browse")}
           ${settingRow("Keyword tags", "The tag chips on a card's page. Search uses them either way.", "tags", state.tags ? "on" : "off", [["on", "Show"], ["off", "Hide"]], "page")}
           ${settingRow("Notation", "Expanded writes out the first few terms instead of \u2211 or \u220f in formula boxes and key forms. Explanations keep sigma notation, where the index is usually the point.", "notation", state.notation, [["sigma", "Sigma"], ["expanded", "Expanded"]], "browse page")}
+          ${settingRow("Angles on cards", "How angle measures are written on cards: 60\u00b0 or \u03c0/3. Only the cards change; lessons, examples, contest problems and figures keep degrees.", "angles", state.angles, [["degrees", "Degrees"], ["radians", "Radians"]], "page")}
           ${settingRow("Figures on cards", "Figures always appear on a card's own page. On also shows each card's figure while browsing.", "diagrams", state.diagrams, [["none", "Off"], ["on", "On"]], "browse")}
           ${settingRow("Page tools", "Show page tools on card pages and in list sidebars, including links and printing.", "tools", state.tools, [["off", "Off"], ["on", "On"]], "page")}
           ${settingRow("Scroll speed", "How far a page moves for each turn of the mouse wheel or swipe on the trackpad. Normal leaves your browser's own scrolling as it is.", "scroll", state.scroll, [["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]])}
@@ -5028,7 +5070,7 @@
           <h3 class="set-panel-title">Browsing</h3>
           ${settingRow("Subject pages", "Every card in a subject on one scrolling page, grouped by topic, or just the names, A to Z.", "layout", state.layout, [["cards", "Cards"], ["wiki", "A&ndash;Z index"]], "subject")}
           ${settingRow("Card order", "How cards are ordered on a subject page. Curated keeps the order the cards were written in; Most used puts first the cards that the most practice problems use.", "order", state.order, [["curated", "Curated"], ["problems", "Most used"]], "subject")}
-          ${settingRow("Contest sections on pages", "Some pages group problems or figures by contest: a card&rsquo;s practice problems, the contest statistics on a card&rsquo;s or topic&rsquo;s page, and the years on the Contests page. Folded shows the AMC and AIME, and the first three problems of each contest, with a Show more button for the rest, and folds them again when you leave the page. Unfolded shows every contest and every problem at once. This does not change your Lists in Learn.", "contestLists", state.contestLists, [["click", "Folded"], ["show", "Unfolded"]], "contests")}
+          ${settingRow("Contest sections on pages", "How pages that group problems by contest open. Folded shows the AMC and AIME and three problems per contest, with Show more for the rest. Unfolded shows everything.", "contestLists", state.contestLists, [["click", "Folded"], ["show", "Unfolded"]], "contests")}
           ${settingRow("When the app opens", "Where you land when you open the app without a link to a particular page. The front page shows the four spaces; Formulas goes straight in. The logo still takes you to the front page.", "start", state.start, [["landing", "Front page"], ["formulas", "Formulas"]])}
         </section>
         <section class="set-panel">
@@ -5073,8 +5115,8 @@
               <p>AMC, AJHSME, AHSME and AIME problems are &copy; Mathematical Association of America, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. This credit applies to their statements and figures throughout the app, including textbooks, previews and practice sets.</p>
               <p>Most text, figures and answer keys come from <a href="https://live.poshenloh.com/past-contests" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>. Some papers also use MAA PDF copies, the <a href="https://wiki.randommath.com/" target="_blank" rel="noopener noreferrer">Random Math wiki</a> and the <a href="https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>, and some answer keys were checked against those published by <a href="https://www.thethinkacademy.com/" target="_blank" rel="noopener noreferrer">Think Academy</a>. Statements have been reformatted for display, including LaTeX and figure layout.</p>
               <p>Problems from the individual rounds of <a href="https://www.hmmt.org/www/archive/problems" target="_blank" rel="noopener noreferrer">HMMT February and November</a> are listed by topic and difficulty. Individual statements and diagrams are reproduced with permission from HMMT. Problem pages link to the official papers and solutions. Mock contests also use author-restated prompts from the <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/problems.pdf" target="_blank" rel="noopener noreferrer">2019 HMMT February Geometry paper</a>, with answer values checked against its <a href="https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/geo/solutions.pdf" target="_blank" rel="noopener noreferrer">official solutions</a>.</p>
-              <p>Problems from the Individual round of <a href="https://www.arml.com/ARML/arml_2019/page/index.php?page_type=public&amp;page=4" target="_blank" rel="noopener noreferrer">ARML</a> (2009 to 2014 and 2016 to 2019, the years ARML has published) are listed the same way: their statements and solutions are not reproduced, and each problem's page opens ARML's official contest booklet at the round. The Individual round of ARML Local, ARML's own local contest, is listed the same way for 2009 to 2014, from the same book. ARML problems are &copy; American Regions Mathematics League; the MAA license above does not apply to them.</p>
-              <p>Problems from the subject tests of the <a href="https://www.stanfordmathtournament.com/past-tests/problems" target="_blank" rel="noopener noreferrer">Stanford Math Tournament</a> (SMT: Algebra, Geometry, and Advanced, Discrete or in 2021 Combinatorics and Number Theory) are listed the same way: each problem's page opens SMT's official test and its official solutions; nothing is reproduced. SMT material is attributed to SMT; the MAA license above does not apply to it.</p>
+              <p>Problems from the Individual round of <a href="https://www.arml.com/ARML/arml_2019/page/index.php?page_type=public&amp;page=4" target="_blank" rel="noopener noreferrer">ARML</a> (2009 to 2014 and 2016 to 2019, the years ARML has published) are listed the same way: each problem's page opens ARML's official contest booklet at the round and its solutions. The Individual round of ARML Local, ARML's own local contest, is listed the same way for 2009 to 2014, from the same book. ARML problems are &copy; American Regions Mathematics League, and the statements and diagrams shown in the app are reproduced with its permission; the MAA license above does not apply to them.</p>
+              <p>Problems from the subject tests of the <a href="https://www.stanfordmathtournament.com/past-tests/problems" target="_blank" rel="noopener noreferrer">Stanford Math Tournament</a> (SMT: Algebra, Geometry, and Advanced, Discrete or in 2021 Combinatorics and Number Theory) are listed the same way: each problem's page opens SMT's official test and its official solutions. SMT problems are &copy; Stanford Math Tournament, and the statements and diagrams shown in the app are reproduced with its permission; the MAA license above does not apply to them.</p>
               <p>Problems from Part I (the multiple-choice individual test) of the <a href="https://mathcomp.math.umd.edu/past-contests/" target="_blank" rel="noopener noreferrer">University of Maryland High School Mathematics Competition</a> (UMD HSMC) are listed the same way: each problem's page opens the year's official paper and solutions; nothing is reproduced. That material is attributed to the competition; the MAA license above does not apply to it.</p>
               <p>Problems from the individual subject tests of the <a href="https://cmimc.math.cmu.edu/" target="_blank" rel="noopener noreferrer">Carnegie Mellon Informatics and Mathematics Competition</a> (CMIMC, 2016 to 2022) are listed the same way: each problem's page opens CMIMC's official test and solutions, kept in the <a href="https://github.com/howard36/cmimc-official" target="_blank" rel="noopener noreferrer">source repository of CMIMC's own site</a> since the archive left the site; nothing is reproduced. CMIMC material is attributed to CMIMC; the MAA license above does not apply to it.</p>
               <p>Problems from the 20-question test of <a href="https://mathprize.atfoundation.org/resources" target="_blank" rel="noopener noreferrer">Math Prize for Girls</a> (2009 to 2026; there was no contest in 2020) are listed the same way: each problem's page opens the Advantage Testing Foundation's official test and, where posted, its solutions; nothing is reproduced. That material is attributed to the Advantage Testing Foundation; the MAA license above does not apply to it.</p>
@@ -5089,7 +5131,7 @@
               <p>Problems from the Individual test of the <a href="https://www.columbusstate.edu/math/tournament/previous-math-contest.php" target="_blank" rel="noopener noreferrer">Columbus State Invitational Mathematics Tournament</a> (Columbus State University) are listed the same way: each problem’s page opens the official test and its solutions; nothing is reproduced. That material is attributed to Columbus State University; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual round of the <a href="https://math.duke.edu/duke-math-meet" target="_blank" rel="noopener noreferrer">Duke Math Meet</a> (2007 to 2022) are listed the same way: each problem's page opens the round as Duke's mathematics department posts it, and its solutions where they were posted; nothing is reproduced. Duke Math Meet material is attributed to the Duke Math Meet; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual round of <a href="https://www.caltechmathmeet.org/problems" target="_blank" rel="noopener noreferrer">CHMMC</a>, the Caltech Harvey Mudd Math Competition, run since 2024 as the Caltech Math Meet (2010 to 2026; 2010 and 2012 had two sittings each), are listed the same way: each problem's page opens the round and its solutions on the Caltech Math Meet archive; nothing is reproduced. That material is attributed to CHMMC and the Caltech Math Meet; the MAA license above does not apply to it.</p>
-              <p><a href="https://berkeley.mt/archives/bmt/" target="_blank" rel="noopener noreferrer">BMT</a> and <a href="https://pumac.princeton.edu/archives" target="_blank" rel="noopener noreferrer">PUMaC</a> entries link to the official contest papers and solutions. Their statements and solutions are not reproduced here.</p>
+              <p><a href="https://berkeley.mt/archives/bmt/" target="_blank" rel="noopener noreferrer">BMT</a> and <a href="https://pumac.princeton.edu/archives" target="_blank" rel="noopener noreferrer">PUMaC</a> entries link to the official contest papers and solutions. BMT problems are &copy; Berkeley Math Tournament, and the BMT statements and diagrams shown in the app are reproduced with its permission; PUMaC statements and solutions are not reproduced here.</p>
             </div>
           </div></div>
         </details>
@@ -5188,6 +5230,7 @@
         text: "font size, font, fonts, bigger text, larger text, small text, text size, zoom, readability, letters, type size, words",
         lines: "formula rows, rows, how many lines, truncate, shorten cards, formulas on cards, lines",
         tags: "keywords, keyword, chips, labels on cards, tags, topics",
+        angles: "radians, radian, degrees, degree, angle measure, pi, angles, angle units, units",
         notation: "sigma, summation, sum notation, product notation, expanded terms, sums, products, symbols",
         diagrams: "figures, figure, pictures, images, drawings, thumbnails, diagrams, graphics, illustrations",
         tools: "page tools, sidebar on the right, right column, wikipedia, print, printing, permanent link, permalink, what links here, tools",
@@ -5703,6 +5746,8 @@
       </div>`;
   }
   function recentRowsHtml(limit, kinds) {
+    const labels = readRecentLabels();
+    let labelsChanged = false;
     const rows = readRecent().map(k => {
       const id = k.slice(2);
       if (k[0] === "f" && BY_ID[id]) {
@@ -5719,14 +5764,33 @@
         const at = learnLessonByCode(id);
         return at && learnLessonSummary(at.c, at.l) ? `<a class="rc-row" href="${learnHash(at.b, at.c, lessonNum(at.l))}"><span class="badge badge-lesson">LESSON</span><span class="rc-name">${at.l.code} ${escapeAttr(at.l.title)}</span><span class="rc-meta">${escapeAttr(at.b.title)}</span></a>` : "";
       }
-      if (k[0] === "p" && PROBLEM_BY_SLUG[id]) {
+      if (k[0] === "p" && (PROBLEM_BY_SLUG[id] || (!problemsReady && labels[id]))) {
         if (kinds && kinds.indexOf("problem") === -1) return "";
         const p = PROBLEM_BY_SLUG[id];
-        return `<a class="rc-row" href="#/problem/${id}"><span class="badge badge-problem">PROBLEM</span><span class="rc-name">${refShort(p.ref)}</span><span class="rc-meta">${p.formulas[0] && BY_ID[p.formulas[0]] ? BY_ID[p.formulas[0]].formula.name : ""}</span></a>`;
+        const label = p ? { n: refShort(p.ref), m: p.formulas[0] && BY_ID[p.formulas[0]] ? BY_ID[p.formulas[0]].formula.name : "" } : labels[id];
+        if (p && (!labels[id] || labels[id].n !== label.n || labels[id].m !== label.m)) { labels[id] = label; labelsChanged = true; }
+        return `<a class="rc-row" href="#/problem/${id}"><span class="badge badge-problem">PROBLEM</span><span class="rc-name">${label.n}</span><span class="rc-meta">${label.m}</span></a>`;
       }
       return "";
     }).filter(Boolean).slice(0, limit);
+    if (labelsChanged) writeRecentLabels(labels);
     return rows.join("");
+  }
+  // The problem database loads after the first screen, so a reload drew Recently opened without
+  // its problems (older cards filled their places until the data arrived; owner, 2026-11-21). Each
+  // problem row's name and card are kept here once shown, so the first drawing is already right.
+  const RECENT_LABELS_KEY = "mq-recent-labels";
+  function readRecentLabels() {
+    try { const v = JSON.parse(localStorage.getItem(RECENT_LABELS_KEY) || "{}"); return v && typeof v === "object" ? v : {}; }
+    catch (e) { return {}; }
+  }
+  function writeRecentLabels(labels) {
+    try {
+      const keep = new Set(readRecent().filter(k => k[0] === "p").map(k => k.slice(2)));
+      const out = {};
+      Object.keys(labels).forEach(id => { if (keep.has(id)) out[id] = labels[id]; });
+      localStorage.setItem(RECENT_LABELS_KEY, JSON.stringify(out));
+    } catch (e) { /* a convenience only */ }
   }
   const LOGO_HTML = `<span class="brand-sigma" aria-hidden="true">&Sigma;</span>`;
 
@@ -10041,6 +10105,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
     dir: "ahsme",
     credit: `© Mathematical Association of America · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> · LIVE by Po-Shen Loh`
   };
+  // Statements reproduced with the organizers' permission (owner, 2026-11-20).
+  const PERMITTED_STATEMENTS = {
+    "SMT": { dir: "smt", credit: "© Stanford Math Tournament · Reproduced with permission" },
+    "BMT": { dir: "bmt", credit: "© Berkeley Math Tournament · Reproduced with permission" },
+    "ARML": { dir: "arml", credit: "© American Regions Mathematics League · Reproduced with permission" },
+    "ARML Local": { dir: "arml", credit: "© American Regions Mathematics League · Reproduced with permission" }
+  };
   function problemSourceLabel(p) {
     if (p.sourceMirror) return "Open the original paper (mirror)";
     return p.urlLabel === "archive" ? "Open in archive" : "Open on AoPS";
@@ -10049,12 +10120,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (p.year >= 1998 && p.year <= 2026 && /^HMMT (February|November)$/.test(p.fam)) return HMMT_STATEMENTS;
     if (p.year >= 1998 && p.year <= 2025 && /^(Pascal|Cayley|Fermat) Contest$/.test(p.fam)) return CEMC_STATEMENTS;
     if (/\bAHSME\b/.test(p.ref)) return AHSME_STATEMENTS;
-    return null;
+    return PERMITTED_STATEMENTS[p.fam] || null;
   }
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 50;
+  const STATEMENTS_V = 51;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {

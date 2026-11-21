@@ -1,5 +1,15 @@
 # Changelog
 
+**2026-11-21**
+
+- **Problem statements for SMT (owner: permission given):** the subject tests of 2018 to 2025 (447 problems) now show their statements and figures on each problem's page, credited "© Stanford Math Tournament · Reproduced with permission"; BMT and ARML are wired the same way, their statements to follow. Each statement was transcribed from the official PDF and checked against an image of its page. `check-statements.py` knows the new publishers.
+- **Proof Methods olympiad-only (owner):** two new AMC methods, If-Then Statements and Settling a Claim with One Example (P79, P80; 786 cards), take the AMC problems of Proving the Contrapositive, Disproof by Counterexample and Proof by Construction; Symmetry Arguments now covers counting and takes Without Loss of Generality's. The five proof cards are Olympiad again (AUDITS.md, "Proof Methods kept olympiad-only").
+- **Angles on cards (owner):** a Settings choice writes a card's degree measures in radians ($60^\circ$ as $\frac{\pi}{3}$); lessons, examples, contest problems and figures keep degrees.
+- **Recently opened after a reload:** the home page drew the list before the problem database loaded, so problems dropped out and older cards filled in until the data arrived; each problem row's label is now kept, so the first drawing is right.
+- **Sidebar scrolling:** a scroll that reaches the sidebar's end stops there instead of carrying into the page (the double bounce); scrollbar thumbs lighten under the pointer and while dragged, since browsers keep the arrow cursor over a scrollbar.
+- Shorter Contest sections setting text. Two SMT tags corrected (AUDITS.md).
+- `tests/book-search.cjs` still fails on the stale semantic index (new cards since 2026-11-20); it needs the build venv.
+
 **2026-11-20**
 
 - Textbook chapters, the contest catalog, and interactive widgets load as needed. Startup scripts are deferred. The homepage has a no-JavaScript fallback and links to a static formula sheet covering algebra, geometry, number theory, and combinatorics. The brand is a named home link.

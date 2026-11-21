@@ -1351,6 +1351,8 @@ Usually the whole solution of an AIME probability or expected-value problem abou
 ## When to use
 The outcomes are equally likely and the question is about order or position: the chance that card $A$ comes before card $B$, that the top card is an ace, that the largest of $n$ numbers lands in the first half, that a given player is eliminated last. It also gives expected values, since interchangeable quantities have equal expectations: the gaps between random points on a segment all have the same expected length.
 
+The same idea cuts counting and state problems down to size. When the setup looks the same after swapping two objects, relabeling the colors, or reflecting the board, the cases come in groups of equal size: fix one choice and multiply, or note that two unknowns the symmetry exchanges must be equal (two lily pads the same distance from the middle, the four edge cells of a grid). Assuming an order such as $a \le b \le c$ for a symmetric condition is the same move.
+
 If the outcomes are not equally likely, the swap argument fails and the weights must be tracked.
 
 ## How
@@ -1371,6 +1373,10 @@ In a uniformly random arrangement every order is equally likely. Swapping the pl
 
 Positions work the same way. Exchanging the contents of position $1$ and position $k$ matches the deals with an ace in position $k$ to the deals with an ace on top, so $P(\text{ace in position } k) = P(\text{ace on top}) = \frac{4}{52}$. And if $n + 1$ interchangeable quantities always add to $1$, as the gaps made by $n$ random points in $[0, 1]$ do, each has expected value $\frac{1}{n + 1}$.
 
+Fixing one choice works for the same reason. If a relabeling maps the outcomes that start with choice $A$ one for one onto those that start with choice $B$, the two groups are the same size, so the total is the number of first choices times the size of one group.
+
+In a system of equations that the symmetry leaves unchanged, exchanging two unknowns turns any solution into a solution; when the solution is unique, it is unchanged by the exchange, so those unknowns are equal. For a condition symmetric in $a, b, c$, every solution becomes one with $a \le b \le c$ after renaming, so it is enough to find those and count their rearrangements.
+
 ## Formulas it uses
 - [[basic-probability]]: with equally likely outcomes a probability is a count of outcomes over the total, which is why equal-sized sets of outcomes have equal probabilities.
 - [[expected-value]]: expectation is linear, so interchangeable quantities with a fixed total each get an equal share of it.
@@ -1378,6 +1384,7 @@ Positions work the same way. Exchanging the contents of position $1$ and positio
 ## Common traps
 - Using symmetry when the setup is not symmetric: in a game where one player moves first, the players are not interchangeable.
 - Swapping items the condition treats differently, such as a named card and a card of a given suit.
+- Fixing a choice, then multiplying by the number of choices when the cases were not really equal, or forgetting to count the rearrangements of an ordered solution $a \le b \le c$ (and overcounting when some are equal).
 - Answering $\frac12$ when a tie is possible; the symmetric events share only $1 - P(\text{tie})$, so each has probability $\frac{1 - P(\text{tie})}{2}$.
 
 ## Contest profile
@@ -4008,5 +4015,69 @@ None of its own: the pattern is whatever the table shows, and the confirmation i
 
 ## Contest profile
 A staple of the later AMC questions and of HMMT and PUMaC problems with a year in them: a function defined on binary digits, an elimination, a sequence defined by a strange rule, a process run for $2^{n}$ steps.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"if-then-statements": String.raw`
+## When to use
+A rule is stated in words, "if a student gets every multiple-choice question right, she gets an A" or "every purple snake is unhappy", and the question asks which of several statements must be true, which says the same as the rule, or what follows from an observation such as "the beach was not crowded". These are early questions on the AMC 10 and 12 and many old AHSME and AJHSME papers. Proving a theorem by its contrapositive is a different job, [[contrapositive|Proving the Contrapositive]] in Proof Methods.
+
+## How
+1. Rewrite the rule as $P \Rightarrow Q$. "Every $A$ is a $B$" is "if $x$ is an $A$, then $x$ is a $B$"; "$P$ only if $Q$" is also $P \Rightarrow Q$.
+2. Read off what is known. From $P$, conclude $Q$; from not $Q$, conclude not $P$. From $Q$, or from not $P$, nothing follows.
+3. Compare each answer with the rule's four forms: the rule and its contrapositive $\neg Q \Rightarrow \neg P$ say the same thing; the converse $Q \Rightarrow P$ and the inverse $\neg P \Rightarrow \neg Q$ say the same as each other, and neither follows from the rule.
+4. Negate compound parts with De Morgan's laws: not ($A$ and $B$) is (not $A$) or (not $B$); not ($A$ or $B$) is (not $A$) and (not $B$). "Not every $x$ is $A$" is "some $x$ is not $A$".
+5. Chain rules: from $P \Rightarrow Q$ and $Q \Rightarrow R$, conclude $P \Rightarrow R$, and so also $\neg R \Rightarrow \neg P$.
+
+Take the rule "if it rains, the game is cancelled". The game was played, so it did not rain. The game was cancelled tells us nothing about the rain: it might have been cancelled for another reason.
+
+## Why it works
+An implication $P \Rightarrow Q$ is false in exactly one situation: $P$ true and $Q$ false. The contrapositive $\neg Q \Rightarrow \neg P$ is false exactly when $\neg Q$ is true and $\neg P$ is false, that is, when $Q$ is false and $P$ is true: the same single situation. Two statements false in the same situations and true in all the others say the same thing, so they are equivalent. The converse $Q \Rightarrow P$ is false when $Q$ is true and $P$ is false, a different situation, which the rule allows; so the converse does not follow, and neither does the inverse, which is the converse's contrapositive.
+
+"$A$ and $B$" is true only when both hold, so it fails exactly when at least one fails, which is "not $A$ or not $B$"; swapping the roles of true and false gives the other law. "Every $x$ has property $A$" fails exactly when at least one $x$ lacks it. Finally, if $P \Rightarrow Q$ and $Q \Rightarrow R$ both hold and $P$ is true, then $Q$ is true and so $R$ is: the chain $P \Rightarrow R$ holds.
+
+## Formulas it uses
+None of its own: the rules for "if", "and", "or" and "not" are the whole method. Puzzles about knights and knaves, [[truth-tellers-logic|Logical Deduction and Truth-Tellers]], apply the same rules to what each speaker claims.
+
+## Common traps
+- Choosing the converse: "all A-students got every question right" does not follow from "every student who got every question right got an A".
+- Reading "$P$ only if $Q$" as $Q \Rightarrow P$.
+- Negating "warm and sunny" as "not warm and not sunny"; the negation is "not warm or not sunny".
+- Negating "all" as "none"; the negation of "all" is "at least one is not".
+
+## Contest profile
+A steady early question on the AMC 10 and 12, usually among the first dozen problems, and on many AHSME papers from the 1950s to the 1970s, where it was often the only logic question on the paper.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"settle-with-an-example": String.raw`
+## When to use
+The question is about whether a claim holds, not about a number: "which of the following must be true", "which statement is false", "which value of $n$ is a counterexample", "is it possible that", "how many solutions: $0$, $1$, $2$ or infinitely many". It is also the quick way through choices built from inequalities or divisibility facts that hold for most but not all numbers. Writing a counterexample or a construction inside an olympiad proof is the same logic, covered by [[disproof-by-counterexample|Disproof by Counterexample]] and [[proof-by-construction|Proof by Construction]] in Proof Methods.
+
+## How
+1. Sort the claims: "always" or "for every" claims can be disproved by one case; "can", "some" or "there exists" claims can be proved by one case.
+2. Hunt for the deciding case among the special values: $0$ and $1$, a negative number, a fraction between $0$ and $1$, two equal variables, the smallest allowed value, a degenerate or extreme figure.
+3. Check that the case satisfies every hypothesis of the claim; a case that breaks a hypothesis proves nothing.
+4. For a claim that survives, give a reason that covers every case before choosing it.
+5. For "infinitely many", find a family: write a working example with a parameter $k$ and check it for every $k$.
+
+Which of $x^2 \gt y^2$, $\frac1x \lt \frac1y$ and $x^3 \gt y^3$ must hold whenever $x \gt y$? The pair $x = 0$, $y = -1$ breaks the first, and $x = 1$, $y = -1$ breaks the second. The third survives because cubing is increasing, so it is the one that must hold.
+
+## Why it works
+A claim "every $x$ has property $P$" is false exactly when at least one $x$ lacks $P$, so one such $x$ proves it false, whatever happens for all the others. Dually, "some $x$ has property $P$" is true exactly when at least one $x$ has it, so one such $x$ proves it. The reverse directions fail: no finite list of examples that work can prove an "every" claim about infinitely many cases, because the next case might break it, which is why a surviving choice still needs a reason.
+
+A family proves "infinitely many" when different parameters give different examples. For instance $x = k^2 + 1$, $y = k(k^2 + 1)$ gives $x^2 + y^2 = x^2(1 + k^2) = x^2 \cdot x = x^3$ for every positive integer $k$, and different $k$ give different $x$, so $x^2 + y^2 = x^3$ has infinitely many positive solutions.
+
+## Formulas it uses
+None of its own: each example is checked with whatever fact the claim is about, such as a divisibility rule or the monotonicity of a power.
+
+## Common traps
+- Picking a "counterexample" that breaks a hypothesis as well as the conclusion, such as $y = 0$ in a claim about $\frac1y$.
+- Choosing an answer because it worked for the two values tried; an "always" claim needs a reason.
+- Trying only positive integers: most false inequality claims fail at $0$, at a negative number or at a fraction.
+- Concluding "finitely many" because a short search found only a few solutions.
+
+## Contest profile
+An early AMC 10 and 12 question in most years, and the "which is always true" questions of the AHSME and AJHSME; invitational short-answer rounds use it to rule out tempting answers before computing.
 `
 });

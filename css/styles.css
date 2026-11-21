@@ -320,6 +320,9 @@ input[type="search"]::-webkit-search-cancel-button {
   max-height: calc(100vh - var(--topbar-h));
   overflow-y: auto;
   scrollbar-gutter: stable;
+  /* A scroll that reaches the sidebar's end stops there: without this, the leftover momentum
+     carried on into the page, and the sidebar and then the page each bounced (owner, 2026-11-21). */
+  overscroll-behavior: contain;
   padding: 20px 10px 40px 16px;
 }
 
@@ -1001,6 +1004,10 @@ body.nav-open .nav-backdrop { opacity: 1; }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
+/* Browsers keep the arrow cursor over a scrollbar (no page can change it), so the thumb answers
+   the pointer instead: it lightens under it and while it is dragged (owner, 2026-11-21). */
+::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
+::-webkit-scrollbar-thumb:active { background: var(--text-faint); }
 
 /* An overlay dims the whole page, but the scrollbar is painted by the browser OUTSIDE the
    overlay, so it keeps its full strength and becomes the brightest thing on screen the moment

@@ -1909,6 +1909,7 @@ window.MATH_SECTIONS.push({
         { title: "Working It Out by Hand", blurb: "Listing the cases in an order that cannot skip or repeat one, or running a short process step by step until it ends or repeats.", ids: ["organized-listing", "forced-entries", "layer-by-layer-search", "small-cases-pattern", "simulate-the-process"] },
         { title: "Recursion & States", blurb: "Writing a count or probability in terms of smaller cases, filling a grid of counts, or solving the recursion.", ids: ["recursive-counting", "grid-path-fill", "walk-counting-dp", "states-recursion-prob", "transfer-matrix-method", "backward-induction"] },
         { title: "Algebraic Machinery", blurb: "Encoding a count as algebra, with generating functions or indicator variables.", ids: ["generating-function-method", "indicator-variables"] },
+        { title: "Reading Statements", blurb: "Questions about statements themselves: what an if-then rule does and does not promise, and how one example settles whether a claim always holds or can happen.", ids: ["if-then-statements", "settle-with-an-example"] },
         { title: "Existence Arguments", blurb: "Proving that something exists, or cannot, with invariants, monovariants, extremes, or probability.", ids: ["invariants-coloring", "monovariant", "bound-and-construct", "extremal-principle", "dimension-arguments", "probabilistic-method", "odd-part-chains", "coloring-arguments", "pairing-to-bound", "strategy-stealing"] }
       ],
       formulas: [
@@ -2144,12 +2145,12 @@ window.MATH_SECTIONS.push({
           name: "Symmetry Arguments",
           type: "method",
           subject: "counting",
-          when: String.raw`Outcomes are equally likely (a shuffled deck, a random permutation, a fair process), and the question asks about relative order, a particular position, or which of several equivalent things happens first.`,
-          move: String.raw`Find a swap or relabeling that matches the outcomes you want with other outcomes, one for one, so the probabilities are equal, and read the answer off from how many equal pieces there are.`,
+          when: String.raw`Outcomes are equally likely (a shuffled deck, a random permutation, a fair process), and the question asks about relative order, a particular position, or which of several equivalent things happens first; or a count, a probability or a system of unknowns looks the same after swapping two objects, relabeling, or reflecting, so its cases come in equal groups.`,
+          move: String.raw`Find a swap, relabeling or reflection that matches the outcomes you want with other outcomes, one for one, so the probabilities (or counts) are equal, and read the answer off from how many equal pieces there are. To cut the work, fix one choice (the first pick, the first tile, the order of the variables), solve that one representative case, and reuse it; unknowns that the symmetry swaps are equal.`,
           uses: ["basic-probability", "expected-value"],
           latex: String.raw`\begin{gathered} k \text{ symmetric outcomes} \Rightarrow \tfrac1k \text{ each} \\ P(A \gt B) = \tfrac{1 - P(A = B)}{2} \end{gathered}`,
           description: String.raw`A symmetry argument gets a probability without computing it, by showing that several events must be equally likely. When those events split all the outcomes evenly, each one's probability is a simple fraction.`,
-          keywords: ["by symmetry", "equally likely", "random order", "shortcut"],
+          keywords: ["by symmetry", "equally likely", "random order", "shortcut", "fix one choice", "without loss of generality", "wlog", "relabel", "reflection symmetry", "equal cases", "symmetric states"],
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
@@ -2425,6 +2426,36 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
         },
         {
+          id: "if-then-statements",
+          name: "If-Then Statements: Contrapositive, Converse, Negation",
+          type: "method",
+          subject: "counting",
+          when: String.raw`A rule is stated as "if ..., then ..." or "every ... is ..." (a teacher's promise, a sign, a list of facts about animals or students), and the question asks which conclusion must follow, which statement says the same thing, or what can be concluded once a fact is observed.`,
+          move: String.raw`Write the rule as $P \Rightarrow Q$. Its contrapositive $\neg Q \Rightarrow \neg P$ always holds with it; its converse $Q \Rightarrow P$ and its inverse $\neg P \Rightarrow \neg Q$ do not. Negate with care: "not ($A$ and $B$)" is "not $A$ or not $B$", and "not all" is "some are not".`,
+          uses: [],
+          latex: String.raw`(P \Rightarrow Q) \iff (\neg Q \Rightarrow \neg P)`,
+          description: String.raw`A rule "if $P$, then $Q$" is broken only when $P$ holds and $Q$ fails. So it says exactly the same as its contrapositive, "if not $Q$, then not $P$", while its converse and inverse are different claims that may be false. Most questions asking which statement must follow from a rule come down to finding the contrapositive and negating "and", "or", "all" and "some" correctly.`,
+          keywords: ["if then", "contrapositive", "converse", "inverse", "negation", "must be true", "logically equivalent", "de morgan", "all some none", "only if", "logic statements", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "settle-with-an-example",
+          name: "Settling a Claim with One Example",
+          type: "method",
+          subject: "counting",
+          when: String.raw`A question asks which statement is always true or must be true, which one is false, whether something can happen, or whether an equation has finitely or infinitely many solutions.`,
+          move: String.raw`One case where a claim fails disproves "always"; one case where it holds proves "can happen" or "there is". Try small, extreme and special values (0, 1, negatives, fractions, equal variables, degenerate figures) until one settles the claim, and for "infinitely many" find a family of examples with a parameter.`,
+          uses: [],
+          latex: String.raw`\neg\,\forall x\ P(x) \iff \exists x\ \neg P(x)`,
+          description: String.raw`One example settles half of all yes-or-no claims: a single failing case disproves a claim about every case, and a single working case proves that something can happen. On a multiple-choice question asking which statement must be true, each false choice falls to one concrete example, and the survivor still needs a short reason, since no number of examples proves "always".`,
+          keywords: ["counterexample", "which statement is false", "always true", "must be true", "not always true", "special values", "plug in numbers", "there exists", "can it happen", "infinitely many", "family of examples", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
           id: "extremal-principle",
           name: "The Extremal Principle",
           type: "method",
@@ -2536,8 +2567,8 @@ window.MATH_SECTIONS.push({
           description: String.raw`To prove that $P$ implies $Q$, prove instead that not $Q$ implies not $P$, an equivalent statement that is often easier to reach. The switch helps when "not $Q$" gives something to build with, such as a factorization when $Q$ says a number is prime.`,
           keywords: ["contrapositive", "if not q then not p", "converse", "inverse", "logically equivalent", "proof technique", "method"],
           importance: "high",
-          tier: "AMC",
-          level: ["AIME", "Olympiad"]
+          tier: "Olympiad",
+          level: ["Olympiad"]
         },
         {
           id: "proof-by-cases",
@@ -2551,8 +2582,8 @@ window.MATH_SECTIONS.push({
           description: String.raw`A proof by cases divides the possibilities into a few groups, proves the claim in each, and concludes it in general because one of the groups must occur. The skill is in the split: a good choice of case variable makes each case one line, while a poor one multiplies cases without simplifying any of them.`,
           keywords: ["proof by cases", "casework proof", "exhaustion", "split by parity", "residues", "case analysis", "proof technique", "method"],
           importance: "high",
-          tier: "AMC",
-          level: ["AMC10", "AMC12", "AIME", "Olympiad"]
+          tier: "Olympiad",
+          level: ["Olympiad"]
         },
         {
           id: "wlog-symmetry",
@@ -2566,8 +2597,8 @@ window.MATH_SECTIONS.push({
           description: String.raw`Without loss of generality, abbreviated WLOG, uses a symmetry of the problem to cut many cases down to one. Each skipped case becomes the chosen one after a relabeling that changes nothing in the statement, so proving one case proves them all. The care needed is in checking that the symmetry is really there.`,
           keywords: ["without loss of generality", "wlog", "assume a >= b >= c", "symmetric", "normalize", "relabel", "proof technique", "method"],
           importance: "medium",
-          tier: "AMC",
-          level: ["AIME", "Olympiad"]
+          tier: "Olympiad",
+          level: ["Olympiad"]
         },
         {
           id: "proving-both-directions",
@@ -2609,10 +2640,10 @@ window.MATH_SECTIONS.push({
           uses: ["multiplicative-order"],
           latex: String.raw`\neg\,\forall x\, P(x) \iff \exists x\, \neg P(x)`,
           description: String.raw`One counterexample is a complete disproof of a universal claim, while no number of confirming examples proves one. The search is guided: try small, extreme, and degenerate cases, and look for the place where the claimed reason could break down.`,
-          keywords: ["counterexample", "disproof", "prove or disprove", "which statement is false", "not always true", "small cases", "proof technique", "method"],
+          keywords: ["counterexample", "disproof", "prove or disprove", "small cases", "proof technique", "method"],
           importance: "medium",
-          tier: "AMC",
-          level: ["AMC10", "AMC12", "AIME", "Olympiad"]
+          tier: "Olympiad",
+          level: ["Olympiad"]
         },
         {
           id: "induction",
@@ -2731,8 +2762,8 @@ window.MATH_SECTIONS.push({
           description: String.raw`A proof by construction proves that an object exists by building one and checking it. When the claim is for every $n$, the construction has to work for every $n$, so it is usually a family with a parameter, found by solving small cases and spotting what they have in common.`,
           keywords: ["proof by construction", "constructive proof", "explicit example", "existence", "construction achieving the bound", "proof technique", "method"],
           importance: "medium",
-          tier: "AMC",
-          level: ["AIME", "Olympiad"]
+          tier: "Olympiad",
+          level: ["Olympiad"]
         },
         {
           id: "pigeonhole-argument",
