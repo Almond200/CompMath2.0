@@ -1,0 +1,74 @@
+=== algebra-1
+An airplane accelerates at $10$ mph per second, and decelerates at $15$ mph/sec. Given that its takeoff speed is $180$ mph, and the pilots want enough runway length to safely decelerate to a stop from any speed below takeoff speed, what's the shortest length that the runway can be allowed to be? Assume the pilots always use maximum acceleration when accelerating. Please give your answer in miles.
+=== algebra-2
+If there is only $1$ distinct complex solution to the equation
+$$8x^3+12x^2+kx+1=0$$
+what is $k$?
+=== algebra-3
+If $f$ is a polynomial, and $f(-2)=3$, $f(-1)=-3=f(1)$, $f(2)=6$, and $f(3)=5$, then what is the minimum possible degree of $f$?
+=== algebra-4
+Find
+$$\sum_{i=1}^{2016}i(i+1)(i+2)\pmod{2018}$$
+=== algebra-5
+Find the product of all complex values of $d$ such that $x^3+2x^2+3x+4=0$ and $x^2+dx+3=0$ have a common root.
+=== algebra-6
+Let $x,y,z\in\mathbb{R}$ and
+$$7x^2+7y^2+7z^2+9xyz=12$$
+The minimum value of $x^2+y^2+z^2$ can be expressed as $\frac{a}{b}$ where $a,b\in\mathbb{Z}$, $b>0$, and $\gcd(a,b)=1$. What is $a+b$?
+=== algebra-7
+Let
+$$h_n:=\sum_{k=0}^{n}\binom{n}{k}\frac{2^{k+1}}{(k+1)}$$
+Find
+$$\sum_{n=0}^{\infty}\frac{h_n}{n!}.$$
+=== algebra-8
+Compute
+$$\sum_{k=1}^{1009}(-1)^{k+1}\binom{2018-k}{k-1}2^{2019-2k}$$
+=== algebra-9
+Suppose
+$$\frac{1}{5}\frac{(x+1)(x-3)}{(x+2)(x-4)}+\frac{1}{9}\frac{(x+3)(x-5)}{(x+4)(x-6)}-\frac{2}{13}\frac{(x+5)(x-7)}{(x+6)(x-8)}=\frac{92}{585}$$
+Also, suppose $x>0$. Then $x$ can be written as $a+\sqrt{b}$ where $a,b$ are integers. Find $a+b$.
+=== algebra-10
+Let $a,b,c$ be the roots of the equation $x^3-2018x+2018=0$. Let $q$ be the smallest positive integer for which there exists an integer $p$, $0<p\le q$, such that
+$$\frac{a^{p+q}+b^{p+q}+c^{p+q}}{p+q}=\left(\frac{a^p+b^p+c^p}{p}\right)\left(\frac{a^q+b^q+c^q}{q}\right)$$
+Find $p^2+q^2$.
+=== discrete-math-1
+Bob has $3$ different fountain pens and $11$ different ink colors. How many ways can he fill his fountain pens with ink if he can only put one ink in each pen?
+=== discrete-math-2
+At the Berkeley Math Tournament, teams are composed of $6$ students, each of whom pick two distinct subject tests out of $5$ choices. How many different distributions across subjects are possible for a team?
+=== discrete-math-3
+Consider the $9\times 9$ grid of lattice points $\{(x,y)\mid 0\le x,y\le 8\}$. How many rectangles with nonzero area and sides parallel to the $x,y$ axes are there such that each corner is one of the lattice points and the point $(4,4)$ is not contained within the interior of the rectangle? ($(4,4)$ is allowed to lie on the boundary of the rectangle).
+=== discrete-math-4
+Alice starts with an empty string and randomly appends one of the digits $2,0,1$, or $8$ until the string ends with $2018$. What is the probability Alice appends less than $9$ digits before stopping?
+=== discrete-math-5
+Alice and Bob play a game where they start from a complete graph with $n$ vertices and take turns removing a single edge from the graph, with Alice taking the first turn. The first player to disconnect the graph loses. Compute the sum of all $n$ between $2$ and $100$ inclusive such that Alice has a winning strategy. (A complete graph is one where there is an edge between every pair of vertices.)
+=== discrete-math-6
+Compute
+$$\sum_{i=0}^{\infty}\sum_{j=0}^{\infty}\binom{i+j}{i}3^{-(i+j)}.$$
+=== discrete-math-7
+Let $S$ be the set of line segments between any two vertices of a regular $21$-gon. If we select two distinct line segments from $S$ at random, what is the probability they intersect? Note that line segments are considered to intersect if they share a common vertex.
+=== discrete-math-8
+Moor and nine friends are seated around a circular table. Moor starts out holding a bottle, and whoever holds the bottle passes it to the person on his left or right with equal probability until everyone has held the bottle. Compute the expected distance between Moor and the last person to receive the bottle, where distance is the fewest number of times the bottle needs to be passed in order to go back to Moor.
+=== discrete-math-9
+Let $S$ be the set of integers from $1$ to $13$ inclusive. A permutation of $S$ is a function $f:S\to S$ such that $f(x)\ne f(y)$ if $x\ne y$. For how many distinct permutations $f$ does there exists an $n$ such that $f^n(i)=13-i+1$ for all $i$.
+=== discrete-math-10
+Consider a $2\times n$ grid where each cell is either black or white, which we attempt to tile with $2\times 1$ black or white tiles such that tiles have to match the colors of the cells they cover. We first randomly select a random positive integer $N$ where $N$ takes the value $n$ with probability $2^{-n}$. We then take a $2\times N$ grid and randomly color each cell black or white independently with equal probability. Compute the probability the resulting grid has a valid tiling.
+=== geometry-1
+A cube has side length $5$. Let $S$ be its surface area and $V$ its volume. Find $\dfrac{S^3}{V^2}$.
+=== geometry-2
+A $1$ by $1$ square $ABCD$ is inscribed in the circle $m$. Circle $n$ has radius $1$ and is centered around $A$. Let $S$ be the set of points inside of $m$ but outside of $n$. What is the area of $S$?
+=== geometry-3
+If $A$ is the area of a triangle with perimeter $1$, what is the largest possible value of $A^2$?
+=== geometry-4
+There are six lines in the plane. No two of them are parallel and no point lies on more than three lines. What is the minimum possible number of points that lie on at least two lines?
+=== geometry-5
+A point is picked uniformly at random inside of a square. Four segments are then drawn in connecting the point to each of the vertices of the square, cutting the square into four triangles. What is the probability that at least two of the resulting triangles are obtuse?
+=== geometry-6
+A triangle $T$ has all integer side lengths and at most one of its side lengths is greater than ten. What is the largest possible area of $T$?
+=== geometry-7
+A line in the $xy$-plane has positive slope, passes through the point $(x,y)=(0,29)$, and lies tangent to the ellipse defined by $\dfrac{x^2}{100}+\dfrac{y^2}{400}=1$. What is the slope of the line?
+=== geometry-8
+What is the largest possible area of a triangle with largest side length $39$ and inradius $10$?
+=== geometry-9
+What is the least integer $a$ greater than $14$ so that the triangle with side lengths $a-1$, $a$, and $a+1$ has integer area?
+=== geometry-10
+A plane cuts a sphere of radius $1$ into two pieces, one of which has three times the surface area of the other. What is the area of the disk that the sphere cuts out of the plane?

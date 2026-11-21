@@ -1,0 +1,61 @@
+=== analysis-1
+$10$ students take the Analysis Round. The average score was a $3$ and the high score was a $7$. If no one got a $0$, what is the maximum number of students that could have achieved the high score?
+=== analysis-2
+Find all solutions to $3^x-9^{x-1}=2$.
+=== analysis-4
+Find the value of
+$$\frac{1}{2}+\frac{4}{2^2}+\frac{9}{2^3}+\frac{16}{2^4}+\cdots.$$
+=== analysis-5
+Find the value of $y$ such that the following equation has exactly three solutions.
+$$||x-1|-4|=y.$$
+=== analysis-6
+Consider the function $f(x,y,z)=(x-y+z,\,y-z+x,\,z-x+y)$ and denote by $f^{(n)}(x,y,z)$ the function $f$ applied $n$ times to the tuple $(x,y,z)$. Let $r_1,r_2,r_3$ be the three roots of the equation $x^3-4x^2+12=0$ and let $g(x)=x^3+a_2x^2+a_1x+a_0$ be the cubic polynomial with the tuple $f^{(3)}(r_1,r_2,r_3)$ as roots. Find the value of $a_1$.
+=== analysis-7
+Compute
+$$\sum_{k=1}^{\infty}\frac{(-1)^k}{(2k-1)(2k+1)}.$$
+=== analysis-10
+Define $H_n=\sum_{k=1}^{n}\frac{1}{k}$. Evaluate
+$$\sum_{n=1}^{2017}\binom{2017}{n}H_n(-1)^n.$$
+=== discrete-math-1
+You have $9$ colors of socks and $5$ socks of each type of color. Pick two socks randomly. What is the probability that they are the same color?
+=== discrete-math-2
+Each BMT, every student chooses one of three focus rounds to take. Bob plans to attend BMT for the next $4$ years and wants to figure out what focus round to take each year. Given that he wants to take each focus round at least once, how many ways can he choose which round to take each year?
+=== discrete-math-3
+What is the smallest positive integer with exactly $7$ distinct proper divisors?
+=== discrete-math-4
+What is the greatest multiple of $9$ that can be formed by using each of the digits in the set $\{1,3,5,7,9\}$ at most once.
+=== discrete-math-5
+How many subsets of $\{1,2,\dots,9\}$ do not contain $2$ adjacent numbers?
+=== discrete-math-6
+Let $S=\{1,2,\dots,6\}$. How many functions $f:S\to S$ are there such that for all $s\in S$,
+$$f^5(s)=f(f(f(f(f(s)))))=1.$$
+=== discrete-math-7
+A light has been placed on every lattice point (point with integer coordinates) on the (infinite) 2D plane. Define the Chebyshev distance between points $(x_1,y_1)$ and $(x_2,y_2)$ to be $\max(|x_1-x_2|,|y_1-y_2|)$. Each light is turned on with probability $\dfrac{1}{2^{d/2}}$, where $d$ is the Chebyshev distance from that point to the origin. What is expected number of lights that have all their directly adjacent lights turned on? (Adjacent points being points such that $|x_1-x_2|+|y_1-y_2|=1$.)
+=== discrete-math-8
+In a $1024$ person randomly seeded single elimination tournament bracket, each player has a unique skill rating. In any given match, the player with the higher rating has a $\frac{3}{4}$ chance of winning the match. What is the probability the second lowest rated player wins the tournament?
+=== discrete-math-9
+$n$ balls are placed independently uniformly at random into $n$ boxes. One box is selected at random, and is found to contain $b$ balls. Let $e_n$ be the expected value of $b^4$. Find
+$$\lim_{n\to\infty}e_n.$$
+=== discrete-math-10
+Let $\phi(n)$ be the number of positive integers less than or equal to $n$ that are relatively prime to $n$. Evaluate
+$$\sum_{n=1}^{64}(-1)^n\phi(n)\left\lfloor\frac{64}{n}\right\rfloor.$$
+=== geometry-1
+What is the largest $n$ such that there exists a non-degenerate convex $n$-gon such that each of its angles are an integer number of degrees, and are all distinct?
+=== geometry-2
+Let $S$ be the set of points $A$ in the $xy$-plane such that the four points $A$, $(2,3)$, $(-1,0)$, and $(0,6)$ form the vertices of a parallelogram. Let $P$ be the convex polygon whose vertices are the points in $S$. What is the area of $P$?
+=== geometry-3
+Let $ABCDEF$ be a regular hexagon with side length $1$. Now, construct square $AGDQ$. What is the area of the region inside the hexagon and not the square?
+=== geometry-4
+How many lattice points $(v,w,x,y,z)$ does a $5$-sphere centered on the origin, with radius $3$, contain on its surface or in its interior?
+=== geometry-5
+Suppose the side lengths of triangle $ABC$ are the roots of polynomial $x^3-27x^2+222x-540$. What is the product of its inradius and circumradius?
+=== geometry-6
+Given a cube with side length $1$, we perform six cuts as follows: one cut parallel to the $xy$-plane, two cuts parallel to the $yz$-plane, and three cuts parallel to the $xz$-plane, where the cuts are made uniformly independent of each other. What is the expected value of the volume of the largest piece?
+=== geometry-7
+Determine the maximal area triangle such that all of its vertices satisfy $\dfrac{x^2}{9}+\dfrac{y^2}{16}=1$.
+=== geometry-8
+Given a circle of radius $25$, consider the set of triangles with area at least $768$. What is the area of the intersection of all the triangles in this set?
+=== geometry-9
+Let $\triangle ABC$ be a triangle. Let $D$ be the point on $BC$ such that $DA$ is tangent to the circumcircle of $ABC$. Let $E$ be the point on the circumcircle of $ABC$ such that $DE$ is tangent to the circumcircle of $ABC$, but $E\ne A$. Let $F$ be the intersection of $AE$ and $BC$. Given that $BF/FC=4/5$, find the maximum possible value for $\sin\angle ACB$.
+=== geometry-10
+Colorado and Wyoming are both defined to be $4$ degrees tall in latitude and $7$ degree wide in longitude. In particular, Colorado is defined to be at $37^\circ N$ to $41^\circ N$, and $102^\circ03'W$ to $109^\circ03'W$, whereas Wyoming is defined to be $41^\circ N$ to $45^\circ N$, and $104^\circ03'W$ to $111^\circ03'W$. Assuming Earth is a perfect sphere with radius $R$, what is the ratio of the areas of Wyoming to Colorado, in terms of $R$?
