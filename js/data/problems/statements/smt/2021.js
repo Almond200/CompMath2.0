@@ -1,5 +1,5 @@
 // Problems and diagrams © 2021 Stanford Math Tournament. Reproduced with permission from the Stanford Math Tournament.
-// Source: the official Stanford Math Tournament papers.
+// Source: the official Stanford Math Tournament papers. Built by tools/statements/build.py from tools/statements/spec/smt/2021.txt.
 Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2021-smt-algebra-1": { s: String.raw`Find the remainder when $x^6$ is divided by $x^2-3x+2$.`, u: "https://www.stanfordmathtournament.com/pdfs/smt2021/algebra-problems.pdf" },
 "2021-smt-algebra-2": { s: String.raw`Compute the sum of possible integers such that $x^4+6x^3+11x^2+3x+16$ is a square number.`, u: "https://www.stanfordmathtournament.com/pdfs/smt2021/algebra-problems.pdf" },

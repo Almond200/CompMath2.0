@@ -1,0 +1,112 @@
+=== algebra-1
+Nick is a runner, and his goal is to complete four laps around a circuit at an average speed of $10$ mph. If he completes the first three laps at a constant speed of only $9$ mph, what speed does he need to maintain in miles per hour on the fourth lap to achieve his goal?
+=== algebra-2
+A tree has $10$ pounds of apples at dawn. Every afternoon, a bird comes and eats $x$ pounds of apples. Overnight, the amount of food on the tree increases by $10\%$. What is the maximum value of $x$ such that the bird can sustain itself indefinitely on the tree without the tree running out of food?
+=== algebra-3
+Karl likes the number $17$. His favorite polynomials are monic quadratics with integer coefficients such that $17$ is a root of the quadratic and the roots differ by no more than $17$. Compute the sum of the coefficients of all of Karl's favorite polynomials. (A monic quadratic is a quadratic polynomial whose $x^2$ term has a coefficient of $1$.)
+=== algebra-4
+Given that $f(x)+2f(8-x)=x^2$ for all real $x$, compute $f(2)$.
+=== algebra-5
+For exactly two real values of $b$, $b_1$ and $b_2$, the line $y=bx-17$ intersects the parabola $y=x^2+2x+3$ at exactly one point. Compute $b_1^2+b_2^2$.
+=== algebra-6
+Compute the largest root of $x^4-x^3-5x^2+2x+6$.
+=== algebra-7
+Find all real $x$ that satisfy $\sqrt[3]{20x+\sqrt[3]{20x+13}}=13$.
+=== algebra-8
+Find the sum of all real $x$ such that
+$$\frac{4x^2+15x+17}{x^2+4x+12}=\frac{5x^2+16x+18}{2x^2+5x+13}.$$
+=== algebra-9
+Let $a=-\sqrt{3}+\sqrt{5}+\sqrt{7}$, $b=\sqrt{3}-\sqrt{5}+\sqrt{7}$, $c=\sqrt{3}+\sqrt{5}-\sqrt{7}$. Evaluate
+$$\frac{a^4}{(a-b)(a-c)}+\frac{b^4}{(b-c)(b-a)}+\frac{c^4}{(c-a)(c-b)}.$$
+=== algebra-10
+Given a complex number $z$ such that $z^{13}=1$, find all possible values of $z+z^3+z^4+z^9+z^{10}+z^{12}$.
+=== advanced-1
+How many positive three-digit integers $\underline{a}\,\underline{b}\,\underline{c}$ can represent a valid date in 2013, where either $a$ corresponds to a month and $\underline{b}\,\underline{c}$ corresponds to the day in that month, or $\underline{a}\,\underline{b}$ corresponds to a month and $c$ corresponds to the day? For example, $202$ is a valid representation for February 2nd, and $121$ could represent either January 21st or December 1st.
+=== advanced-2
+Consider the numbers $\{24,27,55,64,x\}$. Given that the mean of these five numbers is prime and the median is a multiple of $3$, compute the sum of all possible positive integral values of $x$.
+=== advanced-3
+Nick has a terrible sleep schedule. He randomly picks a time between 4 AM and 6 AM to fall asleep, and wakes up at a random time between 11 AM and 1 PM of the same day. What is the probability that Nick gets between $6$ and $7$ hours of sleep?
+=== advanced-4
+Given the digits $1$ through $7$, one can form $7!=5040$ numbers by forming different permutations of the $7$ digits (for example, $1234567$ and $6321475$ are two such permutations). If the $5040$ numbers obtained are then placed in ascending order, what is the $2013^{\text{th}}$ number?
+=== advanced-5
+An unfair coin lands heads with probability $\frac{1}{17}$ and tails with probability $\frac{16}{17}$. Matt flips the coin repeatedly until he flips at least one head and at least one tail. What is the expected number of times that Matt flips the coin?
+=== advanced-6
+A positive integer $b\ge 2$ is neat if and only if there exist positive base-$b$ digits $x$ and $y$ (that is, $x$ and $y$ are integers, $0<x<b$ and $0<y<b$) such that the number $x.y$ base $b$ (that is, $x+\frac{y}{b}$) is an integer multiple of $x/y$. Find the number of neat integers less than or equal to $100$.
+=== advanced-7
+Robin is playing notes on an $88$-key piano. He starts by playing middle C, which is actually the $40$th lowest note on the piano (i.e. there are $39$ notes lower than middle C). After playing a note, Robin plays with probability $\frac{1}{2}$ the lowest note that is higher than the note he just played, and with probability $\frac{1}{2}$ the highest note that is lower than the note he just played. What is the probability that he plays the highest note on the piano before playing the lowest note?
+=== advanced-8
+Farmer John owns $2013$ cows. Some cows are enemies of each other, and Farmer John wishes to divide them into as few groups as possible such that each cow has at most $3$ enemies in her group. Each cow has at most $61$ enemies. Compute the smallest integer $G$ such that, no matter which enemies they have, the cows can always be divided into at most $G$ such groups?
+=== advanced-9
+Big candles cost $16$ cents and burn for exactly $16$ minutes. Small candles cost $7$ cents and burn for exactly $7$ minutes. The candles burn at possibly varying and unknown rates, so it is impossible to predictably modify the amount of time for which a candle will burn except by burning it down for a known amount of time. Candles may be arbitrarily and instantly put out and relit. Compute the cost in cents of the cheapest set of big and small candles you need to measure exactly $1$ minute.
+=== advanced-10
+Compute the number of positive integers $b$ where $b\le 2013$, $b\ne 17$, and $b\ne 18$ such that there exists some positive integer $N$ such that $\frac{N}{17}$ is a perfect $17$th power, $\frac{N}{18}$ is a perfect $18$th power, and $\frac{N}{b}$ is a perfect $b$th power.
+=== geometry-1
+In triangle $ABC$, $AC=7$. $D$ lies on $AB$ such that $AD=BD=CD=5$. Find $BC$.
+=== geometry-2
+What is the perimeter of a rectangle of area $32$ inscribed in a circle of radius $4$?
+=== geometry-3
+Robin has obtained a circular pizza with radius $2$. However, being rebellious, instead of slicing the pizza radially, he decides to slice the pizza into $4$ strips of equal width both vertically and horizontally. What is the area of the smallest piece of pizza?
+=== geometry-4
+$ABCD$ is a regular tetrahedron with side length $1$. Find the area of the cross section of $ABCD$ cut by the plane that passes through the midpoints of $AB$, $AC$, and $CD$.
+=== geometry-5
+In square $ABCD$ with side length $2$, let $P$ and $Q$ both be on side $AB$ such that $AP=BQ=\frac{1}{2}$. Let $E$ be a point on the edge of the square that maximizes the angle $PEQ$. Find the area of triangle $PEQ$.
+=== geometry-6
+$ABCD$ is a rectangle with $AB=CD=2$. A circle centered at $O$ is tangent to $BC$, $CD$, and $AD$ (and hence has radius $1$). Another circle, centered at $P$, is tangent to circle $O$ at point $T$ and is also tangent to $AB$ and $BC$. If line $AT$ is tangent to both circles at $T$, find the radius of circle $P$.
+=== geometry-7
+$ABCD$ is a square such that $\overline{AB}$ lies on the line $y=x+4$ and points $C$ and $D$ lie on the graph of parabola $y^2=x$. Compute the sum of all possible areas of $ABCD$.
+=== geometry-8
+Let equilateral triangle $ABC$ with side length $6$ be inscribed in a circle and let $P$ be on arc $AC$ such that $AP\cdot PC=10$. Find the length of $BP$.
+=== geometry-9
+In tetrahedron $ABCD$, $AB=4$, $CD=7$, and $AC=AD=BC=BD=5$. Let $I_A$, $I_B$, $I_C$, and $I_D$ denote the incenters of the faces opposite vertices $A$, $B$, $C$, and $D$, respectively. It is provable that $AI_A$ intersects $BI_B$ at a point $X$, and $CI_C$ intersects $DI_D$ at a point $Y$. Compute $XY$.
+=== geometry-10
+Let triangle $ABC$ have side lengths $AB=16$, $BC=20$, $AC=26$. Let $ACDE$, $ABFG$, and $BCHI$ be squares that are entirely outside of triangle $ABC$. Let $J$ be the midpoint of $EH$, $K$ be the midpoint of $DG$, and $L$ the midpoint of $AC$. Find the area of triangle $JKL$.
+=== general-1
+Robin goes birdwatching one day. He sees three types of birds: penguins, pigeons, and robins. $\frac{2}{3}$ of the birds he sees are robins. $\frac{1}{8}$ of the birds he sees are penguins. He sees exactly $5$ pigeons. How many robins does Robin see?
+=== general-2
+Jimmy runs a successful pizza shop. In the middle of a busy day, he realizes that he is running low on ingredients. Each pizza must have $1$ lb of dough, $\frac{1}{4}$ lb of cheese, $\frac{1}{6}$ lb of sauce, and $\frac{1}{3}$ lb of toppings, which include pepperonis, mushrooms, olives, and sausages. Given that Jimmy currently has $200$ lbs of dough, $20$ lbs of cheese, $20$ lbs of sauce, $15$ lbs of pepperonis, $5$ lbs of mushrooms, $5$ lbs of olives, and $10$ lbs of sausages, what is the maximum number of pizzas that Jimmy can make?
+=== general-3
+Queen Jack likes a $5$-card hand if and only if the hand contains only queens and jacks. Considering all possible $5$-card hands that can come from a standard $52$-card deck, how many hands does Queen Jack like?
+=== general-4
+What is the smallest number over $9000$ that is divisible by the first four primes?
+=== general-5
+A rhombus has area $36$ and the longer diagonal is twice as long as the shorter diagonal. What is the perimeter of the rhombus?
+=== general-6
+Nick is a runner, and his goal is to complete four laps around a circuit at an average speed of $10$ mph. If he completes the first three laps at a constant speed of only $9$ mph, what speed does he need to maintain in miles per hour on the fourth lap to achieve his goal?
+=== general-7
+A fly and an ant are on one corner of a unit cube. They wish to head to the opposite corner of the cube. The fly can fly through the interior of the cube, while the ant has to walk across the faces of the cube. How much shorter is the fly's path if both insects take the shortest path possible?
+=== general-8
+According to Moor's Law, the number of shoes in Moor's room doubles every year. In 2013, Moor's room starts out having exactly one pair of shoes. If shoes always come in unique, matching pairs, what is the earliest year when Moor has the ability to wear at least $500$ mismatched pairs of shoes? Note that left and right shoes are distinct, and Moor must always wear one of each.
+=== general-9
+A tree has $10$ pounds of apples at dawn. Every afternoon, a bird comes and eats $x$ pounds of apples. Overnight, the amount of food on the tree increases by $10\%$. What is the maximum value of $x$ such that the bird can sustain itself indefinitely on the tree without the tree running out of food?
+=== general-10
+Consider a sequence given by $a_n=a_{n-1}+3a_{n-2}+a_{n-3}$, where $a_0=a_1=a_2=1$. What is the remainder of $a_{2013}$ divided by $7$?
+=== general-11
+Sara has an ice cream cone with every meal. The cone has a height of $2\sqrt{2}$ inches and the base of the cone has a diameter of $2$ inches. Ice cream protrudes from the top of the cone in a perfect hemisphere. Find the surface area of the ice cream cone, ice cream included, in square inches.
+=== general-12
+What is the greatest possible value of $c$ such that $x^2+5x+c=0$ has at least one real solution?
+=== general-13
+$\mathbb{R}^2$-tic-tac-toe is a game where two players take turns putting red and blue points anywhere on the $xy$ plane. The red player moves first. The first player to get $3$ of their points in a line without any of their opponent's points in between wins. What is the least number of moves in which Red can guarantee a win? (We count each time that Red places a point as a move, including when Red places its winning point.)
+=== general-14
+Peter is chasing after Rob. Rob is running on the line $y=2x+5$ at a speed of $2$ units a second, starting from the point $(0,5)$. Peter starts running $t$ seconds after Rob, running at $3$ units a second. Peter also starts at $(0,5)$, and catches up to Rob at the point $(17,39)$. What is the value of $t$?
+=== general-15
+Given regular hexagon $ABCDEF$, compute the probability that a randomly chosen point inside the hexagon is inside triangle $PQR$, where $P$ is the midpoint of $AB$, $Q$ is the midpoint of $CD$, and $R$ is the midpoint of $EF$.
+=== general-16
+Eight people are posing together in a straight line for a photo. Alice and Bob must stand next to each other, and Claire and Derek must stand next to each other. How many different ways can the eight people pose for their photo?
+=== general-17
+An isosceles right triangle is inscribed in a circle of radius $5$, thereby separating the circle into four regions. Compute the sum of the areas of the two smallest regions.
+=== general-18
+Caroline wants to plant $10$ trees in her orchard. Planting $n$ apple trees requires $n^2$ square meters, planting $n$ apricot trees requires $5n$ square meters, and planting $n$ plum trees requires $n^3$ square meters. If she is committed to growing only apple, apricot, and plum trees, what is the least amount of space, in square meters, that her garden will take up?
+=== general-19
+A triangle with side lengths $2$ and $3$ has an area of $3$. Compute the third side length of the triangle.
+=== general-20
+Ben is throwing darts at a circular target with diameter $10$. Ben never misses the target when he throws a dart, but he is equally likely to hit any point on the target. Ben gets $\lceil 5-x\rceil$ points for having the dart land $x$ units away from the center of the target. What is the expected number of points that Ben can earn from throwing a single dart? (Note that $\lceil y\rceil$ denotes the smallest integer greater than or equal to $y$.)
+=== general-21
+How many positive three-digit integers $\underline{a}\,\underline{b}\,\underline{c}$ can represent a valid date in 2013, where either $a$ corresponds to a month and $\underline{b}\,\underline{c}$ corresponds to the day in that month, or $\underline{a}\,\underline{b}$ corresponds to a month and $c$ corresponds to the day? For example, $202$ is a valid representation for February 2nd, and $121$ could represent either January 21st or December 1st.
+=== general-22
+The set $A=\{1,2,3,\ldots,10\}$ contains the numbers $1$ through $10$. A subset of $A$ of size $n$ is competent if it contains $n$ as an element. A subset of $A$ is minimally competent if it itself is competent, but none of its proper subsets are. Find the total number of minimally competent subsets of $A$.
+=== general-23
+Let $a$ and $b$ be the solutions to $x^2-7x+17=0$. Compute $a^4+b^4$.
+=== general-24
+Compute the square of the distance between the incenter (center of the inscribed circle) and circumcenter (center of the circumscribed circle) of a $30$-$60$-$90$ right triangle with hypotenuse of length $2$.
+=== general-25
+A $3\times 6$ grid is filled with the numbers in the list $\{1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9\}$ according to the following rules: (1) Both the first three columns and the last three columns contain the integers $1$ through $9$. (2) No number appears more than once in a given row. Let $N$ be the number of ways to fill the grid and let $k$ be the largest positive integer such that $2^k$ divides $N$. What is $k$?

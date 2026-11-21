@@ -2209,14 +2209,32 @@
     const top = (num === 1 ? "" : num) + "\\pi";
     return den === 1 ? top : `\\frac{${top}}{${den}}`;
   }
-  const radianTex = tex => tex.replace(DEG_NUM, (m, d) => degreesAsRadians(d)).replace(DEG_SYM, (m, x) => `\\tfrac{\\pi}{180}${x}`);
+  const radianTex = (tex, box) => {
+    const MARK = "\u0001";
+    let out = tex.replace(DEG_NUM, (m, d) => { const r = degreesAsRadians(d); return box && /frac/.test(r) ? MARK + r : r; })
+      .replace(DEG_SYM, (m, x) => (box ? MARK : "") + `\\tfrac{\\pi}{180}${x}`);
+    if (!box || out.indexOf(MARK) < 0) return out;
+    // In a formula box a fraction now stands where a plain number was, so the parentheses around
+    // it grow with it, \left( ... \right), instead of staying text height (owner, 2026-11-21).
+    const pairs = [], stack = [];
+    for (let i = 0; i < out.length; i++) {
+      const sized = /\\(left|right|big|Big|bigg|Bigg)[lr]?\s*$/.test(out.slice(Math.max(0, i - 8), i));
+      if (out[i] === "(" && !sized) stack.push(i);
+      else if (out[i] === ")" && !sized && stack.length) pairs.push([stack.pop(), i]);
+    }
+    const grow = new Set();
+    pairs.forEach(([a, b]) => { if (out.slice(a, b).indexOf(MARK) >= 0) { grow.add(a); grow.add(b); } });
+    let res = "";
+    for (let i = 0; i < out.length; i++) res += grow.has(i) ? (out[i] === "(" ? "\\left(" : "\\right)") : out[i];
+    return res.split(MARK).join("");
+  };
   function anglesToRadians(container, skip) {
     const scopes = [...container.querySelectorAll("[data-angles]")];
     const own = container.closest && container.closest("[data-angles]");
     if (own) scopes.push(container);
     scopes.forEach(scope => {
       scope.querySelectorAll(".formula-display[data-latex]").forEach(el => {
-        if (!skip(el) && !el.closest(ANGLE_SKIP)) el.dataset.latex = radianTex(el.dataset.latex);
+        if (!skip(el) && !el.closest(ANGLE_SKIP)) el.dataset.latex = radianTex(el.dataset.latex, true);
       });
       const walk = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT);
       const nodes = [];

@@ -1,5 +1,5 @@
 // Problems and diagrams © 2019 Stanford Math Tournament. Reproduced with permission from the Stanford Math Tournament.
-// Source: the official Stanford Math Tournament papers.
+// Source: the official Stanford Math Tournament papers. Built by tools/statements/build.py from tools/statements/spec/smt/2019.txt.
 Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2019-smt-algebra-1": { s: String.raw`David owns a parking lot for vehicles. A vehicle is either a motorcycle with two wheels or a car with four wheels. Today, there are $100$ vehicles parked in his parking lot. The total number of wheels in David's parking lot is $326$. If David collects $\$1.00$ from each motorcycle and $\$2.00$ from each car per day, how much money in dollars does David collect today?`, u: "https://www.stanfordmathtournament.com/pdfs/smt2019/algebra-problems.pdf" },
 "2019-smt-algebra-2": { s: String.raw`Three consecutive terms of a geometric sequence of positive integers multiply to $1{,}000{,}000$. If the common ratio is greater than $1$, what is the smallest possible sum of the three terms?`, u: "https://www.stanfordmathtournament.com/pdfs/smt2019/algebra-problems.pdf" },

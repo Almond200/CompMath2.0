@@ -1,5 +1,5 @@
 // Problems and diagrams © 2018 Stanford Math Tournament. Reproduced with permission from the Stanford Math Tournament.
-// Source: the official Stanford Math Tournament papers.
+// Source: the official Stanford Math Tournament papers. Built by tools/statements/build.py from tools/statements/spec/smt/2018.txt.
 Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2018-smt-algebra-1": { s: String.raw`At the grocery store, $3$ avocados and $2$ pineapples cost $\$8.80$, while $5$ avocados and $3$ pineapples cost $\$14.00$. How much do $1$ avocado and $1$ pineapple cost in dollars?`, u: "https://www.stanfordmathtournament.com/pdfs/smt2018/algebra-problems.pdf" },
 "2018-smt-algebra-2": { s: String.raw`Let $a,b,c,d$ be an increasing sequence of numbers such that $a,b,c$ forms a geometric sequence and $b,c,d$ forms an arithmetic sequence. Given that $a=8$ and $d=24$, what is $b$?`, u: "https://www.stanfordmathtournament.com/pdfs/smt2018/algebra-problems.pdf" },

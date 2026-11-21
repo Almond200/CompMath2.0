@@ -1,5 +1,5 @@
 // Problems and diagrams © 2022 Stanford Math Tournament. Reproduced with permission from the Stanford Math Tournament.
-// Source: the official Stanford Math Tournament papers.
+// Source: the official Stanford Math Tournament papers. Built by tools/statements/build.py from tools/statements/spec/smt/2022.txt.
 Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2022-smt-algebra-1": { s: String.raw`Compute
 $$\frac{5+\sqrt{6}}{\sqrt{2}+\sqrt{3}}+\frac{7+\sqrt{12}}{\sqrt{3}+\sqrt{4}}+\cdots+\frac{63+\sqrt{992}}{\sqrt{31}+\sqrt{32}}.$$`, u: "https://www.stanfordmathtournament.com/pdfs/smt2022/algebra-problems.pdf" },
