@@ -11691,7 +11691,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2007 Columbus State Tournament, Problem 18", formulas: [], strategy: "", tree: ["alg.seq.period.cycle"] },
   { ref: "2007 Columbus State Tournament, Problem 19", formulas: [], strategy: "", tree: ["cp.logic.puzzle.deduce.order"] },
   { ref: "2007 Columbus State Tournament, Problem 20", formulas: ["distance-midpoint"], strategy: "", tree: ["geo.coord.conic.circle"] },
-  { ref: "2007 Columbus State Tournament, Problem 21", formulas: ["triangle-inequality"], strategy: "", tree: ["geo.tri.area.base"] },
+  { ref: "2007 Columbus State Tournament, Problem 21", formulas: ["triangle-inequality"], strategy: "", tree: ["geo.tri.ineq.valid"] },
   { ref: "2007 Columbus State Tournament, Problem 22", formulas: ["cone-formulas"], strategy: "", tree: ["geo.solid.round.cone"] },
   { ref: "2007 Columbus State Tournament, Problem 23", formulas: ["pythagorean-theorem"], strategy: "", tree: ["geo.poly.quad.para"] },
   { ref: "2007 Columbus State Tournament, Problem 24", formulas: ["am-gm"], strategy: "", tree: ["alg.ineq.means.amgm"] },

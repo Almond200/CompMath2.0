@@ -2659,3 +2659,5 @@ Columbus State 2014 #36 ($\sqrt{(n!)^2+13}$ an integer, solved by factoring $k^2
 Columbus State 2010 #46 (the centre of a unit-diameter ball rolling round the inside of a $1$, $25$, $49$, $25$ trapezoid: the path is a similar trapezoid shrunk by the inradius-type offset) `reflection-coordinates` / `geo.coord.transform.reflect` → no card / `geo.poly.quad.trap` (no reflection is used).
 
 Columbus State 2009: the posted paper is headed "Draft 2" on every page, so its wording may differ from the printed contest; #17 (the last three digits of $3^{98}$) has no answer choices in it. Tag fix: #22 (a polar equation written as a line) `alg.trig.identity.sum` → `geo.coord.line.slope`.
+
+Columbus State 2007 #21 (which third side a triangle with sides $3$ and $10$ can have) `geo.tri.area.base` → `geo.tri.ineq.valid`.
