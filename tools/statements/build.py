@@ -41,7 +41,9 @@ DIRS = {
 }
 FAM, NAME, SOURCE = DIRS[d]
 # the slug word where it is not the folder name (slug = year-word-tail)
-SLUG_WORD = {"gmay": "girls-in-math-at-yale"}
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+import choice_layout
+SLUG_WORD = {"gmay": "girls-in-math-at-yale", "umd": "umd-hsmc-part-i"}
 total = 0
 for spec in sorted(glob.glob(os.path.join(SPEC, d, "*.txt"))):
     year = os.path.basename(spec)[:4]
@@ -63,6 +65,7 @@ for spec in sorted(glob.glob(os.path.join(SPEC, d, "*.txt"))):
                 sys.exit(f"{slug}: missing figure {src}")
             return f"@@fig:{d}/{year}/{short}@@"
         s = re.sub(r"@@fig:([^@/]+)@@", fig, body.strip())
+        s = choice_layout.layout(s)  # long answer choices one per line
         if "`" in s: sys.exit(f"{slug}: backtick in statement")
         url = p["url"] if d == "arml" else p["url"].split("#")[0]
         out.append(f'"{slug}": {{ s: String.raw`{s}`, u: "{url}" }},')

@@ -1,0 +1,100 @@
+=== 1
+Rank the following three numbers in order: $x=2001/2002$, $y=2002^{1/2002}$, $z=(-2003)^{2003}$.
+
+(A) $x<y<z$  (B) $y<x<z$  (C) $y<z<x$  (D) $z<y<x$  (E) $z<x<y$
+=== 2
+Today my son is $1/3$ of my age. Five years ago he was $1/4$ of my age back then. How old is my son now?
+
+(A) $12$  (B) $15$  (C) $17$  (D) $20$  (E) $21$
+=== 3
+For exactly which values of $x$ is $|2x-4|\le 6$?
+
+(A) all $x$  (B) $2\le x\le 4$  (C) $1\le x\le 5$  (D) $-1\le x\le 5$  (E) all $x\le 2$
+=== 4
+Which of the following points lies on the line passing through the points $(1,1)$ and $(2,3)$?
+
+(A) $(5,7)$  (B) $(7,5)$  (C) $(6,11)$  (D) $(-1,5)$  (E) $(0,0)$
+=== 5
+Snow White and the seven dwarfs went to work as carpenters. Each dwarf earned $\$20$. Snow White earned $\$3.50$ more than the average of the eight. How much did Snow White earn?
+
+(A) $\$21$  (B) $\$23.50$  (C) $\$24$  (D) $\$30$  (E) $\$31.50$
+=== 6
+The line $y=3-x$ intersects the parabola $y=3x-x^2$ in two points $(x_1,y_1)$ and $(x_2,y_2)$. What is $y_1+y_2$?
+
+(A) $2$  (B) $3$  (C) $5$  (D) $6$  (E) $7$
+=== 7
+Let $a$ and $b$ be the lengths of two legs of a right triangle and let $c$ be the length of the hypotenuse. Let $A$ be the area of a circle with radius $a$, $B$ be the area of a circle with radius $b$, and $C$ be the area of a circle with radius $c$. Which of the following equations must be true?
+
+(A) $C=A+B$  (B) $C=(A+B)/\pi$  (C) $C^2=A^2+B^2$  (D) $C^2=(A^2+B^2)/\pi$  (E) $C^2=(A^2+B^2)/\pi^2$
+=== 8
+Find $x$ so that $\log_2(2)+\log_3(9)=\log_4(x)$.
+
+(A) $1$  (B) $3$  (C) $4$  (D) $16$  (E) $64$
+=== 9
+If $7$ Muppets can eat $7$ cookies in $7$ minutes, how many cookies could $14$ Muppets eat in $14$ minutes? (Assuming they have an adequate supply of milk.)
+
+(A) $14$  (B) $21$  (C) $28$  (D) $35$  (E) $42$
+=== 10
+$(\sin x+\cos(-x))^2$ is equal to
+
+(A) $1+\sin(2x)$  (B) $1$  (C) $0$  (D) $1-\sin(2x)$  (E) $\sin(x+\pi/2)$
+=== 11
+A bee woke up on a Sunday morning and went directly to work. It flew straight south for $1$ hour to a nice sweet field and spent $30$ min there. Then it went directly west for $3/4$ hour to a garden where it stayed for $1$ hour. After that it flew the shortest path home. Assuming that the bee flew with constant speed and that the earth is flat, for how long was the bee away from home?
+
+(A) $4$ hours  (B) $4.5$ hours  (C) $5.2$ hours  (D) $7.2$ hours  (E) $8$ hours
+=== 12
+If the quadratic equation $x^2+bx+c=0$ has exactly one solution $r$ then $b/c$ is equal to
+
+(A) $-2/r^2$  (B) $-2/r$  (C) $1$  (D) $2/r^2$  (E) $2/r$
+=== 13
+The area of a regular $2002$-gon of perimeter $1$ is approximately
+
+(A) $1/2$  (B) $1/3$  (C) $1/6$  (D) $1/12$  (E) $1/24$
+=== 14
+Professor Ding-Dong likes to eat chocolates for an afternoon snack. On Monday morning he brings in a bag of $5$ chocolates, $3$ with red wrappers and $2$ with green wrappers. At snack time every day, he reaches into the bag, pulls one out and eats it. What is the probability that the chocolate he eats on Friday will have a red wrapper?
+
+(A) $1/5$  (B) $1/3$  (C) $2/5$  (D) $1/2$  (E) $3/5$
+=== 15
+Nine pens cost eleven dollars and $x$ cents, thirteen pens cost fifteen dollars and $y$ cents. Find $(x,y)$.
+
+(A) $(13,71)$  (B) $(70,37)$  (C) $(7,63)$  (D) $(7,99)$  (E) $(99,13)$
+=== 16
+The number $2002$ is a palindrome since its digits are the same when read forward or backward. The number $1$ is also a palindrome. How many integers between $1$ and $2002$ (inclusive) are palindromes?
+
+(A) $65$  (B) $83$  (C) $99$  (D) $109$  (E) $119$
+=== 17
+How many triples of real numbers $(x,y,z)$ are there such that $xy=z$, $xz=y$ and $yz=x$?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$
+=== 18
+Sparrows have two feet, four toes per foot, and one beak. George says to Martha: "In that collection of sparrows there are $N$ more toes than beaks." Martha replies: "No George, I know that you are wrong." Find a value of $N$ so that Martha's statement must be correct.
+
+(A) $21$  (B) $28$  (C) $80$  (D) $350$  (E) $2002$
+=== 19
+Find the appropriate base $b$ so that the number $95_b$ in base $b$ is equal to $140$ in base $10$.
+
+(A) $11$  (B) $15$  (C) $18$  (D) $22$  (E) $135$
+=== 20
+In a certain city there are $7$ avenues going north-south and $4$ streets going east-west. How many paths are there that only travel on roads, start at the southwest corner of the city, end at northeast corner of the city and have the shortest possible length?
+
+(A) $18$  (B) $21$  (C) $28$  (D) $84$  (E) $330$
+=== 21
+Twelve people are equally spaced around a large circle. What is the largest number of wires that can be stretched between pairs of people so that no two wires intersect at any point inside the circle?
+
+(A) $11$  (B) $12$  (C) $21$  (D) $23$  (E) $110$
+=== 22
+A train that is one mile long is moving at a constant speed. A rabbit, who runs faster than the train, starts at the back of the train and runs alongside until it reaches the front of the train. At that instant, it immediately turns around and runs back (at the same rate) until it again reaches the back of the train. At that instant, the back of the train is now precisely where the front of the train was when the rabbit started running. In total, how far did the rabbit run?
+
+(A) $1+2^{1/2}$ miles  (B) $2$ miles  (C) $1+5^{1/2}$ miles  (D) $2\left(5^{1/2}-1\right)$ miles  (E) $2\left(2^{1/2}\right)$ miles
+=== 23
+What is the smallest positive integer $a$ for which there is an integer $c$ and a right triangle with side lengths $a$ and $17$ and hypotenuse of length $c$?
+
+(A) $1$  (B) $8$  (C) $16$  (D) $39$  (E) $144$
+=== 24
+Starting January $1$ the first dwarf visits Snow White every day. The second dwarf visits Snow White on January $2$ and every second day thereafter. The pattern continues for each of the seven dwarfs (i.e., the seventh dwarf visits Snow White on January $7$ and every seventh day thereafter). What is the total number of dwarf visits up to and including the first day when all seven dwarfs visit Snow White?
+
+(A) $28$  (B) $42$  (C) $105$  (D) $420$  (E) $1089$
+=== 25
+Three problems were given to participants of a math contest. Each participant got $0,1,2$, or $3$ points for each problem. After the papers were graded it turned out that no pair of participants received matching scores for more than one problem. What is the largest possible number of participants?
+
+(A) $8$  (B) $9$  (C) $12$  (D) $16$  (E) $24$

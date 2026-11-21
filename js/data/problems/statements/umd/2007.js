@@ -1,0 +1,89 @@
+// Problems and diagrams © 2007 University of Maryland High School Mathematics Competition. Reproduced with permission from the University of Maryland High School Mathematics Competition.
+// Source: the official UMD HSMC papers. Built by tools/statements/build.py from tools/statements/spec/umd/2007.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2007-umd-hsmc-part-i-1": { s: String.raw`My son is $1/3$ my age now. Five years ago, he was $1/4$ my age then. How old is my son?
+
+(A) $9$  (B) $12$  (C) $15$  (D) $18$  (E) $21$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-2": { s: String.raw`Which of the following numbers is the smallest?
+
+(A) $2^{1/2}$  (B) $4^{1/4}$  (C) $8^{1/8}$  (D) $16^{1/16}$  (E) $32^{1/32}$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-3": { s: String.raw`The line $y=8x+b$ intersects the parabola $y=x^2$ in exactly one point. What is the value of $b$?
+
+(A) $-16$  (B) $-8$  (C) $-4$  (D) $0$  (E) $8$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-4": { s: String.raw`Two dogs chase a car and catch it. Rover starts $100$ feet behind the car and runs $25$ feet per second. Spot starts $200$ feet behind the car and runs $30$ feet per second. They reach the car at the same time. How fast is the car traveling, in feet per second?
+
+(A) $0$  (B) $10$  (C) $15$  (D) $20$  (E) $24$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-5": { s: String.raw`A jar of coins has many nickels (worth $5$ cents), dimes (worth $10$ cents), and twents (a new currency worth $20$ cents). You pick out three coins. How many possibilities are there for the total value of the three coins?
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $27$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-6": { s: String.raw`What is the largest number that can be obtained as the product of positive integers that add up to $16$?
+
+(A) $64$  (B) $243$  (C) $256$  (D) $324$  (E) $432$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-7": { s: String.raw`Newton and Leibniz go camping. Leibniz asks Newton to pile up some logs to build a fire. Newton misunderstands and calculates the expression
+$$\frac{\dfrac{\log 1000000}{\log 100}}{\dfrac{\log 1000}{\log 10000}}$$
+(logarithms are to the base $10$). What number does Newton obtain?
+
+(A) $1/10$  (B) $3/4$  (C) $4$  (D) $8$  (E) $10$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-8": { s: String.raw`A small fuel-efficient car getting $60$ miles per gallon uses $60$ gallons of gas in $60$ days. Assuming that the number of miles driven per day is the same, how many gallons of gas would a large gas-guzzling car getting $20$ miles per gallon use in $40$ days?
+
+(A) $20$  (B) $40$  (C) $60$  (D) $80$  (E) $120$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-9": { s: String.raw`If a batch of cookie dough can make $144$ round cookies, each having a diameter of $3$ inches, how many cookies having a diameter of $4$ inches can be made from the same amount of cookie dough? Assume that all cookies have the same thickness.
+
+(A) $48$  (B) $72$  (C) $81$  (D) $108$  (E) $172$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-10": { s: String.raw`Suppose a pig pen has $p$ pigs with $2$ loops in their tails and $q$ pigs with $3$ loops in their tails. If $p$ and $q$ are both prime numbers and the total number of loops is equal to $40$, how many pigs are in the pen?
+
+(A) $14$  (B) $16$  (C) $18$  (D) $19$  (E) $20$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-11": { s: String.raw`Mike has three dogs. If Goofy is sleeping, Pluto is eating. If Lassie is not sleeping, Pluto is not eating. It never happens that both Goofy and Lassie are sleeping. Aristotle concludes that Goofy never sleeps. Socrates concludes that Lassie never sleeps. Plato concludes that Pluto always eats. Who has made a correct deduction?
+
+(A) only Aristotle  (B) only Plato and Socrates  (C) only Plato  (D) only Aristotle and Socrates  (E) Aristotle, Socrates, and Plato`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-12": { s: String.raw`If $f(x)+f(1-x)=10$ for all real numbers $x$, then
+$$f\left(\frac{1}{100}\right)+f\left(\frac{2}{100}\right)+\cdots+f\left(\frac{99}{100}\right)$$
+equals
+
+(A) $490$
+(B) $495$
+(C) $500$
+(D) $505$
+(E) the value cannot be determined from the information given`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-13": { s: String.raw`A congressman proposes an income tax law as follows: if your earnings in a given day are $x$ dollars, then you pay $x$ percent of your income that day in taxes (and if you earn $100$ dollars or more in a day, you pay all of your income in taxes). What daily salary will leave you with the most money after taxes are paid?
+
+(A) $45$  (B) $48$  (C) $49.75$  (D) $50$  (E) $52$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-14": { s: String.raw`According to an old legend, Queen Dido (founder of Carthage) bought a small piece of land from the local people - only as much land as could be encompassed by an oxhide. She cheated by cutting the hide into a thin ribbon $1$ millimeter wide and using this ribbon to form a semicircle, with the seashore forming the remaining part of the boundary (the seashore is the diameter of the semicircle). This semicircular region became Carthage. Assuming that the area of the hide was $5$ square meters, approximately how large was that piece of land in square meters?
+
+(A) $2500$  (B) $25000$  (C) $40000$  (D) $2000000$  (E) $4000000$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-15": { s: String.raw`The French flag has a white stripe in the middle with a blue stripe on the left and red stripe on the right. In how many ways can you color a similar flag (that is, with three stripes) if you have a choice of five colors and no two adjacent stripes can be of the same color?
+
+(A) $60$  (B) $80$  (C) $100$  (D) $125$  (E) $150$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-16": { s: String.raw`Richard, Karen, and Harold are carpenters. Richard can make one chair in one hour. Karen can make one chair in two hours. Harold can make one chair in three hours. If they work together, how long will it take to make $99$ chairs?
+
+(A) $33$ hours  (B) $42$ hours  (C) $44$ hours  (D) $54$ hours  (E) $60$ hours`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-17": { s: String.raw`If $\sin\theta\cos\theta=1/4$ and $-45^\circ\le\theta\le 45^\circ$, then angle $\theta$ equals
+
+(A) $10^\circ$  (B) $15^\circ$  (C) $20^\circ$  (D) $25^\circ$  (E) $30^\circ$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-18": { s: String.raw`Seven children start school at 8am. The first child is calm, sits down, and never stands up. The second one runs for $1$ minute, then sits down for $1$ minute, then runs for $1$ minute, and keeps on alternately sitting and running for exactly one minute. Child number $n$ keeps on running for $n-1$ minutes and sitting for $1$ minute, and then repeating. As soon as all children are sitting for a minute, school ends. When does school end?
+
+(A) $9{:}20$am  (B) $11{:}10$am  (C) $1{:}46$pm  (D) $2{:}00$pm  (E) $3{:}00$pm`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-19": { s: String.raw`Let $R$ be a rectangle. Let $T$ be the triangle that has one vertex on the midpoint of the base of $R$ and the other two vertices on the two corners of $R$ that are not on the base. The triangle $T$ is equilateral. Which of the answers below is closest to the ratio of the perimeter of $R$ to the perimeter of $T$.
+
+(A) $1.0$  (B) $1.1$  (C) $1.2$  (D) $1.4$  (E) $1.7$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-20": { s: String.raw`If $a+b+c=a^2+b^2+c^2=a^3+b^3+c^3=3/2$, then $abc$ equals
+
+(A) $-2$  (B) $-1/16$  (C) $0$  (D) $1/2$  (E) $2$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-21": { s: String.raw`Equilateral triangle $AEB$ lies on top of square $ABCD$. Angle $CED$ equals
+
+(A) $15^\circ$  (B) $20^\circ$  (C) $25^\circ$  (D) $30^\circ$  (E) $45^\circ$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-22": { s: String.raw`John writes the numbers $1,2,\dots,2007$ on the blackboard; Mary then erases $m$ of these numbers. Among the numbers that remain on the board, not a single one is the product of any two of the others. If $x$ is the smallest possible value of $m$, then
+
+(A) $x<50$  (B) $50\le x<200$  (C) $200\le x<500$  (D) $500\le x<1000$  (E) $x\ge 1000$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-23": { s: String.raw`Five couples go to a restaurant. They sit at a rectangular table on the long sides. Nobody sits on the short sides. Everyone sits either across from or next to their partner. How many ways can they be seated?
+
+(A) $360$  (B) $768$  (C) $5040$  (D) $19200$  (E) $30720$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-24": { s: String.raw`Each of the numbers $x_1,\dots,x_{2007}$ can be $0,1$, or $-1$. Let
+$$S=x_1x_2+x_1x_3+\cdots+x_1x_{2007}+x_2x_3+\cdots+x_{2005}x_{2007}+x_{2006}x_{2007},$$
+which is the sum of all products $x_ix_j$ with $i<j$. What is the smallest possible value of $S$?
+
+(A) $-1003$  (B) $-1$  (C) $-2006$  (D) $-2005$  (E) None of the preceding.`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+"2007-umd-hsmc-part-i-25": { s: String.raw`If $x,y$ are positive real numbers satisfying the system $x^2+y\sqrt{xy}=336$, $y^2+x\sqrt{xy}=112$, then $x+y$ equals
+
+(A) $\sqrt{448}$  (B) $10\sqrt3+\sqrt7$  (C) $15$  (D) $4+\sqrt{112}$  (E) $20$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2007.pdf" },
+});

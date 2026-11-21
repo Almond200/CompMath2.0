@@ -1,0 +1,91 @@
+// Problems and diagrams © 1997 University of Maryland High School Mathematics Competition. Reproduced with permission from the University of Maryland High School Mathematics Competition.
+// Source: the official UMD HSMC papers. Built by tools/statements/build.py from tools/statements/spec/umd/1997.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"1997-umd-hsmc-part-i-1": { s: String.raw`Which number is the largest?
+
+(A) $1^{44}$  (B) $2^{33}$  (C) $3^{22}$  (D) $4^{11}$  (E) $1{,}000{,}000{,}000$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-2": { s: String.raw`Pizzas are to be ordered for a party. The restaurant offers three specials.
+
+Special A: a small, together with a medium pizza, for $13$ dollars.
+
+Special B: $2$ medium pizzas for $14$ dollars.
+
+Special C: a large pizza for $15$ dollars.
+
+A small pizza has diameter $12''$, a medium pizza $16''$ and a large pizza $20''$.
+
+Rank A, B and C from the greatest to the least square inches per dollar.
+
+(A) CBA  (B) BCA  (C) ABC  (D) ACB  (E) BAC`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-3": { s: String.raw`Many rectangular placemats have the following property: If folded in half along the shorter midline, the two sides of the resulting rectangle have the same ratio as in the original rectangle. Assuming that a placemat has this property, what is the ratio of its length to its width?
+
+(A) $\sqrt2$  (B) $2$  (C) $\sqrt3$  (D) $3$  (E) $4$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-4": { s: String.raw`Let $\log$ denote logarithm to the base $10$. The expression $5^{\log 2}+2^{\log 5}-50^{\log 2}$ equals
+
+(A) $5^{\log 2}$  (B) $1$  (C) $25$  (D) $5^{\log 2+\log 5}$  (E) $0$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-5": { s: String.raw`What is the area of the region in the $xy$-plane defined by the inequalities $x\ge 0$, $y\ge x+1$, and $2x+y\le 10$?
+
+(A) $10$  (B) $12$  (C) $\frac{27}{2}$  (D) $\frac{35}{2}$  (E) $30$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-6": { s: String.raw`Several roosters want to buy an alarm clock. If each contributes $\$0.35$, they lack $\$4.40$. If each contributes $\$0.40$, they have $\$4.40$ extra. The number of roosters is in the range of
+
+(A) less than $50$  (B) $50$ to $100$  (C) $100$ to $150$  (D) $150$ to $200$  (E) more than $200$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-7": { s: String.raw`How many numbers $b$ are there among $\{1,2,\dots,100\}$ for which there is a positive integer $a$ with $a^3=b^2$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) more than $4$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-8": { s: String.raw`Suppose that a flight from Washington to San Francisco takes $7$ hours, while the flight from San Francisco to Washington takes $5$ hours. The difference in time is due to a wind blowing from west to east. How long, in minutes, would it take to fly between the two cities if there were no wind?
+
+(A) $330$  (B) $340$  (C) $350$  (D) $360$  (E) $375$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-9": { s: String.raw`Seven black unit squares and $2$ red ones on a table are to be assembled into a $3\times 3$ square, by matching sides. How many different designs can be made? Two designs are different when they look different no matter how you rotate them on the table. Flipping is forbidden.
+
+(A) $7$  (B) $10$  (C) $12$  (D) $14$  (E) $17$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-10": { s: String.raw`Bubble gum sticks to a bike wheel of diameter $1$ meter. Tom rode the bike for $1$ kilometer without skidding. The number of times the bubble gum hit the ground is closest to which of the following numbers?
+
+(A) $290$  (B) $320$  (C) $350$  (D) $380$  (E) $410$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-11": { s: String.raw`The three vertices of a triangle are at $(0,0)$, $(545,0)$ and $(751,915)$. The medians intersect at the point
+
+(A) $(434,304)$  (B) $(433,304)$  (C) $(433,305)$  (D) $(432,305)$  (E) None of the preceding.`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-12": { s: String.raw`Street lamps come in three different colors. In how many ways can seven lamps be put in a row so that no neighboring lamps have same color?
+
+(A) $128$  (B) $192$  (C) $307$  (D) $343$  (E) $2184$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-13": { s: String.raw`Huey can weed Donald's garden in $20$ minutes, Dewey can weed the garden in $24$ minutes, and Louie can weed the garden in $30$ minutes. In a spirit of cooperation they all decide to work together to weed the garden. How many minutes will it take them?
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-14": { s: String.raw`Two of six persons stole apples. But who? A said "B and C." D said "E and F." E said "A and B." B said "F and D." C said "B and E." F cannot be found. Four of the five persons interrogated had named one apple thief correctly and one incorrectly. The fifth had named both incorrectly. Who stole the apples?
+
+(A) A and F  (B) C and E  (C) D and E  (D) B and D  (E) not enough information`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-15": { s: String.raw`Cut a round pizza by four straightline cuts. Moving pieces is not allowed between cuts. What is the largest possible number of pieces?
+
+(A) $10$  (B) $11$  (C) $13$  (D) $16$  (E) $18$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-16": { s: String.raw`For how many different values of $k=1,2,3,\dots$ does the $k$-th day of September fall on the same day of the week as the $2k$-th day of October?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-17": { s: String.raw`It took $2322$ digits to number the pages of a dictionary (all pages are numbered). How many pages are there in the dictionary?
+
+(A) $805$  (B) $810$  (C) $818$  (D) $823$  (E) None of the preceding.`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-18": { s: String.raw`How many values of $x$ are there with $0\le x\le\pi$ such that $2\cos^2(x)=1-\cos(3x)$? ($x$ is in radians.)
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-19": { s: String.raw`The angle AYZ is $60^\circ$. Project A to line YZ perpendicularly to get point B, then project B to line YA perpendicularly to get point C. This procedure for point A is repeated for C to get D, E and so on. Denote $T_1,T_2,T_3,\dots$ the triangles ABY, BCY, CDY $\dots$. Which is the first triangle with area smaller than one hundredth of $T_1$?
+
+(A) $T_5$  (B) $T_{26}$  (C) $T_{27}$  (D) $T_{50}$  (E) $T_{51}$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-20": { s: String.raw`Suppose $a,b,c$ are three nonzero numbers and the polynomial $p(X)=X^3-aX^2+bX-c$ factors as $(X-a)(X-b)(X-c)$. What is the value $P(2)$?
+
+(A) $-3$  (B) $0$  (C) $4$  (D) $7$  (E) $9$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-21": { s: String.raw`You are on a train moving at $80$ km/h. An oncoming train of length $150$ m passes by the window in $3$ sec. How fast, in km/h, is the other train going?
+
+(A) $100$  (B) $93$  (C) $86$  (D) $79$  (E) None of the preceding.`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-22": { s: String.raw`Donald Duck read a book in $3$ days. During the first day he read $1/5$ of the book, plus $16$ pages. During the second day he read $3/10$ of what remained, plus $20$ pages. During the third day he read $3/4$ of what remained, plus $30$ pages. How many pages were there in the book?
+
+(A) $225$  (B) $240$  (C) $265$  (D) $270$  (E) None of the preceding.`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-23": { s: String.raw`Let $s(n)$ be the number of perfect squares with exactly $n$ digits. Let $r=s(101)/s(100)$. Which of the following is correct?
+
+(A) $1.01\le r\le 2.02$  (B) $2.02<r<3$  (C) $3\le r<4$  (D) $4\le r\le 101$  (E) $101<r$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-24": { s: String.raw`The largest real root of $X^4-4X^3+5X^2-4X+1$ is
+
+(A) $2+\sqrt{11}-\sqrt2$  (B) $\sqrt7$  (C) $\frac52$  (D) $\sqrt{2+\sqrt7}$  (E) $\frac{3+\sqrt5}{2}$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+"1997-umd-hsmc-part-i-25": { s: String.raw`An elephant is big and heavy. It has $4$ legs and a trunk, $5$ extremities altogether. A hippopotamus is also big and heavy. It has only $4$ extremities, the legs.
+
+After he was given only the total number $E$ of extremities in a herd of elephants and hippopotamuses, Tarzan managed to determine the number of elephants and the number of hippopotamuses in the herd and claimed that $E$ was the largest possible number for which he could do it. How many elephants were in the herd?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1997.pdf" },
+});

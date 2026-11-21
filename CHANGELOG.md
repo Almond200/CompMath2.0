@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **UMD HSMC Part I statements, 1997 to 2015 (475 of 725):** every paper read against its pages (1997 to 1999 had odd fonts or plain text pages), nine figures (1998 #14, 2010 #6, 2012 #10, #17 and #23, 2013 #4, 2014 #15, #22 and #25). Five tag fixes (AUDITS.md). `build.py` now lays out long answer choices one per line (as the LIVE importer does) and knows the UMD slug word. `STATEMENTS_V` 64.
 - **Girls in Math at Yale statements complete (96 problems, 2019 to 2026):** every Individual round read against its pages, six figures (2019 #2 and #6, 2021 #7, 2022 #1, 2024 #2, 2025 #12). No tag needed changing. `build.py` gained `SLUG_WORD` because the slug word differs from the folder name (`girls-in-math-at-yale`). `STATEMENTS_V` 63.
 - **MMATHS statements complete (131 problems, 2014 to 2025 without 2017):** every Individual round read against its page (2014's file is the solutions booklet, read for the statements), one figure (2023 #11, the knight's moves). Tag fix: 2015 #8 and #9 had swapped tags (AUDITS.md). `STATEMENTS_V` 62.
 - **Duke Math Meet statements complete (156 problems, 2007 to 2022):** every Individual round read against its page, 9 figures cropped (2008 #6, 2010 #9, 2011 #3 and #5, 2019 #5, 2021 #1 and #7, 2022 #1). Duke's database slugs are `YYYY-duke-math-meet-individual-N`, so the specs use `math-meet-individual-N` block names. No tag needed changing. `STATEMENTS_V` 61.

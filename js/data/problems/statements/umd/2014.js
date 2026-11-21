@@ -1,0 +1,91 @@
+// Problems and diagrams © 2014 University of Maryland High School Mathematics Competition. Reproduced with permission from the University of Maryland High School Mathematics Competition.
+// Source: the official UMD HSMC papers. Built by tools/statements/build.py from tools/statements/spec/umd/2014.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2014-umd-hsmc-part-i-1": { s: String.raw`Which of the following numbers is the largest?
+
+(A) $2^{\left(3^{\left(2^3\right)}\right)}$
+(B) $\left(2^3\right)^{\left(2^3\right)}$
+(C) $\left(\left(2^3\right)^2\right)^3$
+(D) $\left(2^{\left(3^2\right)}\right)^3$
+(E) $2^{\left(\left(3^2\right)^3\right)}$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-2": { s: String.raw`Galois wants to donate to the Fund for Wounded Duelists. He pledges to give a penny for every second in the year $2014$. Approximately how many dollars will he give to the fund?
+
+(A) $\$100{,}000$  (B) $\$200{,}000$  (C) $\$300{,}000$  (D) $\$1{,}000{,}000$  (E) $\$2{,}000{,}000$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-3": { s: String.raw`Jack and Jill walked up the hill at $2$ miles per hour. They came tumbling down the hill (along the same path) at $10$ miles per hour. If the total time for their trip up and down the hill was half an hour, how long is the path up the hill?
+
+(A) $1/2$ mile  (B) $3/4$ mile  (C) $5/6$ mile  (D) $1$ mile  (E) $3/2$ miles`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-4": { s: String.raw`The line with equation $y=x-1$ intersects the hyperbola with equation $(x-3)(y-2)=1$ in two points $A$ and $B$. Compute the distance $|AB|$ between $A$ and $B$.
+
+(A) $2\sqrt2$  (B) $2\sqrt3$  (C) $\sqrt2$  (D) $\sqrt3$  (E) $\sqrt6$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-5": { s: String.raw`In the sequence $a_1,a_2,a_3,a_4,a_5,a_6,a_7,a_8$, the sum of any three consecutive terms is equal to $25$. We know that $a_1=7$, while $a_8=9$. Find $a_2$.
+
+(A) $6$  (B) $7$  (C) $8$  (D) $9$  (E) $10$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-6": { s: String.raw`Fermat chooses a prime number $p$ and Euler chooses a positive integer $n$. If the system of equations $36x+py=9$, $12x+ny=8$ has no solution in real numbers $x$ and $y$, then Euler wins. If there is a solution, then Fermat wins. You are told that Euler won. What prime did Fermat choose?
+
+(A) $3$  (B) $5$  (C) $7$  (D) $11$  (E) $13$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-7": { s: String.raw`Let $A=200\pi$, $B=(1.5)^{3/2}(266)^{1/2}(20)$, and $C=600$. Which of the following is true?
+
+(A) $A<B<C$  (B) $A>B>C$  (C) $B<A<C$  (D) $C<A<B$  (E) $B<C<A$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-8": { s: String.raw`If $x>1$ and $\log_{10}(\sqrt x)=\sqrt{\log_{10}(x)}$, then what is the value of $x$?
+
+(A) $10$  (B) $100$  (C) $1000$  (D) $10000$  (E) $100000$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-9": { s: String.raw`At a math team meeting, the coach wants to give pieces of candy to each student. The coach knows that there will be $9$, $10$, $11$, or $12$ students at the meeting. What is the smallest positive number of pieces of candy that the coach should take to the meeting to be certain that each student receives the same number of pieces of candy and no candy is left over?
+
+(A) $720$  (B) $1980$  (C) $3960$  (D) $5940$  (E) $11880$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-10": { s: String.raw`The product $\tan 10^\circ\tan 20^\circ\tan 30^\circ\cdots\tan 80^\circ$ is equal to
+
+(A) $1$  (B) $\sqrt3$  (C) $\sqrt8$  (D) $24$  (E) $36$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-11": { s: String.raw`Ali Baba gets into a cave full of gold and diamonds. He has one sack with him. A sack full of gold weighs $200$ pounds, while a sack full of diamonds weighs $40$ pounds. The empty sack does not weigh anything. A pound of gold is worth $20$ coins, and a pound of diamonds is worth $60$ coins. How many coins can Ali Baba earn for the treasure if he can carry away only $100$ pounds?
+
+(A) $2000$  (B) $2400$  (C) $3000$  (D) $4500$  (E) $5000$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-12": { s: String.raw`The base of a pyramid is a square, and all eight edges of the pyramid are $1$ foot long. The volume of the pyramid in cubic feet equals
+
+(A) $\frac16$  (B) $\frac13$  (C) $\frac{\sqrt2}{6}$  (D) $\frac{\sqrt3}{6}$  (E) $\frac{\sqrt3}{12}$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-13": { s: String.raw`A jigsaw puzzle consists of $400$ tiles which are to be assembled to form a $20\times 20$ square. In assembling the puzzle, we call the fitting together of two pieces a move, independently of whether the pieces consist of single tiles or of blocks of tiles already assembled. What is the minimum number of such moves required to assemble the entire puzzle?
+
+(A) $399$  (B) $255$  (C) $179$  (D) $121$  (E) $40$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-14": { s: String.raw`Suppose that $a_1=1$, $a_2=3$, and $a_{n+2}=a_{n+1}+a_n$ for $n\ge 1$. What is the last digit of $a_{2014}$?
+
+(A) $1$  (B) $3$  (C) $5$  (D) $7$  (E) $9$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-15": { s: String.raw`A $10\times 10$ array of squares is given. In each square, a student writes the sum of the row number and the column number of the square (the upper left hand corner of this array is shown below). Let $P$ be the product of the $100$ integers written in the array. How many zeros are at the end of the number $P$?
+
+@@fig:umd/2014/parti-15.png@@
+
+(A) $9$  (B) $10$  (C) $16$  (D) $20$  (E) $21$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-16": { s: String.raw`Let $S$ denote the set of points $(x,y)$ in the plane that satisfy the inequality $|x-3|+|y-6|\le 10$. The area of the region $S$ is
+
+(A) $50$  (B) $100$  (C) $150$  (D) $200$  (E) $400$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-17": { s: String.raw`We are given three envelopes colored red, yellow, and blue, and five cards marked with the numbers $1,2,3,4,5$, respectively. We wish to distribute the five cards into the three envelopes in such a way that each of the envelopes is non-empty. In how many ways can this be done?
+
+(A) $10$  (B) $15$  (C) $120$  (D) $144$  (E) $150$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-18": { s: String.raw`How many pairs $(a,b)$ of integers with $a\ge b>0$ satisfy $ab=10(a+b)$?
+
+(A) none  (B) $2$  (C) $3$  (D) $5$  (E) $7$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-19": { s: String.raw`Eleven ants are placed on a $12$-inch ruler, one at each inch mark from $1$ through $11$. The ants in positions $1,2,3,4,5$ start crawling toward the higher numbers, and the ants in positions $6,7,8,9,10,11$ start crawling toward the lower numbers. All ants crawl at the same constant speed. If two ants meet, they reverse directions. For example, the ant starting at $5$ meets ant $6$ at the $5.5$-inch mark, reverses direction, then meets ant $4$ at the $5$-inch mark, and then reverses direction again. When an ant gets to the $0$-inch mark or the $12$-inch mark, it falls off the end and stops crawling. What is the total distance crawled by the ants?
+
+(A) $72$  (B) $96$  (C) $100$  (D) $132$  (E) $144$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-20": { s: String.raw`The equation
+$$\left(\sqrt{4-\sqrt{15}}\right)^x+\left(\sqrt{4+\sqrt{15}}\right)^x=8,$$
+where $x$ denotes a real number, has
+
+(A) no solutions  (B) one solution  (C) two solutions  (D) $4$ solutions  (E) infinitely many solutions`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-21": { s: String.raw`There are three underground gopher nests in a field, call them A, B, C. There are tunnels between A and B, between A and C, and between B and C. A gopher counts that there are $89$ ways to get from A to B and there are $82$ ways to get from A to C. The gopher tries to count how many ways to get from B to C, but the number is greater than $99$. Since the gopher cannot work with $3$-digit numbers, it cannot count them. Help out the gopher and determine how many ways there are to get from B to C. (Note: A way to get from A to C is either a tunnel directly from A to C or a tunnel from A to B and then a tunnel from B to C. Similar definitions apply for ways to get from A to B and ways to get from B to C.)
+
+(A) $120$  (B) $171$  (C) $178$  (D) $302$  (E) $802$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-22": { s: String.raw`In the figure below, the area of the larger square is $1$. We join each vertex of the square to the midpoint of the opposite side. What is the area of the smaller square?
+
+@@fig:umd/2014/parti-22.png@@
+
+(A) $1/4$  (B) $1/5$  (C) $1/6$  (D) $1/7$  (E) $2/9$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-23": { s: String.raw`Let $A$ be a subset of $\{1,2,\dots,16\}$ satisfying the following property: whenever you choose a subset $T$ consisting of $3$ elements of $A$, there are at least two elements in $T$ that have a common factor larger than $1$. What is the largest possible number of elements in $A$?
+
+(A) $9$  (B) $10$  (C) $11$  (D) $12$  (E) $13$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-24": { s: String.raw`Four of the vertices of a regular octagon are colored red, and the remaining four are colored green. We agree that two such colorings are the same if we can obtain one from the other by a rotation of the octagon. Note that a reflection (or flip) of the octagon is not a rotation. How many distinct colorings of the octagon are there?
+
+(A) $9$  (B) $10$  (C) $11$  (D) $12$  (E) $14$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+"2014-umd-hsmc-part-i-25": { s: String.raw`Assume that $|AB|=|CD|=1$, $\angle ABC=90^\circ$, and $\angle CBD=30^\circ$ in the figure. Determine $|AC|$.
+
+@@fig:umd/2014/parti-25.png@@
+
+(A) $\sqrt[3]{2}$  (B) $\sqrt2$  (C) $(1+\sqrt2)/2$  (D) $(1+\sqrt3)/2$  (E) $5/4$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2014.pdf" },
+});

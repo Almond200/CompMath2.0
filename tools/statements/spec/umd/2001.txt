@@ -1,0 +1,100 @@
+=== 1
+Which of the following is the largest?
+
+(A) $2^{(3^4)}$  (B) $4^{(3^2)}$  (C) $(8^4)^2$  (D) $(16^8)^2$  (E) $8^{(4^2)}$
+=== 2
+Rank the numbers $p,q,r$ from smallest to largest, where $p=10(9!)^{1/2}$, $q=9(10!)^{1/2}$, $r=(11!)^{1/2}$. (Here $n!=n(n-1)(n-2)\cdots 3\cdot 2\cdot 1$, so for example $3!=3\cdot 2\cdot 1=6$.)
+
+(A) $p<q<r$  (B) $q<r<p$  (C) $r<p<q$  (D) $q<p<r$  (E) $p<r<q$
+=== 3
+For which values of $x$ does the relation $|x|+2-|x+2|=4$ hold?
+
+(A) all $x\le -2$  (B) $x=-2$ only  (C) $-2\le x\le 0$  (D) no $x$  (E) all $x$
+=== 4
+Which of the following is equal to $10^{\log 2+\log 3}$? (all logarithms are taken base $10$).
+
+(A) $5$  (B) $6$  (C) $1100$  (D) $100{,}000$  (E) $1{,}000{,}000$
+=== 5
+The mathematician Augustus DeMorgan lived his entire life during the 1800's. In the last year of his life he announced "Once I was $x$ years old in the year $x^2$." In which year was he born?
+
+(A) $1806$  (B) $1822$  (C) $1849$  (D) $1851$  (E) $1853$
+=== 6
+Suppose that there are some blabs, some blibs, and some blubs. Suppose also that all blabs are blibs and some blibs are blabs. On the basis of this information, which of the statements X, Y, Z must be true? X: All blabs are blubs; Y: Some blabs are not blubs; Z: Some blibs are blubs.
+
+(A) X only  (B) Y only  (C) Z only  (D) X and Y only  (E) Y and Z only
+=== 7
+A Dog and Cat club found it could achieve a membership ratio of $2$ dogs to one cat either by inducting $24$ dogs or by expelling $x$ cats. What is $x$?
+
+(A) $6$  (B) $12$  (C) $18$  (D) $24$  (E) $36$
+=== 8
+Which of these numbers is the average (mean) of the other four?
+
+(A) $27$  (B) $36$  (C) $25$  (D) $29$  (E) $28$
+=== 9
+The lengths of the two parallel sides of a trapezoid are $10$ and $20$, and the lengths of the other two sides are both $\sqrt{89}$. Find the length of either diagonal.
+
+(A) $15$  (B) $6(3)^{1/2}$  (C) $17$  (D) $8(2)^{1/2}$  (E) $2001^{1/2}$
+=== 10
+Six people are going to sit in a row on a bench. Romeo wants to sit next to Juliet. Caesar does not want to sit next to Brutus. Homer and Pierre can sit anywhere. How many ways can these six people be seated?
+
+(A) $24$  (B) $56$  (C) $120$  (D) $144$  (E) $200$
+=== 11
+Suppose that $x$ satisfies the equation $\sin x=1/\tan x$. Compute $\cos x$.
+
+(A) $0$  (B) $3^{1/2}/2$  (C) $\left(5^{1/2}-1\right)/2$  (D) $5^{1/2}/4$  (E) $1$
+=== 12
+Solid chocolate bunnies are all scaled-down copies of the Standard Bunny kept at the National Institute of Standards and Technology. They come in three sizes (by height): $1$ inch high, $2.5$ inches high, and $5$ inches high. The three bears sat down to eat a snack. Father Bear (F) ate one $5$ inch bunny. Mother Bear (M) ate ten $2.5$ inch bunnies, and Baby Bear (B) ate one hundred $1$ inch bunnies. Order the bears by the amount of chocolate they consumed:
+
+(A) $F<M<B$  (B) $B<M<F$  (C) $B<F<M$  (D) $F<B<M$  (E) $F=M=B$
+=== 13
+An alloy consists of two metals (copper and tin) in proportion $1{:}2$; another alloy consists of the same metals in proportion $2{:}3$. How many pounds of each alloy should be taken to get $1{,}320$ pounds of an alloy containing the metals in proportion $17{:}27$?
+
+(A) $420$ and $900$  (B) $660$ and $660$  (C) $810$ and $510$  (D) $600$ and $720$  (E) $270$ and $1{,}050$
+=== 14
+Suppose that $100$ more than the sum of $n$ consecutive integers is equal to the sum of the next $n$ consecutive integers. Then $n$ equals:
+
+(A) $10$  (B) $31$  (C) $50$  (D) $100$  (E) $200$
+=== 15
+Larry, Curly, and Moe started out on a $100$-mile journey. Larry and Curly went by automobile at the rate of $25$ mph, while Moe walked at the rate of $5$ mph. After a certain distance, Curly got off and walked on at $5$ mph, while Larry drove back for Moe and got him to the destination at the same time that Curly arrived. The number of hours required for the journey was:
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) none of these answers
+=== 16
+What is the ratio of the area of a square inscribed in a semicircle to the area of a square inscribed in the entire circle?
+
+(A) $1/2$  (B) $2/3$  (C) $2/5$  (D) $3/4$  (E) $3/5$
+=== 17
+According to the web site e-Fingernail.com, the growth rate of human fingernails is $0.1$ mm/day. Given this, estimate the growth rate in miles per hour. (Note: There are approximately $1.6$ kilometers in a mile.)
+
+(A) $2.6\times 10^{-17}$ mph  (B) $2.6\times 10^{-15}$ mph  (C) $2.6\times 10^{-13}$ mph  (D) $2.6\times 10^{-11}$ mph  (E) $2.6\times 10^{-9}$ mph
+=== 18
+Tom Sawyer and Huck Finn want to paint a fence. Tom can paint the fence by himself in $3$ hours, and Huck can paint the fence by himself in $4$ hours. At $12{:}00$ noon they start painting the fence together. However, at some point they get into a fight. They fight for $10$ minutes, during which time no painting gets done. After the fight, Huck leaves and Tom finishes painting alone. If Tom finishes painting at $2{:}25$ pm, at what time did the fight begin?
+
+(A) $12{:}30$  (B) $1{:}00$  (C) $1{:}10$  (D) $1{:}15$  (E) $1{:}30$
+=== 19
+Let $T$ be an equilateral triangle of height $h$. Let $S$ be a square of side $s$. If $T$ and $S$ have the same area, then $h/s$ is
+
+(A) $3^{1/4}$  (B) $3^{1/2}$  (C) $3$  (D) $3^2$  (E) $3^4$
+=== 20
+The price of a diamond is proportional to the square of its mass, which is measured in carats. A six carat diamond was broken into two parts and the total price of the two pieces is $5/8$ of the price of the original diamond. What are the masses of the two pieces?
+
+(A) $3.5$ and $2.5$  (B) $5$ and $1$  (C) $4.5$ and $1.5$  (D) $4$ and $2$  (E) $3.6$ and $2.4$
+=== 21
+How many positive integers less than $10{,}000$ are of the form $x^8+y^8$ for some integers $x>0$ and $y>0$?
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) more than $8$
+=== 22
+Let $n$ be the smallest positive integer such that $n!$ is a multiple of $2^{2001}$. Then
+
+(A) $n<500$  (B) $500\le n<1000$  (C) $1000\le n<2000$  (D) $2000\le n<2500$  (E) $2500\le n$
+=== 23
+Assume that all the roots of the polynomial $x^8+a_7x^7+a_6x^6+a_5x^5+a_4x^4+a_3x^3+a_2x^2+a_1x+420$ are positive integers. The maximum number of distinct roots of such a polynomial is
+
+(A) $3$  (B) $5$  (C) $6$  (D) $7$  (E) $8$
+=== 24
+Huey, Dewey, Louie, Donald, and Daisy put their hats in a pile. When they pick up their hats later, each one gets someone else's hat. How many ways can this be done?
+
+(A) $24$  (B) $40$  (C) $44$  (D) $96$  (E) $120$
+=== 25
+One regular octagon is inscribed in another regular octagon so that the vertices of the inscribed octagon are the midpoints of the sides of the larger octagon. If the larger octagon has area $1$ then the smaller octagon has area
+
+(A) $1/2$  (B) $3^{1/2}/2$  (C) $7/8$  (D) $1/2+2^{1/2}/4$  (E) $1/2+3^{1/2}/4$
