@@ -1,0 +1,172 @@
+// Problems and diagrams © 2008 Columbus State Invitational Mathematics Tournament. Reproduced with permission from the Columbus State Invitational Mathematics Tournament.
+// Source: the official Columbus State tournament tests. Built by tools/statements/build.py from tools/statements/spec/columbus/2008.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2008-columbus-state-tournament-1": { s: String.raw`If $x+y=0$ and $x\ne0$, what is the value of $\dfrac{(2y)^{2008}}{2x}\div(x-y)^{2007}$ ?
+
+(A) $-1$  (B) $1$  (C) $y$  (D) $x$  (E) $2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-2": { s: String.raw`If a point $(x,y)$, not on the axes, satisfies both of the inequalities $y<3x$ and $y<-2-x$, in which quadrants could the point be located?
+
+(A) I, II  (B) II, III  (C) I, III  (D) III, IV  (E) I, IV`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-3": { s: String.raw`What are the last two digits of $5^{2008}$.
+
+(A) $75$  (B) $65$  (C) $35$  (D) $25$  (E) $15$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-4": { s: String.raw`Little Billy's score on this year Columbus State Invitation Mathematics Tournament test is $410$. (See the rule on the first page.) His score would be $32$ if he had been given $+2$ points for each correct answer, $-1$ point for each incorrect answer, $0$ for each left blank, and an initial score of $0$. How many did he leave blank?
+
+(A) $10$  (B) $15$  (C) $25$  (D) $26$  (E) $30$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-5": { s: String.raw`It takes $40$ minutes for Moe to paint a room alone and it takes $60$ minutes for Joe to paint the same room alone. If they decide to paint the room together, how long will it take them to paint one-third of the room?
+
+(A) $20$ min  (B) $8$ min  (C) $10$ min  (D) $12$ min  (E) $24$ min`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-6": { s: String.raw`A tank contains $10$ gallons of a $90\%$ salt solution. How many gallons of a $50\%$ salt solution must be added to the tank to yield a $70\%$ salt solution?
+
+(A) $6$ gal  (B) $7$ gal  (C) $8.5$ gal  (D) $9$ gal  (E) $10$ gal`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-7": { s: String.raw`Dick and Jane have a total of $\$480$. Dick takes one-third of Jane's money. Then Dick takes one-fourth of the money that Jane has left. Jane and Dick now have equal amounts of money. How much money did Jane have originally?
+
+(A) $\$480$  (B) $\$350$  (C) $\$320$  (D) $\$300$  (E) $\$280$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-8": { s: String.raw`Exactly $3/4$ of the boys and exactly $4/5$ of the girls in a class passed an algebra test. If an equal number of boys and girls passed the test, what fraction of the entire class passed the test?
+
+(A) $12/15$  (B) $4/7$  (C) $16/21$  (D) $18/25$  (E) $24/31$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-9": { s: String.raw`Company A will rent a car for $\$35$ per day plus $\$0.10$ per mile, whereas company B charges $\$30$ per day plus $\$0.12$ per mile. John needs a car for $5$ days. For what range of mileage will John save money by renting a car from company B?
+
+(A) More than $1000$ miles  (B) No more than $1200$ miles  (C) More than $1210$ miles  (D) More than $1250$ miles  (E) Less than $1250$ miles`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-10": { s: String.raw`Two vertical poles, $16$ft and $24$ft high, are erected $13$ feet apart on level ground. Straight wires are attached from the top of each pole to the bottom of the other pole. What is the vertical distance from the ground to the intersection of the wires?
+
+(A) $5.6$ ft  (B) $7$ft  (C) $8$ft  (D) $8.6$ft  (E) $9.6$ft`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-11": { s: String.raw`What is the coefficient of $x^6y^5$ in the expansion of $(2x-3y)^{11}$ ?
+
+(A) $-1077536$  (B) $1077536$  (C) $-7185024$  (D) $7185024$  (E) $-15552$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-12": { s: String.raw`A three-digit number equals $19$ times the sum of its digits. If the digits are reversed, the resulting number is greater than the given number by $297$. The tens digit exceeds the units digits by $3$. Find the number.
+
+(A) $184$  (B) $285$  (C) $386$  (D) $487$  (E) $588$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-13": { s: String.raw`A certain rectangle has an area of $120$ square inches. Increasing its width by $4$ inches and decreasing its length by $3$ inches increases its area by $24$ square inches. Find the perimeter of the original rectangle.
+
+(A) $44$ in  (B) $46$ in  (C) $52$ in  (D) $68$ in  (E) $86$ in`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-14": { s: String.raw`How many ones are there if $2008$ (base $10$) is written in base $2$?
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-15": { s: String.raw`Find the sum of the digits of the only real solution to the equation
+$$\frac7{x-1}-\frac2{\sqrt{x-1}}+\frac17=0.$$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-16": { s: String.raw`A $1{:}40$ scale model of a prism is shown on the right. If the volume of the scaled model is $5\ \text{cm}^3$, what is the volume of the actual prism?
+
+@@fig:columbus/2008/16.png@@
+
+(A) $200\ \text{cm}^3$  (B) $8000\ \text{cm}^3$  (C) $0.2\ \text{m}^3$  (D) $0.32\ \text{m}^3$  (E) $0.032\ \text{cm}^3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-17": { s: String.raw`Find the sum of all real and complex solutions of the equation $x^3=27$.
+
+(A) $0$  (B) $3$  (C) $-6$  (D) $3\sqrt3\,i$  (E) $-3\sqrt3\,i$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-18": { s: String.raw`Solve the equation $2^{16^x}=16^{2^x}$.
+
+(A) $1/2$  (B) $1$  (C) $2$  (D) $3$  (E) $2/3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-19": { s: String.raw`Find the real solution of the equation $2^x-2^{-x}=\dfrac83$.
+
+(A) $3/2$  (B) $\log_23$  (C) $0.7$  (D) $0.8$  (E) $\log_32$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-20": { s: String.raw`If $\cos x=2\sin x$, then what is the value of $\sin x\cos x$ ?
+
+(A) $2/3$  (B) $2$  (C) $3$  (D) $2/5$  (E) $4/5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-21": { s: String.raw`Define a sequence by $b_1=3$ and $b_{n+1}=\dfrac{1+b_n}{1-b_n}$ for integers $n\ge1$. What is the value of $b_{2008}$ ?
+
+(A) $3$  (B) $1$  (C) $\frac12$  (D) $-2$  (E) $-\frac13$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-22": { s: String.raw`A game is played by selecting a four-digit number from $0000$ to $9999$, and the winning prize is $\$5000$. Suppose you pay $\$1$ to play the game. What is the expected value of your gain or loss in dollars?
+
+(A) $2500$  (B) $1$  (C) $-0.2$  (D) $-0.4$  (E) $-0.5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-23": { s: String.raw`Suppose there are five problems on a test with $5$ possible responses for each problem. If you guess each answer, what is the probability that you get more than $3$ correct answers?
+
+(A) $0.0067$  (B) $0.005$  (C) $0.075$  (D) $0.05$  (E) $0.5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-24": { s: String.raw`How many zeros are there at the end of $2008!$?
+
+(A) $0$  (B) $450$  (C) $500$  (D) $2008$  (E) $550$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-25": { s: String.raw`The three circles in the figure centered at $A$, $B$, and $C$ are tangent to one another and have radii $7$, $21$ and $6$, respectively. Find the area of triangle $ABC$.
+
+@@fig:columbus/2008/25.png@@
+
+(A) $54$  (B) $64$  (C) $74$  (D) $84$  (E) $94$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-26": { s: String.raw`How many distinct permutations are there of the letters in the word "MATHEMATICS", using all the letters?
+
+(A) $4989600$  (B) $6652800$  (C) $39916800$  (D) $332640$  (E) $55440$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-27": { s: String.raw`A regular six-pointed star is inscribed in a circle. Let $a$ be the edge length. Express the area of the star in terms of $a$.
+
+@@fig:columbus/2008/27.png@@
+
+(A) $3\sqrt2a^2$  (B) $\sqrt3a^2$  (C) $3\sqrt3a^2$  (D) $6\sqrt2a^2$  (E) $\sqrt6a^2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-28": { s: String.raw`If $a>0$, what is the value of $\left[\log_a\left(\dfrac{\log_aa^3}{3a}\right)\right]^{100}$ ?
+
+(A) $0$  (B) $1$  (C) $a$  (D) $\log_a3$  (E) $100$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-29": { s: String.raw`For $-1\le x\le1$ and $x\ne0$, what is the formula for $\cot\left(\sin^{-1}x\right)$ ?
+
+(A) $\dfrac{\sqrt{1-x^2}}x$  (B) $\dfrac1x$  (C) $\sqrt{1-x^2}$  (D) $x$  (E) $\dfrac x{\sqrt{1-x^2}}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-30": { s: String.raw`Let $Y=104^4+4(104^3)+6(104^2)+4(104)+1$. How many positive integer factors does $Y$ have?
+
+(A) $216$  (B) $4$  (C) $5$  (D) $6$  (E) $125$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-31": { s: String.raw`In the triangle $\Delta DEF$, the points $A,B$, and $C$ are located on the sides of the triangle (see figure), such that $DC=2EC$, $EB=2BF$, and $FA=2AD$. Find the ratio $(\text{Area }\Delta DEF)/(\text{Area }\Delta ABC)$.
+
+@@fig:columbus/2008/31.png@@
+
+(A) $3/2$  (B) $4/3$  (C) $2$  (D) $3$  (E) $7/3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-32": { s: String.raw`Given a circle of radius $1$, what is the probability that the length of the chord between any two randomly chosen points on the circle will be greater than or equal to $1$ ?
+
+(A) $2/3$  (B) $1/3$  (C) $1/4$  (D) $3/4$  (E) $1/6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-33": { s: String.raw`Five distinct integers are picked at random from $\{0,1,2,3,4,5,6,7,8,9\}$. What is the probability that, among those selected, the third smallest is $3$ ?
+
+(A) $\frac5{28}$  (B) $\frac5{45}$  (C) $\frac5{84}$  (D) $\frac1{168}$  (E) $\frac1{38}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-34": { s: String.raw`How many distinct permutations are there of $3$ letters selected from the letters in the word "MATHEMATICS"?
+
+(A) $381$  (B) $336$  (C) $399$  (D) $165$  (E) $990$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-35": { s: String.raw`Three mutually tangent circles have radii $1$, $2$, and $3$ inches, respectively. Find the area of the white region between the circles.
+
+@@fig:columbus/2008/35.png@@
+
+(A) $1\ \text{in}^2$  (B) $2\ \text{in}^2$  (C) $0.34\ \text{in}^2$  (D) $0.46\ \text{in}^2$  (E) $0.75\ \text{in}^2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-36": { s: String.raw`In triangle $\Delta ABC$ lines $CE$ and $AD$ are drawn so that $\dfrac{CD}{DB}=\dfrac41$ and $\dfrac{AE}{EB}=\dfrac43$. Let $P$ be the intersection point of $CE$ and $AD$. Find the ratio $\dfrac{CP}{PE}$.
+
+@@fig:columbus/2008/36.png@@
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-37": { s: String.raw`Suppose $x$ is a complex number satisfying the equation $x+\dfrac1x=2\cos\dfrac\pi k$ for some natural number $k$. What is the value of $x^k+x^{-k}$ ?
+
+(A) $0$  (B) $2$  (C) $-2$  (D) $k$  (E) $-k$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-38": { s: String.raw`If $\sin x+\sin y=\dfrac1{\sqrt2}$ and $\cos x+\cos y=\sqrt2$, what is the value of $\cos(x-y)$ ?
+
+(A) $1$  (B) $1/4$  (C) $-1/2$  (D) $2/3$  (E) $-2/3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-39": { s: String.raw`The distance to three corners of square $ABCD$ from a point $X$ in its interior is $XA=10$, $XB=20$, and $XC=30$. Find the distance $XD$.
+
+(A) $8$  (B) $25$  (C) $2\sqrt{10}$  (D) $10\sqrt3$  (E) $10\sqrt6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-40": { s: String.raw`Every natural number which is not a power of $2$ can be written as a sum of two or more consecutive integers. There is only one representation of $2008$ in the form $2008=a+(a+1)+\cdots+b$ when $a>0$. Find $a+b$.
+
+(A) $16$  (B) $151$  (C) $251$  (D) $44$  (E) $45$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-41": { s: String.raw`If the sum of two solutions of the equation $x^4-x^3-2x^2+3x-3=0$ is $0$, find the other two solutions.
+
+(A) $\dfrac{1\pm i\sqrt3}2$  (B) $\dfrac{1\pm i\sqrt2}2$  (C) $\pm\sqrt3$  (D) $\pm\sqrt2$  (E) $1\pm i$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-42": { s: String.raw`Let $f(x)$ be a polynomial of degree $2007$ satisfying
+$$f(k)=\frac1{k+1}\quad\text{for }k=1,2,\ldots,2008.$$
+What is the value of $f(-2)$ ?
+
+(A) $1004$  (B) $1490$  (C) $0$  (D) $1$  (E) $-1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-43": { s: String.raw`If $aabb$ is the representation of $2008$ in base $c$ and $a,b>0$, what is $a-2b+c$ ?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-44": { s: String.raw`For a real number $a>0$, how many real solutions satisfy the equation $\sqrt{a+\sqrt{a+x}}=x$ ?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-45": { s: String.raw`Find the sum of the digits of the greatest integer $n$ with the property that $n+2007$ divides $n^2+2008$.
+
+(A) $12$  (B) $17$  (C) $18$  (D) $19$  (E) $212$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-46": { s: String.raw`A $2$ inch diameter spherical scoop of ice cream rests on cone that has a $2$ inch diameter opening and $\sqrt3$ inch height. Find the diameter of the intersection of the sphere and the cone.
+
+@@fig:columbus/2008/46.png@@
+
+(A) $2$ in  (B) $1.5$ in  (C) $\sqrt2$ in  (D) $\sqrt3$ in  (E) $\dfrac{\sqrt3}2$ in`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-47": { s: String.raw`Find the sum $a+2a^2+3a^3+4a^4+\cdots$ if $0<a<1$.
+
+(A) $\dfrac a{1+a}$  (B) $\dfrac a{1-a}$  (C) $\dfrac a{(1-a)^2}$  (D) $\dfrac a{1-a^2}$  (E) $\dfrac{a^2}{1-a^2}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-48": { s: String.raw`Find the value of $a$ in the parabola $x=1+ay^2$ so that the line $y=x+1$ is a tangent line to the parabola.
+
+(A) $1/4$  (B) $1/8$  (C) $7/64$  (D) $2/17$  (E) $9/16$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-49": { s: String.raw`Two cars are traveling at the same constant speed toward each other on a straight road. A plane flying $350$ miles per hour passes over the second car two hours after passing over the first car. The plane continues to fly in the same direction and is $2400$ miles from the cars when they pass each other. Find the speed of the cars.
+
+(A) $50$ mph  (B) $55$ mph  (C) $60$ mph  (D) $65$ mph  (E) $70$ mph`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+"2008-columbus-state-tournament-50": { s: String.raw`Evaluate the nonterminating continued fraction
+$$1+\cfrac{1}{1+\cfrac{1}{1+\cfrac{1}{1+\cfrac{1}{1+\cdots}}}}$$
+
+(A) $3$  (B) $2$  (C) $\sqrt2$  (D) $\dfrac{1+\sqrt5}2$  (E) $\dfrac{1-\sqrt5}2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Test_2008.pdf" },
+});
