@@ -99,7 +99,7 @@ $$S=\left\{\frac{2010}1,\frac{2011}2,\frac{2012}3,\frac{2013}4,\cdots\right\}?$$
 "2010-columbus-state-tournament-27": { s: String.raw`A cube is inscribed in a sphere. What is the ratio of the volume of the cube to the volume of the sphere?
 
 (A) $\dfrac{3\sqrt2}{2\pi}$  (B) $\dfrac{\sqrt6}{4\pi}$  (C) $\dfrac{\sqrt\pi}6$  (D) $\dfrac{2\pi\sqrt3}3$  (E) $\dfrac{2\sqrt3}{3\pi}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
-"2010-columbus-state-tournament-28": { s: String.raw`The statement "**If it is snowing then schools are closed**" is logically equivalent to which of the following?
+"2010-columbus-state-tournament-28": { s: String.raw`The statement "If it is snowing then schools are closed" is logically equivalent to which of the following?
 
 A: "If it is snowing then schools are not closed."
 
