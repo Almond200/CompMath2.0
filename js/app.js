@@ -10053,7 +10053,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <select class="ct-yb-select" aria-label="Year">${years.map(y => `<option value="${y}"${y === year ? " selected" : ""}>${y}</option>`).join("")}</select>
         ${newer ? `<a class="ct-yb-step" href="${ystep(newer)}" data-step-year="${newer}" aria-label="${newer}">${stepChevron(1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(1)}</span>`}
       </div>
-      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 ").replace(new RegExp(`^(?:${ROUNDED}) (.+)$`), (_, r) => shortRound(r)).replace(/ and /g, " & "))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
+      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 ").replace(new RegExp(`^(?:${ROUNDED}) (.+)$`), (_, r) => r))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
       ${body}
       <nav class="topic-nav" aria-label="Neighbouring years">
         ${older ? `<a class="topic-step" href="${ystep(older)}" data-step-year="${older}"><span class="ts-dir">${uiIcon("arrow-left")} Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
@@ -10112,7 +10112,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const MAA_RE = /\b(AMC|AIME|AJHSME)\b/;
   const HMMT_STATEMENTS = {
     dir: "hmmt",
-    credit: "© HMMT · Reproduced with permission"
+    credit: "© HMMT"
   };
   const CEMC_STATEMENTS = {
     dir: "cemc",
@@ -10124,10 +10124,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
   };
   // Statements reproduced with the organizers' permission (owner, 2026-11-20).
   const PERMITTED_STATEMENTS = {
-    "SMT": { dir: "smt", credit: "© Stanford Math Tournament · Reproduced with permission" },
-    "BMT": { dir: "bmt", credit: "© Berkeley Math Tournament · Reproduced with permission" },
-    "ARML": { dir: "arml", credit: "© American Regions Mathematics League · Reproduced with permission" },
-    "ARML Local": { dir: "arml", credit: "© American Regions Mathematics League · Reproduced with permission" }
+    "SMT": { dir: "smt", credit: "© Stanford Math Tournament" },
+    "BMT": { dir: "bmt", credit: "© Berkeley Math Tournament" },
+    "ARML": { dir: "arml", credit: "© American Regions Mathematics League" },
+    "ARML Local": { dir: "arml", credit: "© American Regions Mathematics League" }
   };
   function problemSourceLabel(p) {
     if (p.sourceMirror) return "Open the original paper (mirror)";

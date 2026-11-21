@@ -2,14 +2,7 @@
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
 const base = process.env.COMPMATH_URL || 'http://localhost:8898';
-const roundLabels = {
-  'Algebra and Number Theory': 'Alg & NT',
-  'Combinatorics': 'Combo',
-  'Advanced Topics': 'Adv Topics',
-  'Algebra and Combinatorics': 'Alg & Combo',
-  'Algebra and Geometry': 'Alg & Geo',
-  'Combinatorics and Geometry': 'Combo & Geo',
-};
+const roundLabels = {}; // the paper selector spells every round out (owner, 2026-11-21)
 // The 2011 mixed papers reuse 27 questions across 60 paper references.
 // Preserve those paper references while requiring shared questions to agree.
 const fs = require('node:fs'), vm = require('node:vm');
@@ -82,7 +75,7 @@ for (const refs of sharedPapers) {
             const statement = page.locator('#prob-st');
             const credit = statement.locator('.prob-statement + .statement-credit');
             await credit.waitFor();
-            assert.match(await credit.innerText(), /HMMT · Reproduced with permission/);
+            assert.match(await credit.innerText(), /^© HMMT$/);
             assert.equal(await credit.locator('a').count(), 0);
             assert.equal(await page.getByRole('link', { name: 'Open in archive', exact: true }).count(), 1);
             if (year === 2000 && round === 'Geometry') {
