@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **PUMaC 2020 added (256 of 1,088; no figures).** `STATEMENTS_V` 96.
 - **PUMaC 2022 added (192 of 1,088; no figures).** `STATEMENTS_V` 95.
 - **PUMaC 2023 added (128 of 1,088; no figures).** `STATEMENTS_V` 94.
 - **PUMaC statements started (64 of 1,088):** 2025, Division A and B (Division B repeats most of A's problems), four figures; the About page now says PUMaC statements are reproduced with permission. The papers load from `static1.squarespace.com`, which the container can reach. `STATEMENTS_V` 93.

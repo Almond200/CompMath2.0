@@ -1,0 +1,146 @@
+=== division-a-algebra-1
+Let $f(x)=\frac{x+a}{x+b}$ satisfy $f(f(f(x)))=x$ for real numbers $a,b$. If the maximum value of $a$ is $\frac pq$, where $p,q$ are relatively prime integers, what is $|p|+|q|$?
+=== division-a-algebra-2
+Let $C$ denote the curve $y^2=\frac{x(x+1)(2x+1)}6$. The points $\left(\frac12,a\right)$, $(b,c)$, and $(24,d)$ lie on $C$ and are collinear, and $ad<0$. Given that $b,c$ are rational numbers, find $100b^2+c^2$.
+=== division-a-algebra-3
+Let $\{x\}=x-\lfloor x\rfloor$. Consider a function $f$ from the set $\{1,2,\ldots,2020\}$ to the half-open interval $[0,1)$. Suppose that for all $x,y$, there exists a $z$ so that $\{f(x)+f(y)\}=f(z)$. We say that a pair of integers $m,n$ is valid if $1\le m,n\le2020$ and there exists a function $f$ satisfying the above so $f(1)=\frac mn$. Determine the sum over all valid pairs $m,n$ of $\frac mn$.
+=== division-a-algebra-4
+Let $P$ be a $10$-degree monic polynomial with roots $r_1,r_2,\ldots,r_{10}\ne0$ and let $Q$ be a $45$-degree monic polynomial with roots $\frac1{r_i}+\frac1{r_j}-\frac1{r_ir_j}$ where $i<j$ and $i,j\in\{1,\ldots,10\}$. If $P(0)=Q(1)=2$, then $\log_2(|P(1)|)$ can be written as $\frac ab$ for relatively prime integers $a,b$. Find $a+b$.
+=== division-a-algebra-5
+Suppose we have a sequence $a_1,a_2,\ldots$ of positive real numbers so that for each positive integer $n$, we have that $\sum_{k=1}^na_ka_{\lfloor\sqrt k\rfloor}=n^2$. Determine the first value of $k$ so $a_k>100$.
+=== division-a-algebra-6
+Given integer $n$, let $W_n$ be the set of complex numbers of the form $re^{2q i\pi}$, where $q$ is a rational number so that $qn\in\mathbb Z$ and $r$ is a real number. Suppose that $p$ is a polynomial of degree $\ge2$ such that there exists a non-constant function $f:W_n\to\mathbb C$ so that $p(f(x))p(f(y))=f(xy)$ for all $x,y\in W_n$. If $p$ is the unique monic polynomial of lowest degree for which such an $f$ exists for $n=65$, find $p(10)$.
+=== division-a-algebra-7
+Suppose that $p$ is the unique monic polynomial of minimal degree such that its coefficients are rational numbers and one of its roots is $\sin\frac{2\pi}7+\cos\frac{4\pi}7$. If $p(1)=\frac ab$, where $a,b$ are relatively prime integers, find $|a+b|$.
+=== division-a-algebra-8
+Let $a_n$ be the number of unordered sets of three distinct bijections $f,g,h:\{1,2,\ldots,n\}\to\{1,2,\ldots,n\}$ such that the composition of any two of the bijections equals the third. What is the largest value in the sequence $a_1,a_2,\ldots$ which is less than $2021$?
+=== division-b-algebra-1
+The function $f(x)=x^2+(2a+3)x+\left(a^2+1\right)$ only has real zeroes. Suppose the smallest possible value of $a$ can be written in the form $\frac pq$, where $p,q$ are relatively prime integers. Find $|p|+|q|$.
+=== division-b-algebra-2
+Princeton has an endowment of $5$ million dollars and wants to invest it into improving campus life. The university has three options: it can either invest in improving the dorms, campus parties or dining hall food quality. If they invest $a$ million dollars in the dorms, the students will spend an additional $5a$ hours per week studying. If the university invests $b$ million dollars in better food, the students will spend an additional $3b$ hours per week studying. Finally, if the $c$ million dollars are invested in parties, students will be more relaxed and spend $11c-c^2$ more hours per week studying. The university wants to invest its $5$ million dollars so that the students get as many additional hours of studying as possible. What is the maximal amount that students get to study?
+=== division-b-algebra-3
+Let $f(x)=\frac{x+a}{x+b}$ satisfy $f(f(f(x)))=x$ for real numbers $a,b$. If the maximum value of $a$ is $\frac pq$, where $p,q$ are relatively prime integers, what is $|p|+|q|$?
+=== division-b-algebra-4
+Let $C$ denote the curve $y^2=\frac{x(x+1)(2x+1)}6$. The points $\left(\frac12,a\right)$, $(b,c)$, and $(24,d)$ lie on $C$ and are collinear, and $ad<0$. Given that $b,c$ are rational numbers, find $100b^2+c^2$.
+=== division-b-algebra-5
+Let $\{x\}=x-\lfloor x\rfloor$. Consider a function $f$ from the set $\{1,2,\ldots,2020\}$ to the half-open interval $[0,1)$. Suppose that for all $x,y$, there exists a $z$ so that $\{f(x)+f(y)\}=f(z)$. We say that a pair of integers $m,n$ is valid if $1\le m,n\le2020$ and there exists a function $f$ satisfying the above so $f(1)=\frac mn$. Determine the sum over all valid pairs $m,n$ of $\frac mn$.
+=== division-b-algebra-6
+Let $P$ be a $10$-degree monic polynomial with roots $r_1,r_2,\ldots,r_{10}\ne0$ and let $Q$ be a $45$-degree monic polynomial with roots $\frac1{r_i}+\frac1{r_j}-\frac1{r_ir_j}$ where $i<j$ and $i,j\in\{1,\ldots,10\}$. If $P(0)=Q(1)=2$, then $\log_2(|P(1)|)$ can be written as $\frac ab$ for relatively prime integers $a,b$. Find $a+b$.
+=== division-b-algebra-7
+Suppose we have a sequence $a_1,a_2,\ldots$ of positive real numbers so that for each positive integer $n$, we have that $\sum_{k=1}^na_ka_{\lfloor\sqrt k\rfloor}=n^2$. Determine the first value of $k$ so $a_k>100$.
+=== division-b-algebra-8
+Given integer $n$, let $W_n$ be the set of complex numbers of the form $re^{2q i\pi}$, where $q$ is a rational number so that $qn\in\mathbb Z$ and $r$ is a real number. Suppose that $p$ is a polynomial of degree $\ge2$ such that there exists a non-constant function $f:W_n\to\mathbb C$ so that $p(f(x))p(f(y))=f(xy)$ for all $x,y\in W_n$. If $p$ is the unique monic polynomial of lowest degree for which such an $f$ exists for $n=65$, find $p(10)$.
+=== division-a-combinatorics-1
+Joey is playing with a $2$-by-$2$-by-$2$ Rubik's cube made up of $8$ $1$-by-$1$-by-$1$ cubes (with two of these smaller cubes along each of the sides of the bigger cubes). Each face of the Rubik's cube is distinct color. However, one day, Joey accidentally breaks the cube! He decides to put the cube back together into its solved state, placing each of the pieces one by one. However, due to the nature of the cube, he is only able to put in a cube if it is adjacent to a cube he already placed. If different orderings of the ways he chooses the cubes are considered distinct, determine the number of ways he can reassemble the cube.
+=== division-a-combinatorics-2
+Cary has six distinct coins in a jar. Occasionally, he takes out three of the coins and adds a dot to each of them. Determine the number of orders in which Cary can choose the coins so that, eventually, for each number $i\in\{0,1,\ldots,5\}$, some coin has exactly $i$ dots on it.
+=== division-a-combinatorics-3
+Katie has a chocolate bar that is a $5$-by-$5$ grid of square pieces, but she only wants to eat the center piece. To get to it, she performs the following operations:
+
+i. Take a gridline on the chocolate bar, and split the bar along the line.
+
+ii. Remove the piece that doesn't contain the center.
+
+iii. With the remaining bar, repeat steps 1 and 2.
+
+Determine the number of ways that Katie can perform this sequence of operations so that eventually she ends up with just the center piece.
+=== division-a-combinatorics-4
+Let $\mathcal P$ be the power set of $\{1,2,3,4\}$ (meaning the elements of $\mathcal P$ are the subsets of $\{1,2,3,4\}$). How many subsets $S$ of $\mathcal P$ are there such that no two distinct integers $a,b\in\{1,2,3,4\}$ appear together in exactly one element of $S$?
+=== division-a-combinatorics-5
+Jacob has a piece of bread shaped like a figure $8$, marked into sections and all initially connected as one piece of bread. The central part of the "$8$" is a single section, and each of the two loops of "$8$" is divided into an additional $1010$ pieces. For each section, there is a $50$ percent chance that Jacob will decide to cut it out and give it to a friend, and this is done independently for each section. The remaining sections of bread form some number of connected pieces. If $E$ is the expected number of these pieces, and $k$ is the smallest positive integer so that $2^k(E-\lfloor E\rfloor)\ge1$, find $\lfloor E\rfloor+k$. (Here, we say that if Jacob donates all pieces, there are $0$ pieces left).
+=== division-a-combinatorics-6
+In the country of Princetonia, there are an infinite number of cities, connected by roads. For every two distinct cities, there is a unique sequence of roads that leads from one city to the other. Moreover, there are exactly three roads from every city. On a sunny morning in early July, $n$ tourists have arrived at the capital of Princetonia. They repeat the following process every day: in every city that contains three or more tourists, three tourists are picked and one moves to each of the three cities connected to the original one by roads. If there are $2$ or fewer tourists in the city, they do nothing. After some time, all tourists will settle and there will be no more changing cities. For how many values of $n$ from $1$ to $2020$ will the tourists end in a configuration in which no two of them are in the same city?
+=== division-a-combinatorics-7
+Let $f$ be defined as below for integers $n\ge0$ and $a_0,a_1,\ldots$ such that $\sum_{i\ge0}a_i$ is finite:
+$$f(n;a_0,a_1,\ldots)=\begin{cases}a_{2020}&n=0\\[1ex]\dfrac{\sum_{i\ge0}a_if(n-1;a_0,\ldots,a_{i-1},a_i-1,a_{i+1}+1,a_{i+2},\ldots)}{\sum_{i\ge0}a_i}&n>0.\end{cases}$$
+Find the nearest integer to $f\left(2020^2;2020,0,0,\ldots\right)$.
+=== division-a-combinatorics-8
+Let $f(k)$ denote the number of triples $(a,b,c)$ of positive integers satisfying $a+b+c=2020$ with $(k-1)$ not dividing $a$, $k$ not dividing $b$, and $(k+1)$ not dividing $c$. Find the product of all integers $k$ in the range $3\le k\le20$ such that $(k+1)$ divides $f(k)$.
+=== division-b-combinatorics-1
+Runey is speaking his made-up language, Runese, that consists only of the "letters" $zap$, $zep$, $zip$, $zop$, and $zup$. Words in Runese consist of anywhere between $1$ and $5$ letters, inclusive. As well, Runey can choose to add emphasis on any letter(s) that he chooses in a given word, hence making it a totally distinct word! What is the maximum number of possible words in Runese?
+=== division-b-combinatorics-2
+Joey is playing with a $2$-by-$2$-by-$2$ Rubik's cube made up of $8$ $1$-by-$1$-by-$1$ cubes (with two of these smaller cubes along each of the sides of the bigger cubes). Each face of the Rubik's cube is distinct color. However, one day, Joey accidentally breaks the cube! He decides to put the cube back together into its solved state, placing each of the pieces one by one. However, due to the nature of the cube, he is only able to put in a cube if it is adjacent to a cube he already placed. If different orderings of the ways he chooses the cubes are considered distinct, determine the number of ways he can reassemble the cube.
+=== division-b-combinatorics-3
+Cary has six distinct coins in a jar. Occasionally, he takes out three of the coins and adds a dot to each of them. Determine the number of orders that Cary could have chosen the coins so that, eventually, for each number $i\in\{0,1,\ldots,5\}$, some coin had $i$ dots on it.
+=== division-b-combinatorics-4
+Katie has a chocolate bar that is a $5$-by-$5$ grid of square pieces, but she only wants to eat the center piece. To get to it, she performs the following operations:
+
+i. Take a gridline on the chocolate bar, and split the bar along the line.
+
+ii. Remove the piece that doesn't contain the center.
+
+iii. With the remaining bar, repeat steps 1 and 2.
+
+Determine the number of ways that Katie can perform this sequence of operations so that eventually she ends up with just the center piece.
+=== division-b-combinatorics-5
+Let $\mathcal P$ be the power set of $\{1,2,3,4\}$ (meaning the elements of $\mathcal P$ are the subsets of $\{1,2,3,4\}$). How many subsets $S$ of $\mathcal P$ are there such that no two distinct integers $a,b\in\{1,2,3,4\}$ appear together in exactly one element of $S$?
+=== division-b-combinatorics-6
+Billy the baker makes a bunch of loaves of bread every day, and sells them in bundles of size $1$, $2$, or $3$. On one particular day, there are $375$ orders, $125$ for each bundle type. As such, Billy goes ahead and makes just enough loaves of bread to meet all the orders. Whenever Billy makes loaves, some get burned, and are not sellable. For nonnegative $i$ less than or equal to the total number of loaves, the probability that exactly $i$ loaves are sellable to customers is inversely proportional to $2^i$ (otherwise, it's $0$). Once he makes the loaves, he distributes out all of the sellable loaves of bread to some subset of these customers (each of whom will only accept their desired bundle of bread), without worrying about the order in which he gives them out. If the expected number of ways Billy can distribute the bread is of the form $\frac{a^b}{2^c-1}$, find $a+b+c$.
+=== division-b-combinatorics-7
+Jacob has a piece of bread shaped like a figure $8$, marked into sections and all initially connected as one piece of bread. The central part of the "$8$" is a single section, and each of the two loops of "$8$" is divided into an additional $1010$ pieces. For each section, there is a $50$ percent chance that Jacob will decide to cut it out and give it to a friend, and this is done independently for each section. The remaining sections of bread form some number of connected pieces. If $E$ is the expected number of these pieces, and $k$ is the smallest positive integer so that $2^k(E-\lfloor E\rfloor)\ge1$, find $\lfloor E\rfloor+k$. (Here, we say that if Jacob donates all pieces, there are $0$ pieces left).
+=== division-b-combinatorics-8
+In the country of Princetonia, there are an infinite number of cities, connected by roads. For every two distinct cities, there is a unique sequence of roads that leads from one city to the other. Moreover, there are exactly three roads from every city. On a sunny morning in early July, $n$ tourists have arrived at the capital of Princetonia. They repeat the following process every day: in every city that contains three or more tourists, three tourists are picked and one moves to each of the three cities connected to the original one by roads. If there are $2$ or fewer tourists in the city, they do nothing. After some time, all tourists will settle and there will be no more changing cities. For how many values of $n$ from $1$ to $2020$ will the tourists end in a configuration in which no two of them are in the same city?
+=== division-a-geometry-1
+Let $\gamma_1$ and $\gamma_2$ be circles centered at $O$ and $P$ respectively, and externally tangent to each other at point $Q$. Draw point $D$ on $\gamma_1$ and point $E$ on $\gamma_2$ such that line $DE$ is tangent to both circles. If the length $OQ=1$ and the area of the quadrilateral $ODEP$ is $520$, then what is the value of length $PQ$?
+=== division-a-geometry-2
+Hexagon $ABCDEF$ has an inscribed circle $\Omega$ that is tangent to each of its sides. If $AB=12$, $\angle FAB=120^\circ$, and $\angle ABC=150^\circ$, and if the radius of $\Omega$ can be written as $m+\sqrt n$ for positive integers $m,n$, find $m+n$.
+=== division-a-geometry-3
+Let $ABCD$ be a cyclic quadrilateral with circumcenter $O$ and radius $10$. Let sides $AB,BC,CD$, and $DA$ have midpoints $M,N,P$, and $Q$, respectively. If $MP=NQ$ and $OM+OP=16$, then what is the area of triangle $\triangle OAB$?
+=== division-a-geometry-4
+Let $C$ be a circle centered at point $O$, and let $P$ be a point in the interior of $C$. Let $Q$ be a point on the circumference of $C$ such that $PQ\perp OP$, and let $D$ be the circle with diameter $PQ$. Consider a circle tangent to $C$ whose circumference passes through point $P$. Let the curve $\Gamma$ be the locus of the centers of all such circles. If the area enclosed by $\Gamma$ is $1/100$ the area of $C$, then what is the ratio of the area of $C$ to the area of $D$?
+=== division-a-geometry-5
+Triangle $ABC$ is so that $AB=15$, $BC=22$, and $AC=20$. Let $D,E,F$ lie on $BC$, $AC$, and $AB$, respectively, so $AD,BE,CF$ all contain a point $K$. Let $L$ be the second intersection of the circumcircles of $BFK$ and $CEK$. Suppose that $\frac{AK}{KD}=\frac{11}7$, and $BD=6$. If $KL^2=\frac ab$, where $a,b$ are relatively prime integers, find $a+b$.
+=== division-a-geometry-6
+Triangle $ABC$ has side lengths $13$, $14$, and $15$. Let $E$ be the ellipse that encloses the smallest area which passes through $A$, $B$, and $C$. The area of $E$ is of the form $\frac{a\sqrt b\pi}c$, where $a$ and $c$ are coprime and $b$ has no square factors. Find $a+b+c$.
+=== division-a-geometry-7
+Let $ABC$ be a triangle with sides $AB=34$, $BC=15$, $AC=35$ and let $\Gamma$ be the circle of smallest possible radius passing through $A$ tangent to $BC$. Let the second intersections of $\Gamma$ and sides $AB,AC$ be the points $X,Y$. Let the ray $XY$ intersect the circumcircle of the triangle $ABC$ at $Z$. If $AZ=\frac pq$ for relatively prime integers $p$ and $q$, find $p+q$.
+=== division-a-geometry-8
+$A_1A_2A_3A_4$ is a cyclic quadrilateral inscribed in circle $\Omega$, with side lengths $A_1A_2=28$, $A_2A_3=12\sqrt3$, $A_3A_4=28\sqrt3$, and $A_4A_1=8$. Let $X$ be the intersection of $A_1A_3,A_2A_4$. Now, for $i=1,2,3,4$, let $\omega_i$ be the circle tangent to segments $A_iX,A_{i+1}X$, and $\Omega$, where we take indices cyclically (mod $4$). Furthermore, for each $i$, say $\omega_i$ is tangent to $A_1A_3$ at $X_i$, $A_2A_4$ at $Y_i$, and $\Omega$ at $T_i$. Let $P_1$ be the intersection of $T_1X_1$ and $T_2X_2$, and $P_3$ the intersection of $T_3X_3$ and $T_4X_4$. Let $P_2$ be the intersection of $T_2Y_2$ and $T_3Y_3$, and $P_4$ the intersection of $T_1Y_1$ and $T_4Y_4$. Find the area of quadrilateral $P_1P_2P_3P_4$.
+=== division-b-geometry-1
+You are walking along a road of constant width with sidewalks on each side. You can only walk on the sidewalks or cross the road perpendicular to the sidewalk. Coming up on a turn, you realize that you are on the "outside" of the turn; i.e., you are taking the longer way around the turn. Assuming that your destination is on the same side of the road as you are currently, let $\theta$ be the smallest turn angle, in radians, that would justify crossing the road and then crossing back after the turn to take the shorter total path to your destination. What is $\lfloor100\times\theta\rfloor$?
+=== division-b-geometry-2
+Seven students in Princeton Juggling Club are searching for a room to meet in. However, they must stay at least $6$ feet apart from each other, and due to midterms, the only open rooms they can find are circular. In feet, what is the smallest diameter of any circle which can contain seven points, all of which are at least $6$ feet apart from each other?
+=== division-b-geometry-3
+Let $\gamma_1$ and $\gamma_2$ be circles centered at $O$ and $P$ respectively, and externally tangent to each other at point $Q$. Draw point $D$ on $\gamma_1$ and point $E$ on $\gamma_2$ such that line $DE$ is tangent to both circles. If the length $OQ=1$ and the area of the quadrilateral $ODEP$ is $520$, then what is the value of length $PQ$?
+=== division-b-geometry-4
+Hexagon $ABCDEF$ has an inscribed circle $\Omega$ that is tangent to each of its sides. If $AB=12$, $\angle FAB=120^\circ$, and $\angle ABC=150^\circ$, and if the radius of $\Omega$ can be written as $m+\sqrt n$ for positive integers $m,n$, find $m+n$.
+=== division-b-geometry-5
+Let $ABCD$ be a cyclic quadrilateral with circumcenter $O$ and radius $10$. Let sides $AB,BC,CD$, and $DA$ have midpoints $M,N,P$, and $Q$, respectively. If $MP=NQ$ and $OM+OP=16$, then what is the area of triangle $\triangle OAB$?
+=== division-b-geometry-6
+Let $C$ be a circle centered at point $O$, and let $P$ be a point in the interior of $C$. Let $Q$ be a point on the circumference of $C$ such that $PQ\perp OP$, and let $D$ be the circle with diameter $PQ$. Consider a circle tangent to $C$ whose circumference passes through point $P$. Let the curve $\Gamma$ be the locus of the centers of all such circles. If the area enclosed by $\Gamma$ is $1/100$ the area of $C$, then what is the ratio of the area of $C$ to the area of $D$?
+=== division-b-geometry-7
+Triangle $ABC$ is so that $AB=15$, $BC=22$, and $AC=20$. Let $D,E,F$ lie on $BC$, $AC$, and $AB$, respectively, so $AD,BE,CF$ all contain a point $K$. Let $L$ be the second intersection of the circumcircles of $BFK$ and $CEK$. Suppose that $\frac{AK}{KD}=\frac{11}7$, and $BD=6$. If $KL^2=\frac ab$, where $a,b$ are relatively prime integers, find $a+b$.
+=== division-b-geometry-8
+Triangle $ABC$ has side lengths $13$, $14$, and $15$. Let $E$ be the ellipse that encloses the smallest area which passes through $A$, $B$, and $C$. The area of $E$ is of the form $\frac{a\sqrt b\pi}c$, where $a$ and $c$ are coprime and $b$ has no square factors. Find $a+b+c$.
+=== division-a-number-theory-1
+Compute the last two digits of $9^{2020}+9^{2020^2}+\ldots+9^{2020^{2020}}$.
+=== division-a-number-theory-2
+How many ordered triples of nonzero integers $(a,b,c)$ satisfy $2abc=a+b+c+4$?
+=== division-a-number-theory-3
+Find the sum (in base $10$) of the three greatest numbers less than $1000_{10}$ that are palindromes in both base $10$ and base $5$.
+=== division-a-number-theory-4
+Given two positive integers $a\ne b$, let $f(a,b)$ be the smallest integer that divides exactly one of $a,b$, but not both. Determine the number of pairs of positive integers $(x,y)$, where $x\ne y$, $1\le x,y\le100$ and $\gcd(f(x,y),\gcd(x,y))=2$.
+=== division-a-number-theory-5
+We say that a positive integer $n$ is divable if there exist positive integers $1<a<b<n$ such that, if the base-$a$ representation of $n$ is $\sum_{i=0}^{k_1}a_ia^i$, and the base-$b$ representation of $n$ is $\sum_{i=0}^{k_2}b_ib^i$, then for all positive integers $c>b$, we have that $\sum_{i=0}^{k_2}b_ic^i$ divides $\sum_{i=0}^{k_1}a_ic^i$. Find the number of non-divable $n$ such that $1\le n\le100$.
+=== division-a-number-theory-6
+Find the number of ordered pairs of integers $(x,y)$ such that $2167$ divides $3x^2+27y^2+2021$ with $0\le x,y\le2166$.
+=== division-a-number-theory-7
+Let $\phi(x,v)$ be the smallest positive integer $n$ so that $2^v$ divides $x^n+95$ if it exists, or $0$ if no such positive integer exists. Determine $\sum_{i=0}^{255}\phi(i,8)$.
+=== division-a-number-theory-8
+What is the smallest integer $a_0$ such that, for every positive integer $n$, there exists a sequence of positive integers $a_0,a_1,\ldots,a_{n-1},a_n$ such that the first $n-1$ are all distinct, $a_0=a_n$, and for $0\le i\le n-1$, $a_i^{a_{i+1}}$ ends in the digits $\overline{0a_i}$ when expressed without leading zeros in base $10$?
+=== division-b-number-theory-1
+The number $2021$ leaves a remainder of $11$ when divided by a positive integer. Find the smallest such integer.
+=== division-b-number-theory-2
+Last year, the U.S. House of Representatives passed a bill which would make Washington, D.C. into the $51$st state. Naturally, the mathematicians are upset that Congress won't prioritize mathematical interest of flag design in choosing how many U.S. states there should be. Suppose the U.S. flag must contain, as it does now, stars arranged in rows alternating between $n$ and $n-1$ stars, starting and ending with rows of $n$ stars, where $n\ge2$ is some integer and the flag has more than one row. What is the minimum number of states that the U.S. would need to contain so that there are at least three different ways, excluding rotations, to arrange the stars on the flag?
+=== division-b-number-theory-3
+Compute the last two digits of $9^{2020}+9^{2020^2}+\ldots+9^{2020^{2020}}$.
+=== division-b-number-theory-4
+How many ordered triples of nonzero integers $(a,b,c)$ satisfy $2abc=a+b+c+4$?
+=== division-b-number-theory-5
+Find the sum (in base $10$) of the three greatest numbers less than $1000_{10}$ that are palindromes in both base $10$ and base $5$.
+=== division-b-number-theory-6
+Given two positive integers $a\ne b$, let $f(a,b)$ be the smallest integer that divides exactly one of $a,b$, but not both. Determine the number of pairs of positive integers $(x,y)$, where $x\ne y$, $1\le x,y\le100$ and $\gcd(f(x,y),\gcd(x,y))=2$.
+=== division-b-number-theory-7
+We say that a positive integer $n$ is divable if there exist positive integers $1<a<b<n$ such that, if the base-$a$ representation of $n$ is $\sum_{i=0}^{k_1}a_ia^i$, and the base-$b$ representation of $n$ is $\sum_{i=0}^{k_2}b_ib^i$, then for all positive integers $c>b$, we have that $\sum_{i=0}^{k_2}b_ic^i$ divides $\sum_{i=0}^{k_1}a_ic^i$. Find the number of non-divable $n$ such that $1\le n\le100$.
+=== division-b-number-theory-8
+Find the number of ordered pairs of integers $(x,y)$ such that $2167$ divides $3x^2+27y^2+2021$ with $0\le x,y\le2166$.
