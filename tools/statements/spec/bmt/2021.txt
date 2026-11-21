@@ -1,0 +1,69 @@
+=== algebra-1
+Let $x$ be a real number such that $x^2-x+1=7$ and $x^2+x+1=13$. Compute the value of $x^4$.
+=== algebra-2
+Let $f$ and $g$ be linear functions such that $f(g(2021))-g(f(2021))=20$. Compute $f(g(2022))-g(f(2022))$. (Note: A function $h$ is linear if $h(x)=ax+b$ for all real numbers $x$.)
+=== algebra-3
+Let $x$ be a solution to the function $\lfloor x\lfloor x+2\rfloor+2\rfloor=10$. Compute the smallest $C$ such that for any solution $x$, $x<C$. Here, $\lfloor m\rfloor$ is defined as the greatest integer less than or equal to $m$. For example, $\lfloor 3\rfloor=3$ and $\lfloor-4.25\rfloor=-5$.
+=== algebra-4
+Let $\theta$ be a real number such that $1+\sin 2\theta-\left(\frac{1}{2}\sin 2\theta\right)^2=0$. Compute the maximum value of $(1+\sin\theta)(1+\cos\theta)$.
+=== algebra-5
+Compute the sum of the real solutions to $\lfloor x\rfloor\{x\}=2020x$. Here, $\lfloor x\rfloor$ is defined as the greatest integer less than or equal to $x$, and $\{x\}=x-\lfloor x\rfloor$.
+=== algebra-6
+Let $f$ be a real function such that for all $x\ne 0,x\ne 1$,
+$$f(x)+f\left(-\frac{1}{x-1}\right)=\frac{9}{4x^2}+f\left(1-\frac{1}{x}\right).$$
+Compute $f\left(\frac{1}{2}\right)$.
+=== algebra-7
+Let $z_1,z_2,\dots,z_{2020}$ be the roots of the polynomial $z^{2020}+z^{2019}+\cdots+z+1$. Compute
+$$\sum_{i=1}^{2020}\frac{1}{1-z_i^{2020}}.$$
+=== algebra-8
+Let $f(w)=w^3-rw^2+sw-\frac{4\sqrt{2}}{27}$ denote a polynomial, where $r^2=\left(\frac{8\sqrt{2}+10}{7}\right)s$. The roots of $f$ correspond to the sides of a right triangle. Compute the smallest possible area of this triangle.
+=== algebra-9
+Compute the sum of the positive integers $n\le 100$ for which the polynomial $x^n+x+1$ can be written as the product of at least $2$ polynomials of positive degree with integer coefficients.
+=== algebra-10
+Given a positive integer $n$, define $f_n(x)$ to be the number of square-free positive integers $k$ such that $kx\le n$. Then, define $v(n)$ as
+$$v(n)=\sum_{i=1}^{n}\sum_{j=1}^{n}f_n(i^2)-6f_n(ij)+f_n(j^2).$$
+Compute the largest positive integer $2\le n\le 100$ for which $v(n)-v(n-1)$ is negative. (Note: A square-free positive integer is a positive integer that is not divisible by the square of any prime.)
+=== discrete-math-1
+Towa has a hand of three different red cards and three different black cards. How many ways can Towa pick a set of three cards from her hand that uses at least one card of each color?
+=== discrete-math-2
+Alice is counting up by fives, starting with the number $3$. Meanwhile, Bob is counting down by fours, starting with the number $2021$. How many numbers between $3$ and $2021$, inclusive, are counted by both Alice and Bob?
+=== discrete-math-3
+How many distinct sums can be made from adding together exactly $8$ numbers that are chosen from the set $\{1,4,7,10\}$, where each number in the set is chosen at least once? (For example, one possible sum is $1+1+1+1+4+7+7+10+10=41$.)
+=== discrete-math-4
+Derek and Julia are two of $64$ players at a casual basketball tournament. The players split up into $8$ teams of $8$ players at random. Each team then randomly selects $2$ captains among their players. What is the probability that both Derek and Julia are captains?
+=== discrete-math-5
+How many three-digit numbers $\underline{abc}$ have the property that when it is added to $\underline{cba}$, the number obtained by reversing its digits, the result is a palindrome? (Note that $\underline{cba}$ is not necessarily a three-digit number since before reversing, $c$ may be equal to $0$.)
+=== discrete-math-6
+Compute the sum of all positive integers $n$ such that $n^n$ has $325$ positive integer divisors. (For example, $4^4=256$ has $9$ positive integer divisors: $1,2,4,8,16,32,64,128,256$.)
+=== discrete-math-7
+For a given positive integer $n$, you may perform a series of steps. At each step, you may apply an operation: you may increase your number by one, or if your number is divisible by $2$, you may divide your number by $2$. Let $\ell(n)$ be the minimum number of operations needed to transform the number $n$ to $1$ (for example, $\ell(1)=0$ and $\ell(7)=4$). How many positive integers $n$ are there such that $\ell(n)\le 12$?
+=== discrete-math-8
+Consider the randomly generated base $10$ real number $r=0.\overline{p_0p_1p_2\ldots}$, where each $p_i$ is a digit from $0$ to $9$, inclusive, generated as follows: $p_0$ is generated uniformly at random from $0$ to $9$, inclusive, and for all $i\ge 0$, $p_{i+1}$ is generated uniformly at random from $p_i$ to $9$, inclusive. Compute the expected value of $r$.
+=== discrete-math-9
+Let $p=101$. The sum
+$$\sum_{k=1}^{10}\frac{1}{\binom{p}{k}}$$
+can be written as a fraction of the form $\dfrac{a}{p!}$, where $a$ is a positive integer. Compute $a\pmod{p}$.
+=== discrete-math-10
+Let $N$ be the number of ways to draw $22$ straight edges between $10$ labeled points, of which no three are collinear, such that no triangle with vertices among these $10$ points is created, and there is at most one edge between any two labeled points. Compute $\dfrac{N}{9!}$.
+=== geometry-1
+Shreyas has a rectangular piece of paper $ABCD$ such that $AB=20$ and $AD=21$. Given that Shreyas can make exactly one straight-line cut to split the paper into two pieces, compute the maximum total perimeter of the two pieces.
+=== geometry-2
+Compute the area of the smallest triangle which can contain six congruent, non-overlapping unit circles.
+=== geometry-3
+In quadrilateral $ABCD$, suppose that $\overline{CD}$ is perpendicular to $\overline{BC}$ and $\overline{DA}$. Point $E$ is chosen on segment $\overline{CD}$ such that $\angle AED=\angle BEC$. If $AB=6$, $AD=7$, and $\angle ABC=120^\circ$, compute $AE+EB$.
+=== geometry-4
+An equilateral polygon has unit side length and alternating interior angle measures of $15^\circ$ and $300^\circ$. Compute the area of this polygon.
+=== geometry-5
+Let circles $\omega_1$ and $\omega_2$ intersect at $P$ and $Q$. Let the line externally tangent to both circles that is closer to $Q$ touch $\omega_1$ at $A$ and $\omega_2$ at $B$. Let point $T$ lie on segment $\overline{PQ}$ such that $\angle ATB=90^\circ$. Given that $AT=6$, $BT=8$, and $PT=4$, compute $PQ$.
+=== geometry-6
+Consider $27$ unit-cubes assembled into one $3\times 3\times 3$ cube. Let $A$ and $B$ be two opposite corners of this large cube. Remove the one unit-cube not visible from the exterior, along with all six unit-cubes in the center of each face. Compute the minimum distance an ant has to walk along the surface of the modified cube to get from $A$ to $B$.
+
+@@fig:bmt2021_geometry-6.png@@
+=== geometry-7
+The line $l$ passes through vertex $B$ and the interior of regular hexagon $ABCDEF$. If the distances from $l$ to the vertices $A$ and $C$ are $7$ and $4$, respectively, compute the area of hexagon $ABCDEF$.
+=== geometry-8
+Let $\triangle ABC$ be a triangle with $AB=15$, $AC=13$, $BC=14$, and circumcenter $O$. Let $l$ be the line through $A$ perpendicular to segment $\overline{BC}$. Let the circumcircle of $\triangle AOB$ and the circumcircle of $\triangle AOC$ intersect $l$ at points $X$ and $Y$ (other than $A$), respectively. Compute the length of $\overline{XY}$.
+=== geometry-9
+Let $ABCD$ be a convex quadrilateral such that $\triangle ABC$ is equilateral. Let $P$ be a point inside the quadrilateral such that $\triangle APD$ is equilateral and $\angle PCD=30^\circ$. Given that $CP=2$ and $CD=3$, compute the area of the triangle formed by $P$, the midpoint of segment $\overline{BC}$, and the midpoint of segment $\overline{AB}$.
+=== geometry-10
+Consider $\triangle ABC$ such that $CA+AB=3BC$. Let the incircle $\omega$ touch segments $\overline{CA}$ and $\overline{AB}$ at $E$ and $F$, respectively, and define $P$ and $Q$ such that segments $\overline{PE}$ and $\overline{QF}$ are diameters of $\omega$. Define the function $\mathcal{D}$ of a point $K$ to be the sum of the distances from $K$ to $P$ and $Q$ (i.e. $\mathcal{D}(K)=KP+KQ$). Let $W$, $X$, $Y$, and $Z$ be points chosen on lines $\overleftrightarrow{BC}$, $\overleftrightarrow{CE}$, $\overleftrightarrow{EF}$, and $\overleftrightarrow{FB}$, respectively. Given that $BC=\sqrt{133}$ and the inradius of $\triangle ABC$ is $\sqrt{14}$, compute the minimum value of $\mathcal{D}(W)+\mathcal{D}(X)+\mathcal{D}(Y)+\mathcal{D}(Z)$.

@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **BMT 2020 to 2025 statements (355 of 355 now):** 180 more problems with 17 figures (the extractor clipped labels on several, so figures were cropped by hand from the page). Tag fixes: 2020 Algebra 9 (cubes identity, not matrices), 2024 Discrete 1 (added palindromes). BMT is complete.
 - **Statement credit and paper selector (owner):** the line under a problem's text now reads only "© Stanford Math Tournament" (likewise BMT, ARML, HMMT); "Reproduced with permission" is gone, as it is assumed. A contest year's paper selector spells every round out ("General", "Algebra and Number Theory"); problem lists keep their abbreviations. `check-contest-page.cjs` and `check-hmmt-archive.cjs` updated.
 - **BMT 2017 to 2019 statements:** 87 more problems (175 of 355 in all), each read against its page image; 2019 Geometry 1 and 3 keep their figures. No tag needed changing.
 - **Problem statements for BMT 2013 to 2016 (owner: permission given):** Analysis, Discrete Math and Geometry rounds, 88 problems, each checked against its page image (the draft tools lose parts of formulas); the one figure (2016 Discrete Math 10) is cropped by hand. Tag fix: 2016 Geometry 9 cited the rotation-matrix card; its route is the law of cosines (AUDITS.md).
