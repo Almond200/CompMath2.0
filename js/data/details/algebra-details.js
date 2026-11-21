@@ -6412,3 +6412,39 @@ Showing that an equation has a real root, counting real roots together with mono
 Rarely named on the AMC or the AIME, though it is behind every argument that a root exists between two values. HMMT uses it to show a solution exists, to count solutions with monotonicity, and to extend a formula to the degenerate ends of a range.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"square-and-add": String.raw`
+## When to use
+You are given $\sin a + \sin b = p$ and $\cos a + \cos b = q$, or the same with three angles, or a rotation pair such as $x\cos\theta - y\sin\theta = P$ and $x\sin\theta + y\cos\theta = Q$, and the question asks for $\cos(a - b)$, for $x^2 + y^2$, or for a bound on one angle, never for the angles one at a time. It also fits two linear equations whose coefficients are a row $(u, v)$ and its quarter turn $(-v, u)$, as in $a + 8c = 4 + 7b$ and $8a - c = 7 - 4b$. Solving for the angles, or for the unknowns one at a time, is the wrong tool for these, and when the sine and cosine sums involve different angles there is nothing to combine; [[product-sum|product-to-sum formulas]] handle a single sum of sines or cosines.
+
+## How
+1. Check that the two given equations are the sine part and the cosine part of one expression, or that their coefficient rows are a vector and its quarter turn.
+2. Move any term you want gone to the other side first; for three angles, isolate one angle on the left and leave the other two on the right.
+3. Square both equations.
+4. Add the two squares. On the left, $\sin^2 + \cos^2 = 1$ gives $1$ for each angle that appears alone, and each pair of different angles leaves $2(\cos a\cos b + \sin a\sin b) = 2\cos(a - b)$.
+5. Solve the resulting equation for the quantity asked for, such as $\cos(a - b) = \dfrac{p^2 + q^2 - 2}{2}$.
+6. If the question asks for an extreme value, use the range of the cosine: $|\cos(a-b)| \le 1$ bounds $p^2 + q^2$ between $0$ and $4$.
+
+For $\sin a + \sin b = \tfrac34$ and $\cos a + \cos b = \tfrac12$, the sum of the squares is $\tfrac{9}{16} + \tfrac{4}{16} = \tfrac{13}{16}$ and equals $2 + 2\cos(a - b)$, so $\cos(a - b) = \tfrac{13/16 - 2}{2} = -\tfrac{19}{32}$.
+
+For three angles with $\cos\alpha + \cos\beta + \cos\gamma = 1$ and $\sin\alpha + \sin\beta + \sin\gamma = 1$, isolate $\alpha$: $\cos\beta + \cos\gamma = 1 - \cos\alpha$ and $\sin\beta + \sin\gamma = 1 - \sin\alpha$. Squaring and adding gives $(1 - \cos\alpha)^2 + (1 - \sin\alpha)^2 = 2 + 2\cos(\beta - \gamma) \le 4$, a condition on $\alpha$ alone.
+
+## Why it works
+Each equation is a true statement about numbers, so squaring both sides and adding the two results are allowed steps. What makes the move useful is that $\sin^2 x + \cos^2 x = 1$: the squares of a sine and its cosine collapse to $1$. Expanding $(\sin a + \sin b)^2 + (\cos a + \cos b)^2$ gives $\sin^2 a + \cos^2 a + \sin^2 b + \cos^2 b + 2(\sin a\sin b + \cos a\cos b)$, which is $2 + 2\cos(a - b)$ by [[angle-addition|the cosine of a difference]]. In vector terms, $(\cos a, \sin a)$ and $(\cos b, \sin b)$ are unit vectors; the two given sums are the coordinates of their vector sum, and the sum of the squares of the coordinates is its squared length, $2 + 2\cos(a - b)$, which depends only on the angle between the vectors.
+
+For linear equations, $(ua + vc)^2 + (va - uc)^2 = (u^2 + v^2)(a^2 + c^2)$: the cross terms $\pm 2uvac$ cancel, and the result is the squared length times the squared coefficient. The step loses information, since squaring cannot tell $x$ from $-x$, so a solution found this way must still be checked against the original equations when the problem asks for a specific value rather than the quantity in the sum.
+
+## Formulas it uses
+- [[pythagorean-identities]]: $\sin^2 + \cos^2 = 1$ makes each pair of squares collapse to $1$.
+- [[angle-addition]]: $\cos a\cos b + \sin a\sin b = \cos(a - b)$ names the cross terms.
+
+## Common traps
+- Squaring only one equation, or subtracting instead of adding: only the sum of the two squares uses $\sin^2 + \cos^2 = 1$.
+- Using it when the two sums involve different angles, so that the squares do not pair into $\sin^2 x + \cos^2 x$.
+- Forgetting that an equation found by squaring may have lost the sign of $p$ or $q$.
+- Reading $2 + 2\cos(a - b) = p^2 + q^2$ as an equation for the angles themselves; it fixes only $\cos(a - b)$.
+
+## Contest profile
+A short AMC 12 problem that is long to solve by finding $a$ and $b$ and a one-line solution this way; on the AIME and HMMT it appears as the first step toward a bound on one of three angles.
+`
+});

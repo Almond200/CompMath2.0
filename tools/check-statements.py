@@ -28,12 +28,11 @@ hmmt_rounds = {
 for f in sorted(glob.glob(os.path.join(statement_dir, "**", "*.js"), recursive=True)):
     src = open(f, encoding="utf-8").read()
     source = os.path.dirname(os.path.relpath(f, statement_dir))
-    if source not in ("", "hmmt", "cemc", "ahsme", "smt", "bmt", "arml"):
+    PERMITTED = {"smt": "Stanford Math Tournament", "bmt": "Berkeley Math Tournament", "arml": "American Regions Mathematics League", "cmimc": "Carnegie Mellon Informatics and Mathematics Competition", "chmmc": "Caltech Harvey Mudd Math Competition", "duke": "Duke Math Meet", "mmaths": "Yale Math Competitions", "gmay": "Yale Math Competitions", "umd": "University of Maryland High School Mathematics Competition", "lehigh": "Lehigh University High School Math Contest", "utah": "Utah State Math Contest", "columbus": "Columbus State Invitational Mathematics Tournament", "mbmt": "Montgomery Blair Math Tournament", "calgary": "University of Calgary Junior Mathematics Contest", "pumac": "Princeton University Mathematics Competition"}
+    if source not in ("", "hmmt", "cemc", "ahsme") + tuple(PERMITTED):
         bad.append(f"{f}: unknown publisher directory")
         continue
-    credit = {"": "CC BY-NC-SA", "hmmt": "Reproduced with permission from HMMT", "cemc": "CC BY-NC 4.0", "ahsme": "CC BY-NC-SA 4.0",
-              "smt": "Reproduced with permission from the Stanford Math Tournament", "bmt": "Reproduced with permission from the Berkeley Math Tournament",
-              "arml": "Reproduced with permission from the American Regions Mathematics League"}[source]
+    credit = {"": "CC BY-NC-SA", "hmmt": "Reproduced with permission from HMMT", "cemc": "CC BY-NC 4.0", "ahsme": "CC BY-NC-SA 4.0"}.get(source) or "Reproduced with permission from the " + PERMITTED[source]
     if credit not in src.split("window.")[0]: bad.append(f"{f}: missing credit header")
     for m in re.finditer(r'^"([a-z0-9-]+)": \{ s: String\.raw`(.*?)`, u: "([^"]*)" \},$', src, re.S | re.M):
         slug, s, u = m.groups(); n += 1
@@ -66,6 +65,8 @@ for f in sorted(glob.glob(os.path.join(statement_dir, "**", "*.js"), recursive=T
             mirror = slug.startswith("2017-bmt-geometry-") and u.startswith("https://oss.linstitute.net/")
             if not match or not (u.startswith(host) or mirror) or (source != "arml" and not mirror and match[1] not in u):
                 bad.append(f"{slug}: does not link its official paper")
+        elif source in PERMITTED and source not in ("smt", "bmt", "arml"):
+            if not u.startswith("https://"): bad.append(f"{slug}: source link missing")
         elif not u.startswith(("https://live.poshenloh.com/", "https://artofproblemsolving.com/wiki/", "pdf:fall-2021-amc-10", "https://wiki.randommath.com/amc10/2026/part-a/", "https://wiki.randommath.com/amc12/2026/part-a/")):
             bad.append(f"{slug}: source link missing")
         # A size command (\\tiny, \\small ...) shrinks a formula to near-unreadable size on screen.

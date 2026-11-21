@@ -10127,7 +10127,21 @@ The book remembers the last lesson you opened, in this browser, and the contents
     "SMT": { dir: "smt", credit: "© Stanford Math Tournament" },
     "BMT": { dir: "bmt", credit: "© Berkeley Math Tournament" },
     "ARML": { dir: "arml", credit: "© American Regions Mathematics League" },
-    "ARML Local": { dir: "arml", credit: "© American Regions Mathematics League" }
+    "ARML Local": { dir: "arml", credit: "© American Regions Mathematics League" },
+    "CMIMC": { dir: "cmimc", credit: "© Carnegie Mellon Informatics and Mathematics Competition" },
+    "CHMMC": { dir: "chmmc", credit: "© Caltech Harvey Mudd Math Competition" },
+    "Duke Math Meet": { dir: "duke", credit: "© Duke Math Meet" },
+    "MMATHS": { dir: "mmaths", credit: "© Yale Math Competitions" },
+    "Girls in Math at Yale": { dir: "gmay", credit: "© Yale Math Competitions" },
+    "UMD HSMC": { dir: "umd", credit: "© University of Maryland High School Mathematics Competition" },
+    "Lehigh": { dir: "lehigh", credit: "© Lehigh University High School Math Contest" },
+    "Utah State Math Contest": { dir: "utah", credit: "© Utah State Math Contest" },
+    "Columbus State Tournament": { dir: "columbus", credit: "© Columbus State Invitational Mathematics Tournament" },
+    "MBMT Lower": { dir: "mbmt", credit: "© Montgomery Blair Math Tournament" },
+    "MBMT Upper": { dir: "mbmt", credit: "© Montgomery Blair Math Tournament" },
+    "Calgary Junior Math Contest": { dir: "calgary", credit: "© University of Calgary Junior Mathematics Contest" },
+    "PUMaC Division A": { dir: "pumac", credit: "© Princeton University Mathematics Competition" },
+    "PUMaC Division B": { dir: "pumac", credit: "© Princeton University Mathematics Competition" }
   };
   function problemSourceLabel(p) {
     if (p.sourceMirror) return "Open the original paper (mirror)";
@@ -10142,7 +10156,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 57;
+  const STATEMENTS_V = 58;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {

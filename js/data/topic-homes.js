@@ -630,6 +630,7 @@ window.MATH_TOPIC_HOMES = {
   "time-per-leg": "alg.word.rates.avg",
   "transforming-equations": "alg.eq.identity.simplify",
   "add-all-equations": "alg.eq",
+  "square-and-add": "alg.trig.identity.sum",
   "subtract-swapped-equations": "alg.eq.system.cyclic",
   "denesting-radicals": "alg.eq.radical.denest",
   "estimating-answers": "alg.word.compute.estimate",
