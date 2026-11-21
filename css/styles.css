@@ -4716,6 +4716,7 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 .pr-fams .fam-chip[aria-pressed="true"] { border-color: var(--space, var(--accent)); background: var(--space-soft, var(--bg-panel)); color: var(--space, var(--accent)); }
 /* A problem read in its official paper, and the reviewer's own check of it. */
 .practice-paper { padding: 4px 0 2px; }
+.practice-paper[hidden] { display: none; }
 .practice-paper p { margin: 0 0 10px; line-height: 1.55; color: var(--text); }
 .practice-self { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 6px 0 14px; }
 .practice-self .rand-btns { margin: 0; }
