@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **Duke Math Meet statements complete (156 problems, 2007 to 2022):** every Individual round read against its page, 9 figures cropped (2008 #6, 2010 #9, 2011 #3 and #5, 2019 #5, 2021 #1 and #7, 2022 #1). Duke's database slugs are `YYYY-duke-math-meet-individual-N`, so the specs use `math-meet-individual-N` block names. No tag needed changing. `STATEMENTS_V` 61.
 - **CHMMC statements complete (249 problems, 2010 to 2026):** all 17 Individual rounds read against their pages, six figures cropped (2010 Winter #14, 2012 Spring #3 and #10, 2016 #14 and #15, 2020 #6, 2021 #11). 2012 Fall #7 (a series problem) keeps its calculus entry. No tag needed changing.
 - **CMIMC statements complete (306 problems, 2016 to 2022):** every subject test and division, with 10 figures; three tag fixes (AUDITS.md). Duplicate problems shared by Division 1 and 2 of 2021 and 2022 appear in both. **Statements for the other permitted contests (tooling):** `tools/statements/build.py` and `check-statements.py` now take every permitted family (cmimc, chmmc, duke, mmaths, gmay, umd, lehigh, utah, columbus, mbmt, calgary, pumac), and `PERMITTED_STATEMENTS` in `js/app.js` lists each with its credit. MATHCOUNTS, UKMT and Math Prize for Girls are excluded: permission is not yet given (owner, 2026-11-21). CMIMC's papers come from `raw.githubusercontent.com` (the `github.com/.../blob/` addresses the app links answer 403 from the cloud container).
 - Semantic index rebuilt for 787 cards; warm eval 158/187 top-1.

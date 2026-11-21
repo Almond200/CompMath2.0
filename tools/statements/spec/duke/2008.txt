@@ -1,0 +1,21 @@
+=== math-meet-individual-1
+Joe owns stock. On Monday morning on October 20th, 2008, his stocks were worth $\$250{,}000$. The value of his stocks, for each day from Monday to Friday of that week, increased by $10\%$, increased by $5\%$, decreased by $5\%$, decreased by $15\%$, and decreased by $20\%$, though not necessarily in that order. Given this information, let $A$ be the largest possible value of his stocks on that Friday evening, and let $B$ be the smallest possible value of his stocks on that Friday evening. What is $A-B$?
+=== math-meet-individual-2
+What is the smallest positive integer $k$ such that $2k$ is a perfect square and $3k$ is a perfect cube?
+=== math-meet-individual-3
+Two competitive ducks decide to have a race in the first quadrant of the $xy$ plane. They both start at the origin, and the race ends when one of the ducks reaches the line $y=\frac12$. The first duck follows the graph of $y=\frac{x}{3}$ and the second duck follows the graph of $y=\frac{x}{5}$. If the two ducks move in such a way that their $x$-coordinates are the same at any time during the race, find the ratio of the speed of the first duck to that of the second duck when the race ends.
+=== math-meet-individual-4
+There were grammatical errors in this problem as stated during the contest. The problem should have said:
+
+You play a carnival game as follows: The carnival worker has a circular mat of radius $20$ cm, and on top of that is a square mat of side length $10$ cm, placed so that the centers of the two mats coincide. The carnival worker also has three disks, one each of radius $1$ cm, $2$ cm, and $3$ cm. You start by paying the worker a modest fee of one dollar, then choosing two of the disks, then throwing the two disks onto the mats, one at a time, so that the center of each disk lies on the circular mat. You win a cash prize if the center of the large disk is on the square AND the large disk touches the small disk, otherwise you just lost the game and you get no money. How much is the cash prize if choosing the two disks randomly and then throwing the disks randomly (i.e. with uniform distribution) will, on average, result in you breaking even?
+=== math-meet-individual-5
+Four boys and four girls arrive at the Highball High School Senior Ball without a date. The principal, seeking to rectify the situation, asks each of the boys to rank the four girls in decreasing order of preference as a prom date and asks each girl to do the same for the four boys. None of the boys know any of the girls and vice-versa (otherwise they would have probably found each other before the prom), so all eight teenagers write their rankings randomly. Because the principal lacks the mathematical chops to pair the teenagers together according to their stated preference, he promptly ignores all eight of the lists and randomly pairs each of the boys with a girl. What is the probability that no boy ends up with his third or his fourth choice, and no girl ends up with her third or fourth choice?
+=== math-meet-individual-6
+In the diagram below, $ABCDEFGH$ is a rectangular prism, $\angle BAF=30^\circ$ and $\angle DAH=60^\circ$. What is the cosine of $\angle CEG$?
+
+@@fig:duke2008_individual-6.png@@
+=== math-meet-individual-7
+Two cows play a game where each has one playing piece, they begin by having the two pieces on opposite vertices of an octahedron, and the two cows take turns moving their piece to an adjacent vertex. The winner is the first player who moves its piece to the vertex occupied by its opponent's piece. Because cows are not the most intelligent of creatures, they move their pieces randomly. What is the probability that the first cow to move eventually wins?
+=== math-meet-individual-8
+Find the last two digits of
+$$\sum_{k=1}^{2008}k\binom{2008}{k}.$$
