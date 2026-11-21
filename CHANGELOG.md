@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **Columbus State 2011 added (540 of 1,364; 7 figures; no tag needed changing; two physics problems filed off the tree).** `STATEMENTS_V` 83.
 - **Columbus State 2012 added (490 of 1,364; 12 figures; no tag needed changing); 2013 #40, #44 and #46 re-cropped** (the left edge of #40 and #44 and the line and axes of #46 had been touching the border; the figure scan is now `edgecheck`-clean). `STATEMENTS_V` 81.
 - **Columbus State 2013 added (440 of 1,364; 9 figures; no tag needed changing).** `STATEMENTS_V` 80.
 - **Columbus State 2014 added (390 of 1,364; 7 figures; one tag fix, AUDITS.md); 2015 #44 re-cropped.** `STATEMENTS_V` 79.
