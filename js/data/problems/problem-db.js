@@ -16268,7 +16268,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2016 BMT Geometry, Problem 6", formulas: ["centroid-division", "median-triangle-area", "herons-formula"], strategy: "", tree: ["geo.tri.cevian.median"] },
   { ref: "2016 BMT Geometry, Problem 7", formulas: ["special-right-triangles", "triangle-area-standard"], strategy: "", tree: ["geo.tri.special.right"] },
   { ref: "2016 BMT Geometry, Problem 8", formulas: ["vector-dot-product", "pythagorean-theorem"], strategy: "", tree: ["geo.solid.coord.dist"] },
-  { ref: "2016 BMT Geometry, Problem 9", formulas: ["rotation-reflection-matrices", "pythagorean-theorem"], strategy: "", tree: ["geo.poly.quad.rect"] },
+  { ref: "2016 BMT Geometry, Problem 9", formulas: ["law-of-cosines", "pythagorean-theorem"], strategy: "", tree: ["geo.poly.quad.rect"] },
   { ref: "2016 BMT Geometry, Problem 10", formulas: ["circle-in-angle", "inradius-area", "geometric-series"], strategy: "", tree: ["geo.circ.tangent.inscribed"] },
   // ---- 2015 BMT Analysis. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2015 BMT Analysis, Problem 1", formulas: ["base-conversion", "exponent-laws"], strategy: "", tree: ["nt.dio.bound.exp"] },

@@ -1,0 +1,51 @@
+=== analysis-1
+Find the value of $a$ satisfying
+$$\begin{gathered}a+b=3\\ b+c=11\\ c+a=61\end{gathered}$$
+=== analysis-2
+A point $P$ is given on the curve $x^4+y^4=1$. Find the maximum distance from the point $P$ to the origin.
+=== analysis-4
+Given a complex number $z$ satisfies $\operatorname{Im}(z)=z^2-z$, find all possible values of $|z|$.
+=== analysis-6
+The minimal polynomial of a complex number $r$ is the unique polynomial with rational coefficients of minimal degree with leading coefficient $1$ that has $r$ as a root. If $f$ is the minimal polynomial of $\cos\frac{\pi}{7}$, what is $f(-1)$?
+=== analysis-7
+If $x,y$ are positive real numbers satisfying $x^3-xy+1=y^3$, find the minimum possible value of $y$.
+=== discrete-math-1
+A number is between $500$ and $1000$ and has a remainder of $6$ when divided by $25$ and a remainder of $7$ when divided by $9$. Find the only odd number to satisfy these requirements.
+=== discrete-math-2
+If I roll three fair $4$-sided dice, what is the probability that the sum of the resulting numbers is relatively prime to the product of the resulting numbers?
+=== discrete-math-3
+Suppose we have $2013$ piles of coins, with the $i^{\text{th}}$ pile containing exactly $i$ coins. We wish to remove the coins in a series of steps. In each step, we are allowed to take away coins from as many piles as we wish, but we have to take the same number of coins from each pile. We cannot take away more coins than a pile actually has. What is the minimum number of steps we have to take?
+=== discrete-math-4
+Given $f_1=2x-2$ and $k\ge 2$, define $f_k(x)=f_1(f_{k-1}(x))$ to be a real-valued function of $x$. Find the remainder when $f_{2013}(2012)$ is divided by the prime $2011$.
+=== discrete-math-5
+Consider the roots of the polynomial $x^{2013}-2^{2013}=0$. Some of these roots also satisfy $x^k-2^k=0$, for some integer $k<2013$. What is the product of this subset of roots?
+=== discrete-math-6
+A coin is flipped until there is a head followed by two tails. What is the probability that this will take exactly $12$ flips?
+=== discrete-math-7
+Denote by $S(a,b)$ the set of integers $k$ that can be represented as $k=a\cdot m+b\cdot n$, for some non-negative integers $m$ and $n$. So, for example, $S(2,4)=\{0,2,4,6,\dots\}$. Then, find the sum of all possible positive integer values of $x$ such that $S(18,32)$ is a subset of $S(3,x)$.
+=== discrete-math-8
+Let $f(n)$ take in a nonnegative integer $n$ and return an integer between $0$ and $n-1$ at random (with the exception being $f(0)=0$ always). What is the expected value of $f(f(22))$?
+=== discrete-math-9
+$2013$ people sit in a circle, playing a ball game. When one player has a ball, he may only pass it to another player $3$, $11$, or $61$ seats away (in either direction). If $f(A,B)$ represents the minimal number of passes it takes to get the ball from Person $A$ to Person $B$, what is the maximal possible value of $f$?
+=== discrete-math-10
+Let $\sigma_n$ be a permutation of $\{1,\dots,n\}$; that is, $\sigma_n(i)$ is a bijective function from $\{1,\dots,n\}$ to itself. Define $f(\sigma)$ to be the number of times we need to apply $\sigma$ to the identity in order to get the identity back. For example, $f$ of the identity is just $1$, and all other permutations have $f(\sigma)>1$. What is the smallest $n$ such that there exists a $\sigma_n$ with $f(\sigma_n)=k$?
+=== geometry-1
+A rectangle with sides $a$ and $b$ has an area of $24$ and a diagonal of length $11$. Find the perimeter of this rectangle.
+=== geometry-2
+Two rays start from a common point and have an angle of $60$ degrees. Circle $C$ is drawn with radius $42$ such that it is tangent to the two rays. Find the radius of the circle that has radius smaller than circle $C$ and is also tangent to $C$ and the two rays.
+=== geometry-3
+Given a regular tetrahedron $ABCD$ with center $O$, find $\sin\angle AOB$.
+=== geometry-4
+Two cubes $A$ and $B$ have different side lengths, such that the volume of cube $A$ is numerically equal to the surface area of cube $B$. If the surface area of cube $A$ is numerically equal to six times the side length of cube $B$, what is the ratio of the surface area of cube $A$ to the volume of cube $B$?
+=== geometry-5
+Points $A$ and $B$ are fixed points in the plane such that $AB=1$. Find the area of the region consisting of all points $P$ such that $\angle APB>120^\circ$.
+=== geometry-6
+Let $ABCD$ be a cyclic quadrilateral where $AB=4$, $BC=11$, $CD=8$, and $DA=5$. If $BC$ and $DA$ intersect at $X$, find the area of $\triangle XAB$.
+=== geometry-7
+Let $ABC$ be a triangle with $BC=5$, $CA=3$, and $AB=4$. Variable points $P,Q$ are on segments $AB,AC$, respectively such that the area of $APQ$ is half of the area of $ABC$. Let $x$ and $y$ be the lengths of perpendiculars drawn from the midpoint of $PQ$ to sides $AB$ and $AC$, respectively. Find the range of values of $2y+3x$.
+=== geometry-8
+$ABC$ is an isosceles right triangle with right angle $B$ and $AB=1$. $ABC$ has an incenter at $E$. The excircle to $ABC$ at side $AC$ is drawn and has center $P$. Let this excircle be tangent to $AB$ at $R$. Draw $T$ on the excircle so that $RT$ is the diameter. Extend line $BC$ and draw point $D$ on $BC$ so that $DT$ is perpendicular to $RT$. Extend $AC$ and let it intersect with $DT$ at $G$. Let $F$ be the incenter of $CDG$. Find the area of $\triangle EFP$.
+=== geometry-9
+Let $ABC$ be a triangle. Points $D,E,F$ are on segments $BC,CA,AB$, respectively. Suppose that $AF=10$, $FB=10$, $BD=12$, $DC=17$, $CE=11$, and $EA=10$. Suppose that the circumcircles of $\triangle BFD$ and $\triangle CED$ intersect again at $X$. Find the circumradius of $\triangle EXF$.
+=== geometry-10
+Let $D,E$, and $F$ be the points at which the incircle, $\omega$, of $\triangle ABC$ is tangent to $BC$, $CA$, and $AB$, respectively. $AD$ intersects $\omega$ again at $T$. Extend rays $TE,TF$ to hit line $BC$ at $E',F'$, respectively. If $BC=21$, $CA=16$, and $AB=15$, then find $\left|\dfrac{1}{DE'}-\dfrac{1}{DF'}\right|$.
