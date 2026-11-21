@@ -1,0 +1,92 @@
+=== 1
+$1/\left(\frac13-\frac14\right)=$
+=== 2
+Dick is $6$ years older than Jane. Six years ago he was twice as old as she was. How old is Jane now?
+=== 3
+A bicyclist riding against the wind averages $10$ miles per hour in traveling from A to B, but with the wind averages $15$ miles per hour in returning from B to A. How many miles per hour is his average speed for the trip?
+=== 4
+What is the largest possible value for the sum of two fractions such that each of the four $1$-digit primes occurs as one of the numerators or denominators?
+=== 5
+How many integers $x$ in $\{1,2,3,\dots,99,100\}$ satisfy that $x^2+x^3$ is the square of an integer?
+=== 6
+What is the number of real numbers $x$ such that $25|x|=x^2+144$?
+=== 7
+How many pairs $(x,y)$ of positive integers satisfy $2x+7y=1000$?
+=== 8
+A ladder is leaning against a house with its bottom $15$ feet from the house. When its bottom is pulled $9$ feet farther away from the house, the upper end slides $13$ feet down. How many feet long is the ladder?
+=== 9
+What is the sum of the three smallest prime numbers each of which is two more than a positive perfect cube?
+=== 10
+Amy, Bob, and Chris each took a $6$-question true-false exam. Their answers to the six questions in order were Amy: FFTTTT, Bob: TFFTTT, and Chris: TTFFTT. Amy and Bob each got $5$ right. What is the most that Chris could have gotten right?
+=== 11
+The two shortest sides of a right triangle have lengths $2$ and $\sqrt5$. Let $\alpha$ be the smallest angle of the triangle. What is $\cos\alpha$?
+=== 12
+From a point $P$ on the circumference of a circle, perpendiculars $PA$ and $PB$ are dropped to points $A$ and $B$ on two mutually perpendicular diameters. If $AB=8$, then what is the diameter of the circle?
+=== 13
+How many $9$'s are in the decimal expansion of $99999989999^2$? (This is the square of an $11$-digit number.)
+=== 14
+Let $A$ be the point $(7,4)$ and $D$ be $(-5,-3)$. What is the length of the shortest path $ABCD$, where $B$ is a point $(x,2)$ and $C$ is a point $(x,0)$? This path consists of three connected segments, with the middle one vertical.
+=== 15
+Simplify $\sqrt{3+2\sqrt2}-\sqrt{3-2\sqrt2}$.
+=== 16
+A square has its base on the $x$-axis, and one vertex on each branch of the curve $y=1/x^2$. What is its area?
+=== 17
+Which integer is closest to $\frac12\left(\sqrt[3]{829}+\log_{10}829\right)$?
+=== 18
+In a $9$-$12$-$15$ right triangle, a segment is drawn parallel to the hypotenuse one third of the way from the hypotenuse to the opposite vertex. Another segment is drawn parallel to the first segment one third of the way from it to the opposite vertex. Each segment is bounded by sides of the triangle on both ends. What is the area of the trapezoid inside the triangle between these two segments?
+=== 19
+A rhombus has sides of length $10$, and its diagonals differ by $4$. What is its area?
+=== 20
+What is the smallest positive integer $k$ for which there exist integers $a>1$ and $b>1$ for which the correct simplification of $\sqrt k$ is $a\sqrt b$, and the correct simplification of $\sqrt[3]k$ is $b\sqrt[3]a$?
+=== 21
+The diagonal $BE$ in pentagon $ABCDE$ is the base of an isosceles triangle $ABE$ and is also the base of an isosceles trapezoid $BCDE$. If $\angle C=3\angle CBE$, express the number of degrees in angle $A$ in terms of angle $B$ ($=\angle ABC$). (Your answer should be an expression involving the letter $B$. Don't write "$A=$" on your answer sheet.)
+=== 22
+In a group of five friends, the sums of the ages of each group of four of them are $124$, $128$, $130$, $136$, and $142$. What is the age of the youngest?
+=== 23
+In the figure below, if the area of the letter L part equals the area of the triangle, and the length of the base and of the height is $1$, what is the length $x$ of the ends of the L?
+
+@@fig:lehigh2006_p23.png@@
+=== 24
+Let $a$, $b$, and $c$ denote the three roots of $x^3-17x-19$. What is the value of $a^3+b^3+c^3$?
+=== 25
+Determine all values of $k$ such that the solution set of $|x-k|<2$ is a subset of the solution set of $\frac{2x-1}{x+2}<1$. (You may use interval notation or inequalities to express your answer.)
+=== 26
+A rhombus of side length $s$ has the property that there is a point on its longer diagonal such that the distances from that point to the vertices are $1$, $1$, $1$, and $s$. What is the value of $s$?
+=== 27
+Define $a*b=ab+b$. Find the set of all real numbers $a$ such that the equation $x*(a*x)=-1/4$ has two distinct real solutions in $x$. You may use interval notation or inequalities.
+=== 28
+Let $Q$ denote the point $(4,2)$. There are two points $P$ on the circle $x^2+y^2=2$ such that $PQ$ is tangent to the circle. One of them, $P_1$, has integer components and the other, $P_2$, has fractional (non-integer) components. What are the components of $P_2$?
+=== 29
+The angle trisectors of a regular pentagon intersect other vertices of the pentagon; i.e. they are diagonals of the pentagon. (See the left figure in the diagram below.) What is the smallest $n>5$ such that the angle trisectors of a regular $n$-gon intersect other vertices of the $n$-gon? (The right side of the diagram below illustrates that $n=6$ does not work.)
+
+@@fig:lehigh2006_p29.png@@
+=== 30
+Let $\langle a_n\rangle$ denote an arithmetic sequence beginning $a_1=6$, $a_2=8$, $a_3=10$. Define a second sequence $\langle b_n\rangle$ by $b_1=3$ and $b_n=b_{n-1}+a_n$. Write an explicit expression for $b_n$ in terms of $n$. (Just write the expression on your answer sheet. Don't write "$b_n=$".)
+=== 31
+Let $d(n)$ denote the sum of the digits of $n$. It is well-known that $n-d(n)$ must be a multiple of $9$. What is the smallest positive integer $k$ such that $k$ is a multiple of $9$ and neither $k$ nor $k+9$ can be achieved as $n-d(n)$ for some $n$?
+=== 32
+Let $S$ denote the set of all (positive) divisors of $60^5$. The product of all the numbers in $S$ equals $60^e$ for some integer $e$. What is the value of $e$?
+=== 33
+Let $S=\{1,2,3,4,5,6,7,8,9,10,11,12,13,14\}$. A special subset of $S$ is a subset $B$ which satisfies the following three properties:
+
+a. $B$ has exactly $8$ elements;
+
+b. If $x\in S$ is even, then $x$ is in $B$ if and only if $x/2$ is in $B$;
+
+c. If $y\in S$ is odd, then $y$ is in $B$ if and only if $(y+15)/2$ is in $B$.
+
+Which elements of $S$ cannot be part of a special subset?
+=== 34
+A semicircle is inscribed in a quadrilateral $ABCD$ in such a way that the midpoint of $BC$ coincides with the center of the semicircle, and the diameter of the semicircle lies along a portion of $BC$. If $AB=4$ and $CD=5$, what is $BC$?
+=== 35
+What are the two smallest positive integers $n$ for which $360n$ has exactly $72$ positive divisors?
+=== 36
+How many distinct triangles with positive integer sides have perimeter equal to $100$? (Triangles are distinct if they are not congruent.)
+=== 37
+Let $\{x\}=x-[x]$ denote the fractional part of $x$. For example, $\{3.4\}=.4$ and $\{4\}=0$. Let $f(x)=\{3x/2\}$. How many solutions does the equation $f(f(f(f(x))))=0$ have in the interval $0\le x<1$?
+=== 38
+Each side of a regular dodecagon $A_1A_2A_3\cdots A_{12}$ has length $2$. What is the area of the pentagon $A_1A_2A_3A_4A_5$?
+=== 39
+Flip a fair coin repeatedly until the sequence HTH occurs. What is the probability that the sequence THTH has not yet occurred? (For example, the event whose probability we seek includes the sequence HHTH, but not the sequence TTHTH.)
+=== 40
+In the rhombus in problem $26$, what is the tangent of the acute angle of the rhombus? (Your answer should involve square roots, not trig functions.)

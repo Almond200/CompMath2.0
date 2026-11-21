@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **Lehigh statements complete (1,020 problems, 1999 to 2026):** 1999 to 2003 and 2006 added (older papers are scans or HTML pages, read from images), five more figures from 2001 to 2003, seven from 2000 (taken from the page). One tag fix (1999 #10, AUDITS.md). `STATEMENTS_V` 69.
 - **Lehigh statements, 2004, 2005, 2007 to 2009 added (780 of 1,020):** read against their pages, ten more figures. Tag fixes: 2004 #31 and #32 swapped, 2008 #30 (AUDITS.md). `STATEMENTS_V` 68.
 - **Lehigh statements, 2010 to 2015 added (580 of 1,020):** read against their pages, eight more figures (2011 #10, #26, #29, #38; 2012 #32; 2013 #16, #22, #31, #38; 2014 #15; 2015 #33; 2010 #6 and #20). No tag needed changing. `STATEMENTS_V` 67.
 - **Lehigh statements, 2016 to 2026 (340 of 1,020):** read against their pages (the solutions in the same PDFs left alone), nine figures. `*emphasis*` is not allowed in a statement (the convention scan), so spec files use plain words. No tag needed changing. `STATEMENTS_V` 66.

@@ -8536,7 +8536,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "1999 Lehigh Math Contest, Problem 7", formulas: ["repeating-decimals"], strategy: "", tree: ["nt.digit.decimal.repeat"] },
   { ref: "1999 Lehigh Math Contest, Problem 8", formulas: ["log-rules"], strategy: "", tree: ["alg.exp.log.rules"] },
   { ref: "1999 Lehigh Math Contest, Problem 9", formulas: ["substitute-repeated-block"], strategy: "", tree: ["alg.eq.identity.simplify"] },
-  { ref: "1999 Lehigh Math Contest, Problem 10", formulas: ["proportion-properties"], strategy: "", tree: ["alg.word.ratio.prop"] },
+  { ref: "1999 Lehigh Math Contest, Problem 10", formulas: ["percent-change"], strategy: "", tree: ["alg.word.ratio.percent"] },
   { ref: "1999 Lehigh Math Contest, Problem 11", formulas: ["periodic-sequences"], strategy: "", tree: ["alg.fn.graph.periodic"] },
   { ref: "1999 Lehigh Math Contest, Problem 12", formulas: ["bounding-diophantine"], strategy: "", tree: ["nt.dio.linear.count"] },
   { ref: "1999 Lehigh Math Contest, Problem 13", formulas: ["relative-motion"], strategy: "", tree: ["alg.word.rates.motion.laps"] },
