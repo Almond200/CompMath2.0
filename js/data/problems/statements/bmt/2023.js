@@ -1,0 +1,63 @@
+// Problems and diagrams © 2023 Berkeley Math Tournament. Reproduced with permission from the Berkeley Math Tournament.
+// Source: the official Berkeley Math Tournament papers. Built by tools/statements/build.py from tools/statements/spec/bmt/2023.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2023-bmt-algebra-1": { s: String.raw`Lakshay chooses two numbers, $m$ and $n$, and draws two lines, $y=mx+3$ and $y=nx+23$. Given that the two lines intersect at $(20,23)$, compute $m+n$.`, u: "https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf" },
+"2023-bmt-algebra-2": { s: String.raw`For real numbers $x$ and $y$, suppose that $|x|-|y|=20$ and $|x|+|y|=23$. Compute the sum of all possible distinct values of $|x-y|$.`, u: "https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf" },
+"2023-bmt-algebra-3": { s: String.raw`Consider two geometric sequences $16,a_1,a_2,\dots$ and $56,b_1,b_2,\dots$ with the same common nonzero ratio. Given that $a_{2023}=b_{2020}$, compute $b_6-a_6$.`, u: "https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf" },
+"2023-bmt-algebra-4": { s: String.raw`Let $f(x)$ be a continuous function over the real numbers such that for every integer $n$, $f(n)=n^2$ and $f(x)$ is linear over the interval $[n,n+1]$. There exists a unique two-variable polynomial $g$ such that $g(x,\lfloor x\rfloor)=f(x)$ for all $x$. Compute $g(20,23)$. (Here, $\lfloor x\rfloor$ is defined as the greatest integer less than or equal to $x$. For example, $\lfloor 2\rfloor=2$ and $\lfloor-3.5\rfloor=-4$.)`, u: "https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf" },
+"2023-bmt-algebra-5": { s: String.raw`Let $p,q$, and $r$ be the three roots of the polynomial $x^3-2x^2+3x-2023$. Suppose that the polynomial $x^3+Bx^2+Mx+T$ has roots $p+q$, $p+r$, and $q+r$ for real numbers $B$, $M$, and $T$. Compute $B-M+T$.`, u: "https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf" },
+"2023-bmt-algebra-6": { s: String.raw`Define a sequence $a_0,a_1,a_2,\dots$ recursively by $a_0=0$, $a_1=1$, and $a_{n+2}=a_{n+1}+xa_n$ for each $n\ge 0$ and some real number $x$. The infinite series
+$$\sum_{n=0}^{\infty}\frac{a_n}{10^n}=1.$$
+Compute $x$.`, u: "https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf" },
+"2023-bmt-algebra-7": { s: String.raw`Nikhil constructs a list of all polynomial pairs $(a(x),b(x))$ with real coefficients such that $a(x)$ has higher degree than $b(x)$ and $a(x)^2+b(x)^2=x^{10}+1$. Danielle takes Nikhil's list and adds all polynomial pairs that satisfy the same conditions but have complex coefficients. If Nikhil's original list had $N$ pairs and Danielle added $D$ pairs, compute $D-N$.`, u: "https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf" },
+"2023-bmt-algebra-8": { s: String.raw`Compute the smallest real $t$ such that there exist constants $a,b$ for which the roots of $x^3-ax^2+bx-\frac{ab}{t}$ are the side lengths of a right triangle.`, u: "https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf" },
+"2023-bmt-algebra-9": { s: String.raw`A sequence of real numbers $\{x_n\}$ satisfies the recursion $x_{n+1}=4x_n-4x_n^2$, where $n\ge 1$. If $x_{2023}=0$, compute the number of distinct possible values for $x_1$.`, u: "https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf" },
+"2023-bmt-algebra-10": { s: String.raw`There exists a unique triple of integers $(B,M,T)$ such that $B>T>M$ and
+$$3B^2(3T-M)+8M^2(B-T)+3T^2(5M-B)-(2B^3+3M^3+4T^3)+15BMT=2023.$$
+Compute $B+M+T$.`, u: "https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf" },
+"2023-bmt-discrete-math-1": { s: String.raw`Compute the three-digit number that satisfies the following properties:
+
+• The hundreds digit and ones digit are the same, but the tens digit is different.
+
+• The number is divisible by $9$.
+
+• When the number is divided by $5$, the remainder is $1$.`, u: "https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf" },
+"2023-bmt-discrete-math-2": { s: String.raw`Three people, Pranav, Sumith, and Jacklyn, are attending a fair. Every time a person enters or exits, the groundskeeper writes their name down in chronological order. If each person enters and exits the fairgrounds exactly once, in how many ways can the groundskeeper write down their names?`, u: "https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf" },
+"2023-bmt-discrete-math-3": { s: String.raw`Find the number of positive integers $n$ less than $10000$ such that there are more $4$'s in the digits of $n+1$ than in the digits of $n$.`, u: "https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf" },
+"2023-bmt-discrete-math-4": { s: String.raw`Given positive integers $a\ge 2$ and $k$, let $m_a(k)$ denote the remainder when $k$ is divided by $a$. Compute the number of positive integers, $n$, less than $500$ such that $m_2(m_5(m_{11}(n)))=1$.`, u: "https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf" },
+"2023-bmt-discrete-math-5": { s: String.raw`Kait rolls a fair $6$-sided die until she rolls a $6$. If she rolls a $6$ on the $N$th roll, she then rolls the die $N$ more times. What is the probability that she rolls a $6$ during these next $N$ times?`, u: "https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf" },
+"2023-bmt-discrete-math-6": { s: String.raw`Let $N$ be the number of positive integers $x$ less than $210\cdot 2023$ such that
+$$\operatorname{lcm}(\gcd(x,1734),\gcd(x+17,x+1732))$$
+divides $2023$. Compute the sum of the prime factors of $N$ with multiplicity. (For example, if $S=75=3^1\cdot 5^2$, then the answer is $1\cdot 3+2\cdot 5=13$).`, u: "https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf" },
+"2023-bmt-discrete-math-7": { s: String.raw`Maria and Skyler have a square-shaped cookie with a side length of $1$ inch. They split the cookie by choosing two points on distinct sides of the cookie uniformly at random and cutting across the line segment formed by connecting the two points. If Maria always gets the larger piece, what is the expected amount of extra cookie in Maria's piece compared to Skyler's, in square inches?`, u: "https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf" },
+"2023-bmt-discrete-math-8": { s: String.raw`Define a family of functions $S_k(n)$ for positive integers $n$ and $k$ by the following two rules:
+$$S_0(n)=1,$$
+$$S_k(n)=\sum_{d\mid n}dS_{k-1}(d).$$
+Compute the remainder when $S_{30}(30)$ is divided by $1001$.`, u: "https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf" },
+"2023-bmt-discrete-math-9": { s: String.raw`Shiori places seven books, numbered from $1$ to $7$, on a bookshelf in some order. Later, she discovers that she can place two dividers between the books, separating the books into left, middle, and right sections, such that:
+
+• The left section is numbered in increasing order from left to right, or has at most one book.
+
+• The middle section is numbered in decreasing order from left to right, or has at most one book.
+
+• The right section is numbered in increasing order from left to right, or has at most one book.
+
+In how many possible orderings could Shiori have placed the books? For example, $(2,3,5,4,1,6,7)$ and $(2,3,4,1,5,6,7)$ are possible orderings with the partitions $2,3,5|4,1|6,7$ and $2,3,4|1|5,6,7$, but $(5,6,2,4,1,3,7)$ is not.`, u: "https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf" },
+"2023-bmt-discrete-math-10": { s: String.raw`Let $\alpha$ denote the positive real root of the polynomial $x^2-3x-2$. Compute the remainder when $\lfloor\alpha^{1000}\rfloor$ is divided by the prime number $997$. Here, $\lfloor r\rfloor$ denotes the greatest integer less than or equal to $r$.`, u: "https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf" },
+"2023-bmt-geometry-1": { s: String.raw`A semicircle of radius $2$ is inscribed inside of a rectangle, as shown in the diagram below. The diameter of the semicircle coincides with the bottom side of the rectangle, and the semicircle is tangent to the rectangle at all points of intersection. Compute the length of the diagonal of the rectangle.
+
+@@fig:bmt/2023/geometry-1.png@@`, u: "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf" },
+"2023-bmt-geometry-2": { s: String.raw`Consider an equilateral triangle with side length $9$. Each side is divided into $3$ equal segments by $2$ points, for a total of $6$ points. Compute the area of the circle passing through these $6$ points.
+
+@@fig:bmt/2023/geometry-2.png@@`, u: "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf" },
+"2023-bmt-geometry-3": { s: String.raw`Jingyuan is designing a bucket hat for BMT merchandise. The hat has the shape of a cylinder on top of a truncated cone, as shown in the diagram below. The cylinder has radius $9$ and height $12$. The truncated cone has base radius $15$ and height $4$, and its top radius is the same as the cylinder's radius. Compute the total volume of this bucket hat.
+
+@@fig:bmt/2023/geometry-3.png@@`, u: "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf" },
+"2023-bmt-geometry-4": { s: String.raw`Let $\omega$ be a circle with center $O$ and radius $8$, and let $A$ be a point such that $AO=17$. Let $P$ and $Q$ be points on $\omega$ such that line segments $\overline{AP}$ and $\overline{AQ}$ are tangent to $\omega$. Let $B$ and $C$ be points chosen on $\overline{AP}$ and $\overline{AQ}$, respectively, such that $\overline{BC}$ is also tangent to $\omega$. Compute the perimeter of triangle $\triangle ABC$.`, u: "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf" },
+"2023-bmt-geometry-5": { s: String.raw`Triangle $\triangle ABC$ has side lengths $AB=8$, $BC=15$, and $CA=17$. Circles $\omega_1$ and $\omega_2$ are externally tangent to each other and within $\triangle ABC$. The radius of circle $\omega_2$ is four times the radius of circle $\omega_1$. Circle $\omega_1$ is tangent to $\overline{AB}$ and $\overline{BC}$, and circle $\omega_2$ is tangent to $\overline{BC}$ and $\overline{CA}$. Compute the radius of circle $\omega_1$.`, u: "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf" },
+"2023-bmt-geometry-6": { s: String.raw`In triangle $\triangle ABC$, let $M$ be the midpoint of $\overline{AC}$. Extend $\overline{BM}$ such that it intersects the circumcircle of $\triangle ABC$ at a point $X$ not equal to $B$. Let $O$ be the center of the circumcircle of $\triangle ABC$. Given that $BM=4MX$ and $\angle ABC=45^\circ$, compute $\sin(\angle BOX)$.`, u: "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf" },
+"2023-bmt-geometry-7": { s: String.raw`A tetrahedron has three edges of length $2$ and three edges of length $4$, and one of its faces is an equilateral triangle. Compute the radius of the sphere that is tangent to every edge of this tetrahedron.`, u: "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf" },
+"2023-bmt-geometry-8": { s: String.raw`A circle intersects equilateral triangle $\triangle XYZ$ at $A$, $B$, $C$, $D$, $E$, and $F$ such that points $X$, $A$, $B$, $Y$, $C$, $D$, $Z$, $E$, and $F$ lie on the equilateral triangle in that order. If $AC^2+CE^2+EA^2=1900$ and $BD^2+DF^2+FB^2=2092$, compute the positive difference between the areas of triangles $\triangle ACE$ and $\triangle BDF$.`, u: "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf" },
+"2023-bmt-geometry-9": { s: String.raw`Let triangle $\triangle ABC$ be acute, and let point $M$ be the midpoint of $\overline{BC}$. Let $E$ be on line segment $\overline{AB}$ such that $\overline{AE}\perp\overline{EC}$. Then, suppose $T$ is a point on the other side of $\overleftrightarrow{BC}$ as $A$ is such that $\angle BTM=\angle ABC$ and $\angle TCA=\angle BMT$. If $AT=14$, $AM=9$, and $\frac{AE}{AC}=\frac{2}{7}$, compute $BC$.`, u: "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf" },
+"2023-bmt-geometry-10": { s: String.raw`Let triangle $\triangle ABC$ have circumcenter $O$ and circumradius $r$, and let $\omega$ be the circumcircle of triangle $\triangle BOC$. Let $F$ be the intersection of $\overleftrightarrow{AO}$ and $\omega$ not equal to $O$. Let $E$ be on line $\overleftrightarrow{AB}$ such that $\overline{EF}\perp\overline{AE}$, and let $G$ be on line $\overleftrightarrow{AC}$ such that $\overline{GF}\perp\overline{AG}$. If $AC=\frac{65}{63}$, $BC=\frac{24}{13}r$, and $AB=\frac{126}{65}r$, compute $AF\cdot EG$.`, u: "https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf" },
+});

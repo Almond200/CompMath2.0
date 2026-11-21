@@ -15505,7 +15505,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2024 BMT Algebra, Problem 9", formulas: ["half-angle", "double-angle"], strategy: "", tree: ["alg.seq.rec.nonlinear"] },
   { ref: "2024 BMT Algebra, Problem 10", formulas: ["roots-of-unity", "products-over-roots", "eulers-formula"], strategy: "", tree: ["alg.cx.unity.poly"] },
   // ---- 2024 BMT Discrete Math. Reviewed metadata only; official papers and solutions linked by the app.
-  { ref: "2024 BMT Discrete Math, Problem 1", formulas: ["divisibility-rules"], strategy: "", tree: ["nt.seq.special.figurate"] },
+  { ref: "2024 BMT Discrete Math, Problem 1", formulas: ["divisibility-rules", "palindromes"], strategy: "", tree: ["nt.seq.special.figurate"] },
   { ref: "2024 BMT Discrete Math, Problem 2", formulas: ["permutations-combinations"], strategy: "", tree: ["cp.basic.perm.restrict"] },
   { ref: "2024 BMT Discrete Math, Problem 3", formulas: ["reduce-divisibility-constant", "factor-pair-counting"], strategy: "", tree: ["nt.div.rules.expr"] },
   { ref: "2024 BMT Discrete Math, Problem 4", formulas: ["casework-method"], strategy: "", tree: ["cp.struct.words.runs", "cp.struct.seat.circle"] },
@@ -15832,7 +15832,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2020 BMT Algebra, Problem 6", formulas: ["pascals-identity", "telescoping"], strategy: "", tree: ["alg.seq.sum.telescope"] },
   { ref: "2020 BMT Algebra, Problem 7", formulas: ["useful-factorizations", "symmetric-polynomial-strategies"], strategy: "", tree: ["alg.eq.identity.symmetric"] },
   { ref: "2020 BMT Algebra, Problem 8", formulas: ["minkowski-inequality"], strategy: "", tree: ["alg.ineq.optimize"] },
-  { ref: "2020 BMT Algebra, Problem 9", formulas: ["determinant-basics", "matrix-inverse", "roots-of-unity", "useful-factorizations"], strategy: "", tree: ["nt.dio.factor"] },
+  { ref: "2020 BMT Algebra, Problem 9", formulas: ["cubes-minus-3abc", "roots-of-unity", "useful-factorizations"], strategy: "", tree: ["nt.dio.factor"] },
   { ref: "2020 BMT Algebra, Problem 10", formulas: ["law-of-cosines", "pythagorean-theorem", "telescoping"], strategy: "", tree: ["alg.trig.eq.many", "alg.seq.sum.telescope"] },
   // ---- 2020 BMT Discrete Math. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2020 BMT Discrete Math, Problem 1", formulas: ["permutations-combinations", "constructive-counting"], strategy: "", tree: ["cp.basic.perm.restrict"] },

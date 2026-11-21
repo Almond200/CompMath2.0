@@ -2627,3 +2627,5 @@ Tag fixes found while importing SMT statements:
 Tag fixes found while importing BMT statements:
 
 - 2016 BMT Geometry #9: `rotation-reflection-matrices` → `law-of-cosines` (squares on the sides of a right triangle: $DG^2=4a^2+b^2$ and $EI^2=a^2+4b^2$ by the law of cosines at $B$ and $A$; no transformation matrices are used).
+- 2020 BMT Algebra #9: `determinant-basics`, `matrix-inverse` → `cubes-minus-3abc` (the equation is $x^3+y^3+z^3-3xyz=1$ with $x=a$, $y=\sqrt[3]{3}\,b$, $z=\sqrt[3]{9}\,c$; no matrix is inverted).
+- 2024 BMT Discrete #1: added `palindromes` (the route lists three-digit palindromes and tests divisibility by 3), as on 2023 BMT Discrete #1.
