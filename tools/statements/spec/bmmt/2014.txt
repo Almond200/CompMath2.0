@@ -1,0 +1,48 @@
+=== 1
+Compute $17^2+17\cdot7+7^2$.
+=== 2
+You have $\$1.17$ in the minimum number of quarters, dimes, nickels, and pennies required to make exact change for all amounts up to $\$1.17$. How many coins do you have?
+=== 3
+Suppose that there is a $40\%$ chance it will rain today, and a $20\%$ chance it will rain today and tomorrow. If the chance it will rain tomorrow is independent of whether or not it rained today, what is the probability that it will rain tomorrow? (Express your answer as a percentage.)
+=== 4
+A number is called boxy if the number of its factors is a perfect square. Find the largest boxy number less than $200$.
+=== 5
+Alice, Bob, Carl, and Dave are either lying or telling the truth. If the four of them make the following statements, who has the coin?
+
+Alice: I have the coin.
+
+Bob: Carl has the coin.
+
+Carl: Exactly one of us is telling the truth.
+
+Dave: The person who has the coin is male.
+=== 6
+Vicky has a bag holding some blue and some red marbles. Originally $\frac23$ of the marbles are red. After Vicky adds $25$ blue marbles, $\frac34$ of the marbles are blue. How many marbles were originally in the bag?
+=== 7
+Given pentagon $ABCDE$ with $BC=CD=DE=4$, $\angle BCD=90^\circ$ and $\angle CDE=135^\circ$, what is the length of $BE$?
+=== 8
+A Berkeley student decides to take a train to San Jose, stopping at Stanford along the way. The distance from Berkeley to Stanford is double the distance from Stanford to San Jose. From Berkeley to Stanford, the train's average speed is $15$ meters per second. From Stanford to San Jose, the train's average speed is $20$ meters per second. What is the train's average speed for the entire trip?
+=== 9
+Find the area of the convex quadrilateral with vertices at the points $(-1,5)$, $(3,8)$, $(3,-1)$, and $(-1,-2)$.
+=== 10
+In an arithmetic sequence $a_1,a_2,a_3,\ldots$, twice the sum of the first term and the third term is equal to the fourth term. Find $a_4/a_1$.
+=== 11
+Alice, Bob, Clara, David, Eve, Fred, Greg, Harriet, and Isaac are on a committee. They need to split into three subcommittees of three people each. If no subcommittee can be all male or all female, how many ways are there to do this?
+=== 12
+Usually, spaceships have $6$ wheels. However, there are more advanced spaceships that have $9$ wheels. Aliens invade Earth with normal spaceships, advanced spaceships, and, surprisingly, bicycles (which have $2$ wheels). There are $10$ vehicles and $49$ wheels in total. How many bicycles are there?
+=== 13
+If you roll three regular six-sided dice, what is the probability that the three numbers showing will form an arithmetic sequence? (The order of the dice does matter, but we count both $(1,3,2)$ and $(1,2,3)$ as arithmetic sequences.)
+=== 14
+Given regular hexagon $ABCDEF$ with center $O$ and side length $6$, what is the area of pentagon $ABODE$?
+=== 15
+Sophia, Emma, and Olivia are eating dinner together. The only dishes they know how to make are apple pie, hamburgers, hotdogs, cheese pizza, and ice cream. If Sophia doesn't eat dessert, Emma is vegetarian, and Olivia is allergic to apples, how many different options are there for dinner if each person must have at least one dish that they can eat?
+=== 16
+Consider the graph of $f(x)=x^3+x+2014$. A line intersects this cubic at three points, two of which have $x$-coordinates $20$ and $14$. Find the $x$-coordinate of the third intersection point.
+=== 17
+A frustum can be formed from a right circular cone by cutting off the tip of the cone with a cut perpendicular to the height. What is the surface area of such a frustum with lower radius $8$, upper radius $4$, and height $3$?
+=== 18
+A quadrilateral $ABCD$ is defined by the points $A=(2,-1)$, $B=(3,6)$, $C=(6,10)$ and $D=(5,-2)$. Let $l$ be the line that intersects and is perpendicular to the shorter diagonal at its midpoint. What is the slope of $l$?
+=== 19
+Consider the sequence $1,1,2,2,3,3,3,5,5,5,5,5,\ldots$ where the elements are Fibonacci numbers and the Fibonacci number $F_n$ appears $F_n$ times. Find the $2014$th element of this sequence. (The Fibonacci numbers are defined as $F_1=F_2=1$ and for $n>2$, $F_n=F_{n-1}+F_{n-2}$.)
+=== 20
+Call a positive integer top-heavy if at least half of its digits are in the set $\{7,8,9\}$. How many three digit top-heavy numbers exist? (No number can have a leading zero.)

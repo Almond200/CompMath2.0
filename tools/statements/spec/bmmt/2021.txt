@@ -1,0 +1,46 @@
+=== 1
+What is the largest number of five dollar footlongs Jimmy can buy with $88$ dollars?
+=== 2
+Austin, Derwin, and Sylvia are deciding on roles for BMT 2021. There must be a single Tournament Director and a single Head Problem Writer, but one person cannot take on both roles. In how many ways can the roles be assigned to Austin, Derwin, and Sylvia?
+=== 3
+Sofia has $7$ unique shirts. How many ways can she place $2$ shirts into a suitcase, where the order in which Sofia places the shirts into the suitcase does not matter?
+=== 4
+Compute the sum of the prime factors of $2021$.
+=== 5
+A sphere has volume $36\pi$ cubic feet. If its radius increases by $100\%$, then its volume increases by $a\pi$ cubic feet. Compute $a$.
+=== 6
+The full price of a movie ticket is $\$10$, but a matinee ticket to the same movie costs only $70\%$ of the full price. If $30\%$ of the tickets sold for the movie are matinee tickets, and the total revenue from movie tickets is $\$1001$, compute the total number of tickets sold.
+=== 7
+Anisa rolls a fair six-sided die twice. The probability that the value Anisa rolls the second time is greater than or equal to the value Anisa rolls the first time can be expressed as $\frac mn$, where $m$ and $n$ are relatively prime positive integers. Compute $m+n$.
+=== 8
+Square $ABCD$ has side length $AB=6$. Let point $E$ be the midpoint of $BC$. Line segments $AC$ and $DE$ intersect at point $F$. Compute the area of quadrilateral $ABEF$.
+=== 9
+Justine has a large bag of candy. She splits the candy equally between herself and her $4$ friends, but she needs to discard three candies before dividing so that everyone gets an equal number of candies. Justine then splits her share of the candy between herself and her two siblings, but she needs to discard one candy before dividing so that she and her siblings get an equal number of candies. If Justine had instead split all of the candy that was originally in the large bag between herself and $14$ of her classmates, what is the fewest number of candies that she would need to discard before dividing so that Justine and her $14$ classmates get an equal number of candies?
+=== 10
+For some positive integers $a$ and $b$, $a^2-b^2=400$. If $a$ is even, compute $a$.
+=== 11
+Let $ABCDEFGHIJKL$ be the equilateral dodecagon shown below, and each angle is either $90^\circ$ or $270^\circ$. Let $M$ be the midpoint of $CD$, and suppose $HM$ splits the dodecagon into two regions. The ratio of the area of the larger region to the area of the smaller region can be expressed as $\frac mn$, where $m$ and $n$ are relatively prime positive integers. Compute $m+n$.
+
+@@fig:bmmt2021_11.png@@
+=== 12
+Nelson, who never studies for tests, takes several tests in his math class. Each test has a passing score of $60/100$. Since Nelson's test average is at least $60/100$, he manages to pass the class. If only nonnegative integer scores are attainable on each test, and Nelson gets a different score on every test, compute the largest possible ratio of tests failed to tests passed. Assume that for each test, Nelson either passes it or fails it, and the maximum possible score for each test is $100$.
+=== 13
+For each positive integer $n$, let $f(n)=\frac n{n+1}+\frac{n+1}n$. Then $f(1)+f(2)+f(3)+\cdots+f(10)$ can be expressed as $\frac mn$ where $m$ and $n$ are relatively prime positive integers. Compute $m+n$.
+=== 14
+Triangle $\triangle ABC$ has point $D$ lying on line segment $BC$ between $B$ and $C$ such that triangle $\triangle ABD$ is equilateral. If the area of triangle $\triangle ADC$ is $\frac14$ the area of triangle $\triangle ABC$, then $\frac{AC^2}{AB^2}$ can be expressed as $\frac mn$, where $m$ and $n$ are relatively prime positive integers. Compute $m+n$.
+=== 15
+In hexagon $ABCDEF$, $AB=60$, $AF=40$, $EF=20$, $DE=20$, and each pair of adjacent edges are perpendicular to each other, as shown in the below diagram. The probability that a random point inside hexagon $ABCDEF$ is at least $20\sqrt2$ units away from point $D$ can be expressed in the form $\frac{a-b\pi}c$, where $a,b,c$ are positive integers such that $\gcd(a,b,c)=1$. Compute $a+b+c$.
+
+@@fig:bmmt2021_15.png@@
+=== 16
+The equation
+$$\sqrt x+\sqrt{20-x}=\sqrt{20+20x-x^2}$$
+has $4$ distinct real solutions, $x_1$, $x_2$, $x_3$, and $x_4$. Compute $x_1+x_2+x_3+x_4$.
+=== 17
+How many distinct words with letters chosen from $B$, $M$, $T$ have exactly $12$ distinct permutations, given that the words can be of any length, and not all the letters need to be used? For example, the word $BMMT$ has $12$ permutations. Two words are still distinct even if one is a permutation of the other. For example, $BMMT$ is distinct from $TMMB$.
+=== 18
+We call a positive integer binary-okay if at least half of the digits in its binary (base $2$) representation are $1$'s, but no two $1$s are consecutive. For example, $10_{10}=1010_2$ and $5_{10}=101_2$ are both binary-okay, but $16_{10}=10000_2$ and $11_{10}=1011_2$ are not. Compute the number of binary-okay positive integers less than or equal to $2020$ (in base $10$).
+=== 19
+A regular octahedron (a polyhedron with $8$ equilateral triangles) has side length $2$. An ant starts on the center of one face, and walks on the surface of the octahedron to the center of the opposite face in as short a path as possible. The square of the distance the ant travels can be expressed as $\frac mn$, where $m$ and $n$ are relatively prime positive integers. Compute $m+n$.
+=== 20
+The sum of $\frac1a$ over all positive factors $a$ of the number $360$ can be expressed in the form $\frac mn$, where $m$ and $n$ are relatively prime positive integers. Compute $m+n$.

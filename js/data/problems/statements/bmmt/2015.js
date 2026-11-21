@@ -1,0 +1,31 @@
+// Problems and diagrams © 2015 Berkeley Math Tournament. Reproduced with permission from the Berkeley Math Tournament.
+// Source: the official BmMT papers. Built by tools/statements/build.py from tools/statements/spec/bmmt/2015.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2015-bmmt-individual-1": { s: String.raw`What is the units digit of $1+9+9^2+\ldots+9^{2015}$?`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-2": { s: String.raw`In Fourtown, every person must have a car and therefore a license plate. Every license plate must be a $4$-digit number where each digit is a value between $0$ and $9$ inclusive. However $0000$ is not a valid license plate. What is the minimum population of Fourtown to guarantee that at least two people who have the same license plate?`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-3": { s: String.raw`Two sides of an isosceles triangle $\triangle ABC$ have lengths $9$ and $4$. What is the area of $\triangle ABC$?`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-4": { s: String.raw`Let $x$ be a real number such that $10^{\frac1x}=x$. Find $(x^3)^{2x}$.`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-5": { s: String.raw`A Berkeley student and a Stanford student are going to visit each others campus and go back to their own campuses immediately after they arrive by riding bikes. Each of them rides at a constant speed. They first meet at a place $17.5$ miles away from Berkeley, and secondly $10$ miles away from Stanford. How far is Berkeley away from Stanford in miles?`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-6": { s: String.raw`Let $ABCDEF$ be a regular hexagon. Find the number of subsets $S$ of $\{A,B,C,D,E,F\}$ such that every edge of the hexagon has at least one of its endpoints in $S$.`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-7": { s: String.raw`A three digit number is a multiple of $35$ and the sum of its digits is $15$. Find this number.`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-8": { s: String.raw`Thomas, Olga, Ken, and Edward are playing the card game SAND. Each draws a card from a $52$ card deck. What is the probability that each player gets a different rank and a different suit from the others?`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-9": { s: String.raw`An isosceles triangle has two vertices at $(1,4)$ and $(3,6)$. Find the $x$-coordinate of the third vertex assuming it lies on the $x$-axis.`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-10": { s: String.raw`Find the number of functions from the set $\{1,2,\ldots,8\}$ to itself such that $f(f(x))=x$ for all $1\le x\le8$.`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-11": { s: String.raw`The circle has the property that, no matter how it's rotated, the distance between the highest and the lowest point is constant. However, surprisingly, the circle is not the only shape with that property. A Reuleaux Triangle, which also has this constant diameter property, is constructed as follows. First, start with an equilateral triangle. Then, between every pair of vertices of the triangle, draw a circular arc whose center is the 3rd vertex of the triangle. Find the ratio between the areas of a Reuleaux Triangle and of a circle whose diameters are equal.`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-12": { s: String.raw`Let $a,b,c$ be positive integers such that $\gcd(a,b)=2$, $\gcd(b,c)=3$, $\text{lcm}(a,c)=42$, and $\text{lcm}(a,b)=30$. Find $abc$.`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-13": { s: String.raw`A point $P$ is inside the square $ABCD$. If $PA=5$, $PB=1$, $PD=7$, then what is $PC$?`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-14": { s: String.raw`Find all positive integers $n$ such that, for every positive integer $x$ relatively prime to $n$, we have that $n$ divides $x^2-1$. You may assume that if $n=2^km$, where $m$ is odd, then $n$ has this property if and only if both $2^k$ and $m$ do.`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-15": { s: String.raw`Given integers $a,b,c$ satisfying
+$$abc+a+c=12$$
+$$bc+ac=8$$
+$$b-ac=-2,$$
+what is the value of $a$?`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-16": { s: String.raw`Two sides of a triangle have lengths $20$ and $30$. The length of the altitude to the third side is the average of the lengths of the altitudes to the two given sides. How long is the third side?`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-17": { s: String.raw`Find the number of non-negative integer solutions $(x,y,z)$ of the equation
+$$xyz+xy+yz+zx+x+y+z=2014.$$`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-18": { s: String.raw`Assume that $A,B,C,D,E,F$ are equally spaced on a circle of radius $1$, as in the figure below. Find the area of the kite bounded by the lines $EA$, $AC$, $FC$, $BE$.
+
+@@fig:bmmt/2015/18.png@@`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-19": { s: String.raw`A positive integer is called cyclic if it is not divisible by the square of any prime, and whenever $p<q$ are primes that divide it, $q$ does not leave a remainder of $1$ when divided by $p$. Compute the number of cyclic numbers less than or equal to $100$.`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+"2015-bmmt-individual-20": { s: String.raw`On an $8\times8$ chess board, a queen can move horizontally, vertically, and diagonally in any direction for as many squares as she wishes. Find the average (over all $64$ possible positions of the queen) of the number of squares the queen can reach from a particular square (do not count the square she stands on).`, u: "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf" },
+});

@@ -1,6 +1,67 @@
 // Official paper and solution addresses, keyed by the full year and subject-round name.
 // These links supply sources only; no contest statements or solutions are reproduced.
 window.MATH_CONTEST_PAPERS = {
+  // ==== BmMT begin
+  "2012 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2012/IF2012.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2012/IF2012S.pdf"
+  },
+  "2013 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2013/IF2013.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2013/IF2013S.pdf"
+  },
+  "2014 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2014/IF2014.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2014/IF2014A.pdf"
+  },
+  "2015 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2015/IF2015.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2015/IF2015S.pdf"
+  },
+  "2016 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2016/IF2016.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2016/IF2016A.pdf"
+  },
+  "2017 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2017/IF2017S.pdf"
+  },
+  "2018 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2018/IF2018.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2018/IF2018S.pdf"
+  },
+  "2019 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2019/IFa2019S.pdf"
+  },
+  "2021 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2021/individual-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2021/individual-solutions.pdf"
+  },
+  "2022 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2022/individual-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2022/individual-solutions.pdf"
+  },
+  "2023 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2023/individual-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2023/individual-solutions.pdf"
+  },
+  "2024 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2024/individual-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2024/individual-solutions.pdf"
+  },
+  "2025 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2025/individual-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2025/individual-solutions.pdf"
+  },
+  "2025 BmMT Individual Online": {
+    "url": "https://berkeley.mt/archives/bmmt-2025-online/individual-problems.pdf",
+    "solUrl": "https://berkeley.mt/archives/bmmt-2025-online/individual-solutions.pdf"
+  },
+  "2026 BmMT Individual": {
+    "url": "https://berkeley.mt/archives/bmmt-2026/individual-problems.pdf"
+  },
+  // ==== BmMT end
   "2025 BMT Algebra": {
     "url": "https://berkeley.mt/archives/bmt-2025/algebra-problems.pdf",
     "solUrl": "https://berkeley.mt/archives/bmt-2025/algebra-solutions.pdf"

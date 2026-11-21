@@ -52789,6 +52789,1206 @@
     "2005 Fermat Contest, Problem 25": [
       1100,
       "Author estimate (the CEMC publishes no solve counts by question; placed on the collection's scale by its route): a line through (p, q) with x-intercept and y-intercept summing to three times its slope gives (p+3)m^2 - (p+q)m + q = 0, exactly one triline means a zero discriminant, (p-q)^2 = 12q, so q = 3t^2 with t = 1 to 57: 57."
+    ],
+    "2012 BmMT Individual, Problem 1": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Read the slope from the intercept form of the line, then take the negative reciprocal."
+    ],
+    "2012 BmMT Individual, Problem 2": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The reachable positions are the integer combinations of the two jumps, so the smallest positive one is their gcd."
+    ],
+    "2012 BmMT Individual, Problem 3": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the outcomes with no multiple of 3 and subtract from 1."
+    ],
+    "2012 BmMT Individual, Problem 4": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The semicircle gives the hypotenuse; the two squares add to the square of the hypotenuse."
+    ],
+    "2012 BmMT Individual, Problem 5": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Set up the percent equation for the blue pens before and after the 10 are added."
+    ],
+    "2012 BmMT Individual, Problem 6": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The last digit of the powers of 7 repeats with period 4."
+    ],
+    "2012 BmMT Individual, Problem 7": [
+      550,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Combine the workers' rates; the form must be both filled out and stapled."
+    ],
+    "2012 BmMT Individual, Problem 8": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): List the nice palindromes in order, keeping only those with a 7."
+    ],
+    "2012 BmMT Individual, Problem 9": [
+      550,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The semicircle's area gives the radius, hence the square's side; the distance BO is a Pythagorean hypotenuse."
+    ],
+    "2012 BmMT Individual, Problem 10": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Find the only coin mix that totals 53 cents with ten coins, then count the triples of distinct coin types."
+    ],
+    "2012 BmMT Individual, Problem 11": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Bound the two endpoints between consecutive integers and add the whole numbers between them."
+    ],
+    "2012 BmMT Individual, Problem 12": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Set the surface area formula equal to the volume formula with r = h."
+    ],
+    "2012 BmMT Individual, Problem 13": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Seat Luke, then count how many of the other seats are next to him."
+    ],
+    "2012 BmMT Individual, Problem 14": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Equal areas give s squared equal to pi r squared; the rectangle's area is an integer."
+    ],
+    "2012 BmMT Individual, Problem 15": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Arrange the other five letters, then choose three of the six gaps for the E's."
+    ],
+    "2012 BmMT Individual, Problem 16": [
+      750,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Cutting for 11 and for 12 guests at once needs the pieces of both cuts, which overlap in as few as gcd(11, 12) places."
+    ],
+    "2012 BmMT Individual, Problem 17": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Put a single blue card in as many boxes as possible so that most boxes are all blue."
+    ],
+    "2012 BmMT Individual, Problem 18": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The cent totals give two linear equations in whole numbers; a congruence modulo 100 and the 100-dollar bound pin the answer."
+    ],
+    "2012 BmMT Individual, Problem 19": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Each angle bisector with the parallel side makes an isosceles triangle, which locates E and F on line CD."
+    ],
+    "2012 BmMT Individual, Problem 20": [
+      900,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): P(x) minus 1 has the four given roots, which fixes P up to a constant that P(0) = 0 determines."
+    ],
+    "2013 BmMT Individual, Problem 1": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Totals: ten scores average 28, five of them average 15."
+    ],
+    "2013 BmMT Individual, Problem 2": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The operation is a perfect square of a sum."
+    ],
+    "2013 BmMT Individual, Problem 3": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Fill the grid from the given squares, forced by the no-equal-neighbours rule."
+    ],
+    "2013 BmMT Individual, Problem 4": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Angle of each hand at 6:30."
+    ],
+    "2013 BmMT Individual, Problem 5": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Wheels give 4c + 3t + 6s = 24; the inequalities leave a few cases."
+    ],
+    "2013 BmMT Individual, Problem 6": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Only alternating sequences work: count them out of 32."
+    ],
+    "2013 BmMT Individual, Problem 7": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Two right triangles in turn: BC from triangle BCD, then AC from triangle ABC."
+    ],
+    "2013 BmMT Individual, Problem 8": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the customers missing each item and bound the overlap."
+    ],
+    "2013 BmMT Individual, Problem 9": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Test each suspect against the rule that exactly one statement is true."
+    ],
+    "2013 BmMT Individual, Problem 10": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): List the twelve arrangements of B, M, M, T in alphabetical order."
+    ],
+    "2013 BmMT Individual, Problem 11": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The altitude to the hypotenuse of a 6-8-10 triangle."
+    ],
+    "2013 BmMT Individual, Problem 12": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The units digit is even, so exactly one of the other two digits is even."
+    ],
+    "2013 BmMT Individual, Problem 13": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Place Felicia between two boys, then fit the others by the adjacency and order conditions."
+    ],
+    "2013 BmMT Individual, Problem 14": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Similar triangles formed by the man, the pole and their shadows."
+    ],
+    "2013 BmMT Individual, Problem 15": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Follow the prime factorization 2 times 3 to the sixth through the steps."
+    ],
+    "2013 BmMT Individual, Problem 16": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Find the only coin mix with a quarter that makes 50 coins and 82 cents."
+    ],
+    "2013 BmMT Individual, Problem 17": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A median equal to half the side makes a right angle at A."
+    ],
+    "2013 BmMT Individual, Problem 18": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Because 20 and 13 are coprime, every positive integer has the form."
+    ],
+    "2013 BmMT Individual, Problem 19": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Equal tangent lengths make X the midpoint of AB."
+    ],
+    "2013 BmMT Individual, Problem 20": [
+      1200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The gcd is 1 exactly when the numbers a_i miss some residue modulo every prime up to 9."
+    ],
+    "2014 BmMT Individual, Problem 1": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Recognize the pattern a squared plus ab plus b squared, or simply compute."
+    ],
+    "2014 BmMT Individual, Problem 2": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Find the fewest coins of each kind that make every amount up to $1.17."
+    ],
+    "2014 BmMT Individual, Problem 3": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The probability of both days is the product of the two probabilities."
+    ],
+    "2014 BmMT Individual, Problem 4": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count divisors from the prime factorization, looking for a square count."
+    ],
+    "2014 BmMT Individual, Problem 5": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Try each person as the holder and count the true statements."
+    ],
+    "2014 BmMT Individual, Problem 6": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Write the red and blue fractions before and after the 25 blue marbles are added."
+    ],
+    "2014 BmMT Individual, Problem 7": [
+      550,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Place the pentagon on coordinates or use the law of cosines on the angles at C and D."
+    ],
+    "2014 BmMT Individual, Problem 8": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Average speed is total distance over total time."
+    ],
+    "2014 BmMT Individual, Problem 9": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The quadrilateral is a trapezoid with two vertical sides."
+    ],
+    "2014 BmMT Individual, Problem 10": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Write the terms with the first term and the common difference."
+    ],
+    "2014 BmMT Individual, Problem 11": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Split by how many men and women each subcommittee holds, then count the groupings."
+    ],
+    "2014 BmMT Individual, Problem 12": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Wheels and vehicles give two equations; a parity or modular argument limits the cases."
+    ],
+    "2014 BmMT Individual, Problem 13": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the ordered triples forming an arithmetic sequence, by common difference."
+    ],
+    "2014 BmMT Individual, Problem 14": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The hexagon splits into six equilateral triangles, and the pentagon is five of them or its complement."
+    ],
+    "2014 BmMT Individual, Problem 15": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the dinners each person can have, then combine by cases."
+    ],
+    "2014 BmMT Individual, Problem 16": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A line meets the cubic where x cubed + x + 2014 equals a linear function, so the three roots sum to zero."
+    ],
+    "2014 BmMT Individual, Problem 17": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Lateral area from the slant height, plus the two circular faces."
+    ],
+    "2014 BmMT Individual, Problem 18": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Find the shorter diagonal, then the negative reciprocal of its slope."
+    ],
+    "2014 BmMT Individual, Problem 19": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Fibonacci number F_n appears F_n times, so the partial counts are sums of squares of Fibonacci numbers."
+    ],
+    "2014 BmMT Individual, Problem 20": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count three-digit numbers with at least two digits from 7, 8, 9, by how many such digits."
+    ],
+    "2015 BmMT Individual, Problem 1": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The units digits of the powers of 9 alternate, so the terms pair up."
+    ],
+    "2015 BmMT Individual, Problem 2": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the valid plates, then add one person."
+    ],
+    "2015 BmMT Individual, Problem 3": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Only one of the two ways to place the sides makes a triangle; then use the altitude."
+    ],
+    "2015 BmMT Individual, Problem 4": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The condition says x to the power x is 10; rewrite the expression in terms of it."
+    ],
+    "2015 BmMT Individual, Problem 5": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): At the second meeting the pair have covered three times the distance, which fixes the first student's total travel."
+    ],
+    "2015 BmMT Individual, Problem 6": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The vertices outside S must be pairwise non-adjacent, so count the independent sets of the hexagon."
+    ],
+    "2015 BmMT Individual, Problem 7": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Multiples of 35 are multiples of 5 and 7; check the digit sum 15."
+    ],
+    "2015 BmMT Individual, Problem 8": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count hands with all ranks and suits different and divide by the number of hands."
+    ],
+    "2015 BmMT Individual, Problem 9": [
+      550,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Three cases for which vertex is the apex; each uses an equal-distance condition."
+    ],
+    "2015 BmMT Individual, Problem 10": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The condition makes f a product of fixed points and 2-cycles; count by the number of swaps."
+    ],
+    "2015 BmMT Individual, Problem 11": [
+      750,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The Reuleaux triangle is a triangle plus three circular segments."
+    ],
+    "2015 BmMT Individual, Problem 12": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Compare prime exponents in the gcds and lcms of each pair."
+    ],
+    "2015 BmMT Individual, Problem 13": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The British flag theorem relates the four distances from an interior point to the corners of a rectangle."
+    ],
+    "2015 BmMT Individual, Problem 14": [
+      900,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Test small moduli: every unit squared must be 1, which restricts the prime powers allowed."
+    ],
+    "2015 BmMT Individual, Problem 15": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Combine the equations by factoring to isolate a, b and c."
+    ],
+    "2015 BmMT Individual, Problem 16": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): An altitude is inversely proportional to its side, since the area is fixed."
+    ],
+    "2015 BmMT Individual, Problem 17": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Add 1 to both sides: the left side factors as the product of x+1, y+1 and z+1."
+    ],
+    "2015 BmMT Individual, Problem 18": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The kite sits inside the regular hexagon; its area comes from triangles of the hexagon."
+    ],
+    "2015 BmMT Individual, Problem 19": [
+      850,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): List the squarefree numbers by their prime factors and apply the remainder condition to each pair."
+    ],
+    "2015 BmMT Individual, Problem 20": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the squares a queen reaches by row, column and the two diagonals, then average over the board."
+    ],
+    "2016 BmMT Individual, Problem 1": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Seventy percent of fifty."
+    ],
+    "2016 BmMT Individual, Problem 2": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The longest sequence stops just short of 20 heads or 16 tails."
+    ],
+    "2016 BmMT Individual, Problem 3": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Length times half the length is the area."
+    ],
+    "2016 BmMT Individual, Problem 4": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Call the brother's age x and write the other two ages in terms of x."
+    ],
+    "2016 BmMT Individual, Problem 5": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The two-digit multiples of 9 form an arithmetic sequence from 18 to 99."
+    ],
+    "2016 BmMT Individual, Problem 6": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Check each integer after 2016 against its last two digits."
+    ],
+    "2016 BmMT Individual, Problem 7": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The area ratio 16:1 means the side ratio is 4:1."
+    ],
+    "2016 BmMT Individual, Problem 8": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A strictly increasing number is fixed by the set of digits it uses."
+    ],
+    "2016 BmMT Individual, Problem 9": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Solve (16 + x) / (20 + x) = 0.84."
+    ],
+    "2016 BmMT Individual, Problem 10": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Glue TEA into a single block and arrange it with the other four letters."
+    ],
+    "2016 BmMT Individual, Problem 11": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the pairs of faces whose sum is 10, 20, 30 or 40."
+    ],
+    "2016 BmMT Individual, Problem 12": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): An acute triangle needs the longest side to satisfy the Pythagorean inequality as well as the triangle inequality."
+    ],
+    "2016 BmMT Individual, Problem 13": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Each mode's total time is the waiting time plus distance over speed."
+    ],
+    "2016 BmMT Individual, Problem 14": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): List the integer triples with perimeter 16 satisfying the triangle inequality."
+    ],
+    "2016 BmMT Individual, Problem 15": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Let t be the time on paved road; the distances then total 100 miles."
+    ],
+    "2016 BmMT Individual, Problem 16": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the outcomes with no shared number."
+    ],
+    "2016 BmMT Individual, Problem 17": [
+      550,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Write the quotient as a power of 2 times a power of 5 over a power of 2 and count the decimal places."
+    ],
+    "2016 BmMT Individual, Problem 18": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Every break adds one piece, and each piece has area at most 5."
+    ],
+    "2016 BmMT Individual, Problem 19": [
+      850,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count pairs of committees by the size of their overlap and exclude overlaps of two or three."
+    ],
+    "2016 BmMT Individual, Problem 20": [
+      1000,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Choose the vertex coordinates to enclose the largest area, using the shoelace formula or an area-bound argument."
+    ],
+    "2017 BmMT Individual, Problem 1": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Reduce 100 hours modulo 12."
+    ],
+    "2017 BmMT Individual, Problem 2": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Multiply by 1.2, then by 0.8."
+    ],
+    "2017 BmMT Individual, Problem 3": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The overlap is the sum of the two groups minus the union."
+    ],
+    "2017 BmMT Individual, Problem 4": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Try the residues of x modulo 7."
+    ],
+    "2017 BmMT Individual, Problem 5": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The sum of an arithmetic sequence is the number of terms times the middle term."
+    ],
+    "2017 BmMT Individual, Problem 6": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Distance walked in a day is the perimeter of the square."
+    ],
+    "2017 BmMT Individual, Problem 7": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The space diagonal of a cube is the side length times the square root of 3."
+    ],
+    "2017 BmMT Individual, Problem 8": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Find the worst-case grab that has at most one matching pair, then add one sock."
+    ],
+    "2017 BmMT Individual, Problem 9": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The expression must be independent of b, so its coefficient of b vanishes."
+    ],
+    "2017 BmMT Individual, Problem 10": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The last digit of powers of 7 has period 4, so only the exponent modulo 4 matters."
+    ],
+    "2017 BmMT Individual, Problem 11": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The middle term is the average of the other two, which gives an equation in the square root of minus x."
+    ],
+    "2017 BmMT Individual, Problem 12": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A single root means the discriminant is zero, so b equals twice the square root of c."
+    ],
+    "2017 BmMT Individual, Problem 13": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Fix Bob and count the seats next to him."
+    ],
+    "2017 BmMT Individual, Problem 14": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Unfold the nested absolute values one layer at a time."
+    ],
+    "2017 BmMT Individual, Problem 15": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A rectangle is fixed by choosing two vertical and two horizontal lines."
+    ],
+    "2017 BmMT Individual, Problem 16": [
+      750,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The fold makes right triangles with P as a vertex; a Pythagorean equation locates Q."
+    ],
+    "2017 BmMT Individual, Problem 17": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Each given value is a linear equation in A, B and k."
+    ],
+    "2017 BmMT Individual, Problem 18": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Put two balls in each bin first, then distribute the remaining ten freely."
+    ],
+    "2017 BmMT Individual, Problem 19": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Each triangle has one quarter the area of the one before, so the areas form a geometric series."
+    ],
+    "2017 BmMT Individual, Problem 20": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count by the last entry: the counts follow the Fibonacci recurrence."
+    ],
+    "2018 BmMT Individual, Problem 1": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Solve 48 over x equal to 16."
+    ],
+    "2018 BmMT Individual, Problem 2": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The acute angles of a right triangle add to 90 degrees."
+    ],
+    "2018 BmMT Individual, Problem 3": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Substitute 4 and 9 into the rule."
+    ],
+    "2018 BmMT Individual, Problem 4": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Heights and shadows are in the same ratio."
+    ],
+    "2018 BmMT Individual, Problem 5": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Write Jerry's age in terms of Tom's."
+    ],
+    "2018 BmMT Individual, Problem 6": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Four choices of prime digit for each of four places."
+    ],
+    "2018 BmMT Individual, Problem 7": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the legs, then subtract."
+    ],
+    "2018 BmMT Individual, Problem 8": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Exactly three divisors means the number is the square of a prime."
+    ],
+    "2018 BmMT Individual, Problem 9": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the ways to split the candies so every person gets one of each colour."
+    ],
+    "2018 BmMT Individual, Problem 10": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Cases by the number of heads and tails, remembering the side outcomes."
+    ],
+    "2018 BmMT Individual, Problem 11": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Total distance over total time, not the mean of the two speeds."
+    ],
+    "2018 BmMT Individual, Problem 12": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Express the cookies in terms of the chips and bound the chips by the inequality, with integrality."
+    ],
+    "2018 BmMT Individual, Problem 13": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The pie is a frustum with radii 9 and 8 and height 1."
+    ],
+    "2018 BmMT Individual, Problem 14": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The operation factors as (a minus 2) times (b minus 2) plus 2."
+    ],
+    "2018 BmMT Individual, Problem 15": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Divide out to leave 16 over n plus 1, so n plus 1 divides 16."
+    ],
+    "2018 BmMT Individual, Problem 16": [
+      750,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Split the triangle into two by the radius to the tangent point and compare areas."
+    ],
+    "2018 BmMT Individual, Problem 17": [
+      750,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Split the prime powers of the lcm between two coprime numbers that divide 16500 and 990."
+    ],
+    "2018 BmMT Individual, Problem 18": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Square the relation repeatedly to reach x to the eighth minus its reciprocal."
+    ],
+    "2018 BmMT Individual, Problem 19": [
+      850,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the proper colourings of a 6-cycle with six colours."
+    ],
+    "2018 BmMT Individual, Problem 20": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The period is the order of 10 modulo 31."
+    ],
+    "2019 BmMT Individual, Problem 1": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Divide 100 pizzas among 25 people."
+    ],
+    "2019 BmMT Individual, Problem 2": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the pairs of people."
+    ],
+    "2019 BmMT Individual, Problem 3": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Call the two original counts D and J; the trade gives a second equation."
+    ],
+    "2019 BmMT Individual, Problem 4": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Find the orders that spend exactly 11 dollars."
+    ],
+    "2019 BmMT Individual, Problem 5": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The third side of a triangle is at least the difference of the other two."
+    ],
+    "2019 BmMT Individual, Problem 6": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The sum of five terms in arithmetic progression is five times the middle term."
+    ],
+    "2019 BmMT Individual, Problem 7": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Shear the pieces together into a rectangle of height 5 and width 10."
+    ],
+    "2019 BmMT Individual, Problem 8": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The new square's side is the hypotenuse of a right isosceles triangle."
+    ],
+    "2019 BmMT Individual, Problem 9": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): List the divisors of 2050 in the allowed range."
+    ],
+    "2019 BmMT Individual, Problem 10": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A number whose square ends in the same digit ends in 0, 1, 5 or 6."
+    ],
+    "2019 BmMT Individual, Problem 11": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Both moves keep track of the remainder modulo 3, which rules out multiples of 3."
+    ],
+    "2019 BmMT Individual, Problem 12": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Sylvia covers twice Druv's distance; the right triangle gives d."
+    ],
+    "2019 BmMT Individual, Problem 13": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Square both sides and isolate the remaining square root."
+    ],
+    "2019 BmMT Individual, Problem 14": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): In every arrangement the three letters T, E, X appear in one of six orders, all equally likely."
+    ],
+    "2019 BmMT Individual, Problem 15": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): An even integer interior angle means n divides 180; count its divisors above 2."
+    ],
+    "2019 BmMT Individual, Problem 16": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the assignments, removing those that leave a mentor with no students."
+    ],
+    "2019 BmMT Individual, Problem 17": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Locate the second crease by a Pythagorean equation and subtract the overlapped triangle."
+    ],
+    "2019 BmMT Individual, Problem 18": [
+      850,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count self-avoiding walks on the grid that move up, down and right, column by column."
+    ],
+    "2019 BmMT Individual, Problem 19": [
+      750,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Unfold the lateral surface into a sector; the shortest route is a straight chord."
+    ],
+    "2019 BmMT Individual, Problem 20": [
+      1100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Pair f(x) with f of 2 to the 20 over x, or split f into partial fractions so the sum telescopes."
+    ],
+    "2021 BmMT Individual, Problem 1": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Divide 88 by 5."
+    ],
+    "2021 BmMT Individual, Problem 2": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Choose the director, then the head problem writer."
+    ],
+    "2021 BmMT Individual, Problem 3": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Choose 2 of the 7 shirts, order not mattering."
+    ],
+    "2021 BmMT Individual, Problem 4": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Factor 2021."
+    ],
+    "2021 BmMT Individual, Problem 5": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Find the radius from the volume, double it and compare volumes."
+    ],
+    "2021 BmMT Individual, Problem 6": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The average ticket price is a weighted average of the two prices."
+    ],
+    "2021 BmMT Individual, Problem 7": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the pairs with second roll at least the first."
+    ],
+    "2021 BmMT Individual, Problem 8": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Similar triangles on the parallel sides locate F; subtract from the triangle ABC."
+    ],
+    "2021 BmMT Individual, Problem 9": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Translate the two discards into congruences on the number of candies, then find the remainder modulo 15."
+    ],
+    "2021 BmMT Individual, Problem 10": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Factor a squared minus b squared and list the factor pairs of 400 with equal parity."
+    ],
+    "2021 BmMT Individual, Problem 11": [
+      750,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Compute the coordinates of the vertices from the equal sides and right angles, then the two areas."
+    ],
+    "2021 BmMT Individual, Problem 12": [
+      900,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Maximize failures subject to the average of distinct integer scores being at least 60."
+    ],
+    "2021 BmMT Individual, Problem 13": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Split n over n+1 and n+1 over n, so most terms cancel."
+    ],
+    "2021 BmMT Individual, Problem 14": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The area condition gives DC in terms of AB; then the law of cosines in triangle ADC."
+    ],
+    "2021 BmMT Individual, Problem 15": [
+      750,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The region is the hexagon minus a quarter disc around D; geometric probability is the ratio of areas."
+    ],
+    "2021 BmMT Individual, Problem 16": [
+      900,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Square the equation twice, or substitute the sum of the two square roots to reach a quadratic."
+    ],
+    "2021 BmMT Individual, Problem 17": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A word with letter counts a, b, c has n factorial over a factorial b factorial c factorial arrangements; find those equal to 12."
+    ],
+    "2021 BmMT Individual, Problem 18": [
+      900,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count binary strings without adjacent ones and with at least half ones, up to 2020."
+    ],
+    "2021 BmMT Individual, Problem 19": [
+      900,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Unfold the faces along the path and measure the straight segment between the two face centers."
+    ],
+    "2021 BmMT Individual, Problem 20": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The sum of the reciprocals of the divisors is the sum of divisors over the number."
+    ],
+    "2022 BmMT Individual, Problem 1": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The sum of the first ten integers is 55."
+    ],
+    "2022 BmMT Individual, Problem 2": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The first common time is the least common multiple of 4 and 6."
+    ],
+    "2022 BmMT Individual, Problem 3": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Doubling the sides multiplies the area by four."
+    ],
+    "2022 BmMT Individual, Problem 4": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the shoes by groups: the one-shoe students plus equal numbers with two and none."
+    ],
+    "2022 BmMT Individual, Problem 5": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Group the terms in pairs, each pair adding 2."
+    ],
+    "2022 BmMT Individual, Problem 6": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the matching pairs among all pairs of pets."
+    ],
+    "2022 BmMT Individual, Problem 7": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The base EF is a third of BC, and the height is that of the equilateral triangle."
+    ],
+    "2022 BmMT Individual, Problem 8": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Subtract the two equations to find the common root, then substitute."
+    ],
+    "2022 BmMT Individual, Problem 9": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Each purchase gives an interval for the price c; intersect the intervals and multiply by 20."
+    ],
+    "2022 BmMT Individual, Problem 10": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The trisector makes angle BAC equal to 90 degrees, so ABC is a 30-60-90 triangle."
+    ],
+    "2022 BmMT Individual, Problem 11": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The last digit of a prime must be 1, 5, 6 or 0 to equal that of its square."
+    ],
+    "2022 BmMT Individual, Problem 12": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Treat the contiguous SUS as a block and count the arrangements of the rest, without double counting."
+    ],
+    "2022 BmMT Individual, Problem 13": [
+      750,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Square the equation and factor to get the integer solutions."
+    ],
+    "2022 BmMT Individual, Problem 14": [
+      750,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The roots add to 100 and multiply to k; k is largest when the roots are close, subject to 14 dividing k."
+    ],
+    "2022 BmMT Individual, Problem 15": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Numbers made of 0s and 1s are binary patterns read in decimal; list the first sixteen."
+    ],
+    "2022 BmMT Individual, Problem 16": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Condition on the first year at which either coin lands heads."
+    ],
+    "2022 BmMT Individual, Problem 17": [
+      850,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The region closer to a side than to a diagonal is a union of triangles inside the square."
+    ],
+    "2022 BmMT Individual, Problem 18": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Residues coprime to 198 pair up as n and 198 minus n."
+    ],
+    "2022 BmMT Individual, Problem 19": [
+      1000,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count permutations by which prime divides every entry of the gcd, using inclusion-exclusion over the primes 2 and 3."
+    ],
+    "2022 BmMT Individual, Problem 20": [
+      900,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Place the tetrahedron in coordinates and find the point equidistant from all four vertices."
+    ],
+    "2023 BmMT Individual, Problem 1": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Compute 20% of 23 and 23% of 20."
+    ],
+    "2023 BmMT Individual, Problem 2": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Arrange three different fruits."
+    ],
+    "2023 BmMT Individual, Problem 3": [
+      350,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The mixed number 11 over 6 pins down a, then b over c."
+    ],
+    "2023 BmMT Individual, Problem 4": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Expanding the second area gives the sum of the sides, hence the perimeter."
+    ],
+    "2023 BmMT Individual, Problem 5": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Read the number of cubes in each column from the two views and count the ways to stack them."
+    ],
+    "2023 BmMT Individual, Problem 6": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the faces: ten for each octagonal prism, six for each cube."
+    ],
+    "2023 BmMT Individual, Problem 7": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Add the straight sides and the semicircular arc."
+    ],
+    "2023 BmMT Individual, Problem 8": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the pairs of centres exactly 15 cm apart among the ten pairs."
+    ],
+    "2023 BmMT Individual, Problem 9": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): One person left over means n minus 1 equals x times y; count the factor pairs with x less than y."
+    ],
+    "2023 BmMT Individual, Problem 10": [
+      550,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Two thirds of the hemisphere's volume must equal the volume of the cone."
+    ],
+    "2023 BmMT Individual, Problem 11": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Write the angle as a function of the minutes after 11:30 and solve for the start time."
+    ],
+    "2023 BmMT Individual, Problem 12": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Track the states of the walk: food points visited and the starting point."
+    ],
+    "2023 BmMT Individual, Problem 13": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the boundary edges of the figure: the perimeter is the number of exposed unit edges."
+    ],
+    "2023 BmMT Individual, Problem 14": [
+      750,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Write both sums with the arithmetic series formula and set them one apart."
+    ],
+    "2023 BmMT Individual, Problem 15": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A four-digit palindrome is fixed by its first two digits."
+    ],
+    "2023 BmMT Individual, Problem 16": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Put the points on a number line and write each given length as an equation in x."
+    ],
+    "2023 BmMT Individual, Problem 17": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A 180 degree rotation negates the parabola and moves its vertex to the reflected point."
+    ],
+    "2023 BmMT Individual, Problem 18": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A face reaches 7 only if the face showing 6 is rolled; count the rolls that avoid it."
+    ],
+    "2023 BmMT Individual, Problem 19": [
+      1000,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The digit sum is five times the number of digits and is congruent to N to the fourth power modulo 9."
+    ],
+    "2023 BmMT Individual, Problem 20": [
+      850,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The eight centers form a regular octagon; the central circle's radius is the circumradius minus 1."
+    ],
+    "2024 BmMT Individual, Problem 1": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Halve 44, then halve again."
+    ],
+    "2024 BmMT Individual, Problem 2": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Evaluate the continued fraction from the inside out."
+    ],
+    "2024 BmMT Individual, Problem 3": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The garden's side is 506; each dimension of the lawn is that side divided by 23 or 22."
+    ],
+    "2024 BmMT Individual, Problem 4": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Every throw ends in a catch or a drop, so subtract the total catches from the total throws."
+    ],
+    "2024 BmMT Individual, Problem 5": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Divide 2024 by 24 and adjust."
+    ],
+    "2024 BmMT Individual, Problem 6": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): List the primes below 50 and keep those with only the digits 2, 3, 5 and 7."
+    ],
+    "2024 BmMT Individual, Problem 7": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Rewrite xy minus x minus y as (x minus 1)(y minus 1) minus 1."
+    ],
+    "2024 BmMT Individual, Problem 8": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Seven tosses in all, exactly three heads."
+    ],
+    "2024 BmMT Individual, Problem 9": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Each ratio simplifies to n over n plus 1, so the product telescopes."
+    ],
+    "2024 BmMT Individual, Problem 10": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Chase angles with the parallel lines and the isosceles triangle."
+    ],
+    "2024 BmMT Individual, Problem 11": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): List the two-digit factors of 2024 and test the last digit of each power."
+    ],
+    "2024 BmMT Individual, Problem 12": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Let t be x squared minus 20x; solve for t, then find the product of the x-values."
+    ],
+    "2024 BmMT Individual, Problem 13": [
+      550,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The farthest pair of points is a diagonal across the figure; use right triangles."
+    ],
+    "2024 BmMT Individual, Problem 14": [
+      900,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Each divisibility condition restricts a pair of digits; combine them to list the numbers."
+    ],
+    "2024 BmMT Individual, Problem 15": [
+      1000,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Build the permutation by the condition a_i below the running sum plus 2; count by the position of the largest elements."
+    ],
+    "2024 BmMT Individual, Problem 16": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A squarefree n with m prime factors has n to the k with (k+1) to the m divisors."
+    ],
+    "2024 BmMT Individual, Problem 17": [
+      1000,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Solve the recurrence for a_501 in terms of a_1 and apply the range condition on a_1."
+    ],
+    "2024 BmMT Individual, Problem 18": [
+      1000,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The three corner circles and the inner circle have radii tied by tangency; minimize the total area over the allowed radii."
+    ],
+    "2024 BmMT Individual, Problem 19": [
+      750,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The sum of the cubes of the divisors is multiplicative; compute each prime power's factor modulo 100."
+    ],
+    "2024 BmMT Individual, Problem 20": [
+      900,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Sum, over the numbers of red and blue balls drawn before the green, the arrangements of the draws."
+    ],
+    "2025 BmMT Individual, Problem 1": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Subtract the testing and grading rooms from 100."
+    ],
+    "2025 BmMT Individual, Problem 2": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): B and C lie on either side of A or on the same side."
+    ],
+    "2025 BmMT Individual, Problem 3": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Equal remaining sums relate K and B through the two totals."
+    ],
+    "2025 BmMT Individual, Problem 4": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Three colours, so four marbles guarantee a repeat."
+    ],
+    "2025 BmMT Individual, Problem 5": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Four consecutive odd integers around the mean of minus 4."
+    ],
+    "2025 BmMT Individual, Problem 6": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Express the shaded and the total area in units of one equilateral triangle."
+    ],
+    "2025 BmMT Individual, Problem 7": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Factors of 120 divisible by 12 correspond to factors of 10."
+    ],
+    "2025 BmMT Individual, Problem 8": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the two-hop routes among all the routes from lilypad 1 to lilypad 5."
+    ],
+    "2025 BmMT Individual, Problem 9": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The shaded area is a circle's sector plus a segment of the semicircle, in terms of the side length."
+    ],
+    "2025 BmMT Individual, Problem 10": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Check which sums repeat, then add; each coin lies in half of the subsets."
+    ],
+    "2025 BmMT Individual, Problem 11": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The roots multiply to 80; list the factor pairs with one a multiple of the other."
+    ],
+    "2025 BmMT Individual, Problem 12": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Write n over 250 in lowest terms; the number of decimal places comes from the powers of 2 and 5."
+    ],
+    "2025 BmMT Individual, Problem 13": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The tangent AD squared equals DC times DB, and also AC squared plus CD squared."
+    ],
+    "2025 BmMT Individual, Problem 14": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Work modulo 20, where the recurrence cycles quickly."
+    ],
+    "2025 BmMT Individual, Problem 15": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the cells inside the rectangle for each pair of corners."
+    ],
+    "2025 BmMT Individual, Problem 16": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A geometric sequence of integers has a rational ratio; write a as a multiple of a power of the denominator."
+    ],
+    "2025 BmMT Individual, Problem 17": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Factor the alternating sum and decide which numbers go in the first and last places."
+    ],
+    "2025 BmMT Individual, Problem 18": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Coordinates or similar triangles in the hexagon locate Q and give PQ."
+    ],
+    "2025 BmMT Individual, Problem 19": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Most exponents are huge multiples of 4, so the last digit depends on the base alone."
+    ],
+    "2025 BmMT Individual, Problem 20": [
+      1000,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Vieta's relations for the three roots tie the two progressions together."
+    ],
+    "2025 BmMT Individual Online, Problem 1": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Subtract the testing and grading rooms from 100."
+    ],
+    "2025 BmMT Individual Online, Problem 2": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): B and C lie on either side of A or on the same side."
+    ],
+    "2025 BmMT Individual Online, Problem 3": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Kiran's total minus Benji's total is the sum of what he erased."
+    ],
+    "2025 BmMT Individual Online, Problem 4": [
+      150,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Four colours, so five marbles guarantee a repeat."
+    ],
+    "2025 BmMT Individual Online, Problem 5": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Four consecutive even integers around the mean of minus 5."
+    ],
+    "2025 BmMT Individual Online, Problem 6": [
+      500,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Express the shaded and the total area in units of one equilateral triangle."
+    ],
+    "2025 BmMT Individual Online, Problem 7": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Factors of 84 divisible by 3 correspond to factors of 28."
+    ],
+    "2025 BmMT Individual Online, Problem 8": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the two-hop routes among all routes from lilypad 1 to lilypad 4."
+    ],
+    "2025 BmMT Individual Online, Problem 9": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The shaded region is made of circle sectors and semicircles in terms of the side length."
+    ],
+    "2025 BmMT Individual Online, Problem 10": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The sums are all distinct; each coin lies in half of the subsets."
+    ],
+    "2025 BmMT Individual Online, Problem 11": [
+      600,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The tangent AD squared equals DC times DB, and also AC squared plus CD squared."
+    ],
+    "2025 BmMT Individual Online, Problem 12": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The roots multiply to 72; list the factor pairs with one a multiple of the other."
+    ],
+    "2025 BmMT Individual Online, Problem 13": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Write n over 250 in lowest terms and count decimal places."
+    ],
+    "2025 BmMT Individual Online, Problem 14": [
+      750,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Work modulo 12, where the recurrence cycles quickly."
+    ],
+    "2025 BmMT Individual Online, Problem 15": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Factor the alternating sum and decide which numbers go in the first and last places."
+    ],
+    "2025 BmMT Individual Online, Problem 16": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the cells inside the rectangle for each pair of corners."
+    ],
+    "2025 BmMT Individual Online, Problem 17": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A geometric sequence of integers has a rational ratio; write a as a multiple of a power of the denominator."
+    ],
+    "2025 BmMT Individual Online, Problem 18": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Coordinates or similar triangles in the hexagon locate Q and give PQ."
+    ],
+    "2025 BmMT Individual Online, Problem 19": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Most exponents are huge multiples of 4, so the last digit depends on the base alone."
+    ],
+    "2025 BmMT Individual Online, Problem 20": [
+      1000,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Vieta's relations for the three roots tie the two progressions together."
+    ],
+    "2026 BmMT Individual, Problem 1": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count the black and white segments and add their lengths."
+    ],
+    "2026 BmMT Individual, Problem 2": [
+      200,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Four times the area means twice the radius."
+    ],
+    "2026 BmMT Individual, Problem 3": [
+      100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Apply the rule twice, inside first."
+    ],
+    "2026 BmMT Individual, Problem 4": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Iterate the map until the value repeats."
+    ],
+    "2026 BmMT Individual, Problem 5": [
+      250,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Glue the two M's into one block."
+    ],
+    "2026 BmMT Individual, Problem 6": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The rectangle's sides come from the outer and inner squares; then its diagonal."
+    ],
+    "2026 BmMT Individual, Problem 7": [
+      450,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Each tip is a percent of a bill; add the two totals to find the sum of the bills."
+    ],
+    "2026 BmMT Individual, Problem 8": [
+      400,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Take square roots, with both signs, or factor the difference of squares."
+    ],
+    "2026 BmMT Individual, Problem 9": [
+      300,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Fewest digits first, then smallest arrangement."
+    ],
+    "2026 BmMT Individual, Problem 10": [
+      650,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Compare the total times for carrying one and two boxes per trip."
+    ],
+    "2026 BmMT Individual, Problem 11": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The corners of a square satisfy a linear relation for opposite vertices, so the drift of one is determined by the other three."
+    ],
+    "2026 BmMT Individual, Problem 12": [
+      700,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The pattern repeats every four moves, adding a fixed amount each cycle."
+    ],
+    "2026 BmMT Individual, Problem 13": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Write the numerator over T(m) as a rational function of m and ask when it is an integer."
+    ],
+    "2026 BmMT Individual, Problem 14": [
+      800,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Count colorings fixed by the rotations and average (Burnside), or list the orbits."
+    ],
+    "2026 BmMT Individual, Problem 15": [
+      900,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Fill the first row and then use the diagonals and boxes to force the rest."
+    ],
+    "2026 BmMT Individual, Problem 16": [
+      1000,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): The condition forces a relation among a, b and c; list the possibilities up to the sum bound."
+    ],
+    "2026 BmMT Individual, Problem 17": [
+      1100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Chase angles using the tangent and the parallel line to find similar triangles, then compare the radii."
+    ],
+    "2026 BmMT Individual, Problem 18": [
+      900,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A mountainous permutation is a choice of which elements go left of the peak; count by parity."
+    ],
+    "2026 BmMT Individual, Problem 19": [
+      1000,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): A tangent line with slope m meets a parabola in a double root: set the discriminant to zero for each parabola."
+    ],
+    "2026 BmMT Individual, Problem 20": [
+      1100,
+      "Author estimate (BmMT publishes no solve counts; placed on the collection’s scale by its route and its place in a 20-question paper, the early problems from an easy AMC 8 question up and the last ones to an AMC 10 level): Chase the inscribed angles in the two circles; power of a point at F relates the lengths."
     ]
   }
 }

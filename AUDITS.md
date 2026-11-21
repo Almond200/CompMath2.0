@@ -2678,3 +2678,7 @@ Statements for 240 problems (Junior and Senior, 2018 to 2020) were read from the
 ## Figure edge audit (2026-11-21)
 
 Every statement figure was scanned for ink touching an image edge (`edgecheck.py`). The CMIMC, Duke, MBMT, Calgary, Columbus, PUMaC, Utah, UMD, Lehigh, SMT, BMT and ARML figures were clean except three with stray text specks from the line above (CMIMC 2017 Combinatorics #10, Duke 2021 #7, MBMT 2018 Upper Counting #8), trimmed, and Duke 2021 #1, whose dashed laser ray runs past the corner by design. The 269 CEMC figures that touch an edge are tight crops of drawn figures; 102 with the longest touching runs were checked on contact sheets and none clips a label or a stroke.
+
+## BmMT Individual Round (2026-11-21)
+
+All 300 problems of the 15 Individual Round papers were read from the posted PDFs (text layer, with page images for the exponents and fractions the text layer drops: 2015 #4 is $10^{1/x}=x$, 2016 #17 is $20^{16}$ over $16^{20}$, 2017 #10 is $2017^{(2017^2)}$). 2018 #9 reads "three 3 candies" in the paper; it is given as three red candies. The 2012 and 2013 papers are headed Berkeley Math Tournament, Fall 2012 and BmMT 2013 and are filed with BmMT. The ratings run from about 100 (first problems) to 1100 (the last of each paper); no tree node, card or rating was copied from another contest. Questions checked while filing: the answers of 2012 #7 and #10, 2013 #20 and 2014 #11 were not worked out in full, so their routes are described only in general terms.

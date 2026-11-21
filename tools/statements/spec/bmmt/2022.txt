@@ -1,0 +1,42 @@
+=== 1
+Nikhil computes the sum of the first $10$ positive integers, starting from $1$. He then divides that sum by $5$. What remainder does he get?
+=== 2
+In class, starting at $8:00$, Ava claps her hands once every $4$ minutes, while Ella claps her hands once every $6$ minutes. What is the smallest number of minutes after $8:00$ such that both Ava and Ella clap their hands at the same time?
+=== 3
+A triangle has side lengths $3$, $4$, and $5$. If all of the side lengths of the triangle are doubled, how many times larger is the area?
+=== 4
+There are $50$ students in a room. Every student is wearing either $0$, $1$, or $2$ shoes. An even number of the students are wearing exactly $1$ shoe. Of the remaining students, exactly half of them have $2$ shoes and half of them have $0$ shoes. How many shoes are worn in total by the $50$ students?
+=== 5
+What is the value of $-2+4-6+8-\cdots+8088$?
+=== 6
+Suppose Lauren has $2$ cats and $2$ dogs. If she chooses $2$ of the $4$ pets uniformly at random, what is the probability that the $2$ chosen pets are either both cats or both dogs?
+=== 7
+Let triangle $\triangle ABC$ be equilateral with side length $6$. Points $E$ and $F$ lie on $BC$ such that $E$ is closer to $B$ than it is to $C$ and $F$ is closer to $C$ than it is to $B$. If $BE=EF=FC$, what is the area of triangle $\triangle AFE$?
+=== 8
+The two equations $x^2+ax-4=0$ and $x^2-4x+a=0$ share exactly one common solution for $x$. Compute the value of $a$.
+=== 9
+At Shreymart, Shreyas sells apples at a price $c$. A customer who buys $n$ apples pays $nc$ dollars, rounded to the nearest integer, where we always round up if the cost ends in $.5$. For example, if the cost of the apples is $4.2$ dollars, a customer pays $4$ dollars. Similarly, if the cost of the apples is $4.5$ dollars, a customer pays $5$ dollars. If Justin buys $7$ apples for $3$ dollars and $4$ apples for $1$ dollar, how many dollars should he pay for $20$ apples?
+=== 10
+In triangle $\triangle ABC$, the angle trisector of $\angle BAC$ closer to $AC$ than $AB$ intersects $BC$ at $D$. Given that triangle $\triangle ABD$ is equilateral with area $1$, compute the area of triangle $\triangle ABC$.
+=== 11
+Wanda lists out all the primes less than $100$ for which the last digit of that prime equals the last digit of that prime's square. For instance, $71$ is in Wanda's list because its square, $5041$, also has $1$ as its last digit. What is the product of the last digits of all the primes in Wanda's list?
+=== 12
+How many ways are there to arrange the letters of $SUSBUS$ such that $SUS$ appears as a contiguous substring? For example, $SUSBUS$ and $USSUSB$ are both valid arrangements, but $SUBSSU$ is not.
+=== 13
+Suppose that $x$ and $y$ are integers such that $x\ge5$, $y\ge3$, and $\sqrt{x-5}+\sqrt{y-3}=\sqrt{x+y}$. Compute the maximum possible value of $xy$.
+=== 14
+What is the largest integer $k$ divisible by $14$ such that $x^2-100x+k=0$ has two distinct integer roots?
+=== 15
+What is the sum of the first $16$ positive integers whose digits consist of only $0$s and $1$s?
+=== 16
+Jonathan and Ajit are flipping two unfair coins. Jonathan's coin lands on heads with probability $\frac1{20}$ while Ajit's coin lands on heads with probability $\frac1{22}$. Each year, they flip their coins at the same time, independently of their previous flips. Compute the probability that Jonathan's coin lands on heads strictly before Ajit's coin does.
+=== 17
+A point is chosen uniformly at random in square $ABCD$. What is the probability that it is closer to one of the $4$ sides than to one of the $2$ diagonals?
+=== 18
+Two integers are coprime if they share no common positive factors other than $1$. For example, $3$ and $5$ are coprime because their only common factor is $1$. Compute the sum of all positive integers that are coprime to $198$ and less than $198$.
+=== 19
+Sumith lists out the positive integer factors of $12$ in a line, writing them out in increasing order as $1,2,3,4,6,12$. Luke, being the mischievious person he is, writes down a permutation of those factors and lists it right under Sumith's as $a_1,a_2,a_3,a_4,a_5,a_6$. Luke then calculates
+$$\gcd(a_1,2a_2,3a_3,4a_4,6a_5,12a_6).$$
+Given that Luke's result is greater than $1$, how many possible permutations could he have written?
+=== 20
+Tetrahedron $ABCD$ is drawn such that $DA=DB=DC=2$, $\angle ADB=\angle ADC=90^\circ$, and $\angle BDC=120^\circ$. Compute the radius of the sphere that passes through $A$, $B$, $C$, and $D$.

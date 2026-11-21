@@ -1,0 +1,39 @@
+// Problems and diagrams © 2017 Berkeley Math Tournament. Reproduced with permission from the Berkeley Math Tournament.
+// Source: the official BmMT papers. Built by tools/statements/build.py from tools/statements/spec/bmmt/2017.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2017-bmmt-individual-1": { s: String.raw`It's currently $6:00$ on a $12$ hour clock. What time will be shown on the clock $100$ hours from now? Express your answer in the form $hh:mm$.`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-2": { s: String.raw`A tub originally contains $10$ gallons of water. Alex adds some water, increasing the amount of water by $20\%$. Barbara, unhappy with Alex's decision, decides to remove $20\%$ of the water currently in the tub. How much water, in gallons, is left in the tub? Express your answer as an exact decimal.`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-3": { s: String.raw`There are $2000$ math students and $4000$ CS students at Berkeley. If $5580$ students are either math students or CS students, then how many of them are studying both math and CS?`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-4": { s: String.raw`Determine the smallest integer $x$ greater than $1$ such that $x^2$ is one more than a multiple of $7$.`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-5": { s: String.raw`Find two positive integers $x,y$ greater than $1$ whose product equals the following sum:
+$$9+11+13+15+17+19+21+23+25+27+29.$$
+Express your answer as an ordered pair $(x,y)$ with $x\le y$.`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-6": { s: String.raw`The average walking speed of a cow is $5$ meters per hour. If it takes the cow an entire day to walk around the edges of a perfect square, then determine the area (in square meters) of this square.`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-7": { s: String.raw`Consider the cube below. If the length of the diagonal $AB$ is $3\sqrt3$, determine the volume of the cube.
+
+@@fig:bmmt/2017/7.png@@`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-8": { s: String.raw`I have $18$ socks in my drawer, $6$ colored red, $8$ colored blue and $4$ colored green. If I close my eyes and grab a bunch of socks, how many socks must I grab to guarantee there will be two pairs of matching socks?`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-9": { s: String.raw`Define the operation $a@b$ to be $3+ab+a+2b$. There exists a number $x$ such that $x@b=1$ for all $b$. Find $x$.`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-10": { s: String.raw`Compute the units digit of $2017^{\left(2017^2\right)}$.`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-11": { s: String.raw`The distinct rational numbers $-\sqrt{-x}$, $x$, and $-x$ form an arithmetic sequence in that order. Determine the value of $x$.`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-12": { s: String.raw`Let $y=x^2+bx+c$ be a quadratic function that has only one root. If $b$ is positive, find $\frac{b+2}{\sqrt c+1}$.`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-13": { s: String.raw`Alice, Bob, and four other people sit themselves around a circular table. What is the probability that Alice does not sit to the left or right of Bob?`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-14": { s: String.raw`Let $f(x)=|x-8|$. Let $p$ be the sum of all the values of $x$ such that $f(f(f(x)))=2$ and $q$ be the minimum solution to $f(f(f(x)))=2$. Compute $p\cdot q$.`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-15": { s: String.raw`Determine the total number of rectangles ($1\times1$, $1\times2$, $2\times2$, etc.) formed by the lines in the figure below:
+
+@@fig:bmmt/2017/15.png@@`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-16": { s: String.raw`Take a square $ABCD$ of side length $1$, and let $P$ be the midpoint of $AB$. Fold the square so that point $D$ touches $P$, and let the intersection of the bottom edge $DC$ with the right edge be $Q$. What is $BQ$?
+
+@@fig:bmmt/2017/16.png@@`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-17": { s: String.raw`Let $A$, $B$, and $k$ be integers, where $k$ is positive and the greatest common divisor of $A$, $B$, and $k$ is $1$. Define $x\#y$ by the formula $x\#y=\frac{Ax+By}{kxy}$. If $8\#4=\frac12$ and $3\#1=\frac{13}6$, determine the sum $A+B+k$.`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-18": { s: String.raw`There are $20$ indistinguishable balls to be placed into bins $A$, $B$, $C$, $D$, and $E$. Each bin must have at least $2$ balls inside of it. How many ways can the balls be placed into the bins, if each ball must be placed in a bin?`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-19": { s: String.raw`Let $T_i$ be a sequence of equilateral triangles such that
+
+(a) $T_1$ is an equilateral triangle with side length $1$.
+
+(b) $T_{i+1}$ is inscribed in the circle inscribed in triangle $T_i$ for $i\ge1$.
+
+Find
+$$\sum_{i=1}^{\infty}\text{Area}(T_i).$$`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+"2017-bmmt-individual-20": { s: String.raw`A gorgeous sequence is a sequence of $1$'s and $0$'s such that there are no consecutive $1$'s. For instance, the set of all gorgeous sequences of length $3$ is $\{[1,0,0],[1,0,1],[0,1,0],[0,0,1],[0,0,0]\}$. Determine the number of gorgeous sequences of length $7$.`, u: "https://berkeley.mt/archives/bmmt-2017/IF2017.pdf" },
+});
