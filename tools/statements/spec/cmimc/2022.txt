@@ -1,0 +1,148 @@
+=== algebra-and-number-theory-division-1-1
+How many $4$-digit numbers have exactly $9$ divisors from the set $\{1,2,3,4,5,6,7,8,9,10\}$?
+=== algebra-and-number-theory-division-1-2
+A shipping company charges $0.30l+0.40w+0.50h$ dollars to process a right rectangular prism-shaped box with dimensions $l,w,h$ in inches. The customers themselves are allowed to label the three dimensions of their box with $l,w,h$ for the purpose of calculating the processing fee. A customer finds that there are two different ways to label the dimensions of their box $B$ to get a fee of $\$8.10$, and two different ways to label $B$ to get a fee of $\$8.70$. None of the faces of $B$ are squares. Find the surface area of $B$, in square inches.
+=== algebra-and-number-theory-division-1-3
+Find the smallest positive integer $N$ such that each of the $101$ intervals
+$$[N^2,(N+1)^2),\ [(N+1)^2,(N+2)^2),\ \cdots,\ [(N+100)^2,(N+101)^2)$$
+contains at least one multiple of $1001$.
+=== algebra-and-number-theory-division-1-4
+Let $z$ be a complex number that satisfies the equation
+$$\frac{z-4}{z^2-5z+1}+\frac{2z-4}{2z^2-5z+1}+\frac{z-2}{z^2-3z+1}=\frac{3}{z}.$$
+Find the sum of
+$$\left|\frac{1}{z^2-5z+1}+\frac{1}{2z^2-5z+1}+\frac{1}{z^2-3z+1}\right|$$
+over all possible values of $z$.
+=== algebra-and-number-theory-division-1-5
+Grant is standing at the beginning of a hallway with infinitely many lockers, numbered $1,2,3,\dots$ All of the lockers are initially closed. Initially, he has some set $S=\{1,2,3,\dots\}$.
+
+Every step, for each element $s$ of $S$, Grant goes through the hallway and opens each locker divisible by $s$ that is closed, and closes each locker divisible by $s$ that is open. Once he does this for all $s$, he then replaces $S$ with the set of labels of the currently open lockers, and then closes every door again.
+
+After $2022$ steps, $S$ has $n$ integers that divide $10^{2022}$. Find $n$.
+=== algebra-and-number-theory-division-1-6
+Find the probability such that when a polynomial in $\mathbb{Z}_{2027}[x]$ having degree at most $2026$ is chosen uniformly at random,
+$$x^{2027}-x\mid P^k(x)-x\iff 2021\mid k$$
+(note that $2027$ is prime).
+
+Here $P^k(x)$ denotes $P$ composed with itself $k$ times.
+=== algebra-and-number-theory-division-1-7
+Let $f(n)$ count the number of values $0\le k\le n^2$ such that $43\nmid\binom{n^2}{k}$. Find the least positive value of $n$ such that
+$$43^{43}\mid f\left(\frac{43^n-1}{42}\right).$$
+=== algebra-and-number-theory-division-1-8
+Find the largest $c>0$ such that for all $n\ge 1$ and $a_1,\dots,a_n,b_1,\dots,b_n>0$ we have
+$$\sum_{j=1}^{n}a_j^4\ge c\sum_{k=1}^{n}\frac{\left(\sum_{j=1}^{k}a_jb_{k+1-j}\right)^4}{\left(\sum_{j=1}^{k}b_j^2j!\right)^2}$$
+=== algebra-and-number-theory-division-2-1
+Alice and Bob live on the same road. At time $t$, they both decide to walk to each other's houses at constant speed. However, they were busy thinking about math so that they didn't realize passing each other. Alice arrived at Bob's house at $3:19$pm, and Bob arrived at Alice's house at $3:29$pm. Charlie, who was driving by, noted that Alice and Bob passed each other at $3:11$pm. Find the difference in minutes between the time Alice and Bob left their own houses and noon on that day.
+=== algebra-and-number-theory-division-2-2
+Arthur, Bob, and Carla each choose a three-digit number. They each multiply the digits of their own numbers. Arthur gets $64$, Bob gets $35$, and Carla gets $81$. Then, they add corresponding digits of their numbers together. The total of the hundreds place is $24$, that of the tens place is $12$, and that of the ones place is $6$. What is the difference between the largest and smallest of the three original numbers?
+=== algebra-and-number-theory-division-2-3
+How many $4$-digit numbers have exactly $9$ divisors from the set $\{1,2,3,4,5,6,7,8,9,10\}$?
+=== algebra-and-number-theory-division-2-4
+A shipping company charges $0.30l+0.40w+0.50h$ dollars to process a right rectangular prism-shaped box with dimensions $l,w,h$ in inches. The customers themselves are allowed to label the three dimensions of their box with $l,w,h$ for the purpose of calculating the processing fee. A customer finds that there are two different ways to label the dimensions of their box $B$ to get a fee of $\$8.10$, and two different ways to label $B$ to get a fee of $\$8.70$. None of the faces of $B$ are squares. Find the surface area of $B$, in square inches.
+=== algebra-and-number-theory-division-2-5
+Alan is assigning values to lattice points on the 3d coordinate plane. First, Alan computes the roots of the cubic $20x^3-22x^2+2x+1$ and finds that they are $\alpha$, $\beta$, and $\gamma$. He finds out that each of these roots satisfy $|\alpha|,|\beta|,|\gamma|\le 1$. On each point $(x,y,z)$ where $x$, $y$, and $z$ are all nonnegative integers, Alan writes down $\alpha^x\beta^y\gamma^z$. What is the value of the sum of all numbers he writes down?
+=== algebra-and-number-theory-division-2-6
+Find the smallest positive integer $N$ such that each of the $101$ intervals
+$$[N^2,(N+1)^2),\ [(N+1)^2,(N+2)^2),\ \cdots,\ [(N+100)^2,(N+101)^2)$$
+contains at least one multiple of $1001$.
+=== algebra-and-number-theory-division-2-7
+For polynomials $P(x)=a_nx^n+\cdots+a_0$, let $f(P)=a_n\cdots a_0$ be the product of the coefficients of $P$. The polynomials $P_1,P_2,P_3,Q$ satisfy $P_1(x)=(x-a)(x-b)$, $P_2(x)=(x-a)(x-c)$, $P_3(x)=(x-b)(x-c)$, $Q(x)=(x-a)(x-b)(x-c)$ for some complex numbers $a,b,c$. Given $f(Q)=8$, $f(P_1)+f(P_2)+f(P_3)=10$, and $abc>0$, find the value of $f(P_1)f(P_2)f(P_3)$.
+=== algebra-and-number-theory-division-2-8
+Let $z$ be a complex number that satisfies the equation
+$$\frac{z-4}{z^2-5z+1}+\frac{2z-4}{2z^2-5z+1}+\frac{z-2}{z^2-3z+1}=\frac{3}{z}.$$
+Find the sum of
+$$\left|\frac{1}{z^2-5z+1}+\frac{1}{2z^2-5z+1}+\frac{1}{z^2-3z+1}\right|$$
+over all possible values of $z$.
+=== combinatorics-and-computer-science-division-1-1
+Starting with a $5\times 5$ grid, choose a $4\times 4$ square in it. Then, choose a $3\times 3$ square in the $4\times 4$ square, and a $2\times 2$ square in the $3\times 3$ square, and a $1\times 1$ square in the $2\times 2$ square. Assuming all squares chosen are made of unit squares inside the grid. In how many ways can the squares be chosen so that the final $1\times 1$ square is the center of the original $5\times 5$ grid?
+=== combinatorics-and-computer-science-division-1-2
+A sequence of pairwise distinct positive integers is called averaging if each term after the first two is the average of the previous two terms. Let $M$ be the maximum possible number of terms in an averaging sequence in which every term is less than or equal to $2022$ and let $N$ be the number of such distinct sequences (every term less than or equal to $2022$) with exactly $M$ terms. What is $M+N$? (Two sequences $a_1,a_2,\cdots,a_n$ and $b_1,b_2,\cdots,b_n$ are said to be distinct if $a_i\ne b_i$ for some integer $1\le i\le n$).
+=== combinatorics-and-computer-science-division-1-3
+For a family gathering, $8$ people order one dish each. The family sits around a circular table. Find the number of ways to place the dishes so that each person's dish is either to the left, right, or directly in front of them.
+=== combinatorics-and-computer-science-division-1-4
+The CMU Kiltie Band are attempting to crash a helicopter via grappling hook. The helicopter starts parallel (angle $0$ degrees) to the ground. Each time the band members pull the hook, they tilt the helicopter forward by either $x$ or $x+1$ degrees, with equal probability, if the helicopter is currently at an angle $x$ degrees with the ground. Causing the helicopter to tilt to $90$ degrees or beyond will crash the helicopter. Find the expected number of times the band must pull the hook in order to crash the helicopter.
+=== combinatorics-and-computer-science-division-1-5
+At CMIMC headquarters, there is a row of $n$ lightbulbs, each of which is connected to a light switch. Daniel the electrician knows that exactly one of the switches doesn't work, and needs to find out which one. Every second, he can do exactly one of $3$ things:
+
+• Flip a switch, changing the lightbulb from off/on or on/off (unless the switch is broken).
+
+• Check if a given lightbulb is on or off.
+
+• Measure the total electricity usage of all the lightbulbs, which tells him exactly how many are currently on.
+
+Initially, all the lightbulbs are off. Daniel was given the very difficult task of finding the broken switch in at most $n$ seconds, but fortunately he showed up to work $10$ seconds early today. What is the largest possible value $n$ such that he can complete his task on time?
+=== combinatorics-and-computer-science-division-1-6
+Barry has a standard die containing the numbers $1$-$6$ on its faces.
+
+He rolls the die continuously, keeping track of the sum of the numbers he has rolled so far, starting from $0$. Let $E_n$ be the expected number of time he needs to until his recorded sum is at least $n$.
+
+It turns out that there exist positive reals $a,b$ such that
+$$\lim_{n\to\infty}E_n-(an+b)=0$$
+Find $(a,b)$.
+=== combinatorics-and-computer-science-division-1-7
+In a class of $12$ students, no two people are the same height. Compute the total number of ways for the students to arrange themselves in a line such that:
+
+• for all $1<i<12$, the person in the $i$-th position (with the leftmost position being $1$) is taller than exactly $i\pmod 3$ of their adjacent neighbors, and
+
+• the students standing at positions which are multiples of $3$ are strictly increasing in height from left to right.
+=== combinatorics-and-computer-science-division-1-8
+Daniel has a (mostly) standard deck of $54$ cards, consisting of $4$ suits each containing the ranks $1$ to $13$ as well as $2$ jokers.
+
+Daniel plays the following game: He shuffles the deck uniformly randomly and then takes all of the cards that end up strictly between the two jokers. He then sums up the ranks of all the cards he has taken and calls that his score.
+
+Let $p$ be the probability that his score is a multiple of $13$. There exists relatively prime positive integers $a$ and $b$, with $b$ as small as possible, such that $|p-a/b|<10^{-10}$. What is $a/b$?
+=== combinatorics-and-computer-science-division-2-1
+A particle starts at $(0,0,0)$ in three-dimensional space. Each second, it randomly selects one of the eight lattice points a distance of $\sqrt{3}$ from its current location and moves to that point. What is the probability that, after two seconds, the particle is a distance of $2\sqrt{2}$ from its original location?
+=== combinatorics-and-computer-science-division-2-2
+Starting with a $5\times 5$ grid, choose a $4\times 4$ square in it. Then, choose a $3\times 3$ square in the $4\times 4$ square, and a $2\times 2$ square in the $3\times 3$ square, and a $1\times 1$ square in the $2\times 2$ square. Assuming all squares chosen are made of unit squares inside the grid. In how many ways can the squares be chosen so that the final $1\times 1$ square is the center of the original $5\times 5$ grid?
+=== combinatorics-and-computer-science-division-2-3
+We say that a set $S$ of $3$ unit squares is commutable if $S=\{s_1,s_2,s_3\}$ for some $s_1,s_2,s_3$ where $s_2$ shares a side with each of $s_1,s_3$. How many ways are there to partition a $3\times 3$ grid of unit squares into $3$ pairwise disjoint commutable sets?
+=== combinatorics-and-computer-science-division-2-4
+Dilhan is running around a track for $12$ laps. If halfway through a lap, Dilhan has his phone on him, he has a $\frac13$ chance to drop it there. If Dilhan runs past his phone on the ground, he will attempt to pick it up with a $\frac23$ chance of success, and won't drop it for the rest of the lap. He starts with his phone at the start of the 5K, what is the chance he still has it when he finished the 5K?
+=== combinatorics-and-computer-science-division-2-5
+Daniel, Ethan, and Zack are playing a multi-round game of Tetris. Whoever wins $11$ rounds first is crowned the champion. However Zack is trying to pull off a "reverse-sweep", where (at-least) one of the other two players first hits $10$ wins while Zack is still at $0$, but Zack still ends up being the first to reach $11$. How many possible sequences of round wins can lead to Zack pulling off a reverse sweep?
+=== combinatorics-and-computer-science-division-2-6
+A sequence of pairwise distinct positive integers is called averaging if each term after the first two is the average of the previous two terms. Let $M$ be the maximum possible number of terms in an averaging sequence in which every term is less than or equal to $2022$ and let $N$ be the number of such distinct sequences (every term less than or equal to $2022$) with exactly $M$ terms. What is $M+N$? (Two sequences $a_1,a_2,\cdots,a_n$ and $b_1,b_2,\cdots,b_n$ are said to be distinct if $a_i\ne b_i$ for some integer $1\le i\le n$).
+=== combinatorics-and-computer-science-division-2-7
+For a family gathering, $8$ people order one dish each. The family sits around a circular table. Find the number of ways to place the dishes so that each person's dish is either to the left, right, or directly in front of them.
+=== combinatorics-and-computer-science-division-2-8
+The CMU Kiltie Band is attempting to crash a helicopter via grappling hook. The helicopter starts parallel (angle $0$ degrees) to the ground. Each time the band members pull the hook, they tilt the helicopter forward by either $x$ or $x+1$ degrees, with equal probability, if the helicopter is currently at an angle $x$ degrees with the ground. Causing the helicopter to tilt to $90$ degrees or beyond will crash the helicopter. Find the expected number of times the band must pull the hook in order to crash the helicopter.
+=== geometry-division-1-1
+A circle has radius $52$ and center $O$. Points $A$ is on the circle, and point $P$ on $\overline{OA}$ satisfies $OP=28$. Point $Q$ is constructed such that $QA=QP=15$, and point $B$ is constructed on the circle so that $Q$ is on $\overline{OB}$. Find $QB$.
+=== geometry-division-1-2
+Let $ABC$ be an acute triangle with $\angle ABC=60^\circ$. Suppose points $D$ and $E$ are on lines $AB$ and $CB$, respectively, such that $CDB$ and $AEB$ are equilateral triangles. Given that the positive difference between the perimeters of $CDB$ and $AEB$ is $60$ and $DE=45$, what is the value of $AB\cdot BC$?
+=== geometry-division-1-3
+Let $\Gamma_1,\Gamma_2,\Gamma_3$ be three pairwise externally tangent circles with radii $1,2,3$, respectively. A circle passes through the centers of $\Gamma_2$ and $\Gamma_3$ and is externally tangent to $\Gamma_1$ at a point $P$. Suppose $A$ and $B$ are the centers of $\Gamma_2$ and $\Gamma_3$, respectively. What is the value of $\dfrac{PA^2}{PB^2}$?
+=== geometry-division-1-4
+Let $A$ and $B$ be points on circle $\Gamma$ such that $AB=\sqrt{10}$. Point $C$ is outside $\Gamma$ such that $\triangle ABC$ is equilateral. Let $D$ be a point on $\Gamma$ and suppose the line through $C$ and $D$ intersects $AB$ and $\Gamma$ again at points $E$ and $F\ne D$. It is given that points $C,D,E,F$ are collinear in that order and that $CD=DE=EF$. What is the area of $\Gamma$?
+=== geometry-division-1-5
+In triangle $ABC$, let $I,O,H$ be the incenter, circumcenter and orthocenter, respectively. Suppose that $AI=11$ and $AO=AH=13$. Find $OH$.
+=== geometry-division-1-6
+Let $\Gamma_1$ and $\Gamma_2$ be two circles with radii $r_1$ and $r_2$, respectively, where $r_1>r_2$. Suppose $\Gamma_1$ and $\Gamma_2$ intersect at two distinct points $A$ and $B$. A point $C$ is selected on ray $\overrightarrow{AB}$, past $B$, and the tangents to $\Gamma_1$ and $\Gamma_2$ from $C$ are marked as points $P$ and $Q$, respectively. Suppose that $\Gamma_2$ passes through the center of $\Gamma_1$ and that points $P,B,Q$ are collinear in that order, with $PB=3$ and $QB=2$. What is the length of $AB$?
+=== geometry-division-1-7
+In acute $\triangle ABC$, let $I$ denote the incenter and suppose that line $AI$ intersects segment $BC$ at a point $D$. Given that $AI=3$, $ID=2$, and $BI^2+CI^2=64$, compute $BC^2$.
+=== geometry-division-1-8
+Let $ABCD$ be a cyclic quadrilateral with circumcenter $O$. Rays $\overrightarrow{OB}$ and $\overrightarrow{DC}$ intersect at $E$, and rays $\overrightarrow{OC}$ and $\overrightarrow{AB}$ intersect at $F$. Suppose that $AE=EC=CF=4$, and the circumcircle of $ODE$ bisects $\overline{BF}$. Find the area of triangle $ADF$.
+=== geometry-division-2-1
+An equilateral $12$-gon has side length $10$ and interior angle measures that alternate between $90^\circ$, $90^\circ$, and $270^\circ$. Compute the area of this $12$-gon.
+=== geometry-division-2-2
+A circle has radius $52$ and center $O$. Points $A$ is on the circle, and point $P$ on $\overline{OA}$ satisfies $OP=28$. Point $Q$ is constructed such that $QA=QP=15$, and point $B$ is constructed on the circle so that $Q$ is on $\overline{OB}$. Find $QB$.
+=== geometry-division-2-3
+Let $ABC$ be an acute triangle with $\angle ABC=60^\circ$. Suppose points $D$ and $E$ are on lines $AB$ and $CB$, respectively, such that $CDB$ and $AEB$ are equilateral triangles. Given that the positive difference between the perimeters of $CDB$ and $AEB$ is $60$ and $DE=45$, what is the value of $AB\cdot BC$?
+=== geometry-division-2-4
+Circle $\Gamma$ has diameter $\overline{AB}$ with $AB=6$. Point $C$ is constructed on $\overleftrightarrow{AB}$ so that $AB=BC$ and $A\ne C$. Let $D$ be on $\Gamma$ so that $\overleftrightarrow{CD}$ is tangent to $\Gamma$. Compute the distance from line $\overleftrightarrow{AD}$ to the circumcenter of $\triangle ADC$.
+=== geometry-division-2-5
+Let $ABC$ be an equilateral triangle of unit side length and suppose $D$ is a point on segment $\overline{BC}$ such that $DB<DC$. Let $M$ and $N$ denote the midpoints of $\overline{AB}$ and $\overline{AC}$, respectively. Suppose $X$ and $Y$ are the intersections of lines $AB$ and $ND$, and lines $AC$ and $MD$, respectively. Given that $XY=4$, what is the value of $\dfrac{DB}{DC}$?
+=== geometry-division-2-6
+A triangle $\triangle ABC$ satisfies $AB=13$, $BC=14$, and $AC=15$. Inside $\triangle ABC$ are three points $X$, $Y$, and $Z$ such that:
+
+• $Y$ is the centroid of $\triangle ABX$
+
+• $Z$ is the centroid of $\triangle BCY$
+
+• $X$ is the centroid of $\triangle CAZ$
+
+What is the area of $\triangle XYZ$?
+=== geometry-division-2-7
+Let $\Gamma_1,\Gamma_2,\Gamma_3$ be three pairwise externally tangent circles with radii $1,2,3$, respectively. A circle passes through the centers of $\Gamma_2$ and $\Gamma_3$ and is externally tangent to $\Gamma_1$ at a point $P$. Suppose $A$ and $B$ are the centers of $\Gamma_2$ and $\Gamma_3$, respectively. What is the value of $\dfrac{PA^2}{PB^2}$?
+=== geometry-division-2-8
+Let $A$ and $B$ be points on circle $\Gamma$ such that $AB=\sqrt{10}$. Point $C$ is outside $\Gamma$ such that $\triangle ABC$ is equilateral. Let $D$ be a point on $\Gamma$ and suppose the line through $C$ and $D$ intersects $AB$ and $\Gamma$ again at points $E$ and $F\ne D$. It is given that points $C,D,E,F$ are collinear in that order and that $CD=DE=EF$. What is the area of $\Gamma$?

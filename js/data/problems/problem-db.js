@@ -6723,7 +6723,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2018 CMIMC Computer Science, Problem 10", formulas: ["tree-basics", "casework-method"], strategy: "", tree: ["cp.graph.basic.trees"] },
   // ---- 2018 CMIMC Geometry. Topics, cards and rating only (Step H); the official PDFs are linked by the app.
   { ref: "2018 CMIMC Geometry, Problem 1", formulas: ["angle-chasing"], strategy: "", tree: ["geo.tri.special.isos"] },
-  { ref: "2018 CMIMC Geometry, Problem 2", formulas: ["angle-bisector-theorem", "derivative-extremum"], strategy: "", tree: ["geo.comb.extreme.maxmin"] },
+  { ref: "2018 CMIMC Geometry, Problem 2", formulas: ["angle-bisector-theorem"], strategy: "", tree: ["geo.comb.extreme.maxmin"] },
   { ref: "2018 CMIMC Geometry, Problem 3", formulas: ["law-of-sines", "herons-formula"], strategy: "", tree: ["geo.tri.trig.sines"] },
   { ref: "2018 CMIMC Geometry, Problem 4", formulas: ["composing-rotations"], strategy: "", tree: ["geo.coord.transform.rotate"] },
   { ref: "2018 CMIMC Geometry, Problem 5", formulas: ["reflection-coordinates", "distance-3d"], strategy: "", tree: ["geo.solid.coord.dist"] },
@@ -6740,7 +6740,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2018 CMIMC Number Theory, Problem 5", formulas: ["binomial-row-sums", "casework-method"], strategy: "", tree: ["cp.binom.identity.hockey"] },
   { ref: "2018 CMIMC Number Theory, Problem 6", formulas: ["eulers-totient"], strategy: "", tree: ["nt.divisor.phi.phi"] },
   { ref: "2018 CMIMC Number Theory, Problem 7", formulas: ["multiplicative-order", "repeating-decimals"], strategy: "", tree: ["nt.digit.decimal.repeat"] },
-  { ref: "2018 CMIMC Number Theory, Problem 8", formulas: ["cubes-minus-3abc", "only-even-prime"], strategy: "", tree: ["nt.dio.bound.size"] },
+  { ref: "2018 CMIMC Number Theory, Problem 8", formulas: ["modular-basics", "only-even-prime"], strategy: "", tree: ["nt.dio.bound.size"] },
   { ref: "2018 CMIMC Number Theory, Problem 9", formulas: ["totient-divisor-sum", "geometric-series"], strategy: "", tree: ["nt.divisor.phi.mult"] },
   { ref: "2018 CMIMC Number Theory, Problem 10", formulas: ["cyclotomic-polynomials", "roots-of-unity"], strategy: "", tree: ["alg.cx.unity.poly"] },
   // ---- 2019 CMIMC Algebra and Number Theory. Topics, cards and rating only (Step H); the official PDFs are linked by the app.
@@ -6828,7 +6828,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2021 CMIMC Algebra and Number Theory Division 2, Problem 7", formulas: ["sum-of-divisors", "multiplicative-functions"], strategy: "", tree: ["nt.divisor.count.sigma"] },
   { ref: "2021 CMIMC Algebra and Number Theory Division 2, Problem 8", formulas: ["reflect-across-the-line"], strategy: "", tree: ["geo.comb.extreme.path"] },
   // ---- 2021 CMIMC Combinatorics and Computer Science Division 1. Topics, cards and rating only (Step H); the official PDFs are linked by the app.
-  { ref: "2021 CMIMC Combinatorics and Computer Science Division 1, Problem 1", formulas: ["expected-value", "hockey-stick"], strategy: "", tree: ["cp.exp.basic"] },
+  { ref: "2021 CMIMC Combinatorics and Computer Science Division 1, Problem 1", formulas: ["stars-and-bars", "casework-method"], strategy: "", tree: ["cp.basic.comb.gaps"] },
   { ref: "2021 CMIMC Combinatorics and Computer Science Division 1, Problem 2", formulas: ["indicator-variables"], strategy: "", tree: ["cp.exp.linear"] },
   { ref: "2021 CMIMC Combinatorics and Computer Science Division 1, Problem 3", formulas: ["casework-method", "modular-basics"], strategy: "", tree: ["cp.basic.perm.restrict"] },
   { ref: "2021 CMIMC Combinatorics and Computer Science Division 1, Problem 4", formulas: ["binomial-probability", "generating-function-method"], strategy: "", tree: ["cp.prob.dice.dice"] },
@@ -6839,7 +6839,7 @@ window.MATH_PROBLEM_DB = [
   // ---- 2021 CMIMC Combinatorics and Computer Science Division 2. Topics, cards and rating only (Step H); the official PDFs are linked by the app.
   { ref: "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 1", formulas: ["casework-method"], strategy: "", tree: ["cp.struct.paths.walks"] },
   { ref: "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 2", formulas: ["counting-functions"], strategy: "", tree: ["cp.basic.principle.mult"] },
-  { ref: "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 3", formulas: ["expected-value", "hockey-stick"], strategy: "", tree: ["cp.exp.basic"] },
+  { ref: "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 3", formulas: ["stars-and-bars", "casework-method"], strategy: "", tree: ["cp.basic.comb.gaps"] },
   { ref: "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 4", formulas: ["casework-method"], strategy: "", tree: ["cp.basic.comb.condition"] },
   { ref: "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 5", formulas: ["gamblers-ruin", "expected-value"], strategy: "", tree: ["cp.prob.process.walk"] },
   { ref: "2021 CMIMC Combinatorics and Computer Science Division 2, Problem 6", formulas: ["indicator-variables"], strategy: "", tree: ["cp.exp.linear"] },

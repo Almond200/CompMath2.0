@@ -1,0 +1,149 @@
+// Problems and diagrams © 2017 Carnegie Mellon Informatics and Mathematics Competition. Reproduced with permission from the Carnegie Mellon Informatics and Mathematics Competition.
+// Source: the official CMIMC tests. Built by tools/statements/build.py from tools/statements/spec/cmimc/2017.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2017-cmimc-algebra-1": { s: String.raw`The residents of the local zoo are either rabbits or foxes. The ratio of foxes to rabbits in the zoo is $2:3$. After $10$ of the foxes move out of town and half the rabbits move to Rabbitretreat, the ratio of foxes to rabbits is $13:10$. How many animals are left in the zoo?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Algebra.pdf" },
+"2017-cmimc-algebra-2": { s: String.raw`For nonzero real numbers $x$ and $y$, define $x\circ y=\dfrac{xy}{x+y}$. Compute
+$$2^1\circ\left(2^2\circ\left(2^3\circ\cdots\circ\left(2^{2016}\circ 2^{2017}\right)\right)\right).$$`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Algebra.pdf" },
+"2017-cmimc-algebra-3": { s: String.raw`Suppose $P(x)$ is a quadratic polynomial with integer coefficients satisfying the identity
+$$P(P(x))-P(x)^2=x^2+x+2016$$
+for all real $x$. What is $P(1)$?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Algebra.pdf" },
+"2017-cmimc-algebra-4": { s: String.raw`It is well known that the mathematical constant $e$ can be written in the form $e=\frac{1}{0!}+\frac{1}{1!}+\frac{1}{2!}+\cdots$. With this in mind, determine the value of
+$$\sum_{j=3}^{\infty}\frac{j}{\lfloor\frac{j}{2}\rfloor!}.$$
+Express your answer in terms of $e$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Algebra.pdf" },
+"2017-cmimc-algebra-5": { s: String.raw`The set $S$ of positive real numbers $x$ such that
+$$\left\lfloor\frac{2x}{5}\right\rfloor+\left\lfloor\frac{3x}{5}\right\rfloor+1=\lfloor x\rfloor$$
+can be written as $S=\bigcup_{j=1}^{\infty}I_j$, where the $I_i$ are disjoint intervals of the form $[a_i,b_i)=\{x\mid a_i\le x<b_i\}$ and $b_i\le a_{i+1}$ for all $i\ge 1$. Find $\sum_{i=1}^{2017}(b_i-a_i)$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Algebra.pdf" },
+"2017-cmimc-algebra-6": { s: String.raw`Suppose $P$ is a quintic polynomial with real coefficients with $P(0)=2$ and $P(1)=3$ such that $|z|=1$ whenever $z$ is a complex number satisfying $P(z)=0$. What is the smallest possible value of $P(2)$ over all such polynomials $P$?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Algebra.pdf" },
+"2017-cmimc-algebra-7": { s: String.raw`Let $a$, $b$, and $c$ be complex numbers satisfying the system of equations
+$$\begin{gathered}\frac{a}{b+c}+\frac{b}{c+a}+\frac{c}{a+b}=9,\\ \frac{a^2}{b+c}+\frac{b^2}{c+a}+\frac{c^2}{a+b}=32,\\ \frac{a^3}{b+c}+\frac{b^3}{c+a}+\frac{c^3}{a+b}=122.\end{gathered}$$
+Find $abc$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Algebra.pdf" },
+"2017-cmimc-algebra-8": { s: String.raw`Suppose $a_1,a_2,\dots,a_{10}$ are nonnegative integers such that
+$$\sum_{k=1}^{10}a_k=15\qquad\text{and}\qquad\sum_{k=1}^{10}ka_k=80.$$
+Let $M$ and $m$ denote the maximum and minimum respectively of $\sum_{k=1}^{10}k^2a_k$. Compute $M-m$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Algebra.pdf" },
+"2017-cmimc-algebra-9": { s: String.raw`Define a sequence $\{a_n\}_{n=1}^{\infty}$ via $a_1=1$ and $a_{n+1}=a_n+\lfloor\sqrt{a_n}\rfloor$ for all $n\ge 1$. What is the smallest $N$ such that $a_N>2017$?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Algebra.pdf" },
+"2017-cmimc-algebra-10": { s: String.raw`Let $c$ denote the largest possible real number such that there exists a nonconstant polynomial $P$ with
+$$P(z^2)=P(z-c)P(z+c)$$
+for all $z$. Compute the sum of all values of $P\left(\frac13\right)$ over all nonconstant polynomials $P$ satisfying the above constraint for this $c$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Algebra.pdf" },
+"2017-cmimc-combinatorics-1": { s: String.raw`Robert colors each square in an empty $3$ by $3$ grid either red or green. Find the number of colorings such that no row or column contains more than one green square.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Combinatorics.pdf" },
+"2017-cmimc-combinatorics-2": { s: String.raw`Let $S$ be a subset of $\{1,2,\dots,2017\}$ such that for any two distinct elements in $S$, both their sum and product are not divisible by seven. Compute the maximum number of elements that can be in $S$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Combinatorics.pdf" },
+"2017-cmimc-combinatorics-3": { s: String.raw`Annie stands at one vertex of a regular hexagon. Every second, she moves independently to one of the two vertices adjacent to her, each with equal probability. Determine the probability that she is at her starting position after ten seconds.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Combinatorics.pdf" },
+"2017-cmimc-combinatorics-4": { s: String.raw`At a certain pizzeria, there are five different toppings available and a pizza can be ordered with any (possibly empty) subset of them on it. In how many ways can one order an unordered pair of pizzas such that at most one topping appears on both pizzas and at least one topping appears on neither?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Combinatorics.pdf" },
+"2017-cmimc-combinatorics-5": { s: String.raw`Emily draws six dots on a piece of paper such that no three lie on a straight line, then draws a line segment connecting each pair of dots. She then colors five of these segments red. Her coloring is said to be red-triangle-free if for every set of three points from her six drawn points there exists an uncolored segment connecting two of the three points. In how many ways can Emily color her drawing such that it is red-triangle-free?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Combinatorics.pdf" },
+"2017-cmimc-combinatorics-6": { s: String.raw`Boris plays a game in which he rolls two standard four-sided dice independently and at random, and at the end of the game receives a number of dollars equal to the product of the two rolled numbers. After the initial roll of both dice, however, he can pay two dollars to reroll one die of choice, and he is allowed to pay to reroll as many times as he wishes. If Boris plays to maximize his expected gain, how much money, in dollars, can he expect to win by playing once?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Combinatorics.pdf" },
+"2017-cmimc-combinatorics-7": { s: String.raw`Given a finite set $S\subset\mathbb{R}^3$, define $f(S)$ to be the miniumum integer $k$ such that there exist $k$ planes that divide $\mathbb{R}^3$ into a set of regions, where no region contains more than one point in $S$. Suppose that
+$$M(n)=\max\{f(S):|S|=n\}\quad\text{and}\quad m(n)=\min\{f(S):|S|=n\}.$$
+Evaluate $M(200)\cdot m(200)$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Combinatorics.pdf" },
+"2017-cmimc-combinatorics-8": { s: String.raw`Andrew generates a finite random sequence $\{a_n\}$ of distinct integers according to the following criteria:
+
+• $a_0=1$, $0<|a_n|<7$ for all $n$, and $a_i\ne a_j$ for all $i<j$.
+
+• $a_{n+1}$ is selected uniformly at random from the set $\{a_n-1,a_n+1,-a_n\}$, conditioned on the above rule. The sequence terminates if no element of the set satisfies the first condition.
+
+For example, if $(a_0,a_1)=(1,2)$, then $a_2$ would be chosen from the set $\{-2,3\}$, each with probability $\frac12$. Determine the probability that there exists an integer $k$ such that $a_k=6$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Combinatorics.pdf" },
+"2017-cmimc-combinatorics-9": { s: String.raw`At a conference, six people place their name badges in a hat, which is shaken up; one badge is then distributed to each person such that each distribution is equally likely. Each turn, every person who does not yet have their own badge finds the person whose badge they have and takes that person's badge. For example, if Alice has Bob's badge and Bob has Charlie's badge, Alice would have Charlie's badge after a turn. Compute the probability that everyone will eventually end up with their own badge.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Combinatorics.pdf" },
+"2017-cmimc-combinatorics-10": { s: String.raw`Ryan stands on the bottom-left square of a $2017$ by $2017$ grid of squares, where each square is colored either black, gray, or white according to the pattern as depicted to the right. Each second he moves either one square up, one square to the right, or both one up and to the right, selecting between these three options uniformly and independently. Noting that he begins on a black square, find the probability that Ryan is still on a black square after $2017$ seconds.
+
+@@fig:cmimc/2017/combinatorics-10.png@@`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Combinatorics.pdf" },
+"2017-cmimc-computer-science-1": { s: String.raw`What is the minimum number of times you have to take your pencil off the paper to draw the following figure (the dots are for decoration)? You must lift your pencil off the paper after you're done, and this is included in the number of times you take your pencil off the paper. You're not allowed to draw over an edge twice.
+
+@@fig:cmimc/2017/computerscience-1.png@@`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_ComputerScience.pdf" },
+"2017-cmimc-computer-science-2": { s: String.raw`We are given the following function $f$, which takes a list of integers and outputs another list of integers. (Note that here the list is zero-indexed.)
+
+$f(A)$:
+• For $i=1,\dots,\text{length}(A)-1$:
+• • $A[i]\leftarrow A[A[i]]$
+• $A[0]\leftarrow A[0]-1$
+• Return $A$.
+
+Suppose the list $B$ is equal to $[0,1,2,8,2,0,1,7,0]$. In how many entries do $B$ and $f(B)$ differ?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_ComputerScience.pdf" },
+"2017-cmimc-computer-science-3": { s: String.raw`In the following list of numbers (given in their binary representations), each number appears an even number of times, except for one number that appears exactly three times. Find the number that appears exactly three times. Leave the answer in its binary representation.
+
+$$\begin{array}{llllll}
+010111&000001&100000&011000&110101&100001\\
+010100&011111&111001&010001&010100&101100\\
+010001&011011&011111&011011&100000&000001\\
+110011&001000&111101&100001&101100&110011\\
+111111&011000&001000&101000&111111&101000\\
+010111&100011&111001&100011&110101&011111\\
+100000&010100&010001&101100&010111&011011\\
+011000&111101&111111&100001&101000&100011\\
+011011&010111&110011&111111&000001&010001\\
+101000&111001&010100&110101&011000&110101\\
+001000&000001&100000&111101&100011&001000\\
+111001&110011&100001&011111&101100&
+\end{array}$$`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_ComputerScience.pdf" },
+"2017-cmimc-computer-science-4": { s: String.raw`How many complete directed graphs with vertex set $V=\{1,2,3,4,5,6\}$ contain no $3$-cycles?
+
+A graph is directed if all edges have a direction (e.g. from $u$ to $v$ rather than between $u$ and $v$), and complete if every pair of vertices has an edge between them. Further, a $3$-cycle in a directed graph is a triple $(u,v,w)$ of vertices such that there are edges from $u$ to $v$, $v$ to $w$, and $w$ to $u$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_ComputerScience.pdf" },
+"2017-cmimc-computer-science-5": { s: String.raw`Given a list $A$ of $n$ real numbers, the following algorithm, known as insertion sort, sorts the elements of $A$ from least to greatest.
+
+$IS(A)$:
+• For $i=0,\dots,n-1$:
+• • $j\leftarrow i$
+• • While $j>0$ and $A[j-1]>A[j]$:
+• • • Swap $A[j],A[j-1]$
+• • • $j\leftarrow j-1$
+• Return $A$.
+
+As $A$ ranges over all permutations of $\{1,2,\dots,n\}$, let $f(n)$ denote the expected number of comparisons (i.e., checking which of two elements is greater) that need to be made when sorting $A$ with insertion sort. Evaluate $f(13)-f(12)$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_ComputerScience.pdf" },
+"2017-cmimc-computer-science-6": { s: String.raw`Define a self-balanced tree to be a tree such that for any node, the size of the left subtree is within $1$ of the size of the right subtree. How many balanced trees are there of size $2046$?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_ComputerScience.pdf" },
+"2017-cmimc-computer-science-7": { s: String.raw`You are presented with a mystery function $f:\mathbb{N}^2\to\mathbb{N}$ which is known to satisfy
+$$f(x+1,y)>f(x,y)\quad\text{and}\quad f(x,y+1)>f(x,y)$$
+for all $(x,y)\in\mathbb{N}^2$. I will tell you the value of $f(x,y)$ for $\$1$. What's the minimum cost, in dollars, that it takes to compute the $19$th smallest element of $\{f(x,y)\mid(x,y)\in\mathbb{N}^2\}$? Here, $\mathbb{N}=\{1,2,3,\dots\}$ denotes the set of positive integers.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_ComputerScience.pdf" },
+"2017-cmimc-computer-science-8": { s: String.raw`We have a collection of $1720$ balls, half of which are black and half of which are white, aligned in a straight line. Our task is to make the balls alternating in color along the line. The following greedy algorithm accomplishes that task for $2n$ balls:
+
+• For $i$ in $2,3,\dots,2n$:
+• • If balls $i-1$ and $i$ have the same color:
+• • • $j\leftarrow$ smallest index greater than $i$ for which balls $i-1$ and $j$ have different colors
+• • • Swap balls $i$ and $j$.
+
+Given a configuration $C$ of our $1720$ balls, let $\hat\sigma(C)$ denote the number of swaps the greedy algorithm takes, and let $\sigma(C)$ denote the minimum number of swaps actually necessary to perform the task. Find the maximum value over all configurations $C$ of $\hat\sigma(C)-\sigma(C)$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_ComputerScience.pdf" },
+"2017-cmimc-computer-science-9": { s: String.raw`Alice thinks of an integer $1\le n\le 2048$. Bob asks $k$ true or false questions about Alice's integer; Alice then answers each of the questions, but she may lie on at most one question. What is the minimum value of $k$ for which Bob can guarantee he knows Alice's integer after she answers?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_ComputerScience.pdf" },
+"2017-cmimc-computer-science-10": { s: String.raw`How many distinct spanning trees does the graph below have? Recall that a spanning tree of a graph $G$ is a subgraph of $G$ that is a tree and containing all the vertices of $G$.
+
+@@fig:cmimc/2017/computerscience-10.png@@`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_ComputerScience.pdf" },
+"2017-cmimc-geometry-1": { s: String.raw`Let $ABC$ be a triangle with $\angle BAC=117^\circ$. The angle bisector of $\angle ABC$ intersects side $AC$ at $D$. Suppose $\triangle ABD\sim\triangle ACB$. Compute the measure of $\angle ABC$, in degrees.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Geometry.pdf" },
+"2017-cmimc-geometry-2": { s: String.raw`Triangle $ABC$ has an obtuse angle at $\angle A$. Points $D$ and $E$ are placed on $\overline{BC}$ in the order $B,D,E,C$ such that $\angle BAD=\angle BCA$ and $\angle CAE=\angle CBA$. If $AB=10$, $AC=11$, and $DE=4$, determine $BC$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Geometry.pdf" },
+"2017-cmimc-geometry-3": { s: String.raw`In acute triangle $ABC$, points $D$ and $E$ are the feet of the angle bisector and altitude from $A$ respectively. Suppose that $AC-AB=36$ and $DC-DB=24$. Compute $EC-EB$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Geometry.pdf" },
+"2017-cmimc-geometry-4": { s: String.raw`Let $\mathcal{S}$ be the sphere with center $(0,0,1)$ and radius $1$ in $\mathbb{R}^3$. A plane $\mathcal{P}$ is tangent to $\mathcal{S}$ at the point $(x_0,y_0,z_0)$, where $x_0$, $y_0$, and $z_0$ are all positive. Suppose the intersection of plane $\mathcal{P}$ with the $xy$-plane is the line with equation $2x+y=10$ in $xy$-space. What is $z_0$?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Geometry.pdf" },
+"2017-cmimc-geometry-5": { s: String.raw`Two circles $\omega_1$ and $\omega_2$ are said to be orthogonal if they intersect each other at right angles. In other words, for any point $P$ lying on both $\omega_1$ and $\omega_2$, if $\ell_1$ is the line tangent to $\omega_1$ at $P$ and $\ell_2$ is the line tangent to $\omega_2$ at $P$, then $\ell_1\perp\ell_2$. (Two circles which do not intersect are not orthogonal.)
+
+Let $\triangle ABC$ be a triangle with area $20$. Orthogonal circles $\omega_B$ and $\omega_C$ are drawn with $\omega_B$ centered at $B$ and $\omega_C$ centered at $C$. Points $T_B$ and $T_C$ are placed on $\omega_B$ and $\omega_C$ respectively such that $AT_B$ is tangent to $\omega_B$ and $AT_C$ is tangent to $\omega_C$. If $AT_B=7$ and $AT_C=11$, what is $\tan\angle BAC$?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Geometry.pdf" },
+"2017-cmimc-geometry-6": { s: String.raw`Cyclic quadrilateral $ABCD$ satisfies $\angle ABD=70^\circ$, $\angle ADB=50^\circ$, and $BC=CD$. Suppose $AB$ intersects $CD$ at point $P$, while $AD$ intersects $BC$ at point $Q$. Compute $\angle APQ-\angle AQP$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Geometry.pdf" },
+"2017-cmimc-geometry-7": { s: String.raw`Two non-intersecting circles, $\omega$ and $\Omega$, have centers $C_\omega$ and $C_\Omega$ respectively. It is given that the radius of $\Omega$ is strictly larger than the radius of $\omega$. The two common external tangents of $\Omega$ and $\omega$ intersect at a point $P$, and an internal tangent of the two circles intersects the common external tangents at $X$ and $Y$. Suppose that the radius of $\omega$ is $4$, the circumradius of $\triangle PXY$ is $9$, and $XY$ bisects $\overline{PC_\Omega}$. Compute $XY$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Geometry.pdf" },
+"2017-cmimc-geometry-8": { s: String.raw`In triangle $ABC$ with $AB=23$, $AC=27$, and $BC=20$, let $D$ be the foot of the $A$ altitude. Let $\mathcal{P}$ be the parabola with focus $A$ passing through $B$ and $C$, and denote by $T$ the intersection point of $AD$ with the directrix of $\mathcal{P}$. Determine the value of $DT^2-DA^2$. (Recall that a parabola $\mathcal{P}$ is the set of points which are equidistant from a point, called the focus of $\mathcal{P}$, and a line, called the directrix of $\mathcal{P}$.)`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Geometry.pdf" },
+"2017-cmimc-geometry-9": { s: String.raw`Let $\triangle ABC$ be an acute triangle with circumcenter $O$, and let $Q\ne A$ denote the point on $\odot(ABC)$ for which $AQ\perp BC$. The circumcircle of $\triangle BOC$ intersects lines $AC$ and $AB$ for the second time at $D$ and $E$ respectively. Suppose that $AQ$, $BC$, and $DE$ are concurrent. If $OD=3$ and $OE=7$, compute $AQ$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Geometry.pdf" },
+"2017-cmimc-geometry-10": { s: String.raw`Suppose $\triangle ABC$ is such that $AB=13$, $AC=15$, and $BC=14$. It is given that there exists a unique point $D$ on side $\overline{BC}$ such that the Euler lines of $\triangle ABD$ and $\triangle ACD$ are parallel. Determine the value of $\dfrac{BD}{CD}$. (The Euler line of a triangle $ABC$ is the line connecting the centroid, circumcenter, and orthocenter of $ABC$.)`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_Geometry.pdf" },
+"2017-cmimc-number-theory-1": { s: String.raw`There exist two distinct positive integers, both of which are divisors of $10^{10}$, with sum equal to $157$. What are they?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_NumberTheory.pdf" },
+"2017-cmimc-number-theory-2": { s: String.raw`Determine all possible values of $m+n$, where $m$ and $n$ are positive integers satisfying
+$$\operatorname{lcm}(m,n)-\gcd(m,n)=103.$$`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_NumberTheory.pdf" },
+"2017-cmimc-number-theory-3": { s: String.raw`For how many triples of positive integers $(a,b,c)$ with $1\le a,b,c\le 5$ is the quantity
+$$(a+b)(a+c)(b+c)$$
+not divisible by $4$?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_NumberTheory.pdf" },
+"2017-cmimc-number-theory-4": { s: String.raw`Let $a_1,a_2,a_3,a_4,a_5$ be positive integers such that $a_1,a_2,a_3$ and $a_3,a_4,a_5$ are both geometric sequences and $a_1,a_3,a_5$ is an arithmetic sequence. If $a_3=1575$, find all possible values of $|a_4-a_2|$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_NumberTheory.pdf" },
+"2017-cmimc-number-theory-5": { s: String.raw`One can define the greatest common divisor of two positive rational numbers as follows: for $a$, $b$, $c$, and $d$ positive integers with $\gcd(a,b)=\gcd(c,d)=1$, write
+$$\gcd\left(\frac{a}{b},\frac{c}{d}\right)=\frac{\gcd(ad,bc)}{bd}.$$
+For all positive integers $K$, let $f(K)$ denote the number of ordered pairs of positive rational numbers $(m,n)$ with $m<1$ and $n<1$ such that
+$$\gcd(m,n)=\frac{1}{K}.$$
+What is $f(2017)-f(2016)$?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_NumberTheory.pdf" },
+"2017-cmimc-number-theory-6": { s: String.raw`Find the largest positive integer $N$ satisfying the following properties:
+
+• $N$ is divisible by $7$;
+
+• Swapping the $i^{\text{th}}$ and $j^{\text{th}}$ digits of $N$ (for any $i$ and $j$ with $i\ne j$) gives an integer which is not divisible by $7$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_NumberTheory.pdf" },
+"2017-cmimc-number-theory-7": { s: String.raw`The arithmetic derivative $D(n)$ of a positive integer $n$ is defined via the following rules:
+
+• $D(1)=0$;
+
+• $D(p)=1$ for all primes $p$;
+
+• $D(ab)=D(a)b+aD(b)$ for all positive integers $a$ and $b$.
+
+Find the sum of all positive integers $n$ below $1000$ satisfying $D(n)=n$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_NumberTheory.pdf" },
+"2017-cmimc-number-theory-8": { s: String.raw`Let $N$ be the number of ordered triples $(a,b,c)\in\{1,\dots,2016\}^3$ such that $a^2+b^2+c^2\equiv 0\pmod{2017}$. What are the last three digits of $N$?`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_NumberTheory.pdf" },
+"2017-cmimc-number-theory-9": { s: String.raw`Find the smallest prime $p$ for which there exist positive integers $a,b$ such that
+$$a^2+p^3=b^4.$$`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_NumberTheory.pdf" },
+"2017-cmimc-number-theory-10": { s: String.raw`For each positive integer $n$, define
+$$g(n)=\gcd\{0!n!,1!(n-1)!,2!(n-2)!,\dots,k!(n-k)!,\dots,n!0!\}.$$
+Find the sum of all $n\le 25$ for which $g(n)=g(n+1)$.`, u: "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2017_NumberTheory.pdf" },
+});

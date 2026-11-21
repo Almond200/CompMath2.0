@@ -1,0 +1,125 @@
+=== algebra-and-number-theory-division-1-1
+How many multiples of $12$ divide $12!$ and have exactly $12$ divisors?
+=== algebra-and-number-theory-division-1-2
+Suppose there are $160$ pigeons and $n$ holes. The 1st pigeon flies to the 1st hole, the 2nd pigeon flies to the 4th hole, and so on, such that the $i$th pigeon flies to the $(i^2\bmod n)$th hole, where $k\bmod n$ is the remainder when $k$ is divided by $n$. What is minimum $n$ such that there is at most one pigeon per hole?
+=== algebra-and-number-theory-division-1-3
+Let $a$ and $b$ be complex numbers such that $(a+1)(b+1)=2$ and $(a^2+1)(b^2+1)=32$. Compute the sum of all possible values of $(a^4+1)(b^4+1)$.
+=== algebra-and-number-theory-division-1-4
+Let $f(x)=\frac{x^2}{8}$. Starting at the point $(7,3)$, what is the length of the shortest path that touches the graph of $f$, and then the $x$-axis?
+=== algebra-and-number-theory-division-1-5
+Suppose $f$ is a degree $42$ polynomial such that for all integers $0\le i\le 42$,
+$$f(i)+f(43+i)+f(2\cdot 43+i)+\cdots+f(46\cdot 43+i)=(-2)^i.$$
+Find $f(2021)-f(0)$.
+=== algebra-and-number-theory-division-1-6
+Find the remainder when
+$$\left\lfloor\frac{149^{151}+151^{149}}{22499}\right\rfloor$$
+is divided by $10^4$.
+=== algebra-and-number-theory-division-1-7
+As a gift, Dilhan was given the number $n=1^1\cdot 2^2\cdots 2021^{2021}$, and each day, he has been dividing $n$ by $2021!$ exactly once. One day, when he did this, he discovered that, for the first time, $n$ was no longer an integer, but instead a reduced fraction of the form $\frac{a}{b}$. What is the sum of all distinct prime factors of $b$?
+=== algebra-and-number-theory-division-1-8
+There are integers $v,w,x,y,z$ and real numbers $0\le\theta<\theta'\le\pi$ such that
+$$\cos 3\theta=\cos 3\theta'=v^{-1},\qquad w+x\cos\theta+y\cos 2\theta=z\cos\theta'.$$
+Given that $z\ne 0$ and $v$ is positive, find the sum of the $4$ smallest possible values of $v$.
+=== algebra-and-number-theory-division-2-1
+Find the unique $3$ digit number $N=\underline{A}\,\underline{B}\,\underline{C}$, whose digits $(A,B,C)$ are all nonzero, with the property that the product $P=\underline{A}\,\underline{B}\,\underline{C}\times\underline{A}\,\underline{B}\times\underline{A}$ is divisible by $1000$.
+=== algebra-and-number-theory-division-2-2
+Suppose $a,b$ are positive real numbers such that $a+a^2=1$ and $b^2+b^4=1$. Compute $a^2+b^2$.
+=== algebra-and-number-theory-division-2-3
+How many multiples of $12$ divide $12!$ and have exactly $12$ divisors?
+=== algebra-and-number-theory-division-2-4
+What is the $101$st smallest integer which can be represented in the form $3^a+3^b+3^c$, where $a$, $b$, and $c$ are integers?
+=== algebra-and-number-theory-division-2-5
+Suppose there are $160$ pigeons and $n$ holes. The 1st pigeon flies to the 1st hole, the 2nd pigeon flies to the 4th hole, and so on, such that the $i$th pigeon flies to the $(i^2\bmod n)$th hole, where $k\bmod n$ is the remainder when $k$ is divided by $n$. What is minimum $n$ such that there is at most one pigeon per hole?
+=== algebra-and-number-theory-division-2-6
+Let $a$ and $b$ be complex numbers such that $(a+1)(b+1)=2$ and $(a^2+1)(b^2+1)=32$. Compute the sum of all possible values of $(a^4+1)(b^4+1)$.
+=== algebra-and-number-theory-division-2-7
+For each positive integer $n$, let $\sigma(n)$ denote the sum of the positive integer divisors of $n$. How many positive integers $n\le 2021$ satisfy
+$$\sigma(3n)\ge\sigma(n)+\sigma(2n)?$$
+=== algebra-and-number-theory-division-2-8
+Let $f(x)=\frac{x^2}{8}$. Starting at the point $(7,3)$, what is the length of the shortest path that touches the graph of $f$, and then the $x$-axis?
+=== combinatorics-and-computer-science-division-1-1
+Adam has a box with $15$ pool balls in it, numbered from $1$ to $15$, and picks out $5$ of them. He then sorts them in increasing order, takes the four differences between each pair of adjacent balls, and finds exactly two of these differences are equal to $1$. How many selections of $5$ balls could he have drawn from the box?
+=== combinatorics-and-computer-science-division-1-2
+Adam is playing Minesweeper on a $9\times 9$ grid of squares, where exactly $\frac13$ (or $27$) of the squares are mines (generated uniformly at random over all such boards). Every time he clicks on a square, it is either a mine, in which case he loses, or it shows a number saying how many of the (up to eight) adjacent squares are mines.
+
+First, he clicks the square directly above the center square, which shows the number $4$. Next, he clicks the square directly below the center square, which shows the number $1$. What is the probability that the center square is a mine?
+=== combinatorics-and-computer-science-division-1-3
+How many permutations of the string 0123456 are there such that no contiguous substrings of lengths $1<\ell<7$ have a sum of digits divisible by $7$?
+=== combinatorics-and-computer-science-division-1-4
+Suppose you have a $6$ sided dice with $3$ faces colored red, $2$ faces colored blue, and $1$ face colored green. You roll this dice $20$ times and record the color that shows up on top. What is the expected value of the product of the number of red faces, blue faces, and green faces?
+=== combinatorics-and-computer-science-division-1-5
+There are exactly $7$ possible tetrominos (groups of $4$ connected squares in a grid):
+
+@@fig:cmimc2021_combinatoricsandcomputersciencedivision1-5.png@@
+
+Daniel has a $2\times 20210$ rectangle and wants to tile the interior with tetrominos without overlaps, pieces sticking out, or extra pieces left over. Note that you are allowed to rotate tetrominos but not reflect them. For how many multisets of tetrominos (ie. an ordered tuple of how many of each tile he has) is it possible to exactly tile his $2\times 20210$ rectangle?
+=== combinatorics-and-computer-science-division-1-6
+Alice and Bob each flip $20$ fair coins. Given that Alice flipped at least as many heads as Bob, what is the expected number of heads that Alice flipped?
+=== combinatorics-and-computer-science-division-1-7
+How many non-decreasing tuples of integers $(a_1,a_2,\dots,a_{16})$ are there such that $0\le a_i\le 16$ for all $i$, and the sum of all $a_i$ is even?
+=== combinatorics-and-computer-science-division-1-8
+An augmentation on a graph $G$ is defined as doing the following:
+
+• Take some set $D$ of vertices in $G$, and duplicate each vertex $v_i\in D$ to create a new vertex $v_i'$.
+
+• If there's an edge between a pair of vertices $v_i,v_j\in D$, create an edge between vertices $v_i'$ and $v_j'$. If there's an edge between a pair of vertices $v_i\in D$, $v_j\notin D$, you can choose to create an edge between $v_i'$ and $v_j$ but do not have to.
+
+A graph is called reachable from $G$ if it can be created through some sequence of augmentations on $G$. Some graph $H$ has $n$ vertices and satisfies that both $H$ and the complement of $H$ are reachable from a complete graph of $2021$ vertices. If the maximum and minimum values of $n$ are $M$ and $m$, find $M+m$.
+=== combinatorics-and-computer-science-division-2-1
+We have a $9$ by $9$ chessboard with $9$ kings (which can move to any of $8$ adjacent squares) in the bottom row. What is the minimum number of moves, if two pieces cannot occupy the same square at the same time, to move all the kings into an $X$ shape (a $5\times 5$ region where there are $5$ kings along each diagonal of the $X$, as shown below)?
+
+@@fig:cmimc2021_combinatoricsandcomputersciencedivision2-1.png@@
+=== combinatorics-and-computer-science-division-2-2
+Dilhan has objects of $3$ types, $A$, $B$, and $C$, and $6$ functions
+$$f_{A,B},\ f_{A,C},\ f_{B,A},\ f_{B,C},\ f_{C,A},\ f_{C,B}$$
+where $f_{X,Y}$ takes in an object of type $X$ and outputs an object of type $Y$. Dilhan wants to compose his $6$ functions, without repeats, such that the resulting expression is well-typed, meaning an object can be taken in by the first function, and the resulting output can then be taken in by the second function, and so on. In how many orders can he compose his $6$ functions, satisfying this constraint?
+=== combinatorics-and-computer-science-division-2-3
+Adam has a box with $15$ pool balls in it, numbered from $1$ to $15$, and picks out $5$ of them. He then sorts them in increasing order, takes the four differences between each pair of adjacent balls, and finds exactly two of these differences are equal to $1$. How many selections of $5$ balls could he have drawn from the box?
+=== combinatorics-and-computer-science-division-2-4
+Vijay has a stash of different size stones: in particular, he has $2021$ types of stones, with sizes from $0$ through $2020$, and he has $2r+1$ stones of size $r$.
+
+Vijay starts randomly (and without replacement) taking out stones from his stash and laying them out in a line. Vijay notices that the first stone of size $2020$ comes before the first stone of size $2019$, the first stone of size $2019$ is before the first stone of size $2018$, and so on. What is the probability of this happening?
+
+Express your answer in terms of only basic arithmetic operations (division, exponentiation, etc.) and the factorial function.
+=== combinatorics-and-computer-science-division-2-5
+Bill Gates and Jeff Bezos are playing a game. Each turn, a coin is flipped, and if Bill and Jeff have $m,n>0$ dollars, respectively, the winner of the coin toss will take $\min(m,n)$ from the loser. Given that Bill starts with $20$ dollars and Jeff starts with $21$ dollars, what is the probability that Bill ends up with all of the money?
+=== combinatorics-and-computer-science-division-2-6
+Adam is playing Minesweeper on a $9\times 9$ grid of squares, where exactly $\frac13$ (or $27$) of the squares are mines (generated uniformly at random over all such boards). Every time he clicks on a square, it is either a mine, in which case he loses, or it shows a number saying how many of the (up to eight) adjacent squares are mines.
+
+First, he clicks the square directly above the center square, which shows the number $4$. Next, he clicks the square directly below the center square, which shows the number $1$. What is the probability that the center square is a mine?
+=== combinatorics-and-computer-science-division-2-7
+How many permutations of the string 0123456 are there such that no contiguous substrings of lengths $1<\ell<7$ have a sum of digits divisible by $7$?
+=== combinatorics-and-computer-science-division-2-8
+Suppose you have a $6$ sided dice with $3$ faces colored red, $2$ faces colored blue, and $1$ face colored green. You roll this dice $20$ times and record the color that shows up on top. What is the expected value of the product of the number of red faces, blue faces, and green faces?
+=== geometry-division-1-1
+Points $A$, $B$, and $C$ lie on a line, in that order, with $AB=8$ and $BC=2$. $B$ is rotated $20^\circ$ counter-clockwise about $A$ to a point $B'$, tracing out an arc $R_1$. $C$ is then rotated $20^\circ$ clockwise about $A$ to a point $C'$, tracing out an arc $R_2$. What is the area of the region bounded by arc $R_1$, segment $B'C$, arc $R_2$, and segment $C'B$?
+=== geometry-division-1-2
+In convex quadrilateral $ABCD$, $\angle ADC=90^\circ+\angle BAC$. Given that $AB=BC=17$, and $CD=16$, what is the maximum possible area of the quadrilateral?
+=== geometry-division-1-3
+Let $\triangle ABC$ be a triangle with $AB=10$ and $AC=16$, and let $I$ be the intersection of the internal angle bisectors of $\triangle ABC$. Suppose the tangents to the circumcircle of $\triangle BIC$ at $B$ and $C$ intersect at a point $P$ with $PA=8$. Compute the length of $BC$.
+=== geometry-division-1-4
+Let $ABCDEF$ be an equilateral hexagon such that $\triangle ACE\cong\triangle DFB$. Given that $AC=7$, $CE=8$, and $EA=9$, what is the side length of this hexagon?
+=== geometry-division-1-5
+Let $\gamma_1,\gamma_2,\gamma_3$ be three circles with radii $3,4,9$, respectively, such that $\gamma_1$ and $\gamma_2$ are externally tangent at $C$, and $\gamma_3$ is internally tangent to $\gamma_1$ and $\gamma_2$ at $A$ and $B$, respectively. Suppose the tangents to $\gamma_3$ at $A$ and $B$ intersect at $X$. The line through $X$ and $C$ intersect $\gamma_3$ at two points, $P$ and $Q$. Compute the length of $PQ$.
+=== geometry-division-1-6
+Let circles $\omega$ and $\Gamma$, centered at $O_1$ and $O_2$ and having radii $42$ and $54$ respectively, intersect at points $X,Y$, such that $\angle O_1XO_2=105^\circ$. Points $A,B$ lie on $\omega$ and $\Gamma$ respectively such that $\angle O_1XA=\angle AXB=\angle BXO_2$ and $Y$ lies on both minor arcs $XA$ and $XB$. Define $P$ to be the intersection of $AO_2$ and $BO_1$. Suppose $XP$ intersects $AB$ at $C$. What is the value of $\dfrac{AC}{BC}$?
+=== geometry-division-1-7
+Convex pentagon $ABCDE$ has $\overline{BC}=17$, $\overline{AB}=2\overline{CD}$, and $\angle E=90^\circ$. Additionally, $\overline{BD}-\overline{CD}=\overline{AC}$, and $\overline{BD}+\overline{CD}=25$. Let $M$ and $N$ be the midpoints of $BC$ and $AD$ respectively. Ray $EA$ is extended out to point $P$, and a line parallel to $AD$ is drawn through $P$, intersecting line $EM$ at $Q$. Let $G$ be the midpoint of $AQ$. Given that $N$ and $G$ lie on $EM$ and $PM$ respectively, and the perimeter of $\triangle QBC$ is $42$, find the length of $\overline{EM}$.
+=== geometry-division-1-8
+Let $ABC$ be a triangle with $AB<AC$ and $\omega$ be a circle through $A$ tangent to both the $B$-excircle and the $C$-excircle. Let $\omega$ intersect lines $AB,AC$ at $X,Y$ respectively and $X,Y$ lie outside of segments $AB,AC$. Let $O$ be the center of $\omega$ and let $OI_C,OI_B$ intersect line $BC$ at $J,K$ respectively. Suppose $KJ=4$, $KO=16$ and $OJ=13$. Find $\dfrac{[KI_BI_C]}{[JI_BI_C]}$.
+=== geometry-division-2-1
+Triangle $ABC$ has a right angle at $A$, $AB=20$, and $AC=21$. Circles $\omega_A$, $\omega_B$, and $\omega_C$ are centered at $A$, $B$, and $C$ respectively and pass through the midpoint $M$ of $\overline{BC}$. $\omega_A$ and $\omega_B$ intersect at $X\ne M$, and $\omega_A$ and $\omega_C$ intersect at $Y\ne M$. Find $XY$.
+=== geometry-division-2-2
+Points $A$, $B$, and $C$ lie on a line, in that order, with $AB=8$ and $BC=2$. $B$ is rotated $20^\circ$ counter-clockwise about $A$ to a point $B'$, tracing out an arc $R_1$. $C$ is then rotated $20^\circ$ clockwise about $A$ to a point $C'$, tracing out an arc $R_2$. What is the area of the region bounded by arc $R_1$, segment $B'C$, arc $R_2$, and segment $C'B$?
+=== geometry-division-2-3
+Consider trapezoid $ABCD$ which has $AB\parallel CD$ with $AB=5$ and $CD=9$. Moreover, $\angle C=15^\circ$ and $\angle D=75^\circ$. Let $M_1$ be the midpoint of $AB$ and $M_2$ be the midpoint of $CD$. What is the distance $M_1M_2$?
+=== geometry-division-2-4
+A $2\sqrt5$ by $4\sqrt5$ rectangle is rotated by an angle $\theta$ about one of its diagonals. If the total volume swept out by the rotating rectangle is $62\pi$, find the measure of $\theta$ in degrees.
+=== geometry-division-2-5
+Emily is at $(0,0)$, chilling, when she sees a spider located at $(1,0)$! Emily runs a continuous path to her home, located at $(\sqrt2+2,0)$, such that she is always moving away from the spider and toward her home. That is, her distance from the spider always increases whereas her distance to her home always decreases. What is the area of the set of all points that Emily could have visited on her run home?
+=== geometry-division-2-6
+In convex quadrilateral $ABCD$, $\angle ADC=90^\circ+\angle BAC$. Given that $AB=BC=17$, and $CD=16$, what is the maximum possible area of the quadrilateral?
+=== geometry-division-2-7
+Let $\triangle ABC$ be a triangle with $AB=10$ and $AC=16$, and let $I$ be the intersection of the internal angle bisectors of $\triangle ABC$. Suppose the tangents to the circumcircle of $\triangle BIC$ at $B$ and $C$ intersect at a point $P$ with $PA=8$. Compute the length of $BC$.
+=== geometry-division-2-8
+Let $ABCDEF$ be an equilateral hexagon such that $\triangle ACE\cong\triangle DFB$. Given that $AC=7$, $CE=8$, and $EA=9$, what is the side length of this hexagon?
