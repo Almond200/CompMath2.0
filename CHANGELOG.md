@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **PUMaC statements complete (all 1,088 problems, Division A and B, 2008 to 2025 without 2024; 2021 has no Geometry paper).** 2021 added; the work needed no tag changes. `STATEMENTS_V` 109.
 - **PUMaC 2008 added (1,040 of 1,088; ten problems per round, 3 figures).** `STATEMENTS_V` 108.
 - **PUMaC 2009 added (960 of 1,088; 6 figures).** `STATEMENTS_V` 107.
 - **PUMaC 2010 added (896 of 1,088; 10 figures).** `STATEMENTS_V` 106.
