@@ -1,0 +1,195 @@
+=== division-a-algebra-1
+Let $x$ and $y$ be positive real numbers that satisfy $(\log x)^2+(\log y)^2=\log\left(x^2\right)+\log\left(y^2\right)$. Compute the maximum possible value of $(\log xy)^2$.
+=== division-a-algebra-2
+Let $f(x)=x^2+4x+2$. Let $r$ be the difference between the largest and smallest real solutions of the equation $f(f(f(f(x))))=0$. Then $r=a^{\frac pq}$ for some positive integers $a,p,q$ so $a$ is square-free and $p,q$ are relatively prime positive integers. Compute $a+p+q$.
+=== division-a-algebra-3
+Let $Q$ be a quadratic polynomial. If the sum of the roots of $Q^{100}(x)$ (where $Q^i(x)$ is defined by $Q^1(x)=Q(x)$, $Q^i(x)=Q\left(Q^{i-1}(x)\right)$ for integers $i\ge2$) is $8$ and the sum of the roots of $Q$ is $S$, compute $|\log_2(S)|$.
+=== division-a-algebra-4
+Let $\mathbb N_0$ be the set of non-negative integers. There is a triple $(f,a,b)$, where $f$ is a function from $\mathbb N_0$ to $\mathbb N_0$ and $a,b\in\mathbb N_0$, that satisfies the following conditions:
+
+1) $f(1)=2$
+
+2) $f(a)+f(b)\le2\sqrt{f(a)}$
+
+3) For all $n>0$, we have $f(n)=f(n-1)f(b)+2n-f(b)$
+
+Find the sum of all possible values of $f(b+100)$.
+=== division-a-algebra-5
+Let $\omega=e^{\frac{2\pi i}{2017}}$ and $\zeta=e^{\frac{2\pi i}{2019}}$. Let $S=\{(a,b)\in\mathbb Z\mid0\le a\le2016,0\le b\le2018,(a,b)\ne(0,0)\}$. Compute $\displaystyle\prod_{(a,b)\in S}\left(\omega^a-\zeta^b\right)$.
+=== division-a-algebra-6
+A weak binary representation of a nonnegative integer $n$ is a representation $n=a_0+2\cdot a_1+2^2\cdot a_2+\ldots$ such that $a_i\in\{0,1,2,3,4,5\}$. Determine the number of such representations for $513$.
+=== division-a-algebra-7
+A doubly-indexed sequence $a_{m,n}$, for $m$ and $n$ nonnegative integers, is defined as follows.
+
+(a) $a_{m,0}=0$ for all $m>0$ and $a_{0,0}=1$.
+
+(b) $a_{m,1}=0$ for all $m>1$, and $a_{1,1}=1$, $a_{0,1}=0$.
+
+(c) $a_{0,n}=a_{0,n-1}+a_{0,n-2}$ for all $n\ge2$
+
+(d) $a_{m,n}=a_{m,n-1}+a_{m,n-2}+a_{m-1,n-1}-a_{m-1,n-2}$ for all $m>0,n\ge2$.
+
+Then there exists a unique value of $x$ so $\displaystyle\sum_{m=0}^\infty\sum_{n=0}^\infty\frac{a_{m,n}x^m}{3^{n-m}}=1$. Find $\lfloor1000x^2\rfloor$.
+=== division-a-algebra-8
+For real numbers $a$ and $b$, define the sequence $\{x_{a,b}(n)\}$ as follows: $x_{a,b}(1)=a$, $x_{a,b}(2)=b$, and for $n>1$, $x_{a,b}(n+1)=(x_{a,b}(n-1))^2+(x_{a,b}(n))^2$. For real numbers $c$ and $d$, define the sequence $\{y_{c,d}(n)\}$ as follows: $y_{c,d}(1)=c$, $y_{c,d}(2)=d$, and for $n>1$, $y_{c,d}(n+1)=(y_{c,d}(n-1)+y_{c,d}(n))^2$. Call $(a,b,c)$ a good triple if there exists $d$ such that for all $n$ sufficiently large, $y_{c,d}(n)=(x_{a,b}(n))^2$. For some $(a,b)$ there are exactly three values of $c$ that make $(a,b,c)$ a good triple. Among these pairs $(a,b)$, compute the maximum value of $\lfloor100(a+b)\rfloor$.
+=== division-b-algebra-1
+Let $a,b$ be positive integers such that $a+b=10$. Let $\frac pq$ be the difference between the maximum and minimum possible values of $\frac1a+\frac1b$, where $p$ and $q$ are relatively prime positive integers. Compute $p+q$.
+=== division-b-algebra-2
+If $x$ is a real number so $3^x=27x$, compute $\log_3\left(\frac{3^{3^x}}{x^{3^3}}\right)$.
+=== division-b-algebra-3
+Let $x$ and $y$ be positive real numbers that satisfy $(\log x)^2+(\log y)^2=\log\left(x^2\right)+\log\left(y^2\right)$. Compute the maximum possible value of $(\log xy)^2$.
+=== division-b-algebra-4
+Let $f(x)=x^2+4x+2$. Let $r$ be the difference between the largest and smallest real solutions of the equation $f(f(f(f(x))))=0$. Then $r=a^{\frac pq}$ for some positive integers $a,p,q$ so $a$ is square-free and $p,q$ are relatively prime positive integers. Compute $a+p+q$.
+=== division-b-algebra-5
+Let $Q$ be a quadratic polynomial. If the sum of the roots of $Q^{100}(x)$ (where $Q^i(x)$ is defined by $Q^1(x)=Q(x)$, $Q^i(x)=Q\left(Q^{i-1}(x)\right)$ for integers $i\ge2$) is $8$ and the sum of the roots of $Q$ is $S$, compute $|\log_2(S)|$.
+=== division-b-algebra-6
+Let $\mathbb N_0$ be the set of non-negative integers. There is a triple $(f,a,b)$, where $f$ is a function from $\mathbb N_0$ to $\mathbb N_0$ and $a,b\in\mathbb N_0$, that satisfies the following conditions:
+
+1) $f(1)=2$
+
+2) $f(a)+f(b)\le2\sqrt{f(a)}$
+
+3) For all $n>0$, we have $f(n)=f(n-1)f(b)+2n-f(b)$
+
+Find the sum of all possible values of $f(b+100)$.
+=== division-b-algebra-7
+Let $\omega=e^{\frac{2\pi i}{2017}}$ and $\zeta=e^{\frac{2\pi i}{2019}}$. Let $S=\{(a,b)\in\mathbb Z\mid0\le a\le2016,0\le b\le2018,(a,b)\ne(0,0)\}$. Compute $\displaystyle\prod_{(a,b)\in S}\left(\omega^a-\zeta^b\right)$.
+=== division-b-algebra-8
+A weak binary representation of a nonnegative integer $n$ is a representation $n=a_0+2\cdot a_1+2^2\cdot a_2+\ldots$ such that $a_i\in\{0,1,2,3,4,5\}$. Determine the number of such representations for $513$.
+=== division-a-combinatorics-1
+Prinstan Trollner and Dukejukem are competing at the game show WASS. Both players spin a wheel which chooses an integer from $1$ to $50$ uniformly at random, and this number becomes their score. Dukejukem then flips a weighted coin that lands heads with probability $3/5$. If he flips heads, he adds $1$ to his score. A player wins the game if their score is higher than the other player's score. The probability Dukejukem defeats the Trollner to win WASS equals $m/n$ where $m,n$ are coprime positive integers. Compute $m+n$.
+=== division-a-combinatorics-2
+Keith has $10$ coins labeled $1$ through $10$, where the $i$th coin has weight $2^i$. The coins are all fair, so the probability of flipping heads on any of the coins is $\frac12$. After flipping all of the coins, Keith takes all of the coins which land heads and measures their total weight, $W$. If the probability that $137\le W\le1061$ is $m/n$ for coprime positive integers $m,n$, determine $m+n$.
+=== division-a-combinatorics-3
+Marko lives on the origin of the Cartesian plane. Every second, Marko moves $1$ unit up with probability $2/9$, $1$ unit right with probability $2/9$, $1$ unit up and $1$ unit right with probability $4/9$, and he doesn't move with probability $1/9$. After $2019$ seconds, Marko ends up on the point $(A,B)$. What is the expected value of $A\cdot B$?
+=== division-a-combinatorics-4
+Kelvin and Quinn are collecting trading cards; there are $6$ distinct cards that could appear in a pack. Each pack contains exactly one card, and each card is equally likely. Kelvin buys packs until he has at least one copy of every card, then he stops buying packs. If Quinn is missing exactly one card, the probability that Kelvin has at least two copies of the card Quinn is missing is expressible as $m/n$ for coprime positive integers $m,n$. Determine $m+n$.
+=== division-a-combinatorics-5
+A candy store has $100$ pieces of candy to give away. When you get to the store, there are five people in front of you, numbered from $1$ to $5$. The $i$th person in line considers the set of positive integers congruent to $i$ modulo $5$ which are at most the number of pieces of candy remaining. If this set is empty, then they take no candy. Otherwise they pick an element of this set and take that many pieces of candy. For example, the first person in line will pick an integer from the set $\{1,6,\ldots,96\}$ and take that many pieces of candy. How many ways can the first five people take their share of candy so that after they are done there are at least $35$ pieces of candy remaining?
+=== division-a-combinatorics-6
+The Nationwide Basketball Society (NBS) has $8001$ teams, numbered $2000$ through $10000$. For each $n$, team $n$ has $n+1$ players, and in a sheer coincidence, this year each player attempted $n$ shots and on team $n$, exactly one player made $0$ shots, one player made $1$ shot, $\ldots$, one player made $n$ shots. A player's field goal percentage is defined as the percentage of shots that the player made, rounded to the nearest tenth of a percent. (For instance, $32.45\%$ rounds to $32.5\%$.) A player in the NBS is randomly selected among those whose field goal percentage is $66.6\%$. If this player plays for team $k$, what is the probability that $k\ge6000$?
+=== division-a-combinatorics-7
+In the country of PUMACsboro, there are $n$ distinct cities labelled $1$ through $n$. There is a rail line going from city $i$ to city $j$ if and only if $i<j$; you can only take this rail line from city $i$ to city $j$. What is the smallest possible value of $n$, such that if each rail line's track is painted orange or black, you can always take the train between $2019$ cities on tracks that are all the same color? (This means there are some cities $c_1,c_2,\ldots,c_{2019}$, such that there is a rail line going from city $c_i$ to $c_{i+1}$ for all $1\le i\le2018$, and their rail lines' tracks are either all orange or all black.)
+=== division-a-combinatorics-8
+Let $S_n$ be the set of points $(x/2,y/2)\in\mathbb R^2$ such that $x,y$ are odd integers and $|x|\le y\le2n$. Let $T_n$ be the number of graphs $G$ with vertex set $S_n$ satisfying the following conditions:
+
+• $G$ has no cycles.
+
+• If two points share an edge, then the distance between them is $1$.
+
+• For any path $P=(a,\ldots,b)$ in $G$, the smallest $y$-coordinate among the points in $P$ is either that of $a$ or that of $b$. However, multiple points may share this $y$-coordinate.
+
+Find the $100$th-smallest positive integer $n$ such that the units digit of $T_{3n}$ is $4$.
+=== division-b-combinatorics-1
+How many ways can you arrange $3$ Alice's, $1$ Bob, $3$ Chad's, and $1$ David in a line if the Alice's are all indistinguishable, the Chad's are all indistinguishable, and Bob and David want to be adjacent to each other? (In other words, how many ways can you arrange $3$ A's, $1$ B, $3$ C's, and $1$ D in a row where the B and D are adjacent?)
+=== division-b-combinatorics-2
+Suppose Alan, Michael, Kevin, Igor, and Big Rahul are in a running race. It is given that exactly one pair of people tie (for example, two people both get second place), so that no other pair of people end in the same position. Each competitor has equal skill; this means that each outcome of the race, given that exactly two people tie, is equally likely. The probability that Big Rahul gets first place (either by himself or he ties for first) can be expressed in the form $m/n$, where $m,n$ are relatively prime, positive integers. Compute $m+n$.
+=== division-b-combinatorics-3
+Prinstan Trollner and Dukejukem are competing at the game show WASS. Both players spin a wheel which chooses an integer from $1$ to $50$ uniformly at random, and this number becomes their score. Dukejukem then flips a weighted coin that lands heads with probability $3/5$. If he flips heads, he adds $1$ to his score. A player wins the game if their score is higher than the other player's score. The probability Dukejukem defeats the Trollner to win WASS equals $m/n$ where $m,n$ are coprime positive integers. Compute $m+n$.
+=== division-b-combinatorics-4
+Keith has $10$ coins labeled $1$ through $10$, where the $i$th coin has weight $2^i$. The coins are all fair, so the probability of flipping heads on any of the coins is $\frac12$. After flipping all of the coins, Keith takes all of the coins which land heads and measures their total weight, $W$. If the probability that $137\le W\le1061$ is $m/n$ for coprime positive integers $m,n$, determine $m+n$.
+=== division-b-combinatorics-5
+Marko lives on the origin of the Cartesian plane. Every second, Marko moves $1$ unit up with probability $2/9$, $1$ unit right with probability $2/9$, $1$ unit up and $1$ unit right with probability $4/9$, and he doesn't move with probability $1/9$. After $2019$ seconds, Marko ends up on the point $(A,B)$. What is the expected value of $A\cdot B$?
+=== division-b-combinatorics-6
+Kelvin and Quinn are collecting trading cards; there are $6$ distinct cards that could appear in a pack. Each pack contains exactly one card, and each card is equally likely. Kelvin buys packs until he has at least one copy of every card, then he stops buying packs. If Quinn is missing exactly one card, the probability that Kelvin has at least two copies of the card Quinn is missing is expressible as $m/n$ for coprime positive integers $m,n$. Determine $m+n$.
+=== division-b-combinatorics-7
+A candy store has $100$ pieces of candy to give away. When you get to the store, there are five people in front of you, numbered from $1$ to $5$. The $i$th person in line considers the set of positive integers congruent to $i$ modulo $5$ which are at most the number of pieces of candy remaining. If this set is empty, then they take no candy. Otherwise they pick an element of this set and take that many pieces of candy. For example, the first person in line will pick an integer from the set $\{1,6,\ldots,96\}$ and take that many pieces of candy. How many ways can the first five people take their share of candy so that after they are done there are at least $35$ pieces of candy remaining?
+=== division-b-combinatorics-8
+The Nationwide Basketball Society (NBS) has $8001$ teams, numbered $2000$ through $10000$. For each $n$, team $n$ has $n+1$ players, and in a sheer coincidence, this year each player attempted $n$ shots and on team $n$, exactly one player made $0$ shots, one player made $1$ shot, $\ldots$, one player made $n$ shots. A player's field goal percentage is defined as the percentage of shots that the player made, rounded to the nearest tenth of a percent. (For instance, $32.45\%$ rounds to $32.5\%$.) A player in the NBS is randomly selected among those whose field goal percentage is $66.6\%$. If this player plays for team $k$, what is the probability that $k\ge6000$?
+=== division-a-geometry-1
+A right cone in $xyz$-space has its apex at $(0,0,0)$, and the endpoints of a diameter on its base are $(12,13,-9)$ and $(12,-5,15)$. The volume of the cone can be expressed as $a\pi$. What is $a$?
+=== division-a-geometry-2
+Let $\Delta ABC$ be a triangle with circumcenter $O$ and orthocenter $H$. Let $D$ be a point on the circumcircle of $ABC$ such that $AD\perp BC$. Suppose that $AB=6$, $DB=2$, and the ratio $\frac{\text{area}(\Delta ABC)}{\text{area}(\Delta HBC)}=5$. Then, if $OA$ is the length of the circumradius, then $OA^2$ can be written in the form $\frac mn$, where $m,n$ are relatively prime positive integers. Compute $m+n$.
+=== division-a-geometry-3
+Suppose we choose two numbers $x,y\in[0,1]$ uniformly at random. If the probability that the circle with center $(x,y)$ and radius $|x-y|$ lies entirely within the unit square $[0,1]\times[0,1]$ is written as $\frac pq$ with $p$ and $q$ relatively prime nonnegative integers, then what is $p^2+q^2$?
+=== division-a-geometry-4
+Let $BC=6$, $BX=3$, $CX=5$, and let $F$ be the midpoint of $BC$. Let $AX\perp BC$ and $AF=\sqrt{247}$. If $AC$ is of the form $\sqrt b$ and $AB$ is of the form $\sqrt c$ where $b$ and $c$ are nonnegative integers, find $2c+3b$.
+=== division-a-geometry-5
+Let $\Gamma$ be a circle with center $A$, radius $1$ and diameter $BX$. Let $\Omega$ be a circle with center $C$, radius $1$ and diameter $DY$, where $X$ and $Y$ are on the same side of $AC$. $\Gamma$ meets $\Omega$ at two points, one of which is $Z$. The lines tangent to $\Gamma$ and $\Omega$ that pass through $Z$ cut out a sector of the plane containing no part of either circle and with angle $60^\circ$. If $\angle XYC=\angle CAB$ and $\angle XCD=90^\circ$, then the length of $XY$ can be written in the form $\frac{\sqrt a+\sqrt b}c$ for integers $a,b,c$ where $\gcd(a,b,c)=1$. Find $a+b+c$.
+=== division-a-geometry-6
+Let two ants stand on the perimeter of a regular $2019$-gon of unit side length. One of them stands on a vertex and the other one is on the midpoint of the opposite side. They start walking along the perimeter at the same speed counterclockwise. The locus of their midpoints traces out a figure $P$ in the plane with $N$ corners. Let the area enclosed by convex hull of $P$ be $\frac AB\frac{\sin^m\left(\frac\pi{4038}\right)}{\tan\left(\frac\pi{2019}\right)}$, where $A$ and $B$ are coprime positive integers, and $m$ is the smallest possible positive integer such that this formula holds. Find $A+B+m+N$.
+
+Note: The convex hull of a figure $P$ is the convex polygon of smallest area which contains $P$.
+=== division-a-geometry-7
+Let $ABCD$ be a trapezoid such that $AB\parallel CD$ and let $P=AC\cap BD$, $AB=21$, $CD=7$, $AD=13$, $[ABCD]=168$. Let the line parallel to $AB$ trough $P$ intersect circumcircle of $BCP$ in $X$. Circumcircles of $BCP$ and $APD$ intersect at $P,Y$. Let $XY\cap BC=Z$. If $\angle ADC$ is obtuse, then $BZ=\frac ab$, where $a,b$ are coprime positive integers. Compute $a+b$.
+=== division-a-geometry-8
+Let $\gamma$ and $\Gamma$ be two circles such that $\gamma$ is internally tangent to $\Gamma$ at a point $X$. Let $P$ be a point on the common tangent of $\gamma$ and $\Gamma$ and $Y$ be the point on $\gamma$ other than $X$ such that $PY$ is tangent to $\gamma$ at $Y$. Let $PY$ intersect $\Gamma$ at $A$ and $B$, such that $A$ is in between $P$ and $B$ and let the tangents to $\Gamma$ at $A$ and $B$ intersect at $C$. $CX$ intersects $\Gamma$ again at $Z$ and $ZY$ intersects $\Gamma$ again at $Q$. If $AQ=6$, $AB=10$ and $\frac{AX}{XB}=\frac14$. The length of $QZ=\frac pq\sqrt r$, where $p$ and $q$ are coprime positive integers, and $r$ is square free positive integer. Find $p+q+r$.
+=== division-b-geometry-1
+Suppose we have a convex quadrilateral $ABCD$ such that $\angle B=110^\circ$ and the circumcircle of $\triangle ABC$ has a center at $D$. Find the measure, in degrees, of $\angle D$.
+
+Note: The circumcircle of a $\triangle ABC$ is the unique circle containing $A$, $B$ and $C$.
+=== division-b-geometry-2
+A right cone in $xyz$-space has its apex at $(0,0,0)$, and the endpoints of a diameter on its base are $(12,13,-9)$ and $(12,-5,15)$. The volume of the cone can be expressed as $a\pi$. What is $a$?
+=== division-b-geometry-3
+Let $\Delta ABC$ be a triangle with circumcenter $O$ and orthocenter $H$. Let $D$ be a point on the circumcircle of $ABC$ such that $AD\perp BC$. Suppose that $AB=6$, $DB=2$, and the ratio $\frac{\text{area}(\Delta ABC)}{\text{area}(\Delta HBC)}=5$. Then, if $OA$ is the length of the circumradius, then $OA^2$ can be written in the form $\frac mn$, where $m,n$ are relatively prime nonnegative integers. Compute $m+n$.
+
+Note: The circumradius is the radius of the circumcircle.
+=== division-b-geometry-4
+Suppose we choose two real numbers $x,y\in[0,1]$ uniformly at random. Let $p$ be the probability that the circle with center $(x,y)$ and radius $|x-y|$ lies entirely within the unit square $[0,1]\times[0,1]$. Then $p$ can be written in the form $\frac mn$, where $m$ and $n$ are relatively prime nonnegative integers. Compute $m^2+n^2$.
+=== division-b-geometry-5
+Let $BC=6$, $BX=3$, $CX=5$, and let $F$ be the midpoint of $BC$. Let $AX\perp BC$ and $AF=\sqrt{247}$. If $AC$ is of the form $\sqrt b$ and $AB$ is of the form $\sqrt c$ where $b$ and $c$ are nonnegative integers, find $2c+3b$.
+=== division-b-geometry-6
+Let $\Gamma$ be a circle with center $A$, radius $1$ and diameter $BX$. Let $\Omega$ be a circle with center $C$, radius $1$ and diameter $DY$, where $X$ and $Y$ are on the same side of $AC$. $\Gamma$ meets $\Omega$ at two points, one of which is $Z$. The lines tangent to $\Gamma$ and $\Omega$ that pass through $Z$ cut out a sector of the plane containing no part of either circle and with angle $60^\circ$. If $\angle XYC=\angle CAB$ and $\angle XCD=90^\circ$, then the length of $XY$ can be written in the form $\frac{\sqrt a+\sqrt b}c$ for integers $a,b,c$ where $\gcd(a,b,c)=1$. Find $a+b+c$.
+=== division-b-geometry-7
+Let two ants stand on the perimeter of a regular $2019$-gon of unit side length. One of them stands on a vertex and the other one is on the midpoint of the opposite side. They start walking along the perimeter at the same speed counterclockwise. The locus of their midpoints traces out a figure $P$ in the plane with $N$ corners. Let the area enclosed by convex hull of $P$ be $\frac AB\frac{\sin^m\left(\frac\pi{4038}\right)}{\tan\left(\frac\pi{2019}\right)}$, where $A$ and $B$ are coprime positive integers, and $m$ is the smallest possible positive integer such that this formula holds. Find $A+B+m+N$.
+
+Note: The convex hull of a figure $P$ is the convex polygon of smallest area which contains $P$.
+=== division-b-geometry-8
+Let $ABCD$ be a trapezoid such that $AB\parallel CD$ and let $P=AC\cap BD$, $AB=21$, $CD=7$, $AD=13$, $[ABCD]=168$. Let the line parallel to $AB$ trough $P$ intersect circumcircle of $BCP$ in $X$. Circumcircles of $BCP$ and $APD$ intersect at $P,Y$. Let $XY\cap BC=Z$. If $\angle ADC$ is obtuse, then $BZ=\frac ab$, where $a,b$ are coprime positive integers. Compute $a+b$.
+=== division-a-number-theory-1
+The least common multiple of two positive integers $a$ and $b$ is $2^5\times3^5$. How many such ordered pairs $(a,b)$ are there?
+=== division-a-number-theory-2
+Let $f$ be a function over the natural numbers so that
+
+(a) $f(1)=1$
+
+(b) If $n=p_1^{e_1}\ldots p_k^{e_k}$ where $p_1,\cdots,p_k$ are distinct primes, and $e_1,\cdots e_k$ are non-negative integers, then $f(n)=(-1)^{e_1+\ldots+e_k}$.
+
+Find $\displaystyle\sum_{i=1}^{2019}\sum_{d\mid i}f(d)$.
+=== division-a-number-theory-3
+Consider the first set of $38$ consecutive positive integers who all have sum of their digits not divisible by $11$. Find the smallest integer in this set.
+=== division-a-number-theory-4
+For a positive integer $n$, let $f(n)=\sum_{i=1}^n\lfloor\log_2n\rfloor$. Find the largest $n<2018$ such that $n\mid f(n)$.
+=== division-a-number-theory-5
+Call a positive integer $n$ compact if for any infinite sequence of distinct primes $p_1,p_2,\ldots$ there exists a finite subsequence of $n$ primes $p_{x_1},p_{x_2},\ldots p_{x_n}$ (where the $x_i$ are distinct) such that
+$$p_{x_1}p_{x_2}\cdots p_{x_n}\equiv1\pmod{2019}.$$
+Find the sum of all compact numbers less than $2\cdot2019$.
+=== division-a-number-theory-6
+Let $p,q\le200$ be prime numbers such that $\frac{q^p-1}p$ is a square. Find the sum of $p+q$ over all such pairs.
+=== division-a-number-theory-7
+Let $f(x)$ be the nonnegative remainder when $x$ is divided by the prime $p=1297$. Let $g(x)$ be the largest possible value of $f(-p_1)+f(-p_2)+\ldots+f(-p_m)$ over all sets $\{p_1,\ldots,p_m\}$ where $p_k$ are primes such that for all $1\le i<j\le m$ we have $p\nmid\left(p_i^2-p_j^2\right)$, and
+$$p\nmid\sigma\left((p_1\times\ldots\times p_m)^{x-1}\right),$$
+where $\sigma(x)$ is the sum of the (distinct, positive, not necessarily proper) divisors of $x$. Find
+$$\sum_{k=1}^{(p+1)/2}\left(g(p-2k+3)-g(p+2k+1)\right).$$
+=== division-a-number-theory-8
+The integer $107$ is a prime number. Let $p=107$. For an integer $a$ such that $p\nmid a$ let $a^{-1}$ be the unique integer $0\le a^{-1}\le p^2-1$ such that $p^2\mid aa^{-1}-1$. Find the number of positive integers $b$, $1\le b\le\frac{p^2-1}2$ such that there exists an integer $a$, $0\le a\le p^2-1$ such that $p^2\mid b^2-\left(a+a^{-1}\right)$.
+=== division-b-number-theory-1
+The product of the positive factors of a positive integer $n$ is $8000$. What is $n$?
+=== division-b-number-theory-2
+The least common multiple of two positive integers $a$ and $b$ is $2^5\times3^5$. How many such ordered pairs $(a,b)$ are there?
+=== division-b-number-theory-3
+Let $f$ be a function over the natural numbers so that
+
+(a) $f(1)=1$
+
+(b) If $n=p_1^{e_1}\ldots p_k^{e_k}$ where $p_1,\cdots,p_k$ are distinct primes, and $e_1,\cdots e_k$ are non-negative integers, then $f(n)=(-1)^{e_1+\ldots+e_k}$.
+
+Find $\displaystyle\sum_{i=1}^{2019}\sum_{d\mid i}f(d)$.
+=== division-b-number-theory-4
+Let $n$ be the smallest positive integer which can be expressed as a sum of multiple (at least two) consecutive integers in precisely $2019$ ways. Then $n$ is the product of $k$ not necessarily distinct primes. Find $k$.
+=== division-b-number-theory-5
+Consider the first set of $38$ consecutive positive integers who all have sum of their digits not divisible by $11$. Find the smallest integer in this set.
+=== division-b-number-theory-6
+Let $f$ be a polynomial with integer coefficients of degree $2019$ such that the following conditions are satisfied:
+
+(a) For all integers $n$, $f(n)+f(-n)=2$.
+
+(b) $101^2\mid f(0)+f(1)+f(2)+\cdots+f(100)$.
+
+Compute the remainder when $f(101)$ is divided by $101^2$.
+=== division-b-number-theory-7
+For a positive integer $n$, let $f(n)=\sum_{i=1}^n\lfloor\log_2n\rfloor$. Find the largest $n<2018$ such that $n\mid f(n)$.
+=== division-b-number-theory-8
+Call a positive integer $n$ compact if for any infinite sequence of distinct primes $p_1,p_2,\ldots$ there exists a finite subsequence of $n$ primes $p_{x_1},p_{x_2},\ldots p_{x_n}$ (where the $x_i$ are distinct) such that
+$$p_{x_1}p_{x_2}\cdots p_{x_n}\equiv1\pmod{2019}.$$
+Find the sum of all compact numbers less than $2\cdot2019$.

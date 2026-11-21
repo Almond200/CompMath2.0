@@ -2661,3 +2661,7 @@ Columbus State 2010 #46 (the centre of a unit-diameter ball rolling round the in
 Columbus State 2009: the posted paper is headed "Draft 2" on every page, so its wording may differ from the printed contest; #17 (the last three digits of $3^{98}$) has no answer choices in it. Tag fix: #22 (a polar equation written as a line) `alg.trig.identity.sum` → `geo.coord.line.slope`.
 
 Columbus State 2007 #21 (which third side a triangle with sides $3$ and $10$ can have) `geo.tri.area.base` → `geo.tri.ineq.valid`.
+
+Columbus State 2005 #34 (the $x$-coordinate of the point where a chord of two circles meets the axis) lost `rationalizing`, which the route does not need.
+
+PUMaC 2023 Algebra A #4 prints its equation without "=0" (the paper has `... + 3a^2 has exactly two nonreal solutions`); the statement adds the "=0". PUMaC 2025 Number Theory B #2 reads $\nu_p(2^{2p}-1)$ in the paper.

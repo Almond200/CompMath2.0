@@ -5149,7 +5149,7 @@
               <p>Problems from the Individual test of the <a href="https://www.columbusstate.edu/math/tournament/previous-math-contest.php" target="_blank" rel="noopener noreferrer">Columbus State Invitational Mathematics Tournament</a> (Columbus State University) are listed the same way: each problem’s page opens the official test and its solutions; nothing is reproduced. That material is attributed to Columbus State University; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual round of the <a href="https://math.duke.edu/duke-math-meet" target="_blank" rel="noopener noreferrer">Duke Math Meet</a> (2007 to 2022) are listed the same way: each problem's page opens the round as Duke's mathematics department posts it, and its solutions where they were posted; nothing is reproduced. Duke Math Meet material is attributed to the Duke Math Meet; the MAA license above does not apply to it.</p>
               <p>Problems from the Individual round of <a href="https://www.caltechmathmeet.org/problems" target="_blank" rel="noopener noreferrer">CHMMC</a>, the Caltech Harvey Mudd Math Competition, run since 2024 as the Caltech Math Meet (2010 to 2026; 2010 and 2012 had two sittings each), are listed the same way: each problem's page opens the round and its solutions on the Caltech Math Meet archive; nothing is reproduced. That material is attributed to CHMMC and the Caltech Math Meet; the MAA license above does not apply to it.</p>
-              <p><a href="https://berkeley.mt/archives/bmt/" target="_blank" rel="noopener noreferrer">BMT</a> and <a href="https://pumac.princeton.edu/archives" target="_blank" rel="noopener noreferrer">PUMaC</a> entries link to the official contest papers and solutions. BMT problems are &copy; Berkeley Math Tournament, and the BMT statements and diagrams shown in the app are reproduced with its permission; PUMaC statements and solutions are not reproduced here.</p>
+              <p><a href="https://berkeley.mt/archives/bmt/" target="_blank" rel="noopener noreferrer">BMT</a> and <a href="https://pumac.princeton.edu/archives" target="_blank" rel="noopener noreferrer">PUMaC</a> entries link to the official contest papers and solutions. BMT and PUMaC problems are &copy; Berkeley Math Tournament and the Princeton University Mathematics Competition, and the BMT and PUMaC statements and diagrams shown in the app are reproduced with their permission; the solutions are not reproduced here.</p>
             </div>
           </div></div>
         </details>
@@ -10156,7 +10156,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 89;
+  const STATEMENTS_V = 98;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {

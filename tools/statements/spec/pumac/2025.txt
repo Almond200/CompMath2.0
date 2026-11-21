@@ -1,0 +1,183 @@
+=== division-a-algebra-1
+Find the sum of all real values of $x$ satisfying
+$$\sqrt{x+\sqrt{x+\sqrt{x+\cdots}}}=x-\sqrt{x-\sqrt{x-\sqrt{x-\cdots}}}.$$
+=== division-a-algebra-2
+Let $\star$ be an associative operation on the set of positive real numbers that satisfies
+$$\underbrace{x\star x\star\cdots\star x}_{x\text{ appears }k\text{ times}}=\frac x{\sqrt k}$$
+for any positive real number $x$ and positive integer $k$. Let $s_n$ denote the $n$th smallest positive integer with no prime factor greater than $5$. Compute $s_1\star s_2\star s_3\star\cdots$.
+=== division-a-algebra-3
+Find the largest possible value of
+$$\frac{-2x+6y}{1+2x^2+3y^2}$$
+over all real numbers $x,y$.
+=== division-a-algebra-4
+Let
+$$S=\sum_{j=1}^{2025}\binom{4050}{2025+j}\cos(3j).$$
+What is the largest positive integer $n$ such that $2^n$ divides $\lfloor S\rfloor$?
+=== division-a-algebra-5
+Let $f(x)=2x^2-1$. Find the smallest positive integer $N$ such that the median of the real roots of the polynomial $\underbrace{(f\circ f\circ f\circ\ldots f\circ f)}_{f\text{ composed }N\text{ times}}(x)-x$ has absolute value at most $2^{-2025}$.
+=== division-a-algebra-6
+Let $c$ be a real number, and let $f(t)=(t-0.01)+\left(t^2-c\right)i$ for every real number $t$. Suppose that $m(t)$ is a (not necessarily continuous) function from $\mathbb R$ to $\mathbb C$ such that
+$$m(t)^2+1+\frac1{m(t)^2}=(t-1)(t+1)$$
+for every real number $t$. Over all such functions $f(t)$ and $m(t)$, what is the maximum possible number of distinct ordered pairs of real numbers $(a,b)$ such that $f(a)=m(b)$?
+=== division-a-algebra-7
+Let
+$$\omega=e^{i\pi/2025}=\cos\left(\frac\pi{2025}\right)+i\sin\left(\frac\pi{2025}\right).$$
+David writes the complex numbers $2,\omega,\omega^2,\ldots,\omega^{4049}$ in a line going from left to right on a blackboard. Then, each minute, if the two leftmost complex numbers on the blackboard are $z_1$ and $z_2$, David erases the two numbers and replaces them with
+$$\frac1{z_1+z_2}-\frac1{\frac1{z_1}+\frac1{z_2}}.$$
+After $4049$ minutes, there is only one number remaining. What is the last remaining number?
+=== division-a-algebra-8
+Let $S$ be the set of ordered triples of positive integers $(x,y,z)$ such that $y(x+y+z)=zx$ and
+$$x^2+y^2+z^2+xy+yz+zx=2\frac{(x+y)(y+z)(z+x)}{x+y+z}+145.$$
+Find the sum of $100x+10y+z$ over all $(x,y,z)\in S$.
+=== division-b-algebra-1
+There exist real numbers $m$ and $n$, as well as a quadratic polynomial $f$, such that for all real $y$, we have $f(x)=m(y+n)^2$ if and only if $5x^2+3y^2+4x+12y=0$. Compute $n$.
+=== division-b-algebra-2
+Max writes an integer on the board. Then every minute, if the number $k$ on the board is even, he replaces it with $\frac k2$; otherwise, he replaces it with $\frac{3k+1}2$. If Max writes down the number $1$ after at most $5$ minutes, how many different integers could he have started with?
+=== division-b-algebra-3
+Find the sum of all real values of $x$ satisfying
+$$\sqrt{x+\sqrt{x+\sqrt{x+\cdots}}}=x-\sqrt{x-\sqrt{x-\sqrt{x-\cdots}}}.$$
+=== division-b-algebra-4
+Let $\star$ be an associative operation on the set of positive real numbers that satisfies
+$$\underbrace{x\star x\star\cdots\star x}_{x\text{ appears }k\text{ times}}=\frac x{\sqrt k}$$
+for any positive real number $x$ and positive integer $k$. Let $s_n$ denote the $n$th smallest positive integer with no prime factor greater than $5$. Compute $s_1\star s_2\star s_3\star\cdots$.
+=== division-b-algebra-5
+Find the largest possible value of
+$$\frac{-2x+6y}{1+2x^2+3y^2}$$
+over all real numbers $x,y$.
+=== division-b-algebra-6
+Let
+$$S=\sum_{j=1}^{2025}\binom{4050}{2025+j}\cos(3j).$$
+What is the largest positive integer $n$ such that $2^n$ divides $\lfloor S\rfloor$?
+=== division-b-algebra-7
+Let $f(x)=2x^2-1$. Find the smallest positive integer $N$ such that the median of the real roots of the polynomial $\underbrace{(f\circ f\circ f\circ\ldots f\circ f)}_{f\text{ composed }N\text{ times}}(x)-x$ has absolute value at most $2^{-2025}$.
+=== division-b-algebra-8
+Let $c$ be a real number, and let $f(t)=(t-0.01)+\left(t^2-c\right)i$ for every real number $t$. Suppose that $m(t)$ is a (not necessarily continuous) function from $\mathbb R$ to $\mathbb C$ such that
+$$m(t)^2+1+\frac1{m(t)^2}=(t-1)(t+1)$$
+for every real number $t$. Over all such functions $f(t)$ and $m(t)$, what is the maximum possible number of distinct ordered pairs of real numbers $(a,b)$ such that $f(a)=m(b)$?
+=== division-a-combinatorics-1
+A string of $0$s, $1$s, and $2$s is called nice if it doesn't contain "01" or "12", doesn't begin with a "2", and doesn't end with a "0". For example, there are $5$ nice strings of length $3$, namely "002", "021", "022", "102", and "111". Find the number of nice strings of length $7$.
+=== division-a-combinatorics-2
+You find yourself standing at vertex $A$ in the triangle grid shown below. Two monsters are standing at vertices $B$ and $C$, respectively. Each minute, you move along an edge that takes you closer to $\overline{BC}$, choosing an edge randomly out of the two possible edges. In the same way, the monster starting at $B$ moves towards $\overline{AC}$, and the monster starting at $C$ moves towards $\overline{AB}$. If you ever encounter a monster on a vertex not on $\overline{BC}$, you die. Otherwise, if you reach $\overline{BC}$ without dying, you survive (even if you encounter a monster at some vertex on $\overline{BC}$). Compute the probability that you survive.
+
+@@fig:pumac2025_a-combinatorics-2.png@@
+=== division-a-combinatorics-3
+A stone is placed on a square of a $5\times5$ grid. Alice and Bob take turns moving the stone to an orthogonally adjacent square (i.e. up/down/left/right). Alice moves first. Once a square has been visited, it cannot be visited again (and they cannot visit the starting square again). A player loses if they cannot make a legal move. For how many starting squares does Alice have a winning strategy?
+=== division-a-combinatorics-4
+Zongshu is selling socks in packs of $2025$. Each sock in each pack is equally likely to be red, green, or yellow. You buy (a positive number of) packs of socks until you can split all of the socks into pairs of the same color. Find the expected number of packs you buy.
+=== division-a-combinatorics-5
+Alice wants to send Bob the integer $120$, represented as a binary string of length $7$. However, her computer is being bombarded by cosmic rays, which can flip $00$ to $11$ and vice versa an arbitrary amount of times! Bob receives a possibly altered binary string, and writes down the integer in decimal. Find the sum of the possible numbers Bob could have written down (including $120$ itself).
+=== division-a-combinatorics-6
+Charles challenges David to a game of Fraction Fixer. In this game, David first picks two positive integers $m\le n$ that sum to $2025$. Next, Charles picks integers $a$ and $b$ at random, so that $0\le a<m$ and $0\le b<n$, and computes $\frac am+\frac bn$. If the sum is at least $1$, David wins. Otherwise, Charles wins. If David chooses $m$ and $n$ optimally, what is the probability that David wins?
+=== division-a-combinatorics-7
+Consider the graph shown below with $4050$ vertices and $6073$ edges. Each edge is independently deleted with probability $\frac12$. If $C$ is the expected value of the number of connected components of the resulting graph, compute the nearest integer to $49C$.
+
+@@fig:pumac2025_a-combinatorics-7.png@@
+=== division-a-combinatorics-8
+Trevor the traveller starts at the origin of $\mathbb R^2$. He then takes a series of $8$ steps that change his position by a vector in the set $\{(a,b)\in\mathbb Z^2:|a|,|b|\le1\text{ and }(a,b)\ne(0,0)\}$. He takes each of the $8$ possible steps exactly once, and takes the steps in uniformly random order, so that he returns to the origin. The winding number of each point $P$ in $\mathbb R^2$, except those exactly on the path, is defined as the number of times any ray starting at $P$ going out to infinity crosses a left-pointing portion of Trevor's path minus the number of times the ray crosses a right-pointing portion of the path, where left and right are defined relative to the ray. Let $A$ be the area in $\mathbb R^2$ weighted by winding number. An example is shown below. Find the expected value of $A^2$.
+
+@@fig:pumac2025_a-combinatorics-8.png@@
+=== division-b-combinatorics-1
+There is an alphabet consisting of four shapes: a Segment, a Diamond, a Triangle, and a Pentagon. All of these shapes are regular. Each shape has a marked vertex that indicates its current orientation (as shown below).
+
+@@fig:pumac2025_b-combinatorics-1.png@@
+
+Richard creates a password of length $6$ from this four-shape alphabet. Then, every second, Richard rotates each Segment by $180^\circ$, each Diamond by $90^\circ$ clockwise, each Triangle by $120^\circ$ clockwise, and each Pentagon by $72^\circ$ clockwise. It turns out that the shapes are first all oriented the same as in his original password after $20$ seconds. How many distinct passwords could Richard have chosen?
+=== division-b-combinatorics-2
+Six men, including Kenny, and six women, are randomly seated at a circular table. Given that Kenny is sitting next to two women, find the expected number of adjacent pairs of one man and one woman at the table.
+=== division-b-combinatorics-3
+A string of $0$s, $1$s, and $2$s is called nice if it doesn't contain "01" or "12", doesn't begin with a "2", and doesn't end with a "0". For example, there are $5$ nice strings of length $3$, namely "002", "021", "022", "102", and "111". Find the number of nice strings of length $7$.
+=== division-b-combinatorics-4
+You find yourself standing at vertex $A$ in the triangle grid shown below. Two monsters are standing at vertices $B$ and $C$, respectively. Each minute, you move along an edge that takes you closer to $\overline{BC}$, choosing an edge randomly out of the two possible edges. In the same way, the monster starting at $B$ moves towards $\overline{AC}$, and the monster starting at $C$ moves towards $\overline{AB}$. If you ever encounter a monster on a vertex not on $\overline{BC}$, you die. Otherwise, if you reach $\overline{BC}$ without dying, you survive (even if you encounter a monster at some vertex on $\overline{BC}$). Compute the probability that you survive.
+
+@@fig:pumac2025_a-combinatorics-2.png@@
+=== division-b-combinatorics-5
+A stone is placed on a square of a $5\times5$ grid. Alice and Bob take turns moving the stone to an orthogonally adjacent square (i.e. up/down/left/right). Alice moves first. Once a square has been visited, it cannot be visited again (and they cannot visit the starting square again). A player loses if they cannot make a legal move. For how many starting squares does Alice have a winning strategy?
+=== division-b-combinatorics-6
+Zongshu is selling socks in packs of $2025$. Each sock in each pack is equally likely to be red, green, or yellow. You buy (a positive number of) packs of socks until you can split all of the socks into pairs of the same color. Find the expected number of packs you buy.
+=== division-b-combinatorics-7
+Alice wants to send Bob the integer $120$, represented as a binary string of length $7$. However, her computer is being bombarded by cosmic rays, which can flip $00$ to $11$ and vice versa an arbitrary amount of times! Bob receives a possibly altered binary string, and writes down the integer in decimal. Find the sum of the possible numbers Bob could have written down (including $120$ itself).
+=== division-b-combinatorics-8
+Charles challenges David to a game of Fraction Fixer. In this game, David first picks two positive integers $m\le n$ that sum to $2025$. Next, Charles picks integers $a$ and $b$ at random, so that $0\le a<m$ and $0\le b<n$, and computes $\frac am+\frac bn$. If the sum is at least $1$, David wins. Otherwise, Charles wins. If David chooses $m$ and $n$ optimally, what is the probability that David wins?
+=== division-a-geometry-1
+Two circles $\omega_1$ and $\omega_2$ have radii $3$ and $2$, respectively, and intersect at two distinct points $X$ and $Y$. The line through $X$ perpendicular to $\overline{XY}$ intersects $\omega_1$ at $A\ne X$ and $\omega_2$ at $B\ne X$. Given that $AB=4$, find the area of triangle $ABY$.
+=== division-a-geometry-2
+Consider a right triangular prism with bases $\triangle ABC$ and $\triangle A'B'C'$, where $\triangle ABC\cong\triangle A'B'C'$ and $AC=10$. Point $M$ lies on $\overline{AB}$ such that $AM=5$ and $MB=4$. Let $N$ lie on $\overline{A'C'}$ such that $\overline{BN}$ is parallel to the plane of $\triangle A'CM$. Find $A'N$.
+=== division-a-geometry-3
+Let $ABCD$ be an isosceles trapezoid with $\overline{AB}\parallel\overline{CD}$, $AB=20$, and $CD=22$. Let $M$ and $N$ be the midpoints of sides $AD$ and $BC$, respectively. Ray $NM$ meets the circumcircle of $ABCD$ at $K$. If the lengths of $KM$ and $AM$ are positive integers, find the sum of all possible values of $KM$.
+=== division-a-geometry-4
+Let $ABC$ be a triangle with $\angle BAC=45^\circ$, $AB=2\sqrt2$ and $AC=3$. Let $X$ be the reflection of $B$ over $\overline{AC}$ and let $Y$ be the reflection of $C$ over $\overline{AB}$. Lines $XY$ and $BC$ intersect at $S$. Let $H$ be the orthocenter of $\triangle ABC$ and let $O$ be the circumcenter of $\triangle XHY$. Find $SO$.
+=== division-a-geometry-5
+Let $ABC$ be a triangle with $\angle BAC=60^\circ$, $AB=10$, $AC=13$, and orthocenter $H$. Let $\omega_1$ be the circle through $H$ tangent to $\overline{BC}$ at $B$, and let $\omega_2$ be the circle through $H$ tangent to $\overline{BC}$ at $C$. Let $\overline{CH}$ intersect $\omega_1$ again at $U$ and let $\overline{BH}$ intersect $\omega_2$ again at $V$. Let $N$ be the point on the same side of $\overline{BC}$ as $A$ such that triangle $BNC$ is equilateral. Find $\frac{NU}{NV}$.
+=== division-a-geometry-6
+Let $ABC$ be a triangle with $AB=7$, $BC=6$ and $AC=8$. Let $M$ be the midpoint of $\overline{BC}$ and let $S$ be on segment $AM$ such that $\frac{MS}{AM}=\frac14$. The line through $A$ parallel to $\overline{BC}$ meets the circumcircles of triangles $ASB$ and $ASC$ at $D\ne A$ and $E\ne A$, respectively. Find $DE$.
+
+Remark. Regrettably, due to an error on behalf of the author, the in-contest problem statement had the ratio written as $\frac{MS}{AM}=4$ instead of $\frac{MS}{AM}=\frac14$.
+=== division-a-geometry-7
+Let $ABC$ be a triangle with $AC=33$, $BC=16$, $AB=28$ and incenter $I$. Let $U$ and $V$ be points on sides $AB$ and $AC$ respectively such that $AU=AV=20$. Let $P$ be the reflection of $B$ over $U$ and let $Q$ be the reflection of $C$ over $V$. The circumcircles of triangles $BIP$ and $CIQ$ intersect at a point $S\ne I$. Let $M$ be the midpoint of $\overline{BC}$. Find $MS$.
+=== division-a-geometry-8
+Connor is standing on an infinite, flat ground plane at $z=0$. The ground is perfectly solid everywhere except for a circular hole of radius $1$ centered at the origin, i.e., the set $x^2+y^2\le1$ is missing from the plane. He holds a cube of side length $1000$ starting entirely above the ground in the half-space $z>0$. He may translate and rotate the cube in any way he likes, subject to the constraint that no part of the cube ever passes through the solid portion of the ground plane; it may only pass through the circular hole.
+
+Let $S$ be the set of all points with $z<0$ that can coincide with a vertex of the cube during such motions. Find the volume of $S$.
+=== division-b-geometry-1
+Let $ABC$ be a triangle with area $21$ and $BC=7$. Square $XYZT$ is such that $X$ lies on segment $AB$, $Y$ lies on segment $AC$, and $Z$ and $T$ lie on segment $BC$. Find the side length of square $XYZT$.
+=== division-b-geometry-2
+Let $ABC$ be an equilateral triangle with side length $1$. Let $D$ be the midpoint of $\overline{BC}$, and let $E$ and $F$ be points on $\overline{CA}$ and $\overline{AB}$, respectively, such that $AE=BF$. Given that the area of $\triangle DEF$ is $\frac13$ the area of $\triangle ABC$, find the smallest possible value of $AE$.
+=== division-b-geometry-3
+Two circles $\omega_1$ and $\omega_2$ have radii $3$ and $2$, respectively, and intersect at two distinct points $X$ and $Y$. The line through $X$ perpendicular to $\overline{XY}$ intersects $\omega_1$ at $A\ne X$ and $\omega_2$ at $B\ne X$. Given that $AB=4$, find the area of triangle $ABY$.
+=== division-b-geometry-4
+Consider a right triangular prism with bases $\triangle ABC$ and $\triangle A'B'C'$, where $\triangle ABC\cong\triangle A'B'C'$ and $AC=10$. Point $M$ lies on $\overline{AB}$ such that $AM=5$ and $MB=4$. Let $N$ lie on $\overline{A'C'}$ such that $\overline{BN}$ is parallel to the plane of $\triangle A'CM$. Find $A'N$.
+=== division-b-geometry-5
+Let $ABCD$ be an isosceles trapezoid with $\overline{AB}\parallel\overline{CD}$, $AB=20$, and $CD=22$. Let $M$ and $N$ be the midpoints of sides $AD$ and $BC$, respectively. Ray $NM$ meets the circumcircle of $ABCD$ at $K$. If the lengths of $KM$ and $AM$ are positive integers, find the sum of all possible values of $KM$.
+=== division-b-geometry-6
+Let $ABC$ be a triangle with $\angle BAC=45^\circ$, $AB=2\sqrt2$ and $AC=3$. Let $X$ be the reflection of $B$ over $\overline{AC}$ and let $Y$ be the reflection of $C$ over $\overline{AB}$. Lines $XY$ and $BC$ intersect at $S$. Let $H$ be the orthocenter of $\triangle ABC$ and let $O$ be the circumcenter of $\triangle XHY$. Find $SO$.
+=== division-b-geometry-7
+Let $ABC$ be a triangle with $\angle BAC=60^\circ$, $AB=10$, $AC=13$, and orthocenter $H$. Let $\omega_1$ be the circle through $H$ tangent to $\overline{BC}$ at $B$, and let $\omega_2$ be the circle through $H$ tangent to $\overline{BC}$ at $C$. Let $\overline{CH}$ intersect $\omega_1$ again at $U$ and let $\overline{BH}$ intersect $\omega_2$ again at $V$. Let $N$ be the point on the same side of $\overline{BC}$ as $A$ such that triangle $BNC$ is equilateral. Find $\frac{NU}{NV}$.
+=== division-b-geometry-8
+Let $ABC$ be a triangle with $AB=7$, $BC=6$ and $AC=8$. Let $M$ be the midpoint of $\overline{BC}$ and let $S$ be on segment $AM$ such that $\frac{MS}{AM}=\frac14$. The line through $A$ parallel to $\overline{BC}$ meets the circumcircles of triangles $ASB$ and $ASC$ at $D\ne A$ and $E\ne A$, respectively. Find $DE$.
+
+Remark. Regrettably, due to an error on behalf of the author, the in-contest problem statement had the ratio written as $\frac{MS}{AM}=4$ instead of $\frac{MS}{AM}=\frac14$.
+=== division-a-number-theory-1
+Find the sum of all positive integers $n<2025$ such that $\gcd\left(n^2+1,2n+1\right)>1$.
+=== division-a-number-theory-2
+How many composite odd integers $N\le10^4$ are there such that $\varphi(N)$ is not a multiple of $4$? ($\varphi(N)$ is the number of integers $k$ with $1\le k\le N$ such that $\gcd(k,N)=1$.)
+=== division-a-number-theory-3
+Compute the sum of all primes $p<50$ such that there exist linear multinomials $P$ and $Q$ with integer coefficients such that $x^2-2xy-y^2\equiv P(x,y)\cdot Q(x,y)\pmod p$.
+
+A linear multinomial is an expression of the form $ax+by+c$.
+=== division-a-number-theory-4
+For $p$ prime and $k\ge1$, let $S_k^{(p)}$ denote the number of positive integers $x<p^k$ where $x^{2^k}\equiv1\pmod{p^k}$. Find
+$$\sum_{k=1}^4\ \sum_{\substack{p<25\\p\text{ prime}}}S_k^{(p)}.$$
+=== division-a-number-theory-5
+Find the sum of the smallest five positive integers $x$ such that there exists a positive integer $y$ satisfying $x^{x+y}=y^{y-x}$.
+=== division-a-number-theory-6
+Suppose that complex numbers $t_j$ for $0\le j\le2025$ satisfy
+$$\prod_{\substack{0\le a<2025\\\gcd(a,2025)=1}}\left(x-e^{2\pi ia/2025}\right)=\sum_{j=0}^{2025}t_jx^j.$$
+Find the sum of all $j$ such that $t_j\ne0$.
+=== division-a-number-theory-7
+For a positive integer $n$, let $\text{rad}(n)$ denote the product of the unique prime divisors of $n$, where $\text{rad}(1)=1$. For example, $\text{rad}(12)=2\cdot3=6$. Find the sum of all integers $n$ satisfying
+$$\sum_{d\mid n}\text{rad}(d)=n.$$
+(The sum is over all positive integer divisors $d$ of $n$.)
+=== division-a-number-theory-8
+Find the number of integer solutions $(x,y)$, where $0\le x,y\le46$ and $y\ne0$, to the equation
+$$y^2\equiv\left(x^2-4x+1\right)\left(x^3-6x^2+16\right)\pmod{47}.$$
+=== division-b-number-theory-1
+A rectangle with integer side lengths has area $2025$. Find the sum of the possible perimeters of the rectangle.
+=== division-b-number-theory-2
+For a prime $p$, let $\nu_p(n)$ denote the largest nonnegative integer $k$ such that $p^k$ divides $n$. For example, $\nu_3(9)=2$, $\nu_2(12)=2$, and $\nu_5(12)=0$. Find the number of odd primes $p$ less than $100$ such that $\nu_p\left(2^p-1\right)=\nu_p\left(2^{2p}-1\right)-\nu_p(2)$.
+=== division-b-number-theory-3
+Find the sum of all positive integers $n<2025$ such that $\gcd\left(n^2+1,2n+1\right)>1$.
+=== division-b-number-theory-4
+How many composite odd integers $N\le10^4$ are there such that $\varphi(N)$ is not a multiple of $4$? ($\varphi(N)$ is the number of integers $k$ with $1\le k\le N$ such that $\gcd(k,N)=1$.)
+=== division-b-number-theory-5
+Compute the sum of all primes $p<50$ such that there exist linear multinomials $P$ and $Q$ with integer coefficients such that $x^2-2xy-y^2\equiv P(x,y)\cdot Q(x,y)\pmod p$.
+
+A linear multinomial is an expression of the form $ax+by+c$.
+=== division-b-number-theory-6
+For $p$ prime and $k\ge1$, let $S_k^{(p)}$ denote the number of positive integers $x<p^k$ where $x^{2^k}\equiv1\pmod{p^k}$. Find
+$$\sum_{k=1}^4\ \sum_{\substack{p<25\\p\text{ prime}}}S_k^{(p)}.$$
+=== division-b-number-theory-7
+Find the sum of the smallest five positive integers $x$ such that there exists a positive integer $y$ satisfying $x^{x+y}=y^{y-x}$.
+=== division-b-number-theory-8
+Suppose that complex numbers $t_j$ for $0\le j\le2025$ satisfy
+$$\prod_{\substack{0\le a<2025\\\gcd(a,2025)=1}}\left(x-e^{2\pi ia/2025}\right)=\sum_{j=0}^{2025}t_jx^j.$$
+Find the sum of all $j$ such that $t_j\ne0$.
