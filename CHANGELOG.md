@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **PUMaC 2009 added (960 of 1,088; 6 figures).** `STATEMENTS_V` 107.
 - **PUMaC 2010 added (896 of 1,088; 10 figures).** `STATEMENTS_V` 106.
 - **PUMaC 2011 added (832 of 1,088; no figures).** `STATEMENTS_V` 105.
 - **PUMaC 2012 added (768 of 1,088; 2 figures).** `STATEMENTS_V` 104.
