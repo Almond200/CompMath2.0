@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build js/data/problems/statements/<dir>/<year>.js from the hand-checked spec files.
 
-    python3 tools/statements/build.py smt|bmt|arml|cmimc|chmmc|duke|mmaths|gmay|umd|lehigh|utah|columbus|mbmt|calgary|pumac
+    python3 tools/statements/build.py smt|bmt|bmmt|arml|cmimc|chmmc|duke|mmaths|gmay|umd|lehigh|utah|columbus|mbmt|calgary|pumac
 
 Spec: tools/statements/spec/<dir>/<year>.txt, blocks "=== <slug tail>" (the slug without
 "<year>-<prefix>-", e.g. "algebra-3", "general-12", "individual-7", "local-individual-2"),
@@ -25,6 +25,7 @@ probs = {p["slug"]: p for p in json.load(open(os.path.join(WORK, "probs.json")))
 DIRS = {
     "smt": (("SMT",), "Stanford Math Tournament", "the official Stanford Math Tournament papers"),
     "bmt": (("BMT",), "Berkeley Math Tournament", "the official Berkeley Math Tournament papers"),
+    "bmmt": (("BmMT",), "Berkeley Math Tournament", "the official BmMT papers"),
     "arml": (("ARML", "ARML Local"), "American Regions Mathematics League", "the official ARML contest books"),
     "cmimc": (("CMIMC",), "Carnegie Mellon Informatics and Mathematics Competition", "the official CMIMC tests"),
     "chmmc": (("CHMMC",), "Caltech Harvey Mudd Math Competition", "the official CHMMC papers"),
@@ -43,7 +44,7 @@ FAM, NAME, SOURCE = DIRS[d]
 # the slug word where it is not the folder name (slug = year-word-tail)
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 import choice_layout
-SLUG_WORD = {"gmay": "girls-in-math-at-yale", "umd": "umd-hsmc-part-i", "lehigh": "lehigh-math-contest", "calgary": "calgary-junior-math-contest", "columbus": "columbus-state-tournament", "utah": "utah-state-math-contest"}
+SLUG_WORD = {"bmmt": "bmmt-individual", "gmay": "girls-in-math-at-yale", "umd": "umd-hsmc-part-i", "lehigh": "lehigh-math-contest", "calgary": "calgary-junior-math-contest", "columbus": "columbus-state-tournament", "utah": "utah-state-math-contest"}
 total = 0
 for spec in sorted(glob.glob(os.path.join(SPEC, d, "*.txt"))):
     year = os.path.basename(spec)[:4]

@@ -1,0 +1,32 @@
+// Problems and diagrams © 2019 Berkeley Math Tournament. Reproduced with permission from the Berkeley Math Tournament.
+// Source: the official BmMT papers. Built by tools/statements/build.py from tools/statements/spec/bmmt/2019.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2019-bmmt-individual-1": { s: String.raw`If Clark wants to divide $100$ pizzas among $25$ people so that each person receives the same number of pizzas, how many pizzas should each person receive?`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-2": { s: String.raw`In a group of $3$ people, every pair of people shakes hands once. How many handshakes occur?`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-3": { s: String.raw`Dylan and Joey have $14$ costumes in total. Dylan gives Joey $4$ costumes, and Joey now has the number of costumes that Dylan had before giving Joey any costumes. How many costumes does Dylan have now?`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-4": { s: String.raw`At Banjo Borger, a burger costs $7$ dollars, a soda costs $2$ dollars, and a cookie costs $3$ dollars. Alex, Connor, and Tony each spent $11$ dollars on their order, but none of them got the same order. If Connor bought the most cookies, how many cookies did Connor buy?`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-5": { s: String.raw`Joey, James, and Austin stand on a large, flat field. If the distance from Joey to James is $30$ and the distance from Austin to James is $18$, what is the minimal possible distance from Joey to Austin?`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-6": { s: String.raw`If the first and third terms of a five-term arithmetic sequence are $3$ and $8$, respectively, what is the sum of all $5$ terms in the sequence?`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-7": { s: String.raw`What is the area of the S-shaped figure below, which has constant vertical height $5$ and width $10$?
+
+@@fig:bmmt/2019/7.png@@`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-8": { s: String.raw`If the side length of square $A$ is $4$, what is the perimeter of square $B$, formed by connecting the midpoints of the sides of $A$?`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-9": { s: String.raw`The Chan Shun Auditorium at UC Berkeley has room number $2050$. The number of seats in the auditorium is a factor of the room number, and there are between $150$ and $431$ seats, inclusive. What is the sum of all of the possible numbers of seats in Chan Shun Auditorium?`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-10": { s: String.raw`Krishna has a positive integer $x$. He notices that $x^2$ has the same last digit as $x$. If Krishna knows that $x$ is a prime number less than $50$, how many possible values of $x$ are there?`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-11": { s: String.raw`Jing Jing the Kangaroo starts on the number $1$. If she is at a positive integer $n$, she can either jump to $2n$ or to the sum of the digits of $n$. What is the smallest positive integer she cannot reach no matter how she jumps?`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-12": { s: String.raw`Sylvia is $3$ units directly east of Druv and runs twice as fast as Druv. When a whistle blows, Druv runs directly north, and Sylvia runs along a straight line. If they meet at a point a distance $d$ units away from Druv's original location, what is the value of $d$?`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-13": { s: String.raw`If $x$ is a real number such that $\sqrt x+\sqrt{10}=\sqrt{x+20}$, compute $x$.`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-14": { s: String.raw`Compute the number of rearrangments of the letters in LATEX such that the letter $T$ comes before the letter $E$ and the letter $E$ comes before the letter $X$. For example, TLEAX is a valid rearrangment, but LAETX is not.`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-15": { s: String.raw`How many integers $n$ greater than $2$ are there such that the degree measure of each interior angle of a regular $n$-gon is an even integer?`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-16": { s: String.raw`Students are being assigned to faculty mentors in the Berkeley Math Department. If there are $7$ students and $3$ mentors and each student has exactly one mentor, in how many ways can students be assigned to mentors given that each mentor has at least one student?`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-17": { s: String.raw`Karthik has a paper square of side length $2$. He folds the square along a crease that connects the midpoints of two opposite sides (as shown in the left diagram, where the dotted line indicates the fold). He takes the resulting rectangle and folds it such that one of its vertices lands on the vertex that is diagonally opposite. Find the area of Karthik's final figure.
+
+@@fig:bmmt/2019/17.png@@`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-18": { s: String.raw`Sally is inside a pen consisting of points $(a,b)$ such that $0\le a,b\le4$. If she is currently on the point $(x,y)$, she can move to either $(x,y+1)$, $(x,y-1)$, or $(x+1,y)$. Given that she cannot revisit any point she has visited before, find the number of ways she can reach $(4,4)$ from $(0,0)$.`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-19": { s: String.raw`An ant sits on the circumference of the circular base of a party hat (a cone without a circular base for the ant to walk on) of radius $2$ and height $\sqrt5$. If the ant wants to reach a point diametrically opposite of its current location on the hat, what is the minimum possible distance the ant needs to travel?
+
+@@fig:bmmt/2019/19.png@@`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+"2019-bmmt-individual-20": { s: String.raw`If
+$$f(x)=\frac{2^{19}x+2^{20}}{x^2+2^{20}x+2^{20}},$$
+find the value of $f(1)+f(2)+f(4)+f(8)+\cdots+f(2^{20})$.`, u: "https://berkeley.mt/archives/bmmt-2019/IFa2019.pdf" },
+});

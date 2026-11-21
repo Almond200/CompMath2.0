@@ -2,6 +2,8 @@
 
 **2026-11-21**
 
+- **BmMT Individual Round added (300 problems):** 15 papers (2012 to 2019, 2021 to 2026, and the 2025 online paper), each with statements, figures (30), tree filings, cards and a rating; the family sits beside BMT in lists and series, and the About text credits it. The ratings are author estimates (BmMT posts no solve counts). Tiebreaker rounds are left out. `STATEMENTS_V` 114. Statement figures were cropped with a text-line filter that keeps labels and captions (`crop5.py`).
+
 - **Practice sets look like AMC and AIME ones (owner):** when a problem's statement is in the app (every permitted contest), the practice page shows no copyright line and no "Open in archive" button during the contest; after the review "Open in archive" sits next to "Open in app" (the label is now "Open in archive" everywhere), and the "Open the official solution" button under "Your answer" is gone (the official solution stays in How this problem works). A paper problem with no statement in the app (for example Utah 2014) keeps its link, the only way to read it. Checked in both themes for AIME, HMMT and Utah (`check-practice-actions.cjs`, `check-browse.cjs`, `check-practice-card.cjs` pass).
 
 - **Utah State statements, 2018 to 2020 (240 problems):** Junior and Senior exams, 12 figures cropped and checked for clipping, shared problems copy their twin. Tag fixes: 2020 Junior #9 and #35 and Senior #7, #9 and #21 (cereal-toy problems are counting, not expected value; the helix and the box are not their old cards), 2019 Junior #27, #34 and Senior #30, #33, 2018 Junior #23 and Senior #8, #16, #31 (AUDITS.md). `STATEMENTS_V` 113. 2006 to 2008 and 2013 are scans, skipped at the owner's word; 2009 to 2012 and 2014 to 2017 are not done.

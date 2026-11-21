@@ -1,0 +1,52 @@
+=== 1
+Ten math students take a test, and the average score on the test is $28$. If five students had an average of $15$, what was the average of the other five students' scores?
+=== 2
+If $a\otimes b=a^2+b^2+2ab$, find $(-5\otimes7)\otimes4$.
+=== 3
+Below is a $3\times4$ grid. Fill each square with either $1$, $2$ or $3$. No two squares that share an edge can have the same number. After filling the grid, what is the $4$-digit number formed by the bottom row?
+
+@@fig:bmmt2013_3.png@@
+=== 4
+What is the angle in degrees between the hour hand and the minute hand when the time is $6:30$?
+=== 5
+In a small town, there are some cars, tricycles, and spaceships. (Cars have $4$ wheels, tricycles have $3$ wheels, and spaceships have $6$ wheels.) Among the vehicles, there are $24$ total wheels. There are more cars than tricycles and more tricycles than spaceships. How many cars are there in the town?
+=== 6
+You toss five coins one after another. What is the probability that you never get two consecutive heads or two consecutive tails?
+=== 7
+In the below diagram, $\angle ABC$ and $\angle BCD$ are right angles. If $AB=9$, $BD=13$, and $CD=5$, calculate $AC$.
+
+@@fig:bmmt2013_7.png@@
+=== 8
+Out of $100$ customers at a market, $80$ purchased oranges, $60$ purchased apples, and $70$ purchased bananas. What is the least possible number of customers who bought all three items?
+=== 9
+Francis, Ted and Fred planned to eat cookies after dinner. But one of them sneaked off earlier and ate the cookies all by himself. The three say the following:
+
+Francis: Fred ate the cookies.
+
+Fred: Ted did not eat the cookies.
+
+Ted: Francis is lying.
+
+If exactly one of them is telling the truth, who ate all the cookies?
+=== 10
+Twelve distinct four-letter "words" can be formed by using each of the letters $B$, $M$, $M$, and $T$ exactly once. What is the ninth word when these words are arranged in alphabetical order?
+=== 11
+Let $ABC$ be a triangle with a right angle at $A$. Suppose $AB=6$ and $AC=8$. If $AD$ is the perpendicular from $A$ to $BC$, what is the length of $AD$?
+=== 12
+How many three digit even numbers are there with an even number of even digits?
+=== 13
+Three boys, Bob, Charles and Derek, and three girls, Alice, Elizabeth and Felicia are all standing in one line. Bob and Derek are each adjacent to precisely one girl, while Felicia is next to two boys. If Alice stands before Charles, who stands before Elizabeth, determine the number of possible ways they can stand in a line.
+=== 14
+A man $5$ foot, $10$ inches tall casts a $14$ foot shadow. $20$ feet behind the man, a flagpole casts a shadow that has a $9$ foot overlap with the man's shadow. How tall (in inches) is the flagpole?
+=== 15
+Alvin has a large bag of balls. He starts throwing away balls as follows: At each step, if he has $n$ balls and $3$ divides $n$, then he throws away a third of the balls. If $3$ does not divide $n$ but $2$ divides $n$, then he throws away half of them. If neither $3$ nor $2$ divides $n$, he stops throwing away the balls. If he began with $1458$ balls, after how many steps does he stop throwing away balls?
+=== 16
+Oski has $50$ coins that total to a value of $82$ cents. You randomly steal one coin and find out that you took a quarter. As to not enrage Oski, you quickly put the coin back into the collection. However, you are both bored and curious and decide to randomly take another coin. What is the probability that this next coin is a penny? (Every coin is either a penny, nickel, dime or quarter).
+=== 17
+Let $ABC$ be a triangle. Let $M$ be the midpoint of $BC$. Suppose $MA=MB=MC=2$ and $\angle ACB=30^\circ$. Find the area of the triangle.
+=== 18
+A spirited integer is a positive number representable in the form $20n+13k$ for some positive integer $n$ and any integer $k$. Determine how many spirited integers are less than $2013$.
+=== 19
+Circles of radii $20$ and $13$ are externally tangent at $T$. The common external tangent touches the circles at $A$, and $B$, respectively where $A\ne B$. The common internal tangent of the circles at $T$ intersects segment $AB$ at $X$. Find the length of $AX$.
+=== 20
+A finite set of distinct, nonnegative integers $\{a_1,\ldots,a_k\}$ is called admissible if the integer function $f(n)=(n+a_1)\cdots(n+a_k)$ has no common divisor over all terms; that is, $\gcd(f(1),f(2),\ldots,f(n))=1$ for any integer $n$. How many admissible sets only have members of value less than $10$? $\{4\}$ and $\{0,2,6\}$ are such sets, but $\{4,9\}$ and $\{1,3,5\}$ are not.
