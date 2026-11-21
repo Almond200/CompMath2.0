@@ -169,7 +169,7 @@ body {
   cursor: pointer;
   text-align: left;
   color: inherit;
-  font-family: inherit;
+  text-decoration: none;
 }
 
 /* Mobile-only hamburger that opens the section drawer. */
@@ -186,7 +186,6 @@ body {
   cursor: pointer;
 }
 .nav-toggle:hover { color: var(--accent); border-color: var(--accent); }
-.brand:hover .brand-text h1 { color: var(--accent); }
 
 .topbar-tools {
   flex: 0 0 auto;
@@ -236,20 +235,6 @@ body {
   color: var(--gold);
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1;
-}
-
-.brand-text h1 {
-  margin: 0;
-  font-size: 19px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.brand-text p {
-  margin: 1px 0 0;
-  font-size: 11.5px;
-  color: var(--text-faint);
-  letter-spacing: 0.04em;
 }
 
 .search-wrap {
@@ -618,7 +603,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .section-header { margin-bottom: 6px; }
 
-.section-header h2 {
+.section-header :is(h1, h2) {
   margin: 0 0 4px;
   font-size: 26px;
   font-weight: 750;
@@ -747,7 +732,7 @@ html[data-tags="off"] .card .tag-row { display: none; }
    the ramp keeps its shape. */
 
 /* headings */
-html[data-text="large"] .section-header h2 { font-size: 29px; }
+html[data-text="large"] .section-header :is(h1, h2) { font-size: 29px; }
 html[data-text="large"] .detail-head .card-name { font-size: 28px; }
 html[data-text="large"] .subsection > h3,
 html[data-text="large"] .wiki-letter > h3,
@@ -937,7 +922,7 @@ html[data-text="large"] .card-crumb { font-size: 13px; }
 
 /* ---------- Search results ---------- */
 
-.results-meta { color: var(--text-dim); font-size: 13.5px; margin: 0 0 16px; }
+.results-meta { font-weight: 400; color: var(--text-dim); font-size: 13.5px; margin: 0 0 16px; }
 .results-meta strong { color: var(--text); }
 
 .empty-state {
@@ -984,9 +969,7 @@ body.nav-open .nav-backdrop { opacity: 1; }
   .topbar-tools { order: 4; margin-left: 0; flex: none; }
 
   /* Trim the header so nothing overflows the viewport. */
-  .brand-text p { display: none; }
   .brand-sigma { font-size: 28px; }
-  .brand-text h1 { font-size: 16px; }
   .tool-btn .tb-label { display: none; }
   .tool-btn .tb-icon { margin-right: 0; }
   .tool-btn { padding: 6px 10px; font-size: 14px; }
@@ -1574,7 +1557,7 @@ html[data-text="larger"] .prob-statement { font-size: 21px; }
 /* ---------- List builder ---------- */
 /* ---------- List detail ---------- */
 .list-detail-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 4px 0 2px; }
-.list-detail-head h2 { margin: 0; font-size: 24px; }
+.list-detail-head :is(h1, h2) { margin: 0; font-size: 24px; }
 .list-detail-count { color: var(--accent); font-weight: 600; font-size: 14px; }
 /* margin-left:auto pushes the group to the far right of the header row, so the two
    destructive buttons sit away from the list body rather than just above it. */
@@ -2336,7 +2319,6 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
 
 /* Top bar, simplified: the logo is the symbol alone (it still returns home), and Lists live
    inside the Practice space rather than in a bubble of their own. */
-.topbar .brand-text { display: none; }
 #lists-btn { display: none; }
 
 /* The Practice pages' own navigation (study lists, problem database) takes the space's tint. */
@@ -2537,7 +2519,7 @@ body.is-landing .content { padding: 0 0 70px; }
 /* ---------- Space pages: how the space fits, then a way into everything in it ---------- */
 .space-home { max-width: 1180px; }
 .space-home-head { margin: 4px 0 14px; }
-.space-home-head h2 { margin: 0; font-size: calc(30px * var(--tx)); font-weight: 800; letter-spacing: -0.02em; color: var(--space); }
+.space-home-head :is(h1, h2) { margin: 0; font-size: calc(30px * var(--tx)); font-weight: 800; letter-spacing: -0.02em; color: var(--space); }
 .sh-ask { margin: 2px 0 0; font-size: calc(15px * var(--tx)); font-weight: 650; color: var(--text); }
 .sh-intro { margin: 6px 0 0; max-width: 780px; font-size: calc(14.5px * var(--tx)); line-height: 1.55; color: var(--text-dim); }
 .sh-intro a { color: var(--text); font-weight: 650; text-decoration: underline; text-decoration-color: var(--border-light); text-underline-offset: 2px; }
@@ -2756,9 +2738,9 @@ html[data-lesson-width="full"] .lp-main > :is(.lp-body, .lp-related, .learn-note
 #pr-lists .pl-new-btn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; padding: 0; border-radius: 6px; border: none;
   background: var(--cs-learn); color: var(--c-learn); font-size: 17px; font-weight: 800; line-height: 1; cursor: pointer; }
 /* A user list's title renames in place: a press makes it editable, with an underline while typing. */
-h2[data-list-title], .list-description, .list-description-editor { cursor: text; border-radius: 6px; }
-h2[data-list-title]:hover, .list-description:hover { background: var(--bg-panel); }
-h2[data-list-title][contenteditable="true"], .list-description-editor { outline: none; background: var(--bg-panel); box-shadow: inset 0 -2px 0 var(--c-learn); padding: 0 6px; }
+[data-list-title], .list-description, .list-description-editor { cursor: text; border-radius: 6px; }
+[data-list-title]:hover, .list-description:hover { background: var(--bg-panel); }
+[data-list-title][contenteditable="true"], .list-description-editor { outline: none; background: var(--bg-panel); box-shadow: inset 0 -2px 0 var(--c-learn); padding: 0 6px; }
 #pr-study > .learn-sub { margin-top: 26px; }
 
 /* The card drawer */
@@ -3078,7 +3060,20 @@ html[data-cols="spacious"] .content .cards.search-results { grid-template-column
 
 /* Before the first render on the front page, the top bar and sidebar stay hidden (see the
    pre-paint script in index.html), so they do not flash. */
-html.pre-landing .sidebar { display: none; }
+html.pre-landing .sidebar,
+body.app-pending .topbar,
+body.app-pending .sidebar { display: none; }
+
+html.startup-loading { background: var(--bg); }
+html.startup-loading body { visibility: hidden; }
+body.app-pending .layout { display: block; }
+.static-home, .static-reference { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
+.static-home .hm-sub { display: block; }
+.static-reference h2 { margin-top: 2rem; }
+.static-reference nav ul { display: flex; flex-wrap: wrap; gap: 8px 24px; padding: 0; list-style: none; }
+.static-reference dd { margin: 0 0 1rem; }
+.route-status { margin: 2rem auto; max-width: 42rem; }
+.static-reference dt { font-weight: 700; }
 /* Card size: Regular is two across on a laptop (three on a wide screen), Large one across on
    a laptop (two on a wide screen), with room for every form of a formula. */
 .content .cards { grid-template-columns: repeat(auto-fill, minmax(min(440px, 100%), 1fr)); }
@@ -3490,7 +3485,7 @@ html[data-density="spacious"] .key-forms .detail-list li, html[data-density="spa
 .planned-note { margin: 14px 0; padding: 10px 14px; border: 1px dashed var(--border-light); border-radius: 10px; color: var(--text-dim); background: var(--bg-panel); }
 
 /* ---------- Text size: Larger (about 1.18 times Large; 2026-10-10) ---------- */
-html[data-text="larger"] .section-header h2 { font-size: 34px; }
+html[data-text="larger"] .section-header :is(h1, h2) { font-size: 34px; }
 html[data-text="larger"] .detail-head .card-name { font-size: 33px; }
 html[data-text="larger"] .subsection > h3,
 html[data-text="larger"] .wiki-letter > h3,
@@ -3546,7 +3541,7 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
   .nav-section-btn, .nav-practice-link,        /* sidebar */
   .card-name, .grp-title, .hs-ask, .sh-ask, .sh-intro a, .info-ask, .st-head,
   .detail h4, .detail-body h4, .prob-chain h4, .prob-think h4,
-  .interactive h4, .detail h3, h2, h3, .ts-name,   /* headers */
+  .interactive h4, .detail h3, h1, h2, h3, .ts-name,   /* headers */
   .pf-row .pf-k,        /* contest profile labels */
   .problem-q strong,                           /* Example 1. */
   .prob-row .prob-open, .rc-name,              /* practice problems */
@@ -3732,8 +3727,8 @@ body.is-landing .content { padding: 0 0 50px; }
      one list; the wide layout keeps its own order. */
   .hm-cols { display: flex; flex-direction: column; }
   .hm-main, .hm-rail { display: contents; }
-  .hm-continue { order: 1; } .home .dyk { order: 2; } .hm-library { order: 3; } .home .hp-daily { order: 4; }
-  .hm-cotd { order: 5; } .hm-newest { order: 6; } .hm-glance { order: 7; } .hm-textbooks { order: 8; }
+  .hm-continue { order: 1; } .home .dyk { order: 2; } .hm-library { order: 3; } .home :is(.hp-daily, [data-home-daily]) { order: 4; }
+  .hm-cotd { order: 5; } .hm-newest { order: 6; } :is(.hm-glance, [data-home-practice]) { order: 7; } .hm-textbooks { order: 8; }
   .home .hm-cols > * > * { border-top: 1px solid var(--border); }
   .home .hm-cols .hm-continue { border-top: none; }
 }
@@ -3986,7 +3981,7 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 
 /* Practice sessions use two panels, with unboxed statements and review content. */
 .practice-session-top, .practice-session-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-.practice-session-top h2 { margin: 0; font: inherit; font-size: calc(18px * var(--tx)); font-weight: 700; }
+.practice-session-top :is(h1, h2) { margin: 0; font: inherit; font-size: calc(18px * var(--tx)); font-weight: 700; }
 .practice-session-top p { color: var(--text-dim); margin: 4px 0 10px; font-size: 14px; }
 .practice-session .cn-nums { justify-content: flex-start; gap: 6px; margin: 0 0 14px; padding: 12px 0 8px; flex-wrap: wrap; }
 .practice-session .cn-num { position: relative; display: grid; place-items: center; box-sizing: border-box; width: 36px; height: 36px; min-width: 36px; padding: 0; border-radius: 8px; font: inherit; line-height: 1; cursor: pointer; }
@@ -4030,7 +4025,7 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .practice-topic-context { margin-top: 2px; color: var(--text-dim); font-size: 12px; line-height: 1.45; }
 #topic-name { max-width: none; width: 100%; }
 @media (max-width: 500px) {
-  .practice-session-top h2 { font-size: calc(18px * var(--tx)); }
+  .practice-session-top :is(h1, h2) { font-size: calc(18px * var(--tx)); }
   .practice-session-actions > div { width: 100%; }
   .practice-session .hp-btn { font-size: 13px; padding: 9px 12px; }
   #past-practice-sets .pl-item { flex-wrap: wrap; }
@@ -4065,7 +4060,7 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 #topic-name { padding: 6px 10px; }
 
 /* Completed practice overview. */
-.practice-results h2 { margin: 0 0 6px; font-size: calc(20px * var(--tx)); }
+.practice-results :is(h1, h2) { margin: 0 0 6px; font-size: calc(20px * var(--tx)); }
 .practice-results-subtitle, .practice-results-meta { color: var(--text-dim); font-size: calc(14px * var(--tx)); }
 .practice-results-subtitle { margin: 0; }
 .practice-results-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
@@ -4156,7 +4151,7 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
    sidebar is a side rail and may stay beside the page on a wide screen; on a phone it
    comes first and scrolls away. */
 .ge-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin: 4px 0 16px; }
-.ge-head h2 { margin: 2px 0 0; font-size: calc(24px * var(--tx)); }
+.ge-head :is(h1, h2) { margin: 2px 0 0; font-size: calc(24px * var(--tx)); }
 .ge-done { flex: none; }
 .ge-body { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 22px; align-items: start; }
 .ge-side { position: sticky; top: 76px; max-height: calc(100vh - 92px); overflow-y: auto;
@@ -4255,8 +4250,8 @@ body.ge-dragging, body.ge-dragging * { cursor: grabbing !important; user-select:
   background: color-mix(in srgb, var(--space, var(--accent)) 14%, transparent); border-radius: 4px; }
 body.ge-selecting, body.ge-selecting * { user-select: none; -webkit-user-select: none; }
 .ge-pill[disabled] { opacity: 0.4; cursor: default; filter: none; }
-.ge h2[data-list-title] { cursor: text; }
-.ge-head h2 { width: fit-content; max-width: 100%; }
+.ge [data-list-title] { cursor: text; }
+.ge-head :is(h1, h2) { width: fit-content; max-width: 100%; }
 /* The dragged card: a copy of the chip held under the pointer where it was grabbed. */
 .ge-ghost-chip { position: fixed; left: 0; top: 0; z-index: 1000; pointer-events: none; box-sizing: border-box;
   border-color: var(--space, var(--accent)); box-shadow: var(--ui-shadow); cursor: grabbing; }
@@ -4391,9 +4386,12 @@ dialog.app-confirm { inset-block: 0 12vh; }
    looked huge beside a card's name); an invisible margin around each brings the area that
    answers a finger to at least 40px. */
 @media (pointer: coarse) {
-  .star-btn, .addlist-btn, .copy-btn, .ge-ico, #pr-lists .pl-new-btn, .nsh-info { position: relative; }
-  :is(.star-btn, .addlist-btn, .copy-btn, .ge-ico, #pr-lists .pl-new-btn, .nsh-info)::after {
+  .star-btn, .addlist-btn, .copy-btn, .ge-ico, #pr-lists .pl-new-btn, .nsh-info,
+  .lp-drawer-close, button.tt-tw { position: relative; }
+  :is(.star-btn, .addlist-btn, .copy-btn, .ge-ico, #pr-lists .pl-new-btn, .nsh-info, .lp-drawer-close, button.tt-tw)::after {
     content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, 40px); height: max(100%, 40px); transform: translate(-50%, -50%); }
+  /* Leave room between the close button and the expanded card actions below it. */
+  .lp-drawer .lp-drawer-head { margin-bottom: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
@@ -4572,6 +4570,12 @@ button.tt-tw:hover { background: var(--border); color: var(--text); }
   .br-band { flex-wrap: wrap; }
   .br-band-h { font-size: 16px; white-space: nowrap; }
   .br-band .br-count { flex-basis: 100%; margin: 2px 0 0; }
+}
+
+@media (pointer: coarse) {
+  /* Keep the arrow's 40px target inside its row, clear of the topic link. */
+  .tt-row { min-height: 40px; }
+  .tt-name { margin-inline-start: 9px; }
 }
 
 /* ---------- A contest paper's page (2026-11-11): figures, problem tiles, statistics ---------- */

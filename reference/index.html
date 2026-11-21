@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A competition math formula sheet for algebra, geometry, number theory, and combinatorics.">
+  <title>Competition Math Formula Sheet | Competition Math Reference</title>
+  <link rel="icon" href="../favicon.svg?v=1" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/styles.css?v=543">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to main content</a>
+  <main id="content" class="static-reference" tabindex="-1">
+    <p><a href="../index.html">Competition Math Reference home</a></p>
+    <h1>Competition Math Formula Sheet</h1>
+    <nav aria-label="Subjects">
+      <ul>
+        <li><a href="#algebra">Algebra</a></li>
+        <li><a href="#geometry">Geometry</a></li>
+        <li><a href="#number-theory">Number theory</a></li>
+        <li><a href="#combinatorics">Combinatorics</a></li>
+      </ul>
+    </nav>
+    <section id="algebra" aria-labelledby="algebra-heading">
+      <h2 id="algebra-heading">Algebra</h2>
+      <dl>
+        <dt>Quadratic formula</dt>
+        <dd>For <var>a</var><var>x</var><sup>2</sup> + <var>b</var><var>x</var> + <var>c</var> = 0 with <var>a</var> ≠ 0, the roots are (−<var>b</var> ± √(<var>b</var><sup>2</sup> − 4<var>a</var><var>c</var>))/(2<var>a</var>).</dd>
+        <dt>Vieta’s formulas</dt>
+        <dd>The two roots of that quadratic have sum −<var>b</var>/<var>a</var> and product <var>c</var>/<var>a</var>.</dd>
+        <dt>Finite geometric series</dt>
+        <dd>The first <var>n</var> terms with initial term <var>a</var> and common ratio <var>r</var> sum to <var>a</var>(1 − <var>r</var><sup><var>n</var></sup>)/(1 − <var>r</var>) if <var>r</var> ≠ 1. For <var>r</var> = 1, the sum is <var>na</var>.</dd>
+      </dl>
+      <a href="../index.html#/formulas/algebra">Explore algebra in the interactive reference</a>
+    </section>
+    <section id="geometry" aria-labelledby="geometry-heading">
+      <h2 id="geometry-heading">Geometry</h2>
+      <dl>
+        <dt>Pythagorean theorem</dt>
+        <dd>In a right triangle with legs <var>a</var> and <var>b</var> and hypotenuse <var>c</var>, <var>a</var><sup>2</sup> + <var>b</var><sup>2</sup> = <var>c</var><sup>2</sup>.</dd>
+        <dt>Law of cosines</dt>
+        <dd>If angle <var>C</var> lies between sides <var>a</var> and <var>b</var>, the opposite side satisfies <var>c</var><sup>2</sup> = <var>a</var><sup>2</sup> + <var>b</var><sup>2</sup> − 2<var>ab</var> cos <var>C</var>.</dd>
+        <dt>Heron’s formula</dt>
+        <dd>For side lengths <var>a</var>, <var>b</var>, and <var>c</var>, set <var>s</var> = (<var>a</var> + <var>b</var> + <var>c</var>)/2. The area is √(<var>s</var>(<var>s</var> − <var>a</var>)(<var>s</var> − <var>b</var>)(<var>s</var> − <var>c</var>)).</dd>
+      </dl>
+      <a href="../index.html#/formulas/geometry">Explore geometry in the interactive reference</a>
+    </section>
+    <section id="number-theory" aria-labelledby="number-theory-heading">
+      <h2 id="number-theory-heading">Number theory</h2>
+      <dl>
+        <dt>Euclidean algorithm</dt>
+        <dd>For integers <var>a</var> ≥ <var>b</var> &gt; 0, replace (<var>a</var>, <var>b</var>) with (<var>b</var>, the remainder of <var>a</var> divided by <var>b</var>). When the second entry is zero, the first is the greatest common divisor.</dd>
+        <dt>Counting positive divisors</dt>
+        <dd>If a positive integer factors as <var>p</var><sub>1</sub><sup><var>e</var><sub>1</sub></sup> ⋯ <var>p</var><sub><var>k</var></sub><sup><var>e</var><sub><var>k</var></sub></sup> with distinct primes, the number of positive divisors is (<var>e</var><sub>1</sub> + 1) ⋯ (<var>e</var><sub><var>k</var></sub> + 1).</dd>
+        <dt>Fermat’s little theorem</dt>
+        <dd>If <var>p</var> is prime and does not divide <var>a</var>, then <var>a</var><sup><var>p</var>−1</sup> ≡ 1 (mod <var>p</var>).</dd>
+      </dl>
+      <a href="../index.html#/formulas/number-theory">Explore number theory in the interactive reference</a>
+    </section>
+    <section id="combinatorics" aria-labelledby="combinatorics-heading">
+      <h2 id="combinatorics-heading">Combinatorics</h2>
+      <dl>
+        <dt>Combinations</dt>
+        <dd>For 0 ≤ <var>k</var> ≤ <var>n</var>, the number of ways to choose <var>k</var> items from <var>n</var> distinct items is <var>n</var>!/(<var>k</var>!(<var>n</var> − <var>k</var>)!).</dd>
+        <dt>Inclusion–exclusion for two sets</dt>
+        <dd>Add the sizes of the two sets and subtract the size of their intersection. The elements in the intersection were counted twice.</dd>
+        <dt>Complementary probability</dt>
+        <dd>The probability that an event occurs equals 1 minus the probability that it does not occur.</dd>
+      </dl>
+      <a href="../index.html#/formulas/counting">Explore combinatorics in the interactive reference</a>
+    </section>
+  </main>
+</body>
+</html>

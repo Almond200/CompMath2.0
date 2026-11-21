@@ -95,9 +95,9 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     assert.equal(await page.evaluate(id => JSON.parse(localStorage.getItem('mq-practice-sets')).find(s => s.id === id).answers['2018-amc-10a-1'], setId), 'E');
     scenarios++;
 
-    await navigate('#/settings', '.settings-page');
+    await navigate('#/settings', '.settings-head');
     assert.match(await page.title(), /^Settings — /);
-    assert.equal(await page.evaluate(() => document.activeElement.tagName), 'H2');
+    assert.equal(await page.evaluate(() => document.activeElement.tagName), 'H1');
     await searchBorder(page.locator('.settings-head input[type="search"]'));
     await radio(page.locator('[role="radiogroup"][aria-label="Theme"]'), 'ArrowRight');
     assert.equal(await page.evaluate(() => document.activeElement.getAttribute('data-set')), 'theme');
@@ -192,7 +192,7 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     }
     scenarios++;
 
-    await navigate('#/settings', '.settings-page'); await page.locator('[data-set="scroll"][data-val="fast"]').click();
+    await navigate('#/settings', '.settings-head'); await page.locator('[data-set="scroll"][data-val="fast"]').click();
     await navigate('#/f/pythagorean-theorem', '.detail'); await page.emulateMedia({ reducedMotion:'reduce' });
     assert.equal(await page.evaluate(() => window.AppAccessibility.scrollBehavior()), 'instant');
     assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior), 'auto');
@@ -251,7 +251,7 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     await page.evaluate(() => document.getElementById('content').focus()); await page.keyboard.press('Shift');
     assert.equal(await page.evaluate(() => document.activeElement.id + ':' + getComputedStyle(document.activeElement).outlineStyle), 'content:none');
     await page.evaluate(() => window.AppAccessibility.focusMain()); await page.keyboard.press('Shift');
-    assert.equal(await page.evaluate(() => document.activeElement.tagName + ':' + getComputedStyle(document.activeElement).outlineStyle), 'H2:none');
+    assert.equal(await page.evaluate(() => document.activeElement.tagName + ':' + getComputedStyle(document.activeElement).outlineStyle), 'H1:none');
     await page.keyboard.press('Tab');
     assert.equal(await page.evaluate(() => document.activeElement.matches('button, a') && getComputedStyle(document.activeElement).outlineStyle), 'solid');
     await navigate('#/', '.hm-book');
@@ -278,6 +278,38 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     assert.equal(await page.locator('[data-ge-zone="0"] [data-ge-chip="casework-method"]').count(), 1);
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
     if (artifactDir) await page.screenshot({ path:path.join(artifactDir, `editor-${theme}-${width}.png`) });
+    if (width === 375) {
+      async function activateExpandedCorner(button, width, height) {
+        await button.scrollIntoViewIfNeeded();
+        const box = await button.boundingBox();
+        assert.deepEqual([box.width, box.height], [width, height]);
+        const x = box.x + width / 2 + 19, y = box.y + height / 2 + 19;
+        assert.ok(await button.evaluate((el, point) => {
+          const hit = document.elementFromPoint(point.x, point.y);
+          if (!el.contains(hit)) return false;
+          hit.click();
+          return true;
+        }, { x, y }));
+      }
+      await navigate('#/settings', '.settings-head');
+      await page.getByRole('radio', { name: 'Opens in the lesson', exact: true }).click();
+      await navigate('#/learn/amc-geometry/s5/6', '.lp-body');
+      await page.locator('.lp-body a[data-card="circle-in-angle"]').first().click();
+      const drawer = page.locator('.lp-drawer');
+      await activateExpandedCorner(drawer.getByRole('button', { name: 'Close the card' }), 24, 22);
+      await drawer.waitFor({ state: 'hidden' });
+
+      await navigate('#/browse/topics', '.tt-list');
+      await page.waitForFunction(() => document.activeElement.matches('#content h1'));
+      const toggle = page.locator('button[data-tt="geo"]');
+      const expanded = await toggle.getAttribute('aria-expanded');
+      await activateExpandedCorner(toggle, 22, 22);
+      await page.waitForFunction(value => document.querySelector('button[data-tt="geo"]')?.getAttribute('aria-expanded') !== value, expanded);
+      const topic = page.locator('.tt-row').filter({ has: toggle }).locator('.tt-name');
+      await topic.tap({ position: { x: 2, y: 12 } });
+      await page.waitForURL(url => url.hash === '#/browse/topics/geo');
+      scenarios++;
+    }
     assert.deepEqual(errors, []); scenarios++; await context.close();
   }
   await browser.close(); console.log(`${scenarios} accessibility scenarios passed across light/dark and desktop/touch: contrast, skip link, named search/groups, radio keys/focus restoration, real sidebar URLs/modifier clicks, hidden-navigation focus, contest tabs, route titles/focus, reduced motion and target sizes.`);

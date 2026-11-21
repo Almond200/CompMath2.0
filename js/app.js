@@ -1,7 +1,42 @@
 // Competition Math Reference — navigation, rendering, tag-based search, filters, sorting.
 (function () {
-  const SECTIONS = window.MATH_SECTIONS || [];
+  if (!window.MATH_SECTIONS?.length || !window.MATH_LEARN_SUMMARY || !window.AppAccessibility || !window.AppIcons || !window.ProblemDifficulty) return;
+  const SECTIONS = window.MATH_SECTIONS;
   const uiIcon = window.AppIcons.svg;
+  // The template lists current versioned URLs without requesting any of them.
+  const assetGroups = new Map(), chapterAssets = new Map(), assetRequests = new Map(), loadedAssets = new Set();
+  document.getElementById("on-demand-scripts").content.querySelectorAll("script[src]").forEach(tag => {
+    const src = tag.getAttribute("src"), group = tag.dataset.group;
+    if (group === "chapters") {
+      const [, book, code] = src.match(/learn\/([^/]+)\/([^/.]+)\.js/);
+      chapterAssets.set(book + "/" + code, src);
+    } else {
+      if (!assetGroups.has(group)) assetGroups.set(group, []);
+      assetGroups.get(group).push(src);
+    }
+  });
+  function loadAsset(src) {
+    if (!assetRequests.has(src)) assetRequests.set(src, new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => { loadedAssets.add(src); resolve(); };
+      script.onerror = () => {
+        assetRequests.delete(src);
+        script.remove();
+        reject(new Error("Could not load " + src));
+      };
+      document.head.appendChild(script);
+    }));
+    return assetRequests.get(src);
+  }
+  function loadAssets(group) {
+    return Promise.all(assetGroups.get(group).map(loadAsset));
+  }
+  const chapterAsset = (book, chapter) => chapterAssets.get(book.id + "/" + chapter.code.toLowerCase());
+  function loadChapter(book, chapter) {
+    const src = chapterAsset(book, chapter);
+    return src ? loadAsset(src) : Promise.resolve();
+  }
   const LEVELS = ["MATHCOUNTS", "AMC10", "AMC12", "AIME", "Olympiad"];
   const LEVEL_LABELS = {
     MATHCOUNTS: "MATHCOUNTS",
@@ -1344,7 +1379,7 @@
   }
   // Go to an address; when it is already the address, re-render instead (no hashchange fires).
   function goHash(h) {
-    if (location.hash === h || (!h && !location.hash)) { render(); scrollForRoute(getRoute(), null); window.AppAccessibility.focusMain(); }
+    if (location.hash === h || (!h && !location.hash)) renderCurrentPage(true);
     else location.hash = h;
   }
 
@@ -1363,7 +1398,7 @@
     m = location.hash.match(/^#\/browse\/(topics|difficulty)(?:\/([\w.-]+)(?:\/(\d+))?)?$/);
     if (m) return m[1] === "topics" ? { type: "browse", kind: "topics", node: m[2] || null } : { type: "browse", kind: "difficulty", bin: m[3] ? +m[3] : /^\d+$/.test(m[2] || "") ? +m[2] : null };
     m = location.hash.match(/^#\/problem\/([\w-]+)$/);
-    if (m && PROBLEM_BY_SLUG[m[1]]) return { type: "problem", slug: m[1] };
+    if (m && (!problemsReady || PROBLEM_BY_SLUG[m[1]])) return { type: "problem", slug: m[1] };
     // One tag page for every way in: a topic chip, a problem's type chip, the "Browse by Tag"
     // picker, and old #/topic/<id> addresses. #/tag/ takes one label or several joined by "+".
     m = location.hash.match(/^#\/topic\/([\w-]+)$/);
@@ -3597,88 +3632,105 @@
   }
   const subjectChips = p => p.subjects.map(s => `<span class="ptype-chip subject-chip">${SUBJECT_LABELS[s]}</span>`).join("");
   const problemDifficulty = window.ProblemDifficulty;
-  const PROBLEM_DB = (window.MATH_PROBLEM_DB || []).map(e => {
-    const formulas = (e.formulas || []).filter(fid => BY_ID[fid]);
-    const trickFormulas = (e.trickFormulas || []).filter(fid => BY_ID[fid]);
-    const pr = parseRef(e.ref), slug = problemSlug(e.ref), rating = problemDifficulty.ratingFor(slug);
-    const paper = (window.MATH_CONTEST_PAPERS || {})[e.ref.replace(/,\s*Problem\s+\d+$/, "")];
-    return {
-      ref: e.ref, slug, tree: e.tree || [], elo: rating ? rating.elo : null, eloSource: rating ? rating.source : null,
-      url: e.url || paper?.url || officialPdf(e.ref, "problems") || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
-      // Where the official solution is, for a problem whose solution we link instead of write.
-      // An AHSME problem has no solution of ours either (owner, 2026-11-13): its AoPS wiki page has them.
-      // Only the MAA contests have a per-problem AoPS page to fall back on; an archive contest
-      // without posted solutions gets no solution link rather than its archive mislabelled as AoPS.
-      solUrl: paper?.solUrl || officialPdf(e.ref, "solutions") || (!e.strategy && !ARCHIVE_URL[pr.fam] ? aopsUrl(e.ref, pr.fam) : null),
-      solKind: paper?.solKind || null, sourceMirror: !!paper?.mirror,
-      solAops: !paper?.solUrl && !officialPdf(e.ref, "solutions") && !e.strategy && !ARCHIVE_URL[pr.fam] && !!aopsUrl(e.ref, pr.fam),
-      formulas, trickFormulas, types: problemTypes(e), subjects: problemSubjects(e, formulas, pr.cname), strategy: e.strategy || "",
-      trick: e.trick || "",
-      // Hints we write (revealed one at a time before the strategy) and the card that is the
-      // problem's central idea. `main` must be one of its own tags; the validator enforces it.
-      hints: (e.hints || []).filter(h => typeof h === "string" && h.trim()),
-      main: e.main && BY_ID[e.main] && (formulas.indexOf(e.main) !== -1 || trickFormulas.indexOf(e.main) !== -1) ? e.main : "",
-      year: pr.year, cname: pr.cname, fam: pr.fam, num: pr.num,
-      // No card honestly fits yet: the problem still gets its page, showing its chain as
-      // "not classified yet", rather than being tagged with something it does not use.
-      untagged: !(e.formulas || []).length
-    };
-  }).filter(p => p.formulas.length || p.untagged);
-  const PROBLEM_BY_SLUG = {};
-  // Problems by tagged card. Since the four-kind model a tag can be a formula, a method or a
-  // pattern, so this is keyed by card, not by formula (it was PROBLEMS_BY_FORMULA).
-  const PROBLEMS_BY_CARD = {};
-  PROBLEM_DB.forEach(p => {
-    PROBLEM_BY_SLUG[p.slug] = p;
-    // The 2021 Spring papers were first filed without the season ("2021 AMC 10A"); an old link or star still opens them.
-    if (/^2021-spring-amc-/.test(p.slug)) PROBLEM_BY_SLUG[p.slug.replace("-spring-", "-")] = p;
-    p.formulas.forEach(fid => (PROBLEMS_BY_CARD[fid] = PROBLEMS_BY_CARD[fid] || []).push(p));
-    // A card the trick route uses still lists the problem, which is the point of tagging
-    // tricks at all: the obscure cards are exactly the ones a main route never reaches
-    // for, so this is the only way they ever acquire a worked use. The row looks the same
-    // either way; the problem page is where the trick is labelled.
-    p.trickFormulas.forEach(fid => {
-      if (p.formulas.indexOf(fid) >= 0) return;
-      (PROBLEMS_BY_CARD[fid] = PROBLEMS_BY_CARD[fid] || []).push(p);
+  let PROBLEM_DB = [], FAMILIES = [], DEFAULT_FAM = null;
+  const PROBLEM_BY_SLUG = {}, PROBLEMS_BY_CARD = {}, CONTEST_TREE = {}, DB_TREE = {}, FAM_BY_SLUG = {};
+  let problemsReady = false, problemsLoading;
+  function loadProblems() {
+    if (!problemsLoading) problemsLoading = loadAssets("problems").then(() => {
+      indexProblems();
+      problemsReady = true;
+    }).catch(error => {
+      problemsLoading = null;
+      throw error;
     });
-  });
-  // A card split into a formula and a method (the fact and the move) is one idea seen two ways,
-  // so the two halves share their practice problems: a problem tagged with either shows on both.
-  // Problems were tagged before the splits, almost always on the method's id.
+    return problemsLoading;
+  }
   const SPLIT_TWINS = [["lte", "lte-lemma"], ["pie", "inclusion-exclusion"], ["homothety-monge", "monges-theorem"],
     ["symmetric-polynomial-strategies", "fundamental-theorem-symmetric"], ["inversion-properties", "inversion-facts"],
     ["lagrange-interpolation", "lagrange-interpolation-formula"]];
   const TWIN_OF = {};
-  SPLIT_TWINS.forEach(([a, b]) => {
-    if (!BY_ID[a] || !BY_ID[b]) return;
-    TWIN_OF[a] = b; TWIN_OF[b] = a;
-    const both = [...new Set([...(PROBLEMS_BY_CARD[a] || []), ...(PROBLEMS_BY_CARD[b] || [])])];
-    if (both.length) { PROBLEMS_BY_CARD[a] = both; PROBLEMS_BY_CARD[b] = both.slice(); }
-  });
-  Object.keys(PROBLEMS_BY_CARD).forEach(fid => PROBLEMS_BY_CARD[fid].sort((a, b) => b.year - a.year || a.ref.localeCompare(b.ref)));
-
-  // One sitting (e.g. "2026 AIME I") → its problems in number order. The Database tree keys on
-  // family and year, which merges AIME I with AIME II; the footer navigator has to stay inside
-  // a single paper, so it needs its own index.
-  const CONTEST_TREE = {};
-  const contestKey = p => p.year + " " + p.cname;
-  PROBLEM_DB.forEach(p => (CONTEST_TREE[contestKey(p)] = CONTEST_TREE[contestKey(p)] || []).push(p));
-  Object.keys(CONTEST_TREE).forEach(k => CONTEST_TREE[k].sort((a, b) => a.num - b.num));
-  // How many problems the paper actually has, so the strip can show which are not yet tagged
-  // rather than implying the paper is as short as our coverage.
   const FAM_LENGTH = { "AIME": 15, "AMC 8": 25, "AMC 10": 25, "AMC 12": 25 };
-
-  // Competition → year → problems tree for the Database sidebar navigator.
-  const DB_TREE = {};
-  PROBLEM_DB.forEach(p => { (DB_TREE[p.fam] = DB_TREE[p.fam] || {}); (DB_TREE[p.fam][p.year] = DB_TREE[p.fam][p.year] || []).push(p); });
+  const contestKey = p => p.year + " " + p.cname;
+  const ELO_BIN = 200;
+  let RATED_FAMS = [], ELO_LO = 200, ELO_HI = 3800;
   // By prestige (owner, 2026-11-15): the AMC and AIME, then the national and university tournaments, then
   // the other contests; a series (AMC, HMMT, PUMaC, ARML, MATHCOUNTS, UKMT, CEMC, MBMT) stays together, junior first.
   const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "PUMaC Division A", "PUMaC Division B", "CMIMC", "SMT", "BMT", "ARML", "ARML Local", "Math Prize for Girls", "CHMMC", "Duke Math Meet", "MATHCOUNTS Chapter", "MATHCOUNTS State", "MATHCOUNTS National", "UKMT JMC", "UKMT IMC", "UKMT SMC", "Pascal Contest", "Cayley Contest", "Fermat Contest", "MMATHS", "Girls in Math at Yale", "UMD HSMC", "Lehigh", "MBMT Lower", "MBMT Upper", "Columbus State Tournament", "Utah State Math Contest", "Calgary Junior Math Contest", "Putnam", "HMMT"];
-  const FAMILIES = Object.keys(DB_TREE).sort((a, b) => {
-    const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
-    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
-  });
-  const FAM_BY_SLUG = {}; FAMILIES.forEach(f => { FAM_BY_SLUG[famSlug(f)] = f; });
+  function indexProblems() {
+    PROBLEM_DB = window.MATH_PROBLEM_DB.map(e => {
+      const formulas = (e.formulas || []).filter(fid => BY_ID[fid]);
+      const trickFormulas = (e.trickFormulas || []).filter(fid => BY_ID[fid]);
+      const pr = parseRef(e.ref), slug = problemSlug(e.ref), rating = problemDifficulty.ratingFor(slug);
+      const paper = (window.MATH_CONTEST_PAPERS || {})[e.ref.replace(/,\s*Problem\s+\d+$/, "")];
+      return {
+        ref: e.ref, slug, tree: e.tree || [], elo: rating ? rating.elo : null, eloSource: rating ? rating.source : null,
+        url: e.url || paper?.url || officialPdf(e.ref, "problems") || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
+        // Where the official solution is, for a problem whose solution we link instead of write.
+        // An AHSME problem has no solution of ours either (owner, 2026-11-13): its AoPS wiki page has them.
+        // Only the MAA contests have a per-problem AoPS page to fall back on; an archive contest
+        // without posted solutions gets no solution link rather than its archive mislabelled as AoPS.
+        solUrl: paper?.solUrl || officialPdf(e.ref, "solutions") || (!e.strategy && !ARCHIVE_URL[pr.fam] ? aopsUrl(e.ref, pr.fam) : null),
+        solKind: paper?.solKind || null, sourceMirror: !!paper?.mirror,
+        solAops: !paper?.solUrl && !officialPdf(e.ref, "solutions") && !e.strategy && !ARCHIVE_URL[pr.fam] && !!aopsUrl(e.ref, pr.fam),
+        formulas, trickFormulas, types: problemTypes(e), subjects: problemSubjects(e, formulas, pr.cname), strategy: e.strategy || "",
+        trick: e.trick || "",
+        // Hints we write (revealed one at a time before the strategy) and the card that is the
+        // problem's central idea. `main` must be one of its own tags; the validator enforces it.
+        hints: (e.hints || []).filter(h => typeof h === "string" && h.trim()),
+        main: e.main && BY_ID[e.main] && (formulas.indexOf(e.main) !== -1 || trickFormulas.indexOf(e.main) !== -1) ? e.main : "",
+        year: pr.year, cname: pr.cname, fam: pr.fam, num: pr.num,
+        // No card honestly fits yet: the problem still gets its page, showing its chain as
+        // "not classified yet", rather than being tagged with something it does not use.
+        untagged: !(e.formulas || []).length
+      };
+    }).filter(p => p.formulas.length || p.untagged);
+    // Problems by tagged card. Since the four-kind model a tag can be a formula, a method or a
+    // pattern, so this is keyed by card, not by formula (it was PROBLEMS_BY_FORMULA).
+    PROBLEM_DB.forEach(p => {
+      PROBLEM_BY_SLUG[p.slug] = p;
+      // The 2021 Spring papers were first filed without the season ("2021 AMC 10A"); an old link or star still opens them.
+      if (/^2021-spring-amc-/.test(p.slug)) PROBLEM_BY_SLUG[p.slug.replace("-spring-", "-")] = p;
+      p.formulas.forEach(fid => (PROBLEMS_BY_CARD[fid] = PROBLEMS_BY_CARD[fid] || []).push(p));
+      // A card the trick route uses still lists the problem, which is the point of tagging
+      // tricks at all: the obscure cards are exactly the ones a main route never reaches
+      // for, so this is the only way they ever acquire a worked use. The row looks the same
+      // either way; the problem page is where the trick is labelled.
+      p.trickFormulas.forEach(fid => {
+        if (p.formulas.indexOf(fid) >= 0) return;
+        (PROBLEMS_BY_CARD[fid] = PROBLEMS_BY_CARD[fid] || []).push(p);
+      });
+    });
+    // A card split into a formula and a method (the fact and the move) is one idea seen two ways,
+    // so the two halves share their practice problems: a problem tagged with either shows on both.
+    // Problems were tagged before the splits, almost always on the method's id.
+    SPLIT_TWINS.forEach(([a, b]) => {
+      if (!BY_ID[a] || !BY_ID[b]) return;
+      TWIN_OF[a] = b; TWIN_OF[b] = a;
+      const both = [...new Set([...(PROBLEMS_BY_CARD[a] || []), ...(PROBLEMS_BY_CARD[b] || [])])];
+      if (both.length) { PROBLEMS_BY_CARD[a] = both; PROBLEMS_BY_CARD[b] = both.slice(); }
+    });
+    Object.keys(PROBLEMS_BY_CARD).forEach(fid => PROBLEMS_BY_CARD[fid].sort((a, b) => b.year - a.year || a.ref.localeCompare(b.ref)));
+
+    // One sitting (e.g. "2026 AIME I") → its problems in number order. The Database tree keys on
+    // family and year, which merges AIME I with AIME II; the footer navigator has to stay inside
+    // a single paper, so it needs its own index.
+    PROBLEM_DB.forEach(p => (CONTEST_TREE[contestKey(p)] = CONTEST_TREE[contestKey(p)] || []).push(p));
+    Object.keys(CONTEST_TREE).forEach(k => CONTEST_TREE[k].sort((a, b) => a.num - b.num));
+
+    // Competition → year → problems tree for the Database sidebar navigator.
+    PROBLEM_DB.forEach(p => { (DB_TREE[p.fam] = DB_TREE[p.fam] || {}); (DB_TREE[p.fam][p.year] = DB_TREE[p.fam][p.year] || []).push(p); });
+    FAMILIES = Object.keys(DB_TREE).sort((a, b) => {
+      const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
+      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
+    });
+    FAMILIES.forEach(f => { FAM_BY_SLUG[famSlug(f)] = f; });
+    DEFAULT_FAM = FAMILIES.slice().sort((a, b) => famCount(b) - famCount(a))[0] || null;
+    const ratings = PROBLEM_DB.flatMap(p => Number.isFinite(p.elo) ? [p.elo] : []);
+    RATED_FAMS = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && Number.isFinite(p.elo)));
+    ELO_LO = Math.min(200, ...ratings.map(elo => Math.floor(elo / ELO_BIN) * ELO_BIN));
+    ELO_HI = Math.max(3800, ...ratings.map(elo => (Math.floor(elo / ELO_BIN) + 1) * ELO_BIN));
+    if (state.contestLists === "show") FAMILIES.forEach(f => ctYearsOpen.add(f));
+  }
   const famCount = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].length, 0);
   // "Written" means the problem has its write-up (a strategy) in the app. A problem with only its text, or only its cards, is not counted.
   // The Contests list shows each contest's latest years; a long run of years opens on request
@@ -3694,7 +3746,7 @@
   const famWritten = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].filter(p => p.strategy).length, 0);
   // Whether the Practice page lists the contests still to come (hidden until asked for).
   let showUnwritten = false;
-  const DEFAULT_FAM = FAMILIES.slice().sort((a, b) => famCount(b) - famCount(a))[0] || null;
+
 
   // Contest problems that use this formula, grouped by contest (AMC 8 up through AIME and the
   // harder families, the Database's order) and newest first within each. The busiest cards carry
@@ -4309,7 +4361,7 @@
         <section class="pt-block"><div class="pt-head">Tools</div>
           <button type="button" class="pt-act" data-pt="top">Back to top</button>
           <a href="${specialHref("WhatLinksHere", id)}">What links here <span class="pt-n">${linksIn}</span></a>
-          <a href="${specialHref("ProblemsUsing", id)}">Problems using this card <span class="pt-n">${probs}</span></a>
+          <a href="${specialHref("ProblemsUsing", id)}">Problems using this card <span class="pt-n" data-card-problem-count>${problemsReady ? probs : "&hellip;"}</span></a>
           <button type="button" class="pt-act" data-pt="permalink">Copy a permanent link</button>
           <button type="button" class="pt-act" data-pt="print">Print this page</button>
           <a href="#/special/random">Random card</a>
@@ -4415,7 +4467,11 @@
     state.landing = false;
     const hasDiagram = !!((window.MATH_DIAGRAMS || {})[f.id] || []).length;
     const exHtml = practiceHtml(f);
-    const profileHtml = contestProfileHtml(f, prof.text), problemsHtml = contestHtml(f);
+    const profileHtml = problemsReady ? contestProfileHtml(f, prof.text) : '<div hidden data-card-profile></div>';
+    const problemsHtml = problemsReady ? contestHtml(f) : '<div hidden data-card-problems></div>';
+    const widgetHtml = '<div class="interactive"><h4>Interactive</h4><div id="formula-widget"></div></div>';
+    const widget = window.MATH_WIDGETS?.[f.id];
+    const widgetsPending = assetGroups.get("widgets").some(src => !loadedAssets.has(src));
     // Not geometry-only: plenty of algebra and counting cards carry a computed figure,
     // and the Asymptote export works off the rendered SVG regardless of subject.
     const asyBtn = hasDiagram
@@ -4441,7 +4497,7 @@
         </div>
         <p class="detail-crumb">${entry.section.title} ${uiIcon("chevron-right")} ${entry.subsection.title}</p>
         <div class="detail-head">
-          <h2 class="card-name">${f.name}</h2>
+          <h1 class="card-name">${f.name}</h1>
           <div class="card-meta detail-meta">${kindBadgeHtml(f)}${impBadgeHtml(f)}</div>
           <span class="detail-actions">
             ${starBtnHtml(f.id)}
@@ -4462,7 +4518,7 @@
           return `<div class="detail-diagrams dd-${Math.min(panels.length, 3)}">${inner}</div>`;
         })()}
         ${cardExplanationHtml(entry, sec)}
-        ${(window.MATH_WIDGETS || {})[f.id] ? `<div class="interactive"><h4>Interactive</h4><div id="formula-widget"></div></div>` : ""}
+        ${widget ? widgetHtml : widgetsPending ? '<div hidden data-card-widget></div>' : ""}
         ${profileHtml}
         ${exHtml}
         ${problemsHtml}
@@ -4473,12 +4529,61 @@
       </div>${withTools ? pageToolsHtml(entry) + "</div>" : ""}`;
     renderMath($content);
     if (withTools) wirePageTools($content, entry);
-    var wdg = (window.MATH_WIDGETS || {})[f.id];
-    if (wdg) { try { wdg.mount(document.getElementById("formula-widget")); addWidgetIntro(document.getElementById("formula-widget"), f.id); } catch (e) { if (window.console) console.warn("widget error:", f.id, e); } }
-    try { decorateNumberInputs(document.getElementById("formula-widget")); } catch (e) {}
+    const mountWidget = (host, tool) => {
+      try {
+        tool.mount(host);
+        addWidgetIntro(host, f.id);
+        decorateNumberInputs(host);
+      } catch (error) { console.warn("Could not mount widget", f.id, error); }
+    };
+    if (widget) mountWidget(document.getElementById("formula-widget"), widget);
     wireProblemToggle($content);
     wireProofToggles($content);
     buildPageToc();
+
+    // Replace the placeholders with their sections so the card keeps its usual styling.
+    const addSection = (slot, html) => {
+      slot.innerHTML = html;
+      const section = slot.firstElementChild;
+      if (section) {
+        slot.replaceWith(section);
+        renderMath(section);
+      } else slot.remove();
+      return section;
+    };
+
+    // The explanation and sidebar are ready before the optional datasets finish downloading.
+    const hash = location.hash;
+    const widgetSlot = $content.querySelector("[data-card-widget]");
+    if (widgetSlot) loadAssets("widgets").then(() => {
+      const tool = window.MATH_WIDGETS?.[f.id];
+      if (!tool || !widgetSlot.isConnected || location.hash !== hash) return;
+      const interactive = addSection(widgetSlot, widgetHtml);
+      mountWidget(interactive.querySelector("#formula-widget"), tool);
+      buildPageToc(true);
+    }, () => {});
+
+    const problems = $content.querySelector("[data-card-problems]");
+    if (problems) {
+      const profile = $content.querySelector("[data-card-profile]");
+      const count = $content.querySelector("[data-card-problem-count]");
+      const current = () => problems.isConnected && location.hash === hash;
+      const fillProblems = () => loadProblems().then(() => {
+        if (!current()) return;
+        addSection(profile, contestProfileHtml(f, prof.text));
+        const practice = addSection(problems, contestHtml(f));
+        if (count) count.textContent = problemCount(f.id);
+        if (practice) wireProblemToggle(practice);
+        buildPageToc(true);
+      }, () => {
+        if (!current()) return;
+        problems.innerHTML = '<button type="button" class="hp-btn">Retry loading practice problems</button>';
+        problems.hidden = false;
+        const retry = problems.firstElementChild;
+        retry.onclick = () => { retry.disabled = true; fillProblems(); };
+      });
+      fillProblems();
+    }
   }
 
   // ---------- "On this page": a card page's sections, listed under the sidebar ----------
@@ -4512,9 +4617,10 @@
     "Related patterns": "Hand-picked cards that are part of the same idea.",
     "Tags": "The keywords that search uses for this card."
   };
-  function buildPageToc() {
+  function buildPageToc(preserveFocus = false) {
     const toc = document.getElementById("page-toc");
     if (!toc) return;
+    const focused = preserveFocus && document.activeElement?.closest("#page-toc .toc-link")?.dataset.toc;
     const items = [];
     $content.querySelectorAll(".detail h4").forEach(h => {
       if (h.closest(".problem, .prob-row, .card")) return;
@@ -4528,9 +4634,10 @@
       }
       items.push(`<a class="toc-link" href="#${id}" data-toc="${id}">${escapeAttr(title)}</a>`);
     });
-    tocPinned = null;
+    if (!preserveFocus) tocPinned = null;
     toc.innerHTML = items.length ? `<div class="toc-head">On this page</div>${items.join("")}` : "";
     toc.hidden = !items.length;
+    if (focused) toc.querySelector(`[data-toc="${CSS.escape(focused)}"]`)?.focus({ preventScroll: true });
     markToc();
   }
   // A list page's sections in the same panel, each with its count of cards.
@@ -4765,7 +4872,7 @@
     const b = BOOKS[bookOf(section)];
     return `
       <div class="section-header">
-        <h2>${pageTitle(section, only)}</h2>
+        <h1>${pageTitle(section, only)}</h1>
         <p>${bySubject(section) ? b.intro : section.blurb}</p>
       </div>`;
   }
@@ -4893,7 +5000,7 @@
       <div class="settings-layout">
       <div class="settings-main">
       <div class="section-header settings-head">
-        <h2>Settings</h2>
+        <h1>Settings</h1>
         <p>Preferences are saved in this browser.</p>
         <div class="set-find">
           <input type="search" class="set-find-input" placeholder="Search settings&hellip;" aria-label="Search settings" autocomplete="off" spellcheck="false">
@@ -4906,7 +5013,7 @@
           ${settingRow("Theme", "Light or dark. Dark is easier at night.", "theme", theme, [["light", "Light"], ["dark", "Dark"]])}
           ${settingRow("Density", "How tightly the whole app is spaced: page margins, the gaps between cards and sections, and the padding inside panels. Spacious gives everything more room; Compact fits more on each screen. Neither changes text size or card size.", "density", state.density, [["comfortable", "Comfortable"], ["spacious", "Spacious"], ["compact", "Compact"]])}
           ${settingRow("Card size", "How big each card is while browsing. Large cards are wider, so fewer fit across.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Large"]], "browse")}
-          ${settingRow("Text size", "How big the prose and the formulas are, everywhere in the app. Each step up is about 20% larger.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]], "browse page subject problem")}
+          ${settingRow("Text size", "Adjusts the size of reading text, headings, and math.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]], "browse page subject problem")}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Reading the math</h3>
@@ -5378,7 +5485,7 @@
     const b = LEARN_SHELF.find(x => x.id === "aime-counting"), c = b && b.chapters.find(x => x.code === "C5");
     const l = c && c.lessons.find(x => x.code === "C5.2"), d = l && learnLessonData(c, l);
     if (!d) return "";
-    return learnBookShellHtml(b, c, l, learnLessonMainHtml(b, c, l, d), state.lessonLinks === "drawer" ? learnDrawerInnerHtml("recursive-counting") : "");
+    return learnBookShellHtml(b, c, l, learnLessonMainHtml(b, c, l, d, true), state.lessonLinks === "drawer" ? learnDrawerInnerHtml("recursive-counting") : "");
   }
 
   // A card's practice problems, folded or open as the Contest lists setting says.
@@ -5610,7 +5717,7 @@
           return b ? `<a class="rc-row" href="${learnHash(b)}"><span class="badge badge-lesson">BOOK</span><span class="rc-name">${escapeAttr(b.title)}</span><span class="rc-meta">Learn</span></a>` : "";
         }
         const at = learnLessonByCode(id);
-        return at && learnLessonData(at.c, at.l) ? `<a class="rc-row" href="${learnHash(at.b, at.c, lessonNum(at.l))}"><span class="badge badge-lesson">LESSON</span><span class="rc-name">${at.l.code} ${escapeAttr(at.l.title)}</span><span class="rc-meta">${escapeAttr(at.b.title)}</span></a>` : "";
+        return at && learnLessonSummary(at.c, at.l) ? `<a class="rc-row" href="${learnHash(at.b, at.c, lessonNum(at.l))}"><span class="badge badge-lesson">LESSON</span><span class="rc-name">${at.l.code} ${escapeAttr(at.l.title)}</span><span class="rc-meta">${escapeAttr(at.b.title)}</span></a>` : "";
       }
       if (k[0] === "p" && PROBLEM_BY_SLUG[id]) {
         if (kinds && kinds.indexOf("problem") === -1) return "";
@@ -5687,6 +5794,49 @@
       </section>`;
   }
 
+  // Fetch the catalog when the daily problem comes into view, leaving the header and search usable.
+  let landingObserver;
+  function wireLandingProblems() {
+    const panel = $content.querySelector("[data-home-daily]");
+    const button = panel.querySelector("button");
+    const fill = async () => {
+      if (!panel.isConnected || button.getAttribute("aria-disabled") === "true") return;
+      landingObserver?.disconnect();
+      const restoreFocus = document.activeElement === button;
+      button.setAttribute("aria-disabled", "true");
+      button.textContent = "Loading the problem of the day…";
+      try {
+        await loadProblems();
+      } catch (error) {
+        button.removeAttribute("aria-disabled");
+        button.textContent = "Retry loading the problem of the day";
+        return;
+      }
+      if (!panel.isConnected) return;
+      const focusDaily = restoreFocus && document.activeElement === button;
+      panel.outerHTML = dailyProblemHtml();
+      if (focusDaily) $content.querySelector(".hp-daily")?.focus({ preventScroll: true });
+      $content.querySelector("[data-home-practice]").outerHTML = practiceGlanceHtml();
+      $content.querySelector('[data-tint="practice"] .hm-space-n').textContent = PROBLEM_DB.length.toLocaleString() + " problems";
+      const recent = recentRowsHtml(6, ["formula", "method", "pattern", "problem"]);
+      if (recent) {
+        const slot = $content.querySelector("[data-home-recent]");
+        slot.children[1].outerHTML = '<div class="rc-list">' + recent + '</div>';
+        renderMath(slot);
+      }
+      const daily = dailyProblem();
+      if (daily) showStatement(daily, ".daily-st");
+    };
+    button.addEventListener("click", fill);
+    if (readRecent().some(key => key.startsWith("p:"))) fill();
+    else if ("IntersectionObserver" in window) {
+      landingObserver = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) fill();
+      });
+      landingObserver.observe(panel);
+    }
+  }
+
   // The front page: what the app is, why it helps and how to use it, beside what helps today
   // (where you left off, the problem and card of the day, your library). The four spaces and
   // the search sit above both, so nothing needs a scroll to reach.
@@ -5696,7 +5846,7 @@
     const card = dailyCard();
     const starIds = liveIds(getList("starred"));
     const mine = lists.items.filter(l => l.id !== "starred");
-    const nProblems = PROBLEM_DB.length.toLocaleString();   // every contest problem, HMMT included
+    const nProblems = problemsReady ? PROBLEM_DB.length.toLocaleString() + " problems" : "Contest problems";
     // Each space says in one line what it holds; the sidebar already lists every subject, so the
     // front page does not repeat the four spaces a third time.
     const SPACE_WHAT = {
@@ -5734,18 +5884,18 @@
           <a class="hm-space" data-tint="${sp}" href="#/${sp}">
             <span class="hm-space-name">${SPACES[sp].label}</span>
             <span class="hm-space-ask">${SPACES[sp].ask}</span>
-            <span class="hm-space-n">${{ learn: `${LEARN_SHELF.length} books`, practice: `${nProblems} problems` }[sp]}</span>
+            <span class="hm-space-n">${{ learn: `${LEARN_SHELF.length} books`, practice: nProblems }[sp]}</span>
           </a>`).join("")}
         </nav>
         <div class="hm-cols">
           <div class="hm-main">
-            <section class="hm-sec hm-continue">
+            <section class="hm-sec hm-continue" data-home-recent>
               <h2 class="hm-h">Recently opened</h2>
               ${recentCards ? `<div class="rc-list">${recentCards}</div>` : `<p class="hp-empty">Cards and problems you open will appear here.</p>`}
             </section>
-            ${dailyProblemHtml()}
+            ${problemsReady ? dailyProblemHtml() : '<div class="hm-sec" data-home-daily><button type="button" class="hp-btn">Show the problem of the day</button></div>'}
             ${newestCardsHtml()}
-            ${practiceGlanceHtml()}
+            ${problemsReady ? practiceGlanceHtml() : '<div class="hm-sec" data-home-practice><a class="hp-link" href="#/practice">Browse past contests</a></div>'}
           </div>
           <aside class="hm-rail">
             <section class="hm-sec hm-textbooks">
@@ -5775,6 +5925,7 @@
     renderMath($content);
     const daily = dailyProblem();
     if (daily) showStatement(daily, ".daily-st");
+    if (!problemsReady) wireLandingProblems();
     // The hero search waits for Search (or Enter), then hands off to the real search box: the
     // results page shows the header search again with the text in it, so typing continues
     // there.
@@ -5811,7 +5962,7 @@
   function spaceHeadHtml(name) {
     const recent = recentRowsHtml(6, KINDS_OF_SPACE[name]);
     return `<header class="space-home-head">
-        <h2>${SPACES[name].label}</h2>
+        <h1>${SPACES[name].label}</h1>
         <p class="sh-ask">${SPACES[name].ask}</p>
         <p class="sh-intro">${SPACE_INTROS[name]}</p>
       </header>
@@ -5848,7 +5999,7 @@
     update();
   }
   const practiceSessions = window.PracticeSessions;
-  const mockContests = window.MockContests;
+
   let mockClockInterval = 0, mockPaperCatalog = null;
   let practiceFinishConfirm = null;
   function cancelPracticeFinishConfirm() {
@@ -5899,9 +6050,9 @@
     document.dispatchEvent(new Event("practice-fams"));
   });
   const isVoidedProblem = p => !!window.MATH_ANSWER_KEYS?.voided?.[p.slug];
-  function mockPapers() { return mockPaperCatalog ||= mockContests.papers(PROBLEM_DB, hasMockAnswer); }
+  function mockPapers() { return mockPaperCatalog ||= window.MockContests.papers(PROBLEM_DB, hasMockAnswer); }
   function mockTime(ms) { const s=Math.ceil(Math.max(0,ms)/1000); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
-  function mockScore(set) { return mockContests.score(set, slug=>practiceSessions.result(set,slug)); }
+  function mockScore(set) { return window.MockContests.score(set, slug=>practiceSessions.result(set,slug)); }
   function mockTimeSummary(set) {
     const used=set.clock.limitMs-practiceSessions.timeLeft(set);
     return `${set.timedOut ? 'Time limit reached · ' : ''}${mockTime(used)} used of ${mockTime(set.clock.limitMs)}`;
@@ -5935,7 +6086,7 @@
           <button type="button" role="radio" aria-checked="false" data-mock-mode="generated">Generate a mock</button>
         </div>
         <label class="mock-field-label">Contest format</label>
-        <div class="rand-btns" role="radiogroup" aria-label="Mock contest">${Object.keys(mockContests.formats).map((f,i)=>`<button type="button" role="radio" aria-checked="${i===0}" data-mock-family="${f}">${f}</button>`).join('')}</div>
+        <div class="rand-btns" role="radiogroup" aria-label="Mock contest">${Object.keys(window.MockContests.formats).map((f,i)=>`<button type="button" role="radio" aria-checked="${i===0}" data-mock-family="${f}">${f}</button>`).join('')}</div>
         <label class="mock-same-format" hidden><input type="checkbox" id="mock-same-format"> <span id="mock-same-format-text">Only multiple-choice questions, like the AMC</span></label>
         <div class="mock-paper-field">
           <label for="mock-paper-name">Year and paper</label>
@@ -5972,21 +6123,21 @@
       [...options.children].forEach((b,i)=>{b.addEventListener('mousemove',()=>{active=i;highlight();});b.addEventListener('click',()=>{input.value=choices[i].label;update();input.focus();close();});});
     }
     function update(clearStatus=true){
-      const f=mockContests.formats[family],paper=currentPapers().find(g=>g.label.toLowerCase()===input.value.trim().toLowerCase());
-      const model=mode==='generated'?mockContests.curve(catalog,family,isVoidedProblem):null;
+      const f=window.MockContests.formats[family],paper=currentPapers().find(g=>g.label.toLowerCase()===input.value.trim().toLowerCase());
+      const model=mode==='generated'?window.MockContests.curve(catalog,family,isVoidedProblem):null;
       form.querySelector('.mock-paper-field').hidden=mode!=='paper';form.querySelector('.mock-generation-info').hidden=mode!=='generated';sourceBox.hidden=mode!=='generated';
       form.querySelector('.mock-same-format').hidden=mode!=='generated';
       form.querySelector('#mock-same-format-text').textContent=family==='AIME'?'Only short-answer questions, like the AIME':'Only multiple-choice questions, like the AMC';
       info.textContent=`${f.count} problems · ${f.minutes} minutes${model?' · Modeled on '+model.startYear+'–'+model.endYear:''}`;
       let pool=[];
       if(model){
-        const available=mockContests.sourcePool(PROBLEM_DB,model,mockEligible,isVoidedProblem);
+        const available=window.MockContests.sourcePool(PROBLEM_DB,model,mockEligible,isVoidedProblem);
         const fams=FAMILIES.filter(f=>available.some(p=>p.fam===f)),on=fams.filter(f=>!sourceOff.has(f)).length;
         const open=sourceBox.querySelector('details')?.open;
         sourceBox.innerHTML=`<details class="pr-fams"${open?' open':''}><summary><span class="pr-fams-label">Question sources</span><span class="pr-fams-sum">${on===fams.length?'All contests':on?`${on} of ${fams.length} contests`:'No contests'}</span></summary>
           <div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-mock-source-all="on"${on===fams.length?' disabled':''}>Select all</button><button type="button" class="fam-bulk-btn" data-mock-source-all="off"${on?'':' disabled'}>Deselect all</button></div>
           <div class="fam-chips" role="group" aria-label="Mock question sources">${fams.map(f=>`<button type="button" class="fam-chip" data-mock-source="${escapeAttr(f)}" aria-pressed="${!sourceOff.has(f)}">${famDot(f)}${f}</button>`).join('')}</div></details>`;
-        pool=mockContests.sourcePool(PROBLEM_DB,model,mockEligible,isVoidedProblem,chosenSources());
+        pool=window.MockContests.sourcePool(PROBLEM_DB,model,mockEligible,isVoidedProblem,chosenSources());
       }
       submit.textContent=mode==='paper'?'Start mock':'Generate mock';submit.disabled=busy||(mode==='paper'?!paper:pool.length<f.count);
       if(!busy&&clearStatus){
@@ -6014,19 +6165,19 @@
       const paper=currentPapers().find(g=>g.label.toLowerCase()===input.value.trim().toLowerCase());if(mode==='paper'&&!paper)return;
       busy=true;form.querySelector('fieldset').disabled=true;status.textContent='Loading mock problems...';
       try{
-        const plan=mode==='paper'?{problems:paper.problems}:mockContests.generate(PROBLEM_DB,catalog,family,mockEligible,isVoidedProblem,Math.random,chosenSources());
+        const plan=mode==='paper'?{problems:paper.problems}:window.MockContests.generate(PROBLEM_DB,catalog,family,mockEligible,isVoidedProblem,Math.random,chosenSources());
         await Promise.all([...new Set(plan.problems.filter(p=>!window.MATH_MOCK_EXTRAS?.[p.slug]&&!paperProblem(p)).map(p=>p.year))].map(loadStatements));
         if(!form.isConnected)return;
         if(plan.problems.some(p=>!paperProblem(p)&&!window.MATH_STATEMENTS?.[p.slug]&&!window.MATH_MOCK_EXTRAS?.[p.slug]))throw Error('Some statements could not be loaded. Try again.');
         const label=mode==='paper'?paper.label:'Generated '+family;
-        const mock={mode,family,durationMs:mockContests.formats[family].minutes*60000};
+        const mock={mode,family,durationMs:window.MockContests.formats[family].minutes*60000};
         if(plan.model){mock.modelStartYear=plan.model.startYear;mock.modelEndYear=plan.model.endYear;mock.targets=plan.model.targets;mock.sources=chosenSources();mock.usedSources=plan.sources;mock.hmmtException=true;if(sameBox.checked)mock.sameFormat=true;}
         topicPracticeSet=practiceSessions.createMock(label,plan.problems.map(p=>p.slug),mock);markPaperProblems(topicPracticeSet,plan.problems);savePractice();location.hash='#/practice/set/'+topicPracticeSet.id;
       }catch(err){status.textContent=err.message;}finally{busy=false;form.querySelector('fieldset').disabled=false;update(false);}
     });
     // Arriving from a paper's "Mock this paper" button: its contest and paper are already
     // chosen, so Start mock is one press away.
-    if (mockPreset && mockContests.formats[mockPreset.family] && catalog.some(g => g.label === mockPreset.label)) {
+    if (mockPreset && window.MockContests.formats[mockPreset.family] && catalog.some(g => g.label === mockPreset.label)) {
       setFamily(mockPreset.family); input.value = mockPreset.label; update();
       setTimeout(() => { if (submit.isConnected) submit.focus({ preventScroll: true }); }, 0);
     } else setFamily(family);
@@ -6120,7 +6271,7 @@
     const stats = mock ? [[score.points+'/'+score.max,counts['Check yourself']?'Score so far':'Mock score'],[counts.Correct+'/'+total,'Correct'],[counts.Incorrect,'Incorrect'],[counts.Unanswered,'Unanswered']] : [[counts.Correct + '/' + total, 'Correct'], [Math.round(100 * counts.Correct / total) + '%', 'Score'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
     $content.innerHTML = `<div class="space-home practice-session practice-results">
       <a class="back-link" href="#/practice">${uiIcon("arrow-left")} Back to Practice</a>
-      <section class="sh-section"><h2>${mock ? 'Mock complete' : 'Practice complete'}</h2><p class="practice-results-subtitle">${escapeAttr(practiceSetLabel(set))} · ${total} problem${total === 1 ? '' : 's'}${mock ? ' · '+(set.mock.mode==='paper'?'Past contest':'Generated mock') : ' · '+escapeAttr(set.difficulty)+' difficulty'}</p>
+      <section class="sh-section"><h1>${mock ? 'Mock complete' : 'Practice complete'}</h1><p class="practice-results-subtitle">${escapeAttr(practiceSetLabel(set))} · ${total} problem${total === 1 ? '' : 's'}${mock ? ' · '+(set.mock.mode==='paper'?'Past contest':'Generated mock') : ' · '+escapeAttr(set.difficulty)+' difficulty'}</p>
         ${mock ? `<p class="practice-results-meta">${mockTimeSummary(set)}</p>` : ''}
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
@@ -6167,7 +6318,7 @@
       ${finished ? `<a class="back-link practice-back-results" href="#/practice/set/${encodeURIComponent(set.id)}">${uiIcon("arrow-left")} Back to Results overview</a>` : ''}
       <a class="back-link" href="#/practice">${uiIcon("arrow-left")} Back to Practice</a>
       <section class="sh-section">
-        <div class="practice-session-top"><div><h2>${mock ? 'Mock set' : 'Practice set'} · ${escapeAttr(practiceSetLabel(set))}</h2><p>${set.slugs.length} problem${set.slugs.length === 1 ? '' : 's'}${mock ? ' · '+set.clock.limitMs/60000+' minutes' : ' · '+escapeAttr(set.difficulty)+' difficulty'}${finished ? ' · Review' : ''}</p></div>
+        <div class="practice-session-top"><div><h1>${mock ? 'Mock set' : 'Practice set'} · ${escapeAttr(practiceSetLabel(set))}</h1><p>${set.slugs.length} problem${set.slugs.length === 1 ? '' : 's'}${mock ? ' · '+set.clock.limitMs/60000+' minutes' : ' · '+escapeAttr(set.difficulty)+' difficulty'}${finished ? ' · Review' : ''}</p></div>
           ${mock && !finished ? `<div class="mock-clock" role="timer" aria-label="Time remaining"><span>Time remaining</span><strong class="mock-clock-value">${mockTime(practiceSessions.timeLeft(set))}</strong></div>` : ''}</div>
         <nav class="cn-nums" aria-label="Practice problems">${nav}</nav>
         ${finished ? `<div class="practice-review-actions"><a class="hp-btn hp-btn-soft" href="#/practice/set/${encodeURIComponent(set.id)}">Results overview</a></div>` : ''}
@@ -6673,6 +6824,8 @@
   // with each lesson's prose, checks and problems, and the chapter's review. A lesson with no
   // entry there shows as "Not written yet".
   const LEARN_SHELF = window.MATH_LEARN_SHELF || [];
+  const learnSummary = window.MATH_LEARN_SUMMARY;
+  const learnLessonSummary = (c, l) => learnSummary[c.code]?.lessons[l.code];
   const learnChapterData = c => (window.MATH_LEARN || {})[c.code] || null;
   const learnLessonData = (c, l) => { const d = learnChapterData(c); return d && d.lessons && d.lessons[l.code] || null; };
   const learnReview = c => { const d = learnChapterData(c); return d && Array.isArray(d.review) ? d.review : []; };
@@ -6681,13 +6834,13 @@
   // Problem Solving Strategies), and two pages close the chapter: Review Problems (mostly
   // comprehension) and Challenge Problems (contest problems, or our own). A chapter whose first
   // lesson is not an Introduction keeps the old overview page and chapter review.
-  const learnHasIntro = c => !!(c && c.lessons[0] && (c.lessons[0].title === "Introduction" || c.kind === "reference" && c.lessons[0].title === "Overview") && learnLessonData(c, c.lessons[0]));
+  const learnHasIntro = c => !!(c && c.lessons[0] && (c.lessons[0].title === "Introduction" || c.kind === "reference" && c.lessons[0].title === "Overview") && learnLessonSummary(c, c.lessons[0]));
   const LEARN_END = { review: "Review Problems", challenge: "Challenge Problems" };
   const learnEndSet = (c, kind) => {
     const d = learnChapterData(c), x = d && (kind === "review" ? d.reviewProblems : d.challenge);
     return x ? { exercises: x.exercises || [], problems: x.problems || [] } : null;
   };
-  const learnEndCount = (c, kind) => { const x = learnEndSet(c, kind); return x ? x.exercises.length + x.problems.length : 0; };
+  const learnEndCount = (c, kind) => learnSummary[c.code]?.[kind] || 0;
   // Review Problems and Challenge Problems are numbered on from the Summary: C5.8 and C5.9 (owner, 2026-10-31).
   const learnEndCode = (c, kind) => c.code + "." + (c.lessons.length + (kind === "challenge" && learnEndCount(c, "review") ? 2 : 1));
   // #/learn/<book>, then /<code in lower case>, then /<lesson number> or /review.
@@ -6745,7 +6898,7 @@
     // A lesson's own importance (owner, 2026-10-31): the chapter's tag is the concept's overall
     // importance, and each lesson carries its own, except the Introduction and the Summary.
     const inner = `<span class="lb-code">${l.code}</span><span class="lb-title">${escapeAttr(l.title)}</span>${l.level ? learnLevelHtml(l) : ""}`;
-    if (!learnLessonData(c, l)) return `<li class="lb-lesson">${inner}<span class="lb-soon">Not written yet</span></li>`;
+    if (!learnLessonSummary(c, l)) return `<li class="lb-lesson">${inner}<span class="lb-soon">Not written yet</span></li>`;
     return `<li class="lb-lesson${current ? " is-current" : ""}"><a href="${learnHash(b, c, lessonNum(l))}"${current ? ` aria-current="page"` : ""}>${inner}</a></li>`;
   }
   function learnReviewRow(b, c, current) {
@@ -6753,7 +6906,7 @@
       const n = learnEndCount(c, k);
       return n ? `<li class="lb-lesson lb-review-row"><a href="${learnHash(b, c, k)}"><span class="lb-code">${learnEndCode(c, k)}</span><span class="lb-title">${LEARN_END[k]}</span></a></li>` : "";
     }).join("");
-    const n = learnReview(c).length;
+    const n = learnSummary[c.code]?.legacyReview || 0;
     if (!n) return "";
     return `<li class="lb-lesson lb-review-row${current ? " is-current" : ""}"><a href="${learnHash(b, c, "review")}"${current ? ` aria-current="page"` : ""}><span class="lb-code">${c.code}</span><span class="lb-title">Chapter review</span></a></li>`;
   }
@@ -6799,7 +6952,7 @@
     if (o) return { series: "Olympiad", name: o[1] };
     return { series: "Foundations", name: b.title };
   }
-  const learnWrittenIn = b => b.chapters.reduce((n, c) => n + (c.kind === "reference" ? 0 : c.lessons.filter(l => learnLessonData(c, l)).length), 0);
+  const learnWrittenIn = b => b.chapters.reduce((n, c) => n + (c.kind === "reference" ? 0 : c.lessons.filter(l => learnLessonSummary(c, l)).length), 0);
   const learnLessonsIn = b => b.chapters.reduce((n, c) => n + (c.kind === "reference" ? 0 : c.lessons.length), 0);
   function bookCoverHtml(b, size) {
     const { series, name } = bookParts(b);
@@ -6859,12 +7012,12 @@
   function learnContinue() {
     const prog = learnProgress();
     const all = [];
-    LEARN_SHELF.forEach(b => b.chapters.filter(c => c.kind !== "reference").forEach(c => c.lessons.forEach(l => { if (learnLessonData(c, l)) all.push({ b, c, l }); })));
+    LEARN_SHELF.forEach(b => b.chapters.filter(c => c.kind !== "reference").forEach(c => c.lessons.forEach(l => { if (learnLessonSummary(c, l)) all.push({ b, c, l }); })));
     if (!all.length) return null;
     // The lesson opened last, else the first written one (lessons are not marked read; owner,
     // 2026-10-31).
     const last = prog.last && learnLessonByCode(prog.last);
-    if (last && last.c.kind !== "reference" && learnLessonData(last.c, last.l)) return Object.assign({ again: true }, last);
+    if (last && last.c.kind !== "reference" && learnLessonSummary(last.c, last.l)) return Object.assign({ again: true }, last);
     return all[0];
   }
 
@@ -6884,7 +7037,7 @@
       }
       out.push({ c, page: null });
       c.lessons.forEach(l => out.push({ c, l, page: lessonNum(l) }));
-      if (learnReview(c).length) out.push({ c, page: "review", review: true });
+      if (learnSummary[c.code]?.legacyReview) out.push({ c, page: "review", review: true });
     });
     return out;
   }
@@ -7097,7 +7250,7 @@
     block._bksTimer = setTimeout(() => block.classList.remove('bks-found'), 4800);
   }
   function wireBookSearch(root, b) {
-    const rank = bookSearchRanker(b);
+    let rank, rankLoading;
     root.querySelectorAll('.book-search').forEach(box => {
       const input = box.querySelector('input'), list = box.querySelector('[role="listbox"]');
       let results = [], active = 0;
@@ -7116,10 +7269,24 @@
         if (results[active]) input.setAttribute('aria-activedescendant', list.id + '-' + active);
         else input.removeAttribute('aria-activedescendant');
       };
-      const update = () => {
+      const update = async () => {
         // An empty field shows nothing, as in Settings (owner, 2026-11-06); only the Practice
         // topic picker offers defaults.
         if (!input.value.trim()) { results = []; close(); return; }
+        if (!rank) {
+          results = [];
+          list.innerHTML = '<div class="set-find-none" role="status">Loading book search…</div>';
+          list.hidden = false;
+          try {
+            rankLoading ||= Promise.all(b.chapters.map(c => loadChapter(b, c))).then(() => bookSearchRanker(b));
+            rank = await rankLoading;
+          } catch (error) {
+            rankLoading = null;
+            list.innerHTML = '<div class="set-find-none" role="status">Book search could not load. Type to retry.</div>';
+            return;
+          }
+          if (!input.isConnected || !box.contains(document.activeElement) || list.hidden || !input.value.trim()) return;
+        }
         results = rank(input.value); active = 0;
         const label = r => r.kind === 'glossary' || r.kind === 'index' ? `<span class="bks-main"><span>${escapeAttr(r.term)}</span><small class="bks-snip">${r.alias ? 'Matches &ldquo;' + escapeAttr(r.alias) + '&rdquo;. ' : ''}${escapeAttr(r.snippet)}</small></span><span class="set-find-group">${r.kind === 'index' ? 'Index' : 'Glossary'}</span>`
           : r.kind === 'lesson' ? `<span class="bks-main"><span>${escapeAttr(r.l.title)}</span><small class="bks-snip">${escapeAttr(r.c.title)}</small></span><span class="set-find-group">Lesson ${escapeAttr(r.l.code)}</span>`
@@ -7227,7 +7394,7 @@
     noteRecent("b:" + b.id);
     const start = (() => {
       const k = learnContinue();
-      return k && k.b === b ? k : (() => { for (const c of b.chapters) for (const l of c.lessons) if (learnLessonData(c, l)) return { b, c, l }; return null; })();
+      return k && k.b === b ? k : (() => { for (const c of b.chapters) for (const l of c.lessons) if (learnLessonSummary(c, l)) return { b, c, l }; return null; })();
     })();
     // The book's own page has no rail and no header (owner, 2026-10-31): the cover and a few
     // lines about the book, then its table of contents, each chapter a heading over its lessons.
@@ -7236,7 +7403,7 @@
         <div class="bk-hero">
           ${bookCoverHtml(b, "l")}
           <div class="bk-hero-text">
-            <h2 class="learn-h">${escapeAttr(b.title)}</h2>
+            <h1 class="learn-h">${escapeAttr(b.title)}</h1>
             <p class="learn-note">${escapeAttr(b.role.charAt(0).toUpperCase() + b.role.slice(1))}.</p>
             ${bookSearchHtml("contents")}
             <p class="bk-stats">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons</p>
@@ -7287,7 +7454,7 @@ Come back to the strategies. When a problem resists, the chapter's Summary and t
 The book remembers the last lesson you opened, in this browser, and the contents page offers to continue from it.`;
     learnBookShell(b, null, "howto", `
         <div class="book-eyebrow">${escapeAttr(b.title)} &middot; Contents and Introduction</div>
-        <h2 class="learn-h"><span class="lb-code">C</span> How to Use This Book</h2>
+        <h1 class="learn-h"><span class="lb-code">C</span> How to Use This Book</h1>
         <div class="detail-body lp-body bk-howto">${detailBodyHtml(text, "howto:" + b.id)}</div>`);
     window.scrollTo({ top: 0 });
   }
@@ -7295,7 +7462,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   function renderLearnChapter(b, c) {
     learnBookShell(b, c, "chapter", `
         <div class="book-eyebrow">${escapeAttr(b.title)} &middot; Chapter ${c.code.slice(1)}</div>
-        <h2 class="learn-h"><span class="lb-code">${c.code}</span> ${escapeAttr(c.title)} ${learnLevelHtml(c)}</h2>
+        <h1 class="learn-h"><span class="lb-code">${c.code}</span> ${escapeAttr(c.title)} ${learnLevelHtml(c)}</h1>
         <ol class="lb-lessons lb-chapter-page">${c.lessons.map(l => learnLessonRow(b, c, l, false)).join("")}${learnReviewRow(b, c, false)}</ol>`);
   }
 
@@ -7586,13 +7753,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   // A lesson or a review: the outline, the reading column and the drawer.
   // A written lesson's reading column, shared by the page and the Settings preview.
-  function learnLessonMainHtml(b, c, l, d) {
+  function learnLessonMainHtml(b, c, l, d, preview = false) {
     const opener = learnHasIntro(c) && l === c.lessons[0];
     return `${opener ? `<header class="ch-open">
           <span class="ch-open-n">${c.code.slice(1)}</span>
           <span class="ch-open-txt"><span class="ch-open-k">Chapter ${c.code.slice(1)} ${learnLevelHtml(c)}</span><span class="ch-open-t">${escapeAttr(c.title)}</span></span>
         </header>` : `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>`}
-        <h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}${l.level ? ` ${learnLevelHtml(l)}` : ""}</h2>
+        <${preview ? "h2" : "h1"} class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}${l.level ? ` ${learnLevelHtml(l)}` : ""}</${preview ? "h2" : "h1"}>
         <div class="lp-cards">
           ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Teaches you about</span>${learnCardChips(d.cards)}</div>` : ""}
           ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${learnCardChips(d.prereq)}</div>` : ""}
@@ -7608,18 +7775,18 @@ The book remembers the last lesson you opened, in this browser, and the contents
       // Review Problems or Challenge Problems: our own problems first, then contest problems.
       const kind = end || "review", set = learnEndSet(c, kind) || { exercises: [], problems: [] };
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
-        <h2 class="learn-h"><span class="lb-code">${learnEndCode(c, kind)}</span> ${LEARN_END[kind]}</h2>
+        <h1 class="learn-h"><span class="lb-code">${learnEndCode(c, kind)}</span> ${LEARN_END[kind]}</h1>
         <p class="learn-note">${kind === "review" ? "Problems that check the ideas of the whole chapter, mostly direct uses of them." : "Harder problems that combine the chapter's ideas, in rising order of difficulty."}</p>
         ${learnExercisesHtml(set.exercises || [], i => `Problem ${learnEndCode(c, kind)}.${i + 1}`)}
         ${learnTailHtml(learnEndCode(c, kind), set.exercises || [], set.problems || [], "Contest problems")}`;
     } else if (isReview) {
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
-        <h2 class="learn-h">${c.code} chapter review</h2>
+        <h1 class="learn-h">${c.code} chapter review</h1>
         <p class="learn-note">Mixed problems from the whole chapter, in rising order of difficulty.</p>
         ${learnProblemsHtml(learnReview(c), i => `Problem ${c.code}.R.${i + 1}`)}`;
     } else if (!d) {
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
-        <h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h2>
+        <h1 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h1>
         <p class="learn-note">This lesson is not written yet.</p>`;
     } else {
       // The Introduction opens the chapter: the chapter's number and title above the lesson's heading.
@@ -7861,7 +8028,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return words.filter(w => w && !/^(and|at|in|of|for|the|contest|competition|papers?|problems?|tests?|rounds?)$/.test(w))
       .flatMap(w => Object.hasOwn(CONTEST_QUERY_SHORT, w) ? CONTEST_QUERY_SHORT[w].split(" ") : w);
   }
-  const CONTEST_QUERY_NAMES = [
+  let contestNamesForSearch;
+  const contestQueryNames = () => contestNamesForSearch ||= [
     ...FAMILIES.filter(f => !/^(AMC |AIME$|Putnam$)/.test(f)).map(f => [f, [f]]),
     ...Object.entries(CONTEST_QUERY_ALIASES)
   ].map(([name, families]) => ({ families, name: contestQueryWords(name).join(" ") }))
@@ -7872,11 +8040,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const year = words.find(w => /^(19[5-9]\d|20\d\d)$/.test(w));
     if (!year) return null;
     const query = " " + words.filter(w => w !== year).join(" ") + " ";
-    const match = CONTEST_QUERY_NAMES.find(({ name }) => query.includes(" " + name + " "));
+    const match = contestQueryNames().find(({ name }) => query.includes(" " + name + " "));
     if (!match) return null;
     // Match round names and division qualifiers against the actual paper names.
     let remainder = query;
-    for (const { name, families } of CONTEST_QUERY_NAMES) {
+    for (const { name, families } of contestQueryNames()) {
       if (match.families.every(f => families.includes(f))) remainder = remainder.replace(" " + name + " ", " ");
     }
     const rest = remainder.trim().split(/\s+/).filter(Boolean);
@@ -7927,9 +8095,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const entry = (b, c, l, title) => { const w = toks(title); return { b, c, l, title, words: [...new Set(w)], phrase: w.join(" ") }; };
     LESSON_INDEX = [];
     LEARN_SHELF.forEach(b => b.chapters.forEach(c => {
-      if (learnChapterData(c)) LESSON_INDEX.push(entry(b, c, null, c.title));
+      if (learnSummary[c.code]) LESSON_INDEX.push(entry(b, c, null, c.title));
       c.lessons.forEach(l => {
-        if (!/^(Introduction|Summary)$/.test(l.title) && learnLessonData(c, l)) LESSON_INDEX.push(entry(b, c, l, l.title));
+        if (!/^(Introduction|Summary)$/.test(l.title) && learnLessonSummary(c, l)) LESSON_INDEX.push(entry(b, c, l, l.title));
       });
     }));
     return LESSON_INDEX;
@@ -7996,8 +8164,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const learnCrumb = parts => `<span class="card-crumb">${parts.map(escapeAttr).join(" " + uiIcon("chevron-right") + " ")}</span>`;
   const capFirst = t => String(t || "").replace(/^./, ch => ch.toUpperCase());
   // The first paragraph of a lesson, for its result card (the card clamps it).
-  const lessonLead = x => (String((learnLessonData(x.c, x.l || x.c.lessons[0]) || {}).body || "").split(/\n\s*\n/).find(t => t.trim() && !/^\{\{/.test(t.trim())) || "")
-    .replace(/\[\[[^\]|]*\|([^\]]*)\]\]/g, "$1").replace(/\[\[([^\]]*)\]\]/g, "$1");   // [[slug|text]] reads as its text
+  const lessonLead = x => learnLessonSummary(x.c, x.l || x.c.lessons[0])?.lead || "";
 
   function renderSearchResults() {
     // "lesson" and "chapter" only steer lessons to the front; the rest of the search runs
@@ -8089,7 +8256,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         // counts its own problems and its contest exercises.
         let inner;
         if (x.l) {
-          const d = learnLessonData(x.c, x.l) || {}, np = (d.exercises || []).length, ne = (d.problems || []).length;   // the data's exercises are our own problems; its problems are the contest Exercises
+          const { exercises: np, problems: ne } = learnLessonSummary(x.c, x.l);
           inner = `<div class="rs-line"><span class="rs-k">Chapter</span><span class="rs-v">${escapeAttr(x.c.title)}</span></div>`
             + `<div class="rs-line"><span class="rs-k">Problems</span><span class="rs-v">${np}</span></div>`
             + `<div class="rs-line"><span class="rs-k">Exercises</span><span class="rs-v">${ne}</span></div>`;
@@ -8142,7 +8309,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         </a>`;
     };
     const parts = [];
-    parts.push(`<p class="results-meta"><strong>${total}</strong> result${total === 1 ? "" : "s"} for &ldquo;<strong>${escapeAttr(state.query.trim())}</strong>&rdquo;${counts ? ` <span class="rm-kinds">${counts}</span>` : ""}${partialNote}</p>`);
+    parts.push(`<h1 class="results-meta"><strong>${total}</strong> result${total === 1 ? "" : "s"} for &ldquo;<strong>${escapeAttr(state.query.trim())}</strong>&rdquo;${counts ? ` <span class="rm-kinds">${counts}</span>` : ""}${partialNote}</h1>`);
     if (!total) {
       parts.push(`<div class="empty-state"><div class="big">${uiIcon("empty")}</div>No matches. Try broader keywords, such as &ldquo;area&rdquo;, &ldquo;mod&rdquo;, &ldquo;roots&rdquo;, or a contest like &ldquo;2024 AIME&rdquo;.</div>`);
     } else {
@@ -8363,7 +8530,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       <div class="back-row"><a class="back-link" href="#" data-history-back>${uiIcon("arrow-left")} Back</a></div>
       <div class="section-header topic-header">
         <div class="book-eyebrow">${many ? "Tags" : "Tag"}</div>
-        <h2>${escapeAttr(cap(labels.join(", ")))}</h2>
+        <h1>${escapeAttr(cap(labels.join(", ")))}</h1>
         <p class="topic-blurb">Every card tagged ${escapeAttr(labels.join(" or "))}, across formulas, methods, and patterns${many ? "; the cards matching the most of these tags come first" : ""}. <button class="adv-link" id="tag-edit">Edit tags</button></p>
       </div>`];
     if (!entries.length) {
@@ -8556,7 +8723,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <div class="section-header topic-header">
           <div class="book-eyebrow">Learn &middot; Lists</div>
           <div class="list-detail-head">
-            <h2${isBuiltin || l.builtin ? "" : ` data-list-title="${l.id}" title="Click to rename"`}>${escapeAttr(l.name)}</h2>
+            <h1${isBuiltin || l.builtin ? "" : ` data-list-title="${l.id}" title="Click to rename"`}>${escapeAttr(l.name)}</h1>
             ${headTools}
           </div>
           ${!isBuiltin
@@ -8806,7 +8973,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       <div class="back-row ge-back-row"><a class="back-link" href="#/list/${escapeAttr(l.id)}" data-ge-act="done">${uiIcon("arrow-left")} Back to list</a>
         <a class="back-link" href="#/learn" data-goto="pr-study">${uiIcon("arrow-left")} Learn</a></div>
       <div class="ge-head">
-        <div><div class="book-eyebrow">Learn &middot; Lists &middot; Custom groups</div><h2${l.builtin ? "" : ` data-list-title="${escapeAttr(l.id)}" title="Click to rename"`}>${escapeAttr(l.name)}</h2></div>
+        <div><div class="book-eyebrow">Learn &middot; Lists &middot; Custom groups</div><h1${l.builtin ? "" : ` data-list-title="${escapeAttr(l.id)}" title="Click to rename"`}>${escapeAttr(l.name)}</h1></div>
         <button type="button" class="hp-btn ge-done" data-ge-act="done" title="Save your sections and close the editor">Save</button>
       </div>
       <div class="ge-body">
@@ -9338,10 +9505,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // Moving from one text box straight to another control takes one click (owner, 2026-11-08):
   // leaving a box saves it and redraws the page, which used to swallow the click, so the
   // control pressed is found again in the new page and pressed for the reader.
-  const REPLAYABLE = "[data-ge-act], [data-ge-chip], button[data-description], [data-edit-description], h2[data-list-title], [data-list-rename], [data-group-edit], [data-group-off], [data-list-group], [data-list-delete], [data-list-clear]";
+  const REPLAYABLE = "[data-ge-act], [data-ge-chip], button[data-description], [data-edit-description], [data-list-title], [data-list-rename], [data-group-edit], [data-group-off], [data-list-group], [data-list-delete], [data-list-clear]";
   document.addEventListener("pointerdown", e => {
     const a = document.activeElement;
-    if (!a || !a.matches || !a.matches("[data-ge-rename], [data-ge-note], .list-description-editor, h2[contenteditable='true']")) return;
+    if (!a || !a.matches || !a.matches("[data-ge-rename], [data-ge-note], .list-description-editor, [data-list-title][contenteditable='true']")) return;
     const t = e.target.closest && e.target.closest(REPLAYABLE);
     if (!t || t === a || a.contains(t)) return;
     const sel = t.tagName.toLowerCase() + [...t.attributes].filter(x => x.name.startsWith("data-"))
@@ -9652,7 +9819,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const sec = (title, body, action = "") => `<section class="pp-sec">${action ? `<div class="pp-head"><h3 class="pp-h">${title}</h3>${action}</div>` : `<h3 class="pp-h">${title}</h3>`}${body}</section>`;
     // A complete paper with an answer key can be sat as a timed mock: the button opens
     // Practice a contest with this paper already chosen (owner, 2026-11-11).
-    const mockable = mockPapers().find(g => g.label === paperKey(ps[0])), fmt = mockable && mockContests.formats[fam];
+    const mockable = mockPapers().find(g => g.label === paperKey(ps[0])), fmt = mockable && window.MockContests.formats[fam];
     const mock = fmt ? `<a class="hp-btn hp-btn-soft pp-mock" href="#/practice" data-goto="pr-mock" data-mock-preset="${escapeAttr(mockable.label)}" data-mock-preset-family="${escapeAttr(fam)}" title="${fmt.count} problems, ${fmt.minutes} minutes">Mock this paper</a>` : "";
     const tiles = `<div class="br-list pp-tiles">${ps.map(p => `<a class="br-row" href="#/problem/${p.slug}"><span class="br-ref">Problem ${p.num}</span>${Number.isFinite(p.elo) ? `<span class="br-elo">${p.elo}</span>` : ""}</a>`).join("")}</div>`;
     if (!rated.length) return sec("Problems", tiles, mock);
@@ -9797,7 +9964,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       <div class="back-row"><a class="back-link" href="#/practice">${uiIcon("arrow-left")} Practice</a></div>
       <div class="section-header topic-header">
         <div class="book-eyebrow">Practice</div>
-        <h2>${escapeAttr(fam)} <span class="db-main-year">${year}</span></h2>
+        <h1>${escapeAttr(fam)} <span class="db-main-year">${year}</span></h1>
       </div>
       <div class="ct-years ct-years-page">${years.map(y => `<a href="${yhref(y)}"${y === year ? ' aria-current="page"' : ""}>${y}</a>`).join("")}</div>
       <div class="ct-yearbar" aria-label="Year">
@@ -9887,14 +10054,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   function archiveStatement(p) {
     if (p.year >= 1998 && p.year <= 2026 && /^HMMT (February|November)$/.test(p.fam)) return HMMT_STATEMENTS;
-    if (p.year >= 2001 && p.year <= 2025 && /^(Pascal|Cayley|Fermat) Contest$/.test(p.fam)) return CEMC_STATEMENTS;
+    if (p.year >= 1998 && p.year <= 2025 && /^(Pascal|Cayley|Fermat) Contest$/.test(p.fam)) return CEMC_STATEMENTS;
     if (/\bAHSME\b/.test(p.ref)) return AHSME_STATEMENTS;
     return PERMITTED_STATEMENTS[p.fam] || null;
   }
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 47;
+  const STATEMENTS_V = 50;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {
@@ -10031,12 +10198,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // so one chart can stack every contest and still show which is which.
   const FAM_COLOR = { "AMC 8": "var(--level-mc)", "AMC 10": "var(--level-10)", "AMC 12": "var(--level-12)", "AIME": "var(--level-aime)", "HMMT November": "var(--level-hmmtn)", "ARML": "var(--level-arml)", "ARML Local": "var(--level-arml-local)", "SMT": "var(--level-smt)", "Duke Math Meet": "var(--level-dmm)", "CHMMC": "var(--level-chmmc)", "UMD HSMC": "var(--level-umd)", "CMIMC": "var(--level-cmimc)", "Math Prize for Girls": "var(--level-mpfg)", "MMATHS": "var(--level-mmaths)", "Girls in Math at Yale": "var(--level-gim)", "Lehigh": "var(--level-lehigh)", "Utah State Math Contest": "var(--level-utah)", "MATHCOUNTS Chapter": "var(--level-mcc)", "MATHCOUNTS State": "var(--level-mcs)", "MATHCOUNTS National": "var(--level-mcn)", "MBMT Lower": "var(--level-mbl)", "MBMT Upper": "var(--level-mbu)", "Calgary Junior Math Contest": "var(--level-calg)", "Columbus State Tournament": "var(--level-cols)", "Fermat Contest": "var(--level-fermat)", "Cayley Contest": "var(--level-cayley)", "Pascal Contest": "var(--level-pascal)", "UKMT SMC": "var(--level-ukmt)", "UKMT IMC": "var(--level-ukmti)", "UKMT JMC": "var(--level-ukmtj)" };
   const famColor = f => FAM_COLOR[f] || "var(--level-oly)";
-  const RATED_FAMS = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && Number.isFinite(p.elo)));
+
   // The scale ends at 3800 unless a problem is rated above that (owner, 2026-11-12: harder
   // contests than the AIME may be added); both ends grow to include every actual rating.
-  const ELO_BIN = 200, RATED_ELOS = PROBLEM_DB.filter(p => Number.isFinite(p.elo)).map(p => p.elo);
-  const ELO_LO = Math.min(200, ...RATED_ELOS.map(elo => Math.floor(elo / ELO_BIN) * ELO_BIN));
-  const ELO_HI = Math.max(3800, ...RATED_ELOS.map(elo => (Math.floor(elo / ELO_BIN) + 1) * ELO_BIN));
+
   const eloBins = () => Array.from({ length: (ELO_HI - ELO_LO) / ELO_BIN }, (_, i) => ELO_LO + i * ELO_BIN);
   const binOf = elo => Math.min(ELO_HI - ELO_BIN, Math.max(ELO_LO, Math.floor(elo / ELO_BIN) * ELO_BIN));
   const famDot = f => `<i class="fam-dot" style="background:${famColor(f)}"></i>`;
@@ -10237,7 +10402,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (node) topicPath(node.id).forEach(n => { if (n.children.length) ttOpen.add(n.id); });
       let main;
       if (!node) {
-        main = `<div class="detail-head"><h2 class="card-name">Problems by topic</h2></div>
+        main = `<div class="detail-head"><h1 class="card-name">Problems by topic</h1></div>
           <p class="practice-panel-intro">Every problem is filed in one tree of topics, from a subject down to a specific kind of problem. Choose a topic to see its problems, grouped by contest.</p>
           <div class="br-subjects">${TOPIC_ROOTS.map(r => `<section class="br-subject"><h3><a href="${topicHash(r.id)}">${topicHtml(r)}</a><span class="br-count">${topicProblems(r.id).length.toLocaleString()} problems</span></h3>
             <ul>${r.children.map(c => TOPIC_NODES.get(c)).map(c => `<li><a href="${topicHash(c.id)}">${topicHtml(c)}</a><span class="br-count">${topicProblems(c.id).length}</span></li>`).join("")}</ul></section>`).join("")}</div>`;
@@ -10245,7 +10410,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         const all = topicProblems(node.id), kids = node.children.map(c => TOPIC_NODES.get(c));
         const crumbs = [`<a href="#/browse/topics">Topics</a>`, ...topicPath(node.id).slice(0, -1).map(n => `<a href="${topicHash(n.id)}">${topicHtml(n)}</a>`)].join(` <span aria-hidden="true">›</span> `);
         main = `<div class="br-crumbs">${crumbs}</div>
-          <div class="detail-head"><h2 class="card-name">${node.name}</h2></div>
+          <div class="detail-head"><h1 class="card-name">${node.name}</h1></div>
           <p class="practice-panel-intro">${all.length.toLocaleString()} problem${all.length === 1 ? "" : "s"}${kids.length ? ", including its subtopics" : ""}. Each contest's problems run from easiest to hardest.</p>
           ${kids.length ? `<div class="br-kids"><span class="br-kids-l">Subtopics</span>${kids.map(c => `<a class="br-kid" href="${topicHash(c.id)}">${topicHtml(c)}<span class="br-count">${topicProblems(c.id).length}</span></a>`).join("")}</div>` : ""}
           ${topicProfileHtml(node, all)}
@@ -10278,7 +10443,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const step = (b, dir, label) => b != null ? `<a class="br-step" href="#/browse/difficulty/${b}" aria-label="${label}: ${b} to ${b + ELO_BIN - 1}">${uiIcon("chevron-" + dir)}</a>` : `<span class="br-step is-off" aria-hidden="true">${uiIcon("chevron-" + dir)}</span>`;
       const shownN = inBin.filter(p => active.includes(p.fam)).length;
       $content.innerHTML = `<div class="detail browse-page">${browseBackHtml()}<div class="book-eyebrow prob-eyebrow">Practice</div>
-        <div class="detail-head"><h2 class="card-name">Problems by difficulty</h2></div>
+        <div class="detail-head"><h1 class="card-name">Problems by difficulty</h1></div>
         <p class="practice-panel-intro">Every problem has an Elo rating: the higher the rating, the harder the problem. The chart shows how the ratings spread; choose a bar to list the problems in that range.</p>
         <section class="elo-panel">${famChipsHtml(rated)}${eloChartHtml({ active, selected: bin })}</section>
         <div class="br-band">${step(prev, "left", "Easier range")}<h3 class="br-band-h">Rated ${bin} to ${bin + ELO_BIN - 1}</h3>${step(next, "right", "Harder range")}<span class="br-count">${shownN.toLocaleString()} problem${shownN === 1 ? "" : "s"}</span></div>
@@ -10371,12 +10536,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
       LESSONS_BY_CARD = {};
       for (const b of LEARN_SHELF) {
         for (const c of b.chapters) for (const l of c.lessons) {
-          const d = learnLessonData(c, l);
-          if (!d) continue;
-          const taught = new Set(d.cards || []);
-          const ids = new Set([...taught, ...(d.related || []).map(r => r.card)]);
-          for (const m of (d.body || "").matchAll(/\[\[([\w-]+)(?:\|[^\]]*)?\]\]/g)) ids.add(m[1]);
-          for (const id of ids) (LESSONS_BY_CARD[id] ||= []).push({ b, c, l, taught: taught.has(id) });
+          const summary = learnLessonSummary(c, l);
+          if (!summary) continue;
+          for (const id of summary.cards) (LESSONS_BY_CARD[id] ||= []).push({ b, c, l, taught: true });
+          for (const id of summary.mentioned) (LESSONS_BY_CARD[id] ||= []).push({ b, c, l, taught: false });
         }
       }
     }
@@ -10457,7 +10620,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         </div>
         <div class="book-eyebrow prob-eyebrow">Practice</div>
         <div class="detail-head">
-          <h2 class="card-name">${refShort(p.ref)}</h2>
+          <${pv ? "h2" : "h1"} class="card-name">${refShort(p.ref)}</${pv ? "h2" : "h1"}>
         </div>
         ${hasProblemStatement(p) ? `<section class="prob-st${pv ? " pv-st" : ""}"${pv ? "" : ` id="prob-st"`} data-slug="${p.slug}" hidden>
           <div class="prob-statement"></div>
@@ -10843,7 +11006,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     $content.innerHTML = specialShell("Unknown command", `<p class="special-note">There is no command called <b>Special:${escapeAttr(route.name)}</b>.</p>` + commandListHtml());
   }
   function specialShell(title, body) {
-    return `<div class="section-header topic-header"><div class="book-eyebrow">Special page</div><h2>${title}</h2><p class="topic-blurb"><a href="#/settings/commands">All commands</a> are in Settings.</p></div>
+    return `<div class="section-header topic-header"><div class="book-eyebrow">Special page</div><h1>${title}</h1><p class="topic-blurb"><a href="#/settings/commands">All commands</a> are in Settings.</p></div>
       <div class="special-page">${body}</div>`;
   }
   function commandListHtml() {
@@ -10875,6 +11038,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // ("AIME II", "HMMT February Geometry") and, when a year is typed, single sittings.
   let contestNames = null;
   function getContests() {
+    if (!problemsReady) return [];
     if (contestNames) return contestNames;
     const counts = new Map(), bump = (k, n = 1) => counts.set(k, (counts.get(k) || 0) + n);
     PROBLEM_DB.forEach(p => {
@@ -10998,7 +11162,17 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // Keep focus in the box while a row is pressed, so the click lands before the box blurs.
   $suggest.addEventListener("mousedown", e => e.preventDefault());
   document.addEventListener("mousedown", e => { if (!$search.parentElement.contains(e.target)) hideSuggest(); });
-  $search.addEventListener("focus", () => { if (/^\s*special:/i.test($search.value)) showSuggest(commandSuggestions($search.value)); });
+  function refreshCommandSuggestions() {
+    const query = $search.value;
+    showSuggest(commandSuggestions(query));
+    const name = parseCommand(query).name;
+    if (!problemsReady && /^(random|randomproblem|problemsusing)$/.test(name)) {
+      loadProblems().then(() => {
+        if ($search.value === query && document.activeElement === $search && !$suggest.hidden) showSuggest(commandSuggestions(query));
+      }, () => {});
+    }
+  }
+  $search.addEventListener("focus", () => { if (/^\s*special:/i.test($search.value)) refreshCommandSuggestions(); });
   document.addEventListener("click", e => {
     const h = e.target.closest("[data-href]");
     if (!h) return;
@@ -11024,10 +11198,53 @@ The book remembers the last lesson you opened, in this browser, and the contents
     runCommand(chip.dataset.command);
   });
 
+  let pendingRender;
   function render() {
+    landingObserver?.disconnect();
     cancelPracticeFinishConfirm();
     clearInterval(mockClockInterval);mockClockInterval=0;
     const route = getRoute();
+    const requirements = [];
+    const lessonHasProblems = route.lesson && learnLessonSummary(route.chapter, route.lesson)?.problems;
+    const needsProblems = ["problems", "problem", "browse", "settings"].includes(route.type)
+      || route.type === "space" && route.name === "practice"
+      || route.type === "special" && (/^(randomproblem|problemsusing|unclassified|statistics|recent)$/.test(route.name)
+        || route.name === "random" && /^problem(?:\/|$)/i.test(route.arg))
+      || route.type === "home" && !!state.query.trim()
+      || state.order === "problems" && (route.section || route.type === "topic")
+      || route.type === "learn" && (lessonHasProblems || route.review || route.challenge);
+    if (needsProblems && !problemsReady) requirements.push(loadProblems());
+    const requireGroup = group => {
+      if (assetGroups.get(group).some(src => !loadedAssets.has(src))) requirements.push(loadAssets(group));
+    };
+    const requireChapter = (book, chapter) => {
+      const src = chapter && chapterAsset(book, chapter);
+      if (src && !loadedAssets.has(src)) requirements.push(loadAsset(src));
+    };
+    if (route.type === "space" && route.name === "practice" || route.type === "problems") requireGroup("practice");
+    if (route.type === "learn") requireChapter(route.book, route.chapter);
+    if (route.type === "settings") {
+      const book = LEARN_SHELF.find(book => book.id === "aime-counting");
+      if (book) requireChapter(book, book.chapters.find(chapter => chapter.code === "C5"));
+    }
+    const token = {};
+    pendingRender = token;
+    if (requirements.length) {
+      const hash = location.hash, query = state.query;
+      const current = () => pendingRender === token && location.hash === hash && state.query === query;
+      $content.innerHTML = '<p class="route-status" role="status">Loading…</p>';
+      document.body.classList.remove("app-pending", "is-landing");
+      document.querySelector(".layout").classList.add("no-sidebar");
+      return Promise.all(requirements).then(() => {
+        return current() && render();
+      }, () => {
+        if (!current()) return;
+        $content.innerHTML = '<section class="route-status"><h1>Content could not load</h1><p>Check your connection and try again.</p><button type="button" class="hp-btn">Try again</button> <a href="reference/index.html">Read the formula sheet</a></section>';
+        $content.querySelector("button").onclick = () => renderCurrentPage(true);
+        document.documentElement.classList.remove("startup-loading");
+        return true;
+      });
+    }
     if (expansionPage !== location.hash) {
       // Changing a bar or topic is navigation within the same browser, not leaving it.
       // Keep its contest chooser open without carrying card/profile expansions elsewhere.
@@ -11112,7 +11329,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // Search results belong to no space either: they span all four kinds, so they get the whole
     // width and no sidebar.
     const searching = (route.type === "home" && (!!state.query.trim() || !!state.adv)) || route.type === "topic" || route.type === "special";
-    document.body.dataset.space = onLanding ? "home" : route.type === "settings" || searching ? "none" : state.space;
+    const space = onLanding ? "home" : route.type === "settings" || searching ? "none" : state.space;
+    document.body.dataset.space = space;
+    updateSpaceNavigation(space);
     // A list page's sidebar holds only the list's sections, under "On this list", drawn in the
     // same panel as a card's "On this page", so the section being read is marked the same way.
     const noSidebar = onLanding || searching || ["problems", "problem", "browse", "lists", "settings", "space", "learn"].indexOf(route.type) !== -1
@@ -11134,6 +11353,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // Showing or hiding the sidebar changes the card width, so the formulas are fitted again.
     fitCardFormulas($content);
     updatePageTitle(route);
+    document.body.classList.remove("app-pending");
+    document.documentElement.classList.remove("startup-loading");
+    return true;
   }
 
   function updatePageTitle(route, paper) {
@@ -11148,7 +11370,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       label = paper ? (/^\d{4}/.test(paper) ? paper : route.year + " " + paper) : (selected && (route.paper || selected.getClientRects().length) ? route.year + " " + selected.textContent : route.year + " " + (FAM_BY_SLUG[route.fam] || route.fam));
     } else if (route.type === "learn") label = [route.howto ? "How to Use This Book" : route.review ? "Review Problems" : route.challenge ? "Challenge Problems" : route.lesson ? route.lesson.code + " " + route.lesson.title : route.chapter?.title, route.book.title].filter(Boolean).join(" · ");
     else if (route.practiceSet && topicPracticeSet) label = [topicPracticeSet.status === 'finished' ? location.hash.endsWith('/review') ? 'Review' : 'Results' : null, isMock(topicPracticeSet) ? 'Mock set' : 'Practice set', practiceSetLabel(topicPracticeSet)].filter(Boolean).join(' · ');
-    else label = $content.querySelector("h2")?.textContent || SPACES[state.space]?.label;
+    else label = $content.querySelector("h1, h2")?.textContent || SPACES[state.space]?.label;
     label = String(label || "").replace(/<[^>]*>/g, "").replace(/\$/g, "").replace(/\\([a-z]+)/gi, "$1").replace(/[{}]/g, "").replace(/\s+/g, " ").trim();
     document.title = label && label !== brand ? label + " — " + brand : brand;
   }
@@ -11406,7 +11628,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   });
   $search.addEventListener("input", () => {
     clearTimeout(searchTimer);
-    if (/^\s*special:/i.test($search.value)) { showSuggest(commandSuggestions($search.value)); return; }
+    if (/^\s*special:/i.test($search.value)) { refreshCommandSuggestions(); return; }
     hideSuggest();
     searchTimer = setTimeout(() => {
       applySearchQuery($search.value);
@@ -11429,7 +11651,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const act = activeSuggestion();
       if (act) { act.click(); $search.blur(); return; }
       if (runCommand($search.value)) { hideSuggest(); $search.blur(); return; }
-      showSuggest(commandSuggestions($search.value));
+      refreshCommandSuggestions();
       return;
     }
     applySearchQuery($search.value);
@@ -11545,15 +11767,53 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // Formulas, Methods and Patterns sit behind one Reference menu at every width (owner,
   // 2026-11-11; on a narrow phone since 2026-10-31).
   const $refBtn = document.getElementById("space-ref-btn"), $refMenu = document.getElementById("space-ref-menu");
-  const closeRefMenu = () => { if ($refMenu && !$refMenu.hidden) { $refMenu.hidden = true; $refBtn.setAttribute("aria-expanded", "false"); } };
+  const $refCurrent = document.getElementById("space-ref-current");
+  function updateSpaceNavigation(space) {
+    const destinations = $spaceSwitch?.querySelectorAll("[data-space-go]") || [];
+    for (const button of destinations) {
+      if (button.dataset.spaceGo === space) button.setAttribute("aria-current", "page");
+      else button.removeAttribute("aria-current");
+    }
+    if (!$refBtn || !$refCurrent) return;
+    const current = $refMenu?.querySelector('[aria-current="page"]');
+    if (current) {
+      $refCurrent.textContent = SPACES[space].label + " is the current section.";
+      $refBtn.setAttribute("aria-describedby", $refCurrent.id);
+    } else {
+      $refBtn.removeAttribute("aria-describedby");
+    }
+  }
+  function closeRefMenu(restoreFocus = false) {
+    if (!$refMenu || $refMenu.hidden) return;
+    $refMenu.hidden = true;
+    $refBtn.setAttribute("aria-expanded", "false");
+    if (restoreFocus) $refBtn.focus({ preventScroll: true });
+  }
   if ($refBtn && $refMenu) {
-    $refBtn.addEventListener("click", e => {
-      e.stopPropagation();
-      $refMenu.hidden = !$refMenu.hidden;
-      $refBtn.setAttribute("aria-expanded", String(!$refMenu.hidden));
+    const ref = $refBtn.closest(".space-ref");
+    $refBtn.addEventListener("click", event => {
+      if (!$refMenu.hidden) {
+        closeRefMenu(true);
+        return;
+      }
+      $refMenu.hidden = false;
+      $refBtn.setAttribute("aria-expanded", "true");
+      // Keyboard activation enters the disclosure. Pointer activation keeps its native focus.
+      if (event.detail === 0) {
+        const target = $refMenu.querySelector('[aria-current="page"]') || $refMenu.querySelector("button");
+        target?.focus({ preventScroll: true });
+      }
     });
-    document.addEventListener("click", e => { if (!e.target.closest(".space-ref")) closeRefMenu(); });
-    document.addEventListener("keydown", e => { if (e.key === "Escape") closeRefMenu(); });
+    document.addEventListener("click", e => { if (!ref.contains(e.target)) closeRefMenu(); });
+    ref.addEventListener("focusout", e => {
+      if (e.relatedTarget && !ref.contains(e.relatedTarget)) closeRefMenu();
+    });
+    ref.addEventListener("keydown", e => {
+      if (e.key !== "Escape" || $refMenu.hidden) return;
+      e.preventDefault();
+      e.stopPropagation();
+      closeRefMenu(true);
+    });
   }
   // A phone's search box gets a short placeholder; the long one would be cut off.
   (() => {
@@ -11573,13 +11833,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
     state.landing = false;
     const go = b.dataset.spaceGo;
     const to = go === "practice" || go === "learn" ? "#/" + go : spaceEntry(go);
-    if (location.hash === to) render(); else location.hash = to;
+    goHash(to);
     window.scrollTo({ top: 0 });
   });
 
   // Brand → back to the start (top of the first section).
   const $brand = document.getElementById("brand-home");
-  if ($brand) $brand.addEventListener("click", () => {
+  if ($brand) $brand.addEventListener("click", event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
     clearSearch();
     state.openGroup = null;
     goHash("");   // the logo returns to the front page
@@ -11720,11 +11982,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const a = e.target.closest("a[data-goto]");
     if (!a) return;
     closeDrawer();
-    seekPart(a.getAttribute("data-goto"), a.hasAttribute("data-goto-center"));
+    seekPart(a.getAttribute("data-goto"), a.hasAttribute("data-goto-center"), a.hash);
   });
-  function seekPart(id, center) {
+  function seekPart(id, center, targetHash = location.hash) {
     let tries = 0;
     const seek = () => {
+      if (location.hash !== targetHash) return;
       const el = document.getElementById(id);
       if (el) {
         if (center) {
@@ -11740,7 +12003,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           const bar = document.querySelector(".topbar");
           window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - (bar ? bar.offsetHeight : 0) - 14), behavior: "instant" });
         }
-      } else if (++tries < 40) setTimeout(seek, 25);
+      } else if (++tries < 600 && (tries < 40 || $content.querySelector(".route-status[role=status]"))) setTimeout(seek, 25);
     };
     setTimeout(seek, 0);
   }
@@ -12090,7 +12353,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (e.target.closest("[data-edit-description], button[data-description]")) { editListDescription(); return; }
     const exp = e.target.closest("[data-list-export]");
     if (exp) { const l = getList(exp.dataset.listExport); if (l) openListExport(l); return; }
-    const rn = e.target.closest("[data-list-rename]") || e.target.closest("h2[data-list-title]:not([contenteditable='true'])");
+    const rn = e.target.closest("[data-list-rename]") || e.target.closest("[data-list-title]:not([contenteditable='true'])");
     if (rn) { startListRename(rn.dataset.listRename || rn.dataset.listTitle); return; }
     const del = e.target.closest("[data-list-delete]");
     if (del) {
@@ -12260,7 +12523,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // Renaming happens in place: the list's title becomes editable with its text selected; Enter or
   // a click elsewhere keeps the new name, Escape keeps the old one.
   function startListRename(id) {
-    const h = $content.querySelector(`h2[data-list-title="${id}"]`), l = getList(id);
+    const h = $content.querySelector(`[data-list-title="${id}"]`), l = getList(id);
     if (!h || !l) return;
     const old = l.name;
     h.contentEditable = "true";
@@ -12283,16 +12546,25 @@ The book remembers the last lesson you opened, in this browser, and the contents
     h.addEventListener("blur", () => finish(true), { once: true });
   }
 
+  function renderCurrentPage(moveFocus, restore) {
+    const hash = location.hash;
+    const finish = () => {
+      if (location.hash !== hash) return;
+      if (moveFocus) window.AppAccessibility.focusMain();
+      const route = getRoute();
+      // Back and Forward restore the old scroll position after route data has arrived.
+      if (!(route.type === "settings" && route.anchor)) scrollForRoute(route, typeof restore?.y === "number" ? restore.y : null, restore);
+    };
+    const result = render();
+    if (result === true) finish();
+    else result.then(rendered => { if (rendered) finish(); });
+  }
+
   window.addEventListener("hashchange", event => {
     if (topicPracticeSet && new URL(event.oldURL).hash.startsWith('#/practice/set/') && new URL(event.oldURL).hash !== location.hash) pausePractice();
     clearTimeout(scrollSaveTimer);
     legacyRedirect();
-    const route = getRoute();
-    render();
-    window.AppAccessibility.focusMain();
-    // A revisited entry (Back or Forward) returns to where the reader was on it; a fresh click
-    // opens at the top. #/settings/commands scrolls to its own anchor (renderSettingsPage).
-    if (!(route.type === "settings" && route.anchor)) scrollForRoute(route, history.state && typeof history.state.y === "number" ? history.state.y : null, history.state);
+    renderCurrentPage(true, history.state);
   });
 
   // ---------- Init ----------
@@ -12308,9 +12580,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   legacyRedirect();
   try { localStorage.removeItem("mq-last"); } catch (e) {}
   buildSidebar();
-  render();
+  renderCurrentPage(false);
   window.AppAccessibility.init();
-  scrollForRoute(getRoute(), null);
 
   // ---------- Debug / evaluation hook ----------
   // The search internals are otherwise sealed inside this IIFE, which meant every

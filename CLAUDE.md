@@ -51,6 +51,7 @@ $JSC tools/validate-problem-db.js
 - **Accessibility:** `CHROME=/path/to/chromium COMPMATH_URL=http://localhost:8765 node tools/check-accessibility.cjs` checks the verified keyboard/contrast fixes; see AUDITS.md (Accessibility review).
 - **Serving and checking pages:** `python3 -m http.server 8765` serves the app. Check pages in headless Chromium (check that Playwright and Chromium are installed; use `CHROME` as `executablePath`): 0 KaTeX errors, no overflow at 375 px, light and dark.
 - **Versions:** `python3 tools/bump-versions.py --changed` bumps `?v=` in `index.html` for every changed file and syncs the lab pages. By hand: bump `?v=` for every touched file, then run `python3 tools/sync-lab-versions.py` so the lab pages load the same versions; `check-lab.sh` fails if they drift. Bump `STATEMENTS_V` in `js/app.js` when statement files change.
+- **On-demand assets.** Keep chapter and deferred contest assets in the inert template in `index.html` so the version tool can still find their URLs. When editing a chapter, run the version tool to refresh `js/data/learn-summary.js`, or regenerate it with `node tools/build-learn-summary.cjs` before bumping versions manually. `tools/gates.sh` checks the summary. Statement imports still use `STATEMENTS_V` and the publisher directory in `js/app.js`.
 
 ## Standing preferences
 - Update the files regularly, but not too often (owner, 2026-10-24): update "Current state" in `PLAN.md` and `CHANGELOG.md`, and commit and push, about every 30 cards or 25 problems, and at the end of a step.

@@ -6,6 +6,7 @@ python3 tools/scan-conventions.py > /tmp/gate-scan.txt || { tail -30 /tmp/gate-s
 python3 tools/check-topics.py > /tmp/gate-topics.txt || { tail /tmp/gate-topics.txt; exit 1; }
 python3 tools/check-lists.py > /tmp/gate-lists.txt || { tail /tmp/gate-lists.txt; exit 1; }
 python3 tools/build-learn-shelf.py --check || exit 1   # the Learn shelf matches LEARN-OUTLINE.md
+node tools/build-learn-summary.cjs --check
 python3 tools/build-topic-tree.py --check || exit 1   # js/data/topic-tree.js matches TOPIC-TREE.md
 python3 tools/hmmt-results.py --check || exit 1   # HMMT ratings match the official solve counts
 node tools/check-topic-tree.js > /tmp/gate-tree.txt || { cat /tmp/gate-tree.txt; exit 1; }   # tree, card homes, problem tree tags

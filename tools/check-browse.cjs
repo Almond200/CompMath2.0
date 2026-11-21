@@ -67,7 +67,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.equal(await btns.locator('svg').count(),0);assert((await btns.first().boundingBox()).height<=32);
  assert((await btns.first().boundingBox()).y<(await page.locator('#pr-contests .ct-row').first().boundingBox()).y);
  // Problems by topic: its own page, the tree rail, groups by contest.
- await btns.first().click();await page.locator('.browse-topics').waitFor();assert.equal(await page.locator('h2').innerText(),'Problems by topic');
+ await btns.first().click();await page.locator('.browse-topics').waitFor();assert.equal(await page.locator('h1').innerText(),'Problems by topic');
  assert.equal(await page.locator('.br-switch').count(),0,'no toggle between the two pages');
  // The rail scrolls with the app's own scrollbar, not the browser's (no scrollbar-width override).
  assert.equal(await page.locator('.tt').evaluate(el=>getComputedStyle(el).scrollbarWidth),'auto');
@@ -75,7 +75,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const before=await rows.count();assert(before>=4+28);await page.locator('[data-tt="geo.tri"]').click();assert.equal(await page.locator('[data-tt="geo.tri"]').getAttribute('aria-expanded'),'true');assert(await rows.count()>before);
  assert.match(page.url(),/#\/browse\/topics$/,'opening a branch does not leave the page');
  await page.locator('.tt-name[href="#/browse/topics/geo.tri.special"]').click();await page.locator('.br-group').first().waitFor();
- assert.equal(await page.locator('h2').innerText(),'Special triangles');
+ assert.equal(await page.locator('h1').innerText(),'Special triangles');
  // Folding filter buttons changes only their visibility, not the selected contests or results.
  const foldedHeads=await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent));
  assert(foldedHeads.length>4);assert.deepEqual(foldedHeads.slice(0,4),['AMC 8','AMC 10','AMC 12','AIME']);
@@ -88,7 +88,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  if(width===375){assert.equal(await page.locator('.tt').isVisible(),false);await page.locator('.tt-mobile-btn').click();assert.equal(await page.locator('.tt').isVisible(),true);}
  await fits();
  // Problems by difficulty: the contest switched off stays off, one stacked chart, groups by contest.
- await go('#/browse/difficulty');await page.locator('.elo-panel').waitFor();assert.equal(await page.locator('h2').innerText(),'Problems by difficulty');assert.doesNotMatch(await page.locator('.browse-page').innerText(),/LIVE/,'the ratings carry no source name');
+ await go('#/browse/difficulty');await page.locator('.elo-panel').waitFor();assert.equal(await page.locator('h1').innerText(),'Problems by difficulty');assert.doesNotMatch(await page.locator('.browse-page').innerText(),/LIVE/,'the ratings carry no source name');
  assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'),'false');await page.locator('[data-br-fam="AMC 8"]').click();
  const bins=await page.locator('.elo-panel .elo-bar').evaluateAll(xs=>xs.map(x=>{const m=x.dataset.tip.match(/^(\d+)–(\d+): (\d+)/);return m.slice(1).map(Number);}));
  const allRatings=await page.evaluate(()=>Object.values(MATH_PROBLEM_RATINGS.ratings).map(r=>r.elo));

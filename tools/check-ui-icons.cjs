@@ -28,13 +28,39 @@ if(artifacts)fs.mkdirSync(artifacts,{recursive:true});
   }
   // Formulas, Methods and Patterns sit behind the one Reference menu at every width.
   assert.deepEqual(await p.locator('#space-switch > button, #space-switch > .space-ref > button').evaluateAll(xs=>xs.map(x=>x.textContent.trim())),['Reference','Learn','Practice']);
-  await p.locator('#space-ref-btn').click();assert.equal(await p.locator('#space-ref-btn').getAttribute('aria-expanded'),'true');
-  assert.deepEqual(await p.locator('#space-ref-menu button:visible').allInnerTexts(),['Formulas','Methods','Patterns']);
-  await p.keyboard.press('Escape');assert.equal(await p.locator('#space-ref-menu').isVisible(),false);
-  await p.locator('#space-ref-btn').click();await p.locator('#space-ref-menu [data-space-go="methods"]').click();
-  await p.waitForFunction(()=>document.body.dataset.space==='methods');assert.equal(await p.locator('#space-ref-menu').isVisible(),false);
+  const reference = p.locator('#space-ref-btn'), menu = p.locator('#space-ref-menu');
+  const current = p.locator('#space-switch [aria-current="page"]');
+  const expectSpace = async space => {
+   await p.waitForFunction(value => document.body.dataset.space === value, space);
+   assert.deepEqual(await current.evaluateAll(items => items.map(item => item.dataset.spaceGo)), space === 'none' ? [] : [space]);
+  };
+  await expectSpace('formulas');
+  assert.equal(await reference.getAttribute('aria-describedby'),'space-ref-current');
+  assert.equal(await p.locator('#space-ref-current').textContent(),'Formulas is the current section.');
+  await reference.focus();await reference.press('Enter');
+  assert.equal(await reference.getAttribute('aria-expanded'),'true');
+  assert.deepEqual(await menu.locator('button:visible').allInnerTexts(),['Formulas','Methods','Patterns']);
+  assert.equal(await menu.locator('[data-space-go="formulas"]:focus').count(),1);
+  await p.keyboard.press('Tab');
+  assert.equal(await menu.locator('[data-space-go="methods"]:focus').count(),1);
+  await p.keyboard.press('Escape');
+  assert.equal(await menu.isVisible(),false);
+  assert.equal(await reference.evaluate(el=>el===document.activeElement),true);
+  await reference.press('Space');
+  await p.keyboard.press('Tab');await p.keyboard.press('Enter');
+  await expectSpace('methods');
+  assert.equal(await menu.isVisible(),false);
+  await reference.click();
+  assert.equal(await reference.evaluate(el=>el===document.activeElement),true,'mouse opening keeps focus on Reference');
+  await p.keyboard.press('Escape');
+  await reference.press('Enter');
+  assert.equal(await menu.locator('[data-space-go="methods"]:focus').count(),1);
+  await p.keyboard.press('Tab');await p.keyboard.press('Tab');
+  assert.equal(await menu.isVisible(),false);
+  assert.equal(await p.locator('#space-switch [data-space-go="learn"]:focus').count(),1);
   assert.equal(await p.evaluate(()=>{const b=document.getElementById('space-ref-btn'),l=document.querySelector('[data-space-go="learn"]');return getComputedStyle(b).backgroundColor!==getComputedStyle(l).backgroundColor;}),true,'Reference is lit in a reference space');
-  await p.locator('#space-ref-btn').click();await p.locator('#space-ref-menu [data-space-go="formulas"]').click();await p.waitForFunction(()=>document.body.dataset.space==='formulas');
+  await reference.click();await menu.locator('[data-space-go="patterns"]').click();await expectSpace('patterns');
+  await reference.click();await menu.locator('[data-space-go="formulas"]').click();await expectSpace('formulas');
   const star=p.locator('.star-btn').first();await centered(star);const id=await star.getAttribute('data-star');
   assert.equal(await star.locator('.ui-icon-star-outline').count(),1);await star.click();assert.equal(await star.getAttribute('aria-pressed'),'true');assert.equal(await star.locator('.ui-icon-star').count(),1);
   const add=p.locator('.addlist-btn').first();await centered(add);
@@ -58,7 +84,7 @@ if(artifacts)fs.mkdirSync(artifacts,{recursive:true});
   }
   await star.click();await p.reload();await p.locator(`.star-btn[data-star="${id}"]`).waitFor();
   assert.equal(await p.locator(`.star-btn[data-star="${id}"] .ui-icon-star`).count(),1);
-  await p.locator('[data-space-go="learn"]:visible').click();await p.locator('#pr-lists').waitFor();
+  await p.locator('[data-space-go="learn"]:visible').click();await p.locator('#pr-lists').waitFor();await expectSpace('learn');
   const starred=p.locator('#pr-lists a[href="#/list/starred"]');assert.equal(await starred.locator('.ui-icon-star').count(),1);await starred.click();await p.locator(`.star-btn[data-star="${id}"]`).waitFor();
   await p.locator('#adv-btn').click();await centered(p.locator('.adv-tagmodal .modal-close'));
   await p.locator('#adv-tag-search').fill('circle');await p.locator('[data-adv-tag="circles"]').click();
@@ -69,13 +95,15 @@ if(artifacts)fs.mkdirSync(artifacts,{recursive:true});
   const bookNext=p.locator('.bk-arrow:not(.is-off)').last();if(await bookNext.isVisible())await centered(bookNext);
   assert.ok(await p.locator('.bk-foot-a .ui-icon').count()>0);
   const next=p.locator('.bk-foot-next');const target=await next.getAttribute('href');await next.click();await p.waitForURL(u=>u.hash===target);
-  await p.goto(base+'/#/problem/2018-amc-10a-1');await p.locator('.aops-btn .ui-icon-arrow-up-right').waitFor();
+  await p.goto(base+'/#/problem/2018-amc-10a-1');await p.locator('.aops-btn .ui-icon-arrow-up-right').waitFor();await expectSpace('practice');
   assert.ok((await p.locator('.aops-btn').getAttribute('href')).startsWith('http'));
   assert.equal(await p.locator('.katex-error').count(),0);assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   assert.ok(!await p.locator('#content').innerText().then(s=>s.includes('${uiIcon')),'no literal template fragments');
+  await p.goto(base+'/#/settings');await p.locator('.settings-head').waitFor();await expectSpace('none');
+  assert.equal(await reference.getAttribute('aria-describedby'),null);
   assert.deepEqual(errors,[]);
   if(artifacts){await p.goto(base+'/#/learn');await p.locator('#pr-lists').waitFor();await p.locator('#pr-lists').screenshot({path:path.join(artifacts,`lists-${theme}-${width}.png`)});await p.goto(base+'/#/formulas/geometry');await p.locator('.star-btn').first().waitFor();await p.screenshot({path:path.join(artifacts,`icons-${theme}-${width}.png`)});}
-  console.log(theme,width,'centered/font-independent icons, star/menu synchronization and persistence, dialogs/tags, book links, source links: passed');await p.close();
+  console.log(theme,width,'Reference focus and current spaces, centered/font-independent icons, star/menu synchronization and persistence, dialogs/tags, book links, source links: passed');await p.close();
  }
  // Experimental flashcard source-link and topic-tree disclosure icons use the same SVG shapes.
  const p=await browser.newPage();await p.goto(base+'/lab/flashcards.html');await p.locator('button').first().waitFor();

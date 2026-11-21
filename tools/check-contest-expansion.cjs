@@ -64,7 +64,7 @@ const base = process.env.COMPMATH_URL || 'http://localhost:8765';
   await page.locator('.br-step').first().click(); await page.waitForFunction(()=>!document.querySelector('.br-band-h')?.textContent.includes('1400'));
   assert.equal(await page.locator('[data-fam-list="browse-contests"]').getAttribute('aria-expanded'), 'true', 'next/previous range also preserves the chooser');
   await go('#/browse/topics/geo.tri'); await page.locator('[data-fam-list="browse-contests"]').click();
-  await page.evaluate(()=>location.hash='#/browse/topics/geo.circ'); await page.waitForFunction(()=>document.querySelector('h2')?.textContent==='Circles');
+  await page.evaluate(()=>location.hash='#/browse/topics/geo.circ'); await page.waitForFunction(()=>document.querySelector('h1')?.textContent==='Circles');
   assert.equal(await page.locator('[data-fam-list="browse-contests"]').getAttribute('aria-expanded'), 'true', 'topic navigation preserves the chooser within topics');
   assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'), 'false', 'filter choice persists too');
   await go('#/practice'); await go('#/browse/difficulty/1200'); await page.locator('[data-fam-list="browse-contests"]').waitFor();
