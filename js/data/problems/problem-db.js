@@ -11349,7 +11349,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2014 Columbus State Tournament, Problem 33", formulas: ["parallelogram-area"], strategy: "", tree: ["geo.poly.quad.para"] },
   { ref: "2014 Columbus State Tournament, Problem 34", formulas: ["zeckendorf-theorem"], strategy: "", tree: ["nt.seq.special.fib"] },
   { ref: "2014 Columbus State Tournament, Problem 35", formulas: ["reciprocal-power-sums"], strategy: "", tree: ["alg.exp.rules.eq"] },
-  { ref: "2014 Columbus State Tournament, Problem 36", formulas: ["wilsons-theorem"], strategy: "", tree: ["nt.div.rules.expr"] },
+  { ref: "2014 Columbus State Tournament, Problem 36", formulas: ["difference-of-squares"], strategy: "", tree: ["nt.div.rules.expr"] },
   { ref: "2014 Columbus State Tournament, Problem 37", formulas: ["triangular-numbers"], strategy: "", tree: ["nt.dio.bound.size"] },
   { ref: "2014 Columbus State Tournament, Problem 38", formulas: ["triangular-numbers"], strategy: "", tree: ["nt.digit.sum.condition"] },
   { ref: "2014 Columbus State Tournament, Problem 39", formulas: ["vietas-quadratic"], strategy: "", tree: ["alg.poly.quad.roots"] },

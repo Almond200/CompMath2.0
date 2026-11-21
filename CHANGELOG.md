@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **Columbus State 2014 added (390 of 1,364; 7 figures; one tag fix, AUDITS.md); 2015 #44 re-cropped.** `STATEMENTS_V` 79.
 - **Columbus State 2015 added (340 of 1,364; 10 figures; two tag fixes and a printing slip noted, AUDITS.md).** `STATEMENTS_V` 78.
 - **Columbus State 2016 added (290 of 1,364; 3 figures; one tag fix, AUDITS.md).** `STATEMENTS_V` 77.
 - **Columbus State 2017 added (240 of 1,364; 2 figures; the file's Ciphering and backup rounds are not part of the 50 problems and are left out).** `STATEMENTS_V` 76.
