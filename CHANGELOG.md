@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **PUMaC 2019 added (320 of 1,088; no figures).** `STATEMENTS_V` 97.
 - **PUMaC 2020 added (256 of 1,088; no figures).** `STATEMENTS_V` 96.
 - **PUMaC 2022 added (192 of 1,088; no figures).** `STATEMENTS_V` 95.
 - **PUMaC 2023 added (128 of 1,088; no figures).** `STATEMENTS_V` 94.
