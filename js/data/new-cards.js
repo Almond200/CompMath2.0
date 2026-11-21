@@ -84,5 +84,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Owner requests: unfolding bounces, the largest sphere in a cone", date: "2026-11-20",
     ids: ["unfold-the-bounces", "cone-insphere"] },
   { label: "Owner review: contest methods for extremal and pattern problems", date: "2026-11-20",
-    ids: ["bound-and-construct", "small-cases-pattern"] }
+    ids: ["bound-and-construct", "small-cases-pattern"] },
+  { label: "AMC halves of the proof methods (owner, 2026-11-21)", date: "2026-11-21",
+    ids: ["if-then-statements", "settle-with-an-example"] }
 ];

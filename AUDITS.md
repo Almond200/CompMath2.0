@@ -2609,3 +2609,17 @@ The newly High formula cards whose subsection has a section in its Core list joi
 | BMT, before → after | 1275 → 1250 | 1900 → 1650 | 2475 → 2005 | 2900 → 2450 | 3500 → 3100 |
 
 PUMaC sat above HMMT February at every position and BMT level with it. Each was mapped by one increasing scale (Codex's order kept; PUMaC problems shared by both divisions stay equal), and each reason says so. The other contests sit sensibly against LIVE's AMC/AIME anchors. Separately, 415 estimates pinned at a floor of 100 now run from 10 to 90.
+
+## Proof Methods kept olympiad-only (2026-11-21)
+
+Owner: Proof Methods is for olympiad proof techniques; the cards the 2026-11-20 review moved to the AMC tier stay there as proof cards, and their AMC uses get a card in a regular section.
+
+- Back to Olympiad tier and level: `contrapositive`, `disproof-by-counterexample`, `wlog-symmetry`, `proof-by-construction`, `proof-by-cases` (the five Proof Methods cards at AMC). Their Contest profiles now point to the AMC card. `contrapositive` and `wlog-symmetry` gained proof exercises (they had too few practice problems once their AMC problems moved).
+- New AMC methods in Counting & Probability, group Reading Statements: `if-then-statements` (P79; the 30 problems that cited `contrapositive`) and `settle-with-an-example` (P80; 14 from `disproof-by-counterexample`, 2 from `proof-by-construction`). Testing the Answer in Checking Your Work now holds `settle-with-an-example`.
+- `wlog-symmetry`'s 16 AMC and SMT uses went to the existing Symmetry Arguments (`symmetry-probability`), broadened to counting, fixing one choice, equal unknowns and ordering symmetric variables, rather than a second symmetry card.
+- PUMaC problems citing these cards (7 counterexample, 2 construction, 1 WLOG) wait with PUMaC's other proof-tagged problems for its archive (certificate error from here).
+
+Tag fixes found while importing SMT statements:
+
+- 2023 SMT General #10: `right-triangle-inradius` / `geo.tri.radii.in` → `folded-paper`, `pythagorean-theorem` / `geo.basic.pyth.fold` (reflecting a triangle over the diagonal is a fold; no inradius in the route).
+- 2020 SMT General #6: `grid-paths`, `complementary-counting` / `cp.struct.paths.obstacle` → `time-per-leg`, `pythagorean-theorem` / `alg.word.rates.motion` (a timing problem; nothing is counted).

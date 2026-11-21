@@ -258,6 +258,7 @@
   const DIAGRAM_MODES = ["none", "on"];
   const DENSITIES = ["comfortable", "compact", "spacious"];
   const NOTATIONS = ["sigma", "expanded"];
+  const ANGLE_MODES = ["degrees", "radians"];
   const TEXT_SIZES = ["normal", "large", "larger"];
   // How many rows of a card's formulas a browsing card shows: 1, 2, 3, or all of them. A card's
   // own page always shows every form.
@@ -329,6 +330,7 @@
       diagrams: pick(P.diagrams === "thumb" || P.diagrams === "curated" || P.diagrams === "all" ? "on" : P.diagrams, DIAGRAM_MODES),
       density: pick(P.density, DENSITIES),
       notation: pick(P.notation, NOTATIONS),
+      angles: pick(P.angles, ANGLE_MODES),
       text: pick(P.text, TEXT_SIZES),
       lines: pick(P.lines, FORMULA_LINES),
       order: pick(P.order, ORDERS),
@@ -355,7 +357,7 @@
         filter: { tiers: [...state.filter.tiers], importances: [...state.filter.importances] },
         prefs: {
           layout: state.layout, diagrams: state.diagrams,
-          density: state.density, notation: state.notation,
+          density: state.density, notation: state.notation, angles: state.angles,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
           tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonLinksChosen: !!state.lessonLinksChosen, lessonWidth: state.lessonWidth
@@ -383,6 +385,7 @@
     diagrams: _loaded.diagrams,  // "none" | "on" — figures on the card face
     density: _loaded.density,    // "comfortable" | "spacious" | "compact"
     notation: _loaded.notation,  // "sigma" | "expanded"
+    angles: _loaded.angles,      // "degrees" | "radians": how angle measures are written on cards
     text: _loaded.text,          // "normal" | "large"
     lines: _loaded.lines,        // "1" | "2" | "3" | "all" -- rows of a card's formulas shown while browsing
     order: _loaded.order,        // "tier" | "curated" | "problems" — card order on section pages (tier, then importance)
@@ -2158,6 +2161,7 @@
   function renderMath(container, lazyCards) {
     if (lazyCards) container.querySelectorAll(".cards > .card").forEach(c => { c.dataset.math = "0"; });
     const skip = el => lazyCards && el.closest('.card[data-math="0"]');
+    if (state.angles === "radians") anglesToRadians(container, skip);
     container.querySelectorAll(".formula-display[data-latex]").forEach(el => {
       if (skip(el)) return;
       try {
@@ -2186,6 +2190,43 @@
     tidyDiagrams(container);
     requestAnimationFrame(() => fitInlineMath(container));
     // Card formulas are fitted once, at the end of render(), after the layout settles.
+  }
+  // Angles on cards (owner, 2026-11-21): with Radians chosen, a card's degree measures are
+  // rewritten before the math is set, $60^\circ$ as $\frac{\pi}{3}$ and $k^\circ$ as
+  // $\tfrac{\pi}{180}k$. Only a card (a tile, or a card's page, marked data-angles) changes; its
+  // examples, contest problems, figures and every lesson keep degrees, since their wording
+  // ("in degrees") and answers depend on them.
+  const ANGLE_SKIP = ".katex, .practice, [data-card-problems], [data-card-profile], .contest-profile, .prob-statement, .diagram, svg, script, style, textarea, input";
+  const DEG = String.raw`\s*\^\s*(?:\{\s*\\circ\s*\}|\\circ)`;
+  const DEG_NUM = new RegExp(String.raw`(\d+(?:\.\d+)?)` + DEG, "g");
+  const DEG_SYM = new RegExp(String.raw`(\([^()]*\)|\\[a-zA-Z]+|[A-Za-z])` + DEG, "g");
+  function degreesAsRadians(d) {
+    const [ip, fp = ""] = d.split(".");
+    let num = parseInt(ip + fp, 10), den = 180 * 10 ** fp.length;
+    const g = (a, b) => b ? g(b, a % b) : a, k = g(num, den);
+    num /= k; den /= k;
+    if (!num) return "0";
+    const top = (num === 1 ? "" : num) + "\\pi";
+    return den === 1 ? top : `\\frac{${top}}{${den}}`;
+  }
+  const radianTex = tex => tex.replace(DEG_NUM, (m, d) => degreesAsRadians(d)).replace(DEG_SYM, (m, x) => `\\tfrac{\\pi}{180}${x}`);
+  function anglesToRadians(container, skip) {
+    const scopes = [...container.querySelectorAll("[data-angles]")];
+    const own = container.closest && container.closest("[data-angles]");
+    if (own) scopes.push(container);
+    scopes.forEach(scope => {
+      scope.querySelectorAll(".formula-display[data-latex]").forEach(el => {
+        if (!skip(el) && !el.closest(ANGLE_SKIP)) el.dataset.latex = radianTex(el.dataset.latex);
+      });
+      const walk = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      for (let n = walk.nextNode(); n; n = walk.nextNode()) if (/circ|°/.test(n.nodeValue)) nodes.push(n);
+      nodes.forEach(n => {
+        const el = n.parentElement;
+        if (!el || el.closest(ANGLE_SKIP) || skip(el)) return;
+        n.nodeValue = radianTex(n.nodeValue).replace(/(\d+(?:\.\d+)?)°/g, (m, d) => "$" + degreesAsRadians(d) + "$");
+      });
+    });
   }
   // Inline math wider than its line, on a phone or at a larger text size. Math held to its
   // punctuation first gets its own line breaks back; math that still overflows (a long root or
@@ -2643,7 +2684,7 @@
       ? `<span class="card-crumb">${entry.section.title} ${uiIcon("chevron-right")} ${entry.subsection.title}</span>`
       : "";
     return `
-      <article class="card card-${kindOf(f)}" data-id="${f.id}" id="f-${f.id}">
+      <article class="card card-${kindOf(f)}" data-id="${f.id}" id="f-${f.id}" data-angles>
         <div class="card-head">
           <h4 class="card-name"><a href="#/f/${f.id}">${f.name}</a></h4>
           <span class="card-tags">${kindBadgeHtml(f)}${impBadgeHtml(f)}</span>
@@ -4479,7 +4520,7 @@
       : "";
     const withTools = state.tools === "on";
     $content.innerHTML = `${withTools ? `<div class="detail-with-tools">` : ""}
-      <div class="detail">
+      <div class="detail" data-angles>
         <div class="back-row">
           ${backFromSearch
             ? `<a class="back-link" href="#" data-back-search>${uiIcon("arrow-left")} Back to ${backFromSearch.adv
@@ -4978,7 +5019,7 @@
   // allowed value the settings loader falls back to.
   const SETTING_DEFAULTS = {
     theme: "light", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
-    notation: NOTATIONS[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
+    notation: NOTATIONS[0], angles: ANGLE_MODES[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
     order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], lessonWidth: LESSON_WIDTHS[0], strategy: STRATEGY_MODES[0], contestLists: CONTEST_LIST_MODES[0]
   };
   function settingRow(name, desc, key, current, options, pv) {
@@ -5020,6 +5061,7 @@
           ${settingRow("Formula lines", "The most rows of a card's formulas to show while browsing, so the cards in a grid stay even. A card's own page always shows all of them. Card thumbnails are written with the most important formula first.", "lines", state.lines, [["1", "1"], ["2", "2"], ["3", "3"], ["all", "All"]], "browse")}
           ${settingRow("Keyword tags", "The tag chips on a card's page. Search uses them either way.", "tags", state.tags ? "on" : "off", [["on", "Show"], ["off", "Hide"]], "page")}
           ${settingRow("Notation", "Expanded writes out the first few terms instead of \u2211 or \u220f in formula boxes and key forms. Explanations keep sigma notation, where the index is usually the point.", "notation", state.notation, [["sigma", "Sigma"], ["expanded", "Expanded"]], "browse page")}
+          ${settingRow("Angles on cards", "How angle measures are written on cards: 60\u00b0 or \u03c0/3. Only the cards change; lessons, examples, contest problems and figures keep degrees.", "angles", state.angles, [["degrees", "Degrees"], ["radians", "Radians"]], "page")}
           ${settingRow("Figures on cards", "Figures always appear on a card's own page. On also shows each card's figure while browsing.", "diagrams", state.diagrams, [["none", "Off"], ["on", "On"]], "browse")}
           ${settingRow("Page tools", "Show page tools on card pages and in list sidebars, including links and printing.", "tools", state.tools, [["off", "Off"], ["on", "On"]], "page")}
           ${settingRow("Scroll speed", "How far a page moves for each turn of the mouse wheel or swipe on the trackpad. Normal leaves your browser's own scrolling as it is.", "scroll", state.scroll, [["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]])}
@@ -5188,6 +5230,7 @@
         text: "font size, font, fonts, bigger text, larger text, small text, text size, zoom, readability, letters, type size, words",
         lines: "formula rows, rows, how many lines, truncate, shorten cards, formulas on cards, lines",
         tags: "keywords, keyword, chips, labels on cards, tags, topics",
+        angles: "radians, radian, degrees, degree, angle measure, pi, angles, angle units, units",
         notation: "sigma, summation, sum notation, product notation, expanded terms, sums, products, symbols",
         diagrams: "figures, figure, pictures, images, drawings, thumbnails, diagrams, graphics, illustrations",
         tools: "page tools, sidebar on the right, right column, wikipedia, print, printing, permanent link, permalink, what links here, tools",
@@ -5703,6 +5746,8 @@
       </div>`;
   }
   function recentRowsHtml(limit, kinds) {
+    const labels = readRecentLabels();
+    let labelsChanged = false;
     const rows = readRecent().map(k => {
       const id = k.slice(2);
       if (k[0] === "f" && BY_ID[id]) {
@@ -5719,14 +5764,33 @@
         const at = learnLessonByCode(id);
         return at && learnLessonSummary(at.c, at.l) ? `<a class="rc-row" href="${learnHash(at.b, at.c, lessonNum(at.l))}"><span class="badge badge-lesson">LESSON</span><span class="rc-name">${at.l.code} ${escapeAttr(at.l.title)}</span><span class="rc-meta">${escapeAttr(at.b.title)}</span></a>` : "";
       }
-      if (k[0] === "p" && PROBLEM_BY_SLUG[id]) {
+      if (k[0] === "p" && (PROBLEM_BY_SLUG[id] || (!problemsReady && labels[id]))) {
         if (kinds && kinds.indexOf("problem") === -1) return "";
         const p = PROBLEM_BY_SLUG[id];
-        return `<a class="rc-row" href="#/problem/${id}"><span class="badge badge-problem">PROBLEM</span><span class="rc-name">${refShort(p.ref)}</span><span class="rc-meta">${p.formulas[0] && BY_ID[p.formulas[0]] ? BY_ID[p.formulas[0]].formula.name : ""}</span></a>`;
+        const label = p ? { n: refShort(p.ref), m: p.formulas[0] && BY_ID[p.formulas[0]] ? BY_ID[p.formulas[0]].formula.name : "" } : labels[id];
+        if (p && (!labels[id] || labels[id].n !== label.n || labels[id].m !== label.m)) { labels[id] = label; labelsChanged = true; }
+        return `<a class="rc-row" href="#/problem/${id}"><span class="badge badge-problem">PROBLEM</span><span class="rc-name">${label.n}</span><span class="rc-meta">${label.m}</span></a>`;
       }
       return "";
     }).filter(Boolean).slice(0, limit);
+    if (labelsChanged) writeRecentLabels(labels);
     return rows.join("");
+  }
+  // The problem database loads after the first screen, so a reload drew Recently opened without
+  // its problems (older cards filled their places until the data arrived; owner, 2026-11-21). Each
+  // problem row's name and card are kept here once shown, so the first drawing is already right.
+  const RECENT_LABELS_KEY = "mq-recent-labels";
+  function readRecentLabels() {
+    try { const v = JSON.parse(localStorage.getItem(RECENT_LABELS_KEY) || "{}"); return v && typeof v === "object" ? v : {}; }
+    catch (e) { return {}; }
+  }
+  function writeRecentLabels(labels) {
+    try {
+      const keep = new Set(readRecent().filter(k => k[0] === "p").map(k => k.slice(2)));
+      const out = {};
+      Object.keys(labels).forEach(id => { if (keep.has(id)) out[id] = labels[id]; });
+      localStorage.setItem(RECENT_LABELS_KEY, JSON.stringify(out));
+    } catch (e) { /* a convenience only */ }
   }
   const LOGO_HTML = `<span class="brand-sigma" aria-hidden="true">&Sigma;</span>`;
 
@@ -10061,7 +10125,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 50;
+  const STATEMENTS_V = 51;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {

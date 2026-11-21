@@ -2326,4 +2326,14 @@
     { q: String.raw`Let $T$ be the sum of $\frac{x^2}{x^2 + y^2 + z^2} \cdot 3^{-(x + y + z)}$ over all ordered triples $(x, y, z)$ of positive integers. Find $T$.`,
       s: String.raw`The range, all ordered triples, is unchanged when the three variables are renamed, and every term is positive, so $T$ is also the sum with numerator $y^2$, and with numerator $z^2$. Adding the three copies term by term, the fraction becomes $\frac{x^2 + y^2 + z^2}{x^2 + y^2 + z^2} = 1$, so $3T = \sum 3^{-x} \, 3^{-y} \, 3^{-z} = \left(\tfrac13 + \tfrac19 + \cdots\right)^3 = \left(\tfrac12\right)^3 = \tfrac18$. So $T = \mathbf{\tfrac{1}{24}}$.` }
   );
+  add("contrapositive",
+    { q: String.raw`Let $a$ and $b$ be real numbers. Prove that if $a + b \ge 100$, then $a \ge 50$ or $b \ge 50$.`,
+      s: String.raw`Prove the contrapositive. The negation of "$a \ge 50$ or $b \ge 50$" is "$a \lt 50$ and $b \lt 50$", and adding these gives $a + b \lt 100$, the negation of the hypothesis. So the contrapositive holds, and with it the claim.` },
+    { q: String.raw`Let $n$ be a positive integer. Prove that if $n$ is not a perfect square, then $\sqrt n$ is irrational.`,
+      s: String.raw`Prove the contrapositive: if $\sqrt n$ is rational, then $n$ is a perfect square. Write $\sqrt n = \frac pq$ in lowest terms, so $nq^2 = p^2$. If a prime $r$ divided $q$, it would divide $p^2$ and hence $p$, against lowest terms; so $q = 1$ and $n = p^2$.` }
+  );
+  add("wlog-symmetry",
+    { q: String.raw`Prove that for any real numbers $a$, $b$, $c$, at least one of $ab$, $bc$, $ca$ is nonnegative.`,
+      s: String.raw`The three products are only permuted when the variables are renamed, so without loss of generality $a \le b \le c$. If $b \ge 0$, then $c \ge b \ge 0$ and $bc \ge 0$. If $b \lt 0$, then $a \le b \lt 0$ and $ab \gt 0$. In either case one of the products is nonnegative.` }
+  );
 })();

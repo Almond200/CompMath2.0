@@ -594,6 +594,8 @@ window.MATH_TOPIC_HOMES = {
   "barycentric-coordinates": null,
   "coordinate-bash": null,
   "bound-and-construct": null,
+  "if-then-statements": "cp.logic.puzzle.statements",
+  "settle-with-an-example": null,
   "small-cases-pattern": null,
   "trig-bash": null,
   "complex-bash": "geo.coord.vector.complex",
