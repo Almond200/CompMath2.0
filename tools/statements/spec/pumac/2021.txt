@@ -1,0 +1,126 @@
+=== division-a-algebra-1
+Compute the sum of all real numbers $x$ which satisfy the following equation
+$$\frac{8^x-19\cdot4^x}{16-25\cdot2^x}=2.$$
+=== division-a-algebra-2
+For a bijective function $g:\mathbb R\to\mathbb R$, we say that a function $f:\mathbb R\to\mathbb R$ is its superinverse if it satisfies the following identity $(f\circ g)(x)=g^{-1}(x)$, where $g^{-1}$ is the inverse of $g$. Given $g(x)=x^3+9x^2+27x+81$ and $f$ is its superinverse, find $|f(-289)|$.
+=== division-a-algebra-3
+Let $f(x)=1+2x+3x^2+4x^3+5x^4$ and let $\zeta=e^{2\pi i/5}=\cos\frac{2\pi}5+i\sin\frac{2\pi}5$. Find the value of the following expression:
+$$f(\zeta)f\left(\zeta^2\right)f\left(\zeta^3\right)f\left(\zeta^4\right).$$
+=== division-a-algebra-4
+The roots of a monic cubic polynomial $p$ are positive real numbers forming a geometric sequence. Suppose that the sum of the roots is equal to $10$. Under these conditions, the largest possible value of $|p(-1)|$ can be written as $\frac mn$, where $m,n$ are relatively prime integers. Find $m+n$.
+=== division-a-algebra-5
+Consider the sum
+$$S=\sum_{j=1}^{2021}\left|\sin\frac{2\pi j}{2021}\right|.$$
+The value of $S$ can be written as $\tan\left(\frac{c\pi}d\right)$ for some relatively prime positive integers $c,d$, satisfying $2c<d$. Find the value of $c+d$.
+=== division-a-algebra-6
+Let $f$ be a polynomial. We say that a complex number $p$ is a double attractor if there exists a polynomial $h(x)$ so that $f(x)-f(p)=h(x)(x-p)^2$ for all $x\in\mathbb R$. Now, consider the polynomial
+$$f(x)=12x^5-15x^4-40x^3+540x^2-2160x+1,$$
+and suppose that it's double attractors are $a_1,a_2,\ldots,a_n$. If the sum $\sum_{i=1}^n|a_i|$ can be written as $\sqrt a+\sqrt b$, where $a,b$ are positive integers, find $a+b$.
+=== division-a-algebra-7
+Consider the following expression
+$$S=\log_2\left(\left|\sum_{k=1}^{2019}\sum_{j=2}^{2020}\log_{2^{1/k}}(j)\log_{j^2}\left(\sin\frac{\pi k}{2020}\right)\right|\right).$$
+Find the smallest integer $n$ which is bigger than $S$ (i.e. find $\lceil S\rceil$).
+=== division-a-algebra-8
+Consider the sequence of Fibonacci numbers $F_0,F_1,F_2,\ldots$, given by $F_0=F_1=1$ and $F_{n+1}=F_n+F_{n-1}$ for $n\ge1$. Define the sequence $x_0,x_1,x_2,\ldots$ by $x_0=1$ and $x_{k+1}=x_k^2+F_{2^k}^2$ for $k\ge0$. Define the sequence $y_0,y_1,y_2,\ldots$ by $y_0=1$ and $y_{k+1}=2x_ky_k-y_k^2$ for $k\ge0$. If
+$$\sum_{k=0}^\infty\frac1{y_k}=\frac{a-\sqrt b}c$$
+for positive integers $a,b,c$ with $\gcd(a,c)=1$, find $a+b+c$.
+=== division-b-algebra-1
+Let $x,y$ be distinct positive real numbers satisfying
+$$\frac1{\sqrt{x+y}-\sqrt{x-y}}+\frac1{\sqrt{x+y}+\sqrt{x-y}}=\frac x{\sqrt{y^3}}.$$
+If $\frac xy=\frac{a+\sqrt b}c$ for positive integers $a,b,c$ with $\gcd(a,c)=1$, find $a+b+c$.
+=== division-b-algebra-2
+Kris is asked to compute $\log_{10}(x^y)$, where $y$ is a positive integer and $x$ is a positive real number. However, they misread this as $(\log_{10}x)^y$, and compute this value. Despite the reading error, Kris still got the right answer. Given that $x>10^{1.5}$, determine the largest possible value of $y$.
+=== division-b-algebra-3
+Compute the sum of all real numbers $x$ which satisfy the following equation
+$$\frac{8^x-19\cdot4^x}{16-25\cdot2^x}=2.$$
+=== division-b-algebra-4
+For a bijective function $g:\mathbb R\to\mathbb R$, we say that a function $f:\mathbb R\to\mathbb R$ is its superinverse if it satisfies the following identity $(f\circ g)(x)=g^{-1}(x)$, where $g^{-1}$ is the inverse of $g$. Given $g(x)=x^3+9x^2+27x+81$ and $f$ is its superinverse, find $|f(-289)|$.
+=== division-b-algebra-5
+Let $f(x)=1+2x+3x^2+4x^3+5x^4$ and let $\zeta=e^{2\pi i/5}=\cos\frac{2\pi}5+i\sin\frac{2\pi}5$. Find the value of the following expression:
+$$f(\zeta)f\left(\zeta^2\right)f\left(\zeta^3\right)f\left(\zeta^4\right).$$
+=== division-b-algebra-6
+The roots of a monic cubic polynomial $p$ are positive real numbers forming a geometric sequence. Suppose that the sum of the roots is equal to $10$. Under these conditions, the largest possible value of $|p(-1)|$ can be written as $\frac mn$, where $m,n$ are relatively prime integers. Find $m+n$.
+=== division-b-algebra-7
+Consider the sum
+$$S=\sum_{j=1}^{2021}\left|\sin\frac{2\pi j}{2021}\right|.$$
+The value of $S$ can be written as $\tan\left(\frac{c\pi}d\right)$ for some relatively prime positive integers $c,d$, satisfying $2c<d$. Find the value of $c+d$.
+=== division-b-algebra-8
+Let $f$ be a polynomial. We say that a complex number $p$ is a double attractor if there exists a polynomial $h(x)$ so that $f(x)-f(p)=h(x)(x-p)^2$ for all $x\in\mathbb R$. Now, consider the polynomial
+$$f(x)=12x^5-15x^4-40x^3+540x^2-2160x+1,$$
+and suppose that it's double attractors are $a_1,a_2,\ldots,a_n$. If the sum $\sum_{i=1}^n|a_i|$ can be written as $\sqrt a+\sqrt b$, where $a,b$ are positive integers, find $a+b$.
+=== division-a-combinatorics-1
+Select two distinct diagonals at random from a regular octagon. What is the probability that the two diagonals intersect at a point strictly within the octagon? Express your answer as $a+b$, where the probability is $\frac ab$ and $a$ and $b$ are relatively prime positive integers.
+=== division-a-combinatorics-2
+Eighteen people are standing in a (socially-distanced) line to enter a grocery store. Five people are wearing a black mask, $6$ are wearing a gray mask, and $7$ are wearing a white mask. Suppose that these $18$ people got on line in a random order. The expected number of pairs of adjacent people wearing different-colored masks can be given by $\frac ab$, where $\gcd(a,b)=1$. Compute $a+b$.
+=== division-a-combinatorics-3
+Nelson is having his friend drop his unique bouncy ball from a $12$ foot building, and Nelson will only catch the ball at the peak of its trajectory between bounces. On any given bounce, there is an $80\%$ chance that the next peak occurs at $\frac13$ the height of the previous peak and a $20\%$ chance that the next peak occurs at $3$ times the height of the previous peak (where the first peak is at $12$ feet). If Nelson can only reach $4$ feet into the air and will catch the ball as soon as possible, the probability that Nelson catches the ball after exactly $13$ bounces is $2^a\times3^b\times5^c\times7^d\times11^e$ for integers $a,b,c,d$, and $e$. Find $|a|+|b|+|c|+|d|+|e|$.
+=== division-a-combinatorics-4
+There are $n$ lilypads in a row labeled $1,2,\ldots,n$ from left to right. Fareniss the Frog picks a lilypad at random to start on, and every second she jumps to an adjacent lilypad; if there are two such lilypads, she is twice as likely to jump to the right as to the left. After some finite number of seconds, there exists two lilypads $A$ and $B$ such that Fareniss is more than $1000$ times as likely to be on $A$ as she is to be on $B$. What is the minimal number of lilypads $n$ such that this situation must occur?
+=== division-a-combinatorics-5
+A Princeton slot machine has $100$ pictures, each equally likely to occur. One is a picture of a tiger. Alice and Bob independently use the slot machine, and each repeatedly makes independent plays. Alice keeps playing until she sees a tiger, at which point she stops. Similarly, Bob keeps playing until he sees a tiger. Given that Bob played twice longer than Alice, let the expected number of plays for Alice be $\frac ab$ with $a,b$ relatively prime positive integers. Find the remainder when $a+b$ is divided by $1000$.
+=== division-a-combinatorics-6
+Alice, Bob, and Carol are playing a game. Each turn, one of them says one of the $3$ players' names, chosen from $\{\text{Alice},\text{Bob},\text{Carol}\}$ uniformly at random. Alice goes first, Bob goes second, Carol goes third, and they repeat in that order. Let $E$ be the expected number of names that are have been said when, for the first time, all $3$ names have been said twice. If $E=\frac mn$ for relatively prime positive integers $m$ and $n$, find $m+n$. (Include the last name to be said twice in your count.)
+=== division-a-combinatorics-7
+Cassidy has string of $n$ bits, where $n$ is a positive integer, which initially are all $0$s or $1$s. Every second, Cassidy may choose to do one of two things:
+
+1. Change the first bit (so the first bit changes from a $0$ to a $1$, or vice versa)
+
+2. Change the first bit after the first $1$.
+
+Let $M$ be the minimum number of such moves it takes to get from $1\ldots1$ to $0\ldots0$ (both of length $12$), and the number of starting sequences with $12$ bits that Cassidy can turn into all $0$s. Find $M+N$.
+=== division-a-combinatorics-8
+Physicists at Princeton are trying to analyze atom entanglement using the following experiment. Originally there is one atom in the space and it starts splitting according to the following procedure. If after $n$ minutes there are atoms $a_1,\ldots,a_N$, in the following minute every atom $a_i$ splits into four new atoms, $a_i^{(1)},a_i^{(2)},a_i^{(3)},a_i^{(4)}$. Atoms $a_i^{(j)}$ and $a_k^{(j)}$ are entangled if and only if the atoms $a_i$ and $a_k$ were entangled after $n$ minutes. Moreover, atoms $a_i^{(j)}$ and $a_k^{(j+1)}$ are entangled for all $1\le i,k\le N$ and $j=1,2,3$. Therefore, after one minute there is $4$ atoms, after two minutes there are $16$ atoms and so on.
+
+Physicists are now interested in the number of unordered quadruplets of atoms $\{b_1,b_2,b_3,b_4\}$ among which there is an odd number of entanglements. What is the number of such quadruplets after $3$ minutes?
+
+Remark. Note that atom entanglement is not transitive. In other words, if atoms $a_i,a_j$ are entangled and if $a_j,a_k$ are entangled, this does not necessarily mean that $a_i$ and $a_k$ are entangled.
+=== division-b-combinatorics-1
+A nonempty word is called pronounceable if it alternates in vowels (A, E, I, O, U) and consonants (all other letters) and it has at least one vowel. How many pronounceable words can be formed using the letters P, U, M, A, C at most once each? Words of length shorter than $5$ are allowed.
+=== division-b-combinatorics-2
+Neel and Roshan are going to the Newark Liberty International Airport to catch separate flights. Neel plans to arrive at some random time between $5{:}30$ am and $6{:}30$ am, while Roshan plans to arrive at some random time between $5{:}40$ am and $6{:}40$ am. The two want to meet, however briefly, before going through airport security. As such, they agree that each will wait for $n$ minutes once he arrives at the airport before going through security. What is the smallest $n$ they can select such that they meet with at least $50\%$ probability? The answer will be of the form $a+b\sqrt c$ for integers $a$, $b$, and $c$, where $c$ has no perfect square factor other than $1$. Report $a+b+c$.
+=== division-b-combinatorics-3
+Select two distinct diagonals at random from a regular octagon. What is the probability that the two diagonals intersect at a point strictly within the octagon? Express your answer as $a+b$, where the probability is $\frac ab$ and $a$ and $b$ are relatively prime positive integers.
+=== division-b-combinatorics-4
+Eighteen people are standing in a (socially-distanced) line to enter a grocery store. Five people are wearing a black mask, $6$ are wearing a gray mask, and $7$ are wearing a white mask. Suppose that these $18$ people got on line in a random order. The expected number of pairs of adjacent people wearing different-colored masks can be given by $\frac ab$, where $\gcd(a,b)=1$. Compute $a+b$.
+=== division-b-combinatorics-5
+Nelson is having his friend drop his unique bouncy ball from a $12$ foot building, and Nelson will only catch the ball at the peak of its trajectory between bounces. On any given bounce, there is an $80\%$ chance that the next peak occurs at $\frac13$ the height of the previous peak and a $20\%$ chance that the next peak occurs at $3$ times the height of the previous peak (where the first peak is at $12$ feet). If Nelson can only reach $4$ feet into the air and will catch the ball as soon as possible, the probability that Nelson catches the ball after exactly $13$ bounces is $2^a\times3^b\times5^c\times7^d\times11^e$ for integers $a,b,c,d$, and $e$. Find $|a|+|b|+|c|+|d|+|e|$.
+=== division-b-combinatorics-6
+There are $n$ lilypads in a row labeled $1,2,\ldots,n$ from left to right. Fareniss the Frog picks a lilypad at random to start on, and every second she jumps to an adjacent lilypad; if there are two such lilypads, she is twice as likely to jump to the right as to the left. After some finite number of seconds, there exists two lilypads $A$ and $B$ such that Fareniss is more than $1000$ times as likely to be on $A$ as she is to be on $B$. What is the minimal number of lilypads $n$ such that this situation must occur?
+=== division-b-combinatorics-7
+A Princeton slot machine has $100$ pictures, each equally likely to occur. One is a picture of a tiger. Alice and Bob independently use the slot machine, and each repeatedly makes independent plays. Alice keeps playing until she sees a tiger, at which point she stops. Similarly, Bob keeps playing until he sees a tiger. Given that Bob plays twice as much as Alice, let the expected number of plays for Alice be $\frac ab$ with $a,b$ relatively prime positive integers. Find the remainder when $a+b$ is divided by $1000$.
+=== division-b-combinatorics-8
+Alice, Bob, and Carol are playing a game. Each turn, one of them says one of the $3$ players' names, chosen from $\{\text{Alice},\text{Bob},\text{Carol}\}$ uniformly at random. Alice goes first, Bob goes second, Carol goes third, and they repeat in that order. Let $E$ be the expected number of names that are have been said when, for the first time, all $3$ names have been said twice. If $E=\frac mn$ for relatively prime positive integers $m$ and $n$, find $m+n$. (Include the last name to be said twice in your count.)
+=== division-a-number-theory-1
+Compute the remainder when $2^{3^5}+3^{5^2}+5^{2^3}$ is divided by $30$.
+=== division-a-number-theory-2
+A substring of a number $n$ is a number formed by removing some digits from the beginning and end of $n$ (possibly a different number of digits is removed from each side). Find the sum of all prime numbers $p$ that have the property that any substring of $p$ is also prime.
+=== division-a-number-theory-3
+Compute the number of ordered pairs of non-negative integers $(x,y)$ which satisfy
+$$x^2+y^2=32045.$$
+=== division-a-number-theory-4
+Let $f(n)=\sum_{\gcd(k,n)=1,\,1\le k\le n}k^3$. If the prime factorization of $f(2020)$ can be written as $p_1^{e_1}p_2^{e_2}\ldots p_k^{e_k}$, find $\sum_{i=1}^kp_ie_i$.
+=== division-a-number-theory-5
+Suppose that $f:\mathbb Z\times\mathbb Z\to\mathbb R$, satisfies the equation $f(x,y)=f(3x+y,2x+2y)$ for all $x,y\in\mathbb Z$. Determine the maximal number of distinct values of $f(x,y)$ for $1\le x,y\le100$.
+=== division-a-number-theory-6
+Let $f(n)=\sum_{i=1}^n\frac{\gcd(i,n)}n$. Find the sum of all positive integers $n$ for which $f(n)=6$.
+=== division-a-number-theory-7
+We say that a polynomial $p$ is respectful if $\forall x,y\in\mathbb Z$, $y-x$ divides $p(y)-p(x)$, and $\forall x\in\mathbb Z$, $p(x)\in\mathbb Z$. We say that a respectful polynomial is disguising if it is nonzero, and all of its non-zero coefficients lie between $0$ and $1$, exclusive. Determine $\sum\deg(f)\cdot f(2)$, where the sum includes all disguising polynomials $f$ of degree at most $5$.
+=== division-a-number-theory-8
+Consider the sequence given by $a_0=3$ and such that for $i\ge1$, we have $a_i=2^{a_{i-1}}+1$. Let $m$ be the smallest integer such that $a_3^3$ divides $a_m$. Let $m'$ the smallest integer such that $a_m^3$ divides $a_{m'}$. Find the value of $m'$.
+=== division-b-number-theory-1
+Andrew has a four-digit number whose last digit is $2$. Given that this number is divisible by $9$, determine the number of possible values for this number that Andrew could have. Note that leading zeros are not allowed.
+=== division-b-number-theory-2
+The smallest three positive proper divisors of an integer $n$ are $d_1<d_2<d_3$ and they satisfy $d_1+d_2+d_3=57$. Find the sum of the possible values of $d_2$.
+=== division-b-number-theory-3
+Compute the remainder when $2^{3^5}+3^{5^2}+5^{2^3}$ is divided by $30$.
+=== division-b-number-theory-4
+A substring of a number $n$ is a number formed by removing some digits from the beginning and end of $n$ (possibly a different number of digits is removed from each side). Find the sum of all prime numbers $p$ that have the property that any substring of $p$ is also prime.
+=== division-b-number-theory-5
+Compute the number of ordered pairs of non-negative integers $(x,y)$ which satisfy
+$$x^2+y^2=32045.$$
+=== division-b-number-theory-6
+Let $f(n)=\sum_{\gcd(k,n)=1,\,1\le k\le n}k^3$. If the prime factorization of $f(2020)$ can be written as $p_1^{e_1}p_2^{e_2}\ldots p_k^{e_k}$, find $\sum_{i=1}^kp_ie_i$.
+=== division-b-number-theory-7
+Suppose that $f:\mathbb Z\times\mathbb Z\to\mathbb R$, satisfies the equation $f(x,y)=f(3x+y,2x+2y)$ for all $x,y\in\mathbb Z$. Determine the maximal number of distinct values of $f(x,y)$ for $1\le x,y\le100$.
+=== division-b-number-theory-8
+Let $f(n)=\sum_{i=1}^n\frac{\gcd(i,n)}n$. Find the sum of all positive integers $n$ for which $f(n)=6$.

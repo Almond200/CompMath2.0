@@ -2665,3 +2665,8 @@ Columbus State 2007 #21 (which third side a triangle with sides $3$ and $10$ can
 Columbus State 2005 #34 (the $x$-coordinate of the point where a chord of two circles meets the axis) lost `rationalizing`, which the route does not need.
 
 PUMaC 2023 Algebra A #4 prints its equation without "=0" (the paper has `... + 3a^2 has exactly two nonreal solutions`); the statement adds the "=0". PUMaC 2025 Number Theory B #2 reads $\nu_p(2^{2p}-1)$ in the paper.
+
+PUMaC statements (2014 to 2025, 2026-11-21): Division B repeats most of Division A's problems, so the statements are the same text. 2014 Division B Geometry #3 says "as given in figure" but the posted paper carries no figure for it, so its statement has none. The 2015 and 2014 papers print point values in brackets, which are left out. 2023 Algebra A #4 prints its equation without "=0"; the statement adds it.
+PUMaC 2013 Geometry A #4 and B #6 say "Look at the diagram" but the posted papers carry no diagram, so those statements have none.
+PUMaC 2012 Combinatorics B #1 refers to the point value of each question (printed in brackets before each problem, which the statements leave out), so its statement adds the eight values $3,3,4,4,5,6,7,8$ in a closing sentence.
+PUMaC 2011 Number Theory B #2 prints "I communicate in base 10, which interestingly is a perfect square" (base 10 is not a square); the statement keeps it as printed.

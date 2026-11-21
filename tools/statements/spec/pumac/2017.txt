@@ -1,0 +1,144 @@
+=== division-a-algebra-1
+Let $a\diamond b=ab-4(a+b)+20$. Evaluate
+$$1\diamond(2\diamond(3\diamond(\cdots(99\diamond100)\cdots))).$$
+=== division-a-algebra-2
+Suppose $z^3=2+2i$, where $i=\sqrt{-1}$. The product of all possible values of the real part of $z$ can be written in the form $\frac pq$ where $p$ and $q$ are relatively prime positive integers. Find $p+q$.
+=== division-a-algebra-3
+Let $\Gamma$ be the maximum possible value of $a+3b+9c$ among all triples $(a,b,c)$ of positive real numbers such that
+$$\log_{30}(a+b+c)=\log_8(3a)=\log_{27}(3b)=\log_{125}(3c).$$
+If $\Gamma=\frac pq$ where $p$ and $q$ are relatively prime positive integers, then find $p+q$.
+=== division-a-algebra-4
+Let $a_1,a_2,\ldots$ be a sequence of positive real numbers such that $a_n=11a_{n-1}-n$ for all $n>1$. The smallest possible value of $a_1$ can be written as $\frac pq$, where $p$ and $q$ are relatively prime positive integers. Find $p+q$?
+=== division-a-algebra-5
+Let $f_0(x)=x$, and for each $n\ge0$, let $f_{n+1}(x)=f_n\left(x^2(3-2x)\right)$. Find the smallest real number that is at least as large as
+$$\sum_{n=0}^{2017}f_n(a)+\sum_{n=0}^{2017}f_n(1-a)$$
+for all $a\in[0,1]$.
+=== division-a-algebra-6
+Together, Kenneth and Ellen pick a real number $a$. Kenneth subtracts $a$ from every thousandth root of unity (that is, the thousand complex numbers $\omega$ for which $\omega^{1000}=1$) then inverts each, then sums the results. Ellen inverts every thousandth root of unity, then subtracts $a$ from each, and then sums the results. They are surprised to find that they actually got the same answer! How many possible values of $a$ are there?
+=== division-a-algebra-7
+The sum
+$$\sum_{k=0}^\infty\frac{2^k}{5^{2^k}+1}$$
+can be written in the form $\frac pq$ where $p$ and $q$ are relatively prime positive integers. Find $p+q$.
+=== division-a-algebra-8
+Let
+$$\frac pq=\cfrac{2017}{2-\cfrac1{3-\cfrac2{2-\cfrac1{2-\cfrac1{3-\cfrac2{2-\cfrac1{2-\cfrac1{2-\cfrac1{3-\cfrac2{2-\cfrac1{2-\cdots}}}}}}}}}}}$$
+where $p$ and $q$ are relatively prime positive integers. Find $p+q$.
+=== division-b-algebra-1
+If $x$ is a positive number such that $x^{x^{x^x}}=\left(\left(x^x\right)^x\right)^x$, find $(x^x)^{(x^x)}$.
+=== division-b-algebra-2
+Find the coefficient of $x^7y^6$ in $(xy+x+3y+3)^8$.
+=== division-b-algebra-3
+Let $a\diamond b=ab-4(a+b)+20$. Evaluate
+$$1\diamond(2\diamond(3\diamond(\cdots(99\diamond100)\cdots))).$$
+=== division-b-algebra-4
+Suppose $z^3=2+2i$, where $i=\sqrt{-1}$. The product of all possible values of the real part of $z$ can be written in the form $\frac pq$ where $p$ and $q$ are relatively prime positive integers. Find $p+q$.
+=== division-b-algebra-5
+Let $\Gamma$ be the maximum possible value of $a+3b+9c$ among all triples $(a,b,c)$ of positive real numbers such that
+$$\log_{30}(a+b+c)=\log_8(3a)=\log_{27}(3b)=\log_{125}(3c).$$
+If $\Gamma=\frac pq$ where $p$ and $q$ are relatively prime positive integers, then find $p+q$.
+=== division-b-algebra-6
+Let the sequence $a_1,a_2,\ldots$ be defined recursively as follows: $a_n=11a_{n-1}-n$. If all terms of the sequence are positive, the smallest possible value of $a_1$ can be written as $\frac mn$, where $m$ and $n$ are relatively prime positive integers. What is $m+n$?
+=== division-b-algebra-7
+Let $f_0(x)=x$, and for each $n\ge0$, let $f_{n+1}(x)=f_n\left(x^2(3-2x)\right)$. Find the smallest real number that is at least as large as
+$$\sum_{n=0}^{2017}f_n(a)+\sum_{n=0}^{2017}f_n(1-a)$$
+for all $a\in[0,1]$.
+=== division-b-algebra-8
+Together, Kenneth and Ellen pick a real number $a$. Kenneth subtracts $a$ from every thousandth root of unity (that is, the thousand complex numbers $\omega$ for which $\omega^{1000}=1$) then inverts each, then sums the results. Ellen inverts every thousandth root of unity, then subtracts $a$ from each, and then sums the results. They are surprised to find that they actually got the same answer! How many possible values of $a$ are there?
+=== division-a-combinatorics-1
+There are $2017$ turtles in a room. Every second, two turtles are chosen uniformly at random and combined to form one super-turtle. (Super-turtles are still turtles.) The probability that after $2015$ seconds (meaning when there are only two turtles remaining) there is some turtle that has never been combined with another turtle can be written in the form $\frac pq$ where $p$ and $q$ are relatively prime positive integers. Find $p+q$.
+=== division-a-combinatorics-2
+Call a number unremarkable if, when written in base $10$, no two adjacent digits are equal. For example, $123$ is unremarkable, but $122$ is not. Find the sum of all unremarkable $3$-digit numbers. (Note that $012$ and $007$ are not $3$-digit numbers.)
+=== division-a-combinatorics-3
+There is a box containing $100$ balls, each of which is either orange or black. The box is equally likely to contain any number of black balls between $0$ and $100$, inclusive. A random black ball rolls out of the box. The probability that the next ball to roll out of the box is also black can be written in the form $\frac pq$ where $p$ and $q$ are relatively prime positive integers. Find $p+q$.
+=== division-a-combinatorics-4
+The four faces of a tetrahedral die are labelled $0$, $1$, $2$, and $3$, and the die has the property that, when it is rolled, the die promptly vanishes, and a number of copies of itself appear equal to the number on the face the die landed on. For example, if it lands on the face labelled $0$, it disappears. If it lands on the face labelled $1$, nothing happens. If it lands on the face labelled $2$ or $3$, there will then be $2$ or $3$ copies of the die, respectively (including the original). Suppose the die and all its copies are continually rolled, and let $p$ be the probability that they will all eventually disappear. Find $\left\lfloor\frac{10}p\right\rfloor$.
+=== division-a-combinatorics-5
+Greedy Algorithms, Inc. offers the following string-processing service. Each string submitted for processing has a starting price of $1$ dollar. The customer can then ask for any two adjacent characters in the string to be swapped. This may be done an arbitrary number of times, but each swap doubles the price for processing the string. Then the company returns the modified string and charges the customer $2^S$ dollars, where $S$ is the number of swaps executed. If a customer submits all permutations of the string PUMAC for processing and wants all of the strings to be identical after processing, what is the lowest price, in dollars, she could pay?
+=== division-a-combinatorics-6
+Jackson begins at $1$ on the number line. At each step, he remains in place with probability $85\%$ and increases his position on the number line by $1$ with probability $15\%$. Let $d_n$ be his position on the number line after $n$ steps, and let $E_n$ be the expected value of $\frac1{d_n}$. Find the least $n$ such that $\frac1{E_n}>2017$.
+=== division-a-combinatorics-7
+If $N$ is the number of ways to place $16$ jumping rooks on an $8\times8$ chessboard such that each rook attacks exactly two other rooks, find the remainder when $N$ is divided by $1000$. (A jumping rook is said to attack a square if the square is in the same row or in the same column as the rook.)
+=== division-a-combinatorics-8
+Bob chooses a $4$-digit binary string uniformly at random, and examines an infinite sequence of uniformly and independently random binary bits. If $N$ is the least number of bits Bob has to examine in order to find his chosen string, then find the expected value of $N$. For example, if Bob's string is $0000$ and the stream of bits begins $101000001\ldots$, then $N=7$.
+=== division-b-combinatorics-1
+In how many different orders can the characters $P\ U\ M\ \alpha\ C$ be arranged such that the $M$ is to the left of the $\alpha$ and the $\alpha$ is to the left of the $C$?
+=== division-b-combinatorics-2
+Split a face of a regular tetrahedron into four congruent equilateral triangles. How many different ways can the seven triangles of the tetrahedron be colored using only the colors orange and black. (Two tetrahedra are considered to be colored the same way if you can rotate one so it looks like the other.)
+=== division-b-combinatorics-3
+There are $2017$ turtles in a room. Every second, two turtles are chosen uniformly at random and combined to form one super-turtle. (Super-turtles are still turtles.) The probability that after $2015$ seconds (meaning when there are only two turtles remaining) there is some turtle that has never been combined with another turtle can be written in the form $\frac pq$ where $p$ and $q$ are relatively prime positive integers. Find $p+q$.
+=== division-b-combinatorics-4
+Call a number unremarkable if, when written in base $10$, no two adjacent digits are equal. For example, $123$ is unremarkable, but $122$ is not. Find the sum of all unremarkable $3$-digit numbers. (Note that $012$ and $007$ are not $3$-digit numbers.)
+=== division-b-combinatorics-5
+There is a box containing $100$ balls, each of which is either orange or black. The box is equally likely to contain any number of black balls between $0$ and $100$, inclusive. A random black ball rolls out of the box. The probability that the next ball to roll out of the box is also black can be written in the form $\frac pq$ where $p$ and $q$ are relatively prime positive integers. Find $p+q$.
+=== division-b-combinatorics-6
+The four faces of a tetrahedral die are labelled $0$, $1$, $2$, and $3$, and the die has the property that, when it is rolled, the die promptly vanishes, and a number of copies of itself appear equal to the number on the face the die landed on. For example, if it lands on the face labelled $0$, it disappears. If it lands on the face labelled $1$, nothing happens. If it lands on the face labelled $2$ or $3$, there will then be $2$ or $3$ copies of the die, respectively (including the original). Suppose the die and all its copies are continually rolled, and let $p$ be the probability that they will all eventually disappear. Find $\left\lfloor\frac{10}p\right\rfloor$.
+=== division-b-combinatorics-7
+Greedy Algorithms, Inc. offers the following string-processing service. Each string submitted for processing has a starting price of $1$ dollar. The customer can then ask for any two adjacent characters in the string to be swapped. This may be done an arbitrary number of times, but each swap doubles the price for processing the string. Then the company returns the modified string and charges the customer $2^S$ dollars, where $S$ is the number of swaps executed. If a customer submits all permutations of the string PUMAC for processing and wants all of the strings to be identical after processing, what is the lowest price, in dollars, she could pay?
+=== division-b-combinatorics-8
+Jackson begins at $1$ on the number line. At each step, he remains in place with probability $85\%$ and increases his position on the number line by $1$ with probability $15\%$. Let $d_n$ be his position on the number line after $n$ steps, and let $E_n$ be the expected value of $\frac1{d_n}$. Find the least $n$ such that $\frac1{E_n}>2017$.
+=== division-a-geometry-1
+Triangle $ABC$ has $AB=BC=10$ and $CA=16$. The circle $\Omega$ is drawn with diameter $BC$. $\Omega$ meets $AC$ at points $C$ and $D$. Find the area of triangle $ABD$.
+=== division-a-geometry-2
+The area of parallelogram $ABCD$ is $51\sqrt{55}$ and $\angle DAC$ is a right angle. If the side lengths of the parallelogram are integers, what is the perimeter of the parallelogram?
+=== division-a-geometry-3
+A right regular hexagonal prism has bases $ABCDEF$, $A'B'C'D'E'F'$ and edges $AA'$, $BB'$, $CC'$, $DD'$, $EE'$, $FF'$, each of which is perpendicular to both hexagons. The height of the prism is $5$ and the side length of the hexagons is $6$. The plane $P$ passes through points $A$, $C'$, and $E$. The area of the portion of $P$ contained in the prism can be expressed as $m\sqrt n$, where $n$ is not divisible by the square of any prime. Find $m+n$.
+=== division-a-geometry-4
+An equilateral triangle $ABC$ has side length $7$. Point $P$ is in the interior of triangle $ABC$, such that $PB=3$ and $PC=5$. The distance between the circumcenters of $ABC$ and $PBC$ can be expressed as $\frac{m\sqrt n}p$, where $n$ not divisible by the square of any prime and $m$ and $p$ are relatively prime positive integers. What is $m+n+p$?
+=== division-a-geometry-5
+Rectangle $HOMF$ has $HO=11$ and $OM=5$. Triangle $ABC$ has orthocenter $H$ and circumcenter $O$. $M$ is the midpoint of $BC$ and altitude $AF$ meets $BC$ at $F$. Find the length of $BC$.
+=== division-a-geometry-6
+Triangle $ABC$ has $\angle A=90^\circ$, $AB=2$, and $AC=4$. Circle $\omega_1$ has center $C$ and radius $CA$, while circle $\omega_2$ has center $B$ and radius $BA$. The two circles intersect at point $E$, different from point $A$. Point $M$ is on $\omega_2$ and in the interior of $ABC$, such that $BM$ is parallel to $EC$. Suppose $EM$ intersects $\omega_1$ at point $K$ and $AM$ intersects $\omega_1$ at point $Z$. What is the area of quadrilateral $ZEBK$?
+=== division-a-geometry-7
+Let $ACDB$ be a cyclic quadrilateral with circumcircle $\omega$. Let $AC=5,CD=6$, and $DB=7$. Suppose that there is a unique point $P$ on $\omega$ such that $\overline{PC}$ intersects $\overline{AB}$ at a point $P_1$ and $\overline{PD}$ intersects $\overline{AB}$ at a point $P_2$, such that $AP_1=3$ and $P_2B=4$. Let $Q$ be the unique point on $\omega$ such that $\overline{QC}$ intersects $\overline{AB}$ at a point $Q_1$, $\overline{QD}$ intersects $\overline{AB}$ at a point $Q_2$, $Q_1$ is closer to $B$ than $P_1$ is to $B$, and $P_2Q_2=2$. The length of $P_1Q_1$ can be written as $\frac pq$ where $p$ and $q$ are relatively prime positive integers. Find $p+q$.
+=== division-a-geometry-8
+Triangle $ABC$ with $AB=4,BC=5,CA=6$ has circumcircle $\Omega$ and incircle $\omega$. Let $\Gamma$ be the circle tangent to $\Omega$ and the sides $AB,BC$, and let $X=\Gamma\cap\Omega$. Let $Y,Z$ be distinct points on $\Omega$ such that $XY,XZ$ are tangent to $\omega$. Find $YZ^2$.
+
+The following fact may be useful: if $\triangle ABC$ has incircle $\omega$ with center $I$ and radius $r$, and $\triangle DEF$ is the intouch triangle (i.e. $D,E,F$ are intersections of the incircle with $BC,CA,AB$, respectively) and $H$ is the orthocenter of $\triangle DEF$, then the inversion of $X$ about $\omega$ (i.e. the point $X'$ on ray $IX$ such that $IX'\cdot IX=r^2$) is the midpoint of $DH$.
+=== division-b-geometry-1
+Equilateral triangle $ABC$ has area $1$. $A'$, $B'$ and $C'$ are the midpoints of $BC$, $CA$ and $AB$, respectively. $A''$, $B''$ and $C''$ are the midpoints of $B'C'$, $C'A'$ and $A'B'$, respectively. The area of trapezoid $BB''C''C$ can be written as $\frac mn$ for relatively prime positive integers $m$ and $n$. Find $m+n$.
+=== division-b-geometry-2
+A kite is inscribed in a circle with center $O$ and radius $60$. The diagonals of the kite meet at a point $P$, and $OP$ is an integer. The minimum possible area of the kite can be expressed in the form $a\sqrt b$, where $a$ and $b$ are positive integers and $b$ is squarefree. Find $a+b$.
+=== division-b-geometry-3
+Triangle $ABC$ has $AB=BC=10$ and $CA=16$. The circle $\Omega$ is drawn with diameter $BC$. $\Omega$ meets $AC$ at points $C$ and $D$. Find the area of triangle $ABD$.
+=== division-b-geometry-4
+The area of parallelogram $ABCD$ is $51\sqrt{55}$ and $\angle DAC$ is a right angle. If the side lengths of the parallelogram are integers, what is the perimeter of the parallelogram?
+=== division-b-geometry-5
+A right regular hexagonal prism has bases $ABCDEF$, $A'B'C'D'E'F'$ and edges $AA'$, $BB'$, $CC'$, $DD'$, $EE'$, $FF'$, each of which is perpendicular to both hexagons. The height of the prism is $5$ and the side length of the hexagons is $6$. The plane $P$ passes through points $A$, $C'$, and $E$. The area of the portion of $P$ contained in the prism can be expressed as $m\sqrt n$, where $n$ is not divisible by the square of any prime. Find $m+n$.
+=== division-b-geometry-6
+An equilateral triangle $ABC$ has side length $7$. Point $P$ is in the interior of triangle $ABC$, such that $PB=3$ and $PC=5$. The distance between the circumcenters of $ABC$ and $PBC$ can be expressed as $\frac{m\sqrt n}p$, where $n$ not divisible by the square of any prime and $m$ and $p$ are relatively prime positive integers. What is $m+n+p$?
+=== division-b-geometry-7
+Rectangle $HOMF$ has $HO=11$ and $OM=5$. Triangle $ABC$ has orthocenter $H$ and circumcenter $O$. $M$ is the midpoint of $BC$ and altitude $AF$ meets $BC$ at $F$. Find the length of $BC$.
+=== division-b-geometry-8
+Triangle $ABC$ has $\angle A=90^\circ$, $AB=2$, and $AC=4$. Circle $\omega_1$ has center $C$ and radius $CA$, while circle $\omega_2$ has center $B$ and radius $BA$. The two circles intersect at point $E$, different from point $A$. Point $M$ is on $\omega_2$ and in the interior of $ABC$, such that $BM$ is parallel to $EC$. Suppose $EM$ intersects $\omega_1$ at point $K$ and $AM$ intersects $\omega_1$ at point $Z$. What is the area of quadrilateral $ZEBK$?
+=== division-a-number-theory-1
+Shaq sees the numbers $1$ through $2017$ written on a chalkboard. He repeatedly chooses three numbers, erases them, and writes one plus their median. (For instance, if he erased $-2,-1,0$ he would replace them with $0$.) If $M$ is the maximum possible final value remaining on the board, and if $m$ is the minimum, compute $M-m$.
+=== division-a-number-theory-2
+The sequence of positive integers $a_1,a_2,\ldots$ has the property that $\gcd(a_m,a_n)>1$ if and only if $|m-n|=1$. Find the sum of the four smallest possible values of $a_2$.
+=== division-a-number-theory-3
+Define the bigness of a rectangular prism to be the sum of its volume, its surface area, and the lengths of all of its edges. Find the least integer $N$ for which there exists a rectangular prism with integer side lengths and bigness $N$ and another one with integer side lengths and bigness $N+1$.
+=== division-a-number-theory-4
+For any integer $n\ge2$, let $b_n$ be the least positive integer such that, for any integer $N$, $m$ divides $N$ whenever $m$ divides the digit sum of $N$ written in base $b_n$, for $2\le m\le n$. Find the integer nearest to $b_{36}/b_{25}$.
+=== division-a-number-theory-5
+Let $p(n)=n^4-6n^2-160$. If $a_n$ is the least odd prime dividing $q(n)=|p(n-30)\cdot p(n+30)|$, find $\sum_{n=1}^{2017}a_n$. ($a_n=3$ if $q(n)=0$.)
+=== division-a-number-theory-6
+Find the least positive integer $N$ such that the only values of $n$ for which $1+N\cdot2^n$ is prime are multiples of $12$.
+=== division-a-number-theory-7
+Compute the number of ordered pairs of integers $(a,b)$, where $0\le a<17$ and $0\le b<17$, such that $y^2\equiv x^3+ax+b\pmod{17}$ has an even number of solutions $(x,y)$, where $0\le x<17$ and $0\le y<17$ are integers.
+=== division-a-number-theory-8
+Find the minimum value attained by $\sum_{m=1}^{100}\gcd(M-m,400)$ for $M$ an integer in the range $[1746,2017]$.
+=== division-b-number-theory-1
+Let $a_n$ be the least positive integer the sum of whose digits is $n$. Find $a_1+a_2+a_3+\cdots+a_{20}$.
+=== division-b-number-theory-2
+Let $S=\{1,22,333,\ldots,999999999\}$. For how many pairs of integers $(a,b)$ where $a,b\in S$ and $a<b$ is it the case that $a$ divides $b$?
+=== division-b-number-theory-3
+Shaq sees the numbers $1$ through $2017$ written on a chalkboard. He repeatedly chooses three numbers, erases them, and writes one plus their median. (For instance, if he erased $-2,-1,0$ he would replace them with $0$.) If $M$ is the maximum possible final value remaining on the board, and if $m$ is the minimum, compute $M-m$.
+=== division-b-number-theory-4
+The sequence of positive integers $a_1,a_2,\ldots$ has the property that $\gcd(a_m,a_n)>1$ if and only if $|m-n|=1$. Find the sum of the four smallest possible values of $a_2$.
+=== division-b-number-theory-5
+Define the bigness of a rectangular prism to be the sum of its volume, its surface area, and the lengths of all of its edges. Find the least integer $N$ for which there exists a rectangular prism with integer side lengths and bigness $N$ and another one with integer side lengths and bigness $N+1$.
+=== division-b-number-theory-6
+For any integer $n\ge2$, let $b_n$ be the least positive integer such that, for any integer $N$, $m$ divides $N$ whenever $m$ divides the digit sum of $N$ written in base $b_n$, for $2\le m\le n$. Find the integer nearest to $b_{36}/b_{25}$.
+=== division-b-number-theory-7
+Let $p(n)=n^4-6n^2-160$. If $a_n$ is the least odd prime dividing $q(n)=|p(n-30)\cdot p(n+30)|$, find $\sum_{n=1}^{2017}a_n$. ($a_n=3$ if $q(n)=0$.)
+=== division-b-number-theory-8
+Find the least positive integer $N$ such that the only values of $n$ for which $1+N\cdot2^n$ is prime are multiples of $12$.

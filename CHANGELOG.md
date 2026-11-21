@@ -2,6 +2,18 @@
 
 **2026-11-21**
 
+- **Columbus State 2002 added (994 of 1,364; 6 figures; a scan read from images).** At the owner's word the harder scans (1993 to 2001) are left out. `STATEMENTS_V` 111.
+- **PUMaC statements complete (all 1,088 problems, Division A and B, 2008 to 2025 without 2024; 2021 has no Geometry paper).** 2021 added; the work needed no tag changes. `STATEMENTS_V` 109.
+- **PUMaC 2008 added (1,040 of 1,088; ten problems per round, 3 figures).** `STATEMENTS_V` 108.
+- **PUMaC 2009 added (960 of 1,088; 6 figures).** `STATEMENTS_V` 107.
+- **PUMaC 2010 added (896 of 1,088; 10 figures).** `STATEMENTS_V` 106.
+- **PUMaC 2011 added (832 of 1,088; no figures).** `STATEMENTS_V` 105.
+- **PUMaC 2012 added (768 of 1,088; 2 figures).** `STATEMENTS_V` 104.
+- **PUMaC 2013 added (704 of 1,088; no figures: two problems mention a diagram the paper does not carry).** `STATEMENTS_V` 103.
+- **PUMaC 2014 added (640 of 1,088; 2 figures).** `STATEMENTS_V` 102.
+- **PUMaC 2015 added (576 of 1,088; 1 figure).** `STATEMENTS_V` 101.
+- **PUMaC 2016 added (512 of 1,088; 1 figure).** `STATEMENTS_V` 100.
+- **PUMaC 2017 added (448 of 1,088; no figures).** `STATEMENTS_V` 99.
 - **PUMaC 2018 added (384 of 1,088; no figures).** `STATEMENTS_V` 98.
 - **PUMaC 2019 added (320 of 1,088; no figures).** `STATEMENTS_V` 97.
 - **PUMaC 2020 added (256 of 1,088; no figures).** `STATEMENTS_V` 96.

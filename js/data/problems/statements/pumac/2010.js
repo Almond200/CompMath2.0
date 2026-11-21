@@ -1,0 +1,111 @@
+// Problems and diagrams © 2010 Princeton University Mathematics Competition. Reproduced with permission from the Princeton University Mathematics Competition.
+// Source: the official PUMaC papers. Built by tools/statements/build.py from tools/statements/spec/pumac/2010.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2010-pumac-division-a-algebra-1": { s: String.raw`Find the sum of the coefficients of the polynomial $(63x-61)^4$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraA.pdf" },
+"2010-pumac-division-a-algebra-2": { s: String.raw`Calculate $\sum_{n=1}^\infty\left(\left\lfloor\sqrt[n]{2010}\right\rfloor-1\right)$ where $\lfloor x\rfloor$ is the largest integer less than or equal to $x$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraA.pdf" },
+"2010-pumac-division-a-algebra-3": { s: String.raw`Let $S$ be the sum of all real $x$ such that $4^x=x^4$. Find the nearest integer to $S$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraA.pdf" },
+"2010-pumac-division-a-algebra-4": { s: String.raw`Define $f(x)=x+\sqrt{x+\sqrt{x+\sqrt{x+\sqrt{x+\ldots}}}}$. Find the smallest integer $x$ such that $f(x)\ge50\sqrt x$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraA.pdf" },
+"2010-pumac-division-a-algebra-5": { s: String.raw`Let $f(x)=3x^3-5x^2+2x-6$. If the roots of $f$ are given by $\alpha$, $\beta$, and $\gamma$, find
+$$\left(\frac1{\alpha-2}\right)^2+\left(\frac1{\beta-2}\right)^2+\left(\frac1{\gamma-2}\right)^2.$$`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraA.pdf" },
+"2010-pumac-division-a-algebra-6": { s: String.raw`Assume that $f(a+b)=f(a)+f(b)+ab$, and that $f(75)-f(51)=1230$. Find $f(100)$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraA.pdf" },
+"2010-pumac-division-a-algebra-7": { s: String.raw`The expression $\sin2^\circ\sin4^\circ\sin6^\circ\cdots\sin90^\circ$ is equal to $p\sqrt5/2^{50}$, where $p$ is an integer. Find $p$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraA.pdf" },
+"2010-pumac-division-a-algebra-8": { s: String.raw`Let $p$ be a polynomial with integer coefficients such that $p(15)=6$, $p(22)=1196$, and $p(35)=26$. Find an integer $n$ such that $p(n)=n+82$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraA.pdf" },
+"2010-pumac-division-b-algebra-1": { s: String.raw`Let the operation $\bigstar$ be defined by $x\bigstar y=y^x-xy$. Calculate $(3\bigstar4)-(4\bigstar3)$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraB.pdf" },
+"2010-pumac-division-b-algebra-2": { s: String.raw`Let $p(x)=x^2+x+1$. Find the fourth smallest prime $q$ such that $p(n)$ is divisble by $q$ for some integer $n$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraB.pdf" },
+"2010-pumac-division-b-algebra-3": { s: String.raw`Write $\frac1{\sqrt[5]2-1}=a+b\sqrt[5]2+c\sqrt[5]4+d\sqrt[5]8+e\sqrt[5]{16}$, with $a,b,c,d$, and $e$ integers. Find $a^2+b^2+c^2+d^2+e^2$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraB.pdf" },
+"2010-pumac-division-b-algebra-4": { s: String.raw`Let $S$ be the sum of all real $x$ such that $4^x=x^4$. Find the nearest integer to $S$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraB.pdf" },
+"2010-pumac-division-b-algebra-5": { s: String.raw`Let $x$ be a real root of the polynomial $p(x)=x^3-3x+3$. Find $x^9+81x^2$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraB.pdf" },
+"2010-pumac-division-b-algebra-6": { s: String.raw`Define $f(x)=x+\sqrt{x+\sqrt{x+\sqrt{x+\sqrt{x+\ldots}}}}$. Find the smallest integer $x$ such that $f(x)\ge50\sqrt x$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraB.pdf" },
+"2010-pumac-division-b-algebra-7": { s: String.raw`Let $f$ be a function such that $f(x)+f(x+1)=2^x$ and $f(0)=2010$. Find the last two digits of $f(2010)$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraB.pdf" },
+"2010-pumac-division-b-algebra-8": { s: String.raw`The expression $\sin2^\circ\sin4^\circ\sin6^\circ\cdots\sin90^\circ$ is equal to $p\sqrt5/2^{50}$, where $p$ is an integer. Find $p$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_AlgebraB.pdf" },
+"2010-pumac-division-a-combinatorics-1": { s: String.raw`PUMaCDonalds, a newly-opened fast food restaurant, has $5$ menu items. If the first $4$ customers each choose one menu item at random, the probability that the $4$th customer orders a previously unordered item is $m/n$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsA.pdf" },
+"2010-pumac-division-a-combinatorics-2": { s: String.raw`Let $\overline{xyz}$ represent the three-digit number with hundreds digit $x$, tens digit $y$, and units digit $z$, and similarly let $\overline{yz}$ represent the two-digit number with tens digit $y$ and units digit $z$. How many three-digit numbers $\overline{abc}$, none of whose digits are $0$, are there such that $\overline{ab}>\overline{bc}>\overline{ca}$?`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsA.pdf" },
+"2010-pumac-division-a-combinatorics-3": { s: String.raw`Sterling draws $6$ circles on the plane, which divide the plane into regions (including the unbounded region). What is the maximum number of resulting regions?`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsA.pdf" },
+"2010-pumac-division-a-combinatorics-4": { s: String.raw`Erick stands in the square in the $2$nd row and $2$nd column of a $5$ by $5$ chessboard. There are $\$1$ bills in the top left and bottom right squares, and there are $\$5$ bills in the top right and bottom left squares. Erick starts on the square marked E in the second row and second column.
+
+Every second, Erick randomly chooses a square adjacent to the one he currently stands in (that is, a square sharing an edge with the one he currently stands in) and moves to that square. When Erick reaches a square with money on it, he takes it and quits. The expected value of Erick's winnings in dollars is $m/n$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsA.pdf" },
+"2010-pumac-division-a-combinatorics-5": { s: String.raw`We say that a rook is "attacking" another rook on a chessboard if the two rooks are in the same row or column of the chessboard and there is no piece directly between them. Let $n$ be the maximum number of rooks that can be placed on a $6\times6$ chessboard such that each rook is attacking at most one other. How many ways can $n$ rooks be placed on a $6\times6$ chessboard such that each rook is attacking at most one other?`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsA.pdf" },
+"2010-pumac-division-a-combinatorics-6": { s: String.raw`All the diagonals of a regular decagon are drawn. A regular decagon satisfies the property that if three diagonals concur, then one of the three diagonals is a diameter of the circumcircle of the decagon. How many distinct intersection points of diagonals are in the interior of the decagon?`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsA.pdf" },
+"2010-pumac-division-a-combinatorics-7": { s: String.raw`Matt is asked to write the numbers from $1$ to $10$ in order, but he forgets how to count. He writes a permutation of the numbers $\{1,2,3\ldots,10\}$ across his paper such that:
+
+(a) The leftmost number is $1$.
+
+(b) The rightmost number is $10$.
+
+(c) Exactly one number (not including $1$ or $10$) is less than both the number to its immediate left and the number to its immediate right.
+
+How many such permutations are there?`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsA.pdf" },
+"2010-pumac-division-a-combinatorics-8": { s: String.raw`Let $N$ be the sum of all binomial coefficients $\binom ab$ such that $a$ and $b$ are nonnegative integers and $a+b$ is an even integer less than $100$. Find the remainder when $N$ is divided by $144$. (Note: $\binom ab=0$ if $a<b$, and $\binom00=1$.)`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsA.pdf" },
+"2010-pumac-division-b-combinatorics-1": { s: String.raw`The Princeton University Band plays a setlist of $8$ distinct songs, $3$ of which are tiring to play. If the Band can't play any two tiring songs in a row, how many ways can the band play its $8$ songs?`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsB.pdf" },
+"2010-pumac-division-b-combinatorics-2": { s: String.raw`PUMaCDonalds, a newly-opened fast food restaurant, has $5$ menu items. If the first $4$ customers each choose one menu item at random, the probability that the $4$th customer orders a previously unordered item is $m/n$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsB.pdf" },
+"2010-pumac-division-b-combinatorics-3": { s: String.raw`Let $\overline{xyz}$ represent the three-digit number with hundreds digit $x$, tens digit $y$, and units digit $z$, and similarly let $\overline{yz}$ represent the two-digit number with tens digit $y$ and units digit $z$. How many three-digit numbers $\overline{abc}$, none of whose digits are $0$, are there such that $\overline{ab}>\overline{bc}>\overline{ca}$?`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsB.pdf" },
+"2010-pumac-division-b-combinatorics-4": { s: String.raw`Sterling draws $6$ circles on the plane, which divide the plane into regions (including the unbounded region). What is the maximum number of resulting regions?`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsB.pdf" },
+"2010-pumac-division-b-combinatorics-5": { s: String.raw`$3n$ people take part in a chess tournament: $n$ girls and $2n$ boys. Each participant plays with each of the others exactly once. There were no ties and the number of games won by the girls is $\frac75$ the number of games won by the boys. How many people took part in the tournament?`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsB.pdf" },
+"2010-pumac-division-b-combinatorics-6": { s: String.raw`A regular pentagon is drawn in the plane, along with all its diagonals. All its sides and diagonals are extended infinitely in both directions, dividing the plane into regions, some of which are unbounded. An ant starts in the center of the pentagon, and every second, the ant randomly chooses one of the edges of the region it's in, with an equal probability of choosing each edge, and crosses that edge into another region. If the ant enters an unbounded region, it explodes. After first leaving the central region of the pentagon, let $x$ be the expected number of times the ant re-enters the central region before it explodes. Find the closest integer to $100x$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsB.pdf" },
+"2010-pumac-division-b-combinatorics-7": { s: String.raw`We say that a rook is "attacking" another rook on a chessboard if the two rooks are in the same row or column of the chessboard and there is no piece directly between them. Let $n$ be the maximum number of rooks that can be placed on a $6\times6$ chessboard such that each rook is attacking at most one other. How many ways can $n$ rooks be placed on a $6\times6$ chessboard such that each rook is attacking at most one other?`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsB.pdf" },
+"2010-pumac-division-b-combinatorics-8": { s: String.raw`Matt is asked to write the numbers from $1$ to $10$ in order, but he forgets how to count. He writes a permutation of the numbers $\{1,2,3\ldots,10\}$ across his paper such that:
+
+(a) The leftmost number is $1$.
+
+(b) The rightmost number is $10$.
+
+(c) Exactly one number (not including $1$ or $10$) is less than both the number to its immediate left and the number to its immediate right.
+
+How many such permutations are there?`, u: "https://pumac.princeton.edu/s/PUMaC2010_CombinatoricsB.pdf" },
+"2010-pumac-division-a-geometry-1": { s: String.raw`As in the following diagram, square $ABCD$ and square $CEFG$ are placed side by side (i.e. $C$ is between $B$ and $E$ and $G$ is between $C$ and $D$). If $CE=14$, $AB>14$, compute the minimal area of $\triangle AEG$.
+
+@@fig:pumac/2010/a-geometry-1.png@@`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryA.pdf" },
+"2010-pumac-division-a-geometry-2": { s: String.raw`In a rectangular plot of land, a man walks in a very peculiar fashion. Labeling the corners $ABCD$, he starts at $A$ and walks to $C$. Then, he walks to the midpoint of side $AD$, say $A_1$. Then, he walks to the midpoint of side $CD$ say $C_1$, and then the midpoint of $A_1D$ which is $A_2$. He continues in this fashion, indefinitely. The total length of his path if $AB=5$ and $BC=12$ is of the form $a+b\sqrt c$. Find $\frac{abc}4$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryA.pdf" },
+"2010-pumac-division-a-geometry-3": { s: String.raw`Triangle $ABC$ has $AB=4$, $AC=5$, and $BC=6$. An angle bisector is drawn from angle $A$, and meets $BC$ at $M$. What is the nearest integer to $100\frac{AM}{CM}$?`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryA.pdf" },
+"2010-pumac-division-a-geometry-4": { s: String.raw`In regular hexagon $ABCDEF$, $AC$, $CE$ are two diagonals. Points $M$, $N$ are on $AC$, $CE$ respectively and satisfy $AC:AM=CE:CN=r$. Suppose $B,M,N$ are collinear, find $100r^2$.
+
+@@fig:pumac/2010/a-geometry-4.png@@`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryA.pdf" },
+"2010-pumac-division-a-geometry-5": { s: String.raw`A cuboctahedron is a solid with $6$ square faces and $8$ equilateral triangle faces, with each edge adjacent to both a square and a triangle (see picture). Suppose the ratio of the volume of an octahedron to a cuboctahedron with the same side length is $r$. Find $100r^2$.
+
+@@fig:pumac/2010/a-geometry-5.png@@`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryA.pdf" },
+"2010-pumac-division-a-geometry-6": { s: String.raw`In the following diagram, a semicircle is folded along a chord $AN$ and intersects its diameter $MN$ at $B$. Given that $MB:BN=2:3$ and $MN=10$. If $AN=x$, find $x^2$.
+
+@@fig:pumac/2010/a-geometry-6.png@@`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryA.pdf" },
+"2010-pumac-division-a-geometry-7": { s: String.raw`Square $ABCD$ is divided into four rectangles by $EF$ and $GH$. $EF$ is parallel to $AB$ and $GH$ parallel to $BC$. $\angle BAF=18^\circ$. $EF$ and $GH$ meet at point $P$. The area of rectangle $PFCH$ is twice that of rectangle $AGPE$. Given that the value of $\angle FAH$ in degrees is $x$, find the nearest integer to $x$.
+
+@@fig:pumac/2010/a-geometry-7.png@@`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryA.pdf" },
+"2010-pumac-division-a-geometry-8": { s: String.raw`There is a point source of light in an empty universe. What is the minimum number of solid balls (of any size) one must place in space so that any light ray emanating from the light source intersects at least one ball?`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryA.pdf" },
+"2010-pumac-division-b-geometry-1": { s: String.raw`In a polygon, every external angle is one sixth of its corresponding internal angle. How many sides does the polygon have?`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryB.pdf" },
+"2010-pumac-division-b-geometry-2": { s: String.raw`On rectangular coordinates, point $A=(1,2)$, $B=(3,4)$. $P=(a,0)$ is on $x$-axis. Given that $P$ is chosen such that $AP+PB$ is minimized, compute $60a$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryB.pdf" },
+"2010-pumac-division-b-geometry-3": { s: String.raw`As in the following diagram, square $ABCD$ and square $CEFG$ are placed side by side (i.e. $C$ is between $B$ and $E$ and $G$ is between $C$ and $D$). Now $CE=14$, $AB>14$, compute the minimal area of $\triangle AEG$.
+
+@@fig:pumac/2010/b-geometry-3.png@@`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryB.pdf" },
+"2010-pumac-division-b-geometry-4": { s: String.raw`Unit square $ABCD$ is divided into four rectangles by $EF$ and $GH$, with $BF=\frac14$. $EF$ is parallel to $AB$ and $GH$ parallel to $BC$. $EF$ and $GH$ meet at point $P$. Suppose $BF+DH=FH$, calculate the nearest integer to the degree of $\angle FAH$.
+
+@@fig:pumac/2010/b-geometry-4.png@@`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryB.pdf" },
+"2010-pumac-division-b-geometry-5": { s: String.raw`In a rectangular plot of land, a man walks in a very peculiar fashion. Labeling the corners $ABCD$, he starts at $A$ and walks to $C$. Then, he walks to the midpoint of side $AD$, say $A_1$. Then, he walks to the midpoint of side $CD$ say $C_1$, and then the midpoint of $A_1D$ which is $A_2$. He continues in this fashion, indefinitely. The total length of his path if $AB=5$ and $BC=12$ is of the form $a+b\sqrt c$. Find $\frac{abc}4$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryB.pdf" },
+"2010-pumac-division-b-geometry-6": { s: String.raw`In regular hexagon $ABCDEF$, $AC$, $CE$ are two diagonals. Points $M$, $N$ are on $AC$, $CE$ respectively and satisfy $AC:AM=CE:CN=r$. Suppose $B,M,N$ are collinear, find $100r^2$.
+
+@@fig:pumac/2010/a-geometry-4.png@@`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryB.pdf" },
+"2010-pumac-division-b-geometry-7": { s: String.raw`A cuboctahedron is a solid with $6$ square faces and $8$ equilateral triangle faces, with each edge adjacent to both a square and a triangle (see picture). Suppose the ratio of the volume of an octahedron to a cuboctahedron with the same side length is $r$. Find $100r^2$.
+
+@@fig:pumac/2010/a-geometry-5.png@@`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryB.pdf" },
+"2010-pumac-division-b-geometry-8": { s: String.raw`Point $P$ is in the interior of $\triangle ABC$. The side lengths of $ABC$ are $AB=7$, $BC=8$, $CA=9$. The three feet of perpendicular lines from $P$ to sides $BC$, $CA$, $AB$ are $D$, $E$, $F$ respectively. Suppose the minimal value of $\frac{BC}{PD}+\frac{CA}{PE}+\frac{AB}{PF}$ can be written as $\frac ab\sqrt c$, where $\gcd(a,b)=1$ and $c$ is square free, calculate $abc$.
+
+@@fig:pumac/2010/b-geometry-8.png@@`, u: "https://pumac.princeton.edu/s/PUMaC2010_GeometryB.pdf" },
+"2010-pumac-division-a-number-theory-1": { s: String.raw`Find the smallest positive integer $n$ such that $n^4+(n+1)^4$ is composite.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryA.pdf" },
+"2010-pumac-division-a-number-theory-2": { s: String.raw`Find the largest positive integer $n$ such that $\sigma(n)=28$, where $\sigma(n)$ is the sum of the divisors of $n$, including $n$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryA.pdf" },
+"2010-pumac-division-a-number-theory-3": { s: String.raw`Find the sum of the first $5$ positive integers $n$ such that $n^2-1$ is the product of $3$ distinct primes.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryA.pdf" },
+"2010-pumac-division-a-number-theory-4": { s: String.raw`Find the largest positive integer $n$ such that $n\varphi(n)$ is a perfect square. ($\varphi(n)$ is the number of integers $k$, $1\le k\le n$ that are relatively prime to $n$)`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryA.pdf" },
+"2010-pumac-division-a-number-theory-5": { s: String.raw`Given that $x$, $y$ are positive integers with $x(x+1)\mid y(y+1)$, but neither $x$ nor $x+1$ divides either of $y$ or $y+1$, and $x^2+y^2$ as small as possible, find $x^2+y^2$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryA.pdf" },
+"2010-pumac-division-a-number-theory-6": { s: String.raw`Find the numerator of
+$$\frac{1010\overbrace{11\ldots11}^{2011\text{ ones}}0101}{1100\underbrace{11\ldots11}_{2011\text{ ones}}0011}$$
+when reduced.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryA.pdf" },
+"2010-pumac-division-a-number-theory-7": { s: String.raw`Let $n$ be the number of polynomial functions from the integers modulo $2010$ to the integers modulo $2010$. $n$ can be written as $n=p_1p_2\cdots p_k$, where the $p_i$s are (not necessarily distinct) primes. Find $p_1+p_2+\cdots+p_n$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryA.pdf" },
+"2010-pumac-division-a-number-theory-8": { s: String.raw`A consecutive pythagorean triple is a pythagorean triple of the form $a^2+(a+1)^2=b^2$, $a$ and $b$ positive integers. Given that $a$, $a+1$, and $b$ form the third consecutive pythagorean triple, find $a$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryA.pdf" },
+"2010-pumac-division-b-number-theory-1": { s: String.raw`Find the positive integer less than $18$ with the most positive divisors.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryB.pdf" },
+"2010-pumac-division-b-number-theory-2": { s: String.raw`Let $f(n)$ be the sum of the digits of $n$. Find $\sum_{n=1}^{99}f(n)$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryB.pdf" },
+"2010-pumac-division-b-number-theory-3": { s: String.raw`Find the smallest positive integer $n$ such that $n^4+(n+1)^4$ is composite.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryB.pdf" },
+"2010-pumac-division-b-number-theory-4": { s: String.raw`Find the sum of the first $5$ positive integers $n$ such that $n^2-1$ is the product of $3$ distinct primes.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryB.pdf" },
+"2010-pumac-division-b-number-theory-5": { s: String.raw`Given that $x$, $y$, and $z$ are positive integers such that $\frac xy+\frac yz+\frac zx=2$. Find the sum of all possible $x$ values.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryB.pdf" },
+"2010-pumac-division-b-number-theory-6": { s: String.raw`Given that $x$, $y$ are positive integers with $x(x+1)\mid y(y+1)$, but neither $x$ nor $x+1$ divides either of $y$ or $y+1$, and $x^2+y^2$ as small as possible, find $x^2+y^2$.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryB.pdf" },
+"2010-pumac-division-b-number-theory-7": { s: String.raw`Find the numerator of
+$$\frac{1010\overbrace{11\ldots11}^{2011\text{ ones}}0101}{1100\underbrace{11\ldots11}_{2011\text{ ones}}0011}$$
+when reduced.`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryB.pdf" },
+"2010-pumac-division-b-number-theory-8": { s: String.raw`Let $N$ be the number of (positive) divisors of $2010^{2010}$ ending in the digit $2$. What is the remainder when $N$ is divided by $2010$?`, u: "https://pumac.princeton.edu/s/PUMaC2010_NumberTheoryB.pdf" },
+});
