@@ -1,0 +1,211 @@
+// Problems and diagrams © 2006 Columbus State Invitational Mathematics Tournament. Reproduced with permission from the Columbus State Invitational Mathematics Tournament.
+// Source: the official Columbus State tournament tests. Built by tools/statements/build.py from tools/statements/spec/columbus/2006.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2006-columbus-state-tournament-1": { s: String.raw`What is the sum of all the solutions of the equation $x^3-78x^2+1155x-2006=0$ ?
+
+(A) $74$  (B) $44$  (C) $-40$  (D) $78$  (E) $-78$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-2": { s: String.raw`The sale price of a printer is $30\%$ off its original price of $\$100$. An employee gets an additional $20\%$ off this sale price. What would an employee pay for this printer if it was purchased on a tax-free day in Georgia?
+
+(A) $\$34$  (B) $\$55$  (C) $\$45$  (D) $\$57$  (E) $\$56$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-3": { s: String.raw`Which of the following is not equal to $2^{2^{2^2}}$ ?
+
+(A) $4^{2^3}$  (B) $8^{2^4}$  (C) $16^{2^2}$  (D) $2^{4^2}$  (E) $2^{2^4}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-4": { s: String.raw`Dr. Henning's lecture was so boring that one-half of the audience left after a few minutes. Five minutes later, one-third of the remaining audience left. Ten minutes later, one-fourth of those remaining left, leaving only nine people in the audience. How many people were in the audience at the beginning of the lecture?
+
+(A) $21$  (B) $36$  (C) $72$  (D) $144$  (E) $216$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-5": { s: String.raw`Solve for $x$ the equation $\dfrac1{x-3}+\dfrac1{x+3}=\dfrac6{x^2-9}$.
+
+(A) $-3$  (B) $3$  (C) $-3$ and $3$  (D) The equation has no solutions  (E) None of the above`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-6": { s: String.raw`A pole rests against a vertical wall $20$ feet above the ground, while the base is $5$ feet from the wall. If the pole is moved so that it rests $16$ feet above the ground, how many feet is the base from the wall?
+
+(A) $13$ ft  (B) $\sqrt{15}$ ft  (C) $9$ ft  (D) $5\sqrt{15}$ ft  (E) $5+\sqrt{15}$ ft`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-7": { s: String.raw`Which is the set of real numbers for which the identity $\sqrt{x^2+3x-4}=\sqrt{x+4}\sqrt{x-1}$ is true?
+
+(A) $(1,\infty)$  (B) $[1,\infty)$  (C) $(-\infty,-4]$  (D) $[-4,\infty)$  (E) $(-\infty,-4]\cup[1,\infty)$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-8": { s: String.raw`Find all solutions of the inequality $x^2-3x<|4x-6|$.
+
+(A) $1<x<6$  (B) $-3<x<2$  (C) $-3<x<6$  (D) $x<-3$ or $6<x$  (E) $-3<x<1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-9": { s: String.raw`Find the sum of all real solutions of the equation $\sqrt[4]{7x^2-6}=x$.
+
+(A) $1+\sqrt6$  (B) $0$  (C) $2$  (D) $2\left(1+\sqrt6\right)$  (E) None of these`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-10": { s: String.raw`What is the number of pairs $(x,y)$ of integers satisfying the inequality $|x|+|y|\le10$ ?
+
+(A) $261$  (B) $231$  (C) $221$  (D) $225$  (E) $441$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-11": { s: String.raw`Which of the following is the largest value of $\delta$ that guarantees that for all $x$ satisfying $-\delta\le x-2\le\delta$, we will have $\left|x^2-4\right|\le0.25$ ?
+
+(A) $3.936491673$  (B) $0.0635083269$  (C) $0.06155281281$  (D) $4.061552813$  (E) $4.0635083269$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-12": { s: String.raw`Two students attempted to solve a quadratic equation $2x^2+ax+b=0$. Although both students did the work correctly, the first could not read the coefficient in the middle term, made up a value for it and obtained the solution set $\{-4,3\}$. The second miscopied the constant term and obtained the solution set $\{5,-4\}$. What is the correct solution set?
+
+(A) $\{4,-3\}$  (B) $\{2,-3\}$  (C) $\{-2,3\}$  (D) $\{-5,3\}$  (E) Not enough information.`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-13": { s: String.raw`If $\log_ax=4$, find $\log_{1/a}x$.
+
+(A) $-\frac14$  (B) $\frac14$  (C) $4$  (D) $-4$  (E) $\frac12$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-14": { s: String.raw`Solve for $a$ in the following equation $a^{2+\log_a4}=a^2+2$.
+
+(A) $a=\sqrt{\dfrac23}$  (B) $a=\pm\sqrt{\dfrac23}$  (C) $a=\sqrt2$  (D) $a=\dfrac23$  (E) $a=4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-15": { s: String.raw`For each real number $x$, we define $\lceil x\rceil$ to be the least integer which is greater than or equal to $x$. For example, $\lceil3.2\rceil=4$ and $\lceil4\rceil=4$. If $x$ and $y$ are real numbers for which $\left\lceil\sqrt[3]x\right\rceil=3$ and $\left\lceil\sqrt[3]y\right\rceil=4$, what is the smallest possible value of $\lceil x+y\rceil$ ?
+
+(A) $59$  (B) $92$  (C) $35$  (D) $36$  (E) $25$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-16": { s: String.raw`A palindromic number is a natural number that is the same when written forwards or backwards. For instance, $323$ is palindromic number. How many three-digit palindromic numbers are there?
+
+(A) $90$  (B) $81$  (C) $100$  (D) $99$  (E) $111$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-17": { s: String.raw`Find the sum of all the three-digit palindromic numbers.
+
+(A) $49500$  (B) $50400$  (C) $45900$  (D) $49950$  (E) $44955$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-18": { s: String.raw`A lumberjack has $4n+110$ logs in a pile consisting of $n$ layers. Each layer has two more logs than the layer directly above it. If the top layer has six logs, how many layers are there?
+
+(A) $-11$  (B) $11$  (C) $8$  (D) $9$  (E) $10$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-19": { s: String.raw`For how many integers $n$ between $1$ and $100$, do the numbers $n^2+2$ and $n+1$ have a common factor greater than $1$ ?
+
+(A) $35$  (B) $3$  (C) $25$  (D) $32$  (E) $33$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-20": { s: String.raw`Find the value of $n$ for which $\displaystyle\sum_{i=1}^n\frac{2006}{i(i+1)}=2005$.
+
+(A) $2005$  (B) $2006$  (C) $2007$  (D) $2004$  (E) None of these`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-21": { s: String.raw`Find the remainder of $2^{2006}+1$ when divided by $3$.
+
+(A) $0$  (B) $1$  (C) $2$  (D) $-1$  (E) $\frac13$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-22": { s: String.raw`Find the solution set of the equation $\left(\dfrac x{x-1}\right)^2=-6\left(\dfrac x{x-1}\right)+7$.
+
+(A) $\{1/8,0\}$  (B) $\{1/8\}$  (C) $\{-1/8\}$  (D) $\{7/8\}$  (E) $\{7/8,0\}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-23": { s: String.raw`At sunrise, two drivers started driving (in straight line) towards each other, each at their own constant speed. One started at point A and went towards point B while the other one started at point B and went towards point A. They met at noon but did not stop; each continued driving maintaining their speed and direction. The first driver arrived at point B at $4{:}00$ pm and the other one arrived at point A at $9{:}00$ pm. At what time did the sun rise that day?
+
+(A) $5$ am  (B) $6$ am  (C) $6{:}30$ am  (D) $7{:}00$ am  (E) Not enough information.`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-24": { s: String.raw`A bag contains $16$ chips that are either red or blue. It is known that the probability of selecting (without replacement) a red chip and then blue chip (in that order) is $\frac14$, and that the probability of selecting two blue ones is $\frac18$. How many red chips are there in the bag?
+
+(A) $10$  (B) $12$  (C) $6$  (D) $5$  (E) $7$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-25": { s: String.raw`Trains headed for destination A arrive at the train station at $15$-minute intervals starting at $7$ a.m., whereas trains headed for destination B arrive at $15$-minute intervals starting at $7{:}05$ a.m. If a certain passenger arrives at the station at a (uniform) random time between $7$ and $8$ a.m. and then gets on the first train that arrives, what proportion of time does the passenger go to destination A?
+
+(A) $\frac13$  (B) $\frac23$  (C) $\frac12$  (D) $\frac34$  (E) $\frac14$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-26": { s: String.raw`A standard Virginia license plate is of the form CBE-5678, three letters followed by four numbers. How many such plates have exactly two fours and at least one H?
+
+(A) $1{,}024{,}002$  (B) $303{,}750$  (C) $316{,}062$  (D) $911{,}250$  (E) $948{,}186$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-27": { s: String.raw`What is the value of the sum of the first $101$ positive integers if we exclude all multiples of $3$?
+
+(A) $3465$  (B) $3366$  (C) $3367$  (D) $3468$  (E) None of these`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-28": { s: String.raw`Find $x$ if $3^{27^{(669x-1)}}=27^{3^{2005x}}$.
+
+(A) $-1$  (B) $1$  (C) $-2$  (D) $2$  (E) None of these`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-29": { s: String.raw`What is the number of integers between $1$ and $2006$ (inclusive) that are not divisible by $2$ or $5$ ?
+
+(A) $1204$  (B) $801$  (C) $802$  (D) $601$  (E) None of these`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-30": { s: String.raw`There are three distinct lines and two distinct circles. What is the largest number of points in which at least two of these figures can intersect?
+
+(A) $14$  (B) $15$  (C) $16$  (D) $17$  (E) $18$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-31": { s: String.raw`A square-walled city of unknown dimension has four gates, one at the center of each side. A tree stands outside the city $30$ meters north of the northern gate. One must walk $30$ meters southward from the south gate and then turn west and walk $1485$ meters before one can see the tree. What are the dimensions of the city?
+
+(A) $267$ meters $\times\ 267$ meters  (B) $284$ meters $\times\ 284$ meters  (C) $270$ meters $\times\ 270$ meters  (D) $250$ meters $\times\ 250$ meters  (E) None of these`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-32": { s: String.raw`An equilateral triangle is inscribed in a unit circle. What is the area of the equilateral triangle?
+
+@@fig:columbus/2006/32.png@@
+
+(A) $\dfrac{3\sqrt3}4$  (B) $\dfrac{3\sqrt3}2$  (C) $\dfrac34$  (D) $\dfrac{3\sqrt2}4$  (E) $\dfrac{3\sqrt2}2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-33": { s: String.raw`A goat is tethered to a corner of a square building into which there is no access for the goats. The building is $40$ feet per side; the tether is $60$ feet long. Assuming that the entire area surrounding the building is covered with grass, what is the total grazing area for the goat?
+
+(A) $2900\pi$ square feet  (B) $1800\pi$ square feet  (C) $2700\pi$ square feet  (D) $(3600\pi-2500)$ square feet  (E) $3000\pi$ square feet`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-34": { s: String.raw`How many different routes are there from A to B in the following figure if we can travel only up or to the right and we cannot go through the node point indicated by $\bullet$ ?
+
+@@fig:columbus/2006/34.png@@
+
+(A) $41$  (B) $26$  (C) $56$  (D) $2^8-4$  (E) None of these`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-35": { s: String.raw`A circle is inscribed in a triangle with sides that measure $8$, $13$, and $17$. Let the point of tangency on the side of length $8$ divide the side into segments of length $r$ and $s$, where $r<s$. Find the ratio $\dfrac rs$.
+
+@@fig:columbus/2006/35.png@@
+
+(A) $\frac13$  (B) $\frac25$  (C) $\frac12$  (D) $\frac23$  (E) $\frac34$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-36": { s: String.raw`Given two circles, one of radius $R$ and the other of radius $2R$, assume that the larger circle passes through the center of the smaller. Find the length of the line connecting the two points of intersection of the two circles.
+
+@@fig:columbus/2006/36.png@@
+
+(A) $\dfrac{\sqrt{15}}2R$  (B) $\dfrac{\sqrt3}2R$  (C) $\dfrac{\sqrt3}4R$  (D) $\dfrac14R$  (E) $\dfrac{\sqrt{15}}4R$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-37": { s: String.raw`The pyramid of square base shown in the figure has a height of $h=1$ foot. If all edge lengths are the same, find the volume $V$ of the pyramid.
+
+@@fig:columbus/2006/37.png@@
+
+(A) $V=\dfrac{\sqrt2}3$  (B) $V=\dfrac32$  (C) $V=\dfrac23$  (D) $V=2$  (E) $V=\sqrt2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-38": { s: String.raw`You are about to leave for school in the morning and discover you do not have your glasses. You know the following statements are true.
+
+I. If my glasses are on the kitchen table, then I saw them at breakfast.
+
+II. I was reading the newspaper in the living room or I was reading the newspaper in the kitchen.
+
+III. If I was reading the newspaper in the living room, then my glasses are on the coffee table.
+
+IV. I did not see my glasses at breakfast.
+
+V. If I was reading my book in bed, then my glasses are on the bed table.
+
+VI. If I was reading the newspaper in the kitchen, then my glasses are on the kitchen table.
+
+Where are the glasses?
+
+(A) On the kitchen table
+(B) On the coffee table
+(C) On the bed table
+(D) In the living room
+(E) not enough information to answer the question.`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-39": { s: String.raw`Eight identical sheets of paper have been placed overlapping. The last sheet to be placed was H because it is shown completely. List the eight pieces in the order placed, ending with H.
+
+@@fig:columbus/2006/39.png@@
+
+(A) The order is B, F, C, E, G, A, D, H  (B) The order is G, E, A, D, B, F, C, H  (C) The order is F, B, C, G, E, D, A, H  (D) The order is B, F, C, G, E, A, D, H  (E) The order cannot be determined.`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-40": { s: String.raw`Consider the hyperbola $H$ given by the equation $xy=6$. Observe that the point $P(3,2)$ lies on $H$. Let $L$ be the line tangent to $H$ at $P(3,2)$. Then $L$ intersects the positive $x$-axis at a point $A$ and the positive $y$-axis at a point $B$. Find the area of the triangle $\triangle AOB$.
+
+@@fig:columbus/2006/40.png@@
+
+(A) $12$  (B) $6$  (C) $10$  (D) $18$  (E) $24$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-41": { s: String.raw`Which of the following defines the ratio of the surface area to the volume of a right circular cone with radius $r$ and height $h$ ?
+
+(A) $\dfrac{3\left(r+\sqrt{r^2+h^2}\right)}{rh}$
+(B) $\dfrac{3\left(\pi r^2+\sqrt{r^2+h^2}\right)}{\pi rh}$
+(C) $\dfrac{3\left(r^2+\pi\sqrt{r^2+h^2}\right)}{\pi rh}$
+(D) $\dfrac{\pi r+\sqrt{r^2+h^2}}{3\pi rh}$
+(E) $\dfrac{3\left(r^2+\sqrt{r^2+h^2}\right)}{\pi rh}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-42": { s: String.raw`A tank that has the form of an inverted cone (see figure on the right) of radius $5$ ft and height $15$ ft contains $45\ \text{ft}^3$ of water. If at time $t=0$ minutes a pump starts pumping water into the tank at a rate of $3\ \text{ft}^3$/min, which of the following is the least amount of time that will guarantee the tank is full?
+
+@@fig:columbus/2006/42.png@@
+
+(A) $115$ min.  (B) $115.5$ min.  (C) $115.9$ min.  (D) $125.9$ min.  (E) $130.9$ min.`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-43": { s: String.raw`There are $120$ permutations of the number $43512$. Suppose that we arrange them in increasing order from the first one, $12345$ to the largest one, $54321$. What permutation will be the $55^{\text{th}}$ place?
+
+(A) $32145$  (B) $31542$  (C) $34521$  (D) $35421$  (E) $32154$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-44": { s: String.raw`Which of the following functions is equal to $f(x)=\sin^{-1}(\sin x)$ for all $-\infty<x<\infty$ ?
+
+(A) $-x$  (B) $x$  (C) $\dfrac1{\sin x}$  (D) $\dfrac1{\sin(\sin x)}$  (E) None of these`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-45": { s: String.raw`Let $f:\mathbb N\to\mathbb N$ be a function defined recursively by $f(1)=1$ and $f(n+1)=2f(n)+1$ for all $n\ge1$. Find the value of $f(1)+f(2)+\cdots+f(10)$.
+
+(A) $2006$  (B) $2008$  (C) $2010$  (D) $2036$  (E) $2048$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-46": { s: String.raw`Find the value of $\tan^{-1}(\tan\theta)$ where $\dfrac32\pi<\theta<\dfrac52\pi$.
+
+(A) $\theta-3\pi$  (B) $\theta-\dfrac{5\pi}2$  (C) $\theta-2\pi$  (D) $\theta-\dfrac{3\pi}2$  (E) $\theta$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-47": { s: String.raw`If $0<b<c$, find the value of $\cos\left(\sin^{-1}\left(\dfrac bc\right)\right)$.
+
+(A) $\dfrac{\sqrt{c^2+b^2}}c$  (B) $\dfrac c{\sqrt{c^2+b^2}}$  (C) $\dfrac{\sqrt{c^2-b^2}}c$  (D) $\dfrac c{\sqrt{c^2-b^2}}$  (E) None of these`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-48": { s: String.raw`Find the area of a triangle having sides of length $6$ and $4$, which subtend an angle of $60^\circ$.
+
+(A) $\dfrac{\sqrt3}3$  (B) $3$  (C) $6$  (D) $6\sqrt3$  (E) $3\sqrt3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-49": { s: String.raw`Find all real values of $a$ for which the following linear system has no solutions.
+$$\begin{cases}x_1+x_2=3\\x_1+\left(a^2-8\right)x_2=a\end{cases}$$
+
+(A) $a=\pm3$
+(B) $a=\pm\sqrt8$
+(C) $a=-3$
+(D) $a=3$
+(E) The system has at least one solution for any value of $a$.`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-50": { s: String.raw`Let $A=\begin{bmatrix}a&b&c\\p&q&r\\x&y&z\end{bmatrix}$ and suppose that $\det(A)=2$. Find the $\det(B)$, where $B=\begin{bmatrix}4x&2a&-p\\4y&2b&-q\\4z&2c&-r\end{bmatrix}$.
+
+(A) $\det(B)=-2$  (B) $\det(B)=\frac12$  (C) $\det(B)=-8$  (D) $\det(B)=-16$  (E) $\det(B)=8$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-51": { s: String.raw`There are two positive solutions to the equation $\log_{2x}2+\log_42x=-\dfrac32$. What is the product of the two solutions?
+
+(A) $\frac1{21}$  (B) $\frac3{21}$  (C) $\frac1{32}$  (D) $\frac18$  (E) $2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-52": { s: String.raw`Find, wherever it is defined, the derivative of $f(x)=\sin^{-1}(\sin x)$.
+
+(A) $-1$  (B) $1$  (C) $\dfrac{\cos x}{|\cos x|}$  (D) $\dfrac{\sin x}{|\cos x|}$  (E) None of these`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-53": { s: String.raw`Let $A=\begin{bmatrix}a&b&c\\p&q&r\\x&y&z\end{bmatrix}$ and suppose that $\det(A)=6$. Find the $\det(B)$, where $B=\begin{bmatrix}p+x&q+y&r+z\\a+x&b+y&c+z\\a+p&b+q&c+r\end{bmatrix}$.
+
+(A) $\det(B)=0$  (B) $\det(B)=-12$  (C) $\det(B)=12$  (D) $\det(B)=-6$  (E) $\det(B)=6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+"2006-columbus-state-tournament-54": { s: String.raw`The figure (not drawn at scale) shows a regular tetrahedron $ABCD$ and its dual, obtained by joining the centers of all of its faces. Find the ratio $\dfrac{\text{Volume }ABCD}{\text{Volume }EFGH}$ of their volumes.
+
+@@fig:columbus/2006/54.png@@
+
+(A) $27$  (B) $9\sqrt3$  (C) $15$  (D) $3\sqrt3$  (E) $26\sqrt3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/test-2006-final-version.pdf" },
+});
