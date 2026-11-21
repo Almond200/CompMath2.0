@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **PUMaC 2010 added (896 of 1,088; 10 figures).** `STATEMENTS_V` 106.
 - **PUMaC 2011 added (832 of 1,088; no figures).** `STATEMENTS_V` 105.
 - **PUMaC 2012 added (768 of 1,088; 2 figures).** `STATEMENTS_V` 104.
 - **PUMaC 2013 added (704 of 1,088; no figures: two problems mention a diagram the paper does not carry).** `STATEMENTS_V` 103.
