@@ -86,5 +86,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Owner review: contest methods for extremal and pattern problems", date: "2026-11-20",
     ids: ["bound-and-construct", "small-cases-pattern"] },
   { label: "AMC halves of the proof methods (owner, 2026-11-21)", date: "2026-11-21",
-    ids: ["if-then-statements", "settle-with-an-example"] }
+    ids: ["if-then-statements", "settle-with-an-example"] },
+  { label: "Square and add (P81)", date: "2026-11-21",
+    ids: ["square-and-add"] }
 ];

@@ -1,0 +1,25 @@
+=== individual-1
+The sum of two numbers, $a+b$, is $4$ more than their difference, $a-b$. What is $b$?
+=== individual-2
+Rectangle $ABCD$ has $AB=CD=\sqrt3$ and $AD=BC=1$. Line $\ell$ is the perpendicular bisector of $\overline{AC}$ and intersects $\overline{AC}$ and $\overline{AB}$ at $P$ and $Q$, respectively. What is the area of quadrilateral $PQBC$?
+=== individual-3
+The polynomial $p(x)=x^3+cx-2$ has roots that are all integers. What is $c$?
+=== individual-4
+There are $10$ balls in a bucket, and there are $5$ colors. Each color has exactly $2$ balls of that color. Every time a ball is selected uniformly, randomly, and independently from the bucket, its color is noted and the ball is replaced. What is the expected number of selections from the bucket until one ball of every color has been seen?
+=== individual-5
+Consider a solid rectangular prism with length $10$, width $8$, and height $6$. Find the volume of the set of points that are both a distance of at most $3$ from the prism and a distance of at least $1$ from the prism.
+=== individual-6
+Two positive integers, $a$ and $b$ are chosen randomly, uniformly, and independently from the set of positive integers less than $1000$, $\{1,2,\dots,1000\}$. What is the expected value of the number of quadrants through which the graph $x^a+y^b=1$ will pass?
+=== individual-7
+John and Mitchell are playing a game to see who gets the last of their candy. John rolls three unbiased $7$-sided dice with sides labeled $1$ through $7$ and records the maximum roll. Mitchell flips a biased coin (with probability of heads $p$) $10$ times and records the number of heads. What is the smallest $p$ such that Mitchell has $50\%$ or greater chance of winning the candy by recording a larger number?
+=== individual-8
+Define the sum of a finite set of integers to be the sum of the elements of the set. Let $D$ be the set of positive divisors of $700$. How many nonempty subsets of $D$ have an even sum? (Simplify as reasonably as possible)
+=== individual-9
+Compute the absolute minimum of the function
+$$f(x)=\cos(2x)+3\cos(x).$$
+=== individual-10
+The largest prime factor of the number $520{,}302{,}325$ has $5$ digits. What is this prime factor?
+=== individual-11
+We play the following game with an equilateral triangle of $\frac{n(n+1)}{2}$ coins (with $n>1$ coins on each side). Initially, all of the coins are turned heads up. On each turn, we may turn over three coins that are mutually adjacent; the goal is to make all of the coins eventually turned tails up. What is the $7^{\text{th}}$ smallest positive $n$ for which this can be achieved?
+=== individual-12
+Let $S=\{a_1,a_2,a_3,\dots,a_{2015}\}$ be the first $2015$ positive integers that $a$ can be so that $2+2\sqrt{28a^2+1}$ is an integer. Compute the number of elements in $S$ that $a$ can be so that $2+2\sqrt{28a^2+1}$ is not a perfect square.

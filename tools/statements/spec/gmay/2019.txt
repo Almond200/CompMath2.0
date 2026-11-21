@@ -1,0 +1,29 @@
+=== individual-1
+Hannah is training for a marathon. This week, she ran $50$ miles. In each of the next $8$ weeks, she plans on running $5$ miles more than in the previous week. How many total miles will she run over the course of her $9$ weeks of training?
+=== individual-2
+An ant is standing at the bottom left corner of a $3$ by $3$ grid. How many ways can it get to the top right corner if it can only move up, right, and left, and it is not allowed to cross the same edge twice?
+
+@@fig:gmay2019_individual-2.png@@
+=== individual-3
+If $56$ is $35\%$ of $x$, what is $55\%$ of $x$?
+=== individual-4
+Diana covers a large square of area $36$ with six non-overlapping smaller squares (which can have different sizes). What is the area of the largest of these six smaller squares?
+=== individual-5
+Find the largest value of $x$ satisfying $|x^2+2x-15|=|x^2+6x-9|$.
+=== individual-6
+In the diagram below, all seven of the small rectangles are congruent. If the perimeter of the large rectangle is $65$, what is its area?
+
+@@fig:gmay2019_individual-6.png@@
+=== individual-7
+Find the value of $x$ that satisfies
+$$\frac{x-5}{107}+\frac{x-7}{105}+\frac{x-9}{103}+\frac{x-11}{101}=\frac{x-104}{4}+\frac{x-108}{2}.$$
+=== individual-8
+Let $\triangle ABC$ be a right triangle with hypotenuse $\overline{AC}$. Construct three squares: one with $\overline{AB}$ as a side, one with $\overline{AC}$ as a side, and one with $\overline{BC}$ as a side. Inscribe a circle in each of the three squares. The area of the circle that is tangent to $\overline{AB}$ is $18$, and the area of the circle that is tangent to $\overline{BC}$ is $24$. What is the area of the circle that is tangent to $\overline{AC}$?
+=== individual-9
+Emma checks her email at least once every day but no more than $10$ times in any $3$ consecutive days. If she checked her email $25$ times over the course of last week ($7$ consecutive days), what is the largest number of times she could have checked it on the second day of last week?
+=== individual-10
+$12$ balls labeled with the integers $1$ through $12$, are placed in a box. Alexandra randomly takes out $3$ of them, sets aside the largest, and repeats this procedure (without replacement) until there are no balls left in the box. What is the probability that the $4$ balls set aside are labeled $9$, $10$, $11$, and $12$?
+=== individual-11
+Let $x$ be the largest real number that can be expressed as $\cfrac{1}{a+\cfrac{1}{b+\cfrac{1}{c}}}$, where $a$, $b$, and $c$ are all real numbers (not necessarily distinct) between $1$ and $10$ (inclusive). Similarly, let $y$ be the smallest real number that can be expressed in the same way. Find $x-y$.
+=== individual-12
+Daisy finds a chalkboard with the number $4$ on it. She may write more numbers on the chalkboard as follows: if any number $x$ is on the chalkboard, she may write $x+3$ and/or $x^2+2$, and she may repeat this process as many times as she wants. What is the largest whole number that Daisy is not able to write on the chalkboard?

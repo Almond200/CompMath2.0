@@ -1,0 +1,85 @@
+=== algebra-and-number-theory-1
+Suppose $x$ is a real number such that $x^2=10x+7$. Find the unique ordered pair of integers $(m,n)$ such that $x^3=mx+n$.
+=== algebra-and-number-theory-2
+Find the unique real number $c$ such that the polynomial $x^3+cx+c$ has exactly two real roots.
+=== algebra-and-number-theory-3
+Call a number "Sam-azing" if it is equal to the sum of its digits times the product of its digits. The only two three-digit Sam-azing numbers are $n$ and $n+9$. Find $n$.
+=== algebra-and-number-theory-4
+For all real numbers $x$, let $P(x)=16x^3-21x$. What is the sum of all possible values of $\tan^2\theta$, given that $\theta$ is an angle satisfying
+$$P(\sin\theta)=P(\cos\theta)?$$
+=== algebra-and-number-theory-5
+Let $f(x)=2^x+3^x$. For how many integers $1\le n\le 2020$ is $f(n)$ relatively prime to all of $f(0),f(1),\dots,f(n-1)$?
+=== algebra-and-number-theory-6
+Find all pairs of integers $(x,y)$ such that $x\ge 0$ and
+$$(6^x-y)^2=6^{x+1}-y.$$
+=== algebra-and-number-theory-7
+Compute the positive difference between the two real solutions to the equation
+$$(x-1)(x-4)(x-2)(x-8)(x-5)(x-7)+48\sqrt{3}=0.$$
+=== algebra-and-number-theory-8
+Let $f:\mathbb{N}\to(0,\infty)$ satisfy $\prod_{d\mid n}f(d)=1$ for every $n$ which is not prime. Determine the maximum possible number of $n$ with $1\le n\le 100$ and $f(n)\ne 1$.
+=== algebra-and-number-theory-9
+Let $p=10009$ be a prime number. Determine the number of ordered pairs of integers $(x,y)$ such that $1\le x,y\le p$ and $x^3-3xy+y^3+1$ is divisible by $p$.
+=== algebra-and-number-theory-10
+We call a polynomial $P$ square-friendly if it is monic, has integer coefficients, and there is a polynomial $Q$ for which $P(n^2)=P(n)Q(n)$ for all integers $n$. We say $P$ is minimally square-friendly if it is square-friendly and cannot be written as the product of nonconstant, square-friendly polynomials. Determine the number of nonconstant, minimally square-friendly polynomials of degree at most $12$.
+=== combinatorics-and-computer-science-1
+The intramural squash league has $5$ players, namely Albert, Bassim, Clara, Daniel, and Eugene. Albert has played one game, Bassim has played two games, Clara has played $3$ games, and Daniel has played $4$ games. Assuming no two players in the league play each other more than one time, how many games has Eugene played?
+=== combinatorics-and-computer-science-2
+David is taking a true/false exam with $9$ questions. Unfortunately, he doesn't know the answer to any of the questions, but he does know that exactly $5$ of the answers are True. In accordance with this, David guesses the answers to all $9$ questions, making sure that exactly $5$ of his answers are True. What is the probability he answers at least $5$ questions correctly?
+=== combinatorics-and-computer-science-3
+Consider a $1$-indexed array that initially contains the integers $1$ to $10$ in increasing order.
+
+The following action is performed repeatedly (any number of times):
+
+• Choose an integer $n$ between $1$ and $10$ inclusive.
+
+• Reverse the array between indices $1$ and $n$ inclusive.
+
+• Reverse the array between indices $n+1$ and $10$ inclusive (if $n=10$, we do nothing).
+
+How many possible orders can the array have after we are done with this process?
+=== combinatorics-and-computer-science-4
+The continent of Trianglandia is an equilateral triangle of side length $9$, divided into $81$ triangular countries of side length $1$. Each country has the resources to choose at most $1$ of its $3$ sides and build a "wall" covering that entire side. However, since all the countries are at war, no two countries are willing to have their walls touch, even at a corner. What is the maximum number of walls that can be built in Trianglandia?
+=== combinatorics-and-computer-science-5
+Seven cards numbered $1$ through $7$ lay stacked in a pile in ascending order from top to bottom ($1$ on top, $7$ on bottom). A shuffle involves picking a random card of the six not currently on top and putting it on top. The relative order of all the other cards remains unchanged. Find the probability that, after $10$ shuffles, $6$ is higher in the pile than $3$.
+=== combinatorics-and-computer-science-6
+The nation of CMIMCland consists of $8$ islands, none of which are connected. Each citizen wants to visit the other islands, so the government will build bridges between the islands. However, each island has a volcano that could erupt at any time, destroying that island and any bridges connected to it. The government wants to guarantee that after any eruption, a citizen from any of the remaining $7$ islands can go on a tour, visiting each of the remaining islands exactly once and returning to their home island (only at the end of the tour). What is the minimum number of bridges needed?
+=== combinatorics-and-computer-science-7
+Consider a complete graph of $2020$ vertices. What is the least number of edges that need to be marked such that each triangle ($3$-vertex subgraph) has an odd number of marked edges?
+=== combinatorics-and-computer-science-8
+Catherine has a plate containing $300$ circular crumbling mooncakes, arranged as follows:
+
+@@fig:cmimc2020_combinatoricsandcomputerscience-8.png@@
+
+(This continues for $100$ total columns). She wants to pick some of the mooncakes to eat, however whenever she takes a mooncake all adjacent mooncakes will be destroyed and cannot be eaten. Let $M$ be the maximal number of mooncakes she can eat, and let $n$ be the number of ways she can pick $M$ mooncakes to eat (Note: the order in which she picks mooncakes does not matter). Compute the ordered pair $(M,n)$.
+=== combinatorics-and-computer-science-9
+Let $\Gamma=\{\varepsilon,0,00,\dots\}$ be the set of all finite strings consisting of only zeroes. We consider six-state unary DFAs $D=(F,q_0,\delta)$ where $F$ is a subset of $Q=\{1,2,3,4,5,6\}$, not necessarily strict and possibly empty; $q_0\in Q$ is some start state; and $\delta:Q\to Q$ is the transition function. For each such DFA $D$, we associate a set $F_D\subseteq\Gamma$ as the set of all strings $w\in\Gamma$ such that
+$$\underbrace{\delta(\cdots(\delta(q_0))\cdots)}_{|w|\text{ applications}}\in F,$$
+We say a set $\mathcal{D}$ of DFAs is diverse if for all $D_1,D_2\in\mathcal{D}$ we have $F_{D_1}\ne F_{D_2}$. What is the maximum size of a diverse set?
+=== combinatorics-and-computer-science-10
+Define a string to be doubly palindromic if it can be split into two (non-empty) parts that are read the same both backwards and forwards. For example hannahhuh is doubly palindromic as it can be split into hannah and huh. How many doubly palindromic strings of length $9$ using only the letters $\{a,b,c,d\}$ are there?
+=== geometry-1
+Let $PQRS$ be a square with side length $12$. Point $A$ lies on segment $\overline{QR}$ with $\angle QPA=30^\circ$, and point $B$ lies on segment $\overline{PQ}$ with $\angle SRB=60^\circ$. What is $AB$?
+=== geometry-2
+Let $ABC$ be a triangle. Points $D$ and $E$ are placed on $\overline{AC}$ in the order $A,D,E$, and $C$, and point $F$ lies on $\overline{AB}$ with $EF\parallel BC$. Line segments $\overline{BD}$ and $\overline{EF}$ meet at $X$. If $AD=1$, $DE=3$, $EC=5$, and $EF=4$, compute $FX$.
+=== geometry-3
+Point $A$, $B$, $C$, and $D$ form a rectangle in that order. Point $X$ lies on $CD$, and segments $\overline{BX}$ and $\overline{AC}$ intersect at $P$. If the area of triangle $BCP$ is $3$ and the area of triangle $PXC$ is $2$, what is the area of the entire rectangle?
+=== geometry-4
+Triangle $ABC$ has a right angle at $B$. The perpendicular bisector of $\overline{AC}$ meets segment $\overline{BC}$ at $D$, while the perpendicular bisector of segment $\overline{AD}$ meets $\overline{AB}$ at $E$. Suppose $CE$ bisects acute $\angle ACB$. What is the measure of angle $ACB$?
+=== geometry-5
+For every positive integer $k$, let $\mathbf{T}_k=(k(k+1),0)$, and define $\mathcal{H}_k$ as the homothety centered at $\mathbf{T}_k$ with ratio $\frac12$ if $k$ is odd and $\frac23$ is $k$ is even. Suppose $P=(x,y)$ is a point such that
+$$(\mathcal{H}_4\circ\mathcal{H}_3\circ\mathcal{H}_2\circ\mathcal{H}_1)(P)=(20,20).$$
+What is $x+y$?
+
+(A homothety $\mathcal{H}$ with nonzero ratio $r$ centered at a point $P$ maps each point $X$ to the point $Y$ on ray $\overrightarrow{PX}$ such that $PY=rPX$.)
+=== geometry-6
+Two circles $\omega_A$ and $\omega_B$ have centers at points $A$ and $B$ respectively and intersect at points $P$ and $Q$ in such a way that $A$, $B$, $P$, and $Q$ all lie on a common circle $\omega$. The tangent to $\omega$ at $P$ intersects $\omega_A$ and $\omega_B$ again at points $X$ and $Y$ respectively. Suppose $AB=17$ and $XY=20$. Compute the sum of the radii of $\omega_A$ and $\omega_B$.
+=== geometry-7
+In triangle $ABC$, points $D$, $E$, and $F$ are on sides $BC$, $CA$, and $AB$ respectively, such that $BF=BD=CD=CE=5$ and $AE-AF=3$. Let $I$ be the incenter of $ABC$. The circumcircles of $BFI$ and $CEI$ intersect at $X\ne I$. Find the length of $DX$.
+=== geometry-8
+Let $\mathcal{E}$ be an ellipse with foci $F_1$ and $F_2$. Parabola $\mathcal{P}$, having vertex $F_1$ and focus $F_2$, intersects $\mathcal{E}$ at two points $X$ and $Y$. Suppose the tangents to $\mathcal{E}$ at $X$ and $Y$ intersect on the directrix of $\mathcal{P}$. Compute the eccentricity of $\mathcal{E}$.
+
+(A parabola $\mathcal{P}$ is the set of points which are equidistant from a point, called the focus of $\mathcal{P}$, and a line, called the directrix of $\mathcal{P}$. An ellipse $\mathcal{E}$ is the set of points $P$ such that the sum $PF_1+PF_2$ is some constant $d$, where $F_1$ and $F_2$ are the foci of $\mathcal{E}$. The eccentricity of $\mathcal{E}$ is defined to be the ratio $F_1F_2/d$.)
+=== geometry-9
+In triangle $ABC$, points $M$ and $N$ are on segments $AB$ and $AC$ respectively such that $AM=MC$ and $AN=NB$. Let $P$ be the point such that $PB$ and $PC$ are tangent to the circumcircle of $ABC$. Given that the perimeters of $PMN$ and $BCNM$ are $21$ and $29$ respectively, and that $PB=5$, compute the length of $BC$.
+=== geometry-10
+Four copies of an acute scalene triangle $\mathcal{T}$, one of whose sides has length $3$, are joined to form a tetrahedron with volume $4$ and surface area $24$. Compute the largest possible value for the circumradius of $\mathcal{T}$.

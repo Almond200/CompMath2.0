@@ -1,0 +1,28 @@
+=== math-meet-individual-1
+Four witches are riding their brooms around a circle with circumference $10$m. They are standing at the same spot, and then they all start to ride clockwise with the speed of $1,2,3$, and $4$ m/s, respectively. Assume that they stop at the time when every pair of witches has met for at least two times (the first position before they start counts as one time). What is the total distance all the four witches have travelled?
+=== math-meet-individual-2
+Suppose $A$ is an equilateral triangle, $O$ is its inscribed circle, and $B$ is another equilateral triangle inscribed in $O$. Denote the area of triangle $T$ as $[T]$. Evaluate $\dfrac{[A]}{[B]}$.
+=== math-meet-individual-3
+Tim has bought a lot of candies for Halloween, but unfortunately, he forgot the exact number of candies he has. He only remembers that it's an even number less than $2020$. As Tim tries to put the candies into his unlimited supply of boxes, he finds that there will be $1$ candy left if he puts seven in each box, $6$ left if he puts eleven in each box, and $3$ left if he puts thirteen in each box. Given the above information, find the total number of candies Tim has bought.
+=== math-meet-individual-4
+Let $f(n)$ be a function defined on positive integers $n$ such that $f(1)=0$, and $f(p)=1$ for all prime numbers $p$, and
+$$f(mn)=nf(m)+mf(n)$$
+for all positive integers $m$ and $n$. Let
+$$n=277945762500=2^23^35^57^7.$$
+Compute the value of $\dfrac{f(n)}{n}$.
+=== math-meet-individual-5
+Compute the only positive integer value of $\dfrac{404}{r^2-4}$, where $r$ is a rational number.
+=== math-meet-individual-6
+Let $\alpha=3+\sqrt{10}$. If
+$$\prod_{k=1}^{\infty}\left(1+\frac{5\alpha+1}{\alpha^k+\alpha}\right)=m+\sqrt{n},$$
+where $m$ and $n$ are integers, find $10m+n$.
+=== math-meet-individual-7
+Charlie is watching a spider in the center of a hexagonal web of side length $4$. The web also consists of threads that form equilateral triangles of side length $1$ that perfectly tile the hexagon. Each minute, the spider moves unit distance along one thread. If $\frac{m}{n}$ is the probability, in lowest terms, that after four minutes the spider is either at the edge of her web or in the center, find the value of $m+n$.
+=== math-meet-individual-8
+Let $ABC$ be a triangle with $AB=10$, $AC=12$, and $\omega$ its circumcircle. Let $F$ and $G$ be points on $\overline{AC}$ such that $AF=2$, $FG=6$, and $GC=4$, and let $\overrightarrow{BF}$ and $\overrightarrow{BG}$ intersect $\omega$ at $D$ and $E$, respectively. Given that $AC$ and $DE$ are parallel, what is the square of the length of $BC$?
+=== math-meet-individual-9
+Two blue devils and $4$ angels go trick-or-treating. They randomly split up into $3$ non-empty groups. Let $p$ be the probability that in at least one of these groups, the number of angels is nonzero and no more than the number of devils in that group. If $p=\frac{m}{n}$ in lowest terms, compute $m+n$.
+=== math-meet-individual-10
+We know that
+$$2^{22000}=\underbrace{4569878\ldots229376}_{6623\text{ digits}}.$$
+For how many positive integers $n<22000$ is it also true that the first digit of $2^n$ is $4$?

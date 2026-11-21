@@ -1,0 +1,85 @@
+// Problems and diagrams © 1998 University of Maryland High School Mathematics Competition. Reproduced with permission from the University of Maryland High School Mathematics Competition.
+// Source: the official UMD HSMC papers. Built by tools/statements/build.py from tools/statements/spec/umd/1998.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"1998-umd-hsmc-part-i-1": { s: String.raw`Five candidates ran for the office of dog catcher. No two had the same number of votes. The winner had $10$ votes. What is the largest possible number of votes for the last place candidate?
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-2": { s: String.raw`How many of the numbers $555555$, $5555555$, $55555555$, $555555555$ and $5555555555$ are divisible by $9$?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) None of the preceding.`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-3": { s: String.raw`$A=7/8$, $B=66/77$, $C=555/666$, $D=4444/5555$, $E=33333/44444$. Which is the largest?
+
+(A) A  (B) B  (C) C  (D) D  (E) E`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-4": { s: String.raw`An old fashioned toaster can toast one side of up to $4$ slices of bread in one minute. What is the least time required to toast both sides of $9$ slices?
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) None of the preceding.`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-5": { s: String.raw`In a restaurant a certain main course costs $\$22.50$ more than the dessert. The main course and the dessert together cost $12$ times the price of the dessert. The cost in dollars of dessert is in the range of
+
+(A) $(1.90,2.10)$  (B) $(2.10,2.30)$  (C) $(2.30,2.50)$  (D) $(2.50,4.00)$  (E) more than $4.00$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-6": { s: String.raw`The largest integer $n$ so that $8^n$ divides $44^{44}$ is
+
+(A) $8$  (B) $22$  (C) $29$  (D) $44$  (E) $88$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-7": { s: String.raw`Order the following $4$ numbers from smallest to largest:
+
+$A=(-2)^{-2}$, $B=(-3)^{-3}$, $C=(-4)^{-4}$, $D=-\sqrt[77]{77}$
+
+(A) DBCA  (B) ABCD  (C) BCAD  (D) DABC  (E) None of the preceding.`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-8": { s: String.raw`Five girls A,B,C,D,E sit on $2$ chairs and $3$ stools, each seating exactly one girl. Who sits on the chairs if A and B sit on the same type of seat, B and D sit on a different type, D and E sit on a different type?
+
+(A) CD  (B) AD  (C) BE  (D) BC  (E) AB`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-9": { s: String.raw`A ($12$-hour) wristwatch is slow. It loses $5$ minutes per day. Assuming that it is now set to the correct time, how long will it be before it next shows the correct time?
+
+(A) $2400$ minutes  (B) $60$ hours  (C) $80$ days  (D) $144$ days  (E) $240$ days`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-10": { s: String.raw`For which value of $a$ does the straight line $y=6x$ intersect the parabola $y=x^2+a$ in exactly one point?
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-11": { s: String.raw`Let $a=\log 3$ and $b=\dfrac{\log 3}{\log(\log 3)}$ (logarithms are to base $10$). The number $a^b$ is equal to
+
+(A) $1/\log 3$  (B) $1$  (C) $\log 3$  (D) $1/3$  (E) $3$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-12": { s: String.raw`Let $f(x)=(x+a)^3+b$. How many pairs of real numbers $(a,b)$ are there such that $f(0)=1$ and $f(1)=2$?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-13": { s: String.raw`Jack and Jill went up the hill at $4$ mph. They started tumbling down at $6$ mph. Unfortunately, they hit a rock (and broke their crowns) at exactly halfway down the hill. What was their average speed in mph during the trip up and halfway down?
+
+(A) $4.5$  (B) $\frac{14}{3}$  (C) $4.8$  (D) $5$  (E) $5.4$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-14": { s: String.raw`@@fig:umd/1998/parti-14.png@@
+
+To move a heavy marble slab ancient temple builders placed cylindrical rollers underneath the slab as shown above. Each roller has a radius of $5$ inches. The cylinders go through one rotation. The distance in inches the slab moves is in the interval
+
+(A) $(15,30)$  (B) $(30,45)$  (C) $(45,60)$  (D) $(60,75)$  (E) None of the preceding.`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-15": { s: String.raw`If ABCDE is a regular pentagon, then
+
+(A) $0^\circ<\angle ACE\le 15^\circ$  (B) $15^\circ<\angle ACE\le 30^\circ$  (C) $30^\circ<\angle ACE\le 45^\circ$  (D) $45^\circ<\angle ACE\le 60^\circ$  (E) $60^\circ<\angle ACE<90^\circ$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-16": { s: String.raw`If $n$ is the number of integers between $1$ and $999$ that have at least one $7$ in their decimal representation, then
+
+(A) $75<n\le 125$  (B) $125<n\le 175$  (C) $175<n\le 225$  (D) $225<n\le 275$  (E) $275<n\le 325$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-17": { s: String.raw`Dumbbells weigh $20$, $30$ or $40$ lbs. The total weight of a pile of dumbbells is $800$ lbs. The number of dumbbells in the pile that weigh $30$ lbs can NOT be
+
+(A) $2$  (B) $3$  (C) $4$  (D) $6$  (E) $10$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-18": { s: String.raw`The digits $1,9,9,8$ in $1998$ have their total $1+9+9+8=27$. The next time the sum of the digits is $27$ happens between the years
+
+(A) $2500$ and $2700$  (B) $2701$ and $2900$  (C) $2901$ and $3100$  (D) $3101$ and $9900$  (E) $9901$ and $9999$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-19": { s: String.raw`What is the largest number of pieces into which the region $y\ge x^2$ can be cut by $4$ straight lines?
+
+(A) $8$  (B) $9$  (C) $10$  (D) $11$  (E) None of the preceding.`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-20": { s: String.raw`The number $\sqrt{7+4\sqrt3}+\sqrt{7-4\sqrt3}$ is closest to which of the following:
+
+(A) $3.6$  (B) $3.7$  (C) $3.8$  (D) $3.9$  (E) $4.0$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-21": { s: String.raw`Consider the triangular array
+$$\begin{matrix}1&&&\\2&3&&\\4&5&6&\\7&8&9&10\\\vdots&&&\end{matrix}$$
+The sum of the elements in the $100$th row is
+
+(A) $1000100$  (B) $1000000$  (C) $500000$  (D) $500050$  (E) $5000050$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-22": { s: String.raw`A train travels at speed $s_1$ and a runner runs at speed $s_2$. It takes $t_1$ seconds for the entire train to pass the runner when they are going in the same direction and $t_2$ seconds when they are going in opposite directions. Suppose $s_1/s_2=t_1/t_2$. Then $s_1/s_2$ is closest to
+
+(A) $3$  (B) $2.5$  (C) $2$  (D) $1.5$  (E) $1$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-23": { s: String.raw`A quadratic polynomial $p(x)$ satisfies $p(0)=3$, $p(1)=5$, $p(2)=8$. Then $p(5)$ is
+
+(A) $22$  (B) $23$  (C) $24$  (D) $25$  (E) None of the preceding.`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-24": { s: String.raw`The angle between the hour hand and the minute hand is measured every minute, beginning at $12{:}01$ and ending at $11{:}59$. The smallest angle observed is
+
+(A) $5.5^\circ$  (B) $3^\circ$  (C) $1^\circ$  (D) $0.5^\circ$  (E) $0.25^\circ$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+"1998-umd-hsmc-part-i-25": { s: String.raw`The length of one edge of a regular tetrahedron inscribed in a sphere of unit radius is
+
+(A) $\sqrt3$  (B) $\frac{\sqrt6}{2}$  (C) $\frac{\sqrt3}{2}$  (D) $\frac{2\sqrt2}{3}$  (E) $\frac{2\sqrt6}{3}$`, u: "https://mathcomp.math.umd.edu/files/2021/12/PartI1998.pdf" },
+});

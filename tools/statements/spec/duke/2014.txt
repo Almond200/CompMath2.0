@@ -1,0 +1,21 @@
+=== math-meet-individual-1
+Trung has $2$ bells. One bell rings $6$ times per hour and the other bell rings $10$ times per hour. At the start of the hour both bells ring. After how much time will the bells ring again at the same time? Express your answer in hours.
+=== math-meet-individual-2
+In a soccer tournament there are $n$ teams participating. Each team plays every other team once. The matches can end in a win for one team or in a draw. If the match ends with a win, the winner gets $3$ points and the loser gets $0$. If the match ends in a draw, each team gets $1$ point. At the end of the tournament the total number of points of all the teams is $21$. Let $p$ be the number of points of the team in the first place. Find $n+p$.
+=== math-meet-individual-3
+What is the largest $3$ digit number $\overline{abc}$ such that
+$$b\cdot\overline{ac}=c\cdot\overline{ab}+50?$$
+=== math-meet-individual-4
+Let $s(n)$ be the number of quadruplets $(x,y,z,t)$ of positive integers with the property that $n=x+y+z+t$. Find the smallest $n$ such that $s(n)>2014$.
+=== math-meet-individual-5
+Consider a decomposition of a $10\times 10$ chessboard into $p$ disjoint rectangles such that each rectangle contains an integral number of squares and each rectangle contains an equal number of white squares as black squares. Furthermore, each rectangle has different number of squares inside. What is the maximum of $p$?
+=== math-meet-individual-6
+If two points are selected at random from a straight line segment of length $\pi$, what is the probability that the distance between them is at least $\pi-1$?
+=== math-meet-individual-7
+Find the length $n$ of the longest possible geometric progression $a_1,a_2,\dots,a_n$ such that the $a_i$ are distinct positive integers between $100$ and $2014$ inclusive.
+=== math-meet-individual-8
+Feng is standing in front of a $100$ story building with two identical crystal balls. A crystal ball will break if dropped from a certain floor $m$ of the building or higher, but it will not break if it is dropped from a floor lower than $m$. What is the minimum number of times Feng needs to drop a ball in order to guarantee he determined $m$ by the time all the crystal balls break?
+=== math-meet-individual-9
+Let $A$ and $B$ be disjoint subsets of $\{1,2,\dots,10\}$ such that the product of the elements of $A$ is equal to the sum of the elements in $B$. Find how many such $A$ and $B$ exist.
+=== math-meet-individual-10
+During the semester, the students in a math class are divided into groups of four such that every two groups have exactly $2$ students in common and no two students are in all the groups together. Find the maximum number of such groups.

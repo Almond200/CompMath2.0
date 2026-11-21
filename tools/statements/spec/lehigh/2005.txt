@@ -1,0 +1,86 @@
+=== 1
+$\frac12+\frac13+\frac15=$
+=== 2
+The sum of three numbers is $17$. The first is $2$ times the second. The third is $5$ more than the second. What is the value of the largest of the three numbers?
+=== 3
+A chemist has $100$ cc of $20\%$ acid, the rest being water. She adds pure acid to make the solution $33\frac13\%$ acid. How many ccs of water must she then add to return it to $20\%$ acid?
+=== 4
+An isosceles triangle has two sides of length $10$ and one of length $12$. What is its area?
+=== 5
+What is the $y$-intercept of the straight line passing through $(10,2)$ and $(8,5)$?
+=== 6
+What is the length of the altitude drawn to the hypotenuse of a right triangle having legs equal to $5$ and $12$?
+=== 7
+Which is the largest of the following: $1^{48}$, $2^{42}$, $3^{36}$, $4^{30}$, $5^{24}$, $6^{18}$, $7^{12}$, $8^6$, $9^0$? (Write the exponential expression, not the large integer which it equals.)
+=== 8
+Two bicyclists $2$ miles apart start pedaling toward each other with speeds $9$ and $10$ miles per hour, respectively. A fly flies at $12$ miles per hour from one bicycle to the other, turns around instantly, flies back, etc., until the bicyclists meet. How many miles did the fly fly?
+=== 9
+A sequence is defined by $a_n=a_{n-1}+a_{n-2}+a_{n-3}$ for $n\ge 4$. Suppose $a_4=20$, $a_5=36$, and $a_7=121$. What is the value of $a_1$?
+=== 10
+What is the number of sides of a regular polygon for which the number of diagonals is $44$ or $45$?
+=== 11
+There are five cards, two red and three black. You draw two cards, without replacement. What is the probability that both have the same color?
+=== 12
+The length of each leg of an isosceles triangle is $x+1$ and the length of the base is $3x-2$. Determine all possible values of $x$. (The triangle should be nondegenerate; i.e. not just a straight line. Note also that $x$ need not be an integer; your answer should be an inequality.)
+=== 13
+One laser blast will break asteroids larger than $20$ kg into three pieces, each one third of the mass of the original. Asteroids smaller than $20$ kg are shattered into dust by the laser. How many laser blasts would be required to reduce a $2000$ kg asteroid to dust?
+=== 14
+What is the radius of the smallest circle that contains both of the circles $x^2+y^2=1$ and $(x-1)^2+(y-2)^2=4$?
+=== 15
+What is the number of different $7$-digit numbers that can be made by rearranging the digits of $3053354$? (Note that this includes the given number, and that the first digit of a number is never $0$.)
+=== 16
+In what positive base $b$ does the equation $4\cdot 12=103$ for multiplication of base-$b$ numbers hold?
+=== 17
+An octahedron is formed by connecting the centers of the faces of a cube. What is the ratio of the volume of the cube to that of the contained octahedron?
+=== 18
+What is the largest number of pieces into which a circular pizza can be cut with $9$ straight cuts?
+=== 19
+If the odd numbers are grouped in the following way:
+$$\{1\};\ \{3,5\};\ \{7,9,11\};\ \{13,15,17,19\};\ \dots,$$
+what is the sum of the numbers in the tenth group?
+=== 20
+If $f(3x)=3/(1+x)$ for all $x\ne -1$, then $3f(x)=$
+=== 21
+Two students attempted to solve a quadratic equation $x^2+bx+c=0$. Although both students did the work correctly, one miscopied the middle term and obtained the solution set $\{2,3\}$, while the other miscopied the constant term and obtained the solution set $\{2,5\}$. What is the correct solution set?
+=== 22
+Four circles of radius $1$ are arranged so that each is tangent to two others, and their centers lie on vertices of a square of side $2$. A small circle at the center of the square is tangent to the four circles. What is the radius of the small circle?
+=== 23
+Find all values of $x$ which satisfy $x^4+6ix^3-6x^2-6ix+1=(x+i)^4$, where $i^2=-1$.
+=== 24
+If the hypotenuse of a right triangle is $8$ units, and the area is $8$ square units, what is the tangent of the smallest angle of the triangle, written in the form $a+b\sqrt c$, with $a$, $b$, and $c$ integers?
+=== 25
+How many $0$'s occur at the end of the decimal expansion of $100^{100}-100!$? (This number is $100$ to the $100$th power minus $100$ factorial.)
+=== 26
+What is the number of positive integers $n$ for which there is a triangle with three positive acute angles and sidelengths $10$, $24$, and $n$?
+=== 27
+Compute $S=\frac15+\frac1{25}+\frac2{125}+\frac3{625}+\frac5{3125}+\cdots$, where each numerator is the sum of the two preceding numerators, and each denominator is $5$ times the preceding one. Your answer should be a fraction.
+=== 28
+Let $A=1^{-4}+2^{-4}+3^{-4}+4^{-4}+5^{-4}+\cdots$ denote the sum of the reciprocals of the fourth powers of all positive integers, and $B=1^{-4}+3^{-4}+5^{-4}+7^{-4}+\cdots$ a similar sum for all odd positive integers. Express $A/B$ as a fraction.
+=== 29
+Let $ABCD$ be a rectangle with $BC=2AB$, and let $BCE$ be an equilateral triangle crossing through the rectangle. If $M$ is the midpoint of $EC$, how many degrees are in angle $CMD$?
+=== 30
+Let $C$ denote the cylinder $x^2+y^2=4$, $0\le z\le 6$, of radius $2$ and height $6$. What is the length of the shortest path on the cylinder from the point $(2,0,6)$ to the point $(2,0,0)$ which passes through the point $(2,0,2)$ and passes twice around the cylinder?
+=== 31
+In triangle $ABC$, $AC=6$ and $BC=5$. Point $D$ on $AB$ divides it into segments of length $AD=1$ and $DB=3$. What is the length $CD$?
+=== 32
+List all pairs $(m,n)$ of positive integers for which $n!+1=(m!-1)^2$.
+=== 33
+An acute angle is formed by two lines of slope $1$ and $7$. What is the slope of the line which bisects this angle?
+=== 34
+How many ordered triples $(x,y,z)$ of positive integers satisfy $xyz=4000$?
+=== 35
+An equilateral triangle is filled to the max with $n$ rows of congruent circles. (The case $n=4$ is pictured below.) What is the limit as $n$ approaches $\infty$ of the ratio (area in circles)/(area of triangle)?
+
+@@fig:lehigh2005_p35.png@@
+=== 36
+List all $3$-digit numbers $abc$ for which the $6$-digit number $579abc$ is divisible by $5$, $7$, and $9$.
+=== 37
+The figure below shows a quarter-circle of radius $1$, with $A$ chosen so that angle $AOD$ is $30$ degrees. What must be the distance $OX$ so that the region bounded by $AX$, $XB$, and the arc $AB$ occupies half the area of the quarter circle?
+
+@@fig:lehigh2005_p37.png@@
+=== 38
+An equilateral triangle is inscribed in a circle. Let $D$ and $E$ be midpoints of two of its sides, and let $F$ be the point where the line from $D$ through $E$ meets the circle. What is the ratio $DE/EF$?
+=== 39
+How many pairs $(n,m)$ satisfying $10\le m<n$ and $m+n\le 99$ have the property that $m+n$ and $n-m$ have the same digits in reverse order? (This allows cases such as $(33,27)$ where the sum and difference are $60$ and $06$.)
+=== 40
+Parallel chords in a circle have length $12$ and $16$, and the distance between them is $7$. Another chord is midway between them. What is its length?

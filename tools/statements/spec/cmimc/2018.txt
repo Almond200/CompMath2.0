@@ -1,0 +1,152 @@
+=== algebra-1
+Misha has accepted a job in the mines and will produce one ore each day. At the market, he is able to buy or sell one ore for $\$3$, buy or sell bundles of three wheat for $\$12$ each, or sell one wheat for one ore. His ultimate goal is to build a city, which requires three ore and two wheat. How many dollars must Misha begin with in order to build a city after three days of working?
+=== algebra-2
+Suppose $x>1$ is a real number such that $x+\frac{1}{x}=\sqrt{22}$. What is $x^2-\frac{1}{x^2}$?
+=== algebra-3
+Let $P(x)=x^2+4x+1$. What is the product of all real solutions to the equation $P(P(x))=0$?
+=== algebra-4
+$2018$ little ducklings numbered $1$ through $2018$ are standing in a line, with each holding a slip of paper with a nonnegative number on it; it is given that ducklings $1$ and $2018$ have the number zero. At some point, ducklings $2$ through $2017$ change their number to equal the average of the numbers of the ducklings to their left and right. Suppose the new numbers on the ducklings sum to $1000$. What is the maximum possible sum of the original numbers on all $2018$ slips?
+=== algebra-5
+Suppose $a$, $b$, and $c$ are nonzero real numbers such that
+$$bc+\frac{1}{a}=ca+\frac{2}{b}=ab+\frac{7}{c}=\frac{1}{a+b+c}.$$
+Find $a+b+c$.
+=== algebra-6
+We call $\overline{a_n\ldots a_2}$ the Fibonacci representation of a positive integer $k$ if
+$$k=\sum_{i=2}^{n}a_iF_i,$$
+where $a_i\in\{0,1\}$ for all $i$, $a_n=1$, and $F_i$ denotes the $i^{\text{th}}$ Fibonacci number ($F_0=0$, $F_1=1$, and $F_i=F_{i-1}+F_{i-2}$ for all $i\ge 2$). This representation is said to be minimal if it has fewer $1$s than any other Fibonacci representation of $k$. Find the smallest positive integer that has eight ones in its minimal Fibonacci representation.
+=== algebra-7
+Compute
+$$\sum_{k=0}^{2017}\frac{5+\cos\left(\frac{\pi k}{1009}\right)}{26+10\cos\left(\frac{\pi k}{1009}\right)}.$$
+=== algebra-8
+Suppose $P$ is a cubic polynomial satisfying $P(0)=3$ and
+$$(x^3-2x+1-P(x))(2x^3-5x^2+4-P(x))\le 0$$
+for all $x\in\mathbb{R}$. Determine all possible values of $P(-1)$.
+=== algebra-9
+Suppose $a_0,a_1,\dots,a_{2018}$ are integers such that
+$$(x^2-3x+1)^{1009}=\sum_{k=0}^{2018}a_kx^k$$
+for all real numbers $x$. Compute the remainder when $a_0^2+a_1^2+\cdots+a_{2018}^2$ is divided by $2017$.
+=== algebra-10
+Define a sequence of polynomials $F_n(x)$ by $F_0(x)=0$, $F_1(x)=x-1$, and for $n\ge 1$,
+$$F_{n+1}(x)=2xF_n(x)-F_{n-1}(x)+2F_1(x).$$
+For each $n$, $F_n(x)$ can be written in the form
+$$F_n(x)=c_nP_1(x)P_2(x)\cdots P_{g(n)}(x)$$
+where $c_n$ is a constant and $P_1(x),P_2(x),\cdots,P_{g(n)}(x)$ are non-constant polynomials with integer coefficients and $g(n)$ is as large as possible. For all $2<n<101$, let $t$ be the minimum possible value of $g(n)$ in the above expression; for how many $k$ in the specified range is $g(k)=t$?
+=== combinatorics-1
+Ninety-eight apples who always lie and one banana who always tells the truth are randomly arranged along a line. The first fruit says "One of the first forty fruit is the banana!" The last fruit responds "No, one of the last forty fruit is the banana!" The fruit in the middle yells "I'm the banana!" In how many positions could the banana be?
+=== combinatorics-2
+Compute the number of ways to rearrange nine white cubes and eighteen black cubes into a $3\times 3\times 3$ cube such that each $1\times 1\times 3$ row or column contains exactly one white cube. Note that rotations are considered distinct.
+=== combinatorics-3
+Michelle is at the bottom-left corner of a $6\times 6$ lattice grid, at $(0,0)$. The grid also contains a pair of one-time-use teleportation devices at $(2,2)$ and $(3,3)$; the first time Michelle moves to one of these points she is instantly teleported to the other point and the devices disappear. If she can only move up or to the right in unit increments, in how many ways can she reach the point $(5,5)$?
+=== combinatorics-4
+At CMU, the A and the B buses arrive once every $20$ and $18$ minutes, respectively. Kevin prefers the A bus but does not want to wait for too long. He commits to the following waiting scheme: he will take the first A bus that arrives, but after waiting for five minutes he will take the next bus that comes, no matter what it is. Determine the probability that he ends up on an A bus.
+=== combinatorics-5
+Victor shuffles a standard $54$-card deck then flips over cards one at a time onto a pile stopping after the first ace. However, if he ever reveals a joker he discards the entire pile, including the joker, and starts a new pile; for example, if the sequence of cards is 2-3-Joker-A, the pile ends with one card in it. Find the expected number of cards in the end pile.
+=== combinatorics-6
+Richard rolls a fair six-sided die repeatedly until he rolls his twentieth prime number or his second even number. Compute the probability that his last roll is prime.
+=== combinatorics-7
+Nine distinct light bulbs are placed in a circle, each of which is off. Determine the number of ways to turn on some of the light bulbs in the circle such that no four consecutive bulbs are all off.
+=== combinatorics-8
+Fred and George play a game, as follows. Initially, $x=1$. Each turn, they pick $r\in\{3,5,8,9\}$ uniformly at random and multiply $x$ by $r$. If $x+1$ is a multiple of $13$, Fred wins; if $x+3$ is a multiple of $13$, George wins; otherwise, they repeat. Determine the probability that Fred wins the game.
+=== combinatorics-9
+Compute the number of rearrangements $a_1,a_2,\dots,a_{2018}$ of the sequence $1,2,\dots,2018$ such that $a_k>k$ for exactly one value of $k$.
+=== combinatorics-10
+Call a set $S\subseteq\{0,1,\dots,14\}$ sparse if $x+1\pmod{15}$ (here referring to the remainder when $x+1$ is divided by $15$) is not in $S$ whenever $x\in S$. Find the number of sparse sets $T$ such that the sum of the elements of $T$ is a multiple of $15$.
+=== computer-science-1
+Consider the following two vertex-weighted graphs, and denote them as having vertex sets $V=\{v_1,v_2,\dots,v_6\}$ and $W=\{w_1,w_2,\dots,w_6\}$, respectively (numbered in the same direction and way). The weights in the second graph are such that for all $1\le i\le 6$, the weight of $w_i$ is the sum of the weights of the neighbors of $v_i$. Determine the sum of the weights of the original graph.
+
+@@fig:cmimc2018_computerscience-1.png@@
+=== computer-science-2
+Consider the natural implementation of computing Fibonacci numbers:
+
+$\mathrm{FIB}(n)$:
+• If $n=0$ or $n=1$, return $1$.
+• Return $\mathrm{FIB}(n-1)+\mathrm{FIB}(n-2)$.
+
+When $\mathrm{FIB}(10)$ is evaluated, how many recursive calls to FIB occur?
+=== computer-science-3
+You are given the existence of an unsorted sequence $a_1,\dots,a_5$ of five distinct real numbers. The Erdős–Szekeres theorem states that there exists a subsequence of length $3$ which is either strictly increasing or strictly decreasing. You do not have access to the $a_i$, but you do have an oracle which, when given two indexes $1\le i<j\le 5$, will tell you whether $a_i<a_j$ or $a_i>a_j$. What is the minimum number of calls to the oracle needed in order to identify an ordered triple of integers $(r,s,t)$ such that $a_r,a_s,a_t$ is one such sequence?
+=== computer-science-4
+Consider the grid of numbers shown below.
+$$\begin{array}{ccccc}20&01&96&56&16\\37&48&38&64&60\\96&97&42&20&98\\35&64&96&40&71\\50&58&90&16&89\end{array}$$
+Among all paths that start on the top row, move only left, right, and down, and end on the bottom row, what is the minimum sum of their entries?
+=== computer-science-5
+An access pattern $\pi$ is a permutation of $\{1,2,\dots,50\}$ describing the order in which some $50$ memory addresses are accessed. We define the locality of $\pi$ to be how much the program jumps around the memory, or numerically,
+$$\sum_{i=2}^{50}|\pi(i)-\pi(i-1)|.$$
+If $\pi$ is a uniformly randomly chosen access pattern, what is the expected value of its locality?
+=== computer-science-6
+For integer $n\ge 2$ and real $0\le p\le 1$, define $\mathcal{W}_{n,p}$ to be the complete weighted undirected random graph with vertex set $\{1,2,\dots,n\}$: the edge $(i,j)$ will have weight $\min(i,j)$ with probability $p$ and weight $\max(i,j)$ otherwise. Let $\mathcal{L}_{n,p}$ denote the total weight of the minimum spanning tree of $\mathcal{W}_{n,p}$. Find the largest integer less than the expected value of $\mathcal{L}_{2018,1/2}$.
+=== computer-science-7
+I give you a function rand that returns a number chosen uniformly at random from $[0,T]$ for some number $T$ that you don't know. Your task is to approximate $T$. You do this by calling rand $100$ times, recording the results as $X_1,X_2,\dots,X_{100}$, and guessing
+$$\hat{T}=\alpha\cdot\max\{X_1,X_2,\dots,X_{100}\}$$
+for some $\alpha$. Which value of $\alpha$ ensures that $\mathbb{E}[\hat{T}]=T$?
+=== computer-science-8
+We consider a simple model for balanced parenthesis checking. Let $\mathcal{R}=\{\texttt{(())}\to\texttt{A},\ \texttt{(A)}\to\texttt{A},\ \texttt{AA}\to\texttt{A}\}$ be a set of rules for phrase reduction. Ideally, any given phrase is balanced if and only if the model is able to reduce the phrase to $\texttt{A}$ by some arbitrary sequence of rule applications. For example, to show $\texttt{((()))}$ is balanced we can perform the following sequence of reductions.
+$$\texttt{((()))}\to\texttt{(A)}\to\texttt{A}\qquad\checkmark$$
+Unfortunately, the above set of rules $\mathcal{R}$ is not complete, since there exist parenthetical phrases which are balanced but which are not balanced according to $\mathcal{R}$. Determine the number of such phrases of length $14$.
+=== computer-science-9
+Consider the following modified algorithm for binary search, which we will call weighted binary search:
+
+$\mathrm{SEARCH}(L,\text{value})$:
+• $\text{hi}\leftarrow\text{len}(L)-1$
+• $\text{lo}\leftarrow 0$
+• While $\text{hi}\ge\text{lo}$:
+• • $\text{guess}\leftarrow\lfloor w\cdot\text{lo}+(1-w)\cdot\text{hi}\rfloor$
+• • $\text{mid}\leftarrow L[\text{guess}]$
+• • If $\text{mid}>\text{value}$: $\text{hi}\leftarrow\text{guess}-1$
+• • Else if $\text{mid}<\text{value}$: $\text{lo}\leftarrow\text{guess}+1$
+• • Else: return guess
+• Return $-1$ (not found)
+
+Assume $L$ is a list of the integers $\{1,2,\dots,100\}$, in that order. Further assume that accessing the $k$th index of $L$ costs $k+1$ tokens (e.g. $L[0]$ costs $1$ token). Let $S$ be the set of all $w\in\left[\frac12,1\right)$ which minimize the average cost when value is an integer selected at random in the range $[1,50]$. Given that $S=\left(x,\frac{74}{99}\right]$, determine $x$.
+=== computer-science-10
+Consider an undirected, connected graph $G$ with vertex set $\{v_1,v_2,\dots,v_6\}$. Starting at the vertex $v_1$, an ant uses a DFS algorithm to traverse through $G$ under the condition that if there are multiple unvisited neighbors of some vertex, the ant chooses the $v_i$ with smallest $i$. How many possible graphs $G$ are there satisfying the following property: for each $1\le i\le 6$, the vertex $v_i$ is the $i^{\text{th}}$ new vertex the ant traverses?
+=== geometry-1
+Let $ABC$ be a triangle. Point $P$ lies in the interior of $\triangle ABC$ such that $\angle ABP=20^\circ$ and $\angle ACP=15^\circ$. Compute $\angle BPC-\angle BAC$.
+=== geometry-2
+Let $ABCD$ be a square of side length $1$, and let $P$ be a variable point on $\overline{CD}$. Denote by $Q$ the intersection point of the angle bisector of $\angle APB$ with $\overline{AB}$. The set of possible locations for $Q$ as $P$ varies along $\overline{CD}$ is a line segment; what is the length of this segment?
+=== geometry-3
+Let $ABC$ be a triangle with side lengths $5$, $4\sqrt{2}$, and $7$. What is the area of the triangle with side lengths $\sin A$, $\sin B$, and $\sin C$?
+=== geometry-4
+Suppose $\overline{AB}$ is a segment of unit length in the plane. Let $f(X)$ and $g(X)$ be functions of the plane such that $f$ corresponds to rotation about $A$ $60^\circ$ counterclockwise and $g$ corresponds to rotation about $B$ $90^\circ$ clockwise. Let $P$ be a point with $g(f(P))=P$; what is the sum of all possible distances from $P$ to line $AB$?
+=== geometry-5
+Select points $T_1,T_2$ and $T_3$ in $\mathbb{R}^3$ such that $T_1=(0,1,0)$, $T_2$ is at the origin, and $T_3=(1,0,0)$. Let $T_0$ be a point on the line $x=y=0$ with $T_0\ne T_2$. Suppose there exists a point $X$ in the plane of $\triangle T_1T_2T_3$ such that the quantity $(XT_i)[T_{i+1}T_{i+2}T_{i+3}]$ is constant for all $i=0$ to $i=3$, where $[\mathcal{P}]$ denotes area of the polygon $\mathcal{P}$ and indices are taken modulo $4$. What is the magnitude of the $z$-coordinate of $T_0$?
+=== geometry-6
+Let $\omega_1$ and $\omega_2$ be intersecting circles in the plane with radii $12$ and $15$, respectively. Suppose $\Gamma$ is a circle such that $\omega_1$ and $\omega_2$ are internally tangent to $\Gamma$ at $X_1$ and $X_2$, respectively. Similarly, $\ell$ is a line that is tangent to $\omega_1$ and $\omega_2$ at $Y_1$ and $Y_2$, respectively. If $X_1X_2=18$ and $Y_1Y_2=9$, what is the radius of $\Gamma$?
+=== geometry-7
+Let $ABC$ be a triangle with $AB=10$, $AC=11$, and circumradius $6$. Points $D$ and $E$ are located on the circumcircle of $\triangle ABC$ such that $\triangle ADE$ is equilateral. Line segments $\overline{DE}$ and $\overline{BC}$ intersect at $X$. Find $\dfrac{BX}{XC}$.
+=== geometry-8
+In quadrilateral $ABCD$, $AB=2$, $AD=3$, $BC=CD=\sqrt{7}$, and $\angle DAB=60^\circ$. Semicircles $\gamma_1$ and $\gamma_2$ are erected on the exterior of the quadrilateral with diameters $\overline{AB}$ and $\overline{AD}$; points $E\ne B$ and $F\ne D$ are selected on $\gamma_1$ and $\gamma_2$ respectively such that $\triangle CEF$ is equilateral. What is the area of $\triangle CEF$?
+=== geometry-9
+Suppose $\mathcal{E}_1\ne\mathcal{E}_2$ are two intersecting ellipses with a common focus $X$; let the common external tangents of $\mathcal{E}_1$ and $\mathcal{E}_2$ intersect at a point $Y$. Further suppose that $X_1$ and $X_2$ are the other foci of $\mathcal{E}_1$ and $\mathcal{E}_2$, respectively, such that $X_1\in\mathcal{E}_2$ and $X_2\in\mathcal{E}_1$. If $X_1X_2=8$, $XX_2=7$, and $XX_1=9$, what is $XY^2$?
+=== geometry-10
+Let $ABC$ be a triangle with circumradius $17$, inradius $4$, circumcircle $\Gamma$ and $A$-excircle $\Omega$. Suppose the reflection of $\Omega$ over line $BC$ is internally tangent to $\Gamma$. Compute the area of $\triangle ABC$.
+=== number-theory-1
+Suppose $a$, $b$, and $c$ are relatively prime integers such that
+$$\frac{a}{b+c}=2\quad\text{and}\quad\frac{b}{a+c}=3.$$
+What is $|c|$?
+=== number-theory-2
+Find all integers $n$ for which $(n-1)\cdot 2^n+1$ is a perfect square.
+=== number-theory-3
+Let $S$ be the set of natural numbers that cannot be written as the sum of three squares. Legendre's three-square theorem states that $S$ consists of precisely the integers of the form $4^a(8b+7)$ where $a$ and $b$ are nonnegative integers. Find the smallest $n\in\mathbb{N}$ such that $n$ and $n+1$ are both in $S$.
+=== number-theory-4
+Let $a>1$ be a positive integer. The sequence of natural numbers $\{a_n\}_{n\ge 1}$ is defined such that $a_1=a$ and for all $n\ge 1$, $a_{n+1}$ is the largest prime factor of $a_n^2-1$. Determine the smallest possible value of $a$ such that the numbers $a_1,a_2,\dots,a_7$ are all distinct.
+=== number-theory-5
+It is given that there exist unique integers $m_1,\dots,m_{100}$ such that
+$$0\le m_1<m_2<\cdots<m_{100}\quad\text{and}\quad 2018=\binom{m_1}{1}+\binom{m_2}{2}+\cdots+\binom{m_{100}}{100}.$$
+Find $m_1+m_2+\cdots+m_{100}$.
+=== number-theory-6
+Let $\phi(n)$ denote the number of positive integers less than or equal to $n$ that are coprime to $n$. Find the sum of all $1<n<100$ such that $\phi(n)\mid n$.
+=== number-theory-7
+For each $q\in\mathbb{Q}$, let $\pi(q)$ denote the period of the repeating base-$16$ expansion of $q$, with the convention of $\pi(q)=0$ if $q$ has a terminating base-$16$ expansion. Find the maximum value among
+$$\pi\left(\frac{1}{1}\right),\ \pi\left(\frac{1}{2}\right),\ \dots,\ \pi\left(\frac{1}{70}\right).$$
+=== number-theory-8
+It is given that there exists a unique triple of positive primes $(p,q,r)$ such that $p<q<r$ and
+$$\frac{p^3+q^3+r^3}{p+q+r}=249.$$
+Find $r$.
+=== number-theory-9
+Let $\phi(n)$ denote the number of positive integers less than or equal to $n$ that are coprime to $n$. Compute
+$$\sum_{n=1}^{\infty}\frac{\phi(n)}{5^n+1}.$$
+=== number-theory-10
+Let $a_1<a_2<\cdots<a_k$ denote the sequence of all positive integers between $1$ and $91$ which are relatively prime to $91$, and set $\omega=e^{2\pi i/91}$. Define
+$$S=\prod_{1\le q<p\le k}\left(\omega^{a_p}-\omega^{a_q}\right).$$
+Given that $S$ is a positive integer, compute the number of positive divisors of $S$.

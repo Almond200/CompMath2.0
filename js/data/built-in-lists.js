@@ -58,7 +58,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid", "rolling-without-slipping", "tethered-animal", "unfold-the-bounces"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 144 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 145 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -77,7 +77,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["log-rules", "change-of-base", "log-swap-identity", "exponent-laws", "floor-basics", "ramanujan-nested-radical", "absolute-value-rules", "absolute-value-identities", "take-logs-linearize", "log-system", "name-the-floor", "group-equal-floors", "floor-sum-range", "floor-equation", "transforming-equations"] },
       { title: "Trigonometry",
         note: "Identities, and the triangle-specific relations that live between algebra and geometry.",
-        ids: ["pythagorean-identities", "common-angle-values", "reduction-identities", "angle-addition", "harmonic-addition", "double-angle", "half-angle", "special-trig-values", "even-power-sin-cos-sums", "trig-telescoping-product", "inverse-trig-identities", "sum-difference-angle-product"] },
+        ids: ["pythagorean-identities", "common-angle-values", "reduction-identities", "angle-addition", "harmonic-addition", "double-angle", "half-angle", "special-trig-values", "even-power-sin-cos-sums", "trig-telescoping-product", "inverse-trig-identities", "sum-difference-angle-product", "square-and-add"] },
       { title: "Complex Numbers & Roots of Unity",
         note: "Algebra that becomes geometry, and the filter that extracts every nth term of a sum.",
         ids: ["complex-basics", "eulers-formula", "de-moivre", "roots-of-unity", "polar-form", "conjugate-both-sides", "complex-modulus-argument"] },

@@ -3722,7 +3722,7 @@
       const pr = parseRef(e.ref), slug = problemSlug(e.ref), rating = problemDifficulty.ratingFor(slug);
       const paper = (window.MATH_CONTEST_PAPERS || {})[e.ref.replace(/,\s*Problem\s+\d+$/, "")];
       return {
-        ref: e.ref, slug, tree: e.tree || [], calculus: !!e.calculus, elo: rating ? rating.elo : null, eloSource: rating ? rating.source : null,
+        ref: e.ref, slug, tree: e.tree || [], offtree: e.offtree || "", elo: rating ? rating.elo : null, eloSource: rating ? rating.source : null,
         url: e.url || paper?.url || officialPdf(e.ref, "problems") || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
         // Where the official solution is, for a problem whose solution we link instead of write.
         // An AHSME problem has no solution of ours either (owner, 2026-11-13): its AoPS wiki page has them.
@@ -9961,7 +9961,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const subjects = sec("Subjects", `<div class="pp-subjects">${pie}<table class="pf-table pp-table"><thead><tr><th scope="col" aria-label="Subject"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th>${cmp ? `<th scope="col">${base.id === "all" ? "Usual" : base.label}</th>` : ""}<th scope="col"><span class="pf-long">Median rating</span><span class="pf-short" aria-hidden="true">Median</span></th></tr></thead><tbody>${subs.map(r => {
       const xs = (bySub[r.id] || []).sort((x, y) => x - y), u = cmp ? cmp.subjects[r.id] || 0 : 0;
       return `<tr><th scope="row"><i class="fam-dot" style="background:var(--subj-${r.id})"></i><a href="${topicHash(r.id)}">${topicHtml(r)}</a></th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${xs.length ? Math.max(2, xs.length / subMax * 100).toFixed(1) : 0}%;background:var(--subj-${r.id})"></i></span></td><td>${xs.length}</td>${cmp ? `<td>${Number.isInteger(u) ? u : u.toFixed(1)}</td>` : ""}<td>${xs.length ? quantile(xs, 0.5) : "&ndash;"}</td></tr>`;
-    }).join("")}</tbody></table></div>${(n => n ? `<p class="pp-words">${n} calculus problem${n === 1 ? " is" : "s are"} not filed under a subject.</p>` : "")(rated.filter(p => p.calculus).length)}`);
+    }).join("")}</tbody></table></div>${(kinds => { const parts = Object.entries(kinds).map(([k, n]) => `${n} ${k} problem${n === 1 ? "" : "s"}`); return parts.length ? `<p class="pp-words">${parts.join(" and ")} ${parts.length === 1 && Object.values(kinds)[0] === 1 ? "is" : "are"} not filed under a subject.</p>` : ""; })(rated.filter(p => p.offtree).reduce((o, p) => (o[p.offtree] = (o[p.offtree] || 0) + 1, o), {}))}`);
 
     // Over the years: the contest's median paper rating, sitting by sitting, with this paper's
     // sitting picked out. Each bar opens its year.
@@ -10127,7 +10127,21 @@ The book remembers the last lesson you opened, in this browser, and the contents
     "SMT": { dir: "smt", credit: "© Stanford Math Tournament" },
     "BMT": { dir: "bmt", credit: "© Berkeley Math Tournament" },
     "ARML": { dir: "arml", credit: "© American Regions Mathematics League" },
-    "ARML Local": { dir: "arml", credit: "© American Regions Mathematics League" }
+    "ARML Local": { dir: "arml", credit: "© American Regions Mathematics League" },
+    "CMIMC": { dir: "cmimc", credit: "© Carnegie Mellon Informatics and Mathematics Competition" },
+    "CHMMC": { dir: "chmmc", credit: "© Caltech Harvey Mudd Math Competition" },
+    "Duke Math Meet": { dir: "duke", credit: "© Duke Math Meet" },
+    "MMATHS": { dir: "mmaths", credit: "© Yale Math Competitions" },
+    "Girls in Math at Yale": { dir: "gmay", credit: "© Yale Math Competitions" },
+    "UMD HSMC": { dir: "umd", credit: "© University of Maryland High School Mathematics Competition" },
+    "Lehigh": { dir: "lehigh", credit: "© Lehigh University High School Math Contest" },
+    "Utah State Math Contest": { dir: "utah", credit: "© Utah State Math Contest" },
+    "Columbus State Tournament": { dir: "columbus", credit: "© Columbus State Invitational Mathematics Tournament" },
+    "MBMT Lower": { dir: "mbmt", credit: "© Montgomery Blair Math Tournament" },
+    "MBMT Upper": { dir: "mbmt", credit: "© Montgomery Blair Math Tournament" },
+    "Calgary Junior Math Contest": { dir: "calgary", credit: "© University of Calgary Junior Mathematics Contest" },
+    "PUMaC Division A": { dir: "pumac", credit: "© Princeton University Mathematics Competition" },
+    "PUMaC Division B": { dir: "pumac", credit: "© Princeton University Mathematics Competition" }
   };
   function problemSourceLabel(p) {
     if (p.sourceMirror) return "Open the original paper (mirror)";
@@ -10142,7 +10156,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 57;
+  const STATEMENTS_V = 70;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {
@@ -10259,7 +10273,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const PTREE_ELBOW = `<svg class="ptree-stem" aria-hidden="true"><line x1=".75" y1="0" x2=".75" y2="100%"/></svg><svg class="ptree-elbow" viewBox="0 0 20 12" width="20" height="12" aria-hidden="true"><path d="M.75 0v2a4 4 0 0 0 4 4H18.5M14.5 2l4 4-4 4"/></svg>`;
   function topicTreeHtml(p) {
     const paths = p.tree.filter(id => TOPIC_NODES.has(id)).map(topicPath);
-    if (!paths.length) return `<p class="chain-empty">${p.calculus ? "n/a" : "Not filed yet."}</p>`;
+    if (!paths.length) return `<p class="chain-empty">${p.offtree ? "n/a" : "Not filed yet."}</p>`;
     const filed = new Set(p.tree);
     const trie = new Map();
     for (const path of paths) {

@@ -1,0 +1,100 @@
+=== 1
+Which number is the largest? (Note: $a^{b^c}$ means $a^{(b^c)}$)
+
+(A) $3^{2^1}$  (B) $2^{1^3}$  (C) $3^{1^2}$  (D) $1^{2^3}$  (E) $2^{2^2}$
+=== 2
+If $6x+7y=2004$ and $7x+6y=4002$, then $x+y=$
+
+(A) $221$  (B) $400$  (C) $462$  (D) $487$  (E) $770$
+=== 3
+Let $S$ be a square pizza of side $s$. Let $C$ be a circular pizza of radius $r$. The pizzas $S$ and $C$ have the same perimeter. Let $A_S$ be the area of $S$, and let $A_C$ be the area of $C$. What is $A_S/A_C$?
+
+(A) $\pi^2/4$  (B) $4/\pi^2$  (C) $1$  (D) $4/\pi$  (E) $\pi/4$
+=== 4
+SpongeBob SquareDigits likes $2$-digit numbers $n\ge 10$ such that both digits are squares (for example, $10$ and $41$ are two such numbers). How many of these numbers are there?
+
+(A) $3$  (B) $6$  (C) $8$  (D) $12$  (E) $15$
+=== 5
+There are $5$ geese in a gaggle. If, working together, the gaggle produces $55$ eggs in $5555$ days, what is the average number of days it takes a single goose to lay an egg?
+
+(A) $11$  (B) $101$  (C) $505$  (D) $555$  (E) $1111$
+=== 6
+A chain costs $\$1.00$ per foot. A customer asks the merchant for $4$ feet of chain. The merchant takes a $10$-foot length of chain and cuts off a piece that he claims is $4$ feet long. However, the customer notices that the piece of chain is only $44$ inches long. Therefore the customer quickly announces that he instead wants $6$ feet of chain and will take the other piece. He then pays $\$6.00$ to the merchant, who unhappily accepts the payment. How much (to the closest cent) does the customer pay per foot for the chain?
+
+(A) $\$0.76$  (B) $\$0.83$  (C) $\$0.93$  (D) $\$0.95$  (E) $\$0.97$
+=== 7
+Let $x$ and $y$ be real numbers. The smallest possible value of $|2-x|+|x-y|+|y-2004|$ is
+
+(A) $2$  (B) $1003$  (C) $2002$  (D) $2004$  (E) $2006$
+=== 8
+If $0<x<90^\circ$ and $\sin x=3/5$, then $\tan x=$
+
+(A) $0.25$  (B) $0.45$  (C) $0.75$  (D) $0.8$  (E) $1.2$
+=== 9
+Fresh cherries contain $99\%$ water. You start with $100$ pounds of fresh cherries. After a few hours in the sun, some of the water evaporates and the percentage of water in the cherries becomes $98\%$. What is the new weight of the cherries?
+
+(A) $90$ pounds  (B) $50$ pounds  (C) $80$ pounds  (D) $95$ pounds  (E) $98$ pounds
+=== 10
+An ancient manuscript had the statement that $X^2+bX+30$ has two integer roots. Unfortunately, it was impossible to read the positive integer $b$. How many possibilities are there for $b$?
+
+(A) none  (B) $2$  (C) $3$  (D) $4$  (E) $6$
+=== 11
+Which of the following is the largest?
+
+(A) $2^{\log_5 6}$  (B) $2^{\log_6 5}$  (C) $3^{\log_6 5}$  (D) $3^{\log_5 6}$  (E) $3$
+=== 12
+Let $a=\sqrt{\sqrt{26}+\sqrt[3]{65}}$, $b=\sqrt{\sqrt[3]{26}+\sqrt{65}}$, and $c=\sqrt[3]{\sqrt{26}+\sqrt{65}}$. Which of the following is true?
+
+(A) $a<b<c$  (B) $b<a<c$  (C) $c<b<a$  (D) $a<c<b$  (E) $c<a<b$
+=== 13
+Exactly one of the three statements A, B, C is true and the other two are false. Suppose exactly one of the following statements a, b, c, d, e below is true. Which is it?
+
+(A) B is true  (B) A is false and B is true  (C) C is false and A is true  (D) C is true  (E) B is false and A is true
+=== 14
+The admission fee to a mathematics exhibition was $\$15$. When the fee was reduced, the (nonzero) number of customers per day went up by $50\%$, and the amount of money collected per day went up by $25\%$. What was the reduced fee?
+
+(A) $\$10.98$  (B) $\$12.50$  (C) $\$13.57$  (D) $\$14.16$  (E) $\$14.25$
+=== 15
+A stock broker trades stocks during $100$ days. On day $1$ he loses $\$100$. Every day after that he loses $\$100$ more than on the previous day. The average daily loss during the $100$ day period is
+
+(A) $5050$  (B) $10000$  (C) $100$  (D) $252525$  (E) $50000$
+=== 16
+The polynomial $X^2-9X+3$ has roots $r$ and $s$. If $X^2+bX+c$ has roots $r^2$ and $s^2$, then $(b,c)$ is
+
+(A) $(-82,9)$  (B) $(200,4)$  (C) $(100,9)$  (D) $(12,15)$  (E) $(-75,9)$
+=== 17
+What is the last digit in the decimal expansion of $7^{(7^7)}$?
+
+(A) $1$  (B) $3$  (C) $5$  (D) $7$  (E) $9$
+=== 18
+Find the area of a regular octagon inscribed into a circle of radius $1$.
+
+(A) $\pi/2$  (B) $\sqrt2$  (C) $2\sqrt3$  (D) $5/2$  (E) $2\sqrt2$
+=== 19
+Two hikers started walking at noon, the 1st from A to B, the 2nd from B to A along the same path. They each walked at a constant speed. They met at $3$ pm. The first came to B $2.5$ hours before the 2nd got to A. When did the second hiker get to A?
+
+(A) $6{:}00$  (B) $6{:}30$  (C) $7{:}00$  (D) $7{:}30$  (E) $8{:}00$
+=== 20
+Peter Rabbit starts hopping at the point $(0,0)$ and finishes at $(6,0)$. Each hop is from a point of the form $(x,y)$ to one of the points $(x+1,y\pm 1)$. However, he is not allowed to jump on a point $(x,y)$ with $y<0$ (because there is poison ivy in the fourth quadrant). How many paths are there from $(0,0)$ to $(6,0)$?
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$
+=== 21
+Let $k$ be the largest positive integer, not a multiple of $10$, such that removing the last $2$ digits of $k^2$ leaves a perfect square. Then
+
+(A) $0<k<20$  (B) $20<k<50$  (C) $50<k<100$  (D) $100<k<200$  (E) $200<k$
+=== 22
+How many values of $A$ are there such that the system of equations $x^2=y^2$, $(x-A)^2+y^2=1$ has exactly $3$ solutions $(x,y)$?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$
+=== 23
+The Seven Dwarfs write down all $7$-digit numbers that can be formed using each of the digits $1,2,3,4,5,6,7$ exactly once (for example, $3175426$ is one of their numbers). The Wicked Witch, using the phrase "divide and conquer" literally, looks for pairs $(a,b)$ of such numbers so that $b$ is a multiple of $a$ but $a\ne b$. How many pairs are there?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$
+=== 24
+Which of the three statements are true? (i) There exist two triangles such that the sides of one triangle are all less than $1$ inch while the sides of the other triangle are all bigger than $100$ feet but the area of the first triangle is bigger than the area of the second. (ii) There exists a triangle whose altitudes are all shorter than $1$ inch but whose area is bigger than $100$ square inches. (iii) There exists a triangle whose altitudes are all longer than $2$ inches but whose area is less than $1$ square inch.
+
+(A) (i)  (B) none  (C) (i) and (ii)  (D) (i) and (iii)  (E) (ii) and (iii)
+=== 25
+Let $m=1111\cdots111$ ($2004$ ones) and $n=1111\cdots111$ ($666$ ones). The greatest common divisor of $m$ and $n$ is
+
+(A) $111$  (B) $333$  (C) $111111$ ($6$ ones)  (D) $333333$  (E) $111111111111$ ($12$ ones)

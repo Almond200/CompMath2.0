@@ -1,0 +1,48 @@
+// Problems and diagrams © 2020 Caltech Harvey Mudd Math Competition. Reproduced with permission from the Caltech Harvey Mudd Math Competition.
+// Source: the official CHMMC papers. Built by tools/statements/build.py from tools/statements/spec/chmmc/2020.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2020-chmmc-individual-1": { s: String.raw`A right triangle $ABC$ is inscribed in the circular base of a cone. If two of the side lengths of $ABC$ are $3$ and $4$, and the distance from the vertex of the cone to any point on the circumference of the base is $3$, then the minimum possible volume of the cone can be written as $\frac{m\pi\sqrt{n}}{p}$, where $m$, $n$, and $p$ are positive integers, $m$ and $p$ are relatively prime, and $n$ is squarefree. Find $m+n+p$.`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-2": { s: String.raw`Caltech's $900$ students are evenly spaced along the circumference of a circle. How many equilateral triangles can be formed with at least two Caltech students as vertices?`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-3": { s: String.raw`A Beaver-number is a positive $5$ digit integer whose digit sum is divisible by $17$. Call a pair of Beaver-numbers differing by exactly $1$ a Beaver-pair. The smaller number in a Beaver-pair is called an MIT Beaver, while the larger number is called a CIT Beaver. Find the positive difference between the largest and smallest CIT Beavers (over all Beaver-pairs).`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-4": { s: String.raw`Let $P(x)=x^3-6x^2-5x+4$. Suppose that $y$ and $z$ are real numbers such that
+$$zP(y)=P(y-n)+P(y+n)$$
+for all reals $n$. Evaluate $P(y)$.`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-5": { s: String.raw`Let $S$ be the sum of all positive integers $n$ such that $\frac35$ of the positive divisors of $n$ are multiples of $6$ and $n$ has no prime divisors greater than $3$. Compute $\frac{S}{36}$.`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-6": { s: String.raw`Let $P_0P_5Q_5Q_0$ be a rectangular chocolate bar, one half dark chocolate and one half white chocolate, as shown in the diagram below. We randomly select $4$ points on the segment $P_0P_5$, and immediately after selecting those points, we label those $4$ selected points $P_1,P_2,P_3,P_4$ from left to right. Similarly, we randomly select $4$ points on the segment $Q_0Q_5$, and immediately after selecting those points, we label those $4$ selected points $Q_1,Q_2,Q_3,Q_4$ from left to right. The segments $P_1Q_1$, $P_2Q_2$, $P_3Q_3$, $P_4Q_4$ divide the rectangular chocolate bar into $5$ smaller trapezoidal pieces of chocolate. The probability that exactly $3$ pieces of chocolate contain both dark and white chocolate can be written as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.
+
+@@fig:chmmc/2020/individual-6.png@@`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-7": { s: String.raw`Given $10$ points on a plane such that no three are collinear, we connect each pair of points with a segment and color each segment either red or blue. Assume that there exists some point $A$ among the $10$ points such that:
+
+(1) There is an odd number of red segments connected to $A$
+
+(2) The number of red segments connected to each of the other points are all different
+
+Find the number of red triangles (i.e, a triangle whose three sides are all red segments) on the plane.`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-8": { s: String.raw`Define
+$$S=\tan^{-1}(2020)+\sum_{j=0}^{2020}\tan^{-1}(j^2-j+1).$$
+Then $S$ can be written as $\frac{m\pi}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-9": { s: String.raw`For a positive integer $m$, let $\varphi(m)$ be the number of positive integers $k\le m$ such that $k$ and $m$ are relatively prime, and let $\sigma(m)$ be the sum of the positive divisors of $m$. Find the sum of all even positive integers $n$ such that
+$$\frac{n^5\sigma(n)-2}{\varphi(n)}$$
+is an integer.`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-10": { s: String.raw`A research facility has $60$ rooms, numbered $1,2,\dots60$, arranged in a circle. The entrance is in room $1$ and the exit is in room $60$, and there are no other ways in and out of the facility. Each room, except for room $60$, has a teleporter equipped with an integer instruction $1\le i<60$ such that it teleports a passenger exactly $i$ rooms clockwise.
+
+On Monday, a researcher generates a random permutation of $1,2,\dots,60$ such that $1$ is the first integer in the permutation and $60$ is the last. Then, she configures the teleporters in the facility such that the rooms will be visited in the order of the permutation.
+
+On Tuesday, however, a cyber criminal hacks into a randomly chosen teleporter, and he reconfigures its instruction by choosing a random integer $1\le j'<60$ such that the hacked teleporter now teleports a passenger exactly $j'$ rooms clockwise (note that it is possible, albeit unlikely, that the hacked teleporter's instruction remains unchanged from Monday). This is a problem, since it is possible for the researcher, if she were to enter the facility, to be trapped in an endless "cycle" of rooms.
+
+The probability that the researcher will be unable to exit the facility after entering in room $1$ can be written as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-11": { s: String.raw`Let $n\ge 3$ be a positive integer. Suppose that $\Gamma$ is a unit circle passing through a point $A$. A regular $3$-gon, regular $4$-gon, $\dots$, regular $n$-gon are all inscribed inside $\Gamma$ such that $A$ is a common vertex of all these regular polygons. Let $Q$ be a point on $\Gamma$ such that $Q$ is a vertex of the regular $n$-gon, but $Q$ is not a vertex of any of the other regular polygons. Let $\mathcal{S}_n$ be the set of all such points $Q$. Find the number of integers $3\le n\le 100$ such that
+$$\prod_{Q\in\mathcal{S}_n}|AQ|\le 2.$$`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-12": { s: String.raw`Let $\Omega_1$ and $\Omega_2$ be two circles intersecting at distinct points $P$ and $Q$. The line tangent to $\Omega_1$ at $P$ passes through $\Omega_2$ at a second point $A$, and the line tangent to $\Omega_2$ at $P$ passes through $\Omega_1$ at a second point $B$. Ray $AQ$ intersects $\Omega_1$ at a second point $C$, and ray $BQ$ intersects $\Omega_2$ at a second point $D$. Suppose that $\angle CPD>\angle APB$ (measuring both angles as the non-reflex angle) and that
+$$\frac{\operatorname{Area}(CPD)}{PA\cdot PB}=\frac14.$$
+Find the sum of all possible measures of $\angle APB$ in degrees.`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-13": { s: String.raw`Let $a,b,c,d$ be reals such that $a\ge b\ge c\ge d$ and
+$$\begin{aligned}&(a-b)^3+(b-c)^3+(c-d)^3-2(d-a)^3-\\&12(a-b)^2-12(b-c)^2-12(c-d)^2+12(d-a)^2-\\&2020(a-b)(b-c)(c-d)(d-a)=1536.\end{aligned}$$
+Find the minimum possible value of $d-a$.`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-14": { s: String.raw`Let $a$ be a positive real number. Collinear points $Z_1,Z_2,Z_3,Z_4$ (in that order) are plotted on the $(x,y)$ Cartesian plane. Suppose that the graph of the equation
+$$x^2+(y+a)^2+x^2+(y-a)^2=4a^2+\sqrt{(x^2+(y+a)^2)(x^2+(y-a)^2)}$$
+passes through points $Z_1$ and $Z_4$, and the graph of the equation
+$$x^2+(y+a)^2+x^2+(y-a)^2=4a^2-\sqrt{(x^2+(y+a)^2)(x^2+(y-a)^2)}$$
+passes through points $Z_2$ and $Z_3$. If $Z_1Z_2=5$, $Z_2Z_3=1$, and $Z_3Z_4=3$, then $a^2$ can be written as $\frac{m+n\sqrt{p}}{q}$, where $m$, $n$, $p$, and $q$ are positive integers, $m$, $n$, and $q$ are relatively prime, and $p$ is squarefree. Find $m+n+p+q$.`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+"2020-chmmc-individual-15": { s: String.raw`For an integer $n\ge 2$, let $G_n$ be an $n\times n$ grid of unit cells. A subset of cells $H\subseteq G_n$ is considered quasi-complete if and only if each row of $G_n$ has at least one cell in $H$ and each column of $G_n$ has at least one cell in $H$. A subset of cells $K\subseteq G_n$ is considered quasi-perfect if and only if there is a proper subset $L\subset K$ such that $|L|=n$ and no two elements in $L$ are in the same row or column. Let $\vartheta(n)$ be the smallest positive integer such that every quasi-complete subset $H\subseteq G_n$ with $|H|\ge\vartheta(n)$ is also quasi-perfect. Moreover, let $\varrho(n)$ be the number of quasi-complete subsets $H\subseteq G_n$ with $|H|=\vartheta(n)-1$ such that $H$ is not quasi-perfect. Compute $\vartheta(20)+\varrho(20)$.`, u: "https://www.caltechmathmeet.org/_files/ugd/006423_8a6df432c9e34aa7b9d9129202117b7e.pdf" },
+});

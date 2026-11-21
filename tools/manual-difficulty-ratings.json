@@ -52465,6 +52465,330 @@
     "2017 BMT Analysis, Problem 9": [
       3400,
       "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Find the singular part of a generating function as t approaches 1, then extend the resulting polynomial in n."
+    ],
+    "2006 Utah State Math Contest Senior, Problem 28": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the limit of an integral of x^n cos(nx), found by a bound on the integrand."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 16": [
+      1000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a limit of the form (1 + c/x)^x at infinity."
+    ],
+    "2007 Utah State Math Contest Senior, Problem 29": [
+      1000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a definite integral of a rational function, by long division and logarithms."
+    ],
+    "2008 Utah State Math Contest Junior, Problem 25": [
+      1000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): which of five areas is not equal to pi; one is the area under one arch of sin x."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 20": [
+      1000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): which of five areas is not equal to pi; one is the area under one arch of sin x."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 26": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the volume of a solid under a plane and inside a parabolic cylinder, by an iterated integral."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 28": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the convergence set of a power series, by the ratio test and its endpoints."
+    ],
+    "2008 Utah State Math Contest Senior, Problem 29": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): continuity and differentiability of a piecewise function at the join."
+    ],
+    "2009 Utah State Math Contest Senior, Problem 36": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): evaluate a limit."
+    ],
+    "2009 Utah State Math Contest Senior, Problem 39": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the slope of a tangent line to a polar curve."
+    ],
+    "2010 Utah State Math Contest Senior, Problem 30": [
+      1000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the value that makes a function continuous at a point, by a limit."
+    ],
+    "2013 Utah State Math Contest Senior, Problem 21": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a function with |f(a)-f(b)| <= |a-b|^2 must be constant, by the derivative."
+    ],
+    "2014 Utah State Math Contest Junior, Problem 16": [
+      1500,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the derivative of the digamma function, and a series built from it."
+    ],
+    "2014 Utah State Math Contest Senior, Problem 17": [
+      1500,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the derivative of the digamma function, and a series built from it."
+    ],
+    "2017 Utah State Math Contest Senior, Problem 11": [
+      1000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a sliding ladder: a related-rates problem."
+    ],
+    "2017 Utah State Math Contest Senior, Problem 36": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the shortest distance from a point to a parabola, by minimizing a distance."
+    ],
+    "2018 Utah State Math Contest Senior, Problem 39": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): an antiderivative of a shifted cubic."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 2": [
+      900,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the derivative of a quadratic at its two roots."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 7": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a rangefinder tracking a balloon: a related-rates problem."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 10": [
+      1500,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the area under one arch of a cycloid, by an integral of a parametrized curve."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 13": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the cylinder of smallest surface area for a fixed volume, by minimization."
+    ],
+    "2019 Utah State Math Contest Senior, Problem 20": [
+      1000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a shrinking ball: a related-rates problem."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 26": [
+      900,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): which function satisfies y'' + y = 0."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 30": [
+      900,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): which interval the Mean Value Theorem allows."
+    ],
+    "2020 Utah State Math Contest Senior, Problem 33": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the length of a parametrized curve, by an integral."
+    ],
+    "1993 Columbus State Tournament, Problem 37": [
+      300,
+      "Author estimate, 2026-11-21 (a history question kept so its paper is complete): a history question: which Swiss mathematician introduced the base e of natural logarithms."
+    ],
+    "1997 Columbus State Tournament, Problem 48": [
+      800,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a chain-rule derivative."
+    ],
+    "2004 Columbus State Tournament, Problem 50": [
+      1000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a limit at 0 of a quotient of exponentials, by the derivative."
+    ],
+    "2005 Columbus State Tournament, Problem 45": [
+      1000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the slope of a tangent line to an implicitly defined curve."
+    ],
+    "2006 Columbus State Tournament, Problem 52": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the derivative of arcsin(sin x)."
+    ],
+    "2007 Columbus State Tournament, Problem 41": [
+      900,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the derivative of a quotient with sec x."
+    ],
+    "2007 Columbus State Tournament, Problem 43": [
+      1000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the derivative of a composition read from two graphs."
+    ],
+    "2007 Columbus State Tournament, Problem 50": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the limit of an integral of x^n sin(nx)."
+    ],
+    "2009 Columbus State Tournament, Problem 48": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): when x^y = y^x has a single solution, by the maximum of ln x / x."
+    ],
+    "2010 Columbus State Tournament, Problem 41": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the base a for which a^x >= x + 1 always, by tangency at 0."
+    ],
+    "2011 Columbus State Tournament, Problem 43": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the base a with x^a <= a^x for all x, by the maximum of ln x / x."
+    ],
+    "2011 Columbus State Tournament, Problem 47": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the angle between the tangent lines of sin x and cos x."
+    ],
+    "2011 Columbus State Tournament, Problem 49": [
+      900,
+      "Author estimate, 2026-11-21 (a physics problem kept so its paper is complete): the time for a projectile to return along a frictionless slope."
+    ],
+    "2011 Columbus State Tournament, Problem 50": [
+      1000,
+      "Author estimate, 2026-11-21 (a physics problem kept so its paper is complete): recoil of a thrower in space, by conservation of momentum."
+    ],
+    "2012 Columbus State Tournament, Problem 38": [
+      900,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the slope of an exponential at its y-intercept."
+    ],
+    "2012 Columbus State Tournament, Problem 44": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a limit of a difference of square roots."
+    ],
+    "2012 Columbus State Tournament, Problem 45": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a limit of the form (1 + c/x)^x."
+    ],
+    "2012 Columbus State Tournament, Problem 46": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): an epsilon-delta bound for a linear function."
+    ],
+    "2013 Columbus State Tournament, Problem 41": [
+      1000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the limit of a cube-root quotient at 0."
+    ],
+    "2013 Columbus State Tournament, Problem 43": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the parameter for which 9x^3 = a + ln x has exactly one solution, by tangency."
+    ],
+    "2013 Columbus State Tournament, Problem 47": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the derivative of an inverse function."
+    ],
+    "2014 Columbus State Tournament, Problem 50": [
+      1500,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a function defined by an integral equation, by differentiating it."
+    ],
+    "2015 Columbus State Tournament, Problem 48": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the derivative of arcsin(sin x)."
+    ],
+    "2016 Columbus State Tournament, Problem 44": [
+      1000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the limit of a cube-root quotient at 0."
+    ],
+    "2018 Columbus State Tournament, Problem 44": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a geometric probability whose region is bounded by a hyperbola, by an integral."
+    ],
+    "2018 Columbus State Tournament, Problem 45": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the limit of sin(pi * sqrt(4n^2 + 2n + 1)), by expanding the root."
+    ],
+    "2018 Columbus State Tournament, Problem 46": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the growth of the recursion x(n+1) = x(n) + 1/(2 x(n)), by comparing x^2 with n."
+    ],
+    "2018 Columbus State Tournament, Problem 47": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the parameters for which x + ln(ab) = ln(x + a) + ln(x + b) has one solution, by tangency."
+    ],
+    "2018 Columbus State Tournament, Problem 49": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a geometric probability whose region is bounded by a hyperbola, by an integral (the same problem as #44)."
+    ],
+    "2019 Columbus State Tournament, Problem 12": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the limit of a sequence defined by x(n+1) = 2 x(n)(1 - x(n))."
+    ],
+    "2019 Columbus State Tournament, Problem 33": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the parameter for which 9x^3 = a + ln x has exactly one solution, by tangency."
+    ],
+    "2019 Columbus State Tournament, Problem 34": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the derivative of an inverse function."
+    ],
+    "2019 Columbus State Tournament, Problem 36": [
+      1000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the limit of a cube-root quotient at 0."
+    ],
+    "2019 Columbus State Tournament, Problem 39": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the parameters for which x + ln(ab) = ln(x + a) + ln(x + b) has one solution, by tangency."
+    ],
+    "2019 Columbus State Tournament, Problem 40": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the expected distance between two random points of a circle, by an integral."
+    ],
+    "2019 Columbus State Tournament, Problem 45": [
+      1500,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a definite integral over [0, 1] with square roots and sin(pi x), by a substitution."
+    ],
+    "2019 Columbus State Tournament, Problem 47": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a coefficient of a Taylor expansion at 0."
+    ],
+    "2020 Columbus State Tournament, Problem 33": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the limit of sin(pi * sqrt(n^2 + 5))."
+    ],
+    "2020 Columbus State Tournament, Problem 36": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a limit at infinity fixing a + b + c."
+    ],
+    "2020 Columbus State Tournament, Problem 47": [
+      1500,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): whether a piecewise function built on sin(1/x) has an antiderivative."
+    ],
+    "2020 Columbus State Tournament, Problem 49": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the limit of a sum, as a Riemann sum."
+    ],
+    "2021 Columbus State Tournament, Problem 18": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the parameters for which a limit with cube roots equals 1."
+    ],
+    "2021 Columbus State Tournament, Problem 27": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a continuous function defined by an integral equation, by differentiating it twice."
+    ],
+    "2021 Columbus State Tournament, Problem 30": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the limit of a sum, as a Riemann sum for a quarter disc."
+    ],
+    "2022 Columbus State Tournament, Problem 1": [
+      1200,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the volume of a solid of revolution of the region between two parabolas."
+    ],
+    "2022 Columbus State Tournament, Problem 5": [
+      1500,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a limit of an expression with powers of 1 + x and 1 - x."
+    ],
+    "2022 Columbus State Tournament, Problem 7": [
+      1500,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a geometric probability for a random square on a grid, whose formula needs an integral."
+    ],
+    "2022 Columbus State Tournament, Problem 10": [
+      1700,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the limit of an integral of a sequence of polynomials."
+    ],
+    "2022 Columbus State Tournament, Problem 21": [
+      1300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the limit of a recursively defined sequence."
+    ],
+    "2022 Columbus State Tournament, Problem 22": [
+      1500,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a continuously differentiable function defined by an integral identity."
+    ],
+    "2022 Columbus State Tournament, Problem 25": [
+      1500,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): a probability over two uniform reals, summed over an infinite series of regions."
+    ],
+    "2022 Columbus State Tournament, Problem 26": [
+      1500,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the maximum of a function from a second-order differential equation."
+    ],
+    "2022 Columbus State Tournament, Problem 30": [
+      1300,
+      "Author estimate, 2026-11-21 (a physics problem kept so its paper is complete): a stack of bricks in equilibrium, an overhang given by a harmonic sum."
+    ],
+    "2012 CHMMC Fall Individual, Problem 7": [
+      2300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its paper is complete): the values of r for which a series of square-root differences converges, by asymptotics."
+    ],
+    "1994 Columbus State Tournament, Problem 41": [
+      500,
+      "Author estimate, 2026-11-21 (a problem the paper has but the database lacked): the shaded region is the right triangle minus a circular sector centred at A with radius AC; the figure marks only BC = 150 and looks like a 30-60-90 triangle, so the area is about 2568, near choice (d) 2586; the answer is not certain without the stated angle."
+    ],
+    "2005 Fermat Contest, Problem 25": [
+      1100,
+      "Author estimate (the CEMC publishes no solve counts by question; placed on the collection's scale by its route): a line through (p, q) with x-intercept and y-intercept summing to three times its slope gives (p+3)m^2 - (p+q)m + q = 0, exactly one triline means a zero discriminant, (p-q)^2 = 12q, so q = 3t^2 with t = 1 to 57: 57."
     ]
   }
 }

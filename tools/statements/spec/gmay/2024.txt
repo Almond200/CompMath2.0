@@ -1,0 +1,27 @@
+=== individual-1
+Trains run from New York to New Haven, departing every half-hour beginning at $6{:}00$ AM. Trains run from New Haven to Boston, departing every $45$ minutes beginning at $6{:}15$ AM. The distance between New Haven and New York is $75$ miles and the distance between New Haven and Boston is $200$ miles. Trains can travel at $50$ miles per hour. Jessica decides to depart from New York at $6{:}00$ AM. What is the shortest amount of time it would take her to get to Boston by train, in minutes, if she must pass through New Haven?
+=== individual-2
+Cat and Claire are playing a crossword game. Cat says: "I know the digits of 2-Across are all the same, and 3-Down is a perfect square whose digits are in strictly ascending order." Claire, who previously only knew the number in 1-Down, says "The number in 1-Down is divisible by $13$, and with your information I now know how to complete the grid." What is the number in 1-Down?
+
+@@fig:gmay2024_individual-2.png@@
+=== individual-3
+Five $1$s and four $0$s are distributed in a $3\times 3$ grid at random. The probability there exists a row, column, or diagonal with all three numbers being the same can be expressed as $\frac{m}{n}$ where $m,n$ are relatively prime positive integers. Find $m+n$.
+=== individual-4
+Ten equally spaced points $A,B,C,D,E,F,G,H,I,J$ are drawn on the circumference of a unit circle. What is $AB^2+AC^2+AD^2+\dots+AJ^2$?
+=== individual-5
+What is $\displaystyle\sum_{k=1}^{12}\sqrt{(k-1)k(k+1)(k+2)+1}$?
+=== individual-6
+A subsequence of a word is formed by taking some characters of the word in order. For example, ATTIC is a subsequence of the word MATHEMATICS, formed by the underlined characters. Compute the number of distinct $4$ character subsequences of the word MATHEMATICS.
+=== individual-7
+In acute triangle $ABC$, $M$ is the midpoint of $BC$, and point $D$ located on segment $AC$. Let $BD$ and $AM$ intersect at $E$. Let $CE$ and $AB$ intersect at $F$. Call the line parallel to $BC$ passing through $A$ line $\ell$. Then, let $\ell$ intersect $BE$ at $G$ and $\ell$ intersect $CE$ at $H$, and we have $[BCF]=[CHD]+[HDG]$. The value of $\frac{[AFD]}{[BEC]}$ when written in simplest form is $\frac{m}{n}$. Find $m+n$.
+=== individual-8
+Find the number of ordered tuples $(k_1,\dots,k_n)$ satisfying $\displaystyle\sum_{i=1}^{n}\frac{1}{k_i}=1$ and $\displaystyle\prod_{i=1}^{n}k_i\le 2024$.
+=== individual-9
+In triangle $ABC$, let $D$ be the point on segment $BC$ such that $\angle BAD=\angle ACB$. The circle through $A$ tangent to $BC$ at $D$ intersects $AB$ at $E\ne A$ and $AC$ at $F\ne A$. Let lines $EF$ and $BC$ intersect at a point $P$. If $AE=11$, $DE=10$, and $EF=20$, compute the perimeter of triangle $PDF$.
+=== individual-10
+Find the greatest positive integer $n$ such that $(n+1)!$ divides
+$$\left(13231^n-1\right)\left(13231^{n-1}-1\right)\dots\left(13231-1\right).$$
+=== individual-11
+For integers $k>1$ define $f(k)$ as the sum of all numbers of the form $\frac1n$ such that $\frac1n$ terminates when written in base $k$. For example, in base $10$, $\frac12=0.5$ terminates but $\frac13=0.333\ldots$ does not terminate, so $\frac12$ would be part of the sum representing $f(10)$ but $\frac13$ would not. If $\displaystyle\sum_{k\mid 10!,\,k>1}f(k)$ can be expressed as $\frac{m}{n}$ such that $m,n$ are relatively prime positive integers, find $m+n$.
+=== individual-12
+Find the minimum possible value of $n-m$, where $n,m$ are real numbers such that $m\le\frac{4+b^2}{b}+\frac{4+a^2}{a}\le n$ for all positive real numbers $a,b$ that satisfy $\frac{a^2+1}{a}+\frac{b^2+1}{b}\le 18$ and $a^2b+b^2a\le 3$.

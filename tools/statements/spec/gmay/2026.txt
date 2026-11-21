@@ -1,0 +1,24 @@
+=== individual-1
+For any real numbers $a,b$, define $a\triangleright b=2a-b$. Evaluate $(311\triangleright 131)+(131\triangleright 113)+(113\triangleright 311)$.
+=== individual-2
+Parallelogram $ABCD$ has area $128$. $E,F,G,H$ and $I$ are the midpoints of $\overline{AB}$, $\overline{BE}$, $\overline{CD}$, $\overline{FG}$, and $\overline{CF}$ respectively. What is the area of quadrilateral $HICG$?
+=== individual-3
+Brenda has tasked you with buying the necessary materials to build the wire frame of a table. Each inch of wire costs you $\$4$. The wire will be used for the four legs of the table, as well as the four edges of the tabletop. The volume contained by the tabletop will be a rectangular prism, and Brenda wants this volume to be at least $500\ \text{in}^3$. What's the minimum price required to buy the necessary materials?
+=== individual-4
+Find the sum of all real values of $x$ that satisfy the equation $\log_3(x+5)-2\log_9(x-1)=1$.
+=== individual-5
+For a finite set of integers $A$, we define the difference set $A-A:=\{a_i-a_j\mid a_i,a_j\in A\}$ to be the set of all differences of two (possibly not distinct) elements of $A$. Let $N$ be the minimum of $|A-A|$ over all subsets $A\subset\mathbb{Z}$ with $|A|=99$, and let $M$ be the maximum of $|A-A|$ over all subsets $A\subset\mathbb{Z}$ with $|A|=99$. Find $N+M$.
+=== individual-6
+$ABCD$ is a square with side length $40$. Points $E,F$ are chosen on $\overline{AB}$, $\overline{CD}$, respectively, such that $AE=1$ and $CF=9$. Point $X_1$ is chosen on $\overline{AB}$, points $X_2$ and $X_3$ are chosen on $\overline{BC}$, and point $X_4$ is chosen on $\overline{CD}$ so that $\angle EX_iF=90^\circ$ for $i=1,2,3,4$. Given that the polygon $X_1X_2X_3X_4$ is non-degenerate, find its area.
+=== individual-7
+Let $N$ be the number of functions $f$ from the integers $\{1,2,\cdots,25\}$ to integers in $\{1,2,\cdots,25\}$ such that $f(i)\ne f(j)$ for all $i\ne j$ and $f(i)+j\equiv i+f(j)\pmod 5$ for all $1\le i<j\le 25$. How many divisors does $N$ have?
+=== individual-8
+For a positive integer $n$, let $\Omega(n)$ denote the number of prime factors of $n$, counted with multiplicity. What is the smallest positive integer $n$ for which $2^{\Omega(n)}<n<2.2^{\Omega(n)}$?
+=== individual-9
+Let $S$ be the set of prime numbers less than $2026$. For $p\ne q$, $p$ and $q$ are considered connected if $pq\equiv k\bmod 2026$, for some integer $k$ with $0<k<2026$. The degree of $p$ is the number of $q\in S$ such that $p$ and $q$ are connected. For what value of $k$ is the maximum degree of an element in $S$ maximized?
+=== individual-10
+Triangle $ABC$ is inscribed in a circle centered at $O$ with radius $5$. It is given that $BC=6$ and the three distances from $O$ to the sides of $ABC$ form the side lengths of a right triangle. The area of $ABC$ can be expressed as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. What is $m+n$?
+=== individual-11
+Define a move to be an operation on a binary string where we select four consecutive digits $0110$ in the string and replace it with $1001$. What is the maximal number moves can we perform to a length $100$ binary string before no further moves are possible, across all $2^{100}$ starting strings?
+=== individual-12
+Twenty points are evenly spaced on a unit circle. Three distinct points $A$, $B$, and $C$ are chosen from them uniformly at random. The expected value of $AB^2+BC^2+CA^2$ can be expressed in the form $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. What is $m+n$?

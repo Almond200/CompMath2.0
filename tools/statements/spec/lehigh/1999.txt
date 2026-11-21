@@ -1,0 +1,85 @@
+=== 1
+$4^{-\frac12}=$
+=== 2
+If a triangle $ABC$ has $AB=3$, $AC=4$, and $BC=5$, then what is the length of the altitude drawn from vertex $A$ to side $BC$?
+=== 3
+If $f(x)=2x^3$, then $f(1+2)=$
+=== 4
+You have some quarters and dimes worth a total of $\$7.15$. You have three times as many dimes as quarters. How many coins do you have?
+=== 5
+The point $E$ is outside the square $ABCD$ so that $ABE$ is an equilateral triangle. What is the number of degrees in the angle $CED$?
+=== 6
+If $x$, $3x+1$, and $6x+2$ are in geometric progression, then what is $x$?
+=== 7
+The repeating decimal $.3\overline{215}=.3215215\ldots$ equals what fraction reduced to lowest terms?
+=== 8
+What integer equals $\log_{10}8\big/\log_{10}\dfrac18$?
+=== 9
+$9778894\cdot 9778896+9778896\cdot 9778899-9778895\cdot 9778898-9778894\cdot 9778898=$
+=== 10
+You start with $128$ cents, and six times bet half of your current amount of money, with probability $.5$ of winning on each occasion. You win $3$ times and lose $3$ times in some order. Does the amount of money which you have at the end depend upon the order of wins and losses, and if not, how many cents will you have at the end? Your answer should be either the word "depends" or else the number of cents that you will always have at the end.
+=== 11
+A function $f$ satisfies $f(x)=f(x-1)$ if $x>0$, and $f(x)=|x|$ if $x\le 0$. What is $f(2.4)-f(2)$?
+=== 12
+The number of pairs of positive integers $(x,y)$ which satisfy $2x+3y=515$ is?
+=== 13
+Joe runs around the track at a pace of $80$ seconds per lap. Jim runs it in the opposite direction. They meet every $30$ seconds. How many seconds does it take Jim to run each lap around the track?
+=== 14
+Suppose that the angle between the minute hand and hour hand of a clock is $60$ degrees. If the minute hand is $12$ inches long and the hour hand is $9$ inches long, then what is the distance in inches between the tip ends of the hands?
+=== 15
+If $x$ and $y$ are positive integers less than $100$ such that $x^2-y^2=343$, then $(x,y)=$
+=== 16
+Eight circular coins are arranged so that no two of them overlap or touch, and no three of them have a tangent line in common. What is the total number of lines that are tangent to two of the coins?
+=== 17
+$AB$ is a diameter of a circle of radius $1$. If $C$ is any point on the circle, then the possible values of $AC+BC$ are exactly those numbers $s$ which satisfy $\alpha\le s\le\beta$, where $(\alpha,\beta)$ is the ordered pair.
+=== 18
+When $17!$ is written base $12$, how many $0$s are at the end?
+=== 19
+An equilateral triangle is inscribed in a circle of radius $1$ with one vertex at the bottom of the circle. What is the area that lies inside the circle and above the triangle?
+=== 20
+If $x^6+4x^5+6x^4+6x^3+4x^2+2x+1=\left(x^2+ax+1\right)\left(x^4+bx^3+cx^2+dx+1\right)$, then what is the value of $a$?
+=== 21
+How many real numbers satisfy the equation $\left(x^2+2x\right)^{x^2-3x+2}=1$?
+=== 22
+The sum of the infinite series $\dfrac18+\dfrac2{8^2}+\dfrac3{8^3}+\cdots$ equals what simple fraction?
+=== 23
+What positive integer $n$ satisfies $\log_{10}(225!)-\log_{10}(223!)=1+\log_{10}(n!)$?
+=== 24
+The sum of the first $40$ terms of an arithmetic series equals $300$, and the sum of the next $40$ terms equals $3500$. What is the first term of the series?
+=== 25
+For what real number $c$ does the equation $\left|x^2+8x+12\right|=c$ have exactly three solutions?
+=== 26
+One of the solutions of $x^4+5x^3+10x^2+20x+24=0$ is $2i$. What are the other three solutions? ($i=\sqrt{-1}$)
+=== 27
+How many integers between $1000$ and $9999$ are perfect squares and have sum of digits equal to $14$?
+=== 28
+For how many paths consisting of a sequence of a horizontal (forward or backward) and / or vertical line segments, each connecting a pair of adjacent letters in the diagram below, is the word "COUNT" spelled out as a path is traversed from beginning to end?
+
+@@fig:lehigh1999_p28.png@@
+=== 29
+Mary takes the train home from work each day, arriving at the station at $6{:}00$, at which time her butler, Jeeves, meets her and drives her home. Jeeves always drives at the same constant speed, and always arrives at the station at exactly $6{:}00$. One day Mary takes an earlier train which arrives at the station at $5{:}00$. She immediately begins walking home. On the way, she meets Jeeves, who is on his way to meet the $6{:}00$ train. Mary gets into the car, and they drive home, arriving $20$ minutes earlier than usual. How many minutes had Mary been walking?
+=== 30
+Begin with a circle $C$ with two smaller circles inscribed in it. Step 1: Inscribe a circle into each non circular region of the resulting figure. Now repeat Step 1 four more times. How many of the resulting circles do not touch circle $C$? The initial iteration and the first step are shown below.
+
+@@fig:lehigh1999_p30.png@@
+=== 31
+$25$ people are arranged in a circle. Three are selected at random. What is the probability that none of those selected were next to one another?
+=== 32
+How many pairs $(m,n)$ of positive integers have the property that the ratio of the size of each interior angle of a regular $m$-gon to that of a regular $n$-gon equals $3{:}2$?
+=== 33
+What is the pair $(x,y)$ of positive real numbers satisfying
+$$x^2+x\sqrt[3]{xy^2}=208\quad\text{and}\quad y^2+y\sqrt[3]{yx^2}=1053\ ?$$
+=== 34
+What is the remainder when $6^{83}+8^{83}$ is divided by $49$?
+=== 35
+Let $C$ be the circle of radius $1$ centered at $(0,0)$. Give, in simplified form, a necessary and sufficient condition on positive numbers $x_1$ and $x_2$ that the line passing through $(x_2,1)$ and $(x_1,-1)$ is tangent to $C$.
+=== 36
+The $36^{\text{th}}$ digit after the decimal in the decimal expansion of $1/1999$ is
+=== 37
+Three people are playing a game. They take turns in rotation rolling a fair $6$-sided die. A player who rolls a $5$ or $6$ wins and the game ends. A player who rolls a $1$ or $2$ loses and is out of the game. The game continues until either someone wins (by rolling a $5$ or $6$) or else there is only one person left, in which case that person wins. What is the probability that the first person to roll wins?
+=== 38
+Let $O$, $A$, and $B$ denote the points $(0,0,0)$, $(3,0,0)$ and $(0,4,0)$, respectively. A sphere of radius $2$ in $xyz$-space is tangent to the lines $OA$, $OB$, and $AB$, and the $z$-coordinate of its center is positive. What are the coordinates of the center of the sphere?
+=== 39
+How many $4$-digit numbers equal $(a+b)^2$, where $a$ (resp. $b$) is the number formed by the first (resp. last) two digits of the $4$-digit number.
+=== 40
+Three circles are externally tangent to one another, and all lie inside a circle of radius $4$, to which they are all tangent. Two of the circles have radius $1$ and $3$. The centers of these circles lie along a diameter of the larger circle. What is the radius of the third circle?

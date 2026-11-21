@@ -1,0 +1,97 @@
+// Problems and diagrams © 2021 University of Maryland High School Mathematics Competition. Reproduced with permission from the University of Maryland High School Mathematics Competition.
+// Source: the official UMD HSMC papers. Built by tools/statements/build.py from tools/statements/spec/umd/2021.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2021-umd-hsmc-part-i-1": { s: String.raw`The fraction
+$$\frac{\left(\dfrac{1/2}{3/4}\right)}{\left(\dfrac{5/6}{7/8}\right)}$$
+equals which of the following?
+
+(A) $1$  (B) $9/10$  (C) $4/5$  (D) $7/10$  (E) $3/5$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-2": { s: String.raw`Jarad walked across the US, a hike of $2774$ miles. Let $s$ be the number of steps he took. If each step was $2.5$ feet, which of the following is true? (There are $5280$ feet in a mile.)
+
+(A) $5\times 10^6<s<6\times 10^6$  (B) $6\times 10^6<s<8\times 10^6$  (C) $8\times 10^6<s<10^7$  (D) $10^7<s<5\times 10^7$  (E) $5\times 10^7<s$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-3": { s: String.raw`Huey, Dewey, and Louie are making pizzas. Huey's is a $10$-inch by $10$-inch square. Dewey's is a circle of diameter $12$ inches. Louie's is a $6$-inch by $24$-inch rectangle. Arrange the pizzas according to size:
+
+(A) Huey's < Dewey's < Louie's  (B) Dewey's < Huey's < Louie's  (C) Dewey's < Louie's < Huey's  (D) Huey's < Louie's < Dewey's  (E) Louie's < Dewey's < Huey's`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-4": { s: String.raw`Peter Rabbit is racing a Terrapin in a $10$-mile race. Peter runs at $15$ miles per hour and the Terrapin crawls at $2$ miles per hour. Peter runs for $20$ minutes, sleeps for $4.5$ hours, and then runs until he finishes the race. The Terrapin never stops. Peter finishes how many minutes after the Terrapin?
+
+(A) $0$ minutes  (B) $5$ minutes  (C) $10$ minutes  (D) $15$ minutes  (E) $20$ minutes`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-5": { s: String.raw`A prairie dog is running down the $xy$-plain (pardon the pun) along the graph of $y=\cos(2\pi x)$ for $0\le x\le 20$ (where $x$ is in radians). How many times does the prairie dog's path cross the $x$-axis?
+
+(A) $10$  (B) $20$  (C) $30$  (D) $40$  (E) $50$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-6": { s: String.raw`A person invested $\$100$ in the stock market. His account gained $20$ percent on even years and lost $17$ percent on odd years. No money was added or withdrawn. How much money will there be in the account after $100$ years?
+
+(A) Less than $\$100$  (B) Between $\$100$ and $\$125$  (C) Between $\$125$ and $\$150$  (D) Between $\$150$ and $\$175$  (E) More than $\$175$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-7": { s: String.raw`There are $2021$ people in a room. Each person has a name tag that lists only their first and last initials (which are chosen from the $26$ letters of the alphabet). What is the largest number $x$ such that we are guaranteed that at least $x$ people have identical name tags?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-8": { s: String.raw`Evaluate the sum
+$$\frac12+\left(\frac13+\frac23\right)+\left(\frac14+\frac24+\frac34\right)+\left(\frac15+\frac25+\frac35+\frac45\right)+\cdots+\left(\frac1{100}+\frac2{100}+\cdots+\frac{99}{100}\right).$$
+
+(A) $100$  (B) $1010$  (C) $2025$  (D) $2475$  (E) $2525$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-9": { s: String.raw`In how many ways can the eight chess pieces (two identical rooks, two identical knights, two identical bishops, a queen and a king) be arranged on the first row of the chessboard (the row has $8$ squares).
+
+(A) $6!$  (B) $6\cdot 6!$  (C) $7!$  (D) $6\cdot 7!$  (E) $7\cdot 7!$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-10": { s: String.raw`For every square $ABCD$ we let $M(ABCD)$ be the square $XYZT$ whose midpoints of sides $XY,YZ,ZT$, and $TX$ are $A,B,C$, and $D$, respectively. Let $M^{(i)}(ABCD)$ be the square formed by applying $M$ to the square $ABCD$ exactly $i$ times. If $ABCD$ is a square of side length $1$, what is the least $n$ such that the area of $M^{(n)}(ABCD)$ is at least $2021$?
+
+(A) $11$  (B) $12$  (C) $13$  (D) $2012$  (E) $2013$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-11": { s: String.raw`How many integers $n\ge 1$ are there such that
+$$n!+(n+1)!+(n+2)!$$
+is not a multiple of $100$?
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-12": { s: String.raw`The following equality is true in base $b$,
+$$1234_b+1234_b=2512_b.$$
+What is $b$?
+
+(A) $6$  (B) $7$  (C) $8$  (D) $11$  (E) $12$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-13": { s: String.raw`The equation
+$$x^{\log_{10}(x)}=10^{25}$$
+has two solutions in real numbers. Let $s$ be the sum of these two solutions. Then
+
+(A) $s\le 0.1$  (B) $0.1<s\le 10$  (C) $10<s\le 10^3$  (D) $10^3<s\le 10^5$  (E) $10^5<s$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-14": { s: String.raw`Someone asks a young math prodigy her age. She says that she is $x$ hours old, and if you multiply $x+80200$ times $x-80200$ then you get the cube of a prime. What is $x$?
+
+(A) $80201$  (B) $80601$  (C) $92401$  (D) $160401$  (E) $640801$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-15": { s: String.raw`Suppose that $P$ and $Q$ are points in a Cartesian coordinate system such that $P$ lies on the circle given by $x^2+y^2=1$ and $Q$ lies on the curve given by $x^2-4x+y^2-6y+12=0$. What is the smallest possible distance between $P$ and $Q$?
+
+(A) $\sqrt{17}-3$  (B) $\sqrt5$  (C) $\sqrt{13}-2$  (D) $\sqrt3$  (E) $0$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-16": { s: String.raw`Suppose that $a$ and $b$ are positive real numbers such that the equations $x^2+ax+b=0$ and $x^2+bx+a=0$ both have two distinct real roots. Which of the following inequalities best describes all possible values of $a$?
+
+(A) $a>1$  (B) $a>2$  (C) $a>2\sqrt[3]{2}$  (D) $a>2\sqrt2$  (E) $a>4$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-17": { s: String.raw`Let $H$ be the point of intersection of altitudes of triangle $ABC$. Suppose in addition that $|AH|=|BC|$. What is one of the possible values for the measure of angle $BAC$?
+
+(A) $30^\circ$  (B) $60^\circ$  (C) $75^\circ$  (D) $120^\circ$  (E) $135^\circ$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-18": { s: String.raw`Let $p$ be the largest prime factor of $3^{15}+3^{11}+3^6+1$. Then
+
+(A) $p<27$  (B) $27<p<81$  (C) $81<p<729$  (D) $729<p<3^8$  (E) $3^8<p$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-19": { s: String.raw`Let $P_1=9999$, $P_2=9998$, and $P_k=2P_{k-1}-P_{k-2}-2$ for all $k\ge 3$. How many terms in the sequence $P_1,P_2,P_3,\dots$ are positive?
+
+(A) $60$  (B) $70$  (C) $80$  (D) $90$  (E) $100$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-20": { s: String.raw`From a point $O$ inside the acute angled triangle $ABC$ we drop perpendiculars $OM$, $ON$, and $OP$ respectively to $AB$, $BC$, and $AC$. If we know that $|AM|=3$, $|MB|=5$, $|BN|=4$, $|NC|=2$, and $|CP|=4$, then the value of $|AP|$ is
+
+(A) $2\sqrt2$  (B) $3\sqrt2$  (C) $2\sqrt3$  (D) $3$  (E) $4$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-21": { s: String.raw`Suppose $0\le a<b\le\infty$ are two numbers (with $b$ possibly being infinity) such that for every real number $c$ with $a<c<b$ there are two non-congruent triangles $ABC$ with $|AC|=10$, $\angle ACB=30^\circ$ and $|AB|=c$. What is the largest possible value of $b-a$?
+
+(A) $5$  (B) $5\sqrt3$  (C) $10$  (D) $10\sqrt2$  (E) $\infty$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-22": { s: String.raw`Find the sum of those positive integers $n$ such that $(n+15)^2$ is a multiple of $n+2$.
+
+(A) $90$  (B) $155$  (C) $178$  (D) $239$  (E) $260$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-23": { s: String.raw`After expanding $(1+x+x^2)^{100}$ and combining like terms, we obtain the following:
+$$(1+x+x^2)^{100}=a_0+a_1x+\cdots+a_{200}x^{200}.$$
+How many of the coefficients $a_0,\dots,a_{200}$ are odd?
+
+(A) $15$  (B) $18$  (C) $21$  (D) $24$  (E) $27$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-24": { s: String.raw`How many subsets $S$ of $\{0,1,2,\dots,19\}$ satisfy all of the following three conditions?
+
+(1) $0$ is in $S$,
+
+(2) $10$ does not belong to $S$, and
+
+(3) For any $0\le i\le j\le 10$, the sizes of the sets $S\cap\{i,\dots,i+9\}$ and $S\cap\{j,\dots,j+9\}$ differ by no more than $1$.
+
+(A) $3^{10}-\binom{18}{9}$  (B) $3^9$  (C) $2^9$  (D) $\binom{20}{10}/2$  (E) $\binom{18}{9}+1$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+"2021-umd-hsmc-part-i-25": { s: String.raw`Let $\mathcal C$ be the ellipse on the $xy$-plane given by the equation $\dfrac{x^2}{2}+\dfrac{y^2}{5}=1$ and let $O$ be the origin in this plane. Twenty points $A_1,A_2,\dots,A_{20}$ in the counterclockwise orientation are placed on $\mathcal C$ in such a way that $A_1=(\sqrt2,0)$ and $\angle A_jOA_{j+1}=18^\circ$, for all $j$ with $1\le j\le 19$. Find the value of
+$$\frac{1}{|OA_1|^2}+\frac{1}{|OA_2|^2}+\cdots+\frac{1}{|OA_{20}|^2}.$$
+
+(A) $2\sqrt5+3$  (B) $9-\sqrt5$  (C) $\dfrac{25}{4}$  (D) $6$  (E) $7$`, u: "https://mathcomp.math.umd.edu/files/2021/10/PartI2021.pdf" },
+});

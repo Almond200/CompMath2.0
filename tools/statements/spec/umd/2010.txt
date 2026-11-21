@@ -1,0 +1,102 @@
+=== 1
+Gauss, Hilbert, and Erdös are computing with the primes $(2,3,5,7,\dots)$. Gauss calculates the product of the first three primes and calls it $G$. Hilbert calculates the sum of the next five primes and calls it $H$. Erdös calculates $E=G\times H$. What is $E$?
+
+(A) $1066$  (B) $1775$  (C) $1860$  (D) $1890$  (E) $2010$
+=== 2
+The Cookie Monster decides to try out pizza for a change. He has the choice of three pizza combinations: A) five $8$-inch pizzas; B) two $14$-inch pizzas; C) one $18$-inch pizza (the pizzas are round and the size given is the diameter of each). Rank these options in terms of the total area of pizza.
+
+(A) A < B < C  (B) A < C < B  (C) B < A < C  (D) C < A < B  (E) C < B < A
+=== 3
+Compute the perimeter of the triangle formed by the line $3x+4y=1$ and the $x$- and $y$-axes.
+
+(A) $7/12$  (B) $3/4$  (C) $5/6$  (D) $11/12$  (E) $1$
+=== 4
+Anna, Bill, and Carl started eating candies together. Anna and Bill ate $11$ candies between the two of them, Bill and Carl ate $15$, while Anna and Carl ate $14$. How many candies did Anna, Bill, and Carl eat between the three of them?
+
+(A) $15$  (B) $20$  (C) $25$  (D) $30$  (E) $35$
+=== 5
+In the $xy$-plane the line $y=2x-4$ does not intersect the parabola $y=x^2+2ax$. Which of the following must be true?
+
+(A) $-1<a<3$  (B) $-2<a<4$  (C) $-3<a<3$  (D) $-3<a<5$  (E) $0<a<2$
+=== 6
+How many rectangles are in the following figure?
+
+@@fig:umd2010_parti-6.png@@
+
+(A) $18$  (B) $20$  (C) $29$  (D) $30$  (E) $40$
+=== 7
+Two bulls are charging at each other at constant speeds of $v_1$ and $v_2$ feet per second, respectively. We start a stopwatch when the bulls are $d$ feet apart from each other, and measure the time $t$ in seconds that passes until they collide. Which of the following is a true equation?
+
+(A) $t=\dfrac{d}{v_1+v_2}$  (B) $t=\dfrac{v_1+v_2}{d}$  (C) $t=\dfrac{d}{2}\left(v_1^2+v_2^2\right)$  (D) $t=\dfrac{d}{v_1^2+v_2^2}$  (E) $t=\dfrac{2d}{v_1^2+v_2^2}$
+=== 8
+How many distinct real numbers $x$ satisfy the equation $x^4-2x^2+1=0$?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$
+=== 9
+Simplify the expression $\dfrac{1+3+5+\cdots+99}{2+4+6+\cdots+100}$.
+
+(A) $49/50$  (B) $50/51$  (C) $99/100$  (D) $99/101$  (E) $100/101$
+=== 10
+Five logicians meet at a math party. Uno said, "Only one of us is lying". Duo said, "Exactly two of us are lying". Trio said, "Exactly three of us are lying". Quatro said, "Exactly four of us are lying". Cinco said, "All five of us are lying". Which one of the five was telling the truth?
+
+(A) Uno  (B) Duo  (C) Trio  (D) Quatro  (E) Cinco
+=== 11
+Abe Lincoln takes time off from his math homework to split some logs for the fire. He produces $(1/2)\log(20)$ pounds of wood on Monday, $(1/3)\log(30)$ pounds of wood on Tuesday, $(1/4)\log(40)$ pounds on Wednesday, $(1/5)\log(50)$ pounds on Thursday, and $(1/6)\log(60)$ pounds on Friday (logarithms are to the base $10$). On which day does he produce the most wood?
+
+(A) Monday  (B) Tuesday  (C) Wednesday  (D) Thursday  (E) Friday
+=== 12
+An angle $\theta$ between $0$ and $90$ degrees is such that $\cos\theta=\tan\theta$. What is the value of $\sin\theta$?
+
+(A) $\sqrt3/3$  (B) $(\sqrt3-1)/2$  (C) $(\sqrt2+1)/4$  (D) $(\sqrt5+1)/4$  (E) $(\sqrt5-1)/2$
+=== 13
+A man looks out of his window, sees a mountain, and wants to know how high the mountain is from the valley floor where his cabin is located. He measures the angle of elevation at the cabin and finds it is $\alpha$ degrees. He then walks for one mile on a level path directly toward the mountain, and notes that the angle of elevation is now $\beta$ degrees. Which of the following expressions gives the height (in miles) of the mountain?
+
+(A) $\tan\beta-\tan\alpha$  (B) $1/(\tan\beta-\tan\alpha)$  (C) $(1/\tan\alpha)-(1/\tan\beta)$  (D) $\tan\alpha\tan\beta/(\tan\beta-\tan\alpha)$  (E) $(\tan\beta-\tan\alpha)/(1+\tan\alpha\tan\beta)$
+=== 14
+Let $x$ and $y$ be nonzero integers such that $x^2-y^2=100$. What is $x^2+y^2$?
+
+(A) $1252$  (B) $1500$  (C) $1512$  (D) $1800$  (E) $1828$
+=== 15
+We are given six sticks. They have lengths $1,2,3,4,5$, and $6$ feet, respectively. How many distinct triangles (of positive area) can we form using these sticks, one for each side? (Two triangles are considered distinct if they have different side lengths).
+
+(A) $6$  (B) $7$  (C) $8$  (D) $10$  (E) $20$
+=== 16
+The function $f(x)$ is defined on the set of real numbers and satisfies $f(x+3)\ge f(x)+3$ and $f(x+1)\le f(x)+1$, for any real number $x$. If $f(1)=0$, then what is the value of $f(2010)$?
+
+(A) $0$  (B) $1$  (C) $2009$  (D) $2010$  (E) It cannot be determined from the information given
+=== 17
+Suppose that $x$, $y$, and $z$ are positive integers such that $x+\cfrac{1}{y+\frac1z}=\dfrac83$. Find $z$.
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $6$
+=== 18
+We list the natural numbers in order to form a string of digits as follows: $1234567891011121314\cdots$ What is the $2010$-th digit in this sequence?
+
+(A) $0$  (B) $1$  (C) $6$  (D) $7$  (E) $9$
+=== 19
+A $37$ foot cylindrical tube that has a diameter of $4$ feet is lying on its side on the ground. After a massive storm, water builds up in the cylinder, up to a maximum depth of one foot. What fraction of the volume of the tube is filled with water?
+
+(A) $\dfrac{6-\pi\sqrt3}{3}$  (B) $\dfrac{2\sqrt3+\pi}{37}$  (C) $\dfrac{4\sqrt3+6\pi}{37\pi}$  (D) $\dfrac{3\pi-4\sqrt3}{4\pi}$  (E) $\dfrac{4\pi-3\sqrt3}{12\pi}$
+=== 20
+Let $a$, $b$, $c$, $d$ be positive integers such that $\log_a b=\dfrac32$ and $\log_c d=\dfrac54$. Given that $a-c=9$, evaluate the difference $b-d$.
+
+(A) $47$  (B) $64$  (C) $87$  (D) $93$  (E) $105$
+=== 21
+Every card in a deck of eight cards is marked with a single letter from A to H, and all eight of these letters are used in the deck. Anna, Bob, Carl, Dan, Eve, Fred, Greg, and Helen are each dealt a card from this deck. They look at their cards, and exactly half of them see that the letter on the card they were given is the same as the first letter of their name. In how many distinct ways can this happen?
+
+(A) $420$  (B) $490$  (C) $560$  (D) $630$  (E) $700$
+=== 22
+Let $n$ be the smallest integer greater than $10^{2010}/101$. What is the rightmost digit (that is, the units digit) of $n$?
+
+(A) $0$  (B) $1$  (C) $4$  (D) $5$  (E) $9$
+=== 23
+The equation $x^3-3x+1=0$ has three solutions $a$, $b$, and $c$. Calculate $\dfrac{1}{a^2}+\dfrac{1}{b^2}+\dfrac{1}{c^2}$.
+
+(A) $3$  (B) $4\sqrt[3]{2}$  (C) $4\sqrt3$  (D) $8$  (E) $9$
+=== 24
+Consider a triangle $ABC$ with side lengths $|AB|=2$, $|BC|=3$, and $|AC|=4$. Three straight lines are drawn through a point $M$ inside of $ABC$ parallel to its sides. These lines divide each side of $ABC$ into three segments, for a total of nine segments in all. Suppose that the three middle segments among these nine all have the same length $x$. Compute $x$.
+
+(A) $10/11$  (B) $11/12$  (C) $12/13$  (D) $13/14$  (E) $23/24$
+=== 25
+What is the largest integer $n$ such that the number $4^{37}+4^{1000}+4^n$ is a perfect square?
+
+(A) $519$  (B) $1231$  (C) $1962$  (D) $2718$  (E) Such $n$ can be arbitrarily large

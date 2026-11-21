@@ -1,0 +1,99 @@
+// Problems and diagrams © 2026 University of Maryland High School Mathematics Competition. Reproduced with permission from the University of Maryland High School Mathematics Competition.
+// Source: the official UMD HSMC papers. Built by tools/statements/build.py from tools/statements/spec/umd/2026.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2026-umd-hsmc-part-i-1": { s: String.raw`In $2026$, Mickey Mouse is $98$ and Goofy is $94$. In what year was Mickey Mouse twice as old as Goofy?
+
+(A) $1928$  (B) $1936$  (C) $1950$  (D) $1960$  (E) $2020$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-2": { s: String.raw`In a barnyard with only chickens and pigs, there are $54$ animals. Chickens have $2$ legs and pigs have $4$ legs. The total number of legs is $132$. How many chickens are there?
+
+(A) $25$  (B) $31$  (C) $34$  (D) $37$  (E) $42$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-3": { s: String.raw`Let $x=\sqrt6\sqrt{14}\sqrt{15}\sqrt{35}$. Then
+
+(A) $0<x<150$  (B) $150<x<200$  (C) $200<x<225$  (D) $225<x<250$  (E) $250<x$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-4": { s: String.raw`Gauss, Euler, Noether, and Ramanujan each have a number. The numbers, not necessarily in this order, are $272$, $1729$, $1882$, and $65537$. Euler's number is smaller than Noether's number. Ramanujan's number is $1729$. Gauss's number is the largest. Which is Noether's number?
+
+(A) $272$
+(B) $1729$
+(C) $1882$
+(D) $65537$
+(E) It cannot be determined from the given information.`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-5": { s: String.raw`Define two sets $A,B$ by:
+$$A=\{1,2,3,\dots,50\},\qquad B=\{a^2+2^a\mid a\text{ is an element of }A\}.$$
+What is the number of elements in $A\cup B$?
+
+(A) $100$  (B) $99$  (C) $98$  (D) $97$  (E) $96$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-6": { s: String.raw`A math professor gives her students a number $x$ and tells them to divide it by $11$. However, Einstein, one of the students, is distracted by relatively more important things and instead subtracts $11$ from $x$. But he still gets the correct answer. Which of the following is true?
+
+(A) $11.2<x<11.4$  (B) $11.4<x<11.6$  (C) $11.6<x<11.8$  (D) $11.8<x<12.0$  (E) $12.0<x<12.2$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-7": { s: String.raw`In the sequence
+$$\log_2(8x),\quad\log_4(16x),\quad\log_8(2x)$$
+the middle term is an average of the other two. What is the positive number $x$?
+
+(A) $1$  (B) $2$  (C) $4$  (D) $8$  (E) $16$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-8": { s: String.raw`Snow White has a bag of Halloween candy to distribute to the seven dwarfs. Dopey suggests that she divide the candy equally among the three youngest dwarfs. Snow White says she cannot do that because there would be one piece of candy left over. Doc suggests that she divide the candy among the $5$ oldest dwarfs. Again, Snow White refuses because there would be one piece of candy left over. Instead, she divides the candy evenly among all seven dwarfs, and there are no pieces of candy left over. Let $N$ be the smallest possible number of pieces of candy. Then
+
+(A) $N<20$  (B) $20<N<40$  (C) $40<N<60$  (D) $60<N<80$  (E) $80<N$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-9": { s: String.raw`A rabbit starts at point $A$ and hops $1$ meter north, then $1/2$ meter west, then $1/4$ meter south, then $1/8$ meter east, then $1/16$ meter north, then $1/32$ meter west, etc. The rabbit approaches the point $B$. What is the distance between points $A$ and $B$?
+
+(A) $2\sqrt5/5$  (B) $\sqrt3/2$  (C) $\sqrt5/2$  (D) $\sqrt6/3$  (E) $\sqrt2/2$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-10": { s: String.raw`A $10$ cm $\times$ $20$ cm $\times$ $30$ cm box, with $10$ cm as its height and without a lid, is made of metal $1$ cm thick. How much metal, by volume, is used? (Note that $10\times 20\times 30$ are the outer dimensions of the box.)
+
+(A) $1968$  (B) $1464$  (C) $1212$  (D) $1041$  (E) $490$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-11": { s: String.raw`Let $D(n)$ denote the sum of the digits of the decimal representation of a positive integer $n$. Define $n_0=7^{7^7}$, and $n_{k+1}=D(n_k)$ for $k\ge 0$. Eventually this sequence reaches a single digit and stays there forever. What is that digit?
+
+(A) $1$  (B) $3$  (C) $5$  (D) $7$  (E) $9$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-12": { s: String.raw`You have stamps worth $6$ cents, $9$ cents, and $10$ cents. Clearly you cannot put $11$ cents on an envelope using these stamps, but you can put $15$ cents using a $6$-cent stamp and a $9$-cent stamp. Let $y$ be the largest amount that you cannot put on an envelope using only these stamps. Which of the following is true? (Assume you have an unlimited supply of stamps of each kind.)
+
+(A) $y<10$  (B) $10<y<15$  (C) $15<y<20$  (D) $20<y<25$  (E) $25<y$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-13": { s: String.raw`A fair coin is flipped $6$ times. What is the probability that at no point during the $6$ flips the number of heads flipped exceeds the number of tails flipped?
+
+(A) $5/16$  (B) $11/32$  (C) $13/64$  (D) $7/32$  (E) $15/64$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-14": { s: String.raw`The number $n=999\cdots 9$ has $250$ digits all equal to $9$. The sum of the digits of $n^2$ is
+
+(A) $2241$  (B) $2250$  (C) $2259$  (D) $2268$  (E) $2277$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-15": { s: String.raw`Consider the following numbers:
+$$\begin{aligned}A&=\cos(0^\circ)+\cos(1^\circ)+\cdots+\cos(180^\circ),\\B&=\sin(90^\circ)+\sin(91^\circ)+\cdots+\sin(270^\circ),\\C&=\sin(A^\circ)+\cos(B^\circ)\end{aligned}$$
+Which of the following is true?
+
+(A) $A<B<C$  (B) $C<A=B$  (C) $A=B=C$  (D) $A=B<C$  (E) $B<A<C$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-16": { s: String.raw`Suppose in an isosceles triangle $ABC$ we know $AB=AC$ and $\angle BAC=40^\circ$. Point $D$ lies on side $AB$ so that $BD=BC$. What is the measure of $\angle ACD$ in degrees?
+
+(A) $10$  (B) $15$  (C) $20$  (D) $25$  (E) $30$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-17": { s: String.raw`Alice has eleven cards with integers $0,1,\dots,10$ written on them, one distinct integer on each card. She wants to form a three-tier tower with six different cards. The bottom row has three cards, the middle row has two and the top has one. Each card in the middle and top must be the sum of the two cards directly beneath it. One such example is the following:
+
+@@fig:umd/2026/parti-17.png@@
+
+In how many ways can she choose and arrange the cards to form such a tower?
+
+(A) $14$  (B) $16$  (C) $18$  (D) $20$  (E) $22$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-18": { s: String.raw`How many digits does the smallest positive integer with exactly $100$ positive integer factors have?
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-19": { s: String.raw`What is the largest possible size of a subset $S$ of $\{1,2,3,\dots,100\}$ such that no element of $S$ is three times another element of $S$?
+
+(A) $70$  (B) $73$  (C) $76$  (D) $79$  (E) $82$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-20": { s: String.raw`The incircle of a right triangle $ABC$ divides the hypotenuse $BC$ into two parts with lengths $a$ and $b$. The area of $ABC$ is equal to:
+
+(A) $ab$  (B) $a^2+b^2-ab$  (C) $2a^2+2b^2-3ab$  (D) $3ab-a^2-b^2$  (E) $(a+b)^2/4$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-21": { s: String.raw`A sequence $a_n$ is given by $a_0=0$, $a_1=1$, and $a_{n+2}=2a_{n+1}-a_n+1$ for all $n\ge 0$. Find $a_{100}$.
+
+(A) $4900$  (B) $4950$  (C) $5000$  (D) $5050$  (E) $5100$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-22": { s: String.raw`Suppose $x\ge 1$, $y\ge 2$, $z\ge 3$ are real numbers satisfying
+$$2\sqrt{x-1}+4\sqrt{y-2}+6\sqrt{z-3}=x+y+z+8$$
+What is the smallest possible value of $x+2y+3z$?
+
+(A) $40$  (B) $42$  (C) $46$  (D) $48$  (E) $50$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-23": { s: String.raw`Two players play a game with a pile of $n$ stones. They alternate turns, and on each turn a player must remove $1$, $4$, or $5$ stones. The player who removes the last stone wins. Both players play as well as possible (that is, each player, on every turn, makes whatever move gives them the best chance to win). For how many positive integers $n\le 2026$ does the second player win the game?
+
+(A) $253$  (B) $500$  (C) $505$  (D) $506$  (E) $507$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-24": { s: String.raw`Consider the product:
+$$P=\left(1+\tan\left(\frac{\pi}{4052}\right)\right)\left(1+\tan\left(\frac{2\pi}{4052}\right)\right)\cdots\left(1+\tan\left(\frac{1012\pi}{4052}\right)\right)\left(1+\tan\left(\frac{1013\pi}{4052}\right)\right).$$
+All angles are in radians. $P$ can be written as $m^n$, where $m,n$ are positive integers and $m$ is as small as possible. What is $m+n$?
+
+(A) $509$  (B) $510$  (C) $512$  (D) $514$  (E) $518$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+"2026-umd-hsmc-part-i-25": { s: String.raw`Points $A,C,B$ lie on a line, with $C$ between $A$ and $B$, where $AC=12$ and $CB=20$. Semicircles are drawn on diameters $CB$ and $AB$, on the same side of line $AB$. Let $\ell$ be the line through $C$ perpendicular to $AB$. A circle $\omega$ is tangent to $\ell$, tangent internally to the semicircle with diameter $AB$, and tangent externally to the semicircle with diameter $CB$. Find the radius of $\omega$.
+
+@@fig:umd/2026/parti-25.png@@
+
+(A) $10/3$  (B) $7/2$  (C) $15/4$  (D) $4$  (E) $25/6$`, u: "https://mathcomp.math.umd.edu/files/2026/10/PartI2026.pdf" },
+});

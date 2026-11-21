@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build js/data/problems/statements/<dir>/<year>.js from the hand-checked spec files.
 
-    python3 tools/statements/build.py smt|bmt|arml
+    python3 tools/statements/build.py smt|bmt|arml|cmimc|chmmc|duke|mmaths|gmay|umd|lehigh|utah|columbus|mbmt|calgary|pumac
 
 Spec: tools/statements/spec/<dir>/<year>.txt, blocks "=== <slug tail>" (the slug without
 "<year>-<prefix>-", e.g. "algebra-3", "general-12", "individual-7", "local-individual-2"),
@@ -21,17 +21,36 @@ SPEC = os.path.join(ROOT, "tools", "statements", "spec")
 WORK = os.environ.get("STATEMENTS_WORK", "/tmp/statements-work")
 d = sys.argv[1]
 probs = {p["slug"]: p for p in json.load(open(os.path.join(WORK, "probs.json")))}
-FAM = {"smt": ("SMT",), "bmt": ("BMT",), "arml": ("ARML", "ARML Local")}[d]
-NAME = {"smt": "Stanford Math Tournament", "bmt": "Berkeley Math Tournament", "arml": "American Regions Mathematics League"}[d]
-SOURCE = {"smt": "the official Stanford Math Tournament papers", "bmt": "the official Berkeley Math Tournament papers",
-          "arml": "the official ARML contest books"}[d]
+# dir -> (families in the database, full name, source line); the credit and link rules are in tools/check-statements.py
+DIRS = {
+    "smt": (("SMT",), "Stanford Math Tournament", "the official Stanford Math Tournament papers"),
+    "bmt": (("BMT",), "Berkeley Math Tournament", "the official Berkeley Math Tournament papers"),
+    "arml": (("ARML", "ARML Local"), "American Regions Mathematics League", "the official ARML contest books"),
+    "cmimc": (("CMIMC",), "Carnegie Mellon Informatics and Mathematics Competition", "the official CMIMC tests"),
+    "chmmc": (("CHMMC",), "Caltech Harvey Mudd Math Competition", "the official CHMMC papers"),
+    "duke": (("Duke Math Meet",), "Duke Math Meet", "the official Duke Math Meet papers"),
+    "mmaths": (("MMATHS",), "Yale Math Competitions", "the official MMATHS papers"),
+    "gmay": (("Girls in Math at Yale",), "Yale Math Competitions", "the official Girls in Math at Yale papers"),
+    "umd": (("UMD HSMC",), "University of Maryland High School Mathematics Competition", "the official UMD HSMC papers"),
+    "lehigh": (("Lehigh",), "Lehigh University High School Math Contest", "the official Lehigh contest papers"),
+    "utah": (("Utah State Math Contest",), "Utah State Math Contest", "the official Utah State Math Contest exams"),
+    "columbus": (("Columbus State Tournament",), "Columbus State Invitational Mathematics Tournament", "the official Columbus State tournament tests"),
+    "mbmt": (("MBMT Lower", "MBMT Upper"), "Montgomery Blair Math Tournament", "the official MBMT rounds"),
+    "calgary": (("Calgary Junior Math Contest",), "University of Calgary Junior Mathematics Contest", "the official Calgary Junior Math Contest papers"),
+    "pumac": (("PUMaC Division A", "PUMaC Division B"), "Princeton University Mathematics Competition", "the official PUMaC papers"),
+}
+FAM, NAME, SOURCE = DIRS[d]
+# the slug word where it is not the folder name (slug = year-word-tail)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+import choice_layout
+SLUG_WORD = {"gmay": "girls-in-math-at-yale", "umd": "umd-hsmc-part-i", "lehigh": "lehigh-math-contest"}
 total = 0
 for spec in sorted(glob.glob(os.path.join(SPEC, d, "*.txt"))):
     year = os.path.basename(spec)[:4]
     blocks = re.split(r"^=== (\S+)\s*$", open(spec, encoding="utf-8").read(), flags=re.M)[1:]
     out = []
     for tail, body in zip(blocks[::2], blocks[1::2]):
-        slug = f"{year}-{d}-{tail}"
+        slug = f"{year}-{SLUG_WORD.get(d, d)}-{tail}"
         if slug not in probs: sys.exit(f"{spec}: {slug} is not in the database")
         p = probs[slug]
         def fig(m):
@@ -46,6 +65,7 @@ for spec in sorted(glob.glob(os.path.join(SPEC, d, "*.txt"))):
                 sys.exit(f"{slug}: missing figure {src}")
             return f"@@fig:{d}/{year}/{short}@@"
         s = re.sub(r"@@fig:([^@/]+)@@", fig, body.strip())
+        s = choice_layout.layout(s)  # long answer choices one per line
         if "`" in s: sys.exit(f"{slug}: backtick in statement")
         url = p["url"] if d == "arml" else p["url"].split("#")[0]
         out.append(f'"{slug}": {{ s: String.raw`{s}`, u: "{url}" }},')

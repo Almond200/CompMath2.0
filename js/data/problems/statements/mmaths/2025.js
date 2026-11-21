@@ -1,0 +1,32 @@
+// Problems and diagrams © 2025 Yale Math Competitions. Reproduced with permission from the Yale Math Competitions.
+// Source: the official MMATHS papers. Built by tools/statements/build.py from tools/statements/spec/mmaths/2025.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2025-mmaths-individual-1": { s: String.raw`Lily writes $10$ consecutive two-digit numbers on a sheet of paper. Given that the digit $1$ appears seven times, how many times does the digit $2$ appear?`, u: "https://yalemathcompetitions-files.s3.amazonaws.com/mmaths_2025_individual.pdf" },
+"2025-mmaths-individual-2": { s: String.raw`How many ordered pairs of real numbers $(x,y)$ satisfy the equation
+$$(x+y-1)^2+\left(x^2+y^2-1\right)^2=0?$$`, u: "https://yalemathcompetitions-files.s3.amazonaws.com/mmaths_2025_individual.pdf" },
+"2025-mmaths-individual-3": { s: String.raw`Let $ABCD$ be a parallelogram with $\overline{AB}\parallel\overline{CD}$ and $\overline{AD}\parallel\overline{BC}$. Extend $\overline{AD}$ past $D$ to meet the angle bisector of $\angle ABC$ at a point $E$. If $AB=55$ and $BC=45$, what is the length of $\overline{DE}$?`, u: "https://yalemathcompetitions-files.s3.amazonaws.com/mmaths_2025_individual.pdf" },
+"2025-mmaths-individual-4": { s: String.raw`Cat and Claire are discussing their favorite two-digit positive integers.
+
+Cat: Do you think $49$ is a divisor of the product of our numbers? I can't tell.
+
+Claire: I can't tell either.
+
+Cat: Oh, now I'm sure the product is divisible by $49$.
+
+Claire: Interesting! That means the sum of our numbers can't possibly be divisible by $11$.
+
+Cat: The sum of our numbers is definitely divisible by $13$, though.
+
+Let Cat's and Claire's numbers be $A$ and $B$, respectively. What is $100A+B$?`, u: "https://yalemathcompetitions-files.s3.amazonaws.com/mmaths_2025_individual.pdf" },
+"2025-mmaths-individual-5": { s: String.raw`There is a magical bee in Catherine's room! Every minute, magical bees decide between two choices, each with probability $\frac12$: either sting Catherine and disappear or divide into three magical bees. Thus, after one minute, Catherine has been stung with probability $\frac12$. The expected number of times that Catherine has been stung after four minutes can be expressed as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.`, u: "https://yalemathcompetitions-files.s3.amazonaws.com/mmaths_2025_individual.pdf" },
+"2025-mmaths-individual-6": { s: String.raw`Let $a$, $b$, and $c$ be the distinct roots of $2x^3-x^2+x-1$. Find the value of
+$$\sum_{n=1}^{\infty}a^n+b^n+c^n.$$`, u: "https://yalemathcompetitions-files.s3.amazonaws.com/mmaths_2025_individual.pdf" },
+"2025-mmaths-individual-7": { s: String.raw`How many integers $x$ with $3\le x\le 1000$ satisfy the property that for every power of three $3^k$ between $3$ and $x$, inclusive, $\frac{x}{3^k}-\left\lfloor\frac{x}{3^k}\right\rfloor$ is at least $\frac13$, where $\lfloor z\rfloor$ denotes the greatest integer less than or equal to $z$?`, u: "https://yalemathcompetitions-files.s3.amazonaws.com/mmaths_2025_individual.pdf" },
+"2025-mmaths-individual-8": { s: String.raw`Let $ABC$ be an equilateral triangle with side length $2025$. The set of all points $P$ that satisfy the equation $PA=PB+PC$ traces out a curve of length $m\sqrt n\pi$, where $m$ and $n$ are positive integers and $n$ is not divisible by the square of any prime. Find $m+n$.`, u: "https://yalemathcompetitions-files.s3.amazonaws.com/mmaths_2025_individual.pdf" },
+"2025-mmaths-individual-9": { s: String.raw`Let $\{a_n\}$ be a sequence of nonnegative real numbers such that $a_0$ is a proper divisor of $2025^{2025}$, and for all positive integers $n$, $a_n^{a_{n+1}}=\left|2025^{2025}-a_0n\right|$. What is the value of $a_0^{a_1}$?`, u: "https://yalemathcompetitions-files.s3.amazonaws.com/mmaths_2025_individual.pdf" },
+"2025-mmaths-individual-10": { s: String.raw`Benjamin has $1000$ t-shirts, labeled $1,2,\dots,1000$. These labels also correspond to his preferences for shirts: he prefers shirt $i$ to shirt $j$ if and only if $i<j$. On day $0$, Benjamin randomly arranges the shirts into two stacks of $500$ shirts each. Let $a_k$ denote the $k$th shirt in the first stack (from the top), and $b_k$ denote the $k$th shirt in the second stack in this initial arrangement. Each subsequent day, Benjamin looks at the top shirt of each stack and wears the one he likes more, removing it from the stack. Benjamin continues this process until both stacks are empty. Given that Benjamin prefers $a_{20}$ to $b_{25}$, the probability that $b_{25}$ is worn before $a_{20}$ can be expressed as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.`, u: "https://yalemathcompetitions-files.s3.amazonaws.com/mmaths_2025_individual.pdf" },
+"2025-mmaths-individual-11": { s: String.raw`Let $\sigma(n)$ denote the sum of the positive divisors of $n$, and let $\varphi(n)$ denote the number of positive integers less than or equal to $n$ that are relatively prime to $n$. There exists a unique polynomial $P$ such that
+$$P(n)\ge 2\sigma(n)+n\varphi(n)$$
+for all positive integers $n$, with equality holding for infinitely many such $n$. Find $P(10)$.`, u: "https://yalemathcompetitions-files.s3.amazonaws.com/mmaths_2025_individual.pdf" },
+"2025-mmaths-individual-12": { s: String.raw`Let $ABC$ be a triangle with $AB=13$, $BC=14$, and $AC=15$. Let $\omega$ be the incircle of $\triangle ABC$. There exists a circle $\Gamma$ passing through $B$ and $C$ that is internally tangent to $\omega$ at a point $P$. The line tangent to $\omega$ and $\Gamma$ at $P$ meets $\overline{AB}$ and $\overline{AC}$ at points $K$ and $L$, respectively. The length of $\overline{KL}$ can be expressed as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.`, u: "https://yalemathcompetitions-files.s3.amazonaws.com/mmaths_2025_individual.pdf" },
+});

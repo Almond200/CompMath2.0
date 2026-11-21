@@ -709,7 +709,7 @@ window.MATH_SECTIONS.push({
         { title: "Polynomials & Their Roots", blurb: "Working with the roots of a polynomial without finding them.", ids: ["symmetric-polynomial-strategies", "polynomial-division", "comparing-coefficients", "lagrange-interpolation", "quadratic-root-location", "root-transformations", "roots-of-unity-filter"] },
         { title: "Sums & Sequences", blurb: "Evaluating sums by collapsing, reordering, or differencing their terms.", ids: ["telescoping", "alternating-sum-grouping", "fx-pairing", "finite-differences", "double-summation", "symmetrizing-a-sum", "largest-term-ratio"] },
         { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sign-chart", "sos-method", "smoothing-method", "tangent-line-trick", "derivative-extremum", "median-minimizes-abs", "slope-to-a-point", "placing-digits-extremes"] },
-        { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["transforming-equations", "add-all-equations", "subtract-swapped-equations", "linear-elimination", "setting-up-proportions", "rounding-ranges", "time-per-leg", "round-up-whole-items", "assume-all-one-kind", "averages-to-totals"] },
+        { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["transforming-equations", "add-all-equations", "subtract-swapped-equations", "square-and-add", "linear-elimination", "setting-up-proportions", "rounding-ranges", "time-per-leg", "round-up-whole-items", "assume-all-one-kind", "averages-to-totals"] },
         { title: "Graphs, Estimates & Rates", blurb: "Drawing the picture, or estimating, when an exact computation is the hard way.", ids: ["abs-value-graphing", "abs-value-relations", "piecewise-graph-counting", "estimating-answers", "sqrt-approximation"] },
         { title: "Working with Functions", blurb: "Reading a function's symmetries and periods off the equations that describe it, and proving it one-to-one or onto.", ids: ["function-symmetry-equation", "injectivity-surjectivity"] },
         { title: "Matrices & Determinants", blurb: "Evaluating a determinant without expanding every term, and raising a matrix to a high power.", ids: ["matrix-power-diagonalizing", "cofactor-expansion"] }
@@ -880,6 +880,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "square-and-add",
+          name: "Squaring and Adding Paired Equations",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`Two equations pair a sine sum with a cosine sum, as in $\sin a + \sin b = p$ and $\cos a + \cos b = q$, or two linear equations in the same unknowns whose coefficient rows are equal in length and perpendicular, as in $a + 8c = P$ and $8a - c = Q$, and the question asks for a quantity that does not need the angles or the unknowns one at a time, such as $\cos(a-b)$ or $a^2 + c^2$.`,
+          move: String.raw`Square both equations and add them. For a sine and cosine pair, $\sin^2 + \cos^2 = 1$ turns each pair of squares into $1$, and the cross terms become $2\cos(a-b)$, so the sum is $2 + 2\cos(a-b) = p^2 + q^2$; for two linear equations with rows $(u, v)$ and $(-v, u)$ the cross terms cancel and the sum is $(u^2 + v^2)(\text{unknowns})$.`,
+          uses: ["pythagorean-identities", "angle-addition"],
+          latex: String.raw`\begin{gathered} (\sin a + \sin b)^2 + (\cos a + \cos b)^2 = 2 + 2\cos(a-b) \\ (A\cos\theta + B\sin\theta)^2 + (A\sin\theta - B\cos\theta)^2 = A^2 + B^2 \end{gathered}`,
+          description: String.raw`Squaring and adding combines two equations, one holding a sine and one a cosine of the same angles, into a single equation in which the angles have disappeared. Reach for it when the angles themselves are not asked for and the two given sums are the sine part and the cosine part of the same expression: the sum of the two squares is then the squared length of a sum of unit vectors, which depends only on the angle between them. The same move works for any pair of linear equations whose coefficient rows are perpendicular and equal in length, where the cross terms cancel and the sum of squares is a constant multiple of the sum of the squares of the unknowns.`,
+          keywords: ["square and add", "sin a + sin b and cos a + cos b", "pair of trig equations", "eliminate the angle", "sum of squares of two sums", "cos(a-b) from sums", "unit vectors added", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC12", "AIME"]
         },
         {
           id: "linear-elimination",

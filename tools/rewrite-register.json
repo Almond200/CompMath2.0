@@ -1868,7 +1868,8 @@
     "bound-and-construct": "method",
     "small-cases-pattern": "method",
     "if-then-statements": "method",
-    "settle-with-an-example": "method"
+    "settle-with-an-example": "method",
+    "square-and-add": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -9147,6 +9148,12 @@
       ]
     ],
     "settle-with-an-example": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "square-and-add": [
       [
         "(new card)",
         "written directly in the method template"

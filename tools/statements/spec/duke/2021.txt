@@ -1,0 +1,26 @@
+=== math-meet-individual-1
+There are $4$ mirrors facing the inside of a $5\times 7$ rectangle as shown in the figure. A ray of light comes into the inside of a rectangle through $A$ with an angle of $45^\circ$. When it hits the sides of the rectangle, it bounces off at the same angle, as shown in the diagram. How many times will the ray of light bounce before it reaches any one of the corners $A,B,C,D$? A bounce is a time when the ray hit a mirror and reflects off it.
+
+@@fig:duke2021_individual-1.png@@
+=== math-meet-individual-2
+Jerry cuts $4$ unit squares out from the corners of a $45\times 45$ square and folds it into a $43\times 43\times 1$ tray. He then divides the bottom of the tray into a $43\times 43$ grid and drops a unit cube, which lands in precisely one of the squares on the grid with uniform probability. Suppose that the average number of sides of the cube that are in contact with the tray is given by $\frac{m}{n}$ where $m,n$ are positive integers that are relatively prime. Find $m+n$.
+=== math-meet-individual-3
+Compute $2021^4-4\cdot 2023^4+6\cdot 2025^4-4\cdot 2027^4+2029^4$.
+=== math-meet-individual-4
+Find the number of distinct subsets $S\subseteq\{1,2,\dots,20\}$, such that the sum of elements in $S$ leaves a remainder of $10$ when divided by $32$.
+=== math-meet-individual-5
+Some $k$ consecutive integers have the sum $45$. What is the maximum value of $k$?
+=== math-meet-individual-6
+Jerry picks $4$ distinct diagonals from a regular nonagon (a regular polygon with $9$-sides). A diagonal is a segment connecting two vertices of the nonagon that is not a side. Let the probability that no two of these diagonals are parallel be $\frac{m}{n}$ where $m,n$ are positive integers that are relatively prime. Find $m+n$.
+=== math-meet-individual-7
+The Olympic logo is made of $5$ circles of radius $1$, as shown in the figure
+
+@@fig:duke2021_individual-7.png@@
+
+Suppose that the total area covered by these $5$ circles is $a+b\pi$ where $a,b$ are rational numbers. Find $10a+20b$.
+=== math-meet-individual-8
+Let $P(x)$ be an integer polynomial (polynomial with integer coefficients) with $P(-5)=3$ and $P(5)=23$. Find the minimum possible value of $|P(-2)+P(2)|$.
+=== math-meet-individual-9
+There exists a unique tuple of rational numbers $(a,b,c)$ such that the equation $a\log 10+b\log 12+c\log 90=\log 2025$. What is the value of $a+b+c$?
+=== math-meet-individual-10
+Each grid of a board $7\times 7$ is filled with a natural number smaller than $7$ such that the number in the grid at the $i$th row and $j$th column is congruent to $i+j$ modulo $7$. Now, we can choose any two different columns or two different rows, and swap them. How many different boards can we obtain from a finite number of swaps?

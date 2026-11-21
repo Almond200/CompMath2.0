@@ -1,0 +1,143 @@
+=== lower-algebra-1
+Guang has one pair of Yeezys. At the end of every six months, he buys three more pairs of Yeezys. How many months pass until Guang first has more than $10$ pairs of Yeezys?
+=== lower-algebra-2
+UMBC and UVA are playing a basketball game. If UMBC scores $12$ three-pointers, $14$ two-pointers, and $10$ free throws (worth one point), while UVA scores $4$ three-pointers, $19$ two-pointers, and $4$ free throws, then by how much did UMBC beat UVA?
+=== lower-algebra-3
+To test Bob's memory, Alice tells Bob the numbers $1$ through $10$ in some order, but she skips one number. Bob is supposed to, in return, tell Alice the skipped number. Bob doesn't have a great memory, but he is clever, so he sums up the numbers Alice tells him. If Bob gets a sum of $50$, what is the missing number?
+=== lower-algebra-4
+Julia and Jasmine evenly split a cake that is $30\%$ frosting and $70\%$ non-frosting. If Julia's portion is $50\%$ frosting, what percent of Jasmine's portion is frosting?
+=== lower-algebra-5
+Guang is reading a book with $500$ pages. Each day, he reads one page. On every Thursday, in addition to reading a new page, Guang re-reads (reviews) every page he's read so far. If each page takes one minute to read, how many minutes does Guang spend reading in ten weeks?
+=== lower-algebra-6
+Consider the following diagram. Steven places the numbers $1$, $2$, $3$, $4$, $5$, and $6$ in the squares, and writes in each circle the average of the numbers below it. What is the positive difference between the maximum and minimum possible values written in the top circle?
+
+@@fig:mbmt2018_lower-algebra-6.png@@
+=== lower-algebra-7
+Guang's watch runs $1\%$ slower than normal time. Luckily, he resets the time on his watch to be equal to the actual time at $6$ AM, $11$ AM, $4$ PM, and $10$ PM every day. What is the maximum difference in seconds ever achieved between the time on Guang's watch and the actual time?
+=== lower-algebra-8
+If $a^2+2b^2=72$ and $(a+2b)^2=144$, and neither $a$ nor $b$ is equal to $0$, find $ab$.
+=== lower-counting-1
+In Kevtown, license plates consist of a single uppercase letter followed by a single digit (like B6 or Y0). How many possible license plates can be made in Kevtown?
+=== lower-counting-2
+Artemis, Zeus, and Poseidon are betting on the outcome of rolling a six-sided fair die. Artemis bets that it will be a $2$, Zeus bets that it will be odd, and Poseidon bets that it will be a multiple of $3$. Who is most likely to be correct?
+=== lower-counting-3
+Stan flips a penny, and Dilhan flips a nickel. If one of them flips tails, their coin vanishes. Otherwise, they keep the coin. What is the probability that they will have at least two cents left over?
+=== lower-counting-4
+A pie is covered with various toppings. Strawberries cover $50\%$ of the pie, blueberries cover $40\%$ of the pie, and $25\%$ of the pie has neither topping. What percentage of the pie has both toppings?
+=== lower-counting-5
+David draws a square and puts a letter at each of its vertices. He looks at the square and reads $DAVE$. How many other names could he have possibly read (counting things like $EDAV$ or $ADEV$ which are not necessarily common names)?
+=== lower-counting-6
+Jimmy rolls a six-sided die over and over until he gets a number less than $5$. Jommy rolls a six-sided die over and over until he gets a number greater than $2$. Then, they each write down their number. What is the probability that the sum of their two numbers is equal to $7$?
+=== lower-counting-7
+How many ways are there to place one black piece and one white piece on a $3$ by $3$ checkerboard such that the pieces are in neither the same row nor the same column?
+=== lower-counting-8
+Tom is stringing red, blue, and green beads on a straight wire. A red bead can be followed by any color of bead. A blue bead can only be followed by a blue or green bead. A green bead can only be followed by a green bead. If the wire has to have $6$ beads, in how many ways can Tom string the beads? Note that not all colors have to be used.
+=== lower-geometry-1
+A circle has circumference $6\pi$. Find the area of this circle.
+=== lower-geometry-2
+Points $A$, $B$, and $C$ are on a line such that $AB=6$ and $BC=11$. Find all possible values of $AC$.
+=== lower-geometry-3
+A trapezoid has area $84$ and one base of length $5$. If the height is $12$, what is the length of the other base?
+=== lower-geometry-4
+$27$ cubes of side length $1$ are arranged to form a $3\times 3\times 3$ cube. If the corner $1\times 1\times 1$ cubes are removed, what fraction of the volume of the big cube is left?
+=== lower-geometry-5
+There is a $50$-foot tall wall and a $300$-foot tall guard tower $50$ feet from the wall. What is the minimum $a$ such that a flat "X" drawn on the ground $a$ feet from the side of the wall opposite the guard tower is visible from the top of the guard tower?
+=== lower-geometry-6
+Steven's pizzeria makes pizzas in the shape of equilateral triangles. If a pizza with side length $8$ inches will feed $2$ people, how many people will a pizza of side length of $16$ inches feed?
+=== lower-geometry-7
+Consider rectangle $ABCD$, with $1=AB<BC$. The angle bisector of $\angle DAB$ intersects $\overline{BC}$ at $E$ and $\overrightarrow{DC}$ at $F$. If $FE=FD$, find $BC$.
+=== lower-geometry-8
+$\triangle ABC$ is a right triangle with $\angle A=90^\circ$. Square $ADEF$ is drawn, with $D$ on $\overline{AB}$, $F$ on $\overline{AC}$, and $E$ inside $\triangle ABC$. Point $G$ is chosen on $\overline{BC}$ such that $EG$ is perpendicular to $BC$. Additionally, $DE=EG$. Given $\angle C=20^\circ$, find the measure of $\angle BEG$.
+=== lower-number-theory-1
+Dilcue's favorite number is a one-digit positive integer. When she multiplies her favorite number by $4$, the result is a two-digit number that ends in $8$. What is $5$ times Dilcue's favorite number?
+=== lower-number-theory-2
+Anna has a perfect square number of marbles. Bob has a perfect cube number of marbles. Both have more than one marble and fewer than ten marbles. Bob has one fewer marble than Anna. How many do they have altogether?
+
+Perfect squares are squares of integers: $0$, $1$, $4$, etc. Perfect cubes are cubes of integers: $0$, $1$, $8$, etc.
+=== lower-number-theory-3
+What is the smallest number greater than $22$ that can be written as a sum of two perfect squares?
+=== lower-number-theory-4
+How many $2$ digit numbers $\overline{AB}$ are there so that both $\overline{AB}$ and $A$ are divisible by $3$? (If $A=1$ and $B=7$, then $\overline{AB}=17$.)
+=== lower-number-theory-5
+For how many ordered pairs $(a,b)$, where $a$ and $b$ are positive integers, is the value $2^a8^b$ less than $1000$?
+=== lower-number-theory-6
+The least common multiple of two natural numbers is $8$ times their greatest common factor. What is the value of the larger number divided by the smaller number?
+=== lower-number-theory-7
+Guang has come up with a great time management strategy. He decides that every $91$ days he will rap continuously for the entire day. Some time later, he also decides that every $k$ days (where $k$ is an integer) he will do math for the entire day. Assuming that Guang cannot rap and do math simultaneously, what is the minimum $k$ for which this is possible?
+=== lower-number-theory-8
+What is the smallest positive integer $n$ such that $n$ divided by $7$ has remainder $3$, $n$ divided by $11$ has remainder $5$, and $n$ divided by $13$ has remainder $6$?
+=== upper-algebra-1
+UMBC and UVA are playing a basketball game. If UMBC scores $12$ three-pointers, $14$ two-pointers, and $10$ free throws (worth one point), while UVA scores $4$ three-pointers, $19$ two-pointers, and $4$ free throws, then by how much did UMBC beat UVA?
+=== upper-algebra-2
+To test Bob's memory, Alice tells Bob the numbers $1$ through $10$ in some order, but she skips one number. Bob is supposed to, in return, tell Alice the skipped number. Bob doesn't have a great memory, but he is clever, so he sums up the numbers Alice tells him. If Bob gets a sum of $50$, what is the missing number?
+=== upper-algebra-3
+Guang's watch runs $1\%$ slower than normal time. Luckily, he resets the time on his watch to be equal to the actual time at $6$ AM, $11$ AM, $4$ PM, and $10$ PM every day. What is the maximum difference in seconds ever achieved between the time on Guang's watch and the actual time?
+=== upper-algebra-4
+If $a^2+2b^2=72$ and $(a+2b)^2=144$, and neither $a$ nor $b$ is equal to $0$, find $ab$.
+=== upper-algebra-5
+Squares of side length $x$ ($x<\frac92$) are cut out of each corner of a $9$ by $10$ rectangular sheet of paper. The paper is then folded up into an open box. If the box has volume $60$, find all possible values of $x$.
+=== upper-algebra-6
+Find the minimum value of $(x-y+1)^2+(xy+y+1)^2$ over all pairs of real numbers $(x,y)$.
+=== upper-algebra-7
+Find the unique positive solution to $x\lceil x\lfloor x\rfloor\rceil\lceil x\rceil=130$. Here, $\lfloor x\rfloor$ is the largest integer less than or equal to $x$, and $\lceil x\rceil$ is the smallest integer greater than or equal to $x$.
+=== upper-algebra-8
+Find the minimum value of
+$$a+\frac8a+\frac8{a+\frac8a}$$
+where $a$ is a positive real number.
+=== upper-counting-1
+Artemis, Zeus, and Poseidon are betting on the outcome of rolling a six-sided fair die. Artemis bets that it will be a $2$, Zeus bets that it will be odd, and Poseidon bets that it will be a multiple of $3$. Who is most likely to be correct?
+=== upper-counting-2
+A pie is covered with various toppings. Strawberries cover $50\%$ of the pie, blueberries cover $40\%$ of the pie, and $25\%$ of the pie has neither topping. What percentage of the pie has both toppings?
+=== upper-counting-3
+Jimmy rolls a six-sided die over and over until he gets a number less than $5$. Jommy rolls a six-sided die over and over until he gets a number greater than $2$. Then, they each write down their number. What is the probability that the sum of their two numbers is equal to $7$?
+=== upper-counting-4
+Tom is stringing red, blue, and green beads on a straight wire. A red bead can be followed by any color of bead. A blue bead can only be followed by a blue or green bead. A green bead can only be followed by a green bead. If the wire has to have $6$ beads, in how many ways can Tom string the beads? Note that not all colors have to be used.
+=== upper-counting-5
+There are $4$ clubs at Blair: the Saxophone, Tambourine, Engineering, and Math clubs. Each club selects another club to be their archnemesis. What is the probability that no two clubs select each other as archnemeses?
+=== upper-counting-6
+In a draft, several people take turns picking a person from a group to be on their team. Mr. Schwartz is picking a three-person team from a $12$-person draft. Mr. Schwartz is intentionally trying to get Alice, Bob, and Claire onto his team, while the other people drafting are picking randomly. If Mr. Schwartz gets the 4th, 8th, and 10th picks, what is the probability Mr. Schwartz gets the exact team he wants?
+=== upper-counting-7
+Six identical chocolates are arranged in a hexagonal shape on a plate. How many ways can they be eaten, one by one, so that the shape of the remaining chocolates always has at least one line of symmetry? One order in which the chocolates could be eaten (with lines of symmetry) is shown below:
+
+@@fig:mbmt2018_upper-counting-7.png@@
+=== upper-counting-8
+Alice wants to tile an equilateral triangle of side length $10$ with strips of three and four equilateral triangles (shown below) of side length $1$. What is the minimum number of pieces she needs to accomplish this?
+
+@@fig:mbmt2018_upper-counting-8.png@@
+=== upper-geometry-1
+$27$ cubes of side length $1$ are arranged to form a $3\times 3\times 3$ cube. If the corner $1\times 1\times 1$ cubes are removed, what fraction of the volume of the big cube is left?
+=== upper-geometry-2
+Points $A$, $B$, and $C$ are on a line such that $AB=6$ and $BC=11$. Find all possible values of $AC$.
+=== upper-geometry-3
+Consider rectangle $ABCD$, with $1=AB<BC$. The angle bisector of $\angle DAB$ intersects $\overline{BC}$ at $E$ and $\overrightarrow{DC}$ at $F$. If $FE=FD$, find $BC$.
+=== upper-geometry-4
+Consider a lamp in the shape of a hollow cylinder with the circular faces removed with height $48$ cm and radius $7$ cm. A point source of light is situated at the center of the lamp. The lamp is held so that the bottom of the lamp is at a height $48$ cm above an infinite flat sheet of paper. What is the area of the illuminated region on the flat sheet of paper, in $\text{cm}^2$?
+
+@@fig:mbmt2018_upper-geometry-4.png@@
+=== upper-geometry-5
+There exist two triangles $ABC$ such that $AB=13$, $BC=12\sqrt2$, and $\angle C=45^\circ$. Find the positive difference between their areas.
+=== upper-geometry-6
+$\triangle ABC$ is a right triangle with $\angle A=90^\circ$. Square $ADEF$ is drawn, with $D$ on $\overline{AB}$, $F$ on $\overline{AC}$, and $E$ inside $\triangle ABC$. Point $G$ is chosen on $\overline{BC}$ such that $EG$ is perpendicular to $BC$. Additionally, $DE=EG$. Given $\angle C=20^\circ$, find the measure of $\angle BEG$.
+=== upper-geometry-7
+Let $ABC$ be an equilateral triangle with side length $2$. Let the circle with diameter $AB$ be $\Gamma$. Consider the two tangents from $C$ to $\Gamma$, and let the tangency point closer to $A$ be $D$. Find the area of $\triangle CAD$.
+=== upper-geometry-8
+Let $ABC$ be a triangle with $\angle A=60^\circ$, $AB=37$, $AC=41$. Let $H$ and $O$ be the orthocenter and circumcenter of $ABC$, respectively. Find $OH$.
+
+The orthocenter of a triangle is the intersection point of the three altitudes. The circumcenter of a triangle is the intersection point of the three perpendicular bisectors of the sides.
+=== upper-number-theory-1
+Haydn is playing with his toy cars. He has between $20$ and $30$ cars, and he knows that when he tries to put them into groups of $12$, he has $1$ left over. How many toy cars does Haydn have?
+=== upper-number-theory-2
+How many $2$ digit numbers $\overline{AB}$ are there so that both $\overline{AB}$ and $A$ are divisible by $3$? (If $A=1$ and $B=7$, then $\overline{AB}=17$.)
+=== upper-number-theory-3
+For how many ordered pairs $(a,b)$, where $a$ and $b$ are positive integers, is the value $2^a8^b$ less than $1000$?
+=== upper-number-theory-4
+The least common multiple of two natural numbers is $8$ times their greatest common factor. What is the value of the larger number divided by the smaller number?
+=== upper-number-theory-5
+Every time DJ Khaled says "another one" he either adds a $1$ to his number or appends a $1$ to the end of his number. For example, he can turn $6$ into $7$ or $61$. If he starts with the number $1$, what is the minimum number of turns to get to $2018$?
+=== upper-number-theory-6
+How many positive integers $n$ less than $1000$ satisfy the property that $\lfloor\sqrt[3]{n}\rfloor$ is a factor of $n$? Here, $\lfloor x\rfloor$ denotes the greatest integer less than or equal to $x$.
+=== upper-number-theory-7
+What is the smallest positive integer $n$ such that $n$ divided by $7$ has remainder $3$, $n$ divided by $11$ has remainder $5$, $n$ divided by $13$ has remainder $6$, and $n$ divided by $17$ has remainder $8$?
+=== upper-number-theory-8
+Find
+$$\gcd\left(2^{71}-2,3^{71}-3,\ldots,100^{71}-100\right).$$

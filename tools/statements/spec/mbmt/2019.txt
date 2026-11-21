@@ -1,0 +1,141 @@
+=== lower-algebra-1
+Haydn is thinking of a number. When he subtracts $20$ from it and then adds $1$, he gets $9$. What is Haydn's number?
+=== lower-algebra-2
+A daddy penguin fishes for his baby penguin, but the baby penguin is very picky about his food. On weekdays, the baby penguin demands exactly five fish per meal and eats breakfast, lunch, and dinner; on weekends, he demands five fish per meal but only eats brunch and dinner. How many fish must the daddy penguin catch in order to satisfy the baby for a week?
+=== lower-algebra-3
+Kev and Tim are brothers. Six years from now, Kev's age will be the square of what it is right now, and Tim's age will be the cube of what it is right now. Find the sum of Kev and Tim's ages right now.
+=== lower-algebra-4
+Shawn bought $21$ apples and $9$ bananas, spending a total of $45$ dollars. He then proceeds to give Emmy $7$ apples and $3$ bananas. How many dollars does Emmy owe Shawn for the fruit?
+=== lower-algebra-5
+Roger starts with the number $2019$ on his calculator and starts hitting the square root button (which replaces the number on his calculator with its square root). How many times will he have to hit the button before the number on his calculator is less than $2.019$?
+=== lower-algebra-6
+Anson and Kaz are working on a group project. They must collectively complete a lab trial, write a lab journal entry, and create a Powerpoint presentation. The number of minutes each person takes to complete each task is given by the table below. They cannot work simultaneously on a task, but they can stop work partway through. How many minutes, at minimum, do Anson and Kaz need to finish all three tasks?
+
+$$\begin{array}{l|ccc}&\textbf{Presentation}&\textbf{Journal}&\textbf{Lab}\\\hline\text{Anson}&15&20&25\\\text{Kaz}&30&30&15\end{array}$$
+=== lower-algebra-7
+Let $x_1,x_2,x_3,\ldots$ be a sequence of integers such that $x_1=1$, $x_{n+1}=3x_n$ for odd $n$, and $x_{n+1}=2x_n$ for even $n$. Find the sum $\frac1{x_1}+\frac1{x_2}+\frac1{x_3}+\cdots$.
+=== lower-algebra-8
+Two of the roots of $x^4+12x-5$ sum to a positive rational number. Determine this sum.
+=== lower-counting-1
+Kevin Zhou rolls two six-sided dice and writes down the sum of the two numbers shown. How many numbers could Kevin have written down?
+=== lower-counting-2
+An ant is at one corner of a cube of side length $1$ and can move only along the edges of the cube. How many paths of length $3$ can the ant take to the opposite corner of the cube?
+=== lower-counting-3
+What is the probability that a given two-digit multiple of $7$ has a digit sum divisible by $7$?
+=== lower-counting-4
+Felix the Frog is in the middle of an endless staircase. On every hop, he can either hop $9$ steps down or $5$ steps up. Felix hops $100$ times. At how many possible locations can Felix end his hopping route?
+=== lower-counting-5
+Two points are randomly selected inside a rectangle. What is the probability that the segment connecting these two points crosses at least one of the rectangle's diagonals?
+=== lower-counting-6
+In a class of $4$ students, everyone is friends with each other. (No one is friends with themselves, so everyone has $3$ friends.) How many ways are there to break at least one of these friendships so that everyone still has an odd number of friends?
+=== lower-counting-7
+Given a regular tetrahedron, how many ways are there to color two edges red, two edges green, and two edges blue? Rotations and reflections of a configuration are considered the same configuration.
+
+Note: A regular tetrahedron is a triangular pyramid with all faces equilateral triangles.
+=== lower-counting-8
+Steven starts with the number $1$. Then, he repeats the following procedure $N$ times: if he has the number $n$, he adds a random integer from $1$ to $\gcd(n,4)$, inclusive, to $n$. If $N=2019^{2019^{2019}}$, find the closest integer to $100p$, where $p$ is the probability that Steven's final number is divisible by $4$.
+=== lower-geometry-1
+Triangle $ABC$ has $AB=3$, $BC=4$, and $\angle B=90^\circ$. Find the area of triangle $ABC$.
+=== lower-geometry-2
+Let $ABCDEF$ be a regular hexagon. Given that $AD=5$, find $AB$.
+=== lower-geometry-3
+Caroline glues two pentagonal pyramids to the top and bottom of a pentagonal prism so that the pentagonal faces coincide. How many edges does Caroline's figure have?
+=== lower-geometry-4
+The hour hand of a clock is $6$ inches long, and the minute hand is $10$ inches long. Find the area of the region swept out by the hands from $8{:}45$AM to $9{:}15$AM of a single day, in square inches.
+=== lower-geometry-5
+Circles $A$, $B$, and $C$ are all externally tangent, with radii $1$, $10$, and $100$, respectively. What is the radius of the smallest circle entirely containing all three circles?
+=== lower-geometry-6
+Four parallel lines are drawn such that they are equally spaced and pass through the four vertices of a unit square. Find the distance between any two consecutive lines.
+=== lower-geometry-7
+In rectangle $ABCD$, $AB=2$ and $AD>AB$. Two quarter circles are drawn inside of $ABCD$ with centers at $A$ and $C$ that pass through $B$ and $D$, respectively. If these two quarter circles are tangent, find the area inside of $ABCD$ that is outside both of the quarter circles.
+=== lower-geometry-8
+Triangle $ABC$ is equilateral. A circle passes through $A$ and is tangent to side $BC$. It intersects sides $AB$ and $AC$ again at $E$ and $F$, respectively. If $AE=10$ and $AF=11$, find $AB$.
+=== lower-number-theory-1
+Find the greatest common divisor of $20^2-19^2$ and $2+0+1+9$.
+=== lower-number-theory-2
+On Jupiter, a day is $10$ hours long. Jim is a strange animal on Jupiter who eats a rock every $3$ hours. Exactly at midnight, Jim eats a rock. How many hours will pass before he eats again at midnight?
+=== lower-number-theory-3
+Danielle has a $2$-digit number. The number is a perfect square, and the sum of its digits is $9$. Find the sum of all possible values of Danielle's number.
+=== lower-number-theory-4
+What is the remainder when $2017^2+2018^2+2019^2+2020^2+2021^2$ is divided by $5$?
+=== lower-number-theory-5
+We call a year summable if there exists some day during the year such that the sum of the month and the day equals the last two digits of the year. Find the first year after $2018$ that is not summable.
+=== lower-number-theory-6
+Find the largest multiple of $4$ that has fewer than six positive integer factors.
+=== lower-number-theory-7
+Define a real number $x$ to be imbalanced if its decimal expansion is infinite and, in the decimal expansion of $x$, all but a finite number of digits have the same nonzero value. For instance, $0.123$ is not imbalanced since its decimal expansion is finite. What is the smallest $n$ such that, for all real numbers $x$, at least one of $x,2x,\ldots,nx$ is not imbalanced?
+=== lower-number-theory-8
+The number $\frac1{2310}$ can be written in the form $\frac1a-\frac1b$, where $a$ and $b$ are positive integers and $a+b$ is as small as possible. Find $b-a$.
+=== upper-algebra-1
+Kev and Tim are brothers. Six years from now, Kev's age will be the square of what it is right now, and Tim's age will be the cube of what it is right now. Find the sum of Kev and Tim's ages right now.
+=== upper-algebra-2
+Shawn bought $21$ apples and $9$ bananas, spending a total of $45$ dollars. He then proceeds to give Emmy $7$ apples and $3$ bananas. How many dollars does Emmy owe Shawn for the fruit?
+=== upper-algebra-3
+Roger starts with the number $2019$ on his calculator and starts hitting the square root button (which replaces the number on his calculator with its square root). How many times will he have to hit the button before the number on his calculator is less than $2.019$?
+=== upper-algebra-4
+Anson and Kaz are working on a group project. They must collectively complete a lab trial, write a lab journal entry, and create a Powerpoint presentation. The number of minutes each person takes to complete each task is given by the table below. They cannot work simultaneously on a task, but they can stop work partway through. How many minutes, at minimum, do Anson and Kaz need to finish all three tasks?
+
+$$\begin{array}{l|ccc}&\textbf{Presentation}&\textbf{Journal}&\textbf{Lab}\\\hline\text{Anson}&15&20&25\\\text{Kaz}&30&30&15\end{array}$$
+=== upper-algebra-5
+Let $x_1,x_2,x_3,\ldots$ be a sequence of integers such that $x_1=1$, $x_{n+1}=3x_n$ for odd $n$, and $x_{n+1}=2x_n$ for even $n$. Find the sum $\frac1{x_1}+\frac1{x_2}+\frac1{x_3}+\cdots$.
+=== upper-algebra-6
+Compute
+$$\left(\binom{2019}2-\binom12\right)\left(\binom{2019}2-\binom22\right)\left(\binom{2019}2-\binom32\right)\cdots\left(\binom{2019}2-\binom{1000}2\right).$$
+Note that $\binom12=0$.
+=== upper-algebra-7
+Compute
+$$2^{2^0}+\sqrt{2^{2^1}+\sqrt{2^{2^2}+\cdots}}.$$
+=== upper-algebra-8
+Let $f_1(x)=x/4$, $f_2(x)=x/2+1/4$, and $f_3(x)=x/4+3/4$. There exist positive integers $n_1,n_2,\ldots\in\{1,2,3\}$ and real numbers $x_1,x_2,\ldots$ with $|x_i|<2019$ such that, for all positive integers $k$,
+$$f_{n_1}\left(f_{n_2}\left(\cdots f_{n_k}(x_k)\cdots\right)\right)=\frac13.$$
+Find $n_1+n_2+\cdots+n_{2019}$.
+=== upper-counting-1
+An ant is at one corner of a cube of side length $1$ and can move only along the edges of the cube. How many paths of length $3$ can the ant take to the opposite corner of the cube?
+=== upper-counting-2
+Felix the Frog is in the middle of an endless staircase. On every hop, he can either hop $9$ steps down or $5$ steps up. Felix hops $100$ times. At how many possible locations can Felix end his hopping route?
+=== upper-counting-3
+Two points are randomly selected inside a rectangle. What is the probability that the segment connecting these two points crosses at least one of the rectangle's diagonals?
+=== upper-counting-4
+In a class of $4$ students, everyone is friends with each other. (No one is friends with themselves, so everyone has $3$ friends.) How many ways are there to break at least one of these friendships so that everyone still has an odd number of friends?
+=== upper-counting-5
+Given a regular tetrahedron, how many ways are there to color two edges red, two edges green, and two edges blue? Rotations and reflections of a configuration are considered the same configuration.
+
+Note: A regular tetrahedron is a triangular pyramid with all faces equilateral triangles.
+=== upper-counting-6
+Mr. Anderson rolls $n$ fair six-sided dice, where $n\in\{1,2,3,4,5,6\}$ is chosen uniformly at random. Given that the sum of the dice rolls is $6$, find the probability that $n=3$.
+=== upper-counting-7
+Steven starts with the number $1$. Then, he repeats the following procedure $N$ times: if he has the number $n$, he adds a random integer from $1$ to $\gcd(n,4)$, inclusive, to $n$. If $N=2019^{2019^{2019}}$, find the closest integer to $100p$, where $p$ is the probability that Steven's final number is divisible by $4$.
+=== upper-counting-8
+There are $4$ traffic lights placed uniformly at random on a $4$-mile road. The traffic lights, all in sync, follow a $1$-minute loop where they are red for $1$ minute and then momentarily flash green so that only cars already stopped at the light can go on. A car arrives at one end of the road just as the lights are flashing green. If the car, when not stopped, always travels at $1$ mile per minute, what is the expected number of minutes it takes for the car to traverse the road?
+=== upper-geometry-1
+Let $ABCDEF$ be a regular hexagon. Given that $AD=5$, find $AB$.
+=== upper-geometry-2
+Circles $A$, $B$, and $C$ are all externally tangent, with radii $1$, $10$, and $100$, respectively. What is the radius of the smallest circle entirely containing all three circles?
+=== upper-geometry-3
+The hour hand of a clock is $6$ inches long, and the minute hand is $10$ inches long. Find the area of the region swept out by the hands from $8{:}45$AM to $9{:}15$AM of a single day, in square inches.
+=== upper-geometry-4
+In rectangle $ABCD$, $AB=2$ and $AD>AB$. Two quarter circles are drawn inside of $ABCD$ with centers at $A$ and $C$ that pass through $B$ and $D$, respectively. If these two quarter circles are tangent, find the area inside of $ABCD$ that is outside both of the quarter circles.
+=== upper-geometry-5
+Find the area of a triangle with side lengths $\sqrt2$, $\sqrt{58}$, and $2\sqrt{17}$.
+=== upper-geometry-6
+Triangle $ABC$ is equilateral. A circle passes through $A$ and is tangent to side $BC$. It intersects sides $AB$ and $AC$ again at $E$ and $F$, respectively. If $AE=10$ and $AF=11$, find $AB$.
+=== upper-geometry-7
+Triangle $ABC$ has area $80$. Point $D$ is in the interior of $\triangle ABC$ such that $AD=6$, $BD=4$, $CD=16$, and the area of $\triangle ADC=48$. Determine the area of $\triangle ADB$.
+=== upper-geometry-8
+Given two points $A$ and $B$ in the plane with $AB=1$, define $f(C)$ to be the circumcenter of triangle $ABC$, if it exists. Find the number of points $X$ so that $f^{2019}(X)=X$.
+=== upper-number-theory-1
+On Jupiter, a day is $10$ hours long. Jim is a strange animal on Jupiter who eats a rock every $3$ hours. Exactly at midnight, Jim eats a rock. How many hours will pass before he eats again at midnight?
+=== upper-number-theory-2
+What is the remainder when $2017^2+2018^2+2019^2+2020^2+2021^2$ is divided by $5$?
+=== upper-number-theory-3
+We call a year summable if there exists some day during the year such that the sum of the month and the day equals the last two digits of the year. Find the first year after $2018$ that is not summable.
+=== upper-number-theory-4
+Find the largest multiple of $4$ that has fewer than six positive integer factors.
+=== upper-number-theory-5
+Define a real number $x$ to be imbalanced if its decimal expansion is infinite and, in the decimal expansion of $x$, all but a finite number of digits have the same nonzero value. For instance, $0.123$ is not imbalanced since its decimal expansion is finite. What is the smallest $n$ such that, for all real numbers $x$, at least one of $x,2x,\ldots,nx$ is not imbalanced?
+=== upper-number-theory-6
+The number $\frac1{2310}$ can be written in the form $\frac1a-\frac1b$, where $a$ and $b$ are positive integers and $a+b$ is as small as possible. Find $b-a$.
+=== upper-number-theory-7
+Find the number of positive integers $k\le 100$ such that $6^k+2\cdot 5^k-1$ is divisible by $31$.
+=== upper-number-theory-8
+Let a pegboard be a (possibly rotated) infinite square grid of points with side length $1$ in the plane. Call two pegboards equivalent if one is a translation of another. Let the gap between two pegboards be the minimum distance between a point in each pegboard. Find the maximum gap between two non-equivalent pegboards.

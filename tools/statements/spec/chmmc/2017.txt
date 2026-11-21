@@ -1,0 +1,77 @@
+=== individual-1
+A dog on a $10$ meter long leash is tied to a $10$ meter long, infinitely thin section of fence. What is the minimum area over which the dog will be able to roam freely on the leash, given that we can fix the position of the leash anywhere on the fence?
+=== individual-2
+Suppose that the equation
+$$\begin{array}{cccccc}&C&H&M&M&C\\+&&H&M&M&T\\\hline&P&U&M&A&C\end{array}$$
+holds true, where each letter represents a single nonnegative digit, and distinct letters represent different digits (so that $CHMMC$ and $PUMAC$ are both five digit positive integers, and the number $HMMT$ is a four digit positive integer).
+
+What is the largest possible value of the five digit positive integer $CHMMC$?
+=== individual-3
+Square $ABCD$ has side length $4$, and $E$ is a point on segment $BC$ such that $CE=1$. Let $\mathcal{C}_1$ be the circle tangent to segments $AB$, $BE$, and $EA$, and $\mathcal{C}_2$ be the circle tangent to segments $CD$, $DA$, and $AE$.
+
+What is the sum of the radii of circles $\mathcal{C}_1$ and $\mathcal{C}_2$?
+=== individual-4
+A finite set $S$ of points in the plane is called tri-separable if for every subset $A\subseteq S$ of the points in the given set, we can find a triangle $\mathcal{T}$ such that
+
+(i) every point of $A$ is inside $\mathcal{T}$, and
+
+(ii) every point of $S$ that is not in $A$ is outside $\mathcal{T}$.
+
+What is the smallest positive integer $n$ such that no set of $n$ distinct points is tri-separable?
+=== individual-5
+The unit $100$-dimensional hypercube $\mathcal{H}$ is the set of points $(x_1,x_2,\dots,x_{100})$ in $\mathbb{R}^{100}$ such that $x_i\in\{0,1\}$ for $i=1,2,\dots,100$. We say that the center of $\mathcal{H}$ is the point
+$$\left(\frac12,\frac12,\dots,\frac12\right)$$
+in $\mathbb{R}^{100}$, all of whose coordinates are equal to $1/2$.
+
+For any point $P\in\mathbb{R}^{100}$ and positive real number $r$, the hypersphere centered at $P$ with radius $r$ is defined to be the set of all points in $\mathbb{R}^{100}$ that are a distance $r$ away from $P$.
+
+Suppose we place hyperspheres of radius $1/2$ at each of the vertices of the $100$-dimensional unit hypercube $\mathcal{H}$. What is the smallest real number $R$, such that a hypersphere of radius $R$ placed at the center of $\mathcal{H}$ will intersect the hyperspheres at the corners of $\mathcal{H}$?
+=== individual-6
+Greg has a $9\times 9$ grid of unit squares. In each square of the grid, he writes down a single nonzero digit.
+
+Let $N$ be the number of ways Greg can write down these digits, so that each of the nine nine-digit numbers formed by the rows of the grid (reading the digits in a row left to right) and each of the nine nine-digit numbers formed by the columns (reading the digits in a column top to bottom) are multiples of $3$.
+
+What is the number of positive integer divisors of $N$?
+=== individual-7
+Find the largest positive integer $n$ for which there exists positive integers $x,y$, and $z$ satisfying
+$$n\cdot\gcd(x,y,z)=\gcd(x+2y,\,y+2z,\,z+2x).$$
+=== individual-8
+Suppose $ABCDEFGH$ is a cube of side length $1$, one of whose faces is the unit square $ABCD$. Point $X$ is the center of square $ABCD$, and $P$ and $Q$ are two other points allowed to range on the surface of cube $ABCDEFHG$. Find the largest possible volume of tetrahedron $AXPQ$.
+=== individual-9
+Deep writes down the numbers $1,2,3,\dots,8$ on a blackboard. Each minute after writing down the numbers, he uniformly at random picks some number $m$ written on the blackboard, erases that number from the blackboard, and increases the values of all the other numbers on the blackboard by $m$. After seven minutes, Deep is left with only one number on the black board.
+
+What is the expected value of the number Deep ends up with after seven minutes?
+=== individual-10
+Find the number of ordered tuples $(x_1,x_2,x_3,x_4,x_5)$ of positive integers such that $x_k\le 6$ for each index $k=1,2,\dots,5$, and the sum
+$$x_1+x_2+\cdots+x_5$$
+is $1$ more than an integer multiple of $7$.
+=== individual-11
+The equation
+$$\left(x-\sqrt[3]{13}\right)\left(x-\sqrt[3]{53}\right)\left(x-\sqrt[3]{103}\right)=\frac13$$
+has three distinct real solutions $r$, $s$, and $t$ for $x$.
+
+Calculate the value of
+$$r^3+s^3+t^3.$$
+=== individual-12
+Suppose $a$, $b$, and $c$ are real numbers such that
+$$\frac{ac}{a+b}+\frac{ba}{b+c}+\frac{cb}{c+a}=-9$$
+and
+$$\frac{bc}{a+b}+\frac{ca}{b+c}+\frac{ab}{c+a}=10.$$
+Compute the value of
+$$\frac{b}{a+b}+\frac{c}{b+c}+\frac{a}{c+a}.$$
+=== individual-13
+The complex numbers $w$ and $z$ satisfy the equations $|w|=5$, $|z|=13$, and
+$$52w-20z=3(4+7i).$$
+Find the value of the product $wz$.
+=== individual-14
+For $i=1,2,3,4$, we choose a real number $x_i$ uniformly at random from the closed interval $[0,i]$. What is the probability that $x_1<x_2<x_3<x_4$?
+=== individual-15
+The terms of the infinite sequence of rational numbers $a_0,a_1,a_2,\dots$ satisfy the equation
+$$a_{n+1}+a_{n-2}=a_na_{n-1}$$
+for all integers $n\ge 2$.
+
+Moreover, the values of the initial terms of the sequence are
+$$a_0=\frac52,\ a_1=2,\ \text{and}\ a_2=\frac52.$$
+Call a nonnegative integer $m$ lucky if when we write
+$$a_m=\frac{p}{q}$$
+for some relatively prime positive integers $p$ and $q$, the integer $p+q$ is divisible by $13$. What is the $101^{\text{st}}$ smallest lucky number?
