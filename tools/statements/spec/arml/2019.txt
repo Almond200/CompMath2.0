@@ -1,0 +1,25 @@
+=== individual-1
+In rectangle $PAUL$, point $D$ is the midpoint of $\overline{UL}$ and points $E$ and $F$ lie on $\overline{PL}$ and $\overline{PA}$, respectively such that $\dfrac{PE}{EL}=\dfrac{3}{2}$ and $\dfrac{PF}{FA}=2$. Given that $PA=36$ and $PL=25$, compute the area of pentagon $AUDEF$.
+=== individual-2
+Rectangle $ARML$ has length $125$ and width $8$. The rectangle is divided into $1000$ squares of area $1$ by drawing in gridlines parallel to the sides of $ARML$. Diagonal $\overline{AM}$ passes through the interior of exactly $n$ of the $1000$ unit squares. Compute $n$.
+=== individual-3
+Compute the least integer $n>1$ such that the product of all positive divisors of $n$ equals $n^4$.
+=== individual-4
+Each of the six faces of a cube is randomly colored red or blue with equal probability. Compute the probability that no three faces of the same color share a common vertex.
+=== individual-5
+Scalene triangle $ABC$ has perimeter $2019$ and integer side lengths. The angle bisector from $C$ meets $\overline{AB}$ at $D$ such that $AD=229$. Given that $AC$ and $AD$ are relatively prime, compute $BC$.
+=== individual-6
+Given that $a$ and $b$ are positive and
+$$\lfloor 20-a\rfloor=\lfloor 19-b\rfloor=\lfloor ab\rfloor,$$
+compute the least upper bound of the set of possible values of $a+b$.
+=== individual-7
+Compute the number of five-digit integers $\underline{M}\,\underline{A}\,\underline{R}\,\underline{T}\,\underline{Y}$, with all digits distinct, such that $M>A>R$ and $R<T<Y$.
+=== individual-8
+In parallelogram $ARML$, points $P$ and $Q$ are the midpoints of sides $\overline{RM}$ and $\overline{AL}$, respectively. Point $X$ lies on segment $\overline{PQ}$, and $PX=3$, $RX=4$, and $PR=5$. Point $I$ lies on segment $\overline{RX}$ such that $IA=IL$. Compute the maximum possible value of $\dfrac{[PQR]}{[LIP]}$.
+=== individual-9
+Given that $a$, $b$, $c$, and $d$ are positive integers such that
+$$a!\cdot b!\cdot c!=d!\quad\text{and}\quad a+b+c+d=37,$$
+compute the product $abcd$.
+=== individual-10
+Compute the value of
+$$\sin(6^\circ)\cdot\sin(12^\circ)\cdot\sin(24^\circ)\cdot\sin(42^\circ)+\sin(12^\circ)\cdot\sin(24^\circ)\cdot\sin(42^\circ).$$

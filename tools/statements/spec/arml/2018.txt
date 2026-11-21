@@ -1,0 +1,27 @@
+=== individual-1
+Compute the greatest prime factor of $N$, where
+$$N=2018\cdot 517+517\cdot 2812+2812\cdot 666+666\cdot 2018.$$
+=== individual-2
+Compute the number of ordered pairs of positive integers $(a,b)$ that satisfy
+$$a^2b^3=20^{18}.$$
+=== individual-3
+Compute the number of positive three-digit multiples of $3$ whose digits are distinct and nonzero.
+=== individual-4
+In $\triangle ABC$, $\cos(A)=\dfrac{2}{3}$ and $\cos(B)=\dfrac{2}{7}$. Given that the perimeter of $\triangle ABC$ is $24$, compute the area of $\triangle ABC$.
+=== individual-5
+Compute the product of all positive values of $x$ that satisfy
+$$\lfloor x+1\rfloor^{2x}-19\lfloor x+1\rfloor^{x}+48=0.$$
+=== individual-6
+Triangle $ABC$ is inscribed in circle $\omega$. The line containing the median from $A$ meets $\omega$ again at $M$, the line containing the angle bisector of $\angle B$ meets $\omega$ again at $R$, and the line containing the altitude from $C$ meets $\omega$ again at $L$. Given that quadrilateral $ARML$ is a rectangle, compute the degree measure of $\angle BAC$.
+=== individual-7
+Let $S$ be the set of points $(x,y)$ whose coordinates satisfy $x^2+y^2\le 36$ and $(\max\{x,y\})^2\le 27$. Compute the perimeter of $S$.
+=== individual-8
+Rectangle $PQRS$ is drawn inside square $ABCD$, as shown. Given that $[APS]=20$ and $[CQR]=18$, compute $[ABCD]$.
+
+@@fig:arml2018_individual-8.png@@
+=== individual-9
+Compute the least positive four-digit integer $N$ for which $N$ and $N+2018$ contain a total of $8$ distinct digits.
+=== individual-10
+Compute the least positive value of $t$ such that
+$$\operatorname{Arcsin}(\sin(\alpha)),\ \operatorname{Arcsin}(\sin(2\alpha)),\ \operatorname{Arcsin}(\sin(7\alpha)),\ \operatorname{Arcsin}(\sin(t\alpha))$$
+is a geometric progression for some $\alpha$ with $0<\alpha<\dfrac{\pi}{2}$.
