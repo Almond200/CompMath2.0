@@ -10156,7 +10156,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 71;
+  const STATEMENTS_V = 89;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {
@@ -10723,7 +10723,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <div class="prob-statement"></div>
 
         </section>` : ""}
-        <p class="prob-note" data-statement-fallback>${p.sourceMirror ? `The round's original paper is hosted by an external archive${p.num ? `; this is problem ${p.num}` : ""}.` : p.urlLabel === "archive" ? (/^ARML/.test(p.fam) ? `The statement is in the contest's official booklet, open at the Individual round${p.num ? `; this is problem I-${p.num}` : ""}.` : `The statement is in the round's official paper, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.`) : "Solutions live on the Art of Problem Solving wiki."}</p>
+        <p class="prob-note" data-statement-fallback>${p.sourceMirror ? `The round's original paper is hosted by an external archive${p.num ? `; this is problem ${p.num}` : ""}.` : p.urlLabel === "archive" ? (/^ARML/.test(p.fam) ? `The statement is in the contest's official booklet, open at the Individual round${p.num ? `; this is problem I-${p.num}` : ""}.` : `The statement is in the round's official paper, as one PDF${p.num ? `; this is problem ${p.num}` : ""}.`) : "&copy; Mathematical Association of America"}</p>
         ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
         ${chainHtml}
         ${SOLUTION_YEARS.has(String(p.year)) ? `<section class="prob-chain prob-solution${pv ? " pv-sol" : ""}"${pv ? "" : ` id="prob-sol"`} data-slug="${p.slug}" hidden>

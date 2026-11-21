@@ -1,0 +1,229 @@
+=== 1
+What is the $2015^{\text{th}}$ digit (to the right of decimal point) in the decimal expansion of $\dfrac{224}{1111}$?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $5$  (E) $6$
+=== 2
+If the three zeros of the polynomial $p(x)=x^3+bx^2+623x-2015$ are positive integers, what is the value of $b$?
+
+(A) $33$  (B) $-33$  (C) $-49$  (D) $49$  (E) $142$
+=== 3
+What is the largest number of points in which the graphs of a third degree polynomial and a fifth degree polynomial can meet?
+
+(A) $3$  (B) $5$  (C) $8$  (D) $2$  (E) $15$
+=== 4
+Which of the following numbers is not a divisor of $2015^5-2015$?
+
+(A) $16$  (B) $32$  (C) $256$  (D) $512$  (E) Both C) and D)
+=== 5
+What is the number of ordered pairs $(x,y)$ of positive integers that satisfy the equation $31x+13y=2015$?
+
+(A) $0$  (B) $4$  (C) $5$  (D) $6$  (E) Infinitely many pairs.
+=== 6
+Find the sum of the solutions of the equation $\sqrt{2x+7}+4=x$.
+
+(A) $9$  (B) $-9$  (C) $10$  (D) $-10$  (E) None of these
+=== 7
+At the end of the 1998 season, the National Football League's all-time leading passer during regular season play was Dan Marino with $4763$ completed passes out of $7989$ attempts. In his debut 1998 season, Peyton Manning made $326$ completed passes out of $575$ attempts. What is the smallest number of consecutive completed passes that Peyton Manning would have to make to exceed Dan Marino's pass completion percentage?
+
+(A) $41.7$  (B) $42$  (C) $42.5$  (D) $43$  (E) None of these
+=== 8
+On Tuesday the price of gas was $5\%$ more expensive that on Monday. On Wednesday the price went down by $2\%$. If a gallon of gas cost $\$3.59$ on Wednesday, how much did it cost on Monday? Please, round your answer to two decimal places.
+
+(A) $\$3.35$  (B) $\$2.44$  (C) $\$3.40$  (D) $\$3.48$  (E) $\$3.49$
+=== 9
+Let $\Re=\{x\in\mathbb R:x\ne-1\}$ and for all $x,y\in\Re$ define $x\,\square\,y=x+y+xy$. Find all solutions in $\Re$ of the equation $x\,\square\,x=2\,\square\,x$.
+
+(A) $x=0$  (B) $x=0$ and $x=2$  (C) $x=-1$ and $x=2$  (D) $x=2$  (E) $x=0$, $x=-1$ and $x=2$
+=== 10
+How many integers between $1$ and $2015$ are multiples of $3$ or $4$?
+
+(A) $1008$  (B) $1174$  (C) $1006$  (D) $1007$  (E) $1176$
+=== 11
+An island has three kinds of inhabitants, knights, who always tell the truth, knaves, who always lie, and spies who can either lie or tell the truth. You encounter three people A, B, and C. You know one of these people is a knight, one is a knave, and one is a spy. A says "C is the knave", B says "A is the knight", and C says "I am the spy". Which of the following is true?
+
+(A) A is the knight  (B) B is the knight  (C) C is the knight  (D) There is more than one solution  (E) There is no solution
+=== 12
+In the rectangle shown in the figure, the area of the three the triangles are $A_1=5$, $A_2=3$, and $A_3=8$. Find the area $A_4$ of the remaining triangle.
+
+@@fig:columbus2015_12.png@@
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$
+=== 13
+Find the remainder of $1006^{2015}+1007^{2015}+2016$ when divided by $2013$.
+
+(A) $2014$  (B) $2015$  (C) $2$  (D) $3$  (E) $4$
+=== 14
+A woman driving a car $14$ feet long is passing a truck $30$ feet long. The truck is traveling at $50$ mi/h. How fast must the woman drive her car so that she can pass the truck completely in $6$ seconds, from the position shown in figure (a) to the position shown in figure (b)? Please, round your answer to two decimal places.
+
+@@fig:columbus2015_14.png@@
+
+(A) $69.1$ mi/h  (B) $50.68$ mi/h  (C) $51$ mi/h  (D) $59.55$ mi/h  (E) $51.59$ mi/h
+=== 15
+Find the center $(h,k)$ of the circle on the $xy$-plane, passing through the points $(0,b)$, $(-a,0)$ and $(a,0)$.
+
+(A) $(h,k)=\left(0,\dfrac{a^2-b^2}{2b}\right)$  (B) $(h,k)=\left(0,\dfrac{b^2+a^2}{2b}\right)$  (C) $(h,k)=\left(0,\dfrac{b^2-a^2}{b}\right)$  (D) $(h,k)=\left(\dfrac{a^2-b^2}{2b},0\right)$  (E) $(h,k)=\left(0,\dfrac{b^2-a^2}{2b}\right)$
+=== 16
+A driver sets out on a journey. For the first half of the distance she drives at the leisurely pace of $30$ mi/h; during the second half she drives $60$ mi/h. What is her average speed on this trip?
+
+(A) $35$ mi/h  (B) $40$ mi/h  (C) $45$ mi/h  (D) $50$ mi/h  (E) $55$ mi/h
+=== 17
+It takes a paddle boat $50$ minutes to travel $4$ miles up a river and $4$ miles back, going at a steady speed of $10$ miles per hour (with respect to the water). Find the speed of the current in miles per hour.
+
+(A) $2$ mph  (B) $9.92$ mph  (C) $2.90$ mph  (D) $3$ mph  (E) None of these
+=== 18
+Let $a>b>0$, $a^2+b^2=3ab$. Find the value of $\dfrac{a+b}{a-b}$.
+
+(A) $\sqrt2$  (B) $\sqrt3$  (C) $\sqrt5$  (D) $2$  (E) $3$
+=== 19
+If $\sqrt{17-12\sqrt2}=a+b\sqrt2$, which of the following is $\left(a+b\sqrt2\right)^{-1}$?
+
+(A) $17+2\sqrt2$  (B) $\dfrac1{17-2\sqrt2}$  (C) $3-2\sqrt2$  (D) $3+2\sqrt2$  (E) $2-3\sqrt2$
+=== 20
+Find all real solutions of the inequality $x^2-3\le\left|3-x^2\right|$
+
+(A) $-\sqrt3<x<\sqrt3$  (B) $-\sqrt3\le x\le\sqrt3$  (C) $-\infty<x<\infty$  (D) $-3<x<3$  (E) $-3\le x\le3$
+=== 21
+If the function $f(x)=\dfrac1{x^2+2x+c}$ is defined for all real numbers, then find all possible values of $c$.
+
+(A) $c>1$  (B) $c=1$  (C) $c<1$  (D) $c\le1$  (E) $c>2$
+=== 22
+Which of the following is the equation of the circle that goes through the origin and is tangent to the line $-x+y=8$ at the point $(0,8)$?
+
+(A) $(x+4)^2+(y+4)^2=\sqrt{32}$  (B) $(x+4)^2+(y+4)^2=32$  (C) $(x-4)^2+(y-4)^2=16$  (D) $(x-4)^2+(y-4)^2=\sqrt{32}$  (E) $(x-4)^2+(y-4)^2=32$
+=== 23
+Suppose that $r_1,r_2,\ldots,r_{2015}$ are the $2015$ roots of the polynomial $p(x)=x^{2015}+2014x+2016$. Find the average of $r_1^{2015},r_2^{2015},\ldots,r_{2015}^{2015}$.
+
+(A) $-2014$  (B) $2014$  (C) $2016$  (D) $-2016$  (E) $2015$
+=== 24
+The area of the equilateral triangle shown in the figure on the right is $6$. Find the area of the inscribed circle.
+
+@@fig:columbus2015_24.png@@
+
+(A) $2\pi/\sqrt3$  (B) $2\pi$  (C) $\sqrt3\pi$  (D) $\pi/\sqrt3$  (E) $\sqrt3\pi/2$
+=== 25
+What is the smallest value of $x+y$ if $x$ and $y$ are positive integers such that
+$$\frac1x+\frac1{2x}+\frac1{3x}=\frac1{y^2-2y}\,?$$
+
+(A) $6$  (B) $44$  (C) $50$  (D) $56$  (E) $82$
+=== 26
+The straight line $\dfrac x4+\dfrac y3=1$ and the ellipse $\dfrac{x^2}{16}+\dfrac{y^2}9=1$ intersect at two points $A$ and $B$. A third point $P$ is selected on the ellipse in such way that $\triangle PAB$ has area $4$. How many points $P$ on the ellipse can be selected in the same way?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) Infinitely many points
+=== 27
+There are five different products with the same price. Beginning today, every day each product will get either a $10\%$ or $20\%$ discount. Let $r$ be the ratio of the highest price to the lowest price. On the days in which the five prices are all different, what is the minimum value of $r$ ?
+
+(A) $\left(\frac98\right)^3$  (B) $\left(\frac98\right)^4$  (C) $\left(\frac98\right)^5$  (D) $\frac98$  (E) $\left(\frac98\right)^2$
+=== 28
+Let $x,y$ be positive integers so that $\sqrt{x-7}+\sqrt{x+2}=y$. What is the value of $y$ ?
+
+(A) $9$  (B) $3$  (C) $1$  (D) $5$  (E) $6$
+=== 29
+There are two positive solutions to the equation $\log_{2x}2+\log_42x=-\dfrac32$. What is the product of the two solutions?
+
+(A) $\frac1{21}$  (B) $\frac3{21}$  (C) $\frac1{32}$  (D) $\frac18$  (E) $2$
+=== 30
+Let $a>0$, $a\ne1$, and $\dfrac pq\ne0$ a rational number. Which of the following functions is equal to the function $f(x)=\log_{a^{p/q}}x$, $x>0$ ?
+
+(A) $\log_a x^{p/q}$  (B) $-\dfrac pq\log_ax$  (C) $\log_a x^{-q/p}$  (D) $\log_a x^{q/p}$  (E) $\dfrac pq\log_ax$
+=== 31
+The isosceles triangle $\Delta ABC$ shown in the figure has the property that $\angle BAC=100^\circ$, $AB=AC$ and $BD$ is the bisector of the angle $\angle ABC$. If $BD=7.5$ and $AD=2.5$, find $BC$.
+
+@@fig:columbus2015_31.png@@
+
+(A) $10$  (B) $9.5$  (C) $18.75$  (D) $11.5$  (E) None of these
+=== 32
+It is claimed that $40\%$ of Americans do not have any health insurance. In a randomly selected group of three people, what is the probability that only one of them has health insurance?
+
+(A) $0.096$  (B) $0.288$  (C) $0.712$  (D) $0.144$  (E) $0.432$
+=== 33
+Sue owns $5$ different skirts, $7$ different blouses, and $6$ different pairs of slacks. The only combination she will not wear is her orange blouse with her pink skirt or her blue slacks. Beginning on the first day of school, she decides to wear a different outfit on each school day as long as possible. On what day must she finally wear an outfit that she has already worn?
+
+(A) $77$th  (B) $76$th  (C) $74$th  (D) $75$th  (E) None of these
+=== 34
+$12$ points lie in a plane in such a way that exactly $5$ of the points are on one straight line and apart from these $5$ points, no three points lie on a straight line. Find the total number of distinct triangles that can be drawn with vertices on the $12$ points.
+
+(A) $105$  (B) $175$  (C) $210$  (D) $455$  (E) None of these
+=== 35
+Let $S_1$ denote the area of the equilateral triangle $\Delta A_1B_1C_1$ and $S_2$ the area of the equilateral triangle $\Delta A_2B_2C_2$ whose vertices are the centers of the three largest circles of the same radius tangent to each other and the sides of $\Delta A_1B_1C_1$ as shown in the figure below. Find $\dfrac{S_2}{S_1}$.
+
+@@fig:columbus2015_35.png@@
+
+(A) $\dfrac1{1+\sqrt3}$  (B) $\dfrac1{2\left(1+\sqrt3\right)}$  (C) $\dfrac1{2\left(1+\sqrt3\right)^2}$  (D) $\dfrac1{\left(1+\sqrt3\right)^2}$  (E) $\dfrac2{\left(1+\sqrt3\right)^2}$
+=== 36
+Consider the equilateral triangle $\Delta A_1B_1C_1$ shown on the picture below. Let $A$ be the intersection of the angle bisectors. Construct the equilateral triangle $\Delta A_2B_2C_2$ whose vertices $A_2,B_2,C_2$ are the midpoints of the segments $\overline{AA_2},\overline{AB_2},\overline{AC_2}$, respectively. Construct now, inside the second triangle, a third triangle $\Delta A_3B_3C_3$ using the same method. Repeat this process $2015$ times to get a sequence of triangles $\Delta A_iB_iC_i$, $i=1,2,3,\ldots,2015$. If the first triangle $\Delta A_1B_1C_1$ has perimeter $3$, what is the sum of the perimeters of all the triangles in the sequence?
+
+@@fig:columbus2015_36.png@@
+
+(A) $\dfrac{6\left(2^{2016}-1\right)}{2^{2015}}$  (B) $\dfrac{3\left(2^{2015}-1\right)}{2^{2014}}$  (C) $\dfrac{3\left(2^{2016}-1\right)}{2^{2015}}$  (D) $\dfrac{6\left(2^{2015}-1\right)}{2^{2014}}$  (E) $\dfrac{3\left(2^{2015}-1\right)}{2^{2015}}$
+=== 37
+Suppose that the distance between the foci determining a given ellipse is $M$, and the total distance from any point on the ellipse to the two foci is $M+2R$. Suppose further that we have constructed, as shown in the figure below, a circle of radius $2R$ and having its center located at one of the two foci of the ellipse. Find the length $L$ of the line segment that connects the two points of intersection of the ellipse and circle.
+
+@@fig:columbus2015_37.png@@
+
+(A) $L=\dfrac{4R\sqrt{M^2-R^2}}{M}$  (B) $L=\dfrac{R\sqrt{M^2-R^2}}{M}$  (C) $L=\dfrac{2R\sqrt{M^2-R^2}}{M}$  (D) $L=\dfrac{4R\sqrt{M^2+R^2}}{M}$  (E) $L=\dfrac{2\sqrt{M^2+R^2}}{M}$
+=== 38
+A pick-up truck is fitted with new tires which have a diameter of $44$ inches. How fast will the pick-up truck be moving when the wheels are rotating at $275$ revolutions per minute? Express the answer in miles per hour rounded to the nearest whole number.
+
+(A) $36$ mph  (B) $31$ mph  (C) $18$ mph  (D) $29$ mph  (E) $24$ mph
+=== 39
+If $\sin\theta=a$, find the value of $\sin3\theta$.
+
+(A) $3a-4a^2$  (B) $2a-4a^3$  (C) $3a+4a^3$  (D) $2a-4a^2$  (E) $3a-4a^3$
+=== 40
+To measure the height of a mountain, a surveyor takes two sightings of the peak at a distance $900$ meters apart on a direct line to the mountain. The first observation results in an angle of elevation of $47^\circ$, and the second results in an angle of elevation of $35^\circ$. If the transit is $2$ meters high, what is the height $h$ of the mountain?
+
+(A) $h=1818$ meters  (B) $h=1817$ meters  (C) $h=1816$ meters  (D) $h=1815$ meters  (E) Insufficient information to determine the height.
+=== 41
+Let $\theta$ be an angle in the third quadrant such that $0<\theta<2\pi$. Find $\cos^{-1}(\cos\theta)$.
+
+(A) $\theta-\pi$  (B) $2\pi-\theta$  (C) $\pi-\theta$  (D) $\theta$  (E) $\theta-2\pi$
+=== 42
+The function $f(x)=\sin x$ is one to one when restricted to the interval $[\pi/2,3\pi/2]$. Find its inverse on this interval.
+
+(A) $f^{-1}(x)=\sin^{-1}x-\pi$  (B) $f^{-1}(x)=\pi-\sin^{-1}x$  (C) $f^{-1}(x)=\sin^{-1}x$  (D) $f^{-1}(x)=\dfrac1{\sin x}$  (E) $f^{-1}(x)=\pi-\dfrac1{\sin x}$
+=== 43
+Let $d$ denote the length of a chord of a circle of radius $R$ and let $\theta$ be the central angle form by the radii to the ends of the chord. Which of the following is the value of $d$ in terms of $R$ and $\theta$ ?
+
+(A) $d=R\sqrt{2-\cos\theta}$  (B) $d=R\sqrt{1-\cos\theta}$  (C) $d=R\sqrt{1+\cos\theta}$  (D) $d=2R\sin\left(\dfrac\theta2\right)$  (E) $d=4R\sin\left(\dfrac\theta2\right)$
+=== 44
+In the figure shown on the right, the smaller circle, whose radius is $a$, is tangent to the larger circle, whose radius is $b$. The ray $\overrightarrow{OA}$ contains a diameter of each circle, and the ray $\overrightarrow{OB}$ is tangent to each circle. If $\theta$ is the angle between the two rays, find $\cos\theta$.
+
+@@fig:columbus2015_44.png@@
+
+(A) $\cos\theta=\dfrac{\sqrt{ab}}{a+b}$  (B) $\cos\theta=\dfrac{\sqrt{b-a}}{a+b}$  (C) $\cos\theta=\dfrac{2\sqrt{ab}}{a+b}$  (D) $\cos\theta=\dfrac{b-a}{a+b}$  (E) $\cos\theta=\dfrac{ab}{a+b}$
+=== 45
+At a garden store, the weekly demand for Old English Roses is $q=420-12p$, where $q$ represents the number of rose bushes that can be sold at the price $p$, in dollars, with $9.50\le p\le20.00$. If rose bushes are currently selling for $\$15$ each and they cost the store $\$2$ each, what advice would you give the owner to maximize weekly profit?
+
+(A) Raise the price of each rose bush to $\$18.50$.  (B) Raise the price of each rose bush to $\$17.50$.  (C) Raise the price of each rose bush to $\$19.50$.  (D) Lower the price of each rose bush to $\$13.50$.  (E) Lower the price of each rose bush to $\$14.50$.
+=== 46
+Let $F_n$ denote the general term of the Fibonacci sequence defined recursively by $F_1=1$, $F_2=1$ and $F_n=F_{n-1}+F_{n-2}$ for all $n\in\mathbb N$. Find the determinant of the $2\times2$ matrix given by $\begin{bmatrix}F_{2016}&F_{2015}\\F_{2015}&F_{2014}\end{bmatrix}$.
+
+(A) $1$  (B) $-1$  (C) $F_{2015}$  (D) $F_{2015}^2$  (E) $F_{2015}F_{2016}$
+=== 47
+The figure below shows a circle of radius $2$ centered at the origin on the $xy$-plane and two points $P(-\sqrt3,-1)$ and $Q(\sqrt3,-1)$ on the circle. Randomly select a third point $R$ on the set that consists of the circle minus the points $P$ and $Q$. Let $\alpha$ and $\beta$ be the interior angles opposite to the vertex $R$ of the triangle defined by the three points. Find the probability that $\alpha\ge\pi/4$ or $\beta\ge\pi/4$.
+
+@@fig:columbus2015_47.png@@
+
+(A) $\frac13$  (B) $1$  (C) $\frac36$  (D) $\frac56$  (E) $\frac16$
+=== 48
+Find, where defined, the derivative of $f(x)=\sin^{-1}(\sin x)$.
+
+(A) $-1$  (B) $1$  (C) $\dfrac{\cos x}{|\cos x|}$  (D) $\dfrac{\sin x}{|\cos x|}$  (E) None of these
+=== 49
+You need to buy some filing cabinets. You know that Cabinet X costs $\$10$ per unit, requires six square feet of floor space, and holds eight cubic feet of files. Cabinet Y costs $\$20$ per unit, requires eight square feet of floor space, and holds twelve cubic feet of files. You have been given $\$140$ for this purchase, though you don't have to spend that much. The office has room for no more than $72$ square feet of cabinets. Let $x\ge0$ be the number of model X cabinets purchased and let $y\ge0$ be the number of model Y cabinets purchased. Which of the following mathematical models should be solved in order to answer the question: How many of each model should you buy, in order to maximize storage volume $V$?
+
+(A) Maximize $V=12x+8y$ subject to $10x+20y\le140$, $6x+8y\le72$
+
+(B) Maximize $V=8x+12y$ subject to $10x+20y\le140$, $6x+8y\le72$
+
+(C) Maximize $V=8x+12y$ subject to $10x+20y<140$, $6x+8y<72$
+
+(D) Maximize $V=8x+12y$ subject to $10x+20y<140$, $6x+8y\le72$
+
+(E) Maximize $V=8x+12y$ subject to $20x+10y\le140$, $8x+6y\le72$
+=== 50
+An infinite circular cone is cut by a plane perpendicular to its axis producing the circular cross section of radius $r=3/4$ shown in the figure on the right. The points $P$ and $Q$ are diametrically opposed and at a distance $a=1$ from the vertex $V$ of the cone. Find the length of the shortest path on the surface of the cone from the point $P$ to the point $Q$.
+
+@@fig:columbus2015_50.png@@
+
+(A) $\sqrt{2+\sqrt2}$  (B) $\dfrac{3\pi}4$  (C) $3/2$  (D) $\sqrt{2-\sqrt2}$  (E) None of these

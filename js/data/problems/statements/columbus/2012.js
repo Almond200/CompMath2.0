@@ -1,0 +1,206 @@
+// Problems and diagrams © 2012 Columbus State Invitational Mathematics Tournament. Reproduced with permission from the Columbus State Invitational Mathematics Tournament.
+// Source: the official Columbus State tournament tests. Built by tools/statements/build.py from tools/statements/spec/columbus/2012.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2012-columbus-state-tournament-1": { s: String.raw`Consider the experiment of throwing two $6$-sided fair dice, where, the faces are numbered from $1$ to $6$. What is the probability of the event that the sum of the values of the two dice is $7$?
+
+(a) $\frac1{12}$  (b) $\frac19$  (c) $\frac16$  (d) $\frac29$  (e) $\frac14$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-2": { s: String.raw`Find the last digit of the sum $0!+2!+4!+\cdots+2010!+2012!$.
+
+(a) $1$  (b) $3$  (c) $5$  (d) $7$  (e) $9$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-3": { s: String.raw`Squares $ABCD$ and $ADEF$ are in perpendicular planes. If $AB=4$, find $FC$.
+
+@@fig:columbus/2012/3.png@@
+
+(a) $2\sqrt3$  (b) $4\sqrt2$  (c) $3\sqrt5$  (d) $4\sqrt3$  (e) $2\sqrt5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-4": { s: String.raw`The probability distribution of your winnings at a casino's card game is shown below.
+
+$$\begin{array}{|c|c|c|c|c|}\hline X&\$0&\$5&\$10&\$25\\\hline P(X)&0.1&0.4&0.3&0.2\\\hline\end{array}$$
+
+How much should you expect to win if you play the game once?
+
+(a) $\$5$  (b) $\$7.5$  (c) $\$10$  (d) $\$12.5$  (e) $\$15$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-5": { s: String.raw`Working alone, Al can wash a hotel restaurant's dishes in three hours. Jenny can do the same job in six hours. If they worked together, how long would it take them to complete this task?
+
+(a) $9$ hours  (b) $\frac92$ hours  (c) $2$ hours  (d) $\frac29$ hours  (e) $\frac19$ hours`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-6": { s: String.raw`What is the sum of all positive integer divisors of $2012$?
+
+(a) $1034$  (b) $1724$  (c) $2347$  (d) $3528$  (e) $5213$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-7": { s: String.raw`How many roots of the equation $1-15x+70x^2-120x^3+64x^4=0$ lie in the interval $[0,1]$?
+
+(a) $0$  (b) $1$  (c) $2$  (d) $3$  (e) $4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-8": { s: String.raw`Polynomials $P$ and $Q$ satisfy the equation $P(x-2)=(x^2+1)\cdot Q(x-1)-x-1$ for all real numbers $x$. When $P(x)$ is divided by $(x-3)$, the remainder is $20$. Determine the remainder when $Q(x)$ is divided by $(x-4)$.
+
+(a) $0$  (b) $1$  (c) $2$  (d) $3$  (e) $4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-9": { s: String.raw`The following is a rectangle made of three congruent squares of side length $8$ units. Determine $m\angle A+m\angle B+m\angle C$.
+
+@@fig:columbus/2012/9.png@@
+
+(a) $67.5^\circ$  (b) $78.75^\circ$  (c) $90^\circ$  (d) $101.25^\circ$  (e) $112.5^\circ$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-10": { s: String.raw`The rational function $f(x)=\dfrac{x^3-8}{x^2-4}$ is defined for all real numbers except for $x=\pm2$. Given that it has a vertical asymptote $x=a$ and a slant asymptote $y=mx+b$, determine the sum $a+m+b$.
+
+(a) $-3$  (b) $-1$  (c) $0$  (d) $1$  (e) $3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-11": { s: String.raw`If $N=2^{6n+2}+4^{3n+2}+8^{2n+1}$, what is the smallest positive integer $x$ such that the product $xN$ is a perfect square for all positive integers $n$?
+
+(a) $2$  (b) $3$  (c) $5$  (d) $7$  (e) $11$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-12": { s: String.raw`Let $A=\{1,3,4\}$ and $B=\{1,2,3,4,5,6,7\}$. How many subsets of $B$ contain $A$?
+
+(a) $16$  (b) $32$  (c) $48$  (d) $96$  (e) $112$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-13": { s: String.raw`Determine the value of the product $(\tan1^\circ)(\tan2^\circ)(\tan3^\circ)\ldots(\tan88^\circ)(\tan89^\circ)$.
+
+(a) $0$  (b) $1$  (c) $\frac\pi4$  (d) $\frac\pi3$  (e) $\frac\pi6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-14": { s: String.raw`Determine the solution set of the equation $\log_3\left(9\cdot3^{x+3}\right)=3|x|+1$.
+
+(a) $\{-1,2\}$  (b) $\{0,2\}$  (c) $\{0,3\}$  (d) $\{4,0\}$  (e) $\{2,3\}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-15": { s: String.raw`Quadrilateral $ABCD$ is inscribed in a circle in such a way that exactly one pair of opposite sides intercept congruent arcs. Being as specific as possible, what type of quadrilateral is $ABCD$?
+
+(a) Square  (b) Rectangle  (c) Kite  (d) Trapezoid  (e) Parallelogram`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-16": { s: String.raw`Let $x=\sqrt{7+\sqrt{13}}-\sqrt{7-\sqrt{13}}$. Evaluate the expression $\left(x^3-2x-2\right)^{2012}$.
+
+(a) $2^{8048}$  (b) $2^{2024}$  (c) $4^{1006}$  (d) $4^{503}$  (e) $8^{6036}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-17": { s: String.raw`In space, which of the following propositions is false?
+
+(a) A line parallel to one of two parallel lines is also parallel to the other line.
+
+(b) Three parallel lines may not be coplanar.
+
+(c) A line intersecting one of two parallel lines must intersect the other line as well.
+
+(d) Through a point not on a given plane, there is exactly one plane parallel to the given plane.
+
+(e) Through two distinct points in a plane, there is exactly one plane perpendicular to that plane.`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-18": { s: String.raw`In the experiment of selecting $5$ marbles without replacement from a bag containing $6$ yellow and $4$ red marbles, what is the probability of getting $3$ yellow and $2$ red marbles?
+
+(a) $\frac13$  (b) $\frac25$  (c) $\frac{10}{21}$  (d) $\frac12$  (e) $\frac59$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-19": { s: String.raw`What is the product of all integers $n$ such that $\sqrt{n^2-37}$ is an integer?
+
+(a) $-225$  (b) $-324$  (c) $-361$  (d) $-441$  (e) $-576$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-20": { s: String.raw`How many real solutions does the equation $\left(x^2-2\right)^{x^2+2x}=1$ have?
+
+(a) $0$  (b) $1$  (c) $2$  (d) $3$  (e) $4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-21": { s: String.raw`Let $E_n=\displaystyle\sum_{k=0}^n\binom nk$ with $n$ a natural number. Evaluate the difference $E_{n+1}-E_n$.
+
+(a) $2^n-1$  (b) $2^{n-1}$  (c) $2^n$  (d) $2^{n+1}$  (e) $2^n+1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-22": { s: String.raw`Evaluate the expression $\displaystyle\sum_{n=1}^{10}\sum_{m=2}^{8}(mn-3n)$.
+
+(a) $-2012$  (b) $-1006$  (c) $0$  (d) $770$  (e) $2012$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-23": { s: String.raw`If a projectile is fired with velocity $v$ at an angle $\theta$, then its vertical displacement $y$ as a function of its horizontal displacement $x$ is modeled by the parabola
+$$y=-\frac{5}{v^2\cos^2\theta}x^2+(\tan\theta)x.$$
+Find an expression for the range $R$ (the maximum horizontal displacement) of this projectile.
+
+(a) $\dfrac{v^2\sin2\theta}{10}$  (b) $\dfrac{v^2\sin\theta}5$  (c) $\dfrac{v^2\sin\theta\cos\theta}{10}$  (d) $\dfrac{v^2\cos^2\theta}{20}$  (e) $\dfrac{v^2\sin^2\theta}{20}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-24": { s: String.raw`When a camera flash goes off, the batteries immediately begin to recharge the flash's capacitor, which stores electric charge given by $Q(t)=Q_0\left(1-e^{-t/4}\right)$. (The maximum charge capacity is $Q_0$ and $t$ is measured in seconds). How long (in seconds) does it take to recharge the capacitor to within $10\%$ of its capacity?
+
+(a) $-4\ln1$  (b) $-4\ln\frac9{10}$  (c) $-4\ln10$  (d) $-4\ln\frac1{10}$  (e) $-\ln\frac49$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-25": { s: String.raw`$ABC$ is an isosceles right triangle. $\overline{BC}$ is extended such that $B$, $C$, and $D$ are collinear, and $O$ is the midpoint of $\overline{AC}$. If $BD=AC=2$, find $OD$.
+
+@@fig:columbus/2012/25.png@@
+
+(a) $\sqrt{3-\sqrt2}$  (b) $\sqrt{4-2\sqrt2}$  (c) $\sqrt{5-\sqrt3}$  (d) $\sqrt{4-\sqrt2}$  (e) $\sqrt{5-2\sqrt2}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-26": { s: String.raw`A regular polygon of side length $\sqrt{2-\sqrt3}$ is inscribed in a unit circle. What is the number of sides of this regular polygon?
+
+(a) $20$  (b) $18$  (c) $15$  (d) $13$  (e) $12$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-27": { s: String.raw`A $4$ by $503$ chess board is colored in grey and white patterns as shown. How many grey squares are there of the total of $2012$ squares of this chess board?
+
+@@fig:columbus/2012/27.png@@
+
+(a) $1343$  (b) $1340$  (c) $1341$  (d) $1342$  (e) $1344$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-28": { s: String.raw`$ABCD$ is an isosceles trapezoid with perpendicular diagonals and base lengths $DC=2$ and $AB=6$. Determine the area of this trapezoid.
+
+@@fig:columbus/2012/28.png@@
+
+(a) $14$  (b) $16$  (c) $18$  (d) $20$  (e) $22$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-29": { s: String.raw`In a circle centered at $O$, radius $\overline{OR}$ is perpendicular to chord $\overline{AB}$ at point $C$. If $OC=15$ and $CR=2$, find $AB$.
+
+@@fig:columbus/2012/29.png@@
+
+(a) $8$  (b) $10$  (c) $12$  (d) $14$  (e) $16$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-30": { s: String.raw`$ABC$ is an equilateral triangle with side length $16$. The point $O$ lies on line segment $\overline{AB}$. Ray $\overrightarrow{CT}$ is tangent at the point $T$ to the circle of radius $7$ centered at $O$. Determine the length of the line segment $\overline{CT}$.
+
+@@fig:columbus/2012/30.png@@
+
+(a) $10$  (b) $11$  (c) $12$  (d) $13$  (e) $14$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-31": { s: String.raw`The Greek mathematician Archimedes liked the design below so much that he wanted it on his tombstone.
+
+@@fig:columbus/2012/31.png@@
+
+When each of the figures is revolved about the vertical line of symmetry, it generates a solid of revolution, a cylinder, a sphere, or a cone. Find the ratio of volumes $V_{\text{CYLINDER}}:V_{\text{SPHERE}}:V_{\text{CONE}}$.
+
+(a) $3:2:1$  (b) $\sqrt3:\dfrac\pi{\sqrt2}:1$  (c) $4:\pi:2$  (d) $3:\dfrac{2\pi}3:1$  (e) $2\sqrt\pi:\dfrac\pi{\sqrt2}:\sqrt{\dfrac32}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-32": { s: String.raw`Find the area of a square with the same perimeter as a regular hexagon of area $54\sqrt3$ square units.
+
+(a) $9$  (b) $36$  (c) $81$  (d) $144$  (e) $225$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-33": { s: String.raw`In how many ways can Team USA's season of $10$ soccer games result in $5$ wins, $3$ draws, and $2$ losses in the 2014 World Cup qualification?
+
+(a) $60$  (b) $600$  (c) $2520$  (d) $59049$  (e) $216000$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-34": { s: String.raw`The Golden Ratio $\varphi$ is a positive number that satisfies the quadratic equation $x^2-x-1=0$. By substitution, all positive integer powers of $\varphi$ can be expressed in the form $a\varphi+b$. Determine the value of $a+b$ for $\varphi^4$.
+
+(a) $3$  (b) $5$  (c) $8$  (d) $13$  (e) $21$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-35": { s: String.raw`On square $ABCD$ with side length $2012$, points $E$, $F$, $G$, and $H$ on each side are chosen in such a way that $AF=BG=CH=DE=1509$. Determine the ratio of the area of the square $ABCD$ to the area of the quadrilateral $IJKL$.
+
+@@fig:columbus/2012/35.png@@
+
+(a) $25$  (b) $24$  (c) $23$  (d) $22$  (e) $21$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-36": { s: String.raw`A semicircle of radius $2$ with center $M(0,2)$ and a quarter circle of radius $2$ centered at the origin intersect at a point $A(x,y)$ in the first quadrant. Find the value of $x$.
+
+@@fig:columbus/2012/36.png@@
+
+(a) $\frac53$  (b) $\sqrt2$  (c) $\frac{\sqrt3}2$  (d) $\frac32$  (e) $\sqrt3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-37": { s: String.raw`A locus is the set of points that satisfy a given condition. Determine an equation of the locus of complex numbers $z=x+iy$ satisfying the equation $|z+2-i|=10$.
+
+(a) $(x-1)^2+(y-1)^2=100$
+
+(b) $(x-3)^2+(y-1)^2=64$
+
+(c) $(x+2)^2+(y-1)^2=100$
+
+(d) $(x-4)^2+(y-1)^2=64$
+
+(e) $(x-4)^2+(y-4)^2=100$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-38": { s: String.raw`Consider the exponential function $f(x)=a^x$ where $a$ is a positive number different from $1$. For what value of $a$ does the slope of the tangent line to the graph of $f$ at its $y$-intercept equal $1$?
+
+(a) $0.5$  (b) $\sqrt2$  (c) $2$  (d) $e$  (e) $\pi$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-39": { s: String.raw`Find the coordinates of the point on the circle $x^2+y^2=4$ that has the minimum distance from the line $3x+4y-12=0$.
+
+(a) $\left(\frac65,\frac85\right)$  (b) $\left(\frac85,\frac65\right)$  (c) $\left(\frac{12}5,\frac{16}5\right)$  (d) $\left(\frac{16}5,\frac{12}5\right)$  (e) $\left(\frac56,\frac43\right)$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-40": { s: String.raw`If $\cos x-\sin x=\dfrac12$, what is the value of $\cos2x$ if $x$ is in the interval $\left[0,\frac\pi2\right]$?
+
+(a) $\frac{\sqrt7}4$  (b) $\frac14$  (c) $\frac12$  (d) $-\frac14$  (e) $-1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-41": { s: String.raw`Compute $\left|\displaystyle\sum_{k=1}^ni^k\right|$ where $i=\sqrt{-1}$ and $n$ is the largest perfect cube less than $100$.
+
+(a) $0$  (b) $1$  (c) $2$  (d) $3$  (e) $4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-42": { s: String.raw`Given that the real-valued function $f$ satisfies the functional equation
+$$f(x)-4f\left(\frac1x\right)=x$$
+for all $x>0$, find the minimum value of $|f(x)|$.
+
+(a) $\frac4{15}$  (b) $\frac7{15}$  (c) $\frac12$  (d) $\frac45$  (e) $\frac35$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-43": { s: String.raw`Find the sum $\displaystyle\sum_{k=1}^{2012}\left(\frac1{k\sqrt{k+1}+(k+1)\sqrt k}\right)$.
+
+(a) $\sqrt{\dfrac{2012}{2013}}$  (b) $\dfrac1{\sqrt{2013}}$  (c) $\dfrac{\sqrt{2013}-1}{\sqrt{2013}}$  (d) $\sqrt{2013}$  (e) $\dfrac{\sqrt{2013}-\sqrt{2012}}{\sqrt{2013}}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-44": { s: String.raw`If $a>1$, what is the value of the following limit?
+$$\lim_{x\to0}\frac{\sqrt[a]{1+ax}-\sqrt[a]{1-ax}}{x}$$
+
+(a) $a$  (b) $a+1$  (c) $2$  (d) $e$  (e) $2a$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-45": { s: String.raw`Determine the value of the following limit.
+$$\lim_{x\to\infty}\left(\frac{2x+5}{2x+3}\right)^{4x-1}$$
+
+(a) $2$  (b) $4$  (c) $e^2$  (d) $e^3$  (e) $e^4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-46": { s: String.raw`What is the value of the largest possible real number $\delta$ such that $\left|\sqrt{4x+1}-3\right|<0.5$ whenever $|x-2|<\delta$ ?
+
+(a) $3/8$  (b) $5/8$  (c) $7/8$  (d) $11/16$  (e) $13/16$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-47": { s: String.raw`Let $a,b,c$ be positive integers. How many ordered triples $(a,b,c)$ satisfy the equation $a^2+b^2+c^2=2012$?
+
+(a) $10$  (b) $8$  (c) $4$  (d) $1$  (e) $0$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-48": { s: String.raw`Let $X=\left\{x=\dfrac n2+\dfrac m5\ \middle|\ m,n\in\{0,1,2,\cdots,100\}\right\}$. Find the sum of the elements of $X$.
+
+(a) $21395$  (b) $22395$  (c) $23395$  (d) $24395$  (e) $25395$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-49": { s: String.raw`$ABC$ is a triangle with $BC=5$. A line crosses lines $BC$, $AC$ and $AB$ at points $L$, $N$ and $M$ respectively, such that $LM=4$, $MN=3$, $LB=2$. Determine the ratio $\dfrac{NA}{NC}$.
+
+@@fig:columbus/2012/49.png@@
+
+(a) $3/7$  (b) $7/15$  (c) $6/17$  (d) $4/15$  (e) $4/21$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+"2012-columbus-state-tournament-50": { s: String.raw`The figure below shows a tessellation of the plane with equilateral triangles of side length $1$. In the experiment of tossing a coin of diameter $1$, what is the probability that the coin does not overlap with any triangle vertex?
+
+@@fig:columbus/2012/50.png@@
+
+(a) $\dfrac{8\sqrt3-4\pi}{7\sqrt3}$  (b) $\dfrac{8\sqrt3-4\pi}{8\sqrt3}$  (c) $\dfrac{8\sqrt3-4\pi}{9\sqrt3}$  (d) $\dfrac{8\sqrt3-4\pi}{10\sqrt3}$  (e) $\dfrac{8\sqrt3-4\pi}{11\sqrt3}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf" },
+});

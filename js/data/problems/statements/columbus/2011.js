@@ -1,0 +1,190 @@
+// Problems and diagrams © 2011 Columbus State Invitational Mathematics Tournament. Reproduced with permission from the Columbus State Invitational Mathematics Tournament.
+// Source: the official Columbus State tournament tests. Built by tools/statements/build.py from tools/statements/spec/columbus/2011.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2011-columbus-state-tournament-1": { s: String.raw`A student writes on the board seven consecutive integers. The sum of the smallest three is $36$. Find the sum of the largest three.
+
+(A) $48$  (B) $39$  (C) $51$  (D) $45$  (E) $42$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-2": { s: String.raw`Find one quarter of the number $16^{160}$.
+
+(A) $4^{160}$  (B) $16^{40}$  (C) $8^{78}$  (D) $2^{638}$  (E) $4^{328}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-3": { s: String.raw`Find the solution of the equation $\dfrac{x-\sqrt2}{x-\sqrt3}=\dfrac{x-\sqrt3}{x-\sqrt2}$.
+
+(A) $\sqrt3-\sqrt2$  (B) $\dfrac2{\sqrt3-\sqrt2}$  (C) $\dfrac{\sqrt3+\sqrt2}2$  (D) $\dfrac2{\sqrt3+\sqrt2}$  (E) $\sqrt3+\sqrt2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-4": { s: String.raw`The lines $4y+3x-4=0$ and $6y-ax+4=0$ are perpendicular. What is the value of $a$?
+
+(A) $-2$  (B) $8$  (C) $6$  (D) $-4$  (E) $0$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-5": { s: String.raw`The expression $\dfrac{4x^{-2}-9y^{-2}}{a-b}\cdot\dfrac{a^{-2}-b^{-2}}{2x^{-1}+3y^{-1}}$ is equivalent to which of the following?
+
+(A) $\dfrac{(3x+2y)(a-b)}{xyab}$  (B) $\dfrac{(3x-2y)(a-b)}{a^2b^2}$  (C) $\dfrac{(3x+2y)(a+b)}{xy}$  (D) $\dfrac{(3x+2y)(a+b)}{x^2y^2ab}$  (E) $\dfrac{(3x-2y)(a+b)}{xya^2b^2}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-6": { s: String.raw`Find all solutions of the equation $\dfrac1{x-2}+\dfrac1{x+2}=\dfrac8{4-x^2}$.
+
+(A) $4$  (B) $0$  (C) $-4$  (D) $-4$ and $4$  (E) No solutions`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-7": { s: String.raw`Let $a$ and $b$ be real numbers such that $a+b=5$ and $ab=1$. Which of the following is the quadratic equation with roots $a$ and $b$?
+
+(A) $5x^2+x+1=0$  (B) $x^2-x+5=0$  (C) $5x^2-x+1=0$  (D) $x^2+5x-1=0$  (E) $x^2-5x+1=0$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-8": { s: String.raw`Find the measure of each interior angle of a regular octagon.
+
+(A) $115^\circ$  (B) $100^\circ$  (C) $90^\circ$  (D) $135^\circ$  (E) $130^\circ$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-9": { s: String.raw`Let $0<a<b$ be two real numbers such that $a^2+b^2=10ab$. Find the value of $\dfrac{a+b}{a-b}$.
+
+(A) $-\dfrac{\sqrt6}3$  (B) $-\dfrac{\sqrt3}2$  (C) $\dfrac{\sqrt2}3$  (D) $\dfrac{2\sqrt2}3$  (E) $-\dfrac{\sqrt6}2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-10": { s: String.raw`Find the sum of the solutions of the equation $\left(\log_3x\right)^2-4\log_3x+3=0$.
+
+(A) $20$  (B) $40$  (C) $30$  (D) $60$  (E) $50$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-11": { s: String.raw`For each positive integer $n$ we denote by $s(n)$ the sum of the digits of $n$. Find the smallest possible value of the ratio $\dfrac n{s(n)}$, for $10\le n\le30$.
+
+(A) $1.7$  (B) $1.9$  (C) $2$  (D) $1.8$  (E) $1.6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-12": { s: String.raw`The five intersecting circles in the figure determine nine regions. In each of these regions you write one of the numbers from $1$ to $9$ such that each number is written exactly once and the sum of the numbers inside each circle is $11$. Which number must be written in the region marked with an $\mathbf X$?
+
+@@fig:columbus/2011/12.png@@
+
+(A) $7$  (B) $4$  (C) $6$  (D) $3$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-13": { s: String.raw`The sum of $2011$ consecutive integers is $2011$. Find the sum of the digits of the largest of these integers.
+
+(A) $5$  (B) $6$  (C) $4$  (D) $8$  (E) $7$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-14": { s: String.raw`Let $x$ be a real number such that $x+\dfrac1x=4$. Find the value of $x^3+\dfrac1{x^3}$.
+
+(A) $40$  (B) $44$  (C) $48$  (D) $52$  (E) $56$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-15": { s: String.raw`Find the sum $\dfrac{\sqrt2-\sqrt1}{\sqrt2}+\dfrac{\sqrt3-\sqrt2}{\sqrt6}+\cdots+\dfrac{\sqrt{2011}-\sqrt{2010}}{\sqrt{2010\cdot2011}}$.
+
+(A) $\dfrac{\sqrt{2010}}{\sqrt{2011}}$
+(B) $\dfrac1{\sqrt{2011}}$
+(C) $\dfrac{\sqrt{2011}-1}{\sqrt{2011}}$
+(D) $\sqrt{2011}$
+(E) $\dfrac{\sqrt{2011}-\sqrt{2010}}{\sqrt{2011}}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-16": { s: String.raw`Find the number of elements of the set $A=\{2,3,6,7,10,11,14,15,\ldots,2006,2007,2010,2011\}$.
+
+(A) $1004$  (B) $1006$  (C) $1008$  (D) $1010$  (E) $1012$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-17": { s: String.raw`The positive integers $x$ and $y$ satisfy the relation $3x=7y$. Which of the following is a possible value of $x+y$?
+
+(A) $2010$  (B) $1005$  (C) $201$  (D) $335$  (E) $402$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-18": { s: String.raw`Let $f$ be a function from $\mathbb R$ to $\mathbb R$ and $m$ and $n$ real numbers such that
+$$mf(x-1)+nf(-x)=2|x|+1$$
+for all real numbers $x$. If $f(-2)=5$ and $f(1)=1$, then find the numbers $m$ and $n$.
+
+(A) $m=\frac16$; $n=\frac56$  (B) $m=\frac34$; $n=\frac74$  (C) $m=\frac35$; $n=\frac85$  (D) $m=\frac5{12}$; $n=\frac{11}{12}$  (E) $m=\frac25$; $n=1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-19": { s: String.raw`Find the quadratic function $f(x)=ax^2+bx+c$ knowing that for every positive integer $n$ we have $f(1)+f(2)+\cdots+f(n)=n^3$.
+
+(A) $f(x)=x^2-4x+4$  (B) $f(x)=4x^2+2x-3$  (C) $f(x)=5x^2-3x+2$  (D) $f(x)=3x^2-3x+1$  (E) $f(x)=x^2+3x-3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-20": { s: String.raw`How many distinct permutations of the letters of the word "$\mathbf{PEPPER}$" are there?
+
+(A) $720$  (B) $40$  (C) $360$  (D) $120$  (E) $60$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-21": { s: String.raw`Find the number of positive integers $n$, $1\le n\le100$, such that $n^n$ is a perfect square.
+
+(A) $53$  (B) $52$  (C) $50$  (D) $55$  (E) $51$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-22": { s: String.raw`For $n$ positive integer, let $S_n=\dfrac1{\sqrt2+1}+\dfrac1{\sqrt3+\sqrt2}+\dfrac1{\sqrt4+\sqrt3}+\cdots+\dfrac1{\sqrt{n+1}+\sqrt n}$. Find the smallest value of $n$ such that $S_n\ge100$.
+
+(A) $10{,}200$  (B) $10{,}000$  (C) $9{,}400$  (D) $9{,}600$  (E) $9{,}800$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-23": { s: String.raw`Find the number of pairs of integers $(x,y)$ which satisfy the equation
+$$\frac1{x+2010}+\frac{2011}{y+2011}=1.$$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-24": { s: String.raw`Which is the coefficient of $x^{35}$ in the binomial expansion of $(1+x^5)^{10}$?
+
+(A) $120$  (B) $210$  (C) $250$  (D) $320$  (E) $370$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-25": { s: String.raw`How many pairs $(x,y)$ of positive integers satisfy $x^2+y^2=2011$?
+
+(A) $2011$  (B) $2$  (C) $0$  (D) $1005$  (E) $10$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-26": { s: String.raw`The number $2011$ is written as the sum of $(n+1)$ consecutive integers
+$$2011=a+(a+1)+(a+2)+\cdots+(a+n).$$
+If $1<n<2011$, then find the value of $a$.
+
+(A) $-62$  (B) $-250$  (C) $-125$  (D) $-502$  (E) $-1004$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-27": { s: String.raw`Find the number of integers $n$ such that $\dfrac{n^2+2}{n+1}$ is an integer.
+
+(A) $4$  (B) $0$  (C) $6$  (D) $2$  (E) $8$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-28": { s: String.raw`Find the integers $a$ and $b$ such that
+$$\frac a{\sqrt{3+2\sqrt2}}+\frac b{\sqrt{3-2\sqrt2}}=\sqrt{11+6\sqrt2}.$$
+
+(A) $a=2$, $b=-1$  (B) $a=-2$, $b=1$  (C) $a=-1$, $b=2$  (D) $a=1$, $b=-2$  (E) $a=1$, $b=2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-29": { s: String.raw`Find the values of the real number $a$ such that the equations $x^2+x+a=0$ and $ax^2+x+1=0$ have exactly one common root.
+
+(A) $-1$ and $0$  (B) $-1$ and $2$  (C) $0$ and $2$  (D) $-2$ and $2$  (E) $-2$ and $0$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-30": { s: String.raw`Three circles with radii $6$, $7$, and $8$ and centers $A$, $B$, and $C$ are tangent to each other as in the figure. Find the area of the triangle $\Delta ABC$.
+
+@@fig:columbus/2011/30.png@@
+
+(A) $48$  (B) $60$  (C) $72$  (D) $84$  (E) $96$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-31": { s: String.raw`Solve the inequality $\sin x+\sin2x\ge0$, for $x$ in $[0,2\pi]$.
+
+(A) $\left[0,\dfrac{2\pi}3\right]\cup\left[\pi,\dfrac{4\pi}3\right]$
+(B) $\left[0,\dfrac\pi3\right]\cup\left[\dfrac{4\pi}3,2\pi\right)$
+(C) $\left[0,\dfrac{7\pi}{12}\right]\cup\left[\pi,\dfrac{17\pi}{12}\right]$
+(D) $\left[\dfrac{2\pi}3,\dfrac{4\pi}3\right]\cup\left[\dfrac{5\pi}3,2\pi\right]$
+(E) $[0,\pi]\cup\left[\dfrac{5\pi}3,2\pi\right)$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-32": { s: String.raw`Let $a,b,c$ be positive real numbers such that $\dfrac{2a}{b+4c}=\dfrac b{2a+4c}=\dfrac{4c}{2a+b}$. Find the value of $\left(\dfrac1{3a}+\dfrac1b+\dfrac1{4c}\right)(3a+b+4c)$.
+
+(A) $\frac{28}3$  (B) $\frac{35}3$  (C) $\frac{49}3$  (D) $\frac{56}3$  (E) $\frac{63}3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-33": { s: String.raw`Find the number of all positive integers $n$ such that $N=\left(n^2+6\right)^2-(4n+2)^2$ is a prime number.
+
+(A) $0$  (B) $6$  (C) $10$  (D) $2$  (E) $8$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-34": { s: String.raw`Let $ABCD$ be an isosceles trapezoid such that $\overline{AB}\parallel\overline{CD}$, $AD=BC=DC=18$, and $m\angle A=60^\circ$. Let $M$ and $N$ be the midpoints of $\overline{AD}$ and $\overline{BC}$. The segment $\overline{MN}$ intersects the diagonal $\overline{AC}$ at $P$ and the diagonal $\overline{BD}$ at $Q$. Find the length of the segment $\overline{PQ}$.
+
+@@fig:columbus/2011/34.png@@
+
+(A) $7$  (B) $9$  (C) $8$  (D) $10$  (E) $6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-35": { s: String.raw`Let $\Delta ABC$ be a triangle with sides $AB=10$, $AC=24$, and $BC=26$. Find the length of the median corresponding to $\overline{BC}$.
+
+(A) $12$  (B) $13$  (C) $5$  (D) $17$  (E) $7$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-36": { s: String.raw`Three balls are randomly drawn, without replacement, from a bowl containing $6$ yellow and $5$ blue balls. Find the probability that one of the balls is yellow and the other two are blue.
+
+(A) $\frac4{11}$  (B) $\frac3{11}$  (C) $\frac7{11}$  (D) $\frac5{11}$  (E) $\frac6{11}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-37": { s: String.raw`Three constructors built $100$ houses in a new subdivision. Constructor $A$ built $20$ houses, $B$ built $30$, and $C$ built $50$. The probabilities of developing a leaky basement are $10\%$, $8\%$, and $3\%$ for constructors $A$, $B$, and $C$, respectively. Suppose that one basement is leaking. Find the probability that the house was built by constructor $A$.
+
+(A) $0.059$  (B) $0.041$  (C) $0.41$  (D) $0.34$  (E) $0.25$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-38": { s: String.raw`An equilateral triangle $\Delta ABC$ has sides equal to $10$. Let $D$ be a point on the line passing through $B$ and $C$ such that $BC=CD$, and let $E$ be a point on the line passing through $C$ and $A$ such that $CA=AE$. Find the length of the segment $ED$.
+
+@@fig:columbus/2011/38.png@@
+
+(A) $11\sqrt6$  (B) $12\sqrt5$  (C) $10\sqrt7$  (D) $8\sqrt{10}$  (E) $7\sqrt{13}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-39": { s: String.raw`If two fair dice are tossed, then find the least number of throws for which the probability of getting at least one double five exceeds $0.5$.
+
+(A) $27$  (B) $14$  (C) $25$  (D) $23$  (E) $19$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-40": { s: String.raw`The trapezoid $ABCD$ has bases $AB=2814$ and $CD=402$. The segment $\overline{EF}$ is parallel to the bases and divides $ABCD$ in two regions with equal area. Find the length of $\overline{EF}$.
+
+@@fig:columbus/2011/40.png@@
+
+(A) $1608$  (B) $2010$  (C) $2412$  (D) $804$  (E) $1206$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-41": { s: String.raw`Let $a,b,c$, and $d$ be positive real numbers such that $ac=bd=10$. Find the smallest possible value of the expression $E=(a+2)(b+2)(c+5)(d+5)$.
+
+(A) $1000$  (B) $1200$  (C) $1400$  (D) $1600$  (E) $1800$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-42": { s: String.raw`Assume $x>0$. Which is the correct formula for $\arctan(x)+\arctan\left(\dfrac1{2x}\right)$?
+
+(A) $\arctan\left(x+\dfrac1x\right)$
+(B) $\arctan\left(x+\dfrac1{2x}\right)$
+(C) $\arctan\left(2x+\dfrac1{2x}\right)$
+(D) $\arctan\left(x+\dfrac2x\right)$
+(E) $\arctan\left(2x+\dfrac1x\right)$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-43": { s: String.raw`Find the positive real number $a$ such that $x^a\le a^x$, for all positive real numbers $x$.
+
+(A) $e$  (B) $\pi$  (C) $\sqrt e$  (D) $\pi-\frac12$  (E) $e+\frac12$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-44": { s: String.raw`Let $S=1^{2011}+2^{2011}+3^{2011}+\cdots+2010^{2011}$. Find the remainder of the division of $S$ by $2011$.
+
+(A) $2010$  (B) $0$  (C) $2009$  (D) $1$  (E) $1005$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-45": { s: String.raw`Let $f$ be a function defined for all points $P(x,y)$ in the plane by the formula $f(P)=23x-27y$. If $P_1(x_1,y_1),P_2(x_2,y_2),\ldots,P_{503}(x_{503},y_{503})$ are the vertices of a regular polygon centered at the point $(26,22)$, then find the value of $f(P_1)+f(P_2)+\cdots+f(P_{503})$.
+
+(A) $8048$  (B) $1006$  (C) $6036$  (D) $4024$  (E) $2012$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-46": { s: String.raw`Let $x,y$, and $z$ be three positive real numbers such that $x+y+z=\sqrt{10+\sqrt{19}}$ and $\dfrac1x+\dfrac1y+\dfrac1z=\sqrt{10-\sqrt{19}}$. If $a=x^2+y^2+z^2$ and $b=a+\dfrac9a$, then find the value of $b$.
+
+(A) $7$  (B) $\frac{20}3$  (C) $\frac{22}3$  (D) $\frac{19}3$  (E) $\frac{23}3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-47": { s: String.raw`Let $\alpha$ be the acute angle formed by the tangent lines to the graphs of $y=\sin x$ and $y=\cos x$ at $x=\dfrac\pi4$. Find $\cos\alpha$.
+
+(A) $\frac25$  (B) $\frac12$  (C) $\frac34$  (D) $\frac35$  (E) $\frac13$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-48": { s: String.raw`One picks at random two numbers in the interval $[0,1]$, first $x$ and then $y$. What is the probability that a tetrahedron with sides as in the figure can be constructed?
+
+@@fig:columbus/2011/48.png@@
+
+(A) $1-\dfrac{\sqrt2}2$  (B) $1-\dfrac{\sqrt3}6$  (C) $1-\dfrac{\sqrt6}3$  (D) $1-\dfrac{\sqrt6}4$  (E) $1-\dfrac{\sqrt2}8$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-49": { s: String.raw`An object is projected with an initial velocity $v_0$ up a slope that makes an angle $\alpha$ with the horizontal. Assume frictionless motion and that $t=0$ is when the object enters the slope. If $g$ denotes Earth's gravity, then find the time required for the object to return to its initial position at $t=0$.
+
+@@fig:columbus/2011/49.png@@
+
+(A) $\dfrac{2v_0}{g\sin\alpha}$  (B) $\dfrac{v_0}{2g\sin\alpha}$  (C) $\dfrac{v_0}{g\sin\alpha}$  (D) $\dfrac{v_0}{g\cos\alpha}$  (E) $\dfrac{2v_0}{g\cos\alpha}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+"2011-columbus-state-tournament-50": { s: String.raw`Alin and Carlos are in empty space (where there is no gravity and their gravitational attraction is so small that it can be considered to be zero) separated by a distance $\mathbf d$. Alin throws a ball that reaches Carlos at time $\mathbf T$. Denote by $\mathbf m_A,\mathbf m_C$, and $\mathbf m_B$ the masses of Alin, Carlos and the ball respectively. Find Alin's speed after the ball is thrown.
+
+(A) $\dfrac{\mathbf m_A\mathbf T}{\mathbf m_B\mathbf d}$
+(B) $\dfrac{\mathbf m_B\mathbf d}{\mathbf m_A\mathbf T}$
+(C) $\dfrac{\mathbf m_B\mathbf d}{(\mathbf m_A+\mathbf m_C)\mathbf T}$
+(D) $\dfrac{(\mathbf m_A+\mathbf m_C)\mathbf T}{\mathbf m_B\mathbf d}$
+(E) $\mathbf 0$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Math-Tournament-2011---Individual-Test.pdf" },
+});

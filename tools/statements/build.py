@@ -43,7 +43,7 @@ FAM, NAME, SOURCE = DIRS[d]
 # the slug word where it is not the folder name (slug = year-word-tail)
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 import choice_layout
-SLUG_WORD = {"gmay": "girls-in-math-at-yale", "umd": "umd-hsmc-part-i", "lehigh": "lehigh-math-contest", "calgary": "calgary-junior-math-contest"}
+SLUG_WORD = {"gmay": "girls-in-math-at-yale", "umd": "umd-hsmc-part-i", "lehigh": "lehigh-math-contest", "calgary": "calgary-junior-math-contest", "columbus": "columbus-state-tournament"}
 total = 0
 for spec in sorted(glob.glob(os.path.join(SPEC, d, "*.txt"))):
     year = os.path.basename(spec)[:4]

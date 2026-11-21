@@ -2647,3 +2647,17 @@ Lehigh statements complete (1,020 problems, 1999 to 2026): 1999 #10 (six bets of
 MBMT statements complete (640 problems, 2015 to 2026 without 2020 and 2021; Lower and Upper divisions; all rounds read against their pages). Tag fix: 2022 Lower Counting #4 and Upper Counting #2 (two different positive integers sum to 10: how many products) `nt.div.prime.factor` / no card → `casework-method` / `cp.basic.case.cases`. Noted: MBMT 2024 Lower Geometry #4 and #5 say "below" and "diagram" but the posted PDF carries no figure for them, so their statements have none.
 
 Calgary Junior Part A statements complete (189 problems, 2004 to 2025 without 2020; every paper read against its pages, 31 figures). Tag fixes: 2004 #9 (rhombus with side 10 and area 60, shorter diagonal) `symmetric-polynomial-strategies` → `trapezoid-parallelogram-areas`, `pythagorean-theorem`; 2012 #7 (Danielle's wins from the other three players' wins) and 2021 #6 (a linear equation in $a$ and $b$) lost `permutations-combinations` and `exponent-laws`, which they do not use; 2005 #9 and 2013 #5 (a quadrilateral and a trapezoid circumscribing a circle) `geo.circ.cyclic` → `geo.circ.tangent`. Noted: the 2021 and 2022 papers have the name block on page 1 and 2 respectively, the others on page 2; Calgary 2020 was not held in this form.
+
+Tag fixes found while importing Columbus State statements (2019 to 2022, 2026-11-21): 2019 #10 (reduce $t^8$ with $t^3=t+2$) lost `vietas-general`, which is not used; 2019 #35 (the distance between two edge midpoints of an octahedron) `regular-polygon-area` → `regular-octahedron`. Noted: the posted 2022 paper holds only problems 21 to 30, so problems 1 to 20 have no statements; 2021's file is the booklet with solutions, and the statements leave the solution and the boxed answer out.
+
+Columbus State 2016 #50 (a system with $xyz+z=0$, solved by factoring $z(xy+1)$ and casework) lost `vietas-general`, which it does not use.
+
+Columbus State 2015 tag fixes: #13 (the remainder of $1006^{2015}+1007^{2015}+2016$ modulo $2013$, where $1007\equiv-1006$ and the odd power cancels) lost `fermats-little-theorem`; #4 ($2015^5-2015$ factored as $x(x^2-1)(x^2+1)$) `lte` → `difference-of-squares`. Noted: #43 (the length of a chord from the central angle) sits at `geo.circ.power.chord`, which does not fit; no tree node takes a chord-length formula. #36's statement prints $\overline{AA_2},\overline{AB_2},\overline{AC_2}$ as the segments whose midpoints are $A_2,B_2,C_2$ (presumably $AA_1$, $AB_1$, $AC_1$), and the statement shows it as printed.
+
+Columbus State 2014 #36 ($\sqrt{(n!)^2+13}$ an integer, solved by factoring $k^2-(n!)^2=13$) `wilsons-theorem` → `difference-of-squares`.
+
+Columbus State 2010 #46 (the centre of a unit-diameter ball rolling round the inside of a $1$, $25$, $49$, $25$ trapezoid: the path is a similar trapezoid shrunk by the inradius-type offset) `reflection-coordinates` / `geo.coord.transform.reflect` → no card / `geo.poly.quad.trap` (no reflection is used).
+
+Columbus State 2009: the posted paper is headed "Draft 2" on every page, so its wording may differ from the printed contest; #17 (the last three digits of $3^{98}$) has no answer choices in it. Tag fix: #22 (a polar equation written as a line) `alg.trig.identity.sum` → `geo.coord.line.slope`.
+
+Columbus State 2007 #21 (which third side a triangle with sides $3$ and $10$ can have) `geo.tri.area.base` → `geo.tri.ineq.valid`.

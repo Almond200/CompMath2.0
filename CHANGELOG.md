@@ -2,6 +2,20 @@
 
 **2026-11-21**
 
+- **Columbus State 2006 added (794 of 1,364; 54 problems, 9 figures; no tag needed changing).** `STATEMENTS_V` 89.
+- **Columbus State 2007 added (740 of 1,364; 10 figures; one tag fix, AUDITS.md).** `STATEMENTS_V` 88.
+- **Columbus State 2008 added (690 of 1,364; 7 figures; no tag needed changing).** `STATEMENTS_V` 87.
+- **Columbus State 2009 added (640 of 1,364; 6 figures, two with the neighbouring text whitened out by word position; one tag fix, AUDITS.md).** The posted paper is a "Draft 2". `STATEMENTS_V` 86.
+- **Columbus State 2010 added (590 of 1,364; 4 figures; one tag fix, AUDITS.md).** `STATEMENTS_V` 84.
+- **Columbus State 2011 added (540 of 1,364; 7 figures; no tag needed changing; two physics problems filed off the tree).** `STATEMENTS_V` 83.
+- **Columbus State 2012 added (490 of 1,364; 12 figures; no tag needed changing); 2013 #40, #44 and #46 re-cropped** (the left edge of #40 and #44 and the line and axes of #46 had been touching the border; the figure scan is now `edgecheck`-clean). `STATEMENTS_V` 81.
+- **Columbus State 2013 added (440 of 1,364; 9 figures; no tag needed changing).** `STATEMENTS_V` 80.
+- **Columbus State 2014 added (390 of 1,364; 7 figures; one tag fix, AUDITS.md); 2015 #44 re-cropped.** `STATEMENTS_V` 79.
+- **Columbus State 2015 added (340 of 1,364; 10 figures; two tag fixes and a printing slip noted, AUDITS.md).** `STATEMENTS_V` 78.
+- **Columbus State 2016 added (290 of 1,364; 3 figures; one tag fix, AUDITS.md).** `STATEMENTS_V` 77.
+- **Columbus State 2017 added (240 of 1,364; 2 figures; the file's Ciphering and backup rounds are not part of the 50 problems and are left out).** `STATEMENTS_V` 76.
+- **Columbus State 2018 added (190 of 1,364; 3 figures).** **Figure crops audited (owner):** every figure of the statements added so far (Calgary, Columbus, Duke, Girls in Math at Yale, UMD, Lehigh, MBMT, MMATHS, CMIMC, CHMMC, ARML, BMT, SMT) was scanned for content touching the image edge; seven were clipped and were re-cropped from their pages (Lehigh 2011 #10 and #26, 2025 #10, 2004 #12; MBMT 2018 Upper Counting #7; Calgary 2007 #9 and 2024 #8), the other flagged ones are the original figure's own border. **Problem pages (owner):** the note shown above the archive button for AMC and AIME problems now reads "© Mathematical Association of America" in place of "Solutions live on the Art of Problem Solving wiki." `STATEMENTS_V` 75.
+- **Columbus State, 2019 added (140 of 1,364; five more figures; two tag fixes, AUDITS.md).** Before that, 2020 (90 of 1,364; 2 more figures, wider crops after the owner saw a clipped one in 2021 #20, all earlier figures re-cropped).** Before that: 2022 problems 21 to 30 (the posted file holds only those; 4 figures) and 2021 (all 30, 9 figures, calculus ones included), read against their pages. No tag needed changing. `STATEMENTS_V` 72.
 - **Calgary Junior Part A statements complete (189 problems, 2004 to 2025 without 2020):** every paper read against its pages, 31 figures cropped; five tag fixes (AUDITS.md). `STATEMENTS_V` 71. **How this problem works (owner):** every problem page now has the Show/Hide button, calculus and other off-tree problems with nothing classified included, so the box starts closed (with Strategy on Click to show) on every page. PUMaC's archive is still unreachable: its certificate chain is rejected by the egress proxy even with the proxy's CA bundle (retried 2026-11-21, and the Wayback Machine resets the connection too).
 - **MBMT statements complete (640 problems, 2015 to 2026):** all 40 papers (two divisions, four rounds each) read against their pages, five figures (2015 Upper Geometry #4 and #5; 2018 Lower Algebra #6, Upper Counting #7 and #8, Upper Geometry #4). One tag fix (AUDITS.md). `STATEMENTS_V` 70.
 - **Lehigh statements complete (1,020 problems, 1999 to 2026):** 1999 to 2003 and 2006 added (older papers are scans or HTML pages, read from images), five more figures from 2001 to 2003, seven from 2000 (taken from the page). One tag fix (1999 #10, AUDITS.md). `STATEMENTS_V` 69.

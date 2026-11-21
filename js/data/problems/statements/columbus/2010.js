@@ -1,0 +1,188 @@
+// Problems and diagrams © 2010 Columbus State Invitational Mathematics Tournament. Reproduced with permission from the Columbus State Invitational Mathematics Tournament.
+// Source: the official Columbus State tournament tests. Built by tools/statements/build.py from tools/statements/spec/columbus/2010.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2010-columbus-state-tournament-1": { s: String.raw`The average age of three girls is $5$ years. If a boy joins the group, then the average age of these four children is $6$ years. What is the boy's age?
+
+(A) $9$  (B) $8$  (C) $10$  (D) $12$  (E) $11$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-2": { s: String.raw`The lines $2x+3y-4=0$ and $6x+ay-3=0$ intersect at a right angle. Find the value of $a$.
+
+(A) $2$  (B) $4$  (C) $-4$  (D) $-1$  (E) $3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-3": { s: String.raw`If $a$ and $b$ are positive real numbers such that $\dfrac ab=\dfrac\pi{\sqrt2}$ find the value of $\dfrac{\sqrt[6]{a^9b^5}}{\sqrt[3]{a^3b^4}}$.
+
+(A) $\dfrac{\pi^2}{\sqrt2}$  (B) $\dfrac{\sqrt\pi}{\sqrt[4]2}$  (C) $\dfrac\pi{\sqrt2}$  (D) $\dfrac4{\pi\sqrt\pi}$  (E) $\dfrac{\pi\sqrt\pi}8$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-4": { s: String.raw`If $x^2+y^2=200$ and $xy=50$, then what is the value of $\left(\dfrac{x+y}{x-y}\right)^2$ ?
+
+(A) $50$  (B) $4$  (C) $3$  (D) $200$  (E) $12$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-5": { s: String.raw`A square with side length $\pi$ is inscribed in a circle. Find the area of the circle.
+
+(A) $\frac2\pi$  (B) $\pi$  (C) $\frac{\pi^3}2$  (D) $\frac\pi2$  (E) $\frac{\pi^2}4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-6": { s: String.raw`If $f(3x)=\dfrac3{1+x^2}$ for all real numbers $x$ then what is $f(x)$?
+
+(A) $\dfrac3{1+9x^2}$  (B) $\dfrac{27}{9+x^2}$  (C) $\dfrac{3x}{1+x^2}$  (D) $\dfrac{9x}{1+x^2}$  (E) $\dfrac x{9+x^2}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-7": { s: String.raw`If $\log_x64=3$, then what is $\log_2x^3$?
+
+(A) $6$  (B) $64$  (C) $3$  (D) $8$  (E) $32$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-8": { s: String.raw`If the positive numbers $a$ and $b$ satisfy the equations $a^2+b^2=3$ and $a^4+b^4=1$ then find the value of $ab$.
+
+(A) $10$  (B) $16$  (C) $4$  (D) $2$  (E) $21$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-9": { s: String.raw`What is the product of all solutions of the equation $x^4-2x^3+4x^2-8x+16=0$?
+
+(A) $16$  (B) $-8$  (C) $4$  (D) $-2$  (E) $1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-10": { s: String.raw`The equation $x^2-3x+y^2+4y-12=0$ represents a circle. Find the coordinates of its center.
+
+(A) $\left(\frac32,2\right)$  (B) $\left(-\frac32,-2\right)$  (C) $\left(-\frac32,2\right)$  (D) $\left(\frac32,-2\right)$  (E) $\left(2,\frac32\right)$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-11": { s: String.raw`For what value of $k$ does the system of equations $y=x^2$ and $y=4x+k$ have a unique solution?
+
+(A) $-3$  (B) $6$  (C) $0$  (D) $9$  (E) $-4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-12": { s: String.raw`The price of a digital camera was raised by $x\%$ and then after a while the new price was lowered by $y\%$ such that the price of the camera is equal to the price before the raise. To which value is $\dfrac{x-y}{xy}$ equal?
+
+(A) $-0.2$  (B) $-0.01$  (C) $0$  (D) $0.01$  (E) $0.2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-13": { s: String.raw`If $A=7^{8045}-7^{8044}+7^{8043}-7^{8042}$, then what are the last two digits of $A$?
+
+(A) $00$  (B) $49$  (C) $24$  (D) $12$  (E) $88$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-14": { s: String.raw`How many zeroes are at the end of $2010!$?
+
+(A) $51$  (B) $105$  (C) $501$  (D) $150$  (E) $15$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-15": { s: String.raw`What is the number of all positive integer solutions $(x,y)$ of the equation $x^2+y^2=2010$?
+
+(A) $0$  (B) $4$  (C) $8$  (D) $16$  (E) $32$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-16": { s: String.raw`Boxes A, B, C, D, and E have dimensions as follows
+
+A: $25$ by $37$ by $4$
+
+B: $28$ by $35$ by $1$
+
+C: $23$ by $35$ by $16$
+
+D: $7$ by $19$ by $40$
+
+E: $21$ by $7$ by $39$.
+
+Which box contains the longest segment?
+
+(A) A  (B) B  (C) C  (D) D  (E) E`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-17": { s: String.raw`If the space shuttle is flying with a speed of $17{,}321$ mi/h at an elevation of $126$ mi above the equator and the equatorial radius of the Earth is $3963$ mi, then how long (to the nearest minute) does it take to complete one revolution?
+
+(A) $93$ minutes  (B) $115$ minutes  (C) $89$ minutes  (D) $48$ minutes  (E) $76$ minutes`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-18": { s: String.raw`Find the number of real solutions of the equation $|x-1|+|x+1|=2$.
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) infinite`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-19": { s: String.raw`Let $a,b,c$, and $d$ be positive real numbers such that $\dfrac{2a+b}{2c+d}=\dfrac{3a+b}{3c+d}=\dfrac{4a+b}{4c+d}=4$. To which of the following is the fraction $\dfrac{5a+b}{5c+d}$ equal?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-20": { s: String.raw`Consider the tiling of the plane with squares and equilateral triangles as in the figure. If the pattern continues on a very big area, what is the approximate ratio between the number of squares and the number of equilateral triangles used?
+
+@@fig:columbus/2010/20.png@@
+
+(A) $\frac13$  (B) $1$  (C) $\frac23$  (D) $\frac12$  (E) $2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-21": { s: String.raw`Which is the number of positive divisors of $2010$?
+
+(A) $2$  (B) $8$  (C) $16$  (D) $18$  (E) $24$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-22": { s: String.raw`How many positive integers are in the set
+$$S=\left\{\frac{2010}1,\frac{2011}2,\frac{2012}3,\frac{2013}4,\cdots\right\}?$$
+
+(A) $6$  (B) $3$  (C) $1$  (D) $12$  (E) $8$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-23": { s: String.raw`How many pairs $(x,y)$ of positive integers with $x+y\le120$ satisfy the equation $\dfrac{x^{-1}+y}{x+y^{-1}}=10$?
+
+(A) $9$  (B) $11$  (C) $10$  (D) $8$  (E) $12$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-24": { s: String.raw`Which is the value of the product $\left(1+\dfrac12\right)\left(1+\dfrac13\right)\left(1+\dfrac14\right)\cdots\left(1+\dfrac1{2010}\right)$?
+
+(A) $\frac{2010}{2009}$  (B) $\frac{2011}2$  (C) $4020$  (D) $1005$  (E) $\frac{2009}2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-25": { s: String.raw`Let $\Delta ABC$ be a triangle with sides $3$, $4$, and $5$. What is the sum of the squares of the medians?
+
+(A) $\frac{97}2$  (B) $\frac{108}5$  (C) $\frac{49}6$  (D) $\frac{169}4$  (E) $\frac{75}2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-26": { s: String.raw`Let $ABCD$ be a square. Construct the equilateral triangles $\Delta MAB$, $\Delta NBC$, $\Delta PCD$, and $\Delta QDA$ where $M,N,P,Q$ are exterior to $ABCD$. Find the ratio $\dfrac{\text{Area}(MNPQ)}{\text{Area}(ABCD)}$.
+
+@@fig:columbus/2010/26.png@@
+
+(A) $3+\sqrt2$  (B) $2+\sqrt3$  (C) $\sqrt2+\sqrt3$  (D) $2\sqrt2+\sqrt3$  (E) $\sqrt3+3\sqrt2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-27": { s: String.raw`A cube is inscribed in a sphere. What is the ratio of the volume of the cube to the volume of the sphere?
+
+(A) $\dfrac{3\sqrt2}{2\pi}$  (B) $\dfrac{\sqrt6}{4\pi}$  (C) $\dfrac{\sqrt\pi}6$  (D) $\dfrac{2\pi\sqrt3}3$  (E) $\dfrac{2\sqrt3}{3\pi}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-28": { s: String.raw`The statement "If it is snowing then schools are closed" is logically equivalent to which of the following?
+
+A: "If it is snowing then schools are not closed."
+
+B: "If it is not snowing then schools are closed."
+
+C: "If it is not snowing then schools are not closed."
+
+D: "If schools are closed then it is snowing."
+
+E: "If schools are not closed then it is not snowing."
+
+(A) A  (B) B  (C) C  (D) D  (E) E`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-29": { s: String.raw`A sphere is inscribed in a cube. What is the ratio of the volume of the sphere to the volume of the cube?
+
+(A) $\pi$  (B) $\frac\pi6$  (C) $\frac\pi3$  (D) $\frac\pi2$  (E) $\frac\pi4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-30": { s: String.raw`A roulette wheel contains $38$ numbers: $18$ are red, $18$ are black and $2$ are green. When the roulette wheel is spun, the ball is equally likely to land on any of the $38$ numbers. Suppose that you bet $\$1$ on red. If the ball lands on a red number, you double your money; otherwise you lose your $\$1$. In dollars, find with approximation the expected value you will win.
+
+(A) $-0.05$  (B) $-0.03$  (C) $0$  (D) $0.03$  (E) $0.05$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-31": { s: String.raw`Let $x=67^{30^{2010}}$, $y=2010^{67^{30}}$, and $z=30^{2010^{67}}$. Which of the following is true?
+
+(A) $x<z<y$  (B) $z<x<y$  (C) $z<y<x$  (D) $y<x<z$  (E) $y<z<x$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-32": { s: String.raw`The function $f:\mathbb R\to\mathbb R$ satisfies the equation $f(2x+1)-f(2x-1)=x$ for all real $x$. If $f(1)=0$, find $f(2011)$.
+
+(A) $1010025$  (B) $1015025$  (C) $505515$  (D) $2001025$  (E) $5500125$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-33": { s: String.raw`How many triples $(x,y,z)$ are solutions of the equation $x^2+2y^2+3z^2+\dfrac1{x^2}+\dfrac2{y^2}+\dfrac3{z^2}=12$?
+
+(A) $2$  (B) $4$  (C) $8$  (D) $12$  (E) $16$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-34": { s: String.raw`Let $0<b<1$ and $0<\alpha<\frac\pi4$. Define $x=(\sin\alpha)^{\log_b\sin\alpha}$, $y=(\cos\alpha)^{\log_b\cos\alpha}$, and $z=(\sin\alpha)^{\log_b\cos\alpha}$. Which of the following is true?
+
+(A) $y<x<z$  (B) $x<y<z$  (C) $z<x<y$  (D) $y<z<x$  (E) $x<z<y$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-35": { s: String.raw`Find the sum of the solutions of the equation
+$$\sqrt{x+\sqrt{4x-3}+\frac14}+\sqrt{x-\sqrt{4x-3}+\frac14}=x.$$
+
+(A) $4$  (B) $5$  (C) $2$  (D) $3$  (E) $1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-36": { s: String.raw`If $f(x)=\dfrac1{x^2+5x+6}$, find $f(1)+f(2)+\cdots+f(2010)$.
+
+(A) $\frac{669}{2011}$  (B) $\frac{670}{2012}$  (C) $\frac{669}{2012}$  (D) $\frac{670}{2013}$  (E) $\frac{671}{2013}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-37": { s: String.raw`Which is the $2010^{th}$ term of the sequence $1,2,2,3,3,3,4,4,4,4,\ldots$?
+
+(A) $66$  (B) $63$  (C) $64$  (D) $61$  (E) $62$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-38": { s: String.raw`An acute triangle $\Delta ABC$ with $m\angle A=60^\circ$ has sides measurements $\overline{BC}=2010$ and $\overline{AB}=2310$. What is the length of the third side?
+
+(A) $1350$  (B) $960$  (C) $1400$  (D) $1050$  (E) $85$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-39": { s: String.raw`For how many integers $k$ between $1$ and $2010$ is the improper fraction $\dfrac{k^2+4}{k+5}$ not in lowest terms?
+
+(A) $70$  (B) $68$  (C) $67$  (D) $66$  (E) $69$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-40": { s: String.raw`Find the value of $a$ in $[0,2\pi]$ such that
+$$\sin\left(\frac\pi3+x\right)+\sin(a+x)\ge0$$
+for all real numbers $x$.
+
+(A) $\frac{4\pi}3$  (B) $\frac{3\pi}4$  (C) $\frac{2\pi}3$  (D) $\pi$  (E) $\frac{5\pi}4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-41": { s: String.raw`If $a^x\ge x+1$ for all real numbers $x$ then what is the value of $a$?
+
+(A) $2$  (B) $e$  (C) $\pi$  (D) $\pi+e$  (E) $\frac\pi e$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-42": { s: String.raw`In a triangle $\Delta ABC$ we have $BC=4$, $AC=3$. Let $\alpha$ be the measure of angle $\angle A$ and $\beta$ be the measure of angle $\angle B$. If $\cos(\alpha-\beta)=\dfrac34$ then find $\sin\alpha$.
+
+(A) $\frac35$  (B) $\frac23$  (C) $-\frac25$  (D) $-\frac34$  (E) $1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-43": { s: String.raw`Let $f(x)$ be a real valued function defined on the interval $(0,\infty)$. If $f(a)\ne0$ for some $a$ in $(0,\infty)$ and $f(x^y)=yf(x)$ for all positive real numbers $x$ and $y$, then how many zeroes does $f(x)$ have?
+
+(A) none  (B) $1$  (C) $2$  (D) $3$  (E) infinitely many`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-44": { s: String.raw`In a triangle $\Delta ABC$ the segment $\overline{AM}$ is the median of $\overline{BC}$. Let $D$ be the midpoint of $\overline{AM}$ and let $N$ be the point on $\overline{AC}$ such that the points $B$, $D$, and $N$ are on the same line. Find the ratio $\dfrac{DN}{DB}$.
+
+(A) $\frac25$  (B) $\frac34$  (C) $\frac13$  (D) $\frac12$  (E) $\frac35$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-45": { s: String.raw`A diagnostic test for a disease is said to be $90\%$ accurate if it detects $90\%$ of the persons who have the disease. Also, if a person does not have the disease, the test will report that he or she does not have it with probability $90\%$. Only $1\%$ of the population has the disease. A person is selected at random from the population and the diagnostic test indicates that the person has the disease. What is the probability that the person has the disease?
+
+(A) about $92\%$  (B) about $18\%$  (C) about $32\%$  (D) about $8\%$  (E) about $1\%$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-46": { s: String.raw`A billiard table is in the shape of an isosceles trapezoid with dimensions $1$, $25$, $49$, and $25$. A ball has diameter $1$ and rolls along the inside boundary of the table staying tangent to the side/s at all times. After a full rotation around the table, its center has travel for how long?
+
+@@fig:columbus/2010/46.png@@
+
+(A) $\frac{900}7$  (B) $\frac{400}7$  (C) $\frac{500}7$  (D) $\frac{600}7$  (E) $\frac{800}7$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-47": { s: String.raw`Let $a,b,c$, and $d$ be four positive integers with $a>b>c>d$ such that $a+b+c+d=2010$ and $a^2-b^2+c^2-d^2=2010$. How many distinct values are possible for $a$?
+
+(A) $1005$  (B) $501$  (C) $2010$  (D) $252$  (E) $0$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-48": { s: String.raw`The triangle $\Delta ADB$ is isosceles ($AD=DB=147$). The measure of angle $\angle ADB$ is twice the measure of the angle $\angle ACB$. The line segments $BD$ and $AC$ intersect at a point $E$ such that $DE=140$. What is the product $(AE)(EC)$ ?
+
+@@fig:columbus/2010/48.png@@
+
+(A) $2008$  (B) $2009$  (C) $2010$  (D) $2011$  (E) $2012$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-49": { s: String.raw`Let $a$ and $b$ be real numbers such that the remainder of the division of $X^{2010}+aX+b$ by $X^2+X+1$ is $0$. What is the value of $a+b$?
+
+(A) $-1$  (B) $3$  (C) $2$  (D) $0$  (E) $1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+"2010-columbus-state-tournament-50": { s: String.raw`For each real number $m$ the parabola $y=(m^2+4)x^2+(m-2)^2x-4m+2$ passes through the same point $(a,b)$. Find the value of $a^2+b^2$.
+
+(A) $10$  (B) $25$  (C) $15$  (D) $5$  (E) $20$`, u: "https://www.columbusstate.edu/math/_docs/tournament/Individual2010.pdf" },
+});

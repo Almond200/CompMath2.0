@@ -1,0 +1,228 @@
+=== 1
+There are $30$ people in a room, $60\%$ percent of whom are men. If no men enter or leave the room, how many women must enter the room so that $40\%$ of the total number of people in the room are men?
+
+(A) $2$  (B) $10$  (C) $12$  (D) $15$  (E) $20$
+=== 2
+What is the product of the roots of the equation $(x+4)(x+2)+(x+2)(x+6)=0$?
+
+(A) $2$  (B) $10$  (C) $24$  (D) $48$  (E) $96$
+=== 3
+If the domain for the function $f(x)=\dfrac1{x^2+2x+c}$ is $(-\infty,\infty)$, which of the following best describes all possible values of $c$ ?
+
+(A) $c>1$  (B) $c=1$  (C) $c<1$  (D) $c\le1$  (E) $c>2$
+=== 4
+The quadratic polynomial $f(x)$ satisfies the equation $f(x)-f(x-2)=4x-2$ for all $x$. If $s$ and $t$ are the coefficients of $x^2$ and $x$, respectively, in $f(x)$, what is the value of $s+t$ ?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$
+=== 5
+Max read on the website of Games and Stuff that a certain $100$ dollar computer game was given a $32\%$ discount; when Max arrived at the store, it was announced at the door that the same game had an additional $27\%$ discount. When Max went to pay for it, he received a third discount of $17\%$. What single discount would have given the same cost as a series discounts of $32\%$, $27\%$, and $17\%$? Round your answer to two decimal places.
+
+(A) $71.68\%$  (B) $76.00\%$  (C) $58.80\%$  (D) $41.20\%$  (E) $28.40\%$
+=== 6
+Which of the following is equivalent to $\dfrac{2\sqrt{15}}{\sqrt3+\sqrt5+2\sqrt2}$ ?
+
+(A) $2\sqrt3+\sqrt5+2\sqrt2$  (B) $\sqrt3+2\sqrt5+\sqrt2$  (C) $-\sqrt3+\sqrt5+2\sqrt2$  (D) $\sqrt3-\sqrt5+2\sqrt2$  (E) $\sqrt3+\sqrt5-2\sqrt2$
+=== 7
+You own a motel and have a pricing structure that encourages rentals of rooms in groups. One room rents for $\$73$, two for $\$70.50$ each, and in general the group rate per room is found by taking $\$2.50$ off the base of $\$73$ for each extra room rented. Find a formula for the function $R=R(n)$ that gives the total revenue for renting $n$ rooms to a convention host.
+
+(A) $R(n)=70.50+71(n+2)$  (B) $R(n)=70.50-71(n-2)$  (C) $R(n)=[73-2.50(n-1)]n$  (D) $R(n)=[73-2.50(n+1)]n$  (E) $R(n)=[73-2.50(n-2.50)]n$
+=== 8
+If $\dfrac1a+\dfrac1b=\dfrac1{a+b}$, then find the value of $\dfrac ba+\dfrac ab$.
+
+(A) $-1$  (B) $1$  (C) $2$  (D) $-2$  (E) $3$
+=== 9
+If the geometric mean of two positive real numbers $a$ and $b$ ($a>b$) is equal to $4$ and their average is $5$, then what is the value of $x$ that satisfies the equation $a=b^x$ ? (The geometric mean of nonnegative numbers $a$ and $b$ is $\sqrt{ab}$.)
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$
+=== 10
+What is the sum of the real roots of $\left(x\sqrt x\right)^x=x^{x\sqrt x}$ ?
+
+(A) $\frac{18}7$  (B) $\frac{71}4$  (C) $\frac94$  (D) $\frac{24}{19}$  (E) $\frac{13}4$
+=== 11
+Which of the following is the probability of getting exactly three sixes when you roll $n$ fair dice?
+
+(A) $\dfrac{n!}{3!}\left(\dfrac16\right)^3\left(\dfrac56\right)^{n-3}$  (B) $\dfrac{n!}{3!(n-3)!}\left(\dfrac16\right)^3\left(\dfrac56\right)^n$  (C) $\left(\dfrac16\right)^3\left(\dfrac56\right)^{n-3}$  (D) $\dfrac{n!}{3!(n-3)!}\left(\dfrac15\right)^3\left(\dfrac56\right)^n$  (E) $\left(\dfrac16\right)^{n-3}\left(\dfrac56\right)^3$
+=== 12
+If $3^{2-3y}=\pi$, compute the value of $\sqrt3^{\,(2+3y)}$.
+
+(A) $\frac{18}\pi$  (B) $\frac9{\sqrt\pi}$  (C) $\pi^3$  (D) $\frac9\pi$  (E) $81\pi$
+=== 13
+Three straight lines, $l_1$, $l_2$ and $l_3$, have slopes $\frac12,\frac13$ and $\frac14$, respectively. All three lines have the same $y$-intercept. If the sum of the $x$-intercepts of the three lines is $36$, what is the $y$-intercept?
+
+(A) $\frac{-13}{12}$  (B) $\frac{-12}{13}$  (C) $-4$  (D) $4$  (E) $9$
+=== 14
+Evaluate
+$$1+\frac1{\sqrt2+\sqrt1}+\frac1{\sqrt3+\sqrt2}+\cdots+\frac1{\sqrt{2013}+\sqrt{2012}}.$$
+
+(A) $1+\dfrac1{\sqrt{2013}}$  (B) $\sqrt{2013}$  (C) $\dfrac{2013}{\sqrt{2012}+\sqrt{2013}}$  (D) $2+\dfrac1{\sqrt{2013}}$  (E) $\dfrac1{\sqrt{2013}}$
+=== 15
+Three rugs have a combined area of $200\ \text{m}^2$. By overlapping the rugs to cover a floor area of $140\ \text{m}^2$, the area which is covered by exactly two layers of rug is $24\ \text{m}^2$. What area of floor is covered by three layers of rug?
+
+(A) $12\ \text{m}^2$  (B) $18\ \text{m}^2$  (C) $24\ \text{m}^2$  (D) $36\ \text{m}^2$  (E) $42\ \text{m}^2$
+=== 16
+In figure 1, the parabola has $x$-intercepts $-1$ and $4$, and $y$-intercept $8$. If the parabola passes through the point $(3,w)$, what is the value of $w$?
+
+@@fig:columbus2013_16.png@@
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$
+=== 17
+What is the number of triples $(x,y,z)$ such that when any of these numbers is added to the product of the other two, the result is $2$ ?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$
+=== 18
+Two six sided dice have each of their faces painted either blue or yellow. The first die has five blue faces and one yellow face. When the dice are rolled, the probability that the two top faces show the same color is $\frac12$. How many yellow faces are there on the second die?
+
+(A) $5$  (B) $4$  (C) $3$  (D) $2$  (E) $1$
+=== 19
+Write $\left(\dfrac1{\sqrt2}+\dfrac{\sqrt2}2i\right)^{2013}$ in the form $a+bi$.
+
+(A) $\dfrac{-\sqrt2}2-\dfrac{\sqrt2}2i$  (B) $\dfrac{\sqrt2}2+\dfrac{\sqrt2}2i$  (C) $i$  (D) $-1$  (E) $-i$
+=== 20
+An increasing sequence is formed so that the difference between consecutive terms is a constant. If the first four terms of this sequences are $x$, $y$, $3x+y$ and $x+2y+2$, what is the value of $y-x$ ?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$
+=== 21
+For $x<0$, simplify $\sqrt{(2x-|x|)^2}$.
+
+(A) $-3x$  (B) $3x$  (C) $2x-|x|$  (D) $|x|$  (E) $x$
+=== 22
+Assume $a$ and $b$ are integers between $0$ and $9$, if $\mathbf{a679b}$ is the decimal representation of a number in base $10$, such that it is divisible by $72$, determine $a+b$.
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$
+=== 23
+What is the remainder when $2012^{2013}$ is divided by $7$?
+
+(A) $6$  (B) $4$  (C) $3$  (D) $2$  (E) $1$
+=== 24
+Three neon lights colored red, blue and green flash at different time intervals. The red light flashes after every $24$ seconds, the blue light after every $18$ seconds and the green light after every $15$ seconds. If all the three lights flash together at $8{:}00$ am, how many times will all three lights flash together by $9{:}30$ am?
+
+(A) $12$  (B) $15$  (C) $18$  (D) $21$  (E) $24$
+=== 25
+If $x=a^b$ and $y=\dfrac1b-\log_a\sqrt[b]b$, which expression is equivalent to $x^y$ ?
+
+(A) $\dfrac ab$  (B) $a-\sqrt[b]b$  (C) $\dfrac a{\sqrt[b]b}$  (D) $a-b$  (E) $\dfrac a{b\sqrt[b]b}$
+=== 26
+Find the exact value of the following product
+$$\sin1^\circ\cdot\sin2^\circ\cdot\ldots\cdot\sin45^\circ\cdot\sec46^\circ\cdot\ldots\cdot\sec89^\circ.$$
+
+(A) $1$  (B) $\frac{\sqrt2}2$  (C) $\frac{\sqrt3}2$  (D) $\frac12$  (E) $\frac1{\sqrt3}$
+=== 27
+Given $x=\sqrt{c+\sqrt{c+\sqrt{c+\cdots}}}$, where $x$ is a positive integer, which of the following is a possible values of $c$ ?
+
+(A) $9$  (B) $10$  (C) $16$  (D) $18$  (E) $20$
+=== 28
+In figure 2, the equation of the line containing $\overline{AD}$ is $y=\sqrt3(x-1)$. $\overline{BD}$ bisects $\angle ADC$. If the coordinates of $B$ are $(p,q)$, what is the value of $q$?
+
+@@fig:columbus2013_28.png@@
+
+(A) $6$  (B) $6.5$  (C) $\frac{10}{\sqrt3}$  (D) $\frac{12}{\sqrt3}$  (E) $\frac{13}{\sqrt3}$
+=== 29
+What is the number of pairs of positive integers $(s,t)$, with $s+t\le2013$, that satisfy the equation
+$$\frac{s+t^{-1}}{s^{-1}+t}=199?$$
+
+(A) $5$  (B) $7$  (C) $8$  (D) $10$  (E) $15$
+=== 30
+The numbers $a_1,a_2,\ldots,a_{61}$ are positive consecutive integers that sum to $2013$. Which is the sum
+$$a_1^2+a_2^2+\ldots+a_{61}^2\ ?$$
+
+(A) $85338$  (B) $85339$  (C) $85340$  (D) $85341$  (E) $85342$
+=== 31
+The quadratic equations $15x^2-19x+6=0$ and $21x^2-17x+2=0$ have a common solution. Which is the sum of the other solutions?
+
+(A) $\frac{26}{35}$  (B) $\frac{24}{35}$  (C) $\frac{22}{35}$  (D) $\frac{28}{35}$  (E) $\frac{20}{35}$
+=== 32
+Let $a_n$ equal the integer closest to $\sqrt n$. For example $a_1=a_2$ since $\sqrt1=1$ and $\sqrt2\approx1.41$ and $a_3=2$ since $a_3\approx1.73$. What is the sum
+$$\frac1{a_1}+\frac1{a_2}+\frac1{a_3}+\frac1{a_4}+\cdots+\frac1{a_{108}}+\frac1{a_{109}}+\frac1{a_{110}}$$
+equal to?
+
+(A) $18$  (B) $19$  (C) $20$  (D) $21$  (E) $22$
+=== 33
+In figure 3, $AB=BC=CD=DA=BD=6$ and $AE=CE=14$. What is the length of line segment corresponding to $\overline{DE}$?
+
+@@fig:columbus2013_33.png@@
+
+(A) $4\sqrt{10}-3$  (B) $11$  (C) $7\sqrt3-3$  (D) $10$  (E) $13$
+=== 34
+Two points are chosen at random on a circle. What is the probability that the distance between them is more than the radius of the circle?
+
+(A) $\frac34$  (B) $\frac23$  (C) $\frac12$  (D) $\frac14$  (E) $\frac13$
+=== 35
+The equation $2013=x^2+41y^2$ has only two solution pairs $(x,y)$ of positive integers. Considering these pairs, which is the largest value of $x+y$ ?
+
+(A) $42$  (B) $43$  (C) $44$  (D) $45$  (E) $46$
+=== 36
+Find the sum of all possible values of $x$ satisfying the logarithmic equation
+$$\log_{5x+9}\left(x^2+6x+9\right)+\log_{x+3}\left(5x^2+24x+27\right)=4.$$
+
+(A) $\frac{-5}2$  (B) $\frac{-3}2$  (C) $0$  (D) $1$  (E) $\frac32$
+=== 37
+In figure 4, $ABCDEFGH$ is a cube of side-lengths equal to $12$ meters. On the side $AD$ there is an ant at the midpoint $M$ of it. The ant travels on the faces of this cube to the point $N$ located $3$ meters away from $G$ on $FG$. What is the shortest distance (in meters) that this ant can travel to arrive at $N$?
+
+@@fig:columbus2013_37.png@@
+
+(A) $\sqrt{549}$  (B) $\sqrt{548}$  (C) $\sqrt{547}$  (D) $\sqrt{546}$  (E) $\sqrt{585}$
+=== 38
+A line $l$ is parallel to the line $y=\dfrac54x+\dfrac{95}4$ and it intersects the $x$-axis and $y$-axis at points $A$ and $B$, respectively. If $l$ also passes through $(-1,-25)$, how many points with integer coordinates are there on the line segment $\overline{AB}$ (including the endpoints of $\overline{AB}$)?
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$
+=== 39
+Assume that two real numbers $a$ and $b$ satisfy $a^2+ab+b^2=1$ and $t=ab-a^2-b^2$. What is the range for the values of $t$ ?
+
+(A) $0\le t\le\frac23$  (B) $-\frac13\le t\le1$  (C) $-3\le t\le-\frac13$  (D) $-4\le t\le-3$  (E) $1\le t\le\frac43$
+=== 40
+In figure 5 we have three circles of radii $3$, $11$ and $61$ tangent to each other at points $P$, $Q$ and $R$. The triangle formed by their centers area equal to $\sqrt{2013\cdot a}$. What is the value of $a$?
+
+@@fig:columbus2013_40.png@@
+
+(A) $71$  (B) $72$  (C) $73$  (D) $74$  (E) $75$
+=== 41
+Find the limit
+$$\lim_{x\to0}\frac{\sqrt[3]{5x+8}-2}{x}.$$
+
+(A) $\frac5{12}$  (B) $\frac7{12}$  (C) $\frac1{12}$  (D) $\frac14$  (E) $\frac12$
+=== 42
+Two circles with radii $a$ and $b$ are tangent to each other as shown in figure 6. The ray $\overrightarrow{OA}$ contains the diameter of each circle, and the ray $\overrightarrow{OB}$ is tangent to each circle. Which of the following is equivalent to $\cos\theta$ ?
+
+@@fig:columbus2013_42.png@@
+
+(A) $\dfrac{a+b}{b-a}$  (B) $\dfrac{2\sqrt{ab}}{a+b}$  (C) $\dfrac{2b-a}{\sqrt{ab}}$  (D) $\sqrt{\dfrac{a-b}{a+b}}$  (E) $\dfrac{a+b}{\sqrt{ab}}$
+=== 43
+The equation $9x^3=a+\ln x$ has a unique positive solution in $x$ if $a$ is a certain positive real number. What is the value of $10e^{a-\frac13}$ ?
+
+(A) $34$  (B) $33$  (C) $32$  (D) $31$  (E) $30$
+=== 44
+The square $ABCD$ in figure 7 has side lengths $4$ meters. Point $E$ is on $\overline{AC}$ with $AC=4EC$. A circle centered at $E$ is tangent to two sides of the square. $\overline{AG}$ is tangent to the circle at $F$. What is the length $AF$?
+
+@@fig:columbus2013_44.png@@
+
+(A) $3\sqrt2$  (B) $\sqrt{17}$  (C) $\sqrt{21}$  (D) $4\sqrt2-1$  (E) $4\sqrt2$
+=== 45
+If every solution of the equation $(\cos x)^2-(\cos x)-1=0$ is a solution of the equation $a(\cos2x)^2+b(\cos2x)-1=0$, what is the value of $a+b$ ?
+
+(A) $-1$  (B) $-2$  (C) $-3$  (D) $-4$  (E) $-5$
+=== 46
+In figure 8, the circle with center $P$ has radius $3$ and is tangent to both the positive $x$-axis and the positive $y$-axis, as shown. Also, the circle with center $Q$ has radius $1$ and is tangent to both the positive $x$-axis and the circle with center $P$. The line $L$ is tangent to both circles. What is the $y$-intercept of $L$ ?
+
+@@fig:columbus2013_46.png@@
+
+(A) $8\sqrt3$  (B) $3+6\sqrt3$  (C) $10+3\sqrt2$  (D) $9+3\sqrt3$  (E) $10+2\sqrt3$
+=== 47
+The graph of the function $g$ is the reflection of the graph of $f(x)=x+e^x$ defined for all real $x$ about the line $y=x$. What is $g'(1)$ (i.e. $\dfrac{dg}{dx}(1)$) ?
+
+(A) $\frac12$  (B) $\frac13$  (C) $\frac14$  (D) $\frac15$  (E) $\frac16$
+=== 48
+Knowing that there is exactly one pair $(x,y)$ of two positive integers $x$ and $y$ satisfying the equation
+$$\frac{x^2+y^2}{33}=2013,$$
+what is $x+y$ ?
+
+(A) $360$  (B) $361$  (C) $362$  (D) $363$  (E) $365$
+=== 49
+How many ordered pairs $(m,n)$ of positive integers are solutions of the equation $\dfrac{10}m+\dfrac{21}n=1$ ?
+
+(A) $11$  (B) $12$  (C) $14$  (D) $16$  (E) $18$
+=== 50
+In figure 9, $PQR$ is a right triangle with $A$ and $B$ on $\overline{PQ}$. Also, $C$ is on $\overline{QR}$, and $\overline{BC}$ is parallel to $\overline{PR}$. If $AB=2$, $PA=3$, $PR=4$, and the area of $\triangle ACR$ is $5$, what is $BQ$ ?
+
+@@fig:columbus2013_50.png@@
+
+(A) $1$  (B) $1.5$  (C) $\sqrt2$  (D) $2$  (E) $\frac13$

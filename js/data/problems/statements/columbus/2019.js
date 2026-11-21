@@ -1,0 +1,202 @@
+// Problems and diagrams © 2019 Columbus State Invitational Mathematics Tournament. Reproduced with permission from the Columbus State Invitational Mathematics Tournament.
+// Source: the official Columbus State tournament tests. Built by tools/statements/build.py from tools/statements/spec/columbus/2019.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2019-columbus-state-tournament-1": { s: String.raw`How many solutions $(x,y)$, does the system of equations
+$$\begin{cases}|x|+|y|=2,\\x^2-y^2=1,\end{cases}$$
+have?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-2": { s: String.raw`What is the largest possible remainder that can be obtained when a two-digit number is divided by the sum of its digits?
+
+(A) $10$  (B) $11$  (C) $12$  (D) $15$  (E) $17$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-3": { s: String.raw`In how many ways can $20$ dollars be changed into dimes and quarters, with at least one of each coin being used?
+
+(A) $35$  (B) $37$  (C) $39$  (D) $41$  (E) $43$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-4": { s: String.raw`The number $\sqrt{24+\sqrt{572}}$ can be written in the form $\sqrt a+\sqrt b$, for two positive integers $a$ and $b$. What is $|a-b|$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-5": { s: String.raw`How many prime numbers divide $5^6-1$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-6": { s: String.raw`Find the remainder of the division $(x^4-4x^3+6x^2-3x)\div(x^2-2x+1)$.
+
+(A) $x$  (B) $x-1$  (C) $x-2$  (D) $x-3$  (E) $x-4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-7": { s: String.raw`A fair coin is flipped three times. What is the probability that at least one head will be thrown?
+
+(A) $0.125$  (B) $0.25$  (C) $0.75$  (D) $0.9$  (E) $0.875$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-8": { s: String.raw`When expanded as a decimal, the fraction $\frac1{97}$ has a repetend (the repeating part of the decimal) that begins right after the decimal point and is $96$ digits long:
+$$\frac1{97}=0.\underbrace{01030927835\ldots x67}_{96\text{ digits}}\ldots$$
+If the last three digits of the repetend are $x67$, what is the digit $x$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-9": { s: String.raw`What is the number of solutions in $x$ (real values) of the equation
+$$|x-3|+|3x-5|+|2x-7|=4?$$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-10": { s: String.raw`Assuming that $t$ is the only real solution of the cubic equation $x^3=x+2$, then there are unique integers $m$, $n$ and $p$ so that $t^8=mt^2+nt+p$. Find $m+n-p$.
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-11": { s: String.raw`The sum
+$$2\cdot\left[\cos^2 1^\circ+\cos^2 2^\circ+\cdots+\cos^2 90^\circ\right]$$
+equals a two-digit number $\overline{ab}$. What is $b-a$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-12": { s: String.raw`The recurrent sequence $\{x_n\}$ satisfies the recurrence $x_{n+1}=2x_n(1-x_n)$ for every $n\ge1$ and $x_1=1/2019$. Knowing that $\{x_n\}$ is convergent to $L$, what is $L^{-1}$?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-13": { s: String.raw`The following quadratic equations $15x^2-19x+6=0$ and $21x^2-17x+2=0$ have a common solution. What is the sum of the other two solutions?
+
+(A) $\frac{24}{35}$  (B) $\frac{22}{35}$  (C) $\frac{28}{35}$  (D) $\frac{20}{35}$  (E) $\frac{26}{35}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-14": { s: String.raw`The numbers $a_1,a_2,\ldots,a_6$ are positive consecutive integers whose sum is $2019$. What is the value of
+$$\frac{6a_4-a_1-2a_2-3a_3}{10}?$$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-15": { s: String.raw`The equation in $x$,
+$$(x-1)^5+(x-2)^5+(x-3)^5+(x-4)^5+(x-5)^5=0$$
+has five solutions (including the pure complex ones). What is their product?
+
+(A) $875$  (B) $885$  (C) $895$  (D) $785$  (E) $685$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-16": { s: String.raw`If $\log_AB$ means the logarithm of $B$ in base $A$, solve the equation $\log_9x+\log_{x^2}3=1$ for $x$.
+
+(A) $9$  (B) $27$  (C) $81$  (D) $3$  (E) $1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-17": { s: String.raw`Find the sum of the number $N=1234$ and all other four digit numbers obtained by permuting the digits of $N$ in all possible ways.
+
+(A) $33330$  (B) $66660$  (C) $999990$  (D) $55550$  (E) $11110$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-18": { s: String.raw`The cubic equation $x^3-12x^2+44x+a=0$ has three solutions in arithmetic progression. Find $a$.
+
+(A) $50$  (B) $-48$  (C) $-55$  (D) $20$  (E) $-35$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-19": { s: String.raw`A cube is dissected into six pyramids by connecting a given point in the interior of the cube with each vertex of the cube. The volumes of five of these pyramids are $2$, $5$, $10$, $11$ and $14$. What is the volume of the sixth pyramid?
+
+@@fig:columbus/2019/19.png@@
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-20": { s: String.raw`The positive integer $N$ has exactly six distinct (positive) divisors including $1$ and $N$. The product of only five of these divisors is $648$. What is the value of the sixth missing divisor?
+
+(A) $18$  (B) $9$  (C) $6$  (D) $2$  (E) $1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-21": { s: String.raw`Suppose that $a$ and $b$ are positive integers such that $2019>a>b\ge1$, and the expression
+$$\frac{a+b}{a-b}+\frac{a-b}{a+b}$$
+attains its smallest possible value. What is the units digit of $a+3b$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-22": { s: String.raw`A natural number is called a perfect power if it is equal to $a^b$ for some $a$ and $b$ natural numbers $b\ge2$. The list of perfect powers begins with $1,4,8,9,16,25,27,32,36,49,64,81,100,121,125$, and so on. The sum $S_n$ of the first $n$ perfect powers gives a sequence $S_1=1$, $S_2=1+4=5$, $S_3=1+4+8=13$, etc. Knowing $S_n=2019$ for some $n$, find the sum of the digits of $n$.
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-23": { s: String.raw`A box has $5$ red balls and $3$ blue balls. Bill picks one ball at the time, from the box, without replacement, until all of balls of the same color are out. If $\frac pq$ is the probability that the last ball Bill picks is blue, written as a reduced fraction, what is $q-p$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-24": { s: String.raw`The real valued function $f$ defined by
+$$f(x)=\sum_{j=0}^{2019}|x-j|,\ x\in\mathbb R,$$
+has a minimum value of $M^2$. What is the sum of the digits of $M$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-25": { s: String.raw`For every real number $x$, a vertical segment connecting the graphs of
+$$y=|x|\quad\text{and}\quad y=-x^2-3x-2$$
+can be drawn (segment $\overline{AB}$ with $A=(x,|x|)$ and $B=(x,-x^2-3x-2)$). Find the smallest possible length of these vertical segments $\overline{AB}$.
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-26": { s: String.raw`The Golden ratio $\phi$ is the famous number which equals $\frac{1+\sqrt5}{2}$. Consider the real valued function $f$ defined for all $z\ne\phi$, by $f(z)=\frac1{\phi-z}$. The composition of $f$ with itself, $n$-times is denoted by $f^{[n]}$. For example, $f^{[2]}=f\circ f$, $f^{[3]}=f\circ f\circ f$, etc. Calculate $f^{[2019]}(2)$.
+
+(A) $3-2\phi$  (B) $2$  (C) $\frac{2\phi-1}2$  (D) $\frac{\phi+2}5$  (E) $\phi+1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-27": { s: String.raw`Assume that $a$ is a positive real number. A recurrent sequence $\{x_n\}$ is defined by $x_1=1$ and
+$$x_{n+1}=\frac{x_n}{1+ax_n}$$
+for all natural numbers $n\ge1$. Knowing that
+$$x_{674}=\frac1{2020}$$
+find $a$.
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-28": { s: String.raw`We have a function $f$ defined for all real numbers $x$ by the functional equation
+$$f(x)+xf(-x)=1.$$
+Knowing that the positive integer $M$, which is equal to
+$$2019\cdot f\left(\frac{12}{23}\right),$$
+is a $3$-digit number (in base $10$), what is its first digit (the hundreds place)?
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-29": { s: String.raw`Find the number of positive integer solutions $(x,y)$, of the following Diophantine equation:
+$$\frac1x-\frac1y=\frac1{12}.$$
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-30": { s: String.raw`The expression in terms of the real valued variable $x$,
+$$\sec^2(x)+2\csc^2(x)+3\sec^2(x)\csc^2(x)$$
+has minimum value equal to $m+4\sqrt n$ over the interval $\left(0,\frac\pi2\right)$, for some natural numbers $m$ and $n$. What is $m-n$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-31": { s: String.raw`Assume that $x$ is not equal to zero. If we eliminate $\alpha$ from the two equalities
+$$\begin{cases}x^2+y\cos^2\alpha=x\sin\alpha\cos\alpha\\[1ex]x\cos2\alpha+y\sin2\alpha=0,\end{cases}$$
+we get $4x^2+4y=n$. Find $n$.
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-32": { s: String.raw`A number $t$ is randomly chosen (uniform distribution) from the unit interval $[0,1]$. Calculate the expectation of the random variable $X(t)=\max\{t,1-t\}$.
+
+(A) $\frac12$  (B) $\frac23$  (C) $\frac45$  (D) $\frac35$  (E) $\frac34$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-33": { s: String.raw`The equation $9x^3=a+\ln x$ has a unique positive solution in $x$ given this unique particular positive real number $a$. What is the value of $e^{a-\frac13}$?
+
+(A) $7$  (B) $6$  (C) $5$  (D) $4$  (E) $3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-34": { s: String.raw`The graph of the function $g$ is the reflection of the graph of $f(x)=2x^3-3x^2+3x$ defined for all real $x$, across the line $y=x$. What is $g'(1)$ (i.e. $\frac{dg}{dx}(1)$)?
+
+(A) $\frac32$  (B) $\frac13$  (C) $\frac34$  (D) $\frac25$  (E) $\frac23$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-35": { s: String.raw`In the accompanying figure we have a regular octahedron $ABCDEF$ of side-lengths equal to $4$. The point $M$ is the midpoint of the side $\overline{AB}$ and the point $N$ is the midpoint of the side $\overline{DE}$. How long is the segment $\overline{MN}$ (same units)?
+
+@@fig:columbus/2019/35.png@@
+
+(A) $2\sqrt5$  (B) $4$  (C) $2\sqrt3$  (D) $2\sqrt6$  (E) $2\sqrt2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-36": { s: String.raw`Find the limit of
+$$\lim_{x\to0}\frac{\sqrt[3]{5x+8}-2}{x}.$$
+
+(A) $5/12$  (B) $7/12$  (C) $1/12$  (D) $5/4$  (E) $5/3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-37": { s: String.raw`Knowing that every solution of the equation $(\cos x)^2-(\cos x)-1=0$ is a solution of the equation $a(\cos2x)^2+b(\cos2x)-1=0$, what is $a+b$?
+
+(A) $-1$  (B) $-2$  (C) $-3$  (D) $-4$  (E) $-5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-38": { s: String.raw`How many integer ordered pairs $(x,y)$ of solutions does the Diophantine equation $x^2+y^2=x^3+y^3$ have?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-39": { s: String.raw`For positive real numbers $a$ and $b$, the equation $x+\ln(ab)=\ln(x+a)+\ln(x+b)$ has a unique real solution in $x$. What is the value of $1/a+1/b$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-40": { s: String.raw`Two points are chosen at random on a circle of radius $1$. What is the expectation of the distance between them?
+
+(A) $2/3$  (B) $\frac\pi3$  (C) $\frac3\pi$  (D) $\frac4\pi$  (E) $\frac32$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-41": { s: String.raw`It is known that every positive integer can be written as a sum of non-consecutive Fibonacci numbers ($F_1=1$, $F_2=1$, $F_{n+1}=F_n+F_{n-1}$, $n\ge2$) in a unique way. Taking into consideration this writing for $2019$,
+$$2019=F_{n_1}+F_{n_2}+\cdots+F_{n_k},$$
+find $k$.
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-42": { s: String.raw`How many positive integers $n$ have the property that both $\sqrt{2n-4030}$ and $\sqrt{2n+4030}$ are integers?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-43": { s: String.raw`Find the smallest natural number $n$ such that there exists a choice of signs that makes the following equality true
+$$\pm1\pm2\pm3+\cdots\pm n=2019.$$
+
+(A) $61$  (B) $62$  (C) $63$  (D) $64$  (E) $65$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-44": { s: String.raw`Find the closest integer to the sum
+$$\sum_{k=1}^{2019}\sqrt{1+\frac1{k^2}+\frac1{(k+1)^2}}.$$
+
+(A) $2019$  (B) $2020$  (C) $2021$  (D) $2022$  (E) $2023$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-45": { s: String.raw`The value of the integral
+$$\int_0^1\frac{\sqrt x+\sqrt{1-x}}{1+\sqrt{2x}}\sin(\pi x)\,dx$$
+is equal to $\frac{\sqrt n}{m\pi}$ for some $m,n\in\mathbb N$. Find $3n-m$.
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-46": { s: String.raw`The positive integers $x,y,z$ satisfy $x<y<z$ and
+$$\frac1x-\frac1{xy}-\frac1{xyz}=\frac{19}{97}.$$
+Find the last digit of $x-y+z$.
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-47": { s: String.raw`The Taylor expansion of $f(x)=\dfrac{(x+1)(3-2x)}{(1-x)^3}$ around $x=0$ has as one of its terms equal to $2019x^k$ for some positive integer $k$. The number $k$ is a two digit number if written in base $10$, i.e., $k=10a+b$ with $a,b\in\{0,1,\ldots,9\}$. What is $a-b$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-48": { s: String.raw`In the adjacent figure (not drawn to scale), we have two semi-circles with centers $O$ and $O'$. Knowing that $DE=3$, $EF=17$ and $FC=27$, what is the sum of the digits of $AB$?
+
+@@fig:columbus/2019/48.png@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-49": { s: String.raw`In the adjacent figure $ABCD$ is a square and points $E$ and $F$ are on its sides $\overline{DC}$ and $\overline{BC}$ respectively. By $[XYZ]$ we denote the area of the triangle $XYZ$. Knowing that $[ADE]=21$, $[ECF]=2$ and $[ABF]=18$, find $[AEF]$.
+
+@@fig:columbus/2019/49.png@@
+
+(A) $11$  (B) $12$  (C) $13$  (D) $14$  (E) $15$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+"2019-columbus-state-tournament-50": { s: String.raw`A rectangular piece of paper $ABCD$ with side lengths $AB=34$ cm and $AD=32$ is folded along the dashed line segments $\overline{FB}$ and $\overline{EC}$, such that the points $A$ and $D$ arrive at the same point $P$. Find the area of the trapezoid $EFBC$.
+
+@@fig:columbus/2019/50.png@@
+
+(A) $799$  (B) $800$  (C) $801$  (D) $802$  (E) $803$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2019-individual-exam.pdf" },
+});
