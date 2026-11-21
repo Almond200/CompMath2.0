@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **PUMaC statements started (64 of 1,088):** 2025, Division A and B (Division B repeats most of A's problems), four figures; the About page now says PUMaC statements are reproduced with permission. The papers load from `static1.squarespace.com`, which the container can reach. `STATEMENTS_V` 93.
 - **Columbus State 2003 added (944 of 1,364; 7 figures; no tag needed changing).** `STATEMENTS_V` 92.
 - **Columbus State 2004 added (894 of 1,364; 10 figures; no tag needed changing).** In #8 the posted paper sets choice (A) on a stray line after (E); it is restored to (A). `STATEMENTS_V` 91.
 - **Columbus State 2005 added (844 of 1,364; 8 figures; one tag fix, AUDITS.md).** `STATEMENTS_V` 90.
