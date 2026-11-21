@@ -5732,12 +5732,11 @@
   function dailyProblemHtml() {
     const p = dailyProblem();
     if (!p) return "";
-    // The panel opens the problem's page, except its tag chips, which open their tag pages (a link
-    // inside an .hp-click panel keeps its own click). The statement is filled in once its year's file loads.
+    // The panel opens the problem's page. Its old topic chips went with the topic tree (owner, 2026-11-21).
+    // The statement is filled in once its year's file loads.
     return `<div class="hp-panel hp-daily hp-click" data-open="#/problem/${p.slug}" role="link" tabindex="0" aria-label="Open ${escapeAttr(refShort(p.ref))}">
         <div class="hp-label">Problem of the day</div>
         <div class="daily-title">${refShort(p.ref)}</div>
-        <div class="daily-types">${p.types.slice(0, 4).map(t => `<a class="daily-type" href="${TOPICS_BY_ID[t.id] ? tagHash([TOPICS_BY_ID[t.id].label]) : "#/topic/" + t.id}">${escapeAttr(t.label)}</a>`).join("")}</div>
         <section class="prob-st daily-st" data-slug="${p.slug}" hidden>
           <div class="prob-statement"></div>
 
