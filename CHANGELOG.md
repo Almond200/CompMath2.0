@@ -7,6 +7,7 @@
 - **Angles on cards (owner):** a Settings choice writes a card's degree measures in radians ($60^\circ$ as $\frac{\pi}{3}$); lessons, examples, contest problems and figures keep degrees.
 - **Recently opened after a reload:** the home page drew the list before the problem database loaded, so problems dropped out and older cards filled in until the data arrived; each problem row's label is now kept, so the first drawing is right.
 - **Sidebar scrolling:** a scroll that reaches the sidebar's end stops there instead of carrying into the page (the double bounce); scrollbar thumbs lighten under the pointer and while dragged, since browsers keep the arrow cursor over a scrollbar.
+- Problem of the day no longer shows the old topic chips, which the topic tree replaced everywhere else.
 - Shorter Contest sections setting text. Two SMT tags corrected (AUDITS.md).
 - `tests/book-search.cjs` still fails on the stale semantic index (new cards since 2026-11-20); it needs the build venv.
 
