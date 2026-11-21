@@ -3,6 +3,8 @@
 Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2017-bmt-analysis-1": { s: String.raw`$10$ students take the Analysis Round. The average score was a $3$ and the high score was a $7$. If no one got a $0$, what is the maximum number of students that could have achieved the high score?`, u: "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf" },
 "2017-bmt-analysis-2": { s: String.raw`Find all solutions to $3^x-9^{x-1}=2$.`, u: "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf" },
+"2017-bmt-analysis-3": { s: String.raw`Compute
+$$\int_{-9}^{9}17x^3\cos(x^2)\,dx.$$`, u: "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf" },
 "2017-bmt-analysis-4": { s: String.raw`Find the value of
 $$\frac{1}{2}+\frac{4}{2^2}+\frac{9}{2^3}+\frac{16}{2^4}+\cdots.$$`, u: "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf" },
 "2017-bmt-analysis-5": { s: String.raw`Find the value of $y$ such that the following equation has exactly three solutions.
@@ -10,6 +12,12 @@ $$||x-1|-4|=y.$$`, u: "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf" },
 "2017-bmt-analysis-6": { s: String.raw`Consider the function $f(x,y,z)=(x-y+z,\,y-z+x,\,z-x+y)$ and denote by $f^{(n)}(x,y,z)$ the function $f$ applied $n$ times to the tuple $(x,y,z)$. Let $r_1,r_2,r_3$ be the three roots of the equation $x^3-4x^2+12=0$ and let $g(x)=x^3+a_2x^2+a_1x+a_0$ be the cubic polynomial with the tuple $f^{(3)}(r_1,r_2,r_3)$ as roots. Find the value of $a_1$.`, u: "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf" },
 "2017-bmt-analysis-7": { s: String.raw`Compute
 $$\sum_{k=1}^{\infty}\frac{(-1)^k}{(2k-1)(2k+1)}.$$`, u: "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf" },
+"2017-bmt-analysis-8": { s: String.raw`The numerical value of the following integral
+$$\int_0^1(-x^2+x)^{2017}\lfloor 2017x\rfloor\,dx$$
+can be expressed in the form $a\frac{m!^2}{n!}$ where $a$ is minimized. Find $a+m+n$. (Note $\lfloor x\rfloor$ is the largest integer less than or equal to $x$.)`, u: "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf" },
+"2017-bmt-analysis-9": { s: String.raw`Let $a_d$ be the number of non-negative integer solutions $(a,b)$ to $a+b=d$ where $a\equiv b\pmod{n}$ for a fixed $n\in\mathbb{Z}^+$. Consider the generating function $M(t)=a_0+a_1t+a_2t^2+\dots$. Consider
+$$P(n)=\lim_{t\to 1}\left(nM(t)-\frac{1}{(1-t)^2}\right).$$
+Then $P(n),n\in\mathbb{Z}^+$ is a polynomial in $n$, so we can extend its domain to include all real numbers while having it remain a polynomial. Find $P(0)$.`, u: "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf" },
 "2017-bmt-analysis-10": { s: String.raw`Define $H_n=\sum_{k=1}^{n}\frac{1}{k}$. Evaluate
 $$\sum_{n=1}^{2017}\binom{2017}{n}H_n(-1)^n.$$`, u: "https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf" },
 "2017-bmt-discrete-math-1": { s: String.raw`You have $9$ colors of socks and $5$ socks of each type of color. Pick two socks randomly. What is the probability that they are the same color?`, u: "https://berkeley.mt/archives/bmt-2017/DisS2017.pdf" },

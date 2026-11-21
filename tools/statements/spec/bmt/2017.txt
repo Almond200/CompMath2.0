@@ -2,6 +2,9 @@
 $10$ students take the Analysis Round. The average score was a $3$ and the high score was a $7$. If no one got a $0$, what is the maximum number of students that could have achieved the high score?
 === analysis-2
 Find all solutions to $3^x-9^{x-1}=2$.
+=== analysis-3
+Compute
+$$\int_{-9}^{9}17x^3\cos(x^2)\,dx.$$
 === analysis-4
 Find the value of
 $$\frac{1}{2}+\frac{4}{2^2}+\frac{9}{2^3}+\frac{16}{2^4}+\cdots.$$
@@ -13,6 +16,14 @@ Consider the function $f(x,y,z)=(x-y+z,\,y-z+x,\,z-x+y)$ and denote by $f^{(n)}(
 === analysis-7
 Compute
 $$\sum_{k=1}^{\infty}\frac{(-1)^k}{(2k-1)(2k+1)}.$$
+=== analysis-8
+The numerical value of the following integral
+$$\int_0^1(-x^2+x)^{2017}\lfloor 2017x\rfloor\,dx$$
+can be expressed in the form $a\frac{m!^2}{n!}$ where $a$ is minimized. Find $a+m+n$. (Note $\lfloor x\rfloor$ is the largest integer less than or equal to $x$.)
+=== analysis-9
+Let $a_d$ be the number of non-negative integer solutions $(a,b)$ to $a+b=d$ where $a\equiv b\pmod{n}$ for a fixed $n\in\mathbb{Z}^+$. Consider the generating function $M(t)=a_0+a_1t+a_2t^2+\dots$. Consider
+$$P(n)=\lim_{t\to 1}\left(nM(t)-\frac{1}{(1-t)^2}\right).$$
+Then $P(n),n\in\mathbb{Z}^+$ is a polynomial in $n$, so we can extend its domain to include all real numbers while having it remain a polynomial. Find $P(0)$.
 === analysis-10
 Define $H_n=\sum_{k=1}^{n}\frac{1}{k}$. Evaluate
 $$\sum_{n=1}^{2017}\binom{2017}{n}H_n(-1)^n.$$

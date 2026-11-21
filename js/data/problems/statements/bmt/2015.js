@@ -14,6 +14,10 @@ Find $a_1+a_2+a_3+\dots+a_{2015}$.`, u: "https://berkeley.mt/archives/bmt-2015/A
 "2015-bmt-analysis-8": { s: String.raw`Let $\omega$ be a primitive $7$th root of unity. Find
 $$\prod_{k=0}^{6}\left(1+\omega^k-\omega^{2k}\right).$$
 (A complex number is a primitive root of unity if and only if it can be written in the form $e^{2k\pi i/n}$, where $k$ is relatively prime to $n$.)`, u: "https://berkeley.mt/archives/bmt-2015/AnaS2015.pdf" },
+"2015-bmt-analysis-9": { s: String.raw`Find
+$$\lim_{n\to\infty}\frac{1}{n^3}\left(\sqrt{n^2-1}+\sqrt{n^2-2^2}+\dots+\sqrt{n^2-(n-1)^2}\right).$$`, u: "https://berkeley.mt/archives/bmt-2015/AnaS2015.pdf" },
+"2015-bmt-analysis-10": { s: String.raw`Evaluate
+$$\int_0^{\pi/2}\ln(4\sin x)\,dx.$$`, u: "https://berkeley.mt/archives/bmt-2015/AnaS2015.pdf" },
 "2015-bmt-geometry-1": { s: String.raw`Let $ABC$ be a triangle. The angle bisectors of $\angle ABC$ and $\angle ACB$ intersect at $D$. If $\angle BAC=80^\circ$, what are all possible values for $\angle BDC$?`, u: "https://berkeley.mt/archives/bmt-2015/GeoS2015.pdf" },
 "2015-bmt-geometry-2": { s: String.raw`$ABCDEF$ is a regular hexagon. Let $R$ be the overlap between $\triangle ACE$ and $\triangle BDF$. What is the area of $R$ divided by the area of $ABCDEF$?`, u: "https://berkeley.mt/archives/bmt-2015/GeoS2015.pdf" },
 "2015-bmt-geometry-3": { s: String.raw`Let $M$ be on segment $BC$ of $\triangle ABC$ so that $AM=3$, $BM=4$, and $CM=5$. Find the largest possible area of $\triangle ABC$.`, u: "https://berkeley.mt/archives/bmt-2015/GeoS2015.pdf" },

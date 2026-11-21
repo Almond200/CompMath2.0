@@ -8,8 +8,14 @@ $$\begin{gathered}\log_2(y^x)=16\\ \log_2(x^y)=8\end{gathered}$$`, u: "https://b
 "2016-bmt-analysis-4": { s: String.raw`A geometric progression starting at $a_0=3$ has an even number of terms. Suppose the difference between the odd indexed terms and even indexed terms is $39321$ and that the sum of the first and last term is $49155$. Find the common ratio of this geometric progression.`, u: "https://berkeley.mt/archives/bmt-2016/AnaS2016.pdf" },
 "2016-bmt-analysis-5": { s: String.raw`Find
 $$\frac{\tan 1^\circ}{1+\tan 1^\circ}+\frac{\tan 2^\circ}{1+\tan 2^\circ}+\dots+\frac{\tan 89^\circ}{1+\tan 89^\circ}$$`, u: "https://berkeley.mt/archives/bmt-2016/AnaS2016.pdf" },
+"2016-bmt-analysis-6": { s: String.raw`Amy is traveling on the $xy$-plane in a spaceship where her motion is described by the following equation $xe^y=ye^x$. Given that her $x$-component of velocity is a constant $3$ mph, the magnitude of her velocity as she approaches $(1,-1)$ can be expressed as $\dfrac{\sqrt{a+be^4}}{c+de^2}$. Find $\dfrac{ac}{bd}$. (You may assume that the initial conditions do allow her to approach $(1,-1)$)`, u: "https://berkeley.mt/archives/bmt-2016/AnaS2016.pdf" },
 "2016-bmt-analysis-7": { s: String.raw`Find the coefficient of $x^2$ in the following polynomial
 $$(1-x)^2(1+2x)^2(1-3x)^2\dots(1-11x)^2$$`, u: "https://berkeley.mt/archives/bmt-2016/AnaS2016.pdf" },
+"2016-bmt-analysis-8": { s: String.raw`Evaluate the following limit
+$$\lim_{x\to 0}\left(1+2x+3x^2+4x^3+\dots\right)^{1/x}$$`, u: "https://berkeley.mt/archives/bmt-2016/AnaS2016.pdf" },
+"2016-bmt-analysis-9": { s: String.raw`Suppose $p''(x)=4x^2+4x+2$ where
+$$p(x)=a_0+a_1(x-1)+a_2(x-2)^2+a_3(x-3)^4+a_4(x-4)^4$$
+We have $p'(-3)=-24$ and $p(x)$ has the unique property that the sum of the third powers of the roots of $p(x)$ is equal to the sum of the fourth powers of the roots of $p(x)$. Find $a_0$.`, u: "https://berkeley.mt/archives/bmt-2016/AnaS2016.pdf" },
 "2016-bmt-analysis-10": { s: String.raw`Evaluate
 $$\sum_{k=0}^{\infty}\left(\frac{-1}{8}\right)^k\binom{2k}{k}$$`, u: "https://berkeley.mt/archives/bmt-2016/AnaS2016.pdf" },
 "2016-bmt-discrete-math-1": { s: String.raw`A bag is filled with quarters and nickels. The average value when pulling out a coin is $10$ cents. What is the least number of nickels in the bag possible?`, u: "https://berkeley.mt/archives/bmt-2016/DisS2016.pdf" },

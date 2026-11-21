@@ -52405,6 +52405,66 @@
     "2012 MATHCOUNTS National Team, Problem 10": [
       1000,
       "Author estimate (MATHCOUNTS publishes no solve counts; placed on the collection’s scale by its route, the National rounds running from an easy AMC 8 problem to an early AIME one): the lines make angles with tan 4/3 and tan 12/5; the bisector's tangent tan((A + B)/2) comes out as 7/4."
+    ],
+    "2013 BMT Analysis, Problem 3": [
+      1500,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Evaluate a one-variable limit by L'Hopital or the standard sine and exponential limits."
+    ],
+    "2013 BMT Analysis, Problem 5": [
+      2300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Sum an alternating arithmetico-geometric power series in closed form, then take its limit as x approaches 1."
+    ],
+    "2013 BMT Analysis, Problem 8": [
+      2200,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): A related-rates problem: parametrize the curve by arc length and differentiate the angle at the viewer."
+    ],
+    "2013 BMT Analysis, Problem 9": [
+      3300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Evaluate an integral whose four terms pair off through inverse functions, so no antiderivative is needed."
+    ],
+    "2013 BMT Analysis, Problem 10": [
+      3400,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Track where the corners of repeated absolute-value iterates fall and sum their heights, then take a limit of ratios."
+    ],
+    "2014 BMT Analysis, Problem 5": [
+      1500,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): A limit at infinity by dividing through by the square root of x."
+    ],
+    "2014 BMT Analysis, Problem 9": [
+      3300,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Find the growth rate of a Laplace-type integral as x approaches 0 from the right."
+    ],
+    "2015 BMT Analysis, Problem 9": [
+      2600,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Recognize a Riemann sum for the area of a quarter circle."
+    ],
+    "2015 BMT Analysis, Problem 10": [
+      3000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): The classical integral of the log of a sine, by symmetry and the double-angle identity."
+    ],
+    "2016 BMT Analysis, Problem 6": [
+      2700,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Implicit differentiation of a curve, then the speed at a point from one component of velocity."
+    ],
+    "2016 BMT Analysis, Problem 8": [
+      2000,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Sum the series to 1/(1-x)^2, then evaluate a limit of the form one to the infinity."
+    ],
+    "2016 BMT Analysis, Problem 9": [
+      2900,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Integrate twice to find the quartic, then use Newton sums on its roots."
+    ],
+    "2017 BMT Analysis, Problem 3": [
+      1100,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): The integrand is odd, so the integral over a symmetric interval is zero."
+    ],
+    "2017 BMT Analysis, Problem 8": [
+      3200,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Split the floor into unit steps and reduce each piece to a beta integral."
+    ],
+    "2017 BMT Analysis, Problem 9": [
+      3400,
+      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Find the singular part of a generating function as t approaches 1, then extend the resulting polynomial in n."
     ]
   }
 }

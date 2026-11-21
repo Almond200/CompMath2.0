@@ -5,12 +5,17 @@ Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2014-bmt-analysis-2": { s: String.raw`Find the smallest positive value of $x$ such that $x^3-9x^2+22x-16=0$.`, u: "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf" },
 "2014-bmt-analysis-3": { s: String.raw`Emma is seated on a train traveling at a speed of $120$ miles per hour. She notices distance markers are placed evenly alongside the track, with a constant distance $x$ between any two consecutive ones, and during a span of $6$ minutes, she sees precisely $11$ markers pass by her. Determine the difference (in miles) between the largest and smallest possible values of $x$.`, u: "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf" },
 "2014-bmt-analysis-4": { s: String.raw`The function $f(x)=x^5-20x^4+ax^3+bx^2+cx+24$ has the interesting property that its roots can be arranged to form an arithmetic sequence. Determine $f(8)$.`, u: "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf" },
+"2014-bmt-analysis-5": { s: String.raw`Determine
+$$\lim_{x\to\infty}\frac{\sqrt{x+2014}}{\sqrt{x}+\sqrt{x+2014}}.$$`, u: "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf" },
 "2014-bmt-analysis-6": { s: String.raw`Find $f(2)$ given that $f$ is a real-valued function that satisfies the equation
 $$4f(x)+\left(\frac{2}{3}\right)(x^2+2)f\left(x-\frac{2}{x}\right)=x^3+1.$$`, u: "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf" },
 "2014-bmt-analysis-7": { s: String.raw`Let $f(x)=x^2+18$ have roots $r_1$ and $r_2$, and let $g(x)=x^2-8x+17$ have roots $r_3$ and $r_4$. If $h(x)=x^4+ax^3+bx^2+cx+d$ has roots $r_1+r_3$, $r_1+r_4$, $r_2+r_3$, and $r_2+r_4$, then find $h(4)$.`, u: "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf" },
 "2014-bmt-analysis-8": { s: String.raw`Suppose an integer-valued function $f$ satisfies
 $$\sum_{k=0}^{2n+1}f(k)=\ln|2n+1|-4\ln|2n-1|\quad\text{and}\quad\sum_{k=0}^{2n}f(k)=4e^n-e^{n-1}$$
 for all non-negative integers $n$. Determine $\displaystyle\sum_{n=0}^{\infty}\frac{f(n)}{2^n}$.`, u: "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf" },
+"2014-bmt-analysis-9": { s: String.raw`Find $\alpha$ such that
+$$\lim_{x\to 0^+}x^{\alpha}I(x)=a\quad\text{given}\quad I(x)=\int_0^{\infty}\sqrt{1+t}\cdot e^{-xt}\,dt$$
+where $a$ is a nonzero real number.`, u: "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf" },
 "2014-bmt-analysis-10": { s: String.raw`Suppose that $x^3-x+10^{-6}=0$. Suppose that $x_1<x_2<x_3$ are the solutions for $x$. Find the integers $(a,b,c)$ closest to $10^8x_1$, $10^8x_2$, and $10^8x_3$ respectively.`, u: "https://berkeley.mt/archives/bmt-2014/AnaS2014.pdf" },
 "2014-bmt-geometry-1": { s: String.raw`Consider a regular hexagon with an incircle. What is the ratio of the area inside the incircle to the area of the hexagon?`, u: "https://berkeley.mt/archives/bmt-2014/GeoS2014.pdf" },
 "2014-bmt-geometry-2": { s: String.raw`Regular hexagon $ABCDEF$ has side length $2$ and center $O$. The point $P$ is defined as the intersection of $AC$ and $OB$. Find the area of quadrilateral $OPCD$.`, u: "https://berkeley.mt/archives/bmt-2014/GeoS2014.pdf" },
