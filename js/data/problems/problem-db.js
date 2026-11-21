@@ -11810,7 +11810,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2005 Columbus State Tournament, Problem 31", formulas: ["vietas-quadratic"], strategy: "", tree: ["alg.poly.quad.roots"] },
   { ref: "2005 Columbus State Tournament, Problem 32", formulas: [], strategy: "", tree: ["alg.exp.rules.growth"] },
   { ref: "2005 Columbus State Tournament, Problem 33", formulas: ["pythagorean-theorem"], strategy: "", tree: ["geo.basic.pyth"] },
-  { ref: "2005 Columbus State Tournament, Problem 34", formulas: ["rationalizing"], strategy: "", tree: ["geo.coord.conic.circle"] },
+  { ref: "2005 Columbus State Tournament, Problem 34", formulas: [], strategy: "", tree: ["geo.coord.conic.circle"] },
   { ref: "2005 Columbus State Tournament, Problem 35", formulas: ["rationalizing"], strategy: "", tree: ["alg.ineq.optimize"] },
   { ref: "2005 Columbus State Tournament, Problem 36", formulas: ["absolute-value-rules"], strategy: "", tree: ["alg.fn.basic.compose"] },
   { ref: "2005 Columbus State Tournament, Problem 37", formulas: ["inverse-trig-identities"], strategy: "", tree: ["alg.trig.eq.inverse"] },

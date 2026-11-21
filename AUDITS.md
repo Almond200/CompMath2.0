@@ -2661,3 +2661,5 @@ Columbus State 2010 #46 (the centre of a unit-diameter ball rolling round the in
 Columbus State 2009: the posted paper is headed "Draft 2" on every page, so its wording may differ from the printed contest; #17 (the last three digits of $3^{98}$) has no answer choices in it. Tag fix: #22 (a polar equation written as a line) `alg.trig.identity.sum` → `geo.coord.line.slope`.
 
 Columbus State 2007 #21 (which third side a triangle with sides $3$ and $10$ can have) `geo.tri.area.base` → `geo.tri.ineq.valid`.
+
+Columbus State 2005 #34 (the $x$-coordinate of the point where a chord of two circles meets the axis) lost `rationalizing`, which the route does not need.

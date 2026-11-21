@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **Columbus State 2005 added (844 of 1,364; 8 figures; one tag fix, AUDITS.md).** `STATEMENTS_V` 90.
 - **Columbus State 2006 added (794 of 1,364; 54 problems, 9 figures; no tag needed changing).** `STATEMENTS_V` 89.
 - **Columbus State 2007 added (740 of 1,364; 10 figures; one tag fix, AUDITS.md).** `STATEMENTS_V` 88.
 - **Columbus State 2008 added (690 of 1,364; 7 figures; no tag needed changing).** `STATEMENTS_V` 87.
