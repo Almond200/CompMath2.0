@@ -1,0 +1,199 @@
+// Problems and diagrams © 2018 Columbus State Invitational Mathematics Tournament. Reproduced with permission from the Columbus State Invitational Mathematics Tournament.
+// Source: the official Columbus State tournament tests. Built by tools/statements/build.py from tools/statements/spec/columbus/2018.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2018-columbus-state-tournament-1": { s: String.raw`How many positive integer divisors does $2018$ have?
+
+(A) $2$  (B) $4$  (C) $6$  (D) $8$  (E) $10$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-2": { s: String.raw`How many of the first $2018$ positive integers are perfect squares?
+
+(A) $44$  (B) $45$  (C) $43$  (D) $42$  (E) $41$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-3": { s: String.raw`For integers $a$ and $b$, we define $a\otimes b$ by the formula
+$$a\otimes b=\gcd(a,b)\cdot\operatorname{lcm}(a,b),$$
+where "gcf" and "lcm" are the greatest common factor and least common multiple of $a$ and $b$, respectively. Find the value of $18\otimes75$.
+
+(A) $675$  (B) $270$  (C) $1080$  (D) $450$  (E) $1350$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-4": { s: String.raw`When a certain solid substance melts, its volume increases by $\frac17$. By how much does its volume decrease when it solidifies again?
+
+(A) $\frac17$  (B) $\frac18$  (C) $\frac19$  (D) $\frac1{10}$  (E) $\frac1{11}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-5": { s: String.raw`The equation
+$$2017+2018i=(3-2i)(x+yi)$$
+has a solution in positive integers $x$ and $y$. What is $2y-10x$?
+
+(A) $5$  (B) $4$  (C) $3$  (D) $2$  (E) $1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-6": { s: String.raw`If $45$ is the sum of $n$ consecutive positive integers, what is the largest possible value on $n$?
+
+(A) $3$  (B) $5$  (C) $7$  (D) $9$  (E) $11$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-7": { s: String.raw`How many triples $(x,y,z)$, of integer numbers, $x>y>z>1$, satisfy the inequality
+$$\frac1x+\frac1y+\frac1z>1?$$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-8": { s: String.raw`How many $2$-digit positive integers can be represented as the sum of different powers of $2$?
+
+(A) $30$  (B) $45$  (C) $60$  (D) $75$  (E) $90$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-9": { s: String.raw`For what value of the real number $a$ does the system of equations
+$$\begin{cases}x^2+y^2=z\\x+y+z=a\end{cases}$$
+have a unique solution in the set of real numbers?
+
+(A) $\frac14$  (B) $\frac15$  (C) $\frac12$  (D) $-\frac13$  (E) $-\frac12$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-10": { s: String.raw`Find the sum of the real numbers $x$ and $y$ which satisfy the equation
+$$\sqrt{4x^2-12x+25}+\sqrt{4x^2+12xy+9y^2+64}=12.$$
+
+(A) $\frac72$  (B) $\frac32$  (C) $\frac92$  (D) $\frac12$  (E) $\frac52$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-11": { s: String.raw`The positive real numbers $x$ and $y$ satisfy the equation
+$$x^2-2xy-3y^2=0.$$
+What is the value of $\dfrac{x+2y}{x-y}$?
+
+(A) $0$  (B) $1$  (C) $\frac52$  (D) $3$  (E) $4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-12": { s: String.raw`Three distinct prime numbers $p$, $q$ and $r$ are chosen in such a way the number
+$$p^4+q^4+r^4-3^5$$
+is also a prime. What is the minimum possible value of $|pq-r|$?
+
+(A) $2$  (B) $1$  (C) $4$  (D) $0$  (E) $3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-13": { s: String.raw`What is the units digit of $2018^{2018}$?
+
+(A) $0$  (B) $2$  (C) $4$  (D) $6$  (E) $8$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-14": { s: String.raw`There is only one $4$-digit integer $n$ for which $\sqrt{3\sqrt{2\sqrt n}}$ is an integer. Find the sum of the digits of $n$.
+
+(A) $17$  (B) $18$  (C) $19$  (D) $20$  (E) $21$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-15": { s: String.raw`Let $x$, $y$ and $z$ be positive integers such that
+$$x+\cfrac{1}{y+\cfrac1z}=\frac{26}{21}.$$
+What is the value of $xyz$?
+
+(A) $20$  (B) $24$  (C) $28$  (D) $32$  (E) $36$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-16": { s: String.raw`Twelve marbles are placed in three boxes such that each box contains a red marble, a blue marble, a black marble, and a white marble. If we pick at random one marble from each box, what is the probability that exactly two marbles are red?
+
+(A) $\frac9{64}$  (B) $\frac18$  (C) $\frac3{32}$  (D) $\frac5{64}$  (E) $\frac1{16}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-17": { s: String.raw`How many permutations $(x_1,x_2,x_3,x_4)$ of the set of integers $\{1,2,3,4\}$ have the property that the sum $x_1x_2+x_2x_3+x_3x_4+x_4x_1$ is not divisible by $3$?
+
+(A) $6$  (B) $8$  (C) $12$  (D) $14$  (E) $16$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-18": { s: String.raw`The numbers $a$ and $b$ are chosen from the set $\{1,2,\ldots,26\}$, such that the product $ab$ is equal to the sum of the remaining numbers. What is the value of $|a-b|$?
+
+(A) $3$  (B) $6$  (C) $8$  (D) $10$  (E) $13$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-19": { s: String.raw`How many triangles $\Delta ABC$ with $\angle ABC=90^\circ$ and $AB=10$ exist such that all sides have integer lengths?
+
+(A) infinitely many  (B) $3$  (C) $2$  (D) $1$  (E) none`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-20": { s: String.raw`Find the product of the solutions of the equation
+$$\sqrt[3]{(x+1)^2}+\sqrt[3]{(x-1)^2}=\frac52\sqrt[3]{x^2-1}.$$
+
+(A) $-\frac{36}{121}$  (B) $-\frac{16}{81}$  (C) $-\frac9{25}$  (D) $-\frac{25}{36}$  (E) $-\frac{81}{49}$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-21": { s: String.raw`Find the number of integers $n$ such that $\dfrac{n^2}{n+2018}$ is an integer.
+
+(A) $12$  (B) $14$  (C) $16$  (D) $18$  (E) $20$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-22": { s: String.raw`What is the remainder when $2017^{2018}$ is divided by $13$?
+
+(A) $1$  (B) $5$  (C) $3$  (D) $2$  (E) $4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-23": { s: String.raw`Three regular dice are rolled. The probability that the numbers thrown have the least common multiple equal to $60$ is equal to $\dfrac mn$, for some relatively prime positive integers $m$ and $n$. What is the value of $\dfrac{n-2m}{m+3}$?
+
+(A) $5$  (B) $2$  (C) $4$  (D) $1$  (E) $3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-24": { s: String.raw`Vlad is playing on the mall escalators. One escalator goes up, one goes down, and one is out of service; otherwise, they're all identical. The up and down escalators go at the same speed. You can assume that Vlad always runs at the same speed. Vlad can run up the up escalator in $6$ seconds. He can run up the down escalator in $30$ seconds. How long does it take him to run up the out-of-service escalator?
+
+(A) $10$ s  (B) $12$ s  (C) $14$ s  (D) $16$ s  (E) $18$ s`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-25": { s: String.raw`How many triples $(x,y,z)$, of integer numbers, $x>y>z>1$, satisfy the inequality
+$$\frac1x+\frac1y+\frac1z>1?$$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-26": { s: String.raw`The function $f$ satisfies the relations
+$$f(1)=1\quad\text{and}\quad f(m+n)=f(m)+f(n)+mn,$$
+for all positive integers $m$ and $n$. What is the value of $f(200)$?
+
+(A) $20000$  (B) $20010$  (C) $20100$  (D) $21000$  (E) $21100$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-27": { s: String.raw`If $x$, $y$, and $z$ are real numbers such that $x,y,z>1$, what is the smallest possible value of
+$$\log_{xy}z+\log_{yz}x+\log_{xz}y?$$
+
+(A) $\frac75$  (B) $\frac32$  (C) $\frac85$  (D) $\frac{29}{20}$  (E) $\frac43$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-28": { s: String.raw`Find the sum of all real numbers $m$ with the property that the equation
+$$x^2-x+m=0$$
+has two solutions, $x_1$ and $x_2$, which satisfy the equation $x_1^5+x_2^5=211$.
+
+(A) $2$  (B) $4$  (C) $3$  (D) $1$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-29": { s: String.raw`In the accompanying figure, $\Delta ABC$ is a right triangle with hypotenuse $BC=2018$ cm and $AC=1680$ cm. The circle inscribed in this triangle has radius $r=OD$. What is the value of $r$, in centimeters?
+
+@@fig:columbus/2018/29.png@@
+
+(A) $390$  (B) $380$  (C) $370$  (D) $360$  (E) $350$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-30": { s: String.raw`The function $f$ satisfies the conditions $f(4)=6$ and $xf(x)=(x-3)f(x+1)$, for all integers $x$. What is the value of the product
+$$f(2018)\cdot f(2015)\cdot f(2012)\cdots f(8)\cdot f(5)?$$
+
+(A) $0$  (B) $2017$  (C) $2017!$  (D) $2018$  (E) $2018!$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-31": { s: String.raw`Let $x$ and $y$ be positive integers such that $\dfrac{2018!}{7^x\cdot13^y}$ is an integer. What is the largest possible value of $x+y$?
+
+(A) $480$  (B) $485$  (C) $490$  (D) $495$  (E) $500$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-32": { s: String.raw`Find the sum of the digits of the unique solution of the equation
+$$x^{\log_{100}(x-1)}+100(x-1)^{\log_{100}x}=101x^2.$$
+
+(A) $2$  (B) $6$  (C) $10$  (D) $14$  (E) $18$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-33": { s: String.raw`If $x$ is a positive real number, what is the minimum possible value of the expression
+$$E(x)=\frac{\left(x+\frac1x\right)^4-\left(x^4+\frac1{x^4}\right)}{\left(x+\frac1x\right)^3-\left(x^3+\frac1{x^3}\right)}?$$
+
+(A) $\frac23$  (B) $\frac43$  (C) $\frac53$  (D) $\frac73$  (E) $\frac83$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-34": { s: String.raw`Let $x,y,z$ be real numbers such that
+$$3^x+3^y+3^z+3^{-x}+3^{-y}+3^{-z}=10.$$
+If $E(x,y,z)=3^x+3^y+3^z$, what is the difference between the largest and the smallest possible values of $E(x,y,z)$?
+
+(A) $8$  (B) $7$  (C) $9$  (D) $6$  (E) $10$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-35": { s: String.raw`Let $x$ be a real number such that
+$$\sec x-\tan x=\frac12.$$
+Find the value of $\cos x$.
+
+(A) $\frac34$  (B) $\frac23$  (C) $\frac45$  (D) $\frac67$  (E) $\frac12$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-36": { s: String.raw`A line is parallel to the line $y=\dfrac54x+\dfrac{95}4$, intersects the $x$-axis and $y$-axis at points $A$ and $B$, respectively, and passes through the point $(-1,-25)$. How many points with integer coordinates are there on the line segment $AB$ (including points $A$ and $B$)?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-37": { s: String.raw`A sphere is inscribed in a cube, and a smaller cube is inscribed within the sphere. What is the ratio of the volume of the large cube to the volume of the small cube?
+
+(A) $4\sqrt2$  (B) $6\sqrt3$  (C) $2\sqrt2$  (D) $2\sqrt3$  (E) $3\sqrt3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-38": { s: String.raw`Suppose that real numbers $x$ and $y$ satisfy the equation
+$$4x^2-6xy+4y^2=7.$$
+Let $S=x^2+y^2$ and $S_{\min}$ and $S_{\max}$ denote the minimum and maximum values of $S$, respectively. Find the value of $S_{\min}+S_{\max}$.
+
+(A) $3$  (B) $4$  (C) $6$  (D) $8$  (E) $9$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-39": { s: String.raw`Two of the altitudes of a triangle are $10$ cm and $11$ cm. Which of the following cannot be the length of the third altitude?
+
+(A) $6$ cm  (B) $5$ cm  (C) $8$ cm  (D) $7$ cm  (E) $9$ cm`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-40": { s: String.raw`In the accompanying figure, $ABCD$ is a cyclic quadrilateral (inscribed in a circle) in which $AB=2018$ cm, $BD=BC=2322$ cm, and $AC=1330$ cm. The length of $x=AD$ (in centimeters) is a three-digit number (in base $10$). What is the units digit of $x$?
+
+@@fig:columbus/2018/40.png@@
+
+(A) $5$  (B) $4$  (C) $3$  (D) $2$  (E) $1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-41": { s: String.raw`In the equilateral triangle $\Delta ABC$, the equilateral triangle $\Delta DEF$ is inscribed in such a way $\dfrac{CD}{DA}=\dfrac{AE}{EB}=\dfrac{BF}{CF}=3$. The ratio between the areas of the triangles $\Delta ABC$ and $\Delta DEF$ is $\dfrac mn$, for some relatively prime positive integers $m$ and $n$. What is $5m-11n$?
+
+@@fig:columbus/2018/41.png@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-42": { s: String.raw`How many integer triples $(x,y,z)$ satisfy the equation
+$$x^2+y^2+z^2=2^{2018}(x+y+z)?$$
+
+(A) $2$  (B) $4$  (C) $6$  (D) $8$  (E) $10$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-43": { s: String.raw`For a positive integer $n$, written in base $10$, we denote by $p(n)$ the product of its digits. What is the sum of the digits of $n$, if it satisfies the equation
+$$10p(n)=n^2+6n-2095?$$
+
+(A) $15$  (B) $12$  (C) $6$  (D) $18$  (E) $9$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-44": { s: String.raw`Two positive numbers $a$ and $b$ are chosen in such a way that $\dfrac ba=e\approx2.71828$ (the Euler number). Two points of coordinates $x$ and $y$ are chosen at random from the interval $[0,b]$. The probability that the geometric average of $x$ and $y$ is greater than $a$ is equal to $1-\dfrac m{e^2}$. What is the value of $m$ ?
+
+(A) $3$  (B) $1$  (C) $4$  (D) $2$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-45": { s: String.raw`The sequence $\{x_n\}_{n\ge1}$ is defined by the formula
+$$x_n=\sin\left(\pi\sqrt{4n^2+2n+1}\right),$$
+for all positive integers $n$. Find the value of $\displaystyle\lim_{n\to\infty}x_n$.
+
+(A) $\frac12$  (B) $1$  (C) $\frac{\sqrt2}2$  (D) $0$  (E) $\frac{\sqrt3}2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-46": { s: String.raw`Consider the sequence $\{x_n\}_{n\ge1}$ such that
+$$x_1=1\quad\text{and}\quad x_{n+1}=x_n+\frac1{2x_n},\ \text{for }n\ge1.$$
+Find $\displaystyle\lim_{n\to\infty}\frac{x_n}{\sqrt n}$.
+
+(A) $4$  (B) $3$  (C) $2$  (D) $1$  (E) $0$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-47": { s: String.raw`Let $a$ and $b$ be positive real numbers. If the equation
+$$x+\ln(ab)=\ln(x+a)+\ln(x+b)$$
+has only one real solution $x$, what is the value of $\dfrac1a+\dfrac1b$ ?
+
+(A) $5$  (B) $4$  (C) $3$  (D) $2$  (E) $1$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-48": { s: String.raw`Two points are chosen at random on a circle (uniform distribution on the circumference) of radius $1$. The probability that the distance between them is more than $1$ is equal to $\dfrac mn$, for some relatively prime positive integers $m$ and $n$. What is the value of $n-m$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-49": { s: String.raw`Two positive numbers $a$ and $b$ are chosen in such a way that $\dfrac ba=e\approx2.71828$ (the Euler number). Two points of coordinates $x$ and $y$ are chosen at random from the interval $[0,b]$. The probability that the geometric average of $x$ and $y$ is greater than $a$ is equal to $1-\dfrac m{e^2}$. What is the value of $m$ ?
+
+(A) $3$  (B) $1$  (C) $4$  (D) $2$  (E) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+"2018-columbus-state-tournament-50": { s: String.raw`How many real numbers $x$, $0\le x\le2018$, are solutions of the equation
+$$2^{\sin^4x-\cos^2x}-2^{\cos^4x-\sin^2x}=\cos2x?$$
+
+(A) $1286$  (B) $1285$  (C) $1284$  (D) $1283$  (E) $1282$`, u: "https://www.columbusstate.edu/math/_docs/tournament/MathTournament2018.pdf" },
+});
