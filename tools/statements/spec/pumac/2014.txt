@@ -1,0 +1,156 @@
+=== division-a-algebra-1
+On the number line, consider the point $x$ that corresponds to the value $10$. Consider $24$ distinct integer points $y_1,y_2,\ldots,y_{24}$ on the number line such that for all $k$ such that $1\le k\le12$, we have that $y_{2k-1}$ is the reflection of $y_{2k}$ across $x$. Find the minimum possible value of
+$$\sum_{n=1}^{24}(|y_n-1|+|y_n+1|)$$
+=== division-a-algebra-2
+Alice, Bob, and Charlie are visiting Princeton and decide to go to the Princeton U-Store to buy some tiger plushies. They each buy at least one plushie at price $p$. A day later, the U-Store decides to give a discount on plushies and sell them at $p'$ with $0<p'<p$. Alice, Bob, and Charlie go back to the U-Store and buy some more plushies with each buying at least one again. At the end of that day, Alice has $12$ plushies, Bob has $40$, and Charlie has $52$ but they all spent the same amount of money: $\$42$. How many plushies did Alice buy on the first day?
+=== division-a-algebra-3
+A function $f$ has its domain equal to the set of integers $0,1,\ldots,11$, and $f(n)\ge0$ for all such $n$, and $f$ satisfies
+
+$f(0)=0$
+
+$f(6)=1$
+
+If $x\ge0$, $y\ge0$, and $x+y\le11$, then $f(x+y)=\frac{f(x)+f(y)}{1-f(x)f(y)}$.
+
+Find $f(2)^2+f(10)^2$.
+=== division-a-algebra-4
+There is a sequence with $a(2)=0$, $a(3)=1$ and $a(n)=a\left(\left\lfloor\frac n2\right\rfloor\right)+a\left(\left\lceil\frac n2\right\rceil\right)$ for $n\ge4$. Find $a(2014)$. [Note that $\left\lfloor\frac n2\right\rfloor$ and $\left\lceil\frac n2\right\rceil$ denote the floor function (largest integer $\le\frac n2$) and the ceiling function (smallest integer $\ge\frac n2$), respectively.]
+=== division-a-algebra-5
+Real numbers $x,y,z$ satisfy the following equality:
+$$4(x+y+z)=x^2+y^2+z^2$$
+Let $M$ be the maximum of $xy+yz+zx$, and let $m$ be the minimum of $xy+yz+zx$. Find $M+10m$.
+=== division-a-algebra-6
+Given that $x_{n+2}=\frac{20x_{n+1}}{14x_n}$, $x_0=25$, $x_1=11$, it follows that $\sum_{n=0}^\infty\frac{x_{3n}}{2^n}=\frac pq$ for some positive integers $p,q$ with $\gcd(p,q)=1$. Find $p+q$.
+=== division-a-algebra-7
+$x,y,z$ are positive real numbers that satisfy $x^3+2y^3+6z^3=1$. Let $k$ be the maximum possible value of $2x+y+3z$. Let $n$ be the smallest positive integer such that $k^n$ is an integer. Find the value of $k^n+n$.
+=== division-a-algebra-8
+For nonnegative integer $n$, the following are true:
+
+$f(0)=0$
+
+$f(1)=1$
+
+$f(n)=f\left(n-\frac{m(m-1)}2\right)-f\left(\frac{m(m+1)}2-n\right)$ for integer $m$ satisfying $m\ge2$ and $\frac{m(m-1)}2<n\le\frac{m(m+1)}2$.
+
+Find the smallest $n$ such that $f(n)=4$.
+=== division-b-algebra-1
+Evaluate $\frac1{\sqrt1+\sqrt2}+\frac1{\sqrt2+\sqrt3}+\ldots+\frac1{\sqrt{1368}+\sqrt{1369}}$.
+=== division-b-algebra-2
+$f$ is a function whose domain is the set of nonnegative integers and whose range is contained in the set of nonnegative integers. $f$ satisfies the condition that $f(f(n))+f(n)=2n+3$ for all nonnegative integers $n$. Find $f(2014)$.
+=== division-b-algebra-3
+On the number line, consider the point $x$ that corresponds to the value $10$. Consider $24$ distinct integer points $y_1,y_2,\ldots,y_{24}$ on the number line such that for all $k$ such that $1\le k\le12$, we have that $y_{2k-1}$ is the reflection of $y_{2k}$ across $x$. Find the minimum possible value of
+$$\sum_{n=1}^{24}(|y_n-1|+|y_n+1|)$$
+=== division-b-algebra-4
+Alice, Bob, and Charlie are visiting Princeton and decide to go to the Princeton U-Store to buy some tiger plushies. They each buy at least one plushie at price $p$. A day later, the U-Store decides to give a discount on plushies and sell them at $p'$ with $0<p'<p$. Alice, Bob, and Charlie go back to the U-Store and buy some more plushies with each buying at least one again. At the end of that day, Alice has $12$ plushies, Bob has $40$, and Charlie has $52$ but they all spent the same amount of money: $\$42$. How many plushies did Alice buy on the first day?
+=== division-b-algebra-5
+Given that $a_na_{n-2}-a_{n-1}^2+a_n-na_{n-2}=-n^2+3n-1$ and $a_0=1$, $a_1=3$, find $a_{20}$.
+=== division-b-algebra-6
+There is a sequence with $a(2)=0$, $a(3)=1$ and $a(n)=a\left(\left\lfloor\frac n2\right\rfloor\right)+a\left(\left\lceil\frac n2\right\rceil\right)$ for $n\ge4$. Find $a(2014)$. [Note that $\left\lfloor\frac n2\right\rfloor$ and $\left\lceil\frac n2\right\rceil$ denote the floor function (largest integer $\le\frac n2$) and the ceiling function (smallest integer $\ge\frac n2$), respectively.]
+=== division-b-algebra-7
+Real numbers $x,y,z$ satisfy the following equality:
+$$4(x+y+z)=x^2+y^2+z^2$$
+Let $M$ be the maximum of $xy+yz+zx$, and let $m$ be the minimum of $xy+yz+zx$. Find $M+10m$.
+=== division-b-algebra-8
+Given that $x_{n+2}=\frac{20x_{n+1}}{14x_n}$, $x_0=25$, $x_1=11$, it follows that $\sum_{n=0}^\infty\frac{x_{3n}}{2^n}=\frac pq$ for some positive integers $p,q$ with $\gcd(p,q)=1$. Find $p+q$.
+=== division-a-combinatorics-1
+What is the largest $n$ such that a square cannot be partitioned into $n$ smaller, non-overlapping squares?
+=== division-a-combinatorics-2
+Assume you have a magical pizza in the shape of an infinite plane. You have a magical pizza cutter that can cut in the shape of an infinite line, but it can only be used $14$ times. To share with as many of your friends as possible, you cut the pizza in a way that maximizes the number of finite pieces (the infinite pieces have infinite mass, so you can't lift them up). How many finite pieces of pizza do you have?
+=== division-a-combinatorics-3
+You have three colors $\{red,blue,green\}$ with which you can color the faces of a regular octahedron ($8$ triangle sided polyhedron, which is two square based pyramids stuck together at their base), but you must do so in a way that avoids coloring adjacent pieces with the same color. How many different coloring schemes are possible? (Two coloring schemes are considered equivalent if one can be rotated to fit the other.)
+=== division-a-combinatorics-4
+Amy has a $2\times10$ puzzle grid which she can use $1\times1$ and $1\times2$ ($1$ vertical, $2$ horizontal) tiles to cover. How many ways can she exactly cover the grid without any tiles overlapping and without rotating the tiles?
+=== division-a-combinatorics-5
+What is the size of the largest subset $S'$ of $S=\left\{2^x3^y5^z:0\le x,y,z\le4\right\}$ such that there are no distinct elements $p,q\in S'$ with $p\mid q$.
+=== division-a-combinatorics-6
+Let $f(n)$ be the number of points of intersections of diagonals of an $n$-dimensional hypercube that is not the vertice of the cube. For example, $f(3)=7$ because the intersection points of a cube's diagonals are at the centers of each face and the center of the cube. Find $f(5)$.
+=== division-a-combinatorics-7
+Ding and Jianing are playing a game. In this game, they use pieces of paper with $2014$ positions, in which some permutation of the numbers $1,2,\ldots2014$ are to be written. (Each number will be written exactly once). Ding fills in a piece of paper first. How many pieces of paper must Jianing fill in to ensure that at least one of her pieces of paper will have the same number as Ding's in at least one position?
+=== division-a-combinatorics-8
+There are $60$ friends who want to visit each others home during summer vacation. Everyday, they decide to either stay home or vist the home of everyone who stayed home that day. Find the minimum number of days required for everyone to have visted their friends' homes.
+=== division-b-combinatorics-1
+A girl and a guy are going to arrive at a train station. If they arrive within $10$ minutes of each other, they will instantly fall in love and live happily ever after. But after $10$ minutes, whichever one arrives first will fall asleep and they will be forever alone. The girl will arrive between $8$ AM and $9$ AM with equal probability. The guy will arrive between $7$ AM and $8{:}30$ AM, also with equal probability. Let $\frac pq$ for $p,q$ coprime be the probability that they fall in love. Find $p+q$.
+=== division-b-combinatorics-2
+A $100\times100$ grid is given as shown. We choose a certain number of cells such that exactly two cells in each row and column are selected. Find the sum of numbers in these cells.
+
+@@fig:pumac2014_b-combinatorics-2.png@@
+=== division-b-combinatorics-3
+What is the largest $n$ such that a square cannot be partitioned into $n$ smaller, non-overlapping squares?
+=== division-b-combinatorics-4
+Let there be $320$ points arranged on a circle, labled $1,2,3,\ldots,8,1,2,3,\ldots,8,\ldots$ in order. Line segments may only be drawn to connect points labelled with the same number. What is the largest number of non-intersecting line segments one can draw? (Two segments sharing the same endpoint are considered to be intersecting).
+=== division-b-combinatorics-5
+Amy has a $2\times10$ puzzle grid which she can use $1\times1$ and $1\times2$ ($1$ vertical, $2$ horizontal) tiles to cover. How many ways can she exactly cover the grid without any tiles overlapping and without rotating the tiles?
+=== division-b-combinatorics-6
+Consider an orange and black coloring of a $20\times14$ square grid. Let $n$ be the number of coloring such that every row and column has an even number of orange square. Evaluate $\log_2n$.
+=== division-b-combinatorics-7
+Let $S=\{1,2,3,\ldots,2014\}$. What is the largest subset of $S$ that contains no two elements with a difference of $4$ and $7$?
+=== division-b-combinatorics-8
+There are $60$ friends who want to visit each others home during summer vacation. Everyday, they decide to either stay home or vist the home of everyone who stayed home that day. Find the minimum number of days required for everyone to have visted their friends' homes.
+=== division-a-geometry-1
+Let $x=\frac pq$ for $p,q$ coprime. Find $p+q$
+
+@@fig:pumac2014_a-geometry-1.png@@
+=== division-a-geometry-2
+Triangle $ABC$ has lengths $AB=20$, $AC=14$, $BC=22$. The median from $B$ intersects $AC$ at $M$ and the angle bisector from $C$ intersects $AB$ at $N$ and the median from $B$ at $P$. Let $\frac pq=\frac{[AMPN]}{[ABC]}$ for positive integers $p,q$ coprime. Note $[ABC]$ denotes the area of triangle $ABC$. Find $p+q$
+=== division-a-geometry-3
+Let $O$ be the circumcenter of triangle $ABC$ with circumradius $15$. Let $G$ be the centroid of $ABC$ and let $M$ be the midpoint of $BC$. If $BC=18$ and $\angle MOA=150^\circ$, find the area of $OMG$.
+=== division-a-geometry-4
+Consider the cyclic quadrilateral with sides $1,4,8,7$ in that order. What is its circumdiameter? Let the answer be of the form $a\sqrt b+c$, for $b$ square free. Find $a+b+c$
+=== division-a-geometry-5
+There is a point $D$ on side $AC$ of acute triangle $\triangle ABC$. Let $AM$ be the median drawn from $A$ (so $M$ is on $BC$) and $CH$ be the altitude drawn from $C$ (so $H$ is on $AB$). Let $I$ be the intersection of $AM$ and $CH$, and let $K$ be the intersection of $AM$ and line segment $BD$. We know that $AK=8$, $BK=8$, and $MK=6$. Find the length of $AI$.
+=== division-a-geometry-6
+$\triangle ABC$ has side lengths $AB=15$, $BC=34$, and $CA=35$. Let the circumcenter of $ABC$ be $O$. Let $D$ be the foot of perpendicular from $C$ to $AB$. Let $R$ be the foot of perpendicular from $D$ to $AC$, and let $W$ be the perpendicular foot from $D$ to $BC$. Find the area of quadrilateral $CROW$.
+=== division-a-geometry-7
+Let $O$ be the center of a circle of radius $26$, and let $A,B$ be two distinct points on the circle, with $M$ being the midpoint of $AB$. Consider point $C$ for which $CO=34$ and $\angle COM=15^\circ$. Let $N$ be the midpoint of $CO$. Suppose that $\angle ACB=90^\circ$. Find $MN$.
+=== division-a-geometry-8
+$ABCD$ is a cyclic quadrilateral with circumcenter $O$ and circumradius $7$. $AB$ intersects $CD$ at $E$, $DA$ intersects $CB$ at $F$. $OE=13$, $OF=14$. Let $\cos\angle FOE=\frac pq$, with $p,q$ coprime. Find $p+q$.
+=== division-b-geometry-1
+Triangle $ABC$ has lengths $AB=20$, $AC=14$, $BC=22$. The median from $B$ intersects $AC$ at $M$ and the angle bisector from $C$ intersects $AB$ at $N$ and the median from $B$ at $P$. Let $\frac pq=\frac{[AMPN]}{[ABC]}$ for positive integers $p,q$ coprime. Note $[ABC]$ denotes the area of triangle $ABC$. Find $p+q$
+=== division-b-geometry-2
+Consider the pyramid $OABC$. Let the equilateral triangle $ABC$ with side length $6$ be the base. Also $9=OA=OB=OC$. Let $M$ be the midpoint of $AB$. Find the square of the distance from $M$ to $OC$.
+=== division-b-geometry-3
+As given in figure (not drawn to proportion), in $\triangle ABC$, $E\in AC$, $D\in AB$, $P=BE\cap CD$. Given that $S_{\triangle BPC}=12$, while the areas of $\triangle BPD$, $\triangle CPE$ and quadrilateral $AEPD$ are all the same, which is $x$. Find the value of $x$.
+=== division-b-geometry-4
+Let $O$ be the circumcenter of triangle $ABC$ with circumradius $15$. Let $G$ be the centroid of $ABC$ and let $M$ be the midpoint of $BC$. If $BC=18$ and $\angle MOA=150^\circ$, find the area of $OMG$.
+=== division-b-geometry-5
+Consider the cyclic quadrilateral with sides $1,4,8,7$ in that order. What is its circumdiameter? Let the answer be of the form $a\sqrt b+c$, for $b$ square free. Find $a+b+c$
+=== division-b-geometry-6
+There is a point $D$ on side $AC$ of acute triangle $\triangle ABC$. Let $AM$ be the median drawn from $A$ (so $M$ is on $BC$) and $CH$ be the altitude drawn from $C$ (so $H$ is on $AB$). Let $I$ be the intersection of $AM$ and $CH$, and let $K$ be the intersection of $AM$ and line segment $BD$. We know that $AK=8$, $BK=8$, and $MK=6$. Find the length of $AI$.
+=== division-b-geometry-7
+Consider quadrilateral $ABCD$. Given that $\angle DAC=70^\circ$, $\angle BAC=40^\circ$, $\angle BDC=20^\circ$, $\angle CBD=35^\circ$. Let $P$ be the intersection of $AC$ and $BD$. Find $\angle BPC$.
+=== division-b-geometry-8
+$ABCD$ is a cyclic quadrilateral with circumcenter $O$ and circumradius $7$. $AB$ intersects $CD$ at $E$, $DA$ intersects $CB$ at $F$. $OE=13$, $OF=14$. Let $\cos\angle FOE=\frac pq$, with $p,q$ coprime. Find $p+q$.
+=== division-a-number-theory-1
+Let $f(x)=x^3+ax^2+bx+c$ have solutions that are distinct negative integers. If $a+b+c=2014$, find $c$.
+=== division-a-number-theory-2
+What is the last digit of $17^{17^{17^{17}}}$?
+=== division-a-number-theory-3
+Find the number of ending zeros of $2014!$ in base $9$. Give your answer in base $9$.
+=== division-a-number-theory-4
+Find the sum of all positive integer $x$ such that $3\times2^x=n^2-1$ for some positive integer $n$.
+=== division-a-number-theory-5
+Find the number of pairs of integer solution $(x,y)$ that satisfies the equation
+$$(x-y+2)(x-y-2)=-(x-2)(y-2)$$
+=== division-a-number-theory-6
+Given $S=\{2,5,8,11,14,17,20,\ldots\}$. Given that one can choose $n$ different numbers from $S$, $\{A_1,A_2,\ldots A_n\}$, s.t. $\sum_{i=1}^n\frac1{A_i}=1$. Find the minimum possible value of $n$.
+=== division-a-number-theory-7
+Find the number of positive integers $n\le2014$ such that there exists integer $x$ that satisfies the condition that $\frac{x+n}{x-n}$ is an odd perfect square.
+=== division-a-number-theory-8
+Find all number sets $(a,b,c,d)$ s.t. $1<a\le b\le c\le d$, $a,b,c,d\in\mathbb N$, and $a^2+b+c+d$, $a+b^2+c+d$, $a+b+c^2+d$ and $a+b+c+d^2$ are all square numbers. Sum the value of $d$ across all solution set(s).
+=== division-b-number-theory-1
+Let $f(x)=x^3+ax^2+bx+c$ have solutions that are distinct negative integers. If $a+b+c=2014$, find $c$.
+=== division-b-number-theory-2
+What is the last digit of $17^{17^{17^{17}}}$?
+=== division-b-number-theory-3
+Find the $3$-digit positive integer that has the most divisors.
+=== division-b-number-theory-4
+Find the number of fractions in the following list that is in its lowest form. (ie. for $\frac pq$, $\gcd(p,q)=1$.)
+$$\frac1{2014},\frac2{2013},\ldots,\frac{1007}{1008}$$
+=== division-b-number-theory-5
+Find the sum of all positive integer $x$ such that $3\times2^x=n^2-1$ for some positive integer $n$.
+=== division-b-number-theory-6
+Given $S=\{2,5,8,11,14,17,20,\ldots\}$. Given that one can choose $n$ different numbers from $S$, $\{A_1,A_2,\ldots A_n\}$, s.t. $\sum_{i=1}^n\frac1{A_i}=1$. Find the minimum possible value of $n$.
+=== division-b-number-theory-7
+How many permutations $p(n)$ of $\{1,2,3\ldots35\}$ satisfy $a\mid b$ implies $p(a)\mid p(b)$?
+=== division-b-number-theory-8
+Find the number of positive integers $n\le2014$ such that there exists integer $x$ that satisfies the condition that $\frac{x+n}{x-n}$ is an odd perfect square.
