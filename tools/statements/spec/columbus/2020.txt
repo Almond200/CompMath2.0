@@ -1,0 +1,250 @@
+=== 1
+How many positive divisors does $2020$ have?
+
+(A) $9$  (B) $10$  (C) $11$  (D) $12$  (E) $13$
+=== 2
+For what values of the real number $a$ does the equation
+$$x^2-ax-a=0$$
+have two different complex zeros, which are not real numbers?
+
+(A) $a>0$  (B) $a<0$  (C) $0<a<4$  (D) $-4<a<0$  (E) $a<4$
+=== 3
+Let $x$ and $y$ be positive integers such that
+$$\frac{2020!}{5^x\cdot 11^y}$$
+is an integer. What is the largest possible value of $x+y$?
+
+(A) $695$  (B) $697$  (C) $699$  (D) $701$  (E) $703$
+=== 4
+If $i=\sqrt{-1}$, find the sum
+$$1+i+i^2+i^3+\cdots+i^{2019}+i^{2020}.$$
+
+(A) $i$  (B) $1$  (C) $0$  (D) $-1$  (E) $-i$
+=== 5
+Four distinct straight lines pass through the origin of the coordinate system and intersect the parabola $y=x^2-3$ at eight points. What is the product of the $x$-coordinates of these eight points?
+
+(A) $-81$  (B) $-9$  (C) $0$  (D) $9$  (E) $81$
+=== 6
+For how many integers $n$ is $|n^2+81n-2020|$ a prime number?
+
+(A) $0$  (B) $2$  (C) $4$  (D) $6$  (E) $8$
+=== 7
+Lockers are numbered with consecutive positive integers beginning with $1$, and the digit $2$ is used exactly $106$ times (including on the last locker). What is the number of the last locker?
+
+(A) $240$  (B) $245$  (C) $250$  (D) $255$  (E) $260$
+=== 8
+What is the area enclosed by the graph of
+$$|3x|+|4y|=12?$$
+
+(A) $22$  (B) $24$  (C) $26$  (D) $28$  (E) $30$
+=== 9
+Let $s$, $t$, and $r$ be the solutions of the equation
+$$3x^3-4x^2+9x-6=0.$$
+Find $\dfrac1s+\dfrac1t+\dfrac1r$.
+
+(A) $-\frac52$  (B) $-\frac32$  (C) $-\frac12$  (D) $\frac12$  (E) $\frac32$
+=== 10
+Let sets $A=\{1,2,3,\ldots,99\}$, $B=\{2x\mid x\in A\}$, and $C=\{x/2\mid x\in A\}$. What is the number of elements of $B\cap C$?
+
+(A) $24$  (B) $48$  (C) $12$  (D) $25$  (E) $30$
+=== 11
+Three different numbers are chosen from the set $\{1,2,3,\ldots,8\}$. What is the probability that one of them is the average of the other two?
+
+(A) $\frac27$  (B) $\frac18$  (C) $\frac9{56}$  (D) $\frac5{28}$  (E) $\frac3{14}$
+=== 12
+For each positive integer $n$, the quadratic function $f(x)=ax^2+bx+c$ satisfies the equation
+$$f(1)+f(2)+\cdots+f(n)=n^3.$$
+What is the value of the product $abc$?
+
+(A) $-12$  (B) $-10$  (C) $-9$  (D) $-8$  (E) $-6$
+=== 13
+How many real solutions does the following equation have
+$$x^2+\sqrt{x-1}=1+\sqrt{x^2+x-2}?$$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$
+=== 14
+The quadratic function $f(x)=x^2-6x+2$ intersects the $x$-axis and the $y$-axis at three different points. The circle through these three points intersects the graph of $f$ at a fourth point $(a,b)$. Find the sum $a+b$.
+
+(A) $14$  (B) $12$  (C) $10$  (D) $8$  (E) $6$
+=== 15
+Find the number of solutions of the equation $\log(x^2+1)=\log_3 x$.
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) infinitely many
+=== 16
+The real numbers $x$, $y$, and $z$ satisfy the equation
+$$\frac{2019}{x+1}+\frac{2019}{y+1}+\frac{2019}{z+1}=2020.$$
+Find the value of
+$$\frac{x-1}{x+1}+\frac{y-1}{y+1}+\frac{z-1}{z+1}.$$
+
+(A) $\frac{2014}{2019}$  (B) $\frac{2017}{2019}$  (C) $\frac{2012}{2019}$  (D) $\frac{2018}{2019}$  (E) $\frac{2015}{2019}$
+=== 17
+Find the number of pairs of positive integers $(a,b)$ such that the sum of $a$ and $b$ is a multiple of $4$ and $a^2-b^2=2020$.
+
+(A) $4$  (B) $3$  (C) $2$  (D) $1$  (E) $0$
+=== 18
+The real number $x$ satisfies the equation
+$$\sin x-\cos x=\frac13.$$
+Find the value of $\sin(2x)$.
+
+(A) $\frac29$  (B) $\frac49$  (C) $\frac59$  (D) $\frac79$  (E) $\frac89$
+=== 19
+On January 1st, 2020 the Golden Goose laid one golden egg. Every day after January 1st, it laid two more eggs than it did on the day before. How many golden eggs will have the Golden Goose lay this year by the end of the day on March 7, 2020?
+
+(A) $4096$  (B) $4225$  (C) $4356$  (D) $4489$  (E) $4624$
+=== 20
+Find the smallest value of the integer $n$ such that a convex polygon with $n$ sides has at least $2020$ diagonals.
+
+(A) $64$  (B) $65$  (C) $66$  (D) $67$  (E) $68$
+=== 21
+The number
+$$\cfrac{1}{1+\cfrac{1}{2+\cfrac{1}{1+\cfrac{1}{2+\cdots}}}}$$
+can be written in the form $\dfrac{A+\sqrt B}{2}$, where $A$ and $B$ are integers. Find the value of $A+B$
+
+(A) $10$  (B) $11$  (C) $12$  (D) $13$  (E) $14$
+=== 22
+Let $f$ be a function such that $f(x+y)=f(x)f(y)$, for all integers $x$ and $y$. If $f(1)=3$, find the value of
+$$f(0)+f(1)+\cdots+f(9).$$
+
+(A) $29524$  (B) $29424$  (C) $29324$  (D) $29224$  (E) $29124$
+=== 23
+How many real solutions does the equation
+$$\left|\left|5^x-4\right|-3\right|=1$$
+have? (Here, $|a|$ means the absolute value of $a$.)
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$
+=== 24
+If $f(x)=\dfrac{ax+b}{cx+d}$, $abcd\ne0$ and $f(f(x))=x$, for all $x$ in the domain of $f$, what is the value of $a+d$?
+
+(A) $0$  (B) $2$  (C) $4$  (D) $6$  (E) $8$
+=== 25
+Let $a\circ b=\dfrac{a+b}{ab+4}$. What is the value of $((\cdots((2020\circ 2019)\circ 2018)\circ\cdots\circ 1)\circ 0)$?
+
+(A) $\frac1{20}$  (B) $\frac1{505}$  (C) $\frac1{1010}$  (D) $\frac1{12}$  (E) $\frac1{2020}$
+=== 26
+When expanded as a decimal, the fraction $\dfrac1{19}$ has a repetend (the repeating part of the decimal) that begins right after the decimal point and is $18$ digits long. If the last three digits of the repetend are $x21$, what is the digit $x$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$
+=== 27
+Find the sum of the number $N=12345$ and all other five digit numbers obtained by permuting the digits of $N$ in all possible ways.
+
+(A) $4999960$  (B) $399960$  (C) $999900$  (D) $3999960$  (E) $9999600$
+=== 28
+Let $f_1(x)=\sqrt{1-x}$, and for integers $n\ge2$, we define
+$$f_n(x)=f_{n-1}\left(\sqrt{n^2-x}\right).$$
+What is the largest value of $n$ for which the domain of $f_n$ is nonempty?
+
+(A) $6$  (B) $5$  (C) $4$  (D) $3$  (E) $2$
+=== 29
+Jane has an infinite number of balls and empty boxes available to her. The empty boxes, each capable of holding five balls, are arranged in a row from left to right. At the first step, she places a ball in the first box of the row. At each subsequent step, she places a ball in the first box of the row that still has room for a ball and empties any previous boxes. How many balls in total are in the boxes as a result of Jane's 2020th step?
+
+(A) $1$  (B) $4$  (C) $5$  (D) $10$  (E) $20$
+=== 30
+A right triangle $\triangle ABC$ has integer side lengths. If $\overline{BC}$ is its hypotenuse and $2AC=AB+BC$, which of the following is a possible length for one of its legs?
+
+(A) $31$  (B) $41$  (C) $51$  (D) $61$  (E) $71$
+=== 31
+Suppose $a>0$, $b>0$, $c>0$ and $abc=1$. What is the minimum value of
+$$(a+b)^3+(b+c)^3+(c+a)^3?$$
+
+(A) $8$  (B) $16$  (C) $24$  (D) $32$  (E) $40$
+=== 32
+Consider the function
+$$f(x)=\sin\left(2x+\frac{3\pi}{2}\right)-3\cos x.$$
+If $x$ varies in the set of real numbers, what is the minimum value of $f(x)$?
+
+(A) $0$  (B) $-1$  (C) $-2$  (D) $-3$  (E) $-4$
+=== 33
+For each positive integer $n$, we define
+$$a_n=\sin\left(\pi\sqrt{n^2+5}\right).$$
+Find $\displaystyle\lim_{n\to\infty}a_n$
+
+(A) $\infty$  (B) $5$  (C) $0$  (D) $1$  (E) does not exist
+=== 34
+If $a<b<c$ are consecutive prime numbers and the equation $ax^2+cx+b=0$ has an integer root, how many values are possible for $b$?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$
+=== 35
+Consider the function $f$ defined by $f(z)=(4+i)z^2+\alpha z+\beta$, for all complex numbers $z$, where $\alpha$ and $\beta$ are complex numbers and $i^2=-1$. Suppose that $f(1)$ and $f(i)$ are both real. What is the smallest possible value of $|\alpha|+|\beta|$?
+
+(A) $\sqrt2$  (B) $\sqrt3$  (C) $2$  (D) $\sqrt5$  (E) $\sqrt6$
+=== 36
+If $a$, $b$, and $c$ are real numbers such that
+$$\lim_{x\to\infty}x\left(\sqrt{ax^2+bx+c}-2x-1\right)=10,$$
+find the value of $a+b+c$.
+
+(A) $41$  (B) $45$  (C) $49$  (D) $53$  (E) $57$
+=== 37
+Let $(a_n)_{n\ge0}$ be the sequence defined by the formula
+$$a_n=1+\frac1{2^{2^n}},$$
+for any nonnegative integer $n$. Which of the following is equal to the value of the product $a_0a_1a_2\cdots a_{10}$?
+
+(A) $2+\dfrac1{2^{2^{10}+1}}$  (B) $2+\dfrac1{2^{2^{9}+1}}$  (C) $2+\dfrac1{2^{2^{9}-1}}$  (D) $2-\dfrac1{2^{2^{10}+1}}$  (E) $2-\dfrac1{2^{2^{11}-1}}$
+=== 38
+If $x_1,x_2,\ldots,x_{2020}$ are equal to either $-2$ or $3$, which of the following integers $M$ can be written as
+$$M=x_1+2x_2+3x_3+\cdots+2020x_{2020}?$$
+
+(A) $2016$  (B) $2017$  (C) $2018$  (D) $2019$  (E) $2020$
+=== 39
+Find the number of solutions of the equation
+$$\tan\left(\frac x2\right)=\cot(3x),$$
+in the interval $[0,2\pi]$
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$
+=== 40
+A cube is dissected into six pyramids by connecting a given point in the interior of the cube with each vertex of the cube. The volumes of five of these pyramids are $1$, $4$, $9$, $10$ and $13$. What is the volume of the sixth pyramid?
+
+@@fig:columbus2020_40.png@@
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$
+=== 41
+Find the number of pairs $(x,y)$ of positive integers such that
+$$\frac1x-\frac1y=\frac1{2020}.$$
+
+(A) $20$  (B) $22$  (C) $24$  (D) $26$  (E) $28$
+=== 42
+For a set of $n$ prime numbers, if the sum of any three different primes in the set is also prime, what is the largest possible value of $n$?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$
+=== 43
+Let $a,b,c,x,y$, and $z$ be nonzero complex numbers such that
+$$a=\frac{b+c}{x+1},\qquad b=\frac{c+a}{y+1},\qquad c=\frac{a+b}{z+1}.$$
+If $xy+yz+zx=200$ and $x+y+z=100$, find the value of $xyz$.
+
+(A) $-196$  (B) $-192$  (C) $-188$  (D) $-184$  (E) $-180$
+=== 44
+How many ordered pairs of positive integers $(x,y)$, with $x<y$, satisfy the equation
+$$x^2+y^2=2020?$$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$
+=== 45
+Two chords $\overline{AB}$ and $\overline{CD}$, in a circle of radius $R$, are perpendicular at $E$ (see the Figure). Knowing that $AE=9$, $EB=5$ and $EC=12$, find $R$.
+
+@@fig:columbus2020_45.png@@
+
+(A) $\frac{65}8$  (B) $\frac{63}8$  (C) $\frac{61}8$  (D) $\frac{59}8$  (E) $\frac{57}8$
+=== 46
+In the adjacent Figure, we have two Cevians in the triangle $ABC$, $\overline{CE}$ and $\overline{BD}$ intersecting at $F$. Knowing that the areas of the triangles $DFC$, $CFB$ and $FBE$ are equal to $2$, $6$ and $9$ respectively, find the area of the quadrilateral $ADFE$.
+
+@@fig:columbus2020_46.png@@
+
+(A) $20$  (B) $21$  (C) $22$  (D) $23$  (E) $24$
+=== 47
+For which value(s) of the real number $a$ does the function
+$$f(x)=\begin{cases}\sin(1/x)&\text{if }x\neq0\\a&\text{if }x=0\end{cases}$$
+admit an antiderivative? That is, for which value(s) of $a$ there exist a differentiable function $F$, such that $F'(x)=f(x)$, for all real numbers $x$?
+
+(A) $(-\infty,\infty)$  (B) $[-1,1]$  (C) $0$  (D) $-1$ and $1$  (E) none
+=== 48
+Let $a$, $b$, $c$ be the real roots of $x^3-4x^2-32x+17=0$. The solution of the equation
+$$\sqrt[3]{x-a}+\sqrt[3]{x-b}+\sqrt[3]{x-c}=0$$
+can be written as $\dfrac MN$, with the fraction in lowest terms. What is the value of $M+N$?
+
+(A) $1531$  (B) $1532$  (C) $1533$  (D) $1534$  (E) $1535$
+=== 49
+What is the value of the limit
+$$\lim_{n\to\infty}\left[\frac1{\sqrt{4n^2-1^2}}+\frac1{\sqrt{4n^2-2^2}}+\cdots+\frac1{\sqrt{4n^2-n^2}}\right]?$$
+
+(A) $\frac\pi6$  (B) $\frac\pi3$  (C) $\frac\pi2$  (D) $\frac\pi4$  (E) $\frac\pi8$
+=== 50
+Two people agree to meet at a coffee shop. They each independently pick a random moment in time between $9$ a.m. and $10$ a.m. and show up exactly at their selected time. But they are very impatient, and only stay for $5$ minutes after when they arrive. What is the probability that they meet?
+
+(A) $\frac{19}{144}$  (B) $\frac{23}{144}$  (C) $\frac{29}{144}$  (D) $\frac{31}{144}$  (E) $\frac{37}{144}$
