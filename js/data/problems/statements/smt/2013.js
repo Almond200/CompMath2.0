@@ -1,5 +1,5 @@
 // Problems and diagrams © 2013 Stanford Math Tournament. Reproduced with permission from the Stanford Math Tournament.
-// Source: the official Stanford Math Tournament papers.
+// Source: the official Stanford Math Tournament papers. Built by tools/statements/build.py from tools/statements/spec/smt/2013.txt.
 Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2013-smt-algebra-1": { s: String.raw`Nick is a runner, and his goal is to complete four laps around a circuit at an average speed of $10$ mph. If he completes the first three laps at a constant speed of only $9$ mph, what speed does he need to maintain in miles per hour on the fourth lap to achieve his goal?`, u: "https://www.stanfordmathtournament.com/pdfs/smt2013/algebra-problems.pdf" },
 "2013-smt-algebra-2": { s: String.raw`A tree has $10$ pounds of apples at dawn. Every afternoon, a bird comes and eats $x$ pounds of apples. Overnight, the amount of food on the tree increases by $10\%$. What is the maximum value of $x$ such that the bird can sustain itself indefinitely on the tree without the tree running out of food?`, u: "https://www.stanfordmathtournament.com/pdfs/smt2013/algebra-problems.pdf" },

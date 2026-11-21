@@ -1,5 +1,5 @@
 // Problems and diagrams © 2023 Stanford Math Tournament. Reproduced with permission from the Stanford Math Tournament.
-// Source: the official Stanford Math Tournament papers.
+// Source: the official Stanford Math Tournament papers. Built by tools/statements/build.py from tools/statements/spec/smt/2023.txt.
 Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2023-smt-algebra-1": { s: String.raw`There exists a unique real value of $x$ such that
 $$(x+\sqrt{x})^2=16.$$

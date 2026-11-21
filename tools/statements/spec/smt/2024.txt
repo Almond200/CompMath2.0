@@ -1,0 +1,157 @@
+=== algebra-1
+Compute the number of solutions $x\in[0,2\pi]$ to
+$$\cos(x^2)+\sin(x^2)=0.$$
+=== algebra-2
+Suppose that for some angle $0\le\theta\le\pi/4$, the roots of $x^2+ax+\frac{3}{10}$ are $\sin\theta$ and $\cos\theta$. If the roots of $p(x)=x^2+cx+d$ are $\sin(2\theta)$ and $\cos(2\theta)$, what is the value of $p(1)$?
+=== algebra-3
+Let $q(x)=x^3-9x^2+18x+27$. Compute
+$$q(-10)+q(-8)+q(-6)+\ldots+q(16).$$
+=== algebra-4
+Compute
+$$\frac{5}{1\cdot 2\cdot 3\cdot 4}+\frac{7}{2\cdot 3\cdot 4\cdot 5}+\ldots+\frac{99}{48\cdot 49\cdot 50\cdot 51}.$$
+=== algebra-5
+Ashley writes the concatenation of $\lfloor 2.5^1\rfloor,\lfloor 2.5^2\rfloor,\ldots,\lfloor 2.5^{1000}\rfloor$ on the board. Her number is $199667$ digits long. Now, Bob writes the concatenation of $4^1,4^2,\ldots,4^{1000}$ on the board. Compute the number of digits in Bob's number.
+=== algebra-6
+Let $f(x,y)=xy$ and $g(x,y)=x^2-y^2$. If a counterclockwise rotation of $\theta$ radians about the origin sends $g(x,y)=a$ to $f(x,y)=b$, compute the value of $\frac{a}{b\tan\theta}$.
+=== algebra-7
+Find the number of lines of symmetry that pass through the origin for
+$$|xy(x+y)(x-y)|=1.$$
+=== algebra-8
+Let $a_1$, $a_2$, $a_3$, and $a_4$ be non-negative real numbers such that $a_1^2+a_2^2+a_3^2+a_4^2=1$. Compute the minimum possible value of
+$$6a_1^3+8a_2^3+12a_3^3+24a_4^3.$$
+=== algebra-9
+Compute
+$$\sum_{a=0}^{100}\sum_{b=0}^{100}\frac{1}{1+\cos\left(\frac{2\pi(a-b)}{101}\right)}.$$
+=== algebra-10
+Call a polynomial $x^8+b_7x^7+\cdots+b_1x^1+1$ binary if each $b_i$ is either $0$ or $1$. Compute the number of binary polynomials that have at least one real root.
+=== discrete-1
+Kevin evaluates the sum of all positive divisors of $10000$ that are multiples of $100$ and writes the result on a blackboard. Underneath, he evaluates the sum of all positive divisors of $100$ and writes down that result. Compute the ratio of the top number to the bottom number.
+=== discrete-2
+Let $X$ be a $2024$ digit perfect square. Let $a(X)$ be the $1012$ digit number formed from reading the first $1012$ digits of $X$, in order, and let $b(X)$ be the $1012$ digit number formed from reading the last $1012$ digits of $X$, in order. Given that $X$ is the unique choice that maximizes $a(X)-b(X)$, find the sum of digits of $X$.
+=== discrete-3
+Let $F$ be a set of subsets of $\{1,2,3\}$. $F$ is called distinguishing if each of $1$, $2$, and $3$ are distinguishable from each other—that is, $1$, $2$, and $3$ are each in a distinct set of subsets from each other. For example $F=\{\{1,3\},\{2,3\}\}$ is distinguishing because $1$ is in $\{1,3\}$, $2$ is in $\{2,3\}$, and $3$ is in $\{1,3\}$ and $\{2,3\}$. $F=\{\{1,2\},\{2\}\}$ is also distinguishing: $1$ is in $\{1,2\}$, $2$ is in $\{1,2\}$ and $\{2\}$, and $3$ is in none of the subsets.
+
+On the other hand, $F=\{\{1\},\{2,3\}\}$ is not distinguishing. Both $2$ and $3$ are only in $\{2,3\}$, so they cannot be distinguished from each other.
+
+How many distinguishing sets of subsets of $\{1,2,3\}$ are there?
+=== discrete-4
+Each vertex and edge of an equilateral triangle is randomly labelled with a distinct integer from $1$ to $10$, inclusive. Compute the probability that the number on each edge is the sum of those on its vertices.
+=== discrete-5
+We define the spillage of a number as $s(x)=\left\lfloor\frac{x}{100}\right\rfloor$, that is, the largest integer that is at most $\frac{x}{100}$. The spillage of a list of numbers $[a_1,a_2,\ldots,a_n]$ is the sum of left to right spillages: $s(a_1)+s(a_1a_2)+s(a_1a_2a_3)+\ldots+s(a_1a_2\cdots a_n)$. Let $M$ be the minimum possible spillage of $[1,2,\ldots,10]$ over all the permutations of this list. How many of these permutations achieve $M$?
+=== discrete-6
+Alice is playing with magnets on her fridge. She has $7$ magnets, with the numbers $1,2,3,4,5,6,7$, in that order in a row, and she also has two magnets with a "$+$" sign, two magnets with a "$-$" sign, and two magnets with a "$\times$" sign. She randomly puts these six operation magnets between her $7$ number magnets, with one operation between every two consecutive numbers, and evaluates the resulting expression (following the order of operations). What is the expected value of her result?
+=== discrete-7
+Let $1\le A\le 119$ and $1\le B\le 139$ be two integers such that $\frac{A}{60}$ and $\frac{B}{70}$ are fractions in simplest form, yet, when adding $\frac{A}{60}$ and $\frac{B}{70}$ by rewriting both fractions with their lowest common denominator and adding the resulting numerators, the new fraction can be simplified. Find how many ordered pairs $(A,B)$ are possible.
+=== discrete-8
+Call a polynomial $P$ cool if it has degree less than $257$, each of its coefficients are nonnegative integers less than $257$, and
+$$\sum_{k=0}^{256}P(k^j)$$
+is divisible by $257$ for all positive integers $j$. How many cool polynomials are there? (Assume that the polynomial $P(x)=0$ has degree less than $257$.)
+=== discrete-9
+Let $f:\mathbb{N}\to\mathbb{R}$ be a function which satisfies $\frac{1}{64}n^2=\sum_{d\mid n}f(d)f\left(\frac{n}{d}\right)$. What is the least integer $n$ for which $f(n)$ is an integer?
+=== discrete-10
+There are $2n$ students taking an exam, and at the beginning they all put their phones into a pile. When leaving, each person takes an arbitrary phone from the pile. Unfortunately, it might be the case that some students did not get back their own phone!
+
+To get back the correct phones, the students come up with the following strategy. They repeat the following round as many times as needed:
+
+1. Some of the students pair up. Each student can be in at most one pair.
+2. The pairs swap phones according to some swap order (i.e. an ordering of the pairs).
+
+For a given assignment $\pi$ of the $2n$ students to the phones they originally picked up, let $r(\pi)$ be the minimum number of rounds required for the students to each receive back their own phone, assuming the students make swaps optimally. Let $s(\pi)$ be the number of ways to swap phones (determined by pairings and swap orders over all rounds) achieving $r(\pi)$ rounds. Let $M(n)$ be the maximum value of $r(\pi)$ over all assignments $\pi$, and let $f(n)$ be the sum of $s(\pi)$ over all $\pi$ with $r(\pi)<M(n)$.
+
+Then, there exists a unique ordered pair $(a,b)$ with $a>0$ and $b>0$ such that $\lim_{n\to\infty}\frac{f(n)\cdot a^n}{(2n)!}=b$. Compute $(a,b)$.
+
+Note: It may be helpful to know that $e^x=\sum_{k=0}^{\infty}\frac{x^k}{k!}$.
+=== general-1
+Find the volume of the pyramid with vertices at the coordinates
+$$(1,0,0),\ (0,1,0),\ (0,0,1),\ (0,0,0).$$
+
+@@fig:smt2024_general-1.png@@
+=== general-2
+Consider the following system of equations:
+$$\begin{gathered}w+x+y=8\\ y+z=10\\ w+x+z=12.\end{gathered}$$
+Find $w+x+y+z$.
+=== general-3
+What is the number of $5$-digit numbers that have strictly decreasing digits from left to right?
+=== general-4
+Call a number balanced if it is divisible by $p+10$ where $p$ is its smallest prime divisor. How many numbers from $1$ to $100$, inclusive, are balanced?
+=== general-5
+Let $\mathcal{A}$ be the region in the $xy$-plane bounded by $y=0$, $y=x$, and $y=2-x$. $\mathcal{A}$ includes the area enclosed by these boundaries, as well as the boundaries themselves. What is the maximum possible radius of a circle that lies in $\mathcal{A}$?
+=== general-6
+Find the area enclosed by the relation:
+$$|x+y|+|x-y|=16.$$
+=== general-7
+What is the probability of obtaining a sum of $9$ by rolling $4$ six-sided dice?
+=== general-8
+For some real constant $c$, the roots of the quadratic $x^2+cx-2024$ are $r$ and $s$. If the quadratic $x^2+rx+s$ has one distinct root $t$ (not necessarily real), find $t$.
+=== general-9
+Call two positive integers similar if their prime factorization have the same number of distinct prime divisors, and when ordered in some way, the exponents match. For example, $250$ and $24$ are similar because $250=5^3\cdot 2$, and $24=2^3\cdot 3$. How many positive integers less than or equal to $200$ are similar to $18$ (including itself)?
+=== general-10
+What is the sum of the possible values of $c$ such that the polynomial $x^2-40x+c=0$ has positive integer roots (possibly equal to each other)?
+=== general-11
+Let $\triangle ABC$ be an equilateral triangle with side length $6$. Three circles of radius $6$ are centered at $A$, $B$, and $C$. Compute the radius of the circle that is centered at the center of $\triangle ABC$, is internally tangent to these three circles, and lies in the interior of the three circles.
+=== general-12
+Compute the largest positive integer $x$ less than $1000$ that satisfies $x^2\equiv 24\pmod{1000}$.
+=== general-13
+Jana is decorating her room by hanging zero or more strings of lights. She has $5$ collinear attachment points (A, B, C, D, and E), and she can connect any two attachment points with a semicircular string of lights (direction hanging downward), as long as no two strings cross. In how many different patterns can she hang the lights?
+
+@@fig:smt2024_general-13.png@@
+=== general-14
+Let $0.\overline{d}_b=0.ddd\ldots_b$ denote a repeating decimal written in base $b$. If $0.\overline{4}_a+0.\overline{7}_b=1$ for positive integers $a$ and $b$ such that $a\ne b$, what is the minimum possible value of $a+b$?
+=== general-15
+Perry bakes a pineapple upside-down cake with $3$ slices of pineapple on top, each in the shape of regular dodecagons of side length $1$. The pineapple slices overlap each other as shown in the figure. Compute the length of the cut $AB$ that Perry makes to slice the cake in half.
+
+@@fig:smt2024_general-15.png@@
+=== general-16
+Let $P(n)$ represent the number of real roots $x$ for the equation
+$$x^n+x^{n-1}+\ldots+x^1+1=0.$$
+Compute
+$$P(1)+P(2)+P(3)+\ldots+P(2024).$$
+=== general-17
+Nacho is building a sandcastle. Each time he adds a scoop of sand, he has a $\frac{5}{6}$ chance that the sandcastle will increase by $1$ inch in height. Nacho is a clumsy engineer, so each time the height doesn't increase, the sandcastle topples and loses $\frac{1}{3}$ of its current height. Suppose Nacho starts his sandcastle at height $H$. What $H$ should he choose so that after any number of scoops, the expected height of his sandcastle is still $H$?
+=== general-18
+Consider the horizontal line that intersects the ellipse $\frac{x^2}{9}+y^2=1$ at points $A$ and $B$ above the $x$-axis such that $\angle AOB=120^\circ$, where point $O$ is the origin. Compute the area of the region of the ellipse that lies above this line.
+=== general-19
+Let $a_1,a_2,\ldots$ be a strictly increasing sequence of positive integers such that $a_{3k-2}$ is divisible by $8$ and $a_{3k}$ is divisible by $9$ for all positive integers $k$. Find the largest possible positive integer $i$ such that $a_i>2024$ and $a_{i-1}\le 2024$.
+=== general-20
+I have $3$ red balls, $3$ blue balls, and $3$ yellow balls. These $9$ balls are randomly arranged on a $3\times 3$ grid. Let a 3-in-a-row denote when $3$ balls of the same color are aligned in a line in the grid (a row, column, or diagonal consisting of $3$ balls of the same color). What is the expected number of 3-in-a-rows that will show up in the grid?
+=== general-21
+How many positive integers $n$ are there such that the powers of $2024\pmod{n}$ repeat in a cycle of length $2$? In other words, how many positive integers $n$ are there such that
+$$2024^0\pmod{n}\equiv 2024^2\pmod{n}\equiv 2024^4\pmod{n}\ldots$$
+and
+$$2024^1\pmod{n}\equiv 2024^3\pmod{n}\equiv 2024^5\pmod{n}\ldots$$
+but
+$$2024^0\pmod{n}\not\equiv 2024^1\pmod{n}?$$
+=== general-22
+Consider a quadratic function $P(x)=ax^2+bx+c$ with distinct positive roots $r_1$ and $r_2$, and a second polynomial $Q(x)=cx^2+bx+a$ with roots $r_3$ and $r_4$. John writes four numbers on the whiteboard: $r_1$, $r_2$, $4r_3$ and $4r_4$. What is the smallest possible integer value of the sum of the numbers John wrote down?
+=== general-23
+Let $ABCDE$ be a regular pentagon with side length $1$. Circles $\omega_B$, $\omega_C$, and $\omega_D$ are centered at $B$, $C$, and $D$ respectively, each with radius $1$. $\omega_B$ intersects $\omega_C$ inside $ABCDE$ at point $F$, and $\omega_C$ intersects $\omega_D$ inside $ABCDE$ at point $G$. Compute the ratio of the measure of $\angle AFB$ to the measure of $\angle AGB$.
+=== general-24
+Let $F$ be a set of subsets of $\{1,2,3\}$. $F$ is called distinguishing if each of $1$, $2$, and $3$ are distinguishable from each other—that is, $1$, $2$, and $3$ are each in a distinct set of subsets from each other. For example $F=\{\{1,3\},\{2,3\}\}$ is distinguishing because $1$ is in $\{1,3\}$, $2$ is in $\{2,3\}$, and $3$ is in $\{1,3\}$ and $\{2,3\}$. $F=\{\{1,2\},\{2\}\}$ is also distinguishing: $1$ is in $\{1,2\}$, $2$ is in $\{1,2\}$ and $\{2\}$, and $3$ is in none of the subsets.
+
+On the other hand, $F=\{\{1\},\{2,3\}\}$ is not distinguishing. Both $2$ and $3$ are only in $\{2,3\}$, so they cannot be distinguished from each other.
+
+How many distinguishing sets of subsets of $\{1,2,3\}$ are there?
+=== general-25
+For the numbers $4^4,4^{44},4^{444},\ldots,4^{44\ldots4}$ where the last exponent is $2024$ digits long, Quincy writes down the remainders when they are divided by $2024$. Compute the sum of the distinct numbers that Quincy writes.
+=== geometry-1
+Let $ABCD$ be a square, and let $P$ be a point chosen on segment $AC$. There is a point $X$ on segment $BC$ such that $PX=PB=37$ and $BX=24$. Compute the side length of $ABCD$.
+=== geometry-2
+Let $\triangle ABC$ be an equilateral triangle with side length $6$. Three circles of radius $6$ are centered at $A$, $B$, and $C$. Compute the radius of the circle that is centered at the center of $\triangle ABC$, is internally tangent to these three circles, and lies in the interior of the three circles.
+=== geometry-3
+Let $\omega$ be the circle inscribed in regular hexagon $ABCDEF$ with side length $1$, and let the midpoint of side $BC$ be $M$. Segment $AM$ intersects $\omega$ at point $P\ne M$. Compute the length of $AP$.
+=== geometry-4
+Let $\triangle OAB$ and $\triangle OA'B'$ be equilateral triangles such that $\angle AOA'=90^\circ$, $\angle BOB'=90^\circ$, and $\angle AOB'$ is obtuse. Given that the side length of $\triangle OA'B'$ is $1$ and the circumradius of $\triangle OAB'$ is $\sqrt{61}$, compute the side length of $\triangle OAB$.
+=== geometry-5
+In right triangle $\triangle ABC$ with right angle at $B$, let $I$ be the incenter and $G$ the centroid. Let the foot of the perpendicular from $I$ to $AB$ be $D$ and the foot of the perpendicular from $G$ to $CB$ be $E$. Line $l$ is drawn such that $l$ is parallel to $DE$ and passes through $B$. Line $ID$ meets $l$ at $X$, and line $GE$ meets $l$ at $Y$. Given that $AB=8$ and $CB=15$, compute the length $XY$.
+=== geometry-6
+Let $ABCDE$ be a regular pentagon with side length $1$. Circles $\omega_B$, $\omega_C$, and $\omega_D$ are centered at $B$, $C$, and $D$ respectively, each with radius $1$. $\omega_B$ intersects $\omega_C$ inside $ABCDE$ at point $F$, and $\omega_C$ intersects $\omega_D$ inside $ABCDE$ at point $G$. Compute the ratio of the measure of $\angle AFB$ to the measure of $\angle AGB$.
+=== geometry-7
+Consider the horizontal line that intersects the ellipse $\frac{x^2}{9}+y^2=1$ at points $A$ and $B$ above the $x$-axis such that $\angle AOB=120^\circ$, where point $O$ is the origin. Compute the area of the region of the ellipse that lies above this line.
+=== geometry-8
+Points $A$ and $B$ lie on a circle centered at $O$ such that $AB=14$. The perpendicular bisector of $AB$ intersects $\odot O$ at point $C$ such that $O$ lies in the interior of $\triangle ABC$ and $AC=35\sqrt{2}$. Lines $BO$ and $AC$ intersect at point $D$. Compute the ratio of the area of $\triangle DOC$ to the area of $\triangle DBC$.
+=== geometry-9
+Consider a prism with regular hexagon bases. We form an antiprism by removing the lateral faces, rotating one of the bases $30^\circ$ about the axis passing through the centers of the bases, and forming $12$ triangular faces between the bases where each triangular face consists of one vertex of one of the bases and the two closest vertices of the other base. Compute the ratio of the volume of the antiprism to the volume of the original prism.
+
+@@fig:smt2024_geometry-9.png@@
+=== geometry-10
+Given a triangle $ABC$, let the tangent lines to the circumcircle of $\triangle ABC$ at points $A$ and $B$ intersect at point $T$. Line $CT$ intersects the circumcircle for a second time at point $D$. Let the projections of $D$ onto $AB$, $BC$, $AC$ be $M$, $N$, $P$ respectively. From $M$ draw a line perpendicular to $NP$ intersecting $BC$ at $E$. If $EC=5$, $EB=11$, and $\angle CEP=120^\circ$, compute the length of $CP$.

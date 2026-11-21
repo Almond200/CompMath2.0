@@ -1,5 +1,5 @@
 // Problems and diagrams © 2014 Stanford Math Tournament. Reproduced with permission from the Stanford Math Tournament.
-// Source: the official Stanford Math Tournament papers.
+// Source: the official Stanford Math Tournament papers. Built by tools/statements/build.py from tools/statements/spec/smt/2014.txt.
 Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2014-smt-algebra-1": { s: String.raw`Alice and Bob are painting a house. If Alice and Bob do not take any breaks, they will finish painting the house in $20$ hours. If, however, Bob stops painting once the house is half-finished, then the house takes $30$ hours to finish. Given that Alice and Bob paint at a constant rate, compute how many hours it will take for Bob to paint the entire house if he does it by himself.`, u: "https://www.stanfordmathtournament.com/pdfs/smt2014/algebra-problems.pdf" },
 "2014-smt-algebra-2": { s: String.raw`Compute $9^6+6\cdot 9^5+15\cdot 9^4+20\cdot 9^3+15\cdot 9^2+6\cdot 9$.`, u: "https://www.stanfordmathtournament.com/pdfs/smt2014/algebra-problems.pdf" },

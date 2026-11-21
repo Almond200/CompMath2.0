@@ -1,5 +1,5 @@
 // Problems and diagrams © 2024 Stanford Math Tournament. Reproduced with permission from the Stanford Math Tournament.
-// Source: the official Stanford Math Tournament papers.
+// Source: the official Stanford Math Tournament papers. Built by tools/statements/build.py from tools/statements/spec/smt/2024.txt.
 Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2024-smt-algebra-1": { s: String.raw`Compute the number of solutions $x\in[0,2\pi]$ to
 $$\cos(x^2)+\sin(x^2)=0.$$`, u: "https://www.stanfordmathtournament.com/pdfs/smt2024/algebra-problems.pdf" },

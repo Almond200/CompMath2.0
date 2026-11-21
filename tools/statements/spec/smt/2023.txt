@@ -1,0 +1,146 @@
+=== algebra-1
+There exists a unique real value of $x$ such that
+$$(x+\sqrt{x})^2=16.$$
+Compute $x$.
+=== algebra-2
+Compute the number of values of $x$ in the interval $[-11\pi,-2\pi]$ that satisfy $\frac{5\cos(x)+4}{5\sin(x)+3}=0$.
+=== algebra-3
+Nathan has discovered a new way to construct chocolate bars, but it's expensive! He starts with a single $1\times 1$ square of chocolate and then adds more rows and columns from there. If his current bar has dimensions $w\times h$ ($w$ columns and $h$ rows), then it costs $w^2$ dollars to add another row and $h^2$ dollars to add another column. What is the minimum cost to get his chocolate bar to size $20\times 20$?
+=== algebra-4
+If the sum of the real roots $x$ to each of the equations
+$$2^{2x}-2^{x+1}+1-\frac{1}{k^2}=0$$
+for $k=2,3,\ldots,2023$ is $N$, what is $2^N$?
+=== algebra-5
+Suppose $\alpha,\beta,\gamma\in\{-2,3\}$ are chosen such that
+$$M=\max_{x\in\mathbb{R}}\ \min_{y\in\mathbb{R}_{\ge 0}}\ \alpha x+\beta y+\gamma xy$$
+is finite and positive (note: $\mathbb{R}_{\ge 0}$ is the set of nonnegative real numbers). What is the sum of the possible values of $M$?
+=== algebra-6
+What is the area of the figure in the complex plane enclosed by the origin and the set of all points $\frac{1}{z}$ such that $(1-2i)z+(-2i-1)\overline{z}=6i$?
+=== algebra-7
+Consider a sequence $F_0=2$, $F_1=3$ that has the property $F_{n+1}F_{n-1}-F_n^2=(-1)^n\cdot 2$. If each term of the sequence can be written in the form $a\cdot r_1^n+b\cdot r_2^n$, what is the positive difference between $r_1$ and $r_2$?
+=== algebra-8
+If $x$ and $y$ are real numbers, compute the minimum possible value of
+$$\frac{4xy(3x^2+10xy+6y^2)}{x^4+4y^4}.$$
+=== algebra-9
+Let $x,y,z$ be nonzero numbers, not necessarily real, such that
+$$(x-y)^2+(y-z)^2+(z-x)^2=24yz$$
+and
+$$\frac{x^2}{yz}+\frac{y^2}{zx}+\frac{z^2}{xy}=3.$$
+Compute $\frac{x^2}{yz}$.
+=== algebra-10
+Suppose that $p(x),q(x)$ are monic polynomials with nonnegative integer coefficients such that
+$$\frac{1}{5x}\ge\frac{1}{q(x)}-\frac{1}{p(x)}\ge\frac{1}{3x^2}$$
+for all integers $x\ge 2$. Compute the minimum possible value of $p(1)\cdot q(1)$.
+=== discrete-1
+For all positive integers $n>1$, let $f(n)$ denote the largest odd proper divisor of $n$ (a proper divisor of $n$ is a positive divisor of $n$ except for $n$ itself). Given that $N=20^{23}\cdot 23^{20}$, compute
+$$\frac{f(N)}{f(f(f(N)))}.$$
+=== discrete-2
+A $3\times 3$ grid is to be painted with three colors (red, green, and blue) such that
+
+(i) no two squares that share an edge are the same color and
+(ii) no two corner squares on the same edge of the grid have the same color.
+
+As an example, the upper-left and bottom-left squares cannot both be red, as that would violate condition (ii). In how many ways can this be done? (Rotations and reflections are considered distinct colorings.)
+=== discrete-3
+How many trailing zeros does the value
+$$300\cdot 305\cdot 310\cdots 1090\cdot 1095\cdot 1100$$
+end with?
+=== discrete-4
+Michelle is drawing segments in the plane. She begins from the origin facing up the $y$-axis and draws a segment of length $1$. Now, she rotates her direction by $120^\circ$, with equal probability clockwise or counterclockwise, and draws another segment of length $1$ beginning from the end of the previous segment. She then continues this until she hits an already drawn segment. What is the expected number of segments she has drawn when this happens?
+=== discrete-5
+Ryan chooses five subsets $S_1,S_2,S_3,S_4,S_5$ of $\{1,2,3,4,5,6,7\}$ such that $|S_1|=1$, $|S_2|=2$, $|S_3|=3$, $|S_4|=4$, and $|S_5|=5$. Moreover, for all $1\le i<j\le 5$, either $S_i\cap S_j=S_i$ or $S_i\cap S_j=\emptyset$ (in other words, the intersection of $S_i$ and $S_j$ is either $S_i$ or the empty set). In how many ways can Ryan select the sets?
+=== discrete-6
+We say that an integer $x\in\{1,\cdots,102\}$ is square-ish if there exists some integer $n$ such that $x\equiv n^2+n\pmod{103}$. Compute the product of all square-ish integers modulo $103$.
+=== discrete-7
+Let $S$ be the number of bijective functions $f:\{0,1,\ldots,288\}\to\{0,1,\ldots,288\}$ such that $f((m+n)\bmod 17)$ is divisible by $17$ if and only if $f(m)+f(n)$ is divisible by $17$. Compute the largest positive integer $n$ such that $2^n$ divides $S$.
+=== discrete-8
+Define the Fibonacci numbers via $F_0=0$, $F_1=1$, and $F_n=F_{n-1}+F_{n-2}$.
+
+Olivia flips two fair coins at the same time, repeatedly, until she has flipped a tails on both, not necessarily on the same throw. She records the number of pairs of flips $c$ until this happens (not including the last pair, so if on the first flip both coins turned up tails $c$ would be $0$). What is the expected value of $F_c$?
+=== discrete-9
+Suppose $a$ and $b$ are positive integers with a curious property: $\left(a^3-3ab+\frac{1}{2}\right)^n+\left(b^3+\frac{1}{2}\right)^n$ is an integer for at least $3$, but at most finitely many different choices of positive integers $n$. What is the least possible value of $a+b$?
+=== discrete-10
+Colin has a peculiar $12$-sided dice: it is made up of two regular hexagonal pyramids. Colin wants to paint each face one of three colors so that no two adjacent faces on the same pyramid have the same color. How many ways can he do this? Two paintings are considered identical if there is a way to rotate or flip the dice to go from one to the other. Faces are adjacent if they share an edge.
+
+@@fig:smt2023_discrete-10.png@@
+=== general-1
+Arpit begins with a circular paper disk of radius $8$ and cuts out a circular disk of radius $4$ with the same center, which results in an annulus. Then, he cuts out and removes a sector of the annulus with a central angle of $90^\circ$. He repeats these steps beginning with another circular disk of radius $8$ and glues together the two annulus sectors in the shape of an S as shown on the left below. After making the S, Arpit also makes a letter T by gluing together two rectangles each having dimensions $x\times 4x$ as shown on the right below. Compute the value of $x$ Arpit should choose so that the S and T have the same area.
+
+@@fig:smt2023_general-1.png@@
+=== general-2
+Charlie has a large supply of chocolates, each of which has two properties: the filling can be raspberry or blueberry and the shape can be circular or square. Half of the chocolates have a raspberry filling and the other half have a blueberry filling. Also, $\frac{4}{9}$ of the raspberry-filled chocolates are circular and $\frac{2}{3}$ of the blueberry-filled chocolates are square. What fraction of the square chocolates are raspberry-filled?
+=== general-3
+Let $p$ be an odd prime, and $P$ be the second smallest multiple of $p$ that is a perfect cube. How many positive factors does $P$ have?
+=== general-4
+There exists a unique real value of $x$ such that
+$$(x+\sqrt{x})^2=16.$$
+Compute $x$.
+=== general-5
+For all positive integers $n>1$, let $f(n)$ denote the largest odd proper divisor of $n$ (a proper divisor of $n$ is a positive divisor of $n$ except for $n$ itself). Given that $N=20^{23}\cdot 23^{20}$, compute
+$$\frac{f(N)}{f(f(f(N)))}.$$
+=== general-6
+Let $X$ be the set of natural numbers with $10$ digits comprising of only $0$'s and $1$'s, and whose first digit is $1$. How many numbers in $X$ are divisible by $3$?
+=== general-7
+If $x$ and $y$ are positive integers that satisfy $43x+47y=2023$, compute the minimum possible value of $x+y$.
+=== general-8
+Lines are drawn from a corner of a square to partition the square into $8$ parts with equal areas. Another set of lines is drawn in the same way from an adjacent corner. How many regions are formed inside the square and are bounded by drawn lines and edges of the square?
+=== general-9
+William has a large supply of candy bars and wants to choose one of among three families to give the candy to. Family A has $13$ children, family B has $11$ children, and family C has $7$ children. The children in family C each require an even number of candy bars. If William attempts to distribute the candy bars equally among the children in families A, B, and C, there are $7$, $5$, and $8$ candy bars left over, respectively. What is the least number of candy bars that William could have?
+=== general-10
+Consider the rectangle with a length of $2$ and a width of $1$. Pick one of the two diagonals of the rectangle. Observe that this diagonal separates the rectangle into two right-angled triangles, $R_1$ and $R_2$. Reflect $R_1$ in the diagonal to obtain $R_1'$. Compute the area of the intersection of $R_1'$ and $R_2$.
+=== general-11
+Nathan has discovered a new way to construct chocolate bars, but it's expensive! He starts with a single $1\times 1$ square of chocolate and then adds more rows and columns from there. If his current bar has dimensions $w\times h$ ($w$ columns and $h$ rows), then it costs $w^2$ dollars to add another row and $h^2$ dollars to add another column. What is the minimum cost to get his chocolate bar to size $20\times 20$?
+=== general-12
+Let $A_1A_2\ldots A_{12}$ be a regular dodecagon. Equilateral triangles $\triangle A_1A_2B_1,\triangle A_2A_3B_2,\ldots$, and $\triangle A_{12}A_1B_{12}$ are drawn such that points $B_1,B_2,\ldots$, and $B_{12}$ lie outside dodecagon $A_1A_2\ldots A_{12}$. Compute the ratio of the area of dodecagon $B_1B_2\ldots B_{12}$ to the area of dodecagon $A_1A_2\ldots A_{12}$.
+=== general-13
+Two frogs jump along a straight line in the same direction, starting at the same place. Every ten seconds, each frog jumps $2$, $4$, or $6$ feet, with each possibility being equally likely. What is the probability that the frogs have traveled the same distance after thirty seconds?
+=== general-14
+How many trailing zeros does the value
+$$300\cdot 305\cdot 310\cdots 1090\cdot 1095\cdot 1100$$
+end with?
+=== general-15
+Let $A$, $B$, and $C$ be three points on a line (in that order), and let $X$ and $Y$ be two points on the same side of line $AC$. If $\triangle AXB\sim\triangle BYC$ and the ratio of the area of quadrilateral $AXYC$ to the area of $\triangle AXB$ is $111:1$, compute $\frac{BC}{BA}$.
+=== general-16
+Aidan has five final exams to take during finals week, each on a different weekday. During finals week, there are heavy storms and there is a $48.8\%$ chance of a tree on campus falling down at some point in any given 24-hour period, where the probability of a tree falling down is uniform for the entire week and independent at different instances in time (i.e., a tree falling down at 9 AM does not affect the probability a tree falls down at 9:05 AM). On each day, if a tree falls down at any point between 9 AM and 5 PM, then Aidan's final for that day is canceled. What is the probability that at least two of his finals are canceled?
+=== general-17
+Suppose we have a triangle $\triangle ABC$ with $AB=12$, $AC=13$, and $BC=15$. Let $I$ be the incenter of triangle $ABC$. We draw a line through $I$ parallel to $BC$ intersecting $AB$ at point $D$ and $AC$ at point $E$. What is the perimeter of triangle $\triangle ADE$?
+=== general-18
+Ryan chooses five subsets $S_1,S_2,S_3,S_4,S_5$ of $\{1,2,3,4,5,6,7\}$ such that $|S_1|=1$, $|S_2|=2$, $|S_3|=3$, $|S_4|=4$, and $|S_5|=5$. Moreover, for all $1\le i<j\le 5$, either $S_i\cap S_j=S_i$ or $S_i\cap S_j=\emptyset$ (in other words, the intersection of $S_i$ and $S_j$ is either $S_i$ or the empty set). In how many ways can Ryan select the sets?
+=== general-19
+Bernie has an infinite supply of Nerds and Smarties with the property that eating one Nerd increases his IQ by $10$ and eating one Smartie increases his IQ by $14$. If Bernie currently has an IQ of $99$, how many IQ values between $100$ and $200$, inclusive, can he achieve by eating Nerds and Smarties?
+=== general-20
+If the sum of the real roots $x$ to each of the equations
+$$2^{2x}-2^{x+1}+1-\frac{1}{k^2}=0$$
+for $k=2,3,\ldots,2023$ is $N$, what is $2^N$?
+=== general-21
+Equilateral triangle $\triangle ABC$ is inscribed in circle $\Omega$, which has a radius of $1$. Let the midpoint of $BC$ be $M$. Line $AM$ intersects $\Omega$ again at point $D$. Let $\omega$ be the circle with diameter $MD$. Compute the radius of the circle that is tangent to $BC$ on the same side of $BC$ as $\omega$, internally tangent to $\Omega$, and externally tangent to $\omega$.
+=== general-22
+If $(a,b)$ is a point on the circle centered at $(5,0)$ with radius $4$ in the $xy$-plane, compute the maximum possible value of $\frac{a^2+7b^2}{2a^2+b^2}$.
+=== general-23
+An ant begins walking while facing due east and every second turns $60^\circ$ clockwise or counterclockwise, each with probability $\frac{1}{2}$. After the first turn the ant makes, what is the expected number of turns (not including the first turn) it makes before facing due east again?
+=== general-24
+Equilateral triangle $\triangle ABC$ has side length $12$ and equilateral triangles of side lengths $a,b,c<6$ are each cut from a vertex of $\triangle ABC$, leaving behind an equiangular hexagon $A_1A_2B_1B_2C_1C_2$, where $A_1$ lies on $AC$, $A_2$ lies on $AB$, and the rest of the vertices are similarly defined. Let $A_3$ be the midpoint of $A_1A_2$ and define $B_3$, $C_3$ similarly. Let the center of $\triangle ABC$ be $O$. Note that $OA_3$, $OB_3$, $OC_3$ split the hexagon into three pentagons. If the sum of the areas of the equilateral triangles cut out is $18\sqrt{3}$ and the ratio of the areas of the pentagons is $5:6:7$, what is the value of $abc$?
+=== general-25
+Consider a sequence $F_0=2$, $F_1=3$ that has the property $F_{n+1}F_{n-1}-F_n^2=(-1)^n\cdot 2$. If each term of the sequence can be written in the form $a\cdot r_1^n+b\cdot r_2^n$, what is the positive difference between $r_1$ and $r_2$?
+=== geometry-1
+Let $A_1A_2\ldots A_{12}$ be a regular dodecagon. Equilateral triangles $\triangle A_1A_2B_1,\triangle A_2A_3B_2,\ldots$, and $\triangle A_{12}A_1B_{12}$ are drawn such that points $B_1,B_2,\ldots$, and $B_{12}$ lie outside dodecagon $A_1A_2\ldots A_{12}$. Then, equilateral triangles $\triangle A_1A_2C_1,\triangle A_2A_3C_2,\ldots$, and $\triangle A_{12}A_1C_{12}$ are drawn such that points $C_1,C_2,\ldots$, and $C_{12}$ lie inside dodecagon $A_1A_2\ldots A_{12}$. Compute the ratio of the area of dodecagon $B_1B_2\ldots B_{12}$ to the area of dodecagon $C_1C_2\ldots C_{12}$.
+=== geometry-2
+Triangle $\triangle ABC$ has side lengths $AB=39$, $BC=16$, and $CA=25$. What is the volume of the solid formed by rotating $\triangle ABC$ about line $BC$?
+=== geometry-3
+Consider an equilateral triangle $\triangle ABC$ of side length $4$. In the zeroth iteration, draw a circle $\Omega_0$ tangent to all three sides of the triangle. In the first iteration, draw circles $\Omega_{1A},\Omega_{1B},\Omega_{1C}$ such that circle $\Omega_{1v}$ is externally tangent to $\Omega_0$ and tangent to the two sides that meet at vertex $v$ (for example, $\Omega_{1A}$ would be tangent to $\Omega_0$ and sides $AB$, $AC$). In the $n$th iteration, draw circle $\Omega_{nv}$ externally tangent to $\Omega_{n-1,v}$ and the two sides that meet at vertex $v$. Compute the total area of all the drawn circles as the number of iterations approaches infinity.
+=== geometry-4
+Equilateral triangle $\triangle ABC$ is inscribed in circle $\Omega$, which has a radius of $1$. Let the midpoint of $BC$ be $M$. Line $AM$ intersects $\Omega$ again at point $D$. Let $\omega$ be the circle with diameter $MD$. Compute the radius of the circle that is tangent to $BC$ on the same side of $BC$ as $\omega$, internally tangent to $\Omega$, and externally tangent to $\omega$.
+=== geometry-5
+Equilateral triangle $\triangle ABC$ has side length $12$ and equilateral triangles of side lengths $a,b,c<6$ are each cut from a vertex of $\triangle ABC$, leaving behind an equiangular hexagon $A_1A_2B_1B_2C_1C_2$, where $A_1$ lies on $AC$, $A_2$ lies on $AB$, and the rest of the vertices are similarly defined. Let $A_3$ be the midpoint of $A_1A_2$ and define $B_3$, $C_3$ similarly. Let the center of $\triangle ABC$ be $O$. Note that $OA_3$, $OB_3$, $OC_3$ split the hexagon into three pentagons. If the sum of the areas of the equilateral triangles cut out is $18\sqrt{3}$ and the ratio of the areas of the pentagons is $5:6:7$, what is the value of $abc$?
+=== geometry-6
+Let $ABC$ be a triangle and $\omega_1$ its incircle. Let points $D$ and $E$ be on segments $AB$, $AC$ respectively such that $DE$ is parallel to $BC$ and tangent to $\omega_1$. Now let $\omega_2$ be the incircle of $\triangle ADE$ and let points $F$ and $G$ be on segments $AD$, $AE$ respectively such that $FG$ is parallel to $DE$ and tangent to $\omega_2$. Given that $\omega_2$ is tangent to line $AF$ at point $X$ and line $AG$ at point $Y$, the radius of $\omega_1$ is $60$, and
+$$4(AX)=5(FG)=4(AY),$$
+compute the radius of $\omega_2$.
+=== geometry-7
+Triangle $ABC$ has $AC=5$. $D$ and $E$ are on side $BC$ such that $AD$ and $AE$ trisect $\angle BAC$, with $D$ closer to $B$ and $DE=\frac{3}{2}$, $EC=\frac{5}{2}$. From $B$ and $E$, altitudes $BF$ and $EG$ are drawn onto side $AC$. Compute $\frac{CF}{CG}-\frac{AF}{AG}$.
+=== geometry-8
+In triangle $\triangle ABC$, point $R$ lies on the perpendicular bisector of $AC$ such that $CA$ bisects $\angle BAR$. Line $BR$ intersects $AC$ at $Q$, and the circumcircle of $\triangle ARC$ intersects segment $AB$ at $P\ne A$. If $AP=1$, $PB=5$, and $AQ=2$, compute $AR$.
+=== geometry-9
+Triangle $\triangle ABC$ is isosceles with $AC=AB$, $BC=1$, and $\angle BAC=36^\circ$. Let $\omega$ be a circle with center $B$ and radius $r_\omega=\frac{P_{ABC}}{4}$, where $P_{ABC}$ denotes the perimeter of $\triangle ABC$. Let $\omega$ intersect line $AB$ at $P$ and line $BC$ at $Q$. Let $I_B$ be the center of the excircle of $\triangle ABC$ with respect to point $B$, and let $BI_B$ intersect $PQ$ at $S$. We draw a tangent line from $S$ to $\odot I_B$ that intersects $\odot I_B$ at point $T$. Compute the length of $ST$.
+=== geometry-10
+Let $\triangle ABC$ be a triangle with side lengths $AB=13$, $BC=14$, and $CA=15$. The angle bisector of $\angle BAC$, the angle bisector of $\angle ABC$, and the angle bisector of $\angle ACB$ intersect the circumcircle of $\triangle ABC$ again at points $D$, $E$ and $F$, respectively. Compute the area of hexagon $AFBDCE$.

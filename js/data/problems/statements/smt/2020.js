@@ -1,5 +1,5 @@
 // Problems and diagrams © 2020 Stanford Math Tournament. Reproduced with permission from the Stanford Math Tournament.
-// Source: the official Stanford Math Tournament papers.
+// Source: the official Stanford Math Tournament papers. Built by tools/statements/build.py from tools/statements/spec/smt/2020.txt.
 Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2020-smt-algebra-1": { s: String.raw`Evaluate $\sqrt{2223^2-8888}$.`, u: "https://www.stanfordmathtournament.com/pdfs/smt2020/algebra-problems.pdf" },
 "2020-smt-algebra-2": { s: String.raw`If $a$ is the only real number that satisfies $\log_{2020}a=202020-a$ and $b$ is the only real number that satisfies $2020^b=202020-b$, what is the value of $a+b$?`, u: "https://www.stanfordmathtournament.com/pdfs/smt2020/algebra-problems.pdf" },

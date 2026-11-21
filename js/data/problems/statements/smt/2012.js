@@ -1,5 +1,5 @@
 // Problems and diagrams © 2012 Stanford Math Tournament. Reproduced with permission from the Stanford Math Tournament.
-// Source: the official Stanford Math Tournament papers.
+// Source: the official Stanford Math Tournament papers. Built by tools/statements/build.py from tools/statements/spec/smt/2012.txt.
 Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2012-smt-algebra-1": { s: String.raw`Compute the minimum possible value of
 $$(x-1)^2+(x-2)^2+(x-3)^2+(x-4)^2+(x-5)^2$$
