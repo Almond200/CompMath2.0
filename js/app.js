@@ -10156,7 +10156,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 100;
+  const STATEMENTS_V = 101;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {
