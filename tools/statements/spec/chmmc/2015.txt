@@ -1,0 +1,42 @@
+=== individual-1
+The following number is the product of the divisors of $n$.
+$$2^63^3$$
+What is $n$?
+=== individual-2
+Let a right triangle have the sides $AB=\sqrt3$, $BC=\sqrt2$, and $CA=1$. Let $D$ be a point such that $AD=BD=1$. Let $E$ be the point on line $BD$ that is equidistant from $D$ and $A$. Find the angle $AEB$.
+=== individual-3
+There are twelve indistinguishable blackboards that are distributed to eight different schools. There must be at least one board for each school. How many ways are there of distributing the boards?
+=== individual-4
+A Nishop is a chess piece that moves like a knight on its first turn, like a bishop on its second turn, and in general like a knight on odd-numbered turns and like a bishop on even-numbered turns.
+
+A Nishop starts in the bottom-left square of a $3\times 3$-chessboard. How many ways can it travel to touch each square of the chessboard exactly once?
+=== individual-5
+Let a Fibonacci Spiral be a spiral constructed by the addition of quarter-circles of radius $n$, where each $n$ is a term of the Fibonacci series:
+$$1,1,2,3,5,8,\dots$$
+(Each term in this series is the sum of the two terms that precede it.) What is the arclength of the maximum Fibonacci spiral that can be enclosed in a rectangle of area $714$, whose side lengths are terms in the Fibonacci series?
+=== individual-6
+Suppose that $a_1=1$ and
+$$a_{n+1}=a_n-\frac{2}{n+2}+\frac{4}{n+1}-\frac{2}{n}$$
+What is $a_{15}$?
+=== individual-7
+Consider $5$ points in the plane, no three of which are collinear. Let $n$ be the number of circles that can be drawn through at least three of the points. What are the possible values of $n$?
+=== individual-8
+Find the number of positive integers $n$ satisfying $\lfloor n/2014\rfloor=\lfloor n/2016\rfloor$.
+=== individual-9
+Let $f$ be a function taking real numbers to real numbers such that for all reals $x\ne 0,1$, we have
+$$f(x)+f\left(\frac{1}{1-x}\right)=(2x-1)^2+f\left(1-\frac1x\right).$$
+Compute $f(3)$.
+=== individual-10
+Alice and Bob split $5$ beans into piles. They take turns removing a positive number of beans from a pile of their choice. The player to take the last bean loses. Alice plays first. How many ways are there to split the piles such that Alice has a winning strategy?
+=== individual-11
+Triangle $ABC$ is an equilateral triangle of side length $1$. Let point $M$ be the midpoint of side $AC$. Another equilateral triangle $DEF$, also of side length $1$, is drawn such that the circumcenter of $DEF$ is $M$, point $D$ rests on side $AB$. The length of $AD$ is of the form $\frac{a+\sqrt{b}}{c}$, where $b$ is square free. What is $a+b+c$?
+=== individual-12
+Consider the function $f(x)=\max\{-11x-37,\ x-1,\ 9x+3\}$ defined for all real $x$. Let $p(x)$ be a quadratic polynomial tangent to the graph of $f$ at three distinct points with $x$ values $t_1$, $t_2$, and $t_3$. Compute the maximum value of $t_1+t_2+t_3$ over all possible $p$.
+=== individual-13
+Circle $J_1$ of radius $77$ is centered at point $X$ and circle $J_2$ of radius $39$ is centered at point $Y$. Point $A$ lies on $J_1$ and on line $XY$, such that $A$ and $Y$ are on opposite sides of $X$. $\Omega$ is the unique circle simultaneously tangent to the tangent segments from point $A$ to $J_2$ and internally tangent to $J_1$. If $XY=157$, what is the radius of $\Omega$?
+=== individual-14
+Find the smallest positive integer $n$ so that for any integers $a_1,a_2,\dots,a_{527}$, the number
+$$\left(\prod_{j=1}^{527}a_j\right)\cdot\left(\sum_{j=1}^{527}a_j^n\right)$$
+is divisible by $527$.
+=== individual-15
+A circle $\Omega$ of unit radius is inscribed in the quadrilateral $ABCD$. Let circle $\omega_A$ be the unique circle of radius $r_A$ externally tangent to $\Omega$, and also tangent to segments $AB$ and $DA$. Similarly define circles $\omega_B,\omega_C$, and $\omega_D$ and radii $r_B,r_D$, and $r_D$. Compute the smallest positive real $\lambda$ so that $r_C<\lambda$ over all such configurations with $r_A>r_B>r_C>r_D$.
