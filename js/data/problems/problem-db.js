@@ -11261,7 +11261,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2016 Columbus State Tournament, Problem 47", formulas: ["de-moivre"], strategy: "", tree: ["alg.cx.polar.demoivre"] },
   { ref: "2016 Columbus State Tournament, Problem 48", formulas: ["pythagorean-theorem"], strategy: "", tree: ["geo.tri.centers"] },
   { ref: "2016 Columbus State Tournament, Problem 49", formulas: ["reciprocal-power-sums"], strategy: "", tree: ["alg.eq.identity.recip"] },
-  { ref: "2016 Columbus State Tournament, Problem 50", formulas: ["vietas-general"], strategy: "", tree: ["alg.eq.system.cyclic"] },
+  { ref: "2016 Columbus State Tournament, Problem 50", formulas: [], strategy: "", tree: ["alg.eq.system.cyclic"] },
   // ---- 2015 Columbus State Invitational Mathematics Tournament, Individual test. Topics, cards and rating only (Step H); the official PDFs are linked by the app.
   { ref: "2015 Columbus State Tournament, Problem 1", formulas: ["repeating-decimals"], strategy: "", tree: ["nt.digit.decimal.repeat"] },
   { ref: "2015 Columbus State Tournament, Problem 2", formulas: ["vietas-general"], strategy: "", tree: ["alg.poly.vieta.basic"] },
