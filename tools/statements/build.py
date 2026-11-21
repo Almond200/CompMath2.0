@@ -40,13 +40,15 @@ DIRS = {
     "pumac": (("PUMaC Division A", "PUMaC Division B"), "Princeton University Mathematics Competition", "the official PUMaC papers"),
 }
 FAM, NAME, SOURCE = DIRS[d]
+# the slug word where it is not the folder name (slug = year-word-tail)
+SLUG_WORD = {"gmay": "girls-in-math-at-yale"}
 total = 0
 for spec in sorted(glob.glob(os.path.join(SPEC, d, "*.txt"))):
     year = os.path.basename(spec)[:4]
     blocks = re.split(r"^=== (\S+)\s*$", open(spec, encoding="utf-8").read(), flags=re.M)[1:]
     out = []
     for tail, body in zip(blocks[::2], blocks[1::2]):
-        slug = f"{year}-{d}-{tail}"
+        slug = f"{year}-{SLUG_WORD.get(d, d)}-{tail}"
         if slug not in probs: sys.exit(f"{spec}: {slug} is not in the database")
         p = probs[slug]
         def fig(m):

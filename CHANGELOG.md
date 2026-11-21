@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **Girls in Math at Yale statements complete (96 problems, 2019 to 2026):** every Individual round read against its pages, six figures (2019 #2 and #6, 2021 #7, 2022 #1, 2024 #2, 2025 #12). No tag needed changing. `build.py` gained `SLUG_WORD` because the slug word differs from the folder name (`girls-in-math-at-yale`). `STATEMENTS_V` 63.
 - **MMATHS statements complete (131 problems, 2014 to 2025 without 2017):** every Individual round read against its page (2014's file is the solutions booklet, read for the statements), one figure (2023 #11, the knight's moves). Tag fix: 2015 #8 and #9 had swapped tags (AUDITS.md). `STATEMENTS_V` 62.
 - **Duke Math Meet statements complete (156 problems, 2007 to 2022):** every Individual round read against its page, 9 figures cropped (2008 #6, 2010 #9, 2011 #3 and #5, 2019 #5, 2021 #1 and #7, 2022 #1). Duke's database slugs are `YYYY-duke-math-meet-individual-N`, so the specs use `math-meet-individual-N` block names. No tag needed changing. `STATEMENTS_V` 61.
 - **CHMMC statements complete (249 problems, 2010 to 2026):** all 17 Individual rounds read against their pages, six figures cropped (2010 Winter #14, 2012 Spring #3 and #10, 2016 #14 and #15, 2020 #6, 2021 #11). 2012 Fall #7 (a series problem) keeps its calculus entry. No tag needed changing.
