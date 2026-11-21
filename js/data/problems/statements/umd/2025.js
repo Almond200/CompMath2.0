@@ -1,0 +1,100 @@
+// Problems and diagrams © 2025 University of Maryland High School Mathematics Competition. Reproduced with permission from the University of Maryland High School Mathematics Competition.
+// Source: the official UMD HSMC papers. Built by tools/statements/build.py from tools/statements/spec/umd/2025.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2025-umd-hsmc-part-i-1": { s: String.raw`Donald Duck asks Goofy to compute the volume of a sphere. The correct formula is $V=\frac43\pi r^3$, but the only formula Goofy remembers from geometry is $\pi r^2$, so he uses that formula. He is lucky and this gives the correct numerical answer. What is the radius $r$?
+
+(A) $1$  (B) $3$  (C) $\sqrt\pi$  (D) $3/4$  (E) $2$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-2": { s: String.raw`Charlie Brown is flying his kite and it gets stuck at the top on the Kite-Eating Tree. He computes that the kite string is a straight line $100$ feet long and he is holding the end of the string at ground level $60$ feet from the tree. How tall is the tree?
+
+(A) $60$ feet  (B) $70$ feet  (C) $80$ feet  (D) $90$ feet  (E) $100$ feet`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-3": { s: String.raw`Your friend makes a slight mistake in computing $\pi$, obtains the repeating decimal $3.141414\cdots$, and changes this to a fraction $\frac{311}{d}$. What is the value of $d$?
+
+(A) $10$  (B) $11$  (C) $81$  (D) $89$  (E) $99$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-4": { s: String.raw`Francis Scott Key is watching bombs bursting in air. A cannonball bomb is fired upward at midnight and its height in feet after $t$ seconds is $-16t^2+480t$. The bomb explodes at the highest point possible for this equation. How many seconds after midnight does Francis Scott Key see the bomb explode?
+
+(A) $2$  (B) $8$  (C) $15$  (D) $16$  (E) $30$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-5": { s: String.raw`Napier, Noether, and Nash make piles of logs as follows:
+$$\text{Napier: }\frac{(\log 2)/(\log 3)}{(\log 4)/(\log 9)},\qquad\text{Noether: }\frac{\log 125}{\log 25},\qquad\text{Nash: }\frac{\log(10^4)}{\log(10^8)}.$$
+Logs are to the base $10$. Which of the following is the correct ordering of the values of their piles?
+
+(A) Nash < Napier < Noether  (B) Nash < Noether < Napier  (C) Noether < Nash < Napier  (D) Napier < Noether < Nash  (E) Napier < Nash < Noether`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-6": { s: String.raw`Alice rides her bike to the top of a hill. She averages $6$ miles per hour. She wants to ride down the same hill in such a way that her round trip average is $12$ miles per hour. What should be her average speed going down hill in miles per hour?
+
+(A) $9$  (B) $12$  (C) $18$  (D) $24$  (E) This is not possible.`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-7": { s: String.raw`A terrapin is crawling at a speed of $2$ inches per minute from Annapolis to Hagerstown, a distance of $100$ miles. How many days does this journey take? There are $12$ inches in a foot, $5280$ feet in a mile, and $24$ hours in a day.
+
+(A) $150$  (B) $365$  (C) $1200$  (D) $2200$  (E) $2025$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-8": { s: String.raw`You are walking in the $xy$-plane along the parabola $y=x^2+9x+4$ and your friend is walking along the parabola $y=2x^2-6x+60$. You both start at $x=0$ on Sunday, walk to $x=1$ on Monday, continue to $x=2$ on Tuesday, $x=3$ on Wednesday, etc. What day of the week is it when your paths first cross?
+
+(A) Sunday  (B) Monday  (C) Tuesday  (D) Wednesday  (E) Thursday`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-9": { s: String.raw`From the point $A=(x,y)$ in the first quadrant of the $xy$-plane we drop perpendiculars to the $x$- and $y$-axes to obtain points $B,C$, respectively. Suppose the area of $ABOC$ is $2025$, where $O$ is the origin. If $ABOC$ is a square, what is the perimeter of this square?
+
+(A) $160$  (B) $170$  (C) $180$  (D) $190$  (E) $200$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-10": { s: String.raw`Taylor Swift's name is a string of $11$ letters where the first and last letter are the same, but the other $9$ letters are distinct, and distinct from the first and last letter. Let $N$ be the number of such strings of letters formed from the $26$ letters of the English alphabet. Which of the following is true?
+
+(A) $N<10^7$  (B) $10^7<N<10^{12}$  (C) $10^{12}<N<10^{15}$  (D) $10^{15}<N<10^{20}$  (E) $N>10^{20}$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-11": { s: String.raw`The logarithm score of a positive number $x$ is the largest number of log's in which
+$$\log_{10}(\log_{10}(\cdots(\log_{10}(x))))$$
+is a real number. For example the logarithm score of $10$ is two because $\log_{10}(\log_{10}(10))$ is real, but $\log_{10}(\log_{10}(\log_{10}(10)))$ is not. Suppose $\log_2(\log_3(\log_5(\log_{10}(x))))=0$. What is the logarithm score of $x$?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-12": { s: String.raw`An integer $a$ is called interesting if there are positive integers $x,y$ for which $2^a=x^2-3xy$. How many interesting integers $a$ between $1$ and $2025$, inclusive, are there?
+
+(A) $1000$  (B) $1002$  (C) $1005$  (D) $1012$  (E) $1013$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-13": { s: String.raw`Integers $1,2,\dots,2025$ are placed in $n$ boxes in such a way that both of the following conditions are satisfied:
+
+(a) Every box is nonempty, and
+
+(b) The sum of elements in each box is a multiple of $3$.
+
+What is the largest possible value of $n$?
+
+(A) $1350$  (B) $1351$  (C) $1352$  (D) $1353$  (E) $1354$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-14": { s: String.raw`Suppose $x$ and $y$ are two positive integers for which $x$ is a multiple of $y$ and $y>1$. We know
+
+• $N=3x^2+5y^2\le 3000$, and
+
+• $N$ is not a multiple of any single-digit prime number.
+
+What is the largest possible value of $x+y$?
+
+(A) $33$  (B) $34$  (C) $35$  (D) $39$  (E) $44$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-15": { s: String.raw`An integer $x$ is called a perfect power if $x=m^k$ for some positive integers $m,k$ with $k\ge 2$. How many integers between $1$ and $1{,}000$, inclusive, are perfect powers?
+
+(A) $45$  (B) $44$  (C) $43$  (D) $42$  (E) $41$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-16": { s: String.raw`How many strings of length $12$ from the digits $2$ and $3$ are there that satisfy both of the following?
+
+(a) There are no two consecutive terms both of which are $2$, and
+
+(b) There are no three consecutive terms all of which are $3$.
+
+(A) $49$  (B) $50$  (C) $51$  (D) $52$  (E) $53$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-17": { s: String.raw`How many real solutions does the following equation have?
+$$\sqrt[3]{x+1}+\sqrt[3]{x+2}=\sqrt[3]{2x+3}$$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) infinitely many`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-18": { s: String.raw`There are eight seats at a rectangular table - three at each of the longer sides and one at each of the shorter sides. Six adults and two children sit around the table, with each seating configuration equally likely. What is the probability that the two children will end up sitting next to each other at one of the longer sides of the table?
+
+(A) $1/4$  (B) $1/5$  (C) $3/14$  (D) $1/7$  (E) $2/9$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-19": { s: String.raw`For every positive integer $n$ let $S(n)$ be the sum of the digits of (the decimal presentation of) $n$. What is the value of $\displaystyle\sum_{n=1}^{1000}S(n)$?
+
+(A) $13501$  (B) $45^3+1$  (C) $11008$  (D) $11^4+3$  (E) $14005$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-20": { s: String.raw`For every positive real number $a$, let $M_a$ be the maximum value of $\sin x$, when $0\le x\le a$, and let $N_a$ be the maximum value of $\sin x$, when $a\le x\le 2a$. Here, angle $x$ is measured in radians. The largest positive $a$ for which $M_a=2N_a$ can be written as $\frac{m\pi}{n}$, where $m,n$ are positive relatively prime integers. What is $m+n$?
+
+(A) $7$  (B) $11$  (C) $23$  (D) $25$  (E) $27$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-21": { s: String.raw`A gambler comes to the casino with $2$ dollars. He will leave the casino when he has $4$ dollars or when he is broke (whichever happens sooner). He can bet one dollar at a time (either winning or losing a dollar). If the probability of winning each round is $40$ percent, what is the probability that he will leave with $4$ dollars?
+
+(A) $1/4$  (B) $4/13$  (C) $5/14$  (D) $6/15$  (E) $7/18$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-22": { s: String.raw`Suppose vertices of $\triangle ABC$ are located on the $xy$-plane. Vertex $A$ is located on the positive $y$-axis, $B$ is located on the negative $x$-axis and $C$ on the positive $x$-axis. Suppose the incenter of $\triangle ABC$ is located at $I=(7,15)$. The circle that passes through $I$ and is tangent to both sides $AB$ and $AC$ has radius $75/8$. What is the $y$-coordinate of vertex $A$?
+
+(A) $38$  (B) $39$  (C) $40$  (D) $319/8$  (E) $282/7$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-23": { s: String.raw`Let $S=\{2,3,\dots,9\}$ be the set consisting of all single-digit integers more than $1$. For every integer $n\ge 2$, let $t(n)$ be the number of unordered factorizations of $n$ into integers from $S$. For example $t(26)=0$ since $26$ cannot be written as a product of integers in $S$, and $t(12)=3$ since $2\times 6$, $3\times 4$, and $2\times 2\times 3$ are the only such factorizations of $12$. What is the value of $\displaystyle\sum_{n=2}^{\infty}\frac{t(n)}{n^2}$?
+
+(A) $4/5$  (B) $5/6$  (C) $6/7$  (D) $7/9$  (E) $1$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-24": { s: String.raw`In a convex quadrilateral $ABCD$, we know the diagonal $AC$ is the angle bisector of $\angle BAD$. The measure of angles $\angle ADB$, $\angle ACB$, and $\angle ACD$ are $50^\circ$, $25^\circ$ and $35^\circ$, respectively. What is the measure of $\angle BAD$?
+
+(A) $55^\circ$  (B) $60^\circ$  (C) $65^\circ$  (D) $70^\circ$  (E) $75^\circ$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+"2025-umd-hsmc-part-i-25": { s: String.raw`Define a function $f(n)$ on the set of positive integers by $f(n)=\displaystyle\sum_{k=1}^{n}\sin(k)\sin(k^2)$, where the angles $k$ and $k^2$ are measured in degrees. Suppose $m$ and $M$ are the minimum and maximum values of $f$, respectively. There are $s$ positive integers $n$ between $1$ and $900$, inclusive, for which $f(n)=\dfrac{m+M}{2}$. Find $s$.
+
+(A) $40$  (B) $42$  (C) $45$  (D) $46$  (E) $48$`, u: "https://mathcomp.math.umd.edu/files/2025/10/PartI2025.pdf" },
+});

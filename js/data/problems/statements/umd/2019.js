@@ -1,0 +1,91 @@
+// Problems and diagrams © 2019 University of Maryland High School Mathematics Competition. Reproduced with permission from the University of Maryland High School Mathematics Competition.
+// Source: the official UMD HSMC papers. Built by tools/statements/build.py from tools/statements/spec/umd/2019.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2019-umd-hsmc-part-i-1": { s: String.raw`Which one of the following is the largest?
+
+(A) $2^{25}$  (B) $4^{12}$  (C) $16^6$  (D) $32^5$  (E) $8^9$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-2": { s: String.raw`Alex chooses a positive real number $x$ and gives it to Sam, who squares it and gives the result to Carlos. Carlos cubes the number he receives and gives the result of his computation to Fiona, who takes its fourth root. Fiona's answer is $1000$. What is $x$?
+
+(A) $\sqrt{10}$  (B) $10$  (C) $100$  (D) $100\sqrt{10}$  (E) $1000$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-3": { s: String.raw`Crazy Cockroach walks along the graph of $y=x^5-x$, starting when $x=-10$ and ending at $x=10$ (it always walks with increasing $x$ and never turns around). How many times does it cross the $x$-axis?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-4": { s: String.raw`Abe Lincoln wants to know how many logs he will need to build a small factory. His mathematician friend mis-hears him and writes
+$$\log(6!)=a\log(2)+b\log(3)+c\log(5),$$
+where $a,b,c$ are integers (and $6!$ is called "$6$ factorial" and equals $6\cdot 5\cdot 4\cdot 3\cdot 2\cdot 1$, and $\log$ is logarithm in base $10$). How many logs are needed? That is, what is $a+b+c$?
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-5": { s: String.raw`For what constant $k$ is there a point that simultaneously lies on the three lines given by the equations $x+y=2$, $2y-3x=-1$, and $5x+ky=7$?
+
+(A) $k=2$  (B) $k=1$  (C) $k=0$  (D) $k=-1$  (E) $k=-2$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-6": { s: String.raw`Let $N$ be the smallest positive integer that is neither a prime nor a perfect square, and has no prime factors less than $100$. What is the sum of the digits of $N$?
+
+(A) $4$  (B) $8$  (C) $10$  (D) $12$  (E) $16$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-7": { s: String.raw`What is the largest integer $n$ for which all angles of a regular $n$-gon are integers when measured in degrees?
+
+(A) $180$  (B) $360$  (C) $480$  (D) $540$  (E) $720$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-8": { s: String.raw`Sammy, Sally, and Sunny pick peaches. The number of peaches that Sammy picks is five times the number of peaches that Sally picks. The number of peaches that Sammy picks is also three times the number of peaches that Sunny picks. Suppose the three of them together pick less than $200$ peaches. What is the maximum possible number of peaches that they could have picked together?
+
+(A) $184$  (B) $189$  (C) $190$  (D) $192$  (E) $198$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-9": { s: String.raw`Compute the value of
+$$\frac{17+18+19+\cdots+84}{1+4+7+10+\cdots+100}$$
+
+(A) $1$  (B) $1.5$  (C) $2$  (D) $2.5$  (E) $3$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-10": { s: String.raw`You are at the top of a tower that is $1/2$ miles high. Let $d$ be the distance in miles to the farthest point that you can see on the surface of the earth (assume the earth is a sphere with radius $4000$ miles). Then
+
+(A) $d<20$  (B) $20<d<40$  (C) $40<d<60$  (D) $60<d<80$  (E) $80<d$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-11": { s: String.raw`A thirsty elephant is drinking from a water tank at a constant rate. A hose is putting water back into the tank at the rate of $2$ liters per minute. The tank starts full and eventually is emptied by the elephant. If the hose rate is increased to $4$ liters per minute, then the elephant takes $40$ extra minutes to empty the tank. If, instead, the hose rate is decreased to $1$ liter per minute, the elephant takes $10$ minutes less to empty the tank. What is the capacity of the tank in liters?
+
+(A) $640$  (B) $500$  (C) $420$  (D) $360$  (E) $300$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-12": { s: String.raw`How many three-digit even positive integers are there whose digits are all distinct? (Note: The leading digit must be non-zero. For example $012$ is not counted.)
+
+(A) $288$  (B) $320$  (C) $328$  (D) $360$  (E) $405$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-13": { s: String.raw`Jill buys a cake in the shape of an $n\times n\times n$ cube for a (large) party of $n^3$ people, where $n$ is a positive integer. The cake has icing on top and on all sides, but not at the bottom. She then slices the cube into $n^3$ unit cubes along the planes parallel to the faces of the cube and distributes all of these pieces among the guests, one piece per guest. Jill notices that the number of guests with pieces that have no icing is a perfect square. Which one of the following is a possible value of $n$?
+
+(A) $6$  (B) $7$  (C) $8$  (D) $9$  (E) $10$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-14": { s: String.raw`For how many angles $x$ (measured in radians) with $0\le x\le 2\pi$, do we have $\sin(x)=\cos(3x)$?
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-15": { s: String.raw`The hour hand on a clock goes around once every $12$ hours. The minute hand goes around once every hour, and the second hand goes around once every minute. Suppose it is now $3$ o'clock. In how many seconds will the second hand bisect the angle formed by the minute hand and the hour hand?
+
+(A) $7.5$  (B) $10800/1427$  (C) $1705/222$  (D) $5400/707$  (E) $2160/283$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-16": { s: String.raw`A square $ABCD$ has side length $|AB|=1$. Points $E$ and $F$ are taken on the sides $BC$ and $CD$, respectively, in such a way that the triangle $AEF$ is equilateral. What is the area of triangle $AEF$?
+
+(A) $2\sqrt3-3$  (B) $\sqrt3/2$  (C) $\sqrt3-1$  (D) $2\sqrt3-2\sqrt2$  (E) $(\sqrt2+1)/3$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-17": { s: String.raw`The three-digit integer $abc$ in base $10$ is equal to the base $14$ number $cba$, where $a,b,c$ are three digits, and $a\ne 0$. What is the middle digit $b$?
+
+(A) $1$  (B) $3$  (C) $6$  (D) $7$  (E) $9$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-18": { s: String.raw`An ant is on the south wall of a room and it wants to crawl down the south wall, walk across the floor, and climb to a point on the north wall. The ant can walk in any direction, but will remain on the walls or the floor of the room. In $3$-dimensional coordinates, the ant starts at the point $(x,y,z)=(0,0,10)$ and wants to end at the point $(x,y,z)=(50,100,10)$. The south wall is the plane $y=0$, the north wall is the plane $y=100$, and the floor is the plane $z=0$. What is the shortest distance that the ant can walk to achieve its goal?
+
+(A) $\sqrt{12500}$  (B) $150$  (C) $\sqrt{25000}$  (D) $170$  (E) $130$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-19": { s: String.raw`Suppose that we wish to color each unit square of a $2\times 100$ grid of squares in such a way that:
+
+(a) each square is colored either red, green, or blue, and
+
+(b) whenever two squares are horizontally adjacent or vertically adjacent, they have different colors.
+
+How many different ways can this be done?
+
+(A) $3^{100}$  (B) $2^{200}\cdot 3$  (C) $2\cdot 3^{100}$  (D) $2^{100}\cdot 3^{99}$  (E) $2^{99}\cdot 3$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-20": { s: String.raw`Two circles $C_1$ and $C_2$ and a line $\ell$ in a plane are given in such a way that the line $\ell$ is tangent to $C_1$ and $C_2$ at points $A$ and $B$, respectively. Suppose $C_1$ and $C_2$ lie on the same side of $\ell$, and that $|AB|=20$. Assume the radii of $C_1$ and $C_2$ are $1$ and $16$, respectively. A third circle $\omega$ is externally tangent to both circles $C_1$ and $C_2$ and also to line $\ell$. What is the sum of all possible radii of this third circle $\omega$?
+
+@@fig:umd/2019/parti-20.png@@
+
+(A) $141/8$  (B) $136/9$  (C) $135/8$  (D) $170/9$  (E) $178/11$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-21": { s: String.raw`Define a sequence $a_n$ by $a_1=2$, and $a_n=a_{n-1}^2+a_{n-1}-2.25$, for all $n\ge 2$. Which one of the following is closest to $a_{10}-\lfloor a_{10}\rfloor$? (Note: $\lfloor x\rfloor$ is the largest integer not exceeding $x$.)
+
+(A) $0$  (B) $0.2$  (C) $0.5$  (D) $0.7$  (E) $0.8$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-22": { s: String.raw`Let $ABC$ be a triangle whose side lengths are $1.2$, $1.6$, and $2$. Let $R$ be the set of all points $P$ that are within distance $1$ from at least two points from the set $\{A,B,C\}$. What is the area of $R$?
+
+(A) $\frac\pi2-0.96$  (B) $\frac\pi2-0.98$  (C) $\pi-1.4$  (D) $\frac\pi4+0.92$  (E) $\pi-1.92$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-23": { s: String.raw`A cricket is sitting at point $0$ on the number line. Every second the cricket jumps $1$ unit to the right, $2$ units to the right, or $1$ unit to the left, each with probability $\frac13$. For example, after $1$ second the cricket would be at point $1$, $2$, or $-1$, each with equal probability. All moves are independent of one another. What is the probability that after $5$ seconds the cricket is at number $5$ or higher?
+
+(A) $4/27$  (B) $47/243$  (C) $50/243$  (D) $29/81$  (E) $20/81$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-24": { s: String.raw`Let $ABCD$ be a convex quadrilateral and let $P$ be the point of intersection of diagonals $AC$ and $BD$. Let $E,F,G$ be the circumcenters of triangles $ABP,BCP,CDP$, respectively. Suppose we know the area of $\triangle EFG$ is $30$. What is the maximum possible area of $ABCD$?
+
+(A) $165$  (B) $150$  (C) $135$  (D) $120$  (E) $90$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+"2019-umd-hsmc-part-i-25": { s: String.raw`How many ordered pairs of integers $(x,y)$ with $0\le x,y\le 100$ satisfy the following equation?
+$$x^3-y^3+x^2y-xy^2-2xy-7x^2+5y^2+11x+y=5$$
+
+(A) $110$  (B) $109$  (C) $108$  (D) $107$  (E) $106$`, u: "https://mathcomp.math.umd.edu/files/2021/08/PartI2019.pdf" },
+});

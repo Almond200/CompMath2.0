@@ -1,0 +1,101 @@
+=== 1
+Every day, Alex spends $4$ hours on the Internet. Every week, Alex spends $50$ hours sleeping. Each year, Alex goes to school for $180$ days and spends $8$ hours in class each of these days. Let $I$ be the number of hours on the Internet each year. Let $S$ be the number of hours sleeping each year. Let $C$ be the number of hours in class each year. Assume that there are $52$ weeks in a year and that there are $365$ days in a year. Then,
+
+(A) $C>S>I$  (B) $I>S>C$  (C) $S>I>C$  (D) $I>C>S$  (E) $S>C>I$
+=== 2
+Evaluate $1-2+3-4+5-6+\cdots-2016+2017$.
+
+(A) $1009$  (B) $2017$  (C) $3025$  (D) $4033$  (E) $20160$
+=== 3
+The line $y=2x+1$ intersects the circle $x^2+y^2=13$ in two points. One of the intersection points is $(-2,-3)$. The $x$-coordinate of the other intersection point is
+
+(A) $1$  (B) $6/5$  (C) $3/2$  (D) $2$  (E) $11/2$
+=== 4
+Pat collects $100$ pieces of candy while trick-or-treating. Of these, $75$ contain chocolate, $50$ contain both chocolate and marshmallow, $10$ contain neither chocolate nor marshmallow. How many contain marshmallow but no chocolate?
+
+(A) $15$  (B) $20$  (C) $25$  (D) $30$  (E) $35$
+=== 5
+Achilles and Zeno compete in a $10$-mile race. Zeno walks at a constant speed. For the first $5$ miles, Achilles runs with a hare that goes twice as fast as Zeno. For the last $5$ miles, Achilles walks with a tortoise that goes half as fast as Zeno. Achilles finishes the race one hour after Zeno. How fast does Zeno walk, in miles per hour?
+
+(A) $2$  (B) $2.5$  (C) $4$  (D) $4.5$  (E) $5$
+=== 6
+Evaluate $2^{\log_2(3)}+3^{\log_3(4)}+4^{\log_4(5)}$.
+
+(A) $3$  (B) $6$  (C) $9$  (D) $10$  (E) $12$
+=== 7
+Trains from Washington to Baltimore leave Washington every $w$ minutes and always travel at the same speed. A train from Baltimore to Washington also travels at this speed. A passenger on the Baltimore to Washington train notices that they pass a train traveling in the opposite direction every $6$ minutes. What is $w$?
+
+(A) $5$  (B) $6$  (C) $10$  (D) $12$  (E) $15$
+=== 8
+Ten children eat candy. The oldest child eats $18$ more pieces of candy than the average consumption of all $10$ children. Each of the other $9$ children eats $15$ pieces of candy. How many pieces of candy does the oldest child eat?
+
+(A) $20$  (B) $24$  (C) $30$  (D) $33$  (E) $35$
+=== 9
+The product of all of the positive divisors of $100$ (including $100$, itself) has the form $10^m$. What is the exponent $m$?
+
+(A) $8$  (B) $9$  (C) $10$  (D) $11$  (E) $12$
+=== 10
+$\dfrac{\cos 1^\circ+\cos 2^\circ+\cdots+\cos 89^\circ}{\cos 91^\circ+\cos 92^\circ+\cdots+\cos 179^\circ}$ equals
+
+(A) $-1$  (B) $0$  (C) $1$  (D) $\frac{\sqrt2}{2}$  (E) $\sqrt2$
+=== 11
+Consider the sequence $a_1,a_2,a_3,\dots$, such that $a_1=3$, $a_2=7$, and $a_{n+1}=a_n-a_{n-1}$ for all $n\ge 2$. What is the value of $a_{2017}$?
+
+(A) $-7$  (B) $-4$  (C) $-3$  (D) $3$  (E) $4$
+=== 12
+How many integers $k$ satisfy all of the inequalities $|k-50|<|k-200|<|k-10|$?
+
+(A) $17$  (B) $18$  (C) $19$  (D) $20$  (E) $21$
+=== 13
+For a positive integer $n$, let $p(n)$ be the largest odd factor of $n$. For example, $p(60)=15$ and $p(39)=39$. Evaluate the sum
+$$p(1001)+p(1002)+p(1003)+\cdots+p(1999)+p(2000).$$
+
+(A) $2000$  (B) $65536$  (C) $150000$  (D) $800000$  (E) $1000000$
+=== 14
+A $2\times 10$ rectangle $ABCD$ is completely covered by ten non-overlapping $1\times 2$ rectangles. In how many ways is it possible to do this?
+
+(A) $55$  (B) $73$  (C) $75$  (D) $80$  (E) $89$
+=== 15
+Suppose $X$ and $Y$ are sets of real numbers, each of size $100$, such that the average values of the numbers in the sets $X$ and $Y$ are $-10$ and $10$, respectively; and the average values of the numbers in the sets $X\cup Y$ and $X\cap Y$ are $1$ and $-4$, respectively. What is the size of $X\cap Y$?
+
+(A) $10$  (B) $30$  (C) $40$  (D) $70$  (E) $90$
+=== 16
+Suppose that points $A,B,C$ are spaced in clockwise order on a circle of radius one, for which $|AB|=|BC|=1.2$. What is $|AC|$?
+
+(A) $\sqrt3$  (B) $1.81$  (C) $1.86$  (D) $1.92$  (E) $1.96$
+=== 17
+From three vertices $A$, $B$ and $C$ of a square $ABCD$ we draw three parallel lines $\ell_1$, $\ell_2$ and $\ell_3$, respectively, such that $\ell_2$ lies between $\ell_1$ and $\ell_3$. Suppose the distance between $\ell_1$ and $\ell_2$ is $5$ and the distance between $\ell_2$ and $\ell_3$ is $7$. What is the area of the square $ABCD$?
+
+(A) $64$  (B) $70$  (C) $74$  (D) $81$  (E) $112$
+=== 18
+If $x^2+y^2+z^2+w^2=x^4+y^4+z^4+w^4=1$ for some real numbers $x$, $y$, $z$, and $w$, then what is the largest possible value of $x+y+z+w$?
+
+(A) $1$  (B) $\sqrt2$  (C) $2\sqrt2$  (D) $\sqrt[4]{2}$  (E) $\sqrt[4]{8}$
+=== 19
+Consider three pairwise tangent circles, each of radius $1$. What is the area of the equilateral triangle formed by three lines, each of which is tangent to two of the circles and does not intersect the third?
+
+(A) $4\sqrt3+6$  (B) $64/5$  (C) $12$  (D) $3\sqrt3+9$  (E) $9\sqrt2$
+=== 20
+Suppose for three real numbers $a,b,c$ we know that $a+b=2c-2$ and $ab=2c^2+c-3$. What is the sum of the maximum and minimum possible values of $c$?
+
+(A) $-3$  (B) $-1$  (C) $0$  (D) $1$  (E) $3$
+=== 21
+In an isosceles triangle $ABC$, we know $|AB|=|AC|$. Point $D$ on side $AC$ is selected so that $BD$ is the angle bisector of $B$. Suppose $|BC|=|AD|+|BD|$. What is the angle $A$, in degrees?
+
+(A) $100$  (B) $108$  (C) $110$  (D) $115$  (E) $120$
+=== 22
+Let $f(x)=x^3+4x-8$. The solution set to $-552<f(f(x))<f(4x)$ is given by $a<x<b$. What is $b-a$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$
+=== 23
+Let $f(x)=ax^2+bx+c$, where $a,b,c$ are three real numbers. Suppose for all $x$, $0\le x\le 1$, we have $|f(x)|\le 1$. What is the maximum possible value of $2a+b$?
+
+(A) $6$  (B) $7$  (C) $8$  (D) $9$  (E) $10$
+=== 24
+Suppose that $f(x)=\dfrac{4^x}{4^x+2}$. Find the value of $f\left(\frac1{14}\right)+f\left(\frac2{14}\right)+\cdots+f\left(\frac{13}{14}\right)$.
+
+(A) $7$  (B) $8.5$  (C) $6.5$  (D) $4.5$  (E) $5.5$
+=== 25
+The equation $x^6-15x^4+20x^3-30x^2+8=0$ has four real roots $r_1<r_2<r_3<r_4$. The value of $r_1r_2+r_3r_4$ is closest to
+
+(A) $4.4$  (B) $4.3$  (C) $4.2$  (D) $4.1$  (E) $4$

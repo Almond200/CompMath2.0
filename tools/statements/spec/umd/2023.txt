@@ -1,0 +1,127 @@
+=== 1
+An ant walks a distance $A=10^9$ millimeters. A bear walks $B=10^6$ feet. A chicken walks $C=10^8$ inches. What is the correct ordering of $A,B,C$? (Note: There are $25.4$ millimeters in an inch, and there are $12$ inches in a foot.)
+
+(A) $A<B<C$  (B) $A<C<B$  (C) $C<B<A$  (D) $B<A<C$  (E) $B<C<A$
+=== 2
+Peter Rabbit is hopping along the number line, always jumping in the positive $x$ direction. For his first jump, he starts at $0$ and jumps $1$ unit to get to the number $1$. For his second jump, he jumps $4$ units to get to the number $5$. He continues jumping by jumping $1$ unit whenever he is on a multiple of $3$ and by jumping $4$ units whenever he is on a number that is not a multiple of $3$. What number does he land on at the end of his $100$th jump?
+
+(A) $297$  (B) $298$  (C) $301$  (D) $302$  (E) $303$
+=== 3
+Adam is walking in the city. In order to get around a large building, he walks $12$ miles east and then $5$ miles north, then stops. His friend Neutrino, who can go through buildings, starts in the same place as Adam but walks in a straight line to where Adam stops. How much farther than Neutrino does Adam walk?
+
+(A) $1$ mile  (B) $2$ miles  (C) $3$ miles  (D) $4$ miles  (E) $5$ miles
+=== 4
+Euler is selling Mathematician cards to Gauss. Three Fermat cards plus $5$ Newton cards costs $95$ Euros, while $5$ Fermat cards plus $2$ Newton cards also costs $95$ Euros. How many Euros does one Fermat card cost?
+
+(A) $10$  (B) $15$  (C) $20$  (D) $30$  (E) $35$
+=== 5
+You shoot an arrow in the air. It falls to earth, you know not where. But you do know that the arrow's height in feet after $t$ seconds is $-16t^2+80t+96$. After how many seconds does the arrow hit the ground? (the ground has height $0$)
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$
+=== 6
+Let
+$$A=\log(1)+\log(2)+\log(3)+\cdots+\log(2023)$$
+and let
+$$B=\log(1/1)+\log(1/2)+\log(1/3)+\cdots+\log(1/2023).$$
+(logs are logs base $10$)
+
+What is the value of $A+B$?
+
+(A) $0$  (B) $1$  (C) $-\log(2023!)$  (D) $\log(2023!)$  (E) $-2023$
+=== 7
+Suppose $S=\{1,2,3,x\}$ is a set with four distinct real numbers for which the difference between the largest and smallest values of $S$ is equal to the sum of elements of $S$. What is the value of $x$?
+
+(A) $-1$  (B) $-3/2$  (C) $-2$  (D) $-2/3$  (E) $-3$
+=== 8
+How many positive integers less than $1$ million have exactly $5$ positive divisors?
+
+(A) $1$  (B) $5$  (C) $11$  (D) $23$  (E) $24$
+=== 9
+The Amazing Prime company ships its products in boxes whose length, width, and height (in inches) are prime numbers. If the volume of one of their boxes is $105$ cubic inches, what is its surface area (that is, the sum of the areas of the $6$ sides of the box) in square inches?
+
+(A) $21$  (B) $71$  (C) $77$  (D) $105$  (E) $142$
+=== 10
+There are $100$ people in a room. Some are wise and some are optimists.
+
+• A wise person can look at someone and know if they are wise or if they are an optimist.
+
+• An optimist thinks everyone is wise (including themselves).
+
+Everyone in the room writes down what they think is the number of wise people in the room. What is the smallest possible value for the average?
+
+(A) $10$  (B) $25$  (C) $50$  (D) $75$  (E) $100$
+=== 11
+Let $S_1$ be a square with side $s$ and $C_1$ be the circle inscribed in it. Let $C_2$ be a circle with radius $r$ and $S_2$ be a square inscribed in it. We are told that the area of $S_1-C_1$ is the same as the area of $C_2-S_2$. Which of the following numbers is closest to $s/r$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$
+=== 12
+Suppose for real numbers $a,b,c$ we know $a+\dfrac1b=3$, and $b+\dfrac3c=\dfrac13$. What is the value of $c+\dfrac{27}{a}$?
+
+(A) $1$  (B) $3$  (C) $8$  (D) $9$  (E) $21$
+=== 13
+The orthocenter of triangle $ABC$ lies on its circumcircle. One of the angles of $ABC$ must equal: (Note: The orthocenter of a triangle is the point where all three altitudes intersect.)
+
+(A) $30^\circ$  (B) $60^\circ$  (C) $90^\circ$  (D) $120^\circ$  (E) It cannot be deduced from the given information.
+=== 14
+Let $m\ne -1$ be a real number. Consider the quadratic equation
+$$(m+1)x^2+4mx+m-3=0.$$
+Which of the following must be true?
+
+(I) Both roots of this equation must be real.
+
+(II) If both roots are real, then one of the roots must be less than $-1$.
+
+(III) If both roots are real, then one of the roots must be larger than $1$.
+
+(A) Only (I)  (B) (I) and (II)  (C) Only (III)  (D) Both (I) and (III)  (E) (I), (II), and (III)
+=== 15
+What is the least positive integer $m$ such that the following is true?
+
+Given $m$ integers between $1$ and $2023$, inclusive, there must exist two of them $a,b$ such that $1<\frac ab\le 2$.
+
+(A) $10$  (B) $11$  (C) $12$  (D) $13$  (E) $1415$
+=== 16
+How many integers between $123$ and $789$ have at least two identical digits, when written in base $10$?
+
+(A) $180$  (B) $184$  (C) $186$  (D) $189$  (E) $191$
+=== 17
+The lengths of the sides of triangle $A'B'C'$ are equal to the lengths of the three medians of triangle $ABC$. Then the ratio $\text{Area}(A'B'C')/\text{Area}(ABC)$ equals
+
+(A) $\frac12$  (B) $\frac23$  (C) $\frac34$  (D) $\frac56$  (E) Cannot be determined from the information given.
+=== 18
+How many ordered triples of integers $(a,b,c)$ satisfy the following system?
+$$\begin{cases}ab+c=17\\a+bc=19\end{cases}$$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$
+=== 19
+Three positive real numbers $a,b,c$ satisfy $a^b=343$, $b^c=10$, $a^c=7$. Find $b^b$.
+
+(A) $1000$  (B) $900$  (C) $1200$  (D) $4000$  (E) $100$
+=== 20
+A strip is defined as the region between two parallel lines; the width of the strip is the distance between the two lines. Two strips of width $1$ intersect in a parallelogram whose area is $2$. What is the angle between the strips?
+
+(A) $15^\circ$  (B) $30^\circ$  (C) $45^\circ$  (D) $60^\circ$  (E) $90^\circ$
+=== 21
+Let $a,b,c,d,e$ be real numbers such that $a<b<c<d<e$. The least possible value of the function $f:\mathbb R\to\mathbb R$ with $f(x)=|x-a|+|x-b|+|x-c|+|x-d|+|x-e|$ is
+
+(A) $e+d+c+b+a$  (B) $e+d+c-b-a$  (C) $e+d+|c|-b-a$  (D) $e+d+b-d-a$  (E) $e+d-b-a$
+=== 22
+A sequence $a_1,a_2,\dots$ satisfies $a_1=\dfrac52$ and $a_{n+1}=a_n^2-2$ for all $n\ge 1$. Let $M$ be the integer which is closest to $a_{2023}$. The last digit of $M$ equals
+
+(A) $0$  (B) $2$  (C) $4$  (D) $6$  (E) $8$
+=== 23
+Assume a triangle $ABC$ satisfies $|AB|=1$, $|AC|=2$ and $\angle ABC=\angle ACB+90^\circ$. What is the area of $ABC$?
+
+(A) $6/7$  (B) $5/7$  (C) $1/2$  (D) $4/5$  (E) $3/5$
+=== 24
+Bob is practicing addition in base $2$. Each time he adds two numbers in base $2$, he counts the number of carries. For example, when summing the numbers $1001$ and $1011$ in base $2$,
+$$\begin{array}{rrrrrr}\scriptstyle 1&&\scriptstyle 1&\scriptstyle 1&&\\&0&1&0&0&1\\&0&1&0&1&1\\\hline&1&0&1&0&0\end{array}$$
+there are three carries (shown on the top row). Suppose that Bob starts with the number $0$, and adds $111$ (i.e. $7$ in base $2$) to it one hundred times to obtain the number $1010111100$ (i.e. $700$ in base $2$). How many carries occur (in total) in these one hundred calculations?
+
+(A) $280$  (B) $289$  (C) $291$  (D) $294$  (E) $297$
+=== 25
+Suppose that $S$ is a set of real numbers between $2$ and $8$ inclusive, and that for any two elements $y>x$ in $S$,
+$$98y-102x-xy\ge 4.$$
+What is the maximum possible size for the set $S$?
+
+(A) $12$  (B) $14$  (C) $16$  (D) $18$  (E) $20$
