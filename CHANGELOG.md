@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **Columbus State 2015 added (340 of 1,364; 10 figures; two tag fixes and a printing slip noted, AUDITS.md).** `STATEMENTS_V` 78.
 - **Columbus State 2016 added (290 of 1,364; 3 figures; one tag fix, AUDITS.md).** `STATEMENTS_V` 77.
 - **Columbus State 2017 added (240 of 1,364; 2 figures; the file's Ciphering and backup rounds are not part of the 50 problems and are left out).** `STATEMENTS_V` 76.
 - **Columbus State 2018 added (190 of 1,364; 3 figures).** **Figure crops audited (owner):** every figure of the statements added so far (Calgary, Columbus, Duke, Girls in Math at Yale, UMD, Lehigh, MBMT, MMATHS, CMIMC, CHMMC, ARML, BMT, SMT) was scanned for content touching the image edge; seven were clipped and were re-cropped from their pages (Lehigh 2011 #10 and #26, 2025 #10, 2004 #12; MBMT 2018 Upper Counting #7; Calgary 2007 #9 and 2024 #8), the other flagged ones are the original figure's own border. **Problem pages (owner):** the note shown above the archive button for AMC and AIME problems now reads "© Mathematical Association of America" in place of "Solutions live on the Art of Problem Solving wiki." `STATEMENTS_V` 75.
