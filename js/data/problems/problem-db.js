@@ -11563,7 +11563,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2010 Columbus State Tournament, Problem 43", formulas: ["log-rules"], strategy: "", tree: ["alg.fn.feq"] },
   { ref: "2010 Columbus State Tournament, Problem 44", formulas: ["menelaus-theorem"], strategy: "", tree: ["geo.tri.cevian.ceva"] },
   { ref: "2010 Columbus State Tournament, Problem 45", formulas: ["conditional-probability"], strategy: "", tree: ["cp.prob.cond.bayes"] },
-  { ref: "2010 Columbus State Tournament, Problem 46", formulas: ["reflection-coordinates"], strategy: "", tree: ["geo.coord.transform.reflect"] },
+  { ref: "2010 Columbus State Tournament, Problem 46", formulas: [], strategy: "", tree: ["geo.poly.quad.trap"] },
   { ref: "2010 Columbus State Tournament, Problem 47", formulas: ["difference-of-squares"], strategy: "", tree: ["nt.dio.factor.squares"] },
   { ref: "2010 Columbus State Tournament, Problem 48", formulas: ["inscribed-angle-theorem"], strategy: "", tree: ["geo.circ.cyclic"] },
   { ref: "2010 Columbus State Tournament, Problem 49", formulas: [], strategy: "", tree: ["alg.cx.unity.poly"] },

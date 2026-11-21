@@ -2655,3 +2655,5 @@ Columbus State 2016 #50 (a system with $xyz+z=0$, solved by factoring $z(xy+1)$ 
 Columbus State 2015 tag fixes: #13 (the remainder of $1006^{2015}+1007^{2015}+2016$ modulo $2013$, where $1007\equiv-1006$ and the odd power cancels) lost `fermats-little-theorem`; #4 ($2015^5-2015$ factored as $x(x^2-1)(x^2+1)$) `lte` → `difference-of-squares`. Noted: #43 (the length of a chord from the central angle) sits at `geo.circ.power.chord`, which does not fit; no tree node takes a chord-length formula. #36's statement prints $\overline{AA_2},\overline{AB_2},\overline{AC_2}$ as the segments whose midpoints are $A_2,B_2,C_2$ (presumably $AA_1$, $AB_1$, $AC_1$), and the statement shows it as printed.
 
 Columbus State 2014 #36 ($\sqrt{(n!)^2+13}$ an integer, solved by factoring $k^2-(n!)^2=13$) `wilsons-theorem` → `difference-of-squares`.
+
+Columbus State 2010 #46 (the centre of a unit-diameter ball rolling round the inside of a $1$, $25$, $49$, $25$ trapezoid: the path is a similar trapezoid shrunk by the inradius-type offset) `reflection-coordinates` / `geo.coord.transform.reflect` → no card / `geo.poly.quad.trap` (no reflection is used).
