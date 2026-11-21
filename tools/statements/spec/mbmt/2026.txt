@@ -1,0 +1,134 @@
+=== lower-algebra-1
+Soy milk is sold in packs of $8$ cans. If Bill wants $60$ cans of soy milk, what is the least number of packs he has to buy?
+=== lower-algebra-2
+What is the product of all $x$ that satisfy $(x-1)^2=25$?
+=== lower-algebra-3
+Bill has a collection of $24$ math, physics, and chemistry books. If $1/2$ of Bill's books are about math, and $1/3$ of Bill's books are about physics, how many of Bill's books are about chemistry?
+=== lower-algebra-4
+Thomas buys $2$ burgers and $3$ fries from McWei's for $\$29$ dollars. Sam then buys $3$ burgers and $2$ fries from McWei's for $\$31$ dollars. How much would buying one burger and one fry cost, in dollars?
+=== lower-algebra-5
+Peterfun is going on a journey around the world. If he spends $30$ days boating at $150$ miles/day and $50$ days boating at $102$ miles/day, what is his average speed over his entire journey?
+=== lower-algebra-6
+Mr. Schwartz has a square-shaped bar of chocolate, broken into $45\times 45$ congruent squares. Every day, he chooses one of the top, left, bottom, or right sides of the bar, and then eats the entire edge of squares corresponding to that side of the bar. If he has $455$ congruent squares of chocolate remaining, how many days has it been since he started eating the chocolate bar?
+=== lower-algebra-7
+How many ordered triplets of integers $(x,y,z)$ satisfy $x+y=12$ and $xz=y+z$?
+=== lower-algebra-8
+Let $P(x)$ be a quadratic polynomial with leading coefficient $1$ such that the solutions to $P(x)^2=16$ are $1$, $3$, $5$, and $7$. Find $P(0)$.
+=== lower-counting-1
+Bob has fair coin that has a $50\%$ chance of landing on heads. If he flips five heads in a row, what is the probability that his sixth flip will result in another head?
+=== lower-counting-2
+Sam has $2$ identical red coins, $2$ identical blue coins, and $2$ identical yellow coins. He picks $2$ of the $6$ coins to go shopping. If he can pick them in any order, how many combinations of colored coins can Sam pick?
+=== lower-counting-3
+Evan is playing a game that has easy levels and hard levels. He has a $50\%$ chance to pass an easy level and a $10\%$ chance to pass a hard level. What is the probability he passes $2$ easy levels and $1$ hard level, in that order, on his first try?
+=== lower-counting-4
+Bill and David each roll a $20$-sided die and add the numbers on their top faces. How many ways are there for them to get a sum of $24$?
+=== lower-counting-5
+The number $4167$ is written on the board. Chris goes up to the board and erases two digits at random, leaving a two-digit number. What is the probability the remaining number is even?
+=== lower-counting-6
+$5$ left-handed students and $3$ right-handed students randomly choose seats from a row of $8$ front-facing desks to take a test. What is the probability that no left-handed person sits directly to the right of a right-handed person?
+=== lower-counting-7
+Thomas rolls a six-sided die $3$ times and records the $3$ numbers that he rolls. Given that the sum of the $3$ numbers is $15$, what is the probability he rolled at least one $6$?
+=== lower-counting-8
+Three girls, Alice, Allison, and Avery, and three boys, Ben, Bill, and Yixuan, are sitting at a round table with six seats. If rotations are considered the same, how many distinct ways are there for the six people to sit around the table such that every boy sits next to at least one girl and every girl sits next to at least one boy?
+=== lower-geometry-1
+Alice has a square cookie of side length $8$ inches, and Bill has a rectangular cookie of length $4$ inches and unknown width. If the area of Alice and Bill's cookies are the same, what is the width of Bill's cookie?
+=== lower-geometry-2
+Evan is running along the perimeter of a circle of radius $1$. How far does he have to run to complete $12$ laps around the circle?
+=== lower-geometry-3
+Four points $A$, $B$, $C$, and $D$, lie on a line in some order and satisfy $BC=4$, $AC=6$, and $BD=12$. What is the largest possible value of $AD$?
+=== lower-geometry-4
+Square $ABCD$ has side length $3$, and points $E$ and $F$ are chosen on segment $\overline{BC}$ and $\overline{CD}$ such that $CE=CF=1$. What is the area of triangle $\triangle AEF$?
+=== lower-geometry-5
+Sam, David, and Bill are standing at points $S$, $D$, and $B$ around a circle with diameter $\overline{BD}$. They are standing in such a way that $BD=13$ and $SD=5$. What is the shortest distance Bill has to run if he wants to run directly to Sam and then directly to David?
+=== lower-geometry-6
+Let $S$ be a hexagon of side length $2$. Andy draws a flower-shape onto the hexagon by constructing a circle of radius $1$ at each vertex of $P$. What is the perimeter of Andy's new closed flower?
+=== lower-geometry-7
+Equilateral triangle $\triangle ABC$ has a side length of $1$. A regular pentagon $BCDEF$ is constructed on the exterior of $\triangle ABC$. In degrees, what is the measure of angle $\angle DAF$?
+=== lower-geometry-8
+Triangle $\triangle ABC$ has $AB=16$ and $AC=17$. There exists a point $P$ outside $\triangle ABC$ such that $AP=16$, $CP=17$, and $\overline{AC}$ is perpendicular to $\overline{PB}$. What is the area of quadrilateral $PABC$?
+=== lower-number-theory-1
+What is the smallest positive even integer that is a multiple of $11$?
+=== lower-number-theory-2
+What is the smallest positive perfect square that is divisible by $8$?
+=== lower-number-theory-3
+What is the sum of the smallest and largest $2$-digit integers whose squares end in a $6$?
+=== lower-number-theory-4
+Kenneth is thinking of a $3$-digit number. When he removes the units digit of the number, his new number is divisible by $15$. When he removes the hundreds digit of the number, his new number is still divisible by $15$. What is the largest possible $3$-digit number that Kenneth could be thinking of?
+=== lower-number-theory-5
+Mr. Kirk is playing a card game that involves dealing out an entire deck of cards evenly among all players. When Mr. Kirk plays a $3$-player, $4$-player, or $5$-player game, he has $1$ card left over after distributing the cards. What is the smallest possible size of his deck?
+=== lower-number-theory-6
+A semiprime is a number that is the product of two distinct primes. Yunyi takes the product of two semiprimes and finds the resulting number has $n$ factors. What is the sum of all possible values of $n$?
+=== lower-number-theory-7
+How many positive integer divisors of $20^{26}$ have an odd number of divisors?
+=== lower-number-theory-8
+Let $S(n)$ denote the sum of digits of $n$. How many positive integers $k<1000$ exist such that there exists some positive integer $n$ that satisfies $k=n-S(n)$?
+=== upper-algebra-1
+What is the product of all $x$ that satisfy $(x-1)^2=25$?
+=== upper-algebra-2
+Thomas buys $2$ burgers and $3$ fries from McWei's for $\$29$ dollars. Sam then buys $3$ burgers and $2$ fries from McWei's for $\$31$ dollars. How much would buying one burger and one fry cost, in dollars?
+=== upper-algebra-3
+A positive number multiplied by its square root is $512$. What is that number multiplied by its cube root?
+=== upper-algebra-4
+Mr. Schwartz has a square-shaped bar of chocolate, broken into $45\times 45$ congruent squares. Every day, he chooses one of the top, left, bottom, or right sides of the bar, and then eats the entire edge of squares corresponding to that side of the bar. If he has $455$ congruent squares of chocolate remaining, how many days has it been since he started eating the chocolate bar?
+=== upper-algebra-5
+How many ordered triplets of integers $(x,y,z)$ satisfy $x+y=12$ and $xz=y+z$?
+=== upper-algebra-6
+Let $P(x)$ be a quadratic polynomial with leading coefficient $1$ such that the solutions to $P(x)^2=16$ are $1$, $3$, $5$, and $7$. Find $P(0)$.
+=== upper-algebra-7
+Katherine is studying a polynomial $f(x)=x^4-ax^2+b$. She wants to choose an ordered pair of real numbers $(a,b)$ so that $a+b=169$ and all roots of $f(x)$ are integers. What is the sum of all possible $a$ she can choose?
+=== upper-algebra-8
+Let $a$, $b$ and $c$ be positive real numbers that satisfy
+$$\begin{aligned}2026ab&=c^2+1\\2026ac&=8b^2+2\\2026bc&=\frac{a^2}{8}+\frac12.\end{aligned}$$
+What is the value of $a+b+c$?
+=== upper-counting-1
+Sam has $2$ identical red coins, $2$ identical blue coins, and $2$ identical yellow coins. He picks $2$ of the $6$ coins to go shopping. If he can pick them in any order, how many combinations of colored coins can Sam pick?
+=== upper-counting-2
+Evan is playing a game that has easy levels and hard levels. He has a $50\%$ chance to pass an easy level and a $10\%$ chance to pass a hard level. What is the probability he passes $2$ easy levels and $1$ hard level, in that order, on his first try?
+=== upper-counting-3
+The number $4167$ is written on the board. Chris goes up to the board and erases two digits at random, leaving a two-digit number. What is the probability the remaining number is even?
+=== upper-counting-4
+$5$ left-handed students and $3$ right-handed students randomly choose seats from a row of $8$ front-facing desks to take a test. What is the probability that no left-handed person sits directly to the right of a right-handed person?
+=== upper-counting-5
+Thomas rolls a six-sided die $3$ times and records the $3$ numbers that he rolls. Given that the sum of the $3$ numbers is $15$, what is the probability he rolled at least one $6$?
+=== upper-counting-6
+Three girls, Alice, Allison, and Avery, and three boys, Ben, Bill, and Yixuan, are sitting at a round table with six seats. If rotations are considered the same, how many distinct ways are there for the six people to sit around the table such that every boy sits next to at least one girl and every girl sits next to at least one boy?
+=== upper-counting-7
+Bo and Man are practicing archery, and can hit the target $2/3$ of the time and $1/3$ of the time, respectively. Each turn, they both shoot one arrow at the same time, playing until one player has hit the target two more times than the other. What is the expected number of turns until the game ends?
+=== upper-counting-8
+A $5\times 5$ square grid has each cell filled with either $1$ or $-1$. A move consists of choosing one of the rows or columns and multiplying $-1$ to all the numbers in that row/column. From how many distinct starting grids is it possible to apply a finite number of moves so that all the cells in the board are filled with $1$?
+=== upper-geometry-1
+Four points $A$, $B$, $C$, and $D$, lie on a line in some order and satisfy $BC=4$, $AC=6$, and $BD=12$. What is the largest possible value of $AD$?
+=== upper-geometry-2
+What is the distance from the origin to the point $(3,4,12)$?
+=== upper-geometry-3
+A rhombus of side length $6$ has a diagonal of length $6$. What is the area of the rhombus?
+=== upper-geometry-4
+Let $S$ be a hexagon of side length $2$. Andy draws a flower-shape onto the hexagon by constructing a circle of radius $1$ at each vertex of $P$. What is the perimeter of Andy's new closed flower?
+=== upper-geometry-5
+Equilateral triangle $\triangle ABC$ has a side length of $1$. A regular pentagon $BCDEF$ is constructed on the exterior of $\triangle ABC$. In degrees, what is the measure of angle $\angle DAF$?
+=== upper-geometry-6
+Triangle $\triangle ABC$ has $AB=16$ and $AC=17$. There exists a point $P$ outside $\triangle ABC$ such that $AP=16$, $CP=17$, and $\overline{AC}$ is perpendicular to $\overline{PB}$. What is the area of quadrilateral $PABC$?
+=== upper-geometry-7
+Square $ABCD$ has side length $4$, and $M$ is the point on segment $\overline{BC}$ such that $CM=1$. A circle $\omega$ with radius $r$ is constructed tangent to segments $\overline{AM}$, $\overline{AD}$, $\overline{CD}$. What is the area of $\omega$?
+=== upper-geometry-8
+$\triangle ABC$ has side lengths $AB=5$ and $AC=8$. Let $\omega$ be the circle passing through $A$, $B$, and $C$, and let $O$ be the center of $\omega$. Let $O_1$ and $O_2$ be reflections of $O$ across $B$ and $C$, respectively. Given that segment $\overline{O_1O_2}$ is tangent to $\omega$, what is the value of $[\triangle AO_1C]+[\triangle AO_2C]$?
+
+($[\triangle ABC]$ denotes the area of triangle $\triangle ABC$)
+=== upper-number-theory-1
+What is the smallest positive perfect square that is divisible by $8$?
+=== upper-number-theory-2
+What is the sum of the smallest and largest $2$-digit integers whose squares end in a $6$?
+=== upper-number-theory-3
+Kenneth is thinking of a $3$-digit number. When he removes the units digit of the number, his new number is divisible by $15$. When he removes the hundreds digit of the number, his new number is still divisible by $15$. What is the largest possible $3$-digit number that Kenneth could be thinking of?
+=== upper-number-theory-4
+A semiprime is a number that is the product of two distinct primes. Yunyi takes the product of two semiprimes and finds the resulting number has $n$ factors. What is the sum of all possible values of $n$?
+=== upper-number-theory-5
+How many positive integer divisors of $20^{26}$ have an odd number of divisors?
+=== upper-number-theory-6
+Let $S(n)$ denote the sum of digits of $n$. How many positive integers $k<1000$ exist such that there exists some positive integer $n$ that satisfies $k=n-S(n)$?
+=== upper-number-theory-7
+Let $f(n)=\operatorname{lcm}(1,2,3,\dots,n)$. For how many positive integers $n<100$ does $f(n)=f(n+1)$?
+=== upper-number-theory-8
+Define the function $f(n)$ as
+$$f(n):=\sum_{i=1}^{n}\gcd(i,n).$$
+Sam takes the product of the first $8$ primes and gets a number $k$. How many factors does $f(k)$ have?

@@ -1,0 +1,145 @@
+=== lower-algebra-1
+David and Guang have $8$ pencils to divide among themselves. David takes $7$ of the pencils, while Guang takes the rest. What fraction of the pencils did Guang receive?
+=== lower-algebra-2
+DJ Khaled wants to buy more keys. The key maker tells DJ Khaled that each key is worth the same amount, and $4$ keys are worth $\$20$. How much are $6$ keys worth?
+=== lower-algebra-3
+Mr. Street is using his newly patented stapling technique to staple packets for his class. If there are $1000$ sheets of paper when Mr. Street starts stapling, each packet contains $5$ sheets of paper, and each packet takes $2$ seconds to staple, how long in seconds does it take Mr. Street to staple all the packets for his class?
+=== lower-algebra-4
+$20$ people rate a Naturday Sight Live skit an integer from $1$ to $10$, inclusive. If the arithmetic mean of the ratings is $9.7$, what is the minimum number of people who rated the skit a $10$?
+=== lower-algebra-5
+Kermit takes a positive integer $n$, multiplies it by itself, subtracts $3$, and then multiplies the entire expression by $2$, resulting in $n$. What is $n$?
+=== lower-algebra-6
+Find the sum of all positive integers $x$ such that $3<\sqrt x<3.6$.
+=== lower-algebra-7
+Kanye West really likes driving from his house to the studio in his Mercedes. On a day where traffic is moving smoothly, Kanye can get to the studio from his house in $30$ minutes. On a day with a lot of traffic, it takes Kanye $50$ minutes to reach the studio from his house, and his average speed is $20$ miles per hour slower than usual. How far, in miles, is the studio from Kanye's house?
+=== lower-algebra-8
+Alex is playing with some goo. The goo is very magical: each morning at $7{:}00$ AM it will make itself $60\%$ longer. Every day, Alex wakes up at $8{:}00$ AM, plays with it and stretches it by another $25\%$. If the goo is $1$ meter long at $6{:}59$ AM on Monday, on what day of the week will it surpass $2017$ meters in length?
+=== lower-counting-1
+A machine takes in two numbers and gives $3$ times their sum. Pratik gives the machine the numbers $101$ and $99$. What number does the machine give to Pratik?
+=== lower-counting-2
+There are $5$ red balls, $2$ blue balls, and $3$ green balls in a bag. If someone randomly takes out a ball from the bag without looking, what is the probability that it is not green?
+=== lower-counting-3
+$4$ people are at a party, and every pair of people shakes hands with each other. How many total handshakes are there?
+=== lower-counting-4
+What is the minimum number of balls one must take out of a bag containing $11$ red balls, $7$ yellow balls, and $6$ blue balls to guarantee that at least one ball of each color has been taken out?
+=== lower-counting-5
+Timmy Turner has $4$ burners, but one of them is broken. If he chooses two of his burners, what is the probability that both of them are not broken?
+=== lower-counting-6
+Dr. Dresnoopdogg is listening to his iPodZune through his BeatsByBose headset. He has $6$ songs that he can play, and he can play them in any order. In how many possible orders can Dr. Dresnoopdogg play each of his songs once?
+=== lower-counting-7
+A palindrome is a nonnegative integer that reads the same forwards and backwards. For example, $12321$ and $0$ are both palindromes. Find the number of palindromes between $1000$ and $9999$, inclusive.
+=== lower-counting-8
+Stan has five friends: Allen, Brian, Catherine, Daniel, and Evan. Each of the $6$ people took a test and the teacher told each of them their own score privately. Now they want to share their scores with each other. In a conversation, Person A tells Person B all the scores they know, but not vice versa. What is the minimum number of conversations required for every person to know all six scores?
+=== lower-geometry-1
+What is the distance between the points $(6,0)$ and $(-2,0)$?
+=== lower-geometry-2
+Angle $X$ has a degree measure of $35$ degrees. What is the supplement of the complement of angle $X$?
+
+The complement of an angle is $90$ degrees minus the angle measure. The supplement of an angle is $180$ degrees minus the angle measure.
+=== lower-geometry-3
+A cube has a volume of $729$. What is the side length of the cube?
+=== lower-geometry-4
+A car that always travels in a straight line starts at the origin and goes towards the point $(8,12)$. The car stops halfway on its path, turns around, and returns back towards the origin. The car again stops halfway on its return. What are the car's final coordinates?
+=== lower-geometry-5
+A full, cylindrical soup can has a height of $16$ and a circular base of radius $3$. All the soup in the can is used to fill a hemispherical bowl to its brim. What is the radius of the bowl?
+=== lower-geometry-6
+In square $ABCD$, the numerical value of the length of the diagonal is three times the numerical value of the area of the square. What is the side length of the square?
+=== lower-geometry-7
+Consider triangle $ABC$ with $AB=3$, $BC=4$, and $AC=5$. The altitude from $B$ to $AC$ intersects $AC$ at $H$. Compute $BH$.
+=== lower-geometry-8
+Mary shoots $5$ darts at a square with side length $2$. Let $x$ be equal to the shortest distance between any pair of her darts. What is the maximum possible value of $x$?
+=== lower-number-theory-1
+What is the smallest integer greater than $10$ that leaves a remainder of $1$ when divided by $4$?
+=== lower-number-theory-2
+The sequence $5,7,11,19,35,\ldots$ is formed by multiplying the previous term by $2$ and subtracting $3$. What is the $6$th term in the sequence?
+=== lower-number-theory-3
+How many integers between $1$ and $100$ inclusive are divisible by $4$?
+=== lower-number-theory-4
+What is the greatest common factor of $91$ and $78$?
+=== lower-number-theory-5
+Let $\overline{201A}$ be a four-digit number that is divisible by $3$. Find the sum of all possible values of $A$.
+=== lower-number-theory-6
+The sum of two prime numbers is $30$. Find the largest possible product of the two primes.
+=== lower-number-theory-7
+Guang loves having Mighty Wings and Shamrock Shakes at McDonalds. He orders Mighty Wings every $3$ days and Shamrock Shakes every $4$ days. In a period of $28$ consecutive days, what is the most number of days where he orders both Mighty Wings and Shamrock Shakes?
+=== lower-number-theory-8
+Mr. Stein wants to buy some Munchkins from Dunkin' Donuts. They sell Munchkins in packages of $5$ and $8$. What is the largest integer number of Munchkins that Mr. Stein can't buy?
+=== upper-algebra-1
+Mr. Street is using his newly patented stapling technique to staple packets for his class. If there are $1000$ sheets of paper when Mr. Street starts stapling, each packet contains $5$ sheets of paper, and each packet takes $2$ seconds to staple, how long in seconds does it take Mr. Street to staple all the packets for his class?
+=== upper-algebra-2
+Kanye West really likes driving from his house to the studio in his Mercedes. On a day where traffic is moving smoothly, Kanye can get to the studio from his house in $30$ minutes. On a day with a lot of traffic, it takes Kanye $50$ minutes to reach the studio from his house, and his average speed is $20$ miles per hour slower than usual. How far, in miles, is the studio from Kanye's house?
+=== upper-algebra-3
+Alex is playing with some goo. The goo is very magical: each morning at $7{:}00$ AM it will make itself $60\%$ longer. Every day, Alex wakes up at $8{:}00$ AM, plays with it and stretches it by another $25\%$. If the goo is $1$ meter long at $6{:}59$ AM on Monday, on what day of the week will it surpass $2017$ meters in length?
+=== upper-algebra-4
+Let $P(x)=x^4-24x^2+36$ with roots $a$, $b$, $c$ and $d$ such that $a>b>c>d$. Find $ab+cd$.
+=== upper-algebra-5
+Andrew has $n$ muffins, where $n$ is a positive integer, arranged in an $a$ by $b$ rectangular array. He eats all the muffins in the top row and all the muffins in the left column and then realizes that he has eaten half of the muffins. Compute $n$.
+=== upper-algebra-6
+Let $S$ be the set of points $(x,y)$ such that
+
+• $x$ and $y$ are integers
+
+• $(x,y)$ is not the origin
+
+• $0\le x\le 10$ and $0\le y\le 10$
+
+For every point $P$ in $S$, the circle with diameter $OP$, where $O$ is the origin, is drawn. What is the total area of all the circles drawn?
+=== upper-algebra-7
+For each positive integer $k$, Tsew Eynak writes down the number $k$ $k$ times, resulting in the sequence $\{1,2,2,3,3,3,4,4,4,4,\ldots\}$. Let $f(n)$ be the average of all the numbers through the $n$th number in Tsew's sequence. What is the value of $n$ for which $f(n)=\frac{46}{3}$?
+=== upper-algebra-8
+Let $f(x)=x^3+3x^2+5x+\frac12$ have roots $r_1$, $r_2$, $r_3$. Compute
+$$\left(r_1+r_2+\frac1{r_1r_2}\right)\left(r_2+r_3+\frac1{r_2r_3}\right)\left(r_3+r_1+\frac1{r_3r_1}\right)$$
+=== upper-counting-1
+$4$ people are at a party, and every pair of people shakes hands with each other. How many total handshakes are there?
+=== upper-counting-2
+A palindrome is a nonnegative integer that reads the same forwards and backwards. For example, $12321$ and $0$ are both palindromes. Find the number of palindromes between $1000$ and $9999$, inclusive.
+=== upper-counting-3
+Stan has five friends: Allen, Brian, Catherine, Daniel, and Evan. Each of the $6$ people took a test and the teacher told each of them their own score privately. Now they want to share their scores with each other. In a conversation, Person A tells Person B all the scores they know, but not vice versa. What is the minimum number of conversations required for every person to know all six scores?
+=== upper-counting-4
+Guang is listening to an album that consists of $21$ songs. $13$ of the songs are $4$ minutes long, $7$ of the songs are $1$ minute long skits, and one song is $12$ minutes long. If he shuffles the songs randomly, what is the probability that the first $3$ songs played last a total of at least $9$ minutes?
+=== upper-counting-5
+A jar with $N$ candies contains only mints and lollipops, all of which are distinguishable. Mindy wants to take some, but not all, of the mints. Lolly wants to take some, but not all, of the lollipops. Let $M$ be the number of ways in which Mindy can choose her mints, and let $L$ be the number of ways in which Lolly can choose her lollipops. If $M-L=3840$, what is $N$?
+=== upper-counting-6
+There are $10$ vans in a row, and Daniel paints each of them either white or black, independently and with equal probability. What is the probability that after painting all $10$ vans, there will be two vans next to each other that are both white?
+=== upper-counting-7
+Let $S$ be $\{1,2,3,\ldots,2017\}$. How many ordered $1000$-tuples of sets $(X_1,X_2,\ldots,X_{1000})$ are there such that $X_1\subseteq X_2\subseteq\ldots\subseteq X_{1000}\subseteq S$?
+=== upper-counting-8
+Each point in a $4$ by $6$ rectangular grid of lattice points is colored either red or blue. A coloring is "good" if it does not contain $4$ points of the same color that form the vertices of a rectangle with edges parallel to the grid axes. How many "good" colorings of the $4$ by $6$ grid are there?
+=== upper-geometry-1
+Angle $X$ has a degree measure of $35$ degrees. What is the supplement of the complement of angle $X$?
+
+The complement of an angle is $90$ degrees minus the angle measure. The supplement of an angle is $180$ degrees minus the angle measure.
+=== upper-geometry-2
+A car that always travels in a straight line starts at the origin and goes towards the point $(8,12)$. The car stops halfway on its path, turns around, and returns back towards the origin. The car again stops halfway on its return. What are the car's final coordinates?
+=== upper-geometry-3
+Let $ABC$ be an isosceles triangle such that $AB=BC$ and all of its angles have integer degree measures. Two lines, $\ell_1$ and $\ell_2$, trisect $\angle ABC$. $\ell_1$ and $\ell_2$ intersect $AC$ at points $D$ and $E$ respectively, such that $D$ is between $A$ and $E$. What is the smallest possible integer degree measure of $\angle BDC$?
+=== upper-geometry-4
+In rectangle $ABCD$, $AB=9$ and $BC=8$. $W$, $X$, $Y$, and $Z$ are on sides $AB$, $BC$, $CD$, and $DA$, respectively, such that $AW=2WB$, $CX=3BX$, $CY=2DY$, and $AZ=DZ$. If $WY$ and $XZ$ intersect at $O$, find the area of $OWBX$.
+=== upper-geometry-5
+Consider a regular $n$-gon with vertices $A_1A_2\ldots A_n$. Find the smallest value of $n$ so that there exist positive integers $i,j,k\le n$ with $\angle A_iA_jA_k=\frac{34^\circ}5$.
+=== upper-geometry-6
+In right triangle $ABC$ with $\angle A=90^\circ$ and $AB<AC$, $D$ is the foot of the altitude from $A$ to $BC$, and $M$ is the midpoint of $BC$. Given $AM=13$ and $AD=5$, what is $\frac{AB}{AC}$?
+=== upper-geometry-7
+An ant is on the circumference of the base of a cone with radius $2$ and slant height $6$. It crawls to the vertex of the cone $X$ in an infinite series of steps. In each step, if the ant is at a point $P$, it crawls along the shortest path on the exterior of the cone to a point $Q$ on the opposite side of the cone such that $2QX=PX$. What is the total distance that the ant travels along the exterior of the cone?
+=== upper-geometry-8
+There is an infinite checkerboard with each square having side length $2$. If a circle with radius $1$ is dropped randomly on the checkerboard, what is the probability that the circle lies inside of exactly $3$ squares?
+=== upper-number-theory-1
+What is the greatest common factor of $91$ and $78$?
+=== upper-number-theory-2
+Let $\overline{201A}$ be a four-digit number that is divisible by $3$. Find the sum of all possible values of $A$.
+=== upper-number-theory-3
+How many three-digit positive integers are divisible either by $3$ or by $7$, but not by both?
+=== upper-number-theory-4
+Benedict Arnold is a confused man. If he eats a George Washington cake he loses a traitor point. But if he eats a George Wilhelm cake he doubles his traitor points. If he reaches exactly $2017$ traitor points, Ethan Allen won't buy him furniture. If Benedict Arnold starts out with $1$ traitor point, what is the minimum number of cakes he must eat so that Ethan Allen won't buy him furniture?
+=== upper-number-theory-5
+For all positive integers $n$, let the multiplicative average of $n$ be the geometric mean of all the positive divisors of $n$. (The geometric mean of positive reals $x_1,x_2,\ldots,x_k$ is $\sqrt[k]{x_1\cdot x_2\cdots x_k}$). Let $S$ be the number of positive integers $n$ such that the multiplicative average of $n$ is less than or equal to $2017$. Find the remainder when $S$ is divided by $1000$.
+=== upper-number-theory-6
+Let $S$ be the set of all positive integers less than or equal to $100$. Guang randomly chooses two not-necessarily distinct elements of $S$ and finds their greatest common divisor, $d$. What is the probability that $d$ has exactly $12$ factors?
+=== upper-number-theory-7
+Let the set $S$ contain all ordered triples of positive integers $(x,y,z)$ satisfying
+$$\frac1x+\frac1y+\frac1z=\frac{2018}{2017}$$
+Compute the remainder when
+$$\sum_{(x,y,z)\in S}x+y+z$$
+is divided by $1000$. In other words, find the sum of all $x+y+z$ over the ordered triples in $S$, and find the remainder when this value is divided by $1000$.
+=== upper-number-theory-8
+Shane has an infinite set of cards labeled $1,1,26,26,676,676,\ldots,26^k,26^k,\ldots$ for all non-negative integers $k$. In other words, he has two cards for each integer power of $26$. Shane chooses a non-empty set of cards and finds the sum of the numbers on the cards that he has selected. Let the set $S$ contain all of the distinct sums that Shane can make. What is the remainder when the $2017$th smallest element in $S$ divided by $1000$?

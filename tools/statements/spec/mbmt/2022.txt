@@ -1,0 +1,134 @@
+=== lower-algebra-1
+Bradley loves to eat bread. Every day he cuts a $1$ centimeter wide slice of bread for breakfast. If a single loaf of bread is $25$ centimeters long, how many weeks would $7$ loafs of bread last him?
+=== lower-algebra-2
+Jon is on an escalator. He is currently two thirds of the way up. If the escalator is $15$ feet tall, how many feet are between him and the ground?
+=== lower-algebra-3
+Michelle finds a website which gives her a free textbook every day. After gaining $10$ textbooks in $10$ days, she has tripled her textbook collection. How many textbooks does Michelle have $20$ days after she found the website?
+=== lower-algebra-4
+Steven really likes palindromes. Palindromes are numbers that read the same backwards and forwards, like $55$ or $969$. He's thinking of a $3$ digit palindrome where the sum of digits is $16$ and the ones digit is $5$ more than the tens digit. What is the number?
+=== lower-algebra-5
+Bob has a magic trick. He claims that you can give him any number. Then, if he adds $2$, multiplies by $n$, subtracts $6$, then divides by $n$, he gets the original number back. What is $n$?
+=== lower-algebra-6
+Gablin and Babblin start with different amounts of grapes. If Gablin gives Babblin $1$ grape, Gablin would have the number of grapes Babblin has, squared. If Babblin gave Gablin $1$ grape instead, Gablin would have had the number of grapes Babblin has, cubed. How many grapes does Gablin have?
+=== lower-algebra-7
+Suppose that $x$ and $y$ are nonzero real numbers that satisfy $3x^2=4y^2$. What is the product of all possible values of $\frac{x+y}{x-y}$?
+=== lower-algebra-8
+Find the number of integers whose nearest perfect square is $264^2$, including $264^2$ itself.
+=== lower-counting-1
+Burgerly flips $2$ fair coins. What is the probability that the second coin lands tails?
+=== lower-counting-2
+Jooby has a nickel, a dime, and a quarter. If he loses a random coin, what is the probability that he has at least $30$ cents left over?
+=== lower-counting-3
+Two identical caps each have $4$ paper slips with numbers $1$, $2$, $4$, and $8$ written on them. Madeline takes out one paper slip from each cap, multiplies the two numbers she sees, and buys that number of strawberries. How many different values are possible for the number of strawberries that she will buy?
+=== lower-counting-4
+Two different positive integers sum to $10$. How many possibilities are there for their product?
+=== lower-counting-5
+Two girls play rock-paper-scissors, where each side throws out a rock, a paper, or a scissors with equal probability. They tie if they throw out the same move. What is the probability that the two girls tie?
+=== lower-counting-6
+A triangle has sides of length $2$, a square has sides of length $3$, and a pentagon has sides of length $4$. Two sides are chosen from the $12$ sides. What is the probability that the two chosen sides have the same length?
+=== lower-counting-7
+Zorian rolls two fair $6$-sided dice and multiplies their results. What is the probability that his final number ends in a $0$?
+=== lower-counting-8
+Gose shuffles a standard deck of $52$ cards. He flips over the first three cards: $8$, $2$, and $3$. What is the probability that when he flips over the fourth card, the sum of the four values is greater than $21$? Jacks, queens, and kings have a value of $10$, and aces have a value of $11$.
+=== lower-geometry-1
+A Giant Hopper is $200$ meters away from you. It can hop $50$ meters. How many hops would it take for it to reach you?
+=== lower-geometry-2
+A rope of length $6$ is used to form the edges of an equilateral triangle (a triangle with equal side lengths). What is the length of one of these edges?
+=== lower-geometry-3
+Point $E$ is on side $AB$ of rectangle $ABCD$. Find the area of triangle $ECD$ divided by the area of rectangle $ABCD$.
+=== lower-geometry-4
+Garb and Grunt have two rectangular pastures of area $30$. Garb notices that his has a side length of $3$, while Grunt's has a side length of $5$. What's the positive difference between the perimeters of their pastures?
+=== lower-geometry-5
+Let points $A$ and $B$ be on a circle with radius $6$ and center $O$. If $\angle AOB=90^\circ$, find the area of triangle $AOB$.
+=== lower-geometry-6
+A scalene triangle (the $3$ side lengths are all different) has integer angle measures (in degrees). What is the largest possible difference between two angles in the triangle?
+=== lower-geometry-7
+Square $ABCD$ has side length $6$. If triangle $ABE$ has area $9$, find the sum of all possible values of the distance from $E$ to line $CD$.
+=== lower-geometry-8
+Let point $E$ be on side $\overline{AB}$ of square $ABCD$ with side length $2$. Given $DE=BC+BE$, find $BE$.
+=== lower-number-theory-1
+How many positive integers divide $16$?
+=== lower-number-theory-2
+Shron likes herding sheep. When he grouped his $47$ sheep into groups of $9$, he had some sheep remaining. How many sheep were remaining?
+=== lower-number-theory-3
+What is the largest integer less than $100$ that is not divisible by $2$, $3$, or $5$?
+=== lower-number-theory-4
+Find the largest three digit integer which has an odd sum of digits, and an even product of digits.
+=== lower-number-theory-5
+Gabi has $5$ consecutive positive integers. $3$ of them are even, $2$ are divisible by $3$, one is divisible by $11$. Find the smallest possible sum of the $5$ integers.
+=== lower-number-theory-6
+How many zeros does $5!+10!+15!+20!+25!$ end in? Recall that $n!=1\cdot 2\cdot\cdots\cdot n$.
+=== lower-number-theory-7
+An arithmetic sequence describes a list of numbers where each term is made by adding the same value, called the common difference. For example, the sequence $1,3,5$ has common difference $2$, because each term is $2$ greater than the last.
+
+Kwu has $3$ positive integers which form an arithmetic sequence with common difference $15$. He multiplies the $3$ integers and notices that the product is divisible by $120$. He then adds the $3$ integers. What is the minimum possible value of this sum?
+=== lower-number-theory-8
+Suppose $a$, $b$, and $c$ are equal to $2,3$ and $4$, in some order. What's the last digit of the greatest possible value of $a^{b^c}$?
+=== upper-algebra-1
+Michelle finds a website which gives her a free textbook every day. After gaining $10$ textbooks in $10$ days, she has tripled her textbook collection. How many textbooks does Michelle have $20$ days after she found the website?
+=== upper-algebra-2
+Steven really likes palindromes. Palindromes are numbers that read the same backwards and forwards, like $55$ or $969$. He's thinking of a $3$ digit palindrome where the sum of digits is $16$ and the ones digit is $5$ more than the tens digit. What is the number?
+=== upper-algebra-3
+Gablin and Babblin start with different amounts of grapes. If Gablin gives Babblin $1$ grape, Gablin would have the number of grapes Babblin has, squared. If Babblin gave Gablin $1$ grape instead, Gablin would have had the number of grapes Babblin has, cubed. How many grapes does Gablin have?
+=== upper-algebra-4
+Find the number of integers whose nearest perfect square is $264^2$, including $264^2$ itself.
+=== upper-algebra-5
+What fraction of real numbers between $0$ and $2$ satisfy $\left\lceil x-\frac2{15}\right\rceil=\left\lfloor x+\frac2{15}\right\rfloor$? Here, $\lceil x\rceil$ is the smallest integer greater than or equal to $x$, and $\lfloor x\rfloor$ is the greatest integer less than or equal to $x$.
+=== upper-algebra-6
+For some constant value(s) of $c$, the following system of equations has infinite solutions.
+$$\begin{cases}x=|y-4|-20\\y=|x-c|\end{cases}$$
+What is the sum of all possible values of $c$?
+=== upper-algebra-7
+Given real $x,y$, and $z$ such that $x+y=4$ and $x^2+y^2+xy+xz+yz=288$, find the maximum possible value of $z$.
+=== upper-algebra-8
+Let $x_0=4$ and $x_{n+1}=x_n+2\sqrt{x_n-1}+1$ for $n\ge 0$. What is $x_{100}$?
+=== upper-counting-1
+Two identical caps each have $4$ paper slips with numbers $1$, $2$, $4$, and $8$ written on them. Madeline takes out one paper slip from each cap, multiplies the two numbers she sees, and buys that number of strawberries. How many different values are possible for the number of strawberries that she will buy?
+=== upper-counting-2
+Two different positive integers sum to $10$. How many possibilities are there for their product?
+=== upper-counting-3
+A triangle has sides of length $2$, a square has sides of length $3$, and a pentagon has sides of length $4$. Two sides are chosen from the $12$ sides. What is the probability that the two chosen sides have the same length?
+=== upper-counting-4
+Gose shuffles a standard deck of $52$ cards. He flips over the first three cards: $8$, $2$, and $3$. What is the probability that when he flips over the fourth card, the sum of the four values is greater than $21$? Jacks, queens, and kings have a value of $10$, and aces have a value of $11$.
+=== upper-counting-5
+Bread has a bag of two forks and three spoons. Squash reaches into the bag and pulls out three utensils. What is the probability that Squash has more spoons than forks?
+=== upper-counting-6
+Kevin initially has $4$ coins atop a table. He flips all of them and puts each coin with heads facing up in his pocket. If any coins remain on the table, he repeats the procedure. What is the probability that, after these two steps, all $4$ coins will be in Kevin's pocket?
+=== upper-counting-7
+Two people play a game. They alternate rolling a die and each keeps a running sum of all the numbers they've rolled. The first person with a positive multiple of $3$ wins. What is the probability that the first person wins?
+=== upper-counting-8
+Knights only tell the truth, and Knaves only tell lies. $7$ people that are each either Knights or Knaves line up in a line. Everyone except the person at the very right knows whether the person to their right is a Knight or a Knave. If $3$ people say that the person to their right is a Knight, and $3$ people say that the person to their right is a Knave, how many possible orderings of Knights and Knaves are there?
+=== upper-geometry-1
+Point $E$ is on side $AB$ of rectangle $ABCD$. Find the area of triangle $ECD$ divided by the area of rectangle $ABCD$.
+=== upper-geometry-2
+Garb and Grunt have two rectangular pastures of area $30$. Garb notices that his has a side length of $3$, while Grunt's has a side length of $5$. What's the positive difference between the perimeters of their pastures?
+=== upper-geometry-3
+A scalene triangle (the $3$ side lengths are all different) has integer angle measures (in degrees). What is the largest possible difference between two angles in the triangle?
+=== upper-geometry-4
+Let point $E$ be on side $\overline{AB}$ of square $ABCD$ with side length $2$. Given $DE=BC+BE$, find $BE$.
+=== upper-geometry-5
+The two diagonals of rectangle $ABCD$ meet at point $E$. If $\angle AEB=2\angle BEC$, and $BC=1$, find the area of rectangle $ABCD$.
+=== upper-geometry-6
+In $\triangle ABC$, let $D$ be the foot of the altitude from $A$ to $BC$. Additionally, let $X$ be the intersection of the angle bisector of $\angle ACB$ and $AD$. If $BD=AC=2AX=6$, find the area of $ABC$.
+=== upper-geometry-7
+Let $\triangle ABC$ have $\angle ABC=40^\circ$. Let $D$ and $E$ be on $\overline{AB}$ and $\overline{AC}$ respectively such that $\overline{DE}$ is parallel to $\overline{BC}$, and the circle passing through points $D$, $E$, and $C$ is tangent to $\overline{AB}$. If the center of the circle is $O$, find $\angle DOE$.
+=== upper-geometry-8
+Consider $\triangle ABC$ with $AB=3$, $BC=4$, and $AC=5$. Let $D$ be a point of $AC$ other than $A$ for which $BD=3$, and $E$ be a point on $BC$ such that $\angle BDE=90^\circ$. Find $EC$.
+=== upper-number-theory-1
+What is the largest integer less than $100$ that is not divisible by $2$, $3$, or $5$?
+=== upper-number-theory-2
+Find the largest three digit integer which has an odd sum of digits, and an even product of digits.
+=== upper-number-theory-3
+How many zeros does $5!+10!+15!+20!+25!$ end in? Recall that $n!=1\cdot 2\cdot\cdots\cdot n$.
+=== upper-number-theory-4
+Suppose $a$, $b$, and $c$ are equal to $2,3$ and $4$, in some order. What's the last digit of the greatest possible value of $a^{b^c}$?
+=== upper-number-theory-5
+Let $S$ be the set of all even integers greater than or equal to $2022$. What's the unique element $n$ of $S$ such that the number of divisors of $512n$ that aren't divisors of $512$ is minimized?
+=== upper-number-theory-6
+In a regular $10$ by $10$ multiplication table, the numbers that would appear are the products $ab$ for every $a$ ranging from $1$ to $10$ and every $b$ ranging from $1$ to $10$.
+
+A wrong multiplication table is a multiplication table that only keeps the last digit of the product instead of entire product. In a $10$ by $10$ wrong multiplication table starting from $1$, what is the least number of times that any result appears?
+=== upper-number-theory-7
+Find the number of ordered pairs of positive integers $(a,b)$ such that the least common multiple of $a$ and $b$ is $13^{29}\cdot 29^{13}$.
+=== upper-number-theory-8
+Two items have prices $\$a.bc$ and $\$d.ef$ for digits $a$, $b$, $c$, $d$, $e$, $f$. When the cashier finds their value, he gets the same result regardless if he added them or multiplied them. Find the largest possible value of the digit $d$.

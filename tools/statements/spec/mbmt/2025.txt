@@ -1,0 +1,132 @@
+=== lower-algebra-1
+Alice has $10$ apples that Bob wants to turn into apple cider. It takes $2$ apples to make $1$ liter of cider. How many liters of cider can Bob make using Alice's apples?
+=== lower-algebra-2
+If $\frac{27}{45}=\sqrt{\frac9x}$, what is the value of $x$?
+=== lower-algebra-3
+Mr. Bramble teaches a World History class with $30$ students. On a quiz, every student initially scored $10$ points. Half of the class then retook the quiz, and each student who retook the quiz improved their score by $3$ points. By how many points did the class average increase after the retakes?
+=== lower-algebra-4
+William has a bag consisting of marbles that come in $4$ different colors: red, blue, green, and yellow. If $\frac12$ of the marbles are red, $\frac13$ are blue, $\frac1{12}$ are green, and the remaining $6$ marbles are yellow, how many total marbles are there in the bag?
+=== lower-algebra-5
+Farmer Yunyi has a farm with chickens and chimeras. Chickens have $1$ head and $2$ legs, and chimeras have $3$ heads and $4$ legs. If the farm has a total of $200$ heads and $350$ legs (not counting Farmer Yunyi), how many animals are on the farm?
+=== lower-algebra-6
+Pedro is trying to find rectangles with positive integer side lengths whose areas are numerically equal to their perimeters. To his surprise, he discovers that there are only two unique rectangles that have this property. What is the sum of the areas of these two rectangles?
+=== lower-algebra-7
+A falling ping-pong ball always bounces up to $\frac34$ of the height it falls from. If Stanley drops a ball from $40$ feet above the ground, what is the total distance the ball will travel?
+=== lower-algebra-8
+If $\frac1{x^3}+\frac1{y^3}=4$ and $\frac1x+\frac1y=2$, what is $\frac1{x^2}+\frac1{y^2}$?
+=== lower-counting-1
+Veena is selling three pots colored purple, turquoise, and orange. If she sold the purple pot sometime after the orange pot, in how many possible orders could she have sold the pots?
+=== lower-counting-2
+Frank the Frog is jumping on a row of lilypads numbered $1$ through $13$ in that order. He can only jump forward $2$ or $5$ lilypads at a time. Frank is currently on the first lilypad and wishes to reach his home on the thirteenth lilypad. How many ways are there for him to get to his home?
+=== lower-counting-3
+Evan wants to become a snapping turtle. A magic genie will turn him into a snapping turtle if he flips two heads in a row with a fair coin. If Evan flips the coin three times, what is the probability that he becomes a snapping turtle?
+=== lower-counting-4
+Sam is playing a round of rock paper scissors against a robotic arm. The arm picks randomly between rock, paper, and scissors while Sam picks rock $20\%$ of the time, paper $30\%$ of the time, and scissors $50\%$ of the time. What is the probability Sam wins?
+=== lower-counting-5
+Pete the Cat enjoys dressing tastefully to impress. He has $4$ capes, $3$ jackets, and $5$ hats, all of which are distinct, and he can only wear up to one of each type of clothing. A tasteful outfit consists of at least $2$ different pieces of clothing. How many distinct tasteful outfits can Pete the Cat make?
+=== lower-counting-6
+Michelle flips a coin $9$ times in a row and notices $6$ flips come up heads. In how many ways can there be three distinct strings of heads of length $1$, $2$, and $3$ in some order? (For example HTHHTHHHT would count)
+=== lower-counting-7
+There are $7$ boxes numbered $1$ through $7$, with $7$ balls in each box so that box number $x$ contains $x$ red balls. The rest of the balls in each box are green. A box is then chosen at random and a ball is randomly drawn from it. If the ball is red, what is the probability it came from the box numbered $7$?
+=== lower-counting-8
+How many positive integers less than or equal to $300$ are divisible by exactly two of $2$, $3$, and $5$? (For example, $12$ works because it is divisible by $2$ and $3$, but not by $5$)
+=== lower-geometry-1
+What is the ratio between the area and circumference of a circle with a radius of $10$?
+=== lower-geometry-2
+Three points $A$, $T$, and $W$ lie on a circle. $A$ and $W$ are the endpoints of the circle's diameter, and $T$ is equidistant from $A$ and $W$. What is the measure, in degrees, of $\angle ATW$?
+=== lower-geometry-3
+A triangle has two sides of length $5$ and $6$. What is the maximum possible area for such a triangle?
+=== lower-geometry-4
+$4$ points in the plane form the vertices of a convex quadrilateral. There are exactly four unique triangles that can be formed using three of four points. If the sum of the areas of these four triangles is $24$, what is the area of the quadrilateral?
+=== lower-geometry-5
+A rectangular prism has dimensions $2\times 3\times 4$. An octahedron is formed whose vertices are the centers of the faces of the rectangular prism. What is the volume of the octahedron?
+=== lower-geometry-6
+Rectangle $ABCD$ has side lengths $AB=2$ and $BC=1$. $E$ and $F$ are the midpoints of $AB$ and $CD$, respectively. A circle is drawn with center $F$ that passes through points $E$ and $C$. Another circle is drawn with center $D$ and passes through points $A$ and $F$. What is the area of the region bounded by $AE$, $FC$, arc $AF$, and arc $EC$?
+=== lower-geometry-7
+A circle of radius $17$ is centered at the origin. Another circle is centered at the point $(21,0)$, and the two circles share a common chord of length $16$. What is the radius of the second circle?
+=== lower-geometry-8
+$YONG$ is a square with side length $10$. Let $A$ be the midpoint of $YO$ and $B$ be the midpoint of $NG$. Let $C$ be the intersection of $YB$ and $GA$, and $D$ be the intersection of $NA$ and $OB$. What is the radius of the circle inscribed in rhombus $ABCD$?
+=== lower-number-theory-1
+What is the smallest positive three-digit integer that is a multiple of $5$, but not a multiple of $2$ or $3$?
+=== lower-number-theory-2
+What is the second-smallest positive integer that is a multiple of both $4$ and $6$?
+=== lower-number-theory-3
+Evan bakes seventy cookies. He can put the cookies in bags with either six cookies or ten cookies per bag. How many more completely full bags would he have if he put six cookies in each bag than if he put ten cookies in each bag?
+=== lower-number-theory-4
+What is the smallest positive integer $N$ such that its value is $5$ times the sum of its digits?
+=== lower-number-theory-5
+Alice's answer to her math homework has been eaten by her pet ants, who only eat their favorite digit. Her answer is now $7X91X8$ where $X$ is a missing digit. If Alice remembers that her answer was divisible by $12$, what digit did the ants eat?
+=== lower-number-theory-6
+Shriyan divides his favorite three-digit number by $2$, $3$, $4$, $8$, $9$, and $11$ and gets a remainder of $1$ each time. What is Shriyan's favorite three-digit number?
+=== lower-number-theory-7
+Three consecutive nonzero digits are taken, and the $6$ numbers formed by permuting the digits are added. What is the largest integer that must divide the sum?
+=== lower-number-theory-8
+Let $\lfloor x\rfloor$ represent the largest integer less than or equal to $x$. There exists a unique $5$-digit positive integer $n$ such that the sum of its digits is $20$ and
+$$\left\lfloor\frac n{10}\right\rfloor+\left\lfloor\frac n{100}\right\rfloor+\left\lfloor\frac n{1000}\right\rfloor+\left\lfloor\frac n{10000}\right\rfloor=2025$$
+What is the product of the digits of $n$?
+=== upper-algebra-1
+If $\frac{27}{45}=\sqrt{\frac9x}$, what is the value of $x$?
+=== upper-algebra-2
+Mr. Bramble teaches a World History class with $30$ students. On a quiz, every student initially scored $10$ points. Half of the class then retook the quiz, and each student who retook the quiz improved their score by $3$ points. By how many points did the class average increase after the retakes?
+=== upper-algebra-3
+Farmer Yunyi has a farm with chickens and chimeras. Chickens have $1$ head and $2$ legs, and chimeras have $3$ heads and $4$ legs. If the farm has a total of $200$ heads and $350$ legs (not counting Farmer Yunyi), how many animals are on the farm?
+=== upper-algebra-4
+Pedro is trying to find rectangles with positive integer side lengths whose areas are numerically equal to their perimeters. To his surprise, he discovers that there are only two unique rectangles that have this property. What is the sum of the areas of these two rectangles?
+=== upper-algebra-5
+A falling ping-pong ball always bounces up to $\frac34$ of the height it falls from. If Stanley drops a ball from $40$ feet above the ground, what is the total distance the ball will travel?
+=== upper-algebra-6
+If $\frac1{x^3}+\frac1{y^3}=4$ and $\frac1x+\frac1y=2$, what is $\frac1{x^2}+\frac1{y^2}$?
+=== upper-algebra-7
+Michael takes the polynomial $x^{101}+1$ and divides it by $x+1$, giving him the polynomial $f(x)$. He then takes $f(x)$ and divides it by $x+1$ again, giving him the polynomial $g(x)$ and the remainder $s$. What is the value $s$?
+=== upper-algebra-8
+A sequence of functions is defined as follows: $f_0(x)=||x|-1|$ and $f_n(x)=|f_{n-1}(x)-2^n|$ for all positive integers $n$. Let $x_n$ be the positive root of $f_n(x)$; in other words, $x_n>0$ and $f_n(x_n)=0$. What is the sum of $x_n$ as $n$ goes from $0$ to $2025$, inclusive?
+=== upper-counting-1
+Frank the Frog is jumping on a row of lilypads numbered $1$ through $13$ in that order. He can only jump forward $2$ or $5$ lilypads at a time. Frank is currently on the first lilypad and wishes to reach his home on the thirteenth lilypad. How many ways are there for him to get to his home?
+=== upper-counting-2
+Evan wants to become a snapping turtle. A magic genie will turn him into a snapping turtle if he flips two heads in a row with a fair coin. If Evan flips the coin three times, what is the probability that he becomes a snapping turtle?
+=== upper-counting-3
+Sam is playing a round of rock paper scissors against a robotic arm. The arm picks randomly between rock, paper, and scissors while Sam picks rock $20\%$ of the time, paper $30\%$ of the time, and scissors $50\%$ of the time. What is the probability Sam wins?
+=== upper-counting-4
+Michelle flips a coin $9$ times in a row and notices $6$ flips come up heads. In how many ways can there be three distinct strings of heads of length $1$, $2$, and $3$ in some order? (For example HTHHTHHHT would count)
+=== upper-counting-5
+There are $7$ boxes numbered $1$ through $7$, with $7$ balls in each box so that box number $x$ contains $x$ red balls. The rest of the balls in each box are green. A box is then chosen at random and a ball is randomly drawn from it. If the ball is red, what is the probability it came from the box numbered $7$?
+=== upper-counting-6
+How many positive integers less than or equal to $300$ are divisible by exactly two of $2$, $3$, and $5$? (For example, $12$ works because it is divisible by $2$ and $3$, but not by $5$)
+=== upper-counting-7
+After combining like terms, how many terms are there in the expansion of $(x+2y+3z+4)^{12}$?
+=== upper-counting-8
+Mr. Rose has stuffed all subsets of the set $\{1,2,3,4\}$ into a magical hat. Daniel, Leo, and Hannah each pick a subset out of the hat with replacement. What is the probability that Daniel's set is a proper subset of Leo's set, and Leo's set is a proper subset of Hannah's set? (A proper subset of a set $S$ is any subset of $S$ including the empty set but excluding $S$ itself)
+=== upper-geometry-1
+Three points $A$, $T$, and $W$ lie on a circle. $A$ and $W$ are the endpoints of the circle's diameter, and $T$ is equidistant from $A$ and $W$. What is the measure, in degrees, of $\angle ATW$?
+=== upper-geometry-2
+$\triangle ABC$ is a right triangle with $AB=6$, $BC=8$, and $AC=10$. A point $P$ is chosen on $AC$ so that both triangles $\triangle ABP$ and $\triangle BCP$ are isosceles. What is the length of $BP$?
+=== upper-geometry-3
+$4$ points in the plane form the vertices of a convex quadrilateral. There are exactly four unique triangles that can be formed using three of four points. If the sum of the areas of these four triangles is $24$, what is the area of the quadrilateral?
+=== upper-geometry-4
+A rectangular prism has dimensions $2\times 3\times 4$. An octahedron is formed whose vertices are the centers of the faces of the rectangular prism. What is the volume of the octahedron?
+=== upper-geometry-5
+A circle of radius $17$ is centered at the origin. Another circle is centered at the point $(21,0)$, and the two circles share a common chord of length $16$. What is the radius of the second circle?
+=== upper-geometry-6
+$YONG$ is a square with side length $10$. Let $A$ be the midpoint of $YO$ and $B$ be the midpoint of $NG$. Let $C$ be the intersection of $YB$ and $GA$, and $D$ be the intersection of $NA$ and $OB$. What is the radius of the circle inscribed in rhombus $ABCD$?
+=== upper-geometry-7
+Triangle $ABC$ has $BC=30$. Point $X$ lies on segment $BC$ such that $AX$ bisects $\angle BAC$. $AX$ is extended past point $X$ and intersects the circumcircle of $ABC$ at another point $P$ different from $A$. Point $Y$ lies on $BC$ such that $PY$ is perpendicular to $BC$. If $PY$ has length $8$, what is the perimeter of $\triangle BPC$?
+=== upper-geometry-8
+$\triangle ABC$ is a triangle with $AB=13$, $BC=14$, $CA=15$. Let $I$ be the incenter of $ABC$, $G_A$ be the centroid of $\triangle IBC$, $G_B$ be the centroid of $\triangle ICA$, and $G_C$ be the centroid of $\triangle IAB$. What is the area of triangle $\triangle G_AG_BG_C$? (The incenter is the intersection point of the three angle bisectors and the centroid is the intersection point of the three medians).
+=== upper-number-theory-1
+What is the second-smallest positive integer that is a multiple of both $4$ and $6$?
+=== upper-number-theory-2
+Stephen correctly computes the product of the first four prime numbers. Ricky also attempts to compute the product of the first four prime numbers, but he mistakenly believes that the first prime number is $1$, not $2$. What is the positive difference between Stephen's and Ricky's calculations?
+=== upper-number-theory-3
+Alice's answer to her math homework has been eaten by her pet ants, who only eat their favorite digit. Her answer is now $7X91X8$ where $X$ is a missing digit. If Alice remembers that her answer was divisible by $12$, what digit did the ants eat?
+=== upper-number-theory-4
+Shriyan divides his favorite three-digit number by $2$, $3$, $4$, $8$, $9$, and $11$ and gets a remainder of $1$ each time. What is Shriyan's favorite three-digit number?
+=== upper-number-theory-5
+Three consecutive nonzero digits are taken, and the $6$ numbers formed by permuting the digits are added. What is the largest integer that must divide the sum?
+=== upper-number-theory-6
+Let $\lfloor x\rfloor$ represent the largest integer less than or equal to $x$. There exists a unique $5$-digit positive integer $n$ such that the sum of its digits is $20$ and
+$$\left\lfloor\frac n{10}\right\rfloor+\left\lfloor\frac n{100}\right\rfloor+\left\lfloor\frac n{1000}\right\rfloor+\left\lfloor\frac n{10000}\right\rfloor=2025$$
+What is the product of the digits of $n$?
+=== upper-number-theory-7
+Let $m,n>2025$ be prime numbers such that $m=n+2$. What is the remainder when $mn$ is divided by $36$?
+=== upper-number-theory-8
+Define $S_n$ as the sum of all positive integers less than or equal to $n$ that are relatively prime to $n$ (their greatest common factor with $n$ is equal to $1$). What is $S_{210}$?

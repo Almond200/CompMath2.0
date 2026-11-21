@@ -1,0 +1,132 @@
+=== lower-algebra-1
+A car is driving at $60$ miles an hour. How many miles will it travel in $5$ hours?
+=== lower-algebra-2
+Mario has some fire flowers and some ice flowers. He has a total of $16$ flowers, and he has $3$ times more fire flowers than ice flowers. How many ice flowers does he have?
+=== lower-algebra-3
+Yunyi discovers that when he multiplies a number by $2$, he gets the same result as if he added $5$ to the number. What is the number?
+=== lower-algebra-4
+At noon, a clock shows the correct time. At $m$ minutes after noon, the clock suddenly starts ticking at half the speed it should. At $1{:}30$, the clock shows $1$ o'clock. Find the value of $m$.
+=== lower-algebra-5
+Victor is making a batch of brownies. He takes the pan and makes a number of cuts parallel to the edges of the pan. If he ends up with $63$ brownies of equal size, what is the minimum number of cuts he could have made?
+=== lower-algebra-6
+Compute $\sqrt{10004\cdot 9996+16}$.
+=== lower-algebra-7
+Let $a_n$ be the sum of integers from $1$ to $n$ (for instance, $a_1=1$, $a_3=1+2+3$). And let $b_n=\frac{a_{2n-1}}{a_{2n}}$. Find $b_1\cdot b_2\cdot b_3\cdot\ldots\cdot b_{10}$.
+=== lower-algebra-8
+Suppose Bradley has a sequence such that $x_n=3x_{n-1}+2$. If $x_0=0$, then what is $x_{20}$?
+=== lower-counting-1
+What is the probability that a fair dice rolls onto a $1$ or a $6$?
+=== lower-counting-2
+A fair coin is flipped and a fair six-sided die is rolled. How many possible outcomes are there?
+=== lower-counting-3
+There are two boxes: one red and one white. How many ways are there to put $30$ identical blue balls in the two boxes?
+=== lower-counting-4
+You are invited to play the "octopus game". One of the games requires you to jump over $8$ rows of tiles. Each row has $2$ tiles, one of which is safe (the other will land you harmlessly into the octopus tank). Calculate the probability that you will make it through if you are the first to go.
+=== lower-counting-5
+How many ways are there to make $\$1.23$ using only quarters, dimes, and pennies (nickels do not exist in the world of this problem)?
+=== lower-counting-6
+A sock drawer has $4$ red, $4$ blue, and $4$ yellow socks. How many socks does Patrick have to take out to ensure he has at least two pairs?
+=== lower-counting-7
+Alex randomly plays a note on his mini $12$-key piano. He then randomly plays a different note. What are the chances that the two keys he played are right next to each other on the piano?
+=== lower-counting-8
+Whenever Evan tries to pronounce a word with a T in it, he ignores all the Ts. How many unique pronunciations of a $6$-letter word can Evan make, given that the word can only contain the letters M, B, and T? For example, Evan pronounces 'MMBMMT' the same as 'MMTBMM', but he pronounces 'BBTBBB' differently from 'BBTBTB'. Note that 'TTTTTT' is a distinct pronunciation.
+=== lower-geometry-1
+If the values of two angles in a triangle are $60$ and $75$ degrees respectively, what is the measure of the third angle?
+=== lower-geometry-2
+Square $ABCD$ has side length $1$. What is the area of triangle $ABC$?
+=== lower-geometry-3
+An equilateral triangle and a square have the same perimeter. If the side length of the equilateral triangle is $8$, what is the square's side length?
+=== lower-geometry-4
+What is the maximum possible number of sides and diagonals of equal length in a quadrilateral?
+=== lower-geometry-5
+A square of side length $4$ is put within a circle such that all $4$ corners lie on the circle. What is the diameter of the circle?
+=== lower-geometry-6
+Patrick is rafting directly across a river $20$ meters across at a speed of $5$ m/s. The river flows in a direction perpendicular to Patrick's direction at a rate of $12$ m/s. When Patrick reaches the shore on the other end of the river, what is the total distance he has traveled?
+=== lower-geometry-7
+Quadrilateral $ABCD$ has side lengths $AB=7$, $BC=15$, $CD=20$, and $DA=24$. It has a diagonal length of $BD=25$. Find the measure, in degrees, of the sum of angles $ABC$ and $ADC$.
+=== lower-geometry-8
+What is the largest $P$ such that any rectangle inscribed in an equilateral triangle of side length $1$ has a perimeter of at least $P$?
+=== lower-number-theory-1
+Bob has $5$ apples. What is the least number of apples he needs in addition to the apples he already has to be able to evenly divide his apples between himself and $2$ friends?
+=== lower-number-theory-2
+Lillian is thinking of a number, and Elina and Sophia must guess it correctly to win. As a hint, she tells them it's a positive square whose digits add up to $9$. Elina guesses that the number is $36$, but she is incorrect. Sophia guesses a lower number and wins. What number is Lillian thinking of?
+=== lower-number-theory-3
+Find the largest integer less than $2023$ whose square ends in $9$.
+=== lower-number-theory-4
+How many positive integers divide both $100$ and $160$?
+=== lower-number-theory-5
+How many integers less than $100$ are divisible by $3$ but not by $6$?
+=== lower-number-theory-6
+There exist positive integers $a,b,c$, with $b>1$, and $6\cdot a=b\cdot c=12000$. If $a$ and $b$ are relatively prime, what is $c$?
+=== lower-number-theory-7
+What is the largest integer $n$ such that $3^n$ is a factor of $18!+19!+20!$?
+=== lower-number-theory-8
+For some positive integer $1\le n\le 1000$, Jeremy writes down $n^2,n^1$, and $n^0$ in a row on his whiteboard, in that order. His friend Joshua, however, read the three integers as a single integer and deduced that it is a multiple of $3$. For how many $n$ would this happen?
+=== upper-algebra-1
+Yunyi discovers that when he multiplies a number by $2$, he gets the same result as if he added $5$ to the number. What is the number?
+=== upper-algebra-2
+At noon, a clock shows the correct time. At $m$ minutes after noon, the clock suddenly starts ticking at half the speed it should. At $1{:}30$, the clock shows $1$ o'clock. Find the value of $m$.
+=== upper-algebra-3
+Compute $\sqrt{10004\cdot 9996+16}$.
+=== upper-algebra-4
+Let $a_n$ be the sum of integers from $1$ to $n$ (for instance, $a_1=1$, $a_3=1+2+3$). And let $b_n=\frac{a_{2n-1}}{a_{2n}}$. Find $b_1\cdot b_2\cdot b_3\cdot\ldots\cdot b_{10}$.
+=== upper-algebra-5
+Suppose Bradley has a sequence such that $x_n=3x_{n-1}+2$. If $x_0=0$, then what is $x_{20}$?
+=== upper-algebra-6
+Compute $0.25^{0.25^{0.25^{\cdots}}}$ where the number of $0.25$'s goes to infinity.
+=== upper-algebra-7
+A function of the form $f(x)=ax^3+bx^2+cx+d$ is known to have $f(100)=2$, $f(101)=0$, $f(102)=2$, $f(103)=3$. Find $f(104)$.
+=== upper-algebra-8
+Suppose $x,y,z$ are positive reals that satisfy $2x+3y+4z=12$ and $3xyz=8$. What is $x+y+z$?
+=== upper-counting-1
+There are two boxes: one red and one white. How many ways are there to put $30$ identical blue balls in the two boxes?
+=== upper-counting-2
+You are invited to play the "octopus game". One of the games requires you to jump over $8$ rows of tiles. Each row has $2$ tiles, one of which is safe (the other will land you harmlessly into the octopus tank). Calculate the probability that you will make it through if you are the first to go.
+=== upper-counting-3
+A sock drawer has $4$ red, $4$ blue, and $4$ yellow socks. How many socks does Patrick have to take out to ensure he has at least two pairs?
+=== upper-counting-4
+Alex randomly plays a note on his mini $12$-key piano. He then randomly plays a different note. What are the chances that the two keys he played are right next to each other on the piano?
+=== upper-counting-5
+Whenever Evan tries to pronounce a word with a T in it, he ignores all the Ts. How many unique pronunciations of a $6$-letter word can Evan make, given that the word can only contain the letters M, B, and T? For example, Evan pronounces 'MMBMMT' the same as 'MMTBMM', but he pronounces 'BBTBBB' differently from 'BBTBTB'. Note that 'TTTTTT' is a distinct pronunciation.
+=== upper-counting-6
+Kwu is trying to flip heads. If he ever flips tails, the god of luck will pity Kwu and guarantee his next flip to be heads. On his first flip, Kwu has a $50$ percent chance of flipping heads. What is the probability that his $5$th flip lands on heads?
+=== upper-counting-7
+Find the number of positive integers less than $1000$ that cannot be represented as a sum of two non-negative palindromes, where digits $0$ through $9$ are considered palindromes. For example, $1$ can be written as $1+0$, and $222$ can be written as $111+111$, but $21$ cannot be written as the sum of two palindromes.
+=== upper-counting-8
+On the number line, a man initially stands on the origin. Each second, if he is currently on $k$ where $k<2023$, he can move to any positive integer $n$ where $k<n\le 2022$ with a $2^{k-n}$ chance and can move to $2023$ with a $2^{k-2022}$ chance. When he reaches $2023$, he stops moving. What is the probability that he ever is on $2017$?
+=== upper-geometry-1
+An equilateral triangle and a square have the same perimeter. If the side length of the equilateral triangle is $8$, what is the square's side length?
+=== upper-geometry-2
+What is the maximum possible number of sides and diagonals of equal length in a quadrilateral?
+=== upper-geometry-3
+Patrick is rafting directly across a river $20$ meters across at a speed of $5$ m/s. The river flows in a direction perpendicular to Patrick's direction at a rate of $12$ m/s. When Patrick reaches the shore on the other end of the river, what is the total distance he has traveled?
+=== upper-geometry-4
+Quadrilateral $ABCD$ has side lengths $AB=7$, $BC=15$, $CD=20$, and $DA=24$. It has a diagonal length of $BD=25$. Find the measure, in degrees, of the sum of angles $ABC$ and $ADC$.
+=== upper-geometry-5
+What is the largest $P$ such that any rectangle inscribed in an equilateral triangle of side length $1$ has a perimeter of at least $P$?
+=== upper-geometry-6
+A circle is inscribed in an equilateral triangle with side length $s$. Points $A,B,C,D,E,F$ lie on the triangle such that line segments $AB$, $CD$, and $EF$ are parallel to a side of the triangle, and tangent to the circle. If the area of hexagon $ABCDEF=\frac{9\sqrt3}{2}$, find $s$.
+=== upper-geometry-7
+Let $\triangle ABC$ be such that $\angle A=105^\circ$, $\angle B=45^\circ$, $\angle C=30^\circ$. Let $M$ be the midpoint of $A,C$. What is $\angle MBC$?
+=== upper-geometry-8
+Points $A$, $B$, and $C$ lie on a circle centered at $O$ with radius $10$. Let the circumcenter of $\triangle AOC$ be $P$. If $AB=16$, find the minimum value of $PB$.
+
+The circumcenter of a triangle is the intersection point of the three perpendicular bisectors of the sides.
+=== upper-number-theory-1
+Find the largest integer less than $2023$ whose square ends in $9$.
+=== upper-number-theory-2
+How many positive integers divide both $100$ and $160$?
+=== upper-number-theory-3
+There exist positive integers $a,b,c$, with $b>1$, and $6\cdot a=b\cdot c=12000$. If $a$ and $b$ are relatively prime, what is $c$?
+=== upper-number-theory-4
+What is the largest integer $n$ such that $3^n$ is a factor of $18!+19!+20!$?
+=== upper-number-theory-5
+For some positive integer $1\le n\le 1000$, Jeremy writes down $n^2,n^1$, and $n^0$ in a row on his whiteboard, in that order. His friend Joshua, however, read the three integers as a single integer and deduced that it is a multiple of $3$. For how many $n$ would this happen?
+=== upper-number-theory-6
+Suppose we have positive integers that sum up to $200$. What is the largest possible product of the integers?
+=== upper-number-theory-7
+Find the remainder when the sum of $x(x+1)(x+2)$ for all $x$ ranging from $x=1$ to $x=39$ is divided by $40$.
+=== upper-number-theory-8
+Find $x$, where $x$ is the remainder when
+$$\prod_{k=1}^{40}(k!)^2$$
+is divided by $41$.
