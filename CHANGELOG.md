@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **Lehigh statements, 2016 to 2026 (340 of 1,020):** read against their pages (the solutions in the same PDFs left alone), nine figures. `*emphasis*` is not allowed in a statement (the convention scan), so spec files use plain words. No tag needed changing. `STATEMENTS_V` 66.
 - **UMD HSMC Part I statements complete (725 problems, 1997 to 2026 without 2020):** 2016 to 2026 read against their pages, three more figures (2019 #20, 2026 #17 and #25). No tag needed changing in these years. `STATEMENTS_V` 65.
 - **UMD HSMC Part I statements, 1997 to 2015 (475 of 725):** every paper read against its pages (1997 to 1999 had odd fonts or plain text pages), nine figures (1998 #14, 2010 #6, 2012 #10, #17 and #23, 2013 #4, 2014 #15, #22 and #25). Five tag fixes (AUDITS.md). `build.py` now lays out long answer choices one per line (as the LIVE importer does) and knows the UMD slug word. `STATEMENTS_V` 64.
 - **Girls in Math at Yale statements complete (96 problems, 2019 to 2026):** every Individual round read against its pages, six figures (2019 #2 and #6, 2021 #7, 2022 #1, 2024 #2, 2025 #12). No tag needed changing. `build.py` gained `SLUG_WORD` because the slug word differs from the folder name (`girls-in-math-at-yale`). `STATEMENTS_V` 63.
