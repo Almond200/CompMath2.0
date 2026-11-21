@@ -4601,7 +4601,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2019 ARML Individual, Problem 5", formulas: ["angle-bisector-theorem", "euclids-lemma"], strategy: "", tree: ["geo.tri.cevian.bisector"] },
   { ref: "2019 ARML Individual, Problem 6", formulas: ["floor-basics"], strategy: "", tree: ["alg.fn.floor.eq", "alg.ineq.optimize.constraint"] },
   { ref: "2019 ARML Individual, Problem 7", formulas: ["permutations-combinations", "complementary-counting"], strategy: "", tree: ["cp.basic.comb.condition"] },
-  { ref: "2019 ARML Individual, Problem 8", formulas: ["orthocenter-properties"], strategy: "", tree: ["geo.tri.centers.ortho"] },
+  { ref: "2019 ARML Individual, Problem 8", formulas: ["coordinate-bash"], strategy: "", tree: ["geo.poly.quad.para"] },
   { ref: "2019 ARML Individual, Problem 9", formulas: ["casework-method", "bounding-diophantine"], strategy: "", tree: ["nt.prime.val.factorial"] },
   { ref: "2019 ARML Individual, Problem 10", formulas: ["product-sum", "double-angle"], strategy: "", tree: ["alg.trig.identity.product"] },
   // ---- 2009 ARML Local Individual. Topics, cards and rating only (Step H); the official book is linked by the app.

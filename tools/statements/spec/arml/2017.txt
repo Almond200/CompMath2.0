@@ -1,0 +1,20 @@
+=== individual-1
+Compute the number of perfect squares in the set $\{1^1,2^2,3^3,\dots,2017^{2017}\}$.
+=== individual-2
+Trapezoid $ARML$ has $\overline{AR}\parallel\overline{ML}$. Given $AR=4$, $RM=\sqrt{26}$, $ML=12$, and $LA=\sqrt{42}$, compute $AM$.
+=== individual-3
+Compute the number of ordered pairs of integers $(a,b)$ such that the polynomials $x^2-ax+24$ and $x^2-bx+36$ have one root in common.
+=== individual-4
+In $\triangle ABC$, $\text{m}\angle A=90^\circ$, $AC=1$, and $AB=5$. Point $D$ lies on ray $\overrightarrow{AC}$ such that $\text{m}\angle DBC=2\text{m}\angle CBA$. Compute $AD$.
+=== individual-5
+Given that $2^{-\frac{3}{2}+2\cos\theta}+1=2^{\frac{1}{4}+\cos\theta}$, compute $\cos 2\theta$.
+=== individual-6
+A diagonal of a regular $2017$-gon is chosen at random. Compute the probability that the chosen diagonal is longer than the median length of all of the diagonals.
+=== individual-7
+Given that $i=\sqrt{-1}$, compute $(i+1)^3(i-2)^3+3(i+1)^2(i+3)(i-2)^2+3(i+1)(i+3)^2(i-2)+(i+1)^3$.
+=== individual-8
+In triangle $ABC$, $\text{m}\angle C=90^\circ$ and $BC=17$. Point $E$ lies on side $\overline{BC}$ such that $\text{m}\angle CAE=\text{m}\angle EAB$. The circumcircle of triangle $ABE$ passes through a point $F$ on side $\overline{AC}$. Given that $CF=3$, compute $AB$.
+=== individual-9
+Let $S$ be the set of divisors of $67\cdot 9!+27\cdot 8!$. Compute the median of $S$.
+=== individual-10
+Rhombus $ARML$ has its vertices on the graph of $y=\lfloor x\rfloor-\{x\}$. Given that $[ARML]=8$, compute the least upper bound for $\tan A$.
