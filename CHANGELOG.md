@@ -2,6 +2,7 @@
 
 **2026-11-21**
 
+- **Calgary Junior Part A statements complete (189 problems, 2004 to 2025 without 2020):** every paper read against its pages, 31 figures cropped; five tag fixes (AUDITS.md). `STATEMENTS_V` 71. **How this problem works (owner):** every problem page now has the Show/Hide button, calculus and other off-tree problems with nothing classified included, so the box starts closed (with Strategy on Click to show) on every page. PUMaC's archive is still unreachable: its certificate chain is rejected by the egress proxy even with the proxy's CA bundle (retried 2026-11-21, and the Wayback Machine resets the connection too).
 - **MBMT statements complete (640 problems, 2015 to 2026):** all 40 papers (two divisions, four rounds each) read against their pages, five figures (2015 Upper Geometry #4 and #5; 2018 Lower Algebra #6, Upper Counting #7 and #8, Upper Geometry #4). One tag fix (AUDITS.md). `STATEMENTS_V` 70.
 - **Lehigh statements complete (1,020 problems, 1999 to 2026):** 1999 to 2003 and 2006 added (older papers are scans or HTML pages, read from images), five more figures from 2001 to 2003, seven from 2000 (taken from the page). One tag fix (1999 #10, AUDITS.md). `STATEMENTS_V` 69.
 - **Lehigh statements, 2004, 2005, 2007 to 2009 added (780 of 1,020):** read against their pages, ten more figures. Tag fixes: 2004 #31 and #32 swapped, 2008 #30 (AUDITS.md). `STATEMENTS_V` 68.

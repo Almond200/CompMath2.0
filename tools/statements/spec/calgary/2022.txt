@@ -1,0 +1,21 @@
+=== 1
+Hannah has taken up knitting and wants to knit scarves for her family members. If she begins knitting on the morning of May 1st and it takes her three days per scarf, then how many scarves will she have by the evening of May 18th? A day of work goes from morning to evening.
+=== 2
+A coffee shop advertises that their decaffeinated coffee has had $99.9\%$ of the caffeine removed, with the result that one cup of their decaffeinated coffee contains only $0.1$ milligrams of caffeine. How many milligrams of caffeine were in one cup of coffee before it was decaffeinated?
+=== 3
+A tray contains triangle cookies and square cookies. There are $25$ cookies on the tray and the cookies have a total of $80$ edges. How many triangle cookies are there?
+=== 4
+Consider the pattern "FLAMINGOFLAMINGOFLAMINGOFLAMINGO...". If this pattern repeats continuously, then what is the $2022$nd letter in the pattern?
+=== 5
+The diameter of a circle (in cm) is a positive integer, and the area of the circle is between $10$ square cm and $100$ square cm. How many different sizes of circles are possible?
+=== 6
+Notice that the date February $22$, $2022$, when written in the form DD/MM/YYYY, becomes $22/02/2022$, which uses only two different digits, namely $2$ and $0$. (We require that both the day and month are written with two digits, including a leading $0$ if necessary. So for example February, the second month in the year, is written $02$.) When written in the form DD/MM/YYYY, what is the first date after February $22$, $2022$ which uses only two different digits?
+=== 7
+Let $x^3=2$, where $x$ is a real number. Evaluate and simplify
+$$\frac{x^4+x^7+\dfrac1{x^5}}{\dfrac1{x^5}+x}$$
+=== 8
+A rectangle $ABCD$ has $2$ points $E$ and $F$ on $AB$ and $BC$ respectively with the ratios $\frac{EB}{AE}=\frac34$ and $\frac{BF}{FC}=\frac23$. The area of $ABCD$ is $140$ square cm. What is the area of the triangle $EBF$ in square cm?
+
+@@fig:calgary2022_8.png@@
+=== 9
+A positive integer $N$ with at most $100$ digits has first digit $4$ and last digit $5$, and every adjacent pair of digits of $N$, when considered as a two-digit number, is either a square number or $3$ times a square number. How many such numbers $N$ are there?

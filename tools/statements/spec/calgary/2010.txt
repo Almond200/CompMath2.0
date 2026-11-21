@@ -1,0 +1,23 @@
+=== 1
+The product of three different prime numbers is $42$. What is the sum of the three prime numbers?
+=== 2
+Four athletes at the Olympic competitions are the only participants in each of eight events. For each event, three medals are awarded. Each of these four athletes wins the same number of medals. How many medals did each athlete win?
+=== 3
+Two sides of a triangle have lengths $5$cm and $6$cm. The area of the triangle is a positive integer. What is the maximum possible area of such a triangle, in $\text{cm}^2$?
+=== 4
+Rose has to write five tests for her class, where each test has a maximum possible score of $100$. She averaged a score of $80$ on her first four tests. What is the maximum possible average she can get on all five tests?
+=== 5
+Notice that $1-2=-1$, $1-(2-3)=2$, and $1-(2-(3-4))=-2$. What is
+$$1-(2-(3-(4-\cdots-100)))\ldots)?$$
+=== 6
+The number
+$$\frac{2^{100}+2^{99}+2^{98}}{14}$$
+is equal to $2^n$, for some positive integer $n$. Find $n$.
+=== 7
+A rectangular billiard table has dimensions $4$ feet by $9$ feet as shown. A ball is shot from $A$, bounces off $BC$ so that angle $1$ = angle $2$, bounces off $AD$ so that angle $3$ = angle $4$ and ends up at $C$. What is the distance (in feet) that the ball traveled?
+
+@@fig:calgary2010_7.png@@
+=== 8
+Suppose that $a$ is a certain real number so that $\dfrac{3x^2+a}{x^2+2}$ is always the same number no matter what real number $x$ is. What is $a$?
+=== 9
+The numbers $1,2,3,\cdots,100$ are written in a row. We first remove the first number and every second number after that. With the remaining numbers, we again remove the first number and every second number after that. We repeat this process until one number remains. What is this number?

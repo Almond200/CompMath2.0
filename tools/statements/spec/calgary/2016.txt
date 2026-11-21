@@ -1,0 +1,24 @@
+=== 1
+A rectangle with integer length and integer width has area $13\ \text{cm}^2$. What is the perimeter of the rectangle in cm?
+=== 2
+A nice fact about the current year is that $2016$ is equal to the sum $1+2+3+\cdots+63$ of the first $63$ positive integers. When Richard told this to his grandmother, she said: Interesting! I was born in a year which is also the sum of the first $X$ positive integers, where $X$ is some positive integer. In what year was Richard's grandmother born? (You may assume that Richard's grandmother is less than $100$ years old.)
+=== 3
+Suppose you reduce each of the following $64$ fractions to lowest terms:
+$$\frac1{64},\frac2{64},\frac3{64},\ldots,\frac{64}{64}.$$
+How many of the resulting $64$ reduced fractions have a denominator of $8$?
+=== 4
+Peppers come in four colours: green, red, yellow and orange. In how many ways can you make a bag of six peppers so that there is at least one of each colour?
+=== 5
+In the following addition of four-digit numbers, $X,Y$ and $Z$ stand for digits (not necessarily different). If the addition is correct, what digit does $Y$ stand for?
+
+$$\begin{array}{rrrrr}&2&X&X&Y\\+&3&X&Y&Z\\\hline&Z&Y&X&X\end{array}$$
+=== 6
+How many equilateral triangles of any size are there in the figure below?
+
+@@fig:calgary2016_6.png@@
+=== 7
+A number was decreased by $20\%$, and the resulting number increased by $20\%$. What percentage of the original number is the final result?
+=== 8
+A group of grade $7$ students and grade $9$ students are at a banquet. The average height of the grade $9$ students is $180$ cm. The average height of the grade $7$ students is $160$ cm. If the average height of all students at the banquet is $168$ cm and there are $72$ grade $9$ students, how many grade $7$ students are there?
+=== 9
+If the straight-line distance from one corner of a cube to the opposite corner (i.e., the length of the long diagonal or body-diagonal of a cube) is $9$ cm, what is the area (in $\text{cm}^2$) of one of its faces?

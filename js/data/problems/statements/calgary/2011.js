@@ -1,0 +1,21 @@
+// Problems and diagrams © 2011 University of Calgary Junior Mathematics Contest. Reproduced with permission from the University of Calgary Junior Mathematics Contest.
+// Source: the official Calgary Junior Math Contest papers. Built by tools/statements/build.py from tools/statements/spec/calgary/2011.txt.
+Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2011-calgary-junior-math-contest-1": { s: String.raw`A store sells pies. Each pie costs the same price and two pies cost $\$8$. How much do three pies cost?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam11.pdf" },
+"2011-calgary-junior-math-contest-2": { s: String.raw`Nahlah's living room is as shown in the diagram, with all distances in metres and with all angles $90^\circ$. What is the area (in square metres) of her living room?
+
+@@fig:calgary/2011/2.png@@`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam11.pdf" },
+"2011-calgary-junior-math-contest-3": { s: String.raw`Doan mixes together $1$ litre of $1\%$ butterfat milk, $2$ litres of $2\%$ butterfat milk and $4$ litres of $4\%$ butterfat milk. What percentage of the resulting seven litres of milk is butterfat?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam11.pdf" },
+"2011-calgary-junior-math-contest-4": { s: String.raw`Nine people, all with different heights, are sitting around a circular table. What is the greatest possible number of people that could be taller than both persons sitting next to him/her?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam11.pdf" },
+"2011-calgary-junior-math-contest-5": { s: String.raw`The number $111\ldots1$ has $102$ ones, and the number $222\ldots2$ has $101$ twos. Suppose you do the subtraction $111\ldots1-222\ldots2$ to get a whole number. What is the sum of the digits of this whole number?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam11.pdf" },
+"2011-calgary-junior-math-contest-6": { s: String.raw`In the following $8$-pointed star, what is the sum of the angles $A,B,C,D,E,F,G,H$?
+
+@@fig:calgary/2011/6.png@@`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam11.pdf" },
+"2011-calgary-junior-math-contest-7": { s: String.raw`Sixteen coins, numbered $1$ to $16$, are each red on one side and blue on the other side. Initially, all coins have their red sides facing up. The coins that are multiples of $2$ are turned over. Then the coins that are multiples of $4$ are turned over. Then the coins that are multiples of $8$ are turned over. Then the coins that are multiples of $16$ are turned over. Afterwards, how many of the coins have the red side facing up?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam11.pdf" },
+"2011-calgary-junior-math-contest-8": { s: String.raw`Five points $A,B,C,D,E$ lie on a line segment in order, as shown. The segment $AE$ has length $10$cm. Semi-circles with diameters $AB$, $BC$, $CD$, $DE$ are drawn, as shown. The sum of the lengths of the semicircles $\widehat{AB},\widehat{BC},\widehat{CD},\widehat{DE}$ can be written in the form $k\pi$ for some number $k$. What is $k$?
+
+@@fig:calgary/2011/8.png@@`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam11.pdf" },
+"2011-calgary-junior-math-contest-9": { s: String.raw`Suppose that $a$ and $b$ are positive integers, and the four numbers
+$$a+b,\quad a-b,\quad a\times b,\quad a\div b$$
+are all different and are all positive integers. What is the smallest possible value of $a+b$?`, u: "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/exam11.pdf" },
+});

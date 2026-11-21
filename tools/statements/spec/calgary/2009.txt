@@ -1,0 +1,24 @@
+=== 1
+What is the largest number of integers that can be chosen from $\{1,2,3,4,5,6,7,8,9\}$ such that no two integers are consecutive?
+=== 2
+Elves and ogres live in the land of Pixie. The average height of the elves is $80\,\text{cm}$, the average height of the ogres is $200\,\text{cm}$ and the average height of the elves and the ogres together is $140\,\text{cm}$. There are $36$ elves that live in Pixie. How many ogres live in Pixie?
+=== 3
+A circle with circumference $12\,\text{cm}$ is divided into four equal sections and coloured as shown. A mouse is at point $P$ and runs along the circumference in a clockwise direction for $100\,\text{cm}$ and stops at a point $Q$. What is the colour of the section containing the point $Q$?
+
+@@fig:calgary2009_3.png@@
+=== 4
+What is the longest possible length (in cm) of a side of a triangle which has positive integer side lengths and perimeter $17\,\text{cm}$?
+=== 5
+$A$ and $B$ are whole numbers so that the ratio $A:B$ is equal to $2:3$. If you add $100$ to each of $A$ and $B$, the new ratio becomes equal to $3:4$. What is $A$?
+=== 6
+You are given a two-digit positive integer. If you reverse the digits of your number, the result is a number which is $20\%$ larger than your number. What is your number?
+=== 7
+In the picture there are four circles one inside the other, so that the four parts (three rings and one disk) each have the same area. The diameter of the largest circle is $20\,\text{cm}$. What is the diameter (in cm) of the smallest circle?
+
+@@fig:calgary2009_7.png@@
+=== 8
+Carol's job is to feed four elephants at the circus. She receives a bag of peanuts every day and feeds each elephant as many peanuts as she can so that each elephant receives the same number of peanuts. She then eats the remaining peanuts (if any) at the end of the day. On the first day Carol receives $200$ peanuts. On every day after, she receives one more peanut than she did the previous day. This was done over $30$ days. How many peanuts did Carol eat over the $30$ days?
+=== 9
+Richard lives in a square house whose base has dimension $21\,\text{m}$ by $21\,\text{m}$ and is located in the centre of a square yard with dimension $51\,\text{m}$ by $51\,\text{m}$ as in the diagram. Richard is to tie one end of a leash to his puppy and the other end of the leash to a corner of his house so that the puppy can reach all parts of the yard. What is the smallest length (in m) of a leash so that this can be done?
+
+@@fig:calgary2009_9.png@@

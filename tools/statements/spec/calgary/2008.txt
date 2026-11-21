@@ -1,0 +1,22 @@
+=== 1
+The sum of two prime numbers is $9$. What is their product?
+=== 2
+Find the largest positive integer $X$ such that $2/7$ is smaller than $7/X$.
+=== 3
+In a class, $9$ students like hockey and $11$ students like soccer. Of these, $5$ students like both hockey and soccer. On the other hand, $10$ students in the class like neither hockey nor soccer. How many students are in the class?
+=== 4
+Notice that $2008$ has the property that it is divisible by its first and last digits but not by its second or third digits (because $2008/2=1004$ and $2008/8=251$ are both whole numbers, but $2008/0$ is not a whole number). What is the smallest number greater than $2008$ with this same property?
+=== 5
+Two squares have total area $85\ \text{cm}^2$ and total perimeter $52$ cm. What is the area in $\text{cm}^2$ of the larger square?
+=== 6
+Shannon receives a bouquet of flowers containing two kinds of flower. One kind of flower has $13$ petals and $9$ leaves. The other kind has $8$ petals and $11$ leaves. Altogether in her bouquet there are $100$ petals. How many leaves are there in the bouquet?
+=== 7
+The area of triangle $ABE$ is $56\ \text{m}^2$. Points $C$ and $D$ lie on side $BE$ such that $CD$ is twice as long as $BC$ and $DE$ is twice as long as $CD$. What is the area in $\text{m}^2$ of triangle $ABC$?
+
+@@fig:calgary2008_7.png@@
+=== 8
+Twelve friends were at a restaurant. Each person ordered four items from the menu. No two people ordered exactly the same set of four items. At least how many different items are on the restaurant's menu?
+=== 9
+A circle is inscribed in a right-angled isosceles triangle. The radius of the circle is $1$ cm. The perimeter of the triangle in cm can be written in the form $a+b\sqrt2$ where $a$ and $b$ are integers. What is $a$?
+
+@@fig:calgary2008_9.png@@
