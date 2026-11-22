@@ -6317,8 +6317,9 @@
       const words=contestQueryWords(q);
       const exact=selectedPaper();
       choices=exact?[exact]:catalog.filter(p=>words.length&&words.every(word=>p.words.some(w=>w.startsWith(word)))).slice(0,8);
-      options.innerHTML=choices.length?choices.map((g,i)=>`<button type="button" class="set-find-opt" id="mock-paper-${i}" role="option" aria-selected="false">${escapeAttr(g.label)}</button>`).join(''):'<div class="set-find-empty">No past paper matches.</div>';
-      active=choices.length?0:-1;options.hidden=false;input.setAttribute('aria-expanded','true');highlight();
+      options.innerHTML=choices.map((g,i)=>`<button type="button" class="set-find-opt" id="mock-paper-${i}" role="option" aria-selected="false">${escapeAttr(g.label)}</button>`).join('');
+      if(!choices.length){close();return;}
+      active=0;options.hidden=false;input.setAttribute('aria-expanded','true');highlight();
       [...options.querySelectorAll('[role="option"]')].forEach((b,i)=>{b.addEventListener('mousemove',()=>{active=i;highlight();});b.addEventListener('click',()=>{input.value=choices[i].label;update();input.focus();close();});});
     }
     function update(clearStatus=true){
