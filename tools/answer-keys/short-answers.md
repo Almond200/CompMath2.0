@@ -4,7 +4,7 @@
 
 Each entry contains an `answers` array of fully correct submissions. Its default format is a single real value. Use `format: "set"` for an unordered list of values, `"tuple"` for one ordered tuple, and `"tuple-set"` for an unordered list of ordered tuples. Put a complete list in one string, such as `["4, 6"]`. For a prompt asking for any one acceptable answer, use a separate array entry for each accepted alternative. Keep the multiple-choice imports in their own files.
 
-Use plain math expressions in the keys. The answer field accepts features such as fractions, `sqrt(3)`, `cbrt(2)`, `pi`, powers and factorials. Separate entries with a comma and a space. Rational expressions are compared exactly. The checker uses a small numerical tolerance for real expressions involving radicals or pi when exact rational comparison is unavailable. Questions with an unverified key or an unsupported answer form stay available for self-check. Saved self-check sets keep their existing marks.
+Use plain math expressions in the keys. The answer field accepts features such as fractions, `sqrt(3)`, `cbrt(2)`, `pi`, powers and factorials. Separate entries with a comma. Spaces are optional. Rational expressions are compared exactly. The checker uses a small numerical tolerance for real expressions involving radicals or pi when exact rational comparison is unavailable. Questions with an unverified key or an unsupported answer form stay available for self-check. Saved self-check sets keep their existing marks.
 
 Run `node tests/short-answer-keys.cjs` to check local prompts, source coverage, and grading. With the app served locally, `tools/check-practice-actions.cjs` covers submission and review in Chromium.
 

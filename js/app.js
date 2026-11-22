@@ -2175,7 +2175,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".book-search-option, .practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .lp-sol, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies, .ge, .list-section-title").forEach(el => {
+      container.querySelectorAll(".book-search-option, .practice-answer-math, .practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .lp-sol, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies, .ge, .list-section-title").forEach(el => {
         if (skip(el) || el.hasAttribute("data-description-formatted")) return;
         renderMathInElement(el, {
           delimiters: [
@@ -6188,7 +6188,8 @@
   }
   function exactAnswerHtml(text, format) {
     if(!text)return '';
-    try{return '$'+practiceSessions.exactTex(text, format)+'$';}catch(e){return escapeAttr(text);}
+    try { return `<span class="practice-answer-math">$${escapeAttr(practiceSessions.exactTex(text, format))}$</span>`; }
+    catch (err) { return escapeAttr(text); }
   }
   const PRACTICE_MATH_KEYS = [
     { label: 'Fraction', open: '(', close: ')/()' },
@@ -6201,7 +6202,11 @@
     { label: ',', name: 'Separate answers', open: ', ' }
   ];
   function practiceMathKeysHtml() {
-    return `<output class="practice-answer-preview" aria-label="Answer preview" for="practice-answer"></output>
+    return `<div class="practice-preview" hidden>
+        <span id="practice-preview-label">Preview</span>
+        <output class="practice-answer-preview" aria-labelledby="practice-preview-label" for="practice-answer"></output>
+      </div>
+      <p id="practice-answer-error" role="status"></p>
       <details class="practice-math-keys"><summary>Math keypad</summary>
         <div>${PRACTICE_MATH_KEYS.map((key, i) => `<button class="hp-btn hp-btn-soft" type="button" data-practice-math-key="${i}" aria-label="${key.name || key.label}">${key.label}</button>`).join('')}</div>
       </details>`;
@@ -6211,11 +6216,18 @@
     const keypad = $content.querySelector('.practice-math-keys');
     if (!preview || !keypad) return;
     function renderPreview() {
-      preview.textContent = '';
-      if (!input.value.trim() || input.getAttribute('aria-invalid') === 'true') return;
+      const text = input.value.trim();
+      const region = preview.closest('.practice-preview');
+      region.hidden = !text;
+      preview.textContent = text;
+      if (!text) return;
+      let tex;
+      try { tex = practiceSessions.exactTex(text, format); }
+      catch (err) { tex = text.replace(/^\$\$(.*)\$\$$|^\$(.*)\$$/, '$1$2'); }
       try {
-        window.katex.render(practiceSessions.exactTex(input.value, format), preview, { throwOnError: true });
-      } catch (err) { preview.textContent = ''; }
+        window.katex.render(tex, preview, { throwOnError: true, maxExpand: 100 });
+        fitInlineMath(region);
+      } catch (err) { preview.textContent = text; }
     }
     input.addEventListener('input', renderPreview);
     keypad.addEventListener('mousedown', e => {
@@ -6504,8 +6516,11 @@
       </section>
       <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
         const p = PROBLEM_BY_SLUG[slug], result = practiceSessions.result(set, slug);
-        return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${practiceProblemNumber(set, i)}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong><small>${set.answers[slug] ? 'Your answer: ' + escapeAttr(set.answers[slug]) : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small></span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
+        const answer = set.answers[slug], exact = practiceSessions.exactKey(slug);
+        const submitted = exact && !set.selfCheck?.[slug] ? exactAnswerHtml(answer, exact.format) : escapeAttr(answer || '');
+        return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${practiceProblemNumber(set, i)}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong><small>${set.answers[slug] ? 'Your answer: ' + submitted : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small></span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
       }).join('')}</div></section></div>`;
+    renderMath($content);
     $content.querySelectorAll('[data-result-index]').forEach(link => link.addEventListener('click', () => { set.current = +link.dataset.resultIndex; savePractice(); }));
   }
   function renderTopicPracticeSet() {
@@ -6529,7 +6544,7 @@
     const outcome = practiceSessions.result(set, slug);
     const aime = p && /AIME/.test(p.fam), exact = practiceSessions.exactKey(slug), paper = !!(p && set.selfCheck?.[slug]);
     const inlinePaper = paper && archiveStatement(p);
-    const exactLabel = { set: 'All values, separated by a comma and a space', tuple: 'Ordered tuple, for example (2, 3)',
+    const exactLabel = { set: 'All values, separated by a comma (space is optional)', tuple: 'Ordered tuple, for example (2, 3)',
       'tuple-set': 'All tuples, for example (2, 3), (4, 5)' }[exact?.format] || 'Exact value (fractions, sqrt, pi, !)';
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
     const correct = !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact.format)).join(' or ') : escapeAttr(officialKey(slug) || '');
@@ -6560,7 +6575,7 @@
           <p class="practice-result">${outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
           ${paper ? `<div class="practice-self">${p.solUrl && !inlinePaper ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
           ${practiceExplanationHtml(p, !paper || !!inlinePaper)}`
-          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact || paper ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? exactLabel : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact || paper ? 'text' : 'numeric'}" maxlength="${paper ? '60' : exact ? '120' : '3'}" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>${exact && !paper ? practiceMathKeysHtml() : ''}` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
+          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact || paper ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? exactLabel : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact || paper ? 'text' : 'numeric'}" maxlength="${paper ? '60' : exact ? '120' : '3'}" autocomplete="off" aria-describedby="practice-answer-error" value="${escapeAttr(set.answers[slug] || '')}">${exact && !paper ? practiceMathKeysHtml() : '<p id="practice-answer-error" role="status"></p>'}` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
       </section></div>`;
     const redraw = () => {
@@ -6625,7 +6640,7 @@
       const valid = practiceSessions.answer(set, slug, e.target.value, aime);
       if(set.status==='finished'){savePractice();renderTopicPracticeSet();return;}
       e.target.setAttribute('aria-invalid', String(!valid));
-      $content.querySelector('#practice-answer-error').textContent = valid ? '' : paper ? 'Use at most 60 characters. This value has not been saved.' : (exact ? exactLabel + '. This value has not been saved.' : 'Use an integer from 000 to 999. This value has not been saved.');
+      $content.querySelector('#practice-answer-error').textContent = valid ? '' : paper ? 'Use at most 60 characters. This value has not been saved.' : (exact ? 'This answer format isn’t supported. ' + (set.answers[slug] ? 'Your previous answer is still saved.' : 'This answer hasn’t been saved.') : 'Use an integer from 000 to 999. This value has not been saved.');
       if (valid) { schedulePracticeSave(); syncAnswerUI(); }
       else if (clearAnswer) clearAnswer.disabled = !e.target.value && !set.answers[slug];
     });
@@ -6636,7 +6651,10 @@
         answerInput.value = ''; answerInput.setAttribute('aria-invalid', 'false');
         $content.querySelector('#practice-answer-error').textContent = '';
         const preview = $content.querySelector('.practice-answer-preview');
-        if (preview) preview.textContent = '';
+        if (preview) {
+          preview.textContent = '';
+          preview.closest('.practice-preview').hidden = true;
+        }
       }
       schedulePracticeSave(); syncAnswerUI();
       (answerInput || answerChoices[0])?.focus({preventScroll:true});

@@ -10,7 +10,7 @@
   // \frac{3}{4} or \sqrt{3}, a leading "x = ", 1,000 as one thousand, and "and" or "or"
   // between the items of a list.
   const SUP = { "⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4", "⁵": "5", "⁶": "6", "⁷": "7", "⁸": "8", "⁹": "9", "⁻": "-" };
-  function normalize(src) {
+  function normalize(src, groupThousands = true) {
     let s = String(src).trim().replace(/\$/g, "");
     s = s.replace(/^[a-z]\s*=\s*/i, "").replace(/=\s*$/, "");
     s = s.replace(/\\left|\\right|\\[,;!:]|\\displaystyle/g, "");
@@ -28,14 +28,14 @@
       .replace(/π/g, "pi").replace(/√/g, "sqrt").replace(/∛/g, "cbrt").replace(/[[{]/g, "(").replace(/[\]}]/g, ")");
     s = s.toLowerCase().replace(/\s+(?:and|or)\s+/g, ", ").replace(/\bsquare\s*root\s*(?:of)?\b/g, "sqrt");
     // 1,000 and 12,345,678 are numbers; "4,9" and "4, 9" stay lists.
-    for (let k = 0; k < 4; k++) s = s.replace(/(\d),(\d{3})(?![\d,]?\d)/g, "$1$2");
+    if (groupThousands) for (let k = 0; k < 4; k++) s = s.replace(/(\d),(\d{3})(?![\d,]?\d)/g, "$1$2");
     return s;
   }
 
   // Tokens: numbers, pi, sqrt, cbrt, + - * / ^ ! ( ) and the comma.
-  function tokens(src) {
+  function tokens(src, groupThousands) {
     const out = [];
-    const s = normalize(src);
+    const s = normalize(src, groupThousands);
     let i = 0;
     while (i < s.length) {
       const c = s[i];
@@ -112,8 +112,8 @@
     if (i < 0) return [part];
     return [...expandPm([...part.slice(0, i), { t: "+" }, ...part.slice(i + 1)]), ...expandPm([...part.slice(0, i), { t: "-" }, ...part.slice(i + 1)])];
   }
-  function parse(src) {
-    const toks = tokens(src), parts = [[]];
+  function parse(src, groupThousands) {
+    const toks = tokens(src, groupThousands), parts = [[]];
     if (!toks.length) throw new Error("The answer is empty.");
     toks.forEach(t => { if (t.t === ",") parts.push([]); else parts[parts.length - 1].push(t); });
     if (parts.some(p => !p.length)) throw new Error("The list has an empty item: check the commas.");
@@ -180,7 +180,7 @@
     }
     return "";
   }
-  function toTex(src) { return parse(src).map(tex).join(",\\ "); }
+  function toTex(src, groupThousands) { return parse(src, groupThousands).map(tex).join(",\\ "); }
 
   // Close the brackets a student has opened but not yet closed, so the box can typeset an
   // answer while it is being built.

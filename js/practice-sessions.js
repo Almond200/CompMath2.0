@@ -100,11 +100,11 @@
   }
   function exactTex(text, format) {
     text = cleanExact(text, format);
-    if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text);
+    if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text, format !== 'set');
     const tuples = format === 'tuple' ? [text] : splitExactList(text);
     return tuples.map(tuple => {
       if (!tuple.startsWith('(') || !tuple.endsWith(')')) throw Error('Expected a parenthesized tuple');
-      const values = splitExactList(tuple.slice(1, -1)).map(math.toTex);
+      const values = splitExactList(tuple.slice(1, -1)).map(part => math.toTex(part));
       return '\\left(' + values.join(',\\ ') + '\\right)';
     }).join(',\\ ');
   }
@@ -173,7 +173,7 @@
     if (format === 'tuple') return [tuple(text)];
     if (format === 'tuple-set') return splitExactList(text).map(tuple);
     if (format === 'set') {
-      return math.parse(text).map(node => [evaluated(node)]);
+      return math.parse(text, false).map(node => [evaluated(node)]);
     }
     return [[scalar(text)]];
   }
