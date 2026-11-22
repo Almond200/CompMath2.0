@@ -1,0 +1,333 @@
+=== junior-1
+In the 2010 Vancouver Olympics, placement in curling semi-finals was based on a $10$-team round-robin tournament, in which each of $10$ teams plays each other team once, and the top four records move on to the semi-finals. A team is considered to be a strong contender for the gold medal if they win $7$ of their $9$ matchups. In this system, how many different teams can all end the round-robin tournament with a record of $7$ or more wins?
+
+(a) $2$  (b) $3$  (c) $4$  (d) $5$  (e) $6$
+=== junior-2
+Determine the sum of the reciprocals of all positive integer factors of $28$.
+
+(a) $1$  (b) $\frac{27}{14}$  (c) $\frac32$  (d) $\frac{55}{28}$  (e) $2$
+=== junior-3
+Evan has the same birthday as his grandson, James. For the last six consecutive years, Evan's age was a multiple of James' age. How old will Evan be at the next time that Evan's age will again be a multiple of his grandson's?
+
+(a) $54$  (b) $64$  (c) $70$  (d) $72$  (e) $80$
+=== junior-4
+The repeating decimal of form of a number is $0.0\overline{48}\ldots$ If such a number were converted to a fraction and reduced to lowest form, what would be the denominator?
+
+(a) $165$  (b) $110$  (c) $55$  (d) $990$  (e) $22$
+=== junior-5
+What is the sum of all integers, $M$, for which $M^2-8M-20$ is a prime number?
+
+(a) $2$  (b) $4$  (c) $6$  (d) $8$  (e) $10$
+=== junior-6
+Yarrrrrggghhhh! Literary critics complain that $80\%$ of all fictional pirate captains have an eye-patch, $75\%$ have a hook-hand, $67\%$ have a peg-leg, and $90\%$ have a pet parrot. By this accounting, at least what percent of these pirate captains must have an eye-patch, a hook-hand, a peg-leg \emph{and} a parrot?
+
+(a) $7\%$  (b) $12\%$  (c) $18\%$  (d) $26\%$  (e) $36\%$
+=== junior-7
+Let $|U-10|=V$, given that $U<10$. What is the value of $U-V$?
+
+(a) $10-2V$  (b) $-10$  (c) $10-2U$  (d) $10$  (e) $|U-10|-U$
+=== junior-8
+Havermeyer recently inherited a sizeable sum of money. He paid $30\%$ in taxes and invested $20\%$ of what remained into M\&M Enterprises. If M\&M received $\$11{,}900$ from Havermeyer, how much did Havermeyer pay in taxes?
+
+(a) $\$18{,}200$  (b) $\$19{,}600$  (c) $\$17{,}850$  (d) $\$25{,}500$  (e) $\$3{,}570$
+=== junior-9
+The midpoints of the three sides of $\triangle ABC$ are $(5,4)$, $(1,2)$, and $(-1,6)$. Which of the following is one of the actual points $A$, $B$, or $C$?
+
+(a) $(4,9)$  (b) $(3,8)$  (c) $(5,2)$  (d) $(6,3)$  (e) $(0,6)$
+=== junior-10
+Two tour guides are leading seven tourists. The guides decide to split up. Each tourist must choose one of the guides, but with the condition that each guide must take at least one tourist. How many different groupings of guides and tourists are possible?
+
+(a) $118$  (b) $120$  (c) $122$  (d) $124$  (e) $126$
+=== junior-11
+The positive integers $C$, $D$, $C+D$, $C-D$ are all prime. The sum of these four primes must be divisible by which of the following?
+
+(a) $2$  (b) $3$  (c) $5$  (d) $7$  (e) The sum is prime
+=== junior-12
+Bill randomly selects three different numbers from the set $\{1,2,3,4\}$, while Kerry randomly selects just one number from the set $\{2,4,6,8,10,12\}$. What is the probability that Kerry's one number is larger than the sum of Bill's three numbers?
+
+(a) $\frac38$  (b) $\frac13$  (c) $\frac5{12}$  (d) $\frac58$  (e) $\frac23$
+=== junior-13
+A US military clock reads the time of day to be $2010$ hours (this is $8{:}10$ PM). At this time of day, what is the angle formed by the minute and hour hands of a $12$-hour clock?
+
+(a) $160^\circ$  (b) $165^\circ$  (c) $170^\circ$  (d) $172^\circ$  (e) $175^\circ$
+=== junior-14
+For a fixed cube, how many unique planes contain at least three of the cube's vertices?
+
+(a) $6$  (b) $12$  (c) $14$  (d) $20$  (e) $28$
+=== junior-15
+Which of the following equations, if graphed on a Cartesian plane, would have no $y$-intercept?
+
+(a) $x^2+y^2=2xy$  (b) $|y|+4=|x|$  (c) $\sqrt x=6-\sqrt y$  (d) $8^x+8^y-65=0$  (e) $\dfrac x{10}-\dfrac{10}y=\dfrac{x+10}{10}$
+=== junior-16
+Alaskan oil reserves would potentially last for $35$ years if used only by the United States. If the same reserves are also utilized by China, they will last for only $10$ years. How many years would this oil last if only used by China?
+
+(a) $15$  (b) $21$  (c) $25$  (d) $14$  (e) $20$
+=== junior-17
+An amalgam of mercury and cesium, $50$ mL in volume, is found to be $30\%$ cesium. A chemist wishes to combine this amalgam with $60$ mL of pure cesium, but wants the final mixture to be exactly $60\%$ cesium. To dilute the mixture, the chemist has a large supply of pure mercury. How many milliliters of pure mercury should be combined with the amalgam and pure cesium to produce the desired mixture?
+
+(a) $0$  (b) $5$  (c) $10$  (d) $15$  (e) $20$
+=== junior-18
+A right triangle is inscribed in a circle with radius equal to $\dfrac5{\sqrt2}$. If the lengths of the legs of the triangle are distinct integers, what are these lengths?
+
+(a) $8$ \& $4$  (b) $9$ \& $3$  (c) $7$ \& $1$  (d) $6$ \& $5$  (e) $11$ \& $3$
+=== junior-19
+The mean of three numbers is $7$ more than the least of the numbers and $9$ less than the greatest. The median of the three numbers is $6$. What is their sum?
+
+(a) $24$  (b) $30$  (c) $32$  (d) $36$  (e) $48$
+=== junior-20
+An arc of $60^\circ$ on Circle $A$ is half the length of an arc of $90^\circ$ on Circle $B$. What is the ratio of the area of Circle $A$ to the area of Circle $B$?
+
+(a) $\frac9{16}$  (b) $\frac34$  (c) $\frac{16}9$  (d) $\frac94$  (e) $\frac43$
+=== junior-21
+Compare the sum of all positive odd integers less than $2010$ and the sum all positive even integers less than $2010$. What is the difference between these two sums?
+
+(a) $0$  (b) $1005$  (c) $2010$  (d) $3015$  (e) $4020$
+=== junior-22
+How many unique arrangements are there of the letters in the word UNUSUAL?
+
+(a) $120$  (b) $720$  (c) $840$  (d) $1260$  (e) $1680$
+=== junior-23
+The two pictured circles have the same center, but different radii. The chord within the outer circle lies tangent to the inner circle. If the chord has length $6$, what is the area of the shaded region?
+
+@@fig:utah2010_junior-23.png@@
+
+(a) $3\pi$  (b) $12\pi$  (c) $6\pi$  (d) $18\pi$  (e) $9\pi$
+=== junior-24
+The number $761$ satisfies the property that the digits fall in strictly decreasing order. How many three-digit numbers satisfy this property?
+
+(a) $120$  (b) $136$  (c) $148$  (d) $156$  (e) $172$
+=== junior-25
+Which of the following triplets could be the side lengths of an obtuse scalene triangle?
+
+(a) $8,9,12$  (b) $7,24,25$  (c) $19,38,57$  (d) $15,16,17$  (e) $10,50,51$
+=== junior-26
+If $A$ and $B$ are positive integers, where $A<B$, which fraction below is the largest?
+
+(a) $\dfrac{A-1}{B-1}$  (b) $\dfrac{A^2-1}{B^2-1}$  (c) $\dfrac{A^3-1}{B^3-1}$  (d) $\dfrac{A+1}{B+1}$  (e) It depends on $A$ \& $B$
+=== junior-27
+A line contains the points $P=(3,5)$ and $Q=(19,45)$. How many points on this line lie strictly between $P$ and $Q$ and have two integer coordinates?
+
+(a) $5$  (b) $6$  (c) $7$  (d) $8$  (e) $9$
+=== junior-28
+What is the area of the graph enclosed by $|5x|+|6y|=30$?
+
+(a) $7.5$  (b) $15$  (c) $30$  (d) $36$  (e) $60$
+=== junior-29
+An equilateral triangle has the same perimeter as a regular hexagon. What is the ratio of the area of the triangle to the area of the hexagon?
+
+(a) $\frac23$  (b) $\frac34$  (c) $\frac{\sqrt6}3$  (d) $\frac{\sqrt3}2$  (e) $\frac49$
+=== junior-30
+Each problem on the 2010 Utah State Math Contest awards $5$ points for a correct answer, $1$ point for an omitted answer, and $0$ points for a wrong answer. How many integer scores between $0$ and $200$ are unobtainable?
+
+(a) $3$  (b) $6$  (c) $10$  (d) $15$  (e) $21$
+=== junior-31
+If $A=3B$, $5B=3C$, and $C=2D$, then the ratio of $\dfrac A{4D}$ is equal to:
+
+(a) $\frac34$  (b) $\frac8{15}$  (c) $\frac9{10}$  (d) $\frac5{12}$  (e) $\frac{72}5$
+=== junior-32
+On a standard six-sided die, the six faces bear the numbers $1$ to $6$, and each number has an equal probability of being rolled. You roll the die until the sum of the numbers on your rolls exceeds $12$. What is your most likely total?
+
+(a) $13$  (b) $14$  (c) $15$  (d) $16$  (e) $13$-$18$ are equally likely
+=== junior-33
+If $2^{x+3}+2^x=3^{y+2}-3^y$, and if $x$ and $y$ are integers, then $x+y$ is equal to:
+
+(a) $5$  (b) $6$  (c) $7$  (d) $8$  (e) $9$
+=== junior-34
+If the graph of the equation $y=ax^2+bx+c$ is shown, which of the following inequalities is false?
+
+@@fig:utah2010_junior-34.png@@
+
+(a) $a<0$  (b) $b<0$  (c) $c<0$  (d) $\dfrac{-b}{2a}<0$  (e) $b^2-4ac<0$
+=== junior-35
+Determine the constant term in the binomial expansion of the expression $\left(x^3+\dfrac3{x^2}\right)^5$:
+
+(a) $30$  (b) $90$  (c) $180$  (d) $270$  (e) $540$
+=== junior-36
+What is the $15^{\text{th}}$ term in an arithmetic sequence in which the $3^{\text{rd}}$ term is $20$ and the $30^{\text{th}}$ term is $2$?
+
+(a) $11$  (b) $12$  (c) $13$  (d) $14$  (e) $15$
+=== junior-37
+A pentagon has exterior angles $52^\circ$, $(2x)^\circ$, $25^\circ$, $(3x)^\circ$, and $38^\circ$. What is $x$?
+
+(a) $13$  (b) $31$  (c) $49$  (d) $67$  (e) $85$
+=== junior-38
+Suppose that the price of game tickets has gone up $4\%$ every year for the past $25$ years. If the price of a ticket this year is $P$, what was the price of a ticket $10$ years ago?
+
+(a) $0.6P$  (b) $\dfrac P{(1.04)^{10}}$  (c) $P(0.6)^{10}$  (d) $\dfrac P{1.4}$  (e) $P(0.96)^{10}$
+=== junior-39
+Copy editors look over documents for mistakes. Suppose that a document is checked over by two copy editors; the first editor finds $56$ mistakes, and the second finds $50$. Upon comparing their results, they find that only $40$ mistakes have been found by both of them. For a given editor, each mistake has an equal likelihood of being noticed, though each editor has a different likelihood of catching any given mistake. Assuming that the two editors worked independently, what is the most likely count of the mistakes that both editors have missed?
+
+(a) $4$  (b) $9$  (c) $12$  (d) $14$  (e) $20$
+=== junior-40
+The included picture contains seven concentric circles which have integer radii numbering from $1$ to $7$. How many non-congruent pairs of enclosed regions having equal area can be found in this picture?
+
+@@fig:utah2010_junior-40.png@@
+
+(a) $0$  (b) $1$  (c) $2$  (d) $3$  (e) $4$
+=== senior-1
+In the 2010 Vancouver Olympics, placement in curling semi-finals was based on a $10$-team round-robin tournament, in which each of $10$ teams plays each other team once, and the top four records move on to the semi-finals. A team is considered to be a strong contender for the gold medal if they win $7$ of their $9$ matchups. In this system, how many different teams can all end the round-robin tournament with a record of $7$ or more wins?
+
+(a) $2$  (b) $3$  (c) $4$  (d) $5$  (e) $6$
+=== senior-2
+The midpoints of the three sides of $\triangle ABC$ are $(5,4)$, $(1,2)$, and $(-1,6)$. Which of the following is one of the actual points $A$, $B$, or $C$?
+
+(a) $(4,9)$  (b) $(3,8)$  (c) $(5,2)$  (d) $(6,3)$  (e) $(0,6)$
+=== senior-3
+What is the greatest number of times that the graph of a $10^{\text{th}}$ degree polynomial can intersect with the graph of a $7^{\text{th}}$ degree polynomial?
+
+(a) $3$  (b) $7$  (c) $10$  (d) $17$  (e) $70$
+=== senior-4
+Havermeyer recently inherited a sizeable sum of money. He paid $30\%$ in taxes and invested $20\%$ of what remained into M\&M Enterprises. If M\&M received $\$11{,}900$ from Havermeyer, how much did Havermeyer pay in taxes?
+
+(a) $\$18{,}200$  (b) $\$19{,}600$  (c) $\$17{,}850$  (d) $\$25{,}500$  (e) $\$3{,}570$
+=== senior-5
+Suppose that the Cartesian three-dimensional space is divided up by the planes $x=y$, $x=z$, and $y=z$. How many sections has the $3$-space been divided into?
+
+(a) $4$  (b) $5$  (c) $6$  (d) $8$  (e) $12$
+=== senior-6
+Using each of the digits $1$ through $9$ once, you can create five numbers, each being one or two digits long. If the five numbers are prime, what is the smallest possible sum of these $5$ numbers?
+
+(a) $180$  (b) $225$  (c) $252$  (d) $269$  (e) $274$
+=== senior-7
+Let $|U-10|=V$, given that $U<10$. What is the value of $U-V$?
+
+(a) $10-2V$  (b) $-10$  (c) $10-2U$  (d) $10$  (e) $|U-10|-U$
+=== senior-8
+In rectangle $PQRS$, we have $P=(4,16)$, $Q=(24,26)$, and $S=(7,y)$ for some integer $y<16$. What is the area of rectangle $PQRS$?
+
+(a) $120$  (b) $130$  (c) $135$  (d) $140$  (e) $150$
+=== senior-9
+For some real number greater than $1$, the difference between its multiplicative inverse and its additive inverse is $4$. In which interval does the number lie?
+
+(a) $[0,1)$  (b) $[1,2)$  (c) $[2,3)$  (d) $[3,4)$  (e) $[4,5)$
+=== senior-10
+A man leaves for work at the same time each morning. If his travel speed averages $30$ miles per hour, he will be $18$ minutes late. If his travel speed averages $45$ miles per hour, he will arrive $8$ minutes early. What average travel speed (in miles per hour) will put him at work precisely on time?
+
+(a) $38$  (b) $39$  (c) $40$  (d) $41$  (e) $42$
+=== senior-11
+A regular octagon, $ABCDEFGH$, has sides of length $8$. What is the area of quadrilateral $ABDG$?
+
+(a) $96+64\sqrt2$  (b) $64+96\sqrt2$  (c) $32+128\sqrt2$  (d) $128+32\sqrt2$  (e) $80+80\sqrt2$
+=== senior-12
+There exists a positive increasing arithmetic sequence $A,B,C,D,E$ such that $A,B,E$ form a geometric sequence. If $A=9$, what is $D/C$?
+
+(a) $\frac52$  (b) $\frac83$  (c) $\frac65$  (d) $\frac92$  (e) $\frac75$
+=== senior-13
+For some integer, $n$, the quantity $(n!)$ is divisible by the sum $(1+2+3+\dots+n)$. Which of the following integers is not a possible value of $n$?
+
+(a) $7$  (b) $14$  (c) $21$  (d) $28$  (e) $35$
+=== senior-14
+Two tour guides are leading seven tourists. The guides decide to split up. Each tourist must choose one of the guides, but with the condition that each guide must take at least one tourist. How many different groupings of guides and tourists are possible?
+
+(a) $118$  (b) $120$  (c) $122$  (d) $124$  (e) $126$
+=== senior-15
+How many ordered pairs of positive integers $(c,d)$, where $c>d$, have the property of having their squares differ by $48$?
+
+(a) $3$  (b) $4$  (c) $6$  (d) $8$  (e) $12$
+=== senior-16
+Yarrrrrggghhhh! Literary critics complain that $80\%$ of all fictional pirate captains have an eye-patch, $75\%$ have a hook-hand, $67\%$ have a peg-leg, and $90\%$ have a pet parrot. By this accounting, at least what percent of these pirate captains must have an eye-patch, a hook-hand, a peg-leg \emph{and} a parrot?
+
+(a) $7\%$  (b) $12\%$  (c) $18\%$  (d) $26\%$  (e) $36\%$
+=== senior-17
+A trail going up Mount Olympus maintains at a steady grade of $6\%$. Over the course of this trail, a traveler would rise in elevation by $270$ meters. How much longer would the trail be if the trail had a $4\%$ grade?
+
+(a) $2250$ m  (b) $2700$ m  (c) $3600$ m  (d) $4500$ m  (e) $5400$ m
+=== senior-18
+Suppose that $F(x)$ and $G(x)$ are one-to-one functions. Which of the following is necessarily a one-to-one function?
+
+(a) $(F-G)(x)$  (b) $(F\cdot G)(x)$  (c) $(F/G)(x)$  (d) $(F\circ G)(x)$  (e) $(F+G)(x)$
+=== senior-19
+The included picture contains seven concentric circles which have integer radii numbering from $1$ to $7$. How many non-congruent pairs of enclosed regions having equal area can be found in this picture?
+
+@@fig:utah2010_junior-40.png@@
+
+(a) $0$  (b) $1$  (c) $2$  (d) $3$  (e) $4$
+=== senior-20
+A circle passes through the three vertices of an isosceles triangle that has two sides of length $4$ and one side of length $2$. What is the area of the circle?
+
+(a) $\dfrac{16\pi}3$  (b) $\dfrac{16\pi}5$  (c) $\dfrac{64\pi}{15}$  (d) $\dfrac{65\pi}{17}$  (e) $\dfrac{70\pi}{17}$
+=== senior-21
+At one point in US history, it was recommended that roads connect every town to the town nearest to it. Treating each town as a point on a map, and assuming that the distance between any two is distinct (when measured carefully enough), what is the largest number of towns to which any one town may be connected under this system?
+
+(a) $3$  (b) $4$  (c) $5$  (d) $6$  (e) $7$
+=== senior-22
+The ratio $\dfrac{20^{2009}+20^{2011}}{20^{2010}+20^{2010}}$ is closest to which of the following numbers?
+
+(a) $0.05$  (b) $0.1$  (c) $1$  (d) $10$  (e) $20$
+=== senior-23
+In trapezoid $ABCD$, line segments $AB$ and $CD$ are both perpendicular to segment $AD$. As well, $AB+CD=BC$, $AB<CD$, and $AD=9$. What is $AB\cdot CD$?
+
+(a) $20.25$  (b) $22.5$  (c) $26.25$  (d) $28$  (e) $29.5$
+=== senior-24
+Bill randomly selects three different numbers from the set $\{1,2,3,4\}$, while Kerry randomly selects just one number from the set $\{2,4,6,8,10,12\}$. What is the probability that Kerry's one number is larger than the sum of Bill's three numbers?
+
+(a) $\frac38$  (b) $\frac13$  (c) $\frac5{12}$  (d) $\frac58$  (e) $\frac23$
+=== senior-25
+A rare book dealer has packaged his books into six bundles; the bundles contain $15$, $16$, $18$, $19$, $20$, and $31$ books. One of the bundles contains only first-editions, while the other five contain re-prints. One customer buys two bundles of re-prints. Another customer also buys only bundles of re-prints, but buys twice as many books as the first customer. The first-edition bundle contains how many books?
+
+(a) $15$  (b) $16$  (c) $18$  (d) $19$  (e) $20$
+=== senior-26
+The following image has the property that $A$, $B$, and $C$ are all equidistant from each other. $AC$ is an arc formed from a circle with center $B$ and radius $AB$, and $BC$ is an arc formed from a circle with center $A$ and radius $AB$. The white portion of the picture is a semicircle with diameter $AB$. Find the ratio of the area of the shaded region to the area of $ABC$.
+
+@@fig:utah2010_senior-26.png@@
+
+(a) $\dfrac{4\pi}{6\pi-4\sqrt3}$  (b) $\dfrac{3\pi-3\sqrt3}{6\pi-4\sqrt3}$  (c) $\dfrac{\pi}{4\pi-2\sqrt3}$  (d) $\dfrac{2\pi}{12\pi-9\sqrt3}$  (e) $\dfrac{5\pi-6\sqrt3}{8\pi-6\sqrt3}$
+=== senior-27
+The repeating decimal of form of a number is $0.0\overline{378}\ldots$ If such a number were converted to a fraction and reduced to lowest form, what would be the denominator?
+
+(a) $185$  (b) $333$  (c) $370$  (d) $1111$  (e) $9990$
+=== senior-28
+The positive integers $C$, $D$, $C+D$, $C-D$ are all prime. The sum of these four primes must be divisible by which of the following?
+
+(a) $2$  (b) $3$  (c) $5$  (d) $7$  (e) The sum is prime
+=== senior-29
+Evan has the same birthday as his grandson, James. For the last six consecutive years, Evan's age was a multiple of James' age. How old will Evan be at the next time that Evan's age will again be a multiple of his grandson's?
+
+(a) $54$  (b) $64$  (c) $70$  (d) $72$  (e) $80$
+=== senior-30
+Let $h(t)=\dfrac{16t^4+250t}{4t^2-25}$ for $t\ne-\dfrac52$. For $h(t)$ to be continuous, what value must be assigned to $h(t)$ when $t=-\dfrac52$?
+
+(a) $\frac{125}2$  (b) $\frac{75}2$  (c) $\frac{75}4$  (d) $\frac{125}8$  (e) $\frac{75}8$
+=== senior-31
+What is the probability that a randomly selected $10$-digit number contains all ten different digits?
+
+(a) $\dfrac{9\cdot9!}{10^{10}}$  (b) $\dfrac{10!-9!}{10^9-1}$  (c) $\dfrac{9!}{9\cdot10^9}$  (d) $\dfrac{10!-9!}{10^{10}-1}$  (e) $\dfrac{9!}{10^9}$
+=== senior-32
+A bag contains two gems, either of which may be a ruby or an emerald (with equal probability). An emerald is added to the bag, the contents are well-shaken, and a random stone is drawn from the bag. If the stone drawn out is an emerald, what is the probability that the bag contains a ruby?
+
+(a) $\frac57$  (b) $\frac78$  (c) $\frac12$  (d) $\frac34$  (e) $\frac58$
+=== senior-33
+Suppose that $30^A=6$, $30^B=10$, and $30^C=15$. What is the mean of $A$, $B$, and $C$?
+
+(a) $\frac49$  (b) $\frac12$  (c) $\frac23$  (d) $\frac29$  (e) $\frac13$
+=== senior-34
+Assuming that $A$, $B$ are positive integers, which of the following could be the total of the multiplicities of all negative real zeros for the following polynomial?
+$$P(x)=x^9+4x^8-3x^7-26x^6+3x^5+108x^4+107x^3-46x^2-Ax-B$$
+
+(a) $5$  (b) $6$  (c) $7$  (d) $8$  (e) $9$
+=== senior-35
+One of the two real roots of the quadratic equation, $ax^2+bx+c=0$, is three times the other. Which of the following expressions is equal to the discriminant of the quadratic function?
+
+(a) $\dfrac{4ac-b^2}{2a}$  (b) $\dfrac{4ac}{3b^2}$  (c) $\dfrac{3ac}{b^2}$  (d) $\dfrac{3ac}2$  (e) $\dfrac{4ac}3$
+=== senior-36
+What portion of all positive integers are not multiples of $2$, $3$, $4$, $5$ or $6$?
+
+(a) $\frac7{30}$  (b) $\frac4{15}$  (c) $\frac3{10}$  (d) $\frac13$  (e) $\frac{11}{30}$
+=== senior-37
+Over the interval $[0,4]$, how many times does the function $f(x)=\frac14\cos(4x)$ reach a local minimum?
+
+(a) $1$  (b) $2$  (c) $3$  (d) $4$  (e) $5$
+=== senior-38
+Consider the following parametric equations:
+$$x=20\sin t+5\qquad y=-10\cos t-4$$
+Which of the following best describes the image made by the graph of these equations in the $x$-$y$ plane?
+
+(a) A circle  (b) An ellipse  (c) A parabola  (d) A hyperbola  (e) A cone
+=== senior-39
+The $3^{\text{rd}}$-degree polynomial function $f(x)=ax^3+bx^2+cx+d$ passes through the points $(-2,0)$, $(2,0)$, and $(0,4)$. What is the value of $b$?
+
+(a) $-2$  (b) $-1$  (c) $0$  (d) $1$  (e) $2$
+=== senior-40
+Once a month, Angus and Maggie hike from their home to a nearby mountain; they proceed up to the top, take the same path back down again, and back home. On the road to and from the mountain, their pace is $4$ miles per hour. Going up the mountain, they travel $3$ miles per hour, while their speed increases to $6$ miles per hour on the trip down. If the whole trip takes $3.5$ hours, how many miles is the round-trip?
+
+(a) $14$  (b) $15$  (c) $16$  (d) $18$  (e) Not enough information
