@@ -20,8 +20,11 @@ for (const dir of fs.readdirSync(statementDir, { withFileTypes: true }).filter(d
 const usedSources = new Set();
 for (const [slug, key] of Object.entries(answers)) {
   const statement = window.MATH_STATEMENTS[slug];
-  assert(statement, slug + ' needs a local prompt');
-  assert(!/(?:^|\n)\([A-E]\)\s/.test(statement.s || statement), slug + ' has answer choices');
+  if (key.external) assert.equal(statement, undefined, slug + ' already has a local prompt');
+  else {
+    assert(statement, slug + ' needs a local prompt');
+    assert(!/(?:^|\n)\([A-E]\)\s/.test(statement.s || statement), slug + ' has answer choices');
+  }
   assert.equal(window.MATH_ANSWER_KEYS.answers[slug], undefined, slug);
   assert.equal(window.MATH_EXTRA_KEYS.answers[slug], undefined, slug);
   assert.equal(window.MATH_MOCK_EXTRAS[slug], undefined, slug);
@@ -41,6 +44,12 @@ function check(slug, value, verdict) {
 }
 
 const set = '2014-hmmt-february-algebra-1';
+check('2025-chmmc-individual-10', '6', 'Correct');
+check('2025-chmmc-individual-10', '7', 'Incorrect');
+check('2018-lehigh-math-contest-1', '20', 'Correct');
+check('2018-lehigh-math-contest-1', '400', 'Incorrect');
+check('2013-arml-local-individual-10', '21,5,14', 'Correct');
+check('2016-arml-individual-8', '(20, 5, 11)', 'Incorrect');
 check(set, '6, 4', 'Correct');
 check(set, '4', 'Incorrect');
 check(set, '4, 6, 7', 'Incorrect');
