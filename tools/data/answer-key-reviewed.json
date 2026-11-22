@@ -1,4 +1,100 @@
 {
+  "1970-ahsme-13": {
+    "local_sha256": "67471432745cacdba56b199bf3f40cdfd2446bcc94ff3dd26680274c019b003e",
+    "imported_sha256": "0bdd78a3df8d85fdbc7e4453a7fd123776f09b8345f51bb67cca3f06625406cb",
+    "answer": "D",
+    "note": "Same question and choices; LIVE writes * where the local text has \\ast. Checked: (a^b)^n = a^(bn), so (D)."
+  },
+  "1978-ahsme-21": {
+    "local_sha256": "b00a6a2162997d850fd6571ae8202651dbd22530f332116bf2147a484be7dc83",
+    "imported_sha256": "2ffa14ba1008e7f78759ebbdae21e97ef080f7d8370c51048a5a6c19e1378e75",
+    "answer": "A",
+    "note": "Same question and choices; LIVE has a stray <br/> in choice (E). Checked: the sum is log_x 60 = 1/log_60 x, so (A)."
+  },
+  "1990-ahsme-24": {
+    "local_sha256": "7cb9c0da3e388c8529b2946271d9b352df53a0e39c35af150c9575762015b59f",
+    "imported_sha256": "795bd1ad7ebf1f488e62c5b786d1709c6bc61621f53ec07b6f8400bc46949518",
+    "answer": "D",
+    "note": "Same question and choices; the table is laid out differently. Checked: the girls average 84, (D)."
+  },
+  "2021-fall-amc-10a-1": {
+    "local_sha256": "b5849f83f3c69c0962bbf04cf140a2e490d1c56a53f991776c83f70992a6d0a0",
+    "imported_sha256": "38bbe798063fbd4a4de07896199396616394548f2baeb5a9bc1612273a2b46d7",
+    "answer": "C",
+    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
+  },
+  "2021-fall-amc-10a-10": {
+    "local_sha256": "ba00ee62aaa1863decca671c90cf00ccfdbe89a4e30053eb9d3fc8026183f7c8",
+    "imported_sha256": "487fdd88350738490986eb8ef8d26344d76b11face129bedc5dedf0b13be13d8",
+    "answer": "B",
+    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
+  },
+  "2021-fall-amc-10a-11": {
+    "local_sha256": "3939bfeffcbaab3f9dc1d4d4a426826a0f9d35f8a13cce876da3e504dd9cf926",
+    "imported_sha256": "7cde67a3256d7207de89eb8547714373dadfe395317d925c3e6d2714a619009e",
+    "answer": "A",
+    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
+  },
+  "2021-fall-amc-10a-12": {
+    "local_sha256": "41b7428b3924508a918f252e6642af36cfae6928125aa658501f7190b7415845",
+    "imported_sha256": "d6f49f7395336e54880b81d46e28f8dc340fbfc2fd20f7e6eb4316b23079d812",
+    "answer": "D",
+    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
+  },
+  "2021-fall-amc-10a-14": {
+    "local_sha256": "4d7c5c7908f4fe26c681a4dba2c04bfb6d24750ab5ea1231bbfb58313c1ebef9",
+    "imported_sha256": "559db7fefba74194009f6412256fc464b93bbead11c290a0110ee760619b9c8c",
+    "answer": "D",
+    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
+  },
+  "2021-fall-amc-10a-15": {
+    "local_sha256": "4d70fdc0ab55c7412036d9dc698a8359d258770ce4b974a9618b12185904f41e",
+    "imported_sha256": "290decf490e27f3bf95e214c70f9556bcada4afef563b9c4f0540de1cf7edce5",
+    "answer": "C",
+    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
+  },
+  "2021-fall-amc-10a-16": {
+    "local_sha256": "324c8530ba180f67fec9574b9f40be3dada15f3c28334c9b572abed17b3ac0dd",
+    "imported_sha256": "581eec302278b1f4316a2c893df0e81febdc9c8f23429501571aacaaa9c61d05",
+    "answer": "D",
+    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
+  },
+  "2021-fall-amc-10a-17": {
+    "local_sha256": "2d99f8cad692cb3e85013a56e13a7626a4102b826d03c56146d901189330d73c",
+    "imported_sha256": "c7c9856fb3a1855cffb9e994fc370c3f6950fcb3e31daab8209e77b9f2ab7c76",
+    "answer": "D",
+    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
+  },
+  "2021-fall-amc-10a-18": {
+    "local_sha256": "be07214f7ec69ddeddb39ae419239fca748af3bdd021d7696bd36e86a7ab55bb",
+    "imported_sha256": "adce2c05031e5c4817d3b7e5cf3d757c87aa9a80e8ed91375c94568c8e05f703",
+    "answer": "C",
+    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
+  },
+  "2021-fall-amc-10a-21": {
+    "local_sha256": "85980bc20ae0417ca8747b32ba6b93c472b50c243a3df33145acfdfc78b35c68",
+    "imported_sha256": "eed823c081bed9f6d73b63262411a7e605e36eaee15205f81c9debbfa4f4814e",
+    "answer": "E",
+    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
+  },
+  "2021-fall-amc-10a-3": {
+    "local_sha256": "7e14930bf90c987abaaa619ba486e0d0b9c3e64a428c7257b22aa1ed93b3c769",
+    "imported_sha256": "8f387a9d5c6d7f3357c21e90d39e3eeb08baec1235aefe88df81a380724afd15",
+    "answer": "D",
+    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
+  },
+  "2021-fall-amc-10a-6": {
+    "local_sha256": "1868143b5bd710ca57e94e6d286577e97f9f4e8459984fcab940bc575d5545aa",
+    "imported_sha256": "fe6814f9baa24f88bd7b4cd86ae12d33a20ba666429bbbaf0ef53bf61da457f0",
+    "answer": "B",
+    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
+  },
+  "2021-fall-amc-10a-7": {
+    "local_sha256": "d62a8e0025ca9dad550af0a553036d52d5fba32de45e7e3ecaaed3bba0c0e7dc",
+    "imported_sha256": "07ce8e443d7e0c261ad4e5c37c6e82b61ea47be5c35af8628b1c06d7111a54ec",
+    "answer": "D",
+    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
+  },
   "2021-fall-amc-10b-1": {
     "local_sha256": "99a6a4780f5f09de7e2ec7b51e80321aec0a6492a55ce2fe8e7b44f4b9c16809",
     "imported_sha256": "625a73714fbb8b691d94d586992ced6f03aaa06e56c67c2c39b394c2002aa53e",
@@ -99,84 +195,6 @@
     "local_sha256": "74e344082f4a5c93c60a089d622e79c6566747afe79af8a42959abbe9291ea8e",
     "imported_sha256": "0acfdf2b0e7f4d6c9ac063ce6fd0027d057818ff992465a8c301ef5e6225ed7c",
     "answer": "C",
-    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
-  },
-  "2021-fall-amc-10a-1": {
-    "local_sha256": "b5849f83f3c69c0962bbf04cf140a2e490d1c56a53f991776c83f70992a6d0a0",
-    "imported_sha256": "38bbe798063fbd4a4de07896199396616394548f2baeb5a9bc1612273a2b46d7",
-    "answer": "C",
-    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
-  },
-  "2021-fall-amc-10a-10": {
-    "local_sha256": "ba00ee62aaa1863decca671c90cf00ccfdbe89a4e30053eb9d3fc8026183f7c8",
-    "imported_sha256": "487fdd88350738490986eb8ef8d26344d76b11face129bedc5dedf0b13be13d8",
-    "answer": "B",
-    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
-  },
-  "2021-fall-amc-10a-11": {
-    "local_sha256": "3939bfeffcbaab3f9dc1d4d4a426826a0f9d35f8a13cce876da3e504dd9cf926",
-    "imported_sha256": "7cde67a3256d7207de89eb8547714373dadfe395317d925c3e6d2714a619009e",
-    "answer": "A",
-    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
-  },
-  "2021-fall-amc-10a-12": {
-    "local_sha256": "41b7428b3924508a918f252e6642af36cfae6928125aa658501f7190b7415845",
-    "imported_sha256": "d6f49f7395336e54880b81d46e28f8dc340fbfc2fd20f7e6eb4316b23079d812",
-    "answer": "D",
-    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
-  },
-  "2021-fall-amc-10a-14": {
-    "local_sha256": "4d7c5c7908f4fe26c681a4dba2c04bfb6d24750ab5ea1231bbfb58313c1ebef9",
-    "imported_sha256": "559db7fefba74194009f6412256fc464b93bbead11c290a0110ee760619b9c8c",
-    "answer": "D",
-    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
-  },
-  "2021-fall-amc-10a-15": {
-    "local_sha256": "4d70fdc0ab55c7412036d9dc698a8359d258770ce4b974a9618b12185904f41e",
-    "imported_sha256": "290decf490e27f3bf95e214c70f9556bcada4afef563b9c4f0540de1cf7edce5",
-    "answer": "C",
-    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
-  },
-  "2021-fall-amc-10a-16": {
-    "local_sha256": "324c8530ba180f67fec9574b9f40be3dada15f3c28334c9b572abed17b3ac0dd",
-    "imported_sha256": "581eec302278b1f4316a2c893df0e81febdc9c8f23429501571aacaaa9c61d05",
-    "answer": "D",
-    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
-  },
-  "2021-fall-amc-10a-17": {
-    "local_sha256": "2d99f8cad692cb3e85013a56e13a7626a4102b826d03c56146d901189330d73c",
-    "imported_sha256": "c7c9856fb3a1855cffb9e994fc370c3f6950fcb3e31daab8209e77b9f2ab7c76",
-    "answer": "D",
-    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
-  },
-  "2021-fall-amc-10a-18": {
-    "local_sha256": "be07214f7ec69ddeddb39ae419239fca748af3bdd021d7696bd36e86a7ab55bb",
-    "imported_sha256": "adce2c05031e5c4817d3b7e5cf3d757c87aa9a80e8ed91375c94568c8e05f703",
-    "answer": "C",
-    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
-  },
-  "2021-fall-amc-10a-21": {
-    "local_sha256": "85980bc20ae0417ca8747b32ba6b93c472b50c243a3df33145acfdfc78b35c68",
-    "imported_sha256": "eed823c081bed9f6d73b63262411a7e605e36eaee15205f81c9debbfa4f4814e",
-    "answer": "E",
-    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
-  },
-  "2021-fall-amc-10a-3": {
-    "local_sha256": "7e14930bf90c987abaaa619ba486e0d0b9c3e64a428c7257b22aa1ed93b3c769",
-    "imported_sha256": "8f387a9d5c6d7f3357c21e90d39e3eeb08baec1235aefe88df81a380724afd15",
-    "answer": "D",
-    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
-  },
-  "2021-fall-amc-10a-6": {
-    "local_sha256": "1868143b5bd710ca57e94e6d286577e97f9f4e8459984fcab940bc575d5545aa",
-    "imported_sha256": "fe6814f9baa24f88bd7b4cd86ae12d33a20ba666429bbbaf0ef53bf61da457f0",
-    "answer": "B",
-    "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
-  },
-  "2021-fall-amc-10a-7": {
-    "local_sha256": "d62a8e0025ca9dad550af0a553036d52d5fba32de45e7e3ecaaed3bba0c0e7dc",
-    "imported_sha256": "07ce8e443d7e0c261ad4e5c37c6e82b61ea47be5c35af8628b1c06d7111a54ec",
-    "answer": "D",
     "note": "Compared the PDF transcription with LIVE: equivalent question and choices, with punctuation, TeX layout or figure-file differences."
   }
 }

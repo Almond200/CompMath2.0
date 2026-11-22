@@ -7,6 +7,8 @@ const s = P.create('Geometry', 'Any', ['amc', 'aime'], 1000);
 assert(!('stopwatch' in s));
 assert(P.answer(s, 'amc', 'C', false));
 assert(!P.answer(s, 'amc', 'F', false));
+// Columbus State papers have six choices, A to F (2026-11-22).
+{ const c=P.create('Columbus',null,['2015-columbus-state-tournament-3']); assert(P.answer(c,'2015-columbus-state-tournament-3','F',false)); };
 assert(P.answer(s, 'aime', '007', true));
 for (const invalid of ['1000','-1','1.2']) assert(!P.answer(s, 'aime', invalid, true));
 assert.equal(P.result(s, 'amc'), 'Correct');

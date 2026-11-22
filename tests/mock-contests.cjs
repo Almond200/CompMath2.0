@@ -5,7 +5,8 @@ global.MATH_ANSWER_KEYS=c.window.MATH_ANSWER_KEYS;global.MATH_MOCK_EXTRAS=c.wind
 const slug=r=>r.toLowerCase().replace(/,?\s*problem\s+/,'-').replace(/[^a-z0-9]+/g,'-');
 const problems=Array.from(c.window.MATH_PROBLEM_DB,p=>{const s=slug(p.ref),n=+p.ref.match(/Problem (\d+)$/)[1];return {...p,slug:s,num:n,year:+p.ref.slice(0,4),fam:/AJHSME|AMC 8/.test(p.ref)?'AMC 8':/AMC 10/.test(p.ref)?'AMC 10':/AMC 12/.test(p.ref)?'AMC 12':/AIME/.test(p.ref)?'AIME':'HMMT February',elo:c.window.MATH_PROBLEM_RATINGS.ratings[s].elo};});
 const has=p=>c.window.MATH_ANSWER_KEYS.answers[p.slug]!=null||!!c.window.MATH_MOCK_EXTRAS[p.slug],voided=p=>!!c.window.MATH_ANSWER_KEYS.voided[p.slug];
-const catalog=M.papers(problems,has);assert.equal(catalog.reduce((n,p)=>n+p.problems.length,0),Object.keys(c.window.MATH_ANSWER_KEYS.answers).length);
+// Every keyed paper is a past-contest mock except the AHSME (30 to 50 questions, not an AMC 12's 25), keyed since 2026-11-22.
+const catalog=M.papers(problems,has);assert.equal(catalog.reduce((n,p)=>n+p.problems.length,0),Object.keys(c.window.MATH_ANSWER_KEYS.answers).filter(s=>!/-ahsme-/.test(s)).length);
 for(const paper of catalog){assert.equal(paper.problems.length,M.formats[paper.family].count);paper.problems.forEach((p,i)=>assert.equal(p.num,i+1));}
 assert.deepEqual(M.monotone([1,4,2,5]),[1,3,3,5]);
 // Additional sittings must not make one year outweigh another, and voids must not distort a slot.

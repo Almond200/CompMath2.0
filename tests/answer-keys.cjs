@@ -2,7 +2,8 @@ const fs = require('node:fs'), assert = require('node:assert/strict');
 global.window = {};
 require('../js/data/problems/answer-keys.js');
 require('../js/data/problems/problem-db.js');
-for (const f of fs.readdirSync('js/data/problems/statements')) if (f.endsWith('.js')) require('../js/data/problems/statements/' + f);
+// The MAA papers: the top-level statement files and the AHSME (keyed from LIVE since 2026-11-22).
+for (const d of ['', 'ahsme/']) for (const f of fs.readdirSync('js/data/problems/statements/' + d)) if (f.endsWith('.js')) require('../js/data/problems/statements/' + d + f);
 const {answers,sources} = window.MATH_ANSWER_KEYS;
 const statements = window.MATH_STATEMENTS;
 assert.equal(Object.keys(answers).length,Object.keys(statements).length,'every available statement has a key');
