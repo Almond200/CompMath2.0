@@ -99,8 +99,9 @@
     return [...parts, text.slice(start)].map(part => part.trim());
   }
   function exactTex(text, format) {
+    const percent = format === 'percent' && /(?:\\?%)\s*$/.test(text);
     text = cleanExact(text, format);
-    if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text, format !== 'set');
+    if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text, format !== 'set') + (percent ? '\\%' : '');
     const tuples = format === 'tuple' ? [text] : splitExactList(text);
     return tuples.map(tuple => {
       if (!tuple.startsWith('(') || !tuple.endsWith(')')) throw Error('Expected a parenthesized tuple');
@@ -109,6 +110,7 @@
     }).join(',\\ ');
   }
   function cleanExact(text, format) {
+    if (format === 'percent') text = text.replace(/(?:\\?%)\s*$/, '');
     text = text.replace(/(?:\^\{\\circ\}|[°∘◦])/g, '');
     return format === 'set' || format === 'tuple-set'
       ? text.replace(/^\{(.*)\}$/s, '$1').trim() : text;
@@ -194,6 +196,7 @@
       });
     } catch (err) { return false; }
   }
+  const normalizeTextAnswer = value => String(value).normalize('NFKC').trim().replace(/\s+/g, ' ').toLowerCase();
   function answer(set, slug, value, aime, now = Date.now()) {
     if (set.kind === 'mock') checkpoint(set,now);
     if (set.status === 'finished') return false;
@@ -202,6 +205,7 @@
     // checks it against the official solution at review.
     const exact = exactKey(slug);
     if (set.selfCheck?.[slug]) { if (text.length > 60) return false; }
+    else if (exact?.format === 'text') { if (text.length > 120) return false; }
     else if (exact) {
       if (text) { try { exactValues(text, exact.format); } catch (err) { return false; } }
     } else if (!(text === '' || (aime ? /^\d{1,3}$/.test(text) : (/-columbus-state-tournament-/.test(slug) ? /^[A-F]$/ : /^[A-E]$/).test(text)))) return false;
@@ -216,6 +220,7 @@
     const extra = root.MATH_MOCK_EXTRAS?.[slug];
     if (extra) return extra.answers.some(key => math.same(set.answers[slug], key)) ? 'Correct' : 'Incorrect';
     const exact = exactKey(slug);
+    if (exact?.format === 'text') return exact.answers.some(key => normalizeTextAnswer(key) === normalizeTextAnswer(set.answers[slug])) ? 'Correct' : 'Incorrect';
     if (exact) return exact.answers.some(key => matchesExact(set.answers[slug], key, exact.format)) ? 'Correct' : 'Incorrect';
     // LIVE's MAA keys, else the official letters of the other multiple-choice contests (answer-keys-more.js).
     const key = root.MATH_ANSWER_KEYS?.answers?.[slug] ?? root.MATH_EXTRA_KEYS?.answers?.[slug];

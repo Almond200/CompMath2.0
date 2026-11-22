@@ -6193,6 +6193,7 @@
   }
   function exactAnswerHtml(text, format) {
     if(!text)return '';
+    if (format === 'text') return escapeAttr(text);
     try { return `<span class="practice-answer-math">$${escapeAttr(practiceSessions.exactTex(text, format))}$</span>`; }
     catch (err) { return escapeAttr(text); }
   }
@@ -6550,8 +6551,10 @@
     const aime = p && /AIME/.test(p.fam), exact = practiceSessions.exactKey(slug), paper = !!(p && set.selfCheck?.[slug]);
     const inlinePaper = paper && archiveStatement(p);
     const external = p && !paper && externalPracticePrompt(p);
+    const showMathKeys = exact && !paper && exact.format !== 'text';
     const exactLabel = { set: 'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.', tuple: 'Ordered tuple, for example (2, 3)',
-      'tuple-set': 'All tuples, for example (2, 3), (4, 5)' }[exact?.format] || 'Exact value (fractions, sqrt, pi, !)';
+      'tuple-set': 'All tuples, for example (2, 3), (4, 5)', text: 'Short answer',
+      percent: 'Percentage (% is optional)' }[exact?.format] || 'Exact value (fractions, sqrt, pi, !)';
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
     const correct = !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact.format)).join(' or ') : escapeAttr(officialKey(slug) || '');
     const nav = set.slugs.map((id, i) => {
@@ -6582,7 +6585,7 @@
           <p class="practice-result">${outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
           ${paper ? `<div class="practice-self">${p.solUrl && !inlinePaper ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
           ${practiceExplanationHtml(p, !paper || !!inlinePaper)}`
-          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact || paper ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? exactLabel : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact || paper ? 'text' : 'numeric'}" maxlength="${paper ? '60' : exact ? '120' : '3'}" autocomplete="off" aria-describedby="practice-answer-error" value="${escapeAttr(set.answers[slug] || '')}">${exact && !paper ? practiceMathKeysHtml() : '<p id="practice-answer-error" role="status"></p>'}` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
+          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact || paper ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? exactLabel : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact || paper ? 'text' : 'numeric'}" maxlength="${paper ? '60' : exact ? '120' : '3'}" autocomplete="off" aria-describedby="practice-answer-error" value="${escapeAttr(set.answers[slug] || '')}">${showMathKeys ? practiceMathKeysHtml() : '<p id="practice-answer-error" role="status"></p>'}` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
       </section></div>`;
     const redraw = () => {
@@ -6651,7 +6654,7 @@
       if (valid) { schedulePracticeSave(); syncAnswerUI(); }
       else if (clearAnswer) clearAnswer.disabled = !e.target.value && !set.answers[slug];
     });
-    if (answerInput && exact && !paper) wirePracticeMathKeys(answerInput, exact.format);
+    if (answerInput && showMathKeys) wirePracticeMathKeys(answerInput, exact.format);
     clearAnswer?.addEventListener('click', () => {
       if (!practiceSessions.answer(set, slug, '', aime)) { if(set.status==='finished'){savePractice();renderTopicPracticeSet();} return; }
       if (answerInput) {

@@ -31,7 +31,7 @@ for (const [slug, key] of Object.entries(answers)) {
   const paper = slug.replace(/-\d+$/, '');
   assert.match(sources[paper], /^https:\/\//, slug);
   usedSources.add(paper);
-  assert([undefined, 'set', 'tuple', 'tuple-set'].includes(key.format), slug);
+  assert([undefined, 'set', 'tuple', 'tuple-set', 'text', 'percent'].includes(key.format), slug);
   assert(key.answers.length, slug);
   for (const value of key.answers) check(slug, value, 'Correct');
 }
@@ -50,6 +50,13 @@ check('2018-lehigh-math-contest-1', '20', 'Correct');
 check('2018-lehigh-math-contest-1', '400', 'Incorrect');
 check('2013-arml-local-individual-10', '21,5,14', 'Correct');
 check('2016-arml-individual-8', '(20, 5, 11)', 'Incorrect');
+check('2017-mathcounts-national-sprint-25', 'sqrt(193)/2', 'Correct');
+check('2017-mathcounts-national-sprint-25', 'sqrt(457)/2', 'Correct');
+check('2025-mathcounts-national-sprint-4', 'SATURDAY', 'Correct');
+check('2025-mathcounts-national-sprint-4', 'Sunday', 'Incorrect');
+check('2025-mathcounts-national-target-6', '90.08%', 'Correct');
+check('2025-mathcounts-national-target-6', '90.08', 'Correct');
+check('2025-mathcounts-national-target-6', '0.9008', 'Incorrect');
 check(set, '6, 4', 'Correct');
 check(set, '4', 'Incorrect');
 check(set, '4, 6, 7', 'Incorrect');
