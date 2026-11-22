@@ -1,5 +1,9 @@
 # Changelog
 
+**2026-11-22**
+
+- **Contests list (owner):** the Show fewer / Show more contests button is gone: every group is on the page, closed except AMC and AIME, and the finder is now a dropdown like the mock's paper search (a contest opens its latest year, a contest and a year open that year, a year alone lists the contests held then); the page below no longer filters. **Practice a concept:** the Cards mode now uses the Topics mode's label, input and status spacing, so the page no longer shifts when toggling. **Utah State statements 2016 and 2017 (160 problems):** read from the text layer and page images, 16 figures cropped, shared Junior/Senior problems copy their twin (Senior 2017 #13 retagged to the trigonometry equations node, Junior 2016 #5 to a quadratic).
+
 **2026-11-21**
 
 - **Practice's Contests list redrawn (owner: too many contests to navigate):** the contests sit under group headings that open and close (AMC and AIME, College tournaments, Middle school, Regional and state, Canada and the UK; only the first starts open), a finder takes a contest name or a year (a year lights the chip on every row that has it and opens the older years when needed), one chip per group jumps to it, and Collapse all or Expand all folds the lot. Searching opens the groups that match. **Practice a card:** the search suggestions were ordered by a raw count while the number shown counts a shared AMC 10/12 problem once; they now follow the shown number. Checks brought up to date: `check-browse.cjs` and `check-focus-archives.cjs` know BmMT, the calculus rounds and the unshortened paper tabs.

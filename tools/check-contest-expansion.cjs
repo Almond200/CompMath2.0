@@ -36,9 +36,11 @@ const base = process.env.COMPMATH_URL || 'http://localhost:8765';
   assert.equal(await practice.locator('.prob-extra').evaluateAll(xs => xs.every(x => getComputedStyle(x).display !== 'none')), true);
   await page.reload(); await practice.waitFor(); assert.equal(await practice.locator('.fam-more-btn').getAttribute('aria-expanded'), 'true', 'preference survives reload');
   await go('#/practice'); await page.locator('#pr-contests').waitFor();
-  const random = page.locator('[data-fam-list="random-contests"]'), archive = page.locator('[data-fam-list="contest-years"]');
+  const random = page.locator('[data-fam-list="random-contests"]');
   await random.click(); assert.equal(await random.getAttribute('aria-expanded'), 'false');
-  assert.equal(await archive.getAttribute('aria-expanded'), 'true', 'the archive and random picker have independent expansion');
+  // The Contests list no longer folds its contests behind a button (owner, 2026-11-22): every group is there, closed except the AMC and AIME.
+  assert.equal(await page.locator('#pr-contests [data-fam-list="contest-years"]').count(), 0);
+  assert.equal(await page.locator('#pr-contests .ct-group').count() >= 4, true);
 
   const years = page.locator('#pr-contests .ct-years-more').first(); assert.equal(await years.getAttribute('aria-expanded'), 'true');
   await years.click(); assert.equal(await years.getAttribute('aria-expanded'), 'false', 'manual fold works on the current page');
