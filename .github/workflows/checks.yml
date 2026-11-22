@@ -1,0 +1,29 @@
+# Runs the repository's gates and unit tests on every push and pull request (owner, 2026-11-22).
+# The gates need only Node and the Python standard library; the browser checks in CLAUDE.md need a local
+# server and Chromium and are still run by hand.
+name: Checks
+on:
+  push:
+  pull_request:
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Gates (conventions, topics, lists, shelf, tree, practice gaps, diagrams, statements, lab, database)
+        run: ./tools/gates.sh
+      - name: Generated files are current
+        run: |
+          node tools/build-book-notes.cjs --check
+      - name: Unit tests
+        run: |
+          for t in answer-keys practice-sessions mock-contests problem-difficulty card-text book-search; do
+            echo "== $t"; node tests/$t.cjs
+          done
