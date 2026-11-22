@@ -1,6 +1,101 @@
 // Problems and diagrams © 2022 Columbus State Invitational Mathematics Tournament. Reproduced with permission from the Columbus State Invitational Mathematics Tournament.
 // Source: the official Columbus State tournament tests. Built by tools/statements/build.py from tools/statements/spec/columbus/2022.txt.
 Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
+"2022-columbus-state-tournament-1": { s: String.raw`In the $xy$-plane, consider the region between $y=2x^2-x$ and $y=x$. Rotate this region around the line of equation $y=x$. Calculate the volume of the solid obtained and write it as $\pi\sqrt2\,\frac mn$, with the fraction $\frac mn$ in reduced form. What is $n-m$?
+
+@@fig:columbus/2022/1.png@@
+
+(A) $10$  (B) $11$  (C) $12$  (D) $13$  (E) $14$ (F) $15$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
+"2022-columbus-state-tournament-2": { s: String.raw`Let $A$ be the set of all integers $n$, $1\le n\le 2021$, which are relatively prime with $2022$. Find the sum of the digits (base $10$) of the number $N$ defined below
+$$N=\frac{\sum_{n\in A}n}{2022}.$$
+
+(A) $15$  (B) $14$  (C) $13$  (D) $12$  (E) $11$ (F) $10$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
+"2022-columbus-state-tournament-3": { s: String.raw`Let $ABC$ be an isosceles triangle with sides $AB=AC=5$ and $BC=6$. Suppose $D$, $E$ and $F$ are points on sides $\overline{BC}$, $\overline{CA}$ and $\overline{AB}$, respectively, such that $\overline{FD}$ is perpendicular to $\overline{BC}$, $\overline{DE}$ is perpendicular to $\overline{CA}$, and $\overline{EF}$ is perpendicular to $\overline{AB}$ (see the figure). The segment $FA$ is equal to a fraction which is, in reduced form, equal to $\frac mn$. What is $n-m$?
+
+@@fig:columbus/2022/3.png@@
+
+(A) $10$  (B) $9$  (C) $8$  (D) $6$  (E) $7$ (F) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
+"2022-columbus-state-tournament-4": { s: String.raw`In the accompanying figure, $ABCD$, $ABFE$ and $EFCD$ are trapezoids with $\overline{AB}$, $\overline{EF}$ and $\overline{CD}$ parallel. We let $x=EF$, such that $\dfrac{[EFCD]}{[ABFE]}=7$ (ratio of areas). Knowing that $AB=a\lt CD=b$ are the solutions in integers of the Diophantine equation
+$$3(a^2+b^2)=2022,$$
+and that $x$ is an integer, what is the sum of the digits of $x$?
+
+@@fig:columbus/2022/4.png@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$ (F) $6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
+"2022-columbus-state-tournament-5": { s: String.raw`For any real number $x\in(0,1)$, we define
+$$\begin{gathered}f(x)=\lim_{r\to0}\\\left(\frac{(1-x)^{r+1}+(1+x)^{r+1}}{2}\right)^{\frac1r}.\end{gathered}$$
+The following limit
+$$\lim_{x\to0}f(x)^{\frac{1}{x^2}}$$
+exists and it is equal to $e^{\frac mn}$, for some relatively prime positive integers $m$ and $n$. What is $n-m$?
+
+(A) $0$  (B) $-1$  (C) $1$  (D) $2$  (E) $-2$ (F) $3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
+"2022-columbus-state-tournament-6": { s: String.raw`For any real number $x\in\mathbb R$, we have the identity
+$$\begin{gathered}(\sin x+\cos x-1)^2\\=a(b-\sin x)(c-\cos x).\end{gathered}$$
+What is $a+b+c$?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$ (F) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
+"2022-columbus-state-tournament-7": { s: String.raw`Suppose that the plane is tiled with an infinite checkerboard of unit squares. Another square, with sides equal to $r\in\left[\frac{1}{\sqrt2},1\right]$, is dropped on the plane at random with position and orientation independent of the checkerboard tiling. The probability that it does not cover any of the corners of the squares of the checkerboard is equal to
+$$\begin{aligned}P=\frac4\pi\Big[&\frac\pi4\left(1-mr^2\right)\\&+2r^2\arcsin(r)\\&+nr\sqrt{1-r^2}-r^2-\frac12\Big],\end{aligned}$$
+for two positive integers $m$ and $n$. What is $m+n$?
+
+@@fig:columbus/2022/7.png@@
+
+(A) $7$  (B) $6$  (C) $5$  (D) $4$  (E) $3$ (F) $2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
+"2022-columbus-state-tournament-8": { s: String.raw`A grasshopper starts at the origin in the coordinate plane and makes a sequence of hops. Each hop has length $5$, and after each hop the grasshopper is at a point whose coordinates are both integers; thus, there are $12$ possible locations for the grasshopper after the first hop. The smallest number of hops needed for the grasshopper to reach the point $(2022,2022)$ is $N$. What is the sum of the digits of $N$?
+
+(A) $20$  (B) $22$  (C) $13$  (D) $21$  (E) $14$ (F) $25$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
+"2022-columbus-state-tournament-9": { s: String.raw`Let $c_1$ and $c_2$ be two circles, with $c_2$ tangent to, and inside of $c_1$, at the point $A$. We take a point $D$ on $c_2$ and construct a tangent chord $\overline{BC}$ to $c_2$ with the endpoints $B$ and $C$ on $c_1$ (see the figure). The sides of the triangle $ABC$ are $AB=5$, $AC=BC=20$. What is the length of $AD$?
+
+@@fig:columbus/2022/9.png@@
+
+(A) $7$  (B) $6$  (C) $5$  (D) $4$  (E) $3$ (F) $2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
+"2022-columbus-state-tournament-10": { s: String.raw`The following limit
+$$\begin{aligned}L:=\lim_{n\to\infty}&\int_0^{1/2}\frac{(1+f_{n-1}(x))^{n+1}}{(1+f_n(x))^n}\\&\,dx,\end{aligned}$$
+where $f_n(x)=x+\frac{x^2}{2}+\cdots+\frac{x^n}{n}$, $x\in[0,1]$, is given by $L=m-n\ln2$ for two rational numbers $m$ and $n$. What is $\frac mn$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$ (F) $6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
+"2022-columbus-state-tournament-11": { s: String.raw`The sequence of natural numbers $\{x_n\}$ is defined in the following way: $x_1=1$, $x_2=7$ and for every $n\ge3$, we choose $x_n$ to be the smallest natural number $k$ which is not in the set
+$$\{x_1,x_2,\ldots,x_{n-1}\}$$
+and it is relatively prime with $x_{n-1}$, i.e., $\gcd(k,x_{n-1})=1$. For example $x_3=2$ since $2$ is not in $\{1,7\}$ and it is the first number relatively prime with $7$. The sequence starts like
+$$\{1,7,2,3,4,5,6,11,8,9\}.$$
+What is the term $x_{212}$?
+
+(A) $210$  (B) $221$  (C) $212$  (D) $215$  (E) $211$ (F) $217$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-2.pdf" },
+"2022-columbus-state-tournament-12": { s: String.raw`The regular pentagon $ABCDF$ is properly colored if every side has endpoints colored differently (see an example of such a proper coloring in the accompanying figure: coloring $A$ and $B$ with the same color is not allowed, but coloring $A$ and $C$ with the same color is fine). The number of proper colorings of the labeled graph in the accompanying figure using $5$ colors is equal to $N$, and then $2022=2N-x$. What is $x$?
+
+@@fig:columbus/2022/12.png@@
+
+(A) $15$  (B) $16$  (C) $17$  (D) $18$  (E) $19$ (F) $20$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-2.pdf" },
+"2022-columbus-state-tournament-13": { s: String.raw`Let $ABCD$ be a unit square. The points $M$ and $N$ lie on the sides $BC$ and $CD$ respectively such that $\angle MAN=45^\circ$. If $MN=\frac56$, what is $\dfrac{1}{BM\cdot DN}$?
+
+@@fig:columbus/2022/13.png@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$ (F) $6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-2.pdf" },
+"2022-columbus-state-tournament-14": { s: String.raw`The quadratic polynomial $f(x)=x^2+bx+c$ has the property that the polynomial $f(f(x))-x$ has roots $\pm\frac23$ but none of these are roots of $f(x)-x$. If the roots of $f(x)$ are $x_1$ and $x_2$, what is $3|x_1-x_2|$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$ (F) $6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-2.pdf" },
+"2022-columbus-state-tournament-15": { s: String.raw`We let $z=\cos\frac{2\pi}{7}+i\sin\frac{2\pi}{7}$ ($i$ is the pure imaginary number). The value of $z+z^2+z^4$ can be simplified to $\dfrac{m+i\sqrt n}{2}$ for some integers $m$ and $n$. What is $m+n$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$ (F) $6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-2.pdf" },
+"2022-columbus-state-tournament-16": { s: String.raw`The natural number $N$ has positive (integers) divisors $1=d_1\lt d_2\lt\cdots\lt d_k=N$. Knowing that $N=d_{20}d_{22}$ and $N$ is even, what is $N \pmod 7$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$ (F) $6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-2.pdf" },
+"2022-columbus-state-tournament-17": { s: String.raw`The surface in 3D of equation $x^3+y^3+z^3-3xyz=27$ intersected with the plane $x+y+z=18$ is a circle of radius $r$. What is $r$?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$ (F) $6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-2.pdf" },
+"2022-columbus-state-tournament-18": { s: String.raw`Consider the unit segment $\overline{OA}$, and two small segments $\overline{OU}$ and $\overline{AV}$ which spin freely and independently, around $O$ and $A$ respectively. They stop at random positions and we denote by $X$ the intersection of the rays $\overrightarrow{OU}$ and $\overrightarrow{AV}$. What is the probability that $XO\lt1$?
+
+@@fig:columbus/2022/18.png@@
+
+(A) $1/12$  (B) $1/6$  (C) $1/4$  (D) $1/3$  (E) $2/3$ (F) $1/2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-2.pdf" },
+"2022-columbus-state-tournament-19": { s: String.raw`The number $N$ multiplied by $2021$ contains the number $2022$ as one of its consecutive digits. For example $10005$ multiplied by $2021$ is $20220105$ which contains $2022$ as its first four digits. Knowing that $N$ is the smallest such natural number, what is the sum of its digits?
+
+(A) $11$  (B) $17$  (C) $7$  (D) $20$  (E) $15$ (F) $13$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-2.pdf" },
+"2022-columbus-state-tournament-20": { s: String.raw`The real numbers $x$, $y$, and $z$ satisfy
+$$\begin{gathered}2021x+2022y+2023z=0\\\text{and}\\x^2+y^2+z^2=2xy+2yz+2zx.\end{gathered}$$
+What is the minimum value of $x+y+z$?
+
+(A) $0$  (B) $-3$  (C) $-1$  (D) $2$  (E) $-4$ (F) $-5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-2.pdf" },
 "2022-columbus-state-tournament-21": { s: String.raw`Let $a_0=1$, and $a_{n+1}=a_n+e^{-a_n}$ for $n\ge 0$. What is the limit of $\dfrac{e^{a_n}}{n}$?
 
 (A) $0$  (B) $1$  (C) $1/2$  (D) $2$  (E) $2/3$ (F) $\infty$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-3.pdf" },
