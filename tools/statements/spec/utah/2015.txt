@@ -1,0 +1,359 @@
+=== junior-1
+Find the slope of the line containing the two points $(2,-4)$ and $(5,3)$.
+
+(a) $\frac73$  (b) $\frac37$  (c) $\frac{-3}7$  (d) $\frac{-7}3$  (e) $\frac43$
+=== junior-2
+Given a point $P$ inside of a square, the distances from $P$ to the sides of the square are $1$, $3$, $7$, and $9$. Find the area of the square.
+
+(a) $66$  (b) $100$  (c) $100\sqrt2$  (d) $144$  (e) $189$
+=== junior-3
+Compute $2015+2015-2015\times|-2015|\div(-2015)$.
+
+(a) $0$  (b) $2014$  (c) $2015$  (d) $4030$  (e) $6045$
+=== junior-4
+In the following figure, what is the value of $\frac{x+y+z}{15}$?
+
+@@fig:utah2015_junior-4.png@@
+
+(a) $5$  (b) $8$  (c) $9$  (d) $10$  (e) $12$
+=== junior-5
+In the following rectangular prism, $AE=3$, $DE=5$, and $CD=4$. What is the area of the shaded rectangular region?
+
+@@fig:utah2015_junior-5.png@@
+
+(a) $9$  (b) $3\sqrt{41}$  (c) $25$  (d) $5\sqrt2$  (e) $4\sqrt{34}$
+=== junior-6
+In the following rectangular prism, what is the length of $AB$?
+
+@@fig:utah2015_junior-6.png@@
+
+(a) $\sqrt{33}$  (b) $4\sqrt6$  (c) $96$  (d) $89$  (e) $\sqrt{89}$
+=== junior-7
+Rotating a triangle in the $xy$-plane about the $y$-axis forms a 3-dimensional solid. Find the volume of the solid.
+
+@@fig:utah2015_junior-7.png@@
+
+(a) $6\pi$  (b) $12\pi$  (c) $18\pi$  (d) $24\pi$  (e) $36\pi$
+=== junior-8
+A triangle in the $xy$-coordinate plane has vertices at $A=(0,0)$, $B=(30,0)$, and $C=(12,6)$. A square is inscribed in the triangle with two vertices on side $AB$ and one vertex each on the other two sides of the triangle. Find the area of the square.
+
+(a) $16$  (b) $\frac{81}4$  (c) $\frac{121}4$  (d) $\frac{169}9$  (e) $25$
+=== junior-9
+Questions 9 and 10 refer to the following graph, which represents the cumulative number of miles $d$ that a car has traveled after $t$ minutes.
+
+@@fig:utah2015_junior-9.png@@
+
+The total distance traveled in miles by the car from $0$ to $5$ minutes is
+
+(a) $1$  (b) $2$  (c) $3$  (d) $4$  (e) $5$
+=== junior-10
+Questions 9 and 10 refer to the following graph, which represents the cumulative number of miles $d$ that a car has traveled after $t$ minutes.
+
+@@fig:utah2015_junior-9.png@@
+
+The average speed of the car from two minutes to six minutes is
+
+(a) $2$ miles per minute.  (b) $\frac34$ of a mile per minute.  (c) $5$ miles per minute.  (d) $1$ mile per minute.  (e) $\frac13$ of a mile per minute.
+=== junior-11
+A coin is flipped $8$ times. What is the probability that the number of heads is strictly greater than the number of tails?
+
+(a) $\frac49$  (b) $\frac12$  (c) $\frac{93}{256}$  (d) $\frac{23}{84}$  (e) $\frac{61}{84}$
+=== junior-12
+A plane slices a cube so that the intersection is a polygonal region. What is the maximum number of sides of the polygonal region?
+
+(a) $3$  (b) $4$  (c) $5$  (d) $6$  (e) $7$
+=== junior-13
+If the repeating decimal $0.151515\ldots$ is converted to a fraction and written in simplest form, what is the numerator?
+
+(a) $3$  (b) $5$  (c) $15$  (d) $25$  (e) $225$
+=== junior-14
+I have letters to four people, and envelopes addressed to the four people, and (without looking) I randomly put a letter into each of the four envelopes. What is the probability that none of the letters will get put into its correct envelope?
+
+(a) $\frac14$  (b) $\frac34$  (c) $\frac{81}{256}$  (d) $\frac38$  (e) $\frac{23}{24}$
+=== junior-15
+How many numbers in the range from $1$ to $1{,}000$, inclusive, are not divisible by the first three primes ($2$, $3$ or $5$)?
+
+(a) $166$  (b) $266$  (c) $299$  (d) $701$  (e) $734$
+=== junior-16
+If $x$ is in the domain of the function $f(x)=\frac{\sqrt{(x^2-1)(3x-2)}}{x-1}$, then
+
+(a) $0<x<2$ or $2<x<\infty$  (b) $-\infty<x<1$ or $1<x<\infty$  (c) $\frac23\le x$  (d) $\frac23\le x<1$ or $1<x<\infty$  (e) $x$ is any real number.
+=== junior-17
+The expression $\frac{\sqrt{x+4}-\sqrt x}4$ is the same as
+
+(a) $\frac1{\sqrt{x+4}+\sqrt x}$  (b) $\frac4{\sqrt{x+4}+\sqrt x}$  (c) $\frac12$  (d) $\frac1{\sqrt{x+4}-\sqrt x}$  (e) $\frac{2x+4}{\sqrt{x+4}-\sqrt x}$
+=== junior-18
+If we are to choose real numbers $a$ and $b$ such that $0<a<b$, then we can best describe the solution set of $|x+12|<|3x-1|$ as the set of all $x$ such that
+
+(a) $-a<x<b$  (b) $-b<x<a$  (c) $x<-a$ or $x>b$  (d) $x<-b$ or $x>a$  (e) $x<a$ or $x>b$
+=== junior-19
+Find the inverse function $f^{-1}(x)$ if $f(x)=\frac{2x-1}{x+3}$.
+
+(a) $f^{-1}(x)=\frac{3x-1}{2-x}$  (b) $f^{-1}(x)=\frac{3x+1}{2-x}$  (c) $f^{-1}(x)=\frac{2x+1}{3-x}$  (d) $f^{-1}(x)=\frac{x+1}{2+2x}$  (e) $f^{-1}(x)=\frac{2-x}{1+3x}$
+=== junior-20
+Train stations $A$ and $B$ are on the same railroad line and are $50$ miles away from each other. A train leaves station $A$ heading towards station $B$ at $1{:}00$ pm going $20$ miles an hour. Another train leaves station $B$ heading toward station $A$ at $2{:}00$ pm going $10$ miles an hour. When will the two trains meet each other?
+
+(a) $2{:}30$ pm  (b) $3$ pm  (c) $3{:}30$ pm  (d) $4$ pm  (e) $4{:}30$ pm
+=== junior-21
+If $x^ax^b=1$ and $x>1$, find $4a-b^2+a^2+4b-10$.
+
+(a) $-20$  (b) $-10$  (c) $0$  (d) $10$  (e) $20$
+=== junior-22
+Find the number of digits in the product $2^{25}\times5^{60}$.
+
+(a) $76$  (b) $37$  (c) $54$  (d) $28$  (e) $65$
+=== junior-23
+Positive integers $m$ and $n$ satisfy the equation $(2m-7)(2n-7)=25$. What are all possible values for $m+n$?
+
+(a) $2,20,24$  (b) $3,12,16$  (c) $2,10,16$  (d) $12,20$  (e) $2,12,20$
+=== junior-24
+Three sides of a quadrilateral have lengths $3$, $4$, and $9$. There exist positive real numbers $a$ and $b$ such that if $l$ is the length of the fourth side of the quadrilateral, then $a<l<b$, and if $l$ satisfies $a<l<b$, then there exists a quadrilateral with side lengths $3,4,9$, and $l$. Find $a+b$.
+
+(a) $18$  (b) $16$  (c) $9$  (d) $32$  (e) $24$
+=== junior-25
+Two square regions $A$ and $B$ each have area $8$. One vertex of square $B$ is the center point of square $A$. Find the area of $A\cup B$.
+
+(a) $16$  (b) $15$  (c) $10\sqrt2$  (d) $14$  (e) Cannot be determined.
+=== junior-26
+A plane slices a cone parallel to the base and one-third the distance from the vertex to the base and a second parallel plane slices the cone two-thirds the distance from the vertex to the base. What fraction of the volume of the cone is between the two slices?
+
+(a) $\frac89$  (b) $\frac7{27}$  (c) $\frac13$  (d) $\frac19$  (e) $\frac2{27}$
+=== junior-27
+Suppose that the numbers $4$-$9$, inclusive, are arranged in three pairs of distinct numbers. The numbers in each pair are added together, and the resulting three numbers are then multiplied together. What is the maximum value of the resulting product?
+
+(a) less than $1{,}801$  (b) between $1{,}801$ and $1{,}900$, inclusive  (c) between $1{,}901$ and $2{,}000$, inclusive  (d) between $2{,}001$ and $2{,}100$, inclusive  (e) more than $2{,}100$
+=== junior-28
+Suppose that Miles lists all possible (distinct) rearrangements of the letters in the word MATHEMATICS. He then picks one rearrangement at random. What is the probability that the first five letters of this rearrangement are ATTIC (in order)?
+
+(a) $\frac1{11\cdot10\cdot9\cdot8\cdot7}$  (b) $\frac2{11\cdot10\cdot9\cdot8\cdot7}$  (c) $\frac4{11\cdot10\cdot9\cdot8\cdot7}$  (d) $\frac6{11\cdot10\cdot9\cdot8\cdot7}$  (e) $\frac8{11\cdot10\cdot9\cdot8\cdot7}$
+=== junior-29
+The Francis family has $5$ children: Amanda, Andrea, Braden, Bethany, and Caitlyn. Mr. Francis brings cookies home one day. He has $2$ sugar cookies, $2$ peanut butter cookies, and one oatmeal cookie. In how many ways can Mr. Francis distribute the cookies to his children if each child must have a whole cookie, Amanda and Andrea insist on having the same type of cookie, and Braden and Bethany refuse to eat the same kind of cookie?
+
+(a) $4$  (b) $5$  (c) $6$  (d) $7$  (e) $8$
+=== junior-30
+Annabeth and Elinor are hoping to meet for dinner. They will each arrive at their favorite restaurant at a random time between $6{:}00$ and $8{:}00$ pm, stay for $20$ minutes, and leave. What is the probability that they will see each other at the restaurant?
+
+(a) $\frac7{36}$  (b) $\frac9{36}$  (c) $\frac{11}{36}$  (d) $\frac{13}{36}$  (e) $\frac{15}{36}$
+=== junior-31
+Let $S$ be the set of all positive integers $n$ such that $n^3$ is a multiple of both $16$ and $24$. What is the largest integer that is a divisor of every integer $n$ in $S$?
+
+(a) $6$  (b) $12$  (c) $18$  (d) $24$  (e) $216$
+=== junior-32
+Tyson is three times as old as Mandi. Two years ago, Tyson was four times as old as Mandi. How old is Mandi now?
+
+(a) $16$  (b) $14$  (c) $7$  (d) $6$  (e) $4$
+=== junior-33
+Suppose that
+$$A\star B=2A+3B,\quad\text{and}\quad C\heartsuit D=\frac{C^2+2D}D.$$
+What is $(12\star4)\heartsuit3$?
+
+(a) $432$  (b) $433$  (c) $434$  (d) $435$  (e) $436$
+=== junior-34
+Solution $1$ contains only liquids $a$ and $b$ in a ratio of $1:4$. Solution $2$ also contains only liquids $a$ and $b$, but in a ratio of $1:1$. Solution $3$ is obtained by mixing Solutions $1$ and $2$ in a ratio of $5:1$. How many Tablespoons of liquid $a$ are in $60$ Tablespoons of Solution $3$?
+
+(a) $15$  (b) $18$  (c) $20$  (d) $24$  (e) $30$
+=== junior-35
+Suppose that in the following figure, $AB=BC=CD=DE=EF$. What is the ratio of the area of triangle $ABH$ to the area of triangle $AFG$?
+
+@@fig:utah2015_junior-35.png@@
+
+(a) $1:5$  (b) $1:10$  (c) $1:15$  (d) $1:20$  (e) $1:25$
+=== junior-36
+If the average test score for five students is $92$, which of the following is the highest score a sixth student could get so that the average of all six scores would be no more than $86$?
+
+(a) $55$  (b) $56$  (c) $57$  (d) $58$  (e) $59$
+=== junior-37
+How many odd four-digit numbers are there that do not contain the digit $6$?
+
+(a) $2560$  (b) $3240$  (c) $3645$  (d) $4050$  (e) $5000$
+=== junior-38
+Points $A$, $B$, and $C$ lie on the circle. The point $D$ is the center of a circle and lies on the line segment $AC$. If $AB=6$ and $BD=5$, find $BC$.
+
+@@fig:utah2015_junior-38.png@@
+
+(a) $6$  (b) $6.5$  (c) $7$  (d) $7.5$  (e) $8$
+=== junior-39
+How many isosceles triangles can be drawn if each vertex must be one of the dots in the following square lattice?
+
+@@fig:utah2015_junior-39.png@@
+
+(a) at most $80$  (b) between $81$ and $90$, inclusive  (c) between $91$ and $100$, inclusive  (d) between $101$ and $110$, inclusive  (e) greater than $110$
+=== junior-40
+If three points are scattered randomly on a circle, what is the probability that one can draw a line through the center of the circle, such that all three points lie on one side of the line?
+
+@@fig:utah2015_junior-40.png@@
+
+(a) $\frac12$  (b) $\frac34$  (c) $\frac78$  (d) $\frac58$  (e) $\frac23$
+=== senior-1
+If $4^x-2^x-6=0$, then $x=$
+
+(a) $\log_23$  (b) $-2$  (c) $\log_43$  (d) $3$  (e) $\log_32$
+=== senior-2
+The sum of the infinite series $1-\frac14+\frac1{16}-\frac1{64}+\cdots$ equals
+
+(a) $1$  (b) $\frac9{10}$  (c) $\frac45$  (d) $\frac7{10}$  (e) $\frac34$
+=== senior-3
+How many triplets $(x,y,z)$ satisfy the following three equations?
+$$3x+2y+4z=5,$$
+$$x-2y-3z=4,$$
+$$6x+4y+8z=10.$$
+
+(a) $1$  (b) $2$  (c) infinitely many  (d) $0$  (e) a finite number, but more than $2$.
+=== senior-4
+There are $60$ students in a class. Of the students, $36$ are in club $A$, $26$ students are in club $B$. The number of students that are in neither of the clubs is four more than one third of the number of students that are in both clubs. Find the number of students in both clubs.
+
+(a) $5$  (b) $6$  (c) $7$  (d) $8$  (e) $9$
+=== senior-5
+The probability that it will rain at some point during $7{:}00$-$8{:}00$ PM is $80\%$. The probability that it will rain at some point during $8{:}00$-$9{:}00$ PM is also $80\%$. If these two probabilities are independent, what is the probability that it will rain at some point during $7{:}00$-$9{:}00$ PM?
+
+(a) $64\%$  (b) $96\%$  (c) $80\%$  (d) $20\%$  (e) $16\%$
+=== senior-6
+A polynomial of degree $4$ whose coefficients are real numbers has zeros $1$, $2$, and $4-i$. If the coefficient of $x^4$ is $1$, what is the coefficient of $x^3$?
+
+(a) $-3$  (b) $-8$  (c) $-11$  (d) $19$  (e) $7$
+=== senior-7
+Find $\arctan2+\arctan3$ in degrees.
+
+(a) $120$  (b) $135$  (c) $150$  (d) $180$  (e) $315$
+=== senior-8
+A coin is flipped $8$ times. What is the probability that the number of heads is strictly greater than the number of tails?
+
+(a) $\frac49$  (b) $\frac12$  (c) $\frac{93}{256}$  (d) $\frac{23}{84}$  (e) $\frac{61}{84}$
+=== senior-9
+A plane slices a cube so that the intersection is a polygonal region. What is the maximum number of sides of the polygonal region?
+
+(a) $3$  (b) $4$  (c) $5$  (d) $6$  (e) $7$
+=== senior-10
+The four consecutive coordinates of a rhombus in the coordinate plane are $(a,b)$, $(c,d)$, $(e,f)$, and $(g,h)$, where $a\ne e$ and $c\ne g$. If $\log\frac{b-f}{a-e}=1$, then $\log\frac{d-h}{g-c}=$
+
+(a) $-10$  (b) $-1$  (c) $-\frac1{10}$  (d) $\frac1{10}$  (e) $10$
+=== senior-11
+I have letters to four people, and envelopes addressed to the four people, and (without looking) I randomly put a letter into each of the four envelopes. What is the probability that none of the letters will get put into its correct envelope?
+
+(a) $\frac14$  (b) $\frac34$  (c) $\frac{81}{256}$  (d) $\frac38$  (e) $\frac{23}{24}$
+=== senior-12
+How many numbers in the range from $1$ to $1{,}000$, inclusive, are not divisible by the first three primes ($2$, $3$ or $5$)?
+
+(a) $166$  (b) $266$  (c) $299$  (d) $701$  (e) $734$
+=== senior-13
+If a function $f$ satisfies $f(n^2)=2f(n)+1$ and $f(2)=3$, then $f(256)$ equals
+
+(a) $6$  (b) $17$  (c) $24$  (d) $27$  (e) $31$
+=== senior-14
+If $x$ is in the domain of the function $f(x)=\frac{\sqrt{(x^2-1)(3x-2)}}{x-1}$, then
+
+(a) $0<x<2$ or $2<x<\infty$  (b) $-\infty<x<1$ or $1<x<\infty$  (c) $\frac23\le x$  (d) $\frac23\le x<1$ or $1<x<\infty$  (e) $x$ is any real number.
+=== senior-15
+The expression $\frac{\sqrt{x+4}-\sqrt x}4$ is the same as
+
+(a) $\frac1{\sqrt{x+4}+\sqrt x}$  (b) $\frac4{\sqrt{x+4}+\sqrt x}$  (c) $\frac12$  (d) $\frac1{\sqrt{x+4}-\sqrt x}$  (e) $\frac{2x+4}{\sqrt{x+4}-\sqrt x}$
+=== senior-16
+If we are to choose real numbers $a$ and $b$ such that $0<a<b$, then we can best describe the solution set of $|x+12|<|3x-1|$ as the set of all $x$ such that
+
+(a) $-a<x<b$  (b) $-b<x<a$  (c) $x<-a$ or $x>b$  (d) $x<-b$ or $x>a$  (e) $x<a$ or $x>b$
+=== senior-17
+Find the inverse function $f^{-1}(x)$ if $f(x)=\frac{2x-1}{x+3}$.
+
+(a) $f^{-1}(x)=\frac{3x-1}{2-x}$  (b) $f^{-1}(x)=\frac{3x+1}{2-x}$  (c) $f^{-1}(x)=\frac{2x+1}{3-x}$  (d) $f^{-1}(x)=\frac{x+1}{2+2x}$  (e) $f^{-1}(x)=\frac{2-x}{1+3x}$
+=== senior-18
+Train stations $A$ and $B$ are on the same railroad line and are $50$ miles away from each other. A train leaves station $A$ heading towards station $B$ at $1{:}00$ pm going $20$ miles an hour. Another train leaves station $B$ heading toward station $A$ at $2{:}00$ pm going $10$ miles an hour. When will the two trains meet each other?
+
+(a) $2{:}30$ pm  (b) $3$ pm  (c) $3{:}30$ pm  (d) $4$ pm  (e) $4{:}30$ pm
+=== senior-19
+If $x^ax^b=1$ and $x>1$, find $4a-b^2+a^2+4b-10$.
+
+(a) $-20$  (b) $-10$  (c) $0$  (d) $10$  (e) $20$
+=== senior-20
+Find the number of digits in the product $2^{25}\times5^{60}$.
+
+(a) $76$  (b) $37$  (c) $54$  (d) $28$  (e) $65$
+=== senior-21
+Positive integers $m$ and $n$ satisfy the equation $(2m-7)(2n-7)=25$. What are all possible values for $m+n$?
+
+(a) $2,20,24$  (b) $3,12,16$  (c) $2,10,16$  (d) $12,20$  (e) $2,12,20$
+=== senior-22
+Three sides of a quadrilateral have lengths $3$, $4$, and $9$. There exist positive real numbers $a$ and $b$ such that if $l$ is the length of the fourth side of the quadrilateral, then $a<l<b$, and if $l$ satisfies $a<l<b$, then there exists a quadrilateral with side lengths $3,4,9$, and $l$. Find $a+b$.
+
+(a) $18$  (b) $16$  (c) $9$  (d) $32$  (e) $24$
+=== senior-23
+Two square regions $A$ and $B$ each have area $8$. One vertex of square $B$ is the center point of square $A$. Find the area of $A\cup B$.
+
+(a) $16$  (b) $15$  (c) $10\sqrt2$  (d) $14$  (e) Cannot be determined.
+=== senior-24
+A plane slices a cone parallel to the base and one-third the distance from the vertex to the base and a second parallel plane slices the cone two-thirds the distance from the vertex to the base. What fraction of the volume of the cone is between the two slices?
+
+(a) $\frac89$  (b) $\frac7{27}$  (c) $\frac13$  (d) $\frac19$  (e) $\frac2{27}$
+=== senior-25
+Suppose that the numbers $4$-$9$, inclusive, are arranged in three pairs of distinct numbers. The numbers in each pair are added together, and the resulting three numbers are then multiplied together. What is the maximum value of the resulting product?
+
+(a) less than $1{,}801$  (b) between $1{,}801$ and $1{,}900$, inclusive  (c) between $1{,}901$ and $2{,}000$, inclusive  (d) between $2{,}001$ and $2{,}100$, inclusive  (e) more than $2{,}100$
+=== senior-26
+Suppose that Miles lists all possible (distinct) rearrangements of the letters in the word MATHEMATICS. He then picks one rearrangement at random. What is the probability that the first five letters of this rearrangement are ATTIC (in order)?
+
+(a) $\frac1{11\cdot10\cdot9\cdot8\cdot7}$  (b) $\frac2{11\cdot10\cdot9\cdot8\cdot7}$  (c) $\frac4{11\cdot10\cdot9\cdot8\cdot7}$  (d) $\frac6{11\cdot10\cdot9\cdot8\cdot7}$  (e) $\frac8{11\cdot10\cdot9\cdot8\cdot7}$
+=== senior-27
+Suppose it costs $\$1$ to play the following game. You roll a die and flip a coin. If the coin lands on tails then you lose your dollar no matter what occurs with the die. If the coin lands on heads, and you roll an even number with the die, then you get your dollar back, but no more. If the coin lands on heads and you roll an odd number with the die, then you win your dollar back plus another $\$5$ dollars. On average, how much should you expect to win or lose (including the cost of playing) when playing this game?
+
+(a) Win $\$0.75$  (b) Win $\$0.50$  (c) Break even  (d) Lose $\$0.50$  (e) Lose $\$0.75$
+=== senior-28
+Let $S$ be the set of all positive integers $n$ such that $n^3$ is a multiple of both $16$ and $24$. What is the largest integer that is a divisor of every integer $n$ in $S$?
+
+(a) $6$  (b) $12$  (c) $18$  (d) $24$  (e) $216$
+=== senior-29
+Tyson is three times as old as Mandi. Two years ago, Tyson was four times as old as Mandi. How old is Mandi now?
+
+(a) $16$  (b) $14$  (c) $7$  (d) $6$  (e) $4$
+=== senior-30
+Suppose that
+$$A\star B=2A+3B,\quad\text{and}\quad C\heartsuit D=\frac{C^2+2D}D.$$
+What is $(12\star4)\heartsuit3$?
+
+(a) $432$  (b) $433$  (c) $434$  (d) $435$  (e) $436$
+=== senior-31
+Solution $1$ contains only liquids $a$ and $b$ in a ratio of $1:4$. Solution $2$ also contains only liquids $a$ and $b$, but in a ratio of $1:1$. Solution $3$ is obtained by mixing Solutions $1$ and $2$ in a ratio of $5:1$. How many Tablespoons of liquid $a$ are in $60$ Tablespoons of Solution $3$?
+
+(a) $15$  (b) $18$  (c) $20$  (d) $24$  (e) $30$
+=== senior-32
+If the average test score for five students is $92$, which of the following is the highest score a sixth student could get so that the average of all six scores would be no more than $86$?
+
+(a) $55$  (b) $56$  (c) $57$  (d) $58$  (e) $59$
+=== senior-33
+How many odd four-digit numbers are there that do not contain the digit $6$?
+
+(a) $2560$  (b) $3240$  (c) $3645$  (d) $4050$  (e) $5000$
+=== senior-34
+Points $A$, $B$, and $C$ lie on the circle. The point $D$ is the center of a circle and lies on the line segment $AC$. If $AB=6$ and $BD=5$, find $BC$.
+
+@@fig:utah2015_junior-38.png@@
+
+(a) $6$  (b) $6.5$  (c) $7$  (d) $7.5$  (e) $8$
+=== senior-35
+Two rectangles are given in the figure below so that two sides of the smaller rectangle are contained in two sides of the larger rectangle. The distances are given in miles. Anne and Bill both run from point $A$ to point $B$ each traveling at the same average speed without passing through the shaded smaller rectangle. Anne takes the lower route running straight to a corner of the shaded rectangle and then straight to $B$. Bill takes the upper route running straight to a corner of the shaded rectangle and then straight to $B$. If Anne takes $81$ minutes, approximately how much longer will it take Bill to arrive?
+
+@@fig:utah2015_senior-35.png@@
+
+(a) $15$ seconds  (b) $30$ seconds  (c) $45$ seconds  (d) $1$ minutes  (e) $4$ minutes
+=== senior-36
+Find the best estimate of the sum of the square roots of all the integers from $1$ to $10{,}000$, inclusive.
+
+(a) $7{,}071$  (b) $57{,}740$  (c) $577{,}394$  (d) $666{,}667$  (e) $707{,}107$
+=== senior-37
+Let $P$ be a third degree polynomial. If $P(1)=1$, $P(2)=1$, $P(3)=7$, and $P(4)=25$. Then $P(6)-P(5)=$
+
+(a) $30$  (b) $42$  (c) $56$  (d) $60$  (e) $90$
+=== senior-38
+If three points are scattered randomly on a circle, what is the probability that one can draw a line through the center of the circle, such that all three points lie on one side of the line?
+
+@@fig:utah2015_junior-40.png@@
+
+(a) $\frac12$  (b) $\frac34$  (c) $\frac78$  (d) $\frac58$  (e) $\frac23$
+=== senior-39
+How many isosceles triangles can be drawn if each vertex must be one of the dots in the following square lattice?
+
+@@fig:utah2015_junior-39.png@@
+
+(a) at most $80$  (b) between $81$ and $90$, inclusive  (c) between $91$ and $100$, inclusive  (d) between $101$ and $110$, inclusive  (e) greater than $110$
+=== senior-40
+Annabeth and Elinor are hoping to meet for dinner. They will each arrive at their favorite restaurant at a random time between $6{:}00$ and $8{:}00$ pm, stay for $20$ minutes, and leave. What is the probability that they will see each other at the restaurant?
+
+(a) $\frac7{36}$  (b) $\frac9{36}$  (c) $\frac{11}{36}$  (d) $\frac{13}{36}$  (e) $\frac{15}{36}$

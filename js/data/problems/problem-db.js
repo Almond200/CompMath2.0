@@ -9252,7 +9252,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2015 Utah State Math Contest Senior, Problem 33", formulas: ["casework-method"], strategy: "", tree: ["cp.struct.words.digits"] },
   { ref: "2015 Utah State Math Contest Senior, Problem 34", formulas: ["thales-theorem", "pythagorean-theorem"], strategy: "", tree: ["geo.circ.inscribed.thm"] },
   { ref: "2015 Utah State Math Contest Senior, Problem 35", formulas: ["pythagorean-theorem", "area-by-pieces"], strategy: "", tree: ["geo.poly.quad.rect"] },
-  { ref: "2015 Utah State Math Contest Senior, Problem 36", formulas: ["estimating-answers", "telescoping"], strategy: "", tree: ["alg.word.compute.estimate"] },
+  { ref: "2015 Utah State Math Contest Senior, Problem 36", formulas: ["estimating-answers"], strategy: "", tree: ["alg.word.compute.estimate"] },
   { ref: "2015 Utah State Math Contest Senior, Problem 37", formulas: ["finite-differences"], strategy: "", tree: ["alg.poly.construct.interp"] },
   { ref: "2015 Utah State Math Contest Senior, Problem 38", formulas: ["geometric-probability", "symmetry-probability"], strategy: "", tree: ["cp.prob.geom.shape"] },
   { ref: "2015 Utah State Math Contest Senior, Problem 39", formulas: ["casework-method", "pythagorean-theorem"], strategy: "", tree: ["geo.comb.count.figures"] },
