@@ -31,6 +31,13 @@ for(const sources of [['AMC 8'],['AMC 12'],['AIME'],['AMC 10','AMC 12']]){
  assert(selected.problems.every(p=>sources.includes(p.fam)));
  assert.equal(new Set(selected.problems.map(M.identity)).size,25);
 }
+// Settings: balanced contest and subject variety cap any one at 40% of the paper, and a difficulty shift moves the targets.
+{const areaOf=p=>p.tree?.[0]?.split('.')[0]||'other',counts=(g,f)=>g.problems.reduce((m,p)=>m.set(f(p),(m.get(f(p))||0)+1),new Map());
+ for(let k=0;k<20;k++){const g=M.generate(problems,catalog,'AMC 10',has,voided,rng,null,{contestVariety:'balanced',subjectVariety:'balanced',areaOf});
+  assert.equal(g.problems.length,25);assert.ok(Math.max(...counts(g,p=>p.fam).values())<=10);assert.ok(Math.max(...counts(g,areaOf).values())<=10);}
+ const mean=g=>g.problems.reduce((s,p)=>s+p.elo,0)/g.problems.length;let a=1,b=1;const r1=()=>{a=(a*1664525+1013904223)>>>0;return a/4294967296;},r2=()=>{b=(b*1664525+1013904223)>>>0;return b/4294967296;};
+ const base=M.generate(problems,catalog,'AMC 12',has,voided,r1,null,{}),hard=M.generate(problems,catalog,'AMC 12',has,voided,r2,null,{difficultyShift:300});
+ assert.ok(mean(hard)>mean(base)+100,'a +300 shift raises the paper\'s difficulty');}
 assert.throws(()=>M.generate(problems,catalog,'AMC 8',has,voided,rng,[]),/selected contests/);
 assert.throws(()=>M.generate(problems,catalog,'AMC 8',has,voided,rng,['not a contest']),/selected contests/);
 const pair=[{slug:'ten',fam:'AMC 10',year:2020,strategy:'same',elo:1000},

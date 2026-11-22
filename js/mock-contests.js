@@ -53,16 +53,25 @@
     }
     return [...unique.values()];
   }
-  function generate(problems, catalog, family, eligible, isVoided=()=>false, random=Math.random, sources=null) {
+  // options (all optional): difficultyShift (added to every target rating), contestVariety and subjectVariety
+  // ('balanced' keeps any one contest or subject area to at most 40% of the paper), and areaOf(problem).
+  function generate(problems, catalog, family, eligible, isVoided=()=>false, random=Math.random, sources=null, options={}) {
     const model=curve(catalog,family,isVoided), format=formats[family];
     let pool=sourcePool(problems,model,eligible,isVoided,sources);
     if(pool.length<format.count)throw Error('Not enough eligible older problems in the selected contests to build this mock.');
-    const selected=[];
-    for(const target of model.targets.slice().reverse()){
-      const nearest=Math.min(...pool.map(p=>Math.abs(p.elo-target)));
+    const shift=Number(options.difficultyShift)||0, cap=Math.ceil(format.count*0.4);
+    const areaOf=options.areaOf||(()=>'');
+    const byFam=new Map(), byArea=new Map(), selected=[];
+    const room=p=>!(options.contestVariety==='balanced'&&(byFam.get(p.fam)||0)>=cap)&&!(options.subjectVariety==='balanced'&&(byArea.get(areaOf(p))||0)>=cap);
+    for(const base of model.targets.slice().reverse()){
+      const target=base+shift;
+      // A cap is a preference: with nothing left under it the closest problem is used rather than failing.
+      let open=pool.filter(room); if(!open.length)open=pool;
+      const nearest=Math.min(...open.map(p=>Math.abs(p.elo-target)));
       const tolerance=Math.max(100,nearest+25);
-      const choices=pool.filter(p=>Math.abs(p.elo-target)<=tolerance);
+      const choices=open.filter(p=>Math.abs(p.elo-target)<=tolerance);
       const chosen=choices[Math.floor(random()*choices.length)];selected.push(chosen);
+      byFam.set(chosen.fam,(byFam.get(chosen.fam)||0)+1);const a=areaOf(chosen);byArea.set(a,(byArea.get(a)||0)+1);
       pool=pool.filter(p=>p!==chosen);
     }
     selected.sort((a,b)=>a.elo-b.elo||a.slug.localeCompare(b.slug));

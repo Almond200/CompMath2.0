@@ -10,7 +10,7 @@ const slug=ref=>ref.replace(', Problem ',' ').toLowerCase().replaceAll(' ','-');
 const families=new Map();
 // Metadata checks always cover the full registry; data-only batches may scope browser years.
 const browserYears=new Set((process.env.COMPMATH_FOCUS_YEARS||'').split(',').filter(Boolean));
-const roundLabel=round=>({'Combinatorics':'Combo','Number Theory':'NT','Discrete Math':'Discrete'}[round]||round);
+const roundLabel=round=>round;   // the paper tabs name each round in full
 const familyLabel=fam=>fam.replace(' Division ',' ');
 assert(!context.window.MATH_PLANNED_CONTESTS.some(c=>/^(BMT|PUMaC)$/.test(c.name)),'live archives have no duplicate coming-soon entry');
 // Match the actual shared questions, which need not occupy consecutive B slots.
@@ -100,13 +100,13 @@ for(const year of [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2
  }
 }
 for(const [paper,source] of Object.entries(papers)) {
-  const m=paper.match(/^(\d{4}) (BMT|PUMaC Division [AB]) (.+)$/);assert(m,paper);
+  const m=paper.match(/^(\d{4}) (BMT|BmMT|PUMaC Division [AB]) (.+)$/);assert(m,paper);
   const ps=db.filter(p=>p.ref.startsWith(paper+', Problem '));assert(ps.length,paper);
   for(const p of ps) {
-    assert.equal(p.strategy,'',p.ref);assert(p.tree.length>=1&&p.tree.length<=3,p.ref);
+    assert.equal(p.strategy,'',p.ref);if(p.offtree){assert.equal(p.offtree,'calculus',p.ref);}else assert(p.tree&&p.tree.length>=1&&p.tree.length<=3,p.ref);   // calculus rounds carry no tree filing
     assert(Number.isFinite(context.window.MATH_PROBLEM_RATINGS.ratings[slug(p.ref)].elo),p.ref);
   }
-  assert.match(source.url,/^https:\/\//);assert.match(source.solUrl,/^https:\/\//);
+  assert.match(source.url,/^https:\/\//);if(m[2]!=='BmMT'||source.solUrl)assert.match(source.solUrl,/^https:\/\//);   // the 2026 BmMT solutions are not posted yet
   assert(source.solKind===undefined||source.solKind==='answer-key',paper);
   assert(source.mirror===undefined||source.mirror===true,paper);
   const key=m[2]+'|'+m[1];if(!families.has(key))families.set(key,[]);
@@ -147,14 +147,14 @@ for(const [paper,source] of Object.entries(papers)) {
       await page.goto(`${base}/#/problem/${slug(p.ref)}`);
       const toggle=page.locator('.prob-chain .chain-toggle');await toggle.waitFor();
       if(await toggle.getAttribute('aria-expanded')==='false')await toggle.click();
-      assert.deepEqual(await page.locator('.aops-btn').evaluateAll(xs=>xs.map(x=>x.href)),[source.url,source.solUrl]);
+      assert.deepEqual(await page.locator('.aops-btn').evaluateAll(xs=>xs.map(x=>x.href)),source.solUrl?[source.url,source.solUrl]:[source.url]);
       if(source.solKind==='answer-key'){
        assert.match(await page.locator('.chain-official .aops-btn').innerText(),/official answer key/);
        assert.match(await page.locator('.chain-official-note').innerText(),/official answer key/);
       }
       if(source.mirror)assert.match(await page.locator('.aops-btn').first().innerText(),/original paper \(mirror\)/);
       assert.equal(await page.locator('.chain-strategy:not(.chain-official)').count(),0);
-      assert(await page.locator('.ptree-node.is-filed').count()>0);
+      if(!p.offtree)assert(await page.locator('.ptree-node.is-filed').count()>0);   // calculus rounds have no tree filing
       assert.equal(await page.locator('.katex-error').count(),0);
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
       assert((await page.locator('h1').innerText()).includes(familyLabel(fam)));
