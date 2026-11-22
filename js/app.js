@@ -6097,7 +6097,9 @@
   }
   const isMock = set => set.kind === 'mock';
   const practiceSetLabel = set => isMock(set) && set.mock.mode === 'generated' ? 'Generated ' + set.mock.family : set.label;
-  const hasMockAnswer = p => window.MATH_ANSWER_KEYS?.answers?.[p.slug] != null || !!window.MATH_MOCK_EXTRAS?.[p.slug];
+  // The official key: LIVE's MAA keys (answer-keys.js), else the other contests' letters (answer-keys-more.js, 2026-11-22).
+  const officialKey = slug => window.MATH_ANSWER_KEYS?.answers?.[slug] ?? window.MATH_EXTRA_KEYS?.answers?.[slug];
+  const hasMockAnswer = p => officialKey(p.slug) != null || !!window.MATH_MOCK_EXTRAS?.[p.slug];
   // Practice draws from every contest (owner, 2026-11-14). A problem whose statement and answer
   // the app does not keep is read where its page links (the official paper, or the AoPS wiki for
   // the AHSME), and the solver checks their answer against the official solution at review.
@@ -6106,7 +6108,7 @@
   // Contests whose papers are multiple choice with five options, like the AMC; the others take a
   // short answer. A problem with an official letter key is multiple choice whatever its contest.
   const MC_FAMS = new Set(["AMC 8", "AMC 10", "AMC 12", "UKMT JMC", "UKMT IMC", "UKMT SMC", "Pascal Contest", "Cayley Contest", "Fermat Contest", "UMD HSMC", "Columbus State Tournament", "Utah State Math Contest"]);
-  const multipleChoice = p => { const k = window.MATH_ANSWER_KEYS?.answers?.[p.slug]; return k != null ? /^[A-E]$/.test(k) : !window.MATH_MOCK_EXTRAS?.[p.slug] && MC_FAMS.has(p.fam); };
+  const multipleChoice = p => { const k = officialKey(p.slug); return k != null ? /^[A-F]$/.test(k) : !window.MATH_MOCK_EXTRAS?.[p.slug] && MC_FAMS.has(p.fam); };
   // "Only questions in this format" for a generated mock (owner, 2026-11-15): multiple choice for
   // the AMC formats, short answer for the AIME.
   const sameAnswerFormat = (p, family) => multipleChoice(p) === (family !== "AIME");
@@ -6292,7 +6294,7 @@
       busy=true;form.querySelector('fieldset').disabled=true;status.textContent='Loading mock problems...';
       try{
         const plan=mode==='paper'?{problems:paper.problems}:window.MockContests.generate(PROBLEM_DB,catalog,family,mockEligible,isVoidedProblem,Math.random,chosenSources(),genOptions());
-        await Promise.all([...new Set(plan.problems.filter(p=>!window.MATH_MOCK_EXTRAS?.[p.slug]&&!paperProblem(p)).map(p=>p.year))].map(loadStatements));
+        await Promise.all([...new Set(plan.problems.filter(p=>!window.MATH_MOCK_EXTRAS?.[p.slug]&&!paperProblem(p)).map(statementFile))].map(loadStatements));
         if(!form.isConnected)return;
         if(plan.problems.some(p=>!paperProblem(p)&&!window.MATH_STATEMENTS?.[p.slug]&&!window.MATH_MOCK_EXTRAS?.[p.slug]))throw Error('Some statements could not be loaded. Try again.');
         const label=mode==='paper'?paper.label:'Generated '+family;
@@ -6386,7 +6388,7 @@
     return `<div class="practice-solution-links"><a class="aops-btn" href="#/problem/${p.slug}">Open in app</a>${ext}</div>`;
   }
   function practiceAnswerChoices(set, slug, finished) {
-    return `<div class="rand-btns" role="radiogroup" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${['A','B','C','D','E'].map(a => `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="radio" aria-checked="${set.answers[slug] === a}">${a}</button>`).join('')}</div>`;
+    return `<div class="rand-btns" role="radiogroup" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${(/\(F\)/.test(window.MATH_STATEMENTS?.[slug]?.s || '') ? ['A','B','C','D','E','F'] : ['A','B','C','D','E']).map(a => `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="radio" aria-checked="${set.answers[slug] === a}">${a}</button>`).join('')}</div>`;
   }
   function renderPracticeResults(set) {
     const total = set.slugs.length;
@@ -6433,7 +6435,7 @@
     const aime = p && /AIME/.test(p.fam), exact = !!window.MATH_MOCK_EXTRAS?.[slug], paper = !!(p && set.selfCheck?.[slug]);
     const inlinePaper = paper && archiveStatement(p);
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
-    const correct = exact ? window.MATH_MOCK_EXTRAS[slug].answers.map(exactAnswerHtml).join(' or ') : escapeAttr(window.MATH_ANSWER_KEYS?.answers?.[slug] || '');
+    const correct = exact ? window.MATH_MOCK_EXTRAS[slug].answers.map(exactAnswerHtml).join(' or ') : escapeAttr(officialKey(slug) || '');
     const nav = set.slugs.map((id, i) => {
       const result = practiceSessions.result(set, id);
       const suffix = finished ? result : set.answers[id] ? 'Answered' : 'Unanswered';
@@ -6658,7 +6660,7 @@
           pool[i] = pool[pool.length - 1];
           pool.pop();
         }
-        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug] && !paperProblem(p)).map(p => p.year))].map(loadStatements));
+        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug] && !paperProblem(p)).map(statementFile))].map(loadStatements));
         if (!form.isConnected) return;
         problems.push(...batch.filter(p => paperProblem(p) || window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
       }
@@ -6802,7 +6804,7 @@
       while (ps.length && problems.length < requested) {
         const batch = [];
         while (ps.length && batch.length < requested - problems.length) { const i = Math.floor(Math.random() * ps.length); batch.push(ps[i]); ps[i] = ps[ps.length - 1]; ps.pop(); }
-        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug] && !paperProblem(p)).map(p => p.year))].map(loadStatements));
+        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug] && !paperProblem(p)).map(statementFile))].map(loadStatements));
         if (!form.isConnected) return;
         problems.push(...batch.filter(p => paperProblem(p) || window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
       }
@@ -10202,6 +10204,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return PERMITTED_STATEMENTS[p.fam] || null;
   }
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
+  // The statement file a problem lives in: its contest's folder and year, or the MAA year file. Sets graded from
+  // other contests' keys (2026-11-22) load their statements from these folders.
+  const statementFile = p => { const a = archiveStatement(p); return a ? `${a.dir}/${p.year}` : p.year; };
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
   const STATEMENTS_V = 124;

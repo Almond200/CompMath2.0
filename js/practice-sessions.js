@@ -84,7 +84,7 @@
     if (set.selfCheck?.[slug]) { if (text.length > 60) return false; }
     else if (root.MATH_MOCK_EXTRAS?.[slug]) {
       if (text) { try { const v=math.values(text); if(text.length>120 || v.length!==1 || !Number.isFinite(v[0])) return false; } catch(e) { return false; } }
-    } else if (!(text === '' || (aime ? /^\d{1,3}$/.test(text) : /^[A-E]$/.test(text)))) return false;
+    } else if (!(text === '' || (aime ? /^\d{1,3}$/.test(text) : (/-columbus-state-tournament-/.test(slug) ? /^[A-F]$/ : /^[A-E]$/).test(text)))) return false;
     set.answers[slug] = text;
     return true;
   }
@@ -95,7 +95,8 @@
     if (set.selfCheck?.[slug]) return set.self?.[slug] || 'Check yourself';
     const extra = root.MATH_MOCK_EXTRAS?.[slug];
     if (extra) return extra.answers.some(key => math.same(set.answers[slug],key)) ? 'Correct' : 'Incorrect';
-    const key = root.MATH_ANSWER_KEYS?.answers?.[slug];
+    // LIVE's MAA keys, else the official letters of the other multiple-choice contests (answer-keys-more.js).
+    const key = root.MATH_ANSWER_KEYS?.answers?.[slug] ?? root.MATH_EXTRA_KEYS?.answers?.[slug];
     if (key == null) return 'Answer unavailable';
     const actual = String(set.answers[slug]).trim();
     const same = /^\d+$/.test(key) ? /^\d{1,3}$/.test(actual) && Number(actual) === Number(key) : actual.toUpperCase() === key;
