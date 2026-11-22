@@ -6672,7 +6672,7 @@
     return `<div class="concept-panel" id="pr-card" role="tabpanel" aria-labelledby="concept-card-tab"${practiceConceptMode === "card" ? "" : " hidden"}>
       <p class="practice-panel-intro">Choose one of the reference's cards (a formula, method or pattern) to build an untimed set from the contest problems that use it.</p>
       <form id="card-practice-form" novalidate><fieldset aria-label="Card practice options">
-        <label class="mock-field-label" for="card-practice-name">Reference card</label>
+        <label for="card-practice-name">Reference card</label>
         <div class="practice-topic-search"><input id="card-practice-name" class="set-find-input" type="search" placeholder="Search the reference's cards..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="card-practice-options" aria-describedby="card-practice-status">
         <div id="card-practice-options" class="set-find-list" role="listbox" aria-label="Cards" hidden></div></div>
         ${practiceFamsHtml()}
@@ -6899,7 +6899,6 @@
           <div class="ct-browse"><a class="ct-browse-btn" href="#/browse/topics">Browse by topic</a><a class="ct-browse-btn" href="#/browse/difficulty">Browse by difficulty</a></div>
           ${contestFinderHtml(fams)}
           <div class="ct-list">${contestGroupsHtml(fams, yearsOf)}
-            ${famMoreBtn(extraFams(fams), "ct-toggle", "contest-years")}
             ${(() => {
               const planned = (window.MATH_PLANNED_CONTESTS || []).filter(c => !fams.includes(c.name));
               if (!planned.length) return "";
@@ -10194,7 +10193,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const hasProblemStatement = p => MAA_RE.test(p.ref) || !!archiveStatement(p);
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 115;
+  const STATEMENTS_V = 117;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {
@@ -10410,7 +10409,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
     ["intl", "Canada and the UK", f => /^(Pascal|Cayley|Fermat|UKMT)/.test(f)]
   ];
   const ctGroupsOpen = new Set(["maa"]);
-  let ctQuery = "";
   const ctGroupsOf = fams => {
     const out = CT_GROUPS.map(([key, label, test]) => ({ key, label, items: fams.filter(test) })).filter(g => g.items.length);
     const rest = fams.filter(f => !CT_GROUPS.some(g => g[2](f)));
@@ -10421,14 +10419,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
     ? `<button type="button" class="ct-years-more" data-ct-years="${escapeAttr(f)}" aria-expanded="${ctYearsOpen.has(f)}">${ctYearsOpen.has(f) ? "Fewer years" : `Show ${years.length - CT_YEARS} more year${years.length - CT_YEARS === 1 ? "" : "s"}`}</button>` : "");
   function contestFinderHtml(fams) {
     const groups = ctGroupsOf(fams);
-    return `<div class="ct-find"><input id="ct-find" class="set-find-input" type="search" placeholder="Find a contest or a year, such as HMMT or 2019" autocomplete="off" aria-label="Find a contest or a year" value="${escapeAttr(ctQuery)}"><p class="ct-find-note" id="ct-find-note" role="status" aria-live="polite"></p></div>
+    return `<div class="ct-find mock-paper-search"><input id="ct-find" class="set-find-input" type="search" placeholder="Find a contest or a year, such as HMMT or 2019" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="ct-find-options" aria-label="Find a contest or a year">
+          <div id="ct-find-options" class="set-find-list" role="listbox" aria-label="Contests" hidden></div></div>
           <div class="fam-chips ct-jump" role="group" aria-label="Jump to a group of contests">${groups.map(g => `<button type="button" class="fam-chip" data-ct-jump="${g.key}">${escapeAttr(g.label)}<span class="br-count">${g.items.length}</span></button>`).join("")}<button type="button" class="ct-fold-all" id="ct-fold-all">Collapse all</button></div>`;
   }
   function contestGroupsHtml(fams, yearsOf) {
     return ctGroupsOf(fams).map(g => {
       const n = g.items.reduce((t, f) => t + famCount(f), 0);
-      const extra = g.key === "maa" ? "" : ` data-fam-extra="contest-years"${famsOpen("contest-years") ? "" : " hidden"}`;
-      return `<details class="ct-group" data-ct-group="${g.key}" id="ct-group-${g.key}"${ctGroupsOpen.has(g.key) ? " open" : ""}${extra}>
+      return `<details class="ct-group" data-ct-group="${g.key}" id="ct-group-${g.key}"${ctGroupsOpen.has(g.key) ? " open" : ""}>
             <summary><span class="ct-group-name">${escapeAttr(g.label)}</span><span class="ct-group-n">${g.items.length} contest${g.items.length === 1 ? "" : "s"} &middot; ${n.toLocaleString()} problems</span></summary>
             <div class="ct-group-rows">${g.items.map((f, i, a) => `
             <div class="ct-row${i && famSeries(a[i - 1]) === famSeries(f) ? " ct-same" : ""}" data-ct-fam="${escapeAttr(f)}">
@@ -10439,49 +10437,61 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   function wireContestFinder(root) {
     const input = root.querySelector("#ct-find"); if (!input) return;
-    const groups = [...root.querySelectorAll(".ct-group")], rows = [...root.querySelectorAll(".ct-row[data-ct-fam]")];
-    const note = root.querySelector("#ct-find-note"), foldAll = root.querySelector("#ct-fold-all");
+    const options = root.querySelector("#ct-find-options"), groups = [...root.querySelectorAll(".ct-group")], foldAll = root.querySelector("#ct-fold-all");
     const yearsOf = f => Object.keys(DB_TREE[f]).map(Number).sort((x, y) => y - x);
-    const baseHidden = g => g.hasAttribute("data-fam-extra") && !famsOpen("contest-years");
     const aliases = f => Object.entries(CONTEST_QUERY_ALIASES).filter(([, v]) => v.includes(f)).map(([k]) => k.toLowerCase()).join(" ");
-    function apply() {
-      const q = ctQuery.trim().toLowerCase(), tokens = q.split(/\s+/).filter(Boolean);
-      const years = tokens.filter(t => /^\d{4}$/.test(t)), words = tokens.filter(t => !/^\d{4}$/.test(t));
-      let shown = 0;
-      rows.forEach(r => {
-        const f = r.dataset.ctFam, hay = (f + " " + aliases(f)).toLowerCase(), ys = yearsOf(f);
-        const ok = !tokens.length || (words.every(w => hay.includes(w)) && years.every(y => ys.includes(+y)));
-        r.hidden = !ok; if (ok) shown++;
-        // A year being looked for is shown on its row even when the row folds the older years away.
-        if (ok && years.length && years.some(y => !ctYearsOpen.has(f) && ys.indexOf(+y) >= CT_YEARS)) { ctYearsOpen.add(f); r.querySelector(".ct-years").innerHTML = ctYearsHtml(f, ys); }
-        r.querySelectorAll(".ct-years a").forEach(a => a.classList.toggle("ct-hit", years.includes(a.textContent)));
+    let choices = [], active = -1;
+    // The finder is a dropdown like the mock's paper search: a contest name opens the contest's latest year, a name with a
+    // year opens that year, and a year alone lists every contest held that year.
+    function matches() {
+      const tokens = input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      if (!tokens.length) return [];
+      const years = tokens.filter(t => /^\d{4}$/.test(t)), words = tokens.filter(t => !/^\d{4}$/.test(t)), out = [];
+      FAMILIES.forEach(f => {
+        const hay = (f + " " + aliases(f)).toLowerCase(), ys = yearsOf(f);
+        if (!words.every(w => hay.includes(w))) return;
+        if (years.length) years.forEach(y => { if (ys.includes(+y)) out.push({ label: `${y} ${f}`, href: `#/problems/${famSlug(f)}/${y}` }); });
+        else out.push({ label: f, href: `#/problems/${famSlug(f)}/${ys[0]}` });
       });
-      groups.forEach(g => {
-        const any = [...g.querySelectorAll(".ct-row")].some(r => !r.hidden);
-        if (tokens.length) { g.hidden = !any; if (any) g.open = true; }
-        else { g.hidden = baseHidden(g); g.open = ctGroupsOpen.has(g.dataset.ctGroup); }
-      });
-      note.textContent = tokens.length ? (shown ? `${shown} contest${shown === 1 ? "" : "s"} found.` : "No contest matches.") : "";
+      return out.slice(0, 10);
     }
-    input.addEventListener("input", () => { ctQuery = input.value; apply(); });
-    input.addEventListener("keydown", e => { if (e.key === "Escape" && input.value) { e.preventDefault(); input.value = ctQuery = ""; apply(); } });
-    groups.forEach(g => g.addEventListener("toggle", () => { if (ctQuery.trim()) return; g.open ? ctGroupsOpen.add(g.dataset.ctGroup) : ctGroupsOpen.delete(g.dataset.ctGroup); }));
+    function close() { options.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; }
+    function highlight() {
+      [...options.children].forEach((b, i) => { b.classList.toggle("is-cur", i === active); b.setAttribute("aria-selected", String(i === active)); });
+      if (choices[active]) input.setAttribute("aria-activedescendant", "ct-find-opt-" + active); else input.removeAttribute("aria-activedescendant");
+    }
+    function suggest() {
+      choices = matches();
+      options.innerHTML = input.value.trim() && !choices.length ? `<div class="set-find-empty">No contest matches.</div>`
+        : choices.map((c, i) => `<button type="button" class="set-find-opt" id="ct-find-opt-${i}" role="option" aria-selected="false">${escapeAttr(c.label)}</button>`).join("");
+      active = choices.length ? 0 : -1; options.hidden = !options.innerHTML; input.setAttribute("aria-expanded", String(!options.hidden)); highlight();
+      [...options.querySelectorAll("button")].forEach((b, i) => {
+        b.addEventListener("mousemove", () => { active = i; highlight(); });
+        b.addEventListener("click", () => { location.hash = choices[i].href; });
+      });
+    }
+    input.addEventListener("input", suggest);
+    input.addEventListener("focus", () => { if (input.value.trim()) suggest(); });
+    input.addEventListener("keydown", e => {
+      if (e.key === "Escape") { e.preventDefault(); if (options.hidden) input.value = ""; close(); }
+      else if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); if (options.hidden) suggest(); else if (choices.length) active = (active + (e.key === "ArrowDown" ? 1 : -1) + choices.length) % choices.length; highlight(); }
+      else if (e.key === "Enter" && !options.hidden && choices[active]) { e.preventDefault(); location.hash = choices[active].href; }
+    });
+    root.querySelector(".ct-find").addEventListener("focusout", e => { if (!e.relatedTarget?.closest(".ct-find")) close(); });
+    groups.forEach(g => g.addEventListener("toggle", () => { g.open ? ctGroupsOpen.add(g.dataset.ctGroup) : ctGroupsOpen.delete(g.dataset.ctGroup); }));
+    const syncFold = () => { foldAll.textContent = groups.some(g => g.open) ? "Collapse all" : "Expand all"; };
     root.querySelectorAll("[data-ct-jump]").forEach(b => b.addEventListener("click", () => {
       const g = root.querySelector(`#ct-group-${b.dataset.ctJump}`); if (!g) return;
-      if (ctQuery.trim()) { input.value = ctQuery = ""; apply(); }
-      if (g.hidden) { contestExpansions.set("contest-years", true); document.querySelectorAll('[data-fam-extra="contest-years"]').forEach(el => { el.hidden = false; }); document.querySelectorAll('.fam-more-btn[data-fam-list="contest-years"]').forEach(x => { x.setAttribute("aria-expanded", "true"); x.textContent = famMoreLabel(+x.dataset.famN, true); }); }
-      g.open = true; ctGroupsOpen.add(b.dataset.ctJump);
+      g.open = true; ctGroupsOpen.add(b.dataset.ctJump); syncFold();
       g.scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
       g.querySelector("summary").focus({ preventScroll: true });
     }));
     foldAll.addEventListener("click", () => {
       const anyOpen = groups.some(g => g.open); ctGroupsOpen.clear();
-      if (!anyOpen) groups.forEach(g => ctGroupsOpen.add(g.dataset.ctGroup));
-      if (ctQuery.trim()) { input.value = ctQuery = ""; }
-      apply(); foldAll.textContent = anyOpen ? "Expand all" : "Collapse all";
+      groups.forEach(g => { g.open = !anyOpen; if (!anyOpen) ctGroupsOpen.add(g.dataset.ctGroup); });
+      syncFold();
     });
-    apply();
-    if (!groups.some(g => g.open)) foldAll.textContent = "Expand all";
+    syncFold();
   }
 
   // ---------- Contest lists: AMC and AIME first (owner, 2026-11-14) ----------

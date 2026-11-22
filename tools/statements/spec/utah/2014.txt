@@ -1,0 +1,488 @@
+=== junior-1
+Venn diagrams represent the relationship between sets. Below is the Venn diagram for three sets, $A$, $B$, and $C$. The shaded region represents the union of the two intersections between $A$ and $C$, and $B$ and $C$, $(A\cap C)\cup(B\cap C)$.
+
+@@fig:utah2014_junior-1a.png@@
+
+Which expression represents the shaded area of the Venn diagram?
+
+@@fig:utah2014_junior-1b.png@@
+
+(A) $(A\cap C)\cup B$  (B) $A\cup B$  (C) $A\cap B\cap C$  (D) $(A\cap C)\cup(B\cup C)$  (E) $(A\cap C)\cap(B\cup C)$
+=== junior-2
+The superscript, $^C$, refers to the complement of a set. For example, in the Venn diagram below the shaded region represents the complement of the two intersections between $A$ and $B$ intersecting $A\cup B$, $(A\cap B)^C\cap(A\cup B)$.
+
+@@fig:utah2014_junior-2a.png@@
+
+Which expression represents the shaded area of the Venn diagram?
+
+@@fig:utah2014_junior-2b.png@@
+
+(A) $(B\cap A)\cup(B\cap C)$  (B) $(B\cup A)^C\cup(B\cap A)$  (C) $C^C\cap(B\cap A)^C$  (D) $A^C\cap(B\cap C)$  (E) $B^C\cap(A\cup C)$
+=== junior-3
+Which diagram depicts the location of $24$?
+
+@@fig:utah2014_junior-3a.png@@
+
+@@fig:utah2014_junior-3b.png@@
+=== junior-4
+A group of mathematicians and biologists assembled at a conference. Of the $100$ professionals in attendance, $63$ were biologists and $47$ were mathematicians. How many were mathematical-biologists?
+
+@@fig:utah2014_junior-4.png@@
+
+(A) $8$  (B) $18$  (C) $24$  (D) $10$  (E) $12$
+=== junior-5
+A survey showed that among a certain set of $43$ people, only $3$ spoke all three languages, English, Spanish, and French, while $13$ spoke exactly two of these languages and $27$ spoke just one of these languages. A total of $33$ people spoke English. Also a total of $10$ spoke French, but each of these also spoke English or Spanish, or both. How many of the $43$ people spoke Spanish? The following Venn diagram might help in setting up a system of equations.
+
+@@fig:utah2014_junior-5.png@@
+
+(A) $15$  (B) $16$  (C) $17$  (D) $18$  (E) $19$
+=== junior-6
+Continued fractions are of the form
+$$\frac pq=a_0+\cfrac{1}{a_1+\cfrac{1}{a_2+\cfrac{1}{a_3+\cfrac{1}{a_4+\cdots}}}}.$$
+This pattern might terminate, or continue forever. The clumsy expression above can be represented as a list (or sequence) of the form $[a_0;a_1,a_2,a_3,a_4,\dots]$. Notice that $a_0$ could be zero, but the rest of the elements are non-zero. For example,
+$$\frac18=0+\cfrac{1}{7+\cfrac11}=[0;7,1]$$
+and
+$$\frac58=0+\cfrac{1}{1+\cfrac{1}{1+\cfrac{1}{1+\cfrac{1}{1+\cfrac11}}}}=[0;1,1,1,1,1].$$
+Which is the continued fraction for $\frac57$?
+
+(A) $[0;1,7,5]$  (B) $[0;1,5,1]$  (C) $[0;2,2,1]$  (D) $[0;1,2,1]$  (E) $[0;1,2,2]$
+=== junior-7
+Recursive relationships can lead to continued fractions. For example, by repeated substitutions, the relationship $x=1+\frac1x$ leads to the continued fraction
+$$x=1+\cfrac{1}{1+\cfrac{1}{1+\cfrac{1}{1+\cdots}}}.$$
+Use the relationship
+$$\sqrt x=1+\frac{x-1}{1+\sqrt x}$$
+to find the list for the continued fraction corresponding to $\sqrt2$.
+
+(A) $[1;2,2,2,2,2\dots]$  (B) $[1;2,3,4,5,6\dots]$  (C) $[1;4,1,4,1,4\dots]$  (D) $[1;2,2,3,3,4\dots]$  (E) $[1;2,1,2,1,2\dots]$
+=== junior-8
+Given
+$$x=a+\cfrac{1}{a+\cfrac{1}{a+\cfrac{1}{a+\cdots}}},$$
+which of the following is also equal to $x$?
+
+(A) $\sqrt a$  (B) $\dfrac{a+\sqrt a}{2}$  (C) $\dfrac{\sqrt{a^2+4}}{2}$  (D) $a+\sqrt{a^2+4}$  (E) $\dfrac{a+\sqrt{a^2+4}}{2}$
+=== junior-9
+Below is the adjacency matrix associated with the digraph of graph $D_1$.
+$$A(D_1)=\begin{pmatrix}0&1&1\\0&0&1\\0&0&0\end{pmatrix}$$
+
+@@fig:utah2014_junior-9a.png@@
+
+Which of the following adjacency matrices is associated with the graph $D_2$ whose digraph is given below?
+
+@@fig:utah2014_junior-9b.png@@
+
+(A) $\begin{pmatrix}1&1&0&0&1\\0&1&1&1&1\\0&0&1&1&0\\0&0&0&1&1\\0&0&0&0&1\end{pmatrix}$  (B) $\begin{pmatrix}0&1&0&1&0\\0&0&1&0&1\\0&0&0&0&0\\0&0&0&0&1\\0&0&0&0&0\end{pmatrix}$  (C) $\begin{pmatrix}0&1&0&0&1\\0&0&1&1&1\\1&0&0&1&0\\0&0&1&0&1\\0&1&1&0&0\end{pmatrix}$  (D) $\begin{pmatrix}0&1&0&0&1\\1&0&1&1&1\\1&0&0&1&0\\0&1&0&0&1\\0&0&0&0&0\end{pmatrix}$  (E) $\begin{pmatrix}0&1&0&0&1\\0&0&1&1&1\\0&0&0&1&0\\0&0&0&0&1\\1&0&0&0&0\end{pmatrix}$
+=== junior-10
+A signed graph has a value assigned to each edge of the graph. In the illustration below, the edges with a minus sign have a negative value and the edges with a positive sign have a positive value. This describes the relationship between the nodes. The example below is termed a balanced signed graph, because the product of the signs around any closed loop is positive.
+
+@@fig:utah2014_junior-10a.png@@
+
+Five people have been selected to work together on a project. Not everyone likes each other, but some people get along well. The sign indicates who works well together, a positive meaning people work well, and a negative meaning they don't work well. The outcome of the group depends on the group dynamic being balanced. Which of the following group dynamics would result in successful completion of the project?
+
+@@fig:utah2014_junior-10b.png@@
+=== junior-11
+A railroad baron wishes to connect four rural villages, named $A$, $B$, $C$, and $D$, by rail. He had his surveyors investigate the best possible route between every pair of villages, and provide a cost estimate for each potential route, in gold bars:
+
+@@fig:utah2014_junior-11.png@@
+
+What is the minimum cost in gold bars to connect all the villages by rail?
+
+(A) $16$ bars  (B) $21$ bars  (C) $26$ bars  (D) $18$ bars  (E) None of the above.
+=== junior-12
+The Game of Life is a cellular automaton devised by the British mathematician John Horton Conway in 1970. The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive or dead. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
+
+i. Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+
+ii. Any live cell with two or three live neighbours lives on to the next generation.
+
+iii. Any live cell with more than three live neighbours dies, as if by overcrowding.
+
+iv. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+
+@@fig:utah2014_junior-12.png@@
+
+Given the initial condition in the figure above, in which black dots indicate live cells, what is the configuration after $2$ generations?
+
+@@fig:utah2014_junior-12o.png@@
+=== junior-13
+The Game of Life is a cellular automaton devised by the British mathematician John Horton Conway in 1970. The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive or dead. Every cell interacts with its eight neighbors, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
+
+i. Any live cell with fewer than two live neighbors dies, as if caused by under-population.
+
+ii. Any live cell with two or three live neighbors lives on to the next generation.
+
+iii. Any live cell with more than three live neighbors dies, as if by overcrowding.
+
+iv. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+
+@@fig:utah2014_junior-13.png@@
+
+Given the initial condition in the figure above, in which black dots indicate live cells, what is the configuration after $6$ generations?
+
+@@fig:utah2014_junior-13o.png@@
+=== junior-14
+The Riemann zeta function, $\zeta(x)$, is defined
+$$\zeta(x)=\sum_{n=1}^{\infty}\frac1{n^x},\quad x>1.$$
+What is $\zeta(x)(1-2^{-x})$?
+
+(A) $\displaystyle\sum_{n=1}^\infty\frac1{(2n)^x}$  (B) $\displaystyle\sum_{n=1}^\infty\frac{(-1)^n}{(2n)^x}$  (C) $\displaystyle\sum_{n=1}^\infty\frac{(-1)^n}{n^x}$  (D) $\displaystyle\sum_{n=1}^\infty\frac{(-1)^n}{(2n-1)^x}$  (E) $\displaystyle\sum_{n=1}^\infty\frac1{(2n-1)^x}$
+=== junior-15
+The Gamma function, $\Gamma(t)$, $t\in\mathbb R$, $t\ne0$, is defined by
+$$\Gamma(t+1)=t\Gamma(t),\quad t\ne-n,\ n\in\mathbb N.$$
+With the special case $\Gamma(1/2)=\sqrt\pi$, what is $\Gamma(-3/2)$?
+
+(A) $1$  (B) $\dfrac{\sqrt\pi}{2}$  (C) $\pi$  (D) $-\dfrac{\sqrt\pi}{4}$  (E) $\dfrac{4\sqrt\pi}{3}$
+=== junior-16
+The Psi function, $\psi(x)$, $x\ne0,-1,-2,\dots$, is defined as the logarithmic derivative of the Gamma function. From this one arrives at a noteworthy special value
+$$\psi(1)=\frac{\Gamma'(1)}{\Gamma(1)}=-\gamma$$
+where $\gamma$ is the Euler Mascheroni constant (a constant real number). Application of the derivative yields the important relationship
+$$\psi(x+1)=\psi(x)+\frac1x.$$
+In the case of $x=n\in\mathbb N$ we have
+$$\psi(n+1)=\psi(1)+1+\frac12+\frac13+\frac14+\cdots+\frac1n=-\gamma+\sum_{k=1}^n\frac1k,\quad n=1,2,3,\dots$$
+Use these properties to sum the series
+$$\sum_{n=2}^{\infty}\frac1{n^2-1}.$$
+
+(A) $\dfrac{13}{20}$  (B) $\dfrac34$  (C) $\dfrac{17}{25}$  (D) $\dfrac7{10}$  (E) $\dfrac45$
+=== junior-17
+A mathematician named Appell developed a notation that is closely related to the Gamma function and used in analyzing Hypergeometric functions. Appell's notation is defined by the following:
+$$(a,0)=1,$$
+$$(a,n)=a(a+1)(a+2)\cdots(a+n-1),\quad n=1,2,3,\dots,$$
+$$(a,-n)=\frac1{(a+1)(a+2)\cdots(a+n-1)},\quad a\ne-1,-2,-3,\dots,\ n=1,2,3,\dots$$
+It follows from this definition that $(a,n)=\dfrac{\Gamma(a+n)}{\Gamma(a)}$. For example we see that $(3,5)=3\cdot4\cdot5\cdot6\cdot7=2520$, and alternatively
+$$(3,5)=\frac{\Gamma(3+5)}{\Gamma(3)}=\frac{(8-1)!}{(2-1)!}=\frac{1\cdot2\cdot3\cdot4\cdot5\cdot6\cdot7}{1\cdot2}=3\cdot4\cdot5\cdot6\cdot7=2520.$$
+What is the value of $(-2,4)$?
+
+(A) $-1$  (B) $1$  (C) $2$  (D) $0$  (E) $3$
+=== junior-18
+Considering Appell's notation from the previous problem,
+$$(a,0)=1,\qquad (a,n)=a(a+1)(a+2)\cdots(a+n-1),\quad n=1,2,3,\dots,$$
+what is $(-a,n)$ for $a=1,2,3,\dots$?
+
+(A) $(-a,n)=\begin{cases}\frac1{(a-n)!}&0\le n\le a\\0&n>a\end{cases}$  (B) $(-a,n)=\begin{cases}(-1)^n\frac1{(a-n)!}&0\le n\le a\\0&n>a\end{cases}$  (C) $(-a,n)=\begin{cases}(-1)^n\frac{a!}{n!}&0\le n\le a\\0&n>a\end{cases}$  (D) $(-a,n)=\begin{cases}\frac{n!}{a!}&0\le n\le a\\0&n>a\end{cases}$  (E) $(-a,n)=\begin{cases}(-1)^n\frac{a!}{(a-n)!}&0\le n\le a\\0&n>a\end{cases}$
+=== junior-19
+Considering the aforementioned Appell's notation,
+$$(a,0)=1,\qquad (a,n)=a(a+1)(a+2)\cdots(a+n-1),\quad n=1,2,3,\dots,$$
+what is $\dbinom{-a}{n}$ for $a,n=1,2,3,\dots$?
+
+(A) $\dfrac1{n!}(a,n)$  (B) $\dfrac{(-1)^n}{n!}(a,n)$  (C) $-\dfrac1{n!}(n,a)$  (D) $\dfrac{(-1)^n}{a!}(a,n)$  (E) $\dfrac{(-1)^n}{(n-a)!\,n!}(a,n)$
+=== junior-20
+Some theoretical physicists define the infinite series
+$$S=1-1+1-1+1-1+1-1\cdots=\frac12.$$
+The following reasoning helps to illustrate their thinking.
+$$1-S=1-(1-1+1-1+1-1+1-1\dots)$$
+Simplifying returns
+$$1-S=1-1+1-1+1-1+1-1\cdots=S.$$
+So $1-S=S$ which by solving for $S$ implies that $S=\frac12$. There are more complicated explanations for how string theorists arrive at this conclusion, but if we define
+$$\sum_{n=0}^{\infty}(-1)^n=1-1+1-1+1\cdots=\frac12,$$
+what does the following series equal?
+$$P=\sum_{n=0}^{\infty}(-1)^n(n+1)=1-2+3-4+5-6+7-8\dots$$
+
+(A) $\dfrac1{10}$  (B) $\dfrac14$  (C) $\dfrac18$  (D) $\dfrac16$  (E) $\dfrac1{12}$
+=== junior-21
+A statement can be true or false, denoted $1$ for true and $0$ for false. For example:
+
+1. $P$: "All dogs are mammals." has a value $1$.
+
+2. $Q$: "All dogs are brown." has a value $0$.
+
+Compound statements are formed from other statements by using the connectives $\wedge$ (and) and $\vee$ (or). The truth of the compound statement will depend on the truth of its components.
+
+The following tables present all possible combinations of arbitrary statements $P$ and $Q$, and the operation, $R$, displays the results in the final row of the table for the operation $R=P\wedge Q$ and $R=P\vee Q$.
+$$\begin{array}{c|cccc}P&0&0&1&1\\Q&0&1&0&1\\\hline P\wedge Q&0&0&0&1\end{array}\qquad\begin{array}{c|cccc}P&0&0&1&1\\Q&0&1&0&1\\\hline P\vee Q&0&1&1&1\end{array}$$
+What is the operation, $R$, in the following table?
+$$\begin{array}{c|cccccccc}P&0&0&0&0&1&1&1&1\\Q&0&0&1&1&0&0&1&1\\S&0&1&0&1&0&1&0&1\\\hline R&0&1&1&1&1&1&1&1\end{array}$$
+
+(A) $Q\vee(P\wedge S)$  (B) $Q\wedge(P\vee S)$  (C) $P\wedge(Q\vee S)$  (D) $Q\vee P\vee S$  (E) $(Q\wedge P)\vee(P\wedge S)$
+=== junior-22
+The symbol $\neg$ is the negation of the statement. For example $\neg P$ reads "not all dogs are mammals", which would have a value of false, or $0$.
+
+What is the operation, $R$, in the following table?
+$$\begin{array}{c|cccc}P&0&0&1&1\\Q&0&1&0&1\\\hline R&1&1&0&0\end{array}$$
+
+(A) $\neg Q\vee P$  (B) $Q\vee\neg P$  (C) $\neg(Q\wedge P)\wedge\neg P$  (D) $\neg Q\wedge P$  (E) $\neg(Q\wedge P)$
+=== junior-23
+The following table presents all possible combinations of arbitrary statements $P$ and $Q$, and the conditional statement, "If $P$ then $Q$", $P\Rightarrow Q$.
+$$\begin{array}{c|cccc}P&0&0&1&1\\Q&0&1&0&1\\\hline P\Rightarrow Q&1&1&0&1\end{array}$$
+What is the operation, $R$, in the following table?
+$$\begin{array}{c|cccc}P&0&0&1&1\\Q&0&1&0&1\\\hline R&1&1&0&0\end{array}$$
+
+(A) $P\Rightarrow\neg Q$  (B) $\neg(P\Rightarrow Q)$  (C) $\neg P\Rightarrow\neg Q$  (D) $(P\Rightarrow Q)\wedge\neg P$  (E) $\neg Q\vee(P\Rightarrow\neg Q)$
+=== junior-24
+Given the pattern in the following equalities,
+$$4^2+3^2=5^2,\quad 8^2+15^2=17^2,\quad 12^2+35^2=37^2,\quad 16^2+63^2=65^2,$$
+which of the sets below contains the $x$ and $y$ that satisfy $18^2+x^2=y^2$?
+
+(A) $\{73,74,75,76,77\}$  (B) $\{88,89,90,91,92\}$  (C) $\{93,94,95,96,97\}$  (D) $\{83,84,85,86,87\}$  (E) $\{78,79,80,81,82\}$
+=== junior-25
+If $x=1$ is a solution of the equation $4a+b(x-4)^2+c(x-4)^4+d(x-4)^6=0$, then another solution is
+
+(A) $x=-3$  (B) $x=3$  (C) $x=-1$  (D) $x=7$  (E) $x=5$
+=== junior-26
+What is the relationship between two distinct positive real numbers $a$ and $b$ such that they satisfy the equation $b^2+a=a^2+b$?
+
+(A) $b=1+a$  (B) $b=-a$  (C) $b=1-a$  (D) $b=a-1$  (E) $b=2a$
+=== junior-27
+Suppose the two quadratic equations $x^2-5x+k=0$ and $x^2-9x+3k=0$ have a nonzero root in common. What set contains the value of $k$?
+
+(A) $\{2,7,12,17\}$  (B) $\{3,8,13,18\}$  (C) $\{6,11,16,21\}$  (D) $\{4,9,14,19\}$  (E) $\{5,10,15,20\}$
+=== junior-28
+A restaurant has an automatic dishwasher that has $6$ large pots, $4$ small pots, $3$ large pot lids, and $5$ small pot lids. A cook grabs a pot at random and then a lid at random. What is the probability that the lid will fit the pot?
+
+(A) $\dfrac{\binom{10}{2}+\binom82}{\binom{18}{2}}$  (B) $\dfrac1{80}$  (C) $\dfrac9{40}$  (D) $\dfrac{\binom93\binom92}{\binom{18}{2}}$  (E) $\dfrac{38}{80}$
+=== junior-29
+A small computer store sells laptops that have various combinations of screen types and operating systems. The table below provides the proportions of each combination that the store has available. One laptop is to be selected at random from this store. If the laptop that is selected has a Touch-Screen, what is the probability that the operating system is Windows 8?
+$$\begin{array}{l|cc}\text{LAPTOPS}&\text{Touch-Screen}&\text{No Touch-Screen}\\\hline\text{Windows 8}&0.40&0.20\\\text{Other operating system}&0.10&0.30\end{array}$$
+
+(A) $0.40$  (B) $0.30$  (C) $0.80$  (D) $0.90$  (E) None of the above.
+=== junior-30
+Bill and Bob have agreed to meet for running between $6$ pm and $8$ pm, but neither of them remember the time of the meeting. If any of the two comes to the park between $6$ pm and $8$ pm and stays for $12$ minutes unless his friend shows up before that period of time is up, what is the probability that they will meet to start running between $6$ pm and $8$ pm? Assume that all random times are equally likely.
+
+(A) $50\%$  (B) $24\%$  (C) $25\%$  (D) $19\%$  (E) $12\%$
+=== senior-1
+The superscript, $^C$, refers to the complement of a set. For example, in the Venn diagram below the shaded region represents the complement of the two intersections between $A$ and $B$ intersecting $A\cup B$, $(A\cap B)^C\cap(A\cup B)$.
+
+@@fig:utah2014_junior-2a.png@@
+
+Which expression represents the shaded area of the Venn diagram?
+
+@@fig:utah2014_junior-2b.png@@
+
+(A) $(B\cap A)\cup(B\cap C)$  (B) $(B\cup A)^C\cup(B\cap A)$  (C) $C^C\cap(B\cap A)^C$  (D) $B^C\cap(A\cup C)$  (E) $A^C\cap(B\cap C)$
+=== senior-2
+Which diagram depicts the location of $24$?
+
+@@fig:utah2014_junior-3a.png@@
+
+@@fig:utah2014_junior-3b.png@@
+=== senior-3
+A group of mathematicians and biologists assembled at a conference. Of the $100$ professionals in attendance, $63$ were biologists and $47$ were mathematicians. How many were mathematical-biologists?
+
+@@fig:utah2014_junior-4.png@@
+
+(A) $8$  (B) $18$  (C) $10$  (D) $24$  (E) $12$
+=== senior-4
+Given the exponential inequality
+$$x^{\epsilon}<1+\epsilon(x-1)$$
+and two integers $a>b>0$, let $\epsilon=\frac ba$ and $x=1+\frac1b$. Then which of the following is(are) true?
+
+i. $\left(1+\frac1b\right)^b<\left(1+\frac1a\right)^a$
+
+ii. $\left(1+\frac1b\right)^{b+1}>\left(1+\frac1a\right)^{a+1}$
+
+iii. $\left(1+\frac1b\right)^b>\left(1+\frac1a\right)^{a+1}$
+
+(A) i  (B) i and ii  (C) ii  (D) iii  (E) i and iii
+=== senior-5
+Using the fact that
+$$e^{(x-e)/e}\ge1+\frac{x-e}{e}$$
+what positive value of $x$ will maximize the expression $\sqrt[x]{x}$?
+
+(A) $x=\sqrt e$  (B) $x=e^e$  (C) $x=1/e$  (D) $x=e!$  (E) $x=e$
+=== senior-6
+Continued fractions are of the form
+$$\frac pq=a_0+\cfrac{1}{a_1+\cfrac{1}{a_2+\cfrac{1}{a_3+\cfrac{1}{a_4+\cdots}}}}.$$
+This pattern might terminate, or continue forever. The clumsy expression above can be represented as a list (or sequence) of the form $[a_0;a_1,a_2,a_3,a_4,\dots]$. Notice that $a_0$ could be zero, but the rest of the elements are non-zero. For example,
+$$\frac18=0+\cfrac{1}{7+\cfrac11}=[0;7,1]$$
+and
+$$\frac58=0+\cfrac{1}{1+\cfrac{1}{1+\cfrac{1}{1+\cfrac{1}{1+\cfrac11}}}}=[0;1,1,1,1,1].$$
+Which is the continued fraction for $\frac57$?
+
+(A) $[0;1,2,2]$  (B) $[0;1,7,5]$  (C) $[0;1,5,1]$  (D) $[0;2,2,1]$  (E) $[0;1,2,1]$
+=== senior-7
+Recursive relationships can lead to continued fractions. For example, by repeated substitutions, the relationship $x=1+\frac1x$ leads to the continued fraction
+$$x=1+\cfrac{1}{1+\cfrac{1}{1+\cfrac{1}{1+\cdots}}}.$$
+Use the relationship
+$$\sqrt x=1+\frac{x-1}{1+\sqrt x}$$
+to find the list for the continued fraction corresponding to $\sqrt2$.
+
+(A) $[1;2,2,2,2,2\dots]$  (B) $[1;2,3,4,5,6\dots]$  (C) $[1;4,1,4,1,4\dots]$  (D) $[1;2,2,3,3,4\dots]$  (E) $[1;2,1,2,1,2\dots]$
+=== senior-8
+Given
+$$x=a+\cfrac{1}{a+\cfrac{1}{a+\cfrac{1}{a+\cdots}}},$$
+which of the following is also equal to $x$?
+
+(A) $\sqrt a$  (B) $\dfrac{a+\sqrt a}{2}$  (C) $\dfrac{\sqrt{a^2+4}}{2}$  (D) $a+\sqrt{a^2+4}$  (E) $\dfrac{a+\sqrt{a^2+4}}{2}$
+=== senior-9
+Find the list for the continued fraction corresponding to $\sqrt{10}$.
+
+(A) $[3;5,1,1,1,\dots]$  (B) $[3;6,6,6,\dots]$  (C) $[3;5,2,1,1,1,\dots]$  (D) $[3;7,1,1,1,\dots]$  (E) $[3;6,4,2,17,8,1,\dots]$
+=== senior-10
+Below is the digraph of graph $D_1$, and its associated adjacency matrix is
+$$A(D_1)=\begin{pmatrix}0&1&1\\0&0&1\\0&0&0\end{pmatrix}$$
+
+@@fig:utah2014_junior-9a.png@@
+
+Which of the following adjacency matrices is associated with the graph $D_2$ whose digraph is given below?
+
+@@fig:utah2014_junior-9b.png@@
+
+(A) $\begin{pmatrix}1&1&0&0&1\\0&1&1&1&1\\0&0&1&1&0\\0&0&0&1&1\\0&0&0&0&1\end{pmatrix}$  (B) $\begin{pmatrix}0&1&0&1&0\\0&0&1&0&1\\0&0&0&0&0\\0&0&0&0&1\\0&0&0&0&0\end{pmatrix}$  (C) $\begin{pmatrix}0&1&0&0&1\\0&0&1&1&1\\1&0&0&1&0\\0&0&1&0&1\\0&1&1&0&0\end{pmatrix}$  (D) $\begin{pmatrix}0&1&0&0&1\\0&0&1&1&1\\0&0&0&1&0\\0&0&0&0&1\\1&0&0&0&0\end{pmatrix}$  (E) $\begin{pmatrix}0&1&0&0&1\\1&0&1&1&1\\1&0&0&1&0\\0&1&0&0&1\\0&0&0&0&0\end{pmatrix}$
+=== senior-11
+A signed graph has a value assigned to each edge of the graph. In the illustration below, the edges with a minus sign have a negative value and the edges with a positive sign have a positive value. This describes the relationship between the nodes. The example below is termed a balanced signed graph, because the product of the signs around any closed loop is positive.
+
+@@fig:utah2014_junior-10a.png@@
+
+Five people have been selected to work together on a project. Not everyone likes each other, but some people get along well. The sign indicates who works well together, a positive meaning people work well, and a negative meaning they don't work well. The outcome of the group depends on the group dynamic being balanced. Which of the following group dynamics would result in successful completion of the project?
+
+@@fig:utah2014_senior-11b.png@@
+=== senior-12
+The Game of Life is a cellular automaton devised by the British mathematician John Horton Conway in 1970. The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive or dead. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
+
+i. Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+
+ii. Any live cell with two or three live neighbours lives on to the next generation.
+
+iii. Any live cell with more than three live neighbours dies, as if by overcrowding.
+
+iv. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+
+@@fig:utah2014_junior-12.png@@
+
+Given the initial condition in the figure above, in which black dots indicate live cells, what is the configuration after $2$ generations?
+
+@@fig:utah2014_junior-12o.png@@
+=== senior-13
+The Game of Life is a cellular automaton devised by the British mathematician John Horton Conway in 1970. The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive or dead. Every cell interacts with its eight neighbors, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
+
+i. Any live cell with fewer than two live neighbors dies, as if caused by under-population.
+
+ii. Any live cell with two or three live neighbors lives on to the next generation.
+
+iii. Any live cell with more than three live neighbors dies, as if by overcrowding.
+
+iv. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+
+@@fig:utah2014_junior-13.png@@
+
+Given the initial condition in the figure above, in which black dots indicate live cells, what is the configuration after $6$ generations?
+
+@@fig:utah2014_junior-13o.png@@
+=== senior-14
+A railroad baron wishes to connect five rural villages, named $A$, $B$, $C$, $D$, and $E$, by rail. He had his surveyors investigate the best possible route between every pair of villages, and provide a cost estimate for each potential route, in gold bars:
+
+@@fig:utah2014_senior-14.png@@
+
+What is the minimum cost in gold bars to connect all the villages by rail?
+
+(A) $23$ bars  (B) $26$ bars  (C) $28$ bars  (D) $24$ bars  (E) None of the above.
+=== senior-15
+The Riemann zeta function, $\zeta(x)$, is defined by
+$$\zeta(x)=\sum_{n=1}^{\infty}\frac1{n^x},\quad x>1.$$
+What is $\zeta(x)(1-2^{-x})$?
+
+(A) $\displaystyle\sum_{n=1}^\infty\frac1{(2n-1)^x}$  (B) $\displaystyle\sum_{n=1}^\infty\frac1{(2n)^x}$  (C) $\displaystyle\sum_{n=1}^\infty\frac{(-1)^n}{(2n)^x}$  (D) $\displaystyle\sum_{n=1}^\infty\frac{(-1)^n}{n^x}$  (E) $\displaystyle\sum_{n=1}^\infty\frac{(-1)^n}{(2n-1)^x}$
+=== senior-16
+The Gamma function, $\Gamma(t)$, $t\in\mathbb R$, $t\ne0$, is defined by
+$$\Gamma(t+1)=t\Gamma(t),\quad t\ne-n,\ n\in\mathbb N.$$
+With the special case $\Gamma(1/2)=\sqrt\pi$, what is $\Gamma(-3/2)$?
+
+(A) $1$  (B) $\dfrac{\sqrt\pi}{2}$  (C) $\pi$  (D) $-\dfrac{\sqrt\pi}{4}$  (E) $\dfrac{4\sqrt\pi}{3}$
+=== senior-17
+The Psi function, $\psi(x)$, $x\ne0,-1,-2,\dots$, is defined as the logarithmic derivative of the Gamma function. From this one arrives at a noteworthy special value
+$$\psi(1)=\frac{\Gamma'(1)}{\Gamma(1)}=-\gamma$$
+where $\gamma$ is the Euler Mascheroni constant (a constant real number). Application of the derivative yields the important relationship
+$$\psi(x+1)=\psi(x)+\frac1x.$$
+In the case of $x=n\in\mathbb N$ we have
+$$\psi(n+1)=\psi(1)+1+\frac12+\frac13+\frac14+\cdots+\frac1n=-\gamma+\sum_{k=1}^n\frac1k,\quad n=1,2,3,\dots$$
+Use these properties to sum the series
+$$\sum_{n=2}^{\infty}\frac1{n^2-1}.$$
+
+(A) $\dfrac{13}{20}$  (B) $\dfrac{17}{25}$  (C) $\dfrac34$  (D) $\dfrac7{10}$  (E) $\dfrac45$
+=== senior-18
+Appell's symbol is closely related to the Gamma function and used in analyzing Hypergeometric functions. Appell's symbol is defined by the following:
+$$(a,0)=1,$$
+$$(a,n)=a(a+1)(a+2)\cdots(a+n-1),\quad n=1,2,3,\dots,$$
+$$(a,-n)=\frac1{(a+1)(a+2)\cdots(a+n-1)},\quad a\ne-1,-2,-3,\dots,\ n=1,2,3,\dots$$
+It follows from this definition that $(a,n)=\dfrac{\Gamma(a+n)}{\Gamma(a)}$. For example we see that $(3,5)=3\cdot4\cdot5\cdot6\cdot7=2520$, and alternatively
+$$(3,5)=\frac{\Gamma(3+5)}{\Gamma(3)}=\frac{(8-1)!}{(2-1)!}=\frac{1\cdot2\cdot3\cdot4\cdot5\cdot6\cdot7}{1\cdot2}=3\cdot4\cdot5\cdot6\cdot7=2520.$$
+What is the value of $(-2,4)$?
+
+(A) $-1$  (B) $0$  (C) $1$  (D) $2$  (E) $3$
+=== senior-19
+Considering Appell's symbol,
+$$(a,0)=1,\qquad (a,n)=a(a+1)(a+2)\cdots(a+n-1),\quad n=1,2,3,\dots,$$
+what is $(-a,n)$ for $a=1,2,3,\dots$?
+
+(A) $(-a,n)=\begin{cases}-\frac1{(a-n)!}&0\le n\le a\\0&n>a\end{cases}$  (B) $(-a,n)=\begin{cases}(-1)^n\frac1{(a-n)!}&0\le n\le a\\0&n>a\end{cases}$  (C) $(-a,n)=\begin{cases}(-1)^n\frac{a!}{n!}&0\le n\le a\\0&n>a\end{cases}$  (D) $(-a,n)=\begin{cases}(-1)^n\frac{a!}{(a-n)!}&0\le n\le a\\0&n>a\end{cases}$  (E) $(-a,n)=\begin{cases}\frac{n!}{a!}&0\le n\le a\\0&n>a\end{cases}$
+=== senior-20
+Considering Appell's symbol,
+$$(a,0)=1,\qquad (a,n)=a(a+1)(a+2)\cdots(a+n-1),\quad n=1,2,3,\dots,$$
+what is $\dbinom{-a}{n}$ for $a,n=1,2,3,\dots$?
+
+(A) $\dfrac{(-1)^n}{n!}(n,a)$  (B) $\dfrac{(-1)^n}{n!}(a,n)$  (C) $-\dfrac1{n!}(a,n)$  (D) $-\dfrac1{n!}(n,a)$  (E) $\dfrac1n(a,n)$
+=== senior-21
+Note that for $|x|<1$ an expansion is
+$$(x+1)^a=1+ax+\frac{a(a-1)}{2!}x^2+\frac{a(a-1)(a-2)}{3!}x^3+\cdots$$
+and considering Appell's symbol from preceding problems, what is
+$$\sum_{m=0}^{\infty}(a,m)\frac{x^m}{m!},\quad |x|<1\,?$$
+
+(A) $\dfrac{(1+x)^{-a}}{m!}$  (B) $(1-x)^{-a}$  (C) $\dfrac{(1-x)^a}{m!}$  (D) $(1+x)^a$  (E) $(1-x)^a$
+=== senior-22
+Some theoretical physicists define the infinite series
+$$S=1-1+1-1+1-1+1-1\cdots=\frac12.$$
+The following reasoning helps to illustrate their thinking.
+$$1-S=1-(1-1+1-1+1-1+1-1\dots)$$
+Simplifying returns
+$$1-S=1-1+1-1+1-1+1-1\cdots=S.$$
+So $1-S=S$ which by solving for $S$ implies that $S=\frac12$. There are more complicated explanations for how string theorists arrive at this conclusion, but if we define
+$$\sum_{n=0}^{\infty}(-1)^n=1-1+1-1+1\cdots=\frac12,$$
+what does the following series equal?
+$$P=\sum_{n=0}^{\infty}(-1)^n(n+1)=1-2+3-4+5-6+7-8\dots$$
+
+(A) $\dfrac1{10}$  (B) $\dfrac18$  (C) $\dfrac14$  (D) $\dfrac16$  (E) $\dfrac1{12}$
+=== senior-23
+A statement can be true or false, denoted $1$ for true and $0$ for false. For example:
+
+1. $P$: "All dogs are mammals." has a value $1$.
+
+2. $Q$: "All dogs are brown." has a value $0$.
+
+Compound statements are formed from other statements by using the connectives $\wedge$ (and) and $\vee$ (or). The truth of the compound statement will depend on the truth of its components.
+
+The following tables present all possible combinations of arbitrary statements $P$ and $Q$, and the operation, $R$, displays the results in the final row of the table for the operation $R=P\wedge Q$ and $R=P\vee Q$.
+$$\begin{array}{c|cccc}P&0&0&1&1\\Q&0&1&0&1\\\hline P\wedge Q&0&0&0&1\end{array}\qquad\begin{array}{c|cccc}P&0&0&1&1\\Q&0&1&0&1\\\hline P\vee Q&0&1&1&1\end{array}$$
+What is the operation, $R$, in the following table?
+$$\begin{array}{c|cccccccc}P&0&0&0&0&1&1&1&1\\Q&0&0&1&1&0&0&1&1\\S&0&1&0&1&0&1&0&1\\\hline R&0&1&1&1&1&1&1&1\end{array}$$
+
+(A) $Q\vee(P\wedge S)$  (B) $Q\wedge(P\vee S)$  (C) $Q\vee P\vee S$  (D) $(Q\vee P)\wedge(Q\vee S)$  (E) $(Q\wedge P)\vee(P\wedge S)$
+=== senior-24
+The symbol $\neg$ is the negation of the statement. For example $\neg P$ reads "not all dogs are mammals", which would have a value of false, or $0$.
+
+What is the operation, $R$, in the following table?
+$$\begin{array}{c|cccc}P&0&0&1&1\\Q&0&1&0&1\\\hline R&1&1&0&0\end{array}$$
+
+(A) $\neg(Q\wedge P)\wedge\neg P$  (B) $\neg Q\vee P$  (C) $Q\vee\neg P$  (D) $\neg Q\wedge P$  (E) $\neg(Q\wedge P)$
+=== senior-25
+The following table presents all possible combinations of arbitrary statements $P$ and $Q$, and the conditional statement, $P\Rightarrow Q$.
+$$\begin{array}{c|cccc}P&0&0&1&1\\Q&0&1&0&1\\\hline P\Rightarrow Q&1&1&0&1\end{array}$$
+What is the operation, $R$, in the following table?
+$$\begin{array}{c|cccc}P&0&0&1&1\\Q&0&1&0&1\\\hline R&1&1&0&0\end{array}$$
+
+(A) $P\Rightarrow\neg Q$  (B) $\neg(P\Rightarrow Q)$  (C) $\neg P\Rightarrow\neg Q$  (D) $\neg Q\vee(P\Rightarrow\neg Q)$  (E) $(P\Rightarrow Q)\wedge\neg P$
+=== senior-26
+The definition of a congruence class of $a$ modulo $r$ can be given by
+$$[a]=\{x\mid x=a+rn,\ n\in\mathbb Z\}.$$
+In other words, the congruence class $[a]$ is the set of all numbers, $x$, such that $x$ is equal to $a+rn$ where $n$ is an integer and $r$ is the given modulus, $r$ is also an integer. What is the set of $[1]\cup[2]$ mod $2$?
+
+(A) $\mathbb R$  (B) $\mathbb Z$  (C) $[0]$  (D) $[1]$  (E) $[2]$
+=== senior-27
+An element, $a$, in an algebraic structure called a ring with identity is called a unit if there is an element, $u$ such that
+$$au=ua=1.$$
+For a simple example in the ring of real numbers, the real number $\frac12$ is a unit because $\frac12\cdot2=2\cdot\frac12=1$. Naturally, $2$ is also a unit. In modular arithmetic over the integers it is more interesting. For example in $\mathbb Z$ modulo $3$ the number $2$ is a unit because $2\cdot5=10$ and
+$$10\bmod3\equiv1.$$
+The set $\mathbb Z_5$ is the set of all congruence classes, modulo $5$:
+$$\mathbb Z_5=\{[0],[1],[2],[3],[4]\}.$$
+What is the set of units for $\mathbb Z_5$?
+
+(A) $\{1,2,3,4\}$  (B) $\{0,1\}$  (C) $\{0,1,2\}$  (D) $\{0,1,2,3\}$  (E) $\{1,2,3\}$
+=== senior-28
+A teacher uses a software program that helps her generate a test from a test bank that contains $100$ questions, $10$ of which are ranked as difficult, and the remainder are ranked as moderate. Suppose she uses the shuffle feature to select the questions in random order, and that no question can be selected more than once. What is the probability that the first $3$ questions that are selected are moderate and the first difficult question selected is the fourth question selected?
+
+(A) $\dfrac{\binom{90}{3}+\binom{10}{1}}{\binom{100}{4}}$  (B) $3\cdot\dfrac{90}{100}\cdot\dfrac{89}{99}\cdot\dfrac{88}{98}\cdot\dfrac{10}{97}$  (C) $\dfrac{90}{100}\cdot\dfrac{89}{99}\cdot\dfrac{88}{98}\cdot\dfrac{10}{97}$  (D) $\dfrac{\binom{90}{3}\binom{10}{1}}{\binom{100}{4}}$  (E) $\left(\dfrac{90}{100}\right)^3\cdot\dfrac{10}{97}$
+=== senior-29
+In order for a particular system on a spacecraft to operate properly during a flight, $5$ identical electric circuits must function successfully for the duration of the flight. The operations manager has informed the engineer that the probability of the system operating properly must be $.96$. If the probability of a circuit functioning successfully is the same for all $5$ circuits, what must the probability of each circuit functioning successfully be equal to in order to meet the manager's criterion for the system? NOTE: Assume that each circuit operates independently of all other circuits.
+
+(A) $1-(0.04)^5$  (B) $0.96^5$  (C) $\sqrt[5]{0.96}$  (D) $\sqrt[5]{0.95}$  (E) $\dfrac15\cdot(0.96)^5$
+=== senior-30
+Among all the employees at a company that produces business software, $90\%$ have never been late for work, $81\%$ have never missed a day of work, and $76\%$ have never been late for work and never missed a day of work. If one employee is selected at random from this company, what is the probability that the employee has never missed a day of work but has been late for work?
+
+(A) $0.95$  (B) $0.91$  (C) $0.05$  (D) $0.081$  (E) $0.57$
