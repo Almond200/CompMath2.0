@@ -2883,6 +2883,7 @@ details[open] > summary.set-panel-title::after { transform: rotate(90deg); }
 /* ---------- Practice: every contest year one click away, and the study lists inline ---------- */
 .ct-find { margin: 14px 0 8px; max-width: 460px; }
 .ct-find .set-find-input { width: 100%; box-sizing: border-box; }
+.ct-find .set-find-list { max-height: 340px; overflow-y: auto; }
 .ct-find .set-find-empty { padding: 10px 12px; font-size: 14px; color: var(--text-faint); }
 .ct-jump { margin: 2px 0 10px; align-items: center; }
 .ct-fold-all { margin-left: auto; font: inherit; font-size: 12.5px; font-weight: 650; padding: 5px 10px; border: 1px dashed var(--border); border-radius: 999px; background: none; color: var(--text-dim); cursor: pointer; }
