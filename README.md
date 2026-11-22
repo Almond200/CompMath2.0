@@ -1,10 +1,11 @@
 # Competition Math Reference
 
-A searchable reference for AMC 10/12, AIME and olympiad training. 774 cards
-covering formulas, methods, and patterns (553 formulas, 172 methods, 49 patterns), plus a database
-of 4,725 past contest problems (4,715 with their full statements), every one with a written
-strategy and 4,276 cross-linked to the cards their solutions run through (counts checked 2026-11-08).
-Mock contests also have ten separately attributed author-restated HMMT prompts and verified answer values.
+A searchable reference for AMC 10/12, AIME and olympiad training: 788 cards covering formulas,
+methods, and patterns (556 formulas, 183 methods, 49 patterns); 13 Learn textbooks (103 chapters,
+593 lessons); and a database of 19,456 past contest problems from 35 contests, 1950 to 2026
+(17,910 with their statements shown in the app, the rest linked to the official paper), every one
+rated and filed in a 457-node topic tree, and 15,943 cross-linked to the cards their solutions run
+through (counts checked 2026-11-22; Special:Statistics in the app recomputes them).
 
 Static, with no application backend or required build step. KaTeX 0.16.11 and its fonts are
 vendored under `vendor/katex/`; statement scripts and semantic vectors load on demand from
