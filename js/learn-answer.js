@@ -32,7 +32,7 @@
     return s;
   }
 
-  // Tokens: numbers, pi, sqrt, cbrt, + - * / ^ ( ) and the comma.
+  // Tokens: numbers, pi, sqrt, cbrt, + - * / ^ ! ( ) and the comma.
   function tokens(src) {
     const out = [];
     const s = normalize(src);
@@ -49,7 +49,7 @@
       if (s.startsWith("pi", i)) { out.push({ t: "pi" }); i += 2; continue; }
       if (s.startsWith("sqrt", i)) { out.push({ t: "sqrt" }); i += 4; continue; }
       if (s.startsWith("cbrt", i)) { out.push({ t: "cbrt" }); i += 4; continue; }
-      if ("+-*/^(),±".indexOf(c) !== -1) { out.push({ t: c }); i++; continue; }
+      if ("+-*/^!(),±".indexOf(c) !== -1) { out.push({ t: c }); i++; continue; }
       throw new Error(`"${c}" is not part of an answer: use digits, + − × ÷ ^, √, π and brackets.`);
     }
     return out;
@@ -60,7 +60,7 @@
   // expr := term (("+" | "-") term)*
   // term := unary (("*" | "/" | nothing) unary)*      (nothing: 2sqrt(3), 7pi, 2(3))
   // unary := "-" unary | power
-  // power := atom ("^" unary)?
+  // power := atom "!"? ("^" unary)?
   // atom := number | pi | sqrt atom | cbrt atom | "(" expr ")"
   function parseOne(toks) {
     let k = 0;
@@ -86,7 +86,8 @@
       return power();
     }
     function power() {
-      const a = atom();
+      let a = atom();
+      if (peek() === "!") { k++; a = { op: "!", a }; }
       if (peek() === "^") { k++; return { op: "^", a, b: unary() }; }
       return a;
     }
@@ -137,6 +138,13 @@
       case "cbrt": return Math.cbrt(value(n.a));
       case "()": return value(n.a);
       case "neg": return -value(n.a);
+      case "!": {
+        const k = value(n.a);
+        if (!Number.isInteger(k) || k < 0 || k > 170) return NaN;
+        let result = 1;
+        for (let i = 2; i <= k; i++) result *= i;
+        return result;
+      }
       case "+": return value(n.a) + value(n.b);
       case "-": return value(n.a) - value(n.b);
       case "*": return value(n.a) * value(n.b);
@@ -157,6 +165,7 @@
       // Brackets around a single number, root or fraction are only grouping: drawn without them.
       case "()": return /^(num|pi|sqrt|cbrt|\/|\(\))$/.test(n.a.op) ? tex(n.a) : "\\left(" + tex(n.a) + "\\right)";
       case "neg": return "-" + tex(n.a);
+      case "!": return tex(n.a) + "!";
       case "+": return tex(n.a) + "+" + tex(n.b);
       case "-": return tex(n.a) + "-" + tex(n.b);
       case "*": {
@@ -192,7 +201,7 @@
     return x.every((v, i) => isFinite(v) && isFinite(y[i]) && Math.abs(v - y[i]) <= 1e-9 * Math.max(1, Math.abs(v), Math.abs(y[i])));
   }
 
-  const api = { parse, values, toTex, closeOpen, same, normalize };
+  const api = { parse, value, values, toTex, closeOpen, same, normalize };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.LearnAnswer = api;
 })(typeof window !== "undefined" ? window : this);

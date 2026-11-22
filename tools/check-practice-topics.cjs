@@ -21,7 +21,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.equal(await page.locator('#topic-practice-status').innerText(),cw.length+' matching problem'+(cw.length===1?'':'s')+' available.');assert.equal(await count.getAttribute('max'),String(Math.min(30,cw.length)));
  await submit.click();await page.locator('.practice-set-st, .practice-paper').first().waitFor();let set=await stored();assert.equal(set.slugs.length,Math.min(5,cw.length));assert(set.slugs.every(s=>cw.includes(s)));assert.equal(set.topicId,'cp.basic.case.cases');assert(!set.clock);
  // Every contest is drawn from (owner, 2026-11-14): a problem kept only in its paper is marked for self-checking.
- for(const s of set.slugs)assert.equal(!!set.selfCheck?.[s],!(await page.evaluate(s=>!!(MATH_ANSWER_KEYS.answers[s]!=null||MATH_MOCK_EXTRAS[s]),s)));
+ for(const s of set.slugs)assert.equal(!!set.selfCheck?.[s],!(await page.evaluate(s=>!!(MATH_ANSWER_KEYS.answers[s]!=null||MATH_EXTRA_KEYS.answers[s]!=null||PracticeSessions.exactKey(s)),s)));
  await home();await select('Triangles','geo.tri',true);assert.equal(await count.inputValue(),'5');assert.match(await page.locator('#topic-practice-status').innerText(),/including subtopics/);
  const pool=await page.evaluate(()=>{
   return MATH_PRACTICE_POOL('geo.tri');
