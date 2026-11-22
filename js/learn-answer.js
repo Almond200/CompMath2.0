@@ -10,7 +10,7 @@
   // \frac{3}{4} or \sqrt{3}, a leading "x = ", 1,000 as one thousand, and "and" or "or"
   // between the items of a list.
   const SUP = { "⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4", "⁵": "5", "⁶": "6", "⁷": "7", "⁸": "8", "⁹": "9", "⁻": "-" };
-  function normalize(src) {
+  function normalize(src, groupThousands = true) {
     let s = String(src).trim().replace(/\$/g, "");
     s = s.replace(/^[a-z]\s*=\s*/i, "").replace(/=\s*$/, "");
     s = s.replace(/\\left|\\right|\\[,;!:]|\\displaystyle/g, "");
@@ -28,14 +28,14 @@
       .replace(/π/g, "pi").replace(/√/g, "sqrt").replace(/∛/g, "cbrt").replace(/[[{]/g, "(").replace(/[\]}]/g, ")");
     s = s.toLowerCase().replace(/\s+(?:and|or)\s+/g, ", ").replace(/\bsquare\s*root\s*(?:of)?\b/g, "sqrt");
     // 1,000 and 12,345,678 are numbers; "4,9" and "4, 9" stay lists.
-    for (let k = 0; k < 4; k++) s = s.replace(/(\d),(\d{3})(?![\d,]?\d)/g, "$1$2");
+    if (groupThousands) for (let k = 0; k < 4; k++) s = s.replace(/(\d),(\d{3})(?![\d,]?\d)/g, "$1$2");
     return s;
   }
 
-  // Tokens: numbers, pi, sqrt, cbrt, + - * / ^ ( ) and the comma.
-  function tokens(src) {
+  // Tokens: numbers, pi, sqrt, cbrt, + - * / ^ ! ( ) and the comma.
+  function tokens(src, groupThousands) {
     const out = [];
-    const s = normalize(src);
+    const s = normalize(src, groupThousands);
     let i = 0;
     while (i < s.length) {
       const c = s[i];
@@ -49,7 +49,7 @@
       if (s.startsWith("pi", i)) { out.push({ t: "pi" }); i += 2; continue; }
       if (s.startsWith("sqrt", i)) { out.push({ t: "sqrt" }); i += 4; continue; }
       if (s.startsWith("cbrt", i)) { out.push({ t: "cbrt" }); i += 4; continue; }
-      if ("+-*/^(),±".indexOf(c) !== -1) { out.push({ t: c }); i++; continue; }
+      if ("+-*/^!(),±".indexOf(c) !== -1) { out.push({ t: c }); i++; continue; }
       throw new Error(`"${c}" is not part of an answer: use digits, + − × ÷ ^, √, π and brackets.`);
     }
     return out;
@@ -60,7 +60,7 @@
   // expr := term (("+" | "-") term)*
   // term := unary (("*" | "/" | nothing) unary)*      (nothing: 2sqrt(3), 7pi, 2(3))
   // unary := "-" unary | power
-  // power := atom ("^" unary)?
+  // power := atom "!"? ("^" unary)?
   // atom := number | pi | sqrt atom | cbrt atom | "(" expr ")"
   function parseOne(toks) {
     let k = 0;
@@ -86,7 +86,8 @@
       return power();
     }
     function power() {
-      const a = atom();
+      let a = atom();
+      if (peek() === "!") { k++; a = { op: "!", a }; }
       if (peek() === "^") { k++; return { op: "^", a, b: unary() }; }
       return a;
     }
@@ -111,8 +112,8 @@
     if (i < 0) return [part];
     return [...expandPm([...part.slice(0, i), { t: "+" }, ...part.slice(i + 1)]), ...expandPm([...part.slice(0, i), { t: "-" }, ...part.slice(i + 1)])];
   }
-  function parse(src) {
-    const toks = tokens(src), parts = [[]];
+  function parse(src, groupThousands) {
+    const toks = tokens(src, groupThousands), parts = [[]];
     if (!toks.length) throw new Error("The answer is empty.");
     toks.forEach(t => { if (t.t === ",") parts.push([]); else parts[parts.length - 1].push(t); });
     if (parts.some(p => !p.length)) throw new Error("The list has an empty item: check the commas.");
@@ -137,6 +138,13 @@
       case "cbrt": return Math.cbrt(value(n.a));
       case "()": return value(n.a);
       case "neg": return -value(n.a);
+      case "!": {
+        const k = value(n.a);
+        if (!Number.isInteger(k) || k < 0 || k > 170) return NaN;
+        let result = 1;
+        for (let i = 2; i <= k; i++) result *= i;
+        return result;
+      }
       case "+": return value(n.a) + value(n.b);
       case "-": return value(n.a) - value(n.b);
       case "*": return value(n.a) * value(n.b);
@@ -157,6 +165,7 @@
       // Brackets around a single number, root or fraction are only grouping: drawn without them.
       case "()": return /^(num|pi|sqrt|cbrt|\/|\(\))$/.test(n.a.op) ? tex(n.a) : "\\left(" + tex(n.a) + "\\right)";
       case "neg": return "-" + tex(n.a);
+      case "!": return tex(n.a) + "!";
       case "+": return tex(n.a) + "+" + tex(n.b);
       case "-": return tex(n.a) + "-" + tex(n.b);
       case "*": {
@@ -171,7 +180,7 @@
     }
     return "";
   }
-  function toTex(src) { return parse(src).map(tex).join(",\\ "); }
+  function toTex(src, groupThousands) { return parse(src, groupThousands).map(tex).join(",\\ "); }
 
   // Close the brackets a student has opened but not yet closed, so the box can typeset an
   // answer while it is being built.
@@ -192,7 +201,7 @@
     return x.every((v, i) => isFinite(v) && isFinite(y[i]) && Math.abs(v - y[i]) <= 1e-9 * Math.max(1, Math.abs(v), Math.abs(y[i])));
   }
 
-  const api = { parse, values, toTex, closeOpen, same, normalize };
+  const api = { parse, value, values, toTex, closeOpen, same, normalize };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.LearnAnswer = api;
 })(typeof window !== "undefined" ? window : this);

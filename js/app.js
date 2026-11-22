@@ -2175,7 +2175,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".book-search-option, .practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .lp-sol, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies, .ge, .list-section-title").forEach(el => {
+      container.querySelectorAll(".book-search-option, .practice-answer-math, .practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .lp-sol, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies, .ge, .list-section-title").forEach(el => {
         if (skip(el) || el.hasAttribute("data-description-formatted")) return;
         renderMathInElement(el, {
           delimiters: [
@@ -6089,7 +6089,7 @@
   }
   const practiceSessions = window.PracticeSessions;
 
-  let mockClockInterval = 0, mockPaperCatalog = null;
+  let mockClockInterval = 0, mockPaperCatalog = null, pastPaperCatalog = null;
   let practiceFinishConfirm = null;
   function cancelPracticeFinishConfirm() {
     practiceFinishConfirm?.abort();
@@ -6097,9 +6097,11 @@
   }
   const isMock = set => set.kind === 'mock';
   const practiceSetLabel = set => isMock(set) && set.mock.mode === 'generated' ? 'Generated ' + set.mock.family : set.label;
+  const practiceProblemNumber = (set, index) => set.mock?.mode === 'paper'
+    ? PROBLEM_BY_SLUG[set.slugs[index]]?.num ?? index + 1 : index + 1;
   // The official key: LIVE's MAA keys (answer-keys.js), else the other contests' letters (answer-keys-more.js, 2026-11-22).
   const officialKey = slug => window.MATH_ANSWER_KEYS?.answers?.[slug] ?? window.MATH_EXTRA_KEYS?.answers?.[slug];
-  const hasMockAnswer = p => officialKey(p.slug) != null || !!window.MATH_MOCK_EXTRAS?.[p.slug];
+  const hasMockAnswer = p => officialKey(p.slug) != null || !!practiceSessions.exactKey(p.slug);
   // Practice draws from every contest (owner, 2026-11-14). A problem whose statement and answer
   // the app does not keep is read where its page links (the official paper, or the AoPS wiki for
   // the AHSME), and the solver checks their answer against the official solution at review.
@@ -6108,7 +6110,12 @@
   // Contests whose papers are multiple choice with five options, like the AMC; the others take a
   // short answer. A problem with an official letter key is multiple choice whatever its contest.
   const MC_FAMS = new Set(["AMC 8", "AMC 10", "AMC 12", "UKMT JMC", "UKMT IMC", "UKMT SMC", "Pascal Contest", "Cayley Contest", "Fermat Contest", "UMD HSMC", "Columbus State Tournament", "Utah State Math Contest"]);
-  const multipleChoice = p => { const k = officialKey(p.slug); return k != null ? /^[A-F]$/.test(k) : !window.MATH_MOCK_EXTRAS?.[p.slug] && MC_FAMS.has(p.fam); };
+  const multipleChoice = p => { const k = officialKey(p.slug); return k != null ? /^[A-F]$/.test(k) : !practiceSessions.exactKey(p.slug) && MC_FAMS.has(p.fam); };
+  const loadPracticeStatements = problems => Promise.all([...new Set(problems
+    .filter(p => !paperProblem(p) && !window.MATH_MOCK_EXTRAS?.[p.slug])
+    .map(statementFile))].map(loadStatements));
+  const hasPracticePrompt = p => paperProblem(p) ||
+    !!(window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]);
   // "Only questions in this format" for a generated mock (owner, 2026-11-15): multiple choice for
   // the AMC formats, short answer for the AIME.
   const sameAnswerFormat = (p, family) => multipleChoice(p) === (family !== "AIME");
@@ -6142,15 +6149,31 @@
   });
   const isVoidedProblem = p => !!window.MATH_ANSWER_KEYS?.voided?.[p.slug];
   function mockPapers() { return mockPaperCatalog ||= window.MockContests.papers(PROBLEM_DB, hasMockAnswer); }
+  function pastPapers() {
+    if (pastPaperCatalog) return pastPaperCatalog;
+    const timed = new Map(mockPapers().map(p => [p.label, window.MockContests.formats[p.family].minutes]));
+    const groups = new Map();
+    for (const p of PROBLEM_DB) {
+      if (!practiceEligible(p) && !isVoidedProblem(p)) continue;
+      const label = paperKey(p);
+      if (!groups.has(label)) groups.set(label, {
+        label, family: p.fam, year: p.year, minutes: timed.get(label) ?? null,
+        words: contestQueryWords(label), problems: []
+      });
+      groups.get(label).problems.push(p);
+    }
+    for (const paper of groups.values()) paper.problems.sort((a, b) => a.num - b.num);
+    return pastPaperCatalog = [...groups.values()].sort((a, b) => b.year - a.year || a.label.localeCompare(b.label, undefined, { numeric: true }));
+  }
   function mockTime(ms) { const s=Math.ceil(Math.max(0,ms)/1000); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
-  function mockScore(set) { return window.MockContests.score(set, slug=>practiceSessions.result(set,slug)); }
+  function mockScore(set) { return set.clock ? window.MockContests.score(set, slug=>practiceSessions.result(set,slug)) : null; }
   function mockTimeSummary(set) {
     const used=set.clock.limitMs-practiceSessions.timeLeft(set);
     return `${set.timedOut ? 'Time limit reached · ' : ''}${mockTime(used)} used of ${mockTime(set.clock.limitMs)}`;
   }
   function startMockClock(set) {
     clearInterval(mockClockInterval); mockClockInterval=0;
-    if(!isMock(set)||set.status==='finished')return;
+    if(!set.clock||set.status==='finished')return;
     const tick=()=>{
       if(document.hidden||set.status==='paused')return;
       if(topicPracticeSet!==set||!location.hash.startsWith('#/practice/set/'+set.id)){clearInterval(mockClockInterval);return;}
@@ -6163,25 +6186,85 @@
     };
     tick();if(set.status!=='finished')mockClockInterval=setInterval(tick,1000);
   }
-  function exactAnswerHtml(text) {
+  function exactAnswerHtml(text, format) {
     if(!text)return '';
-    try{return '$'+window.LearnAnswer.toTex(text)+'$';}catch(e){return escapeAttr(text);}
+    try { return `<span class="practice-answer-math">$${escapeAttr(practiceSessions.exactTex(text, format))}$</span>`; }
+    catch (err) { return escapeAttr(text); }
+  }
+  const PRACTICE_MATH_KEYS = [
+    { label: 'Fraction', open: '(', close: ')/()' },
+    { label: '√', name: 'Square root', open: 'sqrt(', close: ')' },
+    { label: '∛', name: 'Cube root', open: 'cbrt(', close: ')' },
+    { label: 'xⁿ', name: 'Power', open: '^(', close: ')' },
+    { label: 'π', name: 'Pi', open: 'pi' },
+    { label: '!', name: 'Factorial', open: '!' },
+    { label: '±', name: 'Plus or minus', open: '±' },
+    { label: ',', name: 'Separate answers', open: ', ' }
+  ];
+  function practiceMathKeysHtml() {
+    return `<div class="practice-preview" hidden>
+        <span id="practice-preview-label">Preview</span>
+        <output class="practice-answer-preview" aria-labelledby="practice-preview-label" for="practice-answer"></output>
+      </div>
+      <p id="practice-answer-error" role="status"></p>
+      <details class="practice-math-keys"><summary>Math keypad</summary>
+        <div>${PRACTICE_MATH_KEYS.map((key, i) => `<button class="hp-btn hp-btn-soft" type="button" data-practice-math-key="${i}" aria-label="${key.name || key.label}">${key.label}</button>`).join('')}</div>
+      </details>`;
+  }
+  function wirePracticeMathKeys(input, format) {
+    const preview = $content.querySelector('.practice-answer-preview');
+    const keypad = $content.querySelector('.practice-math-keys');
+    if (!preview || !keypad) return;
+    function renderPreview() {
+      const text = input.value.trim();
+      const region = preview.closest('.practice-preview');
+      region.hidden = !text;
+      preview.textContent = text;
+      if (!text) return;
+      let tex;
+      try { tex = practiceSessions.exactTex(text, format); }
+      catch (err) { tex = text.replace(/^\$\$(.*)\$\$$|^\$(.*)\$$/, '$1$2'); }
+      try {
+        window.katex.render(tex, preview, { throwOnError: true, maxExpand: 100 });
+        fitInlineMath(region);
+      } catch (err) { preview.textContent = text; }
+    }
+    input.addEventListener('input', renderPreview);
+    keypad.addEventListener('mousedown', e => {
+      if (e.target.closest('[data-practice-math-key]') && document.activeElement === input) e.preventDefault();
+    });
+    keypad.addEventListener('click', e => {
+      const button = e.target.closest('[data-practice-math-key]');
+      if (!button) return;
+      const { open, close = '' } = PRACTICE_MATH_KEYS[button.dataset.practiceMathKey];
+      const start = input.selectionStart, end = input.selectionEnd;
+      const selected = input.value.slice(start, end);
+      const inserted = open + (close ? selected : '') + close;
+      if (input.value.length - (end - start) + inserted.length > input.maxLength) return;
+      const caret = start + (selected && close === ')/()' ? inserted.length - 1 : open.length + (close ? selected.length : 0));
+      input.setRangeText(inserted, start, end);
+      input.setSelectionRange(caret, caret);
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    renderPreview();
   }
   function mockPracticePanelHtml() {
     return `<section class="sh-section" id="pr-mock">
       <h3>Practice a contest</h3>
-      <p class="practice-panel-intro">Take a past paper, or choose source contests for a mock modeled on recent papers. The timer pauses when you leave.</p>
+      <p class="practice-panel-intro">Search for a past paper, or generate a mock modeled on recent papers.</p>
       <form id="mock-contest-form"><fieldset aria-label="Mock contest options">
         <div class="rand-btns mock-modes" role="radiogroup" aria-label="Mock type">
           <button type="button" role="radio" aria-checked="true" data-mock-mode="paper">Past contest</button>
           <button type="button" role="radio" aria-checked="false" data-mock-mode="generated">Generate a mock</button>
         </div>
-        <label class="mock-field-label">Contest format</label>
-        <div class="rand-btns" role="radiogroup" aria-label="Mock contest">${Object.keys(window.MockContests.formats).map((f,i)=>`<button type="button" role="radio" aria-checked="${i===0}" data-mock-family="${f}">${f}</button>`).join('')}</div>
+        <div class="mock-format-field" hidden>
+          <span class="mock-field-label">Contest format</span>
+          <div class="rand-btns" role="radiogroup" aria-label="Mock contest">${Object.keys(window.MockContests.formats).map((f,i)=>`<button type="button" role="radio" aria-checked="${i===0}" data-mock-family="${f}">${f}</button>`).join('')}</div>
+        </div>
         <label class="mock-same-format" hidden><input type="checkbox" id="mock-same-format"> <span id="mock-same-format-text">Only multiple-choice questions, like the AMC</span></label>
         <div class="mock-paper-field">
-          <label for="mock-paper-name">Year and paper</label>
-          <div class="mock-paper-search"><input id="mock-paper-name" class="set-find-input" type="search" placeholder="Search a year or paper..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="mock-paper-options">
+          <label for="mock-paper-name">Past paper</label>
+          <div class="mock-paper-search"><input id="mock-paper-name" class="set-find-input" type="search" placeholder="Find a contest, year or round" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="mock-paper-options">
           <div id="mock-paper-options" class="set-find-list" role="listbox" aria-label="Past contests" hidden></div></div>
         </div>
         <label class="mock-check" data-mock-check="trig" hidden><input type="checkbox" id="mock-no-trig"> <span>No trigonometry</span></label>
@@ -6191,7 +6274,7 @@
         <div class="mock-advanced-field" hidden></div>
         <p class="mock-generation-info" hidden>Questions come from your selected contests and keep their original answer formats. For questions linked to an official paper, check your answer against its solution during review.</p>
         <p id="mock-contest-info" class="prob-note"></p><p id="mock-contest-status" role="status"></p>
-        <button type="submit" class="hp-btn">Start mock</button>
+        <button type="submit" class="hp-btn">Start paper</button>
       </fieldset></form>
     </section>`;
   }
@@ -6199,7 +6282,10 @@
     const form=root.querySelector('#mock-contest-form');if(!form)return;
     const input=form.querySelector('#mock-paper-name'), options=form.querySelector('#mock-paper-options');
     const status=form.querySelector('#mock-contest-status'), submit=form.querySelector('[type="submit"]'), info=form.querySelector('#mock-contest-info');
-    const catalog=mockPapers();let family='AMC 8',mode='paper',active=-1,busy=false,choices=[];
+    const modelCatalog=mockPapers(), catalog=pastPapers();
+    const papersByLabel=new Map(catalog.map(p=>[p.label.toLowerCase(),p]));
+    const selectedPaper=()=>papersByLabel.get(input.value.trim().toLowerCase());
+    let family='AMC 8',mode='paper',active=-1,busy=false,choices=[];
     let sourceOff;try{sourceOff=new Set(JSON.parse(localStorage.getItem('mq-mock-sources-off')||'[]'));}catch(e){sourceOff=new Set();}
     const sourceBox=form.querySelector('.mock-source-field'), sameBox=form.querySelector('#mock-same-format'), advBox=form.querySelector('.mock-advanced-field');
     const trigBox=form.querySelector('#mock-no-trig'), calcBox=form.querySelector('#mock-no-calc'), stmtBox=form.querySelector('#mock-statements');
@@ -6223,25 +6309,32 @@
     // The questions a generated mock may use: eligible, and in the chosen format's answer style when asked.
     const mockEligible=p=>practiceEligible(p)&&(!sameBox.checked||sameAnswerFormat(p,family))&&!(trigBox.checked&&trigApplies()&&isTrig(p))&&!(calcBox.checked&&isCalc(p))&&(!adv.statementsOnly||inApp(p));
     const chosenSources=()=>FAMILIES.filter(f=>!sourceOff.has(f));
-    const currentPapers=()=>catalog.filter(g=>g.family===family);
     function close(){options.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');active=-1;}
-    function highlight(){[...options.children].forEach((b,i)=>{b.classList.toggle('is-cur',i===active);b.setAttribute('aria-selected',String(i===active));});if(choices[active])input.setAttribute('aria-activedescendant','mock-paper-'+active);}
+    function highlight(){[...options.querySelectorAll('[role="option"]')].forEach((b,i)=>{b.classList.toggle('is-cur',i===active);b.setAttribute('aria-selected',String(i===active));});if(choices[active])input.setAttribute('aria-activedescendant','mock-paper-'+active);else input.removeAttribute('aria-activedescendant');}
     function suggest(){
       const q=input.value.trim().toLowerCase();
       if(!q){choices=[];options.innerHTML='';close();return;}
-      choices=currentPapers().filter(g=>g.label.toLowerCase().includes(q)).slice(0,8);
+      const words=contestQueryWords(q);
+      const exact=selectedPaper();
+      choices=exact?[exact]:catalog.filter(p=>words.length&&words.every(word=>p.words.some(w=>w.startsWith(word)))).slice(0,8);
       options.innerHTML=choices.map((g,i)=>`<button type="button" class="set-find-opt" id="mock-paper-${i}" role="option" aria-selected="false">${escapeAttr(g.label)}</button>`).join('');
-      active=choices.length?0:-1;options.hidden=!choices.length;input.setAttribute('aria-expanded',String(!options.hidden));highlight();
-      [...options.children].forEach((b,i)=>{b.addEventListener('mousemove',()=>{active=i;highlight();});b.addEventListener('click',()=>{input.value=choices[i].label;update();input.focus();close();});});
+      if(!choices.length){close();return;}
+      active=0;options.hidden=false;input.setAttribute('aria-expanded','true');highlight();
+      [...options.querySelectorAll('[role="option"]')].forEach((b,i)=>{b.addEventListener('mousemove',()=>{active=i;highlight();});b.addEventListener('click',()=>{input.value=choices[i].label;update();input.focus();close();});});
     }
     function update(clearStatus=true){
-      const f=window.MockContests.formats[family],paper=currentPapers().find(g=>g.label.toLowerCase()===input.value.trim().toLowerCase());
-      const model=mode==='generated'?window.MockContests.curve(catalog,family,isVoidedProblem):null;
+      const f=window.MockContests.formats[family],paper=selectedPaper();
+      const model=mode==='generated'?window.MockContests.curve(modelCatalog,family,isVoidedProblem):null;
       form.querySelector('.mock-paper-field').hidden=mode!=='paper';form.querySelector('.mock-generation-info').hidden=mode!=='generated';sourceBox.hidden=mode!=='generated';
+      form.querySelector('.mock-format-field').hidden=mode!=='generated';
       form.querySelector('.mock-same-format').hidden=mode!=='generated';
       form.querySelector('[data-mock-check="trig"]').hidden=mode!=='generated'||!trigApplies();form.querySelector('[data-mock-check="calc"]').hidden=mode!=='generated';form.querySelector('[data-mock-check="statements"]').hidden=mode!=='generated';advBox.hidden=mode!=='generated';
       form.querySelector('#mock-same-format-text').textContent=family==='AIME'?'Only short-answer questions, like the AIME':'Only multiple-choice questions, like the AMC';
-      info.textContent=`${f.count} problems · ${f.minutes} minutes${model?' · Modeled on '+model.startYear+'–'+model.endYear:''}`;
+      const selfChecks=paper?.problems.filter(paperProblem).length;
+      info.textContent=mode==='paper'
+        ? paper ? `${paper.problems.length} problems · ${paper.minutes ? paper.minutes+' minutes' : 'Untimed'}${selfChecks ? ' · '+selfChecks+' self-checked' : ''}` : ''
+        : `${f.count} problems · ${f.minutes} minutes · Modeled on ${model.startYear}–${model.endYear}`;
+      info.hidden=!info.textContent;
       let pool=[];
       if(model){
         const available=window.MockContests.sourcePool(PROBLEM_DB,model,mockEligible,isVoidedProblem);
@@ -6260,7 +6353,7 @@
           <p class="mock-adv-note">Balanced keeps any one contest, or any one subject (algebra, geometry, counting and probability, number theory), to at most 40% of the paper when the pool allows it.</p>
           ${seg('difficulty','Difficulty',DIFFICULTY_STEPS.map(([t,v])=>[t,v]))}</div></details>`;
       }
-      submit.textContent=mode==='paper'?'Start mock':'Generate mock';submit.disabled=busy||(mode==='paper'?!paper:pool.length<f.count);
+      submit.textContent=mode==='paper'?(paper?.minutes?'Start mock':'Start paper'):'Generate mock';submit.disabled=busy||(mode==='paper'?!paper:pool.length<f.count);
       if(!busy&&clearStatus){
         status.textContent=mode==='generated'?`${pool.length.toLocaleString()} eligible questions in the selected contests.${pool.length<f.count?` Choose more contests to reach ${f.count} questions.`:''}`:'';
         if(model&&pool.length>=f.count&&model.targets.some(t=>!pool.some(p=>Math.abs(p.elo-t)<=350)))status.textContent+=' The selected sources do not cover the full target difficulty; the closest available questions will be used.';
@@ -6281,7 +6374,7 @@
       const selector=one?`[data-mock-source="${CSS.escape(one.dataset.mockSource)}"]`:`[data-mock-source-all="${all.dataset.mockSourceAll}"]`;
       update();sourceBox.querySelector(selector)?.focus({preventScroll:true});
     });
-    function setFamily(f){family=f;form.querySelectorAll('[data-mock-family]').forEach(b=>b.setAttribute('aria-checked',String(b.dataset.mockFamily===f)));input.value='';choices=[];options.innerHTML='';close();update();}
+    function setFamily(f){family=f;form.querySelectorAll('[data-mock-family]').forEach(b=>b.setAttribute('aria-checked',String(b.dataset.mockFamily===f)));update();}
     form.querySelectorAll('[data-mock-family]').forEach(b=>b.addEventListener('click',()=>setFamily(b.dataset.mockFamily)));
     sameBox.addEventListener('change',()=>{try{localStorage.setItem('mq-mock-same-format',sameBox.checked?'1':'0');}catch(e){}update();});
     form.querySelectorAll('[data-mock-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mockMode;form.querySelectorAll('[data-mock-mode]').forEach(x=>x.setAttribute('aria-checked',String(x===b)));close();update();}));
@@ -6290,23 +6383,25 @@
     form.addEventListener('focusout',e=>{if(!e.relatedTarget?.closest('.mock-paper-search'))close();});
     form.addEventListener('submit',async e=>{
       e.preventDefault();if(busy)return;
-      const paper=currentPapers().find(g=>g.label.toLowerCase()===input.value.trim().toLowerCase());if(mode==='paper'&&!paper)return;
+      const paper=selectedPaper();if(mode==='paper'&&!paper)return;
       busy=true;form.querySelector('fieldset').disabled=true;status.textContent='Loading mock problems...';
       try{
-        const plan=mode==='paper'?{problems:paper.problems}:window.MockContests.generate(PROBLEM_DB,catalog,family,mockEligible,isVoidedProblem,Math.random,chosenSources(),genOptions());
-        await Promise.all([...new Set(plan.problems.filter(p=>!window.MATH_MOCK_EXTRAS?.[p.slug]&&!paperProblem(p)).map(statementFile))].map(loadStatements));
+        const plan=mode==='paper'?{problems:paper.problems}:window.MockContests.generate(PROBLEM_DB,modelCatalog,family,mockEligible,isVoidedProblem,Math.random,chosenSources(),genOptions());
+        await loadPracticeStatements(plan.problems);
         if(!form.isConnected)return;
-        if(plan.problems.some(p=>!paperProblem(p)&&!window.MATH_STATEMENTS?.[p.slug]&&!window.MATH_MOCK_EXTRAS?.[p.slug]))throw Error('Some statements could not be loaded. Try again.');
+        if(plan.problems.some(p=>!hasPracticePrompt(p)))throw Error('Some statements could not be loaded. Try again.');
         const label=mode==='paper'?paper.label:'Generated '+family;
-        const mock={mode,family,durationMs:window.MockContests.formats[family].minutes*60000};
+        const mock=mode==='paper'
+          ? {mode,family:paper.family,durationMs:paper.minutes ? paper.minutes*60000 : null}
+          : {mode,family,durationMs:window.MockContests.formats[family].minutes*60000};
         if(plan.model){mock.modelStartYear=plan.model.startYear;mock.modelEndYear=plan.model.endYear;mock.targets=plan.model.targets;mock.sources=chosenSources();mock.usedSources=plan.sources;mock.hmmtException=true;if(sameBox.checked)mock.sameFormat=true;mock.options={noTrig:trigBox.checked&&trigApplies(),noCalc:calcBox.checked,...adv};}
         topicPracticeSet=practiceSessions.createMock(label,plan.problems.map(p=>p.slug),mock);markPaperProblems(topicPracticeSet,plan.problems);savePractice();location.hash='#/practice/set/'+topicPracticeSet.id;
       }catch(err){status.textContent=err.message;}finally{busy=false;form.querySelector('fieldset').disabled=false;update(false);}
     });
-    // Arriving from a paper's "Mock this paper" button: its contest and paper are already
-    // chosen, so Start mock is one press away.
-    if (mockPreset && window.MockContests.formats[mockPreset.family] && catalog.some(g => g.label === mockPreset.label)) {
-      setFamily(mockPreset.family); input.value = mockPreset.label; update();
+    const preset = mockPreset && papersByLabel.get(mockPreset.toLowerCase());
+    if (preset) {
+      if (window.MockContests.formats[preset.family]) setFamily(preset.family);
+      input.value = preset.label; update();
       setTimeout(() => { if (submit.isConnected) submit.focus({ preventScroll: true }); }, 0);
     } else setFamily(family);
     mockPreset = null;
@@ -6314,7 +6409,7 @@
   let mockPreset = null;
   document.addEventListener("click", e => {
     const a = e.target.closest("a[data-mock-preset]");
-    if (a) mockPreset = { family: a.dataset.mockPresetFamily, label: a.dataset.mockPreset };
+    if (a) mockPreset = a.dataset.mockPreset;
   }, true);
   let topicPracticeSet = null, practiceSaveTimer = 0, practiceSaveFailed = false;
   function schedulePracticeSave() { clearTimeout(practiceSaveTimer); practiceSaveTimer = setTimeout(savePractice, 120); }
@@ -6347,7 +6442,18 @@
     catch (err) { return '<section class="sh-section"><h3>Completed sets</h3><p>Saved sets could not be read in this browser.</p></section>'; }
     const group = (finished, title) => {
       const items = sets.filter(s => (s.status === 'finished') === finished);
-      return `${items.length ? `<div class="pl-list practice-history-list" id="practice-history-${finished ? 'completed' : 'unfinished'}">${items.map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(practiceSetLabel(s))}<small class="practice-history-meta">${isMock(s) ? 'Mock · ' : 'Practice · '}${s.slugs.length} problem${s.slugs.length === 1 ? '' : 's'} · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${finished ? (isMock(s) ? mockScore(s).points+'/'+mockScore(s).max+' points' : s.slugs.filter(id => practiceSessions.result(s,id) === 'Correct').length + '/' + s.slugs.length + ' correct') : s.slugs.filter(id => s.answers[id]).length + '/' + s.slugs.length + ' answered'}</span></a>`).join('')}</div><button type="button" class="ct-toggle practice-history-more" aria-controls="practice-history-${finished ? 'completed' : 'unfinished'}" aria-expanded="false" hidden>Show all</button>` : `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`}`;
+      if (!items.length) return `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`;
+      const listId = 'practice-history-' + (finished ? 'completed' : 'unfinished');
+      const rows = items.map(s => {
+        const score = finished ? mockScore(s) : null;
+        const total = s.slugs.length;
+        const status = score ? `${score.points}/${score.max} points` : finished
+          ? `${s.slugs.filter(id => practiceSessions.result(s, id) === 'Correct').length}/${total} correct`
+          : `${s.slugs.filter(id => s.answers[id]).length}/${total} answered`;
+        const kind = s.clock ? 'Mock' : isMock(s) ? 'Past contest' : 'Practice';
+        return `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(practiceSetLabel(s))}<small class="practice-history-meta">${kind} · ${total} problem${total === 1 ? '' : 's'} · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${status}</span></a>`;
+      }).join('');
+      return `<div class="pl-list practice-history-list" id="${listId}">${rows}</div><button type="button" class="ct-toggle practice-history-more" aria-controls="${listId}" aria-expanded="false" hidden>Show all</button>`;
     };
     return `<section class="sh-section" id="resume-practice-sets"><h3>Resume a set</h3>${group(false)}</section><section class="sh-section" id="past-practice-sets"><h3>Completed sets</h3>${group(true)}</section>`;
   }
@@ -6395,22 +6501,27 @@
     const counts = { Correct: 0, Incorrect: 0, Unanswered: 0, 'Answer unavailable': 0, Voided: 0, 'Check yourself': 0 };
     set.slugs.forEach(slug => counts[practiceSessions.result(set, slug)]++);
     const reviewUrl = '#/practice/set/' + encodeURIComponent(set.id) + '/review';
-    const mock = isMock(set), score = mock ? mockScore(set) : null;
-    const stats = mock ? [[score.points+'/'+score.max,counts['Check yourself']?'Score so far':'Mock score'],[counts.Correct+'/'+total,'Correct'],[counts.Incorrect,'Incorrect'],[counts.Unanswered,'Unanswered']] : [[counts.Correct + '/' + total, 'Correct'], [Math.round(100 * counts.Correct / total) + '%', 'Score'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
+    const mock = isMock(set), score = mockScore(set);
+    const stats = [[counts.Correct + '/' + total, 'Correct'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
+    if (score) stats.unshift([score.points+'/'+score.max,counts['Check yourself']?'Score so far':'Mock score']);
+    else if (!mock) stats.splice(1, 0, [Math.round(100 * counts.Correct / total) + '%', 'Score']);
     $content.innerHTML = `<div class="space-home practice-session practice-results">
       <a class="back-link" href="#/practice">${uiIcon("arrow-left")} Back to Practice</a>
       <section class="sh-section"><h1>${mock ? 'Mock complete' : 'Practice complete'}</h1><p class="practice-results-subtitle">${escapeAttr(practiceSetLabel(set))} · ${total} problem${total === 1 ? '' : 's'}${mock ? ' · '+(set.mock.mode==='paper'?'Past contest':'Generated mock') : ' · '+escapeAttr(set.difficulty)+' difficulty'}</p>
-        ${mock ? `<p class="practice-results-meta">${mockTimeSummary(set)}</p>` : ''}
+        ${set.clock ? `<p class="practice-results-meta">${mockTimeSummary(set)}</p>` : ''}
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
         ${counts['Check yourself'] ? `<p class="practice-results-meta">${counts['Check yourself']} to check against the official solution: open ${counts['Check yourself'] === 1 ? 'it' : 'each'} in the review and mark your answer right or wrong.</p>` : ''}
-        ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided by the MAA${mock ? ', full credit awarded' : ', not graded'}</p>` : ''}
+        ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided by the MAA${score ? ', full credit awarded' : ', not graded'}</p>` : ''}
         <a class="hp-btn" href="${reviewUrl}">Review problems</a>
       </section>
       <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
         const p = PROBLEM_BY_SLUG[slug], result = practiceSessions.result(set, slug);
-        return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${i + 1}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong><small>${set.answers[slug] ? 'Your answer: ' + escapeAttr(set.answers[slug]) : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small></span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
+        const answer = set.answers[slug], exact = practiceSessions.exactKey(slug);
+        const submitted = exact && !set.selfCheck?.[slug] ? exactAnswerHtml(answer, exact.format) : escapeAttr(answer || '');
+        return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${practiceProblemNumber(set, i)}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong><small>${set.answers[slug] ? 'Your answer: ' + submitted : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small></span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
       }).join('')}</div></section></div>`;
+    renderMath($content);
     $content.querySelectorAll('[data-result-index]').forEach(link => link.addEventListener('click', () => { set.current = +link.dataset.resultIndex; savePractice(); }));
   }
   function renderTopicPracticeSet() {
@@ -6432,37 +6543,40 @@
     const slug = set.slugs[set.current], p = PROBLEM_BY_SLUG[slug];
     const answered = set.slugs.filter(id => set.answers[id]).length;
     const outcome = practiceSessions.result(set, slug);
-    const aime = p && /AIME/.test(p.fam), exact = !!window.MATH_MOCK_EXTRAS?.[slug], paper = !!(p && set.selfCheck?.[slug]);
+    const aime = p && /AIME/.test(p.fam), exact = practiceSessions.exactKey(slug), paper = !!(p && set.selfCheck?.[slug]);
     const inlinePaper = paper && archiveStatement(p);
+    const exactLabel = { set: 'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.', tuple: 'Ordered tuple, for example (2, 3)',
+      'tuple-set': 'All tuples, for example (2, 3), (4, 5)' }[exact?.format] || 'Exact value (fractions, sqrt, pi, !)';
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
-    const correct = exact ? window.MATH_MOCK_EXTRAS[slug].answers.map(exactAnswerHtml).join(' or ') : escapeAttr(officialKey(slug) || '');
+    const correct = !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact.format)).join(' or ') : escapeAttr(officialKey(slug) || '');
     const nav = set.slugs.map((id, i) => {
       const result = practiceSessions.result(set, id);
       const suffix = finished ? result : set.answers[id] ? 'Answered' : 'Unanswered';
-      return `<button type="button" class="cn-num${i === set.current ? ' cn-here' : ''}${finished ? ' practice-reviewed' : ''}${!finished && set.answers[id] ? ' practice-answered' : ''}${set.marks[id] ? ' practice-marked' : ''}" data-result="${finished ? result : ''}" data-practice-index="${i}" aria-current="${i === set.current ? 'step' : 'false'}" aria-label="Problem ${i + 1}, ${suffix}${set.marks[id] ? ', marked for review' : ''}">${i + 1}</button>`;
+      const number = practiceProblemNumber(set, i);
+      return `<button type="button" class="cn-num${i === set.current ? ' cn-here' : ''}${finished ? ' practice-reviewed' : ''}${!finished && set.answers[id] ? ' practice-answered' : ''}${set.marks[id] ? ' practice-marked' : ''}" data-result="${finished ? result : ''}" data-practice-index="${i}" aria-current="${i === set.current ? 'step' : 'false'}" aria-label="Problem ${number}, ${suffix}${set.marks[id] ? ', marked for review' : ''}">${number}</button>`;
     }).join('');
     shownIds = [];
     $content.innerHTML = `<div class="space-home practice-session">
       ${finished ? `<a class="back-link practice-back-results" href="#/practice/set/${encodeURIComponent(set.id)}">${uiIcon("arrow-left")} Back to Results overview</a>` : ''}
       <a class="back-link" href="#/practice">${uiIcon("arrow-left")} Back to Practice</a>
       <section class="sh-section">
-        <div class="practice-session-top"><div><h1>${mock ? 'Mock set' : 'Practice set'} · ${escapeAttr(practiceSetLabel(set))}</h1><p>${set.slugs.length} problem${set.slugs.length === 1 ? '' : 's'}${mock ? ' · '+set.clock.limitMs/60000+' minutes' : ' · '+escapeAttr(set.difficulty)+' difficulty'}${finished ? ' · Review' : ''}</p></div>
-          ${mock && !finished ? `<div class="mock-clock" role="timer" aria-label="Time remaining"><span>Time remaining</span><strong class="mock-clock-value">${mockTime(practiceSessions.timeLeft(set))}</strong></div>` : ''}</div>
+        <div class="practice-session-top"><div><h1>${mock ? 'Mock set' : 'Practice set'} · ${escapeAttr(practiceSetLabel(set))}</h1><p>${set.slugs.length} problem${set.slugs.length === 1 ? '' : 's'}${mock ? (set.clock ? ' · '+set.clock.limitMs/60000+' minutes' : ' · Untimed') : ' · '+escapeAttr(set.difficulty)+' difficulty'}${finished ? ' · Review' : ''}</p></div>
+          ${set.clock && !finished ? `<div class="mock-clock" role="timer" aria-label="Time remaining"><span>Time remaining</span><strong class="mock-clock-value">${mockTime(practiceSessions.timeLeft(set))}</strong></div>` : ''}</div>
         <nav class="cn-nums" aria-label="Practice problems">${nav}</nav>
         ${finished ? `<div class="practice-review-actions"><a class="hp-btn hp-btn-soft" href="#/practice/set/${encodeURIComponent(set.id)}">Results overview</a></div>` : ''}
         ${finished ? '' : `<div class="practice-session-actions"><span>${answered} of ${set.slugs.length} answered</span><div><a class="hp-btn hp-btn-soft" href="#/practice">Save and exit</a><button type="button" class="hp-btn" id="finish-practice">Finish and review</button></div></div>`}
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
-      <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p && (!mock || finished) ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
+      <section class="sh-section practice-question"><h3>Problem ${practiceProblemNumber(set, set.current)}${p && (!mock || finished) ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
         ${paper ? `${inlinePaper ? `<div class="practice-set-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div></div>` : ''}
           <div class="practice-paper"><p data-statement-fallback>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. Compare your answer with the official solution and mark it below.` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. When you review, you check it against the official solution.`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`
           : p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>Your answer</h3>
-          ${aime || exact || paper ? (set.answers[slug] ? `<p class="practice-submitted">${exact ? exactAnswerHtml(set.answers[slug]) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
+          ${aime || exact || paper ? (set.answers[slug] ? `<p class="practice-submitted">${exact && !paper ? exactAnswerHtml(set.answers[slug], exact.format) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
           ${paper ? `<div class="practice-self">${p.solUrl && !inlinePaper ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
           ${practiceExplanationHtml(p, !paper || !!inlinePaper)}`
-          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact || paper ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? 'Exact value (fractions, sqrt, pi)' : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact || paper ? 'text' : 'numeric'}" maxlength="${paper ? '60' : exact ? '120' : '3'}" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
+          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact || paper ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? exactLabel : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact || paper ? 'text' : 'numeric'}" maxlength="${paper ? '60' : exact ? '120' : '3'}" autocomplete="off" aria-describedby="practice-answer-error" value="${escapeAttr(set.answers[slug] || '')}">${exact && !paper ? practiceMathKeysHtml() : '<p id="practice-answer-error" role="status"></p>'}` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
       </section></div>`;
     const redraw = () => {
@@ -6527,20 +6641,26 @@
       const valid = practiceSessions.answer(set, slug, e.target.value, aime);
       if(set.status==='finished'){savePractice();renderTopicPracticeSet();return;}
       e.target.setAttribute('aria-invalid', String(!valid));
-      $content.querySelector('#practice-answer-error').textContent = valid ? '' : paper ? 'Use at most 60 characters. This value has not been saved.' : (exact ? 'Use a number or an expression with fractions, sqrt and pi. This value has not been saved.' : 'Use an integer from 000 to 999. This value has not been saved.');
+      $content.querySelector('#practice-answer-error').textContent = valid ? '' : paper ? 'Use at most 60 characters. This value has not been saved.' : (exact ? 'This answer format isn’t supported. ' + (set.answers[slug] ? 'Your previous answer is still saved.' : 'This answer hasn’t been saved.') : 'Use an integer from 000 to 999. This value has not been saved.');
       if (valid) { schedulePracticeSave(); syncAnswerUI(); }
       else if (clearAnswer) clearAnswer.disabled = !e.target.value && !set.answers[slug];
     });
+    if (answerInput && exact && !paper) wirePracticeMathKeys(answerInput, exact.format);
     clearAnswer?.addEventListener('click', () => {
       if (!practiceSessions.answer(set, slug, '', aime)) { if(set.status==='finished'){savePractice();renderTopicPracticeSet();} return; }
       if (answerInput) {
         answerInput.value = ''; answerInput.setAttribute('aria-invalid', 'false');
         $content.querySelector('#practice-answer-error').textContent = '';
+        const preview = $content.querySelector('.practice-answer-preview');
+        if (preview) {
+          preview.textContent = '';
+          preview.closest('.practice-preview').hidden = true;
+        }
       }
       schedulePracticeSave(); syncAnswerUI();
       (answerInput || answerChoices[0])?.focus({preventScroll:true});
     });
-    $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; schedulePracticeSave(); const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-marked', e.target.checked); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${e.target.checked ? ', marked for review' : ''}`); });
+    $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; schedulePracticeSave(); const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-marked', e.target.checked); current.setAttribute('aria-label', `Problem ${practiceProblemNumber(set, set.current)}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${e.target.checked ? ', marked for review' : ''}`); });
     savePractice();
     if (p && (!paper || inlinePaper)) showStatement(p, '.practice-set-st', mock && !paper);
     $content.querySelectorAll('[data-self]').forEach(b => b.addEventListener('click', () => {
@@ -6660,9 +6780,9 @@
           pool[i] = pool[pool.length - 1];
           pool.pop();
         }
-        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug] && !paperProblem(p)).map(statementFile))].map(loadStatements));
+        await loadPracticeStatements(batch);
         if (!form.isConnected) return;
-        problems.push(...batch.filter(p => paperProblem(p) || window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
+        problems.push(...batch.filter(hasPracticePrompt));
       }
       generating = false;
       form.querySelector("fieldset").disabled = false;
@@ -6804,9 +6924,9 @@
       while (ps.length && problems.length < requested) {
         const batch = [];
         while (ps.length && batch.length < requested - problems.length) { const i = Math.floor(Math.random() * ps.length); batch.push(ps[i]); ps[i] = ps[ps.length - 1]; ps.pop(); }
-        await Promise.all([...new Set(batch.filter(p => !window.MATH_MOCK_EXTRAS?.[p.slug] && !paperProblem(p)).map(statementFile))].map(loadStatements));
+        await loadPracticeStatements(batch);
         if (!form.isConnected) return;
-        problems.push(...batch.filter(p => paperProblem(p) || window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]));
+        problems.push(...batch.filter(hasPracticePrompt));
       }
       generating = false; form.querySelector("fieldset").disabled = false;
       if (!problems.length) { status.textContent = "No statements could be loaded. Try again or choose another card."; return; }
@@ -9947,10 +10067,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   function paperInfoHtml(fam, ps) {
     const rated = ps.filter(p => Number.isFinite(p.elo));
     const sec = (title, body, action = "") => `<section class="pp-sec">${action ? `<div class="pp-head"><h3 class="pp-h">${title}</h3>${action}</div>` : `<h3 class="pp-h">${title}</h3>`}${body}</section>`;
-    // A complete paper with an answer key can be sat as a timed mock: the button opens
-    // Practice a contest with this paper already chosen (owner, 2026-11-11).
-    const mockable = mockPapers().find(g => g.label === paperKey(ps[0])), fmt = mockable && window.MockContests.formats[fam];
-    const mock = fmt ? `<a class="hp-btn hp-btn-soft pp-mock" href="#/practice" data-goto="pr-mock" data-mock-preset="${escapeAttr(mockable.label)}" data-mock-preset-family="${escapeAttr(fam)}" title="${fmt.count} problems, ${fmt.minutes} minutes">Mock this paper</a>` : "";
+    const mockable = pastPapers().find(g => g.label === paperKey(ps[0]));
+    const mock = mockable ? `<a class="hp-btn hp-btn-soft pp-mock" href="#/practice" data-goto="pr-mock" data-mock-preset="${escapeAttr(mockable.label)}">${mockable.minutes ? "Mock this paper" : "Practice this paper"}</a>` : "";
     const tiles = `<div class="br-list pp-tiles">${ps.map(p => `<a class="br-row" href="#/problem/${p.slug}"><span class="br-ref">Problem ${p.num}</span>${Number.isFinite(p.elo) ? `<span class="br-elo">${p.elo}</span>` : ""}</a>`).join("")}</div>`;
     if (!rated.length) return sec("Problems", tiles, mock);
     const round = roundOf(ps[0]), series = round ? `${fam} ${round}` : fam;

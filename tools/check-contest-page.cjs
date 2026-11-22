@@ -145,13 +145,14 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await page.goto(base+'/#/problems/amc-10/2000');await page.locator('.pp-tiles').waitFor();assert.equal(await page.locator('[data-pp-base]').count(),0);assert.equal(await page.locator('.pq-col b').count(),25,'still marked against all years');
  await page.goto(base+'/#/problems/amc-10/2001');await page.locator('.pp-tiles').waitFor();assert.deepEqual(await shown().locator('[data-pp-base]').evaluateAll(xs=>xs.map(x=>x.dataset.ppBase)),['all','prev']);
  // HMMT February: the three individual rounds as tabs; history grows with Step H.
- // No mock format is inferred from archival entries without answer keys.
+ // Archival rounds can be practiced without assuming a timed mock format.
  await page.goto(base+'/#/problems/hmmt-february/2019');await page.locator('.db-group.is-shown .pp-tiles').waitFor();
  assert.deepEqual(await page.locator('.ct-papers [role="tab"]').allInnerTexts(),['Algebra and Number Theory','Combinatorics','Geometry']);
  // A round is compared only with the same round (owner, 2026-11-13): Algebra (and Number Theory)
  // with itself, so the 2011 two-subject papers are outside the series.
  const hmmtYears=[...new Set(db.filter(p=>/ HMMT February Algebra(?: and Number Theory)?$/.test(p.paper)).map(p=>+p.paper.slice(0,4)))],earlier=hmmtYears.filter(y=>y<2019).length;
- assert.equal(await page.locator('.pp-mock').count(),0,'archival entries do not acquire a mock format');
+ assert.equal(await shown().locator('.pp-mock').innerText(),'Practice this paper');
+ assert.equal(await shown().locator('.pp-mock').getAttribute('data-mock-preset'),'2019 HMMT February Algebra and Number Theory');
  const hmmtBases=['all',...(earlier>1?['recent']:[]),...(earlier?['prev']:[])];
  assert.deepEqual(await shown().locator('[data-pp-base]').evaluateAll(xs=>xs.map(x=>x.dataset.ppBase)),hmmtBases.length>1?hmmtBases:[]);
  assert.equal(await shown().locator('.py-bar').count(),hmmtYears.length>=3?hmmtYears.length:0,'history uses the available HMMT years');

@@ -4033,6 +4033,16 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .practice-answer > label[for="practice-answer"] { width: fit-content; }
 #practice-answer { display: block; width: min(100%, 280px); box-sizing: border-box; font: inherit; color: var(--text); background: var(--bg-panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin-top: 8px; }
 #practice-answer:focus { border-color: var(--accent); box-shadow: none; }
+.practice-preview { margin-top: 10px; }
+#practice-preview-label { display: block; color: var(--text-dim); font-size: 13px; }
+.practice-answer-preview { display: block; padding: 4px 0; overflow-wrap: anywhere; }
+#practice-answer-error { margin: 4px 0 0; color: #b42318; font-size: 13px; }
+#practice-answer-error:empty { margin: 0; }
+[data-theme="dark"] #practice-answer-error { color: #fca5a5; }
+.practice-math-keys { margin: 8px 0; }
+.practice-math-keys summary { cursor: pointer; font-size: 13px; color: var(--text-dim); width: fit-content; }
+.practice-math-keys > div { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.practice-math-keys button { min-width: 36px; min-height: 36px; padding: 4px 8px; }
 .practice-answer-clear { display: block; margin-top: 6px; padding: 4px 0; border: 0; background: none; color: var(--text-dim); font: inherit; font-size: 12.5px; line-height: 1.4; cursor: pointer; }
 .practice-answer-clear:hover:not(:disabled) { color: var(--accent); text-decoration: underline; }
 .practice-answer-clear:disabled { color: var(--text-faint); cursor: default; }
@@ -4092,6 +4102,7 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 .practice-results-list { display: grid; margin: 8px -10px 0; }
 .practice-result-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 10px; border-top: 1px solid var(--border); border-radius: 0; color: var(--text); text-decoration: none; }
 .practice-result-row:first-child { border-top: none; }
+.practice-result-row > span:first-child { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
 .practice-result-row:hover { background: var(--bg-panel); border-radius: 8px; }
 .practice-result-row:hover, .practice-result-row:hover + .practice-result-row { border-top-color: transparent; }
 .practice-result-row strong { font-size: 14px; }
