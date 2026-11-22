@@ -6448,3 +6448,52 @@ For linear equations, $(ua + vc)^2 + (va - uc)^2 = (u^2 + v^2)(a^2 + c^2)$: the 
 A short AMC 12 problem that is long to solve by finding $a$ and $b$ and a one-line solution this way; on the AIME and HMMT it appears as the first step toward a bound on one of three angles.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"system-as-polynomial-product": String.raw`
+## When to use
+The equations are polynomial in the unknowns and too tangled to eliminate one variable at a time, but they share one shape. Read the unknowns as two lists, $a_1, a_2, \ldots$ and $b_1, b_2, \ldots$; then each equation holds every product $a_ib_j$ with one total $i + j = k$, together with the lone $a_k$ and $b_k$ of that total, and there is one equation for each total from $1$ up to $m + n$.
+
+The telltale signs are a first equation that is a sum of two unknowns, a last equation that is a single product, and as many equations as unknowns. Right sides that look like the coefficients of a polynomial with small integer roots are a further hint.
+
+Lookalikes where the move is the wrong one:
+
+- A system that is unchanged when the unknowns are permuted, such as $x + y + z$, $xy + yz + zx$, $xyz$, is the case where every factor is linear; [[symmetric-polynomial-strategies|rewriting in symmetric sums and products]] handles it directly.
+- A polynomial written as a product with unknown constants is the forward direction, an identity to expand and compare.
+- Equations whose sums factor by grouping, such as $ab + cd$ and $ac + bd$ adding to $(a + d)(b + c)$, need no polynomial at all.
+
+## How
+1. Sort the unknowns into two lists and give each one a position, so that in every equation each term has the same total position.
+2. Write the monic polynomials $A(x) = x^m + a_1x^{m-1} + \cdots + a_m$ and $B(x) = x^n + b_1x^{n-1} + \cdots + b_n$ with those unknowns as coefficients.
+3. Check term by term that the equations are exactly the coefficients of $A(x)B(x)$, with nothing missing and nothing extra.
+4. Write $C(x) = x^{m+n} + c_1x^{m+n-1} + \cdots + c_{m+n}$, whose coefficients are the right sides, and factor it completely.
+5. Share the linear factors of $C$ between $A$, which takes $m$ of them, and $B$, which takes the rest, in every possible way; each way is one solution.
+6. Answer the question from the coefficients of each $A$ and $B$, or from their values, which are often quicker than expanding.
+
+For instance, the four expressions $a + c$, $ac + b + d$, $ad + bc$, and $bd$ are the coefficients of $x^3$, $x^2$, $x$, and $1$ in $(x^2 + ax + b)(x^2 + cx + d)$: the unknowns $a$ and $c$ have position $1$, $b$ and $d$ position $2$, and each expression has a fixed total, $1$, $2$, $3$, and $4$.
+
+## Why it works
+The idea is that multiplying two polynomials gathers, for each power of $x$, the products of coefficients whose positions add to the same total, so the coefficients of a product are exactly sums of the system's shape; and a polynomial whose roots are known has only the factorizations obtained by grouping its linear factors.
+
+Step 1, the system is an identity. In $A(x)B(x)$, the term $a_ix^{m-i}$ times the term $b_jx^{n-j}$ gives a multiple of $x^{m+n-(i+j)}$. So the coefficient of $x^{m+n-k}$ in the product is the sum of $a_ib_j$ over $i + j = k$, with $a_0 = b_0 = 1$, which is $a_k + a_{k-1}b_1 + \cdots + b_k$. Two polynomials are equal exactly when all their coefficients agree, so the system holds exactly when $A(x)B(x) = C(x)$. The solutions of the system are therefore the pairs of monic polynomials $A$ of degree $m$ and $B$ of degree $n$ with $AB = C$.
+
+Step 2, every factorization groups the roots. Over the complex numbers, $C(x) = (x - r_1)(x - r_2)\cdots(x - r_{m+n})$, listing each root as often as its multiplicity. Suppose $AB = C$ and $A$ has degree at least $1$. Then $A$ has a root $r$, and $C(r) = A(r)B(r) = 0$, so $r$ is one of the $r_i$. Both $A$ and $C$ have the factor $x - r$; dividing both sides by it gives a product of smaller degree equal to $C$ with one factor $x - r$ removed. Repeating until $A$ is used up shows that $A$ is the product of $m$ of the factors $x - r_i$ and $B$ the product of the others. Conversely, any such choice multiplies back to $C$. So the solutions correspond exactly to the ways of choosing $m$ of the $m + n$ linear factors, counting a repeated factor by how many copies are chosen.
+
+Step 3, real and integer solutions. When the unknowns must be real, $A$ and $B$ need real coefficients, so a nonreal root goes to the same factor as its conjugate. When $C$ has integer roots, every choice gives integer coefficients.
+
+The move stops being valid when the equations do not match a product term for term: a missing cross term, an extra one, or a coefficient other than $1$ on a cross term means the system is not $AB = C$. It also needs the leading coefficients known; if they are unknown too, $A$ and $B$ can be rescaled against each other and the solutions are no longer just groupings of roots.
+
+## Formulas it uses
+- [[fundamental-theorem-algebra]]: $C$ splits into $m + n$ linear factors over the complex numbers, so the factors to be shared out are known.
+- [[factor-remainder-theorem]]: a root $r$ of $A$ is a root of $C$ and splits the same factor $x - r$ off both, which is why $A$ is a product of some of the linear factors of $C$.
+- [[rational-root-theorem]]: when $C$ is monic with integer coefficients, its rational roots are integers dividing the constant term, which is how $C$ is factored in practice.
+
+## Common traps
+- Missing a split when $C$ has repeated roots: count the ways by how many copies of each factor $A$ takes, not by labeling the copies.
+- Forgetting that the two lists are not interchangeable: when $m = n$, giving $A$ the factors of $B$ and $B$ those of $A$ is a different solution.
+- Giving the unknowns positions that leave one term of an equation with the wrong total, so that $C$ is built from a system that is not the product.
+- Dropping the reality condition: for real unknowns, a nonreal root and its conjugate must go to the same factor.
+
+## Contest profile
+A rare move on hard AIME-level and invitational tournament problems that disguise a factorization as a nonlinear system. Once the product is spotted the system is solved in one step, so the difficulty lies entirely in the recognition.
+`
+});

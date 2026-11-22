@@ -206,11 +206,11 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["inversion-facts"] }
     ] },
   { id: "route-aime-algebra", name: "AIME Algebra", kind: "route", tier: "AIME", subject: "Algebra",
-    blurb: "Builds on the AMC 10/12 algebra route: only the cards that are new at this level, so each list stays short. 39 cards across 10 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AMC 10/12 algebra route: only the cards that are new at this level, so each list stays short. 40 cards across 10 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
-        ids: ["chebyshev-polynomials", "lagrange-interpolation", "subtract-and-factor"] },
+        ids: ["chebyshev-polynomials", "lagrange-interpolation", "subtract-and-factor", "system-as-polynomial-product"] },
       { title: "Factoring & Identities",
         note: "The rewrites worth recognizing instantly, because spotting one usually ends the problem.",
         ids: ["brahmagupta-fibonacci", "lagranges-identity"] },

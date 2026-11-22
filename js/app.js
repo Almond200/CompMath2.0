@@ -6181,6 +6181,7 @@
         </div>
         <label class="mock-check" data-mock-check="trig" hidden><input type="checkbox" id="mock-no-trig"> <span>No trigonometry</span></label>
         <label class="mock-check" data-mock-check="calc" hidden><input type="checkbox" id="mock-no-calc"> <span>No calculus</span></label>
+        <label class="mock-check" data-mock-check="statements" hidden><input type="checkbox" id="mock-statements"> <span>Only problems whose statement is shown in the app</span></label>
         <div class="mock-source-field" hidden></div>
         <div class="mock-advanced-field" hidden></div>
         <p class="mock-generation-info" hidden>Questions come from your selected contests and keep their original answer formats. For questions linked to an official paper, check your answer against its solution during review.</p>
@@ -6196,13 +6197,15 @@
     const catalog=mockPapers();let family='AMC 8',mode='paper',active=-1,busy=false,choices=[];
     let sourceOff;try{sourceOff=new Set(JSON.parse(localStorage.getItem('mq-mock-sources-off')||'[]'));}catch(e){sourceOff=new Set();}
     const sourceBox=form.querySelector('.mock-source-field'), sameBox=form.querySelector('#mock-same-format'), advBox=form.querySelector('.mock-advanced-field');
-    const trigBox=form.querySelector('#mock-no-trig'), calcBox=form.querySelector('#mock-no-calc');
+    const trigBox=form.querySelector('#mock-no-trig'), calcBox=form.querySelector('#mock-no-calc'), stmtBox=form.querySelector('#mock-statements');
     try{sameBox.checked=localStorage.getItem('mq-mock-same-format')==='1';}catch(e){}
     // Settings under the format buttons (owner, 2026-11-21): no trigonometry (AMC 8 and 10), no calculus, and a closed
-    // "More settings" panel: contest and subject variety, only problems whose statement is in the app, and difficulty.
+    // "More settings" panel: contest and subject variety, and difficulty. "Only problems whose statement is shown in the app"
+    // sits with the other checkboxes (owner, 2026-11-22); it is still saved as adv.statementsOnly.
     const ADV_DEFAULT={contestVariety:'any',subjectVariety:'any',statementsOnly:false,difficulty:0};
     let adv={...ADV_DEFAULT};
     try{const saved=JSON.parse(localStorage.getItem('mq-mock-options')||'{}');adv={...ADV_DEFAULT,...saved.adv};trigBox.checked=!!saved.noTrig;calcBox.checked=!!saved.noCalc;}catch(e){}
+    stmtBox.checked=!!adv.statementsOnly;
     const saveOptions=()=>{try{localStorage.setItem('mq-mock-options',JSON.stringify({adv,noTrig:trigBox.checked,noCalc:calcBox.checked}));}catch(e){}};
     const trigApplies=()=>family==='AMC 8'||family==='AMC 10';
     const isTrig=p=>p.tree.some(id=>/^(alg\.trig|geo\.tri\.trig)(\.|$)/.test(id));
@@ -6210,7 +6213,7 @@
     const inApp=p=>!paperProblem(p)||!!archiveStatement(p);
     const areaOf=p=>p.tree[0]?p.tree[0].split('.')[0]:(p.offtree||'other');
     const DIFFICULTY_STEPS=[['Easier',-300],['Recent papers',0],['Harder',300]];
-    const advChanged=()=>(adv.contestVariety!==ADV_DEFAULT.contestVariety)+(adv.subjectVariety!==ADV_DEFAULT.subjectVariety)+(adv.statementsOnly!==ADV_DEFAULT.statementsOnly)+(adv.difficulty!==ADV_DEFAULT.difficulty);
+    const advChanged=()=>(adv.contestVariety!==ADV_DEFAULT.contestVariety)+(adv.subjectVariety!==ADV_DEFAULT.subjectVariety)+(adv.difficulty!==ADV_DEFAULT.difficulty);
     const genOptions=()=>({difficultyShift:adv.difficulty,contestVariety:adv.contestVariety,subjectVariety:adv.subjectVariety,areaOf});
     // The questions a generated mock may use: eligible, and in the chosen format's answer style when asked.
     const mockEligible=p=>practiceEligible(p)&&(!sameBox.checked||sameAnswerFormat(p,family))&&!(trigBox.checked&&trigApplies()&&isTrig(p))&&!(calcBox.checked&&isCalc(p))&&(!adv.statementsOnly||inApp(p));
@@ -6231,7 +6234,7 @@
       const model=mode==='generated'?window.MockContests.curve(catalog,family,isVoidedProblem):null;
       form.querySelector('.mock-paper-field').hidden=mode!=='paper';form.querySelector('.mock-generation-info').hidden=mode!=='generated';sourceBox.hidden=mode!=='generated';
       form.querySelector('.mock-same-format').hidden=mode!=='generated';
-      form.querySelector('[data-mock-check="trig"]').hidden=mode!=='generated'||!trigApplies();form.querySelector('[data-mock-check="calc"]').hidden=mode!=='generated';advBox.hidden=mode!=='generated';
+      form.querySelector('[data-mock-check="trig"]').hidden=mode!=='generated'||!trigApplies();form.querySelector('[data-mock-check="calc"]').hidden=mode!=='generated';form.querySelector('[data-mock-check="statements"]').hidden=mode!=='generated';advBox.hidden=mode!=='generated';
       form.querySelector('#mock-same-format-text').textContent=family==='AIME'?'Only short-answer questions, like the AIME':'Only multiple-choice questions, like the AMC';
       info.textContent=`${f.count} problems · ${f.minutes} minutes${model?' · Modeled on '+model.startYear+'–'+model.endYear:''}`;
       let pool=[];
@@ -6250,8 +6253,7 @@
         advBox.innerHTML=`<details class="pr-fams"${openAdv?' open':''}><summary><span class="pr-fams-label">More settings</span><span class="pr-fams-sum">${n?n+' changed':'Default'}</span></summary>
           <div class="mock-adv-body">${seg('contestVariety','Contest variety',[['Any mix','any'],['Balanced','balanced']])}${seg('subjectVariety','Subject variety',[['Any mix','any'],['Balanced','balanced']])}
           <p class="mock-adv-note">Balanced keeps any one contest, or any one subject (algebra, geometry, counting and probability, number theory), to at most 40% of the paper when the pool allows it.</p>
-          ${seg('difficulty','Difficulty',DIFFICULTY_STEPS.map(([t,v])=>[t,v]))}
-          <label class="mock-check"><input type="checkbox" id="mock-statements"${adv.statementsOnly?' checked':''}> <span>Only problems whose statement is shown in the app</span></label></div></details>`;
+          ${seg('difficulty','Difficulty',DIFFICULTY_STEPS.map(([t,v])=>[t,v]))}</div></details>`;
       }
       submit.textContent=mode==='paper'?'Start mock':'Generate mock';submit.disabled=busy||(mode==='paper'?!paper:pool.length<f.count);
       if(!busy&&clearStatus){
@@ -6264,7 +6266,7 @@
       adv[b.dataset.mockAdv]=b.dataset.mockAdv==='difficulty'?Number(b.dataset.value):b.dataset.value;saveOptions();update();
       advBox.querySelector(`[data-mock-adv="${b.dataset.mockAdv}"][data-value="${b.dataset.value}"]`)?.focus({preventScroll:true});
     });
-    advBox.addEventListener('change',e=>{if(e.target.id!=='mock-statements')return;adv.statementsOnly=e.target.checked;saveOptions();update();advBox.querySelector('#mock-statements')?.focus({preventScroll:true});});
+    stmtBox.addEventListener('change',()=>{adv.statementsOnly=stmtBox.checked;saveOptions();update();});
     [trigBox,calcBox].forEach(b=>b.addEventListener('change',()=>{saveOptions();update();}));
     form.addEventListener('click',e=>{
       const one=e.target.closest('[data-mock-source]'),all=e.target.closest('[data-mock-source-all]');if(!one&&!all)return;

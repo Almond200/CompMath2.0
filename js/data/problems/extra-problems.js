@@ -2336,4 +2336,8 @@
     { q: String.raw`Prove that for any real numbers $a$, $b$, $c$, at least one of $ab$, $bc$, $ca$ is nonnegative.`,
       s: String.raw`The three products are only permuted when the variables are renamed, so without loss of generality $a \le b \le c$. If $b \ge 0$, then $c \ge b \ge 0$ and $bc \ge 0$. If $b \lt 0$, then $a \le b \lt 0$ and $ab \gt 0$. In either case one of the products is nonnegative.` }
   );
+  add("system-as-polynomial-product",
+    { q: String.raw`Real numbers $a$, $b$, $c$, and $d$ satisfy $a + c = 6$, $ac + b + d = 13$, $ad + bc = 12$, and $bd = 4$. Find the largest possible value of $a^2 + b^2 + c^2 + d^2$.`,
+      s: String.raw`The left sides are the coefficients of $x^3$, $x^2$, $x$, and $1$ in $(x^2 + ax + b)(x^2 + cx + d)$, so the system says this product is $x^4 + 6x^3 + 13x^2 + 12x + 4 = (x^2 + 3x + 2)^2 = (x + 1)^2(x + 2)^2$. Each monic real quadratic factor takes two of the four linear factors: $(x + 1)^2$ and $(x + 2)^2$ in either order give $(a, b, c, d) = (2, 1, 4, 4)$ or $(4, 4, 2, 1)$, and $(x + 1)(x + 2)$ twice gives $(3, 2, 3, 2)$. The sums of squares are $4 + 1 + 16 + 16 = 37$ and $9 + 4 + 9 + 4 = 26$, so the largest is $\mathbf{37}$.` }
+  );
 })();

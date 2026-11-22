@@ -4915,7 +4915,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2018 SMT Algebra, Problem 6", formulas: ["square-of-sum"], strategy: "", tree: ["alg.ineq.optimize.integer"] },
   { ref: "2018 SMT Algebra, Problem 7", formulas: ["completing-the-square", "am-gm"], strategy: "", tree: ["alg.ineq.means.amgm"] },
   { ref: "2018 SMT Algebra, Problem 8", formulas: ["floor-basics"], strategy: "", tree: ["alg.fn.floor.eq"] },
-  { ref: "2018 SMT Algebra, Problem 9", formulas: ["comparing-coefficients", "factor-pair-counting"], strategy: "", tree: ["alg.eq.system"] },
+  { ref: "2018 SMT Algebra, Problem 9", formulas: ["system-as-polynomial-product", "comparing-coefficients"], strategy: "", tree: ["alg.eq.system"], main: "system-as-polynomial-product" },
   { ref: "2018 SMT Algebra, Problem 10", formulas: ["root-transformations", "vietas-general"], strategy: "", tree: ["alg.poly.vieta.transform"] },
   // ---- 2018 SMT Discrete. Topics, cards and rating only (Step H); the official PDFs are linked by the app.
   { ref: "2018 SMT Discrete, Problem 1", formulas: ["casework-method", "basic-probability"], strategy: "", tree: ["cp.prob.basic.count"] },
