@@ -38,7 +38,7 @@ card **appears in** problems (derived from problem tags). A formula never says "
 Y"; a method is never a formula with a process attached; a pattern never solves the problem; a
 problem never teaches a theorem.
 
-**Converting a card.** A card moves to its kind's template in `tools/rewrite-register.json`, under `conversion` (`formula`, `method`, `pattern`, `split` or `review`); a card not listed keeps the old template. `scan-conventions.py` then enforces the kind:
+**Converting a card.** A card moves to its kind's template in `tools/data/rewrite-register.json`, under `conversion` (`formula`, `method`, `pattern`, `split` or `review`); a card not listed keeps the old template. `scan-conventions.py` then enforces the kind:
 
 - a method needs `when`, `move` and `uses` (formula ids), plus a short `latex`, the gist at a glance: it is the browsing-card thumbnail and, on the method's own page, the formula box above the Overview box (When to use and Core move), as on a pattern page; a pattern needs `recognize` (2 to 5 signals) and `suggests` (method ids, or a planned id listed under `placeholders`); a formula carries none of these;
 - each kind allows only its own `##` headings (formula: Key forms, Conditions, Why it works, Useful observations, Applications, Full proof, Contest profile; method: When to use, How, Why it works, Formulas it uses, Common traps, Full proof, Contest profile; pattern: Distinguishing clues, Methods and Formulas to Try, Common traps, Contest profile);
@@ -114,12 +114,12 @@ A card's `tier` says where it is **first needed**; later stages still use the ea
 | `Olympiad` | beyond the AMC and AIME | no AMC or AIME problem needs it; olympiad level tags only |
 
 - Judge a new card by the problems it would be tagged on and by the rubric, not by how hard it feels: a short fact can be AMC and a long method AIME Late.
-- **Importance is judged inside the card's own subsection** (a formula topic; for methods and patterns, the subject), never globally, and never by tier: an important Olympiad formula is High, an unimportant AMC formula is Low. Five values: `high`, `medium`, `low` (roughly the top quarter, the middle half, the bottom quarter of the subsection), `lower`, and `lowest`. **Lower** is marginal use: something that might be needed once in ten years (Chebyshev's Sum Inequality). **Lowest** is for a card that is confidently never used on a contest and is in the app only for completeness or beauty (Cardano's Cubic Formula, Morley's Trisector Theorem). A card with even one tagged problem is Lower at the most, never Lowest, unless the owner decides otherwise by name. The first reviewed assignment is `tools/importance-proposal.md`; the Lowest level was added on 2026-10-10 and 21 cards moved down to it from Lower (the list is in `CHANGELOG.md`). This replaces the old pre-2026 `lowest` tier, which was retired and meant something else.
+- **Importance is judged inside the card's own subsection** (a formula topic; for methods and patterns, the subject), never globally, and never by tier: an important Olympiad formula is High, an unimportant AMC formula is Low. Five values: `high`, `medium`, `low` (roughly the top quarter, the middle half, the bottom quarter of the subsection), `lower`, and `lowest`. **Lower** is marginal use: something that might be needed once in ten years (Chebyshev's Sum Inequality). **Lowest** is for a card that is confidently never used on a contest and is in the app only for completeness or beauty (Cardano's Cubic Formula, Morley's Trisector Theorem). A card with even one tagged problem is Lower at the most, never Lowest, unless the owner decides otherwise by name. The first reviewed assignment is `tools/notes/importance-proposal.md`; the Lowest level was added on 2026-10-10 and 21 cards moved down to it from Lower (the list is in `CHANGELOG.md`). This replaces the old pre-2026 `lowest` tier, which was retired and meant something else.
 - Tier and importance are shown together as **one split oval**: the contest tier on the left, the importance (HIGH, MED, LOW, LOWER, LOWEST) on the right in a lighter tint of the same color. There is no setting to switch labels (removed 2026-10-10: two label systems were confusing).
 - A card shows exactly one tag beside its kind, the split oval. The `level` array is not shown as text (no MATHCOUNTS / Olympiad wording beside the badge) and is no longer a filter; it remains in the data for Special:Browse and the lab. Nothing on a card may say the same thing twice.
 - **The filter is one global filter** (contest tier and importance), stored under `mq-settings.filter`, applied identically to subject, group, and topic pages, the sidebar (counts and greyed links follow it), and a card listed in two subjects (`ALSO_LISTED_IN`). It is never per section.
 - A subject page uses the chosen card order, Curated (file order, the default) or Most used (the cards the most practice problems use first). The By contest tier order was removed on 2026-10-23 at the owner's request; a stored "tier" reads back as Curated. Lists a reader curated, search results, and tag matches keep their own order.
-- The reviewed assignment of every card, with its problem evidence, is `tools/tier-proposal.md`. A new card's tier goes in the card and, when the table is regenerated, in that file.
+- The reviewed assignment of every card, with its problem evidence, is `tools/notes/tier-proposal.md`. A new card's tier goes in the card and, when the table is regenerated, in that file.
 - `scan-conventions.py` fails on a card with a missing or unknown tier.
 
 ### Field values
@@ -139,7 +139,7 @@ The description is the card's introduction. It is the first prose on the card's 
 **first two sentences are all the section grid and search results show** (`firstSentences` in
 `js/app.js`), so those two must stand on their own. Adopted 2026-09-25, after a reader put it
 exactly: the old intros read "like someone who knows what they are talking about but isn't doing
-a good job of explaining it". Progress is tracked in `tools/rewrite-register.json`.
+a good job of explaining it". Progress is tracked in `tools/data/rewrite-register.json`.
 
 - **Sentence one defines the topic of the card** — what the object, result or method is — before
   any formula variant, use case or caveat. A term is defined ("Two integers are congruent modulo
@@ -836,7 +836,7 @@ Built-in lists have a `kind`: `route` (a complete syllabus for one tier and subj
 
 ## Study routes are additive (2026-10-11)
 
-A route is a complete syllabus for one contest tier and one subject, but each is built on the one below it. A card belongs to the route of the lowest tier among its levels (AMC 10 or 12, then AIME, then Olympiad), so the AIME route lists only what is new beyond AMC and the Olympiad route only what is new beyond AIME. A card may repeat in a higher route only when `tools/route-repeats.json` names it, for a card whose use at that level is broader (the pigeonhole principle at AIME versus at an olympiad). `tools/check-lists.py` fails on a missing card and on an unnamed repeat. There is no MATHCOUNTS route.
+A route is a complete syllabus for one contest tier and one subject, but each is built on the one below it. A card belongs to the route of the lowest tier among its levels (AMC 10 or 12, then AIME, then Olympiad), so the AIME route lists only what is new beyond AMC and the Olympiad route only what is new beyond AIME. A card may repeat in a higher route only when `tools/data/route-repeats.json` names it, for a card whose use at that level is broader (the pigeonhole principle at AIME versus at an olympiad). `tools/check-lists.py` fails on a missing card and on an unnamed repeat. There is no MATHCOUNTS route.
 
 ## Figures are reference cards (2026-10-11)
 
@@ -899,7 +899,7 @@ See `MIGRATION-NOTES.md` for the full answers.
 - **Formula boxes** are not over-packed. The British Flag Theorem's old box was the example of too much.
 - **Dark mode** uses as little pure white as possible.
 - **Never re-add** problem search, the in-app find, hints in the UI, a label setting, a level filter, or proof-based competitions.
-- **Merged cards** keep their old names as aliases (`tools/link-aliases.json`), so old links still resolve.
+- **Merged cards** keep their old names as aliases (`tools/data/link-aliases.json`), so old links still resolve.
 
 ## 13. Rules moved here from PLAN.md (2026-10-31)
 
@@ -912,7 +912,7 @@ See `MIGRATION-NOTES.md` for the full answers.
 - One idea per card. A card shows its kind and one split-oval tag (tier left, importance right), and level text is never repeated beside it.
 - Calculus uses an upright, thin-spaced differential: `\int A(h)\,\mathrm{d}h`.
 - Prose formula boxes are rewritten only after the owner approves the list; a box that cannot be shortened stays as it is.
-- Things LIVE has that the app lacks are listed in `tools/live-missing.md` and wait for the owner's approval.
+- Things LIVE has that the app lacks are listed in `tools/notes/live-missing.md` and wait for the owner's approval.
 
 **Problems.**
 - A problem page gets a strategy paragraph, plus "Alternatively, ..." when a second good route exists. Full written solutions are deferred (2026-10-16).

@@ -11,7 +11,7 @@ imp = importlib.util.module_from_spec(spec); spec.loader.exec_module(imp)
 cache = pathlib.Path(imp.CACHE) / 'answer-keys'; cache.mkdir(parents=True, exist_ok=True)
 js = "global.window={};const fs=require('fs');for(const f of fs.readdirSync('js/data/problems/statements'))if(f.endsWith('.js'))require('./js/data/problems/statements/'+f);console.log(JSON.stringify(window.MATH_STATEMENTS));"
 statements = json.loads(subprocess.check_output(['node', '-e', js], cwd=ROOT, text=True))
-reviewed = json.loads((ROOT / 'tools/answer-key-reviewed.json').read_text())
+reviewed = json.loads((ROOT / 'tools/data/answer-key-reviewed.json').read_text())
 groups = {}
 for slug, st in statements.items():
     source = st.get('u','')

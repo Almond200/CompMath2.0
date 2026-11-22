@@ -6,7 +6,7 @@
 live.poshenloh.com/past-contests publishes every AMC and AIME problem "with official permission of
 the Mathematical Association of America", as plain LaTeX inside each page's embedded JSON, with the
 figures as SVG files. This reads that, for exactly the problems in js/data/problems/problem-db.js
-(tools/aops-titles.json is the list), and writes:
+(tools/data/aops-titles.json is the list), and writes:
 
   js/data/problems/statements/<year>.js   { slug: { s: statement, u: LIVE page } }
   js/data/problems/figures/<contest>/<year>/<n>.svg
@@ -224,7 +224,7 @@ def discover():
     """--all: find every AMC 8 (and AJHSME), AMC 10, and AMC 12 sitting LIVE publishes, and add the problems the
     database lacks as text-only entries ({ ref, formulas: [] }): the statement is the point, the tags come later.
     Sittings LIVE does not have are listed, never skipped silently."""
-    tp = os.path.join(ROOT, "tools", "aops-titles.json")
+    tp = os.path.join(ROOT, "tools", "data", "aops-titles.json")
     refs = json.load(open(tp)); have = {r["ref"] for r in refs}
     sittings = [("amc8", str(y), "%d AMC 8" % y if y >= 1999 else "%d AJHSME" % y) for y in range(1985, 2026)]
     for y in range(2000, 2026):
@@ -265,7 +265,7 @@ def existing_year(path):
 
 def main():
     if "--all" in sys.argv: discover()
-    refs = json.load(open(os.path.join(ROOT, "tools", "aops-titles.json")))
+    refs = json.load(open(os.path.join(ROOT, "tools", "data", "aops-titles.json")))
     todo = collections.defaultdict(list)
     for it in refs:
         k = contest_key(it["ref"])

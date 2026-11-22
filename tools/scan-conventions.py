@@ -452,12 +452,12 @@ for _x in fig_bad[:10]:
     print("    " + _x)
 
 # ---- Four kinds: formula, method, pattern (CONVENTIONS §0) ----
-# tools/rewrite-register.json records each card's migration state under "conversion":
+# tools/data/rewrite-register.json records each card's migration state under "conversion":
 # formula / method / pattern (converted to that kind's template), split (one card becoming a
 # formula plus a method), review (not yet classified). A card not in it is unconverted and keeps
 # the old template. "placeholders" names planned method ids a pattern may already suggest.
 try:
-    _reg_all = _js.load(io.open("tools/rewrite-register.json", encoding="utf-8"))
+    _reg_all = _js.load(io.open("tools/data/rewrite-register.json", encoding="utf-8"))
 except FileNotFoundError:
     _reg_all = {}
 _conv = _reg_all.get("conversion", {})
@@ -618,7 +618,7 @@ for _x in _kind_warn[:12]:
 
 # Formula migration (plan D3). A formula converted after the ledger existed must record where its
 # old sections went, and a converted formula page must not carry procedure ("when you see...").
-_rr_l = _js.load(io.open("tools/rewrite-register.json", encoding="utf-8"))
+_rr_l = _js.load(io.open("tools/data/rewrite-register.json", encoding="utf-8"))
 _ledger = _rr_l.get("ledger", {})
 _LEDGER_EXEMPT = {"legendres-formula", "power-of-a-point", "vietas-quadratic", "lte-lemma", "burnsides-lemma",
                   "polya-enumeration", "newtons-sums", "cavalieris-principle", "pole-polar", "recognition-numbers",
@@ -642,7 +642,7 @@ for _x in _proc_hits[:12]:
 
 # Progress of the intro-and-explanation rewrite, which runs over many sessions.
 try:
-    _rr = _js.load(io.open("tools/rewrite-register.json", encoding="utf-8"))
+    _rr = _js.load(io.open("tools/data/rewrite-register.json", encoding="utf-8"))
     _done = [e["id"] for e in _rr.get("done", [])]
     _unknown = [i for i in _done if i not in {c["id"] for c in CARDS}]
     print("  rewritten intros and explanations: %d/%d%s"

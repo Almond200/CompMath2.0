@@ -4,7 +4,7 @@ import glob, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import choice_layout
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-titles = json.load(open(os.path.join(ROOT, "tools", "aops-titles.json")))
+titles = json.load(open(os.path.join(ROOT, "tools", "data", "aops-titles.json")))
 slugs = set()
 for it in titles:
     m = re.match(r"(\d{4})\s+(.*?),\s*Problem\s+(\d+)$", it["ref"])

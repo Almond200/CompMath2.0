@@ -61,12 +61,12 @@ for c in B["cards"]:
     with open("js/data/examples-supplement.js", "a") as f:
         f.write('window.MATH_EXAMPLES["%s"] = { q: String.raw`%s`, s: String.raw`%s` };\n' % (cid, q, s))
 
-reg = json.load(open("tools/rewrite-register.json"))
+reg = json.load(open("tools/data/rewrite-register.json"))
 for c, cid in zip(B["cards"], ids):
     reg["conversion"][cid] = c["kind"]
     reg["ledger"][cid] = [["(new card)", "written directly in the %s template" % c["kind"]]]
-json.dump(reg, open("tools/rewrite-register.json", "w"), indent=2, ensure_ascii=False)
-open("tools/rewrite-register.json", "a").write("\n")
+json.dump(reg, open("tools/data/rewrite-register.json", "w"), indent=2, ensure_ascii=False)
+open("tools/data/rewrite-register.json", "a").write("\n")
 
 nc = open("js/data/new-cards.js").read().rstrip()
 assert nc.endswith("];")
