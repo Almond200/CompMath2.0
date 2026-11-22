@@ -6545,7 +6545,7 @@
     const outcome = practiceSessions.result(set, slug);
     const aime = p && /AIME/.test(p.fam), exact = practiceSessions.exactKey(slug), paper = !!(p && set.selfCheck?.[slug]);
     const inlinePaper = paper && archiveStatement(p);
-    const exactLabel = { set: 'All values, separated by a comma (space is optional)', tuple: 'Ordered tuple, for example (2, 3)',
+    const exactLabel = { set: 'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.', tuple: 'Ordered tuple, for example (2, 3)',
       'tuple-set': 'All tuples, for example (2, 3), (4, 5)' }[exact?.format] || 'Exact value (fractions, sqrt, pi, !)';
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
     const correct = !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact.format)).join(' or ') : escapeAttr(officialKey(slug) || '');

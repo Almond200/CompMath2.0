@@ -84,7 +84,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.reload();
  assert.equal(await p.locator('#practice-answer').inputValue(),'9sqrt(23)/23');
  await p.locator('.cn-nums [data-practice-index="9"]').click();
- assert.match(await p.locator('label[for="practice-answer"]').innerText(),/comma \(space is optional\)/);
+ assert.match(await p.locator('label[for="practice-answer"]').innerText(),/spaces optional.*numbers without commas, like 1398/);
  await p.locator('#practice-answer').fill('(-1-sqrt(17))/2,(-1+sqrt(17))/2');
  await p.locator('#finish-practice').click();
  await dialog.locator('[value="ok"]').click();
