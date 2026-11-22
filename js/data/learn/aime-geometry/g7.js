@@ -229,7 +229,7 @@ Count pairs with binomial coefficients, regions with Euler's formula or the add-
 
 [[picks-theorem|Pick's theorem]] gives the area of a lattice polygon as $I + \tfrac B2 - 1$, and [[lattice-points-gcd|a lattice segment]] holds $\gcd(\Delta x, \Delta y) + 1$ lattice points. [[british-flag-theorem|The British flag theorem]] says $PA^2 + PC^2 = PB^2 + PD^2$ for a point and a rectangle.
 
-[[plane-regions|Lines in general position]] cut the plane into $1 + n + \binom n2$ regions, and [[plane-regions|chords among $n$ points on a circle]] into $1 + \binom n2 + \binom n4$.`,
+[[plane-regions|Lines in general position]] cut the plane into $1 + n + \binom n2$ regions, and chords among $n$ points on a circle into $1 + \binom n2 + \binom n4$.`,
       strategies: [
         String.raw`For a regular polygon, split it from the center into congruent triangles.`,
         String.raw`For an odd shape, enclose it in a simple figure and subtract the pieces outside.`,

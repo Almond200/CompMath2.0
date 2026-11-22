@@ -375,10 +375,10 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "plane-regions",
-          name: "Regions from Lines, Circles and Chords",
+          name: "Regions from Lines and Circles",
           latex: String.raw`R_{\text{lines}} = \frac{n^2 + n + 2}{2}, \qquad R_{\text{circles}} = n^2 - n + 2`,
-          description: String.raw`Maximum regions from $n$ lines (no two parallel, no three concurrent) or $n$ circles (each pair meeting twice). Incremental principle: a new line adds one region per crossing plus one, and a new circle that crosses the others at $k \gt 0$ points adds $k$ regions — which is also how region-counting problems with expected values decompose. Each new piece adds a region only when it splits one, so the rule needs the drawing so far to be connected: a piece joining two separate parts adds none (two disjoint unit circles centred at $(\pm2,0)$ make $3$ regions, and the line $y=0$, with $4$ crossings and $5$ pieces, brings them to $6$, not $8$). The maxima above are unaffected, since there every pair of curves crosses. The same rule counts the regions cut from a disk by all the chords among $n$ points on its circle, no three chords meeting inside: $1 + \binom n2 + \binom n4$, one for the disk, one per chord and one per crossing. It runs $1, 2, 4, 8, 16$ and then $31$, not $32$.`,
-          keywords: ["regions", "lazy caterer", "pancake", "lines divide plane", "circles divide plane", "regions from chords", "moser circle", "points on a circle", "1 2 4 8 16 31", "not powers of two", "chord regions"],
+          description: String.raw`Maximum regions from $n$ lines (no two parallel, no three concurrent) or $n$ circles (each pair meeting twice). Incremental principle: a new line adds one region per crossing plus one, and a new circle that crosses the others at $k \gt 0$ points adds $k$ regions — which is also how region-counting problems with expected values decompose. Each new piece adds a region only when it splits one, so the rule needs the drawing so far to be connected: a piece joining two separate parts adds none (two disjoint unit circles centred at $(\pm2,0)$ make $3$ regions, and the line $y=0$, with $4$ crossings and $5$ pieces, brings them to $6$, not $8$). The maxima above are unaffected, since there every pair of curves crosses.`,
+          keywords: ["regions", "lazy caterer", "pancake", "lines divide plane", "circles divide plane", "pizza cuts"],
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]

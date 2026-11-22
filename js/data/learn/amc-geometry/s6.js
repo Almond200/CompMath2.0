@@ -187,8 +187,7 @@ Area has a related decomposition. Adding a segment of length $L$ to a convex reg
 For generators $(2,0)$, $(0,1)$ and $(-3,4)$, the lengths are two, one and five, so the perimeter is sixteen. Their three parallelogram areas are two, eight and three, giving total area thirteen, as the tiling shows. The coefficients must vary independently; imposing a relation among sliders can reduce the reachable set and invalidate this boundary and area calculation.`,
       related: [
         { card: "permutations-combinations", note: String.raw`the choices behind every count of segments and triangles (R1.4).` },
-        { card: "pie", note: String.raw`removing shapes that do not fit, or overlaps (R3.5).` },
-        { card: "plane-regions", note: String.raw`regions inside a circle cut by its chords (S10.6).` }
+        { card: "pie", note: String.raw`removing shapes that do not fit, or overlaps (R3.5).` }
       ],
       exercises: [
         { q: String.raw`What is the largest number of regions into which $5$ lines can cut the plane?`, answer: "16",

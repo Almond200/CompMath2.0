@@ -2257,12 +2257,15 @@
       return blk && el.getBoundingClientRect().right > blk.getBoundingClientRect().right + 1;
     };
     container.querySelectorAll(".math-glue.loose, .math-wide").forEach(el => el.classList.remove("loose", "math-wide"));
-    container.querySelectorAll(".katex:not(.katex-display .katex):not(.katex .katex)").forEach(k => {
-      if (k.closest(".formula-display") || !over(k)) return;
-      const glue = k.closest(".math-glue");
-      if (glue) { glue.classList.add("loose"); if (!over(k)) return; }
-      k.classList.add("math-wide");
-    });
+    // Every measurement is taken before any class changes, and the changes then made together,
+    // so the page is laid out twice in all rather than once per formula (owner, 2026-11-22: a
+    // long page or a search froze while each formula forced its own layout).
+    const wide = [...container.querySelectorAll(".katex:not(.katex-display .katex):not(.katex .katex)")]
+      .filter(k => !k.closest(".formula-display") && over(k));
+    const glued = wide.filter(k => k.closest(".math-glue"));
+    glued.forEach(k => k.closest(".math-glue").classList.add("loose"));
+    const still = new Set(glued.filter(over));
+    wide.forEach(k => { if (!k.closest(".math-glue") || still.has(k)) k.classList.add("math-wide"); });
   }
   // Punctuation stays with the math it touches, as a word keeps its comma: ", so" after $D$
   // could otherwise wrap alone to the start of the next line, and an opening bracket could hang
@@ -8447,7 +8450,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (!$content.querySelector(".search-results > [hidden]")) moreBtn.remove();
       fitCardFormulas($content);
     });
-    renderMath($content);
+    // Results are typeset as they near the screen (the observer in fitCardFormulas), not all at
+    // once: typesetting every result, hidden "Show more" pages included, was most of the time a
+    // search took, and it held the page still while typing (owner, 2026-11-22).
+    renderMath($content, true);
   }
 
   // ---------- Advanced search: browse by tag ----------
@@ -12962,6 +12968,18 @@ The book remembers the last lesson you opened, in this browser, and the contents
   buildSidebar();
   renderCurrentPage(false);
   window.AppAccessibility.init();
+  // Warm the problem data once the first page is up (owner, 2026-11-22: switching to Practice
+  // or a problem page could sit on "Loading…" for seconds while about 6 MB downloaded). The
+  // fetch waits for an idle moment and is skipped on a data-saver connection; a page that needs
+  // the data first still loads it the usual way, and both share the one request.
+  const warmProblems = () => {
+    if (navigator.connection && navigator.connection.saveData) return;
+    loadProblems().then(() => {
+      if (assetGroups.get("practice").some(src => !loadedAssets.has(src))) loadAssets("practice").catch(() => {});
+    }).catch(() => {});
+  };
+  if ("requestIdleCallback" in window) requestIdleCallback(warmProblems, { timeout: 5000 });
+  else setTimeout(warmProblems, 2000);
 
   // ---------- Debug / evaluation hook ----------
   // The search internals are otherwise sealed inside this IIFE, which meant every

@@ -790,8 +790,6 @@ window.MATH_BOOK_INDEX["amc-algebra"] = [
       "counterexample",
       "disproof",
       "prove or disprove",
-      "which statement is false",
-      "not always true",
       "small cases",
       "proof technique",
       "method"
