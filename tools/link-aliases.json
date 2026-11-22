@@ -219,6 +219,9 @@
   "bisector-closer-region": [
    "Drawing the Angle Bisector to Compare Distances to Two Sides"
   ],
+  "bound-and-construct": [
+   "Bound, Then Construct"
+  ],
   "bounded-diophantine-count": [
    "Counting Integer Solutions Within Bounds"
   ],
@@ -473,6 +476,9 @@
   "complete-quadrilateral-miquel": [
    "Miquel Point of a Complete Quadrilateral"
   ],
+  "complete-subset-sums": [
+   "Subset Sums with No Gaps"
+  ],
   "completing-the-square": [
    "Completing the Square"
   ],
@@ -500,6 +506,9 @@
   ],
   "cone-formulas": [
    "Cone Surface Area"
+  ],
+  "cone-insphere": [
+   "Largest Sphere in a Cone"
   ],
   "conic-classification": [
    "Classifying a General Second-Degree Equation"
@@ -689,6 +698,9 @@
   ],
   "digit-manipulation": [
    "Digit Manipulation"
+  ],
+  "digit-occurrences": [
+   "Counting a Digit Place by Place"
   ],
   "digit-sum-carries": [
    "Digit Sums",
@@ -1007,6 +1019,9 @@
   "forced-difference-of-squares": [
    "Forcing a Difference of Squares"
   ],
+  "forced-entries": [
+   "Filling In What Is Forced"
+  ],
   "forward-backward-induction": [
    "Forward-Backward Induction"
   ],
@@ -1202,6 +1217,9 @@
   "hypergeometric": [
    "Hypergeometric Distribution"
   ],
+  "if-then-statements": [
+   "If-Then Statements: Contrapositive, Converse, Negation"
+  ],
   "incenter-coordinates": [
    "Center Coordinates as Weighted Averages"
   ],
@@ -1242,7 +1260,6 @@
    "Surjectivity in Functional Equations"
   ],
   "inradius-area": [
-   "Incenter Splits the Area by the Sides",
    "Inradius Formula"
   ],
   "inscribed-angle-theorem": [
@@ -1262,6 +1279,9 @@
   ],
   "intercept-theorem": [
    "Intercept Theorem"
+  ],
+  "intermediate-value-theorem": [
+   "Intermediate Value Theorem"
   ],
   "invariants-coloring": [
    "Invariants"
@@ -1300,6 +1320,9 @@
   ],
   "isosceles-trapezoid": [
    "An Isosceles Trapezoid"
+  ],
+  "isosceles-triangle": [
+   "Isosceles Triangle"
   ],
   "isotomic-conjugate": [
    "Isotomic Conjugate"
@@ -1352,11 +1375,8 @@
    "Lagrange Interpolation Formula"
   ],
   "lagrange-roots-mod-p": [
-   "Lagrange",
-   "Lagrange's",
-   "Lagrange's Theorem on Polynomial Roots mod p",
-   "Lagranges",
-   "Lagrange’s"
+   "Lagrange's Theorem",
+   "Polynomials mod p"
   ],
   "lagranges-identity": [
    "Lagrange",
@@ -1397,6 +1417,9 @@
   ],
   "law-of-tangents": [
    "Law of Tangents"
+  ],
+  "layer-by-layer-search": [
+   "Exploring a Network Layer by Layer"
   ],
   "lcm-common-multiples": [
    "Common Multiples Are Multiples of the LCM"
@@ -1892,14 +1915,8 @@
    "Equation of a Plane from Its Intercepts"
   ],
   "plane-regions": [
-   "Moser",
-   "Moser's",
-   "Moser's Circle",
-   "Mosers",
-   "Moser’s",
-   "Regions from Chords",
-   "Regions from Lines",
-   "Regions from Lines and Circles"
+   "Regions from Lines, Circles",
+   "Regions from Lines, Circles and Chords"
   ],
   "point-in-equilateral": [
    "Point Inside an Equilateral Triangle"
@@ -1926,6 +1943,13 @@
   ],
   "polya-enumeration": [
    "Pólya Enumeration Theorem"
+  ],
+  "polya-urn": [
+   "Pólya",
+   "Pólya's",
+   "Pólya's Urn",
+   "Pólyas",
+   "Pólya’s"
   ],
   "polygon-angle-sums": [
    "Polygon Angle Sums"
@@ -2110,9 +2134,8 @@
    "Reducing a Divisibility to a Constant"
   ],
   "reduction-identities": [
-   "Cofunction, Sign",
-   "Cofunction, Sign & Periodicity Identities",
-   "Periodicity Identities"
+   "Cofunction, Sign & Periodicity",
+   "Reduction Formulas"
   ],
   "reflect-across-the-line": [
    "Reflecting Across a Line"
@@ -2242,6 +2265,9 @@
   "setting-up-proportions": [
    "Setting Up a Proportion"
   ],
+  "settle-with-an-example": [
+   "Settling a Claim with One Example"
+  ],
   "several-rates": [
    "A Problem with Several Rates"
   ],
@@ -2283,6 +2309,9 @@
   ],
   "skew-lines-distance": [
    "Distance Between Skew Lines"
+  ],
+  "small-cases-pattern": [
+   "Small Cases, Then the Pattern"
   ],
   "smoothing-method": [
    "Smoothing"
@@ -2330,6 +2359,10 @@
   ],
   "sqrt-approximation": [
    "Approximating Square Roots"
+  ],
+  "square-and-add": [
+   "Adding Paired Equations",
+   "Squaring and Adding Paired Equations"
   ],
   "square-crossing-segments": [
    "Perpendicular Segments Across a Square"
@@ -2449,8 +2482,14 @@
    "Rewriting in Symmetric Sums",
    "Rewriting in Symmetric Sums and Products"
   ],
+  "symmetrizing-a-sum": [
+   "Symmetrizing a Sum"
+  ],
   "symmetry-probability": [
    "Symmetry Arguments"
+  ],
+  "system-as-polynomial-product": [
+   "Reading a System as a Polynomial Product"
   ],
   "tail-sum-expectation": [
    "Tail-Sum Formula for Expectation"
@@ -2629,6 +2668,9 @@
    "Squares of Two Numbers",
    "Sum, Product,",
    "Sum, Product, and Squares of Two Numbers"
+  ],
+  "unfold-the-bounces": [
+   "Unfolding Bounces in a Box"
   ],
   "unfold-the-surface": [
    "Unfolding a Surface"
@@ -2848,22 +2890,6 @@
   "carnot’s": [
    "carnots-perpendicularity-theorem",
    "carnots-theorem"
-  ],
-  "lagrange": [
-   "lagrange-roots-mod-p",
-   "lagranges-identity"
-  ],
-  "lagrange's": [
-   "lagrange-roots-mod-p",
-   "lagranges-identity"
-  ],
-  "lagranges": [
-   "lagrange-roots-mod-p",
-   "lagranges-identity"
-  ],
-  "lagrange’s": [
-   "lagrange-roots-mod-p",
-   "lagranges-identity"
   ],
   "pappus": [
    "pappus-centroid",

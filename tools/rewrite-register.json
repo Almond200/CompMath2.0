@@ -1869,7 +1869,8 @@
     "small-cases-pattern": "method",
     "if-then-statements": "method",
     "settle-with-an-example": "method",
-    "square-and-add": "method"
+    "square-and-add": "method",
+    "system-as-polynomial-product": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -9154,6 +9155,12 @@
       ]
     ],
     "square-and-add": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "system-as-polynomial-product": [
       [
         "(new card)",
         "written directly in the method template"

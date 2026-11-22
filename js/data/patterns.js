@@ -706,7 +706,7 @@ window.MATH_SECTIONS.push({
         { title: "Changing the Representation", blurb: "Rewriting numbers in another form, as logarithms or in polar form, so that products and powers become sums and multiples.", ids: ["take-logs-linearize", "trig-series-complex", "polar-form", "conjugate-both-sides"] },
         { title: "Working with Floors", blurb: "Splitting a number into its integer and fractional parts, or grouping the terms of a sum that share a floor.", ids: ["name-the-floor", "group-equal-floors"] },
         { title: "Factoring & Rewriting", blurb: "Rearranging an expression into a product or a square that exposes its structure.", ids: ["sfft", "completing-the-square", "forced-difference-of-squares", "rationalizing", "denesting-radicals"] },
-        { title: "Polynomials & Their Roots", blurb: "Working with the roots of a polynomial without finding them.", ids: ["symmetric-polynomial-strategies", "polynomial-division", "comparing-coefficients", "lagrange-interpolation", "quadratic-root-location", "root-transformations", "roots-of-unity-filter"] },
+        { title: "Polynomials & Their Roots", blurb: "Working with the roots of a polynomial without finding them.", ids: ["symmetric-polynomial-strategies", "polynomial-division", "comparing-coefficients", "system-as-polynomial-product", "lagrange-interpolation", "quadratic-root-location", "root-transformations", "roots-of-unity-filter"] },
         { title: "Sums & Sequences", blurb: "Evaluating sums by collapsing, reordering, or differencing their terms.", ids: ["telescoping", "alternating-sum-grouping", "fx-pairing", "finite-differences", "double-summation", "symmetrizing-a-sum", "largest-term-ratio"] },
         { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sign-chart", "sos-method", "smoothing-method", "tangent-line-trick", "derivative-extremum", "median-minimizes-abs", "slope-to-a-point", "placing-digits-extremes"] },
         { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["transforming-equations", "add-all-equations", "subtract-swapped-equations", "square-and-add", "linear-elimination", "setting-up-proportions", "rounding-ranges", "time-per-leg", "round-up-whole-items", "assume-all-one-kind", "averages-to-totals"] },
@@ -1225,6 +1225,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "system-as-polynomial-product",
+          name: "Reading a System as a Polynomial Product",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A nonlinear system whose first equation is a plain sum of two unknowns, whose last is a single product, and whose equations in between each collect the cross terms of one fixed total, such as $a + d$, $b + ad + e$, $c + bd + ae$, $cd + be$, $ce$.`,
+          move: String.raw`Make the unknowns the coefficients of two monic polynomials whose product has the equations as its coefficients; then write the polynomial whose coefficients are the right sides, factor it, and read the unknowns off each way of sharing its factors between the two.`,
+          uses: ["fundamental-theorem-algebra", "factor-remainder-theorem", "rational-root-theorem"],
+          latex: String.raw`c_k = a_k + a_{k-1}b_1 + \cdots + a_1b_{k-1} + b_k \text{ for every } k \iff A(x)\,B(x) = C(x)`,
+          description: String.raw`Reading a system as a polynomial product recognizes equations whose left sides are the coefficients of a product of two polynomials, and replaces the whole system by one polynomial to factor. It is the move when a system in many unknowns looks too tangled to eliminate, yet each equation gathers exactly the products whose positions add to the same total: once the product is seen, every solution is one way of sharing the factors. Here the $a_i$ are the unknown coefficients of the first factor $A(x) = x^m + a_1x^{m-1} + \cdots + a_m$ and the $b_j$ those of the second, $B(x) = x^n + b_1x^{n-1} + \cdots + b_n$, with $a_i = 0$ for $i \gt m$ and $b_j = 0$ for $j \gt n$; the given right sides $c_k$ are the coefficients of $C(x) = x^{m+n} + c_1x^{m+n-1} + \cdots + c_{m+n}$. It is [[comparing-coefficients|comparing coefficients]] run backward: there an identity becomes a system, here a system becomes an identity.`,
+          keywords: ["system as a product", "coefficients of a product", "hidden factorization", "convolution system", "multiplying polynomials", "factor the polynomial of the right sides", "sharing the factors", "method"],
+          importance: "low",
+          tier: "AIME Late",
+          level: ["AIME", "Olympiad"]
         },
         {
           id: "lagrange-interpolation",

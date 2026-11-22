@@ -88,5 +88,7 @@ window.NEW_CARD_BATCHES = [
   { label: "AMC halves of the proof methods (owner, 2026-11-21)", date: "2026-11-21",
     ids: ["if-then-statements", "settle-with-an-example"] },
   { label: "Square and add (P81)", date: "2026-11-21",
-    ids: ["square-and-add"] }
+    ids: ["square-and-add"] },
+  { label: "Owner request: a system read as a polynomial product (P82)", date: "2026-11-22",
+    ids: ["system-as-polynomial-product"] }
 ];

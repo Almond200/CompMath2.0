@@ -643,6 +643,7 @@ window.MATH_TOPIC_HOMES = {
   "injectivity-surjectivity": "alg.fn.feq",
   "polynomial-division": "alg.poly.remainder.thm",
   "comparing-coefficients": "alg.poly.construct.coeff",
+  "system-as-polynomial-product": "alg.eq.system",
   "lagrange-interpolation": "alg.poly.construct.interp",
   "subtract-and-factor": "alg.poly.construct.interp",
   "roots-of-unity-filter": "alg.cx.unity",

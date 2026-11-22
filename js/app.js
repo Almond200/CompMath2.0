@@ -6181,6 +6181,7 @@
         </div>
         <label class="mock-check" data-mock-check="trig" hidden><input type="checkbox" id="mock-no-trig"> <span>No trigonometry</span></label>
         <label class="mock-check" data-mock-check="calc" hidden><input type="checkbox" id="mock-no-calc"> <span>No calculus</span></label>
+        <label class="mock-check" data-mock-check="statements" hidden><input type="checkbox" id="mock-statements"> <span>Only problems whose statement is shown in the app</span></label>
         <div class="mock-source-field" hidden></div>
         <div class="mock-advanced-field" hidden></div>
         <p class="mock-generation-info" hidden>Questions come from your selected contests and keep their original answer formats. For questions linked to an official paper, check your answer against its solution during review.</p>
@@ -6196,13 +6197,15 @@
     const catalog=mockPapers();let family='AMC 8',mode='paper',active=-1,busy=false,choices=[];
     let sourceOff;try{sourceOff=new Set(JSON.parse(localStorage.getItem('mq-mock-sources-off')||'[]'));}catch(e){sourceOff=new Set();}
     const sourceBox=form.querySelector('.mock-source-field'), sameBox=form.querySelector('#mock-same-format'), advBox=form.querySelector('.mock-advanced-field');
-    const trigBox=form.querySelector('#mock-no-trig'), calcBox=form.querySelector('#mock-no-calc');
+    const trigBox=form.querySelector('#mock-no-trig'), calcBox=form.querySelector('#mock-no-calc'), stmtBox=form.querySelector('#mock-statements');
     try{sameBox.checked=localStorage.getItem('mq-mock-same-format')==='1';}catch(e){}
     // Settings under the format buttons (owner, 2026-11-21): no trigonometry (AMC 8 and 10), no calculus, and a closed
-    // "More settings" panel: contest and subject variety, only problems whose statement is in the app, and difficulty.
+    // "More settings" panel: contest and subject variety, and difficulty. "Only problems whose statement is shown in the app"
+    // sits with the other checkboxes (owner, 2026-11-22); it is still saved as adv.statementsOnly.
     const ADV_DEFAULT={contestVariety:'any',subjectVariety:'any',statementsOnly:false,difficulty:0};
     let adv={...ADV_DEFAULT};
     try{const saved=JSON.parse(localStorage.getItem('mq-mock-options')||'{}');adv={...ADV_DEFAULT,...saved.adv};trigBox.checked=!!saved.noTrig;calcBox.checked=!!saved.noCalc;}catch(e){}
+    stmtBox.checked=!!adv.statementsOnly;
     const saveOptions=()=>{try{localStorage.setItem('mq-mock-options',JSON.stringify({adv,noTrig:trigBox.checked,noCalc:calcBox.checked}));}catch(e){}};
     const trigApplies=()=>family==='AMC 8'||family==='AMC 10';
     const isTrig=p=>p.tree.some(id=>/^(alg\.trig|geo\.tri\.trig)(\.|$)/.test(id));
@@ -6210,7 +6213,7 @@
     const inApp=p=>!paperProblem(p)||!!archiveStatement(p);
     const areaOf=p=>p.tree[0]?p.tree[0].split('.')[0]:(p.offtree||'other');
     const DIFFICULTY_STEPS=[['Easier',-300],['Recent papers',0],['Harder',300]];
-    const advChanged=()=>(adv.contestVariety!==ADV_DEFAULT.contestVariety)+(adv.subjectVariety!==ADV_DEFAULT.subjectVariety)+(adv.statementsOnly!==ADV_DEFAULT.statementsOnly)+(adv.difficulty!==ADV_DEFAULT.difficulty);
+    const advChanged=()=>(adv.contestVariety!==ADV_DEFAULT.contestVariety)+(adv.subjectVariety!==ADV_DEFAULT.subjectVariety)+(adv.difficulty!==ADV_DEFAULT.difficulty);
     const genOptions=()=>({difficultyShift:adv.difficulty,contestVariety:adv.contestVariety,subjectVariety:adv.subjectVariety,areaOf});
     // The questions a generated mock may use: eligible, and in the chosen format's answer style when asked.
     const mockEligible=p=>practiceEligible(p)&&(!sameBox.checked||sameAnswerFormat(p,family))&&!(trigBox.checked&&trigApplies()&&isTrig(p))&&!(calcBox.checked&&isCalc(p))&&(!adv.statementsOnly||inApp(p));
@@ -6231,7 +6234,7 @@
       const model=mode==='generated'?window.MockContests.curve(catalog,family,isVoidedProblem):null;
       form.querySelector('.mock-paper-field').hidden=mode!=='paper';form.querySelector('.mock-generation-info').hidden=mode!=='generated';sourceBox.hidden=mode!=='generated';
       form.querySelector('.mock-same-format').hidden=mode!=='generated';
-      form.querySelector('[data-mock-check="trig"]').hidden=mode!=='generated'||!trigApplies();form.querySelector('[data-mock-check="calc"]').hidden=mode!=='generated';advBox.hidden=mode!=='generated';
+      form.querySelector('[data-mock-check="trig"]').hidden=mode!=='generated'||!trigApplies();form.querySelector('[data-mock-check="calc"]').hidden=mode!=='generated';form.querySelector('[data-mock-check="statements"]').hidden=mode!=='generated';advBox.hidden=mode!=='generated';
       form.querySelector('#mock-same-format-text').textContent=family==='AIME'?'Only short-answer questions, like the AIME':'Only multiple-choice questions, like the AMC';
       info.textContent=`${f.count} problems · ${f.minutes} minutes${model?' · Modeled on '+model.startYear+'–'+model.endYear:''}`;
       let pool=[];
@@ -6250,8 +6253,7 @@
         advBox.innerHTML=`<details class="pr-fams"${openAdv?' open':''}><summary><span class="pr-fams-label">More settings</span><span class="pr-fams-sum">${n?n+' changed':'Default'}</span></summary>
           <div class="mock-adv-body">${seg('contestVariety','Contest variety',[['Any mix','any'],['Balanced','balanced']])}${seg('subjectVariety','Subject variety',[['Any mix','any'],['Balanced','balanced']])}
           <p class="mock-adv-note">Balanced keeps any one contest, or any one subject (algebra, geometry, counting and probability, number theory), to at most 40% of the paper when the pool allows it.</p>
-          ${seg('difficulty','Difficulty',DIFFICULTY_STEPS.map(([t,v])=>[t,v]))}
-          <label class="mock-check"><input type="checkbox" id="mock-statements"${adv.statementsOnly?' checked':''}> <span>Only problems whose statement is shown in the app</span></label></div></details>`;
+          ${seg('difficulty','Difficulty',DIFFICULTY_STEPS.map(([t,v])=>[t,v]))}</div></details>`;
       }
       submit.textContent=mode==='paper'?'Start mock':'Generate mock';submit.disabled=busy||(mode==='paper'?!paper:pool.length<f.count);
       if(!busy&&clearStatus){
@@ -6264,7 +6266,7 @@
       adv[b.dataset.mockAdv]=b.dataset.mockAdv==='difficulty'?Number(b.dataset.value):b.dataset.value;saveOptions();update();
       advBox.querySelector(`[data-mock-adv="${b.dataset.mockAdv}"][data-value="${b.dataset.value}"]`)?.focus({preventScroll:true});
     });
-    advBox.addEventListener('change',e=>{if(e.target.id!=='mock-statements')return;adv.statementsOnly=e.target.checked;saveOptions();update();advBox.querySelector('#mock-statements')?.focus({preventScroll:true});});
+    stmtBox.addEventListener('change',()=>{adv.statementsOnly=stmtBox.checked;saveOptions();update();});
     [trigBox,calcBox].forEach(b=>b.addEventListener('change',()=>{saveOptions();update();}));
     form.addEventListener('click',e=>{
       const one=e.target.closest('[data-mock-source]'),all=e.target.closest('[data-mock-source-all]');if(!one&&!all)return;
@@ -10438,10 +10440,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
             </div>`).join("")}</div></details>`;
     }).join("");
   }
-  function wireContestFinder(root) {
-    const input = root.querySelector("#ct-find"); if (!input) return;
-    const options = root.querySelector("#ct-find-options"), groups = [...root.querySelectorAll(".ct-group")], foldAll = root.querySelector("#ct-fold-all");
-    const yearsOf = f => Object.keys(DB_TREE[f]).map(Number).sort((x, y) => y - x);
+  // The contest finder's matching, shared by Practice's finder and Special:Contest.
+  const contestMatches = (() => {
     const aliases = f => Object.entries(CONTEST_QUERY_ALIASES).filter(([, v]) => v.some(a => f.startsWith(a))).map(([k]) => k).join(" ");
     let paperIndex = null;   // family -> year -> the names of that year's papers
     const papersOf = f => {
@@ -10450,13 +10450,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
       return paperIndex[f];
     };
     const wordsCache = new Map(), wordsOf = text => { if (!wordsCache.has(text)) wordsCache.set(text, contestQueryWords(text)); return wordsCache.get(text); };
-    let choices = [], active = -1;
     // The finder is a dropdown like the mock's paper search. Each word has to begin a word of the paper's name ("geom"
     // finds Geometry; "feb", "nov", "nt", "alg" and "amc10a" are understood), so "hmmt geometry 2025" opens that one
     // paper. A year alone lists every paper held that year; a name alone opens the contest's latest year. Whole-name
     // matches come first, then the ones with the fewest extra words.
-    function matches() {
-      const tokens = contestQueryWords(input.value);
+    function contestMatches(query) {
+      const tokens = contestQueryWords(query);
       if (!tokens.length) return [];
       const years = [...new Set(tokens.filter(t => /^(19[5-9]\d|20\d\d)$/.test(t)).map(Number))].sort((x, y) => y - x);
       const hasAmc = tokens.includes("amc");
@@ -10489,6 +10488,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
       });
       return out.sort((x, y) => x.score - y.score || (y.y || 0) - (x.y || 0)).slice(0, years.length && !words.length ? 120 : 40);
     }
+    return contestMatches;
+  })();
+  function wireContestFinder(root) {
+    const input = root.querySelector("#ct-find"); if (!input) return;
+    const options = root.querySelector("#ct-find-options"), groups = [...root.querySelectorAll(".ct-group")], foldAll = root.querySelector("#ct-fold-all");
+    let choices = [], active = -1;
+    const matches = () => contestMatches(input.value);
     function close() { options.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; }
     function highlight() {
       [...options.children].forEach((b, i) => { b.classList.toggle("is-cur", i === active); b.setAttribute("aria-selected", String(i === active)); });
@@ -11085,9 +11091,23 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const ids = (l ? l.ids : []).filter(id => BY_ID[id]);
     return ids.length ? "#/f/" + pickOne(ids) : null;
   }
+  // A topic of the tree from a typed id or name: the exact id, an exact name, then the closest name.
+  const topicList = () => [...TOPIC_NODES.values()];
+  const topicPlain = n => plainName(n.name);
+  function topicFromArg(arg) {
+    const a = String(arg || "").trim(), k = a.toLowerCase();
+    if (!a) return null;
+    if (TOPIC_NODES.has(a)) return TOPIC_NODES.get(a);
+    return topicList().find(n => topicPlain(n) === k) || rankBy(a, topicList(), topicPlain, 1)[0] || null;
+  }
+  function bookFromArg(arg) {
+    const a = String(arg || "").trim(), k = normKey(a);
+    if (!a) return null;
+    return LEARN_SHELF.find(b => b.id === a || normKey(b.title) === k) || rankBy(a, LEARN_SHELF, b => b.title, 1)[0] || null;
+  }
   const COMMANDS = [
     { name: "Random", arg: "filters", example: "Special:Random/Method/Geometry",
-      desc: "Open a random card. Add a kind, subject, contest tier, or importance to narrow it, in any order; or add Problem (and a contest) for a random practice problem, or Starred for a random starred card.",
+      desc: "Open a random card. Add a kind, subject, contest tier, or importance to narrow it, in any order; or add Problem (then a contest, and a difficulty from Very easy to Very hard) for a random practice problem, or Starred for a random starred card.",
       go: arg => {
         // Special:Random/Problem[/contest[/difficulty]] and Special:Random/Starred reach the problem
         // database and the Starred list through the same command.
@@ -11113,6 +11133,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
     { name: "RandomStarred", hidden: true, example: "Special:Random/Starred",
       desc: "Open a random card from your Starred list.",
       go: () => randomStarredTo() },
+    { name: "Contest", arg: "contest", example: "Special:Contest/HMMT February Geometry 2025",
+      desc: "Open a contest's page: its latest year, or the year and paper you name. Names match the way Practice's contest finder does (\"amc10a 2023\", \"hmmt feb geom\").",
+      go: arg => { if (!String(arg || "").trim()) return "#/practice"; const m = contestMatches(arg); return m.length ? m[0].href : null; } },
+    { name: "Topic", arg: "topic", example: "Special:Topic/Power of a point",
+      desc: "Open a topic of the topic tree, with every problem filed under it and the cards that live there.",
+      go: arg => { if (!String(arg || "").trim()) return "#/browse/topics"; const n = topicFromArg(arg); return n ? topicHash(n.id) : null; } },
+    { name: "Book", arg: "book", example: "Special:Book/AIME Geometry",
+      desc: "Open one of the Learn textbooks.",
+      go: arg => { if (!String(arg || "").trim()) return "#/learn"; const b = bookFromArg(arg); return b ? learnHash(b) : null; } },
     { name: "WhatLinksHere", arg: "card", example: "Special:WhatLinksHere/Ceva's Theorem",
       desc: "Every card whose explanation links to a given card.",
       page: arg => {
@@ -11169,36 +11198,82 @@ The book remembers the last lesson you opened, in this browser, and the contents
       page: () => { const bl = getBacklinks(); const lonely = ALL.filter(e => !(bl[e.formula.id] || []).length);
         return { title: "Lonely pages", body: `<p class="special-note">${lonely.length} of ${ALL.length} cards have no incoming links.</p>` + cardIndex(lonely) }; } },
     { name: "Statistics", example: "Special:Statistics",
-      desc: "Counts of cards, problems, connections, figures and your own use.",
+      desc: "Counts of cards, problems, contests, topics, textbooks, connections, figures and your own use.",
       page: () => {
-        const row = (k, v) => `<tr><td>${k}</td><td>${v}</td></tr>`;
+        const fmt = n => typeof n === "number" ? n.toLocaleString() : n;
+        const row = (k, v) => `<tr><td>${k}</td><td>${fmt(v)}</td></tr>`;
         const sub = (k, v) => row("&nbsp;&nbsp;&nbsp;" + k, v);
         const pct = (n, d) => d ? ` <span class="st-pct">(${Math.round(100 * n / d)}%)</span>` : "";
-        const table = (title, rows) => `<h3 class="st-head">${title}</h3><table class="special-table">${rows}</table>`;
+        const of = (n, d) => fmt(n) + pct(n, d);
+        const table = (title, rows, note) => `<h3 class="st-head">${title}</h3>${note ? `<p class="special-note">${note}</p>` : ""}<table class="special-table">${rows}</table>`;
         const byKind = k => ALL.filter(e => e.kind === k);
         const fs = byKind("formula"), ms = byKind("method"), ps = byKind("pattern");
-        // The library: the four kinds, and how far the four-kind rewrite has got.
+        // The library: the four kinds by subject, and the newest batch.
         const subjects = SECTIONS.filter(sec => bookOf(sec) === "formulas").map(sec => sub(sec.title, ALL.filter(e => e.section === sec).length)).join("");
-        const conv = [...ms, ...ps].filter(e => isConverted(e.formula)).length;
+        const kindBySubject = list => Object.keys(SUBJECT_NAMES).map(k => [k, list.filter(e => subjectOf(e) === k).length]).filter(([, n]) => n).map(([k, n]) => sub(SUBJECT_NAMES[k], n)).join("");
+        const tierN = t => ALL.filter(e => tierKey(e.formula) === t).length;
+        const batches = window.NEW_CARD_BATCHES || [], lastBatch = batches[batches.length - 1];
         const library = row("Cards", ALL.length) + row("Formulas", fs.length) + subjects +
-          row("Methods", ms.length) + row("Patterns", ps.length) +
-          row("Methods and patterns in the new template", `${conv} of ${ms.length + ps.length}` + pct(conv, ms.length + ps.length));
-        // Problems: by contest and difficulty, and how fully each is classified.
-        const bands = { easy: 0, medium: 0, hard: 0 };
-        PROBLEM_DB.forEach(p => { bands[paperPositionBand(p)]++; });
-        const chainOf = p => { const k = new Set(p.formulas.map(id => BY_ID[id].kind)); return k; };
+          row("Methods", ms.length) + kindBySubject(ms) + row("Patterns", ps.length) + kindBySubject(ps) +
+          row("By contest tier (where a card is first needed)", "") + [["amc", "AMC"], ["aime-early", "AIME Early"], ["aime-late", "AIME Late"], ["olympiad", "Olympiad"]].map(([t, l]) => sub(l, of(tierN(t), ALL.length))).join("") +
+          row("Batches of new cards", `<a href="${specialHref("NewCards", "All")}">${batches.length}</a>`) +
+          (lastBatch ? row("Latest batch", `<a href="${specialHref("NewCards")}">${escapeAttr(lastBatch.date)}, ${lastBatch.ids.length} card${lastBatch.ids.length === 1 ? "" : "s"}</a>`) : "");
+        // Problems: what each one carries, and how hard they are.
+        const N = PROBLEM_DB.length;
+        const chainOf = p => new Set(p.formulas.map(id => BY_ID[id].kind));
         const full = PROBLEM_DB.filter(p => { const k = chainOf(p); return k.has("pattern") && k.has("method") && k.has("formula"); }).length;
         const withMethod = PROBLEM_DB.filter(p => chainOf(p).has("method")).length;
+        const withCard = PROBLEM_DB.filter(p => p.formulas.length).length;
         const withMain = PROBLEM_DB.filter(p => p.main).length, withStrategy = PROBLEM_DB.filter(p => p.strategy).length;
+        const withStatement = PROBLEM_DB.filter(hasProblemStatement).length, withKey = PROBLEM_DB.filter(hasMockAnswer).length;
+        const linkedOnly = PROBLEM_DB.filter(p => !hasProblemStatement(p) && p.url).length;
+        const rated = PROBLEM_DB.filter(p => Number.isFinite(p.elo)), elos = rated.map(p => p.elo).sort((x, y) => x - y);
+        const filed = PROBLEM_DB.filter(p => p.tree.length).length, offTree = PROBLEM_DB.filter(p => !p.tree.length && p.offtree).length;
         const tags = PROBLEM_DB.reduce((n, p) => n + p.formulas.length, 0);
-        const N = PROBLEM_DB.length;
-        const problems = row("Practice problems", N) + FAMILIES.map(f => sub(f, famCount(f))).join("") +
-          row("By difficulty (where they sit in the paper)", "") + ["easy", "medium", "hard"].map(b => sub(b.charAt(0).toUpperCase() + b.slice(1), bands[b])).join("") +
-          row("With a strategy to reveal", withStrategy + pct(withStrategy, N)) +
-          row("With a method tagged", withMethod + pct(withMethod, N)) +
-          row("With the full chain (pattern, method and formula)", full + pct(full, N)) +
-          row("With the main idea recorded", withMain + pct(withMain, N)) +
+        const years = PROBLEM_DB.map(p => p.year).filter(Number.isFinite);
+        const levels = problemDifficulty.levels.filter(l => l.id).map(l => sub(l.label, of(problemDifficulty.filter(PROBLEM_DB, l.id).length, N))).join("");
+        const problems = row("Practice problems", N) +
+          row("Contests", FAMILIES.length) + row("Years covered", years.length ? `${Math.min(...years)}–${Math.max(...years)}` : "") +
+          row("From contests whose statements the app shows", of(withStatement, N)) +
+          row("From contests linked to the official paper instead", of(linkedOnly, N)) +
+          row("With an answer key for Practice sets", of(withKey, N)) +
+          row("With a brief solution written", of(withStrategy, N)) +
+          row("With a difficulty rating", of(rated.length, N)) +
+          (elos.length ? sub("Rating range", `${elos[0]}–${elos[elos.length - 1]}, median ${elos[Math.floor(elos.length / 2)]}`) : "") +
+          row("By difficulty (five equal rating bands)", "") + levels +
+          row("Filed in the topic tree", of(filed, N)) + (offTree ? sub("Outside the tree (calculus and the like)", offTree) : "") +
+          row("With at least one card tagged", of(withCard, N)) +
+          row("With a method tagged", of(withMethod, N)) +
+          row("With the full chain (pattern, method and formula)", of(full, N)) +
+          row("With the main idea recorded", of(withMain, N)) +
           row("Cards tagged per problem, on average", (tags / Math.max(1, N)).toFixed(1));
+        // Contests, in the groups of Practice's Contests list.
+        const famYears = f => Object.keys(DB_TREE[f] || {}).map(Number).sort((x, y) => x - y);
+        const contests = ctGroupsOf(FAMILIES).map(g => {
+          const total = g.items.reduce((n, f) => n + famCount(f), 0);
+          return row(`<b>${g.label}</b>`, `${fmt(total)} problems`) + g.items.map(f => {
+            const ys = famYears(f), st = PROBLEM_DB.filter(p => p.fam === f && hasProblemStatement(p)).length, n = famCount(f);
+            return sub(`<a href="#/problems/${famSlug(f)}/${ys[ys.length - 1]}">${f}</a>`, `${fmt(n)} · ${ys[0] === ys[ys.length - 1] ? ys[0] : ys[0] + "–" + ys[ys.length - 1]} · ${ys.length} year${ys.length === 1 ? "" : "s"}${st ? " · statements in the app" : " · linked to the paper"}`);
+          }).join("");
+        }).join("");
+        // The topic tree: its size, and the largest areas.
+        const nodes = [...TOPIC_NODES.values()], leaves = nodes.filter(n => !n.children.length).length;
+        const filings = PROBLEM_DB.reduce((n, p) => n + p.tree.length, 0);
+        const areas = nodes.filter(n => n.parent && TOPIC_NODES.get(n.parent) && !TOPIC_NODES.get(n.parent).parent)
+          .map(n => [n, topicProblems(n.id).length]).sort((x, y) => y[1] - x[1]).slice(0, 6);
+        const topics = row("Topics", nodes.length) + TOPIC_ROOTS.map(r => sub(`<a href="${topicHash(r.id)}">${topicHtml(r)}</a>`, `${fmt(topicProblems(r.id).length)} problems`)).join("") +
+          row("Topics with no subtopics", leaves) +
+          row("Filings (a problem filed under a topic)", filings) +
+          row("Filings per problem, on average", (filings / Math.max(1, filed)).toFixed(2)) +
+          row("Largest areas", "") + areas.map(([n, k]) => sub(`<a href="${topicHash(n.id)}">${topicHtml(n)}</a>`, `${fmt(k)} problems`)).join("");
+        // Learn: the textbooks.
+        const chapters = LEARN_SHELF.flatMap(b => b.chapters), taught = chapters.filter(c => c.kind !== "reference");
+        let exercises = 0, lessonProblems = 0, written = 0;
+        Object.values(learnSummary).forEach(ch => Object.values(ch.lessons || {}).forEach(l => { written++; exercises += l.exercises || 0; lessonProblems += l.problems || 0; }));
+        const learn = row("Textbooks", LEARN_SHELF.length) + LEARN_SHELF.map(b => sub(`<a href="${learnHash(b)}">${escapeAttr(b.title)}</a>`, `${b.chapters.filter(c => c.kind !== "reference").length} chapters, ${learnLessonsIn(b)} lessons`)).join("") +
+          row("Chapters", taught.length) + row("Lessons", LEARN_SHELF.reduce((n, b) => n + learnLessonsIn(b), 0)) +
+          row("Pages written (lessons and reference sections)", written) +
+          row("Exercises in the lessons", exercises) + row("Contest problems in the lessons", lessonProblems);
         // Connections: the hand-written links between kinds, the write-up links, and coverage.
         const bl = getBacklinks(), links = Object.values(bl).reduce((n, x) => n + x.length, 0);
         const suggests = ps.reduce((n, e) => n + (e.formula.suggests || []).length, 0);
@@ -11213,19 +11288,30 @@ The book remembers the last lesson you opened, in this browser, and the contents
           row("Methods pointing to formulas (uses)", uses) +
           row("Links inside explanations", links) +
           row("Cards no explanation links to", `<a href="${specialHref("LonelyPages")}">${lonely}</a>`) +
-          row("Cards used by at least one problem", used + pct(used, ALL.length)) +
+          row("Cards used by at least one problem", of(used, ALL.length)) +
           row("Most practiced cards", "") + top;
         // Figures and worked examples.
         const panels = Object.keys(window.MATH_DIAGRAMS || {}).length;
         const body = Object.values(window.MATH_BODY_DIAGRAMS || {}).reduce((n, o) => n + Object.keys(o).length, 0);
         const examples = ALL.filter(e => (window.MATH_EXAMPLES || {})[e.formula.id]).length;
-        const media = row("Cards with a figure", panels + pct(panels, ALL.length)) + row("Figures inside explanations", body) +
-          row("Cards with a worked example", examples + pct(examples, ALL.length)) + row("Built-in study lists", BUILTIN_LISTS.length);
+        const exercisesExtra = Object.values(window.MATH_PROBLEMS || {}).reduce((n, x) => n + (Array.isArray(x) ? x.length : 0), 0);
+        const media = row("Cards with a figure", of(panels, ALL.length)) + row("Figures inside explanations", body) +
+          row("Cards with a worked example", of(examples, ALL.length)) + row("Further practice questions on cards", exercisesExtra) +
+          row("Built-in study lists", BUILTIN_LISTS.length);
         // The reader's own use, from this browser.
         const starred = liveIds(getList("starred")).length, mine = lists.items.filter(l => l.id !== "starred").length;
-        const you = row("Starred cards", starred) + row("Your lists", mine) + row("Recently opened (kept)", readRecent().length);
-        return { title: "Statistics", body: table("Library", library) + table("Problems", problems) + table("Connections", connections) +
-          table("Figures and examples", media) + table("You", you) };
+        let sets = [];
+        try { sets = window.PracticeSessions ? window.PracticeSessions.read(localStorage) : []; } catch (e) { sets = []; }
+        const mocks = sets.filter(x => x.kind === "mock"), done = sets.filter(x => x.status === "finished");
+        const answered = sets.reduce((n, x) => n + Object.keys(x.answers || {}).length, 0);
+        const lp = learnProgress(), readN = Object.keys(lp.read || {}).length, solvedN = Object.keys(lp.problems || {}).length;
+        const you = row("Starred cards", starred) + row("Your lists", mine) + row("Recently opened (kept)", readRecent().length) +
+          row("Practice sets", sets.length) + sub("Finished", done.length) + sub("Mock contests", mocks.length) + sub("Answers given", answered) +
+          row("Lessons read", readN) + row("Lesson problems worked", solvedN);
+        return { title: "Statistics", body: table("Library", library) + table("Problems", problems) +
+          table("Contests", contests, "Problems, the years held, and whether the app shows the statements or links each problem to the official paper (a scanned paper with no text may still be linked).") +
+          table("Topic tree", topics) + table("Learn", learn) + table("Connections", connections) +
+          table("Figures and examples", media) + table("You", you, "Kept in this browser only.") };
       } },
     { name: "Search", arg: "query", example: "Special:Search/angle bisector",
       desc: "Search for the rest of the command.",
@@ -11365,8 +11451,35 @@ The book remembers the last lesson you opened, in this browser, and the contents
     }
     if (cmd.name === "RandomProblem") {
       arg = romanAime(arg);
+      const plural = n => `${n.toLocaleString()} problem${n === 1 ? "" : "s"}`;
+      // After a contest and a slash: the five difficulty levels, counted within that contest.
+      const cut = arg.lastIndexOf("/");
+      if (cut >= 0) {
+        const contest = arg.slice(0, cut), typing = arg.slice(cut + 1), a = resolveContest(contest), family = FAMILIES.find(f => normKey(f) === a);
+        const pool = PROBLEM_DB.filter(p => !a || (family ? p.fam === family : normKey(p.ref).includes(a)));
+        const levels = problemDifficulty.levels.filter(l => l.id);
+        return (typing.trim() ? rankBy(typing, levels, l => l.label, 5) : levels).map(l => {
+          const n = problemDifficulty.filter(pool, l.id).length;
+          return { text: full(contest + "/" + l.label), note: `${plural(n)} at this level` };
+        });
+      }
+      // A whole contest family counts every problem the command draws from (AHSME with the AMC 12, AJHSME with the AMC 8).
+      const famN = new Map(FAMILIES.map(f => [normKey(f), famCount(f)]));
+      const count = c => famN.get(normKey(c.name)) ?? c.n;
+      if (!arg.trim()) return FAMILIES.map(f => ({ text: full(f), note: `${plural(famCount(f))}; add a slash for a difficulty` }));
       const pool = getContests().filter(c => /\d/.test(arg) || !/\b(19|20)\d\d\b/.test(c.name));
-      return rankBy(arg, pool, c => c.name, 8).map(c => ({ text: full(c.name), note: `${c.n} problem${c.n === 1 ? "" : "s"}` }));
+      return rankBy(arg, pool, c => c.name, 10).map(c => ({ text: full(c.name), note: plural(count(c)) }));
+    }
+    if (cmd.name === "Contest") {
+      return (arg.trim() ? contestMatches(arg).slice(0, 10) : FAMILIES.map(f => ({ label: f, n: famCount(f) })))
+        .map(c => ({ text: full(c.label), note: c.n ? `${c.n.toLocaleString()} problems` : "open this contest page" }));
+    }
+    if (cmd.name === "Topic") {
+      const nodes = arg.trim() ? rankBy(arg, topicList(), topicPlain, 10) : topicList().filter(n => !n.parent || TOPIC_NODES.get(n.parent) && !TOPIC_NODES.get(n.parent).parent);
+      return nodes.map(n => ({ text: full(n.name.includes("$") ? n.id : n.name), label: "Special:Topic/" + topicHtml(n), note: `${topicPath(n.id).map(x => x.name).slice(0, -1).join(" › ") || "Subject"} · ${topicProblems(n.id).length.toLocaleString()} problems` }));
+    }
+    if (cmd.name === "Book") {
+      return (arg.trim() ? rankBy(arg, LEARN_SHELF, b => b.title, 8) : LEARN_SHELF).map(b => ({ text: full(b.title), note: `${learnLessonsIn(b)} lessons` }));
     }
     if (cmd.name === "WhatLinksHere") {
       return rankBy(arg, ALL, e => plainName(e.formula.name), 8).map(e => ({ text: full(plainName(e.formula.name) === e.formula.name.toLowerCase() ? e.formula.name : e.formula.id), note: e.section.title }));
@@ -11475,7 +11588,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const lessonHasProblems = route.lesson && learnLessonSummary(route.chapter, route.lesson)?.problems;
     const needsProblems = ["problems", "problem", "browse", "settings"].includes(route.type)
       || route.type === "space" && route.name === "practice"
-      || route.type === "special" && (/^(randomproblem|problemsusing|unclassified|statistics|recent)$/.test(route.name)
+      || route.type === "special" && (/^(randomproblem|problemsusing|unclassified|statistics|recent|contest)$/.test(route.name)
         || route.name === "random" && /^problem(?:\/|$)/i.test(route.arg))
       || route.type === "home" && !!state.query.trim()
       || state.order === "problems" && (route.section || route.type === "topic")
@@ -11488,7 +11601,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const src = chapter && chapterAsset(book, chapter);
       if (src && !loadedAssets.has(src)) requirements.push(loadAsset(src));
     };
-    if (route.type === "space" && route.name === "practice" || route.type === "problems") requireGroup("practice");
+    if (route.type === "space" && route.name === "practice" || route.type === "problems" || route.type === "special" && route.name === "statistics") requireGroup("practice");
     if (route.type === "learn") requireChapter(route.book, route.chapter);
     if (route.type === "settings") {
       const book = LEARN_SHELF.find(book => book.id === "aime-counting");
