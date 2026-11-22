@@ -54,9 +54,9 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const pilot=p.getByRole('option',{name:'2025 HMMT February Algebra and Number Theory',exact:true});
  await pilot.waitFor();
  await paperSearch.fill('febuary');
- assert.equal(await p.locator('#mock-paper-options').isHidden(),true);
- assert.equal(await p.locator('#mock-paper-options').innerHTML(),'');
- assert.equal(await paperSearch.getAttribute('aria-expanded'),'false');
+ assert.equal(await p.locator('#mock-paper-options .set-find-empty').innerText(),'No contest matches.');
+ assert.equal(await p.locator('#mock-paper-options [role="option"]').count(),0);
+ assert.equal(await paperSearch.getAttribute('aria-expanded'),'true');
  assert.equal(await paperSearch.getAttribute('aria-activedescendant'),null);
  await paperSearch.fill('hmmt feb alg nt 2025');
  await pilot.waitFor();
