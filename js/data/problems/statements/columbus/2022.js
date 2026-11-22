@@ -30,12 +30,12 @@ exists and it is equal to $e^{\frac mn}$, for some relatively prime positive int
 
 (A) $0$  (B) $-1$  (C) $1$  (D) $2$  (E) $-2$ (F) $3$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
 "2022-columbus-state-tournament-6": { s: String.raw`For any real number $x\in\mathbb R$, we have the identity
-$$\begin{gathered}(\sin x+\cos x-1)^2\\=a(b-\sin x)(c-\cos x).\end{gathered}$$
+$$(\sin x+\cos x-1)^2=a(b-\sin x)(c-\cos x).$$
 What is $a+b+c$?
 
 (A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$ (F) $5$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
 "2022-columbus-state-tournament-7": { s: String.raw`Suppose that the plane is tiled with an infinite checkerboard of unit squares. Another square, with sides equal to $r\in\left[\frac{1}{\sqrt2},1\right]$, is dropped on the plane at random with position and orientation independent of the checkerboard tiling. The probability that it does not cover any of the corners of the squares of the checkerboard is equal to
-$$\begin{aligned}P=\frac4\pi\Big[&\frac\pi4\left(1-mr^2\right)\\&+2r^2\arcsin(r)\\&+nr\sqrt{1-r^2}-r^2-\frac12\Big],\end{aligned}$$
+$$P=\frac4\pi\left[\frac\pi4\left(1-mr^2\right)+2r^2\arcsin(r)+nr\sqrt{1-r^2}-r^2-\frac12\right],$$
 for two positive integers $m$ and $n$. What is $m+n$?
 
 @@fig:columbus/2022/7.png@@
@@ -50,7 +50,7 @@ for two positive integers $m$ and $n$. What is $m+n$?
 
 (A) $7$  (B) $6$  (C) $5$  (D) $4$  (E) $3$ (F) $2$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
 "2022-columbus-state-tournament-10": { s: String.raw`The following limit
-$$\begin{aligned}L:=\lim_{n\to\infty}&\int_0^{1/2}\frac{(1+f_{n-1}(x))^{n+1}}{(1+f_n(x))^n}\\&\,dx,\end{aligned}$$
+$$L:=\lim_{n\to\infty}\int_0^{1/2}\frac{(1+f_{n-1}(x))^{n+1}}{(1+f_n(x))^n}\,dx,$$
 where $f_n(x)=x+\frac{x^2}{2}+\cdots+\frac{x^n}{n}$, $x\in[0,1]$, is given by $L=m-n\ln2$ for two rational numbers $m$ and $n$. What is $\frac mn$?
 
 (A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$ (F) $6$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2022-tournament-test-1.pdf" },
