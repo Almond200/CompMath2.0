@@ -22,7 +22,7 @@ assert.equal(data.ratings['1988-ajhsme-1'].source, 'live');
 // Shared 2026 AMC 10/12 questions have identical authored estimates.
 const twins = [[2,1],[3,2],[4,3],[5,4],[7,5],[10,6],[15,10],[16,11],[21,16],[22,17],[24,20]];
 for (const [a,b] of twins) assert.equal(data.ratings[`2026-amc-10a-${a}`].elo, data.ratings[`2026-amc-12a-${b}`].elo);
-const manual = JSON.parse(fs.readFileSync('tools/manual-difficulty-ratings.json', 'utf8'));
+const manual = JSON.parse(fs.readFileSync('tools/data/manual-difficulty-ratings.json', 'utf8'));
 assert.ok(manual.ratings['2026 AMC 10A, Problem 24'][0] < manual.ratings['2026 AMC 10A, Problem 23'][0]);
 for (const [ref, [elo, reason]] of Object.entries(manual.ratings)) {
   assert.ok(reason.length > 10, 'manual estimates retain their reasoning');

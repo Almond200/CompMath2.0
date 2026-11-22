@@ -381,7 +381,7 @@ Longer content goes in the id-keyed side files: the write-up in `js/data/details
 headings depend on the card's kind (CONVENTIONS §2), and a `{ q, s }` pair in
 `examples-supplement.js`. A leading `## Key forms` block is pulled out and rendered under the
 description; each bullet may carry an explanation after a ` — `, shown as gray subtext. Register
-the card in `tools/rewrite-register.json` and in a batch of `js/data/new-cards.js`
+the card in `tools/data/rewrite-register.json` and in a batch of `js/data/new-cards.js`
 (CONVENTIONS, "New cards are registered").
 
 If the `latex` uses `\sum` or `\prod`, add a `latexPlain` right after it with the terms written

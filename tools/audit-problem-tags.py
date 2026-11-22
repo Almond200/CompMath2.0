@@ -108,7 +108,7 @@ def main():
     prefix = args[0] if args else None
 
     cards = _bsi.load_cards()
-    cfg = json.load(io.open(os.path.join(ROOT, "tools/link-aliases.json"), encoding="utf-8"))
+    cfg = json.load(io.open(os.path.join(ROOT, "tools/data/link-aliases.json"), encoding="utf-8"))
     aliases = {k: list(v) for k, v in cfg.get("aliases", {}).items()}
     for k, v in cfg.get("aliasesExtra", {}).items():
         aliases.setdefault(k, []).extend(v)

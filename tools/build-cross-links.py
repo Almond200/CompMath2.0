@@ -12,7 +12,7 @@ actually appear in the prose --
 -- so both went unlinked, and because nothing was saved, the editorial denylist from that
 pass (Pythagoras, the quadratic formula, the law of sines, the triangle inequality: bedrock
 results a reader already knows) survived only as an accident of the data. The vocabulary now
-lives in tools/link-aliases.json and this tool is re-runnable, so cards added later get the
+lives in tools/data/link-aliases.json and this tool is re-runnable, so cards added later get the
 same treatment.
 
 Build-time only. Nothing here ships to the browser; the links are baked into the data as
@@ -46,7 +46,7 @@ _bsi = import_module("build-search-index") if os.path.exists(
 ) else None
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ALIAS_PATH = os.path.join(ROOT, "tools/link-aliases.json")
+ALIAS_PATH = os.path.join(ROOT, "tools/data/link-aliases.json")
 DETAIL_GLOB = os.path.join(ROOT, "js/data/details/*.js")
 
 

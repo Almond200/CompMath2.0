@@ -229,7 +229,7 @@ Each is a fact or move a re-solved problem needed and no card holds (checked aga
 How I looked:
 - about 250 topic names, olympiad and AMC, checked against every card's name, keywords, description, and write-up;
 - the strategies of the 1,365 tagged problems, and the 4,616 statements, for situations that recur with no card;
-- the "Gap candidates" in `tools/RETAG-NOTES.md`.
+- the "Gap candidates" in `tools/notes/RETAG-NOTES.md`.
 
 Almost everything standard is already covered. These are what's missing. Tick the ones you want, or strike any; nothing is written until you approve.
 

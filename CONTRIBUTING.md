@@ -317,7 +317,7 @@ This table predates `QUESTIONS.md` (2026-10-16), which is now where every candid
 | the combinatorial reading of the Fibonacci numbers: tilings of a $1 \times n$ strip by squares and dominoes, and binary strings with no two adjacent $1$s, both number $F_{n+2}$ | **method** | 1990 #9 | **partly a misrecord, now corrected.** `binets-formula` does carry the sequence and its identities (closed form, Cassini, $\gcd(F_m,F_n)=F_{\gcd(m,n)}$, $\sum F_i = F_{n+2}-1$) and its keywords include Fibonacci, so the earlier claim that nothing covered Fibonacci was wrong. It was found by searching card *names* only. What is genuinely absent is the counting interpretation, which is how the sequence actually enters AMC/AIME problems; `binets-formula` is purely algebraic and `non-adjacent-selection` gives only the fixed-$k$ closed form |
 | an extremal set cut out by gap conditions is bounded by its densest periodic block: find the shortest repeating window, work out the most elements it can hold, then tile the range with copies and add the tail | **method** | 2024 10A #20 | none. `gap-method` supplies the minimum-gap bookkeeping and is what that problem is tagged with, but it counts selections of a fixed size rather than maximizing the size, and no card states the tile-the-range bound |
 
-Detailed per-year findings and the defect tally live in `tools/RETAG-NOTES.md`.
+Detailed per-year findings and the defect tally live in `tools/notes/RETAG-NOTES.md`.
 
 ## Propose, do not build, for coverage gaps
 

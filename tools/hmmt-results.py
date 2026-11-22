@@ -26,13 +26,13 @@ keep author estimates.
     python3 tools/hmmt-results.py --check    # fail if the ratings file disagrees with the counts
     python3 tools/import-live-ratings.py     # then regenerate the app's ratings file
 
-Counts are written to tools/hmmt-solve-rates.json with the address of each results file.
+Counts are written to tools/data/hmmt-solve-rates.json with the address of each results file.
 """
 import argparse, html, json, math, os, re, sys, tempfile, urllib.error, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MANUAL = os.path.join(ROOT, 'tools', 'manual-difficulty-ratings.json')
-COUNTS = os.path.join(ROOT, 'tools', 'hmmt-solve-rates.json')
+MANUAL = os.path.join(ROOT, 'tools', 'data', 'manual-difficulty-ratings.json')
+COUNTS = os.path.join(ROOT, 'tools', 'data', 'hmmt-solve-rates.json')
 A, B = 2030, 295
 # The November room is weaker and more spread out than the February one, so the same share of
 # solvers means an easier problem: November has its own two constants, fitted once (2026-11-13)

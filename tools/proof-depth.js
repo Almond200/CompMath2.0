@@ -2,14 +2,14 @@
 // usage: node tools/proof-depth.js [--list [N]]   (prints counts; --list prints the N thinnest, highest importance first)
 //        node tools/proof-depth.js --dense [N]   (unreviewed cards, fewest proof characters per Key form and observation first)
 // A card is "thin" when its proof text (math stripped) is under 350 characters, or it has no "Why it works".
-// Cards read in step E and judged complete (every Key form and observation argued) are listed in tools/proof-depth-reviewed.txt and skipped.
+// Cards read in step E and judged complete (every Key form and observation argued) are listed in tools/data/proof-depth-reviewed.txt and skipped.
 global.window=global;const fs=require('fs'),vm=require('vm'),path=require('path');const R=path.join(__dirname,'..','js','data');
 for(const f of fs.readdirSync(R).filter(f=>f.endsWith('.js')))try{vm.runInThisContext(fs.readFileSync(path.join(R,f),'utf8'))}catch(e){}
 for(const f of fs.readdirSync(path.join(R,'details')))vm.runInThisContext(fs.readFileSync(path.join(R,'details',f),'utf8'));
 const cards=[];const walk=o=>{if(Array.isArray(o))o.forEach(walk);else if(o&&typeof o==='object'){if(o.id&&o.importance&&o.name)cards.push(o);Object.values(o).forEach(walk)}};
 for(const k of Object.keys(window))if(/^MATH_/.test(k)&&!/PROBLEM|STATEMENT|EXAMPLE|DETAILS/.test(k))walk(window[k]);
 const seen=new Set(),C=cards.filter(c=>!seen.has(c.id)&&seen.add(c.id));
-const REV=new Set(fs.readFileSync(path.join(__dirname,'proof-depth-reviewed.txt'),'utf8').split('\n').map(l=>l.split('#')[0].trim()).filter(Boolean));
+const REV=new Set(fs.readFileSync(path.join(__dirname,'data','proof-depth-reviewed.txt'),'utf8').split('\n').map(l=>l.split('#')[0].trim()).filter(Boolean));
 const RANK={high:0,medium:1,low:2,lower:3,lowest:4};
 const section=(t,h)=>{const m=t.match(new RegExp('^## '+h+'\\n([\\s\\S]*?)(?=^## |$(?![\\s\\S]))','m'));return m?m[1]:null;};
 const plain=s=>s.replace(/\$\$[\s\S]*?\$\$/g,' M ').replace(/\$[^$]*\$/g,' m ').replace(/\{\{[^}]*\}\}/g,'').replace(/\s+/g,' ').trim();

@@ -9,11 +9,11 @@ The app moved here from an earlier conversation. These are that chat's answers (
   - `tools/fetch-live-statements.py` ran on the Mac with Python's `urllib`: a plain HTTPS GET of each LIVE page, a simple User-Agent, 1.5 s between requests, and no cookies, login, or API. It reads the JSON embedded in each page and pulls the SVG figures.
   - The raw pages are cached on the Mac in `~/aops-cache/live/`: 211 files, one per paper, such as `aime-1983.json`.
   - The cloud container's 403 came from its own proxy, not from LIVE. (Since 2026-10-23 LIVE is reachable from the cloud, and the concept tags of all 211 papers are cached in `tools/live-cache/`.)
-- **Concept tags.** Each cached problem has a `concepts` field, a free-text string of tags separated by semicolons, such as `"logarithm; algebraic manipulation"`. There are 258 distinct strings and about 11,229 tags. The fetch script never imports them; they were used only for the gap table in `tools/live-missing.md`.
+- **Concept tags.** Each cached problem has a `concepts` field, a free-text string of tags separated by semicolons, such as `"logarithm; algebraic manipulation"`. There are 258 distinct strings and about 11,229 tags. The fetch script never imports them; they were used only for the gap table in `tools/notes/live-missing.md`.
 - **How the 1,365 problems were tagged:** unknown. Not every tag was checked against a solution: `tools/audit-problem-tags.py` exists because 2026 AIME I #5 carried `rotation-trick`, which its solution never uses.
 - **About 3,100 problems were added from LIVE as text only**, on purpose, to be tagged later.
 - **`trick` and `trickFormulas`:** unknown.
-- **Fall 2021 AMC 12A and 12B:** never supplied. The gap is known and accepted (`tools/live-missing.md`); only 12B #23 has text. Fall 10A and 10B were imported from PDFs. (Update 2026-10-24: LIVE has Fall 12A and 12B as its 2021 AMC 12 C and D papers, and all 50 are imported; only Fall 10B #11 still comes from the AoPS Wiki.)
+- **Fall 2021 AMC 12A and 12B:** never supplied. The gap is known and accepted (`tools/notes/live-missing.md`); only 12B #23 has text. Fall 10A and 10B were imported from PDFs. (Update 2026-10-24: LIVE has Fall 12A and 12B as its 2021 AMC 12 C and D papers, and all 50 are imported; only Fall 10B #11 still comes from the AoPS Wiki.)
 
 ## 2. The cards' history
 - **Order of cards:** known only from about 2026-10-11 (the formula conversion batches, cards N1 to N7, the shape reference cards, then the olympiad batch). `CHANGELOG.md` is the best record of earlier work.
@@ -29,7 +29,7 @@ The app moved here from an earlier conversation. These are that chat's answers (
   - the figures cheat-sheet;
   - proof-based competitions (for now);
   - hints in the UI, a label setting, and a level filter.
-- **Tiers and importance:** whether the first tables were reviewed card by card is unknown. Since then, every new card's importance is judged on evidence and shown in a table before writing. The five-level scale was approved from `tools/importance-proposal.md`.
+- **Tiers and importance:** whether the first tables were reviewed card by card is unknown. Since then, every new card's importance is judged on evidence and shown in a table before writing. The five-level scale was approved from `tools/notes/importance-proposal.md`.
 - **The `level` field stays** because `tools/check-lists.py` reads it to decide which study routes a card belongs in. Removing it means changing that check first.
 
 ## 3. Search

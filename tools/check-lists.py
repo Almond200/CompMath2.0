@@ -93,7 +93,7 @@ for blk in blocks[1:]:
         have |= set(re.findall(r'"([a-z0-9-]+)"', blob))
     # Routes are additive (Stanley, 2026-10-11): a card belongs to the route of the LOWEST contest
     # tier it carries, so the AIME route holds only what is new beyond AMC 10/12, and the Olympiad route
-    # only what is new beyond AIME. A card may repeat in a higher route only if tools/route-repeats.json
+    # only what is new beyond AIME. A card may repeat in a higher route only if tools/data/route-repeats.json
     # names it (a card whose use at that level is broader, such as the pigeonhole principle).
     AMC_LV = {"AMC10", "AMC12"}
     def entry(lv):
@@ -102,13 +102,13 @@ for blk in blocks[1:]:
         if "Olympiad" in lv: return "Olympiad"
         return None
     tier = tm.group(1)
-    repeats = set(json.load(open("tools/route-repeats.json")).get(tier, []))
+    repeats = set(json.load(open("tools/data/route-repeats.json")).get(tier, []))
     should = {c for c, (sj, lv) in meta.items() if sj == want_subj and entry(lv) == tier}
     allowed = should | {c for c in repeats if c in meta and meta[c][0] == want_subj}
     for c in sorted(should - have):
         route_bad.append("%s: MISSING %s" % (lid, c))
     for c in sorted(have - allowed):
-        route_bad.append("%s: %s does not belong (its first tier is %s; name it in tools/route-repeats.json to repeat it)" % (lid, c, entry(meta[c][1]) if c in meta else "unknown"))
+        route_bad.append("%s: %s does not belong (its first tier is %s; name it in tools/data/route-repeats.json to repeat it)" % (lid, c, entry(meta[c][1]) if c in meta else "unknown"))
 
 # A card listed twice in one list renders twice, under two different headings, and the route
 # check above cannot see it because it collects ids into a set. That is exactly how

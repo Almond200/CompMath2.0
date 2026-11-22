@@ -164,7 +164,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.deepEqual(await page.locator('.aops-btn').evaluateAll(xs=>xs.map(x=>[x.textContent.trim(),x.getAttribute('href')])),[['Open in archive','https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/problems.pdf'],['Open the official solution','https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/solutions.pdf']]);
  const credit=page.locator('#prob-st .statement-credit');await credit.waitFor();assert.match(await credit.innerText(),/^© HMMT$/);assert.equal(await credit.locator('a').count(),0);
  assert.equal(await page.locator('[data-statement-fallback]').isVisible(),false);assert.match(await page.locator('.chain-official-note').innerText(),/as one PDF; this is problem 4\.$/);
- assert.equal(await page.locator('.ptree-node.is-filed').count(),1);assert.equal(await page.locator('.elo-box .elo-num').innerText(),String(JSON.parse(fs.readFileSync(path.join(__dirname,'manual-difficulty-ratings.json'),'utf8')).ratings['2019 HMMT February Combinatorics, Problem 4'][0]),'the rating comes from the data file');await fits();
+ assert.equal(await page.locator('.ptree-node.is-filed').count(),1);assert.equal(await page.locator('.elo-box .elo-num').innerText(),String(JSON.parse(fs.readFileSync(path.join(__dirname,'data','manual-difficulty-ratings.json'),'utf8')).ratings['2019 HMMT February Combinatorics, Problem 4'][0]),'the rating comes from the data file');await fits();
  // Contest searches use the same results for AMC and for archived papers.
  const searches = [
    ['2024 AMC 10A', ['2024 AMC 10A']],
