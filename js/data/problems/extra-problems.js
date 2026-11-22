@@ -183,10 +183,6 @@
     { q: String.raw`Find the Zeckendorf representation of $2024$.`,
       s: String.raw`Greedily subtract the largest Fibonacci $\le$ the remainder: $2024=1597+377+34+13+3$ ($F_{16}+F_{13}+F_{8}+F_{6}+F_{3}$) — no two consecutive.` }
   );
-  add("plane-regions",
-    { q: String.raw`Six points on a circle are joined by all chords (no three meeting inside). How many interior intersection points and chord pieces are there, and how do they give the $31$ regions?`,
-      s: String.raw`Interior crossings: $\binom64=15$. The $\binom62=15$ chords are cut into $15+2\cdot15=45$ pieces. With the $6$ boundary arcs, Euler's $V-E+F=2$ ($V=6+15=21$, $E=45+6=51$) gives $F=32$ — the $31$ interior regions plus the outer face.` }
-  );
 
   // ---------- Cool facts ----------
   add("freshmans-dream",
@@ -960,10 +956,6 @@
       s: String.raw`The ballot formula gives $\tfrac{7 - 4}{7 + 4} = \tfrac3{11}$.` },
     { q: String.raw`In how many orders of $6$ votes for $A$ and $2$ for $B$ is $A$ strictly ahead after every vote?`,
       s: String.raw`There are $\binom82 = 28$ orders, and the fraction with $A$ always ahead is $\tfrac{6 - 2}{8} = \tfrac12$, so $14$ orders. (Listing them confirms it: the first two votes must go to $A$, and so on.)` }
-  );
-  add("plane-regions",
-    { q: String.raw`The region counts for $1$ to $5$ points on a circle are $1, 2, 4, 8, 16$, which suggests powers of $2$. Using the formula, how many regions do $8$ points give, and how far off is the guess?`,
-      s: String.raw`$R(8) = \binom84 + \binom82 + 1 = 70 + 28 + 1 = 99$, while the guess says $2^7 = 128$. The formula is a polynomial of degree $4$ in $n$, so it falls far behind any doubling.` }
   );
   add("combinatorial-nullstellensatz",
     { q: String.raw`A polynomial $f(x, y)$ of total degree $2$ has a nonzero coefficient of $xy$. Show that it is nonzero at some point of $\{0, 1\}\times\{0, 1\}$, and check this for $f = xy - x - y + 1$.`,

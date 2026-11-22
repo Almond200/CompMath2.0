@@ -1486,7 +1486,14 @@ window.MATH_BOOK_INDEX["amc-counting"] = [
       "by symmetry",
       "equally likely",
       "random order",
-      "shortcut"
+      "shortcut",
+      "fix one choice",
+      "without loss of generality",
+      "wlog",
+      "relabel",
+      "reflection symmetry",
+      "equal cases",
+      "symmetric states"
     ]
   },
   {

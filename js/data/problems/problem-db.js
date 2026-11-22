@@ -8033,7 +8033,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2012 Lehigh Math Contest, Problem 37", formulas: ["floor-basics", "bounding-diophantine"], strategy: "", tree: ["alg.fn.floor.eq"] },
   { ref: "2012 Lehigh Math Contest, Problem 38", formulas: ["stars-and-bars"], strategy: "", tree: ["cp.tech.stars.bounds"] },
   { ref: "2012 Lehigh Math Contest, Problem 39", formulas: ["states-recursion-prob"], strategy: "", tree: ["cp.prob.process.stop"] },
-  { ref: "2012 Lehigh Math Contest, Problem 40", formulas: ["plane-regions", "eulers-polyhedron-formula"], strategy: "", tree: ["geo.comb.count.regions"] },
+  { ref: "2012 Lehigh Math Contest, Problem 40", formulas: ["eulers-polyhedron-formula"], strategy: "", tree: ["geo.comb.count.regions"] },
   // ---- 2011 Lehigh Math Contest. Topics, cards and rating only (Step H); the official PDFs are linked by the app.
   { ref: "2011 Lehigh Math Contest, Problem 1", formulas: [], strategy: "", tree: ["alg.word.compute.fraction"] },
   { ref: "2011 Lehigh Math Contest, Problem 2", formulas: ["prism-pyramid-volumes"], strategy: "", tree: ["geo.solid.prism.box"] },
