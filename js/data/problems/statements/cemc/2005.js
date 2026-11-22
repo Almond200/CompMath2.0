@@ -198,6 +198,11 @@ A total score that is not possible is
 What is the sum of the whole sequence?
 
 (A) $656$  (B) $640$  (C) $608$  (D) $704$  (E) $672$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2005/2005FermatContest.pdf" },
+"2005-fermat-contest-25": { s: String.raw`A triline is a line with the property that three times its slope is equal to the sum of its $x$-intercept and its $y$-intercept. For how many integers $q$ with $1\le q\le 10\,000$ is there at least one positive integer $p$ so that there is exactly one triline through $(p, q)$?
+
+N.B. This problem has been corrected from its original version with the addition of the word "positive".
+
+(A) $60$  (B) $57$  (C) $58$  (D) $61$  (E) $59$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2005/2005FermatContest.pdf" },
 "2005-pascal-contest-1": { s: String.raw`What is the value of $\dfrac{200+10}{20+10}$?
 
 (A) $2$  (B) $10$  (C) $1$  (D) $11$  (E) $7$`, u: "https://cemc.uwaterloo.ca/sites/default/files/documents/2005/2005PascalContest.pdf" },
