@@ -3654,6 +3654,9 @@
   function famSlug(f) { return f.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); }
   // A paper within a year's page: "2025 AIME I" -> "aime-i", "2021 Fall AMC 10A" -> "fall-amc-10a".
   function paperSlug(cname) { return famSlug(String(cname).replace(/^\d{4}\s*/, "")); }
+  // The address of a problem's own paper: the year's page opened on that paper (HMMT February Geometry, not the year's first
+  // tab) whenever the year holds more than one (owner, 2026-11-22).
+  const paperHref = p => `#/problems/${famSlug(p.fam)}/${p.year}${new Set(((DB_TREE[p.fam] || {})[p.year] || []).map(q => q.cname)).size > 1 ? "/" + paperSlug(p.cname) : ""}`;
   // Types for a problem: manual `types` (topic ids) unioned with the topics carried
   // by its tagged formulas, so type filtering works even before any manual tagging.
   function problemTypes(entry) {
@@ -10133,13 +10136,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const side = (label, q) => q
       ? `<a class="cn-side" href="#/problem/${q.slug}"><span class="cn-side-label">${label}</span><span class="cn-side-ref">Problem ${q.num}</span></a>`
       : `<span class="cn-side cn-side-off"><span class="cn-side-label">${label}</span><span class="cn-side-ref">&mdash;</span></span>`;
-    const famHref = `#/problems/${famSlug(p.fam)}/${p.year}`;
+    const famHref = paperHref(p);
     return `
       <nav class="contest-nav" aria-label="Other problems in this contest">
         <div class="cn-head"><a href="${famHref}">${escapeAttr(p.year + " " + p.cname)}</a></div>
         <div class="cn-sides">${side("Preceded by", prev)}${side("Followed by", next)}</div>
         <div class="cn-nums">${cells.join("")}</div>
-        <div class="cn-foot"><a href="#/problems/${famSlug(p.fam)}/${p.year}">All ${escapeAttr(p.fam)} problems</a></div>
+        <div class="cn-foot"><a href="${famHref}">All ${escapeAttr(p.fam)} problems</a></div>
       </nav>`;
   }
 
@@ -10419,7 +10422,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     ? `<button type="button" class="ct-years-more" data-ct-years="${escapeAttr(f)}" aria-expanded="${ctYearsOpen.has(f)}">${ctYearsOpen.has(f) ? "Fewer years" : `Show ${years.length - CT_YEARS} more year${years.length - CT_YEARS === 1 ? "" : "s"}`}</button>` : "");
   function contestFinderHtml(fams) {
     const groups = ctGroupsOf(fams);
-    return `<div class="ct-find mock-paper-search"><input id="ct-find" class="set-find-input" type="search" placeholder="Find a contest or a year, such as HMMT or 2019" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="ct-find-options" aria-label="Find a contest or a year">
+    return `<div class="ct-find mock-paper-search"><input id="ct-find" class="set-find-input" type="search" placeholder="Find a contest or year" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="ct-find-options" aria-label="Find a contest or year">
           <div id="ct-find-options" class="set-find-list" role="listbox" aria-label="Contests" hidden></div></div>
           <div class="fam-chips ct-jump" role="group" aria-label="Jump to a group of contests">${groups.map(g => `<button type="button" class="fam-chip" data-ct-jump="${g.key}">${escapeAttr(g.label)}<span class="br-count">${g.items.length}</span></button>`).join("")}<button type="button" class="ct-fold-all" id="ct-fold-all">Collapse all</button></div>`;
   }
@@ -10439,21 +10442,52 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const input = root.querySelector("#ct-find"); if (!input) return;
     const options = root.querySelector("#ct-find-options"), groups = [...root.querySelectorAll(".ct-group")], foldAll = root.querySelector("#ct-fold-all");
     const yearsOf = f => Object.keys(DB_TREE[f]).map(Number).sort((x, y) => y - x);
-    const aliases = f => Object.entries(CONTEST_QUERY_ALIASES).filter(([, v]) => v.includes(f)).map(([k]) => k.toLowerCase()).join(" ");
+    const aliases = f => Object.entries(CONTEST_QUERY_ALIASES).filter(([, v]) => v.some(a => f.startsWith(a))).map(([k]) => k).join(" ");
+    let paperIndex = null;   // family -> year -> the names of that year's papers
+    const papersOf = f => {
+      if (!paperIndex) paperIndex = {};
+      if (!paperIndex[f]) { paperIndex[f] = {}; Object.keys(DB_TREE[f]).forEach(y => { paperIndex[f][y] = [...new Set(DB_TREE[f][y].map(p => p.cname))]; }); }
+      return paperIndex[f];
+    };
+    const wordsCache = new Map(), wordsOf = text => { if (!wordsCache.has(text)) wordsCache.set(text, contestQueryWords(text)); return wordsCache.get(text); };
     let choices = [], active = -1;
-    // The finder is a dropdown like the mock's paper search: a contest name opens the contest's latest year, a name with a
-    // year opens that year, and a year alone lists every contest held that year.
+    // The finder is a dropdown like the mock's paper search. Each word has to begin a word of the paper's name ("geom"
+    // finds Geometry; "feb", "nov", "nt", "alg" and "amc10a" are understood), so "hmmt geometry 2025" opens that one
+    // paper. A year alone lists every paper held that year; a name alone opens the contest's latest year. Whole-name
+    // matches come first, then the ones with the fewest extra words.
     function matches() {
-      const tokens = input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      const tokens = contestQueryWords(input.value);
       if (!tokens.length) return [];
-      const years = tokens.filter(t => /^\d{4}$/.test(t)), words = tokens.filter(t => !/^\d{4}$/.test(t)), out = [];
-      FAMILIES.forEach(f => {
-        const hay = (f + " " + aliases(f)).toLowerCase(), ys = yearsOf(f);
-        if (!words.every(w => hay.includes(w))) return;
-        if (years.length) years.forEach(y => { if (ys.includes(+y)) out.push({ label: `${y} ${f}`, href: `#/problems/${famSlug(f)}/${y}` }); });
-        else out.push({ label: f, href: `#/problems/${famSlug(f)}/${ys[0]}` });
+      const years = [...new Set(tokens.filter(t => /^(19[5-9]\d|20\d\d)$/.test(t)).map(Number))].sort((x, y) => y - x);
+      const hasAmc = tokens.includes("amc");
+      const letter = hasAmc ? tokens.find(t => /^[ab]$/.test(t)) : null, words = tokens.filter(t => !years.includes(+t) && !(hasAmc && /^[ab]$/.test(t)));
+      const fits = text => words.every(w => text.some(h => h.startsWith(w)));
+      const scoreOf = own => !words.length ? 1 : own.join(" ") === words.join(" ") ? 0 : 1 + own.filter(h => !words.some(w => h.startsWith(w))).length;
+      const out = [];
+      FAMILIES.forEach((f, order) => {
+        const idx = papersOf(f), known = Object.keys(idx).map(Number).sort((x, y) => y - x), extra = wordsOf(aliases(f));
+        if (years.length) {
+          years.filter(y => known.includes(y)).forEach(y => idx[y].forEach(cname => {
+            const own = wordsOf(cname); if (!fits([...own, ...extra]) || (letter && !own.includes(letter))) return;
+            out.push({ label: `${y} ${cname}`, href: `#/problems/${famSlug(f)}/${y}${idx[y].length > 1 ? "/" + paperSlug(cname) : ""}`, score: scoreOf(own) * 1000 + order });
+          }));
+          return;
+        }
+        // A contest made of rounds (HMMT February, SMT, CMIMC...) is offered round by round, each at its latest year, so a
+        // choice lands on the subtest itself; a contest without rounds opens its latest year.
+        const seen = new Set(), rounds = [];
+        known.forEach(y => idx[y].forEach(cname => {
+          const r = roundOf({ fam: f, cname }) || cname; if (seen.has(r)) return; seen.add(r); rounds.push({ y, cname });
+        }));
+        const hasRounds = roundOf({ fam: f, cname: rounds[0].cname }) !== "";
+        const own = wordsOf(f);
+        if (!hasRounds) { if (fits([...own, ...extra])) out.push({ label: f, href: `#/problems/${famSlug(f)}/${known[0]}`, score: scoreOf(own) * 1000 + order, y: known[0] }); return; }
+        rounds.forEach(({ y, cname }) => {
+          const o = wordsOf(cname); if (!fits([...o, ...extra])) return;
+          out.push({ label: cname, href: `#/problems/${famSlug(f)}/${y}${idx[y].length > 1 ? "/" + paperSlug(cname) : ""}`, score: scoreOf(o) * 1000 + order, y });
+        });
       });
-      return out.slice(0, 10);
+      return out.sort((x, y) => x.score - y.score || (y.y || 0) - (x.y || 0)).slice(0, years.length && !words.length ? 120 : 40);
     }
     function close() { options.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; }
     function highlight() {
@@ -10849,7 +10883,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           ${!pv && backFromProblem && backFromProblem.slug === p.slug && BY_ID[backFromProblem.fid]
             ? `<a class="back-link" href="#/f/${backFromProblem.fid}">${uiIcon("arrow-left")} Back to ${escapeAttr(BY_ID[backFromProblem.fid].formula.name)}</a>`
             : ""}
-          <a class="back-link" href="#/problems/${famSlug(p.fam)}/${p.year}">${uiIcon("arrow-left")} ${escapeAttr(p.fam)} ${p.year}</a>
+          <a class="back-link" href="${paperHref(p)}">${uiIcon("arrow-left")} ${escapeAttr(p.fam)} ${p.year}</a>
         </div>
         <div class="book-eyebrow prob-eyebrow">Practice</div>
         <div class="detail-head">
