@@ -6176,7 +6176,10 @@
           <div class="mock-paper-search"><input id="mock-paper-name" class="set-find-input" type="search" placeholder="Search a year or paper..." autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="mock-paper-options">
           <div id="mock-paper-options" class="set-find-list" role="listbox" aria-label="Past contests" hidden></div></div>
         </div>
+        <label class="mock-check" data-mock-check="trig" hidden><input type="checkbox" id="mock-no-trig"> <span>No trigonometry</span></label>
+        <label class="mock-check" data-mock-check="calc" hidden><input type="checkbox" id="mock-no-calc"> <span>No calculus</span></label>
         <div class="mock-source-field" hidden></div>
+        <div class="mock-advanced-field" hidden></div>
         <p class="mock-generation-info" hidden>Questions come from your selected contests and keep their original answer formats. For questions linked to an official paper, check your answer against its solution during review.</p>
         <p id="mock-contest-info" class="prob-note"></p><p id="mock-contest-status" role="status"></p>
         <button type="submit" class="hp-btn">Start mock</button>
@@ -6189,10 +6192,25 @@
     const status=form.querySelector('#mock-contest-status'), submit=form.querySelector('[type="submit"]'), info=form.querySelector('#mock-contest-info');
     const catalog=mockPapers();let family='AMC 8',mode='paper',active=-1,busy=false,choices=[];
     let sourceOff;try{sourceOff=new Set(JSON.parse(localStorage.getItem('mq-mock-sources-off')||'[]'));}catch(e){sourceOff=new Set();}
-    const sourceBox=form.querySelector('.mock-source-field'), sameBox=form.querySelector('#mock-same-format');
+    const sourceBox=form.querySelector('.mock-source-field'), sameBox=form.querySelector('#mock-same-format'), advBox=form.querySelector('.mock-advanced-field');
+    const trigBox=form.querySelector('#mock-no-trig'), calcBox=form.querySelector('#mock-no-calc');
     try{sameBox.checked=localStorage.getItem('mq-mock-same-format')==='1';}catch(e){}
+    // Settings under the format buttons (owner, 2026-11-21): no trigonometry (AMC 8 and 10), no calculus, and a closed
+    // "More settings" panel: contest and subject variety, only problems whose statement is in the app, and difficulty.
+    const ADV_DEFAULT={contestVariety:'any',subjectVariety:'any',statementsOnly:false,difficulty:0};
+    let adv={...ADV_DEFAULT};
+    try{const saved=JSON.parse(localStorage.getItem('mq-mock-options')||'{}');adv={...ADV_DEFAULT,...saved.adv};trigBox.checked=!!saved.noTrig;calcBox.checked=!!saved.noCalc;}catch(e){}
+    const saveOptions=()=>{try{localStorage.setItem('mq-mock-options',JSON.stringify({adv,noTrig:trigBox.checked,noCalc:calcBox.checked}));}catch(e){}};
+    const trigApplies=()=>family==='AMC 8'||family==='AMC 10';
+    const isTrig=p=>p.tree.some(id=>/^(alg\.trig|geo\.tri\.trig)(\.|$)/.test(id));
+    const isCalc=p=>p.offtree==='calculus';
+    const inApp=p=>!paperProblem(p)||!!archiveStatement(p);
+    const areaOf=p=>p.tree[0]?p.tree[0].split('.')[0]:(p.offtree||'other');
+    const DIFFICULTY_STEPS=[['Easier',-300],['Recent papers',0],['Harder',300]];
+    const advChanged=()=>(adv.contestVariety!==ADV_DEFAULT.contestVariety)+(adv.subjectVariety!==ADV_DEFAULT.subjectVariety)+(adv.statementsOnly!==ADV_DEFAULT.statementsOnly)+(adv.difficulty!==ADV_DEFAULT.difficulty);
+    const genOptions=()=>({difficultyShift:adv.difficulty,contestVariety:adv.contestVariety,subjectVariety:adv.subjectVariety,areaOf});
     // The questions a generated mock may use: eligible, and in the chosen format's answer style when asked.
-    const mockEligible=p=>practiceEligible(p)&&(!sameBox.checked||sameAnswerFormat(p,family));
+    const mockEligible=p=>practiceEligible(p)&&(!sameBox.checked||sameAnswerFormat(p,family))&&!(trigBox.checked&&trigApplies()&&isTrig(p))&&!(calcBox.checked&&isCalc(p))&&(!adv.statementsOnly||inApp(p));
     const chosenSources=()=>FAMILIES.filter(f=>!sourceOff.has(f));
     const currentPapers=()=>catalog.filter(g=>g.family===family);
     function close(){options.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');active=-1;}
@@ -6210,6 +6228,7 @@
       const model=mode==='generated'?window.MockContests.curve(catalog,family,isVoidedProblem):null;
       form.querySelector('.mock-paper-field').hidden=mode!=='paper';form.querySelector('.mock-generation-info').hidden=mode!=='generated';sourceBox.hidden=mode!=='generated';
       form.querySelector('.mock-same-format').hidden=mode!=='generated';
+      form.querySelector('[data-mock-check="trig"]').hidden=mode!=='generated'||!trigApplies();form.querySelector('[data-mock-check="calc"]').hidden=mode!=='generated';advBox.hidden=mode!=='generated';
       form.querySelector('#mock-same-format-text').textContent=family==='AIME'?'Only short-answer questions, like the AIME':'Only multiple-choice questions, like the AMC';
       info.textContent=`${f.count} problems · ${f.minutes} minutes${model?' · Modeled on '+model.startYear+'–'+model.endYear:''}`;
       let pool=[];
@@ -6222,12 +6241,28 @@
           <div class="fam-chips" role="group" aria-label="Mock question sources">${fams.map(f=>`<button type="button" class="fam-chip" data-mock-source="${escapeAttr(f)}" aria-pressed="${!sourceOff.has(f)}">${famDot(f)}${f}</button>`).join('')}</div></details>`;
         pool=window.MockContests.sourcePool(PROBLEM_DB,model,mockEligible,isVoidedProblem,chosenSources());
       }
+      if(mode==='generated'){
+        const openAdv=advBox.querySelector('details')?.open, n=advChanged();
+        const seg=(key,label,values)=>`<div class="mock-adv-row"><span class="mock-adv-label" id="mock-adv-${key}">${label}</span><div class="rand-btns" role="radiogroup" aria-labelledby="mock-adv-${key}">${values.map(([text,v])=>`<button type="button" role="radio" aria-checked="${adv[key]===v}" data-mock-adv="${key}" data-value="${v}">${text}</button>`).join('')}</div></div>`;
+        advBox.innerHTML=`<details class="pr-fams"${openAdv?' open':''}><summary><span class="pr-fams-label">More settings</span><span class="pr-fams-sum">${n?n+' changed':'Default'}</span></summary>
+          <div class="mock-adv-body">${seg('contestVariety','Contest variety',[['Any mix','any'],['Balanced','balanced']])}${seg('subjectVariety','Subject variety',[['Any mix','any'],['Balanced','balanced']])}
+          <p class="mock-adv-note">Balanced keeps any one contest, or any one subject (algebra, geometry, counting and probability, number theory), to at most 40% of the paper when the pool allows it.</p>
+          ${seg('difficulty','Difficulty',DIFFICULTY_STEPS.map(([t,v])=>[t,v]))}
+          <label class="mock-check"><input type="checkbox" id="mock-statements"${adv.statementsOnly?' checked':''}> <span>Only problems whose statement is shown in the app</span></label></div></details>`;
+      }
       submit.textContent=mode==='paper'?'Start mock':'Generate mock';submit.disabled=busy||(mode==='paper'?!paper:pool.length<f.count);
       if(!busy&&clearStatus){
         status.textContent=mode==='generated'?`${pool.length.toLocaleString()} eligible questions in the selected contests.${pool.length<f.count?` Choose more contests to reach ${f.count} questions.`:''}`:'';
         if(model&&pool.length>=f.count&&model.targets.some(t=>!pool.some(p=>Math.abs(p.elo-t)<=350)))status.textContent+=' The selected sources do not cover the full target difficulty; the closest available questions will be used.';
       }
     }
+    advBox.addEventListener('click',e=>{
+      const b=e.target.closest('[data-mock-adv]');if(!b)return;
+      adv[b.dataset.mockAdv]=b.dataset.mockAdv==='difficulty'?Number(b.dataset.value):b.dataset.value;saveOptions();update();
+      advBox.querySelector(`[data-mock-adv="${b.dataset.mockAdv}"][data-value="${b.dataset.value}"]`)?.focus({preventScroll:true});
+    });
+    advBox.addEventListener('change',e=>{if(e.target.id!=='mock-statements')return;adv.statementsOnly=e.target.checked;saveOptions();update();advBox.querySelector('#mock-statements')?.focus({preventScroll:true});});
+    [trigBox,calcBox].forEach(b=>b.addEventListener('change',()=>{saveOptions();update();}));
     form.addEventListener('click',e=>{
       const one=e.target.closest('[data-mock-source]'),all=e.target.closest('[data-mock-source-all]');if(!one&&!all)return;
       if(one){const f=one.dataset.mockSource;sourceOff.has(f)?sourceOff.delete(f):sourceOff.add(f);}
@@ -6248,13 +6283,13 @@
       const paper=currentPapers().find(g=>g.label.toLowerCase()===input.value.trim().toLowerCase());if(mode==='paper'&&!paper)return;
       busy=true;form.querySelector('fieldset').disabled=true;status.textContent='Loading mock problems...';
       try{
-        const plan=mode==='paper'?{problems:paper.problems}:window.MockContests.generate(PROBLEM_DB,catalog,family,mockEligible,isVoidedProblem,Math.random,chosenSources());
+        const plan=mode==='paper'?{problems:paper.problems}:window.MockContests.generate(PROBLEM_DB,catalog,family,mockEligible,isVoidedProblem,Math.random,chosenSources(),genOptions());
         await Promise.all([...new Set(plan.problems.filter(p=>!window.MATH_MOCK_EXTRAS?.[p.slug]&&!paperProblem(p)).map(p=>p.year))].map(loadStatements));
         if(!form.isConnected)return;
         if(plan.problems.some(p=>!paperProblem(p)&&!window.MATH_STATEMENTS?.[p.slug]&&!window.MATH_MOCK_EXTRAS?.[p.slug]))throw Error('Some statements could not be loaded. Try again.');
         const label=mode==='paper'?paper.label:'Generated '+family;
         const mock={mode,family,durationMs:window.MockContests.formats[family].minutes*60000};
-        if(plan.model){mock.modelStartYear=plan.model.startYear;mock.modelEndYear=plan.model.endYear;mock.targets=plan.model.targets;mock.sources=chosenSources();mock.usedSources=plan.sources;mock.hmmtException=true;if(sameBox.checked)mock.sameFormat=true;}
+        if(plan.model){mock.modelStartYear=plan.model.startYear;mock.modelEndYear=plan.model.endYear;mock.targets=plan.model.targets;mock.sources=chosenSources();mock.usedSources=plan.sources;mock.hmmtException=true;if(sameBox.checked)mock.sameFormat=true;mock.options={noTrig:trigBox.checked&&trigApplies(),noCalc:calcBox.checked,...adv};}
         topicPracticeSet=practiceSessions.createMock(label,plan.problems.map(p=>p.slug),mock);markPaperProblems(topicPracticeSet,plan.problems);savePractice();location.hash='#/practice/set/'+topicPracticeSet.id;
       }catch(err){status.textContent=err.message;}finally{busy=false;form.querySelector('fieldset').disabled=false;update(false);}
     });
@@ -6687,9 +6722,11 @@
     })();
     // One search over every kind of card (owner, 2026-11-14); each suggestion names its kind.
     const KIND_NAME = { formula: "Formula", method: "Method", pattern: "Pattern" };
-    const allCards = () => Object.keys(pools).sort((a, b) => pools[b].length - pools[a].length || plain(BY_ID[a].formula.name).localeCompare(plain(BY_ID[b].formula.name)));
     let chosen = null, active = -1, choices = [], desired = count.valueAsNumber, generating = false;
     const selectedPool = id => practiceTopicIndex.unique((pools[id] || []).filter(practiceFamOn));
+    // Ordered by the number shown beside each card (shared AMC 10/12 problems counted once), then by name.
+    const allCards = () => { const n = new Map(Object.keys(pools).map(id => [id, selectedPool(id).length]));
+      return Object.keys(pools).sort((a, b) => n.get(b) - n.get(a) || plain(BY_ID[a].formula.name).localeCompare(plain(BY_ID[b].formula.name))); };
     const level = () => problemDifficulty.levels[band.valueAsNumber].label;
     const pool = () => chosen ? problemDifficulty.filter(selectedPool(chosen), DIFFS[band.valueAsNumber]) : [];
     function close() { options.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; }
@@ -6860,12 +6897,8 @@
           <h3>Contests</h3>
           <p class="practice-panel-intro">Browse past papers by contest and year.</p>
           <div class="ct-browse"><a class="ct-browse-btn" href="#/browse/topics">Browse by topic</a><a class="ct-browse-btn" href="#/browse/difficulty">Browse by difficulty</a></div>
-          <div class="ct-list">${fams.map((f, i, a) => `
-            <div class="ct-row${i && famSeries(a[i - 1]) === famSeries(f) ? " ct-same" : ""}"${famExtra(f, "contest-years")}>
-              <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famCount(f).toLocaleString()} problem${famCount(f) === 1 ? "" : "s"}</span></a>
-              <div class="ct-years">${(ctYearsOpen.has(f) ? yearsOf(f) : yearsOf(f).slice(0, CT_YEARS)).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}${yearsOf(f).length > CT_YEARS
-                ? `<button type="button" class="ct-years-more" data-ct-years="${escapeAttr(f)}" aria-expanded="${ctYearsOpen.has(f)}">${ctYearsOpen.has(f) ? "Fewer years" : `Show ${yearsOf(f).length - CT_YEARS} more year${yearsOf(f).length - CT_YEARS === 1 ? "" : "s"}`}</button>` : ""}</div>
-            </div>`).join("")}
+          ${contestFinderHtml(fams)}
+          <div class="ct-list">${contestGroupsHtml(fams, yearsOf)}
             ${famMoreBtn(extraFams(fams), "ct-toggle", "contest-years")}
             ${(() => {
               const planned = (window.MATH_PLANNED_CONTESTS || []).filter(c => !fams.includes(c.name));
@@ -6888,6 +6921,7 @@
     wireConceptPractice($content);
     wireMockPractice($content);
     wireCardPractice($content);
+    wireContestFinder($content);
     wirePracticeHistory($content);
     wireShelfMore($content);
     const unrel = $content.querySelector("#ct-unwritten");
@@ -9833,7 +9867,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     : p.fam === "SMT" ? p.cname.replace(/^SMT /, "").replace(/^Advanced$/, "Discrete")
     : p.fam === "CMIMC" ? p.cname.replace(/^CMIMC /, "")
     : p.fam === "Utah State Math Contest" ? p.cname.replace(/^Utah State Math Contest /, "")
-    : /^(BMT|PUMaC Division [AB]|MATHCOUNTS (?:Chapter|State|National)|MBMT (?:Lower|Upper))$/.test(p.fam) ? p.cname.slice(p.fam.length + 1) : "";
+    : /^(BMT|BmMT|PUMaC Division [AB]|MATHCOUNTS (?:Chapter|State|National)|MBMT (?:Lower|Upper))$/.test(p.fam) ? p.cname.slice(p.fam.length + 1) : "";
   const roundSlug = slug => String(slug || "").replace(/algebra-and-number-theory$/, "algebra").replace(/^smt-advanced$/, "smt-discrete");
   function famPapers(fam, round = "") {
     const id = fam + "|" + round;
@@ -10056,7 +10090,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <select class="ct-yb-select" aria-label="Year">${years.map(y => `<option value="${y}"${y === year ? " selected" : ""}>${y}</option>`).join("")}</select>
         ${newer ? `<a class="ct-yb-step" href="${ystep(newer)}" data-step-year="${newer}" aria-label="${newer}">${stepChevron(1)}</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">${stepChevron(1)}</span>`}
       </div>
-      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 ").replace(new RegExp(`^(?:${ROUNDED}) (.+)$`), (_, r) => r))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
+      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist" aria-label="Contest papers">${gnames.map((gn, k) => `<button type="button" role="tab" id="ct-paper-tab-${k}" aria-controls="ct-paper-panel-${k}" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), "").replace(/^(Spring|Fall) AMC /, "$1 ").replace(new RegExp(`^(?:${ROUNDED}|BmMT) (.+)$`), (_, r) => r))}</button>`).join("")}</div>${twoSittings ? `<p class="pp-twice">${escapeAttr(fam)} was held twice in 2021: in spring, the contest moved from fall 2020, and again in fall.</p>` : ""}` : ""}
       ${body}
       <nav class="topic-nav" aria-label="Neighbouring years">
         ${older ? `<a class="topic-step" href="${ystep(older)}" data-step-year="${older}"><span class="ts-dir">${uiIcon("arrow-left")} Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
@@ -10364,6 +10398,91 @@ The book remembers the last lesson you opened, in this browser, and the contents
     box.querySelector(".elo-note").textContent = eloNote(elo, fam, box.hasAttribute("data-manual"));
     box.querySelectorAll("[data-elo-fam]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
   });
+
+  // ---------- Practice's Contests list: groups, a finder and jump chips (owner, 2026-11-21) ----------
+  // The list grew to some forty contests, so it is grouped under headings that open and close, with a finder
+  // for a contest name or a year and a chip per group to jump to it. The AMC and AIME group starts open.
+  const CT_GROUPS = [
+    ["maa", "AMC and AIME", f => /^(AMC \d+|AIME)$/.test(f)],
+    ["college", "College tournaments", f => /^(HMMT (February|November)|PUMaC|CMIMC|SMT|BMT|BmMT|CHMMC|Duke Math Meet|MMATHS|Girls in Math|UMD HSMC|Lehigh|Math Prize)/.test(f)],
+    ["middle", "Middle school", f => /^(MATHCOUNTS|MBMT)/.test(f)],
+    ["regional", "Regional and state", f => /^(ARML|Utah State|Columbus State|Calgary)/.test(f)],
+    ["intl", "Canada and the UK", f => /^(Pascal|Cayley|Fermat|UKMT)/.test(f)]
+  ];
+  const ctGroupsOpen = new Set(["maa"]);
+  let ctQuery = "";
+  const ctGroupsOf = fams => {
+    const out = CT_GROUPS.map(([key, label, test]) => ({ key, label, items: fams.filter(test) })).filter(g => g.items.length);
+    const rest = fams.filter(f => !CT_GROUPS.some(g => g[2](f)));
+    if (rest.length) out.push({ key: "other", label: "Other contests", items: rest });
+    return out;
+  };
+  const ctYearsHtml = (f, years) => (ctYearsOpen.has(f) ? years : years.slice(0, CT_YEARS)).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("") + (years.length > CT_YEARS
+    ? `<button type="button" class="ct-years-more" data-ct-years="${escapeAttr(f)}" aria-expanded="${ctYearsOpen.has(f)}">${ctYearsOpen.has(f) ? "Fewer years" : `Show ${years.length - CT_YEARS} more year${years.length - CT_YEARS === 1 ? "" : "s"}`}</button>` : "");
+  function contestFinderHtml(fams) {
+    const groups = ctGroupsOf(fams);
+    return `<div class="ct-find"><input id="ct-find" class="set-find-input" type="search" placeholder="Find a contest or a year, such as HMMT or 2019" autocomplete="off" aria-label="Find a contest or a year" value="${escapeAttr(ctQuery)}"><p class="ct-find-note" id="ct-find-note" role="status" aria-live="polite"></p></div>
+          <div class="fam-chips ct-jump" role="group" aria-label="Jump to a group of contests">${groups.map(g => `<button type="button" class="fam-chip" data-ct-jump="${g.key}">${escapeAttr(g.label)}<span class="br-count">${g.items.length}</span></button>`).join("")}<button type="button" class="ct-fold-all" id="ct-fold-all">Collapse all</button></div>`;
+  }
+  function contestGroupsHtml(fams, yearsOf) {
+    return ctGroupsOf(fams).map(g => {
+      const n = g.items.reduce((t, f) => t + famCount(f), 0);
+      const extra = g.key === "maa" ? "" : ` data-fam-extra="contest-years"${famsOpen("contest-years") ? "" : " hidden"}`;
+      return `<details class="ct-group" data-ct-group="${g.key}" id="ct-group-${g.key}"${ctGroupsOpen.has(g.key) ? " open" : ""}${extra}>
+            <summary><span class="ct-group-name">${escapeAttr(g.label)}</span><span class="ct-group-n">${g.items.length} contest${g.items.length === 1 ? "" : "s"} &middot; ${n.toLocaleString()} problems</span></summary>
+            <div class="ct-group-rows">${g.items.map((f, i, a) => `
+            <div class="ct-row${i && famSeries(a[i - 1]) === famSeries(f) ? " ct-same" : ""}" data-ct-fam="${escapeAttr(f)}">
+              <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famCount(f).toLocaleString()} problem${famCount(f) === 1 ? "" : "s"}</span></a>
+              <div class="ct-years">${ctYearsHtml(f, yearsOf(f))}</div>
+            </div>`).join("")}</div></details>`;
+    }).join("");
+  }
+  function wireContestFinder(root) {
+    const input = root.querySelector("#ct-find"); if (!input) return;
+    const groups = [...root.querySelectorAll(".ct-group")], rows = [...root.querySelectorAll(".ct-row[data-ct-fam]")];
+    const note = root.querySelector("#ct-find-note"), foldAll = root.querySelector("#ct-fold-all");
+    const yearsOf = f => Object.keys(DB_TREE[f]).map(Number).sort((x, y) => y - x);
+    const baseHidden = g => g.hasAttribute("data-fam-extra") && !famsOpen("contest-years");
+    const aliases = f => Object.entries(CONTEST_QUERY_ALIASES).filter(([, v]) => v.includes(f)).map(([k]) => k.toLowerCase()).join(" ");
+    function apply() {
+      const q = ctQuery.trim().toLowerCase(), tokens = q.split(/\s+/).filter(Boolean);
+      const years = tokens.filter(t => /^\d{4}$/.test(t)), words = tokens.filter(t => !/^\d{4}$/.test(t));
+      let shown = 0;
+      rows.forEach(r => {
+        const f = r.dataset.ctFam, hay = (f + " " + aliases(f)).toLowerCase(), ys = yearsOf(f);
+        const ok = !tokens.length || (words.every(w => hay.includes(w)) && years.every(y => ys.includes(+y)));
+        r.hidden = !ok; if (ok) shown++;
+        // A year being looked for is shown on its row even when the row folds the older years away.
+        if (ok && years.length && years.some(y => !ctYearsOpen.has(f) && ys.indexOf(+y) >= CT_YEARS)) { ctYearsOpen.add(f); r.querySelector(".ct-years").innerHTML = ctYearsHtml(f, ys); }
+        r.querySelectorAll(".ct-years a").forEach(a => a.classList.toggle("ct-hit", years.includes(a.textContent)));
+      });
+      groups.forEach(g => {
+        const any = [...g.querySelectorAll(".ct-row")].some(r => !r.hidden);
+        if (tokens.length) { g.hidden = !any; if (any) g.open = true; }
+        else { g.hidden = baseHidden(g); g.open = ctGroupsOpen.has(g.dataset.ctGroup); }
+      });
+      note.textContent = tokens.length ? (shown ? `${shown} contest${shown === 1 ? "" : "s"} found.` : "No contest matches.") : "";
+    }
+    input.addEventListener("input", () => { ctQuery = input.value; apply(); });
+    input.addEventListener("keydown", e => { if (e.key === "Escape" && input.value) { e.preventDefault(); input.value = ctQuery = ""; apply(); } });
+    groups.forEach(g => g.addEventListener("toggle", () => { if (ctQuery.trim()) return; g.open ? ctGroupsOpen.add(g.dataset.ctGroup) : ctGroupsOpen.delete(g.dataset.ctGroup); }));
+    root.querySelectorAll("[data-ct-jump]").forEach(b => b.addEventListener("click", () => {
+      const g = root.querySelector(`#ct-group-${b.dataset.ctJump}`); if (!g) return;
+      if (ctQuery.trim()) { input.value = ctQuery = ""; apply(); }
+      if (g.hidden) { contestExpansions.set("contest-years", true); document.querySelectorAll('[data-fam-extra="contest-years"]').forEach(el => { el.hidden = false; }); document.querySelectorAll('.fam-more-btn[data-fam-list="contest-years"]').forEach(x => { x.setAttribute("aria-expanded", "true"); x.textContent = famMoreLabel(+x.dataset.famN, true); }); }
+      g.open = true; ctGroupsOpen.add(b.dataset.ctJump);
+      g.scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      g.querySelector("summary").focus({ preventScroll: true });
+    }));
+    foldAll.addEventListener("click", () => {
+      const anyOpen = groups.some(g => g.open); ctGroupsOpen.clear();
+      if (!anyOpen) groups.forEach(g => ctGroupsOpen.add(g.dataset.ctGroup));
+      if (ctQuery.trim()) { input.value = ctQuery = ""; }
+      apply(); foldAll.textContent = anyOpen ? "Expand all" : "Collapse all";
+    });
+    apply();
+    if (!groups.some(g => g.open)) foldAll.textContent = "Expand all";
+  }
 
   // ---------- Contest lists: AMC and AIME first (owner, 2026-11-14) ----------
   // Lists of contests show the AMC 8, 10 and 12 and the AIME; the other contests wait behind a

@@ -2881,6 +2881,24 @@ details[open] > summary.set-panel-title::after { transform: rotate(90deg); }
 @media (max-width: 620px) { .set-row { flex-direction: column; align-items: flex-start; gap: 8px; } }
 
 /* ---------- Practice: every contest year one click away, and the study lists inline ---------- */
+.ct-find { margin: 14px 0 8px; }
+.ct-find .set-find-input { width: 100%; max-width: 460px; box-sizing: border-box; }
+.ct-find-note { min-height: 1.2em; margin: 4px 2px 0; font-size: 12.5px; color: var(--text-faint); }
+.ct-jump { margin: 2px 0 10px; align-items: center; }
+.ct-fold-all { margin-left: auto; font: inherit; font-size: 12.5px; font-weight: 650; padding: 5px 10px; border: 1px dashed var(--border); border-radius: 999px; background: none; color: var(--text-dim); cursor: pointer; }
+.ct-fold-all:hover { color: var(--space); border-color: var(--space); }
+.ct-group { border-top: 1px solid var(--border); }
+.ct-group[hidden], .ct-row[hidden] { display: none; }
+.ct-group > summary { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; padding: 12px 0 10px; cursor: pointer; list-style: none; }
+.ct-group > summary::-webkit-details-marker { display: none; }
+.ct-group > summary::before { content: ""; flex: none; width: 8px; height: 8px; margin-right: 2px; border-right: 2px solid var(--text-dim); border-bottom: 2px solid var(--text-dim); transform: translateY(-2px) rotate(-45deg); transition: transform .15s; }
+.ct-group[open] > summary::before { transform: translateY(-3px) rotate(45deg); }
+@media (prefers-reduced-motion: reduce) { .ct-group > summary::before { transition: none; } }
+.ct-group-name { font-size: 15px; font-weight: 800; color: var(--text); }
+.ct-group > summary:hover .ct-group-name { color: var(--space); }
+.ct-group-n { font-size: 12.5px; font-weight: 600; color: var(--text-faint); }
+.ct-group-rows { padding: 0 0 6px 18px; }
+.ct-years a.ct-hit { background: var(--space); color: #fff; }
 .ct-list { display: flex; flex-direction: column; }
 .ct-row { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 14px; align-items: baseline; padding: 9px 0; border-top: 1px solid var(--border); }
 .ct-row:first-child { border-top: none; padding-top: 2px; }
@@ -4728,4 +4746,12 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 /* Generate a mock: keep to the format's answer style (owner, 2026-11-15). */
 .mock-same-format { display: flex; align-items: center; gap: 8px; margin: 10px 0 2px; font-size: 14px; color: var(--text-dim); cursor: pointer; }
 .mock-same-format[hidden] { display: none; }
+.mock-check { display: flex; align-items: center; gap: 8px; margin: 10px 0 2px; font-size: 14px; color: var(--text-dim); cursor: pointer; }
+.mock-check[hidden], .mock-advanced-field[hidden] { display: none; }
+.mock-check input { margin: 0; width: 16px; height: 16px; accent-color: var(--space); cursor: pointer; }
+.mock-advanced-field { margin-top: 10px; }
+.mock-adv-body { display: grid; gap: 12px; padding: 10px 0 4px; }
+.mock-adv-row { display: grid; gap: 6px; }
+.mock-adv-label { font-size: 14px; font-weight: 600; color: var(--text); }
+.mock-adv-note { margin: 0; font-size: 13px; line-height: 1.5; color: var(--text-dim); }
 .mock-same-format input { margin: 0; width: 16px; height: 16px; accent-color: var(--space); cursor: pointer; }
