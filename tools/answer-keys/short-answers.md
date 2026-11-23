@@ -12,6 +12,8 @@ Use `"percent"` when the official answer is expressed as a percentage. The playe
 
 Use `"complex"` for one complex number and `"complex-set"` for all complex numbers. The player can use `i`, common arithmetic operations, integer powers, and `sqrt(z)` for the principal square root. Integer powers of `i` use its four-value cycle. Other complex powers accept integer exponents from −64 to 64. Real and imaginary components are compared separately. For example, `0, ±i*sqrt(6)` stands for all three values in 2024 HMMT February Algebra and Number Theory #9.
 
+Use `fib(n)` for an exact Fibonacci number with \(F_0=0\) and \(F_1=1\). A key can set `notation: "fibonacci"` to accept `F_n` in the context of that problem. The published answer to 2020 CMIMC Combinatorics and Computer Science #8 can be entered as `(100, F_104+1223)` or `(100, fib(104)+1223)`. [Official solutions](https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/2020_CCS_S.pdf)
+
 If a key and its solution disagree, first match the question to the original sitting. Check the PDF, any organizer correction, and an independent calculation before changing the accepted value. Record the published and corrected answers with the source. Log unusually large exact values along with the relevant limits of the grader so their support can be decided from the actual problem.
 
 ### Source discrepancies
@@ -47,6 +49,7 @@ If a key and its solution disagree, first match the question to the original sit
 - Math Prize for Girls now grades all 320 questions from its published 2009–2025 solutions. The 2026 problems stay on self-check while the published archive provides only the problems. [Organizer archive](https://mathprize.atfoundation.org/resources/past-tests/)
 - Calgary Junior Math Contest Part A grades 188 of 189 questions using the printed and handwritten official answer boxes. The open-ended 2019 question above stays on self-check.
 - Duke Math Meet Individual grades 59 questions using the six published solution booklets. The official archive currently provides problem papers for the ten other indexed sittings. [Organizer archive](https://math.duke.edu/duke-math-meet)
+- Girls in Math at Yale Individual now grades all 96 questions from the indexed 2019–2026 papers. The CMIMC pass adds 157 keys from printed answer boxes and worked solutions, including the Fibonacci tuple above and an exact factorial answer involving `4042!`.
 - Lehigh has 482 keys so far. The positional PDF pass checks numbered and aligned numerical answers, including percentages. Additional expressions and scanned papers still need review.
 - Recent MBMT coverage uses numbered answers and worked solutions in both divisions. The older BMT import includes answer sheets and some worked solution booklets. Two 2016 BMT Discrete Math problems still need variable-expression grading for `2^n(n-1)+1` and `-n/2`.
 - Recent HMMT papers include additional verified radicals, ordered tuples, unordered lists, complex numbers, and large exact values. The original 2025 February pilot remains available.

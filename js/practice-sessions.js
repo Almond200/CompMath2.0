@@ -98,9 +98,9 @@
     if (depth) throw Error('Unmatched parenthesis');
     return [...parts, text.slice(start)].map(part => part.trim());
   }
-  function exactTex(text, format) {
+  function exactTex(text, format, notation) {
     const percent = format === 'percent' && /(?:\\?%)\s*$/.test(text);
-    text = cleanExact(text, format);
+    text = cleanExact(text, format, notation);
     if (format === 'sequence') return splitExactList(text).map(part => math.toTex(part)).join(',\\ ');
     if (format === 'complex' || format === 'complex-set') return math.toTex(text, format === 'complex', true);
     if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text, format !== 'set') + (percent ? '\\%' : '');
@@ -111,7 +111,11 @@
       return '\\left(' + values.join(',\\ ') + '\\right)';
     }).join(',\\ ');
   }
-  function cleanExact(text, format) {
+  function cleanExact(text, format, notation) {
+    if (notation === 'fibonacci') {
+      text = text.replace(/\bF\s*_\s*(?:\{\s*(\d+)\s*\}|(\d+))/gi, (_, braced, plain) => `fib(${braced || plain})`)
+        .replace(/\bF([₀-₉]+)/g, (_, index) => `fib(${[...index].map(digit => digit.charCodeAt(0) - '₀'.charCodeAt(0)).join('')})`);
+    }
     if (format === 'percent') text = text.replace(/(?:\\?%)\s*$/, '');
     text = text.replace(/\b(sin|cos|tan)\s*\(([^()]+?)(?:\^\{\\circ\}|[°∘◦]|\s+deg)\s*\)/gi, '$1(($2)*pi/180)');
     text = text.replace(/(?:\^\{\\circ\}|[°∘◦])/g, '');
@@ -325,6 +329,11 @@
     if (!left) return null;
     const [a, b] = left;
     if (node.op === 'neg') return [-a, b];
+    if (node.op === 'fib') {
+      if (a % b) return null;
+      const value = math.fibonacci(a / b);
+      return value == null ? null : [value, 1n];
+    }
     if (node.op === 'sqrt' || node.op === 'cbrt') return rationalRoot(a, b, node.op === 'sqrt' ? 2n : 3n);
     if (node.op === '!') {
       const k = a / b;
@@ -463,9 +472,9 @@
     if (node.op === '^' && isZero(right[1])) return complexPower(left, right[0]);
     throw Error('Expected a complex expression using i');
   }
-  function exactValues(text, format) {
+  function exactValues(text, format, notation) {
     if (text.length > 120) throw Error('Answer is too long');
-    text = cleanExact(text, format);
+    text = cleanExact(text, format, notation);
     if (format === 'complex' || format === 'complex-set') {
       const nodes = math.parse(text, format === 'complex', true);
       if (format === 'complex' && nodes.length !== 1) throw Error('Expected one complex number');
@@ -494,9 +503,9 @@
     const tolerance = Math.min(1e-7, 1e-9 * Math.abs(b.value));
     return Math.abs(a.value - b.value) <= tolerance;
   }
-  function matchesExact(text, expected, format) {
+  function matchesExact(text, expected, format, notation) {
     try {
-      const actual = exactValues(text, format), remaining = exactValues(expected, format);
+      const actual = exactValues(text, format, notation), remaining = exactValues(expected, format, notation);
       if (actual.length !== remaining.length) return false;
       return actual.every(tuple => {
         const i = remaining.findIndex(key => key.length === tuple.length &&
@@ -518,7 +527,7 @@
     if (set.selfCheck?.[slug]) { if (text.length > 60) return false; }
     else if (exact?.format === 'text') { if (text.length > 120) return false; }
     else if (exact) {
-      if (text) { try { exactValues(text, exact.format); } catch (err) { return false; } }
+      if (text) { try { exactValues(text, exact.format, exact.notation); } catch (err) { return false; } }
     } else if (!(text === '' || (aime ? /^\d{1,3}$/.test(text) : (/-columbus-state-tournament-/.test(slug) ? /^[A-F]$/ : /^[A-E]$/).test(text)))) return false;
     set.answers[slug] = text;
     return true;
@@ -530,7 +539,7 @@
     if (set.selfCheck?.[slug]) return set.self?.[slug] || 'Check yourself';
     const exact = exactKey(slug);
     if (exact?.format === 'text') return exact.answers.some(key => normalizeTextAnswer(key) === normalizeTextAnswer(set.answers[slug])) ? 'Correct' : 'Incorrect';
-    if (exact) return exact.answers.some(key => matchesExact(set.answers[slug], key, exact.format)) ? 'Correct' : 'Incorrect';
+    if (exact) return exact.answers.some(key => matchesExact(set.answers[slug], key, exact.format, exact.notation)) ? 'Correct' : 'Incorrect';
     // LIVE's MAA keys, else the official letters of the other multiple-choice contests (answer-keys-more.js).
     const key = root.MATH_ANSWER_KEYS?.answers?.[slug] ?? root.MATH_EXTRA_KEYS?.answers?.[slug];
     if (key == null) return 'Answer unavailable';
