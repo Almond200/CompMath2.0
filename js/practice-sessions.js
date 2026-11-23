@@ -169,7 +169,7 @@
   // sign even when computing the full value would exceed the size budget.
   function knownSign(node) {
     node = ungroup(node);
-    if (node.op === 'pi') return 1;
+    if (node.op === 'pi' || node.op === 'e') return 1;
     if (node.op === '!') {
       const input = integerValue(rational(node.a));
       return input != null && input >= 0n && input <= EXACT_FACTORIAL_LIMIT ? 1 : null;
@@ -288,7 +288,7 @@
       const [whole, decimal = ''] = node.v.split('.');
       return reduceFraction(BigInt(whole + decimal), 10n ** BigInt(decimal.length));
     }
-    if (node.op === 'pi') return null;
+    if (node.op === 'pi' || node.op === 'e') return null;
     if (node.op === 'ln') {
       const input = rational(node.a);
       return input && input[0] === input[1] ? [0n, 1n] : null;

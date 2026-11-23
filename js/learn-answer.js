@@ -27,6 +27,8 @@
     }
     s = s.replace(/\\(?:mathrm|text)\s*\{\s*i\s*\}|ⅈ/g, "i");
     s = s.replace(/\\(pi|sqrt|ln|sin|cos|tan)\b/g, "$1").replace(/\\(?:cdot|times)\b/g, "*").replace(/\\div\b/g, "/").replace(/\\pm\b/g, "±");
+    s = s.replace(/(?:\\)?\blog\s*_?\s*(?:\{(\d+)\}|(\d+))\s*\(([^()]*)\)/gi,
+      (_, bracedBase, base, input) => `(ln(${input})/ln(${bracedBase || base}))`);
     s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, m => "^(" + [...m].map(c => SUP[c]).join("") + ")");
     s = s.replace(/\*\*/g, "^").replace(/[×·∙⋅]/g, "*").replace(/[÷∕]/g, "/").replace(/[−–—]/g, "-")
       .replace(/π/g, "pi").replace(/√/g, "sqrt").replace(/∛/g, "cbrt").replace(/[[{]/g, "(").replace(/[\]}]/g, ")");
@@ -51,6 +53,7 @@
         out.push({ t: "num", v: num[1] }); i += num[1].length; continue;
       }
       if (s.startsWith("pi", i)) { out.push({ t: "pi" }); i += 2; continue; }
+      if (c === "e" && !/\d/.test(s[i + 1] || "")) { out.push({ t: "e" }); i++; continue; }
       if (s.startsWith("sqrt", i)) { out.push({ t: "sqrt" }); i += 4; continue; }
       if (s.startsWith("cbrt", i)) { out.push({ t: "cbrt" }); i += 4; continue; }
       if (s.startsWith("choose", i)) { out.push({ t: "choose" }); i += 6; continue; }
@@ -66,7 +69,7 @@
   const sym = t => SHOW[t.t] || (t.t === "num" ? t.v : t.t);
   const functions = { ln: Math.log, sin: Math.sin, cos: Math.cos, tan: Math.tan };
   const unaryFunctions = ["sqrt", "cbrt", ...Object.keys(functions)];
-  const atomTokens = ["num", "pi", "choose", "(", ...unaryFunctions];
+  const atomTokens = ["num", "pi", "e", "choose", "(", ...unaryFunctions];
 
   // expr := term (("+" | "-") term)*
   // term := unary (("*" | "/" | nothing) unary)*      (nothing: 2sqrt(3), 7pi, 2(3))
@@ -105,7 +108,7 @@
     function atom() {
       const t = peek();
       if (t === "num") return { op: "num", v: toks[k++].v };
-      if (t === "pi" || t === "i") { k++; return { op: t }; }
+      if (t === "pi" || t === "e" || t === "i") { k++; return { op: t }; }
       if (unaryFunctions.includes(t)) { k++; if (!peek()) throw new Error(`${sym({ t })} needs a number after it.`); return { op: t, a: atom() }; }
       if (t === "choose") {
         k++;
@@ -170,6 +173,7 @@
     switch (n.op) {
       case "num": return parseFloat(n.v);
       case "pi": return Math.PI;
+      case "e": return Math.E;
       case "sqrt": return Math.sqrt(childValue(n.a));
       case "cbrt": return Math.cbrt(childValue(n.a));
       case "choose": {
@@ -205,6 +209,7 @@
     switch (n.op) {
       case "num": return n.v;
       case "pi": return "\\pi";
+      case "e": return "e";
       case "i": return "i";
       case "sqrt": return "\\sqrt{" + tex(bare(n.a)) + "}";
       case "cbrt": return "\\sqrt[3]{" + tex(bare(n.a)) + "}";
