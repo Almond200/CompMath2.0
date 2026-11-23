@@ -111,6 +111,7 @@
       }).join(' \\cup ');
     }
     if (format === 'sequence') return splitExactList(text).map(part => math.toTex(part)).join(',\\ ');
+    if (format === 'polynomial') return math.toTex(text, true, false, notation);
     if (format === 'complex' || format === 'complex-set') return math.toTex(text, format === 'complex', true);
     if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text, format !== 'set') + (percent ? '\\%' : '');
     const tuples = format === 'tuple' ? [text] : splitExactList(text);
@@ -121,6 +122,10 @@
     }).join(',\\ ');
   }
   function cleanExact(text, format, notation) {
+    if (notation === 'ratio') {
+      const terms = text.split(/:|\\colon\b/);
+      if (terms.length === 2) text = `(${terms[0]})/(${terms[1]})`;
+    }
     if (notation === 'fibonacci') {
       text = text.replace(/\bF\s*_\s*(?:\{\s*(\d+)\s*\}|(\d+))/gi, (_, braced, plain) => `fib(${braced || plain})`)
         .replace(/\bF([₀-₉]+)/g, (_, index) => `fib(${[...index].map(digit => digit.charCodeAt(0) - '₀'.charCodeAt(0)).join('')})`);
@@ -569,10 +574,76 @@
     return a.lowerClosed === b.lowerClosed && a.upperClosed === b.upperClosed &&
       sameBound(a.lower, b.lower) && sameBound(a.upper, b.upper);
   }
+  const POLYNOMIAL_MAX_DEGREE = 32, POLYNOMIAL_MAX_COEFFICIENT_BITS = 4096;
+  function polynomialCoefficient(fraction) {
+    if (!fraction || fraction.some(part => part.toString(2).length > POLYNOMIAL_MAX_COEFFICIENT_BITS)) {
+      throw Error('Expected a bounded rational coefficient');
+    }
+    return fraction;
+  }
+  function polynomialOperation(op, left, right) {
+    return polynomialCoefficient(rationalOperation(op, left, right));
+  }
+  function trimPolynomial(coefficients) {
+    while (coefficients.length > 1 && coefficients.at(-1)[0] === 0n) coefficients.pop();
+    return coefficients;
+  }
+  function multiplyPolynomials(left, right) {
+    const degree = left.length + right.length - 2;
+    if (degree > POLYNOMIAL_MAX_DEGREE) throw Error('Polynomial degree is too large');
+    const terms = Array(degree + 1).fill(zero.fraction);
+    for (let i = 0; i < left.length; i++) {
+      if (left[i][0] === 0n) continue;
+      for (let j = 0; j < right.length; j++) {
+        if (right[j][0] === 0n) continue;
+        const product = polynomialOperation('*', left[i], right[j]);
+        terms[i + j] = polynomialOperation('+', terms[i + j], product);
+      }
+    }
+    return trimPolynomial(terms);
+  }
+  function polynomialPower(base, exponent) {
+    if (exponent.length !== 1) throw Error('Expected a constant polynomial exponent');
+    const [numerator, denominator] = exponent[0], integer = numerator / denominator;
+    if (numerator % denominator || integer < 1n || integer > BigInt(POLYNOMIAL_MAX_DEGREE)) {
+      throw Error('Expected a positive integer polynomial exponent');
+    }
+    let result = [one.fraction];
+    for (let power = integer; power; power >>= 1n) {
+      if (power & 1n) result = multiplyPolynomials(result, base);
+      if (power > 1n) base = multiplyPolynomials(base, base);
+    }
+    return result;
+  }
+  function hasVariable(node) {
+    return !!node && (node.op === 'variable' || hasVariable(node.a) || hasVariable(node.b));
+  }
+  function polynomial(node) {
+    if (!hasVariable(node)) return [polynomialCoefficient(rational(node))];
+    if (node.op === 'variable') return [zero.fraction, one.fraction];
+    if (node.op === '()') return polynomial(node.a);
+    if (node.op === 'neg') return polynomial(node.a).map(([a, b]) => [-a, b]);
+    if (!['+', '-', '*', '/', '^'].includes(node.op)) throw Error('Expected a polynomial expression');
+    const left = polynomial(node.a), right = polynomial(node.b);
+    if (node.op === '*') return multiplyPolynomials(left, right);
+    if (node.op === '^') return polynomialPower(left, right);
+    if (node.op === '/') {
+      if (right.length !== 1 || right[0][0] === 0n) throw Error('Expected a nonzero constant divisor');
+      return left.map(term => polynomialOperation('/', term, right[0]));
+    }
+    const terms = Array.from({ length: Math.max(left.length, right.length) }, (_, i) =>
+      polynomialOperation(node.op, left[i] || zero.fraction, right[i] || zero.fraction));
+    return trimPolynomial(terms);
+  }
   function exactValues(text, format, notation) {
     if (text.length > 120) throw Error('Answer is too long');
     text = cleanExact(text, format, notation);
     if (format === 'interval') return sortedIntervals(text);
+    if (format === 'polynomial') {
+      const nodes = math.parse(text, true, false, notation);
+      if (nodes.length !== 1) throw Error('Expected one polynomial');
+      return [polynomial(nodes[0]).map(fraction => evaluatedValue(fraction, 0))];
+    }
     if (format === 'complex' || format === 'complex-set') {
       const nodes = math.parse(text, format === 'complex', true);
       if (format === 'complex' && nodes.length !== 1) throw Error('Expected one complex number');

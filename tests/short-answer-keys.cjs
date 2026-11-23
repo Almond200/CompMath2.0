@@ -31,7 +31,8 @@ for (const [slug, key] of Object.entries(answers)) {
   const paper = slug.replace(/-\d+$/, '');
   assert.match(sources[paper], /^https:\/\//, slug);
   usedSources.add(paper);
-  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set', 'interval'].includes(key.format), slug);
+  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set', 'interval', 'polynomial'].includes(key.format), slug);
+  if (key.format === 'polynomial') assert.match(key.notation, /^[a-z]$/i, slug);
   assert(key.answers.length, slug);
   for (const value of key.answers) check(slug, value, 'Correct');
 }
@@ -110,6 +111,23 @@ for (const input of ['[38, inf]', '[88,38)', '38<x>88', '3<x<']) {
   assert(!practice.answer(intervalSet, '2008-lehigh-math-contest-4', input, false), input);
 }
 assert.match(practice.exactTex('38 ≤ x < 88', 'interval'), /^\[38,/);
+check('1999-lehigh-math-contest-26', '-3,-2,sqrt(-4)*(-1)', 'Correct');
+check('2006-lehigh-math-contest-25', '0 ≤ k ≤ 1', 'Correct');
+check('2006-lehigh-math-contest-25', '(0,1)', 'Incorrect');
+check('2019-lehigh-math-contest-13', '15,5', 'Correct');
+check('2019-lehigh-math-contest-13', '5', 'Incorrect');
+check('2019-lehigh-math-contest-22', '4:6', 'Correct');
+check('2019-lehigh-math-contest-22', '3:2', 'Incorrect');
+check('2006-lehigh-math-contest-21', '2(135-B)', 'Correct');
+check('2006-lehigh-math-contest-30', 'n(n+5)-3', 'Correct');
+check('2006-lehigh-math-contest-30', 'n^2+5n-3.0000000001', 'Incorrect');
+check('2021-smt-algebra-1', '63(x-1)+1', 'Correct');
+check('2008-pumac-division-a-algebra-8', 'x(x^5+x^3+34x+36)', 'Correct');
+const polynomialSet = practice.create('Polynomial validation', 'Any', ['2021-smt-algebra-1']);
+for (const input of ['(63x-62)(x-1)/(x-1)', '63y-62', 'x^1000', '63x-62,0']) {
+  assert(!practice.answer(polynomialSet, '2021-smt-algebra-1', input, false), input);
+}
+assert.equal(practice.exactTex('n^2+5n-3', 'polynomial', 'n'), 'n^{2}+5n-3');
 check('2022-hmmt-november-theme-2', '16\\sqrt[4]{3}', 'Correct');
 check('2019-hmmt-february-algebra-and-number-theory-8', '4038!^2/(2019!^4*2^8076)', 'Correct');
 check('2026-hmmt-november-theme-4', '1013*2027!/2027', 'Correct');

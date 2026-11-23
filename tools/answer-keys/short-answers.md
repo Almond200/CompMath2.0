@@ -16,6 +16,8 @@ Use `fib(n)` for an exact Fibonacci number with \(F_0=0\) and \(F_1=1\). A key c
 
 Use `"interval"` for a real interval or union. The checker accepts bracket notation and inequalities such as `[38,88)` and `38 <= x < 88`. An unbounded endpoint can use `inf` or `infinity`. Separate disjoint intervals with `U` or `or`. Open and closed endpoints affect the grade.
 
+Use `"polynomial"` with the variable in `notation`. The checker compares exact rational coefficients through degree 32. For example, `n(n+5)-3` and `n^2+5n-3` both work for 2006 Lehigh #30. Use `notation: "ratio"` on a single real value when the prompt asks for a ratio. Students can enter `4:6` or `2/3` for the same ratio.
+
 Read the submission instruction in the problem and inspect the typeset official answer when the PDF extraction is ambiguous. Check what a subscript denotes before selecting a format. A Fibonacci number, a digit string in a specified base, and an indexed variable require different handling. Record any notation that still needs a verifier with the problem number and source.
 
 If a key and its solution disagree, first match the question to the original sitting. Check the PDF, any organizer correction, and an independent calculation before changing the accepted value. Record the published and corrected answers with the source. Log unusually large exact values along with the relevant limits of the grader so their support can be decided from the actual problem.
@@ -56,8 +58,9 @@ If a key and its solution disagree, first match the question to the original sit
 - Calgary Junior Math Contest Part A grades 188 of 189 questions using the printed and handwritten official answer boxes. The open-ended 2019 question above stays on self-check.
 - Duke Math Meet Individual grades 59 questions using the six published solution booklets. The official archive currently provides problem papers for the ten other indexed sittings. [Organizer archive](https://math.duke.edu/duke-math-meet)
 - Girls in Math at Yale Individual now grades all 96 questions from the indexed 2019–2026 papers. The CMIMC pass adds 157 keys from printed answer boxes and worked solutions, including the Fibonacci tuple above and an exact factorial answer involving `4042!`.
-- Lehigh has 482 keys so far. The positional PDF pass checks numbered and aligned numerical answers, including percentages. Additional expressions and scanned papers still need review.
-- Recent MBMT coverage uses numbered answers and worked solutions in both divisions. The older BMT import includes answer sheets and some worked solution booklets. Two 2016 BMT Discrete Math problems still need variable-expression grading for `2^n(n-1)+1` and `-n/2`.
+- The Lehigh pass draws on numbered and aligned answers and on OCR of scanned official sheets with mathematical notation checked against the problem. The remaining equation forms from those scans are 1999 #35 (`x_1*x_2=1`) and 2019 #5 (`(x-1)^2+(y-2)^2=25`).
+- All 55 indexed 2024 SMT problems are keyed from the rendered official solution boxes, including the 598-digit answer `257^248` to Discrete #8 and the ordered pair in Discrete #10.
+- Recent MBMT coverage uses numbered answers and worked solutions in both divisions. The older BMT import includes answer sheets and some worked solution booklets. 2016 BMT Discrete Math #6 still needs grading for `2^n(n-1)+1`.
 - Recent HMMT papers include additional verified radicals, ordered tuples, unordered lists, complex numbers, and large exact values. The original 2025 February pilot remains available.
 - An additional pass matches numbered questions to printed answer boxes in PUMaC, HMMT, SMT, BMT, and BmMT. It imports boxes with one unambiguous real value, including aligned simple fractions and radicals. Boxes with multiple candidates or expressions needing interpretation remain for review.
 - The 2026 MATHCOUNTS Chapter and State Sprint and Target rounds have complete keys. All app-listed National rounds are keyed apart from the unresolved 2012 Sprint problem above.

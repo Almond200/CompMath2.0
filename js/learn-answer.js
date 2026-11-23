@@ -39,9 +39,10 @@
   }
 
   // Tokens: numbers, pi, sqrt, cbrt, + - * / ^ ! ( ) and the comma.
-  function tokens(src, groupThousands, allowImaginary) {
+  function tokens(src, groupThousands, allowImaginary, variable) {
     const out = [];
     const s = normalize(src, groupThousands);
+    const variableToken = variable?.toLowerCase();
     let i = 0;
     while (i < s.length) {
       const c = s[i];
@@ -53,12 +54,13 @@
         out.push({ t: "num", v: num[1] }); i += num[1].length; continue;
       }
       if (s.startsWith("pi", i)) { out.push({ t: "pi" }); i += 2; continue; }
-      if (c === "e" && !/\d/.test(s[i + 1] || "")) { out.push({ t: "e" }); i++; continue; }
       if (s.startsWith("sqrt", i)) { out.push({ t: "sqrt" }); i += 4; continue; }
       if (s.startsWith("cbrt", i)) { out.push({ t: "cbrt" }); i += 4; continue; }
       if (s.startsWith("choose", i)) { out.push({ t: "choose" }); i += 6; continue; }
       const fn = /^(ln|sin|cos|tan|fib)/.exec(s.slice(i));
       if (fn) { out.push({ t: fn[1] }); i += fn[1].length; continue; }
+      if (c === variableToken) { out.push({ t: "variable", v: variable }); i++; continue; }
+      if (c === "e" && !/\d/.test(s[i + 1] || "")) { out.push({ t: "e" }); i++; continue; }
       if (allowImaginary && c === "i") { out.push({ t: "i" }); i++; continue; }
       if ("+-*/^!(),±".indexOf(c) !== -1) { out.push({ t: c }); i++; continue; }
       throw new Error(`"${c}" is not part of an answer: use digits, + − × ÷ ^, √, π and brackets.`);
@@ -66,10 +68,10 @@
     return out;
   }
   const SHOW = { "*": "×", "/": "÷", "-": "−", sqrt: "√", cbrt: "∛", pi: "π" };
-  const sym = t => SHOW[t.t] || (t.t === "num" ? t.v : t.t);
+  const sym = t => SHOW[t.t] || t.v || t.t;
   const functions = { ln: Math.log, sin: Math.sin, cos: Math.cos, tan: Math.tan };
   const unaryFunctions = ["sqrt", "cbrt", "fib", ...Object.keys(functions)];
-  const atomTokens = ["num", "pi", "e", "choose", "(", ...unaryFunctions];
+  const atomTokens = ["num", "variable", "pi", "e", "choose", "(", ...unaryFunctions];
 
   // expr := term (("+" | "-") term)*
   // term := unary (("*" | "/" | nothing) unary)*      (nothing: 2sqrt(3), 7pi, 2(3))
@@ -107,7 +109,7 @@
     }
     function atom() {
       const t = peek();
-      if (t === "num") return { op: "num", v: toks[k++].v };
+      if (t === "num" || t === "variable") return { op: t, v: toks[k++].v };
       if (t === "pi" || t === "e" || t === "i") { k++; return { op: t }; }
       if (unaryFunctions.includes(t)) { k++; if (!peek()) throw new Error(`${sym({ t })} needs a number after it.`); return { op: t, a: atom() }; }
       if (t === "choose") {
@@ -135,8 +137,8 @@
     if (i < 0) return [part];
     return [...expandPm([...part.slice(0, i), { t: "+" }, ...part.slice(i + 1)]), ...expandPm([...part.slice(0, i), { t: "-" }, ...part.slice(i + 1)])];
   }
-  function parse(src, groupThousands, allowImaginary = false) {
-    const toks = tokens(src, groupThousands, allowImaginary), parts = [[]];
+  function parse(src, groupThousands, allowImaginary = false, variable) {
+    const toks = tokens(src, groupThousands, allowImaginary, variable), parts = [[]];
     if (!toks.length) throw new Error("The answer is empty.");
     let depth = 0;
     for (const token of toks) {
@@ -222,7 +224,8 @@
   function tex(n) {
     if (Object.hasOwn(functions, n.op)) return "\\" + n.op + "\\left(" + tex(bare(n.a)) + "\\right)";
     switch (n.op) {
-      case "num": return n.v;
+      case "num":
+      case "variable": return n.v;
       case "pi": return "\\pi";
       case "e": return "e";
       case "i": return "i";
@@ -244,11 +247,11 @@
         return tex(n.a) + sign + right;
       }
       case "/": return "\\frac{" + tex(bare(n.a)) + "}{" + tex(bare(n.b)) + "}";
-      case "^": return (n.a.op === "()" ? "\\left(" + tex(n.a.a) + "\\right)" : /^(num|pi)$/.test(n.a.op) ? tex(n.a) : "{" + tex(n.a) + "}") + "^{" + tex(bare(n.b)) + "}";
+      case "^": return (n.a.op === "()" ? "\\left(" + tex(n.a.a) + "\\right)" : /^(num|variable|pi)$/.test(n.a.op) ? tex(n.a) : "{" + tex(n.a) + "}") + "^{" + tex(bare(n.b)) + "}";
     }
     return "";
   }
-  function toTex(src, groupThousands, allowImaginary) { return parse(src, groupThousands, allowImaginary).map(tex).join(",\\ "); }
+  function toTex(src, groupThousands, allowImaginary, variable) { return parse(src, groupThousands, allowImaginary, variable).map(tex).join(",\\ "); }
 
   // Close the brackets a student has opened but not yet closed, so the box can typeset an
   // answer while it is being built.
