@@ -101,6 +101,7 @@
   function exactTex(text, format) {
     const percent = format === 'percent' && /(?:\\?%)\s*$/.test(text);
     text = cleanExact(text, format);
+    if (format === 'sequence') return splitExactList(text).map(part => math.toTex(part)).join(',\\ ');
     if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text, format !== 'set') + (percent ? '\\%' : '');
     const tuples = format === 'tuple' ? [text] : splitExactList(text);
     return tuples.map(tuple => {
@@ -174,6 +175,7 @@
     };
     if (format === 'tuple') return [tuple(text)];
     if (format === 'tuple-set') return splitExactList(text).map(tuple);
+    if (format === 'sequence') return [splitExactList(text).map(scalar)];
     if (format === 'set') {
       return math.parse(text, false).map(node => [evaluated(node)]);
     }

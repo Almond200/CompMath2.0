@@ -2,7 +2,7 @@
 
 `js/data/problems/answer-keys-short.js` contains answers from the organizers’ posted keys and solutions. The `sources` map records the solution URL for each paper. The paper ID is the problem slug without its final problem number. The import matches numbered questions in the source PDFs to the app’s slugs and checks against local statements. Plain numeric answers can be extracted from the labeled answer in a PDF. Stacked fractions, radicals, and questions with more than one answer need particular care because PDF text extraction can drop signs, fraction bars, and exponents.
 
-Each entry contains an `answers` array of fully correct submissions. Its default format is a single real value. Use `format: "set"` for an unordered list of values, `"tuple"` for one ordered tuple, and `"tuple-set"` for an unordered list of ordered tuples. Put a complete list in one string, such as `["4, 6"]`. For a prompt asking for any one acceptable answer, use a separate array entry for each accepted alternative. Keep the multiple-choice imports in their own files.
+Each entry contains an `answers` array of fully correct submissions. Its default format is a single real value. Use `format: "set"` for an unordered list of values, `"sequence"` for a list that must follow a specified order, `"tuple"` for one parenthesized ordered tuple, and `"tuple-set"` for an unordered list of ordered tuples. Put a complete list in one string, such as `["4, 6"]`. For a prompt asking for any one acceptable answer, use a separate array entry for each accepted alternative. Keep the multiple-choice imports in their own files.
 
 Use plain math expressions in the keys. The answer field accepts features such as fractions, `sqrt(3)`, `cbrt(2)`, `pi`, powers and factorials. Separate entries with a comma. Spaces are optional. Rational expressions are compared exactly. The checker uses a small numerical tolerance for real expressions involving radicals or pi when exact rational comparison is unavailable. Questions with an unverified key or an unsupported answer form stay available for self-check. Saved self-check sets keep their existing marks.
 
@@ -18,12 +18,20 @@ If a key and its solution disagree, first match the question to the original sit
 - **2018 Lehigh #1** grades **20**. The printed answer heading is correct. The final sentence in the worked solution gives 400, which is the square of the requested leg length. The original question asks for the length, and `sqrt(29² − 21²) = 20`. [Lehigh problem and solution](https://www.lehigh.edu/~dmd1/hstest18.pdf)
 - **2017 MATHCOUNTS National Sprint #25** accepts **10**, **√193/2**, or **√457/2**. The key says the contest accepted all three side assignments. Apollonius’s theorem gives these three median lengths when BC is 10, 13, or 9 units, respectively. [Official key](https://drive.google.com/file/d/0BxY_uj2XLv-iVXRRaXBTaTNMX28/view)
 - **2012 MATHCOUNTS National Sprint #22** stays on self-check. The official key lists 12 units and says a second answer was accepted without identifying it. The diagram puts P between L and O, so the radius is 10 and PN is 12. With P at the origin and O at (0, 2), PK = 9 forces the vertical coordinate of K to be −15/4 by the circle equation. NK = 18 instead forces it to be −33/8. [Problem paper](https://drive.google.com/file/d/1lLn6yCKldgrxUz6SMDPktawlNtN1Cloq/view) · [Official key](https://drive.google.com/file/d/1aVRCZ38ZLhvrwfbZRZcSKYO_KLuozn4U/view)
+- **2013 Math Prize for Girls #10** accepts **239** and **236**. The organizers accepted the second count for solutions that treated the edge of the illustrated grid as a boundary. [Official solutions](https://mathprize.atfoundation.org/resources/past-tests/2013/mathprize2013solutions.pdf)
+- **2019 Calgary Junior Math Contest A8** stays on self-check. The official answer box gives 36 and 156, but any integer satisfying the three primality conditions is valid. For example, 540 also works because 541, 271, and 181 are prime. [Official solutions](https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/Jr-Math-examenglish-2019-sol-v2.pdf)
+
+### Large exact values
+
+- **2025 Math Prize for Girls #16** uses `2*3^299`, a 143-digit integer. The checker compares the exact value, so it accepts equivalent expressions such as `6*3^298` and rejects even a tiny rational change to the value. [Official solutions](https://mathprize.atfoundation.org/resources/past-tests/2025/mathprize2025solutions.pdf)
 
 ### Coverage added in this batch
 
 - ARML and ARML Local Individual now grade 159 of 160 questions from the published tables and worked solutions. The key for 2017 ARML Individual #7 is `-20-24i`. It stays on self-check while the checker only supports real-valued expressions.
 - CMM Individual is keyed for all 39 questions in 2024–2026. CHMMC remains the displayed name on historical papers. Both eras keep their stable problem IDs.
-- The first Math Prize for Girls and Lehigh passes add 170 and 143 keys, respectively. Further entries still need work, including positional math that PDF text extraction does not preserve.
+- Math Prize for Girls now grades all 320 questions from its published 2009–2025 solutions. The 2026 problems stay on self-check while the published archive provides only the problems. [Organizer archive](https://mathprize.atfoundation.org/resources/past-tests/)
+- Calgary Junior Math Contest Part A grades 188 of 189 questions using the printed and handwritten official answer boxes. The open-ended 2019 question above stays on self-check.
+- The first Lehigh pass adds 143 keys. Further entries still need work, including positional math that PDF text extraction does not preserve.
 - The 2026 MATHCOUNTS Chapter and State Sprint and Target rounds have complete keys. All app-listed National rounds are keyed apart from the unresolved 2012 Sprint problem above.
 
 Run `node tests/short-answer-keys.cjs` to check local prompts, source coverage, and grading. With the app served locally, `tools/check-practice-actions.cjs` covers submission and review in Chromium.

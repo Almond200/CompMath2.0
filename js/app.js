@@ -6552,7 +6552,9 @@
     const inlinePaper = paper && archiveStatement(p);
     const external = p && !paper && externalPracticePrompt(p);
     const showMathKeys = exact && !paper && exact.format !== 'text';
-    const exactLabel = { set: 'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.', tuple: 'Ordered tuple, for example (2, 3)',
+    const exactLabel = { set: 'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.',
+      sequence: 'List values in the requested order, separated by commas (spaces optional). Write numbers without commas, like 1398.',
+      tuple: 'Ordered tuple, for example (2, 3)',
       'tuple-set': 'All tuples, for example (2, 3), (4, 5)', text: 'Short answer',
       percent: 'Percentage (% is optional)' }[exact?.format] || 'Exact value (fractions, sqrt, pi, !)';
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";

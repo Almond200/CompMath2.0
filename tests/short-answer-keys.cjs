@@ -31,7 +31,7 @@ for (const [slug, key] of Object.entries(answers)) {
   const paper = slug.replace(/-\d+$/, '');
   assert.match(sources[paper], /^https:\/\//, slug);
   usedSources.add(paper);
-  assert([undefined, 'set', 'tuple', 'tuple-set', 'text', 'percent'].includes(key.format), slug);
+  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent'].includes(key.format), slug);
   assert(key.answers.length, slug);
   for (const value of key.answers) check(slug, value, 'Correct');
 }
@@ -57,6 +57,13 @@ check('2025-mathcounts-national-sprint-4', 'Sunday', 'Incorrect');
 check('2025-mathcounts-national-target-6', '90.08%', 'Correct');
 check('2025-mathcounts-national-target-6', '90.08', 'Correct');
 check('2025-mathcounts-national-target-6', '0.9008', 'Incorrect');
+check('2013-math-prize-for-girls-10', '236', 'Correct');
+check('2017-math-prize-for-girls-19', '60,20,20,20,20,40,40,20,20,40,20,20,20', 'Correct');
+check('2017-math-prize-for-girls-19', '20,60,20,20,40,20,20,40,40,20,20,20,20', 'Incorrect');
+check('2023-math-prize-for-girls-10', '4083, 520, 3595', 'Correct');
+check('2024-math-prize-for-girls-11', '2, 8, 6, 20', 'Incorrect');
+check('2025-math-prize-for-girls-16', '6*3^298', 'Correct');
+check('2025-math-prize-for-girls-16', '1.000000000000000000000000000000000000000000000001*2*3^299', 'Incorrect');
 check(set, '6, 4', 'Correct');
 check(set, '4', 'Incorrect');
 check(set, '4, 6, 7', 'Incorrect');
