@@ -6191,22 +6191,49 @@
     };
     tick();if(set.status!=='finished')mockClockInterval=setInterval(tick,1000);
   }
-  function exactAnswerHtml(text, key) {
+  function exactAnswerHtml(text, key = {}) {
     if(!text)return '';
     if (key.format === 'text') return escapeAttr(text);
     try { return `<span class="practice-answer-math">$${escapeAttr(practiceSessions.exactTex(text, key.format, key.notation))}$</span>`; }
     catch (err) { return escapeAttr(text); }
   }
   const PRACTICE_MATH_KEYS = [
-    { label: 'Fraction', open: '(', close: ')/()' },
+    { label: '+', name: 'Add', open: '+' },
+    { label: '−', name: 'Subtract', open: '-' },
+    { label: '×', name: 'Multiply', open: '*' },
+    { label: '÷', name: 'Divide', open: '/' },
+    { label: 'Fraction', open: '(', close: ')/()', nextArgument: true },
     { label: '√', name: 'Square root', open: 'sqrt(', close: ')' },
     { label: '∛', name: 'Cube root', open: 'cbrt(', close: ')' },
     { label: 'xⁿ', name: 'Power', open: '^(', close: ')' },
     { label: 'xₙ', name: 'Subscript', open: '_{', close: '}' },
     { label: 'π', name: 'Pi', open: 'pi' },
+    { label: 'e', name: 'Euler’s number', open: 'e' },
+    { label: 'i', name: 'Imaginary unit', open: 'i' },
     { label: '!', name: 'Factorial', open: '!' },
+    { label: 'Choose', name: 'Binomial coefficient (choose)', open: 'choose(', close: ',)', nextArgument: true },
+    { label: 'Fib', name: 'Fibonacci number', open: 'fib(', close: ')' },
+    { label: 'ln', name: 'Natural logarithm', open: 'ln(', close: ')' },
+    { label: 'logₙ', name: 'Logarithm with a specified base', open: 'log_', close: '()', nextArgument: true },
+    { label: 'sin', name: 'Sine', open: 'sin(', close: ')' },
+    { label: 'cos', name: 'Cosine', open: 'cos(', close: ')' },
+    { label: 'tan', name: 'Tangent', open: 'tan(', close: ')' },
+    { label: '°', name: 'Degrees', open: '°' },
+    { label: '%', name: 'Percent', open: '%' },
+    { label: ':', name: 'Ratio separator', open: ':' },
     { label: '±', name: 'Plus or minus', open: '±' },
-    { label: ',', name: 'Separate answers', open: ', ' }
+    { label: ',', name: 'Separate answers', open: ', ' },
+    { label: '(', name: 'Open parenthesis', open: '(' },
+    { label: ')', name: 'Close parenthesis', open: ')' },
+    { label: '[', name: 'Open square bracket', open: '[' },
+    { label: ']', name: 'Close square bracket', open: ']' },
+    { label: '&lt;', name: 'Less than', open: '<' },
+    { label: '≤', name: 'Less than or equal to', open: '≤' },
+    { label: '&gt;', name: 'Greater than', open: '>' },
+    { label: '≥', name: 'Greater than or equal to', open: '≥' },
+    { label: '∞', name: 'Infinity', open: '∞' },
+    { label: '∪', name: 'Union', open: ' U ' },
+    { label: '∅', name: 'Empty set', open: '∅' }
   ];
   function practiceMathKeysHtml() {
     return `<div class="practice-preview" hidden>
@@ -6227,9 +6254,9 @@
       const region = preview.closest('.practice-preview');
       region.hidden = !text;
       preview.textContent = text;
-      if (!text) return;
+      if (!text || key?.format === 'text') return;
       let tex;
-      try { tex = practiceSessions.exactTex(text, key.format, key.notation); }
+      try { tex = practiceSessions.exactTex(text, key?.format, key?.notation); }
       catch (err) { tex = text.replace(/^\$\$(.*)\$\$$|^\$(.*)\$$/, '$1$2'); }
       try {
         window.katex.render(tex, preview, { throwOnError: true, maxExpand: 100 });
@@ -6243,12 +6270,12 @@
     keypad.addEventListener('click', e => {
       const button = e.target.closest('[data-practice-math-key]');
       if (!button) return;
-      const { open, close = '' } = PRACTICE_MATH_KEYS[button.dataset.practiceMathKey];
+      const { open, close = '', nextArgument } = PRACTICE_MATH_KEYS[button.dataset.practiceMathKey];
       const start = input.selectionStart, end = input.selectionEnd;
       const selected = input.value.slice(start, end);
       const inserted = open + (close ? selected : '') + close;
       if (input.value.length - (end - start) + inserted.length > input.maxLength) return;
-      const caret = start + (selected && close === ')/()' ? inserted.length - 1 : open.length + (close ? selected.length : 0));
+      const caret = start + (selected && nextArgument ? inserted.length - 1 : open.length + (close ? selected.length : 0));
       input.setRangeText(inserted, start, end);
       input.focus({ preventScroll: true });
       input.setSelectionRange(caret, caret);
@@ -6525,7 +6552,8 @@
       <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
         const p = PROBLEM_BY_SLUG[slug], result = practiceSessions.result(set, slug);
         const answer = set.answers[slug], exact = practiceSessions.exactKey(slug);
-        const submitted = exact && !set.selfCheck?.[slug] ? exactAnswerHtml(answer, exact) : escapeAttr(answer || '');
+        const submitted = (exact || /AIME/.test(p?.fam)) && !set.selfCheck?.[slug]
+          ? exactAnswerHtml(answer, exact) : escapeAttr(answer || '');
         return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${practiceProblemNumber(set, i)}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong><small>${set.answers[slug] ? 'Your answer: ' + submitted : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small></span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
       }).join('')}</div></section></div>`;
     renderMath($content);
@@ -6553,7 +6581,7 @@
     const aime = p && /AIME/.test(p.fam), exact = practiceSessions.exactKey(slug), paper = !!(p && set.selfCheck?.[slug]);
     const inlinePaper = paper && archiveStatement(p);
     const external = p && !paper && externalPracticePrompt(p);
-    const showMathKeys = exact && !paper && exact.format !== 'text';
+    const typedAnswer = aime || exact || paper;
     const exactLabel = { set: 'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.',
       sequence: exact?.notation === 'base-3'
         ? 'Base 3 digits in the requested order, separated by commas (spaces optional). The _3 suffix is optional.'
@@ -6592,11 +6620,11 @@
           : external ? `<div class="practice-paper"><p>Read Problem ${p.num} in the original paper.</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`
           : p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>Your answer</h3>
-          ${aime || exact || paper ? (set.answers[slug] ? `<p class="practice-submitted">${exact && !paper ? exactAnswerHtml(set.answers[slug], exact) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
+          ${typedAnswer ? (set.answers[slug] ? `<p class="practice-submitted">${paper ? escapeAttr(set.answers[slug]) : exactAnswerHtml(set.answers[slug], exact)}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
           ${paper ? `<div class="practice-self">${p.solUrl && !inlinePaper ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
           ${practiceExplanationHtml(p, !paper || !!inlinePaper)}`
-          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime || exact || paper ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? exactLabel : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${exact || paper ? 'text' : 'numeric'}" maxlength="${paper ? '60' : exact ? '120' : '3'}" autocomplete="off" aria-describedby="practice-answer-error" value="${escapeAttr(set.answers[slug] || '')}">${showMathKeys ? practiceMathKeysHtml() : '<p id="practice-answer-error" role="status"></p>'}` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
+          : p ? `<div class="practice-answer"><h4>Your answer</h4>${typedAnswer ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? exactLabel : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${aime && !paper ? 'numeric' : 'text'}" maxlength="${paper ? '60' : '120'}" autocomplete="off" aria-describedby="practice-answer-error" value="${escapeAttr(set.answers[slug] || '')}">${practiceMathKeysHtml()}` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
       </section></div>`;
     const redraw = () => {
@@ -6665,7 +6693,7 @@
       if (valid) { schedulePracticeSave(); syncAnswerUI(); }
       else if (clearAnswer) clearAnswer.disabled = !e.target.value && !set.answers[slug];
     });
-    if (answerInput && showMathKeys) wirePracticeMathKeys(answerInput, exact);
+    if (answerInput) wirePracticeMathKeys(answerInput, paper ? undefined : exact);
     clearAnswer?.addEventListener('click', () => {
       if (!practiceSessions.answer(set, slug, '', aime)) { if(set.status==='finished'){savePractice();renderTopicPracticeSet();} return; }
       if (answerInput) {

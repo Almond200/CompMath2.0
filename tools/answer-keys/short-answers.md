@@ -22,6 +22,8 @@ Use `format: "tuple", notation: "polar"` for a radius and angle. The checker acc
 
 Use `format: "sequence", notation: "base-3"` when a prompt requests ternary digit strings in order. Students can enter digits with an optional `_3`, `_{3}`, or `₃` suffix. The preview includes the base subscript.
 
+Every typed Practice answer uses the same Math keypad. AIME still grades integers from 0 through 999, including expressions that evaluate to those values and entries with leading zeros such as `007`.
+
 Read the submission instruction in the problem and inspect the typeset official answer when the PDF extraction is ambiguous. Check what a subscript denotes before selecting a format. A Fibonacci number, a digit string in a specified base, and an indexed variable require different handling. Record any notation that still needs a verifier with the problem number and source.
 
 If a key and its solution disagree, first match the question to the original sitting. Check the PDF, any organizer correction, and an independent calculation before changing the accepted value. Record the published and corrected answers with the source. Log unusually large exact values along with the relevant limits of the grader so their support can be decided from the actual problem.

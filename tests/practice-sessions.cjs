@@ -10,9 +10,12 @@ assert(!P.answer(s, 'amc', 'F', false));
 // Columbus State papers have six choices, A to F (2026-11-22).
 { const c=P.create('Columbus',null,['2015-columbus-state-tournament-3']); assert(P.answer(c,'2015-columbus-state-tournament-3','F',false)); };
 assert(P.answer(s, 'aime', '007', true));
-for (const invalid of ['1000','-1','1.2']) assert(!P.answer(s, 'aime', invalid, true));
+for (const invalid of ['1000','-1','1.2','0007','999+1','sqrt(2)','7,7']) assert(!P.answer(s, 'aime', invalid, true));
 assert.equal(P.result(s, 'amc'), 'Correct');
 assert.equal(P.result(s, 'aime'), 'Correct', 'leading zeros compare numerically');
+assert(P.answer(s, 'aime', '3!+1', true));
+assert.equal(P.result(s, 'aime'), 'Correct', 'a keypad expression can evaluate to the required integer');
+assert(P.answer(s, 'aime', '007', true));
 P.answer(s, 'amc', 'D', false);
 assert.equal(P.result(s, 'amc'), 'Incorrect');
 P.answer(s, 'amc', '', false);

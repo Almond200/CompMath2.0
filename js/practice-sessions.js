@@ -727,6 +727,14 @@
   }
   const normalizeTextAnswer = value => String(value).normalize('NFKC').trim()
     .replace(/\s+/g, ' ').replace(/\s*([,<])\s*/g, '$1').toLowerCase();
+  function aimeValue(text) {
+    if (/^\d+$/.test(text)) return text.length <= 3 ? Number(text) : null;
+    if (!text || text.length > 120) return null;
+    try {
+      const value = integerValue(exactScalar(cleanExact(text)).fraction);
+      return value != null && value >= 0n && value <= 999n ? Number(value) : null;
+    } catch (err) { return null; }
+  }
   function answer(set, slug, value, aime, now = Date.now()) {
     if (set.kind === 'mock') checkpoint(set,now);
     if (set.status === 'finished') return false;
@@ -738,7 +746,7 @@
     else if (exact?.format === 'text') { if (text.length > 120) return false; }
     else if (exact) {
       if (text) { try { exactValues(text, exact.format, exact.notation); } catch (err) { return false; } }
-    } else if (!(text === '' || (aime ? /^\d{1,3}$/.test(text) : (/-columbus-state-tournament-/.test(slug) ? /^[A-F]$/ : /^[A-E]$/).test(text)))) return false;
+    } else if (!(text === '' || (aime ? aimeValue(text) != null : (/-columbus-state-tournament-/.test(slug) ? /^[A-F]$/ : /^[A-E]$/).test(text)))) return false;
     set.answers[slug] = text;
     return true;
   }
@@ -754,7 +762,7 @@
     const key = root.MATH_ANSWER_KEYS?.answers?.[slug] ?? root.MATH_EXTRA_KEYS?.answers?.[slug];
     if (key == null) return 'Answer unavailable';
     const actual = String(set.answers[slug]).trim();
-    const same = /^\d+$/.test(key) ? /^\d{1,3}$/.test(actual) && Number(actual) === Number(key) : actual.toUpperCase() === key;
+    const same = /^\d+$/.test(key) ? aimeValue(actual) === Number(key) : actual.toUpperCase() === key;
     return same ? 'Correct' : 'Incorrect';
   }
   // After finishing, the solver marks a self-checked answer right or wrong (or clears the mark).
