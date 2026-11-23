@@ -127,6 +127,17 @@ check('2019-lehigh-math-contest-13', '15,5', 'Correct');
 check('2019-lehigh-math-contest-13', '5', 'Incorrect');
 check('2019-lehigh-math-contest-22', '4:6', 'Correct');
 check('2019-lehigh-math-contest-22', '3:2', 'Incorrect');
+check('1998-hmmt-february-algebra-8', '[-4.5,-2] U ((1-sqrt(5))/2,(1+sqrt(5))/2)', 'Incorrect');
+check('2010-hmmt-february-geometry-6', 'sqrt(6)/4+sqrt(2)/4+2', 'Correct');
+check('2014-hmmt-february-algebra-4', '-1 1/2', 'Correct');
+check('2014-hmmt-february-algebra-4', '-(1+1/2)', 'Correct');
+check('2014-hmmt-february-algebra-4', '-1 1/3', 'Incorrect');
+const ternaryProblem = '2011-hmmt-february-algebra-and-combinatorics-19';
+check(ternaryProblem, '(1000001100111222)_{3},2211100110000012₃', 'Correct');
+check(ternaryProblem, '2211100110000012,1000001100111222', 'Incorrect');
+assert.equal(practice.exactTex('1000001100111222, 2211100110000012', 'sequence', 'base-3'),
+  '1000001100111222_{3},\\ 2211100110000012_{3}');
+check('2015-hmmt-february-combinatorics-7', 'choose(4030,2014)/2^4030', 'Correct');
 check('2006-lehigh-math-contest-21', '2(135-B)', 'Correct');
 check('2006-lehigh-math-contest-30', 'n(n+5)-3', 'Correct');
 check('2006-lehigh-math-contest-30', 'n^2+5n-3.0000000001', 'Incorrect');
