@@ -104,6 +104,18 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('.practice-result .katex').waitFor();
  assert.equal(await p.locator('.practice-submitted .katex annotation').textContent(),'y=2x');
  assert.match(await p.locator('.practice-result').innerText(),/Incorrect/);
+ await set(['2009-duke-math-meet-individual-2','2009-duke-math-meet-individual-3','2025-smt-algebra-8']);
+ for(const [index,answer] of ['1/n+1/n','9 points','435°'].entries()){
+  if(index)await p.locator('.practice-problem-nav [data-practice-index="'+index+'"]').click();
+  await p.locator('#practice-answer').fill(answer);
+  assert.equal(await p.locator('#practice-answer').getAttribute('aria-invalid'),'false');
+  await p.locator('.practice-answer-preview .katex').waitFor();
+ }
+ await p.locator('#finish-practice').click();
+ await p.locator('.practice-results').waitFor();
+ assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct','Correct']);
+ await p.locator('[data-result-index="0"]').click();
+ assert.match(await p.getByRole('link',{name:'Open the official solution'}).getAttribute('href'),/\/2009_answers\.pdf$/);
  await set(['2020-cmimc-combinatorics-and-computer-science-8']);
  const fibonacciInput=p.locator('#practice-answer');
  await fibonacciInput.fill('(100,F+1223)');
