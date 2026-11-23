@@ -159,7 +159,10 @@
     hours: /\s*(?:hours?|hrs?\.?)\s*$/i,
     inches: /\s*(?:inch(?:es)?|in\.?)\s*$/i,
     pounds: /\s*(?:pounds?|lbs?\.?)\s*$/i,
+    dollars: /\s*(?:dollars?|USD)\s*$/i,
+    mph: /\s*(?:mph|miles?\s+per\s+hour)\s*$/i,
     'square-inches': /\s*(?:square\s+inch(?:es)?|sq\.?\s*in\.?|in(?:\^2|²))\s*$/i,
+    'cubic-inches': /\s*(?:cubic\s+inch(?:es)?|cu\.?\s*in\.?|in(?:\^3|³))\s*$/i,
     'square-units': /\s*(?:square\s+units?|units?\s+squared|units?(?:\^2|²))\s*$/i
   };
   function cleanExact(text, format, notation) {
