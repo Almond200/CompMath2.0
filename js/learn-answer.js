@@ -27,6 +27,8 @@
     }
     s = s.replace(/\\(?:mathrm|text)\s*\{\s*i\s*\}|ⅈ/g, "i");
     s = s.replace(/\\(pi|sqrt|ln|sin|cos|tan)\b/g, "$1").replace(/\\(?:cdot|times)\b/g, "*").replace(/\\div\b/g, "/").replace(/\\pm\b/g, "±");
+    s = s.replace(/(?:\\)?\blog\s*_?\s*(?:\{(\d+)\}|(\d+))\s*\(([^()]*)\)/gi,
+      (_, bracedBase, base, input) => `(ln(${input})/ln(${bracedBase || base}))`);
     s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, m => "^(" + [...m].map(c => SUP[c]).join("") + ")");
     s = s.replace(/\*\*/g, "^").replace(/[×·∙⋅]/g, "*").replace(/[÷∕]/g, "/").replace(/[−–—]/g, "-")
       .replace(/π/g, "pi").replace(/√/g, "sqrt").replace(/∛/g, "cbrt").replace(/[[{]/g, "(").replace(/[\]}]/g, ")");
@@ -51,10 +53,11 @@
         out.push({ t: "num", v: num[1] }); i += num[1].length; continue;
       }
       if (s.startsWith("pi", i)) { out.push({ t: "pi" }); i += 2; continue; }
+      if (c === "e" && !/\d/.test(s[i + 1] || "")) { out.push({ t: "e" }); i++; continue; }
       if (s.startsWith("sqrt", i)) { out.push({ t: "sqrt" }); i += 4; continue; }
       if (s.startsWith("cbrt", i)) { out.push({ t: "cbrt" }); i += 4; continue; }
       if (s.startsWith("choose", i)) { out.push({ t: "choose" }); i += 6; continue; }
-      const fn = /^(ln|sin|cos|tan)/.exec(s.slice(i));
+      const fn = /^(ln|sin|cos|tan|fib)/.exec(s.slice(i));
       if (fn) { out.push({ t: fn[1] }); i += fn[1].length; continue; }
       if (allowImaginary && c === "i") { out.push({ t: "i" }); i++; continue; }
       if ("+-*/^!(),±".indexOf(c) !== -1) { out.push({ t: c }); i++; continue; }
@@ -65,8 +68,8 @@
   const SHOW = { "*": "×", "/": "÷", "-": "−", sqrt: "√", cbrt: "∛", pi: "π" };
   const sym = t => SHOW[t.t] || (t.t === "num" ? t.v : t.t);
   const functions = { ln: Math.log, sin: Math.sin, cos: Math.cos, tan: Math.tan };
-  const unaryFunctions = ["sqrt", "cbrt", ...Object.keys(functions)];
-  const atomTokens = ["num", "pi", "choose", "(", ...unaryFunctions];
+  const unaryFunctions = ["sqrt", "cbrt", "fib", ...Object.keys(functions)];
+  const atomTokens = ["num", "pi", "e", "choose", "(", ...unaryFunctions];
 
   // expr := term (("+" | "-") term)*
   // term := unary (("*" | "/" | nothing) unary)*      (nothing: 2sqrt(3), 7pi, 2(3))
@@ -105,7 +108,7 @@
     function atom() {
       const t = peek();
       if (t === "num") return { op: "num", v: toks[k++].v };
-      if (t === "pi" || t === "i") { k++; return { op: t }; }
+      if (t === "pi" || t === "e" || t === "i") { k++; return { op: t }; }
       if (unaryFunctions.includes(t)) { k++; if (!peek()) throw new Error(`${sym({ t })} needs a number after it.`); return { op: t, a: atom() }; }
       if (t === "choose") {
         k++;
@@ -157,40 +160,59 @@
   }
 
   function binomial(n, k) {
-    if (n < 0n || n > 4096n || k < 0n) return null;
+    if (n < 0n || n.toString(2).length > 64 || k < 0n) return null;
     if (k > n) return 0n;
     const count = k < n - k ? k : n - k;
+    if (count > 2048n) return null;
     let result = 1n;
     for (let i = 1n; i <= count; i++) result = result * (n - count + i) / i;
     return result;
   }
 
-  function value(n) {
-    if (Object.hasOwn(functions, n.op)) return functions[n.op](value(n.a));
+  function fibonacci(index) {
+    if (index < 0n || index > 16384n) return null;
+    let a = 0n, b = 1n;
+    for (const bit of index.toString(2)) {
+      const even = a * (2n * b - a), odd = a * a + b * b;
+      [a, b] = bit === "0" ? [even, odd] : [odd, even + odd];
+    }
+    return a;
+  }
+
+  function value(n, childValue = value) {
+    if (Object.hasOwn(functions, n.op)) return functions[n.op](childValue(n.a));
     switch (n.op) {
       case "num": return parseFloat(n.v);
       case "pi": return Math.PI;
-      case "sqrt": return Math.sqrt(value(n.a));
-      case "cbrt": return Math.cbrt(value(n.a));
+      case "e": return Math.E;
+      case "sqrt": return Math.sqrt(childValue(n.a));
+      case "cbrt": return Math.cbrt(childValue(n.a));
+      case "fib": {
+        const index = childValue(n.a);
+        return Number.isSafeInteger(index) ? Number(fibonacci(BigInt(index)) ?? NaN) : NaN;
+      }
       case "choose": {
-        const a = value(n.a), b = value(n.b);
+        const a = childValue(n.a), b = childValue(n.b);
         if (!Number.isSafeInteger(a) || !Number.isSafeInteger(b)) return NaN;
         return Number(binomial(BigInt(a), BigInt(b)) ?? NaN);
       }
-      case "()": return value(n.a);
-      case "neg": return -value(n.a);
+      case "()": return childValue(n.a);
+      case "neg": return -childValue(n.a);
       case "!": {
-        const k = value(n.a);
+        const k = childValue(n.a);
         if (!Number.isInteger(k) || k < 0 || k > 170) return NaN;
         let result = 1;
         for (let i = 2; i <= k; i++) result *= i;
         return result;
       }
-      case "+": return value(n.a) + value(n.b);
-      case "-": return value(n.a) - value(n.b);
-      case "*": return value(n.a) * value(n.b);
-      case "/": return value(n.a) / value(n.b);
-      case "^": return Math.pow(value(n.a), value(n.b));
+      case "+": return childValue(n.a) + childValue(n.b);
+      case "-": return childValue(n.a) - childValue(n.b);
+      case "*": return childValue(n.a) * childValue(n.b);
+      case "/": return childValue(n.a) / childValue(n.b);
+      case "^": {
+        const a = childValue(n.a), b = childValue(n.b);
+        return a === 0 && b === 0 ? NaN : Math.pow(a, b);
+      }
     }
     return NaN;
   }
@@ -202,9 +224,11 @@
     switch (n.op) {
       case "num": return n.v;
       case "pi": return "\\pi";
+      case "e": return "e";
       case "i": return "i";
       case "sqrt": return "\\sqrt{" + tex(bare(n.a)) + "}";
       case "cbrt": return "\\sqrt[3]{" + tex(bare(n.a)) + "}";
+      case "fib": return "F_{" + tex(bare(n.a)) + "}";
       case "choose": return "\\binom{" + tex(bare(n.a)) + "}{" + tex(bare(n.b)) + "}";
       // Brackets around a single number, root or fraction are only grouping: drawn without them.
       case "()": return /^(num|pi|sqrt|cbrt|\/|\(\))$/.test(n.a.op) ? tex(n.a) : "\\left(" + tex(n.a) + "\\right)";
@@ -237,7 +261,7 @@
 
   // Two answers agree when their values agree (within 1e-9 relative); a list is compared as
   // a set, so "9, 4" matches "4, 9" and "6/8" matches "3/4".
-  function values(src) { return parse(src).map(value).sort((x, y) => x - y); }
+  function values(src) { return parse(src).map(node => value(node)).sort((x, y) => x - y); }
   function same(a, b) {
     let x, y;
     try { x = values(a); y = values(b); } catch (e) { return false; }
@@ -245,7 +269,7 @@
     return x.every((v, i) => isFinite(v) && isFinite(y[i]) && Math.abs(v - y[i]) <= 1e-9 * Math.max(1, Math.abs(v), Math.abs(y[i])));
   }
 
-  const api = { parse, value, values, toTex, closeOpen, same, normalize, binomial };
+  const api = { parse, value, values, toTex, closeOpen, same, normalize, binomial, fibonacci };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.LearnAnswer = api;
 })(typeof window !== "undefined" ? window : this);

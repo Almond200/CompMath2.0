@@ -83,6 +83,20 @@ check('2010-hmmt-february-algebra-4', '\\{i,-1,1,1/i\\}', 'Correct');
 check('2010-hmmt-february-algebra-4', '1,-1,2i,-i', 'Incorrect');
 check('2024-hmmt-february-algebra-and-number-theory-9', '0,±sqrt(-6)', 'Correct');
 check('2024-hmmt-february-algebra-and-number-theory-9', 'sqrt(6)i,0', 'Incorrect');
+check('2017-bmt-analysis-2', 'log_3(6),1', 'Correct');
+check('2016-bmt-analysis-8', 'e*e', 'Correct');
+check('2012-bmmt-individual-1', '4/9', 'Correct');
+check('2012-bmmt-individual-1', '-9/4', 'Incorrect');
+check('2015-bmt-analysis-9', '0', 'Correct');
+const fibonacciProblem = '2020-cmimc-combinatorics-and-computer-science-8';
+check(fibonacciProblem, '(100, F_104+1223)', 'Correct');
+check(fibonacciProblem, '(100, F_{104}+1223)', 'Correct');
+check(fibonacciProblem, '(100, F₁₀₄+1223)', 'Correct');
+check(fibonacciProblem, '(100, 2427893228399975083676)', 'Correct');
+check(fibonacciProblem, '(100, fib(106)-fib(105)+1223)', 'Correct');
+check(fibonacciProblem, '(100, F_104)', 'Incorrect');
+assert.match(practice.exactTex('(100,F_{104}+1223)', 'tuple', 'fibonacci'), /F_\{104\}\+1223/);
+assert(!practice.answer(practice.create('Notation scope', 'Any', [set]), set, 'F_4', false));
 check('2022-hmmt-november-theme-2', '16\\sqrt[4]{3}', 'Correct');
 check('2019-hmmt-february-algebra-and-number-theory-8', '4038!^2/(2019!^4*2^8076)', 'Correct');
 check('2026-hmmt-november-theme-4', '1013*2027!/2027', 'Correct');
@@ -115,6 +129,37 @@ answers['radical-test'] = { answers: ['(sqrt(6)+sqrt(2))/4'] };
 check('radical-test', 'sqrt6/4+sqrt2/4', 'Correct');
 check('radical-test', '(sqrt(6)+sqrt(2))/5', 'Incorrect');
 delete answers['radical-test'];
+
+answers['tiny-value'] = { answers: ['0.000000000001'] };
+check('tiny-value', 'pi-pi', 'Incorrect');
+check('tiny-value', 'pi+1/10^12-pi', 'Correct');
+check('tiny-value', 'pi+2/10^12-pi', 'Incorrect');
+check('tiny-value', 'sqrt(2)-sqrt(2)', 'Incorrect');
+answers['exact-one'] = { answers: ['1'] };
+check('exact-one', '(4096!)^4/(4096!)^4', 'Correct');
+check('exact-one', '(3*(4096!)^4)/((4096!)^4*3)', 'Correct');
+check('exact-one', 'pi*(1/pi)', 'Correct');
+check('exact-one', 'sqrt(2)^2/2', 'Correct');
+check('exact-one', 'sin(30°)+cos(pi/3)', 'Correct');
+check('exact-one', 'pi-pi+1.000000000000000001', 'Incorrect');
+const invalidSet = practice.create('Undefined expressions', 'Any', ['exact-one']);
+for (const input of ['(pi-pi)/(pi-pi)', '(1/0)/(1/0)', '1/(1/0)', 'sqrt(-1)/sqrt(-1)', '0^0/0^0', 'tan(pi/2)/tan(pi/2)']) {
+  assert(!practice.answer(invalidSet, 'exact-one', input, false), input);
+}
+answers['factored-power'] = { answers: ['2'] };
+check('factored-power', '2^12000/2^11999', 'Correct');
+check('factored-power', '(4096!)^4/(4096!)^4+1', 'Correct');
+answers['irrational-sum'] = { answers: ['1+sqrt(2)'] };
+check('irrational-sum', '(4096!)^4/(4096!)^4+sqrt(2)', 'Correct');
+answers['complex-root'] = { format: 'complex', answers: ['(1+i)/sqrt(2)'] };
+check('complex-root', 'sqrt(i)', 'Correct');
+check('complex-root', '-sqrt(i)', 'Incorrect');
+answers['complex-integer'] = { format: 'complex', answers: ['2+i'] };
+check('complex-integer', 'sqrt(3+4i)', 'Correct');
+check('complex-integer', 'sqrt(3-4i)', 'Incorrect');
+check('complex-integer', '2+i^2025', 'Correct');
+check('complex-integer', '2+(sqrt(i))^2', 'Correct');
+for (const slug of ['tiny-value', 'exact-one', 'factored-power', 'irrational-sum', 'complex-root', 'complex-integer']) delete answers[slug];
 
 const pilot = practice.createMock('2025 HMMT February Algebra and Number Theory', [set],
   { mode: 'paper', family: 'HMMT February', durationMs: null });

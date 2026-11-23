@@ -6191,10 +6191,10 @@
     };
     tick();if(set.status!=='finished')mockClockInterval=setInterval(tick,1000);
   }
-  function exactAnswerHtml(text, format) {
+  function exactAnswerHtml(text, key) {
     if(!text)return '';
-    if (format === 'text') return escapeAttr(text);
-    try { return `<span class="practice-answer-math">$${escapeAttr(practiceSessions.exactTex(text, format))}$</span>`; }
+    if (key.format === 'text') return escapeAttr(text);
+    try { return `<span class="practice-answer-math">$${escapeAttr(practiceSessions.exactTex(text, key.format, key.notation))}$</span>`; }
     catch (err) { return escapeAttr(text); }
   }
   const PRACTICE_MATH_KEYS = [
@@ -6217,7 +6217,7 @@
         <div>${PRACTICE_MATH_KEYS.map((key, i) => `<button class="hp-btn hp-btn-soft" type="button" data-practice-math-key="${i}" aria-label="${key.name || key.label}">${key.label}</button>`).join('')}</div>
       </details>`;
   }
-  function wirePracticeMathKeys(input, format) {
+  function wirePracticeMathKeys(input, key) {
     const preview = $content.querySelector('.practice-answer-preview');
     const keypad = $content.querySelector('.practice-math-keys');
     if (!preview || !keypad) return;
@@ -6228,7 +6228,7 @@
       preview.textContent = text;
       if (!text) return;
       let tex;
-      try { tex = practiceSessions.exactTex(text, format); }
+      try { tex = practiceSessions.exactTex(text, key.format, key.notation); }
       catch (err) { tex = text.replace(/^\$\$(.*)\$\$$|^\$(.*)\$$/, '$1$2'); }
       try {
         window.katex.render(tex, preview, { throwOnError: true, maxExpand: 100 });
@@ -6523,7 +6523,7 @@
       <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
         const p = PROBLEM_BY_SLUG[slug], result = practiceSessions.result(set, slug);
         const answer = set.answers[slug], exact = practiceSessions.exactKey(slug);
-        const submitted = exact && !set.selfCheck?.[slug] ? exactAnswerHtml(answer, exact.format) : escapeAttr(answer || '');
+        const submitted = exact && !set.selfCheck?.[slug] ? exactAnswerHtml(answer, exact) : escapeAttr(answer || '');
         return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${practiceProblemNumber(set, i)}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong><small>${set.answers[slug] ? 'Your answer: ' + submitted : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small></span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
       }).join('')}</div></section></div>`;
     renderMath($content);
@@ -6560,7 +6560,7 @@
       'tuple-set': 'All tuples, for example (2, 3), (4, 5)', text: 'Short answer',
       percent: 'Percentage (% is optional)' }[exact?.format] || 'Exact value (fractions, sqrt, pi, !)';
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
-    const correct = !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact.format)).join(' or ') : escapeAttr(officialKey(slug) || '');
+    const correct = !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact)).join(' or ') : escapeAttr(officialKey(slug) || '');
     const nav = set.slugs.map((id, i) => {
       const result = practiceSessions.result(set, id);
       const suffix = finished ? result : set.answers[id] ? 'Answered' : 'Unanswered';
@@ -6585,7 +6585,7 @@
           : external ? `<div class="practice-paper"><p>Read Problem ${p.num} in the original paper.</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`
           : p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>Your answer</h3>
-          ${aime || exact || paper ? (set.answers[slug] ? `<p class="practice-submitted">${exact && !paper ? exactAnswerHtml(set.answers[slug], exact.format) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
+          ${aime || exact || paper ? (set.answers[slug] ? `<p class="practice-submitted">${exact && !paper ? exactAnswerHtml(set.answers[slug], exact) : escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
           ${paper ? `<div class="practice-self">${p.solUrl && !inlinePaper ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
           ${practiceExplanationHtml(p, !paper || !!inlinePaper)}`
@@ -6658,7 +6658,7 @@
       if (valid) { schedulePracticeSave(); syncAnswerUI(); }
       else if (clearAnswer) clearAnswer.disabled = !e.target.value && !set.answers[slug];
     });
-    if (answerInput && showMathKeys) wirePracticeMathKeys(answerInput, exact.format);
+    if (answerInput && showMathKeys) wirePracticeMathKeys(answerInput, exact);
     clearAnswer?.addEventListener('click', () => {
       if (!practiceSessions.answer(set, slug, '', aime)) { if(set.status==='finished'){savePractice();renderTopicPracticeSet();} return; }
       if (answerInput) {
