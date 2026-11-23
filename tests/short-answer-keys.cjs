@@ -159,6 +159,11 @@ check('2008-pumac-division-b-geometry-1', 'decreases by 9%', 'Correct');
 check('2008-pumac-division-b-geometry-1', '9% increase', 'Incorrect');
 check('2010-pumac-division-b-algebra-6', '0', 'Correct');
 check('2010-pumac-division-b-algebra-6', '2400', 'Correct');
+check('2013-pumac-division-a-algebra-8', '2!*4!', 'Correct');
+check('2013-pumac-division-a-algebra-8', '192', 'Incorrect');
+check('2013-pumac-division-a-geometry-6', '13*(13+84/13)', 'Correct');
+check('2017-pumac-division-a-geometry-8', '16', 'Correct');
+check('2017-pumac-division-a-geometry-8', '33', 'Incorrect');
 const polynomialSet = practice.create('Polynomial validation', 'Any', ['2021-smt-algebra-1']);
 for (const input of ['(63x-62)(x-1)/(x-1)', '63y-62', 'x^1000', '63x-62,0']) {
   assert(!practice.answer(polynomialSet, '2021-smt-algebra-1', input, false), input);
