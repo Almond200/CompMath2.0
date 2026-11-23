@@ -10,6 +10,8 @@ Set `external: true` when the problem is read from the original paper and the ap
 
 Use `"percent"` when the official answer is expressed as a percentage. The player can include or omit the percent symbol. Use `"text"` for short answers such as a day of the week or digits in a specified base. List acceptable forms explicitly. Text matching ignores case and extra spaces.
 
+Use `"complex"` for one complex number and `"complex-set"` for all complex numbers. The player can use `i`, common arithmetic operations and integer powers. Real and imaginary components are compared separately. For example, `0, ±i*sqrt(6)` stands for all three values in 2024 HMMT February Algebra and Number Theory #9.
+
 If a key and its solution disagree, first match the question to the original sitting. Check the PDF, any organizer correction, and an independent calculation before changing the accepted value. Record the published and corrected answers with the source. Log unusually large exact values along with the relevant limits of the grader so their support can be decided from the actual problem.
 
 ### Source discrepancies
@@ -29,17 +31,20 @@ If a key and its solution disagree, first match the question to the original sit
 
 - **2025 Math Prize for Girls #16** uses `2*3^299`, a 143-digit integer. The checker compares the exact value, so it accepts equivalent expressions such as `6*3^298` and rejects even a tiny rational change to the value. [Official solutions](https://mathprize.atfoundation.org/resources/past-tests/2025/mathprize2025solutions.pdf)
 - **2019 CHMMC Individual #12, #13 and #15** have several-hundred-digit integer answers. The checked-in keys keep the closed forms `2^2021-6`, `4*3^1000-5*2^1000+1002`, and `2^2018*3^2` for exact grading. [Official solutions](https://www.caltechmathmeet.org/_files/ugd/006423_51e4bf40e50b4aa5bd2a5fbc06da8009.pdf)
-- **2012 Fall CHMMC Individual #2** stays on self-check. The organizer's example uses the 2013 positive multiples `2013!*k` for `k` from 1 to 2013. The factorial exceeds the 170 limit, and the question accepts any valid construction, so a finite list of answers would fail to grade the problem fairly. [Official solutions](https://www.caltechmathmeet.org/_files/ugd/006423_6d6ab3b10a9d4a4fa338828e160aad6d.pdf)
+- **2012 Fall CHMMC Individual #2** stays on self-check. The organizer's example uses the 2013 positive multiples `2013!*k` for `k` from 1 to 2013. The question accepts any valid construction, so a finite list of answers would fail to grade the problem fairly. [Official solutions](https://www.caltechmathmeet.org/_files/ugd/006423_6d6ab3b10a9d4a4fa338828e160aad6d.pdf)
+- **2018 HMMT February Combinatorics #7**, **2019 HMMT February Algebra and Number Theory #8**, and **2026 HMMT November Theme #4** use factorials as large as `4038!` in the published expressions. Practice evaluates factorials up to `4096!` with integer arithmetic and bounds the size of intermediate results. For example, both `1013*2026!` and `1013*2027!/2027` are accepted for the last of these problems. [2018 solutions](https://hmmt-archive.s3.amazonaws.com/tournaments/2018/feb/comb/solutions.pdf) · [2019 solutions](https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/algnt/solutions.pdf) · [2026 solutions](https://hmmt-archive.s3.amazonaws.com/tournaments/2026/nov/theme/solutions.pdf)
+- **2018 HMMT February Algebra and Number Theory #8** stays on self-check. Even in the compact form `(2^2019-1)^2018`, evaluating the official answer would require expanding an integer with more than four million bits. [Official solutions](https://hmmt-archive.s3.amazonaws.com/tournaments/2018/feb/algnt/solutions.pdf)
 
 ### Coverage added in this batch
 
-- ARML and ARML Local Individual now grade 159 of 160 questions from the published tables and worked solutions. The key for 2017 ARML Individual #7 is `-20-24i`. It stays on self-check while the checker only supports real-valued expressions.
+- ARML and ARML Local Individual now grade all 160 questions from the published tables and worked solutions, including the complex answer to 2017 ARML Individual #7.
 - CMM Individual is keyed for all 39 questions in 2024–2026. CHMMC remains the displayed name on historical papers. Both eras keep their stable problem IDs.
-- Historical CHMMC Individual now grades 208 of 210 questions. Fall 2012 #2 stays on self-check as above. The value `33-56i` from 2017 #13 needs complex-number support.
+- Historical CHMMC Individual now grades 209 of 210 questions. Fall 2012 #2 stays on self-check as above.
 - Math Prize for Girls now grades all 320 questions from its published 2009–2025 solutions. The 2026 problems stay on self-check while the published archive provides only the problems. [Organizer archive](https://mathprize.atfoundation.org/resources/past-tests/)
 - Calgary Junior Math Contest Part A grades 188 of 189 questions using the printed and handwritten official answer boxes. The open-ended 2019 question above stays on self-check.
 - Duke Math Meet Individual grades 59 questions using the six published solution booklets. The official archive currently provides problem papers for the ten other indexed sittings. [Organizer archive](https://math.duke.edu/duke-math-meet)
-- The first Lehigh pass adds 143 keys. Further entries still need work, including positional math that PDF text extraction does not preserve.
+- Lehigh has 335 keys so far. The second pass compares numbered answer positions in the PDFs and adds 192 plain numerical entries. Additional expressions and scanned papers still need review.
+- Recent HMMT papers include additional verified radicals, ordered tuples, unordered lists, complex numbers, and large exact values. The original 2025 February pilot remains available.
 - The 2026 MATHCOUNTS Chapter and State Sprint and Target rounds have complete keys. All app-listed National rounds are keyed apart from the unresolved 2012 Sprint problem above.
 
 Run `node tests/short-answer-keys.cjs` to check local prompts, source coverage, and grading. With the app served locally, `tools/check-practice-actions.cjs` covers submission and review in Chromium.

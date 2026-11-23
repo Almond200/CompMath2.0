@@ -19,10 +19,13 @@
       const t = s.replace(/\\[dt]?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, "(($1)/($2))")
         .replace(/\\[dt]?frac\s*(\d)\s*(\d)/g, "($1/$2)")
         .replace(/\\[dt]?binom\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, "choose($1, $2)")
+        .replace(/\\sqrt\s*\[([1-9]\d*)\]\s*\{([^{}]*)\}/g, (_, degree, base) =>
+          degree === "3" ? `cbrt(${base})` : `((${base})^(1/${degree}))`)
         .replace(/\\sqrt\s*\{([^{}]*)\}/g, "sqrt($1)");
       if (t === s) break;
       s = t;
     }
+    s = s.replace(/\\(?:mathrm|text)\s*\{\s*i\s*\}|ⅈ/g, "i");
     s = s.replace(/\\(pi|sqrt|ln|sin|cos|tan)\b/g, "$1").replace(/\\(?:cdot|times)\b/g, "*").replace(/\\div\b/g, "/").replace(/\\pm\b/g, "±");
     s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, m => "^(" + [...m].map(c => SUP[c]).join("") + ")");
     s = s.replace(/\*\*/g, "^").replace(/[×·∙⋅]/g, "*").replace(/[÷∕]/g, "/").replace(/[−–—]/g, "-")
@@ -34,7 +37,7 @@
   }
 
   // Tokens: numbers, pi, sqrt, cbrt, + - * / ^ ! ( ) and the comma.
-  function tokens(src, groupThousands) {
+  function tokens(src, groupThousands, allowImaginary) {
     const out = [];
     const s = normalize(src, groupThousands);
     let i = 0;
@@ -53,6 +56,7 @@
       if (s.startsWith("choose", i)) { out.push({ t: "choose" }); i += 6; continue; }
       const fn = /^(ln|sin|cos|tan)/.exec(s.slice(i));
       if (fn) { out.push({ t: fn[1] }); i += fn[1].length; continue; }
+      if (allowImaginary && c === "i") { out.push({ t: "i" }); i++; continue; }
       if ("+-*/^!(),±".indexOf(c) !== -1) { out.push({ t: c }); i++; continue; }
       throw new Error(`"${c}" is not part of an answer: use digits, + − × ÷ ^, √, π and brackets.`);
     }
@@ -73,7 +77,7 @@
     let k = 0;
     const peek = () => toks[k] && toks[k].t;
     const eat = t => { if (peek() !== t) throw new Error("A bracket is not closed."); k++; };
-    const startsAtom = () => atomTokens.includes(peek());
+    const startsAtom = () => peek() === "i" || atomTokens.includes(peek());
     function expr() {
       let a = term();
       while (peek() === "+" || peek() === "-") { const op = toks[k++].t; a = { op, a, b: term() }; }
@@ -101,7 +105,7 @@
     function atom() {
       const t = peek();
       if (t === "num") return { op: "num", v: toks[k++].v };
-      if (t === "pi") { k++; return { op: "pi" }; }
+      if (t === "pi" || t === "i") { k++; return { op: t }; }
       if (unaryFunctions.includes(t)) { k++; if (!peek()) throw new Error(`${sym({ t })} needs a number after it.`); return { op: t, a: atom() }; }
       if (t === "choose") {
         k++;
@@ -128,8 +132,8 @@
     if (i < 0) return [part];
     return [...expandPm([...part.slice(0, i), { t: "+" }, ...part.slice(i + 1)]), ...expandPm([...part.slice(0, i), { t: "-" }, ...part.slice(i + 1)])];
   }
-  function parse(src, groupThousands) {
-    const toks = tokens(src, groupThousands), parts = [[]];
+  function parse(src, groupThousands, allowImaginary = false) {
+    const toks = tokens(src, groupThousands, allowImaginary), parts = [[]];
     if (!toks.length) throw new Error("The answer is empty.");
     let depth = 0;
     for (const token of toks) {
@@ -198,6 +202,7 @@
     switch (n.op) {
       case "num": return n.v;
       case "pi": return "\\pi";
+      case "i": return "i";
       case "sqrt": return "\\sqrt{" + tex(bare(n.a)) + "}";
       case "cbrt": return "\\sqrt[3]{" + tex(bare(n.a)) + "}";
       case "choose": return "\\binom{" + tex(bare(n.a)) + "}{" + tex(bare(n.b)) + "}";
@@ -219,7 +224,7 @@
     }
     return "";
   }
-  function toTex(src, groupThousands) { return parse(src, groupThousands).map(tex).join(",\\ "); }
+  function toTex(src, groupThousands, allowImaginary) { return parse(src, groupThousands, allowImaginary).map(tex).join(",\\ "); }
 
   // Close the brackets a student has opened but not yet closed, so the box can typeset an
   // answer while it is being built.
