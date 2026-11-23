@@ -6558,9 +6558,12 @@
       sequence: 'List values in the requested order, separated by commas (spaces optional). Write numbers without commas, like 1398.',
       complex: 'Complex value, for example 2+3i',
       'complex-set': 'All complex values, separated by commas (spaces optional). Use i for the imaginary unit and write numbers without commas.',
-      tuple: 'Ordered tuple, for example (2, 3)',
+      interval: 'Interval or inequality, for example [2, 5) or 2 ≤ x < 5',
+      polynomial: `Polynomial in ${exact?.notation}`,
+      tuple: exact?.notation === 'polar' ? 'Polar coordinates (radius, angle). For degrees, use ° or deg.' : 'Ordered tuple, for example (2, 3)',
       'tuple-set': 'All tuples, for example (2, 3), (4, 5)', text: 'Short answer',
-      percent: 'Percentage (% is optional)' }[exact?.format] || 'Exact value (fractions, sqrt, pi, !)';
+      percent: 'Percentage (% is optional)' }[exact?.format] ||
+      (exact?.notation === 'ratio' ? 'Ratio, for example 2:3 or 2/3' : 'Exact value (fractions, sqrt, pi, !)');
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
     const correct = !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact)).join(' or ') : escapeAttr(officialKey(slug) || '');
     const nav = set.slugs.map((id, i) => {

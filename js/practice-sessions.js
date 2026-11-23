@@ -101,7 +101,17 @@
   function exactTex(text, format, notation) {
     const percent = format === 'percent' && /(?:\\?%)\s*$/.test(text);
     text = cleanExact(text, format, notation);
+    if (format === 'interval') {
+      const parts = intervalParts(text);
+      if (!parts.length) return '\\varnothing';
+      return parts.map(part => {
+        const lower = part.lower == null ? '-\\infty' : math.toTex(part.lower);
+        const upper = part.upper == null ? '\\infty' : math.toTex(part.upper);
+        return `${part.lowerClosed ? '[' : '('}${lower},\\ ${upper}${part.upperClosed ? ']' : ')'}`;
+      }).join(' \\cup ');
+    }
     if (format === 'sequence') return splitExactList(text).map(part => math.toTex(part)).join(',\\ ');
+    if (format === 'polynomial') return math.toTex(text, true, false, notation);
     if (format === 'complex' || format === 'complex-set') return math.toTex(text, format === 'complex', true);
     if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text, format !== 'set') + (percent ? '\\%' : '');
     const tuples = format === 'tuple' ? [text] : splitExactList(text);
@@ -112,6 +122,22 @@
     }).join(',\\ ');
   }
   function cleanExact(text, format, notation) {
+    if (notation === 'profit') {
+      const loss = /^(?:loss(?: of)?\s+(.+)|(.+?)\s+loss)$/i.exec(text.trim());
+      if (loss) text = `-(${loss[1] || loss[2]})`;
+    }
+    if (notation === 'polar') {
+      const tuple = text.replace(/\$|\\(?:left|right)\b/g, '').trim();
+      if (tuple.startsWith('(') && tuple.endsWith(')')) {
+        const [radius, angle, ...extra] = splitExactList(tuple.slice(1, -1));
+        const degrees = /^(.*?)(?:\^\{\\circ\}|[°∘◦]|\s+deg)$/i.exec(angle || '');
+        text = !extra.length && degrees ? `(${radius}, (${degrees[1]})*pi/180)` : tuple;
+      }
+    }
+    if (notation === 'ratio') {
+      const terms = text.split(/:|\\colon\b/);
+      if (terms.length === 2) text = `(${terms[0]})/(${terms[1]})`;
+    }
     if (notation === 'fibonacci') {
       text = text.replace(/\bF\s*_\s*(?:\{\s*(\d+)\s*\}|(\d+))/gi, (_, braced, plain) => `fib(${braced || plain})`)
         .replace(/\bF([₀-₉]+)/g, (_, index) => `fib(${[...index].map(digit => digit.charCodeAt(0) - '₀'.charCodeAt(0)).join('')})`);
@@ -121,6 +147,50 @@
     text = text.replace(/(?:\^\{\\circ\}|[°∘◦])/g, '');
     return ['set', 'tuple-set', 'complex-set'].includes(format)
       ? text.replace(/^\\?\{(.*?)\\?\}$/s, '$1').trim() : text;
+  }
+  function intervalParts(text) {
+    text = text.replace(/\$|\\(?:left|right)\b/g, '').trim();
+    if (/^(?:∅|\\(?:emptyset|varnothing)|empty(?: set)?|\{\})$/i.test(text)) return [];
+    const parts = text.split(/\s*(?:∪|\\cup\b|\b(?:u|union|or)\b)\s*/i);
+    if (parts.length > 24) throw Error('Too many intervals');
+    return parts.map(part => {
+      const range = { lower: null, upper: null, lowerClosed: false, upperClosed: false };
+      const bracket = /^([[(])(.*)([)\]])$/.exec(part.trim());
+      if (bracket) {
+        const limits = splitExactList(bracket[2]);
+        if (limits.length !== 2 || limits.some(limit => !limit)) throw Error('An interval needs two endpoints');
+        [range.lower, range.upper] = limits;
+        range.lowerClosed = bracket[1] === '[';
+        range.upperClosed = bracket[3] === ']';
+      } else {
+        const expression = part.replace(/[≤≥]/g, symbol => symbol === '≤' ? '<=' : '>=')
+          .replace(/\\(leq?|geq?)\b/g, (_, name) => name[0] === 'l' ? '<=' : '>=');
+        const tokens = expression.split(/(<=|>=|<|>)/).map(token => token.trim());
+        const variable = tokens.findIndex(token => /^[a-z](?:_\d+)?$/i.test(token));
+        if ((tokens.length !== 3 && tokens.length !== 5) || variable < 0 || (tokens.length === 5 && variable !== 2)) {
+          throw Error('Expected an interval or inequality');
+        }
+        for (let i = 1; i < tokens.length; i += 2) {
+          if (variable !== i - 1 && variable !== i + 1) throw Error('Expected an inequality');
+          const operand = tokens[variable === i - 1 ? i + 1 : i - 1], comparison = tokens[i];
+          const upper = (comparison[0] === '<') === (variable === i - 1);
+          const side = upper ? 'upper' : 'lower';
+          if (!operand || range[side] != null) throw Error('Expected one endpoint on each side');
+          range[side] = operand;
+          range[side + 'Closed'] = comparison.length === 2;
+        }
+      }
+      for (const side of ['lower', 'upper']) {
+        const value = range[side];
+        if (value == null) continue;
+        const infinity = /^([+−-]?)(?:inf(?:inity)?|∞|\\infty)$/i.exec(value.trim());
+        if (!infinity) continue;
+        const negative = infinity[1] === '-' || infinity[1] === '−';
+        if (range[side + 'Closed'] || negative !== (side === 'lower')) throw Error('Infinity needs an open endpoint');
+        range[side] = null;
+      }
+      return range;
+    });
   }
   function integerRoot(value, degree) {
     if (value < 0n) {
@@ -472,30 +542,152 @@
     if (node.op === '^' && isZero(right[1])) return complexPower(left, right[0]);
     throw Error('Expected a complex expression using i');
   }
+  function exactScalar(text) {
+    const nodes = math.parse(text);
+    if (nodes.length !== 1) throw Error('Expected one number');
+    return evaluated(nodes[0]);
+  }
+  function polarTuple(parts) {
+    if (parts.length !== 2) throw Error('Expected a radius and an angle');
+    const radius = exactScalar(parts[0]), nodes = math.parse(parts[1]);
+    if (compareValues(radius, zero) < 0 || nodes.length !== 1) throw Error('Expected a nonnegative radius and one angle');
+    const multiple = piMultiple(nodes[0]);
+    if (multiple) {
+      const [numerator, denominator] = multiple, period = 2n * denominator;
+      const phase = (numerator % period + period) % period;
+      return [radius, evaluatedValue(null, Math.PI * fractionValue([phase, denominator]))];
+    }
+    const angle = evaluated(nodes[0]).value, period = 2 * Math.PI;
+    if (Math.abs(angle) > 1e6) throw Error('Angle is too large');
+    const phase = angle % period;
+    return [radius, evaluatedValue(null, phase < 0 ? phase + period : phase)];
+  }
+  function compareValues(a, b) {
+    if (a.fraction && b.fraction) return signOf(a.fraction[0] * b.fraction[1] - b.fraction[0] * a.fraction[1]);
+    return signOf(a.value - b.value);
+  }
+  function sortedIntervals(text) {
+    const intervals = intervalParts(text).map(part => ({ ...part,
+      lower: part.lower == null ? null : exactScalar(part.lower),
+      upper: part.upper == null ? null : exactScalar(part.upper)
+    })).filter(part => {
+      if (!part.lower || !part.upper) return true;
+      const order = compareValues(part.lower, part.upper);
+      if (order > 0) throw Error('The lower endpoint must come first');
+      return order < 0 || part.lowerClosed && part.upperClosed;
+    });
+    intervals.sort((a, b) => {
+      if (!a.lower || !b.lower) return (a.lower != null) - (b.lower != null);
+      return compareValues(a.lower, b.lower) || Number(b.lowerClosed) - Number(a.lowerClosed);
+    });
+    const merged = [];
+    for (const part of intervals) {
+      const last = merged.at(-1);
+      if (!last) { merged.push(part); continue; }
+      if (!last.upper) continue;
+      const gap = part.lower ? compareValues(part.lower, last.upper) : -1;
+      if (gap > 0 || (gap === 0 && !last.upperClosed && !part.lowerClosed)) {
+        merged.push(part);
+        continue;
+      }
+      const endOrder = part.upper ? compareValues(part.upper, last.upper) : 1;
+      if (endOrder > 0) { last.upper = part.upper; last.upperClosed = part.upperClosed; }
+      else if (endOrder === 0) last.upperClosed ||= part.upperClosed;
+    }
+    return merged;
+  }
+  function sameInterval(a, b) {
+    const sameBound = (submitted, expected) => expected ? !!submitted && sameExactValue(submitted, expected) : submitted == null;
+    return a.lowerClosed === b.lowerClosed && a.upperClosed === b.upperClosed &&
+      sameBound(a.lower, b.lower) && sameBound(a.upper, b.upper);
+  }
+  const POLYNOMIAL_MAX_DEGREE = 32, POLYNOMIAL_MAX_COEFFICIENT_BITS = 4096;
+  function polynomialCoefficient(fraction) {
+    if (!fraction || fraction.some(part => part.toString(2).length > POLYNOMIAL_MAX_COEFFICIENT_BITS)) {
+      throw Error('Expected a bounded rational coefficient');
+    }
+    return fraction;
+  }
+  function polynomialOperation(op, left, right) {
+    return polynomialCoefficient(rationalOperation(op, left, right));
+  }
+  function trimPolynomial(coefficients) {
+    while (coefficients.length > 1 && coefficients.at(-1)[0] === 0n) coefficients.pop();
+    return coefficients;
+  }
+  function multiplyPolynomials(left, right) {
+    const degree = left.length + right.length - 2;
+    if (degree > POLYNOMIAL_MAX_DEGREE) throw Error('Polynomial degree is too large');
+    const terms = Array(degree + 1).fill(zero.fraction);
+    for (let i = 0; i < left.length; i++) {
+      if (left[i][0] === 0n) continue;
+      for (let j = 0; j < right.length; j++) {
+        if (right[j][0] === 0n) continue;
+        const product = polynomialOperation('*', left[i], right[j]);
+        terms[i + j] = polynomialOperation('+', terms[i + j], product);
+      }
+    }
+    return trimPolynomial(terms);
+  }
+  function polynomialPower(base, exponent) {
+    if (exponent.length !== 1) throw Error('Expected a constant polynomial exponent');
+    const [numerator, denominator] = exponent[0], integer = numerator / denominator;
+    if (numerator % denominator || integer < 1n || integer > BigInt(POLYNOMIAL_MAX_DEGREE)) {
+      throw Error('Expected a positive integer polynomial exponent');
+    }
+    let result = [one.fraction];
+    for (let power = integer; power; power >>= 1n) {
+      if (power & 1n) result = multiplyPolynomials(result, base);
+      if (power > 1n) base = multiplyPolynomials(base, base);
+    }
+    return result;
+  }
+  function hasVariable(node) {
+    return !!node && (node.op === 'variable' || hasVariable(node.a) || hasVariable(node.b));
+  }
+  function polynomial(node) {
+    if (!hasVariable(node)) return [polynomialCoefficient(rational(node))];
+    if (node.op === 'variable') return [zero.fraction, one.fraction];
+    if (node.op === '()') return polynomial(node.a);
+    if (node.op === 'neg') return polynomial(node.a).map(([a, b]) => [-a, b]);
+    if (!['+', '-', '*', '/', '^'].includes(node.op)) throw Error('Expected a polynomial expression');
+    const left = polynomial(node.a), right = polynomial(node.b);
+    if (node.op === '*') return multiplyPolynomials(left, right);
+    if (node.op === '^') return polynomialPower(left, right);
+    if (node.op === '/') {
+      if (right.length !== 1 || right[0][0] === 0n) throw Error('Expected a nonzero constant divisor');
+      return left.map(term => polynomialOperation('/', term, right[0]));
+    }
+    const terms = Array.from({ length: Math.max(left.length, right.length) }, (_, i) =>
+      polynomialOperation(node.op, left[i] || zero.fraction, right[i] || zero.fraction));
+    return trimPolynomial(terms);
+  }
   function exactValues(text, format, notation) {
     if (text.length > 120) throw Error('Answer is too long');
     text = cleanExact(text, format, notation);
+    if (format === 'interval') return sortedIntervals(text);
+    if (format === 'polynomial') {
+      const nodes = math.parse(text, true, false, notation);
+      if (nodes.length !== 1) throw Error('Expected one polynomial');
+      return [polynomial(nodes[0]).map(fraction => evaluatedValue(fraction, 0))];
+    }
     if (format === 'complex' || format === 'complex-set') {
       const nodes = math.parse(text, format === 'complex', true);
       if (format === 'complex' && nodes.length !== 1) throw Error('Expected one complex number');
       return nodes.map(complexParts);
     }
-    const scalar = value => {
-      const nodes = math.parse(value);
-      if (nodes.length !== 1) throw Error('Expected one number');
-      return evaluated(nodes[0]);
-    };
     const tuple = part => {
       if (!part.startsWith('(') || !part.endsWith(')')) throw Error('Expected a parenthesized tuple');
-      return splitExactList(part.slice(1, -1)).map(scalar);
+      const parts = splitExactList(part.slice(1, -1));
+      return notation === 'polar' ? polarTuple(parts) : parts.map(exactScalar);
     };
     if (format === 'tuple') return [tuple(text)];
     if (format === 'tuple-set') return splitExactList(text).map(tuple);
-    if (format === 'sequence') return [splitExactList(text).map(scalar)];
+    if (format === 'sequence') return [splitExactList(text).map(exactScalar)];
     if (format === 'set') {
       return math.parse(text, false).map(node => [evaluated(node)]);
     }
-    return [[scalar(text)]];
+    return [[exactScalar(text)]];
   }
   function sameExactValue(a, b) {
     if (b.fraction) return !!a.fraction && a.fraction[0] * b.fraction[1] === b.fraction[0] * a.fraction[1];
@@ -507,6 +699,7 @@
     try {
       const actual = exactValues(text, format, notation), remaining = exactValues(expected, format, notation);
       if (actual.length !== remaining.length) return false;
+      if (format === 'interval') return actual.every((part, i) => sameInterval(part, remaining[i]));
       return actual.every(tuple => {
         const i = remaining.findIndex(key => key.length === tuple.length &&
           key.every((value, j) => sameExactValue(tuple[j], value)));
@@ -516,7 +709,8 @@
       });
     } catch (err) { return false; }
   }
-  const normalizeTextAnswer = value => String(value).normalize('NFKC').trim().replace(/\s+/g, ' ').toLowerCase();
+  const normalizeTextAnswer = value => String(value).normalize('NFKC').trim()
+    .replace(/\s+/g, ' ').replace(/\s*([,<])\s*/g, '$1').toLowerCase();
   function answer(set, slug, value, aime, now = Date.now()) {
     if (set.kind === 'mock') checkpoint(set,now);
     if (set.status === 'finished') return false;

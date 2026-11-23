@@ -31,7 +31,8 @@ for (const [slug, key] of Object.entries(answers)) {
   const paper = slug.replace(/-\d+$/, '');
   assert.match(sources[paper], /^https:\/\//, slug);
   usedSources.add(paper);
-  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set'].includes(key.format), slug);
+  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set', 'interval', 'polynomial'].includes(key.format), slug);
+  if (key.format === 'polynomial') assert.match(key.notation, /^[a-z]$/i, slug);
   assert(key.answers.length, slug);
   for (const value of key.answers) check(slug, value, 'Correct');
 }
@@ -97,6 +98,45 @@ check(fibonacciProblem, '(100, fib(106)-fib(105)+1223)', 'Correct');
 check(fibonacciProblem, '(100, F_104)', 'Incorrect');
 assert.match(practice.exactTex('(100,F_{104}+1223)', 'tuple', 'fibonacci'), /F_\{104\}\+1223/);
 assert(!practice.answer(practice.create('Notation scope', 'Any', [set]), set, 'F_4', false));
+check('2008-lehigh-math-contest-4', '38<=x<88', 'Correct');
+check('2008-lehigh-math-contest-4', '88>x≥38', 'Correct');
+check('2008-lehigh-math-contest-4', '[38,50] U (50,88)', 'Correct');
+check('2008-lehigh-math-contest-4', '[38,50) U (50,88)', 'Incorrect');
+check('2008-lehigh-math-contest-4', '[38,88]', 'Incorrect');
+check('2022-bmt-algebra-4', '[2022/45,2023/45)', 'Correct');
+check('2007-hmmt-february-algebra-6', 'r>3 or r<49/27', 'Correct');
+check('2007-hmmt-february-algebra-6', '(3, inf) U (-infinity, 49/27]', 'Incorrect');
+const intervalSet = practice.create('Interval validation', 'Any', ['2008-lehigh-math-contest-4']);
+for (const input of ['[38, inf]', '[88,38)', '38<x>88', '3<x<']) {
+  assert(!practice.answer(intervalSet, '2008-lehigh-math-contest-4', input, false), input);
+}
+assert.match(practice.exactTex('38 ≤ x < 88', 'interval'), /^\[38,/);
+check('1999-lehigh-math-contest-26', '-3,-2,sqrt(-4)*(-1)', 'Correct');
+check('2006-lehigh-math-contest-25', '0 ≤ k ≤ 1', 'Correct');
+check('2006-lehigh-math-contest-25', '(0,1)', 'Incorrect');
+check('2000-lehigh-math-contest-26', 'sqrt(6)/2,-sqrt(6)/2,±i/sqrt(2)', 'Correct');
+check('2000-lehigh-math-contest-26', '±3/2,±i/sqrt(2)', 'Incorrect');
+check('2002-lehigh-math-contest-5', 'b , c,a', 'Correct');
+check('2003-lehigh-math-contest-11', '$40 loss', 'Correct');
+check('2003-lehigh-math-contest-11', '40', 'Incorrect');
+check('2003-lehigh-math-contest-24', '(4,25pi/12)', 'Correct');
+check('2003-lehigh-math-contest-24', '(4,15°)', 'Correct');
+check('2003-lehigh-math-contest-24', '(4,-345 deg)', 'Correct');
+check('2003-lehigh-math-contest-24', '(4,15)', 'Incorrect');
+check('2019-lehigh-math-contest-13', '15,5', 'Correct');
+check('2019-lehigh-math-contest-13', '5', 'Incorrect');
+check('2019-lehigh-math-contest-22', '4:6', 'Correct');
+check('2019-lehigh-math-contest-22', '3:2', 'Incorrect');
+check('2006-lehigh-math-contest-21', '2(135-B)', 'Correct');
+check('2006-lehigh-math-contest-30', 'n(n+5)-3', 'Correct');
+check('2006-lehigh-math-contest-30', 'n^2+5n-3.0000000001', 'Incorrect');
+check('2021-smt-algebra-1', '63(x-1)+1', 'Correct');
+check('2008-pumac-division-a-algebra-8', 'x(x^5+x^3+34x+36)', 'Correct');
+const polynomialSet = practice.create('Polynomial validation', 'Any', ['2021-smt-algebra-1']);
+for (const input of ['(63x-62)(x-1)/(x-1)', '63y-62', 'x^1000', '63x-62,0']) {
+  assert(!practice.answer(polynomialSet, '2021-smt-algebra-1', input, false), input);
+}
+assert.equal(practice.exactTex('n^2+5n-3', 'polynomial', 'n'), 'n^{2}+5n-3');
 check('2022-hmmt-november-theme-2', '16\\sqrt[4]{3}', 'Correct');
 check('2019-hmmt-february-algebra-and-number-theory-8', '4038!^2/(2019!^4*2^8076)', 'Correct');
 check('2026-hmmt-november-theme-4', '1013*2027!/2027', 'Correct');
