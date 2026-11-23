@@ -28,7 +28,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   if(width===375)await p.touchscreen.tap(r.x+r.width/2,r.y+r.height/2);else await input.click();
   assert.equal(await input.evaluate(el=>el===document.activeElement),true,'inside the answer border still focuses normally');
   await input.fill('12');assert.ok(await input.evaluate(el=>{const c=getComputedStyle(el),probe=document.createElement('span');probe.style.color='var(--accent)';document.body.append(probe);const blue=getComputedStyle(probe).color;probe.remove();return c.outlineStyle==='none' && c.borderWidth==='1px' && c.borderColor===blue && c.boxShadow==='none';}), 'answer input uses one blue border, like search, without an inset or outer ring');assert.equal(await clear.isEnabled(),true);await clear.click();assert.equal(await input.inputValue(),'');assert.equal(await input.getAttribute('aria-invalid'),'false');await p.clock.fastForward(1000);assert.equal((await stored(numeric)).answers[slug],'');
-  await input.fill('bad');assert.equal(await input.getAttribute('aria-invalid'),'true');assert.equal(await clear.isEnabled(),true);await clear.click();assert.equal(await input.inputValue(),'');assert.equal(await p.locator('#practice-answer-error').innerText(),'');
+  await input.fill('1+');assert.equal(await input.getAttribute('aria-invalid'),'true');assert.equal(await clear.isEnabled(),true);await clear.click();assert.equal(await input.inputValue(),'');assert.equal(await p.locator('#practice-answer-error').innerText(),'');
   if(dir)await p.screenshot({path:path.join(dir,`clear-${slug.includes('hmmt')?'exact':'aime'}-${theme}-${width}.png`)});
  }
  const findAll='2014-hmmt-february-algebra-1', orderedPairs='2011-hmmt-november-general-1';
@@ -74,7 +74,12 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.match(await p.locator('#practice-answer-error').innerText(),/isn’t supported.*previous answer is still saved/);
  await p.locator('.practice-answer-preview .katex').waitFor();
  await p.locator('.cn-nums [data-practice-index="2"]').click();
- await p.locator('#practice-answer').fill('1/575');
+ await p.locator('#practice-answer').fill('y=2x');
+ assert.equal(await p.locator('#practice-answer-error').innerText(),'');
+ assert.equal(await p.locator('#practice-answer').getAttribute('aria-invalid'),'false');
+ assert.equal(await p.locator('.practice-answer-preview .katex annotation').textContent(),'y=2x');
+ await p.reload();
+ assert.equal(await p.locator('#practice-answer').inputValue(),'y=2x');
  await p.locator('.cn-nums [data-practice-index="6"]').click();
  await p.locator('summary').filter({hasText:'Math keypad'}).click();
  await p.getByRole('button',{name:'Square root',exact:true}).click();
@@ -97,6 +102,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('.practice-submitted .katex').waitFor();
  await p.locator('.cn-nums [data-practice-index="2"]').click();
  await p.locator('.practice-result .katex').waitFor();
+ assert.equal(await p.locator('.practice-submitted .katex annotation').textContent(),'y=2x');
  assert.match(await p.locator('.practice-result').innerText(),/Incorrect/);
  await set(['2020-cmimc-combinatorics-and-computer-science-8']);
  const fibonacciInput=p.locator('#practice-answer');

@@ -10,7 +10,7 @@
   // \frac{3}{4} or \sqrt{3}, a leading "x = ", 1,000 as one thousand, and "and" or "or"
   // between the items of a list.
   const SUP = { "⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4", "⁵": "5", "⁶": "6", "⁷": "7", "⁸": "8", "⁹": "9", "⁻": "-" };
-  function normalize(src, groupThousands = true) {
+  function normalize(src, groupThousands = true, symbolic = false) {
     let s = String(src).trim().replace(/\$/g, "");
     s = s.replace(/^[a-z]\s*=\s*/i, "").replace(/=\s*$/, "");
     s = s.replace(/\\left|\\right|\\[,;!:]|\\displaystyle/g, "");
@@ -32,16 +32,17 @@
     s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, m => "^(" + [...m].map(c => SUP[c]).join("") + ")");
     s = s.replace(/\*\*/g, "^").replace(/[×·∙⋅]/g, "*").replace(/[÷∕]/g, "/").replace(/[−–—]/g, "-")
       .replace(/π/g, "pi").replace(/√/g, "sqrt").replace(/∛/g, "cbrt").replace(/[[{]/g, "(").replace(/[\]}]/g, ")");
-    s = s.toLowerCase().replace(/\s+(?:and|or)\s+/g, ", ").replace(/\bsquare\s*root\s*(?:of)?\b/g, "sqrt");
+    if (!symbolic) s = s.toLowerCase();
+    s = s.replace(/\s+(?:and|or)\s+/gi, ", ").replace(/\bsquare\s*root\s*(?:of)?\b/gi, "sqrt");
     // 1,000 and 12,345,678 are numbers; "4,9" and "4, 9" stay lists.
     if (groupThousands && !/\bchoose\s*\(/.test(s)) for (let k = 0; k < 4; k++) s = s.replace(/(\d),(\d{3})(?![\d,]?\d)/g, "$1$2");
     return s;
   }
 
   // Tokens: numbers, pi, sqrt, cbrt, + - * / ^ ! ( ) and the comma.
-  function tokens(src, groupThousands, allowImaginary, variable) {
+  function tokens(src, groupThousands, allowImaginary, variable, symbolic) {
     const out = [];
-    const s = normalize(src, groupThousands);
+    const s = normalize(src, groupThousands, symbolic);
     const variableToken = variable?.toLowerCase();
     let i = 0;
     while (i < s.length) {
@@ -60,8 +61,18 @@
       const fn = /^(ln|sin|cos|tan|fib)/.exec(s.slice(i));
       if (fn) { out.push({ t: fn[1] }); i += fn[1].length; continue; }
       if (c === variableToken) { out.push({ t: "variable", v: variable }); i++; continue; }
-      if (c === "e" && !/\d/.test(s[i + 1] || "")) { out.push({ t: "e" }); i++; continue; }
+      if (c === "e" && !/[\d_₀-₉]/.test(s[i + 1] || "")) { out.push({ t: "e" }); i++; continue; }
       if (allowImaginary && c === "i") { out.push({ t: "i" }); i++; continue; }
+      if (symbolic) {
+        if (/^inf(?:inity)?\b/i.test(s.slice(i))) throw new Error("Use infinity in an interval");
+        const symbol = /^([A-Za-z\p{Script=Greek}])(?:_(?:\(([A-Za-z0-9]+)\)|(\d+|[A-Za-z]))|([₀-₉]+))?/u.exec(s.slice(i));
+        if (symbol) {
+          const [, letter, braced, plain, unicode] = symbol;
+          const index = braced || plain || (unicode && [...unicode].map(digit => digit.charCodeAt(0) - '₀'.charCodeAt(0)).join(''));
+          out.push({ t: "variable", v: index ? `${letter}_{${index}}` : letter });
+          i += symbol[0].length; continue;
+        }
+      }
       if ("+-*/^!(),±".indexOf(c) !== -1) { out.push({ t: c }); i++; continue; }
       throw new Error(`"${c}" is not part of an answer: use digits, + − × ÷ ^, √, π and brackets.`);
     }
@@ -78,7 +89,7 @@
   // unary := "-" unary | power
   // power := atom "!"? ("^" unary)?
   // atom := number | pi | sqrt atom | cbrt atom | "(" expr ")" | choose "(" expr "," expr ")"
-  function parseOne(toks) {
+  function parseOne(toks, symbolic) {
     let k = 0;
     const peek = () => toks[k] && toks[k].t;
     const eat = t => { if (peek() !== t) throw new Error("A bracket is not closed."); k++; };
@@ -121,7 +132,19 @@
         eat(")");
         return { op: "choose", a, b };
       }
-      if (t === "(") { k++; if (peek() === ")") throw new Error("A pair of brackets is empty."); const e = expr(); eat(")"); return { op: "()", a: e }; }
+      if (t === "(") {
+        k++;
+        if (peek() === ")") throw new Error("A pair of brackets is empty.");
+        const first = expr();
+        if (symbolic && peek() === ",") {
+          const items = [first];
+          while (peek() === ",") { k++; items.push(expr()); }
+          eat(")");
+          return { op: "tuple", items };
+        }
+        eat(")");
+        return { op: "()", a: first };
+      }
       if (!t) throw new Error(k ? `Something is missing after "${sym(toks[k - 1])}".` : "The answer is empty.");
       throw new Error(k ? `Something is missing between "${sym(toks[k - 1])}" and "${sym(toks[k])}".` : `The answer cannot start with "${sym(toks[k])}".`);
     }
@@ -137,8 +160,8 @@
     if (i < 0) return [part];
     return [...expandPm([...part.slice(0, i), { t: "+" }, ...part.slice(i + 1)]), ...expandPm([...part.slice(0, i), { t: "-" }, ...part.slice(i + 1)])];
   }
-  function parse(src, groupThousands, allowImaginary = false, variable) {
-    const toks = tokens(src, groupThousands, allowImaginary, variable), parts = [[]];
+  function parse(src, groupThousands, allowImaginary = false, variable, symbolic = false) {
+    const toks = tokens(src, groupThousands, allowImaginary, variable, symbolic), parts = [[]];
     if (!toks.length) throw new Error("The answer is empty.");
     let depth = 0;
     for (const token of toks) {
@@ -158,7 +181,7 @@
       total += 2 ** n;
     });
     if (total > ANSWERS_MAX) throw new Error(`The answer stands for more than ${ANSWERS_MAX} values; list fewer.`);
-    return parts.flatMap(expandPm).map(parseOne);
+    return parts.flatMap(expandPm).map(part => parseOne(part, symbolic));
   }
 
   function binomial(n, k) {
@@ -233,6 +256,7 @@
       case "cbrt": return "\\sqrt[3]{" + tex(bare(n.a)) + "}";
       case "fib": return "F_{" + tex(bare(n.a)) + "}";
       case "choose": return "\\binom{" + tex(bare(n.a)) + "}{" + tex(bare(n.b)) + "}";
+      case "tuple": return "\\left(" + n.items.map(tex).join(",\\ ") + "\\right)";
       // Brackets around a single number, root or fraction are only grouping: drawn without them.
       case "()": return /^(num|pi|sqrt|cbrt|\/|\(\))$/.test(n.a.op) ? tex(n.a) : "\\left(" + tex(n.a) + "\\right)";
       case "neg": return "-" + tex(n.a);
@@ -252,6 +276,16 @@
     return "";
   }
   function toTex(src, groupThousands, allowImaginary, variable) { return parse(src, groupThousands, allowImaginary, variable).map(tex).join(",\\ "); }
+  function hasVariable(node) {
+    return !!node && (node.op === "variable" || hasVariable(node.a) || hasVariable(node.b) || node.items?.some(hasVariable));
+  }
+  // Practice can save and display symbolic work even when its answer key expects a number.
+  function toSymbolicTex(src) {
+    const sides = src.split("=").map(side => parse(side, false, false, undefined, true));
+    if (!sides.some(side => side.some(hasVariable))) throw new Error("Expected a variable");
+    if (sides.length > 1 && sides.some(side => side.length !== 1)) throw new Error("Expected an expression on each side");
+    return sides.map(side => side.map(tex).join(",\\ ")).join("=");
+  }
 
   // Close the brackets a student has opened but not yet closed, so the box can typeset an
   // answer while it is being built.
@@ -272,7 +306,7 @@
     return x.every((v, i) => isFinite(v) && isFinite(y[i]) && Math.abs(v - y[i]) <= 1e-9 * Math.max(1, Math.abs(v), Math.abs(y[i])));
   }
 
-  const api = { parse, value, values, toTex, closeOpen, same, normalize, binomial, fibonacci };
+  const api = { parse, value, values, toTex, toSymbolicTex, closeOpen, same, normalize, binomial, fibonacci };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.LearnAnswer = api;
 })(typeof window !== "undefined" ? window : this);
