@@ -97,6 +97,8 @@ check('2018-bmt-geometry-10', '(4sqrt(7)-10)pi', 'Correct');
 check('2019-bmt-discrete-math-2', '0.(18)', 'Correct');
 check('2019-bmt-discrete-math-2', '0.\\overline{18}', 'Correct');
 check('2019-bmt-discrete-math-2', '0.18', 'Incorrect');
+check('2017-cmimc-computer-science-5', '7-1/13', 'Correct');
+check('2017-cmimc-computer-science-5', '97/14', 'Incorrect');
 check('2013-bmmt-individual-14', '145 inches', 'Correct');
 check('2013-bmmt-individual-14', '145 cm', 'Incorrect');
 check('2009-lehigh-math-contest-27', '184 sq in', 'Correct');
