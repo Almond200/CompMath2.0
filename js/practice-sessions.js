@@ -112,9 +112,31 @@
   }
   function cleanExact(text, format) {
     if (format === 'percent') text = text.replace(/(?:\\?%)\s*$/, '');
+    text = text.replace(/\b(sin|cos|tan)\s*\(([^()]+?)(?:\^\{\\circ\}|[°∘◦]|\s+deg)\s*\)/gi, '$1(($2)*pi/180)');
     text = text.replace(/(?:\^\{\\circ\}|[°∘◦])/g, '');
     return format === 'set' || format === 'tuple-set'
       ? text.replace(/^\{(.*)\}$/s, '$1').trim() : text;
+  }
+  function integerRoot(value, degree) {
+    if (value < 0n) {
+      if (degree === 2n) return null;
+      const root = integerRoot(-value, degree);
+      return root == null ? null : -root;
+    }
+    if (value < 2n) return value;
+    let root = 1n << ((BigInt(value.toString(2).length) + degree - 1n) / degree);
+    while (true) {
+      const next = ((degree - 1n) * root + value / root ** (degree - 1n)) / degree;
+      if (next >= root) return root ** degree === value ? root : null;
+      root = next;
+    }
+  }
+  function rationalRoot(numerator, denominator, degree) {
+    if (denominator < 0n) { numerator = -numerator; denominator = -denominator; }
+    let divisor = numerator < 0n ? -numerator : numerator, remainder = denominator;
+    while (remainder) [divisor, remainder] = [remainder, divisor % remainder];
+    const n = integerRoot(numerator / divisor, degree), d = integerRoot(denominator / divisor, degree);
+    return n == null || d == null ? null : [n, d];
   }
   // Compare rational expressions without rounding, including powers beyond Number's range.
   function rational(node) {
@@ -122,12 +144,13 @@
       const [whole, decimal = ''] = node.v.split('.');
       return [BigInt(whole + decimal), 10n ** BigInt(decimal.length)];
     }
-    if (['pi', 'sqrt', 'cbrt'].includes(node.op)) return null;
+    if (['pi', 'ln', 'sin', 'cos', 'tan'].includes(node.op)) return null;
     const left = rational(node.a);
     if (!left) return null;
     const [a, b] = left;
     if (node.op === '()') return left;
     if (node.op === 'neg') return [-a, b];
+    if (node.op === 'sqrt' || node.op === 'cbrt') return rationalRoot(a, b, node.op === 'sqrt' ? 2n : 3n);
     if (node.op === '!') {
       const k = a / b;
       if (a % b || k < 0n || k > 170n) return null;
@@ -144,6 +167,11 @@
       case '-': n = a * d - b * c; denominator = b * d; break;
       case '*': n = a * c; denominator = b * d; break;
       case '/': n = a * d; denominator = b * c; break;
+      case 'choose': {
+        if (a % b || c % d) return null;
+        const count = math.binomial(a / b, c / d);
+        return count == null ? null : [count, 1n];
+      }
       case '^': {
         const exponent = c / d;
         const magnitude = exponent < 0n ? -exponent : exponent;
@@ -183,7 +211,9 @@
   }
   function sameExactValue(a, b) {
     if (a.fraction && b.fraction) return a.fraction[0] * b.fraction[1] === a.fraction[1] * b.fraction[0];
-    return Math.abs(a.value - b.value) <= Math.min(1e-7, 1e-9 * Math.max(1, Math.abs(b.value)));
+    const tolerance = Math.min(1e-7, 1e-9 * Math.max(1, Math.abs(b.value)));
+    if (b.fraction && Number.EPSILON * Math.abs(b.value) > tolerance) return false;
+    return Math.abs(a.value - b.value) <= tolerance;
   }
   function matchesExact(text, expected, format) {
     try {
