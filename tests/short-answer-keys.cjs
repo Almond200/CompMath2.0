@@ -138,6 +138,11 @@ check(ternaryProblem, '2211100110000012,1000001100111222', 'Incorrect');
 assert.equal(practice.exactTex('1000001100111222, 2211100110000012', 'sequence', 'base-3'),
   '1000001100111222_{3},\\ 2211100110000012_{3}');
 check('2015-hmmt-february-combinatorics-7', 'choose(4030,2014)/2^4030', 'Correct');
+check('2016-mbmt-upper-algebra-4', '(8,4),(5,5),(3,9),(4,6)', 'Correct');
+check('2016-mbmt-upper-algebra-4', '(4,8),(5,5),(3,9),(4,6)', 'Incorrect');
+check('2018-mbmt-upper-algebra-5', '2,(15-sqrt(105))/4', 'Correct');
+check('2018-mbmt-upper-algebra-5', '2', 'Incorrect');
+check('2019-mbmt-upper-algebra-6', '3039!/(3039*1018!*2^1000)', 'Correct');
 const alternativesProblem = '2017-pumac-division-a-algebra-6';
 check(alternativesProblem, '2', 'Correct');
 check(alternativesProblem, '3', 'Correct');
