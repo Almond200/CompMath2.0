@@ -156,8 +156,16 @@
   }
   const unitSuffix = {
     points: /\s*(?:points?|pts?\.?)\s*$/i,
+    hours: /\s*(?:hours?|hrs?\.?)\s*$/i,
     inches: /\s*(?:inch(?:es)?|in\.?)\s*$/i,
-    'square-inches': /\s*(?:square\s+inch(?:es)?|sq\.?\s*in\.?|in(?:\^2|²))\s*$/i
+    pounds: /\s*(?:pounds?|lbs?\.?)\s*$/i,
+    dollars: /\s*(?:dollars?|USD)\s*$/i,
+    miles: /\s*(?:miles?|mi\.?)\s*$/i,
+    mph: /\s*(?:mph|miles?\s+per\s+hour)\s*$/i,
+    'radians-per-second': /\s*(?:rad(?:ians?)?\s*\/\s*s|radians?\s+per\s+second)\s*$/i,
+    'square-inches': /\s*(?:square\s+inch(?:es)?|sq\.?\s*in\.?|in(?:\^2|²))\s*$/i,
+    'cubic-inches': /\s*(?:cubic\s+inch(?:es)?|cu\.?\s*in\.?|in(?:\^3|³))\s*$/i,
+    'square-units': /\s*(?:square\s+units?|units?\s+squared|units?(?:\^2|²))\s*$/i
   };
   function cleanExact(text, format, notation) {
     // A space between a whole number and a proper fraction is a mixed number.
@@ -169,6 +177,16 @@
       if (loss) text = `-(${loss[1] || loss[2]})`;
     }
     if (Object.hasOwn(unitSuffix, notation)) text = text.replace(unitSuffix[notation], '');
+    if (notation === 'repeating-decimal') {
+      const recurring = /^([+-]?)(\d+)\.(\d*)(?:\((\d+)\)|\\overline\s*\{(\d+)\})$/.exec(text.replace(/\$/g, '').trim());
+      if (recurring) {
+        const [, sign, whole, prefix, inParens, overlined] = recurring;
+        const repeat = inParens || overlined;
+        const numerator = BigInt(whole + prefix + repeat) - BigInt(whole + prefix);
+        const denominator = 10n ** BigInt(prefix.length) * (10n ** BigInt(repeat.length) - 1n);
+        text = sign + numerator + '/' + denominator;
+      }
+    }
     if (notation === 'percent-change') {
       const change = /^(?:(increase|decrease)s?(?:\s+(?:by|of))?\s+(.+)|(.+?)\s+(increase|decrease))$/i.exec(text.trim());
       if (change) {
