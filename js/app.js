@@ -6198,42 +6198,42 @@
     catch (err) { return escapeAttr(text); }
   }
   const PRACTICE_MATH_KEYS = [
-    { label: '+', name: 'Add', open: '+' },
-    { label: '−', name: 'Subtract', open: '-' },
-    { label: '×', name: 'Multiply', open: '*' },
-    { label: '÷', name: 'Divide', open: '/' },
-    { label: 'Fraction', open: '(', close: ')/()', nextArgument: true },
-    { label: '√', name: 'Square root', open: 'sqrt(', close: ')' },
-    { label: '∛', name: 'Cube root', open: 'cbrt(', close: ')' },
-    { label: 'xⁿ', name: 'Power', open: '^(', close: ')' },
-    { label: 'xₙ', name: 'Subscript', open: '_{', close: '}' },
-    { label: 'π', name: 'Pi', open: 'pi' },
-    { label: 'e', name: 'Euler’s number', open: 'e' },
-    { label: 'i', name: 'Imaginary unit', open: 'i' },
-    { label: '!', name: 'Factorial', open: '!' },
-    { label: 'Choose', name: 'Binomial coefficient (choose)', open: 'choose(', close: ',)', nextArgument: true },
-    { label: 'Fib', name: 'Fibonacci number', open: 'fib(', close: ')' },
-    { label: 'ln', name: 'Natural logarithm', open: 'ln(', close: ')' },
-    { label: 'logₙ', name: 'Logarithm with a specified base', open: 'log_', close: '()', nextArgument: true },
-    { label: 'sin', name: 'Sine', open: 'sin(', close: ')' },
-    { label: 'cos', name: 'Cosine', open: 'cos(', close: ')' },
-    { label: 'tan', name: 'Tangent', open: 'tan(', close: ')' },
-    { label: '°', name: 'Degrees', open: '°' },
-    { label: '%', name: 'Percent', open: '%' },
-    { label: ':', name: 'Ratio separator', open: ':' },
-    { label: '±', name: 'Plus or minus', open: '±' },
-    { label: ',', name: 'Separate answers', open: ', ' },
-    { label: '(', name: 'Open parenthesis', open: '(' },
-    { label: ')', name: 'Close parenthesis', open: ')' },
-    { label: '[', name: 'Open square bracket', open: '[' },
-    { label: ']', name: 'Close square bracket', open: ']' },
-    { label: '&lt;', name: 'Less than', open: '<' },
-    { label: '≤', name: 'Less than or equal to', open: '≤' },
-    { label: '&gt;', name: 'Greater than', open: '>' },
-    { label: '≥', name: 'Greater than or equal to', open: '≥' },
-    { label: '∞', name: 'Infinity', open: '∞' },
-    { label: '∪', name: 'Union', open: ' U ' },
-    { label: '∅', name: 'Empty set', open: '∅' }
+    { tex: '+', name: 'Add', open: '+' },
+    { tex: '-', name: 'Subtract', open: '-' },
+    { tex: '\\times', name: 'Multiply', open: '*' },
+    { tex: '\\div', name: 'Divide', open: '/' },
+    { tex: '\\dfrac{n}{k}', name: 'Fraction', open: '(', close: ')/()', nextArgument: true },
+    { tex: '\\sqrt{x}', name: 'Square root', open: 'sqrt(', close: ')' },
+    { tex: '\\sqrt[3]{x}', name: 'Cube root', open: 'cbrt(', close: ')' },
+    { tex: 'x^n', name: 'Power', open: '^(', close: ')' },
+    { tex: 'x_n', name: 'Subscript', open: '_{', close: '}' },
+    { tex: '\\pi', name: 'Pi', open: 'pi' },
+    { tex: 'e', name: 'Euler’s number', open: 'e' },
+    { tex: 'i', name: 'Imaginary unit', open: 'i' },
+    { tex: '!', name: 'Factorial', open: '!' },
+    { tex: '\\dbinom{n}{k}', name: 'Binomial coefficient (choose)', open: 'choose(', close: ',)', nextArgument: true },
+    { tex: 'F_n', name: 'Fibonacci number', open: 'fib(', close: ')' },
+    { tex: '\\ln', name: 'Natural logarithm', open: 'ln(', close: ')' },
+    { tex: '\\log_n', name: 'Logarithm with a specified base', open: 'log_', close: '()', nextArgument: true },
+    { tex: '\\sin', name: 'Sine', open: 'sin(', close: ')' },
+    { tex: '\\cos', name: 'Cosine', open: 'cos(', close: ')' },
+    { tex: '\\tan', name: 'Tangent', open: 'tan(', close: ')' },
+    { tex: '{}^\\circ', name: 'Degrees', open: '°' },
+    { tex: '\\%', name: 'Percent', open: '%' },
+    { tex: ':', name: 'Ratio separator', open: ':' },
+    { tex: '\\pm', name: 'Plus or minus', open: '±' },
+    { tex: ',', name: 'Separate answers', open: ', ' },
+    { tex: '(', name: 'Open parenthesis', open: '(' },
+    { tex: ')', name: 'Close parenthesis', open: ')' },
+    { tex: '[', name: 'Open square bracket', open: '[' },
+    { tex: ']', name: 'Close square bracket', open: ']' },
+    { tex: '<', name: 'Less than', open: '<' },
+    { tex: '\\le', name: 'Less than or equal to', open: '≤' },
+    { tex: '>', name: 'Greater than', open: '>' },
+    { tex: '\\ge', name: 'Greater than or equal to', open: '≥' },
+    { tex: '\\infty', name: 'Infinity', open: '∞' },
+    { tex: '\\cup', name: 'Union', open: ' U ' },
+    { tex: '\\varnothing', name: 'Empty set', open: '∅' }
   ];
   function practiceMathKeysHtml() {
     return `<div class="practice-preview" hidden>
@@ -6242,7 +6242,7 @@
       </div>
       <p id="practice-answer-error" role="status"></p>
       <details class="practice-math-keys"><summary>Math keypad</summary>
-        <div>${PRACTICE_MATH_KEYS.map((key, i) => `<button class="hp-btn hp-btn-soft" type="button" data-practice-math-key="${i}" aria-label="${key.name || key.label}">${key.label}</button>`).join('')}</div>
+        <div>${PRACTICE_MATH_KEYS.map((key, i) => `<button class="hp-btn hp-btn-soft" type="button" data-practice-math-key="${i}" aria-label="${escapeAttr(key.name)}"><span aria-hidden="true">${window.katex ? mathHtml('$' + key.tex + '$') : escapeAttr(key.name)}</span></button>`).join('')}</div>
       </details>`;
   }
   function wirePracticeMathKeys(input, key) {

@@ -138,6 +138,11 @@ check(ternaryProblem, '2211100110000012,1000001100111222', 'Incorrect');
 assert.equal(practice.exactTex('1000001100111222, 2211100110000012', 'sequence', 'base-3'),
   '1000001100111222_{3},\\ 2211100110000012_{3}');
 check('2015-hmmt-february-combinatorics-7', 'choose(4030,2014)/2^4030', 'Correct');
+const alternativesProblem = '2017-pumac-division-a-algebra-6';
+check(alternativesProblem, '2', 'Correct');
+check(alternativesProblem, '3', 'Correct');
+check(alternativesProblem, '4', 'Incorrect');
+assert(!practice.answer(practice.create('Alternative answers', 'Any', [alternativesProblem]), alternativesProblem, '2,3', false));
 check('2006-lehigh-math-contest-21', '2(135-B)', 'Correct');
 check('2006-lehigh-math-contest-30', 'n(n+5)-3', 'Correct');
 check('2006-lehigh-math-contest-30', 'n^2+5n-3.0000000001', 'Incorrect');

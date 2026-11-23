@@ -117,6 +117,11 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await set(['2017-arml-individual-7']);
  const sharedKeypad=await keypadNames();
  await p.locator('.practice-math-keys summary').click();
+ assert.equal(await p.locator('.practice-math-keys .katex').count(),sharedKeypad.length);
+ assert.equal(await p.locator('.practice-math-keys .katex-error').count(),0);
+ for(const [name,tex] of [['Fraction','\\dfrac{n}{k}'],['Binomial coefficient (choose)','\\dbinom{n}{k}'],['Imaginary unit','i']]) {
+  assert.equal(await p.getByRole('button',{name,exact:true}).locator('annotation').textContent(),tex);
+ }
  await p.locator('#practice-answer').fill('-20-24');
  await p.getByRole('button',{name:'Imaginary unit',exact:true}).click();
  assert.equal(await p.locator('#practice-answer').inputValue(),'-20-24i');
