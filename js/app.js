@@ -6592,7 +6592,7 @@
       polynomial: `Polynomial in ${exact?.notation}`,
       tuple: exact?.notation === 'polar' ? 'Polar coordinates (radius, angle). For degrees, use ° or deg.' : 'Ordered tuple, for example (2, 3)',
       'tuple-set': 'All tuples, for example (2, 3), (4, 5)', text: 'Short answer',
-      percent: 'Percentage (% is optional)' }[exact?.format] ||
+      percent: exact?.notation === 'percent-change' ? 'Percentage change. Use a negative value for a decrease.' : 'Percentage (% is optional)' }[exact?.format] ||
       (exact?.notation === 'ratio' ? 'Ratio, for example 2:3 or 2/3' : 'Exact value (fractions, sqrt, pi, !)');
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
     const correct = !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact)).join(' or ') : escapeAttr(officialKey(slug) || '');

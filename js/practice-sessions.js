@@ -109,7 +109,7 @@
     });
   }
   function exactTex(text, format, notation) {
-    const percent = format === 'percent' && /(?:\\?%)\s*$/.test(text);
+    const percent = format === 'percent' && text.includes('%');
     text = cleanExact(text, format, notation);
     if (notation === 'base-3') return ternaryParts(text).map(part => `${part}_{3}`).join(',\\ ');
     if (format === 'interval') {
@@ -140,6 +140,13 @@
     if (notation === 'profit') {
       const loss = /^(?:loss(?: of)?\s+(.+)|(.+?)\s+loss)$/i.exec(text.trim());
       if (loss) text = `-(${loss[1] || loss[2]})`;
+    }
+    if (notation === 'percent-change') {
+      const change = /^(?:(increase|decrease)s?(?:\s+(?:by|of))?\s+(.+)|(.+?)\s+(increase|decrease))$/i.exec(text.trim());
+      if (change) {
+        const magnitude = (change[2] || change[3]).replace(/(?:\\?%)\s*$/, '');
+        text = (change[1] || change[4]).toLowerCase() === 'decrease' ? `-(${magnitude})` : magnitude;
+      }
     }
     if (notation === 'polar') {
       const tuple = text.replace(/\$|\\(?:left|right)\b/g, '').trim();

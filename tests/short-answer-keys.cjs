@@ -153,6 +153,12 @@ check('2006-lehigh-math-contest-30', 'n(n+5)-3', 'Correct');
 check('2006-lehigh-math-contest-30', 'n^2+5n-3.0000000001', 'Incorrect');
 check('2021-smt-algebra-1', '63(x-1)+1', 'Correct');
 check('2008-pumac-division-a-algebra-8', 'x(x^5+x^3+34x+36)', 'Correct');
+check('2008-pumac-division-a-algebra-7', 'x^3(x-x^2-1)', 'Correct');
+check('2008-pumac-division-b-geometry-1', '9% decrease', 'Correct');
+check('2008-pumac-division-b-geometry-1', 'decreases by 9%', 'Correct');
+check('2008-pumac-division-b-geometry-1', '9% increase', 'Incorrect');
+check('2010-pumac-division-b-algebra-6', '0', 'Correct');
+check('2010-pumac-division-b-algebra-6', '2400', 'Correct');
 const polynomialSet = practice.create('Polynomial validation', 'Any', ['2021-smt-algebra-1']);
 for (const input of ['(63x-62)(x-1)/(x-1)', '63y-62', 'x^1000', '63x-62,0']) {
   assert(!practice.answer(polynomialSet, '2021-smt-algebra-1', input, false), input);
