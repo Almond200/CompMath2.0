@@ -165,32 +165,35 @@
     return result;
   }
 
-  function value(n) {
-    if (Object.hasOwn(functions, n.op)) return functions[n.op](value(n.a));
+  function value(n, childValue = value) {
+    if (Object.hasOwn(functions, n.op)) return functions[n.op](childValue(n.a));
     switch (n.op) {
       case "num": return parseFloat(n.v);
       case "pi": return Math.PI;
-      case "sqrt": return Math.sqrt(value(n.a));
-      case "cbrt": return Math.cbrt(value(n.a));
+      case "sqrt": return Math.sqrt(childValue(n.a));
+      case "cbrt": return Math.cbrt(childValue(n.a));
       case "choose": {
-        const a = value(n.a), b = value(n.b);
+        const a = childValue(n.a), b = childValue(n.b);
         if (!Number.isSafeInteger(a) || !Number.isSafeInteger(b)) return NaN;
         return Number(binomial(BigInt(a), BigInt(b)) ?? NaN);
       }
-      case "()": return value(n.a);
-      case "neg": return -value(n.a);
+      case "()": return childValue(n.a);
+      case "neg": return -childValue(n.a);
       case "!": {
-        const k = value(n.a);
+        const k = childValue(n.a);
         if (!Number.isInteger(k) || k < 0 || k > 170) return NaN;
         let result = 1;
         for (let i = 2; i <= k; i++) result *= i;
         return result;
       }
-      case "+": return value(n.a) + value(n.b);
-      case "-": return value(n.a) - value(n.b);
-      case "*": return value(n.a) * value(n.b);
-      case "/": return value(n.a) / value(n.b);
-      case "^": return Math.pow(value(n.a), value(n.b));
+      case "+": return childValue(n.a) + childValue(n.b);
+      case "-": return childValue(n.a) - childValue(n.b);
+      case "*": return childValue(n.a) * childValue(n.b);
+      case "/": return childValue(n.a) / childValue(n.b);
+      case "^": {
+        const a = childValue(n.a), b = childValue(n.b);
+        return a === 0 && b === 0 ? NaN : Math.pow(a, b);
+      }
     }
     return NaN;
   }
@@ -237,7 +240,7 @@
 
   // Two answers agree when their values agree (within 1e-9 relative); a list is compared as
   // a set, so "9, 4" matches "4, 9" and "6/8" matches "3/4".
-  function values(src) { return parse(src).map(value).sort((x, y) => x - y); }
+  function values(src) { return parse(src).map(node => value(node)).sort((x, y) => x - y); }
   function same(a, b) {
     let x, y;
     try { x = values(a); y = values(b); } catch (e) { return false; }

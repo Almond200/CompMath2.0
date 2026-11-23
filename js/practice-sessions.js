@@ -133,24 +133,197 @@
     }
   }
   function rationalRoot(numerator, denominator, degree) {
-    if (denominator < 0n) { numerator = -numerator; denominator = -denominator; }
-    let divisor = numerator < 0n ? -numerator : numerator, remainder = denominator;
-    while (remainder) [divisor, remainder] = [remainder, divisor % remainder];
-    const n = integerRoot(numerator / divisor, degree), d = integerRoot(denominator / divisor, degree);
+    const [a, b] = reduceFraction(numerator, denominator);
+    const n = integerRoot(a, degree), d = integerRoot(b, degree);
     return n == null || d == null ? null : [n, d];
   }
+  function reduceFraction(numerator, denominator) {
+    if (denominator < 0n) { numerator = -numerator; denominator = -denominator; }
+    if (denominator === 1n) return [numerator, denominator];
+    if (numerator === 0n) return [0n, 1n];
+    const magnitude = numerator < 0n ? -numerator : numerator;
+    if ((denominator & (denominator - 1n)) === 0n) {
+      const power = magnitude & -magnitude;
+      const divisor = power < denominator ? power : denominator;
+      return [numerator / divisor, denominator / divisor];
+    }
+    let divisor = magnitude, remainder = denominator;
+    while (remainder) [divisor, remainder] = [remainder, divisor % remainder];
+    return [numerator / divisor, denominator / divisor];
+  }
+  function ungroup(node) {
+    while (node?.op === '()') node = node.a;
+    return node;
+  }
+  function sameExpression(a, b) {
+    a = ungroup(a);
+    b = ungroup(b);
+    if (!a || !b) return a === b;
+    return a.op === b.op && a.v === b.v && sameExpression(a.a, b.a) && sameExpression(a.b, b.b);
+  }
+  const signOf = value => value < 0 ? -1 : value > 0 ? 1 : 0;
+  const EXACT_FACTORIAL_LIMIT = 4096n, EXACT_POWER_LIMIT = 16384n, EXACT_BIT_LIMIT = 131072;
+  const EAGER_REDUCTION_BITS = 16384;
+  const integerValue = fraction => fraction && fraction[0] % fraction[1] === 0n ? fraction[0] / fraction[1] : null;
+  // Prove that a term is defined before removing it. Integer powers can have a known
+  // sign even when computing the full value would exceed the size budget.
+  function knownSign(node) {
+    node = ungroup(node);
+    if (node.op === 'pi') return 1;
+    if (node.op === '!') {
+      const input = integerValue(rational(node.a));
+      return input != null && input >= 0n && input <= EXACT_FACTORIAL_LIMIT ? 1 : null;
+    }
+    if (node.op === 'neg' || node.op === 'sqrt' || node.op === 'cbrt') {
+      const sign = knownSign(node.a);
+      if (sign == null || (node.op === 'sqrt' && sign < 0)) return null;
+      return node.op === 'neg' ? -sign : sign;
+    }
+    if (node.op === '*' || node.op === '/') {
+      const a = knownSign(node.a), b = knownSign(node.b);
+      return a == null || b == null || (node.op === '/' && b === 0) ? null : a * b;
+    }
+    if (node.op === '^') {
+      const power = integerValue(rational(node.b)), base = knownSign(node.a);
+      if (base != null && power != null) {
+        if (power < -EXACT_POWER_LIMIT || power > EXACT_POWER_LIMIT || (base === 0 && power <= 0n)) return null;
+        if (power === 0n || (base !== 0 && power % 2n === 0n)) return 1;
+        return base;
+      }
+    }
+    const fraction = rational(node);
+    return fraction ? signOf(fraction[0]) : null;
+  }
+  function collectFactors(node, inverse, top, bottom) {
+    node = ungroup(node);
+    if (node.op === '*' || (node.op === '/' && (!inverse || knownSign(node.b)))) {
+      collectFactors(node.a, inverse, top, bottom);
+      collectFactors(node.b, node.op === '/' ? !inverse : inverse, top, bottom);
+    } else (inverse ? bottom : top).push(node);
+  }
+  function cancelFactors(node) {
+    const top = [], bottom = [];
+    collectFactors(node, false, top, bottom);
+    if (!bottom.length) return null;
+    const remaining = top.filter(factor => {
+      const index = bottom.findIndex(candidate => sameExpression(factor, candidate));
+      if (index < 0 || !knownSign(factor)) return true;
+      bottom.splice(index, 1);
+      return false;
+    });
+    if (remaining.length === top.length) return null;
+    const product = terms => terms.reduce((a, b) => a ? { op: '*', a, b } : b, null) || { op: 'num', v: '1' };
+    const numerator = product(remaining);
+    return bottom.length ? { op: '/', a: numerator, b: product(bottom) } : numerator;
+  }
+  function cancelPower(node) {
+    const a = ungroup(node.a), b = ungroup(node.b);
+    if (a.op !== '^' || b.op !== '^' || !sameExpression(a.a, b.a) || !knownSign(a.a)) return null;
+    const left = integerValue(rational(a.b)), right = integerValue(rational(b.b));
+    if (left == null || right == null) return null;
+    if ([left, right].some(power => power < -EXACT_POWER_LIMIT || power > EXACT_POWER_LIMIT)) return null;
+    const base = rational(a.a);
+    return base && rationalOperation('^', base, [left - right, 1n]);
+  }
+  function collectTerms(node, negative = false) {
+    node = ungroup(node);
+    if (node.op === '+' || node.op === '-') return [
+      ...collectTerms(node.a, negative), ...collectTerms(node.b, node.op === '-' ? !negative : negative)
+    ];
+    if (node.op === 'neg') return collectTerms(node.a, !negative);
+    return [{ node, negative }];
+  }
+  function cancelTerms(node) {
+    const terms = collectTerms(node), remaining = [];
+    for (const term of terms) {
+      const match = remaining.findIndex(other => other.negative !== term.negative && sameExpression(other.node, term.node));
+      if (match < 0 || knownSign(term.node) == null) remaining.push(term);
+      else remaining.splice(match, 1);
+    }
+    if (remaining.length === terms.length) return null;
+    let sum = [0n, 1n];
+    for (const term of remaining) {
+      const value = rational(term.node);
+      if (!value || !sum) return null;
+      sum = rationalOperation(term.negative ? '-' : '+', sum, value);
+    }
+    return sum;
+  }
+  function piMultiple(node) {
+    node = ungroup(node);
+    if (node.op === 'pi') return [1n, 1n];
+    if (!['neg', '+', '-', '*', '/'].includes(node.op)) return null;
+    const a = piMultiple(node.a);
+    if (node.op === 'neg') return a && [-a[0], a[1]];
+    if (node.op === '+' || node.op === '-') {
+      const b = piMultiple(node.b);
+      return a && b && rationalOperation(node.op, a, b);
+    }
+    if (a) {
+      const b = rational(node.b);
+      return b && rationalOperation(node.op, a, b);
+    }
+    if (node.op !== '*') return null;
+    const b = piMultiple(node.b), scale = rational(node.a);
+    return b && scale && rationalOperation('*', b, scale);
+  }
+  const sineHalves = { 0: 0n, 2: 1n, 6: 2n, 10: 1n, 12: 0n, 14: -1n, 18: -2n, 22: -1n };
+  const integerTangents = { 0: 0n, 3: 1n, 9: -1n, 12: 0n, 15: 1n, 21: -1n };
+  function rationalTrig(node) {
+    const multiple = piMultiple(node.a);
+    if (!multiple) return rational(node.a)?.[0] === 0n ? [node.op === 'cos' ? 1n : 0n, 1n] : null;
+    if ((12n * multiple[0]) % multiple[1]) return null;
+    const turns = 12n * multiple[0] / multiple[1] + (node.op === 'cos' ? 6n : 0n);
+    const phase = (turns % 24n + 24n) % 24n;
+    if (node.op === 'tan') {
+      if (phase === 6n || phase === 18n) throw Error('Tangent is undefined at this angle');
+      return integerTangents[phase] == null ? null : [integerTangents[phase], 1n];
+    }
+    return sineHalves[phase] == null ? null : reduceFraction(sineHalves[phase], 2n);
+  }
   // Compare rational expressions without rounding, including powers beyond Number's range.
-  const EXACT_FACTORIAL_LIMIT = 4096n, EXACT_BIT_LIMIT = 131072;
   function rational(node) {
+    node = ungroup(node);
     if (node.op === 'num') {
       const [whole, decimal = ''] = node.v.split('.');
-      return [BigInt(whole + decimal), 10n ** BigInt(decimal.length)];
+      return reduceFraction(BigInt(whole + decimal), 10n ** BigInt(decimal.length));
     }
-    if (['pi', 'ln', 'sin', 'cos', 'tan'].includes(node.op)) return null;
+    if (node.op === 'pi') return null;
+    if (node.op === 'ln') {
+      const input = rational(node.a);
+      return input && input[0] === input[1] ? [0n, 1n] : null;
+    }
+    if (['sin', 'cos', 'tan'].includes(node.op)) return rationalTrig(node);
+    if (node.op === '+' || node.op === '-') {
+      const canceled = cancelTerms(node);
+      if (canceled) return canceled;
+    }
+    if (node.op === '*' || node.op === '/') {
+      const canceled = cancelFactors(node);
+      if (canceled) return rational(canceled);
+    }
+    if (node.op === '/') {
+      const power = cancelPower(node);
+      if (power) return power;
+    }
+    const base = ungroup(node.a), other = ungroup(node.b);
+    if (base.op === 'sqrt' || base.op === 'cbrt') {
+      const degree = base.op === 'sqrt' ? 2n : 3n;
+      const a = rational(base.a);
+      if (a && (degree === 3n || a[0] >= 0n)) {
+        if (node.op === '^' && other.op === 'num' && other.v === String(degree)) return a;
+        if ((node.op === '*' || node.op === '/') && other.op === base.op) {
+          const b = rational(other.a);
+          if (b && (degree === 3n || b[0] >= 0n)) {
+            const combined = rationalOperation(node.op, a, b);
+            if (combined) return rationalRoot(...combined, degree);
+          }
+        }
+      }
+    }
     const left = rational(node.a);
     if (!left) return null;
     const [a, b] = left;
-    if (node.op === '()') return left;
     if (node.op === 'neg') return [-a, b];
     if (node.op === 'sqrt' || node.op === 'cbrt') return rationalRoot(a, b, node.op === 'sqrt' ? 2n : 3n);
     if (node.op === '!') {
@@ -179,24 +352,48 @@
       case '^': {
         const exponent = c / d;
         const magnitude = exponent < 0n ? -exponent : exponent;
-        if (c % d || magnitude > 16384n ||
+        if (c % d || magnitude > EXACT_POWER_LIMIT || (a === 0n && exponent <= 0n) ||
           BigInt(Math.max(a.toString(2).length, b.toString(2).length)) * magnitude > BigInt(EXACT_BIT_LIMIT)) return null;
         [n, denominator] = exponent < 0n ? [b ** magnitude, a ** magnitude] : [a ** magnitude, b ** magnitude];
         break;
       }
     }
-    if (!denominator || n.toString(2).length > EXACT_BIT_LIMIT || denominator.toString(2).length > EXACT_BIT_LIMIT) return null;
-    return [n, denominator];
+    if (!denominator) return null;
+    if (denominator < 0n) { n = -n; denominator = -denominator; }
+    const sizes = [n.toString(2).length, denominator.toString(2).length];
+    // Large in-budget fractions can stay unreduced and compare by cross-product.
+    // Avoid a GCD over two full factorial products on each input event.
+    if (Math.min(...sizes) > EAGER_REDUCTION_BITS && Math.max(...sizes) <= EXACT_BIT_LIMIT) return [n, denominator];
+    const reduced = reduceFraction(n, denominator);
+    return reduced.some(part => part.toString(2).length > EXACT_BIT_LIMIT) ? null : reduced;
+  }
+  function fractionValue([numerator, denominator]) {
+    if (numerator === 0n) return 0;
+    const sign = numerator < 0n ? -1 : 1;
+    const magnitude = numerator < 0n ? -numerator : numerator;
+    const numeratorShift = Math.max(0, magnitude.toString(2).length - 53);
+    const denominatorShift = Math.max(0, denominator.toString(2).length - 53);
+    return sign * (Number(magnitude >> BigInt(numeratorShift)) / Number(denominator >> BigInt(denominatorShift))) *
+      2 ** (numeratorShift - denominatorShift);
   }
   function evaluatedValue(fraction, value) {
     if (!fraction && !Number.isFinite(value)) throw Error('Expected a finite number');
-    return { fraction, value };
+    return { fraction, value: fraction ? fractionValue(fraction) : value };
   }
-  const evaluated = node => evaluatedValue(rational(node), math.value(node));
+  function evaluated(node) {
+    const fraction = rational(node);
+    return evaluatedValue(fraction, fraction ? 0 : math.value(node, child => evaluated(child).value));
+  }
   const zero = { fraction: [0n, 1n], value: 0 }, one = { fraction: [1n, 1n], value: 1 };
+  const two = { fraction: [2n, 1n], value: 2 };
   const isZero = ({ fraction, value }) => fraction ? fraction[0] === 0n : value === 0;
+  const exactZero = ({ fraction }) => fraction?.[0] === 0n;
   const negateValue = ({ fraction, value }) => ({ fraction: fraction && [-fraction[0], fraction[1]], value: -value });
   function combineReal(op, a, b) {
+    if (op === '/' && isZero(b)) throw Error('Division by zero');
+    if (op === '+' && exactZero(a)) return b;
+    if ((op === '+' || op === '-') && exactZero(b)) return a;
+    if (((op === '*' || op === '/') && exactZero(a)) || (op === '*' && exactZero(b))) return zero;
     const fraction = a.fraction && b.fraction && rationalOperation(op, a.fraction, b.fraction);
     if (op === '+') return evaluatedValue(fraction, a.value + b.value);
     if (op === '-') return evaluatedValue(fraction, a.value - b.value);
@@ -214,7 +411,10 @@
   }
   function complexPower(base, { fraction }) {
     if (!fraction || fraction[0] % fraction[1]) throw Error('Expected an integer power of a complex number');
-    const exponent = fraction[0] / fraction[1];
+    let exponent = fraction[0] / fraction[1];
+    const [real, imaginary] = base.map(part => part.fraction);
+    const rationalUnit = value => value && (value[0] === value[1] || value[0] === -value[1]);
+    if ((real?.[0] === 0n && rationalUnit(imaginary)) || (imaginary?.[0] === 0n && rationalUnit(real))) exponent %= 4n;
     if (exponent < -64n || exponent > 64n) throw Error('Complex power is too large');
     let power = exponent < 0n ? divideComplex([one, zero], base) : base;
     let result = [one, zero];
@@ -225,20 +425,35 @@
     return result;
   }
   function containsImaginary(node) {
-    return node.op === 'i' || (node.op === 'sqrt' && math.value(node.a) < 0) ||
-      !!(node.a && containsImaginary(node.a)) || !!(node.b && containsImaginary(node.b));
+    if (node.op === 'i' || (node.a && containsImaginary(node.a)) || (node.b && containsImaginary(node.b))) return true;
+    if (node.op !== 'sqrt') return false;
+    const { fraction, value } = evaluated(node.a);
+    return fraction ? fraction[0] < 0n : value < 0;
+  }
+  function squareRoot({ fraction, value }) {
+    return evaluatedValue(fraction && rationalRoot(...fraction, 2n), Math.sqrt(value));
+  }
+  function complexSquareRoot([a, b]) {
+    const negativeReal = (a.fraction ? a.fraction[0] < 0n : a.value < 0);
+    if (isZero(b)) return negativeReal ? [zero, squareRoot(negateValue(a))] : [squareRoot(a), zero];
+    const square = combineReal('+', combineReal('*', a, a), combineReal('*', b, b)).fraction;
+    const modulus = evaluatedValue(square && rationalRoot(...square, 2n), Math.hypot(a.value, b.value));
+    const larger = squareRoot(combineReal('/', combineReal('+', modulus, negativeReal ? negateValue(a) : a), two));
+    const divisor = combineReal('*', two, larger);
+    if (!negativeReal) return [larger, combineReal('/', b, divisor)];
+    const negativeImaginary = b.fraction ? b.fraction[0] < 0n : b.value < 0;
+    const smaller = combineReal('/', negativeImaginary ? negateValue(b) : b, divisor);
+    return [smaller, negativeImaginary ? negateValue(larger) : larger];
   }
   function complexParts(node) {
     if (!containsImaginary(node)) return [evaluated(node), zero];
     if (node.op === 'i') return [zero, one];
+    const base = ungroup(node.a);
+    if (node.op === '^' && base.op === 'sqrt' && sameExpression(node.b, { op: 'num', v: '2' })) return complexParts(base.a);
     const left = complexParts(node.a);
     if (node.op === '()') return left;
     if (node.op === 'neg') return left.map(negateValue);
-    if (node.op === 'sqrt' && isZero(left[1]) && left[0].value < 0) {
-      const magnitude = negateValue(left[0]);
-      const fraction = magnitude.fraction && rationalRoot(...magnitude.fraction, 2n);
-      return [zero, evaluatedValue(fraction, Math.sqrt(magnitude.value))];
-    }
+    if (node.op === 'sqrt') return complexSquareRoot(left);
     if (!node.b || node.op === 'choose') throw Error('Expected a complex expression using i');
     const right = complexParts(node.b);
     if (node.op === '+') return left.map((part, index) => combineReal('+', part, right[index]));
@@ -274,9 +489,9 @@
     return [[scalar(text)]];
   }
   function sameExactValue(a, b) {
-    if (a.fraction && b.fraction) return a.fraction[0] * b.fraction[1] === a.fraction[1] * b.fraction[0];
-    const tolerance = Math.min(1e-7, 1e-9 * Math.max(1, Math.abs(b.value)));
-    if (b.fraction && Number.EPSILON * Math.abs(b.value) > tolerance) return false;
+    if (b.fraction) return !!a.fraction && a.fraction[0] * b.fraction[1] === b.fraction[0] * a.fraction[1];
+    if (!Number.isFinite(a.value) || !Number.isFinite(b.value)) return false;
+    const tolerance = Math.min(1e-7, 1e-9 * Math.abs(b.value));
     return Math.abs(a.value - b.value) <= tolerance;
   }
   function matchesExact(text, expected, format) {
@@ -313,8 +528,6 @@
     if (root.MATH_ANSWER_KEYS?.voided?.[slug]) return 'Voided';
     if (!set.answers[slug]) return 'Unanswered';
     if (set.selfCheck?.[slug]) return set.self?.[slug] || 'Check yourself';
-    const extra = root.MATH_MOCK_EXTRAS?.[slug];
-    if (extra) return extra.answers.some(key => math.same(set.answers[slug], key)) ? 'Correct' : 'Incorrect';
     const exact = exactKey(slug);
     if (exact?.format === 'text') return exact.answers.some(key => normalizeTextAnswer(key) === normalizeTextAnswer(set.answers[slug])) ? 'Correct' : 'Incorrect';
     if (exact) return exact.answers.some(key => matchesExact(set.answers[slug], key, exact.format)) ? 'Correct' : 'Incorrect';

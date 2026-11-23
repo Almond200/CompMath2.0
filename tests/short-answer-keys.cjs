@@ -116,6 +116,37 @@ check('radical-test', 'sqrt6/4+sqrt2/4', 'Correct');
 check('radical-test', '(sqrt(6)+sqrt(2))/5', 'Incorrect');
 delete answers['radical-test'];
 
+answers['tiny-value'] = { answers: ['0.000000000001'] };
+check('tiny-value', 'pi-pi', 'Incorrect');
+check('tiny-value', 'pi+1/10^12-pi', 'Correct');
+check('tiny-value', 'pi+2/10^12-pi', 'Incorrect');
+check('tiny-value', 'sqrt(2)-sqrt(2)', 'Incorrect');
+answers['exact-one'] = { answers: ['1'] };
+check('exact-one', '(4096!)^4/(4096!)^4', 'Correct');
+check('exact-one', '(3*(4096!)^4)/((4096!)^4*3)', 'Correct');
+check('exact-one', 'pi*(1/pi)', 'Correct');
+check('exact-one', 'sqrt(2)^2/2', 'Correct');
+check('exact-one', 'sin(30°)+cos(pi/3)', 'Correct');
+check('exact-one', 'pi-pi+1.000000000000000001', 'Incorrect');
+const invalidSet = practice.create('Undefined expressions', 'Any', ['exact-one']);
+for (const input of ['(pi-pi)/(pi-pi)', '(1/0)/(1/0)', '1/(1/0)', 'sqrt(-1)/sqrt(-1)', '0^0/0^0', 'tan(pi/2)/tan(pi/2)']) {
+  assert(!practice.answer(invalidSet, 'exact-one', input, false), input);
+}
+answers['factored-power'] = { answers: ['2'] };
+check('factored-power', '2^12000/2^11999', 'Correct');
+check('factored-power', '(4096!)^4/(4096!)^4+1', 'Correct');
+answers['irrational-sum'] = { answers: ['1+sqrt(2)'] };
+check('irrational-sum', '(4096!)^4/(4096!)^4+sqrt(2)', 'Correct');
+answers['complex-root'] = { format: 'complex', answers: ['(1+i)/sqrt(2)'] };
+check('complex-root', 'sqrt(i)', 'Correct');
+check('complex-root', '-sqrt(i)', 'Incorrect');
+answers['complex-integer'] = { format: 'complex', answers: ['2+i'] };
+check('complex-integer', 'sqrt(3+4i)', 'Correct');
+check('complex-integer', 'sqrt(3-4i)', 'Incorrect');
+check('complex-integer', '2+i^2025', 'Correct');
+check('complex-integer', '2+(sqrt(i))^2', 'Correct');
+for (const slug of ['tiny-value', 'exact-one', 'factored-power', 'irrational-sum', 'complex-root', 'complex-integer']) delete answers[slug];
+
 const pilot = practice.createMock('2025 HMMT February Algebra and Number Theory', [set],
   { mode: 'paper', family: 'HMMT February', durationMs: null });
 const restored = practice.read({ getItem: () => JSON.stringify([pilot]) })[0];
