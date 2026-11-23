@@ -20,15 +20,18 @@ for (const dir of fs.readdirSync(statementDir, { withFileTypes: true }).filter(d
 const usedSources = new Set();
 for (const [slug, key] of Object.entries(answers)) {
   const statement = window.MATH_STATEMENTS[slug];
-  assert(statement, slug + ' needs a local prompt');
-  assert(!/(?:^|\n)\([A-E]\)\s/.test(statement.s || statement), slug + ' has answer choices');
+  if (key.external) assert.equal(statement, undefined, slug + ' already has a local prompt');
+  else {
+    assert(statement, slug + ' needs a local prompt');
+    assert(!/(?:^|\n)\([A-E]\)\s/.test(statement.s || statement), slug + ' has answer choices');
+  }
   assert.equal(window.MATH_ANSWER_KEYS.answers[slug], undefined, slug);
   assert.equal(window.MATH_EXTRA_KEYS.answers[slug], undefined, slug);
   assert.equal(window.MATH_MOCK_EXTRAS[slug], undefined, slug);
   const paper = slug.replace(/-\d+$/, '');
   assert.match(sources[paper], /^https:\/\//, slug);
   usedSources.add(paper);
-  assert([undefined, 'set', 'tuple', 'tuple-set'].includes(key.format), slug);
+  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set'].includes(key.format), slug);
   assert(key.answers.length, slug);
   for (const value of key.answers) check(slug, value, 'Correct');
 }
@@ -41,6 +44,53 @@ function check(slug, value, verdict) {
 }
 
 const set = '2014-hmmt-february-algebra-1';
+check('2025-chmmc-individual-10', '6', 'Correct');
+check('2025-chmmc-individual-10', '7', 'Incorrect');
+check('2018-lehigh-math-contest-1', '20', 'Correct');
+check('2018-lehigh-math-contest-1', '400', 'Incorrect');
+check('2013-arml-local-individual-10', '21,5,14', 'Correct');
+check('2016-arml-individual-8', '(20, 5, 11)', 'Incorrect');
+check('2017-mathcounts-national-sprint-25', 'sqrt(193)/2', 'Correct');
+check('2017-mathcounts-national-sprint-25', 'sqrt(457)/2', 'Correct');
+check('2025-mathcounts-national-sprint-4', 'SATURDAY', 'Correct');
+check('2025-mathcounts-national-sprint-4', 'Sunday', 'Incorrect');
+check('2025-mathcounts-national-target-6', '90.08%', 'Correct');
+check('2025-mathcounts-national-target-6', '90.08', 'Correct');
+check('2025-mathcounts-national-target-6', '0.9008', 'Incorrect');
+check('2013-math-prize-for-girls-10', '236', 'Correct');
+check('2017-math-prize-for-girls-19', '60,20,20,20,20,40,40,20,20,40,20,20,20', 'Correct');
+check('2017-math-prize-for-girls-19', '20,60,20,20,40,20,20,40,40,20,20,20,20', 'Incorrect');
+check('2023-math-prize-for-girls-10', '4083, 520, 3595', 'Correct');
+check('2024-math-prize-for-girls-11', '2, 8, 6, 20', 'Incorrect');
+check('2025-math-prize-for-girls-16', '6*3^298', 'Correct');
+check('2025-math-prize-for-girls-16', 'sqrt(8/2)*3^299', 'Correct');
+check('2025-math-prize-for-girls-16', '2*(pi-pi+1.000000000000000000000000000000000000000000000001)*3^299', 'Incorrect');
+check('2025-math-prize-for-girls-16', '1.000000000000000000000000000000000000000000000001*2*3^299', 'Incorrect');
+check('2019-duke-math-meet-individual-10', '1369657969', 'Correct');
+check('2019-duke-math-meet-individual-10', '\\binom{2019}{3}', 'Correct');
+check('2019-duke-math-meet-individual-10', 'choose(2019,3)+1', 'Incorrect');
+check('2013-chmmc-individual-13', '-125', 'Correct');
+check('2013-chmmc-individual-15', '144', 'Correct');
+check('2014-chmmc-individual-3', '106', 'Incorrect');
+check('2014-chmmc-individual-5', '2pi', 'Correct');
+check('2016-chmmc-individual-14', 'tan(36°)', 'Correct');
+check('2019-chmmc-individual-12', '2*2^2020-6', 'Correct');
+check('2019-chmmc-individual-12', '2*2^2020-5', 'Incorrect');
+check('2017-arml-individual-7', '-4(5+6i)', 'Correct');
+check('2017-chmmc-individual-13', '(7-4i)^2', 'Correct');
+check('2017-chmmc-individual-13', '(7+4i)^2', 'Incorrect');
+check('2010-hmmt-february-algebra-4', '\\{i,-1,1,1/i\\}', 'Correct');
+check('2010-hmmt-february-algebra-4', '1,-1,2i,-i', 'Incorrect');
+check('2024-hmmt-february-algebra-and-number-theory-9', '0,±sqrt(-6)', 'Correct');
+check('2024-hmmt-february-algebra-and-number-theory-9', 'sqrt(6)i,0', 'Incorrect');
+check('2022-hmmt-november-theme-2', '16\\sqrt[4]{3}', 'Correct');
+check('2019-hmmt-february-algebra-and-number-theory-8', '4038!^2/(2019!^4*2^8076)', 'Correct');
+check('2026-hmmt-november-theme-4', '1013*2027!/2027', 'Correct');
+check('2026-hmmt-november-theme-4', '1013*2026!+1', 'Incorrect');
+answers['factorial-test'] = { answers: ['202!'] };
+check('factorial-test', '203!/203', 'Correct');
+check('factorial-test', '1.000000000000000000000000000000000000000000000001*202!', 'Incorrect');
+delete answers['factorial-test'];
 check(set, '6, 4', 'Correct');
 check(set, '4', 'Incorrect');
 check(set, '4, 6, 7', 'Incorrect');

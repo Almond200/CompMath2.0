@@ -54,9 +54,9 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const pilot=p.getByRole('option',{name:'2025 HMMT February Algebra and Number Theory',exact:true});
  await pilot.waitFor();
  await paperSearch.fill('febuary');
- assert.equal(await p.locator('#mock-paper-options').isHidden(),true);
- assert.equal(await p.locator('#mock-paper-options').innerHTML(),'');
- assert.equal(await paperSearch.getAttribute('aria-expanded'),'false');
+ assert.equal(await p.locator('#mock-paper-options .set-find-empty').innerText(),'No contest matches.');
+ assert.equal(await p.locator('#mock-paper-options [role="option"]').count(),0);
+ assert.equal(await paperSearch.getAttribute('aria-expanded'),'true');
  assert.equal(await paperSearch.getAttribute('aria-activedescendant'),null);
  await paperSearch.fill('hmmt feb alg nt 2025');
  await pilot.waitFor();
@@ -98,6 +98,15 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('.cn-nums [data-practice-index="2"]').click();
  await p.locator('.practice-result .katex').waitFor();
  assert.match(await p.locator('.practice-result').innerText(),/Incorrect/);
+ await p.goto(base+'/#/practice');
+ await p.locator('#mock-paper-name').fill('math prize girls 2009');
+ await p.getByRole('option',{name:'2009 Math Prize for Girls',exact:true}).click();
+ await p.getByRole('button',{name:'Start paper',exact:true}).click();
+ assert.match(await p.locator('.practice-paper').innerText(),/Read Problem 1 in the original paper/);
+ await p.locator('#practice-answer').fill('524');
+ await p.locator('#finish-practice').click();
+ await dialog.locator('[value="ok"]').click();
+ assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Correct');
  const timed=await set(['2018-amc-10a-1'],true,60000);await p.locator('#finish-practice').click();await dialog.waitFor();await p.clock.fastForward(61000);await p.locator('.practice-results').waitFor();await dialog.waitFor({state:'detached'});assert.equal(await dialog.count(),0,'expiry dismisses stale manual confirmation');assert.equal((await stored(timed)).timedOut,true);
  const left=await set(['2018-amc-10a-1']);await p.locator('#finish-practice').click();await dialog.waitFor();await p.evaluate(()=>location.hash='#/practice');await p.locator('#pr-topic').waitFor();await dialog.waitFor({state:'detached'});assert.equal(await dialog.count(),0,'leaving the route dismisses the confirmation');assert.notEqual((await stored(left)).status,'finished');
  const voided=await set(['2018-amc-10a-1','2025-amc-12a-25']);await p.locator('[data-practice-answer="A"]').click();await p.locator('#finish-practice').click();await p.locator('.practice-results').waitFor();assert.equal(await dialog.count(),0,'voided questions do not require an answer');assert.equal((await stored(voided)).status,'finished');

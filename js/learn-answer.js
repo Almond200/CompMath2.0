@@ -18,22 +18,26 @@
     for (let k = 0; k < 8; k++) {
       const t = s.replace(/\\[dt]?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, "(($1)/($2))")
         .replace(/\\[dt]?frac\s*(\d)\s*(\d)/g, "($1/$2)")
+        .replace(/\\[dt]?binom\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, "choose($1, $2)")
+        .replace(/\\sqrt\s*\[([1-9]\d*)\]\s*\{([^{}]*)\}/g, (_, degree, base) =>
+          degree === "3" ? `cbrt(${base})` : `((${base})^(1/${degree}))`)
         .replace(/\\sqrt\s*\{([^{}]*)\}/g, "sqrt($1)");
       if (t === s) break;
       s = t;
     }
-    s = s.replace(/\\pi\b/g, "pi").replace(/\\(?:cdot|times)\b/g, "*").replace(/\\div\b/g, "/").replace(/\\pm\b/g, "±").replace(/\\sqrt\b/g, "sqrt");
+    s = s.replace(/\\(?:mathrm|text)\s*\{\s*i\s*\}|ⅈ/g, "i");
+    s = s.replace(/\\(pi|sqrt|ln|sin|cos|tan)\b/g, "$1").replace(/\\(?:cdot|times)\b/g, "*").replace(/\\div\b/g, "/").replace(/\\pm\b/g, "±");
     s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, m => "^(" + [...m].map(c => SUP[c]).join("") + ")");
     s = s.replace(/\*\*/g, "^").replace(/[×·∙⋅]/g, "*").replace(/[÷∕]/g, "/").replace(/[−–—]/g, "-")
       .replace(/π/g, "pi").replace(/√/g, "sqrt").replace(/∛/g, "cbrt").replace(/[[{]/g, "(").replace(/[\]}]/g, ")");
     s = s.toLowerCase().replace(/\s+(?:and|or)\s+/g, ", ").replace(/\bsquare\s*root\s*(?:of)?\b/g, "sqrt");
     // 1,000 and 12,345,678 are numbers; "4,9" and "4, 9" stay lists.
-    if (groupThousands) for (let k = 0; k < 4; k++) s = s.replace(/(\d),(\d{3})(?![\d,]?\d)/g, "$1$2");
+    if (groupThousands && !/\bchoose\s*\(/.test(s)) for (let k = 0; k < 4; k++) s = s.replace(/(\d),(\d{3})(?![\d,]?\d)/g, "$1$2");
     return s;
   }
 
   // Tokens: numbers, pi, sqrt, cbrt, + - * / ^ ! ( ) and the comma.
-  function tokens(src, groupThousands) {
+  function tokens(src, groupThousands, allowImaginary) {
     const out = [];
     const s = normalize(src, groupThousands);
     let i = 0;
@@ -49,6 +53,10 @@
       if (s.startsWith("pi", i)) { out.push({ t: "pi" }); i += 2; continue; }
       if (s.startsWith("sqrt", i)) { out.push({ t: "sqrt" }); i += 4; continue; }
       if (s.startsWith("cbrt", i)) { out.push({ t: "cbrt" }); i += 4; continue; }
+      if (s.startsWith("choose", i)) { out.push({ t: "choose" }); i += 6; continue; }
+      const fn = /^(ln|sin|cos|tan)/.exec(s.slice(i));
+      if (fn) { out.push({ t: fn[1] }); i += fn[1].length; continue; }
+      if (allowImaginary && c === "i") { out.push({ t: "i" }); i++; continue; }
       if ("+-*/^!(),±".indexOf(c) !== -1) { out.push({ t: c }); i++; continue; }
       throw new Error(`"${c}" is not part of an answer: use digits, + − × ÷ ^, √, π and brackets.`);
     }
@@ -56,17 +64,20 @@
   }
   const SHOW = { "*": "×", "/": "÷", "-": "−", sqrt: "√", cbrt: "∛", pi: "π" };
   const sym = t => SHOW[t.t] || (t.t === "num" ? t.v : t.t);
+  const functions = { ln: Math.log, sin: Math.sin, cos: Math.cos, tan: Math.tan };
+  const unaryFunctions = ["sqrt", "cbrt", ...Object.keys(functions)];
+  const atomTokens = ["num", "pi", "choose", "(", ...unaryFunctions];
 
   // expr := term (("+" | "-") term)*
   // term := unary (("*" | "/" | nothing) unary)*      (nothing: 2sqrt(3), 7pi, 2(3))
   // unary := "-" unary | power
   // power := atom "!"? ("^" unary)?
-  // atom := number | pi | sqrt atom | cbrt atom | "(" expr ")"
+  // atom := number | pi | sqrt atom | cbrt atom | "(" expr ")" | choose "(" expr "," expr ")"
   function parseOne(toks) {
     let k = 0;
     const peek = () => toks[k] && toks[k].t;
     const eat = t => { if (peek() !== t) throw new Error("A bracket is not closed."); k++; };
-    const startsAtom = () => ["num", "pi", "sqrt", "cbrt", "("].indexOf(peek()) !== -1;
+    const startsAtom = () => peek() === "i" || atomTokens.includes(peek());
     function expr() {
       let a = term();
       while (peek() === "+" || peek() === "-") { const op = toks[k++].t; a = { op, a, b: term() }; }
@@ -94,8 +105,17 @@
     function atom() {
       const t = peek();
       if (t === "num") return { op: "num", v: toks[k++].v };
-      if (t === "pi") { k++; return { op: "pi" }; }
-      if (t === "sqrt" || t === "cbrt") { k++; if (!peek()) throw new Error(`${sym({ t })} needs a number after it.`); return { op: t, a: atom() }; }
+      if (t === "pi" || t === "i") { k++; return { op: t }; }
+      if (unaryFunctions.includes(t)) { k++; if (!peek()) throw new Error(`${sym({ t })} needs a number after it.`); return { op: t, a: atom() }; }
+      if (t === "choose") {
+        k++;
+        eat("(");
+        const a = expr();
+        eat(",");
+        const b = expr();
+        eat(")");
+        return { op: "choose", a, b };
+      }
       if (t === "(") { k++; if (peek() === ")") throw new Error("A pair of brackets is empty."); const e = expr(); eat(")"); return { op: "()", a: e }; }
       if (!t) throw new Error(k ? `Something is missing after "${sym(toks[k - 1])}".` : "The answer is empty.");
       throw new Error(k ? `Something is missing between "${sym(toks[k - 1])}" and "${sym(toks[k])}".` : `The answer cannot start with "${sym(toks[k])}".`);
@@ -112,10 +132,16 @@
     if (i < 0) return [part];
     return [...expandPm([...part.slice(0, i), { t: "+" }, ...part.slice(i + 1)]), ...expandPm([...part.slice(0, i), { t: "-" }, ...part.slice(i + 1)])];
   }
-  function parse(src, groupThousands) {
-    const toks = tokens(src, groupThousands), parts = [[]];
+  function parse(src, groupThousands, allowImaginary = false) {
+    const toks = tokens(src, groupThousands, allowImaginary), parts = [[]];
     if (!toks.length) throw new Error("The answer is empty.");
-    toks.forEach(t => { if (t.t === ",") parts.push([]); else parts[parts.length - 1].push(t); });
+    let depth = 0;
+    for (const token of toks) {
+      if (token.t === "(") depth++;
+      if (token.t === ")") depth--;
+      if (token.t === "," && depth === 0) parts.push([]);
+      else parts[parts.length - 1].push(token);
+    }
     if (parts.some(p => !p.length)) throw new Error("The list has an empty item: check the commas.");
     // Each ± doubles the answers, so the count is capped before any are built (a report,
     // 2026-10-31: sixteen ± signs made 65,536 answers and stalled the preview).
@@ -130,12 +156,27 @@
     return parts.flatMap(expandPm).map(parseOne);
   }
 
+  function binomial(n, k) {
+    if (n < 0n || n > 4096n || k < 0n) return null;
+    if (k > n) return 0n;
+    const count = k < n - k ? k : n - k;
+    let result = 1n;
+    for (let i = 1n; i <= count; i++) result = result * (n - count + i) / i;
+    return result;
+  }
+
   function value(n) {
+    if (Object.hasOwn(functions, n.op)) return functions[n.op](value(n.a));
     switch (n.op) {
       case "num": return parseFloat(n.v);
       case "pi": return Math.PI;
       case "sqrt": return Math.sqrt(value(n.a));
       case "cbrt": return Math.cbrt(value(n.a));
+      case "choose": {
+        const a = value(n.a), b = value(n.b);
+        if (!Number.isSafeInteger(a) || !Number.isSafeInteger(b)) return NaN;
+        return Number(binomial(BigInt(a), BigInt(b)) ?? NaN);
+      }
       case "()": return value(n.a);
       case "neg": return -value(n.a);
       case "!": {
@@ -157,11 +198,14 @@
   // The typeset form. A quotient is drawn as a fraction, so its own brackets are dropped.
   const bare = n => n.op === "()" ? n.a : n;
   function tex(n) {
+    if (Object.hasOwn(functions, n.op)) return "\\" + n.op + "\\left(" + tex(bare(n.a)) + "\\right)";
     switch (n.op) {
       case "num": return n.v;
       case "pi": return "\\pi";
+      case "i": return "i";
       case "sqrt": return "\\sqrt{" + tex(bare(n.a)) + "}";
       case "cbrt": return "\\sqrt[3]{" + tex(bare(n.a)) + "}";
+      case "choose": return "\\binom{" + tex(bare(n.a)) + "}{" + tex(bare(n.b)) + "}";
       // Brackets around a single number, root or fraction are only grouping: drawn without them.
       case "()": return /^(num|pi|sqrt|cbrt|\/|\(\))$/.test(n.a.op) ? tex(n.a) : "\\left(" + tex(n.a) + "\\right)";
       case "neg": return "-" + tex(n.a);
@@ -180,7 +224,7 @@
     }
     return "";
   }
-  function toTex(src, groupThousands) { return parse(src, groupThousands).map(tex).join(",\\ "); }
+  function toTex(src, groupThousands, allowImaginary) { return parse(src, groupThousands, allowImaginary).map(tex).join(",\\ "); }
 
   // Close the brackets a student has opened but not yet closed, so the box can typeset an
   // answer while it is being built.
@@ -201,7 +245,7 @@
     return x.every((v, i) => isFinite(v) && isFinite(y[i]) && Math.abs(v - y[i]) <= 1e-9 * Math.max(1, Math.abs(v), Math.abs(y[i])));
   }
 
-  const api = { parse, value, values, toTex, closeOpen, same, normalize };
+  const api = { parse, value, values, toTex, closeOpen, same, normalize, binomial };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.LearnAnswer = api;
 })(typeof window !== "undefined" ? window : this);
