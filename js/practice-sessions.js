@@ -108,7 +108,23 @@
       return (digits[1] || digits[2]).replace(/^0+(?=\d)/, '');
     });
   }
+  function symbolicTex(text) {
+    if (text.length > 120) return null;
+    try { return math.toSymbolicTex(text); } catch (err) { return null; }
+  }
   function exactTex(text, format, notation) {
+    const equation = text.includes('=');
+    const display = equation && symbolicTex(text);
+    if (display) return display;
+    try {
+      return formattedExactTex(text, format, notation);
+    } catch (err) {
+      const symbolic = !equation && symbolicTex(text);
+      if (symbolic) return symbolic;
+      throw err;
+    }
+  }
+  function formattedExactTex(text, format, notation) {
     const percent = format === 'percent' && text.includes('%');
     text = cleanExact(text, format, notation);
     if (notation === 'base-3') return ternaryParts(text).map(part => `${part}_{3}`).join(',\\ ');
@@ -752,7 +768,10 @@
     if (set.selfCheck?.[slug]) { if (text.length > 60) return false; }
     else if (exact?.format === 'text') { if (text.length > 120) return false; }
     else if (exact) {
-      if (text) { try { exactValues(text, exact.format, exact.notation); } catch (err) { return false; } }
+      if (text) {
+        try { exactValues(text, exact.format, exact.notation); }
+        catch (err) { if (!symbolicTex(text)) return false; }
+      }
     } else if (!(text === '' || (aime ? aimeValue(text) != null : (/-columbus-state-tournament-/.test(slug) ? /^[A-F]$/ : /^[A-E]$/).test(text)))) return false;
     set.answers[slug] = text;
     return true;

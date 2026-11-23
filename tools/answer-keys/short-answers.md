@@ -18,6 +18,8 @@ Use `"interval"` for a real interval or union. The checker accepts bracket notat
 
 Use `"polynomial"` with the variable in `notation`. The checker compares exact rational coefficients through degree 32. For example, `n(n+5)-3` and `n^2+5n-3` both work for 2006 Lehigh #30. Use `notation: "ratio"` on a single real value when the prompt asks for a ratio. Students can enter `4:6` or `2/3` for the same ratio.
 
+Practice saves and typesets symbolic entries such as `y=2x` and `A_{104}/z`. The answer key's format still determines whether the entry earns credit.
+
 Use `format: "tuple", notation: "polar"` for a radius and angle. The checker accepts coterminal angles, including degrees with `°` or `deg`. Use `notation: "profit"` on a signed real key when the question asks for a gain or loss. Both `-40` and `40 loss` express the same loss.
 
 Use `format: "percent", notation: "percent-change"` when a question asks for the direction of a percentage change. For a decrease, `-9%`, `decreases by 9%`, and `9% decrease` all express the same answer.
