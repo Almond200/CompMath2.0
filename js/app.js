@@ -6202,6 +6202,7 @@
     { label: '√', name: 'Square root', open: 'sqrt(', close: ')' },
     { label: '∛', name: 'Cube root', open: 'cbrt(', close: ')' },
     { label: 'xⁿ', name: 'Power', open: '^(', close: ')' },
+    { label: 'xₙ', name: 'Subscript', open: '_{', close: '}' },
     { label: 'π', name: 'Pi', open: 'pi' },
     { label: '!', name: 'Factorial', open: '!' },
     { label: '±', name: 'Plus or minus', open: '±' },
@@ -6249,6 +6250,7 @@
       if (input.value.length - (end - start) + inserted.length > input.maxLength) return;
       const caret = start + (selected && close === ')/()' ? inserted.length - 1 : open.length + (close ? selected.length : 0));
       input.setRangeText(inserted, start, end);
+      input.focus({ preventScroll: true });
       input.setSelectionRange(caret, caret);
       input.dispatchEvent(new Event('input', { bubbles: true }));
     });
