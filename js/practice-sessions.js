@@ -98,9 +98,20 @@
     if (depth) throw Error('Unmatched parenthesis');
     return [...parts, text.slice(start)].map(part => part.trim());
   }
+  function ternaryParts(text) {
+    text = text.replace(/\$|\\(?:left|right)\b/g, '').replace(/\s+and\s+/gi, ',').trim();
+    let parts = splitExactList(text);
+    if (parts.length === 1 && text.startsWith('(') && text.endsWith(')')) parts = splitExactList(text.slice(1, -1));
+    return parts.map(part => {
+      const digits = /^(?:([0-2]+)|\(([0-2]+)\))(?:\s*(?:_(?:3|\{3\})|₃|\(base\s+3\)))?$/i.exec(part);
+      if (!digits) throw Error('Use the digits 0, 1, and 2 for a base 3 value');
+      return (digits[1] || digits[2]).replace(/^0+(?=\d)/, '');
+    });
+  }
   function exactTex(text, format, notation) {
     const percent = format === 'percent' && /(?:\\?%)\s*$/.test(text);
     text = cleanExact(text, format, notation);
+    if (notation === 'base-3') return ternaryParts(text).map(part => `${part}_{3}`).join(',\\ ');
     if (format === 'interval') {
       const parts = intervalParts(text);
       if (!parts.length) return '\\varnothing';
@@ -122,6 +133,10 @@
     }).join(',\\ ');
   }
   function cleanExact(text, format, notation) {
+    // A space between a whole number and a proper fraction is a mixed number.
+    text = text.replace(/(?<![\w.])(\d+)\s+(\d+)\s*\/\s*(\d+)(?![\w./^]|\s+\d)/g,
+      (mixed, whole, numerator, denominator) => BigInt(numerator) < BigInt(denominator)
+        ? `(${whole}+${numerator}/${denominator})` : mixed);
     if (notation === 'profit') {
       const loss = /^(?:loss(?: of)?\s+(.+)|(.+?)\s+loss)$/i.exec(text.trim());
       if (loss) text = `-(${loss[1] || loss[2]})`;
@@ -665,6 +680,7 @@
   function exactValues(text, format, notation) {
     if (text.length > 120) throw Error('Answer is too long');
     text = cleanExact(text, format, notation);
+    if (notation === 'base-3') return [ternaryParts(text).map(exactScalar)];
     if (format === 'interval') return sortedIntervals(text);
     if (format === 'polynomial') {
       const nodes = math.parse(text, true, false, notation);
