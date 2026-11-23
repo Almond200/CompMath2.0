@@ -59,8 +59,17 @@ P.resume(restored,10000000);P.checkpoint(restored,10006000);assert.equal(restore
 const early=P.createMock('Early',['x'],{family:'AMC 8',durationMs:10000},1000);P.finish(early,4000);assert.equal(P.timeLeft(early,500000),7000);assert.equal(early.timedOut,undefined);
 const exported=JSON.stringify([early]);assert.equal(P.read({getItem:()=>exported})[0].clock.remainingMs,7000);
 assert.deepEqual(P.read({getItem:()=>JSON.stringify([{...early,clock:null},{...early,mock:{family:'Unknown'}}])}),[]);
-// Exact-value responses are parsed as math, not evaluated as JavaScript.
-const h='2019-hmmt-february-geometry-5',e=P.create('HMMT','Any',[h]);assert(P.answer(e,h,'(sqrt(2)-1)/2',false));assert.equal(P.result(e,h),'Correct');assert(P.answer(e,h,'(1+sqrt(2))/2',false));assert.equal(P.result(e,h),'Correct');assert(!P.answer(e,h,'alert(1)',false));assert(!P.answer(e,h,'1/0',false));
+// Practice saves symbolic input for review and grades against the numeric key.
+const h='2019-hmmt-february-geometry-5',e=P.create('HMMT','Any',[h]);
+assert(P.answer(e,h,'(sqrt(2)-1)/2',false));
+assert.equal(P.result(e,h),'Correct');
+assert(P.answer(e,h,'(1+sqrt(2))/2',false));
+assert.equal(P.result(e,h),'Correct');
+assert(P.answer(e,h,'y=2x',false));
+assert.equal(P.result(e,h),'Incorrect');
+assert(!P.answer(e,h,'alert(1);',false));
+assert(!P.answer(e,h,'1/0',false));
+assert.equal(e.answers[h],'y=2x');
 for(const [id,x] of Object.entries(c.window.MATH_MOCK_EXTRAS)){assert.ok(problems.some(p=>p.slug===id));for(const a of x.answers){const e=P.create('Extra','Any',[id]);assert(P.answer(e,id,a,false));assert.equal(P.result(e,id),'Correct');}}
 const score=M.score({mock:{family:'AMC 10'},slugs:['a','b','c','d']},s=>({a:'Correct',b:'Incorrect',c:'Unanswered',d:'Voided'})[s]);assert.equal(score.points,13.5);assert.equal(score.max,24);
 assert.equal(M.score({mock:{family:'AMC 8'},slugs:['a','b']},s=>s==='a'?'Correct':'Unanswered').points,1);
