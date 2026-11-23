@@ -156,8 +156,11 @@
   }
   const unitSuffix = {
     points: /\s*(?:points?|pts?\.?)\s*$/i,
+    hours: /\s*(?:hours?|hrs?\.?)\s*$/i,
     inches: /\s*(?:inch(?:es)?|in\.?)\s*$/i,
-    'square-inches': /\s*(?:square\s+inch(?:es)?|sq\.?\s*in\.?|in(?:\^2|²))\s*$/i
+    pounds: /\s*(?:pounds?|lbs?\.?)\s*$/i,
+    'square-inches': /\s*(?:square\s+inch(?:es)?|sq\.?\s*in\.?|in(?:\^2|²))\s*$/i,
+    'square-units': /\s*(?:square\s+units?|units?\s+squared|units?(?:\^2|²))\s*$/i
   };
   function cleanExact(text, format, notation) {
     // A space between a whole number and a proper fraction is a mixed number.
