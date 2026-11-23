@@ -126,6 +126,8 @@
   }
   function formattedExactTex(text, format, notation) {
     const percent = format === 'percent' && text.includes('%');
+    const degrees = notation === 'angle' ? degreeExpression(text) : null;
+    if (degrees != null) return '{' + math.toTex(degrees, true) + '}^{\\circ}';
     text = cleanExact(text, format, notation);
     if (notation === 'base-3') return ternaryParts(text).map(part => `${part}_{3}`).join(',\\ ');
     if (format === 'interval') {
@@ -138,7 +140,7 @@
       }).join(' \\cup ');
     }
     if (format === 'sequence') return splitExactList(text).map(part => math.toTex(part)).join(',\\ ');
-    if (format === 'polynomial') return math.toTex(text, true, false, notation);
+    if (format === 'polynomial' || format === 'rational-function') return math.toTex(text, true, false, notation);
     if (format === 'complex' || format === 'complex-set') return math.toTex(text, format === 'complex', true);
     if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text, format !== 'set') + (percent ? '\\%' : '');
     const tuples = format === 'tuple' ? [text] : splitExactList(text);
@@ -148,6 +150,15 @@
       return '\\left(' + values.join(',\\ ') + '\\right)';
     }).join(',\\ ');
   }
+  function degreeExpression(text) {
+    const match = /^(.*?)(?:\^\{\\circ\}|\^\\circ|[°∘◦]|\s+deg(?:rees?)?)$/i.exec(text.replace(/\$/g, '').trim());
+    return match?.[1] ?? null;
+  }
+  const unitSuffix = {
+    points: /\s*(?:points?|pts?\.?)\s*$/i,
+    inches: /\s*(?:inch(?:es)?|in\.?)\s*$/i,
+    'square-inches': /\s*(?:square\s+inch(?:es)?|sq\.?\s*in\.?|in(?:\^2|²))\s*$/i
+  };
   function cleanExact(text, format, notation) {
     // A space between a whole number and a proper fraction is a mixed number.
     text = text.replace(/(?<![\w.])(\d+)\s+(\d+)\s*\/\s*(\d+)(?![\w./^]|\s+\d)/g,
@@ -157,6 +168,7 @@
       const loss = /^(?:loss(?: of)?\s+(.+)|(.+?)\s+loss)$/i.exec(text.trim());
       if (loss) text = `-(${loss[1] || loss[2]})`;
     }
+    if (Object.hasOwn(unitSuffix, notation)) text = text.replace(unitSuffix[notation], '');
     if (notation === 'percent-change') {
       const change = /^(?:(increase|decrease)s?(?:\s+(?:by|of))?\s+(.+)|(.+?)\s+(increase|decrease))$/i.exec(text.trim());
       if (change) {
@@ -164,12 +176,16 @@
         text = (change[1] || change[4]).toLowerCase() === 'decrease' ? `-(${magnitude})` : magnitude;
       }
     }
+    if (notation === 'angle') {
+      const degrees = degreeExpression(text);
+      text = degrees != null ? '(' + degrees + ')*pi/180' : text.replace(/\s*rad(?:ians?)?\s*(?=\$?$)/i, '');
+    }
     if (notation === 'polar') {
       const tuple = text.replace(/\$|\\(?:left|right)\b/g, '').trim();
       if (tuple.startsWith('(') && tuple.endsWith(')')) {
         const [radius, angle, ...extra] = splitExactList(tuple.slice(1, -1));
-        const degrees = /^(.*?)(?:\^\{\\circ\}|[°∘◦]|\s+deg)$/i.exec(angle || '');
-        text = !extra.length && degrees ? `(${radius}, (${degrees[1]})*pi/180)` : tuple;
+        const degrees = degreeExpression(angle || '');
+        text = !extra.length && degrees != null ? `(${radius}, (${degrees})*pi/180)` : tuple;
       }
     }
     if (notation === 'ratio') {
@@ -683,6 +699,11 @@
   function hasVariable(node) {
     return !!node && (node.op === 'variable' || hasVariable(node.a) || hasVariable(node.b));
   }
+  function addPolynomials(op, left, right) {
+    const terms = Array.from({ length: Math.max(left.length, right.length) }, (_, i) =>
+      polynomialOperation(op, left[i] || zero.fraction, right[i] || zero.fraction));
+    return trimPolynomial(terms);
+  }
   function polynomial(node) {
     if (!hasVariable(node)) return [polynomialCoefficient(rational(node))];
     if (node.op === 'variable') return [zero.fraction, one.fraction];
@@ -696,18 +717,47 @@
       if (right.length !== 1 || right[0][0] === 0n) throw Error('Expected a nonzero constant divisor');
       return left.map(term => polynomialOperation('/', term, right[0]));
     }
-    const terms = Array.from({ length: Math.max(left.length, right.length) }, (_, i) =>
-      polynomialOperation(node.op, left[i] || zero.fraction, right[i] || zero.fraction));
-    return trimPolynomial(terms);
+    return addPolynomials(node.op, left, right);
+  }
+  function polynomialQuotient(node) {
+    const unit = [one.fraction];
+    if (!hasVariable(node) || node.op === 'variable') return [polynomial(node), unit];
+    if (node.op === '()') return polynomialQuotient(node.a);
+    if (!['neg', '+', '-', '*', '/', '^'].includes(node.op)) throw Error('Expected a rational function');
+    const [numerator, denominator] = polynomialQuotient(node.a);
+    if (node.op === 'neg') return [numerator.map(([a, b]) => [-a, b]), denominator];
+    if (node.op === '^') {
+      const exponent = integerValue(rational(node.b));
+      if (exponent == null) throw Error('Expected an integer exponent');
+      if (!exponent) {
+        if (!numerator.some(([value]) => value)) throw Error('Zero to the power zero');
+        return [unit, unit];
+      }
+      const power = [[exponent < 0n ? -exponent : exponent, 1n]];
+      const raised = [polynomialPower(numerator, power), polynomialPower(denominator, power)];
+      if (exponent > 0n) return raised;
+      if (!numerator.some(([value]) => value)) throw Error('Division by zero');
+      return raised.reverse();
+    }
+    const [right, divisor] = polynomialQuotient(node.b);
+    if (node.op === '/') {
+      if (!right.some(([value]) => value)) throw Error('Division by zero');
+      return [multiplyPolynomials(numerator, divisor), multiplyPolynomials(denominator, right)];
+    }
+    const commonDenominator = multiplyPolynomials(denominator, divisor);
+    if (node.op === '*') return [multiplyPolynomials(numerator, right), commonDenominator];
+    return [addPolynomials(node.op, multiplyPolynomials(numerator, divisor),
+      multiplyPolynomials(right, denominator)), commonDenominator];
   }
   function exactValues(text, format, notation) {
     if (text.length > 120) throw Error('Answer is too long');
     text = cleanExact(text, format, notation);
     if (notation === 'base-3') return [ternaryParts(text).map(exactScalar)];
     if (format === 'interval') return sortedIntervals(text);
-    if (format === 'polynomial') {
+    if (format === 'polynomial' || format === 'rational-function') {
       const nodes = math.parse(text, true, false, notation);
-      if (nodes.length !== 1) throw Error('Expected one polynomial');
+      if (nodes.length !== 1) throw Error('Expected one expression');
+      if (format === 'rational-function') return polynomialQuotient(nodes[0]);
       return [polynomial(nodes[0]).map(fraction => evaluatedValue(fraction, 0))];
     }
     if (format === 'complex' || format === 'complex-set') {
@@ -737,6 +787,11 @@
   function matchesExact(text, expected, format, notation) {
     try {
       const actual = exactValues(text, format, notation), remaining = exactValues(expected, format, notation);
+      if (format === 'rational-function') {
+        const left = multiplyPolynomials(actual[0], remaining[1]);
+        const right = multiplyPolynomials(remaining[0], actual[1]);
+        return left.length === right.length && left.every(([a, b], i) => a * right[i][1] === b * right[i][0]);
+      }
       if (actual.length !== remaining.length) return false;
       if (format === 'interval') return actual.every((part, i) => sameInterval(part, remaining[i]));
       return actual.every(tuple => {

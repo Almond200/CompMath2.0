@@ -3336,7 +3336,7 @@
     return m && SMT_CODE[m[2]] ? `https://www.stanfordmathtournament.com/pdfs/smt${m[1]}/${SMT_CODE[m[2]]}-${which}.pdf` : null;
   }
   // Duke Math Meet: each year's Individual round as Duke's math department posts it, with the
-  // solutions where it posted them (2007 to 2009 and 2011, 2014 to 2018 have answers or nothing).
+  // official solutions or answer sheets where available.
   const DMM_NEW = "https://math.duke.edu/sites/math.duke.edu/files/documents/", DMM_OLD = "https://sites.math.duke.edu/dumu/mathmeet/prob/";
   const DMM_FILES = {
     2022: [DMM_NEW + "Individual%20Round.pdf", DMM_NEW + "Solution%20Booklet.pdf"],
@@ -3347,7 +3347,9 @@
     2015: [DMM_OLD + "2015_Individual.pdf"], 2014: [DMM_OLD + "2014_Individual.pdf"],
     2013: [DMM_OLD + "2013_Individual.pdf", DMM_OLD + "2013_Individual.pdf"], 2012: [DMM_OLD + "2012_Individual.pdf", DMM_OLD + "2012_Individual.pdf"],
     2011: [DMM_OLD + "2011_Individual.pdf"], 2010: [DMM_OLD + "2010_Problems.pdf"],
-    2009: [DMM_OLD + "2009_individual.pdf"], 2008: [DMM_OLD + "2008_individual.pdf"], 2007: [DMM_OLD + "2007_individual.pdf"]
+    2009: [DMM_OLD + "2009_individual.pdf", DMM_OLD + "2009_answers.pdf"],
+    2008: [DMM_OLD + "2008_individual.pdf", DMM_OLD + "2008_answers.pdf"],
+    2007: [DMM_OLD + "2007_individual.pdf", DMM_OLD + "2007_answers.pdf"]
   };
   function dmmPdf(ref, which) {
     const m = ref.match(/^(\d{4}) Duke Math Meet Individual,\s*Problem\s+\d+$/), f = m && DMM_FILES[m[1]];
@@ -6590,10 +6592,12 @@
       'complex-set': 'All complex values, separated by commas (spaces optional). Use i for the imaginary unit and write numbers without commas.',
       interval: 'Interval or inequality, for example [2, 5) or 2 ≤ x < 5',
       polynomial: `Polynomial in ${exact?.notation}`,
+      'rational-function': `Expression in ${exact?.notation}`,
       tuple: exact?.notation === 'polar' ? 'Polar coordinates (radius, angle). For degrees, use ° or deg.' : 'Ordered tuple, for example (2, 3)',
       'tuple-set': 'All tuples, for example (2, 3), (4, 5)', text: 'Short answer',
       percent: exact?.notation === 'percent-change' ? 'Percentage change. Use a negative value for a decrease.' : 'Percentage (% is optional)' }[exact?.format] ||
-      (exact?.notation === 'ratio' ? 'Ratio, for example 2:3 or 2/3' : 'Exact value (fractions, sqrt, pi, !)');
+      (exact?.notation === 'ratio' ? 'Ratio, for example 2:3 or 2/3' :
+        exact?.notation === 'angle' ? 'Angle. For degrees, use ° or deg.' : 'Exact value (fractions, sqrt, pi, !)');
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
     const correct = !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact)).join(' or ') : escapeAttr(officialKey(slug) || '');
     const nav = set.slugs.map((id, i) => {
