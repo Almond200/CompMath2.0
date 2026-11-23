@@ -39,7 +39,7 @@ Five lines parallel to the base of a triangle divide each of the other sides int
 === 19
 An equal number of juniors and seniors responded to the question "Do you like math?," each responding with Yes or No. If $70\%$ of those who said Yes were seniors and $80\%$ of those who said No were juniors, then what percentage of the seniors polled said Yes?
 === 20
-Recall that the iterated power $a^{b^c}$ means $a^{(b^c)}$. If $x$ is a real number which satisfies $2^{2^{2^x}}+4^{2^{2^x}}=56$, then what is the value of $2^{2^{2^x}}$?
+Recall that the iterated power $a^{b^c}$ means $a^{(b^c)}$. If $x$ is a real number which satisfies $2^{2^x}+4^{2^x}=56$, then what is the value of $2^{2^{2^x}}$?
 === 21
 The smallest positive integer $n$ with the property that $3$ divides $n$, $4$ divides $n+1$, $5$ divides $n+2$, $6$ divides $n+3$, $7$ divides $n+4$, $8$ divides $n+5$, and $9$ divides $n+6$ is $3$. What is the next largest integer with this property?
 === 22

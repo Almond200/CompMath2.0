@@ -122,6 +122,18 @@
     }).join(',\\ ');
   }
   function cleanExact(text, format, notation) {
+    if (notation === 'profit') {
+      const loss = /^(?:loss(?: of)?\s+(.+)|(.+?)\s+loss)$/i.exec(text.trim());
+      if (loss) text = `-(${loss[1] || loss[2]})`;
+    }
+    if (notation === 'polar') {
+      const tuple = text.replace(/\$|\\(?:left|right)\b/g, '').trim();
+      if (tuple.startsWith('(') && tuple.endsWith(')')) {
+        const [radius, angle, ...extra] = splitExactList(tuple.slice(1, -1));
+        const degrees = /^(.*?)(?:\^\{\\circ\}|[°∘◦]|\s+deg)$/i.exec(angle || '');
+        text = !extra.length && degrees ? `(${radius}, (${degrees[1]})*pi/180)` : tuple;
+      }
+    }
     if (notation === 'ratio') {
       const terms = text.split(/:|\\colon\b/);
       if (terms.length === 2) text = `(${terms[0]})/(${terms[1]})`;
@@ -535,6 +547,21 @@
     if (nodes.length !== 1) throw Error('Expected one number');
     return evaluated(nodes[0]);
   }
+  function polarTuple(parts) {
+    if (parts.length !== 2) throw Error('Expected a radius and an angle');
+    const radius = exactScalar(parts[0]), nodes = math.parse(parts[1]);
+    if (compareValues(radius, zero) < 0 || nodes.length !== 1) throw Error('Expected a nonnegative radius and one angle');
+    const multiple = piMultiple(nodes[0]);
+    if (multiple) {
+      const [numerator, denominator] = multiple, period = 2n * denominator;
+      const phase = (numerator % period + period) % period;
+      return [radius, evaluatedValue(null, Math.PI * fractionValue([phase, denominator]))];
+    }
+    const angle = evaluated(nodes[0]).value, period = 2 * Math.PI;
+    if (Math.abs(angle) > 1e6) throw Error('Angle is too large');
+    const phase = angle % period;
+    return [radius, evaluatedValue(null, phase < 0 ? phase + period : phase)];
+  }
   function compareValues(a, b) {
     if (a.fraction && b.fraction) return signOf(a.fraction[0] * b.fraction[1] - b.fraction[0] * a.fraction[1]);
     return signOf(a.value - b.value);
@@ -651,7 +678,8 @@
     }
     const tuple = part => {
       if (!part.startsWith('(') || !part.endsWith(')')) throw Error('Expected a parenthesized tuple');
-      return splitExactList(part.slice(1, -1)).map(exactScalar);
+      const parts = splitExactList(part.slice(1, -1));
+      return notation === 'polar' ? polarTuple(parts) : parts.map(exactScalar);
     };
     if (format === 'tuple') return [tuple(text)];
     if (format === 'tuple-set') return splitExactList(text).map(tuple);
@@ -681,7 +709,8 @@
       });
     } catch (err) { return false; }
   }
-  const normalizeTextAnswer = value => String(value).normalize('NFKC').trim().replace(/\s+/g, ' ').toLowerCase();
+  const normalizeTextAnswer = value => String(value).normalize('NFKC').trim()
+    .replace(/\s+/g, ' ').replace(/\s*([,<])\s*/g, '$1').toLowerCase();
   function answer(set, slug, value, aime, now = Date.now()) {
     if (set.kind === 'mock') checkpoint(set,now);
     if (set.status === 'finished') return false;

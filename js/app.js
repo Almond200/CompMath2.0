@@ -6560,7 +6560,7 @@
       'complex-set': 'All complex values, separated by commas (spaces optional). Use i for the imaginary unit and write numbers without commas.',
       interval: 'Interval or inequality, for example [2, 5) or 2 ≤ x < 5',
       polynomial: `Polynomial in ${exact?.notation}`,
-      tuple: 'Ordered tuple, for example (2, 3)',
+      tuple: exact?.notation === 'polar' ? 'Polar coordinates (radius, angle). For degrees, use ° or deg.' : 'Ordered tuple, for example (2, 3)',
       'tuple-set': 'All tuples, for example (2, 3), (4, 5)', text: 'Short answer',
       percent: 'Percentage (% is optional)' }[exact?.format] ||
       (exact?.notation === 'ratio' ? 'Ratio, for example 2:3 or 2/3' : 'Exact value (fractions, sqrt, pi, !)');
