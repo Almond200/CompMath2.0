@@ -101,6 +101,15 @@
   function exactTex(text, format, notation) {
     const percent = format === 'percent' && /(?:\\?%)\s*$/.test(text);
     text = cleanExact(text, format, notation);
+    if (format === 'interval') {
+      const parts = intervalParts(text);
+      if (!parts.length) return '\\varnothing';
+      return parts.map(part => {
+        const lower = part.lower == null ? '-\\infty' : math.toTex(part.lower);
+        const upper = part.upper == null ? '\\infty' : math.toTex(part.upper);
+        return `${part.lowerClosed ? '[' : '('}${lower},\\ ${upper}${part.upperClosed ? ']' : ')'}`;
+      }).join(' \\cup ');
+    }
     if (format === 'sequence') return splitExactList(text).map(part => math.toTex(part)).join(',\\ ');
     if (format === 'complex' || format === 'complex-set') return math.toTex(text, format === 'complex', true);
     if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text, format !== 'set') + (percent ? '\\%' : '');
@@ -121,6 +130,50 @@
     text = text.replace(/(?:\^\{\\circ\}|[°∘◦])/g, '');
     return ['set', 'tuple-set', 'complex-set'].includes(format)
       ? text.replace(/^\\?\{(.*?)\\?\}$/s, '$1').trim() : text;
+  }
+  function intervalParts(text) {
+    text = text.replace(/\$|\\(?:left|right)\b/g, '').trim();
+    if (/^(?:∅|\\(?:emptyset|varnothing)|empty(?: set)?|\{\})$/i.test(text)) return [];
+    const parts = text.split(/\s*(?:∪|\\cup\b|\b(?:u|union|or)\b)\s*/i);
+    if (parts.length > 24) throw Error('Too many intervals');
+    return parts.map(part => {
+      const range = { lower: null, upper: null, lowerClosed: false, upperClosed: false };
+      const bracket = /^([[(])(.*)([)\]])$/.exec(part.trim());
+      if (bracket) {
+        const limits = splitExactList(bracket[2]);
+        if (limits.length !== 2 || limits.some(limit => !limit)) throw Error('An interval needs two endpoints');
+        [range.lower, range.upper] = limits;
+        range.lowerClosed = bracket[1] === '[';
+        range.upperClosed = bracket[3] === ']';
+      } else {
+        const expression = part.replace(/[≤≥]/g, symbol => symbol === '≤' ? '<=' : '>=')
+          .replace(/\\(leq?|geq?)\b/g, (_, name) => name[0] === 'l' ? '<=' : '>=');
+        const tokens = expression.split(/(<=|>=|<|>)/).map(token => token.trim());
+        const variable = tokens.findIndex(token => /^[a-z](?:_\d+)?$/i.test(token));
+        if ((tokens.length !== 3 && tokens.length !== 5) || variable < 0 || (tokens.length === 5 && variable !== 2)) {
+          throw Error('Expected an interval or inequality');
+        }
+        for (let i = 1; i < tokens.length; i += 2) {
+          if (variable !== i - 1 && variable !== i + 1) throw Error('Expected an inequality');
+          const operand = tokens[variable === i - 1 ? i + 1 : i - 1], comparison = tokens[i];
+          const upper = (comparison[0] === '<') === (variable === i - 1);
+          const side = upper ? 'upper' : 'lower';
+          if (!operand || range[side] != null) throw Error('Expected one endpoint on each side');
+          range[side] = operand;
+          range[side + 'Closed'] = comparison.length === 2;
+        }
+      }
+      for (const side of ['lower', 'upper']) {
+        const value = range[side];
+        if (value == null) continue;
+        const infinity = /^([+−-]?)(?:inf(?:inity)?|∞|\\infty)$/i.exec(value.trim());
+        if (!infinity) continue;
+        const negative = infinity[1] === '-' || infinity[1] === '−';
+        if (range[side + 'Closed'] || negative !== (side === 'lower')) throw Error('Infinity needs an open endpoint');
+        range[side] = null;
+      }
+      return range;
+    });
   }
   function integerRoot(value, degree) {
     if (value < 0n) {
@@ -472,30 +525,70 @@
     if (node.op === '^' && isZero(right[1])) return complexPower(left, right[0]);
     throw Error('Expected a complex expression using i');
   }
+  function exactScalar(text) {
+    const nodes = math.parse(text);
+    if (nodes.length !== 1) throw Error('Expected one number');
+    return evaluated(nodes[0]);
+  }
+  function compareValues(a, b) {
+    if (a.fraction && b.fraction) return signOf(a.fraction[0] * b.fraction[1] - b.fraction[0] * a.fraction[1]);
+    return signOf(a.value - b.value);
+  }
+  function sortedIntervals(text) {
+    const intervals = intervalParts(text).map(part => ({ ...part,
+      lower: part.lower == null ? null : exactScalar(part.lower),
+      upper: part.upper == null ? null : exactScalar(part.upper)
+    })).filter(part => {
+      if (!part.lower || !part.upper) return true;
+      const order = compareValues(part.lower, part.upper);
+      if (order > 0) throw Error('The lower endpoint must come first');
+      return order < 0 || part.lowerClosed && part.upperClosed;
+    });
+    intervals.sort((a, b) => {
+      if (!a.lower || !b.lower) return (a.lower != null) - (b.lower != null);
+      return compareValues(a.lower, b.lower) || Number(b.lowerClosed) - Number(a.lowerClosed);
+    });
+    const merged = [];
+    for (const part of intervals) {
+      const last = merged.at(-1);
+      if (!last) { merged.push(part); continue; }
+      if (!last.upper) continue;
+      const gap = part.lower ? compareValues(part.lower, last.upper) : -1;
+      if (gap > 0 || (gap === 0 && !last.upperClosed && !part.lowerClosed)) {
+        merged.push(part);
+        continue;
+      }
+      const endOrder = part.upper ? compareValues(part.upper, last.upper) : 1;
+      if (endOrder > 0) { last.upper = part.upper; last.upperClosed = part.upperClosed; }
+      else if (endOrder === 0) last.upperClosed ||= part.upperClosed;
+    }
+    return merged;
+  }
+  function sameInterval(a, b) {
+    const sameBound = (submitted, expected) => expected ? !!submitted && sameExactValue(submitted, expected) : submitted == null;
+    return a.lowerClosed === b.lowerClosed && a.upperClosed === b.upperClosed &&
+      sameBound(a.lower, b.lower) && sameBound(a.upper, b.upper);
+  }
   function exactValues(text, format, notation) {
     if (text.length > 120) throw Error('Answer is too long');
     text = cleanExact(text, format, notation);
+    if (format === 'interval') return sortedIntervals(text);
     if (format === 'complex' || format === 'complex-set') {
       const nodes = math.parse(text, format === 'complex', true);
       if (format === 'complex' && nodes.length !== 1) throw Error('Expected one complex number');
       return nodes.map(complexParts);
     }
-    const scalar = value => {
-      const nodes = math.parse(value);
-      if (nodes.length !== 1) throw Error('Expected one number');
-      return evaluated(nodes[0]);
-    };
     const tuple = part => {
       if (!part.startsWith('(') || !part.endsWith(')')) throw Error('Expected a parenthesized tuple');
-      return splitExactList(part.slice(1, -1)).map(scalar);
+      return splitExactList(part.slice(1, -1)).map(exactScalar);
     };
     if (format === 'tuple') return [tuple(text)];
     if (format === 'tuple-set') return splitExactList(text).map(tuple);
-    if (format === 'sequence') return [splitExactList(text).map(scalar)];
+    if (format === 'sequence') return [splitExactList(text).map(exactScalar)];
     if (format === 'set') {
       return math.parse(text, false).map(node => [evaluated(node)]);
     }
-    return [[scalar(text)]];
+    return [[exactScalar(text)]];
   }
   function sameExactValue(a, b) {
     if (b.fraction) return !!a.fraction && a.fraction[0] * b.fraction[1] === b.fraction[0] * a.fraction[1];
@@ -507,6 +600,7 @@
     try {
       const actual = exactValues(text, format, notation), remaining = exactValues(expected, format, notation);
       if (actual.length !== remaining.length) return false;
+      if (format === 'interval') return actual.every((part, i) => sameInterval(part, remaining[i]));
       return actual.every(tuple => {
         const i = remaining.findIndex(key => key.length === tuple.length &&
           key.every((value, j) => sameExactValue(tuple[j], value)));

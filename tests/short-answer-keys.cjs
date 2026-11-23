@@ -31,7 +31,7 @@ for (const [slug, key] of Object.entries(answers)) {
   const paper = slug.replace(/-\d+$/, '');
   assert.match(sources[paper], /^https:\/\//, slug);
   usedSources.add(paper);
-  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set'].includes(key.format), slug);
+  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set', 'interval'].includes(key.format), slug);
   assert(key.answers.length, slug);
   for (const value of key.answers) check(slug, value, 'Correct');
 }
@@ -97,6 +97,19 @@ check(fibonacciProblem, '(100, fib(106)-fib(105)+1223)', 'Correct');
 check(fibonacciProblem, '(100, F_104)', 'Incorrect');
 assert.match(practice.exactTex('(100,F_{104}+1223)', 'tuple', 'fibonacci'), /F_\{104\}\+1223/);
 assert(!practice.answer(practice.create('Notation scope', 'Any', [set]), set, 'F_4', false));
+check('2008-lehigh-math-contest-4', '38<=x<88', 'Correct');
+check('2008-lehigh-math-contest-4', '88>x≥38', 'Correct');
+check('2008-lehigh-math-contest-4', '[38,50] U (50,88)', 'Correct');
+check('2008-lehigh-math-contest-4', '[38,50) U (50,88)', 'Incorrect');
+check('2008-lehigh-math-contest-4', '[38,88]', 'Incorrect');
+check('2022-bmt-algebra-4', '[2022/45,2023/45)', 'Correct');
+check('2007-hmmt-february-algebra-6', 'r>3 or r<49/27', 'Correct');
+check('2007-hmmt-february-algebra-6', '(3, inf) U (-infinity, 49/27]', 'Incorrect');
+const intervalSet = practice.create('Interval validation', 'Any', ['2008-lehigh-math-contest-4']);
+for (const input of ['[38, inf]', '[88,38)', '38<x>88', '3<x<']) {
+  assert(!practice.answer(intervalSet, '2008-lehigh-math-contest-4', input, false), input);
+}
+assert.match(practice.exactTex('38 ≤ x < 88', 'interval'), /^\[38,/);
 check('2022-hmmt-november-theme-2', '16\\sqrt[4]{3}', 'Correct');
 check('2019-hmmt-february-algebra-and-number-theory-8', '4038!^2/(2019!^4*2^8076)', 'Correct');
 check('2026-hmmt-november-theme-4', '1013*2027!/2027', 'Correct');

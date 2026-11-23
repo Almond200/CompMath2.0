@@ -6558,6 +6558,7 @@
       sequence: 'List values in the requested order, separated by commas (spaces optional). Write numbers without commas, like 1398.',
       complex: 'Complex value, for example 2+3i',
       'complex-set': 'All complex values, separated by commas (spaces optional). Use i for the imaginary unit and write numbers without commas.',
+      interval: 'Interval or inequality, for example [2, 5) or 2 ≤ x < 5',
       tuple: 'Ordered tuple, for example (2, 3)',
       'tuple-set': 'All tuples, for example (2, 3), (4, 5)', text: 'Short answer',
       percent: 'Percentage (% is optional)' }[exact?.format] || 'Exact value (fractions, sqrt, pi, !)';
