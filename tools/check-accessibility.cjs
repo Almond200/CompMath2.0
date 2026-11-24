@@ -258,6 +258,22 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
       await page.waitForFunction(id => document.activeElement === document.querySelector(`#${id} h3`), target);
       assert.equal(await page.locator('body.nav-open').count(), 0);
       assert.equal(new URL(page.url()).hash, hash);
+      const current = side.locator('.nav-space-link.active[aria-current="location"]');
+      assert.equal(await current.getAttribute('data-goto'), target);
+      assert.ok(await current.evaluate(el => {
+        const style = getComputedStyle(el);
+        return style.color === style.borderLeftColor;
+      }), 'the selected section uses its space color for text and the sidebar line');
+      await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+      const first = await links.first().getAttribute('data-goto');
+      await current.and(side.locator(`[data-goto="${first}"]`)).waitFor({ state: 'attached' });
+      if (space === 'practice') {
+        await page.evaluate(() => window.scrollTo({
+          top: window.scrollY + document.getElementById('pr-contests').getBoundingClientRect().top - document.querySelector('.topbar').offsetHeight - 12,
+          behavior: 'instant'
+        }));
+        await current.and(side.locator('[data-goto="pr-contests"]')).waitFor({ state: 'attached' });
+      }
     }
     if (width === 1280) {
       await navigate('#/', '.hm-space');
