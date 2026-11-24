@@ -45,6 +45,14 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Correct');
  await p.locator('[data-result-index="0"]').click();
  await p.getByText('At time C the speeds match',{exact:false}).waitFor();
+ await set(['2017-duke-math-meet-individual-3']);
+ await p.locator('#practice-answer').fill('715');
+ await p.locator('#finish-practice').click();
+ await p.locator('.practice-results').waitFor();
+ assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Incorrect');
+ await p.locator('[data-result-index="0"]').click();
+ await p.getByText('A four-digit number starts with a nonzero digit.',{exact:false}).waitFor();
+ assert.equal(await p.getByRole('link',{name:'Open the official solution'}).getAttribute('href'),'https://dukemathmeet.org/2017/indiv_sol.pdf');
  await set(['2011-smt-geometry-6','2014-smt-algebra-10']);
  for(const [index,answer] of ['pi/2+arctan(d)','1-x_2014/(3y_{2014})'].entries()){
   if(index) await p.locator('.cn-nums [data-practice-index="'+index+'"]').click();

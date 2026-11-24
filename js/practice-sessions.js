@@ -218,6 +218,8 @@
     points: /\s*(?:points?|pts?\.?)\s*$/i,
     units: /\s*units?\s*$/i,
     minutes: /\s*(?:minutes?|mins?\.?)\s*$/i,
+    meters: /\s*(?:met(?:er|re)s?|m\.?)\s*$/i,
+    degrees: /\s*(?:degrees?|deg\.?)\s*$/i,
     hours: /\s*(?:hours?|hrs?\.?)\s*$/i,
     inches: /\s*(?:inch(?:es)?|in\.?)\s*$/i,
     feet: /\s*(?:feet|foot|ft\.?)\s*$/i,

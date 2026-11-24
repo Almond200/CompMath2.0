@@ -3338,13 +3338,17 @@
   // Duke Math Meet: each year's Individual round as Duke's math department posts it, with the
   // official solutions or answer sheets where available.
   const DMM_NEW = "https://math.duke.edu/sites/math.duke.edu/files/documents/", DMM_OLD = "https://sites.math.duke.edu/dumu/mathmeet/prob/";
+  const DMM_ARCHIVE = "https://dukemathmeet.org/";
   const DMM_FILES = {
     2022: [DMM_NEW + "Individual%20Round.pdf", DMM_NEW + "Solution%20Booklet.pdf"],
     2021: [DMM_NEW + "DMM_2021_Individual_Round.pdf", DMM_NEW + "DMM_2021_Solutions_Updated.pdf"],
     2020: [DMM_NEW + "DMM_2020_Problems_And_Solutions.pdf", DMM_NEW + "DMM_2020_Problems_And_Solutions.pdf"],
     2019: [DMM_OLD + "DMM_2019_Individual_Round.pdf", DMM_OLD + "DMM_2019_Solutions.pdf"],
-    2018: [DMM_OLD + "2018_Individual.pdf"], 2017: [DMM_OLD + "2017_Indiv.pdf"], 2016: [DMM_OLD + "2016_indiv.pdf"],
-    2015: [DMM_OLD + "2015_Individual.pdf"], 2014: [DMM_OLD + "2014_Individual.pdf"],
+    2018: [DMM_OLD + "2018_Individual.pdf", DMM_ARCHIVE + "2018/indiv_sol.pdf"],
+    2017: [DMM_OLD + "2017_Indiv.pdf", DMM_ARCHIVE + "2017/indiv_sol.pdf"],
+    2016: [DMM_OLD + "2016_indiv.pdf", DMM_ARCHIVE + "2016/indiv_sol.pdf"],
+    2015: [DMM_OLD + "2015_Individual.pdf", DMM_ARCHIVE + "2015/indiv_sol.pdf"],
+    2014: [DMM_OLD + "2014_Individual.pdf", DMM_ARCHIVE + "2014/indiv_sol.pdf"],
     2013: [DMM_OLD + "2013_Individual.pdf", DMM_OLD + "2013_Individual.pdf"], 2012: [DMM_OLD + "2012_Individual.pdf", DMM_OLD + "2012_Individual.pdf"],
     2011: [DMM_OLD + "2011_Individual.pdf"], 2010: [DMM_OLD + "2010_Problems.pdf"],
     2009: [DMM_OLD + "2009_individual.pdf", DMM_OLD + "2009_answers.pdf"],
@@ -6559,7 +6563,7 @@
         ${set.clock ? `<p class="practice-results-meta">${mockTimeSummary(set)}</p>` : ''}
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
-        ${counts['Check yourself'] ? `<p class="practice-results-meta">${counts['Check yourself']} to check against the official solution: open ${counts['Check yourself'] === 1 ? 'it' : 'each'} in the review and mark your answer right or wrong.</p>` : ''}
+        ${counts['Check yourself'] ? `<p class="practice-results-meta">${counts['Check yourself']} for self-check. Open ${counts['Check yourself'] === 1 ? 'it' : 'each'} in the review and mark your answer right or wrong.</p>` : ''}
         ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided${score ? ' · Full credit awarded' : ''}</p>` : ''}
         <a class="hp-btn" href="${reviewUrl}">Review problems</a>
       </section>
@@ -6622,7 +6626,8 @@
         exact?.notation === 'angle' ? 'Angle. For degrees, use ° or deg.' : 'Exact value (fractions, sqrt, pi, !)');
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
     const acceptedChoices = practiceSessions.choiceAnswers(slug);
-    const gradingNote = window.MATH_EXTRA_KEYS?.notes?.[slug];
+    const gradingNote = window.MATH_EXTRA_KEYS?.notes?.[slug] ?? window.MATH_SHORT_ANSWER_KEYS?.notes?.[slug] ??
+      (exact && p?.url && !p.solUrl ? 'The answer was checked independently from the official problem paper.' : '');
     const correct = voidNote ? '' : !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact)).join(' or ') :
       escapeAttr(acceptedChoices.length ? acceptedChoices.map(choice => [...choice].join(' and ')).join(' or ') : officialKey(slug) || '');
     const nav = set.slugs.map((id, i) => {
@@ -6646,7 +6651,7 @@
       </section>
       <section class="sh-section practice-question"><h3>Problem ${practiceProblemNumber(set, set.current)}${p && (!mock || finished) ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
         ${paper ? `${inlinePaper ? `<div class="practice-set-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div></div>` : ''}
-          <div class="practice-paper"><p data-statement-fallback>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. Compare your answer with the official solution and mark it below.` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. When you review, you check it against the official solution.`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`
+          <div class="practice-paper"><p data-statement-fallback>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. ${p.solUrl ? 'Compare your answer with the official solution and mark it below.' : 'Check your answer and mark it below.'}` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. ${p.solUrl ? 'When you review, you check it against the official solution.' : 'You can check your answer during review.'}`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`
           : external ? `<div class="practice-paper"><p>Read Problem ${p.num} in the original paper.</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`
           : p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>${voidNote ? "Voided" : "Your answer"}</h3>
