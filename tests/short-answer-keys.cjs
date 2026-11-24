@@ -72,6 +72,22 @@ check('2025-chmmc-individual-10', '6', 'Correct');
 check('2025-chmmc-individual-10', '7', 'Incorrect');
 check('2018-lehigh-math-contest-1', '20', 'Correct');
 check('2018-lehigh-math-contest-1', '400', 'Incorrect');
+check('2013-lehigh-math-contest-6', 'sqrt(2)', 'Correct');
+check('2013-lehigh-math-contest-6', '2', 'Incorrect');
+check('2020-lehigh-math-contest-7', 'sqrt(5)', 'Correct');
+check('2020-lehigh-math-contest-36', 'sqrt(6)', 'Correct');
+check('2019-lehigh-math-contest-12', '20 mph', 'Correct');
+check('2011-calgary-junior-math-contest-2', '38 m²', 'Correct');
+check('2022-girls-in-math-at-yale-individual-6', '10 ft/s', 'Correct');
+check('2021-hmmt-november-theme-2', '19%', 'Correct');
+check('2025-lehigh-math-contest-25', '3456891012151618', 'Correct');
+check('2025-lehigh-math-contest-25', '03456891012151618', 'Incorrect');
+for (const slug of ['2025-mbmt-lower-geometry-7', '2025-mbmt-upper-geometry-5']) {
+  check(slug, '10', 'Correct');
+  check(slug, 'sqrt(1360)', 'Correct');
+  check(slug, '36', 'Incorrect');
+}
+assert.match(practice.exactTex('55 degrees', undefined, 'degrees'), /\\circ/);
 check('1999-lehigh-math-contest-35', 'x_1=1/x_2', 'Correct');
 check('2000-lehigh-math-contest-7', '2x+y=6', 'Correct');
 check('2000-lehigh-math-contest-31', '166500', 'Correct');

@@ -70,6 +70,18 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct','Correct']);
  await p.locator('[data-result-index="0"]').click();
  await p.locator('.practice-submitted .katex').waitFor();
+ await set(['2019-hmmt-february-geometry-7','2007-hmmt-february-algebra-8']);
+ await p.locator('.practice-set-st').getByText(/circle that encloses/).waitFor();
+ await p.locator('#practice-answer').fill('65/4');
+ await p.locator('.cn-nums [data-practice-index="1"]').click();
+ await p.locator('#practice-answer').fill('log(2007)-log(2006)');
+ await p.locator('.practice-answer-preview .katex').waitFor();
+ assert.equal(await p.locator('#practice-answer').getAttribute('aria-invalid'),'false');
+ await p.locator('#finish-practice').click();
+ await p.locator('.practice-results').waitFor();
+ assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct']);
+ await p.locator('[data-result-index="0"]').click();
+ await p.getByText('Practice asks for the enclosing circle.',{exact:false}).waitFor();
  await set(['2011-smt-geometry-6','2014-smt-algebra-10']);
  for(const [index,answer] of ['pi/2+arctan(d)','1-x_2014/(3y_{2014})'].entries()){
   if(index) await p.locator('.cn-nums [data-practice-index="'+index+'"]').click();

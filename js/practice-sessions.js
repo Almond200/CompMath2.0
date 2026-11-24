@@ -204,7 +204,7 @@
   }
   function formattedExactTex(text, format, notation) {
     const percent = format === 'percent' && text.includes('%');
-    const degrees = notation === 'angle' ? degreeExpression(text) : null;
+    const degrees = ['angle', 'degrees'].includes(notation) ? degreeExpression(text) : null;
     if (degrees != null) return '{' + math.toTex(degrees, true) + '}^{\\circ}';
     text = cleanExact(text, format, notation);
     const base = /^base-(\d+|phi)$/.exec(notation)?.[1];
@@ -253,12 +253,14 @@
     hours: /\s*(?:hours?|hrs?\.?)\s*$/i,
     inches: /\s*(?:inch(?:es)?|in\.?)\s*$/i,
     feet: /\s*(?:feet|foot|ft\.?)\s*$/i,
+    'feet-per-second': /\s*(?:f(?:ee|oo)t\s+per\s+second|ft\.?\s*\/\s*s(?:ec\.?)?|fps)\s*$/i,
     pounds: /\s*(?:pounds?|lbs?\.?)\s*$/i,
     dollars: /\s*(?:dollars?|USD)\s*$/i,
     miles: /\s*(?:miles?|mi\.?)\s*$/i,
     mph: /\s*(?:mph|miles?\s+per\s+hour)\s*$/i,
     'radians-per-second': /\s*(?:rad(?:ians?)?\s*\/\s*s|radians?\s+per\s+second)\s*$/i,
     'square-inches': /\s*(?:square\s+inch(?:es)?|sq\.?\s*in\.?|in(?:\^2|²))\s*$/i,
+    'square-meters': /\s*(?:square\s+met(?:er|re)s?|sq\.?\s*m\.?|m(?:\^2|²))\s*$/i,
     'cubic-inches': /\s*(?:cubic\s+inch(?:es)?|cu\.?\s*in\.?|in(?:\^3|³))\s*$/i,
     'square-units': /\s*(?:square\s+units?|units?\s+squared|units?(?:\^2|²))\s*$/i
   };
