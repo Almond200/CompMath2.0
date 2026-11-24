@@ -1681,7 +1681,6 @@ A high-frequency AMC 12 and AIME shape whenever a trigonometric expression must 
 - $\sin 2\theta = 2\sin\theta\cos\theta$
 - $\cos 2\theta = \cos^2\theta - \sin^2\theta = 2\cos^2\theta - 1 = 1 - 2\sin^2\theta$ — three forms, so either function can be kept
 - $\tan 2\theta = \dfrac{2\tan\theta}{1 - \tan^2\theta}$
-- $\cos^2\theta = \dfrac{1 + \cos 2\theta}{2}$ and $\sin^2\theta = \dfrac{1 - \cos 2\theta}{2}$ — power reduction, the formulas read backwards
 - with $t = \tan\theta$: $\sin 2\theta = \dfrac{2t}{1 + t^2}$ and $\cos 2\theta = \dfrac{1 - t^2}{1 + t^2}$
 
 ## Conditions
@@ -1698,13 +1697,13 @@ The altitude from the apex cuts it into two right triangles, each with hypotenus
 
 {{figure:isosceles}}
 
-The other two forms of $\cos 2\theta$ come from $\sin^2\theta + \cos^2\theta = 1$. Replacing $\sin^2\theta$ by $1 - \cos^2\theta$ gives $2\cos^2\theta - 1$, and replacing $\cos^2\theta$ by $1 - \sin^2\theta$ gives $1 - 2\sin^2\theta$. Solving each of these for the square gives the power-reduction formulas.
+The other two forms of $\cos 2\theta$ come from $\sin^2\theta + \cos^2\theta = 1$. Replacing $\sin^2\theta$ by $1 - \cos^2\theta$ gives $2\cos^2\theta - 1$, and replacing $\cos^2\theta$ by $1 - \sin^2\theta$ gives $1 - 2\sin^2\theta$. Solving for the squares gives the power-reduction formulas.
 
 Finally, dividing $\sin 2\theta$ and $\cos 2\theta$ by $\cos^2\theta + \sin^2\theta$, which equals $1$, and then dividing top and bottom by $\cos^2\theta$ writes both in $t = \tan\theta$. This is the [[weierstrass-substitution|Weierstrass substitution]], which turns a trigonometric equation into a rational one in a single variable.
 
 ## Useful observations
 - The $\cos 2\theta$ form that removes what is not wanted can be chosen: $2\cos^2\theta - 1$ keeps cosines and $1 - 2\sin^2\theta$ keeps sines, so $\cos 2\theta$ comes from $\cos\theta$ alone without ever finding $\sin\theta$.
-- Read backwards, the formulas lower powers: power reduction turns $\sin^2\theta$ and $\cos^2\theta$ into first powers of $\cos 2\theta$, the usual first step on a sum of squared sines or cosines, and $\sin\theta\cos\theta = \frac12\sin 2\theta$ turns a product into a single sine, as inside area formulas.
+- The sine formula gives $\sin\theta\cos\theta = \frac12\sin 2\theta$, which turns a product into a single sine.
 - Halving works in reverse: $\cos\theta = 2\cos^2\frac\theta2 - 1$ gives $\cos\frac\theta2$ from $\cos\theta$ up to sign, which is how chains of half angles are unwound.
 - An angle bisector or an inscribed angle puts an angle and its double in the same figure.
 
@@ -6495,5 +6494,28 @@ The move stops being valid when the equations do not match a product term for te
 
 ## Contest profile
 A rare move on hard AIME-level and invitational tournament problems that disguise a factorization as a nonlinear system. Once the product is spotted the system is solved in one step, so the difficulty lies entirely in the recognition.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"trig-power-reduction": String.raw`
+## Key forms
+- $\sin^2\theta=\dfrac{1-\cos 2\theta}{2}$ and $\cos^2\theta=\dfrac{1+\cos 2\theta}{2}$ — squared sine and cosine
+- $\tan^2\theta=\dfrac{1-\cos 2\theta}{1+\cos 2\theta}$ — squared tangent
+
+## Conditions
+The first two work for every real angle. The tangent form requires $\cos\theta\ne0$.
+
+## Why it works
+Rearrange the two forms $\cos 2\theta=1-2\sin^2\theta$ and $\cos 2\theta=2\cos^2\theta-1$ of the cosine double-angle formula. Dividing the resulting sine square by the cosine square gives the tangent form wherever the denominator is nonzero.
+
+## Useful observations
+- For fourth powers, square the formulas for sine and cosine and reduce the resulting $\cos^2(2\theta)$. This gives $\sin^4\theta=(3-4\cos 2\theta+\cos 4\theta)/8$ and $\cos^4\theta=(3+4\cos 2\theta+\cos 4\theta)/8$.
+- Multiplying the formulas for $\sin^2\theta$ and $\cos^2\theta$ gives $(1-\cos^2 2\theta)/4$. One more reduction writes this as $(1-\cos 4\theta)/8$.
+
+## Applications
+Products or sums of even powers, exact values, and trigonometric equations that simplify once the angles match.
+
+## Contest profile
+Useful on AMC 12 and AIME problems where paired powers combine into a single cosine. A common follow-up is to evaluate the new cosine at a familiar angle.
 `
 });

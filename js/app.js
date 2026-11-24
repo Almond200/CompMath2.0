@@ -423,6 +423,12 @@
     learn: { label: "Learn", ask: "Textbooks, lesson by lesson" },
     practice: { label: "Practice", ask: "Real contest problems" }
   };
+  const SPACE_SECTIONS = {
+    learn: [["learn-books", "Textbooks"], ["pr-study", "Lists"]],
+    practice: [["pr-random", "Open a random problem"], ["pr-concept", "Practice a concept"],
+      ["pr-mock", "Practice a contest"], ["pr-contests", "Contests"],
+      ["resume-practice-sets", "Resume a set"], ["past-practice-sets", "Completed sets"]]
+  };
   // The space a page belongs to; search, settings and topic pages keep the current one.
   function spaceFor(route) {
     if (route.type === "space") return route.name;
@@ -6487,10 +6493,19 @@
       savePractice();startMockClock(topicPracticeSet);
     }
   });
+  function practiceAnswerableSlugs(set) {
+    return set.slugs.filter(slug => !practiceSessions.voidReason(slug));
+  }
+  function practiceCorrectFraction(correct, total) {
+    return total ? `${correct}/${total}` : '—';
+  }
   function pastPracticeHtml() {
     let sets;
     try { sets = practiceSessions.read(localStorage).sort((a,b) => b.updated - a.updated); }
-    catch (err) { return '<section class="sh-section"><h3>Completed sets</h3><p>Saved sets could not be read in this browser.</p></section>'; }
+    catch (err) {
+      return SPACE_SECTIONS.practice.slice(-2).map(([id, title]) =>
+        `<section class="sh-section" id="${id}"><h3>${title}</h3><p>Saved sets could not be read in this browser.</p></section>`).join('');
+    }
     const group = (finished, title) => {
       const items = sets.filter(s => (s.status === 'finished') === finished);
       if (!items.length) return `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`;
@@ -6498,9 +6513,10 @@
       const rows = items.map(s => {
         const score = finished ? mockScore(s) : null;
         const total = s.slugs.length;
+        const answerable = practiceAnswerableSlugs(s);
         const status = score ? `${score.points}/${score.max} points` : finished
-          ? `${s.slugs.filter(id => practiceSessions.result(s, id) === 'Correct').length}/${total} correct`
-          : `${s.slugs.filter(id => s.answers[id]).length}/${total} answered`;
+          ? `${practiceCorrectFraction(answerable.filter(id => practiceSessions.result(s, id) === 'Correct').length, answerable.length)} correct`
+          : `${answerable.filter(id => s.answers[id]).length}/${answerable.length} answered`;
         const kind = s.clock ? 'Mock' : isMock(s) ? 'Past contest' : 'Practice';
         return `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(practiceSetLabel(s))}<small class="practice-history-meta">${kind} · ${total} problem${total === 1 ? '' : 's'} · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${status}</span></a>`;
       }).join('');
@@ -6536,8 +6552,7 @@
   }
   function practiceExplanationHtml(p, showSource) {
     if (!p) return '';
-    const { chain, altIds, chainCol } = chainParts(p);
-    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, chainCol, chain, altIds, solutionLinksHtml(p, showSource))}</div>`;
+    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, solutionLinksHtml(p, showSource))}</div>`;
   }
   // Open in app and Open in AoPS under a solution's three columns (practice review, textbooks).
   function solutionLinksHtml(p, showSource = true) {
@@ -6563,8 +6578,8 @@
     set.slugs.forEach(slug => counts[practiceSessions.result(set, slug)]++);
     const reviewUrl = '#/practice/set/' + encodeURIComponent(set.id) + '/review';
     const mock = isMock(set), score = mockScore(set);
-    const gradedTotal = score ? total : total - counts.Voided;
-    const stats = [[gradedTotal ? counts.Correct + '/' + gradedTotal : '—', 'Correct'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
+    const gradedTotal = practiceAnswerableSlugs(set).length;
+    const stats = [[practiceCorrectFraction(counts.Correct, gradedTotal), 'Correct'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
     if (score) stats.unshift([score.points+'/'+score.max,counts['Check yourself']?'Score so far':'Mock score']);
     else if (!mock && gradedTotal) stats.splice(1, 0, [Math.round(100 * counts.Correct / gradedTotal) + '%', 'Score']);
     $content.innerHTML = `<div class="space-home practice-session practice-results">
@@ -6607,7 +6622,7 @@
     const finished = set.status === 'finished';
     if (finished && location.hash.split('/')[4] !== 'review') { renderPracticeResults(set); return; }
     const slug = set.slugs[set.current], p = PROBLEM_BY_SLUG[slug];
-    const answerable = set.slugs.filter(id => !practiceSessions.voidReason(id));
+    const answerable = practiceAnswerableSlugs(set);
     const answeredSummary = () => `${answerable.filter(id => set.answers[id]).length} of ${answerable.length} answered`;
     const voidNote = practiceSessions.voidReason(slug);
     const outcome = practiceSessions.result(set, slug);
@@ -7101,7 +7116,7 @@
           }).join("")}</div>
         </section>`;
       else body += `
-        <section class="sh-section rand-picker">
+        <section class="sh-section rand-picker" id="pr-random">
             <h3>Open a random problem</h3>
             <p class="practice-panel-intro">Try a past contest problem, with your choice of contest and difficulty.</p>
             <div class="rand-btns" role="radiogroup" aria-label="Contest">
@@ -7956,8 +7971,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // review (owner, 2026-11-08): a hairline, "Solution for Problem R5.5.4:" in italics, the
   // strategy and its three columns, Open in app and Open in AoPS, then Study a concept more.
   function learnSolutionHtml(p, label) {
-    const { chain, altIds, chainCol } = chainParts(p);
-    return `<p class="lp-sol-title">Solution for ${escapeAttr(label)}:</p>${chainInnerHtml(p, chainCol, chain, altIds, solutionLinksHtml(p))}`;
+    return `<p class="lp-sol-title">Solution for ${escapeAttr(label)}:</p>${chainInnerHtml(p, solutionLinksHtml(p))}`;
   }
   function showLearnSolution(li) {
     const p = PROBLEM_BY_SLUG[li.dataset.slug], sol = li.querySelector(".lp-sol");
@@ -11035,19 +11049,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return `The round's official ${p.solKind === "answer-key" ? "answer key" : "solutions"}, as one PDF${number}.${legacy
       ? ` The <a href="https://www.hmmt.org/www/archive/32" target="_blank" rel="noopener noreferrer">HMMT February 2000 archive</a> links these PDFs, which are headed “Rice Mathematics Tournament 2000.”` : ""}`;
   }
-  function chainInnerHtml(p, chainCol, chain, altIds, afterChain = "") {
+  function chainInnerHtml(p, afterChain = "") {
+    const primary = p.strategy ? `<p class="chain-strategy">${p.strategy}</p>`
+      : p.solUrl ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">${p.solAops ? "Open the solutions on AoPS" : p.solKind === "answer-key" ? "Open the official answer key" : "Open the official solution"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">${p.solAops ? "The Art of Problem Solving wiki's page for this problem, with its solutions." : (/^ARML/.test(p.fam) ? `The contest's official booklet, open at the Individual round's solutions${p.num ? `; this is problem I-${p.num}` : ""}.` : officialSolutionNote(p))}</span></p>` : "";
+    const solutions = [{ text: primary, cards: p.formulas }];
+    if (p.trick) solutions.push({ text: `<p class="chain-strategy">${p.trick}</p>`, cards: p.trickFormulas });
+    const routes = solutions.map(({ text, cards }) => `<div class="chain-solution">${text}${chainCardsHtml(cards)}</div>`).join("");
     return `<div class="chain-duo">${chainSec("Topic", topicTreeHtml(p))}${chainSec("Difficulty", difficultyHtml(p))}</div>
-        ${chainSec("Brief solution", `${ownFigureHtml(p)}${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>`
-          // No solution of our own for these (owner, 2026-11-12): the contest's official one is a click away.
-          : p.solUrl ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">${p.solAops ? "Open the solutions on AoPS" : p.solKind === "answer-key" ? "Open the official answer key" : "Open the official solution"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">${p.solAops ? "The Art of Problem Solving wiki's page for this problem, with its solutions." : (/^ARML/.test(p.fam) ? `The contest's official booklet, open at the Individual round's solutions${p.num ? `; this is problem I-${p.num}` : ""}.` : officialSolutionNote(p))}</span></p>` : ""}
-        ${p.trick ? `<p class="chain-strategy chain-alt">${p.trick}</p>` : ""}
-        <div class="chain-grid">
-          ${chainCol("Pattern", chain.pattern, "Not classified yet")}
-          ${chainCol("Method", chain.method, "Not classified yet")}
-          ${chainCol("Formulas", chain.formula, "&mdash;")}
-        </div>
-        ${altIds.size ? `<p class="chain-alt-note">Dashed cards belong to the second route only.</p>` : ""}
-        ${afterChain}`)}${studyMoreHtml(p, chain)}`;
+        ${chainSec("Brief solution", `${ownFigureHtml(p)}${routes}${afterChain}`)}${studyMoreHtml(p)}`;
   }
   // Study a concept more (owner, 2026-11-01): under the three columns, one link per card the
   // problem uses, to the lesson that teaches that card. An AIME problem prefers an AIME book's
@@ -11083,9 +11092,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const items = lessons.map(x => `<li>${studyLessonLink(x)}</li>`);
     return `<div class="related"><h4>Study this more</h4><ul class="card-study-list">${items.join("")}</ul></div>`;
   }
-  function studyMoreHtml(p, chain) {
+  function studyMoreHtml(p) {
     const aime = /AIME/.test(p.ref || p.cname || "");
-    const ids = [...new Set([...chain.pattern, ...chain.method, ...chain.formula])];
+    const ids = [...new Set([...p.formulas, ...p.trickFormulas])];
     const route = getRoute();
     const current = route.type === "learn" && route.lesson
       ? learnHash(route.book, route.chapter, lessonNum(route.lesson)) : null;
@@ -11094,22 +11103,20 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const links = [...new Set(lessons.map(studyLessonLink))];
     return links.length ? `<div class="chain-study"><h4 class="chain-study-h">Study a concept more</h4><div class="chain-study-links">${links.join("")}</div></div>` : "";
   }
-  // How this problem works: its tags split by kind into the chain Pattern -> Method ->
-  // Formulas. A link nobody has classified yet is shown as missing, never invented.
-  // The second good route's cards (the "Alternatively, ..." paragraph) sit in the same three
-  // columns, outlined dashed, so both routes read as Pattern -> Method -> Formulas.
-  function chainParts(p) {
+  // Each solution gives its own Pattern, Method and Formulas directly below the write-up.
+  function chainCardsHtml(cards) {
     const chain = { pattern: [], method: [], formula: [] };
-    p.formulas.forEach(fid => chain[kindOf(BY_ID[fid].formula)].push(fid));
-    p.trickFormulas.forEach(fid => chain[kindOf(BY_ID[fid].formula)].push(fid));
-    const altIds = new Set(p.trickFormulas);
-    const chainChip = fid => `<a class="related-item${altIds.has(fid) ? " chain-alt-card" : ""}" href="#/f/${fid}">${BY_ID[fid].formula.name}</a>`;
-    // One box: the strategy in a few sentences, then the three cards it connects side by side.
+    cards.forEach(fid => chain[kindOf(BY_ID[fid].formula)].push(fid));
+    const chainChip = fid => `<a class="related-item" href="#/f/${fid}">${BY_ID[fid].formula.name}</a>`;
     const chainCol = (label, ids, empty) => `<div class="chain-col"><div class="chain-label">${label}</div><div class="chain-cards">${ids.length ? ids.map(chainChip).join("") : `<span class="chain-empty">${empty}</span>`}</div></div>`;
-    return { chain, altIds, chainCol };
+    return `<div class="chain-grid">
+      ${chainCol("Pattern", chain.pattern, "Not classified yet")}
+      ${chainCol("Method", chain.method, "Not classified yet")}
+      ${chainCol("Formulas", chain.formula, "&mdash;")}
+    </div>`;
   }
-  function chainBoxHtml(p, chainCol, chain, altIds, preview) {
-    const inner = chainInnerHtml(p, chainCol, chain, altIds);
+  function chainBoxHtml(p, preview) {
+    const inner = chainInnerHtml(p);
     // A small "+ Show" / "- Hide" beside the heading opens and closes the strategy, like the
     // new-list + (owner, 2026-10-31). Click to show starts it closed; Shown starts it open.
     // Every problem gets the button, calculus and other off-tree ones with nothing classified
@@ -11133,8 +11140,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // of How this problem works shows the problem's place in the topic tree instead.
     // How this problem works sits near the bottom of the page: the problem itself, and thinking
     // about it, come first.
-    const { chain, altIds, chainCol } = chainParts(p);
-    const chainHtml = chainBoxHtml(p, chainCol, chain, altIds, pv);
+    const chainHtml = chainBoxHtml(p, pv);
     // A geometry problem printed without a figure gets one drawn for the app
     // (js/data/diagrams/problem-diagrams.js), labelled as ours; it shows only inside How this
     // problem works (ownFigureHtml).
@@ -11952,10 +11958,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const filtersApply = (route.type === "home" && !state.query.trim() && !state.adv && !state.landing) || route.type === "topic";
     const filtersBtn = document.getElementById("filters-btn");
     if (filtersBtn) filtersBtn.style.display = filtersApply ? "" : "none";
-    // The section sidebar is meaningless on the Database and Lists surfaces —
-    // drop it there and let the content run full width (desktop only; on mobile it
-    // stays the hamburger drawer).
-    // The home page is its own front door: no sidebar and no header search.
+    // The front page has its own navigation.
     const onLanding = route.type === "home" && state.landing && !state.query.trim() && !state.adv;
     document.body.classList.toggle("is-landing", onLanding);
     // index.html hides the top bar before the first paint when the page opens on the front
@@ -11970,7 +11973,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     updateSpaceNavigation(space);
     // A list page's sidebar holds only the list's sections, under "On this list", drawn in the
     // same panel as a card's "On this page", so the section being read is marked the same way.
-    const noSidebar = onLanding || searching || ["problems", "problem", "browse", "lists", "settings", "space", "learn"].indexOf(route.type) !== -1
+    const noSidebar = onLanding || searching || ["problems", "problem", "browse", "lists", "settings", "learn"].includes(route.type)
+      || (route.type === "space" && (route.practiceSet || !SPACE_SECTIONS[route.name]))
       || (route.type === "list" && !$content.querySelector(".list-section[id]"));
     const $tree = document.getElementById("formula-nav");
     if ($tree) $tree.hidden = route.type === "list";
@@ -12020,20 +12024,19 @@ The book remembers the last lesson you opened, in this browser, and the contents
                       ["configuration", "Configurations"], ["thinking", "Ways of Thinking"], ["curiosity", "Curiosities"]];
 
   function buildSidebar() {
-    // Four groups, one per space, only the current space's shown: FORMULAS lists its subjects
-    // with their topics, METHODS and PATTERNS list their subjects with their groups, and
-    // PROBLEMS lists the practice surfaces.
+    // The current space supplies either a subject tree or links to its landing-page sections.
     const order = ["formulas", "methods", "patterns", "learn", "practice"];
     const byGroup = new Map(order.map(g => [g, []]));
     SECTIONS.forEach(section => byGroup.get(groupOf(section)).push(section));
-    // Practice links go to other surfaces, so they are plain links, not section rows (the
-    // section-row click handling would read them as a section with no id).
-    const practiceRows = `
-      <a class="nav-practice-link" href="#/practice" data-goto="pr-contests" data-goto-center>Contests</a>
-      <a class="nav-practice-link" href="#/special/randomproblem">A random problem</a>`;
-    const learnRows = `
-      <a class="nav-practice-link" href="#/learn" data-goto="learn-books">Textbooks</a>
-      <a class="nav-practice-link" href="#/learn" data-goto="pr-study">Lists</a>`;
+    const spaceRows = group => `<div class="nav-section nav-home-section open">
+      <button type="button" class="nav-section-btn nav-space-toggle active" aria-expanded="true" aria-controls="nav-subs-${group}">
+        <span>${SPACES[group].label}</span>${uiIcon("chevron-right")}
+      </button>
+      <div class="nav-subs" id="nav-subs-${group}"><div class="nav-subs-inner">
+        ${SPACE_SECTIONS[group].map(([id, title]) =>
+          `<a class="nav-sub-link nav-space-link" href="#/${group}" data-goto="${id}">${title}</a>`).join("")}
+      </div></div>
+    </div>`;
     // A Methods or Patterns subject row opens onto its groups, as a Formulas subject row opens
     // onto its topics.
     const subjectRows = section => section.subsections.map((sub, i) => `
@@ -12061,18 +12064,22 @@ The book remembers the last lesson you opened, in this browser, and the contents
     $sidebar.innerHTML = `<div id="formula-nav">` + order.map(group => `
       <div class="nav-group" data-group="${group}">
         <div class="nav-space-head">
-          ${group === "practice" || group === "learn"
-            ? `<a class="nsh-label" href="#/${group}" title="${group === "learn" ? "Textbooks, study lists, and your lists" : "Contests and random problems"}">${SPACES[group].label}</a>`
-            : `<span class="nsh-label">${SPACES[group].label}</span><button type="button" class="nsh-info" data-info="${group}" aria-label="About ${SPACES[group].label}" aria-expanded="false">${uiIcon("info")}</button>`}
+          <span class="nsh-label">${SPACES[group].label}</span><button type="button" class="nsh-info" data-info="${group}" aria-label="About ${SPACES[group].label}" aria-expanded="false">${uiIcon("info")}</button>
           <span class="nsh-ask">${SPACES[group].ask}</span>
         </div>
         <div class="nav-group-body"><div class="nav-group-inner">
-          ${group === "practice" ? practiceRows : group === "learn" ? learnRows : ""}
-          ${byGroup.get(group).map(section => bySubject(section) ? subjectRows(section) : formulaRows(section)).join("")}
+          ${SPACE_SECTIONS[group] ? spaceRows(group) : byGroup.get(group).map(section => bySubject(section) ? subjectRows(section) : formulaRows(section)).join("")}
         </div></div>
       </div>`).join("") + `</div><nav class="page-toc" id="page-toc" aria-label="On this page" hidden></nav>`;
 
     $sidebar.addEventListener("click", e => {
+      const spaceToggle = e.target.closest(".nav-space-toggle");
+      if (spaceToggle) {
+        const expanded = spaceToggle.closest(".nav-section").classList.toggle("open");
+        spaceToggle.setAttribute("aria-expanded", String(expanded));
+        document.getElementById(spaceToggle.getAttribute("aria-controls")).inert = !expanded;
+        return;
+      }
       // The list nav emits the same nav-* classes so the two trees look identical, so it
       // must claim its own clicks before the formula branches below see them.
       const groupBtn = e.target.closest(".nav-group-btn");
@@ -12083,7 +12090,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         return;
       }
       const btn = e.target.closest(".nav-section-btn");
-      const link = e.target.closest(".nav-sub-link") || e.target.closest(".nav-cluster-link");
+      const link = e.target.closest(".nav-sub-link[data-section], .nav-cluster-link[data-section]");
       if (link && (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey)) return;
       // In the mobile drawer, the first tap on a section opens it (revealing its
       // sub-subjects) and keeps the drawer up; tapping that same (already-open)
@@ -12138,7 +12145,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const btn = el.querySelector(".nav-group-btn");
       if (btn) btn.setAttribute("aria-expanded", mine ? "true" : "false");
     });
-    tree.querySelectorAll(".nav-sub-link, .nav-cluster-link").forEach(a => {
+    tree.querySelectorAll(".nav-sub-link[data-section], .nav-cluster-link[data-section]").forEach(a => {
       a.classList.toggle("active", onHome && !state.landing && !state.query.trim() && !state.adv
         && a.dataset.section === state.activeSectionId
         && (a.dataset.cluster === undefined
@@ -12163,7 +12170,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (mr.top < sr.top + 40) $sidebar.scrollTop -= (sr.top + 40 - mr.top);
       else if (mr.bottom > sr.bottom - 40) $sidebar.scrollTop += (mr.bottom - sr.bottom + 40);
     }
-    tree.querySelectorAll(".nav-section").forEach(el => {
+    tree.querySelectorAll(".nav-section[data-section]").forEach(el => {
       const isActive = onHome && !state.query.trim() && !state.adv && !state.landing
                        && el.dataset.section === state.activeSectionId
                        && (el.dataset.subject === undefined || +el.dataset.subject === state.activeSub);
@@ -12354,12 +12361,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (!infoEl) return;
     const el = infoEl;
     infoEl = null;
+    document.querySelector('.nsh-info[aria-expanded="true"]')?.setAttribute('aria-expanded', 'false');
     el.remove();
     releaseModal(el, restore);
   }
-  function openSpaceInfo(name) {
+  function openSpaceInfo(button) {
     closeSpaceInfo();
-    const recent = recentRowsHtml(6, KINDS_OF_SPACE[name]);
+    const name = button.dataset.info;
+    const recent = SPACE_SECTIONS[name] ? "" : recentRowsHtml(6, KINDS_OF_SPACE[name]);
     infoEl = document.createElement("div");
     infoEl.className = "modal-overlay";
     infoEl.innerHTML = `
@@ -12371,8 +12380,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <div class="info-body">
           <p class="info-ask">${SPACES[name].ask}</p>
           <p class="info-intro">${SPACE_INTROS[name]}</p>
-          <div class="info-label">Recently opened</div>
-          ${recent ? `<div class="rc-list info-recent">${recent}</div>` : `<p class="hp-empty">Nothing opened here yet.</p>`}
+          ${SPACE_SECTIONS[name] ? "" : `<div class="info-label">Recently opened</div>
+            ${recent ? `<div class="rc-list info-recent">${recent}</div>` : `<p class="hp-empty">Nothing opened here yet.</p>`}`}
         </div>
       </div>`;
     document.body.appendChild(infoEl);
@@ -12388,13 +12397,18 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (e.target === infoEl || e.target.closest(".modal-close") || a) closeSpaceInfo(!a);
     });
     renderMath(infoEl);
+    button.setAttribute('aria-expanded', 'true');
     trapModal(infoEl, ".modal-close");
   }
   document.addEventListener("click", e => {
     const btn = e.target.closest && e.target.closest(".nsh-info");
-    if (btn) openSpaceInfo(btn.dataset.info);
+    if (btn) openSpaceInfo(btn);
   });
-  document.addEventListener("keydown", e => { if (e.key === "Escape") closeSpaceInfo(); });
+  document.addEventListener("keydown", e => {
+    if (e.key !== "Escape" || !infoEl) return;
+    e.preventDefault();
+    closeSpaceInfo();
+  });
   window.addEventListener("hashchange", () => closeSpaceInfo(false));
 
   // Space switcher in the top bar: Learn and Practice open their own pages; the other spaces
@@ -12515,7 +12529,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   });
   if ($navBackdrop) $navBackdrop.addEventListener("click", () => closeDrawer(true));
   document.addEventListener("keydown", e => {
-    if (!document.body.classList.contains('nav-open') || openModals.length) return;
+    if (e.defaultPrevented || !document.body.classList.contains('nav-open') || openModals.length) return;
     if (e.key === "Escape") { e.preventDefault(); closeDrawer(true); }
     else if (e.key === 'Tab') {
       const items = drawerItems(), at = items.indexOf(document.activeElement);
@@ -12613,19 +12627,24 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // rendered, scroll the part into view, a text box centred with the cursor in it, a section
   // with its heading just under the top bar.
   document.addEventListener("click", e => {
-    // Every link in the drawer's Learn and Practice groups closes the drawer (owner, 2026-10-31).
-    if (e.target.closest("a.nav-practice-link")) closeDrawer();
     const a = e.target.closest("a[data-goto]");
-    if (!a) return;
+    if (!a || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
     closeDrawer();
-    seekPart(a.getAttribute("data-goto"), a.hasAttribute("data-goto-center"), a.hash);
+    seekPart(a.getAttribute("data-goto"), a.hasAttribute("data-goto-center"), a.hash, a.classList.contains("nav-space-link"));
   });
-  function seekPart(id, center, targetHash = location.hash) {
+  function seekPart(id, center, targetHash = location.hash, focusHeading = false) {
     let tries = 0;
     const seek = () => {
       if (location.hash !== targetHash) return;
       const el = document.getElementById(id);
       if (el) {
+        if (focusHeading) {
+          const heading = el.querySelector("h3");
+          if (heading) {
+            heading.tabIndex = -1;
+            heading.focus({ preventScroll: true });
+          }
+        }
         if (center) {
           // Centred in the screen below the top bar (Practice's Contests link, owner, 2026-10-31).
           const bar = document.querySelector(".topbar"), barH = bar ? bar.offsetHeight : 0;

@@ -11,6 +11,8 @@
 
 ## Current state (updated 2026-11-24)
 
+Every indexed AMC 10 and 12 problem now has an in-app brief solution, including the 50 new B-paper entries. The reference has 790 cards and the database has 4,775 written strategies. Learn and Practice have section navigation on their landing pages, and alternate solutions have their own card boxes. Practice history and review use the same count of non-voided questions.
+
 **Practice grading handoff (2026-11-24).** Continue this batch from `codex/hmmt-short-answer-pilot`. All 19,456 indexed questions have a recorded grading disposition. Practice automatically grades 10,929 multiple-choice questions and 8,490 typed responses including AIME. It records 20 voids and 17 self-checks, each with a reason in review. The final pass voided six formerly self-checked questions, including 2015 MMATHS Individual #7. Void notices label the organizer or Practice ruling while taking the set and in review. Voided numbers keep the theme's normal text color when selected. [Grading audit](AUDITS.md#practice-grading-and-answer-key-audit)
 
 The key data live in `js/data/problems/answer-keys.js`, `answer-keys-more.js`, `answer-keys-short.js` and `mock-extras.js` in the same folder. Only change an exception after checking the displayed prompt against the paper and its solutions. Use the current [self-check inventory](tools/answer-keys/short-answers.md#remaining-self-checks) and [multiple-choice rulings](tools/answer-keys/README.md#final-multiple-choice-coverage). For changes to keys, run `node tests/short-answer-keys.cjs`, `node tests/answer-keys.cjs` and `./tools/gates.sh`. For review or scoring changes, also run the Practice browser checks in [CLAUDE.md](CLAUDE.md#running-the-checks-in-a-cloud-session).

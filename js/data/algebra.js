@@ -1085,9 +1085,19 @@ window.MATH_SECTIONS.push({
           id: "double-angle",
           name: "Double Angle Formulas",
           latex: String.raw`\sin 2\theta = 2\sin\theta\cos\theta, \quad \cos 2\theta = \cos^2\theta - \sin^2\theta = 2\cos^2\theta - 1 = 1 - 2\sin^2\theta, \quad \tan 2\theta = \frac{2\tan\theta}{1-\tan^2\theta}`,
-          description: String.raw`The double angle formulas give the sine, cosine, and tangent of $2\theta$ in terms of those of $\theta$. They are the [[angle-addition|angle addition formulas]] with both angles equal, and they are the tool whenever a problem has an angle and its double, as an inscribed and a central angle do. The cosine formula has three forms, so you can keep whichever function you want. Read backwards they are the power-reduction formulas $\cos^2\theta = \frac{1 + \cos 2\theta}{2}$ and $\sin^2\theta = \frac{1 - \cos 2\theta}{2}$, which lower the degree of an expression in sines and cosines.`,
-          keywords: ["double angle", "sin 2x", "cos 2x", "double angle formula", "sin 2 theta", "tan 2x", "power reduction"],
+          description: String.raw`The double angle formulas give the sine, cosine, and tangent of $2\theta$ in terms of those of $\theta$. They are the [[angle-addition|angle addition formulas]] with both angles equal, and they are the tool whenever a problem has an angle and its double, as an inscribed and a central angle do. The cosine formula has three forms, so you can keep whichever function you want. [[trig-power-reduction|Power reduction]] rearranges the cosine formulas to lower the degree of an expression in sines and cosines.`,
+          keywords: ["double angle", "sin 2x", "cos 2x", "double angle formula", "sin 2 theta", "tan 2x"],
           importance: "high",
+          tier: "AMC",
+          level: ["AMC12", "AIME"]
+        },
+        {
+          id: "trig-power-reduction",
+          name: "Trigonometric Power-Reduction Formulas",
+          latex: String.raw`\sin^2\theta=\frac{1-\cos 2\theta}{2} \qquad \cos^2\theta=\frac{1+\cos 2\theta}{2} \qquad \tan^2\theta=\frac{1-\cos 2\theta}{1+\cos 2\theta}`,
+          description: String.raw`Power-reduction formulas rewrite squares of trigonometric functions in terms of the cosine of twice the angle. They turn even powers into sums of cosines, which makes cancellations and exact evaluations easier to see. Solve the [[double-angle|cosine double-angle formulas]] for the squares, then repeat the process for higher even powers.`,
+          keywords: ["power reduction", "power reducing identities", "trig power reduction", "sine squared", "cosine squared", "tangent squared", "fourth power trig", "even powers"],
+          importance: "medium",
           tier: "AMC",
           level: ["AMC12", "AIME"]
         },
@@ -1096,7 +1106,7 @@ window.MATH_SECTIONS.push({
           name: "Half Angle Formulas",
           latex: String.raw`\sin^2\tfrac{\theta}{2} = \frac{1 - \cos\theta}{2}, \qquad \cos^2\tfrac{\theta}{2} = \frac{1 + \cos\theta}{2}, \qquad \tan\tfrac{\theta}{2} = \frac{\sin\theta}{1 + \cos\theta} = \frac{1 - \cos\theta}{\sin\theta}`,
           description: String.raw`The half angle formulas give the sine, cosine, and tangent of $\frac\theta2$ from $\cos\theta$: $\sin^2\frac\theta2 = \frac{1 - \cos\theta}{2}$, $\cos^2\frac\theta2 = \frac{1 + \cos\theta}{2}$, and $\tan\frac\theta2 = \frac{\sin\theta}{1 + \cos\theta} = \frac{1 - \cos\theta}{\sin\theta}$. They are the double angle formulas read backwards. The tangent forms have no square roots, which makes them the ones to use in geometry, where they tie a triangle's half angles to its incircle.`,
-          keywords: ["half angle", "power reduction", "tan half angle inradius", "half angle formula", "sin and cos half", "tan half angle"],
+          keywords: ["half angle", "tan half angle inradius", "half angle formula", "sin and cos half", "tan half angle"],
           importance: "high",
           tier: "AMC",
           level: ["AMC12", "AIME"]

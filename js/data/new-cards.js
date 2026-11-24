@@ -90,5 +90,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Square and add (P81)", date: "2026-11-21",
     ids: ["square-and-add"] },
   { label: "Owner request: a system read as a polynomial product (P82)", date: "2026-11-22",
-    ids: ["system-as-polynomial-product"] }
+    ids: ["system-as-polynomial-product"] },
+  { label: "Trigonometric power reduction and slopes on a plane", date: "2026-11-24",
+    ids: ["trig-power-reduction", "parallel-lines-height-change"] }
 ];

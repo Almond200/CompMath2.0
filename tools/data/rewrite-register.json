@@ -1870,7 +1870,9 @@
     "if-then-statements": "method",
     "settle-with-an-example": "method",
     "square-and-add": "method",
-    "system-as-polynomial-product": "method"
+    "system-as-polynomial-product": "method",
+    "trig-power-reduction": "formula",
+    "parallel-lines-height-change": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -9164,6 +9166,18 @@
       [
         "(new card)",
         "written directly in the method template"
+      ]
+    ],
+    "trig-power-reduction": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "parallel-lines-height-change": [
+      [
+        "(new card)",
+        "written directly in the formula template"
       ]
     ]
   }

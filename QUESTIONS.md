@@ -39,10 +39,12 @@ A kind of problem the tree has no node for, seen in several problems (the archet
 
 ### Card candidates from the tagging pass
 
-New rows go at the top of this table, as the next P-number; the next is P83. For this pass a somewhat fringe pattern or method is listed too, with every problem that needs it (owner, 2026-11-06). Answer per row: yes, no, or a different rating.
+New rows go at the top of this table, as the next P-number. The next is P85. For this pass a somewhat fringe pattern or method is listed too, with every problem that needs it (owner, 2026-11-06). Answer per row: yes, no, or a different rating.
 
 | # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by | Answer |
 |---|---|---|---|---|---|
+| P84 | Parallel Lines and Height Changes (`parallel-lines-height-change`) | formula, geometry / Vectors & Coordinates in Space | AMC, low | 2021 Fall AMC 10A #17 | Requested and added on 2026-11-24. |
+| P83 | Trigonometric Power-Reduction Formulas (`trig-power-reduction`) | formula, algebra / Trigonometric Identities | AMC, medium | 2026 AMC 12B #15 | Requested and added on 2026-11-24. |
 | P82 | Reading a System as a Polynomial Product (`system-as-polynomial-product`): when the equations of a system are the coefficients of a product of two monic polynomials, build the polynomial of the right sides, factor it, and share its factors | method, algebra / polynomials and their roots | AIME Late, low | 2018 SMT Algebra #9 (it cited Comparing Coefficients and Listing Factor Pairs, which miss the move; Listing Factor Pairs was wrong, as the split is of a polynomial, not an integer) | Asked for by the owner (2026-11-22) and written the same day. |
 | P81 | Squaring and Adding Paired Equations (`square-and-add`): square two equations that pair a sine sum with a cosine sum (or two linear equations with perpendicular equal-length coefficient rows) and add, so the angles or unknowns drop out | method, algebra / setting up equations | AMC, medium | 2007 AMC 12A #17, 2002 AMC 10B #20, 2018 HMMT Feb A&NT #6 | Approved by the owner (2026-11-21) and written the same day. |
 | P80 | Settling a Claim with One Example (`settle-with-an-example`): one failing case disproves "always", one working case proves "can happen", a family proves "infinitely many" | method, counting / reading statements | AMC, medium | 2014 AMC 10A #7, 2016 AMC 12A #5, 2019 AMC 10B #2 / 12B #2, 1982 AHSME #20, 2004 UMD Part I #24 and others that cited `disproof-by-counterexample` or `proof-by-construction` | Owner, 2026-11-21: Proof Methods is for olympiad proof techniques only, so its AMC uses get a card in a regular section and the proof card stays; written, 16 problems. |

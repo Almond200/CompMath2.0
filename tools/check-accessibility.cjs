@@ -144,12 +144,13 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     }
     const inertStates = await page.locator('#formula-nav .nav-section').evaluateAll(es => es.map(el => el.querySelector('.nav-subs').inert === !el.classList.contains('open')));
     assert.ok(inertStates.every(Boolean));
-    const link = page.locator('#formula-nav .nav-section.open .nav-sub-link:not([aria-disabled="true"])').first();
+    const subjectNav = page.locator('#formula-nav .nav-group:not([hidden]) .nav-section.open');
+    const topics = subjectNav.locator('.nav-sub-link:not([aria-disabled="true"])');
+    const link = topics.first();
     const target = await link.getAttribute('href');
     await page.keyboard.press('Tab');
     await page.waitForTimeout(350); // Let the expanding sidebar settle before checking clipping.
-    for (const control of [page.locator('#formula-nav .nav-section.open .nav-section-btn').first(), link,
-      page.locator('#formula-nav .nav-section.open .nav-sub-link:not([aria-disabled="true"])').last()]) {
+    for (const control of [subjectNav.locator('.nav-section-btn').first(), link, topics.last()]) {
       await control.focus();
       assert.ok(await control.evaluate(el => {
         const r=el.getBoundingClientRect(), s=getComputedStyle(el);
@@ -233,6 +234,30 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
       }), hash + ': last recent link is fully visible with an unclipped ring');
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
       if (artifactDir) await page.screenshot({ path:path.join(artifactDir, `recent-${hash.slice(2)}-${theme}-${width}.png`) });
+      const space = hash.slice(2);
+      const label = space === 'learn' ? 'Learn' : 'Practice';
+      if (width === 375) await page.locator('#nav-toggle').click();
+      const side = page.locator(`#sidebar .nav-group[data-group="${space}"]`);
+      const toggle = side.getByRole('button', { name: label, exact: true });
+      const links = side.locator('.nav-space-link');
+      assert.deepEqual(await links.allInnerTexts(), space === 'learn' ? ['Textbooks','Lists'] :
+        ['Open a random problem','Practice a concept','Practice a contest','Contests','Resume a set','Completed sets']);
+      await toggle.press('Enter');
+      assert.equal(await toggle.getAttribute('aria-expanded'), 'false');
+      assert.ok(await links.first().evaluate(el => !!el.closest('[inert]')));
+      await toggle.press('Space');
+      assert.equal(await toggle.getAttribute('aria-expanded'), 'true');
+      const info = side.getByRole('button', { name: `About ${label}` });
+      await info.click();
+      const about = page.getByRole('dialog', { name: `About ${label}` });
+      assert.doesNotMatch(await about.innerText(), /Recently opened/);
+      await page.keyboard.press('Escape');
+      assert.ok(await info.evaluate(el => el === document.activeElement));
+      const link = links.last(), target = await link.getAttribute('data-goto');
+      await link.press('Enter');
+      await page.waitForFunction(id => document.activeElement === document.querySelector(`#${id} h3`), target);
+      assert.equal(await page.locator('body.nav-open').count(), 0);
+      assert.equal(new URL(page.url()).hash, hash);
     }
     if (width === 1280) {
       await navigate('#/', '.hm-space');

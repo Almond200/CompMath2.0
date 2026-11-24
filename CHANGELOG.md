@@ -2,6 +2,12 @@
 
 **2026-11-24**
 
+- **Learn and Practice navigation.** Both landing pages have a collapsible section menu in their space color. The About dialogs explain the space, and Recently opened stays above the page sections.
+
+- **Practice scores and alternate solutions.** Completed sets and Resume a set exclude voided questions from their denominators, in agreement with the set and Results overview. The 2015 MMATHS Individual paper shows 0/11 correct on an empty submission. Problem pages, Practice review and Learn show each write-up immediately above its own card box.
+
+- **AMC solutions and reference cards.** Added original brief solutions to all 50 questions on the 2026 AMC 10B and 12B, with matching routes and tags on the 11 shared problems. Added Trigonometric Power-Reduction Formulas and Parallel Lines and Height Changes, used the latter on 2021 Fall AMC 10A #17, and renamed Sphere Formulas. Updated the existing small-cases method to Engineer’s Induction and used it as the alternate solution on the 2026 AMC 10B #24 and 12B #19. Reviewed the 2026 tags against the written solutions.
+
 - **Practice navigation:** Voided problem numbers use the theme's normal text color in active sets and review, including while selected.
 
 - **Practice void notices:** Label whether the organizers or Practice made the ruling, and show the reason while taking the set and during review.
