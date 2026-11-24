@@ -6109,7 +6109,7 @@
   const practiceProblemNumber = (set, index) => set.mock?.mode === 'paper'
     ? PROBLEM_BY_SLUG[set.slugs[index]]?.num ?? index + 1 : index + 1;
   // The official key: LIVE's MAA keys (answer-keys.js), else the other contests' letters (answer-keys-more.js, 2026-11-22).
-  const officialKey = slug => window.MATH_ANSWER_KEYS?.answers?.[slug] ?? window.MATH_EXTRA_KEYS?.answers?.[slug];
+  const officialKey = practiceSessions.officialKey;
   const hasMockAnswer = p => officialKey(p.slug) != null || !!practiceSessions.exactKey(p.slug);
   // Practice draws from every contest (owner, 2026-11-14). A problem whose statement and answer
   // the app does not keep is read where its page links (the official paper, or the AoPS wiki for
@@ -6533,7 +6533,10 @@
     return `<div class="practice-solution-links"><a class="aops-btn" href="#/problem/${p.slug}">Open in app</a>${ext}</div>`;
   }
   function practiceAnswerChoices(set, slug, finished) {
-    return `<div class="rand-btns" role="radiogroup" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${(/\(F\)/.test(window.MATH_STATEMENTS?.[slug]?.s || '') ? ['A','B','C','D','E','F'] : ['A','B','C','D','E']).map(a => `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="radio" aria-checked="${set.answers[slug] === a}">${a}</button>`).join('')}</div>`;
+    const multi = practiceSessions.allowsMultipleChoices(slug), selected = set.answers[slug] || '';
+    const choices = /\(F\)/.test(window.MATH_STATEMENTS?.[slug]?.s || '') ? ['A','B','C','D','E','F'] : ['A','B','C','D','E'];
+    return `<div class="rand-btns" role="${multi ? 'group' : 'radiogroup'}" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${choices.map(a =>
+      `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="${multi ? 'checkbox' : 'radio'}" aria-checked="${multi ? selected.includes(a) : selected === a}">${a}</button>`).join('')}</div>`;
   }
   function renderPracticeResults(set) {
     const total = set.slugs.length;
@@ -6559,7 +6562,8 @@
         const p = PROBLEM_BY_SLUG[slug], result = practiceSessions.result(set, slug);
         const answer = set.answers[slug], exact = practiceSessions.exactKey(slug);
         const submitted = (exact || /AIME/.test(p?.fam)) && !set.selfCheck?.[slug]
-          ? exactAnswerHtml(answer, exact) : escapeAttr(answer || '');
+          ? exactAnswerHtml(answer, exact) : escapeAttr(practiceSessions.allowsMultipleChoices(slug) && !set.selfCheck?.[slug]
+            ? [...(answer || '')].join(', ') : answer || '');
         const summary = result === 'Voided' ? '' : `<small>${answer ? 'Your answer: ' + submitted : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small>`;
         return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${practiceProblemNumber(set, i)}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong>${summary}</span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
       }).join('')}</div></section></div>`;
@@ -6612,7 +6616,10 @@
       (exact?.notation === 'ratio' ? 'Ratio, for example 2:3 or 2/3' :
         exact?.notation === 'angle' ? 'Angle. For degrees, use ° or deg.' : 'Exact value (fractions, sqrt, pi, !)');
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
-    const correct = voidNote ? '' : !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact)).join(' or ') : escapeAttr(officialKey(slug) || '');
+    const acceptedChoices = practiceSessions.choiceAnswers(slug);
+    const gradingNote = window.MATH_EXTRA_KEYS?.notes?.[slug];
+    const correct = voidNote ? '' : !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact)).join(' or ') :
+      escapeAttr(acceptedChoices.length ? acceptedChoices.map(choice => [...choice].join(' and ')).join(' or ') : officialKey(slug) || '');
     const nav = set.slugs.map((id, i) => {
       const result = practiceSessions.result(set, id);
       const reviewed = finished || result === 'Voided';
@@ -6640,6 +6647,7 @@
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>${voidNote ? "Voided" : "Your answer"}</h3>
           ${voidNote ? '' : typedAnswer ? (set.answers[slug] ? `<p class="practice-submitted">${paper ? escapeAttr(set.answers[slug]) : exactAnswerHtml(set.answers[slug], exact)}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${voidNote ? escapeAttr(voidNote) : outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
+          ${gradingNote ? `<p class="prob-note">${escapeAttr(gradingNote)}</p>` : ''}
           ${paper ? `<div class="practice-self">${p.solUrl && !inlinePaper ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
           ${practiceExplanationHtml(p, !paper || !!inlinePaper)}`
           : voidNote ? `<p class="prob-note">Voided · ${escapeAttr(voidNote)}</p>`
@@ -6681,9 +6689,10 @@
       const r = answerInput.getBoundingClientRect();
       if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.preventDefault();
     });
+    const multi = practiceSessions.allowsMultipleChoices(slug);
     const syncAnswerUI = () => {
       const value = set.answers[slug] || '';
-      answerChoices.forEach(b => b.setAttribute('aria-checked', String(b.dataset.practiceAnswer === value)));
+      answerChoices.forEach(b => b.setAttribute('aria-checked', String(multi ? value.includes(b.dataset.practiceAnswer) : b.dataset.practiceAnswer === value)));
       if (clearAnswer) clearAnswer.disabled = !value && !answerInput?.value;
       $content.querySelector('.practice-session-actions > span').textContent = answeredSummary();
       const current = $content.querySelector('[aria-current="step"]');
@@ -6697,10 +6706,18 @@
       syncAnswerUI();
     };
     answerChoices.forEach(b => {
-      b.addEventListener('click', () => { if (set.answers[slug] !== b.dataset.practiceAnswer) updateChoice(b.dataset.practiceAnswer); });
-      b.addEventListener('dblclick', () => { if (set.answers[slug] === b.dataset.practiceAnswer) updateChoice(''); });
+      const choice = b.dataset.practiceAnswer;
+      b.addEventListener('click', () => {
+        const selected = set.answers[slug] || '';
+        if (multi) updateChoice(selected.includes(choice) ? selected.replace(choice, '') : selected + choice);
+        else if (selected !== choice) updateChoice(choice);
+      });
+      if (!multi) b.addEventListener('dblclick', () => { if (set.answers[slug] === choice) updateChoice(''); });
       b.addEventListener('keydown', e => {
-        if ((e.key === 'Delete' || e.key === 'Backspace') && set.answers[slug] === b.dataset.practiceAnswer) { e.preventDefault(); updateChoice(''); }
+        const selected = set.answers[slug] || '';
+        if ((e.key === 'Delete' || e.key === 'Backspace') && (multi ? selected.includes(choice) : selected === choice)) {
+          e.preventDefault(); updateChoice(selected.replace(choice, ''));
+        }
       });
     });
     $content.querySelector('#practice-answer')?.addEventListener('input', e => {

@@ -85,7 +85,18 @@
     return root.MATH_MOCK_EXTRAS?.[slug] ?? root.MATH_SHORT_ANSWER_KEYS?.answers?.[slug];
   }
   function voidReason(slug) {
-    return root.MATH_ANSWER_KEYS?.voided?.[slug] ?? root.MATH_SHORT_ANSWER_KEYS?.voided?.[slug];
+    return root.MATH_ANSWER_KEYS?.voided?.[slug] ?? root.MATH_EXTRA_KEYS?.voided?.[slug] ?? root.MATH_SHORT_ANSWER_KEYS?.voided?.[slug];
+  }
+  function officialKey(slug) {
+    return root.MATH_ANSWER_KEYS?.answers?.[slug] ?? root.MATH_EXTRA_KEYS?.answers?.[slug];
+  }
+  function choiceAnswers(slug) {
+    const key = officialKey(slug);
+    return root.MATH_ANSWER_KEYS?.choiceAnswers?.[slug] ?? root.MATH_EXTRA_KEYS?.choiceAnswers?.[slug] ??
+      (/^[A-F]$/.test(key || '') ? [key] : []);
+  }
+  function allowsMultipleChoices(slug) {
+    return root.MATH_EXTRA_KEYS?.multipleChoicePapers?.includes(slug.replace(/-\d+$/, '')) ?? false;
   }
   // Top-level commas separate entries. Commas inside parentheses belong to a tuple
   // or to its component expressions, so do not split those until parsing the tuple.
@@ -1202,7 +1213,7 @@
   function answer(set, slug, value, aime, now = Date.now()) {
     if (set.kind === 'mock') checkpoint(set,now);
     if (set.status === 'finished' || voidReason(slug)) return false;
-    const text = String(value).trim();
+    let text = String(value).trim();
     // A problem read in its official paper (set.selfCheck) takes any short answer; the solver
     // checks it against the official solution at review.
     const exact = exactKey(slug);
@@ -1213,6 +1224,10 @@
         try { exactValues(text, exact.format, exact.notation); }
         catch (err) { if (!symbolicTex(text)) return false; }
       }
+    } else if (allowsMultipleChoices(slug) && text) {
+      const letters = new Set(text);
+      if (!/^[A-E]{1,5}$/.test(text) || letters.size !== text.length) return false;
+      text = [...letters].sort().join('');
     } else if (!(text === '' || (aime ? aimeValue(text) != null : (/-columbus-state-tournament-/.test(slug) ? /^[A-F]$/ : /^[A-E]$/).test(text)))) return false;
     set.answers[slug] = text;
     return true;
@@ -1225,10 +1240,10 @@
     if (exact?.format === 'text') return exact.answers.some(key => normalizeTextAnswer(key) === normalizeTextAnswer(set.answers[slug])) ? 'Correct' : 'Incorrect';
     if (exact) return exact.answers.some(key => matchesExact(set.answers[slug], key, exact.format, exact.notation)) ? 'Correct' : 'Incorrect';
     // LIVE's MAA keys, else the official letters of the other multiple-choice contests (answer-keys-more.js).
-    const key = root.MATH_ANSWER_KEYS?.answers?.[slug] ?? root.MATH_EXTRA_KEYS?.answers?.[slug];
+    const key = officialKey(slug);
     if (key == null) return 'Answer unavailable';
     const actual = String(set.answers[slug]).trim();
-    const same = /^\d+$/.test(key) ? aimeValue(actual) === Number(key) : actual.toUpperCase() === key;
+    const same = /^\d+$/.test(key) ? aimeValue(actual) === Number(key) : choiceAnswers(slug).includes(actual.toUpperCase());
     return same ? 'Correct' : 'Incorrect';
   }
   // After finishing, the solver marks a self-checked answer right or wrong (or clears the mark).
@@ -1239,7 +1254,8 @@
     if (verdict) set.self[slug] = verdict; else delete set.self[slug];
     return true;
   }
-  const api = { KEY, read, save, create, createMock, checkpoint, pause, resume, finish, timeLeft, exactKey, voidReason, exactTex, answer, result, selfMark };
+  const api = { KEY, read, save, create, createMock, checkpoint, pause, resume, finish, timeLeft, exactKey, voidReason,
+    officialKey, choiceAnswers, allowsMultipleChoices, exactTex, answer, result, selfMark };
   if (typeof module !== 'undefined') module.exports = api;
   else root.PracticeSessions = api;
 })(typeof window === 'undefined' ? globalThis : window);

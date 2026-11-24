@@ -26,4 +26,51 @@ for(const p of window.MATH_PROBLEM_DB){
 // Voided problems keep their official letter and carry a note; practice sets skip them.
 for (const slug of Object.keys(window.MATH_ANSWER_KEYS.voided || {})) { assert(answers[slug], slug); assert(statements[slug], slug); }
 assert(window.MATH_ANSWER_KEYS.voided['2025-amc-12a-25']);
+const practice = require('../js/practice-sessions.js');
+require('../js/data/problems/answer-keys-more.js');
+require('../js/data/problems/statements/utah/2012.js');
+require('../js/data/problems/statements/utah/2013.js');
+const utah = window.MATH_EXTRA_KEYS;
+const utah2013 = 'DEDBBDDBDECCACCD AAEABCBDAABDEA'.replace(/ /g, '');
+assert.equal(utah2013.length, 30);
+for (const division of ['junior', 'senior']) {
+  for (const [i, letter] of [...utah2013].entries()) {
+    const slug = `2013-utah-state-math-contest-${division}-${i + 1}`;
+    assert.match(statements[slug].s, new RegExp(`\\(${letter}\\)`, 'i'));
+    assert.equal(utah.answers[slug], letter);
+    assert(practice.allowsMultipleChoices(slug));
+  }
+}
+function grade(slug, answer, result) {
+  const set = practice.create('Official grading check', 'Any', [slug]);
+  assert(practice.answer(set, slug, answer, false), slug + ' rejected ' + answer);
+  assert.equal(practice.result(set, slug), result);
+}
+grade('2012-amc-12b-12', 'D', 'Correct');
+grade('2012-amc-12b-12', 'E', 'Correct');
+grade('2012-amc-12b-12', 'A', 'Incorrect');
+assert(!practice.answer(practice.create('Single selection', 'Any', ['2012-amc-12b-12']), '2012-amc-12b-12', 'DE', false));
+for (const [suffix, letters] of [['junior-2', 'AD'], ['senior-6', 'AB'], ['senior-23', 'ACD']]) {
+  const slug = '2012-utah-state-math-contest-' + suffix;
+  assert(!practice.allowsMultipleChoices(slug));
+  for (const choice of letters) grade(slug, choice, 'Correct');
+  grade(slug, 'E', 'Incorrect');
+}
+grade('2012-utah-state-math-contest-senior-8', 'B', 'Correct');
+grade('2012-utah-state-math-contest-senior-28', 'E', 'Correct');
+for (const [suffix, a, b] of [['junior-24', 'D', 'E'], ['junior-26', 'A', 'D'], ['senior-12', 'C', 'D']]) {
+  const slug = '2013-utah-state-math-contest-' + suffix;
+  for (const submitted of [a, b, b + a]) grade(slug, submitted, 'Correct');
+  const distractor = [...'ABCDE'].find(letter => letter !== a && letter !== b);
+  grade(slug, a + distractor, 'Incorrect');
+}
+grade('2013-utah-state-math-contest-junior-1', 'DE', 'Incorrect');
+for (const n of [4, 13]) {
+  const slug = '2012-utah-state-math-contest-senior-' + n;
+  const set = practice.create('Utah withdrawal', 'Any', [slug]);
+  assert.equal(practice.officialKey(slug), undefined);
+  assert.equal(practice.result(set, slug), 'Voided');
+  assert(!practice.answer(set, slug, 'C', false));
+  assert(statements[slug]);
+}
 console.log(`${Object.keys(answers).length} answer keys: coverage, formats, source links and explicit strategy choices passed.`);

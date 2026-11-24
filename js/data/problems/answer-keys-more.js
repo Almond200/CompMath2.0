@@ -1,7 +1,6 @@
 // Official answer letters for multiple-choice contests outside the MAA (owner, 2026-11-22), read from each
-// contest's posted solutions by tools/answer-keys/ (see its README): the CEMC's "Answer: (X)" lines, UMD's "the answer
-// is x", Utah's keys and "Correct answer" lines, Columbus State's "Answer: X". A question whose solution states no
-// letter, or two, is left out and stays self-checked against the official solution. `notes` records a corrected key.
+// contest's posted solutions by tools/answer-keys/ (see its README). `choiceAnswers` records complete accepted
+// submissions for questions with multiple accepted choices. `voided` records withdrawals and `notes` records corrections.
 // Separate from answer-keys.js (generated from LIVE) because the two load in no fixed order.
 window.MATH_EXTRA_KEYS = {
  "answers": {
@@ -2011,6 +2010,7 @@ window.MATH_EXTRA_KEYS = {
   "2012-utah-state-math-contest-senior-20": "E",
   "2012-utah-state-math-contest-senior-21": "B",
   "2012-utah-state-math-contest-senior-22": "A",
+  "2012-utah-state-math-contest-senior-23": "D",
   "2012-utah-state-math-contest-senior-24": "C",
   "2012-utah-state-math-contest-senior-25": "B",
   "2012-utah-state-math-contest-senior-26": "D",
@@ -2020,6 +2020,7 @@ window.MATH_EXTRA_KEYS = {
   "2012-utah-state-math-contest-senior-3": "A",
   "2012-utah-state-math-contest-senior-30": "C",
   "2012-utah-state-math-contest-senior-5": "B",
+  "2012-utah-state-math-contest-senior-6": "B",
   "2012-utah-state-math-contest-senior-7": "E",
   "2012-utah-state-math-contest-senior-8": "B",
   "2012-utah-state-math-contest-senior-9": "C",
@@ -2171,6 +2172,66 @@ window.MATH_EXTRA_KEYS = {
   "2013-umd-hsmc-part-i-7": "E",
   "2013-umd-hsmc-part-i-8": "D",
   "2013-umd-hsmc-part-i-9": "B",
+  "2013-utah-state-math-contest-junior-1": "D",
+  "2013-utah-state-math-contest-junior-10": "E",
+  "2013-utah-state-math-contest-junior-11": "C",
+  "2013-utah-state-math-contest-junior-12": "C",
+  "2013-utah-state-math-contest-junior-13": "A",
+  "2013-utah-state-math-contest-junior-14": "C",
+  "2013-utah-state-math-contest-junior-15": "C",
+  "2013-utah-state-math-contest-junior-16": "D",
+  "2013-utah-state-math-contest-junior-17": "A",
+  "2013-utah-state-math-contest-junior-18": "A",
+  "2013-utah-state-math-contest-junior-19": "E",
+  "2013-utah-state-math-contest-junior-2": "E",
+  "2013-utah-state-math-contest-junior-20": "A",
+  "2013-utah-state-math-contest-junior-21": "B",
+  "2013-utah-state-math-contest-junior-22": "C",
+  "2013-utah-state-math-contest-junior-23": "B",
+  "2013-utah-state-math-contest-junior-24": "D",
+  "2013-utah-state-math-contest-junior-25": "A",
+  "2013-utah-state-math-contest-junior-26": "A",
+  "2013-utah-state-math-contest-junior-27": "B",
+  "2013-utah-state-math-contest-junior-28": "D",
+  "2013-utah-state-math-contest-junior-29": "E",
+  "2013-utah-state-math-contest-junior-3": "D",
+  "2013-utah-state-math-contest-junior-30": "A",
+  "2013-utah-state-math-contest-junior-4": "B",
+  "2013-utah-state-math-contest-junior-5": "B",
+  "2013-utah-state-math-contest-junior-6": "D",
+  "2013-utah-state-math-contest-junior-7": "D",
+  "2013-utah-state-math-contest-junior-8": "B",
+  "2013-utah-state-math-contest-junior-9": "D",
+  "2013-utah-state-math-contest-senior-1": "D",
+  "2013-utah-state-math-contest-senior-10": "E",
+  "2013-utah-state-math-contest-senior-11": "C",
+  "2013-utah-state-math-contest-senior-12": "C",
+  "2013-utah-state-math-contest-senior-13": "A",
+  "2013-utah-state-math-contest-senior-14": "C",
+  "2013-utah-state-math-contest-senior-15": "C",
+  "2013-utah-state-math-contest-senior-16": "D",
+  "2013-utah-state-math-contest-senior-17": "A",
+  "2013-utah-state-math-contest-senior-18": "A",
+  "2013-utah-state-math-contest-senior-19": "E",
+  "2013-utah-state-math-contest-senior-2": "E",
+  "2013-utah-state-math-contest-senior-20": "A",
+  "2013-utah-state-math-contest-senior-21": "B",
+  "2013-utah-state-math-contest-senior-22": "C",
+  "2013-utah-state-math-contest-senior-23": "B",
+  "2013-utah-state-math-contest-senior-24": "D",
+  "2013-utah-state-math-contest-senior-25": "A",
+  "2013-utah-state-math-contest-senior-26": "A",
+  "2013-utah-state-math-contest-senior-27": "B",
+  "2013-utah-state-math-contest-senior-28": "D",
+  "2013-utah-state-math-contest-senior-29": "E",
+  "2013-utah-state-math-contest-senior-3": "D",
+  "2013-utah-state-math-contest-senior-30": "A",
+  "2013-utah-state-math-contest-senior-4": "B",
+  "2013-utah-state-math-contest-senior-5": "B",
+  "2013-utah-state-math-contest-senior-6": "D",
+  "2013-utah-state-math-contest-senior-7": "D",
+  "2013-utah-state-math-contest-senior-8": "B",
+  "2013-utah-state-math-contest-senior-9": "D",
   "2014-cayley-contest-1": "A",
   "2014-cayley-contest-10": "D",
   "2014-cayley-contest-11": "E",
@@ -4096,7 +4157,50 @@ window.MATH_EXTRA_KEYS = {
   "2026-umd-hsmc-part-i-8": "E",
   "2026-umd-hsmc-part-i-9": "A"
  },
+ "choiceAnswers": {
+  "2012-utah-state-math-contest-junior-2": [
+   "A",
+   "D"
+  ],
+  "2012-utah-state-math-contest-senior-6": [
+   "A",
+   "B"
+  ],
+  "2012-utah-state-math-contest-senior-23": [
+   "A",
+   "C",
+   "D"
+  ],
+  "2013-utah-state-math-contest-junior-24": [
+   "D",
+   "E",
+   "DE"
+  ],
+  "2013-utah-state-math-contest-junior-26": [
+   "A",
+   "D",
+   "AD"
+  ],
+  "2013-utah-state-math-contest-senior-12": [
+   "C",
+   "D",
+   "CD"
+  ]
+ },
+ "multipleChoicePapers": [
+  "2013-utah-state-math-contest-junior",
+  "2013-utah-state-math-contest-senior"
+ ],
+ "voided": {
+  "2012-utah-state-math-contest-senior-4": "The organizers withdrew this problem because it asked for ten-digit numbers where the intended question used fifteen digits.",
+  "2012-utah-state-math-contest-senior-13": "The organizers withdrew this problem because all five listed numbers of pieces are possible. The intended question asked for the maximum."
+ },
  "notes": {
+  "2012-utah-state-math-contest-junior-2": "The organizers also accepted A. The train is 150 m if its front emerges at 20 seconds, and 300 m if its rear emerges then.",
+  "2012-utah-state-math-contest-senior-6": "The printed polynomial can have ten rational roots, choice B. The organizers also credited A after discussing the eight candidates supplied by the Rational Root Theorem under an integer-coefficient assumption.",
+  "2012-utah-state-math-contest-senior-8": "Choice B uses the time when the whole train emerges. If it refers to the front of the train, its length is 75 m, which is absent from the choices.",
+  "2012-utah-state-math-contest-senior-23": "At time C the speeds match, and the area under Car A’s speed graph is greater, so D follows from the graph. The organizers also credited A and C.",
+  "2012-utah-state-math-contest-senior-28": "The official calculation assumes that all ten questions have exactly one correct letter. The organizers accepted two answers on #6 and withdrew #4, so the probability under that scoring policy differs.",
   "2014-columbus-state-tournament-1": "The official solutions print \"Answer: C\" but show 2014 = 2 x 19 x 53 has 8 divisors, choice (D)."
  },
  "sources": {

@@ -1,7 +1,8 @@
 import os, re, json, subprocess, urllib.request, concurrent.futures
+from pathlib import Path
 K = (__import__('os').environ.get('KEYS_WORK', '/tmp/answer-keys-work') + '/')
 U = json.load(open(K + 'urls.json'))
-db = json.loads(subprocess.check_output(['node', '-e', "global.window={};require('./js/data/problems/problem-db.js');console.log(JSON.stringify(window.MATH_PROBLEM_DB.map(p=>p.ref)))"], cwd='/home/user/CompMath2.0'))
+db = json.loads(subprocess.check_output(['node', '-e', "global.window={};require('./js/data/problems/problem-db.js');console.log(JSON.stringify(window.MATH_PROBLEM_DB.map(p=>p.ref)))"], cwd=Path(__file__).resolve().parents[2]))
 slug = lambda r: re.sub(r'^-+|-+$', '', re.sub(r'[^a-z0-9]+', '-', re.sub(r',?\s*problem\s+', '-', r.lower())))
 want = {}
 for r in db:
@@ -34,7 +35,7 @@ for (y, kind), nums in want.items():
     if kind == 'C':
         f = U['COLUMBUS'].get(y)
         if f and len(f) > 1 and f[1]: jobs.append((y, kind, nums, 'https://www.columbusstate.edu/math/_docs/tournament/' + f[1], CO))
-    elif y != '2013':
+    else:
         f = U['UTAH'][y][kind]
         jobs.append((y, kind, nums, 'https://www.weber.edu/wsuimages/statemathcontest/Exams/' + f[1], UT))
 def run(j):
@@ -54,12 +55,6 @@ with concurrent.futures.ThreadPoolExecutor(6) as ex:
             s = f'{y}-columbus-state-tournament-{n}' if kind == 'C' else f'{y}-utah-state-math-contest-{kind.lower()}-{n}'
             out[s] = a
         report.append((y, kind, len(res), 'of', len(nums), 'missing', miss[:12]))
-# Utah 2013: one key for both exams (State Math Contest 2013: Solutions and Summary of Results).
-key13 = 'D E D B B D D B D E C C A C C D A A E A B C B D A A B D E A'.split()
-both = {('junior', 24), ('junior', 26), ('senior', 12)}   # two letters accepted: left ungraded
-for kind in ('junior', 'senior'):
-    for n, a in enumerate(key13, 1):
-        if (kind, n) not in both: out[f'2013-utah-state-math-contest-{kind}-{n}'] = a
 json.dump(out, open(K + 'utcol.json', 'w'), indent=0)
 print(len(out), 'keys')
 for r in sorted(report): print(r)
