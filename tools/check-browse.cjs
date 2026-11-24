@@ -12,11 +12,11 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await page.addInitScript(t=>{localStorage.setItem('theme',t);localStorage.setItem('mq-strategy','shown');},theme);
  const fits=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no horizontal overflow at '+page.url());
  const go=async h=>{await page.evaluate(h=>{location.hash=h},h);await page.waitForTimeout(250);};
- // Problem page: no chips under the heading; Topic tree, Difficulty chart, Brief solution in order.
- await page.goto(base+'/#/problem/2019-aime-i-4');await page.locator('.prob-chain').waitFor();
+ // Problem page sections appear in order, with no chips under the heading.
+ await page.goto(base+'/#/problem/2026-aime-i-9');await page.locator('.prob-chain').waitFor();
  const t=page.locator('.prob-chain .chain-toggle');if(await t.getAttribute('aria-expanded')==='false')await t.click();
  assert.equal(await page.locator('.detail > .ptype-row').count(),0);
- assert.deepEqual(await page.locator('.prob-chain .chain-study-h').allInnerTexts(),['Topic','Difficulty','Brief solution','Study a concept more']);
+ assert.deepEqual(await page.locator('.prob-chain .chain-study-h').allInnerTexts(),['Topic','Difficulty','Brief solution(s)','Study a concept more']);
  assert.equal(await page.locator('.ptree-node.is-filed').count(),2);assert.equal(await page.locator('.ptree-group').count(),1,'shared beginning drawn once');
  // Each elbow's arrow tip is level with the middle of its box's first line (the box's padding
  // is a pixel heavier on top, so the middle is taken across both paddings). The stem is an SVG
@@ -32,7 +32,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   assert.deepEqual(await li.evaluate(el=>['.ptree-stem','.ptree-elbow'].map(q=>{const cs=getComputedStyle(el.querySelector(':scope > '+q));return cs.strokeWidth+' '+cs.stroke;})).then(x=>x[0]===x[1]),true,'one stroke for stem and elbow');
   assert.equal(await li.evaluate(el=>getComputedStyle(el,'::before').content),'none','no CSS-drawn stem');}
  assert(lis.length>=3);
- assert.equal(await page.locator('.elo-box .elo-num').innerText(),'2350');assert.match(await page.locator('.elo-note').innerText(),/of AIME problems/);assert.doesNotMatch(await page.locator('.prob-chain').innerText(),/LIVE/);
+ assert.equal(await page.locator('.elo-box .elo-num').innerText(),'2840');assert.match(await page.locator('.elo-note').innerText(),/of AIME problems/);assert.doesNotMatch(await page.locator('.prob-chain').innerText(),/LIVE/);
  assert.equal(await page.locator('.elo-box .elo-bar.is-cur').count(),1);
  await page.locator('[data-elo-fam="all"]').click();assert.match(await page.locator('.elo-note').innerText(),/of all problems/);assert.equal(await page.locator('[data-elo-fam][aria-pressed="true"]').count(),1);
  // A column answers the pointer over its whole height: hovering above a short bar tints the
@@ -54,7 +54,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  // A column with no problems answers the pointer like any other and opens its range.
  assert.equal(await page.locator('.elo-box .elo-bar').evaluateAll((xs,nb)=>xs.length===nb&&xs.every(x=>x.tagName==='A'&&x.dataset.tip),NB),true);
  const empty=page.locator('.elo-box a.elo-bar.is-empty').first();assert.match(await empty.getAttribute('data-tip'),new RegExp(`^${LO}–${LO+199}: 0 problems$`));
- if(width===1280){const eb=await empty.boundingBox();await page.mouse.move(eb.x+eb.width/2,eb.y+eb.height/2);
+ if(width===1280){await empty.scrollIntoViewIfNeeded();const eb=await empty.boundingBox();await page.mouse.move(eb.x+eb.width/2,eb.y+eb.height/2);
   assert.deepEqual(await empty.evaluate(el=>[getComputedStyle(el,'::before').content,getComputedStyle(el).backgroundColor!=='rgba(0, 0, 0, 0)',getComputedStyle(el).cursor]),[JSON.stringify(`${LO}–${LO+199}: 0 problems`),true,'pointer']);await page.mouse.move(2,2);}
  await empty.click();await page.locator('.br-band-h').waitFor();assert.match(await page.locator('.br-band-h').innerText(),new RegExp(`^Rated ${LO} to ${LO+199}$`));
  await page.goBack();await page.locator('.prob-chain').waitFor();const t2=page.locator('.prob-chain .chain-toggle');if(await t2.getAttribute('aria-expanded')==='false')await t2.click();
@@ -122,6 +122,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await page.locator('.prob-chain .chain-toggle').waitFor();
  const solutionToggle=page.locator('.prob-chain .chain-toggle');
  if(await solutionToggle.getAttribute('aria-expanded')==='false')await solutionToggle.click();
+ assert.equal(await page.getByRole('heading',{name:'Brief solution(s)',exact:true}).count(),1);
  const routes=page.locator('.prob-chain .chain-solution');
  assert.equal(await routes.count(),2);
  assert.match(await routes.nth(1).locator('.chain-strategy').innerText(),/^Alternatively/);

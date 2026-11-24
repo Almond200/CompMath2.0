@@ -159,7 +159,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  if(hmmtYears.length>=3){assert.match(await shown().locator('.pp-stats').innerText(),/of all \d+ HMMT February Algebra papers/,'the rank is within the round');
   assert.ok((await shown().locator('.py-bar').evaluateAll(xs=>xs.map(x=>x.getAttribute('href')))).every(h=>/\/hmmt-february-algebra(-and-number-theory)?$/.test(h)),'a year bar opens the same round');}
  assert.equal(await page.locator('.db-group.is-shown .pp-tiles .br-row').count(),10);await page.locator('.ct-papers [role="tab"]').nth(2).click();assert.match(page.url(),/hmmt-february\/2019\/hmmt-february-geometry$/);await fits();
- // An HMMT problem has an inline statement, an archive button, and an official solution under Brief solution.
+ // An HMMT problem has an inline statement, an archive button, and an official solution under Brief solution(s).
  await page.goto(base+'/#/problem/2019-hmmt-february-combinatorics-4');await page.locator('.prob-chain').waitFor();assert.equal(await page.locator('h1.card-name').innerText(),'2019 HMMT Feb Combo #4');
  const tg=page.locator('.prob-chain .chain-toggle');if(await tg.getAttribute('aria-expanded')==='false')await tg.click();
  assert.deepEqual(await page.locator('.aops-btn').evaluateAll(xs=>xs.map(x=>[x.textContent.trim(),x.getAttribute('href')])),[['Open in archive','https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/problems.pdf'],['Open the official solution','https://hmmt-archive.s3.amazonaws.com/tournaments/2019/feb/comb/solutions.pdf']]);
