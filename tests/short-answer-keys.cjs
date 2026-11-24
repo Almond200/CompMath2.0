@@ -82,6 +82,18 @@ check('2022-girls-in-math-at-yale-individual-6', '10 ft/s', 'Correct');
 check('2021-hmmt-november-theme-2', '19%', 'Correct');
 check('2025-lehigh-math-contest-25', '3456891012151618', 'Correct');
 check('2025-lehigh-math-contest-25', '03456891012151618', 'Incorrect');
+for (const year of [2022, 2023, 2024, 2025]) {
+  for (const contest of ['pascal', 'cayley', 'fermat']) {
+    const paper = year + '-' + contest + '-contest';
+    for (let number = 21; number <= 25; number++) {
+      const slug = paper + '-' + number;
+      assert.match(answers[slug].answers[0], /^\d{2}$/, slug);
+      assert.equal(practice.officialKey(slug), undefined, slug);
+    }
+  }
+}
+check('2022-cayley-contest-25', '09', 'Correct');
+check('2022-cayley-contest-25', '9', 'Correct');
 for (const slug of ['2025-mbmt-lower-geometry-7', '2025-mbmt-upper-geometry-5']) {
   check(slug, '10', 'Correct');
   check(slug, 'sqrt(1360)', 'Correct');

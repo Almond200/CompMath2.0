@@ -7,12 +7,14 @@ utah = json.load(open(K + 'utah.json'))
 col = json.load(open(K + 'columbus.json'))
 fixes = {
     '2005-fermat-contest-25': ('B', 'Practice shows the CEMC’s corrected question, which requires p to be positive. It has 57 valid values of q. The original wording allowed any integer p and had 10,000 valid values.'),
+    '2009-columbus-state-tournament-17': ('E', 'The restored answer choices include 889. The last three digits of 3^98 are 889.'),
     '2012-utah-state-math-contest-junior-2': ('D', 'The organizers also accepted A. The train is 150 m if its front emerges at 20 seconds, and 300 m if its rear emerges then.'),
     '2012-utah-state-math-contest-senior-6': ('B', 'The printed polynomial can have ten rational roots, choice B. The organizers also credited A after discussing the eight candidates supplied by the Rational Root Theorem under an integer-coefficient assumption.'),
     '2012-utah-state-math-contest-senior-8': ('B', 'Choice B uses the time when the whole train emerges. If it refers to the front of the train, its length is 75 m, which is absent from the choices.'),
     '2012-utah-state-math-contest-senior-23': ('D', 'At time C the speeds match, and the area under Car A’s speed graph is greater, so D follows from the graph. The organizers also credited A and C.'),
     '2012-utah-state-math-contest-senior-28': ('E', 'The official calculation assumes that all ten questions have exactly one correct letter. The organizers accepted two answers on #6 and withdrew #4, so the probability under that scoring policy differs.'),
     '2014-columbus-state-tournament-1': ('D', 'The official solutions print "Answer: C" but show 2014 = 2 x 19 x 53 has 8 divisors, choice (D).'),
+    '2021-pascal-contest-25': ('E', 'The CEMC’s original choices omitted the correct value, 22. Practice shows the corrected choices with 22 as E.'),
 }
 choice_answers = {
     '2012-utah-state-math-contest-junior-2': ['A', 'D'],

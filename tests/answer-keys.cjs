@@ -53,6 +53,12 @@ require('../js/data/problems/statements/cemc/2005.js');
 assert.match(statements['2005-fermat-contest-25'].s, /positive integer/);
 grade('2005-fermat-contest-25', 'B', 'Correct');
 grade('2005-fermat-contest-25', 'A', 'Incorrect');
+require('../js/data/problems/statements/cemc/2021.js');
+assert.match(statements['2021-pascal-contest-25'].s, /\(E\) \$22\$/);
+grade('2021-pascal-contest-25', 'E', 'Correct');
+require('../js/data/problems/statements/columbus/2009.js');
+assert.match(statements['2009-columbus-state-tournament-17'].s, /\(E\) \$889\$/);
+grade('2009-columbus-state-tournament-17', 'E', 'Correct');
 assert(!practice.answer(practice.create('Single selection', 'Any', ['2012-amc-12b-12']), '2012-amc-12b-12', 'DE', false));
 for (const [suffix, letters] of [['junior-2', 'AD'], ['senior-6', 'AB'], ['senior-23', 'ACD']]) {
   const slug = '2012-utah-state-math-contest-' + suffix;
