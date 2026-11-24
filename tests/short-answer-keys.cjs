@@ -33,6 +33,10 @@ for (const [slug, key] of Object.entries(answers)) {
   usedSources.add(paper);
   assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set', 'interval', 'polynomial', 'rational-function'].includes(key.format), slug);
   if (key.format === 'polynomial' || key.format === 'rational-function') assert.match(key.notation, /^[a-z]$/i, slug);
+  if (Array.isArray(key.notation)) {
+    assert.equal(key.format, 'tuple', slug);
+    assert(key.notation.every(part => [null, 'letter', 'feet'].includes(part)), slug);
+  }
   assert(key.answers.length, slug);
   for (const value of key.answers) check(slug, value, 'Correct');
 }
@@ -68,6 +72,15 @@ check('2025-chmmc-individual-10', '6', 'Correct');
 check('2025-chmmc-individual-10', '7', 'Incorrect');
 check('2018-lehigh-math-contest-1', '20', 'Correct');
 check('2018-lehigh-math-contest-1', '400', 'Incorrect');
+check('1998-hmmt-february-geometry-10', '3^3, h, 416/2 feet', 'Correct');
+check('1998-hmmt-february-geometry-10', '(27,T,208)', 'Incorrect');
+check('1998-hmmt-february-geometry-10', '(208,H,27)', 'Incorrect');
+assert.equal(practice.exactTex('27, h, 208 ft', 'tuple', [null, 'letter', 'feet']), '\\left(27,\\ H,\\ 208\\right)');
+check('2001-hmmt-february-geometry-2', '1/6', 'Correct');
+check('2001-hmmt-february-geometry-2', '1/2', 'Correct');
+check('2009-hmmt-february-geometry-7', '21sqrt(37/205)', 'Correct');
+check('2009-hmmt-february-geometry-7', '6sqrt(37)/5', 'Correct');
+check('2017-hmmt-february-combinatorics-10', 'choose(85,50)-choose(85,51)', 'Correct');
 check('2013-arml-local-individual-10', '21,5,14', 'Correct');
 check('2016-arml-individual-8', '(20, 5, 11)', 'Incorrect');
 check('2017-mathcounts-national-sprint-25', 'sqrt(193)/2', 'Correct');
