@@ -205,6 +205,7 @@
   }
   const unitSuffix = {
     points: /\s*(?:points?|pts?\.?)\s*$/i,
+    units: /\s*units?\s*$/i,
     hours: /\s*(?:hours?|hrs?\.?)\s*$/i,
     inches: /\s*(?:inch(?:es)?|in\.?)\s*$/i,
     feet: /\s*(?:feet|foot|ft\.?)\s*$/i,
