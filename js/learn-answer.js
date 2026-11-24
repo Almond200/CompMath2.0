@@ -26,7 +26,9 @@
       s = t;
     }
     s = s.replace(/\\(?:mathrm|text)\s*\{\s*i\s*\}|ⅈ/g, "i");
-    s = s.replace(/\\(pi|sqrt|ln|sin|cos|tan)\b/g, "$1").replace(/\\(?:cdot|times)\b/g, "*").replace(/\\div\b/g, "/").replace(/\\pm\b/g, "±");
+    s = s.replace(/\\(pi|sqrt|ln|exp|sin|cos|tan|arctan)\b/g, "$1").replace(/\\(?:cdot|times)\b/g, "*").replace(/\\div\b/g, "/").replace(/\\pm\b/g, "±");
+    s = s.replace(/\batan(?=\s*\()/gi, "arctan")
+      .replace(/\btan\s*\^\s*(?:[-−]1|\{[-−]1\}|\([-−]1\))\s*(?=\()/gi, "arctan");
     s = s.replace(/(?:\\)?\blog\s*_?\s*(?:\{(\d+)\}|(\d+))\s*\(([^()]*)\)/gi,
       (_, bracedBase, base, input) => `(ln(${input})/ln(${bracedBase || base}))`);
     s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, m => "^(" + [...m].map(c => SUP[c]).join("") + ")");
@@ -58,7 +60,7 @@
       if (s.startsWith("sqrt", i)) { out.push({ t: "sqrt" }); i += 4; continue; }
       if (s.startsWith("cbrt", i)) { out.push({ t: "cbrt" }); i += 4; continue; }
       if (s.startsWith("choose", i)) { out.push({ t: "choose" }); i += 6; continue; }
-      const fn = /^(ln|sin|cos|tan|fib)/.exec(s.slice(i));
+      const fn = /^(ln|exp|arctan|sin|cos|tan|fib)/.exec(s.slice(i));
       if (fn) { out.push({ t: fn[1] }); i += fn[1].length; continue; }
       if (c === variableToken) { out.push({ t: "variable", v: variable }); i++; continue; }
       if (c === "e" && !/[\d_₀-₉]/.test(s[i + 1] || "")) { out.push({ t: "e" }); i++; continue; }
@@ -80,7 +82,7 @@
   }
   const SHOW = { "*": "×", "/": "÷", "-": "−", sqrt: "√", cbrt: "∛", pi: "π" };
   const sym = t => SHOW[t.t] || t.v || t.t;
-  const functions = { ln: Math.log, sin: Math.sin, cos: Math.cos, tan: Math.tan };
+  const functions = { ln: Math.log, exp: Math.exp, arctan: Math.atan, sin: Math.sin, cos: Math.cos, tan: Math.tan };
   const unaryFunctions = ["sqrt", "cbrt", "fib", ...Object.keys(functions)];
   const atomTokens = ["num", "variable", "pi", "e", "choose", "(", ...unaryFunctions];
 
