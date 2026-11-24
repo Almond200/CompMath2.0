@@ -11,9 +11,13 @@
 
 ## Current state (updated 2026-11-24)
 
+Completed sets show graded-answer accuracy and one linked topic above Review problems. Missed problems take priority, followed by unanswered problems and then correct answers.
+
 Every indexed AMC 10 and 12 problem now has an in-app brief solution, including the 50 new B-paper entries. The reference has 790 cards and the database has 4,775 written strategies. The Learn and Practice landing pages highlight the current section in their sidebars, and alternate solutions have their own card boxes. Practice history and review use the same count of non-voided questions.
 
 The contest tree audit corrected 84 entries and clarified four topic names with stable IDs. The contest menu accounts for all 19,456 archive entries. The shared problem-page heading is now “Brief solution(s).” [Contest archive topic audit](AUDITS.md#contest-archive-topic-audit-2026-11-24)
+
+The concentration follow-up corrected 45 entries filed directly under Right triangles. The Geometry leaf now names the Pythagorean theorem, Common tangents of two circles sits with the other tangent-line problems, and the Expected value branch now names variance and distributions. [Leaf placement and concentration follow-up](AUDITS.md#leaf-placement-and-concentration-follow-up)
 
 **Practice grading handoff (2026-11-24).** Continue this batch from `codex/hmmt-short-answer-pilot`. All 19,456 indexed questions have a recorded grading disposition. Practice automatically grades 10,929 multiple-choice questions and 8,490 typed responses including AIME. It records 20 voids and 17 self-checks, each with a reason in review. The final pass voided six formerly self-checked questions, including 2015 MMATHS Individual #7. Void notices label the organizer or Practice ruling while taking the set and in review. Voided numbers keep the theme's normal text color when selected. [Grading audit](AUDITS.md#practice-grading-and-answer-key-audit)
 

@@ -57,6 +57,12 @@ All 457 topic IDs are preserved. Four labels describe their contents more precis
 
 Reproduce the structural census with `node tools/tree-risk-audit.cjs` and validate filings with `node tools/check-topic-tree.js`. The browser checks cover the archive finder, contest pages, topic links and generation from the Practice topic picker.
 
+#### Leaf placement and concentration follow-up
+
+The Pythagorean theorem leaf now names the theorem explicitly. The Number Theory leaf for integer triples remains separate. Common tangents of two circles now sits alongside Tangent lines and tangent lengths, since a line can be tangent to both circles whether the circles touch, intersect or are disjoint. Expected value, variance and distributions now names the full scope of that branch. All three edits preserve the existing IDs.
+
+The concentration check ranked leaf sizes and direct parent filings, then sampled Percent change, Arithmetic sequences, Linear systems, Angle chasing, Nonlinear systems, Similar triangles and Constructions and bounds across the archive. The clearest concentration was Right triangles. Of its 67 direct filings, 45 had a more specific confirmed home. The Pythagorean length leaf gained 34 entries and the special-right-triangle leaf gained four. Seven others went to coordinate distance, equilateral triangles, rectangles, reflected paths, geometric extremes or linear equations. For example, 2018 Lehigh #1 asks for the missing leg of a right triangle, 2007 Fermat #22 asks about a billiards path, and 2007 Pascal #19 asks for a reciprocal and had an incorrect Pythagorean card link. [Official 2007 Pascal paper](https://cemc.uwaterloo.ca/sites/default/files/documents/2007/2007PascalContest.pdf)
+
 ### Tree finalization after the full tagging pass
 
 *Formerly `TREE-FINALIZATION.md`.*

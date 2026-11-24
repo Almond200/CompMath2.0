@@ -6610,10 +6610,42 @@
     return `<div class="rand-btns" role="${multi ? 'group' : 'radiogroup'}" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${choices.map(a =>
       `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="${multi ? 'checkbox' : 'radio'}" aria-checked="${multi ? selected.includes(a) : selected === a}">${a}</button>`).join('')}</div>`;
   }
+  function practiceInsightsHtml(outcomes, counts) {
+    const graded = counts.Correct + counts.Incorrect;
+    const lines = [];
+    if (graded) {
+      const percent = Math.round(100 * counts.Correct / graded);
+      lines.push(`<p><strong>${percent}% accuracy</strong> on graded answers (${counts.Correct} of ${graded})</p>`);
+    }
+
+    // A skipped problem can suggest a starting point, but only a graded miss signals a mistake.
+    const focus = counts.Incorrect ? 'Incorrect' : counts.Unanswered ? 'Unanswered' : 'Correct';
+    const topics = new Map();
+    for (const [slug, outcome] of outcomes) {
+      if (outcome !== focus) continue;
+      const ids = new Set();
+      for (const id of PROBLEM_BY_SLUG[slug]?.tree || []) {
+        const path = topicPath(id);
+        const topic = path[2] || path.at(-1);
+        if (topic) ids.add(topic.id);
+      }
+      for (const id of ids) topics.set(id, (topics.get(id) || 0) + 1);
+    }
+    // In a tie, use the topic encountered first in the set.
+    const [top] = [...topics].sort((a, b) => b[1] - a[1]);
+    if (top) {
+      const [id, n] = top;
+      const label = { Incorrect: 'Topic to revisit', Unanswered: 'Unanswered topic', Correct: 'Solved topic' }[focus];
+      const tally = { Incorrect: 'missed', Unanswered: 'unanswered', Correct: 'correct' }[focus];
+      lines.push(`<p><strong>${label}</strong> · <a href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}</a> · ${n} ${tally}</p>`);
+    }
+    return lines.length ? `<div class="practice-insights">${lines.join('')}</div>` : '';
+  }
   function renderPracticeResults(set) {
     const total = set.slugs.length;
     const counts = { Correct: 0, Incorrect: 0, Unanswered: 0, 'Answer unavailable': 0, Voided: 0, 'Check yourself': 0 };
-    set.slugs.forEach(slug => counts[practiceSessions.result(set, slug)]++);
+    const outcomes = set.slugs.map(slug => [slug, practiceSessions.result(set, slug)]);
+    outcomes.forEach(([, result]) => counts[result]++);
     const reviewUrl = '#/practice/set/' + encodeURIComponent(set.id) + '/review';
     const mock = isMock(set), score = mockScore(set);
     const gradedTotal = practiceAnswerableSlugs(set).length;
@@ -6628,10 +6660,11 @@
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
         ${counts['Check yourself'] ? `<p class="practice-results-meta">${counts['Check yourself']} for self-check. Open ${counts['Check yourself'] === 1 ? 'it' : 'each'} in the review and mark your answer right or wrong.</p>` : ''}
         ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided${score ? ' · Full credit awarded' : ''}</p>` : ''}
+        ${practiceInsightsHtml(outcomes, counts)}
         <a class="hp-btn" href="${reviewUrl}">Review problems</a>
       </section>
-      <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
-        const p = PROBLEM_BY_SLUG[slug], result = practiceSessions.result(set, slug);
+      <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${outcomes.map(([slug, result], i) => {
+        const p = PROBLEM_BY_SLUG[slug];
         const answer = set.answers[slug], exact = practiceSessions.exactKey(slug);
         const paper = practiceSessions.needsSelfCheck(set, slug);
         const submitted = (exact || /AIME/.test(p?.fam)) && !paper
