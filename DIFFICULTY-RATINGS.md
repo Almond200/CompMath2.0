@@ -44,7 +44,7 @@ The ten 2019 HMMT February Geometry problems and fifty 2026 AMC 10A/12A problems
 
 Thus Very hard AMC 8 means roughly the hardest fifth of AMC 8, while Very hard AIME means roughly the hardest fifth of AIME. On this snapshot those ranges start at 1,370 and 2,990 respectively. Topic selection recalculates after narrowing to that topic, not against the whole archive.
 
-Existing topic-set eligibility remains in place: MAA problems with answer keys, voided problems excluded, existing twin deduplication, and statements loaded before a set is saved. HMMT ratings are used by the random-problem picker and, in the subsequently requested mixed-source mocks, by the mock generator. The latter uses separately attributed author-restated prompts and officially verified answer values in `mock-extras.js`; topic sets keep their existing MAA eligibility. See MOCK-CONTESTS.md. Saved sets keep their problems, responses and recorded difficulty label when ratings are refreshed.
+Topic and card sets draw from the selected contests. They admit automatically graded and documented self-check questions, exclude voids, and deduplicate recognized twins. Practice loads local prompts or links to the source paper. The mixed-source generator uses the same eligibility with its format, source and rating filters. Saved sets keep their problems, responses and difficulty label when ratings are refreshed. [Mock details](MOCK-CONTESTS.md)
 
 The reference card-profile/statistics charts still summarize early/middle/late paper position, and textbook exercise ordering still uses its existing cross-contest teaching order. Those displays are unchanged by this picker task; their helper is named `paperPositionBand` to keep it separate from Elo selection.
 

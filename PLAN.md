@@ -9,9 +9,13 @@
 
 **The handoff rule.** After every major change, every finished step, and the start of every new step: update "Current state", add an entry to `CHANGELOG.md`, commit and push.
 
-## Current state (updated 2026-11-22)
+## Current state (updated 2026-11-24)
 
-**Practice grading checkpoint (2026-11-24):** The preview branch grades any nonempty subset of independently accepted answers. It includes 10,929 automatically graded multiple-choice problems, 8,490 automatically graded short responses including AIME, 14 voids, and 23 documented self-checks. The grading audit is in [short-answer keys](tools/answer-keys/short-answers.md) and [multiple-choice keys](tools/answer-keys/README.md).
+**Practice grading handoff (2026-11-24).** Continue this batch from `codex/hmmt-short-answer-pilot`. All 19,456 indexed questions have a recorded grading disposition. Practice automatically grades 10,929 multiple-choice questions and 8,490 typed responses including AIME. It records 20 voids and 17 self-checks, each with a reason in review. The final pass voided six formerly self-checked questions, including 2015 MMATHS Individual #7. [Grading audit](AUDITS.md#practice-grading-and-answer-key-audit)
+
+The key data live in `js/data/problems/answer-keys.js`, `answer-keys-more.js`, `answer-keys-short.js` and `mock-extras.js` in the same folder. Only change an exception after checking the displayed prompt against the paper and its solutions. Use the current [self-check inventory](tools/answer-keys/short-answers.md#remaining-self-checks) and [multiple-choice rulings](tools/answer-keys/README.md#final-multiple-choice-coverage). For changes to keys, run `node tests/short-answer-keys.cjs`, `node tests/answer-keys.cjs` and `./tools/gates.sh`. For review or scoring changes, also run the Practice browser checks in [CLAUDE.md](CLAUDE.md#running-the-checks-in-a-cloud-session).
+
+### Earlier project checkpoints
 
 **Latest (2026-11-22, second session):** new method card `system-as-polynomial-product` (P82) for 2018 SMT Algebra #9; the statements-only mock option moved beside the other checkboxes; Special: commands updated (Random/Problem lists every contest and the difficulty levels; new Special:Contest, Special:Topic, Special:Book; `tools/check-commands.cjs`) and Special:Statistics expanded (contests, topic tree, Learn, practice); Utah 2013 statements typed from the scans (Utah now complete, 2009 to 2020); `tools/` tidied into `tools/data/` and `tools/notes/`. **Next action:** the owner's two performance requests, in order: (1) find why switching areas can sit on "Loading" for seconds, (2) make search faster and stop it pausing while typing. Still open from before: MATHCOUNTS National 2010, 2008, 2000 and the scanned years (item 22), UKMT JMC 2015 to 2022 (item 20).
 

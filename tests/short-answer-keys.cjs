@@ -4,12 +4,21 @@ const path = require('node:path');
 
 global.window = {};
 const data = path.join(__dirname, '../js/data/problems');
+require(path.join(data, 'problem-db.js'));
 require(path.join(data, 'answer-keys.js'));
 require(path.join(data, 'answer-keys-more.js'));
 require(path.join(data, 'answer-keys-short.js'));
 require(path.join(data, 'mock-extras.js'));
 const practice = require('../js/practice-sessions.js');
 const { answers, sources, voided, notes } = window.MATH_SHORT_ANSWER_KEYS;
+const indexed = new Set(window.MATH_PROBLEM_DB.map(({ref}) =>
+  ref.toLowerCase().replace(/,?\s*problem\s+/, '-').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')));
+assert.equal(indexed.size, window.MATH_PROBLEM_DB.length);
+for (const slug of indexed) {
+  assert(practice.voidReason(slug) || practice.officialKey(slug) || practice.exactKey(slug) ||
+    practice.needsSelfCheck({}, slug), slug + ' needs a documented grading disposition');
+}
+for (const slug of [...Object.keys(answers), ...Object.keys(voided), ...Object.keys(notes)]) assert(indexed.has(slug), slug);
 const statementDir = path.join(data, 'statements');
 for (const dir of fs.readdirSync(statementDir, { withFileTypes: true }).filter(dir => dir.isDirectory())) {
   for (const file of fs.readdirSync(path.join(statementDir, dir.name)).filter(file => file.endsWith('.js'))) {
@@ -68,6 +77,7 @@ for (const [slug, reason] of Object.entries(voided)) {
   assert.equal(practice.result(set, slug), 'Voided');
   assert.equal(practice.selfMark(set, slug, 'Correct'), false);
 }
+assert.match(voided['2015-mmaths-individual-7'], /degree-ten.*impractical/);
 
 const hmmt2010 = Object.keys(window.MATH_STATEMENTS).filter(slug => /^2010-hmmt-february-/.test(slug));
 assert.equal(hmmt2010.length, 30);

@@ -3,9 +3,9 @@
 A searchable reference for AMC 10/12, AIME and olympiad training: 788 cards covering formulas,
 methods, and patterns (556 formulas, 183 methods, 49 patterns); 13 Learn textbooks (103 chapters,
 593 lessons); and a database of 19,456 past contest problems from 35 contests, 1950 to 2026
-(17,910 with their statements shown in the app, the rest linked to the official paper), every one
+(17,931 with their statements shown in the app, the rest linked to the official paper), every one
 rated and filed in a 457-node topic tree, and 15,943 cross-linked to the cards their solutions run
-through (counts checked 2026-11-22; Special:Statistics in the app recomputes them).
+through. Special:Statistics in the app recomputes these counts.
 
 Static, with no application backend or required build step. KaTeX 0.16.11 and its fonts are
 vendored under `vendor/katex/`; statement scripts and semantic vectors load on demand from
@@ -19,40 +19,28 @@ untimed practice set. Difficulty offers **Any**, **Very easy**, **Easy**, **Medi
 **Very hard**, using Elo ratings to select roughly a fifth of the chosen contest or topic
 at each level. Any applies no difficulty restriction. Generated sets run from lowest to highest Elo. Ratings come from LIVE, with clearly
 recorded manual estimates for problems it has not rated; [rating data and refresh details](DIFFICULTY-RATINGS.md).
-Choose **Mixed** to draw from all topics; it appears first, followed by the four
-default subjects when the topic search is empty. AMC problems use A–E choices; AIME problems accept integers from 000 to
-999. Answers save automatically on this device. Double-click a selected choice to clear it.
+Topic options come from the topic tree and include descendants. Open the **Contests** selector to limit the sources. Multiple-choice questions show the options on the paper. AIME accepts integers from 000 to 999. Other typed answers use the format requested by the question, with a math keypad and preview. Answers save automatically on this device.
 Save and exit and Back to Practice both preserve progress. **Resume a set** and **Completed sets**, below Contests,
 contain unfinished and finished practice and mock sets respectively. Each group shows at most two rows,
 with its own full-width **Show all / Show less** control.
 
-Finish and review grades against imported answer keys and opens a results overview with your
-score and correct, incorrect and unanswered totals. Each result links to its detailed review. Review keeps your submitted selection,
-shows Correct, Incorrect or Unanswered, and separates the problem statement from the result
-and explanation. On review pages, **Back to Results overview** above **Back to Practice**,
-and the **Results overview** button in the header, return to that set's results. How this problem works uses the same strategy, Pattern/Method/Formulas chain
-and textbook links as the problem page. Answer keys come from LIVE by Po-Shen Loh and are
-matched to the local problem statements before import. New sets only draw problems with a key.
-Older saved problems without a matching key are explicitly labeled Answer unavailable: the key is
-missing, so the answer is not guessed. A problem the MAA voided (now 2025 AMC 12A #25) is a
-different case: its official letter is kept in the keys' `voided` list, new sets never draw it,
-and a saved set shows it as Voided, not graded.
+**Finish and review** opens a results overview. Each result links to the submitted answer and any grading or source note. A question with distinct accepted answers earns full credit for any nonempty subset of those answers. A question that asks for all values requires the full set. Self-check questions explain the issue and let you mark your answer. Voided questions are omitted from new topic and card sets and from the untimed score denominator.
+
+| Indexed questions | Automatically graded | Voided | Self-check |
+| --- | ---: | ---: | ---: |
+| 10,936 multiple-choice | 10,929 | 7 | 0 |
+| 8,520 typed, including AIME | 8,490 | 13 | 17 |
+
+Sources, corrections and exceptions are recorded in the [short-answer audit](tools/answer-keys/short-answers.md) and [multiple-choice audit](tools/answer-keys/README.md).
 
 Topic practice sets have no timer or timer setting. Export progress and Import progress include
 saved practice and mock sets, keeping the newest version of each. Clearing browser data removes the local copy.
 
 ## Practice a contest
 
-A separate panel below Practice a topic lets you take a **past contest** or **generate a mock**
-for AMC 8, AMC 10, AMC 12 or AIME. Past papers retain their original question order. Generated
-mocks match the average recent difficulty curve using older problems from any contest, with
-the 2019 HMMT Geometry round explicitly allowed too, and run from lowest to highest Elo. Each
-question retains its original answer format; sources appear during review.
+A separate panel below Practice a topic lets you search for a **past contest** by name, round or year. Papers retain their original question order. The **Generate a mock** mode offers AMC 8, AMC 10, AMC 12 and AIME formats and draws from eligible contests using a recent difficulty curve. Each question retains its original answer format.
 
-Mock sets have a countdown (40 minutes for AMC 8, 75 for AMC 10/12, 180 for historical AIME),
-which pauses when you leave or hide the page and resumes when you return. At zero, the mock
-automatically finishes and grades. Results show the target contest's scoring, time used and
-per-problem review. [Mock generation, scoring and source details](MOCK-CONTESTS.md).
+Generated mocks and past papers with a supported timed format use a countdown. The other past papers are untimed. The clock pauses when you leave or hide the page, and the set submits automatically at zero. [Mock generation, scoring and source details](MOCK-CONTESTS.md)
 
 ## Four content kinds, five spaces
 
@@ -123,7 +111,7 @@ CONVENTIONS §0 has the full model.
   Overview, an Index whose entries link to lessons, a Glossary, and References and Credits. They
   are 13 reference chapters with 52 sections, not counted with the teaching pages (the shelf gate's
   116 chapters and 645 lesson records include them), and they carry no difficulty tags.
-- **Practice** (`#/practice`): four matching panels for a random problem, untimed topic sets, timed past-paper/generated mocks, and browsing contest years, followed by Resume a set and Completed sets. Topic options come from the topic tree; a branch includes every subtopic, with available counts and difficulty-based set-size limits. Finish and review confirms only when non-voided questions remain unanswered; fully answered sets submit directly. Active answers have a small Clear answer button. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
+- **Practice** (`#/practice`): open a random problem, build an untimed topic or card set, search past papers, generate a timed mock or browse contest years. Resume a set and Completed sets show saved progress. Finish and review asks for confirmation only when an answerable question remains unanswered. Active answers have a small Clear answer button. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
   back; on a phone its years are a menu between arrows, with a toggle between the year's papers.
 - **Search** results are one list in order of relevance (formulas, methods, patterns, problems
   and study lists, each labelled), shown full width with no space highlighted. So are tag pages

@@ -16,7 +16,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('.practice-problem-nav [data-practice-index="1"]').click();await p.locator('[data-practice-answer="B"]').click();await p.locator('#finish-practice').click();await p.locator('.practice-results').waitFor();assert.equal(await dialog.count(),0,'fully answered submits in one click');assert.equal((await stored(id)).status,'finished');
  await p.locator('[data-result-index="0"]').click();await p.locator('.practice-review').waitFor();assert.equal(await clear.count(),0,'review cannot clear an answer');
  const partial=await set(['2018-amc-10a-1','2018-amc-10a-2']);await p.locator('[data-practice-answer="A"]').click();await p.locator('#finish-practice').click();await dialog.locator('[value="ok"]').click();await p.locator('.practice-results').waitFor();assert.equal((await stored(partial)).status,'finished');assert.equal(await p.locator('[data-result-index]').count(),2);
- const alternates=await set(['2013-utah-state-math-contest-junior-24','2012-amc-12b-12','2012-utah-state-math-contest-senior-13','2024-hmmt-february-algebra-and-number-theory-1']);
+ const alternates=await set(['2013-utah-state-math-contest-junior-24','2012-amc-12b-12','2012-utah-state-math-contest-senior-13','2024-hmmt-february-algebra-and-number-theory-1','2015-mmaths-individual-7']);
  await p.getByRole('checkbox',{name:'E',exact:true}).click();
  await p.getByRole('checkbox',{name:'D',exact:true}).click();
  await p.clock.fastForward(1000);
@@ -33,9 +33,12 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('.cn-nums [data-practice-index="3"]').click();
  await p.locator('#practice-answer').fill('-6,29');
  await p.locator('.practice-answer-preview .katex').waitFor();
+ await p.locator('.cn-nums [data-practice-index="4"]').click();
+ assert.match(await p.locator('.practice-question').innerText(),/Voided.*degree-ten/s);
+ assert.equal(await p.locator('#practice-answer').count(),0);
  await p.locator('#finish-practice').click();
  await p.locator('.practice-results').waitFor();
- assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct','Voided','Correct']);
+ assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct','Voided','Correct','Voided']);
  await p.locator('[data-result-index="0"]').click();
  await p.locator('.practice-review').waitFor();
  assert.equal(await p.locator('.practice-review [role="checkbox"][aria-checked="true"]').count(),2);
