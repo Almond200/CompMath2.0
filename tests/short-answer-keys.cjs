@@ -9,7 +9,7 @@ require(path.join(data, 'answer-keys-more.js'));
 require(path.join(data, 'answer-keys-short.js'));
 require(path.join(data, 'mock-extras.js'));
 const practice = require('../js/practice-sessions.js');
-const { answers, sources, voided } = window.MATH_SHORT_ANSWER_KEYS;
+const { answers, sources, voided, notes } = window.MATH_SHORT_ANSWER_KEYS;
 const statementDir = path.join(data, 'statements');
 for (const dir of fs.readdirSync(statementDir, { withFileTypes: true }).filter(dir => dir.isDirectory())) {
   for (const file of fs.readdirSync(path.join(statementDir, dir.name)).filter(file => file.endsWith('.js'))) {
@@ -39,6 +39,19 @@ for (const [slug, key] of Object.entries(answers)) {
   }
   assert(key.answers.length, slug);
   for (const value of key.answers) check(slug, value, 'Correct');
+}
+for (const [slug, key] of Object.entries({ ...answers, ...window.MATH_MOCK_EXTRAS })) {
+  if (!key.alternatives) continue;
+  const separator = key.format === 'sequence' ? '; ' : ', ';
+  const individual = key.format === 'set' ? key.answers.filter(answer => !answer.includes(',')) : key.answers;
+  assert(individual.length > 1, slug);
+  for (const first of individual) {
+    for (const second of individual.filter(answer => answer !== first)) {
+      check(slug, first + separator + second, 'Correct');
+    }
+  }
+  const wrong = key.format === 'sequence' ? '0, 0' : '888888888';
+  check(slug, individual[0] + separator + wrong, 'Incorrect');
 }
 assert.equal(usedSources.size, Object.keys(sources).length);
 
@@ -70,6 +83,15 @@ function check(slug, value, verdict) {
 const set = '2014-hmmt-february-algebra-1';
 check('2025-chmmc-individual-10', '6', 'Correct');
 check('2025-chmmc-individual-10', '7', 'Incorrect');
+assert.match(notes['2025-chmmc-individual-10'], /accepting 7.*6/);
+const freeRecurrence = '2015-bmt-analysis-4';
+const priorPractice = practice.create('Saved recurrence answer', 'Any', [freeRecurrence]);
+priorPractice.answers[freeRecurrence] = '3';
+practice.finish(priorPractice);
+assert.equal(practice.result(priorPractice, freeRecurrence), 'Check yourself');
+assert(practice.selfMark(priorPractice, freeRecurrence, 'Correct'));
+assert.equal(practice.result(priorPractice, freeRecurrence), 'Correct');
+assert.match(notes[freeRecurrence], /1 \+ 2a₄/);
 check('2018-lehigh-math-contest-1', '20', 'Correct');
 check('2018-lehigh-math-contest-1', '400', 'Incorrect');
 check('2013-lehigh-math-contest-6', 'sqrt(2)', 'Correct');
@@ -390,7 +412,8 @@ const alternativesProblem = '2017-pumac-division-a-algebra-6';
 check(alternativesProblem, '2', 'Correct');
 check(alternativesProblem, '3', 'Correct');
 check(alternativesProblem, '4', 'Incorrect');
-assert(!practice.answer(practice.create('Alternative answers', 'Any', [alternativesProblem]), alternativesProblem, '2,3', false));
+check(alternativesProblem, '2,3', 'Correct');
+check(alternativesProblem, '2, 4', 'Incorrect');
 check('2006-lehigh-math-contest-21', '2(135-B)', 'Correct');
 check('2006-lehigh-math-contest-30', 'n(n+5)-3', 'Correct');
 check('2006-lehigh-math-contest-30', 'n^2+5n-3.0000000001', 'Incorrect');

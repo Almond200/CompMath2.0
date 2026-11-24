@@ -87,6 +87,10 @@
   function voidReason(slug) {
     return root.MATH_ANSWER_KEYS?.voided?.[slug] ?? root.MATH_EXTRA_KEYS?.voided?.[slug] ?? root.MATH_SHORT_ANSWER_KEYS?.voided?.[slug];
   }
+  function needsSelfCheck(set, slug) {
+    return !!(set.selfCheck?.[slug] || (!exactKey(slug) && !officialKey(slug) &&
+      root.MATH_SHORT_ANSWER_KEYS?.notes?.[slug]));
+  }
   function officialKey(slug) {
     return root.MATH_ANSWER_KEYS?.answers?.[slug] ?? root.MATH_EXTRA_KEYS?.answers?.[slug];
   }
@@ -96,18 +100,19 @@
       (/^[A-F]$/.test(key || '') ? [key] : []);
   }
   function allowsMultipleChoices(slug) {
-    return root.MATH_EXTRA_KEYS?.multipleChoicePapers?.includes(slug.replace(/-\d+$/, '')) ?? false;
+    return choiceAnswers(slug).filter(choice => choice.length === 1).length > 1 ||
+      (root.MATH_EXTRA_KEYS?.multipleChoicePapers?.includes(slug.replace(/-\d+$/, '')) ?? false);
   }
   // Top-level commas separate entries. Commas inside parentheses belong to a tuple
   // or to its component expressions, so do not split those until parsing the tuple.
-  function splitExactList(text) {
+  function splitExactList(text, separator = ',') {
     let depth = 0, start = 0;
     const parts = [];
     for (let i = 0; i < text.length; i++) {
       if (text[i] === '(' || text[i] === '{') depth++;
       if (text[i] === ')' || text[i] === '}') depth--;
       if (depth < 0) throw Error('Unmatched parenthesis');
-      if (!depth && text[i] === ',') { parts.push(text.slice(start, i)); start = i + 1; }
+      if (!depth && text[i] === separator) { parts.push(text.slice(start, i)); start = i + 1; }
     }
     if (depth) throw Error('Unmatched parenthesis');
     return [...parts, text.slice(start)].map(part => part.trim());
@@ -190,7 +195,12 @@
     if (text.length > 120) return null;
     try { return math.toSymbolicTex(text); } catch (err) { return null; }
   }
-  function exactTex(text, format, notation) {
+  function exactTex(text, format, notation, alternatives = false) {
+    if (alternatives) {
+      const separator = format === 'sequence' ? ';' : ',';
+      const parts = splitExactList(text, separator);
+      if (parts.length > 1) return parts.map(part => exactTex(part, format, notation)).join(separator + '\\ ');
+    }
     const equation = text.includes('=');
     const display = equation && symbolicTex(text);
     if (display) return display;
@@ -1331,6 +1341,17 @@
   }
   const normalizeTextAnswer = value => String(value).normalize('NFKC').trim()
     .replace(/\s+/g, ' ').replace(/\s*([,<])\s*/g, '$1').toLowerCase();
+  function matchesShortAnswer(text, { answers, format, notation, alternatives }) {
+    const matches = part => answers.some(key => format === 'text'
+      ? normalizeTextAnswer(key) === normalizeTextAnswer(part)
+      : matchesExact(part, key, format, notation));
+    if (matches(text)) return true;
+    if (!alternatives) return false;
+    try {
+      const parts = splitExactList(text, format === 'sequence' ? ';' : ',');
+      return parts.length > 1 && parts.every(part => part && matches(part));
+    } catch (err) { return false; }
+  }
   function aimeValue(text) {
     if (/^\d+$/.test(text)) return text.length <= 3 ? Number(text) : null;
     if (!text || text.length > 120) return null;
@@ -1346,16 +1367,19 @@
     // A problem read in its official paper (set.selfCheck) takes any short answer; the solver
     // checks it against the official solution at review.
     const exact = exactKey(slug);
-    if (set.selfCheck?.[slug]) { if (text.length > 60) return false; }
+    if (needsSelfCheck(set, slug)) { if (text.length > 60) return false; }
     else if (exact?.format === 'text') { if (text.length > 120) return false; }
     else if (exact) {
       if (text) {
-        try { exactValues(text, exact.format, exact.notation); }
+        try {
+          const parts = exact.alternatives ? splitExactList(text, exact.format === 'sequence' ? ';' : ',') : [text];
+          parts.forEach(part => exactValues(part, exact.format, exact.notation));
+        }
         catch (err) { if (!symbolicTex(text)) return false; }
       }
     } else if (allowsMultipleChoices(slug) && text) {
       const letters = new Set(text);
-      if (!/^[A-E]{1,5}$/.test(text) || letters.size !== text.length) return false;
+      if (!/^[A-F]{1,6}$/.test(text) || letters.size !== text.length) return false;
       text = [...letters].sort().join('');
     } else if (!(text === '' || (aime ? aimeValue(text) != null : (/-columbus-state-tournament-/.test(slug) ? /^[A-F]$/ : /^[A-E]$/).test(text)))) return false;
     set.answers[slug] = text;
@@ -1364,27 +1388,29 @@
   function result(set, slug) {
     if (voidReason(slug)) return 'Voided';
     if (!set.answers[slug]) return 'Unanswered';
-    if (set.selfCheck?.[slug]) return set.self?.[slug] || 'Check yourself';
+    if (needsSelfCheck(set, slug)) return set.self?.[slug] || 'Check yourself';
     const exact = exactKey(slug);
-    if (exact?.format === 'text') return exact.answers.some(key => normalizeTextAnswer(key) === normalizeTextAnswer(set.answers[slug])) ? 'Correct' : 'Incorrect';
-    if (exact) return exact.answers.some(key => matchesExact(set.answers[slug], key, exact.format, exact.notation)) ? 'Correct' : 'Incorrect';
+    if (exact) return matchesShortAnswer(set.answers[slug], exact) ? 'Correct' : 'Incorrect';
     // LIVE's MAA keys, else the official letters of the other multiple-choice contests (answer-keys-more.js).
     const key = officialKey(slug);
     if (key == null) return 'Answer unavailable';
     const actual = String(set.answers[slug]).trim();
-    const same = /^\d+$/.test(key) ? aimeValue(actual) === Number(key) : choiceAnswers(slug).includes(actual.toUpperCase());
+    if (/^\d+$/.test(key)) return aimeValue(actual) === Number(key) ? 'Correct' : 'Incorrect';
+    const choices = choiceAnswers(slug), selected = actual.toUpperCase();
+    const same = choices.includes(selected) || (allowsMultipleChoices(slug) && selected.length > 0 &&
+      new Set(selected).size === selected.length && [...selected].every(choice => choices.includes(choice)));
     return same ? 'Correct' : 'Incorrect';
   }
   // After finishing, the solver marks a self-checked answer right or wrong (or clears the mark).
   function selfMark(set, slug, verdict) {
-    if (set.status !== 'finished' || voidReason(slug) || !set.selfCheck?.[slug] || !set.answers[slug]) return false;
+    if (set.status !== 'finished' || voidReason(slug) || !needsSelfCheck(set, slug) || !set.answers[slug]) return false;
     if (!['Correct', 'Incorrect', null].includes(verdict)) return false;
     set.self = { ...(set.self || {}) };
     if (verdict) set.self[slug] = verdict; else delete set.self[slug];
     return true;
   }
   const api = { KEY, read, save, create, createMock, checkpoint, pause, resume, finish, timeLeft, exactKey, voidReason,
-    officialKey, choiceAnswers, allowsMultipleChoices, exactTex, answer, result, selfMark };
+    officialKey, choiceAnswers, allowsMultipleChoices, needsSelfCheck, exactTex, answer, result, selfMark };
   if (typeof module !== 'undefined') module.exports = api;
   else root.PracticeSessions = api;
 })(typeof window === 'undefined' ? globalThis : window);

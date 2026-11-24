@@ -49,6 +49,8 @@ function grade(slug, answer, result) {
 }
 grade('2012-amc-12b-12', 'D', 'Correct');
 grade('2012-amc-12b-12', 'E', 'Correct');
+grade('2012-amc-12b-12', 'ED', 'Correct');
+grade('2012-amc-12b-12', 'AD', 'Incorrect');
 grade('2012-amc-12b-12', 'A', 'Incorrect');
 require('../js/data/problems/statements/cemc/2005.js');
 assert.match(statements['2005-fermat-contest-25'].s, /positive integer/);
@@ -119,13 +121,16 @@ for (const slug of ['2011-umd-hsmc-part-i-18', '2018-umd-hsmc-part-i-7']) {
   assert.equal(practice.result(set, slug), 'Voided');
   assert(!practice.answer(set, slug, 'C', false));
 }
-assert(!practice.answer(practice.create('Single selection', 'Any', ['2012-amc-12b-12']), '2012-amc-12b-12', 'DE', false));
+assert(!practice.answer(practice.create('Single selection', 'Any', ['2018-amc-10a-1']), '2018-amc-10a-1', 'DE', false));
 for (const [suffix, letters] of [['junior-2', 'AD'], ['senior-6', 'AB'], ['senior-23', 'ACD']]) {
   const slug = '2012-utah-state-math-contest-' + suffix;
-  assert(!practice.allowsMultipleChoices(slug));
+  assert(practice.allowsMultipleChoices(slug));
   for (const choice of letters) grade(slug, choice, 'Correct');
+  grade(slug, letters, 'Correct');
+  grade(slug, letters + 'E', 'Incorrect');
   grade(slug, 'E', 'Incorrect');
 }
+grade('2012-utah-state-math-contest-senior-23', 'DA', 'Correct');
 grade('2012-utah-state-math-contest-senior-8', 'B', 'Correct');
 grade('2012-utah-state-math-contest-senior-28', 'E', 'Correct');
 for (const [suffix, a, b] of [['junior-24', 'D', 'E'], ['junior-26', 'A', 'D'], ['senior-12', 'C', 'D']]) {

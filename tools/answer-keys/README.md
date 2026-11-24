@@ -2,6 +2,8 @@
 
 `js/data/problems/answer-keys-more.js` (`window.MATH_EXTRA_KEYS`) combines organizer keys, worked answers matched to choices, and the independent solutions documented here. The MAA papers and the AHSME come from LIVE (`tools/fetch-answer-keys.py`), with separately documented exceptions.
 
+When a question accepts multiple individual choices, Practice gives full credit for any nonempty selection made up of those choices.
+
 Run from the repository root; downloads and caches go to `$KEYS_WORK` (default `/tmp/answer-keys-work`):
 
 ```bash
@@ -119,4 +121,4 @@ The organizer archive links three packets of ten questions. These keys were deri
 
 ### Final multiple-choice coverage
 
-Of the 10,936 indexed multiple-choice problems, 10,929 have verified automatic grades and seven are void. The voids are 2025 AMC 12A #25, 2011 Maryland #18, 2018 Maryland #7, 2012 Utah Senior #4 and #13, 2015 Columbus #31, and 2022 Columbus #28. The short-response audit and its 22 documented self-checks are recorded in [short-answers.md](short-answers.md).
+Of the 10,936 indexed multiple-choice problems, 10,929 have verified automatic grades and seven are void. The voids are 2025 AMC 12A #25, 2011 Maryland #18, 2018 Maryland #7, 2012 Utah Senior #4 and #13, 2015 Columbus #31, and 2022 Columbus #28. The short-response audit and its 23 documented self-checks are recorded in [short-answers.md](short-answers.md).

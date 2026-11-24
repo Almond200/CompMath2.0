@@ -6204,7 +6204,7 @@
   function exactAnswerHtml(text, key = {}) {
     if(!text)return '';
     if (key.format === 'text') return escapeAttr(text);
-    try { return `<span class="practice-answer-math">$${escapeAttr(practiceSessions.exactTex(text, key.format, key.notation))}$</span>`; }
+    try { return `<span class="practice-answer-math">$${escapeAttr(practiceSessions.exactTex(text, key.format, key.notation, key.alternatives))}$</span>`; }
     catch (err) { return escapeAttr(text); }
   }
   const PRACTICE_MATH_KEYS = [
@@ -6237,6 +6237,7 @@
     { tex: ':', name: 'Ratio separator', open: ':' },
     { tex: '\\pm', name: 'Plus or minus', open: '±' },
     { tex: ',', name: 'Separate answers', open: ', ' },
+    { tex: ';', name: 'Separate answer lists', open: '; ' },
     { tex: '(', name: 'Open parenthesis', open: '(' },
     { tex: ')', name: 'Close parenthesis', open: ')' },
     { tex: '[', name: 'Open square bracket', open: '[' },
@@ -6272,7 +6273,7 @@
       preview.textContent = text;
       if (!text || key?.format === 'text') return;
       let tex;
-      try { tex = practiceSessions.exactTex(text, key?.format, key?.notation); }
+      try { tex = practiceSessions.exactTex(text, key?.format, key?.notation, key?.alternatives); }
       catch (err) { tex = text.replace(/^\$\$(.*)\$\$$|^\$(.*)\$$/, '$1$2'); }
       try {
         window.katex.render(tex, preview, { throwOnError: true, maxExpand: 100 });
@@ -6579,8 +6580,9 @@
       <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
         const p = PROBLEM_BY_SLUG[slug], result = practiceSessions.result(set, slug);
         const answer = set.answers[slug], exact = practiceSessions.exactKey(slug);
-        const submitted = (exact || /AIME/.test(p?.fam)) && !set.selfCheck?.[slug]
-          ? exactAnswerHtml(answer, exact) : escapeAttr(practiceSessions.allowsMultipleChoices(slug) && !set.selfCheck?.[slug]
+        const paper = practiceSessions.needsSelfCheck(set, slug);
+        const submitted = (exact || /AIME/.test(p?.fam)) && !paper
+          ? exactAnswerHtml(answer, exact) : escapeAttr(practiceSessions.allowsMultipleChoices(slug) && !paper
             ? [...(answer || '')].join(', ') : answer || '');
         const summary = result === 'Voided' ? '' : `<small>${answer ? 'Your answer: ' + submitted : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small>`;
         return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${practiceProblemNumber(set, i)}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong>${summary}</span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
@@ -6609,11 +6611,15 @@
     const answeredSummary = () => `${answerable.filter(id => set.answers[id]).length} of ${answerable.length} answered`;
     const voidNote = practiceSessions.voidReason(slug);
     const outcome = practiceSessions.result(set, slug);
-    const aime = p && /AIME/.test(p.fam), exact = practiceSessions.exactKey(slug), paper = !!(p && !voidNote && set.selfCheck?.[slug]);
+    const aime = p && /AIME/.test(p.fam), exact = practiceSessions.exactKey(slug);
+    const paper = !!(p && !voidNote && practiceSessions.needsSelfCheck(set, slug));
     const inlinePaper = paper && archiveStatement(p);
     const external = p && !paper && externalPracticePrompt(p);
     const typedAnswer = aime || exact || paper;
-    const exactLabel = { set: exact?.notation === 'letter-list' ? 'All letters, separated by commas (spaces optional).' :
+    const alternativeLabel = exact?.alternatives ? (exact.format === 'sequence'
+      ? 'Separate values within a list with commas and separate complete lists with a semicolon.'
+      : 'Enter one or more answers. Separate answers with commas (spaces optional). Write numbers without commas.') : '';
+    const exactLabel = alternativeLabel || { set: exact?.notation === 'letter-list' ? 'All letters, separated by commas (spaces optional).' :
       exact?.notation === 'value-or-set' ? 'Enter your answer. Separate values with commas and write numbers without commas.' :
       'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.',
       sequence: exact?.notation === 'base-3'
