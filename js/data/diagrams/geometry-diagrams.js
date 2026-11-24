@@ -9598,6 +9598,31 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
+  DIAGRAMS["parallel-lines-height-change"] = [(() => {
+    const project = proj3([155, 179], 40);
+    const footprint = [[0, 0], [0, 4], [3, 4], [3, 0]];
+    const points = [[0, 0], [0, 2], [3, 0], [3, 4]];
+    const height = ([x, y]) => 1 + (x + y) / 2;
+    const ground = ([x, y]) => project(x, y, 0);
+    const top = p => project(...p, height(p));
+    const [a, b, c, d] = points.map(top);
+    const [ga, gb, gc, gd] = points.map(ground);
+    const [ha, hb, hc, hd] = points.map(height);
+    const ok = dist(sub(points[3], points[2]), mul(sub(points[1], points[0]), 2)) < 1e-9 && hd - hc === 2 * (hb - ha);
+    return wrap(410, 292, [
+      poly(footprint.map(ground), FNT, 1.3),
+      ...points.map(p => seg(ground(p), top(p), FNT, 1.2, "4 4")),
+      poly(footprint.map(top), ACC, 1.6, ACCS),
+      seg(ga, gb, GRN, 1.8), seg(gc, gd, ORG, 1.8),
+      seg(a, b, GRN, 2.8), seg(c, d, ORG, 2.8),
+      dot(a, GRN, 3), dot(b, GRN, 3), dot(c, ORG, 3), dot(d, ORG, 3),
+      txt(add(a, [-14, 2]), "A", GRN, 13), txt(add(b, [11, 13]), "B", GRN, 13),
+      txt(add(c, [-13, -3]), "C", ORG, 13), txt(add(d, [0, -12]), "D", ORG, 13),
+      txt(add(mid(ga, gb), [5, -8]), "2 m", GRN, 12), txt(add(mid(gc, gd), [-9, 16]), "4 m", ORG, 12),
+      cap(410, 292, "The run from C to D is twice the run from A to B in the same direction. On the same flat ramp, the rise doubles from 1 m to 2 m." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
   // The helpers above, shared with js/data/diagrams/problem-diagrams.js (the figures drawn for
   // problems that print none), so a problem figure is built by the same rules as a card's.
   window.GEO_KIT = { add, sub, mul, lerp, mid, dist, norm, perp, away, rad, onC, rotv, lineInt, foot,

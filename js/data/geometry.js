@@ -2261,7 +2261,7 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "sphere-formulas",
-          name: "Sphere",
+          name: "Sphere Formulas",
           latex: String.raw`SA = 4\pi r^2, \qquad V = \frac43\pi r^3, \qquad V_{\text{cap}} = \frac{\pi h^2(3r - h)}{3}, \qquad A_{\text{zone}} = 2\pi rh`,
           description: String.raw`Surface area and volume of a sphere of radius $r$. Spherical cap of height $h$: volume $\frac{\pi h^2(3r-h)}{3}$, curved (zone) area $2\pi r h$ — strikingly, only the height matters.`,
           keywords: ["sphere", "surface area", "volume", "ball", "spherical cap", "zone"],
@@ -2474,6 +2474,16 @@ window.MATH_SECTIONS.push({
           importance: "lower",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
+        },
+        {
+          id: "parallel-lines-height-change",
+          name: "Parallel Lines and Height Changes",
+          latex: String.raw`\vec d_{CD}=k\vec d_{AB}\quad\Longrightarrow\quad h_D-h_C=k(h_B-h_A)`,
+          description: String.raw`Parallel lines in a nonvertical plane have the same slope when measured in the same horizontal direction. This lets a short segment's rise determine the rise along a longer parallel segment on a ramp or tilted panel. If one horizontal displacement is twice the other in the same direction, the height change is twice as large. Reversing direction reverses the sign of the height change.`,
+          keywords: ["parallel lines same slope", "parallel lines in a plane", "rise over run", "3d coordinates", "height difference", "horizontal displacement", "tilted plane", "solar panel", "parallelness"],
+          importance: "low",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
         },
         {
           id: "plane-intercept-form",

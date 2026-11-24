@@ -3992,14 +3992,14 @@ The problem defines something for every positive integer $n$ (a sequence by a ru
 ## How
 1. Compute the answer for $n = 1, 2, 3, \ldots$ up to about $8$ or $16$, in a table, carefully.
 2. Look for a rule: write $n$ in base $2$, compare with powers of $2$ or squares, take differences, or separate even and odd $n$.
-3. State the rule as a formula and check it on a case not yet used.
-4. Confirm it from the problem: show the rule is preserved by the step from smaller cases to larger ones (the problem's recursion), which is an induction.
-5. Apply it to the large $n$.
+3. State the conjecture and check a case you did not use to make it. A conjecture can be an ordering or a bound as well as a formula.
+4. Show that the step in the problem preserves what you found. For a recurrence that uses several terms, check enough consecutive terms to cover every input to the next step.
+5. Apply the confirmed pattern to the large $n$.
 
 For the Josephus problem, with $n$ people in a circle and every second one removed, starting with person $2$, the survivors for $n = 1, \ldots, 8$ are $1, 1, 3, 1, 3, 5, 7, 1$: the survivor is $1$ at each power of $2$ and goes up by $2$ after it, so $J(n) = 2(n - 2^k) + 1$ with $2^k$ the largest power of $2$ at most $n$. For $n = 100$, $J(100) = 2 \cdot 36 + 1 = 73$.
 
 ## Why it works
-A pattern seen in a table is only a guess until it is proved, and the proof comes from how the problem builds each case from smaller ones. In the Josephus problem, after one pass around a circle of $2m$ people the $m$ odd-numbered people remain, with person $1$ about to skip, so the survivor is the survivor of $m$ people renumbered: $J(2m) = 2J(m) - 1$. With $2m + 1$ people, after the evens go, person $1$ is removed next, leaving $3, 5, \ldots, 2m + 1$, so $J(2m + 1) = 2J(m) + 1$. If $J(m) = 2(m - 2^k) + 1$, then $J(2m) = 4(m - 2^k) + 1 = 2(2m - 2^{k + 1}) + 1$ and $J(2m + 1) = 4(m - 2^k) + 3 = 2(2m + 1 - 2^{k + 1}) + 1$, the same formula one size up, and $J(1) = 1$ starts it; so by induction the formula holds for every $n$. In general the small cases reveal the rule and the recursion proves it, which is why both steps are needed.
+A table makes a conjecture concrete enough to test. The proof comes from the rule that builds each case from smaller ones. For example, once three consecutive terms of one sequence all exceed the corresponding terms of another, taking the average of those three preserves the lead in the next window. In the Josephus problem, after one pass around a circle of $2m$ people the $m$ odd-numbered people remain, with person $1$ about to skip, so the survivor is the survivor of $m$ people renumbered: $J(2m) = 2J(m) - 1$. With $2m + 1$ people, after the evens go, person $1$ is removed next, leaving $3, 5, \ldots, 2m + 1$, so $J(2m + 1) = 2J(m) + 1$. If $J(m) = 2(m - 2^k) + 1$, then $J(2m) = 4(m - 2^k) + 1 = 2(2m - 2^{k + 1}) + 1$ and $J(2m + 1) = 4(m - 2^k) + 3 = 2(2m + 1 - 2^{k + 1}) + 1$, the same formula one size up, and $J(1) = 1$ starts it; so by induction the formula holds for every $n$. In general the small cases reveal the rule and the recursion proves it, which is why both steps are needed.
 
 ## Formulas it uses
 None of its own: the pattern is whatever the table shows, and the confirmation is an induction on the problem's own recursion.

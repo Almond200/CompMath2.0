@@ -5597,4 +5597,113 @@
       cap(430, 340, "The three square stages: gray, blue, then gold. The outer boundary is A₅A₆B₅B₆C₅C₆; all vertices are constructed by quarter-turns from the 13–14–15 triangle." + MM(ok))
     ]);
   })();
+
+  PROB["2026-amc-10b-3"] = (() => {
+    const vertices = [[0,0,0],[3,0,0],[3,2,0],[0,2,0],[0,0,1],[3,0,1],[3,2,1],[0,2,1]];
+    const faces = [[0,1,2,3],[4,5,6,7],[0,1,5,4],[1,2,6,5],[2,3,7,6],[3,0,4,7]];
+    const { Pj, view } = projector([78, 173], 74, [1, .15], [.48, -.42]);
+    const [a, b, , d, e] = vertices.map(Pj);
+    const sector = (u, v) => [e, ...Array.from({ length: 19 }, (_, i) => {
+      const angle = i * Math.PI / 36;
+      return Pj(vertices[4].map((c, axis) => c + .5 * (u[axis] * Math.cos(angle) + v[axis] * Math.sin(angle))));
+    })];
+    const x = [1,0,0], y = [0,1,0], down = [0,0,-1];
+    const ok = Math.hypot(...v3.sub(vertices[1], vertices[0])) === 3 && Math.hypot(...v3.sub(vertices[3], vertices[0])) === 2
+      && Math.hypot(...v3.sub(vertices[4], vertices[0])) === 1;
+    return wrap(430, 270, [
+      ...solidEdges(vertices, faces, view, Pj),
+      ...[[x,y],[x,down],[y,down]].map(([u,v]) => poly(sector(u,v), ACC, 1.2, ACCS)),
+      dot(e, ACC, 3.4), txt(add(e, [3, -15]), "r = ½", ACC, 12),
+      txt(add(mid(a, b), [0, 17]), "3", DIM, 12),
+      txt(add(mid(a, d), [0, 18]), "2", DIM, 12),
+      txt(add(mid(a, e), [-15, 0]), "1", DIM, 12),
+      cap(430, 270, "The blue quarter-circle boundaries show the half-unit range of one corner bee along the three adjacent faces." + MM(ok))
+    ]);
+  })();
+  PROB["2026-amc-12b-2"] = PROB["2026-amc-10b-3"];
+
+  PROB["2026-amc-10b-11"] = (() => {
+    const a = [66, 216], b = [361, 216], c = [176, 43];
+    const d = lerp(a, b, 1/3), f = lerp(b, c, 1/4), e = lerp(c, a, 1/5);
+    const ok = [[a,d,b,1/3],[b,f,c,1/4],[c,e,a,1/5]].every(([u,v,w,t]) => Math.abs(dist(u,v)/dist(u,w) - t) < 1e-9);
+    return wrap(430, 260, [
+      poly([a,b,c], DIM, 2), poly([d,f,e], ACC, 2, ACCS),
+      ...[a,b,c,d,e,f].map(pt => dot(pt, DIM, 3)),
+      txt(add(a, [-10, 15]), "A", DIM, 13), txt(add(b, [11, 15]), "B", DIM, 13), txt(add(c, [0, -12]), "C", DIM, 13),
+      txt(add(d, [0, 17]), "D", ACC, 13), txt(add(e, [-12, -2]), "E", ACC, 13), txt(add(f, [12, -6]), "F", ACC, 13),
+      cap(430, 260, "D, F and E divide the sides as given. Their triangle is shaded." + MM(ok))
+    ]);
+  })();
+
+  PROB["2026-amc-12b-8"] = (() => {
+    const vertices = [[0,0,1],[1,0,0],[0,1,0],[-1,0,0],[0,-1,0],[0,0,-1]];
+    const equator = [1,2,3,4];
+    const faces = equator.map((n,i) => [0,n,equator[(i+1)%4]]).concat(equator.map((n,i) => [5,n,equator[(i+1)%4]]));
+    const section = equator.map(i => vertices[0].map((v,j) => (v + vertices[i][j]) / 2));
+    const { Pj, view } = projector([211, 151], 91, [1, .3], [-.68, .52]);
+    const upper = Pj(vertices[0]), slice = Pj([0,0,.5]), lower = Pj(vertices[5]);
+    const ok = faces.every(face => face.every((n,i) => Math.abs(Math.hypot(...v3.sub(vertices[n], vertices[face[(i+1)%3]])) - Math.SQRT2) < 1e-9))
+      && section.every(v => v[2] === .5);
+    return wrap(430, 276, [
+      seg(upper, lower, FNT, 1.3, "4 4"),
+      ...solidEdges(vertices, faces, view, Pj),
+      poly(section.map(Pj), ACC, 2.2, ACCS), seg(upper, slice, ACC, 1.5, "4 3"),
+      dot(upper, ACC, 3), dot(slice, ACC, 3), txt(add(mid(upper,slice), [-11, 1]), "½", ACC, 12),
+      txt(add(mid(upper,Pj(vertices[1])), [14,-3]), "√2", DIM, 12),
+      cap(430, 276, "The cutting plane is perpendicular to the dashed axis and intersects it half a unit from the upper vertex." + MM(ok))
+    ]);
+  })();
+
+  PROB["2026-amc-12b-10"] = (() => {
+    const origin = [198, 172], scale = 7.1, point = (x,y) => [origin[0] + scale*x, origin[1] - scale*y];
+    const a = point(-14,0), b = point(24,0), d = point(0,0), c = point(-8,8*Math.sqrt(3)), o = point(5,0);
+    const ok = Math.abs(dist(d,c) / scale - 16) < 1e-9 && Math.abs(dist(o,c) / scale - 19) < 1e-9;
+    return wrap(430, 340, [
+      circ(o, 19*scale, FNT, 1.5), poly([a,b,c], DIM, 2, ACCS), seg(d,c, ACC, 1.8),
+      ...[a,b,c,d].map(pt => dot(pt, DIM, 3)),
+      txt(add(a, [-15, 4]), "A", DIM, 13), txt(add(b, [14, 4]), "B", DIM, 13),
+      txt(add(c, [-4, -13]), "C", DIM, 13), txt(add(d, [0, 20]), "D", DIM, 13),
+      txt(add(mid(a,d), [0, 16]), "14", DIM, 12), txt(add(mid(d,b), [0, 16]), "24", DIM, 12),
+      txt(add(mid(c,d), [16, -3]), "16", ACC, 12),
+      cap(430, 340, "AB is the diameter. The blue segment joins C to D." + MM(ok))
+    ]);
+  })();
+
+  PROB["2026-amc-12b-12"] = (() => {
+    const p = [116, 146], q = [194, 146], radius = dist(p,q);
+    const p1 = add(q, rotv(sub(p,q), rad(120)));
+    const arc = Array.from({ length: 25 }, (_, i) => add(q, rotv(sub(p,q), rad(i*5))));
+    const ok = Math.abs(dist(p1,q) - radius) < 1e-9 && Math.abs(dist(arc[24],p1)) < 1e-9;
+    return wrap(430, 255, [
+      circ(q, radius, FNT, 1.1, "none", "4 4"), pline(arc, ACC, 2.5),
+      seg(p,q,DIM,1.8), seg(q,p1,ACC,1.6), dot(p,DIM,3), dot(q,DIM,3), dot(p1,ACC,3),
+      txt(add(p, [-16,0]), "P", DIM, 13), txt(add(q, [0,18]), "Q", DIM, 13), txt(add(p1, [10,-11]), "P′", ACC, 13),
+      txt(add(mid(p,q), [0,16]), "1 m", DIM, 12), txt(add(q, [-6,-24]), "120°", ACC, 12),
+      cap(430, 255, "Polly first turns 120° clockwise about Quentin, from P to P′. Quentin then turns about P′." + MM(ok))
+    ]);
+  })();
+
+  PROB["2026-amc-12b-24"] = (() => {
+    const radiusSquared = t => t*(t+2)*(t+6)/(3*t+8);
+    let low=2, high=4;
+    for (let i=0; i<40; i++) {
+      const mid=(low+high)/2;
+      if (radiusSquared(mid) < 10) low=mid;
+      else high=mid;
+    }
+    const t=(low+high)/2, r=Math.sqrt(radiusSquared(t));
+    const ab=2*t+2, ac=2*t+6, bc=2*t+8;
+    const cx=(ac*ac+ab*ab-bc*bc)/(2*ab), cy=Math.sqrt(ac*ac-cx*cx);
+    const scale=174/cy, draw=(x,y) => [86+scale*x,221-scale*y];
+    const a=draw(0,0), b=draw(ab,0), c=draw(cx,cy), incenter=draw(t,r);
+    const mids=[mid(a,b),mid(b,c),mid(c,a)];
+    const ok=mids.every((pt,i) => Math.abs((dist(incenter,pt)/scale)**2 - [11,14,19][i]) < 1e-9);
+    return wrap(430, 265, [
+      poly([a,b,c],DIM,2), circ(incenter,r*scale,ACC,1.6,ACCS),
+      ...mids.map(pt => seg(incenter,pt,DIM,1.6,"4 3")), ...mids.map(pt => dot(pt,DIM,3)),
+      dot(incenter,ACC,3.5), txt(add(incenter,[-13,-8]), "I", ACC, 13),
+      txt(add(a,[-10,16]), "A", DIM, 13), txt(add(b,[10,16]), "B", DIM, 13), txt(add(c,[0,-13]), "C", DIM, 13),
+      cap(430, 265, "The dashed segments join the incenter to the side midpoints. Their lengths are √11, √14 and √19." + MM(ok))
+    ]);
+  })();
 })();

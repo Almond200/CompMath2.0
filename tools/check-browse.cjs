@@ -118,6 +118,19 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await page.locator('.br-step').first().click();await page.waitForFunction(()=>/2400/.test(document.querySelector('.br-band-h')?.textContent));assert.match(await page.locator('.br-band-h').innerText(),/^Rated 2400 to 2599$/);
  await page.locator('.br-row').first().click();await page.locator('.prob-chain').waitFor();await page.goBack();await page.locator('.br-band-h').waitFor();
  assert.match(await page.locator('.back-link').first().innerText(),/Contests/);
+ await go('#/problem/2021-fall-amc-10a-17');
+ await page.locator('.prob-chain .chain-toggle').waitFor();
+ const solutionToggle=page.locator('.prob-chain .chain-toggle');
+ if(await solutionToggle.getAttribute('aria-expanded')==='false')await solutionToggle.click();
+ const routes=page.locator('.prob-chain .chain-solution');
+ assert.equal(await routes.count(),2);
+ assert.match(await routes.nth(1).locator('.chain-strategy').innerText(),/^Alternatively/);
+ for(const [i,id] of ['parallel-lines-height-change','parallelogram-vertices'].entries()){
+  const route=routes.nth(i), card=route.locator(`.chain-grid a[href="#/f/${id}"]`);
+  assert.deepEqual(await route.locator(':scope > *').evaluateAll(nodes=>nodes.map(el=>el.className)),['chain-strategy','chain-grid']);
+  assert.equal(await route.locator('.chain-grid a').count(),1);
+  assert.equal(await card.evaluate(el=>getComputedStyle(el).borderTopStyle),'solid');
+ }
  await fits();assert.equal(await page.locator('.katex-error').count(),0);assert.deepEqual(errors,[]);
  console.log(theme,width,'problem sections, arrow alignment, Contests buttons, topic rail and contest groups, difficulty chart and ranges: passed');await page.close();
 }

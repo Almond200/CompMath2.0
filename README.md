@@ -1,10 +1,10 @@
 # Competition Math Reference
 
-A searchable reference for AMC 10/12, AIME and olympiad training: 788 cards covering formulas,
-methods, and patterns (556 formulas, 183 methods, 49 patterns); 13 Learn textbooks (103 chapters,
+A searchable reference for AMC 10/12, AIME and olympiad training: 790 cards covering formulas,
+methods, and patterns (558 formulas, 183 methods, 49 patterns); 13 Learn textbooks (103 chapters,
 593 lessons); and a database of 19,456 past contest problems from 35 contests, 1950 to 2026
 (17,931 with their statements shown in the app, the rest linked to the official paper), every one
-rated and filed in a 457-node topic tree, and 15,943 cross-linked to the cards their solutions run
+rated and filed in a 457-node topic tree, and 15,949 cross-linked to the cards their solutions run
 through. Special:Statistics in the app recomputes these counts.
 
 Static, with no application backend or required build step. KaTeX 0.16.11 and its fonts are

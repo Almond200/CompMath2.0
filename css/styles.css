@@ -1741,6 +1741,7 @@ html[data-text="larger"] .prob-statement { font-size: 21px; }
    Hiding them here rather than rebuilding the sidebar is deliberate: buildSidebar() runs once
    and owns a delegated click listener, so rebuilding it per render would leak one each time. */
 html[data-layout="wiki"] .nav-subs { display: none; }
+html[data-layout="wiki"] .nav-home-section .nav-subs { display: grid; }
 .settings-actions { display: flex; justify-content: flex-end; }
 .settings-reset {
   font: inherit; font-size: 13px; color: var(--text-dim); background: transparent;
@@ -2264,8 +2265,7 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
 .chain-empty { color: var(--text-faint); font-style: italic; font-size: 13px; }
 /* "How this problem works": the strategy, then Pattern | Method | Formulas side by side. */
 .chain-strategy { margin: 0 0 12px; font-size: calc(15px * var(--tx)); line-height: 1.6; color: var(--text); }
-.chain-alt-note { margin: 8px 0 0; font-size: 12.5px; color: var(--text-faint); }
-.chain-cards .chain-alt-card { border-style: dashed; }
+.chain-solution + .chain-solution { margin-top: 18px; }
 .prob-own-figure { margin: 14px 0; }
 /* A problem's own figure sits inside How this problem works, above the strategy. */
 .prob-chain .prob-own-figure { margin: 4px 0 14px; }
@@ -2286,12 +2286,6 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
 .card-study-list { margin: 0; padding-left: 20px; }
 .card-study-list li { margin: 4px 0; }
 
-.nav-practice-link {
-  display: block; padding: 9px 12px; border-radius: 8px; font-size: 14px; font-weight: 650;
-  color: var(--text); text-decoration: none;
-}
-.nav-practice-link:hover { background: var(--bg-panel); }
-
 /* Problems under the search results. */
 
 .sp-chain { color: var(--text-dim); font-size: 12.5px; }
@@ -2302,6 +2296,8 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
 .nsh-ask { font-size: 12.5px; color: var(--text-faint); }
 .nav-group[hidden] { display: none; }
 .nav-section-btn.active { background: var(--space-soft); color: var(--space); }
+.nav-space-toggle .ui-icon { width: 16px; height: 16px; }
+.nav-space-toggle[aria-expanded="true"] .ui-icon { transform: rotate(90deg); }
 .nav-section-btn.active .nav-count { color: var(--space); }
 .nav-sub-link.active { color: var(--space); border-left-color: var(--space); font-weight: 650; }
 .book-eyebrow { color: var(--space); }
@@ -3359,6 +3355,7 @@ html[data-text="large"] .try-block .try-sub, html[data-text="large"] .detail-bod
 .info-body { padding: 16px 18px 18px; }
 .info-ask { margin: 0 0 6px; font-size: 15px; font-weight: 750; color: var(--text); }
 .info-intro { margin: 0 0 16px; font-size: 14px; line-height: 1.55; color: var(--text-dim); }
+.info-intro:last-child { margin-bottom: 0; }
 .info-intro a { color: var(--accent); }
 .info-label { margin-bottom: 6px; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); }
 .info-modal .modal-head h3 { color: var(--text); }
@@ -3443,7 +3440,6 @@ html[data-density="compact"] .page-toc { margin-top: 14px; padding-top: 10px; }
 html[data-density="compact"] .toc-link { padding-top: 2px; padding-bottom: 2px; }
 html[data-density="compact"] .toc-head { margin-bottom: 4px; }
 html[data-density="compact"] .nav-space-head { padding-bottom: 6px; }
-html[data-density="compact"] .nav-practice-link { padding: 6px 10px; }
 html[data-density="compact"] .related-grid, html[data-density="compact"] .tag-row { gap: 5px; }
 html[data-density="compact"] .lead-box { padding: 9px 12px; gap: 8px; margin: 4px 0 12px; }
 html[data-density="compact"] .pf-row { gap: 8px; line-height: 1.45; }
@@ -3468,7 +3464,6 @@ html[data-density="spacious"] .page-toc { margin-top: 30px; padding-top: 18px; }
 html[data-density="spacious"] .toc-link { padding-top: 6px; padding-bottom: 6px; }
 html[data-density="spacious"] .toc-head { margin-bottom: 10px; }
 html[data-density="spacious"] .nav-space-head { padding-bottom: 14px; }
-html[data-density="spacious"] .nav-practice-link { padding: 12px 14px; }
 html[data-density="spacious"] .related-grid, html[data-density="spacious"] .tag-row { gap: 10px; }
 html[data-density="spacious"] .lead-box { padding: 16px 19px; gap: 14px; margin: 10px 0 22px; }
 html[data-density="spacious"] .pf-row { gap: 16px; line-height: 1.75; }
@@ -3559,7 +3554,7 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
 :root[data-theme="dark"] :is(
   .tp-imp,                                     /* the HIGH / MED / LOW half of the tag */
   .lead-title,                                 /* Overview */
-  .nav-section-btn, .nav-practice-link,        /* sidebar */
+  .nav-section-btn,                            /* sidebar */
   .card-name, .grp-title, .hs-ask, .sh-ask, .sh-intro a, .info-ask, .st-head,
   .detail h4, .detail-body h4, .prob-chain h4, .prob-think h4,
   .interactive h4, .detail h3, h1, h2, h3, .ts-name,   /* headers */
@@ -4393,7 +4388,7 @@ dialog.app-confirm { inset-block: 0 12vh; }
 /* Full-row controls keep their ring inside their own bounds, so dense rows neither overlap
    their neighbours nor clip at a panel edge. Ordinary buttons and inline links retain breathing room. */
 :root :is([role="button"], .rc-chips .rc-row, .rc-list .rc-row, .hm-book, .hm-space, .pg-row, .pl-item,
-  .bk-tab, .set-find-opt, .list-add-row, .nav-section-btn, .nav-group-btn, .nav-sub-link, .nav-cluster-link, .nav-practice-link, .toc-link):focus-visible {
+  .bk-tab, .set-find-opt, .list-add-row, .nav-section-btn, .nav-group-btn, .nav-sub-link, .nav-cluster-link, .toc-link):focus-visible {
   outline-offset: -3px !important;
 }
 /* Text entry uses its border (or the editor's inset underline), rather than a second ring. */

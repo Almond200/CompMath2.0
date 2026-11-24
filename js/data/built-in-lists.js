@@ -15,7 +15,7 @@ window.MATH_BUILTIN_LISTS = [
 
   // ---- Study routes: contest tier x subject, complete ----
   { id: "route-amc-geometry", name: "AMC 10/12 Geometry", kind: "route", tier: "AMC", subject: "Geometry",
-    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 183 cards across 13 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 184 cards across 13 sections.",
     sections: [
       { title: "The Fundamentals",
         note: "The facts every other tool here is built on. When a geometry problem stalls, it is usually one of these you have not used yet.",
@@ -40,7 +40,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["distance-midpoint", "line-forms", "angle-between-lines", "angle-bisectors-of-lines", "shoelace-formula", "picks-theorem", "point-line-distance", "circle-equation", "polar-coordinates", "british-flag-theorem", "ellipse-tangent-line", "section-formula", "reflection-coordinates", "reflection-composition", "rotation-90", "rotation-reflection-matrices", "rotation-center", "picks-theorem-general", "picks-with-holes", "parallel-lines-distance", "composing-transformations"] },
       { title: "Three Dimensions",
         note: "Mensuration of the named solids first, then analytic geometry in space for everything that is not one.",
-        ids: ["eulers-polyhedron-formula", "prism-pyramid-volumes", "sphere-formulas", "cone-formulas", "frustum-volume", "regular-tetrahedron", "regular-octahedron", "tetrahedron-centroid", "distance-3d", "space-diagonal", "cross-product-area", "plane-intercept-form", "vector-dot-product", "vector-projection", "cube", "dodecahedron-icosahedron", "cone-insphere"] },
+        ids: ["eulers-polyhedron-formula", "prism-pyramid-volumes", "sphere-formulas", "cone-formulas", "frustum-volume", "regular-tetrahedron", "regular-octahedron", "tetrahedron-centroid", "distance-3d", "space-diagonal", "cross-product-area", "plane-intercept-form", "vector-dot-product", "vector-projection", "cube", "dodecahedron-icosahedron", "cone-insphere", "parallel-lines-height-change"] },
       { title: "Angle & Configuration Chasing",
         note: "The default opening move: name the angles and see what the configuration forces.",
         ids: ["angle-chasing", "extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "shared-leg-pythagoras", "bisector-closer-region", "scale-one-level", "directed-lengths"] },
@@ -58,7 +58,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid", "rolling-without-slipping", "tethered-animal", "unfold-the-bounces"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 145 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 146 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -77,7 +77,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["log-rules", "change-of-base", "log-swap-identity", "exponent-laws", "floor-basics", "ramanujan-nested-radical", "absolute-value-rules", "absolute-value-identities", "take-logs-linearize", "log-system", "name-the-floor", "group-equal-floors", "floor-sum-range", "floor-equation", "transforming-equations"] },
       { title: "Trigonometry",
         note: "Identities, and the triangle-specific relations that live between algebra and geometry.",
-        ids: ["pythagorean-identities", "common-angle-values", "reduction-identities", "angle-addition", "harmonic-addition", "double-angle", "half-angle", "special-trig-values", "even-power-sin-cos-sums", "trig-telescoping-product", "inverse-trig-identities", "sum-difference-angle-product", "square-and-add"] },
+        ids: ["pythagorean-identities", "common-angle-values", "reduction-identities", "angle-addition", "harmonic-addition", "double-angle", "half-angle", "special-trig-values", "even-power-sin-cos-sums", "trig-telescoping-product", "inverse-trig-identities", "sum-difference-angle-product", "square-and-add", "trig-power-reduction"] },
       { title: "Complex Numbers & Roots of Unity",
         note: "Algebra that becomes geometry, and the filter that extracts every nth term of a sum.",
         ids: ["complex-basics", "eulers-formula", "de-moivre", "roots-of-unity", "polar-form", "conjugate-both-sides", "complex-modulus-argument"] },
@@ -523,7 +523,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["chord-length", "common-chord-length", "equal-chords-arcs", "ptolemys-theorem", "law-of-cosines", "law-of-sines", "midsegment-theorem", "trapezoid-special-segments", "cotangent-rule"] }
     ] },
   { id: "config-solid-geometry", name: "The 3D Toolkit", kind: "configuration", subject: "Recognize",
-    blurb: "Solid geometry gathered into one place, because the library files it across three subsections and a handful of methods, and in a problem you need all of it at once. 32 cards across 5 groups, running from the volumes you memorize to the two moves that collapse a 3D problem into a 2D one.",
+    blurb: "Solid geometry gathered into one place, because the library files it across three subsections and a handful of methods, and in a problem you need all of it at once. 33 cards across 5 groups, running from the volumes you memorize to the two moves that collapse a 3D problem into a 2D one.",
     sections: [
       { title: "Volumes & Surface Areas",
         note: "The memorized layer. Everything else on this page assumes you can already get a volume once the solid is identified.",
@@ -533,7 +533,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cayley-menger", "isosceles-tetrahedron", "tetrahedron-centroid", "de-guas-theorem", "descartes-sphere-theorem", "eulers-polyhedron-formula", "pappus-centroid", "dodecahedron-icosahedron"] },
       { title: "Distances in Space",
         note: "Put the solid on coordinates and every distance becomes a formula. The skew-lines one is the only genuinely 3D case with no planar analogue.",
-        ids: ["space-diagonal", "distance-3d", "point-plane-distance", "plane-intercept-form", "skew-lines-distance"] },
+        ids: ["space-diagonal", "distance-3d", "point-plane-distance", "plane-intercept-form", "skew-lines-distance", "parallel-lines-height-change"] },
       { title: "Vectors",
         note: "The algebra underneath the distances. A cross product is an area and a normal at the same time, which is why it appears in almost every plane-and-solid intersection.",
         ids: ["cross-product-area", "vector-dot-product", "vector-projection", "projected-area-cosine", "plane-cross-section", "gram-determinant-volume"] },
@@ -883,7 +883,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["pythagorean-identities", "reduction-identities", "special-trig-values", "inverse-trig-identities"] },
       { title: "Angle Formulas",
         note: "Rewrite one angle in terms of others.",
-        ids: ["double-angle", "half-angle", "product-sum", "half-angle-tangent-identity"] },
+        ids: ["double-angle", "half-angle", "product-sum", "half-angle-tangent-identity", "trig-power-reduction"] },
       { title: "Sums, Products & Telescoping",
         note: "Collapse a long trigonometric sum or product.",
         ids: ["sin-cos-ap-sum", "even-power-sin-cos-sums", "trig-telescoping-product", "cot-tan-telescoping", "evenly-spaced-angle-products", "trig-series-complex"] },

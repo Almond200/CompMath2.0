@@ -722,10 +722,9 @@ are untouched.
   however obscure it is.
 - Both trick fields are required together; the validator rejects prose without cards and cards
   without prose.
-- **The trick is printed as the "Alternatively, ..." paragraph** under the strategy on the problem
-  page, and it opens with those words (the validator requires it). Use it when a problem has two
-  good routes, an intended one and a faster one; its cards sit in the chain columns with a dashed
-  outline. (2026-10-16)
+- **The trick is printed after the first solution's card box** and opens with "Alternatively, ..."
+  (the validator requires it). Give each route its own Pattern, Method and Formulas below the
+  corresponding write-up. Use the same order on problem pages, in Practice review and in Learn.
 - **Tag the specific card, not the fact under it.** A step that is exactly a chord at a known
   distance from the center cites Length of a Chord, not the Pythagorean Theorem; a cone's volume
   cites Prism, Pyramid, Cylinder, Cone Volumes, not Cone Surface Area; two triangles shown similar
@@ -741,7 +740,7 @@ are untouched.
   projection, an ellipse), never as a circle. A figure built from a length the conditions force
   (the answer shape) labels only the given numbers. (2026-10-17)
 - A trick-only card still lists the problem among its practice problems, with the row rendered
-  exactly like any other. The problem page is the only place a trick is labelled.
+  exactly like any other.
 - **Order of work inside a card:** AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with
   AIME alongside the AMC 10/12 (Stanley, 2026-10-17).
 - **AA similarity versus scaling.** Two triangles shown similar by their angles (parallel lines,

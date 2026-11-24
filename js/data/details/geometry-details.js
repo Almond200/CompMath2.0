@@ -9973,3 +9973,27 @@ Finding the largest ball that fits in a cone, a slanted cone, or a truncated con
 An AMC 12 and AIME staple in the right-cone and frustum form; the oblique cone, from the harder invitational contests, is the version where the choice of plane needs an argument.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"parallel-lines-height-change": String.raw`
+## Key forms
+- $\vec d_{CD}=k\vec d_{AB}\ \Longrightarrow\ h_D-h_C=k(h_B-h_A)$ — proportional horizontal displacements
+- $\dfrac{h_B-h_A}{\lVert\vec d_{AB}\rVert}=\dfrac{h_D-h_C}{\lVert\vec d_{CD}\rVert}$ for $k\gt0$ — equal slopes in the same direction
+
+## Conditions
+All four points lie on one nonvertical plane. Here $h_P$ is the height of point $P$ and $\vec d_{PQ}$ is the vector from the horizontal projection of $P$ to that of $Q$. Use nonzero runs when dividing. The multiplier $k$ is negative for opposite directions.
+
+## Why it works
+A nonvertical plane has equation $z=ax+by+c$, so a move $(\Delta x,\Delta y)$ in its ground projection changes the height by $a\Delta x+b\Delta y$, regardless of where the move starts. Multiplying that move by $k$ multiplies the entire height change by $k$. If $k\gt0$, its horizontal length also scales by $k$, which makes the two rise-over-run ratios equal.
+
+## Useful observations
+- Equal directed horizontal displacements give equal rises, even when the starting heights differ.
+- Trace the arrows before computing rises. For example, $B\to A$ and $A\to B$ have opposite signed rises.
+- A chain of moves can go in several directions. Transfer the rise only between parallel moves, then add the signed rises along the chain.
+
+## Applications
+Heights of pillars under a flat roof, elevations of corners on tilted polygons and intermediate heights along an inclined line.
+
+## Contest profile
+An AMC solid geometry tool when a tilted plane is given through the heights of a few points and the footprint supplies parallel segments or a useful diagonal.
+`
+});
