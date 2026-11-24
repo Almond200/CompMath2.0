@@ -3519,6 +3519,9 @@
   function mathcountsPdf(ref, which) {
     const m = ref.match(/^(\d{4}) MATHCOUNTS (Chapter|State|National) (Sprint|Target|Team),\s*Problem\s+\d+$/);
     if (!m) return null;
+    if (which === "solutions" && ref === "2012 MATHCOUNTS National Sprint, Problem 22") {
+      return "https://www.mathcounts.org/sites/default/files/u5328/Errata%20for%20Competitions%202011%20through%202015.pdf";
+    }
     const f = MC_FILES[m[1]] && MC_FILES[m[1]][m[2]];
     if (f && f[m[3]]) return "https://www.mathcounts.org/sites/default/files/" + f[which === "solutions" ? "solutions" : m[3]];
     const d = MC_DRIVE[m[1]] && MC_DRIVE[m[1]][m[2]], id = d && d[which === "solutions" ? "answers" : m[3]];
@@ -6588,7 +6591,9 @@
     const inlinePaper = paper && archiveStatement(p);
     const external = p && !paper && externalPracticePrompt(p);
     const typedAnswer = aime || exact || paper;
-    const exactLabel = { set: 'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.',
+    const exactLabel = { set: exact?.notation === 'letter-list' ? 'All letters, separated by commas (spaces optional).' :
+      exact?.notation === 'value-or-set' ? 'Enter your answer. Separate values with commas and write numbers without commas.' :
+      'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.',
       sequence: exact?.notation === 'base-3'
         ? 'Base 3 digits in the requested order, separated by commas (spaces optional). The _3 suffix is optional.'
         : 'List values in the requested order, separated by commas (spaces optional). Write numbers without commas, like 1398.',
@@ -6598,6 +6603,9 @@
       polynomial: `Polynomial in ${exact?.notation}`,
       'rational-function': `Expression in ${exact?.notation}`,
       'exponential-function': `Expression in ${exact?.notation}`,
+      'symbolic-equation': 'Equation',
+      'set-set': 'Enter each set in braces or parentheses, separated by commas.',
+      'ratio-list': 'Ratio, for example 2:3:4',
       tuple: exact?.notation === 'polar' ? 'Polar coordinates (radius, angle). For degrees, use ° or deg.' : 'Ordered tuple, for example (2, 3)',
       'tuple-set': 'All tuples, for example (2, 3), (4, 5)', text: 'Short answer',
       percent: exact?.notation === 'percent-change' ? 'Percentage change. Use a negative value for a decrease.' : 'Percentage (% is optional)' }[exact?.format] ||
@@ -10963,6 +10971,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // Brief solution (the strategy and its cards), then Study a concept more.
   const chainSec = (title, body) => `<div class="chain-study chain-sec"><h4 class="chain-study-h">${title}</h4>${body}</div>`;
   function officialSolutionNote(p) {
+    if (p.slug === "2012-mathcounts-national-sprint-22") return "The organizer’s errata explains the two answers accepted for this problem.";
     const legacy = /^2000 HMMT February /.test(p.ref);
     // The canonical archive's 2000 algebra solution PDF orders these three items differently.
     const solution = legacy && /^2000 HMMT February Algebra,/.test(p.ref)
