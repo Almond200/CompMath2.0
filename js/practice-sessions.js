@@ -505,6 +505,9 @@
       const input = rational(node.a);
       return input && input[0] === input[1] ? [0n, 1n] : null;
     }
+    if (node.op === 'exp' || node.op === 'arctan') {
+      return rational(node.a)?.[0] === 0n ? [node.op === 'exp' ? 1n : 0n, 1n] : null;
+    }
     if (['sin', 'cos', 'tan'].includes(node.op)) return rationalTrig(node);
     if (node.op === '+' || node.op === '-') {
       const canceled = cancelTerms(node);
@@ -1027,6 +1030,7 @@
     return result;
   }
   function symbolicQuotient(node, variables) {
+    if (variables.includes('pi')) node = rewriteExpression(node, part => part.op === 'pi' ? { op: 'variable', v: 'pi' } : part);
     const constant = Array(variables.length).fill(0), unit = symbolicTerm(constant, one.fraction);
     const visit = node => {
       node = ungroup(node);
@@ -1102,6 +1106,54 @@
       return a * p * y * d === b * q * x * c;
     });
   }
+  function sameSparseQuotient(actual, expected, multiply, addTerm) {
+    const difference = multiply(actual[0], expected[1]);
+    for (const term of multiply(expected[0], actual[1]).values()) addTerm(difference, '-', term);
+    return !difference.size;
+  }
+  function rewriteExpression(node, replace) {
+    const rewritten = replace(node);
+    if (rewritten !== node || !node.a) return rewritten;
+    return { ...node, a: rewriteExpression(node.a, replace), b: node.b && rewriteExpression(node.b, replace) };
+  }
+  function naturalExponent(node) {
+    node = ungroup(node);
+    if (node.op === 'e') return { op: 'num', v: '1' };
+    if (node.op === 'exp') return node.a;
+    if (node.op === '^') {
+      if (ungroup(node.a).op === 'e') return node.b;
+      return { op: '*', a: naturalExponent(node.a), b: node.b };
+    }
+    if (node.op === '*' || node.op === '/') {
+      return { op: node.op === '*' ? '+' : '-', a: naturalExponent(node.a), b: naturalExponent(node.b) };
+    }
+    const value = rational(node);
+    if (value && value[0] === value[1]) return { op: 'num', v: '0' };
+    throw Error('Expected a natural exponential expression');
+  }
+  function inverseTangentExpression(node, variable) {
+    const argument = { op: 'variable', v: variable }, one = { op: 'num', v: '1' };
+    const inverse = { op: '/', a: one, b: argument }, angle = { op: 'variable', v: 'angle' };
+    const equal = (a, b) => sameSparseQuotient(symbolicQuotient(a, [variable]),
+      symbolicQuotient(b, [variable]), multiplySymbolic, addSymbolicTerm);
+    return rewriteExpression(node, part => {
+      if (part.op !== 'arctan') return part;
+      if (equal(part.a, argument)) return angle;
+      if (equal(part.a, inverse)) return { op: '-', a: { op: '/', a: { op: 'pi' }, b: { op: 'num', v: '2' } }, b: angle };
+      throw Error('Expected the inverse tangent of the given distance or its reciprocal');
+    });
+  }
+  function smtRecurrence(node) {
+    const y = [0n, 1n];
+    return rewriteExpression(node, part => {
+      if (part.op !== 'variable') return part;
+      const term = /^([xy])_\{(\d+)\}$/.exec(part.v);
+      const index = term && Number(term[2]) - (term[1] === 'x' ? 1 : 0);
+      if (!term || index > 4096) throw Error('Expected an indexed entry of the recurrence');
+      while (y.length <= index) y.push(-3n * y.at(-1) + y.at(-2));
+      return { op: 'num', v: String(index === -1 ? 1n : y[index]) };
+    });
+  }
   function exactValues(text, format, notation) {
     if (text.length > 120) throw Error('Answer is too long');
     text = cleanExact(text, format, notation);
@@ -1110,6 +1162,13 @@
     if (format === 'quadratic-radical') return [quadraticParts(text, notation)];
     if (format === 'factored-number' || format === 'prime-factorization') return factoredParts(text);
     if (['symbolic-rational', 'symbolic-radical', 'symbolic-equation'].includes(format)) return symbolicAnswer(text, format, notation);
+    if (format === 'natural-exponential' || format === 'inverse-tangent-formula' || notation === 'smt-2014-recurrence') {
+      const nodes = math.parse(text, true, false, undefined, true);
+      if (nodes.length !== 1) throw Error('Expected one expression');
+      if (format === 'natural-exponential') return symbolicQuotient(naturalExponent(nodes[0]), ['pi']);
+      if (format === 'inverse-tangent-formula') return symbolicQuotient(inverseTangentExpression(nodes[0], notation), ['pi', notation, 'angle']);
+      return [[evaluated(smtRecurrence(nodes[0]))]];
+    }
     if (format === 'polynomial-multiple' || format === 'integer-polynomial-multiple') return polynomialMultiple(text, format, notation);
     if (notation === 'letter-list') {
       const letters = letterParts(text);
@@ -1164,10 +1223,8 @@
       if (format === 'prime-factorization') return actual.sign === remaining.sign && actual.factors.size === remaining.factors.size &&
         [...remaining.factors].every(([base, exponent]) => actual.factors.get(base) === exponent);
       if (format === 'symbolic-equation') return sameSymbolicEquation(actual, remaining);
-      if (format === 'symbolic-rational' || format === 'symbolic-radical') {
-        const left = multiplySymbolic(actual[0], remaining[1]), right = multiplySymbolic(remaining[0], actual[1]);
-        for (const term of right.values()) addSymbolicTerm(left, '-', term);
-        return !left.size;
+      if (['symbolic-rational', 'symbolic-radical', 'natural-exponential', 'inverse-tangent-formula'].includes(format)) {
+        return sameSparseQuotient(actual, remaining, multiplySymbolic, addSymbolicTerm);
       }
       if (notation === 'percent-or-proportion' && !/%\s*\$?$/.test(text)) {
         const fraction = actual[0][0].fraction;
@@ -1178,12 +1235,7 @@
         const fraction = actual[0][0].fraction;
         if (fraction && sameExactValue(evaluatedValue([-fraction[0], fraction[1]], 0), remaining[0][0])) return true;
       }
-      if (format === 'exponential-function') {
-        const left = multiplyExponential(actual[0], remaining[1]);
-        const right = multiplyExponential(remaining[0], actual[1]);
-        for (const term of right.values()) addExponentialTerm(left, '-', term);
-        return !left.size;
-      }
+      if (format === 'exponential-function') return sameSparseQuotient(actual, remaining, multiplyExponential, addExponentialTerm);
       if (format === 'rational-function') {
         const left = multiplyPolynomials(actual[0], remaining[1]);
         const right = multiplyPolynomials(remaining[0], actual[1]);

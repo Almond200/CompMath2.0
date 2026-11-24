@@ -45,6 +45,16 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Correct');
  await p.locator('[data-result-index="0"]').click();
  await p.getByText('At time C the speeds match',{exact:false}).waitFor();
+ await set(['2011-smt-geometry-6','2014-smt-algebra-10']);
+ for(const [index,answer] of ['pi/2+arctan(d)','1-x_2014/(3y_{2014})'].entries()){
+  if(index) await p.locator('.cn-nums [data-practice-index="'+index+'"]').click();
+  await p.locator('#practice-answer').fill(answer);
+  await p.locator('.practice-answer-preview .katex').waitFor();
+  assert.equal(await p.locator('#practice-answer').getAttribute('aria-invalid'),'false');
+ }
+ await p.locator('#finish-practice').click();
+ await p.locator('.practice-results').waitFor();
+ assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct']);
  for(const slug of ['2018-aime-i-1','2019-hmmt-february-geometry-1']){
   const numeric=await set([slug],slug.includes('hmmt'));const input=p.locator('#practice-answer');
   await input.scrollIntoViewIfNeeded();
