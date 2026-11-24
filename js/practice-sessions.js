@@ -226,6 +226,10 @@
       }).join(' \\cup ');
     }
     if (format === 'sequence') return splitExactList(text).map(part => math.toTex(part)).join(',\\ ');
+    if (format === 'formal-log') {
+      const tex = math.toTex(unbasedLogAsLn(text), true);
+      return /\blog\b/i.test(text) ? tex.replace(/\\ln\b/g, '\\log') : tex;
+    }
     if (['polynomial', 'rational-function', 'exponential-function'].includes(format)) return math.toTex(text, true, false, notation);
     if (format === 'complex' || format === 'complex-set') return math.toTex(text, format === 'complex', true);
     if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text, format !== 'set') + (percent ? '\\%' : '');
@@ -1183,6 +1187,36 @@
       return { op: 'num', v: String(index === -1 ? 1n : y[index]) };
     });
   }
+  const unbasedLogAsLn = text => text.replace(/(?:\\)?\blog(?=\s*(?:\\left\s*)?[(\[{])/gi, 'ln');
+  // A logarithm in an unspecified fixed base can be compared through its
+  // positive rational argument. Addition and subtraction of logs combine exactly.
+  function logarithmArgument(node) {
+    node = ungroup(node);
+    if (node.op === 'ln') {
+      const fraction = rational(node.a);
+      if (fraction?.[0] > 0n) return fraction;
+    } else if (node.op === 'neg') {
+      const [n, d] = logarithmArgument(node.a);
+      return [d, n];
+    } else if (node.op === '+' || node.op === '-') {
+      const fraction = rationalOperation(node.op === '+' ? '*' : '/', logarithmArgument(node.a), logarithmArgument(node.b));
+      if (fraction) return fraction;
+    } else if (node.op === '*' || node.op === '/') {
+      const right = rational(node.b);
+      const left = node.op === '*' && rational(node.a);
+      if ((right || left) && !(node.op === '/' && right[0] === 0n)) {
+        const exponent = node.op === '/' ? [right[1], right[0]] : right || left;
+        const [power, degree] = reduceFraction(...exponent);
+        const argument = logarithmArgument(right ? node.a : node.b);
+        const base = degree === 1n ? argument : degree <= EXACT_POWER_LIMIT && rationalRoot(...argument, degree);
+        const fraction = base && rationalOperation('^', base, [power, 1n]);
+        if (fraction) return fraction;
+      }
+    } else if (rational(node)?.[0] === 0n) {
+      return [1n, 1n];
+    }
+    throw Error('Expected logarithms of positive rational numbers');
+  }
   function exactValues(text, format, notation) {
     if (text.length > 120) throw Error('Answer is too long');
     text = cleanExact(text, format, notation);
@@ -1190,6 +1224,16 @@
     if (base && format === 'numeral') return [[canonicalNumeral(readNumeral(text, base))]];
     if (base && format === 'sequence') return [numeralSequence(text, base).map(canonicalNumeral)];
     if (format === 'interval') return sortedIntervals(text);
+    if (format === 'formal-log') {
+      const nodes = math.parse(unbasedLogAsLn(text), true);
+      if (nodes.length !== 1) throw Error('Expected one logarithm expression');
+      try {
+        const [n, d] = reduceFraction(...logarithmArgument(nodes[0]));
+        return [[n + '/' + d]];
+      } catch (err) {
+        return [[evaluated(nodes[0])]];
+      }
+    }
     if (format === 'quadratic-radical') return [quadraticParts(text, notation)];
     if (format === 'factored-number' || format === 'prime-factorization') return factoredParts(text);
     if (['symbolic-rational', 'symbolic-radical', 'symbolic-equation'].includes(format)) return symbolicAnswer(text, format, notation);

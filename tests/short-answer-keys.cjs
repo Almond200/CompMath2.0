@@ -31,7 +31,7 @@ for (const [slug, key] of Object.entries(answers)) {
   const paper = slug.replace(/-\d+$/, '');
   assert.match(sources[paper], /^https:\/\//, slug);
   usedSources.add(paper);
-  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'set-set', 'ratio-list', 'text', 'numeral', 'percent', 'complex', 'complex-set', 'interval', 'polynomial', 'rational-function', 'quadratic-radical', 'exponential-function', 'factored-number', 'prime-factorization', 'symbolic-rational', 'symbolic-radical', 'symbolic-equation', 'polynomial-multiple', 'integer-polynomial-multiple', 'natural-exponential', 'inverse-tangent-formula'].includes(key.format), slug);
+  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'set-set', 'ratio-list', 'text', 'numeral', 'percent', 'complex', 'complex-set', 'interval', 'formal-log', 'polynomial', 'rational-function', 'quadratic-radical', 'exponential-function', 'factored-number', 'prime-factorization', 'symbolic-rational', 'symbolic-radical', 'symbolic-equation', 'polynomial-multiple', 'integer-polynomial-multiple', 'natural-exponential', 'inverse-tangent-formula'].includes(key.format), slug);
   if (['polynomial', 'rational-function', 'exponential-function'].includes(key.format)) assert.match(key.notation, /^[a-z]$/i, slug);
   if (Array.isArray(key.notation)) {
     assert.equal(key.format, 'tuple', slug);
@@ -197,6 +197,13 @@ check('2014-smt-algebra-10', '1-x_{2014}/(3y_2014)', 'Correct');
 check('2014-smt-algebra-10', '1+x_2014/(3y_2014)', 'Incorrect');
 check('2006-hmmt-february-combinatorics-7', '4^(-n)-8^(-n)', 'Correct');
 check('2006-hmmt-february-combinatorics-7', '4^(-n)', 'Incorrect');
+check('2007-hmmt-february-algebra-8', 'log(2007)-log(2006)', 'Correct');
+check('2007-hmmt-february-algebra-8', '(ln(2007)-ln(2006/2007)+ln(1/2006))/2', 'Correct');
+check('2007-hmmt-february-algebra-8', 'log(2006/2007)', 'Incorrect');
+check('2007-hmmt-february-algebra-8', '0.000498', 'Incorrect');
+assert.match(practice.exactTex('\\log\\left(\\frac{2007}{2006}\\right)', 'formal-log'), /\\log/);
+check('2023-mbmt-lower-number-theory-5', '∞', 'Correct');
+check('2023-mbmt-lower-number-theory-5', '17', 'Incorrect');
 check('2016-bmt-discrete-math-6', 'n*2^n-2^n+1', 'Correct');
 check('2010-duke-math-meet-individual-1', '18.5 minutes', 'Correct');
 check('2010-duke-math-meet-individual-6', '41*3*7*3*7', 'Correct');
