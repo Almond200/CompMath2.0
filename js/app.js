@@ -6111,9 +6111,10 @@
   // Practice draws from every contest (owner, 2026-11-14). A problem whose statement and answer
   // the app does not keep is read where its page links (the official paper, or the AoPS wiki for
   // the AHSME), and the solver checks their answer against the official solution at review.
-  const paperProblem = p => !hasMockAnswer(p) && !!p.url;
+  const isVoidedProblem = p => !!practiceSessions.voidReason(p.slug);
+  const paperProblem = p => !isVoidedProblem(p) && !hasMockAnswer(p) && !!p.url;
   const externalPracticePrompt = p => !!practiceSessions.exactKey(p.slug)?.external && !!p.url;
-  const practiceEligible = p => (hasMockAnswer(p) || paperProblem(p)) && !window.MATH_ANSWER_KEYS?.voided?.[p.slug];
+  const practiceEligible = p => (hasMockAnswer(p) || paperProblem(p)) && !isVoidedProblem(p);
   // Contests whose papers are multiple choice with five options, like the AMC; the others take a
   // short answer. A problem with an official letter key is multiple choice whatever its contest.
   const MC_FAMS = new Set(["AMC 8", "AMC 10", "AMC 12", "UKMT JMC", "UKMT IMC", "UKMT SMC", "Pascal Contest", "Cayley Contest", "Fermat Contest", "UMD HSMC", "Columbus State Tournament", "Utah State Math Contest"]);
@@ -6121,7 +6122,7 @@
   const loadPracticeStatements = problems => Promise.all([...new Set(problems
     .filter(p => !paperProblem(p) && !externalPracticePrompt(p) && !window.MATH_MOCK_EXTRAS?.[p.slug])
     .map(statementFile))].map(loadStatements));
-  const hasPracticePrompt = p => paperProblem(p) || externalPracticePrompt(p) ||
+  const hasPracticePrompt = p => isVoidedProblem(p) || paperProblem(p) || externalPracticePrompt(p) ||
     !!(window.MATH_STATEMENTS?.[p.slug] || window.MATH_MOCK_EXTRAS?.[p.slug]);
   // "Only questions in this format" for a generated mock (owner, 2026-11-15): multiple choice for
   // the AMC formats, short answer for the AIME.
@@ -6154,7 +6155,6 @@
     (target && !target.disabled ? target : document.querySelector(`#${inPanel} [data-pr-all]:not([disabled])`))?.focus({ preventScroll: true });
     document.dispatchEvent(new Event("practice-fams"));
   });
-  const isVoidedProblem = p => !!window.MATH_ANSWER_KEYS?.voided?.[p.slug];
   function mockPapers() { return mockPaperCatalog ||= window.MockContests.papers(PROBLEM_DB, hasMockAnswer); }
   function pastPapers() {
     if (pastPaperCatalog) return pastPaperCatalog;
@@ -6538,9 +6538,10 @@
     set.slugs.forEach(slug => counts[practiceSessions.result(set, slug)]++);
     const reviewUrl = '#/practice/set/' + encodeURIComponent(set.id) + '/review';
     const mock = isMock(set), score = mockScore(set);
-    const stats = [[counts.Correct + '/' + total, 'Correct'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
+    const gradedTotal = score ? total : total - counts.Voided;
+    const stats = [[gradedTotal ? counts.Correct + '/' + gradedTotal : '—', 'Correct'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
     if (score) stats.unshift([score.points+'/'+score.max,counts['Check yourself']?'Score so far':'Mock score']);
-    else if (!mock) stats.splice(1, 0, [Math.round(100 * counts.Correct / total) + '%', 'Score']);
+    else if (!mock && gradedTotal) stats.splice(1, 0, [Math.round(100 * counts.Correct / gradedTotal) + '%', 'Score']);
     $content.innerHTML = `<div class="space-home practice-session practice-results">
       <a class="back-link" href="#/practice">${uiIcon("arrow-left")} Back to Practice</a>
       <section class="sh-section"><h1>${mock ? 'Mock complete' : 'Practice complete'}</h1><p class="practice-results-subtitle">${escapeAttr(practiceSetLabel(set))} · ${total} problem${total === 1 ? '' : 's'}${mock ? ' · '+(set.mock.mode==='paper'?'Past contest':'Generated mock') : ' · '+escapeAttr(set.difficulty)+' difficulty'}</p>
@@ -6548,7 +6549,7 @@
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
         ${counts['Check yourself'] ? `<p class="practice-results-meta">${counts['Check yourself']} to check against the official solution: open ${counts['Check yourself'] === 1 ? 'it' : 'each'} in the review and mark your answer right or wrong.</p>` : ''}
-        ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided by the MAA${score ? ', full credit awarded' : ', not graded'}</p>` : ''}
+        ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided${score ? ' · Full credit awarded' : ''}</p>` : ''}
         <a class="hp-btn" href="${reviewUrl}">Review problems</a>
       </section>
       <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
@@ -6556,7 +6557,8 @@
         const answer = set.answers[slug], exact = practiceSessions.exactKey(slug);
         const submitted = (exact || /AIME/.test(p?.fam)) && !set.selfCheck?.[slug]
           ? exactAnswerHtml(answer, exact) : escapeAttr(answer || '');
-        return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${practiceProblemNumber(set, i)}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong><small>${set.answers[slug] ? 'Your answer: ' + submitted : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small></span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
+        const summary = result === 'Voided' ? '' : `<small>${answer ? 'Your answer: ' + submitted : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small>`;
+        return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${practiceProblemNumber(set, i)}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong>${summary}</span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
       }).join('')}</div></section></div>`;
     renderMath($content);
     $content.querySelectorAll('[data-result-index]').forEach(link => link.addEventListener('click', () => { set.current = +link.dataset.resultIndex; savePractice(); }));
@@ -6578,9 +6580,11 @@
     const finished = set.status === 'finished';
     if (finished && location.hash.split('/')[4] !== 'review') { renderPracticeResults(set); return; }
     const slug = set.slugs[set.current], p = PROBLEM_BY_SLUG[slug];
-    const answered = set.slugs.filter(id => set.answers[id]).length;
+    const answerable = set.slugs.filter(id => !practiceSessions.voidReason(id));
+    const answeredSummary = () => `${answerable.filter(id => set.answers[id]).length} of ${answerable.length} answered`;
+    const voidNote = practiceSessions.voidReason(slug);
     const outcome = practiceSessions.result(set, slug);
-    const aime = p && /AIME/.test(p.fam), exact = practiceSessions.exactKey(slug), paper = !!(p && set.selfCheck?.[slug]);
+    const aime = p && /AIME/.test(p.fam), exact = practiceSessions.exactKey(slug), paper = !!(p && !voidNote && set.selfCheck?.[slug]);
     const inlinePaper = paper && archiveStatement(p);
     const external = p && !paper && externalPracticePrompt(p);
     const typedAnswer = aime || exact || paper;
@@ -6599,12 +6603,13 @@
       (exact?.notation === 'ratio' ? 'Ratio, for example 2:3 or 2/3' :
         exact?.notation === 'angle' ? 'Angle. For degrees, use ° or deg.' : 'Exact value (fractions, sqrt, pi, !)');
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
-    const correct = !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact)).join(' or ') : escapeAttr(officialKey(slug) || '');
+    const correct = voidNote ? '' : !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact)).join(' or ') : escapeAttr(officialKey(slug) || '');
     const nav = set.slugs.map((id, i) => {
       const result = practiceSessions.result(set, id);
-      const suffix = finished ? result : set.answers[id] ? 'Answered' : 'Unanswered';
+      const reviewed = finished || result === 'Voided';
+      const suffix = reviewed ? result : set.answers[id] ? 'Answered' : 'Unanswered';
       const number = practiceProblemNumber(set, i);
-      return `<button type="button" class="cn-num${i === set.current ? ' cn-here' : ''}${finished ? ' practice-reviewed' : ''}${!finished && set.answers[id] ? ' practice-answered' : ''}${set.marks[id] ? ' practice-marked' : ''}" data-result="${finished ? result : ''}" data-practice-index="${i}" aria-current="${i === set.current ? 'step' : 'false'}" aria-label="Problem ${number}, ${suffix}${set.marks[id] ? ', marked for review' : ''}">${number}</button>`;
+      return `<button type="button" class="cn-num${i === set.current ? ' cn-here' : ''}${reviewed ? ' practice-reviewed' : ''}${!reviewed && set.answers[id] ? ' practice-answered' : ''}${set.marks[id] ? ' practice-marked' : ''}" data-result="${reviewed ? result : ''}" data-practice-index="${i}" aria-current="${i === set.current ? 'step' : 'false'}" aria-label="Problem ${number}, ${suffix}${set.marks[id] ? ', marked for review' : ''}">${number}</button>`;
     }).join('');
     shownIds = [];
     $content.innerHTML = `<div class="space-home practice-session">
@@ -6615,7 +6620,7 @@
           ${set.clock && !finished ? `<div class="mock-clock" role="timer" aria-label="Time remaining"><span>Time remaining</span><strong class="mock-clock-value">${mockTime(practiceSessions.timeLeft(set))}</strong></div>` : ''}</div>
         <nav class="cn-nums" aria-label="Practice problems">${nav}</nav>
         ${finished ? `<div class="practice-review-actions"><a class="hp-btn hp-btn-soft" href="#/practice/set/${encodeURIComponent(set.id)}">Results overview</a></div>` : ''}
-        ${finished ? '' : `<div class="practice-session-actions"><span>${answered} of ${set.slugs.length} answered</span><div><a class="hp-btn hp-btn-soft" href="#/practice">Save and exit</a><button type="button" class="hp-btn" id="finish-practice">Finish and review</button></div></div>`}
+        ${finished ? '' : `<div class="practice-session-actions"><span>${answeredSummary()}</span><div><a class="hp-btn hp-btn-soft" href="#/practice">Save and exit</a><button type="button" class="hp-btn" id="finish-practice">Finish and review</button></div></div>`}
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
       <section class="sh-section practice-question"><h3>Problem ${practiceProblemNumber(set, set.current)}${p && (!mock || finished) ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
@@ -6623,11 +6628,12 @@
           <div class="practice-paper"><p data-statement-fallback>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. Compare your answer with the official solution and mark it below.` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. When you review, you check it against the official solution.`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`
           : external ? `<div class="practice-paper"><p>Read Problem ${p.num} in the original paper.</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`
           : p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
-        ${finished ? `</section><section class="sh-section practice-review detail"><h3>Your answer</h3>
-          ${typedAnswer ? (set.answers[slug] ? `<p class="practice-submitted">${paper ? escapeAttr(set.answers[slug]) : exactAnswerHtml(set.answers[slug], exact)}</p>` : '') : practiceAnswerChoices(set, slug, true)}
-          <p class="practice-result">${outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
+        ${finished ? `</section><section class="sh-section practice-review detail"><h3>${voidNote ? "Voided" : "Your answer"}</h3>
+          ${voidNote ? '' : typedAnswer ? (set.answers[slug] ? `<p class="practice-submitted">${paper ? escapeAttr(set.answers[slug]) : exactAnswerHtml(set.answers[slug], exact)}</p>` : '') : practiceAnswerChoices(set, slug, true)}
+          <p class="practice-result">${voidNote ? escapeAttr(voidNote) : outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
           ${paper ? `<div class="practice-self">${p.solUrl && !inlinePaper ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
           ${practiceExplanationHtml(p, !paper || !!inlinePaper)}`
+          : voidNote ? `<p class="prob-note">Voided · ${escapeAttr(voidNote)}</p>`
           : p ? `<div class="practice-answer"><h4>Your answer</h4>${typedAnswer ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? exactLabel : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${aime && !paper ? 'numeric' : 'text'}" maxlength="${paper ? '60' : '120'}" autocomplete="off" aria-describedby="practice-answer-error" value="${escapeAttr(set.answers[slug] || '')}">${practiceMathKeysHtml()}` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
       </section></div>`;
@@ -6640,7 +6646,7 @@
     $content.querySelectorAll('[data-practice-index]').forEach(b => b.addEventListener('click', () => { set.current = +b.dataset.practiceIndex; savePractice(); redraw(); $content.querySelector('.practice-question h3').setAttribute('tabindex','-1'); $content.querySelector('.practice-question h3').focus({preventScroll:true}); }));
     $content.querySelector('#finish-practice')?.addEventListener('click', async () => {
       if (set.status === 'finished' || practiceFinishConfirm) return;
-      const remaining = set.slugs.filter(id => !set.answers[id] && practiceSessions.result(set, id) !== 'Voided').length;
+      const remaining = answerable.filter(id => !set.answers[id]).length;
       if (remaining) {
         const controller = new AbortController();
         practiceFinishConfirm = controller;
@@ -6670,8 +6676,7 @@
       const value = set.answers[slug] || '';
       answerChoices.forEach(b => b.setAttribute('aria-checked', String(b.dataset.practiceAnswer === value)));
       if (clearAnswer) clearAnswer.disabled = !value && !answerInput?.value;
-      const n = set.slugs.filter(id => set.answers[id]).length;
-      $content.querySelector('.practice-session-actions > span').textContent = `${n} of ${set.slugs.length} answered`;
+      $content.querySelector('.practice-session-actions > span').textContent = answeredSummary();
       const current = $content.querySelector('[aria-current="step"]');
       current.classList.toggle('practice-answered', !!value);
       current.setAttribute('aria-label', `Problem ${set.current + 1}, ${value ? 'Answered' : 'Unanswered'}${set.marks[slug] ? ', marked for review' : ''}`);

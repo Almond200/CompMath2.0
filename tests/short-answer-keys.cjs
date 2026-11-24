@@ -9,7 +9,7 @@ require(path.join(data, 'answer-keys-more.js'));
 require(path.join(data, 'answer-keys-short.js'));
 require(path.join(data, 'mock-extras.js'));
 const practice = require('../js/practice-sessions.js');
-const { answers, sources } = window.MATH_SHORT_ANSWER_KEYS;
+const { answers, sources, voided } = window.MATH_SHORT_ANSWER_KEYS;
 const statementDir = path.join(data, 'statements');
 for (const dir of fs.readdirSync(statementDir, { withFileTypes: true }).filter(dir => dir.isDirectory())) {
   for (const file of fs.readdirSync(path.join(statementDir, dir.name)).filter(file => file.endsWith('.js'))) {
@@ -37,6 +37,25 @@ for (const [slug, key] of Object.entries(answers)) {
   for (const value of key.answers) check(slug, value, 'Correct');
 }
 assert.equal(usedSources.size, Object.keys(sources).length);
+
+for (const [slug, reason] of Object.entries(voided)) {
+  assert(reason, slug);
+  assert.match(sources[slug.replace(/-\d+$/, '')], /^https:\/\//, slug);
+  assert.equal(practice.exactKey(slug), undefined, slug);
+  const set = practice.create('Voided question', 'Any', [slug]);
+  assert.equal(practice.result(set, slug), 'Voided');
+  assert.equal(practice.answer(set, slug, '90', false), false);
+  set.answers[slug] = '90';
+  set.selfCheck = { [slug]: true };
+  practice.finish(set);
+  assert.equal(practice.result(set, slug), 'Voided');
+  assert.equal(practice.selfMark(set, slug, 'Correct'), false);
+}
+
+const hmmt2010 = Object.keys(window.MATH_STATEMENTS).filter(slug => /^2010-hmmt-february-/.test(slug));
+assert.equal(hmmt2010.length, 30);
+assert.deepEqual(hmmt2010.filter(slug => !practice.exactKey(slug)), ['2010-hmmt-february-combinatorics-8']);
+assert(voided['2010-hmmt-february-combinatorics-8']);
 
 function check(slug, value, verdict) {
   const set = practice.create('Short-answer check', 'Any', [slug]);
