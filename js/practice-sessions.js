@@ -159,7 +159,7 @@
       }).join(' \\cup ');
     }
     if (format === 'sequence') return splitExactList(text).map(part => math.toTex(part)).join(',\\ ');
-    if (format === 'polynomial' || format === 'rational-function') return math.toTex(text, true, false, notation);
+    if (['polynomial', 'rational-function', 'exponential-function'].includes(format)) return math.toTex(text, true, false, notation);
     if (format === 'complex' || format === 'complex-set') return math.toTex(text, format === 'complex', true);
     if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text, format !== 'set') + (percent ? '\\%' : '');
     const tuples = format === 'tuple' ? [text] : splitExactList(text);
@@ -826,12 +826,83 @@
     return [addPolynomials(node.op, multiplyPolynomials(numerator, divisor),
       multiplyPolynomials(right, denominator)), commonDenominator];
   }
+  // Represent sums of P(n) * b^n by their rational bases and polynomial coefficients.
+  // Distinct nonzero bases give independent sequences on the positive integers.
+  const exponentialTerm = (base, coefficients) => new Map(coefficients.some(([n]) => n) ?
+    [[base.join('/'), { base, coefficients }]] : []);
+  function addExponentialTerm(terms, op, { base, coefficients }) {
+    const key = base.join('/'), previous = terms.get(key);
+    const updated = addPolynomials(op, previous?.coefficients || [zero.fraction], coefficients);
+    if (updated.every(([n]) => !n)) terms.delete(key);
+    else terms.set(key, { base, coefficients: updated });
+    if (terms.size > 32) throw Error('Too many distinct exponential bases');
+  }
+  function multiplyExponential(left, right) {
+    const result = new Map();
+    for (const a of left.values()) for (const b of right.values()) {
+      addExponentialTerm(result, '+', {
+        base: polynomialOperation('*', a.base, b.base),
+        coefficients: multiplyPolynomials(a.coefficients, b.coefficients)
+      });
+    }
+    return result;
+  }
+  function exponentialQuotient(node) {
+    node = ungroup(node);
+    const unit = exponentialTerm(one.fraction, [one.fraction]);
+    if (!hasVariable(node) || node.op === 'variable') return [exponentialTerm(one.fraction, polynomial(node)), unit];
+    if (node.op === '^' && hasVariable(node.b)) {
+      const base = polynomialCoefficient(rational(node.a));
+      const [offset, slope = zero.fraction, ...rest] = polynomial(node.b);
+      if (!base[0] || rest.length || integerValue(offset) == null || integerValue(slope) == null) {
+        throw Error('Expected a nonzero constant base and a linear integer exponent');
+      }
+      return [exponentialTerm(polynomialOperation('^', base, slope), [polynomialOperation('^', base, offset)]), unit];
+    }
+    if (!['neg', '+', '-', '*', '/', '^'].includes(node.op)) throw Error('Expected an expression in the integer variable');
+    const [left, denominator] = exponentialQuotient(node.a);
+    if (node.op === 'neg') {
+      const negative = new Map();
+      for (const term of left.values()) addExponentialTerm(negative, '-', term);
+      return [negative, denominator];
+    }
+    if (node.op === '^') {
+      const power = integerValue(rational(node.b));
+      if (power == null || power < -32n || power > 32n || (!left.size && power <= 0n)) {
+        throw Error('Expected a bounded integer exponent');
+      }
+      const raise = terms => {
+        let result = unit;
+        for (let k = power < 0n ? -power : power; k; k >>= 1n) {
+          if (k & 1n) result = multiplyExponential(result, terms);
+          if (k > 1n) terms = multiplyExponential(terms, terms);
+        }
+        return result;
+      };
+      return power < 0n ? [raise(denominator), raise(left)] : [raise(left), raise(denominator)];
+    }
+    const [right, divisor] = exponentialQuotient(node.b);
+    if (node.op === '/') {
+      if (!right.size) throw Error('Division by zero');
+      return [multiplyExponential(left, divisor), multiplyExponential(denominator, right)];
+    }
+    const commonDenominator = multiplyExponential(denominator, divisor);
+    if (node.op === '*') return [multiplyExponential(left, right), commonDenominator];
+    const sum = multiplyExponential(left, divisor);
+    for (const term of multiplyExponential(right, denominator).values()) addExponentialTerm(sum, node.op, term);
+    return [sum, commonDenominator];
+  }
   function exactValues(text, format, notation) {
     if (text.length > 120) throw Error('Answer is too long');
     text = cleanExact(text, format, notation);
     if (notation === 'base-3') return [ternaryParts(text).map(exactScalar)];
     if (format === 'interval') return sortedIntervals(text);
     if (format === 'quadratic-radical') return [quadraticParts(text, notation)];
+    if (format === 'exponential-function') {
+      const nodes = math.parse(text, true, false, notation);
+      if (nodes.length !== 1) throw Error('Expected one expression');
+      return exponentialQuotient(nodes[0]);
+    }
     if (format === 'polynomial' || format === 'rational-function') {
       const nodes = math.parse(text, true, false, notation);
       if (nodes.length !== 1) throw Error('Expected one expression');
@@ -866,6 +937,12 @@
   function matchesExact(text, expected, format, notation) {
     try {
       const actual = exactValues(text, format, notation), remaining = exactValues(expected, format, notation);
+      if (format === 'exponential-function') {
+        const left = multiplyExponential(actual[0], remaining[1]);
+        const right = multiplyExponential(remaining[0], actual[1]);
+        for (const term of right.values()) addExponentialTerm(left, '-', term);
+        return !left.size;
+      }
       if (format === 'rational-function') {
         const left = multiplyPolynomials(actual[0], remaining[1]);
         const right = multiplyPolynomials(remaining[0], actual[1]);

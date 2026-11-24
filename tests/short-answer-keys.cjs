@@ -31,8 +31,8 @@ for (const [slug, key] of Object.entries(answers)) {
   const paper = slug.replace(/-\d+$/, '');
   assert.match(sources[paper], /^https:\/\//, slug);
   usedSources.add(paper);
-  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set', 'interval', 'polynomial', 'rational-function', 'quadratic-radical'].includes(key.format), slug);
-  if (key.format === 'polynomial' || key.format === 'rational-function') assert.match(key.notation, /^[a-z]$/i, slug);
+  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set', 'interval', 'polynomial', 'rational-function', 'quadratic-radical', 'exponential-function'].includes(key.format), slug);
+  if (['polynomial', 'rational-function', 'exponential-function'].includes(key.format)) assert.match(key.notation, /^[a-z]$/i, slug);
   if (Array.isArray(key.notation)) {
     assert.equal(key.format, 'tuple', slug);
     assert(key.notation.every(part => [null, 'letter', 'feet'].includes(part)), slug);
@@ -86,6 +86,13 @@ check('2012-hmmt-february-algebra-1', '2^2012', 'Incorrect');
 check('2012-hmmt-february-algebra-6', '4/(sqrt(1+2^(-2009))+1)', 'Correct');
 check('2012-hmmt-february-algebra-6', '2', 'Incorrect');
 check('2012-hmmt-february-algebra-6', '2^1006*sqrt(2^2010+2)-2^2011+1/2^4024', 'Incorrect');
+check('2011-hmmt-february-algebra-and-combinatorics-4', '2^n/2', 'Correct');
+check('2011-hmmt-february-algebra-and-combinatorics-4', '(1/2)^(1-n)', 'Correct');
+check('2011-hmmt-february-algebra-and-combinatorics-18', '(2-2^(1-n))/n', 'Correct');
+check('2011-hmmt-february-algebra-and-combinatorics-18', '2/n', 'Incorrect');
+check('2009-hmmt-february-combinatorics-10', '3^n-2^n-n*2^n+(n^2+n)/2', 'Correct');
+check('2001-hmmt-february-advanced-topics-2', '-(-1)^n', 'Correct');
+check('2001-hmmt-february-advanced-topics-2', '(-1)^n', 'Incorrect');
 check('2017-hmmt-february-combinatorics-10', 'choose(85,50)-choose(85,51)', 'Correct');
 check('2013-arml-local-individual-10', '21,5,14', 'Correct');
 check('2016-arml-individual-8', '(20, 5, 11)', 'Incorrect');

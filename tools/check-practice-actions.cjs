@@ -132,6 +132,13 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('#finish-practice').click();
  await p.locator('.practice-results').waitFor();
  assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Correct');
+ await set(['2011-hmmt-february-algebra-and-combinatorics-4']);
+ await p.locator('#practice-answer').fill('(1/2)^(1-n)');
+ await p.locator('.practice-answer-preview .katex').waitFor();
+ assert.equal(await p.locator('#practice-answer').getAttribute('aria-invalid'),'false');
+ await p.locator('#finish-practice').click();
+ await p.locator('.practice-results').waitFor();
+ assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Correct');
  await set(['2020-cmimc-combinatorics-and-computer-science-8']);
  const fibonacciInput=p.locator('#practice-answer');
  await fibonacciInput.fill('(100,F+1223)');

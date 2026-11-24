@@ -6597,6 +6597,7 @@
       interval: 'Interval or inequality, for example [2, 5) or 2 ≤ x < 5',
       polynomial: `Polynomial in ${exact?.notation}`,
       'rational-function': `Expression in ${exact?.notation}`,
+      'exponential-function': `Expression in ${exact?.notation}`,
       tuple: exact?.notation === 'polar' ? 'Polar coordinates (radius, angle). For degrees, use ° or deg.' : 'Ordered tuple, for example (2, 3)',
       'tuple-set': 'All tuples, for example (2, 3), (4, 5)', text: 'Short answer',
       percent: exact?.notation === 'percent-change' ? 'Percentage change. Use a negative value for a decrease.' : 'Percentage (% is optional)' }[exact?.format] ||
