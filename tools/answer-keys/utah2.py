@@ -14,6 +14,16 @@ class _L:
     def findall(self, seg):
         return LET1.findall(seg) or LET2.findall(seg)
 LET = _L()
+# Solution sections that state a value or conclusion instead of a consistently formatted letter.
+reviewed = {
+    ('2011', 'Junior'): {3: 'E', 5: 'B'},
+    ('2016', 'Junior'): {12: 'A', 13: 'B', 31: 'B', 33: 'A', 35: 'E', 37: 'E', 38: 'C'},
+    ('2016', 'Senior'): {11: 'A', 30: 'B', 32: 'A', 34: 'D', 37: 'C'},
+    ('2017', 'Junior'): {3: 'C'},
+    ('2018', 'Junior'): {37: 'C'},
+    ('2020', 'Junior'): {20: 'C'},
+    ('2020', 'Senior'): {33: 'B'},
+}
 def choice_text(s, letter):
     m = re.search(r'\(%s\)\s*(.*?)(?=\s*\([a-eA-E]\)\s|$)' % letter, s, re.S | re.I)
     return m.group(1) if m else None
@@ -39,12 +49,17 @@ for (y, kind), nums in sorted(want.items()):
             questions, choices = numbers.split(), letters.split()
             if len(questions) == len(choices): res.update((int(n), a) for n, a in zip(questions, choices))
         if sorted(res) != list(range(1, 31)): res = {}
-    elif 'Answer Key' in t:  # 2014: a table, Junior columns first, then Senior
+    elif y == '2014':  # Junior and Senior columns each end with #30, mislabeled #20.
         rows = re.findall(r'(?m)^\s*(\d+)\s+([A-E])\s+(\d+)\s+([A-E])\s+(\d+)\s+([A-E])\s+(\d+)\s+([A-E])\s*$', t)
-        for r in rows:
-            j = {int(r[0]): r[1], int(r[2]): r[3]}; s = {int(r[4]): r[5], int(r[6]): r[7]}
-            res.update(j if kind == 'Junior' else s)
-        rows3 = re.findall(r'(?m)^\s*(\d+)\s+([A-E])\s+(\d+)\s+([A-E])\s+(\d+)\s+([A-E])\s*$', t)
+        numbered = [(n, n + 15, n, n + 15) for n in range(1, 15)] + [(15, 20, 15, 20)]
+        if [tuple(int(row[i]) for i in (0, 2, 4, 6)) for row in rows] == numbered:
+            offset = 0 if kind == 'Junior' else 4
+            for n, row in enumerate(rows, 1):
+                res[n], res[n + 15] = row[offset + 1], row[offset + 3]
+    elif y == '2019':
+        letters = re.findall(r'(?im)^[ \t]*Correct Answer:[ \t]*\([ \t]*([A-E])[ \t]*\)', t.replace('\f', '\n'))
+        if len(letters) == len(nums) == 40:
+            res = dict(enumerate(map(str.upper, letters), 1))
     else:
         best = {}
         for start in [0] + [m.start() for m in re.finditer(r'(?i)solutions', t)]:
@@ -62,6 +77,7 @@ for (y, kind), nums in sorted(want.items()):
                 v, c = norm(val.split('  ')[0]), norm(ct)
                 if v and c:
                     checks[0 if (v.startswith(c[:6]) or c.startswith(v[:6])) else 1] += 1
+    res.update(reviewed.get((y, kind), {}))
     miss = [n for n in nums if n not in res]
     for n in nums:
         if n in res: out[f'{y}-utah-state-math-contest-{kind.lower()}-{n}'] = res[n]

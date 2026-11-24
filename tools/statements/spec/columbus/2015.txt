@@ -150,7 +150,7 @@ Let $S_1$ denote the area of the equilateral triangle $\Delta A_1B_1C_1$ and $S_
 
 (A) $\dfrac1{1+\sqrt3}$  (B) $\dfrac1{2\left(1+\sqrt3\right)}$  (C) $\dfrac1{2\left(1+\sqrt3\right)^2}$  (D) $\dfrac1{\left(1+\sqrt3\right)^2}$  (E) $\dfrac2{\left(1+\sqrt3\right)^2}$
 === 36
-Consider the equilateral triangle $\Delta A_1B_1C_1$ shown on the picture below. Let $A$ be the intersection of the angle bisectors. Construct the equilateral triangle $\Delta A_2B_2C_2$ whose vertices $A_2,B_2,C_2$ are the midpoints of the segments $\overline{AA_2},\overline{AB_2},\overline{AC_2}$, respectively. Construct now, inside the second triangle, a third triangle $\Delta A_3B_3C_3$ using the same method. Repeat this process $2015$ times to get a sequence of triangles $\Delta A_iB_iC_i$, $i=1,2,3,\ldots,2015$. If the first triangle $\Delta A_1B_1C_1$ has perimeter $3$, what is the sum of the perimeters of all the triangles in the sequence?
+Consider the equilateral triangle $\Delta A_1B_1C_1$ shown on the picture below. Let $A$ be the intersection of the angle bisectors. Construct the equilateral triangle $\Delta A_2B_2C_2$ whose vertices $A_2,B_2,C_2$ are the midpoints of the segments $\overline{AA_1},\overline{AB_1},\overline{AC_1}$, respectively. Continue in the same way until there are $2015$ triangles in all, numbered $\Delta A_iB_iC_i$, $i=1,2,3,\ldots,2015$. If the first triangle $\Delta A_1B_1C_1$ has perimeter $3$, what is the sum of the perimeters of all the triangles in the sequence?
 
 @@fig:columbus2015_36.png@@
 

@@ -15,7 +15,7 @@ window.MATH_MOCK_EXTRAS = {
   '2019-hmmt-february-geometry-4': {
     statement:String.raw`A convex hexagon $ABCDEF$ has parallelograms $ACDF$ and $ABDE$, each of area $168$. Let $G=AC\cap BD$. If $[AGB]-[CGB]=10$, find the smallest possible area of $ABCDEF$.`, answers:['196'] },
   '2019-hmmt-february-geometry-5': {
-    statement:String.raw`Triangle $ABC$ satisfies $AB=AC$ and is inscribed in a circle of radius $1$ with center $O$. Reflect $C$ across $AB$ to obtain $D$. Given $OD=\sqrt3$, find a possible area of $ABC$.`, answers:['(sqrt(2)+1)/2','(sqrt(2)-1)/2'] },
+    statement:String.raw`Triangle $ABC$ satisfies $AB=AC$ and is inscribed in a circle of radius $1$ with center $O$. Reflect $C$ across $AB$ to obtain $D$. Given $OD=\sqrt3$, find a possible area of $ABC$.`, alternatives:true, answers:['(sqrt(2)+1)/2','(sqrt(2)-1)/2'] },
   '2019-hmmt-february-geometry-6': {
     statement:String.raw`Six unit disks have pairwise disjoint interiors, and their cyclic neighbors are tangent: $C_1$ touches $C_2$, through $C_6$ touching $C_1$. For each such configuration, take the radius of its smallest enclosing circle. If the least and greatest possible radii are $r$ and $R$, determine $R-r$.`, answers:['sqrt(3)-1'] },
   '2019-hmmt-february-geometry-7': {

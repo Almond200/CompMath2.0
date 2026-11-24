@@ -3338,13 +3338,17 @@
   // Duke Math Meet: each year's Individual round as Duke's math department posts it, with the
   // official solutions or answer sheets where available.
   const DMM_NEW = "https://math.duke.edu/sites/math.duke.edu/files/documents/", DMM_OLD = "https://sites.math.duke.edu/dumu/mathmeet/prob/";
+  const DMM_ARCHIVE = "https://dukemathmeet.org/";
   const DMM_FILES = {
     2022: [DMM_NEW + "Individual%20Round.pdf", DMM_NEW + "Solution%20Booklet.pdf"],
     2021: [DMM_NEW + "DMM_2021_Individual_Round.pdf", DMM_NEW + "DMM_2021_Solutions_Updated.pdf"],
     2020: [DMM_NEW + "DMM_2020_Problems_And_Solutions.pdf", DMM_NEW + "DMM_2020_Problems_And_Solutions.pdf"],
     2019: [DMM_OLD + "DMM_2019_Individual_Round.pdf", DMM_OLD + "DMM_2019_Solutions.pdf"],
-    2018: [DMM_OLD + "2018_Individual.pdf"], 2017: [DMM_OLD + "2017_Indiv.pdf"], 2016: [DMM_OLD + "2016_indiv.pdf"],
-    2015: [DMM_OLD + "2015_Individual.pdf"], 2014: [DMM_OLD + "2014_Individual.pdf"],
+    2018: [DMM_OLD + "2018_Individual.pdf", DMM_ARCHIVE + "2018/indiv_sol.pdf"],
+    2017: [DMM_OLD + "2017_Indiv.pdf", DMM_ARCHIVE + "2017/indiv_sol.pdf"],
+    2016: [DMM_OLD + "2016_indiv.pdf", DMM_ARCHIVE + "2016/indiv_sol.pdf"],
+    2015: [DMM_OLD + "2015_Individual.pdf", DMM_ARCHIVE + "2015/indiv_sol.pdf"],
+    2014: [DMM_OLD + "2014_Individual.pdf", DMM_ARCHIVE + "2014/indiv_sol.pdf"],
     2013: [DMM_OLD + "2013_Individual.pdf", DMM_OLD + "2013_Individual.pdf"], 2012: [DMM_OLD + "2012_Individual.pdf", DMM_OLD + "2012_Individual.pdf"],
     2011: [DMM_OLD + "2011_Individual.pdf"], 2010: [DMM_OLD + "2010_Problems.pdf"],
     2009: [DMM_OLD + "2009_individual.pdf", DMM_OLD + "2009_answers.pdf"],
@@ -6116,7 +6120,8 @@
   // the AHSME), and the solver checks their answer against the official solution at review.
   const isVoidedProblem = p => !!practiceSessions.voidReason(p.slug);
   const paperProblem = p => !isVoidedProblem(p) && !hasMockAnswer(p) && !!p.url;
-  const externalPracticePrompt = p => !!practiceSessions.exactKey(p.slug)?.external && !!p.url;
+  const externalPracticePrompt = p => !!p.url && (practiceSessions.exactKey(p.slug)?.external ||
+    (officialKey(p.slug) != null && !hasProblemStatement(p)));
   const practiceEligible = p => (hasMockAnswer(p) || paperProblem(p)) && !isVoidedProblem(p);
   // Contests whose papers are multiple choice with five options, like the AMC; the others take a
   // short answer. A problem with an official letter key is multiple choice whatever its contest.
@@ -6138,7 +6143,7 @@
     const on = fams.filter(f => !practiceOff.has(f)).length;
     const sum = on === fams.length ? "All contests" : on ? `${on} of ${fams.length} contests` : "No contest";
     return `<details class="pr-fams"><summary><span class="pr-fams-label">Contests</span><span class="pr-fams-sum">${sum}</span></summary>
-      <p class="pr-fams-note">Choose the contests to draw from. Some questions open in their source paper or on AoPS; for those, you check your answer against the official solution during review.</p>
+      <p class="pr-fams-note">Choose the contests to draw from. Some questions open in their source paper or on AoPS. You can mark self-check questions during review.</p>
       <div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-pr-all="on"${on === fams.length ? " disabled" : ""}>Select all</button><button type="button" class="fam-bulk-btn" data-pr-all="off"${on ? "" : " disabled"}>Deselect all</button></div>
       <div class="fam-chips" role="group" aria-label="Contests to draw from">${fams.map(f => `<button type="button" class="fam-chip" data-pr-fam="${escapeAttr(f)}" aria-pressed="${!practiceOff.has(f)}">${famDot(f)}${f}</button>`).join("")}</div></details>`;
   }
@@ -6199,7 +6204,7 @@
   function exactAnswerHtml(text, key = {}) {
     if(!text)return '';
     if (key.format === 'text') return escapeAttr(text);
-    try { return `<span class="practice-answer-math">$${escapeAttr(practiceSessions.exactTex(text, key.format, key.notation))}$</span>`; }
+    try { return `<span class="practice-answer-math">$${escapeAttr(practiceSessions.exactTex(text, key.format, key.notation, key.alternatives))}$</span>`; }
     catch (err) { return escapeAttr(text); }
   }
   const PRACTICE_MATH_KEYS = [
@@ -6214,6 +6219,7 @@
     { tex: 'x^n', name: 'Power', open: '^(', close: ')' },
     { tex: 'x_n', name: 'Subscript', open: '_{', close: '}' },
     { tex: '\\pi', name: 'Pi', open: 'pi' },
+    { tex: '\\phi', name: 'Phi', open: 'φ' },
     { tex: 'e', name: 'Euler’s number', open: 'e' },
     { tex: 'i', name: 'Imaginary unit', open: 'i' },
     { tex: '!', name: 'Factorial', open: '!' },
@@ -6231,6 +6237,7 @@
     { tex: ':', name: 'Ratio separator', open: ':' },
     { tex: '\\pm', name: 'Plus or minus', open: '±' },
     { tex: ',', name: 'Separate answers', open: ', ' },
+    { tex: ';', name: 'Separate answer lists', open: '; ' },
     { tex: '(', name: 'Open parenthesis', open: '(' },
     { tex: ')', name: 'Close parenthesis', open: ')' },
     { tex: '[', name: 'Open square bracket', open: '[' },
@@ -6266,7 +6273,7 @@
       preview.textContent = text;
       if (!text || key?.format === 'text') return;
       let tex;
-      try { tex = practiceSessions.exactTex(text, key?.format, key?.notation); }
+      try { tex = practiceSessions.exactTex(text, key?.format, key?.notation, key?.alternatives); }
       catch (err) { tex = text.replace(/^\$\$(.*)\$\$$|^\$(.*)\$$/, '$1$2'); }
       try {
         window.katex.render(tex, preview, { throwOnError: true, maxExpand: 100 });
@@ -6317,7 +6324,7 @@
         <label class="mock-check" data-mock-check="statements" hidden><input type="checkbox" id="mock-statements"> <span>Only problems whose statement is shown in the app</span></label>
         <div class="mock-source-field" hidden></div>
         <div class="mock-advanced-field" hidden></div>
-        <p class="mock-generation-info" hidden>Questions come from your selected contests and keep their original answer formats. For questions linked to an official paper, check your answer against its solution during review.</p>
+        <p class="mock-generation-info" hidden>Questions come from your selected contests and keep their original answer formats. You can mark self-check questions during review.</p>
         <p id="mock-contest-info" class="prob-note"></p><p id="mock-contest-status" role="status"></p>
         <button type="submit" class="hp-btn">Start paper</button>
       </fieldset></form>
@@ -6537,9 +6544,16 @@
     const ext = showSource && p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.urlLabel === "archive" ? "Open in archive" : "Open in AoPS"} ${uiIcon("arrow-up-right")}</a>` : "";
     return `<div class="practice-solution-links"><a class="aops-btn" href="#/problem/${p.slug}">Open in app</a>${ext}</div>`;
   }
+  function practiceChoiceLabels(slug) {
+    const statement = window.MATH_STATEMENTS?.[slug]?.s || '';
+    const start = statement.search(/\n\s*\(a\)\s/i);
+    const labels = start < 0 ? [] : [...new Set([...statement.slice(start).matchAll(/\(([A-F])\)\s/gi)]
+      .map(match => match[1].toUpperCase()))];
+    return labels.length >= 3 ? labels.sort() : ['A','B','C','D','E'];
+  }
   function practiceAnswerChoices(set, slug, finished) {
     const multi = practiceSessions.allowsMultipleChoices(slug), selected = set.answers[slug] || '';
-    const choices = /\(F\)/.test(window.MATH_STATEMENTS?.[slug]?.s || '') ? ['A','B','C','D','E','F'] : ['A','B','C','D','E'];
+    const choices = practiceChoiceLabels(slug);
     return `<div class="rand-btns" role="${multi ? 'group' : 'radiogroup'}" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${choices.map(a =>
       `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="${multi ? 'checkbox' : 'radio'}" aria-checked="${multi ? selected.includes(a) : selected === a}">${a}</button>`).join('')}</div>`;
   }
@@ -6559,15 +6573,16 @@
         ${set.clock ? `<p class="practice-results-meta">${mockTimeSummary(set)}</p>` : ''}
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
-        ${counts['Check yourself'] ? `<p class="practice-results-meta">${counts['Check yourself']} to check against the official solution: open ${counts['Check yourself'] === 1 ? 'it' : 'each'} in the review and mark your answer right or wrong.</p>` : ''}
+        ${counts['Check yourself'] ? `<p class="practice-results-meta">${counts['Check yourself']} for self-check. Open ${counts['Check yourself'] === 1 ? 'it' : 'each'} in the review and mark your answer right or wrong.</p>` : ''}
         ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided${score ? ' · Full credit awarded' : ''}</p>` : ''}
         <a class="hp-btn" href="${reviewUrl}">Review problems</a>
       </section>
       <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
         const p = PROBLEM_BY_SLUG[slug], result = practiceSessions.result(set, slug);
         const answer = set.answers[slug], exact = practiceSessions.exactKey(slug);
-        const submitted = (exact || /AIME/.test(p?.fam)) && !set.selfCheck?.[slug]
-          ? exactAnswerHtml(answer, exact) : escapeAttr(practiceSessions.allowsMultipleChoices(slug) && !set.selfCheck?.[slug]
+        const paper = practiceSessions.needsSelfCheck(set, slug);
+        const submitted = (exact || /AIME/.test(p?.fam)) && !paper
+          ? exactAnswerHtml(answer, exact) : escapeAttr(practiceSessions.allowsMultipleChoices(slug) && !paper
             ? [...(answer || '')].join(', ') : answer || '');
         const summary = result === 'Voided' ? '' : `<small>${answer ? 'Your answer: ' + submitted : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small>`;
         return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${practiceProblemNumber(set, i)}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong>${summary}</span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
@@ -6596,11 +6611,15 @@
     const answeredSummary = () => `${answerable.filter(id => set.answers[id]).length} of ${answerable.length} answered`;
     const voidNote = practiceSessions.voidReason(slug);
     const outcome = practiceSessions.result(set, slug);
-    const aime = p && /AIME/.test(p.fam), exact = practiceSessions.exactKey(slug), paper = !!(p && !voidNote && set.selfCheck?.[slug]);
+    const aime = p && /AIME/.test(p.fam), exact = practiceSessions.exactKey(slug);
+    const paper = !!(p && !voidNote && practiceSessions.needsSelfCheck(set, slug));
     const inlinePaper = paper && archiveStatement(p);
     const external = p && !paper && externalPracticePrompt(p);
     const typedAnswer = aime || exact || paper;
-    const exactLabel = { set: exact?.notation === 'letter-list' ? 'All letters, separated by commas (spaces optional).' :
+    const alternativeLabel = exact?.alternatives ? (exact.format === 'sequence'
+      ? 'Separate values within a list with commas and separate complete lists with a semicolon.'
+      : 'Enter one or more answers. Separate answers with commas (spaces optional). Write numbers without commas.') : '';
+    const exactLabel = alternativeLabel || { set: exact?.notation === 'letter-list' ? 'All letters, separated by commas (spaces optional).' :
       exact?.notation === 'value-or-set' ? 'Enter your answer. Separate values with commas and write numbers without commas.' :
       'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.',
       sequence: exact?.notation === 'base-3'
@@ -6613,6 +6632,7 @@
       'rational-function': `Expression in ${exact?.notation}`,
       'exponential-function': `Expression in ${exact?.notation}`,
       'symbolic-equation': 'Equation',
+      numeral: 'Numeral in the requested base',
       'set-set': 'Enter each set in braces or parentheses, separated by commas.',
       'ratio-list': 'Ratio, for example 2:3:4',
       tuple: exact?.notation === 'polar' ? 'Polar coordinates (radius, angle). For degrees, use ° or deg.' : 'Ordered tuple, for example (2, 3)',
@@ -6622,7 +6642,8 @@
         exact?.notation === 'angle' ? 'Angle. For degrees, use ° or deg.' : 'Exact value (fractions, sqrt, pi, !)');
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
     const acceptedChoices = practiceSessions.choiceAnswers(slug);
-    const gradingNote = window.MATH_EXTRA_KEYS?.notes?.[slug];
+    const gradingNote = window.MATH_EXTRA_KEYS?.notes?.[slug] ?? window.MATH_SHORT_ANSWER_KEYS?.notes?.[slug] ??
+      (exact && p?.url && !p.solUrl ? 'The answer was checked independently from the official problem paper.' : '');
     const correct = voidNote ? '' : !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact)).join(' or ') :
       escapeAttr(acceptedChoices.length ? acceptedChoices.map(choice => [...choice].join(' and ')).join(' or ') : officialKey(slug) || '');
     const nav = set.slugs.map((id, i) => {
@@ -6646,7 +6667,7 @@
       </section>
       <section class="sh-section practice-question"><h3>Problem ${practiceProblemNumber(set, set.current)}${p && (!mock || finished) ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
         ${paper ? `${inlinePaper ? `<div class="practice-set-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div></div>` : ''}
-          <div class="practice-paper"><p data-statement-fallback>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. Compare your answer with the official solution and mark it below.` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. When you review, you check it against the official solution.`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`
+          <div class="practice-paper"><p data-statement-fallback>${finished ? `This is Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, read in ${paperWhere}. ${p.solUrl ? 'Compare your answer with the official solution and mark it below.' : 'Check your answer and mark it below.'}` : `This problem is read in ${paperWhere}: open it, find Problem ${paperNum}${paperWhere === "AoPS" ? "" : ` of ${escapeAttr(p.cname)}`}, and enter your answer below. ${p.solUrl ? 'When you review, you check it against the official solution.' : 'You can check your answer during review.'}`}</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`
           : external ? `<div class="practice-paper"><p>Read Problem ${p.num} in the original paper.</p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`
           : p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>${voidNote ? "Voided" : "Your answer"}</h3>
@@ -6750,7 +6771,17 @@
     });
     $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; schedulePracticeSave(); const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-marked', e.target.checked); current.setAttribute('aria-label', `Problem ${practiceProblemNumber(set, set.current)}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${e.target.checked ? ', marked for review' : ''}`); });
     savePractice();
-    if (p && !external && (!paper || inlinePaper)) showStatement(p, '.practice-set-st', mock && !paper);
+    if (p && !external && (!paper || inlinePaper)) {
+      const pendingChoices = !typedAnswer && !voidNote && !window.MATH_STATEMENTS?.[slug];
+      showStatement(p, '.practice-set-st', !paper);
+      if (pendingChoices) {
+        const route = location.hash;
+        loadStatements(statementFile(p)).then(() => {
+          if (location.hash === route && topicPracticeSet === set && set.slugs[set.current] === slug &&
+              practiceChoiceLabels(slug).join('') !== 'ABCDE') redraw();
+        });
+      }
+    }
     $content.querySelectorAll('[data-self]').forEach(b => b.addEventListener('click', () => {
       const v = b.getAttribute('aria-pressed') === 'true' ? null : b.dataset.self;
       if (!practiceSessions.selfMark(set, slug, v)) return;
@@ -10422,7 +10453,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const statementFile = p => { const a = archiveStatement(p); return a ? `${a.dir}/${p.year}` : p.year; };
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 124;
+  const STATEMENTS_V = 126;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {

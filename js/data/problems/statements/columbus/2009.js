@@ -53,7 +53,9 @@ Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2009-columbus-state-tournament-16": { s: String.raw`The number $M$ has $1111$ digits, each of which is equal to $1$, $M=111\ldots111$. What is the sum of the digits of $1001\times M$ ?
 
 (A) $1111$  (B) $1221$  (C) $1122$  (D) $2112$  (E) $2222$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2009individual.pdf" },
-"2009-columbus-state-tournament-17": { s: String.raw`What are the last $3$ digits of the number $3^{98}$ ?`, u: "https://www.columbusstate.edu/math/_docs/tournament/2009individual.pdf" },
+"2009-columbus-state-tournament-17": { s: String.raw`What are the last $3$ digits of the number $3^{98}$ ?
+
+(A) $998$  (B) $899$  (C) $999$  (D) $989$  (E) $889$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2009individual.pdf" },
 "2009-columbus-state-tournament-18": { s: String.raw`What is the coefficient of $a^{-1003}$ in the binomial expansion of $\left(a-\dfrac1{\sqrt a}\right)^{2009}$ ?
 
 (A) $2009$  (B) $-2009$  (C) $2017036$  (D) $-2017036$  (E) $2008$`, u: "https://www.columbusstate.edu/math/_docs/tournament/2009individual.pdf" },

@@ -1,6 +1,7 @@
 import os, re, json, subprocess
+from pathlib import Path
 K = (__import__('os').environ.get('KEYS_WORK', '/tmp/answer-keys-work') + '/')
-R = '/home/user/CompMath2.0'
+R = Path(__file__).resolve().parents[2]
 st = json.loads(subprocess.check_output(['node', '-e', "global.window={};const fs=require('fs');for(const f of fs.readdirSync('js/data/problems/statements/columbus'))require('./js/data/problems/statements/columbus/'+f);console.log(JSON.stringify(window.MATH_STATEMENTS))"], cwd=R))
 db = json.loads(subprocess.check_output(['node', '-e', "global.window={};require('./js/data/problems/problem-db.js');console.log(JSON.stringify(window.MATH_PROBLEM_DB.map(p=>p.ref)))"], cwd=R))
 want = {}

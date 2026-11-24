@@ -9,7 +9,7 @@ require(path.join(data, 'answer-keys-more.js'));
 require(path.join(data, 'answer-keys-short.js'));
 require(path.join(data, 'mock-extras.js'));
 const practice = require('../js/practice-sessions.js');
-const { answers, sources, voided } = window.MATH_SHORT_ANSWER_KEYS;
+const { answers, sources, voided, notes } = window.MATH_SHORT_ANSWER_KEYS;
 const statementDir = path.join(data, 'statements');
 for (const dir of fs.readdirSync(statementDir, { withFileTypes: true }).filter(dir => dir.isDirectory())) {
   for (const file of fs.readdirSync(path.join(statementDir, dir.name)).filter(file => file.endsWith('.js'))) {
@@ -31,7 +31,7 @@ for (const [slug, key] of Object.entries(answers)) {
   const paper = slug.replace(/-\d+$/, '');
   assert.match(sources[paper], /^https:\/\//, slug);
   usedSources.add(paper);
-  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'set-set', 'ratio-list', 'text', 'percent', 'complex', 'complex-set', 'interval', 'polynomial', 'rational-function', 'quadratic-radical', 'exponential-function', 'factored-number', 'prime-factorization', 'symbolic-rational', 'symbolic-radical', 'symbolic-equation', 'polynomial-multiple', 'integer-polynomial-multiple', 'natural-exponential', 'inverse-tangent-formula'].includes(key.format), slug);
+  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'set-set', 'ratio-list', 'text', 'numeral', 'percent', 'complex', 'complex-set', 'interval', 'formal-log', 'polynomial', 'rational-function', 'quadratic-radical', 'exponential-function', 'factored-number', 'prime-factorization', 'symbolic-rational', 'symbolic-radical', 'symbolic-equation', 'polynomial-multiple', 'integer-polynomial-multiple', 'natural-exponential', 'inverse-tangent-formula'].includes(key.format), slug);
   if (['polynomial', 'rational-function', 'exponential-function'].includes(key.format)) assert.match(key.notation, /^[a-z]$/i, slug);
   if (Array.isArray(key.notation)) {
     assert.equal(key.format, 'tuple', slug);
@@ -39,6 +39,19 @@ for (const [slug, key] of Object.entries(answers)) {
   }
   assert(key.answers.length, slug);
   for (const value of key.answers) check(slug, value, 'Correct');
+}
+for (const [slug, key] of Object.entries({ ...answers, ...window.MATH_MOCK_EXTRAS })) {
+  if (!key.alternatives) continue;
+  const separator = key.format === 'sequence' ? '; ' : ', ';
+  const individual = key.format === 'set' ? key.answers.filter(answer => !answer.includes(',')) : key.answers;
+  assert(individual.length > 1, slug);
+  for (const first of individual) {
+    for (const second of individual.filter(answer => answer !== first)) {
+      check(slug, first + separator + second, 'Correct');
+    }
+  }
+  const wrong = key.format === 'sequence' ? '0, 0' : '888888888';
+  check(slug, individual[0] + separator + wrong, 'Incorrect');
 }
 assert.equal(usedSources.size, Object.keys(sources).length);
 
@@ -70,8 +83,50 @@ function check(slug, value, verdict) {
 const set = '2014-hmmt-february-algebra-1';
 check('2025-chmmc-individual-10', '6', 'Correct');
 check('2025-chmmc-individual-10', '7', 'Incorrect');
+assert.match(notes['2025-chmmc-individual-10'], /accepting 7.*6/);
+const freeRecurrence = '2015-bmt-analysis-4';
+const priorPractice = practice.create('Saved recurrence answer', 'Any', [freeRecurrence]);
+priorPractice.answers[freeRecurrence] = '3';
+practice.finish(priorPractice);
+assert.equal(practice.result(priorPractice, freeRecurrence), 'Check yourself');
+assert(practice.selfMark(priorPractice, freeRecurrence, 'Correct'));
+assert.equal(practice.result(priorPractice, freeRecurrence), 'Correct');
+assert.match(notes[freeRecurrence], /1 \+ 2a₄/);
 check('2018-lehigh-math-contest-1', '20', 'Correct');
 check('2018-lehigh-math-contest-1', '400', 'Incorrect');
+check('2013-lehigh-math-contest-6', 'sqrt(2)', 'Correct');
+check('2013-lehigh-math-contest-6', '2', 'Incorrect');
+check('2020-lehigh-math-contest-7', 'sqrt(5)', 'Correct');
+check('2020-lehigh-math-contest-36', 'sqrt(6)', 'Correct');
+check('2019-lehigh-math-contest-12', '20 mph', 'Correct');
+check('2011-calgary-junior-math-contest-2', '38 m²', 'Correct');
+check('2022-girls-in-math-at-yale-individual-6', '10 ft/s', 'Correct');
+check('2021-hmmt-november-theme-2', '19%', 'Correct');
+check('2025-lehigh-math-contest-25', '3456891012151618', 'Correct');
+check('2025-lehigh-math-contest-25', '03456891012151618', 'Incorrect');
+for (const year of [2022, 2023, 2024, 2025]) {
+  for (const contest of ['pascal', 'cayley', 'fermat']) {
+    const paper = year + '-' + contest + '-contest';
+    for (let number = 21; number <= 25; number++) {
+      const slug = paper + '-' + number;
+      assert.match(answers[slug].answers[0], /^\d{2}$/, slug);
+      assert.equal(practice.officialKey(slug), undefined, slug);
+    }
+  }
+}
+check('2022-cayley-contest-25', '09', 'Correct');
+check('2022-cayley-contest-25', '9', 'Correct');
+for (const [number, value] of [[23, '129'], [24, '140'], [25, '528']]) {
+  const slug = '2026-ukmt-smc-' + number;
+  assert(answers[slug].external);
+  check(slug, value, 'Correct');
+}
+for (const slug of ['2025-mbmt-lower-geometry-7', '2025-mbmt-upper-geometry-5']) {
+  check(slug, '10', 'Correct');
+  check(slug, 'sqrt(1360)', 'Correct');
+  check(slug, '36', 'Incorrect');
+}
+assert.match(practice.exactTex('55 degrees', undefined, 'degrees'), /\\circ/);
 check('1999-lehigh-math-contest-35', 'x_1=1/x_2', 'Correct');
 check('2000-lehigh-math-contest-7', '2x+y=6', 'Correct');
 check('2000-lehigh-math-contest-31', '166500', 'Correct');
@@ -167,6 +222,18 @@ check('2017-mathcounts-national-sprint-25', 'sqrt(457)/2', 'Correct');
 check('2012-mathcounts-national-sprint-22', '12 units', 'Correct');
 check('2012-mathcounts-national-sprint-22', 'sqrt(1216)/3', 'Correct');
 check('2012-mathcounts-national-sprint-22', '8sqrt(19)', 'Incorrect');
+check('2015-mathcounts-national-sprint-17', '1100₃', 'Correct');
+check('2015-mathcounts-national-sprint-17', '(001100)_{3}', 'Correct');
+check('2017-cmimc-computer-science-3', '111101 (base 2)', 'Correct');
+check('2017-cmimc-computer-science-3', '0b111101', 'Correct');
+check('2017-mathcounts-national-sprint-8', '16₈', 'Correct');
+check('2019-chmmc-individual-10', '10000.00010', 'Correct');
+check('2019-chmmc-individual-10', '010000.000100_{\\phi}', 'Correct');
+check('2019-chmmc-individual-10', '10000.00100φ', 'Incorrect');
+const baseCheck = practice.create('Base check', 'Any', ['2017-cmimc-computer-science-3']);
+assert(!practice.answer(baseCheck, '2017-cmimc-computer-science-3', '61', false));
+assert(!practice.answer(baseCheck, '2017-cmimc-computer-science-3', '111101_3', false));
+assert.equal(practice.exactTex('10000.00010 φ', 'numeral', 'base-phi'), '10000.00010_{\\phi}');
 check('2024-hmmt-february-algebra-and-number-theory-1', '29', 'Correct');
 check('2024-hmmt-february-algebra-and-number-theory-1', '-6', 'Correct');
 check('2024-hmmt-february-algebra-and-number-theory-1', '-6,29', 'Correct');
@@ -185,6 +252,13 @@ check('2014-smt-algebra-10', '1-x_{2014}/(3y_2014)', 'Correct');
 check('2014-smt-algebra-10', '1+x_2014/(3y_2014)', 'Incorrect');
 check('2006-hmmt-february-combinatorics-7', '4^(-n)-8^(-n)', 'Correct');
 check('2006-hmmt-february-combinatorics-7', '4^(-n)', 'Incorrect');
+check('2007-hmmt-february-algebra-8', 'log(2007)-log(2006)', 'Correct');
+check('2007-hmmt-february-algebra-8', '(ln(2007)-ln(2006/2007)+ln(1/2006))/2', 'Correct');
+check('2007-hmmt-february-algebra-8', 'log(2006/2007)', 'Incorrect');
+check('2007-hmmt-february-algebra-8', '0.000498', 'Incorrect');
+assert.match(practice.exactTex('\\log\\left(\\frac{2007}{2006}\\right)', 'formal-log'), /\\log/);
+check('2023-mbmt-lower-number-theory-5', '∞', 'Correct');
+check('2023-mbmt-lower-number-theory-5', '17', 'Incorrect');
 check('2016-bmt-discrete-math-6', 'n*2^n-2^n+1', 'Correct');
 check('2010-duke-math-meet-individual-1', '18.5 minutes', 'Correct');
 check('2010-duke-math-meet-individual-6', '41*3*7*3*7', 'Correct');
@@ -192,6 +266,14 @@ check('2010-duke-math-meet-individual-6', '18081', 'Incorrect');
 check('2010-duke-math-meet-individual-8', '2/2010', 'Correct');
 check('2011-duke-math-meet-individual-1', '2*60 mins', 'Correct');
 check('2011-duke-math-meet-individual-10', '1/(2+2/(sqrt(6)-sqrt(2)))', 'Correct');
+check('2014-duke-math-meet-individual-9', '321', 'Correct');
+check('2014-duke-math-meet-individual-9', '3', 'Incorrect');
+check('2017-duke-math-meet-individual-3', 'choose(12,4)', 'Correct');
+check('2017-duke-math-meet-individual-3', '715', 'Incorrect');
+check('2017-duke-math-meet-individual-4', '144 degrees', 'Correct');
+check('2018-duke-math-meet-individual-1', '2,-2,-4,-8', 'Correct');
+assert.equal(sources['2017-duke-math-meet-individual'], 'https://dukemathmeet.org/2017/indiv_sol.pdf');
+assert.match(window.MATH_SHORT_ANSWER_KEYS.notes['2017-duke-math-meet-individual-3'], /leading|zero/);
 check('2025-mathcounts-national-sprint-4', 'SATURDAY', 'Correct');
 check('2025-mathcounts-national-sprint-4', 'Sunday', 'Incorrect');
 check('2025-mathcounts-national-target-6', '90.08%', 'Correct');
@@ -330,7 +412,8 @@ const alternativesProblem = '2017-pumac-division-a-algebra-6';
 check(alternativesProblem, '2', 'Correct');
 check(alternativesProblem, '3', 'Correct');
 check(alternativesProblem, '4', 'Incorrect');
-assert(!practice.answer(practice.create('Alternative answers', 'Any', [alternativesProblem]), alternativesProblem, '2,3', false));
+check(alternativesProblem, '2,3', 'Correct');
+check(alternativesProblem, '2, 4', 'Incorrect');
 check('2006-lehigh-math-contest-21', '2(135-B)', 'Correct');
 check('2006-lehigh-math-contest-30', 'n(n+5)-3', 'Correct');
 check('2006-lehigh-math-contest-30', 'n^2+5n-3.0000000001', 'Incorrect');

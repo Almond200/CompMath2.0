@@ -68,6 +68,8 @@ The number $M$ has $1111$ digits, each of which is equal to $1$, $M=111\ldots111
 (A) $1111$  (B) $1221$  (C) $1122$  (D) $2112$  (E) $2222$
 === 17
 What are the last $3$ digits of the number $3^{98}$ ?
+
+(A) $998$  (B) $899$  (C) $999$  (D) $989$  (E) $889$
 === 18
 What is the coefficient of $a^{-1003}$ in the binomial expansion of $\left(a-\dfrac1{\sqrt a}\right)^{2009}$ ?
 

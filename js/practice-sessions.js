@@ -87,6 +87,10 @@
   function voidReason(slug) {
     return root.MATH_ANSWER_KEYS?.voided?.[slug] ?? root.MATH_EXTRA_KEYS?.voided?.[slug] ?? root.MATH_SHORT_ANSWER_KEYS?.voided?.[slug];
   }
+  function needsSelfCheck(set, slug) {
+    return !!(set.selfCheck?.[slug] || (!exactKey(slug) && !officialKey(slug) &&
+      root.MATH_SHORT_ANSWER_KEYS?.notes?.[slug]));
+  }
   function officialKey(slug) {
     return root.MATH_ANSWER_KEYS?.answers?.[slug] ?? root.MATH_EXTRA_KEYS?.answers?.[slug];
   }
@@ -96,18 +100,19 @@
       (/^[A-F]$/.test(key || '') ? [key] : []);
   }
   function allowsMultipleChoices(slug) {
-    return root.MATH_EXTRA_KEYS?.multipleChoicePapers?.includes(slug.replace(/-\d+$/, '')) ?? false;
+    return choiceAnswers(slug).filter(choice => choice.length === 1).length > 1 ||
+      (root.MATH_EXTRA_KEYS?.multipleChoicePapers?.includes(slug.replace(/-\d+$/, '')) ?? false);
   }
   // Top-level commas separate entries. Commas inside parentheses belong to a tuple
   // or to its component expressions, so do not split those until parsing the tuple.
-  function splitExactList(text) {
+  function splitExactList(text, separator = ',') {
     let depth = 0, start = 0;
     const parts = [];
     for (let i = 0; i < text.length; i++) {
       if (text[i] === '(' || text[i] === '{') depth++;
       if (text[i] === ')' || text[i] === '}') depth--;
       if (depth < 0) throw Error('Unmatched parenthesis');
-      if (!depth && text[i] === ',') { parts.push(text.slice(start, i)); start = i + 1; }
+      if (!depth && text[i] === separator) { parts.push(text.slice(start, i)); start = i + 1; }
     }
     if (depth) throw Error('Unmatched parenthesis');
     return [...parts, text.slice(start)].map(part => part.trim());
@@ -128,15 +133,37 @@
       return part.toUpperCase();
     });
   }
-  function ternaryParts(text) {
+  const subscriptDigits = digits => [...digits].map(digit => digit.charCodeAt(0) - '₀'.charCodeAt(0)).join('');
+  function readNumeral(text, base) {
+    text = text.replace(/\$|\\(?:left|right)\b/g, '').trim();
+    const suffix = /(?:_\s*(?:\{\s*(\d+|\\?phi|φ)\s*\}|(\d+|\\?phi|φ))|([₀-₉]+)|\(\s*base\s*(\d+|\\?phi|φ)\s*\)|\s+base\s*(\d+|\\?phi|φ)|(φ|\\?phi))$/i.exec(text);
+    if (suffix) {
+      const indicated = suffix[3] ? subscriptDigits(suffix[3]) : suffix.slice(1).find(Boolean);
+      if (indicated.toLowerCase().replace(/^\\/, '').replace('φ', 'phi') !== base) throw Error('Use the requested base');
+      text = text.slice(0, suffix.index).trim();
+    }
+    if (text.startsWith('(') && text.endsWith(')')) text = text.slice(1, -1).trim();
+    const prefix = /^0([bo])/i.exec(text);
+    if (prefix) {
+      if ((prefix[1].toLowerCase() === 'b' ? '2' : '8') !== base) throw Error('Use the requested base');
+      text = text.slice(2);
+    }
+    const limit = base === 'phi' ? 2 : Number(base);
+    if (!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(text) || [...text.replace('.', '')].some(digit => Number(digit) >= limit)) {
+      throw Error('Use only the digits of the requested base');
+    }
+    return text;
+  }
+  function numeralSequence(text, base) {
     text = text.replace(/\$|\\(?:left|right)\b/g, '').replace(/\s+and\s+/gi, ',').trim();
     let parts = splitExactList(text);
-    if (parts.length === 1 && text.startsWith('(') && text.endsWith(')')) parts = splitExactList(text.slice(1, -1));
-    return parts.map(part => {
-      const digits = /^(?:([0-2]+)|\(([0-2]+)\))(?:\s*(?:_(?:3|\{3\})|₃|\(base\s+3\)))?$/i.exec(part);
-      if (!digits) throw Error('Use the digits 0, 1, and 2 for a base 3 value');
-      return (digits[1] || digits[2]).replace(/^0+(?=\d)/, '');
-    });
+    if (parts.length === 1 && /^\([^()]*,[^()]*\)$/.test(text)) parts = splitExactList(text.slice(1, -1));
+    return parts.map(part => readNumeral(part, base));
+  }
+  function canonicalNumeral(text) {
+    const [whole, fraction = ''] = text.split('.');
+    const fractionalDigits = fraction.replace(/0+$/, '');
+    return (whole.replace(/^0+/, '') || '0') + (fractionalDigits ? '.' + fractionalDigits : '');
   }
   function letterParts(text) {
     text = text.trim();
@@ -168,7 +195,12 @@
     if (text.length > 120) return null;
     try { return math.toSymbolicTex(text); } catch (err) { return null; }
   }
-  function exactTex(text, format, notation) {
+  function exactTex(text, format, notation, alternatives = false) {
+    if (alternatives) {
+      const separator = format === 'sequence' ? ';' : ',';
+      const parts = splitExactList(text, separator);
+      if (parts.length > 1) return parts.map(part => exactTex(part, format, notation)).join(separator + '\\ ');
+    }
     const equation = text.includes('=');
     const display = equation && symbolicTex(text);
     if (display) return display;
@@ -182,10 +214,14 @@
   }
   function formattedExactTex(text, format, notation) {
     const percent = format === 'percent' && text.includes('%');
-    const degrees = notation === 'angle' ? degreeExpression(text) : null;
+    const degrees = ['angle', 'degrees'].includes(notation) ? degreeExpression(text) : null;
     if (degrees != null) return '{' + math.toTex(degrees, true) + '}^{\\circ}';
     text = cleanExact(text, format, notation);
-    if (notation === 'base-3') return ternaryParts(text).map(part => `${part}_{3}`).join(',\\ ');
+    const base = /^base-(\d+|phi)$/.exec(notation)?.[1];
+    if (base && (format === 'numeral' || format === 'sequence')) {
+      const parts = format === 'numeral' ? [readNumeral(text, base)] : numeralSequence(text, base);
+      return parts.map(part => `${part}_{${base === 'phi' ? '\\phi' : base}}`).join(',\\ ');
+    }
     if (notation === 'letter-list') return letterParts(text).join(',\\ ');
     if (format === 'set-set') return groupedExactParts(text).map(parts =>
       '\\left\\{' + parts.map(part => math.toTex(part)).join(',\\ ') + '\\right\\}').join(',\\ ');
@@ -200,6 +236,10 @@
       }).join(' \\cup ');
     }
     if (format === 'sequence') return splitExactList(text).map(part => math.toTex(part)).join(',\\ ');
+    if (format === 'formal-log') {
+      const tex = math.toTex(unbasedLogAsLn(text), true);
+      return /\blog\b/i.test(text) ? tex.replace(/\\ln\b/g, '\\log') : tex;
+    }
     if (['polynomial', 'rational-function', 'exponential-function'].includes(format)) return math.toTex(text, true, false, notation);
     if (format === 'complex' || format === 'complex-set') return math.toTex(text, format === 'complex', true);
     if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text, format !== 'set') + (percent ? '\\%' : '');
@@ -218,15 +258,19 @@
     points: /\s*(?:points?|pts?\.?)\s*$/i,
     units: /\s*units?\s*$/i,
     minutes: /\s*(?:minutes?|mins?\.?)\s*$/i,
+    meters: /\s*(?:met(?:er|re)s?|m\.?)\s*$/i,
+    degrees: /\s*(?:degrees?|deg\.?)\s*$/i,
     hours: /\s*(?:hours?|hrs?\.?)\s*$/i,
     inches: /\s*(?:inch(?:es)?|in\.?)\s*$/i,
     feet: /\s*(?:feet|foot|ft\.?)\s*$/i,
+    'feet-per-second': /\s*(?:f(?:ee|oo)t\s+per\s+second|ft\.?\s*\/\s*s(?:ec\.?)?|fps)\s*$/i,
     pounds: /\s*(?:pounds?|lbs?\.?)\s*$/i,
     dollars: /\s*(?:dollars?|USD)\s*$/i,
     miles: /\s*(?:miles?|mi\.?)\s*$/i,
     mph: /\s*(?:mph|miles?\s+per\s+hour)\s*$/i,
     'radians-per-second': /\s*(?:rad(?:ians?)?\s*\/\s*s|radians?\s+per\s+second)\s*$/i,
     'square-inches': /\s*(?:square\s+inch(?:es)?|sq\.?\s*in\.?|in(?:\^2|²))\s*$/i,
+    'square-meters': /\s*(?:square\s+met(?:er|re)s?|sq\.?\s*m\.?|m(?:\^2|²))\s*$/i,
     'cubic-inches': /\s*(?:cubic\s+inch(?:es)?|cu\.?\s*in\.?|in(?:\^3|³))\s*$/i,
     'square-units': /\s*(?:square\s+units?|units?\s+squared|units?(?:\^2|²))\s*$/i
   };
@@ -275,11 +319,11 @@
     }
     if (notation === 'fibonacci') {
       text = text.replace(/\bF\s*_\s*(?:\{\s*(\d+)\s*\}|(\d+))/gi, (_, braced, plain) => `fib(${braced || plain})`)
-        .replace(/\bF([₀-₉]+)/g, (_, index) => `fib(${[...index].map(digit => digit.charCodeAt(0) - '₀'.charCodeAt(0)).join('')})`);
+        .replace(/\bF([₀-₉]+)/g, (_, index) => `fib(${subscriptDigits(index)})`);
     }
     if (notation === 'repunit') {
       text = text.replace(/\ba\s*_\s*(?:\{\s*(\d+)\s*\}|(\d+))/gi, (_, a, b) => `((10^${a || b}-1)/9)`)
-        .replace(/\ba([₀-₉]+)/gi, (_, digits) => `((10^${[...digits].map(digit => digit.charCodeAt(0) - '₀'.charCodeAt(0)).join('')}-1)/9)`);
+        .replace(/\ba([₀-₉]+)/gi, (_, digits) => `((10^${subscriptDigits(digits)}-1)/9)`);
     }
     if (format === 'percent') text = text.replace(/(?:\\?%)\s*(?=\$?$)/, '');
     text = text.replace(/\b(sin|cos|tan)\s*\(([^()]+?)(?:\^\{\\circ\}|[°∘◦]|\s+deg)\s*\)/gi, '$1(($2)*pi/180)');
@@ -1155,11 +1199,53 @@
       return { op: 'num', v: String(index === -1 ? 1n : y[index]) };
     });
   }
+  const unbasedLogAsLn = text => text.replace(/(?:\\)?\blog(?=\s*(?:\\left\s*)?[(\[{])/gi, 'ln');
+  // A logarithm in an unspecified fixed base can be compared through its
+  // positive rational argument. Addition and subtraction of logs combine exactly.
+  function logarithmArgument(node) {
+    node = ungroup(node);
+    if (node.op === 'ln') {
+      const fraction = rational(node.a);
+      if (fraction?.[0] > 0n) return fraction;
+    } else if (node.op === 'neg') {
+      const [n, d] = logarithmArgument(node.a);
+      return [d, n];
+    } else if (node.op === '+' || node.op === '-') {
+      const fraction = rationalOperation(node.op === '+' ? '*' : '/', logarithmArgument(node.a), logarithmArgument(node.b));
+      if (fraction) return fraction;
+    } else if (node.op === '*' || node.op === '/') {
+      const right = rational(node.b);
+      const left = node.op === '*' && rational(node.a);
+      if ((right || left) && !(node.op === '/' && right[0] === 0n)) {
+        const exponent = node.op === '/' ? [right[1], right[0]] : right || left;
+        const [power, degree] = reduceFraction(...exponent);
+        const argument = logarithmArgument(right ? node.a : node.b);
+        const base = degree === 1n ? argument : degree <= EXACT_POWER_LIMIT && rationalRoot(...argument, degree);
+        const fraction = base && rationalOperation('^', base, [power, 1n]);
+        if (fraction) return fraction;
+      }
+    } else if (rational(node)?.[0] === 0n) {
+      return [1n, 1n];
+    }
+    throw Error('Expected logarithms of positive rational numbers');
+  }
   function exactValues(text, format, notation) {
     if (text.length > 120) throw Error('Answer is too long');
     text = cleanExact(text, format, notation);
-    if (notation === 'base-3') return [ternaryParts(text).map(exactScalar)];
+    const base = /^base-(\d+|phi)$/.exec(notation)?.[1];
+    if (base && format === 'numeral') return [[canonicalNumeral(readNumeral(text, base))]];
+    if (base && format === 'sequence') return [numeralSequence(text, base).map(canonicalNumeral)];
     if (format === 'interval') return sortedIntervals(text);
+    if (format === 'formal-log') {
+      const nodes = math.parse(unbasedLogAsLn(text), true);
+      if (nodes.length !== 1) throw Error('Expected one logarithm expression');
+      try {
+        const [n, d] = reduceFraction(...logarithmArgument(nodes[0]));
+        return [[n + '/' + d]];
+      } catch (err) {
+        return [[evaluated(nodes[0])]];
+      }
+    }
     if (format === 'quadratic-radical') return [quadraticParts(text, notation)];
     if (format === 'factored-number' || format === 'prime-factorization') return factoredParts(text);
     if (['symbolic-rational', 'symbolic-radical', 'symbolic-equation'].includes(format)) return symbolicAnswer(text, format, notation);
@@ -1255,6 +1341,17 @@
   }
   const normalizeTextAnswer = value => String(value).normalize('NFKC').trim()
     .replace(/\s+/g, ' ').replace(/\s*([,<])\s*/g, '$1').toLowerCase();
+  function matchesShortAnswer(text, { answers, format, notation, alternatives }) {
+    const matches = part => answers.some(key => format === 'text'
+      ? normalizeTextAnswer(key) === normalizeTextAnswer(part)
+      : matchesExact(part, key, format, notation));
+    if (matches(text)) return true;
+    if (!alternatives) return false;
+    try {
+      const parts = splitExactList(text, format === 'sequence' ? ';' : ',');
+      return parts.length > 1 && parts.every(part => part && matches(part));
+    } catch (err) { return false; }
+  }
   function aimeValue(text) {
     if (/^\d+$/.test(text)) return text.length <= 3 ? Number(text) : null;
     if (!text || text.length > 120) return null;
@@ -1270,16 +1367,19 @@
     // A problem read in its official paper (set.selfCheck) takes any short answer; the solver
     // checks it against the official solution at review.
     const exact = exactKey(slug);
-    if (set.selfCheck?.[slug]) { if (text.length > 60) return false; }
+    if (needsSelfCheck(set, slug)) { if (text.length > 60) return false; }
     else if (exact?.format === 'text') { if (text.length > 120) return false; }
     else if (exact) {
       if (text) {
-        try { exactValues(text, exact.format, exact.notation); }
+        try {
+          const parts = exact.alternatives ? splitExactList(text, exact.format === 'sequence' ? ';' : ',') : [text];
+          parts.forEach(part => exactValues(part, exact.format, exact.notation));
+        }
         catch (err) { if (!symbolicTex(text)) return false; }
       }
     } else if (allowsMultipleChoices(slug) && text) {
       const letters = new Set(text);
-      if (!/^[A-E]{1,5}$/.test(text) || letters.size !== text.length) return false;
+      if (!/^[A-F]{1,6}$/.test(text) || letters.size !== text.length) return false;
       text = [...letters].sort().join('');
     } else if (!(text === '' || (aime ? aimeValue(text) != null : (/-columbus-state-tournament-/.test(slug) ? /^[A-F]$/ : /^[A-E]$/).test(text)))) return false;
     set.answers[slug] = text;
@@ -1288,27 +1388,29 @@
   function result(set, slug) {
     if (voidReason(slug)) return 'Voided';
     if (!set.answers[slug]) return 'Unanswered';
-    if (set.selfCheck?.[slug]) return set.self?.[slug] || 'Check yourself';
+    if (needsSelfCheck(set, slug)) return set.self?.[slug] || 'Check yourself';
     const exact = exactKey(slug);
-    if (exact?.format === 'text') return exact.answers.some(key => normalizeTextAnswer(key) === normalizeTextAnswer(set.answers[slug])) ? 'Correct' : 'Incorrect';
-    if (exact) return exact.answers.some(key => matchesExact(set.answers[slug], key, exact.format, exact.notation)) ? 'Correct' : 'Incorrect';
+    if (exact) return matchesShortAnswer(set.answers[slug], exact) ? 'Correct' : 'Incorrect';
     // LIVE's MAA keys, else the official letters of the other multiple-choice contests (answer-keys-more.js).
     const key = officialKey(slug);
     if (key == null) return 'Answer unavailable';
     const actual = String(set.answers[slug]).trim();
-    const same = /^\d+$/.test(key) ? aimeValue(actual) === Number(key) : choiceAnswers(slug).includes(actual.toUpperCase());
+    if (/^\d+$/.test(key)) return aimeValue(actual) === Number(key) ? 'Correct' : 'Incorrect';
+    const choices = choiceAnswers(slug), selected = actual.toUpperCase();
+    const same = choices.includes(selected) || (allowsMultipleChoices(slug) && selected.length > 0 &&
+      new Set(selected).size === selected.length && [...selected].every(choice => choices.includes(choice)));
     return same ? 'Correct' : 'Incorrect';
   }
   // After finishing, the solver marks a self-checked answer right or wrong (or clears the mark).
   function selfMark(set, slug, verdict) {
-    if (set.status !== 'finished' || voidReason(slug) || !set.selfCheck?.[slug] || !set.answers[slug]) return false;
+    if (set.status !== 'finished' || voidReason(slug) || !needsSelfCheck(set, slug) || !set.answers[slug]) return false;
     if (!['Correct', 'Incorrect', null].includes(verdict)) return false;
     set.self = { ...(set.self || {}) };
     if (verdict) set.self[slug] = verdict; else delete set.self[slug];
     return true;
   }
   const api = { KEY, read, save, create, createMock, checkpoint, pause, resume, finish, timeLeft, exactKey, voidReason,
-    officialKey, choiceAnswers, allowsMultipleChoices, exactTex, answer, result, selfMark };
+    officialKey, choiceAnswers, allowsMultipleChoices, needsSelfCheck, exactTex, answer, result, selfMark };
   if (typeof module !== 'undefined') module.exports = api;
   else root.PracticeSessions = api;
 })(typeof window === 'undefined' ? globalThis : window);

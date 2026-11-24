@@ -1,5 +1,9 @@
 # Changelog
 
+**2026-11-24**
+
+- **Practice grading:** Give full credit for any nonempty subset of accepted alternatives and explain corrected keys in review. Move 2015 BMT Analysis #4 to self-check because the printed recurrence leaves the sum undetermined.
+
 **2026-11-22**
 
 - **Auto-grading for other contests' multiple choice (owner):** 1,810 AHSME keys from LIVE (`fetch-answer-keys.py` now reads the AHSME statements too, and keeps an earlier verified key when a statement was later edited here: 285 keys would otherwise have dropped), and 4,090 official letters for Pascal, Cayley and Fermat (2,038), UMD Part I (657), Utah State (781) and Columbus State (614) in the new `answer-keys-more.js`, read from each contest's posted solutions by `tools/answer-keys/`. Practice sets and mocks grade them like the AMC; a question with no letter in its solutions stays self-checked. Columbus 2014 #1's official key is a misprint (C; the solution's own count is D) and is corrected. Columbus 2022 has six choices, so A to F is accepted there. Generated sets now load each problem's statement from its own contest folder. Statements also added: Columbus State 2022 #1 to #20 (typed from the scans, eight figures) and Fermat 2005 #25 (the corrected version).
