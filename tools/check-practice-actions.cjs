@@ -125,6 +125,13 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Correct');
  await p.locator('[data-result-index="0"]').click();
  await p.locator('.practice-submitted .katex').waitFor();
+ await set(['2012-hmmt-february-algebra-6']);
+ await p.locator('#practice-answer').fill('4/(sqrt(1+2^(-2009))+1)');
+ await p.locator('.practice-answer-preview .katex').waitFor();
+ assert.equal(await p.locator('#practice-answer').getAttribute('aria-invalid'),'false');
+ await p.locator('#finish-practice').click();
+ await p.locator('.practice-results').waitFor();
+ assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Correct');
  await set(['2020-cmimc-combinatorics-and-computer-science-8']);
  const fibonacciInput=p.locator('#practice-answer');
  await fibonacciInput.fill('(100,F+1223)');
