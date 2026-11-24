@@ -108,12 +108,12 @@ choice_answers = {
 }
 multiple_choice_papers = ['2013-utah-state-math-contest-junior', '2013-utah-state-math-contest-senior']
 voided = {
-    '2011-umd-hsmc-part-i-18': 'The five choices omit the correct count of 78 reachable final boards. The organizers gave every student full credit.',
-    '2018-umd-hsmc-part-i-7': 'The five choices omit the correct count of 21 straight-line clock-hand alignments. The organizers gave every student full credit.',
-    '2022-columbus-state-tournament-28': 'Every perimeter is at least twice the distance from A to the x-axis, or 2,778. That value is approached by triangles near the vertical line through A, and it is absent from the choices.',
-    '2012-utah-state-math-contest-senior-4': 'The organizers withdrew this problem because it asked for ten-digit numbers where the intended question used fifteen digits.',
-    '2012-utah-state-math-contest-senior-13': 'The organizers withdrew this problem because all five listed numbers of pieces are possible. The intended question asked for the maximum.',
-    '2015-columbus-state-tournament-31': 'The given angle and side lengths are incompatible. The sine rule in triangle ABD requires BD/AD = sin(100°)/sin(20°), which is about 2.879, while the given lengths have ratio 3.',
+    '2011-umd-hsmc-part-i-18': 'Organizer ruling. Everyone received full credit because the choices omit the correct count of 78 reachable final boards.',
+    '2018-umd-hsmc-part-i-7': 'Organizer ruling. Everyone received full credit because the choices omit the correct count of 21 straight-line clock-hand alignments.',
+    '2022-columbus-state-tournament-28': 'Practice ruling. None of the choices is correct. The perimeter can approach 2,778, and every nondegenerate triangle has a larger perimeter.',
+    '2012-utah-state-math-contest-senior-4': 'Organizer ruling. The organizers withdrew the question because it asked for ten-digit numbers where the intended question used fifteen digits.',
+    '2012-utah-state-math-contest-senior-13': 'Organizer ruling. The organizers withdrew the question because all five listed numbers of pieces are possible. The intended question asked for the maximum.',
+    '2015-columbus-state-tournament-31': 'Practice ruling. The printed angles and lengths are incompatible. The angles give BD/AD ≈ 2.879 and the lengths give BD/AD = 3.',
 }
 answers, notes = {}, {}
 for d in (cemc, umd, utah, col, ukmt):

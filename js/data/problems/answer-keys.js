@@ -6876,7 +6876,7 @@ window.MATH_ANSWER_KEYS = {
   "2026-amc-8": "https://live.poshenloh.com/past-contests/amc8/2026"
  },
  "voided": {
-  "2025-amc-12a-25": "Voided by the MAA: the official answer, (E) 13, counts the pairs (P, Q), but the question asks for functions, and as functions the 13 pairs give only 8, which is not a choice. Every student received the 6 points for the problem."
+  "2025-amc-12a-25": "Organizer ruling. The MAA gave everyone 6 points. The published answer counts 13 pairs (P, Q), which give only 8 distinct functions. Choice E gives 13, and 8 is absent from the choices."
  },
  "choiceAnswers": {
   "2012-amc-12b-12": [

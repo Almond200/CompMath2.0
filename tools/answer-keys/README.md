@@ -121,4 +121,4 @@ The organizer archive links three packets of ten questions. These keys were deri
 
 ### Final multiple-choice coverage
 
-Of the 10,936 indexed multiple-choice problems, 10,929 have verified automatic grades and seven are void. The voids are 2025 AMC 12A #25, 2011 Maryland #18, 2018 Maryland #7, 2012 Utah Senior #4 and #13, 2015 Columbus #31, and 2022 Columbus #28. The short-response audit and its 23 documented self-checks are recorded in [short-answers.md](short-answers.md).
+Of the 10,936 indexed multiple-choice problems, 10,929 have verified automatic grades and seven are void. The voids are 2025 AMC 12A #25, 2011 Maryland #18, 2018 Maryland #7, 2012 Utah Senior #4 and #13, 2015 Columbus #31, and 2022 Columbus #28. The short-response audit and its 17 documented self-checks are recorded in [short-answers.md](short-answers.md).

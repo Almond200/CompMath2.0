@@ -1,6 +1,10 @@
 # Audits and reviews
 
-One file for every audit, review and repair log (merged 2026-11-12, at the owner's request; they were thirteen separate files). Each section is the original document, unchanged except that its headings sit two levels lower and its references to the others point inside this file. The newest work is not here: Step H (the HMMT February rounds) records its audits in `CHANGELOG.md` and its status in `PLAN.md`.
+This file collects the project audits, reviews and repair logs. The 2026-11-12 consolidation preserves the original historical sections. The grading checkpoint and its source audits are linked below.
+
+**Practice grading**
+
+- [Practice grading and answer-key audit](#practice-grading-and-answer-key-audit)
 
 **Topic tree**, newest decisions first:
 
@@ -21,6 +25,12 @@ One file for every audit, review and repair log (merged 2026-11-12, at the owner
 - [Practice, contest and list-editor UI review](#practice-contest-and-list-editor-ui-review), formerly `UI-REVIEW.md`
 - [Accessibility review](#accessibility-review), formerly `ACCESSIBILITY-REVIEW.md`
 
+
+## Practice grading and answer-key audit
+
+The final pass reconciled the full problem index with the live key registries. The 19,456 entries have 19,419 automatic grades, 20 voids and 17 self-checks. The final self-check review voided five printed questions with undefined results and the 2015 MMATHS probability question whose exact threshold is impractical to compute by hand. The remaining cases have review notes and are listed by problem. [Short-response audit and inventory](tools/answer-keys/short-answers.md) · [Multiple-choice audit](tools/answer-keys/README.md)
+
+Validation covers every indexed grading disposition, every registered short-answer submission, mixed correct and incorrect alternatives, persisted grades and void behavior. The browser checks exercise a past-paper flow and verify that a voided slot requires no answer and appears in review. [Test and handoff instructions](PLAN.md#current-state-updated-2026-11-24)
 
 ## Topic tree
 
