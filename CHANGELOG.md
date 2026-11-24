@@ -2,6 +2,8 @@
 
 **2026-11-24**
 
+- **Practice void notices:** Label whether the organizers or Practice made the ruling, and show the reason while taking the set and during review.
+
 - **Practice voids:** Review all 23 self-check questions and void six whose printed result is undefined or impractical to compute by hand, including 2015 MMATHS Individual #7. The remaining 17 have individual self-check explanations.
 
 - **Practice grading:** Give full credit for any nonempty subset of accepted alternatives and explain corrected keys in review. Move 2015 BMT Analysis #4 to self-check because the printed recurrence leaves the sum undetermined.

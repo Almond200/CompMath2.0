@@ -42,7 +42,7 @@ Read the submission instruction in the problem and inspect the typeset official 
 
 If a key and its solution disagree, first match the question to the original sitting. Check the PDF, any organizer correction, and an independent calculation before changing the accepted value. Record the published and corrected answers with the source. Log unusually large exact values along with the relevant limits of the grader so their support can be decided from the actual problem.
 
-The `voided` map records questions removed from grading, along with the reason. When an archive contains a withdrawn original and a published replacement, match the app’s prompt to the paper before applying the withdrawal.
+The `voided` map records questions removed from grading, along with the reason. Start each notice with **Organizer ruling.** when the organizers withdrew the question or neutralized it in scoring. Use **Practice ruling.** when the app voids the question based on the printed prompt or the published solution. The same notice appears during the set and in review. When an archive contains a withdrawn original and a published replacement, match the displayed prompt to the paper before applying the withdrawal.
 
 | Source finding | Practice behavior |
 | --- | --- |

@@ -19,6 +19,12 @@ for (const slug of indexed) {
     practice.needsSelfCheck({}, slug), slug + ' needs a documented grading disposition');
 }
 for (const slug of [...Object.keys(answers), ...Object.keys(voided), ...Object.keys(notes)]) assert(indexed.has(slug), slug);
+const voidNotices = { ...window.MATH_ANSWER_KEYS.voided, ...window.MATH_EXTRA_KEYS.voided, ...voided };
+for (const [slug, notice] of Object.entries(voidNotices)) {
+  assert.match(notice, /^(?:Organizer|Practice) ruling\. \S/, slug);
+}
+assert.match(voidNotices['2025-amc-12a-25'], /^Organizer ruling\./);
+assert.match(voidNotices['2015-columbus-state-tournament-31'], /^Practice ruling\./);
 const statementDir = path.join(data, 'statements');
 for (const dir of fs.readdirSync(statementDir, { withFileTypes: true }).filter(dir => dir.isDirectory())) {
   for (const file of fs.readdirSync(path.join(statementDir, dir.name)).filter(file => file.endsWith('.js'))) {
@@ -77,7 +83,7 @@ for (const [slug, reason] of Object.entries(voided)) {
   assert.equal(practice.result(set, slug), 'Voided');
   assert.equal(practice.selfMark(set, slug, 'Correct'), false);
 }
-assert.match(voided['2015-mmaths-individual-7'], /degree-ten.*impractical/);
+assert.match(voided['2015-mmaths-individual-7'], /^Practice ruling\..*4\/7.*degree-ten.*impractical/);
 
 const hmmt2010 = Object.keys(window.MATH_STATEMENTS).filter(slug => /^2010-hmmt-february-/.test(slug));
 assert.equal(hmmt2010.length, 30);
