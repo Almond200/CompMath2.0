@@ -34,7 +34,7 @@ Use `format: "tuple", notation: "polar"` for a radius and angle. The checker acc
 
 Use `format: "percent", notation: "percent-change"` when a question asks for the direction of a percentage change. For a decrease, `-9%`, `decreases by 9%`, and `9% decrease` all express the same answer.
 
-Use `format: "sequence", notation: "base-3"` when a prompt requests ternary digit strings in order. Students can enter digits with an optional `_3`, `_{3}`, or `₃` suffix. The preview includes the base subscript.
+Use `format: "numeral"` for a value whose digit representation matters, and `format: "sequence"` when several numerals must be entered in a specific order. Set `notation` to the base, such as `"base-2"`, `"base-3"`, `"base-8"`, or `"base-phi"`. The same parser accepts an optional typed or Unicode subscript or a label such as `(base 2)`. Leading zeros and trailing fractional zeros preserve the value, and the preview displays the digits entered. The base-\(\phi\) key for 2019 CHMMC #10 accepts `10000.00010` because \(\phi^4+\phi^{-4}=7\). One power cannot give 7, and with two distinct exponents the largest must be 4 since \(\phi^3+\phi^2<7<\phi^5\). [CHMMC solutions](https://www.caltechmathmeet.org/_files/ugd/006423_51e4bf40e50b4aa5bd2a5fbc06da8009.pdf)
 
 Every typed Practice answer uses the same Math keypad. AIME still grades integers from 0 through 999, including expressions that evaluate to those values and entries with leading zeros such as `007`.
 
@@ -165,6 +165,11 @@ Run `node tests/short-answer-keys.cjs` to check local prompts, source coverage, 
 ### Completing the short-answer audit
 
 Before treating a round as lacking solutions, check the tournament archive and any organizer or host-institution mirror. Confirm the year, round, and exact prompt before using a key. Before starting the multiple-choice pass, reconcile every indexed short-answer problem with its paper and question number. Recheck the rendered source when an answer spans pages, is absent from its box, or disagrees with the worked solution. Search the official papers for corrections, withdrawals, accepted alternatives, and references to earlier versions. Verify the requested units, ordering, number of values, and any domain constraints against the prompt. For papers without published answers, record the independent solution and how its result was cross-checked. Confirm that Practice accepts the verified forms, rejects wrong values, and handles voided questions correctly during submission and review. Record unresolved cases individually.
+
+- Match the version displayed in the app to the organizer’s correction. Check duplicate questions across rounds for the same wording and choices before propagating a ruling.
+- Check whether rational simplification hides excluded inputs, whether an approximation respects the stated precision, and whether the prompt requires a specific form such as a factorization, numeral, or angle unit.
+- For probability and counting, check independence, uniformity, distinguishability, ordering, rotations, and reflections. For algebra and geometry, check repeated roots, zero terms, empty sets, tangency choices, nonconvex cases, and points on extensions where the source permits them.
+- Reopen saved and completed sets after grading updates. Confirm that saved responses and self-check marks persist, that a withdrawal is explained, and that score treatment follows the organizer’s ruling where the app models contest scoring.
 
 The MATHCOUNTS competition errata records three corrections for rounds outside the current index. For 2006 Chapter Sprint #25 the original wording accepts 30 or −30. For 2014 State Target #3 the arc label changes from \(\widehat{AFC}\) to \(\widehat{AEC}\). For 2015 State Sprint #6 the corrected answer is 9. [2006 errata](https://www.mathcounts.org/sites/default/files/u49/Errata_Competitions_2001-2010.pdf) · [2014 and 2015 errata](https://www.mathcounts.org/sites/default/files/u5328/Errata%20for%20Competitions%202011%20through%202015.pdf)
 

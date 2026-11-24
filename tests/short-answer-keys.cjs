@@ -31,7 +31,7 @@ for (const [slug, key] of Object.entries(answers)) {
   const paper = slug.replace(/-\d+$/, '');
   assert.match(sources[paper], /^https:\/\//, slug);
   usedSources.add(paper);
-  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'set-set', 'ratio-list', 'text', 'percent', 'complex', 'complex-set', 'interval', 'polynomial', 'rational-function', 'quadratic-radical', 'exponential-function', 'factored-number', 'prime-factorization', 'symbolic-rational', 'symbolic-radical', 'symbolic-equation', 'polynomial-multiple', 'integer-polynomial-multiple', 'natural-exponential', 'inverse-tangent-formula'].includes(key.format), slug);
+  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'set-set', 'ratio-list', 'text', 'numeral', 'percent', 'complex', 'complex-set', 'interval', 'polynomial', 'rational-function', 'quadratic-radical', 'exponential-function', 'factored-number', 'prime-factorization', 'symbolic-rational', 'symbolic-radical', 'symbolic-equation', 'polynomial-multiple', 'integer-polynomial-multiple', 'natural-exponential', 'inverse-tangent-formula'].includes(key.format), slug);
   if (['polynomial', 'rational-function', 'exponential-function'].includes(key.format)) assert.match(key.notation, /^[a-z]$/i, slug);
   if (Array.isArray(key.notation)) {
     assert.equal(key.format, 'tuple', slug);
@@ -167,6 +167,18 @@ check('2017-mathcounts-national-sprint-25', 'sqrt(457)/2', 'Correct');
 check('2012-mathcounts-national-sprint-22', '12 units', 'Correct');
 check('2012-mathcounts-national-sprint-22', 'sqrt(1216)/3', 'Correct');
 check('2012-mathcounts-national-sprint-22', '8sqrt(19)', 'Incorrect');
+check('2015-mathcounts-national-sprint-17', '1100₃', 'Correct');
+check('2015-mathcounts-national-sprint-17', '(001100)_{3}', 'Correct');
+check('2017-cmimc-computer-science-3', '111101 (base 2)', 'Correct');
+check('2017-cmimc-computer-science-3', '0b111101', 'Correct');
+check('2017-mathcounts-national-sprint-8', '16₈', 'Correct');
+check('2019-chmmc-individual-10', '10000.00010', 'Correct');
+check('2019-chmmc-individual-10', '010000.000100_{\\phi}', 'Correct');
+check('2019-chmmc-individual-10', '10000.00100φ', 'Incorrect');
+const baseCheck = practice.create('Base check', 'Any', ['2017-cmimc-computer-science-3']);
+assert(!practice.answer(baseCheck, '2017-cmimc-computer-science-3', '61', false));
+assert(!practice.answer(baseCheck, '2017-cmimc-computer-science-3', '111101_3', false));
+assert.equal(practice.exactTex('10000.00010 φ', 'numeral', 'base-phi'), '10000.00010_{\\phi}');
 check('2024-hmmt-february-algebra-and-number-theory-1', '29', 'Correct');
 check('2024-hmmt-february-algebra-and-number-theory-1', '-6', 'Correct');
 check('2024-hmmt-february-algebra-and-number-theory-1', '-6,29', 'Correct');

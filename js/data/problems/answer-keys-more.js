@@ -826,6 +826,7 @@ window.MATH_EXTRA_KEYS = {
   "2005-fermat-contest-22": "C",
   "2005-fermat-contest-23": "A",
   "2005-fermat-contest-24": "C",
+  "2005-fermat-contest-25": "B",
   "2005-fermat-contest-3": "E",
   "2005-fermat-contest-4": "A",
   "2005-fermat-contest-5": "C",
@@ -4196,6 +4197,7 @@ window.MATH_EXTRA_KEYS = {
   "2012-utah-state-math-contest-senior-13": "The organizers withdrew this problem because all five listed numbers of pieces are possible. The intended question asked for the maximum."
  },
  "notes": {
+  "2005-fermat-contest-25": "Practice shows the CEMC’s corrected question, which requires p to be positive. It has 57 valid values of q. The original wording allowed any integer p and had 10,000 valid values.",
   "2012-utah-state-math-contest-junior-2": "The organizers also accepted A. The train is 150 m if its front emerges at 20 seconds, and 300 m if its rear emerges then.",
   "2012-utah-state-math-contest-senior-6": "The printed polynomial can have ten rational roots, choice B. The organizers also credited A after discussing the eight candidates supplied by the Rational Root Theorem under an integer-coefficient assumption.",
   "2012-utah-state-math-contest-senior-8": "Choice B uses the time when the whole train emerges. If it refers to the front of the train, its length is 75 m, which is absent from the choices.",

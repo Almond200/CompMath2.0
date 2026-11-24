@@ -128,15 +128,37 @@
       return part.toUpperCase();
     });
   }
-  function ternaryParts(text) {
+  const subscriptDigits = digits => [...digits].map(digit => digit.charCodeAt(0) - '₀'.charCodeAt(0)).join('');
+  function readNumeral(text, base) {
+    text = text.replace(/\$|\\(?:left|right)\b/g, '').trim();
+    const suffix = /(?:_\s*(?:\{\s*(\d+|\\?phi|φ)\s*\}|(\d+|\\?phi|φ))|([₀-₉]+)|\(\s*base\s*(\d+|\\?phi|φ)\s*\)|\s+base\s*(\d+|\\?phi|φ)|(φ|\\?phi))$/i.exec(text);
+    if (suffix) {
+      const indicated = suffix[3] ? subscriptDigits(suffix[3]) : suffix.slice(1).find(Boolean);
+      if (indicated.toLowerCase().replace(/^\\/, '').replace('φ', 'phi') !== base) throw Error('Use the requested base');
+      text = text.slice(0, suffix.index).trim();
+    }
+    if (text.startsWith('(') && text.endsWith(')')) text = text.slice(1, -1).trim();
+    const prefix = /^0([bo])/i.exec(text);
+    if (prefix) {
+      if ((prefix[1].toLowerCase() === 'b' ? '2' : '8') !== base) throw Error('Use the requested base');
+      text = text.slice(2);
+    }
+    const limit = base === 'phi' ? 2 : Number(base);
+    if (!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(text) || [...text.replace('.', '')].some(digit => Number(digit) >= limit)) {
+      throw Error('Use only the digits of the requested base');
+    }
+    return text;
+  }
+  function numeralSequence(text, base) {
     text = text.replace(/\$|\\(?:left|right)\b/g, '').replace(/\s+and\s+/gi, ',').trim();
     let parts = splitExactList(text);
-    if (parts.length === 1 && text.startsWith('(') && text.endsWith(')')) parts = splitExactList(text.slice(1, -1));
-    return parts.map(part => {
-      const digits = /^(?:([0-2]+)|\(([0-2]+)\))(?:\s*(?:_(?:3|\{3\})|₃|\(base\s+3\)))?$/i.exec(part);
-      if (!digits) throw Error('Use the digits 0, 1, and 2 for a base 3 value');
-      return (digits[1] || digits[2]).replace(/^0+(?=\d)/, '');
-    });
+    if (parts.length === 1 && /^\([^()]*,[^()]*\)$/.test(text)) parts = splitExactList(text.slice(1, -1));
+    return parts.map(part => readNumeral(part, base));
+  }
+  function canonicalNumeral(text) {
+    const [whole, fraction = ''] = text.split('.');
+    const fractionalDigits = fraction.replace(/0+$/, '');
+    return (whole.replace(/^0+/, '') || '0') + (fractionalDigits ? '.' + fractionalDigits : '');
   }
   function letterParts(text) {
     text = text.trim();
@@ -185,7 +207,11 @@
     const degrees = notation === 'angle' ? degreeExpression(text) : null;
     if (degrees != null) return '{' + math.toTex(degrees, true) + '}^{\\circ}';
     text = cleanExact(text, format, notation);
-    if (notation === 'base-3') return ternaryParts(text).map(part => `${part}_{3}`).join(',\\ ');
+    const base = /^base-(\d+|phi)$/.exec(notation)?.[1];
+    if (base && (format === 'numeral' || format === 'sequence')) {
+      const parts = format === 'numeral' ? [readNumeral(text, base)] : numeralSequence(text, base);
+      return parts.map(part => `${part}_{${base === 'phi' ? '\\phi' : base}}`).join(',\\ ');
+    }
     if (notation === 'letter-list') return letterParts(text).join(',\\ ');
     if (format === 'set-set') return groupedExactParts(text).map(parts =>
       '\\left\\{' + parts.map(part => math.toTex(part)).join(',\\ ') + '\\right\\}').join(',\\ ');
@@ -277,11 +303,11 @@
     }
     if (notation === 'fibonacci') {
       text = text.replace(/\bF\s*_\s*(?:\{\s*(\d+)\s*\}|(\d+))/gi, (_, braced, plain) => `fib(${braced || plain})`)
-        .replace(/\bF([₀-₉]+)/g, (_, index) => `fib(${[...index].map(digit => digit.charCodeAt(0) - '₀'.charCodeAt(0)).join('')})`);
+        .replace(/\bF([₀-₉]+)/g, (_, index) => `fib(${subscriptDigits(index)})`);
     }
     if (notation === 'repunit') {
       text = text.replace(/\ba\s*_\s*(?:\{\s*(\d+)\s*\}|(\d+))/gi, (_, a, b) => `((10^${a || b}-1)/9)`)
-        .replace(/\ba([₀-₉]+)/gi, (_, digits) => `((10^${[...digits].map(digit => digit.charCodeAt(0) - '₀'.charCodeAt(0)).join('')}-1)/9)`);
+        .replace(/\ba([₀-₉]+)/gi, (_, digits) => `((10^${subscriptDigits(digits)}-1)/9)`);
     }
     if (format === 'percent') text = text.replace(/(?:\\?%)\s*(?=\$?$)/, '');
     text = text.replace(/\b(sin|cos|tan)\s*\(([^()]+?)(?:\^\{\\circ\}|[°∘◦]|\s+deg)\s*\)/gi, '$1(($2)*pi/180)');
@@ -1160,7 +1186,9 @@
   function exactValues(text, format, notation) {
     if (text.length > 120) throw Error('Answer is too long');
     text = cleanExact(text, format, notation);
-    if (notation === 'base-3') return [ternaryParts(text).map(exactScalar)];
+    const base = /^base-(\d+|phi)$/.exec(notation)?.[1];
+    if (base && format === 'numeral') return [[canonicalNumeral(readNumeral(text, base))]];
+    if (base && format === 'sequence') return [numeralSequence(text, base).map(canonicalNumeral)];
     if (format === 'interval') return sortedIntervals(text);
     if (format === 'quadratic-radical') return [quadraticParts(text, notation)];
     if (format === 'factored-number' || format === 'prime-factorization') return factoredParts(text);

@@ -53,6 +53,23 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('[data-result-index="0"]').click();
  await p.getByText('A four-digit number starts with a nonzero digit.',{exact:false}).waitFor();
  assert.equal(await p.getByRole('link',{name:'Open the official solution'}).getAttribute('href'),'https://dukemathmeet.org/2017/indiv_sol.pdf');
+ await set(['2019-chmmc-individual-10','2017-cmimc-computer-science-3','2005-fermat-contest-25']);
+ const numeral=p.locator('#practice-answer');
+ await numeral.fill('10000.00010');
+ await p.locator('.practice-math-keys summary').click();
+ await p.getByRole('button',{name:'Phi',exact:true}).click();
+ assert.equal(await numeral.inputValue(),'10000.00010φ');
+ await p.locator('.practice-answer-preview .katex').waitFor();
+ await p.locator('.cn-nums [data-practice-index="1"]').click();
+ await numeral.fill('111101 (base 2)');
+ assert.equal(await numeral.getAttribute('aria-invalid'),'false');
+ await p.locator('.cn-nums [data-practice-index="2"]').click();
+ await p.getByRole('radio',{name:'B',exact:true}).click();
+ await p.locator('#finish-practice').click();
+ await p.locator('.practice-results').waitFor();
+ assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct','Correct']);
+ await p.locator('[data-result-index="0"]').click();
+ await p.locator('.practice-submitted .katex').waitFor();
  await set(['2011-smt-geometry-6','2014-smt-algebra-10']);
  for(const [index,answer] of ['pi/2+arctan(d)','1-x_2014/(3y_{2014})'].entries()){
   if(index) await p.locator('.cn-nums [data-practice-index="'+index+'"]').click();

@@ -49,6 +49,10 @@ function grade(slug, answer, result) {
 grade('2012-amc-12b-12', 'D', 'Correct');
 grade('2012-amc-12b-12', 'E', 'Correct');
 grade('2012-amc-12b-12', 'A', 'Incorrect');
+require('../js/data/problems/statements/cemc/2005.js');
+assert.match(statements['2005-fermat-contest-25'].s, /positive integer/);
+grade('2005-fermat-contest-25', 'B', 'Correct');
+grade('2005-fermat-contest-25', 'A', 'Incorrect');
 assert(!practice.answer(practice.create('Single selection', 'Any', ['2012-amc-12b-12']), '2012-amc-12b-12', 'DE', false));
 for (const [suffix, letters] of [['junior-2', 'AD'], ['senior-6', 'AB'], ['senior-23', 'ACD']]) {
   const slug = '2012-utah-state-math-contest-' + suffix;
