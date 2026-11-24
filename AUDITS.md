@@ -8,6 +8,7 @@ This file collects the project audits, reviews and repair logs. The 2026-11-12 c
 
 **Topic tree**, newest decisions first:
 
+- [Contest archive topic audit (2026-11-24)](#contest-archive-topic-audit-2026-11-24)
 - [Tree finalization after the full tagging pass](#tree-finalization-after-the-full-tagging-pass), formerly `TREE-FINALIZATION.md`
 - [Tree depth and practice capacity](#tree-depth-and-practice-capacity), formerly `TREE-CAPACITY.md`
 - [Tree-only Practice a topic](#tree-only-practice-a-topic), formerly `TREE-PRACTICE.md`
@@ -33,6 +34,28 @@ The final pass reconciled the full problem index with the live key registries. T
 Validation covers every indexed grading disposition, every registered short-answer submission, mixed correct and incorrect alternatives, persisted grades and void behavior. The browser checks exercise a past-paper flow and verify that a voided slot requires no answer and appears in review. [Test and handoff instructions](PLAN.md#current-state-updated-2026-11-24)
 
 ## Topic tree
+
+### Contest archive topic audit (2026-11-24)
+
+The Practice archive lists 36 families across five groups, including separate historical listings for CHMMC and CMM. Each family appears once and links to its latest year. The displayed counts sum to all 19,456 indexed problems.
+
+The topic census covered the entire index. The content review focused on the two technique-named counting pools, the two leaves with fewer than five distinct problems, the off-tree entries, and 32-entry samples of arithmetic, rectangles and squares, and general finite probability. For entries available only through their original papers, changes required a readable statement or solution. The three paper-only MATHCOUNTS entries in Complementary counting were checked against their papers.
+
+| Measure | Before | After |
+|---|---:|---:|
+| Casework in finite counting | 60 | 19 |
+| Complementary counting | 18 | 6 |
+| Order of operations with integers, decimals and fractions | 364 | 351 |
+| Rectangles and squares | 355 | 358 |
+| General finite probability models | 264 | 257 |
+| Filed in the topic tree | 19,374 | 19,379 |
+| Empty leaves | 0 | 0 |
+
+The pass corrected 84 entries. For example, 2012 MATHCOUNTS National Target #4 counts triangles in a grid, 2025 MATHCOUNTS National Sprint #22 counts numbers under a digit condition, and 2026 MATHCOUNTS Chapter Target #4 counts arrangements with repeated colors. The last three now appear in their respective subject pools. Technique card links are preserved. Five problems formerly marked calculus admit elementary approaches, including equal subdivisions for Utah 2013 Senior #21, a squared-distance factorization for Utah 2017 Senior #36, and AM–GM for Utah 2019 Senior #13.
+
+All 457 topic IDs are preserved. Four labels describe their contents more precisely, covering arithmetic, finite case counting, paths and walks on grids and graphs, and GCD with integer linear combinations. Both sparse leaves still collect recognizable subjects. Rearrangement, Chebyshev and Schur has two distinct problems, and the Bézout leaf has three after moving the nearest-fraction problem. The distinct tally collapses recognized AMC 10/12 twins. The broader geometry and probability pools retain room for materially different problems that share the same subject.
+
+Reproduce the structural census with `node tools/tree-risk-audit.cjs` and validate filings with `node tools/check-topic-tree.js`. The browser checks cover the archive finder, contest pages, topic links and generation from the Practice topic picker.
 
 ### Tree finalization after the full tagging pass
 

@@ -17,7 +17,9 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const stored=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('mq-practice-sets'))[0]);
  await field.focus();assert.deepEqual(await options.locator('button').evaluateAll(bs=>bs.map(b=>b.dataset.topicId)),['mixed','alg','cp','geo','nt']);assert.equal(await count.inputValue(),'5');
  await field.fill('Heron formula');assert.equal(await options.locator('button').count(),0);assert.equal(await submit.isDisabled(),true,'no card-keyword fallback');
- await select('casework','cp.basic.case.cases',true);const cw=await page.evaluate(()=>MATH_PRACTICE_POOL('cp.basic.case.cases'));assert(cw.includes('2019-aime-i-4'));
+ await select('casework in finite counting','cp.basic.case.cases',true);const cw=await page.evaluate(()=>MATH_PRACTICE_POOL('cp.basic.case.cases'));
+ assert(cw.includes('2025-fermat-contest-7'));
+ assert(!cw.includes('2019-aime-i-4'));
  assert.equal(await page.locator('#topic-practice-status').innerText(),cw.length+' matching problem'+(cw.length===1?'':'s')+' available.');assert.equal(await count.getAttribute('max'),String(Math.min(30,cw.length)));
  await submit.click();await page.locator('.practice-set-st, .practice-paper').first().waitFor();let set=await stored();assert.equal(set.slugs.length,Math.min(5,cw.length));assert(set.slugs.every(s=>cw.includes(s)));assert.equal(set.topicId,'cp.basic.case.cases');assert(!set.clock);
  // Every contest is drawn from (owner, 2026-11-14): a problem kept only in its paper is marked for self-checking.

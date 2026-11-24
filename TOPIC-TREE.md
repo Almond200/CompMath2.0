@@ -87,7 +87,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
 
 - **Arithmetic and proportional reasoning** `[alg.arithmetic]`
   - Arithmetic computation and estimation `[alg.word.compute]`
-    - Order of operations and fraction arithmetic `[alg.word.compute.fraction]`
+    - Order of operations with integers, decimals and fractions `[alg.word.compute.fraction]`
     - Clever computation and grouping `[alg.word.compute.clever]`
     - Estimation and comparing sizes `[alg.word.compute.estimate]`
     - Rounding and the range of a rounded value `[alg.word.compute.round]`
@@ -250,7 +250,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Counting subsets with a property `[cp.basic.comb.subsets]`
     - Splitting into pairs (random pairings and perfect matchings, $(2n-1)!!$ ways) `[cp.basic.comb.pairs]`
   - Casework and complementary counting `[cp.basic.case]`
-    - Casework `[cp.basic.case.cases]`
+    - Casework in finite counting `[cp.basic.case.cases]`
     - Complementary counting `[cp.basic.case.complement]`
   - Stars and bars and distributions `[cp.tech.stars]`
     - Identical objects into distinct boxes `[cp.tech.stars.identical]`
@@ -271,7 +271,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Integer partitions `[cp.struct.part.partition]`
     - Set partitions `[cp.struct.part.set]`
 - **Paths, graphs and boards** `[cp.graph]`
-  - Paths on grids and lattices `[cp.struct.paths]`
+  - Paths and walks on grids and graphs `[cp.struct.paths]`
     - Lattice paths `[cp.struct.paths.lattice]`
     - Paths with obstacles or required points `[cp.struct.paths.obstacle]`
     - Walks on graphs, cubes and polygons `[cp.struct.paths.walks]`
@@ -481,7 +481,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
   - GCD, LCM and the Euclidean algorithm `[nt.div.gcd]`
     - GCD and LCM of numbers `[nt.div.gcd.basic]`
     - Euclidean algorithm on expressions `[nt.div.gcd.euclid]`
-    - Bézout's identity `[nt.div.gcd.bezout]`
+    - GCD and integer linear combinations (Bézout) `[nt.div.gcd.bezout]`
   - Prime factorization `[nt.div.prime]`
     - Factoring and using prime factorizations `[nt.div.prime.factor]`
     - Perfect squares and powers from factorizations `[nt.div.prime.powers]`
@@ -643,7 +643,7 @@ Filed when the paper was added. Eleven problems are shared with the 2026 AMC 10A
 7. $(1+i)^{20}+(1-i)^{20}$: `alg.cx.polar.demoivre`.
 8. A school averages two attendance percentages: `alg.word.stats.weighted`, `alg.word.ratio.percent`.
 9. A system with $|x^2-y^2|=4$: `alg.eq.system.sub`, `alg.eq.abs.eq`.
-12. Numbers meeting at least one of five congruences: `nt.mod.crt.system`, `cp.basic.case.complement`.
+12. Numbers meeting at least one of five congruences: `nt.mod.crt.system`.
 13. Four die rolls placed at random in increasing order: `cp.prob.dice.dice`, `cp.basic.perm.distinct`.
 14. Two open boxes that hold a third: `geo.solid.prism.box`.
 15. $\log_2\big(\sin(a+b)\sin(a-b)\big)$: `alg.trig.identity.sum`, `alg.exp.log.rules`.

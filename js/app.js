@@ -11073,7 +11073,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   // How this problem works in sections (owner, 2026-11-11), each headed like Study a concept
   // more: Topic (where it sits in the topic tree), Difficulty (its Elo among its contest's),
-  // Brief solution (the strategy and its cards), then Study a concept more.
+  // Brief solution(s), then Study a concept more.
   const chainSec = (title, body) => `<div class="chain-study chain-sec"><h4 class="chain-study-h">${title}</h4>${body}</div>`;
   function officialSolutionNote(p) {
     if (p.slug === "2012-mathcounts-national-sprint-22") return "The organizer’s errata explains the two answers accepted for this problem.";
@@ -11094,7 +11094,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (p.trick) solutions.push({ text: `<p class="chain-strategy">${p.trick}</p>`, cards: p.trickFormulas });
     const routes = solutions.map(({ text, cards }) => `<div class="chain-solution">${text}${chainCardsHtml(cards)}</div>`).join("");
     return `<div class="chain-duo">${chainSec("Topic", topicTreeHtml(p))}${chainSec("Difficulty", difficultyHtml(p))}</div>
-        ${chainSec("Brief solution", `${ownFigureHtml(p)}${routes}${afterChain}`)}${studyMoreHtml(p)}`;
+        ${chainSec("Brief solution(s)", `${ownFigureHtml(p)}${routes}${afterChain}`)}${studyMoreHtml(p)}`;
   }
   // Study a concept more (owner, 2026-11-01): under the three columns, one link per card the
   // problem uses, to the lesson that teaches that card. An AIME problem prefers an AIME book's
