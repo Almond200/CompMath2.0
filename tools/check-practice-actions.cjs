@@ -132,6 +132,33 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('#finish-practice').click();
  await p.locator('.practice-results').waitFor();
  assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Correct');
+ await set(['2011-hmmt-february-algebra-and-combinatorics-4']);
+ await p.locator('#practice-answer').fill('(1/2)^(1-n)');
+ await p.locator('.practice-answer-preview .katex').waitFor();
+ assert.equal(await p.locator('#practice-answer').getAttribute('aria-invalid'),'false');
+ await p.locator('#finish-practice').click();
+ await p.locator('.practice-results').waitFor();
+ assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Correct');
+ await set(['2011-hmmt-february-algebra-and-combinatorics-2','2011-hmmt-february-combinatorics-and-geometry-1','2018-hmmt-february-algebra-and-number-theory-8']);
+ for(const [index,answer] of ['2','2*(15!)^2','((2^673-1)*(2^1346+2^673+1))^2018'].entries()){
+  if(index) await p.locator('.cn-nums [data-practice-index="'+index+'"]').click();
+  await p.locator('#practice-answer').fill(answer);
+  await p.locator('.practice-answer-preview .katex').waitFor();
+  assert.equal(await p.locator('#practice-answer').getAttribute('aria-invalid'),'false');
+ }
+ await p.locator('#finish-practice').click();
+ await p.locator('.practice-results').waitFor();
+ assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct','Correct']);
+ await set(['2000-hmmt-february-geometry-4','2005-hmmt-february-geometry-7']);
+ for(const [index,answer] of ['ab-ab/4','sqrt(4z^2+4x^2+4y^2)/2'].entries()){
+  if(index) await p.locator('.cn-nums [data-practice-index="'+index+'"]').click();
+  await p.locator('#practice-answer').fill(answer);
+  await p.locator('.practice-answer-preview .katex').waitFor();
+  assert.equal(await p.locator('#practice-answer').getAttribute('aria-invalid'),'false');
+ }
+ await p.locator('#finish-practice').click();
+ await p.locator('.practice-results').waitFor();
+ assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct']);
  await set(['2020-cmimc-combinatorics-and-computer-science-8']);
  const fibonacciInput=p.locator('#practice-answer');
  await fibonacciInput.fill('(100,F+1223)');
