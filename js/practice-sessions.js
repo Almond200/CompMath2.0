@@ -926,38 +926,91 @@
       }
       return [exponentialTerm(polynomialOperation('^', base, slope), [polynomialOperation('^', base, offset)]), unit];
     }
-    if (!['neg', '+', '-', '*', '/', '^'].includes(node.op)) throw Error('Expected an expression in the integer variable');
-    const [left, denominator] = exponentialQuotient(node.a);
+    return sparseQuotient(node, exponentialQuotient, unit, multiplyExponential, addExponentialTerm, 32n);
+  }
+  function sparseQuotient(node, visit, unit, multiply, addTerm, maxPower) {
+    if (!['neg', '+', '-', '*', '/', '^'].includes(node.op)) throw Error('Expected a quotient of expressions');
+    const [left, denominator] = visit(node.a);
     if (node.op === 'neg') {
       const negative = new Map();
-      for (const term of left.values()) addExponentialTerm(negative, '-', term);
+      for (const term of left.values()) addTerm(negative, '-', term);
       return [negative, denominator];
     }
     if (node.op === '^') {
-      const power = integerValue(rational(node.b));
-      if (power == null || power < -32n || power > 32n || (!left.size && power <= 0n)) {
+      const power = hasVariable(node.b) ? null : integerValue(rational(node.b));
+      if (power == null || power < -maxPower || power > maxPower || (!left.size && power <= 0n)) {
         throw Error('Expected a bounded integer exponent');
       }
       const raise = terms => {
         let result = unit;
         for (let k = power < 0n ? -power : power; k; k >>= 1n) {
-          if (k & 1n) result = multiplyExponential(result, terms);
-          if (k > 1n) terms = multiplyExponential(terms, terms);
+          if (k & 1n) result = multiply(result, terms);
+          if (k > 1n) terms = multiply(terms, terms);
         }
         return result;
       };
       return power < 0n ? [raise(denominator), raise(left)] : [raise(left), raise(denominator)];
     }
-    const [right, divisor] = exponentialQuotient(node.b);
+    const [right, divisor] = visit(node.b);
     if (node.op === '/') {
       if (!right.size) throw Error('Division by zero');
-      return [multiplyExponential(left, divisor), multiplyExponential(denominator, right)];
+      return [multiply(left, divisor), multiply(denominator, right)];
     }
-    const commonDenominator = multiplyExponential(denominator, divisor);
-    if (node.op === '*') return [multiplyExponential(left, right), commonDenominator];
-    const sum = multiplyExponential(left, divisor);
-    for (const term of multiplyExponential(right, denominator).values()) addExponentialTerm(sum, node.op, term);
+    const commonDenominator = multiply(denominator, divisor);
+    if (node.op === '*') return [multiply(left, right), commonDenominator];
+    const sum = multiply(left, divisor);
+    for (const term of multiply(right, denominator).values()) addTerm(sum, node.op, term);
     return [sum, commonDenominator];
+  }
+  // Sparse monomials keep powers such as x^9900 compact while grading their exact coefficients.
+  const symbolicTerm = (powers, coefficient) => new Map(coefficient[0] ? [[powers.join(','), { powers, coefficient }]] : []);
+  function addSymbolicTerm(terms, op, { powers, coefficient }) {
+    const key = powers.join(',');
+    const sum = polynomialOperation(op, terms.get(key)?.coefficient || zero.fraction, coefficient);
+    if (sum[0]) terms.set(key, { powers, coefficient: sum });
+    else terms.delete(key);
+    if (terms.size > 64) throw Error('Too many polynomial terms');
+  }
+  function multiplySymbolic(left, right) {
+    const result = new Map();
+    for (const a of left.values()) for (const b of right.values()) {
+      const powers = a.powers.map((power, i) => power + b.powers[i]);
+      if (powers.some(power => power > 32768)) throw Error('Polynomial degree is too large');
+      addSymbolicTerm(result, '+', { powers, coefficient: polynomialOperation('*', a.coefficient, b.coefficient) });
+    }
+    return result;
+  }
+  function symbolicQuotient(node, variables) {
+    const constant = Array(variables.length).fill(0), unit = symbolicTerm(constant, one.fraction);
+    const visit = node => {
+      node = ungroup(node);
+      if (!hasVariable(node)) return [symbolicTerm(constant, polynomialCoefficient(rational(node))), unit];
+      if (node.op === 'variable') {
+        const index = variables.indexOf(node.v);
+        if (index < 0) throw Error('Unexpected variable');
+        return [symbolicTerm(constant.map((_, i) => i === index ? 1 : 0), one.fraction), unit];
+      }
+      return sparseQuotient(node, visit, unit, multiplySymbolic, addSymbolicTerm, EXACT_POWER_LIMIT);
+    };
+    return visit(node);
+  }
+  function symbolicRadical(node, variables) {
+    node = ungroup(node);
+    const exponent = node.op === '^' && !hasVariable(node.b) && rational(node.b);
+    if (node.op === 'sqrt' || (exponent && exponent[0] * 2n === exponent[1])) {
+      return symbolicQuotient(node.a, variables);
+    }
+    if (node.op !== '*' && node.op !== '/') throw Error('Expected a positive square-root expression');
+    let scale = !hasVariable(node.b) && rational(node.b), body = node.a;
+    if (!scale && node.op === '*' && !hasVariable(node.a)) {
+      scale = rational(node.a);
+      body = node.b;
+    }
+    if (!scale || scale[0] <= 0n) throw Error('Expected a positive constant scale');
+    const [numerator, denominator] = symbolicRadical(body, variables);
+    const squared = polynomialOperation('*', scale, scale);
+    const factor = symbolicTerm(Array(variables.length).fill(0), squared);
+    return node.op === '*' ? [multiplySymbolic(numerator, factor), denominator] : [numerator, multiplySymbolic(denominator, factor)];
   }
   function exactValues(text, format, notation) {
     if (text.length > 120) throw Error('Answer is too long');
@@ -966,6 +1019,11 @@
     if (format === 'interval') return sortedIntervals(text);
     if (format === 'quadratic-radical') return [quadraticParts(text, notation)];
     if (format === 'factored-number') return factoredParts(text);
+    if (format === 'symbolic-rational' || format === 'symbolic-radical') {
+      const nodes = math.parse(text, true, false, undefined, true), variables = notation.split(',');
+      if (nodes.length !== 1) throw Error('Expected one expression');
+      return format === 'symbolic-rational' ? symbolicQuotient(nodes[0], variables) : symbolicRadical(nodes[0], variables);
+    }
     if (format === 'exponential-function') {
       const nodes = math.parse(text, true, false, notation);
       if (nodes.length !== 1) throw Error('Expected one expression');
@@ -1006,6 +1064,11 @@
     try {
       const actual = exactValues(text, format, notation), remaining = exactValues(expected, format, notation);
       if (format === 'factored-number') return sameFactoredValue(actual, remaining);
+      if (format === 'symbolic-rational' || format === 'symbolic-radical') {
+        const left = multiplySymbolic(actual[0], remaining[1]), right = multiplySymbolic(remaining[0], actual[1]);
+        for (const term of right.values()) addSymbolicTerm(left, '-', term);
+        return !left.size;
+      }
       if (notation === 'percent-or-proportion' && !/%\s*\$?$/.test(text)) {
         const fraction = actual[0][0].fraction;
         const percent = fraction && rationalOperation('*', fraction, [100n, 1n]);

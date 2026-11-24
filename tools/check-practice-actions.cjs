@@ -149,6 +149,16 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('#finish-practice').click();
  await p.locator('.practice-results').waitFor();
  assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct','Correct']);
+ await set(['2000-hmmt-february-geometry-4','2005-hmmt-february-geometry-7']);
+ for(const [index,answer] of ['ab-ab/4','sqrt(4z^2+4x^2+4y^2)/2'].entries()){
+  if(index) await p.locator('.cn-nums [data-practice-index="'+index+'"]').click();
+  await p.locator('#practice-answer').fill(answer);
+  await p.locator('.practice-answer-preview .katex').waitFor();
+  assert.equal(await p.locator('#practice-answer').getAttribute('aria-invalid'),'false');
+ }
+ await p.locator('#finish-practice').click();
+ await p.locator('.practice-results').waitFor();
+ assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct']);
  await set(['2020-cmimc-combinatorics-and-computer-science-8']);
  const fibonacciInput=p.locator('#practice-answer');
  await fibonacciInput.fill('(100,F+1223)');

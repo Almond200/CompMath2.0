@@ -31,7 +31,7 @@ for (const [slug, key] of Object.entries(answers)) {
   const paper = slug.replace(/-\d+$/, '');
   assert.match(sources[paper], /^https:\/\//, slug);
   usedSources.add(paper);
-  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set', 'interval', 'polynomial', 'rational-function', 'quadratic-radical', 'exponential-function', 'factored-number'].includes(key.format), slug);
+  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set', 'interval', 'polynomial', 'rational-function', 'quadratic-radical', 'exponential-function', 'factored-number', 'symbolic-rational', 'symbolic-radical'].includes(key.format), slug);
   if (['polynomial', 'rational-function', 'exponential-function'].includes(key.format)) assert.match(key.notation, /^[a-z]$/i, slug);
   if (Array.isArray(key.notation)) {
     assert.equal(key.format, 'tuple', slug);
@@ -78,6 +78,16 @@ check('1998-hmmt-february-geometry-10', '(208,H,27)', 'Incorrect');
 assert.equal(practice.exactTex('27, h, 208 ft', 'tuple', [null, 'letter', 'feet']), '\\left(27,\\ H,\\ 208\\right)');
 check('2001-hmmt-february-geometry-2', '1/6', 'Correct');
 check('2001-hmmt-february-geometry-2', '1/2', 'Correct');
+check('2000-hmmt-february-geometry-4', 'ab-ab/4', 'Correct');
+check('2000-hmmt-february-geometry-4', '3(a+b)/4', 'Incorrect');
+check('2005-hmmt-february-geometry-7', 'sqrt(4z^2+4x^2+4y^2)/2', 'Correct');
+check('2005-hmmt-february-geometry-7', '(z^2+y*y+x^2)^(1/2)', 'Correct');
+check('2005-hmmt-february-geometry-7', '-sqrt(x^2+y^2+z^2)', 'Incorrect');
+check('2009-hmmt-february-algebra-7', '(x^9900+2x^10000+x^10100)/4', 'Correct');
+check('2009-hmmt-february-algebra-7', '(x^9900+2x^10000+x^10100)/2', 'Incorrect');
+answers['symbolic-distribution-test'] = { format: 'symbolic-rational', notation: 'a,b,c,d', answers: ['(ab-ac)/d'] };
+check('symbolic-distribution-test', 'a(b-c)/d', 'Correct');
+delete answers['symbolic-distribution-test'];
 check('2009-hmmt-february-geometry-7', '21sqrt(37/205)', 'Correct');
 check('2009-hmmt-february-geometry-7', '6sqrt(37)/5', 'Correct');
 check('2012-hmmt-february-algebra-1', '(2^4024+1)^(1/2)', 'Correct');
