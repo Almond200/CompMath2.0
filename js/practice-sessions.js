@@ -101,6 +101,22 @@
     if (depth) throw Error('Unmatched parenthesis');
     return [...parts, text.slice(start)].map(part => part.trim());
   }
+  function tupleParts(text, notation) {
+    const mixed = Array.isArray(notation);
+    if (!mixed) {
+      if (!text.startsWith('(') || !text.endsWith(')')) throw Error('Expected a parenthesized tuple');
+      return splitExactList(text.slice(1, -1));
+    }
+    text = text.replace(/\$|\\(?:left|right)\b/g, '').trim();
+    let parts = splitExactList(text);
+    if (parts.length === 1 && text.startsWith('(') && text.endsWith(')')) parts = splitExactList(text.slice(1, -1));
+    if (parts.length !== notation.length) throw Error('Unexpected number of tuple entries');
+    return parts.map((part, i) => {
+      if (notation[i] !== 'letter') return cleanExact(part, null, notation[i]);
+      if (!/^[a-z]$/i.test(part)) throw Error('Expected one letter');
+      return part.toUpperCase();
+    });
+  }
   function ternaryParts(text) {
     text = text.replace(/\$|\\(?:left|right)\b/g, '').replace(/\s+and\s+/gi, ',').trim();
     let parts = splitExactList(text);
@@ -148,8 +164,8 @@
     if (format !== 'tuple' && format !== 'tuple-set') return math.toTex(text, format !== 'set') + (percent ? '\\%' : '');
     const tuples = format === 'tuple' ? [text] : splitExactList(text);
     return tuples.map(tuple => {
-      if (!tuple.startsWith('(') || !tuple.endsWith(')')) throw Error('Expected a parenthesized tuple');
-      const values = splitExactList(tuple.slice(1, -1)).map(part => math.toTex(part));
+      const values = tupleParts(tuple, notation).map((part, i) =>
+        Array.isArray(notation) && notation[i] === 'letter' ? part : math.toTex(part));
       return '\\left(' + values.join(',\\ ') + '\\right)';
     }).join(',\\ ');
   }
@@ -161,6 +177,7 @@
     points: /\s*(?:points?|pts?\.?)\s*$/i,
     hours: /\s*(?:hours?|hrs?\.?)\s*$/i,
     inches: /\s*(?:inch(?:es)?|in\.?)\s*$/i,
+    feet: /\s*(?:feet|foot|ft\.?)\s*$/i,
     pounds: /\s*(?:pounds?|lbs?\.?)\s*$/i,
     dollars: /\s*(?:dollars?|USD)\s*$/i,
     miles: /\s*(?:miles?|mi\.?)\s*$/i,
@@ -622,6 +639,45 @@
     if (nodes.length !== 1) throw Error('Expected one number');
     return evaluated(nodes[0]);
   }
+  // Within Q(sqrt(d)), track the two rational coefficients separately. This keeps
+  // a large radical exact and prevents cancellation between rounded operands.
+  function quadraticParts(text, radicand) {
+    const nodes = math.parse(text, true), field = exactScalar(radicand).fraction;
+    if (nodes.length !== 1 || !field || field[0] <= 0n || rationalRoot(...field, 2n)) {
+      throw Error('Expected one expression in a quadratic field');
+    }
+    const calc = (op, a, b) => {
+      const value = rationalOperation(op, a, b);
+      if (!value) throw Error('Quadratic expression is out of range');
+      return value;
+    };
+    const evaluate = node => {
+      node = ungroup(node);
+      const fraction = rational(node);
+      if (fraction) return [fraction, zero.fraction];
+      if (node.op === 'sqrt' || node.op === '^') {
+        const input = rational(node.a), exponent = node.b && rational(node.b);
+        if (!input || input[0] < 0n || (node.op === '^' && (!exponent || exponent[0] * 2n !== exponent[1]))) {
+          throw Error('Expected a square root of a nonnegative rational number');
+        }
+        const root = rationalRoot(...input, 2n);
+        if (root) return [root, zero.fraction];
+        const coefficient = rationalRoot(...calc('/', input, field), 2n);
+        if (!coefficient) throw Error('Square root is outside this quadratic field');
+        return [zero.fraction, coefficient];
+      }
+      if (node.op === 'neg') return evaluate(node.a).map(([n, d]) => [-n, d]);
+      if (!['+', '-', '*', '/'].includes(node.op)) throw Error('Expected a quadratic expression');
+      const [a, b] = evaluate(node.a), [c, d] = evaluate(node.b);
+      if (node.op === '+' || node.op === '-') return [calc(node.op, a, c), calc(node.op, b, d)];
+      const ac = calc('*', a, c), ad = calc('*', a, d), bc = calc('*', b, c);
+      const bdTimesField = calc('*', calc('*', b, d), field);
+      if (node.op === '*') return [calc('+', ac, bdTimesField), calc('+', ad, bc)];
+      const norm = calc('-', calc('*', c, c), calc('*', calc('*', d, d), field));
+      return [calc('/', calc('-', ac, bdTimesField), norm), calc('/', calc('-', bc, ad), norm)];
+    };
+    return evaluate(nodes[0]).map(part => evaluatedValue(part, 0));
+  }
   function polarTuple(parts) {
     if (parts.length !== 2) throw Error('Expected a radius and an angle');
     const radius = exactScalar(parts[0]), nodes = math.parse(parts[1]);
@@ -775,6 +831,7 @@
     text = cleanExact(text, format, notation);
     if (notation === 'base-3') return [ternaryParts(text).map(exactScalar)];
     if (format === 'interval') return sortedIntervals(text);
+    if (format === 'quadratic-radical') return [quadraticParts(text, notation)];
     if (format === 'polynomial' || format === 'rational-function') {
       const nodes = math.parse(text, true, false, notation);
       if (nodes.length !== 1) throw Error('Expected one expression');
@@ -787,9 +844,9 @@
       return nodes.map(complexParts);
     }
     const tuple = part => {
-      if (!part.startsWith('(') || !part.endsWith(')')) throw Error('Expected a parenthesized tuple');
-      const parts = splitExactList(part.slice(1, -1));
-      return notation === 'polar' ? polarTuple(parts) : parts.map(exactScalar);
+      const parts = tupleParts(part, notation);
+      return notation === 'polar' ? polarTuple(parts) : parts.map((value, i) =>
+        Array.isArray(notation) && notation[i] === 'letter' ? value : exactScalar(value));
     };
     if (format === 'tuple') return [tuple(text)];
     if (format === 'tuple-set') return splitExactList(text).map(tuple);
@@ -800,6 +857,7 @@
     return [[exactScalar(text)]];
   }
   function sameExactValue(a, b) {
+    if (typeof a === 'string' || typeof b === 'string') return a === b;
     if (b.fraction) return !!a.fraction && a.fraction[0] * b.fraction[1] === b.fraction[0] * a.fraction[1];
     if (!Number.isFinite(a.value) || !Number.isFinite(b.value)) return false;
     const tolerance = Math.min(1e-7, 1e-9 * Math.abs(b.value));
