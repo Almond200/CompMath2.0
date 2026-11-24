@@ -84,6 +84,9 @@
   function exactKey(slug) {
     return root.MATH_MOCK_EXTRAS?.[slug] ?? root.MATH_SHORT_ANSWER_KEYS?.answers?.[slug];
   }
+  function voidReason(slug) {
+    return root.MATH_ANSWER_KEYS?.voided?.[slug] ?? root.MATH_SHORT_ANSWER_KEYS?.voided?.[slug];
+  }
   // Top-level commas separate entries. Commas inside parentheses belong to a tuple
   // or to its component expressions, so do not split those until parsing the tuple.
   function splitExactList(text) {
@@ -833,7 +836,7 @@
   }
   function answer(set, slug, value, aime, now = Date.now()) {
     if (set.kind === 'mock') checkpoint(set,now);
-    if (set.status === 'finished') return false;
+    if (set.status === 'finished' || voidReason(slug)) return false;
     const text = String(value).trim();
     // A problem read in its official paper (set.selfCheck) takes any short answer; the solver
     // checks it against the official solution at review.
@@ -850,8 +853,7 @@
     return true;
   }
   function result(set, slug) {
-    // A problem the MAA voided is never graded (MATH_ANSWER_KEYS.voided), answered or not.
-    if (root.MATH_ANSWER_KEYS?.voided?.[slug]) return 'Voided';
+    if (voidReason(slug)) return 'Voided';
     if (!set.answers[slug]) return 'Unanswered';
     if (set.selfCheck?.[slug]) return set.self?.[slug] || 'Check yourself';
     const exact = exactKey(slug);
@@ -866,13 +868,13 @@
   }
   // After finishing, the solver marks a self-checked answer right or wrong (or clears the mark).
   function selfMark(set, slug, verdict) {
-    if (set.status !== 'finished' || !set.selfCheck?.[slug] || !set.answers[slug]) return false;
+    if (set.status !== 'finished' || voidReason(slug) || !set.selfCheck?.[slug] || !set.answers[slug]) return false;
     if (!['Correct', 'Incorrect', null].includes(verdict)) return false;
     set.self = { ...(set.self || {}) };
     if (verdict) set.self[slug] = verdict; else delete set.self[slug];
     return true;
   }
-  const api = { KEY, read, save, create, createMock, checkpoint, pause, resume, finish, timeLeft, exactKey, exactTex, answer, result, selfMark };
+  const api = { KEY, read, save, create, createMock, checkpoint, pause, resume, finish, timeLeft, exactKey, voidReason, exactTex, answer, result, selfMark };
   if (typeof module !== 'undefined') module.exports = api;
   else root.PracticeSessions = api;
 })(typeof window === 'undefined' ? globalThis : window);

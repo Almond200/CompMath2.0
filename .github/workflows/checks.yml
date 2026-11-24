@@ -24,6 +24,6 @@ jobs:
           node tools/build-book-notes.cjs --check
       - name: Unit tests
         run: |
-          for t in answer-keys practice-sessions mock-contests problem-difficulty card-text book-search; do
+          for t in answer-keys short-answer-keys practice-sessions mock-contests problem-difficulty card-text book-search; do
             echo "== $t"; node tests/$t.cjs
           done
