@@ -6120,7 +6120,8 @@
   // the AHSME), and the solver checks their answer against the official solution at review.
   const isVoidedProblem = p => !!practiceSessions.voidReason(p.slug);
   const paperProblem = p => !isVoidedProblem(p) && !hasMockAnswer(p) && !!p.url;
-  const externalPracticePrompt = p => !!practiceSessions.exactKey(p.slug)?.external && !!p.url;
+  const externalPracticePrompt = p => !!p.url && (practiceSessions.exactKey(p.slug)?.external ||
+    (officialKey(p.slug) != null && !hasProblemStatement(p)));
   const practiceEligible = p => (hasMockAnswer(p) || paperProblem(p)) && !isVoidedProblem(p);
   // Contests whose papers are multiple choice with five options, like the AMC; the others take a
   // short answer. A problem with an official letter key is multiple choice whatever its contest.
@@ -6142,7 +6143,7 @@
     const on = fams.filter(f => !practiceOff.has(f)).length;
     const sum = on === fams.length ? "All contests" : on ? `${on} of ${fams.length} contests` : "No contest";
     return `<details class="pr-fams"><summary><span class="pr-fams-label">Contests</span><span class="pr-fams-sum">${sum}</span></summary>
-      <p class="pr-fams-note">Choose the contests to draw from. Some questions open in their source paper or on AoPS; for those, you check your answer against the official solution during review.</p>
+      <p class="pr-fams-note">Choose the contests to draw from. Some questions open in their source paper or on AoPS. You can mark self-check questions during review.</p>
       <div class="fam-bulk"><button type="button" class="fam-bulk-btn" data-pr-all="on"${on === fams.length ? " disabled" : ""}>Select all</button><button type="button" class="fam-bulk-btn" data-pr-all="off"${on ? "" : " disabled"}>Deselect all</button></div>
       <div class="fam-chips" role="group" aria-label="Contests to draw from">${fams.map(f => `<button type="button" class="fam-chip" data-pr-fam="${escapeAttr(f)}" aria-pressed="${!practiceOff.has(f)}">${famDot(f)}${f}</button>`).join("")}</div></details>`;
   }
@@ -6322,7 +6323,7 @@
         <label class="mock-check" data-mock-check="statements" hidden><input type="checkbox" id="mock-statements"> <span>Only problems whose statement is shown in the app</span></label>
         <div class="mock-source-field" hidden></div>
         <div class="mock-advanced-field" hidden></div>
-        <p class="mock-generation-info" hidden>Questions come from your selected contests and keep their original answer formats. For questions linked to an official paper, check your answer against its solution during review.</p>
+        <p class="mock-generation-info" hidden>Questions come from your selected contests and keep their original answer formats. You can mark self-check questions during review.</p>
         <p id="mock-contest-info" class="prob-note"></p><p id="mock-contest-status" role="status"></p>
         <button type="submit" class="hp-btn">Start paper</button>
       </fieldset></form>
@@ -6542,9 +6543,16 @@
     const ext = showSource && p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.urlLabel === "archive" ? "Open in archive" : "Open in AoPS"} ${uiIcon("arrow-up-right")}</a>` : "";
     return `<div class="practice-solution-links"><a class="aops-btn" href="#/problem/${p.slug}">Open in app</a>${ext}</div>`;
   }
+  function practiceChoiceLabels(slug) {
+    const statement = window.MATH_STATEMENTS?.[slug]?.s || '';
+    const start = statement.search(/\n\s*\(a\)\s/i);
+    const labels = start < 0 ? [] : [...new Set([...statement.slice(start).matchAll(/\(([A-F])\)\s/gi)]
+      .map(match => match[1].toUpperCase()))];
+    return labels.length >= 3 ? labels.sort() : ['A','B','C','D','E'];
+  }
   function practiceAnswerChoices(set, slug, finished) {
     const multi = practiceSessions.allowsMultipleChoices(slug), selected = set.answers[slug] || '';
-    const choices = /\(F\)/.test(window.MATH_STATEMENTS?.[slug]?.s || '') ? ['A','B','C','D','E','F'] : ['A','B','C','D','E'];
+    const choices = practiceChoiceLabels(slug);
     return `<div class="rand-btns" role="${multi ? 'group' : 'radiogroup'}" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${choices.map(a =>
       `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="${multi ? 'checkbox' : 'radio'}" aria-checked="${multi ? selected.includes(a) : selected === a}">${a}</button>`).join('')}</div>`;
   }
@@ -6757,7 +6765,17 @@
     });
     $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; schedulePracticeSave(); const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-marked', e.target.checked); current.setAttribute('aria-label', `Problem ${practiceProblemNumber(set, set.current)}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${e.target.checked ? ', marked for review' : ''}`); });
     savePractice();
-    if (p && !external && (!paper || inlinePaper)) showStatement(p, '.practice-set-st', !paper);
+    if (p && !external && (!paper || inlinePaper)) {
+      const pendingChoices = !typedAnswer && !voidNote && !window.MATH_STATEMENTS?.[slug];
+      showStatement(p, '.practice-set-st', !paper);
+      if (pendingChoices) {
+        const route = location.hash;
+        loadStatements(statementFile(p)).then(() => {
+          if (location.hash === route && topicPracticeSet === set && set.slugs[set.current] === slug &&
+              practiceChoiceLabels(slug).join('') !== 'ABCDE') redraw();
+        });
+      }
+    }
     $content.querySelectorAll('[data-self]').forEach(b => b.addEventListener('click', () => {
       const v = b.getAttribute('aria-pressed') === 'true' ? null : b.dataset.self;
       if (!practiceSessions.selfMark(set, slug, v)) return;

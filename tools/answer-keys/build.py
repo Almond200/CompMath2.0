@@ -5,6 +5,7 @@ cemc = json.load(open(K + 'cemc/keys.json'))
 umd = json.load(open(K + 'umd/keys.json'))
 utah = json.load(open(K + 'utah.json'))
 col = json.load(open(K + 'columbus.json'))
+ukmt = json.load(open(K + 'ukmt/keys.json'))
 fixes = {
     '2005-fermat-contest-25': ('B', 'Practice shows the CEMC’s corrected question, which requires p to be positive. It has 57 valid values of q. The original wording allowed any integer p and had 10,000 valid values.'),
     '2009-columbus-state-tournament-17': ('E', 'The restored answer choices include 889. The last three digits of 3^98 are 889.'),
@@ -14,6 +15,15 @@ fixes = {
     '2012-utah-state-math-contest-senior-23': ('D', 'At time C the speeds match, and the area under Car A’s speed graph is greater, so D follows from the graph. The organizers also credited A and C.'),
     '2012-utah-state-math-contest-senior-28': ('E', 'The official calculation assumes that all ten questions have exactly one correct letter. The organizers accepted two answers on #6 and withdrew #4, so the probability under that scoring policy differs.'),
     '2014-columbus-state-tournament-1': ('D', 'The official solutions print "Answer: C" but show 2014 = 2 x 19 x 53 has 8 divisors, choice (D).'),
+    '2014-utah-state-math-contest-junior-20': ('B', 'The official table labels its last entry #20 a second time. The actual #20 gives 1/4 using the same summation convention as the prompt.'),
+    '2014-utah-state-math-contest-junior-30': ('D', 'The official table labels #30 as #20. Of the two-hour arrival square, 19% lies within 12 minutes of the diagonal.'),
+    '2014-utah-state-math-contest-senior-20': ('B', 'The official table labels its last entry #20 a second time. In the actual #20, choosing n from −a introduces the factor (−1)^n.'),
+    '2014-utah-state-math-contest-senior-30': ('C', 'The official table labels #30 as #20. Subtracting the 76% who meet both conditions from the 81% who have never missed work gives 5%.'),
+    '2016-utah-state-math-contest-junior-12': ('A', 'The official answer counts 10 checkered pieces, including their colors. Ignoring the colors gives seven shapes when only rotations and translations are allowed.'),
+    '2016-utah-state-math-contest-junior-13': ('B', 'Both averages rise when the departing school is strictly smaller than the 5A average and strictly larger than the 4A average. Ties can leave an average unchanged, so E also earns credit.'),
+    '2016-utah-state-math-contest-senior-11': ('A', 'The official answer counts 10 checkered pieces, including their colors. Ignoring the colors gives seven shapes when only rotations and translations are allowed.'),
+    '2019-utah-state-math-contest-junior-27': ('E', 'The official key assumes the two colors are independent, giving 7/16. The prompt gives equal color probabilities and leaves dependence unspecified.'),
+    '2019-utah-state-math-contest-senior-30': ('E', 'The official key assumes the two colors are independent, giving 7/16. The prompt gives equal color probabilities and leaves dependence unspecified.'),
     '2021-pascal-contest-25': ('E', 'The CEMC’s original choices omitted the correct value, 22. Practice shows the corrected choices with 22 as E.'),
 }
 choice_answers = {
@@ -23,6 +33,7 @@ choice_answers = {
     '2013-utah-state-math-contest-junior-24': ['D', 'E', 'DE'],
     '2013-utah-state-math-contest-junior-26': ['A', 'D', 'AD'],
     '2013-utah-state-math-contest-senior-12': ['C', 'D', 'CD'],
+    '2016-utah-state-math-contest-junior-13': ['B', 'E'],
 }
 multiple_choice_papers = ['2013-utah-state-math-contest-junior', '2013-utah-state-math-contest-senior']
 voided = {
@@ -30,7 +41,7 @@ voided = {
     '2012-utah-state-math-contest-senior-13': 'The organizers withdrew this problem because all five listed numbers of pieces are possible. The intended question asked for the maximum.',
 }
 answers, notes = {}, {}
-for d in (cemc, umd, utah, col):
+for d in (cemc, umd, utah, col, ukmt):
     for s, a in d.items():
         if re.fullmatch(r'[A-F]', a): answers[s] = a   # letters only; integer answers wait for short-answer grading
 for s in voided:
@@ -42,6 +53,7 @@ sources = {
     'umd': 'the UMD HSMC Part I solutions, mathcomp.math.umd.edu',
     'utah': 'the Utah State Math Contest solutions and keys, weber.edu/statemathcontest',
     'columbus': 'the Columbus State tournament solutions, columbusstate.edu/math/tournament',
+    'ukmt': 'the UK Mathematics Trust solution PDFs for all indexed Junior, Intermediate, and Senior Mathematical Challenges',
 }
 body = json.dumps({'answers': dict(sorted(answers.items())), 'choiceAnswers': choice_answers,
                    'multipleChoicePapers': multiple_choice_papers, 'voided': voided, 'notes': notes,

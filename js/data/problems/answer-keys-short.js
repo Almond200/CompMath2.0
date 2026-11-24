@@ -640,6 +640,7 @@ window.MATH_SHORT_ANSWER_KEYS = {
     "2026-mbmt-upper-counting": "https://mbmt.mbhs.edu/archive/2026/jacobi/counting/solutions.pdf",
     "2026-mbmt-upper-geometry": "https://mbmt.mbhs.edu/archive/2026/jacobi/geometry/solutions.pdf",
     "2026-mbmt-upper-number-theory": "https://mbmt.mbhs.edu/archive/2026/jacobi/nt/solutions.pdf",
+    "2026-ukmt-smc": "https://ukmt.org.uk/wp-content/uploads/2026/07/SMC_2026_Solutions.pdf",
   },
   voided: {
     "2010-hmmt-february-combinatorics-8": "Voided in Practice after the organizer withdrew the original answer.",
@@ -8100,5 +8101,8 @@ window.MATH_SHORT_ANSWER_KEYS = {
     "2026-mbmt-upper-number-theory-6": {"answers": ["99"]},
     "2026-mbmt-upper-number-theory-7": {"answers": ["64"]},
     "2026-mbmt-upper-number-theory-8": {"answers": ["384"]},
+    "2026-ukmt-smc-23": {"answers": ["129"], "external": true},
+    "2026-ukmt-smc-24": {"answers": ["140"], "external": true},
+    "2026-ukmt-smc-25": {"answers": ["528"], "external": true},
   }
 };

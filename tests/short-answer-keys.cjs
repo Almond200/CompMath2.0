@@ -94,6 +94,11 @@ for (const year of [2022, 2023, 2024, 2025]) {
 }
 check('2022-cayley-contest-25', '09', 'Correct');
 check('2022-cayley-contest-25', '9', 'Correct');
+for (const [number, value] of [[23, '129'], [24, '140'], [25, '528']]) {
+  const slug = '2026-ukmt-smc-' + number;
+  assert(answers[slug].external);
+  check(slug, value, 'Correct');
+}
 for (const slug of ['2025-mbmt-lower-geometry-7', '2025-mbmt-upper-geometry-5']) {
   check(slug, '10', 'Correct');
   check(slug, 'sqrt(1360)', 'Correct');
