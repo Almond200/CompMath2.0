@@ -146,6 +146,14 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('#finish-practice').click();
  await p.locator('.practice-results').waitFor();
  assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Correct');
+ await set(['2022-columbus-state-tournament-15', '2015-columbus-state-tournament-31']);
+ await p.reload();
+ await p.waitForFunction(()=>document.querySelectorAll('[data-practice-answer]').length===6);
+ await p.getByRole('radio',{name:'F',exact:true}).click();
+ await p.locator('#finish-practice').click();
+ await p.locator('.practice-results').waitFor();
+ assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Correct');
+ assert.equal(await p.locator('[data-result-index="1"] [data-result]').innerText(),'Voided');
  await p.goto(base+'/#/practice');
  await paperSearch.fill('hmmt feb alg nt 2025');
  const pilot=p.getByRole('option',{name:'2025 HMMT February Algebra and Number Theory',exact:true});

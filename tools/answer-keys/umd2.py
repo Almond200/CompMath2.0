@@ -1,7 +1,8 @@
 import os, re, json, subprocess
+from pathlib import Path
 D = '' + (__import__('os').environ.get('KEYS_WORK', '/tmp/answer-keys-work')) + '/umd/'
 U = json.load(open('' + (__import__('os').environ.get('KEYS_WORK', '/tmp/answer-keys-work')) + '/urls.json'))
-st = json.loads(subprocess.check_output(['node', '-e', "global.window={};const fs=require('fs');for(const f of fs.readdirSync('js/data/problems/statements/umd'))require('./js/data/problems/statements/umd/'+f);console.log(JSON.stringify(window.MATH_STATEMENTS))"], cwd='/home/user/CompMath2.0'))
+st = json.loads(subprocess.check_output(['node', '-e', "global.window={};const fs=require('fs');for(const f of fs.readdirSync('js/data/problems/statements/umd'))require('./js/data/problems/statements/umd/'+f);console.log(JSON.stringify(window.MATH_STATEMENTS))"], cwd=Path(__file__).resolve().parents[2]))
 def choices(s):
     out = {}
     for m in re.finditer(r'\(([A-E])\)\s*(.*?)(?=\s*\([A-E]\)\s|$)', s, re.S):

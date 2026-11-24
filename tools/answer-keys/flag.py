@@ -1,6 +1,7 @@
 import re, json, subprocess, sys
+from pathlib import Path
 K = (__import__('os').environ.get('KEYS_WORK', '/tmp/answer-keys-work') + '/')
-R = '/home/user/CompMath2.0'
+R = Path(__file__).resolve().parents[2]
 contest, keyfile, folder, sol = sys.argv[1:5]   # e.g. columbus columbus.json col '{y}C'
 st = json.loads(subprocess.check_output(['node', '-e', "global.window={};const fs=require('fs');for(const f of fs.readdirSync('js/data/problems/statements/%s'))require('./js/data/problems/statements/%s/'+f);console.log(JSON.stringify(window.MATH_STATEMENTS))" % (contest, contest)], cwd=R))
 keys = json.load(open(K + keyfile))

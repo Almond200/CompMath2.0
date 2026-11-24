@@ -28,16 +28,17 @@ for (const slug of Object.keys(window.MATH_ANSWER_KEYS.voided || {})) { assert(a
 assert(window.MATH_ANSWER_KEYS.voided['2025-amc-12a-25']);
 const practice = require('../js/practice-sessions.js');
 require('../js/data/problems/answer-keys-more.js');
+require('../js/data/problems/answer-keys-short.js');
 require('../js/data/problems/statements/utah/2012.js');
 require('../js/data/problems/statements/utah/2013.js');
-const utah = window.MATH_EXTRA_KEYS;
+const extra = window.MATH_EXTRA_KEYS;
 const utah2013 = 'DEDBBDDBDECCACCD AAEABCBDAABDEA'.replace(/ /g, '');
 assert.equal(utah2013.length, 30);
 for (const division of ['junior', 'senior']) {
   for (const [i, letter] of [...utah2013].entries()) {
     const slug = `2013-utah-state-math-contest-${division}-${i + 1}`;
     assert.match(statements[slug].s, new RegExp(`\\(${letter}\\)`, 'i'));
-    assert.equal(utah.answers[slug], letter);
+    assert.equal(extra.answers[slug], letter);
     assert(practice.allowsMultipleChoices(slug));
   }
 }
@@ -59,13 +60,34 @@ grade('2021-pascal-contest-25', 'E', 'Correct');
 require('../js/data/problems/statements/columbus/2009.js');
 assert.match(statements['2009-columbus-state-tournament-17'].s, /\(E\) \$889\$/);
 grade('2009-columbus-state-tournament-17', 'E', 'Correct');
-for (const p of window.MATH_PROBLEM_DB) {
-  if (/\bUKMT (?:JMC|IMC|SMC)\b|\bUtah State Math Contest\b|\bUMD HSMC Part I,/.test(p.ref)) {
-    const slug = p.ref.toLowerCase().replace(', problem ', '-').replaceAll(' ', '-');
-    if (/^2026-ukmt-smc-2[3-5]$/.test(slug)) assert.equal(utah.answers[slug], undefined, slug);
-    else assert(utah.answers[slug] || utah.voided[slug], slug);
+for (const directory of ['cemc', 'columbus', 'umd', 'utah']) {
+  for (const file of fs.readdirSync('js/data/problems/statements/' + directory)) {
+    if (file.endsWith('.js')) require(`../js/data/problems/statements/${directory}/${file}`);
   }
 }
+const indexed = new Set(window.MATH_PROBLEM_DB.map(({ref}) =>
+  ref.toLowerCase().replace(', problem ', '-').replace(/[^a-z0-9]+/g, '-')));
+for (const slug of indexed) {
+  const isExtraPaper = /-(?:ukmt-[ijs]mc|utah-state-math-contest-(?:junior|senior)|umd-hsmc-part-i|columbus-state-tournament|(?:pascal|cayley|fermat)-contest)-\d+$/.test(slug);
+  if (!isExtraPaper) continue;
+  if (window.MATH_SHORT_ANSWER_KEYS.answers[slug]) {
+    assert.equal(extra.answers[slug], undefined, slug);
+    continue;
+  }
+  assert(extra.answers[slug] || extra.voided[slug], slug);
+  const statement = statements[slug]?.s;
+  if (!statement || extra.voided[slug]) continue;
+  const choiceStart = statement.search(/\n\s*\(a\)\s/i);
+  if (choiceStart < 0) {
+    assert.match(statement, /@@fig:[^@]+@@\s*$/, slug);
+    continue;
+  }
+  const choices = statement.slice(choiceStart);
+  for (const submitted of practice.choiceAnswers(slug)) {
+    for (const letter of submitted) assert.match(choices, new RegExp(`\\(${letter}\\)\\s`, 'i'), slug);
+  }
+}
+for (const slug of [...Object.keys(extra.answers), ...Object.keys(extra.voided)]) assert(indexed.has(slug), slug);
 grade('2014-utah-state-math-contest-junior-20', 'B', 'Correct');
 grade('2014-utah-state-math-contest-junior-30', 'D', 'Correct');
 grade('2014-utah-state-math-contest-senior-20', 'B', 'Correct');
@@ -78,6 +100,20 @@ grade('1997-umd-hsmc-part-i-25', 'D', 'Correct');
 grade('1998-umd-hsmc-part-i-11', 'E', 'Correct');
 grade('1998-umd-hsmc-part-i-14', 'D', 'Correct');
 grade('1999-umd-hsmc-part-i-25', 'C', 'Correct');
+grade('2002-columbus-state-tournament-43', 'E', 'Correct');
+assert.match(statements['2003-columbus-state-tournament-26'].s, /ac\^2\+b\^2=2003/);
+grade('2003-columbus-state-tournament-26', 'B', 'Correct');
+assert.match(statements['2015-columbus-state-tournament-36'].s, /there are \$2015\$ triangles in all/);
+grade('2015-columbus-state-tournament-36', 'B', 'Correct');
+grade('2015-columbus-state-tournament-36', 'C', 'Incorrect');
+grade('2019-columbus-state-tournament-21', 'A', 'Correct');
+grade('2019-columbus-state-tournament-21', 'D', 'Incorrect');
+grade('2022-columbus-state-tournament-15', 'F', 'Correct');
+for (const slug of ['2015-columbus-state-tournament-31', '2022-columbus-state-tournament-28']) {
+  const set = practice.create('Inconsistent geometry question', 'Any', [slug]);
+  assert.equal(practice.result(set, slug), 'Voided');
+  assert(!practice.answer(set, slug, 'A', false));
+}
 for (const slug of ['2011-umd-hsmc-part-i-18', '2018-umd-hsmc-part-i-7']) {
   const set = practice.create('Maryland full-credit question', 'Any', [slug]);
   assert.equal(practice.result(set, slug), 'Voided');
@@ -107,4 +143,4 @@ for (const n of [4, 13]) {
   assert(!practice.answer(set, slug, 'C', false));
   assert(statements[slug]);
 }
-console.log(`${Object.keys(answers).length} answer keys: coverage, formats, source links and explicit strategy choices passed.`);
+console.log(`${Object.keys(answers).length} MAA and ${Object.keys(extra.answers).length} extra answer keys: coverage, formats, source links and explicit strategy choices passed.`);

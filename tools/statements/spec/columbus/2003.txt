@@ -99,7 +99,7 @@ Let $a$ and $b$ be two complex numbers satisfying $\dfrac ab+\dfrac ba=\sqrt3$. 
 
 (A) $7$  (B) $1$  (C) $-1$  (D) $2$  (E) $0$
 === 26
-Three consecutive positive integers in increasing order, say $a$, $b$ and $c$, satisfy the equality $ac+b^2=2003$. Find $2a+4b-5c$.
+Three consecutive positive integers in increasing order, say $a$, $b$ and $c$, satisfy the equality $ac^2+b^2=2003$. Find $2a+4b-5c$.
 
 (A) $-5$  (B) $5$  (C) $1$  (D) $2$  (E) $10$
 === 27

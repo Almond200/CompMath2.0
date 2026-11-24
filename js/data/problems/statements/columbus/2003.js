@@ -76,7 +76,7 @@ Object.assign(window.MATH_STATEMENTS = window.MATH_STATEMENTS || {}, {
 "2003-columbus-state-tournament-25": { s: String.raw`Let $a$ and $b$ be two complex numbers satisfying $\dfrac ab+\dfrac ba=\sqrt3$. Which of the following is a possible value for $a^6+b^6$ ?
 
 (A) $7$  (B) $1$  (C) $-1$  (D) $2$  (E) $0$`, u: "https://www.columbusstate.edu/math/_docs/tournament/03WrittenFD.pdf" },
-"2003-columbus-state-tournament-26": { s: String.raw`Three consecutive positive integers in increasing order, say $a$, $b$ and $c$, satisfy the equality $ac+b^2=2003$. Find $2a+4b-5c$.
+"2003-columbus-state-tournament-26": { s: String.raw`Three consecutive positive integers in increasing order, say $a$, $b$ and $c$, satisfy the equality $ac^2+b^2=2003$. Find $2a+4b-5c$.
 
 (A) $-5$  (B) $5$  (C) $1$  (D) $2$  (E) $10$`, u: "https://www.columbusstate.edu/math/_docs/tournament/03WrittenFD.pdf" },
 "2003-columbus-state-tournament-27": { s: String.raw`A rectangle is divided into four sub-rectangles with areas $6$, $9$, $12$ and $x$, as in the adjacent figure. Find $x$.
