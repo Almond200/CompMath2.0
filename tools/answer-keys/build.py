@@ -6,7 +6,33 @@ umd = json.load(open(K + 'umd/keys.json'))
 utah = json.load(open(K + 'utah.json'))
 col = json.load(open(K + 'columbus.json'))
 ukmt = json.load(open(K + 'ukmt/keys.json'))
+# These papers need manual alignment or independent solutions. See the audit notes.
+umd_reviewed_papers = {
+    1997: 'CEAECDD CBBDBBDBC BCAEADCEC',
+    1998: 'DBABBCAADCECADCDBBDEDBBDE',
+}
+umd_reviewed_choices = {
+    1999: {16: 'E', 17: 'C', 21: 'D', 23: 'D', 25: 'C'},
+    2010: {21: 'D'},
+    2011: {22: 'B'},
+    2012: {7: 'E'},
+    2013: {21: 'C'},
+    2014: {11: 'C'},
+    2015: {17: 'C', 20: 'A', 24: 'D'},
+    2016: {4: 'C'},
+    2025: {15: 'E', 16: 'A'},
+}
+for year, letters in umd_reviewed_papers.items():
+    letters = letters.replace(' ', '')
+    if not re.fullmatch(r'[A-E]{25}', letters):
+        raise ValueError(f'Incomplete reviewed Maryland paper: {year}')
+    umd_reviewed_choices[year] = dict(enumerate(letters, 1))
+for year, choices in umd_reviewed_choices.items():
+    for number, letter in choices.items():
+        umd[f'{year}-umd-hsmc-part-i-{number}'] = letter
 fixes = {
+    '1997-umd-hsmc-part-i-25': ('C', 'If one species may be absent, the largest unique total is 31 extremities from three elephants and four hippopotamuses. If the herd must contain both species, the largest unique total is 40 from four elephants and five hippopotamuses. Practice accepts C or D.'),
+    '1998-umd-hsmc-part-i-16': ('D', 'The official solution says 250. In fact, 1,000 − 9³ = 271 numbers have at least one 7. Both counts fall in the interval given by D.'),
     '2005-fermat-contest-25': ('B', 'Practice shows the CEMC’s corrected question, which requires p to be positive. It has 57 valid values of q. The original wording allowed any integer p and had 10,000 valid values.'),
     '2009-columbus-state-tournament-17': ('E', 'The restored answer choices include 889. The last three digits of 3^98 are 889.'),
     '2012-utah-state-math-contest-junior-2': ('D', 'The organizers also accepted A. The train is 150 m if its front emerges at 20 seconds, and 300 m if its rear emerges then.'),
@@ -27,6 +53,7 @@ fixes = {
     '2021-pascal-contest-25': ('E', 'The CEMC’s original choices omitted the correct value, 22. Practice shows the corrected choices with 22 as E.'),
 }
 choice_answers = {
+    '1997-umd-hsmc-part-i-25': ['C', 'D'],
     '2012-utah-state-math-contest-junior-2': ['A', 'D'],
     '2012-utah-state-math-contest-senior-6': ['A', 'B'],
     '2012-utah-state-math-contest-senior-23': ['A', 'C', 'D'],
@@ -37,6 +64,8 @@ choice_answers = {
 }
 multiple_choice_papers = ['2013-utah-state-math-contest-junior', '2013-utah-state-math-contest-senior']
 voided = {
+    '2011-umd-hsmc-part-i-18': 'The five choices omit the correct count of 78 reachable final boards. The organizers gave every student full credit.',
+    '2018-umd-hsmc-part-i-7': 'The five choices omit the correct count of 21 straight-line clock-hand alignments. The organizers gave every student full credit.',
     '2012-utah-state-math-contest-senior-4': 'The organizers withdrew this problem because it asked for ten-digit numbers where the intended question used fifteen digits.',
     '2012-utah-state-math-contest-senior-13': 'The organizers withdrew this problem because all five listed numbers of pieces are possible. The intended question asked for the maximum.',
 }
@@ -50,7 +79,7 @@ for s, (a, why) in fixes.items():
     answers[s] = a; notes[s] = why
 sources = {
     'cemc': 'the CEMC solutions, cemc.uwaterloo.ca (Pascal, Cayley and Fermat, 1998 to 2025)',
-    'umd': 'the UMD HSMC Part I solutions, mathcomp.math.umd.edu',
+    'umd': 'the UMD HSMC Part I solutions and independent solutions for the 1997 paper, mathcomp.math.umd.edu',
     'utah': 'the Utah State Math Contest solutions and keys, weber.edu/statemathcontest',
     'columbus': 'the Columbus State tournament solutions, columbusstate.edu/math/tournament',
     'ukmt': 'the UK Mathematics Trust solution PDFs for all indexed Junior, Intermediate, and Senior Mathematical Challenges',
@@ -58,8 +87,8 @@ sources = {
 body = json.dumps({'answers': dict(sorted(answers.items())), 'choiceAnswers': choice_answers,
                    'multipleChoicePapers': multiple_choice_papers, 'voided': voided, 'notes': notes,
                    'sources': sources}, indent=1, ensure_ascii=False)
-head = ('// Official answer letters for multiple-choice contests outside the MAA (owner, 2026-11-22), read from each\n'
-        '// contest\'s posted solutions by tools/answer-keys/ (see its README). `choiceAnswers` records complete accepted\n'
+head = ('// Verified answer letters for multiple-choice contests outside the MAA, built by tools/answer-keys/\n'
+        '// (see its README for official sources and independent solutions). `choiceAnswers` records complete accepted\n'
         '// submissions for questions with multiple accepted choices. `voided` records withdrawals and `notes` records corrections.\n'
         '// Separate from answer-keys.js (generated from LIVE) because the two load in no fixed order.\n')
 output = Path(__file__).resolve().parents[2] / 'js/data/problems/answer-keys-more.js'

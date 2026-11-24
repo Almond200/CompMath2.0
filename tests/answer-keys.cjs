@@ -60,7 +60,7 @@ require('../js/data/problems/statements/columbus/2009.js');
 assert.match(statements['2009-columbus-state-tournament-17'].s, /\(E\) \$889\$/);
 grade('2009-columbus-state-tournament-17', 'E', 'Correct');
 for (const p of window.MATH_PROBLEM_DB) {
-  if (/\bUKMT (?:JMC|IMC|SMC)\b|\bUtah State Math Contest\b/.test(p.ref)) {
+  if (/\bUKMT (?:JMC|IMC|SMC)\b|\bUtah State Math Contest\b|\bUMD HSMC Part I,/.test(p.ref)) {
     const slug = p.ref.toLowerCase().replace(', problem ', '-').replaceAll(' ', '-');
     if (/^2026-ukmt-smc-2[3-5]$/.test(slug)) assert.equal(utah.answers[slug], undefined, slug);
     else assert(utah.answers[slug] || utah.voided[slug], slug);
@@ -73,6 +73,16 @@ grade('2014-utah-state-math-contest-senior-30', 'C', 'Correct');
 grade('2016-utah-state-math-contest-junior-13', 'E', 'Correct');
 grade('2015-ukmt-imc-2', 'E', 'Correct');
 grade('2015-ukmt-imc-2', 'A', 'Incorrect');
+grade('1997-umd-hsmc-part-i-25', 'C', 'Correct');
+grade('1997-umd-hsmc-part-i-25', 'D', 'Correct');
+grade('1998-umd-hsmc-part-i-11', 'E', 'Correct');
+grade('1998-umd-hsmc-part-i-14', 'D', 'Correct');
+grade('1999-umd-hsmc-part-i-25', 'C', 'Correct');
+for (const slug of ['2011-umd-hsmc-part-i-18', '2018-umd-hsmc-part-i-7']) {
+  const set = practice.create('Maryland full-credit question', 'Any', [slug]);
+  assert.equal(practice.result(set, slug), 'Voided');
+  assert(!practice.answer(set, slug, 'C', false));
+}
 assert(!practice.answer(practice.create('Single selection', 'Any', ['2012-amc-12b-12']), '2012-amc-12b-12', 'DE', false));
 for (const [suffix, letters] of [['junior-2', 'AD'], ['senior-6', 'AB'], ['senior-23', 'ACD']]) {
   const slug = '2012-utah-state-math-contest-' + suffix;
