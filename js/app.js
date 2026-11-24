@@ -6076,6 +6076,15 @@
       </header>
       ${recent ? `<div class="sh-recent"><span class="hp-label">Recently opened</span><div class="rc-chips">${recent}</div></div>` : ""}`;
   }
+  $content.addEventListener("focusin", e => {
+    const link = e.target.closest(".rc-chips .rc-row");
+    if (!link) return;
+    const row = link.parentElement;
+    const { left, right } = link.getBoundingClientRect();
+    const bounds = row.getBoundingClientRect();
+    if (left < bounds.left) row.scrollLeft -= Math.ceil(bounds.left - left);
+    else if (right > bounds.right) row.scrollLeft += Math.ceil(right - bounds.right);
+  });
   // Shared equal-width Elo intervals, recalibrated after the contest/topic filter.
   const DIFFS = problemDifficulty.levels.map(level => level.id);
   function wireRandomPicker(root) {
