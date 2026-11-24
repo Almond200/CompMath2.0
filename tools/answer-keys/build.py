@@ -1,16 +1,37 @@
 import json, re
+from pathlib import Path
 K = (__import__('os').environ.get('KEYS_WORK', '/tmp/answer-keys-work') + '/')
 cemc = json.load(open(K + 'cemc/keys.json'))
 umd = json.load(open(K + 'umd/keys.json'))
 utah = json.load(open(K + 'utah.json'))
 col = json.load(open(K + 'columbus.json'))
 fixes = {
+    '2012-utah-state-math-contest-junior-2': ('D', 'The organizers also accepted A. The train is 150 m if its front emerges at 20 seconds, and 300 m if its rear emerges then.'),
+    '2012-utah-state-math-contest-senior-6': ('B', 'The printed polynomial can have ten rational roots, choice B. The organizers also credited A after discussing the eight candidates supplied by the Rational Root Theorem under an integer-coefficient assumption.'),
+    '2012-utah-state-math-contest-senior-8': ('B', 'Choice B uses the time when the whole train emerges. If it refers to the front of the train, its length is 75 m, which is absent from the choices.'),
+    '2012-utah-state-math-contest-senior-23': ('D', 'At time C the speeds match, and the area under Car A’s speed graph is greater, so D follows from the graph. The organizers also credited A and C.'),
+    '2012-utah-state-math-contest-senior-28': ('E', 'The official calculation assumes that all ten questions have exactly one correct letter. The organizers accepted two answers on #6 and withdrew #4, so the probability under that scoring policy differs.'),
     '2014-columbus-state-tournament-1': ('D', 'The official solutions print "Answer: C" but show 2014 = 2 x 19 x 53 has 8 divisors, choice (D).'),
+}
+choice_answers = {
+    '2012-utah-state-math-contest-junior-2': ['A', 'D'],
+    '2012-utah-state-math-contest-senior-6': ['A', 'B'],
+    '2012-utah-state-math-contest-senior-23': ['A', 'C', 'D'],
+    '2013-utah-state-math-contest-junior-24': ['D', 'E', 'DE'],
+    '2013-utah-state-math-contest-junior-26': ['A', 'D', 'AD'],
+    '2013-utah-state-math-contest-senior-12': ['C', 'D', 'CD'],
+}
+multiple_choice_papers = ['2013-utah-state-math-contest-junior', '2013-utah-state-math-contest-senior']
+voided = {
+    '2012-utah-state-math-contest-senior-4': 'The organizers withdrew this problem because it asked for ten-digit numbers where the intended question used fifteen digits.',
+    '2012-utah-state-math-contest-senior-13': 'The organizers withdrew this problem because all five listed numbers of pieces are possible. The intended question asked for the maximum.',
 }
 answers, notes = {}, {}
 for d in (cemc, umd, utah, col):
     for s, a in d.items():
         if re.fullmatch(r'[A-F]', a): answers[s] = a   # letters only; integer answers wait for short-answer grading
+for s in voided:
+    answers.pop(s, None)
 for s, (a, why) in fixes.items():
     answers[s] = a; notes[s] = why
 sources = {
@@ -19,12 +40,14 @@ sources = {
     'utah': 'the Utah State Math Contest solutions and keys, weber.edu/statemathcontest',
     'columbus': 'the Columbus State tournament solutions, columbusstate.edu/math/tournament',
 }
-body = json.dumps({'answers': dict(sorted(answers.items())), 'notes': notes, 'sources': sources}, indent=1, ensure_ascii=False)
+body = json.dumps({'answers': dict(sorted(answers.items())), 'choiceAnswers': choice_answers,
+                   'multipleChoicePapers': multiple_choice_papers, 'voided': voided, 'notes': notes,
+                   'sources': sources}, indent=1, ensure_ascii=False)
 head = ('// Official answer letters for multiple-choice contests outside the MAA (owner, 2026-11-22), read from each\n'
-        '// contest\'s posted solutions by tools in the session scratchpad: the CEMC\'s "Answer: (X)" lines, UMD\'s "the answer\n'
-        '// is x", Utah\'s keys and "Correct answer" lines, Columbus State\'s "Answer: X". A question whose solution states no\n'
-        '// letter, or two, is left out and stays self-checked against the official solution. `notes` records a corrected key.\n'
+        '// contest\'s posted solutions by tools/answer-keys/ (see its README). `choiceAnswers` records complete accepted\n'
+        '// submissions for questions with multiple accepted choices. `voided` records withdrawals and `notes` records corrections.\n'
         '// Separate from answer-keys.js (generated from LIVE) because the two load in no fixed order.\n')
-open('/home/user/CompMath2.0/js/data/problems/answer-keys-more.js', 'w').write(head + 'window.MATH_EXTRA_KEYS = ' + body + ';\n')
+output = Path(__file__).resolve().parents[2] / 'js/data/problems/answer-keys-more.js'
+output.write_text(head + 'window.MATH_EXTRA_KEYS = ' + body + ';\n')
 from collections import Counter
 print(len(answers), Counter(re.sub(r'^\d{4}-|-\d+$', '', s).split('-')[0] for s in answers))

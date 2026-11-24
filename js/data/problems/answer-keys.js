@@ -6877,5 +6877,11 @@ window.MATH_ANSWER_KEYS = {
  },
  "voided": {
   "2025-amc-12a-25": "Voided by the MAA: the official answer, (E) 13, counts the pairs (P, Q), but the question asks for functions, and as functions the 13 pairs give only 8, which is not a choice. Every student received the 6 points for the problem."
+ },
+ "choiceAnswers": {
+  "2012-amc-12b-12": [
+   "D",
+   "E"
+  ]
  }
 };

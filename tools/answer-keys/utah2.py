@@ -1,7 +1,9 @@
 import os, re, json, subprocess
+from pathlib import Path
 K = (__import__('os').environ.get('KEYS_WORK', '/tmp/answer-keys-work') + '/')
-st = json.loads(subprocess.check_output(['node', '-e', "global.window={};const fs=require('fs');for(const f of fs.readdirSync('js/data/problems/statements/utah'))require('./js/data/problems/statements/utah/'+f);console.log(JSON.stringify(window.MATH_STATEMENTS))"], cwd='/home/user/CompMath2.0'))
-db = json.loads(subprocess.check_output(['node', '-e', "global.window={};require('./js/data/problems/problem-db.js');console.log(JSON.stringify(window.MATH_PROBLEM_DB.map(p=>p.ref)))"], cwd='/home/user/CompMath2.0'))
+ROOT = Path(__file__).resolve().parents[2]
+st = json.loads(subprocess.check_output(['node', '-e', "global.window={};const fs=require('fs');for(const f of fs.readdirSync('js/data/problems/statements/utah'))require('./js/data/problems/statements/utah/'+f);console.log(JSON.stringify(window.MATH_STATEMENTS))"], cwd=ROOT))
+db = json.loads(subprocess.check_output(['node', '-e', "global.window={};require('./js/data/problems/problem-db.js');console.log(JSON.stringify(window.MATH_PROBLEM_DB.map(p=>p.ref)))"], cwd=ROOT))
 want = {}
 for r in db:
     m = re.match(r'(\d{4}) Utah State Math Contest (Junior|Senior), Problem (\d+)$', r)
@@ -28,12 +30,16 @@ def split(t, top):
     return {n: t[starts[n - 1]:starts[n]] for n in range(1, top + 1)}
 out, report, checks = {}, [], [0, 0]
 for (y, kind), nums in sorted(want.items()):
-    if y == '2013': continue
     path = K + f'utah/{y}{kind}.pdf'
     if not os.path.exists(path): report.append((y, kind, 'no file')); continue
     t = subprocess.run(['pdftotext', '-layout', path, '-'], capture_output=True, text=True).stdout.replace('\u200b', '')
     res = {}
-    if 'Answer Key' in t:  # 2014: a table, Junior columns first, then Senior
+    if y == '2013':  # The official results use the same numbered key for both papers.
+        for numbers, letters in re.findall(r'(?m)^\s*Question\s+([0-9 \t]+)\s*\n\s*Correct\s+([A-E \t]+)\s*$', t):
+            questions, choices = numbers.split(), letters.split()
+            if len(questions) == len(choices): res.update((int(n), a) for n, a in zip(questions, choices))
+        if sorted(res) != list(range(1, 31)): res = {}
+    elif 'Answer Key' in t:  # 2014: a table, Junior columns first, then Senior
         rows = re.findall(r'(?m)^\s*(\d+)\s+([A-E])\s+(\d+)\s+([A-E])\s+(\d+)\s+([A-E])\s+(\d+)\s+([A-E])\s*$', t)
         for r in rows:
             j = {int(r[0]): r[1], int(r[2]): r[3]}; s = {int(r[4]): r[5], int(r[6]): r[7]}
