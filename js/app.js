@@ -4785,7 +4785,12 @@
   let tocPinned = null;
   // True right after a group link is clicked, until the reader scrolls by hand (markNavGroup).
   let groupPinned = false;
-  const unpinToc = () => { groupPinned = false; if (tocPinned) { tocPinned = null; markToc(); } };
+  let spaceSectionPinned = null;
+  const unpinToc = () => {
+    groupPinned = false;
+    if (tocPinned) { tocPinned = null; markToc(); }
+    if (spaceSectionPinned) { spaceSectionPinned = null; markSpaceSection(); }
+  };
   window.addEventListener("wheel", unpinToc, { passive: true });
   // The page-tools panel sticks just under the top bar, whose height changes with the text size
   // and the density; --topbar-h follows it so the panel never slides under the bar or gaps.
@@ -4844,7 +4849,9 @@
   // replaceState, so a refresh or a Back to this page returns to the same group without adding
   // history entries.
   function markNavGroup() {
-    if (getRoute().type !== "home" || state.landing || state.query.trim() || state.adv) return;
+    const route = getRoute();
+    if (route.type === "space") { markSpaceSection(route); return; }
+    if (route.type !== "home" || state.landing || state.query.trim() || state.adv) return;
     const sec = SECTIONS.find(x => x.id === state.activeSectionId);
     if (!sec) return;
     const bySub = bySubject(sec);
@@ -4870,6 +4877,28 @@
     const want = sectionHash(sec.id, bySub ? { sub: state.activeSub, cluster: cur } : { topic: cur });
     if (location.hash !== want) history.replaceState(history.state, "", want);
   }
+  function markSpaceSection(route = getRoute()) {
+    const links = route.type === "space" && !route.practiceSet ? SPACE_SECTIONS[route.name] || [] : [];
+    const sections = links.map(([id]) => document.getElementById(id)).filter(Boolean);
+    // Near the end of the page a selected heading may be unable to reach the top bar.
+    const y = window.scrollY;
+    if (spaceSectionPinned && (Math.abs(spaceSectionPinned.y - y) > 1 ||
+      !sections.some(section => section.id === spaceSectionPinned.id))) spaceSectionPinned = null;
+    let current = spaceSectionPinned?.id;
+    if (!current && sections.length) {
+      const atEnd = y > 0 && y + window.innerHeight >= document.documentElement.scrollHeight - 2;
+      const line = (document.querySelector(".topbar")?.offsetHeight || 0) + 24;
+      current = atEnd ? sections.at(-1).id :
+        (sections.findLast(section => section.getBoundingClientRect().top <= line) || sections[0]).id;
+    }
+    $sidebar.querySelectorAll(".nav-space-link").forEach(link => {
+      const active = link.dataset.goto === current;
+      if (active === link.classList.contains("active")) return;
+      link.classList.toggle("active", active);
+      if (active) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+  }
   // The editor's sticky sidebar shrinks (and scrolls inside) rather than being pushed up past the top bar at the end of the page.
   function fitGeSide() {
     const side = document.querySelector(".ge-side"), main = document.querySelector(".ge-main");
@@ -4879,7 +4908,7 @@
   }
   let tocTick = 0;
   window.addEventListener("scroll", () => { if (!tocTick) tocTick = requestAnimationFrame(() => { tocTick = 0; markToc(); markNavGroup(); fitGeSide(); }); }, { passive: true });
-  window.addEventListener("resize", () => fitGeSide(), { passive: true });
+  window.addEventListener("resize", () => { fitGeSide(); markSpaceSection(); }, { passive: true });
 
   // Replace the browser's default (light) number-input spinner with themed ▲▼ arrows
   // that sit inside the field, so they match the dark UI instead of standing out.
@@ -11994,6 +12023,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // and owns the delegated click listener, so rebuilding it per route would attach a
     // duplicate listener every time.
     updateNavActive();
+    markSpaceSection(route);
     syncSidebarAvailability();
     updateGearActive();
     if (route.type === "list") buildListToc();
@@ -12666,6 +12696,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
         } else {
           const bar = document.querySelector(".topbar");
           window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - (bar ? bar.offsetHeight : 0) - 14), behavior: "instant" });
+          const route = getRoute();
+          if (route.type === "space" && SPACE_SECTIONS[route.name]?.some(([sectionId]) => sectionId === id)) {
+            spaceSectionPinned = { id, y: window.scrollY };
+            markSpaceSection(route);
+          }
         }
       } else if (++tries < 600 && (tries < 40 || $content.querySelector(".route-status[role=status]"))) setTimeout(seek, 25);
     };

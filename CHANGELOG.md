@@ -2,7 +2,7 @@
 
 **2026-11-24**
 
-- **Learn and Practice navigation.** Both landing pages have a collapsible section menu in their space color. The About dialogs explain the space, and Recently opened stays above the page sections.
+- **Learn and Practice navigation.** Both landing pages have a collapsible section menu in their space color. The sidebar highlights the current section when you jump to it or scroll. The About dialogs explain the space, and Recently opened stays above the page sections.
 
 - **Practice scores and alternate solutions.** Completed sets and Resume a set exclude voided questions from their denominators, in agreement with the set and Results overview. The 2015 MMATHS Individual paper shows 0/11 correct on an empty submission. Problem pages, Practice review and Learn show each write-up immediately above its own card box.
 
