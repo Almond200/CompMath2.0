@@ -6588,7 +6588,7 @@
     const inlinePaper = paper && archiveStatement(p);
     const external = p && !paper && externalPracticePrompt(p);
     const typedAnswer = aime || exact || paper;
-    const exactLabel = { set: 'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.',
+    const exactLabel = { set: exact?.notation === 'letter-list' ? 'All letters, separated by commas (spaces optional).' : 'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.',
       sequence: exact?.notation === 'base-3'
         ? 'Base 3 digits in the requested order, separated by commas (spaces optional). The _3 suffix is optional.'
         : 'List values in the requested order, separated by commas (spaces optional). Write numbers without commas, like 1398.',
@@ -6598,6 +6598,9 @@
       polynomial: `Polynomial in ${exact?.notation}`,
       'rational-function': `Expression in ${exact?.notation}`,
       'exponential-function': `Expression in ${exact?.notation}`,
+      'symbolic-equation': 'Equation',
+      'set-set': 'Enter each set in braces or parentheses, separated by commas.',
+      'ratio-list': 'Ratio, for example 2:3:4',
       tuple: exact?.notation === 'polar' ? 'Polar coordinates (radius, angle). For degrees, use ° or deg.' : 'Ordered tuple, for example (2, 3)',
       'tuple-set': 'All tuples, for example (2, 3), (4, 5)', text: 'Short answer',
       percent: exact?.notation === 'percent-change' ? 'Percentage change. Use a negative value for a decrease.' : 'Percentage (% is optional)' }[exact?.format] ||

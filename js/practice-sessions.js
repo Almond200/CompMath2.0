@@ -93,8 +93,8 @@
     let depth = 0, start = 0;
     const parts = [];
     for (let i = 0; i < text.length; i++) {
-      if (text[i] === '(') depth++;
-      if (text[i] === ')') depth--;
+      if (text[i] === '(' || text[i] === '{') depth++;
+      if (text[i] === ')' || text[i] === '}') depth--;
       if (depth < 0) throw Error('Unmatched parenthesis');
       if (!depth && text[i] === ',') { parts.push(text.slice(start, i)); start = i + 1; }
     }
@@ -127,6 +127,32 @@
       return (digits[1] || digits[2]).replace(/^0+(?=\d)/, '');
     });
   }
+  function letterParts(text) {
+    text = text.trim();
+    const parts = /^[a-z]{1,24}$/i.test(text) ? [...text] : text.split(/\s*(?:,|<)\s*|\s+/);
+    if (!parts.every(part => /^[a-z]$/i.test(part))) throw Error('Expected single letters');
+    return parts.map(part => part.toUpperCase());
+  }
+  function groupedExactParts(text) {
+    text = text.replace(/\$|\\(?:left|right)\b|\\(?=[{}])/g, '').trim();
+    const wrapped = part => (part.startsWith('(') && part.endsWith(')')) || (part.startsWith('{') && part.endsWith('}'));
+    let parts = splitExactList(text);
+    if (parts.length === 1 && wrapped(text)) {
+      const inside = splitExactList(text.slice(1, -1));
+      if (inside.every(wrapped)) parts = inside;
+    }
+    return parts.map(part => {
+      if (!wrapped(part)) throw Error('Expected parenthesized or braced groups');
+      return splitExactList(part.slice(1, -1));
+    });
+  }
+  function ratioParts(text) {
+    text = text.replace(/\$|\\(?:left|right)\b/g, '').trim();
+    if (text.startsWith('(') && text.endsWith(')') && splitExactList(text).length === 1) text = text.slice(1, -1);
+    const parts = text.includes(':') || text.includes('\\colon') ? text.split(/:|\\colon\b/).map(part => part.trim()) : splitExactList(text);
+    if (parts.length < 2 || parts.length > 8) throw Error('Expected a ratio with at least two terms');
+    return parts;
+  }
   function symbolicTex(text) {
     if (text.length > 120) return null;
     try { return math.toSymbolicTex(text); } catch (err) { return null; }
@@ -149,6 +175,10 @@
     if (degrees != null) return '{' + math.toTex(degrees, true) + '}^{\\circ}';
     text = cleanExact(text, format, notation);
     if (notation === 'base-3') return ternaryParts(text).map(part => `${part}_{3}`).join(',\\ ');
+    if (notation === 'letter-list') return letterParts(text).join(',\\ ');
+    if (format === 'set-set') return groupedExactParts(text).map(parts =>
+      '\\left\\{' + parts.map(part => math.toTex(part)).join(',\\ ') + '\\right\\}').join(',\\ ');
+    if (format === 'ratio-list') return ratioParts(text).map(part => math.toTex(part)).join('\\mathbin{:}');
     if (format === 'interval') {
       const parts = intervalParts(text);
       if (!parts.length) return '\\varnothing';
@@ -207,7 +237,7 @@
         text = sign + numerator + '/' + denominator;
       }
     }
-    if (notation === 'percent-change') {
+    if (notation === 'percent-change' || notation === 'percent-change-unsigned') {
       const change = /^(?:(increase|decrease)s?(?:\s+(?:by|of))?\s+(.+)|(.+?)\s+(increase|decrease))$/i.exec(text.trim());
       if (change) {
         const magnitude = (change[2] || change[3]).replace(/(?:\\?%)\s*$/, '');
@@ -233,6 +263,10 @@
     if (notation === 'fibonacci') {
       text = text.replace(/\bF\s*_\s*(?:\{\s*(\d+)\s*\}|(\d+))/gi, (_, braced, plain) => `fib(${braced || plain})`)
         .replace(/\bF([₀-₉]+)/g, (_, index) => `fib(${[...index].map(digit => digit.charCodeAt(0) - '₀'.charCodeAt(0)).join('')})`);
+    }
+    if (notation === 'repunit') {
+      text = text.replace(/\ba\s*_\s*(?:\{\s*(\d+)\s*\}|(\d+))/gi, (_, a, b) => `((10^${a || b}-1)/9)`)
+        .replace(/\ba([₀-₉]+)/gi, (_, digits) => `((10^${[...digits].map(digit => digit.charCodeAt(0) - '₀'.charCodeAt(0)).join('')}-1)/9)`);
     }
     if (format === 'percent') text = text.replace(/(?:\\?%)\s*(?=\$?$)/, '');
     text = text.replace(/\b(sin|cos|tan)\s*\(([^()]+?)(?:\^\{\\circ\}|[°∘◦]|\s+deg)\s*\)/gi, '$1(($2)*pi/180)');
@@ -1012,17 +1046,68 @@
     const factor = symbolicTerm(Array(variables.length).fill(0), squared);
     return node.op === '*' ? [multiplySymbolic(numerator, factor), denominator] : [numerator, multiplySymbolic(denominator, factor)];
   }
+  function symbolicAnswer(text, format, notation) {
+    const [first, parameters] = notation.split('='), variables = (parameters || first).split(',');
+    const parse = side => {
+      const nodes = math.parse(side, true, false, variables.includes('e') ? 'e' : undefined, true);
+      if (nodes.length !== 1) throw Error('Expected one expression');
+      return nodes[0];
+    };
+    const sides = text.split('=').map(side => side.trim());
+    if (sides.length > 2) throw Error('Expected at most one equality sign');
+    if (format === 'symbolic-equation') {
+      if (sides.length === 1 && parameters) sides.unshift(first);
+      if (sides.length !== 2) throw Error('Expected an equation');
+      if (parameters) variables.unshift(first);
+      return symbolicQuotient({ op: '-', a: parse(sides[0]), b: parse(sides[1]) }, variables)[0];
+    }
+    if (sides.length === 2) {
+      if (parameters && sides[1] === first) sides.reverse();
+      if (!parameters || sides.shift() !== first) throw Error('Expected an expression in the given variables');
+    }
+    const node = parse(sides[0]);
+    return format === 'symbolic-radical' ? symbolicRadical(node, variables) : symbolicQuotient(node, variables);
+  }
+  function polynomialMultiple(text, format, notation) {
+    const nodes = math.parse(text, true, false, notation);
+    if (nodes.length !== 1) throw Error('Expected one polynomial');
+    const terms = polynomial(nodes[0]), leading = terms.at(-1);
+    if (!leading[0] || (format === 'integer-polynomial-multiple' && terms.some(([n, d]) => n % d))) {
+      throw Error('Expected a nonzero polynomial with the required coefficients');
+    }
+    return [terms.map(term => evaluatedValue(polynomialOperation('/', term, leading), 0))];
+  }
+  function sameSymbolicEquation(actual, expected) {
+    if (actual.size !== expected.size) return false;
+    if (!actual.size) return true;
+    const [pivot, term] = expected.entries().next().value, lead = actual.get(pivot);
+    if (!lead) return false;
+    const [x, y] = lead.coefficient, [p, q] = term.coefficient;
+    return [...expected].every(([key, { coefficient: [c, d] }]) => {
+      const other = actual.get(key);
+      if (!other) return false;
+      const [a, b] = other.coefficient;
+      return a * p * y * d === b * q * x * c;
+    });
+  }
   function exactValues(text, format, notation) {
     if (text.length > 120) throw Error('Answer is too long');
     text = cleanExact(text, format, notation);
     if (notation === 'base-3') return [ternaryParts(text).map(exactScalar)];
     if (format === 'interval') return sortedIntervals(text);
     if (format === 'quadratic-radical') return [quadraticParts(text, notation)];
-    if (format === 'factored-number') return factoredParts(text);
-    if (format === 'symbolic-rational' || format === 'symbolic-radical') {
-      const nodes = math.parse(text, true, false, undefined, true), variables = notation.split(',');
-      if (nodes.length !== 1) throw Error('Expected one expression');
-      return format === 'symbolic-rational' ? symbolicQuotient(nodes[0], variables) : symbolicRadical(nodes[0], variables);
+    if (format === 'factored-number' || format === 'prime-factorization') return factoredParts(text);
+    if (['symbolic-rational', 'symbolic-radical', 'symbolic-equation'].includes(format)) return symbolicAnswer(text, format, notation);
+    if (format === 'polynomial-multiple' || format === 'integer-polynomial-multiple') return polynomialMultiple(text, format, notation);
+    if (notation === 'letter-list') {
+      const letters = letterParts(text);
+      return format === 'sequence' ? [letters] : letters.map(letter => [letter]);
+    }
+    if (format === 'set-set') return groupedExactParts(text).map(parts => parts.map(exactScalar).sort(compareValues));
+    if (format === 'ratio-list') {
+      const parts = ratioParts(text).map(part => exactScalar(part).fraction);
+      if (!parts.every(part => part && part[0] > 0n)) throw Error('Expected positive rational ratio terms');
+      return [parts.map(part => evaluatedValue(polynomialOperation('/', part, parts[0]), 0))];
     }
     if (format === 'exponential-function') {
       const nodes = math.parse(text, true, false, notation);
@@ -1064,6 +1149,9 @@
     try {
       const actual = exactValues(text, format, notation), remaining = exactValues(expected, format, notation);
       if (format === 'factored-number') return sameFactoredValue(actual, remaining);
+      if (format === 'prime-factorization') return actual.sign === remaining.sign && actual.factors.size === remaining.factors.size &&
+        [...remaining.factors].every(([base, exponent]) => actual.factors.get(base) === exponent);
+      if (format === 'symbolic-equation') return sameSymbolicEquation(actual, remaining);
       if (format === 'symbolic-rational' || format === 'symbolic-radical') {
         const left = multiplySymbolic(actual[0], remaining[1]), right = multiplySymbolic(remaining[0], actual[1]);
         for (const term of right.values()) addSymbolicTerm(left, '-', term);
@@ -1073,6 +1161,10 @@
         const fraction = actual[0][0].fraction;
         const percent = fraction && rationalOperation('*', fraction, [100n, 1n]);
         if (percent && sameExactValue(evaluatedValue(percent, 0), remaining[0][0])) return true;
+      }
+      if (notation === 'percent-change-unsigned' && !/^(?:\$\s*)?[+−-]|\b(?:increase|decrease)s?\b/i.test(text.trim())) {
+        const fraction = actual[0][0].fraction;
+        if (fraction && sameExactValue(evaluatedValue([-fraction[0], fraction[1]], 0), remaining[0][0])) return true;
       }
       if (format === 'exponential-function') {
         const left = multiplyExponential(actual[0], remaining[1]);

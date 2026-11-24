@@ -159,6 +159,16 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('#finish-practice').click();
  await p.locator('.practice-results').waitFor();
  assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct']);
+ await set(['2019-lehigh-math-contest-5','2018-lehigh-math-contest-38','2015-lehigh-math-contest-38']);
+ for(const [index,answer] of ['x^2+y^2-2x-4y=20','{283,2,281},{29,31,2}','28:32:10'].entries()){
+  if(index) await p.locator('.cn-nums [data-practice-index="'+index+'"]').click();
+  await p.locator('#practice-answer').fill(answer);
+  await p.locator('.practice-answer-preview .katex').waitFor();
+  assert.equal(await p.locator('#practice-answer').getAttribute('aria-invalid'),'false');
+ }
+ await p.locator('#finish-practice').click();
+ await p.locator('.practice-results').waitFor();
+ assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct','Correct']);
  await set(['2020-cmimc-combinatorics-and-computer-science-8']);
  const fibonacciInput=p.locator('#practice-answer');
  await fibonacciInput.fill('(100,F+1223)');
