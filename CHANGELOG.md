@@ -2,6 +2,8 @@
 
 **2026-11-24**
 
+- **Topic-tree follow-up.** Named the Pythagorean theorem in the Geometry leaf, moved Common tangents of two circles alongside the other tangent-line problems, and clarified the scope of Expected value, variance and distributions. Refiled 45 entries from the broad Right triangles topic after checking where problems were concentrated.
+
 - **Contest topic audit.** Refiled 84 problem entries, focused the Casework and Complementary counting pools, and clarified four topic names. Checked all contest menu counts against the index. Problem pages now use the heading “Brief solution(s).”
 
 - **Learn and Practice navigation.** Both landing pages have a collapsible section menu in their space color. The sidebar highlights the current section when you jump to it or scroll. The About dialogs explain the space, and Recently opened stays above the page sections.

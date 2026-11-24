@@ -318,7 +318,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - Repeated trials until a stopping event `[cp.prob.process.stop]`
     - Games between players `[cp.prob.process.game]`
     - State probabilities after a fixed number of steps `[cp.prob.process.steps]`
-  - Expected value `[cp.exp]`
+  - Expected value, variance and distributions `[cp.exp]`
     - Expected value by definition `[cp.exp.basic]`
     - Linearity of expectation `[cp.exp.linear]`
     - Expected waiting times and states `[cp.exp.states]`
@@ -383,7 +383,7 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
     - The Euler line and the nine-point circle `[geo.tri.centers.euler]`
     - Classical lemmas, isogonal conjugates and symmedians `[geo.tri.centers.lemmas]`
   - Right triangles `[geo.basic.pyth]`
-    - Right-triangle lengths and integer triples `[geo.basic.pyth.triples]`
+    - Pythagorean theorem and right-triangle lengths `[geo.basic.pyth.triples]`
     - Altitude to the hypotenuse `[geo.basic.pyth.altitude]`
     - 30-60-90 and 45-45-90 triangles `[geo.tri.special.right]`
   - Similar triangles and ratios `[geo.basic.sim.similar]`
@@ -416,11 +416,11 @@ Node ids are stable identifiers, not paths. Indentation gives the current Subjec
   - Chords, tangents and power of a point `[geo.circ.power]`
     - Chord lengths and distances from the center `[geo.circ.power.chord]`
     - Tangent lines and tangent lengths `[geo.circ.power.tangent]`
+    - Common tangents of two circles `[geo.circ.tangent.common]`
     - Power of a point `[geo.circ.power.pop]`
   - Tangent circles and circles in polygons `[geo.circ.tangent]`
     - Mutually tangent circles; Descartes `[geo.circ.tangent.mutual]`
     - Circles inscribed in polygons and corners `[geo.circ.tangent.inscribed]`
-    - Common tangents of two circles `[geo.circ.tangent.common]`
   - Cyclic and tangential quadrilaterals `[geo.circ.cyclic]`
     - Cyclic quadrilaterals and Ptolemy `[geo.circ.cyclic.ptolemy]`
     - Tangential quadrilaterals and Pitot `[geo.circ.cyclic.tangential]`
