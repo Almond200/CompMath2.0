@@ -2,6 +2,8 @@
 
 **2026-11-24**
 
+- **Practice results.** The overview shows accuracy on graded answers and one topic from the completed set, with a link to related problems.
+
 - **Topic-tree follow-up.** Named the Pythagorean theorem in the Geometry leaf, moved Common tangents of two circles alongside the other tangent-line problems, and clarified the scope of Expected value, variance and distributions. Refiled 45 entries from the broad Right triangles topic after checking where problems were concentrated.
 
 - **Contest topic audit.** Refiled 84 problem entries, focused the Casework and Complementary counting pools, and clarified four topic names. Checked all contest menu counts against the index. Problem pages now use the heading “Brief solution(s).”

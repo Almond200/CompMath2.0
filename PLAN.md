@@ -11,6 +11,8 @@
 
 ## Current state (updated 2026-11-24)
 
+Completed sets show graded-answer accuracy and one linked topic above Review problems. Missed problems take priority, followed by unanswered problems and then correct answers.
+
 Every indexed AMC 10 and 12 problem now has an in-app brief solution, including the 50 new B-paper entries. The reference has 790 cards and the database has 4,775 written strategies. The Learn and Practice landing pages highlight the current section in their sidebars, and alternate solutions have their own card boxes. Practice history and review use the same count of non-voided questions.
 
 The contest tree audit corrected 84 entries and clarified four topic names with stable IDs. The contest menu accounts for all 19,456 archive entries. The shared problem-page heading is now “Brief solution(s).” [Contest archive topic audit](AUDITS.md#contest-archive-topic-audit-2026-11-24)
