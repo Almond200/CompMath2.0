@@ -4016,6 +4016,7 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .practice-session .cn-num.practice-answered.cn-here { border: 2px solid var(--border); }
 .practice-session .practice-reviewed.cn-here[data-result="Correct"] { background: rgba(42, 163, 88, .16); }
 .practice-session .practice-reviewed.cn-here[data-result="Incorrect"] { background: rgba(220, 67, 67, .16); }
+.practice-session .cn-num[data-result="Voided"] { color: var(--text); }
 .practice-session .cn-num:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .practice-session-actions { font-size: 14px; color: var(--text-dim); }
 .practice-session .cn-nums:has(+ .practice-review-actions) { margin-bottom: 10px; padding-bottom: 6px; }

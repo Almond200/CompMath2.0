@@ -33,7 +33,14 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('.cn-nums [data-practice-index="3"]').click();
  await p.locator('#practice-answer').fill('-6,29');
  await p.locator('.practice-answer-preview .katex').waitFor();
- await p.locator('.cn-nums [data-practice-index="4"]').click();
+ const voidNumber=p.locator('.cn-nums [data-practice-index="4"]');
+ const color=locator=>locator.evaluate(el=>getComputedStyle(el).color);
+ const textColor=await color(p.locator('body'));
+ assert.equal(await color(voidNumber),textColor);
+ await voidNumber.click();
+ assert.equal(await voidNumber.getAttribute('aria-current'),'step');
+ assert.equal(await color(voidNumber),textColor);
+ assert.notEqual(await voidNumber.evaluate(el=>getComputedStyle(el).borderTopColor),textColor);
  assert.match(await p.locator('.practice-question .prob-note').innerText(),/^Voided · Practice ruling\..*4\/7.*degree-ten/);
  assert.equal(await p.locator('#practice-answer').count(),0);
  await p.locator('#finish-practice').click();
@@ -41,6 +48,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct','Voided','Correct','Voided']);
  await p.locator('[data-result-index="4"]').click();
  assert.match(await p.locator('.practice-review .practice-result').innerText(),/^Practice ruling\..*degree-ten/);
+ assert.equal(await color(voidNumber),textColor);
  await p.getByRole('link',{name:'Back to Results overview',exact:true}).click();
  await p.locator('[data-result-index="0"]').click();
  await p.locator('.practice-review').waitFor();
