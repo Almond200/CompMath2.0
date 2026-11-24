@@ -234,7 +234,7 @@
       text = text.replace(/\bF\s*_\s*(?:\{\s*(\d+)\s*\}|(\d+))/gi, (_, braced, plain) => `fib(${braced || plain})`)
         .replace(/\bF([₀-₉]+)/g, (_, index) => `fib(${[...index].map(digit => digit.charCodeAt(0) - '₀'.charCodeAt(0)).join('')})`);
     }
-    if (format === 'percent') text = text.replace(/(?:\\?%)\s*$/, '');
+    if (format === 'percent') text = text.replace(/(?:\\?%)\s*(?=\$?$)/, '');
     text = text.replace(/\b(sin|cos|tan)\s*\(([^()]+?)(?:\^\{\\circ\}|[°∘◦]|\s+deg)\s*\)/gi, '$1(($2)*pi/180)');
     text = text.replace(/(?:\^\{\\circ\}|[°∘◦])/g, '');
     return ['set', 'tuple-set', 'complex-set'].includes(format)
@@ -678,6 +678,73 @@
     };
     return evaluate(nodes[0]).map(part => evaluatedValue(part, 0));
   }
+  function addFactor(factors, base, exponent) {
+    if (base === 1n) return;
+    const power = (factors.get(base) || 0n) + exponent;
+    if (power) factors.set(base, power);
+    else factors.delete(base);
+  }
+  function factoredParts(text) {
+    const nodes = math.parse(text, true), factors = new Map();
+    if (nodes.length !== 1) throw Error('Expected one factored value');
+    const even = power => power % 2n === 0n;
+    const collect = (node, power) => {
+      node = ungroup(node);
+      if (node.op === 'neg') return (even(power) ? 1 : -1) * collect(node.a, power);
+      if (node.op === '*' || node.op === '/') {
+        const a = collect(node.a, power), b = collect(node.b, node.op === '*' ? power : -power);
+        if (node.op === '/' && !b) throw Error('Division by zero');
+        return a * b;
+      }
+      if (node.op === '^') {
+        const exponent = integerValue(rational(node.b));
+        if (exponent == null || exponent < -EXACT_POWER_LIMIT || exponent > EXACT_POWER_LIMIT) {
+          throw Error('Expected a bounded integer exponent');
+        }
+        const result = collect(node.a, exponent * power);
+        return exponent ? result : 1;
+      }
+      if ((node.op === '+' || node.op === '-') && rational(node.b)?.[0] === 0n) return collect(node.a, power);
+      const fraction = rational(node);
+      if (!fraction || fraction.some(part => part.toString(2).length > 8192)) throw Error('Expected a bounded rational factor');
+      const [n, d] = fraction;
+      if (!n) {
+        if (power <= 0n) throw Error('Zero has a nonpositive exponent');
+        return 0;
+      }
+      addFactor(factors, n < 0n ? -n : n, power);
+      addFactor(factors, d, -power);
+      return n < 0n && !even(power) ? -1 : 1;
+    };
+    return { sign: collect(nodes[0], 1n), factors };
+  }
+  function sameFactoredValue(actual, expected) {
+    if (actual.sign !== expected.sign) return false;
+    if (!actual.sign) return true;
+    const { factors } = actual;
+    for (const [base, exponent] of expected.factors) addFactor(factors, base, -exponent);
+    // Cancel common divisors across the fraction without expanding or factoring the powers.
+    let comparisons = 0;
+    while (factors.size) {
+      const positive = [...factors].filter(([, exponent]) => exponent > 0n);
+      const negative = [...factors].filter(([, exponent]) => exponent < 0n);
+      let canceled = false;
+      cancel: for (const [a, p] of positive) for (const [b, q] of negative) {
+        if (++comparisons > 2048) throw Error('Too many factor comparisons');
+        const [left, right] = reduceFraction(a, b), common = a / left;
+        if (common === 1n) continue;
+        factors.delete(a);
+        factors.delete(b);
+        addFactor(factors, left, p);
+        addFactor(factors, right, q);
+        addFactor(factors, common, p + q);
+        canceled = true;
+        break cancel;
+      }
+      if (!canceled) return false;
+    }
+    return true;
+  }
   function polarTuple(parts) {
     if (parts.length !== 2) throw Error('Expected a radius and an angle');
     const radius = exactScalar(parts[0]), nodes = math.parse(parts[1]);
@@ -898,6 +965,7 @@
     if (notation === 'base-3') return [ternaryParts(text).map(exactScalar)];
     if (format === 'interval') return sortedIntervals(text);
     if (format === 'quadratic-radical') return [quadraticParts(text, notation)];
+    if (format === 'factored-number') return factoredParts(text);
     if (format === 'exponential-function') {
       const nodes = math.parse(text, true, false, notation);
       if (nodes.length !== 1) throw Error('Expected one expression');
@@ -937,6 +1005,12 @@
   function matchesExact(text, expected, format, notation) {
     try {
       const actual = exactValues(text, format, notation), remaining = exactValues(expected, format, notation);
+      if (format === 'factored-number') return sameFactoredValue(actual, remaining);
+      if (notation === 'percent-or-proportion' && !/%\s*\$?$/.test(text)) {
+        const fraction = actual[0][0].fraction;
+        const percent = fraction && rationalOperation('*', fraction, [100n, 1n]);
+        if (percent && sameExactValue(evaluatedValue(percent, 0), remaining[0][0])) return true;
+      }
       if (format === 'exponential-function') {
         const left = multiplyExponential(actual[0], remaining[1]);
         const right = multiplyExponential(remaining[0], actual[1]);

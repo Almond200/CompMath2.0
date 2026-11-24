@@ -31,7 +31,7 @@ for (const [slug, key] of Object.entries(answers)) {
   const paper = slug.replace(/-\d+$/, '');
   assert.match(sources[paper], /^https:\/\//, slug);
   usedSources.add(paper);
-  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set', 'interval', 'polynomial', 'rational-function', 'quadratic-radical', 'exponential-function'].includes(key.format), slug);
+  assert([undefined, 'set', 'sequence', 'tuple', 'tuple-set', 'text', 'percent', 'complex', 'complex-set', 'interval', 'polynomial', 'rational-function', 'quadratic-radical', 'exponential-function', 'factored-number'].includes(key.format), slug);
   if (['polynomial', 'rational-function', 'exponential-function'].includes(key.format)) assert.match(key.notation, /^[a-z]$/i, slug);
   if (Array.isArray(key.notation)) {
     assert.equal(key.format, 'tuple', slug);
@@ -90,6 +90,21 @@ check('2011-hmmt-february-algebra-and-combinatorics-4', '2^n/2', 'Correct');
 check('2011-hmmt-february-algebra-and-combinatorics-4', '(1/2)^(1-n)', 'Correct');
 check('2011-hmmt-february-algebra-and-combinatorics-18', '(2-2^(1-n))/n', 'Correct');
 check('2011-hmmt-february-algebra-and-combinatorics-18', '2/n', 'Incorrect');
+for (const slug of ['2011-hmmt-february-algebra-and-combinatorics-2', '2011-hmmt-february-combinatorics-and-geometry-1']) {
+  assert.equal(practice.voidReason(slug), undefined);
+  check(slug, '2', 'Correct');
+  check(slug, '2*(15!)^2', 'Correct');
+  check(slug, '3', 'Incorrect');
+}
+check('2024-hmmt-november-theme-5', '198193', 'Correct');
+check('2025-hmmt-november-theme-1', '79%', 'Correct');
+check('2025-hmmt-november-theme-1', '$79\\%$', 'Correct');
+check('2025-hmmt-november-theme-1', '0.79', 'Correct');
+check('2025-hmmt-november-theme-1', '0.79%', 'Incorrect');
+check('2025-hmmt-november-theme-5', '495*26!', 'Correct');
+check('2018-hmmt-february-algebra-and-number-theory-8', '(2^2019-1)^1009*(2^2019-1)^1009', 'Correct');
+check('2018-hmmt-february-algebra-and-number-theory-8', '((2^673-1)*(2^1346+2^673+1))^2018', 'Correct');
+check('2018-hmmt-february-algebra-and-number-theory-8', '(2^2019-1)^2017', 'Incorrect');
 check('2009-hmmt-february-combinatorics-10', '3^n-2^n-n*2^n+(n^2+n)/2', 'Correct');
 check('2001-hmmt-february-advanced-topics-2', '-(-1)^n', 'Correct');
 check('2001-hmmt-february-advanced-topics-2', '(-1)^n', 'Incorrect');
