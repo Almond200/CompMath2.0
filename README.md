@@ -58,11 +58,13 @@ Generated mocks and past papers with a supported timed format use a countdown. T
 
 ## Arena
 
-Open **Arena** to establish a personal Elo on the archive’s problem-difficulty scale. Placement uses six untimed mixed-subject problems selected one at a time. Each problem allows two tries, with one result recorded for placement.
+Open **Arena** to estimate your starting Elo with one timed set of 12 problems. The set spans several difficulty levels and allows two tries per problem. Arena compares each result with the problem's own Elo. The starting rating is provisional and applies to all four subjects.
 
-After placement, choose a subject, relative difficulty, and a set of 2, 3 or 5 problems. The whole set loads before the timer starts. Harder problems add more time. Use the numbered links to switch problems, check an answer in place, and submit whenever you are ready. When you submit or the timer runs out, Arena grades saved answers and shows the set's total Elo change, answers and solution links. Unanswered problems count as misses. Mark a familiar problem as seen to exclude it from scoring.
+After placement, choose a subject, relative difficulty, and a set of 2, 3 or 5 problems. Use the numbered links to switch problems and check answers on the page. Submitting a set or running out of time grades saved answers and counts blanks as misses. The results and problem reviews use the same charts and explanations as Practice.
 
-Arena excludes known repeat appearances and previously seen problems. The overview shows rating history by set, peak Elo, subject ratings and accuracy on submitted answers. **What to study** links recent misses to a problem to revisit, a lesson or reference card where available, and focused Practice. Arena results, active sets and shared study activity live in the browser’s IndexedDB. **Settings → Your progress** exports them and merges unique results on import.
+Each rated result changes the subjects the problem covers. A subject leaves provisional status after six rated answers in that subject after placement. Overall Elo averages your three lowest subject ratings and stays provisional until all four subjects are established.
+
+Arena excludes previously opened or rated problems and known duplicate appearances recorded by the app. Expand a subject row to see recent results and practice links. Arena results, active sets and shared study activity live in IndexedDB. **Settings → Your progress** exports them and merges unique results on import.
 
 ## Four main areas
 

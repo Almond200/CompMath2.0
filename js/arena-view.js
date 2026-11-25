@@ -12,12 +12,9 @@
     if (!cachedSubjects.has(p)) cachedSubjects.set(p, ctx.subjectsOf(p));
     return cachedSubjects.get(p);
   }
-  function steps(done, total) {
-    return `<div class="arena-steps" aria-hidden="true">${Array.from({length: total}, (_, i) =>
-      `<i class="${i < done ? 'complete' : i === done ? 'current' : ''}"></i>`).join('')}</div>`;
-  }
   function setPoints(points) {
-    return points.slice(A.PLACEMENT - 1).filter((point, i, all) => i === 0 || all[i+1]?.event.session !== point.event.session);
+    return points.filter((point, i, all) => point.calibration ? !all[i+1]?.calibration :
+      all[i+1]?.event.session !== point.event.session);
   }
   function chart(points) {
     const data = setPoints(points).slice(-30);
@@ -33,12 +30,13 @@
       ${[hi, lo].map(v => `<line x1="38" y1="${y(v)}" x2="475" y2="${y(v)}"/><text x="0" y="${y(v)+4}">${v}</text>`).join('')}
       <polygon points="38,78 ${coords} 475,78"/><polyline points="${coords}"/>
       <circle cx="475" cy="${y(values.at(-1))}" r="3.5"/></svg>
-      <div class="arena-chart-caption"><span>${data[0] === points[A.PLACEMENT-1] ? 'Placement' : 'Earlier set'}</span><span>Latest set</span></div>`;
+      <div class="arena-chart-caption"><span>${data[0].calibration ? 'Placement' : 'Earlier set'}</span><span>Latest set</span></div>`;
   }
   const rules = `<details class="arena-rules"><summary>How ratings work</summary>
-    <p>Six untimed placement problems establish your starting Elo. Each allows two tries. A solve on either try counts once.</p>
-    <p>Rated sets have one timer. Harder problems add more time to the set: 2, 3, 5, 7 or 9 minutes per problem at Elo cutoffs of 1000, 1600, 2200 and 2800. Submitting grades any saved answers. Unanswered problems count as misses. Mark familiar problems as seen to leave them out of the rating.</p>
-    <p>Each set updates your overall rating and the subjects its problems cover. Solving a harder problem earns more Elo, and missing an easier one costs more. Early ratings adjust faster.</p></details>`;
+    <p>Placement is one timed set across difficulty levels. You get two tries per problem. Each result is compared with that problem’s own Elo.</p>
+    <p>The placement set establishes a provisional starting rating for all four subjects. Later sets update each subject independently. Each subject stays provisional until you submit ${A.SUBJECT_PROVISIONAL} more answers in that subject. Overall Elo stays provisional while any subject rating is provisional.</p>
+    <p>Rated sets have one timer. Harder problems add more time to the set: 2, 3, 5, 7 or 9 minutes per problem at Elo cutoffs of 1000, 1600, 2200 and 2800. Submitting grades any saved answers. Unanswered problems count as misses.</p>
+    <p>Each problem updates the subjects it covers. Overall Elo is the average of your three lowest subject ratings. Solving a harder problem earns more Elo, and missing an easier one costs more. Early ratings adjust faster.</p></details>`;
   function selector(name, legend, options, value) {
     return `<fieldset class="arena-options"><legend>${legend}</legend><div>${options.map(([id, label]) =>
       `<label><input type="radio" name="${name}" value="${id}" ${id === value ? 'checked' : ''}><span>${label}</span></label>`).join('')}</div></fieldset>`;
@@ -52,8 +50,8 @@
       sessions.set(event.session, event);
     });
     const bySession = new Map();
-    stats.points.forEach((point, i) => {
-      const entry = bySession.get(point.event.session) || {delta:0, placement:i < A.PLACEMENT};
+    stats.points.forEach(point => {
+      const entry = bySession.get(point.event.session) || {delta:0, placement:point.calibration};
       entry.delta += point.delta;
       entry.rating = point.rating;
       bySession.set(point.event.session, entry);
@@ -79,8 +77,7 @@
     };
     more();
   }
-  function studyHtml(ctx, history, stats) {
-    const rows = A.recommendations(history, ctx.lookup).filter(row => ctx.nodes.has(row.id));
+  function studyHtml(ctx, rows, stats) {
     const selected = [];
     const anchors = new Set();
     for (const row of rows) {
@@ -91,9 +88,9 @@
     }
     const answered = n => stats.subjects.get(n.id)?.count || 0;
     const least = [...ctx.roots].sort((a, b) => answered(a) - answered(b))[0];
-    const coverage = stats.overall.count >= A.PLACEMENT && answered(least) < A.PLACEMENT ?
+    const coverage = stats.baseline && !answered(least) ?
       `<div class="arena-study-coverage"><h4>Get a clearer subject rating</h4>
-        <p class="arena-note">${ctx.topicLabel(least)} has ${answered(least)} of the ${A.PLACEMENT} results needed for an established rating.</p>
+        <p class="arena-note">${ctx.topicLabel(least)} still uses your provisional starting rating.</p>
         <button type="button" class="hp-btn hp-btn-soft" data-arena-focus="${least.id}">Choose ${ctx.topicLabel(least)} for your next set</button></div>` : '';
     if (!selected.length) {
       return coverage || '<p class="arena-note">Missed topics from Arena and Practice will appear here with links to review and practice them.</p>';
@@ -111,10 +108,30 @@
           </ul></article>`;
       }).join('')}</div>${coverage}`;
   }
+  function subjectDetails(ctx, id, stats, recommendations) {
+    const results = stats.points.filter(point => point.event.subjects.includes(id));
+    const subject = stats.subjects.get(id);
+    const rated = results.filter(point => !point.calibration);
+    const latest = results.slice(-3).reverse();
+    const answered = rated.filter(({event}) => event.outcome !== 'unanswered').length;
+    const provisional = stats.baseline && answered < A.SUBJECT_PROVISIONAL ?
+      `<p class="arena-note">${answered} of ${A.SUBJECT_PROVISIONAL} answered rated problems to finish subject placement.</p>` : '';
+    const trend = stats.baseline && rated.length ?
+      `<p><strong>${signed(subject.rating - stats.baseline.rating)} Elo</strong> since placement · ${rated.length} rated ${rated.length === 1 ? 'problem' : 'problems'}</p>` : '';
+    const topic = recommendations.find(row => row.id.startsWith(id + '.'));
+    return `${trend}${provisional}${latest.length ? `<h4>Recent results</h4><ul>${latest.map(({event}) => {
+      const p = ctx.lookup(event.slug);
+      return `<li>${p ? `<a href="#/problem/${p.slug}">${ctx.escape(ctx.refShort(p.ref))}</a>` : ctx.escape(event.slug)}
+        <span>${statusLabel(event.outcome)}</span></li>`;
+    }).join('')}</ul>` : '<p>No graded problems in this subject yet.</p>'}
+    ${topic ? `<div class="study-links">${ctx.practiceLink(topic.id)}</div>` : ''}`;
+  }
   function dashboard(ctx, state, stats, history) {
-    const t = stats.overall, placed = t.count >= A.PLACEMENT, s = state.session, active = s && !s.closed;
+    const t = stats.overall, placed = !!stats.baseline, s = state.session, active = s && !s.closed;
     const prev = s || {};
-    const postPlacement = stats.points.slice(A.PLACEMENT);
+    const established = ctx.roots.filter(root => stats.subjects.get(root.id)?.answered >= A.SUBJECT_PROVISIONAL).length;
+    const recommendations = A.recommendations(history, ctx.lookup).filter(row => ctx.nodes.has(row.id));
+    const postPlacement = stats.points.filter(point => !point.calibration);
     const ratedAnswers = postPlacement.filter(p => p.event.answer);
     const accuracy = points => points.length ? Math.round(100 * points.filter(p => p.event.outcome === 'correct').length / points.length) + '%' : '—';
     const latest = postPlacement.at(-1);
@@ -125,31 +142,41 @@
       <header class="space-home-head"><h1>Arena</h1><p class="sh-ask">Measure your growth on real contest problems.</p></header>
       <section class="sh-section arena-hero" id="arena-overview"><div><h3>${title}</h3>
       ${placed ? `<div class="arena-big">${number(t.rating)} <small>Elo</small></div>
-        <p class="arena-note">${t.count === A.PLACEMENT ? 'Starting rating established' : signed(delta) + ' Elo in your latest set'}</p>` :
-        `<p>Work through six untimed problems across subjects. Each answer helps choose the difficulty of the next one.</p>
-        ${steps(t.count, A.PLACEMENT)}<small>${t.count} of ${A.PLACEMENT} placement answers</small>`}</div>
+        ${established < ctx.roots.length ? '<p class="arena-note">Provisional · ' + established + '/' + ctx.roots.length + ' subjects established</p>' : ''}
+        <p class="arena-note">${!postPlacement.length ? 'Starting rating established' : signed(delta) + ' Elo in your latest set'}</p>` :
+        `<p>Take one timed set of ${A.PLACEMENT_SIZE} problems across a range of difficulties. Your starting Elo applies to all four subjects.</p>
+        ${t.count ? `<small>${t.count} earlier results included</small>` : ''}`}</div>
       ${placed ? `<div class="arena-plot"><h4>Rating trend</h4>${chart(stats.points)}</div>` :
-        `<div class="arena-placement"><h4>What counts</h4><p>Submit an answer or give up to record a result. If you recognize a problem, mark it as seen for a fresh one.</p></div>`}
+        `<div class="arena-placement"><h4>What counts</h4><p>You get two tries per problem. A solve on either try counts once. Blanks count as misses when you submit. You can move freely between problems.</p></div>`}
       ${placed ? `<div class="arena-metrics">
         <div><strong>${number(setPoints(stats.points).reduce((max,p) => Math.max(max, p.rating), 0))}</strong><small>Peak Elo</small></div>
         ${ratedAnswers.length ? `<div><strong>${accuracy(ratedAnswers)}</strong><small>Accuracy on submitted answers</small></div>` : ''}
         ${postPlacement.length ? `<div><strong>${new Set(postPlacement.map(p => p.event.session)).size}</strong><small>Rated sets</small></div>` : ''}</div>` : ''}
       </section>
-      <section class="sh-section" id="arena-session"><h3>${!placed ? 'Placement session' : 'Rated session'}</h3>
+      <section class="sh-section" id="arena-session"><h3>${(active ? s.placement : !placed) ? 'Placement set' : 'Rated session'}</h3>
       ${active ? `<p class="arena-note">${s.placement ? 'Mixed subjects' : (opts.get(s.focus) || 'Mixed subjects') + ' · ' + paceNames[s.pace]} · ${s.round ? s.round.items.length + ' problems · ' + s.round.limitMs / 60000 + ' min' : (s.length - A.remaining(state)) + ' of ' + s.length + ' answered'}</p>
         <a class="hp-btn arena-primary" href="${sessionUrl}">${A.remaining(state) ? 'Resume session' : 'See session result'} ${ctx.icon('arrow-right')}</a>` :
         `<form id="arena-start">${placed ? `${selector('focus', 'Subject', [['mixed','Mixed subjects'], ...opts], opts.has(prev.focus) ? prev.focus : 'mixed')}
         ${selector('pace','Difficulty',Object.entries(paceNames),prev.pace || 'matched')}
         ${selector('length','Problems',A.LENGTHS.map(n => [String(n), String(n)]), String(A.LENGTHS.includes(prev.length) ? prev.length : 5))}<p class="arena-note" data-arena-target aria-live="polite"></p>` :
-        '<p class="arena-note">You can leave between problems and pick up here later.</p>'}
+        '<p class="arena-note">The set timer starts once the problems load.</p>'}
         <button class="hp-btn arena-primary">${placed ? 'Start rated session' : 'Start placement'} ${ctx.icon('arrow-right')}</button></form>`}${rules}</section>
       <section class="sh-section" id="arena-subjects"><h3>Subject ratings</h3>
         <div class="arena-table-wrap"><table class="arena-subject-table"><thead><tr><th>Subject</th><th>Elo</th><th>Submitted accuracy</th></tr></thead><tbody>
         ${[...opts].map(([id, label]) => { const r = stats.subjects.get(id);
-          return `<tr><th scope="row">${label}</th><td>${r ? number(r.rating) : '—'}${r && r.count < A.PLACEMENT ? '<small>Provisional</small>' : ''}</td>
-          <td>${accuracy(stats.points.filter(p => p.event.answer && p.event.subjects.includes(id)))}</td></tr>`; }).join('')}</tbody></table></div></section>
-      <section class="sh-section" id="arena-study"><h3>What to study</h3>${studyHtml(ctx, history, stats)}</section>
+          return `<tr><th scope="row"><button type="button" class="arena-subject-toggle" data-subject-toggle aria-expanded="false" aria-controls="arena-subject-${id}">${label}</button></th><td>${placed && r ? number(r.rating) : '—'}${placed && r && r.answered < A.SUBJECT_PROVISIONAL ? '<small>Provisional</small>' : ''}</td>
+          <td>${accuracy(stats.points.filter(p => p.event.answer && p.event.subjects.includes(id)))}</td></tr>
+          <tr class="arena-subject-details" id="arena-subject-${id}" hidden><td colspan="3">${subjectDetails(ctx,id,stats,recommendations)}</td></tr>`; }).join('')}</tbody></table></div></section>
+      <section class="sh-section" id="arena-study"><h3>What to study</h3>${studyHtml(ctx, recommendations, stats)}</section>
       <section class="sh-section" id="arena-history"><h3>Session history</h3><div data-arena-log></div><button class="hp-btn hp-btn-soft" data-earlier hidden>Earlier sessions</button></section></div>`;
+    for (const button of ctx.container.querySelectorAll('[data-subject-toggle]')) {
+      button.onclick = () => {
+        const detail = document.getElementById(button.getAttribute('aria-controls'));
+        detail.hidden = !detail.hidden;
+        button.setAttribute('aria-expanded', String(!detail.hidden));
+        if (!detail.hidden) ctx.renderMath(detail);
+      };
+    }
     showHistory(ctx, state, stats);
     ctx.renderMath(ctx.container);
     const startForm = ctx.container.querySelector('#arena-start');
@@ -157,7 +184,8 @@
       const target = startForm?.querySelector('[data-arena-target]');
       if (!target) return;
       const {focus, pace} = Object.fromEntries(new FormData(startForm));
-      const basis = stats.subjects.has(focus) ? opts.get(focus) : 'overall';
+      const chosen = startForm.querySelector('input[name="focus"]:checked');
+      const basis = stats.subjects.has(focus) ? chosen.nextElementSibling.textContent : 'overall';
       target.textContent = `Aim for about ${number(A.targetRating(stats,focus,pace))} Elo, using your ${basis} rating.`;
     };
     reportTarget();
@@ -200,7 +228,7 @@
     if (exact) return exact.answers.map(value => ctx.answerHtml(value, exact)).join(' or ');
     return ctx.escape(grade.choiceAnswers(slug).join(' or ') || String(grade.officialKey(slug) ?? ''));
   }
-  function responseText(ctx, event) {
+  function responseText(ctx, event, reveal = true) {
     const {slug, outcome, answer, firstMiss, invalidDraft} = event;
     if (outcome === 'seen') return '';
     const format = value => ctx.answerHtml(value, grade.exactKey(slug) || {});
@@ -209,34 +237,79 @@
       invalidDraft ? 'Unaccepted answer format · ' + format(invalidDraft) :
         outcome === 'incorrect' ? 'Gave up' : 'No answer submitted';
     const accepted = acceptedAnswer(ctx, slug);
-    return first + response + (outcome !== 'correct' && accepted ? ' · Accepted answer ' + accepted : '');
+    return first + response + (reveal && outcome !== 'correct' && accepted ? ' · Accepted answer ' + accepted : '');
   }
-  function review(ctx, state, stats, id) {
+  async function review(ctx, state, stats, route) {
+    const id = route.review;
     const events = state.events.filter(e => e.session === id);
     if (!events.length || state.session?.id === id && !state.session.closed) { location.replace(homeUrl); return; }
     const points = stats.points.filter(p => p.event.session === id);
+    const placement = events.some(e => e.placement) || (points.length > 0 && points.every(p => p.calibration));
+    const startedHere = stats.baseline?.event.session === id;
+    const title = placement ? 'Placement complete' : 'Rated set complete';
+    const subtitle = events.length + (events.length === 1 ? ' problem' : ' problems') +
+      (events[0].limitMs ? ' · ' + events[0].limitMs / 60000 + ' minutes' : '');
+    const detailUrl = i => reviewUrl(id) + '/' + (i + 1);
+    if (route.reviewProblem != null) {
+      const index = route.reviewProblem, event = events[index];
+      if (!event) { location.replace(reviewUrl(id)); return; }
+      const p = ctx.lookup(event.slug);
+      ctx.container.innerHTML = `<div class="space-home practice-session arena arena-play">
+        <a class="back-link practice-back-results" href="${reviewUrl(id)}">${ctx.icon('arrow-left')} Back to Results overview</a>
+        ${back(ctx)}
+        <section class="sh-section"><div class="practice-session-top"><div><h1>${title}</h1><p>${subtitle} · Review</p></div></div>
+          <nav class="cn-nums" aria-label="Review problems">${events.map((row,i) =>
+            `<a class="cn-num practice-reviewed${i === index ? ' cn-here' : ''}" data-result="${statusLabel(row.outcome)}" href="${detailUrl(i)}"
+              aria-label="Problem ${i+1}, ${statusLabel(row.outcome)}" ${i === index ? 'aria-current="step"' : ''}>${i+1}</a>`).join('')}</nav></section>
+        <section class="sh-section practice-question"><h3 tabindex="-1">Problem ${index+1}${p ?
+          ' · <a class="practice-prob-link" href="#/problem/' + p.slug + '">' + ctx.escape(ctx.refShort(p.ref)) + '</a>' : ''}</h3>
+          ${p ? `<div class="arena-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available.</p>'}</section>
+        <section class="sh-section practice-review detail"><h3>Your answer</h3>
+          <p class="practice-result">${statusLabel(event.outcome)}${event.outcome !== 'seen' ? ' · ' + responseText(ctx,event) : ''}</p>
+          <div data-arena-explanation></div>
+          <div class="practice-problem-nav">${index ? `<a class="hp-btn hp-btn-soft" href="${detailUrl(index-1)}">Previous</a>` : ''}
+          ${index+1 < events.length ? `<a class="hp-btn hp-btn-soft" href="${detailUrl(index+1)}">Next</a>` : ''}</div></section></div>`;
+      const explanation = ctx.container.querySelector('[data-arena-explanation]');
+      ctx.container.querySelector('.practice-question h3').focus({preventScroll:true});
+      ctx.renderMath(ctx.container);
+      if (!p) return;
+      ctx.showPrompt(p);
+      try {
+        await ctx.loadExplanation(p);
+        if (explanation.isConnected) { explanation.innerHTML = ctx.reviewExplanation(p); ctx.renderMath(explanation); }
+      } catch {
+        if (explanation.isConnected) explanation.innerHTML = `<p>Could not load the explanation. <a href="#/problem/${p.slug}">Open the problem in the app</a></p>`;
+      }
+      return;
+    }
     const byProblem = new Map(points.map(point => [point.event.slug, point]));
-    const placement = events.some(e => e.placement) || points.some(p => stats.points.indexOf(p) < A.PLACEMENT);
     const rating = points.at(-1)?.rating;
     const delta = points.reduce((total, point) => total + point.delta, 0);
-    const count = outcome => events.filter(e => e.outcome === outcome).length;
-    const summary = ['correct','incorrect','unanswered','seen'].filter(outcome => count(outcome))
-      .map(outcome => count(outcome) + ' ' + statusLabel(outcome).toLowerCase()).join(' · ');
-    ctx.container.innerHTML = `<div class="space-home arena arena-play">${back(ctx)}
-      <section class="sh-section"><h1 tabindex="-1">${placement ? 'Placement complete' : 'Set results'}</h1>
-      ${Number.isFinite(rating) ? `<div class="arena-result-rating"><strong>${number(rating)} Elo</strong>
-        <span>${placement ? 'Starting rating' : signed(delta) + ' Elo this set'}</span></div>` : '<p>No problems in this set counted toward your rating.</p>'}
-      <p class="arena-note">${summary}${events[0].limitMs ? ' · ' + events[0].limitMs / 60000 + ' min' : ''}
-      ${events.some(e => e.timedOut) ? ' · Submitted when time ran out' : ''}</p></section>
-      <section class="sh-section"><h2>Review problems</h2><ol class="arena-review-list">
-        ${events.map((event, i) => {
-          const p = ctx.lookup(event.slug), point = byProblem.get(event.slug);
-          return `<li><div><h3>${i+1}. ${p ? `<a href="#/problem/${p.slug}">${ctx.escape(ctx.refShort(p.ref))}</a>` : ctx.escape(event.slug)}</h3>
-            <p class="arena-note">${responseText(ctx, event)}</p></div>
-            <span class="arena-result-status" data-result="${event.outcome}">${statusLabel(event.outcome)}
-            ${point && !placement ? `<small>${signed(point.delta)} Elo</small>` : ''}</span></li>`;
-        }).join('')}</ol></section></div>`;
-    ctx.container.querySelector('h1').focus({preventScroll:true});
+    const counts = {Correct:0, Incorrect:0, Unanswered:0, 'Previously seen':0};
+    const outcomes = events.map(e => [e.slug, statusLabel(e.outcome)]);
+    outcomes.forEach(([, label]) => counts[label]++);
+    const rows = events.map((event, index) => {
+      const point = byProblem.get(event.slug);
+      return ctx.reviewRow({href:detailUrl(index), index, number:index+1, problem:ctx.lookup(event.slug),
+        result:statusLabel(event.outcome), detail:point && !placement ? signed(point.delta) + ' Elo' : '',
+        summary:responseText(ctx,event,false)});
+    }).join('');
+    const rated = events.length - counts['Previously seen'];
+    const figures = [[counts.Correct + '/' + rated,'Correct'],[counts.Incorrect,'Incorrect'],[counts.Unanswered,'Unanswered']];
+    if (Number.isFinite(rating)) figures.unshift([placement ? number(rating) : signed(delta),
+      placement ? startedHere ? 'Provisional starting Elo' : 'Placement estimate' : 'Elo this set']);
+    const note = [
+      events.some(e => e.timedOut) ? 'Submitted when time ran out.' : '',
+      !placement && Number.isFinite(rating) ? 'Overall rating after this set is ' + number(rating) + ' Elo.' : '',
+      placement ? startedHere ? 'Your starting Elo applies to all four subjects.' :
+        points.length ? 'These results count toward your starting rating.' : 'Submit an answer in placement to establish a starting rating.' : ''
+    ].filter(Boolean).join(' ');
+    ctx.container.innerHTML = ctx.reviewResults({back:back(ctx), title, subtitle, arena:true, stats:figures, rows,
+      reviewUrl:detailUrl(0), insights:ctx.reviewInsights(outcomes,counts,detailUrl),
+      meta:note ? `<p class="practice-results-meta">${note}</p>` : ''});
+    const heading = ctx.container.querySelector('h1');
+    heading.tabIndex = -1;
+    heading.focus({preventScroll:true});
     ctx.renderMath(ctx.container);
   }
   function seenProblems(ctx, history, state) {
@@ -251,10 +324,10 @@
     box.innerHTML = `<h1>Problems could not load</h1><p>${text}</p><button class="hp-btn arena-primary">Try again</button>`;
     box.querySelector('button').onclick = ctx.refresh;
   }
-  async function findProblem(ctx, seen, stats, session, current, savedSlug) {
+  async function findProblem(ctx, seen, stats, session, current, savedSlug, position = 1) {
     let p = savedSlug && ctx.lookup(savedSlug);
     while (current()) {
-      p ||= A.choose(ctx.pool, seen, stats, session, p => subjectIds(ctx,p));
+      p ||= A.choose(ctx.pool, seen, stats, session, p => subjectIds(ctx,p), Math.random, position);
       if (!p) return {status:'empty'};
       const identity = A.canonical(p.identity);
       if (ctx.pool.includes(p) && !seen.has(identity) && !missing.has(p.slug)) {
@@ -268,7 +341,9 @@
     return {status:'left'};
   }
   function noFreshProblems(ctx, box, session) {
-    box.innerHTML = '<h1>No fresh problems in this pool</h1><p>Try mixed subjects or return to your saved ratings.</p><button class="hp-btn arena-primary">Back to Arena</button>';
+    box.innerHTML = `<h1>Too few fresh problems</h1><p>${session.placement ?
+      'Placement needs ' + A.PLACEMENT_SIZE + ' problems you haven’t opened before.' : 'Try mixed subjects to draw from a larger pool.'}</p>
+      <button class="hp-btn arena-primary">Back to Arena</button>`;
     box.querySelector('button').onclick = async () => {
       try {
         await A.change(st => {
@@ -279,7 +354,7 @@
       } catch { saveError(box); }
     };
   }
-  async function placement(ctx, state, stats, history) {
+  async function legacyFeedback(ctx, state) {
     const s = state.session;
     const event = s.last && state.events.find(e => e.slug === s.last && e.session === s.id);
     const box = loading(ctx, 'Finding your next problem…');
@@ -308,30 +383,11 @@
       };
       return;
     }
-    const {status, p} = await findProblem(ctx, seenProblems(ctx, history, state), stats, s, current, s.slot?.slug);
-    if (!current()) return;
-    if (status === 'offline') return promptError(ctx, box, 'Check your connection and try loading the problem again.');
-    if (status === 'empty') return noFreshProblems(ctx, box, s);
-    if (p.slug !== s.slot?.slug) {
-      state = await A.change(st => {
-        const live = st.session;
-        if (live?.id !== s.id || live.closed || live.last || live.slot?.slug !== s.slot?.slug) return false;
-        live.slot = {slug:p.slug, identity:A.canonical(p.identity), draft:''};
-      });
-      if (!current()) return;
-      if (state.session?.slot?.slug !== p.slug) { ctx.refresh(); return; }
-    }
-    box.classList.add('practice-question');
-    box.innerHTML = `<h1 tabindex="-1">Problem ${A.PLACEMENT - A.remaining(state) + 1} of ${A.PLACEMENT}</h1>`;
-    function showSlot(slot) {
-      showQuestion(ctx, box, s.id, p, slot, async result => {
-        const latest = await A.change(st => A.placeAnswer(st,s.id,p,subjectIds(ctx,p),result.outcome,result.answer,!!slot.firstMiss));
-        if (!current()) return;
-        if (latest.session?.id === s.id && latest.session.slot?.slug === p.slug) showSlot(latest.session.slot);
-        else ctx.refresh();
-      }, true);
-    }
-    showSlot(state.session.slot);
+    await A.change(st => {
+      if (st.session?.id !== s.id || st.session.last !== s.last) return false;
+      st.session.last = null;
+    });
+    if (current()) ctx.refresh();
   }
   function showQuestion(ctx, box, id, p, slot, commit, isPlacement = false) {
     const exact = grade.exactKey(p.slug), numeric = !exact && /^\d+$/.test(grade.officialKey(p.slug) || '');
@@ -343,7 +399,7 @@
       box.insertAdjacentHTML('beforeend', `<div class="arena-st" data-slug="${p.slug}"><div class="prob-statement"></div></div><div class="arena-response"></div>`);
       response = box.querySelector('.arena-response');
       ctx.showPrompt(p);
-      box.querySelector('h1').focus({preventScroll:true});
+      box.querySelector('h1, h2').focus({preventScroll:true});
     }
     response.innerHTML = `${locked ? `<p class="arena-result-status" data-result="${slot.outcome}" role="status"><strong>${statusLabel(slot.outcome)}</strong></p>${result}` :
       `<form class="practice-answer"><h3>Your answer</h3>
@@ -354,7 +410,7 @@
       <button type="button" class="practice-answer-clear" data-clear ${slot.draft ? '' : 'disabled'}>Clear answer</button>
       <div class="arena-actions"><button type="submit" class="hp-btn arena-primary" ${slot.draft.trim() ? '' : 'disabled'}>Submit answer</button>
         ${isPlacement ? '<button type="button" class="hp-btn hp-btn-soft" data-giveup>Give up</button>' : ''}
-        <button type="button" class="arena-seen" data-seen>I’ve seen this problem</button></div>
+</div>
       <p class="arena-status" role="status"></p></form>`}`;
     if (locked) {
       ctx.renderMath(response);
@@ -403,7 +459,6 @@
       }
       finish(result);
     };
-    form.querySelector('[data-seen]').onclick = () => finish({outcome:'seen', answer:''});
     if (isPlacement) form.querySelector('[data-giveup]').onclick = async () => {
       if (await ctx.confirm({title:'Give up on this problem?', text:'This ends your tries for this question.', ok:'Give up'}))
         finish({outcome:'incorrect', answer:''});
@@ -414,10 +469,11 @@
     const s = state.session, id = s.id;
     const box = loading(ctx, s.round ? 'Loading your set…' : 'Building your set…');
     if (!s.round) {
-      const seen = seenProblems(ctx, history, state), problems = [], total = A.remaining(state);
+      const seen = seenProblems(ctx, history, state), problems = [];
+      const total = s.placement ? A.PLACEMENT_SIZE : A.remaining(state);
       const current = () => box.isConnected;
       while (problems.length < total && current()) {
-        const {status, p} = await findProblem(ctx, seen, stats, s, current, !problems.length && s.slot?.slug);
+        const {status, p} = await findProblem(ctx, seen, stats, s, current, !problems.length && s.slot?.slug, problems.length);
         if (!current()) return;
         if (status === 'offline') return promptError(ctx, box, 'The timer starts after your set loads. Check your connection and try again.');
         if (status === 'empty') break;
@@ -430,7 +486,7 @@
         problems.push({slug:p.slug, identity:p.identity, elo:p.elo, subjects:subjectIds(ctx,p)});
       }
       if (!current()) return;
-      if (!problems.length) return noFreshProblems(ctx, box, s);
+      if (problems.length < (s.placement ? A.PLACEMENT_SIZE : 1)) return noFreshProblems(ctx, box, s);
       const latest = await A.change(st => A.openRound(st,id,problems));
       if (!current()) return;
       if (latest.session?.id !== id || !latest.session.round || latest.session.closed) { ctx.refresh(); return; }
@@ -452,7 +508,7 @@
     }
     box.parentElement.classList.add('practice-session');
     box.insertAdjacentHTML('beforebegin', `<section class="sh-section arena-set-nav">
-      <div class="practice-session-top"><div><h2>Rated set</h2><p>${round.items.length} problems · ${round.limitMs/60000} minutes</p></div>
+      <div class="practice-session-top"><div><h1>${s.placement ? 'Placement set' : 'Rated set'}</h1><p>${round.items.length} problems · ${round.limitMs/60000} minutes</p></div>
       <span class="arena-clock" aria-label="Time remaining" role="timer"></span></div>
       <nav class="cn-nums" aria-label="Set problems">${round.items.map((row,i) => {
         const status = row.outcome ? statusLabel(row.outcome) : row.draft ? 'Draft saved' : 'Unanswered';
@@ -480,23 +536,31 @@
     if (!box.isConnected || finishing) return;
     if (ready !== 'ready') return promptError(ctx, box, 'Your answers are saved. Reconnect to view this problem.');
     box.classList.add('practice-question');
-    box.innerHTML = `<div class="arena-problem-top"><h1 tabindex="-1">Problem ${index+1} of ${round.items.length}</h1>
-      <strong>${number(item.elo)} Elo</strong></div>`;
+    box.innerHTML = '<h2 class="sr-only" tabindex="-1">Problem statement</h2>';
     const selected = nav.querySelector('[aria-current="step"]');
-    showQuestion(ctx, box, id, p, item, async result => {
-      const latest = await A.change(st => A.checkRoundAnswer(st,id,item.slug,result));
-      if (!box.isConnected || finishing) return;
-      const updated = latest.session?.id === id && latest.session.round?.items[index];
-      if (!updated?.outcome || latest.session.closed) { ctx.refresh(); return; }
-      const label = statusLabel(updated.outcome);
-      selected.dataset.result = label;
-      selected.setAttribute('aria-label', `Problem ${index+1}, ${label}`);
-      selected.classList.remove('practice-answered');
-      selected.classList.toggle('practice-reviewed', updated.outcome !== 'seen');
-      nav.querySelector('[data-arena-checked]').textContent =
-        latest.session.round.items.filter(row => ['correct','incorrect'].includes(row.outcome)).length + ' checked';
-      showQuestion(ctx, box, id, p, updated);
-    });
+    function showSlot(slot) {
+      showQuestion(ctx, box, id, p, slot, async result => {
+        const latest = await A.change(st => A.checkRoundAnswer(st,id,item.slug,result,Date.now(),!!slot.firstMiss));
+        if (!box.isConnected || finishing) return;
+        const updated = latest.session?.id === id && latest.session.round?.items[index];
+        if (!updated || latest.session.closed) { ctx.refresh(); return; }
+        if (!updated.outcome) {
+          selected.setAttribute('aria-label', `Problem ${index+1}, retry available`);
+          selected.classList.remove('practice-answered');
+          showSlot(updated);
+          return;
+        }
+        const label = statusLabel(updated.outcome);
+        selected.dataset.result = label;
+        selected.setAttribute('aria-label', `Problem ${index+1}, ${label}`);
+        selected.classList.remove('practice-answered');
+        selected.classList.toggle('practice-reviewed', updated.outcome !== 'seen');
+        nav.querySelector('[data-arena-checked]').textContent =
+          latest.session.round.items.filter(row => ['correct','incorrect'].includes(row.outcome)).length + ' checked';
+        showSlot(updated);
+      }, s.placement);
+    }
+    showSlot(item);
     if (index+1 < round.items.length) box.insertAdjacentHTML('beforeend', `<div class="arena-actions">
       <a class="hp-btn hp-btn-soft" href="${setProblemUrl(index+1)}">Next problem ${ctx.icon('arrow-right')}</a></div>`);
   }
@@ -511,14 +575,14 @@
         state = await A.change(st => A.submitRound(st,state.session.id,gradeAnswer));
       const history = await ctx.history(state);
       if (!current()) return;
-      const stats = A.ratings(state.events);
+      const stats = A.ratings(state.events, state.session?.placement && !state.session.closed ? state.session.id : null);
       const s = state.session;
-      if (route.review) review(ctx,state,stats,route.review);
+      if (route.review) await review(ctx,state,stats,route);
       else if (!route.playing) dashboard(ctx,state,stats,history);
       else if (!s) location.replace(homeUrl);
       else if (s.closed && !s.last) {
         location.replace(state.events.some(e => e.session === s.id) ? reviewUrl(s.id) : homeUrl);
-      } else if (s.placement || s.last) await placement(ctx,state,stats,history);
+      } else if (s.last) await legacyFeedback(ctx,state);
       else await ratedSet(ctx,state,stats,history,route.index);
       if (current()) ctx.didRender();
     } catch {

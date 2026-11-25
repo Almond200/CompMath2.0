@@ -20,9 +20,9 @@
     if (data && data.version !== VERSION) throw new Error("Unsupported activity version");
     return data;
   }
-  function record(source, type, item, outcome, kind) {
+  function record(source, type, item, outcome, kind, id) {
     const at = Date.now();
-    const id = root.crypto?.randomUUID?.() || at.toString(36) + "-" + Math.random().toString(36).slice(2);
+    id ||= root.crypto?.randomUUID?.() || at.toString(36) + "-" + Math.random().toString(36).slice(2);
     try {
       const event = { id, source, type, item, outcome, kind, at };
       if (root.StudyStorage?.enabled) return root.StudyStorage.appendActivity(event).catch(() => {});
@@ -31,6 +31,10 @@
     } catch (error) {
       // Activity can be unavailable without preventing the original study action from saving.
     }
+  }
+  function sawProblem(source, slug) {
+    const canonical = root.ProblemCatalog?.canonicalId(root.MATH_PROBLEM_CATALOG, slug) || slug;
+    return record(source, "exposure", slug, "opened", "problem", "opened:" + canonical);
   }
   async function history({ storage = root.localStorage, arenaState, kind, practice = root.PracticeSessions, arena = root.Arena, canonical = id => root.ProblemCatalog?.canonicalId(root.MATH_PROBLEM_CATALOG, id) || id } = {}) {
     let events = [], sets = [];
@@ -60,7 +64,7 @@
     return events.map(event => event.kind === "problem" ? { ...event, canonicalId: canonical(event.item) } : event)
       .sort((a, b) => (a.at ?? 0) - (b.at ?? 0));
   }
-  const api = { KEY, merge, record, history };
+  const api = { KEY, merge, record, sawProblem, history };
   if (typeof module !== "undefined") module.exports = api;
   else root.LearningActivity = api;
 })(typeof window === "undefined" ? globalThis : window);

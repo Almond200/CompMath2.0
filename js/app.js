@@ -1416,8 +1416,8 @@
     if (location.hash === "#/arena") return { type: "space", name: "arena" };
     const arenaSession = /^#\/arena\/session(?:\/([1-9]\d*))?$/.exec(location.hash);
     if (arenaSession) return { type: "space", name: "arena", playing: true, index: Number(arenaSession[1] || 1) - 1 };
-    const arenaReview = /^#\/arena\/review\/([a-z0-9.-]+)$/i.exec(location.hash);
-    if (arenaReview) return { type: "space", name: "arena", review: arenaReview[1] };
+    const arenaReview = /^#\/arena\/review\/([a-z0-9.-]+)(?:\/([1-9]\d*))?$/i.exec(location.hash);
+    if (arenaReview) return { type: "space", name: "arena", review: arenaReview[1], reviewProblem: arenaReview[2] ? Number(arenaReview[2]) - 1 : null };
     if (location.hash === "#/practice") return { type: "space", name: "practice" };
     if (location.hash === "#/learn") return { type: "space", name: "learn" };
     const lr = learnRoute(location.hash);
@@ -6221,13 +6221,13 @@
       const tally = { Incorrect: 'missed', Unanswered: 'unanswered', Correct: 'correct' }[focus];
       for (const [id, n] of top) lines.push(`<p><strong>${label}</strong> · <a href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}</a> · ${n} ${tally}</p>`);
     }
-    const styles = { Correct: 'right', Incorrect: 'wrong', Unanswered: 'blank', Voided: 'void', 'Check yourself': 'pending', 'Answer unavailable': 'pending' };
+    const styles = { Correct: 'right', Incorrect: 'wrong', Unanswered: 'blank', Voided: 'void', 'Check yourself': 'pending', 'Answer unavailable': 'pending', 'Previously seen': 'void' };
     const subjects = new Map();
     let hardest = null;
     const sequence = outcomes.map(([slug, result], i) => {
       const p = PROBLEM_BY_SLUG[slug];
       if (result === 'Correct' && Number.isFinite(p?.elo) && (!hardest || p.elo > hardest.elo)) hardest = p;
-      if (result !== 'Voided') {
+      if (styles[result] !== 'void') {
         const roots = new Set((p?.tree || []).map(id => topicPath(id)[0]).filter(Boolean));
         for (const root of roots) {
           const row = subjects.get(root) || { total: 0, right: 0, wrong: 0, blank: 0, pending: 0 };
@@ -6238,7 +6238,7 @@
       }
       const num = practiceProblemNumber(set, i);
       const desc = `Problem ${num}, ${result}${set.marks[slug] ? ', marked for review' : ''}`;
-      return `<a class="insight-cell insight-${styles[result]}" href="${reviewUrl}" data-insight-index="${i}" aria-label="${desc}" title="${desc}">${num}</a>`;
+      return `<a class="insight-cell insight-${styles[result]}" href="${typeof reviewUrl === "function" ? reviewUrl(i) : reviewUrl}" data-insight-index="${i}" aria-label="${desc}" title="${desc}">${num}</a>`;
     }).join('');
     const legend = Object.keys(counts).filter(k => counts[k]).map(k =>
       `<span><i class="insight-${styles[k]}"></i>${escapeAttr(k)}</span>`).join('');
@@ -6254,6 +6254,17 @@
       <section><h3>Results by problem</h3><div class="insight-cells">${sequence}</div></section></div>
       <div class="insight-legend">${legend}</div><div class="insight-notes">${lines.join('')}</div></div>`;
   }
+  function practiceResultRow({href, index, number, problem, summary, result, detail = ""}) {
+    return `<a class="practice-result-row" href="${href}" data-result-index="${index}"><span><strong>Problem ${number}${problem ? ' · ' + escapeAttr(refShort(problem.ref)) : ''}</strong>${summary ? '<small>' + summary + '</small>' : ''}</span><span class="practice-result-badge" data-result="${result}">${result}${detail ? '<small>' + detail + '</small>' : ''}</span></a>`;
+  }
+  function practiceResultsHtml({back, title, subtitle, meta = "", stats, insights, reviewUrl, rows, arena = false}) {
+    return `<div class="space-home practice-session practice-results${arena ? ' arena arena-play' : ''}">${back}
+      <section class="sh-section"><h1>${title}</h1><p class="practice-results-subtitle">${subtitle}</p>
+        <div class="practice-results-stats">${stats.map(([value,label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
+        ${meta}${insights}<a class="hp-btn${arena ? ' arena-primary' : ''}" href="${reviewUrl}">Review problems</a>
+      </section>
+      <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${rows}</div></section></div>`;
+  }
   function renderPracticeResults(set) {
     const total = set.slugs.length;
     const counts = { Correct: 0, Incorrect: 0, Unanswered: 0, 'Answer unavailable': 0, Voided: 0, 'Check yourself': 0 };
@@ -6265,27 +6276,28 @@
     const stats = [[practiceCorrectFraction(counts.Correct, gradedTotal), 'Correct'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
     if (score) stats.unshift([score.points+'/'+score.max,counts['Check yourself']?'Score so far':'Mock score']);
     else if (!mock && gradedTotal) stats.splice(1, 0, [Math.round(100 * counts.Correct / gradedTotal) + '%', 'Score']);
-    $content.innerHTML = `<div class="space-home practice-session practice-results">
-      <a class="back-link" href="#/practice">${uiIcon("arrow-left")} Back to Practice</a>
-      <section class="sh-section"><h1>${mock ? 'Mock complete' : 'Practice complete'}</h1><p class="practice-results-subtitle">${escapeAttr(practiceSetLabel(set))} · ${total} problem${total === 1 ? '' : 's'}${mock ? ' · '+(set.mock.mode==='paper'?'Past contest':'Generated mock') : ' · '+escapeAttr(set.difficulty)+' difficulty'}</p>
-        ${set.clock ? `<p class="practice-results-meta">${mockTimeSummary(set)}</p>` : ''}
-        <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
-        ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
-        ${counts['Check yourself'] ? `<p class="practice-results-meta">${counts['Check yourself']} for self-check. Open ${counts['Check yourself'] === 1 ? 'it' : 'each'} in the review and mark your answer right or wrong.</p>` : ''}
-        ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided${score ? ' · Full credit awarded' : ''}</p>` : ''}
-        ${practiceInsightsHtml(set, outcomes, counts, reviewUrl)}
-        <a class="hp-btn" href="${reviewUrl}">Review problems</a>
-      </section>
-      <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${outcomes.map(([slug, result], i) => {
+    const rows = outcomes.map(([slug, result], i) => {
         const p = PROBLEM_BY_SLUG[slug];
         const answer = set.answers[slug], exact = practiceSessions.exactKey(slug);
         const paper = practiceSessions.needsSelfCheck(set, slug);
         const submitted = (exact || /AIME/.test(p?.fam)) && !paper
           ? exactAnswerHtml(answer, exact) : escapeAttr(practiceSessions.allowsMultipleChoices(slug) && !paper
             ? [...(answer || '')].join(', ') : answer || '');
-        const summary = result === 'Voided' ? '' : `<small>${answer ? 'Your answer: ' + submitted : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small>`;
-        return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${practiceProblemNumber(set, i)}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong>${summary}</span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
-      }).join('')}</div></section></div>`;
+      const summary = result === 'Voided' ? '' : `${answer ? 'Your answer: ' + submitted : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}`;
+      return practiceResultRow({href:reviewUrl, index:i, number:practiceProblemNumber(set,i), problem:p, summary, result});
+    }).join('');
+    const meta = [
+      set.clock ? mockTimeSummary(set) : '',
+      counts['Answer unavailable'] ? counts['Answer unavailable'] + ' awaiting an answer key' : '',
+      counts['Check yourself'] ? counts['Check yourself'] + ' for self-check. Open ' + (counts['Check yourself'] === 1 ? 'it' : 'each') + ' in the review and mark your answer right or wrong.' : '',
+      counts.Voided ? counts.Voided + ' voided' + (score ? ' · Full credit awarded' : '') : ''
+    ].filter(Boolean).map(value => `<p class="practice-results-meta">${value}</p>`).join('');
+    $content.innerHTML = practiceResultsHtml({
+      back:`<a class="back-link" href="#/practice">${uiIcon("arrow-left")} Back to Practice</a>`,
+      title:mock ? 'Mock complete' : 'Practice complete',
+      subtitle:`${escapeAttr(practiceSetLabel(set))} · ${total} problem${total === 1 ? '' : 's'}${mock ? ' · '+(set.mock.mode==='paper'?'Past contest':'Generated mock') : ' · '+escapeAttr(set.difficulty)+' difficulty'}`,
+      meta, stats, insights:practiceInsightsHtml(set,outcomes,counts,reviewUrl), reviewUrl, rows
+    });
     renderMath($content);
     $content.querySelectorAll('[data-result-index], [data-insight-index]').forEach(link => link.addEventListener('click', () => { set.current = Number(link.dataset.resultIndex ?? link.dataset.insightIndex); savePractice(); }));
   }
@@ -6306,6 +6318,7 @@
     const finished = set.status === 'finished';
     if (finished && location.hash.split('/')[4] !== 'review') { renderPracticeResults(set); return; }
     const slug = set.slugs[set.current], p = PROBLEM_BY_SLUG[slug];
+    if (p && !finished) activity.sawProblem("practice", slug);
     const answerable = practiceAnswerableSlugs(set);
     const answeredSummary = () => `${answerable.filter(id => set.answers[id]).length} of ${answerable.length} answered`;
     const voidNote = practiceSessions.voidReason(slug);
@@ -6786,6 +6799,10 @@
         if (!await loadStatements(statementFile(p))) return "offline";
         return window.MATH_STATEMENTS?.[p.slug] ? "ready" : "missing";
       },
+      reviewResults: practiceResultsHtml, reviewRow: practiceResultRow,
+      reviewInsights: (outcomes, counts, href) => practiceInsightsHtml({marks:{}},outcomes,counts,href),
+      reviewExplanation: practiceExplanationHtml,
+      loadExplanation: p => Promise.all(solutionRequirements([p.year])),
       showPrompt: p => showStatement(p, ".arena-st", true),
       choices: practiceAnswerChoices, exactLabel: practiceExactLabel, keypad: practiceMathKeysHtml, wireKeys: wirePracticeMathKeys,
       answerHtml: exactAnswerHtml, renderMath, confirm: appConfirm, refresh: render
@@ -10302,9 +10319,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (credit && !inPractice && !wrap.querySelector(".statement-credit")) {
         wrap.insertAdjacentHTML("beforeend", `<p class="prob-note statement-credit">${escapeAttr(credit)}</p>`);
       }
-      if (archive) {
-        const fallback = wrap.parentElement.querySelector("[data-statement-fallback]");
-        if (fallback) { fallback.hidden = true; if (inPractice && fallback.parentElement.classList.contains("practice-paper")) fallback.parentElement.hidden = true; }
+      const fallback = wrap.parentElement.querySelector("[data-statement-fallback]");
+      if (fallback) {
+        fallback.hidden = true;
+        if (inPractice && fallback.parentElement.classList.contains("practice-paper")) fallback.parentElement.hidden = true;
       }
       wrap.hidden = false;
       renderMath(wrap);
@@ -10960,6 +10978,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const p = PROBLEM_BY_SLUG[slug];
     if (!p) { location.hash = "#/practice"; return; }
     noteRecent("p:" + p.slug);
+    activity.sawProblem("archive", p.slug);
     shownIds = [];
     $content.innerHTML = problemDetailHtml(p, false);
     renderMath($content);

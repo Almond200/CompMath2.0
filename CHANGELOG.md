@@ -2,6 +2,7 @@
 
 **2026-11-25**
 
+- **Arena placement and review.** Use one mixed-difficulty, 12-problem placement set and start all four subjects at the same provisional Elo. Six rated answers establish a subject rating. Overall Elo averages the lowest three subject ratings. Add expandable subject details and reuse Practice’s results and problem review. Keep previously opened problems out of new sets, remove the manual seen button and duplicate question headings, and fix the difficulty label and doubled statement credit.
 - **Timed Arena sets.** Give two tries per placement problem. Preselect rated sets of 2, 3 or 5 questions, with one timer sized to the problems’ Elo. Let learners move between questions, check answers in place, and submit early. Show the set’s net Elo change, all outcomes and links to solutions. The dashboard charts Elo by set and organizes recent misses into review, lesson and practice steps.
 - **Reading layout and credits.** Center Learn, Practice and Arena when study sidebars are hidden. Remove the lesson width setting. Show just the copyright holder under statements and reserve equal space for selected and idle contest year buttons.
 - **Arena.** Add six-problem adaptive placement, overall and subject Elo, adjustable sessions, a rating graph, history, focused study recommendations and resumable local progress. Known repeats and problems marked as seen are excluded from future draws. Settings backups merge Arena results by problem identity.
