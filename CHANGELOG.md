@@ -2,6 +2,10 @@
 
 **2026-11-25**
 
+- **Arena.** Add six-problem adaptive placement, overall and subject Elo, adjustable sessions, a rating graph, history, focused study recommendations and resumable local progress. Known repeats and problems marked as seen are excluded from future draws. Settings backups merge Arena results by problem identity.
+- **Progress storage.** Move Arena and shared study activity to IndexedDB. Migrate existing local records, keep resumable drafts separate from the attempt log, and include both storage systems in Settings backups.
+- **Study navigation and controls.** Add Show/Hide study sidebars to Appearance. Use soft selection tints in Practice and the label “Mixed subjects,” including previously saved sets. The main search recognizes paper and problem numbers together, including `p3`, `q3`, `#3` and a trailing number.
+
 - **Archive and search.** Build compact problem metadata and relationships from the editorial sources. Load solution text by decade, add search results 24 at a time, and render collapsed card practice rows when opened.
 - **Study activity.** Share a local activity history across Learn, Practice, Flashcards and Quiz. Use explicit canonical problem IDs for known shared questions.
 - **Study links.** Restore inline lesson and profile links and add lesson and topic hover previews. Match the Lessons heading to the surrounding headings and use bullets for lesson and focused practice links on cards.

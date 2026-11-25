@@ -275,9 +275,9 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     }
     if (width === 1280) {
       await navigate('#/', '.hm-space');
-      // Reference groups its three spaces as links; Learn and Practice are whole-tile links.
+      // Reference groups its three spaces as links; Learn, Practice and Arena are whole-tile links.
       assert.deepEqual(await page.locator('.hm-refcell .hm-ref-link b').allInnerTexts(), ['Formulas', 'Methods', 'Patterns']);
-      assert.equal(await page.locator('.hm-space').count(), 2);
+      assert.deepEqual(await page.locator('.hm-space-name').allTextContents(), ['Learn', 'Practice', 'Arena']);
       for (const tile of await page.locator('.hm-space').all()) {
         await tile.focus();
         assert.equal(await tile.evaluate(el => getComputedStyle(el).outlineOffset), '-3px');

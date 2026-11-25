@@ -2336,24 +2336,28 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
   --c-formulas: var(--accent); --cs-formulas: var(--accent-soft);
   --c-methods: #45d6c3; --cs-methods: rgba(69, 214, 195, 0.14);
   --c-patterns: #f0a35e; --cs-patterns: rgba(240, 163, 94, 0.15);
+  --c-arena: #ff986c; --cs-arena: rgba(255, 152, 108, 0.14);
   --c-practice: #9d7bff; --cs-practice: rgba(157, 123, 255, 0.15);
   --c-learn: #8fd16a; --cs-learn: rgba(143, 209, 106, 0.15);
 }
 :root[data-theme="light"] {
   --c-methods: #12897a; --cs-methods: rgba(18, 137, 122, 0.12);
   --c-patterns: #c25e0c; --cs-patterns: rgba(194, 94, 12, 0.12);
+  --c-arena: #ae4828; --cs-arena: rgba(174, 72, 40, 0.10);
   --c-practice: #6d48df; --cs-practice: rgba(109, 72, 223, 0.12);
   --c-learn: #3d8a1c; --cs-learn: rgba(61, 138, 28, 0.12);
 }
 body { --space: var(--c-formulas); --space-soft: var(--cs-formulas); }
 body[data-space="methods"] { --space: var(--c-methods); --space-soft: var(--cs-methods); }
 body[data-space="patterns"] { --space: var(--c-patterns); --space-soft: var(--cs-patterns); }
+body[data-space="arena"] { --space: var(--c-arena); --space-soft: var(--cs-arena); }
 body[data-space="practice"] { --space: var(--c-practice); --space-soft: var(--cs-practice); }
 body[data-space="learn"] { --space: var(--c-learn); --space-soft: var(--cs-learn); }
 body[data-space="none"] { --space: var(--text-dim); --space-soft: var(--bg-panel); }
 [data-tint="formulas"] { --tint: var(--c-formulas); --tint-soft: var(--cs-formulas); }
 [data-tint="methods"] { --tint: var(--c-methods); --tint-soft: var(--cs-methods); }
 [data-tint="patterns"] { --tint: var(--c-patterns); --tint-soft: var(--cs-patterns); }
+[data-tint="arena"] { --tint: var(--c-arena); --tint-soft: var(--cs-arena); }
 [data-tint="practice"] { --tint: var(--c-practice); --tint-soft: var(--cs-practice); }
 [data-tint="learn"] { --tint: var(--c-learn); --tint-soft: var(--cs-learn); }
 
@@ -2373,6 +2377,7 @@ body[data-space="none"] { --space: var(--text-dim); --space-soft: var(--bg-panel
 body[data-space="formulas"] [data-space-go="formulas"],
 body[data-space="methods"] [data-space-go="methods"],
 body[data-space="patterns"] [data-space-go="patterns"],
+body[data-space="arena"] [data-space-go="arena"],
 body[data-space="practice"] [data-space-go="practice"],
 body[data-space="learn"] [data-space-go="learn"] { background: var(--space-soft); color: var(--space); }
 #search-input { height: 40px; box-sizing: border-box; padding-top: 0; padding-bottom: 0; }
@@ -3669,7 +3674,7 @@ body.is-landing .content { padding: 0 0 50px; }
 .hm-intro { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
 .hm-name { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
 .hm-sub { margin: 0; font-size: 13.5px; color: var(--text-dim); }
-.hm-spaces { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 14px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-card); }
+.hm-spaces { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 14px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-card); }
 .hm-space { position: relative; display: flex; flex-direction: column; gap: 1px; padding: 12px 14px 10px; text-decoration: none; color: var(--text); border-left: 1px solid var(--border); }
 .hm-space:first-child { border-left: none; }
 /* Each tile's coloured bar is a strip of its own inside the tile, so the grey divider runs the
@@ -4782,3 +4787,108 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 .mock-adv-label { font-size: 14px; font-weight: 600; color: var(--text); }
 .mock-adv-note { margin: 0; font-size: 13px; line-height: 1.5; color: var(--text-dim); }
 .mock-same-format input { margin: 0; width: 16px; height: 16px; accent-color: var(--space); cursor: pointer; }
+
+/* Arena uses the same page shell and controls as the other spaces. */
+.arena { max-width: 1080px; }
+.arena .sh-section { padding: clamp(15px, 2vw, 24px); }
+.arena h1 { margin: 0; font-size: calc(24px * var(--tx)); line-height: 1.25; }
+.arena .space-home-head h1 { font-size: calc(30px * var(--tx)); }
+.arena .sh-section h3 { font-size: calc(17px * var(--tx)); }
+.arena h4 { font-size: calc(14px * var(--tx)); margin: 0 0 6px; }
+.arena p { line-height: 1.55; }
+.arena-note, .arena small, .arena-status { color: var(--text-dim); }
+.arena-note, .arena-study-row { font-size: calc(14px * var(--tx)); }
+.arena-note { margin: 7px 0; }
+.arena .sh-section > :last-child { margin-bottom: 0; }
+.arena-hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 18px 32px; border-top: 3px solid var(--space); align-items: center; }
+.arena-hero p { margin: 7px 0 12px; }
+.arena-placement { border-left: 1px solid var(--border); padding-left: 24px; color: var(--text-dim); font-size: calc(14px * var(--tx)); }
+.arena-placement h4 { color: var(--text); }
+.arena-placement p { margin-bottom: 0; }
+.arena-steps { display: flex; gap: 5px; max-width: 370px; margin: 14px 0 5px; }
+.arena-steps i { flex: 1; height: 5px; border-radius: 3px; background: var(--border); }
+.arena-steps .complete { background: var(--space); }
+.arena-steps .current { background: var(--space-soft); outline: 1px solid var(--space); outline-offset: -1px; }
+.arena-big { color: var(--space); font-size: calc(44px * var(--tx)); font-weight: 770; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.arena-big small { font-size: calc(16px * var(--tx)); font-weight: 600; }
+.arena-chart { display: block; width: 100%; }
+.arena-chart line { stroke: var(--border); }
+.arena-chart text { fill: var(--text-dim); font: 11px system-ui, sans-serif; }
+.arena-chart polygon { fill: var(--space-soft); }
+.arena-chart polyline { fill: none; stroke: var(--space); stroke-width: 2.4; stroke-linejoin: round; }
+.arena-chart circle { fill: var(--space); }
+.arena-chart-caption, .arena-plot h4 { color: var(--text-dim); }
+.arena-chart-caption { display: flex; justify-content: space-between; padding-left: 8%; font-size: 12px; }
+.arena-metrics { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px 40px; border-top: 1px solid var(--border); padding-top: 14px; }
+.arena-metrics strong, .arena-metrics small, .arena-log small, .arena-study-row small, .arena-subject-table small { display: block; }
+.arena-metrics strong { font-size: calc(19px * var(--tx)); }
+.arena small { font-size: calc(12px * var(--tx)); font-weight: 500; }
+.arena .hp-btn { cursor: pointer; font-family: inherit; }
+.arena .hp-btn.arena-primary { background: var(--space); color: white; border: 1px solid transparent; }
+:root[data-theme="dark"] .arena .hp-btn.arena-primary { color: #301308; }
+.arena .hp-btn:disabled { opacity: .52; cursor: default; }
+.arena-options { border: 0; margin: 12px 0; padding: 0; }
+.arena-options legend { color: var(--text-dim); font-size: calc(13px * var(--tx)); font-weight: 650; margin-bottom: 4px; }
+.arena-options div, .arena-actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.arena-options label { position: relative; }
+.arena-options input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.arena-options span { display: inline-block; color: var(--text-dim); padding: 6px 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: calc(13px * var(--tx)); }
+.arena-options input:checked + span, .arena-options label:hover span { background: var(--space-soft); color: var(--space); border-color: var(--space); }
+.arena-options input:focus-visible + span { outline: 2px solid var(--space); outline-offset: 2px; }
+.arena-rules { margin-top: 15px; color: var(--text-dim); font-size: calc(13px * var(--tx)); }
+.arena-rules summary, .arena-log summary, .arena-older summary { cursor: pointer; }
+.arena-table-wrap { overflow-x: auto; }
+.arena-subject-table { width: 100%; border-collapse: collapse; text-align: right; font-variant-numeric: tabular-nums; font-size: calc(14px * var(--tx)); margin-top: 10px; }
+.arena-subject-table th:first-child { text-align: left; }
+.arena-subject-table td, .arena-subject-table th { padding: 8px 4px; }
+.arena-subject-table tr + tr, .arena-subject-table tbody, .arena-study-row + .arena-study-row, .arena-log + .arena-log { border-top: 1px solid var(--border); }
+.arena-subject-table thead { color: var(--text-dim); font-size: calc(12px * var(--tx)); }
+.arena-study-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; justify-content: space-between; padding: 9px 0; }
+.arena-log { margin-top: 4px; font-size: calc(14px * var(--tx)); }
+.arena-log summary { padding: 8px 0; }
+.arena-log summary > span + span { margin-left: 16px; color: var(--text-dim); }
+.arena-log summary small { display: inline; margin-left: 4px; }
+.arena-log ol { padding-left: 24px; }
+.arena-log li { margin: 7px 0; }
+.arena-log li > div { display: inline-block; }
+.arena-log li > span { float: right; text-align: right; }
+.arena-play { max-width: 900px; margin-inline: auto; }
+.arena-problem-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.arena-problem-top > strong { color: var(--space); font-variant-numeric: tabular-nums; }
+.arena-kicker { color: var(--space); margin: 0 0 4px; font-size: 13px; font-weight: 650; }
+.arena-play .arena-steps { max-width: none; margin-bottom: 20px; }
+.arena-play .practice-answer > h3 { margin-bottom: 10px; }
+.arena-actions { gap: 10px; margin-top: 14px; }
+.arena-actions .hp-btn { margin: 0; }
+.arena-seen { border: 0; color: var(--text-dim); background: none; font: inherit; font-size: calc(13px * var(--tx)); cursor: pointer; padding: 8px; }
+.arena-seen:hover { color: var(--space); }
+.arena-status:empty { margin: 0; }
+.arena-save-error { color: var(--text); }
+@media (max-width: 660px) {
+  .arena-hero { grid-template-columns: 1fr; gap: 12px; }
+  .arena-placement { border-left: 0; padding-left: 0; }
+  .arena-metrics { justify-content: space-between; gap: 8px; }
+  .arena-subject-table td, .arena-subject-table th { padding: 8px 2px; }
+  .arena-log summary > span + span { display: block; }
+}
+
+/* Keep chapter navigation in the book header. On a topic page, the existing
+   All topics disclosure provides the same tree without reserving a column. */
+[data-study-sidebars="hide"] body[data-space="learn"] .bk-view { grid-template-columns: minmax(0, 1fr); gap: 0; }
+[data-study-sidebars="hide"] body[data-space="learn"] .bk-rail { display: none; }
+[data-study-sidebars="hide"] .browse-topics { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+[data-study-sidebars="hide"] .browse-topics .tt { display: none; position: static; max-height: none; }
+[data-study-sidebars="hide"] .browse-topics.rail-open .tt { display: block; }
+[data-study-sidebars="hide"] .browse-topics.is-index .br-subjects { display: grid; }
+[data-study-sidebars="hide"] .browse-topics:not(.is-index) .tt-mobile-btn { display: inline-block; align-self: flex-start; margin: 0; }
+.arena [data-earlier][hidden] { display: none; }
+
+/* Selections in study forms use a quiet tint; the submit action keeps the solid fill. */
+body:is([data-space="practice"], [data-space="arena"]) .rand-btns button { background: var(--bg-card); }
+:root body:is([data-space="practice"], [data-space="arena"]) .rand-btns button:is([aria-checked="true"], [aria-pressed="true"], [aria-selected="true"]),
+body[data-space="practice"] .ct-years a[aria-current="page"] {
+  color: var(--space); background: var(--space-soft); border: 1px solid var(--space);
+}
+body[data-space="practice"] .practice-session .cn-num.practice-answered {
+  color: var(--accent); background: var(--accent-soft); border-color: var(--accent);
+}

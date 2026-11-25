@@ -32,6 +32,16 @@ const base=process.env.COMPMATH_URL||'http://localhost:8765';
   const next=page.locator('.rs-more');await next.focus();await next.press('Enter');
   assert.equal(await cards.count(),48,'mount only one additional page');
   assert(await cards.nth(24).evaluate(card=>card.contains(document.activeElement)),'keyboard users can start reading the new page');
+  for (const [q, slug] of [
+    ['2019 bmt algebra p3','2019-bmt-algebra-3'], ['2019 bmt algebra 3','2019-bmt-algebra-3'],
+    ['2019 bmt alg q 3','2019-bmt-algebra-3'], ['2019 bmt algebra problem #3','2019-bmt-algebra-3'],
+    ['2025 hmmt feb geo p3','2025-hmmt-february-geometry-3'],
+    ['2024 aime ii p3','2024-aime-ii-3'], ['2026 amc10b #24','2026-amc-10b-24']
+  ]) {
+    await page.locator('#search-input').fill(q);
+    await page.locator('.results-meta').filter({hasText:q}).waitFor();
+    assert.equal(await cards.first().getAttribute('href'),'#/problem/'+slug,q);
+  }
   const ref='2024 cayely contest #3';await page.locator('#search-input').fill(ref);
   await page.locator('.results-meta').filter({hasText:ref}).waitFor();
   assert.match(await page.locator('.search-results > .card').first().getAttribute('href'),/2024-cayley-contest-3$/);

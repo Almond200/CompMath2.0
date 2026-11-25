@@ -8,6 +8,7 @@
       .replace(/\\sum\b/g, '∑').replace(/\\sin\b/g, 'sin')
       .replace(/\\mid\b/g, '|').replace(/\\equiv\b/g, '≡').replace(/\\pm\b/g, '±');
   }
+  const mixedLabel = "Mixed subjects";
   const normalize = text => String(text).normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
     .toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');
   function build(tree, problems, eligible = () => true, forTopic) {
@@ -20,9 +21,9 @@
       n.breadcrumb = n.path.join(' › ');
     }
     const identity = p => p.identity || p.slug || p.ref;
-    // Mixed is the first Practice choice and includes every eligible appearance.
-    const mixed = { id: 'mixed', name: 'Mixed', label: 'Mixed', parent: null, children: [],
-      path: ['Mixed'], breadcrumb: 'Mixed', candidates: problems.filter(eligible), mixed: true };
+    // Mixed subjects is the first Practice choice and includes every eligible appearance.
+    const mixed = { id: 'mixed', name: mixedLabel, label: mixedLabel, parent: null, children: [],
+      path: [mixedLabel], breadcrumb: mixedLabel, candidates: problems.filter(eligible), mixed: true };
     if (forTopic) {
       for (const n of nodes.values()) n.candidates = forTopic(n.id).filter(eligible);
     } else {
@@ -48,6 +49,7 @@
         aliases.get(key).add(n.id);
       }
     }
+    aliases.set('mixed', new Set(['mixed']));
     const resolve = text => {
       const ids = aliases.get(normalize(text));
       return ids?.size === 1 ? nodes.get([...ids][0]) : null;
@@ -76,7 +78,7 @@
     const select = (id, predicate = () => true) => unique((nodes.get(id)?.candidates || []).filter(predicate));
     return { nodes, roots, resolve, search, unique, select };
   }
-  const api = { build, label };
+  const api = { mixedLabel, build, label };
   if (typeof module !== 'undefined') module.exports = api;
   else root.PracticeTopics = api;
 })(typeof window === 'undefined' ? globalThis : window);

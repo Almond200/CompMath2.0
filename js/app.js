@@ -313,6 +313,7 @@
       lessonLinks: P.lessonLinksChosen ? pick(P.lessonLinks, LESSON_LINK_MODES) : LESSON_LINK_MODES[0],
       lessonLinksChosen: !!P.lessonLinksChosen,
       lessonWidth: pick(P.lessonWidth, LESSON_WIDTHS),
+      studySidebars: P.studySidebars === "hide" ? "hide" : "show",
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
       start: P.start === "last" ? "formulas" : pick(P.start, START_MODES),  // "Where I left off" was removed (2026-10-23)
@@ -329,7 +330,7 @@
           density: state.density, notation: state.notation, angles: state.angles,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonLinksChosen: !!state.lessonLinksChosen, lessonWidth: state.lessonWidth
+          tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonLinksChosen: !!state.lessonLinksChosen, lessonWidth: state.lessonWidth, studySidebars: state.studySidebars
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -361,6 +362,7 @@
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
     tools: _loaded.tools,        // "off" | "on" — the page tools column on card pages
     lessonLinks: _loaded.lessonLinks, // "drawer" | "card" — a lesson's card links open beside it or go to the card
+    studySidebars: _loaded.studySidebars,
     lessonWidth: _loaded.lessonWidth, // "reading" | "full" — a lesson's explanation at 760px or across the column
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     strategyChosen: _loaded.strategyChosen,
@@ -390,9 +392,11 @@
     methods: { label: "Methods", ask: "Moves that make progress" },
     patterns: { label: "Patterns", ask: "Problem shapes to recognize" },
     learn: { label: "Learn", ask: "Textbooks, lesson by lesson" },
-    practice: { label: "Practice", ask: "Real contest problems" }
+    practice: { label: "Practice", ask: "Real contest problems" },
+    arena: { label: "Arena", ask: "Track your solving strength" }
   };
   const SPACE_SECTIONS = {
+    arena: [["arena-overview", "Your rating"], ["arena-session", "Rated session"], ["arena-subjects", "Subject ratings"], ["arena-study", "What to study"], ["arena-history", "History"]],
     learn: [["learn-books", "Textbooks"], ["pr-study", "Lists"]],
     practice: [["pr-concept", "Practice a concept"],
       ["pr-mock", "Mock a contest"], ["pr-contests", "Contests"],
@@ -1413,6 +1417,7 @@
       return { type: "space", name: "practice", practiceMode: m[1], practiceId: m[2] };
     }
     if (location.hash === "#/practice/contests") return { type: "space", name: "practice", practiceAnchor: "pr-contests" };
+    if (location.hash === "#/arena" || location.hash === "#/arena/session") return { type: "space", name: "arena", playing: location.hash.endsWith("/session") };
     if (location.hash === "#/practice") return { type: "space", name: "practice" };
     if (location.hash === "#/learn") return { type: "space", name: "learn" };
     const lr = learnRoute(location.hash);
@@ -4653,7 +4658,7 @@
   // Every setting lists its default option first (owner, 2026-10-31); the defaults are the first
   // allowed value the settings loader falls back to.
   const SETTING_DEFAULTS = {
-    theme: "light", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
+    theme: "light", studySidebars: "show", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
     notation: NOTATIONS[0], angles: ANGLE_MODES[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
     order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], lessonWidth: LESSON_WIDTHS[0], strategy: STRATEGY_MODES[0], contestLists: CONTEST_LIST_MODES[0]
   };
@@ -4688,6 +4693,7 @@
           <h3 class="set-panel-title">Appearance</h3>
           ${settingRow("Theme", "Light or dark. Dark is easier at night.", "theme", theme, [["light", "Light"], ["dark", "Dark"]])}
           ${settingRow("Density", "How tightly the whole app is spaced: page margins, the gaps between cards and sections, and the padding inside panels. Spacious gives everything more room; Compact fits more on each screen. Neither changes text size or card size.", "density", state.density, [["comfortable", "Comfortable"], ["spacious", "Spacious"], ["compact", "Compact"]])}
+          ${settingRow("Study sidebars", "Show section navigation beside Learn, Practice and Arena, including textbook chapters and the contest topic tree.", "studySidebars", state.studySidebars, [["show", "Show"], ["hide", "Hide"]])}
           ${settingRow("Card size", "How big each card is while browsing. Large cards are wider, so fewer fit across.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Large"]], "browse")}
           ${settingRow("Text size", "Adjusts the size of reading text, headings, and math.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]], "browse page subject problem")}
         </section>
@@ -4733,11 +4739,11 @@
         <section class="set-panel" id="set-progress">
           <h3 class="set-panel-title">Your progress</h3>
           <div class="set-row">
-            <div class="set-text"><div class="set-name">Export progress</div><div class="set-desc">Save your lists, stars, settings, theme, recently opened pages, and flashcard and quiz progress as one file (versioned JSON), to keep as a backup or to move to another browser.</div></div>
+            <div class="set-text"><div class="set-name">Export progress</div><div class="set-desc">Back up your settings, lists, study activity, Practice sets and Arena ratings as one file, or move them to another browser.</div></div>
             <div class="seg"><button type="button" class="progress-export">Export</button></div>
           </div>
           <div class="set-row">
-            <div class="set-text"><div class="set-name">Import progress</div><div class="set-desc">Load a file made by Export. Lists are merged into the ones you have (no card is removed from a list); settings, theme, and flashcard progress are replaced by the file's.</div></div>
+            <div class="set-text"><div class="set-name">Import progress</div><div class="set-desc">Load a file made by Export. The app combines lists, Practice sets, Arena results and study activity with your saved progress. It restores settings, theme and flashcard progress from the file.</div></div>
             <div class="seg"><button type="button" class="progress-import">Import</button><input type="file" class="progress-file" accept="application/json,.json" hidden></div>
           </div>
           <p class="settings-hint progress-msg" hidden></p>
@@ -4874,6 +4880,7 @@
         order: "sort, sorting, ordering, order, popular, most used, curated, arrange, rank",
         start: "startup, start page, home page, homepage, landing page, open on, launch, default page, front page, first page, when it opens",
         lessonLinks: "lesson links, drawer, open cards beside, side panel, card links, links, preview, popup",
+        studySidebars: "sidebar, side bar, navigation, drawer, rail, hide menu, learn, practice, arena, more space",
         lessonWidth: "lesson width, text width, line length, wide text, narrow text, full width, reading width, column, paragraphs, lesson text",
         contestLists: "contest sections, contest lists, show more, show all, expanded, collapsed, folded, unfolded, contests, statistics, stats, practice problems, years",
         strategy: "spoilers, spoiler, solution, solutions, reveal, answers, answer, hide the strategy, show the strategy, how this problem works, hints",
@@ -4994,17 +5001,21 @@
   }
 
   // ---------- Export and import progress (Settings -> Your progress) ----------
-  // Everything this browser keeps for the app, in one versioned JSON file. Version 1 holds each
-  // localStorage key's value as parsed JSON (a plain string where the key holds one). An import
-  // merges study lists, so a list built on this device is never lost to an older file, and
-  // replaces the rest; then the page reloads to read it back.
+  // Version 1 uses the same portable keys for both browser storage systems.
   const PROGRESS_FORMAT = "competition-math-reference/progress", PROGRESS_VERSION = 1;
-  const PROGRESS_KEYS = ["mq-settings", "mq-lists", "mq-recent", "theme", "mq-flashcards", "mq-flashcards-prefs", "mq-quiz-misses", "mq-learn", "mq-practice-sets", activity.KEY];
-  function exportProgress() {
+  const PROGRESS_KEYS = ["mq-settings", "mq-lists", "mq-recent", "theme", "mq-flashcards", "mq-flashcards-prefs", "mq-quiz-misses", "mq-learn", "mq-practice-sets", activity.KEY, window.Arena.KEY];
+  const studyStore = window.StudyStorage;
+  const studyKeys = new Set([activity.KEY, window.Arena.KEY]);
+  async function exportProgress() {
     const data = {};
+    if (studyStore.enabled) {
+      const snapshot = await studyStore.snapshot();
+      data[window.Arena.KEY] = snapshot.arena;
+      data[activity.KEY] = snapshot.activity;
+    }
     PROGRESS_KEYS.forEach(k => {
-      let raw = null;
-      try { raw = localStorage.getItem(k); } catch (e) {}
+      if (studyStore.enabled && studyKeys.has(k)) return;
+      const raw = localStorage.getItem(k);
       if (raw == null) return;
       try { data[k] = JSON.parse(raw); } catch (e) { data[k] = raw; }
     });
@@ -5021,7 +5032,7 @@
   // file is checked and every new value worked out first (lists merged on a copy), the current
   // values are kept, then everything is written; if any write fails, every key is put back as it
   // was, and the message says whether that worked.
-  function importProgress(text) {
+  async function importProgress(text) {
     const obj = JSON.parse(text);
     if (!obj || obj.format !== PROGRESS_FORMAT || !obj.data || typeof obj.data !== "object") throw new Error("This is not a progress file exported from this app.");
     if (!(obj.version >= 1 && obj.version <= PROGRESS_VERSION)) throw new Error("This file was made by a newer version of the app (format " + obj.version + ").");
@@ -5029,10 +5040,13 @@
     // 1. Stage every value to write.
     const staged = {};
     PROGRESS_KEYS.forEach(k => {
-      if (!(k in d) || k === "mq-lists" || k === "mq-practice-sets" || k === activity.KEY || d[k] == null) return;
+      if (!(k in d) || k === "mq-lists" || k === "mq-practice-sets" || k === activity.KEY || k === window.Arena.KEY || d[k] == null) return;
       staged[k] = typeof d[k] === "string" ? d[k] : JSON.stringify(d[k]);
     });
-    if (d[activity.KEY] != null) {
+    const hasStudyData = studyStore.enabled && [...studyKeys].some(key => d[key] != null);
+    if (!studyStore.enabled && d[window.Arena.KEY] != null)
+      staged[window.Arena.KEY] = JSON.stringify(window.Arena.merge(await window.Arena.read(), d[window.Arena.KEY]));
+    if (!studyStore.enabled && d[activity.KEY] != null) {
       const ownActivity = JSON.parse(localStorage.getItem(activity.KEY) || "null");
       staged[activity.KEY] = JSON.stringify(activity.merge(ownActivity, d[activity.KEY]));
     }
@@ -5077,7 +5091,7 @@
       staged["mq-practice-sets"] = JSON.stringify([...merged.values()]);
     }
     const keys = Object.keys(staged);
-    if (!keys.length) throw new Error("This file holds no progress to import.");
+    if (!keys.length && !hasStudyData) throw new Error("This file holds no progress to import.");
     // 2. Keep what is there now.
     const before = {};
     try { keys.forEach(k => { before[k] = localStorage.getItem(k); }); }
@@ -5085,6 +5099,7 @@
     // 3. Write everything; on a failure, put every key back.
     try {
       keys.forEach(k => localStorage.setItem(k, staged[k]));
+      if (hasStudyData) await studyStore.restore(d[window.Arena.KEY], d[activity.KEY]);
     } catch (e) {
       let restored = true;
       keys.forEach(k => {
@@ -5092,7 +5107,7 @@
         catch (e2) { restored = false; }
       });
       throw new Error(restored
-        ? "This browser's storage is full or blocked, so nothing was imported. Your progress is unchanged."
+        ? "The import failed. Your previous progress was kept. " + e.message
         : "The import stopped partway and your previous progress could not be fully put back. Export what you have now before trying again.");
     }
     return "Imported progress from " + (obj.exported ? String(obj.exported).slice(0, 10) : "the file") + ". Reloading\u2026";
@@ -5102,16 +5117,16 @@
     const file = $content.querySelector(".progress-file"), msg = $content.querySelector(".progress-msg");
     if (!ex || !im) return;
     const say = t => { msg.hidden = false; msg.textContent = t; };
-    ex.addEventListener("click", () => { try { exportProgress(); say("Exported."); } catch (e) { say("Export failed: " + e.message); } });
+    ex.addEventListener("click", async () => { try { await exportProgress(); say("Exported."); } catch (e) { say("Export failed: " + e.message); } });
     im.addEventListener("click", () => file.click());
     file.addEventListener("change", () => {
       const f = file.files && file.files[0];
       if (!f) return;
       appConfirm({ title: "Import this file?", text: "Your lists keep their cards and gain the file's; your settings, theme, and flashcard progress are replaced.", ok: "Import" })
         .then(yes => { if (yes) return f.text(); file.value = ""; return null; })
-        .then(t => {
+        .then(async t => {
         if (t == null) return;
-        try { say(importProgress(t)); setTimeout(() => location.reload(), 800); }
+        try { say(await importProgress(t)); setTimeout(() => location.reload(), 800); }
         catch (e) { say(e instanceof SyntaxError ? "That file is not valid JSON." : e.message); }
         file.value = "";
       });
@@ -5582,11 +5597,11 @@
             <span class="hm-space-ask">Every formula, method and pattern</span>
             <span class="hm-ref-links">${[["formulas", count("formula")], ["methods", count("method")], ["patterns", count("pattern")]].map(([sp, n]) =>
               `<a class="hm-ref-link" data-tint="${sp}" href="#/${sp}" title="${escapeAttr(SPACES[sp].ask)}"><b>${SPACES[sp].label}</b>${n}</a>`).join("")}</span>
-          </div>${["learn", "practice"].map(sp => `
+          </div>${["learn", "practice", "arena"].map(sp => `
           <a class="hm-space" data-tint="${sp}" href="#/${sp}">
             <span class="hm-space-name">${SPACES[sp].label}</span>
             <span class="hm-space-ask">${SPACES[sp].ask}</span>
-            <span class="hm-space-n">${{ learn: `${LEARN_SHELF.length} books`, practice: nProblems }[sp]}</span>
+            <span class="hm-space-n">${{ learn: `${LEARN_SHELF.length} books`, practice: nProblems, arena: "Placement and rated sessions" }[sp]}</span>
           </a>`).join("")}
         </nav>
         <div class="hm-cols">
@@ -5654,6 +5669,7 @@
   // it: every subject and group (and, for Methods and Patterns, every card by name).
   // Formulas list their topics rather than four hundred card names.
   const SPACE_INTROS = {
+    arena: `Establish a rating on the archive’s difficulty scale, track each subject, and use your results to choose what to study in <a href="#/learn">Learn</a> or <a href="#/practice">Practice</a>.`,
     formulas: `Formulas are the facts: theorems, identities, and standard results, each with why it holds and worked examples. <a href="#/methods">Methods</a> rely on them, and every card lists the <a href="#/practice">contest problems</a> where it appears.`,
     methods: `Methods are the moves you make once you are inside a problem. Each one names the <a href="#/formulas">formulas</a> it relies on, and <a href="#/patterns">patterns</a> tell you when it is worth trying.`,
     patterns: `Patterns are the problem shapes worth recognizing before you start. Each one points to the <a href="#/methods">methods</a> worth trying, and those lead to the <a href="#/formulas">formulas</a> they use.`,
@@ -5690,7 +5706,11 @@
     practiceFinishConfirm = null;
   }
   const isMock = set => set.kind === 'mock';
-  const practiceSetLabel = set => isMock(set) && set.mock.mode === 'generated' ? 'Generated ' + set.mock.family : set.label;
+  function practiceSetLabel(set) {
+    if (isMock(set) && set.mock.mode === 'generated') return 'Generated ' + set.mock.family;
+    if (!isMock(set) && set.label === 'Mixed' && !set.cardId) return window.PracticeTopics.mixedLabel;
+    return set.label;
+  }
   const practiceProblemNumber = (set, index) => set.mock?.mode === 'paper'
     ? PROBLEM_BY_SLUG[set.slugs[index]]?.num ?? index + 1 : index + 1;
   // The official key: LIVE's MAA keys (answer-keys.js), else the other contests' letters (answer-keys-more.js, 2026-11-22).
@@ -6136,6 +6156,32 @@
     const ext = showSource && p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${p.urlLabel === "archive" ? "Open in archive" : "Open in AoPS"} ${uiIcon("arrow-up-right")}</a>` : "";
     return `<div class="practice-solution-links"><a class="aops-btn" href="#/problem/${p.slug}">Open in app</a>${ext}</div>`;
   }
+  function practiceExactLabel(exact) {
+    const alternativeLabel = exact?.alternatives ? (exact.format === 'sequence'
+      ? 'Separate values within a list with commas and separate complete lists with a semicolon.'
+      : 'Enter one or more answers. Separate answers with commas (spaces optional). Write numbers without commas.') : '';
+    return alternativeLabel || { set: exact?.notation === 'letter-list' ? 'All letters, separated by commas (spaces optional).' :
+      exact?.notation === 'value-or-set' ? 'Enter your answer. Separate values with commas and write numbers without commas.' :
+      'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.',
+      sequence: exact?.notation === 'base-3'
+        ? 'Base 3 digits in the requested order, separated by commas (spaces optional). The _3 suffix is optional.'
+        : 'List values in the requested order, separated by commas (spaces optional). Write numbers without commas, like 1398.',
+      complex: 'Complex value, for example 2+3i',
+      'complex-set': 'All complex values, separated by commas (spaces optional). Use i for the imaginary unit and write numbers without commas.',
+      interval: 'Interval or inequality, for example [2, 5) or 2 ≤ x < 5',
+      polynomial: `Polynomial in ${exact?.notation}`,
+      'rational-function': `Expression in ${exact?.notation}`,
+      'exponential-function': `Expression in ${exact?.notation}`,
+      'symbolic-equation': 'Equation',
+      numeral: 'Numeral in the requested base',
+      'set-set': 'Enter each set in braces or parentheses, separated by commas.',
+      'ratio-list': 'Ratio, for example 2:3:4',
+      tuple: exact?.notation === 'polar' ? 'Polar coordinates (radius, angle). For degrees, use ° or deg.' : 'Ordered tuple, for example (2, 3)',
+      'tuple-set': 'All tuples, for example (2, 3), (4, 5)', text: 'Short answer',
+      percent: exact?.notation === 'percent-change' ? 'Percentage change. Use a negative value for a decrease.' : 'Percentage (% is optional)' }[exact?.format] ||
+      (exact?.notation === 'ratio' ? 'Ratio, for example 2:3 or 2/3' :
+        exact?.notation === 'angle' ? 'Angle. For degrees, use ° or deg.' : 'Exact value (fractions, sqrt, pi, !)');
+  }
   function practiceChoiceLabels(slug) {
     const statement = window.MATH_STATEMENTS?.[slug]?.s || '';
     const start = statement.search(/\n\s*\(a\)\s/i);
@@ -6271,30 +6317,7 @@
     const inlinePaper = paper && archiveStatement(p);
     const external = p && !paper && externalPracticePrompt(p);
     const typedAnswer = aime || exact || paper;
-    const alternativeLabel = exact?.alternatives ? (exact.format === 'sequence'
-      ? 'Separate values within a list with commas and separate complete lists with a semicolon.'
-      : 'Enter one or more answers. Separate answers with commas (spaces optional). Write numbers without commas.') : '';
-    const exactLabel = alternativeLabel || { set: exact?.notation === 'letter-list' ? 'All letters, separated by commas (spaces optional).' :
-      exact?.notation === 'value-or-set' ? 'Enter your answer. Separate values with commas and write numbers without commas.' :
-      'All values, separated by commas (spaces optional). Write numbers without commas, like 1398.',
-      sequence: exact?.notation === 'base-3'
-        ? 'Base 3 digits in the requested order, separated by commas (spaces optional). The _3 suffix is optional.'
-        : 'List values in the requested order, separated by commas (spaces optional). Write numbers without commas, like 1398.',
-      complex: 'Complex value, for example 2+3i',
-      'complex-set': 'All complex values, separated by commas (spaces optional). Use i for the imaginary unit and write numbers without commas.',
-      interval: 'Interval or inequality, for example [2, 5) or 2 ≤ x < 5',
-      polynomial: `Polynomial in ${exact?.notation}`,
-      'rational-function': `Expression in ${exact?.notation}`,
-      'exponential-function': `Expression in ${exact?.notation}`,
-      'symbolic-equation': 'Equation',
-      numeral: 'Numeral in the requested base',
-      'set-set': 'Enter each set in braces or parentheses, separated by commas.',
-      'ratio-list': 'Ratio, for example 2:3:4',
-      tuple: exact?.notation === 'polar' ? 'Polar coordinates (radius, angle). For degrees, use ° or deg.' : 'Ordered tuple, for example (2, 3)',
-      'tuple-set': 'All tuples, for example (2, 3), (4, 5)', text: 'Short answer',
-      percent: exact?.notation === 'percent-change' ? 'Percentage change. Use a negative value for a decrease.' : 'Percentage (% is optional)' }[exact?.format] ||
-      (exact?.notation === 'ratio' ? 'Ratio, for example 2:3 or 2/3' :
-        exact?.notation === 'angle' ? 'Angle. For degrees, use ° or deg.' : 'Exact value (fractions, sqrt, pi, !)');
+    const exactLabel = practiceExactLabel(exact);
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
     const acceptedChoices = practiceSessions.choiceAnswers(slug);
     const gradingNote = window.MATH_EXTRA_KEYS?.notes?.[slug] ?? window.MATH_SHORT_ANSWER_KEYS?.notes?.[slug] ??
@@ -6572,7 +6595,7 @@
   }
   // The card view of Practice a concept builds an untimed set from problems that cite one
   // formula, method or pattern. It draws from the same eligible, twin-free pool as Practice a
-  // topic (the Mixed pool) and builds the same kind of saved set; only the choice differs.
+  // topic (the Mixed subjects pool) and builds the same kind of saved set; only the choice differs.
   function cardPracticePanelHtml() {
     return `<div class="concept-panel" id="pr-card" role="tabpanel" aria-labelledby="concept-card-tab"${practiceConceptMode === "card" ? "" : " hidden"}>
       <p class="practice-panel-intro">Choose one of the reference's cards (a formula, method or pattern) to build an untimed set from the contest problems that use it.</p>
@@ -6713,6 +6736,62 @@
       location.hash = "#/practice/set/" + topicPracticeSet.id;
     });
     update();
+  }
+  // Cross-tab updates to a draft alone can leave the active text input mounted.
+  window.addEventListener("storage", event => {
+    if (event.key !== window.Arena.KEY || !/^#\/arena(?:\/session)?$/.test(location.hash)) return;
+    try {
+      const before = JSON.parse(event.oldValue), after = JSON.parse(event.newValue);
+      if (before?.session?.slot && after?.session?.slot && before.session.id === after.session.id &&
+          before.session.slot.slug === after.session.slot.slug && before.events.length === after.events.length &&
+          document.activeElement?.id === "practice-answer") return;
+    } catch {}
+    render();
+  });
+  if (studyStore.enabled) studyStore.subscribe(kind => {
+    if (!/^#\/arena(?:\/session)?$/.test(location.hash)) return;
+    if (kind === "draft" && document.activeElement?.id === "practice-answer") return;
+    render();
+  });
+  let arenaPool;
+  function renderArena(playing) {
+    shownIds = [];
+    arenaPool ||= PROBLEM_DB.filter(p => Number.isFinite(p.elo) && p.tree.some(id => TOPIC_NODES.has(id)) && !isVoidedProblem(p) && hasMockAnswer(p) &&
+      !practiceSessions.needsSelfCheck({}, p.slug) && (window.MATH_MOCK_EXTRAS?.[p.slug] ||
+        hasProblemStatement(p) && !externalPracticePrompt(p)));
+    window.ArenaView.render({
+      container: $content, pool: arenaPool, lookup: slug => PROBLEM_BY_SLUG[slug],
+      roots: TOPIC_ROOTS, nodes: TOPIC_NODES, topicLabel, refShort, escape: escapeAttr, icon: uiIcon,
+      priorSeen: () => [...Object.keys(learnProgress().problems), ...readRecent().filter(key => key.startsWith("p:")).map(key => key.slice(2)),
+        ...practiceSessions.read(localStorage).flatMap(set => Object.keys(set.answers).filter(slug => set.answers[slug]))],
+      history: arenaState => activity.history({arenaState, kind:"problem"}), practiceLink: topicPracticeLink,
+      didRender: () => { markSpaceSection(); updatePageTitle(getRoute()); },
+      studyLink: (id, missedSlug) => {
+        const codes = window.MATH_LESSON_LINKS.topic[id] || [];
+        const focused = codes.find(code => !/^(Introduction|Summary)$/i.test(lessonLocations.get(code)?.l.title));
+        if (focused) return studyLessonLink(lessonLocations.get(focused));
+        const p = PROBLEM_BY_SLUG[missedSlug];
+        const matching = p?.formulas.find(fid => {
+          const home = window.MATH_TOPIC_HOMES[fid];
+          return home && (topicPath(id).some(n => n.id === home) || topicPath(home).some(n => n.id === id));
+        });
+        if (matching && BY_ID[matching]) {
+          const lesson = lessonForCard(matching, p.fam === "AIME");
+          if (lesson) return studyLessonLink(lesson);
+          return cardTextLink(matching);
+        }
+        return codes.length ? studyLessonLink(lessonLocations.get(codes[0])) : "";
+      },
+      subjectsOf: p => [...new Set(p.tree.map(id => topicPath(id)[0]?.id).filter(Boolean))],
+      async loadPrompt(p) {
+        if (window.MATH_MOCK_EXTRAS?.[p.slug] || window.MATH_STATEMENTS?.[p.slug]) return "ready";
+        if (!await loadStatements(statementFile(p))) return "offline";
+        return window.MATH_STATEMENTS?.[p.slug] ? "ready" : "missing";
+      },
+      showPrompt: p => showStatement(p, ".arena-st", true),
+      choices: practiceAnswerChoices, exactLabel: practiceExactLabel, keypad: practiceMathKeysHtml, wireKeys: wirePracticeMathKeys,
+      answerHtml: exactAnswerHtml, renderMath, confirm: appConfirm, refresh: render
+    }, playing);
   }
   function renderSpaceHome(name, route) {
     if (route.practiceMode) practiceConceptMode = route.practiceMode;
@@ -8082,11 +8161,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
     ...Object.entries(CONTEST_QUERY_ALIASES)
   ].map(([name, families]) => ({ families, name: contestQueryWords(name).join(" ") }))
     .sort((a, b) => b.name.length - a.name.length);
-  function parseContestYearQuery(q) {
-    const exact = /\b(?:problem|prob|question)\s*(\d{1,2})\b|#\s*(\d{1,2})\b/i.exec(q);
-    const words = contestQueryWords(exact ? q.replace(exact[0], " ") : q);
+  function parseContestYearQuery(q, number) {
+    const words = contestQueryWords(number ? number.paper : q);
     const year = words.find(w => /^(19[5-9]\d|20\d\d)$/.test(w));
-    if (!year) return null;
+    if (!year && !number?.explicit) return null;
     const query = " " + words.filter(w => w !== year).join(" ") + " ";
     const match = contestQueryNames().find(({ name }) => query.includes(" " + name + " "));
     if (!match) return null;
@@ -8097,18 +8175,18 @@ The book remembers the last lesson you opened, in this browser, and the contents
     }
     const rest = remainder.trim().split(/\s+/).filter(Boolean);
     if (match.name === "ahsme" || match.name === "ajhsme") rest.push(match.name);
-    return { families: match.families, year: +year, num: exact && +(exact[1] || exact[2]), rest };
+    return { families: match.families, year: year ? +year : null, num: number?.num, rest };
   }
   // The problems a parsed reference names, newest first; any leftover words ("2025 aime
   // geometry") then rank them by how many of those words each problem's text carries.
   function referencedProblems(r) {
     if (!r) return null;
     if (r.families) {
-      return r.families.flatMap(fam => DB_TREE[fam]?.[r.year] || []).filter(p => {
+      return r.families.flatMap(fam => r.year ? DB_TREE[fam]?.[r.year] || [] : Object.values(DB_TREE[fam] || {}).flat()).filter(p => {
         if (r.num && p.num !== r.num) return false;
         const words = contestQueryWords(p.cname);
         return r.rest.every(word => words.includes(word));
-      }).sort((a, b) => a.cname.localeCompare(b.cname) || a.num - b.num);
+      }).sort((a, b) => b.year - a.year || a.cname.localeCompare(b.cname) || a.num - b.num);
     }
     const hits = PROBLEM_DB.filter(p => {
       if (r.year && p.year !== r.year) return false;
@@ -8219,13 +8297,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // without them, so "power of a point lesson" lists the same cards as "power of a point".
     const askLesson = /\b(lessons?|chapters?)\b/i.test(state.query) || /^\s*[a-z]\d+\.\d+\s*$/i.test(state.query);
     const query = askLesson ? (state.query.replace(/\b(lessons?|chapters?)\b/gi, " ").replace(/\s+/g, " ").trim() || state.query) : state.query;
-    const { results, partial } = searchFormulas(query);
-    const sorted = sortEntries(results);
-    const queryTokens = wordsOf(spellOperators(query.toLowerCase()));
-    const partialNote = partial
-      ? ` <em>(no formula matched every keyword &mdash; showing closest matches)</em>`
-      : "";
-    shownIds = sorted.map(e => e.formula.id);
     // Everything is searched (formulas, methods, patterns, problems and study lists) and shown
     // as one list in order of relevance, each result labelled with its kind. The card search
     // ranks the cards; a study list that the query names outright leads; problems lead when
@@ -8234,34 +8305,41 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // else; the word matches then follow in their usual place without repeating them.
     // When it names problems that exist, the loose word matches are left out: "2024 aime 1
     // problem 3" would otherwise pull in every problem whose text says "problem".
-    const ref = parseContestYearQuery(query) || parseProblemQuery(query);
-    let named = referencedProblems(ref);
-    if (ref?.year && ref.num && (!named?.length || (!ref.fam && !ref.families))) {
-      const paperQuery = query.replace(/(?:\b(?:problem|prob|question)\s*|#\s*)\d{1,2}\b/i, " ");
-      if (paperQuery !== query) {
-        const matches = contestMatches(paperQuery, true);
-        if (matches.length) named = matches.flatMap(m => DB_TREE[m.fam][m.year].filter(p => p.cname === m.cname && p.num === ref.num));
-      }
+    const number = window.ProblemSearch.numberedReference(query);
+    const ref = parseContestYearQuery(query, number) || parseProblemQuery(query);
+    let named = referencedProblems(ref), numberedPapers = [];
+    if (number && (number.explicit || ref?.year) && (!named?.length || (!ref?.fam && !ref?.families))) {
+      numberedPapers = contestMatches(number.paper, true);
+      if (numberedPapers.length) named = numberedPapers.flatMap(m => DB_TREE[m.fam][m.year].filter(p => p.cname === m.cname && p.num === number.num));
     }
     if (named && !named.length) named = null;
     // "AMC 10/12 number theory" names a book, not problem 12 of the AMC 10.
     const bookHits = bookMatches(query);
     if (bookHits.length) named = null;
-    const probs = named || problemMatches(query);
-    const listHits = listMatches(query);
+    const precise = number && !bookHits.length && !askLesson && (numberedPapers.length ||
+      named?.length && (ref?.families || ref?.fam) && ref.num === number.num);
+    const { results, partial } = precise ? { results: [], partial: false } : searchFormulas(query);
+    const sorted = sortEntries(results);
+    const queryTokens = wordsOf(spellOperators(query.toLowerCase()));
+    const partialNote = partial
+      ? ` <em>(no formula matched every keyword &mdash; showing closest matches)</em>`
+      : "";
+    shownIds = sorted.map(e => e.formula.id);
+    const probs = named || (precise ? [] : problemMatches(query));
+    const listHits = precise ? [] : listMatches(query);
     const refy = !!named || /\b(19|20)\d\d\b|\b(aime|amc|hmmt|putnam|mathcounts)\b/i.test(query);
     // A reference that names a contest and a year but no problem number ("2025 AIME I",
     // "2023 amc10b") also gets the paper itself as a result, ahead of its problems, linking to
     // that paper on its contest page. "2025 AIME" names two papers and gets both.
     const papers = [];
-    if (named && (ref.fam || ref.families) && ref.year && !ref.num) named.forEach(p => {
+    if (named && (ref?.fam || ref?.families) && ref.year && !ref.num) named.forEach(p => {
       let g = papers.find(x => x.cname === p.cname);
       if (!g) papers.push(g = { cname: p.cname, fam: p.fam, year: p.year, problems: [] });
       g.problems.push(p);
     });
     papers.sort((a, b) => a.cname.localeCompare(b.cname));
     if (!named && !askLesson && !bookHits.length) {
-      for (const match of contestMatches(query, true)) {
+      for (const match of numberedPapers.length ? numberedPapers : contestMatches(query, true)) {
         const problems = DB_TREE[match.fam][match.year].filter(p => p.cname === match.cname);
         papers.push({ ...match, problems });
       }
@@ -8269,7 +8347,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // Lessons lead only when the query asks for one (owner, 2026-11-06): "power of a point
     // lesson", "circles chapter", or a lesson code such as C5.3. Otherwise the same strong
     // matches are a secondary result, after the cards.
-    const lessonHits = named ? [] : lessonMatches(query);
+    const lessonHits = named || precise ? [] : lessonMatches(query);
     const items = [];
     const relatedContest = !named && !/\b(contests?|competitions?|tournaments?)\b/i.test(query)
       && sorted.length && !partial && !refy;
@@ -8373,6 +8451,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     };
     const parts = [];
     parts.push(`<h1 class="results-meta"><strong>${total}</strong> result${total === 1 ? "" : "s"} for &ldquo;<strong>${escapeAttr(state.query.trim())}</strong>&rdquo;${counts ? ` <span class="rm-kinds">${counts}</span>` : ""}${partialNote}</h1>`);
+    if (precise && !named && numberedPapers.length) parts.push(`<p class="practice-panel-intro">No problem #${number.num} appears in the matching papers.</p>`);
     if (!total) {
       parts.push(`<div class="empty-state"><div class="big">${uiIcon("empty")}</div>No matches. Try broader keywords, such as &ldquo;area&rdquo;, &ldquo;mod&rdquo;, &ldquo;roots&rdquo;, or a contest like &ldquo;2024 AIME&rdquo;.</div>`);
     } else {
@@ -10164,7 +10243,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         const sc = document.createElement("script");
         sc.src = `js/data/problems/statements/${file}.js?v=${STATEMENTS_V}`;
         sc.onload = () => res(true);
-        sc.onerror = () => res(false);
+        sc.onerror = () => { delete statementLoads[file]; sc.remove(); res(false); };
         document.head.appendChild(sc);
       });
     }
@@ -11560,7 +11639,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const requirements = [];
     const lessonNeedsPractice = route.lesson && (route.chapter.kind !== "reference" || learnLessonSummary(route.chapter, route.lesson)?.problems);
     const needsProblems = ["problems", "problem", "browse", "settings"].includes(route.type)
-      || route.type === "space" && route.name === "practice"
+      || route.type === "space" && ["practice", "arena"].includes(route.name)
       || route.type === "special" && (/^(randomproblem|problemsusing|unclassified|statistics|recent|contest)$/.test(route.name)
         || route.name === "random" && /^problem(?:\/|$)/i.test(route.arg))
       || route.type === "home" && !!state.query.trim()
@@ -11584,7 +11663,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       }
       if (set) requirements.push(...solutionRequirements(set.slugs.map(slug => +slug.slice(0, 4))));
     }
-    if (route.type === "space" && route.name === "practice" || route.type === "problems" || route.type === "special" && route.name === "statistics") requireGroup("practice");
+    if (route.type === "space" && ["practice", "arena"].includes(route.name) || route.type === "problems" || route.type === "special" && route.name === "statistics") requireGroup("practice");
+    if (route.name === "arena") requireGroup("arena");
     if (route.type === "learn") requireChapter(route.book, route.chapter);
     if (route.type === "settings") {
       requirements.push(...solutionRequirements([+PV_PROBLEM.slice(0, 4)]));
@@ -11665,6 +11745,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       renderSpecial(route);
     } else if (route.type === "space") {
       if (route.practiceSet) renderTopicPracticeSet();
+      else if (route.name === "arena") renderArena(route.playing);
       else renderSpaceHome(route.name, route);
     } else if (route.type === "learn") {
       renderLearn(route);
@@ -11695,8 +11776,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     updateSpaceNavigation(space);
     // A list page's sidebar holds only the list's sections, under "On this list", drawn in the
     // same panel as a card's "On this page", so the section being read is marked the same way.
-    const noSidebar = onLanding || searching || ["problems", "problem", "browse", "lists", "settings", "learn"].includes(route.type)
-      || (route.type === "space" && (route.practiceSet || !SPACE_SECTIONS[route.name]))
+    const noSidebar = (state.studySidebars === "hide" && !!SPACE_SECTIONS[space]) || onLanding || searching || ["problems", "problem", "browse", "lists", "settings", "learn"].includes(route.type)
+      || (route.type === "space" && (route.practiceSet || route.playing || !SPACE_SECTIONS[route.name]))
       || (route.type === "list" && !$content.querySelector(".list-section[id]"));
     const $tree = document.getElementById("formula-nav");
     if ($tree) $tree.hidden = route.type === "list";
@@ -11748,7 +11829,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
   function buildSidebar() {
     // The current space supplies either a subject tree or links to its landing-page sections.
-    const order = ["formulas", "methods", "patterns", "learn", "practice"];
+    const order = ["formulas", "methods", "patterns", "learn", "practice", "arena"];
     const byGroup = new Map(order.map(g => [g, []]));
     SECTIONS.forEach(section => byGroup.get(groupOf(section)).push(section));
     const spaceRows = group => `<div class="nav-section nav-home-section open">
@@ -12205,7 +12286,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     closeDrawer();
     state.landing = false;
     const go = b.dataset.spaceGo;
-    const to = go === "practice" || go === "learn" ? "#/" + go : spaceEntry(go);
+    const to = SPACE_SECTIONS[go] ? "#/" + go : spaceEntry(go);
     goHash(to);
     window.scrollTo({ top: 0 });
   });
@@ -12304,6 +12385,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     r.setAttribute("data-captions", state.captions);
     r.setAttribute("data-cols", state.cols);
     r.setAttribute("data-lesson-width", state.lessonWidth);
+    r.dataset.studySidebars = state.studySidebars;
   }
 
   // The latex a card shows. A card may carry latexPlain, the same statement written out

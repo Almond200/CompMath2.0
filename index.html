@@ -11,7 +11,7 @@
        as cards near the screen, and text in a font still loading is drawn invisible. -->
   <link rel="preload" href="vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=570">
+  <link rel="stylesheet" href="css/styles.css?v=571">
   <script>
     (() => {
       const root = document.documentElement;
@@ -48,6 +48,7 @@
         </div>
         <button type="button" data-space-go="learn">Learn</button>
         <button type="button" data-space-go="practice">Practice</button>
+        <button type="button" data-space-go="arena">Arena</button>
       </nav>
       <div class="search-wrap">
         <input id="search-input" type="search" aria-label="Search the reference" placeholder="Search the reference&hellip; (try &quot;cyclic&quot;, &quot;LTE&quot;, &quot;reflection&quot;)" autocomplete="off">
@@ -212,6 +213,7 @@
     <script data-group="practice" src="js/data/problems/answer-keys-more.js?v=13"></script>
     <script data-group="practice" src="js/data/problems/answer-keys-short.js?v=50"></script>
     <script data-group="problems" src="js/data/problems/mock-extras.js?v=4"></script>
+    <script data-group="arena" src="js/arena-view.js?v=1"></script>
     <script data-group="practice" src="js/mock-contests.js?v=11"></script>
   </template>
 
@@ -246,15 +248,17 @@
   <script defer src="js/search-semantic.js?v=5"></script>
   <script defer src="js/problem-difficulty.js?v=2"></script>
   <script defer src="js/data/topic-tree.js?v=5"></script>
-  <script defer src="js/practice-topics.js?v=5"></script>
+  <script defer src="js/practice-topics.js?v=6"></script>
   <script defer src="js/learn-answer.js?v=13"></script>
   <script defer src="js/practice-sessions.js?v=48"></script>
   <script defer src="js/ui-icons.js?v=2"></script>
   <script defer src="js/accessibility.js?v=4"></script>
-  <script defer src="js/problem-search.js?v=1"></script>
+  <script defer src="js/problem-search.js?v=2"></script>
   <script defer src="js/problem-catalog.js?v=1"></script>
-  <script defer src="js/learning-activity.js?v=1"></script>
+  <script defer src="js/study-storage.js?v=1"></script>
+  <script defer src="js/arena.js?v=1"></script>
+  <script defer src="js/learning-activity.js?v=3"></script>
   <script defer src="js/asset-loader.js?v=1"></script>
-  <script defer src="js/app.js?v=944"></script>
+  <script defer src="js/app.js?v=945"></script>
 </body>
 </html>

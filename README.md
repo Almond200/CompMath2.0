@@ -13,6 +13,8 @@ the same site. The checked-in archive catalog is generated from the editorial so
 A complete local copy can be served offline. A hosted page is not guaranteed
 to work offline merely because it was visited once; external AoPS links require a connection.
 
+For a numbered problem, enter its contest, paper or round and number in the main search. For example, `2019 bmt algebra p3`, `2019 BMT Algebra #3`, and `2019 bmt algebra 3` all find the third problem.
+
 ## Updating the archive
 
 Edit the existing problem, rating, contest-paper and lesson sources. Run
@@ -31,7 +33,7 @@ untimed practice set. Difficulty offers **Any**, **Very easy**, **Easy**, **Medi
 **Very hard**, using Elo ratings to select roughly a fifth of the chosen contest or topic
 at each level. Any applies no difficulty restriction. Generated sets run from lowest to highest Elo. Ratings come from LIVE, with clearly
 recorded manual estimates for problems it has not rated; [rating data and refresh details](DIFFICULTY-RATINGS.md).
-Topic options come from the topic tree and include descendants. Open the **Contests** selector to limit the sources. Multiple-choice questions show the options on the paper. AIME accepts integers from 000 to 999. Other typed answers use the format requested by the question, with a math keypad and preview. Answers save automatically on this device.
+Choose **Mixed subjects** for the whole pool, or choose a topic from the tree to include its descendants. Open the **Contests** selector to limit the sources. Multiple-choice questions show the options on the paper. AIME accepts integers from 000 to 999. Other typed answers use the format requested by the question, with a math keypad and preview. Answers save automatically on this device.
 Save and exit and Back to Practice both preserve progress. **Resume a set** and **Completed sets**, below Contests,
 contain unfinished and finished practice and mock sets respectively. Each group shows at most two rows,
 with its own full-width **Show all / Show less** control.
@@ -54,13 +56,21 @@ A separate panel below Practice a concept lets you search for a **past contest**
 
 Generated mocks and past papers with a supported timed format use a countdown. The other past papers are untimed. The clock pauses when you leave or hide the page, and the set submits automatically at zero. [Mock generation, scoring and source details](MOCK-CONTESTS.md)
 
-## Four content kinds, five spaces
+## Arena
+
+Open **Arena** for an untimed ability check. Six mixed-subject placement answers establish a personal Elo on the archive’s problem-difficulty scale. After placement, choose a subject, a difficulty relative to your rating, and a session of 3, 5 or 10 problems. You can resume an unfinished problem or end a rated session after an answer.
+
+Submitting an answer or giving up updates overall Elo and the rating of each subject tagged on the problem. Marking a familiar problem as seen skips it without scoring it. Arena draws problems with an in-app statement and an automatic answer key. It excludes recorded attempts and recognized problems across known duplicate contest appearances. Learn problem records, recent archive visits and saved Practice work also inform the fresh-problem pool.
+
+The overview shows rating history, peak, accuracy, subject ratings and individual results. **What to study** uses recent graded Arena and Practice work to suggest up to two topics, with focused Practice links and a relevant lesson or reference card when available. Only Arena results affect ratings. Settings → Your progress includes Arena in backups and combines unique results on import. Arena results, your unfinished session and shared study activity live in IndexedDB in the current browser. On upgrade, the app carries over its earlier local records. Use **Settings → Your progress → Export** to keep a backup or move it to another device. Saved Practice sets, Learn chapter progress and preferences keep their existing local storage.
+
+## Four main areas
 
 > Formulas tell you what is true; Methods tell you what you can do; Patterns tell you what you
 > are looking at; Problems teach you to connect the three.
 
 Cards are formulas, methods or patterns; problems are separate database entries. Learn organizes
-the material into textbooks and lists. The top bar switches between five spaces:
+the material into textbooks and lists. The top bar groups the three Reference spaces together, followed by Learn, Practice and Arena.
 
 | Space | Kind | Subtitle | Colour |
 |---|---|---|---|
@@ -69,6 +79,7 @@ the material into textbooks and lists. The top bar switches between five spaces:
 | **Patterns** | one recurring problem shape, recognizable from the statement | Problem shapes to recognize | amber |
 | **Learn** | textbooks (books, chapters, lessons) and the study lists | Textbooks, lesson by lesson | green |
 | **Practice** | real contest problems | Real contest problems | purple |
+| **Arena** | adaptive rated problems and personal progress | Track your solving strength | burnt orange |
 
 A pattern *suggests* methods, a method *uses* formulas, and problems practise all three
 (derived from their tags). The test that separates the middle two: a pattern describes a whole
@@ -77,7 +88,7 @@ CONVENTIONS §0 has the full model.
 
 **Pages.**
 
-- **Front page** (no hash): the top bar, a one-line title, a strip of the five spaces, then a main
+- **Front page** (no hash): the top bar, a one-line title, a strip of the four main areas, then a main
   column (Recently opened, the Problem of the day with its statement, Newest cards, Practice at a glance
   with See all) and a rail (Textbooks with See all, the Card of the day, Did you know?, your
   library), divided by hairlines. On a phone it is one column in its own order: Recently opened, Did you
@@ -229,9 +240,11 @@ by a point or two; compare warm runs to warm runs.
   - Practice: the strategy on a problem page (Click to show, the default, or Shown).
   - Commands, and **Your progress**: Export writes everything the app keeps in this browser
     (lists, stars, settings, theme, recent pages, flashcard and quiz progress, Learn notes
-    and progress, and saved practice sets) to one versioned
+    and progress, saved Practice sets and Arena history) to one versioned
     JSON file (`competition-math-reference/progress`, version 1); Import merges its lists into
-    yours, keeps the newest version of each practice set, and replaces other imported keys.
+    yours, keeps the newest version of each Practice set, merges study activity and Arena attempts, and restores the other imported keys.
+
+  **Appearance → Study sidebars** controls navigation beside Learn, Practice and Arena. Book headers and the All topics control keep chapter and topic navigation available when the sidebars are hidden.
 
   Every setting lists its default first. A search box under the title finds a setting by its
   name or everyday words ("dark mode", "font size", "export data") and underlines it once
