@@ -14,17 +14,19 @@
   const blank = () => ({ version: 1, events: [], session: null });
   const validPace = pace => Object.hasOwn(PACES, pace);
   const outcomes = ['correct', 'incorrect', 'seen', 'unanswered'];
+  const resultScore = event => event.outcome === 'correct' ? (event.firstMiss ? 0.5 : 1) : 0;
   const answered = event => event.outcome === 'correct' || event.outcome === 'incorrect';
+  const optionalFlag = value => value == null || typeof value === 'boolean';
   const optionalText = value => value == null || typeof value === 'string';
   const validDraft = slot => validId(slot.slug) && validId(slot.identity) && typeof slot.draft === 'string' && optionalText(slot.firstMiss);
   function validRound(round, placement) {
     const validIndex = round.index == null || (Number.isInteger(round.index) && round.index >= 0 && round.index < round.items?.length);
     const validClock = (placement && round.deadline === null && round.limitMs === 0) ||
       (Number.isFinite(round.deadline) && Number.isFinite(round.limitMs) && round.limitMs > 0);
-    return validIndex && validClock &&
+    return validIndex && validClock && (round.submitAt == null || Number.isFinite(round.submitAt)) &&
       Array.isArray(round.items) && round.items.length > 0 && round.items.every(item =>
         item && validDraft(item) && Number.isFinite(item.elo) && Array.isArray(item.subjects) &&
-        item.subjects.every(validId) && (item.outcome == null || outcomes.includes(item.outcome)));
+        item.subjects.every(validId) && optionalFlag(item.external) && (item.outcome == null || outcomes.includes(item.outcome)));
   }
   function validate(state) {
     const s = state.session;
@@ -32,7 +34,7 @@
       e && validId(e.slug) && validId(e.identity) && validId(e.session) && Number.isFinite(e.at) &&
       Number.isFinite(e.elo) && Array.isArray(e.subjects) && e.subjects.every(validId) &&
       outcomes.includes(e.outcome) && typeof e.answer === 'string' && optionalText(e.firstMiss) &&
-      optionalText(e.invalidDraft) && (e.limitMs == null || Number.isFinite(e.limitMs))) ||
+      optionalText(e.invalidDraft) && (e.focus == null || validId(e.focus)) && optionalFlag(e.external) && (e.limitMs == null || Number.isFinite(e.limitMs))) ||
       (s != null && !(validId(s.id) && Number.isFinite(s.updated) && validId(s.focus) &&
         validPace(s.pace) && [...LENGTHS, 6, 10, PLACEMENT_SIZE].includes(s.length) && typeof s.placement === 'boolean' &&
         typeof s.closed === 'boolean' && (!s.last || validId(s.last)) &&
@@ -93,6 +95,7 @@
   function start(state, focus, pace, length) {
     if (state.session && !state.session.closed || !validId(focus) || !validPace(pace) || !LENGTHS.includes(length)) return false;
     const placement = !ratings(state.events).baseline;
+    if (!placement && !SUBJECTS.includes(focus)) return false;
     state.session = { id: root.crypto?.randomUUID?.() || Date.now().toString(36) + '-' + Math.random().toString(36).slice(2),
       updated: Date.now(), focus: placement ? 'mixed' : focus, pace: placement ? 'matched' : pace,
       length: placement ? PLACEMENT_SIZE : length, placement, closed: false, slot: null, last: null };
@@ -105,6 +108,16 @@
   function remainingMs(session, now = Date.now()) {
     return session.placement ? Infinity : Math.max(0, session.round.deadline - now);
   }
+  function roundComplete(session) {
+    const round = session?.round;
+    return !!round?.items.length && (!round.adaptive || round.items.length >= session.length) &&
+      round.items.every(item => item.outcome);
+  }
+  function submissionAt(session) {
+    const deadline = session.placement ? Infinity : session.round.deadline;
+    if (!roundComplete(session)) return deadline;
+    return Math.min(deadline, session.round.submitAt ?? session.updated + 3000);
+  }
   function problemMinutes(elo) {
     if (elo < 1000) return 2;
     if (elo < 1600) return 3;
@@ -114,7 +127,8 @@
   }
   function roundItem(problem, saved) {
     return {slug:problem.slug, identity:canonical(problem.identity), elo:problem.elo, subjects:problem.subjects,
-      draft:saved?.draft || '', ...(saved?.firstMiss ? {firstMiss:saved.firstMiss} : {})};
+      draft:saved?.draft || '', ...(saved?.firstMiss ? {firstMiss:saved.firstMiss} : {}),
+      ...(problem.external ? {external:true} : {})};
   }
   function placementIndex(round) {
     const pending = round.items.findIndex(item => !item.outcome);
@@ -173,6 +187,7 @@
       return;
     }
     Object.assign(item, {outcome:result.outcome, draft:result.answer});
+    if (roundComplete(s)) s.round.submitAt = now + 3000;
   }
   function submitRound(state, id, judge, now = Date.now()) {
     const s = state.session;
@@ -184,7 +199,8 @@
       const result = item.outcome ? {outcome:item.outcome, answer:item.draft} :
         (item.draft !== item.firstMiss && judge(item.slug, item.draft)) || (item.firstMiss ? {outcome:'incorrect', answer:''} : {outcome:'unanswered', answer:''});
       addEvent(state, item, item.subjects, result.outcome, result.answer, {
-        limitMs:s.placement ? 0 : s.round.limitMs, timedOut, ...(s.placement ? {placement:true} : {}),
+        limitMs:s.placement ? 0 : s.round.limitMs, timedOut, ...(s.placement ? {} : {focus:s.focus}),
+        ...(item.external ? {external:true} : {}), ...(s.placement ? {placement:true} : {}),
         ...(item.firstMiss ? {firstMiss:item.firstMiss} : {}), ...(result.outcome === 'unanswered' && item.draft ? {invalidDraft:item.draft} : {})
       }, timedOut ? s.round.deadline : now);
     }
@@ -218,10 +234,12 @@
   const track = (rating = BASE) => ({rating, count:0, wins:0, answered:0});
   function estimate(evidence) {
     const scale = Math.LN10 / 400, variance = 600 ** 2;
-    let low = 100, high = 5000;
-    for (let i = 0; i < 18; i++) {
+    // At the endpoints the prior dominates even when every answer has the same outcome.
+    const span = variance * scale * evidence.length;
+    let low = BASE - span, high = BASE + span;
+    while (high - low > 0.125) {
       const rating = (low + high) / 2;
-      const score = evidence.reduce((sum, e) => sum + Number(e.outcome === 'correct') - expected(rating,e.elo), 0);
+      const score = evidence.reduce((sum, e) => sum + resultScore(e) - expected(rating,e.elo), 0);
       if (scale * score > (rating - BASE) / variance) low = rating;
       else high = rating;
     }
@@ -232,7 +250,7 @@
     t.count++;
     t.wins += win;
     if (answered(event)) t.answered++;
-    if (k) t.rating = Math.max(100, Math.round(t.rating + k * (win - expected(t.rating,event.elo))));
+    if (k) t.rating = Math.round(t.rating + k * (resultScore(event) - expected(t.rating,event.elo)));
   }
   function ratings(events, incompleteId) {
     const overall = track(), subjects = new Map(), points = [], evidence = [];
@@ -245,7 +263,7 @@
     events.forEach((event, i) => {
       if (event.outcome === 'seen') return;
       const before = overall.rating;
-      const calibration = !baseline;
+      const calibration = !baseline, subjectChanges = [];
       if (calibration) {
         if (!placementEvidence(event)) return;
         evidence.push(event);
@@ -265,12 +283,14 @@
         for (const id of event.subjects) {
           if (!subjects.has(id)) subjects.set(id,track(baseline.rating));
           const subject = subjects.get(id);
+          const before = subject.rating;
           update(subject,event,subject.count < 18 ? 64 : 40);
+          subjectChanges.push({id,before,after:subject.rating});
         }
         const lowest = SUBJECTS.map(id => subjects.get(id).rating).sort((a,b) => a-b).slice(0,3);
         overall.rating = Math.round(lowest.reduce((sum,rating) => sum + rating,0) / lowest.length);
       }
-      points.push({event, rating:overall.rating, delta:overall.rating-before, calibration});
+      points.push({event, rating:overall.rating, delta:overall.rating-before, calibration, subjectChanges});
     });
     return {overall, subjects, points, baseline};
   }
@@ -302,7 +322,7 @@
     }
     return best;
   }
-  function recommendations(history, lookup) {
+  function recommendations(history, lookup, now = Date.now()) {
     const latest = new Map();
     for (const e of history) {
       if (e.kind === 'problem' && ['correct', 'incorrect'].includes(e.outcome))
@@ -311,22 +331,26 @@
     const rows = new Map();
     const recent = [...latest.values()].sort((a, b) => b.at - a.at).slice(0, 60);
     for (const e of recent) {
+      const weight = 0.5 ** (Math.max(0,now-e.at) / (30 * 86400000));
       const p = lookup(e.item);
       if (!p) continue;
       for (const id of new Set(p.tree)) {
-        if (!rows.has(id)) rows.set(id, { id, attempts: 0, misses: 0 });
+        if (!rows.has(id)) rows.set(id, { id, attempts: 0, misses: 0, recentAttempts: 0, recentMisses: 0, examples: [] });
         const row = rows.get(id);
         row.attempts++;
-        if (e.outcome === 'incorrect') {
-          row.misses++;
+        row.recentAttempts += weight;
+        if (e.outcome === 'incorrect' || e.retry) {
+          if (e.outcome === 'incorrect') row.misses++;
+          row.recentMisses += weight * (e.outcome === 'incorrect' ? 1 : 0.5);
           row.missedSlug ||= e.item;
+          if (row.examples.length < 3) row.examples.push(e);
         }
       }
     }
-    const score = r => r.misses / (r.attempts + 2);
-    return [...rows.values()].filter(r => r.misses).sort((a, b) => score(b) - score(a) || b.misses - a.misses);
+    const score = r => r.recentMisses / (r.recentAttempts + 2);
+    return [...rows.values()].filter(r => r.examples.length).sort((a, b) => score(b) - score(a) || b.misses - a.misses);
   }
-  const api = { KEY, PLACEMENT_SIZE, SUBJECT_PROVISIONAL, PACES, LENGTHS, canonical, read, merge, change, saveDraft, start, remaining, remainingMs, openRound, placementIndex, placementStats, advancePlacement, checkRoundAnswer, submitRound, placeAnswer, finishProblem, problemMinutes, ratings, targetRating, choose, recommendations };
+  const api = { KEY, PLACEMENT_SIZE, SUBJECT_PROVISIONAL, PACES, LENGTHS, canonical, read, merge, change, saveDraft, start, remaining, remainingMs, roundComplete, submissionAt, openRound, placementIndex, placementStats, advancePlacement, checkRoundAnswer, submitRound, placeAnswer, finishProblem, problemMinutes, ratings, targetRating, choose, recommendations };
   if (typeof module !== 'undefined') module.exports = api;
   else root.Arena = api;
 })(typeof window === 'undefined' ? globalThis : window);

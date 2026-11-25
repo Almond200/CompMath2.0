@@ -134,7 +134,7 @@ async function checkHistory() {
   assert.equal(single.session.round.items[0].firstMiss,'A');
   assert.equal(A.checkRoundAnswer(single,setId,'mix-0',{outcome:'correct',answer:'B'},now),false);
   A.checkRoundAnswer(single,setId,'mix-0',{outcome:'correct',answer:'B'},now,true);
-  assert(A.placementStats(single).overall.rating > initial);
+  assert(A.placementStats(single).overall.rating < initial, 'a retry on an easy question can lower the estimate');
   assert.equal(A.advancePlacement(single,setId,0,mixed[0],now),false);
   for (let i=1; i<mixed.length; i++) {
     A.advancePlacement(single,setId,i-1,mixed[i],now);
@@ -142,6 +142,8 @@ async function checkHistory() {
     assert.equal(A.checkRoundAnswer(single,setId,mixed[i-1].slug,{outcome:'correct',answer:'B'},now),false);
     A.checkRoundAnswer(single,setId,mixed[i].slug,{outcome:'incorrect',answer:''},now);
   }
+  assert(A.roundComplete(single.session));
+  assert.equal(A.submissionAt(single.session),now+3000);
   A.submitRound(single,setId,() => null,now);
   assert.equal(single.events[0].outcome,'correct');
   assert.equal(single.events[0].firstMiss,'A');
@@ -157,6 +159,25 @@ async function checkHistory() {
   const six = A.ratings([...placed.events, ...Array.from({length:6},(_,i) => ({...newAnswer,slug:'rated-'+i,identity:'rated-'+i}))]);
   assert.equal(six.subjects.get('geo').answered,A.SUBJECT_PROVISIONAL);
   assert.equal(six.subjects.get('alg').answered,0);
+  const lowPlacement = single.events.map(event => ({...event, outcome:'incorrect', elo:400}));
+  const lowBaseline = A.ratings(lowPlacement).baseline.rating;
+  assert(lowBaseline < 100, 'placement can estimate a rating below 100');
+  const lowRated = A.ratings([...lowPlacement,{...newAnswer, outcome:'incorrect', elo:lowBaseline, subjects:['geo']}]);
+  assert(lowRated.subjects.get('geo').rating < lowBaseline, 'rated misses still lower a rating below 100');
+  const day = 86400000, nowForStudy = 120 * day;
+  const studyHistory = [
+    ...Array.from({length:4},(_,i) => ({kind:'problem',item:'old-'+i,outcome:'incorrect',at:i*day})),
+    {kind:'problem',item:'today',outcome:'incorrect',at:nowForStudy}
+  ];
+  const study = A.recommendations(studyHistory,id => ({tree:[id === 'today' ? 'geo.new' : 'geo.old']}),nowForStudy);
+  assert.equal(study[0].id,'geo.new');
+  assert.deepEqual(study[0].examples.map(event=>event.item),['today']);
+  const half = A.ratings([...placed.events,{...newAnswer,firstMiss:'A'}]);
+  assert(half.subjects.get('geo').rating > weaker.subjects.get('geo').rating);
+  assert(half.subjects.get('geo').rating < updated.subjects.get('geo').rating);
+  const retryStudy = A.recommendations([{kind:'problem',item:'retry',outcome:'correct',retry:true,at:nowForStudy}],
+    () => ({tree:['geo.retry']}),nowForStudy);
+  assert.equal(retryStudy[0].examples[0].item,'retry');
   console.log('Arena placement, Elo, independent subjects, options, known problems, shared activity, recommendations and backup merging passed.');
 }
 checkHistory().catch(error => { console.error(error); process.exitCode = 1; });

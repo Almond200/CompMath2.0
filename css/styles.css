@@ -4898,7 +4898,7 @@ body:is([data-space="learn"], [data-space="practice"], [data-space="arena"]) .la
 .arena-history-row small { display: inline; margin-inline-start: 6px; }
 .arena-options + [data-arena-target] { min-height: 2.9em; }
 
-.arena .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.arena-question-heading { margin: 0 0 8px; font-size: calc(18px * var(--tx)); }
 .arena-subject-toggle { display: inline-flex; gap: 8px; align-items: center; text-align: start; font: inherit; color: inherit; padding: 6px 0; border: 0; background: none; cursor: pointer; }
 .arena-subject-toggle::before { content: "▸" / ""; color: var(--text-dim); flex: none; }
 .arena-subject-toggle[aria-expanded="true"]::before { transform: rotate(90deg); }
@@ -4916,7 +4916,17 @@ body:is([data-space="learn"], [data-space="practice"], [data-space="arena"]) .la
 .arena .arena-set-nav .cn-here[data-result="Incorrect"] { border-color: #b7444e; }
 .arena .arena-result-status[data-result="incorrect"] { color: var(--text); font-weight: 650; }
 
-dialog.arena-study-dialog { width: min(780px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); inset-block: 0; padding-block-start: 0; }
-.arena-study-dialog-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; background: var(--bg-card); border-bottom: 1px solid var(--border); }
+dialog.arena-study-dialog { width: min(780px, calc(100vw - 32px)); height: min(680px, calc(100dvh - 48px)); max-height: none; inset-block: 0; padding: 0; overflow: hidden; }
+dialog.arena-study-dialog[open] { display: grid; grid-template-rows: auto minmax(0,1fr); }
+.arena-study-dialog-head { padding: 16px 20px 12px; background: var(--bg-card); border-bottom: 1px solid var(--border); }
+.arena-study-dialog-head > div { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .arena-study-dialog-head h2 { margin: 0; font-size: calc(20px * var(--tx)); }
 .arena-study-dialog-head button { margin: 0; }
+.arena-study-dialog-head .arena-options { margin-bottom: 0; }
+.arena-study-dialog-body { overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable; padding: 0 20px 16px; }
+.arena-study-dialog-body > .arena-note { margin-top: 16px; }
+.arena .arena-set-nav .cn-num[data-result="Incorrect"] { color: var(--text); }
+.arena .arena-set-nav .cn-num[data-retry]:not(:hover) { color: var(--accent); }
+.arena-resume { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; }
+.arena-resume-time { color: var(--text-dim); font-size: calc(14px * var(--tx)); }
+.arena-resume-time .arena-clock { display: inline-block; }

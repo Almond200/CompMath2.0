@@ -310,6 +310,7 @@
       // saved merely because it was the old default gives way to the new one.
       lessonLinks: P.lessonLinksChosen ? pick(P.lessonLinks, LESSON_LINK_MODES) : LESSON_LINK_MODES[0],
       lessonLinksChosen: !!P.lessonLinksChosen,
+      arenaProblems: P.arenaProblems === "all" ? "all" : "automatic",
       studySidebars: P.studySidebars === "hide" ? "hide" : "show",
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
@@ -327,7 +328,7 @@
           density: state.density, notation: state.notation, angles: state.angles,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonLinksChosen: !!state.lessonLinksChosen, studySidebars: state.studySidebars
+          tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonLinksChosen: !!state.lessonLinksChosen, studySidebars: state.studySidebars, arenaProblems: state.arenaProblems
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -360,6 +361,7 @@
     tools: _loaded.tools,        // "off" | "on" — the page tools column on card pages
     lessonLinks: _loaded.lessonLinks, // "drawer" | "card" — a lesson's card links open beside it or go to the card
     studySidebars: _loaded.studySidebars,
+    arenaProblems: _loaded.arenaProblems,
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     strategyChosen: _loaded.strategyChosen,
     lessonLinksChosen: _loaded.lessonLinksChosen,
@@ -4658,7 +4660,7 @@
   // Every setting lists its default option first (owner, 2026-10-31); the defaults are the first
   // allowed value the settings loader falls back to.
   const SETTING_DEFAULTS = {
-    theme: "light", studySidebars: "show", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
+    theme: "light", studySidebars: "show", arenaProblems: "automatic", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
     notation: NOTATIONS[0], angles: ANGLE_MODES[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
     order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0], contestLists: CONTEST_LIST_MODES[0]
   };
@@ -4721,6 +4723,10 @@
         <section class="set-panel">
           <h3 class="set-panel-title">Practice</h3>
           ${settingRow("Strategy", "On a problem's page, the strategy and the cards it uses. Click to show keeps them closed until you press Show, so you can try the problem first; Shown opens them at once. Either way, Show and Hide beside the heading open and close them.<br><button type='button' class='strategy-reset' data-reset-strategies>Reset opened strategies</button> Closes strategies you previously opened on problem pages.", "strategy", state.strategy, [["show", "Shown"], ["click", "Click to show"]], "problem")}
+        </section>
+        <section class="set-panel">
+          <h3 class="set-panel-title">Arena</h3>
+          ${settingRow("Arena problem pool", "Arena uses automatically graded problems. Allow external statements to include questions you read in the original paper.", "arenaProblems", state.arenaProblems, [["automatic", "In-app statements"], ["all", "Include external statements"]])}
         </section>
         <section class="set-panel" id="set-commands">
           <h3 class="set-panel-title">Commands</h3>
@@ -4879,6 +4885,7 @@
         order: "sort, sorting, ordering, order, popular, most used, curated, arrange, rank",
         start: "startup, start page, home page, homepage, landing page, open on, launch, default page, front page, first page, when it opens",
         lessonLinks: "lesson links, drawer, open cards beside, side panel, card links, links, preview, popup",
+        arenaProblems: "arena problem pool, external statements, auto grading, all problems",
         studySidebars: "sidebar, side bar, navigation, drawer, rail, hide menu, learn, practice, arena, more space",
         contestLists: "contest sections, contest lists, show more, show all, expanded, collapsed, folded, unfolded, contests, statistics, stats, practice problems, years",
         strategy: "spoilers, spoiler, solution, solutions, reveal, answers, answer, hide the strategy, show the strategy, how this problem works, hints",
@@ -6254,12 +6261,12 @@
       <section><h3>Results by problem</h3><div class="insight-cells">${sequence}</div></section></div>
       <div class="insight-legend">${legend}</div><div class="insight-notes">${lines.join('')}</div></div>`;
   }
-  function practiceResultRow({href, index, number, problem, summary, result, detail = ""}) {
-    return `<a class="practice-result-row" href="${href}" data-result-index="${index}"><span><strong>Problem ${number}${problem ? ' · ' + escapeAttr(refShort(problem.ref)) : ''}</strong>${summary ? '<small>' + summary + '</small>' : ''}</span><span class="practice-result-badge" data-result="${result}">${result}${detail ? '<small>' + detail + '</small>' : ''}</span></a>`;
+  function practiceResultRow({href, index, number, problem, summary, result}) {
+    return `<a class="practice-result-row" href="${href}" data-result-index="${index}"><span><strong>Problem ${number}${problem ? ' · ' + escapeAttr(refShort(problem.ref)) : ''}</strong>${summary ? '<small>' + summary + '</small>' : ''}</span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
   }
-  function practiceResultsHtml({back, title, subtitle, meta = "", stats, insights, reviewUrl, rows, arena = false}) {
+  function practiceResultsHtml({back, title, subtitle, intro = "", meta = "", stats, insights, reviewUrl, rows, arena = false}) {
     return `<div class="space-home practice-session practice-results${arena ? ' arena arena-play' : ''}">${back}
-      <section class="sh-section"><h1>${title}</h1><p class="practice-results-subtitle">${subtitle}</p>
+      <section class="sh-section"><h1>${title}</h1><p class="practice-results-subtitle">${subtitle}</p>${intro}
         <div class="practice-results-stats">${stats.map(([value,label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${meta}${insights}<a class="hp-btn${arena ? ' arena-primary' : ''}" href="${reviewUrl}">Review problems</a>
       </section>
@@ -6764,14 +6771,22 @@
     if (kind === "draft") return;
     render();
   });
-  let arenaPool;
+  let arenaPools;
+  const arenaCanGrade = p => hasMockAnswer(p) && !practiceSessions.needsSelfCheck({},p.slug);
+  const arenaHasText = p => !!window.MATH_MOCK_EXTRAS?.[p.slug] || hasProblemStatement(p) && !externalPracticePrompt(p);
   function renderArena(route) {
     shownIds = [];
-    arenaPool ||= PROBLEM_DB.filter(p => Number.isFinite(p.elo) && p.tree.some(id => TOPIC_NODES.has(id)) && !isVoidedProblem(p) && hasMockAnswer(p) &&
-      !practiceSessions.needsSelfCheck({}, p.slug) && (window.MATH_MOCK_EXTRAS?.[p.slug] ||
-        hasProblemStatement(p) && !externalPracticePrompt(p)));
+    if (!arenaPools) {
+      const available = PROBLEM_DB.filter(p => Number.isFinite(p.elo) && p.tree.some(id => TOPIC_NODES.has(id)) && !isVoidedProblem(p) && arenaCanGrade(p));
+      arenaPools = {
+        automatic: available.filter(arenaHasText),
+        all: available.filter(p => arenaHasText(p) || p.url)
+      };
+    }
     window.ArenaView.render({
-      container: $content, pool: arenaPool, lookup: slug => PROBLEM_BY_SLUG[slug],
+      container: $content,
+      pool: arenaPools[state.arenaProblems],
+      allowExternal: state.arenaProblems === "all", lookup: slug => PROBLEM_BY_SLUG[slug],
       roots: TOPIC_ROOTS, nodes: TOPIC_NODES, topicLabel, refShort, escape: escapeAttr, icon: uiIcon,
       priorSeen: () => [...Object.keys(learnProgress().problems), ...readRecent().filter(key => key.startsWith("p:")).map(key => key.slice(2)),
         ...practiceSessions.read(localStorage).flatMap(set => Object.keys(set.answers).filter(slug => set.answers[slug]))],
@@ -6794,11 +6809,15 @@
         return codes.length ? studyLessonLink(lessonLocations.get(codes[0])) : "";
       },
       subjectsOf: p => [...new Set(p.tree.map(id => topicPath(id)[0]?.id).filter(Boolean))],
-      async loadPrompt(p) {
+      async loadPrompt(p, allowExternal = false) {
+        const paper = allowExternal && p.url ? "external" : "missing";
+        if (!arenaHasText(p)) return paper;
         if (window.MATH_MOCK_EXTRAS?.[p.slug] || window.MATH_STATEMENTS?.[p.slug]) return "ready";
-        if (!await loadStatements(statementFile(p))) return "offline";
-        return window.MATH_STATEMENTS?.[p.slug] ? "ready" : "missing";
+        if (!await loadStatements(statementFile(p))) return paper === "external" ? paper : "offline";
+        return window.MATH_STATEMENTS?.[p.slug] ? "ready" : paper;
       },
+      paperPrompt: p => `<div class="practice-paper"><p>Read ${p.num ? "Problem " + p.num : "the problem"} in the original source.</p>
+        <a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`,
       reviewResults: practiceResultsHtml, reviewRow: practiceResultRow,
       reviewInsights: (outcomes, counts, href) => practiceInsightsHtml({marks:{}},outcomes,counts,href),
       reviewExplanation: practiceExplanationHtml,

@@ -33,7 +33,7 @@
       <div class="arena-chart-caption"><span>${data[0].calibration ? 'Placement' : 'Earlier set'}</span><span>Latest set</span></div>`;
   }
   const rules = `<details class="arena-rules"><summary>How ratings work</summary>
-    <p>Placement is untimed. The next problem adapts to how you answered the previous ones. You get two tries per problem in placement and in rated sets. Each result is compared with that problem’s own Elo.</p>
+    <p>Placement is untimed. The next problem adapts to how you answered the previous ones. You get two tries per problem in placement and in rated sets. Each result is compared with that problem’s own Elo. A first-try solve earns full rating credit and a second-try solve earns half.</p>
     <p>The placement set establishes a provisional starting rating for all four subjects. Later sets update each subject independently. Each subject stays provisional until you submit ${A.SUBJECT_PROVISIONAL} more answers in that subject. Overall Elo stays provisional while any subject rating is provisional.</p>
     <p>Rated sets have one timer. Harder problems add more time to the set: 2, 3, 5, 7 or 9 minutes per problem at Elo cutoffs of 1000, 1600, 2200 and 2800. Submitting grades any saved answers. Unanswered problems count as misses.</p>
     <p>Each problem updates the subjects it covers. Overall Elo is the average of your three lowest subject ratings. Solving a harder problem earns more Elo, and missing an easier one costs more. Early ratings adjust faster.</p></details>`;
@@ -41,31 +41,47 @@
     return `<fieldset class="arena-options"><legend>${legend}</legend><div>${options.map(([id, label]) =>
       `<label><input type="radio" name="${name}" value="${id}" ${id === value ? 'checked' : ''}><span>${label}</span></label>`).join('')}</div></fieldset>`;
   }
+  function focusOf(state, events) {
+    const id = events[0].session;
+    const explicit = events.find(event => event.focus)?.focus || (state.session?.id === id ? state.session.focus : null);
+    if (explicit) return explicit;
+    const shared = events[0].subjects.filter(subject => events.every(event => event.subjects.includes(subject)));
+    return shared.length === 1 ? shared[0] : 'mixed';
+  }
+  function ratingRange(points, focus) {
+    if (focus === 'mixed') {
+      const after = points.at(-1)?.rating;
+      return {before:after - points.reduce((sum,point) => sum + point.delta,0), after};
+    }
+    const changes = points.flatMap(point => point.subjectChanges.filter(change => change.id === focus));
+    return {before:changes[0]?.before, after:changes.at(-1)?.after};
+  }
   function showHistory(ctx, state, stats) {
     const box = ctx.container.querySelector('[data-arena-log]');
     const button = box.parentElement.querySelector('[data-earlier]');
-    const sessions = new Map();
+    const sessions = new Map(), pointsBySession = new Map();
     state.events.forEach(event => {
       if (state.session?.id === event.session && !state.session.closed) return;
-      sessions.set(event.session, event);
+      if (!sessions.has(event.session)) sessions.set(event.session,[]);
+      sessions.get(event.session).push(event);
     });
-    const bySession = new Map();
     stats.points.forEach(point => {
-      const entry = bySession.get(point.event.session) || {delta:0, placement:point.calibration};
-      entry.delta += point.delta;
-      entry.rating = point.rating;
-      bySession.set(point.event.session, entry);
+      if (!pointsBySession.has(point.event.session)) pointsBySession.set(point.event.session,[]);
+      pointsBySession.get(point.event.session).push(point);
     });
     const groups = [...sessions.values()].reverse();
     if (!groups.length) { box.textContent = 'Completed sets will appear here for review.'; return; }
     let shown = 0;
     function more() {
-      for (const event of groups.slice(shown, shown + 4)) {
-        const result = bySession.get(event.session);
-        const date = new Date(event.at).toLocaleDateString(undefined, {month:'short',day:'numeric',year:'numeric'});
+      for (const events of groups.slice(shown,shown+4)) {
+        const event = events.at(-1), points = pointsBySession.get(event.session) || [];
+        const placement = event.placement || points.length && points.every(p => p.calibration);
+        const focus = focusOf(state,events);
+        const {before,after} = ratingRange(points,placement ? 'mixed' : focus);
+        const date = new Date(event.at).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
         box.insertAdjacentHTML('beforeend', `<div class="arena-log arena-history-row">
-          <a href="${reviewUrl(event.session)}">${event.placement || result?.placement ? 'Placement' : 'Rated set'} <small>${date}</small></a>
-          <span>${result ? number(result.rating) + ' Elo' + (result.placement ? '' : ' · ' + signed(result.delta)) : 'No rating change'}</span></div>`);
+          <a href="${reviewUrl(event.session)}">${placement ? 'Placement' : ratedSetTitle(ctx,focus,events)} <small>${date}</small></a>
+          <span>${Number.isFinite(after) ? number(after) + ' Elo' + (placement ? '' : ' · ' + signed(after-before)) : 'No rating change'}</span></div>`);
         shown++;
       }
       button.hidden = shown === groups.length;
@@ -77,26 +93,50 @@
     };
     more();
   }
+  function distinctStudyRows(rows) {
+    const anchors = new Set();
+    return rows.filter(row => {
+      if (anchors.has(row.missedSlug)) return false;
+      anchors.add(row.missedSlug);
+      return true;
+    });
+  }
+  function reviewedProblemLink(ctx, event) {
+    const p = ctx.lookup(event.item);
+    const name = ctx.escape(p ? ctx.refShort(p.ref) : event.item);
+    return `<a href="${reviewUrl(event.session)}/${event.reviewNumber}">${name}</a>`;
+  }
+  function reviewedProblemsHtml(ctx, examples) {
+    const links = examples.map(event => reviewedProblemLink(ctx,event));
+    if (links.length < 3) return links.join(' and ');
+    return links.slice(0,-1).join(', ') + ', and ' + links.at(-1);
+  }
+  function studyReasonHtml(ctx, examples) {
+    const missed = examples.filter(event => event.outcome === 'incorrect');
+    const retried = examples.filter(event => event.outcome === 'correct');
+    const reasons = [];
+    if (missed.length) reasons.push('you missed ' + reviewedProblemsHtml(ctx,missed));
+    if (retried.length) reasons.push('you needed two tries on ' + reviewedProblemsHtml(ctx,retried));
+    return 'Because ' + reasons.join(' and ') + '.';
+  }
   function studyRowsHtml(ctx, rows) {
     return `<div class="arena-study-list">${rows.map(r => {
-      const p = ctx.lookup(r.missedSlug);
       const lesson = ctx.studyLink(r.id, r.missedSlug), practice = ctx.practiceLink(r.id);
       return `<article class="arena-study-row"><div><h4>${ctx.topicLabel(ctx.nodes.get(r.id))}</h4>
-        <small>${r.misses} of ${r.attempts} recent ${r.attempts === 1 ? 'attempt' : 'attempts'} missed</small></div>
+        <p class="arena-note">${studyReasonHtml(ctx,r.examples)}</p></div>
         <ul class="study-links">
-          ${p ? `<li><span>Revisit</span><a href="#/problem/${p.slug}">${ctx.escape(ctx.refShort(p.ref))}</a></li>` : ''}
           ${lesson ? `<li><span>Study</span>${lesson}</li>` : ''}
           ${practice ? `<li><span>Practice</span>${practice}</li>` : ''}
         </ul></article>`;
     }).join('')}</div>`;
   }
   function studyHtml(ctx, rows) {
-    if (!rows.length) return '<p class="arena-note">Missed topics from Arena and Practice will appear here with links to review and practice them.</p>';
-    return `<p class="arena-note">Start with a recent miss, review the idea, then try a fresh problem.</p>
+    if (!rows.length) return '<p class="arena-note">Missed topics from Arena will appear here with links to review and practice them.</p>';
+    return `<p class="arena-note">Review recent misses and problems that took two tries.</p>
       ${studyRowsHtml(ctx,rows.slice(0,3))}
       ${rows.length > 3 ? '<button type="button" class="hp-btn hp-btn-soft" data-study-all aria-haspopup="dialog">See all</button>' : ''}`;
   }
-  function subjectDetails(ctx, id, stats, recommendations) {
+  function subjectDetails(ctx, id, stats, reviews) {
     const results = stats.points.filter(point => point.event.subjects.includes(id));
     const subject = stats.subjects.get(id);
     const rated = results.filter(point => !point.calibration);
@@ -104,27 +144,24 @@
     const answered = rated.filter(({event}) => event.outcome !== 'unanswered').length;
     const provisional = stats.baseline && answered < A.SUBJECT_PROVISIONAL ?
       `<p class="arena-note">${answered} of ${A.SUBJECT_PROVISIONAL} answered rated problems to finish subject placement.</p>` : '';
-    const trend = stats.baseline && rated.length ?
-      `<p><strong>${signed(subject.rating - stats.baseline.rating)} Elo</strong> since placement · ${rated.length} rated ${rated.length === 1 ? 'problem' : 'problems'}</p>` : '';
-    const topic = recommendations.find(row => row.id.startsWith(id + '.'));
+    const change = stats.baseline && subject ? subject.rating - stats.baseline.rating : null;
+    const trend = change != null && rated.length ?
+      `<p>${change === 0 ? '−<strong>0 Elo</strong>' : `<strong>${signed(change)} Elo</strong>`} since placement ·
+        ${rated.length} rated ${rated.length === 1 ? 'problem' : 'problems'}</p>` : '';
     return `${trend}${provisional}${latest.length ? `<h4>Recent results</h4><ul>${latest.map(({event}) => {
-      const p = ctx.lookup(event.slug);
-      return `<li>${p ? `<a href="#/problem/${p.slug}">${ctx.escape(ctx.refShort(p.ref))}</a>` : ctx.escape(event.slug)}
+      const review = reviews.get(event.slug);
+      return `<li>${review ? reviewedProblemLink(ctx,review) : ctx.escape(event.slug)}
         <span>${statusLabel(event.outcome)}</span></li>`;
-    }).join('')}</ul>` : '<p>No graded problems in this subject yet.</p>'}
-    ${topic ? `<div class="study-links">${ctx.practiceLink(topic.id)}</div>` : ''}`;
+    }).join('')}</ul>` : '<p>No graded problems in this subject yet.</p>'}`;
   }
   function dashboard(ctx, state, stats, history) {
     const t = stats.overall, placed = !!stats.baseline, s = state.session, active = s && !s.closed;
     const prev = s || {};
     const established = ctx.roots.filter(root => stats.subjects.get(root.id)?.answered >= A.SUBJECT_PROVISIONAL).length;
-    const recommendations = A.recommendations(history, ctx.lookup).filter(row => ctx.nodes.has(row.id));
-    const anchors = new Set();
-    const studyRows = recommendations.filter(row => {
-      if (anchors.has(row.missedSlug)) return false;
-      anchors.add(row.missedSlug);
-      return true;
-    });
+    const arenaHistory = history.filter(event => event.source === 'arena' && event.session && event.reviewNumber);
+    const reviews = new Map(arenaHistory.map(event => [event.item,event]));
+    const recommendations = A.recommendations(arenaHistory, ctx.lookup).filter(row => ctx.nodes.has(row.id));
+    const studyRows = distinctStudyRows(recommendations);
     const postPlacement = stats.points.filter(point => !point.calibration);
     const ratedAnswers = postPlacement.filter(p => p.event.answer);
     const accuracy = points => points.length ? Math.round(100 * points.filter(p => p.event.outcome === 'correct').length / points.length) + '%' : '—';
@@ -141,16 +178,17 @@
         `<p>Take one set of ${A.PLACEMENT_SIZE} problems across a range of difficulties. Your starting Elo applies to all four subjects.</p>
         ${t.count ? `<small>${t.count} earlier results included</small>` : ''}`}</div>
       ${placed ? `<div class="arena-plot"><h4>Rating trend</h4>${chart(stats.points)}</div>` :
-        `<div class="arena-placement"><h4>What counts</h4><p>You get two tries per problem. A solve on either try counts once. Blanks count as misses when you submit. Placement shows one problem at a time.</p></div>`}
+        `<div class="arena-placement"><h4>What counts</h4><p>You get two tries per problem. A second-try solve earns half credit toward your placement rating. Blanks count as misses when you submit. Placement shows one problem at a time.</p></div>`}
       ${placed ? `<div class="arena-metrics">
         <div><strong>${number(setPoints(stats.points).reduce((max,p) => Math.max(max, p.rating), 0))}</strong><small>Peak Elo</small></div>
-        ${ratedAnswers.length ? `<div><strong>${accuracy(ratedAnswers)}</strong><small>Accuracy on submitted answers</small></div>` : ''}
+        ${ratedAnswers.length ? `<div><strong>${accuracy(ratedAnswers)}</strong><small>Lifetime accuracy on submitted rated answers</small></div>` : ''}
         ${postPlacement.length ? `<div><strong>${new Set(postPlacement.map(p => p.event.session)).size}</strong><small>Rated sets</small></div>` : ''}</div>` : ''}
       </section>
       <section class="sh-section" id="arena-session"><h3>${(active ? s.placement : !placed) ? 'Placement set' : 'Rated session'}</h3>
       ${active ? `<p class="arena-note">${s.placement ? 'Mixed subjects' : (opts.get(s.focus) || 'Mixed subjects') + ' · ' + paceNames[s.pace]} · ${s.round ? s.placement ? s.length + ' problems · Untimed' : s.round.items.length + ' problems · ' + s.round.limitMs / 60000 + ' min' : (s.length - A.remaining(state)) + ' of ' + s.length + ' answered'}</p>
-        <a class="hp-btn arena-primary" href="${sessionUrl}">${A.remaining(state) ? 'Resume session' : 'See session result'} ${ctx.icon('arrow-right')}</a>` :
-        `<form id="arena-start">${placed ? `${selector('focus', 'Subject', [['mixed','Mixed subjects'], ...opts], opts.has(prev.focus) ? prev.focus : 'mixed')}
+        <div class="arena-resume"><a class="hp-btn arena-primary" href="${sessionUrl}">${A.remaining(state) ? 'Resume session' : 'See session result'} ${ctx.icon('arrow-right')}</a>
+        ${s.round && !s.placement ? '<span class="arena-resume-time"><span class="arena-clock" aria-label="Time remaining" role="timer"></span> left</span>' : ''}</div>` :
+        `<form id="arena-start">${placed ? `${selector('focus', 'Subject', [...opts], opts.has(prev.focus) ? prev.focus : opts.keys().next().value)}
         ${selector('pace','Difficulty',Object.entries(paceNames),prev.pace || 'matched')}
         ${selector('length','Problems',A.LENGTHS.map(n => [String(n), String(n)]), String(A.LENGTHS.includes(prev.length) ? prev.length : 5))}<p class="arena-note" data-arena-target aria-live="polite"></p>` :
         '<p class="arena-note">Work at your own pace.</p>'}
@@ -160,7 +198,7 @@
         ${[...opts].map(([id, label]) => { const r = stats.subjects.get(id);
           return `<tr><th scope="row"><button type="button" class="arena-subject-toggle" data-subject-toggle aria-expanded="false" aria-controls="arena-subject-${id}">${label}</button></th><td>${placed && r ? number(r.rating) : '—'}${placed && r && r.answered < A.SUBJECT_PROVISIONAL ? '<small>Provisional</small>' : ''}</td>
           <td>${accuracy(stats.points.filter(p => p.event.answer && p.event.subjects.includes(id)))}</td></tr>
-          <tr class="arena-subject-details" id="arena-subject-${id}" hidden><td colspan="3">${subjectDetails(ctx,id,stats,recommendations)}</td></tr>`; }).join('')}</tbody></table></div></section>
+          <tr class="arena-subject-details" id="arena-subject-${id}" hidden><td colspan="3">${subjectDetails(ctx,id,stats,reviews)}</td></tr>`; }).join('')}</tbody></table></div></section>
       <section class="sh-section" id="arena-study"><h3>What to study</h3>${studyHtml(ctx, studyRows)}</section>
       <section class="sh-section" id="arena-history"><h3>Session history</h3><div data-arena-log></div><button class="hp-btn hp-btn-soft" data-earlier hidden>Earlier sessions</button></section></div>`;
     for (const button of ctx.container.querySelectorAll('[data-subject-toggle]')) {
@@ -171,6 +209,8 @@
         if (!detail.hidden) ctx.renderMath(detail);
       };
     }
+    const countdown = ctx.container.querySelector('.arena-resume .arena-clock');
+    if (countdown) showCountdown(countdown,s);
     showHistory(ctx, state, stats);
     ctx.renderMath(ctx.container);
     const startForm = ctx.container.querySelector('#arena-start');
@@ -186,11 +226,24 @@
     startForm?.addEventListener('change', reportTarget);
     const studyAll = ctx.container.querySelector('[data-study-all]');
     if (studyAll) studyAll.onclick = () => {
-      const dialog = ctx.openDialog(`<header class="arena-study-dialog-head"><h2 id="arena-study-modal-title">Study recommendations</h2>
-        <button type="button" class="hp-btn hp-btn-soft" autofocus>Close</button></header>${studyRowsHtml(ctx,studyRows)}`, d => {
+      const filters = selector('study-subject','Subject',[['all','All subjects'],...opts],'all');
+      const dialog = ctx.openDialog(`<header class="arena-study-dialog-head">
+        <div><h2 id="arena-study-modal-title">Study recommendations</h2>
+        <button type="button" class="hp-btn hp-btn-soft" autofocus>Close</button></div>${filters}</header>
+        <div class="arena-study-dialog-body">${studyRowsHtml(ctx,studyRows)}</div>`, d => {
         d.classList.add('arena-study-dialog');
         d.setAttribute('aria-labelledby','arena-study-modal-title');
         d.querySelector('button').onclick = () => d.close();
+        const list = d.querySelector('.arena-study-dialog-body');
+        d.addEventListener('change',e => {
+          if (e.target.name !== 'study-subject') return;
+          const subject = e.target.value;
+          const rows = subject === 'all' ? studyRows : distinctStudyRows(recommendations.filter(row =>
+            row.id === subject || row.id.startsWith(subject + '.')));
+          list.innerHTML = rows.length ? studyRowsHtml(ctx,rows) : '<p class="arena-note">No recommendations in this subject yet.</p>';
+          list.scrollTop = 0;
+          ctx.renderMath(list);
+        });
         const close = () => { if (d.open) d.close(); };
         window.addEventListener('hashchange',close);
         d.addEventListener('close',() => window.removeEventListener('hashchange',close),{once:true});
@@ -202,7 +255,7 @@
       const form = e.currentTarget, values = new FormData(form);
       form.querySelector('button').disabled = true;
       try {
-        await A.change(current => A.start(current, values.get('focus') || 'mixed', values.get('pace') || 'matched', +(values.get('length') || 5)));
+        await A.change(current => A.start(current, values.get('focus') || opts.keys().next().value, values.get('pace') || 'matched', +(values.get('length') || 5)));
         if (form.isConnected) location.hash = sessionUrl;
       } catch { saveError(form); form.querySelector('button').disabled = false; }
     });
@@ -237,7 +290,7 @@
     const response = answer ? (firstMiss ? 'Second try ' : 'Your answer ') + format(answer) :
       invalidDraft ? 'Unaccepted answer format · ' + format(invalidDraft) :
         outcome === 'incorrect' ? 'Gave up' : 'No answer submitted';
-    const accepted = acceptedAnswer(ctx, slug);
+    const accepted = acceptedAnswer(ctx,slug);
     return first + response + (reveal && outcome !== 'correct' && accepted ? ' · Accepted answer ' + accepted : '');
   }
   async function review(ctx, state, stats, route) {
@@ -248,7 +301,11 @@
     const placement = events.some(e => e.placement) || (points.length > 0 && points.every(p => p.calibration));
     const startedHere = stats.baseline?.event.session === id;
     const title = placement ? 'Placement complete' : 'Rated set complete';
-    const subtitle = events.length + (events.length === 1 ? ' problem' : ' problems') +
+    const focus = focusOf(state,events);
+    const topic = ctx.roots.find(root => root.id === focus);
+    const subjectName = topic ? ctx.topicLabel(topic) : 'Mixed subjects';
+    const difficulty = placement ? '' : ratedSetTitle(ctx,focus,events) + ' · ';
+    const subtitle = difficulty + events.length + (events.length === 1 ? ' problem' : ' problems') +
       (events[0].limitMs ? ' · ' + events[0].limitMs / 60000 + ' minutes' : '');
     const detailUrl = i => reviewUrl(id) + '/' + (i + 1);
     if (route.reviewProblem != null) {
@@ -264,7 +321,8 @@
               aria-label="Problem ${i+1}, ${statusLabel(row.outcome)}" ${i === index ? 'aria-current="step"' : ''}>${i+1}</a>`).join('')}</nav></section>
         <section class="sh-section practice-question"><h3 tabindex="-1">Problem ${index+1}${p ?
           ' · <a class="practice-prob-link" href="#/problem/' + p.slug + '">' + ctx.escape(ctx.refShort(p.ref)) + '</a>' : ''}</h3>
-          ${p ? `<div class="arena-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available.</p>'}</section>
+          ${!p ? '<p>This problem is no longer available.</p>' : event.external && p.url ? ctx.paperPrompt(p) :
+            `<div class="arena-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>`}</section>
         <section class="sh-section practice-review detail"><h3>Your answer</h3>
           <p class="practice-result">${statusLabel(event.outcome)}${event.outcome !== 'seen' ? ' · ' + responseText(ctx,event) : ''}</p>
           <div data-arena-explanation></div>
@@ -274,7 +332,7 @@
       ctx.container.querySelector('.practice-question h3').focus({preventScroll:true});
       ctx.renderMath(ctx.container);
       if (!p) return;
-      ctx.showPrompt(p);
+      if (!event.external) ctx.showPrompt(p);
       try {
         await ctx.loadExplanation(p);
         if (explanation.isConnected) { explanation.innerHTML = ctx.reviewExplanation(p); ctx.renderMath(explanation); }
@@ -283,31 +341,31 @@
       }
       return;
     }
-    const byProblem = new Map(points.map(point => [point.event.slug, point]));
     const rating = points.at(-1)?.rating;
-    const delta = points.reduce((total, point) => total + point.delta, 0);
+    const {before,after} = ratingRange(points,focus);
+    const ratingChange = !placement && Number.isFinite(before) && Number.isFinite(after) ?
+      `<p class="practice-results-meta arena-rating-change"><strong>${topic ? subjectName : 'Overall'}</strong> ·
+        ${number(before)} ${after >= before ? '+' : '−'} ${number(Math.abs(after-before))} → ${number(after)} Elo</p>` : '';
     const counts = {Correct:0, Incorrect:0, Unanswered:0, 'Previously seen':0};
     const outcomes = events.map(e => [e.slug, statusLabel(e.outcome)]);
     outcomes.forEach(([, label]) => counts[label]++);
     const rows = events.map((event, index) => {
-      const point = byProblem.get(event.slug);
       return ctx.reviewRow({href:detailUrl(index), index, number:index+1, problem:ctx.lookup(event.slug),
-        result:statusLabel(event.outcome), detail:point && !placement ? signed(point.delta) + ' Elo' : '',
+        result:statusLabel(event.outcome),
         summary:responseText(ctx,event,false)});
     }).join('');
     const rated = events.length - counts['Previously seen'];
     const figures = [[counts.Correct + '/' + rated,'Correct'],[counts.Incorrect,'Incorrect'],[counts.Unanswered,'Unanswered']];
-    if (Number.isFinite(rating)) figures.unshift([placement ? number(rating) : signed(delta),
-      placement ? startedHere ? 'Provisional starting Elo' : 'Placement estimate' : 'Elo this set']);
+    if (placement && Number.isFinite(rating)) figures.unshift([number(rating),
+      startedHere ? 'Provisional starting Elo' : 'Placement estimate']);
     const note = [
       events.some(e => e.timedOut) ? 'Submitted when time ran out.' : '',
-      !placement && Number.isFinite(rating) ? 'Overall rating after this set is ' + number(rating) + ' Elo.' : '',
       placement ? startedHere ? 'Your starting Elo applies to all four subjects.' :
         points.length ? 'These results count toward your starting rating.' : 'Submit an answer in placement to establish a starting rating.' : ''
     ].filter(Boolean).join(' ');
     ctx.container.innerHTML = ctx.reviewResults({back:back(ctx), title, subtitle, arena:true, stats:figures, rows,
       reviewUrl:detailUrl(0), insights:ctx.reviewInsights(outcomes,counts,detailUrl),
-      meta:note ? `<p class="practice-results-meta">${note}</p>` : ''});
+      intro:ratingChange, meta:note ? `<p class="practice-results-meta">${note}</p>` : ''});
     const heading = ctx.container.querySelector('h1');
     heading.tabIndex = -1;
     heading.focus({preventScroll:true});
@@ -327,12 +385,14 @@
   }
   async function findProblem(ctx, seen, stats, session, current, savedSlug, picked = []) {
     let p = savedSlug && ctx.lookup(savedSlug);
+    const pool = ctx.pool;
+    const allowExternal = ctx.allowExternal;
     while (current()) {
-      p ||= A.choose(ctx.pool, seen, stats, session, p => subjectIds(ctx,p), Math.random, picked);
+      p ||= A.choose(pool, seen, stats, session, p => subjectIds(ctx,p), Math.random, picked);
       if (!p) return {status:'empty'};
       const identity = A.canonical(p.identity);
-      if (ctx.pool.includes(p) && !seen.has(identity) && !missing.has(p.slug)) {
-        const status = await ctx.loadPrompt(p);
+      if (pool.includes(p) && !seen.has(identity) && (!missing.has(p.slug) || allowExternal && p.url)) {
+        const status = await ctx.loadPrompt(p,allowExternal);
         if (status !== 'missing') return {status, p};
         missing.add(p.slug);
       }
@@ -343,7 +403,7 @@
   }
   function noFreshProblems(ctx, box, session) {
     box.innerHTML = `<h1>Too few fresh problems</h1><p>${session.placement ?
-      'There are no unopened placement problems available.' : 'Try mixed subjects to draw from a larger pool.'}</p>
+      'There are no unopened placement problems available.' : 'Choose another subject to draw from a larger pool.'}</p>
       <button class="hp-btn arena-primary">Back to Arena</button>`;
     box.querySelector('button').onclick = async () => {
       try {
@@ -397,9 +457,10 @@
     let response = box.querySelector('.arena-response');
     const opened = !response;
     if (opened) {
-      box.insertAdjacentHTML('beforeend', `<div class="arena-st" data-slug="${p.slug}"><div class="prob-statement"></div></div><div class="arena-response"></div>`);
+      box.insertAdjacentHTML('beforeend', `${slot.external ? ctx.paperPrompt(p) :
+        `<div class="arena-st" data-slug="${p.slug}"><div class="prob-statement"></div></div>`}<div class="arena-response"></div>`);
       response = box.querySelector('.arena-response');
-      ctx.showPrompt(p);
+      if (!slot.external) ctx.showPrompt(p);
       box.querySelector('h1, h2').focus({preventScroll:true});
     }
     response.innerHTML = `<form class="practice-answer"><h3>Your answer</h3>
@@ -455,7 +516,7 @@
     }
     form.onsubmit = e => {
       e.preventDefault();
-      const result = gradeAnswer(p.slug, draft);
+      const result = gradeAnswer(p.slug,draft);
       if (!result) {
         status.textContent = 'Check the answer format before submitting.';
         input?.focus();
@@ -468,12 +529,54 @@
         finish({outcome:'incorrect', answer:''});
     };
   }
+  function estimatedDifficulty(items) {
+    const average = items.reduce((sum,item) => sum + item.elo,0) / items.length;
+    return Math.round(average/50)*50;
+  }
   function ratedSetTitle(ctx, focus, items) {
     const subject = ctx.roots.find(root => root.id === focus);
-    const average = items.reduce((sum,item) => sum + item.elo,0) / items.length;
-    return `${subject ? ctx.topicLabel(subject) : 'Mixed subjects'} · About ${number(Math.round(average/50)*50)} Elo`;
+    return `${subject ? ctx.topicLabel(subject) : 'Mixed subjects'} ${estimatedDifficulty(items)}`;
   }
   function setProblemUrl(i) { return i ? sessionUrl + '/' + (i+1) : sessionUrl; }
+  function expireRatedSet(id) {
+    return A.change(st => {
+      const session = st.session;
+      if (session?.id !== id || !session.round || session.closed || Date.now() < A.submissionAt(session)) return false;
+      return A.submitRound(st,id,gradeAnswer);
+    });
+  }
+  let expiryTimer;
+  function watchDeadline(ctx, session) {
+    clearTimeout(expiryTimer);
+    if (!session?.round || session.closed) return;
+    const due = A.submissionAt(session);
+    if (!Number.isFinite(due)) return;
+    expiryTimer = setTimeout(async () => {
+      try {
+        const saved = await expireRatedSet(session.id);
+        if (saved.session?.id === session.id && saved.session.closed &&
+            (location.hash === homeUrl || location.hash === sessionUrl || location.hash.startsWith(sessionUrl + '/'))) ctx.refresh();
+      } catch {
+        // The active question's timer or the next Arena visit retries the save.
+      }
+    },Math.max(0,due - Date.now()));
+  }
+  function showCountdown(timer, session, onExpire) {
+    function tick() {
+      if (!timer.isConnected) { clearInterval(interval); return; }
+      const ms = A.remainingMs(session);
+      const seconds = Math.ceil(ms/1000);
+      timer.textContent = Math.floor(seconds/60) + ':' + String(seconds%60).padStart(2,'0');
+      timer.classList.toggle('is-low',seconds <= 60);
+      if (!ms) {
+        clearInterval(interval);
+        onExpire?.();
+      }
+    }
+    const interval = setInterval(tick,250);
+    tick();
+  }
+  let roundController;
   async function ratedSet(ctx, state, stats, history, index) {
     const s = state.session, id = s.id;
     const box = loading(ctx, s.round ? 'Loading your set…' : s.placement ? 'Finding your first problem…' : 'Building your set…');
@@ -492,7 +595,8 @@
           if (!stats.subjects.has(subject)) stats.subjects.set(subject, {count:0});
           stats.subjects.get(subject).count++;
         }
-        problems.push({slug:p.slug, identity:p.identity, elo:p.elo, subjects:subjectIds(ctx,p)});
+        problems.push({slug:p.slug, identity:p.identity, elo:p.elo, subjects:subjectIds(ctx,p),
+          external:status === 'external'});
       }
       if (!current()) return;
       if (!problems.length) return noFreshProblems(ctx, box, s);
@@ -500,14 +604,15 @@
       if (!current()) return;
       if (latest.session?.id !== id || !latest.session.round || latest.session.closed) { ctx.refresh(); return; }
       state = latest;
+      watchDeadline(ctx,state.session);
     }
     const round = state.session.round;
     index = s.placement ? A.placementIndex(round) : Math.min(index, round.items.length-1);
     const item = round.items[index], p = ctx.lookup(item.slug);
-    const controller = new AbortController();
+    const controller = roundController = new AbortController();
     const onLeave = () => controller.abort();
     window.addEventListener('hashchange',onLeave,{once:true,signal:controller.signal});
-    let finishing = false, saveFailed = false;
+    let finishing = false, saveFailed = false, latest = state;
     async function submit() {
       if (finishing || !box.isConnected) return;
       finishing = true;
@@ -527,36 +632,34 @@
         const label = result || (row?.draft ? 'Draft saved' : 'Unanswered');
         const tint = result ? ' practice-reviewed' : row?.draft ? ' practice-answered' : '';
         const current = i === index ? ' aria-current="step"' : '';
-        const attributes = `class="cn-num${tint}${i === index ? ' cn-here' : ''}" data-problem-index="${i}" data-result="${result}" aria-label="Problem ${i+1}, ${label}"${current}`;
+        const retry = row?.firstMiss && !row.outcome ? ' data-retry' : '';
+        const attributes = `class="cn-num${tint}${i === index ? ' cn-here' : ''}" data-problem-index="${i}" data-result="${result}" aria-label="Problem ${i+1}, ${label}"${current}${retry}`;
         return s.placement ? `<span ${attributes}>${i+1}</span>` :
           `<a ${attributes} href="${setProblemUrl(i)}">${i+1}</a>`;
       }).join('')}</nav>
       <div class="practice-session-actions"><span data-arena-checked>${round.items.filter(row => row.outcome && row.outcome !== 'seen').length} checked</span>
-      <button type="button" class="hp-btn hp-btn-soft" data-submit-set>Submit set</button></div></section>`);
+      <button type="button" class="hp-btn hp-btn-soft" data-submit-set>Submit set</button></div>
+      <p class="arena-note" data-arena-finish-note role="status"${A.roundComplete(state.session) ? '' : ' hidden'}>Set complete. Submitting in three seconds…</p></section>`);
     const nav = box.previousElementSibling, timer = nav.querySelector('.arena-clock');
-    let clock;
-    function tick() {
-      if (!nav.isConnected) { clearInterval(clock); controller.abort(); return; }
-      const ms = A.remainingMs(state.session);
-      const seconds = Math.ceil(ms/1000);
-      timer.textContent = Math.floor(seconds/60) + ':' + String(seconds%60).padStart(2,'0');
-      timer.classList.toggle('is-low', seconds <= 60);
-      if (!ms && !saveFailed) submit();
-    }
-    if (timer) {
-      clock = setInterval(tick, 250);
-      tick();
-    }
+    if (timer) showCountdown(timer,state.session,() => { if (!saveFailed) submit(); });
     nav.querySelector('[data-submit-set]').onclick = async () => {
-      if (saveFailed || await ctx.confirm({title:'Submit this set?', text:s.placement ? 'Saved answers will be graded. Opened problems left blank count as misses.' : 'Saved answers will be graded. Any unanswered problems count as misses.', ok:'Submit set', signal:controller.signal})) submit();
+      if (saveFailed || A.roundComplete(latest.session)) { submit(); return; }
+      try {
+        const current = await A.read();
+        if (!box.isConnected || finishing) return;
+        if (current.session?.id !== id || current.session.closed) { ctx.refresh(); return; }
+        if (A.roundComplete(current.session) || await ctx.confirm({title:'Submit this set?',
+          text:s.placement ? 'Saved answers will be graded. Opened problems left blank count as misses.' :
+            'Saved answers will be graded. Any unanswered problems count as misses.',
+          ok:'Submit set',signal:controller.signal})) submit();
+      } catch { saveError(nav); }
     };
-    const ready = p && await ctx.loadPrompt(p);
+    const ready = p && (item.external && p.url ? 'external' : await ctx.loadPrompt(p));
     if (!box.isConnected || finishing) return;
-    if (ready !== 'ready') return promptError(ctx, box, 'Your answers are saved. Reconnect to view this problem.');
+    if (ready !== 'ready' && ready !== 'external') return promptError(ctx, box, 'Your answers are saved. Reconnect to view this problem.');
     box.classList.add('practice-question');
-    box.innerHTML = '<h2 class="sr-only" tabindex="-1">Problem statement</h2>';
+    box.innerHTML = `<h2 class="arena-question-heading" tabindex="-1">Problem ${index+1}</h2>`;
     const selected = nav.querySelector('[aria-current="step"]');
-    let latest = state;
     let nextButton;
     const lastPlacementProblem = () => round.adaptive ? round.items.length >= s.length :
       latest.session.round.items.every(row => row.outcome);
@@ -571,12 +674,17 @@
         }
         const label = updated.outcome ? statusLabel(updated.outcome) : 'Incorrect';
         selected.dataset.result = label;
+        selected.toggleAttribute('data-retry',!!updated.firstMiss && !updated.outcome);
         selected.setAttribute('aria-label', `Problem ${index+1}, ${label}${updated.outcome ? '' : ', retry available'}`);
         selected.classList.remove('practice-answered');
         selected.classList.add('practice-reviewed');
         nav.querySelector('[data-arena-checked]').textContent =
           latest.session.round.items.filter(row => ['correct','incorrect'].includes(row.outcome)).length + ' checked';
         showSlot(updated);
+        if (A.roundComplete(latest.session)) {
+          nav.querySelector('[data-arena-finish-note]').hidden = false;
+          watchDeadline(ctx,latest.session);
+        }
       }, s.placement);
       if (nextButton) {
         nextButton.disabled = !slot.outcome;
@@ -601,13 +709,13 @@
             const current = () => box.isConnected && !finishing;
             const {status, p:next} = await findProblem(ctx,seen,A.placementStats(latest),s,current,null,round.items);
             if (!current()) return;
-            if (status !== 'ready') {
+            if (status !== 'ready' && status !== 'external') {
               const note = box.querySelector('.arena-status');
               note.textContent = status === 'offline' ? 'The next problem could not load. Try again.' : 'No fresh problems remain. Submit to save your results.';
               nextButton.disabled = status !== 'offline';
               return;
             }
-            candidate = {slug:next.slug, identity:next.identity, elo:next.elo, subjects:subjectIds(ctx,next)};
+            candidate = {slug:next.slug, identity:next.identity, elo:next.elo, subjects:subjectIds(ctx,next), external:status === 'external'};
           }
           await A.change(st => A.advancePlacement(st,id,index,candidate));
           if (box.isConnected && !finishing) ctx.refresh();
@@ -624,15 +732,17 @@
   }
   let draw = 0;
   async function render(ctx, route) {
+    roundController?.abort();
     const renderId = ++draw, hash = location.hash;
     const current = () => draw === renderId && location.hash === hash;
     ctx.container.innerHTML = '<section class="sh-section"><h1>Arena</h1><p role="status">Loading your progress…</p></section>';
     try {
       let state = await A.read();
-      if (state.session?.round && !state.session.closed && !A.remainingMs(state.session))
-        state = await A.change(st => A.submitRound(st,state.session.id,gradeAnswer));
+      if (state.session?.round && !state.session.closed && Date.now() >= A.submissionAt(state.session))
+        state = await expireRatedSet(state.session.id);
       const history = await ctx.history(state);
       if (!current()) return;
+      watchDeadline(ctx,state.session);
       const stats = A.ratings(state.events, state.session?.placement && !state.session.closed ? state.session.id : null);
       const s = state.session;
       if (route.review) await review(ctx,state,stats,route);

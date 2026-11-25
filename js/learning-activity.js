@@ -55,10 +55,15 @@
     }
     if (arena) {
       const state = arenaState ?? await arena.read(root.StudyStorage?.enabled ? undefined : storage);
-      for (const e of state.events) events.push({
-        id: "arena:" + e.identity, source: "arena", type: ["seen", "unanswered"].includes(e.outcome) ? "exposure" : "attempt",
-        kind: "problem", item: e.slug, at: e.at, outcome: e.outcome
-      });
+      const indices = new Map();
+      for (const e of state.events) {
+        const reviewNumber = (indices.get(e.session) || 0) + 1;
+        indices.set(e.session,reviewNumber);
+        events.push({
+          id:"arena:" + e.identity, source:"arena", type:["seen","unanswered"].includes(e.outcome) ? "exposure" : "attempt",
+          kind:"problem", item:e.slug, at:e.at, outcome:e.outcome, retry:!!e.firstMiss, session:e.session, reviewNumber
+        });
+      }
     }
     if (kind) events = events.filter(event => event.kind === kind);
     return events.map(event => event.kind === "problem" ? { ...event, canonicalId: canonical(event.item) } : event)
