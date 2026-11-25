@@ -33,9 +33,10 @@ async function check(browser) {
   const canonical = await page.evaluate(slug => Arena.canonical(slug),previouslyOpened.item);
   assert(!migrated.arena.session.round.items.some(item => item.identity === canonical));
   assert(!migrated.arena.session.round.items.some(item => item.identity === attempt.identity));
-  assert.equal(new Set(migrated.arena.session.round.items.map(item => item.identity)).size,12);
-  assert(new Set(migrated.arena.session.round.items.map(item => item.elo)).size >= 4);
-  assert.equal(migrated.arena.session.round.items.length,12);
+  assert.equal(migrated.arena.session.round.items.length,1);
+  assert.equal(await page.locator('.arena-set-nav .cn-nums a').count(),0);
+  assert.equal(await page.getByRole('timer').count(),0);
+  assert.equal(migrated.arena.session.round.deadline,null);
   assert.equal(migrated.arena.session.round.items[0].slug,nextProblem);
   assert.deepEqual(await page.evaluate(() => [localStorage.getItem('mq-arena'), localStorage.getItem('mq-learning-activity')]), [null,null]);
 
@@ -68,6 +69,9 @@ async function check(browser) {
   await page.locator(`[data-practice-answer="${incorrect}"]`).click();
   await page.getByRole('button',{name:'Submit answer',exact:true}).click();
   await page.getByText('First try was incorrect. You have one try left.').waitFor();
+  assert.equal(await page.locator('[aria-current="step"]').getAttribute('data-result'),'Incorrect');
+  assert.equal(await page.locator('[data-practice-answer][aria-checked="true"]').innerText(),incorrect);
+  assert(await page.getByRole('button',{name:'Next problem'}).isDisabled());
   await page.reload();
   await page.getByText('First try was incorrect. You have one try left.').waitFor();
   await page.locator(`[data-practice-answer="${correct}"]`).click();
@@ -75,8 +79,22 @@ async function check(browser) {
   await page.locator('.arena-result-status[data-result="correct"]').waitFor();
   assert.equal(await page.getByText('I’ve seen this problem',{exact:true}).count(),0);
   assert.equal(await page.locator('.practice-question').getByText(/^Problem 1 of|Elo$/).count(),0);
-  await page.getByRole('button',{name:'Submit set',exact:true}).click();
-  await page.getByRole('dialog').getByRole('button',{name:'Submit set',exact:true}).click();
+  assert.equal(await page.locator('[aria-current="step"]').getAttribute('data-result'),'Correct');
+  assert(await page.locator('.arena-response .practice-answer').isVisible());
+  assert.equal(await page.locator('.arena-response [aria-checked="true"]').innerText(),correct);
+  for (let index=1; index<12; index++) {
+    await page.getByRole('button',{name:'Next problem'}).click();
+    await page.locator(`[data-problem-index="${index}"][aria-current="step"]`).waitFor();
+    await page.getByRole('button',{name:'Give up',exact:true}).click();
+    await page.getByRole('dialog').getByRole('button',{name:'Give up',exact:true}).click();
+    await page.getByText('Incorrect',{exact:true}).waitFor();
+  }
+  const delivered = await page.evaluate(() => Arena.read());
+  const identities = delivered.session.round.items.map(item => item.identity);
+  assert.equal(new Set(identities).size,12);
+  assert(!identities.includes(attempt.identity) && !identities.includes(canonical));
+  assert(new Set(delivered.session.round.items.map(item => item.elo)).size >= 4);
+  await page.getByRole('button',{name:'See results',exact:true}).click();
   await page.getByRole('heading',{name:'Placement complete'}).waitFor();
   assert.equal(await page.locator('.practice-result-row').count(),13,'original result plus the current placement set');
   assert.equal(await page.locator('.insight-cell').count(),13);
@@ -84,17 +102,75 @@ async function check(browser) {
   await page.locator('.practice-explanation').waitFor();
   assert(await page.getByRole('navigation',{name:'Review problems'}).isVisible());
   await page.getByText('Arena overview',{exact:true}).click();
+  const seeAll = page.getByRole('button',{name:'See all',exact:true});
+  await seeAll.waitFor();
+  assert.equal(await page.locator('#arena-study .arena-study-row').count(),3);
+  await seeAll.click();
+  const recommendations = page.getByRole('dialog',{name:'Study recommendations'});
+  assert(await recommendations.locator('.arena-study-row').count() > 3);
+  await page.keyboard.press('Escape');
+  assert(await seeAll.evaluate(el => el === document.activeElement));
   const subject = page.getByRole('button',{name:'Algebra',exact:true});
   await subject.click();
   assert.equal(await subject.getAttribute('aria-expanded'),'true');
   assert(await page.locator('#arena-subject-alg').isVisible());
   await page.locator('label').filter({has:page.locator('[name="focus"][value="cp"]')}).click();
-  assert.match(await page.locator('[data-arena-target]').innerText(), /Counting & Probability/);
+  assert.match(await page.locator('[data-arena-target]').innerText(), /^This contest would be around [\d,]+ Elo\.$/);
   await page.locator('label').filter({has:page.locator('[name="length"][value="2"]')}).click();
   await page.getByRole('button',{name:'Start rated session'}).click();
   await page.locator('.arena-st .prob-statement:not(:empty)').waitFor();
   const next = await page.evaluate(() => Arena.read());
   assert.equal(next.session.round.items.length,2);
+  assert.match(await page.locator('.arena-set-nav h1').innerText(), /^Counting & Probability · About [\d,]+ Elo$/);
+  assert.equal(await page.locator('.arena-set-nav .cn-nums a').count(),2);
+  await page.getByText('Arena overview',{exact:true}).click();
+  await page.getByRole('link',{name:'Resume session'}).waitFor();
+  await page.waitForTimeout(1100);
+  await page.getByRole('link',{name:'Resume session'}).click();
+  await page.getByRole('timer').waitFor();
+  assert.equal(await page.evaluate(async () => (await Arena.read()).session.round.deadline),next.session.round.deadline);
+  const time = await page.getByRole('timer').innerText();
+  const [min,sec] = time.split(':').map(Number);
+  assert(min*60 + sec < next.session.round.limitMs / 1000);
+  await page.locator('.arena-set-nav .cn-nums a').last().click();
+  await page.locator(`.arena-st[data-slug="${next.session.round.items[1].slug}"] .prob-statement:not(:empty)`).waitFor();
+  const ratedSlug = next.session.round.items[1].slug;
+  const answers = await page.evaluate(slug => {
+    const grade = PracticeSessions;
+    const key = grade.exactKey(slug);
+    const correct = String(key?.answers[0] ?? grade.officialKey(slug));
+    const wrong = ['0','1','A','B','C','D','E'].find(candidate => {
+      const test = {answers:{},status:'active'};
+      return grade.answer(test,slug,candidate,!key && /^\d+$/.test(correct)) && grade.result(test,slug) === 'Incorrect' &&
+        (document.getElementById('practice-answer') || Array.from(document.querySelectorAll('[data-practice-answer]')).some(b => b.dataset.practiceAnswer === candidate));
+    });
+    return {correct,wrong};
+  },ratedSlug);
+  const input = page.locator('#practice-answer');
+  const enterRated = async value => {
+    if (await input.count()) await input.fill(value);
+    else {
+      for (const letter of value) {
+        const choice = page.locator(`[data-practice-answer="${letter}"]`);
+        if (await choice.getAttribute('aria-checked') !== 'true') await choice.click();
+      }
+    }
+    await page.getByRole('button',{name:'Submit answer',exact:true}).click();
+  };
+  assert(answers.wrong);
+  await enterRated(answers.wrong);
+  await page.getByText('First try was incorrect. You have one try left.').waitFor();
+  assert.equal(await page.locator('[aria-current="step"]').getAttribute('data-result'),'Incorrect');
+  await page.locator('[data-clear]').click();
+  await enterRated(answers.correct);
+  await page.locator('.arena-status[data-result="correct"]').waitFor();
+  assert.equal(await page.locator('[aria-current="step"]').getAttribute('data-result'),'Correct');
+  if (await input.count()) {
+    assert(await input.isVisible());
+    assert.equal(await input.inputValue(),answers.correct);
+    assert.equal(await input.getAttribute('readonly'),'');
+  } else assert(await page.locator('[aria-label="Submitted answer"] [aria-checked="true"]').isVisible());
+
   const completed = new Set(next.events.map(event => event.identity));
   assert(!next.session.round.items.some(item => completed.has(item.identity) || item.identity === canonical));
   await context.close();

@@ -33,7 +33,7 @@
       <div class="arena-chart-caption"><span>${data[0].calibration ? 'Placement' : 'Earlier set'}</span><span>Latest set</span></div>`;
   }
   const rules = `<details class="arena-rules"><summary>How ratings work</summary>
-    <p>Placement is one timed set across difficulty levels. You get two tries per problem. Each result is compared with that problem’s own Elo.</p>
+    <p>Placement is untimed. The next problem adapts to how you answered the previous ones. You get two tries per problem in placement and in rated sets. Each result is compared with that problem’s own Elo.</p>
     <p>The placement set establishes a provisional starting rating for all four subjects. Later sets update each subject independently. Each subject stays provisional until you submit ${A.SUBJECT_PROVISIONAL} more answers in that subject. Overall Elo stays provisional while any subject rating is provisional.</p>
     <p>Rated sets have one timer. Harder problems add more time to the set: 2, 3, 5, 7 or 9 minutes per problem at Elo cutoffs of 1000, 1600, 2200 and 2800. Submitting grades any saved answers. Unanswered problems count as misses.</p>
     <p>Each problem updates the subjects it covers. Overall Elo is the average of your three lowest subject ratings. Solving a harder problem earns more Elo, and missing an easier one costs more. Early ratings adjust faster.</p></details>`;
@@ -77,36 +77,24 @@
     };
     more();
   }
-  function studyHtml(ctx, rows, stats) {
-    const selected = [];
-    const anchors = new Set();
-    for (const row of rows) {
-      if (anchors.has(row.missedSlug)) continue;
-      selected.push(row);
-      anchors.add(row.missedSlug);
-      if (selected.length === 3) break;
-    }
-    const answered = n => stats.subjects.get(n.id)?.count || 0;
-    const least = [...ctx.roots].sort((a, b) => answered(a) - answered(b))[0];
-    const coverage = stats.baseline && !answered(least) ?
-      `<div class="arena-study-coverage"><h4>Get a clearer subject rating</h4>
-        <p class="arena-note">${ctx.topicLabel(least)} still uses your provisional starting rating.</p>
-        <button type="button" class="hp-btn hp-btn-soft" data-arena-focus="${least.id}">Choose ${ctx.topicLabel(least)} for your next set</button></div>` : '';
-    if (!selected.length) {
-      return coverage || '<p class="arena-note">Missed topics from Arena and Practice will appear here with links to review and practice them.</p>';
-    }
+  function studyRowsHtml(ctx, rows) {
+    return `<div class="arena-study-list">${rows.map(r => {
+      const p = ctx.lookup(r.missedSlug);
+      const lesson = ctx.studyLink(r.id, r.missedSlug), practice = ctx.practiceLink(r.id);
+      return `<article class="arena-study-row"><div><h4>${ctx.topicLabel(ctx.nodes.get(r.id))}</h4>
+        <small>${r.misses} of ${r.attempts} recent ${r.attempts === 1 ? 'attempt' : 'attempts'} missed</small></div>
+        <ul class="study-links">
+          ${p ? `<li><span>Revisit</span><a href="#/problem/${p.slug}">${ctx.escape(ctx.refShort(p.ref))}</a></li>` : ''}
+          ${lesson ? `<li><span>Study</span>${lesson}</li>` : ''}
+          ${practice ? `<li><span>Practice</span>${practice}</li>` : ''}
+        </ul></article>`;
+    }).join('')}</div>`;
+  }
+  function studyHtml(ctx, rows) {
+    if (!rows.length) return '<p class="arena-note">Missed topics from Arena and Practice will appear here with links to review and practice them.</p>';
     return `<p class="arena-note">Start with a recent miss, review the idea, then try a fresh problem.</p>
-      <div class="arena-study-list">${selected.map(r => {
-        const p = ctx.lookup(r.missedSlug);
-        const lesson = ctx.studyLink(r.id, r.missedSlug), practice = ctx.practiceLink(r.id);
-        return `<article class="arena-study-row"><div><h4>${ctx.topicLabel(ctx.nodes.get(r.id))}</h4>
-          <small>${r.misses} of ${r.attempts} recent ${r.attempts === 1 ? 'attempt' : 'attempts'} missed</small></div>
-          <ul class="study-links">
-            ${p ? `<li><span>Revisit</span><a href="#/problem/${p.slug}">${ctx.escape(ctx.refShort(p.ref))}</a></li>` : ''}
-            ${lesson ? `<li><span>Study</span>${lesson}</li>` : ''}
-            ${practice ? `<li><span>Practice</span>${practice}</li>` : ''}
-          </ul></article>`;
-      }).join('')}</div>${coverage}`;
+      ${studyRowsHtml(ctx,rows.slice(0,3))}
+      ${rows.length > 3 ? '<button type="button" class="hp-btn hp-btn-soft" data-study-all aria-haspopup="dialog">See all</button>' : ''}`;
   }
   function subjectDetails(ctx, id, stats, recommendations) {
     const results = stats.points.filter(point => point.event.subjects.includes(id));
@@ -131,6 +119,12 @@
     const prev = s || {};
     const established = ctx.roots.filter(root => stats.subjects.get(root.id)?.answered >= A.SUBJECT_PROVISIONAL).length;
     const recommendations = A.recommendations(history, ctx.lookup).filter(row => ctx.nodes.has(row.id));
+    const anchors = new Set();
+    const studyRows = recommendations.filter(row => {
+      if (anchors.has(row.missedSlug)) return false;
+      anchors.add(row.missedSlug);
+      return true;
+    });
     const postPlacement = stats.points.filter(point => !point.calibration);
     const ratedAnswers = postPlacement.filter(p => p.event.answer);
     const accuracy = points => points.length ? Math.round(100 * points.filter(p => p.event.outcome === 'correct').length / points.length) + '%' : '—';
@@ -144,22 +138,22 @@
       ${placed ? `<div class="arena-big">${number(t.rating)} <small>Elo</small></div>
         ${established < ctx.roots.length ? '<p class="arena-note">Provisional · ' + established + '/' + ctx.roots.length + ' subjects established</p>' : ''}
         <p class="arena-note">${!postPlacement.length ? 'Starting rating established' : signed(delta) + ' Elo in your latest set'}</p>` :
-        `<p>Take one timed set of ${A.PLACEMENT_SIZE} problems across a range of difficulties. Your starting Elo applies to all four subjects.</p>
+        `<p>Take one set of ${A.PLACEMENT_SIZE} problems across a range of difficulties. Your starting Elo applies to all four subjects.</p>
         ${t.count ? `<small>${t.count} earlier results included</small>` : ''}`}</div>
       ${placed ? `<div class="arena-plot"><h4>Rating trend</h4>${chart(stats.points)}</div>` :
-        `<div class="arena-placement"><h4>What counts</h4><p>You get two tries per problem. A solve on either try counts once. Blanks count as misses when you submit. You can move freely between problems.</p></div>`}
+        `<div class="arena-placement"><h4>What counts</h4><p>You get two tries per problem. A solve on either try counts once. Blanks count as misses when you submit. Placement shows one problem at a time.</p></div>`}
       ${placed ? `<div class="arena-metrics">
         <div><strong>${number(setPoints(stats.points).reduce((max,p) => Math.max(max, p.rating), 0))}</strong><small>Peak Elo</small></div>
         ${ratedAnswers.length ? `<div><strong>${accuracy(ratedAnswers)}</strong><small>Accuracy on submitted answers</small></div>` : ''}
         ${postPlacement.length ? `<div><strong>${new Set(postPlacement.map(p => p.event.session)).size}</strong><small>Rated sets</small></div>` : ''}</div>` : ''}
       </section>
       <section class="sh-section" id="arena-session"><h3>${(active ? s.placement : !placed) ? 'Placement set' : 'Rated session'}</h3>
-      ${active ? `<p class="arena-note">${s.placement ? 'Mixed subjects' : (opts.get(s.focus) || 'Mixed subjects') + ' · ' + paceNames[s.pace]} · ${s.round ? s.round.items.length + ' problems · ' + s.round.limitMs / 60000 + ' min' : (s.length - A.remaining(state)) + ' of ' + s.length + ' answered'}</p>
+      ${active ? `<p class="arena-note">${s.placement ? 'Mixed subjects' : (opts.get(s.focus) || 'Mixed subjects') + ' · ' + paceNames[s.pace]} · ${s.round ? s.placement ? s.length + ' problems · Untimed' : s.round.items.length + ' problems · ' + s.round.limitMs / 60000 + ' min' : (s.length - A.remaining(state)) + ' of ' + s.length + ' answered'}</p>
         <a class="hp-btn arena-primary" href="${sessionUrl}">${A.remaining(state) ? 'Resume session' : 'See session result'} ${ctx.icon('arrow-right')}</a>` :
         `<form id="arena-start">${placed ? `${selector('focus', 'Subject', [['mixed','Mixed subjects'], ...opts], opts.has(prev.focus) ? prev.focus : 'mixed')}
         ${selector('pace','Difficulty',Object.entries(paceNames),prev.pace || 'matched')}
         ${selector('length','Problems',A.LENGTHS.map(n => [String(n), String(n)]), String(A.LENGTHS.includes(prev.length) ? prev.length : 5))}<p class="arena-note" data-arena-target aria-live="polite"></p>` :
-        '<p class="arena-note">The set timer starts once the problems load.</p>'}
+        '<p class="arena-note">Work at your own pace.</p>'}
         <button class="hp-btn arena-primary">${placed ? 'Start rated session' : 'Start placement'} ${ctx.icon('arrow-right')}</button></form>`}${rules}</section>
       <section class="sh-section" id="arena-subjects"><h3>Subject ratings</h3>
         <div class="arena-table-wrap"><table class="arena-subject-table"><thead><tr><th>Subject</th><th>Elo</th><th>Submitted accuracy</th></tr></thead><tbody>
@@ -167,7 +161,7 @@
           return `<tr><th scope="row"><button type="button" class="arena-subject-toggle" data-subject-toggle aria-expanded="false" aria-controls="arena-subject-${id}">${label}</button></th><td>${placed && r ? number(r.rating) : '—'}${placed && r && r.answered < A.SUBJECT_PROVISIONAL ? '<small>Provisional</small>' : ''}</td>
           <td>${accuracy(stats.points.filter(p => p.event.answer && p.event.subjects.includes(id)))}</td></tr>
           <tr class="arena-subject-details" id="arena-subject-${id}" hidden><td colspan="3">${subjectDetails(ctx,id,stats,recommendations)}</td></tr>`; }).join('')}</tbody></table></div></section>
-      <section class="sh-section" id="arena-study"><h3>What to study</h3>${studyHtml(ctx, recommendations, stats)}</section>
+      <section class="sh-section" id="arena-study"><h3>What to study</h3>${studyHtml(ctx, studyRows)}</section>
       <section class="sh-section" id="arena-history"><h3>Session history</h3><div data-arena-log></div><button class="hp-btn hp-btn-soft" data-earlier hidden>Earlier sessions</button></section></div>`;
     for (const button of ctx.container.querySelectorAll('[data-subject-toggle]')) {
       button.onclick = () => {
@@ -184,17 +178,24 @@
       const target = startForm?.querySelector('[data-arena-target]');
       if (!target) return;
       const {focus, pace} = Object.fromEntries(new FormData(startForm));
-      const chosen = startForm.querySelector('input[name="focus"]:checked');
-      const basis = stats.subjects.has(focus) ? chosen.nextElementSibling.textContent : 'overall';
-      target.textContent = `Aim for about ${number(A.targetRating(stats,focus,pace))} Elo, using your ${basis} rating.`;
+      const value = document.createElement('strong');
+      value.textContent = number(A.targetRating(stats,focus,pace));
+      target.replaceChildren('This contest would be around ',value,' Elo.');
     };
     reportTarget();
     startForm?.addEventListener('change', reportTarget);
-    const studyFocus = ctx.container.querySelector('[data-arena-focus]');
-    if (studyFocus && !startForm) studyFocus.remove();
-    else if (studyFocus) studyFocus.onclick = () => {
-      const option = [...startForm.elements.focus].find(input => input.value === studyFocus.dataset.arenaFocus);
-      if (option) { option.checked = true; reportTarget(); option.focus(); }
+    const studyAll = ctx.container.querySelector('[data-study-all]');
+    if (studyAll) studyAll.onclick = () => {
+      const dialog = ctx.openDialog(`<header class="arena-study-dialog-head"><h2 id="arena-study-modal-title">Study recommendations</h2>
+        <button type="button" class="hp-btn hp-btn-soft" autofocus>Close</button></header>${studyRowsHtml(ctx,studyRows)}`, d => {
+        d.classList.add('arena-study-dialog');
+        d.setAttribute('aria-labelledby','arena-study-modal-title');
+        d.querySelector('button').onclick = () => d.close();
+        const close = () => { if (d.open) d.close(); };
+        window.addEventListener('hashchange',close);
+        d.addEventListener('close',() => window.removeEventListener('hashchange',close),{once:true});
+      });
+      ctx.renderMath(dialog);
     };
     startForm?.addEventListener('submit', async e => {
       e.preventDefault();
@@ -324,10 +325,10 @@
     box.innerHTML = `<h1>Problems could not load</h1><p>${text}</p><button class="hp-btn arena-primary">Try again</button>`;
     box.querySelector('button').onclick = ctx.refresh;
   }
-  async function findProblem(ctx, seen, stats, session, current, savedSlug, position = 1) {
+  async function findProblem(ctx, seen, stats, session, current, savedSlug, picked = []) {
     let p = savedSlug && ctx.lookup(savedSlug);
     while (current()) {
-      p ||= A.choose(ctx.pool, seen, stats, session, p => subjectIds(ctx,p), Math.random, position);
+      p ||= A.choose(ctx.pool, seen, stats, session, p => subjectIds(ctx,p), Math.random, picked);
       if (!p) return {status:'empty'};
       const identity = A.canonical(p.identity);
       if (ctx.pool.includes(p) && !seen.has(identity) && !missing.has(p.slug)) {
@@ -342,7 +343,7 @@
   }
   function noFreshProblems(ctx, box, session) {
     box.innerHTML = `<h1>Too few fresh problems</h1><p>${session.placement ?
-      'Placement needs ' + A.PLACEMENT_SIZE + ' problems you haven’t opened before.' : 'Try mixed subjects to draw from a larger pool.'}</p>
+      'There are no unopened placement problems available.' : 'Try mixed subjects to draw from a larger pool.'}</p>
       <button class="hp-btn arena-primary">Back to Arena</button>`;
     box.querySelector('button').onclick = async () => {
       try {
@@ -392,7 +393,7 @@
   function showQuestion(ctx, box, id, p, slot, commit, isPlacement = false) {
     const exact = grade.exactKey(p.slug), numeric = !exact && /^\d+$/.test(grade.officialKey(p.slug) || '');
     const locked = !!slot.outcome, retry = !!slot.firstMiss;
-    const result = locked && slot.outcome !== 'seen' ? `<p>Your answer ${ctx.answerHtml(slot.draft, exact || {})}</p>` : '';
+    const visibleAnswer = slot.draft || (locked && slot.firstMiss) || '';
     let response = box.querySelector('.arena-response');
     const opened = !response;
     if (opened) {
@@ -401,21 +402,24 @@
       ctx.showPrompt(p);
       box.querySelector('h1, h2').focus({preventScroll:true});
     }
-    response.innerHTML = `${locked ? `<p class="arena-result-status" data-result="${slot.outcome}" role="status"><strong>${statusLabel(slot.outcome)}</strong></p>${result}` :
-      `<form class="practice-answer"><h3>Your answer</h3>
-      ${isPlacement ? `<p class="arena-note" role="status">${retry ? 'First try was incorrect. You have one try left.' : 'Try 1 of 2'}</p>` : ''}
+    response.innerHTML = `<form class="practice-answer"><h3>Your answer</h3>
+      <p class="arena-note" role="status">${locked ? (retry ? 'Try 2 of 2' : 'Try 1 of 2') :
+        retry ? 'First try was incorrect. You have one try left.' : 'Try 1 of 2'}</p>
       ${exact || numeric ? `<label for="practice-answer">${exact ? ctx.escape(ctx.exactLabel(exact)) : 'Integer from 000 to 999'}</label>
-        <input id="practice-answer" type="text" maxlength="120" autocomplete="off" value="${ctx.escape(slot.draft)}" aria-describedby="practice-answer-error">${ctx.keypad()}` :
-        ctx.choices({answers:{[p.slug]:slot.draft}},p.slug,false)}
-      <button type="button" class="practice-answer-clear" data-clear ${slot.draft ? '' : 'disabled'}>Clear answer</button>
-      <div class="arena-actions"><button type="submit" class="hp-btn arena-primary" ${slot.draft.trim() ? '' : 'disabled'}>Submit answer</button>
-        ${isPlacement ? '<button type="button" class="hp-btn hp-btn-soft" data-giveup>Give up</button>' : ''}
-</div>
-      <p class="arena-status" role="status"></p></form>`}`;
+        <input id="practice-answer" type="text" maxlength="120" autocomplete="off" value="${ctx.escape(visibleAnswer)}" aria-describedby="practice-answer-error" ${locked ? 'readonly' : ''}>${ctx.keypad()}` :
+        ctx.choices({answers:{[p.slug]:visibleAnswer}},p.slug,locked)}
+      <button type="button" class="practice-answer-clear" data-clear ${locked || !slot.draft ? 'disabled' : ''}>Clear answer</button>
+      <div class="arena-actions"><button type="submit" class="hp-btn arena-primary" ${locked || !slot.draft.trim() ? 'disabled' : ''}>Submit answer</button>
+        ${isPlacement ? '<button type="button" class="hp-btn hp-btn-soft" data-giveup>Give up</button>' : ''}</div>
+      <p class="arena-status arena-result-status" data-result="${locked ? slot.outcome : retry ? 'incorrect' : ''}" role="status">${locked ? statusLabel(slot.outcome) : ''}</p></form>`;
     if (locked) {
+      const form = response.querySelector('form'), input = form.querySelector('#practice-answer');
+      form.querySelectorAll('button').forEach(button => button.disabled = true);
+      form.onsubmit = event => event.preventDefault();
+      if (input) ctx.wireKeys(input, exact);
       ctx.renderMath(response);
-      const status = response.querySelector('[role="status"]');
-      if (!opened && status) { status.tabIndex = -1; status.focus({preventScroll:true}); }
+      const status = form.querySelector('.arena-status');
+      if (!opened) { status.tabIndex = -1; status.focus({preventScroll:true}); }
       return;
     }
     const form = box.querySelector('form'), input = form.querySelector('#practice-answer');
@@ -464,16 +468,21 @@
         finish({outcome:'incorrect', answer:''});
     };
   }
+  function ratedSetTitle(ctx, focus, items) {
+    const subject = ctx.roots.find(root => root.id === focus);
+    const average = items.reduce((sum,item) => sum + item.elo,0) / items.length;
+    return `${subject ? ctx.topicLabel(subject) : 'Mixed subjects'} · About ${number(Math.round(average/50)*50)} Elo`;
+  }
   function setProblemUrl(i) { return i ? sessionUrl + '/' + (i+1) : sessionUrl; }
   async function ratedSet(ctx, state, stats, history, index) {
     const s = state.session, id = s.id;
-    const box = loading(ctx, s.round ? 'Loading your set…' : 'Building your set…');
+    const box = loading(ctx, s.round ? 'Loading your set…' : s.placement ? 'Finding your first problem…' : 'Building your set…');
     if (!s.round) {
       const seen = seenProblems(ctx, history, state), problems = [];
-      const total = s.placement ? A.PLACEMENT_SIZE : A.remaining(state);
+      const total = s.placement ? 1 : A.remaining(state);
       const current = () => box.isConnected;
       while (problems.length < total && current()) {
-        const {status, p} = await findProblem(ctx, seen, stats, s, current, !problems.length && s.slot?.slug, problems.length);
+        const {status, p} = await findProblem(ctx, seen, stats, s, current, !problems.length && s.slot?.slug, problems);
         if (!current()) return;
         if (status === 'offline') return promptError(ctx, box, 'The timer starts after your set loads. Check your connection and try again.');
         if (status === 'empty') break;
@@ -486,16 +495,18 @@
         problems.push({slug:p.slug, identity:p.identity, elo:p.elo, subjects:subjectIds(ctx,p)});
       }
       if (!current()) return;
-      if (problems.length < (s.placement ? A.PLACEMENT_SIZE : 1)) return noFreshProblems(ctx, box, s);
+      if (!problems.length) return noFreshProblems(ctx, box, s);
       const latest = await A.change(st => A.openRound(st,id,problems));
       if (!current()) return;
       if (latest.session?.id !== id || !latest.session.round || latest.session.closed) { ctx.refresh(); return; }
       state = latest;
     }
     const round = state.session.round;
-    index = Math.min(index, round.items.length-1);
+    index = s.placement ? A.placementIndex(round) : Math.min(index, round.items.length-1);
     const item = round.items[index], p = ctx.lookup(item.slug);
     const controller = new AbortController();
+    const onLeave = () => controller.abort();
+    window.addEventListener('hashchange',onLeave,{once:true,signal:controller.signal});
     let finishing = false, saveFailed = false;
     async function submit() {
       if (finishing || !box.isConnected) return;
@@ -508,17 +519,22 @@
     }
     box.parentElement.classList.add('practice-session');
     box.insertAdjacentHTML('beforebegin', `<section class="sh-section arena-set-nav">
-      <div class="practice-session-top"><div><h1>${s.placement ? 'Placement set' : 'Rated set'}</h1><p>${round.items.length} problems · ${round.limitMs/60000} minutes</p></div>
-      <span class="arena-clock" aria-label="Time remaining" role="timer"></span></div>
-      <nav class="cn-nums" aria-label="Set problems">${round.items.map((row,i) => {
-        const status = row.outcome ? statusLabel(row.outcome) : row.draft ? 'Draft saved' : 'Unanswered';
-        const tint = ['correct','incorrect'].includes(row.outcome) ? ' practice-reviewed' : row.draft ? ' practice-answered' : '';
-        return `<a class="cn-num${tint}${i === index ? ' cn-here' : ''}" data-result="${status}" href="${setProblemUrl(i)}"
-           aria-label="Problem ${i+1}, ${status}" ${i === index ? 'aria-current="step"' : ''}>${i+1}</a>`;
+      <div class="practice-session-top"><div><h1>${s.placement ? 'Placement set' : ratedSetTitle(ctx,s.focus,round.items)}</h1><p>${s.placement ? s.length + ' problems · Untimed' : round.items.length + ' problems · ' + round.limitMs/60000 + ' minutes'}</p></div>
+      ${s.placement ? '' : '<span class="arena-clock" aria-label="Time remaining" role="timer"></span>'}</div>
+      <nav class="cn-nums" aria-label="Set problems">${Array.from({length:s.placement ? s.length : round.items.length},(_,i) => {
+        const row = round.items[i];
+        const result = row?.outcome ? statusLabel(row.outcome) : row?.firstMiss ? 'Incorrect' : '';
+        const label = result || (row?.draft ? 'Draft saved' : 'Unanswered');
+        const tint = result ? ' practice-reviewed' : row?.draft ? ' practice-answered' : '';
+        const current = i === index ? ' aria-current="step"' : '';
+        const attributes = `class="cn-num${tint}${i === index ? ' cn-here' : ''}" data-problem-index="${i}" data-result="${result}" aria-label="Problem ${i+1}, ${label}"${current}`;
+        return s.placement ? `<span ${attributes}>${i+1}</span>` :
+          `<a ${attributes} href="${setProblemUrl(i)}">${i+1}</a>`;
       }).join('')}</nav>
       <div class="practice-session-actions"><span data-arena-checked>${round.items.filter(row => row.outcome && row.outcome !== 'seen').length} checked</span>
       <button type="button" class="hp-btn hp-btn-soft" data-submit-set>Submit set</button></div></section>`);
     const nav = box.previousElementSibling, timer = nav.querySelector('.arena-clock');
+    let clock;
     function tick() {
       if (!nav.isConnected) { clearInterval(clock); controller.abort(); return; }
       const ms = A.remainingMs(state.session);
@@ -527,10 +543,12 @@
       timer.classList.toggle('is-low', seconds <= 60);
       if (!ms && !saveFailed) submit();
     }
-    const clock = setInterval(tick, 250);
-    tick();
+    if (timer) {
+      clock = setInterval(tick, 250);
+      tick();
+    }
     nav.querySelector('[data-submit-set]').onclick = async () => {
-      if (saveFailed || await ctx.confirm({title:'Submit this set?', text:'Saved answers will be graded. Any unanswered problems count as misses.', ok:'Submit set', signal:controller.signal})) submit();
+      if (saveFailed || await ctx.confirm({title:'Submit this set?', text:s.placement ? 'Saved answers will be graded. Opened problems left blank count as misses.' : 'Saved answers will be graded. Any unanswered problems count as misses.', ok:'Submit set', signal:controller.signal})) submit();
     };
     const ready = p && await ctx.loadPrompt(p);
     if (!box.isConnected || finishing) return;
@@ -538,31 +556,71 @@
     box.classList.add('practice-question');
     box.innerHTML = '<h2 class="sr-only" tabindex="-1">Problem statement</h2>';
     const selected = nav.querySelector('[aria-current="step"]');
+    let latest = state;
+    let nextButton;
+    const lastPlacementProblem = () => round.adaptive ? round.items.length >= s.length :
+      latest.session.round.items.every(row => row.outcome);
     function showSlot(slot) {
       showQuestion(ctx, box, id, p, slot, async result => {
-        const latest = await A.change(st => A.checkRoundAnswer(st,id,item.slug,result,Date.now(),!!slot.firstMiss));
+        latest = await A.change(st => A.checkRoundAnswer(st,id,item.slug,result,Date.now(),!!slot.firstMiss));
         if (!box.isConnected || finishing) return;
         const updated = latest.session?.id === id && latest.session.round?.items[index];
-        if (!updated || latest.session.closed) { ctx.refresh(); return; }
-        if (!updated.outcome) {
-          selected.setAttribute('aria-label', `Problem ${index+1}, retry available`);
-          selected.classList.remove('practice-answered');
-          showSlot(updated);
+        if (!updated || latest.session.closed || s.placement && A.placementIndex(latest.session.round) !== index) {
+          ctx.refresh();
           return;
         }
-        const label = statusLabel(updated.outcome);
+        const label = updated.outcome ? statusLabel(updated.outcome) : 'Incorrect';
         selected.dataset.result = label;
-        selected.setAttribute('aria-label', `Problem ${index+1}, ${label}`);
+        selected.setAttribute('aria-label', `Problem ${index+1}, ${label}${updated.outcome ? '' : ', retry available'}`);
         selected.classList.remove('practice-answered');
-        selected.classList.toggle('practice-reviewed', updated.outcome !== 'seen');
+        selected.classList.add('practice-reviewed');
         nav.querySelector('[data-arena-checked]').textContent =
           latest.session.round.items.filter(row => ['correct','incorrect'].includes(row.outcome)).length + ' checked';
         showSlot(updated);
       }, s.placement);
+      if (nextButton) {
+        nextButton.disabled = !slot.outcome;
+        nextButton.textContent = lastPlacementProblem() && slot.outcome ? 'See results' : 'Next problem';
+      }
     }
-    showSlot(item);
-    if (index+1 < round.items.length) box.insertAdjacentHTML('beforeend', `<div class="arena-actions">
-      <a class="hp-btn hp-btn-soft" href="${setProblemUrl(index+1)}">Next problem ${ctx.icon('arrow-right')}</a></div>`);
+    if (s.placement) {
+      const actions = document.createElement('div');
+      actions.className = 'arena-actions';
+      actions.innerHTML = '<button type="button" class="hp-btn hp-btn-soft">Next problem</button>';
+      nextButton = actions.querySelector('button');
+      showSlot(item);
+      box.append(actions);
+      nextButton.onclick = async () => {
+        if (lastPlacementProblem()) { submit(); return; }
+        nextButton.disabled = true;
+        try {
+          let candidate;
+          if (round.adaptive) {
+            const seen = seenProblems(ctx,history,latest);
+            for (const row of round.items) seen.add(A.canonical(row.identity));
+            const current = () => box.isConnected && !finishing;
+            const {status, p:next} = await findProblem(ctx,seen,A.placementStats(latest),s,current,null,round.items);
+            if (!current()) return;
+            if (status !== 'ready') {
+              const note = box.querySelector('.arena-status');
+              note.textContent = status === 'offline' ? 'The next problem could not load. Try again.' : 'No fresh problems remain. Submit to save your results.';
+              nextButton.disabled = status !== 'offline';
+              return;
+            }
+            candidate = {slug:next.slug, identity:next.identity, elo:next.elo, subjects:subjectIds(ctx,next)};
+          }
+          await A.change(st => A.advancePlacement(st,id,index,candidate));
+          if (box.isConnected && !finishing) ctx.refresh();
+        } catch {
+          nextButton.disabled = false;
+          saveError(actions);
+        }
+      };
+    } else {
+      showSlot(item);
+      if (index+1 < round.items.length) box.insertAdjacentHTML('beforeend', `<div class="arena-actions">
+        <a class="hp-btn hp-btn-soft" href="${setProblemUrl(index+1)}">Next problem ${ctx.icon('arrow-right')}</a></div>`);
+    }
   }
   let draw = 0;
   async function render(ctx, route) {

@@ -6805,7 +6805,7 @@
       loadExplanation: p => Promise.all(solutionRequirements([p.year])),
       showPrompt: p => showStatement(p, ".arena-st", true),
       choices: practiceAnswerChoices, exactLabel: practiceExactLabel, keypad: practiceMathKeysHtml, wireKeys: wirePracticeMathKeys,
-      answerHtml: exactAnswerHtml, renderMath, confirm: appConfirm, refresh: render
+      answerHtml: exactAnswerHtml, renderMath, confirm: appConfirm, openDialog: appDialog, refresh: render
     }, route);
   }
   function renderSpaceHome(name, route) {

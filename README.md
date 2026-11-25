@@ -58,9 +58,9 @@ Generated mocks and past papers with a supported timed format use a countdown. T
 
 ## Arena
 
-Open **Arena** to estimate your starting Elo with one timed set of 12 problems. The set spans several difficulty levels and allows two tries per problem. Arena compares each result with the problem's own Elo. The starting rating is provisional and applies to all four subjects.
+Open **Arena** to estimate your starting Elo with one untimed set of 12 problems. Placement presents one problem at a time and adapts the next question’s difficulty after each result. Arena compares each result with the problem's own Elo. The starting rating is provisional and applies to all four subjects.
 
-After placement, choose a subject, relative difficulty, and a set of 2, 3 or 5 problems. Use the numbered links to switch problems and check answers on the page. Submitting a set or running out of time grades saved answers and counts blanks as misses. The results and problem reviews use the same charts and explanations as Practice.
+After placement, choose a subject, relative difficulty, and a set of 2, 3 or 5 problems. Warm-up targets the next lower 50 Elo, Matched the next higher 50, and Stretch 50 above Matched. Arena picks problems within 100 Elo of the target when available and aims to balance the set average. Use the numbered links to switch problems. Placement and rated sets allow two tries per problem and keep the submitted answer visible. Submitting a set or running out of time grades saved answers and counts blanks as misses. The results and problem reviews use the same charts and explanations as Practice.
 
 Each rated result changes the subjects the problem covers. A subject leaves provisional status after six rated answers in that subject after placement. Overall Elo averages your three lowest subject ratings and stays provisional until all four subjects are established.
 
