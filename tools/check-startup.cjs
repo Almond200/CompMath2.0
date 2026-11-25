@@ -4,7 +4,7 @@ const { chromium } = require(process.env.PLAYWRIGHT || 'playwright');
 
 const base = (process.env.COMPMATH_URL || 'http://localhost:8688').replace(/\/$/, '');
 const chapterPath = /^\/js\/data\/learn\/[^/]+\//;
-const problemIndex = '/js/data/problems/problem-db.js';
+const problemIndex = '/js/data/problems/problem-catalog.js';
 
 async function verifyFallback(page) {
   await page.goto(base + '/');
@@ -63,7 +63,7 @@ async function verifyFallback(page) {
       // A cold card opens while the catalog is still in flight, keeping the reference layout.
       let resumeCatalog;
       const heldCatalog = new Promise(resolve => { resumeCatalog = resolve; });
-      await page.route('**/js/data/problems/problem-db.js?*', async route => {
+      await page.route('**/js/data/problems/problem-catalog.js?*', async route => {
         await heldCatalog;
         await route.continue();
       });

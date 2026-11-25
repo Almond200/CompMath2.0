@@ -8,7 +8,7 @@
     'AIME': { count:15, minutes:180, correct:1, blank:0 }
   });
   const mean = a => a.reduce((s,x)=>s+x,0)/a.length;
-  function identity(p) { return p.identity || (p.strategy ? p.year+'|'+p.strategy.replace(/\s+/g,' ').trim() : p.slug); }
+  function identity(p) { return p.identity || p.slug; }
   function papers(problems, hasAnswer) {
     const groups = new Map();
     for (const p of problems) {

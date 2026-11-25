@@ -4,12 +4,12 @@ const tree = [['geo', 'Geometry', null], ['geo.tri', 'Triangles', 'geo'],
   ['geo.old.sim', 'Similar triangles', 'geo.tri'], ['geo.old.parallel', 'Parallel cuts', 'geo.old.sim'],
   ['geo.circ', 'Circles', 'geo'], ['geo.circ.sim', 'Similar triangles', 'geo.circ']];
 const problems = [
-  { ref:'2024 AMC 10A, Problem 1', strategy:'shared', tree:['geo.old.parallel'] },
-  { ref:'2024 AMC 12A, Problem 2', strategy:'shared', tree:['geo.old.parallel'] },
+  { ref:'2024 AMC 10A, Problem 1', identity:'10A', strategy:'shared', tree:['geo.old.parallel'] },
+  { ref:'2024 AMC 12A, Problem 2', identity:'10A', strategy:'rewritten', tree:['geo.old.parallel'] },
   { ref:'2024 AIME I, Problem 1', tree:['geo.tri'] },
   { ref:'2024 AIME I, Problem 2', tree:['geo.old.parallel','geo.circ.sim'] },
-  { ref:'2024 AMC 10B, Problem 1', strategy:'shared', tree:['geo.old.parallel'] },
-  { ref:'2024 AMC 12B, Problem 2', strategy:'shared', tree:['geo.old.parallel'] },
+  { ref:'2024 AMC 10B, Problem 1', identity:'10B', strategy:'shared', tree:['geo.old.parallel'] },
+  { ref:'2024 AMC 12B, Problem 2', identity:'10B', strategy:'rewritten', tree:['geo.old.parallel'] },
   { ref:'2021 Spring AMC 10A, Problem 1', strategy:'shared', tree:['geo.old.parallel'] },
   { ref:'2021 Fall AMC 12A, Problem 1', strategy:'shared', tree:['geo.old.parallel'] },
   { ref:'2024 AIME I, Problem 3', formulas:['parallel'], tree:['geo.circ.sim'] },
@@ -48,13 +48,15 @@ for (const f of ['topic-tree','topic-homes','problems/problem-db','problems/answ
 const slug = p => p.ref.replace(', Problem ', ' ').toLowerCase().replaceAll(' ', '-');
 const eligible = p => !MATH_ANSWER_KEYS.voided?.[slug(p)] &&
   (MATH_ANSWER_KEYS.answers[slug(p)] != null || !!MATH_MOCK_EXTRAS[slug(p)]);
-const real = build(MATH_TOPIC_TREE, MATH_PROBLEM_DB, eligible);
-const {nodes,instance} = require('../tools/tree-audit').census(MATH_TOPIC_TREE, MATH_PROBLEM_DB, MATH_TOPIC_HOMES);
+const aliases = require('../js/data/problems/problem-aliases.json');
+const catalog = MATH_PROBLEM_DB.map(p => ({ ...p, identity: aliases[slug(p)] || slug(p) }));
+const real = build(MATH_TOPIC_TREE, catalog, eligible);
+const {nodes} = require('../tools/tree-audit').census(MATH_TOPIC_TREE, MATH_PROBLEM_DB, MATH_TOPIC_HOMES);
 for (const n of nodes.values()) {
   const ids = new Set([n.id]);
   for (const id of ids) for (const child of nodes.get(id).children) ids.add(child);
-  const expected = new Set(MATH_PROBLEM_DB.filter(p => eligible(p) && p.tree.some(t => ids.has(t))).map(p => instance.get(p.ref)));
-  assert.deepEqual(new Set(real.nodes.get(n.id).problems.map(p => instance.get(p.ref))), expected, n.id);
+  const expected = new Set(MATH_PROBLEM_DB.filter(p => eligible(p) && p.tree.some(t => ids.has(t))).map(p => aliases[slug(p)] || slug(p)));
+  assert.deepEqual(new Set(real.nodes.get(n.id).problems.map(p => aliases[slug(p)] || slug(p))), expected, n.id);
   assert(!/[$\\]/.test(real.nodes.get(n.id).label), 'readable input label: '+n.id);
   assert(real.search(real.nodes.get(n.id).label).some(hit => hit.id === n.id), 'every node is reachable: '+n.id);
 }

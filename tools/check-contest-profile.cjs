@@ -88,6 +88,19 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   // It folds away and stays folded on the next topic; the problems keep their own heading below it.
   const hasLessons=await page.evaluate(id=>Object.values(window.MATH_LESSON_TOPICS).some(selected=>selected.includes(id)),id);
   assert.deepEqual(await page.locator('.browse-main .pp-h').allInnerTexts(),['Topic profile',...(hasLessons?['Lessons']:[]),'Problems']);
+  if(hasLessons){
+   const lesson=page.locator('.topic-lessons a[data-lesson-preview]').first();
+   assert.equal(await page.locator('.topic-lessons ul').count(),0);
+   assert.equal(await lesson.evaluate(link=>getComputedStyle(link).textDecorationLine),'none');
+   assert.equal(await page.locator('.topic-lessons h3').evaluate(h=>getComputedStyle(h).fontSize),
+     await page.locator('.tp-problems-h').evaluate(h=>getComputedStyle(h).fontSize));
+   if(width===1280){
+    await lesson.hover();
+    const tip=page.getByRole('tooltip');await tip.waitFor();
+    assert.match(await tip.innerText(),/Algebra|Geometry|Counting|Number Theory/);
+    await page.keyboard.press('Escape');await tip.waitFor({state:'detached'});
+   }
+  }
   const fold=page.locator('[data-tp-toggle]');assert.equal(await fold.innerText(),'Hide');await fold.click();assert.equal(await page.locator('.tp-body').isVisible(),false);assert.equal(await fold.innerText(),'Show');assert.equal(await fold.getAttribute('aria-expanded'),'false');
   assert.equal(await tp.locator('.pf-stat').count(),4,'the figures stay');await fold.click();assert.equal(await page.locator('.tp-body').isVisible(),true);
   assert(await page.locator('.br-group').count()>0);await fits();

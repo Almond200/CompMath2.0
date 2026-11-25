@@ -9,7 +9,11 @@
 
 **The handoff rule.** After every major change, every finished step, and the start of every new step: update "Current state", add an entry to `CHANGELOG.md`, commit and push.
 
-## Current state (updated 2026-11-24)
+## Current state (updated 2026-11-25)
+
+The static archive catalog precomputes paper, topic, card and lesson relationships. The app loads written solutions by decade and builds search result pages as they are opened. Existing problem appearance slugs still serve as URLs and saved-set keys. Practice and the shared activity history use the explicit canonical ID map for 621 known duplicate appearances. Learn, Flashcards and Quiz record new activity in the shared history. Completed Practice sets supply their own attempt and completion history. See [Updating the archive](README.md#updating-the-archive).
+
+Reference cross-references retain bullets. Lesson headers, additional resources and profiles use inline links. Lesson and topic links offer previews using the same overlay as card links.
 
 Lesson topic selections live in `js/data/lesson-topics.js`. Cards and lessons can open Practice with a card or topic selected. Topic pages link back to the lessons that name them. Completed sets show subject and per-problem charts alongside topic feedback. All 25 problems on the 2026 AMC 8 have in-app solutions. Contest search handles small spelling errors and organizer names in Practice, mock selection, and main search.
 

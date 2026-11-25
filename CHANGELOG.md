@@ -1,5 +1,11 @@
 # Changelog
 
+**2026-11-25**
+
+- **Archive and search.** Build compact problem metadata and relationships from the editorial sources. Load solution text by decade, add search results 24 at a time, and render collapsed card practice rows when opened.
+- **Study activity.** Share a local activity history across Learn, Practice, Flashcards and Quiz. Use explicit canonical problem IDs for known shared questions.
+- **Study links.** Restore inline lesson and profile links and add lesson and topic hover previews. Match the Lessons heading to the surrounding headings and keep a bullet for focused card practice.
+
 **2026-11-24**
 
 - **Trigonometric Sums and Products.** This Algebra pattern connects angle spacing, doubling, symmetry, and cosine roots to the relevant identities, a worked example, lesson L12.3, and three contest problems.

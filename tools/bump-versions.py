@@ -21,12 +21,23 @@ if any(f.startswith("js/data/learn/") and f.endswith(".js") for f in files):
         if generated.read() != before and summary not in files:
             files.append(summary)
 html = open("index.html").read()
+catalog_sources = {
+    "js/contest-sources.js", "tools/build-problem-catalog.cjs",
+    "js/data/problems/problem-db.js", "js/data/problems/contest-papers.js",
+    "js/data/problems/problem-aliases.json", "js/data/problems/difficulty-ratings.js",
+    "js/data/topic-tree.js", "js/data/lesson-topics.js", "js/data/learn/shelf.js",
+    "js/data/learn-summary.js",
+}
 for f in files:
+    if f in {"js/data/problems/lesson-links.js", "js/data/problems/problem-catalog.js"} or f.startswith("js/data/problems/solutions/"):
+        continue
     pat = re.compile(r'(%s\?v=)(\d+)' % re.escape(f))
     if pat.search(html):
         html = pat.sub(lambda m: m.group(1) + str(int(m.group(2)) + 1), html)
         print("bumped", f)
 open("index.html", "w").write(html)
+if catalog_sources.intersection(files):
+    subprocess.run(["node", "tools/build-problem-catalog.cjs"], check=True)
 subprocess.run([sys.executable, "tools/sync-lab-versions.py"])
 
 ref = "reference/index.html"

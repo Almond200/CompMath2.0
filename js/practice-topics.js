@@ -10,44 +10,38 @@
   }
   const normalize = text => String(text).normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
     .toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');
-  function build(tree, problems, eligible = () => true) {
+  function build(tree, problems, eligible = () => true, forTopic) {
     const nodes = new Map(tree.map(([id, name, parent]) => [id,
-      { id, name, label: label(name), parent, children: [], path: [], problems: new Map(), candidates: [] }]));
+      { id, name, label: label(name), parent, children: [], path: [], candidates: [] }]));
     for (const n of nodes.values()) if (n.parent) nodes.get(n.parent).children.push(n.id);
     for (const n of nodes.values()) {
       let p = n;
       while (p) { n.path.unshift(p.label); p = nodes.get(p.parent); }
       n.breadcrumb = n.path.join(' › ');
     }
-    // Match the audit's conservative twin rule: exactly one 10/12 pair in the same
-    // year, season and paper letter with an identical written strategy.
-    const groups = new Map(), identity = new Map(problems.map(p => [p.ref, p.ref]));
-    for (const p of problems) {
-      const m = p.ref.match(/^(\d{4}(?: Fall| Spring)?) AMC (10|12)([AB]?),/);
-      if (!m || !p.strategy) continue;
-      const key = m[1] + '|' + m[3] + '|' + p.strategy;
-      if (!groups.has(key)) groups.set(key, { ten: [], twelve: [] });
-      groups.get(key)[m[2] === '10' ? 'ten' : 'twelve'].push(p);
-    }
-    for (const { ten, twelve } of groups.values()) if (ten.length === 1 && twelve.length === 1)
-      identity.set(twelve[0].ref, ten[0].ref);
-    // Mixed (owner, 2026-11-11): not a tree node, but the first Practice choice, drawing from
-    // every eligible problem in every subject.
+    const identity = p => p.identity || p.slug || p.ref;
+    // Mixed is the first Practice choice and includes every eligible appearance.
     const mixed = { id: 'mixed', name: 'Mixed', label: 'Mixed', parent: null, children: [],
-      path: ['Mixed'], breadcrumb: 'Mixed', problems: new Map(), candidates: [], mixed: true };
-    for (const p of problems) {
-      if (!eligible(p)) continue;
-      mixed.candidates.push(p);
-      if (!mixed.problems.has(identity.get(p.ref))) mixed.problems.set(identity.get(p.ref), p);
-      for (const id of p.tree || []) {
-        let n = nodes.get(id);
-        while (n) { n.candidates.push(p); if (!n.problems.has(identity.get(p.ref))) n.problems.set(identity.get(p.ref), p); n = nodes.get(n.parent); }
+      path: ['Mixed'], breadcrumb: 'Mixed', candidates: problems.filter(eligible), mixed: true };
+    if (forTopic) {
+      for (const n of nodes.values()) n.candidates = forTopic(n.id).filter(eligible);
+    } else {
+      for (const p of mixed.candidates) {
+        const seen = new Set();
+        for (let id of p.tree || []) {
+          while (nodes.has(id) && !seen.has(id)) {
+            seen.add(id);
+            const node = nodes.get(id);
+            node.candidates.push(p);
+            id = node.parent;
+          }
+        }
       }
     }
     nodes.set(mixed.id, mixed);
     const aliases = new Map();
     for (const n of nodes.values()) {
-      n.problems = [...n.problems.values()];
+      Object.defineProperty(n, "problems", { get: () => unique(n.candidates) });
       for (const text of [n.label, n.name, n.breadcrumb]) {
         const key = normalize(text);
         if (!aliases.has(key)) aliases.set(key, new Set());
@@ -76,7 +70,7 @@
     // Otherwise switching AMC 10 off can incorrectly lose its still-selected AMC 12 twin.
     function unique(pool) {
       const chosen = new Map();
-      for (const p of pool) if (!chosen.has(identity.get(p.ref))) chosen.set(identity.get(p.ref), p);
+      for (const p of pool) if (!chosen.has(identity(p))) chosen.set(identity(p), p);
       return [...chosen.values()];
     }
     const select = (id, predicate = () => true) => unique((nodes.get(id)?.candidates || []).filter(predicate));

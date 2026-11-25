@@ -7,10 +7,22 @@ methods, and patterns (558 formulas, 183 methods, 50 patterns); 13 Learn textboo
 rated and filed in a 457-node topic tree, and 15,949 cross-linked to the cards their solutions run
 through. Special:Statistics in the app recomputes these counts.
 
-Static, with no application backend or required build step. KaTeX 0.16.11 and its fonts are
+Static, with no server or required deployment build. KaTeX 0.16.11 and its fonts are
 vendored under `vendor/katex/`; statement scripts and semantic vectors load on demand from
-the same site. A complete local copy can be served offline. A hosted page is not guaranteed
+the same site. The checked-in archive catalog is generated from the editorial sources.
+A complete local copy can be served offline. A hosted page is not guaranteed
 to work offline merely because it was visited once; external AoPS links require a connection.
+
+## Updating the archive
+
+Edit the existing problem, rating, contest-paper and lesson sources. Run
+`node tools/build-problem-catalog.cjs` after changing them, or use
+`python3 tools/bump-versions.py --changed`. Commit the generated catalog, solution files
+and updated URLs together. The repository checks catch stale generated files.
+
+`js/data/problems/problem-aliases.json` maps known shared problems to a canonical slug.
+Keep each appearance's slug for its URL, rating and answer key. Add a new alias only
+when the appearances contain the same mathematical problem.
 
 ## Practice a topic
 

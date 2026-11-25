@@ -2278,12 +2278,10 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
 /* Its heading matches the heading above it in the same box (owner, 2026-11-08): the problem page's
    How this problem works (the .prob-chain h4 rules) or the practice review's and textbook's (below). */
 .chain-study-h { font-size: calc(14px * var(--tx)); font-weight: 600; color: var(--text); margin: 0 0 8px; }
-.chain-study-link { font-size: 14px; color: var(--accent); text-decoration: none; }
-.chain-study-link:hover { text-decoration: underline; }
-.chain-study-l { margin-left: 6px; font-size: 12px; color: var(--text-faint); }
-/* Study this more on a card page: one lesson per bullet (owner, 2026-11-07). */
-.card-study-list { margin: 0; padding-left: 20px; }
-.card-study-list li { margin: 4px 0; }
+.chain-study-links { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.chain-study-link { font-size: inherit; color: var(--accent); text-decoration: none; }
+.chain-study-link:hover { color: var(--accent-strong, var(--accent)); }
+.chain-study-l { margin-left: 6px; font-size: 0.86em; color: var(--text-faint); }
 
 /* Problems under the search results. */
 
@@ -3942,7 +3940,12 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .lx-jump:hover { background: var(--bg-panel); color: var(--bk-ink, var(--c-learn)); }
 
 /* A lesson's card rows are plain links (owner, 2026-10-31), and its Related cards a short list. */
-.lp-cards-row .card-link { font-size: 14.5px; }
+/* Study links follow the typography of the app's cross-references. */
+.study-links, [data-resource-practice], .chain-study-links { font-size: calc(14.5px * var(--tx)); line-height: 1.6; }
+.study-links, [data-resource-practice] { overflow-wrap: anywhere; }
+.study-link-sep { margin: 0 2px; color: var(--text-faint); }
+:is(.study-links, [data-resource-practice], .contest-profile, .insight-notes) a:not(.elo-bar) { text-decoration: none; }
+:is(.study-links, [data-resource-practice], .contest-profile, .insight-notes) a:not(.elo-bar):hover { color: var(--accent-strong, var(--accent)); }
 .lp-related { margin: 0; padding-left: 20px; }
 .lp-related li { margin: 0 0 8px; font-size: calc(15.5px * var(--tx)); line-height: 1.7; color: var(--text); }
 
@@ -4184,7 +4187,7 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 /* The charts dim without losing saturation (owner: mixing toward the card background made colours dull). */
 /* Small grey text added with the newer search results and book pages read under 4:1 on a card in
    --text-faint; in dark they use --text-dim. */
-:root[data-theme="dark"] :is(.card-crumb, .rs-k, .rs-n, .rs-more-line, .more-forms, .bk-stats, .lb-n, .card-study-list, .book-search .set-find-group) { color: var(--text-dim); }
+:root[data-theme="dark"] :is(.card-crumb, .rs-k, .rs-n, .rs-more-line, .more-forms, .bk-stats, .lb-n, .book-search .set-find-group) { color: var(--text-dim); }
 /* Front page, dark mode (owner, 2026-11-07): the space names and their top strips, the kind
    badges and the "See all" link are a step less bright, at full saturation so they stay vivid. The book covers keep their colours. */
 :root[data-theme="dark"] .home :is(.hm-space-name, .badge, .hm-more) { filter: saturate(1.05) brightness(0.86); }
@@ -4625,7 +4628,7 @@ button.tt-tw:hover { background: var(--border); color: var(--text); }
 /* ---------- A contest paper's page (2026-11-11): figures, problem tiles, statistics ---------- */
 .pp-stats { margin: 18px 0 4px; }
 .pp-sec { margin-top: 26px; }
-.pp-h { margin: 0 0 12px; padding-bottom: 7px; border-bottom: 1px solid var(--border); font-size: 15px; font-weight: 750; color: var(--text); }
+.pp-h { margin: 0 0 12px; padding-bottom: 7px; border-bottom: 1px solid var(--border); font-size: calc(15px * var(--tx)); font-weight: 750; color: var(--text); }
 /* A section heading with an action beside it: the hairline runs under both. */
 .pp-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 12px; padding-bottom: 7px; border-bottom: 1px solid var(--border); }
 .pp-head .pp-h { margin: 0; padding: 0; border: 0; }
@@ -4707,6 +4710,7 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 .tp-body[hidden] { display: none; }
 .tp-cards tbody th .card-link { font-weight: 400; }
 .tp-problems-h { margin-top: 4px; }
+.topic-lessons { margin-bottom: 20px; }
 .tp .pf-table, .tp .pf-plot, .tp .pf-eras { max-width: 600px; }
 
 /* Practice a card: the kind chooser sits above the card search, as in Practice a contest. */

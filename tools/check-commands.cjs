@@ -38,7 +38,7 @@ const URL = process.env.COMPMATH_URL || 'http://localhost:8765';
     assert.deepEqual(heads, ['Library', 'Problems', 'Contests', 'Topic tree', 'Learn', 'Connections', 'Figures and examples', 'You']);
     const rows = Object.fromEntries(await page.locator('.special-table tr').evaluateAll(a => a.map(r => [r.cells[0].innerText.trim(), r.cells[1].innerText.trim()])));
     const num = k => +String(rows[k] || '').split(' ')[0].replace(/,/g, '');
-    const db = await page.evaluate(() => ({ n: window.MATH_PROBLEM_DB.length }));
+    const db = await page.evaluate(() => ({ n: window.MATH_PROBLEM_CATALOG.rows.length }));
     assert.equal(+rows['Practice problems'].replace(/,/g, ''), db.n);
     assert.equal(num('Contests'), fams, 'one suggestion per contest family');
     assert.ok(num('With an answer key for Practice sets') > 1000, 'answer keys loaded: ' + rows['With an answer key for Practice sets']);
