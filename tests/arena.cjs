@@ -41,11 +41,11 @@ placed.events.push(...Array.from({length:6},(_,i) => ({
 assert.equal(stats.baseline, null, 'an old six-question placement does not set the new baseline');
 const calibrated = A.ratings(placed.events);
 assert(calibrated.baseline);
-assert.deepEqual([...calibrated.subjects].sort().map(([id,track]) => [id,track.rating,track.answered]),
+assert.deepEqual([...calibrated.subjects].sort().map(([id,track]) => [id,track.rating,track.wins]),
   ['alg','cp','geo','nt'].map(id => [id,calibrated.baseline.rating,0]));
 const newAnswer = {...placed.events.at(-1), outcome:'correct', subjects:['geo'], session:'rated-set'};
 const updated = A.ratings([...placed.events, newAnswer]);
-assert.equal(updated.subjects.get('geo').answered,1);
+assert.equal(updated.subjects.get('geo').wins,1);
 assert(updated.subjects.get('geo').rating > calibrated.baseline.rating);
 assert.equal(updated.subjects.get('alg').rating,calibrated.baseline.rating);
 assert.equal(updated.overall.rating,calibrated.baseline.rating,'one strong subject cannot lift overall Elo alone');
@@ -157,8 +157,8 @@ async function checkHistory() {
   const varied = single.events.map((e,i) => ({...e, elo:1500 + (i < 6 ? -700 : 700)}));
   assert.notEqual(A.ratings(narrow).baseline.rating,A.ratings(varied).baseline.rating);
   const six = A.ratings([...placed.events, ...Array.from({length:6},(_,i) => ({...newAnswer,slug:'rated-'+i,identity:'rated-'+i}))]);
-  assert.equal(six.subjects.get('geo').answered,A.SUBJECT_PROVISIONAL);
-  assert.equal(six.subjects.get('alg').answered,0);
+  assert.equal(six.subjects.get('geo').wins,A.SUBJECT_PROVISIONAL);
+  assert.equal(six.subjects.get('alg').wins,0);
   const lowPlacement = single.events.map(event => ({...event, outcome:'incorrect', elo:400}));
   const lowBaseline = A.ratings(lowPlacement).baseline.rating;
   assert(lowBaseline < 100, 'placement can estimate a rating below 100');

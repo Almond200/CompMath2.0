@@ -231,7 +231,7 @@
     s.closed = !remaining(state);
   }
   const expected = (rating, elo) => 1 / (1 + 10 ** ((elo - rating) / 400));
-  const track = (rating = BASE) => ({rating, count:0, wins:0, answered:0});
+  const track = (rating = BASE) => ({rating, count:0, wins:0});
   function estimate(evidence) {
     const scale = Math.LN10 / 400, variance = 600 ** 2;
     // At the endpoints the prior dominates even when every answer has the same outcome.
@@ -249,7 +249,6 @@
     const win = Number(event.outcome === 'correct');
     t.count++;
     t.wins += win;
-    if (answered(event)) t.answered++;
     if (k) t.rating = Math.round(t.rating + k * (resultScore(event) - expected(t.rating,event.elo)));
   }
   function ratings(events, incompleteId) {
