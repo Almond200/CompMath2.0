@@ -6122,7 +6122,7 @@
         const kind = s.clock ? 'Mock' : isMock(s) ? 'Past contest' : 'Practice';
         return `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(practiceSetLabel(s))}<small class="practice-history-meta">${kind} · ${total} problem${total === 1 ? '' : 's'} · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${status}</span></a>`;
       }).join('');
-      return `<div class="pl-list practice-history-list" id="${listId}">${rows}</div><button type="button" class="ct-toggle practice-history-more" aria-controls="${listId}" aria-expanded="false" hidden>Show all</button>`;
+      return `<div class="pl-list practice-history-list" id="${listId}">${rows}</div><button type="button" class="hp-btn hp-btn-soft practice-history-more" aria-controls="${listId}" aria-expanded="false" hidden>Show all</button>`;
     };
     return `<section class="sh-section" id="resume-practice-sets"><h3>Resume a set</h3>${group(false)}</section><section class="sh-section" id="past-practice-sets"><h3>Completed sets</h3>${group(true)}</section>`;
   }

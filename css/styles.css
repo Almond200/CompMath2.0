@@ -4133,7 +4133,7 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 .practice-history-list { margin-top: 12px; }
 .practice-history-list > [hidden], .practice-history-more[hidden] { display: none; }
 
-.practice-history-more { display: block; width: 100%; }
+.practice-history-more { margin-top: 10px; }
 
 /* Search stays within the current textbook and shares Settings suggestion styling. */
 .bk-bars { grid-template-columns: 40px minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
@@ -4862,7 +4862,7 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 [data-study-sidebars="hide"] .browse-topics.rail-open .tt { display: block; }
 [data-study-sidebars="hide"] .browse-topics.is-index .br-subjects { display: grid; }
 [data-study-sidebars="hide"] .browse-topics:not(.is-index) .tt-mobile-btn { display: inline-block; align-self: flex-start; margin: 0; }
-.arena [data-earlier][hidden] { display: none; }
+.arena [data-arena-history-toggle][hidden] { display: none; }
 
 /* Selections in study forms use a quiet tint; the submit action keeps the solid fill. */
 body:is([data-space="practice"], [data-space="arena"]) .rand-btns button { background: var(--bg-card); }

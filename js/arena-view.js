@@ -57,8 +57,8 @@
     return {before:changes[0]?.before, after:changes.at(-1)?.after};
   }
   function showHistory(ctx, state, stats) {
-    const box = ctx.container.querySelector('[data-arena-log]');
-    const button = box.parentElement.querySelector('[data-earlier]');
+    const box = ctx.container.querySelector('#arena-history-list');
+    const button = box.parentElement.querySelector('[data-arena-history-toggle]');
     const sessions = new Map(), pointsBySession = new Map();
     state.events.forEach(event => {
       if (state.session?.id === event.session && !state.session.closed) return;
@@ -71,27 +71,34 @@
     });
     const groups = [...sessions.values()].reverse();
     if (!groups.length) { box.textContent = 'Completed sets will appear here for review.'; return; }
-    let shown = 0;
-    function more() {
-      for (const events of groups.slice(shown,shown+4)) {
+    const previewSize = 4;
+    function appendRows(rows) {
+      for (const events of rows) {
         const event = events.at(-1), points = pointsBySession.get(event.session) || [];
         const placement = event.placement || points.length && points.every(p => p.calibration);
         const focus = focusOf(state,events);
-        const {before,after} = ratingRange(points,placement ? 'mixed' : focus);
+        const {before,after} = ratingRange(points,focus);
+        const change = Number.isFinite(after - before) ? signed(after - before) + (focus === 'mixed' ? ' overall Elo' : ' Elo') : 'No rating change';
         const date = new Date(event.at).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
         box.insertAdjacentHTML('beforeend', `<div class="arena-log arena-history-row">
           <a href="${reviewUrl(event.session)}">${placement ? 'Placement' : ratedSetTitle(ctx,focus,events)} <small>${date}</small></a>
-          <span>${Number.isFinite(after) ? number(after) + ' Elo' + (placement ? '' : ' · ' + signed(after-before)) : 'No rating change'}</span></div>`);
-        shown++;
+          ${placement ? '' : `<span>${change}</span>`}</div>`);
       }
-      button.hidden = shown === groups.length;
     }
+    appendRows(groups.slice(0,previewSize));
+    if (groups.length <= previewSize) return;
+    button.hidden = false;
     button.onclick = () => {
-      const first = box.children.length;
-      more();
-      box.children[first]?.querySelector('a')?.focus();
+      const expanded = button.getAttribute('aria-expanded') !== 'true';
+      button.setAttribute('aria-expanded', String(expanded));
+      button.textContent = expanded ? 'Show less' : 'Show all';
+      if (expanded) {
+        appendRows(groups.slice(previewSize));
+        box.children[previewSize].querySelector('a').focus();
+      } else {
+        while (box.children.length > previewSize) box.lastElementChild.remove();
+      }
     };
-    more();
   }
   function distinctStudyRows(rows) {
     const anchors = new Set();
@@ -180,8 +187,8 @@
       ${placed ? `<div class="arena-plot"><h4>Rating trend</h4>${chart(stats.points)}</div>` :
         `<div class="arena-placement"><h4>How placement works</h4><p>You get two tries per problem. A second-try solve earns half credit toward your placement rating. Blanks count as misses when you submit. Placement shows one problem at a time.</p></div>`}
       ${placed ? `<div class="arena-metrics">
-        <div><strong>${number(setPoints(stats.points).reduce((max,p) => Math.max(max, p.rating), 0))}</strong><small>Peak Elo</small></div>
-        ${ratedAnswers.length ? `<div><strong>${accuracy(ratedAnswers)}</strong><small>Lifetime accuracy on submitted rated answers</small></div>` : ''}
+        <div><strong>${number(setPoints(stats.points).reduce((max,p) => Math.max(max, p.rating), stats.baseline.rating))}</strong><small>Peak Elo</small></div>
+        ${ratedAnswers.length ? `<div><strong>${accuracy(ratedAnswers)}</strong><small>Overall accuracy on submitted rated answers</small></div>` : ''}
         ${postPlacement.length ? `<div><strong>${new Set(postPlacement.map(p => p.event.session)).size}</strong><small>Rated sets</small></div>` : ''}</div>` : ''}
       </section>
       <section class="sh-section" id="arena-session"><h3>${(active ? s.placement : !placed) ? 'Placement set' : 'Rated session'}</h3>
@@ -200,7 +207,7 @@
           <td>${accuracy(stats.points.filter(p => p.event.answer && p.event.subjects.includes(id)))}</td></tr>
           <tr class="arena-subject-details" id="arena-subject-${id}" hidden><td colspan="3">${subjectDetails(ctx,id,stats,reviews)}</td></tr>`; }).join('')}</tbody></table></div></section>
       <section class="sh-section" id="arena-study"><h3>What to study</h3>${studyHtml(ctx, studyRows)}</section>
-      <section class="sh-section" id="arena-history"><h3>Session history</h3><div data-arena-log></div><button class="hp-btn hp-btn-soft" data-earlier hidden>Earlier sessions</button></section></div>`;
+      <section class="sh-section" id="arena-history"><h3>Session history</h3><div id="arena-history-list"></div><button type="button" class="hp-btn hp-btn-soft" data-arena-history-toggle aria-controls="arena-history-list" aria-expanded="false" hidden>Show all</button></section></div>`;
     for (const button of ctx.container.querySelectorAll('[data-subject-toggle]')) {
       button.onclick = () => {
         const detail = document.getElementById(button.getAttribute('aria-controls'));
