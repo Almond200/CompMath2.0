@@ -28,6 +28,8 @@ assert.equal(index.search('similar triangles')[0].label, 'Similar triangles');
 assert.equal(index.search('geometry parallel')[0].id, 'geo.old.parallel');
 assert.deepEqual(index.search('').map(n => n.id), ['mixed', 'geo']);
 assert.equal(index.resolve('Mixed').id, 'mixed');
+assert.equal(index.resolve('Mixed subjects').id, 'mixed');
+assert.equal(index.search('mixed')[0].label, 'Mixed subjects');
 assert.equal(index.nodes.get('mixed').problems.length, 7, 'Mixed draws every eligible problem once');
 const twelveOnly = index.select('geo.old.parallel',p=>p.ref.includes('AMC 12'));
 assert(twelveOnly.some(p=>p.ref==='2024 AMC 12A, Problem 2'),'select the enabled twin after filtering contests');

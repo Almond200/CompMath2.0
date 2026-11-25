@@ -2,6 +2,14 @@
 
 This file collects the project audits, reviews and repair logs. The 2026-11-12 consolidation preserves the original historical sections. The grading checkpoint and its source audits are linked below.
 
+## Arena consistency review (2026-11-25)
+
+Arena uses the app’s space navigation, primary and secondary buttons, answer grader, math keypad, accessible dialog, and lesson and topic previews. Practice and Arena selection controls use the softer accent tint. Both space titles use the 30 px base heading.
+
+Two differences remain for the owner’s review. At the default text size, Arena’s in-session heading is 24 px and its panel headings are 17 px. Practice uses 18 px and 16 px respectively. Arena’s difficulty options describe distance from the solver’s Elo, while the five Practice difficulty bands describe the selected pool. Those labels currently communicate different measurements.
+
+The app-wide Special:Statistics personal summary lists Practice sets and Learn progress. Personal Arena figures currently appear on the Arena overview.
+
 **Practice grading**
 
 - [Practice grading and answer-key audit](#practice-grading-and-answer-key-audit)

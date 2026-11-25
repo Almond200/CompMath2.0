@@ -1,6 +1,14 @@
 // Rank archive text separately from routing and DOM rendering. Cache indexes on demand.
 (function (root) {
   "use strict";
+  // Extract the number separately from paper matching. Short forms count only in contest
+  // context so a lesson code, a year, or a contest division keeps its original meaning.
+  function numberedReference(text) {
+    const marker = /(?:\b(?:problems?|prob|questions?|q|p|no|number|num)\s*[.#:]?\s*|#\s*)(\d{1,3})\b(?!\.\d)/i.exec(text);
+    const tail = marker || /\s(\d{1,2})\s*$/.exec(text);
+    if (!tail || Number(tail[1]) < 1) return null;
+    return { num: Number(tail[1]), explicit: !!marker, paper: text.replace(tail[0], ' ').trim() };
+  }
   function build(problems, cardName) {
     let records;
     const terms = new Map();
@@ -45,7 +53,7 @@
     }
     return { matches, score };
   }
-  const api = { build };
+  const api = { build, numberedReference };
   if (typeof module !== "undefined") module.exports = api;
   else root.ProblemSearch = api;
 })(typeof window === "undefined" ? globalThis : window);

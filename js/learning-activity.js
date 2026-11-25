@@ -20,20 +20,26 @@
     if (data && data.version !== VERSION) throw new Error("Unsupported activity version");
     return data;
   }
-  function record(source, type, item, outcome, kind) {
+  function record(source, type, item, outcome, kind, id) {
     const at = Date.now();
-    const id = root.crypto?.randomUUID?.() || at.toString(36) + "-" + Math.random().toString(36).slice(2);
+    id ||= root.crypto?.randomUUID?.() || at.toString(36) + "-" + Math.random().toString(36).slice(2);
     try {
-      const storage = root.localStorage;
       const event = { id, source, type, item, outcome, kind, at };
+      if (root.StudyStorage?.enabled) return root.StudyStorage.appendActivity(event).catch(() => {});
+      const storage = root.localStorage;
       storage.setItem(KEY, JSON.stringify(merge(readStored(storage), { version: VERSION, events: [event] })));
     } catch (error) {
       // Activity can be unavailable without preventing the original study action from saving.
     }
   }
-  function history({ storage = root.localStorage, practice = root.PracticeSessions, canonical = id => root.ProblemCatalog?.canonicalId(root.MATH_PROBLEM_CATALOG, id) || id } = {}) {
+  function sawProblem(source, slug) {
+    const canonical = root.ProblemCatalog?.canonicalId(root.MATH_PROBLEM_CATALOG, slug) || slug;
+    return record(source, "exposure", slug, "opened", "problem", "opened:" + canonical);
+  }
+  async function history({ storage = root.localStorage, arenaState, kind, practice = root.PracticeSessions, arena = root.Arena, canonical = id => root.ProblemCatalog?.canonicalId(root.MATH_PROBLEM_CATALOG, id) || id } = {}) {
     let events = [], sets = [];
-    try { events = entries(readStored(storage)); } catch (error) {}
+    if (root.StudyStorage?.enabled) events = await root.StudyStorage.readActivity(kind);
+    else try { events = entries(readStored(storage)); } catch (error) {}
     try { if (practice) sets = practice.read(storage); } catch (error) {}
     for (const set of sets) {
       if (set.status !== "finished") continue;
@@ -47,10 +53,23 @@
           kind: "problem", item: slug, at, outcome });
       }
     }
+    if (arena) {
+      const state = arenaState ?? await arena.read(root.StudyStorage?.enabled ? undefined : storage);
+      const indices = new Map();
+      for (const e of state.events) {
+        const reviewNumber = (indices.get(e.session) || 0) + 1;
+        indices.set(e.session,reviewNumber);
+        events.push({
+          id:"arena:" + e.identity, source:"arena", type:["seen","unanswered"].includes(e.outcome) ? "exposure" : "attempt",
+          kind:"problem", item:e.slug, at:e.at, outcome:e.outcome, retry:!!e.firstMiss, session:e.session, reviewNumber
+        });
+      }
+    }
+    if (kind) events = events.filter(event => event.kind === kind);
     return events.map(event => event.kind === "problem" ? { ...event, canonicalId: canonical(event.item) } : event)
       .sort((a, b) => (a.at ?? 0) - (b.at ?? 0));
   }
-  const api = { KEY, merge, record, history };
+  const api = { KEY, merge, record, sawProblem, history };
   if (typeof module !== "undefined") module.exports = api;
   else root.LearningActivity = api;
 })(typeof window === "undefined" ? globalThis : window);
