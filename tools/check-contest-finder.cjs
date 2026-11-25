@@ -17,6 +17,18 @@ const base=process.env.COMPMATH_URL||'http://localhost:8765';
   const h=await opts('hmmt');assert.ok(h.includes('HMMT February Geometry')&&h.includes('HMMT November General'),'a contest is offered round by round: '+h);
   assert.deepEqual(await opts('pumac nt'),['PUMaC Division A Number Theory','PUMaC Division B Number Theory']);
   assert.ok((await opts('xyz')).length===0&&await page.locator('#ct-find-options .set-find-empty').isVisible());
+  for(const [query,expected] of [['calagry contest','Calgary Junior Math Contest'],['cayely contset','Cayley Contest'],['stanfrd math competition','SMT'],['montgmery blair tournament','MBMT'],['2009 princetno geometry','PUMaC']]){
+    const first=(await opts(query))[0];
+    assert.ok(first?.includes(expected),query+' in Practice: '+first);
+    await page.locator('#search-input').fill(query);
+    await page.locator('.results-meta').filter({hasText:query}).waitFor();
+    assert.ok((await page.locator('.card-contest-result .card-name').first().innerText()).includes(expected),query+' in main search');
+    await page.goto(base+'/#/practice');await page.waitForSelector('#ct-find');
+  }
+  const ref='2024 cayely contest #3';await page.locator('#search-input').fill(ref);
+  await page.locator('.results-meta').filter({hasText:ref}).waitFor();
+  assert.match(await page.locator('.search-results > .card').first().getAttribute('href'),/2024-cayley-contest-3$/);
+  await page.goto(base+'/#/practice');await page.waitForSelector('#ct-find');
   await opts('hmmt geometry 2025');await page.keyboard.press('Enter');
   await page.waitForFunction(()=>/hmmt-february-geometry$/.test(location.hash));
   assert.ok(await page.locator('.db-group.is-shown').first().innerText().then(t=>/Geometry/.test(t)||true));

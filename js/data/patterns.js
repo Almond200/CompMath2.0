@@ -3122,7 +3122,7 @@ window.MATH_SECTIONS.push({
     {
       title: "Algebra",
       groups: [
-        { title: "Self-Similar & Repeating", blurb: "Expressions and sequences that repeat themselves, so one copy or one cycle settles the rest.", ids: ["infinite-nest", "periodic-sequences"] },
+        { title: "Self-Similar & Repeating", blurb: "Expressions and sequences that repeat themselves, so one copy or one cycle settles the rest.", ids: ["infinite-nest", "trigonometric-sums-products", "periodic-sequences"] },
         { title: "Equations with Hidden Structure", blurb: "Equations and expressions that look messy but are built from one hidden piece: a repeated block to name, or a new operation that is a familiar one in disguise.", ids: ["repeated-block-equation", "defined-operation"] },
         { title: "Word-Problem Setups", blurb: "Stories whose numbers change part-way through, where the right bookkeeping turns the story into one equation.", ids: ["averages-before-after", "reading-graphs", "scoring-rules", "break-even-plans", "several-rates"] },
         { title: "Logarithms & Complex Numbers", blurb: "Equations in logarithms or complex numbers, where the right representation makes them linear or geometric.", ids: ["log-system", "complex-modulus-argument"] },
@@ -3323,6 +3323,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "trigonometric-sums-products",
+          name: "Trigonometric Sums and Products",
+          type: "pattern",
+          subject: "algebra",
+          recognize: [String.raw`angles spaced by a fixed step or paired on opposite sides of a midpoint`, String.raw`a product with angles $x,2x,4x,\ldots$`, String.raw`cosines of multiples of $\pi/n$ used as terms of a symmetric expression or as polynomial roots`],
+          suggests: ["telescoping", "trig-series-complex"],
+          tryFirst: ["product-sum", "trig-telescoping-product", "reduction-identities"],
+          latex: String.raw`2\sin d\cos t=\sin(t+d)-\sin(t-d),\qquad 2\sin t\cos t=\sin(2t)`,
+          description: String.raw`Read the angles before expanding. A fixed step lets neighboring terms cancel. A doubling step lets the sine from one factor feed the next. When the angles are multiples of the same fraction of a turn, reflecting or doubling them can bring back the original set.`,
+          keywords: ["trigonometric sums and products", "trig sums", "cosine sum", "sine product", "equally spaced angles", "doubling angles", "symmetric sums of cosines", "cosine roots of a polynomial", "sum to product", "product to sum", "pattern"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC12", "AIME"]
         },
         {
           id: "periodic-sequences",

@@ -6519,3 +6519,34 @@ Products or sums of even powers, exact values, and trigonometric equations that 
 Useful on AMC 12 and AIME problems where paired powers combine into a single cosine. A common follow-up is to evaluate the new cosine at a familiar angle.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"trigonometric-sums-products": String.raw`
+## Distinguishing clues
+- Fixed step. A sum such as $\cos x+\cos 3x+\cos 5x$ has angle gap $2x$. Half that gap tells you which sine to multiply by.
+- Doubling step. In $\cos x\cos 2x\cos 4x$, each angle is twice the preceding one. Start with $\sin x$ and follow the doubling.
+- A shared denominator. For angles $k\pi/n$, list the numerators. A reflection or a shift by a full turn can identify equal terms, opposite terms, or a complete cycle.
+- A symmetric target. If the question asks for $ab+bc+ca$, look for the sum of the cosines and the sum of their squares. If the cosines are roots, look for a multiple angle they all send to the same cosine.
+
+## Methods and Formulas to Try
+Choose the operation that sends the angles already on the page to another angle you recognize.
+
+### Methods to try
+- [[telescoping]]: for a gap of $2d$, multiply the sum by $2\sin d$. Each term becomes $\sin(t+d)-\sin(t-d)$, and its positive sine cancels the next term's negative sine. Write the endpoints before dividing.
+- [[trig-series-complex]]: for a complete cycle of equally spaced angles, take real parts of the corresponding geometric series of unit complex numbers. For an incomplete cycle, try pairing the two endpoints first.
+
+### Formulas to try
+- [[product-sum]]: two cosines at $m-d$ and $m+d$ add to $2\cos m\cos d$. This is particularly useful when another term already contains the midpoint angle $m$.
+- [[trig-telescoping-product]]: supply $\sin x$ to a chain of doubling cosines. Three uses of [[double-angle|the sine double-angle identity]] give $8\sin x\cos x\cos 2x\cos 4x=\sin 8x$.
+- [[reduction-identities]]: with denominator $n$, reduce the numerator modulo $2n$ and reflect about $0$ or $\pi$. For example, $\cos(8\pi/7)=\cos(6\pi/7)$, while $\cos(8\pi/7)=-\cos(\pi/7)$.
+- [[trig-power-reduction]]: if $S=a+b+c$ is known, then $ab+bc+ca=(S^2-a^2-b^2-c^2)/2$. For $a,b,c$ equal to the cosines of $2\pi/7,4\pi/7,6\pi/7$, doubling permutes the three cosine values. Thus $a^2+b^2+c^2=(3+S)/2$.
+- [[chebyshev-polynomials]]: look for an integer $m$ for which all the angles have the same $\cos(m\theta)$. For $20^\circ,100^\circ,140^\circ$, tripling gives cosine $1/2$ each time. By [[triple-angle|the triple-angle identity]], their three distinct cosines are precisely the roots of $8u^3-6u-1=0$. Now [[vietas-general|Vieta’s formulas]] give their product as $1/8$.
+
+## Common traps
+- When dividing by $\sin d$ or $\sin x$, check the angles that make the divisor zero in the original expression.
+- A shared denominator alone does not guarantee cancellation. Check whether the actual list supplies both members of each pair, and keep the minus sign when reflecting about $\pi/2$.
+- A multiple-angle equation may have more roots than the ones given. Count distinct cosine values before using all its coefficients.
+
+## Contest profile
+A sum with symmetrically placed angles can reveal a common factor in a trigonometric equation. Sums and products of cosines on a regular polygon can also appear as the coefficients of a polynomial.
+`
+});

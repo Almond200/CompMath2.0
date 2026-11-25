@@ -1340,8 +1340,8 @@ html[data-text="larger"] .prob-statement { font-size: 21px; }
 
 .related-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 /* Used by methods, Related formulas: inline blue links that open the hover preview. */
-.link-row { margin: 0; font-size: 14.5px; line-height: 1.9; }
-.link-row .card-link { white-space: nowrap; }
+.resource-list { margin: 0; padding-inline-start: 1.4em; list-style: disc outside; line-height: 1.55; }
+.resource-list li + li { margin-top: 3px; }
 
 .related-item {
   font-size: 13px;
@@ -2278,7 +2278,6 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
 /* Its heading matches the heading above it in the same box (owner, 2026-11-08): the problem page's
    How this problem works (the .prob-chain h4 rules) or the practice review's and textbook's (below). */
 .chain-study-h { font-size: calc(14px * var(--tx)); font-weight: 600; color: var(--text); margin: 0 0 8px; }
-.chain-study-links { display: flex; flex-wrap: wrap; gap: 6px 14px; }
 .chain-study-link { font-size: 14px; color: var(--accent); text-decoration: none; }
 .chain-study-link:hover { text-decoration: underline; }
 .chain-study-l { margin-left: 6px; font-size: 12px; color: var(--text-faint); }
@@ -2784,7 +2783,7 @@ html[data-lesson-width="full"] .lp-main > :is(.lp-body, .lp-related, .learn-note
   .learn-h { font-size: calc(21px * var(--tx)); }
 }
 .sh-section { margin-top: 16px; padding: 16px 18px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); }
-.sh-section h3, .rand-picker h3 { margin: 0; font-size: calc(17px * var(--tx)); font-weight: 780; }
+.sh-section h3 { margin: 0; font-size: calc(17px * var(--tx)); font-weight: 780; }
 .grid-scroll { overflow-x: auto; }
 .cy-grid { border-collapse: collapse; width: 100%; font-size: 13.5px; }
 .cy-grid th, .cy-grid td { padding: 7px 10px; text-align: center; border-bottom: 1px solid var(--border); white-space: nowrap; }
@@ -3042,8 +3041,7 @@ html[data-cols="spacious"] .content .cards.search-results { grid-template-column
 .rand-btns button:where(:not(:disabled):not([aria-disabled="true"])):hover { border-color: var(--space); color: var(--space); }
 .rand-btns button[aria-checked="true"], .concept-modes button[aria-selected="true"] { background: var(--space); border-color: var(--space); color: #fff; }
 .rand-diff { display: flex; align-items: center; gap: 12px; margin-top: 14px; font-size: 13px; font-weight: 650; color: var(--text-dim); }
-.rand-picker .rand-go, #topic-practice-form .hp-btn, #card-practice-form .hp-btn { white-space: nowrap; }
-.rand-picker .rand-btns { margin-top: 10px; }
+#topic-practice-form .hp-btn, #card-practice-form .hp-btn { white-space: nowrap; }
 #past-practice-sets > h3 + p { margin: 6px 0 10px; }
 #topic-practice-form fieldset, #card-practice-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 #topic-practice-form label, #card-practice-form label { font-size: 13px; font-weight: 650; }
@@ -3057,7 +3055,6 @@ html[data-cols="spacious"] .content .cards.search-results { grid-template-column
 .rand-diff input { flex: 1; max-width: 260px; accent-color: var(--space); }
 .rand-diff-val { min-width: 60px; color: var(--space); }
 .rand-diff-note { margin: 8px 0 0; max-width: 620px; min-height: 2.9em; font-size: calc(12.5px * var(--tx)); line-height: 1.45; color: var(--text-dim); }
-.rand-go { margin-top: 14px; }
 .hub { max-width: 1320px; }
 .space-home { max-width: none; }
 /* A card's own page: name and actions on one line, then the same badge line as the card face. */
@@ -3569,7 +3566,7 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
 /* Dark mode, second pass: Related chips, the random-problem
    buttons, and the math in formula boxes drop one step from white. Dark only. */
 :root[data-theme="dark"] .related-item { color: var(--text-head); }
-:root[data-theme="dark"] :is(.hp-btn, .rand-go, .rand-btns button[aria-checked="true"], .concept-modes button[aria-selected="true"]) { color: #d3dae9; }
+:root[data-theme="dark"] :is(.hp-btn, .rand-btns button[aria-checked="true"], .concept-modes button[aria-selected="true"]) { color: #d3dae9; }
 :root[data-theme="dark"] .formula-display, :root[data-theme="dark"] .formula-display .katex { color: #cdd5e8; }
 
 /* Front page "How the four fit together" and "Jump to": the same softer shade. Dark only. */
@@ -3946,7 +3943,6 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 
 /* A lesson's card rows are plain links (owner, 2026-10-31), and its Related cards a short list. */
 .lp-cards-row .card-link { font-size: 14.5px; }
-.lp-cards-sep { margin: 0 2px; color: var(--text-faint); }
 .lp-related { margin: 0; padding-left: 20px; }
 .lp-related li { margin: 0 0 8px; font-size: calc(15.5px * var(--tx)); line-height: 1.7; color: var(--text); }
 
@@ -4096,6 +4092,23 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 .practice-results-stats strong { display: block; font-size: 28px; line-height: 1.2; }
 .practice-results-stats span { display: block; margin-top: 6px; color: var(--text-dim); font-size: 14px; }
 .practice-insights { margin: 0 0 12px; font-size: calc(14px * var(--tx)); color: var(--text-dim); }
+.insight-charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 12px 28px; }
+.practice-insights .insight-charts h3 { margin: 0 0 8px; font-size: calc(15px * var(--tx)); color: var(--text); }
+.insight-bar-row { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(36px, 1fr) auto; gap: 8px; align-items: center; margin: 4px 0; }
+.insight-track { display: flex; height: 9px; border-radius: 4px; overflow: hidden; }
+.insight-cells, .insight-legend { display: flex; flex-wrap: wrap; gap: 4px; }
+.insight-cells a { display: grid; place-items: center; min-width: 27px; min-height: 27px; border-radius: 4px; color: white; font-size: 13px; text-decoration: none; font-variant-numeric: tabular-nums; }
+.insight-cells a:hover { text-decoration: underline; }
+.insight-right { background: #267751; }
+.insight-wrong { background: #a33c47; }
+.insight-pending { background: #84611c; }
+.insight-blank { background: #566783; }
+.insight-void { background: #585767; outline: 1px dashed var(--bg); outline-offset: -2px; }
+.insight-legend { gap: 4px 14px; margin: 8px 0 10px; font-size: calc(12px * var(--tx)); }
+.insight-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.insight-legend i { width: 9px; height: 9px; border-radius: 2px; }
+.insight-notes { border-top: 1px solid var(--border); padding-top: 6px; }
+.insight-notes:empty { display: none; }
 .practice-insights p { margin: 2px 0; }
 .practice-insights strong { color: var(--text); }
 .practice-results-list { display: grid; margin: 8px -10px 0; }
@@ -4166,7 +4179,7 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
   --bk-ink: color-mix(in srgb, var(--bk-a) 68%, #e8ecf6);
 }
 :root[data-theme="dark"] .bk-view .lp-main :is(p, li, .katex) { color: #c9d1e4; }
-:root[data-theme="dark"] .bk-view .lp-main :is(.lp-cards-label, .lp-cards-sep) { color: var(--text-dim); }
+:root[data-theme="dark"] .bk-view .lp-main .lp-cards-label { color: var(--text-dim); }
 :root[data-theme="dark"] .bk-view .lp-main :is(a, a .katex) { color: var(--accent); }
 /* The charts dim without losing saturation (owner: mixing toward the card background made colours dull). */
 /* Small grey text added with the newer search results and book pages read under 4:1 on a card in

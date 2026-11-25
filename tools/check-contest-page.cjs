@@ -97,7 +97,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  // A tile and a bar open the problem; a topic opens its page.
  await shown().locator('.pp-tiles .br-row').nth(4).click();await page.locator('.prob-chain').waitFor();assert.match(page.url(),/2025-amc-10b-5$/);await page.goBack();await page.locator('.ct-papers').waitFor();
  await shown().locator('.pp-areas .br-kid').first().click();await page.locator('.browse-topics').waitFor();
- // Mock this paper opens Practice a contest with the contest and the paper already chosen.
+ // Mock this paper opens Mock a contest with the contest and the paper already chosen.
  await page.goBack();await page.locator('.ct-papers').waitFor();assert.equal(await page.locator('.ct-papers [aria-selected="true"]').innerText(),'AMC 10B');
  assert.equal(await shown().locator('.pp-mock').innerText(),'Mock this paper');
  if(width===1280){await shown().locator('.pp-mock').hover();const blue=await page.evaluate(()=>{const d=document.createElement('i');d.style.color='var(--accent)';document.body.append(d);const c=getComputedStyle(d).color;d.remove();return c;});
@@ -109,12 +109,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await page.waitForFunction(()=>document.activeElement?.textContent==='Start mock');await page.waitForFunction(()=>{const r=document.getElementById('pr-mock').getBoundingClientRect();return r.top<innerHeight&&r.bottom>0;});
  // Opened the ordinary way, the panel starts empty again.
  await page.goto(base+'/#/problems/amc-8/2024');await page.locator('.pp-tiles').waitFor();await page.goto(base+'/#/practice');await page.locator('#mock-contest-form').waitFor();assert.equal(await page.locator('#mock-paper-name').inputValue(),'');
- // The random picker says what a level means in Elo terms, for the contest chosen.
- // Five equal-width Elo intervals over the selection's rating span (the 2026-11-14 recalibration).
- const fifth=(fam,k)=>{const xs=db.filter(p=>fam.test(p.paper)).map(p=>p.elo),low=Math.min(...xs),span=Math.max(...xs)-low+1;return [Math.ceil(low+k*span/5),Math.ceil(low+(k+1)*span/5)-1];};
- assert.match(await page.locator('.rand-picker .rand-diff-note').innerText(),/^The five levels cover similar Elo intervals, recalculated for your selection\./);
- await page.locator('[data-rand-fam="AMC 10"]').click();await page.locator('#rand-diff-range').fill('4');const [lo,hi]=fifth(/ AMC 10[AB]?$/,3);
- assert.equal(await page.locator('.rand-picker .rand-diff-note').innerText(),`Hard in AMC 10: ${lo}–${hi} Elo. The five levels cover similar Elo intervals, recalculated for your selection.`);
+ assert.equal(await page.locator('.rand-picker').count(),0);
  // Practice a topic measures a level inside the chosen topic, and says so.
  assert.equal(await page.locator('#topic-band-note').innerText(),'Choose a topic to see five similar Elo intervals for the selected contests.');
  await page.locator('#topic-band').fill('4');assert.equal(await page.locator('#topic-band-note').innerText(),'Choose a topic to see five similar Elo intervals for the selected contests.');

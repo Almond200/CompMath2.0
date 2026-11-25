@@ -269,7 +269,7 @@ The independently derived keys below were checked against the tournament archive
 
 ## Pilot paper
 
-In Practice → Practice a contest → Past contest, search for `2025 HMMT February Algebra and Number Theory`. All ten questions have keys. Question 7 lets you try equivalent expressions involving a radical. Question 10 lets you try listing both values in either order. The Math keypad is optional, and the preview shows how the app parsed your expression. This pilot is untimed and reports the number of correct answers.
+In Practice → Mock a contest → Past contest, search for `2025 HMMT February Algebra and Number Theory`. All ten questions have keys. Question 7 lets you try equivalent expressions involving a radical. Question 10 lets you try listing both values in either order. The Math keypad is optional, and the preview shows how the app parsed your expression. This pilot is untimed and reports the number of correct answers.
 
 ### Independent checks for 2015 MBMT
 

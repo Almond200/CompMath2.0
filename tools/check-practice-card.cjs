@@ -12,7 +12,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await page.addInitScript(t=>localStorage.setItem('theme',t),theme);
  const fits=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'no horizontal overflow at '+page.url());
  await page.goto(base+'/#/practice');const form=page.locator('#card-practice-form');await page.locator('#concept-card-tab').click();await form.waitFor();
- const heads=await page.locator('.sh-section > h3').allInnerTexts();assert.deepEqual(heads.slice(heads.indexOf('Practice a concept'),heads.indexOf('Practice a concept')+2),['Practice a concept','Practice a contest'],'one concept area sits before Practice a contest');
+ const heads=await page.locator('.sh-section > h3').allInnerTexts();assert.deepEqual(heads.slice(heads.indexOf('Practice a concept'),heads.indexOf('Practice a concept')+2),['Practice a concept','Mock a contest'],'one concept area sits before Mock a contest');
  assert.equal(await form.locator('[data-card-kind]').count(),0,'one search, no kind buttons');assert.match(await page.locator('#pr-card .practice-panel-intro').innerText(),/reference's cards/);assert.equal(await form.locator('[type="submit"]').isDisabled(),true);
  assert.match(await page.locator('#card-band-note').innerText(),/^Choose a card to see five similar Elo intervals/);
  // Nothing is offered until something is typed; then the matching cards, most problems first.

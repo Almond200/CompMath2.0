@@ -72,9 +72,7 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
       return result;
     });
     for (const [name, color] of Object.entries(colors)) if (name !== '--text-faint') assert.ok(contrast(colors['--text-faint'], color) >= 4.5, name);
-    const contest = page.locator('[role="radiogroup"][aria-label="Contest"]');
-    await radio(contest, 'ArrowRight', 'AMC 8'); await radio(contest, 'End', 'AIME');   // AMC and AIME show first (owner, 2026-11-14)
-    await radio(contest, 'ArrowRight', 'Any contest'); await radio(contest, 'Home', 'Any contest');
+    assert.equal(await page.getByRole('heading',{name:'Open a random problem'}).count(),0);
     await radio(page.locator('[aria-label="Mock type"]'), 'ArrowRight', 'Generate a mock');
     await radio(page.locator('[aria-label="Mock contest"]'), 'ArrowDown', 'AMC 10');
     scenarios++;
@@ -241,7 +239,7 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
       const toggle = side.getByRole('button', { name: label, exact: true });
       const links = side.locator('.nav-space-link');
       assert.deepEqual(await links.allInnerTexts(), space === 'learn' ? ['Textbooks','Lists'] :
-        ['Open a random problem','Practice a concept','Practice a contest','Contests','Resume a set','Completed sets']);
+        ['Practice a concept','Mock a contest','Contests','Resume a set','Completed sets']);
       await toggle.press('Enter');
       assert.equal(await toggle.getAttribute('aria-expanded'), 'false');
       assert.ok(await links.first().evaluate(el => !!el.closest('[inert]')));

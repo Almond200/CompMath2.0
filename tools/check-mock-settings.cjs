@@ -1,5 +1,5 @@
 // CHROME=/usr/bin/chromium COMPMATH_URL=http://localhost:8765 node tools/check-mock-settings.cjs
-// Practice a contest, Generate a mock: No trigonometry (AMC 8 and 10 only), No calculus, and the closed-by-default
+// Mock a contest, Generate a mock: No trigonometry (AMC 8 and 10 only), No calculus, and the closed-by-default
 // More settings panel (contest and subject variety, difficulty, statements only). Checks that the options show where
 // they belong, shrink the pool, are saved with the set, and that a generated paper obeys them, in both themes at
 // desktop and mobile sizes.

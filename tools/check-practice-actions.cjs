@@ -48,7 +48,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('.practice-results').waitFor();
  assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct','Voided','Correct','Voided']);
  assert.match(await p.locator('.practice-insights').innerText(), /100% accuracy on graded answers \(3 of 3\)/, 'voids do not enter accuracy');
- assert.match(await p.locator('.practice-insights a').getAttribute('href'), /^#\/browse\/topics\//);
+ assert.match(await p.locator('.insight-notes a').first().getAttribute('href'), /^#\/browse\/topics\//);
  await p.locator('[data-result-index="4"]').click();
  assert.match(await p.locator('.practice-review .practice-result').innerText(),/^Practice ruling\..*degree-ten/);
  assert.equal(await color(voidNumber),textColor);
@@ -75,7 +75,8 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('#finish-practice').click();
  await p.locator('.practice-results').waitFor();
  assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Check yourself');
- assert.equal(await p.locator('.practice-insights').count(),0);
+ assert.equal(await p.locator('.insight-notes p').count(),0);
+ assert.equal(await p.locator('.insight-cell.insight-pending').count(),1);
  await p.locator('[data-result-index="0"]').click();
  await p.getByText('Under the printed recurrence', {exact:false}).waitFor();
  await p.getByRole('button',{name:'I was right',exact:true}).click();
@@ -195,6 +196,8 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const pilot=p.getByRole('option',{name:'2025 HMMT February Algebra and Number Theory',exact:true});
  await pilot.waitFor();
  await paperSearch.fill('febuary');
+ assert.match(await p.locator('#mock-paper-options [role=option]').first().innerText(),/HMMT February/);
+ await paperSearch.fill('zzzzzzz');
  assert.equal(await p.locator('#mock-paper-options .set-find-empty').innerText(),'No contest matches.');
  assert.equal(await p.locator('#mock-paper-options [role="option"]').count(),0);
  assert.equal(await paperSearch.getAttribute('aria-expanded'),'true');

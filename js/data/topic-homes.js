@@ -103,6 +103,7 @@ window.MATH_TOPIC_HOMES = {
   "reduction-identities": "alg.trig.identity.values",
   "angle-addition": "alg.trig.identity.sum",
   "harmonic-addition": "alg.trig.identity.sum",
+  "trigonometric-sums-products": "alg.trig.identity.product",
   "trig-power-reduction": "alg.trig.identity.sum",
   "double-angle": "alg.trig.identity.sum",
   "half-angle": "alg.trig.identity.sum",

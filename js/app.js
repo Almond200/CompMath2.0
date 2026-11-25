@@ -425,8 +425,8 @@
   };
   const SPACE_SECTIONS = {
     learn: [["learn-books", "Textbooks"], ["pr-study", "Lists"]],
-    practice: [["pr-random", "Open a random problem"], ["pr-concept", "Practice a concept"],
-      ["pr-mock", "Practice a contest"], ["pr-contests", "Contests"],
+    practice: [["pr-concept", "Practice a concept"],
+      ["pr-mock", "Mock a contest"], ["pr-contests", "Contests"],
       ["resume-practice-sets", "Resume a set"], ["past-practice-sets", "Completed sets"]]
   };
   // The space a page belongs to; search, settings and topic pages keep the current one.
@@ -1439,6 +1439,11 @@
       }
     }
     if (/^#\/practice\/set(?:\/[^/]+(?:\/review)?)?$/.test(location.hash)) return { type: "space", name: "practice", practiceSet: true };
+    m = location.hash.match(/^#\/practice\/(card|topic)\/([\w.-]+)$/);
+    if (m && (m[1] === "card" ? BY_ID[m[2]] : TOPIC_NODES.has(m[2]))) {
+      return { type: "space", name: "practice", practiceMode: m[1], practiceId: m[2] };
+    }
+    if (location.hash === "#/practice/contests") return { type: "space", name: "practice", practiceAnchor: "pr-contests" };
     if (location.hash === "#/practice") return { type: "space", name: "practice" };
     if (location.hash === "#/learn") return { type: "space", name: "learn" };
     const lr = learnRoute(location.hash);
@@ -2880,10 +2885,12 @@
   const chipRow = (title, ids, cls) => ids.length
     ? `<div class="related kind-row${cls ? " " + cls : ""}"><h4>${title}</h4><div class="related-grid">${ids.map(cardChip).join("")}</div></div>`
     : "";
-  // A row of plain blue card links, separated by dots: hovering one opens the card preview.
-  const cardLinkList = ids => `<p class="link-row">${ids.map(id => BY_ID[id]
+  function resourceList(items) {
+    return items.length ? `<ul class="resource-list">${items.map(item => `<li>${item}</li>`).join("")}</ul>` : "";
+  }
+  const cardLinkList = ids => resourceList(ids.map(id => BY_ID[id]
     ? `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`
-    : redLink(id)).join(` <span class="pf-dot">&middot;</span> `)}</p>`;
+    : redLink(id)));
   const linkRow = (title, ids) => ids.length
     ? `<div class="related kind-row"><h4>${title}</h4>${cardLinkList(ids)}</div>`
     : "";
@@ -3130,7 +3137,7 @@
   function contestProfileHtml(f, authored) {
     if (authored == null) return "";
     const probs = PROBLEMS_BY_CARD[f.id] || [];
-    const k = kindOf(f), P = profileParts(probs), { N, all, row, duo, stat, dots, few } = P;
+    const k = kindOf(f), P = profileParts(probs), { N, all, row, duo, stat, few } = P;
     const co = kind => {
       const c = {};
       probs.forEach(p => p.formulas.forEach(id => {
@@ -3138,7 +3145,7 @@
       }));
       return Object.keys(c).sort((a, b) => c[b] - c[a] || a.localeCompare(b)).slice(0, 4).map(id => [id, c[id]]);
     };
-    const names = pairs => pairs.map(([id, n]) => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a> <span class="pf-sub">${n}</span>`).join(` <span class="pf-dot">&middot;</span> `);
+    const names = pairs => resourceList(pairs.map(([id, n]) => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a> <span class="pf-sub">${n}</span>`));
     const rows = [];
     let stats = "";
     if (N) {
@@ -3151,7 +3158,7 @@
       const nodes = {};
       probs.forEach(p => new Set(p.tree).forEach(id => { if (TOPIC_NODES.has(id)) nodes[id] = (nodes[id] || 0) + 1; }));
       const top = Object.keys(nodes).sort((a, b) => nodes[b] - nodes[a] || TOPIC_NODES.get(a).order - TOPIC_NODES.get(b).order).slice(0, 5);
-      if (top.length && few) rows.push(row("Topics", dots(top.map(id => `<a href="${topicHash(id)}">${topicHtml(TOPIC_NODES.get(id))}</a>${N > 1 ? ` <span class="pf-sub">${nodes[id]}</span>` : ""}`))));
+      if (top.length && few) rows.push(row("Topics", resourceList(top.map(id => `<a href="${topicHash(id)}">${topicHtml(TOPIC_NODES.get(id))}</a>${N > 1 ? ` <span class="pf-sub">${nodes[id]}</span>` : ""}`))));
       else if (top.length) {
         const topMax = nodes[top[0]];
         rows.push(row("Topics", `<table class="pf-table pf-topics"><thead><tr><th scope="col" aria-label="Topic"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of its problems", "Share")}</th></tr></thead><tbody>${top.map(id => {
@@ -3186,7 +3193,7 @@
   // row, the cards those problems cite most. It folds away, and stays folded while browsing.
   let topicProfileOpen = true;
   function topicProfileHtml(node, probs) {
-    const P = profileParts(probs), { N, row, duo, dots, few } = P;
+    const P = profileParts(probs), { N, row, duo, few } = P;
     if (!N) return "";
     const stats = `<div class="pf-stats tp-stats">${[P.tiles.count, P.tiles.share, P.tiles.med, P.tiles.years].join("")}</div>`;
     const rows = [P.rows.contests, P.rows.difficulty, P.rows.time].filter(Boolean);
@@ -3194,10 +3201,11 @@
     probs.forEach(p => new Set([...p.formulas, ...p.trickFormulas]).forEach(id => { if (BY_ID[id]) cited[id] = (cited[id] || 0) + 1; }));
     const top = Object.keys(cited).sort((x, y) => cited[y] - cited[x] || x.localeCompare(y)).slice(0, 6);
     const link = id => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`, kind = id => { const k = kindOf(BY_ID[id].formula); return k.charAt(0).toUpperCase() + k.slice(1); };
-    if (top.length && few) rows.push(row("Cards", dots(top.map(id => `${link(id)} <span class="pf-sub">${cited[id]}</span>`))));
+    if (top.length && few) rows.push(row("Cards", resourceList(top.map(id => `${link(id)} <span class="pf-sub">${cited[id]}</span>`))));
     else if (top.length) rows.push(row("Cards", `<table class="pf-table pf-topics tp-cards"><thead><tr><th scope="col" aria-label="Card"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of its problems", "Share")}</th></tr></thead><tbody>${top.map(id =>
       `<tr><th scope="row">${link(id)}<span class="pf-sub">${kind(id)}</span></th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${Math.max(2, cited[id] / cited[top[0]] * 100).toFixed(1)}%"></i></span></td><td>${cited[id]}</td><td>${pfPct(cited[id] / N)}</td></tr>`).join("")}</tbody></table>`, true));
     return `<section class="tp">${stats}<div class="pp-head"><h3 class="pp-h">Topic profile</h3><button type="button" class="hp-btn hp-btn-soft tp-toggle" data-tp-toggle aria-expanded="${topicProfileOpen}" aria-controls="tp-body">${topicProfileOpen ? "Hide" : "Show"}</button></div>
+      <p class="sec-note">What the tagged contest problems say about this topic. (Statistically generated)</p>
       <div class="contest-profile tp-body" id="tp-body"${topicProfileOpen ? "" : " hidden"}><div class="profile-rows">${rows.join("")}</div></div></section>`;
   }
 
@@ -4659,6 +4667,8 @@
         addSection(profile, contestProfileHtml(f, prof.text));
         const practice = addSection(problems, contestHtml(f));
         if (count) count.textContent = problemCount(f.id);
+        const resource = $content.querySelector("[data-resource-practice]");
+        if (resource) resource.innerHTML = cardPracticeLink(f.id, "Build a practice set for this card") || "No linked contest problems yet.";
         if (practice) wireProblemToggle(practice);
         buildPageToc(true);
       }, () => {
@@ -4697,7 +4707,7 @@
     "Examples": "Worked examples that use this card.",
     "Contest profile": "What the tagged contest problems say about this card. (Statistically generated)",
     "Practice problems": "Real contest problems that use this card, by contest.",
-    "Study this more": "Written lessons that teach this card.",
+    "Additional resources": "Lessons, practice sets and further reading for this card.",
     "Related formulas": "Hand-picked cards that are part of the same idea.",
     "Related methods": "Hand-picked cards that are part of the same idea.",
     "Related patterns": "Hand-picked cards that are part of the same idea.",
@@ -5059,7 +5069,8 @@
     }
     const sc = route.section;
     const gi = sc ? (sc.cluster != null ? sc.cluster : sc.topic) : null;
-    const el = gi != null ? document.getElementById(groupAnchor(sc.id, sc.sub, gi)) : null;
+    const practiceAnchor = route.practiceAnchor || (route.practiceId ? "pr-concept" : null);
+    const el = practiceAnchor ? document.getElementById(practiceAnchor) : gi != null ? document.getElementById(groupAnchor(sc.id, sc.sub, gi)) : null;
     if (!el) { window.scrollTo({ top: 0, behavior: "instant" }); return; }
     // The heading sits just under the top bar. Fonts and figures can still shift the page
     // after this, so it is placed again once they settle, unless the reader has scrolled.
@@ -5926,7 +5937,7 @@
       return `<a class="pg-row" href="#/problems/${famSlug(f)}/${latest}"><span class="pg-fam">${f}</span><span class="pg-n">${all.toLocaleString()} problems, ${years[0]}&ndash;${latest}</span><span class="pg-done">${done.toLocaleString()} written up</span></a>`;
     }).join("");
     return `<section class="hp-panel hm-glance">
-        <div class="hm-h-row"><div class="hp-label">Practice at a glance</div><a class="hm-more hm-more-practice" href="#/practice">See all ${uiIcon("arrow-right")}</a></div>
+        <div class="hm-h-row"><div class="hp-label">Practice at a glance</div><a class="hm-more hm-more-practice" href="#/practice/contests">See all ${uiIcon("arrow-right")}</a></div>
         <div class="pg-list">${rows}</div>
       </section>`;
   }
@@ -6116,34 +6127,6 @@
   });
   // Shared equal-width Elo intervals, recalibrated after the contest/topic filter.
   const DIFFS = problemDifficulty.levels.map(level => level.id);
-  function wireRandomPicker(root) {
-    const box = root.querySelector(".rand-picker");
-    if (!box) return;
-    const go = box.querySelector(".rand-go"), range = box.querySelector("#rand-diff-range");
-    let fam = "";
-    const update = () => {
-      const d = DIFFS[+range.value];
-      const level = problemDifficulty.levels[+range.value].label;
-      box.querySelector(".rand-diff-val").textContent = level;
-      range.setAttribute("aria-valuetext", level);
-      const pool = PROBLEM_DB.filter(p => !fam || p.fam === fam);
-      const eligible = problemDifficulty.filter(pool, d);
-      box.querySelector(".rand-diff-note").textContent = problemDifficulty.describe(pool, d, fam || "all contests");
-      if (eligible.length) {
-        go.href = "#/special/randomproblem" + (fam ? "/" + encodeURIComponent(fam) : "") + (d ? "/" + d : "");
-        go.removeAttribute("aria-disabled"); go.removeAttribute("tabindex");
-      } else {
-        go.removeAttribute("href"); go.setAttribute("aria-disabled", "true"); go.tabIndex = -1;
-      }
-    };
-    box.querySelectorAll("[data-rand-fam]").forEach(b => b.addEventListener("click", () => {
-      fam = b.dataset.randFam;
-      box.querySelectorAll("[data-rand-fam]").forEach(x => x.setAttribute("aria-checked", x === b ? "true" : "false"));
-      update();
-    }));
-    range.addEventListener("input", update);
-    update();
-  }
   const practiceSessions = window.PracticeSessions;
 
   let mockClockInterval = 0, mockPaperCatalog = null, pastPaperCatalog = null;
@@ -6217,7 +6200,7 @@
       const label = paperKey(p);
       if (!groups.has(label)) groups.set(label, {
         label, family: p.fam, year: p.year, minutes: timed.get(label) ?? null,
-        words: contestQueryWords([label, ...Object.keys(CONTEST_QUERY_ALIASES).filter(name => CONTEST_QUERY_ALIASES[name].includes(p.fam))].join(" ")), problems: []
+        words: contestSearchWords(label), aliases: contestAliasWords(p.fam), problems: []
       });
       groups.get(label).problems.push(p);
     }
@@ -6346,7 +6329,7 @@
   }
   function mockPracticePanelHtml() {
     return `<section class="sh-section" id="pr-mock">
-      <h3>Practice a contest</h3>
+      <h3>Mock a contest</h3>
       <p class="practice-panel-intro">Search for a past paper, or generate a mock modeled on recent papers.</p>
       <form id="mock-contest-form"><fieldset aria-label="Mock contest options">
         <div class="rand-btns mock-modes" role="radiogroup" aria-label="Mock type">
@@ -6410,9 +6393,11 @@
     function suggest(){
       const q=input.value.trim().toLowerCase();
       if(!q){choices=[];options.innerHTML='';close();return;}
-      const words=contestQueryWords(q);
+      const words=contestSearchWords(q);
+      const score=contestWordScorer(words);
       const exact=selectedPaper();
-      choices=exact?[exact]:catalog.filter(p=>words.length&&words.every(word=>p.words.some(w=>w.startsWith(word)))).slice(0,8);
+      choices=exact?[exact]:catalog.map(p=>({p,rank:score(p.words,p.aliases)})).filter(x=>Number.isFinite(x.rank))
+        .sort((a,b)=>a.rank-b.rank).slice(0,8).map(x=>x.p);
       options.innerHTML=choices.length?choices.map((g,i)=>`<button type="button" class="set-find-opt" id="mock-paper-${i}" role="option" aria-selected="false">${escapeAttr(g.label)}</button>`).join(''):'<div class="set-find-empty">No contest matches.</div>';
       active=choices.length?0:-1;options.hidden=false;input.setAttribute('aria-expanded','true');highlight();
       [...options.querySelectorAll('[role="option"]')].forEach((b,i)=>{b.addEventListener('mousemove',()=>{active=i;highlight();});b.addEventListener('click',()=>{input.value=choices[i].label;update();input.focus();close();});});
@@ -6610,7 +6595,7 @@
     return `<div class="rand-btns" role="${multi ? 'group' : 'radiogroup'}" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${choices.map(a =>
       `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="${multi ? 'checkbox' : 'radio'}" aria-checked="${multi ? selected.includes(a) : selected === a}">${a}</button>`).join('')}</div>`;
   }
-  function practiceInsightsHtml(outcomes, counts) {
+  function practiceInsightsHtml(set, outcomes, counts, reviewUrl) {
     const graded = counts.Correct + counts.Incorrect;
     const lines = [];
     if (graded) {
@@ -6632,14 +6617,44 @@
       for (const id of ids) topics.set(id, (topics.get(id) || 0) + 1);
     }
     // In a tie, use the topic encountered first in the set.
-    const [top] = [...topics].sort((a, b) => b[1] - a[1]);
-    if (top) {
-      const [id, n] = top;
+    const top = [...topics].sort((a, b) => b[1] - a[1]).slice(0, 2);
+    if (top.length) {
       const label = { Incorrect: 'Topic to revisit', Unanswered: 'Unanswered topic', Correct: 'Solved topic' }[focus];
       const tally = { Incorrect: 'missed', Unanswered: 'unanswered', Correct: 'correct' }[focus];
-      lines.push(`<p><strong>${label}</strong> · <a href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}</a> · ${n} ${tally}</p>`);
+      for (const [id, n] of top) lines.push(`<p><strong>${label}</strong> · <a href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}</a> · ${n} ${tally}</p>`);
     }
-    return lines.length ? `<div class="practice-insights">${lines.join('')}</div>` : '';
+    const styles = { Correct: 'right', Incorrect: 'wrong', Unanswered: 'blank', Voided: 'void', 'Check yourself': 'pending', 'Answer unavailable': 'pending' };
+    const subjects = new Map();
+    let hardest = null;
+    const sequence = outcomes.map(([slug, result], i) => {
+      const p = PROBLEM_BY_SLUG[slug];
+      if (result === 'Correct' && Number.isFinite(p?.elo) && (!hardest || p.elo > hardest.elo)) hardest = p;
+      if (result !== 'Voided') {
+        const roots = new Set((p?.tree || []).map(id => topicPath(id)[0]).filter(Boolean));
+        for (const root of roots) {
+          const row = subjects.get(root) || { total: 0, right: 0, wrong: 0, blank: 0, pending: 0 };
+          row.total++;
+          row[styles[result]]++;
+          subjects.set(root, row);
+        }
+      }
+      const num = practiceProblemNumber(set, i);
+      const desc = `Problem ${num}, ${result}${set.marks[slug] ? ', marked for review' : ''}`;
+      return `<a class="insight-cell insight-${styles[result]}" href="${reviewUrl}" data-insight-index="${i}" aria-label="${desc}" title="${desc}">${num}</a>`;
+    }).join('');
+    const legend = Object.keys(counts).filter(k => counts[k]).map(k =>
+      `<span><i class="insight-${styles[k]}"></i>${escapeAttr(k)}</span>`).join('');
+    const bars = [...subjects].sort(([a], [b]) => a.order - b.order).map(([subject, row]) => {
+      const segments = ['right','wrong','blank','pending'].filter(k => row[k]).map(k =>
+        `<i class="insight-${k}" style="flex:${row[k]}"></i>`).join('');
+      const desc = `${row.right} correct, ${row.wrong} incorrect, ${row.blank} unanswered, ${row.pending} pending`;
+      return `<div class="insight-bar-row"><span>${topicLabel(subject)}</span><span class="insight-track" role="img" aria-label="${desc}" title="${desc}">${segments}</span><strong>${row.right}/${row.total}</strong></div>`;
+    }).join('');
+    if (hardest) lines.push(`<p><strong>Highest-rated solve</strong> · <a href="#/problem/${hardest.slug}">${escapeAttr(refShort(hardest.ref))}</a> · ${hardest.elo} Elo</p>`);
+    return `<div class="practice-insights"><div class="insight-charts">
+      ${bars ? `<section><h3>Correct by subject</h3>${bars}</section>` : ''}
+      <section><h3>Results by problem</h3><div class="insight-cells">${sequence}</div></section></div>
+      <div class="insight-legend">${legend}</div><div class="insight-notes">${lines.join('')}</div></div>`;
   }
   function renderPracticeResults(set) {
     const total = set.slugs.length;
@@ -6660,7 +6675,7 @@
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
         ${counts['Check yourself'] ? `<p class="practice-results-meta">${counts['Check yourself']} for self-check. Open ${counts['Check yourself'] === 1 ? 'it' : 'each'} in the review and mark your answer right or wrong.</p>` : ''}
         ${counts.Voided ? `<p class="practice-results-meta">${counts.Voided} voided${score ? ' · Full credit awarded' : ''}</p>` : ''}
-        ${practiceInsightsHtml(outcomes, counts)}
+        ${practiceInsightsHtml(set, outcomes, counts, reviewUrl)}
         <a class="hp-btn" href="${reviewUrl}">Review problems</a>
       </section>
       <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${outcomes.map(([slug, result], i) => {
@@ -6674,7 +6689,7 @@
         return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${practiceProblemNumber(set, i)}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong>${summary}</span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
       }).join('')}</div></section></div>`;
     renderMath($content);
-    $content.querySelectorAll('[data-result-index]').forEach(link => link.addEventListener('click', () => { set.current = +link.dataset.resultIndex; savePractice(); }));
+    $content.querySelectorAll('[data-result-index], [data-insight-index]').forEach(link => link.addEventListener('click', () => { set.current = Number(link.dataset.resultIndex ?? link.dataset.insightIndex); savePractice(); }));
   }
   function renderTopicPracticeSet() {
     cancelPracticeFinishConfirm();
@@ -6881,16 +6896,17 @@
     const paper = problems.filter(paperProblem);
     if (paper.length) set.selfCheck = Object.fromEntries(paper.map(p => [p.slug, true]));
   }
-  function wireTopicPractice(root) {
+  function wireTopicPractice(root, initialId) {
     const form = root.querySelector("#topic-practice-form");
     if (!form) return;
     const topic = form.elements.topic, count = form.elements.count;
     const suggestions = form.querySelector("#practice-topic-options");
     const status = root.querySelector("#topic-practice-status");
     const difficulty = form.elements.difficulty;
-    let generating = false, selectedTopicId = null, activeTopic = -1;
+    let generating = false, selectedTopicId = initialId, activeTopic = -1;
     let desiredCount = count.valueAsNumber;
     const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible);
+    if (initialId) topic.value = topics.nodes.get(initialId).label;
     // The pool a topic draws from under the current contest choice, for the browser checks.
     window.MATH_PRACTICE_POOL = id => topics.select(id, practiceFamOn).map(p => p.slug);
     const findTopic = () => {
@@ -7042,7 +7058,7 @@
     });
   }
   let cardPracticePools = null;
-  function wireCardPractice(root) {
+  function wireCardPractice(root, initialId) {
     const form = root.querySelector("#card-practice-form");
     if (!form) return;
     const input = form.querySelector("#card-practice-name"), options = form.querySelector("#card-practice-options");
@@ -7050,14 +7066,15 @@
     const plain = name => window.PracticeTopics.label(name);
     // Every card's eligible problems, each shared AMC 10/12 problem once.
     const pools = cardPracticePools ||= (() => {
-      const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible);
+      practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible);
       const by = {};
       Object.keys(PROBLEMS_BY_CARD).forEach(id => { const ps = PROBLEMS_BY_CARD[id].filter(practiceEligible); if (ps.length && BY_ID[id]) by[id] = ps; });
       return by;
     })();
     // One search over every kind of card (owner, 2026-11-14); each suggestion names its kind.
     const KIND_NAME = { formula: "Formula", method: "Method", pattern: "Pattern" };
-    let chosen = null, active = -1, choices = [], desired = count.valueAsNumber, generating = false;
+    let chosen = initialId, active = -1, choices = [], desired = count.valueAsNumber, generating = false;
+    if (chosen) input.value = plain(BY_ID[chosen].formula.name);
     const selectedPool = id => practiceTopicIndex.unique((pools[id] || []).filter(practiceFamOn));
     // Ordered by the number shown beside each card (shared AMC 10/12 problems counted once), then by name.
     const allCards = () => { const n = new Map(Object.keys(pools).map(id => [id, selectedPool(id).length]));
@@ -7143,7 +7160,8 @@
     });
     update();
   }
-  function renderSpaceHome(name) {
+  function renderSpaceHome(name, route) {
+    if (route.practiceMode) practiceConceptMode = route.practiceMode;
     shownIds = [];
     let body = spaceHeadHtml(name);
     {
@@ -7187,22 +7205,6 @@
           }).join("")}</div>
         </section>`;
       else body += `
-        <section class="sh-section rand-picker" id="pr-random">
-            <h3>Open a random problem</h3>
-            <p class="practice-panel-intro">Try a past contest problem, with your choice of contest and difficulty.</p>
-            <div class="rand-btns" role="radiogroup" aria-label="Contest">
-              <button type="button" role="radio" aria-checked="true" data-rand-fam="">Any contest</button>
-              ${fams.map(f => `<button type="button" role="radio" aria-checked="false" data-rand-fam="${escapeAttr(f)}"${famExtra(f, "random-contests")}>${escapeAttr(f)}</button>`).join("")}
-            </div>
-            ${famMoreBtn(extraFams(fams), "ct-toggle", "random-contests")}
-            <div class="rand-diff">
-              <label for="rand-diff-range">Difficulty</label>
-              <input type="range" id="rand-diff-range" min="0" max="5" step="1" value="0">
-              <span class="rand-diff-val">Any</span>
-            </div>
-            <p class="rand-diff-note" aria-live="polite"></p>
-            <a class="hp-btn rand-go" href="#/special/randomproblem">Open a random problem</a>
-        </section>
         <section class="sh-section" id="pr-concept">
           <h3>Practice a concept</h3>
           <div class="rand-btns concept-modes" role="tablist" aria-label="Practice concept type" data-mode="${practiceConceptMode}">
@@ -7250,11 +7252,10 @@
     }
     if (name === "practice") body += pastPracticeHtml();
     $content.innerHTML = `<div class="space-home">${body}</div>`;
-    wireRandomPicker($content);
-    wireTopicPractice($content);
+    wireTopicPractice($content, route.practiceMode === "topic" ? route.practiceId : null);
     wireConceptPractice($content);
     wireMockPractice($content);
-    wireCardPractice($content);
+    wireCardPractice($content, route.practiceMode === "card" ? route.practiceId : null);
     wireContestFinder($content);
     wirePracticeHistory($content);
     wireShelfMore($content);
@@ -8197,25 +8198,25 @@ The book remembers the last lesson you opened, in this browser, and the contents
     $content.querySelector(".lp-grid").classList.remove("has-drawer");
   }
 
-  function learnCardChips(ids) {
-    // Plain links, like every other card link in the lesson (owner, 2026-10-31).
-    return ids.filter(id => BY_ID[id]).map(id => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`).join(`<span class="lp-cards-sep">&middot;</span>`);
-  }
   // A lesson or a review: the outline, the reading column and the drawer.
   // A written lesson's reading column, shared by the page and the Settings preview.
   function learnLessonMainHtml(b, c, l, d, preview = false) {
     const opener = learnHasIntro(c) && l === c.lessons[0];
+    const covered = window.MATH_LESSON_TOPICS[l.code] || [];
     return `${opener ? `<header class="ch-open">
           <span class="ch-open-n">${c.code.slice(1)}</span>
           <span class="ch-open-txt"><span class="ch-open-k">Chapter ${c.code.slice(1)} ${learnLevelHtml(c)}</span><span class="ch-open-t">${escapeAttr(c.title)}</span></span>
         </header>` : `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>`}
         <${preview ? "h2" : "h1"} class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}${l.level ? ` ${learnLevelHtml(l)}` : ""}</${preview ? "h2" : "h1"}>
         <div class="lp-cards">
-          ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Teaches you about</span>${learnCardChips(d.cards)}</div>` : ""}
-          ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${learnCardChips(d.prereq)}</div>` : ""}
+          ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Teaches you about</span>${cardLinkList(d.cards)}</div>` : ""}
+          ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${cardLinkList(d.prereq)}</div>` : ""}
+          ${covered.length ? `<div class="lp-cards-row"><span class="lp-cards-label">Topics covered</span>${resourceList(covered.map(id => TOPIC_NODES.has(id)
+            ? `<a href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}</a>` : escapeAttr(id)))}</div>` : ""}
         </div>
         ${learnBodyHtml(l, d)}
-        ${learnTailHtml(l.code, d.exercises || [], d.problems || [], "Exercises", true)}`;
+        ${learnTailHtml(l.code, d.exercises || [], d.problems || [], "Exercises", true)}
+        ${c.kind === "reference" ? "" : lessonPracticeHtml(c, d, covered)}`;
   }
   function renderLearnLesson(b, c, l, end) {
     const d = l ? learnLessonData(c, l) : null;
@@ -8470,7 +8471,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
     UKMT: ["UKMT JMC", "UKMT IMC", "UKMT SMC"],
     "Girls in Math": ["Girls in Math at Yale"],
     "Yale Math Competitions": ["MMATHS", "Girls in Math at Yale"],
-    "Math Prize": ["Math Prize for Girls"],
+    "Math Prize": ["Math Prize for Girls"], GMAY: ["Girls in Math at Yale"],
+    "Math Majors of America Tournament for High Schools": ["MMATHS"],
+    "Harvard MIT Mathematics Tournament": ["HMMT February", "HMMT November"],
+    "Berkeley mini Math Tournament": ["BmMT"],
+    "University of Waterloo": ["Pascal Contest", "Cayley Contest", "Fermat Contest"],
+    "Junior Mathematical Challenge": ["UKMT JMC"], "Intermediate Mathematical Challenge": ["UKMT IMC"],
+    "Senior Mathematical Challenge": ["UKMT SMC"],
     "Caltech Math Meet": ["CMM"],
     "Caltech Harvey Mudd Math Competition": ["CHMMC"]
   };
@@ -8479,6 +8486,45 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const words = famSlug(text.replace(/([a-z])(?=\d)|(\d)(?=[a-z])/gi, "$& ")).split("-");
     return words.filter(w => w && !/^(and|at|in|of|for|the|contest|competition|papers?|problems?|tests?|rounds?)$/.test(w))
       .flatMap(w => Object.hasOwn(CONTEST_QUERY_SHORT, w) ? CONTEST_QUERY_SHORT[w].split(" ") : w);
+  }
+  // Keep contest intent separate from the words that identify a particular paper.
+  const contestDescriptor = /^(?:contests?|competitions?|tournaments?)$/;
+  function contestSearchWords(text) {
+    return contestQueryWords(text).filter(w => !contestDescriptor.test(w) &&
+      !(w.length >= 6 && ["contest", "competition", "tournament"].some(d => levBounded(w, d, 1) <= 1)))
+      .map(w => /^(maths|mathematical|mathematics)$/.test(w) ? "math" : w);
+  }
+  function contestAliasWords(family) {
+    const names = Object.keys(CONTEST_QUERY_ALIASES).filter(name => CONTEST_QUERY_ALIASES[name].includes(family));
+    return [...new Set(contestSearchWords([family, "math", PERMITTED_STATEMENTS[family]?.credit || "", ...names].join(" ")))];
+  }
+  function contestWordScorer(tokens) {
+    // Memoize by candidate word for this keystroke. Hundreds of papers reuse the same names.
+    const cache = new Map();
+    function cost(token, word) {
+      if (word === token) return 0;
+      if (/\d/.test(token + word) || /^[abi]+$/.test(token)) return Infinity;
+      if (word.startsWith(token)) return 1;
+      if (token.length < 3 || word.length < 3) return Infinity;
+      const limit = Math.min(token.length, word.length) >= 8 ? 2 : 1;
+      const distance = levBounded(token, word, limit);
+      return distance <= limit ? 4 * distance : Infinity;
+    }
+    return (own, aliases = []) => {
+      let total = 0;
+      for (const token of tokens) {
+        let costs = cache.get(token);
+        if (!costs) cache.set(token, costs = new Map());
+        const best = words => words.reduce((n, w) => {
+          if (!costs.has(w)) costs.set(w, cost(token, w));
+          return Math.min(n, costs.get(w));
+        }, Infinity);
+        const direct = best(own);
+        total += direct === 0 ? 0 : Math.min(direct, best(aliases) + 0.25);
+        if (!Number.isFinite(total)) break;
+      }
+      return total;
+    };
   }
   let contestNamesForSearch;
   const contestQueryNames = () => contestNamesForSearch ||= [
@@ -8640,6 +8686,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // problem 3" would otherwise pull in every problem whose text says "problem".
     const ref = parseContestYearQuery(query) || parseProblemQuery(query);
     let named = referencedProblems(ref);
+    if (ref?.year && ref.num && (!named?.length || (!ref.fam && !ref.families))) {
+      const paperQuery = query.replace(/(?:\b(?:problem|prob|question)\s*|#\s*)\d{1,2}\b/i, " ");
+      if (paperQuery !== query) {
+        const matches = contestMatches(paperQuery, true);
+        if (matches.length) named = matches.flatMap(m => DB_TREE[m.fam][m.year].filter(p => p.cname === m.cname && p.num === ref.num));
+      }
+    }
     if (named && !named.length) named = null;
     // "AMC 10/12 number theory" names a book, not problem 12 of the AMC 10.
     const bookHits = bookMatches(query);
@@ -8657,12 +8710,20 @@ The book remembers the last lesson you opened, in this browser, and the contents
       g.problems.push(p);
     });
     papers.sort((a, b) => a.cname.localeCompare(b.cname));
+    if (!named && !askLesson && !bookHits.length) {
+      for (const match of contestMatches(query, true)) {
+        const problems = DB_TREE[match.fam][match.year].filter(p => p.cname === match.cname);
+        papers.push({ ...match, problems });
+      }
+    }
     // Lessons lead only when the query asks for one (owner, 2026-11-06): "power of a point
     // lesson", "circles chapter", or a lesson code such as C5.3. Otherwise the same strong
     // matches are a secondary result, after the cards.
     const lessonHits = named ? [] : lessonMatches(query);
     const items = [];
-    papers.forEach(c => items.push({ contest: c }));
+    const relatedContest = !named && !/\b(contests?|competitions?|tournaments?)\b/i.test(query)
+      && sorted.length && !partial && !refy;
+    if (!relatedContest) papers.forEach(c => items.push({ contest: c }));
     if (named) named.forEach(p => items.push({ problem: p }));
     listHits.filter(h => h.strong).forEach(h => items.push({ list: h.list }));
     bookHits.forEach(b => items.push({ book: b }));
@@ -8676,6 +8737,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       items.push({ entry: e });
     });
     if (!askLesson && sorted.length <= lessonAt) lessonHits.forEach(x => items.push({ lesson: x }));
+    if (relatedContest) items.splice(strongCardCount(sorted, query), 0, ...papers.map(contest => ({ contest })));
     if (!refy) probs.forEach(p => items.push({ problem: p }));
     listHits.filter(h => !h.strong).forEach(h => items.push({ list: h.list }));
     const n = { formula: 0, method: 0, pattern: 0 };
@@ -10780,56 +10842,63 @@ The book remembers the last lesson you opened, in this browser, and the contents
             </div>`).join("")}</div></details>`;
     }).join("");
   }
-  // The contest finder's matching, shared by Practice's finder and Special:Contest.
-  const contestMatches = (() => {
-    const aliases = f => Object.entries(CONTEST_QUERY_ALIASES).filter(([, v]) => v.some(a => f.startsWith(a))).map(([k]) => k).join(" ");
-    let paperIndex = null;   // family -> year -> the names of that year's papers
-    const papersOf = f => {
-      if (!paperIndex) paperIndex = {};
-      if (!paperIndex[f]) { paperIndex[f] = {}; Object.keys(DB_TREE[f]).forEach(y => { paperIndex[f][y] = [...new Set(DB_TREE[f][y].map(p => p.cname))]; }); }
-      return paperIndex[f];
-    };
-    const wordsCache = new Map(), wordsOf = text => { if (!wordsCache.has(text)) wordsCache.set(text, contestQueryWords(text)); return wordsCache.get(text); };
-    // The finder is a dropdown like the mock's paper search. Each word has to begin a word of the paper's name ("geom"
-    // finds Geometry; "feb", "nov", "nt", "alg" and "amc10a" are understood), so "hmmt geometry 2025" opens that one
-    // paper. A year alone lists every paper held that year; a name alone opens the contest's latest year. Whole-name
-    // matches come first, then the ones with the fewest extra words.
-    function contestMatches(query) {
-      const tokens = contestQueryWords(query);
-      if (!tokens.length) return [];
-      const years = [...new Set(tokens.filter(t => /^(19[5-9]\d|20\d\d)$/.test(t)).map(Number))].sort((x, y) => y - x);
-      const hasAmc = tokens.includes("amc");
-      const letter = hasAmc ? tokens.find(t => /^[ab]$/.test(t)) : null, words = tokens.filter(t => !years.includes(+t) && !(hasAmc && /^[ab]$/.test(t)));
-      const fits = text => words.every(w => text.some(h => h.startsWith(w)));
-      const scoreOf = own => !words.length ? 1 : own.join(" ") === words.join(" ") ? 0 : 1 + own.filter(h => !words.some(w => h.startsWith(w))).length;
-      const out = [];
-      FAMILIES.forEach((f, order) => {
-        const idx = papersOf(f), known = Object.keys(idx).map(Number).sort((x, y) => y - x), extra = wordsOf(aliases(f));
-        if (years.length) {
-          years.filter(y => known.includes(y)).forEach(y => idx[y].forEach(cname => {
-            const own = wordsOf(cname); if (!fits([...own, ...extra]) || (letter && !own.includes(letter))) return;
-            out.push({ label: `${y} ${cname}`, href: `#/problems/${famSlug(f)}/${y}${idx[y].length > 1 ? "/" + paperSlug(cname) : ""}`, score: scoreOf(own) * 1000 + order });
-          }));
-          return;
+  // Index paper titles once. A search without a year offers the latest sitting of each round.
+  let contestFinderIndex;
+  function contestMatches(query, globalSearch = false) {
+    if (!FAMILIES.length) return [];
+    if (!contestFinderIndex) {
+      contestFinderIndex = [];
+      for (const f of FAMILIES) {
+        const aliases = contestAliasWords(f), seen = new Set();
+        const years = Object.keys(DB_TREE[f]).map(Number).sort((a, b) => b - a);
+        for (const year of years) {
+          const names = [...new Set(DB_TREE[f][year].map(p => p.cname))];
+          for (const cname of names) {
+            const round = roundOf({ fam: f, cname });
+            const series = round || (/^(AMC |AIME$)/.test(f) ? cname.replace(/^(Fall|Spring) /, "") : "");
+            const latest = !seen.has(series);
+            seen.add(series);
+            const href = `#/problems/${famSlug(f)}/${year}${names.length > 1 ? "/" + paperSlug(cname) : ""}`;
+            contestFinderIndex.push({ fam: f, cname, year, latest, latestYear: year === years[0], aliases, href,
+              words: contestSearchWords(cname), label: round ? cname : f });
+          }
         }
-        // A contest made of rounds (HMMT February, SMT, CMIMC...) is offered round by round, each at its latest year, so a
-        // choice lands on the subtest itself; a contest without rounds opens its latest year.
-        const seen = new Set(), rounds = [];
-        known.forEach(y => idx[y].forEach(cname => {
-          const r = roundOf({ fam: f, cname }) || cname; if (seen.has(r)) return; seen.add(r); rounds.push({ y, cname });
-        }));
-        const hasRounds = roundOf({ fam: f, cname: rounds[0].cname }) !== "";
-        const own = wordsOf(f);
-        if (!hasRounds) { if (fits([...own, ...extra])) out.push({ label: f, href: `#/problems/${famSlug(f)}/${known[0]}`, score: scoreOf(own) * 1000 + order, y: known[0] }); return; }
-        rounds.forEach(({ y, cname }) => {
-          const o = wordsOf(cname); if (!fits([...o, ...extra])) return;
-          out.push({ label: cname, href: `#/problems/${famSlug(f)}/${y}${idx[y].length > 1 ? "/" + paperSlug(cname) : ""}`, score: scoreOf(o) * 1000 + order, y });
-        });
-      });
-      return out.sort((x, y) => x.score - y.score || (y.y || 0) - (x.y || 0)).slice(0, years.length && !words.length ? 120 : 40);
+      }
     }
-    return contestMatches;
-  })();
+    const tokens = contestSearchWords(query);
+    const yearTokens = tokens.filter(w => /^\d{4}$/.test(w));
+    const words = tokens.filter(w => !yearTokens.includes(w));
+    const descriptor = /\b(?:contests?|competitions?|tournaments?)\b/i.test(query);
+    if (!tokens.length && !descriptor) return [];
+    const identify = words.filter(w => !/^(math|high|school|university|state|junior|senior|individual|team|number|theory|algebra|geometry|division|[abi]|\d+)$/.test(w));
+    if (globalSearch && !descriptor && !identify.length) return [];
+    const score = contestWordScorer(words);
+    const identities = identify.map(w => contestWordScorer([w]));
+    const version = words.some(w => /^(a|b|i|ii|fall|spring|ahsme|ajhsme)$/.test(w));
+    const out = [];
+    for (const p of contestFinderIndex) {
+      if (yearTokens.length ? !yearTokens.includes(String(p.year)) : !p.latest) continue;
+      if (!yearTokens.length && /^(AMC |AIME$)/.test(p.fam) && !version
+          && !p.latestYear) continue;
+      if (globalSearch && !descriptor && !identities.some(matches => Number.isFinite(matches(p.aliases)))) continue;
+      const quality = score(p.words, p.aliases);
+      if (!Number.isFinite(quality)) continue;
+      const full = p.words.join(" ") === words.join(" ");
+      const rank = quality * 100 + (full ? 0 : p.words.length) - (descriptor && /contest/i.test(p.fam) ? 0.5 : 0);
+      out.push({ ...p, quality, score: rank, label: yearTokens.length ? p.year + " " + p.cname : version ? p.cname : p.label });
+    }
+    out.sort((a, b) => a.score - b.score || b.year - a.year);
+    if (!out.length) return [];
+    const cutoff = out[0].quality + (out[0].quality < 4 ? 3 : 1);
+    const seenLinks = new Set();
+    return out.filter(x => {
+      if (x.quality > cutoff) return false;
+      const key = !yearTokens.length && x.label === x.fam && !version ? x.fam : x.href;
+      if (seenLinks.has(key)) return false;
+      seenLinks.add(key);
+      return true;
+    }).slice(0, globalSearch ? 6 : yearTokens.length && !words.length ? 120 : 40);
+  }
   function wireContestFinder(root) {
     const input = root.querySelector("#ct-find"); if (!input) return;
     const options = root.querySelector("#ct-find-options"), groups = [...root.querySelectorAll(".ct-group")], foldAll = root.querySelector("#ct-fold-all");
@@ -11025,6 +11094,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <p class="practice-panel-intro">${all.length.toLocaleString()} problem${all.length === 1 ? "" : "s"}${kids.length ? ", including its subtopics" : ""}. Each contest's problems run from easiest to hardest.</p>
           ${kids.length ? `<div class="br-kids"><span class="br-kids-l">Subtopics</span>${kids.map(c => `<a class="br-kid" href="${topicHash(c.id)}">${topicHtml(c)}<span class="br-count">${topicProblems(c.id).length}</span></a>`).join("")}</div>` : ""}
           ${topicProfileHtml(node, all)}
+          ${topicLessonsHtml(node.id)}
           <h3 class="pp-h tp-problems-h">Problems</h3>
           ${famChipsHtml(all)}
           ${browseGroupsHtml("t:" + node.id, all, byEasiest)}`;
@@ -11155,13 +11225,47 @@ The book remembers the last lesson you opened, in this browser, and the contents
   function studyLessonLink({ b, c, l }) {
     return `<a class="chain-study-link" href="${learnHash(b, c, lessonNum(l))}">${escapeAttr(b.title)} · ${mathHtml(l.title)} <span class="chain-study-l">${l.code}</span></a>`;
   }
-  // Study this more on a card page (owner, 2026-11-07): only the lessons whose "Teaches you
-  // about" row lists the card, not every lesson that links or relates to it, one per bullet.
+  function topicLessonsHtml(id) {
+    const links = [];
+    for (const b of LEARN_SHELF) for (const c of b.chapters) for (const l of c.lessons) {
+      if (window.MATH_LESSON_TOPICS[l.code]?.includes(id)) links.push(studyLessonLink({ b, c, l }));
+    }
+    return links.length ? `<section><h3 class="pp-h">Lessons</h3>${resourceList(links)}</section>` : "";
+  }
+  function topicPracticeLink(id) {
+    if (!TOPIC_NODES.has(id)) return "";
+    const topic = [...topicPath(id)].reverse().find(n => !problemsReady || topicProblems(n.id).some(practiceEligible));
+    return topic ? `<a href="#/practice/topic/${topic.id}">Practice ${topicLabel(topic)}</a>` : "";
+  }
+  function cardPracticeLink(id, label) {
+    if (problemsReady && !(PROBLEMS_BY_CARD[id] || []).some(practiceEligible)) {
+      return topicPracticeLink(window.MATH_TOPIC_HOMES[id]);
+    }
+    return `<a href="#/practice/card/${id}">${label}</a>`;
+  }
   function cardLessonsHtml(fid) {
-    const lessons = lessonsForCard(fid).filter(({ l, taught }) => taught && l.title !== "Summary");
-    if (!lessons.length) return "";
-    const items = lessons.map(x => `<li>${studyLessonLink(x)}</li>`);
-    return `<div class="related"><h4>Study this more</h4><ul class="card-study-list">${items.join("")}</ul></div>`;
+    const lessons = lessonsForCard(fid).filter(x => x.l.title !== "Summary");
+    const taught = lessons.filter(x => x.taught);
+    const items = (taught.length ? taught : lessons.slice(0, 3)).map(x => `<li>${studyLessonLink(x)}</li>`).join("");
+    const resources = (BY_ID[fid].formula.resources || []).filter(r => /^https?:\/\//i.test(r.url));
+    const external = resources.map(r => `<li><a href="${escapeAttr(r.url)}">${escapeAttr(r.title)}</a></li>`).join("");
+    return `<section class="related try-block"><h4>Additional resources</h4>
+      <h5 class="try-sub">Learn more</h5>${items ? `<ul class="card-study-list">${items}</ul>` : '<p class="sec-note">No linked lessons yet.</p>'}
+      <h5 class="try-sub">Practice more</h5><div data-resource-practice>${cardPracticeLink(fid, "Build a practice set for this card") || "No linked contest problems yet."}</div>
+      ${external ? `<h5 class="try-sub">Also check out</h5><ul class="card-study-list">${external}</ul>` : ""}</section>`;
+  }
+  function lessonPracticeHtml(c, d, covered) {
+    const cards = [...(d.cards || []), ...(d.related || []).map(r => r.card)];
+    if (!cards.length) {
+      for (const ref of d.problems || []) cards.push(...(learnProblem(ref)?.formulas || []));
+      if (!cards.length) for (const lesson of c.lessons) cards.push(...(learnLessonSummary(c, lesson)?.cards || []));
+    }
+    const links = [...new Set(cards)].filter(id => BY_ID[id]).map(id => cardPracticeLink(id, BY_ID[id].formula.name));
+    const topicLinks = covered.map(topicPracticeLink).filter(Boolean);
+    const options = [...new Set([...topicLinks, ...links.filter(Boolean)])].slice(0, 4);
+    return `<section><h3 class="lp-h3">Practice this more</h3>${options.length
+      ? `<p class="learn-note">Choose a focus for a contest problem set.</p><ul class="lp-related">${options.map(a => `<li>${a}</li>`).join("")}</ul>`
+      : '<a href="#/practice">Choose a topic in Practice</a>'}</section>`;
   }
   function studyMoreHtml(p) {
     const aime = /AIME/.test(p.ref || p.cname || "");
@@ -11172,7 +11276,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const lessons = ids.map(fid => lessonForCard(fid, aime)).filter(Boolean)
       .filter(({ b, c, l }) => learnHash(b, c, lessonNum(l)) !== current);
     const links = [...new Set(lessons.map(studyLessonLink))];
-    return links.length ? `<div class="chain-study"><h4 class="chain-study-h">Study a concept more</h4><div class="chain-study-links">${links.join("")}</div></div>` : "";
+    return links.length ? `<div class="chain-study"><h4 class="chain-study-h">Study a concept more</h4>${resourceList(links)}</div>` : "";
   }
   // Each solution gives its own Pattern, Method and Formulas directly below the write-up.
   function chainCardsHtml(cards) {
@@ -11918,14 +12022,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
     clearInterval(mockClockInterval);mockClockInterval=0;
     const route = getRoute();
     const requirements = [];
-    const lessonHasProblems = route.lesson && learnLessonSummary(route.chapter, route.lesson)?.problems;
+    const lessonNeedsPractice = route.lesson && (route.chapter.kind !== "reference" || learnLessonSummary(route.chapter, route.lesson)?.problems);
     const needsProblems = ["problems", "problem", "browse", "settings"].includes(route.type)
       || route.type === "space" && route.name === "practice"
       || route.type === "special" && (/^(randomproblem|problemsusing|unclassified|statistics|recent|contest)$/.test(route.name)
         || route.name === "random" && /^problem(?:\/|$)/i.test(route.arg))
       || route.type === "home" && !!state.query.trim()
       || state.order === "problems" && (route.section || route.type === "topic")
-      || route.type === "learn" && (lessonHasProblems || route.review || route.challenge);
+      || route.type === "learn" && (lessonNeedsPractice || route.review || route.challenge);
     if (needsProblems && !problemsReady) requirements.push(loadProblems());
     const requireGroup = group => {
       if (assetGroups.get(group).some(src => !loadedAssets.has(src))) requirements.push(loadAssets(group));
@@ -12014,7 +12118,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       renderSpecial(route);
     } else if (route.type === "space") {
       if (route.practiceSet) renderTopicPracticeSet();
-      else renderSpaceHome(route.name);
+      else renderSpaceHome(route.name, route);
     } else if (route.type === "learn") {
       renderLearn(route);
     } else if (state.query.trim()) {
