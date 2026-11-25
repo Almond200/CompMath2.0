@@ -111,7 +111,7 @@ CONVENTIONS §0 has the full model.
   Overview, an Index whose entries link to lessons, a Glossary, and References and Credits. They
   are 13 reference chapters with 52 sections, not counted with the teaching pages (the shelf gate's
   116 chapters and 645 lesson records include them), and they carry no difficulty tags.
-- **Practice** (`#/practice`): open a random problem, build an untimed topic or card set, search past papers, generate a timed mock or browse contest years. Resume a set and Completed sets show saved progress. Finish and review asks for confirmation only when an answerable question remains unanswered. Active answers have a small Clear answer button. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
+- **Practice** (`#/practice`): build an untimed topic or card set, search past papers, generate a timed mock or browse contest years. The search command `Special:Random/Problem` opens a random problem. Resume a set and Completed sets show saved progress. Finish and review asks for confirmation only when an answerable question remains unanswered. Active answers have a small Clear answer button. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
   back; on a phone its years are a menu between arrows, with a toggle between the year's papers.
 - **Search** results are one list in order of relevance (formulas, methods, patterns, problems
   and study lists, each labelled), shown full width with no space highlighted. So are tag pages
