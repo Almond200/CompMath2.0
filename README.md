@@ -58,11 +58,11 @@ Generated mocks and past papers with a supported timed format use a countdown. T
 
 ## Arena
 
-Open **Arena** for an untimed ability check. Six mixed-subject placement answers establish a personal Elo on the archive’s problem-difficulty scale. After placement, choose a subject, a difficulty relative to your rating, and a session of 3, 5 or 10 problems. You can resume an unfinished problem or end a rated session after an answer.
+Open **Arena** to establish a personal Elo on the archive’s problem-difficulty scale. Placement uses six untimed mixed-subject problems selected one at a time. Each problem allows two tries, with one result recorded for placement.
 
-Submitting an answer or giving up updates overall Elo and the rating of each subject tagged on the problem. Marking a familiar problem as seen skips it without scoring it. Arena draws problems with an in-app statement and an automatic answer key. It excludes recorded attempts and recognized problems across known duplicate contest appearances. Learn problem records, recent archive visits and saved Practice work also inform the fresh-problem pool.
+After placement, choose a subject, relative difficulty, and a set of 2, 3 or 5 problems. The whole set loads before the timer starts. Harder problems add more time. Use the numbered links to switch problems, check an answer in place, and submit whenever you are ready. When you submit or the timer runs out, Arena grades saved answers and shows the set's total Elo change, answers and solution links. Unanswered problems count as misses. Mark a familiar problem as seen to exclude it from scoring.
 
-The overview shows rating history, peak, accuracy, subject ratings and individual results. **What to study** uses recent graded Arena and Practice work to suggest up to two topics, with focused Practice links and a relevant lesson or reference card when available. Only Arena results affect ratings. Settings → Your progress includes Arena in backups and combines unique results on import. Arena results, your unfinished session and shared study activity live in IndexedDB in the current browser. On upgrade, the app carries over its earlier local records. Use **Settings → Your progress → Export** to keep a backup or move it to another device. Saved Practice sets, Learn chapter progress and preferences keep their existing local storage.
+Arena excludes known repeat appearances and previously seen problems. The overview shows rating history by set, peak Elo, subject ratings and accuracy on submitted answers. **What to study** links recent misses to a problem to revisit, a lesson or reference card where available, and focused Practice. Arena results, active sets and shared study activity live in the browser’s IndexedDB. **Settings → Your progress** exports them and merges unique results on import.
 
 ## Four main areas
 

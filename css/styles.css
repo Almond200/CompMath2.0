@@ -2594,14 +2594,7 @@ body.is-landing .content { padding: 0 0 70px; }
 .lb-chapter-page li { padding: 8px 0; border-top: 1px solid var(--border); font-size: 15px; }
 .lp-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
 .lp-grid.has-drawer { grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); }
-/* Reading width (owner, 2026-11-08): the explanation and other running prose keep to 760px for
-   comfortable lines, while the problems, solutions, exercises and the page's buttons use the
-   full column. (A stray half-rule above once made the browser drop a 760px limit on the whole
-   column; it is removed.) */
 .lp-main { min-width: 0; }
-.lp-main > :is(.lp-body, .lp-related, .learn-note) { max-width: 760px; }
-/* Settings → Learn → Lesson text width: Full width lifts it. */
-html[data-lesson-width="full"] .lp-main > :is(.lp-body, .lp-related, .learn-note) { max-width: none; }
 .lp-cards { margin: 0 0 14px; display: flex; flex-direction: column; gap: 6px; }
 .lp-cards-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
 .lp-cards-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); min-width: 13em; margin-right: 10px; }
@@ -2916,6 +2909,7 @@ details[open] > summary.set-panel-title::after { transform: rotate(90deg); }
 .ct-planned-box[hidden] { display: none; }
 .ct-note { font-size: 12.5px; line-height: 1.5; color: var(--text-faint); }
 .ct-years a {
+  border: 1px solid transparent; font-variant-numeric: tabular-nums;
   font-size: 12.5px; font-weight: 650; padding: 3px 8px; border-radius: 7px; text-decoration: none;
   background: var(--space-soft); color: var(--space);
 }
@@ -4789,7 +4783,7 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 .mock-same-format input { margin: 0; width: 16px; height: 16px; accent-color: var(--space); cursor: pointer; }
 
 /* Arena uses the same page shell and controls as the other spaces. */
-.arena { max-width: 1080px; }
+.arena { max-width: 1080px; margin-inline: auto; }
 .arena .sh-section { padding: clamp(15px, 2vw, 24px); }
 .arena h1 { margin: 0; font-size: calc(24px * var(--tx)); line-height: 1.25; }
 .arena .space-home-head h1 { font-size: calc(30px * var(--tx)); }
@@ -4843,20 +4837,10 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 .arena-subject-table td, .arena-subject-table th { padding: 8px 4px; }
 .arena-subject-table tr + tr, .arena-subject-table tbody, .arena-study-row + .arena-study-row, .arena-log + .arena-log { border-top: 1px solid var(--border); }
 .arena-subject-table thead { color: var(--text-dim); font-size: calc(12px * var(--tx)); }
-.arena-study-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; justify-content: space-between; padding: 9px 0; }
 .arena-log { margin-top: 4px; font-size: calc(14px * var(--tx)); }
-.arena-log summary { padding: 8px 0; }
-.arena-log summary > span + span { margin-left: 16px; color: var(--text-dim); }
-.arena-log summary small { display: inline; margin-left: 4px; }
-.arena-log ol { padding-left: 24px; }
-.arena-log li { margin: 7px 0; }
-.arena-log li > div { display: inline-block; }
-.arena-log li > span { float: right; text-align: right; }
 .arena-play { max-width: 900px; margin-inline: auto; }
 .arena-problem-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .arena-problem-top > strong { color: var(--space); font-variant-numeric: tabular-nums; }
-.arena-kicker { color: var(--space); margin: 0 0 4px; font-size: 13px; font-weight: 650; }
-.arena-play .arena-steps { max-width: none; margin-bottom: 20px; }
 .arena-play .practice-answer > h3 { margin-bottom: 10px; }
 .arena-actions { gap: 10px; margin-top: 14px; }
 .arena-actions .hp-btn { margin: 0; }
@@ -4869,7 +4853,6 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
   .arena-placement { border-left: 0; padding-left: 0; }
   .arena-metrics { justify-content: space-between; gap: 8px; }
   .arena-subject-table td, .arena-subject-table th { padding: 8px 2px; }
-  .arena-log summary > span + span { display: block; }
 }
 
 /* Keep chapter navigation in the book header. On a topic page, the existing
@@ -4892,3 +4875,35 @@ body[data-space="practice"] .ct-years a[aria-current="page"] {
 body[data-space="practice"] .practice-session .cn-num.practice-answered {
   color: var(--accent); background: var(--accent-soft); border-color: var(--accent);
 }
+
+/* Center reading and problem-solving surfaces within their available column. */
+body:is([data-space="learn"], [data-space="practice"], [data-space="arena"]) .layout.no-sidebar > .content,
+[data-study-sidebars="hide"] body:is([data-space="learn"], [data-space="practice"], [data-space="arena"]) .layout > .content {
+  box-sizing: border-box;
+  width: min(100%, 1124px);
+  margin-inline: auto;
+}
+.arena-set-nav .cn-num { text-decoration: none; }
+.arena-set-nav .practice-session-actions button { margin-left: auto; }
+.arena-clock { font-variant-numeric: tabular-nums; min-width: 5ch; text-align: end; font-weight: 750; }
+.arena-clock.is-low { color: var(--space); }
+.arena-result-rating { display: flex; align-items: baseline; gap: 8px 16px; flex-wrap: wrap; margin-top: 10px; }
+.arena-result-rating strong { color: var(--space); font-size: calc(32px * var(--tx)); }
+.arena-review-list { margin: 0; padding: 0; list-style: none; }
+.arena-review-list li { display: flex; justify-content: space-between; align-items: start; gap: 12px; padding: 12px 0; border-top: 1px solid var(--border); }
+.arena-review-list h3 { margin: 0; }
+.arena-review-list .arena-result-status { flex: none; text-align: end; }
+.arena-result-status small { display: block; }
+.arena-result-status[data-result="correct"] { color: var(--c-learn); }
+.arena-result-status[data-result="incorrect"] { color: var(--space); }
+.arena-study-list { display: grid; }
+.arena-study-row { display: grid; gap: 8px; justify-content: stretch; padding: 14px 0; }
+.arena-study-row h4, .arena-study-coverage h4 { margin-bottom: 4px; }
+.arena-study-row ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 5px; }
+.arena-study-row li { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px; }
+.arena-study-row li > span { color: var(--text-dim); font-weight: 650; }
+.arena-study-coverage { border-top: 1px solid var(--border); padding-top: 14px; }
+.arena-study-coverage:first-of-type { border: 0; padding-top: 0; }
+.arena-history-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; padding: 12px 0; }
+.arena-history-row small { display: inline; margin-inline-start: 6px; }
+.arena-options + [data-arena-target] { min-height: 2.9em; }

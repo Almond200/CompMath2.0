@@ -52,7 +52,7 @@
     if (arena) {
       const state = arenaState ?? await arena.read(root.StudyStorage?.enabled ? undefined : storage);
       for (const e of state.events) events.push({
-        id: "arena:" + e.identity, source: "arena", type: e.outcome === "seen" ? "exposure" : "attempt",
+        id: "arena:" + e.identity, source: "arena", type: ["seen", "unanswered"].includes(e.outcome) ? "exposure" : "attempt",
         kind: "problem", item: e.slug, at: e.at, outcome: e.outcome
       });
     }

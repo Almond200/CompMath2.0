@@ -248,8 +248,6 @@
   // A card link in a lesson goes to the card's page by default (owner, 2026-11-15); opening it beside
   // the lesson is the option.
   const LESSON_LINK_MODES = ["card", "drawer"];
-  // How wide a lesson's explanation runs (owner, 2026-11-08): a 760px reading width, or the full column.
-  const LESSON_WIDTHS = ["reading", "full"];
   const SECTION_IDS = SECTIONS.map(s => s.id);
 
   // Every write to localStorage can fail -- Safari private browsing refuses outright, and
@@ -312,7 +310,6 @@
       // saved merely because it was the old default gives way to the new one.
       lessonLinks: P.lessonLinksChosen ? pick(P.lessonLinks, LESSON_LINK_MODES) : LESSON_LINK_MODES[0],
       lessonLinksChosen: !!P.lessonLinksChosen,
-      lessonWidth: pick(P.lessonWidth, LESSON_WIDTHS),
       studySidebars: P.studySidebars === "hide" ? "hide" : "show",
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
@@ -330,7 +327,7 @@
           density: state.density, notation: state.notation, angles: state.angles,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonLinksChosen: !!state.lessonLinksChosen, lessonWidth: state.lessonWidth, studySidebars: state.studySidebars
+          tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonLinksChosen: !!state.lessonLinksChosen, studySidebars: state.studySidebars
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -363,7 +360,6 @@
     tools: _loaded.tools,        // "off" | "on" — the page tools column on card pages
     lessonLinks: _loaded.lessonLinks, // "drawer" | "card" — a lesson's card links open beside it or go to the card
     studySidebars: _loaded.studySidebars,
-    lessonWidth: _loaded.lessonWidth, // "reading" | "full" — a lesson's explanation at 760px or across the column
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     strategyChosen: _loaded.strategyChosen,
     lessonLinksChosen: _loaded.lessonLinksChosen,
@@ -1417,7 +1413,11 @@
       return { type: "space", name: "practice", practiceMode: m[1], practiceId: m[2] };
     }
     if (location.hash === "#/practice/contests") return { type: "space", name: "practice", practiceAnchor: "pr-contests" };
-    if (location.hash === "#/arena" || location.hash === "#/arena/session") return { type: "space", name: "arena", playing: location.hash.endsWith("/session") };
+    if (location.hash === "#/arena") return { type: "space", name: "arena" };
+    const arenaSession = /^#\/arena\/session(?:\/([1-9]\d*))?$/.exec(location.hash);
+    if (arenaSession) return { type: "space", name: "arena", playing: true, index: Number(arenaSession[1] || 1) - 1 };
+    const arenaReview = /^#\/arena\/review\/([a-z0-9.-]+)$/i.exec(location.hash);
+    if (arenaReview) return { type: "space", name: "arena", review: arenaReview[1] };
     if (location.hash === "#/practice") return { type: "space", name: "practice" };
     if (location.hash === "#/learn") return { type: "space", name: "learn" };
     const lr = learnRoute(location.hash);
@@ -4660,7 +4660,7 @@
   const SETTING_DEFAULTS = {
     theme: "light", studySidebars: "show", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
     notation: NOTATIONS[0], angles: ANGLE_MODES[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
-    order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], lessonWidth: LESSON_WIDTHS[0], strategy: STRATEGY_MODES[0], contestLists: CONTEST_LIST_MODES[0]
+    order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0], contestLists: CONTEST_LIST_MODES[0]
   };
   function settingRow(name, desc, key, current, options, pv) {
     const def = SETTING_DEFAULTS[key];
@@ -4717,7 +4717,6 @@
         <section class="set-panel">
           <h3 class="set-panel-title">Learn</h3>
           ${settingRow("Card links in lessons", "What pressing a card's name in a lesson does.", "lessonLinks", state.lessonLinks, [["drawer", "Opens in the lesson"], ["card", "Opens its page"]], "lesson")}
-          ${settingRow("Lesson text width", "How wide a lesson's explanation runs. Reading width keeps its lines to a comfortable length; Full width uses the whole column. Problems, solutions and exercises always use the whole column.", "lessonWidth", state.lessonWidth, [["reading", "Reading width"], ["full", "Full width"]], "lesson")}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Practice</h3>
@@ -4881,7 +4880,6 @@
         start: "startup, start page, home page, homepage, landing page, open on, launch, default page, front page, first page, when it opens",
         lessonLinks: "lesson links, drawer, open cards beside, side panel, card links, links, preview, popup",
         studySidebars: "sidebar, side bar, navigation, drawer, rail, hide menu, learn, practice, arena, more space",
-        lessonWidth: "lesson width, text width, line length, wide text, narrow text, full width, reading width, column, paragraphs, lesson text",
         contestLists: "contest sections, contest lists, show more, show all, expanded, collapsed, folded, unfolded, contests, statistics, stats, practice problems, years",
         strategy: "spoilers, spoiler, solution, solutions, reveal, answers, answer, hide the strategy, show the strategy, how this problem works, hints",
         "Export progress": "export data, export, save data, my data, data, backup, back up, save my progress, save, download, file, json, transfer, move to another browser, keep my lists, history, stars",
@@ -6739,7 +6737,7 @@
   }
   // Cross-tab updates to a draft alone can leave the active text input mounted.
   window.addEventListener("storage", event => {
-    if (event.key !== window.Arena.KEY || !/^#\/arena(?:\/session)?$/.test(location.hash)) return;
+    if (event.key !== window.Arena.KEY || !/^#\/arena(?:\/session(?:\/\d+)?)?$/.test(location.hash)) return;
     try {
       const before = JSON.parse(event.oldValue), after = JSON.parse(event.newValue);
       if (before?.session?.slot && after?.session?.slot && before.session.id === after.session.id &&
@@ -6749,12 +6747,12 @@
     render();
   });
   if (studyStore.enabled) studyStore.subscribe(kind => {
-    if (!/^#\/arena(?:\/session)?$/.test(location.hash)) return;
-    if (kind === "draft" && document.activeElement?.id === "practice-answer") return;
+    if (!/^#\/arena(?:\/session(?:\/\d+)?)?$/.test(location.hash)) return;
+    if (kind === "draft") return;
     render();
   });
   let arenaPool;
-  function renderArena(playing) {
+  function renderArena(route) {
     shownIds = [];
     arenaPool ||= PROBLEM_DB.filter(p => Number.isFinite(p.elo) && p.tree.some(id => TOPIC_NODES.has(id)) && !isVoidedProblem(p) && hasMockAnswer(p) &&
       !practiceSessions.needsSelfCheck({}, p.slug) && (window.MATH_MOCK_EXTRAS?.[p.slug] ||
@@ -6791,7 +6789,7 @@
       showPrompt: p => showStatement(p, ".arena-st", true),
       choices: practiceAnswerChoices, exactLabel: practiceExactLabel, keypad: practiceMathKeysHtml, wireKeys: wirePracticeMathKeys,
       answerHtml: exactAnswerHtml, renderMath, confirm: appConfirm, refresh: render
-    }, playing);
+    }, route);
   }
   function renderSpaceHome(name, route) {
     if (route.practiceMode) practiceConceptMode = route.practiceMode;
@@ -10190,12 +10188,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
   };
   const CEMC_STATEMENTS = {
     dir: "cemc",
-    credit: `© University of Waterloo (CEMC) · Formatted for this app under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>`
+    credit: "© University of Waterloo (CEMC)"
   };
-  const AHSME_STATEMENTS = {
-    dir: "ahsme",
-    credit: `© Mathematical Association of America · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> · LIVE by Po-Shen Loh`
-  };
+  const MAA_CREDIT = "© Mathematical Association of America";
+  const AHSME_STATEMENTS = { dir: "ahsme", credit: MAA_CREDIT };
   // Statements reproduced with the organizers' permission (owner, 2026-11-20).
   const PERMITTED_STATEMENTS = {
     "SMT": { dir: "smt", credit: "© Stanford Math Tournament" },
@@ -10301,13 +10297,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
           });
         }
       });
+      const inPractice = box === ".practice-set-st";
+      const credit = source?.credit || (MAA_RE.test(p.ref) ? MAA_CREDIT : "");
+      if (credit && !inPractice && !wrap.querySelector(".statement-credit")) {
+        wrap.insertAdjacentHTML("beforeend", `<p class="prob-note statement-credit">${escapeAttr(credit)}</p>`);
+      }
       if (archive) {
-        // In a practice set the page looks like an AMC or AIME one: no copyright line, and no
-        // "Open in archive" button while the statement is on screen (the link comes with the review).
-        const inPractice = box === ".practice-set-st";
-        if (!inPractice && !wrap.querySelector(".statement-credit")) {
-          wrap.insertAdjacentHTML("beforeend", `<p class="prob-note statement-credit">${archive.credit}</p>`);
-        }
         const fallback = wrap.parentElement.querySelector("[data-statement-fallback]");
         if (fallback) { fallback.hidden = true; if (inPractice && fallback.parentElement.classList.contains("practice-paper")) fallback.parentElement.hidden = true; }
       }
@@ -11745,7 +11740,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       renderSpecial(route);
     } else if (route.type === "space") {
       if (route.practiceSet) renderTopicPracticeSet();
-      else if (route.name === "arena") renderArena(route.playing);
+      else if (route.name === "arena") renderArena(route);
       else renderSpaceHome(route.name, route);
     } else if (route.type === "learn") {
       renderLearn(route);
@@ -11777,7 +11772,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // A list page's sidebar holds only the list's sections, under "On this list", drawn in the
     // same panel as a card's "On this page", so the section being read is marked the same way.
     const noSidebar = (state.studySidebars === "hide" && !!SPACE_SECTIONS[space]) || onLanding || searching || ["problems", "problem", "browse", "lists", "settings", "learn"].includes(route.type)
-      || (route.type === "space" && (route.practiceSet || route.playing || !SPACE_SECTIONS[route.name]))
+      || (route.type === "space" && (route.practiceSet || route.playing || route.review || !SPACE_SECTIONS[route.name]))
       || (route.type === "list" && !$content.querySelector(".list-section[id]"));
     const $tree = document.getElementById("formula-nav");
     if ($tree) $tree.hidden = route.type === "list";
@@ -12384,7 +12379,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
     r.setAttribute("data-tags", state.tags ? "on" : "off");
     r.setAttribute("data-captions", state.captions);
     r.setAttribute("data-cols", state.cols);
-    r.setAttribute("data-lesson-width", state.lessonWidth);
     r.dataset.studySidebars = state.studySidebars;
   }
 

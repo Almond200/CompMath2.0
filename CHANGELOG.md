@@ -2,6 +2,8 @@
 
 **2026-11-25**
 
+- **Timed Arena sets.** Give two tries per placement problem. Preselect rated sets of 2, 3 or 5 questions, with one timer sized to the problems’ Elo. Let learners move between questions, check answers in place, and submit early. Show the set’s net Elo change, all outcomes and links to solutions. The dashboard charts Elo by set and organizes recent misses into review, lesson and practice steps.
+- **Reading layout and credits.** Center Learn, Practice and Arena when study sidebars are hidden. Remove the lesson width setting. Show just the copyright holder under statements and reserve equal space for selected and idle contest year buttons.
 - **Arena.** Add six-problem adaptive placement, overall and subject Elo, adjustable sessions, a rating graph, history, focused study recommendations and resumable local progress. Known repeats and problems marked as seen are excluded from future draws. Settings backups merge Arena results by problem identity.
 - **Progress storage.** Move Arena and shared study activity to IndexedDB. Migrate existing local records, keep resumable drafts separate from the attempt log, and include both storage systems in Settings backups.
 - **Study navigation and controls.** Add Show/Hide study sidebars to Appearance. Use soft selection tints in Practice and the label “Mixed subjects,” including previously saved sets. The main search recognizes paper and problem numbers together, including `p3`, `q3`, `#3` and a trailing number.

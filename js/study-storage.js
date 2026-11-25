@@ -109,11 +109,10 @@
     if (written) changed("arena");
     return state;
   }
-  async function saveDraft(id, slug, draft) {
+  async function editArenaSession(update) {
     const wrote = await transaction(await ready(), [SESSION], "readwrite", async tx => {
       const store = tx.objectStore(SESSION), s = await request(store.get("current"));
-      if (s?.id !== id || s.closed || s.slot?.slug !== slug || s.slot.draft === draft) return false;
-      s.slot.draft = draft;
+      if (!update(s)) return false;
       s.updated = Math.max(Date.now(), s.updated + 1);
       store.put(s, "current");
       return true;
@@ -127,7 +126,7 @@
     await importInto(await ready(), arena, activity);
     changed("arena");
   }
-  root.StudyStorage = { enabled: !!root.indexedDB, subscribe, snapshot, changeArena, saveDraft, appendActivity, restore,
+  root.StudyStorage = { enabled: !!root.indexedDB, subscribe, snapshot, changeArena, editArenaSession, appendActivity, restore,
     async readArena() { return transaction(await ready(), [ATTEMPTS, SESSION], "readonly", arenaIn); },
     async readActivity(kind) {
       return transaction(await ready(), [ACTIVITY], "readonly", tx => {

@@ -58,6 +58,40 @@ async function checkHistory() {
     {kind:'problem',canonicalId:'blank',item:'blank',at:0,outcome:'unanswered'}],
     id => ({tree: [id==='duplicate' ? 'alg.rates' : 'geo.length']}));
   assert.deepEqual(recs.map(r=>[r.id,r.attempts,r.misses]),[['geo.length',5,2]]);
+  const placementState = A.merge(null, null);
+  A.start(placementState, 'mixed', 'matched', 5);
+  const p = problem('placement-question');
+  placementState.session.slot = {...p,draft:'A'};
+  const id = placementState.session.id;
+  A.placeAnswer(placementState, id, p, p.subjects, 'incorrect', 'A', false);
+  assert.equal(placementState.session.slot.firstMiss, 'A');
+  assert.equal(placementState.session.slot.draft, '');
+  assert.equal(placementState.events.length, 0);
+  assert.equal(A.placeAnswer(placementState, id, p, p.subjects, 'correct', 'B', false), false, 'stale first try cannot finish retry');
+  A.placeAnswer(placementState, id, p, p.subjects, 'correct', 'B', true);
+  assert.equal(placementState.events.length, 1);
+  assert.equal(placementState.events[0].outcome, 'correct');
+  assert.equal(placementState.events[0].firstMiss, 'A');
+
+  const timed = A.merge(state, null);
+  timed.session.closed = true;
+  A.start(timed, 'geo', 'stretch', 5);
+  const roundId = timed.session.id, now = Date.now();
+  A.openRound(timed, roundId, [problem('amc10-original'), problem('one', 980), problem('two', 1800), problem('three', 2600), problem('four', 3100)], now);
+  const round = timed.session.round;
+  assert.deepEqual(round.items.map(i => i.slug), ['one','two','three','four']);
+  assert.equal(round.limitMs, (2 + 5 + 7 + 9) * 60000);
+  A.checkRoundAnswer(timed, roundId, 'three', {outcome:'correct', answer:'C'}, now);
+  assert.equal(A.checkRoundAnswer(timed, roundId, 'three', {outcome:'incorrect', answer:'D'}, now), false);
+  A.checkRoundAnswer(timed, roundId, 'one', {outcome:'seen', answer:''}, now);
+  round.items[1].draft = 'B';
+  assert.equal(timed.events.length, state.events.length, 'checking an answer does not change Elo before set submission');
+  assert.equal(A.checkRoundAnswer(timed, roundId, 'four', {outcome:'correct', answer:'E'}, round.deadline), false);
+  A.submitRound(timed, roundId, (_,answer) => answer && {outcome:'incorrect',answer}, round.deadline);
+  assert.deepEqual(timed.events.slice(-4).map(e => [e.slug,e.outcome,e.answer,e.timedOut]),
+    [['one','seen','',true],['two','incorrect','B',true],['three','correct','C',true],['four','unanswered','',true]]);
+  assert.equal(A.submitRound(timed, roundId, () => null), false);
+  assert.deepEqual(A.merge(timed, timed), timed, 'backup restores the complete scored set once');
   console.log('Arena placement, Elo, independent subjects, options, known problems, shared activity, recommendations and backup merging passed.');
 }
 checkHistory().catch(error => { console.error(error); process.exitCode = 1; });
