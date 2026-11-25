@@ -86,7 +86,8 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   const cards=rowOf(tp,'Cards').locator('tbody tr');assert.equal(await cards.count(),6);assert.equal(await cards.first().locator('td').nth(1).innerText(),String(Math.max(...Object.values(cited))));
   assert.match(await cards.first().locator('a').getAttribute('href'),/^#\/f\/[\w-]+$/);assert.equal(await rowOf(tp,'Difficulty').locator('.elo-chart a.elo-bar').count(),NB);
   // It folds away and stays folded on the next topic; the problems keep their own heading below it.
-  assert.deepEqual(await page.locator('.browse-main .pp-h').allInnerTexts(),['Topic profile','Problems']);
+  const hasLessons=await page.evaluate(id=>Object.values(window.MATH_LESSON_TOPICS).some(selected=>selected.includes(id)),id);
+  assert.deepEqual(await page.locator('.browse-main .pp-h').allInnerTexts(),['Topic profile',...(hasLessons?['Lessons']:[]),'Problems']);
   const fold=page.locator('[data-tp-toggle]');assert.equal(await fold.innerText(),'Hide');await fold.click();assert.equal(await page.locator('.tp-body').isVisible(),false);assert.equal(await fold.innerText(),'Show');assert.equal(await fold.getAttribute('aria-expanded'),'false');
   assert.equal(await tp.locator('.pf-stat').count(),4,'the figures stay');await fold.click();assert.equal(await page.locator('.tp-body').isVisible(),true);
   assert(await page.locator('.br-group').count()>0);await fits();

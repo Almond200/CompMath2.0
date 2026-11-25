@@ -2,6 +2,14 @@
 
 **2026-11-24**
 
+- **Trigonometric Sums and Products.** This Algebra pattern connects angle spacing, doubling, symmetry, and cosine roots to the relevant identities, a worked example, lesson L12.3, and three contest problems.
+
+- **Review and continued practice.** Results show subject bars, a clickable problem chart and the highest-rated solve. Reference cards group lesson and practice links under Additional resources. Each of the 593 teaching lessons shows one or two editorially selected topics and links to focused practice.
+
+- **Topic pages and Practice navigation.** Topic profiles explain their statistical source and link to lessons. Related links use bulleted lists. Practice at a glance opens Contests. Practice now labels the mock builder “Mock a contest,” and random problems remain available through `Special:Random/Problem`.
+
+- **Contest search and solutions.** Search recognizes contest and organizer names, common abbreviations, and small spelling errors. All 25 problems on the 2026 AMC 8 have original worked solutions.
+
 - **Practice results.** The overview shows accuracy on graded answers and one topic from the completed set, with a link to related problems.
 
 - **Topic-tree follow-up.** Named the Pythagorean theorem in the Geometry leaf, moved Common tangents of two circles alongside the other tangent-line problems, and clarified the scope of Expected value, variance and distributions. Refiled 45 entries from the broad Right triangles topic after checking where problems were concentrated.

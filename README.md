@@ -1,7 +1,7 @@
 # Competition Math Reference
 
-A searchable reference for AMC 10/12, AIME and olympiad training: 790 cards covering formulas,
-methods, and patterns (558 formulas, 183 methods, 49 patterns); 13 Learn textbooks (103 chapters,
+A searchable reference for AMC 10/12, AIME and olympiad training: 791 cards covering formulas,
+methods, and patterns (558 formulas, 183 methods, 50 patterns); 13 Learn textbooks (103 chapters,
 593 lessons); and a database of 19,456 past contest problems from 35 contests, 1950 to 2026
 (17,931 with their statements shown in the app, the rest linked to the official paper), every one
 rated and filed in a 457-node topic tree, and 15,949 cross-linked to the cards their solutions run
@@ -36,9 +36,9 @@ Sources, corrections and exceptions are recorded in the [short-answer audit](too
 Topic practice sets have no timer or timer setting. Export progress and Import progress include
 saved practice and mock sets, keeping the newest version of each. Clearing browser data removes the local copy.
 
-## Practice a contest
+## Mock a contest
 
-A separate panel below Practice a topic lets you search for a **past contest** by name, round or year. Papers retain their original question order. The **Generate a mock** mode offers AMC 8, AMC 10, AMC 12 and AIME formats and draws from eligible contests using a recent difficulty curve. Each question retains its original answer format.
+A separate panel below Practice a concept lets you search for a **past contest** by name, round or year. Papers retain their original question order. The **Generate a mock** mode offers AMC 8, AMC 10, AMC 12 and AIME formats and draws from eligible contests using a recent difficulty curve. Each question retains its original answer format.
 
 Generated mocks and past papers with a supported timed format use a countdown. The other past papers are untimed. The clock pauses when you leave or hide the page, and the set submits automatically at zero. [Mock generation, scoring and source details](MOCK-CONTESTS.md)
 

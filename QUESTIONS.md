@@ -43,6 +43,7 @@ New rows go at the top of this table, as the next P-number. The next is P85. For
 
 | # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by | Answer |
 |---|---|---|---|---|---|
+| P85 | Trigonometric Sums and Products (`trigonometric-sums-products`) | pattern, algebra / Self-Similar & Repeating | AMC, medium | 2021 Spring AMC 12A #22, 2006 AIME I #12 | Requested and added on 2026-11-24. |
 | P84 | Parallel Lines and Height Changes (`parallel-lines-height-change`) | formula, geometry / Vectors & Coordinates in Space | AMC, low | 2021 Fall AMC 10A #17 | Requested and added on 2026-11-24. |
 | P83 | Trigonometric Power-Reduction Formulas (`trig-power-reduction`) | formula, algebra / Trigonometric Identities | AMC, medium | 2026 AMC 12B #15 | Requested and added on 2026-11-24. |
 | P82 | Reading a System as a Polynomial Product (`system-as-polynomial-product`): when the equations of a system are the coefficients of a product of two monic polynomials, build the polynomial of the right sides, factor it, and share its factors | method, algebra / polynomials and their roots | AIME Late, low | 2018 SMT Algebra #9 (it cited Comparing Coefficients and Listing Factor Pairs, which miss the move; Listing Factor Pairs was wrong, as the split is of a polynomial, not an integer) | Asked for by the owner (2026-11-22) and written the same day. |

@@ -1872,7 +1872,8 @@
     "square-and-add": "method",
     "system-as-polynomial-product": "method",
     "trig-power-reduction": "formula",
-    "parallel-lines-height-change": "formula"
+    "parallel-lines-height-change": "formula",
+    "trigonometric-sums-products": "pattern"
   },
   "placeholders": {},
   "ledger": {
@@ -9178,6 +9179,12 @@
       [
         "(new card)",
         "written directly in the formula template"
+      ]
+    ],
+    "trigonometric-sums-products": [
+      [
+        "(new card)",
+        "written directly in the pattern template"
       ]
     ]
   }

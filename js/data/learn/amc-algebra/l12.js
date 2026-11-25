@@ -86,7 +86,7 @@ Finally apply addition to $2x+x$. With $c=\cos x$ and $s=\sin x$, the cosine exp
     },
     "L12.3": {
       prereq: ["angle-addition", "double-angle"],
-      cards: ["product-sum", "trig-telescoping-product"],
+      cards: ["product-sum", "trig-telescoping-product", "trigonometric-sums-products"],
       body: String.raw`The addition identities can be combined to isolate products. Adding the formulas for $\sin(\alpha+\beta)$ and $\sin(\alpha-\beta)$ cancels the cosine-sine terms, giving
 
 $$2\sin\alpha\cos\beta=\sin(\alpha+\beta)+\sin(\alpha-\beta).$$

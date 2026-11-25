@@ -1,6 +1,6 @@
-# Practice a contest
+# Mock a contest
 
-The **Practice a contest** panel shares navigation, saving and review with topic sets. Generated mocks and supported timed past papers add a countdown and contest scoring.
+The **Mock a contest** panel shares navigation, saving and review with topic sets. Generated mocks and supported timed past papers add a countdown and contest scoring.
 
 ## Past papers and generated mocks
 
