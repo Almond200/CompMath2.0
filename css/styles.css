@@ -3941,8 +3941,8 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 
 /* A lesson's card rows are plain links (owner, 2026-10-31), and its Related cards a short list. */
 /* Study links follow the typography of the app's cross-references. */
-.study-links, [data-resource-practice], .chain-study-links { font-size: calc(14.5px * var(--tx)); line-height: 1.6; }
-.study-links, [data-resource-practice] { overflow-wrap: anywhere; }
+.study-links, .card-resources .resource-list, .chain-study-links { font-size: calc(14.5px * var(--tx)); line-height: 1.6; }
+.study-links, .card-resources .resource-list { overflow-wrap: anywhere; }
 .study-link-sep { margin: 0 2px; color: var(--text-faint); }
 :is(.study-links, [data-resource-practice], .contest-profile, .insight-notes) a:not(.elo-bar) { text-decoration: none; }
 :is(.study-links, [data-resource-practice], .contest-profile, .insight-notes) a:not(.elo-bar):hover { color: var(--accent-strong, var(--accent)); }

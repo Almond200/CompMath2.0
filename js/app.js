@@ -10785,8 +10785,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const items = (taught.length ? taught : lessons.slice(0, 3)).map(studyLessonLink);
     const resources = (BY_ID[fid].formula.resources || []).filter(r => /^https?:\/\//i.test(r.url));
     const external = resources.map(r => `<a href="${escapeAttr(r.url)}">${escapeAttr(r.title)}</a>`);
-    return `<section class="related try-block"><h4>Additional resources</h4>
-      <h5 class="try-sub">Learn more</h5>${items.length ? inlineStudyLinks(items) : '<p class="sec-note">No linked lessons yet.</p>'}
+    return `<section class="related try-block card-resources"><h4>Additional resources</h4>
+      <h5 class="try-sub">Learn more</h5>${items.length ? resourceList(items) : '<p class="sec-note">No linked lessons yet.</p>'}
       <h5 class="try-sub">Practice more</h5><div data-resource-practice>${cardPracticeResource(fid)}</div>
       ${external.length ? `<h5 class="try-sub">Also check out</h5>${inlineStudyLinks(external)}` : ""}</section>`;
   }

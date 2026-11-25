@@ -4,7 +4,7 @@
 
 - **Archive and search.** Build compact problem metadata and relationships from the editorial sources. Load solution text by decade, add search results 24 at a time, and render collapsed card practice rows when opened.
 - **Study activity.** Share a local activity history across Learn, Practice, Flashcards and Quiz. Use explicit canonical problem IDs for known shared questions.
-- **Study links.** Restore inline lesson and profile links and add lesson and topic hover previews. Match the Lessons heading to the surrounding headings and keep a bullet for focused card practice.
+- **Study links.** Restore inline lesson and profile links and add lesson and topic hover previews. Match the Lessons heading to the surrounding headings and use bullets for lesson and focused practice links on cards.
 
 **2026-11-24**
 

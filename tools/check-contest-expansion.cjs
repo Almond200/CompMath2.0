@@ -18,7 +18,10 @@ const base = process.env.COMPMATH_URL || 'http://localhost:8765';
   assert.equal(await odds.getAttribute('aria-expanded'), 'false'); assert.equal(await practice.locator('.fam-more-btn').getAttribute('aria-expanded'), 'true');
   await odds.click(); assert.equal(await table.getAttribute('aria-expanded'), 'true');
 
-  await practice.locator('.prob-more').first().click(); assert.equal(await practice.locator('.prob-more').first().getAttribute('aria-expanded'), 'true');
+  const firstGroup=practice.locator('.prob-group').filter({has:page.locator('.prob-more')}).first();
+  assert.equal(await firstGroup.locator('.prob-row').count(),3,'only the visible rows are mounted');
+  await practice.locator('.prob-more').first().click();
+  assert(await firstGroup.locator('.prob-row').count()>3,'expanding mounts the remaining rows'); assert.equal(await practice.locator('.prob-more').first().getAttribute('aria-expanded'), 'true');
   await table.click(); assert.equal(await table.getAttribute('aria-expanded'), 'false');
   assert.equal(await odds.getAttribute('aria-expanded'), 'true');
   assert.equal(await practice.locator('.prob-more').first().getAttribute('aria-expanded'), 'true', 'another section does not reset this problem group');
@@ -36,8 +39,7 @@ const base = process.env.COMPMATH_URL || 'http://localhost:8765';
   assert.equal(await practice.locator('.prob-extra').evaluateAll(xs => xs.every(x => getComputedStyle(x).display !== 'none')), true);
   await page.reload(); await practice.waitFor(); assert.equal(await practice.locator('.fam-more-btn').getAttribute('aria-expanded'), 'true', 'preference survives reload');
   await go('#/practice'); await page.locator('#pr-contests').waitFor();
-  const random = page.locator('[data-fam-list="random-contests"]');
-  await random.click(); assert.equal(await random.getAttribute('aria-expanded'), 'false');
+  assert.equal(await page.locator('#pr-random').count(),0);
   // The Contests list no longer folds its contests behind a button (owner, 2026-11-22): every group is there, closed except the AMC and AIME.
   assert.equal(await page.locator('#pr-contests [data-fam-list="contest-years"]').count(), 0);
   assert.equal(await page.locator('#pr-contests .ct-group').count() >= 4, true);
