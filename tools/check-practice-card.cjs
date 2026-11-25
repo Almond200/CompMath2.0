@@ -3,7 +3,7 @@
 // counts, difficulty in Elo terms, and a generated set whose every problem cites the card.
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),path=require('node:path');
 const base=process.env.COMPMATH_URL||'http://localhost:8765',root=path.join(__dirname,'..');
-global.window={};require(path.join(root,'js/data/problems/problem-db.js'));
+global.window={};require(path.join(root,'js/data/problems/problem-db.js'));require('../js/data/problems/difficulty-ratings.js');
 const slug=ref=>ref.toLowerCase().replace(/,?\s*problem\s+/,'-').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
 const cites=new Map(window.MATH_PROBLEM_DB.map(p=>[slug(p.ref),{cards:new Set([...(p.formulas||[]),...(p.trickFormulas||[])]),strategy:p.strategy,ref:p.ref}]));
 (async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME||undefined,args:['--no-sandbox']});try{
@@ -35,7 +35,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const set=await page.evaluate(()=>JSON.parse(localStorage.getItem('mq-practice-sets')).find(s=>location.hash.endsWith(s.id)));
  assert.equal(set.cardId,'pythagorean-theorem');assert.equal(set.slugs.length,7);assert.equal(new Set(set.slugs).size,7);
  const [lo,hi]=note.match(/(\d+)–(\d+) Elo/).slice(1).map(Number);
- const drawn=await page.evaluate(slugs=>slugs.map(s=>MATH_PROBLEM_RATINGS.ratings[s].elo),set.slugs);
+ const drawn=set.slugs.map(s=>window.MATH_PROBLEM_RATINGS.ratings[s].elo);
  assert(drawn.every(e=>e>=lo&&e<=hi),'card set follows the displayed Elo interval');
  for(const s of set.slugs)assert(cites.get(s)?.cards.has('pythagorean-theorem'),s+' cites the card');
  assert.equal(new Set(set.slugs.map(s=>cites.get(s).ref.slice(0,4)+'|'+(cites.get(s).strategy||cites.get(s).ref))).size,7,'no problem appears as both its AMC 10 and AMC 12 copy');

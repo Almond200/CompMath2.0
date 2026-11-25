@@ -25,6 +25,13 @@ const base=process.env.COMPMATH_URL||'http://localhost:8765';
     assert.ok((await page.locator('.card-contest-result .card-name').first().innerText()).includes(expected),query+' in main search');
     await page.goto(base+'/#/practice');await page.waitForSelector('#ct-find');
   }
+  const broad='stanfrd math contest';await page.locator('#search-input').fill(broad);
+  await page.locator('.results-meta').filter({hasText:broad}).waitFor();
+  const cards=page.locator('.search-results > .card');
+  assert.equal(await cards.count(),24,'only the first page is mounted');
+  const next=page.locator('.rs-more');await next.focus();await next.press('Enter');
+  assert.equal(await cards.count(),48,'mount only one additional page');
+  assert(await cards.nth(24).evaluate(card=>card.contains(document.activeElement)),'keyboard users can start reading the new page');
   const ref='2024 cayely contest #3';await page.locator('#search-input').fill(ref);
   await page.locator('.results-meta').filter({hasText:ref}).waitFor();
   assert.match(await page.locator('.search-results > .card').first().getAttribute('href'),/2024-cayley-contest-3$/);

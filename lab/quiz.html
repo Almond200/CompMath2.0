@@ -137,6 +137,7 @@
 <script src="../js/data/diagrams/general-diagrams.js?v=188"></script>
 <script src="../js/ui-icons.js?v=2"></script>
 <script src="lab-common.js?v=3"></script>
+<script src="../js/learning-activity.js?v=1"></script>
 <script>
 (function () {
   "use strict";
@@ -365,6 +366,7 @@
     var fb = document.getElementById("figbtn");
     if (fb) fb.remove();
     var right = q.options[k].id === q.card.id;
+    window.LearningActivity.record("quiz", "attempt", q.card.id, right ? "correct" : "incorrect", "card");
     if (right) {
       Q.score++; Q.streak++; if (Q.streak > Q.best) Q.best = Q.streak;
       noteHit(q.card.id);

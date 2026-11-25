@@ -103,6 +103,7 @@
 <script src="../js/data/diagrams/general-diagrams.js?v=188"></script>
 <script src="../js/ui-icons.js?v=2"></script>
 <script src="lab-common.js?v=3"></script>
+<script src="../js/learning-activity.js?v=1"></script>
 <script>
 (function () {
   "use strict";
@@ -303,6 +304,7 @@
     var k = keyOf(cur);
     store[k] = next(stateOf(k), g);
     save(store);
+    window.LearningActivity.record("flashcards", "attempt", cur.c.id, ["again", "hard", "good", "easy"][g], "card");
     if (g === 0) { again++; queue.splice(Math.min(3, queue.length), 0, cur); } else shown++;
     if (queue.length) show(); else finish(false);
   }

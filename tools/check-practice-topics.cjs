@@ -2,6 +2,8 @@
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs');
 const base=process.env.COMPMATH_URL||'http://localhost:8895',dir=process.env.UI_ARTIFACT_DIR;
 if(dir)fs.mkdirSync(dir,{recursive:true});
+global.window={};require('../js/data/problems/difficulty-ratings.js');
+const ratingsFor=slugs=>slugs.map(s=>window.MATH_PROBLEM_RATINGS.ratings[s].elo);
 (async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME||'/usr/bin/chromium',args:['--no-sandbox']});try{
 for(const theme of ['light','dark'])for(const width of [1280,375]){
  const page=await browser.newPage({viewport:{width,height:950},hasTouch:width===375,isMobile:width===375}),errors=[];
@@ -55,7 +57,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await page.locator('#pr-topic .pr-fams summary').click();
  await page.locator('#pr-topic [data-pr-all="off"]').click();
  await page.locator('#pr-topic [data-pr-fam="AMC 8"]').click();
- const ratings=await page.evaluate(()=>MATH_PRACTICE_POOL('geo').map(s=>MATH_PROBLEM_RATINGS.ratings[s].elo));
+ const ratings=ratingsFor(await page.evaluate(()=>MATH_PRACTICE_POOL('geo')));
  const low=Math.min(...ratings),high=Math.max(...ratings),span=high-low+1;
  for(let i=0;i<5;i++){
   await page.locator('#topic-band').fill(String(i+1));
@@ -67,11 +69,11 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  }
  await count.fill('3');await submit.click();await page.locator('.practice-session-top').waitFor();set=await stored();
  assert(set.slugs.length>0&&set.slugs.length<=3);
- const chosenRatings=await page.evaluate(slugs=>slugs.map(s=>MATH_PROBLEM_RATINGS.ratings[s].elo),set.slugs);
+ const chosenRatings=ratingsFor(set.slugs);
  assert(chosenRatings.every(e=>e>=Math.ceil(low+4*span/5)&&e<=high),'generated problems stay within displayed bounds');
  assert(set.slugs.every(s=>/amc-8|ajhsme/.test(s)),'selected contest only');
  await home();await select('Algebra','alg');await page.locator('#topic-band').fill('5');
- const algebra=await page.evaluate(()=>MATH_PRACTICE_POOL('alg').map(s=>MATH_PROBLEM_RATINGS.ratings[s].elo));
+ const algebra=ratingsFor(await page.evaluate(()=>MATH_PRACTICE_POOL('alg')));
  assert((await page.locator('#topic-band-note').innerText()).includes(`${Math.ceil(Math.min(...algebra)+4*(Math.max(...algebra)-Math.min(...algebra)+1)/5)}–${Math.max(...algebra)} Elo`),'changing topic recomputes the interval');
  // Year expanders report the hidden count, including singular/plural, and can fold back.
  const years=page.locator('#pr-contests .ct-years-more').first(),row=years.locator('..');

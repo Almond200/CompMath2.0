@@ -91,7 +91,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await go('#/browse/difficulty');await page.locator('.elo-panel').waitFor();assert.equal(await page.locator('h1').innerText(),'Problems by difficulty');assert.doesNotMatch(await page.locator('.browse-page').innerText(),/LIVE/,'the ratings carry no source name');
  assert.equal(await page.locator('[data-br-fam="AMC 8"]').getAttribute('aria-pressed'),'false');await page.locator('[data-br-fam="AMC 8"]').click();
  const bins=await page.locator('.elo-panel .elo-bar').evaluateAll(xs=>xs.map(x=>{const m=x.dataset.tip.match(/^(\d+)–(\d+): (\d+)/);return m.slice(1).map(Number);}));
- const allRatings=await page.evaluate(()=>Object.values(MATH_PROBLEM_RATINGS.ratings).map(r=>r.elo));
+ const allRatings=Object.values(window.MATH_PROBLEM_RATINGS.ratings).map(r=>r.elo);
  for(const [lo,hi,count] of bins)assert.equal(count,allRatings.filter(e=>e>=lo&&e<=hi).length,'each bar counts its actual rating interval');
  assert.equal(bins.reduce((n,b)=>n+b[2],0),allRatings.length,'every rated problem is represented exactly once, including ratings below200');
 
@@ -99,7 +99,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await page.locator('.elo-bar[href$="/2600"]').click();await page.waitForFunction(()=>/2600/.test(document.querySelector('.br-band-h')?.textContent));assert.match(await page.locator('.br-band-h').innerText(),/^Rated 2600 to 2799$/);
  if(await page.locator('.fam-chips .fam-more-btn[aria-expanded="false"]').count()){await page.locator('.fam-chips .fam-more-btn').click();await page.locator('.fam-chips .fam-more-btn[aria-expanded="true"]').waitFor();}
  const shown=parseInt((await page.locator('.br-band .br-count').innerText()).replace(',',''));
- const expected=await page.evaluate(()=>Object.values(MATH_PROBLEM_RATINGS.ratings).filter(r=>r.elo>=2600&&r.elo<2800).length);assert.equal(shown,expected);
+ const expected=allRatings.filter(elo=>elo>=2600&&elo<2800).length;assert.equal(shown,expected);
  const years=(await page.locator('.br-group').last().locator('.br-ref').allInnerTexts()).map(s=>+s.slice(0,4));assert.deepEqual(years,[...years].sort((a,b)=>b-a),'newest first within a contest');
  for(const f of ['AMC 8','AMC 10','AMC 12','HMMT February','HMMT November','PUMaC Division A','PUMaC Division B','CMIMC','SMT','BMT','BmMT','ARML','ARML Local','Math Prize for Girls','CHMMC','CMM','Duke Math Meet','MATHCOUNTS Chapter','MATHCOUNTS State','MATHCOUNTS National','UKMT JMC','UKMT IMC','UKMT SMC','Pascal Contest','Cayley Contest','Fermat Contest','MMATHS','Girls in Math at Yale','UMD HSMC','Lehigh','MBMT Lower','MBMT Upper','Columbus State Tournament','Utah State Math Contest','Calgary Junior Math Contest'])if(await page.locator(`[data-br-fam="${f}"]`).count())await page.locator(`[data-br-fam="${f}"]`).click();
  assert.deepEqual(await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent)),['AIME']);

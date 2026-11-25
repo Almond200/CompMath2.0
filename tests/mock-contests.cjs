@@ -2,8 +2,9 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const M=require('../js/mock-contests.js'),P=require('../js/practice-sessions.js');
 const c={window:{}};for(const f of ['problem-db.js','difficulty-ratings.js','answer-keys.js','mock-extras.js'])vm.runInNewContext(fs.readFileSync('js/data/problems/'+f,'utf8'),c);
 global.MATH_ANSWER_KEYS=c.window.MATH_ANSWER_KEYS;global.MATH_MOCK_EXTRAS=c.window.MATH_MOCK_EXTRAS;
+const aliases=require('../js/data/problems/problem-aliases.json');
 const slug=r=>r.toLowerCase().replace(/,?\s*problem\s+/,'-').replace(/[^a-z0-9]+/g,'-');
-const problems=Array.from(c.window.MATH_PROBLEM_DB,p=>{const s=slug(p.ref),n=+p.ref.match(/Problem (\d+)$/)[1];return {...p,slug:s,num:n,year:+p.ref.slice(0,4),fam:/AJHSME|AMC 8/.test(p.ref)?'AMC 8':/AMC 10/.test(p.ref)?'AMC 10':/AMC 12/.test(p.ref)?'AMC 12':/AIME/.test(p.ref)?'AIME':'HMMT February',elo:c.window.MATH_PROBLEM_RATINGS.ratings[s].elo};});
+const problems=Array.from(c.window.MATH_PROBLEM_DB,p=>{const s=slug(p.ref),n=+p.ref.match(/Problem (\d+)$/)[1];return {...p,slug:s,identity:aliases[s]||s,num:n,year:+p.ref.slice(0,4),fam:/AJHSME|AMC 8/.test(p.ref)?'AMC 8':/AMC 10/.test(p.ref)?'AMC 10':/AMC 12/.test(p.ref)?'AMC 12':/AIME/.test(p.ref)?'AIME':'HMMT February',elo:c.window.MATH_PROBLEM_RATINGS.ratings[s].elo};});
 const has=p=>c.window.MATH_ANSWER_KEYS.answers[p.slug]!=null||!!c.window.MATH_MOCK_EXTRAS[p.slug],voided=p=>!!c.window.MATH_ANSWER_KEYS.voided[p.slug];
 // Every keyed paper is a past-contest mock except the AHSME (30 to 50 questions, not an AMC 12's 25), keyed since 2026-11-22.
 const catalog=M.papers(problems,has);assert.equal(catalog.reduce((n,p)=>n+p.problems.length,0),Object.keys(c.window.MATH_ANSWER_KEYS.answers).filter(s=>!/-ahsme-/.test(s)).length);
@@ -42,7 +43,7 @@ for(const sources of [['AMC 8'],['AMC 12'],['AIME'],['AMC 10','AMC 12']]){
 assert.throws(()=>M.generate(problems,catalog,'AMC 8',has,voided,rng,[]),/selected contests/);
 assert.throws(()=>M.generate(problems,catalog,'AMC 8',has,voided,rng,['not a contest']),/selected contests/);
 const pair=[{slug:'ten',fam:'AMC 10',year:2020,strategy:'same',elo:1000},
- {slug:'twelve',fam:'AMC 12',year:2020,strategy:'same',elo:1000}];
+ {slug:'twelve',identity:'ten',fam:'AMC 12',year:2020,strategy:'rewritten',elo:1000}];
 assert.deepEqual(M.sourcePool(pair,{startYear:2022},()=>true,()=>false,['AMC 12']).map(p=>p.slug),['twelve'],'filter before twin deduplication');
 assert.equal(M.sourcePool([...pair,{slug:'new',fam:'AMC 12',year:2025,elo:1500}],{startYear:2022},()=>true).length,1,'reserve recent model papers');
 assert.equal(M.sourcePool(pair,{startYear:2022},()=>true,p=>p.slug==='twelve',['AMC 12']).length,0,'voids stay out');

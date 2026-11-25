@@ -1,0 +1,56 @@
+// Shared activity across the main app and the study tools. Practice sets already contain their
+// attempts, so read those records directly and keep their grades in sync with saved review.
+(function (root) {
+  "use strict";
+  const KEY = "mq-learning-activity";
+  const VERSION = 1;
+  function entries(data) {
+    if (!data || data.version !== VERSION || !Array.isArray(data.events)) return [];
+    return data.events.filter(event => event && typeof event.id === "string" &&
+      typeof event.item === "string" && typeof event.source === "string" &&
+      typeof event.type === "string" && Number.isFinite(event.at));
+  }
+  function merge(older, newer) {
+    if ([older, newer].some(data => data && data.version !== VERSION)) throw new Error("Unsupported activity version");
+    return { version: VERSION,
+      events: [...new Map([...entries(older), ...entries(newer)].map(event => [event.id, event])).values()] };
+  }
+  function readStored(storage) {
+    const data = JSON.parse(storage.getItem(KEY) || "null");
+    if (data && data.version !== VERSION) throw new Error("Unsupported activity version");
+    return data;
+  }
+  function record(source, type, item, outcome, kind) {
+    const at = Date.now();
+    const id = root.crypto?.randomUUID?.() || at.toString(36) + "-" + Math.random().toString(36).slice(2);
+    try {
+      const storage = root.localStorage;
+      const event = { id, source, type, item, outcome, kind, at };
+      storage.setItem(KEY, JSON.stringify(merge(readStored(storage), { version: VERSION, events: [event] })));
+    } catch (error) {
+      // Activity can be unavailable without preventing the original study action from saving.
+    }
+  }
+  function history({ storage = root.localStorage, practice = root.PracticeSessions, canonical = id => root.ProblemCatalog?.canonicalId(root.MATH_PROBLEM_CATALOG, id) || id } = {}) {
+    let events = [], sets = [];
+    try { events = entries(readStored(storage)); } catch (error) {}
+    try { if (practice) sets = practice.read(storage); } catch (error) {}
+    for (const set of sets) {
+      if (set.status !== "finished") continue;
+      const at = set.finishedAt ?? set.updated ?? set.created ?? null;
+      events.push({ id: "practice:" + set.id, source: "practice", type: "completion",
+        kind: "set", item: set.id, at, outcome: set.timedOut ? "timed-out" : "submitted" });
+      for (const slug of set.slugs) {
+        const outcome = practice.result(set, slug).toLowerCase().replaceAll(" ", "-");
+        events.push({ id: "practice:" + set.id + ":" + slug, source: "practice",
+          type: set.answers[slug] && outcome !== "voided" ? "attempt" : "exposure",
+          kind: "problem", item: slug, at, outcome });
+      }
+    }
+    return events.map(event => event.kind === "problem" ? { ...event, canonicalId: canonical(event.item) } : event)
+      .sort((a, b) => (a.at ?? 0) - (b.at ?? 0));
+  }
+  const api = { KEY, merge, record, history };
+  if (typeof module !== "undefined") module.exports = api;
+  else root.LearningActivity = api;
+})(typeof window === "undefined" ? globalThis : window);

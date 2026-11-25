@@ -5,6 +5,9 @@
 // desktop and mobile sizes.
 const {chromium}=require('playwright'),assert=require('node:assert/strict');
 const base=process.env.COMPMATH_URL||'http://localhost:8765';
+global.window={};require('../js/data/problems/problem-db.js');
+const {problemSlug}=require('../js/contest-sources.js');
+const problems=new Map(window.MATH_PROBLEM_DB.map(p=>[problemSlug(p.ref),p]));
 (async()=>{
   const browser=await chromium.launch(process.env.CHROME?{executablePath:process.env.CHROME}:{});
   for(const theme of ['light','dark'])for(const width of [1100,375]){
@@ -40,10 +43,7 @@ const base=process.env.COMPMATH_URL||'http://localhost:8765';
     assert.equal(set.slugs.length,25);
     assert.deepEqual({...set.mock.options},{noTrig:true,noCalc:true,contestVariety:'balanced',subjectVariety:'balanced',statementsOnly:true,difficulty:300});
     // Every problem of the set passes the chosen filters.
-    const bad=await page.evaluate(slugs=>{
-      const db=new Map(window.MATH_PROBLEM_DB.map(e=>[e.ref.toLowerCase().replace(/,?\s*problem\s+/,'-').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''),e]));
-      return slugs.filter(s=>{const e=db.get(s);return !e||e.offtree==='calculus'||(e.tree||[]).some(id=>/^(alg\.trig|geo\.tri\.trig)(\.|$)/.test(id));});
-    },set.slugs);
+    const bad=set.slugs.filter(s=>{const e=problems.get(s);return !e||e.offtree==='calculus'||(e.tree||[]).some(id=>/^(alg\.trig|geo\.tri\.trig)(\.|$)/.test(id));});
     assert.deepEqual(bad,[],'no calculus or trigonometry problem was drawn');
     assert.equal(errors.length,0,errors.join('\n'));
     console.log(theme,width,'mock settings: placement, closed panel, pool counts, saved options and filtered paper passed');

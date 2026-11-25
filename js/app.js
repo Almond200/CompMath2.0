@@ -2,41 +2,10 @@
 (function () {
   if (!window.MATH_SECTIONS?.length || !window.MATH_LEARN_SUMMARY || !window.AppAccessibility || !window.AppIcons || !window.ProblemDifficulty) return;
   const SECTIONS = window.MATH_SECTIONS;
+  const activity = window.LearningActivity;
   const uiIcon = window.AppIcons.svg;
   // The template lists current versioned URLs without requesting any of them.
-  const assetGroups = new Map(), chapterAssets = new Map(), assetRequests = new Map(), loadedAssets = new Set();
-  document.getElementById("on-demand-scripts").content.querySelectorAll("script[src]").forEach(tag => {
-    const src = tag.getAttribute("src"), group = tag.dataset.group;
-    if (group === "chapters") {
-      const [, book, code] = src.match(/learn\/([^/]+)\/([^/.]+)\.js/);
-      chapterAssets.set(book + "/" + code, src);
-    } else {
-      if (!assetGroups.has(group)) assetGroups.set(group, []);
-      assetGroups.get(group).push(src);
-    }
-  });
-  function loadAsset(src) {
-    if (!assetRequests.has(src)) assetRequests.set(src, new Promise((resolve, reject) => {
-      const script = document.createElement("script");
-      script.src = src;
-      script.onload = () => { loadedAssets.add(src); resolve(); };
-      script.onerror = () => {
-        assetRequests.delete(src);
-        script.remove();
-        reject(new Error("Could not load " + src));
-      };
-      document.head.appendChild(script);
-    }));
-    return assetRequests.get(src);
-  }
-  function loadAssets(group) {
-    return Promise.all(assetGroups.get(group).map(loadAsset));
-  }
-  const chapterAsset = (book, chapter) => chapterAssets.get(book.id + "/" + chapter.code.toLowerCase());
-  function loadChapter(book, chapter) {
-    const src = chapterAsset(book, chapter);
-    return src ? loadAsset(src) : Promise.resolve();
-  }
+  const { loadAsset, loadAssets, loadedAssets, assetGroups, chapterAsset, loadChapter, solutionRequirements } = window.AppAssets;
   const LEVELS = ["MATHCOUNTS", "AMC10", "AMC12", "AIME", "Olympiad"];
   const LEVEL_LABELS = {
     MATHCOUNTS: "MATHCOUNTS",
@@ -2186,7 +2155,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".book-search-option, .practice-answer-math, .practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .lp-sol, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies, .ge, .list-section-title").forEach(el => {
+      container.querySelectorAll(".book-search-option, .practice-answer-math, .practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .lp-sol, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .study-links, [data-resource-practice], .lp-strategies, .ge, .list-section-title").forEach(el => {
         if (skip(el) || el.hasAttribute("data-description-formatted")) return;
         renderMathInElement(el, {
           delimiters: [
@@ -2824,6 +2793,7 @@
   // screen, so before a print every card still waiting is typeset, or its math would print raw.
   // This runs for the browser's own Print as well as for a list's "Print this list".
   function prepareMathForPrint() {
+    $content.querySelectorAll(".contest-refs .prob-group").forEach(fillContestProblemRows);
     const waiting = [...$content.querySelectorAll('.card[data-math="0"]')];
     waiting.forEach(c => {
       c.dataset.math = "1";
@@ -2888,9 +2858,12 @@
   function resourceList(items) {
     return items.length ? `<ul class="resource-list">${items.map(item => `<li>${item}</li>`).join("")}</ul>` : "";
   }
-  const cardLinkList = ids => resourceList(ids.map(id => BY_ID[id]
+  const cardTextLink = id => BY_ID[id]
     ? `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`
-    : redLink(id)));
+    : redLink(id);
+  const cardLinkList = ids => resourceList(ids.map(cardTextLink));
+  const inlineStudyLinks = links => `<span class="study-links">${links.join(' <span class="study-link-sep" aria-hidden="true">&middot;</span> ')}</span>`;
+  const lessonCardLinks = ids => inlineStudyLinks(ids.filter(id => BY_ID[id]).map(cardTextLink));
   const linkRow = (title, ids) => ids.length
     ? `<div class="related kind-row"><h4>${title}</h4>${cardLinkList(ids)}</div>`
     : "";
@@ -3137,7 +3110,7 @@
   function contestProfileHtml(f, authored) {
     if (authored == null) return "";
     const probs = PROBLEMS_BY_CARD[f.id] || [];
-    const k = kindOf(f), P = profileParts(probs), { N, all, row, duo, stat, few } = P;
+    const k = kindOf(f), P = profileParts(probs), { N, all, row, duo, stat, dots, few } = P;
     const co = kind => {
       const c = {};
       probs.forEach(p => p.formulas.forEach(id => {
@@ -3145,7 +3118,7 @@
       }));
       return Object.keys(c).sort((a, b) => c[b] - c[a] || a.localeCompare(b)).slice(0, 4).map(id => [id, c[id]]);
     };
-    const names = pairs => resourceList(pairs.map(([id, n]) => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a> <span class="pf-sub">${n}</span>`));
+    const names = pairs => dots(pairs.map(([id, n]) => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a> <span class="pf-sub">${n}</span>`));
     const rows = [];
     let stats = "";
     if (N) {
@@ -3158,12 +3131,12 @@
       const nodes = {};
       probs.forEach(p => new Set(p.tree).forEach(id => { if (TOPIC_NODES.has(id)) nodes[id] = (nodes[id] || 0) + 1; }));
       const top = Object.keys(nodes).sort((a, b) => nodes[b] - nodes[a] || TOPIC_NODES.get(a).order - TOPIC_NODES.get(b).order).slice(0, 5);
-      if (top.length && few) rows.push(row("Topics", resourceList(top.map(id => `<a href="${topicHash(id)}">${topicHtml(TOPIC_NODES.get(id))}</a>${N > 1 ? ` <span class="pf-sub">${nodes[id]}</span>` : ""}`))));
+      if (top.length && few) rows.push(row("Topics", dots(top.map(id => `<a href="${topicHash(id)}">${topicHtml(TOPIC_NODES.get(id))}</a>${N > 1 ? ` <span class="pf-sub">${nodes[id]}</span>` : ""}`))));
       else if (top.length) {
         const topMax = nodes[top[0]];
         rows.push(row("Topics", `<table class="pf-table pf-topics"><thead><tr><th scope="col" aria-label="Topic"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of its problems", "Share")}</th></tr></thead><tbody>${top.map(id => {
           const n = TOPIC_NODES.get(id), path = topicPath(id), area = path.length > 1 ? path[Math.min(1, path.length - 2)] : null;
-          return `<tr><th scope="row"><a href="${topicHash(id)}" title="${escapeAttr(path.map(x => window.PracticeTopics.label(x.name)).join(" › "))}">${topicHtml(n)}</a>${area ? `<span class="pf-sub">${topicHtml(area)}</span>` : ""}</th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${Math.max(2, nodes[id] / topMax * 100).toFixed(1)}%"></i></span></td><td>${nodes[id]}</td><td>${pfPct(nodes[id] / N)}</td></tr>`;
+          return `<tr><th scope="row"><a href="${topicHash(id)}">${topicHtml(n)}</a>${area ? `<span class="pf-sub">${topicHtml(area)}</span>` : ""}</th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${Math.max(2, nodes[id] / topMax * 100).toFixed(1)}%"></i></span></td><td>${nodes[id]}</td><td>${pfPct(nodes[id] / N)}</td></tr>`;
         }).join("")}</tbody></table>`, true));
       }
 
@@ -3193,7 +3166,7 @@
   // row, the cards those problems cite most. It folds away, and stays folded while browsing.
   let topicProfileOpen = true;
   function topicProfileHtml(node, probs) {
-    const P = profileParts(probs), { N, row, duo, few } = P;
+    const P = profileParts(probs), { N, row, duo, dots, few } = P;
     if (!N) return "";
     const stats = `<div class="pf-stats tp-stats">${[P.tiles.count, P.tiles.share, P.tiles.med, P.tiles.years].join("")}</div>`;
     const rows = [P.rows.contests, P.rows.difficulty, P.rows.time].filter(Boolean);
@@ -3201,7 +3174,7 @@
     probs.forEach(p => new Set([...p.formulas, ...p.trickFormulas]).forEach(id => { if (BY_ID[id]) cited[id] = (cited[id] || 0) + 1; }));
     const top = Object.keys(cited).sort((x, y) => cited[y] - cited[x] || x.localeCompare(y)).slice(0, 6);
     const link = id => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`, kind = id => { const k = kindOf(BY_ID[id].formula); return k.charAt(0).toUpperCase() + k.slice(1); };
-    if (top.length && few) rows.push(row("Cards", resourceList(top.map(id => `${link(id)} <span class="pf-sub">${cited[id]}</span>`))));
+    if (top.length && few) rows.push(row("Cards", dots(top.map(id => `${link(id)} <span class="pf-sub">${cited[id]}</span>`))));
     else if (top.length) rows.push(row("Cards", `<table class="pf-table pf-topics tp-cards"><thead><tr><th scope="col" aria-label="Card"></th><th class="pf-meter-cell"></th><th scope="col">Problems</th><th scope="col">${duo("Of its problems", "Share")}</th></tr></thead><tbody>${top.map(id =>
       `<tr><th scope="row">${link(id)}<span class="pf-sub">${kind(id)}</span></th><td class="pf-meter-cell"><span class="pf-meter"><i style="width:${Math.max(2, cited[id] / cited[top[0]] * 100).toFixed(1)}%"></i></span></td><td>${cited[id]}</td><td>${pfPct(cited[id] / N)}</td></tr>`).join("")}</tbody></table>`, true));
     return `<section class="tp">${stats}<div class="pp-head"><h3 class="pp-h">Topic profile</h3><button type="button" class="hp-btn hp-btn-soft tp-toggle" data-tp-toggle aria-expanded="${topicProfileOpen}" aria-controls="tp-body">${topicProfileOpen ? "Hide" : "Show"}</button></div>
@@ -3270,346 +3243,6 @@
     return `<div class="practice"><h4>Examples</h4>${blocks.join("")}</div>`;
   }
 
-  // A contest reference like "2007 AIME II, Problem 15" maps deterministically
-  // to its Art of Problem Solving wiki page, where the full solution lives.
-  // "1997 AIME, Problem 1"      -> .../1997_AIME_Problems/Problem_1
-  // "2021 Fall AMC 12B, Prob 23"-> .../2021_Fall_AMC_12B_Problems/Problem_23
-  // Where a problem links out to. The AoPS wiki has a page per problem for the MAA contests
-  // and only those; other tournaments publish their own archives, by round rather than by
-  // problem. So the family decides, and an entry may override with its own `url`.
-  const ARCHIVE_URL = {
-    "HMMT February": "https://www.hmmt.org/www/archive/problems",
-    "HMMT November": "https://www.hmmt.org/www/archive/problems",
-    "HMMT": "https://www.hmmt.org/www/archive/problems",
-    "ARML": "https://www.arml.com/ARML/arml_2019/page/index.php?page_type=public&page=4",
-    "ARML Local": "https://www.arml.com/ARML/arml_2019/page/index.php?page_type=public&page=4",
-    "SMT": "https://www.stanfordmathtournament.com/past-tests/problems",
-    "Duke Math Meet": "https://math.duke.edu/duke-math-meet",
-    "CHMMC": "https://www.caltechmathmeet.org/problems",
-    "CMM": "https://www.caltechmathmeet.org/problems",
-    "UMD HSMC": "https://mathcomp.math.umd.edu/past-contests/",
-    "CMIMC": "https://github.com/howard36/cmimc-official/tree/master/public/assets/docs/past-tests",
-    "Math Prize for Girls": "https://mathprize.atfoundation.org/resources",
-    "MMATHS": "https://www.mmaths.org/archive",
-    "Girls in Math at Yale": "https://www.mmaths.org/archive",
-    "Lehigh": "https://www.lehigh.edu/~dmd1/oldcontests.html",
-    "Utah State Math Contest": "https://weber.edu/statemathcontest/exams.html",
-    "BMT": "https://berkeley.mt/archives/bmt/",
-    "BmMT": "https://berkeley.mt/archives/bmmt/",
-    "PUMaC Division A": "https://pumac.princeton.edu/archives",
-    "PUMaC Division B": "https://pumac.princeton.edu/archives",
-    "MATHCOUNTS Chapter": "https://www.mathcounts.org/pastcompetition",
-    "MATHCOUNTS State": "https://www.mathcounts.org/pastcompetition",
-    "MATHCOUNTS National": "https://www.mathcounts.org/pastcompetition",
-    "MBMT Lower": "https://mbmt.mbhs.edu/archive",
-    "MBMT Upper": "https://mbmt.mbhs.edu/archive",
-    "Calgary Junior Math Contest": "https://science.ucalgary.ca/mathematics-statistics/engagement/educational-outreach/junior-math-contest/archive",
-    "Columbus State Tournament": "https://www.columbusstate.edu/math/tournament/previous-math-contest.php",
-    "Fermat Contest": "https://cemc.uwaterloo.ca/resources/past-contests",
-    "Cayley Contest": "https://cemc.uwaterloo.ca/resources/past-contests",
-    "Pascal Contest": "https://cemc.uwaterloo.ca/resources/past-contests",
-    "UKMT SMC": "https://ukmt.org.uk/competition-papers",
-    "UKMT IMC": "https://ukmt.org.uk/competition-papers",
-    "UKMT JMC": "https://ukmt.org.uk/competition-papers"
-  };
-  // The button has to say where it goes: an HMMT link lands on a round's archive, not on a
-  // per-problem page, and calling that "AoPS" would be simply false.
-  function linkLabel(fam) { return ARCHIVE_URL[fam] ? "archive" : "AoPS"; }
-  // HMMT publishes each round as two PDFs, the paper and its solutions. A reference names the
-  // year, the tournament and the round, which is the whole address.
-  const HMMT_CODE = { "Advanced Topics": "adv", "General": "gen", "Theme": "thm", "Algebra": "alg", "Algebra and Combinatorics": "algcomb", "Algebra and Geometry": "alggeo", "Combinatorics and Geometry": "combgeo", "Algebra and Number Theory": "algnt", "Combinatorics": "comb", "Geometry": "geo" };
-  function hmmtPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) HMMT (February|November) (.+?),\s*Problem\s+\d+$/);
-    return m && HMMT_CODE[m[3]] ? `https://hmmt-archive.s3.amazonaws.com/tournaments/${m[1]}/${m[2].slice(0, 3).toLowerCase()}/${HMMT_CODE[m[3]]}/${which}.pdf` : null;
-  }
-  // ARML publishes whole contests, not rounds: the 2009 to 2014 contests as one book, and
-  // 2016 to 2019 as one booklet a year. A link opens the booklet at the Individual round's
-  // problems or solutions (the PDF page, checked against the files on 2026-11-13).
-  const ARML_FILES = "https://www.arml.com/ARML/arml_2019/public_contest_files/";
-  const ARML_BOOK = "2009_2014_book/ARML_2009_2014.pdf";
-  const ARML_PAGES = {
-    2009: [ARML_BOOK, 39, 41], 2010: [ARML_BOOK, 79, 81], 2011: [ARML_BOOK, 129, 131], 2012: [ARML_BOOK, 174, 176],
-    2013: [ARML_BOOK, 219, 221], 2014: [ARML_BOOK, 255, 258],
-    2016: ["2016_contest_file/2016_Contest_Final_Version.pdf", 18, 20], 2017: ["2017_contest_file/2017_Contest_Final_Version.pdf", 20, 22],
-    2018: ["2018_contest_file/2018_Contest_Final_Version.pdf", 20, 22], 2019: ["2019_contest_file/2019_Contest_Final_Version.pdf", 19, 21]
-  };
-  // ARML Local's Individual round, 2009 to 2014, is in the same book.
-  const ARML_LOCAL_PAGES = { 2009: [302, 303], 2010: [323, 325], 2011: [343, 344], 2012: [362, 363], 2013: [383, 384], 2014: [399, 400] };
-  function armlPdf(ref, which) {
-    const l = ref.match(/^(\d{4}) ARML Local Individual,\s*Problem\s+\d+$/), g = l && ARML_LOCAL_PAGES[l[1]];
-    if (g) return `${ARML_FILES}${ARML_BOOK}#page=${which === "solutions" ? g[1] : g[0]}`;
-    const m = ref.match(/^(\d{4}) ARML Individual,\s*Problem\s+\d+$/), f = m && ARML_PAGES[m[1]];
-    return f ? `${ARML_FILES}${f[0]}#page=${which === "solutions" ? f[2] : f[1]}` : null;
-  }
-  // SMT publishes each subject test as two PDFs, like HMMT: /pdfs/smt<year>/<subject>-problems.pdf
-  // and -solutions.pdf. The Discrete test was Advanced from 2011 to 2014, and in 2021 two tests,
-  // Combinatorics and Number Theory, replaced it.
-  const SMT_CODE = { "General": "general", "Algebra": "algebra", "Advanced": "advanced", "Discrete": "discrete", "Combinatorics": "combo", "Number Theory": "nt", "Geometry": "geometry" };
-  function smtPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) SMT (.+?),\s*Problem\s+\d+$/);
-    return m && SMT_CODE[m[2]] ? `https://www.stanfordmathtournament.com/pdfs/smt${m[1]}/${SMT_CODE[m[2]]}-${which}.pdf` : null;
-  }
-  // Duke Math Meet: each year's Individual round as Duke's math department posts it, with the
-  // official solutions or answer sheets where available.
-  const DMM_NEW = "https://math.duke.edu/sites/math.duke.edu/files/documents/", DMM_OLD = "https://sites.math.duke.edu/dumu/mathmeet/prob/";
-  const DMM_ARCHIVE = "https://dukemathmeet.org/";
-  const DMM_FILES = {
-    2022: [DMM_NEW + "Individual%20Round.pdf", DMM_NEW + "Solution%20Booklet.pdf"],
-    2021: [DMM_NEW + "DMM_2021_Individual_Round.pdf", DMM_NEW + "DMM_2021_Solutions_Updated.pdf"],
-    2020: [DMM_NEW + "DMM_2020_Problems_And_Solutions.pdf", DMM_NEW + "DMM_2020_Problems_And_Solutions.pdf"],
-    2019: [DMM_OLD + "DMM_2019_Individual_Round.pdf", DMM_OLD + "DMM_2019_Solutions.pdf"],
-    2018: [DMM_OLD + "2018_Individual.pdf", DMM_ARCHIVE + "2018/indiv_sol.pdf"],
-    2017: [DMM_OLD + "2017_Indiv.pdf", DMM_ARCHIVE + "2017/indiv_sol.pdf"],
-    2016: [DMM_OLD + "2016_indiv.pdf", DMM_ARCHIVE + "2016/indiv_sol.pdf"],
-    2015: [DMM_OLD + "2015_Individual.pdf", DMM_ARCHIVE + "2015/indiv_sol.pdf"],
-    2014: [DMM_OLD + "2014_Individual.pdf", DMM_ARCHIVE + "2014/indiv_sol.pdf"],
-    2013: [DMM_OLD + "2013_Individual.pdf", DMM_OLD + "2013_Individual.pdf"], 2012: [DMM_OLD + "2012_Individual.pdf", DMM_OLD + "2012_Individual.pdf"],
-    2011: [DMM_OLD + "2011_Individual.pdf"], 2010: [DMM_OLD + "2010_Problems.pdf"],
-    2009: [DMM_OLD + "2009_individual.pdf", DMM_OLD + "2009_answers.pdf"],
-    2008: [DMM_OLD + "2008_individual.pdf", DMM_OLD + "2008_answers.pdf"],
-    2007: [DMM_OLD + "2007_individual.pdf", DMM_OLD + "2007_answers.pdf"]
-  };
-  function dmmPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) Duke Math Meet Individual,\s*Problem\s+\d+$/), f = m && DMM_FILES[m[1]];
-    return f ? (which === "solutions" ? f[1] || null : f[0]) : null;
-  }  // CHMMC, the Caltech Harvey Mudd Math Competition, run since 2024 as the Caltech Math Meet: the
-  // Individual round and its solutions as the Caltech Math Meet archive posts them (owner, 2026-11-15).
-  // 2010 and 2012 had two sittings each, named by season.
-  const CHMMC_FILES = {
-    "2026": ["006423_3b1888df47f145499354cebef416fbcb", "006423_70b0692ed8854f74a5d738c8621b727e"],
-    "2025": ["006423_71b733a8366e47c4bdd51d740960d0a3", "006423_b0f218885a5445a382b1394779ce59da"],
-    "2024": ["006423_252fd9f5089c44018f2573b19cdd81a6", "006423_af6be07cec6947d1ad839209001cc4b0"],
-    "2022": ["006423_1d46be5fd88740ddbd5d9664f7fe8167", "006423_503c17bd16b2438d863d7aacde96f4c5"],
-    "2021": ["006423_b54510281b29442da636c53d863ef26a", "006423_f9910d7abbe4409ba9138e2dd2e1b4e5"],
-    "2020": ["006423_8a6df432c9e34aa7b9d9129202117b7e", "006423_ae611b7adea74d59a6336c4e79d4b1ce"],
-    "2019": ["006423_a175f91b8a4a4a8bab31ca0a14792d08", "006423_51e4bf40e50b4aa5bd2a5fbc06da8009"],
-    "2018": ["006423_3431d9482d174c0e9a1735fcc9382bb2", "006423_821f3b99aa334c5ba43d4df788b8359c"],
-    "2017": ["006423_31fbf2c382a5447592d28c0fdcf4930a", "006423_9da7beed342545acb50cd3fd24c4bf16"],
-    "2016": ["006423_fb063e3e46584d6385d1e514a0067079", "006423_82ca553bc7854892b76b181c9b336188"],
-    "2015": ["006423_c81ee1cb9d604acaa66aa80c1fc9f9cb", "006423_c129634d052f4c138b7f094e8ae6bbfd"],
-    "2014": ["006423_63a21695ca7b44ccaf0a20cea326a1f7", "006423_4e087105c60445aabc2913f6f5759508"],
-    "2013": ["006423_f3c07b103e484bfaa5bd8860a763e333", "006423_9fb6b947158c439d8a80c083697a0d53"],
-    "2012 Fall": ["006423_917e33ba3350422c847779b19c8b3be3", "006423_6d6ab3b10a9d4a4fa338828e160aad6d"],
-    "2012 Spring": ["006423_624ec5ac1d7448fda7bbc9ace8654aae", "006423_bd8ee2297f7848e48e39ec6ec35f83df"],
-    "2010 Fall": ["006423_04de822230a64a58a07acb3775ffe186", "006423_2a09e247a6484d5a818b8408144efc17"],
-    "2010 Winter": ["006423_cc460047637644c9b29b8efaa41f7760", "006423_e114bd000eec4c11be31066bc3761c3e"]
-  };
-  function chmmcPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) CHMMC (?:(Winter|Spring|Fall) )?Individual,\s*Problem\s+\d+$/), f = m && CHMMC_FILES[m[1] + (m[2] ? " " + m[2] : "")];
-    return f ? "https://www.caltechmathmeet.org/_files/ugd/" + f[which === "solutions" ? 1 : 0] + ".pdf" : null;
-  }
-
-  // University of Maryland High School Mathematics Competition, Part I (25 multiple-choice questions):
-  // the paper and its solutions as the competition's site posts them (upload folders differ by year).
-  const UMD_FILES_BASE = "https://mathcomp.math.umd.edu/files/";
-  const UMD_FILES = {
-    2026: ["2026/10/PartI2026.pdf", "2026/10/PartI2026Solns.pdf"],
-    2025: ["2025/10/PartI2025.pdf", "2025/10/PartI2025Solns.pdf"],
-    2024: ["2024/11/PartI2024.pdf", "2024/11/PartI2024Solns.pdf"],
-    2023: ["2023/10/PartI2023.pdf", "2023/10/PartI2023Solns.pdf"],
-    2022: ["2022/11/PartI2022.pdf", "2022/11/PartI2022Solns.pdf"],
-    2021: ["2021/10/PartI2021.pdf", "2021/10/PartI2021Solns.pdf"],
-    2019: ["2021/08/PartI2019.pdf", "2021/08/PartI2019Solns.pdf"],
-    2018: ["2021/08/PartI2018.pdf", "2021/08/PartI2018Solns.pdf"],
-    2017: ["2021/08/PartI2017.pdf", "2021/08/PartI2017Solns.pdf"],
-    2016: ["2021/08/PartI2016.pdf", "2021/08/PartI2016Solns.pdf"],
-    2015: ["2021/08/PartI2015.pdf", "2021/08/PartI2015Solns.pdf"],
-    2014: ["2021/08/PartI2014.pdf", "2021/08/PartI2014Solns.pdf"],
-    2013: ["2021/08/PartI2013.pdf", "2021/08/PartI2013Solns.pdf"],
-    2012: ["2021/08/PartI2012.pdf", "2021/08/PartI2012Solns.pdf"],
-    2011: ["2021/08/PartI2011.pdf", "2021/08/PartI2011Solns.pdf"],
-    2010: ["2021/08/PartI2010.pdf", "2021/08/PartI2010Solns.pdf"],
-    2009: ["2021/08/PartI2009.pdf", "2021/08/PartI2009Solns.pdf"],
-    2008: ["2021/08/PartI2008.pdf", "2021/08/PartI2008Solns.pdf"],
-    2007: ["2021/08/PartI2007.pdf", "2021/08/PartI2007Solns.pdf"],
-    2006: ["2021/08/PartI2006.pdf", "2021/08/PartI2006Solns.pdf"],
-    2005: ["2021/09/PartI2005.pdf", "2021/09/PartI2005Solns.pdf"],
-    2004: ["2021/09/PartI2004.pdf", "2021/09/PartI2004Solns.pdf"],
-    2003: ["2021/12/2003p1.pdf", "2021/12/PartI2003Solns.pdf"],
-    2002: ["2021/12/PartI2002.pdf", "2021/12/PartI2002Solns.pdf"],
-    2001: ["2021/12/PartI2001.pdf", "2021/12/PartI2001Solns.pdf"],
-    2000: ["2021/12/PartI2000.pdf", "2021/12/PartI2000Solns.pdf"],
-    1999: ["2021/12/PartI1999.pdf", "2021/12/PartI1999Solns.pdf"],
-    1998: ["2021/12/PartI1998.pdf", "2021/12/PartI1998Solns.pdf"],
-    1997: ["2021/12/PartI1997.pdf"]
-  };
-  function umdPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) UMD HSMC Part I,\s*Problem\s+\d+$/), f = m && UMD_FILES[m[1]];
-    const p = f && (which === "solutions" ? f[1] : f[0]);
-    return p ? UMD_FILES_BASE + p : null;
-  }
-  // CMIMC's archive (once at cmimc.math.cmu.edu/archive/cmimc<year>/): one PDF per individual test and
-  // one for its solutions (suffix _S). The subjects were renamed in 2019 and split into two
-  // divisions in 2021; later years, whose files use another naming, are not filed yet.
-  const CMIMC_CODE = { "Algebra": "Algebra", "Combinatorics": "Combinatorics", "Computer Science": "ComputerScience", "Geometry": "Geometry", "Number Theory": "NumberTheory",
-    "Algebra and Number Theory": "ANT", "Combinatorics and Computer Science": "CCS" };
-  // The archive left the CMIMC site in 2026 (its /archive pages return 404); the same papers stay
-  // in the site's own source repository, which GitHub shows in its PDF viewer.
-  const CMIMC_ARCHIVE = "https://github.com/howard36/cmimc-official/blob/master/public/assets/docs/past-tests/";
-  function cmimcPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) CMIMC (.+?),\s*Problem\s+\d+$/);
-    if (!m) return null;
-    const y = +m[1], d = m[2].match(/^(.+) Division ([12])$/);
-    let stem;
-    if (d) stem = { "Algebra and Number Theory": "AlgNT", "Combinatorics and Computer Science": "ComboCS", "Geometry": "Geo" }[d[1]] + "_D" + d[2];
-    else stem = y >= 2019 && m[2] === "Geometry" ? "GEO" : CMIMC_CODE[m[2]];
-    return stem ? `${CMIMC_ARCHIVE}${y}_${stem}${which === "solutions" ? "_S" : ""}.pdf` : null;
-  }
-  // Math Prize for Girls: the Advantage Testing Foundation posts each year's 20-question test and
-  // its solutions at mathprize.atfoundation.org/resources/past-tests/<year>/ (the 2009 files are
-  // capitalized; 2026's solutions are not posted yet). There was no contest in 2020.
-  function mathPrizePdf(ref, which) {
-    const m = ref.match(/^(\d{4}) Math Prize for Girls,\s*Problem\s+\d+$/);
-    if (!m || (which === "solutions" && m[1] === "2026")) return null;
-    const y = m[1], stem = y === "2009" ? "MathPrize" : "mathprize";
-    return `https://mathprize.atfoundation.org/resources/past-tests/${y}/${stem}${y}${which === "solutions" ? "solutions" : "problems"}.pdf`;
-  }
-  // MMATHS (Yale's Math Majors of America Tournament for High Schools): the archive at
-  // mmaths.org/archive serves each year's Individual test and its solutions (2021 and 2022: an
-  // answer key) from Yale Math Competitions' file store. 2014's test was overwritten, so its
-  // solutions, which restate the problems, stand in for the paper; 2017's files are lost.
-  const MMATHS_SOL = { "2021": "key", "2022": "key" };
-  function mmathsPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) MMATHS Individual,\s*Problem\s+\d+$/);
-    if (!m) return null;
-    const y = m[1], sol = `_individual_${MMATHS_SOL[y] || "solutions"}`;
-    const f = which === "solutions" || y === "2014" ? sol : "_individual";
-    return `https://yalemathcompetitions-files.s3.amazonaws.com/mmaths_${y}${f}.pdf`;
-  }
-  // Girls in Math at Yale, from the same archive and file store: the Individual round and its
-  // solutions (2020, 2024 on) or answer key (2019, 2021 to 2023); 2022's paper is "_individual_round".
-  function gimPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) Girls in Math at Yale Individual,\s*Problem\s+\d+$/);
-    if (!m) return null;
-    const y = +m[1], f = which === "solutions" ? (y === 2020 || y >= 2024 ? "_individual_solutions" : "_individual_key") : (y === 2022 ? "_individual_round" : "_individual");
-    return `https://yalemathcompetitions-files.s3.amazonaws.com/gim_${y}${f}.pdf`;
-  }
-  // The Lehigh University High School Math Contest: one file a year at www.lehigh.edu/~dmd1/,
-  // usually the exam and its solutions together; [paper, solutions] where they are separate.
-  const LEHIGH_FILES = { 2026: "hscontest26-2.pdf", 2025: "hstest25.pdf", 2024: "hstest24.pdf", 2022: "hstest22.pdf", 2021: "hstest21.pdf",
-    2020: "hstest20.pdf", 2019: "scan19.pdf", 2018: "hstest18.pdf", 2017: "hstest17.pdf", 2016: "hstest16_3.pdf", 2015: ["hsjusttest15.pdf", "solns15.pdf"],
-    2014: "hstest14numcorr.pdf", 2013: "hstest13l.pdf", 2012: "hstest12after.pdf", 2011: "hstest11.pdf", 2010: "hstest10.pdf", 2009: "hstest09v2.pdf",
-    2008: "hstest08.pdf", 2007: "hstest07.pdf", 2006: "06.pdf", 2005: "hstest05.pdf", 2004: "test04.pdf", 2003: "test03.pdf", 2002: "test02.pdf",
-    2001: "test97.pdf", 2000: ["2000mathcontestexam.html", "2000mathcontestsolutions.html"], 1999: ["1999exam.html", "solns99.pdf"] };
-  function lehighPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) Lehigh Math Contest,\s*Problem\s+\d+$/), f = m && LEHIGH_FILES[m[1]];
-    return f ? "https://www.lehigh.edu/~dmd1/" + (Array.isArray(f) ? f[which === "solutions" ? 1 : 0] : f) : null;
-  }
-  // The Utah State Math Contest (Weber State University): a Junior and a Senior exam each year,
-  // each with its solutions; [exam, solutions] by year and level, as the archive names them.
-  const UTAH_FILES = { 2009: { Junior: ["SMC2009_Junior_Exam.pdf", "SMC2009_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2009_Senior_Exam.pdf", "SMC2009_Senior_Exam_and_Solutions.pdf"] }, 2010: { Junior: ["SMC2010_Junior_Exam.pdf", "SMC2010_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2010_Senior_Exam.pdf", "SMC2010_Senior_Exam_and_Solutions.pdf"] }, 2011: { Junior: ["SMC2011_Junior_Exam.pdf", "SMC2011_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2011_Senior_Exam.pdf", "SMC2011_Senior_Exam_and_Solutions.pdf"] }, 2012: { Junior: ["SMC_2012_Junior_Exam.pdf", "SMC_2012_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2012_Senior_Exam.pdf", "SMC2012_Senior_Exam_Solutions.pdf"] }, 2013: { Junior: ["SMC_2013_Junior_Exam.pdf", "SMC_2013_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2013_Senior_Exam.pdf", "SMC_2013_Senior_Exam_Solutions.pdf"] }, 2014: { Junior: ["SMC_2014_Junior_Exam.pdf", "SMC_2014_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC_2014_Senior_Exam.pdf", "SMC_2014_Senior_Exam_Solutions.pdf"] }, 2015: { Junior: ["SMC_2015_Junior_Exam.pdf", "SMC2015_Junior_Exam_Solutions.pdf"], Senior: ["SMC2015_Senior_Exam.pdf", "SMC2015_Senior_Exam_Solutions.pdf"] }, 2016: { Junior: ["SMC2016_Junior_Exam.pdf", "SMC2016_Junior_Exam_Solutions.pdf"], Senior: ["SMC2016_Senior_Exam.pdf", "SMC2016_Senior_Exam_Solutions.pdf"] }, 2017: { Junior: ["SMC2017_Junior_Exam.pdf", "SMC2017_Junior_Exam_Solutions.pdf"], Senior: ["SMC2017_Senior_Exam.pdf", "SMC2017_Senior_Exam_Solutions.pdf"] }, 2018: { Junior: ["SMC2018_Junior_Exam.pdf", "SMC2018_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2018_Senior_Exam.pdf", "SMC2018_Senior_Exam_and_Solutions.pdf"] }, 2019: { Junior: ["SMC2019_Junior_Exam.pdf", "SMC2019_Junior_Exam_and_Solutions.pdf"], Senior: ["SMC2019_Senior_Exam(1).pdf", "SMC2019_Senior_Exam_and_Solutions(1).pdf"] }, 2020: { Junior: ["SMC2020_Junior_Exam.pdf", "SMC2020_Junior_Exam_Solutions.pdf"], Senior: ["SMC2020_Senior_Exam.pdf", "SMC2020_Senior_Exam_Solutions.pdf"] } };
-  function utahPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) Utah State Math Contest (Junior|Senior),\s*Problem\s+\d+$/), f = m && UTAH_FILES[m[1]] && UTAH_FILES[m[1]][m[2]];
-    return f ? "https://www.weber.edu/wsuimages/statemathcontest/Exams/" + f[which === "solutions" ? 1 : 0] : null;
-  }
-  // MATHCOUNTS (owner, 2026-11-14): Chapter, State and National, each a Sprint and a Target round.
-  // The foundation posts only the latest year's Chapter and State papers free and replaces them each
-  // year, so these links last until the next year's papers go up; the archive page stays.
-  const MC_FILES = { 2026: {
-    Chapter: { Sprint: "2026%20COMPLETE%20Chapter%20Sprint%20-%20for%20website.pdf", Target: "2026%20COMPLETE%20Chapter%20Target%201-8%20-%20for%20website.pdf", solutions: "2026%20Chapter%20solutions%20FINAL%20HWL%20-%20for%20website.pdf" },
-    State: { Sprint: "2026%20COMPLETE%20State%20Sprint%20%20-%20for%20website.pdf", Target: "2026%20COMPLETE%20State%20Target%201-8%20%20-%20for%20website.pdf", solutions: "2026%20State%20Solutions%20FINAL%20HWL%20-%20for%20website.pdf" } } };
-  // Earlier years, the National competition and the Team round (owner, 2026-11-15): the copies of the
-  // official papers and answer keys that the MATHCOUNTS archive at mathteamnyc.weebly.com keeps on
-  // Google Drive, by year, level and round ("answers" is the level's answer key).
-  const MC_DRIVE = {
-    2025: { National: { Sprint: "16zTG746H6W4obqM1RZXfgUeWqJtYxtGd", Target: "1ExKUN4ueSkpyxNIkeVr36uyACAO5ivwf", Team: "1dEGigUjupbJ5ChtXSgsmLfdNWNqKEQED", answers: "1mLqsEmPLtgQicceS1IItmQ7Ss_ikYki-" }, Chapter: { Team: "1jZAKklYXp9Miuj21QN_aThCR4uyHczET", answers: "1mA5OIEUrgUHlXhw4G6AwcazcW6cDD_1Y" }, State: { Team: "1pI_8lSUQMHMjFKeu5WltFjcwwyVq_04L", answers: "1Ph_AMHcSKWWybRttwr2m1VgB4HufM7EW" } },
-    2024: { National: { Sprint: "1yEUa8zdDMD79Hdg8hSAhguNGhsZZx2L4", Target: "10oe1fpl9ppO46YIa38t_np4wZSZvAaib", Team: "1gU869OX_tlmCptZfcgOxItxCVNyu577_", answers: "13pTadzeAJ4CFhAR51PnI8LAlGPASPFyt" }, Chapter: { Team: "1RrZW92D8RiBHAI9iCtVlVsplmLI05h9Z", answers: "1Ruy_yuGjXYwq99oxvTSjZ25MJUY_YcYn" }, State: { Team: "1SNm0VzAerngumnWDCSbDZ5gXvQjQFZXu", answers: "1SdDylwc6EezHbpLo8A6c7_wQP181_GQ4" } },
-    2021: { National: { Sprint: "1kr9h1xd2RXiVgNSM1FNivtOQzt7tFZmx", Target: "13ca7axN-eXGjEevqZ82A8TujuSSUiAAS", Team: "1blsmNjH_2VlKI9ko-0foPyK7shxZei5r", answers: "1lQFzjTL68ohnl8e97skFcdScSohyYghN" } },
-    2017: { National: { Sprint: "0BxY_uj2XLv-iWVFzSTl3dzBwc2M", Target: "0BxY_uj2XLv-iVjkwYWdySDNWTG8", Team: "0BxY_uj2XLv-iRTVlSEEyYVpUZkE", answers: "0BxY_uj2XLv-iVXRRaXBTaTNMX28" } },
-    2016: { National: { Sprint: "1omt1O6Gzn-JnudEeI5nnaRqaS9qKbcdB", Target: "1J5DV0CzAJ_6owpqa1fCM9NOu2WviPO0N", Team: "1JDklk7Q2SCi7mEMrNsp24Q1ysCYI7N2d", answers: "1ZrR8Zce76SeNynoNcjJ-FzjWCXkcymFp" } },
-    2015: { National: { Sprint: "1sM4MYtqovgMImJH_B0rI3BSxKgy3L7Jh", Target: "1KKaQZg-Iw3sj4I2dp8WmhnphSYft9JB4", Team: "11ihGUnce6ZPvZ0cVnlbhe4F2srM3LTan", answers: "1EXIDKVoye_P3Cnp-Dmb81MR5iSmHsFW7" } },
-    2014: { National: { Sprint: "0BxY_uj2XLv-iRmlnNzBHckQtYzg", Target: "0BxY_uj2XLv-iVk1TaG83ZkpaeGs", Team: "0BxY_uj2XLv-idThvbzVjb2tWbWs", answers: "0BxY_uj2XLv-id1VmTHJpT3J6VWs" } },
-    2013: { National: { Sprint: "0BxY_uj2XLv-iR01JRG5CU2d6UWs", Target: "0BxY_uj2XLv-ieDFDeDlaemlHUW8", Team: "0BxY_uj2XLv-iQ1NSZUpiajN5WjQ", answers: "0BxY_uj2XLv-iY2lRWEVCRzAtU1U" } },
-    2012: { National: { Sprint: "1lLn6yCKldgrxUz6SMDPktawlNtN1Cloq", Target: "1W5-c0wpaLa-SeJydcl0lMsulVx6tUvxv", Team: "1leBW_cMgtAHzj0il-0ib2fnNyYKWjM9-", answers: "1aVRCZ38ZLhvrwfbZRZcSKYO_KLuozn4U" } },
-    2011: { National: { Sprint: "0BxY_uj2XLv-iYlhPZlVhQl9GeXM", Target: "0BxY_uj2XLv-iUDZrOEhBTjhfNmM", Team: "0BxY_uj2XLv-iVGIycjFaOGFEOGc", answers: "0BxY_uj2XLv-iTWRRal8wWHVHWkE" } },
-    2010: { National: { Sprint: "1kO-8F0JpM0c0LAi6MnRWEhURe8JPs-iq", Target: "10Nr1RICwNPydsStUqSfvLMg9bJsYqB2M", Team: "1ljmPNNfLRc6Z2Ozk3r2ZX-GNgJzkJovC", answers: "1bSU5bRLiSQ-gAWyXMy9KNeEXgBHt2wOl" } },
-    2009: { National: { Sprint: "0BxY_uj2XLv-iNmVRZHptRWFKTlU", Target: "0BxY_uj2XLv-icS1oZVVNVnpoX0E", Team: "1oLhZktVC87w8xzzyqc3KqWWIn6f7nYj2", answers: "0BxY_uj2XLv-iQ2JZNHJoeVJyOGs" } },
-    2008: { National: { Sprint: "0BxY_uj2XLv-iVFRuam1UUVBWTWs", Target: "0BxY_uj2XLv-iWUZGS2VjdEVZejA", Team: "0BxY_uj2XLv-iMGtwRWgxaVlyY1k", answers: "0BxY_uj2XLv-iZndCQnpiRDRHUFU" } },
-    2007: { National: { Sprint: "0BxY_uj2XLv-iMVVZMGVDZml3TzA", Target: "0BxY_uj2XLv-ibV9ldV9xbVRlV28", Team: "0BxY_uj2XLv-iQzZuUnMzMzUzQlk", answers: "0BxY_uj2XLv-iTmlBMEJpZ3BQX1U" } },
-    2006: { National: { Sprint: "0BxY_uj2XLv-ic1E3Mzl3SThVRkU", Target: "0BxY_uj2XLv-ic0haNjFXVTN3Vnc", Team: "0BxY_uj2XLv-iX2tNckZfS1N2OGM", answers: "0BxY_uj2XLv-ia0c1RjRyekxobEU" } },
-    2005: { National: { Sprint: "0BxY_uj2XLv-iRGltOU0yS1l5WDQ", Target: "0BxY_uj2XLv-iMlNXR1Ywdnlnd2s", Team: "0BxY_uj2XLv-iaUtnbDRfV2hmUHc", answers: "0BxY_uj2XLv-iZXNGTGx6Z0J1NVk" } },
-    2004: { National: { Sprint: "0BxY_uj2XLv-iTF9iR2VvY25wdms", Target: "0BxY_uj2XLv-ieXNDQ0M3dkh0T3M", Team: "0BxY_uj2XLv-icC1iRV9IQng2R3c", answers: "0BxY_uj2XLv-iNVc0a0JHczZ2UkU" } },
-    2003: { National: { Sprint: "0BxY_uj2XLv-iRENNT25RUkFGbFk", Target: "0BxY_uj2XLv-iR2djV3hwYlpHQ0U", Team: "0BxY_uj2XLv-iNnphYW5wbGRYSEE", answers: "0BxY_uj2XLv-idkpzSjV3Ymk1T0E" } },
-    2002: { National: { Sprint: "0BxY_uj2XLv-ieHFqdVBsLVF3Q3M", Target: "0BxY_uj2XLv-iUkVDMndMdjd0SjA", Team: "0BxY_uj2XLv-iak9FdDNhdU5NSGM", answers: "0BxY_uj2XLv-iOWQtcXJMRXdoUXc" } },
-    2001: { National: { Sprint: "0BxY_uj2XLv-icXJUcldQcklyQzg", Target: "0BxY_uj2XLv-iRFBCd2tUNnE3SXc", Team: "0BxY_uj2XLv-iYk1vckZoVzYzTmM", answers: "0BxY_uj2XLv-ieW9oQlBqd1ZvYnc" } },
-    2000: { National: { Sprint: "0BxY_uj2XLv-iX21ORno3dmNYVGc", Target: "0BxY_uj2XLv-iSTNZQmJjclpBSnM", Team: "0BxY_uj2XLv-iOU5jV3FGc3J5T00", answers: "0BxY_uj2XLv-iRFF2aTltazJWcTg" } },
-  };
-  function mathcountsPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) MATHCOUNTS (Chapter|State|National) (Sprint|Target|Team),\s*Problem\s+\d+$/);
-    if (!m) return null;
-    if (which === "solutions" && ref === "2012 MATHCOUNTS National Sprint, Problem 22") {
-      return "https://www.mathcounts.org/sites/default/files/u5328/Errata%20for%20Competitions%202011%20through%202015.pdf";
-    }
-    const f = MC_FILES[m[1]] && MC_FILES[m[1]][m[2]];
-    if (f && f[m[3]]) return "https://www.mathcounts.org/sites/default/files/" + f[which === "solutions" ? "solutions" : m[3]];
-    const d = MC_DRIVE[m[1]] && MC_DRIVE[m[1]][m[2]], id = d && d[which === "solutions" ? "answers" : m[3]];
-    return id ? "https://drive.google.com/file/d/" + id + "/view" : null;
-  }
-  // MBMT (Montgomery Blair Math Tournament): two divisions a year under new names each time, the
-  // archive listing the harder one second, except 2015, whose Fermat round repeats Euler's easier
-  // problems; [Lower, Upper] by year. 2015 has no solutions posted.
-  const MBMT_DIVS = { 2015: ["fermat", "euler"], 2016: ["euclid", "lobachevsky"], 2017: ["ramanujan", "pascal"], 2018: ["cantor", "gauss"], 2019: ["descartes", "leibniz"], 2022: ["dedekind", "zermelo"], 2023: ["bernoulli", "germain"], 2024: ["brahmagupta", "godel"], 2025: ["erdos", "weierstrass"], 2026: ["abel", "jacobi"] };
-  const MBMT_SUBJ = { "Algebra": "algebra", "Geometry": "geometry", "Counting": "counting", "Number Theory": "nt" };
-  function mbmtPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) MBMT (Lower|Upper) (Algebra|Geometry|Counting|Number Theory),\s*Problem\s+\d+$/), d = m && MBMT_DIVS[m[1]];
-    if (!d || (which === "solutions" && m[1] === "2015")) return null;
-    return `https://mbmt.mbhs.edu/archive/${m[1]}/${d[m[2] === "Upper" ? 1 : 0]}/${MBMT_SUBJ[m[3]]}/${which === "solutions" ? "solutions" : "problems"}.pdf`;
-  }
-  // The Calgary Junior Mathematics Contest (University of Calgary): Part A, the short-answer
-  // questions, only; [exam, solutions] by year as the archive names the English files.
-  const CALGARY_FILES = { 2004: ["exam04.pdf", "exam04solns.pdf"], 2005: ["exam05.pdf", "exam05-solns.pdf"], 2006: ["exam06.pdf", "exam06solns.pdf"], 2007: ["exam07.pdf", "exam07soln.pdf"], 2008: ["exam08.pdf", "exam08-solns.pdf"], 2009: ["exam09.pdf", "exam09-solns.pdf"], 2010: ["exam10.pdf", "exam10-solutions.pdf"], 2011: ["exam11.pdf", "exam11-sol.pdf"], 2012: ["examenglish-2012.pdf", "examenglish-2012solns.pdf"], 2013: ["jr-math-examenglish-2013.pdf", "jr-math-examenglish-2013_with_solutions.pdf"], 2014: ["jr_math_examenglish_2014.pdf", "jr_math_examenglish_2014_test_solutions.pdf"], 2015: ["jr-math-examenglish-2015-final.pdf", "jr-math-examenglish-2015-final_solutions.pdf"], 2016: ["english-exam-2016.pdf", "jr-math-examenglish-2016-april-15_solutions.pdf"], 2017: ["jr-math-2017-english.pdf", "jr-math-examenglish-2017-solutions.pdf"], 2018: ["jr-math-examenglish-2018.pdf", "Jr-Math-examenglish-2018-sol-v2.pdf"], 2019: ["Jr-Math-examenglish-2019-v2.pdf", "Jr-Math-examenglish-2019-sol-v2.pdf"], 2021: ["Jr-Math-examenglish-2021.pdf", "Jr-Math-examenglish-2021-sol-v4.pdf"], 2022: ["Jr-Math-examenglish-2022.pdf", "Jr-Math-examenglish-2022-sol.pdf"], 2023: ["Jr-Math-examenglish-2023-v4.pdf", "Jr-Math-examenglish-2023-sol-v5-points.pdf"], 2024: ["Jr-Math-examenglish-2024-v4.pdf", "Jr-Math-examenglish-2024-point_sol-v2.pdf"], 2025: ["Jr-Math-examenglish-2025.pdf", "Jr-Math-examenglish-2025-solutions.pdf"] };
-  function calgaryPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) Calgary Junior Math Contest,\s*Problem\s+\d+$/), f = m && CALGARY_FILES[m[1]];
-    return f ? "https://science.ucalgary.ca/sites/default/files/teams/7/Junior%20Math%20Contest/" + f[which === "solutions" ? 1 : 0] : null;
-  }
-  // The Columbus State Invitational Mathematics Tournament: the 50-question Individual test only
-  // (the ciphering round is left out); [test, solutions] by year as the department names them. 2021 posts
-  // one file, the problems with their solutions, so it serves as both.
-  const COLUMBUS_FILES = { 2002: ["02wexam.PDF", "solutionsPDF.pdf"], 2003: ["03WrittenFD.pdf", "03solutions.pdf"], 2004: ["04Writtenfd.pdf", "04solutions.pdf"], 2005: ["test-2005-final-version.pdf", "test-2005-final-version-solutions.pdf"], 2006: ["test-2006-final-version.pdf", "test-2006-final-version-solutions.pdf"], 2007: ["test_2007_final_version.pdf", "test_2007_final_version_with_answers_circled.pdf"], 2008: ["Test_2008.pdf", "Test_2008_Solutions.pdf"], 2009: ["2009individual.pdf", "Solutions2009individual.pdf"], 2010: ["Individual2010.pdf", "IndividualSolutions2010.pdf"], 2011: ["Math-Tournament-2011---Individual-Test.pdf", "Math-Tournament-2011---Individual-Test-Solutions.pdf"], 2012: ["MATH_TOURNAMENT_2012_INDIVIDUAL_TEST.pdf", "MATH-_TOURNAMENT_2012_INDIVIDUAL_TEST_SOLUTIONS.pdf"], 2013: ["Individual2013.pdf", "Solutions2013.pdf"], 2014: ["MathTournament2014IndividualTest.pdf", "MathTournament2014IndividualTestSolutions.pdf"], 2015: ["IndividualTest2015.pdf", "IndividualTest2015solutions.pdf"], 2016: ["Tournament_Test_without_solution.pdf", "Tournament_Test_with_solution.pdf"], 2017: ["Tournament_Fan2017withoutSolu.pdf", "Tournament_Fan2017withSolu.pdf"], 2018: ["MathTournament2018.pdf", "MathTournament2018Solutions.pdf"], 2019: ["2019-individual-exam.pdf", "2019-individual-solutions.pdf"], 2020: ["2020-individual-exam.pdf", "2020-individual-solutions.pdf"], 2021: ["2021-solution-march-2-indv.pdf", "2021-solution-march-2-indv.pdf"] };
-  function columbusPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) Columbus State Tournament,\s*Problem\s+(\d+)$/), base = "https://www.columbusstate.edu/math/_docs/tournament/";
-    // 2022 is posted as three scanned test files of ten problems each, with no solutions.
-    if (m && m[1] === "2022") return which === "solutions" ? null : base + "2022-tournament-test-" + Math.ceil(+m[2] / 10) + ".pdf";
-    const f = m && COLUMBUS_FILES[m[1]], file = f && f[which === "solutions" ? 1 : 0];
-    return file ? base + file : null; // no solutions are posted before 2002
-  }
-  // The CEMC Fermat (Grade 11), Cayley (Grade 10) and Pascal (Grade 9) Contests, University of Waterloo: 25 questions, the paper and its solutions
-  // at the CEMC's standard addresses.
-  function fermatPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) (Fermat|Cayley|Pascal) Contest,\s*Problem\s+\d+$/);
-    if (!m) return null;
-    const kind = which === "solutions" ? "Solution" : "Contest";
-    // The 2024 Pascal solutions sit in the 2026 folder; every other year's files sit in their own year's folder.
-    const folder = m[1] === "2024" && m[2] === "Pascal" && kind === "Solution" ? "2026" : m[1];
-    return "https://cemc.uwaterloo.ca/sites/default/files/documents/" + folder + "/" + m[1] + m[2] + kind + ".pdf";
-  }
-  // The UKMT Senior Mathematical Challenge: 25 multiple-choice questions, the paper and its solutions as the
-  // UKMT posts them free (2013 and 2015 on; 2014 is not posted as a file, and 2013 has only the extended solutions).
-  // The upload folders do not follow the year, so the files are listed by year.
-  const UKMT_SMC_FILES = { 2013: ["2024/04/smc-2013-q.pdf", "2024/04/SMC-2013-sol-extended.pdf"], 2015: ["2023/08/SMC15_QP_A4.pdf", "2023/08/SMC-2015-sol-short.pdf"], 2016: ["2023/08/A4SMC_QP16.pdf", "2023/08/SMC-2016-sol-short.pdf"], 2017: ["2023/08/SMC-2017-paper.pdf", "2023/08/SMC-2017-sol-short.pdf"], 2018: ["2023/08/SMC2018_paper.pdf", "2023/08/SMC2018_sol_short.pdf"], 2019: ["2023/08/SMC_2019_Paper.pdf", "2023/08/SMC_2019_Solutions.pdf"], 2020: ["2023/08/SMC_2020qp.pdf", "2023/08/SMC_2020_Solutions.pdf"], 2021: ["2023/08/SMC_2021_paper.pdf", "2023/08/SMC-2021-Solutions.pdf"], 2022: ["2023/08/SMC-2022-Paper.pdf", "2023/08/SMC-2022-Solutions.pdf"], 2023: ["2023/10/SMC-2023-Paper.pdf", "2023/10/SMC-2023-Solutions.pdf"], 2024: ["2024/10/SMC-2024-Paper.pdf", "2024/10/SMC_2024_Solutions.pdf"], 2025: ["2025/10/SMC_2025_paper.pdf", "2025/10/SMC_2025_Solutions.pdf"], 2026: ["2026/07/SMC_2026_Paper-2.pdf", "2026/07/SMC_2026_Solutions.pdf"] };
-  // The Intermediate Mathematical Challenge the same way (2015 to 2026; 2014 is not posted as a file). An IMC
-  // is named by the year it is sat, in late January or early February.
-  const UKMT_IMC_FILES = { 2015: ["2023/08/imc-2015-q.pdf", "2023/08/imc-2015-s.pdf"], 2016: ["2023/08/imc-2016-q.pdf", "2023/08/imc-2016-s.pdf"], 2017: ["2023/08/imc-2017-q.pdf", "2023/08/imc-2017-s.pdf"], 2018: ["2023/08/imc-2018-q.pdf", "2023/08/imc-2018-s.pdf"], 2019: ["2023/08/imc-2019-q.pdf", "2023/08/imc-2019-s.pdf"], 2020: ["2023/08/IMC_2020_q.pdf", "2023/08/IMC_2020_s.pdf"], 2021: ["2023/08/IMC-2021-Paper.pdf", "2023/08/IMC-2021-Solutions.pdf"], 2022: ["2023/08/IMC-2022-Paper-1.pdf", "2023/08/IMC_2022_Solutions.pdf"], 2023: ["2023/08/IMC_2023_Paper-1.pdf", "2023/08/IMC-2023-Solutions-.pdf"], 2024: ["2024/02/IMC_2024-Paper.pdf", "2024/02/IMC-2024-Solutions.pdf"], 2025: ["2025/01/IMC-2025-Paper.pdf", "2025/01/IMC-2025-Solutions.pdf"], 2026: ["2026/01/IMC_Paper_2026.pdf", "2026/01/IMC_Solutions_2026.pdf"] };
-  // The Junior Mathematical Challenge, posted the same way (2015 on; 2014 is posted only as a web page).
-  const UKMT_JMC_FILES = { 2015: ["2023/08/jmc-2015-q.pdf", "2023/08/jmc-2015-s.pdf"], 2016: ["2023/08/jmc-2016-q.pdf", "2023/08/jmc-2016-s.pdf"], 2017: ["2023/08/jmc-2017-q.pdf", "2023/08/jmc-2017-s.pdf"], 2018: ["2023/08/jmc-2018-q.pdf", "2023/08/jmc-2018-s.pdf"], 2019: ["2023/08/jmc-2019-q.pdf", "2023/08/jmc-2019-s.pdf"], 2020: ["2023/08/JMC-2020-q.pdf", "2023/08/JMC-2020-s.pdf"], 2021: ["2023/08/JMC-2021-paper.pdf", "2023/08/JMC-2021-Solutions.pdf"], 2022: ["2023/08/JMC_2022_Paper.pdf", "2023/08/JMC_2022_Solutions_0.pdf"], 2023: ["2023/08/JMC-2023_Paper.pdf", "2023/08/JMC-2023-Solutions.pdf"], 2024: ["2024/04/JMC-2024-Question-Paper-4.pdf", "2024/04/JMC-2024-Solutions-1.pdf"], 2025: ["2025/05/JMC-2025-Paper.pdf", "2025/05/JMC-2025-Solutions.pdf"], 2026: ["2026/05/JMC_Paper_2026.pdf", "2026/05/JMC_Solutions_2026.pdf"] };
-  function ukmtPdf(ref, which) {
-    const m = ref.match(/^(\d{4}) UKMT (SMC|IMC|JMC),\s*Problem\s+\d+$/), f = m && { SMC: UKMT_SMC_FILES, IMC: UKMT_IMC_FILES, JMC: UKMT_JMC_FILES }[m[2]][m[1]];
-    return f ? "https://ukmt.org.uk/wp-content/uploads/" + f[which === "solutions" ? 1 : 0] : null;
-  }
-  // The official paper or solutions as a PDF, for the contests that publish them.
-  const officialPdf = (ref, which) => hmmtPdf(ref, which) || armlPdf(ref, which) || smtPdf(ref, which) || dmmPdf(ref, which) || chmmcPdf(ref, which) || umdPdf(ref, which) || cmimcPdf(ref, which) || mathPrizePdf(ref, which) || mmathsPdf(ref, which) || gimPdf(ref, which) || lehighPdf(ref, which) || utahPdf(ref, which) || mathcountsPdf(ref, which) || mbmtPdf(ref, which) || calgaryPdf(ref, which) || columbusPdf(ref, which) || fermatPdf(ref, which) || ukmtPdf(ref, which);
-  function aopsUrl(ref, fam) {
-    if (fam && ARCHIVE_URL[fam]) return ARCHIVE_URL[fam];
-    const m = ref.match(/^(.*),\s*Problem\s+(\d+)\s*$/);
-    if (!m) return null;
-    // Only the MAA families have per-problem wiki pages; building one for anything else
-    // produces a URL that looks right and 404s.
-    if (!/\b(AMC|AIME|AJHSME|AHSME)\b/i.test(m[1])) return null;
-    // The wiki names the Spring 2021 papers "2021 AMC 10A", with no season; only the Fall ones carry one.
-    const slug = m[1].trim().replace(/^(\d{4})\s+Spring\s+/i, "$1 ").replace(/\s+/g, "_") + "_Problems/Problem_" + m[2];
-    return "https://artofproblemsolving.com/wiki/index.php/" + slug;
-  }
-
   // ---------- Problem database (tags + link only) ----------
   function problemSlug(ref) {
     return ref.toLowerCase().replace(/,?\s*problem\s+/, "-").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
@@ -3632,49 +3265,6 @@
     return m ? `${m[1]} ${shortRound(m[2])} #${m[3]}` : refShort(ref);
   }
   function yearOf(ref) { const m = ref.match(/^(\d{4})/); return m ? +m[1] : 0; }
-  // Parse a ref into { year, cname (contest incl. A/B/I/II/season), fam (family), num }.
-  function parseRef(ref) {
-    const m = ref.match(/^(\d{4})\s+(.*?),\s*Problem\s+(\d+)$/);
-    if (!m) return { year: 0, cname: ref, fam: ref, num: 0 };
-    const year = +m[1], cname = m[2].trim(), num = +m[3];
-    const core = cname.replace(/^(Fall|Spring)\s+/i, "");
-    let fam, fm;
-    if (/AIME/i.test(core)) fam = "AIME";
-    else if (/AJHSME/i.test(core)) fam = "AMC 8";           // the AMC 8's name until 1998
-    else if (/AHSME/i.test(core)) fam = "AMC 12";           // the AMC 12's name until 1999 (owner, 2026-11-13)
-    else if ((fm = core.match(/AMC\s*(8|10|12)/i))) fam = "AMC " + fm[1];
-    else if (/Putnam/i.test(core)) fam = "Putnam";
-    else if (/^ARML Local\b/i.test(core)) fam = "ARML Local";  // ARML's local contest, Individual round (owner, 2026-11-13)
-    else if (/^ARML\b/i.test(core)) fam = "ARML";            // the Individual round only (owner, 2026-11-13)
-    else if (/^SMT\b/i.test(core)) fam = "SMT";                        // the subject tests (owner, 2026-11-13); the round stays in cname
-    else if (/^Duke Math Meet\b/i.test(core)) fam = "Duke Math Meet";
-    else if (/^(?:CHMMC|CMM)\b/.test(core)) fam = core.match(/^(?:CHMMC|CMM)\b/)[0];
-    else if (/^UMD HSMC\b/i.test(core)) fam = "UMD HSMC";              // Part I only (owner, 2026-11-13)
-    else if (/^CMIMC\b/i.test(core)) fam = "CMIMC";                    // the individual subject tests (owner, 2026-11-13)
-    else if (/^Math Prize for Girls\b/i.test(core)) fam = "Math Prize for Girls";  // the 20-question test (owner, 2026-11-13)
-    else if (/^MMATHS\b/i.test(core)) fam = "MMATHS";                  // the Individual test (owner, 2026-11-13)
-    else if (/^Girls in Math at Yale\b/i.test(core)) fam = "Girls in Math at Yale";  // the Individual round (owner, 2026-11-13)
-    else if (/^Lehigh\b/i.test(core)) fam = "Lehigh";                  // the High School Math Contest (owner, 2026-11-13)
-    else if (/^Utah State Math Contest\b/i.test(core)) fam = "Utah State Math Contest";  // Junior and Senior exams (owner, 2026-11-13)
-    else if (/^MATHCOUNTS (Chapter|State|National)\b/.test(core)) fam = core.match(/^MATHCOUNTS (Chapter|State|National)/)[0];  // Sprint and Target rounds (owner, 2026-11-14)
-    else if (/^Columbus State Tournament\b/.test(core)) fam = "Columbus State Tournament";  // the Individual test (2026-11-14)
-    else if (/^(Fermat|Cayley|Pascal) Contest\b/.test(core)) fam = core.match(/^(Fermat|Cayley|Pascal) Contest/)[0];  // CEMC Grades 11, 10 and 9 (2026-11-14)
-    else if (/^UKMT (SMC|IMC|JMC)\b/.test(core)) fam = core.match(/^UKMT (SMC|IMC|JMC)/)[0];  // the Senior, Intermediate and Junior Mathematical Challenges (2026-11-14)
-    else if (/^Calgary Junior Math Contest\b/.test(core)) fam = "Calgary Junior Math Contest";  // Part A (2026-11-14)
-    else if (/^MBMT (Lower|Upper)\b/.test(core)) fam = core.match(/^MBMT (Lower|Upper)/)[0];  // the four individual rounds (2026-11-14)
-    // HMMT runs two tournaments a year of quite different difficulty, so they are separate
-    // families rather than one pile. The round (Algebra, Combinatorics, Guts, Team) stays in
-    // `cname`, which dbMainHtml already uses as the heading within a year.
-    else if (/HMMT/i.test(core)) {
-      const season = core.match(/\b(February|November)\b/i);
-      fam = season ? "HMMT " + season[1][0].toUpperCase() + season[1].slice(1).toLowerCase() : "HMMT";
-    }
-    else if (/^BMT\b/.test(core)) fam = "BMT";
-    else if (/^BmMT\b/.test(core)) fam = "BmMT";  // the Berkeley mini Math Tournament, Individual Round (owner, 2026-11-21)
-    else if (/^PUMaC Division [AB]\b/.test(core)) fam = core.match(/^PUMaC Division [AB]/)[0];
-    else fam = core.replace(/\s*[AB]$|\s*I{1,3}$/, "").trim() || core;
-    return { year, cname, fam, num };
-  }
   function stepChevron(dir) {
     return `<svg class="step-chevron" width="12" height="18" viewBox="0 0 12 18" aria-hidden="true" focusable="false"><path d="${dir < 0 ? 'M9 3L3 9L9 15' : 'M3 3L9 9L3 15'}" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   }
@@ -3724,7 +3314,8 @@
   const subjectChips = p => p.subjects.map(s => `<span class="ptype-chip subject-chip">${SUBJECT_LABELS[s]}</span>`).join("");
   const problemDifficulty = window.ProblemDifficulty;
   let PROBLEM_DB = [], FAMILIES = [], DEFAULT_FAM = null;
-  const PROBLEM_BY_SLUG = {}, PROBLEMS_BY_CARD = {}, CONTEST_TREE = {}, DB_TREE = {}, FAM_BY_SLUG = {};
+  let PROBLEM_BY_SLUG = {}, PROBLEMS_BY_CARD = {}, CONTEST_TREE = {}, DB_TREE = {}, FAM_BY_SLUG = {};
+  let problemCatalog;
   let problemsReady = false, problemsLoading;
   function loadProblems() {
     if (!problemsLoading) problemsLoading = loadAssets("problems").then(() => {
@@ -3736,93 +3327,20 @@
     });
     return problemsLoading;
   }
-  const SPLIT_TWINS = [["lte", "lte-lemma"], ["pie", "inclusion-exclusion"], ["homothety-monge", "monges-theorem"],
-    ["symmetric-polynomial-strategies", "fundamental-theorem-symmetric"], ["inversion-properties", "inversion-facts"],
-    ["lagrange-interpolation", "lagrange-interpolation-formula"]];
   const TWIN_OF = {};
   const FAM_LENGTH = { "AIME": 15, "AMC 8": 25, "AMC 10": 25, "AMC 12": 25 };
   const contestKey = p => p.year + " " + p.cname;
   const ELO_BIN = 200;
   let RATED_FAMS = [], ELO_LO = 200, ELO_HI = 3800;
-  // By prestige (owner, 2026-11-15): the AMC and AIME, then the national and university tournaments, then
-  // the other contests; a series (AMC, HMMT, PUMaC, ARML, MATHCOUNTS, UKMT, CEMC, MBMT) stays together, junior first.
-  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "PUMaC Division A", "PUMaC Division B", "CMIMC", "SMT", "BMT", "BmMT", "ARML", "ARML Local", "Math Prize for Girls", "CHMMC", "CMM", "Duke Math Meet", "MATHCOUNTS Chapter", "MATHCOUNTS State", "MATHCOUNTS National", "UKMT JMC", "UKMT IMC", "UKMT SMC", "Pascal Contest", "Cayley Contest", "Fermat Contest", "MMATHS", "Girls in Math at Yale", "UMD HSMC", "Lehigh", "MBMT Lower", "MBMT Upper", "Columbus State Tournament", "Utah State Math Contest", "Calgary Junior Math Contest", "Putnam", "HMMT"];
   function indexProblems() {
-    PROBLEM_DB = window.MATH_PROBLEM_DB.map(e => {
-      const formulas = (e.formulas || []).filter(fid => BY_ID[fid]);
-      const trickFormulas = (e.trickFormulas || []).filter(fid => BY_ID[fid]);
-      // The archive adopted Caltech Math Meet in 2024. Keep stored problem IDs for saved sets and ratings.
-      const ref = e.ref.replace(/^(202[4-6]) CHMMC\b/, "$1 CMM");
-      const pr = parseRef(ref), slug = problemSlug(e.ref), rating = problemDifficulty.ratingFor(slug);
-      const paper = (window.MATH_CONTEST_PAPERS || {})[e.ref.replace(/,\s*Problem\s+\d+$/, "")];
-      return {
-        ref, slug, tree: e.tree || [], offtree: e.offtree || "", elo: rating ? rating.elo : null, eloSource: rating ? rating.source : null,
-        url: e.url || paper?.url || officialPdf(e.ref, "problems") || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
-        // Where the official solution is, for a problem whose solution we link instead of write.
-        // An AHSME problem has no solution of ours either (owner, 2026-11-13): its AoPS wiki page has them.
-        // Only the MAA contests have a per-problem AoPS page to fall back on; an archive contest
-        // without posted solutions gets no solution link rather than its archive mislabelled as AoPS.
-        solUrl: paper?.solUrl || officialPdf(e.ref, "solutions") || (!e.strategy && !ARCHIVE_URL[pr.fam] ? aopsUrl(e.ref, pr.fam) : null),
-        solKind: paper?.solKind || null, sourceMirror: !!paper?.mirror,
-        solAops: !paper?.solUrl && !officialPdf(e.ref, "solutions") && !e.strategy && !ARCHIVE_URL[pr.fam] && !!aopsUrl(e.ref, pr.fam),
-        formulas, trickFormulas, types: problemTypes(e), subjects: problemSubjects(e, formulas, pr.cname), strategy: e.strategy || "",
-        trick: e.trick || "",
-        // Hints we write (revealed one at a time before the strategy) and the card that is the
-        // problem's central idea. `main` must be one of its own tags; the validator enforces it.
-        hints: (e.hints || []).filter(h => typeof h === "string" && h.trim()),
-        main: e.main && BY_ID[e.main] && (formulas.indexOf(e.main) !== -1 || trickFormulas.indexOf(e.main) !== -1) ? e.main : "",
-        year: pr.year, cname: pr.cname, fam: pr.fam, num: pr.num,
-        // No card honestly fits yet: the problem still gets its page, showing its chain as
-        // "not classified yet", rather than being tagged with something it does not use.
-        untagged: !(e.formulas || []).length
-      };
-    }).filter(p => p.formulas.length || p.untagged);
-    // Problems by tagged card. Since the four-kind model a tag can be a formula, a method or a
-    // pattern, so this is keyed by card, not by formula (it was PROBLEMS_BY_FORMULA).
-    PROBLEM_DB.forEach(p => {
-      PROBLEM_BY_SLUG[p.slug] = p;
-      if (p.fam === "CMM") PROBLEM_BY_SLUG[problemSlug(p.ref)] = p;
-      // The 2021 Spring papers were first filed without the season ("2021 AMC 10A"); an old link or star still opens them.
-      if (/^2021-spring-amc-/.test(p.slug)) PROBLEM_BY_SLUG[p.slug.replace("-spring-", "-")] = p;
-      p.formulas.forEach(fid => (PROBLEMS_BY_CARD[fid] = PROBLEMS_BY_CARD[fid] || []).push(p));
-      // A card the trick route uses still lists the problem, which is the point of tagging
-      // tricks at all: the obscure cards are exactly the ones a main route never reaches
-      // for, so this is the only way they ever acquire a worked use. The row looks the same
-      // either way; the problem page is where the trick is labelled.
-      p.trickFormulas.forEach(fid => {
-        if (p.formulas.indexOf(fid) >= 0) return;
-        (PROBLEMS_BY_CARD[fid] = PROBLEMS_BY_CARD[fid] || []).push(p);
-      });
-    });
-    // A card split into a formula and a method (the fact and the move) is one idea seen two ways,
-    // so the two halves share their practice problems: a problem tagged with either shows on both.
-    // Problems were tagged before the splits, almost always on the method's id.
-    SPLIT_TWINS.forEach(([a, b]) => {
-      if (!BY_ID[a] || !BY_ID[b]) return;
-      TWIN_OF[a] = b; TWIN_OF[b] = a;
-      const both = [...new Set([...(PROBLEMS_BY_CARD[a] || []), ...(PROBLEMS_BY_CARD[b] || [])])];
-      if (both.length) { PROBLEMS_BY_CARD[a] = both; PROBLEMS_BY_CARD[b] = both.slice(); }
-    });
-    Object.keys(PROBLEMS_BY_CARD).forEach(fid => PROBLEMS_BY_CARD[fid].sort((a, b) => b.year - a.year || a.ref.localeCompare(b.ref)));
-
-    // One sitting (e.g. "2026 AIME I") → its problems in number order. The Database tree keys on
-    // family and year, which merges AIME I with AIME II; the footer navigator has to stay inside
-    // a single paper, so it needs its own index.
-    PROBLEM_DB.forEach(p => (CONTEST_TREE[contestKey(p)] = CONTEST_TREE[contestKey(p)] || []).push(p));
-    Object.keys(CONTEST_TREE).forEach(k => CONTEST_TREE[k].sort((a, b) => a.num - b.num));
-
-    // Competition → year → problems tree for the Database sidebar navigator.
-    PROBLEM_DB.forEach(p => { (DB_TREE[p.fam] = DB_TREE[p.fam] || {}); (DB_TREE[p.fam][p.year] = DB_TREE[p.fam][p.year] || []).push(p); });
-    FAMILIES = Object.keys(DB_TREE).sort((a, b) => {
-      const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
-      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
-    });
-    FAMILIES.forEach(f => { FAM_BY_SLUG[famSlug(f)] = f; });
+    problemCatalog = window.ProblemCatalog.open(window.MATH_PROBLEM_CATALOG, problemTypes, problemSubjects, ELO_BIN);
+    ({ problems: PROBLEM_DB, bySlug: PROBLEM_BY_SLUG, byCard: PROBLEMS_BY_CARD, byPaper: CONTEST_TREE,
+      byFamily: DB_TREE, familySlugs: FAM_BY_SLUG, families: FAMILIES, ratedFamilies: RATED_FAMS,
+      eloLow: ELO_LO, eloHigh: ELO_HI } = problemCatalog);
+    for (const [a, b] of problemCatalog.splitCards) {
+      if (BY_ID[a] && BY_ID[b]) { TWIN_OF[a] = b; TWIN_OF[b] = a; }
+    }
     DEFAULT_FAM = FAMILIES.slice().sort((a, b) => famCount(b) - famCount(a))[0] || null;
-    const ratings = PROBLEM_DB.flatMap(p => Number.isFinite(p.elo) ? [p.elo] : []);
-    RATED_FAMS = FAMILIES.filter(f => PROBLEM_DB.some(p => p.fam === f && Number.isFinite(p.elo)));
-    ELO_LO = Math.min(200, ...ratings.map(elo => Math.floor(elo / ELO_BIN) * ELO_BIN));
-    ELO_HI = Math.max(3800, ...ratings.map(elo => (Math.floor(elo / ELO_BIN) + 1) * ELO_BIN));
     if (state.contestLists === "show") FAMILIES.forEach(f => ctYearsOpen.add(f));
   }
   const famCount = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].length, 0);
@@ -3837,7 +3355,7 @@
     render(); window.scrollTo(0, y);
     document.querySelector(`[data-ct-years="${CSS.escape(f)}"]`)?.focus({ preventScroll: true });
   });
-  const famWritten = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].filter(p => p.strategy).length, 0);
+  const famWritten = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].filter(p => p.hasStrategy).length, 0);
   // Whether the Practice page lists the contests still to come (hidden until asked for).
   let showUnwritten = false;
 
@@ -3849,6 +3367,19 @@
   // its own button for the rest, so opening the AMC 10 problems does not also unroll 60 AIME ones.
   const PROB_GROUP_PREVIEW = 3, probGroupsOpen = new Map();
 
+  const contestProblemOrder = (a, b) => b.year - a.year || a.num - b.num || a.ref.localeCompare(b.ref);
+  function contestProblemRow(p, extra) {
+    return `<li class="prob-row${extra ? " prob-extra" : ""}">
+      <a class="prob-open" href="#/problem/${p.slug}">${refShort(p.ref)}</a>
+      ${p.url ? `<a class="ref-ext-link" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer" title="Open the source">${p.urlLabel} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
+    </li>`;
+  }
+  function fillContestProblemRows(box) {
+    if (box.querySelector(".prob-extra") || !Number(box.dataset.hiddenCount)) return;
+    const [card, family] = box.dataset.probGroup.split("|");
+    const extra = (PROBLEMS_BY_CARD[card] || []).filter(p => p.fam === family).sort(contestProblemOrder).slice(PROB_GROUP_PREVIEW);
+    box.querySelector(".prob-list").insertAdjacentHTML("beforeend", extra.map(p => contestProblemRow(p, true)).join(""));
+  }
   function contestHtml(f) {
     const probs = PROBLEMS_BY_CARD[f.id] || [];
     // Every pattern is meant to have practice problems; until a pattern has its own, the section
@@ -3862,9 +3393,9 @@
     // 2026-11-07; this replaces the 2026-10-31 order by place in the paper).
     const groups = {};
     probs.forEach(p => (groups[p.fam] = groups[p.fam] || []).push(p));
-    Object.values(groups).forEach(g => g.sort((a, b) => b.year - a.year || a.num - b.num || a.ref.localeCompare(b.ref)));
+    Object.values(groups).forEach(g => g.sort(contestProblemOrder));
     const fams = Object.keys(groups).sort((a, b) => {
-      const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
+      const ia = FAMILIES.indexOf(a), ib = FAMILIES.indexOf(b);
       return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
     });
     // The AMC and AIME first, the other contests on request, as in the other contest lists
@@ -3873,13 +3404,9 @@
     const body = fams.map(fam => {
       const hidden = groups[fam].length - PROB_GROUP_PREVIEW;
       const groupKey = f.id + "|" + fam, groupOpen = probGroupsOpen.get(groupKey) ?? state.contestLists === "show";
-      const rows = groups[fam].map((p, i) => {
-        return `<li class="prob-row${i >= PROB_GROUP_PREVIEW ? " prob-extra" : ""}">
-         <a class="prob-open" href="#/problem/${p.slug}">${refShort(p.ref)}</a>
-         ${p.url ? `<a class="ref-ext-link" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer" title="Open the source">${p.urlLabel} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>` : ""}
-       </li>`;
-      }).join("");
-      return `<div class="prob-group${groupOpen ? " probs-open" : ""}" data-prob-group="${escapeAttr(groupKey)}" data-fam="${escapeAttr(fam)}"${folds ? famExtra(fam, "card-problems") : ""}>
+      const shown = groupOpen ? groups[fam] : groups[fam].slice(0, PROB_GROUP_PREVIEW);
+      const rows = shown.map((problem, index) => contestProblemRow(problem, index >= PROB_GROUP_PREVIEW)).join("");
+      return `<div class="prob-group${groupOpen ? " probs-open" : ""}" data-prob-group="${escapeAttr(groupKey)}" data-fam="${escapeAttr(fam)}" data-hidden-count="${Math.max(0, hidden)}"${folds ? famExtra(fam, "card-problems") : ""}>
           <div class="prob-group-head">${fam} <span class="practice-note">${groups[fam].length}</span></div>
           <ul class="prob-list">${rows}</ul>
           ${hidden > 0 ? `<button type="button" class="show-more-btn prob-more" aria-expanded="${groupOpen}">${groupOpen ? "Show fewer" : `Show ${hidden} more ${fam}`}</button>` : ""}
@@ -4210,7 +3737,10 @@
   let cpEl = null, cpTimer = 0, cpHide = 0, cpFor = null;
   function hideCardPreview() {
     clearTimeout(cpTimer); clearTimeout(cpHide);
-    if (cpEl) { cpEl.remove(); cpEl = null; cpFor = null; }
+    if (cpEl) {
+      if (cpEl.id && cpFor?.getAttribute("aria-describedby") === cpEl.id) cpFor.removeAttribute("aria-describedby");
+      cpEl.remove(); cpEl = null; cpFor = null;
+    }
   }
   // Leaving the link does not dismiss immediately: the pointer needs a moment to cross the
   // gap into the preview, and entering the preview cancels the pending hide outright.
@@ -4224,14 +3754,28 @@
 
   function showCardPreview(a) {
     const problem = a.hash.startsWith("#/problem/") ? PROBLEM_BY_SLUG[a.hash.slice(10)] : null;
-    const e = BY_ID[a.dataset.card || (a.hash.startsWith("#/f/") && a.hash.slice(4))];
-    if ((!e && !problem) || cpFor === a) return;
+    const e = BY_ID[a.dataset.card || a.dataset.practiceCard || (a.hash.startsWith("#/f/") && a.hash.slice(4))];
+    const lesson = lessonLocations.get(a.dataset.lessonPreview);
+    const topic = TOPIC_NODES.get(a.dataset.topicPreview || a.hash.match(/^#\/browse\/topics\/([\w.-]+)$/)?.[1]);
+    if (!a.isConnected || (!e && !problem && !lesson && !topic) || cpFor === a) return;
     hideCardPreview();
     cpFor = a;
     let thumb = "", content;
     if (problem) {
       content = `<div class="cp-head">${escapeAttr(refShort(problem.ref))}</div>
         <div class="cp-desc">${escapeAttr(problem.subjects.map(id => SUBJECT_LABELS[id]).join(" · ") || problem.fam)}</div>`;
+    } else if (lesson) {
+      const { b, c, l } = lesson, summary = learnLessonSummary(c, l);
+      const lead = leadSentences(summary?.lead || "", 220);
+      content = `<div class="cp-head">${mathHtml(l.title)}</div>
+        ${lead ? `<div class="cp-desc">${mathHtml(lead)}</div>` : ""}
+        <div class="cp-crumb">${escapeAttr(b.title)} ${uiIcon("chevron-right")} ${mathHtml(c.title)} ${uiIcon("chevron-right")} ${l.code}</div>`;
+    } else if (topic) {
+      const path = topicPath(topic.id).slice(0, -1).map(n => topicHtml(n)).join(" › ");
+      const count = topicProblems(topic.id).length;
+      content = `<div class="cp-head">${topicHtml(topic)}</div>
+        ${path ? `<div class="cp-crumb">${path}</div>` : ""}
+        ${problemsReady ? `<div class="cp-desc">${count.toLocaleString()} tagged contest problem${count === 1 ? "" : "s"}</div>` : ""}`;
     } else {
       const f = e.formula;
       const kind = f.type === "method" ? `<span class="badge badge-method">METHOD</span>`
@@ -4247,6 +3791,11 @@
     clearTimeout(cpHide);
     cpEl = document.createElement("div");
     cpEl.className = "card-preview";
+    if (lesson || topic) {
+      cpEl.id = "study-link-preview";
+      cpEl.setAttribute("role", "tooltip");
+      if (!a.hasAttribute("aria-describedby")) a.setAttribute("aria-describedby", cpEl.id);
+    }
     cpEl.addEventListener("mouseenter", () => clearTimeout(cpHide));
     cpEl.addEventListener("mouseleave", hideCardPreview);
     // The box is a second target for the same link, so reading the summary and deciding to
@@ -4668,7 +4217,7 @@
         const practice = addSection(problems, contestHtml(f));
         if (count) count.textContent = problemCount(f.id);
         const resource = $content.querySelector("[data-resource-practice]");
-        if (resource) resource.innerHTML = cardPracticeLink(f.id, "Build a practice set for this card") || "No linked contest problems yet.";
+        if (resource) { resource.innerHTML = cardPracticeResource(f.id); renderMath(resource.parentElement); }
         if (practice) wireProblemToggle(practice);
         buildPageToc(true);
       }, () => {
@@ -4968,10 +4517,11 @@
       const box = btn.closest(".prob-group");
       const open = box.classList.toggle("probs-open");
       probGroupsOpen.set(box.dataset.probGroup, open);
+      if (open) fillContestProblemRows(box);
       btn.setAttribute("aria-expanded", open ? "true" : "false");
       btn.textContent = open
         ? "Show fewer"
-        : `Show ${box.querySelectorAll(".prob-extra").length} more ${box.dataset.fam}`;
+        : `Show ${box.dataset.hiddenCount} more ${box.dataset.fam}`;
     }));
   }
 
@@ -5449,7 +4999,7 @@
   // merges study lists, so a list built on this device is never lost to an older file, and
   // replaces the rest; then the page reloads to read it back.
   const PROGRESS_FORMAT = "competition-math-reference/progress", PROGRESS_VERSION = 1;
-  const PROGRESS_KEYS = ["mq-settings", "mq-lists", "mq-recent", "theme", "mq-flashcards", "mq-flashcards-prefs", "mq-quiz-misses", "mq-learn", "mq-practice-sets"];
+  const PROGRESS_KEYS = ["mq-settings", "mq-lists", "mq-recent", "theme", "mq-flashcards", "mq-flashcards-prefs", "mq-quiz-misses", "mq-learn", "mq-practice-sets", activity.KEY];
   function exportProgress() {
     const data = {};
     PROGRESS_KEYS.forEach(k => {
@@ -5479,9 +5029,13 @@
     // 1. Stage every value to write.
     const staged = {};
     PROGRESS_KEYS.forEach(k => {
-      if (!(k in d) || k === "mq-lists" || k === "mq-practice-sets" || d[k] == null) return;
+      if (!(k in d) || k === "mq-lists" || k === "mq-practice-sets" || k === activity.KEY || d[k] == null) return;
       staged[k] = typeof d[k] === "string" ? d[k] : JSON.stringify(d[k]);
     });
+    if (d[activity.KEY] != null) {
+      const ownActivity = JSON.parse(localStorage.getItem(activity.KEY) || "null");
+      staged[activity.KEY] = JSON.stringify(activity.merge(ownActivity, d[activity.KEY]));
+    }
     const inc = d["mq-lists"];
     if (inc && Array.isArray(inc.items)) {
       const merged = JSON.parse(JSON.stringify(lists));   // a copy: the lists in use stay as they are until the import succeeds
@@ -5807,7 +5361,7 @@
   const dayNumber = () => { const d = new Date(); return Math.floor((d.getTime() - d.getTimezoneOffset() * 60000) / 86400000); };
   const dayPick = (arr, salt) => arr.length ? arr[Math.abs(Math.imul(dayNumber() + salt, 2654435761)) % arr.length] : null;
   // Only the AMC and AIME problems, whose statements are stored, so the panel can show the text itself.
-  function dailyProblem() { return dayPick(PROBLEM_DB.filter(p => p.strategy && p.formulas.length >= 1 && MAA_RE.test(p.ref)), 7); }
+  function dailyProblem() { return dayPick(PROBLEM_DB.filter(p => p.hasStrategy && p.formulas.length >= 1 && MAA_RE.test(p.ref)), 7); }
   function dailyCard() {
     const pool = ALL.filter(e => (tierKey(e.formula) === "amc" || tierKey(e.formula) === "aime-early") && (window.MATH_EXAMPLES || {})[e.formula.id])
       .sort((a, b) => a.formula.id.localeCompare(b.formula.id));
@@ -6905,7 +6459,7 @@
     const difficulty = form.elements.difficulty;
     let generating = false, selectedTopicId = initialId, activeTopic = -1;
     let desiredCount = count.valueAsNumber;
-    const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible);
+    const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible, topicProblems);
     if (initialId) topic.value = topics.nodes.get(initialId).label;
     // The pool a topic draws from under the current contest choice, for the browser checks.
     window.MATH_PRACTICE_POOL = id => topics.select(id, practiceFamOn).map(p => p.slug);
@@ -7066,7 +6620,7 @@
     const plain = name => window.PracticeTopics.label(name);
     // Every card's eligible problems, each shared AMC 10/12 problem once.
     const pools = cardPracticePools ||= (() => {
-      practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible);
+      practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible, topicProblems);
       const by = {};
       Object.keys(PROBLEMS_BY_CARD).forEach(id => { const ps = PROBLEMS_BY_CARD[id].filter(practiceEligible); if (ps.length && BY_ID[id]) by[id] = ps; });
       return by;
@@ -8045,9 +7599,23 @@ The book remembers the last lesson you opened, in this browser, and the contents
   function learnSolutionHtml(p, label) {
     return `<p class="lp-sol-title">Solution for ${escapeAttr(label)}:</p>${chainInnerHtml(p, solutionLinksHtml(p))}`;
   }
-  function showLearnSolution(li) {
+  async function showLearnSolution(li) {
     const p = PROBLEM_BY_SLUG[li.dataset.slug], sol = li.querySelector(".lp-sol");
     if (!p || !sol) return;
+    const pending = solutionRequirements([p.year]);
+    if (pending.length) {
+      const button = li.querySelector(".lp-show");
+      if (button) button.disabled = true;
+      try { await Promise.all(pending); }
+      catch (error) {
+        if (li.isConnected) {
+          sol.hidden = false;
+          sol.textContent = "The solution could not load. Try Show Solution again.";
+        }
+        return;
+      } finally { if (button) button.disabled = false; }
+      if (!li.isConnected) return;
+    }
     const n = (li.querySelector(".lp-prob-n")?.textContent || "").trim().replace(/\.$/, "");
     sol.innerHTML = learnSolutionHtml(p, /^\d+$/.test(n) ? "Problem " + n : n || refShort(p.ref));
     sol.hidden = false;
@@ -8209,9 +7777,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
         </header>` : `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>`}
         <${preview ? "h2" : "h1"} class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}${l.level ? ` ${learnLevelHtml(l)}` : ""}</${preview ? "h2" : "h1"}>
         <div class="lp-cards">
-          ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Teaches you about</span>${cardLinkList(d.cards)}</div>` : ""}
-          ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${cardLinkList(d.prereq)}</div>` : ""}
-          ${covered.length ? `<div class="lp-cards-row"><span class="lp-cards-label">Topics covered</span>${resourceList(covered.map(id => TOPIC_NODES.has(id)
+          ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Teaches you about</span>${lessonCardLinks(d.cards)}</div>` : ""}
+          ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${lessonCardLinks(d.prereq)}</div>` : ""}
+          ${covered.length ? `<div class="lp-cards-row"><span class="lp-cards-label">Topics covered</span>${inlineStudyLinks(covered.map(id => TOPIC_NODES.has(id)
             ? `<a href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}</a>` : escapeAttr(id)))}</div>` : ""}
         </div>
         ${learnBodyHtml(l, d)}
@@ -8244,7 +7812,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
       main = learnLessonMainHtml(b, c, l, d);
     }
     learnBookShell(b, c, isReview ? (end || "review") : l, main);
-    if (l && d && c.kind !== "reference") { noteRecent("l:" + l.code); const prog = learnProgress(); if (prog.last !== l.code) { prog.last = l.code; saveLearn(); } }
+    if (l && d && c.kind !== "reference") { noteRecent("l:" + l.code); const prog = learnProgress(); if (prog.last !== l.code) {
+      prog.last = l.code; saveLearn();
+      activity.record("learn", "exposure", l.code, "opened", "lesson");
+    } }
     $content.querySelectorAll(".lp-prob").forEach(li => {
       const p = PROBLEM_BY_SLUG[li.dataset.slug];
       const box = li.querySelector(".lp-notes");
@@ -8284,6 +7855,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       }
       if (!notes.trim()) return;
       prog.problems[li.dataset.slug] = { notes, shown: true };
+      activity.record("learn", "exposure", li.dataset.slug, "solution-shown", "problem");
       saveLearn();
       showLearnSolution(li);
       return;
@@ -8330,6 +7902,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     }
     const ok = window.LearnAnswer.same(typed, ch.answer);
     learnProgress().checks[el.dataset.check] = { a: typed, ok };
+    activity.record("learn", "attempt", el.dataset.check, ok ? "correct" : "incorrect", "check");
     saveLearn();
     el.querySelector(".mk").classList.remove("is-open");
     el.querySelector(".mk-input").blur();
@@ -8391,36 +7964,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return hits;
   }
 
-  // Problems that match a search. A problem is read through its reference (contest, year,
-  // number), its strategy and hints, the names of its cards and its topics. Every query word
-  // must match, or all but one when the query is three words or longer; matches in card names
-  // and in the reference count most.
-  // The searchable text of a problem, built once: its card names, its reference, and all of it.
-  function problemText(p) {
-    if (!p._names) {
-      p._names = p.formulas.map(id => BY_ID[id].formula.name).join(" ").toLowerCase();
-      p._refl = (p.ref + " " + p.fam + " " + p.year).toLowerCase();
-      p._hay = [p._refl, p.strategy, p.types.map(t => t.label).join(" "), p._names].join(" ").toLowerCase();
-    }
-    return p._hay;
+  let archiveSearch;
+  function problemSearch() {
+    return archiveSearch ||= window.ProblemSearch.build(PROBLEM_DB, id => BY_ID[id].formula.name);
   }
-  function problemMatches(q) {
-    const toks = wordsOf(q.toLowerCase()).filter(t => t.length >= 2 && !/^(the|of|and|a|an|in|on|to|for)$/.test(t));
-    if (!toks.length) return [];
-    const need = toks.length >= 3 ? toks.length - 1 : toks.length;
-    const hits = [];
-    PROBLEM_DB.forEach(p => {
-      problemText(p);
-      let n = 0, w = 0;
-      toks.forEach(t => {
-        if (p._hay.indexOf(t) === -1) return;
-        n++;
-        w += (p._names.indexOf(t) !== -1 ? 3 : 0) + (p._refl.indexOf(t) !== -1 ? 3 : 0) + 1;
-      });
-      if (n >= need) hits.push({ p, score: n * 10 + w });
-    });
-    hits.sort((a, b) => b.score - a.score || b.p.year - a.p.year || a.p.ref.localeCompare(b.p.ref));
-    return hits.map(h => h.p);
+  function problemMatches(query) {
+    const tokens = wordsOf(query.toLowerCase()).filter(t => t.length >= 2 && !/^(the|of|and|a|an|in|on|to|for)$/.test(t));
+    return problemSearch().matches(tokens);
   }
 
   // A query that names a problem by its reference, in any order and spelling: "amc10 a2025
@@ -8572,8 +8122,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       return true;
     });
     const rest = r.rest.filter(w => w.length >= 3 && !/^(the|and|for|amc|contest)$/.test(w));
-    const score = p => rest.reduce((n, w) => n + (problemText(p).indexOf(w) !== -1 ? 1 : 0), 0);
-    return hits.sort((a, b) => score(b) - score(a) || b.year - a.year || a.cname.localeCompare(b.cname) || a.num - b.num);
+    const scores = new Map(hits.map(p => [p, rest.length ? problemSearch().score(p, rest) : 0]));
+    return hits.sort((a, b) => scores.get(b) - scores.get(a) || b.year - a.year || a.cname.localeCompare(b.cname) || a.num - b.num);
   }
 
   // Lessons in the main search (owner, 2026-11-06): first when the query says "lesson" or
@@ -8748,15 +8298,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const total = items.length;
     const kindLabel = Object.fromEntries(LIST_KINDS);
     const PAGE = 24;
-    const itemHtml = (it, i) => {
-      const extra = i >= PAGE ? ` data-page="${Math.floor(i / PAGE)}" hidden` : "";
-      if (it.entry) return cardHtml(it.entry, true, queryTokens).replace('<article class="card ', `<article${extra} class="card `);
+    const itemHtml = it => {
+      if (it.entry) return cardHtml(it.entry, true, queryTokens);
       if (it.book) {
         // A book lists its first four teaching chapters, then how many more, then its line.
         const b = it.book, chs = b.chapters.filter(c => c.kind !== "reference");
         const rows = chs.slice(0, 4).map(c => `<div class="rs-line"><span class="rs-v">${escapeAttr(c.title)}</span><span class="rs-n">${escapeAttr(c.code)}</span></div>`).join("")
           + (chs.length > 4 ? `<div class="rs-line rs-more-line">+ ${chs.length - 4} more chapter${chs.length > 5 ? "s" : ""}</div>` : "");
-        return `<a class="card card-result card-lesson-result" href="#/learn/${b.id}"${extra}>
+        return `<a class="card card-result card-lesson-result" href="#/learn/${b.id}">
             <div class="card-head"><h4 class="card-name">${escapeAttr(b.title)}</h4><span class="card-tags"><span class="badge badge-lesson">BOOK</span></span></div>
             <div class="card-meta">${learnCrumb(["Textbooks", b.title])}</div>
             <div class="rs-box">${rows}</div>
@@ -8779,7 +8328,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           inner = ls.slice(0, 4).map(l => `<div class="rs-line"><span class="rs-v">${escapeAttr(l.title)}</span></div>`).join("")
             + (ls.length > 4 ? `<div class="rs-line rs-more-line">+ ${ls.length - 4} more lesson${ls.length > 5 ? "s" : ""}</div>` : "");
         }
-        return `<a class="card card-result card-lesson-result" href="${x.l ? learnHash(x.b, x.c, lessonNum(x.l)) : learnHash(x.b, x.c)}"${extra}>
+        return `<a class="card card-result card-lesson-result" href="${x.l ? learnHash(x.b, x.c, lessonNum(x.l)) : learnHash(x.b, x.c)}">
             <div class="card-head"><h4 class="card-name">${escapeAttr(x.title)}</h4><span class="card-tags"><span class="badge badge-lesson">${x.l ? "LESSON" : "CHAPTER"}</span></span></div>
             <div class="card-meta">${learnCrumb(x.l ? [x.b.title, "Chapter " + x.c.code.slice(1), x.l.code] : [x.b.title, "Chapter " + x.c.code.slice(1)])}</div>
             <div class="rs-box">${inner}</div>
@@ -8791,7 +8340,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         const c = it.contest, subj = {};
         c.problems.forEach(p => p.subjects.forEach(sid => { subj[sid] = (subj[sid] || 0) + 1; }));
         const rows = Object.entries(subj).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 4);
-        return `<a class="card card-result card-contest-result" href="#/problems/${famSlug(c.fam)}/${c.year}/${paperSlug(c.cname)}"${extra}>
+        return `<a class="card card-result card-contest-result" href="#/problems/${famSlug(c.fam)}/${c.year}/${paperSlug(c.cname)}">
             <div class="card-head"><h4 class="card-name">${escapeAttr(/^\d{4}\b/.test(c.cname) ? c.cname : c.year + " " + c.cname)}</h4><span class="card-tags"><span class="badge badge-contest">CONTEST</span></span></div>
             <div class="card-meta"><span class="level-range">${escapeAttr(c.fam)} &middot; ${c.problems.length} problem${c.problems.length === 1 ? "" : "s"}</span></div>
             ${rows.length ? `<div class="rs-box">${rows.map(([sid, k]) => `<div class="rs-line"><span class="rs-v">${escapeAttr(SUBJECT_LABELS[sid] || sid)}</span><span class="rs-n">${k}</span></div>`).join("")}</div>` : ""}
@@ -8800,7 +8349,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       }
       if (it.problem) {
         const p = it.problem;
-        return `<a class="card card-result card-problem-result" href="#/problem/${p.slug}"${extra}>
+        return `<a class="card card-result card-problem-result" href="#/problem/${p.slug}">
             <div class="card-head"><h4 class="card-name">${refShort(p.ref)}</h4><span class="card-tags"><span class="badge badge-problem">PROBLEM</span></span></div>
             <div class="card-meta"><span class="level-range">${escapeAttr(p.fam)} &middot; ${p.year}</span></div>
             <div class="rs-box">${[["pattern", "Pattern"], ["method", "Method"], ["formula", "Formulas"]].map(([k, label]) => {
@@ -8812,7 +8361,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           </a>`;
       }
       const l = it.list;
-      return `<a class="card card-result card-list-result" href="#/list/${l.id}"${extra}>
+      return `<a class="card card-result card-list-result" href="#/list/${l.id}">
           <div class="card-head"><h4 class="card-name">${escapeAttr(l.name)}</h4><span class="card-tags"><span class="badge badge-list">LIST</span></span></div>
           <div class="card-meta"><span class="level-range">${l.builtinSet ? (kindLabel[l.kind] || "Study list") : "Your list"} &middot; ${liveCount(l)} cards</span></div>
           ${(l.sections || []).length ? `<div class="rs-box">${l.sections.slice(0, 4).map(x => `<div class="rs-line"><span class="rs-v">${escapeAttr(x.title || l.name)}</span><span class="rs-n">${x.ids.length}</span></div>`).join("")}${l.sections.length > 4 ? `<div class="rs-line rs-more-line">+ ${l.sections.length - 4} more section${l.sections.length > 5 ? "s" : ""}</div>` : ""}</div>`
@@ -8827,17 +8376,24 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (!total) {
       parts.push(`<div class="empty-state"><div class="big">${uiIcon("empty")}</div>No matches. Try broader keywords, such as &ldquo;area&rdquo;, &ldquo;mod&rdquo;, &ldquo;roots&rdquo;, or a contest like &ldquo;2024 AIME&rdquo;.</div>`);
     } else {
-      parts.push(`<div class="cards search-results">${items.map(itemHtml).join("")}</div>`);
+      parts.push(`<div class="cards search-results">${items.slice(0, PAGE).map(itemHtml).join("")}</div>`);
       if (total > PAGE) parts.push(`<button type="button" class="show-more-btn rs-more">Show more results</button>`);
     }
     $content.innerHTML = parts.join("");
-    let page = 0;
+    let shown = PAGE;
     const moreBtn = $content.querySelector(".rs-more");
-    if (moreBtn) moreBtn.addEventListener("click", () => {
-      page++;
-      $content.querySelectorAll(`.search-results > [data-page="${page}"]`).forEach(el => { el.hidden = false; });
-      if (!$content.querySelector(".search-results > [hidden]")) moreBtn.remove();
+    const resultsList = $content.querySelector(".search-results");
+    if (moreBtn) moreBtn.addEventListener("click", event => {
+      const first = resultsList.children.length;
+      resultsList.insertAdjacentHTML("beforeend", items.slice(shown, shown + PAGE).map(itemHtml).join(""));
+      for (const card of [...resultsList.children].slice(first)) card.dataset.math = "0";
+      shown += PAGE;
+      if (shown >= total) moreBtn.remove();
       fitCardFormulas($content);
+      if (event.detail === 0) {
+        const card = resultsList.children[first];
+        (card.matches("a") ? card : card.querySelector(".card-name a"))?.focus();
+      }
     });
     // Results are typeset as they near the screen (the observer in fitCardFormulas), not all at
     // once: typesetting every result, hidden "Show more" pages included, was most of the time a
@@ -10695,21 +10251,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // A topic's name as HTML: its $...$ parts set by KaTeX (as everywhere else in the app), the rest
   // escaped. topicLabel stays plain text for attributes, SVG titles and aria labels.
   const topicHtml = n => mathHtml(n.name);
-  let TOPIC_PROBLEMS = null;
+  const topicPools = new Map();
   function topicProblems(id) {
-    if (!TOPIC_PROBLEMS) {
-      TOPIC_PROBLEMS = new Map();
-      for (const p of PROBLEM_DB) {
-        const seen = new Set();
-        for (const t of p.tree) for (const n of topicPath(t)) {
-          if (seen.has(n.id)) continue;
-          seen.add(n.id);
-          if (!TOPIC_PROBLEMS.has(n.id)) TOPIC_PROBLEMS.set(n.id, []);
-          TOPIC_PROBLEMS.get(n.id).push(p);
-        }
-      }
-    }
-    return TOPIC_PROBLEMS.get(id) || [];
+    if (!problemCatalog) return [];
+    if (!topicPools.has(id)) topicPools.set(id, problemCatalog.forTopic(id));
+    return topicPools.get(id);
   }
   const topicHash = id => "#/browse/topics/" + id;
   // A problem's topics as small trees, one per subject: each path runs from the subject down to
@@ -11202,57 +10748,47 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // Study a concept more (owner, 2026-11-01): under the three columns, one link per card the
   // problem uses, to the lesson that teaches that card. An AIME problem prefers an AIME book's
   // lesson and any other problem an AMC book's; a card no lesson teaches gets no link.
-  let LESSONS_BY_CARD = null;
+  const lessonLocations = new Map(LEARN_SHELF.flatMap(b => b.chapters.flatMap(c => c.lessons.map(l => [l.code, { b, c, l }]))));
   function lessonForCard(fid, aime) {
     const lessons = lessonsForCard(fid);
     return lessons.find(x => x.taught && x.b.id.startsWith(aime ? "aime-" : "amc-"))
       || lessons.find(x => x.taught && /^(amc|aime)-/.test(x.b.id)) || null;
   }
   function lessonsForCard(fid) {
-    if (!LESSONS_BY_CARD) {
-      LESSONS_BY_CARD = {};
-      for (const b of LEARN_SHELF) {
-        for (const c of b.chapters) for (const l of c.lessons) {
-          const summary = learnLessonSummary(c, l);
-          if (!summary) continue;
-          for (const id of summary.cards) (LESSONS_BY_CARD[id] ||= []).push({ b, c, l, taught: true });
-          for (const id of summary.mentioned) (LESSONS_BY_CARD[id] ||= []).push({ b, c, l, taught: false });
-        }
-      }
-    }
-    return LESSONS_BY_CARD[fid] || [];
+    return (window.MATH_LESSON_LINKS.card[fid] || []).map(([code, taught]) => ({ ...lessonLocations.get(code), taught }));
   }
   function studyLessonLink({ b, c, l }) {
-    return `<a class="chain-study-link" href="${learnHash(b, c, lessonNum(l))}">${escapeAttr(b.title)} · ${mathHtml(l.title)} <span class="chain-study-l">${l.code}</span></a>`;
+    return `<a class="chain-study-link" data-lesson-preview="${l.code}" href="${learnHash(b, c, lessonNum(l))}">${escapeAttr(b.title)} · ${mathHtml(l.title)} <span class="chain-study-l">${l.code}</span></a>`;
   }
   function topicLessonsHtml(id) {
-    const links = [];
-    for (const b of LEARN_SHELF) for (const c of b.chapters) for (const l of c.lessons) {
-      if (window.MATH_LESSON_TOPICS[l.code]?.includes(id)) links.push(studyLessonLink({ b, c, l }));
-    }
-    return links.length ? `<section><h3 class="pp-h">Lessons</h3>${resourceList(links)}</section>` : "";
+    const links = (window.MATH_LESSON_LINKS.topic[id] || []).map(code => studyLessonLink(lessonLocations.get(code)));
+    return links.length ? `<section class="topic-lessons"><h3 class="pp-h">Lessons</h3>${inlineStudyLinks(links)}</section>` : "";
   }
   function topicPracticeLink(id) {
     if (!TOPIC_NODES.has(id)) return "";
     const topic = [...topicPath(id)].reverse().find(n => !problemsReady || topicProblems(n.id).some(practiceEligible));
-    return topic ? `<a href="#/practice/topic/${topic.id}">Practice ${topicLabel(topic)}</a>` : "";
+    return topic ? `<a data-topic-preview="${topic.id}" href="#/practice/topic/${topic.id}">Practice ${topicLabel(topic)}</a>` : "";
   }
   function cardPracticeLink(id, label) {
     if (problemsReady && !(PROBLEMS_BY_CARD[id] || []).some(practiceEligible)) {
       return topicPracticeLink(window.MATH_TOPIC_HOMES[id]);
     }
-    return `<a href="#/practice/card/${id}">${label}</a>`;
+    return `<a data-practice-card="${id}" href="#/practice/card/${id}">${label}</a>`;
+  }
+  function cardPracticeResource(id) {
+    const link = cardPracticeLink(id, "Build a practice set for this card");
+    return link ? resourceList([link]) : '<p class="sec-note">No linked contest problems yet.</p>';
   }
   function cardLessonsHtml(fid) {
     const lessons = lessonsForCard(fid).filter(x => x.l.title !== "Summary");
     const taught = lessons.filter(x => x.taught);
-    const items = (taught.length ? taught : lessons.slice(0, 3)).map(x => `<li>${studyLessonLink(x)}</li>`).join("");
+    const items = (taught.length ? taught : lessons.slice(0, 3)).map(studyLessonLink);
     const resources = (BY_ID[fid].formula.resources || []).filter(r => /^https?:\/\//i.test(r.url));
-    const external = resources.map(r => `<li><a href="${escapeAttr(r.url)}">${escapeAttr(r.title)}</a></li>`).join("");
-    return `<section class="related try-block"><h4>Additional resources</h4>
-      <h5 class="try-sub">Learn more</h5>${items ? `<ul class="card-study-list">${items}</ul>` : '<p class="sec-note">No linked lessons yet.</p>'}
-      <h5 class="try-sub">Practice more</h5><div data-resource-practice>${cardPracticeLink(fid, "Build a practice set for this card") || "No linked contest problems yet."}</div>
-      ${external ? `<h5 class="try-sub">Also check out</h5><ul class="card-study-list">${external}</ul>` : ""}</section>`;
+    const external = resources.map(r => `<a href="${escapeAttr(r.url)}">${escapeAttr(r.title)}</a>`);
+    return `<section class="related try-block card-resources"><h4>Additional resources</h4>
+      <h5 class="try-sub">Learn more</h5>${items.length ? resourceList(items) : '<p class="sec-note">No linked lessons yet.</p>'}
+      <h5 class="try-sub">Practice more</h5><div data-resource-practice>${cardPracticeResource(fid)}</div>
+      ${external.length ? `<h5 class="try-sub">Also check out</h5>${inlineStudyLinks(external)}` : ""}</section>`;
   }
   function lessonPracticeHtml(c, d, covered) {
     const cards = [...(d.cards || []), ...(d.related || []).map(r => r.card)];
@@ -11264,8 +10800,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const topicLinks = covered.map(topicPracticeLink).filter(Boolean);
     const options = [...new Set([...topicLinks, ...links.filter(Boolean)])].slice(0, 4);
     return `<section><h3 class="lp-h3">Practice this more</h3>${options.length
-      ? `<p class="learn-note">Choose a focus for a contest problem set.</p><ul class="lp-related">${options.map(a => `<li>${a}</li>`).join("")}</ul>`
-      : '<a href="#/practice">Choose a topic in Practice</a>'}</section>`;
+      ? `<p class="learn-note">Choose a focus for a contest problem set.</p>${inlineStudyLinks(options)}`
+      : inlineStudyLinks(['<a href="#/practice">Choose a topic in Practice</a>'])}</section>`;
   }
   function studyMoreHtml(p) {
     const aime = /AIME/.test(p.ref || p.cname || "");
@@ -11276,7 +10812,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const lessons = ids.map(fid => lessonForCard(fid, aime)).filter(Boolean)
       .filter(({ b, c, l }) => learnHash(b, c, lessonNum(l)) !== current);
     const links = [...new Set(lessons.map(studyLessonLink))];
-    return links.length ? `<div class="chain-study"><h4 class="chain-study-h">Study a concept more</h4>${resourceList(links)}</div>` : "";
+    return links.length ? `<div class="chain-study"><h4 class="chain-study-h">Study a concept more</h4><div class="chain-study-links">${links.join("")}</div></div>` : "";
   }
   // Each solution gives its own Pattern, Method and Formulas directly below the write-up.
   function chainCardsHtml(cards) {
@@ -11661,7 +11197,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         const full = PROBLEM_DB.filter(p => { const k = chainOf(p); return k.has("pattern") && k.has("method") && k.has("formula"); }).length;
         const withMethod = PROBLEM_DB.filter(p => chainOf(p).has("method")).length;
         const withCard = PROBLEM_DB.filter(p => p.formulas.length).length;
-        const withMain = PROBLEM_DB.filter(p => p.main).length, withStrategy = PROBLEM_DB.filter(p => p.strategy).length;
+        const withMain = PROBLEM_DB.filter(p => p.main).length, withStrategy = PROBLEM_DB.filter(p => p.hasStrategy).length;
         const withStatement = PROBLEM_DB.filter(hasProblemStatement).length, withKey = PROBLEM_DB.filter(hasMockAnswer).length;
         const linkedOnly = PROBLEM_DB.filter(p => !hasProblemStatement(p) && p.url).length;
         const rated = PROBLEM_DB.filter(p => Number.isFinite(p.elo)), elos = rated.map(p => p.elo).sort((x, y) => x - y);
@@ -12038,9 +11574,20 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const src = chapter && chapterAsset(book, chapter);
       if (src && !loadedAssets.has(src)) requirements.push(loadAsset(src));
     };
+    if (route.type === "home" && state.query.trim()) requirements.push(...solutionRequirements());
+    if (route.type === "problem") requirements.push(...solutionRequirements([+route.slug.slice(0, 4)]));
+    if (route.practiceSet && location.hash.endsWith("/review")) {
+      const id = location.hash.split("/")[3];
+      let set = topicPracticeSet?.id === id ? topicPracticeSet : null;
+      if (!set) {
+        try { set = practiceSessions.read(localStorage).find(entry => entry.id === id); } catch (error) {}
+      }
+      if (set) requirements.push(...solutionRequirements(set.slugs.map(slug => +slug.slice(0, 4))));
+    }
     if (route.type === "space" && route.name === "practice" || route.type === "problems" || route.type === "special" && route.name === "statistics") requireGroup("practice");
     if (route.type === "learn") requireChapter(route.book, route.chapter);
     if (route.type === "settings") {
+      requirements.push(...solutionRequirements([+PV_PROBLEM.slice(0, 4)]));
       const book = LEARN_SHELF.find(book => book.id === "aime-counting");
       if (book) requireChapter(book, book.chapters.find(chapter => chapter.code === "C5"));
     }
@@ -13015,7 +12562,19 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
   // Hover previews for [[card links]]. mouseenter does not bubble, so delegate on
   // mouseover/mouseout and gate on which element the pointer actually crossed into.
-  const hoverLinks = '.card-link, a.related-item[href^="#/f/"], a[href^="#/problem/"]';
+  const studyPreviews = 'a[data-lesson-preview], a[data-topic-preview], a[data-practice-card], .contest-profile a[href^="#/browse/topics/"], .study-links a[href^="#/browse/topics/"], .insight-notes a[href^="#/browse/topics/"]';
+  const hoverLinks = '.card-link, a.related-item[href^="#/f/"], a[href^="#/problem/"], ' + studyPreviews;
+  $content.addEventListener("focusin", event => {
+    if (!event.target.matches(studyPreviews) || !event.target.matches(":focus-visible")) return;
+    clearTimeout(cpTimer);
+    cpTimer = setTimeout(() => { cpAt = null; showCardPreview(event.target); }, 400);
+  });
+  $content.addEventListener("focusout", event => {
+    if (event.target.matches(studyPreviews)) hideCardPreview();
+  });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") hideCardPreview();
+  });
   $content.addEventListener("mouseover", e => {
     const a = e.target.closest(hoverLinks);
     // A chart column already labels itself (`data-tip`); a preview on top of that would cover it.
