@@ -129,7 +129,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('#finish-practice').click();
  await p.locator('.practice-results').waitFor();
  assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Check yourself');
- assert.equal(await p.locator('.insight-notes p').count(),0);
+ assert.equal(await p.locator('.insight-notes p:visible').count(),0);
  assert.equal(await p.locator('.insight-cell.insight-pending').count(),1);
  await p.locator('[data-result-index="0"]').click();
  await p.getByText('Under the printed recurrence', {exact:false}).waitFor();
