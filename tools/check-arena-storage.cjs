@@ -164,6 +164,7 @@ async function check(browser) {
   await type.selectOption('all');
   const reasons = recommendations.locator('.arena-study-row p a');
   assert.match(await reasons.first().getAttribute('href'),/^#\/arena\/review\/placement\/\d+$/);
+  assert.equal(await reasons.first().evaluate(link => getComputedStyle(link).textDecorationLine),'underline');
   assert.equal(await recommendations.getByRole('button',{name:/refresh/i}).count(),0);
   assert.equal(await recommendations.getByText('Recommendations updated',{exact:true}).count(),0);
   assert(await recommendations.getByText('Based on the problems you’ve worked on recently.').isVisible());

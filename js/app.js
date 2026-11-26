@@ -5810,7 +5810,6 @@
       if (set.status === 'finished') {
         clearInterval(mockClockInterval);
         savePractice();
-        if (!practiceSaveFailed) notifyStudyUpdate();
         toast('Time is up. Your mock has been graded.');
         renderTopicPracticeSet();
         return;
@@ -6250,7 +6249,6 @@
       update();
       try {
         await activity.saveMistakes(source, setId, slug, selected);
-        notifyStudyUpdate();
         reasons = selected;
       } catch {
         status.textContent = "Couldn’t save your selections. Try again.";
@@ -6327,7 +6325,7 @@
     </div>`;
   }
   function insightProblemLink(problem, href) {
-    return `<a data-problem-preview="${escapeAttr(problem.slug)}" href="${href}">${escapeAttr(refShort(problem.ref))}</a>`;
+    return `<a class="review-problem-link" data-problem-preview="${escapeAttr(problem.slug)}" href="${href}">${escapeAttr(refShort(problem.ref))}</a>`;
   }
   function studyItem(row) {
     if (row.kind === "topic") {
@@ -6376,9 +6374,8 @@
     }
     return hardest ? `<p><strong>Highest-rated solve</strong> · ${insightProblemLink(hardest.problem, reviewUrl(hardest.index))} · ${hardest.problem.elo} Elo</p>` : "";
   }
-  let studyUpdatePending = false;
+  const shownResultRecommendations = new Map();
   function notifyStudyUpdate() {
-    studyUpdatePending = true;
     $content.querySelector("[data-study-items]")?.dispatchEvent(new Event("study-history-changed"));
   }
   function wireResultStudy(root, source, setId, outcomes, reviewUrl, loadHistory, initial) {
@@ -6386,13 +6383,13 @@
     if (!notes) return;
     const list = notes.querySelector("[data-study-items]");
     const status = notes.querySelector("[data-study-update]");
+    const key = source + ":" + setId;
     let rendered = list.innerHTML, request = 0;
     const show = history => {
       const items = resultStudyNotes(history, source, setId, outcomes, reviewUrl);
-      if (studyUpdatePending) {
-        studyUpdatePending = false;
-        status.hidden = !items;
-      }
+      const previous = shownResultRecommendations.get(key);
+      status.hidden = !items || previous === undefined || previous === items;
+      shownResultRecommendations.set(key, items);
       notes.hidden = !items;
       if (items !== rendered) {
         rendered = items;
@@ -6409,6 +6406,7 @@
       } catch {
         if (current !== request || !list.isConnected || notes.hidden) return;
         rendered = null;
+        status.hidden = true;
         list.textContent = "Study recommendations are unavailable.";
       }
     };
@@ -6605,7 +6603,6 @@
       if (topicPracticeSet !== set || set.status === 'finished' || location.hash !== '#/practice/set/' + encodeURIComponent(set.id)) return;
       practiceSessions.finish(set);
       savePractice();
-      if (!practiceSaveFailed) notifyStudyUpdate();
       redraw();
       updatePageTitle(getRoute()); window.AppAccessibility.focusMain();
     });
@@ -6690,7 +6687,6 @@
       const v = b.getAttribute('aria-pressed') === 'true' ? null : b.dataset.self;
       if (!practiceSessions.selfMark(set, slug, v)) return;
       savePractice();
-      if (!practiceSaveFailed) notifyStudyUpdate();
       redraw(); $content.querySelector(`[data-self="${b.dataset.self}"]`)?.focus({ preventScroll: true });
     }));
     if (p && finished && !voidNote) wireMistakeReview($content.querySelector(".practice-review"), p.slug, {
