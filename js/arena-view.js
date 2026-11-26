@@ -316,7 +316,7 @@
       <section class="sh-section" id="arena-study"><h3>What to study</h3>
         <p class="arena-note">Based on the Arena problems you’ve worked on recently.</p>
         <div data-study-items aria-live="polite">${initialStudy}</div>
-        <button type="button" class="hp-btn hp-btn-soft" data-study-all aria-haspopup="dialog"${allStudy.length > studyPreviewSize ? '' : ' hidden'}>Show more</button></section>
+        <button type="button" class="hp-btn hp-btn-soft" data-study-all aria-haspopup="dialog"${allStudy.length > studyPreviewSize ? '' : ' hidden'}>See all</button></section>
       <section class="sh-section" id="arena-history"><h3>Contest history</h3><div id="arena-history-list"></div><button type="button" class="hp-btn hp-btn-soft" data-arena-history-toggle aria-controls="arena-history-list" aria-expanded="false" hidden>Show all</button></section></div>`;
     const overallPlot = ctx.container.querySelector('#arena-overview [data-rating-plot]');
     if (overallPlot) wireTrend(overallPlot,ratingHistory(stats));

@@ -147,7 +147,7 @@ async function check(browser) {
   const recommendations = page.locator('#arena-study');
   await recommendations.locator('.arena-study-row').first().waitFor();
   await page.locator('#arena-session').getByText('Suggested next topic: Algebra', {exact:true}).waitFor();
-  const openStudy = recommendations.getByRole('button',{name:'Show more',exact:true});
+  const openStudy = recommendations.getByRole('button',{name:'See all',exact:true});
   const previewList = recommendations.locator('.arena-study-row h4');
   const previewRows = await previewList.allInnerTexts();
   const dialog = page.getByRole('dialog',{name:'Study recommendations'});
