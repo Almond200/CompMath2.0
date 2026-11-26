@@ -142,19 +142,58 @@ async function check(browser) {
   await page.getByText('Arena overview',{exact:true}).click();
   const recommendations = page.locator('#arena-study');
   await recommendations.locator('.arena-study-row').first().waitFor();
-  const filter = recommendations.getByRole('combobox');
+  const filter = recommendations.getByRole('combobox',{name:'Study recommendation subject'});
+  const period = page.getByRole('combobox',{name:'Overall rating trend period'});
+  await period.selectOption('3');
+  const viewport = page.viewportSize();
+  for (const width of [viewport.width,375]) {
+    await page.setViewportSize({width,height:viewport.height});
+    for (const menu of [filter,period]) {
+      assert(await menu.evaluate(select => {
+        const style = getComputedStyle(select);
+        const ctx = document.createElement('canvas').getContext('2d');
+        ctx.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+        const labelWidth = ctx.measureText(select.selectedOptions[0].textContent).width;
+        const textArea = select.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+        return labelWidth <= textArea + 1 && parseFloat(style.paddingInlineEnd) >= 32;
+      }), 'the dropdown label has its own space beside the chevron');
+    }
+  }
+  await page.setViewportSize(viewport);
   await filter.selectOption('alg');
   assert((await recommendations.locator('.arena-study-row').count()) <= 3);
   await filter.selectOption('all');
   assert.equal(await recommendations.locator('.arena-study-row').count(),3);
+  const type = recommendations.getByRole('combobox',{name:'Recommendation type'});
+  await type.selectOption('card');
+  const cardRows = await recommendations.locator('.arena-study-row h4').allInnerTexts();
+  assert(cardRows.length <= 3 && cardRows.every(text => /^(Formula|Method|Pattern) to revisit/.test(text)));
+  await type.selectOption('topic');
+  const topicRows = await recommendations.locator('.arena-study-row h4').allInnerTexts();
+  assert(topicRows.length <= 3 && topicRows.every(text => /^Topic to revisit/.test(text)));
+  await type.selectOption('all');
   const reasons = recommendations.locator('.arena-study-row p a');
   assert.match(await reasons.first().getAttribute('href'),/^#\/arena\/review\/placement\/\d+$/);
-  const refresh = recommendations.getByRole('button',{name:'Refresh study recommendations'});
-  const beforeRefresh = await recommendations.locator('[data-study-items]').innerHTML();
-  await refresh.click();
-  await recommendations.locator('[data-refresh-study][aria-disabled="false"]').waitFor();
-  assert.equal(await recommendations.locator('[data-study-items]').innerHTML(),beforeRefresh);
-  assert(await refresh.evaluate(el => el === document.activeElement));
+  assert.equal(await recommendations.getByRole('button',{name:/refresh/i}).count(),0);
+  assert.equal(await recommendations.getByText('Recommendations updated',{exact:true}).count(),0);
+  assert(await recommendations.getByText('Based on the problems you’ve worked on recently.').isVisible());
+  const historyLink = page.locator('.arena-history-row a').first();
+  await page.mouse.move(0,0);
+  assert.equal(await historyLink.evaluate(link => getComputedStyle(link).textDecorationLine),'none');
+  await historyLink.hover();
+  assert.equal(await historyLink.evaluate(link => getComputedStyle(link).textDecorationLine),'underline');
+  await page.mouse.move(0,0);
+  await page.evaluate(() => {
+    const history = LearningActivity.history;
+    window.recommendationReads = 0;
+    LearningActivity.history = (...args) => {
+      window.recommendationReads++;
+      return history(...args);
+    };
+  });
+  await lab.evaluate(slug => LearningActivity.saveMistakes('arena','placement',slug,['concept']),nextProblem);
+  await page.waitForFunction(() => window.recommendationReads > 0);
+  assert.equal(await type.inputValue(),'all');
   assert.equal(await page.locator('#arena-start [name="focus"][value="mixed"]').count(),0);
   const subject = page.getByRole('button',{name:'Algebra',exact:true});
   assert.match(await subject.evaluate(el => getComputedStyle(el,'::before').content), /▸/);
