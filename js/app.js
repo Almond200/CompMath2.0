@@ -6177,8 +6177,9 @@
   function mistakeReviewHtml(eligible, {solvedOnRetry = false, fromPractice = false} = {}) {
     if (!eligible) return "";
     const reasons = activity.mistakeReasons(Object.keys(MISTAKE_REASONS), solvedOnRetry);
+    const recommendation = fromPractice ? "help personalize <strong>What to study in Arena</strong>" : "improve your study recommendations";
     return `<details class="review-mistake"><summary>Mark your mistake <span data-mistake-selection>Optional</span></summary>
-      <p>${solvedOnRetry ? "Think about what went wrong on your first try. " : ""}Choose any reasons that fit to help personalize ${fromPractice ? "<strong>What to study in Arena</strong>" : "your study recommendations"}. Only your rated results affect your Elo. Select a reason again to clear it.</p>
+      <p>${solvedOnRetry ? "Think about what went wrong on your first try. " : ""}Choose any reasons that fit to ${recommendation}. Only your rated results affect your Elo. Select a reason again to clear it.</p>
       <div class="review-mistake-options" role="group" aria-label="Mistake reasons">
         ${reasons.map(id => {
           const [label, detail] = MISTAKE_REASONS[id];
