@@ -250,7 +250,9 @@
   }
   function dashboard(ctx, state, stats, history) {
     const t = stats.overall, placed = !!stats.baseline, s = state.session, active = s && !s.closed;
-    const placementCompleted = t.count + (active && s.placement && s.round ? s.length - A.remaining(state) : 0);
+    const activePlacement = active && s.placement && s.round;
+    const placementTotal = activePlacement ? t.count + s.length : A.PLACEMENT_SIZE;
+    const placementCompleted = activePlacement ? placementTotal - A.remaining(state) : t.count;
     const prev = s || {};
     const established = ctx.roots.filter(root => stats.subjects.get(root.id)?.wins >= A.SUBJECT_PROVISIONAL).length;
     const arenaHistory = history.filter(event => event.source === 'arena' && event.session && event.reviewNumber);
@@ -270,8 +272,8 @@
       ${placed ? `<div class="arena-big">${number(t.rating)} <small>Elo</small></div>
         ${established < ctx.roots.length ? '<p class="arena-note">Provisional · ' + established + '/' + ctx.roots.length + ' subjects established</p>' : ''}
         <p class="arena-note">${!postPlacement.length ? 'Starting Elo from placement' : signed(delta) + ' overall Elo in your latest rated set'}</p>` :
-        `<p>Take one set of ${A.PLACEMENT_SIZE} problems across a range of difficulties. Your starting Elo applies to all four subjects.</p>
-        ${placementCompleted ? `<small>${placementCompleted} of ${A.PLACEMENT_SIZE} placement problems completed</small>` : ''}`}</div>
+        `<p>Take one set of ${placementTotal} problems across a range of difficulties. Your starting Elo applies to all four subjects.</p>
+        ${placementCompleted ? `<small>${placementCompleted} of ${placementTotal} placement problems completed</small>` : ''}`}</div>
       ${placed ? trendPlot('Overall') :
         `<div class="arena-placement"><h4>How placement works</h4><p>You get two tries per problem. A second-try solve earns half credit toward your placement rating. Save and exit whenever you need a break.</p></div>`}
       ${placed ? `<div class="arena-metrics">
@@ -746,10 +748,10 @@
     }
     const round = state.session.round;
     index = s.placement ? A.placementIndex(round) : Math.min(index, round.items.length-1);
-    const placementOffset = s.placement ? A.PLACEMENT_SIZE - s.length : 0;
+    const placementOffset = s.placement ? stats.overall.count : 0;
     const problemNumber = index + 1 + placementOffset;
     const progress = items => (placementOffset + items.filter(row => row.outcome && row.outcome !== 'seen').length) +
-      ' of ' + (s.placement ? A.PLACEMENT_SIZE : round.items.length) + ' finished';
+      ' of ' + (s.placement ? placementOffset + s.length : round.items.length) + ' finished';
     const item = round.items[index], p = ctx.lookup(item.slug);
     const controller = roundController = new AbortController();
     const onLeave = () => controller.abort();
@@ -894,6 +896,13 @@
     ctx.container.innerHTML = '<section class="sh-section"><h1>Arena</h1><p role="status">Loading your progress…</p></section>';
     try {
       let state = await A.read();
+      if (A.placementLength(state) !== state.session?.length) {
+        state = await A.change(st => {
+          const length = A.placementLength(st);
+          if (length === st.session?.length) return false;
+          st.session.length = length;
+        });
+      }
       if (state.session?.round && !state.session.closed && Date.now() >= A.submissionAt(state.session))
         state = await expireRatedSet(state.session.id);
       const history = await ctx.history(state);
