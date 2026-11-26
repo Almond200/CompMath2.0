@@ -4952,7 +4952,7 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 /* Keep chapter navigation in the book header when study sidebars are hidden. */
 [data-study-sidebars="hide"] body[data-space="learn"] .bk-view { grid-template-columns: minmax(0, 1fr); gap: 0; }
 [data-study-sidebars="hide"] body[data-space="learn"] .bk-rail { display: none; }
-.arena :is([data-arena-history-toggle], [data-arena-study-toggle], #arena-study-filters)[hidden] { display: none; }
+.arena :is([data-arena-history-toggle], [data-study-all])[hidden] { display: none; }
 
 /* Selections in study forms use a quiet tint; the submit action keeps the solid fill. */
 body:is([data-space="practice"], [data-space="arena"]) .rand-btns button { background: var(--bg-card); }
@@ -5009,8 +5009,16 @@ body:is([data-space="learn"], [data-space="practice"], [data-space="arena"]) .la
 .arena .arena-set-nav .cn-here[data-result="Incorrect"] { border-color: #b7444e; }
 .arena .arena-result-status[data-result="incorrect"] { color: var(--text); font-weight: 650; }
 
-.study-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+dialog.arena-study-dialog { width: min(780px, calc(100vw - 32px)); height: min(680px, calc(100dvh - 48px)); max-height: none; inset-block: 0; padding: 0; overflow: hidden; }
+dialog.arena-study-dialog[open] { display: grid; grid-template-rows: auto minmax(0,1fr); }
+.arena-study-dialog-head { padding: 16px 20px 12px; border-bottom: 1px solid var(--border); }
+.arena-study-dialog-head > div:first-child { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.arena-study-dialog-head h2 { margin: 0; font-size: calc(20px * var(--tx)); }
+.arena-study-dialog-head button { margin: 0; }
+.arena-study-dialog-body { overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable; padding: 0 20px 16px; }
+.arena-study-dialog-body > .arena-note { margin-top: 16px; }
 .study-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.arena-study-dialog-head .study-filters { margin-top: 12px; }
 .study-filter { padding: 5px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-card); color: var(--text); font: inherit; }
 .arena .arena-set-nav .cn-num[data-result="Incorrect"] { color: var(--text); }
 .arena .arena-set-nav .cn-num[data-retry]:not(:hover) { color: var(--accent); }
