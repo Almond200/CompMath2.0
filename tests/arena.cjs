@@ -124,10 +124,15 @@ async function checkHistory() {
   A.openRound(timed, roundId, [problem('amc10-original'), problem('one', 980), problem('two', 1800), problem('three', 2600), problem('four', 3100)], now);
   const round = timed.session.round;
   assert.deepEqual(round.items.map(i => i.slug), ['one','two','three','four']);
-  assert.equal(round.limitMs, (2 + 5 + 8 + 12) * 60000);
+  assert.equal(round.limitMs, (3 + 6 + 10 + 15) * 60000);
   assert.equal(round.deadline, now + round.limitMs);
   assert.deepEqual([999,1000,1599,1600,2199,2200,2799,2800,3399,3400].map(A.problemMinutes),
-    [2,3,3,5,5,8,8,12,12,15], 'pacing increases with difficulty only');
+    [3,4,4,6,6,10,10,15,15,20], 'pacing increases with difficulty only');
+  const geometry = A.merge(placed, null);
+  geometry.session.closed = true;
+  A.start(geometry, 'geo', 'matched', 3);
+  A.openRound(geometry, geometry.session.id, ['a','b','c'].map(id => problem('geometry-' + id, 2650, ['geo'])), now);
+  assert.equal(geometry.session.round.deadline, now + 30 * 60000);
   A.checkRoundAnswer(timed, roundId, 'three', {outcome:'incorrect', answer:'D'}, now);
   assert.equal(round.items[2].firstMiss,'D');
   assert.equal(round.items[2].outcome,undefined);
@@ -260,7 +265,8 @@ async function checkHistory() {
     ({kind:'problem',source:'arena',item,outcome,at:nowForStudy - daysAgo * day,mistakes});
   const lookup = id => ({tree:[id], formulas:id.startsWith('shared-') ? ['shared-card'] : []});
   const fresh = [candidate('new-a'),candidate('new-b'),candidate('new-c'),candidate('new-d')];
-  assert.equal(A.studyRecommendations([...fresh,candidate('old','incorrect',80)],lookup,nowForStudy).length,3);
+  assert.deepEqual(A.studyRecommendations([...fresh,candidate('old','incorrect',80)],lookup,nowForStudy).map(row => row.id),
+    fresh.map(event => event.item), 'the ranked list includes all current recommendations');
   assert.equal(A.studyRecommendations([candidate('old','incorrect',40)],lookup,nowForStudy).length,0);
   const firstRetry = {...candidate('shared-first','correct'),retry:true};
   assert.deepEqual(A.studyRecommendations([firstRetry],lookup,nowForStudy).map(row => row.kind),['topic','card'],

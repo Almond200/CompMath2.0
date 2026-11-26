@@ -40319,8 +40319,8 @@
       "Intersect a square diagonal-like line with a corner-centered circle and project to the opposite side. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2014 BMT Geometry, Problem 7": [
-      2610,
-      "Parameterize a point on a parallelogram side ray, compare its cevian intersections and solve the length equality with the segment-order restriction. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2400,
+      "The two intersections divide BE in ratios given directly by parallelogram similarity or a single coordinate parameter. The segment order gives the length equality, which reduces to the golden-ratio quadratic. Re-estimated 2026-11-26 against other BMT geometry problems that combine standard similarity with one algebraic step."
     ],
     "2014 BMT Geometry, Problem 8": [
       2560,

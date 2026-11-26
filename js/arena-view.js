@@ -137,7 +137,7 @@
   const rules = `<details class="arena-rules"><summary>How ratings work</summary>
     <p>Placement is untimed. The next problem adapts to how you answered the previous ones. You get two tries per problem in placement and in rated sets. Each result is compared with that problem’s own Elo. A first-try solve earns full rating credit and a second-try solve earns half.</p>
     <p>The placement set establishes a provisional starting rating for all four subjects. Later sets update each subject independently. Each subject stays provisional until you correctly answer ${A.SUBJECT_PROVISIONAL} rated problems in that subject. Overall Elo stays provisional while any subject rating is provisional.</p>
-    <p>Rated sets share one timer across all problems. Each problem adds 2 to 15 minutes based on its difficulty. The same timing scale applies to every subject. Submitting grades any saved answers. Unanswered problems count as misses.</p>
+    <p>Rated sets share one timer across all problems. Each problem adds 3 to 20 minutes based on its difficulty. The same timing scale applies to every subject. Submitting grades any saved answers. Unanswered problems count as misses.</p>
     <p>Each problem updates the subjects it covers. Overall Elo is the average of your three lowest subject ratings. Solving a harder problem earns more Elo, and missing an easier one costs more. Early ratings adjust faster. The minimum rating is 0 Elo.</p></details>`;
   function selector(name, legend, options, value) {
     return `<fieldset class="arena-options"><legend>${legend}</legend><div>${options.map(([id, label]) =>
@@ -271,7 +271,9 @@
     const studyRows = (subject = 'all', type = 'all') => A.studyRecommendations(studyHistory, ctx.lookup, Date.now(), row =>
       (type === 'all' || row.kind === type) && ctx.studyItem(row) &&
       (subject === 'all' || row.examples.some(event => ctx.subjectsOf(ctx.lookup(event.item)).includes(subject))));
-    const initialStudy = studyHtml(ctx,studyRows());
+    const studyPreviewSize = 3;
+    let allStudy = studyRows();
+    const initialStudy = studyHtml(ctx,allStudy.slice(0,studyPreviewSize));
     const postPlacement = stats.points.filter(point => !point.calibration);
     const accuracy = points => points.length ? Math.round(100 * points.filter(p => p.event.outcome === 'correct').length / points.length) + '%' : '—';
     const latest = postPlacement.at(-1);
@@ -313,9 +315,10 @@
           <tr class="arena-subject-details" id="arena-subject-${id}" data-subject="${id}" hidden><td colspan="3">${subjectDetails(ctx,id,label,stats,reviews)}</td></tr>`; }).join('')}</tbody></table></div></section>
       <section class="sh-section" id="arena-study"><div class="study-header"><div><h3>What to study</h3>
         <p class="arena-note">Based on the Arena problems you’ve worked on recently.</p></div>
-        <div class="study-filters"><select class="study-filter" data-study-subject aria-label="Study recommendation subject"><option value="all">All subjects</option>
+        <div class="study-filters" id="arena-study-filters" hidden><select class="study-filter" data-study-subject aria-label="Study recommendation subject"><option value="all">All subjects</option>
           ${[...opts].map(([id,label]) => `<option value="${id}">${label}</option>`).join('')}</select>${ctx.studyTypeFilterHtml()}</div></div>
-        <div data-study-items aria-live="polite">${initialStudy}</div></section>
+        <div id="arena-study-list" data-study-items aria-live="polite">${initialStudy}</div>
+        <button type="button" class="hp-btn hp-btn-soft" data-arena-study-toggle aria-controls="arena-study-filters arena-study-list" aria-expanded="false"${allStudy.length > studyPreviewSize ? '' : ' hidden'}>Show more</button></section>
       <section class="sh-section" id="arena-history"><h3>Contest history</h3><div id="arena-history-list"></div><button type="button" class="hp-btn hp-btn-soft" data-arena-history-toggle aria-controls="arena-history-list" aria-expanded="false" hidden>Show all</button></section></div>`;
     const overallPlot = ctx.container.querySelector('#arena-overview [data-rating-plot]');
     if (overallPlot) wireTrend(overallPlot,ratingHistory(stats));
@@ -348,17 +351,26 @@
     reportTarget();
     startForm?.addEventListener('change', reportTarget);
     const study = ctx.container.querySelector('#arena-study');
-    const subject = study.querySelector('[data-study-subject]');
-    const type = study.querySelector('[data-study-type]');
+    const filters = study.querySelector('#arena-study-filters');
+    const subject = filters.querySelector('[data-study-subject]');
+    const type = filters.querySelector('[data-study-type]');
     const list = study.querySelector('[data-study-items]');
-    let displayed = initialStudy, studyRequest = 0;
+    const toggle = study.querySelector('[data-arena-study-toggle]');
+    let expanded = false, displayed = initialStudy, studyRequest = 0;
     const updateStudy = () => {
-      const html = studyHtml(ctx,studyRows(subject.value,type.value));
+      const rows = expanded ? (subject.value === 'all' && type.value === 'all' ? allStudy : studyRows(subject.value,type.value))
+        : allStudy.slice(0,studyPreviewSize);
+      toggle.hidden = !expanded && allStudy.length <= studyPreviewSize;
+      toggle.setAttribute('aria-expanded', String(expanded));
+      toggle.textContent = expanded ? 'Show less' : 'Show more';
+      filters.hidden = !expanded;
+      const html = studyHtml(ctx,rows);
       if (html === displayed) return;
       displayed = html;
       list.innerHTML = html;
       ctx.renderMath(list);
     };
+    toggle.onclick = () => { expanded = !expanded; updateStudy(); };
     subject.onchange = updateStudy;
     type.onchange = updateStudy;
     list.addEventListener('study-history-changed',async () => {
@@ -367,6 +379,7 @@
         const latest = await ctx.history();
         if (current !== studyRequest || !list.isConnected) return;
         studyHistory = latest.filter(hasArenaReview);
+        allStudy = studyRows();
         updateStudy();
       } catch {}
     });
@@ -609,7 +622,7 @@
     response.innerHTML = `<form class="practice-answer"><h3>Your answer</h3>
       <p class="arena-note" role="status">${locked ? (retry ? 'Try 2 of 2' : 'Try 1 of 2') :
         retry ? 'First try was incorrect. You have one try left.' : 'Try 1 of 2'}</p>
-      ${exact || numeric ? `<label for="practice-answer">${exact ? ctx.escape(ctx.exactLabel(exact)) : 'Integer from 000 to 999'}</label>
+      ${exact || numeric ? `<label for="practice-answer">${ctx.escape(ctx.exactLabel(exact))}</label>
         <input id="practice-answer" type="text" maxlength="120" autocomplete="off" value="${ctx.escape(visibleAnswer)}" aria-describedby="practice-answer-error" ${locked ? 'readonly' : ''}>${ctx.keypad()}` :
         ctx.choices({answers:{[p.slug]:visibleAnswer}},p.slug,locked)}
       <button type="button" class="practice-answer-clear" data-clear ${locked || !slot.draft ? 'disabled' : ''}>Clear answer</button>
