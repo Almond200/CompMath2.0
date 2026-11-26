@@ -6380,7 +6380,8 @@
     const show = () => {
       if (!list.isConnected) return;
       const items = resultStudyNotes(history, source, setId, outcomes, reviewUrl, type.value);
-      if (items) notes.hidden = false;
+      if (notes.hidden && !items) return;
+      notes.hidden = false;
       const html = items || "<p>No recent recommendations in this view.</p>";
       if (html !== rendered) {
         rendered = html;
@@ -6395,7 +6396,7 @@
       try { history = await loadHistory(); show(); }
       catch {
         rendered = null;
-        if (list.isConnected) list.textContent = "Study recommendations are unavailable.";
+        if (list.isConnected && !notes.hidden) list.textContent = "Study recommendations are unavailable.";
       }
       finally { loading = false; refresh.setAttribute("aria-disabled","false"); }
     };

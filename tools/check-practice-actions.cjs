@@ -137,7 +137,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('#finish-practice').click();
  await p.locator('.practice-results').waitFor();
  assert.equal(await p.locator('[data-result-index="0"] [data-result]').innerText(),'Incorrect');
- assert.match(await p.locator('.practice-insights').innerText(), /Topic to revisit.*1 missed/);
+ await p.locator('[data-study-result]').filter({hasText:/to revisit.*1 missed/}).first().waitFor();
  await p.locator('[data-result-index="0"]').click();
  await p.getByText('A four-digit number starts with a nonzero digit.',{exact:false}).waitFor();
  assert.equal(await p.getByRole('link',{name:'Open the official solution'}).getAttribute('href'),'https://dukemathmeet.org/2017/indiv_sol.pdf');
