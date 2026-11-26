@@ -3672,8 +3672,8 @@ body.is-landing .content { padding: 0 0 50px; }
 .hm-name { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
 .hm-sub { margin: 0; font-size: 13.5px; color: var(--text-dim); }
 .hm-spaces { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 14px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-card); }
-.hm-space { position: relative; display: flex; flex-direction: column; gap: 1px; padding: 12px 14px 10px; text-decoration: none; color: var(--text); border-left: 1px solid var(--border); }
-.hm-space:first-child { border-left: none; }
+.hm-spaces > :not(:first-child) { border-left: 1px solid var(--border); }
+.hm-space { position: relative; display: flex; flex-direction: column; gap: 1px; padding: 12px 14px 10px; text-decoration: none; color: var(--text); }
 /* Each tile's coloured bar is a strip of its own inside the tile, so the grey divider runs the
    full height to the top and each colour stops exactly at it (a border-top met the divider on
    a slant, and a strip laid over the divider overran it; owner, 2026-10-31). */

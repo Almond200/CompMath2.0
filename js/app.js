@@ -5588,11 +5588,13 @@
     };
 
     const tile = (sp, n) => `<a class="hs-tile" data-tint="${sp}" href="#/${sp}"><b>${SPACES[sp].label}</b><span class="hs-ask">${SPACES[sp].ask}</span><span class="hs-what">${SPACE_WHAT[sp]}</span><span class="hs-n">${n}</span></a>`;
-    // The front page (owner, 2026-10-31, second version): the app's own top bar holds the
-    // spaces and the search, so the page itself is dense, like a reference site's front page:
-    // one strip of the spaces (Reference, holding Formulas, Methods and Patterns as the top bar
-    // does since 2026-11-11, then Learn and Practice), then a main column and a rail of short sections divided by
-    // hairlines rather than boxed.
+    const spaceTile = (sp, detail) => `
+          <a class="hm-space" data-tint="${sp}" href="#/${sp}">
+            <span class="hm-space-name">${SPACES[sp].label}</span>
+            <span class="hm-space-ask">${SPACES[sp].ask}</span>
+            <span class="hm-space-n">${detail}</span>
+          </a>`;
+    // The homepage strip matches the top bar's space order, followed by a main column and a rail.
     // Continue: the cards and problems opened lately. Lessons and books are left to Learn's own
     // "Recently opened" (owner, 2026-10-31: too many lessons crowded the home page).
     const recentCards = recentRowsHtml(6, ["formula", "method", "pattern", "problem"]);
@@ -5604,18 +5606,16 @@
           <p class="hm-sub">Formulas, methods, patterns, textbooks, and real contest problems for AMC 10/12, AIME, and olympiad, all linked to each other.</p>
         </div>
         <nav class="hm-spaces" aria-label="Spaces">
+          ${spaceTile("arena", "Placement and rated sessions")}
           <div class="hm-refcell">
             <span class="hm-ref-bar" aria-hidden="true">${["formulas", "methods", "patterns"].map(sp => `<i data-tint="${sp}"></i>`).join("")}</span>
             <span class="hm-ref-name">Reference</span>
             <span class="hm-space-ask">Every formula, method and pattern</span>
             <span class="hm-ref-links">${[["formulas", count("formula")], ["methods", count("method")], ["patterns", count("pattern")]].map(([sp, n]) =>
               `<a class="hm-ref-link" data-tint="${sp}" href="#/${sp}" title="${escapeAttr(SPACES[sp].ask)}"><b>${SPACES[sp].label}</b>${n}</a>`).join("")}</span>
-          </div>${["learn", "practice", "arena"].map(sp => `
-          <a class="hm-space" data-tint="${sp}" href="#/${sp}">
-            <span class="hm-space-name">${SPACES[sp].label}</span>
-            <span class="hm-space-ask">${SPACES[sp].ask}</span>
-            <span class="hm-space-n">${{ learn: `${LEARN_SHELF.length} books`, practice: nProblems, arena: "Placement and rated sessions" }[sp]}</span>
-          </a>`).join("")}
+          </div>
+          ${spaceTile("learn", `${LEARN_SHELF.length} books`)}
+          ${spaceTile("practice", nProblems)}
         </nav>
         <div class="hm-cols">
           <div class="hm-main">

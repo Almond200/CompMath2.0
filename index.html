@@ -11,7 +11,7 @@
        as cards near the screen, and text in a font still loading is drawn invisible. -->
   <link rel="preload" href="vendor/katex/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="vendor/katex/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=586">
+  <link rel="stylesheet" href="css/styles.css?v=587">
   <script>
     (() => {
       const root = document.documentElement;
@@ -37,6 +37,7 @@
         <span class="brand-sigma" aria-hidden="true">&Sigma;</span>
       </a>
       <nav class="space-switch" id="space-switch" aria-label="Spaces">
+        <button type="button" data-space-go="arena">Arena</button>
         <div class="space-ref">
           <button type="button" class="space-ref-btn" id="space-ref-btn" aria-controls="space-ref-menu" aria-expanded="false">Reference <span class="space-ref-caret" aria-hidden="true"><svg class="ui-icon ui-icon-triangle-down" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4 5h16l-8 14Z" fill="currentColor"/></svg></span></button>
           <span id="space-ref-current" hidden></span>
@@ -48,7 +49,6 @@
         </div>
         <button type="button" data-space-go="learn">Learn</button>
         <button type="button" data-space-go="practice">Practice</button>
-        <button type="button" data-space-go="arena">Arena</button>
       </nav>
       <div class="search-wrap">
         <input id="search-input" type="search" aria-label="Search the reference" placeholder="Search the reference&hellip; (try &quot;cyclic&quot;, &quot;LTE&quot;, &quot;reflection&quot;)" autocomplete="off">
@@ -259,6 +259,6 @@
   <script defer src="js/arena.js?v=13"></script>
   <script defer src="js/learning-activity.js?v=11"></script>
   <script defer src="js/asset-loader.js?v=1"></script>
-  <script defer src="js/app.js?v=968"></script>
+  <script defer src="js/app.js?v=969"></script>
 </body>
 </html>

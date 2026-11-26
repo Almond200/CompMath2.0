@@ -26,8 +26,7 @@ if(artifacts)fs.mkdirSync(artifacts,{recursive:true});
    await p.locator('#nav-toggle').click();assert.equal(await p.locator('#nav-toggle').getAttribute('aria-expanded'),'true');
    await p.keyboard.press('Escape');assert.equal(await p.locator('#nav-toggle').getAttribute('aria-expanded'),'false');
   }
-  // Formulas, Methods and Patterns sit behind the one Reference menu at every width.
-  assert.deepEqual(await p.locator('#space-switch > button, #space-switch > .space-ref > button').evaluateAll(xs=>xs.map(x=>x.textContent.trim())),['Reference','Learn','Practice']);
+  assert.deepEqual(await p.locator('#space-switch > button, #space-ref-btn').allInnerTexts(),['Arena','Reference','Learn','Practice']);
   const reference = p.locator('#space-ref-btn'), menu = p.locator('#space-ref-menu');
   const current = p.locator('#space-switch [aria-current="page"]');
   const expectSpace = async space => {
