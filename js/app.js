@@ -6229,16 +6229,16 @@
     }
     const ofKind = kind => cards.filter(id => kindOf(BY_ID[id].formula) === kind).map(cardTextLink);
     const jump = (part, label) => `<button type="button" class="review-jump" data-review-jump="${part}">${label}</button>`;
-    const identity = window.Arena.canonical(p.slug);
+    const identity = p.identity;
     const similar = Number.isFinite(p.elo) && p.tree.flatMap(id => [...topicPath(id)].reverse()).find(node =>
-      topicProblems(node.id).some(other => Number.isFinite(other.elo) && practiceEligible(other) && window.Arena.canonical(other.slug) !== identity));
+      topicProblems(node.id).some(other => Number.isFinite(other.elo) && practiceEligible(other) && other.identity !== identity));
     const practice = [...new Set([...p.tree.map(topicPracticeLink), ...cards.map(id => cardPracticeLink(id, `Practice ${BY_ID[id].formula.name}`))].filter(Boolean))];
     return {
       lesson: [...new Set(lessons.map(studyLessonLink))],
       formula: ofKind("formula"), pattern: ofKind("pattern"), method: ofKind("method"),
       statement: [jump("statement", "Reread the problem")],
       answer: [jump("answer", "Review your answer")],
-      solution: [jump("solution", "Review the solution")],
+      solution: p.hasStrategy || p.solUrl && p.solKind !== "answer-key" ? [jump("solution", "Review the solution")] : [],
       practice: practice.length ? practice : ['<a href="#/practice">Find a related problem in Practice</a>'],
       matched: similar ? [`<a href="#/practice/topic/${similar.id}?similar=${p.slug}">Practice at a similar difficulty</a>`] : []
     };
@@ -6717,12 +6717,12 @@
     const difficulty = form.elements.difficulty;
     let generating = false, selectedTopicId = initialId, activeTopic = -1;
     const similar = PROBLEM_BY_SLUG[similarTo];
-    const original = similar && window.Arena.canonical(similar.slug);
+    const original = similar?.identity;
     let desiredCount = similar ? 1 : count.valueAsNumber;
     const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible, topicProblems);
     const selectedPool = id => {
       const pool = topics.select(id, practiceFamOn);
-      return original ? pool.filter(problem => window.Arena.canonical(problem.slug) !== original) : pool;
+      return original ? pool.filter(problem => problem.identity !== original) : pool;
     };
     if (initialId) {
       topic.value = topics.nodes.get(initialId).label;
