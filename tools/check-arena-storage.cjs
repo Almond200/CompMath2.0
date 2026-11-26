@@ -308,6 +308,7 @@ async function checkPoolAndSubmission(browser) {
     assert.match(await page.locator('.arena-rating-change').innerText(),/Geometry.*→.*Elo/);
     assert.equal(await page.locator('.practice-result-badge small').count(),0);
     await page.getByText('Arena overview',{exact:true}).click();
+    await page.getByRole('heading',{name:'Contest history',exact:true}).waitFor();
     await page.locator('.arena-history-row a').first().waitFor();
     assert.match(await page.locator('.arena-history-row a').first().innerText(),/^Geometry 1000 /);
   }

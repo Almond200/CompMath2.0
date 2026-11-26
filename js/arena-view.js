@@ -297,7 +297,7 @@
           <td>${accuracy(stats.points.filter(p => hasAnswer(p.event) && p.event.subjects.includes(id)))}</td></tr>
           <tr class="arena-subject-details" id="arena-subject-${id}" data-subject="${id}" hidden><td colspan="3">${subjectDetails(ctx,id,label,stats,reviews)}</td></tr>`; }).join('')}</tbody></table></div></section>
       <section class="sh-section" id="arena-study"><h3>What to study</h3>${studyHtml(ctx, studyRows)}</section>
-      <section class="sh-section" id="arena-history"><h3>Session history</h3><div id="arena-history-list"></div><button type="button" class="hp-btn hp-btn-soft" data-arena-history-toggle aria-controls="arena-history-list" aria-expanded="false" hidden>Show all</button></section></div>`;
+      <section class="sh-section" id="arena-history"><h3>Contest history</h3><div id="arena-history-list"></div><button type="button" class="hp-btn hp-btn-soft" data-arena-history-toggle aria-controls="arena-history-list" aria-expanded="false" hidden>Show all</button></section></div>`;
     const overallPlot = ctx.container.querySelector('#arena-overview [data-rating-plot]');
     if (overallPlot) wireTrend(overallPlot,ratingHistory(stats));
     for (const button of ctx.container.querySelectorAll('[data-subject-toggle]')) {

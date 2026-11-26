@@ -394,7 +394,7 @@
     arena: { label: "Arena", ask: "Track your solving strength" }
   };
   const SPACE_SECTIONS = {
-    arena: [["arena-overview", "Your rating"], ["arena-session", "Rated session"], ["arena-subjects", "Subject ratings"], ["arena-study", "What to study"], ["arena-history", "History"]],
+    arena: [["arena-overview", "Your rating"], ["arena-session", "Rated session"], ["arena-subjects", "Subject ratings"], ["arena-study", "What to study"], ["arena-history", "Contest history"]],
     learn: [["learn-books", "Textbooks"], ["pr-study", "Lists"]],
     practice: [["pr-concept", "Practice a concept"],
       ["pr-mock", "Mock a contest"], ["pr-contests", "Contests"],
