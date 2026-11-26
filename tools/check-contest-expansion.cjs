@@ -8,8 +8,29 @@ const base = process.env.COMPMATH_URL || 'http://localhost:8765';
   page.on('pageerror', e => errors.push(e.message)); page.setDefaultTimeout(15000);
   await page.addInitScript(t => localStorage.setItem('theme', t), theme);
   const go = async hash => { await page.goto(base + '/' + hash); await page.locator('main').waitFor(); };
-  await go('#/f/pythagorean-theorem'); await page.locator('.contest-refs').waitFor();
   const practice = page.locator('.contest-refs');
+  const profileOdds = page.locator('.pf-odds');
+  for (const [id, count] of [['lagrange-roots-mod-p', 3], ['dirichlet-convolution', 4]]) {
+    await go('#/f/' + id); await profileOdds.waitFor(); await practice.waitFor();
+    for (const [section, row] of [[profileOdds, '.pf-odd'], [practice, '.prob-group']]) {
+      const rows = section.locator(row);
+      assert.equal(await rows.count(), count);
+      assert.equal(await section.locator(row + ':visible').count(), 3);
+      assert.doesNotMatch(await section.locator(row + ':visible').first().innerText(), /AMC|AIME/);
+      const more = section.locator('.fam-more-btn');
+      if (count === 3) assert.equal(await more.count(), 0);
+      else {
+        assert.equal(await more.innerText(), 'Show 1 more contest');
+        await more.click();
+        assert.equal(await section.locator(row + ':visible').count(), 4);
+        await more.click();
+        assert.equal(await section.locator(row + ':visible').count(), 3);
+      }
+    }
+  }
+  await go('#/f/pythagorean-theorem'); await practice.waitFor();
+  assert.equal(await practice.locator('.prob-group:visible').count(), 3);
+  assert.equal(await profileOdds.locator('.pf-odd:visible').count(), 3);
   assert.equal(await practice.locator('.fam-more-btn').getAttribute('aria-expanded'), 'false');
   await practice.locator('.fam-more-btn').click(); assert.equal(await practice.locator('.fam-more-btn').getAttribute('aria-expanded'), 'true');
   const odds = page.locator('[data-fam-list="profile-odds"]'), table = page.locator('[data-fam-list="profile-contests"]');

@@ -10,7 +10,7 @@
   // \frac{3}{4} or \sqrt{3}, a leading "x = ", 1,000 as one thousand, and "and" or "or"
   // between the items of a list.
   const SUP = { "⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4", "⁵": "5", "⁶": "6", "⁷": "7", "⁸": "8", "⁹": "9", "⁻": "-" };
-  function normalize(src, groupThousands = true, symbolic = false) {
+  function normalize(src, symbolic) {
     let s = String(src).trim().replace(/\$/g, "");
     s = s.replace(/^[a-z]\s*=\s*/i, "").replace(/=\s*$/, "");
     s = s.replace(/\\left|\\right|\\[,;!:]|\\displaystyle/g, "");
@@ -36,25 +36,32 @@
       .replace(/π/g, "pi").replace(/√/g, "sqrt").replace(/∛/g, "cbrt").replace(/[[{]/g, "(").replace(/[\]}]/g, ")");
     if (!symbolic) s = s.toLowerCase();
     s = s.replace(/\s+(?:and|or)\s+/gi, ", ").replace(/\bsquare\s*root\s*(?:of)?\b/gi, "sqrt");
-    // 1,000 and 12,345,678 are numbers; "4,9" and "4, 9" stay lists.
-    if (groupThousands && !/\bchoose\s*\(/.test(s)) for (let k = 0; k < 4; k++) s = s.replace(/(\d),(\d{3})(?![\d,]?\d)/g, "$1$2");
     return s;
   }
 
   // Tokens: numbers, pi, sqrt, cbrt, + - * / ^ ! ( ) and the comma.
-  function tokens(src, groupThousands, allowImaginary, variable, symbolic) {
-    const out = [];
-    const s = normalize(src, groupThousands, symbolic);
+  function tokens(src, groupThousands = true, allowImaginary, variable, symbolic) {
+    const out = [], groups = [];
+    const s = normalize(src, symbolic);
     const variableToken = variable?.toLowerCase();
     let i = 0;
     while (i < s.length) {
       const c = s[i];
       if (/\s/.test(c)) { i++; continue; }
-      const num = /^(\d+\.?\d*|\.\d+)/.exec(s.slice(i));
+      const rest = s.slice(i);
+      // A scalar bracket can contain spaced thousands separators. Lists, symbolic tuples
+      // and choose(n, k) still use commas to separate their entries.
+      const grouped = groups.length
+        ? groups.at(-1) && /^\d{1,3}(?:,\s*\d{3})+(?:\.\d*)?(?![\d.]|,\s*\d)/.exec(rest)
+        : groupThousands && /^\d{1,3}(?:,\d{3})+(?:\.\d*)?(?![\d.]|,\d)/.exec(rest);
+      const num = grouped || /^(\d+\.?\d*|\.\d+)/.exec(rest);
       if (num) {
         // "1 1/2" would silently read as 1 × 1/2; better to ask.
         if (out.length && out[out.length - 1].t === "num") throw new Error("Two numbers stand side by side: put a sign or a bracket between them.");
-        out.push({ t: "num", v: num[1] }); i += num[1].length; continue;
+        const digits = num[0];
+        const token = { t: "num", v: digits.replace(/[,\s]/g, "") };
+        if (grouped) token.display = digits.replace(/,\s*/g, "{,}");
+        out.push(token); i += digits.length; continue;
       }
       if (s.startsWith("pi", i)) { out.push({ t: "pi" }); i += 2; continue; }
       if (s.startsWith("sqrt", i)) { out.push({ t: "sqrt" }); i += 4; continue; }
@@ -75,7 +82,14 @@
           i += symbol[0].length; continue;
         }
       }
-      if ("+-*/^!(),±".indexOf(c) !== -1) { out.push({ t: c }); i++; continue; }
+      if ("+-*/^!(),±".indexOf(c) !== -1) {
+        if (c === "(") {
+          const previous = out.at(-1)?.t;
+          groups.push(previous !== "choose" && (!symbolic || groupThousands || unaryFunctions.includes(previous)));
+        }
+        if (c === ")") groups.pop();
+        out.push({ t: c }); i++; continue;
+      }
       throw new Error(`"${c}" is not part of an answer: use digits, + − × ÷ ^, √, π and brackets.`);
     }
     return out;
@@ -122,7 +136,10 @@
     }
     function atom() {
       const t = peek();
-      if (t === "num" || t === "variable") return { op: t, v: toks[k++].v };
+      if (t === "num" || t === "variable") {
+        const { v, display } = toks[k++];
+        return display ? { op: t, v, display } : { op: t, v };
+      }
       if (t === "pi" || t === "e" || t === "i") { k++; return { op: t }; }
       if (unaryFunctions.includes(t)) { k++; if (!peek()) throw new Error(`${sym({ t })} needs a number after it.`); return { op: t, a: atom() }; }
       if (t === "choose") {
@@ -249,7 +266,7 @@
   function tex(n) {
     if (Object.hasOwn(functions, n.op)) return "\\" + n.op + "\\left(" + tex(bare(n.a)) + "\\right)";
     switch (n.op) {
-      case "num":
+      case "num": return n.display || n.v;
       case "variable": return n.v;
       case "pi": return "\\pi";
       case "e": return "e";
@@ -308,7 +325,7 @@
     return x.every((v, i) => isFinite(v) && isFinite(y[i]) && Math.abs(v - y[i]) <= 1e-9 * Math.max(1, Math.abs(v), Math.abs(y[i])));
   }
 
-  const api = { parse, value, values, toTex, toSymbolicTex, closeOpen, same, normalize, binomial, fibonacci };
+  const api = { parse, value, values, toTex, toSymbolicTex, closeOpen, same, binomial, fibonacci };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.LearnAnswer = api;
 })(typeof window !== "undefined" ? window : this);

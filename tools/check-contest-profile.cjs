@@ -37,13 +37,13 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   assert.match(stats[1][0],/^\d+(st|nd|rd|th)$/);assert.match(stats[1][1],/^most used of \d+ (formula|method|pattern)s$/);
   assert.deepEqual(stats[2],[String(e.med),'median rating']);assert.deepEqual(stats[3],[e.years.join('–'),'years seen']);
   // The odds are given per contest, not as one figure across contests of different sizes.
-  const odds=await pf.locator('.pf-odds .pf-odd').allInnerTexts();assert(odds.length>=3);assert(odds.includes('1 in '+e.aimeOdds+'AIME')||odds.includes('1 in '+e.aimeOdds+' AIME')||odds.map(t=>t.replace(/\s+/g,' ')).includes('1 in '+e.aimeOdds+' AIME'),JSON.stringify(odds));
+  const odds=await pf.locator('.pf-odds .pf-odd').allTextContents();assert(odds.length>=3);assert(odds.includes('1 in '+e.aimeOdds+'AIME'),JSON.stringify(odds));
   assert.equal(await pf.locator('.pf-stat').nth(1).evaluate(el=>el.classList.contains('pf-odds')),true);assert.doesNotMatch(await pf.locator('.pf-stats').innerText(),/of all problems/);
   assert.deepEqual(await pf.locator('.pf-k').allInnerTexts().then(x=>x.slice(0,4)),['Contests:','Difficulty:','Topics:','Over time:']);
   const contests=rowOf(pf,'Contests'),aime=contests.locator('tbody tr').filter({hasText:'AIME'}).locator('td');
   assert.equal(await aime.nth(1).innerText(),String(e.aime));assert.equal(await aime.nth(2).innerText(),e.aimeShare);assert.equal(await aime.nth(3).innerText(),'#'+e.aimeAt);
-  // The table shows the AMC and AIME rows first (owner, 2026-11-14); Show more contests adds the rest.
-  assert((await contests.locator('tbody tr:visible th').allInnerTexts()).every(t=>/^(AMC (8|10|12)|AIME)$/.test(t.trim())),'only AMC and AIME rows by default');
+  const contestNames = await contests.locator('tbody th').allTextContents();
+  assert.deepEqual(await contests.locator('tbody tr:visible th').allTextContents(), contestNames.slice(0, 3));
   if(await contests.locator('.fam-more-btn').count()){await contests.locator('.fam-more-btn').click();await contests.locator('.fam-more-btn[aria-expanded="true"]').waitFor();}
   const counted=await contests.locator('tbody tr td:nth-child(3)').allInnerTexts();assert.equal(counted.reduce((a,b)=>a+ +b,0),e.n,'the contests add up to the problems');
   if(await contests.locator('.fam-more-btn').count()){await contests.locator('.fam-more-btn').click();await contests.locator('.fam-more-btn[aria-expanded="false"]').waitFor();}
@@ -79,7 +79,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
   const stats=await tp.locator('.pf-stat:not(.pf-odds)').evaluateAll(xs=>xs.map(x=>[x.querySelector('b').textContent,x.querySelector('span').textContent]));
   assert.deepEqual(stats,[[ps.length.toLocaleString('en-US'),'problems'],[String(med),'median rating'],[Math.min(...ps.map(p=>p.year))+'–'+Math.max(...ps.map(p=>p.year)),'years seen']]);
   const aimeAll=db.filter(p=>/ AIME\b/.test(p.ref)).length,aimeHere=ps.filter(p=>/ AIME\b/.test(p.ref)).length;
-  assert((await tp.locator('.pf-odds .pf-odd').allInnerTexts()).map(t=>t.replace(/\s+/g,' ')).includes('1 in '+Math.round(aimeAll/aimeHere)+' AIME'));
+  assert((await tp.locator('.pf-odds .pf-odd').allTextContents()).includes('1 in '+Math.round(aimeAll/aimeHere)+'AIME'));
   assert.deepEqual(await tp.locator('.pf-k').allInnerTexts(),['Contests:','Difficulty:','Over time:','Cards:']);
   assert.equal(await rowOf(tp,'Difficulty').locator('.pf-words').innerText(),`Median rating ${med}. Half of its problems are rated ${q(elos,.25)} to ${q(elos,.75)}; the full range is ${Math.min(...elos)} to ${Math.max(...elos)}. The median is harder than ${Math.round(db.filter(p=>p.elo<med).length/db.length*100)}% of all problems.`);
   const aimeN=ps.filter(p=>/ AIME\b/.test(p.ref)).length;assert.equal(await rowOf(tp,'Contests').locator('tbody tr').filter({hasText:'AIME'}).locator('td').nth(1).innerText(),String(aimeN));

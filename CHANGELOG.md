@@ -2,6 +2,10 @@
 
 **2026-11-26**
 
+- **Contest lists.** Contest profiles and card practice problems show up to three available contests when folded. Show more appears when additional contests are available.
+
+- **Answer preview.** Render thousands separators in expressions such as square roots while preserving commas that separate answers or entries.
+
 - **Study sidebars.** Hide study sidebars by default. Use Show in Settings to display them.
 
 - **Study recommendations.** Preview recommended topics on hover or keyboard focus.
