@@ -258,6 +258,7 @@
         <span>${statusLabel(event.outcome)}</span></li>`;
     }).join('')}</ul>` : '<p>No graded problems in this subject yet.</p>'}</div>${trendPlot(label)}</div>`;
   }
+  const overviewHeader = '<header class="space-home-head"><h1>Arena</h1><p class="sh-ask">Measure your growth on real contest problems.</p></header>';
   function dashboard(ctx, state, stats, history) {
     const t = stats.overall, placed = !!stats.baseline, s = state.session, active = s && !s.closed;
     const activePlacement = active && s.placement && s.round;
@@ -280,8 +281,7 @@
     const suggestion = rated ? opts.get(A.suggestedSubject(stats)) : "";
     const subjectTrends = new Map([...opts.keys()].map(id => [id,ratingHistory(stats,id)]));
     const title = !placed ? 'Find your starting rating' : 'Your rating';
-    ctx.container.innerHTML = `<div class="space-home arena">
-      <header class="space-home-head"><h1>Arena</h1><p class="sh-ask">Measure your growth on real contest problems.</p></header>
+    ctx.container.innerHTML = `<div class="space-home arena">${overviewHeader}
       <section class="sh-section arena-hero" id="arena-overview"><div><h3>${title}</h3>
       ${placed ? `<div class="arena-big">${number(t.rating)} <small>Elo</small></div>
         ${established < ctx.roots.length ? '<p class="arena-note">Provisional · ' + established + '/' + ctx.roots.length + ' subjects established</p>' : ''}
@@ -922,7 +922,10 @@
     roundController?.abort();
     const renderId = ++draw, hash = location.hash;
     const current = () => draw === renderId && location.hash === hash;
-    ctx.container.innerHTML = '<section class="sh-section"><h1>Arena</h1><p role="status">Loading your progress…</p></section>';
+    const progress = '<p role="status">Loading your progress…</p>';
+    ctx.container.innerHTML = route.playing || route.review
+      ? `<section class="sh-section"><h1>Arena</h1>${progress}</section>`
+      : `<div class="space-home arena">${overviewHeader}<section class="sh-section">${progress}</section></div>`;
     try {
       let state = await A.read();
       if (A.placementLength(state) !== state.session?.length) {
