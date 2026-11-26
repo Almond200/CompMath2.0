@@ -41,6 +41,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('#topic-count').waitFor();
  assert.equal(await p.locator('#topic-count').inputValue(),'1');
  assert.notEqual(await p.locator('#topic-band').inputValue(),'0');
+ assert.match(await p.locator('#topic-practice-status').innerText(), /try \d+(?:–\d+)? minutes per problem/);
  const match = await p.evaluate(() => MATH_PRACTICE_POOL(location.hash.split('/').at(-1).split('?')[0]));
  assert(!match.includes('2018-amc-10a-2'),'similar practice excludes the reviewed problem');
 

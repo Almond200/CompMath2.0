@@ -120,7 +120,7 @@
   const rules = `<details class="arena-rules"><summary>How ratings work</summary>
     <p>Placement is untimed. The next problem adapts to how you answered the previous ones. You get two tries per problem in placement and in rated sets. Each result is compared with that problem’s own Elo. A first-try solve earns full rating credit and a second-try solve earns half.</p>
     <p>The placement set establishes a provisional starting rating for all four subjects. Later sets update each subject independently. Each subject stays provisional until you correctly answer ${A.SUBJECT_PROVISIONAL} rated problems in that subject. Overall Elo stays provisional while any subject rating is provisional.</p>
-    <p>Rated sets have one timer. Harder problems add more time to the set: 2, 3, 5, 7 or 9 minutes per problem at Elo cutoffs of 1000, 1600, 2200 and 2800. Submitting grades any saved answers. Unanswered problems count as misses.</p>
+    <p>Rated sets share one timer across all problems. Each problem adds 2 to 15 minutes based on its difficulty. The same timing scale applies to every subject. Submitting grades any saved answers. Unanswered problems count as misses.</p>
     <p>Each problem updates the subjects it covers. Overall Elo is the average of your three lowest subject ratings. Solving a harder problem earns more Elo, and missing an easier one costs more. Early ratings adjust faster. The minimum rating is 0 Elo.</p></details>`;
   function selector(name, legend, options, value) {
     return `<fieldset class="arena-options"><legend>${legend}</legend><div>${options.map(([id, label]) =>
@@ -437,7 +437,8 @@
         <section class="sh-section"><div class="practice-session-top"><div><h1>${title}</h1><p>${subtitle} · Review</p></div></div>
           <nav class="cn-nums" aria-label="Review problems">${events.map((row,i) =>
             `<a class="cn-num practice-reviewed${i === index ? ' cn-here' : ''}" data-result="${statusLabel(row.outcome)}" href="${detailUrl(i)}"
-              aria-label="Problem ${i+1}, ${statusLabel(row.outcome)}" ${i === index ? 'aria-current="step"' : ''}>${i+1}</a>`).join('')}</nav></section>
+              aria-label="Problem ${i+1}, ${statusLabel(row.outcome)}" ${i === index ? 'aria-current="step"' : ''}>${i+1}</a>`).join('')}</nav>
+          ${ctx.reviewActions(reviewUrl(id))}</section>
         <section class="sh-section practice-question"><h3 tabindex="-1">Problem ${index+1}${p ?
           ' · <a class="practice-prob-link" href="#/problem/' + p.slug + '">' + ctx.escape(ctx.refShort(p.ref)) + '</a>' : ''}</h3>
           ${!p ? '<p>This problem is no longer available.</p>' : event.external && p.url ? ctx.paperPrompt(p) :

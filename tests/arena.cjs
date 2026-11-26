@@ -124,7 +124,10 @@ async function checkHistory() {
   A.openRound(timed, roundId, [problem('amc10-original'), problem('one', 980), problem('two', 1800), problem('three', 2600), problem('four', 3100)], now);
   const round = timed.session.round;
   assert.deepEqual(round.items.map(i => i.slug), ['one','two','three','four']);
-  assert.equal(round.limitMs, (2 + 5 + 7 + 9) * 60000);
+  assert.equal(round.limitMs, (2 + 5 + 8 + 12) * 60000);
+  assert.equal(round.deadline, now + round.limitMs);
+  assert.deepEqual([999,1000,1599,1600,2199,2200,2799,2800,3399,3400].map(A.problemMinutes),
+    [2,3,3,5,5,8,8,12,12,15], 'pacing increases with difficulty only');
   A.checkRoundAnswer(timed, roundId, 'three', {outcome:'incorrect', answer:'D'}, now);
   assert.equal(round.items[2].firstMiss,'D');
   assert.equal(round.items[2].outcome,undefined);

@@ -2,6 +2,8 @@
 
 **2026-11-25**
 
+- **Arena timing and review navigation.** Give harder rated problems more time and show Practice timing suggestions for the selected difficulty. Add the Results overview button to Arena problem review.
+
 - **Mistake review.** Mark or clear an optional reason in Arena and Practice. Next steps offers tailored prompts, lessons, cards, review shortcuts, and a similar-difficulty Practice option for timing. Marked attempts add weight to study recommendations. Highest-rated solve opens the problem in its saved set.
 
 - **Arena Stretch.** Target 150 Elo above Matched to make Stretch sets more challenging.

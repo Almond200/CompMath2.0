@@ -107,7 +107,9 @@ async function check(browser) {
   await highest.click();
   await page.waitForURL(url => url.hash === highestHref);
   assert.equal(await page.locator('.arena-st').getAttribute('data-slug'),highestSlug);
-  await page.getByRole('link',{name:'Back to Results overview'}).click();
+  const resultsButton = page.locator('.practice-review-actions').getByRole('link',{name:'Results overview', exact:true});
+  await resultsButton.click();
+  await page.waitForURL(url => url.hash === '#/arena/review/placement');
   await page.locator('.practice-result-row').nth(1).click();
   await page.locator('.practice-explanation').waitFor();
   await page.locator('.arena-st .statement-credit').waitFor();

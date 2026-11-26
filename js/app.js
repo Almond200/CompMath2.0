@@ -6261,7 +6261,7 @@
         return items.length ? items[version % items.length] : "";
       }).filter(Boolean);
       const time = reason === "timing" && Number.isFinite(p.elo)
-        ? `<p>Try setting a ${window.Arena.problemMinutes(p.elo)}-minute timer for your next problem.</p>` : "";
+        ? `<p>For a problem at this difficulty, try a ${window.Arena.problemMinutes(p.elo)}-minute timer.</p>` : "";
       list.innerHTML = `<p>${steps[version % steps.length]}</p>${time}${resourceList(links)}`;
       renderMath(list);
     };
@@ -6464,6 +6464,9 @@
   function practiceResultRow({href, index, number, problem, summary, result}) {
     return `<a class="practice-result-row" href="${href}" data-result-index="${index}"><span><strong>Problem ${number}${problem ? ' · ' + escapeAttr(refShort(problem.ref)) : ''}</strong>${summary ? '<small>' + summary + '</small>' : ''}</span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
   }
+  function practiceReviewActionsHtml(resultsUrl) {
+    return `<div class="practice-review-actions"><a class="hp-btn hp-btn-soft" href="${resultsUrl}">Results overview</a></div>`;
+  }
   function practiceResultsHtml({back, title, subtitle, intro = "", meta = "", stats, insights, reviewUrl, rows, arena = false}) {
     return `<div class="space-home practice-session practice-results${arena ? ' arena arena-play' : ''}">${back}
       <section class="sh-section"><h1>${title}</h1><p class="practice-results-subtitle">${subtitle}</p>${intro}
@@ -6562,7 +6565,7 @@
         <div class="practice-session-top"><div><h1>${mock ? 'Mock set' : 'Practice set'} · ${escapeAttr(practiceSetLabel(set))}</h1><p>${set.slugs.length} problem${set.slugs.length === 1 ? '' : 's'}${mock ? (set.clock ? ' · '+set.clock.limitMs/60000+' minutes' : ' · Untimed') : ' · '+escapeAttr(set.difficulty)+' difficulty'}${finished ? ' · Review' : ''}</p></div>
           ${set.clock && !finished ? `<div class="mock-clock" role="timer" aria-label="Time remaining"><span>Time remaining</span><strong class="mock-clock-value">${mockTime(practiceSessions.timeLeft(set))}</strong></div>` : ''}</div>
         <nav class="cn-nums" aria-label="Practice problems">${nav}</nav>
-        ${finished ? `<div class="practice-review-actions"><a class="hp-btn hp-btn-soft" href="#/practice/set/${encodeURIComponent(set.id)}">Results overview</a></div>` : ''}
+        ${finished ? practiceReviewActionsHtml('#/practice/set/' + encodeURIComponent(set.id)) : ''}
         ${finished ? '' : `<div class="practice-session-actions"><span>${answeredSummary()}</span><div><a class="hp-btn hp-btn-soft" href="#/practice">Save and exit</a><button type="button" class="hp-btn" id="finish-practice">Finish and review</button></div></div>`}
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
@@ -6765,8 +6768,14 @@
       form.querySelector("#topic-band-note").textContent = match
         ? problemDifficulty.describe(selectedPool(match.id), DIFFS[difficulty.valueAsNumber], "this topic")
         : "Choose a topic to see five similar Elo intervals for the selected contests.";
-      const timerNote = pool.length && Number.isFinite(similar?.elo)
-        ? ` For this drill, try a ${window.Arena.problemMinutes(similar.elo)}-minute timer per problem.` : "";
+      let timerNote = "";
+      if (similar) {
+        const minutes = new Set(pool.filter(p => Number.isFinite(p.elo)).map(p => window.Arena.problemMinutes(p.elo)));
+        if (minutes.size) {
+          const duration = minutes.size === 1 ? minutes.values().next().value : `${Math.min(...minutes)}–${Math.max(...minutes)}`;
+          timerNote = ` For this drill, try ${duration} minutes per problem.`;
+        }
+      }
       status.textContent = match ? pool.length + " matching problem" + (pool.length === 1 ? "" : "s") + " available" + (match.children.length ? ", including subtopics." : ".") + timerNote
         : topic.value.trim() ? "Choose a topic from the suggestions." : "";
       form.querySelector("button[type=submit]").disabled = generating || !pool.length;
@@ -7050,7 +7059,7 @@
       },
       paperPrompt: p => `<div class="practice-paper"><p>Read ${p.num ? "Problem " + p.num : "the problem"} in the original source.</p>
         <a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`,
-      reviewResults: practiceResultsHtml, reviewRow: practiceResultRow,
+      reviewResults: practiceResultsHtml, reviewRow: practiceResultRow, reviewActions: practiceReviewActionsHtml,
       answerBreakdown,
       reviewInsights: (outcomes, counts, href, breakdown, mistakes) => practiceInsightsHtml({marks:{}},outcomes,counts,href,breakdown,mistakes),
       reviewExplanation: practiceExplanationHtml,

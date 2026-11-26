@@ -124,8 +124,9 @@
     if (elo < 1000) return 2;
     if (elo < 1600) return 3;
     if (elo < 2200) return 5;
-    if (elo < 2800) return 7;
-    return 9;
+    if (elo < 2800) return 8;
+    if (elo < 3400) return 12;
+    return 15;
   }
   function roundItem(problem, saved) {
     return {slug:problem.slug, identity:canonical(problem.identity), elo:problem.elo, subjects:problem.subjects,
