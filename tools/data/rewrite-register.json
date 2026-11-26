@@ -1873,7 +1873,9 @@
     "system-as-polynomial-product": "method",
     "trig-power-reduction": "formula",
     "parallel-lines-height-change": "formula",
-    "trigonometric-sums-products": "pattern"
+    "trigonometric-sums-products": "pattern",
+    "fibonacci-doubling": "formula",
+    "matrix-geometric-series": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -9185,6 +9187,18 @@
       [
         "(new card)",
         "written directly in the pattern template"
+      ]
+    ],
+    "fibonacci-doubling": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "matrix-geometric-series": [
+      [
+        "(new card)",
+        "written directly in the formula template"
       ]
     ]
   }

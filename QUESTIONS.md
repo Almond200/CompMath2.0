@@ -39,10 +39,12 @@ A kind of problem the tree has no node for, seen in several problems (the archet
 
 ### Card candidates from the tagging pass
 
-New rows go at the top of this table, as the next P-number. The next is P85. For this pass a somewhat fringe pattern or method is listed too, with every problem that needs it (owner, 2026-11-06). Answer per row: yes, no, or a different rating.
+New rows go at the top of this table, as the next P-number. The next is P88. For this pass a somewhat fringe pattern or method is listed too, with every problem that needs it (owner, 2026-11-06). Answer per row: yes, no, or a different rating.
 
 | # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by | Answer |
 |---|---|---|---|---|---|
+| P87 | Matrix Geometric Series (`matrix-geometric-series`) | formula, algebra / Matrices, Determinants & Linear Systems | AIME Late, low | 2020 AIME I #8, matrix displacement solution | Requested and added on 2026-11-26. |
+| P86 | Fibonacci Doubling Formulas (`fibonacci-doubling`) | formula, algebra / Sequences & Series | AMC, low | 2024 AMC 10B #23 / 12B #18, ratio of doubled terms | Requested and added on 2026-11-26. |
 | P85 | Trigonometric Sums and Products (`trigonometric-sums-products`) | pattern, algebra / Self-Similar & Repeating | AMC, medium | 2021 Spring AMC 12A #22, 2006 AIME I #12 | Requested and added on 2026-11-24. |
 | P84 | Parallel Lines and Height Changes (`parallel-lines-height-change`) | formula, geometry / Vectors & Coordinates in Space | AMC, low | 2021 Fall AMC 10A #17 | Requested and added on 2026-11-24. |
 | P83 | Trigonometric Power-Reduction Formulas (`trig-power-reduction`) | formula, algebra / Trigonometric Identities | AMC, medium | 2026 AMC 12B #15 | Requested and added on 2026-11-24. |

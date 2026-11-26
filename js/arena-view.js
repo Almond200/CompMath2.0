@@ -259,6 +259,8 @@
     const latest = postPlacement.at(-1);
     const delta = latest && postPlacement.filter(p => p.event.session === latest.event.session).reduce((sum,p) => sum + p.delta, 0);
     const opts = new Map(ctx.roots.map(n => [n.id, ctx.topicLabel(n)]));
+    const rated = active ? !s.placement : placed;
+    const suggestion = rated ? opts.get(A.suggestedSubject(stats)) : "";
     const subjectTrends = new Map([...opts.keys()].map(id => [id,ratingHistory(stats,id)]));
     const title = !placed ? 'Find your starting rating' : 'Your rating';
     ctx.container.innerHTML = `<div class="space-home arena">
@@ -276,7 +278,8 @@
         ${postPlacement.length ? `<div><strong>${new Set(postPlacement.map(p => p.event.session)).size}</strong><small>Rated sets</small></div>` : ''}</div>
         ${arenaAnswerBreakdown(ctx,postPlacement.map(point => point.event),'Overall accuracy on submitted rated answers')}` : ''}
       </section>
-      <section class="sh-section" id="arena-session"><h3>${(active ? s.placement : !placed) ? 'Placement set' : 'Rated session'}</h3>
+      <section class="sh-section" id="arena-session"><h3>${rated ? 'Rated session' : 'Placement set'}</h3>
+      ${suggestion ? `<p class="arena-note">Suggested next topic: <strong>${suggestion}</strong></p>` : ''}
       ${active ? `<p class="arena-note">${s.placement ? 'Mixed subjects' : (opts.get(s.focus) || 'Mixed subjects') + ' · ' + paceNames[s.pace]} · ${s.round ? s.placement ? s.length + ' problems · Untimed' : s.round.items.length + ' problems · ' + s.round.limitMs / 60000 + ' min' : (s.length - A.remaining(state)) + ' of ' + s.length + ' answered'}</p>
         <div class="arena-resume"><a class="hp-btn arena-primary" href="${sessionUrl}">${A.remaining(state) ? (s.placement ? 'Resume placement' : 'Resume session') : 'View results'} ${ctx.icon('arrow-right')}</a>
         ${s.round && !s.placement ? '<span class="arena-resume-time"><span class="arena-clock" aria-label="Time remaining" role="timer"></span> left</span>' : ''}</div>` :

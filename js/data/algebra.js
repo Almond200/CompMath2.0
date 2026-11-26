@@ -351,6 +351,16 @@ window.MATH_SECTIONS.push({
           level: ["AIME", "Olympiad"]
         },
         {
+          id: "matrix-geometric-series",
+          name: "Matrix Geometric Series",
+          latex: String.raw`I + M + M^2 + \cdots = (I-M)^{-1},\qquad \rho(M)<1`,
+          description: String.raw`The infinite sum of powers of a square matrix $M$ equals $(I-M)^{-1}$ when every eigenvalue of $M$ has modulus below $1$. If successive steps are $v,Mv,M^2v,\ldots$, their total is found by solving $(I-M)x=v$.`,
+          keywords: ["matrix geometric series", "neumann series", "infinite matrix sum", "sum of matrix powers", "spectral radius", "total displacement", "fixed point"],
+          importance: "low",
+          tier: "AIME Late",
+          level: ["AIME", "Olympiad"]
+        },
+        {
           id: "eigenvalues-characteristic",
           name: "Eigenvalues & the Characteristic Polynomial",
           latex: String.raw`A\mathbf{v} = \lambda \mathbf{v} \iff \det(A - \lambda I) = 0, \qquad \sum_i \lambda_i = \operatorname{tr} A, \qquad \prod_i \lambda_i = \det A`,
@@ -617,6 +627,16 @@ window.MATH_SECTIONS.push({
           description: String.raw`Binet's Formula writes the $n$th Fibonacci number $F_n$ in closed form through the two roots $\varphi$ and $\psi$ of $x^2 = x + 1$, the golden ratio and its conjugate. Since $|\psi| \lt 1$, $F_n$ is simply the nearest integer to $\frac{\varphi^n}{\sqrt5}$, which gives its growth rate and digit count at once. The card also collects the Fibonacci identities that do most of the contest work: Cassini's identity, the gcd of two Fibonacci numbers, the addition formula, the sum of the squares, and $F_1 + \cdots + F_n = F_{n+2} - 1$.`,
           keywords: ["fibonacci", "binet", "cassini", "golden ratio", "gcd", "lucas numbers"],
           importance: "medium",
+          tier: "AMC",
+          level: ["AMC12", "AIME"]
+        },
+        {
+          id: "fibonacci-doubling",
+          name: "Fibonacci Doubling Formulas",
+          latex: String.raw`F_{2n} = F_n(2F_{n+1} - F_n), \qquad F_{2n+1} = F_n^2 + F_{n+1}^2`,
+          description: String.raw`Two consecutive Fibonacci numbers $F_n$ and $F_{n+1}$ give the pair at indices $2n$ and $2n+1$. Apply the two identities repeatedly to compute a distant term by halving its index, or reduce each calculation modulo $m$ to find the term's remainder.`,
+          keywords: ["fibonacci", "fast doubling", "fibonacci doubling identities", "fibonacci addition formula", "even odd fibonacci", "modular fibonacci"],
+          importance: "low",
           tier: "AMC",
           level: ["AMC12", "AIME"]
         },

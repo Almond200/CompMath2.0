@@ -211,6 +211,16 @@ async function checkHistory() {
   const recovering = A.ratings([...floorPlacement, miss, {...miss, slug:'recover', outcome:'correct'}]);
   assert(recovering.subjects.get('geo').rating > 0, 'a solve can raise the rating immediately from zero');
   const day = 86400000, nowForStudy = 120 * day;
+  const subjectIds = ['alg','cp','geo','nt'];
+  const practicePriority = (adjustments = {}, olderSubject) => A.suggestedSubject({
+    overall: {rating:1500},
+    subjects:new Map(subjectIds.map(id => [id,{rating:1500,count:10,wins:6,...adjustments[id]}])),
+    points:subjectIds.map(id => ({event:{subjects:[id],outcome:'correct',at:nowForStudy - (id === olderSubject ? 14 * day : 0)}}))
+  },nowForStudy);
+  assert.equal(practicePriority({geo:{rating:1350}}),'geo','a lower rating guides training when coverage is similar');
+  assert.equal(practicePriority({geo:{rating:1350}},'cp'),'cp','a long gap can outweigh a moderate rating difference');
+  assert.equal(practicePriority({nt:{wins:3}}),'nt','a provisional subject gets a boost');
+  assert.equal(practicePriority({cp:{count:7}}),'cp','fewer rated attempts make a subject a better next choice');
   const studyHistory = [
     ...Array.from({length:4},(_,i) => ({kind:'problem',source:'arena',item:'old-'+i,outcome:'incorrect',at:i*day})),
     {kind:'problem',source:'arena',item:'today',outcome:'incorrect',at:nowForStudy}

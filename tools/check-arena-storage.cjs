@@ -145,6 +145,7 @@ async function check(browser) {
   await page.getByText('Arena overview',{exact:true}).click();
   const recommendations = page.locator('#arena-study');
   await recommendations.locator('.arena-study-row').first().waitFor();
+  await page.locator('#arena-session').getByText('Suggested next topic: Algebra', {exact:true}).waitFor();
   const filter = recommendations.getByRole('combobox',{name:'Study recommendation subject'});
   const period = page.getByRole('combobox',{name:'Overall rating trend period'});
   await period.selectOption('3');

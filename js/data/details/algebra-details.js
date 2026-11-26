@@ -6550,3 +6550,45 @@ Choose the operation that sends the angles already on the page to another angle 
 A sum with symmetrically placed angles can reveal a common factor in a trigonometric equation. Sums and products of cosines on a regular polygon can also appear as the coefficients of a polynomial.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"fibonacci-doubling": String.raw`
+## Key forms
+$$F_{2n}=F_n(2F_{n+1}-F_n),\qquad F_{2n+1}=F_n^2+F_{n+1}^2.$$
+In addition form, $F_{m+n}=F_mF_{n+1}+F_{m-1}F_n$ for $m\ge 1$ and $n\ge 0$.
+
+## Conditions
+Use the Fibonacci sequence with $F_0=0$, $F_1=1$ and $F_{n+2}=F_{n+1}+F_n$. The doubling identities hold for every integer $n\ge 0$.
+
+## Why it works
+For fixed $m\ge 1$, the expression $F_mF_{n+1}+F_{m-1}F_n$ satisfies the Fibonacci recurrence in $n$. At $n=0$ and $n=1$ it gives $F_m$ and $F_m+F_{m-1}=F_{m+1}$, so it equals $F_{m+n}$ for all $n\ge 0$. Use $m=n\ge 1$ and $F_{n-1}=F_{n+1}-F_n$ to get the even formula. Use $m=n+1$ to get the odd formula. At $n=0$ the even formula reads $0=0$.
+
+## Useful observations
+Once the formulas give the pair at $2n$ and $2n+1$, their sum gives $F_{2n+2}$. That gives the two consecutive terms needed whether the next index is even or odd. In modular arithmetic, add the modulus when needed to express a negative intermediate result as a nonnegative remainder.
+
+## Applications
+To find a far-off term, first compute the consecutive pair at half the index and use doubling to get the requested pair. The number of doubling steps grows logarithmically with the index. The same identity gives $F_{2n}/F_n=F_{n-1}+F_{n+1}$ for $n\ge 1$ without evaluating [[binets-formula|Binet's Formula]].
+
+## Contest profile
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"matrix-geometric-series": String.raw`
+## Key forms
+$$S_N=I+M+\cdots+M^N,\qquad (I-M)S_N=I-M^{N+1}.$$
+If the series converges, its sum is $(I-M)^{-1}$. For the sum of the vectors $v,Mv,M^2v,\ldots$, solve $(I-M)x=v$.
+
+## Conditions
+The matrix $M$ must be square, and $I$ is the identity of the same size. The series converges exactly when the spectral radius $\rho(M)$, the largest modulus of an eigenvalue of $M$, is below $1$. A convenient sufficient test is that the maximum absolute row sum is below $1$.
+
+## Why it works
+Left-multiplying $S_N$ by $I-M$ telescopes to $I-M^{N+1}$. If every eigenvalue has modulus below $1$, then $M^{N+1}$ tends to zero: in complex Jordan form each nonzero-eigenvalue block has entries in its powers that are polynomial factors in $N$ times powers of the eigenvalue, and zero-eigenvalue blocks become zero after finitely many powers. Also, $1$ is not an eigenvalue, so $I-M$ is invertible. Multiplying the finite identity by $(I-M)^{-1}$ and taking the limit gives the claim. Conversely, convergence forces $M^N\to 0$, and applying $M^N$ to an eigenvector shows that its eigenvalue must have modulus below $1$.
+
+## Useful observations
+When one step rotates and shrinks a vector by a fixed factor $r$, the length of $M^Nv$ is $|r|^N\lVert v\rVert$. This checks convergence directly. Invertibility of $I-M$ by itself is insufficient: $M=2I$ has an inverse for $I-M$, but its powers grow.
+
+## Applications
+Sum the displacement of a turning walk by putting the first displacement in a column vector and using one matrix for each turn and scale. For a recurrence $x_{n+1}=Mx_n+b$, the same formula gives its limit $(I-M)^{-1}b$ whenever $\rho(M)<1$. It is the matrix version of the [[geometric-series|geometric series]].
+
+## Contest profile
+`
+});

@@ -3,7 +3,7 @@
 (function (root) {
   'use strict';
   const activity = typeof module === 'undefined' ? null : require('./learning-activity');
-  const KEY = 'mq-arena', BASE = 1500;
+  const KEY = 'mq-arena', BASE = 1500, DAY = 86400000;
   const PLACEMENT_SIZE = 10, LEGACY_PLACEMENT_SIZE = 12, SUBJECT_PROVISIONAL = 6;
   const SUBJECTS = ['alg','cp','geo','nt'];
   // Questions near the estimate are most informative. The outer pairs cover a broad starting range.
@@ -314,6 +314,27 @@
     return pace === 'warmup' ? Math.max(0, Math.floor((rating + PACES.warmup) / 50) * 50) :
       Math.floor(rating / 50) * 50 + PACES[pace];
   }
+  function suggestedSubject(stats, now = Date.now()) {
+    const lastWorked = new Map();
+    for (const {event, calibration} of stats.points) {
+      if (calibration || !answered(event)) continue;
+      for (const id of event.subjects) lastWorked.set(id, event.at);
+    }
+    const strongest = Math.max(...SUBJECTS.map(id => stats.subjects.get(id)?.rating ?? stats.overall.rating));
+    let best = SUBJECTS[0], bestPriority = -Infinity;
+    for (const id of SUBJECTS) {
+      const {rating, count, wins} = stats.subjects.get(id) ?? track(stats.overall.rating);
+      const eloGap = Math.min(1, (strongest - rating) / 400);
+      const coverageGap = 1 / (1 + count / 8);
+      const idleDays = (now - (lastWorked.get(id) ?? -Infinity)) / DAY;
+      const timeAway = Math.min(1, Math.max(0, idleDays / 14));
+      const provisional = Math.max(0, 1 - wins / SUBJECT_PROVISIONAL);
+      // Coverage and time away can outweigh an Elo gap so one weak subject does not monopolize training.
+      const priority = 0.40 * eloGap + 0.25 * coverageGap + 0.20 * timeAway + 0.15 * provisional;
+      if (priority > bestPriority) { best = id; bestPriority = priority; }
+    }
+    return best;
+  }
   function choose(pool, seen, stats, session, subjectsOf, random = Math.random, picked = [], weakTopics) {
     const {focus, pace, placement} = session;
     const center = placement ? stats.overall.rating : targetRating(stats,focus,pace);
@@ -340,7 +361,6 @@
     }
     return best;
   }
-  const DAY = 86400000;
   function studyTargets(problem, includeCards = true) {
     const topics = [...new Set(problem.tree)].map(id => ({kind:'topic', id}));
     const cards = includeCards ? [...new Set([problem.main, ...(problem.formulas || [])])].filter(Boolean) : [];
@@ -415,7 +435,7 @@
     }
     return selected;
   }
-  const api = { KEY, PLACEMENT_SIZE, SUBJECT_PROVISIONAL, PACES, LENGTHS, canonical, read, merge, change, saveDraft, start, remaining, remainingMs, roundComplete, submissionAt, openRound, placementIndex, placementStats, placementLength, advancePlacement, checkRoundAnswer, submitRound, placeAnswer, finishProblem, problemMinutes, ratings, targetRating, choose, recommendations, studyTargets, studyEvidence, studyRecommendations };
+  const api = { KEY, PLACEMENT_SIZE, SUBJECT_PROVISIONAL, PACES, LENGTHS, canonical, read, merge, change, saveDraft, start, remaining, remainingMs, roundComplete, submissionAt, openRound, placementIndex, placementStats, placementLength, advancePlacement, checkRoundAnswer, submitRound, placeAnswer, finishProblem, problemMinutes, ratings, targetRating, suggestedSubject, choose, recommendations, studyTargets, studyEvidence, studyRecommendations };
   if (typeof module !== 'undefined') module.exports = api;
   else root.Arena = api;
 })(typeof window === 'undefined' ? globalThis : window);

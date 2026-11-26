@@ -58,7 +58,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid", "rolling-without-slipping", "tethered-animal", "unfold-the-bounces"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 147 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 148 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -68,7 +68,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["difference-of-squares", "an-minus-bn", "sophie-germain", "cubes-minus-3abc", "square-of-sum", "two-variable-identities", "binomial-theorem", "sos-identity", "useful-factorizations", "pairwise-sum-product", "antisymmetric-factorization", "sum-zero-identities", "reciprocal-power-sums", "denesting-radicals", "completing-the-square", "forced-difference-of-squares", "sfft", "rationalizing"] },
       { title: "Sequences & Series",
         note: "Closed forms, and the moves that produce one when the sum looks hopeless.",
-        ids: ["arithmetic-series", "triangular-numbers", "geometric-series", "power-sums", "arithmetico-geometric", "binets-formula", "linear-recurrence", "factorial-telescoping", "first-order-recurrence", "largest-term-ratio", "telescoping", "partial-fractions", "finite-differences", "double-summation", "fx-pairing", "alternating-sum-grouping", "symmetrizing-a-sum"] },
+        ids: ["arithmetic-series", "triangular-numbers", "geometric-series", "power-sums", "arithmetico-geometric", "binets-formula", "linear-recurrence", "factorial-telescoping", "first-order-recurrence", "largest-term-ratio", "telescoping", "partial-fractions", "finite-differences", "double-summation", "fx-pairing", "alternating-sum-grouping", "symmetrizing-a-sum", "fibonacci-doubling"] },
       { title: "Inequalities",
         note: "The named inequalities, then the machinery for deciding which one the problem wants.",
         ids: ["am-gm", "max-product-fixed-sum", "mean-chain", "cauchy-schwarz", "trivial-inequality", "abs-triangle-inequality", "bernoulli-inequality", "power-mean-inequality", "median-minimizes-abs", "slope-to-a-point", "sign-chart", "placing-digits-extremes", "averaging-principle"] },
@@ -206,7 +206,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["inversion-facts"] }
     ] },
   { id: "route-aime-algebra", name: "AIME Algebra", kind: "route", tier: "AIME", subject: "Algebra",
-    blurb: "Builds on the AMC 10/12 algebra route: only the cards that are new at this level, so each list stays short. 40 cards across 10 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AMC 10/12 algebra route: only the cards that are new at this level, so each list stays short. 41 cards across 10 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -237,7 +237,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["function-symmetry-equation"] },
       { title: "Systems & Determinants",
         note: "AIME hides linear systems inside logs, side lengths and reciprocals. Spot the symmetry before eliminating, and know what a determinant is before a problem hands you one.",
-        ids: ["cramers-rule", "determinant-basics", "matrix-multiplication", "cofactor-expansion", "matrix-inverse", "matrix-power-diagonalizing"] },
+        ids: ["cramers-rule", "determinant-basics", "matrix-multiplication", "cofactor-expansion", "matrix-inverse", "matrix-power-diagonalizing", "matrix-geometric-series"] },
     ] },
   { id: "route-aime-number", name: "AIME Number Theory", kind: "route", tier: "AIME", subject: "Number Theory",
     blurb: "Builds on the AMC 10/12 number theory route: only the cards that are new at this level, so each list stays short. 30 cards across 7 sections.",

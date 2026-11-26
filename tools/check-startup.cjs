@@ -22,6 +22,9 @@ async function verifyFallback(page) {
   try {
     const mobile = { viewport: { width: 375, height: 667 }, isMobile: true, hasTouch: true };
     const slowStartup = await browser.newPage(mobile);
+    await slowStartup.addInitScript(() => {
+      localStorage.setItem('mq-settings', JSON.stringify({prefs:{start:'formulas'}}));
+    });
     let resumeStartup;
     const heldApp = new Promise(resolve => { resumeStartup = resolve; });
     await slowStartup.route('**/js/app.js?*', async route => {
@@ -37,6 +40,10 @@ async function verifyFallback(page) {
       resumeStartup();
     }
     await slowStartup.locator('.home:not(.static-home)').waitFor();
+    assert.equal(new URL(slowStartup.url()).hash, '', 'a saved startup preference no longer overrides home');
+    await slowStartup.goto(base + '/#/settings');
+    await slowStartup.locator('.settings-head').waitFor();
+    assert.equal(await slowStartup.getByRole('radiogroup', {name:'When the app opens'}).count(), 0);
     await slowStartup.close();
 
     const noJavaScript = await browser.newPage({ ...mobile, javaScriptEnabled: false });

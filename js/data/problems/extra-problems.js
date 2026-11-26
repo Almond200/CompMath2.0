@@ -2332,6 +2332,14 @@
     { q: String.raw`Real numbers $a$, $b$, $c$, and $d$ satisfy $a + c = 6$, $ac + b + d = 13$, $ad + bc = 12$, and $bd = 4$. Find the largest possible value of $a^2 + b^2 + c^2 + d^2$.`,
       s: String.raw`The left sides are the coefficients of $x^3$, $x^2$, $x$, and $1$ in $(x^2 + ax + b)(x^2 + cx + d)$, so the system says this product is $x^4 + 6x^3 + 13x^2 + 12x + 4 = (x^2 + 3x + 2)^2 = (x + 1)^2(x + 2)^2$. Each monic real quadratic factor takes two of the four linear factors: $(x + 1)^2$ and $(x + 2)^2$ in either order give $(a, b, c, d) = (2, 1, 4, 4)$ or $(4, 4, 2, 1)$, and $(x + 1)(x + 2)$ twice gives $(3, 2, 3, 2)$. The sums of squares are $4 + 1 + 16 + 16 = 37$ and $9 + 4 + 9 + 4 = 26$, so the largest is $\mathbf{37}$.` }
   );
+  add("fibonacci-doubling",
+    { q: String.raw`Find the last three digits of $F_{40}$.`,
+      s: String.raw`From $F_{10}=55$ and $F_{11}=89$, doubling gives $F_{20}=55(178-55)=6765$ and $F_{21}=55^2+89^2=10{,}946$. Reducing modulo $1000$ before the next doubling gives $F_{40}\equiv 765(2\cdot946-765)=862{,}155\equiv 155\pmod{1000}$.` }
+  );
+  add("matrix-geometric-series",
+    { q: String.raw`Two tanks start empty. Each cycle, half the first tank's liquid moves to the second, a third of the second tank's liquid moves to the first, and the rest of the old liquid drains. Then $30$ liters are added to the first tank and $12$ to the second. What volumes do the tanks approach?`,
+      s: String.raw`The transfer matrix is $M=\begin{pmatrix}0&1/3\\1/2&0\end{pmatrix}$ and each cycle adds $b=\binom{30}{12}$. The volume after $n$ cycles is $\sum_{k=0}^{n-1}M^kb$. Since $M^2=I/6$, pairing even and odd powers gives the limiting series $(I+M)(I-M^2)^{-1}b=\tfrac65(I+M)b$. This is $\tfrac65\binom{34}{27}=\binom{204/5}{162/5}$ liters.` }
+  );
   add("trig-power-reduction",
     { q: String.raw`Rewrite $\sin^2x\cos^2x$ using a single cosine, then find its value at $x=30^\circ$.`,
       s: String.raw`Multiplying the two square formulas gives $(1-\cos^2 2x)/4$. Reducing the remaining square gives $(1-\cos 4x)/8$. At $x=30^\circ$ this is $(1+\frac12)/8=\frac3{16}$.` }
