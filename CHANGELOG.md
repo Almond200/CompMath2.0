@@ -2,6 +2,8 @@
 
 **2026-11-25**
 
+- **Mistake review.** Mark or clear an optional reason in Arena and Practice. Next steps offers tailored prompts, lessons, cards, review shortcuts, and a similar-difficulty Practice option for timing. Marked attempts add weight to study recommendations. Highest-rated solve opens the problem in its saved set.
+
 - **Arena Stretch.** Target 150 Elo above Matched to make Stretch sets more challenging.
 - **Contest history.** Rename Arena’s history section and sidebar link to Contest history.
 - **Shorter Arena placement.** Use ten adaptive questions for the provisional Elo estimate. Preserve completed placement results and keep any question already open in a saved session.
