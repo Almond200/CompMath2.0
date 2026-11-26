@@ -3979,11 +3979,10 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 }
 /* Cards say they open on touch screens, where nothing hovers (owner, 2026-10-31). */
 @media (hover: none), (max-width: 760px) { .more-hint { opacity: 1; } }
-:root { --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%238a93a6' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
 /* The phone's menus (a contest's years, a book's pages): our own chevron, set in from the edge,
    on the card background (owner, 2026-10-31). */
 .ct-yb-select, .bk-mnav-sel { -webkit-appearance: none; appearance: none; padding-right: 42px;
-  background: var(--bg-card) var(--select-chevron) no-repeat right 18px center; }
+  background: var(--bg-card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%238a93a6' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 18px center; }
 @media (max-width: 360px) {
   .topbar-inner { padding-left: 12px; padding-right: 12px; gap: 10px 6px; }
   .topbar-tools { gap: 4px; }
@@ -4103,12 +4102,8 @@ body[data-space="practice"] .practice-panel-intro { margin: 6px 0 12px; font-siz
 .review-resource-group h5 { margin: 0 0 4px; font-size: calc(14px * var(--tx)); }
 .review-next p { margin: 0 0 6px; }
 .review-next .resource-list { margin: 0; }
-[data-result-study]:not([hidden]) { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 8px 12px; margin-bottom: 10px; }
+.insight-notes [data-result-study] { margin-bottom: 10px; }
 .study-update { margin: 0 0 6px; color: var(--text-dim); font-size: calc(12px * var(--tx)); }
-@media (max-width: 600px) {
-  [data-result-study]:not([hidden]) { grid-template-columns: minmax(0, 1fr); }
-  [data-result-study] .study-filter { justify-self: start; }
-}
 
 .practice-review .rand-btns [aria-disabled="true"] { cursor: default; }
 #past-practice-sets > h4 { font-size: calc(14px * var(--tx)); margin: 16px 0 10px; }
@@ -4967,15 +4962,6 @@ body:is([data-space="learn"], [data-space="practice"], [data-space="arena"]) .la
 .study-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 .study-filters { display: flex; flex-wrap: wrap; gap: 8px; }
 .study-filter { padding: 5px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-card); color: var(--text); font: inherit; }
-:is(.study-filter, .arena-plot-head select) {
-  appearance: none;
-  max-inline-size: 100%;
-  padding-inline-end: 36px;
-  background: var(--bg-card) var(--select-chevron) no-repeat right 14px center;
-}
-@media (forced-colors: active) {
-  :is(.study-filter, .arena-plot-head select) { appearance: auto; padding-inline-end: 12px; background-image: none; }
-}
 .arena .arena-set-nav .cn-num[data-result="Incorrect"] { color: var(--text); }
 .arena .arena-set-nav .cn-num[data-retry]:not(:hover) { color: var(--accent); }
 .arena-resume { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; }

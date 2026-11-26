@@ -100,6 +100,7 @@ async function check(browser) {
   await page.getByRole('heading',{name:'Placement complete'}).waitFor();
   assert.equal(await page.locator('.practice-result-row').count(),10,'original result plus the remaining placement problems');
   assert.equal(await page.locator('.insight-cell').count(),10);
+  assert.equal(await page.getByRole('combobox',{name:'Recommendation type'}).count(),0);
   const highest = page.locator('.insight-notes p').filter({hasText:'Highest-rated solve'}).getByRole('link');
   const highestHref = await highest.getAttribute('href');
   const highestSlug = await highest.getAttribute('data-problem-preview');
@@ -117,6 +118,8 @@ async function check(browser) {
   const marker = page.locator('.review-mistake');
   assert.equal(await marker.getAttribute('open'),null);
   await marker.locator('summary').click();
+  assert(await marker.getByText(/Think about what went wrong on your first try/).isVisible());
+  assert.equal(await marker.locator('[data-mistake-reason="timing"]').count(),0);
   const concept = marker.locator('[data-mistake-reason="concept"]');
   const starting = marker.locator('[data-mistake-reason="starting"]');
   const nextSteps = page.locator('.review-next');
@@ -145,21 +148,8 @@ async function check(browser) {
   const filter = recommendations.getByRole('combobox',{name:'Study recommendation subject'});
   const period = page.getByRole('combobox',{name:'Overall rating trend period'});
   await period.selectOption('3');
-  const viewport = page.viewportSize();
-  for (const width of [viewport.width,375]) {
-    await page.setViewportSize({width,height:viewport.height});
-    for (const menu of [filter,period]) {
-      assert(await menu.evaluate(select => {
-        const style = getComputedStyle(select);
-        const ctx = document.createElement('canvas').getContext('2d');
-        ctx.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
-        const labelWidth = ctx.measureText(select.selectedOptions[0].textContent).width;
-        const textArea = select.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
-        return labelWidth <= textArea + 1 && parseFloat(style.paddingInlineEnd) >= 32;
-      }), 'the dropdown label has its own space beside the chevron');
-    }
-  }
-  await page.setViewportSize(viewport);
+  for (const menu of [filter,period])
+    assert.equal(await menu.evaluate(select => getComputedStyle(select).backgroundImage),'none');
   await filter.selectOption('alg');
   assert((await recommendations.locator('.arena-study-row').count()) <= 3);
   await filter.selectOption('all');

@@ -30,14 +30,12 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await missedLink.waitFor();
  assert.match(await notes.locator('[data-study-result]').first().innerText(), /1 missed: /);
  assert.equal(await missedLink.getAttribute('href'), `#/practice/set/${partial}/review/1`);
- const typeFilter = notes.getByRole('combobox',{name:'Recommendation type'});
- await typeFilter.selectOption('card');
- assert((await notes.locator('[data-study-result] > strong').allInnerTexts()).every(text => /^(Formula|Method|Pattern) to revisit/.test(text)));
- await typeFilter.selectOption('topic');
+ assert.equal(await notes.getByRole('combobox',{name:'Recommendation type'}).count(),0);
  await missedLink.click();
  const marker = p.locator('.review-mistake'), steps = p.locator('.review-next');
  const defaultSteps = await steps.innerText();
  await marker.locator('summary').click();
+ assert(await marker.getByRole('button',{name:/Ran out of time/}).isVisible());
  await marker.locator('[data-mistake-reason="carelessness"]').click();
  await marker.locator('[data-mistake-reason="starting"]').click();
  await marker.locator('summary').filter({hasText:'2 selected'}).waitFor();
