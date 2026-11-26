@@ -51,8 +51,8 @@
     const storage = root.localStorage;
     storage.setItem(KEY, JSON.stringify(merge(readStored(storage), { version: VERSION, events: [event] })));
   }
-  async function mistakesFor(source, setId) {
-    const events = root.StudyStorage?.enabled ? await root.StudyStorage.readActivity("mistake") : entries(readStored(root.localStorage));
+  async function mistakesFor(source, setId, storage = root.localStorage) {
+    const events = root.StudyStorage?.enabled ? await root.StudyStorage.readActivity("mistake") : entries(readStored(storage));
     const prefix = mistakePrefix(source, setId);
     return new Map(events.filter(event => event.type === "mistake" && event.id.startsWith(prefix))
       .map(event => [event.item, mistakeReasons(event.outcome)]).filter(([, reasons]) => reasons.length));
@@ -69,36 +69,44 @@
       // Activity can be unavailable without preventing the original study action from saving.
     }
   }
+  const canonicalProblem = id => root.ProblemCatalog?.canonicalId(root.MATH_PROBLEM_CATALOG, id) || id;
   function sawProblem(source, slug) {
-    const canonical = root.ProblemCatalog?.canonicalId(root.MATH_PROBLEM_CATALOG, slug) || slug;
-    return record(source, "exposure", slug, "opened", "problem", "opened:" + canonical);
+    return record(source, "exposure", slug, "opened", "problem", "opened:" + canonicalProblem(slug));
   }
-  async function history({ storage = root.localStorage, arenaState, kind, practice = root.PracticeSessions, arena = root.Arena, canonical = id => root.ProblemCatalog?.canonicalId(root.MATH_PROBLEM_CATALOG, id) || id } = {}) {
+  const finishedAt = set => set.finishedAt ?? set.updated ?? set.created ?? null;
+  function practiceProblemEvents(set, practice) {
+    const at = finishedAt(set);
+    return set.slugs.map(slug => {
+      const outcome = practice.result(set, slug).toLowerCase().replaceAll(" ", "-");
+      return { id: "practice:" + set.id + ":" + slug, source: "practice",
+        type: set.answers[slug] && outcome !== "voided" ? "attempt" : "exposure",
+        kind: "problem", item: slug, at, outcome, session: set.id };
+    });
+  }
+  async function practiceReviewHistory(setId, { storage = root.localStorage, practice = root.PracticeSessions, canonical = canonicalProblem } = {}) {
+    const set = practice.read(storage).find(set => set.id === setId && set.status === "finished");
+    if (!set) return [];
+    const marks = await mistakesFor("practice", setId, storage);
+    return practiceProblemEvents(set, practice).map(event => {
+      const mistakes = canMarkMistake(event.outcome) && marks.get(event.item);
+      return { ...event, canonicalId: canonical(event.item), ...(mistakes?.length ? { mistakes } : {}) };
+    });
+  }
+  async function history({ storage = root.localStorage, arenaState, kind, practice = root.PracticeSessions, arena = root.Arena, canonical = canonicalProblem } = {}) {
     let events = [], marks = [], sets = [];
     if (root.StudyStorage?.enabled) {
       [events, marks] = await Promise.all([root.StudyStorage.readActivity(kind),
         kind === "problem" ? root.StudyStorage.readActivity("mistake") : []]);
     } else try { events = entries(readStored(storage)); } catch (error) {}
-    const mistakes = new Map([...events, ...marks].filter(event => event.type === "mistake")
+    const mistakes = new Map([...events, ...marks].filter(event => event.type === "mistake" && event.source === "arena")
       .map(event => [event.id, event.outcome]));
     events = events.filter(event => event.type !== "mistake");
-    const markFor = (source, setId, slug, outcome, retry) => {
-      const reasons = canMarkMistake(outcome, retry) &&
-        mistakeReasons(mistakes.get(mistakeId(source, setId, slug)), outcome === "correct" && retry);
-      return reasons?.length ? { mistakes: reasons } : {};
-    };
     try { if (practice) sets = practice.read(storage); } catch (error) {}
     for (const set of sets) {
       if (set.status !== "finished") continue;
-      const at = set.finishedAt ?? set.updated ?? set.created ?? null;
       events.push({ id: "practice:" + set.id, source: "practice", type: "completion",
-        kind: "set", item: set.id, at, outcome: set.timedOut ? "timed-out" : "submitted" });
-      for (const slug of set.slugs) {
-        const outcome = practice.result(set, slug).toLowerCase().replaceAll(" ", "-");
-        events.push({ id: "practice:" + set.id + ":" + slug, source: "practice",
-          type: set.answers[slug] && outcome !== "voided" ? "attempt" : "exposure",
-          kind: "problem", item: slug, at, outcome, session:set.id, ...markFor("practice", set.id, slug, outcome) });
-      }
+        kind: "set", item: set.id, at: finishedAt(set), outcome: set.timedOut ? "timed-out" : "submitted" });
+      events.push(...practiceProblemEvents(set, practice));
     }
     if (arena) {
       const state = arenaState ?? await arena.read(root.StudyStorage?.enabled ? undefined : storage);
@@ -106,10 +114,13 @@
       for (const e of state.events) {
         const reviewNumber = (indices.get(e.session) || 0) + 1;
         indices.set(e.session,reviewNumber);
+        const retry = !!e.firstMiss;
+        const reasons = canMarkMistake(e.outcome, retry) &&
+          mistakeReasons(mistakes.get(mistakeId("arena", e.session, e.slug)), e.outcome === "correct" && retry);
         events.push({
           id:"arena:" + e.identity, source:"arena", type:["seen","unanswered"].includes(e.outcome) ? "exposure" : "attempt",
-          kind:"problem", item:e.slug, at:e.at, outcome:e.outcome, retry:!!e.firstMiss,
-          ...markFor("arena", e.session, e.slug, e.outcome, !!e.firstMiss),
+          kind:"problem", item:e.slug, at:e.at, outcome:e.outcome, retry,
+          ...(reasons?.length ? { mistakes: reasons } : {}),
           ...(e.placement ? {placement:true} : {}), session:e.session, reviewNumber
         });
       }
@@ -118,7 +129,7 @@
     return events.map(event => event.kind === "problem" ? { ...event, canonicalId: canonical(event.item) } : event)
       .sort((a, b) => (a.at ?? 0) - (b.at ?? 0));
   }
-  const api = { KEY, merge, record, sawProblem, history, mistakeReasons, mistakeBoost, canMarkMistake, saveMistakes, mistakesFor, keepsNewerMistake };
+  const api = { KEY, merge, record, sawProblem, history, practiceReviewHistory, mistakeReasons, mistakeBoost, canMarkMistake, saveMistakes, mistakesFor, keepsNewerMistake };
   if (typeof module !== "undefined") module.exports = api;
   else root.LearningActivity = api;
 })(typeof window === "undefined" ? globalThis : window);

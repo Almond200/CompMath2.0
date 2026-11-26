@@ -393,7 +393,7 @@
     return {attempts, ranked};
   }
   function recommendations(history, lookup, now = Date.now()) {
-    return evidenceRows(history,lookup,now).ranked;
+    return evidenceRows(history.filter(event => event.source === 'arena'),lookup,now).ranked;
   }
   function studyRecommendations(history, lookup, now = Date.now(), include = () => true) {
     const {attempts, ranked} = evidenceRows(history,lookup,now,{includeCards:true, includePracticeSkips:true});

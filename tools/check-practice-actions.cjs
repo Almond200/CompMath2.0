@@ -45,7 +45,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const marker = p.locator('.review-mistake'), steps = p.locator('.review-next');
  const defaultSteps = await steps.innerText();
  await marker.locator('summary').click();
- assert(await marker.getByText('What to study in Arena',{exact:true}).isVisible());
+ assert(await marker.getByText(/Your selections only personalize recommendations for this Practice set and don’t affect Arena/).isVisible());
  const deselect = marker.getByRole('button',{name:'Deselect all',exact:true});
  assert.equal(await deselect.isVisible(),false);
  assert(await marker.getByRole('button',{name:/Ran out of time/}).isVisible());

@@ -212,7 +212,7 @@
       const lesson = r.kind === 'topic' ? ctx.studyLink(r.id, r.missedSlug) : '';
       const practice = r.kind === 'topic' ? ctx.practiceLink(r.id) : ctx.studyCardPractice(r.id);
       return `<article class="arena-study-row"><div><h4>${item.kind} to revisit · ${item.link}</h4>
-        <p class="arena-note">${studyReasonHtml(ctx,r.examples.filter(hasArenaReview))}</p></div>
+        <p class="arena-note">${studyReasonHtml(ctx,r.examples)}</p></div>
         <ul class="study-links">
           ${lesson ? `<li><span>Study</span>${lesson}</li>` : ''}
           ${practice ? `<li><span>Practice</span>${practice}</li>` : ''}
@@ -248,11 +248,11 @@
     const placementCompleted = activePlacement ? placementTotal - A.remaining(state) : t.count;
     const prev = s || {};
     const established = ctx.roots.filter(root => stats.subjects.get(root.id)?.wins >= A.SUBJECT_PROVISIONAL).length;
-    let studyHistory = history;
-    const reviews = new Map(history.filter(hasArenaReview).map(event => [event.item,event]));
+    let studyHistory = history.filter(hasArenaReview);
+    const reviews = new Map(studyHistory.map(event => [event.item,event]));
     const studyRows = (subject = 'all', type = 'all') => A.studyRecommendations(studyHistory, ctx.lookup, Date.now(), row =>
-      (type === 'all' || row.kind === type) && ctx.studyItem(row) && row.examples.some(event => hasArenaReview(event) &&
-        (subject === 'all' || ctx.subjectsOf(ctx.lookup(event.item)).includes(subject))));
+      (type === 'all' || row.kind === type) && ctx.studyItem(row) &&
+      (subject === 'all' || row.examples.some(event => ctx.subjectsOf(ctx.lookup(event.item)).includes(subject))));
     const initialStudy = studyHtml(ctx,studyRows());
     const postPlacement = stats.points.filter(point => !point.calibration);
     const accuracy = points => points.length ? Math.round(100 * points.filter(p => p.event.outcome === 'correct').length / points.length) + '%' : '—';
@@ -292,7 +292,7 @@
           <td>${accuracy(stats.points.filter(p => hasAnswer(p.event) && p.event.subjects.includes(id)))}</td></tr>
           <tr class="arena-subject-details" id="arena-subject-${id}" data-subject="${id}" hidden><td colspan="3">${subjectDetails(ctx,id,label,stats,reviews)}</td></tr>`; }).join('')}</tbody></table></div></section>
       <section class="sh-section" id="arena-study"><div class="study-header"><div><h3>What to study</h3>
-        <p class="arena-note">Based on the problems you’ve worked on recently.</p></div>
+        <p class="arena-note">Based on the Arena problems you’ve worked on recently.</p></div>
         <div class="study-filters"><select class="study-filter" data-study-subject aria-label="Study recommendation subject"><option value="all">All subjects</option>
           ${[...opts].map(([id,label]) => `<option value="${id}">${label}</option>`).join('')}</select>${ctx.studyTypeFilterHtml()}</div></div>
         <div data-study-items aria-live="polite">${initialStudy}</div></section>
@@ -346,7 +346,7 @@
       try {
         const latest = await ctx.history();
         if (current !== studyRequest || !list.isConnected) return;
-        studyHistory = latest;
+        studyHistory = latest.filter(hasArenaReview);
         updateStudy();
       } catch {}
     });
@@ -721,7 +721,7 @@
       const current = () => box.isConnected;
       const withinSubject = id => id.startsWith(s.focus + '.');
       const weakTopics = new Set(s.placement ? [] : A.recommendations(history.filter(event =>
-        (event.source === 'arena' || event.source === 'practice') && ctx.lookup(event.item)?.tree.some(withinSubject)
+        ctx.lookup(event.item)?.tree.some(withinSubject)
       ), ctx.lookup).map(row => row.id).filter(withinSubject));
       // A problem filed under a subtopic also covers its parent topic.
       for (const id of weakTopics) {

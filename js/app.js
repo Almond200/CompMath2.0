@@ -6177,9 +6177,11 @@
   function mistakeReviewHtml(eligible, {solvedOnRetry = false, fromPractice = false} = {}) {
     if (!eligible) return "";
     const reasons = activity.mistakeReasons(Object.keys(MISTAKE_REASONS), solvedOnRetry);
-    const recommendation = fromPractice ? "help personalize <strong>What to study in Arena</strong>" : "improve your study recommendations";
+    const recommendation = fromPractice
+      ? "Choose any reasons that fit. Your selections only personalize recommendations for this Practice set and don’t affect Arena."
+      : "Choose any reasons that fit to improve your study recommendations. Only your rated results affect your Elo.";
     return `<details class="review-mistake"><summary>Mark your mistake <span data-mistake-selection>Optional</span></summary>
-      <p>${solvedOnRetry ? "Think about what went wrong on your first try. " : ""}Choose any reasons that fit to ${recommendation}. Only your rated results affect your Elo. Select a reason again to clear it.</p>
+      <p>${solvedOnRetry ? "Think about what went wrong on your first try. " : ""}${recommendation} Select a reason again to clear it.</p>
       <div class="review-mistake-options" role="group" aria-label="Mistake reasons">
         ${reasons.map(id => {
           const [label, detail] = MISTAKE_REASONS[id];
@@ -6350,11 +6352,12 @@
     return null;
   }
   function resultStudyNotes(history, source, setId, outcomes, reviewUrl) {
+    const relevantHistory = history.filter(event => event.source === source);
     const key = item => item.kind + ":" + item.id;
     const indices = new Map(outcomes.map(([slug],i) => [slug,i]));
     const localEvidence = new Map();
-    for (const event of history) {
-      if (event.source !== source || event.session !== setId || !window.Arena.studyEvidence(event)) continue;
+    for (const event of relevantHistory) {
+      if (event.session !== setId || !window.Arena.studyEvidence(event)) continue;
       const problem = PROBLEM_BY_SLUG[event.item], index = indices.get(event.item);
       if (!problem || index == null) continue;
       for (const item of window.Arena.studyTargets(problem)) {
@@ -6363,7 +6366,8 @@
         localEvidence.get(id).push({problem, index, outcome:event.outcome});
       }
     }
-    const rows = window.Arena.studyRecommendations(history, slug => PROBLEM_BY_SLUG[slug], Date.now(),
+    const now = source === "practice" ? relevantHistory[0]?.at ?? Date.now() : Date.now();
+    const rows = window.Arena.studyRecommendations(relevantHistory, slug => PROBLEM_BY_SLUG[slug], now,
       row => localEvidence.has(key(row)) && studyItem(row));
     return rows.map(row => {
       const item = studyItem(row), evidence = localEvidence.get(key(row));
@@ -6511,7 +6515,7 @@
       meta, stats, insights:practiceInsightsHtml(set,outcomes,counts,detailUrl), reviewUrl, rows
     });
     renderMath($content);
-    wireResultStudy($content, "practice", set.id, outcomes, detailUrl, () => activity.history({kind:"problem"}));
+    wireResultStudy($content, "practice", set.id, outcomes, detailUrl, () => activity.practiceReviewHistory(set.id));
   }
   function renderTopicPracticeSet() {
     cancelPracticeFinishConfirm();

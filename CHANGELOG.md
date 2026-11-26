@@ -2,6 +2,8 @@
 
 **2026-11-26**
 
+- **Practice and Arena.** Practice outcomes and mistake reasons contribute to the review for that Practice set. Arena study recommendations and rated-set topic targeting use Arena results.
+
 - **Practice results.** Use the standard text color for the Correct score.
 
 - **Navigation.** Show Arena first in the header and on the homepage, followed by Reference, Learn, and Practice.
