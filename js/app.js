@@ -270,8 +270,6 @@
   // Scroll speed: how far one turn of the wheel (or swipe of a trackpad) moves a page. Normal
   // leaves the browser's own scrolling alone; the others scale each wheel step.
   const SCROLL_SPEEDS = ["normal", "slow", "fast"];
-  // Where the app opens: the front page, the Formulas space, or the page the reader last had open.
-  const START_MODES = ["landing", "formulas"];
   const SCROLL_FACTOR = { normal: 1, slow: 0.6, fast: 1.6 };
   // One filter for the whole app: contest tier and importance (persisted).
   function loadSettings() {
@@ -314,7 +312,6 @@
       studySidebars: P.studySidebars === "hide" ? "hide" : "show",
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
-      start: P.start === "last" ? "formulas" : pick(P.start, START_MODES),  // "Where I left off" was removed (2026-10-23)
       tags: P.tags === false ? false : true,
       autoGroup: P.autoGroup === false ? false : true
     };
@@ -327,7 +324,7 @@
           layout: state.layout, diagrams: state.diagrams,
           density: state.density, notation: state.notation, angles: state.angles,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
-          order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
+          order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll,
           tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonLinksChosen: !!state.lessonLinksChosen, studySidebars: state.studySidebars, arenaProblems: state.arenaProblems
         }
       };
@@ -368,7 +365,6 @@
     contestLists: _loaded.contestLists,
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
     scroll: _loaded.scroll,      // "normal" | "slow" | "fast" — mouse-wheel and trackpad scroll speed
-    start: _loaded.start,        // "landing" | "formulas" — where the app opens when no page is asked for
     tags: _loaded.tags,          // keyword chips on the card face
     autoGroup: _loaded.autoGroup // group a saved list into sections instead of one flat run
   };
@@ -4670,7 +4666,7 @@
   const SETTING_DEFAULTS = {
     theme: "light", studySidebars: "show", arenaProblems: "automatic", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
     notation: NOTATIONS[0], angles: ANGLE_MODES[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
-    order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0], contestLists: CONTEST_LIST_MODES[0]
+    order: ORDERS[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0], contestLists: CONTEST_LIST_MODES[0]
   };
   function settingRow(name, desc, key, current, options, pv) {
     const def = SETTING_DEFAULTS[key];
@@ -4722,7 +4718,6 @@
           ${settingRow("Subject pages", "Every card in a subject on one scrolling page, grouped by topic, or just the names, A to Z.", "layout", state.layout, [["cards", "Cards"], ["wiki", "A&ndash;Z index"]], "subject")}
           ${settingRow("Card order", "How cards are ordered on a subject page. Curated keeps the order the cards were written in; Most used puts first the cards that the most practice problems use.", "order", state.order, [["curated", "Curated"], ["problems", "Most used"]], "subject")}
           ${settingRow("Contest sections on pages", "How pages that group problems by contest open. Folded shows the AMC and AIME and three problems per contest, with Show more for the rest. Unfolded shows everything.", "contestLists", state.contestLists, [["click", "Folded"], ["show", "Unfolded"]], "contests")}
-          ${settingRow("When the app opens", "Where you land when you open the app without a link to a particular page. The front page shows the four spaces; Formulas goes straight in. The logo still takes you to the front page.", "start", state.start, [["landing", "Front page"], ["formulas", "Formulas"]])}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Learn</h3>
@@ -4891,7 +4886,6 @@
         scroll: "scrolling, scroll, mouse wheel, wheel, trackpad, touchpad, scroll speed, too fast, too slow, speed",
         layout: "a to z, alphabetical, index, list of names, list view, subject pages, layout",
         order: "sort, sorting, ordering, order, popular, most used, curated, arrange, rank",
-        start: "startup, start page, home page, homepage, landing page, open on, launch, default page, front page, first page, when it opens",
         lessonLinks: "lesson links, drawer, open cards beside, side panel, card links, links, preview, popup",
         arenaProblems: "arena problem pool, external statements, auto grading, all problems",
         studySidebars: "sidebar, side bar, navigation, drawer, rail, hide menu, learn, practice, arena, more space",
@@ -6177,9 +6171,11 @@
   function mistakeReviewHtml(eligible, {solvedOnRetry = false, fromPractice = false} = {}) {
     if (!eligible) return "";
     const reasons = activity.mistakeReasons(Object.keys(MISTAKE_REASONS), solvedOnRetry);
-    const recommendation = fromPractice ? "help personalize <strong>What to study in Arena</strong>" : "improve your study recommendations";
+    const recommendation = fromPractice
+      ? "Choose any reasons that fit. Your selections only personalize recommendations for this Practice set and don’t affect Arena."
+      : "Choose any reasons that fit to improve your study recommendations. Only your rated results affect your Elo.";
     return `<details class="review-mistake"><summary>Mark your mistake <span data-mistake-selection>Optional</span></summary>
-      <p>${solvedOnRetry ? "Think about what went wrong on your first try. " : ""}Choose any reasons that fit to ${recommendation}. Only your rated results affect your Elo. Select a reason again to clear it.</p>
+      <p>${solvedOnRetry ? "Think about what went wrong on your first try. " : ""}${recommendation} Select a reason again to clear it.</p>
       <div class="review-mistake-options" role="group" aria-label="Mistake reasons">
         ${reasons.map(id => {
           const [label, detail] = MISTAKE_REASONS[id];
@@ -6350,11 +6346,12 @@
     return null;
   }
   function resultStudyNotes(history, source, setId, outcomes, reviewUrl) {
+    const relevantHistory = history.filter(event => event.source === source);
     const key = item => item.kind + ":" + item.id;
     const indices = new Map(outcomes.map(([slug],i) => [slug,i]));
     const localEvidence = new Map();
-    for (const event of history) {
-      if (event.source !== source || event.session !== setId || !window.Arena.studyEvidence(event)) continue;
+    for (const event of relevantHistory) {
+      if (event.session !== setId || !window.Arena.studyEvidence(event)) continue;
       const problem = PROBLEM_BY_SLUG[event.item], index = indices.get(event.item);
       if (!problem || index == null) continue;
       for (const item of window.Arena.studyTargets(problem)) {
@@ -6363,7 +6360,8 @@
         localEvidence.get(id).push({problem, index, outcome:event.outcome});
       }
     }
-    const rows = window.Arena.studyRecommendations(history, slug => PROBLEM_BY_SLUG[slug], Date.now(),
+    const now = source === "practice" ? relevantHistory[0]?.at ?? Date.now() : Date.now();
+    const rows = window.Arena.studyRecommendations(relevantHistory, slug => PROBLEM_BY_SLUG[slug], now,
       row => localEvidence.has(key(row)) && studyItem(row));
     return rows.map(row => {
       const item = studyItem(row), evidence = localEvidence.get(key(row));
@@ -6511,7 +6509,7 @@
       meta, stats, insights:practiceInsightsHtml(set,outcomes,counts,detailUrl), reviewUrl, rows
     });
     renderMath($content);
-    wireResultStudy($content, "practice", set.id, outcomes, detailUrl, () => activity.history({kind:"problem"}));
+    wireResultStudy($content, "practice", set.id, outcomes, detailUrl, () => activity.practiceReviewHistory(set.id));
   }
   function renderTopicPracticeSet() {
     cancelPracticeFinishConfirm();
@@ -13349,10 +13347,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // from also restoring scroll on back/forward and fighting us.
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
-  // Opening the bare address can skip the front page (Settings: "When the app opens").
-  if ((!location.hash || location.hash === "#") && state.start !== "landing") {
-    history.replaceState(null, "", spaceEntry("formulas"));
-  }
   legacyRedirect();
   try { localStorage.removeItem("mq-last"); } catch (e) {}
   buildSidebar();

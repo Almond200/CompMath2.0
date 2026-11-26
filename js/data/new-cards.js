@@ -94,5 +94,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Trigonometric power reduction and slopes on a plane", date: "2026-11-24",
     ids: ["trig-power-reduction", "parallel-lines-height-change"] },
   { label: "Trigonometric sums and products", date: "2026-11-24",
-    ids: ["trigonometric-sums-products"] }
+    ids: ["trigonometric-sums-products"] },
+  { label: "Fibonacci doubling and matrix series", date: "2026-11-26",
+    ids: ["fibonacci-doubling", "matrix-geometric-series"] }
 ];

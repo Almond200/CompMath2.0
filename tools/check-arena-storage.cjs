@@ -145,6 +145,7 @@ async function check(browser) {
   await page.getByText('Arena overview',{exact:true}).click();
   const recommendations = page.locator('#arena-study');
   await recommendations.locator('.arena-study-row').first().waitFor();
+  await page.locator('#arena-session').getByText('Suggested next topic: Algebra', {exact:true}).waitFor();
   const filter = recommendations.getByRole('combobox',{name:'Study recommendation subject'});
   const period = page.getByRole('combobox',{name:'Overall rating trend period'});
   await period.selectOption('3');
@@ -171,13 +172,27 @@ async function check(browser) {
   await page.mouse.move(0,0);
   assert.equal(await recommendations.getByRole('button',{name:/refresh/i}).count(),0);
   assert.equal(await recommendations.getByText('Recommendations updated',{exact:true}).count(),0);
-  assert(await recommendations.getByText('Based on the problems you’ve worked on recently.').isVisible());
+  assert(await recommendations.getByText('Based on the Arena problems you’ve worked on recently.').isVisible());
   const historyLink = page.locator('.arena-history-row a').first();
   await page.mouse.move(0,0);
   assert.equal(await historyLink.evaluate(link => getComputedStyle(link).textDecorationLine),'none');
   await historyLink.hover();
   assert.equal(await historyLink.evaluate(link => getComputedStyle(link).textDecorationLine),'underline');
   await page.mouse.move(0,0);
+  const arenaSuggestions = await recommendations.locator('.arena-study-row').allInnerTexts();
+  await page.evaluate(async ([slug, answer]) => {
+    const set = PracticeSessions.create('Practice isolation', 'Any', [slug, '2026-amc-12b-19']);
+    PracticeSessions.answer(set, slug, answer);
+    const other = set.slugs[1];
+    PracticeSessions.answer(set, other, PracticeSessions.officialKey(other) === 'A' ? 'B' : 'A');
+    PracticeSessions.finish(set);
+    PracticeSessions.save(localStorage, set);
+    await LearningActivity.saveMistakes('practice',set.id,other,['concept']);
+  },[nextProblem,correct]);
+  await page.reload();
+  await recommendations.locator('.arena-study-row').first().waitFor();
+  assert.deepEqual(await recommendations.locator('.arena-study-row').allInnerTexts(),arenaSuggestions,
+    'Arena guidance is the same after Practice attempts and mistake reasons');
   await page.evaluate(() => {
     const history = LearningActivity.history;
     window.recommendationReads = 0;

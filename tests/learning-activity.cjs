@@ -34,7 +34,12 @@ async function checkHistory() {
   const arenaState = { events: [{session:'rated', identity:slug, slug, outcome:'correct', firstMiss:'A', at:0}] };
   const problemHistory = await activity.history({kind:'problem', arenaState, arena:{}, practice});
   assert.equal(problemHistory.length, 3, 'annotations do not create additional problem events');
-  assert.deepEqual(problemHistory.find(e => e.id === 'practice:' + missed.id + ':' + slug).mistakes, ['starting','carelessness','timing']);
+  assert(problemHistory.filter(e => e.source === 'practice').every(e => !e.mistakes), 'shared history leaves out Practice mistake reasons');
+  const missedReview = await activity.practiceReviewHistory(missed.id, {practice});
+  assert.deepEqual(missedReview.map(e => [e.session,e.outcome,e.mistakes]), [[missed.id,'incorrect',['starting','carelessness','timing']]]);
+  const correctReview = await activity.practiceReviewHistory(set.id, {practice});
+  assert.deepEqual(correctReview.map(e => [e.session,e.outcome,e.mistakes]), [[set.id,'correct',undefined]],
+    'review history includes only its own set, even if another set has the same problem');
   assert.deepEqual((await activity.mistakesFor('practice', missed.id)).get(slug), ['starting','carelessness','timing']);
   assert.equal(activity.mistakeBoost(['accuracy','reading']), activity.mistakeBoost(['carelessness']));
   assert.deepEqual(activity.mistakeReasons('reasoning'), ['recognition']);
@@ -44,6 +49,7 @@ async function checkHistory() {
   const prior = JSON.parse(localStorage.getItem(activity.KEY));
   await activity.saveMistakes('practice', missed.id, slug, []);
   assert.equal((await activity.mistakesFor('practice', missed.id)).size, 0);
+  assert.equal((await activity.practiceReviewHistory(missed.id, {practice}))[0].mistakes, undefined);
   assert.deepEqual((await activity.mistakesFor('arena', 'rated')).get(slug), ['recognition','timing']);
   const cleared = JSON.parse(localStorage.getItem(activity.KEY));
   const oldMark = prior.events.find(e => Array.isArray(e.outcome) && e.outcome.includes('reading'));

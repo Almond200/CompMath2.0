@@ -18,9 +18,7 @@
       root.classList.add("startup-loading");
       root.dataset.theme = "light";
       try { if (localStorage.getItem("theme") === "dark") root.dataset.theme = "dark"; } catch (error) {}
-      let start = "landing";
-      try { start = JSON.parse(localStorage.getItem("mq-settings"))?.prefs?.start || "landing"; } catch (error) {}
-      if ((!location.hash || location.hash === "#") && start === "landing") root.classList.add("pre-landing");
+      if (!location.hash || location.hash === "#") root.classList.add("pre-landing");
       // If the deferred app never starts, let the static reference link show.
       document.addEventListener("DOMContentLoaded", () => {
         if (document.body.classList.contains("app-pending")) root.classList.remove("startup-loading");
@@ -195,13 +193,13 @@
     <script data-group="chapters" src="js/data/learn/aime-geometry/g7.js?v=15"></script>
     <script data-group="chapters" src="js/data/learn/aime-geometry/g8.js?v=7"></script>
     <script data-group="chapters" src="js/data/learn/aime-geometry/g9.js?v=7"></script>
-    <script data-group="problems" src="js/data/problems/problem-catalog.js?v=1a7bcec06571"></script>
+    <script data-group="problems" src="js/data/problems/problem-catalog.js?v=25978e98661f"></script>
     <!-- start generated solution assets -->
     <script data-group="solutions" data-decade="1980" src="js/data/problems/solutions/1980.js?v=7ec726de9a1a"></script>
     <script data-group="solutions" data-decade="1990" src="js/data/problems/solutions/1990.js?v=e7c8636f9dc7"></script>
     <script data-group="solutions" data-decade="2000" src="js/data/problems/solutions/2000.js?v=4d59030ff20f"></script>
     <script data-group="solutions" data-decade="2010" src="js/data/problems/solutions/2010.js?v=a758b3462c85"></script>
-    <script data-group="solutions" data-decade="2020" src="js/data/problems/solutions/2020.js?v=51db445e30bd"></script>
+    <script data-group="solutions" data-decade="2020" src="js/data/problems/solutions/2020.js?v=c9f0a251ebed"></script>
     <!-- end generated solution assets -->
     <script data-group="problems" src="js/data/problems/contests-planned.js?v=7"></script>
     <script data-group="problems" src="js/data/diagrams/problem-diagrams.js?v=135"></script>
@@ -213,35 +211,35 @@
     <script data-group="practice" src="js/data/problems/answer-keys-more.js?v=13"></script>
     <script data-group="practice" src="js/data/problems/answer-keys-short.js?v=50"></script>
     <script data-group="problems" src="js/data/problems/mock-extras.js?v=4"></script>
-    <script data-group="arena" src="js/arena-view.js?v=16"></script>
+    <script data-group="arena" src="js/arena-view.js?v=18"></script>
     <script data-group="practice" src="js/mock-contests.js?v=11"></script>
   </template>
 
   <script defer src="vendor/katex/katex.min.js?v=1"></script>
   <script defer src="vendor/katex/auto-render.min.js?v=1"></script>
   <script defer src="js/data/geometry.js?v=334"></script>
-  <script defer src="js/data/algebra.js?v=243"></script>
+  <script defer src="js/data/algebra.js?v=244"></script>
   <script defer src="js/data/number-theory.js?v=211"></script>
   <script defer src="js/data/counting.js?v=219"></script>
   <script defer src="js/data/patterns.js?v=365"></script>
   <script defer src="js/data/details/geometry-details.js?v=421"></script>
-  <script defer src="js/data/details/algebra-details.js?v=309"></script>
+  <script defer src="js/data/details/algebra-details.js?v=310"></script>
   <script defer src="js/data/details/number-theory-details.js?v=317"></script>
   <script defer src="js/data/details/counting-details.js?v=281"></script>
   <script defer src="js/data/details/proof-details.js?v=8"></script>
-  <script defer src="js/data/examples-supplement.js?v=338"></script>
+  <script defer src="js/data/examples-supplement.js?v=339"></script>
   <script defer src="js/data/connected.js?v=5"></script>
-  <script defer src="js/data/built-in-lists.js?v=145"></script>
-  <script defer src="js/data/new-cards.js?v=60"></script>
+  <script defer src="js/data/built-in-lists.js?v=146"></script>
+  <script defer src="js/data/new-cards.js?v=61"></script>
   <script defer src="js/data/did-you-know.js?v=3"></script>
   <script defer src="js/data/learn-summary.js?v=2"></script>
-  <script defer src="js/data/topic-homes.js?v=1"></script>
+  <script defer src="js/data/topic-homes.js?v=2"></script>
   <script defer src="js/data/problems/lesson-links.js?v=a4dfca0680e3"></script>
   <script defer src="js/data/lesson-topics.js?v=1"></script>
   <script defer src="js/data/learn/shelf.js?v=56"></script>
   <script defer src="js/data/problems/geometry-problems.js?v=12"></script>
   <script defer src="js/data/problems/contest-problems.js?v=13"></script>
-  <script defer src="js/data/problems/extra-problems.js?v=67"></script>
+  <script defer src="js/data/problems/extra-problems.js?v=68"></script>
   <script defer src="js/data/diagrams/geometry-diagrams.js?v=320"></script>
   <script defer src="js/data/diagrams/general-diagrams.js?v=188"></script>
   <script defer src="js/data/search-glossary.js?v=68"></script>
@@ -256,9 +254,9 @@
   <script defer src="js/problem-search.js?v=2"></script>
   <script defer src="js/problem-catalog.js?v=1"></script>
   <script defer src="js/study-storage.js?v=4"></script>
-  <script defer src="js/arena.js?v=13"></script>
-  <script defer src="js/learning-activity.js?v=11"></script>
+  <script defer src="js/arena.js?v=15"></script>
+  <script defer src="js/learning-activity.js?v=12"></script>
   <script defer src="js/asset-loader.js?v=1"></script>
-  <script defer src="js/app.js?v=969"></script>
+  <script defer src="js/app.js?v=971"></script>
 </body>
 </html>

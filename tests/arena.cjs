@@ -98,8 +98,8 @@ async function checkHistory() {
   assert.equal(history.filter(e=>e.type==='attempt').length,6);
   assert.equal(history.find(e=>e.outcome==='seen').canonicalId,'amc10-original');
   const recs = A.recommendations([...history,
-    {kind:'problem',canonicalId:'math-1',item:'duplicate',at:Date.now()+1,outcome:'correct'},
-    {kind:'problem',canonicalId:'blank',item:'blank',at:0,outcome:'unanswered'}],
+    {kind:'problem',source:'arena',canonicalId:'math-1',item:'duplicate',at:Date.now()+1,outcome:'correct'},
+    {kind:'problem',source:'arena',canonicalId:'blank',item:'blank',at:0,outcome:'unanswered',placement:true}],
     id => ({tree: [id==='duplicate' ? 'alg.rates' : 'geo.length']}));
   assert.deepEqual(recs.map(r=>[r.id,r.attempts,r.misses]),[['geo.length',5,2]]);
   const placementState = A.merge(null, null);
@@ -211,9 +211,19 @@ async function checkHistory() {
   const recovering = A.ratings([...floorPlacement, miss, {...miss, slug:'recover', outcome:'correct'}]);
   assert(recovering.subjects.get('geo').rating > 0, 'a solve can raise the rating immediately from zero');
   const day = 86400000, nowForStudy = 120 * day;
+  const subjectIds = ['alg','cp','geo','nt'];
+  const practicePriority = (adjustments = {}, olderSubject) => A.suggestedSubject({
+    overall: {rating:1500},
+    subjects:new Map(subjectIds.map(id => [id,{rating:1500,count:10,wins:6,...adjustments[id]}])),
+    points:subjectIds.map(id => ({event:{subjects:[id],outcome:'correct',at:nowForStudy - (id === olderSubject ? 14 * day : 0)}}))
+  },nowForStudy);
+  assert.equal(practicePriority({geo:{rating:1350}}),'geo','a lower rating guides training when coverage is similar');
+  assert.equal(practicePriority({geo:{rating:1350}},'cp'),'cp','a long gap can outweigh a moderate rating difference');
+  assert.equal(practicePriority({nt:{wins:3}}),'nt','a provisional subject gets a boost');
+  assert.equal(practicePriority({cp:{count:7}}),'cp','fewer rated attempts make a subject a better next choice');
   const studyHistory = [
-    ...Array.from({length:4},(_,i) => ({kind:'problem',item:'old-'+i,outcome:'incorrect',at:i*day})),
-    {kind:'problem',item:'today',outcome:'incorrect',at:nowForStudy}
+    ...Array.from({length:4},(_,i) => ({kind:'problem',source:'arena',item:'old-'+i,outcome:'incorrect',at:i*day})),
+    {kind:'problem',source:'arena',item:'today',outcome:'incorrect',at:nowForStudy}
   ];
   const study = A.recommendations(studyHistory,id => ({tree:[id === 'today' ? 'geo.new' : 'geo.old']}),nowForStudy);
   assert.equal(study[0].id,'geo.new');
@@ -221,7 +231,7 @@ async function checkHistory() {
   const half = A.ratings([...placed.events,{...newAnswer,firstMiss:'A'}]);
   assert(half.subjects.get('geo').rating > weaker.subjects.get('geo').rating);
   assert(half.subjects.get('geo').rating < updated.subjects.get('geo').rating);
-  const retryStudy = A.recommendations([{kind:'problem',item:'retry',outcome:'correct',retry:true,at:nowForStudy}],
+  const retryStudy = A.recommendations([{kind:'problem',source:'arena',item:'retry',outcome:'correct',retry:true,at:nowForStudy}],
     () => ({tree:['geo.retry']}),nowForStudy);
   assert.equal(retryStudy[0].examples[0].item,'retry');
   const skippedStudy = A.recommendations([
@@ -237,9 +247,13 @@ async function checkHistory() {
     {kind:'problem',source:'practice',item:'ran-out',outcome:'unanswered',mistakes:['timing'],at:nowForStudy},
   ];
   const markedStudy = A.recommendations(equallyRecent,id => ({tree:[id]}),nowForStudy);
-  assert.deepEqual(markedStudy.map(r => r.id),['gap','slip','unmarked','ran-out']);
-  assert.equal(markedStudy[2].recentMisses,1,'unmarked misses keep their usual weight');
+  assert.deepEqual(markedStudy.map(r => r.id),['gap','unmarked'],'Practice mistakes do not create Arena weaknesses');
+  assert.equal(markedStudy[1].recentMisses,1,'unmarked misses keep their usual weight');
   assert.equal(markedStudy[0].misses,1,'marking strengthens one result without creating another attempt');
+  const afterPracticeSolve = A.recommendations([...equallyRecent,
+    {...equallyRecent[2],source:'practice',outcome:'correct',at:nowForStudy+1}
+  ],id => ({tree:[id]}),nowForStudy);
+  assert.deepEqual(afterPracticeSolve,markedStudy,'a later Practice solve does not clear an Arena weakness');
   const firstTryOnly = A.recommendations([{...equallyRecent[2],outcome:'correct'}],id => ({tree:[id]}),nowForStudy);
   assert.equal(firstTryOnly.length,0,'an obsolete label on a first-try solve is ignored');
   const candidate = (item,outcome = 'incorrect',daysAgo = 0,mistakes) =>
