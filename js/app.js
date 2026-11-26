@@ -6621,13 +6621,18 @@
     const answerChoices = $content.querySelectorAll('[data-practice-answer]');
     const clearAnswer = $content.querySelector('#clear-practice-answer');
     const answerInput = $content.querySelector('#practice-answer');
-    // Mobile browsers can retarget a tap just outside a text field onto it.
-    // Keep focus within its visible border, using the original pointer coordinates.
+    // Use the original tap location when the browser snaps a nearby touch to the input or label.
+    const outsideControl = (control, {clientX, clientY}) => {
+      const r = control.getBoundingClientRect();
+      return clientX < r.left || clientX > r.right || clientY < r.top || clientY > r.bottom;
+    };
     answerInput?.addEventListener('pointerdown', e => {
-      if (e.pointerType !== 'touch') return;
-      const r = answerInput.getBoundingClientRect();
-      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.preventDefault();
+      if (e.pointerType === 'touch' && outsideControl(e.currentTarget, e)) e.preventDefault();
     });
+    $content.querySelector('label[for="practice-answer"]')?.addEventListener('touchend', e => {
+      const tap = e.changedTouches[0];
+      if (tap && outsideControl(e.currentTarget, tap)) e.preventDefault();
+    }, {passive:false});
     const multi = practiceSessions.allowsMultipleChoices(slug);
     const syncAnswerUI = () => {
       const value = set.answers[slug] || '';

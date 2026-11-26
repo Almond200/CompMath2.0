@@ -222,7 +222,12 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
    if(width===375)await p.touchscreen.tap(x,y);else await p.mouse.click(x,y);
    assert.equal(await input.evaluate(el=>el===document.activeElement),false,'space outside the answer border/label must not focus the input');
   }
-  if(width===375)await p.touchscreen.tap(r.x+r.width/2,r.y+r.height/2);else await input.click();
+  if(width===375){
+   await p.locator('label[for="practice-answer"]').tap();
+   assert.equal(await input.evaluate(el=>el===document.activeElement),true,'tapping the visible label focuses the input');
+   await input.evaluate(el=>el.blur());
+   await input.tap();
+  }else await input.click();
   assert.equal(await input.evaluate(el=>el===document.activeElement),true,'inside the answer border still focuses normally');
   await input.fill('12');assert.ok(await input.evaluate(el=>{const c=getComputedStyle(el),probe=document.createElement('span');probe.style.color='var(--accent)';document.body.append(probe);const blue=getComputedStyle(probe).color;probe.remove();return c.outlineStyle==='none' && c.borderWidth==='1px' && c.borderColor===blue && c.boxShadow==='none';}), 'answer input uses one blue border, like search, without an inset or outer ring');assert.equal(await clear.isEnabled(),true);await clear.click();assert.equal(await input.inputValue(),'');assert.equal(await input.getAttribute('aria-invalid'),'false');await p.clock.fastForward(1000);assert.equal((await stored(numeric)).answers[slug],'');
   await input.fill('1+');assert.equal(await input.getAttribute('aria-invalid'),'true');assert.equal(await clear.isEnabled(),true);await clear.click();assert.equal(await input.inputValue(),'');assert.equal(await p.locator('#practice-answer-error').innerText(),'');
