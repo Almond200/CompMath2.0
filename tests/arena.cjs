@@ -65,7 +65,7 @@ const pick = (seen, s = placed.session) => A.choose(pool, new Set(seen), calibra
 assert.equal(pick(['amc10-original']).slug,'fit');
 assert.equal(pick(pool.map(p=>p.identity)),null);
 const lowRating = {overall:{rating:350}, subjects:new Map()};
-assert.deepEqual(['warmup','matched','stretch'].map(pace => A.targetRating(lowRating,'mixed',pace)),[150,400,450]);
+assert.deepEqual(['warmup','matched','stretch'].map(pace => A.targetRating(lowRating,'mixed',pace)),[150,400,550]);
 const balanced = {focus:'mixed',pace:'matched',placement:false,length:2};
 const range = [problem('lower',320),problem('higher',480),problem('middle',400),problem('outside',505)];
 assert.equal(A.choose(range,new Set(['lower']),lowRating,balanced,p=>p.subjects,()=>0,[range[0]]).slug,'higher');

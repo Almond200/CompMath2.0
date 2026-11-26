@@ -7,7 +7,7 @@
   const SUBJECTS = ['alg','cp','geo','nt'];
   // Questions near the estimate are most informative. The outer pairs cover a broad starting range.
   const PLACEMENT_OFFSETS = [0,-350,350,0,-200,200,0,-100,100,0];
-  const PACES = { warmup: -200, matched: 50, stretch: 100 };
+  const PACES = { warmup: -200, matched: 50, stretch: 200 };
   const LENGTHS = [2, 3, 5];
   const canonical = id => root.ProblemCatalog?.canonicalId(root.MATH_PROBLEM_CATALOG, id) || id;
   const validId = id => typeof id === 'string' && /^[a-z0-9][a-z0-9.-]{0,180}$/i.test(id);
