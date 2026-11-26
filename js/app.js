@@ -248,6 +248,7 @@
   // A card link in a lesson goes to the card's page by default (owner, 2026-11-15); opening it beside
   // the lesson is the option.
   const LESSON_LINK_MODES = ["card", "drawer"];
+  const STUDY_SIDEBAR_MODES = ["hide", "show"];
   const SECTION_IDS = SECTIONS.map(s => s.id);
 
   // Every write to localStorage can fail -- Safari private browsing refuses outright, and
@@ -309,7 +310,7 @@
       lessonLinks: P.lessonLinksChosen ? pick(P.lessonLinks, LESSON_LINK_MODES) : LESSON_LINK_MODES[0],
       lessonLinksChosen: !!P.lessonLinksChosen,
       arenaProblems: P.arenaProblems === "all" ? "all" : "automatic",
-      studySidebars: P.studySidebars === "hide" ? "hide" : "show",
+      studySidebars: pick(P.studySidebars, STUDY_SIDEBAR_MODES),
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
       tags: P.tags === false ? false : true,
@@ -4664,7 +4665,7 @@
   // Every setting lists its default option first (owner, 2026-10-31); the defaults are the first
   // allowed value the settings loader falls back to.
   const SETTING_DEFAULTS = {
-    theme: "light", studySidebars: "show", arenaProblems: "automatic", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
+    theme: "light", studySidebars: STUDY_SIDEBAR_MODES[0], arenaProblems: "automatic", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
     notation: NOTATIONS[0], angles: ANGLE_MODES[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
     order: ORDERS[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0], contestLists: CONTEST_LIST_MODES[0]
   };
@@ -4699,7 +4700,7 @@
           <h3 class="set-panel-title">Appearance</h3>
           ${settingRow("Theme", "Light or dark. Dark is easier at night.", "theme", theme, [["light", "Light"], ["dark", "Dark"]])}
           ${settingRow("Density", "How tightly the whole app is spaced: page margins, the gaps between cards and sections, and the padding inside panels. Spacious gives everything more room; Compact fits more on each screen. Neither changes text size or card size.", "density", state.density, [["comfortable", "Comfortable"], ["spacious", "Spacious"], ["compact", "Compact"]])}
-          ${settingRow("Study sidebars", "Show section navigation beside Learn, Practice and Arena, including textbook chapters and the contest topic tree.", "studySidebars", state.studySidebars, [["show", "Show"], ["hide", "Hide"]])}
+          ${settingRow("Study sidebars", "Show section navigation beside Learn, Practice, and Arena, including textbook chapters.", "studySidebars", state.studySidebars, [["show", "Show"], ["hide", "Hide"]])}
           ${settingRow("Card size", "How big each card is while browsing. Large cards are wider, so fewer fit across.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Large"]], "browse")}
           ${settingRow("Text size", "Adjusts the size of reading text, headings, and math.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]], "browse page subject problem")}
         </section>
@@ -6402,7 +6403,7 @@
   function studyItem(row) {
     if (row.kind === "topic") {
       const topic = TOPIC_NODES.get(row.id);
-      if (topic) return {kind:"Topic", link:`<a href="${topicHash(row.id)}">${topicLabel(topic)}</a>`};
+      if (topic) return {kind:"Topic", link:`<a data-topic-preview="${topic.id}" href="${topicHash(topic.id)}">${topicLabel(topic)}</a>`};
     } else if (BY_ID[row.id]) {
       const kind = kindOf(BY_ID[row.id].formula);
       return {kind:kind[0].toUpperCase() + kind.slice(1), link:cardTextLink(row.id)};
