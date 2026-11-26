@@ -5609,7 +5609,7 @@
         </a>
         <a class="rc-row" data-tint="learn" href="${lesson ? learnHash(lesson.b, lesson.c, lessonNum(lesson.l)) : "#/learn"}">
           ${uiIcon("arrow-right")}
-          <span class="rc-name">${lesson ? "Continue lesson" : "Find a textbook"}${lesson ? `<small>${escapeAttr(lesson.l.title)}</small>` : ""}</span>
+          <span class="rc-name">${lesson ? "Continue lesson" : "Find a textbook"}${lesson ? `<small>${escapeAttr(lesson.l.title)} · ${escapeAttr(lesson.b.title)}</small>` : ""}</span>
         </a>
       </div>
     </section>`;
