@@ -339,6 +339,14 @@ check('2013-bmmt-individual-18', '2012', 'Correct');
 check('2013-bmmt-individual-18', '1858', 'Incorrect');
 check('2013-bmt-geometry-4', '7776:1', 'Correct');
 check('2013-bmt-geometry-4', '1/1296', 'Incorrect');
+check('2013-bmt-geometry-2', '14', 'Correct');
+check('2013-bmt-geometry-2', '21', 'Incorrect');
+check('2014-bmt-geometry-4', '9+sqrt(24)+sqrt(48)', 'Correct');
+check('2014-bmt-geometry-4', '7+6sqrt(2)+4sqrt(3)', 'Incorrect');
+const bmt2014Voids = [
+  '2014-bmt-analysis-3', '2014-bmt-analysis-8', '2014-bmt-geometry-5', '2014-bmt-geometry-9', '2014-bmt-geometry-10'
+];
+assert(bmt2014Voids.every(slug => voided[slug] && !practice.exactKey(slug)));
 check('2013-bmt-discrete-math-5', '2^2013', 'Correct');
 check('2018-bmt-geometry-10', '(4sqrt(7)-10)pi', 'Correct');
 check('2019-bmt-discrete-math-2', '0.(18)', 'Correct');
