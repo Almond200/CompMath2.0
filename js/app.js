@@ -1641,17 +1641,18 @@
     const r = fragmentUnder(anchor, at);
     const vw = document.documentElement.clientWidth;
     const vh = document.documentElement.clientHeight;
+    const fixed = el.closest("dialog[open]");
+    const scrollX = fixed ? 0 : window.scrollX, scrollY = fixed ? 0 : window.scrollY;
     w = Math.min(w, vw - 16);   // a phone narrower than the popup: keep 8px each side
     el.style.width = w + "px";
-    let left = (at ? at.x - w / 2 : r.left) + window.scrollX;
-    if (left + w > window.scrollX + vw - 8) left = window.scrollX + vw - w - 8;
-    el.style.left = Math.max(8 + window.scrollX, left) + "px";
+    const left = (at ? at.x - w / 2 : r.left) + scrollX;
+    el.style.left = Math.max(8 + scrollX, Math.min(left, scrollX + vw - w - 8)) + "px";
     const h = el.offsetHeight || 160;
     const fitsAbove = r.top - 6 - h >= 8;
     const fitsBelow = r.bottom + 6 + h <= vh - 8;
     const above = preferAbove ? (fitsAbove || !fitsBelow) : !fitsBelow && fitsAbove;
-    el.style.top = (above ? Math.max(8 + window.scrollY, r.top + window.scrollY - h - 6)
-                          : r.bottom + window.scrollY + 6) + "px";
+    el.style.top = (above ? Math.max(8 + scrollY, r.top + scrollY - h - 6)
+                          : r.bottom + scrollY + 6) + "px";
   }
   function syncStarButtons(fid) {
     const on = inList("starred", fid);
@@ -3760,7 +3761,8 @@
   let cpAt = null;
 
   function showCardPreview(a) {
-    const problem = a.hash.startsWith("#/problem/") ? PROBLEM_BY_SLUG[a.hash.slice(10)] : null;
+    const previewSlug = a.dataset.problemPreview;
+    const problem = PROBLEM_BY_SLUG[previewSlug || (a.hash.startsWith("#/problem/") && a.hash.slice(10))];
     const e = BY_ID[a.dataset.card || a.dataset.practiceCard || (a.hash.startsWith("#/f/") && a.hash.slice(4))];
     const lesson = lessonLocations.get(a.dataset.lessonPreview);
     const topic = TOPIC_NODES.get(a.dataset.topicPreview || a.hash.match(/^#\/browse\/topics\/([\w.-]+)$/)?.[1]);
@@ -3798,7 +3800,7 @@
     clearTimeout(cpHide);
     cpEl = document.createElement("div");
     cpEl.className = "card-preview";
-    if (lesson || topic) {
+    if (lesson || topic || previewSlug) {
       cpEl.id = "study-link-preview";
       cpEl.setAttribute("role", "tooltip");
       if (!a.hasAttribute("aria-describedby")) a.setAttribute("aria-describedby", cpEl.id);
@@ -3816,7 +3818,7 @@
     if (thumb) cpEl.classList.add("cp-has-thumb");
     if (problem) cpEl.classList.add("problem-preview");
     cpEl.innerHTML = thumb + content + '<span class="cp-arrow"></span>';
-    document.body.appendChild(cpEl);
+    (a.closest("dialog[open]") || document.body).appendChild(cpEl);
     // Typeset BEFORE measuring. Positioning above the word needs the final height, and KaTeX
     // (and the thumbnail's SVG) change it after the fact; measuring first is what left a gap
     // above the word, and only above, since the below branch pins the top edge instead.
@@ -3834,15 +3836,19 @@
       arrow.style.left = Math.min(Math.max(target - br.left, 14), br.width - 14) + "px";
       cpEl.classList.toggle("cp-below", br.top > ar.top);
     };
-    if (problem && MAA_RE.test(problem.ref)) loadStatements(problem.year).then(() => {
-      if (cpFor !== a) return;
-      const st = window.MATH_STATEMENTS?.[problem.slug];
-      if (!st) return;
-      const text = typeof st === "string" ? st : st.s;
-      cpEl.querySelector(".cp-desc").textContent = text.split(/\n\(A\) /)[0].replace(/@@fig:[^@]+@@/g, "");
-      renderMath(cpEl);
-      place();
-    });
+    const mockStatement = previewSlug && window.MATH_MOCK_EXTRAS?.[problem?.slug]?.statement;
+    if (problem && (MAA_RE.test(problem.ref) || previewSlug && (mockStatement || hasProblemStatement(problem)))) {
+      const ready = mockStatement ? Promise.resolve() : loadStatements(statementFile(problem));
+      ready.then(() => {
+        if (cpFor !== a) return;
+        const st = mockStatement || window.MATH_STATEMENTS?.[problem.slug];
+        if (!st) return;
+        const text = typeof st === "string" ? st : st.s;
+        cpEl.querySelector(".cp-desc").textContent = text.split(/\n\(A\) /)[0].replace(/@@fig:[^@]+@@/g, "");
+        renderMath(cpEl);
+        place();
+      });
+    }
     place();
     requestAnimationFrame(place);          // the thumbnail's SVG can resolve a frame later
   }
@@ -6200,13 +6206,28 @@
     return `<div class="rand-btns" role="${multi ? 'group' : 'radiogroup'}" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${choices.map(a =>
       `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="${multi ? 'checkbox' : 'radio'}" aria-checked="${multi ? selected.includes(a) : selected === a}">${a}</button>`).join('')}</div>`;
   }
-  function practiceInsightsHtml(set, outcomes, counts, reviewUrl) {
-    const graded = counts.Correct + counts.Incorrect;
+  function answerBreakdown({first, second = null, incorrect, unanswered, pending = 0}, accuracyLabel) {
+    const correct = first + (second || 0), attempted = correct + incorrect;
+    const total = attempted + unanswered + pending;
+    if (!total) return '';
+    const percent = (count, base) => base ? Math.round(count * 100 / base) + '%' : '—';
+    const stats = [[percent(correct,attempted),accuracyLabel],[percent(unanswered,total),'Unanswered']];
+    if (second !== null) stats.unshift([percent(first,attempted),'First-try accuracy']);
+    const groups = second === null ? [['right','Correct',first]] : [['right','Correct on first try',first],['retry','Correct on second try',second]];
+    groups.push(['wrong','Incorrect',incorrect],['blank','Unanswered',unanswered]);
+    if (pending) groups.push(['pending','Awaiting grading',pending]);
+    const description = groups.map(([, label, count]) => count + ' ' + label.toLowerCase()).join(', ');
+    return `<div class="answer-breakdown">
+      <div class="answer-breakdown-stats">${stats.map(([value,label]) => `<div><strong>${value}</strong><small>${label}</small></div>`).join('')}</div>
+      <div class="answer-breakdown-track" role="img" aria-label="${description}">${groups.filter(([, , n]) => n).map(([kind,label,n]) =>
+        `<span class="insight-${kind}" style="flex:${n}" title="${label} · ${n} of ${total}"></span>`).join('')}</div>
+      <div class="insight-legend">${groups.map(([kind,label,n]) => `<span><i class="insight-${kind}"></i>${label} · ${n}</span>`).join('')}</div>
+    </div>`;
+  }
+  function practiceInsightsHtml(set, outcomes, counts, reviewUrl, breakdown) {
     const lines = [];
-    if (graded) {
-      const percent = Math.round(100 * counts.Correct / graded);
-      lines.push(`<p><strong>${percent}% accuracy</strong> on graded answers (${counts.Correct} of ${graded})</p>`);
-    }
+    const accuracy = breakdown ?? answerBreakdown({first:counts.Correct, incorrect:counts.Incorrect, unanswered:counts.Unanswered,
+      pending:(counts['Answer unavailable'] || 0) + (counts['Check yourself'] || 0)}, 'Accuracy on graded answers');
 
     // A skipped problem can suggest a starting point, but only a graded miss signals a mistake.
     const focus = counts.Incorrect ? 'Incorrect' : counts.Unanswered ? 'Unanswered' : 'Correct';
@@ -6256,7 +6277,7 @@
       return `<div class="insight-bar-row"><span>${topicLabel(subject)}</span><span class="insight-track" role="img" aria-label="${desc}" title="${desc}">${segments}</span><strong>${row.right}/${row.total}</strong></div>`;
     }).join('');
     if (hardest) lines.push(`<p><strong>Highest-rated solve</strong> · <a href="#/problem/${hardest.slug}">${escapeAttr(refShort(hardest.ref))}</a> · ${hardest.elo} Elo</p>`);
-    return `<div class="practice-insights"><div class="insight-charts">
+    return `<div class="practice-insights">${accuracy}<div class="insight-charts">
       ${bars ? `<section><h3>Correct by subject</h3>${bars}</section>` : ''}
       <section><h3>Results by problem</h3><div class="insight-cells">${sequence}</div></section></div>
       <div class="insight-legend">${legend}</div><div class="insight-notes">${lines.join('')}</div></div>`;
@@ -6819,10 +6840,11 @@
       paperPrompt: p => `<div class="practice-paper"><p>Read ${p.num ? "Problem " + p.num : "the problem"} in the original source.</p>
         <a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`,
       reviewResults: practiceResultsHtml, reviewRow: practiceResultRow,
-      reviewInsights: (outcomes, counts, href) => practiceInsightsHtml({marks:{}},outcomes,counts,href),
+      answerBreakdown,
+      reviewInsights: (outcomes, counts, href, breakdown) => practiceInsightsHtml({marks:{}},outcomes,counts,href,breakdown),
       reviewExplanation: practiceExplanationHtml,
       loadExplanation: p => Promise.all(solutionRequirements([p.year])),
-      showPrompt: p => showStatement(p, ".arena-st", true),
+      showPrompt: (p, hideCredit) => showStatement(p, ".arena-st", true, hideCredit),
       choices: practiceAnswerChoices, exactLabel: practiceExactLabel, keypad: practiceMathKeysHtml, wireKeys: wirePracticeMathKeys,
       answerHtml: exactAnswerHtml, renderMath, confirm: appConfirm, openDialog: appDialog, refresh: render
     }, route);
@@ -10282,7 +10304,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return statementLoads[file];
   }
   // `box` picks the section to fill: the problem page's own, or the home page's problem of the day.
-  function showStatement(p, box = "#prob-st", preferMock = false) {
+  function showStatement(p, box = "#prob-st", preferMock = false, hideCredit = false) {
     const extra = window.MATH_MOCK_EXTRAS?.[p.slug];
     const source = archiveStatement(p);
     const useMock = extra && (preferMock || !source);
@@ -10335,7 +10357,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       });
       const inPractice = box === ".practice-set-st";
       const credit = source?.credit || (MAA_RE.test(p.ref) ? MAA_CREDIT : "");
-      if (credit && !inPractice && !wrap.querySelector(".statement-credit")) {
+      if (credit && !inPractice && !hideCredit && !wrap.querySelector(".statement-credit")) {
         wrap.insertAdjacentHTML("beforeend", `<p class="prob-note statement-credit">${escapeAttr(credit)}</p>`);
       }
       const fallback = wrap.parentElement.querySelector("[data-statement-fallback]");
@@ -10464,7 +10486,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
   // ---------- Practice's Contests list: groups, a finder and jump chips (owner, 2026-11-21) ----------
   // The list grew to some forty contests, so it is grouped under headings that open and close, with a finder
-  // for a contest name or a year and a chip per group to jump to it. The AMC and AIME group starts open.
+  // for a contest name or a year and a chip per group to jump to it.
   const CT_GROUPS = [
     ["maa", "AMC and AIME", f => /^(AMC \d+|AIME)$/.test(f)],
     ["college", "College tournaments", f => /^(HMMT (February|November)|PUMaC|CMIMC|SMT|BMT|BmMT|CHMMC|CMM|Duke Math Meet|MMATHS|Girls in Math|UMD HSMC|Lehigh|Math Prize)/.test(f)],
@@ -10472,7 +10494,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     ["regional", "Regional and state", f => /^(ARML|Utah State|Columbus State|Calgary)/.test(f)],
     ["intl", "Canada and the UK", f => /^(Pascal|Cayley|Fermat|UKMT)/.test(f)]
   ];
-  const ctGroupsOpen = new Set(["maa"]);
+  const ctGroupsOpen = new Set();
   const ctGroupsOf = fams => {
     const out = CT_GROUPS.map(([key, label, test]) => ({ key, label, items: fams.filter(test) })).filter(g => g.items.length);
     const rest = fams.filter(f => !CT_GROUPS.some(g => g[2](f)));
@@ -10584,8 +10606,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
       else if (e.key === "Enter" && !options.hidden && choices[active]) { e.preventDefault(); location.hash = choices[active].href; }
     });
     root.querySelector(".ct-find").addEventListener("focusout", e => { if (!e.relatedTarget?.closest(".ct-find")) close(); });
-    groups.forEach(g => g.addEventListener("toggle", () => { g.open ? ctGroupsOpen.add(g.dataset.ctGroup) : ctGroupsOpen.delete(g.dataset.ctGroup); }));
     const syncFold = () => { foldAll.textContent = groups.some(g => g.open) ? "Collapse all" : "Expand all"; };
+    groups.forEach(g => g.addEventListener("toggle", () => {
+      if (!g.isConnected) return;
+      if (g.open) ctGroupsOpen.add(g.dataset.ctGroup);
+      else ctGroupsOpen.delete(g.dataset.ctGroup);
+      syncFold();
+    }));
     root.querySelectorAll("[data-ct-jump]").forEach(b => b.addEventListener("click", () => {
       const g = root.querySelector(`#ct-group-${b.dataset.ctJump}`); if (!g) return;
       g.open = true; ctGroupsOpen.add(b.dataset.ctJump); syncFold();
@@ -12676,38 +12703,39 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
   // Hover previews for [[card links]]. mouseenter does not bubble, so delegate on
   // mouseover/mouseout and gate on which element the pointer actually crossed into.
-  const studyPreviews = 'a[data-lesson-preview], a[data-topic-preview], a[data-practice-card], .contest-profile a[href^="#/browse/topics/"], .study-links a[href^="#/browse/topics/"], .insight-notes a[href^="#/browse/topics/"]';
+  const studyPreviews = 'a[data-lesson-preview], a[data-topic-preview], a[data-practice-card], a[data-problem-preview], .contest-profile a[href^="#/browse/topics/"], .study-links a[href^="#/browse/topics/"], .insight-notes a[href^="#/browse/topics/"]';
   const hoverLinks = '.card-link, a.related-item[href^="#/f/"], a[href^="#/problem/"], ' + studyPreviews;
-  $content.addEventListener("focusin", event => {
-    if (!event.target.matches(studyPreviews) || !event.target.matches(":focus-visible")) return;
-    clearTimeout(cpTimer);
-    cpTimer = setTimeout(() => { cpAt = null; showCardPreview(event.target); }, 400);
-  });
-  $content.addEventListener("focusout", event => {
-    if (event.target.matches(studyPreviews)) hideCardPreview();
-  });
+  function wireLinkPreviews(container) {
+    container.addEventListener("focusin", event => {
+      if (!event.target.matches(studyPreviews) || !event.target.matches(":focus-visible")) return;
+      clearTimeout(cpTimer);
+      cpTimer = setTimeout(() => { cpAt = null; showCardPreview(event.target); }, 400);
+    });
+    container.addEventListener("focusout", event => {
+      if (event.target.matches(studyPreviews)) hideCardPreview();
+    });
+    container.addEventListener("mouseover", e => {
+      const a = e.target.closest(hoverLinks);
+      // Chart columns already have their own hover labels.
+      if (!a || a.hasAttribute("data-tip")) return;
+      clearTimeout(cpTimer); clearTimeout(cpHide);
+      if (cpFor === a) return;
+      const at = { x: e.clientX, y: e.clientY };
+      cpTimer = setTimeout(() => { cpAt = at; showCardPreview(a); }, 400);
+    });
+    container.addEventListener("mouseout", e => {
+      const a = e.target.closest(hoverLinks);
+      if (!a) return;
+      if (e.relatedTarget && (a.contains(e.relatedTarget) || (cpEl && cpEl.contains(e.relatedTarget)))) return;
+      scheduleHideCardPreview();
+    });
+    container.addEventListener("click", e => { if (e.target.closest(hoverLinks)) hideCardPreview(); });
+  }
+  wireLinkPreviews($content);
   document.addEventListener("keydown", event => {
     if (event.key === "Escape") hideCardPreview();
   });
-  $content.addEventListener("mouseover", e => {
-    const a = e.target.closest(hoverLinks);
-    // A chart column already labels itself (`data-tip`); a preview on top of that would cover it.
-    if (!a || a.hasAttribute("data-tip")) return;
-    clearTimeout(cpTimer); clearTimeout(cpHide);
-    if (cpFor === a) return;
-    const at = { x: e.clientX, y: e.clientY };
-    cpTimer = setTimeout(() => { cpAt = at; showCardPreview(a); }, 400);
-  });
-  $content.addEventListener("mouseout", e => {
-    const a = e.target.closest(hoverLinks);
-    if (!a) return;
-    if (e.relatedTarget && (a.contains(e.relatedTarget) || (cpEl && cpEl.contains(e.relatedTarget)))) return;
-    scheduleHideCardPreview();
-  });
   window.addEventListener("scroll", hideCardPreview, { passive: true });
-  // Clicking the link navigates natively, so without these the box outlives the page it
-  // belonged to and reappears at its old page coordinates in the corner of the new one.
-  $content.addEventListener("click", e => { if (e.target.closest(hoverLinks)) hideCardPreview(); });
   window.addEventListener("hashchange", hideCardPreview);
 
   // navigator.clipboard is a secure-context API: it is undefined on a plain-http origin,
@@ -12973,8 +13001,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
     d.className = "app-confirm app-dialog";
     d.innerHTML = html;
     document.body.appendChild(d);
-    d.addEventListener("close", () => d.remove(), { once: true });
+    d.addEventListener("close", () => { hideCardPreview(); d.remove(); }, { once: true });
     d.addEventListener("click", e => { if (e.target === d) d.close(); });
+    d.addEventListener("scroll", e => {
+      if (!cpEl?.contains(e.target)) hideCardPreview();
+    }, { capture: true, passive: true });
+    d.addEventListener("change", hideCardPreview);
+    wireLinkPreviews(d);
     wire(d);
     d.showModal();
     return d;

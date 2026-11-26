@@ -40,11 +40,17 @@ const base = process.env.COMPMATH_URL || 'http://localhost:8765';
   await page.reload(); await practice.waitFor(); assert.equal(await practice.locator('.fam-more-btn').getAttribute('aria-expanded'), 'true', 'preference survives reload');
   await go('#/practice'); await page.locator('#pr-contests').waitFor();
   assert.equal(await page.locator('#pr-random').count(),0);
-  // The Contests list no longer folds its contests behind a button (owner, 2026-11-22): every group is there, closed except the AMC and AIME.
+  // Every contest group is visible as a heading and starts collapsed.
   assert.equal(await page.locator('#pr-contests [data-fam-list="contest-years"]').count(), 0);
   assert.equal(await page.locator('#pr-contests .ct-group').count() >= 4, true);
+  assert.equal(await page.locator('#pr-contests .ct-group[open]').count(), 0);
+  const maa = page.locator('#ct-group-maa');
+  await page.getByRole('button', {name: 'Expand all', exact: true}).waitFor();
+  await maa.locator('summary').click();
+  await page.getByRole('button', {name: 'Collapse all', exact: true}).waitFor();
+  assert.equal(await maa.evaluate(group => group.open), true);
 
-  const years = page.locator('#pr-contests .ct-years-more').first(); assert.equal(await years.getAttribute('aria-expanded'), 'true');
+  const years = maa.locator('.ct-years-more').first(); assert.equal(await years.getAttribute('aria-expanded'), 'true');
   await years.click(); assert.equal(await years.getAttribute('aria-expanded'), 'false', 'manual fold works on the current page');
   await go('#/f/law-of-cosines'); await page.locator('.contest-refs').waitFor();
   await go('#/practice'); await years.waitFor(); assert.equal(await years.getAttribute('aria-expanded'), 'true', 'new page applies expanded preference');

@@ -4,7 +4,11 @@
   'use strict';
   const A = window.Arena, grade = window.PracticeSessions;
   const number = n => n.toLocaleString(), signed = n => (n > 0 ? '+' : '') + n;
+  const hasAnswer = event => !!(event.answer || event.firstMiss);
   const paceNames = { warmup: 'Warm-up', matched: 'Matched', stretch: 'Stretch' };
+  const trendRanges = [[0,'All time'],[1,'Past 1 month'],[3,'Past 3 months'],[12,'Past 1 year']];
+  const trendPeriod = {0:'over all time',1:'over the past month',3:'over the past 3 months',12:'over the past year'};
+  const trendDates = new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',year:'numeric'});
   const sessionUrl = '#/arena/session', homeUrl = '#/arena';
   const missing = new Set(), cachedSubjects = new WeakMap();
   const back = ctx => `<a class="back-link" href="#/arena">${ctx.icon('arrow-left')} Arena overview</a>`;
@@ -16,27 +20,108 @@
     return points.filter((point, i, all) => point.calibration ? !all[i+1]?.calibration :
       all[i+1]?.event.session !== point.event.session);
   }
-  function chart(points) {
-    const data = setPoints(points).slice(-30);
-    if (data.length < 2) return '<p class="arena-note">Your trend starts here. Your next rated set adds a second point.</p>';
-    const values = data.map(p => p.rating);
-    const lo = Math.floor((Math.min(...values) - 5) / 25) * 25;
+  function ratingHistory(stats, subject) {
+    if (!subject) return setPoints(stats.points).map(({rating,event}) => ({rating, at:event.at}));
+    if (!stats.baseline) return [];
+    const points = stats.points.filter(point => !point.calibration && point.event.subjects.includes(subject));
+    return [{rating:stats.baseline.rating, at:stats.baseline.event.at}, ...setPoints(points).map(point => ({
+      rating:point.subjectChanges.find(change => change.id === subject).after, at:point.event.at
+    }))];
+  }
+  function rangeStart(months) {
+    const date = new Date(), day = date.getDate();
+    date.setDate(1);
+    date.setMonth(date.getMonth() - months);
+    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    date.setDate(Math.min(day,lastDay));
+    return date.getTime();
+  }
+  function chart(points, months) {
+    if (!points.length) return {html:'<p class="arena-note">Finish placement to see your rating trend.</p>'};
+    const start = months ? rangeStart(months) : -Infinity;
+    const data = points.filter(point => point.at >= start);
+    if (!data.length) return {html:'<p class="arena-note">No rating activity in this range.</p>'};
+    const prior = months && points.findLast(point => point.at < start);
+    if (prior) data.unshift({rating:prior.rating,at:start});
+    const first = data[0], last = data.at(-1), span = last.at - first.at;
+    const values = data.map(point => point.rating);
+    const lo = Math.max(0, Math.floor((Math.min(...values) - 5) / 25) * 25);
     const hi = Math.ceil((Math.max(...values) + 5) / 25) * 25;
-    const x = i => 38 + 437 * i / (data.length - 1);
+    const x = at => span ? 38 + 437 * (at - first.at) / span : 38;
     const y = v => 78 - 64 * (v - lo) / (hi - lo);
-    const coords = values.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
-    const label = `Rating trend across ${data.length} results, from ${values[0]} to ${values.at(-1)} Elo`;
-    return `<svg class="arena-chart" viewBox="0 0 485 88" role="img" aria-label="${label}"><title>${label}</title>
-      ${[hi, lo].map(v => `<line x1="38" y1="${y(v)}" x2="475" y2="${y(v)}"/><text x="0" y="${y(v)+4}">${v}</text>`).join('')}
-      <polygon points="38,78 ${coords} 475,78"/><polyline points="${coords}"/>
-      <circle cx="475" cy="${y(values.at(-1))}" r="3.5"/></svg>
-      <div class="arena-chart-caption"><span>${data[0].calibration ? 'Placement' : 'Earlier set'}</span><span>Latest set</span></div>`;
+    const samples = data.map(p => ({x:x(p.at), y:y(p.rating), label:`${trendDates.format(p.at)} · ${number(p.rating)} Elo`}));
+    const coords = samples.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+    const firstDate = trendDates.format(first.at), lastDate = trendDates.format(last.at);
+    const label = data.length === 1 ? `Rating on ${lastDate}: ${number(last.rating)} Elo` :
+      `Rating trend from ${firstDate} to ${lastDate}: ${number(first.rating)} to ${number(last.rating)} Elo`;
+    const html = `<svg class="arena-chart" viewBox="0 0 485 88" tabindex="0" role="img" aria-label="${label}" aria-description="Use the arrow keys to inspect dates and ratings.">
+      ${[hi, lo].map(v => `<line x1="38" y1="${y(v)}" x2="475" y2="${y(v)}"/><text x="0" y="${y(v)+4}">${number(v)}</text>`).join('')}
+      ${span ? `<polygon points="38,78 ${coords} 475,78"/><polyline points="${coords}"/>` : ''}
+      <circle cx="${x(last.at)}" cy="${y(last.rating)}" r="3.5"/>
+      <g class="arena-chart-marker" visibility="hidden" aria-hidden="true"><line x1="0" x2="0" y1="14" y2="78"/><circle r="4"/></g></svg>
+      <output class="arena-chart-tip" hidden></output>
+      <div class="arena-chart-caption"><span>${firstDate}</span>${firstDate === lastDate ? '' : `<span>${lastDate}</span>`}</div>
+      <p class="arena-note arena-plot-change"><strong>${signed(last.rating-first.rating)} Elo</strong> ${trendPeriod[months]}</p>`;
+    return {html,samples};
+  }
+  function trendPlot(label) {
+    return `<section class="arena-plot" data-rating-plot><div class="arena-plot-head"><h4>Rating trend</h4>
+      <select aria-label="${label} rating trend period">${trendRanges.map(([months,name]) => `<option value="${months}">${name}</option>`).join('')}</select></div>
+      <div class="arena-plot-body"></div></section>`;
+  }
+  function wireTrend(plot, points) {
+    const range = plot.querySelector('select'), body = plot.querySelector('.arena-plot-body');
+    const draw = () => {
+      const {html,samples} = chart(points,Number(range.value));
+      body.innerHTML = html;
+      if (!samples) return;
+      const svg = body.querySelector('svg'), tip = body.querySelector('output');
+      const marker = svg.querySelector('.arena-chart-marker'), dot = marker.querySelector('circle');
+      let active = -1;
+      function show(index) {
+        if (active === index) return;
+        active = index;
+        const {x,y,label} = samples[index];
+        marker.setAttribute('transform',`translate(${x} 0)`);
+        marker.setAttribute('visibility','visible');
+        dot.setAttribute('cy',y);
+        tip.textContent = label;
+        tip.hidden = false;
+        const max = Math.max(0, svg.clientWidth - tip.offsetWidth);
+        tip.style.left = Math.max(0,Math.min(max,svg.clientWidth*x/485-tip.offsetWidth/2)) + 'px';
+      }
+      function hide() {
+        active = -1;
+        marker.setAttribute('visibility','hidden');
+        tip.hidden = true;
+      }
+      function point(event) {
+        const rect = svg.getBoundingClientRect();
+        const x = (event.clientX - rect.left) * 485 / rect.width;
+        const nearest = samples.reduce((best,p,i) => Math.abs(p.x-x) <= Math.abs(samples[best].x-x) ? i : best,0);
+        show(nearest);
+      }
+      svg.addEventListener('pointermove',point);
+      svg.addEventListener('pointerdown',point);
+      svg.addEventListener('pointerleave',e => { if (e.pointerType !== 'touch') hide(); });
+      svg.addEventListener('focus',() => show(samples.length-1));
+      svg.addEventListener('blur',hide);
+      svg.addEventListener('keydown',event => {
+        const last = samples.length - 1, index = active < 0 ? last : active;
+        const target = {ArrowLeft:Math.max(0,index-1), ArrowRight:Math.min(last,index+1), Home:0, End:last}[event.key];
+        if (target == null) return;
+        event.preventDefault();
+        show(target);
+      });
+    };
+    range.addEventListener('change',draw);
+    draw();
   }
   const rules = `<details class="arena-rules"><summary>How ratings work</summary>
     <p>Placement is untimed. The next problem adapts to how you answered the previous ones. You get two tries per problem in placement and in rated sets. Each result is compared with that problem’s own Elo. A first-try solve earns full rating credit and a second-try solve earns half.</p>
     <p>The placement set establishes a provisional starting rating for all four subjects. Later sets update each subject independently. Each subject stays provisional until you correctly answer ${A.SUBJECT_PROVISIONAL} rated problems in that subject. Overall Elo stays provisional while any subject rating is provisional.</p>
     <p>Rated sets have one timer. Harder problems add more time to the set: 2, 3, 5, 7 or 9 minutes per problem at Elo cutoffs of 1000, 1600, 2200 and 2800. Submitting grades any saved answers. Unanswered problems count as misses.</p>
-    <p>Each problem updates the subjects it covers. Overall Elo is the average of your three lowest subject ratings. Solving a harder problem earns more Elo, and missing an easier one costs more. Early ratings adjust faster.</p></details>`;
+    <p>Each problem updates the subjects it covers. Overall Elo is the average of your three lowest subject ratings. Solving a harder problem earns more Elo, and missing an easier one costs more. Early ratings adjust faster. The minimum rating is 0 Elo.</p></details>`;
   function selector(name, legend, options, value) {
     return `<fieldset class="arena-options"><legend>${legend}</legend><div>${options.map(([id, label]) =>
       `<label><input type="radio" name="${name}" value="${id}" ${id === value ? 'checked' : ''}><span>${label}</span></label>`).join('')}</div></fieldset>`;
@@ -81,7 +166,7 @@
         const change = Number.isFinite(after - before) ? signed(after - before) + (focus === 'mixed' ? ' overall Elo' : ' Elo') : 'No rating change';
         const date = new Date(event.at).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
         box.insertAdjacentHTML('beforeend', `<div class="arena-log arena-history-row">
-          <a href="${reviewUrl(event.session)}">${placement ? 'Placement' : ratedSetTitle(ctx,focus,events)} <small>${date}</small></a>
+          <a href="${reviewUrl(event.session)}">${placement ? (stats.baseline?.event.session === event.session ? 'Placement' : 'Placement incomplete') : ratedSetTitle(ctx,focus,events)} <small>${date}</small></a>
           ${placement ? '' : `<span>${change}</span>`}</div>`);
       }
     }
@@ -111,7 +196,7 @@
   function reviewedProblemLink(ctx, event) {
     const p = ctx.lookup(event.item);
     const name = ctx.escape(p ? ctx.refShort(p.ref) : event.item);
-    return `<a href="${reviewUrl(event.session)}/${event.reviewNumber}">${name}</a>`;
+    return `<a class="arena-review-link" href="${reviewUrl(event.session)}/${event.reviewNumber}"${p ? ` data-problem-preview="${ctx.escape(p.slug)}"` : ''}>${name}</a>`;
   }
   function reviewedProblemsHtml(ctx, examples) {
     const links = examples.map(event => reviewedProblemLink(ctx,event));
@@ -121,9 +206,11 @@
   function studyReasonHtml(ctx, examples) {
     const missed = examples.filter(event => event.outcome === 'incorrect');
     const retried = examples.filter(event => event.outcome === 'correct');
+    const unanswered = examples.filter(event => event.outcome === 'unanswered');
     const reasons = [];
     if (missed.length) reasons.push('you missed ' + reviewedProblemsHtml(ctx,missed));
     if (retried.length) reasons.push('you needed two tries on ' + reviewedProblemsHtml(ctx,retried));
+    if (unanswered.length) reasons.push('you left ' + reviewedProblemsHtml(ctx,unanswered) + ' unanswered');
     return 'Because ' + reasons.join(' and ') + '.';
   }
   function studyRowsHtml(ctx, rows) {
@@ -143,23 +230,23 @@
       ${studyRowsHtml(ctx,rows.slice(0,3))}
       ${rows.length > 3 ? '<button type="button" class="hp-btn hp-btn-soft" data-study-all aria-haspopup="dialog">See all</button>' : ''}`;
   }
-  function subjectDetails(ctx, id, stats, reviews) {
+  function subjectDetails(ctx, id, label, stats, reviews) {
     const results = stats.points.filter(point => point.event.subjects.includes(id));
     const subject = stats.subjects.get(id);
-    const rated = results.filter(point => !point.calibration);
     const latest = results.slice(-3).reverse();
     const correct = subject?.wins || 0;
     const provisional = stats.baseline && correct < A.SUBJECT_PROVISIONAL ?
       `<p class="arena-note">${correct} of ${A.SUBJECT_PROVISIONAL} correctly answered rated problems to finish subject placement.</p>` : '';
-    const change = stats.baseline && subject ? subject.rating - stats.baseline.rating : null;
-    const trend = change != null && rated.length ?
-      `<p>${change === 0 ? '−<strong>0 Elo</strong>' : `<strong>${signed(change)} Elo</strong>`} since placement ·
-        ${rated.length} rated ${rated.length === 1 ? 'problem' : 'problems'}</p>` : '';
-    return `${trend}${provisional}${latest.length ? `<h4>Recent results</h4><ul>${latest.map(({event}) => {
+    const focus = results.filter(point => !point.calibration && point.event.focus === id);
+    const session = focus.at(-1)?.event.session;
+    const {before,after} = ratingRange(focus.filter(point => point.event.session === session),id);
+    const trend = Number.isFinite(after - before) ?
+      `<p><strong>${signed(after - before)} Elo</strong> in your latest ${label} set</p>` : '';
+    return `<div class="arena-subject-layout"><div>${trend}${provisional}${latest.length ? `<h4>Recent results</h4><ul>${latest.map(({event}) => {
       const review = reviews.get(event.slug);
       return `<li>${review ? reviewedProblemLink(ctx,review) : ctx.escape(event.slug)}
         <span>${statusLabel(event.outcome)}</span></li>`;
-    }).join('')}</ul>` : '<p>No graded problems in this subject yet.</p>'}`;
+    }).join('')}</ul>` : '<p>No graded problems in this subject yet.</p>'}</div>${trendPlot(label)}</div>`;
   }
   function dashboard(ctx, state, stats, history) {
     const t = stats.overall, placed = !!stats.baseline, s = state.session, active = s && !s.closed;
@@ -170,26 +257,26 @@
     const recommendations = A.recommendations(arenaHistory, ctx.lookup).filter(row => ctx.nodes.has(row.id));
     const studyRows = distinctStudyRows(recommendations);
     const postPlacement = stats.points.filter(point => !point.calibration);
-    const ratedAnswers = postPlacement.filter(p => p.event.answer);
     const accuracy = points => points.length ? Math.round(100 * points.filter(p => p.event.outcome === 'correct').length / points.length) + '%' : '—';
     const latest = postPlacement.at(-1);
     const delta = latest && postPlacement.filter(p => p.event.session === latest.event.session).reduce((sum,p) => sum + p.delta, 0);
     const opts = new Map(ctx.roots.map(n => [n.id, ctx.topicLabel(n)]));
+    const subjectTrends = new Map([...opts.keys()].map(id => [id,ratingHistory(stats,id)]));
     const title = !placed ? 'Find your starting rating' : 'Your rating';
     ctx.container.innerHTML = `<div class="space-home arena">
       <header class="space-home-head"><h1>Arena</h1><p class="sh-ask">Measure your growth on real contest problems.</p></header>
       <section class="sh-section arena-hero" id="arena-overview"><div><h3>${title}</h3>
       ${placed ? `<div class="arena-big">${number(t.rating)} <small>Elo</small></div>
         ${established < ctx.roots.length ? '<p class="arena-note">Provisional · ' + established + '/' + ctx.roots.length + ' subjects established</p>' : ''}
-        <p class="arena-note">${!postPlacement.length ? 'Starting Elo from placement' : signed(delta) + ' Elo in your latest set'}</p>` :
+        <p class="arena-note">${!postPlacement.length ? 'Starting Elo from placement' : signed(delta) + ' overall Elo in your latest rated set'}</p>` :
         `<p>Take one set of ${A.PLACEMENT_SIZE} problems across a range of difficulties. Your starting Elo applies to all four subjects.</p>
-        ${t.count ? `<small>${t.count} earlier results included</small>` : ''}`}</div>
-      ${placed ? `<div class="arena-plot"><h4>Rating trend</h4>${chart(stats.points)}</div>` :
-        `<div class="arena-placement"><h4>How placement works</h4><p>You get two tries per problem. A second-try solve earns half credit toward your placement rating. Blanks count as misses when you submit. Placement shows one problem at a time.</p></div>`}
+        ${t.count ? `<small>${t.count} of ${A.PLACEMENT_SIZE} placement problems completed</small>` : ''}`}</div>
+      ${placed ? trendPlot('Overall') :
+        `<div class="arena-placement"><h4>How placement works</h4><p>You get two tries per problem. A second-try solve earns half credit toward your placement rating. Submit whenever you need to stop. You can finish the remaining problems later.</p></div>`}
       ${placed ? `<div class="arena-metrics">
         <div><strong>${number(setPoints(stats.points).reduce((max,p) => Math.max(max, p.rating), stats.baseline.rating))}</strong><small>Peak Elo</small></div>
-        ${ratedAnswers.length ? `<div><strong>${accuracy(ratedAnswers)}</strong><small>Overall accuracy on submitted rated answers</small></div>` : ''}
-        ${postPlacement.length ? `<div><strong>${new Set(postPlacement.map(p => p.event.session)).size}</strong><small>Rated sets</small></div>` : ''}</div>` : ''}
+        ${postPlacement.length ? `<div><strong>${new Set(postPlacement.map(p => p.event.session)).size}</strong><small>Rated sets</small></div>` : ''}</div>
+        ${arenaAnswerBreakdown(ctx,postPlacement.map(point => point.event),'Overall accuracy on submitted rated answers')}` : ''}
       </section>
       <section class="sh-section" id="arena-session"><h3>${(active ? s.placement : !placed) ? 'Placement set' : 'Rated session'}</h3>
       ${active ? `<p class="arena-note">${s.placement ? 'Mixed subjects' : (opts.get(s.focus) || 'Mixed subjects') + ' · ' + paceNames[s.pace]} · ${s.round ? s.placement ? s.length + ' problems · Untimed' : s.round.items.length + ' problems · ' + s.round.limitMs / 60000 + ' min' : (s.length - A.remaining(state)) + ' of ' + s.length + ' answered'}</p>
@@ -199,21 +286,28 @@
         ${selector('pace','Difficulty',Object.entries(paceNames),prev.pace || 'matched')}
         ${selector('length','Problems',A.LENGTHS.map(n => [String(n), String(n)]), String(A.LENGTHS.includes(prev.length) ? prev.length : 5))}<p class="arena-note" data-arena-target aria-live="polite"></p>` :
         '<p class="arena-note">Work at your own pace.</p>'}
-        <button class="hp-btn arena-primary">${placed ? 'Start rated session' : 'Start placement'} ${ctx.icon('arrow-right')}</button></form>`}${rules}</section>
+        <button class="hp-btn arena-primary">${placed ? 'Start rated session' : t.count ? 'Continue placement' : 'Start placement'} ${ctx.icon('arrow-right')}</button></form>`}${rules}</section>
       <section class="sh-section" id="arena-subjects"><h3>Subject ratings</h3>
         <div class="arena-table-wrap"><table class="arena-subject-table"><thead><tr><th>Subject</th><th>Elo</th><th>Accuracy on submitted answers</th></tr></thead><tbody>
         ${[...opts].map(([id, label]) => { const r = stats.subjects.get(id);
           return `<tr><th scope="row"><button type="button" class="arena-subject-toggle" data-subject-toggle aria-expanded="false" aria-controls="arena-subject-${id}">${label}</button></th><td>${placed && r ? number(r.rating) : '—'}${placed && r && r.wins < A.SUBJECT_PROVISIONAL ? '<small>Provisional</small>' : ''}</td>
-          <td>${accuracy(stats.points.filter(p => p.event.answer && p.event.subjects.includes(id)))}</td></tr>
-          <tr class="arena-subject-details" id="arena-subject-${id}" hidden><td colspan="3">${subjectDetails(ctx,id,stats,reviews)}</td></tr>`; }).join('')}</tbody></table></div></section>
+          <td>${accuracy(stats.points.filter(p => hasAnswer(p.event) && p.event.subjects.includes(id)))}</td></tr>
+          <tr class="arena-subject-details" id="arena-subject-${id}" data-subject="${id}" hidden><td colspan="3">${subjectDetails(ctx,id,label,stats,reviews)}</td></tr>`; }).join('')}</tbody></table></div></section>
       <section class="sh-section" id="arena-study"><h3>What to study</h3>${studyHtml(ctx, studyRows)}</section>
       <section class="sh-section" id="arena-history"><h3>Session history</h3><div id="arena-history-list"></div><button type="button" class="hp-btn hp-btn-soft" data-arena-history-toggle aria-controls="arena-history-list" aria-expanded="false" hidden>Show all</button></section></div>`;
+    const overallPlot = ctx.container.querySelector('#arena-overview [data-rating-plot]');
+    if (overallPlot) wireTrend(overallPlot,ratingHistory(stats));
     for (const button of ctx.container.querySelectorAll('[data-subject-toggle]')) {
+      const detail = document.getElementById(button.getAttribute('aria-controls'));
+      const plot = detail.querySelector('[data-rating-plot]');
+      let plotted = false;
       button.onclick = () => {
-        const detail = document.getElementById(button.getAttribute('aria-controls'));
         detail.hidden = !detail.hidden;
         button.setAttribute('aria-expanded', String(!detail.hidden));
-        if (!detail.hidden) ctx.renderMath(detail);
+        if (!detail.hidden) {
+          if (!plotted) { wireTrend(plot,subjectTrends.get(detail.dataset.subject)); plotted = true; }
+          ctx.renderMath(detail);
+        }
       };
     }
     const countdown = ctx.container.querySelector('.arena-resume .arena-clock');
@@ -276,6 +370,16 @@
   const statusLabel = outcome => ({
     correct:'Correct', incorrect:'Incorrect', seen:'Previously seen', unanswered:'Unanswered'
   })[outcome] || 'Unanswered';
+  function arenaAnswerBreakdown(ctx, events, label) {
+    const counts = {first:0,second:0,incorrect:0,unanswered:0};
+    for (const event of events) {
+      if (event.outcome === 'correct') counts[event.firstMiss ? 'second' : 'first']++;
+      else if (event.outcome !== 'seen') counts[hasAnswer(event) ? 'incorrect' : 'unanswered']++;
+    }
+    return ctx.answerBreakdown(counts,label);
+  }
+  const navButton = (label, href) => href ? `<a class="hp-btn hp-btn-soft" href="${href}">${label}</a>` :
+    `<button type="button" class="hp-btn hp-btn-soft" disabled>${label}</button>`;
   function gradeAnswer(slug, draft) {
     if (!draft.trim()) return null;
     const numeric = !grade.exactKey(slug) && /^\d+$/.test(grade.officialKey(slug) || '');
@@ -296,7 +400,7 @@
     const first = firstMiss ? 'First try ' + format(firstMiss) + ' · ' : '';
     const response = answer ? (firstMiss ? 'Second try ' : 'Your answer ') + format(answer) :
       invalidDraft ? 'Unaccepted answer format · ' + format(invalidDraft) :
-        outcome === 'incorrect' ? 'Gave up' : 'No answer submitted';
+        outcome === 'incorrect' ? (firstMiss ? 'No second answer submitted' : 'Gave up') : 'No answer submitted';
     const accepted = acceptedAnswer(ctx,slug);
     return first + response + (reveal && outcome !== 'correct' && accepted ? ' · Accepted answer ' + accepted : '');
   }
@@ -307,7 +411,7 @@
     const points = stats.points.filter(p => p.event.session === id);
     const placement = events.some(e => e.placement) || (points.length > 0 && points.every(p => p.calibration));
     const startedHere = stats.baseline?.event.session === id;
-    const title = placement ? 'Placement complete' : 'Rated set complete';
+    const title = placement ? (startedHere ? 'Placement complete' : 'Placement incomplete') : 'Rated set complete';
     const focus = focusOf(state,events);
     const topic = ctx.roots.find(root => root.id === focus);
     const subjectName = topic ? ctx.topicLabel(topic) : 'Mixed subjects';
@@ -333,8 +437,8 @@
         <section class="sh-section practice-review detail"><h3>Your answer</h3>
           <p class="practice-result">${statusLabel(event.outcome)}${event.outcome !== 'seen' ? ' · ' + responseText(ctx,event) : ''}</p>
           <div data-arena-explanation></div>
-          <div class="practice-problem-nav">${index ? `<a class="hp-btn hp-btn-soft" href="${detailUrl(index-1)}">Previous</a>` : ''}
-          ${index+1 < events.length ? `<a class="hp-btn hp-btn-soft" href="${detailUrl(index+1)}">Next</a>` : ''}</div></section></div>`;
+          <div class="practice-problem-nav">${navButton('Previous',index && detailUrl(index-1))}
+          ${navButton('Next',index+1 < events.length && detailUrl(index+1))}</div></section></div>`;
       const explanation = ctx.container.querySelector('[data-arena-explanation]');
       ctx.container.querySelector('.practice-question h3').focus({preventScroll:true});
       ctx.renderMath(ctx.container);
@@ -365,13 +469,15 @@
     const figures = [[counts.Correct + '/' + rated,'Correct'],[counts.Incorrect,'Incorrect'],[counts.Unanswered,'Unanswered']];
     if (placement && Number.isFinite(rating)) figures.unshift([number(rating),
       startedHere ? 'Provisional starting Elo' : 'Placement estimate']);
+    const placementCount = stats.points.filter(p => p.calibration && p.event.at <= events.at(-1).at).length;
     const note = [
       events.some(e => e.timedOut) ? 'Submitted when time ran out.' : '',
       placement ? startedHere ? 'Your starting Elo applies to all four subjects.' :
-        points.length ? 'These results count toward your starting rating.' : 'Submit an answer in placement to establish a starting rating.' : ''
+        `${placementCount} of ${A.PLACEMENT_SIZE} placement problems completed. Return to Arena to continue.` : ''
     ].filter(Boolean).join(' ');
     ctx.container.innerHTML = ctx.reviewResults({back:back(ctx), title, subtitle, arena:true, stats:figures, rows,
-      reviewUrl:detailUrl(0), insights:ctx.reviewInsights(outcomes,counts,detailUrl),
+      reviewUrl:detailUrl(0), insights:ctx.reviewInsights(outcomes,counts,detailUrl,
+        arenaAnswerBreakdown(ctx,events,'Accuracy on submitted answers')),
       intro:ratingChange, meta:note ? `<p class="practice-results-meta">${note}</p>` : ''});
     const heading = ctx.container.querySelector('h1');
     heading.tabIndex = -1;
@@ -390,12 +496,12 @@
     box.innerHTML = `<h1>Problems could not load</h1><p>${text}</p><button class="hp-btn arena-primary">Try again</button>`;
     box.querySelector('button').onclick = ctx.refresh;
   }
-  async function findProblem(ctx, seen, stats, session, current, savedSlug, picked = []) {
+  async function findProblem(ctx, seen, stats, session, current, savedSlug, picked = [], weakTopics) {
     let p = savedSlug && ctx.lookup(savedSlug);
     const pool = ctx.pool;
     const allowExternal = ctx.allowExternal;
     while (current()) {
-      p ||= A.choose(pool, seen, stats, session, p => subjectIds(ctx,p), Math.random, picked);
+      p ||= A.choose(pool, seen, stats, session, p => subjectIds(ctx,p), Math.random, picked, weakTopics);
       if (!p) return {status:'empty'};
       const identity = A.canonical(p.identity);
       if (pool.includes(p) && !seen.has(identity) && (!missing.has(p.slug) || allowExternal && p.url)) {
@@ -437,7 +543,7 @@
         <p class="arena-result-status" data-result="${event.outcome}"><strong>${statusLabel(event.outcome)}</strong></p>
         <p>${responseText(ctx, event)}</p>
         <button class="hp-btn arena-primary" data-continue>${done ? 'See results' : 'Next problem'}</button>`;
-      if (p) ctx.showPrompt(p);
+      if (p) ctx.showPrompt(p,true);
       ctx.renderMath(box);
       box.querySelector('h1').focus({preventScroll:true});
       box.querySelector('button').onclick = async () => {
@@ -467,7 +573,7 @@
       box.insertAdjacentHTML('beforeend', `${slot.external ? ctx.paperPrompt(p) :
         `<div class="arena-st" data-slug="${p.slug}"><div class="prob-statement"></div></div>`}<div class="arena-response"></div>`);
       response = box.querySelector('.arena-response');
-      if (!slot.external) ctx.showPrompt(p);
+      if (!slot.external) ctx.showPrompt(p,true);
       box.querySelector('h1, h2').focus({preventScroll:true});
     }
     response.innerHTML = `<form class="practice-answer"><h3>Your answer</h3>
@@ -584,18 +690,40 @@
     tick();
   }
   let roundController;
+  function placementEstimate(state) {
+    const points = A.placementStats(state).points;
+    const current = points.at(-1), previous = points.at(-2);
+    if (!current) return 'Current estimated Elo: ?';
+    if (!previous) return 'Current estimated Elo: ' + number(current.rating);
+    const change = current.rating - previous.rating;
+    return `Current estimated Elo: ${number(previous.rating)} ${change < 0 ? '−' : '+'} ${number(Math.abs(change))} → ${number(current.rating)}`;
+  }
   async function ratedSet(ctx, state, stats, history, index) {
-    const s = state.session, id = s.id;
+    let s = state.session;
+    const id = s.id;
     const box = loading(ctx, s.round ? 'Loading your set…' : s.placement ? 'Finding your first problem…' : 'Building your set…');
     if (!s.round) {
       const seen = seenProblems(ctx, history, state), problems = [];
       const total = s.placement ? 1 : A.remaining(state);
       const current = () => box.isConnected;
+      const withinSubject = id => id.startsWith(s.focus + '.');
+      const weakTopics = new Set(s.placement ? [] : A.recommendations(history.filter(event =>
+        (event.source === 'arena' || event.source === 'practice') && ctx.lookup(event.item)?.tree.some(withinSubject)
+      ), ctx.lookup).map(row => row.id).filter(withinSubject));
+      // A problem filed under a subtopic also covers its parent topic.
+      for (const id of weakTopics) {
+        for (const child of ctx.nodes.get(id)?.children || []) weakTopics.add(child);
+      }
+      // Vary the position so the targeted question blends into the rest of the set.
+      const firstFreeSlot = s.slot && total > 1 ? 1 : 0;
+      let targetedSlot = weakTopics.size ? firstFreeSlot + Math.floor(Math.random() * (total - firstFreeSlot)) : -1;
       while (problems.length < total && current()) {
-        const {status, p} = await findProblem(ctx, seen, stats, s, current, !problems.length && s.slot?.slug, problems);
+        const topics = problems.length === targetedSlot ? weakTopics : undefined;
+        const {status, p} = await findProblem(ctx, seen, stats, s, current, !problems.length && s.slot?.slug, problems, topics);
         if (!current()) return;
         if (status === 'offline') return promptError(ctx, box, 'The timer starts after your set loads. Check your connection and try again.');
         if (status === 'empty') break;
+        if (p.tree.some(topic => weakTopics.has(topic))) targetedSlot = -1;
         seen.add(A.canonical(p.identity));
         // Rotate subjects within the set as well as across earlier results.
         for (const subject of subjectIds(ctx,p)) {
@@ -611,10 +739,15 @@
       if (!current()) return;
       if (latest.session?.id !== id || !latest.session.round || latest.session.closed) { ctx.refresh(); return; }
       state = latest;
+      s = state.session;
       watchDeadline(ctx,state.session);
     }
     const round = state.session.round;
     index = s.placement ? A.placementIndex(round) : Math.min(index, round.items.length-1);
+    const placementOffset = s.placement ? A.PLACEMENT_SIZE - s.length : 0;
+    const problemNumber = index + 1 + placementOffset;
+    const progress = items => (placementOffset + items.filter(row => row.outcome && row.outcome !== 'seen').length) +
+      ' of ' + (s.placement ? A.PLACEMENT_SIZE : round.items.length) + ' finished';
     const item = round.items[index], p = ctx.lookup(item.slug);
     const controller = roundController = new AbortController();
     const onLeave = () => controller.abort();
@@ -631,7 +764,8 @@
     }
     box.parentElement.classList.add('practice-session');
     box.insertAdjacentHTML('beforebegin', `<section class="sh-section arena-set-nav">
-      <div class="practice-session-top"><div><h1>${s.placement ? 'Placement set' : ratedSetTitle(ctx,s.focus,round.items)}</h1><p>${s.placement ? s.length + ' problems · Untimed' : round.items.length + ' problems · ' + round.limitMs/60000 + ' minutes'}</p></div>
+      <div class="practice-session-top"><div><h1>${s.placement ? 'Placement set' : ratedSetTitle(ctx,s.focus,round.items)}</h1><p>${s.placement ?
+        `${placementOffset ? s.length + ' remaining' : s.length + ' problems'} · <span data-placement-elo aria-live="polite">${placementEstimate(state)}</span>` : round.items.length + ' problems · ' + round.limitMs/60000 + ' minutes'}</p></div>
       ${s.placement ? '' : '<span class="arena-clock" aria-label="Time remaining" role="timer"></span>'}</div>
       <nav class="cn-nums" aria-label="Set problems">${Array.from({length:s.placement ? s.length : round.items.length},(_,i) => {
         const row = round.items[i];
@@ -640,11 +774,11 @@
         const tint = result ? ' practice-reviewed' : row?.draft ? ' practice-answered' : '';
         const current = i === index ? ' aria-current="step"' : '';
         const retry = row?.firstMiss && !row.outcome ? ' data-retry' : '';
-        const attributes = `class="cn-num${tint}${i === index ? ' cn-here' : ''}" data-problem-index="${i}" data-result="${result}" aria-label="Problem ${i+1}, ${label}"${current}${retry}`;
-        return s.placement ? `<span ${attributes}>${i+1}</span>` :
+        const attributes = `class="cn-num${tint}${i === index ? ' cn-here' : ''}" data-problem-index="${i}" data-result="${result}" aria-label="Problem ${i+1+placementOffset}, ${label}"${current}${retry}`;
+        return s.placement ? `<span ${attributes}>${i+1+placementOffset}</span>` :
           `<a ${attributes} href="${setProblemUrl(i)}">${i+1}</a>`;
       }).join('')}</nav>
-      <div class="practice-session-actions"><span data-arena-checked>${round.items.filter(row => row.outcome && row.outcome !== 'seen').length} of ${s.placement ? s.length : round.items.length} finished</span>
+      <div class="practice-session-actions"><span data-arena-checked>${progress(round.items)}</span>
       <button type="button" class="hp-btn hp-btn-soft" data-submit-set>Submit set</button></div>
       <p class="arena-note" data-arena-finish-note role="status"${A.roundComplete(state.session) ? '' : ' hidden'}>Set complete. Submitting in three seconds…</p></section>`);
     const nav = box.previousElementSibling, timer = nav.querySelector('.arena-clock');
@@ -656,7 +790,7 @@
         if (!box.isConnected || finishing) return;
         if (current.session?.id !== id || current.session.closed) { ctx.refresh(); return; }
         if (A.roundComplete(current.session) || await ctx.confirm({title:'Submit this set?',
-          text:s.placement ? 'Saved answers will be graded. Opened problems left blank count as misses.' :
+          text:s.placement ? 'Saved answers will be graded. You can finish any remaining placement problems later.' :
             'Saved answers will be graded. Any unanswered problems count as misses.',
           ok:'Submit set',signal:controller.signal})) submit();
       } catch { saveError(nav); }
@@ -665,7 +799,7 @@
     if (!box.isConnected || finishing) return;
     if (ready !== 'ready' && ready !== 'external') return promptError(ctx, box, 'Your answers are saved. Reconnect to view this problem.');
     box.classList.add('practice-question');
-    box.innerHTML = `<h2 class="arena-question-heading" tabindex="-1">Problem ${index+1}</h2>`;
+    box.innerHTML = `<h2 class="arena-question-heading" tabindex="-1">Problem ${problemNumber}</h2>`;
     const selected = nav.querySelector('[aria-current="step"]');
     let nextButton;
     const lastPlacementProblem = () => round.adaptive ? round.items.length >= s.length :
@@ -682,12 +816,11 @@
         const label = updated.outcome ? statusLabel(updated.outcome) : 'Incorrect';
         selected.dataset.result = label;
         selected.toggleAttribute('data-retry',!!updated.firstMiss && !updated.outcome);
-        selected.setAttribute('aria-label', `Problem ${index+1}, ${label}${updated.outcome ? '' : ', retry available'}`);
+        selected.setAttribute('aria-label', `Problem ${problemNumber}, ${label}${updated.outcome ? '' : ', retry available'}`);
         selected.classList.remove('practice-answered');
         selected.classList.add('practice-reviewed');
-        nav.querySelector('[data-arena-checked]').textContent =
-          latest.session.round.items.filter(row => ['correct','incorrect'].includes(row.outcome)).length +
-          ' of ' + (s.placement ? s.length : round.items.length) + ' finished';
+        nav.querySelector('[data-arena-checked]').textContent = progress(latest.session.round.items);
+        if (s.placement) nav.querySelector('[data-placement-elo]').textContent = placementEstimate(latest);
         showSlot(updated);
         if (A.roundComplete(latest.session)) {
           nav.querySelector('[data-arena-finish-note]').hidden = false;
@@ -701,9 +834,9 @@
     }
     if (s.placement) {
       const actions = document.createElement('div');
-      actions.className = 'arena-actions';
-      actions.innerHTML = '<button type="button" class="hp-btn hp-btn-soft">Next problem</button>';
-      nextButton = actions.querySelector('button');
+      actions.className = 'practice-problem-nav';
+      actions.innerHTML = `${navButton('Previous')}<button type="button" class="hp-btn hp-btn-soft" data-placement-next>Next problem</button>`;
+      nextButton = actions.querySelector('[data-placement-next]');
       showSlot(item);
       box.append(actions);
       nextButton.onclick = async () => {
@@ -734,8 +867,8 @@
       };
     } else {
       showSlot(item);
-      if (index+1 < round.items.length) box.insertAdjacentHTML('beforeend', `<div class="arena-actions">
-        <a class="hp-btn hp-btn-soft" href="${setProblemUrl(index+1)}">Next problem ${ctx.icon('arrow-right')}</a></div>`);
+      box.insertAdjacentHTML('beforeend', `<div class="practice-problem-nav">${navButton('Previous',index && setProblemUrl(index-1))}
+        ${navButton('Next',index+1 < round.items.length && setProblemUrl(index+1))}</div>`);
     }
   }
   let draw = 0;

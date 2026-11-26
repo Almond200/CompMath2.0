@@ -82,7 +82,10 @@ async function check(browser) {
   assert.equal(await page.locator('[aria-current="step"]').getAttribute('data-result'),'Correct');
   assert(await page.locator('.arena-response .practice-answer').isVisible());
   assert.equal(await page.locator('.arena-response [aria-checked="true"]').innerText(),correct);
-  for (let index=1; index<12; index++) {
+  assert.match(await page.locator('[data-placement-elo]').innerText(), /^Current estimated Elo: .*→/);
+  assert.equal(await page.locator('.arena-st .statement-credit').count(),0);
+  assert(await page.getByRole('button',{name:'Previous',exact:true}).isDisabled());
+  for (let index=1; index<11; index++) {
     await page.getByRole('button',{name:'Next problem'}).click();
     await page.locator(`[data-problem-index="${index}"][aria-current="step"]`).waitFor();
     await page.getByRole('button',{name:'Give up',exact:true}).click();
@@ -91,14 +94,15 @@ async function check(browser) {
   }
   const delivered = await page.evaluate(() => Arena.read());
   const identities = delivered.session.round.items.map(item => item.identity);
-  assert.equal(new Set(identities).size,12);
+  assert.equal(new Set(identities).size,11);
   assert(!identities.includes(attempt.identity) && !identities.includes(canonical));
   assert(new Set(delivered.session.round.items.map(item => item.elo)).size >= 4);
   await page.getByRole('heading',{name:'Placement complete'}).waitFor();
-  assert.equal(await page.locator('.practice-result-row').count(),13,'original result plus the current placement set');
-  assert.equal(await page.locator('.insight-cell').count(),13);
+  assert.equal(await page.locator('.practice-result-row').count(),12,'original result plus the remaining placement problems');
+  assert.equal(await page.locator('.insight-cell').count(),12);
   await page.locator('.practice-result-row').nth(1).click();
   await page.locator('.practice-explanation').waitFor();
+  await page.locator('.arena-st .statement-credit').waitFor();
   assert(await page.getByRole('navigation',{name:'Review problems'}).isVisible());
   await page.getByText('Arena overview',{exact:true}).click();
   const seeAll = page.getByRole('button',{name:'See all',exact:true});
@@ -307,12 +311,51 @@ async function checkPoolAndSubmission(browser) {
     await page.locator('.arena-history-row a').first().waitFor();
     assert.match(await page.locator('.arena-history-row a').first().innerText(),/^Geometry 1000 /);
   }
+  const retrySlug = '2018-amc-10a-7';
+  const partial = await prepare([retrySlug,'2018-amc-10a-8'],120000);
+  await open('#/arena/session');
+  const key = await page.evaluate(slug => PracticeSessions.officialKey(slug),retrySlug);
+  await page.locator('[data-practice-answer="' + (key === 'A' ? 'B' : 'A') + '"]').click();
+  await page.getByRole('button',{name:'Submit answer'}).click();
+  await page.getByText('First try was incorrect. You have one try left.').waitFor();
+  await page.getByRole('button',{name:'Clear answer'}).click();
+  await page.getByRole('button',{name:'Submit set'}).click();
+  await page.getByRole('dialog').getByRole('button',{name:'Submit set'}).click();
+  await page.waitForURL(url => url.hash === '#/arena/review/' + partial.session.id);
+  assert.match(await page.locator('.answer-breakdown-stats').innerText(), /0%\s+Accuracy on submitted answers\s+50%\s+Unanswered/);
+  assert.match(await page.locator('.practice-result-row').first().innerText(), /No second answer submitted/);
+  await page.close();
+}
+
+async function checkPartialPlacement(browser) {
+  const page = await browser.newPage();
+  await page.goto(base + '/#/arena');
+  await page.locator('#arena-start').waitFor();
+  await page.evaluate(() => Arena.change(state => {
+    Arena.start(state,'geo','matched',5);
+    Arena.openRound(state,state.session.id,[{slug:'2018-amc-10a-1',identity:'2018-amc-10a-1',elo:950,subjects:['geo']}]);
+  }));
+  await page.goto(base + '/#/arena/session');
+  await page.getByText('Current estimated Elo: ?', {exact:true}).waitFor();
+  await page.locator('[data-practice-answer="B"]').click();
+  await page.getByRole('button',{name:'Submit answer'}).click();
+  await page.locator('.arena-status[data-result="correct"]').waitFor();
+  assert.match(await page.locator('[data-placement-elo]').innerText(), /^Current estimated Elo: [\d,]+$/);
+  await page.getByRole('button',{name:'Submit set'}).click();
+  await page.getByRole('dialog').getByRole('button',{name:'Submit set'}).click();
+  await page.getByRole('heading',{name:'Placement incomplete'}).waitFor();
+  await page.getByText('1 of 12 placement problems completed. Return to Arena to continue.').waitFor();
+  await page.getByRole('link',{name:'Arena overview'}).click();
+  await page.getByRole('button',{name:'Continue placement'}).click();
+  await page.locator('.arena-set-nav').waitFor();
+  assert.equal(await page.locator('.arena-set-nav .cn-num').count(),11);
+  assert.match(await page.locator('.arena-set-nav .practice-session-top p').innerText(), /^11 remaining · Current estimated Elo: [\d,]+$/);
   await page.close();
 }
 
 (async () => {
   const browser = await chromium.launch({...(process.env.CHROME ? {executablePath:process.env.CHROME} : {})});
-  try { await check(browser); await checkPoolAndSubmission(browser); }
+  try { await check(browser); await checkPoolAndSubmission(browser); await checkPartialPlacement(browser); }
   finally { await browser.close(); }
   console.log('Arena storage, retries, subject filters, review links, external statements and automatic submission passed.');
 })().catch(error => { console.error(error); process.exitCode = 1; });
