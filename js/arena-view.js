@@ -313,12 +313,10 @@
           return `<tr><th scope="row"><button type="button" class="arena-subject-toggle" data-subject-toggle aria-expanded="false" aria-controls="arena-subject-${id}">${label}</button></th><td>${placed && r ? number(r.rating) : '—'}${placed && r && r.wins < A.SUBJECT_PROVISIONAL ? '<small>Provisional</small>' : ''}</td>
           <td>${accuracy(stats.points.filter(p => hasAnswer(p.event) && p.event.subjects.includes(id)))}</td></tr>
           <tr class="arena-subject-details" id="arena-subject-${id}" data-subject="${id}" hidden><td colspan="3">${subjectDetails(ctx,id,label,stats,reviews)}</td></tr>`; }).join('')}</tbody></table></div></section>
-      <section class="sh-section" id="arena-study"><div class="study-header"><div><h3>What to study</h3>
-        <p class="arena-note">Based on the Arena problems you’ve worked on recently.</p></div>
-        <div class="study-filters" id="arena-study-filters" hidden><select class="study-filter" data-study-subject aria-label="Study recommendation subject"><option value="all">All subjects</option>
-          ${[...opts].map(([id,label]) => `<option value="${id}">${label}</option>`).join('')}</select>${ctx.studyTypeFilterHtml()}</div></div>
-        <div id="arena-study-list" data-study-items aria-live="polite">${initialStudy}</div>
-        <button type="button" class="hp-btn hp-btn-soft" data-arena-study-toggle aria-controls="arena-study-filters arena-study-list" aria-expanded="false"${allStudy.length > studyPreviewSize ? '' : ' hidden'}>Show more</button></section>
+      <section class="sh-section" id="arena-study"><h3>What to study</h3>
+        <p class="arena-note">Based on the Arena problems you’ve worked on recently.</p>
+        <div data-study-items aria-live="polite">${initialStudy}</div>
+        <button type="button" class="hp-btn hp-btn-soft" data-study-all aria-haspopup="dialog"${allStudy.length > studyPreviewSize ? '' : ' hidden'}>Show more</button></section>
       <section class="sh-section" id="arena-history"><h3>Contest history</h3><div id="arena-history-list"></div><button type="button" class="hp-btn hp-btn-soft" data-arena-history-toggle aria-controls="arena-history-list" aria-expanded="false" hidden>Show all</button></section></div>`;
     const overallPlot = ctx.container.querySelector('#arena-overview [data-rating-plot]');
     if (overallPlot) wireTrend(overallPlot,ratingHistory(stats));
@@ -351,28 +349,45 @@
     reportTarget();
     startForm?.addEventListener('change', reportTarget);
     const study = ctx.container.querySelector('#arena-study');
-    const filters = study.querySelector('#arena-study-filters');
-    const subject = filters.querySelector('[data-study-subject]');
-    const type = filters.querySelector('[data-study-type]');
     const list = study.querySelector('[data-study-items]');
-    const toggle = study.querySelector('[data-arena-study-toggle]');
-    let expanded = false, displayed = initialStudy, studyRequest = 0;
-    const updateStudy = () => {
-      const rows = expanded ? (subject.value === 'all' && type.value === 'all' ? allStudy : studyRows(subject.value,type.value))
-        : allStudy.slice(0,studyPreviewSize);
-      toggle.hidden = !expanded && allStudy.length <= studyPreviewSize;
-      toggle.setAttribute('aria-expanded', String(expanded));
-      toggle.textContent = expanded ? 'Show less' : 'Show more';
-      filters.hidden = !expanded;
-      const html = studyHtml(ctx,rows);
-      if (html === displayed) return;
-      displayed = html;
-      list.innerHTML = html;
-      ctx.renderMath(list);
+    const studyAll = study.querySelector('[data-study-all]');
+    let displayed = initialStudy, studyRequest = 0, refreshStudyDialog;
+    studyAll.onclick = () => {
+      const initialRows = studyRowsHtml(ctx,allStudy);
+      const dialog = ctx.openDialog(`<header class="arena-study-dialog-head">
+        <div><h2 id="arena-study-modal-title">Study recommendations</h2>
+        <button type="button" class="hp-btn hp-btn-soft" autofocus>Close</button></div>
+        <div class="study-filters"><select class="study-filter" data-study-subject aria-label="Study recommendation subject"><option value="all">All subjects</option>
+          ${[...opts].map(([id,label]) => `<option value="${id}">${label}</option>`).join('')}</select>${ctx.studyTypeFilterHtml()}</div></header>
+        <div class="arena-study-dialog-body" aria-live="polite">${initialRows}</div>`, d => {
+        d.classList.add('arena-study-dialog');
+        d.setAttribute('aria-labelledby','arena-study-modal-title');
+        d.querySelector('button').onclick = () => d.close();
+        const body = d.querySelector('.arena-study-dialog-body');
+        const filters = d.querySelector('.study-filters');
+        const subject = filters.querySelector('[data-study-subject]');
+        const type = filters.querySelector('[data-study-type]');
+        let displayedRows = initialRows;
+        const refresh = () => {
+          if (!d.open) return;
+          const rows = subject.value === 'all' && type.value === 'all' ? allStudy : studyRows(subject.value,type.value);
+          const html = rows.length ? studyRowsHtml(ctx,rows) : '<p class="arena-note">No recommendations match these filters.</p>';
+          if (html === displayedRows) return;
+          displayedRows = html;
+          body.innerHTML = html;
+          ctx.renderMath(body);
+        };
+        refreshStudyDialog = refresh;
+        filters.onchange = () => { refresh(); body.scrollTop = 0; };
+        const close = () => { if (d.open) d.close(); };
+        window.addEventListener('hashchange',close);
+        d.addEventListener('close',() => {
+          window.removeEventListener('hashchange',close);
+          if (refreshStudyDialog === refresh) refreshStudyDialog = undefined;
+        },{once:true});
+      });
+      ctx.renderMath(dialog);
     };
-    toggle.onclick = () => { expanded = !expanded; updateStudy(); };
-    subject.onchange = updateStudy;
-    type.onchange = updateStudy;
     list.addEventListener('study-history-changed',async () => {
       const current = ++studyRequest;
       try {
@@ -380,7 +395,14 @@
         if (current !== studyRequest || !list.isConnected) return;
         studyHistory = latest.filter(hasArenaReview);
         allStudy = studyRows();
-        updateStudy();
+        studyAll.hidden = allStudy.length <= studyPreviewSize;
+        const html = studyHtml(ctx,allStudy.slice(0,studyPreviewSize));
+        if (html !== displayed) {
+          displayed = html;
+          list.innerHTML = html;
+          ctx.renderMath(list);
+        }
+        refreshStudyDialog?.();
       } catch {}
     });
     startForm?.addEventListener('submit', async e => {
@@ -933,6 +955,7 @@
   let draw = 0;
   async function render(ctx, route) {
     roundController?.abort();
+    document.querySelector('dialog.arena-study-dialog[open]')?.close();
     const renderId = ++draw, hash = location.hash;
     const current = () => draw === renderId && location.hash === hash;
     const progress = '<p role="status">Loading your progress…</p>';
