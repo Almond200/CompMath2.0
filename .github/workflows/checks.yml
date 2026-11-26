@@ -1,6 +1,5 @@
 # Runs the repository's gates and unit tests on every push and pull request (owner, 2026-11-22).
-# The gates need only Node and the Python standard library; the browser checks in CLAUDE.md need a local
-# server and Chromium and are still run by hand.
+# The Arena browser check uses Chromium and a localhost server.
 name: Checks
 on:
   push:
@@ -27,3 +26,24 @@ jobs:
           for t in answer-keys short-answer-keys practice-sessions mock-contests problem-difficulty card-text book-search; do
             echo "== $t"; node tests/$t.cjs
           done
+  arena-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Playwright and Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/arena-browser" --no-audit --no-fund playwright@1.62.1
+          "$RUNNER_TEMP/arena-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Check Arena storage and rated sets
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/arena-http.log 2>&1 &
+          trap 'kill "$!"' EXIT
+          curl --retry 10 --retry-connrefused --retry-delay 1 --fail --silent http://127.0.0.1:8765/ >/dev/null
+          NODE_PATH="$RUNNER_TEMP/arena-browser/node_modules" node tools/check-arena-storage.cjs

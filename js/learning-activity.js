@@ -61,7 +61,8 @@
         indices.set(e.session,reviewNumber);
         events.push({
           id:"arena:" + e.identity, source:"arena", type:["seen","unanswered"].includes(e.outcome) ? "exposure" : "attempt",
-          kind:"problem", item:e.slug, at:e.at, outcome:e.outcome, retry:!!e.firstMiss, session:e.session, reviewNumber
+          kind:"problem", item:e.slug, at:e.at, outcome:e.outcome, retry:!!e.firstMiss,
+          ...(e.placement ? {placement:true} : {}), session:e.session, reviewNumber
         });
       }
     }

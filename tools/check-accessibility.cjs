@@ -266,6 +266,8 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
       const first = await links.first().getAttribute('data-goto');
       await current.and(side.locator(`[data-goto="${first}"]`)).waitFor({ state: 'attached' });
       if (space === 'practice') {
+        // Open the group so the Contests heading can reach the scroll marker on a tall viewport.
+        await page.locator('#ct-group-maa:not([open]) summary').press('Enter');
         await page.evaluate(() => window.scrollTo({
           top: window.scrollY + document.getElementById('pr-contests').getBoundingClientRect().top - document.querySelector('.topbar').offsetHeight - 12,
           behavior: 'instant'

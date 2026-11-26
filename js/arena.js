@@ -7,7 +7,7 @@
   const SUBJECTS = ['alg','cp','geo','nt'];
   // Questions near the estimate are most informative. The outer pairs cover a broad starting range.
   const PLACEMENT_OFFSETS = [0,-350,350,0,-200,200,0,-100,100,0,-70,70];
-  const PACES = { warmup: -50, matched: 50, stretch: 100 };
+  const PACES = { warmup: -200, matched: 50, stretch: 100 };
   const LENGTHS = [2, 3, 5];
   const canonical = id => root.ProblemCatalog?.canonicalId(root.MATH_PROBLEM_CATALOG, id) || id;
   const validId = id => typeof id === 'string' && /^[a-z0-9][a-z0-9.-]{0,180}$/i.test(id);
@@ -36,7 +36,7 @@
       outcomes.includes(e.outcome) && typeof e.answer === 'string' && optionalText(e.firstMiss) &&
       optionalText(e.invalidDraft) && (e.focus == null || validId(e.focus)) && optionalFlag(e.external) && (e.limitMs == null || Number.isFinite(e.limitMs))) ||
       (s != null && !(validId(s.id) && Number.isFinite(s.updated) && validId(s.focus) &&
-        validPace(s.pace) && [...LENGTHS, 6, 10, PLACEMENT_SIZE].includes(s.length) && typeof s.placement === 'boolean' &&
+        validPace(s.pace) && Number.isInteger(s.length) && s.length > 0 && s.length <= PLACEMENT_SIZE && typeof s.placement === 'boolean' &&
         typeof s.closed === 'boolean' && (!s.last || validId(s.last)) &&
         (!s.slot || validDraft(s.slot)) && (!s.round || validRound(s.round,s.placement))))) {
       throw Error('This Arena record could not be read.');
@@ -94,15 +94,16 @@
   }
   function start(state, focus, pace, length) {
     if (state.session && !state.session.closed || !validId(focus) || !validPace(pace) || !LENGTHS.includes(length)) return false;
-    const placement = !ratings(state.events).baseline;
+    const stats = ratings(state.events), placement = !stats.baseline;
     if (!placement && !SUBJECTS.includes(focus)) return false;
     state.session = { id: root.crypto?.randomUUID?.() || Date.now().toString(36) + '-' + Math.random().toString(36).slice(2),
       updated: Date.now(), focus: placement ? 'mixed' : focus, pace: placement ? 'matched' : pace,
-      length: placement ? PLACEMENT_SIZE : length, placement, closed: false, slot: null, last: null };
+      length: placement ? PLACEMENT_SIZE - stats.overall.count : length, placement, closed: false, slot: null, last: null };
   }
   function remaining(state) {
     const s = state.session;
     if (!s) return 0;
+    if (s.round) return Math.max(0, s.length - s.round.items.filter(answered).length);
     return Math.max(0, s.length - state.events.filter(e => e.outcome !== 'seen' && e.session === s.id).length);
   }
   function remainingMs(session, now = Date.now()) {
@@ -154,7 +155,7 @@
     if (!items.length) return false;
     const limitMs = s.placement ? 0 : items.reduce((sum,item) => sum + problemMinutes(item.elo) * 60000,0);
     s.round = {items, limitMs, deadline:limitMs ? now + limitMs : null, ...(s.placement ? {adaptive:true,index:0} : {})};
-    if (s.placement) s.length = PLACEMENT_SIZE;
+    if (s.placement) s.length = Math.max(1, PLACEMENT_SIZE - ratings(state.events,s.id).overall.count);
     s.slot = null;
     s.last = null;
   }
@@ -168,7 +169,7 @@
       round.index = pending;
       return true;
     }
-    if (!problem || round.items.length >= PLACEMENT_SIZE) return false;
+    if (!problem || round.items.length >= s.length) return false;
     const identity = canonical(problem.identity);
     if (round.items.some(item => canonical(item.identity) === identity) ||
         state.events.some(e => canonical(e.identity) === identity)) return false;
@@ -243,28 +244,25 @@
       if (scale * score > (rating - BASE) / variance) low = rating;
       else high = rating;
     }
-    return Math.round((low + high) / 2);
+    return Math.max(0, Math.round((low + high) / 2));
   }
   function update(t, event, k) {
     const win = Number(event.outcome === 'correct');
     t.count++;
     t.wins += win;
-    if (k) t.rating = Math.round(t.rating + k * (resultScore(event) - expected(t.rating,event.elo)));
+    if (k) t.rating = Math.max(0, Math.round(t.rating + k * (resultScore(event) - expected(t.rating,event.elo))));
   }
   function ratings(events, incompleteId) {
     const overall = track(), subjects = new Map(), points = [], evidence = [];
-    const attemptedSets = new Set(events.filter(answered).map(event => event.session));
-    const placementEvidence = event => answered(event) ||
-      (event.placement && event.outcome === 'unanswered' && attemptedSets.has(event.session));
     const ends = new Map();
-    events.forEach((event, i) => { if (placementEvidence(event)) ends.set(event.session,i); });
+    events.forEach((event, i) => { if (answered(event)) ends.set(event.session,i); });
     let baseline = null;
     events.forEach((event, i) => {
       if (event.outcome === 'seen') return;
       const before = overall.rating;
       const calibration = !baseline, subjectChanges = [];
       if (calibration) {
-        if (!placementEvidence(event)) return;
+        if (!answered(event)) return;
         evidence.push(event);
         update(overall,event);
         const rating = estimate(evidence);
@@ -295,28 +293,31 @@
   }
   function targetRating(stats, focus, pace) {
     const rating = stats.subjects.get(focus)?.rating ?? stats.overall.rating;
-    return pace === 'warmup' ? Math.ceil(rating / 50) * 50 + PACES.warmup :
+    return pace === 'warmup' ? Math.max(0, Math.floor((rating + PACES.warmup) / 50) * 50) :
       Math.floor(rating / 50) * 50 + PACES[pace];
   }
-  function choose(pool, seen, stats, session, subjectsOf, random = Math.random, picked = []) {
+  function choose(pool, seen, stats, session, subjectsOf, random = Math.random, picked = [], weakTopics) {
     const {focus, pace, placement} = session;
     const center = placement ? stats.overall.rating : targetRating(stats,focus,pace);
     const remaining = Math.max(1, session.length - picked.length);
     const gap = picked.reduce((sum,p) => sum + center - p.elo,0);
     const target = placement ? center + (PLACEMENT_OFFSETS[picked.length] || 0) :
       center + Math.max(-100, Math.min(100,gap / remaining));
-    let best = null, bestDistance = Infinity, bestInRange = false;
+    let best = null, bestDistance = Infinity, bestPriority = -1;
     for (const p of pool) {
       if (seen.has(canonical(p.identity))) continue;
       const subjects = subjectsOf(p);
       if (focus !== 'mixed' && !subjects.includes(focus)) continue;
+      // Use the weak-topic preference only inside the normal difficulty band.
       const inRange = placement || Math.abs(p.elo - center) <= 100;
-      if (bestInRange && !inRange) continue;
+      const targeted = inRange && !placement && weakTopics?.size && p.tree?.some(id => weakTopics.has(id));
+      const priority = targeted ? 2 : inRange ? 1 : 0;
+      if (priority < bestPriority) continue;
       const coverage = subjects.length ? Math.min(...subjects.map(id => stats.subjects.get(id)?.count || 0)) : 0;
       const penalty = focus === 'mixed' ? Math.min(coverage, 5) * (placement ? 35 : 4) : 0;
       const distance = Math.abs(p.elo - target) + penalty + random() * (placement ? 25 : 10);
-      if (inRange && !bestInRange || distance < bestDistance) {
-        best = p; bestDistance = distance; bestInRange = inRange;
+      if (priority > bestPriority || distance < bestDistance) {
+        best = p; bestDistance = distance; bestPriority = priority;
       }
     }
     return best;
@@ -324,8 +325,9 @@
   function recommendations(history, lookup, now = Date.now()) {
     const latest = new Map();
     for (const e of history) {
-      if (e.kind === 'problem' && ['correct', 'incorrect'].includes(e.outcome))
-        latest.set(e.canonicalId || e.item, e);
+      if (e.kind !== 'problem') continue;
+      const id = e.canonicalId || e.item;
+      if (answered(e) || !latest.has(id) && e.source === 'arena' && !e.placement && e.outcome === 'unanswered') latest.set(id,e);
     }
     const rows = new Map();
     const recent = [...latest.values()].sort((a, b) => b.at - a.at).slice(0, 60);
@@ -338,9 +340,9 @@
         const row = rows.get(id);
         row.attempts++;
         row.recentAttempts += weight;
-        if (e.outcome === 'incorrect' || e.retry) {
+        if (e.outcome !== 'correct' || e.retry) {
           if (e.outcome === 'incorrect') row.misses++;
-          row.recentMisses += weight * (e.outcome === 'incorrect' ? 1 : 0.5);
+          row.recentMisses += weight * (e.outcome === 'incorrect' ? 1 : e.retry ? 0.5 : 0.25);
           row.missedSlug ||= e.item;
           if (row.examples.length < 3) row.examples.push(e);
         }

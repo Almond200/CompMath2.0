@@ -62,11 +62,25 @@ const pick = (seen, s = placed.session) => A.choose(pool, new Set(seen), calibra
 assert.equal(pick(['amc10-original']).slug,'fit');
 assert.equal(pick(pool.map(p=>p.identity)),null);
 const lowRating = {overall:{rating:350}, subjects:new Map()};
-assert.deepEqual(['warmup','matched','stretch'].map(pace => A.targetRating(lowRating,'mixed',pace)),[300,400,450]);
+assert.deepEqual(['warmup','matched','stretch'].map(pace => A.targetRating(lowRating,'mixed',pace)),[150,400,450]);
 const balanced = {focus:'mixed',pace:'matched',placement:false,length:2};
 const range = [problem('lower',320),problem('higher',480),problem('middle',400),problem('outside',505)];
 assert.equal(A.choose(range,new Set(['lower']),lowRating,balanced,p=>p.subjects,()=>0,[range[0]]).slug,'higher');
 assert.equal(A.choose(range,new Set(['lower','higher','middle']),lowRating,balanced,p=>p.subjects,()=>0).slug,'outside');
+const topicPool = [
+  {...problem('usual',400), tree:['geo.other']},
+  {...problem('weak',455), tree:['geo.weak']},
+  {...problem('weak-outside',501), tree:['geo.weak']},
+  {...problem('known-twin',400), identity:'amc12-twin', tree:['geo.weak']},
+  {...problem('another-subject',400,['alg']), tree:['geo.weak']}
+];
+const chooseTopic = (seen, weakTopics, placement = false) => A.choose(topicPool, new Set(seen), lowRating,
+  {...balanced, focus:'geo', placement}, p=>p.subjects, ()=>0, [], weakTopics)?.slug;
+const weakTopics = new Set(['geo.weak']);
+assert.equal(chooseTopic(['amc10-original']), 'usual', 'ordinary slots use the closest difficulty');
+assert.equal(chooseTopic(['amc10-original'], weakTopics), 'weak', 'a targeted slot favors a fresh in-range problem');
+assert.equal(chooseTopic(['amc10-original','weak'], weakTopics), 'usual', 'exhausted in-range topics fall back to the usual draw');
+assert.equal(chooseTopic(['amc10-original'], weakTopics, true), 'usual', 'placement uses the regular adaptive draw');
 assert.equal(A.merge(state,state).events.length,7);
 const twin = {...state.events[0], identity:'amc10-original',slug:'amc10-original', outcome:'correct', answer:'B'};
 const other = {version:1, session:null, events:[twin]};
@@ -149,6 +163,14 @@ async function checkHistory() {
   assert.equal(single.events[0].firstMiss,'A');
   assert.equal(A.ratings(single.events).baseline.event.session,setId);
   assert.equal(A.ratings(single.events.map(e => ({...e,outcome:'unanswered',answer:''}))).baseline,null);
+  const partial = {version:1,session:null,events:single.events.slice(0,4).map((e,i)=>
+    i === 3 ? {...e,outcome:'unanswered',answer:''} : e)};
+  A.start(partial,'geo','matched',5);
+  assert.equal(partial.session.length,9,'only remaining placement problems are generated');
+  A.openRound(partial,partial.session.id,[problem('fresh-placement')]);
+  assert.equal(partial.session.length,9);
+  A.submitRound(partial,partial.session.id,()=>null);
+  assert.equal(A.ratings(partial.events).overall.count,3,'blank placement problems do not supply placement evidence');
   const answeredBackup = {...single.events[1],outcome:'correct',answer:'A',at:single.events[1].at+10};
   const withBlank = {...single, events:single.events.map(e=>e.slug==='mix-1'?{...e,outcome:'unanswered'}:e)};
   assert.equal(A.merge(withBlank,{version:1,events:[answeredBackup],session:null}).events.find(e=>e.slug==='mix-1').outcome,'correct');
@@ -159,11 +181,23 @@ async function checkHistory() {
   const six = A.ratings([...placed.events, ...Array.from({length:6},(_,i) => ({...newAnswer,slug:'rated-'+i,identity:'rated-'+i}))]);
   assert.equal(six.subjects.get('geo').wins,A.SUBJECT_PROVISIONAL);
   assert.equal(six.subjects.get('alg').wins,0);
-  const lowPlacement = single.events.map(event => ({...event, outcome:'incorrect', elo:400}));
+  const lowPlacement = single.events.map(event => ({...event, outcome:'incorrect', elo:550}));
   const lowBaseline = A.ratings(lowPlacement).baseline.rating;
   assert(lowBaseline < 100, 'placement can estimate a rating below 100');
   const lowRated = A.ratings([...lowPlacement,{...newAnswer, outcome:'incorrect', elo:lowBaseline, subjects:['geo']}]);
   assert(lowRated.subjects.get('geo').rating < lowBaseline, 'rated misses still lower a rating below 100');
+  const floorPlacement = lowPlacement.map(event => ({...event, elo:200}));
+  const miss = {...newAnswer, outcome:'incorrect', elo:200, subjects:['geo']};
+  const atFloor = A.ratings([...floorPlacement, miss]);
+  assert.equal(atFloor.baseline.rating, 0, 'placement is bounded at zero');
+  assert.equal(atFloor.subjects.get('geo').rating, 0, 'a miss at zero cannot lower the rating');
+  assert.equal(atFloor.overall.rating, 0);
+  assert(atFloor.points.every(point => point.rating >= 0));
+  assert.equal(A.targetRating(atFloor, 'geo', 'warmup'), 0);
+  const crossedFloor = A.ratings([...lowPlacement.map(event => ({...event, elo:500})), {...miss, elo:20}]);
+  assert.equal(crossedFloor.subjects.get('geo').rating, 0, 'a loss can reach zero from a positive rating');
+  const recovering = A.ratings([...floorPlacement, miss, {...miss, slug:'recover', outcome:'correct'}]);
+  assert(recovering.subjects.get('geo').rating > 0, 'a solve can raise the rating immediately from zero');
   const day = 86400000, nowForStudy = 120 * day;
   const studyHistory = [
     ...Array.from({length:4},(_,i) => ({kind:'problem',item:'old-'+i,outcome:'incorrect',at:i*day})),
@@ -178,6 +212,12 @@ async function checkHistory() {
   const retryStudy = A.recommendations([{kind:'problem',item:'retry',outcome:'correct',retry:true,at:nowForStudy}],
     () => ({tree:['geo.retry']}),nowForStudy);
   assert.equal(retryStudy[0].examples[0].item,'retry');
+  const skippedStudy = A.recommendations([
+    {kind:'problem',source:'arena',item:'skipped',outcome:'unanswered',at:nowForStudy},
+    {kind:'problem',source:'arena',item:'old-placement',outcome:'unanswered',placement:true,at:nowForStudy},
+    {kind:'problem',source:'arena',item:'missed',outcome:'incorrect',at:nowForStudy},
+  ],id => ({tree:[id]}),nowForStudy);
+  assert.deepEqual(skippedStudy.map(topic => topic.id),['missed','skipped']);
   console.log('Arena placement, Elo, independent subjects, options, known problems, shared activity, recommendations and backup merging passed.');
 }
 checkHistory().catch(error => { console.error(error); process.exitCode = 1; });
