@@ -4922,7 +4922,6 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
   overflow-wrap: anywhere;
 }
 .practice-play .practice-results-stats > :first-child strong {
-  color: var(--space);
   font-size: calc(30px * var(--tx));
 }
 .practice-play .practice-result-row strong { font-size: calc(15px * var(--tx)); }
