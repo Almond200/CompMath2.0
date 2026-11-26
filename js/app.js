@@ -5810,7 +5810,6 @@
       if (set.status === 'finished') {
         clearInterval(mockClockInterval);
         savePractice();
-        if (!practiceSaveFailed) notifyStudyUpdate();
         toast('Time is up. Your mock has been graded.');
         renderTopicPracticeSet();
         return;
@@ -6175,14 +6174,17 @@
     timing: ["Ran out of time", "I had a workable approach and could likely have solved it with more time."],
     unsure: ["Something else or not sure", "None of these fits, or I haven’t found where I got stuck."]
   };
-  function mistakeReviewHtml(eligible) {
+  function mistakeReviewHtml(eligible, solvedOnRetry = false) {
     if (!eligible) return "";
+    const reasons = activity.mistakeReasons(Object.keys(MISTAKE_REASONS), solvedOnRetry);
     return `<details class="review-mistake"><summary>Mark your mistake <span data-mistake-selection>Optional</span></summary>
-      <p>Choose any reasons that fit to improve your study recommendations. Only your rated results affect your Elo. Select a reason again to clear it.</p>
+      <p>${solvedOnRetry ? "Think about what went wrong on your first try. " : ""}Choose any reasons that fit to improve your study recommendations. Only your rated results affect your Elo. Select a reason again to clear it.</p>
       <div class="review-mistake-options" role="group" aria-label="Mistake reasons">
-        ${Object.entries(MISTAKE_REASONS).map(([id, [label, detail]]) =>
-          `<button type="button" data-mistake-reason="${id}" aria-pressed="false" aria-disabled="true">
-            <strong>${label}</strong><span>${detail}</span></button>`).join("")}
+        ${reasons.map(id => {
+          const [label, detail] = MISTAKE_REASONS[id];
+          return `<button type="button" data-mistake-reason="${id}" aria-pressed="false" aria-disabled="true">
+            <strong>${label}</strong><span>${detail}</span></button>`;
+        }).join("")}
       </div><p class="review-mistake-status" role="status"></p></details>`;
   }
   function studyTypeFilterHtml() {
@@ -6247,7 +6249,6 @@
       update();
       try {
         await activity.saveMistakes(source, setId, slug, selected);
-        notifyStudyUpdate();
         reasons = selected;
       } catch {
         status.textContent = "Couldn’t save your selections. Try again.";
@@ -6324,7 +6325,7 @@
     </div>`;
   }
   function insightProblemLink(problem, href) {
-    return `<a data-problem-preview="${escapeAttr(problem.slug)}" href="${href}">${escapeAttr(refShort(problem.ref))}</a>`;
+    return `<a class="review-problem-link" data-problem-preview="${escapeAttr(problem.slug)}" href="${href}">${escapeAttr(refShort(problem.ref))}</a>`;
   }
   function studyItem(row) {
     if (row.kind === "topic") {
@@ -6336,7 +6337,7 @@
     }
     return null;
   }
-  function resultStudyNotes(history, source, setId, outcomes, reviewUrl, type) {
+  function resultStudyNotes(history, source, setId, outcomes, reviewUrl) {
     const key = item => item.kind + ":" + item.id;
     const indices = new Map(outcomes.map(([slug],i) => [slug,i]));
     const localEvidence = new Map();
@@ -6351,7 +6352,7 @@
       }
     }
     const rows = window.Arena.studyRecommendations(history, slug => PROBLEM_BY_SLUG[slug], Date.now(),
-      row => (type === "all" || row.kind === type) && localEvidence.has(key(row)) && studyItem(row));
+      row => localEvidence.has(key(row)) && studyItem(row));
     return rows.map(row => {
       const item = studyItem(row), evidence = localEvidence.get(key(row));
       const groups = [["incorrect","missed"],["correct","needed a second try"],["unanswered","unanswered"]];
@@ -6373,9 +6374,8 @@
     }
     return hardest ? `<p><strong>Highest-rated solve</strong> · ${insightProblemLink(hardest.problem, reviewUrl(hardest.index))} · ${hardest.problem.elo} Elo</p>` : "";
   }
-  let studyUpdatePending = false;
+  const shownResultRecommendations = new Map();
   function notifyStudyUpdate() {
-    studyUpdatePending = true;
     $content.querySelector("[data-study-items]")?.dispatchEvent(new Event("study-history-changed"));
   }
   function wireResultStudy(root, source, setId, outcomes, reviewUrl, loadHistory, initial) {
@@ -6383,21 +6383,17 @@
     if (!notes) return;
     const list = notes.querySelector("[data-study-items]");
     const status = notes.querySelector("[data-study-update]");
-    const type = notes.querySelector("[data-study-type]");
-    let rendered = list.innerHTML, request = 0, history = initial || [];
-    const show = (fromUpdate = false) => {
-      if (!list.isConnected) return;
-      const items = resultStudyNotes(history, source, setId, outcomes, reviewUrl, type.value);
-      if (fromUpdate && studyUpdatePending) {
-        studyUpdatePending = false;
-        status.hidden = !items;
-      }
-      if (notes.hidden && !items) return;
-      notes.hidden = false;
-      const html = items || "<p>No recent recommendations in this view.</p>";
-      if (html !== rendered) {
-        rendered = html;
-        list.innerHTML = html;
+    const key = source + ":" + setId;
+    let rendered = list.innerHTML, request = 0;
+    const show = history => {
+      const items = resultStudyNotes(history, source, setId, outcomes, reviewUrl);
+      const previous = shownResultRecommendations.get(key);
+      status.hidden = !items || previous === undefined || previous === items;
+      shownResultRecommendations.set(key, items);
+      notes.hidden = !items;
+      if (items !== rendered) {
+        rendered = items;
+        list.innerHTML = items;
         renderMath(list);
       }
     };
@@ -6406,17 +6402,16 @@
       try {
         const latest = await loadHistory();
         if (current !== request || !list.isConnected) return;
-        history = latest;
-        show(true);
+        show(latest);
       } catch {
         if (current !== request || !list.isConnected || notes.hidden) return;
         rendered = null;
+        status.hidden = true;
         list.textContent = "Study recommendations are unavailable.";
       }
     };
     list.addEventListener("study-history-changed", load);
-    type.addEventListener("change", () => show());
-    if (initial) show(true);
+    if (initial) show(initial);
     else load();
   }
   function practiceInsightsHtml(set, outcomes, counts, reviewUrl, breakdown) {
@@ -6451,8 +6446,8 @@
       ${bars ? `<section><h3>Correct by subject</h3>${bars}</section>` : ''}
       <section><h3>Results by problem</h3><div class="insight-cells">${sequence}</div></section></div>
       <div class="insight-legend">${legend}</div><div class="insight-notes"><div data-result-study hidden>
-        <div><p class="study-update" data-study-update role="status" hidden><em>Recommendations updated</em></p>
-          <div data-study-items aria-live="polite"></div></div>${studyTypeFilterHtml()}
+        <p class="study-update" data-study-update role="status" hidden><em>Recommendations updated</em></p>
+        <div data-study-items aria-live="polite"></div>
       </div>${highestSolveHtml(outcomes,reviewUrl)}</div></div>`;
   }
   function practiceResultRow({href, index, number, problem, summary, result}) {
@@ -6608,7 +6603,6 @@
       if (topicPracticeSet !== set || set.status === 'finished' || location.hash !== '#/practice/set/' + encodeURIComponent(set.id)) return;
       practiceSessions.finish(set);
       savePractice();
-      if (!practiceSaveFailed) notifyStudyUpdate();
       redraw();
       updatePageTitle(getRoute()); window.AppAccessibility.focusMain();
     });
@@ -6693,7 +6687,6 @@
       const v = b.getAttribute('aria-pressed') === 'true' ? null : b.dataset.self;
       if (!practiceSessions.selfMark(set, slug, v)) return;
       savePractice();
-      if (!practiceSaveFailed) notifyStudyUpdate();
       redraw(); $content.querySelector(`[data-self="${b.dataset.self}"]`)?.focus({ preventScroll: true });
     }));
     if (p && finished && !voidNote) wireMistakeReview($content.querySelector(".practice-review"), p.slug, {
@@ -7063,7 +7056,7 @@
         () => activity.history({kind:"problem"}), initial),
       notifyStudyUpdate,
       reviewExplanation: practiceExplanationHtml,
-      mistakeReviewHtml: (outcome, retry) => mistakeReviewHtml(activity.canMarkMistake(outcome, retry)),
+      mistakeReviewHtml: (outcome, retry) => mistakeReviewHtml(activity.canMarkMistake(outcome, retry), outcome === "correct" && retry),
       nextStepsHtml, wireMistakeReview, studyTypeFilterHtml, studyItem,
       studyCardPractice: id => cardPracticeLink(id, "Practice this card"),
       loadExplanation: p => Promise.all(solutionRequirements([p.year])),

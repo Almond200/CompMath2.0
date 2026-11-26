@@ -188,7 +188,7 @@
   function reviewedProblemLink(ctx, event) {
     const p = ctx.lookup(event.item);
     const name = ctx.escape(p ? ctx.refShort(p.ref) : event.item);
-    return `<a class="arena-review-link" href="${reviewUrl(event.session)}/${event.reviewNumber}"${p ? ` data-problem-preview="${ctx.escape(p.slug)}"` : ''}>${name}</a>`;
+    return `<a class="review-problem-link" href="${reviewUrl(event.session)}/${event.reviewNumber}"${p ? ` data-problem-preview="${ctx.escape(p.slug)}"` : ''}>${name}</a>`;
   }
   function reviewedProblemsHtml(ctx, examples) {
     const links = examples.map(event => reviewedProblemLink(ctx,event));
@@ -560,7 +560,7 @@
             st.session.last = null;
           });
           if (current()) {
-            if (done) { ctx.notifyStudyUpdate(); location.hash = reviewUrl(s.id); }
+            if (done) location.hash = reviewUrl(s.id);
             else ctx.refresh();
           }
         } catch { saveError(box); }
@@ -773,10 +773,7 @@
       controller.abort();
       try {
         await A.change(st => A.submitRound(st,id,gradeAnswer));
-        if (box.isConnected) {
-          ctx.notifyStudyUpdate();
-          location.hash = reviewUrl(id);
-        }
+        if (box.isConnected) location.hash = reviewUrl(id);
       } catch { finishing = false; saveFailed = true; saveError(box.parentElement); }
     }
     box.parentElement.classList.add('practice-session');
@@ -915,10 +912,8 @@
           st.session.length = length;
         });
       }
-      if (state.session?.round && !state.session.closed && Date.now() >= A.submissionAt(state.session)) {
+      if (state.session?.round && !state.session.closed && Date.now() >= A.submissionAt(state.session))
         state = await expireRatedSet(state.session.id);
-        if (state.session?.closed) ctx.notifyStudyUpdate();
-      }
       const history = await ctx.history(state);
       if (!current()) return;
       watchDeadline(ctx,state.session);

@@ -12,11 +12,11 @@
     ["accuracy", "carelessness"],
     ["reading", "carelessness"]
   ]);
-  function mistakeReasons(value) {
+  function mistakeReasons(value, solvedOnRetry = false) {
     if (!value) return [];
     const values = Array.isArray(value) ? value : [value];
     const normalized = new Set(values.map(reason => MISTAKE_REASON_ALIASES.get(reason) ?? reason));
-    return Object.keys(MISTAKE_BOOSTS).filter(reason => normalized.has(reason));
+    return Object.keys(MISTAKE_BOOSTS).filter(reason => normalized.has(reason) && (!solvedOnRetry || reason !== "timing"));
   }
   // Each reason adds evidence with diminishing returns. A result stays a single attempt.
   const mistakeBoost = value => 1 - mistakeReasons(value).reduce((remaining, reason) => remaining * (1 - MISTAKE_BOOSTS[reason]), 1);
@@ -80,10 +80,11 @@
         kind === "problem" ? root.StudyStorage.readActivity("mistake") : []]);
     } else try { events = entries(readStored(storage)); } catch (error) {}
     const mistakes = new Map([...events, ...marks].filter(event => event.type === "mistake")
-      .map(event => [event.id, mistakeReasons(event.outcome)]));
+      .map(event => [event.id, event.outcome]));
     events = events.filter(event => event.type !== "mistake");
     const markFor = (source, setId, slug, outcome, retry) => {
-      const reasons = canMarkMistake(outcome, retry) && mistakes.get(mistakeId(source, setId, slug));
+      const reasons = canMarkMistake(outcome, retry) &&
+        mistakeReasons(mistakes.get(mistakeId(source, setId, slug)), outcome === "correct" && retry);
       return reasons?.length ? { mistakes: reasons } : {};
     };
     try { if (practice) sets = practice.read(storage); } catch (error) {}
