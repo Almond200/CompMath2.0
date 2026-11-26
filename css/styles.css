@@ -3746,6 +3746,30 @@ body.is-landing .content { padding: 0 0 50px; }
   .home .hm-cols .hm-continue { border-top: none; }
 }
 
+/* Place the homepage preview's new sections above the existing columns. */
+.hm-preview-back { display: inline-block; margin-bottom: 10px; }
+.home-dashboard .hm-cols { grid-template-columns: minmax(0, 3fr) minmax(250px, 2fr); }
+.hm-dashboard-top { grid-template-areas: "resume progress" "study progress"; }
+.hm-resume { grid-area: resume; }
+.hm-study { grid-area: study; }
+.hm-progress { grid-area: progress; --space: var(--c-arena); --space-soft: var(--cs-arena); }
+.home-dashboard :is(.hm-resume, .hm-progress) { border-top: none; }
+.home-dashboard :is(.hm-main, .hm-rail) > :first-child { border-top: 1px solid var(--border); }
+.hm-resume .rc-row .ui-icon { color: var(--tint); flex: none; }
+.hm-resume .rc-name small { display: block; color: var(--text-dim); font-weight: 400; }
+.hm-placement-title { margin: 0; font-size: calc(17px * var(--tx)); }
+.hm-progress .hm-rating-chart { max-height: 105px; cursor: default; }
+.hm-recommendations { margin-top: 6px; }
+.hm-recommendations .arena-study-row { display: block; }
+.hm-recommendations .hp-mine-foot { margin-top: 2px; }
+@media (min-width: 761px) and (max-width: 980px) {
+  .home-dashboard .hm-cols { column-gap: 24px; }
+}
+@media (max-width: 760px) {
+  .home-dashboard :is(.hm-cols, .hm-main, .hm-rail) { display: block; }
+  .home-dashboard .hm-cols .hm-progress, .home-dashboard .hm-cols .hm-continue { border-top: 1px solid var(--border); }
+}
+
 /* The book view's sidebar stays put while the page scrolls: the page's bottom space sits inside
    the grid (on the main column), so the end of the grid never pushes the sticky sidebar up. */
 .content:has(> .lesson-page) { padding-bottom: 0; }

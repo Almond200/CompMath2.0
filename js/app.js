@@ -5396,7 +5396,7 @@
     // The panel opens the problem's page. Its old topic chips went with the topic tree (owner, 2026-11-21).
     // The statement is filled in once its year's file loads.
     return `<div class="hp-panel hp-daily hp-click" data-open="#/problem/${p.slug}" role="link" tabindex="0" aria-label="Open ${escapeAttr(refShort(p.ref))}">
-        <div class="hp-label">Problem of the day</div>
+        <h2 class="hp-label">Problem of the day</h2>
         <div class="daily-title">${refShort(p.ref)}</div>
         <section class="prob-st daily-st" data-slug="${p.slug}" hidden>
           <div class="prob-statement"></div>
@@ -5480,7 +5480,7 @@
     const id = key.startsWith("w:") ? window.MATH_DYK[+key.slice(2)].card : key;
     const f = BY_ID[id].formula;
     return `<section class="hp-panel dyk">
-        <div class="hp-label">Did you know?</div>
+        <h2 class="hp-label">Did you know?</h2>
         <p class="dyk-fact">${linkifyCards(didYouKnowFact(key))}</p>
         <div class="dyk-foot"><a href="#/f/${id}">From ${f.name} ${uiIcon("arrow-right")}</a></div>
       </section>`;
@@ -5496,7 +5496,7 @@
       return `<a class="rc-row" href="#/f/${id}">${kindBadgeHtml(e.formula)}<span class="rc-name">${e.formula.name}</span><span class="rc-meta">${bySubject(e.section) ? pageTitle(e.section, e.section.subsections.indexOf(e.subsection)) : e.section.title}</span></a>`;
     }).join("");
     return `<section class="hp-panel hm-newest">
-        <div class="hp-label">Newest cards</div>
+        <h2 class="hp-label">Newest cards</h2>
         <div class="rc-list">${rows}</div>
         <a class="hp-link" href="${specialHref("NewCards", "All")}">Every new card, newest first ${uiIcon("arrow-right")}</a>
       </section>`;
@@ -5513,7 +5513,7 @@
       return `<a class="pg-row" href="#/problems/${famSlug(f)}/${latest}"><span class="pg-fam">${f}</span><span class="pg-n">${all.toLocaleString()} problems, ${years[0]}&ndash;${latest}</span><span class="pg-done">${done.toLocaleString()} written up</span></a>`;
     }).join("");
     return `<section class="hp-panel hm-glance">
-        <div class="hm-h-row"><div class="hp-label">Practice at a glance</div><a class="hm-more hm-more-practice" href="#/practice/contests">See all ${uiIcon("arrow-right")}</a></div>
+        <div class="hm-h-row"><h2 class="hp-label">Practice at a glance</h2><a class="hm-more hm-more-practice" href="#/practice/contests">See all ${uiIcon("arrow-right")}</a></div>
         <div class="pg-list">${rows}</div>
       </section>`;
   }
@@ -5561,15 +5561,137 @@
     }
   }
 
+  function landingCardHtml(card) {
+    return card ? `<section class="hm-sec hm-cotd hp-click" data-open="#/f/${card.formula.id}" role="link" tabindex="0" aria-label="Open ${escapeAttr(card.formula.name.replace(/\$/g, ""))}">
+      <h2 class="hm-h">Card of the day</h2>
+      <div class="rc-row">${kindBadgeHtml(card.formula)}<span class="rc-name">${card.formula.name}</span></div>
+      <p class="home-cotd">${firstSentences(card.formula.description, 1)}</p>
+    </section>` : "";
+  }
+  function landingLibraryHtml() {
+    const starIds = liveIds(getList("starred"));
+    return `<section class="hm-sec hm-library">
+      <h2 class="hm-h">Your library</h2>
+      ${starIds.length
+        ? `<div class="rc-list">${starIds.slice(0, 4).map(id => `<a class="rc-row" href="#/f/${id}"><span class="rc-star">${uiIcon("star")}</span><span class="rc-name">${BY_ID[id].formula.name}</span></a>`).join("")}</div>
+          <a class="hp-link" href="#/list/starred">All ${starIds.length} starred ${uiIcon("arrow-right")}</a>`
+        : `<p class="hp-empty">Use the star button ${uiIcon("star-outline")} on a card to keep it here.</p>`}
+      <div class="hp-mine-foot">
+        <a href="#/learn" data-list-new>Make a list</a>
+        <a href="#/learn" data-goto="pr-study">Open a list</a>
+      </div>
+    </section>`;
+  }
+  function landingRecentHtml() {
+    const rows = recentRowsHtml(6, ["formula", "method", "pattern", "problem"]);
+    return `<section class="hm-sec hm-continue" data-home-recent>
+      <h2 class="hm-h">Recently opened</h2>
+      ${rows ? `<div class="rc-list">${rows}</div>` : `<p class="hp-empty">Cards and problems you open will appear here.</p>`}
+    </section>`;
+  }
+  function landingDailyHtml() {
+    return problemsReady ? dailyProblemHtml() :
+      '<div class="hm-sec" data-home-daily><button type="button" class="hp-btn">Show the problem of the day</button></div>';
+  }
+  function dashboardContinueHtml() {
+    let set;
+    try {
+      set = practiceSessions.read(localStorage).filter(set => set.status !== "finished").sort((a, b) => b.updated - a.updated)[0];
+    } catch {}
+    const continuation = learnContinue();
+    const lesson = continuation?.again ? continuation : null;
+    return `<section class="hm-sec hm-resume">
+      <h2 class="hm-h">Continue studying</h2>
+      <div class="rc-list">
+        <a class="rc-row" data-tint="practice" href="${set ? "#/practice/set/" + encodeURIComponent(set.id) : "#/practice"}">
+          ${uiIcon("arrow-right")}
+          <span class="rc-name">${set ? "Resume practice set" : "Start a practice set"}${set ? `<small>${escapeAttr(practiceSetLabel(set))}</small>` : ""}</span>
+        </a>
+        <a class="rc-row" data-tint="learn" href="${lesson ? learnHash(lesson.b, lesson.c, lessonNum(lesson.l)) : "#/learn"}">
+          ${uiIcon("arrow-right")}
+          <span class="rc-name">${lesson ? "Continue lesson" : "Find a textbook"}${lesson ? `<small>${escapeAttr(lesson.l.title)}</small>` : ""}</span>
+        </a>
+      </div>
+    </section>`;
+  }
+  async function wireHomeDashboard(board) {
+    const progress = board.querySelector("[data-home-progress]");
+    const recommendations = board.querySelector("[data-home-recommendations]");
+    const arena = window.Arena;
+    let arenaState;
+    try {
+      arenaState = await arena.read();
+    } catch {
+      if (!board.isConnected) return;
+      progress.innerHTML = '<p class="hp-empty">Arena progress is unavailable.</p><a class="hp-link" href="#/arena">View Arena</a>';
+      recommendations.innerHTML = '<p class="hp-empty">Study recommendations are unavailable.</p>';
+      return;
+    }
+    if (!board.isConnected) return;
+    const activePlacement = arenaState.session?.placement && !arenaState.session.closed;
+    const stats = arena.ratings(arenaState.events, activePlacement ? arenaState.session.id : null);
+    if (!stats.baseline) {
+      const answered = activePlacement ? arena.placementStats(arenaState).overall.count : stats.overall.count;
+      const total = activePlacement ? stats.overall.count + arena.placementLength(arenaState) : arena.PLACEMENT_SIZE;
+      const started = answered > 0 || activePlacement;
+      progress.innerHTML = `<h3 class="hm-placement-title">${started ? "Finish your placement" : "Find your starting Elo"}</h3>
+        <p class="arena-note">${started ? `${answered} of ${total} placement problems answered.` : `Try ${total} untimed contest problems to get your Arena rating.`}</p>
+        <a class="hp-btn arena-primary" href="${activePlacement ? "#/arena/session" : "#/arena"}">${started ? "Continue placement" : "Get rated"} ${uiIcon("arrow-right")}</a>`;
+      recommendations.innerHTML = '<p class="hp-empty">After placement, Arena results help you find topics and cards to review.</p>';
+      return;
+    }
+    const provisional = [...stats.subjects.values()].some(subject => subject.wins < arena.SUBJECT_PROVISIONAL);
+    progress.innerHTML = `<div class="arena-big">${stats.overall.rating.toLocaleString()} <small>Elo</small></div><p class="arena-note">Overall rating${provisional ? " · Provisional" : ""}</p>
+      <div data-home-rating-trend></div><a class="hp-link" href="#/arena">View Arena ${uiIcon("arrow-right")}</a>`;
+    const trend = progress.querySelector("[data-home-rating-trend]");
+    loadAssets("arena").then(() => {
+      trend.innerHTML = window.ArenaView.ratingPreview(stats) || '<p class="hp-empty">Your rating trend starts after your first rated set.</p>';
+    }).catch(() => { trend.innerHTML = '<p class="hp-empty">Rating trend couldn’t load.</p>'; });
+    try {
+      const [history] = await Promise.all([activity.history({arenaState, kind:"problem"}), loadProblems()]);
+      if (!board.isConnected) return;
+      const rated = history.filter(event => event.source === "arena" && event.session && event.reviewNumber);
+      const rows = arena.studyRecommendations(rated, slug => PROBLEM_BY_SLUG[slug], Date.now(), row => studyItem(row)).slice(0, 2);
+      recommendations.innerHTML = rows.length ? `<p class="hp-empty">Based on your Arena results.</p>
+        <div class="hm-recommendations">${rows.map(row => {
+          const example = row.examples[0];
+          const review = "#/arena/review/" + encodeURIComponent(example.session) + "/" + example.reviewNumber;
+          const practice = row.kind === "topic" ? topicPracticeLink(row.id) : cardPracticeLink(row.id, "Practice this card");
+          return `<article class="arena-study-row"><strong>${studyItem(row).link}</strong>
+            <div class="hp-mine-foot"><a href="${review}">Review problem</a>${practice || ""}</div></article>`;
+        }).join("")}</div>` : '<p class="hp-empty">Recommendations appear as your Arena results show what to review.</p>';
+      renderMath(recommendations);
+    } catch {
+      if (board.isConnected) recommendations.innerHTML = '<p class="hp-empty">Study recommendations couldn’t load. <a href="#/arena">View Arena</a></p>';
+    }
+  }
+  function homeDashboardBackLink() {
+    const current = new URL(location.href);
+    current.searchParams.delete("home");
+    current.hash = "#/";
+    return `<a class="back-link hm-preview-back" href="${escapeAttr(current.href)}">${uiIcon("arrow-left")} Current homepage</a>`;
+  }
+  function homeDashboardTopHtml() {
+    return `<div class="hm-cols hm-dashboard-top">
+        ${dashboardContinueHtml()}
+        <section class="hm-sec hm-progress arena">
+          <h2 class="hm-h">Your progress</h2>
+          <div data-home-progress><p class="hp-empty">Loading Arena progress…</p></div>
+        </section>
+        <section class="hm-sec hm-study">
+          <h2 class="hm-h">Recommended for you</h2>
+          <div data-home-recommendations><p class="hp-empty">Loading study recommendations…</p></div>
+        </section>
+    </div>`;
+  }
+
   // The front page: what the app is, why it helps and how to use it, beside what helps today
   // (where you left off, the problem and card of the day, your library). The four spaces and
   // the search sit above both, so nothing needs a scroll to reach.
   function renderLanding() {
     shownIds = [];
+    const dashboard = new URLSearchParams(location.search).get("home") === "dashboard";
     const count = kind => ALL.filter(e => e.kind === kind).length;
-    const card = dailyCard();
-    const starIds = liveIds(getList("starred"));
-    const mine = lists.items.filter(l => l.id !== "starred");
     const nProblems = problemsReady ? PROBLEM_DB.length.toLocaleString() + " problems" : "Contest problems";
     // Each space says in one line what it holds; the sidebar already lists every subject, so the
     // front page does not repeat the four spaces a third time.
@@ -5591,10 +5713,10 @@
     // The homepage strip matches the top bar's space order, followed by a main column and a rail.
     // Continue: the cards and problems opened lately. Lessons and books are left to Learn's own
     // "Recently opened" (owner, 2026-10-31: too many lessons crowded the home page).
-    const recentCards = recentRowsHtml(6, ["formula", "method", "pattern", "problem"]);
     const bookRows = LEARN_SHELF.slice(0, 6).map(b => `<a class="hm-book" href="${learnHash(b)}">${bookCoverHtml(b, "s")}<span class="hm-book-t">${escapeAttr(b.title)}</span><span class="hm-book-n">${learnLessonsIn(b)} lessons</span></a>`).join("");
     $content.innerHTML = `
-      <div class="home">
+      <div class="home${dashboard ? " home-dashboard" : ""}">
+        ${dashboard ? homeDashboardBackLink() : ""}
         <div class="hm-intro">
           <h1 class="hm-name">Competition Math Reference</h1>
           <p class="hm-sub">Formulas, methods, patterns, textbooks, and real contest problems for AMC 10/12, AIME, and olympiad, all linked to each other.</p>
@@ -5611,13 +5733,12 @@
           ${spaceTile("learn", `${LEARN_SHELF.length} books`)}
           ${spaceTile("practice", nProblems)}
         </nav>
+        ${dashboard ? homeDashboardTopHtml() : ""}
         <div class="hm-cols">
           <div class="hm-main">
-            <section class="hm-sec hm-continue" data-home-recent>
-              <h2 class="hm-h">Recently opened</h2>
-              ${recentCards ? `<div class="rc-list">${recentCards}</div>` : `<p class="hp-empty">Cards and problems you open will appear here.</p>`}
-            </section>
-            ${problemsReady ? dailyProblemHtml() : '<div class="hm-sec" data-home-daily><button type="button" class="hp-btn">Show the problem of the day</button></div>'}
+            ${dashboard ? "" : landingRecentHtml()}
+            ${landingDailyHtml()}
+            ${dashboard ? landingRecentHtml() : ""}
             ${newestCardsHtml()}
             ${problemsReady ? practiceGlanceHtml() : '<div class="hm-sec" data-home-practice><a class="hp-link" href="#/practice">Browse past contests</a></div>'}
           </div>
@@ -5626,23 +5747,9 @@
               <div class="hm-h-row"><h2 class="hm-h">Textbooks</h2><a class="hm-more" href="#/learn">See all ${uiIcon("arrow-right")}</a></div>
               <div class="hm-books">${bookRows}</div>
             </section>
-            ${card ? `<section class="hm-sec hm-cotd hp-click" data-open="#/f/${card.formula.id}" role="link" tabindex="0" aria-label="Open ${escapeAttr(card.formula.name.replace(/\$/g, ""))}">
-              <h2 class="hm-h">Card of the day</h2>
-              <div class="rc-row">${kindBadgeHtml(card.formula)}<span class="rc-name">${card.formula.name}</span></div>
-              <p class="home-cotd">${firstSentences(card.formula.description, 1)}</p>
-            </section>` : ""}
+            ${landingCardHtml(dailyCard())}
             ${didYouKnowHtml()}
-            <section class="hm-sec hm-library">
-              <h2 class="hm-h">Your library</h2>
-              ${starIds.length
-                ? `<div class="rc-list">${starIds.slice(0, 4).map(id => `<a class="rc-row" href="#/f/${id}"><span class="rc-star">${uiIcon("star")}</span><span class="rc-name">${BY_ID[id].formula.name}</span></a>`).join("")}</div>
-                   <a class="hp-link" href="#/list/starred">All ${starIds.length} starred ${uiIcon("arrow-right")}</a>`
-                : `<p class="hp-empty">Use the star button ${uiIcon("star-outline")} on a card to keep it here.</p>`}
-              <div class="hp-mine-foot">
-                <a href="#/learn" data-list-new>Make a list</a>
-                <a href="#/learn" data-goto="pr-study">Open a list</a>
-              </div>
-            </section>
+            ${landingLibraryHtml()}
           </aside>
         </div>
       </div>`;
@@ -5650,6 +5757,7 @@
     const daily = dailyProblem();
     if (daily) showStatement(daily, ".daily-st");
     if (!problemsReady) wireLandingProblems();
+    if (dashboard) wireHomeDashboard($content.querySelector(".home-dashboard"));
     // The hero search waits for Search (or Enter), then hands off to the real search box: the
     // results page shows the header search again with the text in it, so typing continues
     // there.
