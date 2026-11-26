@@ -42,4 +42,19 @@ assert.equal(P.result(loaded,'amc'),'Correct','old self-check cannot override ke
 loaded.answers.missing='A';assert.equal(P.result(loaded,'missing'),'Answer unavailable');
 assert.throws(()=>P.save({getItem:()=>'{bad',setItem(){assert.fail();}},s));
 assert.throws(()=>P.save({getItem:()=>'[]',setItem(){throw Error('quota');}},s));
+
+global.MATH_MOCK_EXTRAS = { radical: { answers: ['79507'] }, numbers: { format: 'set', answers: ['1,234'] } };
+const typed = P.create('Typed answers', 'Any', ['radical', 'numbers']);
+for (const input of ['sqrt(6,321,363,049)', 'sqrt(6, 321, 363, 049)', '\\sqrt{6,321,363,049}']) {
+  assert.equal(P.exactTex(input), '\\sqrt{6{,}321{,}363{,}049}');
+  assert(P.answer(typed, 'radical', input, false));
+  assert.equal(P.result(typed, 'radical'), 'Correct');
+}
+assert.equal(P.exactTex('6,321,363,049'), '6{,}321{,}363{,}049');
+assert.equal(P.exactTex('1,234', 'set'), '1,\\ 234');
+assert.equal(P.exactTex('(1,234)', 'tuple'), '\\left(1,\\ 234\\right)');
+assert.equal(P.exactTex('4, sqrt(6,321,363,049)', 'sequence'), '4,\\ \\sqrt{6{,}321{,}363{,}049}');
+assert.equal(P.exactTex('choose(12,345)+1,000'), '\\binom{12}{345}+1{,}000');
+assert(P.answer(typed, 'numbers', '234,1', false));
+assert.equal(P.result(typed, 'numbers'), 'Correct');
 console.log('Practice sessions: automatic grades, leading zeros, rapid edits, persistence, legacy migration and storage failures passed.');
