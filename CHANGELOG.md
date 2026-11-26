@@ -2,6 +2,8 @@
 
 **2026-11-26**
 
+- **Textbooks.** Revise AMC Geometry S7, Coordinates and transformations. Derive coordinate distances, the shoelace formula and Pick's theorem, and explain how reflections solve shortest-path and folding problems. Add eleven diagrams and seven review problems, expand the existing worked solutions, and keep all 61 contest placements. Regenerate the AMC Geometry end-of-book notes and Learn summary.
+
 - **Arena pacing.** Give each rated problem 3 to 20 minutes based on Elo. A three-question set around 2,650 Elo gets 30 minutes.
 
 - **What to study.** Show the top three recommendations on the Arena overview. See all opens the full list and filters in a popup with a fixed heading. Keep up to three recommendations in set review.
