@@ -2,6 +2,8 @@
 
 **2026-11-26**
 
+- **Homepage preview.** Try a dashboard at `?home=dashboard` with study shortcuts, real Arena progress and recommendations, daily content, and textbook covers.
+
 - **Arena.** Suggest a subject for the next rated set using Elo, rated practice volume, time since the last attempt, and provisional progress.
 
 - **Reference and contest solutions.** Add Fibonacci Doubling Formulas and Matrix Geometric Series, with alternate solutions for 2024 AMC 10B #23 / 12B #18 and 2020 AIME I #8. Link Angles from Chords, Secants, Tangents to 2014 PUMaC B Geometry #7, where the official solution uses it.

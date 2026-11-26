@@ -3746,6 +3746,38 @@ body.is-landing .content { padding: 0 0 50px; }
   .home .hm-cols .hm-continue { border-top: none; }
 }
 
+/* Let each column of the alternate homepage flow independently. */
+.hm-preview-back { display: inline-block; margin-bottom: 10px; }
+.home-dashboard .hm-cols { grid-template-columns: minmax(0, 3fr) minmax(250px, 2fr); }
+.hm-progress { --space: var(--c-arena); --space-soft: var(--cs-arena); }
+.hm-more-arena { color: var(--c-arena); }
+.home-dashboard .hm-rail > .hm-progress { border-top: none; }
+.hm-resume .rc-row .ui-icon { color: var(--tint); flex: none; }
+.hm-resume .rc-name small { display: block; color: var(--text-dim); font-weight: 400; }
+.hm-placement-title { margin: 0; font-size: calc(17px * var(--tx)); }
+.hm-progress .hm-rating-chart { cursor: default; }
+.hm-recommendations { margin-top: 6px; }
+.hm-recommendations .arena-study-row { display: block; }
+.hm-recommendations .hp-mine-foot { margin-top: 2px; }
+@media (min-width: 761px) and (max-width: 980px) {
+  .home-dashboard .hm-cols { column-gap: 24px; }
+}
+@media (max-width: 760px) {
+  .home-dashboard .hm-cols { reading-flow: flex-visual; }
+  .home-dashboard .hm-cols .hm-resume { order: 1; border-top: none; }
+  .home-dashboard .hm-cols .hm-progress { order: 2; }
+  .home-dashboard .hm-cols .hm-textbooks { order: 3; }
+  .home-dashboard .hm-cols .hm-study { order: 4; }
+  .home-dashboard .hm-cols :is(.hp-daily, [data-home-daily]) { order: 5; }
+  .home-dashboard .hm-cols .hm-continue { order: 6; }
+  .home-dashboard .hm-cols .hm-newest { order: 7; }
+  .home-dashboard .hm-cols :is(.hm-glance, [data-home-practice]) { order: 8; }
+  .home-dashboard .hm-cols .hm-cotd { order: 9; }
+  .home-dashboard .hm-cols .dyk { order: 10; }
+  .home-dashboard .hm-cols .hm-library { order: 11; }
+  .home-dashboard .hm-cols .hm-progress, .home-dashboard .hm-cols .hm-continue { border-top: 1px solid var(--border); }
+}
+
 /* The book view's sidebar stays put while the page scrolls: the page's bottom space sits inside
    the grid (on the main column), so the end of the grid never pushes the sticky sidebar up. */
 .content:has(> .lesson-page) { padding-bottom: 0; }

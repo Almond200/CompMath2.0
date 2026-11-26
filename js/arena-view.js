@@ -28,6 +28,23 @@
       rating:point.subjectChanges.find(change => change.id === subject).after, at:point.event.at
     }))];
   }
+  function ratingPreview(stats) {
+    const data = ratingHistory(stats).slice(-8);
+    if (data.length < 2) return '';
+    const values = data.map(point => point.rating);
+    const pad = Math.max(8, (Math.max(...values) - Math.min(...values)) * 0.15);
+    const low = Math.min(...values) - pad, high = Math.max(...values) + pad;
+    const points = values.map((rating, i) => [
+      4 + 312 * i / (values.length - 1),
+      91 - 80 * (rating - low) / (high - low)
+    ]);
+    const coordinates = points.map(([x, y]) => x.toFixed(1) + ',' + y.toFixed(1)).join(' ');
+    const [x, y] = points.at(-1);
+    const label = `Recent overall Elo by set, from ${number(values[0])} to ${number(values.at(-1))}`;
+    return `<svg class="arena-chart hm-rating-chart" viewBox="0 0 320 100" role="img" aria-label="${label}">
+      <polygon points="4,97 ${coordinates} 316,97"/><polyline points="${coordinates}"/>
+      <circle cx="${x}" cy="${y}" r="3.5"/></svg>`;
+  }
   function rangeStart(months) {
     const date = new Date(), day = date.getDate();
     date.setDate(1);
@@ -935,5 +952,5 @@
       ctx.container.innerHTML = '<section class="sh-section"><h1>Arena progress is unavailable</h1><p>Check browser storage or restore a progress backup in <a href="#/settings">Settings</a>.</p></section>';
     }
   }
-  window.ArenaView = { render };
+  window.ArenaView = { render, ratingPreview };
 })();
