@@ -85,7 +85,7 @@ async function check(browser) {
   assert.match(await page.locator('[data-placement-elo]').innerText(), /^Current estimated Elo: .*→/);
   assert.equal(await page.locator('.arena-st .statement-credit').count(),0);
   assert(await page.getByRole('button',{name:'Previous',exact:true}).isDisabled());
-  for (let index=1; index<11; index++) {
+  for (let index=1; index<9; index++) {
     await page.getByRole('button',{name:'Next problem'}).click();
     await page.locator(`[data-problem-index="${index}"][aria-current="step"]`).waitFor();
     await page.getByRole('button',{name:'Give up',exact:true}).click();
@@ -94,12 +94,12 @@ async function check(browser) {
   }
   const delivered = await page.evaluate(() => Arena.read());
   const identities = delivered.session.round.items.map(item => item.identity);
-  assert.equal(new Set(identities).size,11);
+  assert.equal(new Set(identities).size,9);
   assert(!identities.includes(attempt.identity) && !identities.includes(canonical));
   assert(new Set(delivered.session.round.items.map(item => item.elo)).size >= 4);
   await page.getByRole('heading',{name:'Placement complete'}).waitFor();
-  assert.equal(await page.locator('.practice-result-row').count(),12,'original result plus the remaining placement problems');
-  assert.equal(await page.locator('.insight-cell').count(),12);
+  assert.equal(await page.locator('.practice-result-row').count(),10,'original result plus the remaining placement problems');
+  assert.equal(await page.locator('.insight-cell').count(),10);
   await page.locator('.practice-result-row').nth(1).click();
   await page.locator('.practice-explanation').waitFor();
   await page.locator('.arena-st .statement-credit').waitFor();
@@ -308,6 +308,7 @@ async function checkPoolAndSubmission(browser) {
     assert.match(await page.locator('.arena-rating-change').innerText(),/Geometry.*→.*Elo/);
     assert.equal(await page.locator('.practice-result-badge small').count(),0);
     await page.getByText('Arena overview',{exact:true}).click();
+    await page.getByRole('heading',{name:'Contest history',exact:true}).waitFor();
     await page.locator('.arena-history-row a').first().waitFor();
     assert.match(await page.locator('.arena-history-row a').first().innerText(),/^Geometry 1000 /);
   }
@@ -334,6 +335,7 @@ async function checkPlacementResume(browser) {
   const initial = await page.evaluate(() => Arena.change(state => {
     Arena.start(state,'geo','matched',5);
     Arena.openRound(state,state.session.id,[{slug:'2018-amc-10a-1',identity:'2018-amc-10a-1',elo:950,subjects:['geo']}]);
+    state.session.length = 12; // Restore a placement already open under the previous rules.
   }));
   await page.goto(base + '/#/arena/session');
   await page.getByText('Current estimated Elo: ?', {exact:true}).waitFor();
@@ -346,7 +348,7 @@ async function checkPlacementResume(browser) {
   await page.locator('.arena-status[data-result="correct"]').waitFor();
   assert.match(await page.locator('[data-placement-elo]').innerText(), /^Current estimated Elo: [\d,]+$/);
   await page.getByRole('button',{name:'Save and exit'}).click();
-  await page.getByText('1 of 12 placement problems completed').waitFor();
+  await page.getByText('1 of 10 placement problems completed').waitFor();
   const saved = await page.evaluate(() => Arena.read());
   assert.equal(saved.session.id,initial.session.id);
   assert.equal(saved.session.closed,false);
@@ -354,7 +356,7 @@ async function checkPlacementResume(browser) {
   await page.reload();
   await page.getByRole('link',{name:'Resume placement'}).click();
   await page.locator('.arena-status[data-result="correct"]').waitFor();
-  assert.equal(await page.locator('.arena-set-nav .cn-num').count(),12);
+  assert.equal(await page.locator('.arena-set-nav .cn-num').count(),10);
   await page.getByRole('button',{name:'Next problem'}).click();
   await page.getByRole('heading',{name:'Problem 2',exact:true}).waitFor();
   await page.close();

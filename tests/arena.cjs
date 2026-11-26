@@ -7,7 +7,7 @@ global.MATH_PROBLEM_CATALOG = { aliases: { 'amc12-twin': 'amc10-original' } };
 const state = A.merge(null, null);
 A.start(state, 'geo', 'stretch', 3);
 const session = state.session.id;
-assert.deepEqual([state.session.focus, state.session.pace, state.session.length], ['mixed','matched',12]);
+assert.deepEqual([state.session.focus, state.session.pace, state.session.length], ['mixed','matched',10]);
 state.session.length = 6; // A saved session from the sequential placement flow.
 const problem = (slug, elo = 1500, subjects = ['geo']) => ({ slug, identity: A.canonical(slug), elo, subjects });
 function attempt(p, outcome, subjects = p.subjects) {
@@ -41,9 +41,12 @@ placed.events.push(...Array.from({length:6},(_,i) => ({
 assert.equal(stats.baseline, null, 'an old six-question placement does not set the new baseline');
 const calibrated = A.ratings(placed.events);
 assert(calibrated.baseline);
+assert.equal(calibrated.baseline.event,placed.events.at(-1),'completed twelve-question placements retain their full baseline');
+const split = placed.events.map((event,i) => ({...event, session:i <= 10 ? 'earlier-placement' : 'last-placement'}));
+assert.equal(A.ratings(split).baseline.event,split.at(-1),'older placement submissions remain part of one baseline');
 assert.deepEqual([...calibrated.subjects].sort().map(([id,track]) => [id,track.rating,track.wins]),
   ['alg','cp','geo','nt'].map(id => [id,calibrated.baseline.rating,0]));
-const newAnswer = {...placed.events.at(-1), outcome:'correct', subjects:['geo'], session:'rated-set'};
+const newAnswer = {...placed.events.at(-1), outcome:'correct', subjects:['geo'], session:'rated-set', placement:false};
 const updated = A.ratings([...placed.events, newAnswer]);
 assert.equal(updated.subjects.get('geo').wins,1);
 assert(updated.subjects.get('geo').rating > calibrated.baseline.rating);
@@ -139,9 +142,14 @@ async function checkHistory() {
   const single = A.merge(null,null);
   A.start(single,'mixed','matched',5);
   const setId = single.session.id;
-  const mixed = Array.from({length:12},(_,i) => problem('mix-'+i,650+i*145,['geo']));
+  const mixed = Array.from({length:A.PLACEMENT_SIZE},(_,i) => problem('mix-'+i,650+i*145,['geo']));
   assert.equal(A.openRound(single,setId,mixed.slice(0,9),now),false);
   A.openRound(single,setId,mixed.slice(0,1),now);
+  const legacy = structuredClone(single);
+  legacy.session.length = 12;
+  assert.equal(A.placementLength(A.merge(legacy,null)),10,'an active twelve-question placement can shorten to ten');
+  legacy.session.round.items.push(...Array.from({length:10},(_,i) => ({...problem('legacy-'+i),draft:i === 9 ? 'B' : ''})));
+  assert.equal(A.placementLength(legacy),11,'a question already opened survives shortening');
   const initial = A.placementStats(single).overall.rating;
   assert.equal(A.advancePlacement(single,setId,0,mixed[1],now),false);
   A.checkRoundAnswer(single,setId,'mix-0',{outcome:'incorrect',answer:'A'},now);
@@ -166,9 +174,9 @@ async function checkHistory() {
   const partial = {version:1,session:null,events:single.events.slice(0,4).map((e,i)=>
     i === 3 ? {...e,outcome:'unanswered',answer:''} : e)};
   A.start(partial,'geo','matched',5);
-  assert.equal(partial.session.length,9,'only remaining placement problems are generated');
+  assert.equal(partial.session.length,7,'only remaining placement problems are generated');
   A.openRound(partial,partial.session.id,[problem('fresh-placement')]);
-  assert.equal(partial.session.length,9);
+  assert.equal(partial.session.length,7);
   assert.equal(A.submitRound(partial,partial.session.id,()=>null),false,'unfinished placement cannot submit');
   assert.equal(partial.session.closed,false);
   assert.equal(A.ratings(partial.events).overall.count,3,'legacy blank placement problems do not supply placement evidence');
@@ -177,7 +185,7 @@ async function checkHistory() {
   assert.equal(A.merge(withBlank,{version:1,events:[answeredBackup],session:null}).events.find(e=>e.slug==='mix-1').outcome,'correct');
   // The same average Elo and score can still give different baselines when difficulty distributions differ.
   const narrow = single.events.map(e => ({...e, elo:1500}));
-  const varied = single.events.map((e,i) => ({...e, elo:1500 + (i < 6 ? -700 : 700)}));
+  const varied = single.events.map((e,i) => ({...e, elo:1500 + (i < mixed.length/2 ? -700 : 700)}));
   assert.notEqual(A.ratings(narrow).baseline.rating,A.ratings(varied).baseline.rating);
   const six = A.ratings([...placed.events, ...Array.from({length:6},(_,i) => ({...newAnswer,slug:'rated-'+i,identity:'rated-'+i}))]);
   assert.equal(six.subjects.get('geo').wins,A.SUBJECT_PROVISIONAL);
@@ -195,7 +203,7 @@ async function checkHistory() {
   assert.equal(atFloor.overall.rating, 0);
   assert(atFloor.points.every(point => point.rating >= 0));
   assert.equal(A.targetRating(atFloor, 'geo', 'warmup'), 0);
-  const crossedFloor = A.ratings([...lowPlacement.map(event => ({...event, elo:500})), {...miss, elo:20}]);
+  const crossedFloor = A.ratings([...lowPlacement.map(event => ({...event, elo:475})), {...miss, elo:20}]);
   assert.equal(crossedFloor.subjects.get('geo').rating, 0, 'a loss can reach zero from a positive rating');
   const recovering = A.ratings([...floorPlacement, miss, {...miss, slug:'recover', outcome:'correct'}]);
   assert(recovering.subjects.get('geo').rating > 0, 'a solve can raise the rating immediately from zero');

@@ -3,10 +3,10 @@
 (function (root) {
   'use strict';
   const KEY = 'mq-arena', BASE = 1500;
-  const PLACEMENT_SIZE = 12, SUBJECT_PROVISIONAL = 6;
+  const PLACEMENT_SIZE = 10, LEGACY_PLACEMENT_SIZE = 12, SUBJECT_PROVISIONAL = 6;
   const SUBJECTS = ['alg','cp','geo','nt'];
   // Questions near the estimate are most informative. The outer pairs cover a broad starting range.
-  const PLACEMENT_OFFSETS = [0,-350,350,0,-200,200,0,-100,100,0,-70,70];
+  const PLACEMENT_OFFSETS = [0,-350,350,0,-200,200,0,-100,100,0];
   const PACES = { warmup: -200, matched: 50, stretch: 100 };
   const LENGTHS = [2, 3, 5];
   const canonical = id => root.ProblemCatalog?.canonicalId(root.MATH_PROBLEM_CATALOG, id) || id;
@@ -36,7 +36,7 @@
       outcomes.includes(e.outcome) && typeof e.answer === 'string' && optionalText(e.firstMiss) &&
       optionalText(e.invalidDraft) && (e.focus == null || validId(e.focus)) && optionalFlag(e.external) && (e.limitMs == null || Number.isFinite(e.limitMs))) ||
       (s != null && !(validId(s.id) && Number.isFinite(s.updated) && validId(s.focus) &&
-        validPace(s.pace) && Number.isInteger(s.length) && s.length > 0 && s.length <= PLACEMENT_SIZE && typeof s.placement === 'boolean' &&
+        validPace(s.pace) && Number.isInteger(s.length) && s.length > 0 && s.length <= LEGACY_PLACEMENT_SIZE && typeof s.placement === 'boolean' &&
         typeof s.closed === 'boolean' && (!s.last || validId(s.last)) &&
         (!s.slot || validDraft(s.slot)) && (!s.round || validRound(s.round,s.placement))))) {
       throw Error('This Arena record could not be read.');
@@ -140,6 +140,13 @@
     return ratings([...state.events, ...items.filter(answered).map(item => ({
       ...item, session:state.session.id, placement:true
     }))], state.session.id);
+  }
+  function placementLength(state) {
+    const s = state.session;
+    if (!s?.placement || s.closed || !s.round?.adaptive || s.round.items.length >= s.length) return s?.length;
+    const needed = PLACEMENT_SIZE - ratings(state.events,s.id).overall.count;
+    // Keep a problem the learner already opened, as well as all earlier work.
+    return Math.max(s.round.items.length, Math.min(s.length, needed));
   }
   function openRound(state, id, problems, now = Date.now()) {
     const s = state.session;
@@ -256,7 +263,13 @@
   function ratings(events, incompleteId) {
     const overall = track(), subjects = new Map(), points = [], evidence = [];
     const ends = new Map();
-    events.forEach((event, i) => { if (answered(event)) ends.set(event.session,i); });
+    let nextPlacement = false;
+    for (let i = events.length - 1; i >= 0; i--) {
+      const event = events[i];
+      if (event.outcome === 'seen' || event.placement && !answered(event)) continue;
+      if (answered(event) && !ends.has(event.session)) ends.set(event.session,{index:i,nextPlacement});
+      nextPlacement = !!event.placement;
+    }
     let baseline = null;
     events.forEach((event, i) => {
       if (event.outcome === 'seen') return;
@@ -272,7 +285,9 @@
           if (!subjects.has(id)) subjects.set(id,track());
           update(subjects.get(id),event);
         }
-        if (ends.get(event.session) === i && event.session !== incompleteId && evidence.length >= PLACEMENT_SIZE) {
+        const end = ends.get(event.session);
+        // A saved placement can span several submissions under the old rules.
+        if (end.index === i && !end.nextPlacement && event.session !== incompleteId && evidence.length >= PLACEMENT_SIZE) {
           baseline = {rating,event};
           for (const id of SUBJECTS) subjects.set(id,track(rating));
         }
@@ -352,7 +367,7 @@
     const score = r => r.recentMisses / (r.recentAttempts + 2);
     return [...rows.values()].filter(r => r.examples.length).sort((a, b) => score(b) - score(a) || b.misses - a.misses);
   }
-  const api = { KEY, PLACEMENT_SIZE, SUBJECT_PROVISIONAL, PACES, LENGTHS, canonical, read, merge, change, saveDraft, start, remaining, remainingMs, roundComplete, submissionAt, openRound, placementIndex, placementStats, advancePlacement, checkRoundAnswer, submitRound, placeAnswer, finishProblem, problemMinutes, ratings, targetRating, choose, recommendations };
+  const api = { KEY, PLACEMENT_SIZE, SUBJECT_PROVISIONAL, PACES, LENGTHS, canonical, read, merge, change, saveDraft, start, remaining, remainingMs, roundComplete, submissionAt, openRound, placementIndex, placementStats, placementLength, advancePlacement, checkRoundAnswer, submitRound, placeAnswer, finishProblem, problemMinutes, ratings, targetRating, choose, recommendations };
   if (typeof module !== 'undefined') module.exports = api;
   else root.Arena = api;
 })(typeof window === 'undefined' ? globalThis : window);
