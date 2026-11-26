@@ -124,8 +124,9 @@
     if (elo < 1000) return 2;
     if (elo < 1600) return 3;
     if (elo < 2200) return 5;
-    if (elo < 2800) return 7;
-    return 9;
+    if (elo < 2800) return 8;
+    if (elo < 3400) return 12;
+    return 15;
   }
   function roundItem(problem, saved) {
     return {slug:problem.slug, identity:canonical(problem.identity), elo:problem.elo, subjects:problem.subjects,
@@ -339,39 +340,76 @@
     }
     return best;
   }
-  function recommendations(history, lookup, now = Date.now()) {
+  const DAY = 86400000;
+  function studyTargets(problem, includeCards = true) {
+    const topics = [...new Set(problem.tree)].map(id => ({kind:'topic', id}));
+    const cards = includeCards ? [...new Set([problem.main, ...(problem.formulas || [])])].filter(Boolean) : [];
+    return [...topics, ...cards.map(id => ({kind:'card', id}))];
+  }
+  function studyEvidence(event) {
+    if (event.outcome === 'incorrect') return 1;
+    if (event.outcome === 'correct' && event.retry) return 0.5;
+    if (event.outcome === 'unanswered' && (event.source === 'arena' && !event.placement || event.mistakes?.length)) return 0.25;
+    return 0;
+  }
+  function evidenceRows(history, lookup, now, includeCards) {
     const { mistakeBoost } = root.LearningActivity || activity;
+    const usable = history.filter(e => e.kind === 'problem' && Number.isFinite(e.at) && (answered(e) || studyEvidence(e)));
     const latest = new Map();
-    for (const e of history) {
-      if (e.kind !== 'problem') continue;
-      const id = e.canonicalId || e.item;
-      const skipped = e.outcome === 'unanswered' && (e.source === 'arena' && !e.placement || mistakeBoost(e.mistake));
-      if (answered(e) || skipped && !latest.has(id)) latest.set(id,e);
+    for (const e of usable.sort((a,b) => a.at - b.at)) {
+      const key = e.canonicalId || e.item;
+      if (answered(e) || !answered(latest.get(key) || {})) latest.set(key,e);
     }
+    const attempts = [...latest.values()].filter(answered).length;
     const rows = new Map();
-    const recent = [...latest.values()].sort((a, b) => b.at - a.at).slice(0, 60);
+    const recent = [...latest.values()].sort((a,b) => b.at - a.at).slice(0, 60);
     for (const e of recent) {
-      const weight = 0.5 ** (Math.max(0,now-e.at) / (30 * 86400000));
       const p = lookup(e.item);
       if (!p) continue;
-      for (const id of new Set(p.tree)) {
-        if (!rows.has(id)) rows.set(id, { id, attempts: 0, misses: 0, recentAttempts: 0, recentMisses: 0, examples: [] });
-        const row = rows.get(id);
+      const age = Math.max(0, now - e.at) / DAY;
+      const weight = 0.5 ** (age / 30);
+      const evidence = studyEvidence(e);
+      for (const target of studyTargets(p,includeCards)) {
+        const key = target.kind + ':' + target.id;
+        if (!rows.has(key)) rows.set(key, {...target, attempts:0, misses:0, recentAttempts:0,
+          recentMisses:0, recentStruggles:0, examples:[]});
+        const row = rows.get(key);
         row.attempts++;
         row.recentAttempts += weight;
-        if (e.outcome !== 'correct' || e.retry) {
-          if (e.outcome === 'incorrect') row.misses++;
-          const evidence = e.outcome === 'incorrect' ? 1 : e.retry ? 0.5 : 0.25;
-          row.recentMisses += weight * evidence * (1 + mistakeBoost(e.mistake));
-          row.missedSlug ||= e.item;
-          if (row.examples.length < 3) row.examples.push(e);
-        }
+        if (!evidence) continue;
+        if (e.outcome === 'incorrect') row.misses++;
+        row.recentMisses += weight * evidence * (1 + mistakeBoost(e.mistakes));
+        if (age <= 45) row.recentStruggles++;
+        row.missedSlug ||= e.item;
+        if (row.examples.length < 3) row.examples.push(e);
       }
     }
-    const score = r => r.recentMisses / (r.recentAttempts + 2);
-    return [...rows.values()].filter(r => r.examples.length).sort((a, b) => score(b) - score(a) || b.misses - a.misses);
+    const score = row => row.recentMisses / (row.recentAttempts + 2);
+    const ranked = [...rows.values()].filter(row => row.examples.length)
+      .sort((a,b) => score(b) - score(a) || b.misses - a.misses);
+    return {attempts, ranked};
   }
-  const api = { KEY, PLACEMENT_SIZE, SUBJECT_PROVISIONAL, PACES, LENGTHS, canonical, read, merge, change, saveDraft, start, remaining, remainingMs, roundComplete, submissionAt, openRound, placementIndex, placementStats, placementLength, advancePlacement, checkRoundAnswer, submitRound, placeAnswer, finishProblem, problemMinutes, ratings, targetRating, choose, recommendations };
+  function recommendations(history, lookup, now = Date.now()) {
+    return evidenceRows(history,lookup,now,false).ranked;
+  }
+  function studyRecommendations(history, lookup, now = Date.now(), include = () => true) {
+    const {attempts, ranked} = evidenceRows(history,lookup,now,true);
+    const experienced = attempts >= 20;
+    const selected = [], shown = new Set();
+    for (const row of ranked) {
+      const latestAge = now - row.examples[0].at;
+      if (latestAge > (experienced ? 45 : 30) * DAY ||
+          row.recentStruggles < (experienced ? 2 : 1) ||
+          row.recentMisses < (experienced ? 0.4 : 0.2) || !include(row)) continue;
+      const examples = row.examples.map(e => e.canonicalId || e.item).sort().join(',');
+      if (shown.has(examples)) continue;
+      shown.add(examples);
+      selected.push(row);
+      if (selected.length === 3) break;
+    }
+    return selected;
+  }
+  const api = { KEY, PLACEMENT_SIZE, SUBJECT_PROVISIONAL, PACES, LENGTHS, canonical, read, merge, change, saveDraft, start, remaining, remainingMs, roundComplete, submissionAt, openRound, placementIndex, placementStats, placementLength, advancePlacement, checkRoundAnswer, submitRound, placeAnswer, finishProblem, problemMinutes, ratings, targetRating, choose, recommendations, studyTargets, studyEvidence, studyRecommendations };
   if (typeof module !== 'undefined') module.exports = api;
   else root.Arena = api;
 })(typeof window === 'undefined' ? globalThis : window);

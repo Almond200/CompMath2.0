@@ -5,9 +5,15 @@
   const KEY = "mq-learning-activity";
   const VERSION = 1;
   const MISTAKE_BOOSTS = Object.freeze({
-    concept: 0.5, recognition: 0.4, reasoning: 0.3, accuracy: 0.15, timing: 0.15, reading: 0.15, unsure: 0.05
+    concept: 0.5, starting: 0.45, recognition: 0.4, reasoning: 0.3, accuracy: 0.15, timing: 0.15, reading: 0.15, unsure: 0.05
   });
-  const mistakeBoost = reason => Object.hasOwn(MISTAKE_BOOSTS, reason) ? MISTAKE_BOOSTS[reason] : 0;
+  function mistakeReasons(value) {
+    if (!value) return [];
+    const values = Array.isArray(value) ? value : [value];
+    return Object.keys(MISTAKE_BOOSTS).filter(reason => values.includes(reason));
+  }
+  // Each reason adds evidence with diminishing returns. A result stays a single attempt.
+  const mistakeBoost = value => 1 - mistakeReasons(value).reduce((remaining, reason) => remaining * (1 - MISTAKE_BOOSTS[reason]), 1);
   const canMarkMistake = (outcome, retry = false) => outcome === "incorrect" || outcome === "unanswered" || outcome === "correct" && retry;
   const mistakePrefix = (source, setId) => `mistake:${source}:${encodeURIComponent(setId)}:`;
   const mistakeId = (source, setId, item) => mistakePrefix(source, setId) + encodeURIComponent(item);
@@ -32,10 +38,9 @@
     if (data && data.version !== VERSION) throw new Error("Unsupported activity version");
     return data;
   }
-  async function saveMistake(source, setId, item, reason) {
-    if (reason !== "" && !mistakeBoost(reason)) throw new Error("Unknown mistake reason");
+  async function saveMistakes(source, setId, item, reasons) {
     const event = { id: mistakeId(source, setId, item), source, type: "mistake",
-      kind: "mistake", item, outcome: reason, at: Date.now() };
+      kind: "mistake", item, outcome: mistakeReasons(reasons), at: Date.now() };
     if (root.StudyStorage?.enabled) return root.StudyStorage.appendActivity(event);
     const storage = root.localStorage;
     storage.setItem(KEY, JSON.stringify(merge(readStored(storage), { version: VERSION, events: [event] })));
@@ -43,8 +48,8 @@
   async function mistakesFor(source, setId) {
     const events = root.StudyStorage?.enabled ? await root.StudyStorage.readActivity("mistake") : entries(readStored(root.localStorage));
     const prefix = mistakePrefix(source, setId);
-    return new Map(events.filter(event => event.type === "mistake" && event.id.startsWith(prefix) &&
-      mistakeBoost(event.outcome)).map(event => [event.item, event.outcome]));
+    return new Map(events.filter(event => event.type === "mistake" && event.id.startsWith(prefix))
+      .map(event => [event.item, mistakeReasons(event.outcome)]).filter(([, reasons]) => reasons.length));
   }
   function record(source, type, item, outcome, kind, id) {
     const at = Date.now();
@@ -68,12 +73,12 @@
       [events, marks] = await Promise.all([root.StudyStorage.readActivity(kind),
         kind === "problem" ? root.StudyStorage.readActivity("mistake") : []]);
     } else try { events = entries(readStored(storage)); } catch (error) {}
-    const mistakes = new Map([...events, ...marks].filter(event => event.type === "mistake" && mistakeBoost(event.outcome))
-      .map(event => [event.id, event.outcome]));
+    const mistakes = new Map([...events, ...marks].filter(event => event.type === "mistake")
+      .map(event => [event.id, mistakeReasons(event.outcome)]));
     events = events.filter(event => event.type !== "mistake");
     const markFor = (source, setId, slug, outcome, retry) => {
-      const mistake = canMarkMistake(outcome, retry) && mistakes.get(mistakeId(source, setId, slug));
-      return mistake ? { mistake } : {};
+      const reasons = canMarkMistake(outcome, retry) && mistakes.get(mistakeId(source, setId, slug));
+      return reasons?.length ? { mistakes: reasons } : {};
     };
     try { if (practice) sets = practice.read(storage); } catch (error) {}
     for (const set of sets) {
@@ -85,7 +90,7 @@
         const outcome = practice.result(set, slug).toLowerCase().replaceAll(" ", "-");
         events.push({ id: "practice:" + set.id + ":" + slug, source: "practice",
           type: set.answers[slug] && outcome !== "voided" ? "attempt" : "exposure",
-          kind: "problem", item: slug, at, outcome, ...markFor("practice", set.id, slug, outcome) });
+          kind: "problem", item: slug, at, outcome, session:set.id, ...markFor("practice", set.id, slug, outcome) });
       }
     }
     if (arena) {
@@ -106,7 +111,7 @@
     return events.map(event => event.kind === "problem" ? { ...event, canonicalId: canonical(event.item) } : event)
       .sort((a, b) => (a.at ?? 0) - (b.at ?? 0));
   }
-  const api = { KEY, merge, record, sawProblem, history, mistakeBoost, canMarkMistake, saveMistake, mistakesFor, keepsNewerMistake };
+  const api = { KEY, merge, record, sawProblem, history, mistakeReasons, mistakeBoost, canMarkMistake, saveMistakes, mistakesFor, keepsNewerMistake };
   if (typeof module !== "undefined") module.exports = api;
   else root.LearningActivity = api;
 })(typeof window === "undefined" ? globalThis : window);

@@ -124,7 +124,10 @@ async function checkHistory() {
   A.openRound(timed, roundId, [problem('amc10-original'), problem('one', 980), problem('two', 1800), problem('three', 2600), problem('four', 3100)], now);
   const round = timed.session.round;
   assert.deepEqual(round.items.map(i => i.slug), ['one','two','three','four']);
-  assert.equal(round.limitMs, (2 + 5 + 7 + 9) * 60000);
+  assert.equal(round.limitMs, (2 + 5 + 8 + 12) * 60000);
+  assert.equal(round.deadline, now + round.limitMs);
+  assert.deepEqual([999,1000,1599,1600,2199,2200,2799,2800,3399,3400].map(A.problemMinutes),
+    [2,3,3,5,5,8,8,12,12,15], 'pacing increases with difficulty only');
   A.checkRoundAnswer(timed, roundId, 'three', {outcome:'incorrect', answer:'D'}, now);
   assert.equal(round.items[2].firstMiss,'D');
   assert.equal(round.items[2].outcome,undefined);
@@ -229,9 +232,9 @@ async function checkHistory() {
   assert.deepEqual(skippedStudy.map(topic => topic.id),['missed','skipped']);
   const equallyRecent = [
     {kind:'problem',source:'arena',item:'unmarked',outcome:'incorrect',at:nowForStudy},
-    {kind:'problem',source:'practice',item:'slip',outcome:'incorrect',mistake:'accuracy',at:nowForStudy},
-    {kind:'problem',source:'arena',item:'gap',outcome:'incorrect',mistake:'concept',at:nowForStudy},
-    {kind:'problem',source:'practice',item:'ran-out',outcome:'unanswered',mistake:'timing',at:nowForStudy},
+    {kind:'problem',source:'practice',item:'slip',outcome:'incorrect',mistakes:['accuracy'],at:nowForStudy},
+    {kind:'problem',source:'arena',item:'gap',outcome:'incorrect',mistakes:['concept'],at:nowForStudy},
+    {kind:'problem',source:'practice',item:'ran-out',outcome:'unanswered',mistakes:['timing'],at:nowForStudy},
   ];
   const markedStudy = A.recommendations(equallyRecent,id => ({tree:[id]}),nowForStudy);
   assert.deepEqual(markedStudy.map(r => r.id),['gap','slip','unmarked','ran-out']);
@@ -239,6 +242,23 @@ async function checkHistory() {
   assert.equal(markedStudy[0].misses,1,'marking strengthens one result without creating another attempt');
   const firstTryOnly = A.recommendations([{...equallyRecent[2],outcome:'correct'}],id => ({tree:[id]}),nowForStudy);
   assert.equal(firstTryOnly.length,0,'an obsolete label on a first-try solve is ignored');
+  const candidate = (item,outcome = 'incorrect',daysAgo = 0,mistakes) =>
+    ({kind:'problem',source:'arena',item,outcome,at:nowForStudy - daysAgo * day,mistakes});
+  const lookup = id => ({tree:[id], formulas:id.startsWith('shared-') ? ['shared-card'] : []});
+  const fresh = [candidate('new-a'),candidate('new-b'),candidate('new-c'),candidate('new-d')];
+  assert.equal(A.studyRecommendations([...fresh,candidate('old','incorrect',80)],lookup,nowForStudy).length,3);
+  assert.equal(A.studyRecommendations([candidate('old','incorrect',40)],lookup,nowForStudy).length,0);
+  const experienced = Array.from({length:20},(_,i) => candidate('clean-' + i,'correct'));
+  const withSupport = [...experienced,...fresh,candidate('shared-a'),candidate('shared-b','incorrect',3,['starting','reading']),
+    candidate('shared-c','incorrect',70)];
+  const ranked = A.studyRecommendations(withSupport,lookup,nowForStudy);
+  assert.deepEqual(ranked.map(row => [row.kind,row.id]),[['card','shared-card']], 'repeat evidence can promote a card across topics');
+  assert(!A.studyRecommendations([...experienced,candidate('shared-a'),candidate('shared-b','incorrect',50)],lookup,nowForStudy).length,
+    'one fresh mistake plus old data is insufficient with an established history');
+  const ordinary = A.recommendations([candidate('new-a')],lookup,nowForStudy)[0].recentMisses;
+  const marked = A.recommendations([candidate('new-a','incorrect',0,['starting'])],lookup,nowForStudy)[0].recentMisses;
+  const combined = A.recommendations([candidate('new-a','incorrect',0,['starting','reading'])],lookup,nowForStudy)[0].recentMisses;
+  assert(ordinary < marked && marked < combined && combined < 2);
   console.log('Arena placement, Elo, independent subjects, options, known problems, shared activity, recommendations and backup merging passed.');
 }
 checkHistory().catch(error => { console.error(error); process.exitCode = 1; });

@@ -25,23 +25,26 @@ async function checkHistory() {
   practice.answer(missed, slug, practice.officialKey(slug) === 'A' ? 'B' : 'A');
   practice.finish(missed);
   practice.save(localStorage, missed);
-  await activity.saveMistake('practice', missed.id, slug, 'reading');
-  await activity.saveMistake('arena', 'rated', slug, 'recognition');
+  await activity.saveMistakes('practice', missed.id, slug, ['reading','starting']);
+  await activity.saveMistakes('arena', 'rated', slug, ['recognition']);
+  const legacyMark = JSON.parse(localStorage.getItem(activity.KEY));
+  legacyMark.events.find(e => e.source === 'arena').outcome = 'recognition';
+  localStorage.setItem(activity.KEY, JSON.stringify(legacyMark));
   const arenaState = { events: [{session:'rated', identity:slug, slug, outcome:'correct', firstMiss:'A', at:0}] };
   const problemHistory = await activity.history({kind:'problem', arenaState, arena:{}, practice});
   assert.equal(problemHistory.length, 3, 'annotations do not create additional problem events');
-  assert.equal(problemHistory.find(e => e.id === 'practice:' + missed.id + ':' + slug).mistake, 'reading');
-  assert.equal(problemHistory.find(e => e.id === 'practice:' + set.id + ':' + slug).mistake, undefined);
-  assert.equal(problemHistory.find(e => e.source === 'arena').mistake, 'recognition');
+  assert.equal(problemHistory.find(e => e.id === 'practice:' + missed.id + ':' + slug).mistakes.join(','), 'starting,reading');
+  assert.equal(problemHistory.find(e => e.id === 'practice:' + set.id + ':' + slug).mistakes, undefined);
+  assert.deepEqual(problemHistory.find(e => e.source === 'arena').mistakes, ['recognition']);
   assert.equal(problemHistory.find(e => e.source === 'arena').at, 0, 'the attempt keeps its original date');
   const prior = JSON.parse(localStorage.getItem(activity.KEY));
-  await activity.saveMistake('practice', missed.id, slug, '');
+  await activity.saveMistakes('practice', missed.id, slug, []);
   assert.equal((await activity.mistakesFor('practice', missed.id)).size, 0);
-  assert.equal((await activity.mistakesFor('arena', 'rated')).get(slug), 'recognition');
+  assert.deepEqual((await activity.mistakesFor('arena', 'rated')).get(slug), ['recognition']);
   const cleared = JSON.parse(localStorage.getItem(activity.KEY));
-  const oldMark = prior.events.find(e => e.outcome === 'reading');
+  const oldMark = prior.events.find(e => Array.isArray(e.outcome) && e.outcome.includes('reading'));
   oldMark.at--;
-  assert.equal(activity.merge(cleared, prior).events.find(e => e.id === oldMark.id).outcome, '',
+  assert.deepEqual(activity.merge(cleared, prior).events.find(e => e.id === oldMark.id).outcome, [],
     'importing an older backup preserves a cleared reason');
   const newer = '{"version":2,"events":[]}';
   localStorage.setItem(activity.KEY, newer);
