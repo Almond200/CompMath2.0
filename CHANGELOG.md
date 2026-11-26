@@ -4,7 +4,7 @@
 
 - **Arena pacing.** Give each rated problem 3 to 20 minutes based on Elo. A three-question set around 2,650 Elo gets 30 minutes.
 
-- **What to study.** Show the top three recommendations on the Arena overview. Show more opens the full list and filters in a popup with a fixed heading. Keep up to three recommendations in set review.
+- **What to study.** Show the top three recommendations on the Arena overview. See all opens the full list and filters in a popup with a fixed heading. Keep up to three recommendations in set review.
 
 - **Typed answers and difficulty.** Use the standard exact-answer prompt for AIME problems. Re-estimate 2014 BMT Geometry #7 at 2,400 Elo after reviewing its solution.
 
