@@ -232,7 +232,7 @@ async function checkHistory() {
   assert.deepEqual(skippedStudy.map(topic => topic.id),['missed','skipped']);
   const equallyRecent = [
     {kind:'problem',source:'arena',item:'unmarked',outcome:'incorrect',at:nowForStudy},
-    {kind:'problem',source:'practice',item:'slip',outcome:'incorrect',mistakes:['accuracy'],at:nowForStudy},
+    {kind:'problem',source:'practice',item:'slip',outcome:'incorrect',mistakes:['carelessness'],at:nowForStudy},
     {kind:'problem',source:'arena',item:'gap',outcome:'incorrect',mistakes:['concept'],at:nowForStudy},
     {kind:'problem',source:'practice',item:'ran-out',outcome:'unanswered',mistakes:['timing'],at:nowForStudy},
   ];
@@ -249,7 +249,7 @@ async function checkHistory() {
   assert.equal(A.studyRecommendations([...fresh,candidate('old','incorrect',80)],lookup,nowForStudy).length,3);
   assert.equal(A.studyRecommendations([candidate('old','incorrect',40)],lookup,nowForStudy).length,0);
   const experienced = Array.from({length:20},(_,i) => candidate('clean-' + i,'correct'));
-  const withSupport = [...experienced,...fresh,candidate('shared-a'),candidate('shared-b','incorrect',3,['starting','reading']),
+  const withSupport = [...experienced,...fresh,candidate('shared-a'),candidate('shared-b','incorrect',3,['starting','carelessness']),
     candidate('shared-c','incorrect',70)];
   const ranked = A.studyRecommendations(withSupport,lookup,nowForStudy);
   assert.deepEqual(ranked.map(row => [row.kind,row.id]),[['card','shared-card']], 'repeat evidence can promote a card across topics');
@@ -257,7 +257,7 @@ async function checkHistory() {
     'one fresh mistake plus old data is insufficient with an established history');
   const ordinary = A.recommendations([candidate('new-a')],lookup,nowForStudy)[0].recentMisses;
   const marked = A.recommendations([candidate('new-a','incorrect',0,['starting'])],lookup,nowForStudy)[0].recentMisses;
-  const combined = A.recommendations([candidate('new-a','incorrect',0,['starting','reading'])],lookup,nowForStudy)[0].recentMisses;
+  const combined = A.recommendations([candidate('new-a','incorrect',0,['starting','carelessness'])],lookup,nowForStudy)[0].recentMisses;
   assert(ordinary < marked && marked < combined && combined < 2);
   console.log('Arena placement, Elo, independent subjects, options, known problems, shared activity, recommendations and backup merging passed.');
 }

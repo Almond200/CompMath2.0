@@ -35,7 +35,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const marker = p.locator('.review-mistake'), steps = p.locator('.review-next');
  const defaultSteps = await steps.innerText();
  await marker.locator('summary').click();
- await marker.locator('[data-mistake-reason="reading"]').click();
+ await marker.locator('[data-mistake-reason="carelessness"]').click();
  await marker.locator('[data-mistake-reason="starting"]').click();
  await marker.locator('summary').filter({hasText:'2 selected'}).waitFor();
  assert.equal(await steps.innerText(),defaultSteps);

@@ -6163,11 +6163,9 @@
   const MISTAKE_REASONS = {
     concept: ["Missing concept", "I didn’t know a concept, formula, or theorem I needed."],
     starting: ["Had no clue where to start", "I couldn’t think of a first step to try."],
-    recognition: ["Choosing a strategy", "I knew the math but didn’t spot when to use it."],
-    reasoning: ["Connecting the steps", "I had some ideas but couldn’t turn them into a solution."],
-    accuracy: ["Calculation or logic slip", "My approach made sense, but I made an error carrying it out."],
-    timing: ["Ran out of time", "I needed more time to find or finish an approach."],
-    reading: ["Misread the question", "I misunderstood or missed a condition or what the problem asked for."],
+    recognition: ["Choosing a strategy", "I understood the concepts but couldn’t choose an approach or put the steps together."],
+    carelessness: ["Careless mistake", "I misread the question, missed a condition, or made a calculation or logic slip."],
+    timing: ["Ran out of time", "I had a workable approach and could likely have solved it with more time."],
     unsure: ["Something else or not sure", "None of these fits, or I haven’t found where I got stuck."]
   };
   function mistakeReviewHtml(eligible) {

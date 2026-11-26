@@ -5,12 +5,18 @@
   const KEY = "mq-learning-activity";
   const VERSION = 1;
   const MISTAKE_BOOSTS = Object.freeze({
-    concept: 0.5, starting: 0.45, recognition: 0.4, reasoning: 0.3, accuracy: 0.15, timing: 0.15, reading: 0.15, unsure: 0.05
+    concept: 0.5, starting: 0.45, recognition: 0.4, carelessness: 0.15, timing: 0.15, unsure: 0.05
   });
+  const MISTAKE_REASON_ALIASES = new Map([
+    ["reasoning", "recognition"],
+    ["accuracy", "carelessness"],
+    ["reading", "carelessness"]
+  ]);
   function mistakeReasons(value) {
     if (!value) return [];
     const values = Array.isArray(value) ? value : [value];
-    return Object.keys(MISTAKE_BOOSTS).filter(reason => values.includes(reason));
+    const normalized = new Set(values.map(reason => MISTAKE_REASON_ALIASES.get(reason) ?? reason));
+    return Object.keys(MISTAKE_BOOSTS).filter(reason => normalized.has(reason));
   }
   // Each reason adds evidence with diminishing returns. A result stays a single attempt.
   const mistakeBoost = value => 1 - mistakeReasons(value).reduce((remaining, reason) => remaining * (1 - MISTAKE_BOOSTS[reason]), 1);

@@ -2,6 +2,8 @@
 
 **2026-11-26**
 
+- **Mistake reasons.** Combine strategy choice and connecting steps, group misreading and calculation or logic slips under Careless mistake, and clarify when to mark Ran out of time. Saved reasons carry over to the combined categories.
+
 - **Review and study recommendations.** Separate fixed review resources from optional, multi-select mistake labels. Rank up to three topics or cards, add filters for both, and require stronger recent evidence for established histories. Link missed problems to their saved set. Restore the desktop Topic viewer sidebar and place Arena subject arrows on the left.
 
 **2026-11-25**
