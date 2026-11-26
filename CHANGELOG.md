@@ -2,6 +2,10 @@
 
 **2026-11-26**
 
+- **Practice results.** Use the standard text color for the Correct score.
+
+- **Navigation.** Show Arena first in the header and on the homepage, followed by Reference, Learn, and Practice.
+
 - **Saved-review links.** Underline problem references when hovered or keyboard-focused.
 
 - **Mistake review.** Add a text control to clear every reason for a problem and explain how Practice selections feed What to study in Arena.
