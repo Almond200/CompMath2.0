@@ -29,7 +29,13 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const missedLink = notes.locator('[data-study-result] a[data-problem-preview]').first();
  await missedLink.waitFor();
  assert.equal(await updateNote.isVisible(),false,'initial recommendations do not show an update notice');
- assert.equal(await missedLink.evaluate(link=>getComputedStyle(link).textDecorationLine),'underline');
+ await p.mouse.move(0,0);
+ assert.equal(await missedLink.evaluate(link=>getComputedStyle(link).textDecorationLine),'none');
+ if(width===1280){
+  await missedLink.hover();
+  assert.equal(await missedLink.evaluate(link=>getComputedStyle(link).textDecorationLine),'underline');
+  await p.mouse.move(0,0);
+ }
  const topicLink = notes.locator('[data-study-result] a[href^="#/browse/topics/"]').first();
  assert.equal(await topicLink.evaluate(link=>getComputedStyle(link).textDecorationLine),'none');
  assert.match(await notes.locator('[data-study-result]').first().innerText(), /1 missed: /);
@@ -39,6 +45,9 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const marker = p.locator('.review-mistake'), steps = p.locator('.review-next');
  const defaultSteps = await steps.innerText();
  await marker.locator('summary').click();
+ assert(await marker.getByText('What to study in Arena',{exact:true}).isVisible());
+ const deselect = marker.getByRole('button',{name:'Deselect all',exact:true});
+ assert.equal(await deselect.isVisible(),false);
  assert(await marker.getByRole('button',{name:/Ran out of time/}).isVisible());
  await marker.locator('[data-mistake-reason="carelessness"]').click();
  await marker.locator('[data-mistake-reason="starting"]').click();
@@ -48,6 +57,14 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.getByRole('link',{name:'Back to Results overview'}).click();
  await missedLink.waitFor();
  assert.equal(await updateNote.isVisible(),false,'saving reasons alone does not show a notice if the list stays the same');
+ await missedLink.click();
+ await marker.locator('summary').filter({hasText:'2 selected'}).click();
+ await deselect.press('Enter');
+ await marker.locator('summary').filter({hasText:'Optional'}).waitFor();
+ assert.equal(await marker.locator('[data-mistake-reason][aria-pressed="true"]').count(),0);
+ assert.equal(await deselect.isVisible(),false);
+ assert.equal(await p.evaluate(async id => (await LearningActivity.mistakesFor('practice',id)).has('2018-amc-10a-1'),partial),false);
+ await p.getByRole('link',{name:'Back to Results overview'}).click();
  await p.locator('[data-result-index="1"]').click();
  await steps.getByRole('link',{name:'Set up one practice problem at a similar Elo'}).click();
  await p.locator('#topic-count').waitFor();
@@ -205,7 +222,12 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
    if(width===375)await p.touchscreen.tap(x,y);else await p.mouse.click(x,y);
    assert.equal(await input.evaluate(el=>el===document.activeElement),false,'space outside the answer border/label must not focus the input');
   }
-  if(width===375)await p.touchscreen.tap(r.x+r.width/2,r.y+r.height/2);else await input.click();
+  if(width===375){
+   await p.locator('label[for="practice-answer"]').tap();
+   assert.equal(await input.evaluate(el=>el===document.activeElement),true,'tapping the visible label focuses the input');
+   await input.evaluate(el=>el.blur());
+   await input.tap();
+  }else await input.click();
   assert.equal(await input.evaluate(el=>el===document.activeElement),true,'inside the answer border still focuses normally');
   await input.fill('12');assert.ok(await input.evaluate(el=>{const c=getComputedStyle(el),probe=document.createElement('span');probe.style.color='var(--accent)';document.body.append(probe);const blue=getComputedStyle(probe).color;probe.remove();return c.outlineStyle==='none' && c.borderWidth==='1px' && c.borderColor===blue && c.boxShadow==='none';}), 'answer input uses one blue border, like search, without an inset or outer ring');assert.equal(await clear.isEnabled(),true);await clear.click();assert.equal(await input.inputValue(),'');assert.equal(await input.getAttribute('aria-invalid'),'false');await p.clock.fastForward(1000);assert.equal((await stored(numeric)).answers[slug],'');
   await input.fill('1+');assert.equal(await input.getAttribute('aria-invalid'),'true');assert.equal(await clear.isEnabled(),true);await clear.click();assert.equal(await input.inputValue(),'');assert.equal(await p.locator('#practice-answer-error').innerText(),'');

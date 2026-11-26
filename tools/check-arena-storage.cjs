@@ -136,7 +136,7 @@ async function check(browser) {
   await concept.click();
   await marker.locator('summary').filter({hasText:'1 selected'}).waitFor();
   assert.equal(await starting.getAttribute('aria-pressed'),'true');
-  await starting.click();
+  await marker.getByRole('button',{name:'Deselect all',exact:true}).click();
   await marker.locator('summary').filter({hasText:'Optional'}).waitFor();
   await page.evaluate(async mark => {
     await StudyStorage.restore(null, {version:1, events:[{...mark, at:mark.at - 1}]});
@@ -164,7 +164,11 @@ async function check(browser) {
   await type.selectOption('all');
   const reasons = recommendations.locator('.arena-study-row p a');
   assert.match(await reasons.first().getAttribute('href'),/^#\/arena\/review\/placement\/\d+$/);
+  await page.mouse.move(0,0);
+  assert.equal(await reasons.first().evaluate(link => getComputedStyle(link).textDecorationLine),'none');
+  await reasons.first().hover();
   assert.equal(await reasons.first().evaluate(link => getComputedStyle(link).textDecorationLine),'underline');
+  await page.mouse.move(0,0);
   assert.equal(await recommendations.getByRole('button',{name:/refresh/i}).count(),0);
   assert.equal(await recommendations.getByText('Recommendations updated',{exact:true}).count(),0);
   assert(await recommendations.getByText('Based on the problems you’ve worked on recently.').isVisible());

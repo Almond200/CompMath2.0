@@ -4096,6 +4096,18 @@ body[data-space="practice"] .practice-panel-intro { margin: 6px 0 12px; font-siz
   box-shadow: inset 0 0 0 1px var(--space, var(--accent));
 }
 .review-mistake-options button[aria-disabled="true"] { cursor: wait; }
+.review-mistake-clear {
+  margin-top: 8px;
+  padding: 3px 0;
+  border: 0;
+  background: none;
+  color: var(--text-dim);
+  font: inherit;
+  font-size: .9em;
+  cursor: pointer;
+}
+.review-mistake-clear:is(:hover, :focus-visible) { text-decoration: underline; }
+.review-mistake-clear[aria-disabled="true"] { cursor: wait; }
 .review-mistake > .review-mistake-status:empty { margin: 0; }
 .review-next { margin-top: 18px; }
 .review-resource-group { margin: 10px 0; }
@@ -4819,8 +4831,8 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 
 /* Arena uses the same page shell and controls as the other spaces. */
 .arena { max-width: 1080px; margin-inline: auto; }
-.arena .sh-section { padding: clamp(15px, 2vw, 24px); }
-.arena h1 { margin: 0; font-size: calc(24px * var(--tx)); line-height: 1.25; }
+.arena .sh-section, .practice-play .sh-section { padding: clamp(15px, 2vw, 24px); }
+.arena h1, .practice-play .sh-section h1 { margin: 0; font-size: calc(24px * var(--tx)); line-height: 1.25; }
 .arena .space-home-head h1 { font-size: calc(30px * var(--tx)); }
 .arena .sh-section h3 { font-size: calc(17px * var(--tx)); }
 .arena h4 { font-size: calc(14px * var(--tx)); margin: 0 0 6px; }
@@ -4885,10 +4897,36 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 .arena-subject-table tr + tr, .arena-subject-table tbody, .arena-study-row + .arena-study-row, .arena-log + .arena-log { border-top: 1px solid var(--border); }
 .arena-subject-table thead { color: var(--text-dim); font-size: calc(12px * var(--tx)); }
 .arena-log { margin-top: 4px; font-size: calc(14px * var(--tx)); }
-.arena-play { max-width: 900px; margin-inline: auto; }
+.arena-play, .practice-play { max-width: 900px; margin-inline: auto; }
 .arena-problem-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .arena-problem-top > strong { color: var(--space); font-variant-numeric: tabular-nums; }
 .arena-play .practice-answer > h3 { margin-bottom: 10px; }
+
+/* Give Practice sets the same reading width and heading scale as Arena. */
+.practice-play .practice-answer > h4,
+.practice-play > .practice-review.sh-section > h3,
+.practice-play.practice-results > .sh-section > h3 {
+  font-size: calc(17px * var(--tx));
+  font-weight: 780;
+}
+.practice-play .practice-session-top:has(.mock-clock) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+}
+.practice-play .sh-section h1 { overflow-wrap: anywhere; }
+.practice-play .mock-clock-value { font-size: calc(26px * var(--tx)); font-weight: 750; }
+.practice-play .practice-results-stats strong {
+  font-size: calc(28px * var(--tx));
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.practice-play .practice-results-stats > :first-child strong {
+  color: var(--space);
+  font-size: calc(30px * var(--tx));
+}
+.practice-play .practice-result-row strong { font-size: calc(15px * var(--tx)); }
+
 .arena-actions { gap: 10px; margin-top: 14px; }
 .arena-actions .hp-btn { margin: 0; }
 .arena-status:empty { margin: 0; }
@@ -4936,11 +4974,12 @@ body:is([data-space="learn"], [data-space="practice"], [data-space="arena"]) .la
 .arena-study-row li { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px; }
 .arena-study-row li > span { color: var(--text-dim); font-weight: 650; }
 .arena-history-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; padding: 12px 0; }
-.review-problem-link, .arena-history-row a:is(:hover, :focus-visible) { text-decoration: underline; }
+:is(.review-problem-link, .arena-history-row a):is(:hover, :focus-visible) { text-decoration: underline; }
 .arena-history-row small { display: inline; margin-inline-start: 6px; }
 .arena-options + [data-arena-target] { min-height: 2.9em; }
 
-.arena-question-heading { margin: 0 0 8px; font-size: calc(18px * var(--tx)); }
+.arena-question-heading,
+.practice-play > .practice-question.sh-section > h3 { margin: 0 0 8px; font-size: calc(18px * var(--tx)); }
 .arena-subject-toggle { display: inline-flex; gap: 8px; align-items: center; text-align: start; font: inherit; color: inherit; padding: 6px 0; border: 0; background: none; cursor: pointer; }
 .arena-subject-toggle::before { content: "▸" / ""; color: var(--text-dim); flex: none; }
 .arena-subject-toggle[aria-expanded="true"]::before { transform: rotate(90deg); }
