@@ -39,7 +39,10 @@ async function verifyFallback(page) {
     } finally {
       resumeStartup();
     }
-    await slowStartup.locator('.home:not(.static-home)').waitFor();
+    const homepage = slowStartup.locator('.home:not(.static-home)');
+    await homepage.getByRole('heading', {name:'Continue studying'}).waitFor();
+    await homepage.getByRole('link', {name:'Get rated', exact:true}).waitFor();
+    assert.equal(await homepage.getByRole('link', {name:'Current homepage'}).count(), 0);
     assert.equal(new URL(slowStartup.url()).hash, '', 'a saved startup preference no longer overrides home');
     await slowStartup.goto(base + '/#/settings');
     await slowStartup.locator('.settings-head').waitFor();
