@@ -2,6 +2,8 @@
 
 **2026-11-26**
 
+- **Saved-review links.** Underline problem references when hovered or keyboard-focused.
+
 - **Mistake review.** Add a text control to clear every reason for a problem and explain how Practice selections feed What to study in Arena.
 
 - **Practice contest layout.** Use Arena’s centered contest width and larger headings in Practice set screens. Give the timer and main score more prominence.

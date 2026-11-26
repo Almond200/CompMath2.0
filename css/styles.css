@@ -4974,7 +4974,7 @@ body:is([data-space="learn"], [data-space="practice"], [data-space="arena"]) .la
 .arena-study-row li { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px; }
 .arena-study-row li > span { color: var(--text-dim); font-weight: 650; }
 .arena-history-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; padding: 12px 0; }
-.review-problem-link, .arena-history-row a:is(:hover, :focus-visible) { text-decoration: underline; }
+:is(.review-problem-link, .arena-history-row a):is(:hover, :focus-visible) { text-decoration: underline; }
 .arena-history-row small { display: inline; margin-inline-start: 6px; }
 .arena-options + [data-arena-target] { min-height: 2.9em; }
 

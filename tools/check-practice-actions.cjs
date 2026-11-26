@@ -29,7 +29,13 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const missedLink = notes.locator('[data-study-result] a[data-problem-preview]').first();
  await missedLink.waitFor();
  assert.equal(await updateNote.isVisible(),false,'initial recommendations do not show an update notice');
- assert.equal(await missedLink.evaluate(link=>getComputedStyle(link).textDecorationLine),'underline');
+ await p.mouse.move(0,0);
+ assert.equal(await missedLink.evaluate(link=>getComputedStyle(link).textDecorationLine),'none');
+ if(width===1280){
+  await missedLink.hover();
+  assert.equal(await missedLink.evaluate(link=>getComputedStyle(link).textDecorationLine),'underline');
+  await p.mouse.move(0,0);
+ }
  const topicLink = notes.locator('[data-study-result] a[href^="#/browse/topics/"]').first();
  assert.equal(await topicLink.evaluate(link=>getComputedStyle(link).textDecorationLine),'none');
  assert.match(await notes.locator('[data-study-result]').first().innerText(), /1 missed: /);
