@@ -193,6 +193,7 @@
   function submitRound(state, id, judge, now = Date.now()) {
     const s = state.session;
     if (s?.id !== id || s.closed || !s.round) return false;
+    if (s.placement && !roundComplete(s)) return false;
     const previous = new Set(state.events.map(e => canonical(e.identity)));
     const timedOut = !remainingMs(s, now);
     for (const item of s.round.items) {

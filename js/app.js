@@ -6490,7 +6490,7 @@
     savePractice();
     if (p && !external && (!paper || inlinePaper)) {
       const pendingChoices = !typedAnswer && !voidNote && !window.MATH_STATEMENTS?.[slug];
-      showStatement(p, '.practice-set-st', !paper);
+      showStatement(p, '.practice-set-st', !paper, !finished);
       if (pendingChoices) {
         const route = location.hash;
         loadStatements(statementFile(p)).then(() => {
@@ -10305,14 +10305,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   // `box` picks the section to fill: the problem page's own, or the home page's problem of the day.
   function showStatement(p, box = "#prob-st", preferMock = false, hideCredit = false) {
+    const wrap = $content.querySelector(`${box}[data-slug="${p.slug}"]`);
+    if (!wrap) return;
     const extra = window.MATH_MOCK_EXTRAS?.[p.slug];
     const source = archiveStatement(p);
     const useMock = extra && (preferMock || !source);
     const archive = useMock ? null : source;
     (useMock ? Promise.resolve(true) : loadStatements(archive ? `${archive.dir}/${p.year}` : p.year)).then(() => {
       const st = useMock ? extra.statement : window.MATH_STATEMENTS?.[p.slug];
-      const wrap = $content.querySelector(`${box}[data-slug="${p.slug}"]`);
-      if (!st || !wrap) return;
+      if (!st || !wrap.isConnected) return;
       const body = wrap.querySelector(".prob-statement");
       body.textContent = "";
       // A figure sits in the text as @@fig:<path>@@ and uses an SVG or PNG in the figures directory.
@@ -10357,7 +10358,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       });
       const inPractice = box === ".practice-set-st";
       const credit = source?.credit || (MAA_RE.test(p.ref) ? MAA_CREDIT : "");
-      if (credit && !inPractice && !hideCredit && !wrap.querySelector(".statement-credit")) {
+      if (credit && !hideCredit && !wrap.querySelector(".statement-credit")) {
         wrap.insertAdjacentHTML("beforeend", `<p class="prob-note statement-credit">${escapeAttr(credit)}</p>`);
       }
       const fallback = wrap.parentElement.querySelector("[data-statement-fallback]");

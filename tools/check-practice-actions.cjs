@@ -7,6 +7,8 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  async function set(slugs,mock=false,duration=60000){const id=await p.evaluate(({slugs,mock,duration})=>{const P=window.PracticeSessions,s=mock?P.createMock('Generated AMC 10',slugs,{mode:'generated',family:'AMC 10',durationMs:duration}):P.create('Action check','Any',slugs);P.save(localStorage,s);location.hash='#/practice/set/'+s.id;return s.id;},{slugs,mock,duration});await p.waitForURL(u=>u.hash==='#/practice/set/'+id);await p.locator('.practice-set-st[data-slug="'+slugs[0]+'"]').waitFor();await p.locator('#finish-practice').waitFor();return id;}
  const stored=id=>p.evaluate(id=>JSON.parse(localStorage.getItem('mq-practice-sets')).find(s=>s.id===id),id);
  const id=await set(['2018-amc-10a-1','2018-amc-10a-2']);const clear=p.locator('#clear-practice-answer');assert.equal(await clear.isDisabled(),true);
+ await p.locator('.practice-set-st .prob-statement:not(:empty)').waitFor();
+ assert.equal(await p.locator('.practice-set-st .statement-credit').count(),0);
  await p.locator('[data-practice-answer="C"]').click();assert.equal(await clear.isEnabled(),true);await clear.click();assert.equal(await clear.isDisabled(),true);assert.equal(await p.locator('[data-practice-answer][aria-checked="true"]').count(),0);assert.match(await p.locator('[aria-current="step"]').getAttribute('aria-label'),/Unanswered/);
  await p.clock.fastForward(1000);assert.equal((await stored(id)).answers['2018-amc-10a-1'],'');
  await p.locator('#finish-practice').click();const dialog=p.locator('dialog.app-confirm');await dialog.waitFor();assert.match(await dialog.innerText(),/2 unanswered questions/);assert.equal(await p.evaluate(()=>document.activeElement.value),'cancel');assert.notEqual((await stored(id)).status,'finished');
@@ -15,6 +17,9 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.locator('[data-practice-answer="A"]').click();await p.locator('#finish-practice').click();assert.match(await dialog.innerText(),/1 unanswered question\?/);await p.keyboard.press('Escape');await dialog.waitFor({state:'detached'});assert.equal(await dialog.count(),0);assert.notEqual((await stored(id)).status,'finished');
  await p.locator('.practice-problem-nav [data-practice-index="1"]').click();await p.locator('[data-practice-answer="B"]').click();await p.locator('#finish-practice').click();await p.locator('.practice-results').waitFor();assert.equal(await dialog.count(),0,'fully answered submits in one click');assert.equal((await stored(id)).status,'finished');
  await p.locator('[data-result-index="0"]').click();await p.locator('.practice-review').waitFor();assert.equal(await clear.count(),0,'review cannot clear an answer');
+ const credit=p.locator('.practice-set-st .prob-statement + .statement-credit');
+ await credit.waitFor();assert.equal(await credit.innerText(),'© Mathematical Association of America');
+ assert.equal(await p.locator('.practice-set-st .statement-credit').count(),1);
  const partial=await set(['2018-amc-10a-1','2018-amc-10a-2']);await p.locator('[data-practice-answer="A"]').click();await p.locator('#finish-practice').click();await dialog.locator('[value="ok"]').click();await p.locator('.practice-results').waitFor();assert.equal((await stored(partial)).status,'finished');assert.equal(await p.locator('[data-result-index]').count(),2);
  assert.match(await p.locator('.answer-breakdown-stats').innerText(), /0%\s+Accuracy on graded answers\s+50%\s+Unanswered/, 'accuracy excludes the unanswered problem');
  const alternates=await set(['2013-utah-state-math-contest-junior-24','2012-amc-12b-12','2012-utah-state-math-contest-senior-13','2024-hmmt-february-algebra-and-number-theory-1','2015-mmaths-individual-7']);

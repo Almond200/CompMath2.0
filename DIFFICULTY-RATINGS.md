@@ -64,7 +64,7 @@ The following records the original Elo batch’s validation in PR #298; the repo
 
 ## Personal Arena ratings
 
-Placement is an untimed sequence of 12 problems. An early submission saves the completed work and carries forward the remaining problem count. Arena shows one problem at a time and updates its estimate from resolved questions before selecting the next. Some questions probe above or below the estimate. A first-try solve earns full rating credit, and a second-try solve earns half. It retains previous Arena outcomes when estimating the baseline from an upgraded record.
+Placement is an untimed sequence of 12 problems. Save and exit keeps the current question and all progress in the same placement session. Arena shows one problem at a time and updates its estimate from resolved questions before selecting the next. Some questions probe above or below the estimate. A first-try solve earns full rating credit, and a second-try solve earns half. It retains previous Arena outcomes when estimating the baseline from an upgraded record.
 
 For a solver rating $R$ and an individual problem rating $D$, expected success is $p=1/(1+10^{(D-R)/400})$. Placement fits each result against its corresponding $D$, with a normal prior centered at 1500 Elo and standard deviation 600. A submitted set with no attempts does not establish a baseline. All four subjects start at the same provisional Elo.
 

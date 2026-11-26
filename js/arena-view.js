@@ -250,6 +250,7 @@
   }
   function dashboard(ctx, state, stats, history) {
     const t = stats.overall, placed = !!stats.baseline, s = state.session, active = s && !s.closed;
+    const placementCompleted = t.count + (active && s.placement && s.round ? s.length - A.remaining(state) : 0);
     const prev = s || {};
     const established = ctx.roots.filter(root => stats.subjects.get(root.id)?.wins >= A.SUBJECT_PROVISIONAL).length;
     const arenaHistory = history.filter(event => event.source === 'arena' && event.session && event.reviewNumber);
@@ -270,9 +271,9 @@
         ${established < ctx.roots.length ? '<p class="arena-note">Provisional · ' + established + '/' + ctx.roots.length + ' subjects established</p>' : ''}
         <p class="arena-note">${!postPlacement.length ? 'Starting Elo from placement' : signed(delta) + ' overall Elo in your latest rated set'}</p>` :
         `<p>Take one set of ${A.PLACEMENT_SIZE} problems across a range of difficulties. Your starting Elo applies to all four subjects.</p>
-        ${t.count ? `<small>${t.count} of ${A.PLACEMENT_SIZE} placement problems completed</small>` : ''}`}</div>
+        ${placementCompleted ? `<small>${placementCompleted} of ${A.PLACEMENT_SIZE} placement problems completed</small>` : ''}`}</div>
       ${placed ? trendPlot('Overall') :
-        `<div class="arena-placement"><h4>How placement works</h4><p>You get two tries per problem. A second-try solve earns half credit toward your placement rating. Submit whenever you need to stop. You can finish the remaining problems later.</p></div>`}
+        `<div class="arena-placement"><h4>How placement works</h4><p>You get two tries per problem. A second-try solve earns half credit toward your placement rating. Save and exit whenever you need a break.</p></div>`}
       ${placed ? `<div class="arena-metrics">
         <div><strong>${number(setPoints(stats.points).reduce((max,p) => Math.max(max, p.rating), stats.baseline.rating))}</strong><small>Peak Elo</small></div>
         ${postPlacement.length ? `<div><strong>${new Set(postPlacement.map(p => p.event.session)).size}</strong><small>Rated sets</small></div>` : ''}</div>
@@ -280,7 +281,7 @@
       </section>
       <section class="sh-section" id="arena-session"><h3>${(active ? s.placement : !placed) ? 'Placement set' : 'Rated session'}</h3>
       ${active ? `<p class="arena-note">${s.placement ? 'Mixed subjects' : (opts.get(s.focus) || 'Mixed subjects') + ' · ' + paceNames[s.pace]} · ${s.round ? s.placement ? s.length + ' problems · Untimed' : s.round.items.length + ' problems · ' + s.round.limitMs / 60000 + ' min' : (s.length - A.remaining(state)) + ' of ' + s.length + ' answered'}</p>
-        <div class="arena-resume"><a class="hp-btn arena-primary" href="${sessionUrl}">${A.remaining(state) ? 'Resume session' : 'View results'} ${ctx.icon('arrow-right')}</a>
+        <div class="arena-resume"><a class="hp-btn arena-primary" href="${sessionUrl}">${A.remaining(state) ? (s.placement ? 'Resume placement' : 'Resume session') : 'View results'} ${ctx.icon('arrow-right')}</a>
         ${s.round && !s.placement ? '<span class="arena-resume-time"><span class="arena-clock" aria-label="Time remaining" role="timer"></span> left</span>' : ''}</div>` :
         `<form id="arena-start">${placed ? `${selector('focus', 'Subject', [...opts], opts.has(prev.focus) ? prev.focus : opts.keys().next().value)}
         ${selector('pace','Difficulty',Object.entries(paceNames),prev.pace || 'matched')}
@@ -641,6 +642,7 @@
       if (await ctx.confirm({title:'Give up on this problem?', text:'This ends your tries for this question.', ok:'Give up'}))
         finish({outcome:'incorrect', answer:''});
     };
+    if (isPlacement) return () => A.saveDraft(id,p.slug,draft,retry);
   }
   function estimatedDifficulty(items) {
     const average = items.reduce((sum,item) => sum + item.elo,0) / items.length;
@@ -753,6 +755,7 @@
     const onLeave = () => controller.abort();
     window.addEventListener('hashchange',onLeave,{once:true,signal:controller.signal});
     let finishing = false, saveFailed = false, latest = state;
+    let savePlacementDraft;
     async function submit() {
       if (finishing || !box.isConnected) return;
       finishing = true;
@@ -779,19 +782,31 @@
           `<a ${attributes} href="${setProblemUrl(i)}">${i+1}</a>`;
       }).join('')}</nav>
       <div class="practice-session-actions"><span data-arena-checked>${progress(round.items)}</span>
-      <button type="button" class="hp-btn hp-btn-soft" data-submit-set>Submit set</button></div>
+      ${s.placement ? '<button type="button" class="hp-btn hp-btn-soft" data-save-placement>Save and exit</button>' :
+        '<button type="button" class="hp-btn hp-btn-soft" data-submit-set>Submit set</button>'}</div>
       <p class="arena-note" data-arena-finish-note role="status"${A.roundComplete(state.session) ? '' : ' hidden'}>Set complete. Submitting in three seconds…</p></section>`);
     const nav = box.previousElementSibling, timer = nav.querySelector('.arena-clock');
     if (timer) showCountdown(timer,state.session,() => { if (!saveFailed) submit(); });
-    nav.querySelector('[data-submit-set]').onclick = async () => {
+    const savePlacement = nav.querySelector('[data-save-placement]');
+    if (savePlacement) savePlacement.onclick = async () => {
+      savePlacement.disabled = true;
+      try {
+        await savePlacementDraft?.();
+        if (box.isConnected) location.hash = homeUrl;
+      } catch {
+        saveError(nav);
+        savePlacement.disabled = false;
+      }
+    };
+    const submitSet = nav.querySelector('[data-submit-set]');
+    if (submitSet) submitSet.onclick = async () => {
       if (saveFailed || A.roundComplete(latest.session)) { submit(); return; }
       try {
         const current = await A.read();
         if (!box.isConnected || finishing) return;
         if (current.session?.id !== id || current.session.closed) { ctx.refresh(); return; }
         if (A.roundComplete(current.session) || await ctx.confirm({title:'Submit this set?',
-          text:s.placement ? 'Saved answers will be graded. You can finish any remaining placement problems later.' :
-            'Saved answers will be graded. Any unanswered problems count as misses.',
+          text:'Saved answers will be graded. Any unanswered problems count as misses.',
           ok:'Submit set',signal:controller.signal})) submit();
       } catch { saveError(nav); }
     };
@@ -805,7 +820,7 @@
     const lastPlacementProblem = () => round.adaptive ? round.items.length >= s.length :
       latest.session.round.items.every(row => row.outcome);
     function showSlot(slot) {
-      showQuestion(ctx, box, id, p, slot, async result => {
+      savePlacementDraft = showQuestion(ctx, box, id, p, slot, async result => {
         latest = await A.change(st => A.checkRoundAnswer(st,id,item.slug,result,Date.now(),!!slot.firstMiss));
         if (!box.isConnected || finishing) return;
         const updated = latest.session?.id === id && latest.session.round?.items[index];
@@ -852,7 +867,7 @@
             if (!current()) return;
             if (status !== 'ready' && status !== 'external') {
               const note = box.querySelector('.arena-status');
-              note.textContent = status === 'offline' ? 'The next problem could not load. Try again.' : 'No fresh problems remain. Submit to save your results.';
+              note.textContent = status === 'offline' ? 'The next problem could not load. Try again.' : 'No fresh problems remain. Use Save and exit to keep your progress.';
               nextButton.disabled = status !== 'offline';
               return;
             }
