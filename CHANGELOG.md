@@ -2,6 +2,7 @@
 
 **2026-11-25**
 
+- **Arena Stretch.** Target 150 Elo above Matched to make Stretch sets more challenging.
 - **Contest history.** Rename Arena’s history section and sidebar link to Contest history.
 - **Shorter Arena placement.** Use ten adaptive questions for the provisional Elo estimate. Preserve completed placement results and keep any question already open in a saved session.
 - **Save and resume placement.** Replace Submit set during placement with Save and exit. Resume the same placement with drafts and checked answers saved.
