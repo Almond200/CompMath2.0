@@ -40279,20 +40279,20 @@
       "Center five arithmetic-progression roots at their mean and compare polynomial values at symmetric arguments. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2014 BMT Analysis, Problem 6": [
-      2560,
-      "Close a short chain of substitutions in a functional equation and solve the resulting linear system of values. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2100,
+      "Re-estimated 2026-11-26 after solving the printed problem. Substitution at 1 and −1 closes a two-value cycle. Solve the two linear equations before evaluating at 2."
     ],
     "2014 BMT Analysis, Problem 7": [
-      2830,
-      "Pair the four sums of roots of two quadratics around a real center and evaluate their conjugate distance product. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2280,
+      "Re-estimated 2026-11-26 after solving the printed problem. Center at 4 and pair conjugate root sums. The product at the center is the square of the difference of two squares."
     ],
     "2014 BMT Analysis, Problem 8": [
       3160,
       "Sum a weighted sequence from its alternating partial-sum formulas; the literal integer-valued requirement already contradicts the prescribed zeroth value. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2014 BMT Analysis, Problem 10": [
-      3100,
-      "Bracket three slightly perturbed cubic roots by exact rational half-rounding intervals to certify their scaled nearest integers. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2800,
+      "Re-estimated 2026-11-26 after solving the printed problem. Estimate three roots by the first-order shifts at −1, 0 and 1, then certify the rounding with exact signs at the six half-integer cutoffs."
     ],
     "2014 BMT Geometry, Problem 1": [
       1390,
@@ -40307,24 +40307,24 @@
       "Compare the isosceles triangle and a circle-diameter altitude construction to recover a fixed chord length. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2014 BMT Geometry, Problem 4": [
-      3160,
-      "Minimize the cylinder length over all three axial sphere orders using sharp radial separation bounds; a shorter exact packing disproves the official order and value. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      3000,
+      "Re-estimated 2026-11-26 after solving the printed problem. Bound axial gaps from radial clearance, compare three choices for the middle sphere, and realize the sharp minimum by alternating radial positions."
     ],
     "2014 BMT Geometry, Problem 5": [
       3100,
       "Solve a formal equal-radius hypercube tangency equation and audit feasibility: the resulting adjacent corner hyperspheres overlap, so the asserted nonoverlapping packing does not exist. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2014 BMT Geometry, Problem 6": [
-      2080,
-      "Intersect a square diagonal-like line with a corner-centered circle and project to the opposite side. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1820,
+      "Re-estimated 2026-11-26 after solving the printed problem. Intersect a line of slope 2 with the radius-5 circle. The resulting quadratic has an extraneous root outside the segment and a direct integer root."
     ],
     "2014 BMT Geometry, Problem 7": [
       2400,
       "The two intersections divide BE in ratios given directly by parallelogram similarity or a single coordinate parameter. The segment order gives the length equality, which reduces to the golden-ratio quadratic. Re-estimated 2026-11-26 against other BMT geometry problems that combine standard similarity with one algebraic step."
     ],
     "2014 BMT Geometry, Problem 8": [
-      2560,
-      "Split a curvilinear region into a circular segment and an inscribed triangle whose area cancels the associated central triangle. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2250,
+      "Re-estimated 2026-11-26 after solving the printed problem. Use the diameter right angle and the arc midpoint to put D and the center on a line parallel to BC. The added and subtracted triangles have equal area."
     ],
     "2014 BMT Geometry, Problem 9": [
       3220,
@@ -40407,32 +40407,32 @@
       "Use the circumradius of a regular tetrahedron and its unit edge to recover the central angle sine. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2013 BMT Geometry, Problem 4": [
-      1890,
-      "Solve the two numerical cube size relations and compute the requested surface-to-volume ratio; the official reciprocal-sized result disagrees with direct substitution. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1650,
+      "Re-estimated 2026-11-26 after solving the printed problem. Translate the cube size statements into a cubed relation and a squared relation, then substitute and evaluate the requested ratio."
     ],
     "2013 BMT Geometry, Problem 5": [
       2190,
       "Describe the fixed-angle locus on both sides of a chord and add the two exact circular segment areas. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2013 BMT Geometry, Problem 6": [
-      2500,
-      "Use similar secant triangles in a cyclic quadrilateral to recover two exterior lengths and then the target triangle area. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2300,
+      "Re-estimated 2026-11-26 after solving the printed problem. The cyclic angles give a similarity ratio of 2 between the two secant triangles. Eliminate two lengths and evaluate Heron’s formula."
     ],
     "2013 BMT Geometry, Problem 7": [
-      2670,
-      "Convert a fixed-area right-triangle subconfiguration into a reciprocal-product constraint and find the full interval of a weighted midpoint-distance sum. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2220,
+      "Re-estimated 2026-11-26 after solving the printed problem. Use the midpoint and area constraints to reduce the range to p + 9/p on a closed interval. AM–GM and a factored upper bound give the endpoints."
     ],
     "2013 BMT Geometry, Problem 8": [
-      2990,
-      "Construct an excircle diameter and a second right-isosceles triangle, then evaluate the area formed by their centers. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2710,
+      "Re-estimated 2026-11-26 after solving the printed problem. Place the first right triangle on coordinate axes. The excircle determines a second right isosceles triangle and the area follows from three center coordinates."
     ],
     "2013 BMT Geometry, Problem 9": [
-      3220,
-      "Recognize the shared-circle Miquel point, identify a right common circumcircle and recover its radius from the fixed contact chord. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2520,
+      "Re-estimated 2026-11-26 after solving the printed problem. Recognize the Miquel circle and use the 20–21–29 right triangle. The requested radius is half the chord through the two equal-length side marks."
     ],
     "2013 BMT Geometry, Problem 10": [
-      3520,
-      "Project the harmonic incircle quadrilateral to the opposite side and evaluate the absolute reciprocal-distance difference; the PDF absolute-value bars are essential. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      3150,
+      "Re-estimated 2026-11-26 after solving the printed problem. Use harmonic projection and tangent lengths, or compute the two exact intercepts in coordinates before taking the absolute difference."
     ],
     "2016 PUMaC Division A Algebra, Problem 1": [
       1380,
@@ -50351,12 +50351,12 @@
       "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Track where the corners of repeated absolute-value iterates fall and sum their heights, then take a limit of ratios."
     ],
     "2014 BMT Analysis, Problem 5": [
-      1500,
-      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): A limit at infinity by dividing through by the square root of x."
+      1050,
+      "Re-estimated 2026-11-26 after solving the printed problem. Cancel the common square-root growth by dividing by the square root of x, then substitute zero for the reciprocal of x."
     ],
     "2014 BMT Analysis, Problem 9": [
-      3300,
-      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Find the growth rate of a Laplace-type integral as x approaches 0 from the right."
+      2900,
+      "Re-estimated 2026-11-26 after solving the printed problem. Scale the integration variable by x to expose the x to the negative three-halves growth. A square-root bound controls the remaining integral."
     ],
     "2015 BMT Analysis, Problem 9": [
       2600,
