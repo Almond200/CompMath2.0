@@ -5807,7 +5807,14 @@
       if(document.hidden||set.status==='paused')return;
       if(topicPracticeSet!==set||!location.hash.startsWith('#/practice/set/'+set.id)){clearInterval(mockClockInterval);return;}
       practiceSessions.checkpoint(set);
-      if(set.status==='finished'){clearInterval(mockClockInterval);savePractice();toast('Time is up. Your mock has been graded.');renderTopicPracticeSet();return;}
+      if (set.status === 'finished') {
+        clearInterval(mockClockInterval);
+        savePractice();
+        if (!practiceSaveFailed) notifyStudyUpdate();
+        toast('Time is up. Your mock has been graded.');
+        renderTopicPracticeSet();
+        return;
+      }
       const el=$content.querySelector('.mock-clock-value'), box=$content.querySelector('.mock-clock');
       const left=practiceSessions.timeLeft(set);
       if(el)el.textContent=mockTime(left);
@@ -6182,9 +6189,6 @@
     return `<select class="study-filter" data-study-type aria-label="Recommendation type">
       <option value="all">All resources</option><option value="topic">Topics</option><option value="card">Cards</option></select>`;
   }
-  function reviewRefreshHtml() {
-    return `<button type="button" class="hp-btn hp-btn-soft review-refresh" data-refresh-study aria-label="Refresh study recommendations" title="Refresh study recommendations">${uiIcon("refresh")}</button>`;
-  }
   function nextStepsHtml(p) {
     const cards = [...new Set([p.main, ...p.formulas, ...p.trickFormulas])].filter(id => BY_ID[id]);
     const paths = p.tree.map(id => [...topicPath(id)].reverse());
@@ -6243,6 +6247,7 @@
       update();
       try {
         await activity.saveMistakes(source, setId, slug, selected);
+        notifyStudyUpdate();
         reasons = selected;
       } catch {
         status.textContent = "Couldn’t save your selections. Try again.";
@@ -6368,16 +6373,25 @@
     }
     return hardest ? `<p><strong>Highest-rated solve</strong> · ${insightProblemLink(hardest.problem, reviewUrl(hardest.index))} · ${hardest.problem.elo} Elo</p>` : "";
   }
+  let studyUpdatePending = false;
+  function notifyStudyUpdate() {
+    studyUpdatePending = true;
+    $content.querySelector("[data-study-items]")?.dispatchEvent(new Event("study-history-changed"));
+  }
   function wireResultStudy(root, source, setId, outcomes, reviewUrl, loadHistory, initial) {
     const notes = root.querySelector("[data-result-study]");
     if (!notes) return;
     const list = notes.querySelector("[data-study-items]");
-    const refresh = notes.querySelector("[data-refresh-study]");
+    const status = notes.querySelector("[data-study-update]");
     const type = notes.querySelector("[data-study-type]");
-    let rendered = list.innerHTML, loading = false, history = initial || [];
-    const show = () => {
+    let rendered = list.innerHTML, request = 0, history = initial || [];
+    const show = (fromUpdate = false) => {
       if (!list.isConnected) return;
       const items = resultStudyNotes(history, source, setId, outcomes, reviewUrl, type.value);
+      if (fromUpdate && studyUpdatePending) {
+        studyUpdatePending = false;
+        status.hidden = !items;
+      }
       if (notes.hidden && !items) return;
       notes.hidden = false;
       const html = items || "<p>No recent recommendations in this view.</p>";
@@ -6388,19 +6402,21 @@
       }
     };
     const load = async () => {
-      if (loading) return;
-      loading = true;
-      refresh.setAttribute("aria-disabled","true");
-      try { history = await loadHistory(); show(); }
-      catch {
+      const current = ++request;
+      try {
+        const latest = await loadHistory();
+        if (current !== request || !list.isConnected) return;
+        history = latest;
+        show(true);
+      } catch {
+        if (current !== request || !list.isConnected || notes.hidden) return;
         rendered = null;
-        if (list.isConnected && !notes.hidden) list.textContent = "Study recommendations are unavailable.";
+        list.textContent = "Study recommendations are unavailable.";
       }
-      finally { loading = false; refresh.setAttribute("aria-disabled","false"); }
     };
-    refresh.addEventListener("click", load);
-    type.addEventListener("change", show);
-    if (initial) show();
+    list.addEventListener("study-history-changed", load);
+    type.addEventListener("change", () => show());
+    if (initial) show(true);
     else load();
   }
   function practiceInsightsHtml(set, outcomes, counts, reviewUrl, breakdown) {
@@ -6435,8 +6451,8 @@
       ${bars ? `<section><h3>Correct by subject</h3>${bars}</section>` : ''}
       <section><h3>Results by problem</h3><div class="insight-cells">${sequence}</div></section></div>
       <div class="insight-legend">${legend}</div><div class="insight-notes"><div data-result-study hidden>
-        <div class="study-header"><div class="review-next-heading"><h4>Recommended review</h4>${reviewRefreshHtml()}</div>
-          ${studyTypeFilterHtml()}</div><div data-study-items aria-live="polite"></div>
+        <div><p class="study-update" data-study-update role="status" hidden><em>Recommendations updated</em></p>
+          <div data-study-items aria-live="polite"></div></div>${studyTypeFilterHtml()}
       </div>${highestSolveHtml(outcomes,reviewUrl)}</div></div>`;
   }
   function practiceResultRow({href, index, number, problem, summary, result}) {
@@ -6590,7 +6606,10 @@
         if (!confirmed) return;
       }
       if (topicPracticeSet !== set || set.status === 'finished' || location.hash !== '#/practice/set/' + encodeURIComponent(set.id)) return;
-      practiceSessions.finish(set); savePractice(); redraw();
+      practiceSessions.finish(set);
+      savePractice();
+      if (!practiceSaveFailed) notifyStudyUpdate();
+      redraw();
       updatePageTitle(getRoute()); window.AppAccessibility.focusMain();
     });
     const answerChoices = $content.querySelectorAll('[data-practice-answer]');
@@ -6673,7 +6692,9 @@
     $content.querySelectorAll('[data-self]').forEach(b => b.addEventListener('click', () => {
       const v = b.getAttribute('aria-pressed') === 'true' ? null : b.dataset.self;
       if (!practiceSessions.selfMark(set, slug, v)) return;
-      savePractice(); redraw(); $content.querySelector(`[data-self="${b.dataset.self}"]`)?.focus({ preventScroll: true });
+      savePractice();
+      if (!practiceSaveFailed) notifyStudyUpdate();
+      redraw(); $content.querySelector(`[data-self="${b.dataset.self}"]`)?.focus({ preventScroll: true });
     }));
     if (p && finished && !voidNote) wireMistakeReview($content.querySelector(".practice-review"), p.slug, {
       source: "practice", setId: set.id
@@ -6973,6 +6994,7 @@
   }
   // Cross-tab updates to a draft alone can leave the active text input mounted.
   window.addEventListener("storage", event => {
+    if (event.key === practiceSessions.KEY || event.key === activity.KEY || event.key === window.Arena.KEY) notifyStudyUpdate();
     if (event.key !== window.Arena.KEY || !/^#\/arena(?:\/session(?:\/\d+)?)?$/.test(location.hash)) return;
     try {
       const before = JSON.parse(event.oldValue), after = JSON.parse(event.newValue);
@@ -6983,9 +7005,9 @@
     render();
   });
   if (studyStore.enabled) studyStore.subscribe(kind => {
-    if (!/^#\/arena(?:\/session(?:\/\d+)?)?$/.test(location.hash)) return;
     if (kind === "draft") return;
-    render();
+    notifyStudyUpdate();
+    if (kind === "arena" && /^#\/arena(?:\/session(?:\/\d+)?)?$/.test(location.hash)) render();
   });
   let arenaPools;
   const arenaCanGrade = p => hasMockAnswer(p) && !practiceSessions.needsSelfCheck({},p.slug);
@@ -7037,11 +7059,12 @@
       reviewResults: practiceResultsHtml, reviewRow: practiceResultRow, reviewActions: practiceReviewActionsHtml,
       answerBreakdown,
       reviewInsights: (outcomes, counts, href, breakdown) => practiceInsightsHtml({marks:{}},outcomes,counts,href,breakdown),
-      wireResultStudy: (id, outcomes, href, state, initial) => wireResultStudy($content, "arena", id, outcomes, href,
-        () => activity.history({kind:"problem", arenaState:state}), initial),
+      wireResultStudy: (id, outcomes, href, initial) => wireResultStudy($content, "arena", id, outcomes, href,
+        () => activity.history({kind:"problem"}), initial),
+      notifyStudyUpdate,
       reviewExplanation: practiceExplanationHtml,
       mistakeReviewHtml: (outcome, retry) => mistakeReviewHtml(activity.canMarkMistake(outcome, retry)),
-      nextStepsHtml, wireMistakeReview, reviewRefreshHtml, studyTypeFilterHtml, studyItem,
+      nextStepsHtml, wireMistakeReview, studyTypeFilterHtml, studyItem,
       studyCardPractice: id => cardPracticeLink(id, "Practice this card"),
       loadExplanation: p => Promise.all(solutionRequirements([p.year])),
       showPrompt: (p, hideCredit) => showStatement(p, ".arena-st", true, hideCredit),

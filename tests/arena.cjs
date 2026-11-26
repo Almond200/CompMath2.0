@@ -248,13 +248,23 @@ async function checkHistory() {
   const fresh = [candidate('new-a'),candidate('new-b'),candidate('new-c'),candidate('new-d')];
   assert.equal(A.studyRecommendations([...fresh,candidate('old','incorrect',80)],lookup,nowForStudy).length,3);
   assert.equal(A.studyRecommendations([candidate('old','incorrect',40)],lookup,nowForStudy).length,0);
-  const experienced = Array.from({length:20},(_,i) => candidate('clean-' + i,'correct'));
+  const firstRetry = {...candidate('shared-first','correct'),retry:true};
+  assert.deepEqual(A.studyRecommendations([firstRetry],lookup,nowForStudy).map(row => row.kind),['topic','card'],
+    'a first retry can surface a topic and a relevant card');
+  const firstSkip = {...candidate('new-skip','unanswered'),source:'practice',session:'set-1'};
+  assert.equal(A.studyRecommendations([firstSkip],lookup,nowForStudy)[0].id,'new-skip');
+  const experienced = Array.from({length:40},(_,i) => candidate('clean-' + i,'correct'));
+  assert.equal(A.studyRecommendations([...experienced.slice(0,20),candidate('new-miss')],lookup,nowForStudy)[0].id,'new-miss',
+    'a single fresh miss still counts while evidence is building');
   const withSupport = [...experienced,...fresh,candidate('shared-a'),candidate('shared-b','incorrect',3,['starting','carelessness']),
     candidate('shared-c','incorrect',70)];
   const ranked = A.studyRecommendations(withSupport,lookup,nowForStudy);
   assert.deepEqual(ranked.map(row => [row.kind,row.id]),[['card','shared-card']], 'repeat evidence can promote a card across topics');
   assert(!A.studyRecommendations([...experienced,candidate('shared-a'),candidate('shared-b','incorrect',50)],lookup,nowForStudy).length,
     'one fresh mistake plus old data is insufficient with an established history');
+  const seasoned = [...experienced,...Array.from({length:20},(_,i) => candidate('earlier-' + i,'correct',20))];
+  assert.deepEqual(A.studyRecommendations([...seasoned,...withSupport],lookup,nowForStudy).map(row => row.id), ranked.map(row => row.id),
+    'adding experience past the threshold does not tighten recommendations further');
   const ordinary = A.recommendations([candidate('new-a')],lookup,nowForStudy)[0].recentMisses;
   const marked = A.recommendations([candidate('new-a','incorrect',0,['starting'])],lookup,nowForStudy)[0].recentMisses;
   const combined = A.recommendations([candidate('new-a','incorrect',0,['starting','carelessness'])],lookup,nowForStudy)[0].recentMisses;

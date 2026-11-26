@@ -15,7 +15,6 @@
     'arrow-up-right': line('M5 19 19 5M6 5h13v13'),
     'chevron-left': line('m15.5 5-7 7 7 7'),
     'chevron-right': line('m8.5 5 7 7-7 7'),
-    refresh: line('M20 10a8 8 0 1 0-1 7M20 4v6h-6'),
     'triangle-right': '<path d="m7.5 5 9 7-9 7Z" fill="currentColor"/>',
     'triangle-up': '<path d="m4 19 8-14 8 14Z" fill="currentColor"/>',
     'triangle-down': '<path d="M4 5h16l-8 14Z" fill="currentColor"/>',

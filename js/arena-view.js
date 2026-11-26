@@ -291,7 +291,8 @@
           return `<tr><th scope="row"><button type="button" class="arena-subject-toggle" data-subject-toggle aria-expanded="false" aria-controls="arena-subject-${id}">${label}</button></th><td>${placed && r ? number(r.rating) : '—'}${placed && r && r.wins < A.SUBJECT_PROVISIONAL ? '<small>Provisional</small>' : ''}</td>
           <td>${accuracy(stats.points.filter(p => hasAnswer(p.event) && p.event.subjects.includes(id)))}</td></tr>
           <tr class="arena-subject-details" id="arena-subject-${id}" data-subject="${id}" hidden><td colspan="3">${subjectDetails(ctx,id,label,stats,reviews)}</td></tr>`; }).join('')}</tbody></table></div></section>
-      <section class="sh-section" id="arena-study"><div class="study-header"><div class="review-next-heading"><h3>What to study</h3>${ctx.reviewRefreshHtml()}</div>
+      <section class="sh-section" id="arena-study"><div class="study-header"><div><h3>What to study</h3>
+        <p class="arena-note">Based on the problems you’ve worked on recently.</p></div>
         <div class="study-filters"><select class="study-filter" data-study-subject aria-label="Study recommendation subject"><option value="all">All subjects</option>
           ${[...opts].map(([id,label]) => `<option value="${id}">${label}</option>`).join('')}</select>${ctx.studyTypeFilterHtml()}</div></div>
         <div data-study-items aria-live="polite">${initialStudy}</div></section>
@@ -329,9 +330,8 @@
     const study = ctx.container.querySelector('#arena-study');
     const subject = study.querySelector('[data-study-subject]');
     const type = study.querySelector('[data-study-type]');
-    const refresh = study.querySelector('[data-refresh-study]');
     const list = study.querySelector('[data-study-items]');
-    let displayed = initialStudy, loadingStudy = false;
+    let displayed = initialStudy, studyRequest = 0;
     const updateStudy = () => {
       const html = studyHtml(ctx,studyRows(subject.value,type.value));
       if (html === displayed) return;
@@ -341,19 +341,15 @@
     };
     subject.onchange = updateStudy;
     type.onchange = updateStudy;
-    refresh.onclick = async () => {
-      if (loadingStudy) return;
-      loadingStudy = true;
-      refresh.setAttribute('aria-disabled','true');
+    list.addEventListener('study-history-changed',async () => {
+      const current = ++studyRequest;
       try {
-        studyHistory = await ctx.history(state);
-        if (list.isConnected) updateStudy();
-      } catch { }
-      finally {
-        loadingStudy = false;
-        refresh.setAttribute('aria-disabled','false');
-      }
-    };
+        const latest = await ctx.history();
+        if (current !== studyRequest || !list.isConnected) return;
+        studyHistory = latest;
+        updateStudy();
+      } catch {}
+    });
     startForm?.addEventListener('submit', async e => {
       e.preventDefault();
       const form = e.currentTarget, values = new FormData(form);
@@ -493,7 +489,7 @@
     heading.tabIndex = -1;
     heading.focus({preventScroll:true});
     ctx.renderMath(ctx.container);
-    ctx.wireResultStudy(id,outcomes,detailUrl,state,history);
+    ctx.wireResultStudy(id,outcomes,detailUrl,history);
   }
   function seenProblems(ctx, history, state) {
     return new Set([...history.map(e => e.canonicalId), ...ctx.priorSeen().map(A.canonical), ...state.events.map(e => A.canonical(e.identity))]);
@@ -563,7 +559,10 @@
             if (st.session?.id !== s.id || st.session.last !== s.last) return false;
             st.session.last = null;
           });
-          if (current()) { if (done) location.hash = reviewUrl(s.id); else ctx.refresh(); }
+          if (current()) {
+            if (done) { ctx.notifyStudyUpdate(); location.hash = reviewUrl(s.id); }
+            else ctx.refresh();
+          }
         } catch { saveError(box); }
       };
       return;
@@ -679,8 +678,10 @@
     expiryTimer = setTimeout(async () => {
       try {
         const saved = await expireRatedSet(session.id);
-        if (saved.session?.id === session.id && saved.session.closed &&
-            (location.hash === homeUrl || location.hash === sessionUrl || location.hash.startsWith(sessionUrl + '/'))) ctx.refresh();
+        if (saved.session?.id === session.id && saved.session.closed) {
+          ctx.notifyStudyUpdate();
+          if (location.hash === homeUrl || location.hash === sessionUrl || location.hash.startsWith(sessionUrl + '/')) ctx.refresh();
+        }
       } catch {
         // The active question's timer or the next Arena visit retries the save.
       }
@@ -772,7 +773,10 @@
       controller.abort();
       try {
         await A.change(st => A.submitRound(st,id,gradeAnswer));
-        if (box.isConnected) location.hash = reviewUrl(id);
+        if (box.isConnected) {
+          ctx.notifyStudyUpdate();
+          location.hash = reviewUrl(id);
+        }
       } catch { finishing = false; saveFailed = true; saveError(box.parentElement); }
     }
     box.parentElement.classList.add('practice-session');
@@ -911,8 +915,10 @@
           st.session.length = length;
         });
       }
-      if (state.session?.round && !state.session.closed && Date.now() >= A.submissionAt(state.session))
+      if (state.session?.round && !state.session.closed && Date.now() >= A.submissionAt(state.session)) {
         state = await expireRatedSet(state.session.id);
+        if (state.session?.closed) ctx.notifyStudyUpdate();
+      }
       const history = await ctx.history(state);
       if (!current()) return;
       watchDeadline(ctx,state.session);

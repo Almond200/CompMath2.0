@@ -346,15 +346,18 @@
     const cards = includeCards ? [...new Set([problem.main, ...(problem.formulas || [])])].filter(Boolean) : [];
     return [...topics, ...cards.map(id => ({kind:'card', id}))];
   }
-  function studyEvidence(event) {
+  function studyEvidence(event, includePracticeSkips = true) {
     if (event.outcome === 'incorrect') return 1;
     if (event.outcome === 'correct' && event.retry) return 0.5;
-    if (event.outcome === 'unanswered' && (event.source === 'arena' && !event.placement || event.mistakes?.length)) return 0.25;
+    if (event.outcome === 'unanswered') {
+      if (event.source === 'arena' && !event.placement || event.mistakes?.length) return 0.25;
+      if (includePracticeSkips && event.source === 'practice' && event.session) return 0.2;
+    }
     return 0;
   }
-  function evidenceRows(history, lookup, now, includeCards) {
+  function evidenceRows(history, lookup, now, {includeCards = false, includePracticeSkips = false} = {}) {
     const { mistakeBoost } = root.LearningActivity || activity;
-    const usable = history.filter(e => e.kind === 'problem' && Number.isFinite(e.at) && (answered(e) || studyEvidence(e)));
+    const usable = history.filter(e => e.kind === 'problem' && Number.isFinite(e.at) && (answered(e) || studyEvidence(e,includePracticeSkips)));
     const latest = new Map();
     for (const e of usable.sort((a,b) => a.at - b.at)) {
       const key = e.canonicalId || e.item;
@@ -368,7 +371,7 @@
       if (!p) continue;
       const age = Math.max(0, now - e.at) / DAY;
       const weight = 0.5 ** (age / 30);
-      const evidence = studyEvidence(e);
+      const evidence = studyEvidence(e,includePracticeSkips);
       for (const target of studyTargets(p,includeCards)) {
         const key = target.kind + ':' + target.id;
         if (!rows.has(key)) rows.set(key, {...target, attempts:0, misses:0, recentAttempts:0,
@@ -390,18 +393,21 @@
     return {attempts, ranked};
   }
   function recommendations(history, lookup, now = Date.now()) {
-    return evidenceRows(history,lookup,now,false).ranked;
+    return evidenceRows(history,lookup,now).ranked;
   }
   function studyRecommendations(history, lookup, now = Date.now(), include = () => true) {
-    const {attempts, ranked} = evidenceRows(history,lookup,now,true);
-    const experienced = attempts >= 20;
+    const {attempts, ranked} = evidenceRows(history,lookup,now,{includeCards:true, includePracticeSkips:true});
+    // Single struggles help early on. Gradually discount them until the learner has enough
+    // results to rely on repeated evidence, then keep the same threshold.
+    const maturity = Math.min(attempts / 40, 1);
+    const minimumEvidence = 0.12 + 0.28 * maturity;
     const selected = [], shown = new Set();
     for (const row of ranked) {
       const latestAge = now - row.examples[0].at;
-      if (latestAge > (experienced ? 45 : 30) * DAY ||
-          row.recentStruggles < (experienced ? 2 : 1) ||
-          row.recentMisses < (experienced ? 0.4 : 0.2) || !include(row)) continue;
-      const examples = row.examples.map(e => e.canonicalId || e.item).sort().join(',');
+      const isolated = row.recentStruggles === 1;
+      const evidence = row.recentMisses * (isolated ? 1 - maturity : 1);
+      if (latestAge > (isolated ? 30 : 45) * DAY || evidence < minimumEvidence || !include(row)) continue;
+      const examples = row.kind + ':' + row.examples.map(e => e.canonicalId || e.item).sort().join(',');
       if (shown.has(examples)) continue;
       shown.add(examples);
       selected.push(row);

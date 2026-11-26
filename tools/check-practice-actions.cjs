@@ -23,13 +23,16 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const partial=await set(['2018-amc-10a-1','2018-amc-10a-2']);await p.locator('[data-practice-answer="A"]').click();await p.locator('#finish-practice').click();await dialog.locator('[value="ok"]').click();await p.locator('.practice-results').waitFor();assert.equal((await stored(partial)).status,'finished');assert.equal(await p.locator('[data-result-index]').count(),2);
  assert.match(await p.locator('.answer-breakdown-stats').innerText(), /0%\s+Accuracy on graded answers\s+50%\s+Unanswered/, 'accuracy excludes the unanswered problem');
  const notes = p.locator('.insight-notes');
+ await notes.getByText('Recommendations updated',{exact:true}).waitFor();
+ assert.equal(await notes.getByRole('heading',{name:'Recommended review'}).count(),0);
+ assert.equal(await notes.getByRole('button',{name:/refresh/i}).count(),0);
  const missedLink = notes.locator('[data-study-result] a[data-problem-preview]').first();
  await missedLink.waitFor();
  assert.match(await notes.locator('[data-study-result]').first().innerText(), /1 missed: /);
  assert.equal(await missedLink.getAttribute('href'), `#/practice/set/${partial}/review/1`);
  const typeFilter = notes.getByRole('combobox',{name:'Recommendation type'});
  await typeFilter.selectOption('card');
- await notes.getByText('No recent recommendations in this view.').waitFor();
+ assert((await notes.locator('[data-study-result] > strong').allInnerTexts()).every(text => /^(Formula|Method|Pattern) to revisit/.test(text)));
  await typeFilter.selectOption('topic');
  await missedLink.click();
  const marker = p.locator('.review-mistake'), steps = p.locator('.review-next');

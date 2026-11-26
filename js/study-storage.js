@@ -129,6 +129,7 @@
   }
   async function appendActivity(event) {
     await transaction(await ready(), [ACTIVITY], "readwrite", tx => putActivity(tx.objectStore(ACTIVITY), event));
+    if (event.type === "mistake") changed("mistake");
   }
   async function restore(arena, activity) {
     await importInto(await ready(), arena, activity);
