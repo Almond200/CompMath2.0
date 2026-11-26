@@ -5616,6 +5616,7 @@
   }
   async function wireHomeDashboard(board) {
     const progress = board.querySelector("[data-home-progress]");
+    const arenaLink = board.querySelector("[data-home-arena-link]");
     const recommendations = board.querySelector("[data-home-recommendations]");
     const arena = window.Arena;
     let arenaState;
@@ -5623,7 +5624,8 @@
       arenaState = await arena.read();
     } catch {
       if (!board.isConnected) return;
-      progress.innerHTML = '<p class="hp-empty">Arena progress is unavailable.</p><a class="hp-link" href="#/arena">View Arena</a>';
+      progress.innerHTML = '<p class="hp-empty">Arena progress is unavailable.</p>';
+      arenaLink.hidden = false;
       recommendations.innerHTML = '<p class="hp-empty">Study recommendations are unavailable.</p>';
       return;
     }
@@ -5641,8 +5643,9 @@
       return;
     }
     const provisional = [...stats.subjects.values()].some(subject => subject.wins < arena.SUBJECT_PROVISIONAL);
+    arenaLink.hidden = false;
     progress.innerHTML = `<div class="arena-big">${stats.overall.rating.toLocaleString()} <small>Elo</small></div><p class="arena-note">Overall rating${provisional ? " · Provisional" : ""}</p>
-      <div data-home-rating-trend></div><a class="hp-link" href="#/arena">View Arena ${uiIcon("arrow-right")}</a>`;
+      <div data-home-rating-trend></div>`;
     const trend = progress.querySelector("[data-home-rating-trend]");
     loadAssets("arena").then(() => {
       trend.innerHTML = window.ArenaView.ratingPreview(stats) || '<p class="hp-empty">Your rating trend starts after your first rated set.</p>';
@@ -5671,20 +5674,6 @@
     current.hash = "#/";
     return `<a class="back-link hm-preview-back" href="${escapeAttr(current.href)}">${uiIcon("arrow-left")} Current homepage</a>`;
   }
-  function homeDashboardTopHtml() {
-    return `<div class="hm-cols hm-dashboard-top">
-        ${dashboardContinueHtml()}
-        <section class="hm-sec hm-progress arena">
-          <h2 class="hm-h">Your progress</h2>
-          <div data-home-progress><p class="hp-empty">Loading Arena progress…</p></div>
-        </section>
-        <section class="hm-sec hm-study">
-          <h2 class="hm-h">Recommended for you</h2>
-          <div data-home-recommendations><p class="hp-empty">Loading study recommendations…</p></div>
-        </section>
-    </div>`;
-  }
-
   // The front page: what the app is, why it helps and how to use it, beside what helps today
   // (where you left off, the problem and card of the day, your library). The four spaces and
   // the search sit above both, so nothing needs a scroll to reach.
@@ -5733,16 +5722,26 @@
           ${spaceTile("learn", `${LEARN_SHELF.length} books`)}
           ${spaceTile("practice", nProblems)}
         </nav>
-        ${dashboard ? homeDashboardTopHtml() : ""}
         <div class="hm-cols">
           <div class="hm-main">
-            ${dashboard ? "" : landingRecentHtml()}
+            ${dashboard ? `${dashboardContinueHtml()}
+              <section class="hm-sec hm-study">
+                <h2 class="hm-h">Recommended for you</h2>
+                <div data-home-recommendations><p class="hp-empty">Loading study recommendations…</p></div>
+              </section>` : landingRecentHtml()}
             ${landingDailyHtml()}
             ${dashboard ? landingRecentHtml() : ""}
             ${newestCardsHtml()}
             ${problemsReady ? practiceGlanceHtml() : '<div class="hm-sec" data-home-practice><a class="hp-link" href="#/practice">Browse past contests</a></div>'}
           </div>
           <aside class="hm-rail">
+            ${dashboard ? `<section class="hm-sec hm-progress arena">
+              <div class="hm-h-row">
+                <h2 class="hm-h">Your progress</h2>
+                <a class="hm-more hm-more-arena" href="#/arena" data-home-arena-link hidden>View Arena ${uiIcon("arrow-right")}</a>
+              </div>
+              <div data-home-progress><p class="hp-empty">Loading Arena progress…</p></div>
+            </section>` : ""}
             <section class="hm-sec hm-textbooks">
               <div class="hm-h-row"><h2 class="hm-h">Textbooks</h2><a class="hm-more" href="#/learn">See all ${uiIcon("arrow-right")}</a></div>
               <div class="hm-books">${bookRows}</div>
