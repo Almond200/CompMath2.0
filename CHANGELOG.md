@@ -2,6 +2,8 @@
 
 **2026-11-25**
 
+- **Save and resume placement.** Replace Submit set during placement with Save and exit. Resume the same placement with drafts and checked answers saved.
+- **Practice review.** Show the copyright holder beneath the problem statement during review, matching Arena.
 - **Arena placement and results.** Show the live placement estimate and carry unfinished placement into the next set. Add dated chart readings and rating changes for the selected range. Arena and Practice share an answer breakdown bar. A first miss still counts for accuracy if the retry is blank, and unanswered rated problems can inform study recommendations. Warm-up aims about 200 Elo below the subject rating. Show source credit during review and run the Arena browser regression in CI.
 - **Arena ratings and review links.** Overall and subject charts offer four time ranges. Subject disclosures show the latest set's rating change and put their triangles after the names. Study links preview the problem and open the saved review. Session history links retain their default underline.
 - **Arena draws and Practice contests.** Rated Arena sets favor one fresh problem on a weaker topic when a match fits the selected subject and difficulty. Arena ratings have a floor of 0 Elo. The AMC and AIME group starts collapsed in Practice.
