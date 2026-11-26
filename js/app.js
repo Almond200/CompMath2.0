@@ -5655,8 +5655,7 @@
       if (!board.isConnected) return;
       const rated = history.filter(event => event.source === "arena" && event.session && event.reviewNumber);
       const rows = arena.studyRecommendations(rated, slug => PROBLEM_BY_SLUG[slug], Date.now(), row => studyItem(row)).slice(0, 2);
-      recommendations.innerHTML = rows.length ? `<p class="hp-empty">Based on your Arena results.</p>
-        <div class="hm-recommendations">${rows.map(row => {
+      recommendations.innerHTML = rows.length ? `<div class="hm-recommendations">${rows.map(row => {
           const example = row.examples[0];
           const review = "#/arena/review/" + encodeURIComponent(example.session) + "/" + example.reviewNumber;
           const practice = row.kind === "topic" ? topicPracticeLink(row.id) : cardPracticeLink(row.id, "Practice this card");
