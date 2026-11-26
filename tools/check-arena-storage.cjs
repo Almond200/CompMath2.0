@@ -177,6 +177,12 @@ async function check(browser) {
   assert.equal(await recommendations.getByRole('button',{name:/refresh/i}).count(),0);
   assert.equal(await recommendations.getByText('Recommendations updated',{exact:true}).count(),0);
   assert(await recommendations.getByText('Based on the problems you’ve worked on recently.').isVisible());
+  const historyLink = page.locator('.arena-history-row a').first();
+  await page.mouse.move(0,0);
+  assert.equal(await historyLink.evaluate(link => getComputedStyle(link).textDecorationLine),'none');
+  await historyLink.hover();
+  assert.equal(await historyLink.evaluate(link => getComputedStyle(link).textDecorationLine),'underline');
+  await page.mouse.move(0,0);
   await page.evaluate(() => {
     const history = LearningActivity.history;
     window.recommendationReads = 0;

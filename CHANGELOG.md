@@ -2,7 +2,7 @@
 
 **2026-11-26**
 
-- **Automatic study recommendations.** Show recommendations directly beneath set results. Refresh them automatically as study data changes and explain the source of the Arena study suggestions. Surface more guidance early, then gradually favor repeated recent struggles. Give study and rating-period dropdowns more space beside their chevrons.
+- **Automatic study recommendations.** Show recommendations directly beneath set results. Refresh them automatically as study data changes and explain the source of the Arena study suggestions. Surface more guidance early, then gradually favor repeated recent struggles. Give study and rating-period dropdowns more space beside their chevrons. Underline Contest history links on hover and keyboard focus.
 
 - **Mistake reasons.** Combine strategy choice and connecting steps, group misreading and calculation or logic slips under Careless mistake, and clarify when to mark Ran out of time. Saved reasons carry over to the combined categories.
 
