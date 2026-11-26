@@ -169,8 +169,9 @@ async function checkHistory() {
   assert.equal(partial.session.length,9,'only remaining placement problems are generated');
   A.openRound(partial,partial.session.id,[problem('fresh-placement')]);
   assert.equal(partial.session.length,9);
-  A.submitRound(partial,partial.session.id,()=>null);
-  assert.equal(A.ratings(partial.events).overall.count,3,'blank placement problems do not supply placement evidence');
+  assert.equal(A.submitRound(partial,partial.session.id,()=>null),false,'unfinished placement cannot submit');
+  assert.equal(partial.session.closed,false);
+  assert.equal(A.ratings(partial.events).overall.count,3,'legacy blank placement problems do not supply placement evidence');
   const answeredBackup = {...single.events[1],outcome:'correct',answer:'A',at:single.events[1].at+10};
   const withBlank = {...single, events:single.events.map(e=>e.slug==='mix-1'?{...e,outcome:'unanswered'}:e)};
   assert.equal(A.merge(withBlank,{version:1,events:[answeredBackup],session:null}).events.find(e=>e.slug==='mix-1').outcome,'correct');

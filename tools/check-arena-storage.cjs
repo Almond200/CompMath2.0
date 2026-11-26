@@ -327,35 +327,42 @@ async function checkPoolAndSubmission(browser) {
   await page.close();
 }
 
-async function checkPartialPlacement(browser) {
+async function checkPlacementResume(browser) {
   const page = await browser.newPage();
   await page.goto(base + '/#/arena');
   await page.locator('#arena-start').waitFor();
-  await page.evaluate(() => Arena.change(state => {
+  const initial = await page.evaluate(() => Arena.change(state => {
     Arena.start(state,'geo','matched',5);
     Arena.openRound(state,state.session.id,[{slug:'2018-amc-10a-1',identity:'2018-amc-10a-1',elo:950,subjects:['geo']}]);
   }));
   await page.goto(base + '/#/arena/session');
   await page.getByText('Current estimated Elo: ?', {exact:true}).waitFor();
+  assert.equal(await page.getByRole('button',{name:'Submit set',exact:true}).count(),0);
   await page.locator('[data-practice-answer="B"]').click();
+  await page.getByRole('button',{name:'Save and exit'}).click();
+  await page.getByRole('link',{name:'Resume placement'}).click();
+  await page.locator('[data-practice-answer="B"][aria-checked="true"]').waitFor();
   await page.getByRole('button',{name:'Submit answer'}).click();
   await page.locator('.arena-status[data-result="correct"]').waitFor();
   assert.match(await page.locator('[data-placement-elo]').innerText(), /^Current estimated Elo: [\d,]+$/);
-  await page.getByRole('button',{name:'Submit set'}).click();
-  await page.getByRole('dialog').getByRole('button',{name:'Submit set'}).click();
-  await page.getByRole('heading',{name:'Placement incomplete'}).waitFor();
-  await page.getByText('1 of 12 placement problems completed. Return to Arena to continue.').waitFor();
-  await page.getByRole('link',{name:'Arena overview'}).click();
-  await page.getByRole('button',{name:'Continue placement'}).click();
-  await page.locator('.arena-set-nav').waitFor();
-  assert.equal(await page.locator('.arena-set-nav .cn-num').count(),11);
-  assert.match(await page.locator('.arena-set-nav .practice-session-top p').innerText(), /^11 remaining · Current estimated Elo: [\d,]+$/);
+  await page.getByRole('button',{name:'Save and exit'}).click();
+  await page.getByText('1 of 12 placement problems completed').waitFor();
+  const saved = await page.evaluate(() => Arena.read());
+  assert.equal(saved.session.id,initial.session.id);
+  assert.equal(saved.session.closed,false);
+  assert.deepEqual(saved.events,[]);
+  await page.reload();
+  await page.getByRole('link',{name:'Resume placement'}).click();
+  await page.locator('.arena-status[data-result="correct"]').waitFor();
+  assert.equal(await page.locator('.arena-set-nav .cn-num').count(),12);
+  await page.getByRole('button',{name:'Next problem'}).click();
+  await page.getByRole('heading',{name:'Problem 2',exact:true}).waitFor();
   await page.close();
 }
 
 (async () => {
   const browser = await chromium.launch({...(process.env.CHROME ? {executablePath:process.env.CHROME} : {})});
-  try { await check(browser); await checkPoolAndSubmission(browser); await checkPartialPlacement(browser); }
+  try { await check(browser); await checkPoolAndSubmission(browser); await checkPlacementResume(browser); }
   finally { await browser.close(); }
   console.log('Arena storage, retries, subject filters, review links, external statements and automatic submission passed.');
 })().catch(error => { console.error(error); process.exitCode = 1; });
