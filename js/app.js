@@ -6173,7 +6173,7 @@
   function mistakeReviewHtml(eligible) {
     if (!eligible) return "";
     return `<details class="review-mistake"><summary>Mark your mistake <span data-mistake-selection>Optional</span></summary>
-      <p>Choose any reasons that fit to improve your study recommendations. Your Elo comes from your rated results. Select a reason again to clear it.</p>
+      <p>Choose any reasons that fit to improve your study recommendations. Only your rated results affect your Elo. Select a reason again to clear it.</p>
       <div class="review-mistake-options" role="group" aria-label="Mistake reasons">
         ${Object.entries(MISTAKE_REASONS).map(([id, [label, detail]]) =>
           `<button type="button" data-mistake-reason="${id}" aria-pressed="false" aria-disabled="true">
