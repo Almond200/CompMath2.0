@@ -87,8 +87,9 @@ assert.match(voided['2015-mmaths-individual-7'], /^Practice ruling\..*4\/7.*degr
 
 const hmmt2010 = Object.keys(window.MATH_STATEMENTS).filter(slug => /^2010-hmmt-february-/.test(slug));
 assert.equal(hmmt2010.length, 30);
-assert.deepEqual(hmmt2010.filter(slug => !practice.exactKey(slug)), ['2010-hmmt-february-combinatorics-8']);
-assert(voided['2010-hmmt-february-combinatorics-8']);
+const hmmt2010Voids = ['2010-hmmt-february-algebra-7', '2010-hmmt-february-combinatorics-8'];
+assert.deepEqual(hmmt2010.filter(slug => !practice.exactKey(slug)), hmmt2010Voids);
+assert(hmmt2010Voids.every(slug => voided[slug]));
 
 function check(slug, value, verdict) {
   const set = practice.create('Short-answer check', 'Any', [slug]);
@@ -97,6 +98,15 @@ function check(slug, value, verdict) {
 }
 
 const set = '2014-hmmt-february-algebra-1';
+for (const slug of ['2001-hmmt-february-advanced-topics-1', '2001-hmmt-february-algebra-1', '2001-hmmt-february-advanced-topics-3']) {
+  assert.match(practice.voidReason(slug), /^Practice ruling\./);
+}
+for (const slug of ['2001-hmmt-february-advanced-topics-8', '2001-hmmt-february-algebra-9']) {
+  check(slug, '9', 'Correct');
+  check(slug, '10', 'Incorrect');
+}
+check('2012-hmmt-february-algebra-9', '17', 'Correct');
+check('2012-hmmt-february-algebra-9', '18', 'Incorrect');
 check('2025-chmmc-individual-10', '6', 'Correct');
 check('2025-chmmc-individual-10', '7', 'Incorrect');
 assert.match(notes['2025-chmmc-individual-10'], /accepting 7.*6/);

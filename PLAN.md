@@ -11,6 +11,8 @@
 
 ## Current state (updated 2026-11-26)
 
+The HMMT audit covers all 1,220 indexed appearances. Its implementation updates 981 entries and includes verified statement and grading corrections. [HMMT archive tag audit](AUDITS.md#hmmt-archive-tag-audit-2026-11-26)
+
 Folded contest profiles and card practice problems show up to three available contests before offering Show more. Answer previews render grouped digits inside expressions while keeping list separators.
 
 The main navigation and homepage cards put Arena first, followed by Reference, Learn, and Practice.
