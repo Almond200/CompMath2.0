@@ -27,6 +27,10 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await missedLink.waitFor();
  assert.match(await notes.locator('[data-study-result]').first().innerText(), /1 missed: /);
  assert.equal(await missedLink.getAttribute('href'), `#/practice/set/${partial}/review/1`);
+ const typeFilter = notes.getByRole('combobox',{name:'Recommendation type'});
+ await typeFilter.selectOption('card');
+ await notes.getByText('No recent recommendations in this view.').waitFor();
+ await typeFilter.selectOption('topic');
  await missedLink.click();
  const marker = p.locator('.review-mistake'), steps = p.locator('.review-next');
  const defaultSteps = await steps.innerText();

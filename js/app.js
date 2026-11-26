@@ -6180,6 +6180,10 @@
             <strong>${label}</strong><span>${detail}</span></button>`).join("")}
       </div><p class="review-mistake-status" role="status"></p></details>`;
   }
+  function studyTypeFilterHtml() {
+    return `<select class="study-filter" data-study-type aria-label="Recommendation type">
+      <option value="all">All resources</option><option value="topic">Topics</option><option value="card">Cards</option></select>`;
+  }
   function reviewRefreshHtml() {
     return `<button type="button" class="hp-btn hp-btn-soft review-refresh" data-refresh-study aria-label="Refresh study recommendations" title="Refresh study recommendations">${uiIcon("refresh")}</button>`;
   }
@@ -6329,7 +6333,7 @@
     }
     return null;
   }
-  function resultStudyNotes(history, source, setId, outcomes, reviewUrl) {
+  function resultStudyNotes(history, source, setId, outcomes, reviewUrl, type) {
     const key = item => item.kind + ":" + item.id;
     const indices = new Map(outcomes.map(([slug],i) => [slug,i]));
     const localEvidence = new Map();
@@ -6344,7 +6348,7 @@
       }
     }
     const rows = window.Arena.studyRecommendations(history, slug => PROBLEM_BY_SLUG[slug], Date.now(),
-      row => localEvidence.has(key(row)) && studyItem(row));
+      row => (type === "all" || row.kind === type) && localEvidence.has(key(row)) && studyItem(row));
     return rows.map(row => {
       const item = studyItem(row), evidence = localEvidence.get(key(row));
       const groups = [["incorrect","missed"],["correct","needed a second try"],["unanswered","unanswered"]];
@@ -6371,22 +6375,24 @@
     if (!notes) return;
     const list = notes.querySelector("[data-study-items]");
     const refresh = notes.querySelector("[data-refresh-study]");
-    let rendered = list.innerHTML, loading = false;
-    const show = history => {
+    const type = notes.querySelector("[data-study-type]");
+    let rendered = list.innerHTML, loading = false, history = initial || [];
+    const show = () => {
       if (!list.isConnected) return;
-      const html = resultStudyNotes(history, source, setId, outcomes, reviewUrl);
+      const items = resultStudyNotes(history, source, setId, outcomes, reviewUrl, type.value);
+      if (items) notes.hidden = false;
+      const html = items || "<p>No recent recommendations in this view.</p>";
       if (html !== rendered) {
         rendered = html;
         list.innerHTML = html;
         renderMath(list);
       }
-      notes.hidden = !html;
     };
     const load = async () => {
       if (loading) return;
       loading = true;
       refresh.setAttribute("aria-disabled","true");
-      try { show(await loadHistory()); }
+      try { history = await loadHistory(); show(); }
       catch {
         rendered = null;
         if (list.isConnected) list.textContent = "Study recommendations are unavailable.";
@@ -6394,7 +6400,8 @@
       finally { loading = false; refresh.setAttribute("aria-disabled","false"); }
     };
     refresh.addEventListener("click", load);
-    if (initial) show(initial);
+    type.addEventListener("change", show);
+    if (initial) show();
     else load();
   }
   function practiceInsightsHtml(set, outcomes, counts, reviewUrl, breakdown) {
@@ -6429,7 +6436,8 @@
       ${bars ? `<section><h3>Correct by subject</h3>${bars}</section>` : ''}
       <section><h3>Results by problem</h3><div class="insight-cells">${sequence}</div></section></div>
       <div class="insight-legend">${legend}</div><div class="insight-notes"><div data-result-study hidden>
-        <div class="review-next-heading"><h4>Recommended review</h4>${reviewRefreshHtml()}</div><div data-study-items aria-live="polite"></div>
+        <div class="study-header"><div class="review-next-heading"><h4>Recommended review</h4>${reviewRefreshHtml()}</div>
+          ${studyTypeFilterHtml()}</div><div data-study-items aria-live="polite"></div>
       </div>${highestSolveHtml(outcomes,reviewUrl)}</div></div>`;
   }
   function practiceResultRow({href, index, number, problem, summary, result}) {
@@ -7034,7 +7042,7 @@
         () => activity.history({kind:"problem", arenaState:state}), initial),
       reviewExplanation: practiceExplanationHtml,
       mistakeReviewHtml: (outcome, retry) => mistakeReviewHtml(activity.canMarkMistake(outcome, retry)),
-      nextStepsHtml, wireMistakeReview, reviewRefreshHtml, studyItem,
+      nextStepsHtml, wireMistakeReview, reviewRefreshHtml, studyTypeFilterHtml, studyItem,
       studyCardPractice: id => cardPracticeLink(id, "Practice this card"),
       loadExplanation: p => Promise.all(solutionRequirements([p.year])),
       showPrompt: (p, hideCredit) => showStatement(p, ".arena-st", true, hideCredit),

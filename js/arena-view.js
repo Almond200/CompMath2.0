@@ -250,8 +250,8 @@
     const established = ctx.roots.filter(root => stats.subjects.get(root.id)?.wins >= A.SUBJECT_PROVISIONAL).length;
     let studyHistory = history;
     const reviews = new Map(history.filter(hasArenaReview).map(event => [event.item,event]));
-    const studyRows = (subject = 'all') => A.studyRecommendations(studyHistory, ctx.lookup, Date.now(), row =>
-      ctx.studyItem(row) && row.examples.some(event => hasArenaReview(event) &&
+    const studyRows = (subject = 'all', type = 'all') => A.studyRecommendations(studyHistory, ctx.lookup, Date.now(), row =>
+      (type === 'all' || row.kind === type) && ctx.studyItem(row) && row.examples.some(event => hasArenaReview(event) &&
         (subject === 'all' || ctx.subjectsOf(ctx.lookup(event.item)).includes(subject))));
     const initialStudy = studyHtml(ctx,studyRows());
     const postPlacement = stats.points.filter(point => !point.calibration);
@@ -291,9 +291,9 @@
           return `<tr><th scope="row"><button type="button" class="arena-subject-toggle" data-subject-toggle aria-expanded="false" aria-controls="arena-subject-${id}">${label}</button></th><td>${placed && r ? number(r.rating) : '—'}${placed && r && r.wins < A.SUBJECT_PROVISIONAL ? '<small>Provisional</small>' : ''}</td>
           <td>${accuracy(stats.points.filter(p => hasAnswer(p.event) && p.event.subjects.includes(id)))}</td></tr>
           <tr class="arena-subject-details" id="arena-subject-${id}" data-subject="${id}" hidden><td colspan="3">${subjectDetails(ctx,id,label,stats,reviews)}</td></tr>`; }).join('')}</tbody></table></div></section>
-      <section class="sh-section" id="arena-study"><div class="arena-study-head"><div class="review-next-heading"><h3>What to study</h3>${ctx.reviewRefreshHtml()}</div>
-        <select class="arena-study-filter" aria-label="Study recommendation subject"><option value="all">All subjects</option>
-          ${[...opts].map(([id,label]) => `<option value="${id}">${label}</option>`).join('')}</select></div>
+      <section class="sh-section" id="arena-study"><div class="study-header"><div class="review-next-heading"><h3>What to study</h3>${ctx.reviewRefreshHtml()}</div>
+        <div class="study-filters"><select class="study-filter" data-study-subject aria-label="Study recommendation subject"><option value="all">All subjects</option>
+          ${[...opts].map(([id,label]) => `<option value="${id}">${label}</option>`).join('')}</select>${ctx.studyTypeFilterHtml()}</div></div>
         <div data-study-items aria-live="polite">${initialStudy}</div></section>
       <section class="sh-section" id="arena-history"><h3>Contest history</h3><div id="arena-history-list"></div><button type="button" class="hp-btn hp-btn-soft" data-arena-history-toggle aria-controls="arena-history-list" aria-expanded="false" hidden>Show all</button></section></div>`;
     const overallPlot = ctx.container.querySelector('#arena-overview [data-rating-plot]');
@@ -327,18 +327,20 @@
     reportTarget();
     startForm?.addEventListener('change', reportTarget);
     const study = ctx.container.querySelector('#arena-study');
-    const filter = study.querySelector('.arena-study-filter');
+    const subject = study.querySelector('[data-study-subject]');
+    const type = study.querySelector('[data-study-type]');
     const refresh = study.querySelector('[data-refresh-study]');
     const list = study.querySelector('[data-study-items]');
     let displayed = initialStudy, loadingStudy = false;
     const updateStudy = () => {
-      const html = studyHtml(ctx,studyRows(filter.value));
+      const html = studyHtml(ctx,studyRows(subject.value,type.value));
       if (html === displayed) return;
       displayed = html;
       list.innerHTML = html;
       ctx.renderMath(list);
     };
-    filter.onchange = updateStudy;
+    subject.onchange = updateStudy;
+    type.onchange = updateStudy;
     refresh.onclick = async () => {
       if (loadingStudy) return;
       loadingStudy = true;

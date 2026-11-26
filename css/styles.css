@@ -4961,8 +4961,9 @@ body:is([data-space="learn"], [data-space="practice"], [data-space="arena"]) .la
 .arena .arena-set-nav .cn-here[data-result="Incorrect"] { border-color: #b7444e; }
 .arena .arena-result-status[data-result="incorrect"] { color: var(--text); font-weight: 650; }
 
-.arena-study-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-.arena-study-filter { padding: 5px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-card); color: var(--text); font: inherit; }
+.study-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.study-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.study-filter { padding: 5px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-card); color: var(--text); font: inherit; }
 .arena .arena-set-nav .cn-num[data-result="Incorrect"] { color: var(--text); }
 .arena .arena-set-nav .cn-num[data-retry]:not(:hover) { color: var(--accent); }
 .arena-resume { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; }
