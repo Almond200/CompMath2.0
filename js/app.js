@@ -6426,7 +6426,7 @@
     }
     const now = source === "practice" ? relevantHistory[0]?.at ?? Date.now() : Date.now();
     const rows = window.Arena.studyRecommendations(relevantHistory, slug => PROBLEM_BY_SLUG[slug], now,
-      row => localEvidence.has(key(row)) && studyItem(row));
+      row => localEvidence.has(key(row)) && studyItem(row)).slice(0, 3);
     return rows.map(row => {
       const item = studyItem(row), evidence = localEvidence.get(key(row));
       const groups = [["incorrect","missed"],["correct","needed a second try"],["unanswered","unanswered"]];
@@ -6642,7 +6642,7 @@
           ${paper ? `<div class="practice-self">${p.solUrl && !inlinePaper ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
           ${practiceExplanationHtml(p, !paper || !!inlinePaper)}${p && !voidNote ? nextStepsHtml(p) : ""}`
           : voidNote ? `<p class="prob-note">Voided · ${escapeAttr(voidNote)}</p>`
-          : p ? `<div class="practice-answer"><h4>Your answer</h4>${typedAnswer ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? exactLabel : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${aime && !paper ? 'numeric' : 'text'}" maxlength="${paper ? '60' : '120'}" autocomplete="off" aria-describedby="practice-answer-error" value="${escapeAttr(set.answers[slug] || '')}">${practiceMathKeysHtml()}` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
+          : p ? `<div class="practice-answer"><h4>Your answer</h4>${typedAnswer ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exactLabel}</label><input id="practice-answer" type="text" maxlength="${paper ? '60' : '120'}" autocomplete="off" aria-describedby="practice-answer-error" value="${escapeAttr(set.answers[slug] || '')}">${practiceMathKeysHtml()}` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
       </section></div>`;
     const redraw = () => {
@@ -6730,7 +6730,8 @@
       const valid = practiceSessions.answer(set, slug, e.target.value, aime);
       if(set.status==='finished'){savePractice();renderTopicPracticeSet();return;}
       e.target.setAttribute('aria-invalid', String(!valid));
-      $content.querySelector('#practice-answer-error').textContent = valid ? '' : paper ? 'Use at most 60 characters. This value has not been saved.' : (exact ? 'This answer format isn’t supported. ' + (set.answers[slug] ? 'Your previous answer is still saved.' : 'This answer hasn’t been saved.') : 'Use an integer from 000 to 999. This value has not been saved.');
+      $content.querySelector('#practice-answer-error').textContent = valid ? '' : paper ? 'Use at most 60 characters. This value has not been saved.' :
+        'This answer format isn’t supported. ' + (set.answers[slug] ? 'Your previous answer is still saved.' : 'This answer hasn’t been saved.');
       if (valid) { schedulePracticeSave(); syncAnswerUI(); }
       else if (clearAnswer) clearAnswer.disabled = !e.target.value && !set.answers[slug];
     });

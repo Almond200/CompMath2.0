@@ -4952,7 +4952,7 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 /* Keep chapter navigation in the book header when study sidebars are hidden. */
 [data-study-sidebars="hide"] body[data-space="learn"] .bk-view { grid-template-columns: minmax(0, 1fr); gap: 0; }
 [data-study-sidebars="hide"] body[data-space="learn"] .bk-rail { display: none; }
-.arena [data-arena-history-toggle][hidden] { display: none; }
+.arena :is([data-arena-history-toggle], [data-arena-study-toggle], #arena-study-filters)[hidden] { display: none; }
 
 /* Selections in study forms use a quiet tint; the submit action keeps the solid fill. */
 body:is([data-space="practice"], [data-space="arena"]) .rand-btns button { background: var(--bg-card); }

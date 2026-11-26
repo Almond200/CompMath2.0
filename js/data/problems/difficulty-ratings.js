@@ -3,7 +3,7 @@
 window.MATH_PROBLEM_RATINGS = {
   "meta": {
     "url": "https://live.poshenloh.com/past-contests/difficulty",
-    "retrieved": "2026-11-21",
+    "retrieved": "2026-11-26",
     "sourceCount": 6600,
     "liveCount": 6600,
     "manualCount": 12856,
@@ -9630,7 +9630,7 @@ window.MATH_PROBLEM_RATINGS = {
     "2014-bmt-geometry-4": {"elo":3160,"source":"manual"},
     "2014-bmt-geometry-5": {"elo":3100,"source":"manual"},
     "2014-bmt-geometry-6": {"elo":2080,"source":"manual"},
-    "2014-bmt-geometry-7": {"elo":2610,"source":"manual"},
+    "2014-bmt-geometry-7": {"elo":2400,"source":"manual"},
     "2014-bmt-geometry-8": {"elo":2560,"source":"manual"},
     "2014-bmt-geometry-9": {"elo":3220,"source":"manual"},
     "2014-calgary-junior-math-contest-1": {"elo":50,"source":"manual"},

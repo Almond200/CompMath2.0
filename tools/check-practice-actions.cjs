@@ -215,6 +215,8 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.deepEqual(await p.locator('[data-result-index] [data-result]').allInnerTexts(),['Correct','Correct']);
  for(const slug of ['2018-aime-i-1','2019-hmmt-february-geometry-1']){
   const numeric=await set([slug],slug.includes('hmmt'));const input=p.locator('#practice-answer');
+  assert.equal(await p.locator('label[for="practice-answer"]').innerText(),'Exact value (fractions, sqrt, pi, !)');
+  assert.notEqual(await input.getAttribute('inputmode'),'numeric');
   await input.scrollIntoViewIfNeeded();
   const r=await input.boundingBox();
   for(const [x,y] of [[r.x-4,r.y+r.height/2],[r.x+r.width+4,r.y+r.height/2],[r.x+r.width/2,r.y-4],[r.x+r.width/2,r.y+r.height+4],[r.x+r.width-5,r.y-15]]){

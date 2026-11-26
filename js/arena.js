@@ -121,12 +121,12 @@
     return Math.min(deadline, session.round.submitAt ?? session.updated + 3000);
   }
   function problemMinutes(elo) {
-    if (elo < 1000) return 2;
-    if (elo < 1600) return 3;
-    if (elo < 2200) return 5;
-    if (elo < 2800) return 8;
-    if (elo < 3400) return 12;
-    return 15;
+    if (elo < 1000) return 3;
+    if (elo < 1600) return 4;
+    if (elo < 2200) return 6;
+    if (elo < 2800) return 10;
+    if (elo < 3400) return 15;
+    return 20;
   }
   function roundItem(problem, saved) {
     return {slug:problem.slug, identity:canonical(problem.identity), elo:problem.elo, subjects:problem.subjects,
@@ -431,7 +431,6 @@
       if (shown.has(examples)) continue;
       shown.add(examples);
       selected.push(row);
-      if (selected.length === 3) break;
     }
     return selected;
   }
