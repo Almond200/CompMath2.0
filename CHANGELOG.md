@@ -2,6 +2,8 @@
 
 **2026-11-26**
 
+- **Textbooks.** Revise AMC Geometry S8, Solids. Derive volume and area using cross sections and unfolding, correct the rule for opposite faces in cube nets, and prove the minimum surface distance between opposite corners of a box. Add eleven diagrams and seven review problems, expand the existing worked solutions, and keep all 52 contest placements.
+
 - **Textbooks.** Revise AMC Geometry S7, Coordinates and transformations. Derive coordinate distances, the shoelace formula and Pick's theorem, and explain how reflections solve shortest-path and folding problems. Add eleven diagrams and seven review problems, expand the existing worked solutions, and keep all 61 contest placements. Regenerate the AMC Geometry end-of-book notes and Learn summary.
 
 - **Arena pacing.** Give each rated problem 3 to 20 minutes based on Elo. A three-question set around 2,650 Elo gets 30 minutes.

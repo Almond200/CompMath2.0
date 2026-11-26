@@ -11,7 +11,7 @@
 
 ## Current state (updated 2026-11-26)
 
-Textbook revision resumed on `codex/counting-r3-revision`. AMC Geometry S7, Coordinates and transformations, brings the total to 38 of 103 teaching chapters revised. AMC Geometry S8, Solids, is next. [Textbook revision](TEXTBOOK-REVISION.md)
+The textbook goal covers all 103 teaching chapters on `codex/counting-r3-revision`. AMC Geometry S8, Solids, brings the total to 39 revised. AMC Geometry S9, Advanced triangles and circles, is next. [Textbook revision](TEXTBOOK-REVISION.md)
 
 Folded contest profiles and card practice problems show up to three available contests before offering Show more. Answer previews render grouped digits inside expressions while keeping list separators.
 
@@ -171,7 +171,7 @@ The model (the owner's blueprint, "Learn + Practice for Competition Math Referen
    - T4b, **done 2026-11-11** (owner marked it done): the chips derived from card topics are retired from problem pages and contest pages, and a problem's tree filings are shown in the app as the Topic section (a small tree per subject, each box opening Problems by topic);
    - T5, topic labels on problems, **done 2026-11-11** (owner marked it done): the same Topic section, on a problem's page and in practice review;
    - T6, the tree in contest profiles, **done 2026-11-11**: card profiles show top tree nodes, ratings, contests and periods; every topic's Problems by topic page has a Topic profile (figures, contests, ratings, periods, the cards its problems cite most). Step T is complete (the Methods-card practice targets arrived as Practice a card on 2026-11-11).
-2. **Review and revise the written content.** The November 26 restart uses `codex/counting-r3-revision` for successive batches. AMC Geometry S7 brings the total to 38 of 103 revised chapters. Continue with AMC Geometry S8. Develop each lesson as a connected mathematical explanation with definitions, justifications, examples and conditions. Use Olympiad Geometry O3 to O7 as the model. Review the worked solutions and use diagrams to explain constructions and relationships. [Textbook revision](TEXTBOOK-REVISION.md)
+2. **Review and revise the written content.** The November 26 restart uses `codex/counting-r3-revision` for successive batches. AMC Geometry S8 brings the total to 39 of 103 revised chapters. Continue with AMC Geometry S9. Develop each lesson as a connected mathematical explanation with definitions, justifications, examples and conditions. Use Olympiad Geometry O3 to O7 as the model. Review the worked solutions and use diagrams to explain constructions and relationships. [Textbook revision](TEXTBOOK-REVISION.md)
 3. **Polish the experience.** Review search, navigation, readability and mobile usability across Learn, Formulas, Methods, Patterns and Practice. Follow real study paths between spaces, including a reader returning to an open solution or following a card to its lesson.
 4. **Consider small study features.** Practice a topic now has locally saved sessions and a problem-by-problem review interface, with automatic grading and no timer; the owner-requested Practice a contest adds timed past papers and generated mocks (MOCK-CONTESTS.md). Remaining possibilities include reviewing study history and sharing lists. Practice sets should help readers choose and work through problems at their own pace. Competitive contests, rankings and account systems are outside this roadmap.
 
