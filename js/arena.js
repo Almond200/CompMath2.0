@@ -2,6 +2,7 @@
 // difficulty also makes backups from two devices mergeable without adding their Elo.
 (function (root) {
   'use strict';
+  const activity = typeof module === 'undefined' ? null : require('./learning-activity');
   const KEY = 'mq-arena', BASE = 1500;
   const PLACEMENT_SIZE = 10, LEGACY_PLACEMENT_SIZE = 12, SUBJECT_PROVISIONAL = 6;
   const SUBJECTS = ['alg','cp','geo','nt'];
@@ -339,11 +340,13 @@
     return best;
   }
   function recommendations(history, lookup, now = Date.now()) {
+    const { mistakeBoost } = root.LearningActivity || activity;
     const latest = new Map();
     for (const e of history) {
       if (e.kind !== 'problem') continue;
       const id = e.canonicalId || e.item;
-      if (answered(e) || !latest.has(id) && e.source === 'arena' && !e.placement && e.outcome === 'unanswered') latest.set(id,e);
+      const skipped = e.outcome === 'unanswered' && (e.source === 'arena' && !e.placement || mistakeBoost(e.mistake));
+      if (answered(e) || skipped && !latest.has(id)) latest.set(id,e);
     }
     const rows = new Map();
     const recent = [...latest.values()].sort((a, b) => b.at - a.at).slice(0, 60);
@@ -358,7 +361,8 @@
         row.recentAttempts += weight;
         if (e.outcome !== 'correct' || e.retry) {
           if (e.outcome === 'incorrect') row.misses++;
-          row.recentMisses += weight * (e.outcome === 'incorrect' ? 1 : e.retry ? 0.5 : 0.25);
+          const evidence = e.outcome === 'incorrect' ? 1 : e.retry ? 0.5 : 0.25;
+          row.recentMisses += weight * evidence * (1 + mistakeBoost(e.mistake));
           row.missedSlug ||= e.item;
           if (row.examples.length < 3) row.examples.push(e);
         }

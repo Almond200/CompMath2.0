@@ -216,8 +216,11 @@
   function studyRowsHtml(ctx, rows) {
     return `<div class="arena-study-list">${rows.map(r => {
       const lesson = ctx.studyLink(r.id, r.missedSlug), practice = ctx.practiceLink(r.id);
+      const marked = r.examples.find(event => event.mistake);
+      const advice = marked && ctx.mistakeAdvice(marked.mistake);
       return `<article class="arena-study-row"><div><h4>${ctx.topicLabel(ctx.nodes.get(r.id))}</h4>
-        <p class="arena-note">${studyReasonHtml(ctx,r.examples)}</p></div>
+        <p class="arena-note">${studyReasonHtml(ctx,r.examples)}</p>
+        ${advice ? `<p class="arena-note">You marked <strong>${advice.label}</strong>. ${advice.steps[0]}</p>` : ''}</div>
         <ul class="study-links">
           ${lesson ? `<li><span>Study</span>${lesson}</li>` : ''}
           ${practice ? `<li><span>Practice</span>${practice}</li>` : ''}
@@ -407,10 +410,12 @@
     const accepted = acceptedAnswer(ctx,slug);
     return first + response + (reveal && outcome !== 'correct' && accepted ? ' · Accepted answer ' + accepted : '');
   }
-  async function review(ctx, state, stats, route) {
+  async function review(ctx, state, stats, route, history) {
     const id = route.review;
     const events = state.events.filter(e => e.session === id);
     if (!events.length || state.session?.id === id && !state.session.closed) { location.replace(homeUrl); return; }
+    const marks = new Map(history.filter(e => e.source === 'arena' && e.session === id && e.mistake)
+      .map(e => [e.item,e.mistake]));
     const points = stats.points.filter(p => p.event.session === id);
     const placement = events.some(e => e.placement) || (points.length > 0 && points.every(p => p.calibration));
     const startedHere = stats.baseline?.event.session === id;
@@ -439,13 +444,17 @@
             `<div class="arena-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>`}</section>
         <section class="sh-section practice-review detail"><h3>Your answer</h3>
           <p class="practice-result">${statusLabel(event.outcome)}${event.outcome !== 'seen' ? ' · ' + responseText(ctx,event) : ''}</p>
-          <div data-arena-explanation></div>
+          ${p ? ctx.mistakeReviewHtml(event.outcome, !!event.firstMiss) : ''}
+          <div data-arena-explanation></div>${p ? ctx.nextStepsHtml() : ''}
           <div class="practice-problem-nav">${navButton('Previous',index && detailUrl(index-1))}
           ${navButton('Next',index+1 < events.length && detailUrl(index+1))}</div></section></div>`;
       const explanation = ctx.container.querySelector('[data-arena-explanation]');
       ctx.container.querySelector('.practice-question h3').focus({preventScroll:true});
       ctx.renderMath(ctx.container);
       if (!p) return;
+      ctx.wireMistakeReview(explanation.parentElement,p, {
+        source:'arena', setId:id, outcome:event.outcome, retry:!!event.firstMiss, initial:marks.get(event.slug) || ''
+      });
       if (!event.external) ctx.showPrompt(p);
       try {
         await ctx.loadExplanation(p);
@@ -480,7 +489,7 @@
     ].filter(Boolean).join(' ');
     ctx.container.innerHTML = ctx.reviewResults({back:back(ctx), title, subtitle, arena:true, stats:figures, rows,
       reviewUrl:detailUrl(0), insights:ctx.reviewInsights(outcomes,counts,detailUrl,
-        arenaAnswerBreakdown(ctx,events,'Accuracy on submitted answers')),
+        arenaAnswerBreakdown(ctx,events,'Accuracy on submitted answers'),marks),
       intro:ratingChange, meta:note ? `<p class="practice-results-meta">${note}</p>` : ''});
     const heading = ctx.container.querySelector('h1');
     heading.tabIndex = -1;
@@ -910,7 +919,7 @@
       watchDeadline(ctx,state.session);
       const stats = A.ratings(state.events, state.session?.placement && !state.session.closed ? state.session.id : null);
       const s = state.session;
-      if (route.review) await review(ctx,state,stats,route);
+      if (route.review) await review(ctx,state,stats,route,history);
       else if (!route.playing) dashboard(ctx,state,stats,history);
       else if (!s) location.replace(homeUrl);
       else if (s.closed && !s.last) {

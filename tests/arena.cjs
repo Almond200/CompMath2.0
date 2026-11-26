@@ -227,6 +227,18 @@ async function checkHistory() {
     {kind:'problem',source:'arena',item:'missed',outcome:'incorrect',at:nowForStudy},
   ],id => ({tree:[id]}),nowForStudy);
   assert.deepEqual(skippedStudy.map(topic => topic.id),['missed','skipped']);
+  const equallyRecent = [
+    {kind:'problem',source:'arena',item:'unmarked',outcome:'incorrect',at:nowForStudy},
+    {kind:'problem',source:'practice',item:'slip',outcome:'incorrect',mistake:'accuracy',at:nowForStudy},
+    {kind:'problem',source:'arena',item:'gap',outcome:'incorrect',mistake:'concept',at:nowForStudy},
+    {kind:'problem',source:'practice',item:'ran-out',outcome:'unanswered',mistake:'timing',at:nowForStudy},
+  ];
+  const markedStudy = A.recommendations(equallyRecent,id => ({tree:[id]}),nowForStudy);
+  assert.deepEqual(markedStudy.map(r => r.id),['gap','slip','unmarked','ran-out']);
+  assert.equal(markedStudy[2].recentMisses,1,'unmarked misses keep their usual weight');
+  assert.equal(markedStudy[0].misses,1,'marking strengthens one result without creating another attempt');
+  const firstTryOnly = A.recommendations([{...equallyRecent[2],outcome:'correct'}],id => ({tree:[id]}),nowForStudy);
+  assert.equal(firstTryOnly.length,0,'an obsolete label on a first-try solve is ignored');
   console.log('Arena placement, Elo, independent subjects, options, known problems, shared activity, recommendations and backup merging passed.');
 }
 checkHistory().catch(error => { console.error(error); process.exitCode = 1; });

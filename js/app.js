@@ -1409,10 +1409,12 @@
         return { type: "home", section: { id: sec.id, sub: i, topic: null, cluster: g >= 0 ? g : null } };
       }
     }
-    if (/^#\/practice\/set(?:\/[^/]+(?:\/review)?)?$/.test(location.hash)) return { type: "space", name: "practice", practiceSet: true };
-    m = location.hash.match(/^#\/practice\/(card|topic)\/([\w.-]+)$/);
+    m = location.hash.match(/^#\/practice\/set(?:\/([^/]+)(?:\/(review)(?:\/(\d+))?)?)?$/);
+    if (m) return { type: "space", name: "practice", practiceSet: true,
+      practiceSetId: m[1], practiceReview: !!m[2], practiceReviewIndex: m[3] == null ? null : Number(m[3]) - 1 };
+    m = location.hash.match(/^#\/practice\/(card|topic)\/([\w.-]+)(?:\?similar=([\w.-]+))?$/);
     if (m && (m[1] === "card" ? BY_ID[m[2]] : TOPIC_NODES.has(m[2]))) {
-      return { type: "space", name: "practice", practiceMode: m[1], practiceId: m[2] };
+      return { type: "space", name: "practice", practiceMode: m[1], practiceId: m[2], similarTo: m[1] === "topic" ? m[3] : undefined };
     }
     if (location.hash === "#/practice/contests") return { type: "space", name: "practice", practiceAnchor: "pr-contests" };
     if (location.hash === "#/arena") return { type: "space", name: "arena" };
@@ -6158,9 +6160,165 @@
     lists.forEach(list => practiceHistoryObserver.observe(list));
     update();
   }
+  const MISTAKE_REASONS = {
+    concept: { label: "Missing concept", detail: "I didn’t know a concept, formula, or theorem I needed.", resources: ["lesson", "formula", "practice"], steps: [
+      "Review the underlying concept and explain in your own words when it applies.",
+      "Work through one example with the formula in front of you. Then try to recall it and solve a similar problem."
+    ] },
+    recognition: { label: "Choosing a strategy", detail: "I knew the math but didn’t spot when to use it.", resources: ["pattern", "solution", "practice"], steps: [
+      "Find the clue in the question that points to the strategy used in the solution.",
+      "Look at a similar problem and name the strategy you’d use before doing any calculations."
+    ] },
+    reasoning: { label: "Connecting the steps", detail: "I had some ideas but couldn’t turn them into a solution.", resources: ["method", "solution", "practice"], steps: [
+      "Read the first step of the solution, then cover the rest and see if you can finish.",
+      "Work backward from what the question asks. Write down what you’d need to know one step earlier."
+    ] },
+    accuracy: { label: "Calculation or logic slip", detail: "My approach made sense, but I made an error carrying it out.", resources: ["answer", "solution"], steps: [
+      "Find the first line where your work went off track. Redo that step and check your answer a second way.",
+      "Check the detail that caused the slip, such as a sign, a boundary case, or a repeated count."
+    ] },
+    timing: { label: "Ran out of time", detail: "I needed more time to find or finish an approach.", resources: ["matched", "solution"], steps: [
+      "Finish the problem untimed first. On a similar problem, give yourself a short checkpoint to decide whether to continue or move on.",
+      "Identify the step that took the most time. See if the solution has a shortcut you could use next time."
+    ] },
+    reading: { label: "Misread the question", detail: "I misunderstood or missed a condition or what the problem asked for.", resources: ["statement", "practice"], steps: [
+      "Restate what the problem asks for and list its conditions before you solve it again.",
+      "Check whether your answer satisfies every condition and uses the requested units or format."
+    ] },
+    unsure: { label: "Something else or not sure", detail: "None of these fits, or I haven’t found where I got stuck.", resources: ["solution", "practice"], steps: [
+      "Compare your attempt with the solution one step at a time to find where your reasoning diverged.",
+      "Try the problem again and write down the first step you’re unsure about."
+    ] }
+  };
+  const REVIEW_STEPS = {
+    incorrect: MISTAKE_REASONS.unsure.steps,
+    unanswered: ["Try the problem untimed and write down a first step before you read the solution.",
+      "Read only enough of the solution to get started, then see how far you can go on your own."],
+    retry: ["Compare both attempts and identify the change that made the second one work.",
+      "Try a similar problem and check the step you changed on your second attempt."],
+    correct: ["Try a related problem to see if the same approach works.",
+      "Explain why your approach works, then look for a different way to solve the problem."],
+    other: ["Use the solution to check your approach or find a way to get started.",
+      "Try a related problem to practice the same idea."]
+  };
+  function mistakeReviewHtml(eligible) {
+    if (!eligible) return "";
+    return `<details class="review-mistake"><summary>Mark your mistake <span data-mistake-selection>Optional</span></summary>
+      <p>What got in your way? Select one reason. Select it again to clear it.</p>
+      <div class="review-mistake-options" role="group" aria-label="Mistake reason">
+        ${Object.entries(MISTAKE_REASONS).map(([id, reason]) =>
+          `<button type="button" data-mistake-reason="${id}" aria-pressed="false" aria-disabled="true">
+            <strong>${reason.label}</strong><span>${reason.detail}</span></button>`).join("")}
+      </div><p class="review-mistake-status" role="status"></p></details>`;
+  }
+  function nextStepsHtml() {
+    return `<div class="review-next chain-study">
+      <div class="review-next-heading"><h4 class="chain-study-h">Next steps</h4>
+        <button type="button" class="hp-btn hp-btn-soft" data-refresh-steps aria-label="Refresh next steps">Refresh</button>
+      </div><div data-next-steps aria-live="polite"></div></div>`;
+  }
+  function reviewResources(p) {
+    const cards = [...new Set([...p.formulas, ...p.trickFormulas])].filter(id => BY_ID[id]);
+    const path = [...topicPath(p.tree[0])].reverse();
+    const lessons = cards.map(id => lessonForCard(id, p.fam === "AIME")).filter(Boolean);
+    if (!lessons.length) {
+      for (const node of path) {
+        const related = (window.MATH_LESSON_LINKS.topic[node.id] || []).map(code => lessonLocations.get(code)).filter(Boolean);
+        if (related.length) { lessons.push(...related); break; }
+      }
+    }
+    const ofKind = kind => cards.filter(id => kindOf(BY_ID[id].formula) === kind).map(cardTextLink);
+    const jump = (part, label) => `<button type="button" class="review-jump" data-review-jump="${part}">${label}</button>`;
+    const identity = window.Arena.canonical(p.slug);
+    const similar = Number.isFinite(p.elo) && p.tree.flatMap(id => [...topicPath(id)].reverse()).find(node =>
+      topicProblems(node.id).some(other => Number.isFinite(other.elo) && practiceEligible(other) && window.Arena.canonical(other.slug) !== identity));
+    const practice = [...new Set([...p.tree.map(topicPracticeLink), ...cards.map(id => cardPracticeLink(id, `Practice ${BY_ID[id].formula.name}`))].filter(Boolean))];
+    return {
+      lesson: [...new Set(lessons.map(studyLessonLink))],
+      formula: ofKind("formula"), pattern: ofKind("pattern"), method: ofKind("method"),
+      statement: [jump("statement", "Reread the problem")],
+      answer: [jump("answer", "Review your answer")],
+      solution: [jump("solution", "Review the solution")],
+      practice: practice.length ? practice : ['<a href="#/practice">Find a related problem in Practice</a>'],
+      matched: similar ? [`<a href="#/practice/topic/${similar.id}?similar=${p.slug}">Practice at a similar difficulty</a>`] : []
+    };
+  }
+  function wireMistakeReview(panel, p, {source, setId, outcome, retry, initial}) {
+    const details = panel.querySelector(".review-mistake");
+    const buttons = [...panel.querySelectorAll("[data-mistake-reason]")];
+    const selection = details?.querySelector("[data-mistake-selection]");
+    const status = details?.querySelector(".review-mistake-status");
+    const list = panel.querySelector("[data-next-steps]");
+    let resources, reason = initial || "", version = 0, busy = !!details && initial === undefined;
+    const updateSteps = () => {
+      if (!list) return;
+      resources ||= reviewResources(p);
+      const choice = MISTAKE_REASONS[reason];
+      const steps = choice?.steps || REVIEW_STEPS[retry && outcome === "correct" ? "retry" : outcome] || REVIEW_STEPS.other;
+      const groups = choice?.resources || ["lesson", "formula", "practice"];
+      const links = groups.map(group => {
+        const items = group === "matched" && !resources.matched.length ? resources.practice : resources[group];
+        return items.length ? items[version % items.length] : "";
+      }).filter(Boolean);
+      const time = reason === "timing" && Number.isFinite(p.elo)
+        ? `<p>Try setting a ${window.Arena.problemMinutes(p.elo)}-minute timer for your next problem.</p>` : "";
+      list.innerHTML = `<p>${steps[version % steps.length]}</p>${time}${resourceList(links)}`;
+      renderMath(list);
+    };
+    const updateButtons = () => {
+      for (const button of buttons) {
+        button.setAttribute("aria-pressed", String(button.dataset.mistakeReason === reason));
+        button.setAttribute("aria-disabled", String(busy));
+      }
+      if (selection) selection.textContent = MISTAKE_REASONS[reason]?.label || "Optional";
+    };
+    updateButtons();
+    updateSteps();
+    panel.querySelector("[data-refresh-steps]")?.addEventListener("click", () => { version++; updateSteps(); });
+    list?.addEventListener("click", event => {
+      const part = event.target.closest("[data-review-jump]")?.dataset.reviewJump;
+      const selector = {
+        statement: ".practice-question h3", answer: ".practice-review > h3",
+        solution: ".practice-explanation .chain-sec:has(.chain-solution) h4, [data-arena-explanation] > p"
+      }[part];
+      const heading = selector && panel.closest(".practice-session").querySelector(selector);
+      if (!heading) return;
+      heading.tabIndex = -1;
+      heading.focus({preventScroll:true});
+      heading.scrollIntoView({block:"start"});
+    });
+    if (!details) return;
+    if (busy) {
+      activity.mistakesFor(source, setId).then(marks => {
+        if (!details.isConnected) return;
+        reason = marks.get(p.slug) || "";
+        busy = false;
+        updateButtons();
+        updateSteps();
+      }).catch(() => { status.textContent = "Saved mistake reasons are unavailable."; });
+    }
+    for (const button of buttons) button.addEventListener("click", async () => {
+      if (busy) return;
+      const selected = button.dataset.mistakeReason === reason ? "" : button.dataset.mistakeReason;
+      busy = true;
+      status.textContent = "";
+      updateButtons();
+      try {
+        await activity.saveMistake(source, setId, p.slug, selected);
+        reason = selected;
+        version = 0;
+        updateSteps();
+      } catch {
+        status.textContent = "Couldn’t save your selection. Try again.";
+      } finally {
+        busy = false;
+        updateButtons();
+      }
+    });
+  }
   function practiceExplanationHtml(p, showSource) {
     if (!p) return '';
-    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, solutionLinksHtml(p, showSource))}</div>`;
+    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, solutionLinksHtml(p, showSource), {includeStudy:false})}</div>`;
   }
   // Open in app and Open in AoPS under a solution's three columns (practice review, textbooks).
   function solutionLinksHtml(p, showSource = true) {
@@ -6224,37 +6382,59 @@
       <div class="insight-legend">${groups.map(([kind,label,n]) => `<span><i class="insight-${kind}"></i>${label} · ${n}</span>`).join('')}</div>
     </div>`;
   }
-  function practiceInsightsHtml(set, outcomes, counts, reviewUrl, breakdown) {
+  function practiceInsightNotes(outcomes, counts, reviewUrl, mistakes) {
     const lines = [];
-    const accuracy = breakdown ?? answerBreakdown({first:counts.Correct, incorrect:counts.Incorrect, unanswered:counts.Unanswered,
-      pending:(counts['Answer unavailable'] || 0) + (counts['Check yourself'] || 0)}, 'Accuracy on graded answers');
+    let hardest = null;
 
-    // A skipped problem can suggest a starting point, but only a graded miss signals a mistake.
+    // Keep graded misses first and use labels to prioritize topics within each outcome.
     const focus = counts.Incorrect ? 'Incorrect' : counts.Unanswered ? 'Unanswered' : 'Correct';
     const topics = new Map();
-    for (const [slug, outcome] of outcomes) {
+    for (const [index, [slug, outcome]] of outcomes.entries()) {
+      const p = PROBLEM_BY_SLUG[slug];
+      if (outcome === 'Correct' && Number.isFinite(p?.elo) && (!hardest || p.elo > hardest.problem.elo)) {
+        hardest = {problem:p, index};
+      }
       if (outcome !== focus) continue;
       const ids = new Set();
-      for (const id of PROBLEM_BY_SLUG[slug]?.tree || []) {
+      for (const id of p?.tree || []) {
         const path = topicPath(id);
         const topic = path[2] || path.at(-1);
         if (topic) ids.add(topic.id);
       }
-      for (const id of ids) topics.set(id, (topics.get(id) || 0) + 1);
+      const mistake = activity.canMarkMistake(outcome.toLowerCase()) && mistakes?.get(slug);
+      const boost = activity.mistakeBoost(mistake);
+      for (const id of ids) {
+        const row = topics.get(id) || {count:0, score:0, boost:0, mistake:""};
+        row.count++;
+        row.score += 1 + boost;
+        if (boost > row.boost) { row.boost = boost; row.mistake = mistake; }
+        topics.set(id,row);
+      }
     }
     // In a tie, use the topic encountered first in the set.
-    const top = [...topics].sort((a, b) => b[1] - a[1]).slice(0, 2);
+    const top = [...topics].sort((a, b) => b[1].score - a[1].score).slice(0, 2);
     if (top.length) {
       const label = { Incorrect: 'Topic to revisit', Unanswered: 'Unanswered topic', Correct: 'Solved topic' }[focus];
       const tally = { Incorrect: 'missed', Unanswered: 'unanswered', Correct: 'correct' }[focus];
-      for (const [id, n] of top) lines.push(`<p><strong>${label}</strong> · <a href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}</a> · ${n} ${tally}</p>`);
+      for (const [id, row] of top) {
+        lines.push(`<p><strong>${label}</strong> · <a href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}</a> · ${row.count} ${tally}</p>`);
+        const reason = MISTAKE_REASONS[row.mistake];
+        if (reason) lines.push(`<p class="review-topic-advice">You marked <strong>${reason.label}</strong>. ${reason.steps[0]}</p>`);
+      }
     }
+    if (hardest) {
+      const p = hardest.problem;
+      lines.push(`<p><strong>Highest-rated solve</strong> · <a data-problem-preview="${escapeAttr(p.slug)}" href="${reviewUrl(hardest.index)}">${escapeAttr(refShort(p.ref))}</a> · ${p.elo} Elo</p>`);
+    }
+    return lines.join('');
+  }
+  function practiceInsightsHtml(set, outcomes, counts, reviewUrl, breakdown, mistakes) {
+    const accuracy = breakdown ?? answerBreakdown({first:counts.Correct, incorrect:counts.Incorrect, unanswered:counts.Unanswered,
+      pending:(counts['Answer unavailable'] || 0) + (counts['Check yourself'] || 0)}, 'Accuracy on graded answers');
     const styles = { Correct: 'right', Incorrect: 'wrong', Unanswered: 'blank', Voided: 'void', 'Check yourself': 'pending', 'Answer unavailable': 'pending', 'Previously seen': 'void' };
     const subjects = new Map();
-    let hardest = null;
     const sequence = outcomes.map(([slug, result], i) => {
       const p = PROBLEM_BY_SLUG[slug];
-      if (result === 'Correct' && Number.isFinite(p?.elo) && (!hardest || p.elo > hardest.elo)) hardest = p;
       if (styles[result] !== 'void') {
         const roots = new Set((p?.tree || []).map(id => topicPath(id)[0]).filter(Boolean));
         for (const root of roots) {
@@ -6266,7 +6446,7 @@
       }
       const num = practiceProblemNumber(set, i);
       const desc = `Problem ${num}, ${result}${set.marks[slug] ? ', marked for review' : ''}`;
-      return `<a class="insight-cell insight-${styles[result]}" href="${typeof reviewUrl === "function" ? reviewUrl(i) : reviewUrl}" data-insight-index="${i}" aria-label="${desc}" title="${desc}">${num}</a>`;
+      return `<a class="insight-cell insight-${styles[result]}" href="${reviewUrl(i)}" aria-label="${desc}" title="${desc}">${num}</a>`;
     }).join('');
     const legend = Object.keys(counts).filter(k => counts[k]).map(k =>
       `<span><i class="insight-${styles[k]}"></i>${escapeAttr(k)}</span>`).join('');
@@ -6276,11 +6456,10 @@
       const desc = `${row.right} correct, ${row.wrong} incorrect, ${row.blank} unanswered, ${row.pending} pending`;
       return `<div class="insight-bar-row"><span>${topicLabel(subject)}</span><span class="insight-track" role="img" aria-label="${desc}" title="${desc}">${segments}</span><strong>${row.right}/${row.total}</strong></div>`;
     }).join('');
-    if (hardest) lines.push(`<p><strong>Highest-rated solve</strong> · <a href="#/problem/${hardest.slug}">${escapeAttr(refShort(hardest.ref))}</a> · ${hardest.elo} Elo</p>`);
     return `<div class="practice-insights">${accuracy}<div class="insight-charts">
       ${bars ? `<section><h3>Correct by subject</h3>${bars}</section>` : ''}
       <section><h3>Results by problem</h3><div class="insight-cells">${sequence}</div></section></div>
-      <div class="insight-legend">${legend}</div><div class="insight-notes">${lines.join('')}</div></div>`;
+      <div class="insight-legend">${legend}</div><div class="insight-notes">${practiceInsightNotes(outcomes,counts,reviewUrl,mistakes)}</div></div>`;
   }
   function practiceResultRow({href, index, number, problem, summary, result}) {
     return `<a class="practice-result-row" href="${href}" data-result-index="${index}"><span><strong>Problem ${number}${problem ? ' · ' + escapeAttr(refShort(problem.ref)) : ''}</strong>${summary ? '<small>' + summary + '</small>' : ''}</span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
@@ -6299,6 +6478,7 @@
     const outcomes = set.slugs.map(slug => [slug, practiceSessions.result(set, slug)]);
     outcomes.forEach(([, result]) => counts[result]++);
     const reviewUrl = '#/practice/set/' + encodeURIComponent(set.id) + '/review';
+    const detailUrl = i => reviewUrl + '/' + (i + 1);
     const mock = isMock(set), score = mockScore(set);
     const gradedTotal = practiceAnswerableSlugs(set).length;
     const stats = [[practiceCorrectFraction(counts.Correct, gradedTotal), 'Correct'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
@@ -6308,11 +6488,11 @@
         const p = PROBLEM_BY_SLUG[slug];
         const answer = set.answers[slug], exact = practiceSessions.exactKey(slug);
         const paper = practiceSessions.needsSelfCheck(set, slug);
-        const submitted = (exact || /AIME/.test(p?.fam)) && !paper
-          ? exactAnswerHtml(answer, exact) : escapeAttr(practiceSessions.allowsMultipleChoices(slug) && !paper
-            ? [...(answer || '')].join(', ') : answer || '');
+      const submitted = (exact || /AIME/.test(p?.fam)) && !paper
+        ? exactAnswerHtml(answer, exact) : escapeAttr(practiceSessions.allowsMultipleChoices(slug) && !paper
+          ? [...(answer || '')].join(', ') : answer || '');
       const summary = result === 'Voided' ? '' : `${answer ? 'Your answer: ' + submitted : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}`;
-      return practiceResultRow({href:reviewUrl, index:i, number:practiceProblemNumber(set,i), problem:p, summary, result});
+      return practiceResultRow({href:detailUrl(i), index:i, number:practiceProblemNumber(set,i), problem:p, summary, result});
     }).join('');
     const meta = [
       set.clock ? mockTimeSummary(set) : '',
@@ -6324,15 +6504,18 @@
       back:`<a class="back-link" href="#/practice">${uiIcon("arrow-left")} Back to Practice</a>`,
       title:mock ? 'Mock complete' : 'Practice complete',
       subtitle:`${escapeAttr(practiceSetLabel(set))} · ${total} problem${total === 1 ? '' : 's'}${mock ? ' · '+(set.mock.mode==='paper'?'Past contest':'Generated mock') : ' · '+escapeAttr(set.difficulty)+' difficulty'}`,
-      meta, stats, insights:practiceInsightsHtml(set,outcomes,counts,reviewUrl), reviewUrl, rows
+      meta, stats, insights:practiceInsightsHtml(set,outcomes,counts,detailUrl), reviewUrl, rows
     });
     renderMath($content);
-    $content.querySelectorAll('[data-result-index], [data-insight-index]').forEach(link => link.addEventListener('click', () => { set.current = Number(link.dataset.resultIndex ?? link.dataset.insightIndex); savePractice(); }));
+    const notes = $content.querySelector(".insight-notes");
+    activity.mistakesFor("practice", set.id).then(mistakes => {
+      if (notes.isConnected && mistakes.size) notes.innerHTML = practiceInsightNotes(outcomes,counts,detailUrl,mistakes);
+    }).catch(() => {});
   }
   function renderTopicPracticeSet() {
     cancelPracticeFinishConfirm();
     clearInterval(mockClockInterval);mockClockInterval=0;
-    const id = location.hash.split('/')[3] || '';
+    const { practiceSetId: id, practiceReview, practiceReviewIndex } = getRoute();
     if (!topicPracticeSet || topicPracticeSet.id !== id) {
       try { topicPracticeSet = practiceSessions.read(localStorage).find(s => s.id === id); } catch (err) { topicPracticeSet = null; }
     }
@@ -6344,13 +6527,14 @@
     if (!document.hidden) practiceSessions.resume(set);
     const mock = isMock(set);
     const finished = set.status === 'finished';
-    if (finished && location.hash.split('/')[4] !== 'review') { renderPracticeResults(set); return; }
+    if (finished && !practiceReview) { renderPracticeResults(set); return; }
+    if (finished && practiceReviewIndex != null && set.slugs[practiceReviewIndex]) set.current = practiceReviewIndex;
     const slug = set.slugs[set.current], p = PROBLEM_BY_SLUG[slug];
     if (p && !finished) activity.sawProblem("practice", slug);
     const answerable = practiceAnswerableSlugs(set);
     const answeredSummary = () => `${answerable.filter(id => set.answers[id]).length} of ${answerable.length} answered`;
     const voidNote = practiceSessions.voidReason(slug);
-    const outcome = practiceSessions.result(set, slug);
+    const outcome = practiceSessions.result(set, slug), reviewOutcome = outcome.toLowerCase();
     const aime = p && /AIME/.test(p.fam), exact = practiceSessions.exactKey(slug);
     const paper = !!(p && !voidNote && practiceSessions.needsSelfCheck(set, slug));
     const inlinePaper = paper && archiveStatement(p);
@@ -6390,9 +6574,10 @@
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>${voidNote ? "Voided" : "Your answer"}</h3>
           ${voidNote ? '' : typedAnswer ? (set.answers[slug] ? `<p class="practice-submitted">${paper ? escapeAttr(set.answers[slug]) : exactAnswerHtml(set.answers[slug], exact)}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${voidNote ? escapeAttr(voidNote) : outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
+          ${mistakeReviewHtml(p && activity.canMarkMistake(reviewOutcome))}
           ${gradingNote ? `<p class="prob-note">${escapeAttr(gradingNote)}</p>` : ''}
           ${paper ? `<div class="practice-self">${p.solUrl && !inlinePaper ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
-          ${practiceExplanationHtml(p, !paper || !!inlinePaper)}`
+          ${practiceExplanationHtml(p, !paper || !!inlinePaper)}${p && !voidNote ? nextStepsHtml() : ""}`
           : voidNote ? `<p class="prob-note">Voided · ${escapeAttr(voidNote)}</p>`
           : p ? `<div class="practice-answer"><h4>Your answer</h4>${typedAnswer ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exact ? exactLabel : 'Integer from 000 to 999'}</label><input id="practice-answer" type="text" inputmode="${aime && !paper ? 'numeric' : 'text'}" maxlength="${paper ? '60' : '120'}" autocomplete="off" aria-describedby="practice-answer-error" value="${escapeAttr(set.answers[slug] || '')}">${practiceMathKeysHtml()}` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
@@ -6403,7 +6588,15 @@
       renderTopicPracticeSet();
       if (selector) $content.querySelector(selector)?.focus({preventScroll:true});
     };
-    $content.querySelectorAll('[data-practice-index]').forEach(b => b.addEventListener('click', () => { set.current = +b.dataset.practiceIndex; savePractice(); redraw(); $content.querySelector('.practice-question h3').setAttribute('tabindex','-1'); $content.querySelector('.practice-question h3').focus({preventScroll:true}); }));
+    $content.querySelectorAll('[data-practice-index]').forEach(b => b.addEventListener('click', () => {
+      set.current = Number(b.dataset.practiceIndex);
+      if (finished && practiceReviewIndex != null) history.replaceState(history.state, "", `#/practice/set/${id}/review/${set.current + 1}`);
+      savePractice();
+      redraw();
+      const heading = $content.querySelector('.practice-question h3');
+      heading.tabIndex = -1;
+      heading.focus({preventScroll:true});
+    }));
     $content.querySelector('#finish-practice')?.addEventListener('click', async () => {
       if (set.status === 'finished' || practiceFinishConfirm) return;
       const remaining = answerable.filter(id => !set.answers[id]).length;
@@ -6504,6 +6697,9 @@
       if (!practiceSessions.selfMark(set, slug, v)) return;
       savePractice(); redraw(); $content.querySelector(`[data-self="${b.dataset.self}"]`)?.focus({ preventScroll: true });
     }));
+    if (p && finished && !voidNote) wireMistakeReview($content.querySelector(".practice-review"), p, {
+      source: "practice", setId: set.id, outcome: reviewOutcome
+    });
     renderMath($content);
     startMockClock(set);
   }
@@ -6512,7 +6708,7 @@
     const paper = problems.filter(paperProblem);
     if (paper.length) set.selfCheck = Object.fromEntries(paper.map(p => [p.slug, true]));
   }
-  function wireTopicPractice(root, initialId) {
+  function wireTopicPractice(root, initialId, similarTo) {
     const form = root.querySelector("#topic-practice-form");
     if (!form) return;
     const topic = form.elements.topic, count = form.elements.count;
@@ -6520,11 +6716,24 @@
     const status = root.querySelector("#topic-practice-status");
     const difficulty = form.elements.difficulty;
     let generating = false, selectedTopicId = initialId, activeTopic = -1;
-    let desiredCount = count.valueAsNumber;
+    const similar = PROBLEM_BY_SLUG[similarTo];
+    const original = similar && window.Arena.canonical(similar.slug);
+    let desiredCount = similar ? 1 : count.valueAsNumber;
     const topics = practiceTopicIndex ||= window.PracticeTopics.build(window.MATH_TOPIC_TREE, PROBLEM_DB, practiceEligible, topicProblems);
-    if (initialId) topic.value = topics.nodes.get(initialId).label;
+    const selectedPool = id => {
+      const pool = topics.select(id, practiceFamOn);
+      return original ? pool.filter(problem => window.Arena.canonical(problem.slug) !== original) : pool;
+    };
+    if (initialId) {
+      topic.value = topics.nodes.get(initialId).label;
+      if (Number.isFinite(similar?.elo)) {
+        const pool = selectedPool(initialId);
+        const nearest = pool.reduce((best, p) => Number.isFinite(p.elo) && Math.abs(p.elo - similar.elo) < Math.abs(best - similar.elo) ? p.elo : best, Infinity);
+        difficulty.value = problemDifficulty.ranges(pool).findIndex(band => band && nearest >= band.low && nearest <= band.high) + 1;
+      }
+    }
     // The pool a topic draws from under the current contest choice, for the browser checks.
-    window.MATH_PRACTICE_POOL = id => topics.select(id, practiceFamOn).map(p => p.slug);
+    window.MATH_PRACTICE_POOL = id => selectedPool(id).map(p => p.slug);
     const findTopic = () => {
       const selected = topics.nodes.get(selectedTopicId);
       return selected && topic.value === selected.label ? selected : topics.resolve(topic.value);
@@ -6532,7 +6741,7 @@
     function update() {
       const choices = topics.search(topic.value);
       suggestions.innerHTML = choices.map((node,i) => {
-        const size = problemDifficulty.filter(topics.select(node.id, practiceFamOn), DIFFS[difficulty.valueAsNumber]).length;
+        const size = problemDifficulty.filter(selectedPool(node.id), DIFFS[difficulty.valueAsNumber]).length;
         const context = node.path.slice(0, -1).join(' › ');
         return `<button type="button" class="set-find-opt practice-topic-option${i === 0 ? ' is-cur' : ''}" role="option" id="practice-topic-${i}" data-topic-id="${node.id}" aria-selected="${i === 0}"><span class="practice-topic-name">${mathHtml(node.name)}</span><span class="practice-topic-context">${escapeAttr(context)}${context ? ' · ' : ''}${size} problem${size === 1 ? '' : 's'}</span></button>`;
       }).join('');
@@ -6554,9 +6763,11 @@
       form.querySelector("#topic-band-value").textContent = difficultyLabel();
       difficulty.setAttribute("aria-valuetext", difficultyLabel());
       form.querySelector("#topic-band-note").textContent = match
-        ? problemDifficulty.describe(topics.select(match.id, practiceFamOn), DIFFS[difficulty.valueAsNumber], "this topic")
+        ? problemDifficulty.describe(selectedPool(match.id), DIFFS[difficulty.valueAsNumber], "this topic")
         : "Choose a topic to see five similar Elo intervals for the selected contests.";
-      status.textContent = match ? pool.length + " matching problem" + (pool.length === 1 ? "" : "s") + " available" + (match.children.length ? ", including subtopics." : ".")
+      const timerNote = pool.length && Number.isFinite(similar?.elo)
+        ? ` For this drill, try a ${window.Arena.problemMinutes(similar.elo)}-minute timer per problem.` : "";
+      status.textContent = match ? pool.length + " matching problem" + (pool.length === 1 ? "" : "s") + " available" + (match.children.length ? ", including subtopics." : ".") + timerNote
         : topic.value.trim() ? "Choose a topic from the suggestions." : "";
       form.querySelector("button[type=submit]").disabled = generating || !pool.length;
     }
@@ -6567,7 +6778,7 @@
     document.addEventListener("practice-fams", onFams);
     function matchingProblems() {
       const match = findTopic(), band = DIFFS[difficulty.valueAsNumber];
-      return match ? problemDifficulty.filter(topics.select(match.id, practiceFamOn), band) : [];
+      return match ? problemDifficulty.filter(selectedPool(match.id), band) : [];
     }
     function closeTopics() { suggestions.hidden = true; topic.setAttribute('aria-expanded','false'); topic.removeAttribute('aria-activedescendant'); activeTopic = -1; }
     function openTopics() {
@@ -6841,8 +7052,10 @@
         <a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">${problemSourceLabel(p)} ${uiIcon("arrow-up-right")}</a></div>`,
       reviewResults: practiceResultsHtml, reviewRow: practiceResultRow,
       answerBreakdown,
-      reviewInsights: (outcomes, counts, href, breakdown) => practiceInsightsHtml({marks:{}},outcomes,counts,href,breakdown),
+      reviewInsights: (outcomes, counts, href, breakdown, mistakes) => practiceInsightsHtml({marks:{}},outcomes,counts,href,breakdown,mistakes),
       reviewExplanation: practiceExplanationHtml,
+      mistakeReviewHtml: (outcome, retry) => mistakeReviewHtml(activity.canMarkMistake(outcome, retry)),
+      nextStepsHtml, wireMistakeReview, mistakeAdvice: reason => MISTAKE_REASONS[reason],
       loadExplanation: p => Promise.all(solutionRequirements([p.year])),
       showPrompt: (p, hideCredit) => showStatement(p, ".arena-st", true, hideCredit),
       choices: practiceAnswerChoices, exactLabel: practiceExactLabel, keypad: practiceMathKeysHtml, wireKeys: wirePracticeMathKeys,
@@ -6941,7 +7154,7 @@
     }
     if (name === "practice") body += pastPracticeHtml();
     $content.innerHTML = `<div class="space-home">${body}</div>`;
-    wireTopicPractice($content, route.practiceMode === "topic" ? route.practiceId : null);
+    wireTopicPractice($content, route.practiceMode === "topic" ? route.practiceId : null, route.similarTo);
     wireConceptPractice($content);
     wireMockPractice($content);
     wireCardPractice($content, route.practiceMode === "card" ? route.practiceId : null);
@@ -10875,14 +11088,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return `The round's official ${p.solKind === "answer-key" ? "answer key" : "solutions"}, as one PDF${number}.${legacy
       ? ` The <a href="https://www.hmmt.org/www/archive/32" target="_blank" rel="noopener noreferrer">HMMT February 2000 archive</a> links these PDFs, which are headed “Rice Mathematics Tournament 2000.”` : ""}`;
   }
-  function chainInnerHtml(p, afterChain = "") {
+  function chainInnerHtml(p, afterChain = "", {includeStudy = true} = {}) {
     const primary = p.strategy ? `<p class="chain-strategy">${p.strategy}</p>`
       : p.solUrl ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">${p.solAops ? "Open the solutions on AoPS" : p.solKind === "answer-key" ? "Open the official answer key" : "Open the official solution"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">${p.solAops ? "The Art of Problem Solving wiki's page for this problem, with its solutions." : (/^ARML/.test(p.fam) ? `The contest's official booklet, open at the Individual round's solutions${p.num ? `; this is problem I-${p.num}` : ""}.` : officialSolutionNote(p))}</span></p>` : "";
     const solutions = [{ text: primary, cards: p.formulas }];
     if (p.trick) solutions.push({ text: `<p class="chain-strategy">${p.trick}</p>`, cards: p.trickFormulas });
     const routes = solutions.map(({ text, cards }) => `<div class="chain-solution">${text}${chainCardsHtml(cards)}</div>`).join("");
     return `<div class="chain-duo">${chainSec("Topic", topicTreeHtml(p))}${chainSec("Difficulty", difficultyHtml(p))}</div>
-        ${chainSec("Brief solution(s)", `${ownFigureHtml(p)}${routes}${afterChain}`)}${studyMoreHtml(p)}`;
+        ${chainSec("Brief solution(s)", `${ownFigureHtml(p)}${routes}${afterChain}`)}${includeStudy ? studyMoreHtml(p) : ""}`;
   }
   // Study a concept more (owner, 2026-11-01): under the three columns, one link per card the
   // problem uses, to the lesson that teaches that card. An AIME problem prefers an AIME book's
@@ -11716,8 +11929,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     };
     if (route.type === "home" && state.query.trim()) requirements.push(...solutionRequirements());
     if (route.type === "problem") requirements.push(...solutionRequirements([+route.slug.slice(0, 4)]));
-    if (route.practiceSet && location.hash.endsWith("/review")) {
-      const id = location.hash.split("/")[3];
+    if (route.practiceReview) {
+      const id = route.practiceSetId;
       let set = topicPracticeSet?.id === id ? topicPracticeSet : null;
       if (!set) {
         try { set = practiceSessions.read(localStorage).find(entry => entry.id === id); } catch (error) {}
@@ -11874,7 +12087,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const selected = $content.querySelector('.ct-papers [aria-selected="true"]');
       label = paper ? (/^\d{4}/.test(paper) ? paper : route.year + " " + paper) : (selected && (route.paper || selected.getClientRects().length) ? route.year + " " + selected.textContent : route.year + " " + (FAM_BY_SLUG[route.fam] || route.fam));
     } else if (route.type === "learn") label = [route.howto ? "How to Use This Book" : route.review ? "Review Problems" : route.challenge ? "Challenge Problems" : route.lesson ? route.lesson.code + " " + route.lesson.title : route.chapter?.title, route.book.title].filter(Boolean).join(" · ");
-    else if (route.practiceSet && topicPracticeSet) label = [topicPracticeSet.status === 'finished' ? location.hash.endsWith('/review') ? 'Review' : 'Results' : null, isMock(topicPracticeSet) ? 'Mock set' : 'Practice set', practiceSetLabel(topicPracticeSet)].filter(Boolean).join(' · ');
+    else if (route.practiceSet && topicPracticeSet) label = [topicPracticeSet.status === 'finished' ? route.practiceReview ? 'Review' : 'Results' : null, isMock(topicPracticeSet) ? 'Mock set' : 'Practice set', practiceSetLabel(topicPracticeSet)].filter(Boolean).join(' · ');
     else label = $content.querySelector("h1, h2")?.textContent || SPACES[state.space]?.label;
     label = String(label || "").replace(/<[^>]*>/g, "").replace(/\$/g, "").replace(/\\([a-z]+)/gi, "$1").replace(/[{}]/g, "").replace(/\s+/g, " ").trim();
     document.title = label && label !== brand ? label + " — " + brand : brand;

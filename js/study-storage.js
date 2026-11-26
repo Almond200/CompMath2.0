@@ -40,6 +40,13 @@
     events.sort((a, b) => a.at - b.at || a.identity.localeCompare(b.identity));
     return {version: 1, events, session: session || null};
   }
+  async function putActivity(store, event) {
+    if (event.type === "mistake") {
+      const previous = await request(store.get(event.id));
+      if (root.LearningActivity.keepsNewerMistake(previous, event)) return;
+    }
+    store.put(event);
+  }
   function importInto(db, arena, activity) {
     return transaction(db, ALL, "readwrite", async tx => {
       if (arena != null) {
@@ -53,7 +60,8 @@
         if (activity.version !== 1 || !Array.isArray(activity.events)) throw Error("Invalid study activity backup.");
         const events = root.LearningActivity.merge(null, activity).events;
         if (events.length !== new Set(activity.events.map(e => e?.id)).size) throw Error("Invalid study activity record.");
-        for (const event of events) tx.objectStore(ACTIVITY).put(event);
+        const store = tx.objectStore(ACTIVITY);
+        await Promise.all(events.map(event => putActivity(store, event)));
       }
     });
   }
@@ -120,7 +128,7 @@
     if (wrote) changed("draft");
   }
   async function appendActivity(event) {
-    await transaction(await ready(), [ACTIVITY], "readwrite", tx => { tx.objectStore(ACTIVITY).put(event); });
+    await transaction(await ready(), [ACTIVITY], "readwrite", tx => putActivity(tx.objectStore(ACTIVITY), event));
   }
   async function restore(arena, activity) {
     await importInto(await ready(), arena, activity);
