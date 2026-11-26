@@ -4844,10 +4844,8 @@ a.pq-bar:hover .pq-n { color: var(--text); font-weight: 700; }
 .mock-same-format input { margin: 0; width: 16px; height: 16px; accent-color: var(--space); cursor: pointer; }
 
 /* Arena uses the same page shell and controls as the other spaces. */
-.arena { max-width: 1080px; margin-inline: auto; }
 .arena .sh-section, .practice-play .sh-section { padding: clamp(15px, 2vw, 24px); }
-.arena h1, .practice-play .sh-section h1 { margin: 0; font-size: calc(24px * var(--tx)); line-height: 1.25; }
-.arena .space-home-head h1 { font-size: calc(30px * var(--tx)); }
+.arena-play h1, .practice-play .sh-section h1 { margin: 0; font-size: calc(24px * var(--tx)); line-height: 1.25; }
 .arena .sh-section h3 { font-size: calc(17px * var(--tx)); }
 .arena h4 { font-size: calc(14px * var(--tx)); margin: 0 0 6px; }
 .arena p { line-height: 1.55; }

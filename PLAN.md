@@ -14,6 +14,7 @@
 Folded contest profiles and card practice problems show up to three available contests before offering Show more. Answer previews render grouped digits inside expressions while keeping list separators.
 
 The main navigation and homepage cards put Arena first, followed by Reference, Learn, and Practice.
+The Arena overview title and subtitle align with the Practice and Learn landing pages.
 The Correct score in Practice results uses the same text color as the other scores.
 The app opens to the homepage at the bare address. Arena suggests a rated subject using Elo, attempt volume, recency, and provisional progress. The reference now includes Fibonacci Doubling Formulas and Matrix Geometric Series, with alternate contest solutions that use them. The 2014 PUMaC B Geometry #7 review links the intersecting-chords formula.
 The homepage shows study shortcuts and recommendations beside Arena progress and textbooks. Saved study progress and Arena results personalize it, and unrated learners see a placement prompt.

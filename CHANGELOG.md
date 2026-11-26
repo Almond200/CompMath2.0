@@ -2,6 +2,8 @@
 
 **2026-11-26**
 
+- **Arena overview.** Align the heading and subtitle with Practice and Learn, including while progress loads.
+
 - **Contest lists.** Contest profiles and card practice problems show up to three available contests when folded. Show more appears when additional contests are available.
 
 - **Answer preview.** Render thousands separators in expressions such as square roots while preserving commas that separate answers or entries.
