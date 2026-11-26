@@ -2,7 +2,11 @@
 
 **2026-11-26**
 
-- **Homepage preview.** Try a dashboard at `?home=dashboard` with study shortcuts, real Arena progress and recommendations, daily content, and textbook covers.
+- **Study sidebars.** Hide study sidebars by default. Use Show in Settings to display them.
+
+- **Study recommendations.** Preview recommended topics on hover or keyboard focus.
+
+- **Homepage.** Open directly to study shortcuts, Arena progress and recommendations, daily content, and textbooks.
 
 - **Arena.** Suggest a subject for the next rated set using Elo, rated practice volume, time since the last attempt, and provisional progress.
 

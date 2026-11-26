@@ -248,6 +248,7 @@
   // A card link in a lesson goes to the card's page by default (owner, 2026-11-15); opening it beside
   // the lesson is the option.
   const LESSON_LINK_MODES = ["card", "drawer"];
+  const STUDY_SIDEBAR_MODES = ["hide", "show"];
   const SECTION_IDS = SECTIONS.map(s => s.id);
 
   // Every write to localStorage can fail -- Safari private browsing refuses outright, and
@@ -309,7 +310,7 @@
       lessonLinks: P.lessonLinksChosen ? pick(P.lessonLinks, LESSON_LINK_MODES) : LESSON_LINK_MODES[0],
       lessonLinksChosen: !!P.lessonLinksChosen,
       arenaProblems: P.arenaProblems === "all" ? "all" : "automatic",
-      studySidebars: P.studySidebars === "hide" ? "hide" : "show",
+      studySidebars: pick(P.studySidebars, STUDY_SIDEBAR_MODES),
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
       tags: P.tags === false ? false : true,
@@ -4664,7 +4665,7 @@
   // Every setting lists its default option first (owner, 2026-10-31); the defaults are the first
   // allowed value the settings loader falls back to.
   const SETTING_DEFAULTS = {
-    theme: "light", studySidebars: "show", arenaProblems: "automatic", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
+    theme: "light", studySidebars: STUDY_SIDEBAR_MODES[0], arenaProblems: "automatic", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
     notation: NOTATIONS[0], angles: ANGLE_MODES[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
     order: ORDERS[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0], contestLists: CONTEST_LIST_MODES[0]
   };
@@ -4699,7 +4700,7 @@
           <h3 class="set-panel-title">Appearance</h3>
           ${settingRow("Theme", "Light or dark. Dark is easier at night.", "theme", theme, [["light", "Light"], ["dark", "Dark"]])}
           ${settingRow("Density", "How tightly the whole app is spaced: page margins, the gaps between cards and sections, and the padding inside panels. Spacious gives everything more room; Compact fits more on each screen. Neither changes text size or card size.", "density", state.density, [["comfortable", "Comfortable"], ["spacious", "Spacious"], ["compact", "Compact"]])}
-          ${settingRow("Study sidebars", "Show section navigation beside Learn, Practice and Arena, including textbook chapters and the contest topic tree.", "studySidebars", state.studySidebars, [["show", "Show"], ["hide", "Hide"]])}
+          ${settingRow("Study sidebars", "Show section navigation beside Learn, Practice, and Arena, including textbook chapters.", "studySidebars", state.studySidebars, [["show", "Show"], ["hide", "Hide"]])}
           ${settingRow("Card size", "How big each card is while browsing. Large cards are wider, so fewer fit across.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Large"]], "browse")}
           ${settingRow("Text size", "Adjusts the size of reading text, headings, and math.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]], "browse page subject problem")}
         </section>
@@ -5593,7 +5594,7 @@
     return problemsReady ? dailyProblemHtml() :
       '<div class="hm-sec" data-home-daily><button type="button" class="hp-btn">Show the problem of the day</button></div>';
   }
-  function dashboardContinueHtml() {
+  function landingContinueHtml() {
     let set;
     try {
       set = practiceSessions.read(localStorage).filter(set => set.status !== "finished").sort((a, b) => b.updated - a.updated)[0];
@@ -5609,12 +5610,12 @@
         </a>
         <a class="rc-row" data-tint="learn" href="${lesson ? learnHash(lesson.b, lesson.c, lessonNum(lesson.l)) : "#/learn"}">
           ${uiIcon("arrow-right")}
-          <span class="rc-name">${lesson ? "Continue lesson" : "Find a textbook"}${lesson ? `<small>${escapeAttr(lesson.l.title)}</small>` : ""}</span>
+          <span class="rc-name">${lesson ? "Continue lesson" : "Find a textbook"}${lesson ? `<small>${escapeAttr(lesson.l.title)} · ${escapeAttr(lesson.b.title)}</small>` : ""}</span>
         </a>
       </div>
     </section>`;
   }
-  async function wireHomeDashboard(board) {
+  async function wireLandingProgress(board) {
     const progress = board.querySelector("[data-home-progress]");
     const arenaLink = board.querySelector("[data-home-arena-link]");
     const recommendations = board.querySelector("[data-home-recommendations]");
@@ -5667,31 +5668,11 @@
       if (board.isConnected) recommendations.innerHTML = '<p class="hp-empty">Study recommendations couldn’t load. <a href="#/arena">View Arena</a></p>';
     }
   }
-  function homeDashboardBackLink() {
-    const current = new URL(location.href);
-    current.searchParams.delete("home");
-    current.hash = "#/";
-    return `<a class="back-link hm-preview-back" href="${escapeAttr(current.href)}">${uiIcon("arrow-left")} Current homepage</a>`;
-  }
-  // The front page: what the app is, why it helps and how to use it, beside what helps today
-  // (where you left off, the problem and card of the day, your library). The four spaces and
-  // the search sit above both, so nothing needs a scroll to reach.
+  // Study shortcuts and daily content sit beside Arena progress and the bookshelf.
   function renderLanding() {
     shownIds = [];
-    const dashboard = new URLSearchParams(location.search).get("home") === "dashboard";
     const count = kind => ALL.filter(e => e.kind === kind).length;
     const nProblems = problemsReady ? PROBLEM_DB.length.toLocaleString() + " problems" : "Contest problems";
-    // Each space says in one line what it holds; the sidebar already lists every subject, so the
-    // front page does not repeat the four spaces a third time.
-    const SPACE_WHAT = {
-      formulas: "Theorems and identities, each with why it holds, when it applies, and a worked example.",
-      methods: "Moves that make progress, with when to reach for them and how to carry them out.",
-      patterns: "Problem shapes worth recognizing on sight, and what to try when you see one.",
-      learn: "Textbooks that teach the cards in order, with checks and contest problems, and the study lists.",
-      practice: "Real AMC and AIME problems, linked to the patterns, methods, and formulas they use."
-    };
-
-    const tile = (sp, n) => `<a class="hs-tile" data-tint="${sp}" href="#/${sp}"><b>${SPACES[sp].label}</b><span class="hs-ask">${SPACES[sp].ask}</span><span class="hs-what">${SPACE_WHAT[sp]}</span><span class="hs-n">${n}</span></a>`;
     const spaceTile = (sp, detail) => `
           <a class="hm-space" data-tint="${sp}" href="#/${sp}">
             <span class="hm-space-name">${SPACES[sp].label}</span>
@@ -5699,12 +5680,9 @@
             <span class="hm-space-n">${detail}</span>
           </a>`;
     // The homepage strip matches the top bar's space order, followed by a main column and a rail.
-    // Continue: the cards and problems opened lately. Lessons and books are left to Learn's own
-    // "Recently opened" (owner, 2026-10-31: too many lessons crowded the home page).
     const bookRows = LEARN_SHELF.slice(0, 6).map(b => `<a class="hm-book" href="${learnHash(b)}">${bookCoverHtml(b, "s")}<span class="hm-book-t">${escapeAttr(b.title)}</span><span class="hm-book-n">${learnLessonsIn(b)} lessons</span></a>`).join("");
     $content.innerHTML = `
-      <div class="home${dashboard ? " home-dashboard" : ""}">
-        ${dashboard ? homeDashboardBackLink() : ""}
+      <div class="home">
         <div class="hm-intro">
           <h1 class="hm-name">Competition Math Reference</h1>
           <p class="hm-sub">Formulas, methods, patterns, textbooks, and real contest problems for AMC 10/12, AIME, and olympiad, all linked to each other.</p>
@@ -5723,24 +5701,24 @@
         </nav>
         <div class="hm-cols">
           <div class="hm-main">
-            ${dashboard ? `${dashboardContinueHtml()}
-              <section class="hm-sec hm-study">
-                <h2 class="hm-h">Recommended for you</h2>
-                <div data-home-recommendations><p class="hp-empty">Loading study recommendations…</p></div>
-              </section>` : landingRecentHtml()}
+            ${landingContinueHtml()}
+            <section class="hm-sec hm-study">
+              <h2 class="hm-h">Recommended for you</h2>
+              <div data-home-recommendations><p class="hp-empty">Loading study recommendations…</p></div>
+            </section>
             ${landingDailyHtml()}
-            ${dashboard ? landingRecentHtml() : ""}
+            ${landingRecentHtml()}
             ${newestCardsHtml()}
             ${problemsReady ? practiceGlanceHtml() : '<div class="hm-sec" data-home-practice><a class="hp-link" href="#/practice">Browse past contests</a></div>'}
           </div>
           <aside class="hm-rail">
-            ${dashboard ? `<section class="hm-sec hm-progress arena">
+            <section class="hm-sec hm-progress arena">
               <div class="hm-h-row">
                 <h2 class="hm-h">Your progress</h2>
                 <a class="hm-more hm-more-arena" href="#/arena" data-home-arena-link hidden>View Arena ${uiIcon("arrow-right")}</a>
               </div>
               <div data-home-progress><p class="hp-empty">Loading Arena progress…</p></div>
-            </section>` : ""}
+            </section>
             <section class="hm-sec hm-textbooks">
               <div class="hm-h-row"><h2 class="hm-h">Textbooks</h2><a class="hm-more" href="#/learn">See all ${uiIcon("arrow-right")}</a></div>
               <div class="hm-books">${bookRows}</div>
@@ -5755,26 +5733,7 @@
     const daily = dailyProblem();
     if (daily) showStatement(daily, ".daily-st");
     if (!problemsReady) wireLandingProblems();
-    if (dashboard) wireHomeDashboard($content.querySelector(".home-dashboard"));
-    // The hero search waits for Search (or Enter), then hands off to the real search box: the
-    // results page shows the header search again with the text in it, so typing continues
-    // there.
-    const box = document.getElementById("home-search");
-    const handOff = v => {
-      $search.value = v;
-      $search.dispatchEvent(new Event("input", { bubbles: true }));
-      $search.focus({ preventScroll: true });
-      try { $search.setSelectionRange(v.length, v.length); } catch (e) {}
-    };
-    // A command typed here just runs (there is no header search or suggestion list on this page).
-    const heroSearch = $content.querySelector(".home-search");
-    if (heroSearch) heroSearch.addEventListener("submit", e => {
-      e.preventDefault();
-      const v = box.value.trim();
-      if (!v) return;
-      if (/^special:/i.test(v) && runCommand(v)) return;
-      handOff(box.value);
-    });
+    wireLandingProgress($content.querySelector(".home"));
   }
 
   // ---------- Space main pages: #/formulas, #/methods, #/patterns, #/practice ----------
@@ -6444,7 +6403,7 @@
   function studyItem(row) {
     if (row.kind === "topic") {
       const topic = TOPIC_NODES.get(row.id);
-      if (topic) return {kind:"Topic", link:`<a href="${topicHash(row.id)}">${topicLabel(topic)}</a>`};
+      if (topic) return {kind:"Topic", link:`<a data-topic-preview="${topic.id}" href="${topicHash(topic.id)}">${topicLabel(topic)}</a>`};
     } else if (BY_ID[row.id]) {
       const kind = kindOf(BY_ID[row.id].formula);
       return {kind:kind[0].toUpperCase() + kind.slice(1), link:cardTextLink(row.id)};

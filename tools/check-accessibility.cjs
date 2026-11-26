@@ -54,6 +54,7 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     }
     await page.goto(base + '/#/practice');
     await page.locator('#pr-mock').waitFor();
+    assert.equal(await page.locator('.layout.no-sidebar').count(), 1, 'study sidebars start hidden');
     assert.equal(await page.locator('#search-input').getAttribute('aria-label'), 'Search the reference');
     await page.keyboard.press('Tab');
     assert.equal(await page.locator('.skip-link').evaluate(el => el === document.activeElement), true);
@@ -96,6 +97,9 @@ const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.
     await navigate('#/settings', '.settings-head');
     assert.match(await page.title(), /^Settings — /);
     assert.equal(await page.evaluate(() => document.activeElement.tagName), 'H1');
+    const studySidebars = page.getByRole('radiogroup', {name:'Study sidebars'});
+    assert.equal(await studySidebars.locator('[aria-checked="true"]').innerText(), 'Hide');
+    await radio(studySidebars, 'ArrowRight', 'Show');
     await searchBorder(page.locator('.settings-head input[type="search"]'));
     await radio(page.locator('[role="radiogroup"][aria-label="Theme"]'), 'ArrowRight');
     assert.equal(await page.evaluate(() => document.activeElement.getAttribute('data-set')), 'theme');
