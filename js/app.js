@@ -6174,18 +6174,20 @@
     timing: ["Ran out of time", "I had a workable approach and could likely have solved it with more time."],
     unsure: ["Something else or not sure", "None of these fits, or I haven’t found where I got stuck."]
   };
-  function mistakeReviewHtml(eligible, solvedOnRetry = false) {
+  function mistakeReviewHtml(eligible, {solvedOnRetry = false, fromPractice = false} = {}) {
     if (!eligible) return "";
     const reasons = activity.mistakeReasons(Object.keys(MISTAKE_REASONS), solvedOnRetry);
     return `<details class="review-mistake"><summary>Mark your mistake <span data-mistake-selection>Optional</span></summary>
-      <p>${solvedOnRetry ? "Think about what went wrong on your first try. " : ""}Choose any reasons that fit to improve your study recommendations. Only your rated results affect your Elo. Select a reason again to clear it.</p>
+      <p>${solvedOnRetry ? "Think about what went wrong on your first try. " : ""}Choose any reasons that fit to help personalize ${fromPractice ? "<strong>What to study in Arena</strong>" : "your study recommendations"}. Only your rated results affect your Elo. Select a reason again to clear it.</p>
       <div class="review-mistake-options" role="group" aria-label="Mistake reasons">
         ${reasons.map(id => {
           const [label, detail] = MISTAKE_REASONS[id];
           return `<button type="button" data-mistake-reason="${id}" aria-pressed="false" aria-disabled="true">
             <strong>${label}</strong><span>${detail}</span></button>`;
         }).join("")}
-      </div><p class="review-mistake-status" role="status"></p></details>`;
+      </div>
+      <button type="button" class="review-mistake-clear" hidden>Deselect all</button>
+      <p class="review-mistake-status" role="status"></p></details>`;
   }
   function studyTypeFilterHtml() {
     return `<select class="study-filter" data-study-type aria-label="Recommendation type">
@@ -6222,6 +6224,7 @@
     if (!details) return;
     const buttons = [...details.querySelectorAll("[data-mistake-reason]")];
     const selection = details.querySelector("[data-mistake-selection]");
+    const clear = details.querySelector(".review-mistake-clear");
     const status = details.querySelector(".review-mistake-status");
     let reasons = initial || [], busy = initial === undefined;
     const update = () => {
@@ -6230,6 +6233,8 @@
         button.setAttribute("aria-disabled", String(busy));
       }
       selection.textContent = reasons.length ? `${reasons.length} selected` : "Optional";
+      clear.hidden = reasons.length === 0;
+      clear.setAttribute("aria-disabled", String(busy));
     };
     update();
     if (busy) {
@@ -6240,23 +6245,29 @@
         update();
       }).catch(() => { status.textContent = "Couldn’t load your saved mistake reasons."; });
     }
-    for (const button of buttons) button.addEventListener("click", async () => {
+    async function saveSelection(selected) {
       if (busy) return;
-      const id = button.dataset.mistakeReason;
-      const selected = reasons.includes(id) ? reasons.filter(reason => reason !== id) : [...reasons, id];
       busy = true;
       status.textContent = "";
       update();
       try {
         await activity.saveMistakes(source, setId, slug, selected);
         reasons = selected;
+        if (!reasons.length && document.activeElement === clear) {
+          details.querySelector("summary").focus({preventScroll:true});
+        }
       } catch {
         status.textContent = "Couldn’t save your selections. Try again.";
       } finally {
         busy = false;
         update();
       }
+    }
+    for (const button of buttons) button.addEventListener("click", () => {
+      const id = button.dataset.mistakeReason;
+      saveSelection(reasons.includes(id) ? reasons.filter(reason => reason !== id) : [...reasons, id]);
     });
+    clear.addEventListener("click", () => saveSelection([]));
   }
   function practiceExplanationHtml(p, showSource = true) {
     if (!p) return '';
@@ -6457,7 +6468,7 @@
     return `<div class="practice-review-actions"><a class="hp-btn hp-btn-soft" href="${resultsUrl}">Results overview</a></div>`;
   }
   function practiceResultsHtml({back, title, subtitle, intro = "", meta = "", stats, insights, reviewUrl, rows, arena = false}) {
-    return `<div class="space-home practice-session practice-results${arena ? ' arena arena-play' : ''}">${back}
+    return `<div class="space-home practice-session practice-results${arena ? ' arena arena-play' : ' practice-play'}">${back}
       <section class="sh-section"><h1>${title}</h1><p class="practice-results-subtitle">${subtitle}</p>${intro}
         <div class="practice-results-stats">${stats.map(([value,label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${meta}${insights}<a class="hp-btn${arena ? ' arena-primary' : ''}" href="${reviewUrl}">Review problems</a>
@@ -6544,7 +6555,7 @@
       return `<button type="button" class="cn-num${i === set.current ? ' cn-here' : ''}${reviewed ? ' practice-reviewed' : ''}${!reviewed && set.answers[id] ? ' practice-answered' : ''}${set.marks[id] ? ' practice-marked' : ''}" data-result="${reviewed ? result : ''}" data-practice-index="${i}" aria-current="${i === set.current ? 'step' : 'false'}" aria-label="Problem ${number}, ${suffix}${set.marks[id] ? ', marked for review' : ''}">${number}</button>`;
     }).join('');
     shownIds = [];
-    $content.innerHTML = `<div class="space-home practice-session">
+    $content.innerHTML = `<div class="space-home practice-session practice-play">
       ${finished ? `<a class="back-link practice-back-results" href="#/practice/set/${encodeURIComponent(set.id)}">${uiIcon("arrow-left")} Back to Results overview</a>` : ''}
       <a class="back-link" href="#/practice">${uiIcon("arrow-left")} Back to Practice</a>
       <section class="sh-section">
@@ -6563,7 +6574,7 @@
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>${voidNote ? "Voided" : "Your answer"}</h3>
           ${voidNote ? '' : typedAnswer ? (set.answers[slug] ? `<p class="practice-submitted">${paper ? escapeAttr(set.answers[slug]) : exactAnswerHtml(set.answers[slug], exact)}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${voidNote ? escapeAttr(voidNote) : outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
-          ${mistakeReviewHtml(p && activity.canMarkMistake(reviewOutcome))}
+          ${mistakeReviewHtml(p && activity.canMarkMistake(reviewOutcome), {fromPractice:true})}
           ${gradingNote ? `<p class="prob-note">${escapeAttr(gradingNote)}</p>` : ''}
           ${paper ? `<div class="practice-self">${p.solUrl && !inlinePaper ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
           ${practiceExplanationHtml(p, !paper || !!inlinePaper)}${p && !voidNote ? nextStepsHtml(p) : ""}`
@@ -7056,7 +7067,7 @@
         () => activity.history({kind:"problem"}), initial),
       notifyStudyUpdate,
       reviewExplanation: practiceExplanationHtml,
-      mistakeReviewHtml: (outcome, retry) => mistakeReviewHtml(activity.canMarkMistake(outcome, retry), outcome === "correct" && retry),
+      mistakeReviewHtml: (outcome, retry) => mistakeReviewHtml(activity.canMarkMistake(outcome, retry), {solvedOnRetry:outcome === "correct" && retry}),
       nextStepsHtml, wireMistakeReview, studyTypeFilterHtml, studyItem,
       studyCardPractice: id => cardPracticeLink(id, "Practice this card"),
       loadExplanation: p => Promise.all(solutionRequirements([p.year])),

@@ -2,6 +2,10 @@
 
 **2026-11-26**
 
+- **Mistake review.** Add a text control to clear every reason for a problem and explain how Practice selections feed What to study in Arena.
+
+- **Practice contest layout.** Use Arena’s centered contest width and larger headings in Practice set screens. Give the timer and main score more prominence.
+
 - **Recommendation feedback.** Show the update notice when the displayed list changes, and underline problem links that open a saved set review.
 
 - **Review refinements.** Ask about the first attempt on second-try solves and omit Ran out of time. Keep the topic and card filter in What to study and restore native dropdown chevrons for study filters and rating trends.

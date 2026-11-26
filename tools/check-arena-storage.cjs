@@ -136,7 +136,7 @@ async function check(browser) {
   await concept.click();
   await marker.locator('summary').filter({hasText:'1 selected'}).waitFor();
   assert.equal(await starting.getAttribute('aria-pressed'),'true');
-  await starting.click();
+  await marker.getByRole('button',{name:'Deselect all',exact:true}).click();
   await marker.locator('summary').filter({hasText:'Optional'}).waitFor();
   await page.evaluate(async mark => {
     await StudyStorage.restore(null, {version:1, events:[{...mark, at:mark.at - 1}]});

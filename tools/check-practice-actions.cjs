@@ -39,6 +39,9 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  const marker = p.locator('.review-mistake'), steps = p.locator('.review-next');
  const defaultSteps = await steps.innerText();
  await marker.locator('summary').click();
+ assert(await marker.getByText('What to study in Arena',{exact:true}).isVisible());
+ const deselect = marker.getByRole('button',{name:'Deselect all',exact:true});
+ assert.equal(await deselect.isVisible(),false);
  assert(await marker.getByRole('button',{name:/Ran out of time/}).isVisible());
  await marker.locator('[data-mistake-reason="carelessness"]').click();
  await marker.locator('[data-mistake-reason="starting"]').click();
@@ -48,6 +51,14 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  await p.getByRole('link',{name:'Back to Results overview'}).click();
  await missedLink.waitFor();
  assert.equal(await updateNote.isVisible(),false,'saving reasons alone does not show a notice if the list stays the same');
+ await missedLink.click();
+ await marker.locator('summary').filter({hasText:'2 selected'}).click();
+ await deselect.press('Enter');
+ await marker.locator('summary').filter({hasText:'Optional'}).waitFor();
+ assert.equal(await marker.locator('[data-mistake-reason][aria-pressed="true"]').count(),0);
+ assert.equal(await deselect.isVisible(),false);
+ assert.equal(await p.evaluate(async id => (await LearningActivity.mistakesFor('practice',id)).has('2018-amc-10a-1'),partial),false);
+ await p.getByRole('link',{name:'Back to Results overview'}).click();
  await p.locator('[data-result-index="1"]').click();
  await steps.getByRole('link',{name:'Set up one practice problem at a similar Elo'}).click();
  await p.locator('#topic-count').waitFor();
