@@ -6205,12 +6205,8 @@
       ["Lessons to review", [...new Set(lessons.map(studyLessonLink))].slice(0, 3)],
       ["Additional practice", practice]
     ].filter(([, links]) => links.length);
-    const solution = p.solUrl && p.solKind !== "answer-key"
-      ? `<a href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">${p.solAops ? "Open solutions on AoPS" : "Open the official solution"} ${uiIcon("arrow-up-right")}</a>`
-      : "";
-    if (!sections.length && !solution) return "";
+    if (!sections.length) return "";
     return `<div class="review-next chain-study"><h4 class="chain-study-h">Next steps</h4>
-      ${solution ? `<p>${solution}</p>` : ""}
       ${sections.map(([label, links]) => `<div class="review-resource-group"><h5>${label}</h5>${resourceList(links)}</div>`).join("")}</div>`;
   }
   function wireMistakeReview(panel, slug, {source, setId, initial}) {
@@ -6254,9 +6250,9 @@
       }
     });
   }
-  function practiceExplanationHtml(p, showSource) {
+  function practiceExplanationHtml(p, showSource = true) {
     if (!p) return '';
-    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, solutionLinksHtml(p, showSource), {includeStudy:false})}</div>`;
+    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, solutionLinksHtml(p, showSource), {includeStudy:false, includeOfficial:showSource})}</div>`;
   }
   // Open in app and Open in AoPS under a solution's three columns (practice review, textbooks).
   function solutionLinksHtml(p, showSource = true) {
@@ -11072,9 +11068,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return `The round's official ${p.solKind === "answer-key" ? "answer key" : "solutions"}, as one PDF${number}.${legacy
       ? ` The <a href="https://www.hmmt.org/www/archive/32" target="_blank" rel="noopener noreferrer">HMMT February 2000 archive</a> links these PDFs, which are headed “Rice Mathematics Tournament 2000.”` : ""}`;
   }
-  function chainInnerHtml(p, afterChain = "", {includeStudy = true} = {}) {
-    const primary = p.strategy ? `<p class="chain-strategy">${p.strategy}</p>`
-      : p.solUrl ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">${p.solAops ? "Open the solutions on AoPS" : p.solKind === "answer-key" ? "Open the official answer key" : "Open the official solution"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">${p.solAops ? "The Art of Problem Solving wiki's page for this problem, with its solutions." : (/^ARML/.test(p.fam) ? `The contest's official booklet, open at the Individual round's solutions${p.num ? `; this is problem I-${p.num}` : ""}.` : officialSolutionNote(p))}</span></p>` : "";
+  function chainInnerHtml(p, afterChain = "", {includeStudy = true, includeOfficial = false} = {}) {
+    const official = p.solUrl && (!p.strategy || includeOfficial && p.solKind !== "answer-key") ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">${p.solAops ? "Open the solutions on AoPS" : p.solKind === "answer-key" ? "Open the official answer key" : "Open the official solution"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">${p.solAops ? "The Art of Problem Solving wiki's page for this problem, with its solutions." : (/^ARML/.test(p.fam) ? `The contest's official booklet, open at the Individual round's solutions${p.num ? `; this is problem I-${p.num}` : ""}.` : officialSolutionNote(p))}</span></p>` : "";
+    const primary = (p.strategy ? `<p class="chain-strategy">${p.strategy}</p>` : "") + official;
     const solutions = [{ text: primary, cards: p.formulas }];
     if (p.trick) solutions.push({ text: `<p class="chain-strategy">${p.trick}</p>`, cards: p.trickFormulas });
     const routes = solutions.map(({ text, cards }) => `<div class="chain-solution">${text}${chainCardsHtml(cards)}</div>`).join("");

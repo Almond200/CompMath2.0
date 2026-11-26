@@ -90,7 +90,7 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.equal(await p.locator('.review-mistake').count(),0,'a first-try solve needs no mistake label');
  await p.getByRole('link',{name:'Back to Results overview'}).click();
  await p.locator('[data-result-index="3"]').click();
- const official = steps.getByRole('link',{name:'Open the official solution'});
+ const official = p.locator('.practice-explanation').getByRole('link',{name:'Open the official solution'});
  assert.equal(await official.getAttribute('href'),'https://hmmt-archive.s3.amazonaws.com/tournaments/2024/feb/algnt/solutions.pdf');
  assert.equal(await official.getAttribute('target'),'_blank');
  assert(await steps.getByRole('heading',{name:'Cards to study'}).isVisible());
