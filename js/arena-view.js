@@ -185,14 +185,6 @@
       }
     };
   }
-  function distinctStudyRows(rows) {
-    const anchors = new Set();
-    return rows.filter(row => {
-      if (anchors.has(row.missedSlug)) return false;
-      anchors.add(row.missedSlug);
-      return true;
-    });
-  }
   function reviewedProblemLink(ctx, event) {
     const p = ctx.lookup(event.item);
     const name = ctx.escape(p ? ctx.refShort(p.ref) : event.item);
@@ -213,14 +205,14 @@
     if (unanswered.length) reasons.push('you left ' + reviewedProblemsHtml(ctx,unanswered) + ' unanswered');
     return 'Because ' + reasons.join(' and ') + '.';
   }
+  const hasArenaReview = event => event.source === 'arena' && event.session && event.reviewNumber;
   function studyRowsHtml(ctx, rows) {
     return `<div class="arena-study-list">${rows.map(r => {
-      const lesson = ctx.studyLink(r.id, r.missedSlug), practice = ctx.practiceLink(r.id);
-      const marked = r.examples.find(event => event.mistake);
-      const advice = marked && ctx.mistakeAdvice(marked.mistake);
-      return `<article class="arena-study-row"><div><h4>${ctx.topicLabel(ctx.nodes.get(r.id))}</h4>
-        <p class="arena-note">${studyReasonHtml(ctx,r.examples)}</p>
-        ${advice ? `<p class="arena-note">You marked <strong>${advice.label}</strong>. ${advice.steps[0]}</p>` : ''}</div>
+      const item = ctx.studyItem(r);
+      const lesson = r.kind === 'topic' ? ctx.studyLink(r.id, r.missedSlug) : '';
+      const practice = r.kind === 'topic' ? ctx.practiceLink(r.id) : ctx.studyCardPractice(r.id);
+      return `<article class="arena-study-row"><div><h4>${item.kind} to revisit · ${item.link}</h4>
+        <p class="arena-note">${studyReasonHtml(ctx,r.examples.filter(hasArenaReview))}</p></div>
         <ul class="study-links">
           ${lesson ? `<li><span>Study</span>${lesson}</li>` : ''}
           ${practice ? `<li><span>Practice</span>${practice}</li>` : ''}
@@ -228,10 +220,8 @@
     }).join('')}</div>`;
   }
   function studyHtml(ctx, rows) {
-    if (!rows.length) return '<p class="arena-note">Missed topics from Arena will appear here with links to review and practice them.</p>';
-    return `<p class="arena-note">Review recent misses and problems that took two tries.</p>
-      ${studyRowsHtml(ctx,rows.slice(0,3))}
-      ${rows.length > 3 ? '<button type="button" class="hp-btn hp-btn-soft" data-study-all aria-haspopup="dialog">See all</button>' : ''}`;
+    return rows.length ? studyRowsHtml(ctx,rows) :
+      '<p class="arena-note">Study recommendations will appear here when your recent results show what to review.</p>';
   }
   function subjectDetails(ctx, id, label, stats, reviews) {
     const results = stats.points.filter(point => point.event.subjects.includes(id));
@@ -258,10 +248,12 @@
     const placementCompleted = activePlacement ? placementTotal - A.remaining(state) : t.count;
     const prev = s || {};
     const established = ctx.roots.filter(root => stats.subjects.get(root.id)?.wins >= A.SUBJECT_PROVISIONAL).length;
-    const arenaHistory = history.filter(event => event.source === 'arena' && event.session && event.reviewNumber);
-    const reviews = new Map(arenaHistory.map(event => [event.item,event]));
-    const recommendations = A.recommendations(arenaHistory, ctx.lookup).filter(row => ctx.nodes.has(row.id));
-    const studyRows = distinctStudyRows(recommendations);
+    let studyHistory = history;
+    const reviews = new Map(history.filter(hasArenaReview).map(event => [event.item,event]));
+    const studyRows = (subject = 'all') => A.studyRecommendations(studyHistory, ctx.lookup, Date.now(), row =>
+      ctx.studyItem(row) && row.examples.some(event => hasArenaReview(event) &&
+        (subject === 'all' || ctx.subjectsOf(ctx.lookup(event.item)).includes(subject))));
+    const initialStudy = studyHtml(ctx,studyRows());
     const postPlacement = stats.points.filter(point => !point.calibration);
     const accuracy = points => points.length ? Math.round(100 * points.filter(p => p.event.outcome === 'correct').length / points.length) + '%' : '—';
     const latest = postPlacement.at(-1);
@@ -299,7 +291,10 @@
           return `<tr><th scope="row"><button type="button" class="arena-subject-toggle" data-subject-toggle aria-expanded="false" aria-controls="arena-subject-${id}">${label}</button></th><td>${placed && r ? number(r.rating) : '—'}${placed && r && r.wins < A.SUBJECT_PROVISIONAL ? '<small>Provisional</small>' : ''}</td>
           <td>${accuracy(stats.points.filter(p => hasAnswer(p.event) && p.event.subjects.includes(id)))}</td></tr>
           <tr class="arena-subject-details" id="arena-subject-${id}" data-subject="${id}" hidden><td colspan="3">${subjectDetails(ctx,id,label,stats,reviews)}</td></tr>`; }).join('')}</tbody></table></div></section>
-      <section class="sh-section" id="arena-study"><h3>What to study</h3>${studyHtml(ctx, studyRows)}</section>
+      <section class="sh-section" id="arena-study"><div class="arena-study-head"><div class="review-next-heading"><h3>What to study</h3>${ctx.reviewRefreshHtml()}</div>
+        <select class="arena-study-filter" aria-label="Study recommendation subject"><option value="all">All subjects</option>
+          ${[...opts].map(([id,label]) => `<option value="${id}">${label}</option>`).join('')}</select></div>
+        <div data-study-items aria-live="polite">${initialStudy}</div></section>
       <section class="sh-section" id="arena-history"><h3>Contest history</h3><div id="arena-history-list"></div><button type="button" class="hp-btn hp-btn-soft" data-arena-history-toggle aria-controls="arena-history-list" aria-expanded="false" hidden>Show all</button></section></div>`;
     const overallPlot = ctx.container.querySelector('#arena-overview [data-rating-plot]');
     if (overallPlot) wireTrend(overallPlot,ratingHistory(stats));
@@ -331,31 +326,31 @@
     };
     reportTarget();
     startForm?.addEventListener('change', reportTarget);
-    const studyAll = ctx.container.querySelector('[data-study-all]');
-    if (studyAll) studyAll.onclick = () => {
-      const filters = selector('study-subject','Subject',[['all','All subjects'],...opts],'all');
-      const dialog = ctx.openDialog(`<header class="arena-study-dialog-head">
-        <div><h2 id="arena-study-modal-title">Study recommendations</h2>
-        <button type="button" class="hp-btn hp-btn-soft" autofocus>Close</button></div>${filters}</header>
-        <div class="arena-study-dialog-body">${studyRowsHtml(ctx,studyRows)}</div>`, d => {
-        d.classList.add('arena-study-dialog');
-        d.setAttribute('aria-labelledby','arena-study-modal-title');
-        d.querySelector('button').onclick = () => d.close();
-        const list = d.querySelector('.arena-study-dialog-body');
-        d.addEventListener('change',e => {
-          if (e.target.name !== 'study-subject') return;
-          const subject = e.target.value;
-          const rows = subject === 'all' ? studyRows : distinctStudyRows(recommendations.filter(row =>
-            row.id === subject || row.id.startsWith(subject + '.')));
-          list.innerHTML = rows.length ? studyRowsHtml(ctx,rows) : '<p class="arena-note">No recommendations in this subject yet.</p>';
-          list.scrollTop = 0;
-          ctx.renderMath(list);
-        });
-        const close = () => { if (d.open) d.close(); };
-        window.addEventListener('hashchange',close);
-        d.addEventListener('close',() => window.removeEventListener('hashchange',close),{once:true});
-      });
-      ctx.renderMath(dialog);
+    const study = ctx.container.querySelector('#arena-study');
+    const filter = study.querySelector('.arena-study-filter');
+    const refresh = study.querySelector('[data-refresh-study]');
+    const list = study.querySelector('[data-study-items]');
+    let displayed = initialStudy, loadingStudy = false;
+    const updateStudy = () => {
+      const html = studyHtml(ctx,studyRows(filter.value));
+      if (html === displayed) return;
+      displayed = html;
+      list.innerHTML = html;
+      ctx.renderMath(list);
+    };
+    filter.onchange = updateStudy;
+    refresh.onclick = async () => {
+      if (loadingStudy) return;
+      loadingStudy = true;
+      refresh.setAttribute('aria-disabled','true');
+      try {
+        studyHistory = await ctx.history(state);
+        if (list.isConnected) updateStudy();
+      } catch { }
+      finally {
+        loadingStudy = false;
+        refresh.setAttribute('aria-disabled','false');
+      }
     };
     startForm?.addEventListener('submit', async e => {
       e.preventDefault();
@@ -414,8 +409,8 @@
     const id = route.review;
     const events = state.events.filter(e => e.session === id);
     if (!events.length || state.session?.id === id && !state.session.closed) { location.replace(homeUrl); return; }
-    const marks = new Map(history.filter(e => e.source === 'arena' && e.session === id && e.mistake)
-      .map(e => [e.item,e.mistake]));
+    const marks = new Map(history.filter(e => e.source === 'arena' && e.session === id && e.mistakes?.length)
+      .map(e => [e.item,e.mistakes]));
     const points = stats.points.filter(p => p.event.session === id);
     const placement = events.some(e => e.placement) || (points.length > 0 && points.every(p => p.calibration));
     const startedHere = stats.baseline?.event.session === id;
@@ -446,15 +441,15 @@
         <section class="sh-section practice-review detail"><h3>Your answer</h3>
           <p class="practice-result">${statusLabel(event.outcome)}${event.outcome !== 'seen' ? ' · ' + responseText(ctx,event) : ''}</p>
           ${p ? ctx.mistakeReviewHtml(event.outcome, !!event.firstMiss) : ''}
-          <div data-arena-explanation></div>${p ? ctx.nextStepsHtml() : ''}
+          <div data-arena-explanation></div>${p ? ctx.nextStepsHtml(p) : ''}
           <div class="practice-problem-nav">${navButton('Previous',index && detailUrl(index-1))}
           ${navButton('Next',index+1 < events.length && detailUrl(index+1))}</div></section></div>`;
       const explanation = ctx.container.querySelector('[data-arena-explanation]');
       ctx.container.querySelector('.practice-question h3').focus({preventScroll:true});
       ctx.renderMath(ctx.container);
       if (!p) return;
-      ctx.wireMistakeReview(explanation.parentElement,p, {
-        source:'arena', setId:id, outcome:event.outcome, retry:!!event.firstMiss, initial:marks.get(event.slug) || ''
+      ctx.wireMistakeReview(explanation.parentElement,p.slug, {
+        source:'arena', setId:id, initial:marks.get(event.slug) || []
       });
       if (!event.external) ctx.showPrompt(p);
       try {
@@ -490,12 +485,13 @@
     ].filter(Boolean).join(' ');
     ctx.container.innerHTML = ctx.reviewResults({back:back(ctx), title, subtitle, arena:true, stats:figures, rows,
       reviewUrl:detailUrl(0), insights:ctx.reviewInsights(outcomes,counts,detailUrl,
-        arenaAnswerBreakdown(ctx,events,'Accuracy on submitted answers'),marks),
+        arenaAnswerBreakdown(ctx,events,'Accuracy on submitted answers')),
       intro:ratingChange, meta:note ? `<p class="practice-results-meta">${note}</p>` : ''});
     const heading = ctx.container.querySelector('h1');
     heading.tabIndex = -1;
     heading.focus({preventScroll:true});
     ctx.renderMath(ctx.container);
+    ctx.wireResultStudy(id,outcomes,detailUrl,state,history);
   }
   function seenProblems(ctx, history, state) {
     return new Set([...history.map(e => e.canonicalId), ...ctx.priorSeen().map(A.canonical), ...state.events.map(e => A.canonical(e.identity))]);

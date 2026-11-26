@@ -76,6 +76,12 @@ for(const theme of ['light','dark'])for(const width of [1280,375]){
  assert.match(page.url(),/#\/browse\/topics$/,'opening a branch does not leave the page');
  await page.locator('.tt-name[href="#/browse/topics/geo.tri.special"]').click();await page.locator('.br-group').first().waitFor();
  assert.equal(await page.locator('h1').innerText(),'Special triangles');
+ if(width!==375){
+  const saved = await page.evaluate(() => {const root=document.documentElement, previous=root.dataset.studySidebars;root.dataset.studySidebars='hide';return previous;});
+  assert(await page.locator('.tt').isVisible(),'the desktop topic sidebar remains visible with study sidebars hidden');
+  assert.equal(await page.locator('.browse-topics').evaluate(el=>getComputedStyle(el).display),'grid');
+  await page.evaluate(value => {if(value===undefined)delete document.documentElement.dataset.studySidebars;else document.documentElement.dataset.studySidebars=value;},saved);
+ }
  // Folding filter buttons changes only their visibility, not the selected contests or results.
  const foldedHeads=await page.locator('.br-group-h').evaluateAll(hs=>hs.map(h=>h.childNodes[1].textContent));
  assert(foldedHeads.length>4);assert.deepEqual(foldedHeads.slice(0,4),['AMC 8','AMC 10','AMC 12','AIME']);
