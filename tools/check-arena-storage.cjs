@@ -216,7 +216,8 @@ async function check(browser) {
   });
   await lab.evaluate(slug => LearningActivity.saveMistakes('arena','placement',slug,['concept']),nextProblem);
   await page.waitForFunction(() => window.recommendationReads > 0);
-  assert.equal(await type.inputValue(),'all');
+  assert.equal(await recommendations.locator('[data-study-type]').inputValue(),'all');
+  assert.equal(await type.count(),0);
   assert.equal(await page.locator('#arena-start [name="focus"][value="mixed"]').count(),0);
   const subject = page.getByRole('button',{name:'Algebra',exact:true});
   assert.match(await subject.evaluate(el => getComputedStyle(el,'::before').content), /▸/);
