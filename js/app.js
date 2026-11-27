@@ -8060,8 +8060,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const saved = prog[p.slug] || {};
       return `<li class="lp-prob" id="lp-${p.slug}" data-slug="${p.slug}">
           <div class="lp-prob-head"><span class="lp-prob-n">${name(i)}</span>${/\.$/.test(name(i)) ? "" : ` <span class="lp-prob-sep">&middot;</span>`} <a href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></div>
-          ${MAA_RE.test(p.ref) ? `<section class="prob-st lp-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div></section>`
-            : p.url ? `<p class="prob-note"><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the problem on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} ${uiIcon("arrow-up-right")}</a></p>` : ""}
+          ${hasProblemStatement(p) ? `<section class="prob-st lp-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div></section>` : ""}
+          ${p.url ? `<p class="prob-note" data-statement-fallback><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the problem on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} ${uiIcon("arrow-up-right")}</a></p>` : ""}
           <div class="lp-work">
             <textarea class="lp-notes" rows="2" placeholder="Type your solution, notes and/or work here." aria-label="Your solution and notes for ${escapeAttr(refShort(p.ref))}">${escapeAttr(saved.notes || "")}</textarea>
             <button type="button" class="hp-btn lp-show"${(saved.notes || "").trim() ? "" : " disabled"}>Show Solution</button>
@@ -8300,7 +8300,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const p = PROBLEM_BY_SLUG[li.dataset.slug];
       const box = li.querySelector(".lp-notes");
       if (box && box.value) lpGrow(box);
-      if (p && MAA_RE.test(p.ref)) showStatement(p, ".lp-st");
+      if (p && hasProblemStatement(p)) showStatement(p, ".lp-st");
       const saved = learnProgress().problems[li.dataset.slug];
       if (saved && saved.shown && !saved.hidden && (saved.notes || "").trim()) showLearnSolution(li);
     });
