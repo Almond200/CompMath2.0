@@ -35,6 +35,11 @@ async function checkHistory() {
   const problemHistory = await activity.history({kind:'problem', arenaState, arena:{}, practice});
   assert.equal(problemHistory.length, 3, 'annotations do not create additional problem events');
   assert(problemHistory.filter(e => e.source === 'practice').every(e => !e.mistakes), 'shared history leaves out Practice mistake reasons');
+  // Arena's study recommendations may ask for Practice marks (Settings, Practice; off by default).
+  const optedIn = await activity.history({kind:'problem', arenaState, arena:{}, practice, practiceMistakes:true});
+  const missedEvent = optedIn.find(e => e.source === 'practice' && e.session === missed.id);
+  assert.deepEqual(missedEvent.mistakes, ['starting','carelessness','timing'], 'opted-in history carries Practice mistake reasons');
+  assert(optedIn.filter(e => e.source === 'practice').every(e => e.setKind === 'set' && e.reviewNumber >= 1), 'Practice events carry their set kind and review position');
   const missedReview = await activity.practiceReviewHistory(missed.id, {practice});
   assert.deepEqual(missedReview.map(e => [e.session,e.outcome,e.mistakes]), [[missed.id,'incorrect',['starting','carelessness','timing']]]);
   const correctReview = await activity.practiceReviewHistory(set.id, {practice});

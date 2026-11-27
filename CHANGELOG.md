@@ -1,5 +1,9 @@
 # Changelog
 
+**2026-11-28**
+
+- **Settings: Practice in Arena recommendations.** Two Practice settings, both off by default so Practice stays separate: Mock contests in Arena recommendations, and Practice sets in Arena recommendations. When on, finished sets of that kind, and the mistakes marked in their review, add to Arena's What to study (and its homepage preview), with links to the Practice review; the descriptions and the Mark your mistake note say so and that the setting can be turned off in Settings. Rated-set topic targeting still uses Arena results only.
+
 **2026-11-27**
 
 - **BMT audit complete.** Solve all 30 questions from the 2025 papers and revise 26 Elo estimates; add three official-link notes and switch 2025 Algebra #10 to self-check while the repeated-entry case is open. This completes all 370 indexed BMT questions (Codex PR #469).

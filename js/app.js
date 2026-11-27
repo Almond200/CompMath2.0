@@ -310,6 +310,10 @@
       lessonLinks: P.lessonLinksChosen ? pick(P.lessonLinks, LESSON_LINK_MODES) : LESSON_LINK_MODES[0],
       lessonLinksChosen: !!P.lessonLinksChosen,
       arenaProblems: P.arenaProblems === "all" ? "all" : "automatic",
+      // Practice is a separate space by default: its results reach Arena's study recommendations
+      // only when the learner turns these on (owner, 2026-11-28).
+      mockStudy: P.mockStudy === "on" ? "on" : "off",
+      setStudy: P.setStudy === "on" ? "on" : "off",
       studySidebars: pick(P.studySidebars, STUDY_SIDEBAR_MODES),
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
@@ -326,7 +330,8 @@
           density: state.density, notation: state.notation, angles: state.angles,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll,
-          tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonLinksChosen: !!state.lessonLinksChosen, studySidebars: state.studySidebars, arenaProblems: state.arenaProblems
+          tools: state.tools, contestLists: state.contestLists, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks, lessonLinksChosen: !!state.lessonLinksChosen, studySidebars: state.studySidebars, arenaProblems: state.arenaProblems,
+          mockStudy: state.mockStudy, setStudy: state.setStudy
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -360,6 +365,8 @@
     lessonLinks: _loaded.lessonLinks, // "drawer" | "card" — a lesson's card links open beside it or go to the card
     studySidebars: _loaded.studySidebars,
     arenaProblems: _loaded.arenaProblems,
+    mockStudy: _loaded.mockStudy,      // "off" | "on" — mock contests feed Arena's study recommendations
+    setStudy: _loaded.setStudy,        // "off" | "on" — card and topic Practice sets do too
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     strategyChosen: _loaded.strategyChosen,
     lessonLinksChosen: _loaded.lessonLinksChosen,
@@ -4664,7 +4671,7 @@
   // Every setting lists its default option first (owner, 2026-10-31); the defaults are the first
   // allowed value the settings loader falls back to.
   const SETTING_DEFAULTS = {
-    theme: "light", studySidebars: STUDY_SIDEBAR_MODES[0], arenaProblems: "automatic", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
+    theme: "light", studySidebars: STUDY_SIDEBAR_MODES[0], arenaProblems: "automatic", mockStudy: "off", setStudy: "off", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
     notation: NOTATIONS[0], angles: ANGLE_MODES[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
     order: ORDERS[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0], contestLists: CONTEST_LIST_MODES[0]
   };
@@ -4725,6 +4732,12 @@
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Practice</h3>
+          ${settingRow("Mock contests in Arena recommendations", state.mockStudy === "on"
+            ? "On: the mock contests you finish, and the mistakes you mark in their review, add to Arena's study recommendations alongside your Arena results. You can turn this off at any time; Arena's recommendations then come only from your Arena results again."
+            : "Off: Practice stays separate. Your mock contests and the mistakes you mark in them don't affect Arena's study recommendations, which come only from your Arena results.", "mockStudy", state.mockStudy, [["off", "Off"], ["on", "On"]])}
+          ${settingRow("Practice sets in Arena recommendations", state.setStudy === "on"
+            ? "On: the card and topic Practice sets you finish, and the mistakes you mark in their review, add to Arena's study recommendations alongside your Arena results. You can turn this off at any time; Arena's recommendations then come only from your Arena results again."
+            : "Off: Practice stays separate. Your card and topic Practice sets and the mistakes you mark in them don't affect Arena's study recommendations, which come only from your Arena results.", "setStudy", state.setStudy, [["off", "Off"], ["on", "On"]])}
           ${settingRow("Strategy", "On a problem's page, the strategy and the cards it uses. Click to show keeps them closed until you press Show, so you can try the problem first; Shown opens them at once. Either way, Show and Hide beside the heading open and close them.<br><button type='button' class='strategy-reset' data-reset-strategies>Reset opened strategies</button> Closes strategies you previously opened on problem pages.", "strategy", state.strategy, [["show", "Shown"], ["click", "Click to show"]], "problem")}
         </section>
         <section class="set-panel">
@@ -4888,6 +4901,8 @@
         order: "sort, sorting, ordering, order, popular, most used, curated, arrange, rank",
         lessonLinks: "lesson links, drawer, open cards beside, side panel, card links, links, preview, popup",
         arenaProblems: "arena problem pool, external statements, auto grading, all problems",
+        mockStudy: "mock contests, mocks, recommendations, what to study, arena recommendations, mistakes, mark your mistake, practice affects arena, isolated, separate",
+        setStudy: "practice sets, topic sets, card sets, recommendations, what to study, arena recommendations, mistakes, mark your mistake, practice affects arena, isolated, separate",
         studySidebars: "sidebar, side bar, navigation, drawer, rail, hide menu, learn, practice, arena, more space",
         contestLists: "contest sections, contest lists, show more, show all, expanded, collapsed, folded, unfolded, contests, statistics, stats, practice problems, years",
         strategy: "spoilers, spoiler, solution, solutions, reveal, answers, answer, hide the strategy, show the strategy, how this problem works, hints",
@@ -5651,13 +5666,13 @@
       trend.innerHTML = window.ArenaView.ratingPreview(stats) || '<p class="hp-empty">Your rating trend starts after your first rated set.</p>';
     }).catch(() => { trend.innerHTML = '<p class="hp-empty">Rating trend couldn’t load.</p>'; });
     try {
-      const [history] = await Promise.all([activity.history({arenaState, kind:"problem"}), loadProblems()]);
+      const [history] = await Promise.all([activity.history({arenaState, kind:"problem", practiceMistakes: state.mockStudy === "on" || state.setStudy === "on"}), loadProblems()]);
       if (!board.isConnected) return;
-      const rated = history.filter(event => event.source === "arena" && event.session && event.reviewNumber);
+      const rated = history.filter(studyEventIncluded);
       const rows = arena.studyRecommendations(rated, slug => PROBLEM_BY_SLUG[slug], Date.now(), row => studyItem(row)).slice(0, 2);
       recommendations.innerHTML = rows.length ? `<div class="hm-recommendations">${rows.map(row => {
           const example = row.examples[0];
-          const review = "#/arena/review/" + encodeURIComponent(example.session) + "/" + example.reviewNumber;
+          const review = studyReviewHash(example);
           const practice = row.kind === "topic" ? topicPracticeLink(row.id) : cardPracticeLink(row.id, "Practice this card");
           return `<article class="arena-study-row"><strong>${studyItem(row).link}</strong>
             <div class="hp-mine-foot"><a href="${review}">Review problem</a>${practice || ""}</div></article>`;
@@ -6248,12 +6263,26 @@
     timing: ["Ran out of time", "I had a workable approach and could likely have solved it with more time."],
     unsure: ["Something else or not sure", "None of these fits, or I haven’t found where I got stuck."]
   };
-  function mistakeReviewHtml(eligible, {solvedOnRetry = false, fromPractice = false} = {}) {
+  // Which results feed Arena's study recommendations: always Arena's own; Practice results only
+  // when the learner opts in for that kind of set (Settings, Practice; off by default).
+  const practiceFeedsArena = set => !!set && (isMock(set) ? state.mockStudy === "on" : state.setStudy === "on");
+  function studyEventIncluded(event) {
+    if (event.source === "arena") return !!(event.session && event.reviewNumber);
+    if (event.source !== "practice" || !event.session || !event.reviewNumber) return false;
+    return event.setKind === "mock" ? state.mockStudy === "on" : state.setStudy === "on";
+  }
+  const studyReviewHash = event => event.source === "practice"
+    ? "#/practice/set/" + encodeURIComponent(event.session) + "/review/" + event.reviewNumber
+    : "#/arena/review/" + encodeURIComponent(event.session) + "/" + event.reviewNumber;
+  function mistakeReviewHtml(eligible, {solvedOnRetry = false, fromPractice = false, practiceSet = null} = {}) {
     if (!eligible) return "";
     const reasons = activity.mistakeReasons(Object.keys(MISTAKE_REASONS), solvedOnRetry);
-    const recommendation = fromPractice
-      ? "Choose any reasons that fit. Your selections only personalize recommendations for this Practice set and don’t affect Arena."
-      : "Choose any reasons that fit to improve your study recommendations. Only your rated results affect your Elo.";
+    const feedsArena = fromPractice && practiceFeedsArena(practiceSet);
+    const recommendation = !fromPractice
+      ? "Choose any reasons that fit to improve your study recommendations. Only your rated results affect your Elo."
+      : feedsArena
+        ? `Choose any reasons that fit. Your selections personalize recommendations for this Practice set and also Arena’s study recommendations, because ${isMock(practiceSet) ? "Mock contests" : "Practice sets"} in Arena recommendations is turned on in Settings. You can turn it off there at any time.`
+        : "Choose any reasons that fit. Your selections only personalize recommendations for this Practice set and don’t affect Arena.";
     return `<details class="review-mistake"><summary>Mark your mistake <span data-mistake-selection>Optional</span></summary>
       <p>${solvedOnRetry ? "Think about what went wrong on your first try. " : ""}${recommendation} Select a reason again to clear it.</p>
       <div class="review-mistake-options" role="group" aria-label="Mistake reasons">
@@ -6665,7 +6694,7 @@
         ${finished ? `</section><section class="sh-section practice-review detail"><h3>${voidNote ? "Voided" : "Your answer"}</h3>
           ${voidNote ? '' : typedAnswer ? (set.answers[slug] ? `<p class="practice-submitted">${paper ? escapeAttr(set.answers[slug]) : exactAnswerHtml(set.answers[slug], exact)}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${voidNote ? escapeAttr(voidNote) : outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
-          ${mistakeReviewHtml(p && activity.canMarkMistake(reviewOutcome), {fromPractice:true})}
+          ${mistakeReviewHtml(p && activity.canMarkMistake(reviewOutcome), {fromPractice:true, practiceSet:set})}
           ${practiceExplanationHtml(p, !paper || !!inlinePaper)}
           ${paper && set.answers[slug] ? `<div class="practice-self"><div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div></div>` : ''}
           ${p && !voidNote ? nextStepsHtml(p) : ""}`
@@ -7147,7 +7176,8 @@
       roots: TOPIC_ROOTS, nodes: TOPIC_NODES, topicLabel, refShort, escape: escapeAttr, icon: uiIcon,
       priorSeen: () => [...Object.keys(learnProgress().problems), ...readRecent().filter(key => key.startsWith("p:")).map(key => key.slice(2)),
         ...practiceSessions.read(localStorage).flatMap(set => Object.keys(set.answers).filter(slug => set.answers[slug]))],
-      history: arenaState => activity.history({arenaState, kind:"problem"}), practiceLink: topicPracticeLink,
+      history: arenaState => activity.history({arenaState, kind:"problem", practiceMistakes: state.mockStudy === "on" || state.setStudy === "on"}), practiceLink: topicPracticeLink,
+      includeStudyEvent: event => event.source === "practice" && studyEventIncluded(event), reviewHash: studyReviewHash,
       didRender: () => { markSpaceSection(); updatePageTitle(getRoute()); },
       studyLink: (id, missedSlug) => {
         const codes = window.MATH_LESSON_LINKS.topic[id] || [];

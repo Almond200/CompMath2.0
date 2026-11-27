@@ -205,7 +205,8 @@
   function reviewedProblemLink(ctx, event) {
     const p = ctx.lookup(event.item);
     const name = ctx.escape(p ? ctx.refShort(p.ref) : event.item);
-    return `<a class="review-problem-link" href="${reviewUrl(event.session)}/${event.reviewNumber}"${p ? ` data-problem-preview="${ctx.escape(p.slug)}"` : ''}>${name}</a>`;
+    const href = ctx.reviewHash ? ctx.reviewHash(event) : `${reviewUrl(event.session)}/${event.reviewNumber}`;
+    return `<a class="review-problem-link" href="${href}"${p ? ` data-problem-preview="${ctx.escape(p.slug)}"` : ''}>${name}</a>`;
   }
   function reviewedProblemsHtml(ctx, examples) {
     const links = examples.map(event => reviewedProblemLink(ctx,event));
@@ -223,6 +224,8 @@
     return 'Because ' + reasons.join(' and ') + '.';
   }
   const hasArenaReview = event => event.source === 'arena' && event.session && event.reviewNumber;
+  // Practice results join only when the learner opts in (Settings, Practice); see ctx.includeStudyEvent.
+  const inStudy = (ctx, event) => hasArenaReview(event) || !!ctx.includeStudyEvent?.(event);
   function studyRowsHtml(ctx, rows) {
     return `<div class="arena-study-list">${rows.map(r => {
       const item = ctx.studyItem(r);
@@ -266,7 +269,7 @@
     const placementCompleted = activePlacement ? placementTotal - A.remaining(state) : t.count;
     const prev = s || {};
     const established = ctx.roots.filter(root => stats.subjects.get(root.id)?.wins >= A.SUBJECT_PROVISIONAL).length;
-    let studyHistory = history.filter(hasArenaReview);
+    let studyHistory = history.filter(event => inStudy(ctx,event));
     const reviews = new Map(studyHistory.map(event => [event.item,event]));
     const studyRows = (subject = 'all', type = 'all') => A.studyRecommendations(studyHistory, ctx.lookup, Date.now(), row =>
       (type === 'all' || row.kind === type) && ctx.studyItem(row) &&
@@ -393,7 +396,7 @@
       try {
         const latest = await ctx.history();
         if (current !== studyRequest || !list.isConnected) return;
-        studyHistory = latest.filter(hasArenaReview);
+        studyHistory = latest.filter(event => inStudy(ctx,event));
         allStudy = studyRows();
         studyAll.hidden = allStudy.length <= studyPreviewSize;
         const html = studyHtml(ctx,allStudy.slice(0,studyPreviewSize));
