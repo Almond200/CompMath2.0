@@ -36,7 +36,7 @@ The chapter develops recurrences, path tables, backward reasoning and determinis
     "R5.2": {
       prereq: ["constructive-counting", "casework-method"],
       cards: ["recursive-counting", "tiling-a-board"],
-      body: String.raw`A recurrence expresses counts at one size in terms of smaller sizes. Its proof needs more than a plausible pattern in a table: the cases must be disjoint and exhaustive, and each case must correspond to the earlier objects being counted. Initial values then determine the remaining terms.
+      body: String.raw`A recurrence expresses counts at one size in terms of smaller sizes. For example, removing the last tile of a strip or the last letter of a string leaves a smaller object. To turn that observation into a count, split the possible endings into disjoint cases that include every object. In each case, show how to remove the ending and how to put it back. Initial values then determine the remaining terms.
 
 Let $a_n$ count binary strings of length $n$ with no adjacent ones. For $n\ge2$, a valid string ending in zero is obtained by appending zero to any valid string of length $n-1$. A string ending in one must end in $01$; removing those two digits leaves any valid string of length $n-2$. Conversely, appending $01$ to such a string cannot create adjacent ones across the join, because the appended block starts with zero. Hence [[recursive-counting|recursive counting]] gives
 
@@ -60,7 +60,7 @@ $$t_n=t_{n-1}+t_{n-2}\quad(n\ge2),\qquad t_0=t_1=1.$$
 
 The values for widths zero through eight are $1,1,2,3,5,8,13,21,34$, giving $t_8=34$. For a one-row strip tiled with lengths one and three, the last tile instead gives $b_n=b_{n-1}+b_{n-3}$ for $n\ge3$. With $b_0=b_1=b_2=1$, the next values are $2,3,4,6,9$, so $b_7=9$.
 
-A recurrence is not always the shortest way to decide existence. Color an ordinary $8\times8$ board like a chessboard. A domino covers one square of each color, whereas two opposite corners have the same color. Removing them leaves thirty squares of one color and thirty-two of the other. No domino tiling can cover unequal color totals. This is an obstruction proved by an invariant, rather than an assumption that a recurrence will apply to an irregular board.`,
+A recurrence is not always the shortest way to decide existence. Color an ordinary $8\times8$ board like a chessboard. A domino covers one square of each color, whereas two opposite corners have the same color. Removing them leaves thirty squares of one color and thirty-two of the other. No domino tiling can cover unequal color totals. This is an obstruction proved by an invariant. In the next lesson (R5.3), the last step of a path plays the role of the last tile or letter, and a table records the smaller counts at the grid points.`,
       related: [
         { card: "restricted-sequences", note: String.raw`strings with forbidden patterns, counted by the same split by the last letter.` },
         { card: "coloring-arguments", note: String.raw`the coloring that shows a board cannot be tiled (R7.5).` },
@@ -97,7 +97,7 @@ For several required points, first check their order. Along a right-and-up path 
 
 The move-string correspondence works in higher dimensions too. A shortest path from $(0,0,0)$ to $(2,2,2)$ uses two positive moves in each of three coordinate directions. These repeated moves have $6!/(2!\,2!\,2!)=90$ orders.
 
-With obstacles, [[grid-path-fill|filling the grid]] records the number $F(x,y)$ of allowed paths to each point. At the start write one for the empty path. A blocked point has count zero. At any other point, every incoming path has a unique last edge, so add the counts of its allowed predecessors. For right-and-up unit steps this is
+With obstacles, [[grid-path-fill|grid dynamic programming]] records the number $F(x,y)$ of allowed paths to each point and reuses each saved count when filling later entries. The state is the endpoint $(x,y)$ because the set of legal next steps depends only on that point. At the start write one for the empty path. A blocked point has count zero. At any other point, every incoming path has a unique last edge, so add the counts of its allowed predecessors. For right-and-up unit steps this is
 
 $$F(x,y)=F(x-1,y)+F(x,y-1),$$
 
@@ -113,7 +113,9 @@ For a concrete extra-step rule, allow right, up and diagonal $(1,1)$ moves. Let 
 
 $$D(x,y)=D(x-1,y)+D(x,y-1)+D(x-1,y-1).$$
 
-With ones on both axes, the rows through $(2,2)$ are $1,1,1$; $1,3,5$; and $1,5,13$. Thus there are thirteen paths. A single binomial coefficient cannot count them because the number of moves is no longer fixed.
+With ones on both axes, the rows through $(2,2)$ are $1,1,1$, then $1,3,5$, then $1,5,13$. Thus there are thirteen paths. A single binomial coefficient cannot count them because the number of moves is no longer fixed.
+
+The state sometimes needs more than the endpoint. If a right move cannot immediately follow another right move, two paths at $(x,y)$ can have different legal continuations. Keep counts $U(x,y)$ and $R(x,y)$ for paths whose last step was up or right. An up move can follow either type, so $U(x,y)=U(x,y-1)+R(x,y-1)$. A right move can follow only an up move, so $R(x,y)=U(x-1,y)$. Put the empty path in $U(0,0)$ so either first move is allowed. As before, missing predecessors contribute zero. Filling the two counts in increasing order of $x+y$ gives $(U,R)=(1,3)$ at $(3,3)$, or four paths.
 
 Multiple obstacles also illustrate why the state table is useful. From $(0,0)$ to $(3,3)$ with $(1,1)$ and $(2,2)$ forbidden, there are twenty unrestricted paths. The individual through-counts are $\binom21\binom42=12$ for each point, and $2\cdot2\cdot2=8$ pass through both. Inclusion-exclusion gives $20-12-12+8=4$. A table that assigns zero at each obstacle gives the same answer without separately counting intersections.`,
       related: [
@@ -129,7 +131,9 @@ Multiple obstacles also illustrate why the state table is useful. From $(0,0)$ t
         { q: String.raw`How many of the shortest paths from $(0, 0)$ to $(4, 3)$ avoid the point $(2, 1)$?`, answer: "17",
           solution: String.raw`All shortest paths number $\binom73=35$. A path visiting $(2,1)$ splits uniquely into one of $\binom31=3$ prefixes and one of $\binom42=6$ suffixes. Thus $18$ paths visit the point, and the other $35-18=17$ avoid it. As a check, a right-and-up path table with zero at the blocked point has rows $1,1,1,1,1$; $1,2,0,1,2$; $1,3,3,4,6$; and $1,4,7,11,17$, read from bottom to top.` },
         { q: String.raw`How many shortest paths along the edges of a grid of unit cubes go from $(0, 0, 0)$ to $(2, 2, 2)$?`, answer: "90",
-          solution: String.raw`A shortest path has six edges: two increasing each of the three coordinates. Choose two of the six positions for the first direction, then two of the remaining four for the second; the last two positions have the third direction. This gives $\binom62\binom42=15\cdot6=90$, equal to $6!/(2!\,2!\,2!)$. Every resulting move string determines exactly one path.` }
+          solution: String.raw`A shortest path has six edges, with two increasing each coordinate. Choose two of the six positions for the first direction and two of the remaining four for the second. The last two positions have the third direction. This gives $\binom62\binom42=15\cdot6=90$, equal to $6!/(2!\,2!\,2!)$. Every resulting move string determines exactly one path.` },
+        { q: String.raw`How many paths of unit right and up steps reach $(3,4)$ from $(0,0)$ without two consecutive right steps?`, answer: "10",
+          solution: String.raw`Keep the endpoint and the last direction as the state. At $(3,3)$ the lesson's table gives $U=1$ and $R=3$, so $U(3,4)=4$. At $(2,4)$ the same table gives $U=6$, so $R(3,4)=U(2,4)=6$. The total is ten. Equivalently, the four up moves make five gaps, and choosing three distinct gaps for the right moves gives $\binom53=10$.` }
       ],
       problems: [
         "1986 AJHSME, Problem 9",

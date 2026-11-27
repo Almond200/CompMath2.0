@@ -2,7 +2,7 @@
 
 A searchable reference for AMC 10/12, AIME and olympiad training: 791 cards covering formulas,
 methods, and patterns (558 formulas, 183 methods, 50 patterns); 13 Learn textbooks (103 chapters,
-593 lessons); and a database of 19,456 past contest problems from 35 contests, 1950 to 2026
+595 lessons); and a database of 19,456 past contest problems from 35 contests, 1950 to 2026
 (17,931 with their statements shown in the app, the rest linked to the official paper), every one
 rated and filed in a 457-node topic tree, and 15,949 cross-linked to the cards their solutions run
 through. Special:Statistics in the app recomputes these counts.
@@ -128,14 +128,14 @@ CONVENTIONS §0 has the full model.
   results when available. Index and Glossary results scroll to, focus and briefly highlight the
   exact entry; reduced-motion readers get a static highlight. A lesson code such as R3.4 opens that lesson. It supports prefixes, synonyms and small typos,
   with keyboard-selectable suggestions scoped to the current book. A lesson (`.../c5/2`) shows its cards,
-  one flowing explanation, related cards, its own problems with worked solutions, contest
+  one flowing explanation, further reading, related cards, its own problems with worked solutions, contest
   problems, and a drawer for the cards it links. The 13 books have 103 teaching chapters, which open on
   an Introduction and close with a Summary, Review Problems and Challenge Problems (CONVENTIONS §14);
-  the 593 teaching pages count the Introductions and Summaries, not the Review and Challenge sets.
+  the 595 teaching pages count the Introductions and Summaries, not the Review and Challenge sets.
   Each book ends with End-of-book Notes, reference sections rather than a teaching chapter:
   Overview, an Index whose entries link to lessons, a Glossary, and References and Credits. They
   are 13 reference chapters with 52 sections, not counted with the teaching pages (the shelf gate's
-  116 chapters and 645 lesson records include them), and they carry no difficulty tags.
+  116 chapters and 647 lesson records include them), and they carry no difficulty tags.
 - **Practice** (`#/practice`): build an untimed topic or card set, search past papers, generate a timed mock or browse contest years. The search command `Special:Random/Problem` opens a random problem. Resume a set and Completed sets show saved progress. Finish and review asks for confirmation only when an answerable question remains unanswered. Active answers have a small Clear answer button. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
   back; on a phone its years are a menu between arrows, with a toggle between the year's papers.
 - **Search** results are one list in order of relevance (formulas, methods, patterns, problems

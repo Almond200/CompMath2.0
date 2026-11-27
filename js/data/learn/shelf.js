@@ -398,21 +398,31 @@ window.MATH_LEARN_SHELF = [
      },
      {
       "code": "L12.2",
-      "title": "Special values and the identities",
+      "title": "Basic identities and angle addition",
       "level": "Core"
      },
      {
       "code": "L12.3",
-      "title": "Sums, products and telescoping",
+      "title": "Product-to-sum and sum-to-product",
       "level": "Core II"
      },
      {
       "code": "L12.4",
-      "title": "Combining waves and inverse functions",
+      "title": "Harmonic addition",
       "level": "Core II"
      },
      {
       "code": "L12.5",
+      "title": "Multiple angles and power reduction",
+      "level": "Core II"
+     },
+     {
+      "code": "L12.6",
+      "title": "Inverse trigonometric functions",
+      "level": "Core II"
+     },
+     {
+      "code": "L12.7",
       "title": "Summary"
      }
     ],
@@ -952,12 +962,12 @@ window.MATH_LEARN_SHELF = [
      },
      {
       "code": "R5.2",
-      "title": "Recursion and tilings",
+      "title": "Recursive counting and tilings",
       "level": "Core"
      },
      {
       "code": "R5.3",
-      "title": "Paths in a grid",
+      "title": "Grid paths and dynamic programming",
       "level": "Core"
      },
      {

@@ -1,5 +1,11 @@
 # Changelog
 
+**2026-11-27**
+
+- **Textbooks.** Add Read more above Related cards, with an external link and a short note for all 103 teaching chapters. Add specific readings for trig and grid counting, including AoPS section references. Expand recursive counting and grid dynamic programming, and give basic trig, angle identities, multiple angles, harmonic addition and inverse trig their own lessons.
+
+- **Textbook links.** Display each item as its own bullet in Lessons on topic pages and in Practice this more on lesson pages.
+
 **2026-11-26**
 
 - **Past-paper mocks.** Add archived time limits and enforce the timed pairs in ARML, ARML Local, Duke Math Meet and MATHCOUNTS Target. Submit a pair or finish the mock early. Correct the exponent in the 2025 BMT Algebra #6 answer key.

@@ -7913,7 +7913,7 @@
     const text = `This book teaches. The facts themselves live on the reference cards: each formula, method and pattern has one card, with its statement, its conditions, why it is true, and worked examples. A lesson does not copy a card. It explains how a few cards fit together, when to reach for them, and how they are used on real contest problems, and it links each card by name. Press a name to open the card beside the lesson, so you never lose your place. Settings can make the name open the card's own page instead.
 
 ## How a chapter is built
-A chapter is a short run of lessons on one theme. Each lesson starts with the cards it teaches and the cards it assumes you know, then explains the idea in one piece, with worked examples. Related cards follow, each with a line on how it connects. Then come the lesson's own problems, with full worked solutions further down the page, and then Exercises: real contest problems that use the idea. An Introduction has Exercises too: they need only the chapter's first ideas, though they are not always easy to solve.
+A chapter is a short run of lessons on one theme. Each lesson starts with the cards it teaches and the cards it assumes you know, then explains the idea in one piece, with worked examples. Read more links to resources outside this app. Related cards connect the lesson to the reference. Then come the lesson's own problems and worked solutions, followed by contest problems under Exercises when available. The problems in an Introduction use the chapter's first ideas.
 
 A chapter ends with problems that mix its lessons, without saying which idea each one needs. In the newer chapters, the first page is an Introduction that gives a short overview of the chapter's ideas, and the last lesson is a Summary with a list of problem solving strategies. Then come Review Problems, which mostly check that the ideas are understood, and Challenge Problems, which are harder.
 
@@ -8097,8 +8097,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // The lesson: its explanation all in one piece (the write-up format, §2), then its own problems,
   // then their worked solutions, each under the problem stated again (owner, 2026-10-31: practice to work through, not checks to pass;
   // no answer box and no marking). The contest problems follow in their own list.
-  function learnBodyHtml(l, d) {
+  function learnBodyHtml(c, l, d) {
     const ex = d.exercises || [];
+    const reading = window.MATH_LEARN_READING?.[l.code] ?? window.MATH_LEARN_READING?.[c.code] ?? [];
     // Related cards (owner, 2026-10-31): how the lesson connects to cards it does not teach in its
     // explanation, one line each, so the explanation itself never breaks off to talk about them.
     const related = (d.related || []).filter(r => BY_ID[r.card]);
@@ -8107,6 +8108,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <ul>${d.strategies.map(t => `<li>${linkifyCards(t)}</li>`).join("")}</ul></section>` : "";
     return `<div class="detail-body lp-body">${linkLessonRefs(detailBodyHtml(notate(String(d.body || "")), "learn:" + l.code))}</div>
       ${strat}
+      ${reading.length ? `<section class="lp-reading"><h3 class="lp-h3">Read more</h3>
+        <ul class="lp-related">${reading.map(([title, url, note]) => `<li><a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${escapeAttr(title)}</a>: ${escapeAttr(note)}</li>`).join("")}</ul></section>` : ""}
       ${related.length ? `<h3 class="lp-h3">Related cards</h3>
         <ul class="lp-related">${related.map(r => `<li><a class="card-link" href="#/f/${r.card}" data-card="${r.card}">${BY_ID[r.card].formula.name}</a>: ${linkLessonRefs(linkifyCards(r.note))}</li>`).join("")}</ul>` : ""}
       ${learnExercisesHtml(ex, i => `Problem ${l.code}.${i + 1}`)}`;
@@ -8252,7 +8255,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           ${covered.length ? `<div class="lp-cards-row"><span class="lp-cards-label">Topics covered</span>${inlineStudyLinks(covered.map(id => TOPIC_NODES.has(id)
             ? `<a href="${topicHash(id)}">${topicLabel(TOPIC_NODES.get(id))}</a>` : escapeAttr(id)))}</div>` : ""}
         </div>
-        ${learnBodyHtml(l, d)}
+        ${learnBodyHtml(c, l, d)}
         ${learnTailHtml(l.code, d.exercises || [], d.problems || [], "Exercises", true)}
         ${c.kind === "reference" ? "" : lessonPracticeHtml(c, d, covered)}`;
   }
@@ -11236,7 +11239,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   function topicLessonsHtml(id) {
     const links = (window.MATH_LESSON_LINKS.topic[id] || []).map(code => studyLessonLink(lessonLocations.get(code)));
-    return links.length ? `<section class="topic-lessons"><h3 class="pp-h">Lessons</h3>${inlineStudyLinks(links)}</section>` : "";
+    return links.length ? `<section class="topic-lessons"><h3 class="pp-h">Lessons</h3>${resourceList(links)}</section>` : "";
   }
   function topicPracticeLink(id) {
     if (!TOPIC_NODES.has(id)) return "";
@@ -11273,9 +11276,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const links = [...new Set(cards)].filter(id => BY_ID[id]).map(id => cardPracticeLink(id, BY_ID[id].formula.name));
     const topicLinks = covered.map(topicPracticeLink).filter(Boolean);
     const options = [...new Set([...topicLinks, ...links.filter(Boolean)])].slice(0, 4);
-    return `<section><h3 class="lp-h3">Practice this more</h3>${options.length
-      ? `<p class="learn-note">Choose a focus for a contest problem set.</p>${inlineStudyLinks(options)}`
-      : inlineStudyLinks(['<a href="#/practice">Choose a topic in Practice</a>'])}</section>`;
+    return `<section class="lesson-practice"><h3 class="lp-h3">Practice this more</h3>${options.length
+      ? `<p class="learn-note">Choose a focus for a contest problem set.</p>${resourceList(options)}`
+      : resourceList(['<a href="#/practice">Choose a topic in Practice</a>'])}</section>`;
   }
   function studyMoreHtml(p) {
     const aime = /AIME/.test(p.ref || p.cname || "");

@@ -14,6 +14,7 @@ const run = f => vm.runInThisContext(fs.readFileSync(f, 'utf8'), { filename: f }
 for (const f of ['algebra', 'geometry', 'number-theory', 'counting', 'patterns', 'new-cards']) run(R + f + '.js');
 run(R + 'problems/problem-db.js');
 run(R + 'learn/shelf.js');
+run(R + 'learn/further-reading.js');
 const Answer = require(path.join(ROOT, 'js/learn-answer.js'));
 const cards = new Set();
 for (const s of window.MATH_SECTIONS) for (const ss of s.subsections) for (const c of (ss.formulas || ss.items || [])) cards.add(c.id);
@@ -31,6 +32,24 @@ const errs = [];
 const shelfChapter = {};
 for (const b of window.MATH_LEARN_SHELF) for (const c of b.chapters) shelfChapter[c.code] = { b, c };
 const learn = window.MATH_LEARN || {};
+const reading = window.MATH_LEARN_READING;
+const readingKeys = new Set();
+for (const { c } of Object.values(shelfChapter)) {
+  if (c.kind === 'reference') continue;
+  readingKeys.add(c.code);
+  for (const lesson of c.lessons) readingKeys.add(lesson.code);
+  if (!reading[c.code]?.length) errs.push(`${c.code} needs at least one Read more link`);
+}
+for (const [code, links] of Object.entries(reading)) {
+  if (!readingKeys.has(code)) errs.push(`${code}: Read more links have no teaching page`);
+  if (!Array.isArray(links) || !links.length) { errs.push(`${code}: Read more needs a nonempty list`); continue; }
+  for (const entry of links) {
+    if (!Array.isArray(entry) || entry.length !== 3 || entry.some(value => typeof value !== 'string' || !value.trim()) ||
+        !URL.canParse(entry[1]) || new URL(entry[1]).protocol !== 'https:') {
+      errs.push(`${code}: each Read more link needs a title, HTTPS address and note`);
+    }
+  }
+}
 for (const code of Object.keys(fileOf)) if (!learn[code]) errs.push(`${fileOf[code]} does not fill MATH_LEARN["${code}"]`);
 
 const taught = new Map(), placed = new Map();
