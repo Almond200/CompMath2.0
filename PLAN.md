@@ -11,13 +11,13 @@
 
 ## Current state (updated 2026-11-27)
 
-The audit goal covers all indexed BMT, PUMaC, and SMT papers. Record a per-problem derivation and review the statement, answer, cards, topics, and difficulty before marking a paper complete.
+The audit goal covers all indexed BMT, PUMaC, and SMT papers. Solve each problem and compare its shortest verified route with the existing Elo estimate. Record the derivation and review the statement, answer, cards, and topics before marking a paper complete.
 
 Past-paper mocks now use the archived time limits, including separate countdowns for timed pairs and early submission for a pair or the whole mock. The 2025 BMT Algebra #6 key uses an exponent of π on 10. [Mock timing and sources](MOCK-CONTESTS.md#archived-paper-limits)
 
 The textbook goal covers all 103 teaching chapters on `codex/counting-r3-revision`. Read more links accompany every teaching chapter, and the refreshed AMC Algebra L12 and AMC Counting R5 teach introductory trigonometry, identities, recursive counting and grid dynamic programming. AMC Geometry S10 explains when to use its coordinate techniques and adds practice from ARML, SMT and HMMT. Forty-one chapters have completed revision. AMC Geometry S11 is next. [Textbook revision](TEXTBOOK-REVISION.md)
 
-The BMT problem audit covers all 100 indexed questions from 2013 through 2016. The latest pass includes the two remaining 2013 papers and the five 2015–2016 papers. The 2017 individual rounds are next. Practice and Arena reviews show grading rulings next to the official answer link. [Latest BMT audit](AUDITS.md#bmt-problem-audit-remaining-2013-papers-and-20152016-individual-rounds-2026-11-26)
+The BMT problem audit covers 160 of 370 indexed questions, all papers from 2013 through 2018. The 2019 individual rounds are next. Practice and Arena reviews show grading rulings next to the official answer link. [Latest BMT audit](AUDITS.md#bmt-problem-audit-2018-individual-rounds-2026-11-27)
 
 The HMMT audit covers all 1,220 indexed appearances. Its implementation updates 981 entries and includes verified statement and grading corrections. [HMMT archive tag audit](AUDITS.md#hmmt-archive-tag-audit-2026-11-26)
 
