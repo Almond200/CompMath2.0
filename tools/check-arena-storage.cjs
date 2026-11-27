@@ -437,6 +437,26 @@ async function checkPoolAndSubmission(browser) {
   await page.close();
 }
 
+async function checkReviewGradingNote(browser) {
+  const page = await browser.newPage();
+  await page.goto(base + '/#/arena');
+  await page.locator('#arena-start').waitFor();
+  await page.evaluate(async () => {
+    const slug = '2016-bmt-analysis-9';
+    await Arena.change(state => {
+      state.events.push({session:'bmt-review', slug, identity:slug, at:Date.now(), elo:3030,
+        subjects:['alg'], outcome:'incorrect', answer:'-2'});
+    });
+    location.hash = '#/arena/review/bmt-review/1';
+  });
+  const answerKey = page.getByRole('link',{name:'Open the official answer key',exact:true});
+  assert.equal(await answerKey.getAttribute('href'),'https://berkeley.mt/archives/bmt-2016/AnaS2016A.pdf');
+  const gradingNote = page.locator('#' + await answerKey.getAttribute('aria-describedby'));
+  assert.match(await gradingNote.innerText(),/^Grading note\..*77\/2/);
+  assert.equal(await gradingNote.evaluate(el => el.previousElementSibling.tagName),'A');
+  await page.close();
+}
+
 async function checkPlacementResume(browser) {
   const page = await browser.newPage();
   await page.goto(base + '/#/arena');
@@ -473,7 +493,7 @@ async function checkPlacementResume(browser) {
 
 (async () => {
   const browser = await chromium.launch({...(process.env.CHROME ? {executablePath:process.env.CHROME} : {})});
-  try { await check(browser); await checkPoolAndSubmission(browser); await checkPlacementResume(browser); }
+  try { await checkReviewGradingNote(browser); await check(browser); await checkPoolAndSubmission(browser); await checkPlacementResume(browser); }
   finally { await browser.close(); }
   console.log('Arena storage, retries, subject filters, review links, external statements and automatic submission passed.');
 })().catch(error => { console.error(error); process.exitCode = 1; });
