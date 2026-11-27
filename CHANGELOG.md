@@ -2,9 +2,15 @@
 
 **2026-11-27**
 
+- **Textbook redesign decisions.** The owner decided D1–D12: qualified curriculum IDs (`geometry-2/G2.7.4`), Claude as sole author of the new books in `js/data/curriculum/`, a separate preview route, the new teaching standard with the no-hints rule kept, no Core/Core II labels, A2.22 deferred, generated notes, and the Olympiad books left unchanged for now. Codex's work on the live textbooks has stopped; the live books stay as they are.
+
+- **BMT audit.** Solve all 30 questions from the 2023 papers and revise 24 Elo estimates. Restore three radical coefficients and annotate six solution links (Codex PR #466).
+
+- **BMT audit.** Solve all 30 questions from the 2022 papers and revise 20 Elo estimates. Restore two radical coefficients, accept a second Geometry #10 answer, exclude the underspecified Geometry #5 from scoring, and switch the disproved Geometry #9 key to self-check (Codex PR #464).
+
 - **Textbook redesign specification.** Convert the owner's Master Curriculum and Development Roadmap into a Markdown curriculum directory, `curriculum/`, on the dedicated branch `claude/textbook-redesign`: twelve books, 136 chapters and 791 concept sections in full, with the supporting standards, research, audits, pilots, a development plan, a chapter tracker and the technical changes. The branch changes no live file and is not merged.
 
-- **BMT audit.** Solve all 30 questions from the 2021 papers and revise 16 Elo estimates. Restore three radical coefficients and one printed example, and annotate four original solutions (Codex PR #464, open).
+- **BMT audit.** Solve all 30 questions from the 2021 papers and revise 16 Elo estimates. Restore three radical coefficients and one printed example, and annotate four original solutions (Codex PR #464).
 
 - **BMT audit.** Solve all 30 questions from the 2020 papers, revise 14 Elo estimates, and flag two errors in the Geometry solutions beside their official links. Codex recorded a pause after 2020 at the owner's request; PR #464 resumed with 2021 (Codex PR #463).
 
