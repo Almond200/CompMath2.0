@@ -163,6 +163,15 @@ check('2022-bmt-geometry-10', 'sqrt(221)', 'Incorrect');
 assert.match(practice.voidReason('2022-bmt-geometry-5'), /rear wheels turn together/);
 assert(practice.needsSelfCheck({}, '2022-bmt-geometry-9'));
 assert.match(notes['2022-bmt-geometry-9'], /configuration gives 725/);
+for (const [number, correct, imported] of [
+  [1, '2sqrt(5)', '5'],
+  [8, '16sqrt(3)', 'sqrt(163)'],
+  [9, '6sqrt(5)', 'sqrt(65)'],
+]) {
+  const slug = '2023-bmt-geometry-' + number;
+  check(slug, correct, 'Correct');
+  check(slug, imported, 'Incorrect');
+}
 check('2018-lehigh-math-contest-1', '20', 'Correct');
 check('2018-lehigh-math-contest-1', '400', 'Incorrect');
 check('2013-lehigh-math-contest-6', 'sqrt(2)', 'Correct');
