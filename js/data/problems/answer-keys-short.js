@@ -7433,7 +7433,7 @@ window.MATH_SHORT_ANSWER_KEYS = {
     "2025-bmt-algebra-3": {"answers": ["8"]},
     "2025-bmt-algebra-4": {"answers": ["-27/2"]},
     "2025-bmt-algebra-5": {"answers": ["3cbrt(2)/2"]},
-    "2025-bmt-algebra-6": {"answers": ["1/(10pi-1)"]},
+    "2025-bmt-algebra-6": {"answers": ["1/(10^pi-1)"]},
     "2025-bmt-algebra-7": {"answers": ["3125"]},
     "2025-bmt-algebra-8": {"answers": ["72"]},
     "2025-bmt-algebra-9": {"answers": ["2000"]},

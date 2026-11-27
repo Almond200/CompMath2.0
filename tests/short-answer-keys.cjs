@@ -91,6 +91,10 @@ const hmmt2010Voids = ['2010-hmmt-february-algebra-7', '2010-hmmt-february-combi
 assert.deepEqual(hmmt2010.filter(slug => !practice.exactKey(slug)), hmmt2010Voids);
 assert(hmmt2010Voids.every(slug => voided[slug]));
 
+check('2025-bmt-algebra-6', '1/(10^π-1)', 'Correct');
+check('2025-bmt-algebra-6', '10^(-pi)/(1-10^(-pi))', 'Correct');
+check('2025-bmt-algebra-6', '1/(10pi-1)', 'Incorrect');
+
 function check(slug, value, verdict) {
   const set = practice.create('Short-answer check', 'Any', [slug]);
   assert(practice.answer(set, slug, value, false), slug + ' rejected ' + value);

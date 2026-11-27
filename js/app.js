@@ -5838,13 +5838,13 @@
   function mockPapers() { return mockPaperCatalog ||= window.MockContests.papers(PROBLEM_DB, hasMockAnswer); }
   function pastPapers() {
     if (pastPaperCatalog) return pastPaperCatalog;
-    const timed = new Map(mockPapers().map(p => [p.label, window.MockContests.formats[p.family].minutes]));
     const groups = new Map();
     for (const p of PROBLEM_DB) {
       if (!practiceEligible(p) && !isVoidedProblem(p)) continue;
       const label = paperKey(p);
       if (!groups.has(label)) groups.set(label, {
-        label, family: p.fam, year: p.year, minutes: timed.get(label) ?? null,
+        label, family: p.fam, year: p.year,
+        ...window.MockContests.paperTiming({ family: p.fam, label, year: p.year }),
         words: contestSearchWords(label), aliases: contestAliasWords(p.fam), problems: []
       });
       groups.get(label).problems.push(p);
@@ -5855,29 +5855,43 @@
   function mockTime(ms) { const s=Math.ceil(Math.max(0,ms)/1000); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
   function mockScore(set) { return set.clock ? window.MockContests.score(set, slug=>practiceSessions.result(set,slug)) : null; }
   function mockTimeSummary(set) {
-    const used=set.clock.limitMs-practiceSessions.timeLeft(set);
+    const used=set.clock.limitMs-practiceSessions.timeLeft(set)-(set.clock.skippedMs || 0);
     return `${set.timedOut ? 'Time limit reached · ' : ''}${mockTime(used)} used of ${mockTime(set.clock.limitMs)}`;
   }
-  function startMockClock(set) {
+  function startMockClock(set, displayedPair) {
     clearInterval(mockClockInterval); mockClockInterval=0;
     if(!set.clock||set.status==='finished')return;
     const tick=()=>{
-      if(document.hidden||set.status==='paused')return;
-      if(topicPracticeSet!==set||!location.hash.startsWith('#/practice/set/'+set.id)){clearInterval(mockClockInterval);return;}
-      practiceSessions.checkpoint(set);
+      if(document.hidden||set.status==='paused')return true;
+      if(topicPracticeSet!==set||!location.hash.startsWith('#/practice/set/'+set.id)){clearInterval(mockClockInterval);return false;}
+      const now = Date.now();
+      practiceSessions.checkpoint(set, now);
       if (set.status === 'finished') {
         clearInterval(mockClockInterval);
         savePractice();
         toast('Time is up. Your mock has been graded.');
         renderTopicPracticeSet();
-        return;
+        return false;
+      }
+      const pair = practiceSessions.pairWindow(set, now);
+      if (pair?.start !== displayedPair?.start) {
+        renderTopicPracticeSet();
+        focusPracticeProblem();
+        return false;
       }
       const el=$content.querySelector('.mock-clock-value'), box=$content.querySelector('.mock-clock');
-      const left=practiceSessions.timeLeft(set);
+      const left=pair?.remainingMs ?? practiceSessions.timeLeft(set, now);
       if(el)el.textContent=mockTime(left);
-      if(box)box.classList.toggle('is-low',left<=5*60000);
+      if(box)box.classList.toggle('is-low',left<=(pair ? 1 : 5)*60000);
+      return true;
     };
-    tick();if(set.status!=='finished')mockClockInterval=setInterval(tick,1000);
+    if (tick()) mockClockInterval=setInterval(tick,1000);
+  }
+  function focusPracticeProblem() {
+    const heading = $content.querySelector('.practice-question h3');
+    if (!heading) return;
+    heading.tabIndex = -1;
+    heading.focus({preventScroll:true});
   }
   function exactAnswerHtml(text, key = {}) {
     if(!text)return '';
@@ -6062,8 +6076,9 @@
       form.querySelector('[data-mock-check="trig"]').hidden=mode!=='generated'||!trigApplies();form.querySelector('[data-mock-check="calc"]').hidden=mode!=='generated';form.querySelector('[data-mock-check="statements"]').hidden=mode!=='generated';advBox.hidden=mode!=='generated';
       form.querySelector('#mock-same-format-text').textContent=family==='AIME'?'Only short-answer questions, like the AIME':'Only multiple-choice questions, like the AMC';
       const selfChecks=paper?.problems.filter(paperProblem).length;
+      const pairs=paper?.minutesPerPair ? ' · '+paper.minutesPerPair+' minutes per pair' : '';
       info.textContent=mode==='paper'
-        ? paper ? `${paper.problems.length} problems · ${paper.minutes ? paper.minutes+' minutes' : 'Untimed'}${selfChecks ? ' · '+selfChecks+' self-checked' : ''}` : ''
+        ? paper ? `${paper.problems.length} problems · ${paper.minutes ? paper.minutes+' minutes' : 'Untimed'}${pairs}${selfChecks ? ' · '+selfChecks+' self-checked' : ''}` : ''
         : `${f.count} problems · ${f.minutes} minutes · Modeled on ${model.startYear}–${model.endYear}`;
       info.hidden=!info.textContent;
       let pool=[];
@@ -6125,6 +6140,7 @@
         const mock=mode==='paper'
           ? {mode,family:paper.family,durationMs:paper.minutes ? paper.minutes*60000 : null}
           : {mode,family,durationMs:window.MockContests.formats[family].minutes*60000};
+        if (mode === 'paper' && paper.minutesPerPair) mock.pairDurationMs = paper.minutesPerPair * 60000;
         if(plan.model){mock.modelStartYear=plan.model.startYear;mock.modelEndYear=plan.model.endYear;mock.targets=plan.model.targets;mock.sources=chosenSources();mock.usedSources=plan.sources;mock.hmmtException=true;if(sameBox.checked)mock.sameFormat=true;mock.options={noTrig:trigBox.checked&&trigApplies(),noCalc:calcBox.checked,...adv};}
         topicPracticeSet=practiceSessions.createMock(label,plan.problems.map(p=>p.slug),mock);markPaperProblems(topicPracticeSet,plan.problems);savePractice();location.hash='#/practice/set/'+topicPracticeSet.id;
       }catch(err){status.textContent=err.message;}finally{busy=false;form.querySelector('fieldset').disabled=false;update(false);}
@@ -6592,6 +6608,10 @@
     const finished = set.status === 'finished';
     if (finished && !practiceReview) { renderPracticeResults(set); return; }
     if (finished && practiceReviewIndex != null && set.slugs[practiceReviewIndex]) set.current = practiceReviewIndex;
+    const pair = practiceSessions.pairWindow(set);
+    const canNavigate = index => index >= (pair?.start ?? 0) && index < (pair?.end ?? set.slugs.length);
+    if (pair && !canNavigate(set.current)) set.current = pair.start;
+    const canSubmitPair = pair && pair.number < pair.count;
     const slug = set.slugs[set.current], p = PROBLEM_BY_SLUG[slug];
     if (p && !finished) activity.sawProblem("practice", slug);
     const answerable = practiceAnswerableSlugs(set);
@@ -6613,9 +6633,10 @@
     const nav = set.slugs.map((id, i) => {
       const result = practiceSessions.result(set, id);
       const reviewed = finished || result === 'Voided';
-      const suffix = reviewed ? result : set.answers[id] ? 'Answered' : 'Unanswered';
+      const locked = !canNavigate(i);
+      const suffix = locked ? (i < pair.start ? 'Pair submitted' : 'Later pair') : reviewed ? result : set.answers[id] ? 'Answered' : 'Unanswered';
       const number = practiceProblemNumber(set, i);
-      return `<button type="button" class="cn-num${i === set.current ? ' cn-here' : ''}${reviewed ? ' practice-reviewed' : ''}${!reviewed && set.answers[id] ? ' practice-answered' : ''}${set.marks[id] ? ' practice-marked' : ''}" data-result="${reviewed ? result : ''}" data-practice-index="${i}" aria-current="${i === set.current ? 'step' : 'false'}" aria-label="Problem ${number}, ${suffix}${set.marks[id] ? ', marked for review' : ''}">${number}</button>`;
+      return `<button type="button" class="cn-num${i === set.current ? ' cn-here' : ''}${reviewed ? ' practice-reviewed' : ''}${!reviewed && set.answers[id] ? ' practice-answered' : ''}${set.marks[id] ? ' practice-marked' : ''}" data-result="${reviewed ? result : ''}" data-practice-index="${i}" aria-current="${i === set.current ? 'step' : 'false'}" aria-label="Problem ${number}, ${suffix}${set.marks[id] ? ', marked for review' : ''}"${locked ? ' disabled' : ''}>${number}</button>`;
     }).join('');
     shownIds = [];
     $content.innerHTML = `<div class="space-home practice-session practice-play">
@@ -6623,10 +6644,10 @@
       <a class="back-link" href="#/practice">${uiIcon("arrow-left")} Back to Practice</a>
       <section class="sh-section">
         <div class="practice-session-top"><div><h1>${mock ? 'Mock set' : 'Practice set'} · ${escapeAttr(practiceSetLabel(set))}</h1><p>${set.slugs.length} problem${set.slugs.length === 1 ? '' : 's'}${mock ? (set.clock ? ' · '+set.clock.limitMs/60000+' minutes' : ' · Untimed') : ' · '+escapeAttr(set.difficulty)+' difficulty'}${finished ? ' · Review' : ''}</p></div>
-          ${set.clock && !finished ? `<div class="mock-clock" role="timer" aria-label="Time remaining"><span>Time remaining</span><strong class="mock-clock-value">${mockTime(practiceSessions.timeLeft(set))}</strong></div>` : ''}</div>
+          ${set.clock && !finished ? `<div class="mock-clock" role="timer" aria-label="${pair ? `Time remaining for pair ${pair.number} of ${pair.count}` : 'Time remaining'}"><span>${pair ? `Pair ${pair.number} of ${pair.count}` : 'Time remaining'}</span><strong class="mock-clock-value">${mockTime(pair?.remainingMs ?? practiceSessions.timeLeft(set))}</strong></div>` : ''}</div>
         <nav class="cn-nums" aria-label="Practice problems">${nav}</nav>
         ${finished ? practiceReviewActionsHtml('#/practice/set/' + encodeURIComponent(set.id)) : ''}
-        ${finished ? '' : `<div class="practice-session-actions"><span>${answeredSummary()}</span><div><a class="hp-btn hp-btn-soft" href="#/practice">Save and exit</a><button type="button" class="hp-btn" id="finish-practice">Finish and review</button></div></div>`}
+        ${finished ? '' : `<div class="practice-session-actions"><span>${answeredSummary()}</span><div><a class="hp-btn hp-btn-soft" href="#/practice">Save and exit</a><button type="button" class="hp-btn${canSubmitPair ? ' hp-btn-soft' : ''}" id="finish-practice">Finish and review</button>${canSubmitPair ? '<button type="button" class="hp-btn" id="submit-practice-pair">Submit pair</button>' : ''}</div></div>`}
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
       <section class="sh-section practice-question"><h3>Problem ${practiceProblemNumber(set, set.current)}${p && (!mock || finished) ? ' · ' + (finished ? `<a class="practice-prob-link" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a>` : escapeAttr(refShort(p.ref))) : ''}</h3>
@@ -6643,7 +6664,7 @@
           ${practiceExplanationHtml(p, !paper || !!inlinePaper)}${p && !voidNote ? nextStepsHtml(p) : ""}`
           : voidNote ? `<p class="prob-note">Voided · ${escapeAttr(voidNote)}</p>`
           : p ? `<div class="practice-answer"><h4>Your answer</h4>${typedAnswer ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exactLabel}</label><input id="practice-answer" type="text" maxlength="${paper ? '60' : '120'}" autocomplete="off" aria-describedby="practice-answer-error" value="${escapeAttr(set.answers[slug] || '')}">${practiceMathKeysHtml()}` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
-        <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
+        <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${canNavigate(set.current - 1) ? '' : 'disabled'}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${canNavigate(set.current + 1) ? '' : 'disabled'}>Next</button></div>
       </section></div>`;
     const redraw = () => {
       const active = document.activeElement;
@@ -6651,35 +6672,53 @@
       renderTopicPracticeSet();
       if (selector) $content.querySelector(selector)?.focus({preventScroll:true});
     };
+    const sessionAdvanced = () => {
+      if (set.status !== 'finished' && pair?.start === practiceSessions.pairWindow(set)?.start) return false;
+      savePractice();
+      redraw();
+      focusPracticeProblem();
+      return true;
+    };
     $content.querySelectorAll('[data-practice-index]').forEach(b => b.addEventListener('click', () => {
-      set.current = Number(b.dataset.practiceIndex);
+      const index = Number(b.dataset.practiceIndex);
+      if (!canNavigate(index) || (!finished && sessionAdvanced())) return;
+      set.current = index;
       if (finished && practiceReviewIndex != null) history.replaceState(history.state, "", `#/practice/set/${id}/review/${set.current + 1}`);
       savePractice();
       redraw();
-      const heading = $content.querySelector('.practice-question h3');
-      heading.tabIndex = -1;
-      heading.focus({preventScroll:true});
+      focusPracticeProblem();
     }));
-    $content.querySelector('#finish-practice')?.addEventListener('click', async () => {
+    const submitPractice = async onlyPair => {
+      if (onlyPair && sessionAdvanced()) return;
       if (set.status === 'finished' || practiceFinishConfirm) return;
-      const remaining = answerable.filter(id => !set.answers[id]).length;
+      const slots = onlyPair ? set.slugs.slice(pair.start, pair.end) : set.slugs;
+      const remaining = answerable.filter(id => slots.includes(id) && !set.answers[id]).length;
       if (remaining) {
         const controller = new AbortController();
         practiceFinishConfirm = controller;
         const confirmed = await appConfirm({
-          title: `Finish with ${remaining} unanswered question${remaining === 1 ? '' : 's'}?`,
-          text: 'Finishing submits this set and makes your answers read-only.',
-          ok: 'Finish and review', signal: controller.signal
+          title: `${onlyPair ? 'Submit pair' : 'Finish'} with ${remaining} unanswered question${remaining === 1 ? '' : 's'}?`,
+          text: onlyPair ? 'Submitting opens the next pair. You can revisit these answers in review.' : 'Finishing submits this set and makes your answers read-only.',
+          ok: onlyPair ? 'Submit pair' : 'Finish and review', signal: controller.signal
         });
         if (practiceFinishConfirm === controller) practiceFinishConfirm = null;
         if (!confirmed) return;
       }
       if (topicPracticeSet !== set || set.status === 'finished' || location.hash !== '#/practice/set/' + encodeURIComponent(set.id)) return;
+      if (onlyPair) {
+        if (!practiceSessions.submitPair(set, pair.start)) { sessionAdvanced(); return; }
+        savePractice();
+        redraw();
+        focusPracticeProblem();
+        return;
+      }
       practiceSessions.finish(set);
       savePractice();
       redraw();
       updatePageTitle(getRoute()); window.AppAccessibility.focusMain();
-    });
+    };
+    $content.querySelector('#finish-practice')?.addEventListener('click', () => submitPractice(false));
+    $content.querySelector('#submit-practice-pair')?.addEventListener('click', () => submitPractice(true));
     const answerChoices = $content.querySelectorAll('[data-practice-answer]');
     const clearAnswer = $content.querySelector('#clear-practice-answer');
     const answerInput = $content.querySelector('#practice-answer');
@@ -6706,7 +6745,7 @@
       current.setAttribute('aria-label', `Problem ${set.current + 1}, ${value ? 'Answered' : 'Unanswered'}${set.marks[slug] ? ', marked for review' : ''}`);
     };
     const updateChoice = value => {
-      if (!practiceSessions.answer(set, slug, value, false)) { if(set.status==='finished'){savePractice();renderTopicPracticeSet();} return; }
+      if (!practiceSessions.answer(set, slug, value, false)) { sessionAdvanced(); return; }
       schedulePracticeSave();
       // Keep the controls mounted so double-click and keyboard clearing remain available.
       syncAnswerUI();
@@ -6728,7 +6767,7 @@
     });
     $content.querySelector('#practice-answer')?.addEventListener('input', e => {
       const valid = practiceSessions.answer(set, slug, e.target.value, aime);
-      if(set.status==='finished'){savePractice();renderTopicPracticeSet();return;}
+      if(sessionAdvanced())return;
       e.target.setAttribute('aria-invalid', String(!valid));
       $content.querySelector('#practice-answer-error').textContent = valid ? '' : paper ? 'Use at most 60 characters. This value has not been saved.' :
         'This answer format isn’t supported. ' + (set.answers[slug] ? 'Your previous answer is still saved.' : 'This answer hasn’t been saved.');
@@ -6737,7 +6776,7 @@
     });
     if (answerInput) wirePracticeMathKeys(answerInput, paper ? undefined : exact);
     clearAnswer?.addEventListener('click', () => {
-      if (!practiceSessions.answer(set, slug, '', aime)) { if(set.status==='finished'){savePractice();renderTopicPracticeSet();} return; }
+      if (!practiceSessions.answer(set, slug, '', aime)) { sessionAdvanced(); return; }
       if (answerInput) {
         answerInput.value = ''; answerInput.setAttribute('aria-invalid', 'false');
         $content.querySelector('#practice-answer-error').textContent = '';
@@ -6750,7 +6789,7 @@
       schedulePracticeSave(); syncAnswerUI();
       (answerInput || answerChoices[0])?.focus({preventScroll:true});
     });
-    $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; schedulePracticeSave(); const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-marked', e.target.checked); current.setAttribute('aria-label', `Problem ${practiceProblemNumber(set, set.current)}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${e.target.checked ? ', marked for review' : ''}`); });
+    $content.querySelector('#practice-mark')?.addEventListener('change', e => { if (sessionAdvanced()) return; set.marks[slug] = e.target.checked; schedulePracticeSave(); const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-marked', e.target.checked); current.setAttribute('aria-label', `Problem ${practiceProblemNumber(set, set.current)}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${e.target.checked ? ', marked for review' : ''}`); });
     savePractice();
     if (p && !external && (!paper || inlinePaper)) {
       const pendingChoices = !typedAnswer && !voidNote && !window.MATH_STATEMENTS?.[slug];
@@ -6773,7 +6812,7 @@
       source: "practice", setId: set.id
     });
     renderMath($content);
-    startMockClock(set);
+    startMockClock(set, pair);
   }
   let practiceTopicIndex;
   function markPaperProblems(set, problems) {

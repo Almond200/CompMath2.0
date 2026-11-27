@@ -19,7 +19,13 @@
         if (record.kind === 'mock' && record.clock) {
           const limit = Number(record.clock.limitMs);
           if (!(limit > 0 && Number.isFinite(limit))) return null;
-          record.clock = { limitMs:limit, remainingMs:Math.max(0, Math.min(limit, Number(record.clock.remainingMs) || 0)), deadline:null };
+          const remainingMs = Math.max(0, Math.min(limit, Number(record.clock.remainingMs) || 0));
+          const skippedMs = Math.max(0, Math.min(limit - remainingMs, Number(record.clock.skippedMs) || 0));
+          record.clock = { limitMs:limit, remainingMs, deadline:null };
+          if (record.mock?.pairDurationMs != null) {
+            if (!pairDuration(record)) return null;
+            if (skippedMs) record.clock.skippedMs = skippedMs;
+          }
         }
         return { ...record, answers: s.answers || {}, marks: s.marks || {},
           current: Number.isInteger(s.current) && s.current >= 0 && s.current < s.slugs.length ? s.current : 0,
@@ -40,15 +46,45 @@
   function createMock(label, slugs, mock, now = Date.now()) {
     const set = create(label, 'Mock', slugs, now), limitMs = mock.durationMs;
     set.kind = 'mock'; set.mock = { ...mock };
-    if (mock.mode === 'paper' && limitMs === null) return set;
+    if (mock.mode === 'paper' && limitMs === null && mock.pairDurationMs == null) return set;
     if (!(limitMs > 0 && Number.isFinite(limitMs))) throw Error('Invalid mock duration');
     set.clock = { limitMs, remainingMs:limitMs, deadline:now+limitMs };
+    if (mock.pairDurationMs != null && !pairDuration(set)) throw Error('Invalid pair duration');
     return set;
   }
   function timeLeft(set, now = Date.now()) {
     if (set.kind !== 'mock' || !set.clock) return null;
     return Math.max(0, set.status === 'active' && Number.isFinite(set.clock.deadline)
       ? set.clock.deadline-now : set.clock.remainingMs);
+  }
+  function pairDuration(set) {
+    const duration = set.mock?.pairDurationMs;
+    return set.mock?.mode === 'paper' && Number.isSafeInteger(duration) && duration > 0 &&
+      duration * Math.ceil(set.slugs.length / 2) === set.clock?.limitMs ? duration : null;
+  }
+  function pairWindow(set, now = Date.now()) {
+    const duration = pairDuration(set);
+    if (!duration || set.status === 'finished') return null;
+    const left = timeLeft(set, now);
+    if (!left) return null;
+    const count = Math.ceil(set.slugs.length / 2);
+    const number = count - Math.ceil(left / duration) + 1;
+    const start = 2 * (number - 1);
+    return { number, count, start, end:Math.min(start + 2, set.slugs.length),
+      remainingMs:left - (count - number) * duration };
+  }
+  function submitPair(set, start, now = Date.now()) {
+    if (set.status !== 'active') return false;
+    const pair = pairWindow(set, now);
+    if (!pair || pair.start !== start || pair.number === pair.count) return false;
+    // Move to the next time boundary while keeping unused time out of the results.
+    const left = timeLeft(set, now) - pair.remainingMs;
+    set.clock.remainingMs = left;
+    set.clock.deadline = now + left;
+    set.clock.skippedMs = (set.clock.skippedMs || 0) + pair.remainingMs;
+    set.current = pair.end;
+    set.updated = now;
+    return true;
   }
   function checkpoint(set, now = Date.now()) {
     delete set.stopwatch; delete set.elapsed; delete set.runningSince;
@@ -1363,6 +1399,8 @@
   function answer(set, slug, value, aime, now = Date.now()) {
     if (set.kind === 'mock') checkpoint(set,now);
     if (set.status === 'finished' || voidReason(slug)) return false;
+    const pair = pairWindow(set, now);
+    if (pair && !set.slugs.slice(pair.start, pair.end).includes(slug)) return false;
     let text = String(value).trim();
     // A problem read in its official paper (set.selfCheck) takes any short answer; the solver
     // checks it against the official solution at review.
@@ -1409,7 +1447,7 @@
     if (verdict) set.self[slug] = verdict; else delete set.self[slug];
     return true;
   }
-  const api = { KEY, read, save, create, createMock, checkpoint, pause, resume, finish, timeLeft, exactKey, voidReason,
+  const api = { KEY, read, save, create, createMock, checkpoint, pause, resume, finish, timeLeft, pairWindow, submitPair, exactKey, voidReason,
     officialKey, choiceAnswers, allowsMultipleChoices, needsSelfCheck, exactTex, answer, result, selfMark };
   if (typeof module !== 'undefined') module.exports = api;
   else root.PracticeSessions = api;
