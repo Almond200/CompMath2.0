@@ -126,5 +126,5 @@ console.log('Book notes:', indexTargets, 'lesson locations checked across all 13
 
 const countStart = source.indexOf('  const learnLessonsIn =');
 vm.runInContext(source.slice(countStart, source.indexOf('\n', countStart)), context);
-assert.equal(vm.runInContext('window.MATH_LEARN_SHELF.reduce((n,b) => n + learnLessonsIn(b), 0)', context), 593,
+assert.equal(vm.runInContext('window.MATH_LEARN_SHELF.reduce((n,b) => n + learnLessonsIn(b), 0)', context), 595,
   'reference sections must not inflate the teaching-lesson total');

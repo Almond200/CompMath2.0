@@ -5,7 +5,7 @@ This file says what each Learn book holds: its chapters, its lessons, and the ca
 The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curriculum" (2026-10-31), which grew the first draft into chapters with lesson-level syllabi; this file added real card ids for every lesson.
 
 **Status (checked 2026-11-08):**
-- All 13 books are initially written: four AMC, four AIME and five Olympiad books, with 103 teaching chapters and 593 teaching pages (Introductions and Summaries included; Review Problems and Challenge Problems are separate problem sets and are not counted). Initial writing is a separate status from the content revision under way in `TEXTBOOK-REVISION.md` (revised so far: AMC Algebra L1 to L14, AMC Number Theory M1 to M7, AMC Counting & Probability R1 to R10, and AMC Geometry S1 to S6, merged through PR #293).
+- All 13 books are initially written: four AMC, four AIME and five Olympiad books, with 103 teaching chapters and 595 teaching pages (Introductions and Summaries included; Review Problems and Challenge Problems are separate problem sets and are not counted). Initial writing is a separate status from the content revision under way in `TEXTBOOK-REVISION.md` (revised so far: AMC Algebra L1 to L14, AMC Number Theory M1 to M7, AMC Counting & Probability R1 to R10, and AMC Geometry S1 to S6, merged through PR #293).
 - Each book also ends with one reference chapter, End-of-book Notes: Overview, Index, Glossary, and References and Credits (13 chapters, 52 sections). Reference chapters carry no difficulty tag and are not teaching chapters; `tools/build-learn-shelf.py --check` reports 116 chapter files and 645 lesson records because it counts them too.
 - Book search offers one Index result per matching term, leading to that book's complete list of lesson references. Index and Glossary results jump to and briefly highlight the exact entry; these navigation changes do not alter teaching content or counts.
 - Every teaching chapter uses X.1 Introduction, lessons, Summary, Review Problems and Challenge Problems (CONVENTIONS §14). No old chapter-review array remains.
@@ -312,15 +312,17 @@ Substituting into functional equations, linear recurrences, double sums, and the
 
 ### L12. Trigonometry (Core II)
 
-Exact values, the identities, and turning sums into products.
+Right-triangle ratios and the unit circle lead to angle identities and applications. Each lesson develops one way to interpret or rewrite a trigonometric expression.
 
 | Lesson | Importance | Cards | AMC problems |
 |---|---|---|---|
-| L12.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
-| L12.2 Special values and the identities | Core | `special-trig-values`, `angle-addition`, `double-angle`, `half-angle`, `triple-angle` | 24 |
-| L12.3 Sums, products and telescoping | Core II | `product-sum`, `trig-telescoping-product` | 3 |
-| L12.4 Combining waves and inverse functions | Core II | `harmonic-addition`, `inverse-trig-identities` | 4 |
-| L12.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L12.6 Review Problems and L12.7 Challenge Problems | |
+| L12.1 Introduction | | right-triangle ratios, radians and the unit circle | |
+| L12.2 Basic identities and angle addition | Core | `special-trig-values`, `angle-addition` (assumes `pythagorean-identities` and `reduction-identities`) | 14 |
+| L12.3 Product-to-sum and sum-to-product | Core II | `product-sum`, `trigonometric-sums-products` | 4 |
+| L12.4 Harmonic addition | Core II | `harmonic-addition` | 3 |
+| L12.5 Multiple angles and power reduction | Core II | `double-angle`, `half-angle`, `triple-angle`, `trig-telescoping-product` | 13 |
+| L12.6 Inverse trigonometric functions | Core II | `inverse-trig-identities` | 1 |
+| L12.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies), followed by L12.8 Review Problems and L12.9 Challenge Problems | |
 
 ### L13. Complex numbers (Core)
 
@@ -541,8 +543,8 @@ Counting by building from smaller cases, lattice paths, and processes run backwa
 | Lesson | Importance | Cards | AMC problems |
 |---|---|---|---|
 | R5.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
-| R5.2 Recursion and tilings | Core | `recursive-counting`, *(pattern)* `tiling-a-board` | 6 |
-| R5.3 Paths in a grid | Core | `grid-paths`, `grid-path-fill` | 5 |
+| R5.2 Recursive counting and tilings | Core | `recursive-counting`, *(pattern)* `tiling-a-board` | 6 |
+| R5.3 Grid paths and dynamic programming | Core | `grid-paths`, `grid-path-fill` | 5 |
 | R5.4 Working backward and simulating | Core | `working-backwards`, `backward-induction`, `simulate-the-process` | 22 |
 | R5.5 The reflection principle | Extension | `reflection-principle` | 1 |
 | R5.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R5.7 Review Problems and R5.8 Challenge Problems | |

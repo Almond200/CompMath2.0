@@ -169,7 +169,7 @@ An [[alternating-sum-grouping|alternating sum]] often uses pairs instead of tele
 For a finite sum, the rewrites above preserve its exact value. For an infinite series, first establish the formula for a finite partial sum, including its boundary terms, then determine whether those partial sums converge.`,
       related: [
         { card: "change-of-base", note: String.raw`products of logarithms telescope after a change of base (L9.2).` },
-        { card: "trig-telescoping-product", note: String.raw`trigonometric products that telescope (L12.3).` }
+        { card: "trig-telescoping-product", note: String.raw`trigonometric products that telescope (L12.5).` }
       ],
       exercises: [
         { q: String.raw`Find $\left(1 + \tfrac11\right)\left(1 + \tfrac12\right)\left(1 + \tfrac13\right)\cdots\left(1 + \tfrac1{99}\right)$.`, answer: "100",
