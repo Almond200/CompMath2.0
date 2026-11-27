@@ -2,6 +2,8 @@
 
 **2026-11-26**
 
+- **BMT audit and review.** Complete the seven remaining BMT papers through 2016. Recalibrate 33 Elo estimates, correct 2016 Analysis #9, void three inconsistent or underdetermined questions, and give 2013 Discrete Math #10 a self-check for its general answer. Show recorded grading rulings beside the official answer or solution link in Practice and Arena review.
+
 - **Past-paper mocks.** Add archived time limits and enforce the timed pairs in ARML, ARML Local, Duke Math Meet and MATHCOUNTS Target. Submit a pair or finish the mock early. Correct the exponent in the 2025 BMT Algebra #6 answer key.
 
 - **Textbooks.** Revise AMC Geometry S9, Advanced triangles and circles. Derive cevian and cyclic-quadrilateral formulas, explain tangent cases, and correct the orthocenter distance for obtuse angles. Add nine diagrams and seven review problems, expand the worked solutions, and keep all 40 contest placements.
