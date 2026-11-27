@@ -323,6 +323,18 @@ check('2024-hmmt-february-algebra-and-number-theory-1', '29 or -6', 'Correct');
 check('2024-hmmt-february-algebra-and-number-theory-1', '29,-6,0', 'Incorrect');
 check('2008-pumac-division-a-algebra-5', 'n*H_n+H_n-n', 'Correct');
 check('2008-pumac-division-b-algebra-8', '(1+n)*H_{n}-n', 'Correct');
+for (const slug of ['2008-pumac-division-a-number-theory-6', '2008-pumac-division-b-number-theory-8']) {
+  check(slug, '2022058', 'Correct');
+  check(slug, '2016031', 'Incorrect');
+  assert.match(notes[slug], /positive shifts every representation/);
+}
+for (const slug of ['2008-pumac-division-a-geometry-7', '2008-pumac-division-b-geometry-9']) {
+  check(slug, 'sqrt(3)', 'Correct');
+  check(slug, '2', 'Correct');
+}
+check('2008-pumac-division-a-geometry-9', 'pi/6', 'Correct');
+check('2008-pumac-division-a-geometry-9', '5pi/6,pi/6', 'Correct');
+check('2008-pumac-division-a-geometry-9', '5pi/6', 'Incorrect');
 check('2011-smt-algebra-4', 'exp(402.2pi)', 'Correct');
 check('2011-smt-general-20', '((e^pi)^2011)^(1/5)', 'Correct');
 check('2011-smt-general-20', 'e^(2010pi/5)', 'Incorrect');
