@@ -347,6 +347,14 @@ for (const slug of ['2009-pumac-division-a-geometry-3', '2009-pumac-division-b-g
   check(slug, '2', 'Correct');
   check(slug, '1', 'Correct');
 }
+assert(practice.needsSelfCheck({}, '2010-pumac-division-a-algebra-8'));
+assert.match(notes['2010-pumac-division-a-algebra-8'], /has no such integer n/);
+for (const slug of ['2010-pumac-division-a-geometry-2', '2010-pumac-division-b-geometry-5']) {
+  check(slug, '793', 'Correct');
+  check(slug, '1586', 'Correct');
+}
+check('2010-pumac-division-a-geometry-8', '1', 'Correct');
+check('2010-pumac-division-a-geometry-8', '4', 'Correct');
 check('2011-smt-algebra-4', 'exp(402.2pi)', 'Correct');
 check('2011-smt-general-20', '((e^pi)^2011)^(1/5)', 'Correct');
 check('2011-smt-general-20', 'e^(2010pi/5)', 'Incorrect');
