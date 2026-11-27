@@ -2,6 +2,8 @@
 
 **2026-11-27**
 
+- **BMT audit.** Solve all 30 questions from the 2019 papers and revise 12 Elo estimates. Correct Geometry #10 for the printed base of 12, verify the supremum in Geometry #9, and add grading notes for errors and omissions in the worked solutions.
+
 - **BMT audit.** Solve all 30 questions from the 2018 papers and revise 14 Elo estimates. Correct the count of subject distributions and restore the coefficient of the triangle-area radical. Accept either reading of the fountain-pen problem and explain both accepted surface-area conventions beside the sphere problem's solution link.
 
 - **BMT audit.** Solve all 30 questions from the 2017 papers and revise 15 Elo estimates. Correct the tournament probability, the expected largest box volume, and the maximum sine. Accept both readings of the triangle-intersection question and void three prompts with impossible or missing conditions.
