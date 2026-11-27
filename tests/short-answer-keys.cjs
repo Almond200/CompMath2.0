@@ -144,6 +144,8 @@ check('2018-bmt-discrete-math-2', '1190', 'Correct');
 check('2018-bmt-discrete-math-2', '1694', 'Incorrect');
 check('2018-bmt-geometry-6', 'sqrt(2499)', 'Correct');
 check('2018-bmt-geometry-6', 'sqrt(751)', 'Incorrect');
+check('2019-bmt-geometry-10', '36sqrt(35)', 'Correct');
+check('2019-bmt-geometry-10', '81sqrt(35)', 'Incorrect');
 check('2018-lehigh-math-contest-1', '20', 'Correct');
 check('2018-lehigh-math-contest-1', '400', 'Incorrect');
 check('2013-lehigh-math-contest-6', 'sqrt(2)', 'Correct');

@@ -3030,3 +3030,62 @@ Solved all 30 questions while reviewing the steps required and comparing the res
 | 8 | Let the tangent lengths adjacent to the side of length 39 be $x,y$, and the third be $z$. Then $x+y=39$, $x,y\ge z$, and Heron gives $xy=100+3900/z$. Since $xy\ge z(39-z)$, the increasing lower bound and decreasing right-hand side imply $z\le15$. Equality at $(15,24,15)$ gives area $10(39+15)=540$. | 2,940 → 2,840 |
 | 9 | Heron gives $A^2=3a^2(a^2-4)/16$. For integral area, write $a^2-3k^2=4$. Reduction modulo 4 makes $a,k$ both even, giving the Pell equation in $a/2,k/2$. Multiplying by $2-\sqrt3$ descends to $(1,0)$, so the first $a$ are $2,4,14,52$. For $a=52$ the area is integral. | 2,780 |
 | 10 | At a cut offset $t\ge0$, the curved cap areas are $2\pi(1\pm t)$, giving $t=1/2$ and disk area $3\pi/4$. Adding the disk to each surface changes the ratio to $(3+2t-t^2)/(3-2t-t^2)$, which equals 3 at $t=\sqrt7-2$. The disk area is then $(4\sqrt7-10)\pi$. Practice marks both readings beside the source. | 1,920 |
+
+## BMT problem audit, 2019 individual rounds (2026-11-27)
+
+Solved all 30 questions and reviewed each statement, answer, card filing, and author estimate. Shorter routes reduced several estimates. The biased-coin question went up because the published construction does not prove the requested minimum.
+
+### Algebra
+
+[Problem paper](https://berkeley.mt/archives/bmt-2019/algebra-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2019/algebra-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The quadratic factors as $(x-3)(x-6)$, so only 4 and 5 work. | 930 |
+| 2 | The reflection sends $(x,2x)$ to $(2x,x)$. Their distance is $\sqrt2x$, so the point is $(4,8)$. | 1,080 |
+| 3 | Complete squares to get $(a-2)^2+(b-4)^2=50$. The offsets are signed permutations of $(1,7)$ and $(5,5)$, giving 12 points. The offsets cancel by central symmetry, leaving $12(2+4)=72$. | 1,460 |
+| 4 | The disk has radius $\sqrt{10}$ and lies wholly in the $20$-by-$20$ sampling square. The area ratio is $\pi/40$. | 1,390 |
+| 5 | Base 1 gives two roots summing to 10. Exponent 0 gives two further roots summing to $-5$, neither with base zero. Base $-1$ occurs at $x=-1,11$, with respective even exponents $-2,178$. These add 10, for a total of 15. | 1,770 |
+| 6 | The circle is centered at $(4,3)$ with radius $\sqrt5$, so $y$ is positive throughout. A line $x=ky$ touches it when $(4-3k)^2=5(1+k^2)$. The two extreme ratios are $1/2$ and $11/2$. | 2,030 → 1,820 |
+| 7 | Newton's sums reduce the condition to $a(3b-a^2)=4$. Testing the positive and negative divisors of 4 yields $(-4,5),(-1,-1),(2,2)$, so the count is 3. | 2,130 |
+| 8 | For head and tail probabilities $p,q$, the fourth-root filter gives $[1+(q-p)^{100}+2\operatorname{Re}(q+ip)^{100}]/4$. The complex number has argument $75^\circ$ and squared modulus $2/3$. The correction is $(1+2^{50})/(4\cdot3^{50})$. The tuple $(4,25,4,9,25)$ attains 67. For minimality let $N=1+2^{50}$, $D=4\cdot3^{50}$, which are coprime. Enumerate positive $a,b$ with $a+b\le64$, keep pairs with $N$ dividing $1+a^b$, then test positive $c,d,e$ with $c+d+e\le67-a-b$ against $cd^e=D(1+a^b)/N$. Exact integer arithmetic finds just the tuple above. | 2,670 → 3,150 |
+| 9 | For each $n$, the exponent in turns is $[1+\cdots+\lfloor(n-1)/2\rfloor]/(2n)$. Summing over the ten values gives the reduced fraction $3403/1260$. Thus the smallest positive exponent is 1260. | 2,340 → 2,160 |
+| 10 | The quadratic form is $[(2x+y+z)^2+5(y-z)^2]/2$. For $y=z$, the first linear form is $-2,0,2$, giving $200+201+200=601$ triples. For $y-z=\pm1$ that form is $\pm1$, giving 200 for each of four choices. The inclusive bound yields 1401. | 2,560 |
+
+### Discrete Math
+
+[Problem paper](https://berkeley.mt/archives/bmt-2019/discrete-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2019/discrete-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | A run reaches length 2019 with probability $p=2^{-2018}$. Independent runs alternate faces. The desired event is that the first successful run is even-numbered, with probability $p(1-p)/(1-(1-p)^2)=(2^{2018}-1)/(2^{2019}-1)$. The official final value is correct, but its recurrence counts an initial successful run toward the opposite-face event. | 2,130 → 1,820 |
+| 2 | Condition on a tail. The two-tailed coin contributes weight 1 out of $1+9/2$, giving $2/11$. | 1,360 |
+| 3 | The sum of the 15 degrees is 150. Each mutual hug corresponds to an edge counted twice, giving 75. | 1,080 |
+| 4 | Rearrange to $(2a-35)(2b-35)=1225$. Positivity and $a<100$ exclude all distinct factor pairs except $(49,25)$ in the given order. Thus $a=42,b=30$, with sum 72. The solution booklet reverses the labels. | 1,740 |
+| 5 | Modulo 11 the power is 1. Modulo 101 it reduces to $2^{10}\equiv14$. The number 1024 is in range and has both residues. | 1,740 |
+| 6 | From $n(n+1)/2\le1000$ get $n\le44$. For $n=2k$, primes $k$ with $2k+1$ prime are $2,3,5,11$. For $n=2k-1$, primes $k$ with $2k-1$ prime are $2,3,7,19$. That gives eight values. | 1,830 → 1,880 |
+| 7 | Only three-digit numbers can change direction. For middle digit $m$, there are $m(m-1)$ peaks and $(9-m)^2$ valleys, as the leading digit is nonzero. The total $240+285=525$ gives average $525/999=175/333$. | 2,130 → 1,870 |
+| 8 | A prime divisor has $p-1$ dividing 20, so it is 2, 3, 5, or 11. Including 11 leaves totient 2, giving $33,44,66$. Without 11, the factor 5 in the totient requires $5^2$, giving $25,50$. Their sum is 218. | 2,190 |
+| 9 | The fourteen values $ze^{ki\pi/7}$ are the roots of $X^{14}-z^{14}$. The logarithmic derivative at 1 gives $14/(1-z^{14})=14/(1+i)=7-7i$. Thus $a+b=14$. | 2,450 → 2,290 |
+| 10 | Use inclusion-exclusion on the multiples of $p,q$. Writing $Q=pq$, the scaled square sum $6S(Q)/Q^2$ simplifies to $2Q-2p-2q+3-(1/p+1/q-1/Q)$. The bracketed fraction is strictly between zero and one. The integer part in the requested form is $7561$. | 2,990 → 2,350 |
+
+### Geometry
+
+[Problem paper](https://berkeley.mt/archives/bmt-2019/geometry-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2019/geometry-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The diagram gives $EK=1$, $AS=4$, and four triangular-lattice levels between the parallel sides, for height $2\sqrt3$. The trapezoid area is $5\sqrt3$. | 1,130 |
+| 2 | No point can lie inside a triangle formed by three others, since one of the three angles around it would be at least $120^\circ$. Thus every four points form a convex quadrilateral with all angles at most $90^\circ$, hence a rectangle. Three vertices of a rectangle determine its fourth vertex, so a fifth point is impossible. A square attains four. | 2,030 |
+| 3 | Since $D-A=C-B$, the second parallelogram gives $N=M-(C-B)$. Thus $C-N$ has length $3BC/2=51/2$. | 1,390 → 1,210 |
+| 4 | The product of the legs is 8 and their squared sum is 144. The leg sum is $\sqrt{144+16}=4\sqrt{10}$, so the perimeter is $12+4\sqrt{10}$. | 1,520 |
+| 5 | The ellipse has focal separation 5 and major axis length $5\sqrt2$. Its semiaxes are $5\sqrt2/2$ and $5/2$, giving area $25\sqrt2\pi/4$. | 1,830 |
+| 6 | Put $A=(0,0)$, $E=(5,0)$ and $B=(9/5,12/5)$. The bisector theorem gives $P=(3,3/2)$. Since $D=2E$ and $CD\parallel BE$, intersection $M$ is $2P$. Thus $PM=3\sqrt5/2$ and the ratio to perimeter 12 is $\sqrt5/8$. | 1,920 |
+| 7 | Place the longer base at horizontal coordinates $[-1,1]$ and the upper base at height $h=\sqrt3/2$ over $[-1/2,1/2]$. Let $e$ be the coordinate of $E$. Reflecting the two lines about the vertical axis gives $\tan(\angle AGB/2)=|e+1/2|/h$. The excluded interval has length $2h\tan15^\circ$, so the probability is $1-h\tan15^\circ=5/2-\sqrt3$. | 2,450 → 2,290 |
+| 8 | The perpendicular bisector of the two reflections of $G$ across the sides through $A$ passes through $A$ and is the isogonal of $AG$. Thus $AO_G$ is the $A$-symmedian and $BX:XC=169:225$. Subtracting $BX=1183/197$ from 7 gives $196/197$. | 2,990 → 2,460 |
+| 9 | Normalize the two equal orthogonal edges to 1. Pitot fixes the symmetric locations of $E,G$, and the formulas below bound the section area for every valid height. The limiting area ratio is $\sqrt{225-96\sqrt2}/7$, so the answer remains 330. The printed claim of a valid section at every height is unnecessary and fails for small heights. | 3,580 |
+| 10 | Put $B=(-6,0),C=(6,0),A=(0,h)$. Eliminating the proportional squared distances gives the circle centered at $(-82/3,0)$ with radius $80/3$ and the line $(92/3)x+2hy=h^2-36$. For one intersection, tangency requires $(h^2-1260)(h^2+20)=0$. The positive height is $6\sqrt{35}$ and the area is $36\sqrt{35}$. The worked solution uses base 18 instead of the printed 12. | 3,280 → 2,860 |
+
+For Geometry #9, take $B=(0,0,0)$, $A=(1,0,0)$, $C=(0,1,0)$, $D=(0,0,h)$ and let $L=\sqrt{1+h^2}$. Write $F=(0,0,f)$ and $E=(1-s,0,sh)$. Pitot on $AEFB$ gives $EF=sL+f-1$. Squaring gives $s[1-L+(h+L)f]=f$, so symmetry gives the same $s$ for $G$. Pitot on $CGEA$ then gives $s=2/(1+\sqrt2L)$. Let $u=1-s$, $q=sh-f$ and $K=s(L+h)-1$. The equation $\sqrt{u^2+q^2}+q=K$ gives $K>0$ and $q=(K^2-u^2)/(2K)$. The area ratio is $u\sqrt{u^2+2q^2}$.
+
+Write $r_0=\sqrt2$ and $t=L-h$. For $q<0$, $K<u$ gives $h/L<r_0-1$, hence $h<1/2$ and $|q|\le uh<1/2$. For $q\ge0$ we have $t^2\le r_0-1$. Put $W=1+r_0t+t^2$ so $K>0$ gives $W<2r_0$. Substitution shows that $q_\infty-q$ has the sign of $3-t(t^2+1-3r_0)-3(1+r_0)t^2$, where $q_\infty=(6\sqrt2-4)/7$. The sign is positive because $t^2\le r_0-1$. Thus $|q|<q_\infty$ for all valid finite heights. For large $h$, $s\to0$ and $f\to(4+\sqrt2)/7$, which lies strictly between 0 and $h$. The convex sections then satisfy Pitot and have inscribed circles by its converse. As $h\to\infty$, $u\to1$ and $q\to q_\infty$, proving the stated supremum.
