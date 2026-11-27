@@ -1,5 +1,9 @@
 # Changelog
 
+**2026-11-28**
+
+- **New curriculum preview.** Write G2.2, Power of a Point, the first chapter of the new textbooks: an opening, six sections, a close, Review and Challenge Problems, eleven figures drawn from exact coordinates, and checkpoints that check typed answers. Add the separate preview route `#/preview`, its renderer and its own progress store (`mq-learn2`, carried by Export and Import). The live textbooks, cards, Practice, Arena, search and recommendations are unchanged.
+
 **2026-11-27**
 
 - **BMT audit complete.** Solve all 30 questions from the 2025 papers and revise 26 Elo estimates; add three official-link notes and switch 2025 Algebra #10 to self-check while the repeated-entry case is open. This completes all 370 indexed BMT questions (Codex PR #469).

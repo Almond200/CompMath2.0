@@ -402,7 +402,7 @@
     if (route.type === "space") return route.name;
     if (route.type === "formula") return bookOf(route.entry.section);
     if (["problems", "problem", "browse"].indexOf(route.type) !== -1) return "practice";
-    if (["lists", "list", "learn"].indexOf(route.type) !== -1) return "learn";
+    if (["lists", "list", "learn", "preview"].indexOf(route.type) !== -1) return "learn";
     if (route.type === "home" && !state.landing && !state.query.trim() && !state.adv) {
       return bookOf(SECTIONS.find(x => x.id === state.activeSectionId));
     }
@@ -1421,6 +1421,9 @@
     if (arenaReview) return { type: "space", name: "arena", review: arenaReview[1], reviewProblem: arenaReview[2] ? Number(arenaReview[2]) - 1 : null };
     if (location.hash === "#/practice") return { type: "space", name: "practice" };
     if (location.hash === "#/learn") return { type: "space", name: "learn" };
+    // The new curriculum's preview (curriculum/PREVIEW-PLAN.md): its own pages, loaded on demand,
+    // linked from nowhere in the normal interface and kept out of search and recommendations.
+    if (/^#\/preview(?:\/|$)/.test(location.hash)) return { type: "preview", key: location.hash };
     const lr = learnRoute(location.hash);
     if (lr) return lr;
     m = location.hash.match(/^#\/special\/([^/]+)(?:\/(.*))?$/);
@@ -5010,7 +5013,7 @@
   // ---------- Export and import progress (Settings -> Your progress) ----------
   // Version 1 uses the same portable keys for both browser storage systems.
   const PROGRESS_FORMAT = "competition-math-reference/progress", PROGRESS_VERSION = 1;
-  const PROGRESS_KEYS = ["mq-settings", "mq-lists", "mq-recent", "theme", "mq-flashcards", "mq-flashcards-prefs", "mq-quiz-misses", "mq-learn", "mq-practice-sets", activity.KEY, window.Arena.KEY];
+  const PROGRESS_KEYS = ["mq-settings", "mq-lists", "mq-recent", "theme", "mq-flashcards", "mq-flashcards-prefs", "mq-quiz-misses", "mq-learn", "mq-learn2", "mq-practice-sets", activity.KEY, window.Arena.KEY];
   const studyStore = window.StudyStorage;
   const studyKeys = new Set([activity.KEY, window.Arena.KEY]);
   async function exportProgress() {
@@ -10650,7 +10653,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   // `box` picks the section to fill: the problem page's own, or the home page's problem of the day.
   function showStatement(p, box = "#prob-st", preferMock = false, hideCredit = false) {
-    const wrap = $content.querySelector(`${box}[data-slug="${p.slug}"]`);
+    const wrap = box instanceof Element ? box : $content.querySelector(`${box}[data-slug="${p.slug}"]`);
     if (!wrap) return;
     const extra = window.MATH_MOCK_EXTRAS?.[p.slug];
     const source = archiveStatement(p);
@@ -12050,6 +12053,16 @@ The book remembers the last lesson you opened, in this browser, and the contents
   });
 
   let pendingRender;
+  // The few app services the curriculum preview may use (curriculum/PREVIEW-PLAN.md): read-only
+  // problem lookup, statement display and card names. The preview keeps its own rendering,
+  // answer checking and storage ("mq-learn2"), so the live textbooks' state is never touched.
+  const CURRICULUM_KIT = Object.freeze({
+    problem: slug => { const p = PROBLEM_BY_SLUG[slug]; return p ? { slug: p.slug, ref: p.ref, short: refShort(p.ref), hasStatement: hasProblemStatement(p), url: p.url || null } : null; },
+    fillStatement: (slug, el) => { const p = PROBLEM_BY_SLUG[slug]; if (p && hasProblemStatement(p)) showStatement(p, el, false, false); },
+    cardName: id => BY_ID[id] ? BY_ID[id].formula.name : null,
+    storageFailed: () => storageFailed()
+  });
+
   function render() {
     landingObserver?.disconnect();
     cancelPracticeFinishConfirm();
@@ -12085,6 +12098,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (route.type === "space" && ["practice", "arena"].includes(route.name) || route.type === "problems" || route.type === "special" && route.name === "statistics") requireGroup("practice");
     if (route.name === "arena") requireGroup("arena");
     if (route.type === "learn") requireChapter(route.book, route.chapter);
+    if (route.type === "preview") {
+      requireGroup("preview");
+      if (!problemsReady) requirements.push(loadProblems());
+    }
     if (route.type === "settings") {
       requirements.push(...solutionRequirements([+PV_PROBLEM.slice(0, 4)]));
       const book = LEARN_SHELF.find(book => book.id === "aime-counting");
@@ -12168,6 +12185,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
       else renderSpaceHome(route.name, route);
     } else if (route.type === "learn") {
       renderLearn(route);
+    } else if (route.type === "preview") {
+      window.CurriculumPreview.render($content, route.key, CURRICULUM_KIT);
     } else if (state.query.trim()) {
       renderSearchResults();
     } else if (state.landing) {
@@ -12195,7 +12214,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     updateSpaceNavigation(space);
     // A list page's sidebar holds only the list's sections, under "On this list", drawn in the
     // same panel as a card's "On this page", so the section being read is marked the same way.
-    const noSidebar = (state.studySidebars === "hide" && !!SPACE_SECTIONS[space]) || onLanding || searching || ["problems", "problem", "browse", "lists", "settings", "learn"].includes(route.type)
+    const noSidebar = (state.studySidebars === "hide" && !!SPACE_SECTIONS[space]) || onLanding || searching || ["problems", "problem", "browse", "lists", "settings", "learn", "preview"].includes(route.type)
       || (route.type === "space" && (route.practiceSet || route.playing || route.review || !SPACE_SECTIONS[route.name]))
       || (route.type === "list" && !$content.querySelector(".list-section[id]"));
     const $tree = document.getElementById("formula-nav");

@@ -2,6 +2,8 @@
 
 # Minimal plan: rendering the first chapter in a separate preview
 
+**Status (2026-11-28): implemented for G2.2** on `claude/textbook-redesign`; checks in §5 are `tools/curriculum/check-preview.cjs`, `tools/curriculum/verify/g2_02.py`, `tools/curriculum/build-shelf.py --check` and `tools/curriculum/figures/g2_02.py --check`. One change from the plan: the preview has its own renderer and answer checking instead of reusing the live lesson renderer through a `LearnKit` object, so that no live handler, check or progress key is shared; it reuses only problem lookup, statement display and card names (`CURRICULUM_KIT` in `js/app.js`) and the pure `LearnAnswer` comparison. Bold in chapter text is written `__text__` because the convention gate forbids asterisk emphasis in data files.
+
 **Goal.** Let the owner read G2.2 (Power of a Point) in the app, exactly as a learner would, before any further chapter is written. The live Learn experience, search, recommendations, the reference cards, the problem database, Practice and Arena are unchanged (D3, D12). Nothing here is implemented yet. The plan is the smallest change that renders one complete chapter and can grow into the full shelf without rework.
 
 ## 1. What is built

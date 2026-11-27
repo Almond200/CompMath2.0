@@ -158,4 +158,5 @@ All twelve decisions are made. Each now governs the work; AUTHORING-STANDARD.md 
   - **CR-8.** 22 editor-facing rationale passages move out of concept-section prose into "Editorial notes (not student-facing)" at the end of their chapter files.
   - **CR-9.** `curriculum/data/index.json` is now generated from the edited chapter files by `tools/curriculum/check-spec.py --write`, with each chapter's status (core, optional, deferred). `build-curriculum.py` refuses to overwrite the edited files.
 - **2026-11-27, Phase 1 artefacts.** AUTHORING-STANDARD.md, YEAR2-SOURCES.md, five packets (`packets/G2.2.md`, `A2.8.md`, `C2.5.md`, `N2.1.md`, `A3.3.md`; G2.2 complete), `tools/curriculum/check-spec.py`, and PREVIEW-PLAN.md.
+- **2026-11-28, G2.2 written and implemented.** First complete chapter of the new curriculum, with the preview route (`#/preview`), its renderer `js/curriculum-preview.js`, the progress store `mq-learn2` (carried by Export and Import), the generated shelf and figures, the verification script and the browser checks. No curriculum text changed.
 
