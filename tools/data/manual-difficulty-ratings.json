@@ -23027,120 +23027,120 @@
       "Reduce a concentric-sphere light path to a planar annulus and count equal angular advances until its first return."
     ],
     "2025 BMT Algebra, Problem 1": [
-      1300,
-      "Extract a requested linear combination without determining three separate variables. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      940,
+      "Reviewed against the printed paper. Subtract the equations to get the sum of the unknowns, then add sixty times that sum to the first expression."
     ],
     "2025 BMT Algebra, Problem 2": [
-      1230,
-      "Solve for a changing count when identical high-valued slips are added to an average. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1120,
+      "Reviewed against the printed paper. Set the total of the augmented hat equal to its target mean times its new size."
     ],
     "2025 BMT Algebra, Problem 3": [
-      1300,
-      "Recover an arithmetic progression from an early-term ratio and a two-term sum. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1150,
+      "Reviewed against the printed paper. The common difference is three times the first term. The next two terms are seven and ten times that first term."
     ],
     "2025 BMT Algebra, Problem 4": [
-      1590,
-      "Factor two quadratics, remove a repeated root and track horizontal translation followed by a half-turn. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1490,
+      "Reviewed against the printed paper. Factor both quadratics, count the shared root once, and transform each distinct root by the two given moves."
     ],
     "2025 BMT Algebra, Problem 5": [
       1920,
       "Convert three cubic equations into pair-sum cube roots and enumerate which branch sums are real. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2025 BMT Algebra, Problem 6": [
-      2080,
-      "Index sine zeros through a logarithm, retain both quadratic roots in the allowed domain and sum their absolutely convergent series. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2210,
+      "Reviewed against the printed paper. Use the domain to retain precisely the positive sine indices. Vieta then pairs the two roots for each index into a geometric series."
     ],
     "2025 BMT Algebra, Problem 7": [
-      2240,
-      "Evaluate a fifth-root Vandermonde-square product through polynomial derivatives and its sign. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1920,
+      "Reviewed against the printed paper. Each derivative of the monic fifth-root polynomial is a product of four root differences. Multiply the five derivatives."
     ],
     "2025 BMT Algebra, Problem 8": [
-      2080,
-      "Untangle a rational expression of two logarithms and identify the least integer base by bounded verification. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2340,
+      "Reviewed against the printed paper. Express both logs using the three prime logarithms, factor, and certify that the reduced logarithm has no smaller integer base."
     ],
     "2025 BMT Algebra, Problem 9": [
-      2670,
-      "Factor a fifth-power cyclic difference and classify shifted cube-root triples with integral real parts. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2520,
+      "Reviewed against the printed paper. Factor the fifth powers of three differences to force an equilateral triple. The allowed products then form two explicit cubic progressions."
     ],
     "2025 BMT Algebra, Problem 10": [
       2400,
       "Recognize a common sparse degree-ten polynomial and recover its product from ninth power sums; the official argument needs a multiplicity justification. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2025 BMT Discrete Math, Problem 1": [
-      980,
-      "Condition on the first sock and count the one matching choice among three remaining socks. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      810,
+      "Reviewed against the printed paper. Two of the six unordered pairs have matching colors."
     ],
     "2025 BMT Discrete Math, Problem 2": [
-      1430,
-      "Subtract consecutive affine expressions to restrict two divisibility conditions to a short divisor list. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1080,
+      "Reviewed against the printed paper. The two divisibilities reduce to a divisor of ten whose shift by ten divides ninety."
     ],
     "2025 BMT Discrete Math, Problem 3": [
-      1590,
-      "Subtract the sole all-distinct occupancy pattern from positive compositions into four labeled boxes. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1250,
+      "Reviewed against the printed paper. Count positive compositions and subtract the permutations of the only feasible set of four distinct counts."
     ],
     "2025 BMT Discrete Math, Problem 4": [
-      1650,
-      "Classify four-digit strings by alternating adjacent-digit residues, allowing zero substrings. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1520,
+      "Reviewed against the printed paper. Adjacent digits must have opposite residues modulo three. Count the three alternating residue classes."
     ],
     "2025 BMT Discrete Math, Problem 5": [
-      1890,
-      "Translate a GCD-of-LCMs constraint into median prime valuations and minimize three positive integers. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1760,
+      "Reviewed against the printed paper. The gcd of the pairwise least common multiples fixes each prime median. The minimal exponents are attained by putting the two zeros on different integers."
     ],
     "2025 BMT Discrete Math, Problem 6": [
-      1830,
-      "Count increasing subsequences that alternate between two residue classes using endpoint states. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1690,
+      "Reviewed against the printed paper. Maintain counts of sequences ending in each type while scanning the twelve allowable values."
     ],
     "2025 BMT Discrete Math, Problem 7": [
       2030,
       "Separate adjacent swaps from the two full rotations and count the remaining path matchings by Fibonacci recurrence. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2025 BMT Discrete Math, Problem 8": [
-      2400,
-      "Reduce a selected-divisor sum to exponent parity classes and count divisors of a large factored number. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2230,
+      "Reviewed against the printed paper. Only odd divisors contribute to parity. Count the symmetric difference of two sets of exponent triples and multiply by the unrestricted power-of-two choices."
     ],
     "2025 BMT Discrete Math, Problem 9": [
-      2880,
-      "Complement a graph with unequal-degree adjacent vertices, bound degree classes and construct an attaining configuration. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2550,
+      "Reviewed against the printed paper. In the complement each degree class is a clique. The cheapest possible degree profile is impossible, and a profile one edge larger has an explicit construction."
     ],
     "2025 BMT Discrete Math, Problem 10": [
-      3580,
-      "Classify a three-exponent square equation by valuations, factor pairs and primitive prime divisors, including all small cases. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      3380,
+      "Reviewed against the printed paper. Factor the difference of squares for the small cases. For larger powers, parity and valuations reduce the exponent to a finite list."
     ],
     "2025 BMT Geometry, Problem 1": [
-      1230,
-      "Identify the only positive integral right triangle with hypotenuse ten and add its external square sides. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1040,
+      "Reviewed against the printed paper. The hypotenuse ten fixes the integer right-triangle legs. Add them to the other three square sides."
     ],
     "2025 BMT Geometry, Problem 2": [
-      1430,
-      "Add a tether semicircle and the quarter disk reached after wrapping a building corner. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1220,
+      "Reviewed against the printed paper. The reachable region is a semicircle and a disjoint quarter-circle obtained after wrapping at the nearest corner."
     ],
     "2025 BMT Geometry, Problem 3": [
-      1590,
-      "Use equal polygon edges and two small vertex angles to determine the angle between nested regular polygons. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1350,
+      "Reviewed against the printed paper. Three relevant vertices share a circle centered at A. The angle intercepts its long arc of 330 degrees."
     ],
     "2025 BMT Geometry, Problem 4": [
-      1860,
-      "Exploit parallel sections and perpendicular cevians in an equilateral triangle to recover a scale ratio. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1530,
+      "Reviewed against the printed paper. By symmetry the perpendicular cevians have opposite horizontal components and equal vertical components. Equate their magnitudes."
     ],
     "2025 BMT Geometry, Problem 5": [
-      1770,
-      "Recover two altitudes from line distances, then decompose a quadrilateral into a trapezoid and right triangles. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1630,
+      "Reviewed against the printed paper. The two distances determine the two base angles. Use the matching coordinates and compute the quadrilateral area."
     ],
     "2025 BMT Geometry, Problem 6": [
-      1980,
-      "Turn simultaneous internal and external circle tangency into a constant sum of focal distances. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1710,
+      "Reviewed against the printed paper. The two tangencies make the sum of the focal distances constant. The ellipse dimensions follow immediately."
     ],
     "2025 BMT Geometry, Problem 7": [
-      2080,
-      "Separate edge, face and interior lattice counts in an upright prism before applying Pick to its triangular base. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1910,
+      "Reviewed against the printed paper. Count vertices, side interiors, and volume lattice points by horizontal layers. Two height candidates remain, then Pick gives the area."
     ],
     "2025 BMT Geometry, Problem 8": [
-      2560,
-      "Convert a unique maximal viewing angle to circle tangency and recover altitude lengths through an orthocenter power identity. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2350,
+      "Reviewed against the printed paper. Optimize the angle by expressing its tangent through the horizontal displacement. The orthocenter relation ensures the maximum fits on the segment."
     ],
     "2025 BMT Geometry, Problem 9": [
-      2560,
-      "Intersect the two midpoint-defined circumcircles in coordinates and compute the second-intersection distance. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2260,
+      "Reviewed against the printed paper. Place both circle equations at the shared midpoint. Subtraction finds their radical axis, giving one nonzero intersection by substitution."
     ],
     "2025 BMT Geometry, Problem 10": [
       2880,
@@ -23403,104 +23403,104 @@
       "Express a composite-index cyclotomic polynomial as a low-degree polynomial in a large power and sum its supported exponents. Rescaled 2026-11-20 (owner review of difficulty inflation): PUMaC estimates sat above HMMT February at every position in the paper, though HMMT February, rated from official solve counts, is the harder tournament; every PUMaC estimate was mapped by one increasing scale, keeping their order and keeping problems shared by Divisions A and B equal, so Division A sits just below HMMT February and Division B between HMMT November and February."
     ],
     "2024 BMT Algebra, Problem 1": [
-      1080,
-      "Recover two initial counts from a difference and a later ratio after transfers. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      870,
+      "Reviewed against the printed paper. The final counts differ by fifteen, and the larger is twice the smaller."
     ],
     "2024 BMT Algebra, Problem 2": [
-      1360,
-      "Intersect two quadratic solution sets obtained from equal rational expressions. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1080,
+      "Reviewed against the printed paper. Subtract the two quadratics obtained from the common fraction to get one linear equation."
     ],
     "2024 BMT Algebra, Problem 3": [
-      1550,
-      "Couple an arithmetic progression and a geometric progression through early sums and a later equality. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1270,
+      "Reviewed against the printed paper. The first two terms determine the common difference as minus the initial geometric term."
     ],
     "2024 BMT Algebra, Problem 4": [
-      1770,
-      "Bound the possible integer interval using floor-ceiling errors and locate its greatest solution. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1650,
+      "Reviewed against the printed paper. Use the ceiling as the integer parameter. The two interval endpoints bound it above and admit a short terminal interval."
     ],
     "2024 BMT Algebra, Problem 5": [
-      2290,
-      "Classify a real cubic by conjugate roots on an off-center circle and count feasible parameter branches. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2100,
+      "Reviewed against the printed paper. The distance circle puts the single real root at one of two points. The conjugate pair exists precisely when its required real part is inside the circle."
     ],
     "2024 BMT Algebra, Problem 6": [
-      1890,
-      "Replace pairwise sums by reciprocals, exclude the zero branch and solve a linearized nonlinear system. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1740,
+      "Reviewed against the printed paper. The pair sums factor the quadratics. Taking reciprocals gives a three-by-three linear system and directly yields the weighted sum."
     ],
     "2024 BMT Algebra, Problem 7": [
-      2080,
-      "Factor a symmetric cube condition into geometric-progression alternatives and count bounded ordered integer triples. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2230,
+      "Reviewed against the printed paper. Normalize the product to one and use the extra Vieta relation to force a root of one. Enumerate the remaining geometric triples by coprime ratios."
     ],
     "2024 BMT Algebra, Problem 8": [
-      2400,
-      "Force three variables equal in a symmetric product system, then minimize weighted positive expressions with domain checks. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2520,
+      "Reviewed against the printed paper. Pairwise differences force three equal variables. Optimize the four possible weights of the exceptional variable, including the open endpoint."
     ],
     "2024 BMT Algebra, Problem 9": [
-      2670,
-      "Linearize two radical recurrences by trigonometric half angles and find the strict supremum of product differences. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2340,
+      "Reviewed against the printed paper. The reciprocal of the second sequence follows the first recurrence. Use cotangent halving and then a double-angle formula to identify a strict supremum."
     ],
     "2024 BMT Algebra, Problem 10": [
-      3340,
-      "Normalize a triple roots-of-unity product with secant coefficients and evaluate its integer residue. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2930,
+      "Reviewed against the printed paper. Shift exponents to differences, collapse one product over the fifth roots, and evaluate a two-term power sum."
     ],
     "2024 BMT Discrete Math, Problem 1": [
-      1130,
-      "Order three-digit palindromes whose digit sums are divisible by three. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      920,
+      "Reviewed against the printed paper. The first digit is nine for the largest candidates, and divisibility forces the middle digit to be zero, three, six, or nine."
     ],
     "2024 BMT Discrete Math, Problem 2": [
-      1430,
-      "Use a repeated color period to force five distinct colors, two of which are mandatory. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1260,
+      "Reviewed against the printed paper. Each of five positions repeats seven times, so the color limit forces distinct colors. Then select and order the five colors."
     ],
     "2024 BMT Discrete Math, Problem 3": [
-      1490,
-      "Rewrite a rational integrality condition as signed divisors of a fixed constant, retaining the positivity bound. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1220,
+      "Reviewed against the printed paper. Separate a constant from the fraction and count the signed divisors of forty-four, excluding one too large to give a positive input."
     ],
     "2024 BMT Discrete Math, Problem 4": [
-      1830,
-      "Count circular two-color assignments by alternating runs, each of length at least two. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1630,
+      "Reviewed against the printed paper. Count nonadjacent boundary edges for two runs and the two alternating boundary patterns for four runs."
     ],
     "2024 BMT Discrete Math, Problem 5": [
-      2080,
-      "Factor equal dice-sum distributions and use a specified large label to force a nonstandard pair of dice. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1940,
+      "Reviewed against the printed paper. Factor the sum-generating polynomial. The two factors at one and degree thirteen force a unique allocation of cyclotomic factors."
     ],
     "2024 BMT Discrete Math, Problem 6": [
-      2030,
-      "Combine base-six digit-sum divisibility with a short-block modulus to maximize a digit permutation. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1780,
+      "Reviewed against the printed paper. Use six cubed congruent to one, then the fixed digit sum leaves just two short linear congruence cases."
     ],
     "2024 BMT Discrete Math, Problem 7": [
       2030,
       "Count a required overlapping binary-letter pattern by gap variables and inclusion-exclusion. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2024 BMT Discrete Math, Problem 8": [
-      2450,
-      "Count bounded prime-exponent distributions in five-factor products and optimize the resulting multiplicative ratio. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2190,
+      "Reviewed against the printed paper. Separate prime exponents by stars and bars, then use the decreasing ratio of successive factors to select each exponent."
     ],
     "2024 BMT Discrete Math, Problem 9": [
-      3220,
-      "Expand a squared exponential sum, count quadratic residue fibers through CRT and evaluate the geometric sums. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2520,
+      "Reviewed against the printed paper. Reduce exponents to the order of four. The difference of squares gives a bijection and collapses the double sum to one nonzero geometric sum."
     ],
     "2024 BMT Discrete Math, Problem 10": [
       2940,
       "Represent repeated grid-edge sums by domino matchings and correct the count when two modal sums coexist. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2024 BMT Geometry, Problem 1": [
-      1080,
-      "Add three semicircular boundary arcs around an equilateral central region. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      850,
+      "Reviewed against the printed paper. The highlighted perimeter consists of three semicircular arcs of the stated radius."
     ],
     "2024 BMT Geometry, Problem 2": [
-      1360,
-      "Use symmetric side-trisection points of a square to recover the common circle radius. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1140,
+      "Reviewed against the printed paper. From the center to a marked point the horizontal and vertical displacements are three and one."
     ],
     "2024 BMT Geometry, Problem 3": [
       1770,
       "Use the diagrammed circle placement to subtract tangent-blocked sectors from a square visibility region. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2024 BMT Geometry, Problem 4": [
-      1920,
-      "Normalize two internally tangent circles and turn a distance ratio into two similar diameter triangles. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1620,
+      "Reviewed against the printed paper. On the outer circle, each squared distance to a point on the diameter is an affine function of one coordinate."
     ],
     "2024 BMT Geometry, Problem 5": [
-      1980,
-      "Exploit the right triangles in a bicentric kite and its diagonal area to compare circumcircle and incircle areas. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1850,
+      "Reviewed against the printed paper. The symmetry diagonal is the diameter. The kite area and the two right triangles determine its inradius."
     ],
     "2024 BMT Geometry, Problem 6": [
       2450,
@@ -23511,16 +23511,16 @@
       "Place several perpendicular feet on a cyclic rectangle, then combine a secant power with a similarity ratio. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2024 BMT Geometry, Problem 8": [
-      2400,
-      "Use a shared interior chord product along three orthogonal sphere secants to recover a tetrahedron volume. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2180,
+      "Reviewed against the printed paper. Use the shared chord product to get the three projected center coordinates. One quadratic then gives the orthogonal edge lengths."
     ],
     "2024 BMT Geometry, Problem 9": [
-      2670,
-      "Relate a median secant of an incenter circle to side products and eliminate an invalid triangle branch. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2480,
+      "Reviewed against the printed paper. Use the midpoint power to find the candidate median lengths, and the incenter-excenter product to rule out the longer median."
     ],
     "2024 BMT Geometry, Problem 10": [
-      3280,
-      "Recognize dual chord-of-contact polars, identify an inverse point and recover a tangent-chord triangle area. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      3070,
+      "Reviewed against the printed paper. Two chord-of-contact identities fix the position of the secant point. Intersect the line with the diameter circle and solve the resulting linear equation in the squared altitude."
     ],
     "2023 BMT Algebra, Problem 1": [
       800,

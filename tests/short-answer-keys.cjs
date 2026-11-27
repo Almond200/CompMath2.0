@@ -172,6 +172,8 @@ for (const [number, correct, imported] of [
   check(slug, correct, 'Correct');
   check(slug, imported, 'Incorrect');
 }
+assert(practice.needsSelfCheck({}, '2025-bmt-algebra-10'));
+assert.match(notes['2025-bmt-algebra-10'], /negative rational product rules out repetitions/);
 check('2018-lehigh-math-contest-1', '20', 'Correct');
 check('2018-lehigh-math-contest-1', '400', 'Incorrect');
 check('2013-lehigh-math-contest-6', 'sqrt(2)', 'Correct');
