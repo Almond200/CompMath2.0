@@ -87,8 +87,9 @@ assert.match(voided['2015-mmaths-individual-7'], /^Practice ruling\..*4\/7.*degr
 
 const hmmt2010 = Object.keys(window.MATH_STATEMENTS).filter(slug => /^2010-hmmt-february-/.test(slug));
 assert.equal(hmmt2010.length, 30);
-assert.deepEqual(hmmt2010.filter(slug => !practice.exactKey(slug)), ['2010-hmmt-february-combinatorics-8']);
-assert(voided['2010-hmmt-february-combinatorics-8']);
+const hmmt2010Voids = ['2010-hmmt-february-algebra-7', '2010-hmmt-february-combinatorics-8'];
+assert.deepEqual(hmmt2010.filter(slug => !practice.exactKey(slug)), hmmt2010Voids);
+assert(hmmt2010Voids.every(slug => voided[slug]));
 
 function check(slug, value, verdict) {
   const set = practice.create('Short-answer check', 'Any', [slug]);
@@ -97,6 +98,15 @@ function check(slug, value, verdict) {
 }
 
 const set = '2014-hmmt-february-algebra-1';
+for (const slug of ['2001-hmmt-february-advanced-topics-1', '2001-hmmt-february-algebra-1', '2001-hmmt-february-advanced-topics-3']) {
+  assert.match(practice.voidReason(slug), /^Practice ruling\./);
+}
+for (const slug of ['2001-hmmt-february-advanced-topics-8', '2001-hmmt-february-algebra-9']) {
+  check(slug, '9', 'Correct');
+  check(slug, '10', 'Incorrect');
+}
+check('2012-hmmt-february-algebra-9', '17', 'Correct');
+check('2012-hmmt-february-algebra-9', '18', 'Incorrect');
 check('2025-chmmc-individual-10', '6', 'Correct');
 check('2025-chmmc-individual-10', '7', 'Incorrect');
 assert.match(notes['2025-chmmc-individual-10'], /accepting 7.*6/);
@@ -329,6 +339,14 @@ check('2013-bmmt-individual-18', '2012', 'Correct');
 check('2013-bmmt-individual-18', '1858', 'Incorrect');
 check('2013-bmt-geometry-4', '7776:1', 'Correct');
 check('2013-bmt-geometry-4', '1/1296', 'Incorrect');
+check('2013-bmt-geometry-2', '14', 'Correct');
+check('2013-bmt-geometry-2', '21', 'Incorrect');
+check('2014-bmt-geometry-4', '9+sqrt(24)+sqrt(48)', 'Correct');
+check('2014-bmt-geometry-4', '7+6sqrt(2)+4sqrt(3)', 'Incorrect');
+const bmt2014Voids = [
+  '2014-bmt-analysis-3', '2014-bmt-analysis-8', '2014-bmt-geometry-5', '2014-bmt-geometry-9', '2014-bmt-geometry-10'
+];
+assert(bmt2014Voids.every(slug => voided[slug] && !practice.exactKey(slug)));
 check('2013-bmt-discrete-math-5', '2^2013', 'Correct');
 check('2018-bmt-geometry-10', '(4sqrt(7)-10)pi', 'Correct');
 check('2019-bmt-discrete-math-2', '0.(18)', 'Correct');
