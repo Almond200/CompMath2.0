@@ -731,6 +731,8 @@ window.MATH_SHORT_ANSWER_KEYS = {
     "2019-bmt-discrete-math-4": "The worked solution interchanges a and b. The paper requires a > b, so a = 42 and b = 30. The sum is still 72.",
     "2019-bmt-geometry-9": "The published supremum is correct. Its argument assumes every height permits the tangent slice and asserts monotonicity. The audit bounds the area directly and verifies that valid slices approach the limit.",
     "2019-bmt-geometry-10": "The worked solution uses a base of length 18. The printed base is 12. With that base the unique point requires height 6√35 and gives area 36√35.",
+    "2020-bmt-geometry-2": "The first official solution is correct. The second uses an AM–GM lower bound that depends on the radii. Completing the square with their fixed sum gives the claimed minimum π/2.",
+    "2020-bmt-geometry-9": "The first lemma's last sentence reverses its conclusion. Its argument rules out nontriangular shapes as minimizers. The answer 2,029 is correct, and the audit also checks the minimum of the requested radical representation.",
     "2017-cmimc-computer-science-5": "The published calculation ends with 97/14. Its formula evaluated at the requested n = 13 gives 7 − 1/13 = 90/13.",
     "2017-duke-math-meet-individual-3": "A four-digit number starts with a nonzero digit. This gives 495. Counting four-character digit strings that may start with zero gives the published 715.",
     "2018-cmimc-combinatorics-4": "The solution assumes independent uniform waiting times for the buses. For fixed schedules, the chance depends on their relative offset, which the prompt leaves unspecified.",
