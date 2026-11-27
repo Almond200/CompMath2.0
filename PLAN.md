@@ -15,7 +15,7 @@ The audit goal covers all indexed BMT, PUMaC, and SMT papers. Solve each problem
 
 Past-paper mocks now use the archived time limits, including separate countdowns for timed pairs and early submission for a pair or the whole mock. The 2025 BMT Algebra #6 key uses an exponent of π on 10. [Mock timing and sources](MOCK-CONTESTS.md#archived-paper-limits)
 
-The textbook goal covers all 103 teaching chapters on `codex/counting-r3-revision`. Read more links now accompany every teaching chapter, and the refreshed AMC Algebra L12 and AMC Counting R5 teach introductory trigonometry, identities, recursive counting and grid dynamic programming. Forty chapters have completed the full revision, through AMC Geometry S9. AMC Geometry S10 is next. [Textbook revision](TEXTBOOK-REVISION.md)
+The textbook goal covers all 103 teaching chapters on `codex/counting-r3-revision`. Read more links accompany every teaching chapter, and the refreshed AMC Algebra L12 and AMC Counting R5 teach introductory trigonometry, identities, recursive counting and grid dynamic programming. AMC Geometry S10 explains when to use its coordinate techniques and adds practice from ARML, SMT and HMMT. Forty-one chapters have completed revision. AMC Geometry S11 is next. [Textbook revision](TEXTBOOK-REVISION.md)
 
 The BMT problem audit covers 160 of 370 indexed questions, all papers from 2013 through 2018. The 2019 individual rounds are next. Practice and Arena reviews show grading rulings next to the official answer link. [Latest BMT audit](AUDITS.md#bmt-problem-audit-2018-individual-rounds-2026-11-27)
 

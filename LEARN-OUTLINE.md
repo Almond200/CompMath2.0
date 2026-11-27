@@ -760,15 +760,15 @@ The law of sines, cevians, cyclic and tangential quadrilaterals, and circles tha
 
 ### S10. Analytic geometry (Core II)
 
-Conics, polar coordinates, vectors and transformations, and theorems about quadrilaterals and regions.
+Using distance, direction, and area to choose coordinates, transformations, and constructions.
 
-| Lesson | Importance | Cards | AMC problems |
+| Lesson | Importance | Cards | Contest problems |
 |---|---|---|---|
-| S10.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
-| S10.2 Conic sections | Core | `conic-sections`, `parabola-focus-directrix`, `ellipse-properties`, `hyperbola-properties`, `conic-tangent-lines`, `eccentricity`, `parabolic-segment-area` | 9 |
-| S10.3 Polar coordinates, tangency and determinants | Core II | `polar-coordinates`, `tangency-equation`, `determinant-geometric`, `lattice-points-gcd` | 4 |
-| S10.4 Vectors and transformations | Core | `vector-dot-product`, `vector-projection`, `reflection-composition`, `rotation-reflection-matrices`, `rotation-trick`, `rotation-center`, `linear-change-of-variables` | 17 |
-| S10.5 Theorems about quadrilaterals and hexagons | Core II | `british-flag-theorem`, `varignons-theorem`, `equiangular-hexagon-area` | 6 |
+| S10.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | 3 |
+| S10.2 Conic sections | Core | `conic-sections`, `parabola-focus-directrix`, `ellipse-properties`, `hyperbola-properties`, `conic-tangent-lines`, `eccentricity`, `parabolic-segment-area` | 8 |
+| S10.3 Polar coordinates, tangency and determinants | Core II | `polar-coordinates`, `tangency-equation`, `determinant-geometric`, `lattice-points-gcd` | 6 |
+| S10.4 Vectors and transformations | Core | `vector-dot-product`, `vector-projection`, `reflection-composition`, `rotation-reflection-matrices`, `rotation-trick`, `rotation-center`, `linear-change-of-variables` | 12 |
+| S10.5 Theorems about quadrilaterals and hexagons | Core II | `british-flag-theorem`, `varignons-theorem`, `equiangular-hexagon-area` | 7 |
 | S10.6 Regions and neighborhoods | Extension | `steiner-neighborhood`, `isoperimetric-facts` | 7 |
 | S10.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S10.8 Review Problems and S10.9 Challenge Problems | |
 

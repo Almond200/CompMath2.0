@@ -199,6 +199,11 @@ window.MATH_LEARN_READING = {
     ["OpenStax · The Ellipse", "https://openstax.org/books/precalculus-2e/pages/10-1-the-ellipse", "Relate the equation of an ellipse to its axes, vertices and foci."],
     ["AoPS · Volume 2, Chapters 5 and 11–12 (contents)", "https://aops-cdn.artofproblemsolving.com/products/aops-vol2/toc.pdf", "Find contest chapters on conics, polar coordinates, determinants and analytic geometry."],
   ],
+  "S10.3": [
+    ["Math Gold Medalist · Diagonal of a Grid", "https://mathgoldmedalist.com/toolkit/diagonal-of-a-grid", "Practice using a gcd to count cells along a diagonal, including problems that give the cell count and ask for the dimensions."],
+    ["OpenStax · Polar Coordinates", "https://openstax.org/books/precalculus-2e/pages/8-3-polar-coordinates", "Compare rectangular and polar forms to see which keeps a radius or bearing visible."],
+    ["AoPS · Volume 2, Chapter 20 (contents)", "https://aops-cdn.artofproblemsolving.com/products/aops-vol2/toc.pdf", "Find contest problems that combine loci and construct points from geometric conditions."],
+  ],
   S11: [
     ["OpenStax · Vectors in Three Dimensions", "https://openstax.org/books/calculus-volume-3/pages/2-2-vectors-in-three-dimensions", "Practice coordinates, distances and direction vectors in space."],
     ["AoPS · Precalculus, Section 5.3 (contents)", "https://aops-cdn.artofproblemsolving.com/products/precalculus/toc.pdf", "Locate the book's section on setting up coordinates in three-dimensional problems."],

@@ -6,6 +6,8 @@
 
 - **BMT audit.** Solve all 30 questions from the 2017 papers and revise 15 Elo estimates. Correct the tournament probability, the expected largest box volume, and the maximum sine. Accept both readings of the triangle-intersection question and void three prompts with impossible or missing conditions.
 
+- **Textbooks.** Revise AMC Geometry S10, Analytic geometry. Use problem conditions to choose conic equations, determinants, intersecting loci, rotations and area bounds. Add six figures, five worked problems, and five contest exercises from ARML, SMT and HMMT. Show permitted contest statements in Learn with their source credits and preserve the archive link when the statement is unavailable.
+
 - **Textbooks.** Add Read more above Related cards, with an external link and a short note for all 103 teaching chapters. Add specific readings for trig and grid counting, including AoPS section references. Expand recursive counting and grid dynamic programming, and give basic trig, angle identities, multiple angles, harmonic addition and inverse trig their own lessons.
 
 - **Textbook links.** Display each item as its own bullet in Lessons on topic pages and in Practice this more on lesson pages.
