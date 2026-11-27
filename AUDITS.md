@@ -3089,3 +3089,121 @@ Solved all 30 questions and reviewed each statement, answer, card filing, and au
 For Geometry #9, take $B=(0,0,0)$, $A=(1,0,0)$, $C=(0,1,0)$, $D=(0,0,h)$ and let $L=\sqrt{1+h^2}$. Write $F=(0,0,f)$ and $E=(1-s,0,sh)$. Pitot on $AEFB$ gives $EF=sL+f-1$. Squaring gives $s[1-L+(h+L)f]=f$, so symmetry gives the same $s$ for $G$. Pitot on $CGEA$ then gives $s=2/(1+\sqrt2L)$. Let $u=1-s$, $q=sh-f$ and $K=s(L+h)-1$. The equation $\sqrt{u^2+q^2}+q=K$ gives $K>0$ and $q=(K^2-u^2)/(2K)$. The area ratio is $u\sqrt{u^2+2q^2}$.
 
 Write $r_0=\sqrt2$ and $t=L-h$. For $q<0$, $K<u$ gives $h/L<r_0-1$, hence $h<1/2$ and $|q|\le uh<1/2$. For $q\ge0$ we have $t^2\le r_0-1$. Put $W=1+r_0t+t^2$ so $K>0$ gives $W<2r_0$. Substitution shows that $q_\infty-q$ has the sign of $3-t(t^2+1-3r_0)-3(1+r_0)t^2$, where $q_\infty=(6\sqrt2-4)/7$. The sign is positive because $t^2\le r_0-1$. Thus $|q|<q_\infty$ for all valid finite heights. For large $h$, $s\to0$ and $f\to(4+\sqrt2)/7$, which lies strictly between 0 and $h$. The convex sections then satisfy Pitot and have inscribed circles by its converse. As $h\to\infty$, $u\to1$ and $q\to q_\infty$, proving the stated supremum.
+
+## BMT problem audit, 2020 individual rounds (2026-11-27)
+
+Solved all 30 questions from the printed papers and compared the verified routes with the recorded difficulty, cards and topics. All answer values agree with the current keys. Two Geometry solution notes flag errors in the published reasoning. Fourteen author estimates were revised. Codex's PR #463 (merged as 04cfdcc) carries the data; it recorded a pause after 2020 at the owner's request, and PR #464 then resumed with 2021.
+
+### Algebra
+
+[Problem paper](https://berkeley.mt/archives/bmt-2020/algebra-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2020/algebra-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | There are twelve five-second blocks, with one through twelve tosses per second. The total is $5(1+\cdots+12)=390$. | 880 |
+| 2 | Viète gives $a+b=-2020$ and $ab=c$. The ratio sum is $(a+b)^2/c-2=98$, so $\sqrt c=202$. | 1,270 |
+| 3 | The remaining monic linear factor repeats one root $j$ from 1 through 2020. The value at 2021 is $2020!(2021-j)$ and its mean is $2021!/2$. This exceeds $2020!$, so the minimum factorial index is 2021 and the requested sum is 2023. | 1,650 |
+| 4 | From $\varphi^2=\varphi+1$, the coefficients of $\varphi$ are $F_n$ starting at $F_0=0$. The sum through $F_{10}$ is $F_{12}-1=143$. | 1,650 |
+| 5 | Substituting $y=1$ gives $f(1)=2$. Then $x=y$ gives $f(x^2)=f(x)^2-2$. Starting at 3, the last two digits alternate between 07 and 47 after the first step. The even iterate 2020 gives 47. | 2,080 → 1,860 |
+| 6 | Cancel factorials to get $18/[(n-2)(n-1)n(n+1)]$. This is six times the difference of the consecutive three-factor reciprocals. The sum is $6(1/6-1/990)=164/165$, giving 329. | 1,920 → 1,740 |
+| 7 | The three differences have sum zero, so the sum of their cubes is three times their product. Multiplying gives $(ab-1)(bc-1)(ca-1)/5$. The middle coefficients cancel since $ab+bc+ca=5(a+b+c)$. This gives $72/5$, hence 77. | 2,240 |
+| 8 | Cauchy applied to $(x^2-2,2x)$ and $(2,y^2)$ bounds $2(x^2+xy^2)-4$ by the displayed radical. Swapping $x,y$ gives the companion inequality. Average them and use equality at $(2,2)$ to get $C=4$. | 2,940 → 2,490 |
+| 9 | Exact enumeration over the 90 possible values of each variable leaves only $(52,36,25)$, checked directly in the printed cubic. The sum is 113. The sum-of-cubes factorization also rewrites the left-hand difference as a positive linear factor times half the sum of squared differences among $a,\sqrt[3]3b,\sqrt[3]9c$. | 3,280 |
+| 10 | The quotient is the normalized dot product of $(a_k-2,1)$ and $(a_{k+1}-2,1)$. Their angles decrease from $\pi/2$ to 0, so the principal inverse cosines telescope to $\pi/2$. The floor is 157. | 3,280 → 2,600 |
+
+### Discrete Math
+
+[Problem paper](https://berkeley.mt/archives/bmt-2020/discrete-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2020/discrete-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | There are $5!-4!=96$ arrangements after excluding those starting with B. | 830 |
+| 2 | A valid pair contains a multiple of 4, or consists of two numbers congruent to 2 modulo 4. The count is $\binom{100}{2}-\binom{75}{2}+\binom{25}{2}=2475$. The probability is $1/2$ and the requested sum is 3. | 1,430 |
+| 3 | Wilson gives $-1\equiv100!\equiv2(98!)\pmod{101}$. Thus the remainder is 50. | 1,550 |
+| 4 | The middle light is on after three guaranteed switches. Each end light is switched with probability $2/3$ each time, and the probability of odd parity is $14/27$. The expectation is $55/27$, giving 82. | 1,890 → 1,710 |
+| 5 | The expected sign of one factor is $1/3$, so $2P-1=(1/3)^{2020}$. Its denominator has only prime 3, so the largest possible exponent is 2020. The sum is 2024. | 2,080 → 1,790 |
+| 6 | The subset count is $2^{1000}(2^{1020}-1)$. LTE gives $v_3(4^{510}-1)=v_3(3)+v_3(510)=2$. | 2,190 |
+| 7 | Shift the variables by one and sort them as $x\le y\le z$. The equation is $z(xy-2)=2(x+y+2)$, so all are positive and $x(y^2-2)\le4y+4$. The only integral solutions in order are $(1,3,12),(1,4,7),(2,2,6)$. Their permutations give $6+6+3=15$. | 2,500 |
+| 8 | Keep ambassadors whose subtree contains at least 71 people including themselves. An executive has two children in this forest, and the number of leaves is the number of such branch vertices plus the number of components. Leaf subtrees are disjoint and each uses at least 71 people. Thus $2019\ge72E+71$ and $E\le27$. A full binary tree with 27 internal vertices and 28 leaves, each expanded to a 71-person chain, fits with four spare people. | 2,880 → 2,640 |
+| 9 | On the torus the shuffle is multiplication by the integer matrix $A=\begin{pmatrix}3&1\\1&2\end{pmatrix}$. Fixed points of the third iterate correspond to cosets of $(A^3-I)\mathbb Z^2$ in $\mathbb Z^2$. Their count is $|34\cdot14-20^2|=76$. | 3,050 → 2,630 |
+| 10 | For odd moduli, $4(x^2+x)+1=(2x+1)^2$ counts square residues. At $p^k$, count zero and add $\phi(p^{k-2j})/2$ for each even valuation $2j<k$. The sums through exponent 4 are 49 at $p=3$ and 329 at $p=5$. CRT gives product $7^3\cdot47$, and the prime sum is 54. | 3,340 → 2,770 |
+
+### Geometry
+
+[Problem paper](https://berkeley.mt/archives/bmt-2020/geometry-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2020/geometry-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | Eight cuts add 16 circular faces with radius $5/2$. The increase is $16\pi(5/2)^2=100\pi$. | 880 |
+| 2 | Center distances give $r_1+r_2=1$. Then $r_1^2+r_2^2=2(r_1-1/2)^2+1/2$ is minimized at equal radii. The answer is 3. The second official proof uses a variable lower bound that alone does not give the minimum. | 1,360 |
+| 3 | The rectangle's diagonal gives $AB=1,BE=\sqrt3$. The right triangular base has $BC=\sqrt3$, so the prism volume is $3/2$ and the requested sum is 5. | 1,520 |
+| 4 | The tangency rays exit the large circle at $(-5,\pm5\sqrt3)$ when Alice is at $(10,0)$. The wedge inside both rays has area $100\pi/3+50\sqrt3$. Within it, the visible region in front of the pillar contributes $25\sqrt3-25\pi/3$. The total visible area is $175\pi/3-25\sqrt3$, giving 156. | 1,860 → 2,110 |
+| 5 | Each smaller square combines perpendicular side directions with weights $1/2020$ and $2019/2020$. The area ratio is $(1+2019^2)/2020^2$. The series sums to $2\cdot1010^2/2019$ in lowest terms, so the answer is 3031. | 2,130 |
+| 6 | The two length-6 edges are opposite, and the four other edges are 5. Realize them by alternating corners of a box with coordinate half-lengths $u,v,w$ satisfying $u^2=v^2=9/2,w^2=7/4$. The determinant gives volume $8uvw/3$, hence squared volume 252. | 2,290 → 2,440 |
+| 7 | The chord $AC=12$ gives $\cos\angle AOC=7/25$, so the half-angle cosine is $4/5$. The circumcenter $P$ lies on the bisector and the perpendicular bisector of $AO$, giving $AP=OP=25/4$. The projection of $AO$ onto $AQ$ is $50/AP=8$, so $AQ=16$ and $AP/AQ=25/64$, giving 89. | 2,400 → 2,070 |
+| 8 | The reflected medians are symmedians. Their squared-side ratios give $[KAB]:[KBC]:[KCA]=17^2:14^2:12^2$. These are collectively coprime and sum to 629. | 2,830 → 2,340 |
+| 9 | At a minimum there cannot be four strict corners. Flex the three sides through four successive corners with the closing chord fixed. Bretschneider's formula and the strict increase of the opposite angle sum with the opposite diagonal allow a small area decrease while preserving convexity. The perimeter $F_{2022}-1$ is odd, so a flat polygon is impossible. Among integer triangles of odd perimeter $2L+1$, the three Heron factors are at least $1/2$ and have fixed sum, so their product is smallest when two equal $1/2$. Reserve one side of length 1 and divide the remaining Fibonacci sides into equal groups using $F_{3j-1}+F_{3j}=F_{3j+1}$. This gives area $\sqrt{(F_{2022}-2)^2-1}/4$. Squaring any proposed encoding forces $4\mid d$ since the radicand is odd. Under a total at most 2029, $a\le2023$, with $a\le2021$ too small and $a=2023$ forcing $b=c=1,d=4$, which is too large. Only $(2022,2,1,4)$ works. | 3,580 |
+| 10 | Take $R=(-5,0),S=(5,0),A=(0,12)$ and $P=(10,36)$. Set $L=SP=\sqrt{1321}$ and $B=S+t(P-S)$. The ellipse condition yields $100t+52L|t|=576$. The intersection $Q=R+v(B-R)$ with $AS$ gives $v=1/(1+2t)$, selecting $t=576/(100-52L)<0$ by $v>1$. Then $RQ+SQ=(26+(L-39)t)/(1+2t)=39+L$. The perimeter is $78+2L$, giving $78+5284=5362$. | 3,700 → 3,050 |
+
+Validation (Codex): repository gates, generated book notes and the seven CI unit suites passed; the regenerated difficulty snapshot matches its source data; Chromium showed both 2020 Geometry notes to the right of the official solution link in Practice and Arena review.
+
+## BMT problem audit, 2021 individual rounds (2026-11-27)
+
+Independently solved all 30 questions from the 2021 individual papers and reviewed the existing cards, topics and author-estimated difficulty. Sixteen Elo estimates were revised. The import had placed the coefficient under the radical in the official answers to Geometry #3, #7 and #10; those answers are restored, as is the eight-term example in the statement of Discrete Math #3. Notes beside the official solution links flag two Algebra write-up slips and two Geometry optimality arguments. **Status:** the data changes are in Codex's PR #464, open when this entry was written; this record describes that PR and is not live until it merges.
+
+### Algebra
+
+[Problem paper](https://berkeley.mt/archives/bmt-2021/algebra-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2021/algebra-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | Subtract the equations to get $2x=6$, so $x^4=81$. | 780 |
+| 2 | Both affine compositions have the same linear coefficient. Their difference is constant, so the next value remains 20. | 1,300 → 1,030 |
+| 3 | The floor equation requires $8\le x\lfloor x+2\rfloor<9$. On the nonnegative bands this gives $[2,9/4)$. On the negative bands only $x=-4$ works. The smallest strict upper bound is $9/4$, even though the official prose omits two valid endpoints. | 1,590 → 1,400 |
+| 4 | With $u=\sin\theta+\cos\theta$, the condition is $u^2-(u^2-1)^2/4=0$. The only feasible values are $u=\pm(\sqrt2-1)$. The objective is $(1+u)^2/2$, so its maximum is 1. | 1,770 |
+| 5 | For integer part $m$ and fractional part $t$, solve $t=2020m/(m-2020)$. The restriction $0\le t<1$ leaves $m=0,-1$. The two real solutions sum to $-1/2021$. | 1,830 |
+| 6 | At $x=1/2$ and $x=-1$, the other two function values cancel when the equations are added. Thus $2f(1/2)=9+9/4$. The official prose misnames its second substitution, though its displayed equation uses the correct input. | 2,130 → 1,840 |
+| 7 | For a nontrivial 2021st root, $z^{2020}=1/z$. The terms for $z$ and $1/z$ sum to 1, giving 1010 pairs. | 2,030 → 1,810 |
+| 8 | If $c$ is the hypotenuse, then $r^2=2c^2+2s$, so $s/c^2=\sqrt2+1/2$. This is the maximum of $u+(u^2-1)/2$ for $u=(a+b)/c\le\sqrt2$, forcing equal legs. The root product gives leg cube $4/27$ and area $\sqrt[3]2/9$. | 2,290 |
+| 9 | For $n\ge3$, a factorization of $P=x^n+x+1$ with no factor in common with its reciprocal would give $PP^*=KK^*$ by reversing just one factor. The middle coefficient 3 is the sum of squares of the coefficients of $K$. Its two end coefficients have modulus 1 and comparing supports forces its remaining monomial to have degree 1 or $n-1$, giving $K=\pm P$ or $\pm P^*$. Either forces a common factor after all. A common root satisfies $x^{n-2}=1$ and $x^2+x+1=0$, so the feasible degrees are 5, 8, …, 98. Exact factorization over $\mathbb{Q}$ for all 100 degrees also gives sum 1648. | 3,340 |
+| 10 | The diagonal sum counts each integer up to $n$ once by its square-free part, so its two contributions total $2n^2$. The cross term changes by $\sum_{k\mid n,\ k\text{ square-free}}\tau(n/k)=\tau(n^2)$. Hence the difference is $4n-2-6\tau(n^2)$. The exact divisor counts give a negative difference at 60 and none from 61 through 100. | 3,520 → 2,940 |
+
+### Discrete Math
+
+[Problem paper](https://berkeley.mt/archives/bmt-2021/discrete-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2021/discrete-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | Subtract the two monochromatic sets from $\binom63$ to get 18. | 930 |
+| 2 | The common values are $13$ modulo $20$. The values $13,33,\ldots,2013$ give 101 terms. | 1,230 |
+| 3 | Reserve one of every number. The four remaining terms give sums from 4 to 40 in steps of 3, all attainable using four offsets in $\{0,1,2,3\}$. There are 13 values. Restore the printed example $1+1+1+4+7+7+10+10=41$. | 1,390 → 1,290 |
+| 4 | The process is invariant under all relabelings, so its 16 captains form a uniformly distributed 16-subset of 64. The chance for the two named players is $(16/64)(15/63)=5/84$. | 1,520 → 1,240 |
+| 5 | Let $s=a+c$. The sum is $101s+20b$. The three-digit palindromes require $1\le s\le9$ and $0\le b\le4$, giving $5(1+\cdots+9)=225$. A four-digit palindrome starts and ends in 1, so $s=11$ and the only possibility is $1111$. This gives eight more, totaling 233. | 1,710 |
+| 6 | For $n=\prod p_i^{e_i}$ the divisor count is $\prod(ne_i+1)=5^2\cdot13$. One prime gives $ne=324$, with only $n=3^4=81$. Two primes give factor pairs $(5,65)$ or $(13,25)$, and the common divisors of their decremented factors leave only $n=12$. Three primes would force $n\mid4$. The sum is 93. | 2,080 |
+| 7 | Starting at $2m$, delaying the first halving by $2r$ increments costs at least $r$ more than halving first and then making $r$ increments. An odd input must increment first. Reversing the optimal steps gives moves of costs 1 and 2 from every node except 1, which has only the move to 2. The count is $1+\sum_{j=0}^{11}F_{j+1}=377$. | 2,450 |
+| 8 | The conditional mean of the next digit given $p_i$ is $(p_i+9)/2$, so $\mathbb E p_i=9-(9/2)2^{-i}$. The discounted decimal sum is $1-9/19=10/19$. | 2,560 → 2,130 |
+| 9 | Multiplying by $101!$ gives terms $k!(101-k)!$. Wilson reduces each to $(-1)^kk$ modulo 101. The five consecutive odd/even pairs each contribute 1. | 2,720 → 2,080 |
+| 10 | A shortest odd cycle would have length 5, 7, or 9. Each outside vertex can connect to at most half its vertices, rounded down. Mantel on the outside graph gives total edge bounds 21, 18, and 13, respectively. Thus the graph is bipartite. It is connected because a disconnected triangle-free graph on ten vertices has at most 20 edges. Its unique parts have sizes 4+6 or 5+5. Count $\binom{10}{4}\binom{24}{2}+\tfrac12\binom{10}{5}\binom{25}{3}$ and divide by $9!$ to get $23/24$. | 3,340 → 3,060 |
+
+### Geometry
+
+[Problem paper](https://berkeley.mt/archives/bmt-2021/geometry-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2021/geometry-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The cut adds twice its length to the original perimeter. The diagonal has length 29, so the maximum total is $82+58=140$. | 980 |
+| 2 | Six centers separated by at least 2 fit in an equilateral triangle of side 4. Offsetting gives an outer side of $4+2\sqrt3$ and area $12+7\sqrt3$. Oler's packing inequality verifies that no other triangle does better, as detailed below. | 1,950 → 3,150 |
+| 3 | The two horizontal sides are 7 and 4 and their vertical separation is $3\sqrt3$. Reflecting $B$ in $CD$ straightens the equal-angle route. Its length is $\sqrt{11^2+27}=2\sqrt{37}$. Restore the printed radical coefficient. | 1,800 |
+| 4 | The turning angles $165^\circ$ and $-120^\circ$ repeat eight times. At each reflex vertex the two unit sides form an equilateral notch. The notch chords bound a unit regular octagon, so the area is $2+2\sqrt2-2\sqrt3$. | 1,950 |
+| 5 | The right angle gives $AB=10$ and $MT=5$ for its midpoint $M$. Equal tangent powers put $M$ on $PQ$ and give $MP\cdot MQ=25$. The nearer tangent is on the $Q$ side, so $MP=9$, $MQ=25/9$, and $PQ=56/9$. | 2,030 |
+| 6 | The official unfolding supplies a route of length $\sqrt{41}$. An exact enumeration on the 72 unit surface faces finds no shorter route, including routes through an intermediate surface vertex. See the method below. | 2,560 → 3,210 |
+| 7 | With $B$ at the origin and the line horizontal, write $A=(u,7)$, $C=(v,-4)$. Their squared lengths are $s^2$, and the $120^\circ$ dot product gives $uv=28-s^2/2$. Squaring gives $(s^2-49)(s^2-16)=(28-s^2/2)^2$. Thus $s^2=148/3$ and the area is $74\sqrt3$. Restore the printed radical coefficient. | 2,720 → 2,230 |
+| 8 | Put $B=(0,0),C=(14,0),A=(9,12)$, so $O=(7,33/8)$. In coordinates translated to $A$, the two circle equations have vertical linear coefficients $123/40$ and $253/24$. Their negatives give the second roots on the vertical line, with difference $112/15$. | 2,880 → 2,480 |
+| 9 | With $C=(0,0),D=(3,0)$ take $P=(\sqrt3,1)$ by reflection. The valid equilateral completion is $A=(3/2+\sqrt3,3\sqrt3/2-1)$, and $B$ is $A$ rotated $60^\circ$ about $C$. The midpoints are $B/2$ and $(A+B)/2$. Their area determinant with $P$ gives $(12+5\sqrt3)/16$. | 3,100 → 2,740 |
+| 10 | Each line minimum is a reflected-focus distance. Put $c=BC$, $r=\sqrt{14}$, and $d=\sqrt{c^2+r^2}$. Set $A=(0,0)$, $I=(d,0)$ and the antipodes at $(d+r^2/d,\pm cr/d)$. For each target line the square of the reflected distance is $PQ^2+4d_Pd_Q$, with $d_P,d_Q$ the signed point distances. As detailed below, the four squares are 72. The sum is $24\sqrt2$. Restore the printed radical coefficient. | 3,700 → 3,180 |
+
+**Geometry #2 lower bound.** For an enclosing triangle with area $K$ and perimeter $P$, the inward parallel triangle for the centers has scale $f=1-P/(2K)$. Its area and perimeter are $Kf^2$ and $Pf$. Oler's inequality for centers at distance at least 2 bounds their number by $Kf^2/(2\sqrt3)+Pf/4+1$. At fixed $K$ this right side decreases with $P$: the derivative is $1/4-1/(2\sqrt3)+(P/K)(1/(4\sqrt3)-1/4)<0$. The equilateral triangle minimizes $P$ at fixed $K$. At the candidate area its inward triangle has side 4 and the bound is exactly six, and for a smaller feasible area the equilateral bound is strictly below six.
+
+**Geometry #6 verification.** Keep cube cells whose three indices have at least two coordinates outside the central index. Every edge of the 72 exposed unit squares has two incident faces. A shortest path between vertices decomposes into straight unfoldings, split wherever it visits a surface vertex. From each of the 64 surface vertices and each incident face, enumerate the 21 positive primitive integer directions $(a,b)$ with $a^2+b^2\le41$ in that face's first quadrant. Trace each direction across edges in rational crossing order, reflecting the next square into the planar grid, until its next grid vertex. Include the unit edge walks. This covers all vertex-to-vertex segments that could belong to a path at most the candidate length. The shortest direct unfolding has squared length 41. In the graph without the direct edge, Dijkstra with every length rounded down to $10^{-8}$ gives lower bound $6.41421356>\sqrt{41}$.
+
+**Geometry #10 signed offsets.** Write $w=cr/d$, so $PQ^2=4w^2$. On $EF$ both distances are $2r^2/d$. On each side tangent from $A$ the distances are $2r$ and $2r^3/d^2$. On $BC$ the inward normal has horizontal component $-3r/d$ because the altitude from $A$ is $4r$. Its vertical component has squared magnitude $1/7$. The two distances are $5r/7\pm w/\sqrt7$ with product $16/3$. Substituting each pair gives squared length 72. Each reflected line segment crosses its line because the original signed distances have the same sign, so the four minima are individually attained.

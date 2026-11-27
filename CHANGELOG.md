@@ -2,6 +2,12 @@
 
 **2026-11-27**
 
+- **Textbook redesign specification.** Convert the owner's Master Curriculum and Development Roadmap into a Markdown curriculum directory, `curriculum/`, on the dedicated branch `claude/textbook-redesign`: twelve books, 136 chapters and 791 concept sections in full, with the supporting standards, research, audits, pilots, a development plan, a chapter tracker and the technical changes. The branch changes no live file and is not merged.
+
+- **BMT audit.** Solve all 30 questions from the 2021 papers and revise 16 Elo estimates. Restore three radical coefficients and one printed example, and annotate four original solutions (Codex PR #464, open).
+
+- **BMT audit.** Solve all 30 questions from the 2020 papers, revise 14 Elo estimates, and flag two errors in the Geometry solutions beside their official links. Codex recorded a pause after 2020 at the owner's request; PR #464 resumed with 2021 (Codex PR #463).
+
 - **BMT audit.** Solve all 30 questions from the 2019 papers and revise 12 Elo estimates. Correct Geometry #10 for the printed base of 12, verify the supremum in Geometry #9, and add grading notes for errors and omissions in the worked solutions.
 
 - **BMT audit.** Solve all 30 questions from the 2018 papers and revise 14 Elo estimates. Correct the count of subject distributions and restore the coefficient of the triangle-area radical. Accept either reading of the fountain-pen problem and explain both accepted surface-area conventions beside the sphere problem's solution link.
