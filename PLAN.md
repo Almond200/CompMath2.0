@@ -17,7 +17,7 @@ Past-paper mocks now use the archived time limits, including separate countdowns
 
 The textbook goal covers all 103 teaching chapters on `codex/counting-r3-revision`. AMC Geometry S9, Advanced triangles and circles, brings the total to 40 revised. AMC Geometry S10 is next. [Textbook revision](TEXTBOOK-REVISION.md)
 
-The BMT problem audit covers 130 of 370 indexed questions, all papers from 2013 through 2017. The 2018 individual rounds are next. Practice and Arena reviews show grading rulings next to the official answer link. [Latest BMT audit](AUDITS.md#bmt-problem-audit-2017-individual-rounds-2026-11-27)
+The BMT problem audit covers 160 of 370 indexed questions, all papers from 2013 through 2018. The 2019 individual rounds are next. Practice and Arena reviews show grading rulings next to the official answer link. [Latest BMT audit](AUDITS.md#bmt-problem-audit-2018-individual-rounds-2026-11-27)
 
 The HMMT audit covers all 1,220 indexed appearances. Its implementation updates 981 entries and includes verified statement and grading corrections. [HMMT archive tag audit](AUDITS.md#hmmt-archive-tag-audit-2026-11-26)
 

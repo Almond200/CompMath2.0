@@ -25587,44 +25587,44 @@
       "Remove equal values at two arguments and compare the remaining three divided-difference slopes to determine the least degree. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2018 BMT Algebra, Problem 4": [
-      1920,
-      "Telescope a sum of consecutive cubic products before reducing it modulo a composite integer. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1460,
+      "Reviewed against the printed paper. Pair the indices i and 2016−i to negate the product modulo 2018. The middle term vanishes."
     ],
     "2018 BMT Algebra, Problem 5": [
-      2560,
-      "Eliminate a common root of a cubic and a parameterized quadratic, then read the product of parameter roots from its resultant. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2340,
+      "Reviewed against the printed paper. Express the parameter in one root, then multiply the three factors by evaluating the cubic at two imaginary arguments."
     ],
     "2018 BMT Algebra, Problem 6": [
-      2340,
-      "Bound the product of three real variables by their squared sum and verify the sharp minimum at equal positive variables. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2050,
+      "Reviewed against the printed paper. Use AM–GM on the three squares and solve a monotone bound at the equal positive values."
     ],
     "2018 BMT Algebra, Problem 7": [
-      2670,
-      "Collapse an integrated binomial row and sum its factorial-weighted exponential generating series. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2260,
+      "Reviewed against the printed paper. Integrate the binomial row once and recognize the difference of two exponential series."
     ],
     "2018 BMT Algebra, Problem 8": [
-      2990,
-      "Extract a coefficient from a signed weighted binomial sum and retain only the two terms that can contribute. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2530,
+      "Reviewed against the printed paper. Embed the sum into a sequence and apply Pascal to get the recurrence with double characteristic root 1."
     ],
     "2018 BMT Algebra, Problem 9": [
       2400,
       "Center symmetric rational factors at one repeated quadratic expression and solve the remaining equation with excluded denominators checked. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2018 BMT Algebra, Problem 10": [
-      3100,
-      "Generate the first root power sums of a sparse cubic and locate the first pair satisfying a multiplicative normalized-sum relation. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2470,
+      "Reviewed against the printed paper. Newton sums give five simple values for the sparse cubic. Checking q=1,2,3 finds the first solution."
     ],
     "2018 BMT Discrete Math, Problem 1": [
       1230,
       "Count color choices for three distinct pens; the printed wording permits reusing colors, while the official falling factorial assumes an omitted distinct-color condition. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2018 BMT Discrete Math, Problem 2": [
-      1770,
-      "Count five subject totals bounded by six with total twelve; every vector is realizable by six distinct-subject pairs, and the correct source formula gives 1190 rather than its stated 1694. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2010,
+      "Reviewed against the printed paper. Verify that every valid count vector is realizable by pairing slots six apart, then use bounded stars and bars."
     ],
     "2018 BMT Discrete Math, Problem 3": [
-      1710,
-      "Subtract the axis-aligned lattice rectangles strictly containing a given central point from all rectangle choices. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1450,
+      "Reviewed against the printed paper. Count pairs of coordinate choices and subtract the ones straddling 4 strictly in both axes."
     ],
     "2018 BMT Discrete Math, Problem 4": [
       1950,
@@ -25635,24 +25635,24 @@
       "Use the fixed edge count of every spanning tree to determine the parity of the last safe move in an edge-removal game. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2018 BMT Discrete Math, Problem 6": [
-      1920,
-      "Regroup a nonnegative double binomial sum along diagonals and evaluate the resulting geometric series. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1600,
+      "Reviewed against the printed paper. Group the nonnegative terms on diagonals. Each binomial row sums to a power of two."
     ],
     "2018 BMT Discrete Math, Problem 7": [
       2130,
       "Separate shared-endpoint segment pairs from four-vertex diagonal pairings to count all intersections in a regular polygon. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2018 BMT Discrete Math, Problem 8": [
-      2880,
-      "Show the last new vertex visited by a symmetric cycle walk is uniform among the nonstarting vertices and average its graph distance. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2530,
+      "Reviewed against the printed paper. Unwrap the cycle at the proposed last vertex. After first visiting either interior end, gambler’s ruin gives a common probability of crossing before hitting the missing vertex."
     ],
     "2018 BMT Discrete Math, Problem 9": [
       3280,
       "Count permutations with a power equal to a specified reversing involution by grouping its six pairs into compatible cycle lengths. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2018 BMT Discrete Math, Problem 10": [
-      3220,
-      "Recognize a greedy boundary reduction for two-color domino tilings and average its recurrence over a geometric random strip length. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2800,
+      "Reviewed against the printed paper. A mixed column forces its identical neighbor, yielding a two-term recurrence. Evaluate its generating function at one eighth."
     ],
     "2018 BMT Geometry, Problem 1": [
       980,
@@ -25667,8 +25667,8 @@
       "Maximize a fixed-perimeter triangle area at the equilateral configuration and square its value. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2018 BMT Geometry, Problem 4": [
-      2500,
-      "Bound triple intersections among six nonparallel lines and realize the minimum using triangle sides and medians. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2050,
+      "Reviewed against the printed paper. Each line is in at most two triple points. Six pair-joining lines through four suitable points attain four triple points."
     ],
     "2018 BMT Geometry, Problem 5": [
       2130,
@@ -25679,12 +25679,12 @@
       "Optimize the area of an integer-sided triangle with two sides at most ten and compare the admissible third sides adjacent to a right angle. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2018 BMT Geometry, Problem 7": [
-      2290,
-      "Scale an ellipse to a circle and recover the positive slope of a tangent through a fixed external point. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1900,
+      "Reviewed against the printed paper. The support value of y−mx on the ellipse is the Euclidean norm of its two scaled coefficients."
     ],
     "2018 BMT Geometry, Problem 8": [
-      2940,
-      "Optimize a fixed-inradius triangle under a maximum-side bound; tangent-length inequalities independently prove the claimed isosceles extremum. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2840,
+      "Reviewed against the printed paper. Use tangent lengths and Heron to bound the product of the two tangent lengths on the fixed longest side. The resulting monotone inequality gives equality at a tie for longest side."
     ],
     "2018 BMT Geometry, Problem 9": [
       2780,

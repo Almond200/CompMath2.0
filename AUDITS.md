@@ -2975,3 +2975,58 @@ Solved all 30 problems and compared the results with the three official keys. Ge
 | 8 | On the unrestricted reading, disjoint triangles are allowed and the intersection is empty. Inside the disk a side missing the center leaves a cap containing area at most 625 for the triangle. For a side at distance $d$ with the center on the triangle's side, the area is at most $(25+d)\sqrt{625-d^2}$, increasing up to $d=25/2$. This equals 768 at $d=7$, and a chord and opposite apex attain equality. Rotating the construction gives intersection area $49\pi$. Accept both readings. | 3,460 → 2,940 |
 | 9 | The chord of contact makes $D,F$ harmonic conjugates on $BC$. Tangent-chord similarity gives $BF/FC=DB/DC=(AB/AC)^2$. Then $\sin C=(2/\sqrt5)\sin B\le2/\sqrt5$. With $B=(0,0), C=(1,0), A=(0,2)$, the tangent meets $BC$ at $(-4,0)$ and attains equality. Correct the published $(5+\sqrt5)/8$. | 3,580 → 2,710 |
 | 10 | A strip of latitude has area proportional to the sine difference between its boundaries. Both strips have the same longitude width and radius factor. Their ratio is $(\sin45^\circ-\sin41^\circ)/(\sin41^\circ-\sin37^\circ)$. | 2,240 |
+
+## BMT problem audit, 2018 individual rounds (2026-11-27)
+
+Solved all 30 questions while reviewing the steps required and comparing the resulting difficulty with the existing author estimates. The answer key changes include one arithmetic correction, one restored radical coefficient, and one additional accepted interpretation.
+
+### Algebra
+
+[Problem paper](https://berkeley.mt/archives/bmt-2018/ALSP18.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2018/ALSP18A.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | From 0 to 180 mph takes 18 seconds, and braking takes another 12 seconds. Both stages have average speed 90 mph, so the limiting runway length is $90(30/3600)=3/4$ mile. | 1,460 |
+| 2 | One distinct root forces a triple root. Matching the quadratic coefficient gives $8(x+1/2)^3$, so $k=6$. | 1,430 |
+| 3 | Write $f(x)=-3+(x^2-1)g(x)$. The required values of $g$ at $-2,2,3$ are $2,3,1$. The slopes differ, so $g$ needs degree at least 2, and interpolation attains it. Hence $f$ has minimum degree 4. | 1,890 |
+| 4 | Include the zero term at $i=0$. Pair $i$ with $2016-i\equiv-2-i$ modulo 2018. The products are negatives of one another. At the middle index $1008$, the factors include an even integer and 1009, so that term also vanishes. | 1,920 → 1,460 |
+| 5 | Each cubic root $r$ gives $d=-(r^2+3)/r$. The cubic has simple roots, and two different roots giving the same $d$ would have product 3 and leave $-4/3$ as the third root, which fails. The cubic takes value $-2$ at both $\pm i\sqrt3$, so $\prod(r^2+3)=4$. The root product is $-4$, giving the requested product 1. | 2,560 → 2,340 |
+| 6 | Put $s=x^2+y^2+z^2$. AM–GM gives $xyz\le(s/3)^{3/2}$, hence $12\le7s+9(s/3)^{3/2}$. Equality occurs at $x=y=z=2/3$, so the minimum is $4/3$ and $a+b=7$. | 2,340 → 2,050 |
+| 7 | The binomial integral gives $h_n=\int_0^2(1+t)^n\,dt=(3^{n+1}-1)/(n+1)$. Division by $n!$ turns the sum into the difference of the exponential series with constant terms removed, $e^3-e$. | 2,670 → 2,260 |
+| 8 | For $a_n=\sum_j(-1)^j\binom{n-j}{j}2^{n-2j}$, Pascal's identity gives $a_n=2a_{n-1}-a_{n-2}$. From $a_0=1,a_1=2$ we have $a_n=n+1$. The requested sum is $a_{2017}=2018$. | 2,990 → 2,530 |
+| 9 | Set $t=(x-1)^2$. Remove the constant parts from the three ratios to get $1/(t-9)+1/(t-25)-2/(t-49)=0$. Clearing denominators gives $-64t+1216=0$. Thus $t=19$ is valid and $x=1+\sqrt{19}$ is the positive root, giving 20. | 2,400 |
+| 10 | The first five power sums are $0,2(2018),-3(2018),2(2018)^2,-5(2018)^2$. The pairs with $q\le2$ fail. For $q=3$, $p=1$ fails and $p=2$ works, giving $p^2+q^2=13$. | 3,100 → 2,470 |
+
+### Discrete Math
+
+[Problem paper](https://berkeley.mt/archives/bmt-2018/COSP18.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2018/COSP18A.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | Filling each pen with one color permits repeated colors, giving $11^3=1331$. Requiring distinct colors gives the published $11\cdot10\cdot9=990$. Accept both readings. | 1,230 |
+| 2 | The five counts sum to 12 and lie from 0 to 6. To realize them, place the subjects in contiguous blocks and pair positions $i$ and $i+6$. No block contains a complete pair. Stars and bars gives $\binom{16}{4}-5\binom94=1190$. The published arithmetic omits four of the five exclusions. | 1,770 → 2,010 |
+| 3 | There are $\binom92^2=1296$ rectangles. To contain $(4,4)$ strictly, both coordinate pairs must straddle 4, giving $(4\cdot4)^2=256$. The difference is 1040. | 1,710 → 1,450 |
+| 4 | Consider the five possible start positions for 2018 in eight digits. Since the word cannot overlap itself, only the first and fifth occurrences can coexist. The probability is $5/4^4-1/4^8=1279/2^{16}$. | 1,950 |
+| 5 | Any connected graph with a cycle permits a safe deletion, while a tree permits none. The fixed number of safe moves is $\binom n2-(n-1)$, odd for $n\equiv0,3\pmod4$. The two arithmetic sums are 1300 and 1275, totaling 2575. | 2,340 |
+| 6 | On the diagonal $i+j=n$, the binomial coefficients sum to $2^n$. The nonnegative double sum becomes $\sum_{n\ge0}(2/3)^n=3$. | 1,920 → 1,600 |
+| 7 | Among $\binom{210}{2}$ segment pairs, $21\binom{20}{2}$ share a vertex. Each set of four vertices gives exactly one crossing pair. Thus the probability is $(3990+5985)/21945=5/11$. | 2,130 |
+| 8 | Cut the cycle at a proposed last vertex, making absorbing endpoints 0 and 10. After the walk reaches either neighbor 1 or 9, it must hit the opposite neighbor before the nearer endpoint. The ruin probability of that crossing is $1/9$ from either side. Hence all nine candidates are equally likely and the expected distance is $(2(1+2+3+4)+5)/9=25/9$. | 2,880 → 2,530 |
+| 9 | The middle point is fixed because $f$ commutes with the reversal. The six swapped pairs form blocks with cycle length $2\ell$, where $n\equiv\ell\pmod{2\ell}$. Thus all block sizes must have the same 2-adic valuation, which is also sufficient. Each labeled block of size $\ell$ has $2^{\ell-1}(\ell-1)!$ cycles. The partitions $1^6,3+1^3,3+3,5+1,2+2+2,6$ give counts $1,160,640,2304,120,3840$, totaling 7065. | 3,280 |
+| 10 | The first column is a monochromatic vertical tile in two ways, or is mixed and forces an identical neighbor in two ways. The greedy split is canonical, so $a_n=2a_{n-1}+2a_{n-2}$ with $a_0=1,a_1=2$. The desired probability is $\sum_{n\ge1}a_n/8^n=(1-2/8-2/64)^{-1}-1=9/23$. | 3,220 → 2,800 |
+
+### Geometry
+
+[Problem paper](https://berkeley.mt/archives/bmt-2018/GEOSP18.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2018/GEOSP18A.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | Using $S=6s^2$ and $V=s^3$ gives $S^3/V^2=6^3=216$. | 980 |
+| 2 | The chord through the two shared square vertices is a diameter of $m$. On the side away from $A$, subtract the unit-circle segment, of area $\pi/4-1/2$, from the half-disk of area $\pi/4$. This leaves $1/2$. | 1,620 |
+| 3 | Heron gives $A^2=s(s-a)(s-b)(s-c)$ with $s=1/2$. The last three factors sum to $1/2$, so AM–GM gives $A^2\le(1/2)(1/6)^3=1/432$, attained by the equilateral triangle. | 1,680 |
+| 4 | The six lines have 15 pairwise intersections counted with multiplicity. Each line meets only five others, so it can pass through at most two triple points. At most four triples are possible, leaving at least $15-2(4)=7$ distinct points. Join every pair among $(0,0),(1,0),(0,1),(2,3)$ to attain four triples with no parallel lines. | 2,500 → 2,050 |
+| 5 | Rescale the square to side 2. A triangle is obtuse exactly when the chosen point is inside the side's inward unit semicircle. Opposite semicircles cannot overlap in positive area. The lenses from adjacent sides have area $\pi/2-1$ each, so four lenses divided by square area 4 give the same value. | 2,130 |
+| 6 | If one of the two sides at most 10 is at most 9, area is bounded by 45. The sides $10,10,14$ exceed that bound. For the $10,10,c$ family, area squared is $c^2(400-c^2)/16$, maximized when $c^2$ is closest to 200. Thus $c=14$ gives $7\sqrt{51}$. Restore the printed coefficient from outside the radical. | 2,030 |
+| 7 | Write the tangent as $y-mx=29$. The maximum of $y-mx$ on the ellipse is $\sqrt{400+100m^2}$ by Cauchy, attained at a point on the ellipse. Thus the positive slope is $21/10$. | 2,290 → 1,900 |
+| 8 | Let the tangent lengths adjacent to the side of length 39 be $x,y$, and the third be $z$. Then $x+y=39$, $x,y\ge z$, and Heron gives $xy=100+3900/z$. Since $xy\ge z(39-z)$, the increasing lower bound and decreasing right-hand side imply $z\le15$. Equality at $(15,24,15)$ gives area $10(39+15)=540$. | 2,940 → 2,840 |
+| 9 | Heron gives $A^2=3a^2(a^2-4)/16$. For integral area, write $a^2-3k^2=4$. Reduction modulo 4 makes $a,k$ both even, giving the Pell equation in $a/2,k/2$. Multiplying by $2-\sqrt3$ descends to $(1,0)$, so the first $a$ are $2,4,14,52$. For $a=52$ the area is integral. | 2,780 |
+| 10 | At a cut offset $t\ge0$, the curved cap areas are $2\pi(1\pm t)$, giving $t=1/2$ and disk area $3\pi/4$. Adding the disk to each surface changes the ratio to $(3+2t-t^2)/(3-2t-t^2)$, which equals 3 at $t=\sqrt7-2$. The disk area is then $(4\sqrt7-10)\pi$. Practice marks both readings beside the source. | 1,920 |
