@@ -28,7 +28,7 @@ Towa has a hand of three different red cards and three different black cards. Ho
 === discrete-math-2
 Alice is counting up by fives, starting with the number $3$. Meanwhile, Bob is counting down by fours, starting with the number $2021$. How many numbers between $3$ and $2021$, inclusive, are counted by both Alice and Bob?
 === discrete-math-3
-How many distinct sums can be made from adding together exactly $8$ numbers that are chosen from the set $\{1,4,7,10\}$, where each number in the set is chosen at least once? (For example, one possible sum is $1+1+1+1+4+7+7+10+10=41$.)
+How many distinct sums can be made from adding together exactly $8$ numbers that are chosen from the set $\{1,4,7,10\}$, where each number in the set is chosen at least once? (For example, one possible sum is $1+1+1+4+7+7+10+10=41$.)
 === discrete-math-4
 Derek and Julia are two of $64$ players at a casual basketball tournament. The players split up into $8$ teams of $8$ players at random. Each team then randomly selects $2$ captains among their players. What is the probability that both Derek and Julia are captains?
 === discrete-math-5
