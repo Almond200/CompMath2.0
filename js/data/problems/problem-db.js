@@ -15100,7 +15100,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2023 BMT Discrete Math, Problem 9", formulas: ["counting-functions", "uniform-overcount"], strategy: "", tree: ["cp.basic.perm.restrict"] },
   { ref: "2023 BMT Discrete Math, Problem 10", formulas: ["newtons-sums", "freshmans-dream", "quadratic-reciprocity"], strategy: "", tree: ["alg.poly.vieta.newton", "nt.mod.qr"] },
   // ---- 2023 BMT Geometry. Reviewed metadata only; official papers and solutions linked by the app.
-  { ref: "2023 BMT Geometry, Problem 1", formulas: ["pythagorean-theorem"], strategy: "", tree: ["geo.basic.pyth.triples"] },
+  { ref: "2023 BMT Geometry, Problem 1", formulas: ["pythagorean-theorem", "circle-basics"], strategy: "", tree: ["geo.basic.pyth.triples", "geo.poly.quad.rect"] },
   { ref: "2023 BMT Geometry, Problem 2", formulas: ["equilateral-triangle-facts", "circle-basics"], strategy: "", tree: ["geo.poly.regular.hex"] },
   { ref: "2023 BMT Geometry, Problem 3", formulas: ["frustum-volume", "prism-pyramid-volumes"], strategy: "", tree: ["geo.solid.round.cone", "geo.solid.prism.cyl"] },
   { ref: "2023 BMT Geometry, Problem 4", formulas: ["tangent-facts", "pythagorean-theorem"], strategy: "", tree: ["geo.tri.radii.ex"] },
@@ -15109,7 +15109,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2023 BMT Geometry, Problem 7", formulas: ["cross-section-method", "triangle-similarity", "pythagorean-theorem"], strategy: "", tree: ["geo.solid.round.pyramid", "geo.solid.round.sphere"] },
   { ref: "2023 BMT Geometry, Problem 8", formulas: ["power-of-a-point", "law-of-cosines", "trig-area"], strategy: "", tree: ["geo.tri.special.equil", "geo.circ.power.pop"] },
   { ref: "2023 BMT Geometry, Problem 9", formulas: ["harmonic-quadrilateral", "apollonius-theorem", "law-of-cosines"], strategy: "", tree: ["geo.circ.cyclic.ptolemy", "geo.tri.cevian.median"] },
-  { ref: "2023 BMT Geometry, Problem 10", formulas: ["ptolemys-theorem", "triangle-similarity", "law-of-sines"], strategy: "", tree: ["geo.circ.cyclic.ptolemy", "geo.tri.radii.circum"] },
+  { ref: "2023 BMT Geometry, Problem 10", formulas: ["circle-equation", "trig-area", "inscribed-angle-theorem"], strategy: "", tree: ["geo.circ.inscribed.thm", "geo.coord.conic.circle"] },
   // ---- 2023 PUMaC Division A Algebra. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2023 PUMaC Division A Algebra, Problem 1", formulas: ["lagranges-identity"], strategy: "", tree: ["alg.eq.identity.symmetric"] },
   { ref: "2023 PUMaC Division A Algebra, Problem 2", formulas: ["product-sum", "double-angle", "quadratic-formula"], strategy: "", tree: ["alg.trig.eq"] },
