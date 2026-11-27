@@ -43,7 +43,7 @@ with its own full-width **Show all / Show less** control.
 | Indexed questions | Automatically graded | Voided | Self-check |
 | --- | ---: | ---: | ---: |
 | 10,936 multiple-choice | 10,929 | 7 | 0 |
-| 8,520 typed, including AIME | 8,490 | 13 | 17 |
+| 8,520 typed, including AIME | 8,478 | 25 | 17 |
 
 Sources, corrections and exceptions are recorded in the [short-answer audit](tools/answer-keys/short-answers.md) and [multiple-choice audit](tools/answer-keys/README.md).
 

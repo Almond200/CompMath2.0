@@ -6346,9 +6346,18 @@
     });
     clear.addEventListener("click", () => saveSelection([]));
   }
+  function practiceGradingNote(slug) {
+    return window.MATH_EXTRA_KEYS?.notes?.[slug] ?? window.MATH_SHORT_ANSWER_KEYS?.notes?.[slug] ?? '';
+  }
   function practiceExplanationHtml(p, showSource = true) {
     if (!p) return '';
-    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, solutionLinksHtml(p, showSource), {includeStudy:false, includeOfficial:showSource})}</div>`;
+    const ruling = practiceSessions.voidReason(p.slug);
+    const note = ruling || practiceGradingNote(p.slug);
+    const fallback = !p.solUrl && !ruling && (note || (practiceSessions.exactKey(p.slug) && p.url
+      ? 'The answer was checked independently from the official problem paper.' : ''));
+    return `<div class="practice-explanation"><h4>How this problem works</h4>
+      ${fallback ? `<p class="prob-note">${escapeAttr(fallback)}</p>` : ''}
+      ${chainInnerHtml(p, solutionLinksHtml(p, showSource), {includeStudy:false, includeOfficial:true, gradingNote:note})}</div>`;
   }
   // Open in app and Open in AoPS under a solution's three columns (practice review, textbooks).
   function solutionLinksHtml(p, showSource = true) {
@@ -6626,8 +6635,6 @@
     const exactLabel = practiceExactLabel(exact);
     const paperNum = paper ? (p.ref.match(/Problem\s+(\d+)$/) || [])[1] : null, paperWhere = paper && /artofproblemsolving/.test(p.url) ? "AoPS" : "the official paper";
     const acceptedChoices = practiceSessions.choiceAnswers(slug);
-    const gradingNote = window.MATH_EXTRA_KEYS?.notes?.[slug] ?? window.MATH_SHORT_ANSWER_KEYS?.notes?.[slug] ??
-      (exact && p?.url && !p.solUrl ? 'The answer was checked independently from the official problem paper.' : '');
     const correct = voidNote ? '' : !paper && exact ? exact.answers.map(value => exactAnswerHtml(value, exact)).join(' or ') :
       escapeAttr(acceptedChoices.length ? acceptedChoices.map(choice => [...choice].join(' and ')).join(' or ') : officialKey(slug) || '');
     const nav = set.slugs.map((id, i) => {
@@ -6659,9 +6666,9 @@
           ${voidNote ? '' : typedAnswer ? (set.answers[slug] ? `<p class="practice-submitted">${paper ? escapeAttr(set.answers[slug]) : exactAnswerHtml(set.answers[slug], exact)}</p>` : '') : practiceAnswerChoices(set, slug, true)}
           <p class="practice-result">${voidNote ? escapeAttr(voidNote) : outcome}${correct && (outcome === 'Incorrect' || (mock && outcome === 'Unanswered')) ? ' · Correct answer: ' + correct : ''}</p>
           ${mistakeReviewHtml(p && activity.canMarkMistake(reviewOutcome), {fromPractice:true})}
-          ${gradingNote ? `<p class="prob-note">${escapeAttr(gradingNote)}</p>` : ''}
-          ${paper ? `<div class="practice-self">${p.solUrl && !inlinePaper ? `<a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">Open the official solution ${uiIcon("arrow-up-right")}</a>` : ""}${set.answers[slug] ? `<div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div>` : ""}</div>` : ''}
-          ${practiceExplanationHtml(p, !paper || !!inlinePaper)}${p && !voidNote ? nextStepsHtml(p) : ""}`
+          ${practiceExplanationHtml(p, !paper || !!inlinePaper)}
+          ${paper && set.answers[slug] ? `<div class="practice-self"><div class="rand-btns" role="group" aria-label="Check your answer"><button type="button" data-self="Correct" aria-pressed="${set.self?.[slug] === 'Correct'}">I was right</button><button type="button" data-self="Incorrect" aria-pressed="${set.self?.[slug] === 'Incorrect'}">I was wrong</button></div></div>` : ''}
+          ${p && !voidNote ? nextStepsHtml(p) : ""}`
           : voidNote ? `<p class="prob-note">Voided · ${escapeAttr(voidNote)}</p>`
           : p ? `<div class="practice-answer"><h4>Your answer</h4>${typedAnswer ? `<label for="practice-answer">${paper ? 'Your answer, as the paper asks for it' : exactLabel}</label><input id="practice-answer" type="text" maxlength="${paper ? '60' : '120'}" autocomplete="off" aria-describedby="practice-answer-error" value="${escapeAttr(set.answers[slug] || '')}">${practiceMathKeysHtml()}` : practiceAnswerChoices(set, slug, false)}<button type="button" class="practice-answer-clear" id="clear-practice-answer"${set.answers[slug] ? '' : ' disabled'}>Clear answer</button><label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${canNavigate(set.current - 1) ? '' : 'disabled'}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${canNavigate(set.current + 1) ? '' : 'disabled'}>Next</button></div>
@@ -11210,8 +11217,21 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return `The round's official ${p.solKind === "answer-key" ? "answer key" : "solutions"}, as one PDF${number}.${legacy
       ? ` The <a href="https://www.hmmt.org/www/archive/32" target="_blank" rel="noopener noreferrer">HMMT February 2000 archive</a> links these PDFs, which are headed “Rice Mathematics Tournament 2000.”` : ""}`;
   }
-  function chainInnerHtml(p, afterChain = "", {includeStudy = true, includeOfficial = false} = {}) {
-    const official = p.solUrl && (!p.strategy || includeOfficial && p.solKind !== "answer-key") ? `<p class="chain-strategy chain-official"><a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer">${p.solAops ? "Open the solutions on AoPS" : p.solKind === "answer-key" ? "Open the official answer key" : "Open the official solution"} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a><span class="chain-official-note">${p.solAops ? "The Art of Problem Solving wiki's page for this problem, with its solutions." : (/^ARML/.test(p.fam) ? `The contest's official booklet, open at the Individual round's solutions${p.num ? `; this is problem I-${p.num}` : ""}.` : officialSolutionNote(p))}</span></p>` : "";
+  function officialSolutionHtml(p, gradingNote) {
+    const label = p.solAops ? "Open the solutions on AoPS" :
+      p.solKind === "answer-key" ? "Open the official answer key" : "Open the official solution";
+    const noteId = gradingNote ? `grading-note-${p.slug}` : "";
+    const note = gradingNote ? `<strong>Grading note.</strong> ${escapeAttr(gradingNote)}` :
+      p.solAops ? "The Art of Problem Solving wiki's page for this problem, with its solutions." :
+      /^ARML/.test(p.fam) ? `The contest's official booklet, open at the Individual round's solutions${p.num ? `; this is problem I-${p.num}` : ""}.` :
+      officialSolutionNote(p);
+    return `<p class="chain-strategy chain-official">
+      <a class="aops-btn" href="${escapeAttr(p.solUrl)}" target="_blank" rel="noopener noreferrer"${noteId ? ` aria-describedby="${noteId}"` : ""}>${label} <span aria-hidden="true">${uiIcon("arrow-up-right")}</span></a>
+      <span class="chain-official-note"${noteId ? ` id="${noteId}"` : ""}>${note}</span></p>`;
+  }
+  function chainInnerHtml(p, afterChain = "", {includeStudy = true, includeOfficial = false, gradingNote = ""} = {}) {
+    const official = p.solUrl && (!p.strategy || includeOfficial && (p.solKind !== "answer-key" || gradingNote))
+      ? officialSolutionHtml(p, gradingNote) : "";
     const primary = (p.strategy ? `<p class="chain-strategy">${p.strategy}</p>` : "") + official;
     const solutions = [{ text: primary, cards: p.formulas }];
     if (p.trick) solutions.push({ text: `<p class="chain-strategy">${p.trick}</p>`, cards: p.trickFormulas });

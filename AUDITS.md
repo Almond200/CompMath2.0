@@ -2797,3 +2797,126 @@ Solved and checked the 30 indexed short-answer questions on these three papers. 
 | 8 | Put $B=(0,0)$, $A=(1,0)$, $C=(0,1)$. The incenter and excenter are $(r,r),(R,R)$ with $r=1-\sqrt2/2,R=1+\sqrt2/2$. The second triangle has right-isosceles leg $2R-1$, so its incenter is $(-\sqrt2/2,2+\sqrt2/2)$. The determinant gives area $1+\sqrt2$. This route bypasses an inconsistent length in the printed derivation. Tag the coordinate route. | 2,990 → 2,710 |
 | 9 | Miquel puts $X$ on circle $AEF$. The side lengths of $ABC$ are $20,21,29$, so $\angle A=90^\circ$. With $AE=AF=10$, the diameter is $EF=10\sqrt2$ and the radius is $5\sqrt2$. The converse Pythagorean theorem identifies the right angle in one step. | 3,220 → 2,520 |
 | 10 | The intended proof projects a harmonic quadruple. Independently, put $D=(0,0),B=(-10,0),C=(11,0)$, $A=(-5/21,20\sqrt{143}/21)$, and incircle center $(0,5\sqrt{143}/13)$. Intersecting $AD$ with that circle and projecting the contact points through $T$ gives $E'=(440/19,0)$ and $F'=(-440/23,0)$. The signed reciprocal difference is $-1/110$ and the absolute value explicitly printed on the paper is $1/110$. Tag the tangent-length step. | 3,520 → 3,150 |
+
+## BMT problem audit, remaining 2013 papers and 2015–2016 individual rounds (2026-11-26)
+
+Independently solved the 70 indexed short-answer questions on these seven papers and checked them against the displayed statements and the organizers' papers and keys. This completes the audit through 2016. The review uses the published paper when it differs from the solution booklet. Elo changes reflect the route described in each row and remain author estimates.
+
+### 2013 Analysis
+
+[Problem paper](https://berkeley.mt/archives/bmt-2013/AnaS2013.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2013/AnaS2013S.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | Add the two sums containing $a$ and subtract the third to get $2a=53$. | 980 |
+| 2 | Cauchy gives $(x^2+y^2)^2\le2(x^4+y^4)=2$, attained at $x^2=y^2$. The maximum distance is $2^{1/4}$. | 1,710 → 1,490 |
+| 3 | After division by $x$, the numerator tends to 2 and the denominator to $3-(-3)=6$. The limit is $1/3$. | 1,500 |
+| 4 | Write $z=x+iy$. The imaginary equation is $y(2x-1)=0$. With $y=0$, $x=0$ or 1. Otherwise $x=1/2$ and $(y+1/2)^2=0$. The moduli are $0,1,1/\sqrt2$. | 1,950 → 1,740 |
+| 5 | The power series is $(1+x)^{-2}$ on $|x|<1$. Its left limit at 1 is $1/4$. | 2,300 |
+| 6 | Set $t=2\cos(\pi/7)=z+z^{-1}$ with $z=e^{i\pi/7}$. Divide $(z^7+1)/(z+1)=0$ by $z^3$ to get $t^3-t^2-2t+1=0$. Neither $1$ nor $-1$ is a root, so the cubic is irreducible. Substituting $t=-2$ and dividing by 8 gives $-7/8$. | 3,050 |
+| 7 | For $a=\sqrt{y/3}$, the expression $x^3-xy+2a^3$ factors as $(x-a)^2(x+2a)$ and is minimized at $x=a$. Thus the smallest feasible $y$ satisfies $1-y^3-2(y/3)^{3/2}=0$. Solving gives $y=\sqrt[3]{29-4\sqrt7}/3$. | 3,280 |
+| 8 | At $x=1$, the runner is at $y=\sqrt{5/2}$ and has $x'=4y/\sqrt{25+16y^2}$. The clockwise bearing rate about $(1,0)$ is $x'/y=4/\sqrt{65}$. | 2,200 |
+| 9 | The function $\sqrt{1-(1-x)^3}$ has inverse $1-\sqrt[3]{1-x^2}$. Their integrals on $[0,1]$ sum to 1, canceling the first and last terms as printed. The two powers contribute $3/5-2/5=1/5$. | 3,300 → 2,850 |
+| 10 | For $t=1/x$, divide each iterate by $x^3$. The recurrence becomes $g_1(t)=|1-t|$, $g_{n+1}(t)=|g_n(t)-1|$. It has a linear tail $t-n$ and alternating values 0 and 1 at the consecutive integer corners. The positive corner sums are over even $j$ for odd $n$ and odd $j$ for even $n$, each with weight $j^{-3}$. Their limiting ratio is $1/7$. | 3,400 |
+
+### 2013 Discrete Math
+
+[Problem paper](https://berkeley.mt/archives/bmt-2013/DisS2013.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2013/DisS2013S.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The first two remainders combine to $n\equiv106\pmod{225}$. The candidates in range are 556 and 781, of which 781 is odd. | 1,230 |
+| 2 | A shared factor can be 2 or 3. There are 32 rolls with both sum and product even and 13 with both divisible by 3. Six orders of $(1,2,3)$ are counted in both. Thus $(64-32-13+6)/64=25/64$. | 1,590 |
+| 3 | With $m$ steps there are at most $2^m$ distinct subsets of step amounts, including the empty subset. Represent every pile in binary to attain the bound with 11 steps. | 2,080 |
+| 4 | The iterate is $2+2^k(x-2)$. Fermat reduces the power for $k=2013$ to $2^3$ modulo 2011, giving $2005$. | 2,130 |
+| 5 | For $0<k<2013$, the selected roots are the nonprimitive ones. There are $2013-\varphi(2013)=813$, and conjugate pairs cancel their unit factors. For the printed range, $k=0$ selects all roots and the product is $2^{2013}$. Practice retains both accepted readings. | 2,780 |
+| 6 | Append HTT to a length-nine string avoiding HTT. Earlier occurrences cannot overlap the final pattern. After the first H, all remaining T's must be nonconsecutive, so the prefix count is $1+\sum_{j=0}^8 F_{j+2}=143$. Divide by $2^{12}$. | 2,780 → 2,530 |
+| 7 | It suffices to represent 32 as $3m+xn$ because 18 is already a multiple of 3. For $x\equiv2$ modulo 3 the least possible $n$ is 1, giving $x\le32$. For $x\equiv1$ the least $n$ is 2, giving $x\le16$. The two arithmetic sums total 238. | 2,720 → 2,420 |
+| 8 | Average the conditional means $(j-1)/2$ for $1\le j\le21$ with the absorbing case $j=0$. This gives $105/22$. | 2,130 |
+| 9 | From residue 0, at each step add $\pm3,\pm11,\pm61$ modulo 2013 to the current frontier and discard previously reached residues. The first 22 layers after 0 reach 2,000 more residues. Layer 23 reaches the last 12, including 947, so the diameter is 23. | 3,220 |
+| 10 | Assign each maximal prime power dividing $k$ to a cycle whose length it divides. The product of the powers assigned to a cycle is at least their sum. Separate cycles attain the lower bound, and for $k=1$ one fixed point suffices. Use self-check and show the general solution. The booklet's 75 applies to $k=2013$. | 3,100 |
+
+### 2015 Analysis
+
+[Problem paper](https://berkeley.mt/archives/bmt-2015/AnaS2015.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2015/AnaS2015S.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The binary expansion of $24.375$ has four nonzero digits, at exponents $4,3,-2,-3$. Any repeated exponent would carry and reduce the number of digits, so the exponents are forced and their product is 72. | 1,860 |
+| 2 | Multiplying by $1+x+x^2+\cdots$ makes the $x^{2015}$ coefficient $1+\cdots+2016=\binom{2017}{2}$. | 1,800 → 1,570 |
+| 3 | Subtract the first two equations to get $(x-z)(x+z)=24$. The same-parity factor pairs give $|x|=7$ or 5. The first equation excludes 7 and then gives $|z|=1,|y|=2$. The last equation fixes the signs up to overall negation, giving $(5,-2,1)$ and $(-5,2,-1)$. | 1,980 |
+| 4 | From $a_3=u,a_4=v$ the repeating tail is $u,v,v-u,-u,-v,u-v$. The requested sum is $1+2v$, with $v$ free because the recurrence starts at 3. Void the printed problem. | 2,290, voided |
+| 5 | Completing the square yields a unit circle centered at $(2,0)$. The extreme squared distances are 9 and 1, so their difference is 8. | 1,890 → 1,600 |
+| 6 | If $m$ is the middle root, reciprocation reverses the progression and divides it by $m^2$. Thus $m^2=180/20=9$. The root product is $m^5$, so $|D|=243$. | 2,340 → 2,130 |
+| 7 | The sum is $\operatorname{Re}(1+i)^{75}$. Powers of $(1+i)^4=-4$ reduce it to $(-4)^{18}(1+i)^3$, whose real part is $-2^{37}$. | 2,500 |
+| 8 | For the roots $\alpha,\beta$ of $t^2-t-1=0$, the product over seventh roots of unity equals $-(\alpha^7-1)(\beta^7-1)=\alpha^7+\beta^7$. The power sums obey $s_n=s_{n-1}+s_{n-2}$ from $2,1$, so $s_7=29$. | 3,160 → 2,830 |
+| 9 | Each radical is at most $n$, so the printed sum after division by $n^3$ lies in $[0,1/n]$. The key remains zero. | 2,600 → 1,250 |
+| 10 | For $I=\int_0^{\pi/2}\ln\sin x\,dx$, reflection gives the same integral with cosine. Adding gives $2I=I-(\pi/2)\ln2$ by the double-angle identity and symmetry of sine on $[0,\pi]$. Adding the $\ln4$ term yields $(\pi/2)\ln2$. | 3,000 → 2,650 |
+
+### 2015 Geometry
+
+[Problem paper](https://berkeley.mt/archives/bmt-2015/GeoS2015.pdf) · [Official key](https://berkeley.mt/archives/bmt-2015/GeoS2015A.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The two bisected angles sum to $(180^\circ-80^\circ)/2=50^\circ$. Thus $\angle BDC=130^\circ$. | 1,180 |
+| 2 | With outer circumradius 1, place one vertex at $(1,0)$. The overlap has vertices such as $(1/2,1/(2\sqrt3))$ from intersecting the sides of the two equilateral triangles. Its regular hexagon has circumradius $1/\sqrt3$, giving area ratio $1/3$. | 1,620 |
+| 3 | The altitude to $BC$ is at most $AM=3$ and equals 3 when $AM\perp BC$. The maximum area is $9\cdot3/2=27/2$. | 1,680 → 1,400 |
+| 4 | For the sum $s$ of the radii, the center distance gives $(18-s)^2+(25-s)^2=s^2$. The roots are 13 and 73. The radii are each at most 9, and equal radii $13/2$ fit, so $s=13$. | 1,980 |
+| 5 | The fourth vertices are $(1,1),(1,-1),(-1,1)$ from the three choices of opposite vertex. The resulting triangle has area 2. | 1,710 → 1,460 |
+| 6 | Write points on the line as $(14t,5t,2-2t)$. The sphere equation reduces to $225t^2-4t=0$. The second point is $t=4/225$, giving chord length $15t=4/15$. | 2,030 → 1,850 |
+| 7 | Reflect $A$ through the plane to $A'=A-\tfrac23(1,1,1)$. Segment $A'B$ meets the plane and is shortest, with squared length $10/3$. | 2,400 |
+| 8 | Scale to the unit circle. The area is at most half the product of the two diagonals, hence at most 2. Equality forces perpendicular diameters and a square. The next vertex after scaling back is $(-\sqrt3/2,1)$. | 2,720 → 2,440 |
+| 9 | The diameter makes $F,E$ the orthogonal projections of $C,B$. In unit side directions $u,v$ from $A$, $F=(4/3)u$, $E=(4/\sqrt{10})v$, and the median runs along $3u+\sqrt{10}v$. Comparing the two coefficients of the affine intersection with $EF$ gives $EX/XF=9/10$. | 3,100 → 2,600 |
+| 10 | For a tangent circle of radius $r$, the square of the distance from the contact point to any point on the circle is $2r$ times its height above the tangent. The height ratio is $2\sin C/\sin B=8/5$. With $L=BC=\sqrt{21}$, equal powers give $(L-BD)^2-2BD^2=2$. The root $BD=2\sqrt{10}-\sqrt{21}$ lies on the segment and the two distances satisfy $5ED^2=8FD^2$ there, so a circle through both points exists. Keep the published answer and replace the earlier rationale that rejected the configuration. | 3,160 → 2,580 |
+
+### 2016 Analysis
+
+[Problem paper](https://berkeley.mt/archives/bmt-2016/AnaS2016.pdf) · [Official key](https://berkeley.mt/archives/bmt-2016/AnaS2016A.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | Factor the difference of cubes. The gap is one, leaving $1001^2+1001\cdot1000+1000^2=3003001$. | 880 |
+| 2 | Substitution verifies $2^{16}$ and $16^2=2^8$ for $(x,y)=(16,2)$. The prompt asks for one pair. | 1,520 |
+| 3 | The runner covers $1+1/2$ miles along the ground at 100 mph. In that time Steve moves $10(1.5/100)=3/20$ mile along the train. | 1,620 |
+| 4 | If $N$ is even, the endpoint sum gives $r^{N-1}=16384$. The odd-minus-even sum gives $(r^N-1)/(r+1)=13107$. These give $r=4$ and $N=8$, which satisfy both totals. | 2,130 |
+| 5 | Each pair of complementary angles contributes $t/(1+t)+1/(1+t)=1$. The 44 pairs and the $45^\circ$ term give $89/2$. | 1,950 → 1,640 |
+| 6 | The closed curve $xe^y-ye^x=0$ cannot approach $(1,-1)$ because its defining expression is $e^{-1}+e>0$ there. The printed assumption is inconsistent. Void. | 2,700, voided |
+| 7 | The 22 linear factors have coefficient sum $-12$ and sum of squared coefficients $1012$. Their second elementary symmetric sum is $(144-1012)/2=-434$. | 2,240 → 2,090 |
+| 8 | The series is $(1-x)^{-2}$. Taking logarithms gives $-2\ln(1-x)/x\to2$, hence $e^2$. | 2,000 |
+| 9 | Integration gives $p=x^4/3+2x^3/3+x^2+d$. Newton's sums give $s_3=10$ and $s_4=-14-12d$, yielding $d=-2$. In the shifted basis, $a_3=3/2$, $a_4=-7/6$, $a_2=32$, and $a_1=-26/3$, so $d=a_0-81/2$. Correct the key to $77/2$. | 2,900 → 3,030 |
+| 10 | The binomial expansion of $(1-z)^{-1/2}$ has coefficients $\binom{2k}{k}/4^k$. Evaluate it at $z=-1/2$ to get $\sqrt{2/3}$. | 2,880 → 2,540 |
+
+### 2016 Discrete Math
+
+[Problem paper](https://berkeley.mt/archives/bmt-2016/DisS2016.pdf) · [Official key](https://berkeley.mt/archives/bmt-2016/DisS2016A.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The 10-cent average requires three nickels per quarter. One quarter and three nickels attain the minimum. | 980 |
+| 2 | Count multiples of each divisor and subtract the overlap twice to get $672+288-2(96)=768$. | 1,180 |
+| 3 | Choose the rank with three cards and the rank with two in $13\cdot12$ ways. Choose suits in $\binom43\binom42$ ways. The product is 3744. | 1,360 |
+| 4 | If $k$ socks travel from A to B, conservation forces $k$ to travel on each edge of that directed three-cycle and $3-k$ on each edge of the reverse cycle. Sum $\binom3k^3$ over $0\le k\le3$ to obtain 56. | 1,860 → 1,940 |
+| 5 | The cycle of 9 modulo 100 has length 10. Its exponent is $8^{7^{6^{\cdots^2}}}$, where the exponent of 7 is even, so the exponent of 8 is $1$ modulo 4. Thus the exponent of 9 is 8 modulo 10, and $9^8\equiv21\pmod{100}$. | 2,130 |
+| 6 | A merge tree gives each leaf a power of 2 as its coefficient. For child sizes $a,b$, induction bounds the count of coefficients at least $2^j$ by $\max(a-j+1,0)+\max(b-j,0)\le a+b-j$ for $1\le j<a+b$. Thus the sorted coefficients are bounded by $2^{n-1},\ldots,1$. Doubling the running total while adding labels in descending order attains that assignment, whose weighted sum is $2^n(n-1)+1$. | 2,610 → 2,780 |
+| 7 | The powers $1,2,\dots,512$ of 2 form a clique of size 10. Color by the number of prime factors counted with multiplicity, which strictly increases along divisibility edges and takes values from 0 through 9. | 2,560 → 2,310 |
+| 8 | Each edge gives $2x_ix_j\ge-x_i^2-x_j^2$. Sum over the $n$-regular graph to bound the ratio below by $-n/2$. Use signs $(-1)^{\text{Hamming weight}}$ to attain equality. | 2,880 → 2,510 |
+| 9 | With $\alpha=13+2\sqrt{42}$ and $\beta=1/\alpha$, the integer trace $T_j=\alpha^j+\beta^j$ starts at 2 and 26 and obeys $T_j=26T_{j-1}-T_{j-2}$. Modulo 100, $T_{500}=74$. Subtracting the positive conjugate power in $(0,1)$ gives last digits 73. | 3,100 → 2,700 |
+| 10 | The number of dominoes crossing a cut has the parity of the area on either side and must be positive. With one or two rows the bound across vertical cuts rules out the strip, with the $2\times2$ square also requiring two horizontal crossings. For three rows and even $n$, the vertical cuts need $3n/2-2$ crossings and the horizontal cuts need four more, exceeding $3n/2$. The $4\times4$, $4\times5$ and $4\times6$ boards require at least 12, 12 and 16 crossings, respectively. A $5\times6$ witness has rows `ABCCDD`, `ABEFFG`, `HHEIJG`, `KLLIJM`, `KNNOOM`, with equal letters forming a domino. Every cut is crossed, so the minimum is 30. | 3,280 → 3,000 |
+
+### 2016 Geometry
+
+[Problem paper](https://berkeley.mt/archives/bmt-2016/GeoS2016.pdf) · [Official key](https://berkeley.mt/archives/bmt-2016/GeoS2016A.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The volume is 64, so the cube has edge 4 and surface area 96. The prism has area 112, giving difference 16. | 980 |
+| 2 | The semiperimeter is 13. Brahmagupta gives $\sqrt{7\cdot6\cdot6\cdot7}=42$. | 1,460 |
+| 3 | The third side $c$ ranges from 5 to 35. The two relevant acute conditions are $20^2<16^2+c^2$ and $c^2<20^2+16^2$, giving $c=13,\ldots,25$ and probability $13/31$. | 1,830 → 1,640 |
+| 4 | If the square side is $s$, the equilateral side is $s+s/\sqrt3$ by the $60^\circ$ slope of $BC$. The ratio is $(\sqrt3/4)(1+1/\sqrt3)^2=1/2+\sqrt3/3$. | 1,980 → 1,750 |
+| 5 | Trace $A,C,E,B,D,A$ as a pentagram. It turns through $720^\circ$, so the five tip angles sum to $180^\circ$. The missing angle is $180^\circ-20^\circ-16^\circ-3^\circ-12^\circ=129^\circ$. | 2,560 → 2,110 |
+| 6 | The three vectors from the centroid sum to zero, so they form a triangle by concatenation. If the vectors are $u,v,w$, then $(v-u)\times(w-u)=3u\times v$, giving an area one-third of the original. Heron's formula gives original area 84 and requested area 28. | 2,400 → 2,090 |
+| 7 | Use $A=(0,0), C=(2\sqrt2,0), B=(\sqrt2,\sqrt2)$. The $30^\circ$–$60^\circ$ triangle on the side giving the obtuse angle at $C$ has $D=(3\sqrt2/2,-\sqrt6/2)$. The determinant for $BCD$ gives $(1+\sqrt3)/2$. | 2,240 |
+| 8 | In the zero-sum hyperplane of $\mathbb R^8$, center the eight coordinate unit vectors and divide by $\sqrt2$. Then all sides are one, and each squared norm is $(1-1/8)/2=7/16$. The radius is $\sqrt7/4$. | 2,940 → 2,530 |
+| 9 | For $C=(0,0), A=(a,0), B=(0,b)$ the square rotations give $DG^2=a^2+4b^2$ and $EI^2=4a^2+b^2$. Adding gives $5FH^2=19^2+22^2$, so $FH=13$. | 3,100 → 2,430 |
+| 10 | Heron gives inradius $\sqrt2$ and $\sin(B/2)=1/3$. Consecutive tangent radii on the internal bisector have ratio $1/2$ or 2. Halving at every step gives $8\pi/3$. The sequence may return to the incircle after the first halving, then shrink again, adding a positive extra area while satisfying the same tangencies. Void the printed recursion. | 3,100, voided |
