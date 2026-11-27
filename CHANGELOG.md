@@ -2,6 +2,10 @@
 
 **2026-11-27**
 
+- **BMT audit.** Solve all 30 questions from the 2018 papers and revise 14 Elo estimates. Correct the count of subject distributions and restore the coefficient of the triangle-area radical. Accept either reading of the fountain-pen problem and explain both accepted surface-area conventions beside the sphere problem's solution link.
+
+- **BMT audit.** Solve all 30 questions from the 2017 papers and revise 15 Elo estimates. Correct the tournament probability, the expected largest box volume, and the maximum sine. Accept both readings of the triangle-intersection question and void three prompts with impossible or missing conditions.
+
 - **Textbooks.** Add Read more above Related cards, with an external link and a short note for all 103 teaching chapters. Add specific readings for trig and grid counting, including AoPS section references. Expand recursive counting and grid dynamic programming, and give basic trig, angle identities, multiple angles, harmonic addition and inverse trig their own lessons.
 
 - **Textbook links.** Display each item as its own bullet in Lessons on topic pages and in Practice this more on lesson pages.
