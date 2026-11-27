@@ -42,6 +42,8 @@ Read the submission instruction in the problem and inspect the typeset official 
 
 If a key and its solution disagree, first match the question to the original sitting. Check the PDF, any organizer correction, and an independent calculation before changing the accepted value. Record the published and corrected answers with the source. Log unusually large exact values along with the relevant limits of the grader so their support can be decided from the actual problem.
 
+The 2025 BMT Algebra #6 answer is `1/(10^pi-1)`. The sum of the two roots for each positive integer `k` is `10^(-k*pi)`, so their geometric sum gives the printed answer. The grader accepts the equivalent `10^(-pi)/(1-10^(-pi))`. [Official solutions](https://berkeley.mt/archives/bmt-2025/algebra-solutions.pdf)
+
 The `voided` map records questions removed from grading, along with the reason. Start each notice with **Organizer ruling.** when the organizers withdrew the question or neutralized it in scoring. Use **Practice ruling.** when the app voids the question based on the printed prompt or the published solution. The same notice appears during the set and in review. When an archive contains a withdrawn original and a published replacement, match the displayed prompt to the paper before applying the withdrawal.
 
 | Source finding | Practice behavior |
@@ -269,7 +271,7 @@ The independently derived keys below were checked against the tournament archive
 
 ## Pilot paper
 
-In Practice → Mock a contest → Past contest, search for `2025 HMMT February Algebra and Number Theory`. All ten questions have keys. Question 7 lets you try equivalent expressions involving a radical. Question 10 lets you try listing both values in either order. The Math keypad is optional, and the preview shows how the app parsed your expression. This pilot is untimed and reports the number of correct answers.
+In Practice → Mock a contest → Past contest, search for `2025 HMMT February Algebra and Number Theory`. All ten questions have keys. Question 7 lets you try equivalent expressions involving a radical. Question 10 lets you try listing both values in either order. The Math keypad is optional, and the preview shows how the app parsed your expression. This paper has a 50-minute countdown and reports the number of correct answers.
 
 ### Independent checks for 2015 MBMT
 

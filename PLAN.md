@@ -11,6 +11,8 @@
 
 ## Current state (updated 2026-11-26)
 
+Past-paper mocks now use the archived time limits, including separate countdowns for timed pairs and early submission for a pair or the whole mock. The 2025 BMT Algebra #6 key uses an exponent of π on 10. [Mock timing and sources](MOCK-CONTESTS.md#archived-paper-limits)
+
 The textbook goal covers all 103 teaching chapters on `codex/counting-r3-revision`. AMC Geometry S9, Advanced triangles and circles, brings the total to 40 revised. AMC Geometry S10 is next. [Textbook revision](TEXTBOOK-REVISION.md)
 
 The post-HMMT audit starts with BMT. The 2013 Geometry and both 2014 individual rounds are complete, with per-problem derivations, 14 Elo revisions, two corrected keys, and five voids. [BMT audit notes](AUDITS.md#bmt-problem-audit-2013-geometry-and-2014-individual-rounds-2026-11-26)

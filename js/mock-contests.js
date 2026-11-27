@@ -7,6 +7,44 @@
     'AMC 12': { count:25, minutes:75, correct:6, blank:1.5 },
     'AIME': { count:15, minutes:180, correct:1, blank:0 }
   });
+  // Organizer and historical sources are recorded in MOCK-CONTESTS.md.
+  const pastMinutes = Object.freeze({
+    'BMT': 60, 'BmMT': 60, 'HMMT February': 50, 'HMMT November': 50,
+    'PUMaC Division A': 50, 'PUMaC Division B': 50, 'CMIMC': 60,
+    'CHMMC': 60, 'CMM': 90, 'UMD HSMC': 75, 'Math Prize for Girls': 150,
+    'MMATHS': 75, 'Girls in Math at Yale': 75, 'Lehigh': 120,
+    'Utah State Math Contest': 150, 'Columbus State Tournament': 90,
+    'MBMT Lower': 30, 'MBMT Upper': 30, 'Fermat Contest': 60, 'Cayley Contest': 60,
+    'Pascal Contest': 60, 'UKMT JMC': 60, 'UKMT IMC': 60, 'UKMT SMC': 90
+  });
+  const pastExceptions = Object.freeze({
+    '2021 CHMMC Individual': 75,
+    '2024 CMM Individual': 60,
+    '2021 Columbus State Tournament': null,
+    '2022 Columbus State Tournament': 240
+  });
+  const pairedFamilies = new Set(['ARML', 'ARML Local', 'Duke Math Meet']);
+  const isAhsme = label => / AHSME$/.test(label);
+  function paperTiming({family, label, year}) {
+    if (isAhsme(label)) {
+      if (year >= 1978) return { minutes: 90 };
+      if (year >= 1960) return { minutes: 80 };
+      return { minutes: null };
+    }
+    if (pairedFamilies.has(family)) {
+      const pairs = family === 'Duke Math Meet' && year <= 2008 ? 4 : 5;
+      return { minutes: pairs * 10, minutesPerPair: 10 };
+    }
+    if (family.startsWith('MATHCOUNTS ')) {
+      if (label.endsWith(' Target')) return { minutes: 4 * 6, minutesPerPair: 6 };
+      if (label.endsWith(' Sprint')) return { minutes: 40 };
+      if (label.endsWith(' Team')) return { minutes: 20 };
+      return { minutes: null };
+    }
+    if (family === 'SMT') return { minutes: label.endsWith(' SMT General') ? 110 : 50 };
+    if (Object.hasOwn(pastExceptions, label)) return { minutes: pastExceptions[label] };
+    return { minutes: formats[family]?.minutes ?? pastMinutes[family] ?? null };
+  }
   const mean = a => a.reduce((s,x)=>s+x,0)/a.length;
   function identity(p) { return p.identity || p.slug; }
   function papers(problems, hasAnswer) {
@@ -78,12 +116,13 @@
     return {problems:selected,model,sources:[...new Set(selected.map(p=>p.fam))]};
   }
   function score(set, result) {
+    if (set.mock?.mode === 'paper' && isAhsme(set.label)) return null;
     const f=formats[set.mock?.family];if(!f)return null;
     const counts={Correct:0,Incorrect:0,Unanswered:0,Voided:0,'Answer unavailable':0,'Check yourself':0};
     set.slugs.forEach(s=>counts[result(s)]++);
     const points=(counts.Correct+counts.Voided)*f.correct+counts.Unanswered*f.blank;
     return {points,max:set.slugs.length*f.correct,counts};
   }
-  const api={formats,identity,papers,curve,sourcePool,generate,score,monotone};
+  const api={formats,identity,papers,paperTiming,curve,sourcePool,generate,score,monotone};
   if(typeof module!=='undefined')module.exports=api;else root.MockContests=api;
 })(typeof window!=='undefined'?window:globalThis);

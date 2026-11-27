@@ -6,9 +6,40 @@ const aliases=require('../js/data/problems/problem-aliases.json');
 const slug=r=>r.toLowerCase().replace(/,?\s*problem\s+/,'-').replace(/[^a-z0-9]+/g,'-');
 const problems=Array.from(c.window.MATH_PROBLEM_DB,p=>{const s=slug(p.ref),n=+p.ref.match(/Problem (\d+)$/)[1];return {...p,slug:s,identity:aliases[s]||s,num:n,year:+p.ref.slice(0,4),fam:/AJHSME|AMC 8/.test(p.ref)?'AMC 8':/AMC 10/.test(p.ref)?'AMC 10':/AMC 12/.test(p.ref)?'AMC 12':/AIME/.test(p.ref)?'AIME':'HMMT February',elo:c.window.MATH_PROBLEM_RATINGS.ratings[s].elo};});
 const has=p=>c.window.MATH_ANSWER_KEYS.answers[p.slug]!=null||!!c.window.MATH_MOCK_EXTRAS[p.slug],voided=p=>!!c.window.MATH_ANSWER_KEYS.voided[p.slug];
-// Every keyed paper is a past-contest mock except the AHSME (30 to 50 questions, not an AMC 12's 25), keyed since 2026-11-22.
+// The generated formats use complete modern-length papers as difficulty models.
 const catalog=M.papers(problems,has);assert.equal(catalog.reduce((n,p)=>n+p.problems.length,0),Object.keys(c.window.MATH_ANSWER_KEYS.answers).filter(s=>!/-ahsme-/.test(s)).length);
 for(const paper of catalog){assert.equal(paper.problems.length,M.formats[paper.family].count);paper.problems.forEach((p,i)=>assert.equal(p.num,i+1));}
+const {parseRef}=require('../js/contest-sources.js');
+const timing=(label)=>{
+ const {fam,year}=parseRef(label+', Problem 1');
+ return M.paperTiming({family:fam,label,year});
+};
+for (const [label,minutes,minutesPerPair] of [
+ ['2025 BMT Algebra',60],['2025 BmMT Individual Online',60],['2025 HMMT February Geometry',50],
+ ['2025 PUMaC Division A Algebra',50],['2025 SMT General',110],['2025 SMT Algebra',50],
+ ['2021 CHMMC Individual',75],['2022 CHMMC Individual',60],['2024 CMM Individual',60],['2026 CMM Individual',90],
+ ['2026 UKMT SMC',90],['2025 UKMT IMC',60],['2024 Pascal Contest',60],
+ ['2020 Columbus State Tournament',90],['2021 Columbus State Tournament',null],['2022 Columbus State Tournament',240],
+ ['1959 AHSME',null],['1972 AHSME',80],['1973 AHSME',80],['1977 AHSME',80],['1978 AHSME',90],
+ ['1999 AHSME',90],['2025 AMC 12A',75],['2025 AIME I',180],
+ ['2018 Calgary Junior Math Contest',null],['2019 ARML Individual',50,10],['2012 ARML Local Individual',50,10],
+ ['2007 Duke Math Meet Individual',40,10],['2008 Duke Math Meet Individual',40,10],
+ ['2019 Duke Math Meet Individual',50,10],['2026 MATHCOUNTS State Target',24,6],
+ ['2026 MATHCOUNTS State Sprint',40],['2019 MATHCOUNTS National Team',20]
+]) {
+ assert.deepEqual(timing(label),minutesPerPair ? {minutes,minutesPerPair} : {minutes},label);
+}
+const paperCounts=new Map();
+for (const p of c.window.MATH_PROBLEM_DB) {
+ const label=p.ref.replace(/,\s*Problem\s+\d+$/, '').replace(/^(202[4-6]) CHMMC\b/, '$1 CMM');
+ paperCounts.set(label,(paperCounts.get(label)||0)+1);
+}
+for (const [label,count] of paperCounts) {
+ const time=timing(label);
+ if (time.minutesPerPair) assert.equal(time.minutes,Math.ceil(count/2)*time.minutesPerPair,label);
+ if (time.minutes==null) assert.match(label,/Calgary Junior Math Contest$|^195\d AHSME$|^2021 Columbus State Tournament$/);
+}
+assert.equal(M.score({label:'1999 AHSME',mock:{mode:'paper',family:'AMC 12'},slugs:['a']},()=> 'Correct'),null);
 assert.deepEqual(M.monotone([1,4,2,5]),[1,3,3,5]);
 // Additional sittings must not make one year outweigh another, and voids must not distort a slot.
 const samplePaper=(year,elo,voidFirst=false)=>({family:'AMC 8',year,problems:Array.from({length:25},(_,i)=>({year,elo,voided:voidFirst&&i===0}))});
@@ -60,6 +91,38 @@ P.resume(restored,10000000);P.checkpoint(restored,10006000);assert.equal(restore
 const early=P.createMock('Early',['x'],{family:'AMC 8',durationMs:10000},1000);P.finish(early,4000);assert.equal(P.timeLeft(early,500000),7000);assert.equal(early.timedOut,undefined);
 const exported=JSON.stringify([early]);assert.equal(P.read({getItem:()=>exported})[0].clock.remainingMs,7000);
 assert.deepEqual(P.read({getItem:()=>JSON.stringify([{...early,clock:null},{...early,mock:{family:'Unknown'}}])}),[]);
+
+const paired=P.createMock('Paired paper',['a','b','c','d','e','f'],
+ {family:'ARML',mode:'paper',durationMs:30000,pairDurationMs:10000},1000);
+assert.deepEqual(P.pairWindow(paired,1000),{number:1,count:3,start:0,end:2,remainingMs:10000});
+assert(P.answer(paired,'a','A',false,2000));
+assert(!P.answer(paired,'c','A',false,2000),'a later pair has not opened');
+assert(P.submitPair(paired,0,3000),'the first pair can be submitted early');
+assert.equal(P.pairWindow(paired,3000).remainingMs,10000);
+assert.equal(paired.clock.skippedMs,8000);
+assert(!P.submitPair(paired,0,3000),'a repeated click cannot submit the next pair');
+assert(!P.answer(paired,'b','A',false,3000),'a submitted pair is locked');
+P.pause(paired,4000);
+P.save(storage,paired);
+const savedPair=P.read(storage).find(set=>set.id===paired.id);
+assert.equal(savedPair.clock.skippedMs,8000);
+assert.equal(P.pairWindow(savedPair,50000).remainingMs,9000);
+P.resume(savedPair,50000);
+assert(P.answer(savedPair,'c','A',false,58999),'answer before the pair deadline');
+assert(!P.answer(savedPair,'c','B',false,59000),'the pair is locked at its deadline');
+assert.equal(P.pairWindow(savedPair,59000).start,4);
+assert(P.answer(savedPair,'f','B',false,59000),'the last pair opens when the previous pair expires');
+P.finish(savedPair,61000);
+assert.equal(savedPair.status,'finished');
+assert.equal(savedPair.clock.limitMs-P.timeLeft(savedPair,90000)-savedPair.clock.skippedMs,14000,'unused pair time is excluded');
+assert.equal(P.pairWindow(savedPair,90000),null);
+assert(!P.answer(savedPair,'f','A',false,90000),'finished answers are locked');
+const exhausted=P.createMock('Paired paper',['a','b','c','d'],
+ {family:'ARML',mode:'paper',durationMs:20000,pairDurationMs:10000},1000);
+assert(P.submitPair(exhausted,0,2000));
+P.checkpoint(exhausted,12000);
+assert.equal(exhausted.timedOut,true);
+assert.equal(exhausted.clock.limitMs-exhausted.clock.skippedMs,11000);
 // Practice saves symbolic input for review and grades against the numeric key.
 const h='2019-hmmt-february-geometry-5',e=P.create('HMMT','Any',[h]);
 assert(P.answer(e,h,'(sqrt(2)-1)/2',false));
