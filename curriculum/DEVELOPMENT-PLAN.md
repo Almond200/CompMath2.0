@@ -9,21 +9,23 @@ This plan turns the roadmap's five stages (spec/roadmap.md, "Execution sequence 
 - Import the master document in full as `curriculum/`, with a checker: done.
 - Keep stable IDs, track optional material separately (A2.22 and the sections whose titles mark them as extensions; REVIEW-NOTES.md §1), and record open mathematical issues: done (REVIEW-NOTES.md §2).
 - Write the tracker, the technical-change list and the mapping skeleton: done.
-- **Exit:** the owner answers D1–D6 in REVIEW-NOTES.md §3.
+- **Exit:** the owner decided D1–D12 on 2026-11-27 (REVIEW-NOTES.md §3). Done.
 
-## Phase 1: Establish the authoring standard (roadmap Stage 2)
+## Phase 1: Establish the authoring standard (roadmap Stage 2). In progress
+
+Done 2026-11-27: AUTHORING-STANDARD.md (final standard), `tools/curriculum/check-spec.py`, the change requests CR-1 to CR-9 resolving the review's inconsistencies, and the five packets (G2.2 complete; A2.8, C2.5, N2.1 and A3.3 drafts). Next: write the G2.2 manuscript and render it in the preview (PREVIEW-PLAN.md); the owner reviews it in the app before any other chapter is written.
 
 1. Review the four existing model units (Pilots A–D in spec/teaching-pilots.md) against the acceptance gates in its §6. Record any corrections in REVIEW-NOTES.md §4.
 2. Write the **authoring packet** for each of the five next pilots: G2.2 (power of a point), A2.8 (composite and inverse functions), C2.5 (recursive counting), N2.1 (CRT) and A3.3 (transformed roots).
    - A packet contains a one-paragraph narrative arc, distinct learning objectives, a dependency check against earlier IDs, and the staged problem selection: motivating example, direct check, contrast, partly guided application, unlabeled transfer, delayed revisit.
    - Packets go in `curriculum/packets/<ID>.md`.
 3. Write the five pilot units as student-facing sequences, like Pilots A–D. Read each sequentially as a student. Verify every number by computation.
-4. Write `tools/curriculum/check-spec.py` (TECHNICAL-CHANGES.md T10).
+4. ~~Write `tools/curriculum/check-spec.py`~~ (done).
 5. **Exit:** nine model units accepted by the owner. The chapter standard is then fixed, as an addendum to CONVENTIONS §14 or a separate standard for the new shelf (decision D4).
 
 No mass production happens in this phase (owner, 2026-11-27).
 
-## Phase 2: Preview infrastructure (in parallel with Phase 1, after D1–D3)
+## Phase 2: Preview infrastructure (the minimal version is PREVIEW-PLAN.md, for G2.2 only)
 
 1. Generate `js/data/curriculum/shelf.js` from `data/index.json`.
 2. Add the preview route and renderer for the new chapter shape (T3, T5), the separate progress store (T9) and placement records (T6).

@@ -2,7 +2,7 @@
 
 # Technical changes for the new curriculum
 
-This file records what the current Learn implementation assumes, and every change the twelve-book curriculum needs. None of it is implemented. Phase 2 of DEVELOPMENT-PLAN.md starts it, after the owner's decisions D1–D6 (REVIEW-NOTES.md §3). The guiding rule comes from spec/roadmap.md: preserve the reference cards, problem slugs, ratings and saved progress, and keep every live lesson URL working until a reviewed mapping and a tested redirect replace it.
+This file records what the current Learn implementation assumes, and every change the twelve-book curriculum needs. **The owner's decisions D1–D12 (2026-11-27, REVIEW-NOTES.md §3) settle every open choice below in favour of the recommendation given**, with these specifics: Claude authors and implements (T2); the preview is a separate route (T3, PREVIEW-PLAN.md); hints stay out and faded guidance uses partly worked examples and checkpoints (T5); no Core/Core II labels; A2.22 is deferred. None of it is implemented yet; PREVIEW-PLAN.md is the first, minimal step. Phase 2 of DEVELOPMENT-PLAN.md starts it, after the owner's decisions D1–D6 (REVIEW-NOTES.md §3). The guiding rule comes from spec/roadmap.md: preserve the reference cards, problem slugs, ratings and saved progress, and keep every live lesson URL working until a reviewed mapping and a tested redirect replace it.
 
 ## 0. How the current Learn works (inspected 2026-11-27)
 
@@ -34,7 +34,7 @@ This file records what the current Learn implementation assumes, and every chang
 - **Chapter files.** `js/data/curriculum/<book-id>/<id>.js`, for example `geometry-2/g2.07.js`, sets `window.MATH_CURRICULUM["geometry-2/G2.7"]`. Proposed shape: `opening` (the motivating exploration), `sections` keyed by concept ID, `review`, `transfer` and `delayed` problem sets, and `cards` (recap links shown after the idea, per T5).
   - Each section has `body`, `checks` (concept checks), `examples` (worked, with a recorded choice of method), `exercises`, `placements` (T6), `prereqIds` (curriculum IDs) and `bridges` (cross-subject IDs).
 - **Optional material.** A `status: "optional"` flag at chapter level (A2.22) and section level (the sections the spec marks as extension or enrichment). Do not reuse Core, Core II or Extension (decision D5).
-- **Ownership.** Codex owns `js/data/learn/**` and `tools/build-learn-shelf.py`. A separate `js/data/curriculum/**` avoids mixing the two shelves, but D2 must say who authors there.
+- **Ownership (D2).** Claude authors and implements `js/data/curriculum/**` and its tools. The live books' files (`js/data/learn/**`) stay as they are; Codex's textbook work has stopped and Codex keeps the problem database, tags and ratings.
 
 ## T3. Navigation and routes
 
