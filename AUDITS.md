@@ -3329,3 +3329,125 @@ Independently solved and reviewed the 30 Algebra, Discrete Math and Geometry pro
 **Geometry #8 area and length identities.** For points at positions $x_1,x_2,x_3$ measured clockwise from the three vertices of the equilateral host triangle, subtract the corner triangle areas to get $A=(\sqrt3/4)(L^2-L\sum x_i+\sum_{i<j}x_ix_j)$. By the cosine rule the three squared lengths sum to $Q=3L^2-3L\sum x_i+2\sum x_i^2+\sum_{i<j}x_ix_j$. Take the differences between $x_i=s_i+t_i$ and $x_i=s_i-t_i$. Since the unit edge vectors sum to zero, the circle center projects to coordinates with $\sum s_i=3L/2$. Consequently $\Delta Q=-3L\sum t_i+6\sum s_it_i$ and $\Delta A=(\sqrt3/2)((L/2)\sum t_i-\sum s_it_i)=-(\sqrt3/12)\Delta Q$.
 
 **Geometry #9 configuration check.** Take $B=(0,0),C=(2s,0),M=(s,0),A=(u,v),T=(x,y)$ with $v>0>y$, and write the triangle's angles as $\alpha,\beta,\gamma$ at $A,B,C$. From $\angle BTM=\beta$, the dot and cross products give $x^2-sx+y^2=-su y/v$. If $\psi_M$ and $\psi_C$ are the downward angles of $MT$ and $CT$ from the positive horizontal, then $0<\psi_M<\psi_C<\pi$ and the second given angle equation is $\psi_M=|\psi_C-\gamma|$. The branch $\psi_M+\psi_C=\gamma$ would imply $x>2s$ and $y^2<(x-s)(x-2s)$ because $\gamma$ is acute. But $\sin\beta>\cos\alpha=2/7$ bounds $x$ by $s/2+s/(2\sin\beta)<9s/4$ on the first circle, giving $(x-s)(x-2s)<5s^2/16$. The equation of that circle and $\tan\beta>\cot\alpha=2/\sqrt{45}$ give $-y>4s/\sqrt{45}$, a contradiction. Thus $\psi_C-\psi_M=\gamma$. The equation of the circle $MTC$ is then $x^2+y^2=3sx-2s^2+s(u-2s)y/v$. Subtract the two circle equations to get $T=(s+k(u-s),-kv)$ with $k=s^2/AM^2$. Squaring now gives $(AM\cdot AT)^2=(AM^2-s^2)^2+4s^2v^2=(AB\cdot AC)^2$. The resulting value is realized by $s=3\sqrt5$, $A=(s,9)$, and $T=(s,-5)$.
+
+## BMT problem audit, 2024 individual rounds (2026-11-27)
+
+Independently solved all 30 Algebra, Discrete Math and Geometry problems and revised 25 author estimates. All 30 existing answer keys are verified. Grading notes beside the official solution PDFs flag slips in the worked solutions to Discrete Math #5 and #8 and Geometry #8. Codex's PR #469 (merged as 806e555) carries the data. Validation (Codex): the repository gates and short-answer grading checks passed, and Chromium placed the notes to the right of the official solution links in Practice and Arena review.
+
+### Algebra
+
+[Problem paper](https://berkeley.mt/archives/bmt-2024/algebra-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2024/algebra-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | At the end the two counts differ by 15, and the larger is twice the smaller. They are 30 and 15, giving 45. | 1,080 → 870 |
+| 2 | Multiplying out the two fraction equations gives $x^2-20x-44=0$ and $x^2-24x-52=0$. Subtract to get $x=-2$, and verify both denominators. | 1,360 → 1,080 |
+| 3 | Put $g_1=u$. The first two terms force common difference $-u$, so $a_n=1-nu$. Since $1-24u=64u$, $u=1/88$ and $a_{2024}=-22$. | 1,550 → 1,270 |
+| 4 | Put $k=\lceil x/24\rceil$, so $\lfloor x/20\rfloor=k+4$. The integer intervals give $24k-23\le x\le 20k+99$ and force $k\le30$. At $k=30$, the greatest permitted $x$ is 699. | 1,770 → 1,650 |
+| 5 | There must be one real root $r=2024\pm Z$ and a conjugate pair with real part $-r/2$. Requiring that real part strictly inside the horizontal span of the circle gives $Z>2024$ for the minus branch and $Z>6072$ for the plus branch. The greatest radius with one pair of coefficients is 6072. | 2,290 → 2,100 |
+| 6 | Set $a=B+M,b=M+T,c=B+T$. The equations become $a+c=2ac,a+b=3ab,b+c=4bc$. A zero pair sum would force all three variables zero. The reciprocal values are $1/2,5/2,3/2$, and the target is $(1/2)a+(5/2)b+(3/2)c=3$. | 1,890 → 1,740 |
+| 7 | Divide the variables by their geometric mean. The product is 1 and the sum equals the sum of pairwise products, so the cubic with those roots vanishes at 1. Each nonconstant sorted triple is therefore a geometric progression $k(v^2,uv,u^2)$ with coprime $v<u$. There are $5+4+2=11$ such progressions for $u=2,3,4$, giving $6(11)+23=89$ ordered triples. | 2,080 → 2,230 |
+| 8 | Pairwise differences imply at least three variables are equal. Write the common value as $t$ and the exceptional variable as $\alpha/t-t$, with weight $c$. The objective is $c\alpha/t+(10-2c)t$. The attained minimum is $4\sqrt{2\alpha}$ at $c=1$, while $c=2,3$ give $2\sqrt{12\alpha}$ by AM–GM and $c=4$ gives values above $6\sqrt\alpha$ on $0<t<\sqrt\alpha$. Equating the minimum to $\alpha/2$ gives 128. | 2,400 → 2,520 |
+| 9 | The recurrence for $1/b_n$ agrees with that for $a_n$. The map $u\mapsto u+\sqrt{1+u^2}$ sends $\cot\theta$ to $\cot(\theta/2)$. Thus $a_nb_n=\cot\theta_n/\cot(2\theta_n)=2/(1-\tan^2\theta_n)$ for $\theta_n=\pi/(6\cdot2^n)$. For $n>0$ it decreases from $1+2\sqrt3/3$ to 2 without reaching 2, giving the strict upper bound $2\sqrt3/3-1$. | 2,670 → 2,340 |
+| 10 | Reindex by $d=b-a$ and $e=c-a$ modulo 5. After cancelling the powers of $\omega$, the product over $e$ is $1-i\tan^5(2\pi d/5)$. Pair $d$ with $-d$ to obtain $S=[(1+X^5)(1+Y^5)]^5$ with $X,Y=5\pm2\sqrt5$ the squared nonzero tangent values. Their sum 10 and product 5 give $X^5+Y^5=76250$, so the bracket is $79376\equiv91\bmod101$. Its fifth power is 91 modulo 101. | 3,340 → 2,930 |
+
+### Discrete Math
+
+[Problem paper](https://berkeley.mt/archives/bmt-2024/discrete-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2024/discrete-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The first three valid palindromes in descending order are 999, 969, and 939. | 1,130 → 920 |
+| 2 | Each position of the five-step pattern is repeated seven times. The ten-step color cap forbids repetitions within the pattern. Choose three other colors and order all five, giving $\binom{12}3 5!=26400$. | 1,430 → 1,260 |
+| 3 | Rewrite the fraction as $44/(24-n)-1$. All six negative divisors and the five positive divisors below 24 are possible denominators, giving 11. | 1,490 → 1,220 |
+| 4 | There must be two or four changes of color around the cycle. Nonadjacent boundary pairs contribute $2(\binom82-8)=40$. Four boundaries alternate, giving another four colorings. | 1,830 → 1,630 |
+| 5 | The one-die polynomial for Clara is $x\Phi_3(x)\Phi_9(x)$. Each of Justin's polynomials must take two cyclotomic factors to have value 9 at 1. The degree-13 requirement forces $x\Phi_9^2$ and $x\Phi_3^2$. The common labels are 1 and 4 with multiplicities 1 and 2 on both dice, giving $5/81$. The official first solution mislabels the larger die and the sum used to bound 4s. | 2,080 → 1,940 |
+| 6 | Since $6^3\equiv1\bmod43$, the number with digits $abcde$ is congruent to $5(a+d)+15-8c$. Its range allows only 0 or 43. The latter would force a digit sum $a+d=12$. The former gives $c=5$ and $a+d=5$. Lexicographic maximization gives $(43512)_6=6020$. | 2,030 → 1,780 |
+| 7 | Sum over the eight starting positions for GIGI, with $8\binom72=168$ single events. Starts two apart give $6\cdot5=30$ pair intersections and disjoint starts give another 10. Three starts must be two apart, giving four intersections. No four starts fit with four Gs. The probability is $(168-40+4)/330=2/5$. | 2,030 |
+| 8 | Stars and bars gives $f(n)=\prod_{p^e\parallel n}\binom{e+5}5$. Increasing an exponent multiplies $f(n)/n$ by $(e+6)/(p(e+1))$. The maximizing exponents are $4$ or $5$ at $p=2$, 2 at $p=3$, and 1 at $p=5$. All others are zero, so the sum is 2160. The displayed worked multiplier for $p=2$ has a denominator typo. | 2,450 → 2,190 |
+| 9 | The order of 4 modulo 83 is 41. The sum uses each residue twice, and $-1$ is a square modulo 41, so the square of the once-through sum equals $\sum_{a,b\bmod41}4^{a^2-b^2}$. The invertible change $(s,t)=(a-b,a+b)$ leaves only $s=0$ after summing over $t$, giving 41. Restoring the factor of four gives 81 modulo 83. | 3,220 → 2,520 |
+| 10 | Each fixed sum 9, 10, or 11 is realized four times exactly when its four complementary pairs form a domino matching. There are 18 near-perfect domino matchings, with $4!\,2^4$ labelings each. Each pair of sums joins the complementary pairs into a Hamiltonian path, and the grid has 40 directed Hamiltonian paths. A triple intersection is impossible because the union would require six vertices of degree at least three, and the grid has only five. The answer is $3(18)(4!)(2^4)-3(40)=20616$. | 2,940 |
+
+### Geometry
+
+[Problem paper](https://berkeley.mt/archives/bmt-2024/geometry-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2024/geometry-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The highlighted boundary is three semicircular arcs of radius 3, total $9\pi$. | 1,080 → 850 |
+| 2 | A marked point has displacement $(3,1)$ from the square center, up to symmetry. The squared radius is 10, so the area is $10\pi$. | 1,360 → 1,140 |
+| 3 | The rays tangent to the circle leave $9\sqrt3$ visible outside their wedge. The triangle from $P$ to the two contacts has area $3\sqrt3$. Subtract its circle segment of area $4\pi/3-\sqrt3$, giving $13\sqrt3-4\pi/3$. | 1,770 |
+| 4 | Normalize $A=(0,0)$, $B=(2,0)$ and $O=(1,0)$. On the outer circle $x^2+y^2=8x$, so $AP^2=8x$ and $BP^2=4x+4$. The squared ratio $12/7$ gives $x=6$, hence $OP/AO=\sqrt{37}$. | 1,920 → 1,620 |
+| 5 | The symmetry diagonal is a diameter, thus 6, because the other chord has length 5. The short diagonal is offset by $\sqrt{11}/2$ from the center. The distinct side lengths have squares $18\pm3\sqrt{11}$, giving semiperimeter $\sqrt{66}$. Area 15 gives inradius $15/\sqrt{66}$ and area ratio $66/25$. | 1,980 → 1,850 |
+| 6 | Put $CF$ on a vertical axis through $C$. The given areas fix the horizontal displacements of the feet and the ratio $CF/CG=4/3$. Use the circle with diameter $CF$ and its chord $DE$ to recover the triangle's altitude and side slopes, giving $448/15$. | 2,450 |
+| 7 | Set $A=(0,0),E=(6,0),C=(6,h),G=(0,h),F=(u,v)$. The equations $EF=4$ and $AF\perp CF$ give $hv=6u-20$ and $v-h=u(6-u)/v$. The distance from $A$ to $GF$ is then $hv/4=8$, forcing $u=26/3$ and $v^2=80/9$. The line $EF$ meets $BC$ at horizontal displacement $(u-6)h/v=48/5$ from $C$. | 2,400 |
+| 8 | Let $k$ be the positive interior chord product. The three orthogonal components of the sphere center relative to $P$ are $(a_i-k/a_i)/2$ for $a_i=\sqrt6,\sqrt{10},\sqrt{15}$. Using $10=k+OP^2$ yields $k^2-6k-27=0$, so $k=9$ and volume $k^3/180=81/20$. The published intermediate quadratic has a sign typo. | 2,400 → 2,180 |
+| 9 | The $A$-excenter lies on the circle $IBC$. Its distance from $A$ times $AI$ is $AB\cdot AC=13\cdot83$ by Heron and the half-angle formula. Power at $M$ gives median length 27 or 69. Apollonius with length 69 would give $|AB-AC|>56$. At 27 it gives $AB+AC=72$, so the perimeter is 128. | 2,670 → 2,480 |
+| 10 | The chord $EF$ has length 7 and midpoint at distance $1/2$ from $Q$. Put its midpoint at $(0,0)$ and $Q=(1/2,0)$. The tangent condition gives $P=(49/2,0)$. With $A=(0,a)$, intersect $AP$ with the circle of diameter $AI$, where $I$ is the incenter. The equation $QR^2=64$ yields $a^2=2401/32$, so the area is $343\sqrt2/16$. | 3,280 → 3,070 |
+
+**Discrete Math #10 enumeration.** To count matchings, remove the unmatched cell and recurse by pairing the first available cell with each of its available neighbors. The four corner holes give four matchings each and the center hole gives two. To count directed Hamiltonian paths, recursively append any unused neighbor of the last cell. Starting at a corner or the center gives eight paths at each such cell. Edge-center starts give zero by checkerboard parity.
+
+**Geometry #6 reconstruction.** Write $C=(0,0)$, $G=(0,g)$, $F=(0,4g/3)$, and take the chord $DE$ to be $y=g+kx$. Its crossings have $x$ coordinates $8/g,-6/g$ from the areas. Since the feet lie on the circle with diameter $CF$, Vieta in $x^2+(g+kx)^2=(4g/3)(g+kx)$ gives $g^4=144(1+k^2)$ and $k= -3(1+k^2)/g^2$. So $k=-1/\sqrt{15}$ and $g^2=48/\sqrt{15}$. The respective slopes in the form $x/y$ for $CB,CA$ are $\sqrt{15}/5,-\sqrt{15}/9$. The perpendicular line through $F$ to $CB$ meets $CA$ at height $2g$, so the area is $(2g)^2(\sqrt{15}/5+\sqrt{15}/9)/2=448/15$.
+
+**Geometry #10 coordinate check.** Put $s=7/2$, $q=1/2$, $A=(0,a)$ and the incenter at $I=(0,-s^2/a)$ by the right triangles at the tangencies. For a point $X$ on $EF$ the identity $(A-I)\cdot(X-I)=r^2$ holds. Write the tangency $D$ as $A+t(Q-A)$ and use $(D-I)\cdot(P-I)=r^2$ to get $(Q-I)\cdot(P-I)=r^2$, hence the horizontal coordinate $p=s^2/q=49/2$. On $AP$ write $R=A+u(P-A)$. The diameter-circle equation gives $u=(a^2+s^2)/(a^2+p^2)$. Using $pq=s^2$ in the expression for $QR^2$ simplifies it to $q^2+a^2-(a^2+s^2)^2/(a^2+p^2)$. At $QR=8$ this is a linear equation for $a^2$ and gives $2401/32$.
+
+## BMT problem audit, 2025 individual rounds (2026-11-27)
+
+Independently reviewed all 30 Algebra, Discrete Math and Geometry questions and revised 26 author estimates. Notes beside the official solution PDFs confirm the small-base exclusion for Algebra #8 and the segment maximum for Geometry #8. Algebra #10's published calculation assumes ten distinct roots, but the prompt permits repeated entries. The intended value is verified under distinctness, and the question is switched to self-check while the repetition case remains open. This completes the BMT audit: 370 of 370 indexed questions. Codex's PR #469 (merged as 806e555) carries the data; validation is as for 2024, and the grading checks cover the Algebra #10 self-check.
+
+### Algebra
+
+[Problem paper](https://berkeley.mt/archives/bmt-2025/algebra-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2025/algebra-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The difference of the two given rows is $x+y+z=1$. Add 60 times this to the first row to get 60. | 1,300 → 940 |
+| 2 | With $n$ additions the total is $15+20n$ and the mean is 15. Solve $15+20n=15(5+n)$ to get 12 additions and 17 slips. | 1,230 → 1,120 |
+| 3 | If the first term is $a$, the common difference is $3a$. The third and fourth terms sum to $17a=34$, so the second term is $4a=8$. | 1,300 → 1,150 |
+| 4 | The distinct roots are $-3,-1/2,5$. Under the translation and rotation a root $r$ moves to $-r-4$. The sum is $-27/2$. | 1,590 → 1,490 |
+| 5 | The three pairwise sums are cube roots of $2,16,54$. Divide out $\sqrt[3]2$ to get weights 1, 2, and 3 on cube roots of unity. Real sums come from three real roots or from an imaginary cancellation $1+2=3$. After dividing the pairwise sum by two, the possible totals are $3\sqrt[3]2$ and $-3\sqrt[3]2/2$. They sum to $3\sqrt[3]2/2$. | 1,920 |
+| 6 | On $0<|x|\le1/2$, $(x+1)/x^2\ge2$, so the sine zeros use indices $k\ge1$. Each $t=10^{k\pi}>6$ gives two roots within the interval of $tx^2-x-1=0$. Their sum is $1/t$. The absolute sum converges since the root magnitudes are bounded by a constant times $t^{-1/2}$, and the paired geometric series is $1/(10^\pi-1)$. | 2,080 → 2,210 |
+| 7 | For $P(x)=x^5-1$, multiplying $P'(u)=5u^4$ over its five roots multiplies each pairwise difference squared with sign $(-1)^{10}=1$. The result is $5^5=3125$. | 2,240 → 1,920 |
+| 8 | With $x=\ln2,y=\ln3,z=\ln5$, substitute $a=(x+y+z)/(x+y)$ and $b=(3x+y)/(y+z)$. The numerator and denominator share a factor, leaving $(2x+y+z)/(2x+y)=\log_{12}60$. Exact power comparisons exclude every smaller integer base, as detailed below. The sum is 72. | 2,080 → 2,340 |
+| 9 | For differences $u+v+w=0$, the fifth-power sum factors as $5uvw(u^2+uv+v^2)$. Distinctness forces an equilateral triple $m+r,m+r\omega,m+r\omega^2$. Then $3m^2=300$, so $m=\pm10$. A real product means $r^3$ is real, so relabel to take $r$ real. Integer real parts force $r=2k$. The least positive values of $m^3+8k^3$ are $488,728,784$, with sum 2000. | 2,670 → 2,520 |
+| 10 | If the entries are distinct, they are the full root set of $x^{10}+x^9/10-(512+S)/10$, where $S=\sum a_i^9$. Newton sums give $S=-10^{-9}$. Vieta gives product $-511999999999/10000000000$, hence digit sum 89. This is an actual solution because the resulting polynomial has ten distinct roots. The prompt allows repeated entries and the published argument does not settle whether the negative rational product excludes them. Use self-check. | 2,400 |
+
+### Discrete Math
+
+[Problem paper](https://berkeley.mt/archives/bmt-2025/discrete-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2025/discrete-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | Two of the six unordered pairs match in color, giving $1/3$. | 980 → 810 |
+| 2 | The conditions reduce to $n\mid10$ and $n+10\mid90$. The unique candidate is $n=5$. | 1,430 → 1,080 |
+| 3 | There are $\binom93=84$ positive compositions. The only four distinct positive counts with sum 10 are $1,2,3,4$, in 24 orders. Subtract to get 60. | 1,590 → 1,250 |
+| 4 | Adjacent digit residues must sum to 0 modulo 3. The all-zero pattern has $3\cdot4^3$ choices, and the two other alternating patterns have $2\cdot3^4$. The probability is $354/9000=59/1500$. | 1,650 → 1,520 |
+| 5 | The exponent in the gcd of three pairwise lcms is the median exponent. Thus two of the integers need a factor $3^4$ and two need a factor $5^2$. Set the remaining exponents to zero and assign the omissions to different integers, giving $81+25+2025=2131$. Assigning both omissions to the same integer gives the larger sum 4051. | 1,890 → 1,760 |
+| 6 | Scan 1 through 12, maintaining counts of sequences ending in a multiple or nonmultiple of 3. Each number adds one singleton and extends all sequences of the other type. The terminal counts are 208 and 152, giving 360. | 1,830 → 1,690 |
+| 7 | Except for the two full cycles around the table, every permitted permutation is a matching of adjacent swaps and fixed vertices. The matchings of the 14-cycle number $F_{15}+F_{13}=610+233$. Adding the cycles gives 845. | 2,030 |
+| 8 | Factor $N=2^{55}3^4 5^{27}101^5$. Only odd divisors affect the parity of $h(k)$. Count them all, then remove those with every odd-prime exponent even. For $k$ the respective counts are odd for 126 and 168 exponent triples, with overlap 28. This gives $(126+168-56)\cdot56=13328$, including all choices for the 2 exponent. | 2,400 → 2,230 |
+| 9 | In the complement each degree class is a clique, so there are at most $j+1$ vertices of degree $j$. The cheapest 12-vertex profile fills degrees 0 to 3 to capacity and puts 2 at degree 4, totaling 14 edges. The saturated classes cannot give those last vertices their required degree, so at least 15 edges are needed. Realize 15 with $K_1,K_2,K_3$ and a $K_2,K_4$ joined by four edges, giving degree 3 on the pair and 4 on the four. The maximum in the original graph is 51. | 2,880 → 2,550 |
+| 10 | For $p+q\ge2$, reduce to $3^a7^b+2^r=d^2$ with $a=p+q-2,b=q$. Factor for $r=0,2$, use residue modulo 3 for $r=1$, and for $r\ge3$ use modulo 8 and the difference of odd squares. The explicit solutions and a finite exponent bound are below. The target sum is 1998. | 3,580 → 3,380 |
+
+### Geometry
+
+[Problem paper](https://berkeley.mt/archives/bmt-2025/geometry-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2025/geometry-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | Both integer legs are even by residues modulo 4. Dividing by two gives the 3–4–5 triangle, so the legs are 6 and 8. Add three square sides to get 44. | 1,230 → 1,040 |
+| 2 | A semicircle of radius 4 is available on the near side. Wrapping at the corner uses 2 meters of rope and adds a disjoint quarter-circle of radius 2. The area is $8\pi+\pi=9\pi$. | 1,430 → 1,220 |
+| 3 | The vertices $D,G,K$ lie on a unit circle centered at $A$, with angular positions $90^\circ,108^\circ,120^\circ$ from $AB$. The arc $DK$ excluding $G$ has measure $330^\circ$, so $\angle DGK=165^\circ$. | 1,590 → 1,350 |
+| 4 | Put $A=(0,\sqrt3)$ and $B,C=(\mp1,0)$, and let $t=AD/AB$. The perpendicular cevians have horizontal components of magnitude $1+t$ and vertical components of magnitude $\sqrt3(1-t)$. Solve $1+t=\sqrt3(1-t)$ to get $2-\sqrt3$. | 1,860 → 1,530 |
+| 5 | Set $B=(0,0),C=(50,0)$. The acute angle conditions and distances give $A=(7,24)$ and $D=(35,20)$ up to reflection. The same side of $BC$ is required for a simple quadrilateral. The shoelace area is 850. | 1,770 → 1,630 |
+| 6 | For a tangent circle of radius $t$, its distances to the two centers are $8-t$ and $1+t$. Their sum 9 describes an ellipse with semimajor axis $9/2$ and focal half-distance 2. Its semiminor axis is $\sqrt{65}/2$ and area $9\pi\sqrt{65}/4$. Every point on the ellipse gives an admissible radius. | 1,980 → 1,710 |
+| 7 | Let $I,B$ be the interior and boundary counts of the base and $z$ the number of intermediate height levels. The equations are $2B+3z=34$, $2I+(B-3)z=72$, and $Iz=126$. The first and third give $z=2$ or 6. The second leaves $z=6,B=8,I=21$. Pick gives area 24, so the volume is 168. | 2,080 → 1,910 |
+| 8 | With altitude foot $D$ and heights $a=AD,h=HD$, the tangent of the visual angle at horizontal distance $t$ is $(a-h)t/(t^2+ah)$, maximizing at $t=\sqrt{ah}$. Since $ah=BD\cdot CD$, at least the longer part of $BC$ reaches that distance. Then $AX^2=a(a+h)$ and $HX^2=h(a+h)$ yield $a=16,h=9$. The base portions are 6 and 24, so the sum is $2\sqrt{73}+8\sqrt{13}$. | 2,560 → 2,350 |
+| 9 | Set $B=(0,0),C=(6,0),A=(9/4,5\sqrt7/4)$. Translate coordinates to $H$ so the two circle equations have zero constant. Their radical axis gives $y=(5\sqrt7/12)x$ and the nonzero crossing is $x=-1335/638$. Substitution gives $AK^2=6400/319$. | 2,560 → 2,260 |
+| 10 | The two arc midpoints project to the midpoints of $BD$ and $DC$, so $XY=BC/2$. Equal sagitta heights, the sine rule, and Stewart's theorem give $BD/(AB+AD)=DC/(AC+AD)=2^{-1/4}$. Thus $XY=4/2^{1/4}$. The factorization is below. | 2,880 |
+
+**Algebra #8 minimum of the base.** Exact integer powers give $12^{164768}<60^{100000}<12^{164769}$. For $m=2,\ldots,11$, the lower and upper powers $m^{164768/100000}$ and $m^{164769/100000}$ both lie strictly between consecutive integers with lower endpoints $3,6,9,14,19,24,30,37,44,51$, respectively. Each assertion is an integer-power comparison after raising to 100000. Base 1 is undefined.
+
+**Discrete Math #10 exponent check.** For $p+q=1$ the expression has odd 3-adic valuation. For $p=q=0$, even $r$ gives one above a square, and odd $r$ gives $(d-1)(d+1)=9\cdot2^r$. One factor is a pure power of 2, the other is 9 times such a power, and the smaller 2-adic valuation is 1. Their difference 2 forces the pair 16 and 18, hence $r=5$. Otherwise set $a=p+q-2,b=q$. At $r=0$ and $r=2$, factor $d^2-1$ and $d^2-4$ into coprime positive factors. The resulting equations are $3^a-7^b=2$ and $3^a-7^b=-4$. The nontrivial cases beyond $b=1$ would yield $3^j(3^m-1)=7(7^n-1)$ with $j=2$ or 1 and $m,n>0$. The orders of 3 modulo 7, 7 modulo 13, and 3 modulo 43 are 6, 12, and 42. They imply in succession $6\mid m$, $12\mid n$, $42\mid m$, and thus $49\mid3^m-1$, impossible. This leaves $(a,b)=(1,0),(2,1)$ for $r=0$ and $(1,1)$ for $r=2$. At $r=1$, modulo 3 forces $a=0$, so $b\le2$ and only $b=1$ works. At $r\ge3$, modulo 8 forces even $a,b$. Two odd squares differ by $2^r$ and factoring shows $3^{a/2}7^{b/2}=2^{r-2}-1$. With $w=r-2$, LTE gives $v_3(2^w-1)\le1+v_3(w)$ and $v_7(2^w-1)\le1+v_7(w)$, also when either exponent is zero. Thus $2^w-1\le21w$, excluding $w\ge8$. The surviving $w$ are $1,2,3,6$. In the original variables the solutions are $(0,0,5),(3,0,0),(3,1,0),(1,1,1),(2,1,2),(2,0,3),(4,0,4),(0,2,5),(4,2,8)$.
+
+**Geometry #10 sagitta check.** Write $x=BD,y=DC,c=AB,b=AC,d=AD$. The height of the arc midpoint above its chord, measured toward the side opposite $A$, is the circumradius times $1-\cos$ of the angle at $A$. Since the two circumradii are proportional to $c,b$ by the sine rule, equal heights give $x^2-y^2=(c-d)^2-(b-d)^2$ after applying the cosine rule. Stewart also gives $xy(x+y)=(b^2-d^2)x+(c^2-d^2)y$. Eliminating $x+y$ yields $((b-d)x+(c-d)y)((b+d)x-(c+d)y)=0$. The first factor is positive. Writing $x=z(c+d)$ and $y=z(b+d)$ then gives $z^2=((c-d)^2-(b-d)^2)/((c+d)^2-(b+d)^2)=1/\sqrt2$.

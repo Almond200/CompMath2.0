@@ -2,6 +2,10 @@
 
 **2026-11-27**
 
+- **BMT audit complete.** Solve all 30 questions from the 2025 papers and revise 26 Elo estimates; add three official-link notes and switch 2025 Algebra #10 to self-check while the repeated-entry case is open. This completes all 370 indexed BMT questions (Codex PR #469).
+
+- **BMT audit.** Solve all 30 questions from the 2024 papers, verify all 30 keys and revise 25 Elo estimates; add three notes on slips in the official worked solutions (Codex PR #469).
+
 - **Textbook redesign decisions.** The owner decided D1–D12: qualified curriculum IDs (`geometry-2/G2.7.4`), Claude as sole author of the new books in `js/data/curriculum/`, a separate preview route, the new teaching standard with the no-hints rule kept, no Core/Core II labels, A2.22 deferred, generated notes, and the Olympiad books left unchanged for now. Codex's work on the live textbooks has stopped; the live books stay as they are.
 
 - **BMT audit.** Solve all 30 questions from the 2023 papers and revise 24 Elo estimates. Restore three radical coefficients and annotate six solution links (Codex PR #466).
