@@ -16412,7 +16412,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2009 PUMaC Division A Algebra, Problem 1", formulas: ["factor-remainder-theorem", "difference-of-squares"], strategy: "", tree: ["alg.poly.remainder.factor"] },
   { ref: "2009 PUMaC Division A Algebra, Problem 2", formulas: ["comparing-coefficients", "root-transformations"], strategy: "", tree: ["alg.poly.construct.given"] },
   { ref: "2009 PUMaC Division A Algebra, Problem 3", formulas: ["trivial-inequality"], strategy: "", tree: ["alg.ineq.optimize.constraint"] },
-  { ref: "2009 PUMaC Division A Algebra, Problem 4", formulas: ["base-conversion", "cycle-hunting", "angle-addition"], strategy: "", tree: ["alg.trig.eq"] },
+  { ref: "2009 PUMaC Division A Algebra, Problem 4", formulas: ["cycle-hunting", "angle-addition"], strategy: "", tree: ["alg.trig.eq"] },
   { ref: "2009 PUMaC Division A Algebra, Problem 5", formulas: ["power-mean-inequality", "pythagorean-identities"], strategy: "", tree: ["alg.ineq.means.amgm", "alg.trig"] },
   { ref: "2009 PUMaC Division A Algebra, Problem 6", formulas: ["functional-substitution", "first-order-recurrence"], strategy: "", tree: ["alg.fn.feq.integer"] },
   { ref: "2009 PUMaC Division A Algebra, Problem 7", formulas: ["linear-elimination", "bounding-diophantine"], strategy: "", tree: ["alg.ineq.optimize.integer", "nt.dio.linear.count"] },
@@ -16423,7 +16423,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2009 PUMaC Division B Algebra, Problem 3", formulas: ["factor-remainder-theorem", "difference-of-squares"], strategy: "", tree: ["alg.poly.remainder.factor"] },
   { ref: "2009 PUMaC Division B Algebra, Problem 4", formulas: ["comparing-coefficients", "root-transformations"], strategy: "", tree: ["alg.poly.construct.given"] },
   { ref: "2009 PUMaC Division B Algebra, Problem 5", formulas: ["trivial-inequality"], strategy: "", tree: ["alg.ineq.optimize.constraint"] },
-  { ref: "2009 PUMaC Division B Algebra, Problem 6", formulas: ["base-conversion", "cycle-hunting", "angle-addition"], strategy: "", tree: ["alg.trig.eq"] },
+  { ref: "2009 PUMaC Division B Algebra, Problem 6", formulas: ["cycle-hunting", "angle-addition"], strategy: "", tree: ["alg.trig.eq"] },
   { ref: "2009 PUMaC Division B Algebra, Problem 7", formulas: ["power-mean-inequality", "pythagorean-identities"], strategy: "", tree: ["alg.ineq.means.amgm", "alg.trig"] },
   { ref: "2009 PUMaC Division B Algebra, Problem 8", formulas: ["functional-substitution", "first-order-recurrence"], strategy: "", tree: ["alg.fn.feq.integer"] },
   // ---- 2009 PUMaC Division A Combinatorics. Reviewed metadata only; official papers and solutions linked by the app.
@@ -16433,7 +16433,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2009 PUMaC Division A Combinatorics, Problem 4", formulas: ["plane-regions"], strategy: "", tree: ["geo.comb.count.regions"] },
   { ref: "2009 PUMaC Division A Combinatorics, Problem 5", formulas: ["double-counting", "handshake-lemma", "fundamental-theorem-arithmetic"], strategy: "", tree: ["cp.graph.tour", "cp.graph.basic.degree"] },
   { ref: "2009 PUMaC Division A Combinatorics, Problem 6", formulas: ["extremal-principle", "pigeonhole-argument"], strategy: "", tree: ["cp.logic.pigeon.bounds", "geo.comb.count"] },
-  { ref: "2009 PUMaC Division A Combinatorics, Problem 7", formulas: ["expected-value", "permutations-combinations", "pascals-identity"], strategy: "", tree: ["cp.exp.basic", "cp.basic.comb.choose"] },
+  { ref: "2009 PUMaC Division A Combinatorics, Problem 7", formulas: ["expected-value", "order-statistics"], strategy: "", tree: ["cp.exp.basic", "cp.basic.comb.gaps"] },
   { ref: "2009 PUMaC Division A Combinatorics, Problem 8", formulas: ["burnsides-lemma"], strategy: "", tree: ["cp.tech.sym"] },
   // ---- 2009 PUMaC Division B Combinatorics. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2009 PUMaC Division B Combinatorics, Problem 1", formulas: ["recursive-counting"], strategy: "", tree: ["cp.struct.paths.walks"] },
@@ -16443,7 +16443,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2009 PUMaC Division B Combinatorics, Problem 5", formulas: ["plane-regions"], strategy: "", tree: ["geo.comb.count.regions"] },
   { ref: "2009 PUMaC Division B Combinatorics, Problem 6", formulas: ["double-counting", "handshake-lemma", "fundamental-theorem-arithmetic"], strategy: "", tree: ["cp.graph.tour", "cp.graph.basic.degree"] },
   { ref: "2009 PUMaC Division B Combinatorics, Problem 7", formulas: ["extremal-principle", "pigeonhole-argument"], strategy: "", tree: ["cp.logic.pigeon.bounds", "geo.comb.count"] },
-  { ref: "2009 PUMaC Division B Combinatorics, Problem 8", formulas: ["expected-value", "permutations-combinations", "pascals-identity"], strategy: "", tree: ["cp.exp.basic", "cp.basic.comb.choose"] },
+  { ref: "2009 PUMaC Division B Combinatorics, Problem 8", formulas: ["expected-value", "order-statistics"], strategy: "", tree: ["cp.exp.basic", "cp.basic.comb.gaps"] },
   // ---- 2009 PUMaC Division A Geometry. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2009 PUMaC Division A Geometry, Problem 1", formulas: ["triangle-congruence", "special-right-triangles"], strategy: "", tree: ["geo.basic.pyth.fold", "geo.tri.special.right"] },
   { ref: "2009 PUMaC Division A Geometry, Problem 2", formulas: ["triangle-inequality", "casework-method"], strategy: "", tree: ["geo.tri.ineq.valid", "geo.solid.round.pyramid"] },
@@ -16463,7 +16463,7 @@ window.MATH_PROBLEM_DB = [
   { ref: "2009 PUMaC Division B Geometry, Problem 7", formulas: ["triangle-similarity", "area-by-pieces"], strategy: "", tree: ["geo.comb.extreme.maxmin", "geo.basic.sim.figures"] },
   { ref: "2009 PUMaC Division B Geometry, Problem 8", formulas: ["regular-tetrahedron"], strategy: "", tree: ["geo.solid.poly", "geo.solid.round.pyramid"] },
   // ---- 2009 PUMaC Division A Number Theory. Reviewed metadata only; official papers and solutions linked by the app.
-  { ref: "2009 PUMaC Division A Number Theory, Problem 1", formulas: ["divisibility-rules"], strategy: "", tree: ["nt.digit.sum.crypt", "nt.div.rules.tests"] },
+  { ref: "2009 PUMaC Division A Number Theory, Problem 1", formulas: ["divisibility-rules", "crt"], strategy: "", tree: ["nt.digit.sum.crypt", "nt.mod.crt.split"] },
   { ref: "2009 PUMaC Division A Number Theory, Problem 2", formulas: ["trivial-inequality"], strategy: "", tree: ["nt.dio.bound.size"] },
   { ref: "2009 PUMaC Division A Number Theory, Problem 3", formulas: ["modular-basics", "fermats-little-theorem"], strategy: "", tree: ["nt.div.rules.expr", "nt.prime.basic.expr"] },
   { ref: "2009 PUMaC Division A Number Theory, Problem 4", formulas: ["difference-of-squares", "completing-the-square", "bounding-diophantine"], strategy: "", tree: ["nt.dio.bound.size", "nt.dio.squares"] },
@@ -16474,7 +16474,7 @@ window.MATH_PROBLEM_DB = [
   // ---- 2009 PUMaC Division B Number Theory. Reviewed metadata only; official papers and solutions linked by the app.
   { ref: "2009 PUMaC Division B Number Theory, Problem 1", formulas: ["completing-the-square", "organized-listing"], strategy: "", tree: ["nt.dio.squares", "nt.dio.bound.size"] },
   { ref: "2009 PUMaC Division B Number Theory, Problem 2", formulas: ["last-digit-patterns"], strategy: "", tree: ["nt.mod.cycle.last", "nt.seq.power.expr"] },
-  { ref: "2009 PUMaC Division B Number Theory, Problem 3", formulas: ["divisibility-rules"], strategy: "", tree: ["nt.digit.sum.crypt", "nt.div.rules.tests"] },
+  { ref: "2009 PUMaC Division B Number Theory, Problem 3", formulas: ["divisibility-rules", "crt"], strategy: "", tree: ["nt.digit.sum.crypt", "nt.mod.crt.split"] },
   { ref: "2009 PUMaC Division B Number Theory, Problem 4", formulas: ["trivial-inequality"], strategy: "", tree: ["nt.dio.bound.size"] },
   { ref: "2009 PUMaC Division B Number Theory, Problem 5", formulas: ["modular-basics", "fermats-little-theorem"], strategy: "", tree: ["nt.div.rules.expr", "nt.prime.basic.expr"] },
   { ref: "2009 PUMaC Division B Number Theory, Problem 6", formulas: ["difference-of-squares", "completing-the-square", "bounding-diophantine"], strategy: "", tree: ["nt.dio.bound.size", "nt.dio.squares"] },

@@ -335,6 +335,18 @@ for (const slug of ['2008-pumac-division-a-geometry-7', '2008-pumac-division-b-g
 check('2008-pumac-division-a-geometry-9', 'pi/6', 'Correct');
 check('2008-pumac-division-a-geometry-9', '5pi/6,pi/6', 'Correct');
 check('2008-pumac-division-a-geometry-9', '5pi/6', 'Incorrect');
+for (const slug of ['2009-pumac-division-a-combinatorics-7', '2009-pumac-division-b-combinatorics-8']) {
+  check(slug, '303', 'Correct');
+  check(slug, '606', 'Incorrect');
+}
+for (const slug of ['2009-pumac-division-a-number-theory-4', '2009-pumac-division-b-number-theory-6']) {
+  check(slug, '1', 'Correct');
+  check(slug, '6', 'Incorrect');
+}
+for (const slug of ['2009-pumac-division-a-geometry-3', '2009-pumac-division-b-geometry-5']) {
+  check(slug, '2', 'Correct');
+  check(slug, '1', 'Correct');
+}
 check('2011-smt-algebra-4', 'exp(402.2pi)', 'Correct');
 check('2011-smt-general-20', '((e^pi)^2011)^(1/5)', 'Correct');
 check('2011-smt-general-20', 'e^(2010pi/5)', 'Incorrect');
