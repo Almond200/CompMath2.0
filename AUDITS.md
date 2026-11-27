@@ -3149,7 +3149,7 @@ Validation (Codex): repository gates, generated book notes and the seven CI unit
 
 ## BMT problem audit, 2021 individual rounds (2026-11-27)
 
-Independently solved all 30 questions from the 2021 individual papers and reviewed the existing cards, topics and author-estimated difficulty. Sixteen Elo estimates were revised. The import had placed the coefficient under the radical in the official answers to Geometry #3, #7 and #10; those answers are restored, as is the eight-term example in the statement of Discrete Math #3. Notes beside the official solution links flag two Algebra write-up slips and two Geometry optimality arguments. **Status:** the data changes are in Codex's PR #464, open when this entry was written; this record describes that PR and is not live until it merges.
+Independently solved all 30 questions from the 2021 individual papers and reviewed the existing cards, topics and author-estimated difficulty. Sixteen Elo estimates were revised. The import had placed the coefficient under the radical in the official answers to Geometry #3, #7 and #10; those answers are restored, as is the eight-term example in the statement of Discrete Math #3. Notes beside the official solution links flag two Algebra write-up slips and two Geometry optimality arguments. Codex's PR #464 (merged as ea04837) carries the data. Validation (Codex): the full gate suite; exact-answer checks of the corrected radical forms and the scoring dispositions; Chromium placement of the grading notes in Practice and Arena review; the 2021 statement check parsed 205 KaTeX formulas with zero errors.
 
 ### Algebra
 
@@ -3207,3 +3207,125 @@ Independently solved all 30 questions from the 2021 individual papers and review
 **Geometry #6 verification.** Keep cube cells whose three indices have at least two coordinates outside the central index. Every edge of the 72 exposed unit squares has two incident faces. A shortest path between vertices decomposes into straight unfoldings, split wherever it visits a surface vertex. From each of the 64 surface vertices and each incident face, enumerate the 21 positive primitive integer directions $(a,b)$ with $a^2+b^2\le41$ in that face's first quadrant. Trace each direction across edges in rational crossing order, reflecting the next square into the planar grid, until its next grid vertex. Include the unit edge walks. This covers all vertex-to-vertex segments that could belong to a path at most the candidate length. The shortest direct unfolding has squared length 41. In the graph without the direct edge, Dijkstra with every length rounded down to $10^{-8}$ gives lower bound $6.41421356>\sqrt{41}$.
 
 **Geometry #10 signed offsets.** Write $w=cr/d$, so $PQ^2=4w^2$. On $EF$ both distances are $2r^2/d$. On each side tangent from $A$ the distances are $2r$ and $2r^3/d^2$. On $BC$ the inward normal has horizontal component $-3r/d$ because the altitude from $A$ is $4r$. Its vertical component has squared magnitude $1/7$. The two distances are $5r/7\pm w/\sqrt7$ with product $16/3$. Substituting each pair gives squared length 72. Each reflected line segment crosses its line because the original signed distances have the same sign, so the four minima are individually attained.
+
+## BMT problem audit, 2022 individual rounds (2026-11-27)
+
+Independently solved the 30 Algebra, Discrete Math and Geometry problems and revised 20 author estimates, raising those that need long casework or geometric coverage arguments. Geometry #7 and #10 have their radical coefficients restored, and #10 accepts both geometrically valid values. The underspecified #5 is excluded from scoring. #9 is marked for self-check after a counterexample to the official minimum, so its exact minimum remains open. The explanations for Geometry #5, #7, #9 and #10 sit beside the official PDF link in Practice and Arena review. Codex's PR #464 (merged as ea04837) carries the data.
+
+### Algebra
+
+[Problem paper](https://berkeley.mt/archives/bmt-2022/algebra-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2022/algebra-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The repeated map $x\mapsto12x-220$ fixes 20. | 690 |
+| 2 | For $u=2^x$ the equation is $(u-2)(u-8)=0$. The exponents sum to 4. | 1,230 → 1,010 |
+| 3 | For geometric ratio $r$, arithmetic continuation gives $d/a=2r^2-r$. Completing the square yields the attained minimum $-1/8$. | 1,390 |
+| 4 | If $m=\lceil x\rceil>0$, then $m(m-1)<mx\le m^2$ forces $m=45$. If $m=-k<0$, then $mx\in[k^2,k(k+1))$. For $k\le44$ this is below 1980, and for $k\ge45$ it starts at 2025 or higher. The answer is $[674/15,2023/45)$. | 1,550 |
+| 5 | Reflection about $(24,24,24)$ preserves the sum and sum of squares. It sends $T$ to $48-T$, so the two extrema sum to 48. | 1,710 → 1,390 |
+| 6 | $g(x)=f(x+6)-f(x)$ equals $x^4+\lambda\prod_{j=1}^5(x-j)$. Evaluate at $-3,3,9$. The product is odd about 3 and cancels, leaving $81+81+6561=6723$. | 2,080 → 1,860 |
+| 7 | Split $1/(1-r^2)$ into the two simple fractions. Summing gives $\tfrac12(P'(1)/P(1)-P'(-1)/P(-1))=2025/2023$. | 1,980 → 1,840 |
+| 8 | $G(t)=\prod(x_i+t)$ is monic of degree 2022, with $\Delta^{2022}G(0)=2022!$. The corresponding difference of $2^t$ is 1. Since the earlier samples agree, their final samples differ by $2022!-1$. | 2,720 → 2,280 |
+| 9 | The tangent sum and difference identities make $x_n$ the tangent of a Fibonacci-angle sequence. In units of $15^\circ$ the angles are $4,-3,1,-2,-1,-3,-4,-7,-11,-18$. The first undefined tangent, at 10, also makes the original coefficient zero with nonzero right-hand side. | 2,610 → 2,410 |
+| 10 | Vieta gives $r=2022-p-q$ and $q^2-(2022-p)q+p^2-2022p+2022=0$. For any root $u$, $1/(u-1)=(u^2-2021u+1)/336$. Substitute both identities into the cyclic definitions and reduce the expanded polynomial with the cubic in $p$ and the monic quadratic in $q$. Exact rational reduction gives the constant $-674$. | 3,340 |
+
+### Discrete Math
+
+[Problem paper](https://berkeley.mt/archives/bmt-2022/discrete-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2022/discrete-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | Choose the two different foods and the shared food in order: $3\cdot2\cdot3=18$. | 780 |
+| 2 | A divisor with both a factor 2 and a factor 5 ends in zero. The five pure powers of each prime plus 1 all pass, giving 11. | 1,230 → 1,020 |
+| 3 | The coin products $4,8,16$ have probabilities $1/4,1/2,1/4$. Two dice exceed them in 30, 10, and 0 of 36 cases, respectively, giving $25/72$. | 1,390 → 1,250 |
+| 4 | Subtract sequences with at most two switches. Choosing the initial winner and switch positions gives $2^{10}-2\left(1+9+\binom92\right)=932$. | 1,550 → 1,420 |
+| 5 | A $d$-digit solution has $n\le (9d)^2+18d-2$, excluding $d\ge5$. For $d=4$, the first bound $n\le1366$ makes the digit sum at most 22, forcing $n\le526$. The digit sum is $1\bmod3$ because $n\equiv s(n)\bmod3$, so check $s=25,22,19$ at the top. Only 19 works, giving 397. | 1,800 → 1,940 |
+| 6 | Sort the three exponents $i\le j\le k$ and use $2^k$ for the linear coefficient. A positive discriminant requires $2k>i+j+2$. For the complement, deficits $(k-j,k-i)$ can only be $(0,0),(0,1),(0,2),(1,1)$. These account for $8+21+18+21=68$ of 512 ordered draws, giving $111/128$. | 1,950 → 2,210 |
+| 7 | The first of $m$ specified cards appears on average at $53/(m+1)$, from uniform gaps. The stopping time is the maximum of the first ace and first king indices, so its expectation is $53/5+53/5-53/9=689/45$. | 2,190 → 1,840 |
+| 8 | With $z_n=a_n+ib_n$, $z_{32}=10(3-i)^{31}$. The binomial theorem modulo 31 gives $10(3+i)$, hence 3010. | 2,500 → 2,100 |
+| 9 | The even-cardinality projection gives $N=(\binom{84}{42}-\binom{42}{21})/2$. Lucas gives $N\equiv 2\bmod41$ and $22\bmod43$. The Chinese remainder is 1355. | 3,050 → 2,730 |
+| 10 | Sum $r_2(d)=4\sum_{k\mid d}\chi_4(k)$ over $d\mid10!$. The prime power contributions for $2^8,3^4,5^2,7$ are $9,3,6,1$, so there are 648 pairs. | 3,160 → 2,860 |
+
+### Geometry
+
+[Problem paper](https://berkeley.mt/archives/bmt-2022/geometry-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2022/geometry-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | On $[0,2]^2$ the creases are $x+y=3$, $y-x=1$, and $x=1$. The remaining outline has vertices $(1,0),(2,0),(2,1),(1,2)$, with maximum separation $\sqrt5$. | 1,080 |
+| 2 | The side direction of the outer square has unit vector $(2,1)/\sqrt5$ up to reflection. The projected width of the original square along it is $30/\sqrt5$, giving area 180. | 1,430 |
+| 3 | The figure shows the difference of two homothetic regions bounded by rays at A and arcs facing A across the circle centers. The smaller area is $2\sqrt3+4\pi/3$ from two triangles and a $120^\circ$ sector. The larger region has four times that area, so the shade is $6\sqrt3+4\pi$. | 1,650 |
+| 4 | The original triangle has area $3\sqrt3$. The moving triangle sweeps one triangular patch outside each original side, each of area $\sqrt3/4$, giving $15\sqrt3/4$. The coverage argument is below. | 1,890 → 2,230 |
+| 5 | The tilt makes the difference in the rear track radii $\sqrt{40^2+1^2}$. If the rear wheels turn together, their radii are in ratio $10:9$, making the front rotation $114\sqrt{1601}$ degrees. The printed conditions permit separate rear wheel angular speeds and leave the track radii free up to their difference. Exclude from scoring. | 2,130 |
+| 6 | Heron gives inradius $\sqrt{15}/3$ and altitude to $MT$ of $3\sqrt{15}/4$. Scaling the triangle about $B$ takes the incenter to the line $MT$ at factor $9/5$, with its projection between $M,T$. Hence $AY=72/5$. | 1,890 → 1,770 |
+| 7 | $\sin(A/2)=\sqrt{15}/6$ gives $\cos A=1/6$. From $AH=2R|\cos A|$, $R=12$ and $BC=4\sqrt{35}$. Restore the printed coefficient. The segment-distance reading gives the same value, as shown below. | 1,950 → 1,840 |
+| 8 | The radius at stage $n$ is $\prod_{k=2}^n\sec(\pi/2^k)=2^{n-1}\sin(\pi/2^n)$. The limiting area is $\pi^3/4$. | 2,450 → 2,150 |
+| 9 | A radical axis can miss the radical plane from two disjoint spheres. Exact elimination gives 725 intersecting quadruples for one valid family, and a projection bound gives a universal lower bound of 693. The exact minimum remains open in this audit. Use self-check. | 3,100 |
+| 10 | The orthic chord gives $|\cos A|=\sqrt3/2$ and the tangent length gives $XA=4\sqrt3$. The two possible triangles give $XY=2\sqrt{21}$ and $2\sqrt{21}/7$, respectively. Restore the published coefficient and accept both values. | 3,220 → 2,870 |
+
+**Geometry #4 coverage.** Put the starting triangle at $v_0=(2,0)$, $v_1=(-1,\sqrt3)$, $v_2=(-1,-\sqrt3)$, and move the vertices linearly over $0\le t\le1$ to $(3/2,\sqrt3/2)$, $(-3/2,\sqrt3/2)$, and $(0,-\sqrt3)$, respectively. Relative to the side $x+\sqrt3y=2$, the three signed values of $x+\sqrt3y-2$ are $t,-2t,-6+t$. The moving edges through $v_0(t)$ meet that side at $x=1-t/2$ and $x=2-t+t^2/4$. Both intersections and $v_0(t)$ lie in the fixed triangle spanned by $v_0(0),v_0(1)$ and the base point with $x=1/2$. For a fixed signed value $0<d<1$, taking the first moving edge and varying $t$ from $d$ to 1 sweeps every $x$ between its endpoint values $2-d/2$ and $1/2+d$. These are the full slice of the fixed triangle. Its base length is $\sqrt3$ and perpendicular height $1/2$. The three such patches have disjoint interiors since each lies in the original hexagon outside one side of the original triangle.
+
+**Geometry #7 segment endpoint.** If the closest point on segment $AC$ were $C$ with a perpendicular projection strictly beyond it, set $c=\cos(A/2)$ and $u=AC$. Then $c^2>7/12$ and $u=6c-\sqrt{36c^2-21}$. Consequently $uc\le 7/2$, since $6h-\sqrt{h(36h-21)}\le 7/2$ for $h\ge7/12$. The angle-bisector length formula gives $YC/BC=1-3/(uc)\le1/7$, so $BC\ge7\sqrt{15}$. But $AH$ gives $BC=4\tan A<4\sqrt{35}<7\sqrt{15}$, a contradiction. The projection is positive along the ray $AC$, so the endpoint $A$ cannot be closest. A projection on the segment is feasible: for $c=\sqrt{21}/6$, use the two positive roots of $z^2-Sz+3S/c$ for $AB,AC$, where $S=\sqrt{21}+\sqrt{581}$ and the larger root is $AC$.
+
+**Geometry #9 counterexample and bound.** Use centers $P_i=(t_i,t_i^2,t_i^3)$ with $t=(-5,-4,-3,-1,1,4,5)$ and radii $r_i^2=R^2+\|P_i\|^2-100^i$ for indices $i=0,\ldots,6$. A Vandermonde determinant shows no four centers are coplanar. For large $R$ all seven radii are nearly equal and each pair intersects in a circle. The radical plane for $i,j$ has equation $2(P_j-P_i)\cdot x=100^j-100^i$. Exact rational elimination over the $\binom{21}{4}=5985$ quadruples gives 725 consistent systems. The four-edge graphs that contain a 4-cycle or a triangle with an edge to a fourth center always give a point, because any four centers are affinely independent. An additional triangle with a disjoint edge gives a point unless the edge direction is parallel to the triangle's plane and the constants are inconsistent. For any particular disjoint edge, project the five other centers along its direction. Their images are distinct and no four are collinear. At most two triples can be collinear, because three triples with pairwise intersections of size at most one would use at least six points. Thus at most $2\binom72=42$ of the official 735 cyclic quadruples can fail, giving the 693 lower bound.
+
+**Geometry #10 two configurations.** Set $B=(0,0),C=(8,0),X=(-4,0)$ and take $A=(u,v)$ with $v>0$. Tangent power gives $(u+4)^2+v^2=48$. The circumradius is 8 by $EF=BC|\cos A|$, so the circumcenter is $(4,h)$ with $h=\pm4\sqrt3$. Subtracting the tangent equation from the circumcircle equation yields $16u+2hv=32$. The two positive-height solutions are $A=(-4,4\sqrt3)$ and $A=(20/7,4\sqrt3/7)$. Project $B$ onto line $AC$ and $C$ onto line $AB$, then intersect the line of the projections with $y=v$. This gives $Y=(2,4\sqrt3)$ and $Y=(-22/7,4\sqrt3/7)$, respectively. The printed segment notation would exclude both configurations if it required both feet inside the segments. The official construction already uses an extended side, so the grader accepts both line interpretations.
+
+## BMT problem audit, 2023 individual rounds (2026-11-27)
+
+Independently solved and reviewed the 30 Algebra, Discrete Math and Geometry problems and revised 24 author estimates against the shortest complete solutions found. The radical coefficients in Geometry #1, #8 and #9 are restored. Six notes beside the official solutions cover the imported keys and several corrections to the official write-ups. Codex's PR #466 (merged as 2199116) carries the data. Validation (Codex): all gates and the short-answer grading suite passed, and the regression checks accept the three restored radicals and reject their imported values. Chromium placed the grading notes beside the official PDF links in Practice and Arena review.
+
+### Algebra
+
+[Problem paper](https://berkeley.mt/archives/bmt-2023/algebra-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2023/algebra-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | Substituting $(20,23)$ gives slopes 1 and 0, with sum 1. | 1,030 → 800 |
+| 2 | Equal signs give the difference of magnitudes, 20. Opposite signs give their sum, 23. Both occur, giving 43. | 1,270 → 1,010 |
+| 3 | Cancelling $r^{2020}$ gives $16r^3=56$, and $b_6-a_6=40(7/2)^2=490$. | 1,490 → 1,300 |
+| 4 | On $[n,n+1]$ the slope is $2n+1$, so $g(x,y)=y^2+(x-y)(2y+1)$. A polynomial that vanishes on each horizontal interval is zero on every horizontal line of integer height and hence everywhere. The value is $529-141=388$. | 1,770 |
+| 5 | For the original polynomial $P$, the transformed monic polynomial is $Q(x)=-P(2-x)$. Therefore $B-M+T=1-P(3)=2006$. | 1,770 → 1,510 |
+| 6 | For the convergent sum at $z=1/10$, the recurrence gives $(1-z-xz^2)\sum a_nz^n=z$. The sum 1 forces $x=80$. Both characteristic roots $(1\pm\sqrt{321})/2$ have modulus below 10, verifying convergence. | 1,890 → 1,730 |
+| 7 | The factors $a\pm ib$ each have degree 5 and the same leading coefficient $\pm1$. Pick any five of the ten roots for the first factor, yielding $2\binom{10}5=504$ pairs. Real coefficients require one root from each conjugate pair, giving $2(2^5)=64$. The difference requested is $504-2(64)=376$. | 2,560 → 2,330 |
+| 8 | Vieta gives $t=(x+y+c)(xy+c(x+y))/(xyc)$ for legs $x,y$ and hypotenuse $c$. Set $s=(x+y)/c\in(1,\sqrt2]$ and use $xy/c^2=(s^2-1)/2$. The ratio becomes $s+1+2s/(s-1)$, strictly decreasing on the interval, so its minimum is $5+3\sqrt2$. | 2,290 |
+| 9 | An input outside $[0,1]$ leads to strictly negative terms and cannot reach zero. Inside it, write $1-2x_1=\cos\theta$ for $0\le\theta\le\pi$. Then $1-2x_{2023}=\cos(2^{2022}\theta)$, which equals 1 at $2^{2021}+1$ evenly spaced angles. | 2,450 → 2,230 |
+| 10 | The cubic factors as $(B+3M-T)(-B+M+4T)(2B-M+T)$. Testing the signed ordered factors of $2023=7\cdot17^2$ in these three linear equations leaves $(B,M,T)=(46,-9,18)$, with factors $1,17,119$ and sum 55. The published intermediate grouping has sign slips. | 2,990 → 3,160 |
+
+### Discrete Math
+
+[Problem paper](https://berkeley.mt/archives/bmt-2023/discrete-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2023/discrete-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The repeated outer digit is 1 or 6. The digit sum forces the middle digit to be 7 or 6, respectively. Only 171 has distinct outer and middle digits. | 1,230 → 1,050 |
+| 2 | Each ordering of the multiset with two copies of each name is valid, with the first occurrence marking entry and the second exit. The count is $6!/(2!)^3=90$. | 1,430 → 1,170 |
+| 3 | An increment changes its trailing 9s to 0s. It increases the number of 4s exactly when it changes the preceding 3 to 4. The four possible suffix lengths give $1000+100+10+1=1111$. | 1,620 → 1,400 |
+| 4 | The allowed residues modulo 11 are $1,3,6,8$. The range $1,\ldots,499$ contains 45 full blocks plus four entries, so the count is $45\cdot4+2=182$. | 1,550 → 1,300 |
+| 5 | Let $q=5/6$. The probability of missing on all $N$ new rolls is $\mathbb E q^N=(1/6)q/(1-q^2)=5/11$. Its complement is $6/11$. | 1,800 → 1,590 |
+| 6 | The second gcd reduces to $\gcd(x+17,1715)$. Exclude $2\mid x$, $3\mid x$, $5\mid x+17$, and $49\mid x+17$. CRT gives $384=2^7\cdot3$ per block of $1470$, and $210\cdot2023=1470\cdot17^2$. The endpoint is even and excluded automatically. The prime sum is $14+3+34=51$. | 2,290 → 1,950 |
+| 7 | For adjacent sides, the area difference is $1-UV$, with mean $3/4$. For opposite sides, it is $|1-U-V|$, with mean $1/3$ by integrating the two triangles of the unit square. The respective weights are $2/3,1/3$ and the overall mean is $11/18$. | 2,240 → 2,010 |
+| 8 | Divisor convolution preserves multiplicativity, and $S_k(p)=1+pS_{k-1}(p)=1+p+\cdots+p^k$. Multiply the three geometric sums for $2,3,5$ modulo 1001 to get 232. | 2,400 → 2,210 |
+| 9 | Assign each number one of three section labels, then sort each section in its required direction. Every resulting permutation with a descent has a single contiguous descent run, and there are four assignments, according as its first and last elements move into the middle or stay outside it. The increasing permutation has eight assignments with an empty middle and seven with a singleton. Thus the count is $(3^7-15)/4+1=544$. Each counted permutation also admits a split with both dividers between books. | 2,450 |
+| 10 | The other root $\beta$ lies in $(-1,0)$, so $\lfloor\alpha^{1000}\rfloor=\alpha^{1000}+\beta^{1000}-1$. The discriminant 17 is a nonsquare modulo 997 by quadratic reciprocity, since $997\equiv11\bmod17$. Frobenius exchanges the roots. The power sum is thus $\alpha\beta(\alpha^2+\beta^2)=-2(9+4)=-26\bmod997$, and the floor has remainder 970. | 3,160 → 2,830 |
+
+### Geometry
+
+[Problem paper](https://berkeley.mt/archives/bmt-2023/geometry-problems.pdf) · [Official solutions](https://berkeley.mt/archives/bmt-2023/geometry-solutions.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The semicircle fits a rectangle of width 4 and height 2, yielding diagonal $2\sqrt5$. Restore the coefficient. | 980 → 830 |
+| 2 | The equilateral triangle's center is $3\sqrt3/2$ from a side. A trisection point is $3/2$ from its midpoint, so the circle radius squared is 9 and the area is $9\pi$. | 1,360 → 1,200 |
+| 3 | Add the cylinder volume $972\pi$ and the frustum volume $(4\pi/3)(81+135+225)=588\pi$, giving $1560\pi$. | 1,460 → 1,370 |
+| 4 | The circle's contact with $BC$ lies between $B$ and $C$, inside the wedge. The tangent lengths from each vertex give $BC=BP+CQ$. Hence the perimeter is $AP+AQ=2\sqrt{17^2-8^2}=30$. | 1,590 → 1,460 |
+| 5 | With $B=(0,0),C=(15,0),A=(0,8)$ and the small radius $t$, the centers are $(t,t)$ and $(15-16t,4t)$. Tangency gives $(15-17t)^2=16t^2$. The incircle radius 3 bounds $4t\le3$, leaving only $t=5/7$. | 1,920 |
+| 6 | Write $MX=u$, $BM=4u$. Intersecting chords give $AM=CM=2u$. The $45^\circ$ angle makes the circumradius $2\sqrt2u$. Use chord $BX=5u$ to get the central half-angle sine $5/(4\sqrt2)$ and double it, yielding $5\sqrt7/16$. | 1,980 → 1,810 |
+| 7 | The triangular face must have side 2, as an apex at distance 2 from the vertices of a side-4 equilateral triangle is impossible. The center projects to the base incenter since the three contacts are on the edges. On the axis, the altitude is $h=2\sqrt{33}/3$. Equating squared distances to base and lateral edges gives axial heights $2h/11$ and $-4h/11$. The latter puts each lateral contact outside its edge. The radius is $3\sqrt{11}/11$. | 2,560 |
+| 8 | Write each pair of chord intersections at positions $s_i\mp t_i$ from the corresponding vertex along its oriented side. The circle center projections give $\sum s_i=3L/2$ for side length $L$. Subtracting the corner triangle areas and expanding the side-length squares shows that the area difference has magnitude $\sqrt3/12$ times the squared-length-sum difference. Hence the area difference is $16\sqrt3$. Restore the coefficient. | 2,720 → 2,440 |
+| 9 | The angle conditions force $T$ to be the reflection across $BC$ of the ray $MA$, at distance $MT=(BC/2)^2/AM$. This gives $AM\cdot AT=AB\cdot AC$, and the cosine at $A$ then gives $(BC/2)^2=81-126(2/7)=45$. The correct result is $6\sqrt5$. The official cosine-rule line has a factor typo. Restore the coefficient in grading. | 3,050 |
+| 10 | Use coordinates centered at $O$ with $BC$ horizontal at height $5r/13$ after reflection. The circle $BOC$ has equation $x^2+y^2=(13r/5)y$. Intersecting it with $OA$ shows $AF$ is $13/5$ times the altitude of $A$ to $BC$. This altitude is $AC(AB/2r)=1$. The circle with diameter $AF$ gives $EG=AF\sin A$ with $\sin A=12/13$. Hence $AF\cdot EG=156/25$ for either configuration. | 3,220 → 2,480 |
+
+**Geometry #8 area and length identities.** For points at positions $x_1,x_2,x_3$ measured clockwise from the three vertices of the equilateral host triangle, subtract the corner triangle areas to get $A=(\sqrt3/4)(L^2-L\sum x_i+\sum_{i<j}x_ix_j)$. By the cosine rule the three squared lengths sum to $Q=3L^2-3L\sum x_i+2\sum x_i^2+\sum_{i<j}x_ix_j$. Take the differences between $x_i=s_i+t_i$ and $x_i=s_i-t_i$. Since the unit edge vectors sum to zero, the circle center projects to coordinates with $\sum s_i=3L/2$. Consequently $\Delta Q=-3L\sum t_i+6\sum s_it_i$ and $\Delta A=(\sqrt3/2)((L/2)\sum t_i-\sum s_it_i)=-(\sqrt3/12)\Delta Q$.
+
+**Geometry #9 configuration check.** Take $B=(0,0),C=(2s,0),M=(s,0),A=(u,v),T=(x,y)$ with $v>0>y$, and write the triangle's angles as $\alpha,\beta,\gamma$ at $A,B,C$. From $\angle BTM=\beta$, the dot and cross products give $x^2-sx+y^2=-su y/v$. If $\psi_M$ and $\psi_C$ are the downward angles of $MT$ and $CT$ from the positive horizontal, then $0<\psi_M<\psi_C<\pi$ and the second given angle equation is $\psi_M=|\psi_C-\gamma|$. The branch $\psi_M+\psi_C=\gamma$ would imply $x>2s$ and $y^2<(x-s)(x-2s)$ because $\gamma$ is acute. But $\sin\beta>\cos\alpha=2/7$ bounds $x$ by $s/2+s/(2\sin\beta)<9s/4$ on the first circle, giving $(x-s)(x-2s)<5s^2/16$. The equation of that circle and $\tan\beta>\cot\alpha=2/\sqrt{45}$ give $-y>4s/\sqrt{45}$, a contradiction. Thus $\psi_C-\psi_M=\gamma$. The equation of the circle $MTC$ is then $x^2+y^2=3sx-2s^2+s(u-2s)y/v$. Subtract the two circle equations to get $T=(s+k(u-s),-kv)$ with $k=s^2/AM^2$. Squaring now gives $(AM\cdot AT)^2=(AM^2-s^2)^2+4s^2v^2=(AB\cdot AC)^2$. The resulting value is realized by $s=3\sqrt5$, $A=(s,9)$, and $T=(s,-5)$.
