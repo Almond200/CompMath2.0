@@ -25959,32 +25959,32 @@
       "Replace an exponential by a positive variable and solve the resulting quadratic before recovering the real exponents. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2017 BMT Analysis, Problem 4": [
-      1890,
-      "Evaluate a quadratically weighted infinite geometric series at one half. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1920,
+      "Reviewed against the printed paper. Shift the squared-coefficient series once to reduce its coefficient differences to a linear-weighted geometric sum."
     ],
     "2017 BMT Analysis, Problem 5": [
       1710,
       "Find the unique height at which a nested absolute-value graph has three distinct preimages. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2017 BMT Analysis, Problem 6": [
-      2880,
-      "Cube a cyclic linear transformation, identify its affine action on three cubic roots and recover the transformed pair sum. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2450,
+      "Reviewed against the printed paper. The invariant coordinate sum gives one cyclic affine substitution. Three applications remove the cycle and Viète gives the new pair sum."
     ],
     "2017 BMT Analysis, Problem 7": [
-      2670,
-      "Split an alternating rational series into two odd-denominator series and evaluate it with the Gregory-Leibniz identity; a specific inverse-trigonometric power-series card is absent. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2420,
+      "Reviewed against the printed paper. A partial fraction split leaves two copies of the Gregory series and one endpoint term."
     ],
     "2017 BMT Analysis, Problem 10": [
-      3220,
-      "Swap a harmonic-weighted binomial sum and evaluate its alternating binomial tails through Pascal cancellation. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2840,
+      "Reviewed against the printed paper. Write the harmonic numbers as integrals and use the binomial theorem to cancel all but one simple power."
     ],
     "2017 BMT Discrete Math, Problem 1": [
       980,
       "Count same-color pairs in a finite sock sample without replacement. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2017 BMT Discrete Math, Problem 2": [
-      1390,
-      "Count four labeled year choices that use each of three subjects at least once. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1210,
+      "Reviewed against the printed paper. Choose the repeated subject and its two positions, then order the other two."
     ],
     "2017 BMT Discrete Math, Problem 3": [
       1390,
@@ -25995,8 +25995,8 @@
       "Choose the largest permitted digit subset with sum divisible by nine and arrange it in descending order. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2017 BMT Discrete Math, Problem 5": [
-      1830,
-      "Count all subsets of a nine-term interval containing no consecutive pair, including the empty set. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1580,
+      "Reviewed against the printed paper. Split on the last position to get a short Fibonacci recurrence starting with 1 and 2."
     ],
     "2017 BMT Discrete Math, Problem 6": [
       2560,
@@ -26007,20 +26007,20 @@
       "Under independent light states, split Chebyshev shells into corners and noncorners and sum the four-neighbor indicator probabilities; independence is implicit rather than stated. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2017 BMT Discrete Math, Problem 8": [
-      3160,
-      "Condition a second-weakest tournament entrant on the weakest player reaching each potential meeting round and sum the seeded bracket contributions. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2940,
+      "Reviewed against the printed paper. Condition on the round in which the weakest entrant could meet the second weakest, and sum the resulting geometric series."
     ],
     "2017 BMT Discrete Math, Problem 9": [
-      3280,
-      "Expand a fourth occupancy moment by distinct trial indices and evaluate its limiting factorial moments. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2670,
+      "Reviewed against the printed paper. Expand the fourth moment into falling factorials. The four limiting factorial moments are all one."
     ],
     "2017 BMT Discrete Math, Problem 10": [
-      3340,
-      "Reverse an alternating totient floor sum and separate its odd divisor contribution. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2910,
+      "Reviewed against the printed paper. Swap the floor sum and apply the totient divisor identity to each integer and its odd part. The odd-part sum then splits by valuation."
     ],
     "2017 BMT Geometry, Problem 1": [
-      1980,
-      "Bound the number of distinct positive integer exterior angles by their fixed sum and construct an attaining convex polygon. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1770,
+      "Reviewed against the printed paper. Distinct positive integer exterior angles have total 360. The smallest 27 already exceed 360 and a set of 26 is attained by tangent lines."
     ],
     "2017 BMT Geometry, Problem 2": [
       1390,
@@ -26036,23 +26036,23 @@
     ],
     "2017 BMT Geometry, Problem 5": [
       1620,
-      "Audit polynomial roots prescribed as triangle sides: the printed roots violate the triangle inequality, so the formal radius-product answer has no real triangle. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      "Reviewed against the printed paper. Factor at x = 9. The side lengths violate the triangle inequality, although the formal radius product simplifies to 10."
     ],
     "2017 BMT Geometry, Problem 6": [
-      3400,
-      "Compute the largest box from independent maximal interval spacings; the written uniform-cut model gives a different expectation from the official key. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      3150,
+      "Reviewed against the printed paper. Apply inclusion-exclusion to the longest spacing on each axis and multiply the three independent expectations."
     ],
     "2017 BMT Geometry, Problem 7": [
-      2670,
-      "Transport a largest inscribed triangle from the unit circle through an area-scaling ellipse map. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2360,
+      "Reviewed against the printed paper. Scale the ellipse to a unit circle and bound the product of the sines of the triangle angles by concavity."
     ],
     "2017 BMT Geometry, Problem 8": [
-      3460,
-      "Audit an intersection-of-triangles area problem whose missing inscribed restriction leaves the given circle unused; the printed family has empty intersection. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2940,
+      "Reviewed against the printed paper. With containment assumed, bound the largest triangle area at a fixed side distance and rotate an attaining isosceles triangle. The unrestricted interpretation gives an empty intersection."
     ],
     "2017 BMT Geometry, Problem 9": [
-      3580,
-      "Use a tangent polar to fix an external point and bound the vertex-angle sine by an auxiliary circle; the sharp bound disagrees with the supplied key. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2710,
+      "Reviewed against the printed paper. Harmonic division and tangent-chord similarity fix the adjacent side ratio. One application of the law of sines gives the attained bound."
     ],
     "2017 BMT Geometry, Problem 10": [
       2240,
@@ -50384,11 +50384,11 @@
     ],
     "2017 BMT Analysis, Problem 8": [
       3200,
-      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Split the floor into unit steps and reduce each piece to a beta integral."
+      "Reviewed against the printed paper. Reflect the floor step to replace it by its mean and evaluate a beta integral. The missing integer condition makes the printed minimization impossible."
     ],
     "2017 BMT Analysis, Problem 9": [
-      3400,
-      "Author estimate, 2026-11-21 (a calculus problem kept so its round is complete): Find the singular part of a generating function as t approaches 1, then extend the resulting polynomial in n."
+      3230,
+      "Reviewed against the printed paper. Count offsets by two geometric series, then use matched second-order expansions to extract their finite difference."
     ],
     "2009 Utah State Math Contest Senior, Problem 36": [
       1100,

@@ -127,6 +127,17 @@ assert.equal(practice.result(priorPractice, permutationOrder), 'Incorrect');
 assert.match(notes[permutationOrder], /general k/);
 check('2016-bmt-analysis-9', '77/2', 'Correct');
 check('2016-bmt-analysis-9', '-2', 'Incorrect');
+for (const slug of ['2017-bmt-analysis-8','2017-bmt-discrete-math-7','2017-bmt-geometry-5']) {
+  assert.match(voided[slug], /^Practice ruling\./);
+}
+check('2017-bmt-discrete-math-8', '257/268435456', 'Correct');
+check('2017-bmt-discrete-math-8', '257/228', 'Incorrect');
+check('2017-bmt-geometry-6', '275/1152', 'Correct');
+check('2017-bmt-geometry-6', '35/192', 'Incorrect');
+check('2017-bmt-geometry-8', '0', 'Correct');
+check('2017-bmt-geometry-8', '49pi', 'Correct');
+check('2017-bmt-geometry-9', '2sqrt(5)/5', 'Correct');
+check('2017-bmt-geometry-9', '(5+sqrt(5))/8', 'Incorrect');
 check('2018-lehigh-math-contest-1', '20', 'Correct');
 check('2018-lehigh-math-contest-1', '400', 'Incorrect');
 check('2013-lehigh-math-contest-6', 'sqrt(2)', 'Correct');

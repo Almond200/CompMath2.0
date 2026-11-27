@@ -2920,3 +2920,58 @@ Independently solved the 70 indexed short-answer questions on these seven papers
 | 8 | In the zero-sum hyperplane of $\mathbb R^8$, center the eight coordinate unit vectors and divide by $\sqrt2$. Then all sides are one, and each squared norm is $(1-1/8)/2=7/16$. The radius is $\sqrt7/4$. | 2,940 → 2,530 |
 | 9 | For $C=(0,0), A=(a,0), B=(0,b)$ the square rotations give $DG^2=a^2+4b^2$ and $EI^2=4a^2+b^2$. Adding gives $5FH^2=19^2+22^2$, so $FH=13$. | 3,100 → 2,430 |
 | 10 | Heron gives inradius $\sqrt2$ and $\sin(B/2)=1/3$. Consecutive tangent radii on the internal bisector have ratio $1/2$ or 2. Halving at every step gives $8\pi/3$. The sequence may return to the incircle after the first halving, then shrink again, adding a positive extra area while satisfying the same tangencies. Void the printed recursion. | 3,100, voided |
+
+## BMT problem audit, 2017 individual rounds (2026-11-27)
+
+Solved all 30 problems and compared the results with the three official keys. Geometry uses the archived copy of the paper linked in the app. Elo revisions reflect the shortest verified human routes.
+
+### Analysis
+
+[Problem paper](https://berkeley.mt/archives/bmt-2017/AnaS2017.pdf) · [Official key](https://berkeley.mt/archives/bmt-2017/AnaS2017A.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The total score is 30. If $k$ students score 7, the minimum total is $10+6k$, so $k\le3$. Three 7s, two 2s, and five 1s attain the bound. | 1,270 |
+| 2 | Set $u=3^x$. The quadratic $u^2-9u+18=0$ gives $u=3,6$, hence $x=1,\log_3 6$. | 1,460 |
+| 3 | The factor $\cos(x^2)$ is even, so the integrand is odd and its symmetric integral vanishes. | 1,100 |
+| 4 | Write $S=\sum_{n\ge1}n^2/2^n$. Subtract $S/2$ to get $S/2=2\sum n/2^n-\sum1/2^n=4-1=3$. Thus $S=6$. | 1,890 → 1,920 |
+| 5 | Solve $\lvert x-1\rvert=4\pm y$. For $0<y<4$ there are four roots, and for $y>4$ there are two. At $y=4$ the zero inner value gives one root alongside the two for inner value 8. The cases $y=0$ and $y<0$ give two and zero. | 1,710 |
+| 6 | The coordinate sum is invariant and equals 4. Each application subtracts twice a cyclic permutation of the input from the constant vector $(4,4,4)$. After three applications the new roots are $12-8r_i$. Their pair sum is $432-192(4)+64(0)=-336$. | 2,880 → 2,450 |
+| 7 | Partial fractions turn the sum into half of the difference between the two alternating odd-reciprocal series. They start at $-1$ and $-1/3$ and sum to $-\pi/4$ and $\pi/4-1$, respectively. The result is $(2-\pi)/4$. | 2,670 → 2,420 |
+| 8 | Reflect $x$ to $1-x$. The floors sum to 2016 off a finite set, giving the integral $I=1008(2017!)^2/4035!$. If $a$ can be positive rational, taking $n=1$ and $m\to\infty$ gives $a=I/(m!)^2\to0$. Void the printed minimum. With positive integers the published triple is optimal: the prime 4049 rules out $4049\le n<8098$ for $a\le1008$ because its exponent in $n!$ is one. For larger $n$, Bertrand's postulate supplies a prime between $n/2$ and $n$, with the same obstruction. An exact factorial sweep for $n<4049$ finds only $(a,m,n)=(1008,2017,4035)$ with $1\le a\le1008$. | 3,200, voided |
+| 9 | Summing equal pairs and both directions of the nonzero offsets gives $M(t)=(1+t^n)/[(1-t^2)(1-t^n)]$. Set $t=e^{-s}$. The constant terms of $nM(e^{-s})$ and $(1-e^{-s})^{-2}$ are $(n^2+4)/12$ and $5/12$, and both have singular part $s^{-2}+s^{-1}$. Thus $P(n)=(n^2-1)/12$ and $P(0)=-1/12$. | 3,400 → 3,230 |
+| 10 | Substitute $H_n=\int_0^1(1-t^n)/(1-t)\,dt$. The alternating binomial sum gives $-\int_0^1(1-t)^{2016}\,dt=-1/2017$. | 3,220 → 2,840 |
+
+### Discrete Math
+
+[Problem paper](https://berkeley.mt/archives/bmt-2017/DisS2017.pdf) · [Official key](https://berkeley.mt/archives/bmt-2017/DisS2017A.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | After the first sock, four of the remaining 44 match it. The probability is $1/11$. | 980 |
+| 2 | Choose the repeated focus in three ways, its pair of years in six ways, and the order of the other two in two ways. The total is 36. | 1,390 → 1,210 |
+| 3 | Eight total divisors require exponent patterns $7$, $(3,1)$, or $(1,1,1)$. The corresponding minima are 128, 24 and 30. | 1,390 |
+| 4 | The digit sum of all five digits is 25. To get a four-digit multiple of 9, remove 7 and arrange the rest in descending order, giving 9531. | 1,390 |
+| 5 | A set with no adjacent elements either omits the last element or uses it and omits its predecessor. The counts start with 1 and 2 and obey the Fibonacci recurrence, giving 89. | 1,830 → 1,580 |
+| 6 | Evaluating $f^6$ in two ways gives $f(1)=1$. Every vertex reaches 1, so the other five arrows form a labeled tree oriented toward 1. Conversely every such tree has depth at most five and works. Cayley gives $6^4=1296$. | 2,560 |
+| 7 | Under independence the origin contributes $1/4$. On shell $d\ge1$ the four corners each contribute $4^{-d}/2$ and the other $8d-4$ sites each contribute $4^{-d}$. The sum is $113/36$. With one uniform draw shared by every light, each of the eight sites on shell 1 alone has all neighbors on with probability $1/2$, giving at least 4. Void the unspecified dependence model. | 2,990, voided |
+| 8 | The weakest player's potential meeting round $j$ has seeding probability $2^{j-1}/1023$, with survival probability $4^{-(j-1)}$. Meeting that player triples the baseline $4^{-10}$. The resulting geometric sum gives $257/2^{28}$. Restore the superscript from the organizer's printed key. | 3,160 → 2,940 |
+| 9 | The occupancy of the chosen box is binomial with parameters $n,1/n$. Expand $b^4=(b)_4+6(b)_3+7(b)_2+(b)_1$. Each factorial moment tends to 1, giving 15. | 3,280 → 2,670 |
+| 10 | Reverse the floor sum. For each $m\le64$ the signed divisor sum is $m-2q$, with $q$ the odd part of $m$. The odd parts sum to $32^2+16^2+8^2+4^2+2^2+1+1=1366$. The total is $2080-2(1366)=-652$. | 3,340 → 2,910 |
+
+### Geometry
+
+[Archived problem paper](https://oss.linstitute.net/wechatimg/2019/10/bmt2017geometry.pdf) · [Official key](https://berkeley.mt/archives/bmt-2017/GeoS2017A.pdf)
+
+| # | Independent result and disposition | Elo |
+|---|---|---:|
+| 1 | The distinct exterior angles are positive integers summing to 360. The smallest 27 sum to 378. The angles $1,2,\ldots,25,35$ sum to 360 and can be realized by consecutive normal directions of tangent sides to a circle. | 1,980 → 1,770 |
+| 2 | The three possible fourth vertices give a triangle with the three stated points as its side midpoints. The stated triangle has area $15/2$ by a determinant, so the larger area is 30. | 1,390 |
+| 3 | Use opposite hexagon vertices $(\pm1,0)$ as the square's diagonal. In the first quadrant, the excluded triangle has top edge on $y=\sqrt3/2$, of length $\sqrt3/2-1/2$, and height $\sqrt3/2$. Four copies give $(3-\sqrt3)/2$. | 1,890 |
+| 4 | Count the five integer coordinates with square sum at most 9. One square 9 gives 10 choices, two squares 4 give 280, one square 4 gives 810, and coordinates all in $\{0,\pm1\}$ give 243. The total is 1343. | 2,340 |
+| 5 | The cubic is $(x-9)((x-9)^2-21)$. The side inequality fails because $18-\sqrt{21}<9+\sqrt{21}$. The product 10 comes from the formal expression $abc/(4s)$, but the specified triangle does not exist. Void. | 1,620, voided |
+| 6 | For $m$ uniform cuts on an edge, the spacings are uniform in the unit simplex. Inclusion-exclusion for the event that at least one gap exceeds $t$, followed by integrating in $t$, gives mean longest gap $\frac{1}{m+1}\sum_{i=1}^{m+1}(-1)^{i+1}\binom{m+1}{i}/i$. The three means are $3/4,11/18,25/48$. Multiplication gives $275/1152$. Correct the published $35/192$. | 3,400 → 3,150 |
+| 7 | Stretch the unit circle by factors 3 and 4. On the circle the area is $2\sin A\sin B\sin C$, maximized at equal angles by concavity of $\ln\sin x$ on $(0,\pi)$. Thus the desired triangles are stretches of inscribed equilateral triangles, each with area $9\sqrt3$. | 2,670 → 2,360 |
+| 8 | On the unrestricted reading, disjoint triangles are allowed and the intersection is empty. Inside the disk a side missing the center leaves a cap containing area at most 625 for the triangle. For a side at distance $d$ with the center on the triangle's side, the area is at most $(25+d)\sqrt{625-d^2}$, increasing up to $d=25/2$. This equals 768 at $d=7$, and a chord and opposite apex attain equality. Rotating the construction gives intersection area $49\pi$. Accept both readings. | 3,460 → 2,940 |
+| 9 | The chord of contact makes $D,F$ harmonic conjugates on $BC$. Tangent-chord similarity gives $BF/FC=DB/DC=(AB/AC)^2$. Then $\sin C=(2/\sqrt5)\sin B\le2/\sqrt5$. With $B=(0,0), C=(1,0), A=(0,2)$, the tangent meets $BC$ at $(-4,0)$ and attains equality. Correct the published $(5+\sqrt5)/8$. | 3,580 → 2,710 |
+| 10 | A strip of latitude has area proportional to the sine difference between its boundaries. Both strips have the same longitude width and radius factor. Their ratio is $(\sin45^\circ-\sin41^\circ)/(\sin41^\circ-\sin37^\circ)$. | 2,240 |
