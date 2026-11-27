@@ -15,15 +15,17 @@ adds nothing else to a split file except one navigation line at the top, marked
 "<!-- nav -->". It also writes curriculum/data/index.json, the machine-readable list of books,
 chapters and concept sections.
 
-  python3 tools/curriculum/build-curriculum.py           # (re)write the split files and the index
+  python3 tools/curriculum/build-curriculum.py --force-resplit   # rebuild from the import (discards edits!)
   python3 tools/curriculum/build-curriculum.py --check   # verify; exit 1 on any discrepancy
 
 --check confirms: 12 books, 136 chapters (one optional), 791 concept sections; every source
 line lands in exactly one split file; each split file, with links, heading marks and nav lines
 normalised away, is identical to its source lines; the index and the tracker list every chapter.
-Once authors start editing the split files (the spec evolves under change control, see
-curriculum/README.md), run --check with --allow-edits to skip the byte comparison and keep the
-structural checks.
+The split files have been edited under change control since 2026-11-27 (CR-1 onward,
+curriculum/REVIEW-NOTES.md §4), so the routine check is --check --allow-edits, which keeps the
+line-coverage and structural checks and skips the byte comparison. The index, the chapter
+structure and the packets are checked by tools/curriculum/check-spec.py, which reads the edited
+chapter files; it also regenerates curriculum/data/index.json (--write).
 """
 import json, re, sys
 from pathlib import Path
@@ -238,20 +240,25 @@ def build(check=False, allow_edits=False):
             if not allow_edits and normalise(path.read_text(encoding="utf-8")) != normalise("\n".join(lines[a] for a0, z0 in rs for a in range(a0, z0))):
                 errors.append(f"{f} differs from its source lines")
         else:
+            if path.exists() and not FORCE:
+                raise SystemExit(f"refusing to overwrite {f}: the split files are now edited under change control "
+                                 "(curriculum/REVIEW-NOTES.md §4). Rerun with --force-resplit only to rebuild from the import.")
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(text, encoding="utf-8")
     idx_path = CUR / "data" / "index.json"
     idx_text = json.dumps(index, ensure_ascii=False, indent=1) + "\n"
     if check:
-        if not idx_path.exists() or idx_path.read_text(encoding="utf-8") != idx_text: errors.append("curriculum/data/index.json is stale")
+        if not allow_edits and (not idx_path.exists() or idx_path.read_text(encoding="utf-8") != idx_text): errors.append("curriculum/data/index.json is stale")
         tracker = (CUR / "TRACKER.md").read_text(encoding="utf-8") if (CUR / "TRACKER.md").exists() else ""
         for b in books:
             for ch in b["chapters"]:
                 if not re.search(r"^\| \[?" + re.escape(ch["id"]) + r"\b", tracker, re.M): errors.append(f"TRACKER.md has no row for {ch['id']}")
-    else:
+    elif FORCE:
         idx_path.parent.mkdir(parents=True, exist_ok=True); idx_path.write_text(idx_text, encoding="utf-8")
     return errors, books, index
 
+
+FORCE = "--force-resplit" in sys.argv
 
 if __name__ == "__main__":
     check = "--check" in sys.argv

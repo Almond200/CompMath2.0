@@ -2,7 +2,7 @@
 
 # Combinatorics & Probability I — Counting Models and Finite Probability
 
-**TEXTBOOK C1 · 9 teaching chapters**
+**TEXTBOOK C1 · 10 teaching chapters**
 
 **Volume direction.** Build the ability to define precisely what is being counted and to count each object once. Probability begins as counting under a uniform finite model, then develops more general weighted outcomes.
 

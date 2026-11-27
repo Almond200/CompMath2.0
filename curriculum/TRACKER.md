@@ -9,13 +9,14 @@ One row per chapter of the new curriculum (136). Update a row whenever a chapter
 | Stage | Meaning | Exit evidence |
 |---|---|---|
 | S0 Specified | The chapter's premise, numbered concepts, practice directions and mastery outcome are in the specification. | The chapter file in `books/`. |
-| S1 Arc | The authoring packet exists: a one-paragraph narrative arc, learning objectives, a dependency check against earlier IDs, and the staged problem selection (motivating, direct check, contrast, partly guided, unlabeled transfer, delayed revisit). | `packets/<ID>.md` (spec/coverage-audit.md, "Instructional validation"). |
+| S1 Arc | The authoring packet exists: a one-paragraph narrative arc, learning objectives, a dependency check against earlier IDs, and the staged problem selection (motivating, direct check, contrast, partly guided, unlabeled transfer, delayed revisit). | `packets/<ID>.md`, following AUTHORING-STANDARD.md. |
 | S2 Pilot | A student-facing model unit covers part of the chapter. | A pilot in spec/teaching-pilots.md or a reviewed draft. |
 | S3 Draft | The full manuscript is drafted, not published. | A draft in the agreed location (TECHNICAL-CHANGES.md, T7). |
 | S4 Problems | Every exercise has a placement record (slug, route, required concept IDs, role, difficulty source, review status), and its answer and route are checked. | Placement records with status `route-read` or better. |
 | S5 Reviewed | Mathematics checked by computation, and the unit read sequentially as a student; the acceptance gates in spec/teaching-pilots.md §6 pass. | A review note in REVIEW-NOTES.md or the chapter's packet. |
 | S6 Tested | Learner evidence collected: first-step diagnostics, misconception contrasts, delayed transfer. | A learner-evidence note. |
 | S7 Live | Released in the app as part of a whole volume, with old URLs redirected. | The release entry in CHANGELOG.md. |
+| Deferred | Excluded from the core release by the owner's decision. | REVIEW-NOTES.md §3. |
 
 A chapter can hold S2 and still be at S0 for the rest of its sections; the Notes column says which part. Volumes are released whole (roadmap Stage 5), so S7 is set for a volume at once.
 
@@ -49,7 +50,7 @@ A chapter can hold S2 and still be at S0 for the rest of its sections; the Notes
 | [A2.5](books/algebra-2/A2.05-odd-even-and-periodic-functions.md) | Odd, Even and Periodic Functions | Year 2 L5 | 6 | S0 |  |
 | [A2.6](books/algebra-2/A2.06-advanced-quadratic-functions.md) | Advanced Quadratic Functions | Year 2 L6 | 4 | S0 |  |
 | [A2.7](books/algebra-2/A2.07-special-functions.md) | Special Functions | Year 2 L7 | 6 | S0 |  |
-| [A2.8](books/algebra-2/A2.08-composite-and-inverse-functions.md) | Composite and Inverse Functions | Year 2 L8 | 4 | S0 | Has a teaching sequence; Next pilot (roadmap Stage 2) |
+| [A2.8](books/algebra-2/A2.08-composite-and-inverse-functions.md) | Composite and Inverse Functions | Year 2 L8 | 4 | S1 | Has a teaching sequence; Next pilot (roadmap Stage 2); [Packet](packets/A2.8.md) ready for review (2026-11-27) |
 | [A2.9](books/algebra-2/A2.09-functional-equations-and-mathematical-induction.md) | Functional Equations and Mathematical Induction | Proposed | 7 | S0 | 1 second-pass extension |
 | [A2.10](books/algebra-2/A2.10-recursive-sequences.md) | Recursive Sequences | Year 2 L9 | 8 | S0 | 1 second-pass extension |
 | [A2.11](books/algebra-2/A2.11-inequality-of-arithmetic-and-geometric-means.md) | Inequality of Arithmetic and Geometric Means | Year 2 L10 | 4 | S0 |  |
@@ -63,7 +64,7 @@ A chapter can hold S2 and still be at S0 for the rest of its sections; the Notes
 | [A2.19](books/algebra-2/A2.19-inverse-trigonometric-functions-and-trigonometric-equations.md) | Inverse Trigonometric Functions and Trigonometric Equations | Proposed | 5 | S0 |  |
 | [A2.20](books/algebra-2/A2.20-complex-numbers-and-roots-of-unity.md) | Complex Numbers and Roots of Unity | Proposed | 5 | S0 |  |
 | [A2.21](books/algebra-2/A2.21-matrices-linear-systems-and-linear-transformations.md) | Matrices, Linear Systems and Linear Transformations | Proposed | 7 | S0 | 2 second-pass extensions |
-| [A2.22](books/algebra-2/A2.22-limits-continuity-and-convergence.md) | Limits, Continuity and Convergence (Optional Precalculus Enrichment) | Proposed | 5 | S0 | Optional enrichment |
+| [A2.22](books/algebra-2/A2.22-limits-continuity-and-convergence.md) | Limits, Continuity and Convergence (Optional Precalculus Enrichment) | Proposed | 5 | Deferred | Optional enrichment; Deferred and excluded from the core release (owner, 2026-11-27, D8; CR-6) |
 
 ## Algebra III — Advanced Algebraic Problem Solving
 
@@ -73,7 +74,7 @@ A chapter can hold S2 and still be at S0 for the rest of its sections; the Notes
 |---|---|---|---:|---|---|
 | [A3.1](books/algebra-3/A3.01-strategic-substitutions-and-hidden-variables.md) | Strategic Substitutions and Hidden Variables | Proposed | 6 | S0 | Has a teaching sequence |
 | [A3.2](books/algebra-3/A3.02-advanced-systems-of-equations.md) | Advanced Systems of Equations | Proposed | 5 | S0 |  |
-| [A3.3](books/algebra-3/A3.03-advanced-polynomial-structure-and-root-problems.md) | Advanced Polynomial Structure and Root Problems | Proposed | 7 | S0 | 1 second-pass extension; Audit refinement 2; Next pilot (roadmap Stage 2) |
+| [A3.3](books/algebra-3/A3.03-advanced-polynomial-structure-and-root-problems.md) | Advanced Polynomial Structure and Root Problems | Proposed | 7 | S1 | 1 second-pass extension; Audit refinement 2; Next pilot (roadmap Stage 2); [Packet](packets/A3.3.md) ready for review (2026-11-27) |
 | [A3.4](books/algebra-3/A3.04-advanced-inequalities-and-constrained-optimization.md) | Advanced Inequalities and Constrained Optimization | Proposed | 7 | S0 |  |
 | [A3.5](books/algebra-3/A3.05-functional-equations-iteration-and-hidden-symmetry.md) | Functional Equations, Iteration and Hidden Symmetry | Proposed | 5 | S0 |  |
 | [A3.6](books/algebra-3/A3.06-advanced-recurrences-and-discrete-dynamics.md) | Advanced Recurrences and Discrete Dynamics | Proposed | 6 | S0 |  |
@@ -105,7 +106,7 @@ A chapter can hold S2 and still be at S0 for the rest of its sections; the Notes
 | ID | Chapter | Basis | Sections | Stage | Notes |
 |---|---|---|---:|---|---|
 | [G2.1](books/geometry-2/G2.01-polygons.md) | Polygons | Year 2 L11 | 8 | S0 |  |
-| [G2.2](books/geometry-2/G2.02-power-of-a-point-theorem.md) | Power of a Point Theorem | Year 2 L12 | 6 | S0 | Next pilot (roadmap Stage 2) |
+| [G2.2](books/geometry-2/G2.02-power-of-a-point-theorem.md) | Power of a Point Theorem | Year 2 L12 | 6 | S1 | Next pilot (roadmap Stage 2); [Packet](packets/G2.2.md) ready for review (2026-11-27) |
 | [G2.3](books/geometry-2/G2.03-cyclic-quadrilaterals-i.md) | Cyclic Quadrilaterals I | Year 2 L13 | 4 | S0 |  |
 | [G2.4](books/geometry-2/G2.04-cyclic-quadrilaterals-ii.md) | Cyclic Quadrilaterals II | Year 2 L14 | 5 | S0 |  |
 | [G2.5](books/geometry-2/G2.05-ptolemys-theorem-and-stewarts-theorem.md) | Ptolemy’s Theorem and Stewart’s Theorem | Year 2 L15 | 6 | S0 | 1 second-pass extension |
@@ -158,7 +159,7 @@ A chapter can hold S2 and still be at S0 for the rest of its sections; the Notes
 
 | ID | Chapter | Basis | Sections | Stage | Notes |
 |---|---|---|---:|---|---|
-| [N2.1](books/number-theory-2/N2.01-modular-inverses-and-the-chinese-remainder-theorem.md) | Modular Inverses and the Chinese Remainder Theorem | Proposed | 6 | S0 | 1 second-pass extension; Audit refinement 6; Next pilot (roadmap Stage 2) |
+| [N2.1](books/number-theory-2/N2.01-modular-inverses-and-the-chinese-remainder-theorem.md) | Modular Inverses and the Chinese Remainder Theorem | Proposed | 6 | S1 | 1 second-pass extension; Audit refinement 6; Next pilot (roadmap Stage 2); [Packet](packets/N2.1.md) ready for review (2026-11-27) |
 | [N2.2](books/number-theory-2/N2.02-modular-powers-orders-and-periodicity.md) | Modular Powers, Orders and Periodicity | Proposed | 5 | S0 |  |
 | [N2.3](books/number-theory-2/N2.03-wilsons-theorem-residue-products-and-primitive-roots.md) | Wilson’s Theorem, Residue Products and Primitive Roots | Proposed | 5 | S0 |  |
 | [N2.4](books/number-theory-2/N2.04-eulers-totient-function-and-arithmetic-functions.md) | Euler’s Totient Function and Arithmetic Functions | Proposed | 5 | S0 |  |
@@ -213,7 +214,7 @@ A chapter can hold S2 and still be at S0 for the rest of its sections; the Notes
 | [C2.2](books/combinatorics-2/C2.02-principle-of-inclusion-and-exclusion.md) | Principle of Inclusion and Exclusion | Year 2 L18 | 6 | S0 |  |
 | [C2.3](books/combinatorics-2/C2.03-bijections-double-counting-and-binomial-structure.md) | Bijections, Double Counting and Binomial Structure | Proposed | 6 | S0 |  |
 | [C2.4](books/combinatorics-2/C2.04-pigeonhole-extremal-reasoning-and-constructive-proof.md) | Pigeonhole, Extremal Reasoning and Constructive Proof | Proposed | 6 | S0 | Pilot D uses C2.4.6 |
-| [C2.5](books/combinatorics-2/C2.05-counting-with-recurrence-relations.md) | Counting with Recurrence Relations | Year 2 L19 | 7 | S0 | Has a teaching sequence; Next pilot (roadmap Stage 2) |
+| [C2.5](books/combinatorics-2/C2.05-counting-with-recurrence-relations.md) | Counting with Recurrence Relations | Year 2 L19 | 7 | S1 | Has a teaching sequence; Next pilot (roadmap Stage 2); [Packet](packets/C2.5.md) ready for review (2026-11-27) |
 | [C2.6](books/combinatorics-2/C2.06-restricted-distributions-lattice-paths-and-catalan-structure.md) | Restricted Distributions, Lattice Paths and Catalan Structure | Proposed | 7 | S0 | 1 second-pass extension |
 | [C2.7](books/combinatorics-2/C2.07-generating-functions-for-counting-and-recurrences.md) | Generating Functions for Counting and Recurrences | Proposed | 5 | S0 |  |
 | [C2.8](books/combinatorics-2/C2.08-conditional-probability-and-probability-distributions.md) | Conditional Probability and Probability Distributions | Proposed | 6 | S0 | 1 second-pass extension |
