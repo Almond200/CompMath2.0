@@ -24603,28 +24603,28 @@
       "Expand powers of the golden ratio in its quadratic basis and sum the resulting Fibonacci coefficients. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2020 BMT Algebra, Problem 5": [
-      2080,
-      "Derive repeated-square function values from a multiplicative functional equation and track their eventual two-cycle modulo one hundred. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1860,
+      "Reviewed against the printed paper. Set the two function arguments equal to obtain the squaring iteration and follow its immediate modulo-100 two-cycle."
     ],
     "2020 BMT Algebra, Problem 6": [
-      1920,
-      "Use Pascal to rewrite a ratio of neighboring binomial coefficients as a telescoping reciprocal difference. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1740,
+      "Reviewed against the printed paper. Cancel the factorials and express each term as the difference of two three-factor reciprocals."
     ],
     "2020 BMT Algebra, Problem 7": [
       2240,
       "Turn a cyclic cubic sum into a product under its zero-sum substitution and use the fixed original product to evaluate it. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2020 BMT Algebra, Problem 8": [
-      2940,
-      "Build two Euclidean norm triangle inequalities to bound an unconstrained quartic-radical expression and verify the sharp equality point. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2490,
+      "Reviewed against the printed paper. Two direct Cauchy bounds arise from the vectors (x²−2, 2x) and (2, y²) and their swapped versions. Add them and attain equality at (2,2)."
     ],
     "2020 BMT Algebra, Problem 9": [
       3280,
       "Recognize a cubic norm as a determinant preserved by inverse powers or as a roots-of-unity factorization, then verify the unique bounded integer triple. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2020 BMT Algebra, Problem 10": [
-      3280,
-      "Interpret inverse-cosine summands as adjacent right-triangle angles and telescope to a limiting right angle with the principal branches checked. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2600,
+      "Reviewed against the printed paper. Recognize the arccosine as the angle between two adjacent vectors and telescope from a vertical ray to a horizontal limit."
     ],
     "2020 BMT Discrete Math, Problem 1": [
       830,
@@ -24639,12 +24639,12 @@
       "Recover a near-prime factorial residue by removing the final two factors in Wilson theorem. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2020 BMT Discrete Math, Problem 4": [
-      1890,
-      "Track odd toggle counts for two symmetric edge lights while the middle light changes deterministically. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1710,
+      "Reviewed against the printed paper. Each endpoint is toggled with probability 2/3 per turn, so an odd binomial count and linearity give the total."
     ],
     "2020 BMT Discrete Math, Problem 5": [
-      2080,
-      "Filter the even number of negative factors in an independent continuous product and identify the largest rational-power exponent. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      1790,
+      "Reviewed against the printed paper. Take the expectation of the product of the signs. Independence and the reduced prime-power denominator give the exponent directly."
     ],
     "2020 BMT Discrete Math, Problem 6": [
       2190,
@@ -24655,16 +24655,16 @@
       "Shift a positive integer cubic equation to bound its least variable and finish by two small factor-pair cases. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2020 BMT Discrete Math, Problem 8": [
-      2880,
-      "Bound qualifying binary-tree branching nodes by their required descendant populations and verify an attaining recruitment tree. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2640,
+      "Reviewed against the printed paper. Prune to the heavy subtrees. Every branching vertex forces another heavy leaf, and disjoint leaf subtrees attain the population bound."
     ],
     "2020 BMT Discrete Math, Problem 9": [
-      3050,
-      "Iterate an integer linear map on a fractional-part square and count its fixed points through a half-open lattice fundamental region. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2630,
+      "Reviewed against the printed paper. The third iterate is an integer matrix and the fixed points form the quotient lattice of its difference from the identity. Its determinant is small."
     ],
     "2020 BMT Discrete Math, Problem 10": [
-      3340,
-      "Convert quadratic polynomial images to odd-prime-power square residues, separate their valuations and factor a double sum of residue counts. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2770,
+      "Reviewed against the printed paper. Complete the square, separate the valuations of residues, and factor the double sum using CRT."
     ],
     "2020 BMT Geometry, Problem 1": [
       880,
@@ -24679,32 +24679,32 @@
       "Recover a right triangular prism base and height from two sixty-degree angles and a side diagonal. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2020 BMT Geometry, Problem 4": [
-      1860,
-      "Decompose a pillar-occluded viewing region into annular sectors and tangent triangles, independently checking it by ray integration. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2110,
+      "Reviewed against the printed paper. Locate the two tangency points and both ray exits, then combine one sector, two outer triangles and the visible near cap correction."
     ],
     "2020 BMT Geometry, Problem 5": [
       2130,
       "Find the area ratio of cyclically weighted squares and sum the infinite geometric area series in its reduced squarefree form. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2020 BMT Geometry, Problem 6": [
-      2290,
-      "Obtain a disphenoid height from a congruent-face cross-section and evaluate its squared volume. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2440,
+      "Reviewed against the printed paper. Use alternating box corners to realize the three opposite edge pairs, then evaluate the determinant for the volume."
     ],
     "2020 BMT Geometry, Problem 7": [
-      2400,
-      "Relate an auxiliary circumcenter radius to a chord of the original circle through paired isosceles angles. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2070,
+      "Reviewed against the printed paper. Use the half central angle to find the auxiliary radius, then project the main center onto the chord to recover its length."
     ],
     "2020 BMT Geometry, Problem 8": [
-      2830,
-      "Recognize three reflected medians as symmedians, derive squared-side cevian ratios and convert the concurrence point to area coordinates. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      2340,
+      "Reviewed against the printed paper. The reflected medians immediately give squared-side area ratios through their common point."
     ],
     "2020 BMT Geometry, Problem 9": [
       3580,
       "Flatten a convex polygon to an integer-perimeter triangle, construct equal Fibonacci side groups and check the minimal radical representation. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
     ],
     "2020 BMT Geometry, Problem 10": [
-      3700,
-      "Use the Urquhart focal-sum configuration to transfer an ellipse intersection perimeter and independently verify the original ordered intersections. Rescaled 2026-11-20 (owner review of difficulty inflation): BMT estimates matched HMMT February at every position in the paper, though BMT is the easier tournament; every BMT estimate was mapped by one increasing scale, keeping their order, to sit between HMMT November and February."
+      3050,
+      "Reviewed against the printed paper. Find the two candidates on the line through one focus from the ellipse focal sums. The ordered intersection selects one, and the perimeter simplifies."
     ],
     "2013 Utah State Math Contest Junior, Problem 1": [
       1100,
