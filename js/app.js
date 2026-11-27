@@ -10634,7 +10634,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   const statementFile = p => { const a = archiveStatement(p); return a ? `${a.dir}/${p.year}` : p.year; };
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 127;
+  const STATEMENTS_V = 128;
   const statementLoads = {};
   function loadStatements(file) {
     if (!statementLoads[file]) {
