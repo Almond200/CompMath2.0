@@ -6,6 +6,10 @@
 
 - **BMT audit.** Solve all 30 questions from the 2017 papers and revise 15 Elo estimates. Correct the tournament probability, the expected largest box volume, and the maximum sine. Accept both readings of the triangle-intersection question and void three prompts with impossible or missing conditions.
 
+- **Textbooks.** Add Read more above Related cards, with an external link and a short note for all 103 teaching chapters. Add specific readings for trig and grid counting, including AoPS section references. Expand recursive counting and grid dynamic programming, and give basic trig, angle identities, multiple angles, harmonic addition and inverse trig their own lessons.
+
+- **Textbook links.** Display each item as its own bullet in Lessons on topic pages and in Practice this more on lesson pages.
+
 **2026-11-26**
 
 - **BMT audit and review.** Complete the seven remaining BMT papers through 2016. Recalibrate 33 Elo estimates, correct 2016 Analysis #9, void three inconsistent or underdetermined questions, and give 2013 Discrete Math #10 a self-check for its general answer. Show recorded grading rulings beside the official answer or solution link in Practice and Arena review.

@@ -101,7 +101,7 @@ De Moivre also reconnects algebra to the trigonometric identities. The real part
 When solving a power equation, all possible arguments must be retained before division by the exponent. If $z^n=Re^{i\phi}$ with $R\gt0$ and positive integer $n$, then $|z|=R^{1/n}$ and $n\arg z=\phi+2k\pi$. The distinct roots are therefore $R^{1/n}e^{i(\phi+2k\pi)/n}$ for $k=0,\ldots,n-1$. A single choice of $\phi/n$ would find only one of them.`,
       related: [
         { card: "rotation-90", note: String.raw`multiplying by $i$ rotates by $90^\circ$.` },
-        { card: "triple-angle", note: String.raw`the multiple angle formulas, which De Moivre explains (L12.2).` }
+        { card: "triple-angle", note: String.raw`the multiple-angle formulas, which De Moivre explains (L12.5).` }
       ],
       exercises: [
         { q: String.raw`Find the imaginary part of $(1 + i)^{10}$.`, answer: "32",
